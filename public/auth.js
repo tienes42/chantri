@@ -1,0 +1,357 @@
+/* =========================================================================
+   HỌC ĐỂ LÀM GÌ — Tài khoản Firebase + lưu SAO dùng chung cho toàn web & game
+   - Đăng nhập Email/Mật khẩu + Google (mẫu từ index (9).html)
+   - Sao = localStorage "hdlg_xp"  (Lv = floor(sao/100)+1)
+   - Lưu lên Firestore: collection "leaderboard", document = uid
+   Nhúng vào trang:
+     <script src="/firebase-config.js"></script>
+     <script src="/auth.js"></script>
+   API cho game:  HDLG.finishLevel({id, score, max})  |  HDLG.addStars(n)
+   ========================================================================= */
+(function () {
+  "use strict";
+  if (window.HDLG) return;
+
+  var SDK = "https://www.gstatic.com/firebasejs/8.10.1/";
+  var COLLECTION = "leaderboard";
+  var SCORE_PER_STAR = 10;            // điểm game / 10 = số sao (chỉnh ở đây)
+  var K = { xp: "hdlg_xp", hints: "hdlg_hints", done: "hdlg_completed", best: "hdlg_best",
+            owner: "hdlg_owner_uid", dirty: "hdlg_dirty" };
+  var WATCH = [K.xp, K.hints, K.done, K.best];
+  var cfg = window.HDLG_FIREBASE_CONFIG || {};
+  var configured = !!(cfg.apiKey && cfg.projectId);
+  var inFrame = false;
+  try { inFrame = window.parent !== window; } catch (e) { inFrame = true; }
+
+  var rawSet = Storage.prototype.setItem, rawRemove = Storage.prototype.removeItem;
+  var suppress = false, pushTimer = null, auth = null, db = null, user = null;
+  var listeners = [], readyResolve, state = { ready: false, user: null };
+  var ready = new Promise(function (r) { readyResolve = r; });
+
+  /* ---------- localStorage helpers ---------- */
+  function lsGet(k) { try { return localStorage.getItem(k); } catch (e) { return null; } }
+  function lsSet(k, v) { suppress = true; try { rawSet.call(localStorage, k, v); } catch (e) {} suppress = false; }
+  function lsDel(k) { suppress = true; try { rawRemove.call(localStorage, k); } catch (e) {} suppress = false; }
+  function num(v) { v = parseInt(v, 10); return isFinite(v) && v > 0 ? v : 0; }
+  function jparse(s, d) { try { var v = JSON.parse(s); return v == null ? d : v; } catch (e) { return d; } }
+  function doneList() {
+    var d = jparse(lsGet(K.done), []), out = [];
+    if (Array.isArray(d)) out = d.map(String);
+    else if (d && typeof d === "object") out = Object.keys(d).filter(function (k) { return d[k]; });
+    return out;
+  }
+  function readLocal() {
+    return { xp: num(lsGet(K.xp)), hints: num(lsGet(K.hints)), completed: doneList(), best: jparse(lsGet(K.best), {}) };
+  }
+  function writeLocal(s) {
+    lsSet(K.xp, String(s.xp)); lsSet(K.hints, String(s.hints));
+    lsSet(K.done, JSON.stringify(s.completed)); lsSet(K.best, JSON.stringify(s.best));
+  }
+  function merge(a, b) {
+    var best = {}, k;
+    for (k in a.best) best[k] = Math.max(num(a.best[k]), num(b.best && b.best[k]));
+    for (k in (b.best || {})) if (!(k in best)) best[k] = num(b.best[k]);
+    var set = {}; a.completed.concat(b.completed || []).forEach(function (x) { set[x] = 1; });
+    return { xp: Math.max(a.xp, b.xp), hints: Math.max(a.hints, b.hints), completed: Object.keys(set), best: best };
+  }
+  function level(xp) { return Math.floor(xp / 100) + 1; }
+  function displayName(u) { return (u && (u.displayName || (u.email ? u.email.split("@")[0] : ""))) || "Người chơi"; }
+
+  /* ---------- sự kiện ---------- */
+  function emit() {
+    var x = num(lsGet(K.xp));
+    var detail = { user: user, xp: x, level: level(x), inLevel: x % 100, hints: num(lsGet(K.hints)), name: user ? displayName(user) : "", photo: user ? user.photoURL || "" : "" };
+    try { window.dispatchEvent(new CustomEvent("hdlg:update", { detail: detail })); } catch (e) {}
+    listeners.forEach(function (f) { try { f(detail); } catch (e) {} });
+  }
+
+  /* ---------- đẩy lên Firestore ---------- */
+  function schedulePush() {
+    if (!user || !db) return;
+    lsSet(K.dirty, "1");
+    clearTimeout(pushTimer); pushTimer = setTimeout(push, 1200);
+  }
+  function push() {
+    if (!user || !db) return Promise.resolve();
+    clearTimeout(pushTimer);
+    var s = readLocal();
+    var data = { name: displayName(user), avatar: user.photoURL || "", xp: s.xp, hints: s.hints,
+                 completed: s.completed, best: safeKeys(s.best),
+                 updatedAt: firebase.firestore.FieldValue.serverTimestamp() };
+    return db.collection(COLLECTION).doc(user.uid).set(data, { merge: true })
+      .then(function () { lsDel(K.dirty); })
+      .catch(function (e) { console.warn("[HDLG] Chưa lưu được lên Firebase:", e && e.code || e); });
+  }
+  function safeKeys(o) { var r = {}; for (var k in o) r[String(k).replace(/[^A-Za-z0-9_\-]/g, "_")] = num(o[k]); return r; }
+
+  function hook() {
+    Storage.prototype.setItem = function (k, v) {
+      rawSet.apply(this, arguments);
+      if (!suppress && this === window.localStorage && WATCH.indexOf(k) >= 0) { schedulePush(); emit(); }
+    };
+    Storage.prototype.removeItem = function (k) {
+      rawRemove.apply(this, arguments);
+      if (!suppress && this === window.localStorage && WATCH.indexOf(k) >= 0) { schedulePush(); emit(); }
+    };
+    window.addEventListener("storage", function (e) { if (WATCH.indexOf(e.key) >= 0) emit(); });
+    window.addEventListener("pagehide", function () { if (lsGet(K.dirty)) push(); });
+    document.addEventListener("visibilitychange", function () {
+      if (document.visibilityState === "hidden" && lsGet(K.dirty)) push();
+      else if (document.visibilityState === "visible" && user) emit();
+    });
+  }
+
+  /* ---------- đồng bộ khi đăng nhập ---------- */
+  function syncOnLogin() {
+    var ref = db.collection(COLLECTION).doc(user.uid);
+    return ref.get().then(function (snap) {
+      var remote = snap.exists ? snap.data() : null;
+      var rs = remote ? { xp: num(remote.xp), hints: num(remote.hints), completed: (remote.completed || []).map(String), best: remote.best || {} }
+                      : { xp: 0, hints: 0, completed: [], best: {} };
+      var local = readLocal(), owner = lsGet(K.owner), result;
+      if (owner === user.uid) result = lsGet(K.dirty) ? local : (remote ? rs : local);
+      else if (!owner) result = merge(local, rs);        // tiến trình chơi thử trước khi đăng nhập
+      else result = rs;                                  // máy đang dùng bởi tài khoản khác
+      writeLocal(result); lsSet(K.owner, user.uid);
+      var changed = !remote || result.xp !== rs.xp || result.hints !== rs.hints ||
+        result.completed.length !== rs.completed.length || remote.name !== displayName(user) || (remote.avatar || "") !== (user.photoURL || "");
+      if (changed || lsGet(K.dirty)) return push();
+    }).catch(function (e) { console.warn("[HDLG] Không đọc được Firestore (kiểm tra Rules):", e && e.code || e); })
+      .then(emit);
+  }
+
+  function saveAccountLocal(u) {
+    lsSet("user_id", u.uid); lsSet("hdlg_display_name", displayName(u));
+    lsSet("hdlg_email", u.email || ""); lsSet("hdlg_photo_url", u.photoURL || "");
+  }
+  function clearAccountLocal() {
+    ["user_id", "hdlg_display_name", "hdlg_email", "hdlg_photo_url", K.xp, K.hints, K.done, K.best, K.owner, K.dirty].forEach(lsDel);
+  }
+
+  /* ---------- API cho game ---------- */
+  function addStars(n, label) {
+    n = Math.round(n); if (!(n > 0)) return 0;
+    lsSet(K.xp, String(num(lsGet(K.xp)) + n)); schedulePush(); emit(); toast("⭐ +" + n + " sao" + (label ? " · " + label : ""));
+    return n;
+  }
+  function markDone(id) {
+    if (id == null || id === "") return;
+    var d = jparse(lsGet(K.done), []);
+    if (Array.isArray(d)) { if (d.map(String).indexOf(String(id)) < 0) d.push(isNaN(id) ? id : Number(id)); }
+    else if (d && typeof d === "object") d[id] = true; else d = [id];
+    lsSet(K.done, JSON.stringify(d));
+  }
+  function finishLevel(o) {
+    o = o || {};
+    var score = Math.max(0, Number(o.score) || 0), max = Number(o.max) || 100;
+    var gameKey = String(o.game || location.pathname.split("/").pop().replace(/\.html?$/, "") || "game");
+    var key = gameKey + (o.id != null && o.id !== "" ? "_" + o.id : "");
+    key = key.replace(/[^A-Za-z0-9_\-]/g, "_");
+    var stars = Math.round(score / SCORE_PER_STAR);
+    var best = jparse(lsGet(K.best), {}), prev = num(best[key]), gain = Math.max(0, stars - prev);
+    if (gain > 0) { best[key] = stars; lsSet(K.best, JSON.stringify(best)); }
+    if (score >= max * 0.5) markDone(o.id);
+    if (gain > 0) lsSet(K.xp, String(num(lsGet(K.xp)) + gain));
+    schedulePush(); emit();
+    if (gain > 0) toast("⭐ +" + gain + " sao đã lưu vào tài khoản");
+    else toast(user ? "Bạn đã đạt " + prev + " sao ở màn này — hãy phá kỷ lục để nhận thêm!" : "");
+    return { gained: gain, stars: stars, best: Math.max(prev, stars), total: num(lsGet(K.xp)) };
+  }
+  function getLeaderboard(n) {
+    if (!db) return Promise.resolve([]);
+    return db.collection(COLLECTION).orderBy("xp", "desc").limit(n || 10).get().then(function (qs) {
+      var out = []; qs.forEach(function (d) { var v = d.data(); out.push({ uid: d.id, name: v.name || "Người chơi", avatar: v.avatar || "", xp: num(v.xp) }); });
+      return out;
+    }).catch(function (e) { console.warn("[HDLG] Không đọc được bảng xếp hạng:", e && e.code || e); return []; });
+  }
+
+  /* ---------- giao diện ---------- */
+  var CSS = "\
+.hdlg-ov{position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(5,12,30,.72);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);font-family:'Segoe UI',Roboto,Arial,sans-serif}\
+.hdlg-ov[hidden]{display:none}\
+.hdlg-box{width:100%;max-width:400px;max-height:92vh;overflow:auto;background:linear-gradient(160deg,#16325f,#0c1a38);color:#eaf2ff;border:1px solid #4a74c9;border-radius:18px;padding:22px;box-shadow:0 20px 60px rgba(0,0,0,.55);position:relative}\
+.hdlg-box h2{margin:0 0 4px;font-size:22px;text-align:center}\
+.hdlg-sub{margin:0 0 14px;text-align:center;color:#a9bde6;font-size:13px}\
+.hdlg-box input{width:100%;box-sizing:border-box;margin-bottom:10px;padding:11px 12px;border-radius:10px;border:1px solid #3a5a9c;background:#0a1630;color:#fff;font-size:15px;outline:none}\
+.hdlg-box input:focus{border-color:#62d7ff}\
+.hdlg-btn{display:block;width:100%;padding:11px;border:0;border-radius:10px;font-weight:700;font-size:15px;cursor:pointer;background:#ffd65d;color:#1b1b1b}\
+.hdlg-btn:disabled{opacity:.6;cursor:wait}\
+.hdlg-btn.g{background:#fff;color:#222;margin-top:10px}\
+.hdlg-btn.o{background:transparent;color:#ff9b9b;border:1px solid #ff9b9b;margin-top:12px}\
+.hdlg-err{background:#ff4d4d26;border:1px solid #ff7b7b88;color:#ffb3b3;padding:8px 10px;border-radius:8px;font-size:13px;margin-bottom:10px}\
+.hdlg-or{text-align:center;color:#8aa0cc;font-size:12px;margin:12px 0 0}\
+.hdlg-tg{text-align:center;margin-top:14px;font-size:13px;color:#a9bde6}\
+.hdlg-tg a{color:#62d7ff;cursor:pointer;font-weight:700;margin-left:4px}\
+.hdlg-x{position:absolute;top:10px;right:12px;background:none;border:0;color:#a9bde6;font-size:22px;cursor:pointer}\
+.hdlg-row{display:flex;align-items:center;gap:10px;padding:8px 10px;border-radius:10px;background:#ffffff10;margin-bottom:6px}\
+.hdlg-row.me{background:#ffd65d30;border:1px solid #ffd65d88}\
+.hdlg-row i{width:26px;text-align:center;font-style:normal;font-weight:700;color:#ffd65d}\
+.hdlg-row b{flex:1;font-weight:600;overflow:hidden;text-overflow:ellipsis;white-space:nowrap}\
+.hdlg-row strong{color:#ffd65d}\
+.hdlg-av{width:30px;height:30px;border-radius:50%;background:#2c5aa8;object-fit:cover;display:flex;align-items:center;justify-content:center;font-size:14px;font-weight:700;flex:none}\
+.hdlg-big{display:flex;flex-direction:column;align-items:center;gap:6px;margin-bottom:10px}\
+.hdlg-big .hdlg-av{width:64px;height:64px;font-size:28px}\
+.hdlg-stats{display:flex;gap:8px;margin:10px 0}\
+.hdlg-stats div{flex:1;text-align:center;background:#ffffff12;border-radius:10px;padding:8px}\
+.hdlg-stats b{display:block;font-size:20px;color:#ffd65d}\
+.hdlg-toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:100000;background:#0c1a38ee;color:#ffe9a3;border:1px solid #ffd65d;border-radius:999px;padding:9px 18px;font:600 14px 'Segoe UI',Arial,sans-serif;box-shadow:0 8px 24px rgba(0,0,0,.4);transition:opacity .4s;pointer-events:none}\
+.hdlg-warn{position:fixed;left:8px;bottom:8px;z-index:99998;background:#ffefc2;color:#5a3b00;border-radius:8px;padding:6px 10px;font:12px Arial,sans-serif;max-width:300px}";
+
+  function el(tag, attrs, html) {
+    var e = document.createElement(tag);
+    for (var k in (attrs || {})) e.setAttribute(k, attrs[k]);
+    if (html != null) e.innerHTML = html;
+    return e;
+  }
+  function esc(s) { return String(s).replace(/[&<>"']/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;", "'": "&#39;" }[c]; }); }
+  function avatarHTML(name, photo) {
+    return photo ? '<img class="hdlg-av" referrerpolicy="no-referrer" src="' + esc(photo) + '" alt="">'
+                 : '<span class="hdlg-av">' + esc((name || "?").charAt(0).toUpperCase()) + "</span>";
+  }
+  function toast(msg) {
+    if (!msg || !document.body) return;
+    var t = el("div", { "class": "hdlg-toast" }, esc(msg)); document.body.appendChild(t);
+    setTimeout(function () { t.style.opacity = "0"; }, 2600); setTimeout(function () { t.remove(); }, 3100);
+  }
+
+  var overlay = null;
+  function openModal(html, closable) {
+    closeModal();
+    overlay = el("div", { "class": "hdlg-ov" }, '<div class="hdlg-box">' + (closable ? '<button class="hdlg-x" aria-label="Đóng">×</button>' : "") + html + "</div>");
+    document.body.appendChild(overlay);
+    if (closable) {
+      overlay.querySelector(".hdlg-x").onclick = closeModal;
+      overlay.addEventListener("mousedown", function (e) { if (e.target === overlay) closeModal(); });
+    }
+    return overlay;
+  }
+  function closeModal() { if (overlay) { overlay.remove(); overlay = null; } }
+
+  var ERR = {
+    "auth/email-already-in-use": "Email này đã được đăng ký. Hãy thử đăng nhập.",
+    "auth/invalid-email": "Email không hợp lệ.",
+    "auth/weak-password": "Mật khẩu quá yếu (cần ít nhất 6 ký tự).",
+    "auth/user-not-found": "Không tìm thấy tài khoản với email này.",
+    "auth/wrong-password": "Sai mật khẩu. Vui lòng thử lại.",
+    "auth/invalid-credential": "Email hoặc mật khẩu không đúng.",
+    "auth/too-many-requests": "Bạn đã thử quá nhiều lần. Vui lòng chờ một lát.",
+    "auth/unauthorized-domain": "Tên miền này chưa được cấp phép trong Firebase (Authentication > Settings > Authorized domains).",
+    "auth/popup-blocked": "Trình duyệt đã chặn cửa sổ popup đăng nhập. Hãy cho phép popup rồi thử lại.",
+    "auth/popup-closed-by-user": "Cửa sổ đăng nhập Google đã bị đóng trước khi hoàn tất.",
+    "auth/cancelled-popup-request": "Yêu cầu đăng nhập trước đó chưa hoàn tất, vui lòng thử lại.",
+    "auth/operation-not-allowed": "Phương thức đăng nhập này chưa được bật trong Firebase.",
+    "auth/network-request-failed": "Lỗi kết nối mạng. Vui lòng kiểm tra Internet và thử lại.",
+    "auth/internal-error": "Lỗi nội bộ từ Firebase — thường do tên miền chưa được cấp phép hoặc cấu hình API Key sai."
+  };
+  function errText(code) { if (code && !ERR[code]) console.warn("[Firebase Auth]", code); return ERR[code] || "Đã có lỗi xảy ra (mã: " + (code || "không rõ") + "). Vui lòng thử lại."; }
+
+  function showLogin() {
+    var reg = false;
+    var ov = openModal(
+      '<h2 id="hdT">🔐 Đăng nhập</h2><p class="hdlg-sub" id="hdS">Đăng nhập để lưu sao và tiến trình học của bạn</p>' +
+      '<div class="hdlg-err" id="hdE" hidden></div>' +
+      '<form id="hdF"><input id="hdN" type="text" placeholder="Tên hiển thị" maxlength="30" hidden>' +
+      '<input id="hdM" type="email" placeholder="Email" required autocomplete="email">' +
+      '<input id="hdP" type="password" placeholder="Mật khẩu (ít nhất 6 ký tự)" required minlength="6" autocomplete="current-password">' +
+      '<button class="hdlg-btn" id="hdB" type="submit">Đăng nhập</button></form>' +
+      '<p class="hdlg-or">— hoặc —</p><button class="hdlg-btn g" id="hdG" type="button">🔵 Đăng nhập bằng Google</button>' +
+      '<p class="hdlg-tg"><span id="hdL">Chưa có tài khoản?</span><a id="hdA">Đăng ký</a></p>', false);
+    var $ = function (id) { return ov.querySelector("#" + id); };
+    function err(m) { $("hdE").textContent = m || ""; $("hdE").hidden = !m; }
+    function busy(b) { $("hdB").disabled = b; $("hdG").disabled = b; }
+    $("hdA").onclick = function () {
+      reg = !reg; err("");
+      $("hdT").textContent = reg ? "📝 Đăng ký" : "🔐 Đăng nhập";
+      $("hdB").textContent = reg ? "Tạo tài khoản" : "Đăng nhập";
+      $("hdL").textContent = reg ? "Đã có tài khoản?" : "Chưa có tài khoản?";
+      $("hdA").textContent = reg ? "Đăng nhập" : "Đăng ký";
+      $("hdN").hidden = !reg;
+      $("hdP").autocomplete = reg ? "new-password" : "current-password";
+    };
+    $("hdF").onsubmit = function (e) {
+      e.preventDefault(); err(""); busy(true);
+      var email = $("hdM").value.trim(), pw = $("hdP").value, nm = $("hdN").value.trim();
+      var p = reg ? auth.createUserWithEmailAndPassword(email, pw).then(function (c) { return nm ? c.user.updateProfile({ displayName: nm }) : null; })
+                  : auth.signInWithEmailAndPassword(email, pw);
+      p.catch(function (x) { err(errText(x.code)); }).then(function () { busy(false); });
+    };
+    $("hdG").onclick = function () {
+      err(""); busy(true);
+      auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
+        .catch(function (x) { err(errText(x.code)); }).then(function () { busy(false); });
+    };
+  }
+
+  function logout() {
+    return push().then(function () { clearAccountLocal(); return auth.signOut(); }).then(function () { location.reload(); });
+  }
+
+  function showAccount() {
+    if (!user) return showLogin();
+    var x = num(lsGet(K.xp)), name = displayName(user);
+    var ov = openModal('<div class="hdlg-big">' + avatarHTML(name, user.photoURL) + "<h2>" + esc(name) + '</h2><div class="hdlg-sub" style="margin:0">' + esc(user.email || "") + "</div></div>" +
+      '<div class="hdlg-stats"><div><b>⭐ ' + x + "</b>Sao</div><div><b>Lv." + level(x) + "</b>Cấp độ</div><div><b>🎫 " + num(lsGet(K.hints)) + "</b>Gợi ý</div></div>" +
+      '<button class="hdlg-btn" id="hdR">🏆 Xem bảng xếp hạng</button><button class="hdlg-btn o" id="hdO">Đăng xuất</button>', true);
+    ov.querySelector("#hdR").onclick = showLeaderboard;
+    ov.querySelector("#hdO").onclick = function () { this.disabled = true; this.textContent = "Đang lưu & đăng xuất…"; logout(); };
+  }
+
+  function showLeaderboard() {
+    var ov = openModal('<h2>🏆 Bảng xếp hạng</h2><p class="hdlg-sub">Top 10 người nhiều sao nhất</p><div id="hdLB">Đang tải…</div>', true);
+    getLeaderboard(10).then(function (list) {
+      var box = ov.querySelector("#hdLB"); if (!box) return;
+      if (!list.length) { box.textContent = "Chưa có dữ liệu."; return; }
+      box.innerHTML = list.map(function (r, i) {
+        return '<div class="hdlg-row' + (user && r.uid === user.uid ? " me" : "") + '"><i>' + (i === 0 ? "👑" : i + 1) + "</i>" + avatarHTML(r.name, r.avatar) + "<b>" + esc(r.name) + "</b><strong>⭐ " + r.xp + "</strong></div>";
+      }).join("");
+    });
+  }
+
+  /* ---------- khởi động ---------- */
+  function loadScript(src) {
+    return new Promise(function (res, rej) {
+      var s = document.createElement("script"); s.src = src; s.onload = res; s.onerror = function () { rej(new Error("Không tải được " + src)); };
+      document.head.appendChild(s);
+    });
+  }
+  function whenBody(fn) { if (document.body) fn(); else document.addEventListener("DOMContentLoaded", fn); }
+
+  function init() {
+    hook();
+    whenBody(function () { document.head.appendChild(el("style", {}, CSS)); });
+    if (!configured) {
+      console.warn("[HDLG] Chưa dán cấu hình Firebase vào /firebase-config.js — tạm thời chưa có đăng nhập.");
+      state.ready = true; readyResolve(null);
+      if (!inFrame) whenBody(function () { document.body.appendChild(el("div", { "class": "hdlg-warn" }, "⚠ Chưa cấu hình Firebase (file firebase-config.js)")); });
+      return;
+    }
+    loadScript(SDK + "firebase-app.js").then(function () {
+      return Promise.all([loadScript(SDK + "firebase-auth.js"), loadScript(SDK + "firebase-firestore.js")]);
+    }).then(function () {
+      if (!firebase.apps.length) firebase.initializeApp(cfg);
+      auth = firebase.auth(); db = firebase.firestore();
+      auth.onAuthStateChanged(function (u) {
+        user = u; state.user = u;
+        if (u) {
+          saveAccountLocal(u);
+          if (!inFrame) whenBody(closeModal);
+          syncOnLogin().then(function () { state.ready = true; readyResolve(u); });
+        } else {
+          state.ready = true; readyResolve(null); emit();
+          if (!inFrame) whenBody(showLogin);
+        }
+      });
+    }).catch(function (e) { console.error("[HDLG] Lỗi khởi tạo Firebase:", e); state.ready = true; readyResolve(null); });
+  }
+
+  window.HDLG = {
+    ready: ready, configured: configured,
+    get user() { return user; },
+    getStars: function () { return num(lsGet(K.xp)); },
+    getLevel: function () { return level(num(lsGet(K.xp))); },
+    addStars: addStars, finishLevel: finishLevel, getLeaderboard: getLeaderboard,
+    showLogin: showLogin, showAccount: showAccount, showLeaderboard: showLeaderboard, logout: logout,
+    onChange: function (f) { listeners.push(f); }, flush: push
+  };
+  init();
+})();

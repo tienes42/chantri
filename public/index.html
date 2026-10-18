@@ -5,6 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>HỌC ĐỂ LÀM GÌ</title>
   <link rel="stylesheet" href="index.css">
+<script src="/firebase-config.js"></script><script src="/auth.js"></script>
 </head>
 <body>
 <main class="home" id="homeScene" aria-label="Trang chủ Học để làm gì">
@@ -28,11 +29,11 @@
   </div>
 
   <!-- 2. THÔNG TIN NGƯỜI CHƠI & BẢNG XẾP HẠNG -->
-  <header class="player-card">
-    <div class="avatar">👨🏻‍🎓</div>
+  <header class="player-card" id="playerCard" title="Tài khoản của tôi">
+    <div class="avatar" id="playerAvatar">👨🏻‍🎓</div>
     <div class="player-info">
-      <strong>Tên người chơi</strong>
-      <div class="xp-line"><b>Lv.1</b><span class="xp-bar"><i></i></span><small>0/100</small></div>
+      <strong id="playerName">Tên người chơi</strong>
+      <div class="xp-line"><b id="playerLevel">Lv.1</b><span class="xp-bar"><i id="playerXpBar"></i></span><small id="playerXpText">0/100</small></div>
     </div>
   </header>
 
@@ -41,7 +42,7 @@
     <button class="top-button ranking-button" id="rankingButton"><span>🏆</span><span>Bảng xếp hạng</span><em>›</em></button>
   </nav>
 
-  <aside class="ranking-panel">
+  <aside class="ranking-panel" id="rankingPanel">
     <h3>🏆 Bảng xếp hạng</h3>
     <div class="rank-row current"><span>👑</span><b>Tên người chơi</b><strong>1250</strong></div>
     <div class="rank-row"><span>2</span><b>Bạn A</b><strong>1120</strong></div>

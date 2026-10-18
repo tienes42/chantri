@@ -24,7 +24,8 @@ button{font:inherit;cursor:pointer;border:0;color:inherit}
 #pop .card{background:#fff7e0;color:#3a2a10;border-radius:20px;padding:24px 30px;max-width:640px;border:5px solid #c98a2b;box-shadow:0 10px 40px #000a}
 #pop h2{color:#a8590a;margin-bottom:8px}#pop p{line-height:1.55;margin:6px 0}
 .tag{display:inline-block;background:#ffd166;border-radius:20px;padding:3px 12px;font-weight:800;font-size:13px;margin:3px 3px 0 0}
-</style></head><body>
+</style><script src="/firebase-config.js"></script><script src="/auth.js"></script>
+</head><body>
 <div id="stage"><canvas id="cv" width="960" height="540"></canvas>
 <div class="hud" style="left:14px;top:12px"><div class="pill" id="hAct"></div><div class="pill">⭐ <span id="hSc">0</span></div></div>
 <div class="hud" style="left:14px;top:58px"><button class="btn s" id="bExit">← Thoát</button><button class="btn s" id="bSnd">🔊</button></div><div class="hud" style="left:50%;top:12px;transform:translateX(-50%)"><div class="pill" id="meter"></div></div>
@@ -127,7 +128,7 @@ $('bNote').onclick=()=>{if(st.mode!='play')return;const p=phys(),a=st.a,b=boat()
 function exitGame(){history.length>1?history.back():location.href='../index.html'}
 function askExit(){if(st.mode=='end')return exitGame();$('pop').style.display='flex';$('pop').innerHTML=`<div class="card"><h2>Thoát khỏi game?</h2><p>Tiến trình của chặng hiện tại sẽ không được lưu.</p><p style="margin-top:12px"><button class="btn g" onclick="$('pop').style.display='none'">▶ Chơi tiếp</button> <button class="btn" onclick="ev('exit',{act:st.i,score});exitGame()">Thoát</button></p></div>`}
 $('bExit').onclick=askExit;$('bSnd').textContent=mute?'🔇':'🔊';$('bSnd').onclick=()=>{mute=!mute;localStorage.setItem('hdlg_mute',mute?'1':'0');$('bSnd').textContent=mute?'🔇':'🔊';if(MG)MG.gain.value=mute?0:1;ac()};addEventListener('keydown',e=>{if(e.key=='Escape')askExit()});
-function finish(){st.mode='end';SND.win();const r=story.reveal;if(sid)api(`/games/sessions/${sid}/finish?score=${score}`,{method:'POST'}).catch(()=>{});
+function finish(){st.mode='end';try{window.HDLG&&HDLG.finishLevel({id:(typeof LESSON_ID!=='undefined'?LESSON_ID:null),score:score,max:story.acts.length*100})}catch(_e){}SND.win();const r=story.reveal;if(sid)api(`/games/sessions/${sid}/finish?score=${score}`,{method:'POST'}).catch(()=>{});
  $('pop').style.display='flex';$('pop').innerHTML=`<div class="card"><h2>🏁 Hoàn thành! ${score}/${story.acts.length*100} điểm</h2><h2 style="margin-top:10px">🎓 HỌC ĐỂ LÀM GÌ?</h2><p>${r.text}</p><p><b>Công thức bạn vừa dùng:</b> ${r.formula}</p><p><b>Nghề dùng kiến thức này mỗi ngày:</b></p>${r.jobs.map(j=>`<span class="tag">${j}</span>`).join('')}<p style="margin-top:14px"><button class="btn" onclick="location.reload()">Chơi lại</button> <button class="btn g" onclick="history.length>1?history.back():location.href='../index.html'">Về bài học</button></p></div>`}
 
 /* ---- hạt: bọt nước, pháo giấy ---- */
@@ -181,7 +182,7 @@ let last=0;function loop(t){T=t/1000;const a=st.a,p=phys();$('bGo').style.displa
 /* ====================== KHỞI ĐỘNG ====================== */
 (async()=>{topic=Q.get('topic');let lesson=null;
  if(LESSON_ID){try{lesson=await api('/content/lessons/'+LESSON_ID);topic=lesson.topic}catch(e){}}
- if(topic&&!STORIES[topic]){const OT={'dien-tro':'game_ohm.html','dinh-luat-ohm':'game_ohm.html','dong-dien':'game_ohm.html','toc-do':'game_speed.html','toc-do-chuyen-dong':'game_speed.html','do-dai':'game_dodai.html','khoi-luong':'game_khoiluong.html','luc-ma-sat':'game_lucmasat.html','luc':'game_luc.html','nhiet-do':'game_nhietdo.html','anh-sang':'game_anhsang.html','am-thanh':'game_amthanh.html','guong-phang':'game_guongphang.html','anh-sang-mau':'game_anhsangmau.html','nam-cham':'game_namcham.html','cong-suat':'game_congsuat.html','nhiet-nang':'game_nhietnang.html','dien':'game_dien.html','doan-mach-noi-tiep':'game_doanmachnoitiep.html','doan-mach-song-song':'game_doanmachsongsong.html','cong-va-cong-suat-dien':'game_congsuatdien.html','dien-tu':'game_dientu.html','quang-hoc':'game_quanghoc.html'};location.replace((OT[topic]||'simulation_classic.html')+location.search);return}
+ if(topic&&!STORIES[topic]){const OT={'dien-tro':'game_ohm.html','dinh-luat-ohm':'game_ohm.html','dong-dien':'game_ohm.html','toc-do':'game_speed.html','toc-do-chuyen-dong':'game_speed.html','do-dai':'game_dodai.html','khoi-luong':'game_khoiluong.html','luc-ma-sat':'game_lucmasat.html','luc':'game_luc.html','nhiet-do':'game_nhietdo.html','anh-sang':'game_anhsang.html','am-thanh':'game_amthanh.html','guong-phang':'game_guongphang.html','anh-sang-mau':'game_anhsangmau.html','nam-cham':'game_namcham.html','cong-suat':'game_congsuat.html','nhiet-nang':'game_nhietnang.html','dien':'game_dien.html','doan-mach-noi-tiep':'game_doanmachnoitiep.html'};location.replace((OT[topic]||'simulation_classic.html')+location.search);return}
  story=STORIES[topic||'luc-day-archimedes'];
  if(LESSON_ID){try{const g=await api(`/content/lessons/${LESSON_ID}/games`);if(g[0])sid=(await api('/games/sessions',{method:'POST',body:JSON.stringify({user_id:USER_ID,game_id:g[0].id})})).id}catch(e){}}
  st={i:-1,a:story.acts[0]};newAct(0);requestAnimationFrame(loop)})();

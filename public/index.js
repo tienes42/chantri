@@ -41,16 +41,65 @@ document.querySelectorAll('.hit[data-page]').forEach(b => {
 
 // Các nút thông tin & Popup
 document.getElementById('centerHit').addEventListener('click', () =>
-  showDialog('Chân Tri', 'Nơi khám phá kiến thức qua tình huống thực tế và mini game để vận dụng điều đã học vào giải quyết vấn đề.')
+  showDialog('HỌC ĐỂ LÀM GÌ?', 'Khám phá kiến thức qua tình huống thực tế và mini game để vận dụng điều đã học vào giải quyết vấn đề.')
 );
 
 document.getElementById('classButton').addEventListener('click', () =>
   showDialog('Lớp 12A3', 'Khu vực lớp học sẽ có thành viên, nhiệm vụ chung và thành tích của cả lớp.')
 );
 
-document.getElementById('rankingButton').addEventListener('click', () =>
-  showDialog('Bảng xếp hạng', 'Thành tích người chơi sẽ được tổng hợp từ điểm kinh nghiệm và các nhiệm vụ hoàn thành.')
-);
+document.getElementById('rankingButton').addEventListener('click', () => {
+  if (window.HDLG && HDLG.configured) HDLG.showLeaderboard();
+  else showDialog('Bảng xếp hạng', 'Cần cấu hình Firebase (file firebase-config.js) để xem bảng xếp hạng.');
+});
+
+// ===== Tài khoản Firebase + Sao (auth.js) =====
+(function accountHud() {
+  const $ = id => document.getElementById(id);
+  const card = $('playerCard');
+  card.style.cursor = 'pointer';
+  card.addEventListener('click', () => { if (window.HDLG) HDLG.showAccount(); });
+
+  function renderPlayer(d) {
+    $('playerName').textContent = d.name || 'Tên người chơi';
+    $('playerLevel').textContent = 'Lv.' + d.level;
+    $('playerXpBar').style.width = d.inLevel + '%';
+    $('playerXpText').textContent = d.inLevel + '/100';
+    const av = $('playerAvatar');
+    if (d.photo) {
+      av.innerHTML = '';
+      const img = document.createElement('img');
+      img.src = d.photo; img.referrerPolicy = 'no-referrer'; img.alt = '';
+      img.style.cssText = 'width:100%;height:100%;border-radius:50%;object-fit:cover';
+      av.appendChild(img);
+    } else if (d.name) {
+      av.textContent = d.name.charAt(0).toUpperCase();
+    }
+  }
+
+  let rankTimer = null;
+  function renderRanking() {
+    const panel = $('rankingPanel');
+    if (!window.HDLG || !HDLG.configured || !HDLG.user) return;
+    HDLG.getLeaderboard(5).then(list => {
+      panel.querySelectorAll('.rank-row').forEach(r => r.remove());
+      list.forEach((r, i) => {
+        const row = document.createElement('div');
+        row.className = 'rank-row' + (r.uid === HDLG.user.uid ? ' current' : '');
+        const a = document.createElement('span'); a.textContent = i === 0 ? '👑' : String(i + 1);
+        const b = document.createElement('b'); b.textContent = r.name;
+        const c = document.createElement('strong'); c.textContent = r.xp;
+        row.append(a, b, c); panel.appendChild(row);
+      });
+    });
+  }
+
+  window.addEventListener('hdlg:update', e => {
+    renderPlayer(e.detail);
+    clearTimeout(rankTimer); rankTimer = setTimeout(renderRanking, 800);
+  });
+  if (window.HDLG) HDLG.ready.then(() => { if (HDLG.user) renderRanking(); });
+})();
 
 document.querySelectorAll('.hit[data-popup]').forEach(b => {
   b.addEventListener('click', () => {

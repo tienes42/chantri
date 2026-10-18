@@ -5,6 +5,7 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Đêm Nhạc Hội Trường: Bài Toán Của Lực — HỌC ĐỂ LÀM GÌ</title>
     <script src="https://cdn.tailwindcss.com/3.4.17"></script>
+    <script src="/firebase-config.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-app-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-auth-compat.js"></script>
     <script src="https://www.gstatic.com/firebasejs/10.12.2/firebase-firestore-compat.js"></script>
@@ -867,6 +868,8 @@
             messagingSenderId: "YOUR_SENDER_ID",           // <-- Dán messagingSenderId vào đây
             appId: "YOUR_APP_ID"                           // <-- Dán appId vào đây
         };
+        // Dùng chung cấu hình Firebase với cả web (file /firebase-config.js)
+        if (window.HDLG_FIREBASE_CONFIG && window.HDLG_FIREBASE_CONFIG.apiKey) Object.assign(FIREBASE_CONFIG, window.HDLG_FIREBASE_CONFIG);
 
         // Bộ nhớ đồng bộ Tài khoản dùng chung giữa tất cả các trang Web (index.html, lesson.html...) và Game
         const ACCOUNTS_DB_KEY = "hocdelamgi_accounts_cloud_db_v3";
@@ -1071,6 +1074,20 @@
                     db[userAccount.uid] = recordToSave;
                     saveLocalAccountsDB(db);
                     localStorage.setItem(ACTIVE_UID_KEY, userAccount.uid);
+                } catch (e) {}
+
+                // Cầu nối: sao kiếm thêm trong game này được cộng vào "sao" chung của tài khoản (hdlg_xp)
+                try {
+                    const bk = "hdlg_force_stars_" + userAccount.uid, prev = localStorage.getItem(bk);
+                    const owner = localStorage.getItem("hdlg_owner_uid");
+                    if (prev !== null && (!owner || owner === userAccount.uid)) {
+                        const d = userAccount.stars - Number(prev);
+                        if (d > 0) {
+                            localStorage.setItem("hdlg_xp", String((parseInt(localStorage.getItem("hdlg_xp") || "0", 10) || 0) + d));
+                            localStorage.setItem("hdlg_dirty", "1");
+                        }
+                    }
+                    localStorage.setItem(bk, String(userAccount.stars));
                 } catch (e) {}
 
                 if (fbDb && userAccount.isFirebaseCloud) {

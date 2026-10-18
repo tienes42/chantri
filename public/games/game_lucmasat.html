@@ -25,6 +25,7 @@ button{font:inherit;cursor:pointer;border:0;color:inherit}
 #pop h2{color:#a8590a;margin-bottom:8px}#pop p{line-height:1.55;margin:6px 0}
 .tag{display:inline-block;background:#ffd166;border-radius:20px;padding:3px 12px;font-weight:800;font-size:13px;margin:3px 3px 0 0}
 </style>
+<script src="/firebase-config.js"></script><script src="/auth.js"></script>
 </head><body>
 <div id="stage"><canvas id="cv" width="960" height="540"></canvas>
 <div class="hud" style="left:14px;top:12px"><div class="pill" id="hAct"></div><div class="pill">⭐ <span id="hSc">0</span></div></div>
@@ -70,7 +71,7 @@ $('dlg').onclick=next;addEventListener('keydown',e=>{if(e.key==' '||e.key=='Ente
 function exitGame(){history.length>1?history.back():location.href='../index.html'}
 function askExit(){if(st.mode=='end')return exitGame();$('pop').style.display='flex';$('pop').innerHTML=`<div class="card"><h2>Thoát khỏi game?</h2><p>Tiến trình của chặng hiện tại sẽ không được lưu.</p><p style="margin-top:12px"><button class="btn g" onclick="$('pop').style.display='none'">▶ Chơi tiếp</button> <button class="btn" onclick="ev('exit',{act:st.i,score});exitGame()">Thoát</button></p></div>`}
 $('bExit').onclick=askExit;$('bSnd').textContent=mute?'🔇':'🔊';$('bSnd').onclick=()=>{mute=!mute;localStorage.setItem('hdlg_mute',mute?'1':'0');$('bSnd').textContent=mute?'🔇':'🔊';if(MG)MG.gain.value=mute?0:1;ac()};addEventListener('keydown',e=>{if(e.key=='Escape')askExit()});
-function finish(){st.mode='end';SND.win();const r=story.reveal;if(sid)api(`/games/sessions/${sid}/finish?score=${score}`,{method:'POST'}).catch(()=>{});
+function finish(){st.mode='end';try{window.HDLG&&HDLG.finishLevel({id:(typeof LESSON_ID!=='undefined'?LESSON_ID:null),score:score,max:story.acts.length*100})}catch(_e){}SND.win();const r=story.reveal;if(sid)api(`/games/sessions/${sid}/finish?score=${score}`,{method:'POST'}).catch(()=>{});
  $('pop').style.display='flex';$('pop').innerHTML=`<div class="card"><h2>🏁 Hoàn thành! ${score}/${story.acts.length*100} điểm</h2><h2 style="margin-top:10px">🎓 HỌC ĐỂ LÀM GÌ?</h2><p>${r.text}</p><p><b>Công thức bạn vừa dùng:</b> ${r.formula}</p><p><b>Nghề dùng kiến thức này mỗi ngày:</b></p>${r.jobs.map(j=>`<span class="tag">${j}</span>`).join('')}<p style="margin-top:14px"><button class="btn" onclick="location.reload()">Chơi lại</button> <button class="btn g" onclick="history.length>1?history.back():location.href='../index.html'">Về bài học</button></p></div>`}
 
 
