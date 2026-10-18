@@ -1,404 +1,256 @@
-
 <!DOCTYPE html>
 <html lang="vi">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vật lý - HỌC ĐỂ LÀM GÌ</title>
 
-    <title>Vật lý - HỌC ĐỂ LÀM GÌ</title>
-
-    <link rel="stylesheet" href="style.css">
-<script src="/firebase-config.js"></script><script src="/auth.js"></script>
+  <!-- Sử dụng file CSS riêng cho Vật lý để không ảnh hưởng style.css chung -->
+  <link rel="stylesheet" href="physics.css">
+  <script src="/firebase-config.js"></script>
+  <script src="/auth.js"></script>
 </head>
 
-<body class="math-page">
+<body class="math-page physics-observatory">
 
-    <!-- =========================
-         BACKGROUND
-    ========================== -->
+  <!-- =========================
+       CINEMATIC PHYSICS BACKGROUND
+  ========================== -->
+  <div class="math-background" aria-hidden="true">
+    <!-- Ảnh nền Đài Thiên Văn Lượng Tử -->
+    <div class="observatory-bg" id="parallaxBg"></div>
 
-    <div class="math-background">
+    <!-- Vòng thiên văn xoay chậm phía sau mái vòm -->
+    <svg class="astrolabe-ring" viewBox="0 0 600 600">
+      <g fill="none" stroke="rgba(56, 189, 248, 0.28)" stroke-width="1.5">
+        <circle cx="300" cy="300" r="270" stroke-dasharray="14 8 4 8" />
+        <circle cx="300" cy="300" r="220" stroke="rgba(251, 191, 36, 0.25)" />
+        <ellipse cx="300" cy="300" rx="260" ry="95" transform="rotate(28 300 300)" />
+        <ellipse cx="300" cy="300" rx="260" ry="95" transform="rotate(-28 300 300)" />
+      </g>
+    </svg>
 
-        <div class="math-cloud math-cloud-1"></div>
-        <div class="math-cloud math-cloud-2"></div>
+    <!-- Luồng sáng & Canvas hạt lượng tử + tia điện Tesla -->
+    <div class="quantum-rays"></div>
+    <canvas id="physicsCanvas"></canvas>
 
-        <div class="math-stars">
-            <span>✦</span>
-            <span>✧</span>
-            <span>✦</span>
-            <span>✧</span>
-            <span>✦</span>
-            <span>✧</span>
-            <span>✦</span>
-            <span>✧</span>
-        </div>
-
+    <!-- 4 Khí cụ Vật lý 2.5D bay lơ lửng quanh sảnh (Tự động cắt từ hàng 4 của physics-icons.png) -->
+    <div class="floating-relics" id="parallaxRelics">
+      <div class="relic relic-gyro" data-prop="gyro"></div>
+      <div class="relic relic-prism" data-prop="prism"></div>
+      <div class="relic relic-magnet" data-prop="magnet"></div>
+      <div class="relic relic-gear" data-prop="gear"></div>
     </div>
 
+    <div class="vignette-overlay"></div>
+  </div>
 
-    <!-- =========================
-         TOP BAR
-    ========================== -->
+  <!-- =========================
+       TOP BAR
+  ========================== -->
+  <header class="math-header">
+    <button class="back-button" id="backButton" aria-label="Quay lại trang chủ">
+      ←
+    </button>
 
-    <header class="math-header">
+    <div class="math-title">
+      <div class="math-title-icon" data-icon="core">
+        <span>⚡</span>
+      </div>
+      <div>
+        <h1>VẬT LÝ</h1>
+        <p>Lực • Năng lượng • Chuyển động</p>
+      </div>
+    </div>
 
-        <button class="back-button" id="backButton">
-            ←
+    <div class="math-player">
+      <span class="math-player-icon">👨‍🎓</span>
+      <div>
+        <strong>Tên người chơi</strong>
+        <div class="math-xp">
+          <div class="math-xp-progress"></div>
+        </div>
+      </div>
+      <span class="math-level">Lv.1</span>
+    </div>
+  </header>
+
+  <!-- =========================
+       MAIN CONTENT
+  ========================== -->
+  <main class="math-main">
+
+    <!-- HERO BANNER: LÕI NĂNG LƯỢNG NGUYÊN TỬ -->
+    <section class="math-hero">
+      <div class="hero-core-wrapper">
+        <div class="orbit-ring ring-1"></div>
+        <div class="orbit-ring ring-2"></div>
+        <div class="hero-book" data-icon="core">
+          <span>⚡</span>
+        </div>
+      </div>
+
+      <div class="hero-content">
+        <span class="hero-label">✦ ĐÀI THIÊN VĂN & THỰC NGHIỆM LƯỢNG TỬ</span>
+        <h2>
+          Bạn muốn khám phá<br>
+          <span>Vật lý</span> từ đâu?
+        </h2>
+        <p>
+          Chọn cấp độ phòng thí nghiệm để giải mã từ cơ học cổ điển, điện từ trường đến cấu trúc vũ trụ và vật lý hiện đại.
+        </p>
+      </div>
+    </section>
+
+    <!-- CLASS SELECT (LỚP 6 -> LỚP 12) -->
+    <section class="class-section">
+      <div class="section-heading">
+        <div>
+          <span>BƯỚC 01 • CHỌN MÔ-ĐUN NĂNG LƯỢNG</span>
+          <h2>Chọn lớp học</h2>
+        </div>
+        <p>Chọn cấp độ phù hợp với hành trình của bạn</p>
+      </div>
+
+      <div class="class-grid">
+        <!-- LỚP 6 -->
+        <button class="class-card" data-grade="6" data-icon="g6">
+          <div class="card-glow"></div>
+          <div class="class-number">KHỐI 06</div>
+          <div class="class-icon"><span>🔬</span></div>
+          <h3>Lớp 6</h3>
+          <p>Đo lường, lực cơ bản và các tính chất của vật chất</p>
+          <span class="class-arrow">→</span>
         </button>
 
-        <div class="math-title">
+        <!-- LỚP 7 -->
+        <button class="class-card" data-grade="7" data-icon="g7">
+          <div class="card-glow"></div>
+          <div class="class-number">KHỐI 07</div>
+          <div class="class-icon"><span>🔊</span></div>
+          <h3>Lớp 7</h3>
+          <p>Sóng âm thanh, phản xạ ánh sáng và từ trường</p>
+          <span class="class-arrow">→</span>
+        </button>
 
-            <div class="math-title-icon">
-                ⚡
-            </div>
+        <!-- LỚP 8 -->
+        <button class="class-card" data-grade="8" data-icon="g8">
+          <div class="card-glow"></div>
+          <div class="class-number">KHỐI 08</div>
+          <div class="class-icon"><span>🔥</span></div>
+          <h3>Lớp 8</h3>
+          <p>Cơ học chất lưu, áp suất và nhiệt động lực học</p>
+          <span class="class-arrow">→</span>
+        </button>
 
-            <div>
-                <h1>VẬT LÝ</h1>
-                <p>Lực • Năng lượng • Chuyển động</p>
-            </div>
+        <!-- LỚP 9 -->
+        <button class="class-card" data-grade="9" data-icon="g9">
+          <div class="card-glow"></div>
+          <div class="class-number">KHỐI 09</div>
+          <div class="class-icon"><span>🔌</span></div>
+          <h3>Lớp 9</h3>
+          <p>Dòng điện, cảm ứng điện từ và thấu kính quang học</p>
+          <span class="class-arrow">→</span>
+        </button>
 
+        <!-- LỚP 10 -->
+        <button class="class-card" data-grade="10" data-icon="g10">
+          <div class="card-glow"></div>
+          <div class="class-number">KHỐI 10</div>
+          <div class="class-icon"><span>🚀</span></div>
+          <h3>Lớp 10</h3>
+          <p>Động học, ba định luật Newton, năng lượng và động lượng</p>
+          <span class="class-arrow">→</span>
+        </button>
+
+        <!-- LỚP 11 -->
+        <button class="class-card" data-grade="11" data-icon="g11">
+          <div class="card-glow"></div>
+          <div class="class-number">KHỐI 11</div>
+          <div class="class-icon"><span>🌊</span></div>
+          <h3>Lớp 11</h3>
+          <p>Dao động điều hòa, sóng cơ, sóng điện từ và điện trường</p>
+          <span class="class-arrow">→</span>
+        </button>
+
+        <!-- LỚP 12 -->
+        <button class="class-card class-card-special" data-grade="12" data-icon="g12">
+          <div class="card-glow"></div>
+          <div class="class-number">TRỌNG ĐIỂM 12</div>
+          <div class="class-icon"><span>🏆</span></div>
+          <h3>Lớp 12</h3>
+          <p>Vật lý nhiệt, từ trường, hạt nhân và chinh phục kỳ thi THPT</p>
+          <span class="class-arrow">→</span>
+        </button>
+      </div>
+    </section>
+
+    <!-- QUICK TOOLS -->
+    <section class="math-tools">
+      <button onclick="window.location.href='physics-lab.html'" class="math-tool" id="calculatorButton" data-icon="toolCalc">
+        <span class="tool-sprite">🧮</span>
+        <div>
+          <strong>Phòng Lab & Công cụ Vật lý</strong>
+          <small>Tra cứu công thức, hằng số & mô phỏng</small>
         </div>
+        <b>→</b>
+      </button>
 
-        <div class="math-player">
-
-            <span class="math-player-icon">
-                👨‍🎓
-            </span>
-
-            <div>
-
-                <strong>
-                    Tên người chơi
-                </strong>
-
-                <div class="math-xp">
-                    <div class="math-xp-progress"></div>
-                </div>
-
-            </div>
-
-            <span class="math-level">
-                Lv.1
-            </span>
-
+      <button class="math-tool" id="challengeButton" data-icon="toolChallenge">
+        <span class="tool-sprite">🎯</span>
+        <div>
+          <strong>Đấu trường Thử thách</strong>
+          <small>Phản xạ nhanh câu hỏi Vật lý thực tế</small>
         </div>
-
-    </header>
-
-
-    <!-- =========================
-         MAIN
-    ========================== -->
-
-    <main class="math-main">
-
-
-        <!-- =========================
-             HERO
-        ========================== -->
-
-        <section class="math-hero">
-
-            <div class="hero-book">
-                ⚡
-            </div>
-
-            <div>
-
-                <span class="hero-label">
-                    HÀNH TRÌNH KHÁM PHÁ
-                </span>
-
-                <h2>
-                    Bạn muốn khám phá<br>
-                    <span>Vật lý</span> từ đâu?
-                </h2>
-
-                <p>
-                    Chọn lớp học để bắt đầu hành trình
-                    khám phá những quy luật của thế giới.
-                </p>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-             CLASS SELECT
-        ========================== -->
-
-        <section class="class-section">
-
-            <div class="section-heading">
-
-                <div>
-                    <span>
-                        BƯỚC 01
-                    </span>
-
-                    <h2>
-                        Chọn lớp học
-                    </h2>
-                </div>
-
-                <p>
-                    Chọn cấp độ phù hợp với bạn
-                </p>
-
-            </div>
-
-
-            <div class="class-grid">
-
-                
-
-                <!-- LỚP 6 -->
-<button class="class-card" data-grade="6">
-    <div class="class-number">06</div>
-    <div class="class-icon">🔬</div>
-
-    <h3>Lớp 6</h3>
-
-    <p>
-        Đo lường và các tính chất của vật chất
-    </p>
-
-    <span class="class-arrow">→</span>
-</button>
-
-
-<!-- LỚP 7 -->
-<button class="class-card" data-grade="7">
-    <div class="class-number">07</div>
-    <div class="class-icon">🔊</div>
-
-    <h3>Lớp 7</h3>
-
-    <p>
-        Âm thanh và ánh sáng
-    </p>
-
-    <span class="class-arrow">→</span>
-</button>
-
-
-<!-- LỚP 8 -->
-<button class="class-card" data-grade="8">
-    <div class="class-number">08</div>
-    <div class="class-icon">🔥</div>
-
-    <h3>Lớp 8</h3>
-
-    <p>
-        Cơ học và nhiệt học
-    </p>
-
-    <span class="class-arrow">→</span>
-</button>
-
-
-<!-- LỚP 9 -->
-<button class="class-card" data-grade="9">
-    <div class="class-number">09</div>
-    <div class="class-icon">🔌</div>
-
-    <h3>Lớp 9</h3>
-
-    <p>
-        Điện học và quang học
-    </p>
-
-    <span class="class-arrow">→</span>
-</button>
-
-
-<!-- LỚP 10 -->
-<button class="class-card" data-grade="10">
-    <div class="class-number">10</div>
-    <div class="class-icon">🚀</div>
-
-    <h3>Lớp 10</h3>
-
-    <p>
-        Động học và động lực học
-    </p>
-
-    <span class="class-arrow">→</span>
-</button>
-
-
-<!-- LỚP 11 -->
-<button class="class-card" data-grade="11">
-    <div class="class-number">11</div>
-    <div class="class-icon">🌊</div>
-
-    <h3>Lớp 11</h3>
-
-    <p>
-        Dao động, sóng và điện học
-    </p>
-
-    <span class="class-arrow">→</span>
-</button>
-
-
-<!-- LỚP 12 -->
-<button class="class-card class-card-special" data-grade="12">
-    <div class="class-number">12</div>
-    <div class="class-icon">🏆</div>
-
-    <h3>Lớp 12</h3>
-
-    <p>
-        Vật lý hiện đại và chương trình THPT
-    </p>
-
-    <span class="class-arrow">→</span>
-</button>
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-             QUICK TOOLS
-        ========================== -->
-
-        <section class="math-tools">
-
-            <button 
-            onclick="window.location.href='physics-lab.html'"
-            class="math-tool" id="calculatorButton">
-
-                <span>🧮</span>
-
-                <div>
-                    <strong>
-                        Công cụ Vật lý
-                    </strong>
-
-                    <small>
-                        Công thức & tính toán
-                    </small>
-                </div>
-
-                <b>→</b>
-
-            </button>
-
-
-            <button class="math-tool" id="challengeButton">
-
-                <span>🎯</span>
-
-                <div>
-                    <strong>
-                        Thử thách nhanh
-                    </strong>
-
-                    <small>
-                        Kiểm tra kiến thức Vật lý
-                    </small>
-                </div>
-
-                <b>→</b>
-
-            </button>
-
-
-            <button class="math-tool" id="progressButton">
-
-                <span>📊</span>
-
-                <div>
-                    <strong>
-                        Tiến trình
-                    </strong>
-
-                    <small>
-                        Xem quá trình học tập
-                    </small>
-                </div>
-
-                <b>→</b>
-
-            </button>
-
-        </section>
-
-    </main>
-
-
-    <!-- =========================
-         AI GUIDE
-    ========================== -->
-
-    <div class="math-ai">
-
-        <div class="math-ai-text">
-
-            <strong>
-                Trợ lý học tập
-            </strong>
-
-            <p>
-                Hãy đặt câu hỏi và khám phá<br>
-                những quy luật của tự nhiên!
-            </p>
-
+        <b>→</b>
+      </button>
+
+      <button class="math-tool" id="progressButton" data-icon="toolProgress">
+        <span class="tool-sprite">📊</span>
+        <div>
+          <strong>Hồ sơ Năng lượng</strong>
+          <small>Phân tích tiến trình & lịch sử thực nghiệm</small>
         </div>
+        <b>→</b>
+      </button>
+    </section>
 
-        <div class="math-ai-icon">
-            🤖
-        </div>
+  </main>
 
+  <!-- =========================
+       AI GUIDE
+  ========================== -->
+  <div class="math-ai" id="aiAssistant">
+    <div class="math-ai-text">
+      <strong>⚡ Trợ lý Lượng tử AI</strong>
+      <p>
+        Hãy chọn một khối lớp hoặc đặt câu hỏi<br>
+        để giải mã quy luật vũ trụ!
+      </p>
     </div>
-
-
-    <!-- =========================
-         POPUP
-    ========================== -->
-
-    <div class="math-popup-overlay" id="mathPopup">
-
-        <div class="math-popup">
-
-            <button
-                class="math-popup-close"
-                id="mathPopupClose">
-                ×
-            </button>
-
-            <div
-                class="math-popup-icon"
-                id="mathPopupIcon">
-                ⚡
-            </div>
-
-            <h2 id="mathPopupTitle">
-                Sẵn sàng chưa?
-            </h2>
-
-            <p id="mathPopupText">
-                Hãy chọn một lớp để bắt đầu.
-            </p>
-
-            <button
-                class="math-popup-button"
-                id="mathPopupButton">
-                Bắt đầu
-            </button>
-
-        </div>
-
+    <div class="math-ai-icon" data-icon="aiBot">
+      <span>🤖</span>
     </div>
+  </div>
 
+  <!-- =========================
+       POPUP MODAL
+  ========================== -->
+  <div class="math-popup-overlay" id="mathPopup" aria-hidden="true">
+    <div class="math-popup">
+      <button class="math-popup-close" id="mathPopupClose" aria-label="Đóng">×</button>
+      <div class="popup-aura"></div>
+      <div class="math-popup-icon" id="mathPopupIcon">
+        <span>⚡</span>
+      </div>
+      <h2 id="mathPopupTitle">Sẵn sàng chưa?</h2>
+      <p id="mathPopupText">Hãy chọn một lớp để bắt đầu.</p>
+      <button class="math-popup-button" id="mathPopupButton">Bắt đầu</button>
+    </div>
+  </div>
 
-    <script src="physics.js"></script>
-
+  <script src="physics.js"></script>
 </body>
 
 </html>
-
