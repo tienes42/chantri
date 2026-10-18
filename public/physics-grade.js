@@ -3,7 +3,7 @@
    Trang chọn chủ đề Vật lý lớp 6 → 12
 ========================================================= */
 
-const API_BASE = "http://127.0.0.1:8000/api";
+const API_BASE = (["127.0.0.1","localhost"].includes(location.hostname)&&location.port!=="8000"?"http://127.0.0.1:8000/api":"/api");
 
 const params = new URLSearchParams(window.location.search);
 const grade = params.get("grade") || "10";

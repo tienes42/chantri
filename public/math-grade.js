@@ -17,7 +17,7 @@ const grade =
     urlParams.get("grade") || "10";
 
 const API_BASE =
-    "http://127.0.0.1:8000/api";
+    (["127.0.0.1","localhost"].includes(location.hostname)&&location.port!=="8000"?"http://127.0.0.1:8000/api":"/api");
 
 
 /* =========================================================

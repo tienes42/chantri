@@ -34,7 +34,7 @@ button{font:inherit;cursor:pointer;border:0;color:inherit}
 <div id="pop"></div></div>
 <script>
 /* GAME: GƯƠNG PHẲNG (phần dùng chung lấy từ simulation.html) */
-const API=window.HOC_API_BASE||'http://127.0.0.1:8000/api',Q=new URLSearchParams(location.search),LESSON_ID=Q.get('lesson_id'),USER_ID=Number(localStorage.getItem('user_id'))||1;
+const API=window.HOC_API_BASE||(["127.0.0.1","localhost"].includes(location.hostname)&&location.port!=="8000"?"http://127.0.0.1:8000/api":"/api"),Q=new URLSearchParams(location.search),LESSON_ID=Q.get('lesson_id'),USER_ID=Number(localStorage.getItem('user_id'))||1;
 const $=i=>document.getElementById(i),fmt=(n,d=1)=>Number(n).toLocaleString('vi-VN',{maximumFractionDigits:d});
 
 const cv=$('cv'),c=cv.getContext('2d'),stage=$('stage');

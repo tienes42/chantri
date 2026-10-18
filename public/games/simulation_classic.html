@@ -48,7 +48,7 @@ input[type=range]{width:100%;accent-color:#ffd166}
      thành topic của bài (vd 'ap-suat'), sửa story / params / rounds / calc / draw / reveal.
      Không cần sửa engine bên dưới.
 ========================================================= */
-const API = window.HOC_API_BASE || 'http://127.0.0.1:8000/api';
+const API = window.HOC_API_BASE || (["127.0.0.1","localhost"].includes(location.hostname)&&location.port!=="8000"?"http://127.0.0.1:8000/api":"/api");
 const Q = new URLSearchParams(location.search);
 const LESSON_ID = Q.get('lesson_id');
 const USER_ID = Number(localStorage.getItem('user_id')) || 1;
