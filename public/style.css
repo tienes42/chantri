@@ -2581,3 +2581,59 @@ body.math-page .topic-arrow {
     }
 
 }
+
+.geogebra-button {
+    display: flex;
+    align-items: center;
+    gap: 14px;
+
+    width: 100%;
+    min-width: 0;
+    box-sizing: border-box;
+
+    padding: 16px 20px;
+    border: 1px solid rgba(255, 255, 255, 0.15);
+    border-radius: 15px;
+
+    background: #1c3b65;
+    color: #ffffff;
+    text-decoration: none;
+
+    transition: background 0.2s ease,
+                transform 0.2s ease;
+}
+
+.geogebra-button:hover {
+    background: #274b7a;
+    color: #ffffff;
+    transform: translateY(-2px);
+}
+
+.geogebra-button .tool-icon {
+    flex-shrink: 0;
+    font-size: 24px;
+}
+
+.geogebra-button .tool-content {
+    display: flex;
+    flex: 1;
+    min-width: 0;
+    flex-direction: column;
+    gap: 4px;
+}
+
+.geogebra-button .tool-content strong {
+    color: #ffffff;
+    font-size: 14px;
+}
+
+.geogebra-button .tool-content small {
+    color: #c1d0e4;
+    font-size: 10px;
+}
+
+.geogebra-button .tool-arrow {
+    flex-shrink: 0;
+    color: #ffffff;
+    font-size: 18px;
+}
