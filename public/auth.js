@@ -55,7 +55,7 @@
     return { xp: Math.max(a.xp, b.xp), hints: Math.max(a.hints, b.hints), completed: Object.keys(set), best: best };
   }
   function level(xp) { return Math.floor(xp / 100) + 1; }
-  function displayName(u) { return (u && (u.displayName || (u.email ? u.email.split("@")[0] : ""))) || "Người chơi"; }
+  function displayName(u) { if (u && u.isAnonymous) return u.displayName || ("Khách " + u.uid.slice(0, 4)); return (u && (u.displayName || (u.email ? u.email.split("@")[0] : ""))) || "Người chơi"; }
 
   /* ---------- sự kiện ---------- */
   function emit() {
@@ -168,7 +168,7 @@
   /* ---------- giao diện ---------- */
   var CSS = "\
 .hdlg-ov{position:fixed;inset:0;z-index:99999;display:flex;align-items:center;justify-content:center;padding:16px;background:rgba(5,12,30,.72);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);font-family:'Segoe UI',Roboto,Arial,sans-serif}\
-.hdlg-ov[hidden]{display:none}\
+.hdlg-ov[hidden],.hdlg-box [hidden]{display:none!important}\
 .hdlg-box{width:100%;max-width:400px;max-height:92vh;overflow:auto;background:linear-gradient(160deg,#16325f,#0c1a38);color:#eaf2ff;border:1px solid #4a74c9;border-radius:18px;padding:22px;box-shadow:0 20px 60px rgba(0,0,0,.55);position:relative}\
 .hdlg-box h2{margin:0 0 4px;font-size:22px;text-align:center}\
 .hdlg-sub{margin:0 0 14px;text-align:center;color:#a9bde6;font-size:13px}\
@@ -240,13 +240,18 @@
     "auth/popup-closed-by-user": "Cửa sổ đăng nhập Google đã bị đóng trước khi hoàn tất.",
     "auth/cancelled-popup-request": "Yêu cầu đăng nhập trước đó chưa hoàn tất, vui lòng thử lại.",
     "auth/operation-not-allowed": "Phương thức đăng nhập này chưa được bật trong Firebase.",
+    "auth/admin-restricted-operation": "Chế độ khách (Anonymous) chưa được bật trong Firebase → Authentication → Sign-in method.",
+    "auth/credential-already-in-use": "Tài khoản này đã tồn tại. Hãy đăng nhập bằng nó (sao của khách sẽ không được gộp).",
+    "auth/provider-already-linked": "Tài khoản đã được liên kết rồi.",
     "auth/network-request-failed": "Lỗi kết nối mạng. Vui lòng kiểm tra Internet và thử lại.",
     "auth/internal-error": "Lỗi nội bộ từ Firebase — thường do tên miền chưa được cấp phép hoặc cấu hình API Key sai."
   };
   function errText(code) { if (code && !ERR[code]) console.warn("[Firebase Auth]", code); return ERR[code] || "Đã có lỗi xảy ra (mã: " + (code || "không rõ") + "). Vui lòng thử lại."; }
 
-  function showLogin() {
-    var reg = false;
+  function showLogin(upgrade) {
+    upgrade = upgrade === true;
+    var reg = upgrade;
+    var guest = !!(user && user.isAnonymous);
     var ov = openModal(
       '<h2 id="hdT">🔐 Đăng nhập</h2><p class="hdlg-sub" id="hdS">Đăng nhập để lưu sao và tiến trình học của bạn</p>' +
       '<div class="hdlg-err" id="hdE" hidden></div>' +
@@ -255,11 +260,23 @@
       '<input id="hdP" type="password" placeholder="Mật khẩu (ít nhất 6 ký tự)" required minlength="6" autocomplete="current-password">' +
       '<button class="hdlg-btn" id="hdB" type="submit">Đăng nhập</button></form>' +
       '<p class="hdlg-or">— hoặc —</p><button class="hdlg-btn g" id="hdG" type="button">🔵 Đăng nhập bằng Google</button>' +
-      '<p class="hdlg-tg"><span id="hdL">Chưa có tài khoản?</span><a id="hdA">Đăng ký</a></p>', false);
+      '<button class="hdlg-btn g" id="hdK" type="button" style="background:#2c5aa8;color:#fff">👤 Chơi với tư cách khách</button>' +
+      '<p class="hdlg-tg"><span id="hdL">Chưa có tài khoản?</span><a id="hdA">Đăng ký</a></p>', upgrade);
     var $ = function (id) { return ov.querySelector("#" + id); };
     function err(m) { $("hdE").textContent = m || ""; $("hdE").hidden = !m; }
-    function busy(b) { $("hdB").disabled = b; $("hdG").disabled = b; }
+    function busy(b) { $("hdB").disabled = b; $("hdG").disabled = b; $("hdK").disabled = b; }
+    function linked() { closeModal(); saveAccountLocal(user); push().then(emit); emit(); toast("✅ Đã nâng cấp tài khoản, sao được giữ lại"); }
+    if (upgrade) {
+      $("hdK").hidden = true; $("hdL").parentNode.hidden = false;
+      $("hdT").textContent = "⬆ Nâng cấp tài khoản"; $("hdS").textContent = "Đăng ký để giữ sao của khách và chơi trên nhiều thiết bị";
+      $("hdB").textContent = "Tạo tài khoản"; $("hdN").hidden = false; $("hdL").parentNode.hidden = true;
+    }
+    $("hdK").onclick = function () {
+      err(""); busy(true);
+      auth.signInAnonymously().catch(function (x) { err(errText(x.code)); busy(false); });
+    };
     $("hdA").onclick = function () {
+      if (upgrade) return;
       reg = !reg; err("");
       $("hdT").textContent = reg ? "📝 Đăng ký" : "🔐 Đăng nhập";
       $("hdB").textContent = reg ? "Tạo tài khoản" : "Đăng nhập";
@@ -271,18 +288,26 @@
     $("hdF").onsubmit = function (e) {
       e.preventDefault(); err(""); busy(true);
       var email = $("hdM").value.trim(), pw = $("hdP").value, nm = $("hdN").value.trim();
-      var p = reg ? auth.createUserWithEmailAndPassword(email, pw).then(function (c) { return nm ? c.user.updateProfile({ displayName: nm }) : null; })
-                  : auth.signInWithEmailAndPassword(email, pw);
+      var p;
+      if (upgrade && guest) p = user.linkWithCredential(firebase.auth.EmailAuthProvider.credential(email, pw))
+        .then(function () { return nm ? user.updateProfile({ displayName: nm }) : null; }).then(linked);
+      else p = reg ? auth.createUserWithEmailAndPassword(email, pw).then(function (c) { return nm ? c.user.updateProfile({ displayName: nm }) : null; })
+                   : auth.signInWithEmailAndPassword(email, pw);
       p.catch(function (x) { err(errText(x.code)); }).then(function () { busy(false); });
     };
     $("hdG").onclick = function () {
       err(""); busy(true);
-      auth.signInWithPopup(new firebase.auth.GoogleAuthProvider())
-        .catch(function (x) { err(errText(x.code)); }).then(function () { busy(false); });
+      var gp = new firebase.auth.GoogleAuthProvider(), p;
+      if (upgrade && guest) p = user.linkWithPopup(gp).then(linked).catch(function (x) {
+        if (x.code === "auth/credential-already-in-use" && x.credential) return auth.signInWithCredential(x.credential);
+        throw x; });
+      else p = auth.signInWithPopup(gp);
+      p.catch(function (x) { err(errText(x.code)); }).then(function () { busy(false); });
     };
   }
 
   function logout() {
+    if (user && user.isAnonymous && !confirm("Tài khoản khách sẽ MẤT toàn bộ sao nếu thoát. Bạn vẫn muốn thoát?")) return Promise.resolve();
     return push().then(function () { clearAccountLocal(); return auth.signOut(); }).then(function () { location.reload(); });
   }
 
@@ -291,9 +316,12 @@
     var x = num(lsGet(K.xp)), name = displayName(user);
     var ov = openModal('<div class="hdlg-big">' + avatarHTML(name, user.photoURL) + "<h2>" + esc(name) + '</h2><div class="hdlg-sub" style="margin:0">' + esc(user.email || "") + "</div></div>" +
       '<div class="hdlg-stats"><div><b>⭐ ' + x + "</b>Sao</div><div><b>Lv." + level(x) + "</b>Cấp độ</div><div><b>🎫 " + num(lsGet(K.hints)) + "</b>Gợi ý</div></div>" +
-      '<button class="hdlg-btn" id="hdR">🏆 Xem bảng xếp hạng</button><button class="hdlg-btn o" id="hdO">Đăng xuất</button>', true);
+      '<button class="hdlg-btn" id="hdR">🏆 Xem bảng xếp hạng</button>' +
+      (user.isAnonymous ? '<button class="hdlg-btn g" id="hdU">⬆ Đăng ký để giữ sao</button><p class="hdlg-sub" style="margin-top:8px">Bạn đang chơi với tư cách khách. Xóa dữ liệu trình duyệt hoặc thoát sẽ mất sao.</p>' : "") +
+      '<button class="hdlg-btn o" id="hdO">' + (user.isAnonymous ? "Thoát chế độ khách" : "Đăng xuất") + "</button>", true);
+    if (user.isAnonymous) ov.querySelector("#hdU").onclick = function () { showLogin(true); };
     ov.querySelector("#hdR").onclick = showLeaderboard;
-    ov.querySelector("#hdO").onclick = function () { this.disabled = true; this.textContent = "Đang lưu & đăng xuất…"; logout(); };
+    ov.querySelector("#hdO").onclick = function () { var b = this, t = b.textContent; b.disabled = true; b.textContent = "Đang lưu & đăng xuất…"; logout().then(function () { b.disabled = false; b.textContent = t; }); };
   }
 
   function showLeaderboard() {
