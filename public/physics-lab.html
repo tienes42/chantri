@@ -3342,16 +3342,6 @@
             guideModal.classList.add('hidden');
             guideModal.classList.remove('flex');
         });
-
-        document.getElementById('backHomeBtn').addEventListener('click', () => {
-            playSynthSound('click');
-            if (window.location.hostname === '127.0.0.1' || window.location.hostname === 'localhost') {
-                window.location.href = 'physics' + '.html';
-            } else {
-                showToast('⚡ Quay lại trang Vật lý', 'Trên máy của bạn (127.0.0.1), nút này sẽ chuyển thẳng về trang physics.html.', 'info');
-            }
-        });
-
         /* =========================================================
            11. MAIN ANIMATION LOOP
         ========================================================= */
