@@ -10,35 +10,54 @@
   <script src="/auth.js"></script>
 </head>
 
-<body data-theme="light">
+<body data-theme="light" data-subject="math">
 
-  <!-- Thanh tiến độ đọc bài trên cùng -->
+  <!-- Thanh tiến độ đọc bài nổi trên cùng -->
   <div class="reading-progress-bar" aria-hidden="true">
     <div class="reading-progress-fill" id="readingProgressFill"></div>
   </div>
 
   <!-- =========================
-       HEADER
+       LỚP NỀN 2.5D DỊU MẮT Ở RÌA MÀN HÌNH (KHÔNG LÀM RỐI CHỮ)
+  ========================== -->
+  <div class="lesson-backdrop-25d" aria-hidden="true">
+    <div class="backdrop-art" id="parallaxBg"></div>
+    <div class="backdrop-veil"></div>
+
+    <!-- 4 Khí cụ 2.5D trôi nhẹ ở hai rìa ngoài màn hình -->
+    <div class="margin-relics" id="parallaxRelics">
+      <div class="m-relic r1" data-prop="p1"></div>
+      <div class="m-relic r2" data-prop="p2"></div>
+      <div class="m-relic r3" data-prop="p3"></div>
+      <div class="m-relic r4" data-prop="p4"></div>
+    </div>
+  </div>
+
+  <!-- =========================
+       HEADER 2.5D
   ========================== -->
   <header class="top-navbar">
     <div class="header-inner">
       <div class="header-left">
-        <button id="backButton" type="button" aria-label="Quay lại danh sách bài học">
+        <button id="backButton" type="button" class="btn-25d" aria-label="Quay lại danh sách bài học">
           ← Quay lại
         </button>
         <div class="brand-group">
-          <span class="brand">HỌC ĐỂ LÀM GÌ</span>
-          <span class="subject-pill" id="subjectPill">Bài học</span>
+          <div class="brand-emblem" data-sprite="core"><span>📚</span></div>
+          <div>
+            <span class="brand">HỌC ĐỂ LÀM GÌ</span>
+            <span class="subject-pill" id="subjectPill">Bài học</span>
+          </div>
         </div>
       </div>
 
-      <!-- Công cụ hỗ trợ đọc bài dài: Đổi màu nền & cỡ chữ -->
+      <!-- Bộ công cụ chỉnh cỡ chữ & 3 chế độ màu giấy đọc -->
       <div class="reader-controls" aria-label="Tùy chỉnh giao diện đọc">
-        <button type="button" class="reader-btn" id="fontDecreaseBtn" title="Giảm cỡ chữ">A−</button>
-        <button type="button" class="reader-btn" id="fontIncreaseBtn" title="Tăng cỡ chữ">A+</button>
+        <button type="button" class="reader-btn btn-25d" id="fontDecreaseBtn" title="Giảm cỡ chữ">A−</button>
+        <button type="button" class="reader-btn btn-25d" id="fontIncreaseBtn" title="Tăng cỡ chữ">A+</button>
         <div class="theme-switcher" role="group" aria-label="Chế độ màu nền">
-          <button type="button" class="theme-btn active" data-set-theme="light" title="Nền sáng tiêu chuẩn">☀ Sáng</button>
-          <button type="button" class="theme-btn" data-set-theme="sepia" title="Nền vàng ấm dịu mắt">📖 Ấm</button>
+          <button type="button" class="theme-btn active" data-set-theme="light" title="Nền giấy sáng">☀ Sáng</button>
+          <button type="button" class="theme-btn" data-set-theme="sepia" title="Nền giấy vàng ấm dịu mắt">📖 Ấm</button>
           <button type="button" class="theme-btn" data-set-theme="dark" title="Nền tối ban đêm">🌙 Tối</button>
         </div>
       </div>
@@ -50,21 +69,21 @@
   ========================== -->
   <main class="lesson-workspace">
 
-    <!-- TRẠNG THÁI ĐANG TẢI -->
-    <div id="loading" class="state-card">
+    <!-- LOADING -->
+    <div id="loading" class="state-card card-25d">
       <div class="spinner"></div>
-      <p>Đang tải nội dung bài học...</p>
+      <p>Đang mở sách kiến thức...</p>
     </div>
 
-    <!-- TRẠNG THÁI LỖI -->
+    <!-- ERROR -->
     <div id="error" role="alert"></div>
 
-    <!-- NỘI DUNG BÀI HỌC (Chia 2 cột: Mục lục tự động bên trái + Nội dung đọc bên phải) -->
+    <!-- CONTENT (2 CỘT: MỤC LỤC 2.5D + TRANG SÁCH 2.5D) -->
     <div id="lessonContent" class="lesson-layout hidden">
 
-      <!-- CỘT TRÁI: MỤC LỤC TỰ ĐỘNG (Tự sinh theo dữ liệu Backend) -->
+      <!-- CỘT TRÁI: MỤC LỤC TỰ ĐỘNG -->
       <aside class="lesson-sidebar" aria-label="Mục lục bài học">
-        <div class="toc-card">
+        <div class="toc-card card-25d">
           <div class="toc-header">
             <span>📑 MỤC LỤC BÀI HỌC</span>
             <strong id="readingPercentText">0%</strong>
@@ -76,18 +95,27 @@
       <!-- CỘT PHẢI: NỘI DUNG BÀI HỌC CHÍNH -->
       <article class="lesson-article" id="lessonArticle">
 
-        <!-- TIÊU ĐỀ BÀI HỌC -->
-        <section class="lesson-header">
-          <div class="lesson-meta-top">
-            <div id="lessonIcon" class="lesson-icon">📚</div>
-            <div id="lessonGrade" class="lesson-grade">Lớp</div>
+        <!-- BANNER MỞ ĐẦU BÀI HỌC 2.5D -->
+        <section class="lesson-header card-25d">
+          <div class="hero-text-col">
+            <div class="lesson-meta-top">
+              <div id="lessonIcon" class="lesson-icon">📚</div>
+              <div id="lessonGrade" class="lesson-grade">Lớp</div>
+            </div>
+            <h1 id="lessonTitle">Tên bài học</h1>
+            <p id="lessonDescription">Mô tả bài học</p>
           </div>
-          <h1 id="lessonTitle">Tên bài học</h1>
-          <p id="lessonDescription">Mô tả bài học</p>
+
+          <!-- Quả cầu biểu tượng 2.5D góc phải Banner -->
+          <div class="hero-orb-col" aria-hidden="true">
+            <div class="orb-ring ring-a"></div>
+            <div class="orb-ring ring-b"></div>
+            <div class="hero-orb-25d" data-sprite="core"></div>
+          </div>
         </section>
 
         <!-- 1. ĐỊNH NGHĨA -->
-        <section class="lesson-section" id="definitionSection" data-toc="Định nghĩa & Khái niệm">
+        <section class="lesson-section card-25d" id="definitionSection" data-toc="Định nghĩa & Khái niệm">
           <div class="section-head">
             <span class="section-badge">01</span>
             <h2 class="section-title">📖 Định nghĩa / Khái niệm</h2>
@@ -96,7 +124,7 @@
         </section>
 
         <!-- 2. BỐI CẢNH ĐỜI SỐNG -->
-        <section class="lesson-section" id="contextSection" data-toc="Bối cảnh thực tế">
+        <section class="lesson-section card-25d" id="contextSection" data-toc="Bối cảnh thực tế">
           <div class="section-head">
             <span class="section-badge">02</span>
             <h2 class="section-title">🌍 Kiến thức trong đời sống</h2>
@@ -108,7 +136,7 @@
         </section>
 
         <!-- 3. KIẾN THỨC CỐT LÕI -->
-        <section class="lesson-section" id="theorySection" data-toc="Kiến thức cốt lõi">
+        <section class="lesson-section card-25d" id="theorySection" data-toc="Kiến thức cốt lõi">
           <div class="section-head">
             <span class="section-badge">03</span>
             <h2 class="section-title">🧠 Kiến thức cốt lõi</h2>
@@ -116,8 +144,8 @@
           <div id="theory" class="section-content theory-box rich-content"></div>
         </section>
 
-        <!-- 4. KHÁI NIỆM MỞ RỘNG (Tương thích Math/Physics cũ) -->
-        <section class="lesson-section" id="conceptSection" data-toc="Phân tích khái niệm">
+        <!-- 4. KHÁI NIỆM (Tương thích Math/Physics cũ) -->
+        <section class="lesson-section card-25d" id="conceptSection" data-toc="Phân tích khái niệm">
           <div class="section-head">
             <span class="section-badge">04</span>
             <h2 class="section-title">💭 Khái niệm & Bản chất</h2>
@@ -126,7 +154,7 @@
         </section>
 
         <!-- 5. CÔNG THỨC -->
-        <section class="lesson-section" id="formulaSection" data-toc="Công thức cần nhớ">
+        <section class="lesson-section card-25d" id="formulaSection" data-toc="Công thức cần nhớ">
           <div class="section-head">
             <span class="section-badge">05</span>
             <h2 class="section-title">📐 Công thức trọng tâm</h2>
@@ -135,7 +163,7 @@
         </section>
 
         <!-- 6. VÍ DỤ MINH HỌA -->
-        <section class="lesson-section" id="exampleSection" data-toc="Ví dụ minh họa">
+        <section class="lesson-section card-25d" id="exampleSection" data-toc="Ví dụ minh họa">
           <div class="section-head">
             <span class="section-badge">06</span>
             <h2 class="section-title">📝 Ví dụ minh họa</h2>
@@ -147,7 +175,7 @@
           </div>
 
           <div class="solution-wrapper">
-            <button type="button" class="toggle-solution-btn" id="toggleExampleAnswerBtn" aria-expanded="true">
+            <button type="button" class="toggle-solution-btn btn-25d" id="toggleExampleAnswerBtn" aria-expanded="true">
               💡 Ẩn / Hiện lời giải chi tiết
             </button>
             <div class="answer-box" id="exampleAnswerBox">
@@ -158,7 +186,7 @@
         </section>
 
         <!-- 7. CÂU HỎI KIỂM TRA NHANH -->
-        <section class="lesson-section" id="questionSection" data-toc="Kiểm tra nhanh">
+        <section class="lesson-section card-25d" id="questionSection" data-toc="Kiểm tra nhanh">
           <div class="section-head">
             <span class="section-badge">07</span>
             <h2 class="section-title">❓ Kiểm tra nhanh</h2>
@@ -173,7 +201,7 @@
         </section>
 
         <!-- 8. Ý NGHĨA -->
-        <section class="lesson-section" id="meaningSection" data-toc="Ý nghĩa cốt lõi">
+        <section class="lesson-section card-25d" id="meaningSection" data-toc="Ý nghĩa cốt lõi">
           <div class="section-head">
             <span class="section-badge">08</span>
             <h2 class="section-title">💡 Ý nghĩa</h2>
@@ -182,7 +210,7 @@
         </section>
 
         <!-- 9. ỨNG DỤNG THỰC TẾ -->
-        <section class="lesson-section" id="applicationSection" data-toc="Ứng dụng thực tế">
+        <section class="lesson-section card-25d" id="applicationSection" data-toc="Ứng dụng thực tế">
           <div class="section-head">
             <span class="section-badge">09</span>
             <h2 class="section-title">🔧 Ứng dụng thực tế</h2>
@@ -191,7 +219,7 @@
         </section>
 
         <!-- 10. ĐỜI SỐNG -->
-        <section class="lesson-section" id="realLifeSection" data-toc="Liên hệ đời sống">
+        <section class="lesson-section card-25d" id="realLifeSection" data-toc="Liên hệ đời sống">
           <div class="section-head">
             <span class="section-badge">10</span>
             <h2 class="section-title">🏠 Kiến thức này giúp gì trong đời sống?</h2>
@@ -200,7 +228,7 @@
         </section>
 
         <!-- 11. THỬ THÁCH THỰC TẾ -->
-        <section class="lesson-section" id="challengeSection" data-toc="Thử thách vận dụng">
+        <section class="lesson-section card-25d" id="challengeSection" data-toc="Thử thách vận dụng">
           <div class="section-head">
             <span class="section-badge">11</span>
             <h2 class="section-title">🎯 Thử thách thực tế</h2>
@@ -212,7 +240,7 @@
           </div>
 
           <div class="solution-wrapper" id="challengeSolutionWrapper">
-            <button type="button" class="toggle-solution-btn" id="toggleChallengeAnswerBtn" aria-expanded="false">
+            <button type="button" class="toggle-solution-btn btn-25d" id="toggleChallengeAnswerBtn" aria-expanded="false">
               🔍 Xem gợi ý / Đáp án thử thách
             </button>
             <div class="challenge-answer-box hidden" id="challengeAnswerBox">
@@ -222,22 +250,23 @@
           </div>
         </section>
 
-        <!-- VÙNG TỰ ĐỘNG CHÈN THÊM MỤC MỚI NẾU SAU NÀY BACKEND BỔ SUNG -->
+        <!-- VÙNG TỰ ĐỘNG CHÈN THÊM MỤC MỚI KHI BACKEND MỞ RỘNG -->
         <div id="extraSectionsContainer"></div>
 
-        <!-- 12. GAME / TRẢI NGHIỆM THỰC TẾ -->
-        <section class="game-section" id="gameSection" data-toc="Trải nghiệm tương tác">
+        <!-- 12. GAME / TRẢI NGHIỆM THỰC TẾ 2.5D -->
+        <section class="game-section card-25d-dark" id="gameSection" data-toc="Trải nghiệm tương tác">
           <div class="game-info">
-            <span class="game-badge">THỰC HÀNH TƯƠNG TÁC</span>
+            <span class="game-badge">✦ THỰC HÀNH TƯƠNG TÁC 2.5D</span>
             <h2 class="section-title">🎮 Trải nghiệm thực tế</h2>
             <p id="gameDescription"></p>
-            <button id="gameButton" type="button">
+            <button id="gameButton" type="button" class="game-btn-25d">
               🚀 Bắt đầu trải nghiệm
             </button>
             <p id="noGame" class="hidden">
               Bài học này chưa có trò chơi mô phỏng. Bạn có thể ôn lại các ví dụ và câu hỏi phía trên.
             </p>
           </div>
+          <div class="game-trophy-25d" data-sprite="trophy" aria-hidden="true"></div>
         </section>
 
       </article>

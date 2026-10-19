@@ -1,6 +1,6 @@
 /* =========================================================
-   LESSON.JS — HỆ THỐNG BÀI HỌC ĐỌC HIỂU & MỞ RỘNG LINH HOẠT
-   Dùng chung cho: Math, Physics, Chemistry và tất cả các môn
+   LESSON.JS — SÁCH HỌC VIỆN NỔI 2.5D & ĐỌC HIỂU CHUYÊN SÂU
+   Dùng chung cho: Math, Physics, Chemistry và các môn khác
    API: GET /api/content/lessons/{id}
 ========================================================= */
 
@@ -55,7 +55,6 @@ const toggleChallengeAnswerBtn = document.getElementById("toggleChallengeAnswerB
 
 const extraSectionsContainer = document.getElementById("extraSectionsContainer");
 
-const gameSection = document.getElementById("gameSection");
 const gameDescription = document.getElementById("gameDescription");
 const gameButton = document.getElementById("gameButton");
 const noGame = document.getElementById("noGame");
@@ -64,9 +63,6 @@ const tocList = document.getElementById("tocList");
 const readingProgressFill = document.getElementById("readingProgressFill");
 const readingPercentText = document.getElementById("readingPercentText");
 
-/* =========================================================
-   SECTIONS
-========================================================= */
 const definitionSection = document.getElementById("definitionSection");
 const contextSection = document.getElementById("contextSection");
 const theorySection = document.getElementById("theorySection");
@@ -92,11 +88,131 @@ const subjectNames = {
   geography: "Địa lý"
 };
 
-// Gán màu nhấn nhẹ theo môn học
 document.body.setAttribute("data-subject", subject);
 if (subjectPill) {
   subjectPill.textContent = subjectNames[subject] || "Bài học";
 }
+
+/* =========================================================
+   TỰ ĐỘNG CẮT & TÁCH NỀN ICON 2.5D THEO MÔN HỌC
+========================================================= */
+function loadImg(src) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.onload = () => resolve(img);
+    img.onerror = reject;
+    img.src = src;
+  });
+}
+
+async function initLesson25DSprites() {
+  const sheetMap = {
+    math: "assets/math-icons.png",
+    physics: "assets/physics-icons.png",
+    chemistry: "assets/chemistry-icons.png"
+  };
+  const sheetUrl = sheetMap[subject] || "assets/math-icons.png";
+
+  try {
+    const img = await loadImg(sheetUrl);
+    const cellW = img.naturalWidth / 4;
+    const cellH = img.naturalHeight / 4;
+    const sprites = [];
+
+    for (let row = 0; row < 4; row++) {
+      for (let col = 0; col < 4; col++) {
+        const padX = cellW * 0.04;
+        const padY = cellH * 0.04;
+        const size = 220;
+        const c = document.createElement("canvas");
+        c.width = size;
+        c.height = size;
+        const ctx = c.getContext("2d");
+        ctx.drawImage(
+          img,
+          col * cellW + padX,
+          row * cellH + padY,
+          cellW - padX * 2,
+          cellH - padY * 2,
+          0,
+          0,
+          size,
+          size
+        );
+
+        const imgData = ctx.getImageData(0, 0, size, size);
+        const d = imgData.data;
+        const visited = new Uint8Array(size * size);
+        const isBg = (idx) => {
+          const r = d[idx], g = d[idx + 1], b = d[idx + 2];
+          const max = Math.max(r, g, b), min = Math.min(r, g, b);
+          return (r > 224 && g > 224 && b > 224) || (max - min < 18 && min > 175);
+        };
+
+        const stack = [];
+        for (let x = 0; x < size; x++) stack.push(x, (size - 1) * size + x);
+        for (let y = 0; y < size; y++) stack.push(y * size, y * size + (size - 1));
+
+        while (stack.length > 0) {
+          const p = stack.pop();
+          if (p < 0 || p >= size * size || visited[p]) continue;
+          visited[p] = 1;
+          const idx = p * 4;
+          if (isBg(idx)) {
+            d[idx + 3] = 0;
+            const x = p % size, y = (p / size) | 0;
+            if (x > 0) stack.push(p - 1);
+            if (x < size - 1) stack.push(p + 1);
+            if (y > 0) stack.push(p - size);
+            if (y < size - 1) stack.push(p + size);
+          }
+        }
+
+        for (let i = 0; i < size * size; i++) {
+          const idx = i * 4;
+          if (d[idx + 3] > 0 && d[idx] > 240 && d[idx + 1] > 240 && d[idx + 2] > 240) {
+            d[idx + 3] = 0;
+          }
+        }
+
+        ctx.putImageData(imgData, 0, 0);
+        sprites.push(c.toDataURL("image/png"));
+      }
+    }
+
+    const applySprite = (selector, idx) => {
+      if (!sprites[idx]) return;
+      document.querySelectorAll(selector).forEach((el) => {
+        el.style.backgroundImage = `url("${sprites[idx]}")`;
+        el.querySelectorAll("span").forEach((s) => { s.style.display = "none"; });
+      });
+    };
+
+    applySprite('[data-sprite="core"]', 0);
+    applySprite('[data-sprite="trophy"]', 7);
+    applySprite('[data-prop="p1"]', 12);
+    applySprite('[data-prop="p2"]', 13);
+    applySprite('[data-prop="p3"]', 14);
+    applySprite('[data-prop="p4"]', 15);
+  } catch (e) {
+    console.info("Sử dụng biểu tượng mặc định:", e);
+  }
+}
+initLesson25DSprites();
+
+// Hiệu ứng Parallax nhẹ cho 4 khí cụ 2.5D ở rìa màn hình
+const parallaxBg = document.getElementById("parallaxBg");
+const parallaxRelics = document.getElementById("parallaxRelics");
+window.addEventListener("mousemove", (e) => {
+  const nx = e.clientX / window.innerWidth - 0.5;
+  const ny = e.clientY / window.innerHeight - 0.5;
+  if (parallaxBg) {
+    parallaxBg.style.transform = `translate(${nx * 12}px,${ny * 8}px) scale(1.04)`;
+  }
+  if (parallaxRelics) {
+    parallaxRelics.style.transform = `translate(${nx * -22}px,${ny * -14}px)`;
+  }
+});
 
 /* =========================================================
    TÙY CHỈNH CHẾ ĐỘ ĐỌC (SÁNG / ẤM / TỐI & CỠ CHỮ)
@@ -151,11 +267,6 @@ function formatInlineStyles(escapedStr) {
     .replace(/`([^`]+)`/g, "<code>$1</code>");
 }
 
-/**
- * Tự động trình bày nội dung dài từ Backend:
- * - Hỗ trợ chuỗi văn bản dài nhiều đoạn, gạch đầu dòng (-, *, •), danh sách số (1., 2.), tiêu đề phụ (###)
- * - Hỗ trợ cả trường hợp Backend trả về Mảng (Array) các đoạn văn
- */
 function formatRichText(rawValue) {
   if (rawValue === null || rawValue === undefined) return "";
 
@@ -186,7 +297,6 @@ function formatRichText(rawValue) {
       return;
     }
 
-    // Tiêu đề phụ ### hoặc ##
     if (/^#{2,4}\s+/.test(line)) {
       closeLists();
       const titleText = formatInlineStyles(escapeHTML(line.replace(/^#{2,4}\s+/, "")));
@@ -194,7 +304,6 @@ function formatRichText(rawValue) {
       return;
     }
 
-    // Danh sách gạch đầu dòng (- , * , • , + )
     if (/^[-*•+]\s+/.test(line)) {
       if (inOl) {
         html += "</ol>";
@@ -209,7 +318,6 @@ function formatRichText(rawValue) {
       return;
     }
 
-    // Danh sách đánh số (1. , 2. , B1: ...)
     if (/^\d+[.)]\s+/.test(line)) {
       if (inUl) {
         html += "</ul>";
@@ -356,7 +464,7 @@ function renderFormulas(data, singleFormula) {
 }
 
 /* =========================================================
-   RENDER ANSWERS (TRẮC NGHIỆM TƯƠNG TÁC)
+   RENDER ANSWERS (TRẮC NGHIỆM 2.5D TƯƠNG TÁC)
 ========================================================= */
 function renderAnswers(answerList, correctIndex) {
   if (!answers) return;
@@ -402,7 +510,7 @@ function renderAnswers(answerList, correctIndex) {
           allOptions[Number(correctIndex)].classList.add("correct");
         }
         if (quizFeedback) {
-          quizFeedback.textContent = "💡 Chưa chính xác. Hãy xem đáp án được tô xanh để ghi nhớ nhé!";
+          quizFeedback.textContent = "💡 Chưa chính xác. Hãy xem đáp án đúng được tô xanh để ghi nhớ nhé!";
           quizFeedback.className = "quiz-feedback is-wrong";
         }
       }
@@ -413,7 +521,7 @@ function renderAnswers(answerList, correctIndex) {
 }
 
 /* =========================================================
-   HỖ TRỢ THÊM CÁC MỤC MỚI TÙY Ý TỪ BACKEND (extra_sections / sections)
+   HỖ TRỢ THÊM MỤC MỚI TỪ BACKEND (extra_sections / sections)
 ========================================================= */
 function renderExtraBackendSections(lesson) {
   if (!extraSectionsContainer) return;
@@ -428,7 +536,7 @@ function renderExtraBackendSections(lesson) {
   extraList.forEach((sec, idx) => {
     if (!sec || (!sec.content && !sec.body && !sec.text)) return;
     const secEl = document.createElement("section");
-    secEl.className = "lesson-section";
+    secEl.className = "lesson-section card-25d";
     secEl.id = `extraSection_${idx}`;
     const title = sec.title || sec.heading || `Phần mở rộng ${idx + 1}`;
     secEl.setAttribute("data-toc", title);
@@ -447,7 +555,7 @@ function renderExtraBackendSections(lesson) {
 }
 
 /* =========================================================
-   TỰ ĐỘNG TẠO MỤC LỤC BÊN TRÁI & ĐÁNH SỐ LẠI CÁC MỤC HIỂN THỊ
+   TỰ ĐỘNG TẠO MỤC LỤC BÊN TRÁI
 ========================================================= */
 function buildTableOfContents() {
   if (!tocList) return;
@@ -520,7 +628,6 @@ function renderLesson(lesson) {
     lessonDescription.textContent = lesson.description || "";
   }
 
-  // 1. Definition
   if (lesson.definition) {
     setText(definition, lesson.definition);
     setSectionVisible(definitionSection, true);
@@ -528,7 +635,6 @@ function renderLesson(lesson) {
     setSectionVisible(definitionSection, false);
   }
 
-  // 2. Context
   if (lesson.context || lesson.context_title) {
     if (contextTitle) contextTitle.textContent = lesson.context_title || "Bối cảnh thực tế";
     setText(context, lesson.context || "");
@@ -537,7 +643,6 @@ function renderLesson(lesson) {
     setSectionVisible(contextSection, false);
   }
 
-  // 3. Theory
   if (lesson.theory) {
     setText(theory, lesson.theory);
     setSectionVisible(theorySection, true);
@@ -545,7 +650,6 @@ function renderLesson(lesson) {
     setSectionVisible(theorySection, false);
   }
 
-  // 4. Concept
   if (lesson.concept) {
     setText(concept, lesson.concept);
     setSectionVisible(conceptSection, true);
@@ -553,10 +657,8 @@ function renderLesson(lesson) {
     setSectionVisible(conceptSection, false);
   }
 
-  // 5. Formulas
   renderFormulas(lesson.formulas, lesson.formula);
 
-  // 6. Example
   if (lesson.example || lesson.example_answer) {
     setText(example, lesson.example || "");
     setText(exampleAnswer, lesson.example_answer || "");
@@ -565,7 +667,6 @@ function renderLesson(lesson) {
     setSectionVisible(exampleSection, false);
   }
 
-  // 7. Question
   if (lesson.question) {
     setText(question, lesson.question);
     renderAnswers(lesson.answers, lesson.correct);
@@ -573,7 +674,6 @@ function renderLesson(lesson) {
     setSectionVisible(questionSection, false);
   }
 
-  // 8. Meaning
   if (lesson.meaning) {
     setText(meaning, lesson.meaning);
     setSectionVisible(meaningSection, true);
@@ -581,7 +681,6 @@ function renderLesson(lesson) {
     setSectionVisible(meaningSection, false);
   }
 
-  // 9. Application
   if (lesson.application) {
     setText(application, lesson.application);
     setSectionVisible(applicationSection, true);
@@ -589,7 +688,6 @@ function renderLesson(lesson) {
     setSectionVisible(applicationSection, false);
   }
 
-  // 10. Real Life
   if (lesson.real_life) {
     setText(realLife, lesson.real_life);
     setSectionVisible(realLifeSection, true);
@@ -597,7 +695,6 @@ function renderLesson(lesson) {
     setSectionVisible(realLifeSection, false);
   }
 
-  // 11. Challenge
   if (lesson.challenge || lesson.challenge_answer) {
     setText(challenge, lesson.challenge || "");
     setText(challengeAnswer, lesson.challenge_answer || "");
@@ -609,10 +706,7 @@ function renderLesson(lesson) {
     setSectionVisible(challengeSection, false);
   }
 
-  // Các mục mở rộng nếu sau này Backend thêm vào
   renderExtraBackendSections(lesson);
-
-  // 12. Game
   renderGame(lesson);
 
   finishLoading();
@@ -632,13 +726,12 @@ function updateReadingProgress() {
   if (readingProgressFill) readingProgressFill.style.width = `${percent}%`;
   if (readingPercentText) readingPercentText.textContent = `${percent}%`;
 
-  // Tô sáng mục đang đọc trên Mục lục bên trái
   const links = document.querySelectorAll(".toc-link");
   let activeIndex = 0;
   links.forEach((link, idx) => {
     const targetId = link.getAttribute("href")?.slice(1);
     const targetEl = targetId ? document.getElementById(targetId) : null;
-    if (targetEl && targetEl.getBoundingClientRect().top <= 140) {
+    if (targetEl && targetEl.getBoundingClientRect().top <= 145) {
       activeIndex = idx;
     }
   });
