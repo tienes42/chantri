@@ -2,611 +2,309 @@
 <html lang="vi">
 
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Toán học - HỌC ĐỂ LÀM GÌ</title>
+  <title>Toán học - HỌC ĐỂ LÀM GÌ</title>
 
-    <link rel="stylesheet" href="style.css">
-<script src="/firebase-config.js"></script><script src="/auth.js"></script>
+  <!-- Dùng file math.css riêng để không ảnh hưởng style.css chung -->
+  <link rel="stylesheet" href="math.css">
+  <script src="/firebase-config.js"></script>
+  <script src="/auth.js"></script>
 </head>
 
-<body class="math-page">
+<body class="math-page math-sanctum">
 
-    <!-- =========================
-         BACKGROUND
-    ========================== -->
+  <!-- =========================
+       BACKGROUND THÁNH ĐƯỜNG HÌNH HỌC 2.5D
+  ========================== -->
+  <div class="math-background" aria-hidden="true">
+    <div class="sanctum-bg" id="parallaxBg"></div>
 
-    <div class="math-background">
+    <!-- Vòng Tỷ Lệ Vàng & Ma trận Hình học xoay chậm phía sau -->
+    <svg class="sacred-geometry-wheel" viewBox="0 0 600 600">
+      <g fill="none" stroke="rgba(251, 191, 36, 0.26)" stroke-width="1.5">
+        <circle cx="300" cy="300" r="275" stroke-dasharray="12 8 3 8" />
+        <circle cx="300" cy="300" r="230" stroke="rgba(45, 212, 191, 0.25)" />
+        <polygon points="300,45 520,428 80,428" />
+        <polygon points="300,555 520,172 80,172" />
+        <rect x="138" y="138" width="324" height="324" transform="rotate(45 300 300)" stroke="rgba(56, 189, 248, 0.2)" />
+      </g>
+    </svg>
 
-        <div class="math-cloud math-cloud-1"></div>
-        <div class="math-cloud math-cloud-2"></div>
+    <div class="golden-rays"></div>
+    <canvas id="mathCanvas"></canvas>
 
-        <div class="math-stars">
-            <span>✦</span>
-            <span>✧</span>
-            <span>✦</span>
-            <span>✧</span>
-            <span>✦</span>
-            <span>✧</span>
-            <span>✦</span>
-            <span>✧</span>
-        </div>
-
+    <!-- 4 Khối đa diện 2.5D bay lơ lửng quanh sảnh -->
+    <div class="floating-polyhedrons" id="parallaxRelics">
+      <div class="poly-relic relic-fibonacci" data-prop="fibonacci"></div>
+      <div class="poly-relic relic-icosa" data-prop="icosa"></div>
+      <div class="poly-relic relic-mobius" data-prop="mobius"></div>
+      <div class="poly-relic relic-cube" data-prop="cube"></div>
     </div>
 
+    <div class="vignette-overlay"></div>
+  </div>
 
-    <!-- =========================
-         TOP BAR
-    ========================== -->
+  <!-- =========================
+       TOP BAR
+  ========================== -->
+  <header class="math-header">
+    <button class="back-button" id="backButton" aria-label="Quay lại">
+      ←
+    </button>
 
-    <header class="math-header">
+    <div class="math-title">
+      <div class="math-title-icon" data-icon="core">
+        <span>📐</span>
+      </div>
+      <div>
+        <h1>TOÁN HỌC</h1>
+        <p>Tư duy • Logic • Tính toán</p>
+      </div>
+    </div>
 
-        <button class="back-button" id="backButton">
-            ←
+    <div class="math-player">
+      <span class="math-player-icon">👨‍🎓</span>
+      <div>
+        <strong>Tên người chơi</strong>
+        <div class="math-xp">
+          <div class="math-xp-progress"></div>
+        </div>
+      </div>
+      <span class="math-level">Lv.1</span>
+    </div>
+  </header>
+
+  <!-- =========================
+       MAIN
+  ========================== -->
+  <main class="math-main">
+
+    <!-- HERO -->
+    <section class="math-hero">
+      <div class="hero-core-wrapper">
+        <div class="geo-ring ring-1"></div>
+        <div class="geo-ring ring-2"></div>
+        <div class="hero-book" data-icon="core">
+          <span>📖</span>
+        </div>
+      </div>
+
+      <div>
+        <span class="hero-label">HÀNH TRÌNH TRI THỨC</span>
+        <h2>
+          Bạn muốn khám phá<br>
+          <span>Toán học</span> từ đâu?
+        </h2>
+        <p>
+          Chọn lớp học để bắt đầu hành trình
+          chinh phục những thử thách toán học.
+        </p>
+      </div>
+    </section>
+
+    <!-- CLASS SELECT (ĐẦY ĐỦ LỚP 1 -> LỚP 12) -->
+    <section class="class-section">
+      <div class="section-heading">
+        <div>
+          <span>BƯỚC 01</span>
+          <h2>Chọn lớp học</h2>
+        </div>
+        <p>Chọn cấp độ phù hợp với bạn</p>
+      </div>
+
+      <div class="class-grid">
+        <!-- LỚP 1 -->
+        <button class="class-card" data-grade="1" data-icon="g1">
+          <div class="class-number">01</div>
+          <div class="class-icon"><span>🔢</span></div>
+          <h3>Lớp 1</h3>
+          <p>Làm quen với toán học</p>
+          <span class="class-arrow">→</span>
         </button>
 
-        <div class="math-title">
+        <!-- LỚP 2 -->
+        <button class="class-card" data-grade="2" data-icon="g2">
+          <div class="class-number">02</div>
+          <div class="class-icon"><span>➕</span></div>
+          <h3>Lớp 2</h3>
+          <p>Số và phép tính</p>
+          <span class="class-arrow">→</span>
+        </button>
 
-            <div class="math-title-icon">
-                📐
-            </div>
+        <!-- LỚP 3 -->
+        <button class="class-card" data-grade="3" data-icon="g3">
+          <div class="class-number">03</div>
+          <div class="class-icon"><span>✖️</span></div>
+          <h3>Lớp 3</h3>
+          <p>Phép tính nâng cao</p>
+          <span class="class-arrow">→</span>
+        </button>
 
-            <div>
-                <h1>TOÁN HỌC</h1>
-                <p>Tư duy • Logic • Tính toán</p>
-            </div>
+        <!-- LỚP 4 -->
+        <button class="class-card" data-grade="4" data-icon="g4">
+          <div class="class-number">04</div>
+          <div class="class-icon"><span>📏</span></div>
+          <h3>Lớp 4</h3>
+          <p>Đại lượng & hình học</p>
+          <span class="class-arrow">→</span>
+        </button>
 
-        </div>
+        <!-- LỚP 5 -->
+        <button class="class-card" data-grade="5" data-icon="g5">
+          <div class="class-number">05</div>
+          <div class="class-icon"><span>📊</span></div>
+          <h3>Lớp 5</h3>
+          <p>Phân số & dữ liệu</p>
+          <span class="class-arrow">→</span>
+        </button>
 
-        <div class="math-player">
+        <!-- LỚP 6 -->
+        <button class="class-card" data-grade="6" data-icon="g6">
+          <div class="class-number">06</div>
+          <div class="class-icon"><span>🔣</span></div>
+          <h3>Lớp 6</h3>
+          <p>Số học & hình học</p>
+          <span class="class-arrow">→</span>
+        </button>
 
-            <span class="math-player-icon">
-                👨‍🎓
-            </span>
+        <!-- LỚP 7 -->
+        <button class="class-card" data-grade="7" data-icon="g7">
+          <div class="class-number">07</div>
+          <div class="class-icon"><span>📐</span></div>
+          <h3>Lớp 7</h3>
+          <p>Đại số & hình học</p>
+          <span class="class-arrow">→</span>
+        </button>
 
-            <div>
+        <!-- LỚP 8 -->
+        <button class="class-card" data-grade="8" data-icon="g8">
+          <div class="class-number">08</div>
+          <div class="class-icon"><span>📈</span></div>
+          <h3>Lớp 8</h3>
+          <p>Biểu thức & phương trình</p>
+          <span class="class-arrow">→</span>
+        </button>
 
-                <strong>
-                    Tên người chơi
-                </strong>
+        <!-- LỚP 9 -->
+        <button class="class-card" data-grade="9" data-icon="g9">
+          <div class="class-number">09</div>
+          <div class="class-icon"><span>📐</span></div>
+          <h3>Lớp 9</h3>
+          <p>Đại số & hình học</p>
+          <span class="class-arrow">→</span>
+        </button>
 
-                <div class="math-xp">
-                    <div class="math-xp-progress"></div>
-                </div>
+        <!-- LỚP 10 -->
+        <button class="class-card" data-grade="10" data-icon="g10">
+          <div class="class-number">10</div>
+          <div class="class-icon"><span>🧮</span></div>
+          <h3>Lớp 10</h3>
+          <p>Đại số & hình học</p>
+          <span class="class-arrow">→</span>
+        </button>
 
-            </div>
+        <!-- LỚP 11 -->
+        <button class="class-card" data-grade="11" data-icon="g11">
+          <div class="class-number">11</div>
+          <div class="class-icon"><span>📈</span></div>
+          <h3>Lớp 11</h3>
+          <p>Giải tích & xác suất</p>
+          <span class="class-arrow">→</span>
+        </button>
 
-            <span class="math-level">
-                Lv.1
-            </span>
-
-        </div>
-
-    </header>
-
+        <!-- LỚP 12 -->
+        <button class="class-card class-card-special" data-grade="12" data-icon="g12">
+          <div class="class-number">12</div>
+          <div class="class-icon"><span>🏆</span></div>
+          <h3>Lớp 12</h3>
+          <p>Chinh phục Toán THPT</p>
+          <span class="class-arrow">→</span>
+        </button>
+      </div>
+    </section>
 
     <!-- =========================
-         MAIN
+         QUICK TOOLS (4 CÔNG CỤ: MÁY TÍNH, GEOGEBRA, THỬ THÁCH, TIẾN TRÌNH)
     ========================== -->
-
-    <main class="math-main">
-
-
-        <!-- =========================
-             HERO
-        ========================== -->
-
-        <section class="math-hero">
-
-            <div class="hero-book">
-                📖
-            </div>
-
-            <div>
-
-                <span class="hero-label">
-                    HÀNH TRÌNH TRI THỨC
-                </span>
-
-                <h2>
-                    Bạn muốn khám phá<br>
-                    <span>Toán học</span> từ đâu?
-                </h2>
-
-                <p>
-                    Chọn lớp học để bắt đầu hành trình
-                    chinh phục những thử thách toán học.
-                </p>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-             CLASS SELECT
-        ========================== -->
-
-        <section class="class-section">
-
-            <div class="section-heading">
-
-                <div>
-                    <span>
-                        BƯỚC 01
-                    </span>
-
-                    <h2>
-                        Chọn lớp học
-                    </h2>
-                </div>
-
-                <p>
-                    Chọn cấp độ phù hợp với bạn
-                </p>
-
-            </div>
-
-
-            <div class="class-grid">
-
-                <button class="class-card" data-grade="1">
-
-                    <div class="class-number">
-                        01
-                    </div>
-
-                    <div class="class-icon">
-                        🔢
-                    </div>
-
-                    <h3>
-                        Lớp 1
-                    </h3>
-
-                    <p>
-                        Làm quen với toán học
-                    </p>
-
-                    <span class="class-arrow">
-                        →
-                    </span>
-
-                </button>
-
-
-                <button class="class-card" data-grade="2">
-
-                    <div class="class-number">
-                        02
-                    </div>
-
-                    <div class="class-icon">
-                        ➕
-                    </div>
-
-                    <h3>
-                        Lớp 2
-                    </h3>
-
-                    <p>
-                        Số và phép tính
-                    </p>
-
-                    <span class="class-arrow">
-                        →
-                    </span>
-
-                </button>
-
-
-                <button class="class-card" data-grade="3">
-
-                    <div class="class-number">
-                        03
-                    </div>
-
-                    <div class="class-icon">
-                        ✖️
-                    </div>
-
-                    <h3>
-                        Lớp 3
-                    </h3>
-
-                    <p>
-                        Phép tính nâng cao
-                    </p>
-
-                    <span class="class-arrow">
-                        →
-                    </span>
-
-                </button>
-
-
-                <button class="class-card" data-grade="4">
-
-                    <div class="class-number">
-                        04
-                    </div>
-
-                    <div class="class-icon">
-                        📏
-                    </div>
-
-                    <h3>
-                        Lớp 4
-                    </h3>
-
-                    <p>
-                        Đại lượng & hình học
-                    </p>
-
-                    <span class="class-arrow">
-                        →
-                    </span>
-
-                </button>
-
-
-                <button class="class-card" data-grade="5">
-
-                    <div class="class-number">
-                        05
-                    </div>
-
-                    <div class="class-icon">
-                        📊
-                    </div>
-
-                    <h3>
-                        Lớp 5
-                    </h3>
-
-                    <p>
-                        Phân số & dữ liệu
-                    </p>
-
-                    <span class="class-arrow">
-                        →
-                    </span>
-
-                </button>
-
-
-                <button class="class-card" data-grade="6">
-
-                    <div class="class-number">
-                        06
-                    </div>
-
-                    <div class="class-icon">
-                        🔣
-                    </div>
-
-                    <h3>
-                        Lớp 6
-                    </h3>
-
-                    <p>
-                        Số học & hình học
-                    </p>
-
-                    <span class="class-arrow">
-                        →
-                    </span>
-
-                </button>
-
-
-                <button class="class-card" data-grade="7">
-
-                    <div class="class-number">
-                        07
-                    </div>
-
-                    <div class="class-icon">
-                        📐
-                    </div>
-
-                    <h3>
-                        Lớp 7
-                    </h3>
-
-                    <p>
-                        Đại số & hình học
-                    </p>
-
-                    <span class="class-arrow">
-                        →
-                    </span>
-
-                </button>
-
-
-                <button class="class-card" data-grade="8">
-
-                    <div class="class-number">
-                        08
-                    </div>
-
-                    <div class="class-icon">
-                        📈
-                    </div>
-
-                    <h3>
-                        Lớp 8
-                    </h3>
-
-                    <p>
-                        Biểu thức & phương trình
-                    </p>
-
-                    <span class="class-arrow">
-                        →
-                    </span>
-
-                </button>
-
-
-                <button class="class-card" data-grade="9">
-
-                    <div class="class-number">
-                        09
-                    </div>
-
-                    <div class="class-icon">
-                        📐
-                    </div>
-
-                    <h3>
-                        Lớp 9
-                    </h3>
-
-                    <p>
-                        Đại số & hình học
-                    </p>
-
-                    <span class="class-arrow">
-                        →
-                    </span>
-
-                </button>
-
-
-                <button class="class-card" data-grade="10">
-
-                    <div class="class-number">
-                        10
-                    </div>
-
-                    <div class="class-icon">
-                        🧮
-                    </div>
-
-                    <h3>
-                        Lớp 10
-                    </h3>
-
-                    <p>
-                        Đại số & hình học
-                    </p>
-
-                    <span class="class-arrow">
-                        →
-                    </span>
-
-                </button>
-
-
-                <button class="class-card" data-grade="11">
-
-                    <div class="class-number">
-                        11
-                    </div>
-
-                    <div class="class-icon">
-                        📈
-                    </div>
-
-                    <h3>
-                        Lớp 11
-                    </h3>
-
-                    <p>
-                        Giải tích & xác suất
-                    </p>
-
-                    <span class="class-arrow">
-                        →
-                    </span>
-
-                </button>
-
-
-                <button class="class-card class-card-special" data-grade="12">
-
-                    <div class="class-number">
-                        12
-                    </div>
-
-                    <div class="class-icon">
-                        🏆
-                    </div>
-
-                    <h3>
-                        Lớp 12
-                    </h3>
-
-                    <p>
-                        Chinh phục Toán THPT
-                    </p>
-
-                    <span class="class-arrow">
-                        →
-                    </span>
-
-                </button>
-
-            </div>
-
-        </section>
-
-
-        <!-- =========================
-             QUICK TOOLS
-        ========================== -->
-
-        <section class="math-tools">
-
-            <button class="math-tool" id="calculatorButton">
-
-                <span>🧮</span>
-
-                <div>
-                    <strong>
-                        Máy tính
-                    </strong>
-
-                    <small>
-                        Tính toán & giải phương trình
-                    </small>
-                </div>
-
-                <b>→</b>
-
-            </button>
-
-        
-
-<a href="https://www.geogebra.org/calculator"
-   target="_blank"
-   rel="noopener noreferrer"
-   class="tool-card geogebra-button">
-
-    <span class="tool-icon">📐</span>
-
-    <span class="tool-content">
-        <strong>GeoGebra</strong>
-        <small>Đồ thị và hình học động</small>
-    </span>
-
-    <span class="tool-arrow">↗</span>
-</a>
-
-
-
-            <button class="math-tool" id="challengeButton">
-
-                <span>🎯</span>
-
-                <div>
-                    <strong>
-                        Thử thách nhanh
-                    </strong>
-
-                    <small>
-                        Kiểm tra khả năng của bạn
-                    </small>
-                </div>
-
-                <b>→</b>
-
-            </button>
-
-
-            <button class="math-tool" id="progressButton">
-
-                <span>📊</span>
-
-                <div>
-                    <strong>
-                        Tiến trình
-                    </strong>
-
-                    <small>
-                        Xem quá trình học tập
-                    </small>
-                </div>
-
-                <b>→</b>
-
-            </button>
-
-        </section>
-
-    </main>
-
-
-    <!-- =========================
-         AI GUIDE
-    ========================== -->
-
-    <div class="math-ai">
-
-        <div class="math-ai-text">
-
-            <strong>
-                Trợ lý học tập
-            </strong>
-
-            <p>
-                Mỗi bài toán là một<br>
-                câu đố đang chờ bạn giải!
-            </p>
-
+    <section class="math-tools">
+      <button class="math-tool" id="calculatorButton" data-icon="toolCalc">
+        <span class="tool-sprite">🧮</span>
+        <div>
+          <strong>Máy tính</strong>
+          <small>Tính toán & giải phương trình</small>
         </div>
+        <b>→</b>
+      </button>
 
-        <div class="math-ai-icon">
-            🤖
+      <a href="https://www.geogebra.org/calculator"
+         target="_blank"
+         rel="noopener noreferrer"
+         class="tool-card geogebra-button"
+         data-icon="toolGeo">
+        <span class="tool-icon tool-sprite">📐</span>
+        <span class="tool-content">
+          <strong>GeoGebra</strong>
+          <small>Đồ thị và hình học động</small>
+        </span>
+        <span class="tool-arrow">↗</span>
+      </a>
+
+      <button class="math-tool" id="challengeButton" data-icon="toolChallenge">
+        <span class="tool-sprite">🎯</span>
+        <div>
+          <strong>Thử thách nhanh</strong>
+          <small>Kiểm tra khả năng của bạn</small>
         </div>
+        <b>→</b>
+      </button>
 
+      <button class="math-tool" id="progressButton" data-icon="toolProgress">
+        <span class="tool-sprite">📊</span>
+        <div>
+          <strong>Tiến trình</strong>
+          <small>Xem quá trình học tập</small>
+        </div>
+        <b>→</b>
+      </button>
+    </section>
+
+  </main>
+
+  <!-- =========================
+       AI GUIDE
+  ========================== -->
+  <div class="math-ai">
+    <div class="math-ai-text">
+      <strong>Trợ lý học tập</strong>
+      <p>
+        Mỗi bài toán là một<br>
+        câu đố đang chờ bạn giải!
+      </p>
     </div>
-
-
-    <!-- =========================
-         POPUP
-    ========================== -->
-
-    <div class="math-popup-overlay" id="mathPopup">
-
-        <div class="math-popup">
-
-            <button
-                class="math-popup-close"
-                id="mathPopupClose">
-                ×
-            </button>
-
-            <div
-                class="math-popup-icon"
-                id="mathPopupIcon">
-                🎯
-            </div>
-
-            <h2 id="mathPopupTitle">
-                Sẵn sàng chưa?
-            </h2>
-
-            <p id="mathPopupText">
-                Hãy chọn một lớp để bắt đầu.
-            </p>
-
-            <button
-                class="math-popup-button"
-                id="mathPopupButton">
-                Bắt đầu
-            </button>
-
-        </div>
-
+    <div class="math-ai-icon" data-icon="aiBot">
+      <span>🤖</span>
     </div>
+  </div>
 
+  <!-- =========================
+       POPUP
+  ========================== -->
+  <div class="math-popup-overlay" id="mathPopup">
+    <div class="math-popup">
+      <button class="math-popup-close" id="mathPopupClose">×</button>
+      <div class="popup-aura"></div>
+      <div class="math-popup-icon" id="mathPopupIcon">
+        <span>🎯</span>
+      </div>
+      <h2 id="mathPopupTitle">Sẵn sàng chưa?</h2>
+      <p id="mathPopupText">Hãy chọn một lớp để bắt đầu.</p>
+      <button class="math-popup-button" id="mathPopupButton">Bắt đầu</button>
+    </div>
+  </div>
 
-    <script src="math.js"></script>
-
+  <script src="math.js"></script>
 </body>
 
 </html>

@@ -1,0 +1,856 @@
+/* =========================================================
+   CHEMISTRY.CSS — ĐẠI LÒ GIẢ KIM & THÁNH ĐƯỜNG PHÂN TỬ (2.5D CINEMATIC)
+   Độc lập hoàn toàn, không ảnh hưởng tới style.css chung
+========================================================= */
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+html {
+  min-height: 100%;
+  overflow-x: hidden;
+  overflow-y: auto;
+}
+
+body.chemistry-sanctum {
+  font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+  min-height: 100vh;
+  color: #f8fafc;
+  background: #041412;
+  overflow-x: hidden;
+  overflow-y: auto;
+  user-select: none;
+}
+
+body.popup-open {
+  overflow: hidden;
+}
+
+button {
+  font: inherit;
+}
+
+/* ================= 1. BỐI CẢNH ĐẠI LÒ GIẢ KIM ĐA TẦNG ================= */
+.math-background {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  overflow: hidden;
+  pointer-events: none;
+  background: radial-gradient(circle at 50% 35%, #06382c 0%, #051b24 60%, #020c12 100%);
+}
+
+.alchemical-bg {
+  position: absolute;
+  inset: -4%;
+  background: url("assets/chemistry-bg.png") center/cover no-repeat;
+  filter: brightness(0.86) contrast(1.08) saturate(1.12);
+  transition: transform 0.25s ease-out;
+}
+
+/* Vòng lục giác Benzen & Ma trận phân tử xoay chậm phía sau */
+.molecular-wheel {
+  position: absolute;
+  left: 50%;
+  top: 42%;
+  width: min(85vw, 760px);
+  height: min(85vw, 760px);
+  transform: translate(-50%, -50%);
+  animation: spinMolecularWheel 95s linear infinite;
+  opacity: 0.78;
+}
+
+@keyframes spinMolecularWheel {
+  from { transform: translate(-50%, -50%) rotate(0deg); }
+  to   { transform: translate(-50%, -50%) rotate(360deg); }
+}
+
+/* Luồng sáng Lục Bảo & Hồng Tím từ vòm kính phòng thí nghiệm */
+.elixir-rays {
+  position: absolute;
+  left: 50%;
+  top: -25%;
+  width: 150vw;
+  height: 150vh;
+  transform: translateX(-50%) rotate(-8deg);
+  background: repeating-conic-gradient(
+    from 0deg at 50% 0%,
+    rgba(52, 211, 153, 0.11) 0deg,
+    transparent 6deg,
+    rgba(244, 114, 182, 0.08) 12deg,
+    transparent 18deg
+  );
+  animation: elixirRayPulse 13s ease-in-out infinite alternate;
+}
+
+@keyframes elixirRayPulse {
+  from { transform: translateX(-50%) rotate(-8deg) scale(1); opacity: 0.72; }
+  to   { transform: translateX(-50%) rotate(-2deg) scale(1.06); opacity: 1; }
+}
+
+#chemistryCanvas {
+  position: absolute;
+  inset: 0;
+  width: 100%;
+  height: 100%;
+}
+
+/* 4 Khí cụ Hóa học 2.5D bay lơ lửng quanh sảnh */
+.floating-molecules {
+  position: absolute;
+  inset: 0;
+  transition: transform 0.2s ease-out;
+}
+
+.chem-relic {
+  position: absolute;
+  width: clamp(70px, 7.2vw, 108px);
+  height: clamp(70px, 7.2vw, 108px);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: drop-shadow(0 12px 20px rgba(0, 0, 0, 0.75)) drop-shadow(0 0 16px rgba(52, 211, 153, 0.4));
+  opacity: 0.88;
+  animation: chemRelicFloat 6s ease-in-out infinite;
+}
+
+.relic-molecule { left: 2.5%; top: 18%; animation-duration: 5.5s; }
+.relic-burner   { right: 3.5%; top: 20%; animation-duration: 6.4s; animation-delay: -1.5s; }
+.relic-crystal  { left: 3.5%; bottom: 14%; animation-duration: 5.8s; animation-delay: -3s; }
+.relic-coil     { right: 4.5%; bottom: 22%; animation-duration: 6.7s; animation-delay: -4.2s; }
+
+@keyframes chemRelicFloat {
+  0%, 100% { transform: translateY(0) rotate(-4deg); }
+  50%      { transform: translateY(-16px) rotate(6deg) scale(1.05); }
+}
+
+.vignette-overlay {
+  position: absolute;
+  inset: 0;
+  background:
+    radial-gradient(circle at 50% 45%, rgba(4, 24, 20, 0.24) 0%, rgba(2, 10, 14, 0.82) 100%),
+    linear-gradient(180deg, rgba(3, 14, 18, 0.65) 0%, transparent 20%, transparent 80%, rgba(3, 14, 18, 0.88) 100%);
+}
+
+/* ================= 2. THANH TOP BAR GIẢ KIM ================= */
+.math-header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 84px;
+  padding: 12px 28px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  background: linear-gradient(90deg, rgba(5, 24, 26, 0.9), rgba(10, 46, 44, 0.86), rgba(5, 24, 26, 0.9));
+  border-bottom: 1.5px solid rgba(52, 211, 153, 0.42);
+  box-shadow: 0 10px 32px rgba(0, 0, 0, 0.55), 0 1px 0 rgba(244, 114, 182, 0.22);
+  backdrop-filter: blur(14px);
+  z-index: 50;
+}
+
+.back-button {
+  width: 52px;
+  height: 52px;
+  border: 1.5px solid rgba(52, 211, 153, 0.55);
+  border-radius: 16px;
+  background: linear-gradient(145deg, rgba(12, 68, 58, 0.8), rgba(6, 28, 30, 0.92));
+  color: #fff;
+  font-size: 26px;
+  font-weight: 700;
+  cursor: pointer;
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.4), inset 0 1px 1px rgba(255, 255, 255, 0.25);
+  transition: transform 0.22s, border-color 0.22s, box-shadow 0.22s;
+}
+
+.back-button:hover {
+  transform: translateX(-4px) scale(1.04);
+  border-color: #fde047;
+  box-shadow: 0 0 18px rgba(52, 211, 153, 0.65);
+}
+
+.math-title {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  margin-right: auto;
+  margin-left: 18px;
+}
+
+.math-title-icon {
+  width: 56px;
+  height: 56px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  border-radius: 16px;
+  background-color: rgba(6, 38, 34, 0.8);
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  border: 1.5px solid rgba(52, 211, 153, 0.65);
+  box-shadow: 0 0 20px rgba(52, 211, 153, 0.38);
+}
+
+.math-title h1 {
+  font-size: 21px;
+  font-weight: 900;
+  letter-spacing: 1.5px;
+  background: linear-gradient(90deg, #ffffff, #6ee7b7, #f472b6);
+  -webkit-background-clip: text;
+  background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.math-title p {
+  margin-top: 2px;
+  font-size: 12px;
+  color: #a7f3d0;
+  font-weight: 500;
+}
+
+.math-player {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 8px 16px;
+  border-radius: 18px;
+  background: rgba(6, 30, 32, 0.88);
+  border: 1.5px solid rgba(52, 211, 153, 0.45);
+  box-shadow: 0 8px 20px rgba(0, 0, 0, 0.4);
+}
+
+.math-player-icon {
+  width: 42px;
+  height: 42px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: linear-gradient(135deg, #10b981, #047857);
+  border: 2px solid #fff;
+  font-size: 22px;
+}
+
+.math-player strong {
+  display: block;
+  font-size: 13px;
+  color: #f8fafc;
+}
+
+.math-xp {
+  width: 115px;
+  height: 7px;
+  margin-top: 6px;
+  overflow: hidden;
+  border-radius: 999px;
+  background: #041816;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+}
+
+.math-xp-progress {
+  width: 35%;
+  height: 100%;
+  background: linear-gradient(90deg, #34d399, #f472b6);
+  box-shadow: 0 0 10px #34d399;
+}
+
+.math-level {
+  padding: 4px 10px;
+  border-radius: 10px;
+  background: rgba(251, 191, 36, 0.18);
+  border: 1px solid rgba(251, 191, 36, 0.65);
+  font-size: 12px;
+  font-weight: 800;
+  color: #fde047;
+}
+
+/* ================= 3. KHUNG CHÍNH & HERO LÕI PHÂN TỬ ================= */
+.math-main {
+  position: relative;
+  z-index: 2;
+  width: min(1220px, 92%);
+  margin: 0 auto;
+  padding: 112px 0 85px;
+  min-height: 100vh;
+}
+
+.math-hero {
+  position: relative;
+  display: flex;
+  align-items: center;
+  gap: 32px;
+  padding: 28px 36px;
+  margin-bottom: 36px;
+  border-radius: 28px;
+  background: linear-gradient(135deg, rgba(6, 38, 36, 0.86) 0%, rgba(20, 32, 58, 0.82) 58%, rgba(6, 24, 28, 0.9) 100%);
+  border: 1.5px solid rgba(52, 211, 153, 0.48);
+  box-shadow:
+    0 22px 50px rgba(0, 0, 0, 0.6),
+    inset 0 1px 2px rgba(255, 255, 255, 0.25),
+    0 0 35px rgba(16, 185, 129, 0.2);
+  backdrop-filter: blur(14px);
+  overflow: hidden;
+}
+
+.math-hero::before {
+  content: "";
+  position: absolute;
+  right: -80px;
+  top: -80px;
+  width: 280px;
+  height: 280px;
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(244, 114, 182, 0.22) 0%, rgba(52, 211, 153, 0.16) 50%, transparent 70%);
+  pointer-events: none;
+}
+
+.hero-core-wrapper {
+  position: relative;
+  width: 128px;
+  height: 128px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.chem-ring {
+  position: absolute;
+  inset: -6px;
+  border-radius: 50%;
+  border: 2px dashed rgba(52, 211, 153, 0.7);
+  pointer-events: none;
+}
+
+.chem-ring.ring-1 {
+  animation: chemSpin1 11s linear infinite;
+}
+
+.chem-ring.ring-2 {
+  inset: -14px;
+  border-color: rgba(244, 114, 182, 0.6);
+  animation: chemSpin2 15s linear infinite reverse;
+}
+
+@keyframes chemSpin1 {
+  0%   { transform: rotateX(62deg) rotateY(22deg) rotateZ(0deg); }
+  100% { transform: rotateX(62deg) rotateY(22deg) rotateZ(360deg); }
+}
+
+@keyframes chemSpin2 {
+  0%   { transform: rotateX(62deg) rotateY(-24deg) rotateZ(0deg); }
+  100% { transform: rotateX(62deg) rotateY(-24deg) rotateZ(360deg); }
+}
+
+.hero-book {
+  width: 112px;
+  height: 112px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 56px;
+  border-radius: 50%;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: drop-shadow(0 0 22px rgba(52, 211, 153, 0.65)) drop-shadow(0 8px 16px rgba(0, 0, 0, 0.6));
+  animation: corePulse 3.6s ease-in-out infinite;
+}
+
+@keyframes corePulse {
+  0%, 100% { transform: translateY(0) scale(1); }
+  50%      { transform: translateY(-7px) scale(1.06); }
+}
+
+.hero-label {
+  display: inline-block;
+  padding: 4px 12px;
+  border-radius: 999px;
+  background: rgba(52, 211, 153, 0.16);
+  border: 1px solid rgba(52, 211, 153, 0.5);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: #6ee7b7;
+}
+
+.math-hero h2 {
+  margin-top: 10px;
+  font-size: clamp(26px, 3vw, 36px);
+  line-height: 1.15;
+  text-shadow: 0 4px 12px rgba(0, 0, 0, 0.5);
+}
+
+.math-hero h2 span {
+  color: #34d399;
+  text-shadow: 0 0 20px rgba(52, 211, 153, 0.55);
+}
+
+.math-hero p {
+  margin-top: 10px;
+  max-width: 680px;
+  font-size: 14px;
+  line-height: 1.55;
+  color: #d1fae5;
+}
+
+/* ================= 4. LƯỚI CHỌN LỚP (LỚP 6 -> LỚP 12) ================= */
+.section-heading {
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  margin-bottom: 18px;
+  padding: 0 4px;
+}
+
+.section-heading span {
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 2px;
+  color: #34d399;
+}
+
+.section-heading h2 {
+  margin-top: 4px;
+  font-size: 24px;
+  text-shadow: 0 2px 8px rgba(0, 0, 0, 0.5);
+}
+
+.section-heading p {
+  font-size: 13px;
+  color: #a7f3d0;
+}
+
+.class-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 18px;
+}
+
+.class-card {
+  position: relative;
+  min-height: 185px;
+  padding: 22px 20px 20px;
+  overflow: hidden;
+  text-align: left;
+  color: #fff;
+  border: 1.5px solid rgba(52, 211, 153, 0.35);
+  border-radius: 24px;
+  cursor: pointer;
+  background: linear-gradient(155deg, rgba(8, 42, 40, 0.88) 0%, rgba(6, 20, 28, 0.94) 100%);
+  box-shadow: 0 14px 30px rgba(0, 0, 0, 0.45), inset 0 1px 1px rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(12px);
+  transition: transform 0.28s cubic-bezier(0.2, 0.8, 0.2, 1), border-color 0.28s, box-shadow 0.28s;
+}
+
+.class-card::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 24px;
+  background: radial-gradient(circle at 85% 15%, rgba(52, 211, 153, 0.2), transparent 55%);
+  pointer-events: none;
+}
+
+.class-card:hover {
+  transform: translateY(-9px) scale(1.02);
+  border-color: #34d399;
+  box-shadow:
+    0 22px 40px rgba(0, 0, 0, 0.65),
+    0 0 28px rgba(52, 211, 153, 0.42);
+}
+
+.class-number {
+  position: absolute;
+  top: 14px;
+  right: 16px;
+  padding: 3px 10px;
+  border-radius: 999px;
+  background: rgba(52, 211, 153, 0.16);
+  border: 1px solid rgba(110, 231, 183, 0.4);
+  font-size: 11px;
+  font-weight: 800;
+  letter-spacing: 0.8px;
+  color: #a7f3d0;
+}
+
+.class-icon {
+  width: 68px;
+  height: 68px;
+  margin-bottom: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 36px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: drop-shadow(0 6px 10px rgba(0, 0, 0, 0.55));
+  transition: transform 0.3s ease;
+}
+
+.class-card:hover .class-icon {
+  transform: translateY(-5px) scale(1.12) rotate(-3deg);
+  filter: drop-shadow(0 10px 14px rgba(0, 0, 0, 0.65)) drop-shadow(0 0 14px rgba(52, 211, 153, 0.6));
+}
+
+.class-card h3 {
+  font-size: 19px;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.class-card p {
+  margin-top: 6px;
+  padding-right: 26px;
+  font-size: 12px;
+  line-height: 1.45;
+  color: #cbd5e1;
+}
+
+.class-arrow {
+  position: absolute;
+  right: 16px;
+  bottom: 16px;
+  width: 32px;
+  height: 32px;
+  display: grid;
+  place-items: center;
+  border-radius: 50%;
+  background: rgba(52, 211, 153, 0.18);
+  border: 1px solid rgba(110, 231, 183, 0.4);
+  font-size: 16px;
+  color: #6ee7b7;
+  transition: transform 0.25s, background 0.25s, color 0.25s;
+}
+
+.class-card:hover .class-arrow {
+  transform: translateX(4px);
+  background: #34d399;
+  border-color: #34d399;
+  color: #041814;
+}
+
+/* Thẻ đặc biệt Lớp 12 (Trải rộng 2 cột để cân đối lưới 7 thẻ) */
+.class-card-special {
+  grid-column: span 2;
+  border-color: rgba(251, 191, 36, 0.7);
+  background: linear-gradient(135deg, rgba(64, 34, 18, 0.86) 0%, rgba(12, 48, 44, 0.92) 60%, rgba(6, 22, 28, 0.96) 100%);
+  box-shadow: 0 16px 34px rgba(0, 0, 0, 0.55), 0 0 25px rgba(251, 191, 36, 0.22);
+}
+
+.class-card-special .class-number {
+  background: rgba(251, 191, 36, 0.22);
+  border-color: #fde047;
+  color: #fef08a;
+}
+
+.class-card-special:hover {
+  border-color: #fde047;
+  box-shadow: 0 24px 44px rgba(0, 0, 0, 0.7), 0 0 34px rgba(251, 191, 36, 0.55);
+}
+
+.class-card-special p {
+  max-width: 90%;
+}
+
+/* ================= 5. BA CÔNG CỤ HÓA HỌC NHANH ================= */
+.math-tools {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 28px;
+}
+
+.math-tool {
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  padding: 16px 20px;
+  color: #fff;
+  text-align: left;
+  border: 1.5px solid rgba(52, 211, 153, 0.35);
+  border-radius: 20px;
+  cursor: pointer;
+  background: linear-gradient(145deg, rgba(8, 40, 42, 0.88), rgba(5, 20, 26, 0.94));
+  box-shadow: 0 12px 26px rgba(0, 0, 0, 0.45);
+  backdrop-filter: blur(12px);
+  transition: transform 0.25s, border-color 0.25s, box-shadow 0.25s;
+}
+
+.math-tool:hover {
+  transform: translateY(-5px);
+  border-color: #fde047;
+  box-shadow: 0 18px 32px rgba(0, 0, 0, 0.6), 0 0 22px rgba(52, 211, 153, 0.38);
+}
+
+.math-tool .tool-sprite {
+  width: 54px;
+  height: 54px;
+  flex-shrink: 0;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 28px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: drop-shadow(0 4px 8px rgba(0, 0, 0, 0.5));
+  transition: transform 0.25s;
+}
+
+.math-tool:hover .tool-sprite {
+  transform: scale(1.12) rotate(-5deg);
+}
+
+.math-tool div {
+  flex: 1;
+}
+
+.math-tool strong {
+  display: block;
+  font-size: 15px;
+  font-weight: 800;
+  color: #f8fafc;
+}
+
+.math-tool small {
+  display: block;
+  margin-top: 4px;
+  font-size: 11px;
+  color: #a7f3d0;
+}
+
+.math-tool b {
+  font-size: 22px;
+  color: #fde047;
+  transition: transform 0.22s;
+}
+
+.math-tool:hover b {
+  transform: translateX(4px);
+}
+
+/* ================= 6. TRỢ LÝ AI GÓC DƯỚI PHẢI ================= */
+.math-ai {
+  position: fixed;
+  right: 24px;
+  bottom: 18px;
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  border-radius: 22px;
+  background: rgba(6, 28, 30, 0.9);
+  border: 1.5px solid rgba(52, 211, 153, 0.5);
+  box-shadow: 0 12px 28px rgba(0, 0, 0, 0.6);
+  backdrop-filter: blur(10px);
+  z-index: 30;
+  animation: aiFloat 3.4s ease-in-out infinite;
+}
+
+@keyframes aiFloat {
+  0%, 100% { transform: translateY(0); }
+  50%      { transform: translateY(-6px); }
+}
+
+.math-ai-text {
+  text-align: right;
+  font-size: 11.5px;
+  line-height: 1.4;
+}
+
+.math-ai-text strong {
+  color: #6ee7b7;
+  font-size: 12.5px;
+}
+
+.math-ai-text p {
+  margin-top: 2px;
+  color: #ecfdf5;
+}
+
+.math-ai-icon {
+  width: 58px;
+  height: 58px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 34px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: drop-shadow(0 4px 10px rgba(52, 211, 153, 0.55));
+}
+
+/* ================= 7. POPUP MODAL GIẢ KIM ================= */
+.math-popup-overlay {
+  position: fixed;
+  inset: 0;
+  display: none;
+  align-items: center;
+  justify-content: center;
+  background: rgba(2, 12, 14, 0.78);
+  backdrop-filter: blur(8px);
+  z-index: 100;
+}
+
+.math-popup-overlay.show {
+  display: flex;
+}
+
+.math-popup {
+  position: relative;
+  width: min(440px, 92%);
+  padding: 38px 32px 32px;
+  text-align: center;
+  border-radius: 28px;
+  background: linear-gradient(155deg, #0d3b38 0%, #061b22 100%);
+  border: 2px solid rgba(52, 211, 153, 0.68);
+  box-shadow: 0 30px 70px rgba(0, 0, 0, 0.8), 0 0 40px rgba(52, 211, 153, 0.32);
+  animation: mathPopupIn 0.26s cubic-bezier(0.2, 0.9, 0.3, 1);
+  overflow: hidden;
+}
+
+@keyframes mathPopupIn {
+  from { opacity: 0; transform: translateY(25px) scale(0.9); }
+  to   { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+.popup-aura {
+  position: absolute;
+  left: 50%;
+  top: 26%;
+  width: 160px;
+  height: 160px;
+  transform: translate(-50%, -50%);
+  border-radius: 50%;
+  background: radial-gradient(circle, rgba(52, 211, 153, 0.35) 0%, transparent 70%);
+  pointer-events: none;
+}
+
+.math-popup-close {
+  position: absolute;
+  top: 10px;
+  right: 16px;
+  border: none;
+  background: transparent;
+  color: #cbd5e1;
+  font-size: 30px;
+  cursor: pointer;
+  transition: color 0.2s, transform 0.2s;
+}
+
+.math-popup-close:hover {
+  color: #fff;
+  transform: scale(1.15);
+}
+
+.math-popup-icon {
+  position: relative;
+  width: 92px;
+  height: 92px;
+  margin: 0 auto 14px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 52px;
+  background-size: contain;
+  background-position: center;
+  background-repeat: no-repeat;
+  filter: drop-shadow(0 8px 16px rgba(0, 0, 0, 0.6)) drop-shadow(0 0 18px rgba(52, 211, 153, 0.5));
+}
+
+.math-popup h2 {
+  font-size: 25px;
+  font-weight: 800;
+  color: #6ee7b7;
+  margin-bottom: 10px;
+}
+
+.math-popup p {
+  color: #ecfdf5;
+  font-size: 14px;
+  line-height: 1.55;
+  margin-bottom: 24px;
+}
+
+.math-popup-button {
+  border: none;
+  padding: 13px 34px;
+  border-radius: 14px;
+  color: #031512;
+  font-size: 15px;
+  font-weight: 800;
+  cursor: pointer;
+  background: linear-gradient(135deg, #34d399 0%, #fde047 100%);
+  box-shadow: 0 10px 24px rgba(52, 211, 153, 0.42);
+  transition: transform 0.2s, filter 0.2s;
+}
+
+.math-popup-button:hover {
+  transform: translateY(-2px) scale(1.05);
+  filter: brightness(1.1);
+}
+
+/* ================= 8. RESPONSIVE ================= */
+@media (max-width: 1024px) {
+  .class-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+  .class-card-special {
+    grid-column: span 2;
+  }
+}
+
+@media (max-width: 760px) {
+  .math-header {
+    padding: 10px 16px;
+  }
+  .math-title p {
+    display: none;
+  }
+  .math-player-icon {
+    display: none;
+  }
+  .math-xp {
+    width: 72px;
+  }
+  .math-hero {
+    flex-direction: column;
+    text-align: center;
+    padding: 24px 20px;
+  }
+  .class-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  .class-card-special {
+    grid-column: span 2;
+  }
+  .math-tools {
+    grid-template-columns: 1fr;
+  }
+  .math-ai {
+    display: none;
+  }
+  .chem-relic {
+    opacity: 0.4;
+  }
+}
+
+@media (max-width: 480px) {
+  .math-player {
+    display: none;
+  }
+  .class-grid {
+    grid-template-columns: 1fr;
+  }
+  .class-card-special {
+    grid-column: span 1;
+  }
+}
