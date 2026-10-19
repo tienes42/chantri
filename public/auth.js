@@ -16,8 +16,8 @@
   var COLLECTION = "leaderboard";
   var SCORE_PER_STAR = 10;            // điểm game / 10 = số sao (chỉnh ở đây)
   var K = { xp: "hdlg_xp", hints: "hdlg_hints", done: "hdlg_completed", best: "hdlg_best",
-            owner: "hdlg_owner_uid", dirty: "hdlg_dirty" };
-  var WATCH = [K.xp, K.hints, K.done, K.best];
+            owner: "hdlg_owner_uid", dirty: "hdlg_dirty", q: "hdlg_quests" };
+  var WATCH = [K.xp, K.hints, K.done, K.best, K.q];
   var cfg = window.HDLG_FIREBASE_CONFIG || {};
   var configured = !!(cfg.apiKey && cfg.projectId);
   var inFrame = false;
@@ -41,18 +41,19 @@
     return out;
   }
   function readLocal() {
-    return { xp: num(lsGet(K.xp)), hints: num(lsGet(K.hints)), completed: doneList(), best: jparse(lsGet(K.best), {}) };
+    return { xp: num(lsGet(K.xp)), hints: num(lsGet(K.hints)), completed: doneList(), best: jparse(lsGet(K.best), {}), q: lsGet(K.q) || "" };
   }
   function writeLocal(s) {
     lsSet(K.xp, String(s.xp)); lsSet(K.hints, String(s.hints));
     lsSet(K.done, JSON.stringify(s.completed)); lsSet(K.best, JSON.stringify(s.best));
+    if (s.q) lsSet(K.q, s.q); else lsDel(K.q);
   }
   function merge(a, b) {
     var best = {}, k;
     for (k in a.best) best[k] = Math.max(num(a.best[k]), num(b.best && b.best[k]));
     for (k in (b.best || {})) if (!(k in best)) best[k] = num(b.best[k]);
     var set = {}; a.completed.concat(b.completed || []).forEach(function (x) { set[x] = 1; });
-    return { xp: Math.max(a.xp, b.xp), hints: Math.max(a.hints, b.hints), completed: Object.keys(set), best: best };
+    return { xp: Math.max(a.xp, b.xp), hints: Math.max(a.hints, b.hints), completed: Object.keys(set), best: best, q: a.q || b.q || "" };
   }
   function level(xp) { return Math.floor(xp / 100) + 1; }
   function displayName(u) { if (u && u.isAnonymous) return u.displayName || ("Khách " + u.uid.slice(0, 4)); return (u && (u.displayName || (u.email ? u.email.split("@")[0] : ""))) || "Người chơi"; }
@@ -76,7 +77,7 @@
     clearTimeout(pushTimer);
     var s = readLocal();
     var data = { name: displayName(user), avatar: user.photoURL || "", xp: s.xp, hints: s.hints,
-                 completed: s.completed, best: safeKeys(s.best),
+                 completed: s.completed, best: safeKeys(s.best), quests: (s.q || "").slice(0, 20000),
                  updatedAt: firebase.firestore.FieldValue.serverTimestamp() };
     return db.collection(COLLECTION).doc(user.uid).set(data, { merge: true })
       .then(function () { lsDel(K.dirty); })
@@ -106,15 +107,15 @@
     var ref = db.collection(COLLECTION).doc(user.uid);
     return ref.get().then(function (snap) {
       var remote = snap.exists ? snap.data() : null;
-      var rs = remote ? { xp: num(remote.xp), hints: num(remote.hints), completed: (remote.completed || []).map(String), best: remote.best || {} }
-                      : { xp: 0, hints: 0, completed: [], best: {} };
+      var rs = remote ? { xp: num(remote.xp), hints: num(remote.hints), completed: (remote.completed || []).map(String), best: remote.best || {}, q: typeof remote.quests === "string" ? remote.quests : "" }
+                      : { xp: 0, hints: 0, completed: [], best: {}, q: "" };
       var local = readLocal(), owner = lsGet(K.owner), result;
       if (owner === user.uid) result = lsGet(K.dirty) ? local : (remote ? rs : local);
       else if (!owner) result = merge(local, rs);        // tiến trình chơi thử trước khi đăng nhập
       else result = rs;                                  // máy đang dùng bởi tài khoản khác
       writeLocal(result); lsSet(K.owner, user.uid);
       var changed = !remote || result.xp !== rs.xp || result.hints !== rs.hints ||
-        result.completed.length !== rs.completed.length || remote.name !== displayName(user) || (remote.avatar || "") !== (user.photoURL || "");
+        result.completed.length !== rs.completed.length || result.q !== rs.q || remote.name !== displayName(user) || (remote.avatar || "") !== (user.photoURL || "");
       if (changed || lsGet(K.dirty)) return push();
     }).catch(function (e) { console.warn("[HDLG] Không đọc được Firestore (kiểm tra Rules):", e && e.code || e); })
       .then(emit);
@@ -125,7 +126,28 @@
     lsSet("hdlg_email", u.email || ""); lsSet("hdlg_photo_url", u.photoURL || "");
   }
   function clearAccountLocal() {
-    ["user_id", "hdlg_display_name", "hdlg_email", "hdlg_photo_url", K.xp, K.hints, K.done, K.best, K.owner, K.dirty].forEach(lsDel);
+    ["user_id", "hdlg_display_name", "hdlg_email", "hdlg_photo_url", K.xp, K.hints, K.done, K.best, K.q, K.owner, K.dirty].forEach(lsDel);
+  }
+
+  /* ---------- Nhiệm vụ / thử thách (dữ liệu dùng chung, quests.js vẽ giao diện) ---------- */
+  function pad2(n) { return (n < 10 ? "0" : "") + n; }
+  function today() { var d = new Date(); return d.getFullYear() + "-" + pad2(d.getMonth() + 1) + "-" + pad2(d.getDate()); }
+  function questGet() {
+    var s = jparse(lsGet(K.q), {});
+    if (!s || typeof s !== "object" || Array.isArray(s)) s = {};
+    s.total = s.total || {}; s.subj = s.subj || {}; s.ach = s.ach || []; s.checkin = s.checkin || { last: "", streak: 0 };
+    if (s.day !== today()) { s.day = today(); s.prog = {}; s.claimed = []; s.qbest = {}; s.bonus = false; }
+    s.prog = s.prog || {}; s.claimed = s.claimed || []; s.qbest = s.qbest || {};
+    return s;
+  }
+  function questSave(s) {
+    lsSet(K.q, JSON.stringify(s)); schedulePush(); emit();
+    try { window.dispatchEvent(new CustomEvent("hdlg:quests", { detail: s })); } catch (e) {}
+  }
+  function questBump(key, n) {
+    var s = questGet(); n = n || 1;
+    s.prog[key] = (s.prog[key] || 0) + n; s.total[key] = (s.total[key] || 0) + n;
+    questSave(s); return s;
   }
 
   /* ---------- API cho game ---------- */
@@ -152,6 +174,7 @@
     if (gain > 0) { best[key] = stars; lsSet(K.best, JSON.stringify(best)); }
     if (score >= max * 0.5) markDone(o.id);
     if (gain > 0) lsSet(K.xp, String(num(lsGet(K.xp)) + gain));
+    if (o.game !== "quick") questBump("game", 1);
     schedulePush(); emit();
     if (gain > 0) toast("⭐ +" + gain + " sao đã lưu vào tài khoản");
     else toast(user ? "Bạn đã đạt " + prev + " sao ở màn này — hãy phá kỷ lục để nhận thêm!" : "");
@@ -379,7 +402,8 @@
     getLevel: function () { return level(num(lsGet(K.xp))); },
     addStars: addStars, finishLevel: finishLevel, getLeaderboard: getLeaderboard,
     showLogin: showLogin, showAccount: showAccount, showLeaderboard: showLeaderboard, logout: logout,
-    onChange: function (f) { listeners.push(f); }, flush: push
+    onChange: function (f) { listeners.push(f); }, flush: push,
+    today: today, questGet: questGet, questSave: questSave, questBump: questBump, toast: toast
   };
   init();
 })();

@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Thử thách nhanh - HỌC ĐỂ LÀM GÌ</title>
+  <script src="/firebase-config.js"></script>
+  <script src="/auth.js"></script>
+  <script src="/quests.js"></script>
+  <link rel="stylesheet" href="/challenge.css">
+</head>
+<body>
+  <div class="bg" aria-hidden="true"><canvas id="fx"></canvas></div>
+
+  <header class="top">
+    <button class="back" id="backBtn" aria-label="Quay lại">←</button>
+    <div class="ttl">
+      <span class="ttl-ic" id="ttlIcon">🎯</span>
+      <div><h1 id="ttlText">ĐẤU TRƯỜNG THỬ THÁCH</h1><p id="ttlSub">Phản xạ nhanh – Kiến thức thực tế</p></div>
+    </div>
+    <div class="pills">
+      <button class="pill" id="missionBtn" data-hq-badge="missions">📜 Nhiệm vụ</button>
+      <span class="pill star">⭐ <b id="starCount">0</b></span>
+    </div>
+  </header>
+
+  <main id="app" class="app"></main>
+
+  <script src="/challenge-data.js"></script>
+  <script src="/challenge.js"></script>
+</body>
+</html>

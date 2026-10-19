@@ -238,28 +238,17 @@ const challengeButton = document.getElementById("challengeButton");
 const progressButton = document.getElementById("progressButton");
 
 if (challengeButton) {
+  challengeButton.setAttribute("data-hq-badge", "missions");
+  challengeButton.style.position = "relative";
   challengeButton.addEventListener("click", function () {
-    openPhysicsPopup({
-      iconKey: "toolChallenge",
-      fallbackEmoji: "🎯",
-      title: "Đấu Trường Thử Thách Vật Lý",
-      text: "Hệ thống nhiệm vụ và đấu trường phản xạ nhanh Vật lý sẽ được mở khóa ở bản cập nhật NHIỆM VỤ tiếp theo.",
-      buttonLabel: "Đã hiểu",
-      action: null
-    });
+    window.location.href = "challenge.html?subject=physics";
   });
 }
 
 if (progressButton) {
   progressButton.addEventListener("click", function () {
-    openPhysicsPopup({
-      iconKey: "toolProgress",
-      fallbackEmoji: "📊",
-      title: "Hồ Sơ Năng Lượng & Tiến Trình",
-      text: "Biểu đồ phân tích điểm kinh nghiệm và tiến độ hoàn thành từng chuyên đề Vật lý sẽ được kết nối ở bước phát triển tiếp theo.",
-      buttonLabel: "Đã hiểu",
-      action: null
-    });
+    if (window.HDLGQ) window.HDLGQ.openProgress("physics");
+    else window.location.href = "challenge.html?subject=physics";
   });
 }
 

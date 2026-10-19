@@ -44,10 +44,6 @@ document.getElementById('centerHit').addEventListener('click', () =>
   showDialog('HỌC ĐỂ LÀM GÌ?', 'Khám phá kiến thức qua tình huống thực tế và mini game để vận dụng điều đã học vào giải quyết vấn đề.')
 );
 
-document.getElementById('classButton').addEventListener('click', () =>
-  showDialog('Lớp 12A3', 'Khu vực lớp học sẽ có thành viên, nhiệm vụ chung và thành tích của cả lớp.')
-);
-
 document.getElementById('rankingButton').addEventListener('click', () => {
   if (window.HDLG && HDLG.configured) HDLG.showLeaderboard();
   else showDialog('Bảng xếp hạng', 'Cần cấu hình Firebase (file firebase-config.js) để xem bảng xếp hạng.');
@@ -104,6 +100,13 @@ document.getElementById('rankingButton').addEventListener('click', () => {
 document.querySelectorAll('.hit[data-popup]').forEach(b => {
   b.addEventListener('click', () => {
     const name = b.dataset.popup;
+    const Q = window.HDLGQ;
+    if (Q) {
+      if (name === 'Cài đặt') return Q.openSettings();
+      if (name === 'Phần thưởng') return Q.openRewards();
+      if (name === 'Nhiệm vụ') return Q.openMissions();
+      if (name === 'Thoát') return Q.openExit();
+    }
     if (name === 'Thoát') {
       showDialog('Thoát', 'Bạn có muốn rời khỏi trang chủ không?', 'Rời trang', () => {
         window.location.href = 'about:blank';

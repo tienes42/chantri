@@ -245,28 +245,17 @@ if (calculatorButton) {
 }
 
 if (challengeButton) {
+  challengeButton.setAttribute("data-hq-badge", "missions");
+  challengeButton.style.position = "relative";
   challengeButton.addEventListener("click", function () {
-    openMathPopup({
-      iconKey: "toolChallenge",
-      fallbackEmoji: "🎯",
-      title: "Thử thách nhanh",
-      text: "Hệ thống thử thách sẽ được xây dựng ở phần NHIỆM VỤ.",
-      buttonLabel: "Đã hiểu",
-      action: null
-    });
+    window.location.href = "challenge.html?subject=math";
   });
 }
 
 if (progressButton) {
   progressButton.addEventListener("click", function () {
-    openMathPopup({
-      iconKey: "toolProgress",
-      fallbackEmoji: "📊",
-      title: "Tiến trình học tập",
-      text: "Hệ thống phân tích tiến trình sẽ được xây dựng ở phần PHÂN TÍCH.",
-      buttonLabel: "Đã hiểu",
-      action: null
-    });
+    if (window.HDLGQ) window.HDLGQ.openProgress("math");
+    else window.location.href = "challenge.html?subject=math";
   });
 }
 

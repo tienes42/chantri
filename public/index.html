@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>HỌC ĐỂ LÀM GÌ</title>
   <link rel="stylesheet" href="index.css">
-<script src="/firebase-config.js"></script><script src="/auth.js"></script>
+<script src="/firebase-config.js"></script><script src="/auth.js"></script><script src="/quests.js"></script>
 </head>
 <body>
 <main class="home" id="homeScene" aria-label="Trang chủ Học để làm gì">
@@ -38,7 +38,6 @@
   </header>
 
   <nav class="top-actions">
-    <button class="top-button class-button" id="classButton"><span>👥</span><span>Lớp<br><b>12A3</b></span><em>›</em></button>
     <button class="top-button ranking-button" id="rankingButton"><span>🏆</span><span>Bảng xếp hạng</span><em>›</em></button>
   </nav>
 
@@ -194,10 +193,10 @@
     <button class="hit rune-btn settings" data-popup="Cài đặt" aria-label="Cài đặt">
       <span class="rune-icon">⚙️</span><small>Cài đặt</small>
     </button>
-    <button class="hit rune-btn rewards" data-popup="Phần thưởng" aria-label="Phần thưởng">
+    <button class="hit rune-btn rewards" data-popup="Phần thưởng" data-hq-badge="rewards" aria-label="Phần thưởng">
       <span class="rune-icon">🎁</span><small>Thưởng</small>
     </button>
-    <button class="hit rune-btn missions" data-popup="Nhiệm vụ" aria-label="Nhiệm vụ">
+    <button class="hit rune-btn missions" data-popup="Nhiệm vụ" data-hq-badge="missions" aria-label="Nhiệm vụ">
       <span class="rune-icon">📜</span><small>Nhiệm vụ</small>
     </button>
     <button class="hit rune-btn exit" data-popup="Thoát" aria-label="Thoát">
