@@ -696,3 +696,69 @@ button { font: inherit; }
   .top-actions { top: 90px; }
   .ai-hint { display: none; }
 }
+/* ================= 7. ĐIỆN THOẠI DỌC — BỐ CỤC 3 CỘT GỌN GÀNG ================= */
+@media (max-width: 700px) and (orientation: portrait) {
+  .home { height: 100vh; height: 100dvh; min-height: 560px; }
+  .hotspots { transform: none !important; }
+
+  /* Dải trên: thẻ người chơi + nút xếp hạng cùng một hàng */
+  .player-card {
+    transform: none; left: 8px; top: calc(8px + env(safe-area-inset-top));
+    width: calc(100% - 132px); min-width: 0; height: 58px;
+    gap: 8px; padding: 6px 9px; border-radius: 15px;
+  }
+  .avatar { flex-basis: 42px; height: 42px; font-size: 22px; border-width: 2px; }
+  .player-info strong { font-size: 13px; margin-bottom: 5px; overflow: hidden; text-overflow: ellipsis; }
+  .top-actions { transform: none; top: calc(8px + env(safe-area-inset-top)); right: 8px; }
+  .ranking-button {
+    min-width: 0; width: 112px; min-height: 58px; padding: 6px 8px;
+    gap: 5px; border-radius: 15px; font-size: 12px; line-height: 1.15; text-align: left;
+  }
+  .ranking-button em { display: none; }
+  .top-button > span:first-child { font-size: 20px; }
+  .ranking-panel, .ai-hint { display: none; }
+
+  /* Lưới đảo: 3 cột x 4 hàng, Đảo Trung Tâm ở giữa hàng 2 */
+  .math, .physics, .chemistry, .sport, .art, .geography,
+  .computer, .english, .history, .literature, .biology { width: 30%; height: 12.5%; right: auto; }
+  .math      { left: 2.5%;  top: 14%; }
+  .physics   { left: 35%;   top: 12.5%; }
+  .chemistry { left: 67.5%; top: 14%; }
+  .literature{ left: 1%;    top: 35%; width: 26%; }
+  .biology   { left: 73%;   top: 35%; width: 26%; }
+  .center    { left: 26%;   top: 31%; width: 48%; height: 19%; }
+  .sport     { left: 2.5%;  top: 55%; }
+  .art       { left: 35%;   top: 56.5%; }
+  .geography { left: 67.5%; top: 55%; }
+  .computer  { left: 2.5%;  top: 72%; }
+  .english   { left: 35%;   top: 73.5%; }
+  .history   { left: 67.5%; top: 72%; }
+
+  .island-art { left: -10%; width: 120%; bottom: -26%; height: 130%; }
+  .island-center-art { left: -12%; width: 124%; bottom: -24%; height: 140%; }
+  .center-aura-ring { left: -4%; right: -4%; }
+  .actor { width: 30px; height: 30px; }
+  .bush-l, .bush-r { width: 26px; height: 26px; }
+  .chem-boom, .chem-smoke, .spark, .rainbow, .flower,
+  .volcano, .lava, .laptop, .music-fx, .crown { width: 40px; height: 40px; }
+  .apple { width: 26px; height: 26px; }
+  .ball { width: 26px; height: 26px; }
+  .crystal { width: 40px; height: 40px; }
+  .fx-math { font-size: 12px; }
+
+  .island-label { bottom: -12px; padding: 3px 9px; font-size: 11px; border-radius: 12px; }
+  .center-title { bottom: -10px; font-size: 13px; padding: 5px 16px; }
+
+  /* Thanh 4 nút ở đáy màn hình, chia đều, không đè nhau */
+  .rune-btn {
+    bottom: calc(8px + env(safe-area-inset-bottom));
+    width: 22.5%; height: 60px; min-width: 0; min-height: 0;
+    border-radius: 14px; animation: none;
+  }
+  .rune-icon { font-size: 21px; }
+  .rune-btn small { font-size: 11px; }
+  .settings { left: 2%; }
+  .rewards  { left: 26.5%; }
+  .missions { left: 51%; }
+  .exit     { left: 75.5%; }
+}
