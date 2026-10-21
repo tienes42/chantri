@@ -1,15 +1,17 @@
 """
-Copy các bài học Toán từ database LOCAL (Docker) sang database ONLINE (Neon).
+Đồng bộ toàn bộ bài học các môn (Toán, Vật lý, Hóa học) từ database LOCAL (Docker) sang database ONLINE (Neon).
 
 Chạy từ thư mục backend:
     docker start hoc-de-lam-gi-postgres
-    python tools\\copy_math_from_local.py
+    python copy_math_from_local.py
+    (Hoặc chỉ đồng bộ 1 môn: python copy_math_from_local.py --subject math)
+    (Hoặc chỉ thêm bài mới mà không ghi đè: python copy_math_from_local.py --no-overwrite)
 
-- Database ONLINE lấy từ DATABASE_URL trong backend\\.env  (Neon)
-- Database LOCAL mặc định: postgresql+psycopg://hoc_user:change_me@localhost:5432/hoc_de_lam_gi
-  (đổi bằng biến LOCAL_DATABASE_URL nếu khác)
-Chỉ thêm bài chưa có (so theo môn + lớp + topic), không xóa hay ghi đè gì.
+Điểm nâng cấp so với phiên bản cũ:
+1. Hỗ trợ đồng bộ cả 3 môn: Toán (math), Vật lý (physics), Hóa học (chemistry) thay vì chỉ riêng môn Toán.
+2. Chế độ Upsert mặc định: Vừa thêm bài học mới chưa có trên Neon, vừa cập nhật nội dung chi tiết & công thức mới cho các bài đã có (giữ nguyên ID bài học trên Neon để không làm mất tiến độ học tập của người dùng).
 """
+import argparse
 import os
 import sys
 from pathlib import Path
@@ -28,45 +30,103 @@ LOCAL_URL = os.getenv(
     "postgresql+psycopg://hoc_user:change_me@localhost:5432/hoc_de_lam_gi",
 )
 
-if "localhost" in DATABASE_URL or "127.0.0.1" in DATABASE_URL or DATABASE_URL.startswith("sqlite"):
-    sys.exit("DATABASE_URL trong backend\\.env đang trỏ về máy local. Hãy dán chuỗi kết nối Neon vào đó.")
 
-local = sessionmaker(bind=create_engine(LOCAL_URL))()
-online = OnlineSession()
+def sync_local_to_online(subject_filter="all", overwrite=True):
+    if "localhost" in DATABASE_URL or "127.0.0.1" in DATABASE_URL or DATABASE_URL.startswith("sqlite"):
+        sys.exit(
+            "[CẢNH BÁO] DATABASE_URL trong backend/.env đang trỏ về máy local.\n"
+            "Hãy dán chuỗi kết nối Neon (online) vào DATABASE_URL trước khi chạy đồng bộ."
+        )
 
-columns = [c.name for c in Lesson.__table__.columns if c.name not in ("id", "subject_id")]
+    local = sessionmaker(bind=create_engine(LOCAL_URL))()
+    online = OnlineSession()
 
-try:
-    l_subject = local.scalar(select(Subject).where(Subject.slug == "math"))
-    if l_subject is None:
-        sys.exit("Database local không có môn Toán (slug = math).")
+    columns = [c.name for c in Lesson.__table__.columns if c.name not in ("id", "subject_id")]
 
-    o_subject = online.scalar(select(Subject).where(Subject.slug == "math"))
-    if o_subject is None:
-        o_subject = Subject(slug="math", name=l_subject.name)
-        online.add(o_subject)
-        online.flush()
+    try:
+        query = select(Subject)
+        if subject_filter != "all":
+            query = query.where(Subject.slug == subject_filter)
 
-    local_lessons = local.scalars(select(Lesson).where(Lesson.subject_id == l_subject.id)).all()
-    print(f"Local có {len(local_lessons)} bài Toán.")
+        local_subjects = local.scalars(query).all()
+        if not local_subjects:
+            sys.exit(f"Không tìm thấy môn học nào trong database local (filter={subject_filter}).")
 
-    existing = {
-        (l.grade, l.topic)
-        for l in online.scalars(select(Lesson).where(Lesson.subject_id == o_subject.id)).all()
-    }
+        total_added = 0
+        total_updated = 0
+        total_skipped = 0
 
-    added = 0
-    for l in local_lessons:
-        if (l.grade, l.topic) in existing:
-            continue
-        online.add(Lesson(subject_id=o_subject.id, **{c: getattr(l, c) for c in columns}))
-        added += 1
+        for l_subject in local_subjects:
+            o_subject = online.scalar(select(Subject).where(Subject.slug == l_subject.slug))
+            if o_subject is None:
+                o_subject = Subject(slug=l_subject.slug, name=l_subject.name)
+                online.add(o_subject)
+                online.flush()
+                print(f"[CREATE SUBJECT] Đã tạo môn '{l_subject.name}' ({l_subject.slug}) trên Neon.")
 
-    online.commit()
-    print(f"Đã thêm {added} bài Toán lên Neon (bỏ qua {len(local_lessons) - added} bài đã có).")
-except Exception:
-    online.rollback()
-    raise
-finally:
-    local.close()
-    online.close()
+            local_lessons = local.scalars(
+                select(Lesson)
+                .where(Lesson.subject_id == l_subject.id)
+                .order_by(Lesson.grade, Lesson.id)
+            ).all()
+
+            online_lessons_map = {
+                (l.grade, l.topic): l
+                for l in online.scalars(select(Lesson).where(Lesson.subject_id == o_subject.id)).all()
+            }
+
+            added = 0
+            updated = 0
+            skipped = 0
+
+            for l in local_lessons:
+                key = (l.grade, l.topic)
+                if key not in online_lessons_map:
+                    online.add(Lesson(subject_id=o_subject.id, **{c: getattr(l, c) for c in columns}))
+                    added += 1
+                elif overwrite:
+                    o_lesson = online_lessons_map[key]
+                    for c in columns:
+                        setattr(o_lesson, c, getattr(l, c))
+                    updated += 1
+                else:
+                    skipped += 1
+
+            print(
+                f"[{l_subject.slug.upper()}] Local có {len(local_lessons)} bài -> "
+                f"Thêm mới: {added}, Cập nhật: {updated}, Bỏ qua: {skipped}"
+            )
+            total_added += added
+            total_updated += updated
+            total_skipped += skipped
+
+        online.commit()
+        print("\n" + "=" * 60)
+        print("ĐỒNG BỘ LOCAL -> NEON THÀNH CÔNG!")
+        print(f"  • Thêm mới : {total_added} bài")
+        print(f"  • Cập nhật : {total_updated} bài")
+        print(f"  • Bỏ qua   : {total_skipped} bài")
+        print("=" * 60)
+
+    except Exception:
+        online.rollback()
+        raise
+    finally:
+        local.close()
+        online.close()
+
+
+if __name__ == "__main__":
+    parser = argparse.ArgumentParser(description="Đồng bộ bài học từ Local Docker sang Online Neon.")
+    parser.add_argument(
+        "--subject",
+        default="all",
+        help="Slug môn học cần đồng bộ (math, physics, chemistry hoặc all)",
+    )
+    parser.add_argument(
+        "--no-overwrite",
+        action="store_true",
+        help="Chỉ thêm bài chưa có, không cập nhật bài đã tồn tại trên Neon",
+    )
+    args = parser.parse_args()
+    sync_local_to_online(subject_filter=args.subject, overwrite=not args.no_overwrite)
