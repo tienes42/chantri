@@ -1,7 +1,35 @@
+import os
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+# Tự động xác định thư mục `backend/` và `backend/tools/` dù đặt file ở đâu hay chạy từ đâu
+_CURRENT_DIR = Path(__file__).resolve().parent
+BACKEND_DIR = _CURRENT_DIR.parent if _CURRENT_DIR.name == "tools" else _CURRENT_DIR
+TOOLS_DIR = BACKEND_DIR / "tools"
+
+for _p in ( TOOLS_DIR, BACKEND_DIR ):
+    if _p.exists() and str(_p) not in sys.path:
+        sys.path.insert(0, str(_p))
+
+# Chuyển working directory về `backend/` để đường dẫn SQLite tương đối (sqlite:///./...) luôn khớp với FastAPI
+os.chdir(BACKEND_DIR)
+
+try:
+    from dotenv import load_dotenv
+    _env_path = BACKEND_DIR / ".env"
+    if _env_path.exists():
+        load_dotenv(dotenv_path=_env_path, override=True)
+except ImportError:
+    pass
+
+# Tương thích tự động kiểu JSONB của PostgreSQL khi chạy trên SQLite
+try:
+    from sqlalchemy.dialects.sqlite.base import SQLiteTypeCompiler
+    if not hasattr(SQLiteTypeCompiler, "visit_JSONB"):
+        SQLiteTypeCompiler.visit_JSONB = SQLiteTypeCompiler.visit_JSON
+except Exception:
+    pass
+
 """
 Nâng cấp toàn diện nội dung Toán THPT Lớp 10–12 (Chương trình GDPT 2018 + Chuyên đề nâng cao).
 Tổng cộng: 24 bài học (3 lớp × 8 chuyên đề/lớp), bao gồm:

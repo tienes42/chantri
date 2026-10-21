@@ -1,608 +1,604 @@
 /* =========================================================
-
-   MATH / SUBJECT GRADE PAGE (UPGRADED)
-
-   PostgreSQL -> FastAPI -> Frontend
-
+   MATH GRADE PAGE — THÁNH ĐƯỜNG HÌNH HỌC & TỶ LỆ VÀNG
+   HỌC ĐỂ LÀM GÌ (API VERSION + 2.5D SPRITES)
 ========================================================= */
 
+const urlParams = new URLSearchParams(window.location.search);
+const grade = urlParams.get("grade") || "10";
 
+const API_BASE =
+  ["127.0.0.1", "localhost"].includes(location.hostname) && location.port !== "8000"
+    ? "http://127.0.0.1:8000/api"
+    : "/api";
 
-const API_BASE = "http://127.0.0.1:8000/api";
-
-
-
-/* =========================
-
-   GET PARAMS (GRADE & SUBJECT)
-
-========================= */
-
-
-
-const params = new URLSearchParams(window.location.search);
-
-const grade = params.get("grade") || "10";
-
-const subjectSlug = params.get("subject") || "math";
-
-
-
-const subjectLabels = {
-
-    math: "TOÁN",
-
-    physics: "VẬT LÝ",
-
-    chemistry: "HÓA HỌC"
-
-};
-
-
-
-/* =========================
-
+/* =========================================================
    ELEMENTS
-
-========================= */
-
-
-
-const backButton = document.getElementById("backButton");
-
+========================================================= */
 const gradeTitle = document.getElementById("gradeTitle");
-
 const gradeDescription = document.getElementById("gradeDescription");
-
 const topicsGrid = document.getElementById("topicsGrid");
-
 const topicCount = document.getElementById("topicCount");
-
 const lessonCount = document.getElementById("lessonCount");
-
-const xpCount = document.getElementById("xpCount");
-
 const challengeCount = document.getElementById("challengeCount");
-
 const progressPercent = document.getElementById("progressPercent");
-
 const progressFill = document.getElementById("progressFill");
-
 const progressText = document.getElementById("progressText");
-
-const challengeButton = document.getElementById("challengeButton");
+const xpCount = document.getElementById("xpCount");
+const xpProgress = document.getElementById("xpProgress");
 
 const topicPopup = document.getElementById("topicPopup");
-
 const popupClose = document.getElementById("popupClose");
-
 const popupIcon = document.getElementById("popupIcon");
-
 const popupLabel = document.getElementById("popupLabel");
-
 const popupTitle = document.getElementById("popupTitle");
-
 const popupDescription = document.getElementById("popupDescription");
-
 const popupLessons = document.getElementById("popupLessons");
-
 const popupXP = document.getElementById("popupXP");
-
 const popupStart = document.getElementById("popupStart");
 
-
-
-/* =========================
-
-   TOPIC ICONS (FALLBACK DICTIONARY)
-
-========================= */
-
-
-
-const topicIcons = {
-
-    // Toán 1-9
-
-    "so-hoc": "🔢",
-
-    "phep-cong": "➕",
-
-    "phep-tru": "➖",
-
-    "phep-nhan": "✖️",
-
-    "phep-chia": "➗",
-
-    "do-luong": "📏",
-
-    "dai-luong": "⚖️",
-
-    "quy-luat-logic": "🧩",
-
-    "phep-chia-hinh-khoi": "➗",
-
-    "so-tu-nhien": "🔢",
-
-    "du-lieu": "📊",
-
-    "lam-quen-phan-so": "🍕",
-
-    "phan-so": "🍰",
-
-    "bieu-do": "📊",
-
-    "trung-binh-cong-tong-hieu": "🧮",
-
-    "so-thap-phan": "🔢",
-
-    "ti-so": "🗺️",
-
-    "ti-so-phan-tram-chuyen-dong": "🚄",
-
-    "toan-thuc-te": "🌍",
-
-    "so-nguyen-chia-het": "🌡️",
-
-    "tu-duy-logic": "🧠",
-
-    "so-huu-ti": "➗",
-
-    "ti-le-thuc-so-thuc": "⚖️",
-
-    "dai-so": "🔤",
-
-    "ung-dung": "🏦",
-
-    "bieu-thuc": "🔤",
-
-    "hang-dang-thuc-phan-thuc": "⚡",
-
-    "phuong-trinh": "⚖️",
-
-    "logic": "🧠",
-
-    "can-thuc": "√",
-
-    "he-thuc-viete-hinh-khong-gian": "🌐",
-
-    // Toán 10-12
-
-    "menh-de": "💡",
-
-    "tap-hop": "⭕",
-
-    "bat-phuong-trinh": "📊",
-
-    "ham-so": "📈",
-
-    "vecto": "➡️",
-
-    "hinh-hoc": "📐",
-
-    "to-hop-xac-suat": "🎲",
-
-    "thong-ke": "📊",
-
-    "day-so-cap-so": "📶",
-
-    "gioi-han": "♾️",
-
-    "mu-logarit": "🚀",
-
-    "dao-ham": "⚡",
-
-    "xac-suat": "🎲",
-
-    "nguyen-ham": "∫",
-
-    "tich-phan": "📐",
-
-    "thong-ke-ghep-nhom": "📊",
-
-    "so-phuc": "🌀",
-
-    "on-tap-thpt": "🏆"
-
+/* =========================================================
+   GRADE INFORMATION & TOPIC MAPPINGS
+========================================================= */
+const gradeDescriptions = {
+  1: "Làm quen với những con số, phép tính và hình dạng đầu tiên.",
+  2: "Phát triển khả năng tính toán và tư duy logic.",
+  3: "Mở rộng khả năng tính toán và giải quyết vấn đề.",
+  4: "Xây dựng nền tảng vững chắc về số học và hình học.",
+  5: "Hoàn thiện nền tảng toán học tiểu học.",
+  6: "Bước vào thế giới toán học THCS.",
+  7: "Khám phá đại số và hình học thông qua tư duy logic.",
+  8: "Phát triển tư duy đại số và khả năng giải quyết vấn đề.",
+  9: "Chuẩn bị nền tảng toán học cho bậc THPT.",
+  10: "Xây dựng nền tảng tư duy toán học và khám phá cách Toán được sử dụng để giải quyết vấn đề.",
+  11: "Tiến sâu vào giải tích, hình học và xác suất.",
+  12: "Chinh phục những kiến thức trọng tâm và vận dụng Toán vào giải quyết vấn đề."
 };
 
+const topicIcons = {
+  "so-hoc": "🔢",
+  "so-tu-nhien": "🔢",
+  "so-huu-ti": "🔢",
+  "so-thap-phan": "🔢",
+  "so-phuc": "🔢",
+  "phep-cong": "➕",
+  "phep-tru": "➖",
+  "phep-nhan": "✖️",
+  "phep-chia": "➗",
+  "phan-so": "➗",
+  "dai-luong": "📏",
+  "do-luong": "📏",
+  "hinh-hoc": "📐",
+  "du-lieu": "📊",
+  "bieu-do": "📊",
+  "thong-ke": "📊",
+  "ti-so": "🎯",
+  "toan-thuc-te": "🎯",
+  "ung-dung": "🎯",
+  "tu-duy-logic": "🧠",
+  "logic": "🧠",
+  "bieu-thuc": "🔣",
+  "phuong-trinh": "📈",
+  "can-thuc": "√",
+  "ham-so": "📈",
+  "menh-de": "🔣",
+  "tap-hop": "🧩",
+  "vecto": "➡️",
+  "dai-so": "📈",
+  "gioi-han": "∞",
+  "dao-ham": "∫",
+  "nguyen-ham": "∫",
+  "xac-suat": "🎲",
+  "on-tap-thpt": "🏆"
+};
 
-
-/* =========================
-
-   CURRENT DATA
-
-========================= */
-
-
+const topicDescriptions = {
+  "menh-de": "Làm quen với ngôn ngữ và tư duy logic của Toán học.",
+  "tap-hop": "Khám phá tập hợp, phép toán trên tập hợp và ứng dụng.",
+  "ham-so": "Hiểu hàm số và cách mô tả sự thay đổi.",
+  "vecto": "Khám phá vectơ và các ứng dụng hình học.",
+  "hinh-hoc": "Khám phá các kiến thức hình học và ứng dụng.",
+  "thong-ke": "Thu thập, biểu diễn và phân tích dữ liệu.",
+  "so-hoc": "Làm việc với các số và phép tính.",
+  "phep-cong": "Khám phá phép cộng qua những tình huống gần gũi.",
+  "phep-tru": "Hiểu cách lấy bớt và tìm phần còn lại.",
+  "phep-nhan": "Khám phá phép nhân và ứng dụng.",
+  "phep-chia": "Hiểu và vận dụng phép chia.",
+  "phan-so": "Khám phá và thực hiện các phép toán với phân số.",
+  "dai-luong": "Làm việc với các đại lượng và đơn vị đo.",
+  "do-luong": "Làm quen với độ dài, thời gian và đơn vị.",
+  "du-lieu": "Thu thập và biểu diễn dữ liệu.",
+  "bieu-do": "Đọc và phân tích dữ liệu bằng biểu đồ.",
+  "xac-suat": "Khám phá xác suất và các bài toán thực tế.",
+  "toan-thuc-te": "Vận dụng Toán học để giải quyết các vấn đề thực tế."
+};
 
 let lessons = [];
-
+let topics = [];
 let selectedTopic = null;
+const slicedSprites = [];
 
+const storageKey = "hoc-de-lam-gi-math-grade-" + grade;
+let progress = Number(localStorage.getItem(storageKey)) || 0;
+progress = Math.min(100, Math.max(0, progress));
 
-
-/* =========================
-
-   BACK BUTTON
-
-========================= */
-
-
-
-if (backButton) {
-
-    backButton.addEventListener("click", function () {
-
-        window.location.href = `${subjectSlug}.html`;
-
-    });
-
+/* =========================================================
+   TỰ ĐỘNG CẮT & TÁCH NỀN 16 ICON TOÁN 2.5D (assets/math-icons.png)
+========================================================= */
+function loadImg(src) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.onload = () => resolve(img);
+    img.onerror = reject;
+    img.src = src;
+  });
 }
 
+async function initMathGradeSprites() {
+  try {
+    const img = await loadImg("assets/math-icons.png");
+    const cellW = img.naturalWidth / 4;
+    const cellH = img.naturalHeight / 4;
 
-
-/* =========================
-
-   LOAD LESSONS
-
-========================= */
-
-
-
-async function loadLessons() {
-
-    try {
-
-        topicsGrid.innerHTML = `
-
-            <div style="grid-column: 1 / -1; text-align: center; padding: 40px;">
-
-                Đang tải bài học...
-
-            </div>
-
-        `;
-
-
-
-        const response = await fetch(
-
-            `${API_BASE}/content/subjects/${subjectSlug}/lessons?grade=${grade}`
-
+    for (let row = 0; row < 4; row++) {
+      for (let col = 0; col < 4; col++) {
+        const padX = cellW * 0.04;
+        const padY = cellH * 0.04;
+        const size = 220;
+        const c = document.createElement("canvas");
+        c.width = size;
+        c.height = size;
+        const ctx = c.getContext("2d");
+        ctx.drawImage(
+          img,
+          col * cellW + padX,
+          row * cellH + padY,
+          cellW - padX * 2,
+          cellH - padY * 2,
+          0,
+          0,
+          size,
+          size
         );
 
+        const imgData = ctx.getImageData(0, 0, size, size);
+        const d = imgData.data;
+        const visited = new Uint8Array(size * size);
+        const isBg = idx => {
+          const r = d[idx], g = d[idx + 1], b = d[idx + 2];
+          const max = Math.max(r, g, b), min = Math.min(r, g, b);
+          return (r > 224 && g > 224 && b > 224) || (max - min < 18 && min > 175);
+        };
 
+        const stack = [];
+        for (let x = 0; x < size; x++) stack.push(x, (size - 1) * size + x);
+        for (let y = 0; y < size; y++) stack.push(y * size, y * size + (size - 1));
 
-        if (!response.ok) {
-
-            throw new Error(`API error: ${response.status}`);
-
+        while (stack.length > 0) {
+          const p = stack.pop();
+          if (p < 0 || p >= size * size || visited[p]) continue;
+          visited[p] = 1;
+          const idx = p * 4;
+          if (isBg(idx)) {
+            d[idx + 3] = 0;
+            const x = p % size, y = (p / size) | 0;
+            if (x > 0) stack.push(p - 1);
+            if (x < size - 1) stack.push(p + 1);
+            if (y > 0) stack.push(p - size);
+            if (y < size - 1) stack.push(p + size);
+          }
         }
 
+        for (let i = 0; i < size * size; i++) {
+          const idx = i * 4;
+          if (d[idx + 3] > 0 && d[idx] > 240 && d[idx + 1] > 240 && d[idx + 2] > 240) {
+            d[idx + 3] = 0;
+          }
+        }
 
-
-        lessons = await response.json();
-
-        renderPage();
-
-    } catch (error) {
-
-        console.error("Không thể tải dữ liệu:", error);
-
-        topicsGrid.innerHTML = `
-
-            <div style="grid-column: 1 / -1; text-align: center; padding: 40px; color: #d00;">
-
-                Không thể kết nối tới máy chủ.<br><br>
-
-                Hãy kiểm tra FastAPI đang chạy.
-
-            </div>
-
-        `;
-
+        ctx.putImageData(imgData, 0, 0);
+        slicedSprites.push(c.toDataURL("image/png"));
+      }
     }
 
+    const applySprite = (selector, idx) => {
+      const url = slicedSprites[idx];
+      if (!url) return;
+      document.querySelectorAll(selector).forEach(el => {
+        el.style.backgroundImage = `url("${url}")`;
+        el.querySelectorAll("span").forEach(s => { s.style.display = "none"; });
+        if (el.classList.contains("action-sprite")) el.textContent = "";
+      });
+    };
+
+    applySprite('[data-sprite="core"]', 0);
+    applySprite('[data-sprite="stat1"]', 1);
+    applySprite('[data-sprite="stat2"]', 2);
+    applySprite('[data-sprite="stat3"]', 7);
+    applySprite('[data-sprite="stat4"]', 9);
+    applySprite('[data-sprite="calc"]', 8);
+    applySprite('[data-sprite="progress"]', 10);
+    applySprite('[data-sprite="scenario"]', 3);
+    applySprite('[data-prop="p1"]', 12);
+    applySprite('[data-prop="p2"]', 13);
+    applySprite('[data-prop="p3"]', 14);
+    applySprite('[data-prop="p4"]', 15);
+
+    if (topics.length) renderTopics();
+  } catch (e) {
+    console.info("Dùng icon mặc định:", e);
+  }
 }
 
+/* =========================================================
+   LOAD LESSONS FROM API
+========================================================= */
+async function loadLessons() {
+  try {
+    const url = `${API_BASE}/content/subjects/math/lessons?grade=${encodeURIComponent(grade)}`;
+    const response = await fetch(url);
 
+    if (!response.ok) {
+      throw new Error(`HTTP ${response.status}`);
+    }
 
-/* =========================
+    lessons = await response.json();
 
-   GROUP TOPICS
+    if (!Array.isArray(lessons)) {
+      throw new Error("API không trả về danh sách bài học");
+    }
 
-========================= */
-
-
-
-function groupTopics() {
-
-    const groups = {};
-
-    lessons.forEach(lesson => {
-
-        if (!groups[lesson.topic]) {
-
-            groups[lesson.topic] = [];
-
-        }
-
-        groups[lesson.topic].push(lesson);
-
-    });
-
-    return groups;
-
+    buildTopics();
+    renderPage();
+  } catch (error) {
+    console.error("LỖI LOAD LESSONS:", error);
+    if (topicsGrid) {
+      topicsGrid.innerHTML = `
+        <div class="error-state">
+          <h3>Không thể tải dữ liệu bài học</h3>
+          <p>${error.message}</p>
+          <button onclick="location.reload()" class="retry-btn">Thử lại</button>
+        </div>
+      `;
+    }
+  }
 }
 
+/* =========================================================
+   BUILD TOPICS & RENDER PAGE
+========================================================= */
+function buildTopics() {
+  const topicMap = new Map();
 
+  lessons.forEach(function (lesson) {
+    if (!topicMap.has(lesson.topic)) {
+      topicMap.set(lesson.topic, {
+        slug: lesson.topic,
+        name: lesson.title,
+        description:
+          lesson.description ||
+          topicDescriptions[lesson.topic] ||
+          "Khám phá kiến thức Toán học.",
+        icon: lesson.icon || topicIcons[lesson.topic] || "📚",
+        lessons: 0
+      });
+    }
+    topicMap.get(lesson.topic).lessons++;
+  });
 
-/* =========================
-
-   RENDER PAGE
-
-========================= */
-
-
+  topics = Array.from(topicMap.values());
+}
 
 function renderPage() {
+  const gradeNumber = Number(grade);
 
-    const subjectLabel = subjectLabels[subjectSlug] || "MÔN HỌC";
-
-    gradeTitle.textContent = `${subjectLabel} LỚP ${grade}`;
-
+  if (gradeTitle) {
+    gradeTitle.textContent = `TOÁN LỚP ${grade}`;
+  }
+  if (gradeDescription) {
     gradeDescription.textContent =
+      gradeDescriptions[gradeNumber] ||
+      "Khám phá Toán học qua kiến thức và thực hành.";
+  }
 
-        `Khám phá hệ thống kiến thức, công thức chuyên sâu ${subjectLabel.toLowerCase()} lớp ${grade} và vận dụng giải quyết các bài toán thực tiễn.`;
+  const totalLessons = lessons.length;
+  if (topicCount) topicCount.textContent = topics.length;
+  if (lessonCount) lessonCount.textContent = totalLessons;
+  if (challengeCount) {
+    challengeCount.textContent = Math.max(1, Math.ceil(topics.length / 2));
+  }
 
+  updateProgress(totalLessons);
+  if (xpCount) xpCount.textContent = Math.round(progress * 10);
+  if (xpProgress) xpProgress.style.width = `${progress}%`;
 
-
-    const topics = groupTopics();
-
-    const topicKeys = Object.keys(topics);
-
-
-
-    topicCount.textContent = topicKeys.length;
-
-    lessonCount.textContent = lessons.length;
-
-    xpCount.textContent = lessons.length * 10;
-
-
-
-    const challenges = lessons.filter(
-
-        lesson => lesson.challenge && lesson.challenge.trim() !== ""
-
-    ).length;
-
-    challengeCount.textContent = challenges;
-
-
-
-    progressPercent.textContent = "0%";
-
-    progressFill.style.width = "0%";
-
-    progressText.textContent = `0 / ${lessons.length} bài học hoàn thành`;
-
-
-
-    topicsGrid.innerHTML = "";
-
-    topicKeys.forEach((topic, idx) => {
-
-        const topicLessons = topics[topic];
-
-        const firstLesson = topicLessons[0];
-
-        createTopicCard(topic, topicLessons, firstLesson, idx + 1);
-
-    });
-
+  renderTopics();
 }
 
+function updateProgress(totalLessons) {
+  if (progressPercent) progressPercent.textContent = progress + "%";
+  if (progressFill) progressFill.style.width = progress + "%";
 
+  const completedLessons = Math.round((totalLessons * progress) / 100);
+  if (progressText) {
+    progressText.textContent =
+      completedLessons + " / " + totalLessons + " bài học hoàn thành";
+  }
+}
 
-/* =========================
+function getTopicProgress(index) {
+  if (progress <= 0) return 0;
+  if (index === 0) return progress;
+  return Math.max(0, Math.min(100, progress - index * 12));
+}
 
-   CREATE TOPIC CARD
+function renderTopics() {
+  if (!topicsGrid) return;
 
-========================= */
+  if (!topics.length) {
+    topicsGrid.innerHTML = `
+      <div class="loading-state">
+        <strong>Chưa có dữ liệu bài học cho lớp ${grade}.</strong>
+      </div>
+    `;
+    return;
+  }
 
+  topicsGrid.innerHTML = "";
 
-
-function createTopicCard(topic, topicLessons, firstLesson, indexNumber) {
-
-    const card = document.createElement("div");
-
+  topics.forEach(function (topic, index) {
+    const topicProgress = getTopicProgress(index);
+    const card = document.createElement("button");
+    card.type = "button";
     card.className = "topic-card";
+    card.dataset.topic = topic.slug;
 
-
-
-    const icon = firstLesson.icon || topicIcons[topic] || "📚";
-
-    const title = firstLesson.title || topic;
-
-    const description = firstLesson.description || "Khám phá chủ đề này.";
-
-
+    const spriteUrl = slicedSprites.length
+      ? slicedSprites[(index + 1) % slicedSprites.length]
+      : null;
+    const iconStyle = spriteUrl
+      ? `style="background-image:url('${spriteUrl}')"`
+      : "";
+    const iconContent = spriteUrl ? "" : topic.icon;
 
     card.innerHTML = `
-
-        <div class="topic-icon">${icon}</div>
-
-        <div class="topic-info">
-
-            <span class="topic-number">CHỦ ĐỀ ${indexNumber}</span>
-
-            <h3>${title}</h3>
-
-            <p>${description}</p>
-
-            <div class="topic-meta">
-
-                <span>📚 ${topicLessons.length} bài học</span>
-
-                <span>⭐ ${topicLessons.length * 10} XP</span>
-
-            </div>
-
+      <div class="topic-top">
+        <div class="topic-icon" ${iconStyle}>${iconContent}</div>
+        <span class="topic-number">CHỦ ĐỀ ${String(index + 1).padStart(2, "0")}</span>
+      </div>
+      <h3>${topic.name}</h3>
+      <p>${topic.description}</p>
+      <div class="topic-progress">
+        <div class="topic-progress-top">
+          <span>${topic.lessons} bài học</span>
+          <span>${topicProgress}%</span>
         </div>
-
-        <div class="topic-arrow">→</div>
-
+        <div class="topic-progress-bar">
+          <div class="topic-progress-fill" style="width:${topicProgress}%"></div>
+        </div>
+      </div>
+      <span class="topic-arrow">→</span>
     `;
 
-
-
     card.addEventListener("click", function () {
-
-        openTopic(topic, topicLessons, firstLesson);
-
+      openTopic(topic, index);
     });
-
-
 
     topicsGrid.appendChild(card);
-
+  });
 }
 
+/* =========================================================
+   TOPIC POPUP
+========================================================= */
+function openTopic(topic, topicIdx = 0) {
+  if (!topic) return;
+  selectedTopic = topic;
 
+  if (popupIcon) {
+    const spriteUrl = slicedSprites.length
+      ? slicedSprites[(topicIdx + 1) % slicedSprites.length]
+      : null;
+    if (spriteUrl) {
+      popupIcon.style.backgroundImage = `url("${spriteUrl}")`;
+      popupIcon.textContent = "";
+    } else {
+      popupIcon.style.backgroundImage = "none";
+      popupIcon.textContent = topic.icon;
+    }
+  }
 
-/* =========================
+  if (popupLabel) popupLabel.textContent = `TOÁN LỚP ${grade}`;
+  if (popupTitle) popupTitle.textContent = topic.name;
+  if (popupDescription) popupDescription.textContent = topic.description;
+  if (popupLessons) popupLessons.textContent = topic.lessons;
+  if (popupXP) popupXP.textContent = topic.lessons * 10;
 
-   OPEN & CLOSE POPUP
+  const topicIndex = topics.findIndex(item => item.slug === topic.slug);
+  const topicProgress = getTopicProgress(topicIndex);
 
-========================= */
+  if (popupStart) {
+    if (topicProgress >= 100) {
+      popupStart.innerHTML = "Ôn tập lại <span>→</span>";
+    } else if (topicProgress > 0) {
+      popupStart.innerHTML = "Tiếp tục học <span>→</span>";
+    } else {
+      popupStart.innerHTML = "Bắt đầu học <span>→</span>";
+    }
+  }
 
-
-
-function openTopic(topic, topicLessons, firstLesson) {
-
-    selectedTopic = topic;
-
-    popupIcon.textContent = firstLesson.icon || topicIcons[topic] || "📚";
-
-    popupLabel.textContent = `CHỦ ĐỀ · LỚP ${grade}`;
-
-    popupTitle.textContent = firstLesson.title || topic;
-
-    popupDescription.textContent =
-
-        firstLesson.description || "Khám phá kiến thức và luyện tập thông qua các bài học.";
-
-    popupLessons.textContent = topicLessons.length;
-
-    popupXP.textContent = topicLessons.length * 10;
-
-    topicPopup.classList.add("active");
-
+  if (topicPopup) {
+    topicPopup.classList.add("show");
+    document.body.classList.add("popup-open");
+  }
 }
 
-
-
-if (popupClose) {
-
-    popupClose.addEventListener("click", function () {
-
-        topicPopup.classList.remove("active");
-
-    });
-
+function closeTopicPopup() {
+  if (topicPopup) topicPopup.classList.remove("show");
+  document.body.classList.remove("popup-open");
+  selectedTopic = null;
 }
 
-
-
+if (popupClose) popupClose.addEventListener("click", closeTopicPopup);
 if (topicPopup) {
-
-    topicPopup.addEventListener("click", function (event) {
-
-        if (event.target === topicPopup) {
-
-            topicPopup.classList.remove("active");
-
-        }
-
-    });
-
+  topicPopup.addEventListener("click", function (event) {
+    if (event.target === topicPopup) closeTopicPopup();
+  });
 }
 
-
+document.addEventListener("keydown", function (event) {
+  if (
+    event.key === "Escape" &&
+    topicPopup &&
+    topicPopup.classList.contains("show")
+  ) {
+    closeTopicPopup();
+  }
+});
 
 if (popupStart) {
+  popupStart.addEventListener("click", function () {
+    if (!selectedTopic || !selectedTopic.slug) return;
 
-    popupStart.addEventListener("click", function () {
+    const topicLessons = lessons.filter(
+      lesson => lesson.topic === selectedTopic.slug
+    );
+    if (topicLessons.length === 0) {
+      alert("Không tìm thấy bài học.");
+      return;
+    }
 
-        if (!selectedTopic) return;
+    const firstLesson = topicLessons[0];
+    const lessonURL =
+      "lesson.html?id=" +
+      encodeURIComponent(firstLesson.id) +
+      "&subject=math&grade=" +
+      encodeURIComponent(grade) +
+      "&topic=" +
+      encodeURIComponent(selectedTopic.slug);
 
-        const topicLessons = groupTopics()[selectedTopic];
-
-        if (!topicLessons || topicLessons.length === 0) return;
-
-        window.location.href = `lesson.html?id=${topicLessons[0].id}`;
-
-    });
-
+    window.location.href = lessonURL;
+  });
 }
 
+/* =========================================================
+   NAVIGATION & TOOLS
+========================================================= */
+const backButton = document.getElementById("backButton");
+if (backButton) {
+  backButton.addEventListener("click", function () {
+    window.location.href = "math.html";
+  });
+}
 
-
+const challengeButton = document.getElementById("challengeButton");
 if (challengeButton) {
-
-    challengeButton.addEventListener("click", function () {
-
-        const lessonWithChallenge = lessons.find(
-
-            lesson => lesson.challenge && lesson.challenge.trim() !== ""
-
-        );
-
-        if (!lessonWithChallenge) {
-
-            alert("Chưa có thử thách thực tế.");
-
-            return;
-
-        }
-
-        window.location.href = `lesson.html?id=${lessonWithChallenge.id}`;
-
-    });
-
+  challengeButton.addEventListener("click", function () {
+    alert("Khu vực Thử thách thực tế sẽ được xây dựng trong hệ thống HỌC ĐỂ LÀM GÌ.");
+  });
 }
-
-
 
 const calculatorButton = document.getElementById("calculatorButton");
-
 if (calculatorButton) {
-
-    calculatorButton.addEventListener("click", function () {
-
-        window.location.href = "calculator.html";
-
-    });
-
+  calculatorButton.addEventListener("click", function () {
+    window.location.href = "calculator.html";
+  });
 }
-
-
 
 const progressButton = document.getElementById("progressButton");
-
 if (progressButton) {
-
-    progressButton.addEventListener("click", function () {
-
-        window.location.href = "progress.html";
-
-    });
-
+  progressButton.addEventListener("click", function () {
+    alert("Trang phân tích năng lực sẽ được xây dựng sau hệ thống bài học.");
+  });
 }
 
+/* =========================================================
+   PARALLAX & CANVAS HÌNH HỌC 60FPS
+========================================================= */
+const parallaxBg = document.getElementById("parallaxBg");
+const parallaxRelics = document.getElementById("parallaxRelics");
+let mouseX = window.innerWidth / 2;
+let mouseY = window.innerHeight / 2;
 
+window.addEventListener("mousemove", function (e) {
+  mouseX = e.clientX;
+  mouseY = e.clientY;
+  const nx = e.clientX / window.innerWidth - 0.5;
+  const ny = e.clientY / window.innerHeight - 0.5;
+  if (parallaxBg) {
+    parallaxBg.style.transform = `translate(${nx * 16}px, ${ny * 10}px) scale(1.04)`;
+  }
+  if (parallaxRelics) {
+    parallaxRelics.style.transform = `translate(${nx * -24}px, ${ny * -16}px)`;
+  }
+});
 
-loadLessons();
+const canvas = document.getElementById("gradeCanvas");
+const ctx = canvas ? canvas.getContext("2d") : null;
+let cw = 0, ch = 0;
 
+function resizeCanvas() {
+  if (!canvas) return;
+  cw = canvas.width = window.innerWidth;
+  ch = canvas.height = window.innerHeight;
+}
+window.addEventListener("resize", resizeCanvas);
+resizeCanvas();
+
+const symbols = ["π", "∑", "∫", "∞", "√x", "Δ", "φ"];
+const pts = Array.from({ length: 28 }, (_, i) => ({
+  x: Math.random() * window.innerWidth,
+  y: Math.random() * window.innerHeight,
+  vx: (Math.random() - 0.5) * 0.5,
+  vy: (Math.random() - 0.5) * 0.5,
+  r: Math.random() * 2.2 + 1.2,
+  sym: i % 4 === 0 ? symbols[i % symbols.length] : null,
+  color: i % 2 === 0 ? "#fde047" : "#2dd4bf"
+}));
+
+function animateCanvas() {
+  if (!ctx) return;
+  ctx.clearRect(0, 0, cw, ch);
+
+  for (let i = 0; i < pts.length; i++) {
+    const p = pts[i];
+    p.x += p.vx;
+    p.y += p.vy;
+    if (p.x < 0 || p.x > cw) p.vx *= -1;
+    if (p.y < 0 || p.y > ch) p.vy *= -1;
+
+    ctx.save();
+    ctx.fillStyle = p.color;
+    ctx.shadowColor = p.color;
+    ctx.shadowBlur = 8;
+    if (p.sym) {
+      ctx.font = "bold 13px 'Segoe UI', sans-serif";
+      ctx.globalAlpha = 0.65;
+      ctx.fillText(p.sym, p.x - 5, p.y + 4);
+    } else {
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fill();
+    }
+    ctx.restore();
+
+    for (let j = i + 1; j < pts.length; j++) {
+      const q = pts[j];
+      const dist = Math.hypot(p.x - q.x, p.y - q.y);
+      if (dist < 135) {
+        ctx.strokeStyle = `rgba(251, 191, 36, ${(1 - dist / 135) * 0.2})`;
+        ctx.lineWidth = 1;
+        ctx.beginPath();
+        ctx.moveTo(p.x, p.y);
+        ctx.lineTo(q.x, q.y);
+        ctx.stroke();
+      }
+    }
+  }
+  requestAnimationFrame(animateCanvas);
+}
+animateCanvas();
+
+document.addEventListener("DOMContentLoaded", function () {
+  initMathGradeSprites();
+  loadLessons();
+});

@@ -1,29 +1,55 @@
 import argparse
+import os
 import sys
 from pathlib import Path
 
-sys.path.insert(0, str(Path(__file__).resolve().parent.parent))
+# Tự động xác định thư mục `backend/` và `backend/tools/` dù đặt file ở đâu hay chạy từ đâu
+_CURRENT_DIR = Path(__file__).resolve().parent
+BACKEND_DIR = _CURRENT_DIR.parent if _CURRENT_DIR.name == "tools" else _CURRENT_DIR
+TOOLS_DIR = BACKEND_DIR / "tools"
+
+for _p in (TOOLS_DIR, BACKEND_DIR):
+    if _p.exists() and str(_p) not in sys.path:
+        sys.path.insert(0, str(_p))
+
+# Chuyển working directory về `backend/` để đường dẫn SQLite tương đối (sqlite:///./...) luôn khớp với FastAPI
+os.chdir(BACKEND_DIR)
+
+try:
+    from dotenv import load_dotenv
+    _env_path = BACKEND_DIR / ".env"
+    if _env_path.exists():
+        load_dotenv(dotenv_path=_env_path, override=True)
+except ImportError:
+    pass
+
+# Tương thích tự động kiểu JSONB của PostgreSQL khi chạy trên SQLite
+try:
+    from sqlalchemy.dialects.sqlite.base import SQLiteTypeCompiler
+    if not hasattr(SQLiteTypeCompiler, "visit_JSONB"):
+        SQLiteTypeCompiler.visit_JSONB = SQLiteTypeCompiler.visit_JSON
+except Exception:
+    pass
+
 """
 Master Upgrade Script – Đồng bộ & Nâng cấp toàn bộ nội dung bài học các môn (Toán, Vật lý, Hóa học).
 
-Toàn bộ dữ liệu chi tiết từ `upgrade_lesson_content.py` cũ đã được hợp nhất và mở rộng hoàn chỉnh vào:
+Toàn bộ dữ liệu chi tiết đã được hợp nhất và mở rộng hoàn chỉnh vào:
   1. `upgrade_math_1_9.py`   : 54 bài Toán Lớp 1–9 (6 bài/lớp)
   2. `upgrade_math_10_12.py` : 24 bài Toán Lớp 10–12 (8 bài/lớp)
   3. `upgrade_physics.py`    : 50 bài Vật lý Lớp 6–12 (7–8 bài/lớp)
   4. `upgrade_chemistry.py`  : 49 bài Hóa học Lớp 6–12 (7 bài/lớp)
   => Tổng cộng: 177 bài học chuẩn GDPT 2018.
 
-Cách chạy từ thư mục backend:
+Cách chạy từ thư mục backend hoặc backend/tools:
   - Nâng cấp TẤT CẢ các môn và các lớp:
         python upgrade_lesson_content.py
-  - Chỉ nâng cấp 1 môn cụ thể (math / physics / chemistry):
-        python upgrade_lesson_content.py --subject math
-  - Chỉ nâng cấp 1 lớp cụ thể:
-        python upgrade_lesson_content.py --grade 12
+  - Nếu schema Pydantic ở backend yêu cầu `formulas` là list[str] phẳng thay vì list[dict] phân nhóm:
+        python upgrade_lesson_content.py --flat-formulas
 """
 
 from sqlalchemy import select
-from database.database import SessionLocal
+from database.database import SessionLocal, engine
 from models.lesson import Lesson
 from models.subject import Subject
 
@@ -47,7 +73,30 @@ SUBJECT_NAMES = {
 }
 
 
-def upsert_subject_lessons(db, subject_slug, lessons_data, grade_filter=None):
+def flatten_formulas_to_strings(formulas_data):
+    """Chuyển cấu trúc formulas phân nhóm [{category, items}] thành list[str] phẳng nếu schema yêu cầu list[str]."""
+    if not formulas_data:
+        return []
+    flat = []
+    for group in formulas_data:
+        if isinstance(group, str):
+            flat.append(group)
+            continue
+        if isinstance(group, dict):
+            cat = group.get("category", "")
+            for item in group.get("items", []):
+                name = item.get("name", "")
+                f_str = item.get("formula", "")
+                note = item.get("note", "")
+                prefix = f"[{cat}] " if cat else ""
+                line = f"{prefix}{name}: {f_str}" if name else f"{prefix}{f_str}"
+                if note:
+                    line += f" ({note})"
+                flat.append(line)
+    return flat
+
+
+def upsert_subject_lessons(db, subject_slug, lessons_data, grade_filter=None, flat_formulas=False):
     subject = db.scalar(select(Subject).where(Subject.slug == subject_slug))
     if subject is None:
         subject = Subject(slug=subject_slug, name=SUBJECT_NAMES.get(subject_slug, subject_slug))
@@ -85,6 +134,8 @@ def upsert_subject_lessons(db, subject_slug, lessons_data, grade_filter=None):
             status = "UPDATE"
 
         for key, value in item.items():
+            if key == "formulas" and flat_formulas:
+                value = flatten_formulas_to_strings(value)
             if hasattr(lesson, key):
                 setattr(lesson, key, value)
 
@@ -93,7 +144,8 @@ def upsert_subject_lessons(db, subject_slug, lessons_data, grade_filter=None):
     return created, updated
 
 
-def update_lessons(subject_filter="all", grade_filter=None):
+def update_lessons(subject_filter="all", grade_filter=None, flat_formulas=False):
+    print(f"[INFO] Đang kết nối Database: {engine.url.render_as_string(hide_password=True)}")
     total_created = 0
     total_updated = 0
 
@@ -107,7 +159,13 @@ def update_lessons(subject_filter="all", grade_filter=None):
                 print(f"ĐANG ĐỒNG BỘ: {label} ({len(lessons_list)} bài)")
                 print("-" * 72)
 
-                c, u = upsert_subject_lessons(db, slug, lessons_list, grade_filter=grade_filter)
+                c, u = upsert_subject_lessons(
+                    db,
+                    slug,
+                    lessons_list,
+                    grade_filter=grade_filter,
+                    flat_formulas=flat_formulas,
+                )
                 total_created += c
                 total_updated += u
 
@@ -140,5 +198,14 @@ if __name__ == "__main__":
         default=None,
         help="Chỉ nâng cấp một khối lớp cụ thể (từ 1 đến 12)",
     )
+    parser.add_argument(
+        "--flat-formulas",
+        action="store_true",
+        help="Lưu trường formulas dưới dạng mảng chuỗi phẳng list[str] thay vì list[dict] phân nhóm",
+    )
     args = parser.parse_args()
-    update_lessons(subject_filter=args.subject, grade_filter=args.grade)
+    update_lessons(
+        subject_filter=args.subject,
+        grade_filter=args.grade,
+        flat_formulas=args.flat_formulas,
+    )

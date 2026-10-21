@@ -1,5 +1,8 @@
 import os
 from pathlib import Path
+from sqlalchemy.dialects.sqlite.base import SQLiteTypeCompiler
+if not hasattr(SQLiteTypeCompiler, "visit_JSONB"):
+    SQLiteTypeCompiler.visit_JSONB = SQLiteTypeCompiler.visit_JSON
 
 from dotenv import load_dotenv
 from sqlalchemy import create_engine
