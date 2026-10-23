@@ -330,16 +330,28 @@ function _setBag(data) {
   if (Array.isArray(data)) { let o = data.find(v => v && typeof v === "object" && v._hdlg_sets); if (!o) { o = { _hdlg_sets: {} }; data.push(o); } return o._hdlg_sets; }
   if (!data._hdlg_sets || typeof data._hdlg_sets !== "object") data._hdlg_sets = {}; return data._hdlg_sets;
 }
+const PBK = "hdlg_pg_" + GAME_KEY; /* sao lưu tiến trình đề (sessionStorage + cookie) – KHÔNG phải khóa localStorage */
+function _ckGet() { try { const m = document.cookie.match(new RegExp("(?:^|; )" + PBK + "=([^;]*)")); return m ? JSON.parse(decodeURIComponent(m[1])) : null; } catch (e) { return null; } }
+function _ckSet(v) { try { document.cookie = PBK + "=" + encodeURIComponent(JSON.stringify(v)) + "; max-age=31536000; path=/; " + (location.protocol === "https:" ? "SameSite=None; Secure" : "SameSite=Lax"); } catch (e) {} }
+function _ssGet() { try { const r = sessionStorage.getItem(PBK); return r ? JSON.parse(r) : null; } catch (e) { return null; } }
+function _ssSet(v) { try { sessionStorage.setItem(PBK, JSON.stringify(v)); } catch (e) {} }
+function _slim(st) { return { cur: st.cur, done: st.done, round: st.round, last: st.last, cleared: st.cleared, prog: st.prog, nb: st.nb, ts: st.ts || 0 }; }
 function loadSetState() {
   const data = _readCompleted(), bag = data && typeof data === "object" ? (Array.isArray(data) ? ((data.find(v => v && typeof v === "object" && v._hdlg_sets) || {})._hdlg_sets || {}) : (data._hdlg_sets || {})) : {};
-  const st = bag[GAME_KEY] && typeof bag[GAME_KEY] === "object" ? bag[GAME_KEY] : {};
+  const cands = [bag[GAME_KEY], _ssGet(), _ckGet()].filter(o => o && typeof o === "object" && Number.isInteger(o.cur));
+  cands.sort((x, y) => (y.ts || 0) - (x.ts || 0));
+  const st = cands[0] || {};
   st.done = Array.isArray(st.done) ? st.done : []; st.nb = st.nb && typeof st.nb === "object" ? st.nb : {}; st.round = st.round || 1;
   return st;
 }
 function saveSetState() {
   if (!SETS || !SETST) return;
+  SETST.ts = Date.now();
   try { let data = _readCompleted(); if (!data || typeof data !== "object") data = []; _setBag(data)[GAME_KEY] = SETST; localStorage.setItem(STORAGE_KEYS.COMPLETED, JSON.stringify(data)); } catch (e) { console.warn("Không lưu được tiến trình đề", e); }
+  const sl = _slim(SETST); _ssSet(sl); _ckSet(sl);
 }
+["pagehide", "beforeunload"].forEach(ev => window.addEventListener(ev, () => { try { saveSetState(); } catch (e) {} }));
+document.addEventListener("visibilitychange", () => { if (document.visibilityState === "hidden") { try { saveSetState(); } catch (e) {} } });
 /* Chọn đề: đề đang dở → giữ nguyên; đề đã xong → random trong các đề CHƯA chơi của vòng; hết cả 3 đề → vòng mới, random trong cả 3 (không né đề vừa xong) */
 function chooseSet() {
   if (!SETS) return;
