@@ -637,3 +637,56 @@ document.addEventListener("DOMContentLoaded", function () {
   initPhysicsGradeSprites();
   loadLessons();
 });
+
+// ===== Đồng bộ khung Tài khoản người chơi & Sự kiện Click giống trang Index =====
+(function accountHudGrade() {
+    const card = document.getElementById('playerCard') || document.querySelector('.player');
+    if (card) {
+        card.style.cursor = 'pointer';
+        card.title = 'Tài khoản của tôi';
+        card.addEventListener('click', () => {
+            if (window.HDLG && typeof HDLG.showAccount === 'function') {
+                HDLG.showAccount();
+            }
+        });
+    }
+
+    function renderPlayer(d) {
+        if (!d) return;
+        const nameEl = document.getElementById('playerName') || document.querySelector('.player-info strong');
+        const lvlEl = document.getElementById('playerLevel') || document.querySelector('.player .level');
+        const barEl = document.getElementById('playerXpBar') || document.getElementById('xpProgress');
+        const txtEl = document.getElementById('playerXpText');
+        const av = document.getElementById('playerAvatar') || document.querySelector('.player-avatar');
+
+        const level = d.level || (Math.floor((d.xp || 0) / 100) + 1);
+        const inLevel = d.inLevel !== undefined ? d.inLevel : ((d.xp || 0) % 100);
+
+        if (nameEl) nameEl.textContent = d.name || 'Tên người chơi';
+        if (lvlEl) lvlEl.textContent = 'Lv.' + level;
+        if (barEl) barEl.style.width = inLevel + '%';
+        if (txtEl) txtEl.textContent = inLevel + '/100';
+
+        if (av) {
+            if (d.photo) {
+                av.innerHTML = '';
+                const img = document.createElement('img');
+                img.src = d.photo;
+                img.referrerPolicy = 'no-referrer';
+                img.alt = '';
+                img.style.cssText = 'width:100%;height:100%;border-radius:50%;object-fit:cover';
+                av.appendChild(img);
+            } else if (d.name) {
+                av.textContent = d.name.charAt(0).toUpperCase();
+            }
+        }
+    }
+
+    window.addEventListener('hdlg:update', e => renderPlayer(e.detail));
+    if (window.HDLG && HDLG.ready) {
+        HDLG.ready.then(() => {
+            if (typeof HDLG.getState === 'function') renderPlayer(HDLG.getState());
+            else if (HDLG.user) renderPlayer(HDLG.user);
+        });
+    }
+})();

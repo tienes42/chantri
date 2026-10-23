@@ -67,16 +67,26 @@
       </div>
     </div>
 
-    <div class="math-player">
-      <span class="math-player-icon">👨‍🎓</span>
-      <div>
-        <strong>Tên người chơi</strong>
+    <!-- Thay thế phần .math-player cũ bằng cấu trúc này trong Header của math.html, physics.html, chemistry.html -->
+<div class="math-player" id="playerCard" title="Tài khoản của tôi" style="cursor: pointer;">
+    <span class="math-player-icon" id="playerAvatar">
+        👨‍🎓
+    </span>
+
+    <div>
+        <strong id="playerName">
+            Tên người chơi
+        </strong>
+
         <div class="math-xp">
-          <div class="math-xp-progress"></div>
+            <div class="math-xp-progress" id="playerXpBar"></div>
         </div>
-      </div>
-      <span class="math-level">Lv.1</span>
     </div>
+
+    <span class="math-level" id="playerLevel">
+        Lv.1
+    </span>
+</div>
   </header>
 
   <!-- =========================
