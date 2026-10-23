@@ -637,3 +637,32 @@ document.addEventListener("DOMContentLoaded", function () {
   initPhysicsGradeSprites();
   loadLessons();
 });
+
+// ===== Đồng bộ tài khoản Firebase cho trang Grade =====
+(function accountHudGrade() {
+    function renderPlayer(d) {
+        const nameEl = document.getElementById('playerName');
+        const lvlEl = document.getElementById('playerLevel');
+        const barEl = document.getElementById('xpProgress');
+        const av = document.getElementById('playerAvatar');
+
+        if (nameEl) nameEl.textContent = d.name || 'Tên người chơi';
+        if (lvlEl) lvlEl.textContent = 'Lv.' + (d.level || 1);
+        if (barEl) barEl.style.width = (d.inLevel || 0) + '%';
+
+        if (av) {
+            if (d.photo) {
+                av.innerHTML = '';
+                const img = document.createElement('img');
+                img.src = d.photo; img.referrerPolicy = 'no-referrer'; img.alt = '';
+                img.style.cssText = 'width:100%;height:100%;border-radius:50%;object-fit:cover';
+                av.appendChild(img);
+            } else if (d.name) {
+                av.textContent = d.name.charAt(0).toUpperCase();
+            }
+        }
+    }
+
+    window.addEventListener('hdlg:update', e => { renderPlayer(e.detail); });
+    if (window.HDLG) HDLG.ready.then(() => { if (HDLG.user) renderPlayer(HDLG.user); });
+})();
