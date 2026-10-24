@@ -83,6 +83,25 @@
 
       <!-- CỘT TRÁI: MỤC LỤC TỰ ĐỘNG -->
       <aside class="lesson-sidebar" aria-label="Mục lục bài học">
+        <!-- PHẦN THƯỞNG SAO KHI HỌC BÀI -->
+        <div class="reward-card card-25d" id="rewardCard" aria-live="polite">
+          <div class="reward-head">
+            <span>⭐ SAO BÀI HỌC</span>
+            <strong id="rewardTotal">0/10</strong>
+          </div>
+          <ul class="reward-list">
+            <li class="reward-item" id="rewardRead">
+              <span class="reward-ico" aria-hidden="true">📖</span>
+              <span class="reward-text">Đọc hết bài<small id="rewardReadHint">Cuộn tới cuối bài học</small></span>
+              <b class="reward-pts" id="rewardReadPts">+5</b>
+            </li>
+            <li class="reward-item" id="rewardQuiz">
+              <span class="reward-ico" aria-hidden="true">❓</span>
+              <span class="reward-text">Đúng Kiểm tra nhanh<small id="rewardQuizHint">Chọn đúng ngay lần đầu</small></span>
+              <b class="reward-pts" id="rewardQuizPts">+5</b>
+            </li>
+          </ul>
+        </div>
         <div class="toc-card card-25d">
           <div class="toc-header">
             <span>📑 MỤC LỤC BÀI HỌC</span>
@@ -90,6 +109,7 @@
           </div>
           <nav id="tocList" class="toc-list"></nav>
         </div>
+
       </aside>
 
       <!-- CỘT PHẢI: NỘI DUNG BÀI HỌC CHÍNH -->

@@ -498,6 +498,7 @@ function renderAnswers(answerList, correctIndex) {
       allOptions.forEach((btn) => btn.classList.remove("correct", "wrong"));
 
       const isCorrect = Number(index) === Number(correctIndex);
+      handleQuizReward(isCorrect);
       if (isCorrect) {
         option.classList.add("correct");
         if (quizFeedback) {
@@ -708,6 +709,7 @@ function renderLesson(lesson) {
 
   renderExtraBackendSections(lesson);
   renderGame(lesson);
+  initLessonReward(lesson);
 
   finishLoading();
   buildTableOfContents();
@@ -725,6 +727,7 @@ function updateReadingProgress() {
 
   if (readingProgressFill) readingProgressFill.style.width = `${percent}%`;
   if (readingPercentText) readingPercentText.textContent = `${percent}%`;
+  checkReadReward(percent);
 
   const links = document.querySelectorAll(".toc-link");
   let activeIndex = 0;
@@ -739,6 +742,183 @@ function updateReadingProgress() {
 }
 
 window.addEventListener("scroll", updateReadingProgress, { passive: true });
+
+/* =========================================================
+   CỘNG SAO KHI HỌC BÀI
+   - 📖 Đọc hết bài (cuộn tới cuối + ở lại đủ thời gian tối thiểu): +5 sao
+   - ❓ Trả lời đúng "Kiểm tra nhanh" ngay lần chọn đầu tiên: +5 sao
+   - Bài không có câu Kiểm tra nhanh: đọc hết bài nhận trọn 10 sao
+   Mỗi phần chỉ nhận 1 lần / bài (lưu qua HDLG.lessonReward → đồng bộ Firebase).
+========================================================= */
+const READ_DONE_PERCENT = 92;      // cuộn tới >= 92% trang là "đã tới cuối bài"
+const MIN_READ_SECONDS = 30;       // phải ở lại bài ít nhất ngần này giây
+
+const rewardState = {
+  lessonId: null,
+  hasQuiz: false,
+  readStars: 5,
+  quizStars: 5,
+  startedAt: Date.now(),
+  reachedEnd: false,
+  readTimer: null,
+  quizAttempted: false
+};
+
+function hdlgReady() {
+  return window.HDLG && typeof HDLG.lessonReward === "function";
+}
+
+// Chờ Firebase đăng nhập & đồng bộ xong rồi mới cộng sao (tránh bị dữ liệu cũ ghi đè)
+function whenHdlgReady(fn) {
+  if (window.HDLG && HDLG.ready && typeof HDLG.ready.then === "function") {
+    HDLG.ready.then(fn, fn);
+  } else {
+    fn();
+  }
+}
+
+function getLessonStatus() {
+  if (!hdlgReady() || rewardState.lessonId == null) {
+    return { read: false, quiz: false, stars: 0, done: false };
+  }
+  return HDLG.lessonStatus(rewardState.lessonId);
+}
+
+function setRewardItem(itemId, hintId, ptsId, state, hint, pts) {
+  const item = document.getElementById(itemId);
+  const hintEl = document.getElementById(hintId);
+  const ptsEl = document.getElementById(ptsId);
+  if (!item) return;
+  item.classList.toggle("is-done", state === "done");
+  item.classList.toggle("is-missed", state === "missed");
+  if (hintEl && hint != null) hintEl.textContent = hint;
+  if (ptsEl && pts != null) ptsEl.textContent = pts;
+}
+
+function renderRewardCard() {
+  const card = document.getElementById("rewardCard");
+  if (!card) return;
+  if (!hdlgReady() || rewardState.lessonId == null) {
+    card.style.display = "none";
+    return;
+  }
+  card.style.display = "";
+
+  const st = getLessonStatus();
+  const max = rewardState.readStars + (rewardState.hasQuiz ? rewardState.quizStars : 0);
+  const totalEl = document.getElementById("rewardTotal");
+  if (totalEl) totalEl.textContent = `${Math.min(st.stars, max)}/${max} ⭐`;
+  card.classList.toggle("is-complete", st.stars >= max);
+
+  // Đọc hết bài
+  if (st.read) {
+    setRewardItem("rewardRead", "rewardReadHint", "rewardReadPts", "done", "Đã nhận sao", "✓");
+  } else {
+    const left = Math.max(0, MIN_READ_SECONDS - Math.floor((Date.now() - rewardState.startedAt) / 1000));
+    const hint = rewardState.reachedEnd && left > 0
+      ? `Đọc kỹ thêm ${left} giây nữa nhé`
+      : "Cuộn tới cuối bài học";
+    setRewardItem("rewardRead", "rewardReadHint", "rewardReadPts", "", hint, `+${rewardState.readStars}`);
+  }
+
+  // Kiểm tra nhanh
+  const quizItem = document.getElementById("rewardQuiz");
+  if (quizItem) quizItem.style.display = rewardState.hasQuiz ? "" : "none";
+  if (rewardState.hasQuiz) {
+    if (st.quiz) {
+      setRewardItem("rewardQuiz", "rewardQuizHint", "rewardQuizPts", "done", "Đã nhận sao", "✓");
+    } else if (rewardState.quizAttempted) {
+      setRewardItem("rewardQuiz", "rewardQuizHint", "rewardQuizPts", "missed",
+        "Chưa đúng — ôn lại rồi mở lại bài để thử lần nữa", `+${rewardState.quizStars}`);
+    } else {
+      setRewardItem("rewardQuiz", "rewardQuizHint", "rewardQuizPts", "", "Chọn đúng ngay lần đầu", `+${rewardState.quizStars}`);
+    }
+  }
+}
+
+function popRewardItem(itemId) {
+  const item = document.getElementById(itemId);
+  if (!item) return;
+  item.classList.remove("just-earned");
+  void item.offsetWidth;
+  item.classList.add("just-earned");
+}
+
+function tryGiveReadReward() {
+  if (!hdlgReady() || rewardState.lessonId == null) return;
+  if (getLessonStatus().read || !rewardState.reachedEnd) return;
+
+  const elapsed = (Date.now() - rewardState.startedAt) / 1000;
+  if (elapsed < MIN_READ_SECONDS) {
+    renderRewardCard();
+    if (!rewardState.readTimer) {
+      rewardState.readTimer = setInterval(function () {
+        if ((Date.now() - rewardState.startedAt) / 1000 >= MIN_READ_SECONDS) {
+          clearInterval(rewardState.readTimer);
+          rewardState.readTimer = null;
+          tryGiveReadReward();
+        } else {
+          renderRewardCard();
+        }
+      }, 1000);
+    }
+    return;
+  }
+
+  whenHdlgReady(function () {
+    const gained = HDLG.lessonReward(rewardState.lessonId, "read", rewardState.readStars, {
+      label: "Đọc hết bài học"
+    });
+    if (gained > 0) popRewardItem("rewardRead");
+    renderRewardCard();
+  });
+}
+
+function checkReadReward(percent) {
+  if (rewardState.lessonId == null || rewardState.reachedEnd) return;
+  if (percent >= READ_DONE_PERCENT) {
+    rewardState.reachedEnd = true;
+    tryGiveReadReward();
+  }
+}
+
+function handleQuizReward(isCorrect) {
+  if (!rewardState.hasQuiz || rewardState.quizAttempted) return;
+  rewardState.quizAttempted = true;          // chỉ tính lần chọn ĐẦU TIÊN
+
+  if (isCorrect && hdlgReady()) {
+    whenHdlgReady(function () {
+      if (getLessonStatus().quiz) return renderRewardCard();
+      const gained = HDLG.lessonReward(rewardState.lessonId, "quiz", rewardState.quizStars, {
+        label: "Trả lời đúng Kiểm tra nhanh"
+      });
+      if (gained > 0) popRewardItem("rewardQuiz");
+      renderRewardCard();
+    });
+  }
+  renderRewardCard();
+}
+
+function initLessonReward(lesson) {
+  rewardState.lessonId = lesson.id;
+  rewardState.hasQuiz = !!(lesson.question && Array.isArray(lesson.answers) && lesson.answers.length);
+  const total = (window.HDLG && HDLG.LESSON_STARS) || 10;
+  if (rewardState.hasQuiz) {
+    rewardState.quizStars = Math.floor(total / 2);
+    rewardState.readStars = total - rewardState.quizStars;
+  } else {
+    rewardState.quizStars = 0;
+    rewardState.readStars = total;
+  }
+  rewardState.startedAt = Date.now();
+  renderRewardCard();
+
+  // Chờ đăng nhập/đồng bộ xong rồi vẽ lại (tránh hiển thị sai trạng thái cũ)
+  if (window.HDLG && HDLG.ready && typeof HDLG.ready.then === "function") {
+    HDLG.ready.then(renderRewardCard);
+  }
+  window.addEventListener("hdlg:update", renderRewardCard);
+}
 
 /* =========================================================
    LOAD LESSON FROM API

@@ -172,31 +172,38 @@ async function initChemistryGradeSprites() {
 /* =========================================================
    PROGRESS & TOPICS
 ========================================================= */
+/* Tiến độ THẬT: lấy từ sao đã nhận khi học bài (HDLG.lessonStats trong auth.js) */
+function lessonTopicSlug(lesson) {
+  return lesson.topic || `topic-${lesson.id}`;
+}
+
+function getStats(list) {
+  list = list || lessons;
+  if (window.HDLG && typeof HDLG.lessonStats === "function") return HDLG.lessonStats(list);
+  return { done: 0, total: list.length, stars: 0, maxStars: list.length * 10, percent: 0 };
+}
+
 function getProgress() {
-  const key = `hoc-de-lam-gi-chemistry-grade-${grade}`;
-  const value = Number(localStorage.getItem(key)) || 0;
-  return Math.min(100, Math.max(0, value));
+  return getStats(lessons).percent;
 }
 
 function updateProgress() {
-  const progress = getProgress();
-  const total = lessons.length;
-  const completed = Math.round((total * progress) / 100);
+  const stats = getStats(lessons);
+  const progress = stats.percent;
 
   if (progressPercent) progressPercent.textContent = `${progress}%`;
   if (progressFill) progressFill.style.width = `${progress}%`;
   if (progressText) {
-    progressText.textContent = `${completed} / ${total} bài học hoàn thành`;
+    progressText.textContent = `${stats.done} / ${stats.total} bài học hoàn thành`;
   }
-  if (xpCount) xpCount.textContent = String(Math.round(progress * 10));
-  if (xpProgress) xpProgress.style.width = `${progress}%`;
+  if (xpCount) xpCount.textContent = String(stats.stars);
+  if (xpProgress) xpProgress.style.width = `${stats.maxStars ? Math.round(100 * stats.stars / stats.maxStars) : 0}%`;
 }
 
 function getTopicProgress(index) {
-  const progress = getProgress();
-  if (progress <= 0) return 0;
-  if (index === 0) return progress;
-  return Math.max(0, Math.min(100, progress - index * 12));
+  const topic = topics[index];
+  if (!topic) return 0;
+  return getStats(lessons.filter(lesson => lessonTopicSlug(lesson) === topic.slug)).percent;
 }
 
 function buildTopics() {
@@ -603,3 +610,15 @@ document.addEventListener("DOMContentLoaded", () => {
         });
     }
 })();
+
+/* Cập nhật lại tiến độ khi sao thay đổi / quay lại trang bằng nút Back */
+function refreshRealProgress() {
+  if (!lessons.length) return;
+  updateProgress();
+  renderTopics();
+}
+window.addEventListener("hdlg:update", refreshRealProgress);
+window.addEventListener("pageshow", refreshRealProgress);
+if (window.HDLG && HDLG.ready && typeof HDLG.ready.then === "function") {
+  HDLG.ready.then(refreshRealProgress);
+}

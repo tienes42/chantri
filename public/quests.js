@@ -26,6 +26,7 @@
     { id: "cr", icon: "🎯", title: "Nhà thông thái", desc: "Trả lời đúng 15 câu trong các Thử thách nhanh", key: "correct", goal: 15, reward: 8, go: "/challenge.html" },
     { id: "hi", icon: "🏅", title: "Phản xạ siêu tốc", desc: "Đạt từ 8/10 câu đúng trong một lượt", key: "great", goal: 1, reward: 10, go: "/challenge.html" },
     { id: "gm", icon: "🎮", title: "Nhà thực nghiệm", desc: "Chơi xong 1 mini game trong bài học", key: "game", goal: 1, reward: 5, go: "/physics.html" }
+    ,{ id: "ls", icon: "📖", title: "Chăm học", desc: "Học xong 1 bài học mới (đọc hết bài)", key: "lesson", goal: 1, reward: 5, go: "/physics.html" }
   ];
   var BONUS = 10; // rương khi xong hết nhiệm vụ ngày
 
@@ -41,6 +42,7 @@
     { id: "a5", icon: "🌈", title: "Đa năng", desc: "Chơi Thử thách nhanh cả 3 môn Lý – Hóa – Toán", reward: 10, ok: function (s) { return ["physics", "chemistry", "math"].every(function (k) { return s.subj[k] && s.subj[k].plays > 0; }); } },
     { id: "a6", icon: "📅", title: "Chuyên cần", desc: "Điểm danh 7 ngày liên tiếp", reward: 25, ok: function (s) { return (s.checkin.best || 0) >= 7; } },
     { id: "a7", icon: "⭐", title: "Ngôi sao đang lên", desc: "Đạt cấp độ Lv.5", reward: 20, ok: function () { return level() >= 5; } }
+    ,{ id: "a8", icon: "📚", title: "Mọt sách", desc: "Học xong 10 bài học", reward: 20, ok: function (s) { return (s.total.lesson || 0) >= 10; } }
   ];
 
   /* ---------- tiện ích ---------- */

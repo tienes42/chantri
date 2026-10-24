@@ -180,6 +180,43 @@
     else toast(user ? "Bạn đã đạt " + prev + " sao ở màn này — hãy phá kỷ lục để nhận thêm!" : "");
     return { gained: gain, stars: stars, best: Math.max(prev, stars), total: num(lsGet(K.xp)) };
   }
+
+  /* ---------- Sao khi HỌC BÀI (mỗi phần chỉ nhận 1 lần / bài) ----------
+     Lưu trong "hdlg_best" với khóa lesson_<id>_<phần> = số sao đã nhận
+     → tự đồng bộ Firebase như sao của game.
+     Phần: "read" (đọc hết bài) | "quiz" (đúng Kiểm tra nhanh ngay lần đầu)  */
+  var LESSON_STARS = 10;              // tổng sao tối đa của 1 bài học (khớp "10 XP/bài" ở trang lớp)
+  function lessonKey(id, part) { return ("lesson_" + id + "_" + part).replace(/[^A-Za-z0-9_\-]/g, "_"); }
+  function lessonStatus(id) {
+    var best = jparse(lsGet(K.best), {}) || {};
+    var read = num(best[lessonKey(id, "read")]), quiz = num(best[lessonKey(id, "quiz")]);
+    var stars = read + quiz;
+    return { read: read > 0, quiz: quiz > 0, stars: stars, done: read > 0 };
+  }
+  function lessonReward(id, part, n, opts) {
+    opts = opts || {};
+    if (id == null || id === "" || !part) return 0;
+    n = Math.round(n); if (!(n > 0)) return 0;
+    var best = jparse(lsGet(K.best), {}) || {}, key = lessonKey(id, part);
+    if (num(best[key]) > 0) return 0;                       // đã nhận phần này rồi
+    var wasDone = lessonStatus(id).done;
+    best[key] = n; lsSet(K.best, JSON.stringify(best));
+    lsSet(K.xp, String(num(lsGet(K.xp)) + n));
+    if (!wasDone && lessonStatus(id).done) { markDone("lesson_" + id); questBump("lesson", 1); }
+    schedulePush(); emit();
+    toast("⭐ +" + n + " sao" + (opts.label ? " · " + opts.label : ""));
+    try { window.dispatchEvent(new CustomEvent("hdlg:lesson", { detail: { id: id, part: part, gained: n, status: lessonStatus(id) } })); } catch (e) {}
+    return n;
+  }
+  /* Thống kê 1 danh sách bài học (dùng cho trang lớp / chủ đề) */
+  function lessonStats(list) {
+    list = Array.isArray(list) ? list : [];
+    var done = 0, stars = 0;
+    list.forEach(function (l) { var st = lessonStatus(l && l.id != null ? l.id : l); if (st.done) done++; stars += st.stars; });
+    var total = list.length;
+    return { done: done, total: total, stars: stars, maxStars: total * LESSON_STARS,
+             percent: total ? Math.round(100 * done / total) : 0 };
+  }
   function getLeaderboard(n) {
     if (!db) return Promise.resolve([]);
     return db.collection(COLLECTION).orderBy("xp", "desc").limit(n || 10).get().then(function (qs) {
@@ -401,6 +438,7 @@
     getStars: function () { return num(lsGet(K.xp)); },
     getLevel: function () { return level(num(lsGet(K.xp))); },
     addStars: addStars, finishLevel: finishLevel, getLeaderboard: getLeaderboard,
+    lessonReward: lessonReward, lessonStatus: lessonStatus, lessonStats: lessonStats, LESSON_STARS: LESSON_STARS,
     showLogin: showLogin, showAccount: showAccount, showLeaderboard: showLeaderboard, logout: logout,
     onChange: function (f) { listeners.push(f); }, flush: push,
     today: today, questGet: questGet, questSave: questSave, questBump: questBump, toast: toast
