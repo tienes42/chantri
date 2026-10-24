@@ -118,9 +118,11 @@
     return { gain: gain, earned: earned, todayBest: Math.max(prev, earned), newlyDone: newly, missions: after };
   }
 
-  /* ---------- giao diện chung ---------- */
+  /* ---------- giao diện chung (Đã sửa lỗi tàng hình .hq-ov khi bật hq-calm) ---------- */
   var CSS = "\
-html.hq-calm *,html.hq-calm *::before,html.hq-calm *::after{animation-play-state:paused!important;transition:none!important}\
+html.hq-calm .island-float,html.hq-calm .island-float-center,html.hq-calm .cloud,html.hq-calm .actor,html.hq-calm .center-aura-ring,html.hq-calm .rune-btn,html.hq-calm .ai-hint,html.hq-calm .relic,html.hq-calm .poly-relic,html.hq-calm .chem-relic,html.hq-calm .m-relic,html.hq-calm .astrolabe-ring,html.hq-calm .sacred-geometry-wheel,html.hq-calm .molecular-wheel,html.hq-calm .celestial-wheel,html.hq-calm .sacred-wheel,html.hq-calm .orbit,html.hq-calm .geo-ring,html.hq-calm .chem-ring,html.hq-calm .orbit-ring{animation:none!important}\
+html.hq-calm #cinematicCanvas,html.hq-calm #physicsCanvas,html.hq-calm #mathCanvas,html.hq-calm #chemistryCanvas,html.hq-calm #gradeCanvas,html.hq-calm .flying-bird-group,html.hq-calm .god-rays,html.hq-calm .quantum-rays,html.hq-calm .golden-rays,html.hq-calm .elixir-rays,html.hq-calm .ambient-rays,html.hq-calm .chem-boom,html.hq-calm .chem-smoke,html.hq-calm .spark,html.hq-calm .lava,html.hq-calm .rainbow,html.hq-calm .bird-paper,html.hq-calm .butterfly,html.hq-calm .hammer,html.hq-calm .music-fx,html.hq-calm .crown,html.hq-calm .fx-math{display:none!important}\
+html.hq-calm .hq-ov{animation:none!important;opacity:1!important}\
 [data-hq-n]::after{content:attr(data-hq-n);position:absolute;top:4px;right:6px;min-width:20px;height:20px;padding:0 5px;box-sizing:border-box;border-radius:10px;background:#ff4757;color:#fff;font:700 12px/20px 'Segoe UI',Arial,sans-serif;text-align:center;box-shadow:0 0 0 2px #0c1a38,0 0 12px #ff4757;z-index:5;pointer-events:none}\
 .hq-ov{position:fixed;inset:0;z-index:99990;display:flex;align-items:center;justify-content:center;padding:14px;background:rgba(5,12,30,.74);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);font-family:'Segoe UI',Roboto,Arial,sans-serif;animation:hqIn .2s ease}\
 @keyframes hqIn{from{opacity:0}to{opacity:1}}\
@@ -230,7 +232,7 @@ html.hq-calm *,html.hq-calm *::before,html.hq-calm *::after{animation-play-state
   function checkinInfo(s) {
     var t = todayStr(), c = s.checkin, done = c.last === t;
     var streak = done ? c.streak : (c.last === yesterday() ? c.streak : 0);
-    var cycle = done ? ((streak - 1) % 7) : (streak % 7); // vị trí ngày hôm nay trong vòng 7 ngày
+    var cycle = done ? ((streak - 1) % 7) : (streak % 7);
     return { done: done, streak: streak, idx: cycle };
   }
   function openRewards(tab) {
