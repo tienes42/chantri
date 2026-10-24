@@ -762,3 +762,26 @@ button { font: inherit; }
   .missions { left: 51%; }
   .exit     { left: 75.5%; }
 }
+/* ================= 8. BẢO VỆ GIAO DIỆN KHI BẬT GIẢM HIỆU ỨNG CHUYỂN ĐỘNG ================= */
+/* Đảm bảo các hiệu ứng nổ trên đảo luôn ẩn ở trạng thái nghỉ, không bị hiện đè lên nhau */
+.chem-boom, .chem-smoke, .spark, .lava, .rainbow, .flower, .butterfly,
+.bird-paper, .hammer, .music-fx, .crown, .fx-math {
+  opacity: 0;
+}
+
+/* Đảm bảo cụm nút đá Cài đặt, Thưởng, Nhiệm vụ, Thoát luôn nhận được click chuột */
+.hotspots .rune-btn {
+  z-index: 15 !important;
+  pointer-events: auto !important;
+}
+
+/* Chế độ giảm chuyển động an toàn: Tắt hiệu ứng nền nặng nhưng giữ nguyên hoạt cảnh đảo & hộp thoại */
+body.safe-low-motion #cinematicCanvas,
+body.safe-low-motion .god-rays,
+body.safe-low-motion .flying-bird-group {
+  display: none !important;
+}
+
+body.safe-low-motion .cloud {
+  animation-play-state: paused !important;
+}

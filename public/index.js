@@ -475,3 +475,84 @@ setInterval(() => {
     spawnFlyingBirds();
   }
 }, 5200);
+
+/* ================= 5. FIX LỖI ĐỨNG MÀN HÌNH & KẸT NÚT CÀI ĐẶT KHI BẬT GIẢM CHUYỂN ĐỘNG ================= */
+(function fixReduceMotionFreeze() {
+  // 1. Tự động khôi phục nếu lần trước bị kẹt trong localStorage
+  try {
+    for (let i = 0; i < localStorage.length; i++) {
+      const k = localStorage.key(i);
+      if (!k) continue;
+      const val = localStorage.getItem(k);
+      // Nếu lưu dạng chuỗi JSON trong cài đặt của quests.js
+      if (val && (val.includes('reduceMotion') || val.includes('reducedMotion') || val.includes('motion'))) {
+        try {
+          const parsed = JSON.parse(val);
+          if (parsed && typeof parsed === 'object') {
+            if (parsed.reduceMotion) parsed.reduceMotion = false;
+            if (parsed.reducedMotion) parsed.reducedMotion = false;
+            localStorage.setItem(k, JSON.stringify(parsed));
+          }
+        } catch (_) {}
+      }
+      // Nếu lưu dạng key rời
+      if (/reduce.*motion|motion.*reduce|no.*anim/i.test(k) && (val === 'true' || val === '1')) {
+        localStorage.setItem(k, 'false');
+      }
+    }
+  } catch (e) {}
+
+  // 2. Theo dõi khi người dùng bật "Giảm hiệu ứng chuyển động" để chuyển sang chế độ nhẹ máy an toàn
+  const syncMotionMode = () => {
+    const html = document.documentElement;
+    const body = document.body;
+
+    // Kiểm tra xem quests.js có gắn class hoặc attribute tắt chuyển động không
+    const classesToCheck = ['reduce-motion', 'reduced-motion', 'hq-reduce-motion', 'no-motion', 'no-anim'];
+    let isReduced = false;
+
+    classesToCheck.forEach(cls => {
+      if (html.classList.contains(cls) || body.classList.contains(cls)) {
+        html.classList.remove(cls);
+        body.classList.remove(cls);
+        isReduced = true;
+      }
+    });
+
+    ['data-reduce-motion', 'data-reduced-motion', 'data-motion'].forEach(attr => {
+      if (html.getAttribute(attr) === 'true' || html.getAttribute(attr) === 'reduced') {
+        html.removeAttribute(attr);
+        isReduced = true;
+      }
+      if (body.getAttribute(attr) === 'true' || body.getAttribute(attr) === 'reduced') {
+        body.removeAttribute(attr);
+        isReduced = true;
+      }
+    });
+
+    if (isReduced) {
+      body.classList.add('safe-low-motion');
+    }
+  };
+
+  // Quan sát mọi thay đổi trên html và body để ngăn quests.js làm đông cứng giao diện
+  const observer = new MutationObserver(() => {
+    syncMotionMode();
+
+    // Dọn các lớp overlay của quests.js đã đóng (opacity = 0 hoặc ẩn) nhưng còn chặn chuột
+    document.querySelectorAll('[class*="hq-"], [id*="hq-"]').forEach(el => {
+      const style = window.getComputedStyle(el);
+      if (
+        (el.classList.contains('closing') || el.classList.contains('hide') || el.classList.contains('hidden') || style.opacity === '0') &&
+        style.position === 'fixed'
+      ) {
+        el.style.pointerEvents = 'none';
+        el.style.display = 'none';
+      }
+    });
+  });
+
+  observer.observe(document.documentElement, { attributes: true, attributeFilter: ['class', 'style', 'data-reduce-motion', 'data-motion'] });
+  observer.observe(document.body, { attributes: true, childList: true, attributeFilter: ['class', 'style', 'data-reduce-motion', 'data-motion'] });
+  syncMotionMode();
+})();
