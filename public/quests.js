@@ -118,15 +118,14 @@
     return { gain: gain, earned: earned, todayBest: Math.max(prev, earned), newlyDone: newly, missions: after };
   }
 
-  /* ---------- giao diện chung (Đã sửa lỗi tàng hình .hq-ov khi bật hq-calm) ---------- */
+  /* ---------- giao diện chung ---------- */
   var CSS = "\
 html.hq-calm .island-float,html.hq-calm .island-float-center,html.hq-calm .cloud,html.hq-calm .actor,html.hq-calm .center-aura-ring,html.hq-calm .rune-btn,html.hq-calm .ai-hint,html.hq-calm .relic,html.hq-calm .poly-relic,html.hq-calm .chem-relic,html.hq-calm .m-relic,html.hq-calm .astrolabe-ring,html.hq-calm .sacred-geometry-wheel,html.hq-calm .molecular-wheel,html.hq-calm .celestial-wheel,html.hq-calm .sacred-wheel,html.hq-calm .orbit,html.hq-calm .geo-ring,html.hq-calm .chem-ring,html.hq-calm .orbit-ring{animation:none!important}\
 html.hq-calm #cinematicCanvas,html.hq-calm #physicsCanvas,html.hq-calm #mathCanvas,html.hq-calm #chemistryCanvas,html.hq-calm #gradeCanvas,html.hq-calm .flying-bird-group,html.hq-calm .god-rays,html.hq-calm .quantum-rays,html.hq-calm .golden-rays,html.hq-calm .elixir-rays,html.hq-calm .ambient-rays,html.hq-calm .chem-boom,html.hq-calm .chem-smoke,html.hq-calm .spark,html.hq-calm .lava,html.hq-calm .rainbow,html.hq-calm .bird-paper,html.hq-calm .butterfly,html.hq-calm .hammer,html.hq-calm .music-fx,html.hq-calm .crown,html.hq-calm .fx-math{display:none!important}\
-html.hq-calm .hq-ov{animation:none!important;opacity:1!important}\
 [data-hq-n]::after{content:attr(data-hq-n);position:absolute;top:4px;right:6px;min-width:20px;height:20px;padding:0 5px;box-sizing:border-box;border-radius:10px;background:#ff4757;color:#fff;font:700 12px/20px 'Segoe UI',Arial,sans-serif;text-align:center;box-shadow:0 0 0 2px #0c1a38,0 0 12px #ff4757;z-index:5;pointer-events:none}\
-.hq-ov{position:fixed;inset:0;z-index:99990;display:flex;align-items:center;justify-content:center;padding:14px;background:rgba(5,12,30,.74);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);font-family:'Segoe UI',Roboto,Arial,sans-serif;animation:hqIn .2s ease}\
-@keyframes hqIn{from{opacity:0}to{opacity:1}}\
-.hq-box{position:relative;width:100%;max-width:520px;max-height:90vh;overflow:auto;background:linear-gradient(160deg,#16325f,#0b1733);color:#eaf2ff;border:1px solid #4a74c9;border-radius:20px;padding:22px 20px 20px;box-shadow:0 24px 70px rgba(0,0,0,.6)}\
+.hq-ov{position:fixed;inset:0;z-index:99990;display:flex;align-items:center;justify-content:center;padding:14px;background:rgba(5,12,30,.74);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);font-family:'Segoe UI',Roboto,Arial,sans-serif}\
+.hq-box{position:relative;width:100%;max-width:520px;max-height:90vh;overflow:auto;background:linear-gradient(160deg,#16325f,#0b1733);color:#eaf2ff;border:1px solid #4a74c9;border-radius:20px;padding:22px 20px 20px;box-shadow:0 24px 70px rgba(0,0,0,.6);animation:hqBoxIn .18s ease-out}\
+@keyframes hqBoxIn{from{transform:translateY(10px) scale(.97)}to{transform:translateY(0) scale(1)}}\
 .hq-box h2{margin:0 0 4px;text-align:center;font-size:23px;color:#ffe27a}\
 .hq-sub{margin:0 0 14px;text-align:center;color:#a9bde6;font-size:13px}\
 .hq-x{position:absolute;top:10px;right:14px;background:none;border:0;color:#a9bde6;font-size:26px;cursor:pointer;line-height:1}\
