@@ -447,7 +447,7 @@
 })();
 
 /* =========================================================================
-   TỰ ĐỘNG GẮN DÒNG CHỮ TÁC GIẢ LÊN TẤT CẢ CÁC TRANG TRÊN WEB
+   DÒNG CHỮ TÁC GIẢ MỜ NHẸ (WATERMARK) TRÊN TOÀN BỘ CÁC TRANG
    ========================================================================= */
 (function injectGlobalAuthorCredit() {
   function mountAuthorBadge() {
@@ -457,53 +457,34 @@
     style.textContent = `
       #hdlgAuthorCredit {
         position: fixed;
-        right: 14px;
-        bottom: 8px;
+        right: 12px;
+        bottom: 5px;
         z-index: 9999;
-        padding: 5px 13px;
-        border-radius: 999px;
-        background: rgba(6, 22, 46, 0.86);
-        border: 1px solid rgba(125, 211, 252, 0.5);
-        box-shadow: 0 4px 14px rgba(0, 0, 0, 0.35);
-        backdrop-filter: blur(8px);
-        -webkit-backdrop-filter: blur(8px);
-        font: 500 11.5px/1.4 "Segoe UI", system-ui, -apple-system, sans-serif;
-        color: #e0f2fe;
-        letter-spacing: 0.2px;
+        font: 400 10px/1.2 "Segoe UI", system-ui, -apple-system, sans-serif;
+        color: rgba(255, 255, 255, 0.32);
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+        letter-spacing: 0.3px;
         pointer-events: none;
         user-select: none;
         white-space: nowrap;
       }
-      #hdlgAuthorCredit b {
-        color: #fde047;
-        font-weight: 700;
-        text-shadow: 0 0 8px rgba(253, 224, 71, 0.35);
-      }
-      /* Tự động đẩy khung Trợ lý AI ở các trang lên một chút để không đè nhau */
-      .ai-hint, .math-ai {
-        bottom: 40px !important;
-      }
       @media (max-width: 650px) {
         #hdlgAuthorCredit {
-          right: auto;
-          left: 50%;
-          transform: translateX(-50%);
-          bottom: 6px;
-          font-size: 10.5px;
-          padding: 4px 10px;
+          right: 8px;
+          bottom: 3px;
+          font-size: 9px;
         }
       }
     `;
 
     const badge = document.createElement("div");
     badge.id = "hdlgAuthorCredit";
-    badge.innerHTML = "✦ Web được làm bởi <b>Nguyễn Duy Khang</b> và <b>Cao Nhựt Tiến</b>";
+    badge.textContent = "Web được làm bởi Nguyễn Duy Khang và Cao Nhựt Tiến";
 
     document.head.appendChild(style);
     document.body.appendChild(badge);
   }
 
-  // Vì auth.js được nạp trên thẻ <head>, cần đợi <body> sẵn sàng rồi mới gắn vào
   if (document.readyState === "loading") {
     document.addEventListener("DOMContentLoaded", mountAuthorBadge);
   } else {
