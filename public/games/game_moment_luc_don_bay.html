@@ -2335,8 +2335,8 @@ function vPath(self, k, path, o) {
   if (o.draw) o.draw(x, y, on, u);
   if (S.phase === "setup") {
     const N = p.opts ? p.opts.length - 1 : 80, ap = pt => { let best = 0, bd = 1e9; for (let s = 0; s <= N; s++) { const q = path(s / N), dd = (q[0] - pt.x) ** 2 + (q[1] - pt.y) ** 2; if (dd < bd) { bd = dd; best = s / N; } } if (dset(self, k, uP(p, best)) && (o.snd || "ratchet")) sfx(o.snd || "ratchet"); };
-    grab({ cx: x, cy: y, r: r + 14 * K }, { vk: k, down() { GUIDE.last = TIME; if (o.grabS) sfx(o.grabS); }, move: ap, up() { if (o.dropS) sfx(o.dropS); } });
-    if (!GR.act) hotspot(x, y, r * 0.9, o.hs || "kéo"); const q1 = path(u < 0.5 ? Math.min(1, u + 0.35) : Math.max(0, u - 0.35)); guideAdd(x, y, q1[0], q1[1], "drag");
+    grab({ cx: x, cy: y + (o.gy || 0), r: r + 14 * K }, { vk: k, down() { GUIDE.last = TIME; if (o.grabS) sfx(o.grabS); }, move: ap, up() { if (o.dropS) sfx(o.dropS); } });
+    if (!GR.act) hotspot(x, y + (o.gy || 0), r * 0.9, o.hs || "kéo"); const q1 = path(u < 0.5 ? Math.min(1, u + 0.35) : Math.max(0, u - 0.35)); guideAdd(x, y, q1[0], q1[1], "drag");
   }
   if (o.lab) { if (o.lpos) valChip(o.lab(KG[k]), o.lpos[0], o.lpos[1], on); else valChip(o.lab(KG[k]), x + (o.lx || 0), y + (o.ly === undefined ? r + 16 * K : o.ly), on); }
   return { x, y, u, on };
@@ -2388,7 +2388,7 @@ function vDrop(self, k, src, dst, o) {
   if (S.phase === "setup") {
     const cxs = src.x + src.w / 2, cys = src.y + src.h / 2, cxd = dst.x + dst.w / 2, cyd = dst.y + dst.h / 2;
     grab(src, { vk: k, down() { GUIDE.last = TIME; if (KG[k] >= p.max - 1e-9) { sfx("creak"); return; } DD.k = k; DD.from = "src"; sfx(o.pickS || "pop"); }, up(pt) { if (DD.k === k && DD.from === "src" && inRect(pt, dst)) { dset(self, k, KG[k] + p.step, o.dropS || "clank"); if (o.onDrop) o.onDrop(pt); } DD.k = null; } });
-    grab(dst, { vk: k, down() { GUIDE.last = TIME; if (KG[k] <= p.min + 1e-9) return; DD.k = k; DD.from = "dst"; sfx(o.pickS || "pop"); }, up(pt) { if (DD.k === k && DD.from === "dst" && !inRect(pt, dst)) dset(self, k, KG[k] - p.step, "creak"); DD.k = null; } });
+    GR.list.unshift({ hit: dst, h: { vk: k, down() { GUIDE.last = TIME; if (KG[k] <= p.min + 1e-9) return; DD.k = k; DD.from = "dst"; sfx(o.pickS || "pop"); }, up(pt) { if (DD.k === k && DD.from === "dst" && !inRect(pt, dst)) dset(self, k, KG[k] - p.step, "creak"); DD.k = null; } } });
     if (!GR.act) hotspot(cxs, cys, Math.min(src.w, src.h) * 0.42, o.hs || "kéo vào"); guideAdd(cxs, cys, cxd, cyd, "drag");
   }
 }
@@ -2496,7 +2496,7 @@ const GEN = {
 };
 const MW = { 0: 4, 1: 2, 2: 2, 3: 3, 4: 3, 5: 4, 6: 3, 7: 3, 8: 2 };
 
-const FB = {"0":{"lo":90,"hi":100,"Fm":220,"car":0},"1":{"F0":140,"Mn":480,"Ms":540,"rp":0.7},"2":{"F":230,"Fh":173,"Mw":155,"tol":20},"3":{"kn":0,"P1":480,"d1":1.2,"P2":300,"pb":60,"tol":40,"Pm":1020},"4":{"P":1100,"Fp":360,"s":0.6,"hn":0.08,"Mb":240},"5":{"PL":90,"D":14,"Pb":20,"tol":63,"Pt":310,"ct":3},"6":{"F":90,"Fc":1100,"Fb":1350,"Mh":59.4},"7":{"Pb":80,"d2":1.3,"Fp":160,"need":10},"8":{"A":20,"P":30,"d2":0.35,"tol":1.5,"pm":9,"s":0.02}};
+const FB = {"0":{"lo":130,"hi":145,"Fm":320,"car":2},"1":{"F0":180,"Mn":440,"Ms":580,"rp":0.7},"2":{"F":200,"Fh":162,"Mw":85,"tol":15},"3":{"kn":1,"P1":460,"d1":1.6,"P2":320,"pb":40,"tol":30,"Pm":940},"4":{"P":1400,"Fp":300,"s":0.6,"hn":0.07,"Mb":340},"5":{"PL":120,"D":14,"Pb":20,"tol":84,"Pt":340,"ct":2},"6":{"F":90,"Fc":950,"Fb":1200,"Mh":52.2},"7":{"Pb":140,"d2":1.3,"Fp":280,"need":9},"8":{"A":30,"P":26,"d2":0.4,"tol":1.5,"pm":6,"s":0.02}};
 /* ===================== XƯỞNG ĐÒN BẨY: ĐỒ HỌA DÙNG CHUNG ===================== */
 const f0 = v => fmt(v, 0), f1 = v => fmt(v, 1), f2 = v => fmt(v, 2);
 const fx = (v, d) => Number(v).toFixed(d).replace(".", ",");
@@ -2866,7 +2866,7 @@ KD[3] = dStage(3, {
     /* bé bên phải (kéo) + giỏ cát */
     const nb = vDropN("n");
     const pth = u => P(0.5 + u * 1.5);
-    vPath(self, "d", pth, { r: 26 * K, track: false, hs: "kéo bé", lab: v => `d₂ = ${fx(v, 1)} m`, ly: -(m ? 70 : 96) * K, draw: (x, y, on) => {
+    vPath(self, "d", pth, { r: 26 * K, gy: -(m ? 16 : 20) * K, track: false, hs: "kéo bé", lab: v => `d₂ = ${fx(v, 1)} m`, ly: -(m ? 70 : 96) * K, draw: (x, y, on) => {
       ctx.strokeStyle = "#57534e"; ctx.lineWidth = 1.5 * K; const bkY = y + (m ? 30 : 42) * K; ctx.beginPath(); ctx.moveTo(x - 8 * K, y + 6 * K); ctx.lineTo(x - 12 * K, bkY); ctx.moveTo(x + 8 * K, y + 6 * K); ctx.lineTo(x + 12 * K, bkY); ctx.stroke(); ctx.fillStyle = wood(x - 16 * K, bkY, x + 16 * K, bkY, "#a16207"); rr(x - 17 * K, bkY, 34 * K, 18 * K, 4 * K); ctx.fill();
       for (let i = 0; i < nb; i++) sandbag(x - 9 * K + (i % 2) * 18 * K, bkY - 2 * K - Math.floor(i / 2) * 9 * K, 0.55 * K);
       kidSit(x, y, g.ks * (on ? 1.05 : 1), X, { top: "#22c55e", bot: "#1e3a8a", hat: "cap", hatC: "#ef4444", dir: -1, pose: st === "stuck" ? "panic" : st === "snap" ? "cheer" : "ride", mood: st === "stuck" ? "fear" : "joy", legs: st === "stuck" ? [[0.3 + Math.sin(TIME * 12) * 0.4, 0.1], [-0.3 - Math.sin(TIME * 12) * 0.4, 0.1]] : null });
