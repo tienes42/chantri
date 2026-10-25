@@ -28,36 +28,53 @@ function loadImg(src) {
   });
 }
 
-async function slicePhysicsIcons() {
-  const gridMap = [
-    { key: "core",          idx: 0,  selector: '[data-icon="core"]' },
-    { key: "g6",            idx: 1,  selector: '[data-icon="g6"] .class-icon' },
-    { key: "g7",            idx: 2,  selector: '[data-icon="g7"] .class-icon' },
-    { key: "g8",            idx: 3,  selector: '[data-icon="g8"] .class-icon' },
-    { key: "g9",            idx: 4,  selector: '[data-icon="g9"] .class-icon' },
-    { key: "g10",           idx: 5,  selector: '[data-icon="g10"] .class-icon' },
-    { key: "g11",           idx: 6,  selector: '[data-icon="g11"] .class-icon' },
-    { key: "g12",           idx: 7,  selector: '[data-icon="g12"] .class-icon' },
-    { key: "toolCalc",      idx: 8,  selector: '[data-icon="toolCalc"] .tool-sprite' },
-    { key: "toolChallenge", idx: 9,  selector: '[data-icon="toolChallenge"] .tool-sprite' },
-    { key: "toolProgress",  idx: 10, selector: '[data-icon="toolProgress"] .tool-sprite' },
-    { key: "aiBot",         idx: 11, selector: '[data-icon="aiBot"]' },
-    { key: "gyro",          idx: 12, selector: '[data-prop="gyro"]' },
-    { key: "prism",         idx: 13, selector: '[data-prop="prism"]' },
-    { key: "magnet",        idx: 14, selector: '[data-prop="magnet"]' },
-    { key: "gear",          idx: 15, selector: '[data-prop="gear"]' }
-  ];
+async function slicePhysicsIcons(src) {
+  try {
+    const img = await loadImg(src || "assets/physics-icons.png");
+    const cellW = img.naturalWidth / 4;
+    const cellH = img.naturalHeight / 4;
+    const size = 240;
+    const c = document.createElement("canvas");
+    c.width = size;
+    c.height = size;
+    const ctx = c.getContext("2d");
 
-  for (const item of gridMap) {
-    const dataUrl = `assets/sprites/physics_${item.idx}.webp`;
-    iconSprites[item.key] = dataUrl;
-    if (item.selector) {
-      document.querySelectorAll(item.selector).forEach(el => {
-        el.style.backgroundImage = `url("${dataUrl}")`;
-        el.querySelectorAll("span").forEach(sp => { sp.style.display = "none"; });
-        if (el.classList.contains("tool-sprite")) el.textContent = "";
-      });
+    const gridMap = [
+      { key: "core",          idx: 0,  selector: '[data-icon="core"]' },
+      { key: "g6",            idx: 1,  selector: '[data-icon="g6"] .class-icon' },
+      { key: "g7",            idx: 2,  selector: '[data-icon="g7"] .class-icon' },
+      { key: "g8",            idx: 3,  selector: '[data-icon="g8"] .class-icon' },
+      { key: "g9",            idx: 4,  selector: '[data-icon="g9"] .class-icon' },
+      { key: "g10",           idx: 5,  selector: '[data-icon="g10"] .class-icon' },
+      { key: "g11",           idx: 6,  selector: '[data-icon="g11"] .class-icon' },
+      { key: "g12",           idx: 7,  selector: '[data-icon="g12"] .class-icon' },
+      { key: "toolCalc",      idx: 8,  selector: '[data-icon="toolCalc"] .tool-sprite' },
+      { key: "toolChallenge", idx: 9,  selector: '[data-icon="toolChallenge"] .tool-sprite' },
+      { key: "toolProgress",  idx: 10, selector: '[data-icon="toolProgress"] .tool-sprite' },
+      { key: "aiBot",         idx: 11, selector: '[data-icon="aiBot"]' },
+      { key: "gyro",          idx: 12, selector: '[data-prop="gyro"]' },
+      { key: "prism",         idx: 13, selector: '[data-prop="prism"]' },
+      { key: "magnet",        idx: 14, selector: '[data-prop="magnet"]' },
+      { key: "gear",          idx: 15, selector: '[data-prop="gear"]' }
+    ];
+
+    for (const item of gridMap) {
+      const col = item.idx % 4;
+      const row = (item.idx / 4) | 0;
+      ctx.clearRect(0, 0, size, size);
+      ctx.drawImage(img, col * cellW, row * cellH, cellW, cellH, 0, 0, size, size);
+      const dataUrl = c.toDataURL("image/png");
+      iconSprites[item.key] = dataUrl;
+      if (item.selector) {
+        document.querySelectorAll(item.selector).forEach(el => {
+          el.style.backgroundImage = `url("${dataUrl}")`;
+          el.querySelectorAll("span").forEach(sp => { sp.style.display = "none"; });
+          if (el.classList.contains("tool-sprite")) el.textContent = "";
+        });
+      }
     }
+  } catch (e) {
+    console.info("Đang dùng biểu tượng mặc định:", e);
   }
 }
 

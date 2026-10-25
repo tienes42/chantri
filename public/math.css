@@ -46,7 +46,7 @@ button {
 .sanctum-bg {
   position: absolute;
   inset: -4%;
-  background: url("assets/math-bg.webp") center/cover no-repeat;
+  background: url("assets/math-bg.png") center/cover no-repeat;
   filter: brightness(0.86) contrast(1.08) saturate(1.1);
   transition: transform 0.25s ease-out;
 }

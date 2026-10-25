@@ -28,36 +28,53 @@ function loadImg(src) {
   });
 }
 
-async function sliceMathIcons() {
-  const gridMap = [
-    { keys: ["core"],               idx: 0,  selector: '[data-icon="core"]' },
-    { keys: ["g1"],                 idx: 1,  selector: '[data-icon="g1"] .class-icon' },
-    { keys: ["g4", "toolGeo"],      idx: 2,  selector: '[data-icon="g4"] .class-icon, [data-icon="toolGeo"] .tool-sprite' },
-    { keys: ["g3"],                 idx: 3,  selector: '[data-icon="g3"] .class-icon' },
-    { keys: ["g9"],                 idx: 4,  selector: '[data-icon="g9"] .class-icon' },
-    { keys: ["g10"],                idx: 5,  selector: '[data-icon="g10"] .class-icon' },
-    { keys: ["g11"],                idx: 6,  selector: '[data-icon="g11"] .class-icon' },
-    { keys: ["g12"],                idx: 7,  selector: '[data-icon="g12"] .class-icon' },
-    { keys: ["toolCalc"],           idx: 8,  selector: '[data-icon="toolCalc"] .tool-sprite' },
-    { keys: ["toolChallenge"],      idx: 9,  selector: '[data-icon="toolChallenge"] .tool-sprite' },
-    { keys: ["g5", "toolProgress"], idx: 10, selector: '[data-icon="g5"] .class-icon, [data-icon="toolProgress"] .tool-sprite' },
-    { keys: ["aiBot"],              idx: 11, selector: '[data-icon="aiBot"]' },
-    { keys: ["g6", "fibonacci"],    idx: 12, selector: '[data-icon="g6"] .class-icon, [data-prop="fibonacci"]' },
-    { keys: ["g7", "icosa"],        idx: 13, selector: '[data-icon="g7"] .class-icon, [data-prop="icosa"]' },
-    { keys: ["g8", "mobius"],       idx: 14, selector: '[data-icon="g8"] .class-icon, [data-prop="mobius"]' },
-    { keys: ["g2", "cube"],         idx: 15, selector: '[data-icon="g2"] .class-icon, [data-prop="cube"]' }
-  ];
+async function sliceMathIcons(src) {
+  try {
+    const img = await loadImg(src || "assets/math-icons.png");
+    const cellW = img.naturalWidth / 4;
+    const cellH = img.naturalHeight / 4;
+    const size = 240;
+    const c = document.createElement("canvas");
+    c.width = size;
+    c.height = size;
+    const ctx = c.getContext("2d");
 
-  for (const item of gridMap) {
-    const dataUrl = `assets/sprites/math_${item.idx}.webp`;
-    item.keys.forEach(k => { iconSprites[k] = dataUrl; });
-    if (item.selector) {
-      document.querySelectorAll(item.selector).forEach(el => {
-        el.style.backgroundImage = `url("${dataUrl}")`;
-        el.querySelectorAll("span").forEach(sp => { sp.style.display = "none"; });
-        if (el.classList.contains("tool-sprite")) el.textContent = "";
-      });
+    const gridMap = [
+      { keys: ["core"],               idx: 0,  selector: '[data-icon="core"]' },
+      { keys: ["g1"],                 idx: 1,  selector: '[data-icon="g1"] .class-icon' },
+      { keys: ["g4", "toolGeo"],      idx: 2,  selector: '[data-icon="g4"] .class-icon, [data-icon="toolGeo"] .tool-sprite' },
+      { keys: ["g3"],                 idx: 3,  selector: '[data-icon="g3"] .class-icon' },
+      { keys: ["g9"],                 idx: 4,  selector: '[data-icon="g9"] .class-icon' },
+      { keys: ["g10"],                idx: 5,  selector: '[data-icon="g10"] .class-icon' },
+      { keys: ["g11"],                idx: 6,  selector: '[data-icon="g11"] .class-icon' },
+      { keys: ["g12"],                idx: 7,  selector: '[data-icon="g12"] .class-icon' },
+      { keys: ["toolCalc"],           idx: 8,  selector: '[data-icon="toolCalc"] .tool-sprite' },
+      { keys: ["toolChallenge"],      idx: 9,  selector: '[data-icon="toolChallenge"] .tool-sprite' },
+      { keys: ["g5", "toolProgress"], idx: 10, selector: '[data-icon="g5"] .class-icon, [data-icon="toolProgress"] .tool-sprite' },
+      { keys: ["aiBot"],              idx: 11, selector: '[data-icon="aiBot"]' },
+      { keys: ["g6", "fibonacci"],    idx: 12, selector: '[data-icon="g6"] .class-icon, [data-prop="fibonacci"]' },
+      { keys: ["g7", "icosa"],        idx: 13, selector: '[data-icon="g7"] .class-icon, [data-prop="icosa"]' },
+      { keys: ["g8", "mobius"],       idx: 14, selector: '[data-icon="g8"] .class-icon, [data-prop="mobius"]' },
+      { keys: ["g2", "cube"],         idx: 15, selector: '[data-icon="g2"] .class-icon, [data-prop="cube"]' }
+    ];
+
+    for (const item of gridMap) {
+      const col = item.idx % 4;
+      const row = (item.idx / 4) | 0;
+      ctx.clearRect(0, 0, size, size);
+      ctx.drawImage(img, col * cellW, row * cellH, cellW, cellH, 0, 0, size, size);
+      const dataUrl = c.toDataURL("image/png");
+      item.keys.forEach(k => { iconSprites[k] = dataUrl; });
+      if (item.selector) {
+        document.querySelectorAll(item.selector).forEach(el => {
+          el.style.backgroundImage = `url("${dataUrl}")`;
+          el.querySelectorAll("span").forEach(sp => { sp.style.display = "none"; });
+          if (el.classList.contains("tool-sprite")) el.textContent = "";
+        });
+      }
     }
+  } catch (e) {
+    console.info("Đang dùng biểu tượng mặc định:", e);
   }
 }
 

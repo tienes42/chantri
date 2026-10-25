@@ -106,21 +106,49 @@ function loadImg(src) {
 }
 
 async function initLesson25DSprites() {
-  const prefix = ["math", "physics", "chemistry"].includes(subject) ? subject : "math";
-  const applySprite = (selector, idx) => {
-    const url = `assets/sprites/${prefix}_${idx}.webp`;
-    document.querySelectorAll(selector).forEach((el) => {
-      el.style.backgroundImage = `url("${url}")`;
-      el.querySelectorAll("span").forEach((s) => { s.style.display = "none"; });
-    });
+  const sheetMap = {
+    math: "assets/math-icons.png",
+    physics: "assets/physics-icons.png",
+    chemistry: "assets/chemistry-icons.png"
   };
+  const sheetUrl = sheetMap[subject] || "assets/math-icons.png";
 
-  applySprite('[data-sprite="core"]', 0);
-  applySprite('[data-sprite="trophy"]', 7);
-  applySprite('[data-prop="p1"]', 12);
-  applySprite('[data-prop="p2"]', 13);
-  applySprite('[data-prop="p3"]', 14);
-  applySprite('[data-prop="p4"]', 15);
+  try {
+    const img = await loadImg(sheetUrl);
+    const cellW = img.naturalWidth / 4;
+    const cellH = img.naturalHeight / 4;
+    const size = 220;
+    const c = document.createElement("canvas");
+    c.width = size;
+    c.height = size;
+    const ctx = c.getContext("2d");
+    const sprites = [];
+
+    for (let row = 0; row < 4; row++) {
+      for (let col = 0; col < 4; col++) {
+        ctx.clearRect(0, 0, size, size);
+        ctx.drawImage(img, col * cellW, row * cellH, cellW, cellH, 0, 0, size, size);
+        sprites.push(c.toDataURL("image/png"));
+      }
+    }
+
+    const applySprite = (selector, idx) => {
+      if (!sprites[idx]) return;
+      document.querySelectorAll(selector).forEach((el) => {
+        el.style.backgroundImage = `url("${sprites[idx]}")`;
+        el.querySelectorAll("span").forEach((s) => { s.style.display = "none"; });
+      });
+    };
+
+    applySprite('[data-sprite="core"]', 0);
+    applySprite('[data-sprite="trophy"]', 7);
+    applySprite('[data-prop="p1"]', 12);
+    applySprite('[data-prop="p2"]', 13);
+    applySprite('[data-prop="p3"]', 14);
+    applySprite('[data-prop="p4"]', 15);
+  } catch (e) {
+    console.info("Sử dụng biểu tượng mặc định:", e);
+  }
 }
 initLesson25DSprites();
 

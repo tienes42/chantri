@@ -117,72 +117,91 @@ document.querySelectorAll('.hit[data-popup]').forEach(b => {
   });
 });
 
-/* ================= 1. GÁN TRỰC TIẾP SPRITE WEBP ĐÃ TÁCH NỀN SẴN (LOAD TỨC THÌ 0MS) ================= */
-const birdFrames = {
-  up: 'assets/sprites/props2_14.webp',
-  down: 'assets/sprites/props2_15.webp'
-};
+/* ================= 1. LOAD ĐẢO & ĐẠO CỤ ĐÃ TÁCH NỀN SẴN TRONG ASSETS/*.PNG (SIÊU NHANH, 0MS FLOOD FILL) ================= */
+const birdFrames = { up: '', down: '' };
 
-function applyInstantSprites() {
-  document.querySelectorAll('.island-center-art').forEach(el => {
-    el.style.backgroundImage = 'url("assets/sprites/island-center.webp")';
-  });
-  document.querySelectorAll('.island-art').forEach(el => {
-    el.style.backgroundImage = 'url("assets/sprites/island-subject.webp")';
-  });
-
-  const props1Map = [
-    { idx: 0, selector: '.flask-left' },
-    { idx: 1, selector: '.flask-right' },
-    { idx: 2, selector: '.chem-boom, .spark, .lava' },
-    { idx: 3, selector: '.chem-smoke' },
-    { idx: 4, selector: '.ruler' },
-    { idx: 5, selector: '.compass' },
-    { idx: 6, selector: '.magnet' },
-    { idx: 7, selector: '.apple' },
-    { idx: 8, selector: '.book' },
-    { idx: 9, selector: '.quill, .brush' },
-    { idx: 10, selector: '.shoe' },
-    { idx: 11, selector: '.ball' },
-    { idx: 12, selector: '.palette' },
-    { idx: 13, selector: '.globe' },
-    { idx: 14, selector: '.volcano' },
-    { idx: 15, selector: '.laptop' }
-  ];
-
-  const props2Map = [
-    { idx: 0, selector: '.sprout, .bush-l, .bush-r' },
-    { idx: 1, selector: '.flower, .rainbow' },
-    { idx: 2, selector: '.butterfly, .bird-paper' },
-    { idx: 3, selector: '.bug' },
-    { idx: 4, selector: '.hammer' },
-    { idx: 5, selector: '.chat-a' },
-    { idx: 6, selector: '.chat-b' },
-    { idx: 7, selector: '.music-fx' },
-    { idx: 8, selector: '.sword-l, .sword-r' },
-    { idx: 9, selector: '.crown' },
-    { idx: 10, selector: '.crystal' },
-    { idx: 11, selector: '.goal' },
-    { idx: 12, selector: '.cloud-white' },
-    { idx: 13, selector: '.cloud-gold' }
-  ];
-
-  props1Map.forEach(({ idx, selector }) => {
-    const url = `assets/sprites/props1_${idx}.webp`;
-    document.querySelectorAll(selector).forEach(el => {
-      el.style.backgroundImage = `url("${url}")`;
-    });
-  });
-
-  props2Map.forEach(({ idx, selector }) => {
-    const url = `assets/sprites/props2_${idx}.webp`;
-    document.querySelectorAll(selector).forEach(el => {
-      el.style.backgroundImage = `url("${url}")`;
-    });
+function loadImg(src) {
+  return new Promise((resolve, reject) => {
+    const img = new Image();
+    img.onload = () => resolve(img);
+    img.onerror = reject;
+    img.src = src;
   });
 }
 
-applyInstantSprites();
+// 2 mẫu đảo đã được tách nền trong suốt sẵn trong file PNG
+document.querySelectorAll('.island-center-art').forEach(el => {
+  el.style.backgroundImage = 'url("assets/island-center.png")';
+});
+document.querySelectorAll('.island-art').forEach(el => {
+  el.style.backgroundImage = 'url("assets/island-subject.png")';
+});
+
+async function processSpriteSheet(src, mappingList) {
+  try {
+    const img = await loadImg(src);
+    const cellW = img.naturalWidth / 4;
+    const cellH = img.naturalHeight / 4;
+    const size = 240;
+    const c = document.createElement('canvas');
+    c.width = size;
+    c.height = size;
+    const ctx = c.getContext('2d');
+
+    for (const item of mappingList) {
+      const { col, row, selector, saveKey } = item;
+      ctx.clearRect(0, 0, size, size);
+      ctx.drawImage(img, col * cellW, row * cellH, cellW, cellH, 0, 0, size, size);
+      const dataUrl = c.toDataURL('image/png');
+      if (saveKey) birdFrames[saveKey] = dataUrl;
+      if (selector) {
+        document.querySelectorAll(selector).forEach(el => {
+          el.style.backgroundImage = `url("${dataUrl}")`;
+        });
+      }
+    }
+  } catch (e) {
+    console.error('Lỗi cắt Sprite Sheet:', src, e);
+  }
+}
+
+processSpriteSheet('assets/props-sheet-1.png', [
+  { col: 0, row: 0, selector: '.flask-left' },
+  { col: 1, row: 0, selector: '.flask-right' },
+  { col: 2, row: 0, selector: '.chem-boom, .spark, .lava' },
+  { col: 3, row: 0, selector: '.chem-smoke' },
+  { col: 0, row: 1, selector: '.ruler' },
+  { col: 1, row: 1, selector: '.compass' },
+  { col: 2, row: 1, selector: '.magnet' },
+  { col: 3, row: 1, selector: '.apple' },
+  { col: 0, row: 2, selector: '.book' },
+  { col: 1, row: 2, selector: '.quill, .brush' },
+  { col: 2, row: 2, selector: '.shoe' },
+  { col: 3, row: 2, selector: '.ball' },
+  { col: 0, row: 3, selector: '.palette' },
+  { col: 1, row: 3, selector: '.globe' },
+  { col: 2, row: 3, selector: '.volcano' },
+  { col: 3, row: 3, selector: '.laptop' }
+]);
+
+processSpriteSheet('assets/props-sheet-2.png', [
+  { col: 0, row: 0, selector: '.sprout, .bush-l, .bush-r' },
+  { col: 1, row: 0, selector: '.flower, .rainbow' },
+  { col: 2, row: 0, selector: '.butterfly, .bird-paper' },
+  { col: 3, row: 0, selector: '.bug' },
+  { col: 0, row: 1, selector: '.hammer' },
+  { col: 1, row: 1, selector: '.chat-a' },
+  { col: 2, row: 1, selector: '.chat-b' },
+  { col: 3, row: 1, selector: '.music-fx' },
+  { col: 0, row: 2, selector: '.sword-l, .sword-r' },
+  { col: 1, row: 2, selector: '.crown' },
+  { col: 2, row: 2, selector: '.crystal' },
+  { col: 3, row: 2, selector: '.goal' },
+  { col: 0, row: 3, selector: '.cloud-white' },
+  { col: 1, row: 3, selector: '.cloud-gold' },
+  { col: 2, row: 3, saveKey: 'up' },
+  { col: 3, row: 3, saveKey: 'down' }
+]);
 
 /* ================= 2. HIỆU ỨNG CAMERA PARALLAX KHI DI CHUỘT ================= */
 homeScene.addEventListener('mousemove', e => {

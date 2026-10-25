@@ -10,7 +10,7 @@
 
 /* Mặc định: Bảng màu Đài Thiên Văn Lượng Tử (Vật Lý) */
 :root {
-  --bg-artwork: url("assets/physics-bg.webp");
+  --bg-artwork: url("assets/physics-bg.png");
   --bg-fallback: radial-gradient(circle at 50% 30%, #1e1b4b 0%, #090d24 62%, #030511 100%);
   --header-bg: linear-gradient(90deg, rgba(8, 17, 42, 0.9), rgba(18, 35, 74, 0.86), rgba(8, 17, 42, 0.9));
   --hero-bg: linear-gradient(135deg, rgba(15, 28, 64, 0.88) 0%, rgba(28, 25, 72, 0.84) 58%, rgba(10, 18, 44, 0.92) 100%);
@@ -30,7 +30,7 @@
 
 /* Khi mở trang Hóa học (chemistry-knowledge.html): Tự động chuyển sang Bảng màu Đại Lò Giả Kim */
 body.chemistry-grade-page {
-  --bg-artwork: url("assets/chemistry-bg.webp");
+  --bg-artwork: url("assets/chemistry-bg.png");
   --bg-fallback: radial-gradient(circle at 50% 30%, #06382c 0%, #051b24 62%, #020c12 100%);
   --header-bg: linear-gradient(90deg, rgba(5, 24, 26, 0.9), rgba(10, 46, 44, 0.86), rgba(5, 24, 26, 0.9));
   --hero-bg: linear-gradient(135deg, rgba(6, 38, 36, 0.88) 0%, rgba(20, 32, 58, 0.84) 58%, rgba(6, 22, 28, 0.92) 100%);
