@@ -74,99 +74,31 @@ function loadImg(src) {
 }
 
 async function initChemistryGradeSprites() {
-  try {
-    const img = await loadImg("assets/chemistry-icons.png");
-    const cellW = img.naturalWidth / 4;
-    const cellH = img.naturalHeight / 4;
-
-    for (let row = 0; row < 4; row++) {
-      for (let col = 0; col < 4; col++) {
-        const padX = cellW * 0.04;
-        const padY = cellH * 0.04;
-        const size = 220;
-        const c = document.createElement("canvas");
-        c.width = size;
-        c.height = size;
-        const ctx = c.getContext("2d");
-        ctx.drawImage(
-          img,
-          col * cellW + padX,
-          row * cellH + padY,
-          cellW - padX * 2,
-          cellH - padY * 2,
-          0,
-          0,
-          size,
-          size
-        );
-
-        const imgData = ctx.getImageData(0, 0, size, size);
-        const d = imgData.data;
-        const visited = new Uint8Array(size * size);
-        const isBg = idx => {
-          const r = d[idx], g = d[idx + 1], b = d[idx + 2];
-          const max = Math.max(r, g, b), min = Math.min(r, g, b);
-          return (r > 224 && g > 224 && b > 224) || (max - min < 18 && min > 175);
-        };
-
-        const stack = [];
-        for (let x = 0; x < size; x++) stack.push(x, (size - 1) * size + x);
-        for (let y = 0; y < size; y++) stack.push(y * size, y * size + (size - 1));
-
-        while (stack.length > 0) {
-          const p = stack.pop();
-          if (p < 0 || p >= size * size || visited[p]) continue;
-          visited[p] = 1;
-          const idx = p * 4;
-          if (isBg(idx)) {
-            d[idx + 3] = 0;
-            const x = p % size, y = (p / size) | 0;
-            if (x > 0) stack.push(p - 1);
-            if (x < size - 1) stack.push(p + 1);
-            if (y > 0) stack.push(p - size);
-            if (y < size - 1) stack.push(p + size);
-          }
-        }
-
-        for (let i = 0; i < size * size; i++) {
-          const idx = i * 4;
-          if (d[idx + 3] > 0 && d[idx] > 240 && d[idx + 1] > 240 && d[idx + 2] > 240) {
-            d[idx + 3] = 0;
-          }
-        }
-
-        ctx.putImageData(imgData, 0, 0);
-        slicedSprites.push(c.toDataURL("image/png"));
-      }
-    }
-
-    const applySprite = (selector, idx) => {
-      const url = slicedSprites[idx];
-      if (!url) return;
-      document.querySelectorAll(selector).forEach(el => {
-        el.style.backgroundImage = `url("${url}")`;
-        el.querySelectorAll("span").forEach(s => { s.style.display = "none"; });
-        if (el.classList.contains("action-sprite")) el.textContent = "";
-      });
-    };
-
-    applySprite('[data-sprite="core"]', 0);
-    applySprite('[data-sprite="stat1"]', 2);
-    applySprite('[data-sprite="stat2"]', 6);
-    applySprite('[data-sprite="stat3"]', 9);
-    applySprite('[data-sprite="stat4"]', 7);
-    applySprite('[data-sprite="calc"]', 8);
-    applySprite('[data-sprite="progress"]', 10);
-    applySprite('[data-sprite="scenario"]', 3);
-    applySprite('[data-prop="p1"]', 12);
-    applySprite('[data-prop="p2"]', 13);
-    applySprite('[data-prop="p3"]', 14);
-    applySprite('[data-prop="p4"]', 15);
-
-    if (topics.length) renderTopics();
-  } catch (e) {
-    console.info("Dùng icon mặc định:", e);
+  for (let i = 0; i < 16; i++) {
+    slicedSprites.push(`assets/sprites/chemistry_${i}.webp`);
   }
+  const applySprite = (selector, idx) => {
+    const url = slicedSprites[idx];
+    if (!url) return;
+    document.querySelectorAll(selector).forEach(el => {
+      el.style.backgroundImage = `url("${url}")`;
+      el.querySelectorAll("span").forEach(s => { s.style.display = "none"; });
+      if (el.classList.contains("action-sprite")) el.textContent = "";
+    });
+  };
+  applySprite('[data-sprite="core"]', 0);
+  applySprite('[data-sprite="stat1"]', 2);
+  applySprite('[data-sprite="stat2"]', 6);
+  applySprite('[data-sprite="stat3"]', 9);
+  applySprite('[data-sprite="stat4"]', 7);
+  applySprite('[data-sprite="calc"]', 8);
+  applySprite('[data-sprite="progress"]', 10);
+  applySprite('[data-sprite="scenario"]', 3);
+  applySprite('[data-prop="p1"]', 12);
+  applySprite('[data-prop="p2"]', 13);
+  applySprite('[data-prop="p3"]', 14);
+  applySprite('[data-prop="p4"]', 15);
+  if (topics.length) renderTopics();
 }
 
 /* =========================================================
@@ -373,14 +305,26 @@ async function loadLessons() {
   const url = `${API_BASE}/content/subjects/chemistry/lessons?grade=${encodeURIComponent(grade)}`;
 
   try {
-    const response = await fetch(url);
-    if (!response.ok) throw new Error(`HTTP ${response.status}`);
-
-    const data = await response.json();
-    if (!Array.isArray(data)) {
-      throw new Error("API không trả về danh sách bài học.");
+    const cacheKey = `hdlg_lessons_chemistry_${grade}`;
+    let data = null;
+    const cached = sessionStorage.getItem(cacheKey);
+    if (cached) {
+      try { data = JSON.parse(cached); } catch (_) {}
     }
-
+    if (!Array.isArray(data) || !data.length) {
+      const response = await fetch(url);
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      data = await response.json();
+      if (!Array.isArray(data)) {
+        throw new Error("API không trả về danh sách bài học.");
+      }
+      try {
+        sessionStorage.setItem(cacheKey, JSON.stringify(data));
+        data.forEach(l => {
+          if (l && l.id != null) sessionStorage.setItem(`hdlg_lesson_${l.id}`, JSON.stringify(l));
+        });
+      } catch (_) {}
+    }
     lessons = data;
     buildTopics();
     renderPage();

@@ -117,230 +117,72 @@ document.querySelectorAll('.hit[data-popup]').forEach(b => {
   });
 });
 
-/* ================= 1. ENGINE TÁCH NỀN THÔNG MINH CHO 2 MẪU ĐẢO ĐỒ SỘ MỚI ================= */
-function loadImg(src) {
-  return new Promise((resolve, reject) => {
-    const img = new Image();
-    img.onload = () => resolve(img);
-    img.onerror = reject;
-    img.src = src;
+/* ================= 1. GÁN TRỰC TIẾP SPRITE WEBP ĐÃ TÁCH NỀN SẴN (LOAD TỨC THÌ 0MS) ================= */
+const birdFrames = {
+  up: 'assets/sprites/props2_14.webp',
+  down: 'assets/sprites/props2_15.webp'
+};
+
+function applyInstantSprites() {
+  document.querySelectorAll('.island-center-art').forEach(el => {
+    el.style.backgroundImage = 'url("assets/sprites/island-center.webp")';
+  });
+  document.querySelectorAll('.island-art').forEach(el => {
+    el.style.backgroundImage = 'url("assets/sprites/island-subject.webp")';
+  });
+
+  const props1Map = [
+    { idx: 0, selector: '.flask-left' },
+    { idx: 1, selector: '.flask-right' },
+    { idx: 2, selector: '.chem-boom, .spark, .lava' },
+    { idx: 3, selector: '.chem-smoke' },
+    { idx: 4, selector: '.ruler' },
+    { idx: 5, selector: '.compass' },
+    { idx: 6, selector: '.magnet' },
+    { idx: 7, selector: '.apple' },
+    { idx: 8, selector: '.book' },
+    { idx: 9, selector: '.quill, .brush' },
+    { idx: 10, selector: '.shoe' },
+    { idx: 11, selector: '.ball' },
+    { idx: 12, selector: '.palette' },
+    { idx: 13, selector: '.globe' },
+    { idx: 14, selector: '.volcano' },
+    { idx: 15, selector: '.laptop' }
+  ];
+
+  const props2Map = [
+    { idx: 0, selector: '.sprout, .bush-l, .bush-r' },
+    { idx: 1, selector: '.flower, .rainbow' },
+    { idx: 2, selector: '.butterfly, .bird-paper' },
+    { idx: 3, selector: '.bug' },
+    { idx: 4, selector: '.hammer' },
+    { idx: 5, selector: '.chat-a' },
+    { idx: 6, selector: '.chat-b' },
+    { idx: 7, selector: '.music-fx' },
+    { idx: 8, selector: '.sword-l, .sword-r' },
+    { idx: 9, selector: '.crown' },
+    { idx: 10, selector: '.crystal' },
+    { idx: 11, selector: '.goal' },
+    { idx: 12, selector: '.cloud-white' },
+    { idx: 13, selector: '.cloud-gold' }
+  ];
+
+  props1Map.forEach(({ idx, selector }) => {
+    const url = `assets/sprites/props1_${idx}.webp`;
+    document.querySelectorAll(selector).forEach(el => {
+      el.style.backgroundImage = `url("${url}")`;
+    });
+  });
+
+  props2Map.forEach(({ idx, selector }) => {
+    const url = `assets/sprites/props2_${idx}.webp`;
+    document.querySelectorAll(selector).forEach(el => {
+      el.style.backgroundImage = `url("${url}")`;
+    });
   });
 }
 
-async function processIslandImage(src, selector) {
-  try {
-    const img = await loadImg(src);
-    const maxDim = 960;
-    const scale = Math.min(1, maxDim / Math.max(img.naturalWidth, img.naturalHeight));
-    const w = Math.round(img.naturalWidth * scale);
-    const h = Math.round(img.naturalHeight * scale);
-
-    const c = document.createElement('canvas');
-    c.width = w;
-    c.height = h;
-    const ctx = c.getContext('2d');
-    ctx.drawImage(img, 0, 0, w, h);
-
-    const imgData = ctx.getImageData(0, 0, w, h);
-    const d = imgData.data;
-    const visited = new Uint8Array(w * h);
-
-    // Xóa watermark góc dưới phải
-    for (let y = Math.floor(h * 0.88); y < h; y++) {
-      for (let x = Math.floor(w * 0.88); x < w; x++) {
-        d[(y * w + x) * 4 + 3] = 0;
-      }
-    }
-
-    // Phân biệt nền trắng/xám trung tính với bọt thác nước (bọt thác có ánh xanh B > R)
-    const isBgPixel = idx => {
-      const r = d[idx], g = d[idx + 1], b = d[idx + 2];
-      const max = Math.max(r, g, b), min = Math.min(r, g, b);
-      return (r > 228 && g > 228 && b > 228 && (b - r) < 10) || (max - min < 16 && min > 195);
-    };
-
-    const stack = [];
-    for (let x = 0; x < w; x++) stack.push(x, (h - 1) * w + x);
-    for (let y = 0; y < h; y++) stack.push(y * w, y * w + (w - 1));
-
-    while (stack.length > 0) {
-      const p = stack.pop();
-      if (p < 0 || p >= w * h || visited[p]) continue;
-      visited[p] = 1;
-
-      const idx = p * 4;
-      if (isBgPixel(idx)) {
-        d[idx + 3] = 0;
-        const x = p % w;
-        const y = (p / w) | 0;
-        if (x > 0) stack.push(p - 1);
-        if (x < w - 1) stack.push(p + 1);
-        if (y > 0) stack.push(p - w);
-        if (y < h - 1) stack.push(p + w);
-      } else {
-        const r = d[idx], g = d[idx + 1], b = d[idx + 2];
-        if (r > 210 && g > 210 && b > 210 && (b - r) < 12) {
-          d[idx + 3] = Math.max(0, 255 - ((r + g + b) / 3 - 210) * 5.5);
-        }
-      }
-    }
-
-    // Xóa các khe trắng純 túy (#FFFFFF) bị kẹt giữa các sợi dây leo, vòm cổng đá và gầm cầu
-    for (let i = 0; i < w * h; i++) {
-      const idx = i * 4;
-      if (d[idx + 3] > 0) {
-        const r = d[idx], g = d[idx + 1], b = d[idx + 2];
-        const diff = Math.max(r, g, b) - Math.min(r, g, b);
-        if (r > 240 && g > 240 && b > 240 && diff < 8) {
-          d[idx + 3] = 0;
-        } else if (r > 226 && g > 226 && b > 226 && diff < 8) {
-          d[idx + 3] = Math.round(d[idx + 3] * 0.2);
-        }
-      }
-    }
-
-    ctx.putImageData(imgData, 0, 0);
-    c.toBlob(blob => {
-      if (!blob) return;
-      const url = URL.createObjectURL(blob);
-      document.querySelectorAll(selector).forEach(el => {
-        el.style.backgroundImage = `url("${url}")`;
-      });
-    }, 'image/png');
-  } catch (e) {
-    console.error('Lỗi xử lý ảnh đảo:', src, e);
-  }
-}
-
-const birdFrames = { up: '', down: '' };
-
-async function processSpriteSheet(src, mappingList) {
-  try {
-    const img = await loadImg(src);
-    const W = img.naturalWidth;
-    const H = img.naturalHeight;
-    const cellW = W / 4;
-    const cellH = H / 4;
-
-    for (const item of mappingList) {
-      const { col, row, selector, removeInnerWhite, saveKey } = item;
-      const padX = cellW * 0.04;
-      const padY = cellH * 0.04;
-      const sx = col * cellW + padX;
-      const sy = row * cellH + padY;
-      const sw = cellW - padX * 2;
-      const sh = cellH - padY * 2;
-
-      const size = 240;
-      const c = document.createElement('canvas');
-      c.width = size;
-      c.height = size;
-      const ctx = c.getContext('2d');
-      ctx.drawImage(img, sx, sy, sw, sh, 0, 0, size, size);
-
-      const imgData = ctx.getImageData(0, 0, size, size);
-      const d = imgData.data;
-      const visited = new Uint8Array(size * size);
-
-      const isBg = idx => {
-        const r = d[idx], g = d[idx + 1], b = d[idx + 2];
-        const max = Math.max(r, g, b), min = Math.min(r, g, b);
-        return (r > 224 && g > 224 && b > 224) || (max - min < 20 && min > 165);
-      };
-
-      const stack = [];
-      for (let x = 0; x < size; x++) stack.push(x, (size - 1) * size + x);
-      for (let y = 0; y < size; y++) stack.push(y * size, y * size + (size - 1));
-
-      while (stack.length > 0) {
-        const p = stack.pop();
-        if (p < 0 || p >= size * size || visited[p]) continue;
-        visited[p] = 1;
-
-        const idx = p * 4;
-        if (isBg(idx)) {
-          d[idx + 3] = 0;
-          const x = p % size;
-          const y = (p / size) | 0;
-          if (x > 0) stack.push(p - 1);
-          if (x < size - 1) stack.push(p + 1);
-          if (y > 0) stack.push(p - size);
-          if (y < size - 1) stack.push(p + size);
-        } else {
-          const r = d[idx], g = d[idx + 1], b = d[idx + 2];
-          if (r > 205 && g > 205 && b > 205) {
-            d[idx + 3] = Math.max(0, 255 - ((r + g + b) / 3 - 205) * 5);
-          }
-        }
-      }
-
-      if (removeInnerWhite) {
-        for (let i = 0; i < size * size; i++) {
-          const idx = i * 4;
-          if (d[idx + 3] > 0 && d[idx] > 238 && d[idx + 1] > 238 && d[idx + 2] > 238) {
-            d[idx + 3] = 0;
-          }
-        }
-      }
-
-      ctx.putImageData(imgData, 0, 0);
-      const dataUrl = c.toDataURL('image/png');
-
-      if (saveKey) {
-        birdFrames[saveKey] = dataUrl;
-      }
-      if (selector) {
-        document.querySelectorAll(selector).forEach(el => {
-          el.style.backgroundImage = `url("${dataUrl}")`;
-        });
-      }
-    }
-  } catch (e) {
-    console.error('Lỗi cắt Sprite Sheet:', src, e);
-  }
-}
-
-// Khởi chạy tách nền cho 2 mẫu đảo mới và 32 dụng cụ
-processIslandImage('assets/island-center.png', '.island-center-art');
-processIslandImage('assets/island-subject.png', '.island-art');
-
-processSpriteSheet('assets/props-sheet-1.png', [
-  { col: 0, row: 0, selector: '.flask-left' },
-  { col: 1, row: 0, selector: '.flask-right' },
-  { col: 2, row: 0, selector: '.chem-boom, .spark, .lava' },
-  { col: 3, row: 0, selector: '.chem-smoke' },
-  { col: 0, row: 1, selector: '.ruler', removeInnerWhite: true },
-  { col: 1, row: 1, selector: '.compass', removeInnerWhite: true },
-  { col: 2, row: 1, selector: '.magnet', removeInnerWhite: true },
-  { col: 3, row: 1, selector: '.apple' },
-  { col: 0, row: 2, selector: '.book' },
-  { col: 1, row: 2, selector: '.quill, .brush' },
-  { col: 2, row: 2, selector: '.shoe' },
-  { col: 3, row: 2, selector: '.ball' },
-  { col: 0, row: 3, selector: '.palette', removeInnerWhite: true },
-  { col: 1, row: 3, selector: '.globe' },
-  { col: 2, row: 3, selector: '.volcano' },
-  { col: 3, row: 3, selector: '.laptop' }
-]);
-
-processSpriteSheet('assets/props-sheet-2.png', [
-  { col: 0, row: 0, selector: '.sprout, .bush-l, .bush-r' },
-  { col: 1, row: 0, selector: '.flower, .rainbow' },
-  { col: 2, row: 0, selector: '.butterfly, .bird-paper' },
-  { col: 3, row: 0, selector: '.bug' },
-  { col: 0, row: 1, selector: '.hammer' },
-  { col: 1, row: 1, selector: '.chat-a' },
-  { col: 2, row: 1, selector: '.chat-b' },
-  { col: 3, row: 1, selector: '.music-fx' },
-  { col: 0, row: 2, selector: '.sword-l, .sword-r' },
-  { col: 1, row: 2, selector: '.crown' },
-  { col: 2, row: 2, selector: '.crystal' },
-  { col: 3, row: 2, selector: '.goal' },
-  { col: 0, row: 3, selector: '.cloud-white' },
-  { col: 1, row: 3, selector: '.cloud-gold' },
-  { col: 2, row: 3, saveKey: 'up' },
-  { col: 3, row: 3, saveKey: 'down' }
-]);
+applyInstantSprites();
 
 /* ================= 2. HIỆU ỨNG CAMERA PARALLAX KHI DI CHUỘT ================= */
 homeScene.addEventListener('mousemove', e => {
@@ -421,7 +263,7 @@ function renderCinematicCanvas() {
     ctx.save();
     ctx.globalAlpha = o.alpha;
     ctx.shadowColor = o.hue;
-    ctx.shadowBlur = 12;
+    // shadowBlur removed for 60fps GPU speed
     ctx.fillStyle = o.hue;
     ctx.beginPath();
     ctx.arc(o.x, o.y, o.r, 0, Math.PI * 2);

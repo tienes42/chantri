@@ -20,6 +20,7 @@ IS_VERCEL = bool(os.getenv("VERCEL"))
 def _normalize_url(url: str) -> str:
     """Chấp nhận URL kiểu postgres:// hoặc postgresql:// (Neon, Supabase, Vercel Postgres...)
     và đổi sang driver psycopg v3 mà project đang dùng."""
+    url = url.strip()
     if url.startswith("postgres://"):
         url = "postgresql://" + url[len("postgres://"):]
     if url.startswith("postgresql://"):
@@ -39,12 +40,18 @@ if IS_VERCEL and DATABASE_URL.startswith("sqlite"):
         "Vào Project Settings > Environment Variables và thêm chuỗi kết nối PostgreSQL."
     )
 
-connect_args = {"check_same_thread": False} if DATABASE_URL.startswith("sqlite") else {}
-
-engine_kwargs = {"connect_args": connect_args, "pool_pre_ping": True}
-if IS_VERCEL:
-    # Serverless: mỗi lần gọi là một instance ngắn hạn, không giữ pool kết nối
-    engine_kwargs["poolclass"] = NullPool
+if DATABASE_URL.startswith("sqlite"):
+    connect_args = {"check_same_thread": False}
+    engine_kwargs = {"connect_args": connect_args, "pool_pre_ping": True}
+else:
+    connect_args = {"connect_timeout": 10, "prepare_threshold": None}
+    engine_kwargs = {"connect_args": connect_args, "pool_pre_ping": True}
+    if IS_VERCEL:
+        # Serverless + Neon Pooler: đóng kết nối gọn sau mỗi lần thực thi, tương thích hoàn toàn với PgBouncer (-pooler)
+        engine_kwargs["poolclass"] = NullPool
+    else:
+        engine_kwargs["pool_size"] = 5
+        engine_kwargs["max_overflow"] = 10
 
 engine = create_engine(DATABASE_URL, **engine_kwargs)
 

@@ -2,6 +2,7 @@ import os
 
 from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
+from fastapi.middleware.gzip import GZipMiddleware
 
 from database.database import Base, engine
 from models import *  # noqa: F401,F403
@@ -13,18 +14,16 @@ if not os.getenv("VERCEL"):
 
 app = FastAPI(
     title="HỌC ĐỂ LÀM GÌ API",
-    version="0.2.0",
+    version="0.2.1",
     description="Backend cho nền tảng học tập tương tác HỌC ĐỂ LÀM GÌ.",
 )
 
+# Nén GZip tự động cho các phản hồi JSON lớn (danh sách bài học)
+app.add_middleware(GZipMiddleware, minimum_size=500)
+
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=[
-        "http://127.0.0.1:5500",
-        "http://localhost:5500",
-        "http://127.0.0.1:3000",
-        "http://localhost:3000",
-    ],
+    allow_origins=["*"],
     allow_credentials=False,
     allow_methods=["*"],
     allow_headers=["*"],

@@ -28,113 +28,36 @@ function loadImg(src) {
   });
 }
 
-async function sliceMathIcons(src) {
-  try {
-    const img = await loadImg(src);
-    const W = img.naturalWidth;
-    const H = img.naturalHeight;
-    const cellW = W / 4;
-    const cellH = H / 4;
+async function sliceMathIcons() {
+  const gridMap = [
+    { keys: ["core"],               idx: 0,  selector: '[data-icon="core"]' },
+    { keys: ["g1"],                 idx: 1,  selector: '[data-icon="g1"] .class-icon' },
+    { keys: ["g4", "toolGeo"],      idx: 2,  selector: '[data-icon="g4"] .class-icon, [data-icon="toolGeo"] .tool-sprite' },
+    { keys: ["g3"],                 idx: 3,  selector: '[data-icon="g3"] .class-icon' },
+    { keys: ["g9"],                 idx: 4,  selector: '[data-icon="g9"] .class-icon' },
+    { keys: ["g10"],                idx: 5,  selector: '[data-icon="g10"] .class-icon' },
+    { keys: ["g11"],                idx: 6,  selector: '[data-icon="g11"] .class-icon' },
+    { keys: ["g12"],                idx: 7,  selector: '[data-icon="g12"] .class-icon' },
+    { keys: ["toolCalc"],           idx: 8,  selector: '[data-icon="toolCalc"] .tool-sprite' },
+    { keys: ["toolChallenge"],      idx: 9,  selector: '[data-icon="toolChallenge"] .tool-sprite' },
+    { keys: ["g5", "toolProgress"], idx: 10, selector: '[data-icon="g5"] .class-icon, [data-icon="toolProgress"] .tool-sprite' },
+    { keys: ["aiBot"],              idx: 11, selector: '[data-icon="aiBot"]' },
+    { keys: ["g6", "fibonacci"],    idx: 12, selector: '[data-icon="g6"] .class-icon, [data-prop="fibonacci"]' },
+    { keys: ["g7", "icosa"],        idx: 13, selector: '[data-icon="g7"] .class-icon, [data-prop="icosa"]' },
+    { keys: ["g8", "mobius"],       idx: 14, selector: '[data-icon="g8"] .class-icon, [data-prop="mobius"]' },
+    { keys: ["g2", "cube"],         idx: 15, selector: '[data-icon="g2"] .class-icon, [data-prop="cube"]' }
+  ];
 
-    // 16 ô trong lưới 4x4 của assets/math-icons.png được gán cho 12 lớp + 4 công cụ + 4 khối đa diện bay
-    const gridMap = [
-      // Hàng 1
-      { keys: ["core"],             col: 0, row: 0, selector: '[data-icon="core"]' },
-      { keys: ["g1"],               col: 1, row: 0, selector: '[data-icon="g1"] .class-icon' },
-      { keys: ["g4", "toolGeo"],    col: 2, row: 0, selector: '[data-icon="g4"] .class-icon, [data-icon="toolGeo"] .tool-sprite' },
-      { keys: ["g3"],               col: 3, row: 0, selector: '[data-icon="g3"] .class-icon' },
-      // Hàng 2
-      { keys: ["g9"],               col: 0, row: 1, selector: '[data-icon="g9"] .class-icon' },
-      { keys: ["g10"],              col: 1, row: 1, selector: '[data-icon="g10"] .class-icon' },
-      { keys: ["g11"],              col: 2, row: 1, selector: '[data-icon="g11"] .class-icon' },
-      { keys: ["g12"],              col: 3, row: 1, selector: '[data-icon="g12"] .class-icon' },
-      // Hàng 3
-      { keys: ["toolCalc"],         col: 0, row: 2, selector: '[data-icon="toolCalc"] .tool-sprite' },
-      { keys: ["toolChallenge"],    col: 1, row: 2, selector: '[data-icon="toolChallenge"] .tool-sprite' },
-      { keys: ["g5", "toolProgress"], col: 2, row: 2, selector: '[data-icon="g5"] .class-icon, [data-icon="toolProgress"] .tool-sprite' },
-      { keys: ["aiBot"],            col: 3, row: 2, selector: '[data-icon="aiBot"]' },
-      // Hàng 4
-      { keys: ["g6", "fibonacci"],  col: 0, row: 3, selector: '[data-icon="g6"] .class-icon, [data-prop="fibonacci"]' },
-      { keys: ["g7", "icosa"],      col: 1, row: 3, selector: '[data-icon="g7"] .class-icon, [data-prop="icosa"]' },
-      { keys: ["g8", "mobius"],     col: 2, row: 3, selector: '[data-icon="g8"] .class-icon, [data-prop="mobius"]' },
-      { keys: ["g2", "cube"],       col: 3, row: 3, selector: '[data-icon="g2"] .class-icon, [data-prop="cube"]' }
-    ];
-
-    for (const item of gridMap) {
-      const padX = cellW * 0.04;
-      const padY = cellH * 0.04;
-      const sx = item.col * cellW + padX;
-      const sy = item.row * cellH + padY;
-      const sw = cellW - padX * 2;
-      const sh = cellH - padY * 2;
-
-      const size = 240;
-      const c = document.createElement("canvas");
-      c.width = size;
-      c.height = size;
-      const ctx = c.getContext("2d");
-      ctx.drawImage(img, sx, sy, sw, sh, 0, 0, size, size);
-
-      const imgData = ctx.getImageData(0, 0, size, size);
-      const d = imgData.data;
-      const visited = new Uint8Array(size * size);
-
-      const isBg = idx => {
-        const r = d[idx], g = d[idx + 1], b = d[idx + 2];
-        const max = Math.max(r, g, b), min = Math.min(r, g, b);
-        return (r > 224 && g > 224 && b > 224) || (max - min < 18 && min > 175);
-      };
-
-      const stack = [];
-      for (let x = 0; x < size; x++) stack.push(x, (size - 1) * size + x);
-      for (let y = 0; y < size; y++) stack.push(y * size, y * size + (size - 1));
-
-      while (stack.length > 0) {
-        const p = stack.pop();
-        if (p < 0 || p >= size * size || visited[p]) continue;
-        visited[p] = 1;
-
-        const idx = p * 4;
-        if (isBg(idx)) {
-          d[idx + 3] = 0;
-          const x = p % size;
-          const y = (p / size) | 0;
-          if (x > 0) stack.push(p - 1);
-          if (x < size - 1) stack.push(p + 1);
-          if (y > 0) stack.push(p - size);
-          if (y < size - 1) stack.push(p + size);
-        } else {
-          const r = d[idx], g = d[idx + 1], b = d[idx + 2];
-          if (r > 205 && g > 205 && b > 205) {
-            d[idx + 3] = Math.max(0, 255 - ((r + g + b) / 3 - 205) * 5);
-          }
-        }
-      }
-
-      // Xóa khoảng trắng thuần túy bị kẹt bên trong thước tam giác, bàn tính, vòng vô cực
-      for (let i = 0; i < size * size; i++) {
-        const idx = i * 4;
-        if (d[idx + 3] > 0 && d[idx] > 240 && d[idx + 1] > 240 && d[idx + 2] > 240) {
-          d[idx + 3] = 0;
-        }
-      }
-
-      ctx.putImageData(imgData, 0, 0);
-      const dataUrl = c.toDataURL("image/png");
-      item.keys.forEach(k => { iconSprites[k] = dataUrl; });
-
-      if (item.selector) {
-        document.querySelectorAll(item.selector).forEach(el => {
-          el.style.backgroundImage = `url("${dataUrl}")`;
-          el.querySelectorAll("span").forEach(sp => { sp.style.display = "none"; });
-          if (el.classList.contains("tool-sprite")) {
-            el.textContent = "";
-          }
-        });
-      }
+  for (const item of gridMap) {
+    const dataUrl = `assets/sprites/math_${item.idx}.webp`;
+    item.keys.forEach(k => { iconSprites[k] = dataUrl; });
+    if (item.selector) {
+      document.querySelectorAll(item.selector).forEach(el => {
+        el.style.backgroundImage = `url("${dataUrl}")`;
+        el.querySelectorAll("span").forEach(sp => { sp.style.display = "none"; });
+        if (el.classList.contains("tool-sprite")) el.textContent = "";
+      });
     }
-  } catch (e) {
-    console.info("Đang dùng biểu tượng mặc định:", e);
   }
 }
 
@@ -185,6 +108,23 @@ function closeMathPopup() {
 classCards.forEach(function (card) {
   card.addEventListener("click", function () {
     selectedGrade = card.dataset.grade;
+    // Prefetch dữ liệu bài học ngay khi bấm chọn lớp để trang sau mở tức thì (0ms)
+    try {
+      const cacheKey = `hdlg_lessons_math_${selectedGrade}`;
+      if (!sessionStorage.getItem(cacheKey)) {
+        const apiBase = (["127.0.0.1", "localhost"].includes(location.hostname) && location.port !== "8000") ? "http://127.0.0.1:8000/api" : "/api";
+        fetch(`${apiBase}/content/subjects/math/lessons?grade=${encodeURIComponent(selectedGrade)}`)
+          .then(r => r.ok ? r.json() : null)
+          .then(data => {
+            if (Array.isArray(data) && data.length) {
+              sessionStorage.setItem(cacheKey, JSON.stringify(data));
+              data.forEach(l => {
+                if (l && l.id != null) sessionStorage.setItem(`hdlg_lesson_${l.id}`, JSON.stringify(l));
+              });
+            }
+          }).catch(() => {});
+      }
+    } catch (_) {}
     const iconKey = card.dataset.icon || "core";
 
     openMathPopup({
@@ -319,7 +259,7 @@ function renderSacredGeometry() {
     ctx.save();
     ctx.fillStyle = p.color;
     ctx.shadowColor = p.color;
-    ctx.shadowBlur = 10;
+    // shadowBlur removed for smooth 60FPS
 
     if (p.symbol) {
       ctx.font = "bold 14px 'Segoe UI', sans-serif";

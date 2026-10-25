@@ -28,114 +28,36 @@ function loadImg(src) {
   });
 }
 
-async function slicePhysicsIcons(src) {
-  try {
-    const img = await loadImg(src);
-    const W = img.naturalWidth;
-    const H = img.naturalHeight;
-    const cellW = W / 4;
-    const cellH = H / 4;
+async function slicePhysicsIcons() {
+  const gridMap = [
+    { key: "core",          idx: 0,  selector: '[data-icon="core"]' },
+    { key: "g6",            idx: 1,  selector: '[data-icon="g6"] .class-icon' },
+    { key: "g7",            idx: 2,  selector: '[data-icon="g7"] .class-icon' },
+    { key: "g8",            idx: 3,  selector: '[data-icon="g8"] .class-icon' },
+    { key: "g9",            idx: 4,  selector: '[data-icon="g9"] .class-icon' },
+    { key: "g10",           idx: 5,  selector: '[data-icon="g10"] .class-icon' },
+    { key: "g11",           idx: 6,  selector: '[data-icon="g11"] .class-icon' },
+    { key: "g12",           idx: 7,  selector: '[data-icon="g12"] .class-icon' },
+    { key: "toolCalc",      idx: 8,  selector: '[data-icon="toolCalc"] .tool-sprite' },
+    { key: "toolChallenge", idx: 9,  selector: '[data-icon="toolChallenge"] .tool-sprite' },
+    { key: "toolProgress",  idx: 10, selector: '[data-icon="toolProgress"] .tool-sprite' },
+    { key: "aiBot",         idx: 11, selector: '[data-icon="aiBot"]' },
+    { key: "gyro",          idx: 12, selector: '[data-prop="gyro"]' },
+    { key: "prism",         idx: 13, selector: '[data-prop="prism"]' },
+    { key: "magnet",        idx: 14, selector: '[data-prop="magnet"]' },
+    { key: "gear",          idx: 15, selector: '[data-prop="gear"]' }
+  ];
 
-    // Bản đồ vị trí 16 icon trong lưới 4x4 của assets/physics-icons.png
-    const gridMap = [
-      // Hàng 1: Lõi nguyên tử, Lớp 6, Lớp 7, Lớp 8
-      { key: "core", col: 0, row: 0, selector: '[data-icon="core"]' },
-      { key: "g6",   col: 1, row: 0, selector: '[data-icon="g6"] .class-icon' },
-      { key: "g7",   col: 2, row: 0, selector: '[data-icon="g7"] .class-icon' },
-      { key: "g8",   col: 3, row: 0, selector: '[data-icon="g8"] .class-icon' },
-      // Hàng 2: Lớp 9, Lớp 10, Lớp 11, Lớp 12
-      { key: "g9",   col: 0, row: 1, selector: '[data-icon="g9"] .class-icon' },
-      { key: "g10",  col: 1, row: 1, selector: '[data-icon="g10"] .class-icon' },
-      { key: "g11",  col: 2, row: 1, selector: '[data-icon="g11"] .class-icon' },
-      { key: "g12",  col: 3, row: 1, selector: '[data-icon="g12"] .class-icon' },
-      // Hàng 3: 3 Công cụ nhanh & Trợ lý AI
-      { key: "toolCalc",      col: 0, row: 2, selector: '[data-icon="toolCalc"] .tool-sprite' },
-      { key: "toolChallenge", col: 1, row: 2, selector: '[data-icon="toolChallenge"] .tool-sprite' },
-      { key: "toolProgress",  col: 2, row: 2, selector: '[data-icon="toolProgress"] .tool-sprite' },
-      { key: "aiBot",         col: 3, row: 2, selector: '[data-icon="aiBot"]' },
-      // Hàng 4: 4 Khí cụ Vật lý bay lơ lửng ở nền
-      { key: "gyro",   col: 0, row: 3, selector: '[data-prop="gyro"]' },
-      { key: "prism",  col: 1, row: 3, selector: '[data-prop="prism"]' },
-      { key: "magnet", col: 2, row: 3, selector: '[data-prop="magnet"]' },
-      { key: "gear",   col: 3, row: 3, selector: '[data-prop="gear"]' }
-    ];
-
-    for (const item of gridMap) {
-      const padX = cellW * 0.04;
-      const padY = cellH * 0.04;
-      const sx = item.col * cellW + padX;
-      const sy = item.row * cellH + padY;
-      const sw = cellW - padX * 2;
-      const sh = cellH - padY * 2;
-
-      const size = 240;
-      const c = document.createElement("canvas");
-      c.width = size;
-      c.height = size;
-      const ctx = c.getContext("2d");
-      ctx.drawImage(img, sx, sy, sw, sh, 0, 0, size, size);
-
-      const imgData = ctx.getImageData(0, 0, size, size);
-      const d = imgData.data;
-      const visited = new Uint8Array(size * size);
-
-      const isBg = idx => {
-        const r = d[idx], g = d[idx + 1], b = d[idx + 2];
-        const max = Math.max(r, g, b), min = Math.min(r, g, b);
-        return (r > 224 && g > 224 && b > 224) || (max - min < 18 && min > 175);
-      };
-
-      const stack = [];
-      for (let x = 0; x < size; x++) stack.push(x, (size - 1) * size + x);
-      for (let y = 0; y < size; y++) stack.push(y * size, y * size + (size - 1));
-
-      while (stack.length > 0) {
-        const p = stack.pop();
-        if (p < 0 || p >= size * size || visited[p]) continue;
-        visited[p] = 1;
-
-        const idx = p * 4;
-        if (isBg(idx)) {
-          d[idx + 3] = 0;
-          const x = p % size;
-          const y = (p / size) | 0;
-          if (x > 0) stack.push(p - 1);
-          if (x < size - 1) stack.push(p + 1);
-          if (y > 0) stack.push(p - size);
-          if (y < size - 1) stack.push(p + size);
-        } else {
-          const r = d[idx], g = d[idx + 1], b = d[idx + 2];
-          if (r > 205 && g > 205 && b > 205) {
-            d[idx + 3] = Math.max(0, 255 - ((r + g + b) / 3 - 205) * 5);
-          }
-        }
-      }
-
-      // Xóa khoảng trắng thuần túy bị kẹt bên trong các vòng con quay, bánh răng, nam châm
-      for (let i = 0; i < size * size; i++) {
-        const idx = i * 4;
-        if (d[idx + 3] > 0 && d[idx] > 240 && d[idx + 1] > 240 && d[idx + 2] > 240) {
-          d[idx + 3] = 0;
-        }
-      }
-
-      ctx.putImageData(imgData, 0, 0);
-      const dataUrl = c.toDataURL("image/png");
-      iconSprites[item.key] = dataUrl;
-
-      if (item.selector) {
-        document.querySelectorAll(item.selector).forEach(el => {
-          el.style.backgroundImage = `url("${dataUrl}")`;
-          // Ẩn emoji dự phòng khi ảnh 2.5D đã sẵn sàng
-          el.querySelectorAll("span").forEach(sp => { sp.style.display = "none"; });
-          if (el.classList.contains("tool-sprite")) {
-            el.textContent = "";
-          }
-        });
-      }
+  for (const item of gridMap) {
+    const dataUrl = `assets/sprites/physics_${item.idx}.webp`;
+    iconSprites[item.key] = dataUrl;
+    if (item.selector) {
+      document.querySelectorAll(item.selector).forEach(el => {
+        el.style.backgroundImage = `url("${dataUrl}")`;
+        el.querySelectorAll("span").forEach(sp => { sp.style.display = "none"; });
+        if (el.classList.contains("tool-sprite")) el.textContent = "";
+      });
     }
-  } catch (e) {
-    console.info("Đang dùng biểu tượng mặc định:", e);
   }
 }
 
@@ -186,6 +108,23 @@ function closePhysicsPopup() {
 classCards.forEach(function (card) {
   card.addEventListener("click", function () {
     selectedGrade = card.dataset.grade;
+    // Prefetch dữ liệu bài học ngay khi bấm chọn lớp để trang sau mở tức thì (0ms)
+    try {
+      const cacheKey = `hdlg_lessons_physics_${selectedGrade}`;
+      if (!sessionStorage.getItem(cacheKey)) {
+        const apiBase = (["127.0.0.1", "localhost"].includes(location.hostname) && location.port !== "8000") ? "http://127.0.0.1:8000/api" : "/api";
+        fetch(`${apiBase}/content/subjects/physics/lessons?grade=${encodeURIComponent(selectedGrade)}`)
+          .then(r => r.ok ? r.json() : null)
+          .then(data => {
+            if (Array.isArray(data) && data.length) {
+              sessionStorage.setItem(cacheKey, JSON.stringify(data));
+              data.forEach(l => {
+                if (l && l.id != null) sessionStorage.setItem(`hdlg_lesson_${l.id}`, JSON.stringify(l));
+              });
+            }
+          }).catch(() => {});
+      }
+    } catch (_) {}
     const iconKey = card.dataset.icon || "core";
 
     openPhysicsPopup({
@@ -312,7 +251,7 @@ function renderQuantumField() {
     ctx.save();
     ctx.fillStyle = p.color;
     ctx.shadowColor = p.color;
-    ctx.shadowBlur = 10;
+    // shadowBlur removed for smooth 60FPS
     ctx.beginPath();
     ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
     ctx.fill();

@@ -46,7 +46,7 @@ button {
 .observatory-bg {
   position: absolute;
   inset: -4%;
-  background: url("assets/physics-bg.png") center/cover no-repeat;
+  background: url("assets/physics-bg.webp") center/cover no-repeat;
   filter: brightness(0.88) contrast(1.08) saturate(1.12);
   transition: transform 0.25s ease-out;
 }

@@ -14,7 +14,7 @@
 ========================================================= */
 :root {
   /* Ảnh nền 2.5D mặc định */
-  --bg-art-url: url("assets/math-bg.png");
+  --bg-art-url: url("assets/math-bg.webp");
 
   /* Lớp phủ làm dịu nền 2.5D để chữ nổi bật hoàn toàn */
   --veil-bg: linear-gradient(180deg, rgba(238, 244, 250, 0.86) 0%, rgba(228, 237, 247, 0.9) 100%);
@@ -110,19 +110,19 @@ body[data-theme="dark"] {
 
 /* Tự động đổi bối cảnh 2.5D và tông màu theo môn học */
 body[data-subject="math"] {
-  --bg-art-url: url("assets/math-bg.png");
+  --bg-art-url: url("assets/math-bg.webp");
   --subject-primary: #0284c7;
   --subject-dark: #0369a1;
 }
 body[data-subject="physics"] {
-  --bg-art-url: url("assets/physics-bg.png");
+  --bg-art-url: url("assets/physics-bg.webp");
   --subject-primary: #4f46e5;
   --subject-dark: #3730a3;
   --subject-soft: #e0e7ff;
   --subject-border: #a5b4fc;
 }
 body[data-subject="chemistry"] {
-  --bg-art-url: url("assets/chemistry-bg.png");
+  --bg-art-url: url("assets/chemistry-bg.webp");
   --subject-primary: #059669;
   --subject-dark: #047857;
   --subject-soft: #d1fae5;
