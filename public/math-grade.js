@@ -261,7 +261,7 @@ function renderPage() {
   if (topicCount) topicCount.textContent = topics.length;
   if (lessonCount) lessonCount.textContent = totalLessons;
   if (challengeCount) {
-    challengeCount.textContent = Math.max(1, Math.ceil(topics.length / 2));
+    challengeCount.textContent = lessons.filter(l => l && (l.game_type || l.game_title)).length || topics.length; // số game Thử thách thực tế thật
   }
 
   updateProgress(totalLessons);
@@ -457,10 +457,33 @@ if (backButton) {
   });
 }
 
+/* =========================================================
+   TIẾN TRÌNH & THỬ THÁCH THỰC TẾ (grade-progress.js dùng chung)
+========================================================= */
+function withGradeProgress(fn) {
+  if (window.HDLGProgress) return fn(window.HDLGProgress);
+  let s = document.getElementById("gradeProgressScript");
+  if (!s) {
+    s = document.createElement("script");
+    s.id = "gradeProgressScript";
+    s.src = "/grade-progress.js?v=1";
+    document.head.appendChild(s);
+  }
+  s.addEventListener("load", () => fn(window.HDLGProgress));
+  s.addEventListener("error", () => alert("Không tải được bảng tiến trình. Hãy kiểm tra kết nối mạng."));
+}
+function openGradeProgress() {
+  withGradeProgress(P => P.open({ subject: "math", grade, getLessons: () => lessons, apiBase: API_BASE }));
+}
+function gradeChallengeURL() {
+  return "/challenge.html?subject=" + "math" + "&grade=" + encodeURIComponent(grade) +
+    "&from=" + encodeURIComponent(location.pathname + location.search);
+}
+
 const challengeButton = document.getElementById("challengeButton");
 if (challengeButton) {
   challengeButton.addEventListener("click", function () {
-    alert("Khu vực Thử thách thực tế sẽ được xây dựng trong hệ thống HỌC ĐỂ LÀM GÌ.");
+    window.location.href = gradeChallengeURL();
   });
 }
 
@@ -474,7 +497,7 @@ if (calculatorButton) {
 const progressButton = document.getElementById("progressButton");
 if (progressButton) {
   progressButton.addEventListener("click", function () {
-    alert("Trang phân tích năng lực sẽ được xây dựng sau hệ thống bài học.");
+    openGradeProgress();
   });
 }
 

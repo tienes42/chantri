@@ -190,7 +190,7 @@ function renderPage() {
 
   if (topicCount) topicCount.textContent = topics.length;
   if (lessonCount) lessonCount.textContent = lessons.length;
-  if (challengeCount) challengeCount.textContent = Math.max(1, topics.length);
+  if (challengeCount) challengeCount.textContent = lessons.filter(l => l && (l.game_type || l.game_title)).length || topics.length; // số game Thử thách thực tế thật
 
   updateProgress();
   renderTopics();
@@ -418,10 +418,33 @@ if (popupStart) {
   });
 }
 
+/* =========================================================
+   TIẾN TRÌNH & THỬ THÁCH THỰC TẾ (grade-progress.js dùng chung)
+========================================================= */
+function withGradeProgress(fn) {
+  if (window.HDLGProgress) return fn(window.HDLGProgress);
+  let s = document.getElementById("gradeProgressScript");
+  if (!s) {
+    s = document.createElement("script");
+    s.id = "gradeProgressScript";
+    s.src = "/grade-progress.js?v=1";
+    document.head.appendChild(s);
+  }
+  s.addEventListener("load", () => fn(window.HDLGProgress));
+  s.addEventListener("error", () => alert("Không tải được bảng tiến trình. Hãy kiểm tra kết nối mạng."));
+}
+function openGradeProgress() {
+  withGradeProgress(P => P.open({ subject: "chemistry", grade, getLessons: () => lessons, apiBase: API_BASE }));
+}
+function gradeChallengeURL() {
+  return "/challenge.html?subject=" + "chemistry" + "&grade=" + encodeURIComponent(grade) +
+    "&from=" + encodeURIComponent(location.pathname + location.search);
+}
+
 const challengeButton = $("challengeButton");
 if (challengeButton) {
   challengeButton.addEventListener("click", () => {
-    alert("Phần thử thách thực tế sẽ kết nối với hệ thống nhiệm vụ và game ở bước tiếp theo.");
+    window.location.href = gradeChallengeURL();
   });
 }
 
@@ -435,7 +458,7 @@ if (calculatorButton) {
 const progressButton = $("progressButton");
 if (progressButton) {
   progressButton.addEventListener("click", () => {
-    alert("Trang phân tích tiến trình sẽ được kết nối sau khi hoàn thiện hệ thống học và game.");
+    openGradeProgress();
   });
 }
 

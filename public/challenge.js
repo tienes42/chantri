@@ -24,6 +24,14 @@
   var params = new URLSearchParams(location.search);
   var subject = SUB[params.get("subject")] ? params.get("subject") : null;
   var range = localStorage.getItem("hdlg_qc_range") || "all";
+  /* Vào từ trang lớp (?grade=10&from=/math-grade.html?grade=10) → ưu tiên câu hỏi của lớp đó */
+  var GRADE = parseInt(params.get("grade"), 10);
+  if (isFinite(GRADE) && GRADE >= 1 && GRADE <= 12) {
+    RANGES.unshift({ id: "grade", label: "Lớp " + GRADE, min: GRADE, max: GRADE, near: true });
+    range = "grade";
+  } else GRADE = 0;
+  var FROM = params.get("from") || "";
+  if (!/^\/(?!\/)[\w\-./?=&%]*$/.test(FROM)) FROM = "";
   var game = null, tick = null;
 
   function Q() { return window.HDLGQ; }
@@ -64,7 +72,7 @@
       stopTimer(); game = null;
     }
     if (subject && !params.get("subject")) { subject = null; showPick(); return; }
-    location.href = subject ? SUB[subject].page : "/index.html";
+    location.href = FROM || (subject ? SUB[subject].page : "/index.html");
   };
 
   /* ---------- màn chọn môn ---------- */
@@ -82,8 +90,24 @@
 
   /* ---------- màn giới thiệu ---------- */
   function pool() {
-    var r = RANGES.filter(function (x) { return x.id === range; })[0] || RANGES[0];
-    return (BANK[subject] || []).filter(function (q) { return q.g >= r.min && q.g <= r.max; });
+    var r = RANGES.filter(function (x) { return x.id === range; })[0] || RANGES[0], all = BANK[subject] || [];
+    if (!r.near) return all.filter(function (q) { return q.g >= r.min && q.g <= r.max; });
+    /* lớp đang học: nếu chưa đủ câu thì mở rộng dần sang lớp liền kề */
+    var lo = r.min, hi = r.max, out = [];
+    for (var k = 0; k < 12; k++) {
+      out = all.filter(function (q) { return q.g >= lo && q.g <= hi; });
+      if (out.length >= QN) break;
+      lo = Math.max(1, lo - 1); hi = Math.min(12, hi + 1);
+    }
+    var gs = out.map(function (q) { return q.g; }), a = Math.min.apply(null, gs), b = Math.max.apply(null, gs);
+    r.used = !gs.length ? "" : a === b ? "lớp " + a : "lớp " + a + "–" + b;
+    return out;
+  }
+  function rangeNote() {
+    var r = RANGES.filter(function (x) { return x.id === range; })[0];
+    if (!r || !r.near) return "";
+    var n = pool().length;
+    return '<p class="muted" style="font-size:12.5px;margin:6px 0 0">📚 ' + n + " câu hỏi phù hợp" + (r.used && r.used !== "lớp " + GRADE ? " (lấy từ " + r.used + " vì lớp " + GRADE + " còn ít câu)" : " của lớp " + GRADE) + "</p>";
   }
   function showIntro() {
     game = null; setHeader();
@@ -92,14 +116,14 @@
     var ms = Q() ? Q().MISSIONS.filter(function (m) { return m.key === "quick_" + subject || m.key === "correct" || m.key === "great"; }) : [];
     app.innerHTML = '<section class="card"><div class="center"><h2 class="big">' + SUB[subject].icon + " Thử thách nhanh " + SUB[subject].name + '</h2><p class="muted">Phản xạ nhanh với các câu hỏi gắn với đời sống thực tế</p></div>' +
       '<div class="rules"><div><b>' + QN + "</b>câu hỏi</div><div><b>" + secs() + "s</b>mỗi câu</div><div><b>+10</b>mỗi câu đúng<br>+5 nếu trả lời nhanh</div><div><b>⭐ " + (st.qbest[subject] || 0) + "/15</b>sao hôm nay</div></div>" +
-      '<div class="lbl">Phạm vi kiến thức</div><div class="chips">' + RANGES.map(function (r) { return '<button class="chip' + (r.id === range ? " on" : "") + '" data-r="' + r.id + '">' + r.label + "</button>"; }).join("") + "</div>" +
+      '<div class="lbl">Phạm vi kiến thức</div><div class="chips">' + RANGES.map(function (r) { return '<button class="chip' + (r.id === range ? " on" : "") + '" data-r="' + r.id + '">' + r.label + "</button>"; }).join("") + "</div>" + rangeNote() +
       '<div class="lbl">Nhiệm vụ liên quan hôm nay</div><div class="minis">' + ms.map(function (m) {
         var v = Math.min(m.goal, st.prog[m.key] || 0), ok = v >= m.goal;
         return '<div class="mini' + (ok ? " ok" : "") + '">' + m.icon + " " + esc(m.title) + "<span>" + (ok ? "✓ Xong" : v + "/" + m.goal) + "</span></div>";
       }).join("") + "</div>" +
       '<p class="muted" style="font-size:13px;margin-top:14px">🏆 Kỷ lục của bạn: <b>' + sd.best + "/10</b> câu · Đã chơi " + sd.plays + " lượt. Đổi thời gian mỗi câu trong ⚙️ Cài đặt ở trang chủ.</p>" +
       '<div class="row"><button class="btn" id="startBtn">▶ Bắt đầu thử thách</button>' + (params.get("subject") ? "" : '<button class="btn ghost" id="otherBtn">Đổi môn</button>') + "</div></section>";
-    app.querySelectorAll("[data-r]").forEach(function (b) { b.onclick = function () { range = b.getAttribute("data-r"); localStorage.setItem("hdlg_qc_range", range); showIntro(); }; });
+    app.querySelectorAll("[data-r]").forEach(function (b) { b.onclick = function () { range = b.getAttribute("data-r"); if (range !== "grade") localStorage.setItem("hdlg_qc_range", range); showIntro(); }; });
     document.getElementById("startBtn").onclick = start;
     var ob = document.getElementById("otherBtn"); if (ob) ob.onclick = showPick;
   }
@@ -177,14 +201,14 @@
       '<p class="muted">' + starMsg + "</p>" +
       (r.newlyDone.length ? '<div class="news">' + r.newlyDone.map(function (m) { return '<div class="mini ok">🎉 Hoàn thành nhiệm vụ: ' + esc(m.title) + "<span>Vào Nhiệm vụ để nhận ⭐" + m.reward + "</span></div>"; }).join("") + "</div>" : "") +
       '<div class="minis" style="margin-top:10px">' + rel.map(function (x) { return '<div class="mini' + (x.done ? " ok" : "") + '">' + x.m.icon + " " + esc(x.m.title) + "<span>" + (x.claimed ? "✓ Đã nhận" : x.done ? "Chờ nhận" : x.v + "/" + x.m.goal) + "</span></div>"; }).join("") + "</div>" +
-      '<div class="row"><button class="btn" id="againBtn">🔄 Chơi lại</button><button class="btn ghost" id="mBtn" data-hq-badge="missions" style="position:relative">📜 Nhận thưởng nhiệm vụ</button><button class="btn ghost" id="homeBtn">🏠 Về trang ' + SUB[subject].name + "</button></div>" +
+      '<div class="row"><button class="btn" id="againBtn">🔄 Chơi lại</button><button class="btn ghost" id="mBtn" data-hq-badge="missions" style="position:relative">📜 Nhận thưởng nhiệm vụ</button><button class="btn ghost" id="homeBtn">🏠 Về trang ' + SUB[subject].name + (GRADE && FROM ? " lớp " + GRADE : "") + "</button></div>" +
       '<div class="review"><div class="lbl">Xem lại đáp án</div>' + g.log.map(function (l, i) {
         var right = l.q.opts.filter(function (o) { return o.ok; })[0].t, mine = l.pick >= 0 ? l.q.opts[l.pick].t : "Hết giờ";
         return "<details><summary>" + (l.ok ? "✅" : "❌") + " Câu " + (i + 1) + ": " + esc(l.q.q) + "</summary><p>Bạn chọn: <b>" + esc(mine) + "</b> · Đáp án: <b>" + esc(right) + "</b><br>💡 " + esc(l.q.e) + "</p></details>";
       }).join("") + "</div></section>";
     document.getElementById("againBtn").onclick = start;
     document.getElementById("mBtn").onclick = function () { if (Q()) Q().openMissions(); };
-    document.getElementById("homeBtn").onclick = function () { location.href = SUB[subject].page; };
+    document.getElementById("homeBtn").onclick = function () { location.href = FROM || SUB[subject].page; };
     if (Q()) Q().refresh();
     updStars();
   }
