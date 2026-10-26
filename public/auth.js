@@ -445,3 +445,49 @@
   };
   init();
 })();
+
+/* =========================================================================
+   DÒNG CHỮ TÁC GIẢ MỜ NHẸ (WATERMARK) TRÊN TOÀN BỘ CÁC TRANG
+   ========================================================================= */
+(function injectGlobalAuthorCredit() {
+  function mountAuthorBadge() {
+    if (!document.body || document.getElementById("hdlgAuthorCredit")) return;
+
+    const style = document.createElement("style");
+    style.textContent = `
+      #hdlgAuthorCredit {
+        position: fixed;
+        right: 12px;
+        bottom: 5px;
+        z-index: 9999;
+        font: 400 10px/1.2 "Segoe UI", system-ui, -apple-system, sans-serif;
+        color: rgba(255, 255, 255, 0.32);
+        text-shadow: 0 1px 2px rgba(0, 0, 0, 0.35);
+        letter-spacing: 0.3px;
+        pointer-events: none;
+        user-select: none;
+        white-space: nowrap;
+      }
+      @media (max-width: 650px) {
+        #hdlgAuthorCredit {
+          right: 8px;
+          bottom: 3px;
+          font-size: 9px;
+        }
+      }
+    `;
+
+    const badge = document.createElement("div");
+    badge.id = "hdlgAuthorCredit";
+    badge.textContent = "Web được làm bởi Nguyễn Duy Khang và Cao Nhựt Tiến";
+
+    document.head.appendChild(style);
+    document.body.appendChild(badge);
+  }
+
+  if (document.readyState === "loading") {
+    document.addEventListener("DOMContentLoaded", mountAuthorBadge);
+  } else {
+    mountAuthorBadge();
+  }
+})();
