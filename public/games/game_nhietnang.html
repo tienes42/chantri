@@ -52,7 +52,7 @@
         #ctxMenu button { display:block; width:100%; text-align:left; }
         .tag-chip { background: rgba(56,189,248,.12); border: 1px solid rgba(56,189,248,.5); }
     </style>
-<script src="/firebase-config.js"></script><script src="/auth.js"></script>
+<script src="/firebase-config.js"></script><script src="/auth.js"></script><script src="/games/hdlg-game.js"></script>
 </head>
 
 <body class="relative w-screen h-screen">
@@ -687,8 +687,7 @@ function showResult(outcome) {
   let scoreTxt = "";
   if (outcome === "win") {
     const sc = Math.max(40, 100 - 15 * (S.attempts[st] - 1) - 10 * S.hints[st] - (S.penalty[st] || 0));
-    if (!S.won[st]) { const xp = Math.round(sc / 5); setXP(getXP() + xp); S.xpGained += xp; scoreTxt = `⭐ Điểm chặng: ${sc}/100 · Nhận +${xp} sao`; playSFX("coin"); }
-    else scoreTxt = `⭐ Điểm chặng: ${sc}/100 (đã nhận sao ở lần thắng trước)`;
+    { const R = HDLGGame.stage(st, sc), xp = R.gained; S.xpGained += xp; if (xp > 0) { scoreTxt = `⭐ Điểm chặng: ${sc}/100 · Nhận +${xp} sao` + (R.prev ? ` (phá kỷ lục chặng ${R.prev}→${R.best} ⭐)` : ``); playSFX("coin"); } else scoreTxt = `⭐ Điểm chặng: ${sc}/100 · Kỷ lục chặng: ${R.best} ⭐ (vượt kỷ lục để nhận thêm sao)`; }
     S.score[st] = Math.max(S.score[st], sc); S.won[st] = true; S.unlocked = Math.max(S.unlocked, Math.min(3, st + 2));
     emit("confetti", 0, 0, 70); playSFX("win");
   } else { scoreTxt = `Lần thử thứ ${S.attempts[st]} · ${GM.retryTip()}`; playSFX("lose"); }
@@ -747,7 +746,7 @@ function showSummary() {
   closeAllModals();
   S.phase = "summary";
   const total = Math.round(S.score.reduce((a, b) => a + b, 0) / 3);
-  if (!summaryDone) { summaryDone = true; setXP(getXP() + 20); S.xpGained += 20; markCompleted(); finishSession(total); sendEvent("game_complete", { score: total, endings: S.endings }); }
+  if (!summaryDone) { summaryDone = true; S.xpGained += HDLGGame.bonus(20); markCompleted(); HDLGGame.finish(total, S.score.length * 100); finishSession(total); sendEvent("game_complete", { score: total, endings: S.endings }); }
   $("summaryStats").innerHTML = [["🏅", `${total}/100`, "Điểm trung bình"], ["⭐", `+${S.xpGained}`, "Sao nhận được"], ["📓", `${Object.values(S.endings).filter(Boolean).length}/4`, "Kết cục đã mở"]]
     .map(([i, v, l]) => `<div class="rounded-2xl bg-slate-900/80 border border-amber-400/40 p-3"><div class="text-2xl">${i}</div><div class="text-xl font-black text-amber-300">${v}</div><div class="text-[11px] text-slate-400">${l}</div></div>`).join("");
   $("summaryLessons").innerHTML = GM.summaryLessons().map(([t, d]) => `<div class="rounded-2xl bg-slate-900/70 border border-sky-500/30 p-3"><b class="text-sky-300">${t}</b><div class="text-slate-200 mt-0.5">${d}</div></div>`).join("");

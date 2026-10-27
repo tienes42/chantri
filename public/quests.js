@@ -331,7 +331,7 @@ html.hq-calm #cinematicCanvas,html.hq-calm #physicsCanvas,html.hq-calm #mathCanv
   /* ---------- TIẾN TRÌNH / HỒ SƠ ---------- */
   function openProgress(subject) {
     var s = getState(), x = stars(), done = jparse(localStorage.getItem("hdlg_completed"), []);
-    var nDone = Array.isArray(done) ? done.length : Object.keys(done || {}).length;
+    var nDone = Array.isArray(done) ? done.filter(function (v) { return v == null || typeof v !== "object"; }).length : Object.keys(done || {}).filter(function (k) { return k !== "_hdlg_sets"; }).length;
     var mi = missionInfo(s), mDone = mi.filter(function (m) { return m.claimed; }).length;
     var html = "<h2>📊 Hồ sơ tiến trình</h2><p class='hq-sub'>Lv." + level() + " · " + (x % 100) + "/100 sao để lên cấp tiếp theo</p>" + bar(x % 100, 100) +
       '<div class="hq-stats"><div><b>' + x + "</b><small>Tổng sao</small></div><div><b>" + nDone + "</b><small>Bài/màn đã qua</small></div><div><b>" +

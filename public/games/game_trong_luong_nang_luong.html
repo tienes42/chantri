@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="mobile-fit.js" data-mode="virtual"></script>
+<script src="/firebase-config.js"></script><script src="/auth.js"></script><script src="/games/hdlg-game.js"></script>
     <title>Trọng Lực & Năng Lượng – Trọng lượng P = 10m & Bảo toàn năng lượng</title>
     <script src="https://cdn.tailwindcss.com"></script>
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@500;700;900&display=swap" rel="stylesheet">
@@ -383,7 +384,7 @@ function saveProgress() {
 /* Đánh dấu đề xong NGAY khi thắng chặng cuối (không chờ bấm Tổng kết) – thoát giữa chừng ở màn kết quả vẫn tính là đã xong đề */
 function finalizeSet() {
   if (!SETS || !SETST || !S.won.every(Boolean) || SETST.done.includes(SETX)) return;
-  setXP(getXP() + 20); S.xpGained += 20; markCompleted();
+  S.xpGained += HDLGGame.bonus(20); markCompleted();
   SETST.done.push(SETX); SETST.last = SETX; SETST.cleared = (SETST.cleared || 0) + 1; saveProgress();
 }
 function renderSetIntro() {
@@ -817,8 +818,7 @@ function showResult(outcome) {
   let scoreTxt = "";
   if (outcome === "win") {
     const sc = Math.max(40, 100 - 15 * (S.attempts[st] - 1) - 10 * S.hints[st] - (S.penalty[st] || 0));
-    if (!S.won[st]) { const xp = Math.round(sc / 5); setXP(getXP() + xp); S.xpGained += xp; scoreTxt = `${starRow(sc)} · Điểm chặng: ${sc}/100 · Nhận +${xp} sao`; playSFX("coin"); }
-    else scoreTxt = `${starRow(sc)} · Điểm chặng: ${sc}/100 (đã nhận sao ở lần thắng trước)`;
+    { const R = HDLGGame.stage(st, sc), xp = R.gained; S.xpGained += xp; if (xp > 0) { scoreTxt = `${starRow(sc)} · Điểm chặng: ${sc}/100 · Nhận +${xp} sao` + (R.prev ? ` (phá kỷ lục chặng ${R.prev}→${R.best} ⭐)` : ``); playSFX("coin"); } else scoreTxt = `${starRow(sc)} · Điểm chặng: ${sc}/100 · Kỷ lục chặng: ${R.best} ⭐ (vượt kỷ lục để nhận thêm sao)`; }
     S.score[st] = Math.max(S.score[st], sc); S.won[st] = true; S.unlocked = Math.max(S.unlocked, Math.min(NST(), st + 2));
     emit("confetti", 0, 0, 70); playSFX("win");
   } else { scoreTxt = `Lần thử thứ ${S.attempts[st]} · ${GM.retryTip()}`; playSFX("lose"); }
@@ -877,7 +877,7 @@ function showSummary() {
   closeAllModals();
   S.phase = "summary";
   const total = Math.round(S.score.reduce((a, b) => a + b, 0) / NST());
-  if (!summaryDone) { summaryDone = true; if (SETS) finalizeSet(); else { setXP(getXP() + 20); S.xpGained += 20; } markCompleted(); finishSession(total); sendEvent("game_complete", Object.assign({ score: total, endings: S.endings }, SETS ? { set: SETCODE(SETX) } : {})); }
+  if (!summaryDone) { summaryDone = true; if (SETS) finalizeSet(); else { S.xpGained += HDLGGame.bonus(20); } markCompleted(); HDLGGame.finish(total, S.score.length * 100); finishSession(total); sendEvent("game_complete", Object.assign({ score: total, endings: S.endings }, SETS ? { set: SETCODE(SETX) } : {})); }
   if ($("summarySetLine")) $("summarySetLine").innerHTML = SETS ? `🎲 Đã hoàn thành <b>ĐỀ ${SETCODE(SETX)} · ${SETS[SETX].name}</b> · ${SETST.done.length}/${SETS.length} đề trong vòng ${SETST.round}. ${SETST.done.length < SETS.length ? "Lần vào sau sẽ mở một đề mới với tình huống khác!" : "Đã xong cả 3 đề – lần sau sẽ random lại từ đầu trong cả 3 đề."}` : "";
   if ($("btnNextSet")) $("btnNextSet").classList.toggle("hidden", !SETS);
   $("summaryStats").innerHTML = [["🏅", `${total}/100`, "Điểm trung bình"], ["⭐", `+${S.xpGained}`, "Sao nhận được"], ["📓", `${Object.values(S.endings).filter(Boolean).length}/4`, SETS ? `Sổ tay đề ${SETCODE(SETX)}` : "Kết cục đã mở"]]

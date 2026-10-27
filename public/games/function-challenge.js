@@ -320,6 +320,9 @@ else {
 document.getElementById("finishMessage").textContent =
     message;
 
+// Sao + kỷ lục + nhiệm vụ (hdlg-game.js): tối đa 20 ⭐, chơi lại chỉ cộng phần vượt kỷ lục
+try { if (window.HDLGGame) HDLGGame.result(score, 100, 20); } catch (e) {}
+
 if (!sessionId) return;
 
 try {

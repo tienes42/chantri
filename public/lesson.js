@@ -555,7 +555,9 @@ function renderGame(lesson) {
     gameButton.style.display = "inline-block";
     gameButton.textContent = "🚀 Bắt đầu trải nghiệm";
     gameButton.onclick = function () {
-      window.location.href = `games/${encodeURIComponent(lesson.game_type)}.html?lesson_id=${lesson.id}`;
+      const GAME_FILES = { function_challenge: "function-challenge", "store-management": "store_management" };
+      const file = GAME_FILES[lesson.game_type] || lesson.game_type;
+      window.location.href = `games/${encodeURIComponent(file)}.html?lesson_id=${lesson.id}`;
     };
     noGame.classList.add("hidden");
   } else {

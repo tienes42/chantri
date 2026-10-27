@@ -181,6 +181,23 @@
     return { gained: gain, stars: stars, best: Math.max(prev, stars), total: num(lsGet(K.xp)) };
   }
 
+  /* Thưởng theo KỶ LỤC cho 1 khóa bất kỳ (dùng bởi /games/hdlg-game.js):
+     chỉ cộng phần sao VƯỢT kỷ lục cũ của khóa đó → chơi lại không bị cộng vô hạn. */
+  function award(key, stars, opts) {
+    opts = opts || {};
+    key = String(key || "game").replace(/[^A-Za-z0-9_\-]/g, "_");
+    stars = Math.max(0, Math.round(Number(stars) || 0));
+    var best = jparse(lsGet(K.best), {}) || {}, prev = num(best[key]), gain = Math.max(0, stars - prev);
+    if (gain > 0) {
+      best[key] = stars; lsSet(K.best, JSON.stringify(best));
+      if (!opts.noStars) lsSet(K.xp, String(num(lsGet(K.xp)) + gain));   // noStars: chỉ ghi kỷ lục điểm
+      schedulePush(); emit();
+      if (!opts.silent && !opts.noStars) toast("⭐ +" + gain + " sao" + (opts.label ? " · " + opts.label : ""));
+    }
+    return { gained: opts.noStars ? 0 : gain, improved: gain > 0, prev: prev, best: Math.max(prev, stars), total: num(lsGet(K.xp)) };
+  }
+  function getBest(key) { return num((jparse(lsGet(K.best), {}) || {})[String(key).replace(/[^A-Za-z0-9_\-]/g, "_")]); }
+
   /* ---------- Sao khi HỌC BÀI (mỗi phần chỉ nhận 1 lần / bài) ----------
      Lưu trong "hdlg_best" với khóa lesson_<id>_<phần> = số sao đã nhận
      → tự đồng bộ Firebase như sao của game.
@@ -437,7 +454,7 @@
     get user() { return user; },
     getStars: function () { return num(lsGet(K.xp)); },
     getLevel: function () { return level(num(lsGet(K.xp))); },
-    addStars: addStars, finishLevel: finishLevel, getLeaderboard: getLeaderboard,
+    addStars: addStars, finishLevel: finishLevel, award: award, getBest: getBest, markDone: function (id) { markDone(id); schedulePush(); emit(); }, getLeaderboard: getLeaderboard,
     lessonReward: lessonReward, lessonStatus: lessonStatus, lessonStats: lessonStats, LESSON_STARS: LESSON_STARS,
     showLogin: showLogin, showAccount: showAccount, showLeaderboard: showLeaderboard, logout: logout,
     onChange: function (f) { listeners.push(f); }, flush: push,

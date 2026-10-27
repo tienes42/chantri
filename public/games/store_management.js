@@ -2474,6 +2474,9 @@ async function finishGameAndShowResult() {
        Kết thúc session.
     */
 
+    // Sao + kỷ lục + nhiệm vụ (hdlg-game.js): tối đa 30 ⭐ khi đạt 1000 điểm
+    try { if (window.HDLGGame) HDLGGame.result(state.score, 1000, 30); } catch (e) {}
+
     await finishGame();
 
 

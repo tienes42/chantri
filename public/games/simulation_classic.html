@@ -31,7 +31,7 @@ input[type=range]{width:100%;accent-color:#ffd166}
 .dots .on{background:#ffd166}.dots .done{background:#5ee08e}
 .tag{display:inline-block;background:#ffd166;color:#4a2c00;border-radius:20px;padding:2px 12px;font-weight:800;font-size:12px;margin:4px 4px 0 0}
 </style>
-<script src="/firebase-config.js"></script><script src="/auth.js"></script>
+<script src="/firebase-config.js"></script><script src="/auth.js"></script><script src="/games/hdlg-game.js"></script>
 </head>
 <body>
 <header>
@@ -234,6 +234,7 @@ function check() {
 async function finish() {
   if (sid) { try { await api(`/games/sessions/${sid}/finish?score=${score}`, { method: 'POST' }); } catch (e) { } }
   const rv = sc.reveal, max = sc.rounds.length * 100;
+  try { if (window.HDLGGame) HDLGGame.result(score, max, 30); } catch (e) { }
   $('app').innerHTML = `<div class="card"><h1>🏁 Hoàn thành! ${score}/${max} điểm</h1></div>
   <div class="card"><h2>🎓 HỌC ĐỂ LÀM GÌ?</h2><p>${rv.text}</p><p><b>Công thức bạn vừa dùng:</b> ${rv.formula}</p><p><b>Nghề dùng kiến thức này mỗi ngày:</b></p>${rv.jobs.map(j => `<span class="tag">${j}</span>`).join('')}
   <div style="margin-top:14px"><button class="big" onclick="round(0);score=0;$('score').textContent=0">Chơi lại</button> <button class="big alt" onclick="goBack()">Về bài học</button></div></div>`;
