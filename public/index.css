@@ -633,7 +633,7 @@ button { font: inherit; }
 .literature { left: 71%; top: 18%; width: 15.5%; height: 15%; }
 .sport      { left: 1.5%; top: 40%; width: 15.5%; height: 15%; }
 .art        { left: 17.5%; top: 53%; width: 15.5%; height: 15%; }
-.biology    { right: 1.5%; top: 41%; width: 15.5%; height: 15%; }
+.biology    { right: 8.5%; top: 37%; width: 15.5%; height: 15%; } /* chừa chỗ cho Bot Tri ở giữa cạnh phải */
 .geography  { left: 68.5%; top: 60%; width: 16%; height: 15%; }
 .computer   { left: 6.5%; top: 73%; width: 15.5%; height: 14%; }
 .english    { left: 27.5%; top: 73%; width: 15.5%; height: 14%; }
