@@ -66,9 +66,18 @@
   function displayName(u) { if (u && u.isAnonymous) return u.displayName || ("Khách " + u.uid.slice(0, 4)); return (u && (u.displayName || (u.email ? u.email.split("@")[0] : ""))) || "Người chơi"; }
 
   /* ---------- sự kiện ---------- */
+  /* Hồ sơ đã lưu ở lần đăng nhập trước → hiện tên/avatar NGAY, không chờ Firebase tải xong */
+  function cachedProfile() {
+    if (user) return { name: displayName(user), photo: user.photoURL || "" };
+    if (!state.ready && lsGet("user_id")) return { name: lsGet("hdlg_display_name") || "", photo: lsGet("hdlg_photo_url") || "" };
+    return { name: "", photo: "" };
+  }
+  function getState() {
+    var x = num(lsGet(K.xp)), p = cachedProfile();
+    return { user: user, xp: x, level: level(x), inLevel: x % 100, hints: num(lsGet(K.hints)), name: p.name, photo: p.photo };
+  }
   function emit() {
-    var x = num(lsGet(K.xp));
-    var detail = { user: user, xp: x, level: level(x), inLevel: x % 100, hints: num(lsGet(K.hints)), name: user ? displayName(user) : "", photo: user ? user.photoURL || "" : "" };
+    var detail = getState();
     try { window.dispatchEvent(new CustomEvent("hdlg:update", { detail: detail })); } catch (e) {}
     listeners.forEach(function (f) { try { f(detail); } catch (e) {} });
   }
@@ -474,7 +483,7 @@
   /* ---------- khởi động ---------- */
   function loadScript(src) {
     return new Promise(function (res, rej) {
-      var s = document.createElement("script"); s.src = src; s.onload = res; s.onerror = function () { rej(new Error("Không tải được " + src)); };
+      var s = document.createElement("script"); s.src = src; s.async = false; s.onload = res; s.onerror = function () { rej(new Error("Không tải được " + src)); };
       document.head.appendChild(s);
     });
   }
@@ -482,6 +491,7 @@
 
   function init() {
     hook();
+    try { var pc = document.createElement("link"); pc.rel = "preconnect"; pc.href = "https://www.gstatic.com"; pc.crossOrigin = ""; document.head.appendChild(pc); } catch (e) {}
     whenBody(function () { document.head.appendChild(el("style", {}, CSS)); });
     if (!configured) {
       console.warn("[HDLG] Chưa dán cấu hình Firebase vào /firebase-config.js — tạm thời chưa có đăng nhập.");
@@ -489,9 +499,10 @@
       if (!inFrame) whenBody(function () { document.body.appendChild(el("div", { "class": "hdlg-warn" }, "⚠ Chưa cấu hình Firebase (file firebase-config.js)")); });
       return;
     }
-    loadScript(SDK + "firebase-app.js").then(function () {
-      return Promise.all([loadScript(SDK + "firebase-auth.js"), loadScript(SDK + "firebase-firestore.js")]);
-    }).then(function () {
+    // Hiện ngay tên/avatar đã lưu (sau khi script của trang đã gắn listener "hdlg:update")
+    if (lsGet("user_id")) { if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", emit); else setTimeout(emit, 0); }
+    // Tải 3 file SDK SONG SONG (async=false vẫn giữ đúng thứ tự chạy app → auth → firestore)
+    Promise.all([loadScript(SDK + "firebase-app.js"), loadScript(SDK + "firebase-auth.js"), loadScript(SDK + "firebase-firestore.js")]).then(function () {
       if (!firebase.apps.length) firebase.initializeApp(cfg);
       auth = firebase.auth(); db = firebase.firestore();
       auth.onAuthStateChanged(function (u) {
@@ -503,6 +514,7 @@
           var pre = (nm && u.isAnonymous && !u.displayName)
             ? u.updateProfile({ displayName: nm }).catch(function (e) { console.warn("[HDLG] Không lưu được tên khách:", e && e.code || e); })
             : Promise.resolve();
+          if (!nm) { saveAccountLocal(u); emit(); }   // hiện tên/avatar ngay, không chờ Firestore
           pre.then(function () {
             saveAccountLocal(u);
             if (nm && u.isAnonymous) toast("👋 Chào " + displayName(u) + "!");
@@ -519,6 +531,7 @@
   window.HDLG = {
     ready: ready, configured: configured,
     get user() { return user; },
+    getState: getState,
     getStars: function () { return num(lsGet(K.xp)); },
     getLevel: function () { return level(num(lsGet(K.xp))); },
     addStars: addStars, finishLevel: finishLevel, award: award, getBest: getBest, markDone: function (id) { markDone(id); schedulePush(); emit(); }, getLeaderboard: getLeaderboard,

@@ -661,6 +661,8 @@ document.addEventListener("DOMContentLoaded", function () {
 
         if (av) {
             if (d.photo) {
+                const cur = av.querySelector('img');
+                if (cur && cur.getAttribute('src') === d.photo) return;
                 av.innerHTML = '';
                 const img = document.createElement('img');
                 img.src = d.photo;
@@ -675,6 +677,7 @@ document.addEventListener("DOMContentLoaded", function () {
     }
 
     window.addEventListener('hdlg:update', e => renderPlayer(e.detail));
+    if (window.HDLG && typeof HDLG.getState === 'function') renderPlayer(HDLG.getState());
     if (window.HDLG && HDLG.ready) {
         HDLG.ready.then(() => {
             if (typeof HDLG.getState === 'function') renderPlayer(HDLG.getState());

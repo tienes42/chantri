@@ -337,6 +337,8 @@ renderSacredGeometry();
         
         if (av) {
             if (d.photo) {
+                const cur = av.querySelector('img');
+                if (cur && cur.getAttribute('src') === d.photo) return;
                 av.innerHTML = '';
                 const img = document.createElement('img');
                 img.src = d.photo; img.referrerPolicy = 'no-referrer'; img.alt = '';
@@ -349,5 +351,6 @@ renderSacredGeometry();
     }
 
     window.addEventListener('hdlg:update', e => { renderPlayer(e.detail); });
-    if (window.HDLG) HDLG.ready.then(() => { if (HDLG.user) renderPlayer(HDLG.user); });
+    if (window.HDLG && typeof HDLG.getState === 'function') renderPlayer(HDLG.getState());
+    if (window.HDLG) HDLG.ready.then(() => renderPlayer(HDLG.getState ? HDLG.getState() : {}));
 })();
