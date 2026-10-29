@@ -265,7 +265,12 @@ html.hq-calm #cinematicCanvas,html.hq-calm #physicsCanvas,html.hq-calm #mathCanv
     });
     var ck = o.querySelector("#hqCheck");
     if (ck) ck.onclick = function () {
-      var st = getState(), info = checkinInfo(st); if (info.done) return;
+      // Chờ tài khoản đồng bộ xong với Firebase rồi mới điểm danh (tránh ghi đè chuỗi cũ bằng "Ngày 1")
+      if (H() && H().ready && typeof H().ready.then === "function" && !ck._wait) {
+        ck._wait = 1; ck.disabled = true; ck.textContent = "Đang tải dữ liệu tài khoản…";
+        return H().ready.then(function () { setTimeout(function () { ck._wait = 2; ck.onclick(); }, 50); });
+      }
+      var st = getState(), info = checkinInfo(st); if (info.done) { openRewards("daily"); return; }
       var r = CHECKIN[info.idx];
       st.checkin.streak = info.streak + 1; st.checkin.last = todayStr();
       st.checkin.best = Math.max(st.checkin.best || 0, st.checkin.streak);

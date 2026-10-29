@@ -302,9 +302,13 @@
     ring.style.transform = "translate3d(" + l + "px," + t + "px,0)";
     return true;
   }
-  var stable = null;    // gom biên độ của mục tiêu đang trôi lơ lửng (đảo bay) để vùng sáng đứng yên
+  var stable = null, orphanSince = 0;    // gom biên độ của mục tiêu đang trôi lơ lửng (đảo bay) để vùng sáng đứng yên
   function frame() {
     raf = requestAnimationFrame(frame);
+    if (!cur && dim && !dim.hidden) {             // lớp tối "mồ côi" (đã bấm chuyển trang nhưng vẫn ở lại) → tự gỡ
+      if (!orphanSince) orphanSince = Date.now();
+      else if (Date.now() - orphanSince > 5000) { orphanSince = 0; resync(); }
+    } else orphanSince = 0;
     if (!cur || !holeEl) return;               // chưa có mục tiêu (đang chờ trang tải)
     // Trang có thể vẽ lại danh sách (VD: cập nhật tiến độ) → tìm lại phần tử mới
     if (!holeEl.isConnected) { var re = document.querySelector(cur.hole); if (re) holeEl = re; }
@@ -549,6 +553,26 @@
       } else wrongPage(st.step);
     } else introHint();
   }
+
+  /* Bấm Quay lại (trình duyệt / điện thoại) → trang được khôi phục từ bộ nhớ đệm (bfcache) đúng lúc
+     lớp tối đang phủ để chuyển trang. Đồng bộ lại theo trạng thái hướng dẫn hiện tại để không bị kẹt màn tối. */
+  function resync() {
+    if (!box) { if (getState()) init(); return; }
+    var st = getState();
+    if (!st) {
+      clearSpot(); cur = null; curId = null;
+      setDim(false); hideBubble();
+      document.body.classList.remove("tg-on");
+      box.classList.remove("tour"); box.classList.add("idle");
+      if (PAGE !== "index") box.style.display = "none";
+      return;
+    }
+    box.style.display = "";
+    var s = STEPS[st.step];
+    if (s.page === PAGE && (!s.grade || QS.get("grade") === s.grade)) run(s.need && s.back ? s.back : st.step);
+    else wrongPage(st.step);
+  }
+  window.addEventListener("pageshow", function (e) { if (e.persisted) resync(); });
 
   window.HDLGTour = {
     start: function () { build(); if (!raf) raf = requestAnimationFrame(frame); start(); },

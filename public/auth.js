@@ -54,7 +54,38 @@
     for (k in a.best) best[k] = Math.max(num(a.best[k]), num(b.best && b.best[k]));
     for (k in (b.best || {})) if (!(k in best)) best[k] = num(b.best[k]);
     var set = {}; a.completed.concat(b.completed || []).forEach(function (x) { set[x] = 1; });
-    return { xp: Math.max(a.xp, b.xp), hints: Math.max(a.hints, b.hints), completed: Object.keys(set), best: best, q: a.q || b.q || "" };
+    return { xp: Math.max(a.xp, b.xp), hints: Math.max(a.hints, b.hints), completed: Object.keys(set), best: best, q: mergeQ(a.q, b.q) };
+  }
+  /* Gộp dữ liệu nhiệm vụ/điểm danh của 2 nơi (máy này + Firebase) mà KHÔNG làm mất chuỗi điểm danh */
+  function mergeQ(aStr, bStr) {
+    var A = jparse(aStr, null), B = jparse(bStr, null);
+    var okA = A && typeof A === "object" && !Array.isArray(A), okB = B && typeof B === "object" && !Array.isArray(B);
+    if (!okA) return okB ? bStr : (aStr || bStr || "");
+    if (!okB) return aStr;
+    function maxMap(x, y) { var r = {}, k; x = x || {}; y = y || {}; for (k in x) r[k] = num(x[k]); for (k in y) r[k] = Math.max(num(r[k]), num(y[k])); return r; }
+    function union(x, y) { var r = (x || []).slice(); (y || []).forEach(function (v) { if (r.indexOf(v) < 0) r.push(v); }); return r; }
+    var r = {}, k;
+    for (k in B) r[k] = B[k];
+    for (k in A) r[k] = A[k];
+    // Điểm danh: lấy bản có ngày điểm danh gần nhất (cùng ngày → chuỗi dài hơn); kỷ lục lấy lớn nhất
+    var ca = A.checkin || {}, cb = B.checkin || {}, la = String(ca.last || ""), lb = String(cb.last || "");
+    var c = la > lb ? ca : lb > la ? cb : (num(ca.streak) >= num(cb.streak) ? ca : cb);
+    r.checkin = { last: String(c.last || ""), streak: num(c.streak), best: Math.max(num(ca.best), num(cb.best), num(ca.streak), num(cb.streak)) };
+    r.ach = union(A.ach, B.ach);
+    r.total = maxMap(A.total, B.total);
+    r.subj = {}; var sa = A.subj || {}, sb = B.subj || {};
+    for (k in sb) r.subj[k] = sb[k];
+    for (k in sa) if (!r.subj[k] || num(sa[k].plays) >= num(r.subj[k].plays)) r.subj[k] = sa[k];
+    // Nhiệm vụ trong ngày: cùng ngày thì gộp, khác ngày thì lấy ngày mới hơn
+    var da = String(A.day || ""), db2 = String(B.day || "");
+    if (da === db2) {
+      r.prog = maxMap(A.prog, B.prog); r.qbest = maxMap(A.qbest, B.qbest);
+      r.claimed = union(A.claimed, B.claimed); r.bonus = !!(A.bonus || B.bonus);
+    } else {
+      var N = da > db2 ? A : B;
+      r.day = N.day; r.prog = N.prog || {}; r.qbest = N.qbest || {}; r.claimed = N.claimed || []; r.bonus = !!N.bonus;
+    }
+    return JSON.stringify(r);
   }
   function level(xp) { return Math.floor(xp / 100) + 1; }
   /* ---------- tên khách ---------- */
@@ -117,7 +148,10 @@
       var rs = remote ? { xp: num(remote.xp), hints: num(remote.hints), completed: (remote.completed || []).map(String), best: remote.best || {}, q: typeof remote.quests === "string" ? remote.quests : "" }
                       : { xp: 0, hints: 0, completed: [], best: {}, q: "" };
       var local = readLocal(), owner = lsGet(K.owner), result;
-      if (owner === user.uid) result = lsGet(K.dirty) ? local : (remote ? rs : local);
+      if (owner === user.uid) {
+        result = Object.assign({}, lsGet(K.dirty) ? local : (remote ? rs : local));
+        result.q = mergeQ(local.q, rs.q);                // điểm danh ở máy khác / chưa kịp lưu vẫn được giữ
+      }
       else if (!owner) result = merge(local, rs);        // tiến trình chơi thử trước khi đăng nhập
       else result = rs;                                  // máy đang dùng bởi tài khoản khác
       writeLocal(result); lsSet(K.owner, user.uid);
