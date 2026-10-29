@@ -14,7 +14,7 @@ if (backButton) {
 }
 
 /* =========================
-   2. TỰ ĐỘNG CẮT & TÁCH NỀN 16 ICON TOÁN HỌC 2.5D (assets/math-icons.png)
+   2. TỰ ĐỘNG CẮT & TÁCH NỀN 16 ICON TOÁN HỌC 2.5D (assets/math-icons.webp)
    Phân bổ riêng cho cả 12 lớp (Lớp 1 -> Lớp 12) và 4 công cụ
 ========================= */
 const iconSprites = {};
@@ -30,7 +30,7 @@ function loadImg(src) {
 
 async function sliceMathIcons(src) {
   try {
-    const img = await loadImg(src || "assets/math-icons.png");
+    const img = await loadImg(src || "assets/math-icons.webp");
     const cellW = img.naturalWidth / 4;
     const cellH = img.naturalHeight / 4;
     const size = 240;
@@ -78,7 +78,7 @@ async function sliceMathIcons(src) {
   }
 }
 
-sliceMathIcons("assets/math-icons.png");
+sliceMathIcons("assets/math-icons.webp");
 
 /* =========================
    3. CLASS CARDS & POPUP

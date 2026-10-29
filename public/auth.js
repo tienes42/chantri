@@ -25,6 +25,7 @@
 
   var rawSet = Storage.prototype.setItem, rawRemove = Storage.prototype.removeItem;
   var suppress = false, pushTimer = null, auth = null, db = null, user = null;
+  var pendingGuestName = "";          // tên khách nhập ở màn đăng nhập, gán vào tài khoản ngay khi tạo xong
   var listeners = [], readyResolve, state = { ready: false, user: null };
   var ready = new Promise(function (r) { readyResolve = r; });
 
@@ -56,6 +57,12 @@
     return { xp: Math.max(a.xp, b.xp), hints: Math.max(a.hints, b.hints), completed: Object.keys(set), best: best, q: a.q || b.q || "" };
   }
   function level(xp) { return Math.floor(xp / 100) + 1; }
+  /* ---------- tên khách ---------- */
+  var GUEST_ANIMALS = ["Cú Mèo", "Gấu Trúc", "Cáo Nhỏ", "Sóc Nâu", "Cá Heo", "Đại Bàng", "Mèo Mun", "Thỏ Ngọc", "Rồng Con", "Hổ Con", "Voi Con", "Chim Sẻ", "Kỳ Lân", "Cánh Cụt"];
+  var GUEST_TRAITS = ["Thông Thái", "Tò Mò", "Nhanh Nhẹn", "Dũng Cảm", "Chăm Chỉ", "Vui Vẻ", "Sáng Tạo", "Lanh Lợi", "Kiên Trì", "Tinh Anh"];
+  function pick(a) { return a[Math.floor(Math.random() * a.length)]; }
+  function randomGuestName() { return pick(GUEST_ANIMALS) + " " + pick(GUEST_TRAITS) + " " + (10 + Math.floor(Math.random() * 990)); }
+  function cleanName(s) { return String(s || "").replace(/[\u0000-\u001f<>]/g, "").replace(/\s+/g, " ").trim().slice(0, 30); }
   function displayName(u) { if (u && u.isAnonymous) return u.displayName || ("Khách " + u.uid.slice(0, 4)); return (u && (u.displayName || (u.email ? u.email.split("@")[0] : ""))) || "Người chơi"; }
 
   /* ---------- sự kiện ---------- */
@@ -272,6 +279,14 @@
 .hdlg-stats div{flex:1;text-align:center;background:#ffffff12;border-radius:10px;padding:8px}\
 .hdlg-stats b{display:block;font-size:20px;color:#ffd65d}\
 .hdlg-toast{position:fixed;left:50%;bottom:24px;transform:translateX(-50%);z-index:100000;background:#0c1a38ee;color:#ffe9a3;border:1px solid #ffd65d;border-radius:999px;padding:9px 18px;font:600 14px 'Segoe UI',Arial,sans-serif;box-shadow:0 8px 24px rgba(0,0,0,.4);transition:opacity .4s;pointer-events:none}\
+.hdlg-guest{margin-top:10px;padding:12px;border-radius:12px;background:#ffffff0d;border:1px dashed #4a74c9;animation:hdlgIn .22s ease-out}\
+.hdlg-guest label{display:block;font-size:13px;font-weight:600;margin-bottom:6px;color:#cfe0ff}\
+.hdlg-guest small{display:block;font-size:12px;color:#8aa0cc;margin:-2px 0 10px}\
+.hdlg-gr{display:flex;gap:8px}\
+.hdlg-gr input{flex:1;min-width:0}\
+.hdlg-dice{flex:none;width:44px;height:42px;border-radius:10px;border:1px solid #3a5a9c;background:#0a1630;font-size:20px;cursor:pointer}\
+.hdlg-dice:hover{border-color:#62d7ff}\
+@keyframes hdlgIn{from{opacity:0;transform:translateY(-6px)}to{opacity:1;transform:none}}\
 .hdlg-warn{position:fixed;left:8px;bottom:8px;z-index:99998;background:#ffefc2;color:#5a3b00;border-radius:8px;padding:6px 10px;font:12px Arial,sans-serif;max-width:300px}";
 
   function el(tag, attrs, html) {
@@ -338,20 +353,39 @@
       '<button class="hdlg-btn" id="hdB" type="submit">Đăng nhập</button></form>' +
       '<p class="hdlg-or">— hoặc —</p><button class="hdlg-btn g" id="hdG" type="button">🔵 Đăng nhập bằng Google</button>' +
       '<button class="hdlg-btn g" id="hdK" type="button" style="background:#2c5aa8;color:#fff">👤 Chơi với tư cách khách</button>' +
+      '<div class="hdlg-guest" id="hdGW" hidden><label for="hdGN">Bạn muốn được gọi là gì?</label>' +
+      '<div class="hdlg-gr"><input id="hdGN" type="text" placeholder="Nhập tên (có thể bỏ trống)" maxlength="30" autocomplete="nickname" enterkeyhint="go">' +
+      '<button class="hdlg-dice" id="hdGD" type="button" title="Gợi ý tên ngẫu nhiên" aria-label="Gợi ý tên ngẫu nhiên">🎲</button></div>' +
+      '<small>Bỏ trống sẽ được đặt tên ngẫu nhiên. Có thể đổi tên sau trong mục Tài khoản.</small>' +
+      '<button class="hdlg-btn" id="hdGS" type="button">🚀 Vào chơi</button></div>' +
       '<p class="hdlg-tg"><span id="hdL">Chưa có tài khoản?</span><a id="hdA">Đăng ký</a></p>', upgrade);
     var $ = function (id) { return ov.querySelector("#" + id); };
     function err(m) { $("hdE").textContent = m || ""; $("hdE").hidden = !m; }
-    function busy(b) { $("hdB").disabled = b; $("hdG").disabled = b; $("hdK").disabled = b; }
+    function busy(b) { $("hdB").disabled = b; $("hdG").disabled = b; $("hdK").disabled = b; $("hdGS").disabled = b; }
     function linked() { closeModal(); saveAccountLocal(user); push().then(emit); emit(); toast("✅ Đã nâng cấp tài khoản, sao được giữ lại"); }
     if (upgrade) {
       $("hdK").hidden = true; $("hdL").parentNode.hidden = false;
       $("hdT").textContent = "⬆ Nâng cấp tài khoản"; $("hdS").textContent = "Đăng ký để giữ sao của khách và chơi trên nhiều thiết bị";
       $("hdB").textContent = "Tạo tài khoản"; $("hdN").hidden = false; $("hdL").parentNode.hidden = true;
     }
+    // Bước 1: bấm "Chơi với tư cách khách" → hiện ô nhập tên ngay bên dưới
     $("hdK").onclick = function () {
-      err(""); busy(true);
-      auth.signInAnonymously().catch(function (x) { err(errText(x.code)); busy(false); });
+      err("");
+      var box = $("hdGW"); box.hidden = !box.hidden;
+      if (!box.hidden) setTimeout(function () { $("hdGN").focus(); }, 30);
     };
+    $("hdGD").onclick = function () { $("hdGN").value = randomGuestName(); $("hdGN").focus(); };
+    // Bước 2: bấm "Vào chơi" (hoặc Enter) → tạo tài khoản khách với tên đã nhập / tên ngẫu nhiên
+    function startGuest() {
+      err(""); busy(true);
+      $("hdGS").textContent = "Đang vào…";
+      pendingGuestName = cleanName($("hdGN").value) || randomGuestName();
+      auth.signInAnonymously().catch(function (x) {
+        pendingGuestName = ""; err(errText(x.code)); busy(false); $("hdGS").textContent = "🚀 Vào chơi";
+      });
+    }
+    $("hdGS").onclick = startGuest;
+    $("hdGN").addEventListener("keydown", function (e) { if (e.key === "Enter") { e.preventDefault(); startGuest(); } });
     $("hdA").onclick = function () {
       if (upgrade) return;
       reg = !reg; err("");
@@ -388,15 +422,40 @@
     return push().then(function () { clearAccountLocal(); return auth.signOut(); }).then(function () { location.reload(); });
   }
 
+  /* Đổi tên hiển thị: cập nhật hồ sơ Firebase + tên trên bảng xếp hạng */
+  function rename(nm) {
+    nm = cleanName(nm);
+    if (!user || !nm) return Promise.reject({ code: "hdlg/empty-name" });
+    return user.updateProfile({ displayName: nm }).then(function () { saveAccountLocal(user); emit(); return push(); }).then(emit);
+  }
+
   function showAccount() {
     if (!user) return showLogin();
     var x = num(lsGet(K.xp)), name = displayName(user);
     var ov = openModal('<div class="hdlg-big">' + avatarHTML(name, user.photoURL) + "<h2>" + esc(name) + '</h2><div class="hdlg-sub" style="margin:0">' + esc(user.email || "") + "</div></div>" +
       '<div class="hdlg-stats"><div><b>⭐ ' + x + "</b>Sao</div><div><b>Lv." + level(x) + "</b>Cấp độ</div><div><b>🎫 " + num(lsGet(K.hints)) + "</b>Gợi ý</div></div>" +
       '<button class="hdlg-btn" id="hdR">🏆 Xem bảng xếp hạng</button>' +
+      '<button class="hdlg-btn g" id="hdRN" type="button">✏️ Đổi tên hiển thị</button>' +
+      '<form class="hdlg-guest" id="hdRW" hidden><div class="hdlg-gr"><input id="hdRI" type="text" maxlength="30" placeholder="Tên mới" autocomplete="nickname">' +
+      '<button class="hdlg-dice" id="hdRD" type="button" title="Tên ngẫu nhiên" aria-label="Tên ngẫu nhiên">🎲</button></div>' +
+      '<div class="hdlg-err" id="hdRE" hidden></div><button class="hdlg-btn" id="hdRS" type="submit">💾 Lưu tên</button></form>' +
       (user.isAnonymous ? '<button class="hdlg-btn g" id="hdU">⬆ Đăng ký để giữ sao</button><p class="hdlg-sub" style="margin-top:8px">Bạn đang chơi với tư cách khách. Xóa dữ liệu trình duyệt hoặc thoát sẽ mất sao.</p>' : "") +
       '<button class="hdlg-btn o" id="hdO">' + (user.isAnonymous ? "Thoát chế độ khách" : "Đăng xuất") + "</button>", true);
     if (user.isAnonymous) ov.querySelector("#hdU").onclick = function () { showLogin(true); };
+    var q = function (id) { return ov.querySelector("#" + id); };
+    q("hdRN").onclick = function () {
+      var w = q("hdRW"); w.hidden = !w.hidden;
+      if (!w.hidden) { q("hdRI").value = name; q("hdRI").focus(); q("hdRI").select(); }
+    };
+    q("hdRD").onclick = function () { q("hdRI").value = randomGuestName(); q("hdRI").focus(); };
+    q("hdRW").onsubmit = function (e) {
+      e.preventDefault();
+      var nm = cleanName(q("hdRI").value), b = q("hdRS");
+      if (!nm) { q("hdRE").textContent = "Tên không được để trống."; q("hdRE").hidden = false; return; }
+      b.disabled = true; b.textContent = "Đang lưu…";
+      rename(nm).then(function () { toast("✅ Đã đổi tên thành " + nm); showAccount(); })
+        .catch(function (x) { q("hdRE").textContent = errText(x && x.code); q("hdRE").hidden = false; b.disabled = false; b.textContent = "💾 Lưu tên"; });
+    };
     ov.querySelector("#hdR").onclick = showLeaderboard;
     ov.querySelector("#hdO").onclick = function () { var b = this, t = b.textContent; b.disabled = true; b.textContent = "Đang lưu & đăng xuất…"; logout().then(function () { b.disabled = false; b.textContent = t; }); };
   }
@@ -438,9 +497,17 @@
       auth.onAuthStateChanged(function (u) {
         user = u; state.user = u;
         if (u) {
-          saveAccountLocal(u);
           if (!inFrame) whenBody(closeModal);
-          syncOnLogin().then(function () { state.ready = true; readyResolve(u); });
+          // Khách vừa nhập tên → ghi tên vào hồ sơ Firebase TRƯỚC khi đồng bộ lên bảng xếp hạng
+          var nm = pendingGuestName; pendingGuestName = "";
+          var pre = (nm && u.isAnonymous && !u.displayName)
+            ? u.updateProfile({ displayName: nm }).catch(function (e) { console.warn("[HDLG] Không lưu được tên khách:", e && e.code || e); })
+            : Promise.resolve();
+          pre.then(function () {
+            saveAccountLocal(u);
+            if (nm && u.isAnonymous) toast("👋 Chào " + displayName(u) + "!");
+            return syncOnLogin();
+          }).then(function () { state.ready = true; readyResolve(u); });
         } else {
           state.ready = true; readyResolve(null); emit();
           if (!inFrame) whenBody(showLogin);
@@ -456,7 +523,7 @@
     getLevel: function () { return level(num(lsGet(K.xp))); },
     addStars: addStars, finishLevel: finishLevel, award: award, getBest: getBest, markDone: function (id) { markDone(id); schedulePush(); emit(); }, getLeaderboard: getLeaderboard,
     lessonReward: lessonReward, lessonStatus: lessonStatus, lessonStats: lessonStats, LESSON_STARS: LESSON_STARS,
-    showLogin: showLogin, showAccount: showAccount, showLeaderboard: showLeaderboard, logout: logout,
+    showLogin: showLogin, showAccount: showAccount, rename: rename, randomName: randomGuestName, showLeaderboard: showLeaderboard, logout: logout,
     onChange: function (f) { listeners.push(f); }, flush: push,
     today: today, questGet: questGet, questSave: questSave, questBump: questBump, toast: toast
   };

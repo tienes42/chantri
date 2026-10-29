@@ -15,7 +15,7 @@ if (backButton) {
 }
 
 /* =========================
-   2. TỰ ĐỘNG CẮT & TÁCH NỀN 16 ICON VẬT LÝ 2.5D (assets/physics-icons.png)
+   2. TỰ ĐỘNG CẮT & TÁCH NỀN 16 ICON VẬT LÝ 2.5D (assets/physics-icons.webp)
 ========================= */
 const iconSprites = {};
 
@@ -30,7 +30,7 @@ function loadImg(src) {
 
 async function slicePhysicsIcons(src) {
   try {
-    const img = await loadImg(src || "assets/physics-icons.png");
+    const img = await loadImg(src || "assets/physics-icons.webp");
     const cellW = img.naturalWidth / 4;
     const cellH = img.naturalHeight / 4;
     const size = 240;
@@ -78,7 +78,7 @@ async function slicePhysicsIcons(src) {
   }
 }
 
-slicePhysicsIcons("assets/physics-icons.png");
+slicePhysicsIcons("assets/physics-icons.webp");
 
 /* =========================
    3. CLASS CARDS & POPUP MODAL

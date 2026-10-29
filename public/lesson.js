@@ -107,11 +107,11 @@ function loadImg(src) {
 
 async function initLesson25DSprites() {
   const sheetMap = {
-    math: "assets/math-icons.png",
-    physics: "assets/physics-icons.png",
-    chemistry: "assets/chemistry-icons.png"
+    math: "assets/math-icons.webp",
+    physics: "assets/physics-icons.webp",
+    chemistry: "assets/chemistry-icons.webp"
   };
-  const sheetUrl = sheetMap[subject] || "assets/math-icons.png";
+  const sheetUrl = sheetMap[subject] || "assets/math-icons.webp";
 
   try {
     const img = await loadImg(sheetUrl);

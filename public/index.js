@@ -129,43 +129,32 @@ function loadImg(src) {
   });
 }
 
-// 2 mẫu đảo đã được tách nền trong suốt sẵn trong file PNG
+// 2 mẫu đảo đã được tách nền & nén WebP sẵn (assets/*.webp)
 document.querySelectorAll('.island-center-art').forEach(el => {
-  el.style.backgroundImage = 'url("assets/island-center.png")';
+  el.style.backgroundImage = 'url("assets/island-center.webp")';
 });
 document.querySelectorAll('.island-art').forEach(el => {
-  el.style.backgroundImage = 'url("assets/island-subject.png")';
+  el.style.backgroundImage = 'url("assets/island-subject.webp")';
 });
 
-async function processSpriteSheet(src, mappingList) {
-  try {
-    const img = await loadImg(src);
-    const cellW = img.naturalWidth / 4;
-    const cellH = img.naturalHeight / 4;
-    const size = 240;
-    const c = document.createElement('canvas');
-    c.width = size;
-    c.height = size;
-    const ctx = c.getContext('2d');
-
-    for (const item of mappingList) {
-      const { col, row, selector, saveKey } = item;
-      ctx.clearRect(0, 0, size, size);
-      ctx.drawImage(img, col * cellW, row * cellH, cellW, cellH, 0, 0, size, size);
-      const dataUrl = c.toDataURL('image/png');
-      if (saveKey) birdFrames[saveKey] = dataUrl;
-      if (selector) {
-        document.querySelectorAll(selector).forEach(el => {
-          el.style.backgroundImage = `url("${dataUrl}")`;
-        });
-      }
+/* Đạo cụ đã được CẮT SẴN từ props-sheet-1/2 thành từng file nhỏ assets/props/p{sheet}-{hàng}{cột}.webp
+   → không còn tải 2 ảnh sheet ~1MB và không phải cắt bằng canvas trên máy người dùng nữa. */
+function applySprites(sheet, mappingList) {
+  for (const { col, row, selector, saveKey } of mappingList) {
+    const url = `assets/props/p${sheet}-${row}${col}.webp`;
+    if (saveKey) {
+      birdFrames[saveKey] = url;
+      loadImg(url).catch(() => {}); // nạp trước để chim vỗ cánh không bị nháy
     }
-  } catch (e) {
-    console.error('Lỗi cắt Sprite Sheet:', src, e);
+    if (selector) {
+      document.querySelectorAll(selector).forEach(el => {
+        el.style.backgroundImage = `url("${url}")`;
+      });
+    }
   }
 }
 
-processSpriteSheet('assets/props-sheet-1.png', [
+applySprites(1, [
   { col: 0, row: 0, selector: '.flask-left' },
   { col: 1, row: 0, selector: '.flask-right' },
   { col: 2, row: 0, selector: '.chem-boom, .spark, .lava' },
@@ -184,7 +173,7 @@ processSpriteSheet('assets/props-sheet-1.png', [
   { col: 3, row: 3, selector: '.laptop' }
 ]);
 
-processSpriteSheet('assets/props-sheet-2.png', [
+applySprites(2, [
   { col: 0, row: 0, selector: '.sprout, .bush-l, .bush-r' },
   { col: 1, row: 0, selector: '.flower, .rainbow' },
   { col: 2, row: 0, selector: '.butterfly, .bird-paper' },

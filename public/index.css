@@ -31,9 +31,13 @@ button { font: inherit; }
 .artwork-sky {
   position: absolute;
   inset: -4%;
-  background: url("assets/sky-bg.png") center/cover no-repeat;
+  background: url("assets/sky-bg.webp") center/cover no-repeat;
   transition: transform 0.25s ease-out;
   filter: contrast(1.05) saturate(1.1);
+}
+
+@media (max-width: 900px) {
+  .artwork-sky { background-image: url("assets/sky-bg-960.webp"); }
 }
 
 .god-rays {

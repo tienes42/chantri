@@ -4,20 +4,28 @@
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>CHÂN TRI</title>
+  <link rel="preconnect" href="https://www.gstatic.com">
+  <link rel="preconnect" href="https://firestore.googleapis.com" crossorigin>
+  <link rel="preconnect" href="https://identitytoolkit.googleapis.com" crossorigin>
+  <link rel="preload" as="image" type="image/webp" href="assets/sky-bg.webp" media="(min-width: 901px)" fetchpriority="high">
+  <link rel="preload" as="image" type="image/webp" href="assets/sky-bg-960.webp" media="(max-width: 900px)" fetchpriority="high">
+  <link rel="preload" as="image" type="image/webp" href="assets/island-center.webp" fetchpriority="high">
+  <link rel="preload" as="image" type="image/webp" href="assets/island-subject.webp" fetchpriority="high">
   <link rel="stylesheet" href="index.css">
-  <link rel="icon" type="image/png" href="assets/logo.png">
+  <link rel="icon" type="image/png" href="assets/logo-192.png">
+  <link rel="apple-touch-icon" href="assets/logo-192.png">
 <script src="/firebase-config.js"></script><script src="/auth.js"></script><script src="/quests.js"></script>
 </head>
 <body>
 <main class="home" id="homeScene" aria-label="Trang chủ CHÂN TRI">
 
-  <!-- 1. LỚP NỀN BẦU TRỜI ĐIỆN ẢNH TỪ ẢNH BANANA (assets/sky-bg.png) -->
+  <!-- 1. LỚP NỀN BẦU TRỜI ĐIỆN ẢNH TỪ ẢNH BANANA (assets/sky-bg.webp) -->
   <div class="sky-backdrop" aria-hidden="true">
     <div class="artwork-sky" id="parallaxFar"></div>
     <div class="god-rays"></div>
     <canvas id="cinematicCanvas"></canvas>
 
-    <!-- Mây 3D & Chim vỗ cánh 2 frame cắt từ assets/props-sheet-2.png -->
+    <!-- Mây 3D & Chim vỗ cánh 2 frame cắt từ assets/props/*.webp -->
     <div class="sky-layer" id="skyLayer">
       <div class="cloud sp2 cloud-white c1"></div>
       <div class="cloud sp2 cloud-gold c2"></div>
@@ -180,7 +188,7 @@
       <span class="island-label">⚔️ Lịch sử</span>
     </button>
 
-    <!-- ĐẢO TRUNG TÂM ĐỒ SỘ (assets/island-center.png) -->
+    <!-- ĐẢO TRUNG TÂM ĐỒ SỘ (assets/island-center.webp) -->
     <button class="hit center island-float-center" id="centerHit" aria-label="Giới thiệu Học để làm gì">
       <div class="center-aura-ring"></div>
       <div class="island-center-art"></div>

@@ -46,7 +46,7 @@ button {
 .observatory-bg {
   position: absolute;
   inset: -4%;
-  background: url("assets/physics-bg.png") center/cover no-repeat;
+  background: url("assets/physics-bg.webp") center/cover no-repeat;
   filter: brightness(0.88) contrast(1.08) saturate(1.12);
   transition: transform 0.25s ease-out;
 }
@@ -855,4 +855,8 @@ button {
   .class-card-special {
     grid-column: span 1;
   }
+}
+/* Màn hình nhỏ: dùng ảnh nền bản 960px cho nhẹ */
+@media (max-width: 900px) {
+  .observatory-bg { background-image: url("assets/physics-bg-960.webp"); }
 }

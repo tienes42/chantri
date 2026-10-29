@@ -120,7 +120,7 @@ const slicedSprites = [];
 let progress = 0; // tính lại từ số bài đã học thật (xem updateProgress)
 
 /* =========================================================
-   TỰ ĐỘNG CẮT & TÁCH NỀN 16 ICON TOÁN 2.5D (assets/math-icons.png)
+   TỰ ĐỘNG CẮT & TÁCH NỀN 16 ICON TOÁN 2.5D (assets/math-icons.webp)
 ========================================================= */
 function loadImg(src) {
   return new Promise((resolve, reject) => {
@@ -133,7 +133,7 @@ function loadImg(src) {
 
 async function initMathGradeSprites() {
   try {
-    const img = await loadImg("assets/math-icons.png");
+    const img = await loadImg("assets/math-icons.webp");
     const cellW = img.naturalWidth / 4;
     const cellH = img.naturalHeight / 4;
     const size = 220;

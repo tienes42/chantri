@@ -152,7 +152,7 @@ function escapeHTML(value) {
 }
 
 /* =========================================================
-   TỰ ĐỘNG CẮT & TÁCH NỀN 16 ICON VẬT LÝ 2.5D (assets/physics-icons.png)
+   TỰ ĐỘNG CẮT & TÁCH NỀN 16 ICON VẬT LÝ 2.5D (assets/physics-icons.webp)
 ========================================================= */
 function loadImg(src) {
   return new Promise((resolve, reject) => {
@@ -165,7 +165,7 @@ function loadImg(src) {
 
 async function initPhysicsGradeSprites() {
   try {
-    const img = await loadImg("assets/physics-icons.png");
+    const img = await loadImg("assets/physics-icons.webp");
     const cellW = img.naturalWidth / 4;
     const cellH = img.naturalHeight / 4;
     const size = 220;

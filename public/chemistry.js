@@ -15,7 +15,7 @@ if (backButton) {
 }
 
 /* =========================
-   2. TỰ ĐỘNG CẮT & TÁCH NỀN 16 ICON HÓA HỌC 2.5D (assets/chemistry-icons.png)
+   2. TỰ ĐỘNG CẮT & TÁCH NỀN 16 ICON HÓA HỌC 2.5D (assets/chemistry-icons.webp)
 ========================= */
 const iconSprites = {};
 
@@ -30,7 +30,7 @@ function loadImg(src) {
 
 async function sliceChemistryIcons(src) {
   try {
-    const img = await loadImg(src || "assets/chemistry-icons.png");
+    const img = await loadImg(src || "assets/chemistry-icons.webp");
     const cellW = img.naturalWidth / 4;
     const cellH = img.naturalHeight / 4;
     const size = 240;
@@ -78,7 +78,7 @@ async function sliceChemistryIcons(src) {
   }
 }
 
-sliceChemistryIcons("assets/chemistry-icons.png");
+sliceChemistryIcons("assets/chemistry-icons.webp");
 
 /* =========================
    3. CLASS CARDS & POPUP
