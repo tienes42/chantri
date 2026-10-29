@@ -25,7 +25,7 @@
   /* ---------- KỊCH BẢN HƯỚNG DẪN ---------- */
   var STEPS = {
     island: {
-      page: "index", n: 1, hole: ".hit.physics", click: ".hit.physics", next: "grade",
+      page: "index", n: 1, hole: ".hit.physics", click: ".hit.physics", next: "grade", floaty: true,
       title: "Đảo bay Vật lý ⚡",
       text: "Mỗi hòn <b>đảo bay</b> là một <b>môn học</b>. Bấm vào <b>Đảo Vật lý</b> để vào khu học Vật lý — nơi có bài học theo từng lớp, phòng thí nghiệm ảo và thử thách nhanh."
     },
@@ -129,13 +129,18 @@
 
   /* ---------- CSS ---------- */
   var CSS = "" +
-"#tgDim{position:fixed;inset:0;z-index:99000;background:rgba(3,8,24,.76);pointer-events:auto;opacity:0;transition:opacity .3s}" +
-"#tgDim.on{opacity:1}#tgDim.anim{transition:opacity .3s,clip-path .4s ease}" +
-"#tgRing{position:fixed;z-index:99001;pointer-events:none;border-radius:18px;box-shadow:0 0 0 3px #fde047,0 0 22px 6px rgba(56,189,248,.75),inset 0 0 18px rgba(253,224,71,.35);animation:tgRing 1.4s ease-in-out infinite;display:none}" +
-"@keyframes tgRing{50%{box-shadow:0 0 0 5px #fde047,0 0 34px 12px rgba(56,189,248,.55),inset 0 0 18px rgba(253,224,71,.25)}}" +
-"#tgHand{position:fixed;z-index:99002;pointer-events:none;font-size:34px;line-height:1;display:none;filter:drop-shadow(0 4px 6px rgba(0,0,0,.6));animation:tgHand .9s ease-in-out infinite}" +
-"@keyframes tgHand{0%,100%{transform:translate(-50%,0)}50%{transform:translate(-50%,-10px)}}" +
-"#tgBox{position:fixed;z-index:99010;right:12px;top:50%;transform:translateY(-50%);display:flex;align-items:center;gap:6px;font-family:'Segoe UI',Roboto,Arial,sans-serif;pointer-events:none}" +
+/* Lớp tối = 4 khối màu đặc bao quanh vùng sáng (không dùng clip-path → không nhấp nháy trên điện thoại) */
+"#tgMask{position:fixed;inset:0;z-index:99000;pointer-events:none;opacity:0;transition:opacity .3s}" +
+"#tgMask.on{opacity:1}#tgMask[hidden]{display:none}" +
+"#tgMask i{position:absolute;display:block;background:rgba(3,8,24,.78);pointer-events:auto;left:0;top:0;width:0;height:0}" +
+"#tgMask i.full{left:0!important;top:0!important;width:100%!important;height:100%!important}" +
+"#tgRing{position:fixed;left:0;top:0;z-index:99001;pointer-events:none;border-radius:16px;border:3px solid #fde047;box-shadow:0 0 20px 4px rgba(56,189,248,.7);display:none;will-change:transform}" +
+"#tgRing::after{content:'';position:absolute;inset:-9px;border-radius:22px;border:2px solid rgba(253,224,71,.85);animation:tgRing 1.4s ease-out infinite}" +
+"@keyframes tgRing{0%{opacity:.9;transform:scale(.97)}100%{opacity:0;transform:scale(1.06)}}" +
+"#tgHand{position:fixed;left:0;top:0;z-index:99002;pointer-events:none;display:none;will-change:transform}" +
+"#tgHand span{display:block;font-size:34px;line-height:1;margin-left:-17px;filter:drop-shadow(0 4px 6px rgba(0,0,0,.6));animation:tgHand .9s ease-in-out infinite}" +
+"@keyframes tgHand{0%,100%{transform:translateY(0)}50%{transform:translateY(-10px)}}" +
+"#tgBox{position:fixed;z-index:99010;will-change:transform;right:12px;top:50%;transform:translateY(-50%);display:flex;align-items:center;gap:6px;font-family:'Segoe UI',Roboto,Arial,sans-serif;pointer-events:none}" +
 "#tgBox.pos-top{top:84px;transform:none}#tgBox.pos-bottom{top:auto;bottom:22px;transform:none}" +
 "#tgBot{pointer-events:auto;width:96px;height:110px;border:0;padding:0;background:none;cursor:pointer;position:relative;flex:none;-webkit-tap-highlight-color:transparent}" +
 "#tgBot:focus-visible{outline:2px solid #fde047;outline-offset:4px;border-radius:20px}" +
@@ -188,13 +193,15 @@
 "#tgBox.tour.pos-mid,#tgBox.tour.pos-bottom{top:auto;bottom:calc(10px + env(safe-area-inset-bottom));transform:none}" +
 "#tgBox.tour.pos-top{top:calc(10px + env(safe-area-inset-top))}" +
 "#tgBox.tour #tgBub{flex:1;width:auto;max-width:none;font-size:13.5px;padding:12px 13px 10px}" +
-".tg-title{font-size:15px}#tgHand{font-size:28px}" +
+".tg-title{font-size:15px}#tgHand span{font-size:28px;margin-left:-14px}" +
 "}" +
 "@media (max-width:700px) and (max-height:560px){#tgBox.tour #tgBub{max-height:46vh;overflow:auto}}" +
-"@media (prefers-reduced-motion:reduce){#tgBot *,#tgBot::after,#tgRing,#tgHand{animation:none!important}}";
+"@media (prefers-reduced-motion:reduce){#tgBot *,#tgBot::after,#tgRing::after,#tgHand span{animation:none!important}}";
 
   /* ---------- DOM ---------- */
-  var box, bot, bub, dim, ring, hand;
+  var box, bot, bub, dim, dimParts, ring, hand;
+  var shown = null;       // vùng sáng đang hiển thị {l,t,r,b}
+  var handAt = null;
   var cur = null, curId = null, holeEl = null, clickEl = null, raf = 0, waitTimer = 0, lostSince = 0, lastPlace = 0;
   var passThrough = false;
 
@@ -207,9 +214,10 @@
   function build() {
     if (box) return;
     document.head.appendChild(h("style", { id: "tgStyle" }, CSS));
-    dim = h("div", { id: "tgDim", hidden: "" });
+    dim = h("div", { id: "tgMask", hidden: "" }, "<i></i><i></i><i></i><i></i>");
+    dimParts = dim.querySelectorAll("i");
     ring = h("div", { id: "tgRing" });
-    hand = h("div", { id: "tgHand" }, "👆");
+    hand = h("div", { id: "tgHand" }, "<span>👆</span>");
     box = h("div", { id: "tgBox", "class": "idle pos-mid" });
     bub = h("div", { id: "tgBub", role: "dialog", "aria-live": "polite", hidden: "" });
     bot = h("button", { id: "tgBot", type: "button", "aria-label": "Bot Tri – bấm để xem hướng dẫn trải nghiệm web", title: "Bấm vào mình để xem hướng dẫn" }, BOT_SVG);
@@ -217,6 +225,7 @@
     document.body.appendChild(dim); document.body.appendChild(ring); document.body.appendChild(hand); document.body.appendChild(box);
     bot.addEventListener("click", onBotClick);
     dim.addEventListener("click", function () { nudge(); });
+    window.addEventListener("resize", function () { shown = null; stable = null; if (cur && cur.dim !== false && !holeEl) fullDim(); });
     window.addEventListener("click", onCaptureClick, true);
     window.addEventListener("resize", function () { lastPlace = 0; });
   }
@@ -264,8 +273,36 @@
   }
   function setDim(on) {
     if (on) { dim.hidden = false; requestAnimationFrame(function () { dim.classList.add("on"); }); }
-    else { dim.classList.remove("on"); dim.hidden = true; dim.style.clipPath = ""; }
+    else { dim.classList.remove("on"); dim.hidden = true; }
+    fullDim();
   }
+  /* Tối toàn màn hình (chưa có / mất mục tiêu) */
+  function fullDim() {
+    if (shown === "full") return;
+    shown = "full";
+    dimParts[0].className = "full";
+    for (var i = 1; i < 4; i++) dimParts[i].style.display = "none";
+    ring.style.display = "none"; hand.style.display = "none"; handAt = null;
+  }
+  function setPart(el, l, t, w, h) {
+    el.style.left = l + "px"; el.style.top = t + "px"; el.style.width = Math.max(0, w) + "px"; el.style.height = Math.max(0, h) + "px";
+  }
+  /* Khoét vùng sáng: chỉ cập nhật DOM khi vùng thay đổi thật sự */
+  function showHole(l, t, r, b) {
+    if (shown && shown !== "full" && Math.abs(shown.l - l) < 1 && Math.abs(shown.t - t) < 1 && Math.abs(shown.r - r) < 1 && Math.abs(shown.b - b) < 1) return false;
+    var W = innerWidth, H = innerHeight;
+    if (shown === "full" || !shown) { dimParts[0].className = ""; for (var i = 1; i < 4; i++) dimParts[i].style.display = ""; }
+    shown = { l: l, t: t, r: r, b: b };
+    setPart(dimParts[0], 0, 0, W, t);                 // trên
+    setPart(dimParts[1], 0, b, W, H - b);             // dưới
+    setPart(dimParts[2], 0, t, l, b - t);             // trái
+    setPart(dimParts[3], r, t, W - r, b - t);         // phải
+    ring.style.display = "block";
+    ring.style.width = (r - l) + "px"; ring.style.height = (b - t) + "px";
+    ring.style.transform = "translate3d(" + l + "px," + t + "px,0)";
+    return true;
+  }
+  var stable = null;    // gom biên độ của mục tiêu đang trôi lơ lửng (đảo bay) để vùng sáng đứng yên
   function frame() {
     raf = requestAnimationFrame(frame);
     if (!cur || !holeEl) return;               // chưa có mục tiêu (đang chờ trang tải)
@@ -276,28 +313,39 @@
     if (cur.need && !document.querySelector(cur.need)) r = null;
 
     if (cur.hole && !r) {
-      ring.style.display = "none"; hand.style.display = "none";
-      dim.style.clipPath = "";
+      if (cur.dim !== false) fullDim();
+      ring.style.display = "none"; hand.style.display = "none"; handAt = null; stable = null;
       if (!lostSince) lostSince = Date.now();
       else if (Date.now() - lostSince > 700 && cur.back) { go(cur.back); }
       else if (Date.now() - lostSince > 1500 && !cur.back) { run(curId); }   // mất dấu mục tiêu → chạy lại bước
       return;
     }
     lostSince = 0;
-    if (r) {
-      var p = 8, l = Math.max(0, r.left - p), t = Math.max(0, r.top - p), rr = Math.min(innerWidth, r.right + p), b = Math.min(innerHeight, r.bottom + p);
-      if (cur.dim !== false) dim.style.clipPath = "polygon(0% 0%, 0% 100%, " + l + "px 100%, " + l + "px " + t + "px, " + rr + "px " + t + "px, " + rr + "px " + b + "px, " + l + "px " + b + "px, " + l + "px 100%, 100% 100%, 100% 0%)";
-      ring.style.display = "block";
-      ring.style.left = l + "px"; ring.style.top = t + "px"; ring.style.width = (rr - l) + "px"; ring.style.height = (b - t) + "px";
-      var c = clickEl ? visible(clickEl) : null;
-      if (c) {
-        hand.style.display = "block";
-        var hy = c.bottom - 6;
-        if (hy > innerHeight - 40) hy = c.top - 40;
-        hand.style.left = (c.left + c.width / 2) + "px"; hand.style.top = hy + "px";
-      } else hand.style.display = "none";
-      if (Date.now() - lastPlace > 350) { place(r); lastPlace = Date.now(); }
+    if (!r) return;
+    var box4 = { l: r.left, t: r.top, r: r.right, b: r.bottom };
+    if (cur.floaty) {
+      // Đảo bay lên xuống liên tục: lấy khung bao cả biên độ trôi → vùng sáng không phải nhảy theo từng khung hình
+      if (stable && Math.abs(stable.l - box4.l) < 60 && Math.abs(stable.t - box4.t) < 60) {
+        stable = { l: Math.min(stable.l, box4.l), t: Math.min(stable.t, box4.t), r: Math.max(stable.r, box4.r), b: Math.max(stable.b, box4.b) };
+      } else stable = box4;
+      box4 = stable;
     }
+    var p = 8;
+    var l = Math.round(Math.max(0, box4.l - p)), t = Math.round(Math.max(0, box4.t - p)),
+        rr = Math.round(Math.min(innerWidth, box4.r + p)), b = Math.round(Math.min(innerHeight, box4.b + p));
+    var changed = cur.dim !== false ? showHole(l, t, rr, b) : false;
+    var c = clickEl ? visible(clickEl) : null;
+    if (c) {
+      var hx = Math.round(c.left + c.width / 2), hy = Math.round(c.bottom - 6);
+      if (hy > innerHeight - 40) hy = Math.round(c.top - 40);
+      if (cur.floaty && handAt) { hx = handAt.x; hy = Math.max(hy, handAt.y); }
+      if (!handAt || Math.abs(handAt.x - hx) >= 1 || Math.abs(handAt.y - hy) >= 1) {
+        handAt = { x: hx, y: hy };
+        hand.style.display = "block";
+        hand.style.transform = "translate3d(" + hx + "px," + hy + "px,0)";
+      }
+    } else if (handAt) { hand.style.display = "none"; handAt = null; }
+    if (changed && Date.now() - lastPlace > 350) { place(r); lastPlace = Date.now(); }
   }
   function overlap(a, b) { return !(a.right < b.left || a.left > b.right || a.bottom < b.top || a.top > b.bottom); }
   function place(target) {
@@ -318,7 +366,8 @@
   }
   function clearSpot() {
     clearInterval(waitTimer); waitTimer = 0;
-    holeEl = clickEl = null; ring.style.display = "none"; hand.style.display = "none"; dim.style.clipPath = "";
+    holeEl = clickEl = null; stable = null;
+    if (dimParts) fullDim();
   }
 
   /* ---------- CHẠY TỪNG BƯỚC ---------- */
@@ -350,7 +399,6 @@
     box.classList.remove("idle"); box.classList.add("tour");
     var useDim = s.dim !== false;
     setDim(useDim);
-    dim.classList.add("anim"); setTimeout(function () { dim.classList.remove("anim"); }, 450);
 
     if (s.final) { showBye(); return; }
 

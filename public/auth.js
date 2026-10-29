@@ -575,3 +575,10 @@
     mountAuthorBadge();
   }
 })();
+
+/* Nút 🏠 về trang chủ (góc trên trái, mọi trang trừ trang chủ) — xem /home-button.js */
+(function () {
+  if (window.__hdlgHomeBtn || document.querySelector('script[src*="home-button.js"]')) return;
+  var s = document.createElement("script"); s.src = "/home-button.js"; s.defer = true;
+  (document.head || document.documentElement).appendChild(s);
+})();
