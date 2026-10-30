@@ -10,7 +10,8 @@
   "use strict";
   if (window.HDLGTour) return;
 
-  var LS_STATE = "hdlg_tour", LS_DONE = "hdlg_tour_done", SS_HIDE = "hdlg_tour_hint_hidden";
+  var NUDGE_EVERY = window.__triNudgeMs || 120000, NUDGE_SHOW = window.__triShowMs || 20000;   // nhắc ~2 phút/lần, hiện 20 giây
+  var LS_STATE = "hdlg_tour", LS_DONE = "hdlg_tour_done", LS_INTRO = "hdlg_tri_intro", SS_HIDE = "hdlg_tour_hint_hidden";
   var PAGE = (location.pathname.split("/").pop() || "index").replace(/\.html?$/i, "") || "index";
   var QS = new URLSearchParams(location.search);
   var TOTAL = 5;
@@ -167,6 +168,7 @@
 "#tgBot:hover .tg-body{animation-duration:1.4s}" +
 "#tgBub{pointer-events:auto;position:relative;width:330px;max-width:calc(100vw - 150px);background:linear-gradient(160deg,#17346a,#0b1838);color:#eaf2ff;border:1.5px solid #5b8fe6;border-radius:18px;padding:14px 16px 12px;box-shadow:0 18px 44px rgba(0,0,0,.55),0 0 0 4px rgba(56,189,248,.12);font-size:14px;line-height:1.5;transform-origin:right center;animation:tgPop .28s cubic-bezier(.2,1.4,.4,1)}" +
 "#tgBub[hidden]{display:none}" +
+"#tgBub.tg-fade{opacity:0!important;transform:translateY(6px);transition:opacity .9s ease,transform .9s ease}" +
 "#tgBub::after{content:'';position:absolute;right:-9px;top:50%;width:16px;height:16px;background:#112652;border-right:1.5px solid #5b8fe6;border-top:1.5px solid #5b8fe6;transform:translateY(-50%) rotate(45deg)}" +
 "@keyframes tgPop{from{opacity:0;transform:scale(.85)}to{opacity:1;transform:none}}" +
 "#tgBub.shake{animation:tgShake .4s}@keyframes tgShake{20%,60%{transform:translateX(-6px)}40%,80%{transform:translateX(6px)}}" +
@@ -233,7 +235,9 @@
   function nudge() { bub.classList.remove("shake"); void bub.offsetWidth; bub.classList.add("shake"); talk(); }
 
   /* ---------- BONG BÓNG THOẠI ---------- */
+  var fadeT = 0;
   function bubble(o) {
+    clearTimeout(fadeT); bub.classList.remove("tg-fade"); bub.onmouseenter = bub.onmouseleave = null;
     var dots = "";
     if (o.n) { for (var i = 1; i <= TOTAL; i++) dots += '<i class="' + (i <= o.n ? "on" : "") + '"></i>'; dots = '<div class="tg-dots">' + dots + "</div>"; }
     bub.innerHTML =
@@ -260,7 +264,14 @@
     talk();
     lastPlace = 0;
   }
-  function hideBubble() { bub.hidden = true; }
+  function hideBubble() { clearTimeout(fadeT); bub.hidden = true; bub.classList.remove("tg-fade"); }
+  /* Tự mờ dần rồi tắt sau ms (rê chuột vào thì tạm dừng) */
+  function autoFade(ms) {
+    var arm = function (t) { clearTimeout(fadeT); fadeT = setTimeout(function () { bub.classList.add("tg-fade"); fadeT = setTimeout(hideBubble, 900); }, t); };
+    bub.onmouseenter = function () { clearTimeout(fadeT); bub.classList.remove("tg-fade"); };
+    bub.onmouseleave = function () { arm(5000); };
+    arm(ms);
+  }
 
   /* ---------- LỚP TỐI + VÙNG SÁNG ---------- */
   function visible(el) {
@@ -482,9 +493,7 @@
     document.body.classList.remove("tg-on");
     box.classList.remove("tour"); box.classList.add("idle");
     if (PAGE === "index") {
-      bubble({ text: completed ? "Chúc bạn học vui! Bấm vào mình bất cứ lúc nào để xem <b>phân tích học tập</b> hoặc hướng dẫn nhé 😊" : "Đã tắt hướng dẫn. Bấm vào mình để xem <b>phân tích học tập</b> hoặc xem lại hướng dẫn nhé 😊", close: hideBubble });
-      place(null);
-      setTimeout(hideBubble, 4500);
+      afterTour();
     } else {
       hideBubble(); box.style.display = "none";
     }
@@ -515,6 +524,7 @@
     var st = getState();
     if (st) return go(st.step);
     hideBubble();
+    if (!lsGet(LS_DONE)) return start();          // chưa xem hướng dẫn → chỉ hướng dẫn trải nghiệm web
     openAssistant();
   }
 
@@ -538,36 +548,62 @@
       place(null);
     });
   }
-  /* Mỗi ngày 1 lần trên trang chủ: nhắc có bao nhiêu gợi ý học tập */
-  function dailyHint() {
-    var t = new Date(), key = t.getFullYear() + "-" + (t.getMonth() + 1) + "-" + t.getDate();
-    if (lsGet("hdlg_tri_hint") === key) return;
-    setTimeout(function () {
-      if (cur) return;
-      loadAssistant().then(function (A) {
-        var go = function () {
-          A.analyze().then(function (r) {
-            var n = A.count(r), top = A.topToday(r)[0];
-            if (!n && !top) return;
-            var tries = 0, iv = setInterval(function () {
-              if (cur || ++tries > 60) { clearInterval(iv); return; }
-              if (document.querySelector(".hdlg-ov, .hq-ov, .ta-ov, .dialog.open")) return;
-              clearInterval(iv);
-              lsSet("hdlg_tri_hint", key);
-              bubble({
-                text: "📊 Mình vừa xem qua việc học của bạn" + (n ? ": có <b>" + n + " việc nên làm</b> hôm nay." : ".") +
-                  (top ? "<br>Gợi ý đầu tiên: <b>" + String(top.t).replace(/[<>&]/g, "") + "</b>" : ""),
-                close: hideBubble,
-                buttons: [{ label: "📊 Xem phân tích", fn: function () { hideBubble(); openAssistant(); } }]
-              });
-              place(null);
-              setTimeout(function () { if (!cur) hideBubble(); }, 12000);
-            }, 700);
-          });
-        };
-        if (window.HDLG && HDLG.ready && HDLG.ready.then) HDLG.ready.then(go, go); else go();
-      }, function () {});
-    }, 2500);
+  function busy() { return !!(cur || document.hidden || document.querySelector(".hdlg-ov, .hq-ov, .ta-ov, .dialog.open")); }
+  function whenFree(fn) {
+    var tries = 0, iv = setInterval(function () {
+      if (cur || ++tries > 200) { clearInterval(iv); return; }
+      if (busy()) return;
+      clearInterval(iv); fn();
+    }, 600);
+  }
+  function safe(t) { return String(t == null ? "" : t).replace(/[&<>"]/g, function (c) { return { "&": "&amp;", "<": "&lt;", ">": "&gt;", '"': "&quot;" }[c]; }); }
+
+  /* Sau khi xong hướng dẫn: về trang chủ mới giới thiệu dịch vụ phân tích (1 lần), rồi bật nhắc định kỳ */
+  function afterTour() {
+    if (PAGE !== "index") return;
+    if (!lsGet(LS_INTRO)) {
+      whenFree(function () {
+        lsSet(LS_INTRO, "1");
+        bubble({
+          title: "📊 Trợ lý học tập Tri",
+          text: "Giờ bạn đã biết cách dùng web rồi! Từ nay <b>bấm vào mình</b> để xem <b>phân tích việc học</b>: điểm mạnh, chỗ cần cải thiện, bài nên xem lại và nên học gì tiếp.",
+          close: hideBubble,
+          buttons: [{ label: "📊 Xem phân tích ngay", fn: function () { hideBubble(); openAssistant(); } }]
+        });
+        place(null);
+        autoFade(NUDGE_SHOW);
+      });
+    }
+    startNudges();
+  }
+
+  /* Khoảng 2 phút 1 lần: nếu có điều cần cải thiện → hiện thông báo ~20 giây rồi tự mờ tắt */
+  var nudgeTimer = 0, nudgeI = 0;
+  var NUDGE_KINDS = { review: 1, unfinished: 1, game: 1, quick: 1, daily: 1 };
+  function startNudges() {
+    if (nudgeTimer || PAGE !== "index") return;
+    nudgeTimer = setInterval(nudge2, NUDGE_EVERY);
+  }
+  function nudge2() {
+    if (busy() || !bub.hidden || !lsGet(LS_DONE)) return;
+    loadAssistant().then(function (A) {
+      A.analyze().then(function (r) {
+        var list = r.todo.filter(function (x) { return NUDGE_KINDS[x.kind]; });
+        if (!list.length || busy() || !bub.hidden) return;
+        var x = list[nudgeI++ % list.length];
+        var btns = [];
+        if (x.href) btns.push({ label: "▶ " + x.act, fn: function () { location.href = x.href; } });
+        else btns.push({ label: "▶ " + x.act, fn: function () { hideBubble(); if (window.HDLGQ) { if (x.fn === "rewards") HDLGQ.openRewards("daily"); else HDLGQ.openMissions(); } } });
+        btns.push({ label: "📊 Xem tất cả", ghost: true, fn: function () { hideBubble(); openAssistant("todo"); } });
+        bubble({
+          text: "💡 <b>" + safe(x.t) + "</b><br><span style=\"opacity:.85;font-size:.92em\">" + safe(x.why) + "</span>" +
+            (list.length > 1 ? "<br><span style=\"opacity:.7;font-size:.85em\">Còn " + (list.length - 1) + " việc nữa cần cải thiện</span>" : ""),
+          close: hideBubble, buttons: btns
+        });
+        place(null);
+        autoFade(NUDGE_SHOW);
+      });
+    }, function () {});
   }
   function start() {
     lsDel(LS_DONE);
@@ -585,9 +621,9 @@
       if (document.querySelector(".hdlg-ov, .hq-ov, .dialog.open")) return;
       shown = true; clearInterval(t);
       bubble({
-        text: "👋 Xin chào, mình là <b>Tri</b>!<br>Mình có thể <b>hướng dẫn</b> bạn dùng web, hoặc <b>phân tích việc học</b> và gợi ý nên học gì tiếp.",
+        text: "👋 Xin chào, mình là <b>Tri</b>!<br><b>Bấm vào mình</b> để xem hướng dẫn trải nghiệm web nhé!",
         close: function () { hideBubble(); try { sessionStorage.setItem(SS_HIDE, "1"); } catch (e) {} },
-        buttons: [{ label: "▶ Bắt đầu hướng dẫn", fn: start }, { label: "📊 Phân tích học tập", ghost: true, fn: function () { hideBubble(); openAssistant(); } }]
+        buttons: [{ label: "▶ Bắt đầu hướng dẫn", fn: start }]
       });
       place(null);
     }, 600);
@@ -604,7 +640,7 @@
         // tải lại trang khi đang ở bước popup → quay lại bước trước
         run(s.need && s.back ? s.back : st.step);
       } else wrongPage(st.step);
-    } else if (lsGet(LS_DONE)) dailyHint();
+    } else if (lsGet(LS_DONE)) afterTour();
     else introHint();
   }
 
@@ -619,6 +655,7 @@
       document.body.classList.remove("tg-on");
       box.classList.remove("tour"); box.classList.add("idle");
       if (PAGE !== "index") box.style.display = "none";
+      else if (lsGet(LS_DONE)) afterTour();        // vừa xong hướng dẫn rồi bấm Quay lại về trang chủ
       return;
     }
     box.style.display = "";
@@ -632,7 +669,7 @@
     start: function () { build(); if (!raf) raf = requestAnimationFrame(frame); start(); },
     stop: function () { if (box) finish(false); },
     assistant: function (tab) { openAssistant(tab); },
-    reset: function () { lsDel(LS_STATE); lsDel(LS_DONE); try { sessionStorage.removeItem(SS_HIDE); } catch (e) {} }
+    reset: function () { lsDel(LS_STATE); lsDel(LS_DONE); lsDel(LS_INTRO); try { sessionStorage.removeItem(SS_HIDE); } catch (e) {} }
   };
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init); else init();
 })();
