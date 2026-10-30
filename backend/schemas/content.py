@@ -55,3 +55,15 @@ class GameOut(BaseModel):
     lesson_id: int | None
     name: str
     game_type: str
+
+class CatalogItem(BaseModel):
+    """Danh mục bài học rút gọn (dùng cho Trợ lý Tri phân tích tiến độ)."""
+    id: int
+    subject: str
+    grade: int | None
+    topic: str
+    title: str
+    icon: str | None
+    has_game: bool
+    has_quiz: bool
+    game_type: str | None

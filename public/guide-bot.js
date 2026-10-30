@@ -220,7 +220,7 @@
     hand = h("div", { id: "tgHand" }, "<span>👆</span>");
     box = h("div", { id: "tgBox", "class": "idle pos-mid" });
     bub = h("div", { id: "tgBub", role: "dialog", "aria-live": "polite", hidden: "" });
-    bot = h("button", { id: "tgBot", type: "button", "aria-label": "Bot Tri – bấm để xem hướng dẫn trải nghiệm web", title: "Bấm vào mình để xem hướng dẫn" }, BOT_SVG);
+    bot = h("button", { id: "tgBot", type: "button", "aria-label": "Trợ lý Tri – phân tích học tập và hướng dẫn dùng web", title: "Trợ lý Tri: phân tích học tập và hướng dẫn" }, BOT_SVG);
     box.appendChild(bub); box.appendChild(bot);
     document.body.appendChild(dim); document.body.appendChild(ring); document.body.appendChild(hand); document.body.appendChild(box);
     bot.addEventListener("click", onBotClick);
@@ -482,7 +482,7 @@
     document.body.classList.remove("tg-on");
     box.classList.remove("tour"); box.classList.add("idle");
     if (PAGE === "index") {
-      bubble({ text: completed ? "Chúc bạn học vui! Cần xem lại hướng dẫn thì cứ bấm vào mình nhé 😊" : "Đã tắt hướng dẫn. Khi cần, cứ bấm vào mình để xem lại nhé 😊", close: hideBubble });
+      bubble({ text: completed ? "Chúc bạn học vui! Bấm vào mình bất cứ lúc nào để xem <b>phân tích học tập</b> hoặc hướng dẫn nhé 😊" : "Đã tắt hướng dẫn. Bấm vào mình để xem <b>phân tích học tập</b> hoặc xem lại hướng dẫn nhé 😊", close: hideBubble });
       place(null);
       setTimeout(hideBubble, 4500);
     } else {
@@ -514,7 +514,60 @@
     if (cur) { nudge(); return; }
     var st = getState();
     if (st) return go(st.step);
-    start();
+    hideBubble();
+    openAssistant();
+  }
+
+  /* ---------- TRỢ LÝ HỌC TẬP (assistant.js, nạp khi cần) ---------- */
+  var asstP = null;
+  function loadAssistant() {
+    if (window.HDLGAssistant) return Promise.resolve(window.HDLGAssistant);
+    if (asstP) return asstP;
+    asstP = new Promise(function (res, rej) {
+      var sc = document.createElement("script"); sc.src = "/assistant.js"; sc.async = true;
+      sc.onload = function () { window.HDLGAssistant ? res(window.HDLGAssistant) : rej(); };
+      sc.onerror = function () { asstP = null; rej(); };
+      document.head.appendChild(sc);
+    });
+    return asstP;
+  }
+  function openAssistant(tab) {
+    loadAssistant().then(function (A) { A.open(tab); }, function () {
+      bubble({ text: "Mình chưa tải được phần phân tích, kiểm tra mạng rồi thử lại nhé!", close: hideBubble,
+        buttons: [{ label: "🧭 Xem hướng dẫn", fn: start }] });
+      place(null);
+    });
+  }
+  /* Mỗi ngày 1 lần trên trang chủ: nhắc có bao nhiêu gợi ý học tập */
+  function dailyHint() {
+    var t = new Date(), key = t.getFullYear() + "-" + (t.getMonth() + 1) + "-" + t.getDate();
+    if (lsGet("hdlg_tri_hint") === key) return;
+    setTimeout(function () {
+      if (cur) return;
+      loadAssistant().then(function (A) {
+        var go = function () {
+          A.analyze().then(function (r) {
+            var n = A.count(r), top = A.topToday(r)[0];
+            if (!n && !top) return;
+            var tries = 0, iv = setInterval(function () {
+              if (cur || ++tries > 60) { clearInterval(iv); return; }
+              if (document.querySelector(".hdlg-ov, .hq-ov, .ta-ov, .dialog.open")) return;
+              clearInterval(iv);
+              lsSet("hdlg_tri_hint", key);
+              bubble({
+                text: "📊 Mình vừa xem qua việc học của bạn" + (n ? ": có <b>" + n + " việc nên làm</b> hôm nay." : ".") +
+                  (top ? "<br>Gợi ý đầu tiên: <b>" + String(top.t).replace(/[<>&]/g, "") + "</b>" : ""),
+                close: hideBubble,
+                buttons: [{ label: "📊 Xem phân tích", fn: function () { hideBubble(); openAssistant(); } }]
+              });
+              place(null);
+              setTimeout(function () { if (!cur) hideBubble(); }, 12000);
+            }, 700);
+          });
+        };
+        if (window.HDLG && HDLG.ready && HDLG.ready.then) HDLG.ready.then(go, go); else go();
+      }, function () {});
+    }, 2500);
   }
   function start() {
     lsDel(LS_DONE);
@@ -532,9 +585,9 @@
       if (document.querySelector(".hdlg-ov, .hq-ov, .dialog.open")) return;
       shown = true; clearInterval(t);
       bubble({
-        text: "👋 Xin chào, mình là <b>Tri</b>!<br><b>Bấm vào mình</b> để xem hướng dẫn trải nghiệm web nhé!",
+        text: "👋 Xin chào, mình là <b>Tri</b>!<br>Mình có thể <b>hướng dẫn</b> bạn dùng web, hoặc <b>phân tích việc học</b> và gợi ý nên học gì tiếp.",
         close: function () { hideBubble(); try { sessionStorage.setItem(SS_HIDE, "1"); } catch (e) {} },
-        buttons: [{ label: "▶ Bắt đầu hướng dẫn", fn: start }]
+        buttons: [{ label: "▶ Bắt đầu hướng dẫn", fn: start }, { label: "📊 Phân tích học tập", ghost: true, fn: function () { hideBubble(); openAssistant(); } }]
       });
       place(null);
     }, 600);
@@ -551,7 +604,8 @@
         // tải lại trang khi đang ở bước popup → quay lại bước trước
         run(s.need && s.back ? s.back : st.step);
       } else wrongPage(st.step);
-    } else introHint();
+    } else if (lsGet(LS_DONE)) dailyHint();
+    else introHint();
   }
 
   /* Bấm Quay lại (trình duyệt / điện thoại) → trang được khôi phục từ bộ nhớ đệm (bfcache) đúng lúc
@@ -577,6 +631,7 @@
   window.HDLGTour = {
     start: function () { build(); if (!raf) raf = requestAnimationFrame(frame); start(); },
     stop: function () { if (box) finish(false); },
+    assistant: function (tab) { openAssistant(tab); },
     reset: function () { lsDel(LS_STATE); lsDel(LS_DONE); try { sessionStorage.removeItem(SS_HIDE); } catch (e) {} }
   };
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", init); else init();

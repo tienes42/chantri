@@ -72,6 +72,9 @@
     var c = la > lb ? ca : lb > la ? cb : (num(ca.streak) >= num(cb.streak) ? ca : cb);
     r.checkin = { last: String(c.last || ""), streak: num(c.streak), best: Math.max(num(ca.best), num(cb.best), num(ca.streak), num(cb.streak)) };
     r.ach = union(A.ach, B.ach);
+    function lateMap(x, y) { var m = {}, k; x = x || {}; y = y || {}; for (k in x) m[k] = String(x[k]); for (k in y) if (!m[k] || String(y[k]) > m[k]) m[k] = String(y[k]); return m; }
+    r.lv = lateMap(A.lv, B.lv); r.qw = lateMap(A.qw, B.qw);
+    r.days = union(A.days, B.days).sort().slice(-40);
     r.total = maxMap(A.total, B.total);
     r.subj = {}; var sa = A.subj || {}, sb = B.subj || {};
     for (k in sb) r.subj[k] = sb[k];
@@ -198,6 +201,26 @@
     var s = questGet(); n = n || 1;
     s.prog[key] = (s.prog[key] || 0) + n; s.total[key] = (s.total[key] || 0) + n;
     questSave(s); return s;
+  }
+
+  /* ---------- Nhật ký học (cho Trợ lý Tri phân tích): bài đã mở, câu Kiểm tra nhanh trả lời sai, ngày có học ---------- */
+  function capMap(m, n) {
+    var ks = Object.keys(m); if (ks.length <= n) return m;
+    ks.sort(function (a, b) { return m[a] < m[b] ? -1 : m[a] > m[b] ? 1 : 0; });
+    ks.slice(0, ks.length - n).forEach(function (k) { delete m[k]; });
+    return m;
+  }
+  function track(type, id) {
+    var s = questGet(), t = today(), ch = false;
+    s.days = Array.isArray(s.days) ? s.days : [];
+    if (s.days.indexOf(t) < 0) { s.days.push(t); s.days = s.days.sort().slice(-40); ch = true; }
+    if (id != null && id !== "") {
+      id = String(id);
+      if (type === "open") { s.lv = s.lv || {}; if (s.lv[id] !== t) { s.lv[id] = t; capMap(s.lv, 80); ch = true; } }
+      if (type === "quizWrong") { s.qw = s.qw || {}; if (s.qw[id] !== t) { s.qw[id] = t; capMap(s.qw, 80); ch = true; } }
+    }
+    if (ch) questSave(s);
+    return ch;
   }
 
   /* ---------- API cho game ---------- */
@@ -553,7 +576,7 @@
             saveAccountLocal(u);
             if (nm && u.isAnonymous) toast("👋 Chào " + displayName(u) + "!");
             return syncOnLogin();
-          }).then(function () { state.ready = true; readyResolve(u); });
+          }).then(function () { try { track("visit"); } catch (e) {} state.ready = true; readyResolve(u); });
         } else {
           state.ready = true; readyResolve(null); emit();
           if (!inFrame) whenBody(showLogin);
@@ -569,7 +592,7 @@
     getStars: function () { return num(lsGet(K.xp)); },
     getLevel: function () { return level(num(lsGet(K.xp))); },
     addStars: addStars, finishLevel: finishLevel, award: award, getBest: getBest, markDone: function (id) { markDone(id); schedulePush(); emit(); }, getLeaderboard: getLeaderboard,
-    lessonReward: lessonReward, lessonStatus: lessonStatus, lessonStats: lessonStats, LESSON_STARS: LESSON_STARS,
+    lessonReward: lessonReward, lessonStatus: lessonStatus, track: track, lessonStats: lessonStats, LESSON_STARS: LESSON_STARS,
     showLogin: showLogin, showAccount: showAccount, rename: rename, randomName: randomGuestName, showLeaderboard: showLeaderboard, logout: logout,
     onChange: function (f) { listeners.push(f); }, flush: push,
     today: today, questGet: questGet, questSave: questSave, questBump: questBump, toast: toast

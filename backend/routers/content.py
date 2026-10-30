@@ -6,7 +6,7 @@ from database.database import get_db
 from models.game import Game
 from models.lesson import Lesson
 from models.subject import Subject
-from schemas.content import GameOut, LessonOut, SubjectOut
+from schemas.content import CatalogItem, GameOut, LessonOut, SubjectOut
 
 router = APIRouter(prefix="/content", tags=["content"])
 
@@ -46,6 +46,24 @@ def list_lessons(
 
     response.headers["Cache-Control"] = EDGE_CACHE_HEADER
     return list(db.scalars(stmt.order_by(Lesson.id)).all())
+
+@router.get("/catalog", response_model=list[CatalogItem])
+def lesson_catalog(response: Response, db: Session = Depends(get_db)):
+    """Danh mục gọn của TẤT CẢ bài học (không kèm nội dung) — vài chục KB thay vì ~1,2 MB."""
+    rows = db.execute(
+        select(
+            Lesson.id, Subject.slug, Lesson.grade, Lesson.topic, Lesson.title, Lesson.icon,
+            Lesson.game_type, Lesson.question, Lesson.answers,
+        ).join(Subject, Subject.id == Lesson.subject_id).order_by(Lesson.id)
+    ).all()
+    response.headers["Cache-Control"] = EDGE_CACHE_HEADER
+    return [
+        CatalogItem(
+            id=r.id, subject=r.slug, grade=r.grade, topic=r.topic, title=r.title, icon=r.icon,
+            has_game=bool(r.game_type), has_quiz=bool(r.question and r.answers), game_type=r.game_type,
+        )
+        for r in rows
+    ]
 
 @router.get("/lessons/{lesson_id}", response_model=LessonOut)
 def get_lesson(lesson_id: int, response: Response, db: Session = Depends(get_db)):

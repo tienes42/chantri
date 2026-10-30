@@ -664,6 +664,7 @@ function renderLesson(lesson) {
   renderExtraBackendSections(lesson);
   renderGame(lesson);
   initLessonReward(lesson);
+  if (window.HDLG && typeof HDLG.track === "function") whenHdlgReady(function () { HDLG.track("open", lesson.id); });
 
   finishLoading();
   buildTableOfContents();
@@ -839,6 +840,11 @@ function checkReadReward(percent) {
 function handleQuizReward(isCorrect) {
   if (!rewardState.hasQuiz || rewardState.quizAttempted) return;
   rewardState.quizAttempted = true;          // chỉ tính lần chọn ĐẦU TIÊN
+  // Ghi lại câu trả lời sai để Trợ lý Tri gợi ý ôn lại bài này
+  if (!isCorrect && window.HDLG && typeof HDLG.track === "function") {
+    const lid = rewardState.lessonId;
+    whenHdlgReady(function () { if (!getLessonStatus().quiz) HDLG.track("quizWrong", lid); });
+  }
 
   if (isCorrect && hdlgReady()) {
     whenHdlgReady(function () {
