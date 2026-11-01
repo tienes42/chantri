@@ -7,6 +7,18 @@
   var me = document.currentScript;
   var mode = (me && me.getAttribute("data-mode")) || "";
   var touch = (window.matchMedia && matchMedia("(pointer: coarse)").matches) || ("ontouchstart" in window);
+  /* 0a) Công thức dạng toán học (phân số dọc, căn, chỉ số) — xem math-format.js */
+  if (!window.HDLGMath && !document.querySelector('script[src*="math-format.js"]')) {
+    var mf = document.createElement("script");
+    mf.src = (me && me.src ? me.src.replace(/mobile-fit\.js[^\/]*$/, "") : "/games/") + "math-format.js";
+    (document.head || document.documentElement).appendChild(mf);
+  }
+  /* 0b) Lời kể mỗi chặng kèm "📋 Thông số" để tính toán — xem story-params.js */
+  if (!window.__hdlgStoryParams && !document.querySelector('script[src*="story-params.js"]')) {
+    var sp = document.createElement("script");
+    sp.src = (me && me.src ? me.src.replace(/mobile-fit\.js[^\/]*$/, "") : "/games/") + "story-params.js";
+    (document.head || document.documentElement).appendChild(sp);
+  }
 
   /* 1) CSS: dùng chiều cao THẬT của màn hình (100dvh) thay vì 100vh bị thanh trình duyệt che */
   var css =

@@ -330,6 +330,7 @@
 .hdlg-btn.o{background:transparent;color:#ff9b9b;border:1px solid #ff9b9b;margin-top:12px}\
 .hdlg-err{background:#ff4d4d26;border:1px solid #ff7b7b88;color:#ffb3b3;padding:8px 10px;border-radius:8px;font-size:13px;margin-bottom:10px}\
 .hdlg-or{text-align:center;color:#8aa0cc;font-size:12px;margin:12px 0 0}\
+.hdlg-hint{display:block;margin:-2px 0 10px;color:#9fb4dd;font-size:12px;line-height:1.45}.hdlg-hint[hidden]{display:none}\
 .hdlg-tg{text-align:center;margin-top:14px;font-size:13px;color:#a9bde6}\
 .hdlg-tg a{color:#62d7ff;cursor:pointer;font-weight:700;margin-left:4px}\
 .hdlg-x{position:absolute;top:10px;right:12px;background:none;border:0;color:#a9bde6;font-size:22px;cursor:pointer}\
@@ -386,12 +387,13 @@
   function closeModal() { if (overlay) { overlay.remove(); overlay = null; } }
 
   var ERR = {
-    "auth/email-already-in-use": "Email này đã được đăng ký. Hãy thử đăng nhập.",
-    "auth/invalid-email": "Email không hợp lệ.",
+    "auth/email-already-in-use": "Tên đăng nhập này đã có người dùng. Hãy chọn tên khác hoặc đăng nhập.",
+    "auth/invalid-email": "Tên đăng nhập không hợp lệ.",
+    "hdlg/bad-username": "Tên đăng nhập cần 3–20 ký tự, chỉ gồm chữ không dấu, số, dấu chấm, gạch dưới hoặc gạch ngang.",
     "auth/weak-password": "Mật khẩu quá yếu (cần ít nhất 6 ký tự).",
-    "auth/user-not-found": "Không tìm thấy tài khoản với email này.",
+    "auth/user-not-found": "Không tìm thấy tài khoản với tên đăng nhập này.",
     "auth/wrong-password": "Sai mật khẩu. Vui lòng thử lại.",
-    "auth/invalid-credential": "Email hoặc mật khẩu không đúng.",
+    "auth/invalid-credential": "Tên đăng nhập hoặc mật khẩu không đúng.",
     "auth/too-many-requests": "Bạn đã thử quá nhiều lần. Vui lòng chờ một lát.",
     "auth/unauthorized-domain": "Tên miền này chưa được cấp phép trong Firebase (Authentication > Settings > Authorized domains).",
     "auth/popup-blocked": "Trình duyệt đã chặn cửa sổ popup đăng nhập. Hãy cho phép popup rồi thử lại.",
@@ -406,6 +408,24 @@
   };
   function errText(code) { if (code && !ERR[code]) console.warn("[Firebase Auth]", code); return ERR[code] || "Đã có lỗi xảy ra (mã: " + (code || "không rõ") + "). Vui lòng thử lại."; }
 
+  /* Đăng ký không cần email: tên đăng nhập → email nội bộ <tên>@users.chantri.site (chỉ dùng cho Firebase).
+     Tài khoản cũ đăng ký bằng email vẫn đăng nhập bằng cách gõ đầy đủ email. */
+  var UDOM = "users.chantri.site";
+  function normUser(s) {
+    return String(s || "").trim().toLowerCase().normalize("NFD").replace(/[\u0300-\u036f]/g, "")
+      .replace(/đ/g, "d").replace(/\s+/g, "");
+  }
+  function toEmail(s) {
+    s = String(s || "").trim();
+    if (s.indexOf("@") >= 0) return s;
+    var u = normUser(s);
+    return /^[a-z0-9._-]{3,20}$/.test(u) ? u + "@" + UDOM : "";
+  }
+  function shownLogin(u) {
+    var m = (u && u.email) || "";
+    return m.slice(-UDOM.length - 1) === "@" + UDOM ? "@" + m.slice(0, -UDOM.length - 1) : m;
+  }
+
   function showLogin(upgrade) {
     upgrade = upgrade === true;
     var reg = upgrade;
@@ -414,7 +434,8 @@
       '<h2 id="hdT">🔐 Đăng nhập</h2><p class="hdlg-sub" id="hdS">Đăng nhập để lưu sao và tiến trình học của bạn</p>' +
       '<div class="hdlg-err" id="hdE" hidden></div>' +
       '<form id="hdF"><input id="hdN" type="text" placeholder="Tên hiển thị" maxlength="30" hidden>' +
-      '<input id="hdM" type="email" placeholder="Email" required autocomplete="email">' +
+      '<input id="hdM" type="text" placeholder="Tên đăng nhập" required autocomplete="username" autocapitalize="none" autocorrect="off" spellcheck="false" maxlength="60">' +
+      '<small id="hdH" class="hdlg-hint" hidden>Không cần email — chỉ cần tên đăng nhập (3–20 ký tự: chữ không dấu, số, . _ -) và mật khẩu. Hãy ghi nhớ mật khẩu vì không có email để khôi phục.</small>' +
       '<input id="hdP" type="password" placeholder="Mật khẩu (ít nhất 6 ký tự)" required minlength="6" autocomplete="current-password">' +
       '<button class="hdlg-btn" id="hdB" type="submit">Đăng nhập</button></form>' +
       '<p class="hdlg-or">— hoặc —</p><button class="hdlg-btn g" id="hdG" type="button">🔵 Đăng nhập bằng Google</button>' +
@@ -429,10 +450,12 @@
     function err(m) { $("hdE").textContent = m || ""; $("hdE").hidden = !m; }
     function busy(b) { $("hdB").disabled = b; $("hdG").disabled = b; $("hdK").disabled = b; $("hdGS").disabled = b; }
     function linked() { closeModal(); saveAccountLocal(user); push().then(emit); emit(); toast("✅ Đã nâng cấp tài khoản, sao được giữ lại"); }
+    if (!upgrade) $("hdM").placeholder = "Tên đăng nhập (hoặc email nếu đăng ký bằng email)";
     if (upgrade) {
       $("hdK").hidden = true; $("hdL").parentNode.hidden = false;
       $("hdT").textContent = "⬆ Nâng cấp tài khoản"; $("hdS").textContent = "Đăng ký để giữ sao của khách và chơi trên nhiều thiết bị";
-      $("hdB").textContent = "Tạo tài khoản"; $("hdN").hidden = false; $("hdL").parentNode.hidden = true;
+      $("hdB").textContent = "Tạo tài khoản"; $("hdN").hidden = false; $("hdH").hidden = false; $("hdL").parentNode.hidden = true;
+      $("hdP").autocomplete = "new-password";
     }
     // Bước 1: bấm "Chơi với tư cách khách" → hiện ô nhập tên ngay bên dưới
     $("hdK").onclick = function () {
@@ -459,12 +482,16 @@
       $("hdB").textContent = reg ? "Tạo tài khoản" : "Đăng nhập";
       $("hdL").textContent = reg ? "Đã có tài khoản?" : "Chưa có tài khoản?";
       $("hdA").textContent = reg ? "Đăng nhập" : "Đăng ký";
-      $("hdN").hidden = !reg;
+      $("hdN").hidden = !reg; $("hdH").hidden = !reg;
+      $("hdM").placeholder = reg ? "Tên đăng nhập" : "Tên đăng nhập (hoặc email nếu đăng ký bằng email)";
       $("hdP").autocomplete = reg ? "new-password" : "current-password";
     };
     $("hdF").onsubmit = function (e) {
       e.preventDefault(); err(""); busy(true);
-      var email = $("hdM").value.trim(), pw = $("hdP").value, nm = $("hdN").value.trim();
+      var raw = $("hdM").value.trim(), pw = $("hdP").value, nm = cleanName($("hdN").value);
+      var email = toEmail(raw), creating = reg || (upgrade && guest);
+      if (!email || (creating && raw.indexOf("@") < 0 && !/^[a-z0-9._-]{3,20}$/.test(normUser(raw)))) { err(errText(reg || upgrade ? "hdlg/bad-username" : "auth/invalid-credential")); busy(false); return; }
+      if (creating && !nm && raw.indexOf("@") < 0) nm = normUser(raw);
       var p;
       if (upgrade && guest) p = user.linkWithCredential(firebase.auth.EmailAuthProvider.credential(email, pw))
         .then(function () { return nm ? user.updateProfile({ displayName: nm }) : null; }).then(linked);
@@ -498,7 +525,7 @@
   function showAccount() {
     if (!user) return showLogin();
     var x = num(lsGet(K.xp)), name = displayName(user);
-    var ov = openModal('<div class="hdlg-big">' + avatarHTML(name, user.photoURL) + "<h2>" + esc(name) + '</h2><div class="hdlg-sub" style="margin:0">' + esc(user.email || "") + "</div></div>" +
+    var ov = openModal('<div class="hdlg-big">' + avatarHTML(name, user.photoURL) + "<h2>" + esc(name) + '</h2><div class="hdlg-sub" style="margin:0">' + esc(shownLogin(user)) + "</div></div>" +
       '<div class="hdlg-stats"><div><b>⭐ ' + x + "</b>Sao</div><div><b>Lv." + level(x) + "</b>Cấp độ</div><div><b>🎫 " + num(lsGet(K.hints)) + "</b>Gợi ý</div></div>" +
       '<button class="hdlg-btn" id="hdR">🏆 Xem bảng xếp hạng</button>' +
       '<button class="hdlg-btn g" id="hdRN" type="button">✏️ Đổi tên hiển thị</button>' +

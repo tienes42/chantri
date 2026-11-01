@@ -92,3 +92,10 @@
   }
   if (document.readyState === "loading") document.addEventListener("DOMContentLoaded", start); else start();
 })();
+
+/* Trong game: nạp math-format.js để hiện công thức dạng toán học (phân số dọc, căn, chỉ số) */
+(function () {
+  if (window.HDLGMath || !/\/games\//.test(location.pathname) || document.querySelector('script[src*="math-format.js"]')) return;
+  var s = document.createElement("script"); s.src = "/games/math-format.js";
+  (document.head || document.documentElement).appendChild(s);
+})();
