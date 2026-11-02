@@ -75,6 +75,13 @@ const applicationSection = document.getElementById("applicationSection");
 const realLifeSection = document.getElementById("realLifeSection");
 const challengeSection = document.getElementById("challengeSection");
 
+// Chương trình SGK mới: Yêu cầu cần đạt + bộ 10 câu hỏi 3 mức độ
+const requirementsSection = document.getElementById("requirementsSection");
+const requirementsList = document.getElementById("requirements");
+const sgkRef = document.getElementById("sgkRef");
+const quizSet = document.getElementById("quizSet");
+const singleQuestionBox = document.getElementById("singleQuestionBox");
+
 const subjectNames = {
   math: "Toán học",
   physics: "Vật lý",
@@ -567,6 +574,69 @@ function renderGame(lesson) {
 }
 
 /* =========================================================
+   YÊU CẦU CẦN ĐẠT & BỘ 10 CÂU HỎI (CHƯƠNG TRÌNH SGK MỚI)
+========================================================= */
+function renderRequirements(lesson) {
+  if (!requirementsSection || !requirementsList) return;
+  const list = Array.isArray(lesson.requirements) ? lesson.requirements.filter(Boolean) : [];
+  if (!list.length) {
+    setSectionVisible(requirementsSection, false);
+    return;
+  }
+  requirementsList.innerHTML = list
+    .map((item) => `<li>${formatInlineStyles(escapeHTML(item))}</li>`)
+    .join("");
+  if (sgkRef) {
+    sgkRef.textContent = "Theo Chương trình giáo dục phổ thông môn Toán 2018 (Thông tư 32/2018/TT-BGDĐT). Sau chủ đề này, em cần:";
+  }
+  setSectionVisible(requirementsSection, true);
+}
+
+function renderQuizSet(lesson) {
+  if (!quizSet) return;
+  if (singleQuestionBox) singleQuestionBox.style.display = "none";
+  const titleEl = questionSection ? questionSection.querySelector(".section-title") : null;
+  if (titleEl) titleEl.textContent = `❓ Luyện tập ${lesson.quiz.length} câu: Biết – Hiểu – Vận dụng`;
+  if (questionSection) questionSection.setAttribute("data-toc", "Luyện tập 3 mức độ");
+  const rewardLabel = document.querySelector("#rewardQuiz .reward-text");
+  if (rewardLabel && rewardLabel.firstChild && rewardLabel.firstChild.nodeType === 3) {
+    rewardLabel.firstChild.textContent = "Luyện tập " + lesson.quiz.length + " câu";
+  }
+  setSectionVisible(questionSection, true);
+
+  window.HDLGQuiz.render(quizSet, lesson.quiz, {
+    format: formatRichText,
+    onComplete: function (result) {
+      handleQuizSetReward(result);
+    }
+  });
+}
+
+function handleQuizSetReward(result) {
+  if (!rewardState.hasQuiz) return;
+  rewardState.quizAttempted = true;
+  const lid = rewardState.lessonId;
+  if (!result.passed) {
+    if (result.firstTime && window.HDLG && typeof HDLG.track === "function") {
+      whenHdlgReady(function () { if (!getLessonStatus().quiz) HDLG.track("quizWrong", lid); });
+    }
+    renderRewardCard();
+    return;
+  }
+  if (hdlgReady()) {
+    whenHdlgReady(function () {
+      if (getLessonStatus().quiz) return renderRewardCard();
+      const gained = HDLG.lessonReward(lid, "quiz", rewardState.quizStars, {
+        label: `Luyện tập đúng ${result.correct}/${result.total} câu`
+      });
+      if (gained > 0) popRewardItem("rewardQuiz");
+      renderRewardCard();
+    });
+  }
+  renderRewardCard();
+}
+
+/* =========================================================
    RENDER LESSON
 ========================================================= */
 function renderLesson(lesson) {
@@ -622,7 +692,11 @@ function renderLesson(lesson) {
     setSectionVisible(exampleSection, false);
   }
 
-  if (lesson.question) {
+  renderRequirements(lesson);
+
+  if (Array.isArray(lesson.quiz) && lesson.quiz.length && window.HDLGQuiz) {
+    renderQuizSet(lesson);
+  } else if (lesson.question) {
     setText(question, lesson.question);
     renderAnswers(lesson.answers, lesson.correct);
   } else {
@@ -784,9 +858,12 @@ function renderRewardCard() {
       setRewardItem("rewardQuiz", "rewardQuizHint", "rewardQuizPts", "done", "Đã nhận sao", "✓");
     } else if (rewardState.quizAttempted) {
       setRewardItem("rewardQuiz", "rewardQuizHint", "rewardQuizPts", "missed",
-        "Chưa đúng — ôn lại rồi mở lại bài để thử lần nữa", `+${rewardState.quizStars}`);
+        rewardState.isQuizSet
+          ? "Chưa đạt 7/10 — xem lời giải rồi bấm “Làm lại”"
+          : "Chưa đúng — ôn lại rồi mở lại bài để thử lần nữa", `+${rewardState.quizStars}`);
     } else {
-      setRewardItem("rewardQuiz", "rewardQuizHint", "rewardQuizPts", "", "Chọn đúng ngay lần đầu", `+${rewardState.quizStars}`);
+      setRewardItem("rewardQuiz", "rewardQuizHint", "rewardQuizPts", "",
+        rewardState.isQuizSet ? "Làm đúng từ 7/10 câu luyện tập" : "Chọn đúng ngay lần đầu", `+${rewardState.quizStars}`);
     }
   }
 }
@@ -861,7 +938,8 @@ function handleQuizReward(isCorrect) {
 
 function initLessonReward(lesson) {
   rewardState.lessonId = lesson.id;
-  rewardState.hasQuiz = !!(lesson.question && Array.isArray(lesson.answers) && lesson.answers.length);
+  rewardState.isQuizSet = !!(Array.isArray(lesson.quiz) && lesson.quiz.length);
+  rewardState.hasQuiz = rewardState.isQuizSet || !!(lesson.question && Array.isArray(lesson.answers) && lesson.answers.length);
   const total = (window.HDLG && HDLG.LESSON_STARS) || 10;
   if (rewardState.hasQuiz) {
     rewardState.quizStars = Math.floor(total / 2);

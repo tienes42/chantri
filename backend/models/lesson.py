@@ -171,3 +171,18 @@ class Lesson(Base):
         String(100),
         nullable=True,
     )
+    # =========================
+    # CHƯƠNG TRÌNH SGK MỚI (Toán 1–9)
+    # requirements: danh sách Yêu cầu cần đạt (CT GDPT 2018)
+    # quiz: bộ 10 câu hỏi theo 3 mức độ (Biết – Hiểu – Vận dụng), mỗi câu có lời giải chi tiết
+    # =========================
+
+    requirements: Mapped[list | None] = mapped_column(
+        JSONB,
+        nullable=True,
+    )
+
+    quiz: Mapped[list | None] = mapped_column(
+        JSONB,
+        nullable=True,
+    )

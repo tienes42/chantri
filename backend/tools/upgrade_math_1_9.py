@@ -2179,6 +2179,20 @@ LESSONS = [
 ]
 
 
+
+# ---------------------------------------------------------------------------
+# Các lớp đã chuyển sang nội dung SGK Kết nối tri thức (backend/tools/math_sgk/lopN.py,
+# nhập bằng tools/import_math_sgk.py) thì BỎ QUA ở đây, để không tạo lại bài cũ
+# trùng với bài mới. File này (và init_db.py dùng chung LESSONS) chỉ còn xử lý các lớp chưa chuyển.
+# ---------------------------------------------------------------------------
+SGK_GRADES = sorted(
+    int(p.stem[3:]) for p in (TOOLS_DIR / "math_sgk").glob("lop*.py") if p.stem[3:].isdigit()
+)
+SKIPPED_SGK_LESSONS = [item for item in LESSONS if item["grade"] in SGK_GRADES]
+LESSONS = [item for item in LESSONS if item["grade"] not in SGK_GRADES]
+if SGK_GRADES:
+    print(f"[upgrade_math_1_9] Bỏ qua lớp {SGK_GRADES} (đã dùng nội dung SGK mới, {len(SKIPPED_SGK_LESSONS)} bài cũ không nhập).")
+
 def main():
     db = SessionLocal()
     try:

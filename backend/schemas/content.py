@@ -47,6 +47,10 @@ class LessonOut(BaseModel):
     game_description: str | None
     game_type: str | None
 
+    # Chương trình SGK mới (mặc định None để tương thích dữ liệu cũ)
+    requirements: list | None = None
+    quiz: list | None = None
+
 
 class GameOut(BaseModel):
     model_config = ConfigDict(from_attributes=True)

@@ -134,6 +134,16 @@
           </div>
         </section>
 
+        <!-- 0. YÊU CẦU CẦN ĐẠT (CT GDPT 2018) -->
+        <section class="lesson-section card-25d" id="requirementsSection" data-toc="Yêu cầu cần đạt" style="display:none">
+          <div class="section-head">
+            <span class="section-badge">00</span>
+            <h2 class="section-title">🎯 Yêu cầu cần đạt</h2>
+          </div>
+          <div id="sgkRef" class="sgk-ref"></div>
+          <ul id="requirements" class="requirements-list"></ul>
+        </section>
+
         <!-- 1. ĐỊNH NGHĨA -->
         <section class="lesson-section card-25d" id="definitionSection" data-toc="Định nghĩa & Khái niệm">
           <div class="section-head">
@@ -212,7 +222,10 @@
             <h2 class="section-title">❓ Kiểm tra nhanh</h2>
           </div>
 
-          <div class="question-box">
+          <!-- Bộ 10 câu hỏi theo 3 mức độ (chỉ hiện khi bài có dữ liệu quiz) -->
+          <div id="quizSet" class="quiz-set" style="display:none"></div>
+
+          <div class="question-box" id="singleQuestionBox">
             <div id="question" class="question-text rich-content"></div>
             <p class="quiz-instruction">Hãy chọn một đáp án bên dưới để kiểm tra:</p>
             <div id="answers" class="answers-list"></div>
@@ -294,6 +307,7 @@
 
   </main>
 
+  <script src="lesson-quiz.js"></script>
   <script src="lesson.js"></script>
 <script src="/guide-bot.js" defer></script>
 </body>

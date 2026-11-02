@@ -2,13 +2,20 @@ from fastapi import APIRouter, Depends, HTTPException, Response
 from sqlalchemy import select
 from sqlalchemy.orm import Session
 
-from database.database import get_db
+from database.database import engine, get_db
+from database.schema_guard import ensure_lesson_columns
 from models.game import Game
 from models.lesson import Lesson
 from models.subject import Subject
 from schemas.content import CatalogItem, GameOut, LessonOut, SubjectOut
 
 router = APIRouter(prefix="/content", tags=["content"])
+
+# Bảo đảm bảng lessons có cột mới (requirements, quiz) trước khi truy vấn
+try:
+    ensure_lesson_columns(engine)
+except Exception as _e:  # không chặn khởi động API nếu CSDL tạm thời không kết nối được
+    print("[schema_guard] Bỏ qua kiểm tra cột:", _e)
 
 # Lưu đệm (Edge Cache) trên Vercel CDN 24 giờ và trên trình duyệt 10 phút để không phải đánh thức Neon DB mỗi lần bấm
 EDGE_CACHE_HEADER = "public, max-age=600, s-maxage=86400, stale-while-revalidate=3600"
@@ -54,13 +61,14 @@ def lesson_catalog(response: Response, db: Session = Depends(get_db)):
         select(
             Lesson.id, Subject.slug, Lesson.grade, Lesson.topic, Lesson.title, Lesson.icon,
             Lesson.game_type, Lesson.question, Lesson.answers,
+            Lesson.quiz.isnot(None).label("has_new_quiz"),
         ).join(Subject, Subject.id == Lesson.subject_id).order_by(Lesson.id)
     ).all()
     response.headers["Cache-Control"] = EDGE_CACHE_HEADER
     return [
         CatalogItem(
             id=r.id, subject=r.slug, grade=r.grade, topic=r.topic, title=r.title, icon=r.icon,
-            has_game=bool(r.game_type), has_quiz=bool(r.question and r.answers), game_type=r.game_type,
+            has_game=bool(r.game_type), has_quiz=bool((r.question and r.answers) or r.has_new_quiz), game_type=r.game_type,
         )
         for r in rows
     ]

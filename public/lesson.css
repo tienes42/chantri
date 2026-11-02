@@ -1264,3 +1264,184 @@ body[data-theme="dark"] .reward-card.is-complete .reward-head strong {
   body[data-subject="physics"] { --bg-art-url: url("assets/physics-bg-960.webp"); }
   body[data-subject="chemistry"] { --bg-art-url: url("assets/chemistry-bg-960.webp"); }
 }
+
+/* =========================================================
+   12. YÊU CẦU CẦN ĐẠT & BỘ 10 CÂU HỎI 3 MỨC ĐỘ (SGK MỚI)
+========================================================= */
+.sgk-ref {
+  font-size: 13.5px;
+  color: var(--text-muted);
+  margin: 4px 0 10px;
+  font-style: italic;
+}
+
+.requirements-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.requirements-list li {
+  position: relative;
+  padding: 11px 14px 11px 42px;
+  background: var(--box-def-bg);
+  border: 1px solid var(--card-border);
+  border-left: 4px solid var(--box-def-border);
+  border-radius: 12px;
+  font-size: var(--reading-font-size);
+  line-height: 1.55;
+  color: var(--text-primary);
+}
+
+.requirements-list li::before {
+  content: "✔";
+  position: absolute;
+  left: 14px;
+  top: 10px;
+  font-weight: 800;
+  color: var(--box-def-border);
+}
+
+.quiz-set { display: flex; flex-direction: column; gap: 14px; }
+
+.qz-status {
+  position: sticky;
+  top: 84px;
+  z-index: 5;
+  padding: 12px 16px;
+  border-radius: 14px;
+  background: var(--bg-surface);
+  border: 1.5px solid var(--box-quiz-border);
+  box-shadow: 0 4px 0 var(--card-lip);
+  display: grid;
+  gap: 6px;
+}
+
+.qz-status-text { font-size: 15px; color: var(--text-primary); }
+.qz-status-score { font-size: 14px; color: var(--text-secondary); font-weight: 700; }
+.qz-legend i { font-style: normal; font-size: 12px; font-weight: 800; padding: 2px 8px; border-radius: 999px; margin-left: 4px; }
+.qz-progress { height: 8px; border-radius: 999px; background: var(--bg-muted); overflow: hidden; }
+.qz-progress-fill { height: 100%; width: 0; background: linear-gradient(90deg, #22c55e, #3b82f6, #f97316); transition: width .3s ease; }
+
+.qz-level-title {
+  margin: 10px 0 0;
+  font-size: 17px;
+  font-weight: 800;
+  letter-spacing: .3px;
+}
+.qz-level-title.lv-biet { color: #15803d; }
+.qz-level-title.lv-hieu { color: #1d4ed8; }
+.qz-level-title.lv-vandung { color: #c2410c; }
+
+.qz-legend .lv-biet, .qz-tag.lv-biet { background: rgba(34, 197, 94, .16); color: #15803d; }
+.qz-legend .lv-hieu, .qz-tag.lv-hieu { background: rgba(59, 130, 246, .16); color: #1d4ed8; }
+.qz-legend .lv-vandung, .qz-tag.lv-vandung { background: rgba(249, 115, 22, .18); color: #c2410c; }
+
+.qz-card {
+  background: var(--box-quiz-bg);
+  border: 1.5px solid var(--card-border);
+  border-left: 5px solid var(--box-quiz-border);
+  border-radius: 16px;
+  padding: 16px 18px;
+  box-shadow: 0 3px 0 var(--card-lip);
+}
+.qz-card.lv-biet { border-left-color: #22c55e; }
+.qz-card.lv-hieu { border-left-color: #3b82f6; }
+.qz-card.lv-vandung { border-left-color: #f97316; }
+
+.qz-card-head { display: flex; flex-wrap: wrap; align-items: center; gap: 8px; margin-bottom: 8px; }
+.qz-no { font-weight: 900; font-size: 15px; color: var(--text-primary); }
+.qz-tag { font-size: 12px; font-weight: 800; padding: 2px 10px; border-radius: 999px; }
+.qz-type { font-size: 12px; font-weight: 700; color: var(--text-muted); border: 1px dashed var(--card-border); padding: 1px 8px; border-radius: 999px; }
+
+.qz-question { font-size: var(--reading-font-size); line-height: 1.6; color: var(--text-primary); }
+.qz-question p { margin: 0 0 6px; }
+
+.qz-options { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 10px; }
+.qz-option { padding: 11px 14px; }
+.qz-option:disabled { cursor: default; transform: none; }
+@media (max-width: 640px) { .qz-options { grid-template-columns: 1fr; } }
+
+.qz-tf-buttons { display: flex; gap: 12px; margin-top: 10px; }
+.qz-tf-btn {
+  min-width: 96px;
+  padding: 10px 18px;
+  border-radius: 12px;
+  border: 1.5px solid var(--card-border);
+  border-bottom: 4px solid var(--card-lip);
+  background: var(--bg-surface);
+  color: var(--text-primary);
+  font-weight: 800;
+  font-size: 15px;
+  cursor: pointer;
+}
+.qz-tf-btn:hover:not(:disabled) { border-color: var(--subject-primary); }
+.qz-tf-btn.sm { min-width: 44px; padding: 6px 10px; font-size: 14px; }
+.qz-tf-btn.chosen { background: var(--subject-soft); border-color: var(--subject-primary); }
+.qz-tf-btn.correct { background: rgba(22, 163, 74, .15); border-color: #16a34a; color: #15803d; }
+.qz-tf-btn.wrong { background: rgba(220, 38, 38, .1); border-color: #dc2626; color: #b91c1c; }
+.qz-tf-btn:disabled { cursor: default; }
+
+.qz-tf4 { display: grid; gap: 8px; margin-top: 10px; }
+.qz-tf4-row {
+  display: flex; align-items: center; gap: 10px; flex-wrap: wrap;
+  padding: 8px 12px; border-radius: 12px; background: var(--bg-surface); border: 1px solid var(--card-border);
+}
+.qz-tf4-text { flex: 1 1 260px; font-size: 15px; line-height: 1.5; color: var(--text-primary); }
+.qz-tf4-ctrl { display: flex; gap: 6px; }
+.qz-tf4-row.correct { border-color: #16a34a; background: rgba(22, 163, 74, .08); }
+.qz-tf4-row.wrong { border-color: #dc2626; background: rgba(220, 38, 38, .07); }
+.qz-tf4-key { font-weight: 800; font-size: 13px; color: var(--text-secondary); }
+.qz-partial { font-weight: 700; }
+
+.qz-short { display: flex; align-items: center; gap: 10px; flex-wrap: wrap; margin-top: 10px; }
+.qz-input {
+  flex: 0 1 220px; padding: 10px 14px; font-size: 16px; font-weight: 700;
+  border-radius: 12px; border: 1.5px solid var(--card-border); background: var(--bg-surface); color: var(--text-primary);
+}
+.qz-input:focus { outline: none; border-color: var(--subject-primary); }
+.qz-input.correct { border-color: #16a34a; background: rgba(22, 163, 74, .1); }
+.qz-input.wrong { border-color: #dc2626; background: rgba(220, 38, 38, .08); }
+.qz-input.shake { animation: qzShake .35s; }
+@keyframes qzShake { 0%,100% { transform: translateX(0); } 25% { transform: translateX(-5px); } 75% { transform: translateX(5px); } }
+.qz-unit { font-weight: 700; color: var(--text-secondary); }
+
+.qz-btn {
+  padding: 10px 18px; border-radius: 12px; border: 0; cursor: pointer;
+  background: var(--subject-primary); color: #fff; font-weight: 800; font-size: 14.5px;
+  box-shadow: 0 3px 0 var(--subject-dark);
+}
+.qz-btn:disabled { opacity: .5; cursor: default; }
+.qz-check { margin-top: 10px; }
+.qz-short .qz-check { margin-top: 0; }
+
+.qz-feedback { margin-top: 12px; padding: 10px 14px; border-radius: 12px; font-size: 14.5px; }
+.qz-feedback.is-correct { background: rgba(22, 163, 74, .14); color: var(--box-ctx-title); border: 1px solid rgba(22, 163, 74, .35); }
+.qz-feedback.is-wrong { background: rgba(220, 38, 38, .1); color: #dc2626; border: 1px solid rgba(220, 38, 38, .3); }
+
+.qz-solution {
+  margin-top: 10px; padding: 12px 16px; border-radius: 12px;
+  background: var(--bg-surface); border: 1px dashed var(--box-quiz-border);
+  font-size: 15px; line-height: 1.6; color: var(--text-primary);
+}
+.qz-sol-title { font-weight: 900; margin-bottom: 4px; color: var(--box-quiz-border); }
+.qz-solution p { margin: 0 0 6px; }
+.qz-sol-note { margin-top: 8px; padding: 8px 12px; border-radius: 10px; background: rgba(234, 179, 8, .12); border-left: 3px solid #eab308; }
+.qz-sol-alt { margin-top: 8px; padding: 8px 12px; border-radius: 10px; background: rgba(14, 165, 233, .1); border-left: 3px solid #0ea5e9; }
+
+.qz-summary { padding: 16px 18px; border-radius: 16px; border: 2px solid var(--box-quiz-border); background: var(--bg-surface); }
+.qz-summary.is-pass { border-color: #16a34a; }
+.qz-summary.is-retry { border-color: #f97316; }
+.qz-summary h3 { margin: 0 0 8px; font-size: 18px; color: var(--text-primary); }
+.qz-summary ul { list-style: none; padding: 0; margin: 0 0 8px; display: flex; flex-wrap: wrap; gap: 10px; }
+.qz-summary li { padding: 4px 12px; border-radius: 999px; font-size: 14px; }
+.qz-summary li.lv-biet { background: rgba(34, 197, 94, .16); }
+.qz-summary li.lv-hieu { background: rgba(59, 130, 246, .16); }
+.qz-summary li.lv-vandung { background: rgba(249, 115, 22, .18); }
+.qz-summary p { margin: 0 0 10px; color: var(--text-secondary); }
+
+body[data-theme="dark"] .qz-level-title.lv-biet, body[data-theme="dark"] .qz-tag.lv-biet { color: #4ade80; }
+body[data-theme="dark"] .qz-level-title.lv-hieu, body[data-theme="dark"] .qz-tag.lv-hieu { color: #93c5fd; }
+body[data-theme="dark"] .qz-level-title.lv-vandung, body[data-theme="dark"] .qz-tag.lv-vandung { color: #fdba74; }
