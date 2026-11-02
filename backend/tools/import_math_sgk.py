@@ -170,6 +170,23 @@ def write_catalog() -> None:
         print(f"Đã ghi {path} ({len(data)} bài)")
     finally:
         db.close()
+    bump_data_version()
+
+
+def bump_data_version() -> None:
+    """Đổi HDLG_DATA_VERSION trong public/auth.js -> trình duyệt bỏ bản lưu tạm cũ sau khi deploy."""
+    import re
+    from datetime import datetime
+
+    path = BACKEND_DIR.parent / "public" / "auth.js"
+    if not path.exists():
+        return
+    raw = path.read_bytes().decode("utf-8")
+    version = datetime.now().strftime("%Y%m%d-%H%M%S")
+    new, n = re.subn(r'var HDLG_DATA_VERSION = "[^"]*";', f'var HDLG_DATA_VERSION = "{version}";', raw, count=1)
+    if n:
+        path.write_bytes(new.encode("utf-8"))
+        print(f"Đã đổi phiên bản dữ liệu trong public/auth.js -> {version} (nhớ deploy lại)")
 
 
 def main() -> None:
