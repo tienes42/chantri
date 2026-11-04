@@ -14,6 +14,9 @@ LESSONS = [
     # ===================== CHƯƠNG I =====================
     {
         "topic": "l12-ch01-ung-dung-dao-ham-khao-sat-va-ve-do-thi-ham-so",
+        "game_title": "Biệt Đội Cực Trị: Ứng dụng Đạo hàm để Khảo sát và Vẽ đồ thị Hàm số",
+        "game_description": "Vận dụng đạo hàm xét tính đơn điệu, tìm cực trị và giá trị lớn nhất – nhỏ nhất để giải các bài toán tối ưu thực tiễn.",
+        "game_type": "game_ung_dung_dao_ham",
         "title": "Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số",
         "icon": "📈",
         "description": (
@@ -489,6 +492,9 @@ LESSONS = [
     # ===================== CHƯƠNG IV =====================
     {
         "topic": "l12-ch04-nguyen-ham-va-tich-phan",
+        "game_title": "Nguyên Hàm & Tích Phân: Tổng tích lũy thực tiễn",
+        "game_description": "Vận dụng nguyên hàm và công thức tích phân Newton – Leibniz để tính quãng đường chuyển động, diện tích hình phẳng và thể tích vật thể.",
+        "game_type": "game_nguyen_ham",
         "title": "Nguyên hàm và tích phân",
         "icon": "📐",
         "description": (
@@ -647,6 +653,9 @@ LESSONS = [
     # ===================== CHƯƠNG V =====================
     {
         "topic": "l12-ch05-phuong-phap-toa-do-trong-khong-gian",
+        "game_title": "Không gian Oxyz: Phương trình Mặt phẳng, Đường thẳng & Mặt cầu",
+        "game_description": "Mô hình hóa không gian ba chiều Oxyz để xác định tọa độ, khoảng cách, góc và vị trí tương đối giữa mặt phẳng, đường thẳng và mặt cầu.",
+        "game_type": "game_toa_do_oxyz",
         "title": "Phương pháp toạ độ trong không gian",
         "icon": "🌐",
         "description": (
@@ -831,6 +840,9 @@ LESSONS = [
     # ===================== CHƯƠNG VI =====================
     {
         "topic": "l12-ch06-xac-suat-co-dieu-kien",
+        "game_title": "Tổng ôn Toán THPT & Mô hình hóa Xác suất Bayes thực tiễn",
+        "game_description": "Vận dụng xác suất có điều kiện, công thức xác suất toàn phần và công thức Bayes để phân tích quyết định trong y học, kiểm định chất lượng và dự báo.",
+        "game_type": "game_on_tap_thpt",
         "title": "Xác suất có điều kiện",
         "icon": "🎲",
         "description": (

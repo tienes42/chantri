@@ -36,16 +36,22 @@ REQUIRED_TEXT = ("topic", "title", "description", "definition", "theory", "examp
 
 
 def parse_grades(text: str) -> list[int]:
+    import re
     grades: set[int] = set()
-    for part in text.split(","):
-        part = part.strip()
+    for part in text.split(','):
+        part = part.strip().strip('\/\'\"')
         if not part:
             continue
-        if "-" in part:
-            a, b = part.split("-", 1)
-            grades.update(range(int(a), int(b) + 1))
+        if '-' in part:
+            a, b = part.split('-', 1)
+            a_num = re.sub(r'\D', '', a)
+            b_num = re.sub(r'\D', '', b)
+            if a_num and b_num:
+                grades.update(range(int(a_num), int(b_num) + 1))
         else:
-            grades.add(int(part))
+            p_num = re.sub(r'\D', '', part)
+            if p_num:
+                grades.add(int(p_num))
     bad = [g for g in grades if g < 1 or g > 12]
     if bad:
         raise SystemExit(f"Lớp không hợp lệ: {bad} (chỉ hỗ trợ 1–12)")

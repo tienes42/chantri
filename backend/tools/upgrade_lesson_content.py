@@ -54,11 +54,11 @@ from models.lesson import Lesson
 from models.subject import Subject
 
 from import_math_sgk import load_grade as _load_math_sgk_grade, to_row as _math_sgk_to_row
-import upgrade_physics
+from import_physics_sgk import load_grade as _load_physics_sgk_grade, to_row as _physics_sgk_to_row
 import upgrade_chemistry
 
 
-def _load_math_sgk_1_9():
+def _load_math_sgk_1_12():
     items = []
     for _g in range(1, 13):
         try:
@@ -71,12 +71,26 @@ def _load_math_sgk_1_9():
     return items
 
 
-MATH_1_9_LESSONS = _load_math_sgk_1_9()
+def _load_physics_sgk_6_12():
+    items = []
+    for _g in range(6, 13):
+        try:
+            for _lesson in _load_physics_sgk_grade(_g):
+                _row = _physics_sgk_to_row(0, _g, _lesson)
+                _row.pop("subject_id", None)
+                items.append(_row)
+        except ModuleNotFoundError:
+            pass
+    return items
+
+
+MATH_1_12_LESSONS = _load_math_sgk_1_12()
+PHYSICS_6_12_LESSONS = _load_physics_sgk_6_12()
 
 
 SUBJECT_MODULES = [
-    ("math", "Toán (Lớp 1–12)", MATH_1_9_LESSONS),
-    ("physics", "Vật lý (Lớp 6–12)", upgrade_physics.LESSONS),
+    ("math", "Toán (Lớp 1–12)", MATH_1_12_LESSONS),
+    ("physics", "Vật lý (Lớp 6–12)", PHYSICS_6_12_LESSONS),
     ("chemistry", "Hóa học (Lớp 6–12)", upgrade_chemistry.LESSONS),
 ]
 
