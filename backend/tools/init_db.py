@@ -46,18 +46,17 @@ except Exception:
 """
 Master Upgrade Script – Đồng bộ & Nâng cấp toàn bộ nội dung bài học các môn (Toán, Vật lý, Hóa học).
 
-Toàn bộ dữ liệu chi tiết đã được hợp nhất và mở rộng hoàn chỉnh vào:
-  1. `upgrade_math_1_9.py`   : 54 bài Toán Lớp 1–9 (6 bài/lớp)
-  2. `upgrade_math_10_12.py` : 24 bài Toán Lớp 10–12 (8 bài/lớp)
-  3. `upgrade_physics.py`    : 50 bài Vật lý Lớp 6–12 (7–8 bài/lớp)
-  4. `upgrade_chemistry.py`  : 49 bài Hóa học Lớp 6–12 (7 bài/lớp)
-  => Tổng cộng: 177 bài học chuẩn GDPT 2018.
+Toàn bộ dữ liệu chi tiết đã được hợp nhất và chuẩn hóa theo SGK Kết nối tri thức với cuộc sống (CT GDPT 2018):
+  1. `math_sgk`      : 128 bài Toán Lớp 1–12 (1.280 câu hỏi)
+  2. `physics_sgk`   : 47 bài Vật lý Lớp 6–12 (470 câu hỏi)
+  3. `chemistry_sgk` : 49 bài Hóa học Lớp 6–12 (490 câu hỏi)
+  => Tổng cộng: 224 bài học chuẩn GDPT 2018 (2.240 câu hỏi).
 
 Cách chạy từ thư mục backend hoặc backend/tools:
   - Nâng cấp Database hiện tại trong .env (Local):
-        python upgrade_lesson_content.py
+        python init_db.py
   - Nâng cấp thẳng lên Database Online (Neon / Render / Railway):
-        python upgrade_lesson_content.py --db-url "postgresql://user:pass@ep-...neon.tech/neondb?sslmode=require"
+        python init_db.py --db-url "postgresql://user:pass@ep-...neon.tech/neondb?sslmode=require"
 """
 
 from sqlalchemy import select
@@ -66,14 +65,13 @@ from models.lesson import Lesson
 from models.subject import Subject
 
 from import_math_sgk import load_grade as _load_math_sgk_grade, to_row as _math_sgk_to_row
-import upgrade_math_10_12
-import upgrade_physics
-import upgrade_chemistry
+from import_physics_sgk import load_grade as _load_physics_sgk_grade, to_row as _physics_sgk_to_row
+from import_chemistry_sgk import load_grade as _load_chemistry_sgk_grade, to_row as _chemistry_sgk_to_row
 
 
-def _load_math_sgk_1_9():
+def _load_math_sgk_1_12():
     items = []
-    for _g in range(1, 10):
+    for _g in range(1, 13):
         try:
             for _lesson in _load_math_sgk_grade(_g):
                 _row = _math_sgk_to_row(0, _g, _lesson)
@@ -84,14 +82,41 @@ def _load_math_sgk_1_9():
     return items
 
 
-MATH_1_9_LESSONS = _load_math_sgk_1_9()
+def _load_physics_sgk_6_12():
+    items = []
+    for _g in range(6, 13):
+        try:
+            for _lesson in _load_physics_sgk_grade(_g):
+                _row = _physics_sgk_to_row(0, _g, _lesson)
+                _row.pop("subject_id", None)
+                items.append(_row)
+        except ModuleNotFoundError:
+            pass
+    return items
+
+
+def _load_chemistry_sgk_6_12():
+    items = []
+    for _g in range(6, 13):
+        try:
+            for _lesson in _load_chemistry_sgk_grade(_g):
+                _row = _chemistry_sgk_to_row(0, _g, _lesson)
+                _row.pop("subject_id", None)
+                items.append(_row)
+        except ModuleNotFoundError:
+            pass
+    return items
+
+
+MATH_1_12_LESSONS = _load_math_sgk_1_12()
+PHYSICS_6_12_LESSONS = _load_physics_sgk_6_12()
+CHEMISTRY_6_12_LESSONS = _load_chemistry_sgk_6_12()
 
 
 SUBJECT_MODULES = [
-    ("math", "Toán (Lớp 1–9)", MATH_1_9_LESSONS),
-    ("math", "Toán (Lớp 10–12)", upgrade_math_10_12.LESSONS),
-    ("physics", "Vật lý (Lớp 6–12)", upgrade_physics.LESSONS),
-    ("chemistry", "Hóa học (Lớp 6–12)", upgrade_chemistry.LESSONS),
+    ("math", "Toán (Lớp 1–12)", MATH_1_12_LESSONS),
+    ("physics", "Vật lý (Lớp 6–12)", PHYSICS_6_12_LESSONS),
+    ("chemistry", "Hóa học (Lớp 6–12)", CHEMISTRY_6_12_LESSONS),
 ]
 
 SUBJECT_NAMES = {

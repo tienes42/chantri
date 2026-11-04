@@ -259,7 +259,7 @@ const LATEX_SYMBOLS = {
   "\\in": "∈", "\\notin": "∉", "\\subset": "⊂", "\\subseteq": "⊆", "\\supset": "⊃", "\\supseteq": "⊇", "\\setminus": "\\", "\\int": "∫", "\\sum": "∑", "\\prod": "∏",
   "\\cup": "∪", "\\cap": "∩", "\\emptyset": "∅", "\\varnothing": "∅",
   "\\Rightarrow": "⇒", "\\Leftarrow": "⇐", "\\Leftrightarrow": "⇔",
-  "\\rightarrow": "→", "\\to": "→", "\\leftarrow": "←", "\\mapsto": "↦",
+  "\\rightarrow": "→", "\\to": "→", "\\leftarrow": "←", "\\mapsto": "↦", "\\longrightarrow": "⟶", "\\longleftarrow": "⟵", "\\leftrightarrow": "↔", "\\rightleftharpoons": "⇌", "\\leftrightharpoons": "⇋", "\\uparrow": "↑", "\\downarrow": "↓",
   "\\forall": "∀", "\\exists": "∃",
   "\\perp": "⊥", "\\parallel": "∥", "\\triangle": "△", "\\angle": "∠",
   "\\pi": "π", "\\alpha": "α", "\\beta": "β", "\\gamma": "γ", "\\delta": "δ",
@@ -371,6 +371,32 @@ function renderLatexOffline(tex) {
             out += `<span class="m-vec">${renderLatexOffline(arg.content)}</span>`;
             i = arg.next;
             continue;
+          }
+        } else if (fullCmd === "\\xrightarrow" || fullCmd === "\\xleftarrow") {
+          const opt = takeBracketed(s, nextPos);
+          const bracePos = opt ? opt.next : nextPos;
+          const arg = takeBraced(s, bracePos);
+          if (arg) {
+            const arrowChar = fullCmd === "\\xrightarrow" ? "⟶" : "⟵";
+            const topHtml = arg.content ? `<span class="m-num" style="font-size:0.75em;border-bottom:none;padding:0 2px;">${renderLatexOffline(arg.content)}</span>` : "";
+            const botHtml = opt && opt.content ? `<span class="m-den" style="font-size:0.75em;padding:0 2px;">${renderLatexOffline(opt.content)}</span>` : "";
+            out += `<span class="m-frac" style="vertical-align:middle;margin:0 3px;">${topHtml}<span style="line-height:0.9;">${arrowChar}</span>${botHtml}</span>`;
+            i = arg.next;
+            continue;
+          }
+        } else if (fullCmd === "\\overset" || fullCmd === "\\underset") {
+          const first = takeBraced(s, nextPos);
+          if (first) {
+            const second = takeBraced(s, first.next);
+            if (second) {
+              if (fullCmd === "\\overset") {
+                out += `<span class="m-frac" style="vertical-align:middle;"><span class="m-num" style="font-size:0.72em;border-bottom:none;padding:0 1px;">${renderLatexOffline(first.content)}</span><span>${renderLatexOffline(second.content)}</span></span>`;
+              } else {
+                out += `<span class="m-frac" style="vertical-align:middle;"><span>${renderLatexOffline(second.content)}</span><span class="m-den" style="font-size:0.72em;padding:0 1px;">${renderLatexOffline(first.content)}</span></span>`;
+              }
+              i = second.next;
+              continue;
+            }
           }
         } else if (fullCmd === "\\mathbf" || fullCmd === "\\boldsymbol") {
           const arg = takeBraced(s, nextPos);
