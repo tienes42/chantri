@@ -1,3 +1,15 @@
+function unescapeHTML(str) {
+  if (str === null || str === undefined) return "";
+  return String(str)
+    .replace(/&amp;/g, "&")
+    .replace(/&lt;/g, "<")
+    .replace(/&gt;/g, ">")
+    .replace(/&quot;/g, '"')
+    .replace(/&#039;/g, "'")
+    .replace(/&#39;/g, "'")
+    .replace(/&apos;/g, "'");
+}
+
 /* =========================================================
    LESSON.JS — SÁCH HỌC VIỆN NỔI 2.5D & ĐỌC HIỂU CHUYÊN SÂU
    Dùng chung cho: Math, Physics, Chemistry và các môn khác
@@ -420,6 +432,8 @@ function renderLatexOffline(tex) {
 
     if (ch === "-") {
       out += "−";
+    } else if (ch === "'") {
+      out += "′";
     } else {
       out += escapeHTML(ch);
     }
@@ -429,7 +443,8 @@ function renderLatexOffline(tex) {
 }
 
 function renderLatexToken(tex, isDisplay) {
-  const cleanTex = String(tex).trim();
+  let cleanTex = unescapeHTML(String(tex).trim());
+  if (/&(?:amp|lt|gt|quot|#039|#39|apos);/.test(cleanTex)) cleanTex = unescapeHTML(cleanTex);
   const attrTex = escapeHTML(cleanTex);
   if (window.katex && typeof window.katex.renderToString === "function") {
     try {
@@ -446,9 +461,11 @@ function renderLatexToken(tex, isDisplay) {
 function upgradeKatex() {
   if (!window.katex || typeof window.katex.renderToString !== "function") return;
   document.querySelectorAll(".m-math[data-tex]").forEach((el) => {
-    const tex = el.getAttribute("data-tex");
+    let tex = el.getAttribute("data-tex");
     const isDisplay = el.getAttribute("data-display") === "1";
     if (!tex) return;
+    tex = unescapeHTML(tex);
+    if (/&(?:amp|lt|gt|quot|#039|#39|apos);/.test(tex)) tex = unescapeHTML(tex);
     try {
       el.outerHTML = window.katex.renderToString(tex, {
         throwOnError: false,
@@ -547,7 +564,7 @@ function formatRichText(rawValue) {
 
     if (/^#{2,4}\s+/.test(line)) {
       closeLists();
-      const titleText = formatInlineStyles(escapeHTML(line.replace(/^#{2,4}\s+/, "")));
+      const titleText = formatInlineStyles(line.replace(/^#{2,4}\s+/, ""));
       html += `<h3>${titleText}</h3>`;
       return;
     }
@@ -561,7 +578,7 @@ function formatRichText(rawValue) {
         html += "<ul>";
         inUl = true;
       }
-      const itemText = formatInlineStyles(escapeHTML(line.replace(/^[-*•+]\s+/, "")));
+      const itemText = formatInlineStyles(line.replace(/^[-*•+]\s+/, ""));
       html += `<li>${itemText}</li>`;
       return;
     }
@@ -575,13 +592,13 @@ function formatRichText(rawValue) {
         html += "<ol>";
         inOl = true;
       }
-      const itemText = formatInlineStyles(escapeHTML(line.replace(/^\d+[.)]\s+/, "")));
+      const itemText = formatInlineStyles(line.replace(/^\d+[.)]\s+/, ""));
       html += `<li>${itemText}</li>`;
       return;
     }
 
     closeLists();
-    html += `<p>${formatInlineStyles(escapeHTML(line))}</p>`;
+    html += `<p>${formatInlineStyles(line)}</p>`;
   });
 
   closeLists();
@@ -873,7 +890,7 @@ function renderRequirements(lesson) {
     return;
   }
   requirementsList.innerHTML = list
-    .map((item) => `<li>${formatInlineStyles(escapeHTML(item))}</li>`)
+    .map((item) => `<li>${formatInlineStyles(item)}</li>`)
     .join("");
   if (sgkRef) {
     sgkRef.textContent = "Theo Chương trình giáo dục phổ thông môn Toán 2018 (Thông tư 32/2018/TT-BGDĐT). Sau chủ đề này, em cần:";
