@@ -65,14 +65,30 @@ from database.database import SessionLocal, engine
 from models.lesson import Lesson
 from models.subject import Subject
 
-import upgrade_math_1_9
+from import_math_sgk import load_grade as _load_math_sgk_grade, to_row as _math_sgk_to_row
 import upgrade_math_10_12
 import upgrade_physics
 import upgrade_chemistry
 
 
+def _load_math_sgk_1_9():
+    items = []
+    for _g in range(1, 10):
+        try:
+            for _lesson in _load_math_sgk_grade(_g):
+                _row = _math_sgk_to_row(0, _g, _lesson)
+                _row.pop("subject_id", None)
+                items.append(_row)
+        except ModuleNotFoundError:
+            pass
+    return items
+
+
+MATH_1_9_LESSONS = _load_math_sgk_1_9()
+
+
 SUBJECT_MODULES = [
-    ("math", "Toán (Lớp 1–9)", upgrade_math_1_9.LESSONS),
+    ("math", "Toán (Lớp 1–9)", MATH_1_9_LESSONS),
     ("math", "Toán (Lớp 10–12)", upgrade_math_10_12.LESSONS),
     ("physics", "Vật lý (Lớp 6–12)", upgrade_physics.LESSONS),
     ("chemistry", "Hóa học (Lớp 6–12)", upgrade_chemistry.LESSONS),

@@ -64,6 +64,10 @@
   function render(container, quiz, opts) {
     opts = opts || {};
     var fmt = typeof opts.format === "function" ? opts.format : function (t) { return "<p>" + esc(t) + "</p>"; };
+    var fmtInline = function (t) {
+      if (window.HDLGMath && typeof window.HDLGMath.formatInline === "function") return window.HDLGMath.formatInline(t);
+      return esc(t);
+    };
     if (!container || !Array.isArray(quiz) || !quiz.length) return null;
 
     var passMark = opts.passMark || Math.ceil(quiz.length * 0.7);
@@ -182,7 +186,7 @@
       fb.className = "qz-feedback " + (ok ? "is-correct" : "is-wrong");
       fb.innerHTML = ok
         ? "✅ <b>Chính xác!</b> Em hãy so sánh cách làm của mình với lời giải bên dưới nhé."
-        : "❌ <b>Chưa đúng.</b> " + (correctText ? "Đáp án đúng: <b>" + esc(correctText) + "</b>. " : "") +
+        : "❌ <b>Chưa đúng.</b> " + (correctText ? "Đáp án đúng: <b>" + fmtInline(correctText) + "</b>. " : "") +
           "Đọc lời giải để biết mình sai ở đâu nhé.";
       if (extraHtml) fb.innerHTML += extraHtml;
 
@@ -202,7 +206,7 @@
         var b = document.createElement("button");
         b.type = "button";
         b.className = "answer-option qz-option";
-        b.innerHTML = '<span class="option-letter">' + LETTERS[i] + "</span><span>" + esc(opt) + "</span>";
+        b.innerHTML = '<span class="option-letter">' + LETTERS[i] + "</span><span>" + fmtInline(opt) + "</span>";
         b.addEventListener("click", function () {
           if (state.results[idx] !== undefined) return;
           var ok = i === Number(item.answer);
@@ -250,7 +254,8 @@
       statements.forEach(function (st, i) {
         var row = document.createElement("div");
         row.className = "qz-tf4-row";
-        row.innerHTML = '<div class="qz-tf4-text">' + esc(String.fromCharCode(97 + i)) + ") " + esc(st) + "</div>" +
+        var cleanSt = String(st || "").replace(/^[a-dA-D][.)]\s*/, "");
+        row.innerHTML = '<div class="qz-tf4-text">' + esc(String.fromCharCode(97 + i)) + ") " + fmtInline(cleanSt) + "</div>" +
           '<div class="qz-tf4-ctrl"><button type="button" class="qz-tf-btn sm" data-v="1">Đ</button>' +
           '<button type="button" class="qz-tf-btn sm" data-v="0">S</button></div>';
         row.querySelectorAll("button").forEach(function (b) {
@@ -295,7 +300,7 @@
       var wrap = document.createElement("div");
       wrap.className = "qz-short";
       wrap.innerHTML = '<input type="text" class="qz-input" inputmode="text" autocomplete="off" placeholder="Nhập đáp án của em">' +
-        (item.unit ? '<span class="qz-unit">' + esc(item.unit) + "</span>" : "") +
+        (item.unit ? '<span class="qz-unit">' + fmtInline(item.unit) + "</span>" : "") +
         '<button type="button" class="qz-btn qz-check">Kiểm tra</button>';
       var input = wrap.querySelector("input");
       var btn = wrap.querySelector("button");

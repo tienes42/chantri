@@ -9,7 +9,6 @@ from ._helpers import F, G, mcq, short, tf4
 GRADE = 6
 
 LESSONS = [
-    # ===================== CHƯƠNG I =====================
     {
         "topic": "l6-ch01-tap-hop-cac-so-tu-nhien",
         "title": "Tập hợp các số tự nhiên",
@@ -26,60 +25,55 @@ LESSONS = [
             "- **Tập hợp**: nhóm các đối tượng xác định (phần tử). Kí hiệu a ∈ A (a thuộc A), b ∉ A (b không thuộc A).\n"
             "- Hai cách mô tả: **liệt kê** A = {0; 1; 2; 3} hoặc **chỉ ra tính chất đặc trưng** A = {x ∈ ℕ | x < 4}.\n"
             "- ℕ = {0; 1; 2; 3; …}; ℕ* = {1; 2; 3; …} (số tự nhiên khác 0).\n"
-            "- **Luỹ thừa**: aⁿ = a · a · … · a (n thừa số a), a là cơ số, n là số mũ; a¹ = a; quy ước a⁰ = 1 (a ≠ 0)."
+            "- **Luỹ thừa**: $a^n$ = a · a · … · a (n thừa số a), a là cơ số, n là số mũ; $a^1$ = a; quy ước $a^0$ = 1 (a ≠ 0)."
         ),
         "theory": (
-            "### Bài 1. Tập hợp\n- Dùng dấu ngoặc nhọn { }, các phần tử cách nhau bởi dấu “;”. Mỗi phần tử chỉ viết một lần.\n"
-            "### Bài 2. Cách ghi số tự nhiên\n- Hệ thập phân dùng 10 chữ số 0–9; giá trị chữ số phụ thuộc vị trí: abc = a · 100 + b · 10 + c.\n"
+            "### Bài 1. Tập hợp\n"
+            "- Dùng dấu ngoặc nhọn { }, các phần tử cách nhau bởi dấu “;”. Mỗi phần tử chỉ viết một lần.\n"
+            "### Bài 2. Cách ghi số tự nhiên\n"
+            "- Hệ thập phân dùng 10 chữ số 0–9; giá trị chữ số phụ thuộc vị trí: abc = a · 100 + b · 10 + c.\n"
             "- Số La Mã: I = 1, V = 5, X = 10; XIV = 14, XXIX = 29.\n"
-            "### Bài 3. Thứ tự trong tập hợp các số tự nhiên\n- a < b thì trên tia số điểm a nằm bên trái điểm b; tính chất bắc cầu: a < b, b < c ⇒ a < c.\n"
-            "### Bài 4. Phép cộng và phép trừ số tự nhiên\n- a − b chỉ thực hiện được trong ℕ khi a ≥ b.\n"
-            "### Bài 5. Phép nhân và phép chia số tự nhiên\n- Phép chia có dư: a = b · q + r (0 ≤ r < b); r = 0 là phép chia hết.\n"
+            "### Bài 3. Thứ tự trong tập hợp các số tự nhiên\n"
+            "- a < b thì trên tia số điểm a nằm bên trái điểm b; tính chất bắc cầu: a < b, b < c ⇒ a < c.\n"
+            "### Bài 4. Phép cộng và phép trừ số tự nhiên\n"
+            "- a − b chỉ thực hiện được trong ℕ khi a ≥ b.\n"
+            "### Bài 5. Phép nhân và phép chia số tự nhiên\n"
+            "- Phép chia có dư: a = b · q + r (0 ≤ r < b); r = 0 là phép chia hết.\n"
             "### Luyện tập chung\n"
-            "### Bài 6. Luỹ thừa với số mũ tự nhiên\n- a² đọc “a bình phương”, a³ đọc “a lập phương”.\n"
-            "### Bài 7. Thứ tự thực hiện các phép tính\n- Luỹ thừa → nhân, chia → cộng, trừ; có ngoặc: ( ) → [ ] → { }.\n"
+            "### Bài 6. Luỹ thừa với số mũ tự nhiên\n"
+            "- $a^2$ đọc “a bình phương”, $a^3$ đọc “a lập phương”.\n"
+            "### Bài 7. Thứ tự thực hiện các phép tính\n"
+            "- Luỹ thừa → nhân, chia → cộng, trừ; có ngoặc: ( ) → [ ] → { }.\n"
             "### Luyện tập chung · Bài tập cuối chương I"
         ),
         "formulas": [
-            G("I. Tính chất các phép tính", F("Giao hoán", "a + b = b + a · a · b = b · a"),
-              F("Kết hợp", "(a + b) + c = a + (b + c) · (a · b) · c = a · (b · c)"),
-              F("Phân phối", "a · (b + c) = a · b + a · c · a · (b − c) = a · b − a · c"),
-              F("Chia có dư", "a = b · q + r, 0 ≤ r < b")),
-            G("II. Luỹ thừa", F("Định nghĩa", "aⁿ = a · a · … · a (n thừa số)"),
-              F("Nhân cùng cơ số", "aᵐ · aⁿ = aᵐ⁺ⁿ", "2³ · 2⁴ = 2⁷ = 128."),
-              F("Chia cùng cơ số", "aᵐ : aⁿ = aᵐ⁻ⁿ (a ≠ 0, m ≥ n)", "5⁶ : 5⁴ = 5² = 25."),
-              F("Quy ước", "a⁰ = 1 (a ≠ 0) · a¹ = a")),
+            G("I. Tính chất các phép tính", F("Giao hoán", "a + b = b + a · a · b = b · a"), F("Kết hợp", "(a + b) + c = a + (b + c) · (a · b) · c = a · (b · c)"), F("Phân phối", "a · (b + c) = a · b + a · c · a · (b − c) = a · b − a · c"), F("Chia có dư", "a = b · q + r, 0 ≤ r < b")),
+            G("II. Luỹ thừa", F("Định nghĩa", "$a^n$ = a · a · … · a (n thừa số)"), F("Nhân cùng cơ số", "$a^m$ · $a^n$ = $a^{m+n}$", "$2^3$ · $2^4$ = $2^7$ = 128."), F("Chia cùng cơ số", "$a^m$ : $a^n$ = $a^{m-n}$ (a ≠ 0, m ≥ n)", "$5^6$ : $5^4$ = $5^2$ = 25."), F("Quy ước", "$a^0$ = 1 (a ≠ 0) · $a^1$ = a")),
             G("III. Thứ tự thực hiện", F("Không ngoặc", "Luỹ thừa → × : → + −"), F("Có ngoặc", "( ) → [ ] → { }")),
         ],
-        "example": "Tính: 5 · 2³ − 18 : 3².",
-        "example_answer": "Luỹ thừa trước: 2³ = 8; 3² = 9.\nNhân, chia: 5 · 8 = 40; 18 : 9 = 2.\nTrừ: 40 − 2 = **38**.",
-        "real_life": "- Liệt kê tập hợp học sinh tham gia câu lạc bộ; số La Mã trên đồng hồ, thế kỉ.\n- Luỹ thừa mô tả sự tăng nhanh: vi khuẩn phân đôi sau mỗi giờ → sau 10 giờ gấp 2¹⁰ = 1024 lần.",
+        "example": "Tính: 5 · $2^3$ − 18 : $3^2$.",
+        "example_answer": (
+            "Luỹ thừa trước: $2^3$ = 8; $3^2$ = 9.\n"
+            "Nhân, chia: 5 · 8 = 40; 18 : 9 = 2.\n"
+            "Trừ: 40 − 2 = **38**."
+        ),
+        "real_life": (
+            "- Liệt kê tập hợp học sinh tham gia câu lạc bộ; số La Mã trên đồng hồ, thế kỉ.\n"
+            "- Luỹ thừa mô tả sự tăng nhanh: vi khuẩn phân đôi sau mỗi giờ → sau 10 giờ gấp $2^{10}$ = 1024 lần."
+        ),
         "quiz": [
             mcq("biet", "Cho A = {2; 4; 6; 8}. Khẳng định nào đúng?", ["3 ∈ A", "6 ∈ A", "8 ∉ A", "4 ∉ A"], 1, "6 là một phần tử của A → **6 ∈ A**."),
             mcq("biet", "Số La Mã XXIV có giá trị là:", ["26", "24", "16", "14"], 1, "XX = 20, IV = 4 → **24**."),
-            mcq("biet", "2⁵ bằng:", ["10", "25", "32", "7"], 2, "2⁵ = 2 · 2 · 2 · 2 · 2 = **32**.", note="Không lấy 2 · 5 = 10."),
-            mcq("biet", "Kết quả của 7⁸ : 7⁶ viết dưới dạng luỹ thừa là:", ["7²", "7¹⁴", "1²", "7⁴⁸"], 0, "aᵐ : aⁿ = aᵐ⁻ⁿ → **7²**."),
+            mcq("biet", "$2^5$ bằng:", ["10", "25", "32", "7"], 2, "$2^5$ = 2 · 2 · 2 · 2 · 2 = **32**.", note="Không lấy 2 · 5 = 10."),
+            mcq("biet", "Kết quả của $7^8$ : $7^6$ viết dưới dạng luỹ thừa là:", ["$7^2$", "$7^{14}$", "$1^2$", "$7^{48}$"], 0, "$a^m$ : $a^n$ = $a^{m-n}$ → **$7^2$**."),
             mcq("hieu", "Tập hợp B = {x ∈ ℕ | 3 ≤ x < 7} viết bằng cách liệt kê là:", ["{3; 4; 5; 6; 7}", "{3; 4; 5; 6}", "{4; 5; 6}", "{4; 5; 6; 7}"], 1, "x nhận 3, 4, 5, 6 (không lấy 7) → **{3; 4; 5; 6}**."),
-            mcq("hieu", "Giá trị của biểu thức 180 − 4 · 5² là:", ["80", "4400", "155", "3900"], 0,
-                "Luỹ thừa trước: 5² = 25; nhân: 4 · 25 = 100; trừ: 180 − 100 = **80**.", note="Tính (180 − 4) · 25 = 4400 là sai thứ tự."),
-            tf4("hieu", "Cho các phép tính với số tự nhiên. Mỗi khẳng định sau đúng hay sai?",
-                ["a) 3⁴ = 81", "b) 2³ · 2² = 2⁶", "c) 25 · 37 · 4 = 3700", "d) 10⁰ = 0"],
-                [True, False, True, False],
-                "a) 3⁴ = 3 · 3 · 3 · 3 = 81 → Đúng.\nb) 2³ · 2² = 2³⁺² = 2⁵ (cộng số mũ, không nhân) → Sai.\nc) (25 · 4) · 37 = 100 · 37 = 3700 → Đúng.\nd) Quy ước a⁰ = 1 nên 10⁰ = 1 → Sai."),
-            tf4("hieu", "Cho phép chia 47 cho 5. Mỗi khẳng định sau đúng hay sai?",
-                ["a) Thương là 9", "b) Số dư là 3", "c) 47 = 5 · 9 + 2", "d) Số dư có thể bằng 5"],
-                [True, False, True, False],
-                "47 = 5 · 9 + 2 nên thương 9, dư 2.\na) Đúng. b) Sai (dư 2). c) Đúng. d) Sai vì số dư luôn nhỏ hơn số chia (0 ≤ r < 5)."),
-            mcq("vandung", "Một trường có 1245 học sinh đi tham quan bằng xe 45 chỗ (mỗi học sinh một chỗ). Cần ít nhất bao nhiêu xe?", ["27", "28", "29", "26"], 1,
-                "1245 = 45 · 27 + 30 → 27 xe chở được 1215 em, còn 30 em cần thêm 1 xe ⇒ **28 xe**.", note="Chia có dư trong bài toán “ít nhất” phải lấy thương + 1."),
-            short("vandung", "Một loại vi khuẩn cứ sau 1 giờ thì số lượng tăng gấp đôi. Ban đầu có 1 con, sau 8 giờ có bao nhiêu con?", ["256"],
-                  "Sau n giờ có 2ⁿ con. Sau 8 giờ: 2⁸ = **256** con.", unit="con"),
+            mcq("hieu", "Giá trị của biểu thức 180 − 4 · $5^2$ là:", ["80", "4400", "155", "3900"], 0, "Luỹ thừa trước: $5^2$ = 25; nhân: 4 · 25 = 100; trừ: 180 − 100 = **80**.", note="Tính (180 − 4) · 25 = 4400 là sai thứ tự."),
+            tf4("hieu", "Cho các phép tính với số tự nhiên. Mỗi khẳng định sau đúng hay sai?", ["a) $3^4$ = 81", "b) $2^3$ · $2^2$ = $2^6$", "c) 25 · 37 · 4 = 3700", "d) $10^0$ = 0"], [True, False, True, False], "a) $3^4$ = 3 · 3 · 3 · 3 = 81 → Đúng.\nb) $2^3$ · $2^2$ = $2^{3+2}$ = $2^5$ (cộng số mũ, không nhân) → Sai.\nc) (25 · 4) · 37 = 100 · 37 = 3700 → Đúng.\nd) Quy ước $a^0$ = 1 nên $10^0$ = 1 → Sai."),
+            tf4("hieu", "Cho phép chia 47 cho 5. Mỗi khẳng định sau đúng hay sai?", ["a) Thương là 9", "b) Số dư là 3", "c) 47 = 5 · 9 + 2", "d) Số dư có thể bằng 5"], [True, False, True, False], "47 = 5 · 9 + 2 nên thương 9, dư 2.\na) Đúng. b) Sai (dư 2). c) Đúng. d) Sai vì số dư luôn nhỏ hơn số chia (0 ≤ r < 5)."),
+            mcq("vandung", "Một trường có 1245 học sinh đi tham quan bằng xe 45 chỗ (mỗi học sinh một chỗ). Cần ít nhất bao nhiêu xe?", ["27", "28", "29", "26"], 1, "1245 = 45 · 27 + 30 → 27 xe chở được 1215 em, còn 30 em cần thêm 1 xe ⇒ **28 xe**.", note="Chia có dư trong bài toán “ít nhất” phải lấy thương + 1."),
+            short("vandung", "Một loại vi khuẩn cứ sau 1 giờ thì số lượng tăng gấp đôi. Ban đầu có 1 con, sau 8 giờ có bao nhiêu con?", ["256"], "Sau n giờ có $2^n$ con. Sau 8 giờ: $2^8$ = **256** con.", unit="con"),
         ],
     },
-]
-
-LESSONS += [
-    # ===================== CHƯƠNG II =====================
     {
         "topic": "l6-ch02-tinh-chia-het",
         "title": "Tính chia hết trong tập hợp các số tự nhiên",
@@ -99,47 +93,44 @@ LESSONS += [
             "- a, b **nguyên tố cùng nhau** nếu ƯCLN(a, b) = 1."
         ),
         "theory": (
-            "### Bài 8. Quan hệ chia hết và tính chất\n- Nếu a ⋮ m và b ⋮ m thì (a + b) ⋮ m; nếu a ⋮ m và b không chia hết cho m thì (a + b) không chia hết cho m.\n"
-            "### Bài 9. Dấu hiệu chia hết\n- Cho 2: tận cùng 0, 2, 4, 6, 8. Cho 5: tận cùng 0, 5. Cho 9 (cho 3): tổng các chữ số chia hết cho 9 (cho 3).\n"
-            "### Bài 10. Số nguyên tố\n- Phân tích ra thừa số nguyên tố bằng sơ đồ cây hoặc chia cột: 120 = 2³ · 3 · 5.\n"
+            "### Bài 8. Quan hệ chia hết và tính chất\n"
+            "- Nếu a ⋮ m và b ⋮ m thì (a + b) ⋮ m; nếu a ⋮ m và b không chia hết cho m thì (a + b) không chia hết cho m.\n"
+            "### Bài 9. Dấu hiệu chia hết\n"
+            "- Cho 2: tận cùng 0, 2, 4, 6, 8. Cho 5: tận cùng 0, 5. Cho 9 (cho 3): tổng các chữ số chia hết cho 9 (cho 3).\n"
+            "### Bài 10. Số nguyên tố\n"
+            "- Phân tích ra thừa số nguyên tố bằng sơ đồ cây hoặc chia cột: 120 = $2^3$ · 3 · 5.\n"
             "### Luyện tập chung\n"
-            "### Bài 11. Ước chung. Ước chung lớn nhất\n- Tìm ƯCLN: phân tích ra thừa số nguyên tố → chọn thừa số **chung** → lấy số mũ **nhỏ nhất** → nhân.\n- ƯC(a, b) = Ư(ƯCLN(a, b)).\n"
-            "### Bài 12. Bội chung. Bội chung nhỏ nhất\n- Tìm BCNN: chọn thừa số **chung và riêng** → lấy số mũ **lớn nhất** → nhân. BC(a, b) = B(BCNN(a, b)).\n"
+            "### Bài 11. Ước chung. Ước chung lớn nhất\n"
+            "- Tìm ƯCLN: phân tích ra thừa số nguyên tố → chọn thừa số **chung** → lấy số mũ **nhỏ nhất** → nhân.\n"
+            "- ƯC(a, b) = Ư(ƯCLN(a, b)).\n"
+            "### Bài 12. Bội chung. Bội chung nhỏ nhất\n"
+            "- Tìm BCNN: chọn thừa số **chung và riêng** → lấy số mũ **lớn nhất** → nhân. BC(a, b) = B(BCNN(a, b)).\n"
             "### Luyện tập chung · Bài tập cuối chương II"
         ),
         "formulas": [
-            G("I. Dấu hiệu chia hết", F("Cho 2", "Chữ số tận cùng ∈ {0; 2; 4; 6; 8}"), F("Cho 5", "Chữ số tận cùng ∈ {0; 5}"),
-              F("Cho 3", "Tổng các chữ số ⋮ 3"), F("Cho 9", "Tổng các chữ số ⋮ 9")),
-            G("II. ƯCLN – BCNN", F("ƯCLN", "Thừa số chung, số mũ nhỏ nhất", "24 = 2³·3; 36 = 2²·3² ⇒ ƯCLN = 2²·3 = 12."),
-              F("BCNN", "Thừa số chung và riêng, số mũ lớn nhất", "BCNN(24, 36) = 2³·3² = 72."),
-              F("Liên hệ", "ƯCLN(a, b) · BCNN(a, b) = a · b", "12 · 72 = 864 = 24 · 36.")),
+            G("I. Dấu hiệu chia hết", F("Cho 2", "Chữ số tận cùng ∈ {0; 2; 4; 6; 8}"), F("Cho 5", "Chữ số tận cùng ∈ {0; 5}"), F("Cho 3", "Tổng các chữ số ⋮ 3"), F("Cho 9", "Tổng các chữ số ⋮ 9")),
+            G("II. ƯCLN – BCNN", F("ƯCLN", "Thừa số chung, số mũ nhỏ nhất", "24 = $2^3$·3; 36 = $2^2$·$3^2$ ⇒ ƯCLN = $2^2$·3 = 12."), F("BCNN", "Thừa số chung và riêng, số mũ lớn nhất", "BCNN(24, 36) = $2^3$·$3^2$ = 72."), F("Liên hệ", "ƯCLN(a, b) · BCNN(a, b) = a · b", "12 · 72 = 864 = 24 · 36.")),
             G("III. Ứng dụng phân số", F("Rút gọn tối giản", "Chia tử và mẫu cho ƯCLN"), F("Mẫu chung nhỏ nhất", "BCNN của các mẫu")),
         ],
         "example": "Tìm ƯCLN(48, 60) và BCNN(48, 60).",
-        "example_answer": "48 = 2⁴ · 3; 60 = 2² · 3 · 5.\nƯCLN = 2² · 3 = **12**; BCNN = 2⁴ · 3 · 5 = **240**. Kiểm tra: 12 · 240 = 2880 = 48 · 60 ✔.",
+        "example_answer": (
+            "48 = $2^4$ · 3; 60 = $2^2$ · 3 · 5.\n"
+            "ƯCLN = $2^2$ · 3 = **12**; BCNN = $2^4$ · 3 · 5 = **240**. Kiểm tra: 12 · 240 = 2880 = 48 · 60 ✔."
+        ),
         "real_life": "- Chia đều phần thưởng (ƯCLN); tính thời điểm hai sự kiện lặp lại trùng nhau, xếp hàng vừa đủ (BCNN).",
         "quiz": [
             mcq("biet", "Số nào chia hết cho cả 2 và 5?", ["125", "250", "252", "205"], 1, "Chia hết cho cả 2 và 5 ⇔ tận cùng là 0 → **250**."),
             mcq("biet", "Số nào là số nguyên tố?", ["1", "9", "17", "21"], 2, "**17** chỉ có hai ước 1 và 17.", note="1 không phải số nguyên tố; 9 = 3·3; 21 = 3·7."),
-            mcq("biet", "Phân tích 36 ra thừa số nguyên tố được:", ["4 · 9", "2² · 3²", "6²", "2 · 18"], 1, "36 = 2 · 2 · 3 · 3 = **2² · 3²** (các thừa số đều nguyên tố)."),
+            mcq("biet", "Phân tích 36 ra thừa số nguyên tố được:", ["4 · 9", "$2^2$ · $3^2$", "$6^2$", "2 · 18"], 1, "36 = 2 · 2 · 3 · 3 = **$2^2$ · $3^2$** (các thừa số đều nguyên tố)."),
             mcq("biet", "Số nào chia hết cho 9?", ["4518", "3125", "2024", "1001"], 0, "4 + 5 + 1 + 8 = 18 ⋮ 9 → **4518**."),
-            mcq("hieu", "ƯCLN(24, 36) bằng:", ["6", "12", "72", "4"], 1, "24 = 2³·3; 36 = 2²·3² ⇒ ƯCLN = 2²·3 = **12**."),
-            mcq("hieu", "BCNN(12, 18) bằng:", ["6", "36", "216", "72"], 1, "12 = 2²·3; 18 = 2·3² ⇒ BCNN = 2²·3² = **36**."),
-            tf4("hieu", "Cho số n = 2345. Mỗi khẳng định sau đúng hay sai?",
-                ["a) n chia hết cho 2", "b) n chia hết cho 5", "c) n chia hết cho 3", "d) n là hợp số"],
-                [False, True, False, True],
-                "a) Tận cùng 5 (lẻ) → không chia hết cho 2 → Sai.\nb) Tận cùng 5 → chia hết cho 5 → Đúng.\nc) Tổng chữ số 2 + 3 + 4 + 5 = 14 không chia hết cho 3 → Sai.\nd) n có ước 5 (khác 1 và n) → hợp số → Đúng."),
-            tf4("hieu", "Xét hai số 18 và 30. Mỗi khẳng định sau đúng hay sai?",
-                ["a) ƯCLN(18, 30) = 6", "b) BCNN(18, 30) = 90", "c) 18 và 30 là hai số nguyên tố cùng nhau", "d) ƯC(18, 30) có đúng 4 phần tử"],
-                [True, True, False, True],
-                "18 = 2·3², 30 = 2·3·5.\na) ƯCLN = 2·3 = 6 → Đúng. b) BCNN = 2·3²·5 = 90 → Đúng.\nc) ƯCLN = 6 ≠ 1 → Sai. d) ƯC = Ư(6) = {1; 2; 3; 6} → 4 phần tử → Đúng."),
-            mcq("vandung", "Cô giáo có 48 quyển vở và 60 bút bi, muốn chia đều thành các phần thưởng như nhau (mỗi phần có cả vở và bút). Số phần thưởng nhiều nhất là:", ["6", "12", "24", "240"], 1,
-                "Số phần thưởng là ước chung lớn nhất: ƯCLN(48, 60) = **12** (mỗi phần 4 vở, 5 bút)."),
-            short("vandung", "Hai xe buýt cùng xuất phát lúc 6 giờ sáng. Xe thứ nhất cứ 10 phút chạy một chuyến, xe thứ hai cứ 15 phút một chuyến. Sau ít nhất bao nhiêu phút hai xe lại cùng xuất phát?", ["30"],
-                  "Thời gian cần tìm là BCNN(10, 15) = 2 · 3 · 5 = **30** phút (lúc 6 giờ 30 phút).", unit="phút"),
+            mcq("hieu", "ƯCLN(24, 36) bằng:", ["6", "12", "72", "4"], 1, "24 = $2^3$·3; 36 = $2^2$·$3^2$ ⇒ ƯCLN = $2^2$·3 = **12**."),
+            mcq("hieu", "BCNN(12, 18) bằng:", ["6", "36", "216", "72"], 1, "12 = $2^2$·3; 18 = 2·$3^2$ ⇒ BCNN = $2^2$·$3^2$ = **36**."),
+            tf4("hieu", "Cho số n = 2345. Mỗi khẳng định sau đúng hay sai?", ["a) n chia hết cho 2", "b) n chia hết cho 5", "c) n chia hết cho 3", "d) n là hợp số"], [False, True, False, True], "a) Tận cùng 5 (lẻ) → không chia hết cho 2 → Sai.\nb) Tận cùng 5 → chia hết cho 5 → Đúng.\nc) Tổng chữ số 2 + 3 + 4 + 5 = 14 không chia hết cho 3 → Sai.\nd) n có ước 5 (khác 1 và n) → hợp số → Đúng."),
+            tf4("hieu", "Xét hai số 18 và 30. Mỗi khẳng định sau đúng hay sai?", ["a) ƯCLN(18, 30) = 6", "b) BCNN(18, 30) = 90", "c) 18 và 30 là hai số nguyên tố cùng nhau", "d) ƯC(18, 30) có đúng 4 phần tử"], [True, True, False, True], "18 = 2·$3^2$, 30 = 2·3·5.\na) ƯCLN = 2·3 = 6 → Đúng. b) BCNN = 2·$3^2$·5 = 90 → Đúng.\nc) ƯCLN = 6 ≠ 1 → Sai. d) ƯC = Ư(6) = {1; 2; 3; 6} → 4 phần tử → Đúng."),
+            mcq("vandung", "Cô giáo có 48 quyển vở và 60 bút bi, muốn chia đều thành các phần thưởng như nhau (mỗi phần có cả vở và bút). Số phần thưởng nhiều nhất là:", ["6", "12", "24", "240"], 1, "Số phần thưởng là ước chung lớn nhất: ƯCLN(48, 60) = **12** (mỗi phần 4 vở, 5 bút)."),
+            short("vandung", "Hai xe buýt cùng xuất phát lúc 6 giờ sáng. Xe thứ nhất cứ 10 phút chạy một chuyến, xe thứ hai cứ 15 phút một chuyến. Sau ít nhất bao nhiêu phút hai xe lại cùng xuất phát?", ["30"], "Thời gian cần tìm là BCNN(10, 15) = 2 · 3 · 5 = **30** phút (lúc 6 giờ 30 phút).", unit="phút"),
         ],
     },
-    # ===================== CHƯƠNG III =====================
     {
         "topic": "l6-ch03-so-nguyen",
         "title": "Số nguyên",
@@ -159,47 +150,41 @@ LESSONS += [
             "- a ⋮ b (b ≠ 0) trong ℤ nếu a = b · q với q ∈ ℤ; nếu a là bội của b thì −a cũng là bội của b."
         ),
         "theory": (
-            "### Bài 13. Tập hợp các số nguyên\n- −7 < −3 < 0 < 2.\n"
-            "### Bài 14. Phép cộng và phép trừ số nguyên\n- Cộng hai số **cùng dấu**: cộng phần số tự nhiên, giữ dấu chung: (−7) + (−5) = −12.\n"
+            "### Bài 13. Tập hợp các số nguyên\n"
+            "- −7 < −3 < 0 < 2.\n"
+            "### Bài 14. Phép cộng và phép trừ số nguyên\n"
+            "- Cộng hai số **cùng dấu**: cộng phần số tự nhiên, giữ dấu chung: (−7) + (−5) = −12.\n"
             "- Cộng hai số **khác dấu**: lấy phần số tự nhiên lớn trừ nhỏ, lấy dấu của số có phần số tự nhiên lớn hơn: (−9) + 4 = −5.\n"
             "- **Trừ**: a − b = a + (−b): 5 − 12 = 5 + (−12) = −7.\n"
-            "### Bài 15. Quy tắc dấu ngoặc\n- Bỏ ngoặc có dấu “+” đứng trước: giữ nguyên dấu; có dấu “−” đứng trước: đổi dấu tất cả các số hạng trong ngoặc.\n"
+            "### Bài 15. Quy tắc dấu ngoặc\n"
+            "- Bỏ ngoặc có dấu “+” đứng trước: giữ nguyên dấu; có dấu “−” đứng trước: đổi dấu tất cả các số hạng trong ngoặc.\n"
             "### Luyện tập chung\n"
-            "### Bài 16. Phép nhân số nguyên\n- Cùng dấu → tích dương; khác dấu → tích âm: (−3) · (−4) = 12; (−6) · 5 = −30.\n"
-            "### Bài 17. Phép chia hết. Ước và bội của một số nguyên\n- (−20) : 5 = −4; Ư(6) = {±1; ±2; ±3; ±6}.\n"
+            "### Bài 16. Phép nhân số nguyên\n"
+            "- Cùng dấu → tích dương; khác dấu → tích âm: (−3) · (−4) = 12; (−6) · 5 = −30.\n"
+            "### Bài 17. Phép chia hết. Ước và bội của một số nguyên\n"
+            "- (−20) : 5 = −4; Ư(6) = {±1; ±2; ±3; ±6}.\n"
             "### Luyện tập chung · Bài tập cuối chương III"
         ),
         "formulas": [
-            G("I. Cộng – trừ", F("Số đối", "a + (−a) = 0"), F("Phép trừ", "a − b = a + (−b)"),
-              F("Quy tắc dấu ngoặc", "−(a − b + c) = −a + b − c · +(a − b) = a − b")),
-            G("II. Nhân – chia", F("Quy tắc dấu", "(+)·(+) = (+) · (−)·(−) = (+) · (+)·(−) = (−)"),
-              F("Tính chất", "a · (b + c) = a · b + a · c (trong ℤ)"), F("Luỹ thừa số âm", "(−a)ⁿ dương nếu n chẵn, âm nếu n lẻ", "(−2)³ = −8; (−2)⁴ = 16.")),
+            G("I. Cộng – trừ", F("Số đối", "a + (−a) = 0"), F("Phép trừ", "a − b = a + (−b)"), F("Quy tắc dấu ngoặc", "−(a − b + c) = −a + b − c · +(a − b) = a − b")),
+            G("II. Nhân – chia", F("Quy tắc dấu", "(+)·(+) = (+) · (−)·(−) = (+) · (+)·(−) = (−)"), F("Tính chất", "a · (b + c) = a · b + a · c (trong ℤ)"), F("Luỹ thừa số âm", "$(−a)^{n}$ dương nếu n chẵn, âm nếu n lẻ", "$(−2)^{3}$ = −8; $(−2)^{4}$ = 16.")),
         ],
         "example": "Tính hợp lí: (−37) + 54 + (−63) + 46.",
         "example_answer": "[(−37) + (−63)] + (54 + 46) = (−100) + 100 = **0**.",
         "real_life": "- Nhiệt độ dưới 0 °C, độ sâu dưới mực nước biển, lãi (+) / lỗ (−), năm trước Công nguyên.",
         "quiz": [
-            mcq("biet", "Số đối của −8 là:", ["−8", "8", "0", "1/8"], 1, "Số đối của −8 là **8** vì (−8) + 8 = 0."),
+            mcq("biet", "Số đối của −8 là:", ["−8", "8", "0", "$\\frac{1}{8}$"], 1, "Số đối của −8 là **8** vì (−8) + 8 = 0."),
             mcq("biet", "Sắp xếp nào đúng?", ["−5 < −7 < 0", "−7 < −5 < 0", "0 < −5 < −7", "−5 < 0 < −7"], 1, "Trên trục số −7 nằm bên trái −5 → **−7 < −5 < 0**."),
             mcq("biet", "(−12) + (−8) = ?", ["−20", "20", "−4", "4"], 0, "Cùng dấu âm: 12 + 8 = 20, giữ dấu “−” → **−20**."),
             mcq("biet", "(−6) · (−7) = ?", ["−42", "42", "−13", "13"], 1, "Hai số cùng dấu → tích dương: **42**."),
             mcq("hieu", "15 − (−9) = ?", ["6", "24", "−24", "−6"], 1, "15 − (−9) = 15 + 9 = **24**.", note="Trừ số âm là cộng với số đối của nó."),
             mcq("hieu", "Bỏ dấu ngoặc rồi tính: 25 − (15 − 40) = ?", ["−30", "50", "0", "80"], 1, "25 − 15 + 40 = **50**."),
-            tf4("hieu", "Mỗi khẳng định sau về số nguyên đúng hay sai?",
-                ["a) −5 < −2", "b) (−3) · (−5) = −15", "c) (−8) + 8 = 0", "d) Số 0 là số nguyên dương"],
-                [True, False, True, False],
-                "a) −5 nằm bên trái −2 → Đúng.\nb) Cùng dấu → tích dương 15 → Sai.\nc) Tổng hai số đối bằng 0 → Đúng.\nd) 0 không âm, không dương → Sai."),
-            tf4("hieu", "Mỗi khẳng định sau đúng hay sai?",
-                ["a) −(a − b + c) = −a + b − c", "b) (−2)³ = −8", "c) (−2)⁴ = −16", "d) Ước của 6 trong ℤ chỉ gồm 1; 2; 3; 6"],
-                [True, True, False, False],
-                "a) Dấu “−” trước ngoặc → đổi dấu mọi số hạng → Đúng.\nb) Số mũ lẻ → âm: −8 → Đúng.\nc) Số mũ chẵn → dương: 16 → Sai.\nd) Trong ℤ, Ư(6) = {±1; ±2; ±3; ±6} → Sai."),
-            mcq("vandung", "Nhiệt độ buổi sáng ở Sa Pa là −3 °C, đến trưa tăng thêm 8 °C, đến tối giảm 6 °C so với buổi trưa. Nhiệt độ buổi tối là:", ["−1 °C", "1 °C", "−5 °C", "11 °C"], 0,
-                "(−3) + 8 − 6 = 5 − 6 = **−1 °C**."),
-            short("vandung", "Một tàu ngầm đang ở độ cao −120 m (so với mực nước biển). Tàu nổi lên 45 m rồi lặn xuống thêm 30 m. Độ cao mới của tàu là bao nhiêu mét?", ["-105", "−105"],
-                  "(−120) + 45 + (−30) = −75 − 30 = **−105** (m), tức là ở độ sâu 105 m dưới mực nước biển.", unit="m"),
+            tf4("hieu", "Mỗi khẳng định sau về số nguyên đúng hay sai?", ["a) −5 < −2", "b) (−3) · (−5) = −15", "c) (−8) + 8 = 0", "d) Số 0 là số nguyên dương"], [True, False, True, False], "a) −5 nằm bên trái −2 → Đúng.\nb) Cùng dấu → tích dương 15 → Sai.\nc) Tổng hai số đối bằng 0 → Đúng.\nd) 0 không âm, không dương → Sai."),
+            tf4("hieu", "Mỗi khẳng định sau đúng hay sai?", ["a) −(a − b + c) = −a + b − c", "b) $(−2)^{3}$ = −8", "c) $(−2)^{4}$ = −16", "d) Ước của 6 trong ℤ chỉ gồm 1; 2; 3; 6"], [True, True, False, False], "a) Dấu “−” trước ngoặc → đổi dấu mọi số hạng → Đúng.\nb) Số mũ lẻ → âm: −8 → Đúng.\nc) Số mũ chẵn → dương: 16 → Sai.\nd) Trong ℤ, Ư(6) = {±1; ±2; ±3; ±6} → Sai."),
+            mcq("vandung", "Nhiệt độ buổi sáng ở Sa Pa là −3 °C, đến trưa tăng thêm 8 °C, đến tối giảm 6 °C so với buổi trưa. Nhiệt độ buổi tối là:", ["−1 °C", "1 °C", "−5 °C", "11 °C"], 0, "(−3) + 8 − 6 = 5 − 6 = **−1 °C**."),
+            short("vandung", "Một tàu ngầm đang ở độ cao −120 m (so với mực nước biển). Tàu nổi lên 45 m rồi lặn xuống thêm 30 m. Độ cao mới của tàu là bao nhiêu mét?", ["-105", "−105"], "(−120) + 45 + (−30) = −75 − 30 = **−105** (m), tức là ở độ sâu 105 m dưới mực nước biển.", unit="m"),
         ],
     },
-    # ===================== CHƯƠNG IV =====================
     {
         "topic": "l6-ch04-hinh-phang-trong-thuc-tien",
         "title": "Một số hình phẳng trong thực tiễn",
@@ -218,17 +203,15 @@ LESSONS += [
             "- **Hình chữ nhật**: 4 góc vuông, các cạnh đối bằng nhau, hai đường chéo bằng nhau. **Hình thoi**: 4 cạnh bằng nhau, hai đường chéo vuông góc. **Hình bình hành**: các cạnh đối song song và bằng nhau, hai đường chéo cắt nhau tại trung điểm mỗi đường. **Hình thang cân**: hai đáy song song, hai cạnh bên bằng nhau, hai đường chéo bằng nhau, hai góc kề một đáy bằng nhau."
         ),
         "theory": (
-            "### Bài 18. Hình tam giác đều. Hình vuông. Hình lục giác đều\n- Vẽ tam giác đều cạnh 3 cm bằng compa; vẽ hình vuông bằng ê-ke.\n"
+            "### Bài 18. Hình tam giác đều. Hình vuông. Hình lục giác đều\n"
+            "- Vẽ tam giác đều cạnh 3 cm bằng compa; vẽ hình vuông bằng ê-ke.\n"
             "### Bài 19. Hình chữ nhật. Hình thoi. Hình bình hành. Hình thang cân\n"
             "### Bài 20. Chu vi và diện tích của một số tứ giác đã học\n"
             "### Luyện tập chung · Bài tập cuối chương IV"
         ),
         "formulas": [
-            G("I. Chu vi", F("Hình vuông cạnh a", "C = 4a"), F("Hình chữ nhật a, b", "C = 2(a + b)"),
-              F("Hình thoi cạnh a", "C = 4a"), F("Hình bình hành a, b", "C = 2(a + b)")),
-            G("II. Diện tích", F("Hình vuông", "S = a²"), F("Hình chữ nhật", "S = a · b"),
-              F("Hình thoi (hai đường chéo m, n)", "S = (m · n) : 2"), F("Hình bình hành (đáy a, chiều cao h)", "S = a · h"),
-              F("Hình thang (đáy a, b; cao h)", "S = (a + b) · h : 2")),
+            G("I. Chu vi", F("Hình vuông cạnh a", "C = 4a"), F("Hình chữ nhật a, b", "C = 2(a + b)"), F("Hình thoi cạnh a", "C = 4a"), F("Hình bình hành a, b", "C = 2(a + b)")),
+            G("II. Diện tích", F("Hình vuông", "S = $a^2$"), F("Hình chữ nhật", "S = a · b"), F("Hình thoi (hai đường chéo m, n)", "S = (m · n) : 2"), F("Hình bình hành (đáy a, chiều cao h)", "S = a · h"), F("Hình thang (đáy a, b; cao h)", "S = (a + b) · h : 2")),
         ],
         "example": "Một mảnh đất hình thang cân có hai đáy 30 m và 20 m, chiều cao 12 m. Tính diện tích và chi phí trồng cỏ nếu 1 m² hết 50 000 đồng.",
         "example_answer": "S = (30 + 20) · 12 : 2 = **300 m²**. Chi phí: 300 · 50 000 = **15 000 000 đồng**.",
@@ -240,25 +223,12 @@ LESSONS += [
             mcq("biet", "Lục giác đều có bao nhiêu cạnh bằng nhau?", ["4", "5", "6", "8"], 2, "Lục giác đều có **6** cạnh bằng nhau."),
             mcq("hieu", "Hình thoi có hai đường chéo dài 10 cm và 6 cm. Diện tích là:", ["60 cm²", "30 cm²", "16 cm²", "32 cm²"], 1, "S = 10 · 6 : 2 = **30 cm²**."),
             mcq("hieu", "Hình chữ nhật có chu vi 30 m, chiều dài 9 m. Diện tích là:", ["54 m²", "270 m²", "81 m²", "42 m²"], 0, "Nửa chu vi 15 m ⇒ chiều rộng 6 m; S = 9 · 6 = **54 m²**."),
-            tf4("hieu", "Mỗi khẳng định sau về các tứ giác đúng hay sai?",
-                ["a) Hình thoi có hai đường chéo vuông góc", "b) Hình bình hành luôn có hai đường chéo bằng nhau", "c) Hình thang cân có hai đường chéo bằng nhau", "d) Hình chữ nhật luôn có bốn cạnh bằng nhau"],
-                [True, False, True, False],
-                "a) Đúng. b) Sai — chỉ khi là hình chữ nhật. c) Đúng. d) Sai — chỉ khi là hình vuông."),
-            tf4("hieu", "Tính diện tích, mỗi khẳng định sau đúng hay sai?",
-                ["a) Hình thoi có hai đường chéo 6 cm và 8 cm có diện tích 24 cm²", "b) Hình bình hành đáy 10 cm, chiều cao 4 cm có diện tích 40 cm²",
-                 "c) Hình thang có hai đáy 5 cm và 9 cm, chiều cao 4 cm có diện tích 56 cm²", "d) Hình vuông có chu vi 20 cm thì diện tích là 20 cm²"],
-                [True, True, False, False],
-                "a) 6 · 8 : 2 = 24 → Đúng. b) 10 · 4 = 40 → Đúng.\nc) (5 + 9) · 4 : 2 = 28 cm² (quên chia 2 mới ra 56) → Sai.\nd) Cạnh 5 cm ⇒ S = 25 cm² → Sai."),
-            mcq("vandung", "Một khu vườn hình chữ nhật dài 25 m, rộng 16 m. Người ta làm một lối đi hình bình hành có đáy 2 m (đo theo chiều dài) và chiều cao bằng chiều rộng vườn. Diện tích phần còn lại để trồng rau là:", ["368 m²", "400 m²", "32 m²", "350 m²"], 0,
-                "S vườn = 25 · 16 = 400 m²; S lối đi = 2 · 16 = 32 m². Phần trồng rau: 400 − 32 = **368 m²**."),
-            short("vandung", "Một khung trang trí hình lục giác đều cạnh 15 cm được uốn từ một sợi dây thép. Cần bao nhiêu xăng-ti-mét dây (không tính mối nối)?", ["90"],
-                  "Chu vi lục giác đều: 6 · 15 = **90 cm**.", unit="cm"),
+            tf4("hieu", "Mỗi khẳng định sau về các tứ giác đúng hay sai?", ["a) Hình thoi có hai đường chéo vuông góc", "b) Hình bình hành luôn có hai đường chéo bằng nhau", "c) Hình thang cân có hai đường chéo bằng nhau", "d) Hình chữ nhật luôn có bốn cạnh bằng nhau"], [True, False, True, False], "a) Đúng. b) Sai — chỉ khi là hình chữ nhật. c) Đúng. d) Sai — chỉ khi là hình vuông."),
+            tf4("hieu", "Tính diện tích, mỗi khẳng định sau đúng hay sai?", ["a) Hình thoi có hai đường chéo 6 cm và 8 cm có diện tích 24 cm²", "b) Hình bình hành đáy 10 cm, chiều cao 4 cm có diện tích 40 cm²", "c) Hình thang có hai đáy 5 cm và 9 cm, chiều cao 4 cm có diện tích 56 cm²", "d) Hình vuông có chu vi 20 cm thì diện tích là 20 cm²"], [True, True, False, False], "a) 6 · 8 : 2 = 24 → Đúng. b) 10 · 4 = 40 → Đúng.\nc) (5 + 9) · 4 : 2 = 28 cm² (quên chia 2 mới ra 56) → Sai.\nd) Cạnh 5 cm ⇒ S = 25 cm² → Sai."),
+            mcq("vandung", "Một khu vườn hình chữ nhật dài 25 m, rộng 16 m. Người ta làm một lối đi hình bình hành có đáy 2 m (đo theo chiều dài) và chiều cao bằng chiều rộng vườn. Diện tích phần còn lại để trồng rau là:", ["368 m²", "400 m²", "32 m²", "350 m²"], 0, "S vườn = 25 · 16 = 400 m²; S lối đi = 2 · 16 = 32 m². Phần trồng rau: 400 − 32 = **368 m²**."),
+            short("vandung", "Một khung trang trí hình lục giác đều cạnh 15 cm được uốn từ một sợi dây thép. Cần bao nhiêu xăng-ti-mét dây (không tính mối nối)?", ["90"], "Chu vi lục giác đều: 6 · 15 = **90 cm**.", unit="cm"),
         ],
     },
-]
-
-LESSONS += [
-    # ===================== CHƯƠNG V =====================
     {
         "topic": "l6-ch05-tinh-doi-xung",
         "title": "Tính đối xứng của hình phẳng trong tự nhiên",
@@ -276,15 +246,16 @@ LESSONS += [
             "- Một hình có thể có nhiều trục đối xứng, có thể vừa có trục vừa có tâm đối xứng, hoặc không có."
         ),
         "theory": (
-            "### Bài 21. Hình có trục đối xứng\n- Tam giác đều: 3 trục; hình vuông: 4 trục; hình chữ nhật, hình thoi: 2 trục; hình thang cân: 1 trục (đường thẳng qua trung điểm hai đáy); lục giác đều: 6 trục; hình tròn: vô số trục (mọi đường kính).\n"
-            "### Bài 22. Hình có tâm đối xứng\n- Hình chữ nhật, hình vuông, hình thoi, hình bình hành: tâm là giao điểm hai đường chéo; lục giác đều, hình tròn: tâm là tâm của hình.\n- Tam giác đều, hình thang cân **không** có tâm đối xứng.\n"
+            "### Bài 21. Hình có trục đối xứng\n"
+            "- Tam giác đều: 3 trục; hình vuông: 4 trục; hình chữ nhật, hình thoi: 2 trục; hình thang cân: 1 trục (đường thẳng qua trung điểm hai đáy); lục giác đều: 6 trục; hình tròn: vô số trục (mọi đường kính).\n"
+            "### Bài 22. Hình có tâm đối xứng\n"
+            "- Hình chữ nhật, hình vuông, hình thoi, hình bình hành: tâm là giao điểm hai đường chéo; lục giác đều, hình tròn: tâm là tâm của hình.\n"
+            "- Tam giác đều, hình thang cân **không** có tâm đối xứng.\n"
             "### Luyện tập chung · Bài tập cuối chương V"
         ),
         "formulas": [
-            G("I. Số trục đối xứng", F("Tam giác đều", "3"), F("Hình vuông", "4"), F("Hình chữ nhật / hình thoi", "2"),
-              F("Hình thang cân", "1"), F("Lục giác đều", "6"), F("Hình tròn", "vô số")),
-            G("II. Tâm đối xứng", F("Có tâm", "Hình bình hành, chữ nhật, thoi, vuông (giao hai đường chéo); lục giác đều; hình tròn"),
-              F("Không có tâm", "Tam giác đều, hình thang cân")),
+            G("I. Số trục đối xứng", F("Tam giác đều", "3"), F("Hình vuông", "4"), F("Hình chữ nhật / hình thoi", "2"), F("Hình thang cân", "1"), F("Lục giác đều", "6"), F("Hình tròn", "vô số")),
+            G("II. Tâm đối xứng", F("Có tâm", "Hình bình hành, chữ nhật, thoi, vuông (giao hai đường chéo); lục giác đều; hình tròn"), F("Không có tâm", "Tam giác đều, hình thang cân")),
         ],
         "example": "Trong các chữ cái in hoa H, A, N, O: chữ nào có trục đối xứng, chữ nào có tâm đối xứng?",
         "example_answer": "Có trục đối xứng: **H, A, O**. Có tâm đối xứng: **H, N, O**. Chữ N có tâm nhưng không có trục; chữ A có trục nhưng không có tâm.",
@@ -296,21 +267,12 @@ LESSONS += [
             mcq("biet", "Hình tròn có bao nhiêu trục đối xứng?", ["1", "2", "4", "Vô số"], 3, "Mọi đường thẳng qua tâm đều là trục → **vô số**."),
             mcq("hieu", "Hình thang cân có mấy trục đối xứng?", ["0", "1", "2", "4"], 1, "**1** trục: đường thẳng đi qua trung điểm hai đáy."),
             mcq("hieu", "Chữ cái nào có tâm đối xứng nhưng không có trục đối xứng?", ["A", "N", "H", "M"], 1, "**N** quay 180° trùng chính nó nhưng không gấp đôi chồng khít được."),
-            tf4("hieu", "Mỗi khẳng định sau về tính đối xứng đúng hay sai?",
-                ["a) Tam giác đều có 3 trục đối xứng", "b) Hình bình hành (không phải hình chữ nhật, hình thoi) có trục đối xứng", "c) Hình thoi có tâm đối xứng", "d) Hình thang cân có tâm đối xứng"],
-                [True, False, True, False],
-                "a) Đúng (3 đường cao). b) Sai — hình bình hành thông thường không có trục đối xứng. c) Đúng (giao hai đường chéo). d) Sai — hình thang cân chỉ có trục đối xứng."),
-            tf4("hieu", "Xét các chữ cái in hoa H, A, N. Mỗi khẳng định sau đúng hay sai?",
-                ["a) Chữ H có cả trục đối xứng và tâm đối xứng", "b) Chữ A có trục đối xứng", "c) Chữ N có trục đối xứng", "d) Chữ N có tâm đối xứng"],
-                [True, True, False, True],
-                "a) H có 2 trục (dọc, ngang) và có tâm → Đúng. b) A có trục dọc → Đúng. c) N không có trục → Sai. d) N quay 180° trùng chính nó → Đúng."),
-            mcq("vandung", "Một tờ giấy hình chữ nhật (không vuông). Có bao nhiêu cách gấp đôi tờ giấy để hai nửa chồng khít lên nhau?", ["1", "2", "4", "0"], 1,
-                "Số cách gấp = số trục đối xứng của hình chữ nhật = **2** (gấp theo đường nối trung điểm các cạnh đối).", note="Gấp theo đường chéo hình chữ nhật thì hai nửa không chồng khít."),
-            short("vandung", "Trong các chữ cái in hoa H, A, O, M, Z, E, có bao nhiêu chữ cái có tâm đối xứng?", ["3"],
-                  "Các chữ có tâm đối xứng: H, O, Z → **3** chữ. (A, M, E chỉ có trục đối xứng.)"),
+            tf4("hieu", "Mỗi khẳng định sau về tính đối xứng đúng hay sai?", ["a) Tam giác đều có 3 trục đối xứng", "b) Hình bình hành (không phải hình chữ nhật, hình thoi) có trục đối xứng", "c) Hình thoi có tâm đối xứng", "d) Hình thang cân có tâm đối xứng"], [True, False, True, False], "a) Đúng (3 đường cao). b) Sai — hình bình hành thông thường không có trục đối xứng. c) Đúng (giao hai đường chéo). d) Sai — hình thang cân chỉ có trục đối xứng."),
+            tf4("hieu", "Xét các chữ cái in hoa H, A, N. Mỗi khẳng định sau đúng hay sai?", ["a) Chữ H có cả trục đối xứng và tâm đối xứng", "b) Chữ A có trục đối xứng", "c) Chữ N có trục đối xứng", "d) Chữ N có tâm đối xứng"], [True, True, False, True], "a) H có 2 trục (dọc, ngang) và có tâm → Đúng. b) A có trục dọc → Đúng. c) N không có trục → Sai. d) N quay 180° trùng chính nó → Đúng."),
+            mcq("vandung", "Một tờ giấy hình chữ nhật (không vuông). Có bao nhiêu cách gấp đôi tờ giấy để hai nửa chồng khít lên nhau?", ["1", "2", "4", "0"], 1, "Số cách gấp = số trục đối xứng của hình chữ nhật = **2** (gấp theo đường nối trung điểm các cạnh đối).", note="Gấp theo đường chéo hình chữ nhật thì hai nửa không chồng khít."),
+            short("vandung", "Trong các chữ cái in hoa H, A, O, M, Z, E, có bao nhiêu chữ cái có tâm đối xứng?", ["3"], "Các chữ có tâm đối xứng: H, O, Z → **3** chữ. (A, M, E chỉ có trục đối xứng.)"),
         ],
     },
-    # ===================== CHƯƠNG VI =====================
     {
         "topic": "l6-ch06-phan-so",
         "title": "Phân số",
@@ -324,53 +286,48 @@ LESSONS += [
             "Giải quyết được vấn đề thực tiễn gắn với các phép tính về phân số.",
         ],
         "definition": (
-            "- **Phân số** a/b với a, b ∈ ℤ, b ≠ 0. Mọi số nguyên n viết được dưới dạng n/1.\n"
-            "- **Hai phân số bằng nhau**: a/b = c/d ⇔ a · d = b · c.\n"
-            "- **Tính chất cơ bản**: a/b = (a · m)/(b · m) (m ∈ ℤ, m ≠ 0); a/b = (a : n)/(b : n) (n ∈ ƯC(a, b)). Mọi phân số đưa được về mẫu dương.\n"
-            "- **Số đối** của a/b là −a/b; **số nghịch đảo** của a/b (a ≠ 0) là b/a.\n"
-            "- **Hỗn số dương** a b/c = a + b/c."
+            "- **Phân số** $\\frac{a}{b}$ với a, b ∈ ℤ, b ≠ 0. Mọi số nguyên n viết được dưới dạng $\\frac{n}{1}$.\n"
+            "- **Hai phân số bằng nhau**: $\\frac{a}{b}$ = $\\frac{c}{d}$ ⇔ a · d = b · c.\n"
+            "- **Tính chất cơ bản**: $\\frac{a}{b}$ = $\\frac{a · m}{b · m}$ (m ∈ ℤ, m ≠ 0); $\\frac{a}{b}$ = $\\frac{a : n}{b : n}$ (n ∈ ƯC(a, b)). Mọi phân số đưa được về mẫu dương.\n"
+            "- **Số đối** của $\\frac{a}{b}$ là $-\\frac{a}{b}$; **số nghịch đảo** của $\\frac{a}{b}$ (a ≠ 0) là $\\frac{b}{a}$.\n"
+            "- **Hỗn số dương** a $\\frac{b}{c}$ = a + $\\frac{b}{c}$."
         ),
         "theory": (
-            "### Bài 23. Mở rộng khái niệm phân số. Phân số bằng nhau\n- −3/4 = 6/(−8) vì (−3) · (−8) = 4 · 6 = 24.\n"
-            "### Bài 24. So sánh phân số. Hỗn số dương\n- Đưa về cùng mẫu dương rồi so sánh tử: −2/3 = −8/12 > −9/12 = −3/4.\n- 2 1/3 = 7/3.\n"
+            "### Bài 23. Mở rộng khái niệm phân số. Phân số bằng nhau\n"
+            "- $-\\frac{3}{4}$ = $\\frac{6}{−8}$ vì (−3) · (−8) = 4 · 6 = 24.\n"
+            "### Bài 24. So sánh phân số. Hỗn số dương\n"
+            "- Đưa về cùng mẫu dương rồi so sánh tử: $-\\frac{2}{3}$ = $-\\frac{8}{12}$ > $-\\frac{9}{12}$ = $-\\frac{3}{4}$.\n"
+            "- $2\\frac{1}{3}$ = $\\frac{7}{3}$.\n"
             "### Luyện tập chung\n"
-            "### Bài 25. Phép cộng và phép trừ phân số\n- −1/2 + 2/3 = −3/6 + 4/6 = 1/6; 1/4 − 5/6 = 3/12 − 10/12 = −7/12.\n"
-            "### Bài 26. Phép nhân và phép chia phân số\n- (−2/5) · (15/4) = −30/20 = −3/2; 3/4 : (−9/8) = 3/4 · (−8/9) = −2/3.\n"
-            "### Bài 27. Hai bài toán về phân số\n- Giá trị m/n của số a: a · m/n. Tìm một số biết m/n của nó bằng b: b : m/n.\n"
+            "### Bài 25. Phép cộng và phép trừ phân số\n"
+            "- $-\\frac{1}{2}$ + $\\frac{2}{3}$ = $-\\frac{3}{6}$ + $\\frac{4}{6}$ = $\\frac{1}{6}$; $\\frac{1}{4}$ − $\\frac{5}{6}$ = $\\frac{3}{12}$ − $\\frac{10}{12}$ = $-\\frac{7}{12}$.\n"
+            "### Bài 26. Phép nhân và phép chia phân số\n"
+            "- ($-\\frac{2}{5}$) · ($\\frac{15}{4}$) = $-\\frac{30}{20}$ = $-\\frac{3}{2}$; $\\frac{3}{4}$ : ($-\\frac{9}{8}$) = $\\frac{3}{4}$ · ($-\\frac{8}{9}$) = $-\\frac{2}{3}$.\n"
+            "### Bài 27. Hai bài toán về phân số\n"
+            "- Giá trị $\\frac{m}{n}$ của số a: a · $\\frac{m}{n}$. Tìm một số biết $\\frac{m}{n}$ của nó bằng b: b : $\\frac{m}{n}$.\n"
             "### Luyện tập chung · Bài tập cuối chương VI"
         ),
         "formulas": [
-            G("I. Phân số bằng nhau – so sánh", F("Bằng nhau", "a/b = c/d ⇔ a·d = b·c"), F("So sánh", "Quy đồng về cùng mẫu dương, so sánh tử"),
-              F("Dấu", "a/(−b) = −a/b")),
-            G("II. Phép tính", F("Cộng (cùng mẫu)", "a/m + b/m = (a + b)/m"), F("Trừ", "a/b − c/d = a/b + (−c/d)"),
-              F("Nhân", "a/b · c/d = (a·c)/(b·d)"), F("Chia", "a/b : c/d = a/b · d/c (c ≠ 0)")),
-            G("III. Hai bài toán", F("Giá trị phân số của một số", "m/n của a = a · m/n"), F("Tìm một số biết m/n của nó bằng b", "Số đó = b : m/n")),
+            G("I. Phân số bằng nhau – so sánh", F("Bằng nhau", "$\\frac{a}{b}$ = $\\frac{c}{d}$ ⇔ a·d = b·c"), F("So sánh", "Quy đồng về cùng mẫu dương, so sánh tử"), F("Dấu", "$\\frac{a}{−b}$ = $-\\frac{a}{b}$")),
+            G("II. Phép tính", F("Cộng (cùng mẫu)", "$\\frac{a}{m}$ + $\\frac{b}{m}$ = $\\frac{a + b}{m}$"), F("Trừ", "$\\frac{a}{b}$ − $\\frac{c}{d}$ = $\\frac{a}{b}$ + ($-\\frac{c}{d}$)"), F("Nhân", "$\\frac{a}{b}$ · $\\frac{c}{d}$ = $\\frac{a·c}{b·d}$"), F("Chia", "$\\frac{a}{b}$ : $\\frac{c}{d}$ = $\\frac{a}{b}$ · $\\frac{d}{c}$ (c ≠ 0)")),
+            G("III. Hai bài toán", F("Giá trị phân số của một số", "$\\frac{m}{n}$ của a = a · $\\frac{m}{n}$"), F("Tìm một số biết m/n của nó bằng b", "Số đó = b : $\\frac{m}{n}$")),
         ],
-        "example": "Một lớp có 40 học sinh, 3/8 số học sinh đạt loại giỏi. Tính số học sinh giỏi. Nếu số học sinh giỏi của lớp khác là 12 em và bằng 2/5 số học sinh lớp đó thì lớp đó có bao nhiêu em?",
-        "example_answer": "Số HS giỏi: 40 · 3/8 = **15** em. Lớp kia: 12 : 2/5 = 12 · 5/2 = **30** em.",
+        "example": "Một lớp có 40 học sinh, $\\frac{3}{8}$ số học sinh đạt loại giỏi. Tính số học sinh giỏi. Nếu số học sinh giỏi của lớp khác là 12 em và bằng $\\frac{2}{5}$ số học sinh lớp đó thì lớp đó có bao nhiêu em?",
+        "example_answer": "Số HS giỏi: 40 · $\\frac{3}{8}$ = **15** em. Lớp kia: 12 : $\\frac{2}{5}$ = 12 · $\\frac{5}{2}$ = **30** em.",
         "real_life": "- Chia phần tài sản, tính phần công việc đã làm, phần trăm giảm giá dưới dạng phân số; công thức nấu ăn.",
         "quiz": [
-            mcq("biet", "Phân số nào bằng −2/5?", ["2/(−5)", "2/5", "−5/2", "5/(−2)"], 0, "2/(−5) = −2/5 (đưa dấu “−” lên tử)."),
-            mcq("biet", "Số nghịch đảo của −3/7 là:", ["3/7", "−7/3", "7/3", "−3/7"], 1, "Đổi chỗ tử và mẫu, giữ dấu: **−7/3**."),
-            mcq("biet", "Hỗn số 3 1/4 viết dưới dạng phân số là:", ["13/4", "7/4", "4/13", "31/4"], 0, "3 1/4 = (3 · 4 + 1)/4 = **13/4**."),
-            mcq("biet", "Tìm x biết x/12 = 3/4:", ["9", "16", "4", "36"], 0, "x · 4 = 12 · 3 ⇒ x = 36 : 4 = **9**."),
-            mcq("hieu", "−1/2 + 2/3 = ?", ["1/6", "1/5", "−1/6", "3/5"], 0, "−3/6 + 4/6 = **1/6**."),
-            mcq("hieu", "3/4 : (−9/8) = ?", ["−2/3", "−27/32", "2/3", "−3/2"], 0, "3/4 · (−8/9) = −24/36 = **−2/3**.", note="Phép chia: nhân với số nghịch đảo của số chia."),
-            tf4("hieu", "Mỗi khẳng định sau đúng hay sai?",
-                ["a) −3/4 = 6/(−8)", "b) −2/3 < −3/4", "c) 1/4 − 5/6 = −7/12", "d) (−2/5) · (15/4) = −3/2"],
-                [True, False, True, True],
-                "a) (−3)·(−8) = 24 = 4·6 → Đúng.\nb) −2/3 = −8/12, −3/4 = −9/12; −8 > −9 nên −2/3 > −3/4 → Sai.\nc) 3/12 − 10/12 = −7/12 → Đúng.\nd) −30/20 = −3/2 → Đúng."),
-            tf4("hieu", "Lớp 6A có 40 học sinh, trong đó 3/8 số học sinh xếp loại giỏi, 1/2 số học sinh xếp loại khá, còn lại là trung bình. Mỗi khẳng định sau đúng hay sai?",
-                ["a) Lớp có 15 học sinh giỏi", "b) Lớp có 20 học sinh khá", "c) Lớp có 4 học sinh trung bình", "d) Số học sinh trung bình chiếm 1/5 số học sinh cả lớp"],
-                [True, True, False, False],
-                "a) 40 · 3/8 = 15 → Đúng. b) 40 · 1/2 = 20 → Đúng.\nc) 40 − 15 − 20 = 5 học sinh → Sai.\nd) 5/40 = 1/8, không phải 1/5 → Sai."),
-            mcq("vandung", "Một người đi hết quãng đường trong 3 ngày: ngày đầu đi 1/3 quãng đường, ngày thứ hai đi 2/5 quãng đường, ngày thứ ba đi 12 km còn lại. Quãng đường dài:", ["45 km", "36 km", "60 km", "30 km"], 0,
-                "Phần còn lại: 1 − 1/3 − 2/5 = 15/15 − 5/15 − 6/15 = 4/15 quãng đường ứng với 12 km.\nQuãng đường: 12 : 4/15 = 12 · 15/4 = **45 km**."),
-            short("vandung", "Tìm một số, biết 3/5 của số đó bằng 24.", ["40"],
-                  "Số đó = 24 : 3/5 = 24 · 5/3 = **40**."),
+            mcq("biet", "Phân số nào bằng $-\\frac{2}{5}$?", ["$\\frac{2}{−5}$", "$\\frac{2}{5}$", "$-\\frac{5}{2}$", "$\\frac{5}{−2}$"], 0, "$\\frac{2}{−5}$ = $-\\frac{2}{5}$ (đưa dấu “−” lên tử)."),
+            mcq("biet", "Số nghịch đảo của $-\\frac{3}{7}$ là:", ["$\\frac{3}{7}$", "$-\\frac{7}{3}$", "$\\frac{7}{3}$", "$-\\frac{3}{7}$"], 1, "Đổi chỗ tử và mẫu, giữ dấu: **−7/3**."),
+            mcq("biet", "Hỗn số $3\\frac{1}{4}$ viết dưới dạng phân số là:", ["$\\frac{13}{4}$", "$\\frac{7}{4}$", "$\\frac{4}{13}$", "$\\frac{31}{4}$"], 0, "$3\\frac{1}{4}$ = $\\frac{3 · 4 + 1}{4}$ = **13/4**."),
+            mcq("biet", "Tìm x biết $\\frac{x}{12}$ = $\\frac{3}{4}$:", ["9", "16", "4", "36"], 0, "x · 4 = 12 · 3 ⇒ x = 36 : 4 = **9**."),
+            mcq("hieu", "$-\\frac{1}{2}$ + $\\frac{2}{3}$ = ?", ["$\\frac{1}{6}$", "$\\frac{1}{5}$", "$-\\frac{1}{6}$", "$\\frac{3}{5}$"], 0, "$-\\frac{3}{6}$ + $\\frac{4}{6}$ = **1/6**."),
+            mcq("hieu", "$\\frac{3}{4}$ : ($-\\frac{9}{8}$) = ?", ["$-\\frac{2}{3}$", "$-\\frac{27}{32}$", "$\\frac{2}{3}$", "$-\\frac{3}{2}$"], 0, "$\\frac{3}{4}$ · ($-\\frac{8}{9}$) = $-\\frac{24}{36}$ = **−2/3**.", note="Phép chia: nhân với số nghịch đảo của số chia."),
+            tf4("hieu", "Mỗi khẳng định sau đúng hay sai?", ["a) $-\\frac{3}{4}$ = $\\frac{6}{−8}$", "b) $-\\frac{2}{3}$ < $-\\frac{3}{4}$", "c) $\\frac{1}{4}$ − $\\frac{5}{6}$ = $-\\frac{7}{12}$", "d) ($-\\frac{2}{5}$) · ($\\frac{15}{4}$) = $-\\frac{3}{2}$"], [True, False, True, True], "a) (−3)·(−8) = 24 = 4·6 → Đúng.\nb) $-\\frac{2}{3}$ = $-\\frac{8}{12}$, $-\\frac{3}{4}$ = $-\\frac{9}{12}$; −8 > −9 nên $-\\frac{2}{3}$ > $-\\frac{3}{4}$ → Sai.\nc) $\\frac{3}{12}$ − $\\frac{10}{12}$ = $-\\frac{7}{12}$ → Đúng.\nd) $-\\frac{30}{20}$ = $-\\frac{3}{2}$ → Đúng."),
+            tf4("hieu", "Lớp 6A có 40 học sinh, trong đó $\\frac{3}{8}$ số học sinh xếp loại giỏi, $\\frac{1}{2}$ số học sinh xếp loại khá, còn lại là trung bình. Mỗi khẳng định sau đúng hay sai?", ["a) Lớp có 15 học sinh giỏi", "b) Lớp có 20 học sinh khá", "c) Lớp có 4 học sinh trung bình", "d) Số học sinh trung bình chiếm $\\frac{1}{5}$ số học sinh cả lớp"], [True, True, False, False], "a) 40 · $\\frac{3}{8}$ = 15 → Đúng. b) 40 · $\\frac{1}{2}$ = 20 → Đúng.\nc) 40 − 15 − 20 = 5 học sinh → Sai.\nd) $\\frac{5}{40}$ = $\\frac{1}{8}$, không phải $\\frac{1}{5}$ → Sai."),
+            mcq("vandung", "Một người đi hết quãng đường trong 3 ngày: ngày đầu đi $\\frac{1}{3}$ quãng đường, ngày thứ hai đi $\\frac{2}{5}$ quãng đường, ngày thứ ba đi 12 km còn lại. Quãng đường dài:", ["45 km", "36 km", "60 km", "30 km"], 0, "Phần còn lại: 1 − $\\frac{1}{3}$ − $\\frac{2}{5}$ = $\\frac{15}{15}$ − $\\frac{5}{15}$ − $\\frac{6}{15}$ = $\\frac{4}{15}$ quãng đường ứng với 12 km.\nQuãng đường: 12 : $\\frac{4}{15}$ = 12 · $\\frac{15}{4}$ = **45 km**."),
+            short("vandung", "Tìm một số, biết $\\frac{3}{5}$ của số đó bằng 24.", ["40"], "Số đó = 24 : $\\frac{3}{5}$ = 24 · $\\frac{5}{3}$ = **40**."),
         ],
     },
-    # ===================== CHƯƠNG VII =====================
     {
         "topic": "l6-ch07-so-thap-phan",
         "title": "Số thập phân",
@@ -384,53 +341,42 @@ LESSONS += [
             "Giải quyết được vấn đề thực tiễn gắn với số thập phân, tỉ số và tỉ số phần trăm (lãi suất, giảm giá, …).",
         ],
         "definition": (
-            "- Phân số thập phân (mẫu là luỹ thừa của 10) viết được dưới dạng **số thập phân**: −3/10 = −0,3; −125/100 = −1,25.\n"
+            "- Phân số thập phân (mẫu là luỹ thừa của 10) viết được dưới dạng **số thập phân**: $-\\frac{3}{10}$ = −0,3; $-\\frac{125}{100}$ = −1,25.\n"
             "- **Số đối** của 2,7 là −2,7. **So sánh**: số âm < 0 < số dương; với hai số âm, số nào có số đối lớn hơn thì nhỏ hơn (−1,3 < −1,25 vì 1,3 > 1,25).\n"
             "- **Tỉ số** của a và b (b ≠ 0) là a : b; **tỉ số phần trăm** là (a : b) · 100%.\n"
             "- **Làm tròn**: chữ số bỏ đi đầu tiên ≥ 5 thì cộng 1 vào chữ số giữ lại cuối cùng; < 5 thì giữ nguyên."
         ),
         "theory": (
-            "### Bài 28. Số thập phân\n- −3/4 = −0,75; −1,3 < −1,25 < 0 < 0,5.\n"
-            "### Bài 29. Tính toán với số thập phân\n- Cộng, trừ, nhân, chia số thập phân âm theo quy tắc dấu như số nguyên: (−3,5) + 1,2 = −2,3; (−1,5) · (−0,4) = 0,6; 4,8 : (−1,2) = −4.\n"
-            "### Bài 30. Làm tròn và ước lượng\n- 3,14159 làm tròn đến hàng phần trăm: 3,14; ước lượng 19,8 · 5,1 ≈ 20 · 5 = 100.\n"
-            "### Bài 31. Một số bài toán về tỉ số và tỉ số phần trăm\n- m% của a = a · m/100; tìm một số biết m% của nó là b: b : (m/100).\n"
+            "### Bài 28. Số thập phân\n"
+            "- $-\\frac{3}{4}$ = −0,75; −1,3 < −1,25 < 0 < 0,5.\n"
+            "### Bài 29. Tính toán với số thập phân\n"
+            "- Cộng, trừ, nhân, chia số thập phân âm theo quy tắc dấu như số nguyên: (−3,5) + 1,2 = −2,3; (−1,5) · (−0,4) = 0,6; 4,8 : (−1,2) = −4.\n"
+            "### Bài 30. Làm tròn và ước lượng\n"
+            "- 3,14159 làm tròn đến hàng phần trăm: 3,14; ước lượng 19,8 · 5,1 ≈ 20 · 5 = 100.\n"
+            "### Bài 31. Một số bài toán về tỉ số và tỉ số phần trăm\n"
+            "- m% của a = a · $\\frac{m}{100}$; tìm một số biết m% của nó là b: b : ($\\frac{m}{100}$).\n"
             "### Luyện tập chung · Bài tập cuối chương VII"
         ),
         "formulas": [
-            G("I. Tỉ số – phần trăm", F("Tỉ số phần trăm của a và b", "(a : b) · 100%"), F("Giá trị m% của a", "a · m/100"),
-              F("Tìm số biết m% của nó là b", "b : (m/100) = b · 100/m")),
-            G("II. Tính toán", F("Quy tắc dấu", "Như số nguyên: (−)·(−) = (+), (−)·(+) = (−)"),
-              F("Giảm giá m%", "Giá mới = Giá cũ · (100 − m)%"), F("Lãi suất r%/năm", "Sau 1 năm: T = A · (100 + r)%")),
+            G("I. Tỉ số – phần trăm", F("Tỉ số phần trăm của a và b", "(a : b) · 100%"), F("Giá trị m% của a", "a · $\\frac{m}{100}$"), F("Tìm số biết m% của nó là b", "b : ($\\frac{m}{100}$) = b · $\\frac{100}{m}$")),
+            G("II. Tính toán", F("Quy tắc dấu", "Như số nguyên: (−)·(−) = (+), (−)·(+) = (−)"), F("Giảm giá m%", "Giá mới = Giá cũ · (100 − m)%"), F("Lãi suất r%/năm", "Sau 1 năm: T = A · (100 + r)%")),
         ],
         "example": "Một chiếc áo giá 400 000 đồng được giảm 15%. Tính số tiền được giảm và giá bán mới.",
-        "example_answer": "Số tiền giảm: 400 000 · 15/100 = **60 000 đồng**. Giá mới: 400 000 − 60 000 = **340 000 đồng** (bằng 85% giá cũ).",
+        "example_answer": "Số tiền giảm: 400 000 · $\\frac{15}{100}$ = **60 000 đồng**. Giá mới: 400 000 − 60 000 = **340 000 đồng** (bằng 85% giá cũ).",
         "real_life": "- Giá cả, khuyến mãi, lãi suất ngân hàng; nhiệt độ âm có phần thập phân (−2,5 °C); ước lượng chi tiêu.",
         "quiz": [
-            mcq("biet", "Phân số −3/4 viết dưới dạng số thập phân là:", ["−0,34", "−0,75", "−7,5", "0,75"], 1, "−3/4 = −75/100 = **−0,75**."),
+            mcq("biet", "Phân số $-\\frac{3}{4}$ viết dưới dạng số thập phân là:", ["−0,34", "−0,75", "−7,5", "0,75"], 1, "$-\\frac{3}{4}$ = $-\\frac{75}{100}$ = **−0,75**."),
             mcq("biet", "Số đối của −2,7 là:", ["2,7", "−2,7", "0,27", "−7,2"], 0, "Số đối của −2,7 là **2,7**."),
             mcq("biet", "Làm tròn 12,467 đến hàng phần mười được:", ["12,4", "12,5", "12,47", "13"], 1, "Chữ số bỏ đi đầu tiên là 6 ≥ 5 → **12,5**."),
             mcq("biet", "Tỉ số phần trăm của 3 và 4 là:", ["34%", "75%", "133%", "0,75%"], 1, "3 : 4 = 0,75 = **75%**."),
             mcq("hieu", "(−2,5) · 4 + 1,5 = ?", ["−8,5", "−11,5", "8,5", "−4"], 0, "(−2,5) · 4 = −10; −10 + 1,5 = **−8,5**."),
-            mcq("hieu", "Sắp xếp theo thứ tự tăng dần:", ["−1,3; −1,25; 0,5; 1,05", "−1,25; −1,3; 0,5; 1,05", "−1,3; −1,25; 1,05; 0,5", "0,5; 1,05; −1,25; −1,3"], 0,
-                "−1,3 < −1,25 (vì 1,3 > 1,25) < 0,5 < 1,05."),
-            tf4("hieu", "Mỗi khẳng định sau đúng hay sai?",
-                ["a) −1,25 > −1,3", "b) (−1,5) · (−0,4) = −0,6", "c) 4,8 : (−1,2) = −4", "d) Làm tròn 7,449 đến hàng phần mười được 7,5"],
-                [True, False, True, False],
-                "a) 1,25 < 1,3 nên −1,25 > −1,3 → Đúng.\nb) Cùng dấu → dương: 0,6 → Sai.\nc) Khác dấu → âm: −4 → Đúng.\nd) Chữ số bỏ đi đầu tiên là 4 < 5 → 7,4 → Sai (không làm tròn “dây chuyền”)."),
-            tf4("hieu", "Một chiếc áo giá 400 000 đồng được giảm giá 15%. Mỗi khẳng định sau đúng hay sai?",
-                ["a) Số tiền được giảm là 60 000 đồng", "b) Giá sau khi giảm là 340 000 đồng", "c) Giá sau khi giảm bằng 85% giá ban đầu", "d) Nếu giảm tiếp 10% trên giá mới thì tổng cộng giá áo đã giảm 25%"],
-                [True, True, True, False],
-                "a) 400 000 · 15% = 60 000 → Đúng. b) 400 000 − 60 000 = 340 000 → Đúng. c) 100% − 15% = 85% → Đúng.\nd) Giá cuối: 340 000 · 90% = 306 000 = 76,5% giá ban đầu ⇒ giảm 23,5%, không phải 25% → Sai."),
-            mcq("vandung", "Bác An gửi tiết kiệm 50 000 000 đồng với lãi suất 6%/năm. Sau 1 năm, bác nhận được cả gốc và lãi là:", ["53 000 000 đồng", "56 000 000 đồng", "3 000 000 đồng", "50 300 000 đồng"], 0,
-                "Lãi: 50 000 000 · 6/100 = 3 000 000. Tổng: **53 000 000 đồng**."),
-            short("vandung", "Lớp 6B có 45 học sinh, trong đó 40% là học sinh nữ. Lớp có bao nhiêu học sinh nữ?", ["18"],
-                  "45 · 40/100 = **18** học sinh nữ.", unit="học sinh"),
+            mcq("hieu", "Sắp xếp theo thứ tự tăng dần:", ["−1,3; −1,25; 0,5; 1,05", "−1,25; −1,3; 0,5; 1,05", "−1,3; −1,25; 1,05; 0,5", "0,5; 1,05; −1,25; −1,3"], 0, "−1,3 < −1,25 (vì 1,3 > 1,25) < 0,5 < 1,05."),
+            tf4("hieu", "Mỗi khẳng định sau đúng hay sai?", ["a) −1,25 > −1,3", "b) (−1,5) · (−0,4) = −0,6", "c) 4,8 : (−1,2) = −4", "d) Làm tròn 7,449 đến hàng phần mười được 7,5"], [True, False, True, False], "a) 1,25 < 1,3 nên −1,25 > −1,3 → Đúng.\nb) Cùng dấu → dương: 0,6 → Sai.\nc) Khác dấu → âm: −4 → Đúng.\nd) Chữ số bỏ đi đầu tiên là 4 < 5 → 7,4 → Sai (không làm tròn “dây chuyền”)."),
+            tf4("hieu", "Một chiếc áo giá 400 000 đồng được giảm giá 15%. Mỗi khẳng định sau đúng hay sai?", ["a) Số tiền được giảm là 60 000 đồng", "b) Giá sau khi giảm là 340 000 đồng", "c) Giá sau khi giảm bằng 85% giá ban đầu", "d) Nếu giảm tiếp 10% trên giá mới thì tổng cộng giá áo đã giảm 25%"], [True, True, True, False], "a) 400 000 · 15% = 60 000 → Đúng. b) 400 000 − 60 000 = 340 000 → Đúng. c) 100% − 15% = 85% → Đúng.\nd) Giá cuối: 340 000 · 90% = 306 000 = 76,5% giá ban đầu ⇒ giảm 23,5%, không phải 25% → Sai."),
+            mcq("vandung", "Bác An gửi tiết kiệm 50 000 000 đồng với lãi suất 6%/năm. Sau 1 năm, bác nhận được cả gốc và lãi là:", ["53 000 000 đồng", "56 000 000 đồng", "3 000 000 đồng", "50 300 000 đồng"], 0, "Lãi: 50 000 000 · $\\frac{6}{100}$ = 3 000 000. Tổng: **53 000 000 đồng**."),
+            short("vandung", "Lớp 6B có 45 học sinh, trong đó 40% là học sinh nữ. Lớp có bao nhiêu học sinh nữ?", ["18"], "45 · $\\frac{40}{100}$ = **18** học sinh nữ.", unit="học sinh"),
         ],
     },
-]
-
-LESSONS += [
-    # ===================== CHƯƠNG VIII =====================
     {
         "topic": "l6-ch08-hinh-hoc-co-ban",
         "title": "Những hình hình học cơ bản",
@@ -452,53 +398,42 @@ LESSONS += [
             "- **Góc** là hình gồm hai tia chung gốc; số đo góc tính bằng độ (°). Góc vuông = 90°; nhọn: 0° < α < 90°; tù: 90° < α < 180°; bẹt = 180°."
         ),
         "theory": (
-            "### Bài 32. Điểm và đường thẳng\n- Điểm thuộc / không thuộc đường thẳng; ba điểm thẳng hàng; hai đường thẳng cắt nhau (có 1 điểm chung), song song (không có điểm chung), trùng nhau.\n"
-            "### Bài 33. Điểm nằm giữa hai điểm. Tia\n- Tia Ox; hai tia đối nhau Ox, Oy (tạo thành đường thẳng xy); hai tia trùng nhau.\n"
-            "### Bài 34. Đoạn thẳng. Độ dài đoạn thẳng\n- Nếu M nằm giữa A và B thì **AM + MB = AB**. Trên tia Ox, nếu OA < OB thì A nằm giữa O và B.\n"
-            "### Bài 35. Trung điểm của đoạn thẳng\n- M là trung điểm AB ⇔ M nằm giữa A, B và MA = MB ⇒ MA = MB = AB : 2.\n"
+            "### Bài 32. Điểm và đường thẳng\n"
+            "- Điểm thuộc / không thuộc đường thẳng; ba điểm thẳng hàng; hai đường thẳng cắt nhau (có 1 điểm chung), song song (không có điểm chung), trùng nhau.\n"
+            "### Bài 33. Điểm nằm giữa hai điểm. Tia\n"
+            "- Tia Ox; hai tia đối nhau Ox, Oy (tạo thành đường thẳng xy); hai tia trùng nhau.\n"
+            "### Bài 34. Đoạn thẳng. Độ dài đoạn thẳng\n"
+            "- Nếu M nằm giữa A và B thì **AM + MB = AB**. Trên tia Ox, nếu OA < OB thì A nằm giữa O và B.\n"
+            "### Bài 35. Trung điểm của đoạn thẳng\n"
+            "- M là trung điểm AB ⇔ M nằm giữa A, B và MA = MB ⇒ MA = MB = AB : 2.\n"
             "### Luyện tập chung\n"
-            "### Bài 36. Góc\n- Góc xOy (đỉnh O, cạnh Ox, Oy), kí hiệu ∠xOy; điểm trong của góc.\n"
-            "### Bài 37. Số đo góc\n- Đo góc bằng thước đo góc; so sánh hai góc theo số đo; góc vuông, nhọn, tù, bẹt.\n"
+            "### Bài 36. Góc\n"
+            "- Góc xOy (đỉnh O, cạnh Ox, Oy), kí hiệu ∠xOy; điểm trong của góc.\n"
+            "### Bài 37. Số đo góc\n"
+            "- Đo góc bằng thước đo góc; so sánh hai góc theo số đo; góc vuông, nhọn, tù, bẹt.\n"
             "### Luyện tập chung · Bài tập cuối chương VIII"
         ),
         "formulas": [
-            G("I. Đoạn thẳng", F("Cộng độ dài", "M nằm giữa A và B ⇒ AM + MB = AB"),
-              F("Trung điểm", "M là trung điểm AB ⇒ MA = MB = AB/2"),
-              F("Trên tia Ox", "OA < OB ⇒ A nằm giữa O, B và AB = OB − OA")),
-            G("II. Góc", F("Góc vuông", "90°"), F("Góc nhọn", "0° < α < 90°"), F("Góc tù", "90° < α < 180°"), F("Góc bẹt", "180° (hai cạnh là hai tia đối nhau)"),
-              F("Góc giữa hai kim đồng hồ", "Mỗi “số” trên mặt đồng hồ ứng với 360° : 12 = 30°")),
-            G("III. Đếm đường thẳng", F("n điểm, không có 3 điểm nào thẳng hàng", "Số đường thẳng = n(n − 1)/2")),
+            G("I. Đoạn thẳng", F("Cộng độ dài", "M nằm giữa A và B ⇒ AM + MB = AB"), F("Trung điểm", "M là trung điểm AB ⇒ MA = MB = AB/2"), F("Trên tia Ox", "OA < OB ⇒ A nằm giữa O, B và AB = OB − OA")),
+            G("II. Góc", F("Góc vuông", "90°"), F("Góc nhọn", "0° < α < 90°"), F("Góc tù", "90° < α < 180°"), F("Góc bẹt", "180° (hai cạnh là hai tia đối nhau)"), F("Góc giữa hai kim đồng hồ", "Mỗi “số” trên mặt đồng hồ ứng với 360° : 12 = 30°")),
+            G("III. Đếm đường thẳng", F("n điểm, không có 3 điểm nào thẳng hàng", "Số đường thẳng = n$\\frac{n − 1}{2}$")),
         ],
         "example": "Cho đoạn thẳng AB = 12 cm. Gọi C là trung điểm của AB, D là trung điểm của AC. Tính DB.",
         "example_answer": "AC = CB = 12 : 2 = 6 cm; DC = AC : 2 = 3 cm. D nằm giữa A và C nên D nằm giữa A, B và DB = DC + CB = 3 + 6 = **9 cm**.",
         "real_life": "- Căng dây để trồng cây thẳng hàng; chia đôi thanh gỗ (trung điểm); đọc góc giữa hai kim đồng hồ; góc mở cánh cửa, góc nghiêng mái nhà.",
         "quiz": [
-            mcq("biet", "Qua hai điểm phân biệt A và B có bao nhiêu đường thẳng?", ["0", "1", "2", "Vô số"], 1,
-                "Có **một và chỉ một** đường thẳng đi qua hai điểm phân biệt."),
+            mcq("biet", "Qua hai điểm phân biệt A và B có bao nhiêu đường thẳng?", ["0", "1", "2", "Vô số"], 1, "Có **một và chỉ một** đường thẳng đi qua hai điểm phân biệt."),
             mcq("biet", "Góc bẹt có số đo bằng:", ["90°", "100°", "180°", "360°"], 2, "Góc bẹt có hai cạnh là hai tia đối nhau, số đo **180°**."),
             mcq("biet", "M là trung điểm của đoạn thẳng AB dài 10 cm. Độ dài MA là:", ["10 cm", "20 cm", "5 cm", "2,5 cm"], 2, "MA = AB : 2 = 10 : 2 = **5 cm**."),
-            mcq("biet", "Hai tia Ox và Oy chung gốc O tạo thành đường thẳng xy được gọi là:", ["Hai tia trùng nhau", "Hai tia đối nhau", "Hai tia song song", "Hai đoạn thẳng"], 1,
-                "Hai tia chung gốc tạo thành một đường thẳng là **hai tia đối nhau**."),
-            mcq("hieu", "Điểm M nằm giữa A và B, biết AM = 3 cm, AB = 8 cm. Độ dài MB là:", ["11 cm", "5 cm", "4 cm", "3 cm"], 1,
-                "AM + MB = AB ⇒ MB = 8 − 3 = **5 cm**."),
-            mcq("hieu", "Cho 4 điểm, không có ba điểm nào thẳng hàng. Kẻ các đường thẳng đi qua từng cặp điểm. Số đường thẳng là:", ["4", "6", "8", "12"], 1,
-                "Mỗi điểm nối với 3 điểm còn lại: 4 · 3 = 12, mỗi đường được đếm 2 lần ⇒ 12 : 2 = **6**.", note="Công thức n(n − 1)/2."),
-            tf4("hieu", "Mỗi khẳng định sau đúng hay sai?",
-                ["a) Góc có hai cạnh là hai tia đối nhau là góc bẹt", "b) Góc có số đo 95° là góc nhọn",
-                 "c) Nếu MA = MB thì M là trung điểm của đoạn thẳng AB", "d) Trong ba điểm thẳng hàng có đúng một điểm nằm giữa hai điểm còn lại"],
-                [True, False, False, True],
-                "a) Đúng theo định nghĩa góc bẹt.\nb) 90° < 95° < 180° ⇒ góc tù → Sai.\nc) Còn cần M nằm giữa A, B (M có thể không thuộc AB) → Sai.\nd) Đúng (tính chất ba điểm thẳng hàng)."),
-            tf4("hieu", "Trên tia Ox lấy hai điểm A, B sao cho OA = 3 cm, OB = 7 cm. Gọi M là trung điểm của AB. Mỗi khẳng định sau đúng hay sai?",
-                ["a) Điểm A nằm giữa hai điểm O và B", "b) AB = 4 cm", "c) OM = 5 cm", "d) OA > AB"],
-                [True, True, True, False],
-                "a) A, B cùng thuộc tia Ox và OA < OB ⇒ A nằm giữa O và B → Đúng.\nb) AB = OB − OA = 7 − 3 = 4 cm → Đúng.\nc) AM = 4 : 2 = 2 cm; OM = OA + AM = 3 + 2 = 5 cm → Đúng.\nd) OA = 3 cm < AB = 4 cm → Sai."),
-            mcq("vandung", "Cho đoạn thẳng AB = 12 cm. C là trung điểm của AB, D là trung điểm của AC. Độ dài DB là:", ["6 cm", "3 cm", "9 cm", "4,5 cm"], 2,
-                "AC = CB = 6 cm; DC = 3 cm; DB = DC + CB = 3 + 6 = **9 cm**."),
-            short("vandung", "Lúc 5 giờ đúng, góc tạo bởi kim giờ và kim phút (góc không lớn hơn 180°) có số đo bao nhiêu độ?", ["150", "150°"],
-                  "Kim phút chỉ số 12, kim giờ chỉ số 5: cách nhau 5 khoảng, mỗi khoảng 30° ⇒ 5 · 30° = **150°**.", unit="°"),
+            mcq("biet", "Hai tia Ox và Oy chung gốc O tạo thành đường thẳng xy được gọi là:", ["Hai tia trùng nhau", "Hai tia đối nhau", "Hai tia song song", "Hai đoạn thẳng"], 1, "Hai tia chung gốc tạo thành một đường thẳng là **hai tia đối nhau**."),
+            mcq("hieu", "Điểm M nằm giữa A và B, biết AM = 3 cm, AB = 8 cm. Độ dài MB là:", ["11 cm", "5 cm", "4 cm", "3 cm"], 1, "AM + MB = AB ⇒ MB = 8 − 3 = **5 cm**."),
+            mcq("hieu", "Cho 4 điểm, không có ba điểm nào thẳng hàng. Kẻ các đường thẳng đi qua từng cặp điểm. Số đường thẳng là:", ["4", "6", "8", "12"], 1, "Mỗi điểm nối với 3 điểm còn lại: 4 · 3 = 12, mỗi đường được đếm 2 lần ⇒ 12 : 2 = **6**.", note="Công thức n$\\frac{n − 1}{2}$."),
+            tf4("hieu", "Mỗi khẳng định sau đúng hay sai?", ["a) Góc có hai cạnh là hai tia đối nhau là góc bẹt", "b) Góc có số đo 95° là góc nhọn", "c) Nếu MA = MB thì M là trung điểm của đoạn thẳng AB", "d) Trong ba điểm thẳng hàng có đúng một điểm nằm giữa hai điểm còn lại"], [True, False, False, True], "a) Đúng theo định nghĩa góc bẹt.\nb) 90° < 95° < 180° ⇒ góc tù → Sai.\nc) Còn cần M nằm giữa A, B (M có thể không thuộc AB) → Sai.\nd) Đúng (tính chất ba điểm thẳng hàng)."),
+            tf4("hieu", "Trên tia Ox lấy hai điểm A, B sao cho OA = 3 cm, OB = 7 cm. Gọi M là trung điểm của AB. Mỗi khẳng định sau đúng hay sai?", ["a) Điểm A nằm giữa hai điểm O và B", "b) AB = 4 cm", "c) OM = 5 cm", "d) OA > AB"], [True, True, True, False], "a) A, B cùng thuộc tia Ox và OA < OB ⇒ A nằm giữa O và B → Đúng.\nb) AB = OB − OA = 7 − 3 = 4 cm → Đúng.\nc) AM = 4 : 2 = 2 cm; OM = OA + AM = 3 + 2 = 5 cm → Đúng.\nd) OA = 3 cm < AB = 4 cm → Sai."),
+            mcq("vandung", "Cho đoạn thẳng AB = 12 cm. C là trung điểm của AB, D là trung điểm của AC. Độ dài DB là:", ["6 cm", "3 cm", "9 cm", "4,5 cm"], 2, "AC = CB = 6 cm; DC = 3 cm; DB = DC + CB = 3 + 6 = **9 cm**."),
+            short("vandung", "Lúc 5 giờ đúng, góc tạo bởi kim giờ và kim phút (góc không lớn hơn 180°) có số đo bao nhiêu độ?", ["150", "150°"], "Kim phút chỉ số 12, kim giờ chỉ số 5: cách nhau 5 khoảng, mỗi khoảng 30° ⇒ 5 · 30° = **150°**.", unit="°"),
         ],
     },
-    # ===================== CHƯƠNG IX =====================
     {
         "topic": "l6-ch09-du-lieu-xac-suat-thuc-nghiem",
         "title": "Dữ liệu và xác suất thực nghiệm",
@@ -519,50 +454,40 @@ LESSONS += [
             "- **Xác suất thực nghiệm** của sự kiện A = (Số lần A xảy ra) : (Tổng số lần thực hiện)."
         ),
         "theory": (
-            "### Bài 38. Dữ liệu và thu thập dữ liệu\n- Phân loại dữ liệu; kiểm tra tính hợp lí (ví dụ: chiều cao 15 m của học sinh là không hợp lí).\n"
-            "### Bài 39. Bảng thống kê và biểu đồ tranh\n- Mỗi biểu tượng ứng với một số lượng nhất định (ví dụ 1 ⭐ = 10 học sinh).\n"
-            "### Bài 40. Biểu đồ cột\n- Trục ngang ghi đối tượng, trục đứng ghi số lượng; độ cao cột biểu diễn số liệu.\n"
-            "### Bài 41. Biểu đồ cột kép\n- Hai cột đặt cạnh nhau cho mỗi đối tượng, có chú giải màu; dùng để so sánh hai bộ dữ liệu.\n"
+            "### Bài 38. Dữ liệu và thu thập dữ liệu\n"
+            "- Phân loại dữ liệu; kiểm tra tính hợp lí (ví dụ: chiều cao 15 m của học sinh là không hợp lí).\n"
+            "### Bài 39. Bảng thống kê và biểu đồ tranh\n"
+            "- Mỗi biểu tượng ứng với một số lượng nhất định (ví dụ 1 ⭐ = 10 học sinh).\n"
+            "### Bài 40. Biểu đồ cột\n"
+            "- Trục ngang ghi đối tượng, trục đứng ghi số lượng; độ cao cột biểu diễn số liệu.\n"
+            "### Bài 41. Biểu đồ cột kép\n"
+            "- Hai cột đặt cạnh nhau cho mỗi đối tượng, có chú giải màu; dùng để so sánh hai bộ dữ liệu.\n"
             "### Luyện tập chung\n"
-            "### Bài 42. Kết quả có thể và sự kiện trong trò chơi, thí nghiệm\n- Liệt kê các kết quả có thể; xác định sự kiện xảy ra hay không.\n"
-            "### Bài 43. Xác suất thực nghiệm\n- Tung đồng xu 40 lần, 18 lần ngửa ⇒ xác suất thực nghiệm xuất hiện mặt N là 18/40 = 9/20.\n"
+            "### Bài 42. Kết quả có thể và sự kiện trong trò chơi, thí nghiệm\n"
+            "- Liệt kê các kết quả có thể; xác định sự kiện xảy ra hay không.\n"
+            "### Bài 43. Xác suất thực nghiệm\n"
+            "- Tung đồng xu 40 lần, 18 lần ngửa ⇒ xác suất thực nghiệm xuất hiện mặt N là $\\frac{18}{40}$ = $\\frac{9}{20}$.\n"
             "### Luyện tập chung · Bài tập cuối chương IX"
         ),
         "formulas": [
-            G("I. Xác suất thực nghiệm", F("Xác suất thực nghiệm của sự kiện A", "Số lần A xảy ra : Tổng số lần thực hiện"),
-              F("Sự kiện “không A”", "Số lần không xảy ra A = Tổng số lần − Số lần A xảy ra")),
+            G("I. Xác suất thực nghiệm", F("Xác suất thực nghiệm của sự kiện A", "Số lần A xảy ra : Tổng số lần thực hiện"), F("Sự kiện “không A”", "Số lần không xảy ra A = Tổng số lần − Số lần A xảy ra")),
             G("II. Kết quả có thể", F("Tung 1 đồng xu", "{S; N} – 2 kết quả"), F("Gieo 1 xúc xắc", "{1; 2; 3; 4; 5; 6} – 6 kết quả")),
             G("III. Đọc biểu đồ", F("Tỉ lệ của một nhóm", "Số liệu của nhóm : Tổng số liệu"), F("Chênh lệch", "Hiệu hai số liệu tương ứng")),
         ],
         "example": "Bình tung một đồng xu 40 lần, có 18 lần xuất hiện mặt ngửa. Tính xác suất thực nghiệm xuất hiện mặt ngửa và mặt sấp.",
-        "example_answer": "Mặt ngửa: 18/40 = **9/20**. Mặt sấp xuất hiện 40 − 18 = 22 lần: 22/40 = **11/20**.",
+        "example_answer": "Mặt ngửa: $\\frac{18}{40}$ = **9/20**. Mặt sấp xuất hiện 40 − 18 = 22 lần: $\\frac{22}{40}$ = **11/20**.",
         "real_life": "- Điều tra món ăn yêu thích của lớp; đọc biểu đồ lượng mưa, dân số; dự đoán khả năng trúng đích, khả năng trời mưa từ dữ liệu đã có.",
         "quiz": [
-            mcq("biet", "Dữ liệu nào sau đây **không phải** là số?", ["Chiều cao của các bạn trong lớp", "Màu sắc yêu thích của các bạn", "Số anh chị em của mỗi bạn", "Điểm kiểm tra môn Toán"], 1,
-                "Màu sắc là dữ liệu **không phải là số**."),
+            mcq("biet", "Dữ liệu nào sau đây **không phải** là số?", ["Chiều cao của các bạn trong lớp", "Màu sắc yêu thích của các bạn", "Số anh chị em của mỗi bạn", "Điểm kiểm tra môn Toán"], 1, "Màu sắc là dữ liệu **không phải là số**."),
             mcq("biet", "Tung một đồng xu, tập hợp các kết quả có thể là:", ["{S}", "{N}", "{S; N}", "{1; 2}"], 2, "Đồng xu có hai mặt: sấp (S) và ngửa (N) ⇒ **{S; N}**."),
             mcq("biet", "Gieo một con xúc xắc 6 mặt, số kết quả có thể là:", ["2", "4", "6", "12"], 2, "Các kết quả: 1, 2, 3, 4, 5, 6 ⇒ **6** kết quả."),
-            mcq("biet", "Để so sánh số học sinh nam và nữ của từng lớp trong khối 6, nên dùng:", ["Biểu đồ tranh", "Biểu đồ cột kép", "Bảng ghi tên học sinh", "Hình vẽ đoạn thẳng"], 1,
-                "So sánh **hai bộ dữ liệu cùng loại** (nam, nữ) ⇒ **biểu đồ cột kép**."),
-            mcq("hieu", "Tung một đồng xu 40 lần, có 18 lần xuất hiện mặt ngửa. Xác suất thực nghiệm xuất hiện mặt ngửa là:", ["18/22", "9/20", "11/20", "18"], 1,
-                "18/40 = **9/20**."),
-            mcq("hieu", "Gieo một con xúc xắc. Sự kiện “Số chấm xuất hiện là số chẵn” xảy ra khi kết quả là:", ["1; 3; 5", "2; 4; 6", "2; 3; 5", "4; 5; 6"], 1,
-                "Các số chẵn trong {1;…;6} là **2; 4; 6**."),
-            tf4("hieu", "Biểu đồ cột cho biết số học sinh lớp 6A thích các môn: Toán 12, Ngữ văn 8, Tiếng Anh 10, Tin học 15 (mỗi bạn chọn một môn). Mỗi khẳng định sau đúng hay sai?",
-                ["a) Môn Tin học được yêu thích nhiều nhất", "b) Lớp 6A có 45 học sinh tham gia khảo sát",
-                 "c) Số bạn thích Toán nhiều hơn số bạn thích Ngữ văn là 2 bạn", "d) Số bạn thích Tiếng Anh chiếm 2/9 số học sinh tham gia"],
-                [True, True, False, True],
-                "a) 15 là số lớn nhất → Đúng.\nb) 12 + 8 + 10 + 15 = 45 → Đúng.\nc) 12 − 8 = 4 bạn → Sai.\nd) 10/45 = 2/9 → Đúng."),
-            tf4("hieu", "Gieo một con xúc xắc 50 lần: mặt 6 chấm xuất hiện 9 lần; mặt có số chấm chẵn xuất hiện 26 lần. Mỗi khẳng định sau đúng hay sai?",
-                ["a) Xác suất thực nghiệm xuất hiện mặt 6 chấm là 9/50", "b) Xác suất thực nghiệm xuất hiện mặt có số chấm lẻ là 12/25",
-                 "c) Sự kiện “Số chấm xuất hiện lớn hơn hoặc bằng 7” có thể xảy ra", "d) Xác suất thực nghiệm xuất hiện mặt chẵn là 26%"],
-                [True, True, False, False],
-                "a) 9/50 → Đúng.\nb) Mặt lẻ: 50 − 26 = 24 lần ⇒ 24/50 = 12/25 → Đúng.\nc) Xúc xắc chỉ có từ 1 đến 6 chấm ⇒ không thể xảy ra → Sai.\nd) 26/50 = 52% → Sai."),
-            mcq("vandung", "Một xạ thủ bắn 60 viên đạn, có 51 viên trúng đích. Xác suất thực nghiệm bắn trúng đích là:", ["51%", "85%", "15%", "9/60"], 1,
-                "51/60 = 0,85 = **85%**."),
-            short("vandung", "Một hộp có bóng đỏ và bóng xanh. Lấy ngẫu nhiên một quả rồi trả lại, lặp lại 80 lần, thấy 28 lần lấy được bóng đỏ. Xác suất thực nghiệm của sự kiện “Không lấy được bóng đỏ” là bao nhiêu? (viết dạng phân số tối giản)",
-                  ["13/20", "0,65"],
-                  "Số lần không lấy được bóng đỏ: 80 − 28 = 52. Xác suất thực nghiệm: 52/80 = **13/20** (= 0,65)."),
+            mcq("biet", "Để so sánh số học sinh nam và nữ của từng lớp trong khối 6, nên dùng:", ["Biểu đồ tranh", "Biểu đồ cột kép", "Bảng ghi tên học sinh", "Hình vẽ đoạn thẳng"], 1, "So sánh **hai bộ dữ liệu cùng loại** (nam, nữ) ⇒ **biểu đồ cột kép**."),
+            mcq("hieu", "Tung một đồng xu 40 lần, có 18 lần xuất hiện mặt ngửa. Xác suất thực nghiệm xuất hiện mặt ngửa là:", ["$\\frac{18}{22}$", "$\\frac{9}{20}$", "$\\frac{11}{20}$", "18"], 1, "$\\frac{18}{40}$ = **9/20**."),
+            mcq("hieu", "Gieo một con xúc xắc. Sự kiện “Số chấm xuất hiện là số chẵn” xảy ra khi kết quả là:", ["1; 3; 5", "2; 4; 6", "2; 3; 5", "4; 5; 6"], 1, "Các số chẵn trong {1;…;6} là **2; 4; 6**."),
+            tf4("hieu", "Biểu đồ cột cho biết số học sinh lớp 6A thích các môn: Toán 12, Ngữ văn 8, Tiếng Anh 10, Tin học 15 (mỗi bạn chọn một môn). Mỗi khẳng định sau đúng hay sai?", ["a) Môn Tin học được yêu thích nhiều nhất", "b) Lớp 6A có 45 học sinh tham gia khảo sát", "c) Số bạn thích Toán nhiều hơn số bạn thích Ngữ văn là 2 bạn", "d) Số bạn thích Tiếng Anh chiếm $\\frac{2}{9}$ số học sinh tham gia"], [True, True, False, True], "a) 15 là số lớn nhất → Đúng.\nb) 12 + 8 + 10 + 15 = 45 → Đúng.\nc) 12 − 8 = 4 bạn → Sai.\nd) $\\frac{10}{45}$ = $\\frac{2}{9}$ → Đúng."),
+            tf4("hieu", "Gieo một con xúc xắc 50 lần: mặt 6 chấm xuất hiện 9 lần; mặt có số chấm chẵn xuất hiện 26 lần. Mỗi khẳng định sau đúng hay sai?", ["a) Xác suất thực nghiệm xuất hiện mặt 6 chấm là $\\frac{9}{50}$", "b) Xác suất thực nghiệm xuất hiện mặt có số chấm lẻ là $\\frac{12}{25}$", "c) Sự kiện “Số chấm xuất hiện lớn hơn hoặc bằng 7” có thể xảy ra", "d) Xác suất thực nghiệm xuất hiện mặt chẵn là 26%"], [True, True, False, False], "a) $\\frac{9}{50}$ → Đúng.\nb) Mặt lẻ: 50 − 26 = 24 lần ⇒ $\\frac{24}{50}$ = $\\frac{12}{25}$ → Đúng.\nc) Xúc xắc chỉ có từ 1 đến 6 chấm ⇒ không thể xảy ra → Sai.\nd) $\\frac{26}{50}$ = 52% → Sai."),
+            mcq("vandung", "Một xạ thủ bắn 60 viên đạn, có 51 viên trúng đích. Xác suất thực nghiệm bắn trúng đích là:", ["51%", "85%", "15%", "$\\frac{9}{60}$"], 1, "$\\frac{51}{60}$ = 0,85 = **85%**."),
+            short("vandung", "Một hộp có bóng đỏ và bóng xanh. Lấy ngẫu nhiên một quả rồi trả lại, lặp lại 80 lần, thấy 28 lần lấy được bóng đỏ. Xác suất thực nghiệm của sự kiện “Không lấy được bóng đỏ” là bao nhiêu? (viết dạng phân số tối giản)", ["13/20", "0,65"], "Số lần không lấy được bóng đỏ: 80 − 28 = 52. Xác suất thực nghiệm: $\\frac{52}{80}$ = **13/20** (= 0,65)."),
         ],
     },
 ]

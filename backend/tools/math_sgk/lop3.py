@@ -9,7 +9,6 @@ from ._helpers import F, G, mcq, short, tf
 GRADE = 3
 
 LESSONS = [
-    # ===================== CHỦ ĐỀ 1 =====================
     {
         "topic": "l3-cd01-on-tap-va-bo-sung",
         "title": "Ôn tập và bổ sung",
@@ -43,15 +42,15 @@ LESSONS = [
             "### Bài 8. Luyện tập chung"
         ),
         "formulas": [
-            G("I. Tìm thành phần phép cộng, trừ", F("Số hạng", "Số hạng = Tổng − Số hạng kia"),
-              F("Số bị trừ", "Số bị trừ = Hiệu + Số trừ"),
-              F("Số trừ", "Số trừ = Số bị trừ − Hiệu")),
-            G("II. Bảng nhân – chia", F("Bảng 3", "3 × 1 = 3 … 3 × 10 = 30 · 30 : 3 = 10"),
-              F("Bảng 4", "4 × 1 = 4 … 4 × 10 = 40 · 40 : 4 = 10")),
+            G("I. Tìm thành phần phép cộng, trừ", F("Số hạng", "Số hạng = Tổng − Số hạng kia"), F("Số bị trừ", "Số bị trừ = Hiệu + Số trừ"), F("Số trừ", "Số trừ = Số bị trừ − Hiệu")),
+            G("II. Bảng nhân – chia", F("Bảng 3", "3 × 1 = 3 … 3 × 10 = 30 · 30 : 3 = 10"), F("Bảng 4", "4 × 1 = 4 … 4 × 10 = 40 · 40 : 4 = 10")),
         ],
         "example": "Tìm số trừ: 85 − ? = 39.",
         "example_answer": "Số trừ = Số bị trừ − Hiệu = 85 − 39 = **46**. Thử lại: 85 − 46 = 39 ✔.",
-        "real_life": "- Biết tổng số bạn và số bạn nam, tìm số bạn nữ.\n- Chia đều 24 cái bánh vào 4 hộp.",
+        "real_life": (
+            "- Biết tổng số bạn và số bạn nam, tìm số bạn nữ.\n"
+            "- Chia đều 24 cái bánh vào 4 hộp."
+        ),
         "quiz": [
             mcq("biet", "3 × 8 = ?", ["24", "21", "27", "11"], 0, "Bảng nhân 3: 3 × 8 = **24**."),
             mcq("biet", "28 : 4 = ?", ["6", "7", "8", "24"], 1, "Vì 4 × 7 = 28 nên 28 : 4 = **7**."),
@@ -62,11 +61,9 @@ LESSONS = [
             tf("hieu", "Nhận định: “4 × 9 = 36.”", True, "Bảng nhân 4: 4 × 9 = 36 → **Đúng**."),
             tf("hieu", "Nhận định: “Trong phép tính 70 − ? = 25, số cần tìm là 95.”", False, "Số trừ = 70 − 25 = 45, không phải 95 → **Sai**.", note="Tìm số trừ phải lấy số bị trừ trừ đi hiệu."),
             mcq("vandung", "Có 27 học sinh xếp đều thành 3 hàng. Mỗi hàng có bao nhiêu học sinh?", ["9", "8", "24", "30"], 0, "27 : 3 = **9** (học sinh)."),
-            short("vandung", "Một cửa hàng có 450 kg gạo, sau khi bán còn lại 175 kg. Hỏi cửa hàng đã bán bao nhiêu ki-lô-gam gạo?", ["275"],
-                  "Số đã bán = Số ban đầu − Số còn lại = 450 − 175 = 275 (kg).\nĐáp số: **275 kg**.", unit="kg"),
+            short("vandung", "Một cửa hàng có 450 kg gạo, sau khi bán còn lại 175 kg. Hỏi cửa hàng đã bán bao nhiêu ki-lô-gam gạo?", ["275"], "Số đã bán = Số ban đầu − Số còn lại = 450 − 175 = 275 (kg).\nĐáp số: **275 kg**.", unit="kg"),
         ],
     },
-    # ===================== CHỦ ĐỀ 2 =====================
     {
         "topic": "l3-cd02-bang-nhan-bang-chia",
         "title": "Bảng nhân, bảng chia",
@@ -75,49 +72,53 @@ LESSONS = [
         "requirements": [
             "Vận dụng được các bảng nhân, bảng chia 6, 7, 8, 9 trong thực hành tính.",
             "Xác định được thành phần chưa biết của phép nhân, phép chia (thừa số, số bị chia, số chia).",
-            "Nhận biết được 1/2, 1/3, …, 1/9 thông qua hình ảnh trực quan; xác định được một phần mấy của một nhóm đồ vật.",
+            "Nhận biết được $\\frac{1}{2}$, $\\frac{1}{3}$, …, $\\frac{1}{9}$ thông qua hình ảnh trực quan; xác định được một phần mấy của một nhóm đồ vật.",
             "Giải được bài toán thực tế liên quan đến phép nhân, phép chia.",
         ],
         "definition": (
             "- **Tìm thừa số**: Thừa số = Tích : Thừa số kia.\n"
             "- **Tìm số bị chia**: Số bị chia = Thương × Số chia. **Tìm số chia**: Số chia = Số bị chia : Thương.\n"
-            "- **Một phần mấy**: chia hình (nhóm đồ vật) thành n phần **bằng nhau**, lấy 1 phần được 1/n. Muốn tìm 1/n của một số, lấy số đó **chia cho n**."
+            "- **Một phần mấy**: chia hình (nhóm đồ vật) thành n phần **bằng nhau**, lấy 1 phần được $\\frac{1}{n}$. Muốn tìm $\\frac{1}{n}$ của một số, lấy số đó **chia cho n**."
         ),
         "theory": (
-            "### Bài 9. Bảng nhân 6, bảng chia 6\n- 6 × 7 = 42 → 42 : 6 = 7.\n"
-            "### Bài 10. Bảng nhân 7, bảng chia 7\n- 7 × 8 = 56 → 56 : 7 = 8.\n"
-            "### Bài 11. Bảng nhân 8, bảng chia 8\n- 8 × 6 = 48 → 48 : 8 = 6.\n"
-            "### Bài 12. Bảng nhân 9, bảng chia 9\n- 9 × 7 = 63 → 63 : 9 = 7.\n"
+            "### Bài 9. Bảng nhân 6, bảng chia 6\n"
+            "- 6 × 7 = 42 → 42 : 6 = 7.\n"
+            "### Bài 10. Bảng nhân 7, bảng chia 7\n"
+            "- 7 × 8 = 56 → 56 : 7 = 8.\n"
+            "### Bài 11. Bảng nhân 8, bảng chia 8\n"
+            "- 8 × 6 = 48 → 48 : 8 = 6.\n"
+            "### Bài 12. Bảng nhân 9, bảng chia 9\n"
+            "- 9 × 7 = 63 → 63 : 9 = 7.\n"
             "### Bài 13. Tìm thành phần trong phép nhân, phép chia\n"
             "- ? × 6 = 54 → 54 : 6 = 9; ? : 7 = 5 → 5 × 7 = 35; 48 : ? = 8 → 48 : 8 = 6.\n"
-            "### Bài 14. Một phần mấy\n- 1/4 của 20 cái kẹo là 20 : 4 = 5 cái.\n"
+            "### Bài 14. Một phần mấy\n"
+            "- $\\frac{1}{4}$ của 20 cái kẹo là 20 : 4 = 5 cái.\n"
             "### Bài 15. Luyện tập chung"
         ),
         "formulas": [
-            G("I. Tìm thành phần phép nhân, chia", F("Thừa số", "Thừa số = Tích : Thừa số kia"),
-              F("Số bị chia", "Số bị chia = Thương × Số chia"),
-              F("Số chia", "Số chia = Số bị chia : Thương")),
-            G("II. Một phần mấy", F("1/n của một số", "1/n của a = a : n", "1/3 của 18 = 18 : 3 = 6.")),
+            G("I. Tìm thành phần phép nhân, chia", F("Thừa số", "Thừa số = Tích : Thừa số kia"), F("Số bị chia", "Số bị chia = Thương × Số chia"), F("Số chia", "Số chia = Số bị chia : Thương")),
+            G("II. Một phần mấy", F("1/n của một số", "$\\frac{1}{n}$ của a = a : n", "$\\frac{1}{3}$ của 18 = 18 : 3 = 6.")),
             G("III. Bảng nhân 6–9 (mẹo)", F("Bảng 9", "9 × n = 10 × n − n", "9 × 7 = 70 − 7 = 63.")),
         ],
         "example": "Tìm số bị chia: ? : 8 = 7.",
         "example_answer": "Số bị chia = Thương × Số chia = 7 × 8 = **56**. Thử lại: 56 : 8 = 7 ✔.",
-        "real_life": "- Một tuần có 7 ngày: 4 tuần = 7 × 4 = 28 ngày.\n- Chia đôi (1/2) cái bánh, lấy 1/4 số kẹo.",
+        "real_life": (
+            "- Một tuần có 7 ngày: 4 tuần = 7 × 4 = 28 ngày.\n"
+            "- Chia đôi ($\\frac{1}{2}$) cái bánh, lấy $\\frac{1}{4}$ số kẹo."
+        ),
         "quiz": [
             mcq("biet", "6 × 7 = ?", ["42", "36", "48", "13"], 0, "Bảng nhân 6: 6 × 7 = **42**."),
             mcq("biet", "56 : 8 = ?", ["6", "7", "8", "9"], 1, "8 × 7 = 56 nên 56 : 8 = **7**."),
             mcq("biet", "9 × 9 = ?", ["18", "72", "81", "99"], 2, "Bảng nhân 9: 9 × 9 = **81**."),
             mcq("biet", "Muốn tìm thừa số chưa biết, ta lấy:", ["Tích nhân thừa số kia", "Tích chia cho thừa số kia", "Tích trừ thừa số kia", "Thừa số kia chia cho tích"], 1, "Thừa số = **Tích : Thừa số kia**."),
-            mcq("hieu", "1/6 của 42 l nước là:", ["6 l", "7 l", "36 l", "48 l"], 1, "42 : 6 = **7** (l)."),
+            mcq("hieu", "$\\frac{1}{6}$ của 42 l nước là:", ["6 l", "7 l", "36 l", "48 l"], 1, "42 : 6 = **7** (l)."),
             mcq("hieu", "Tìm số chia: 63 : ? = 9", ["7", "8", "54", "72"], 0, "Số chia = 63 : 9 = **7**."),
             tf("hieu", "Nhận định: “8 × 7 = 54.”", False, "8 × 7 = 56 → **Sai**.", note="Nhớ: 7 × 8 = 56, 6 × 9 = 54."),
-            tf("hieu", "Nhận định: “Hình được chia thành 5 phần bằng nhau, tô màu 1 phần thì đã tô màu 1/5 hình.”", True, "Chia 5 phần bằng nhau, lấy 1 phần → 1/5 → **Đúng**."),
+            tf("hieu", "Nhận định: “Hình được chia thành 5 phần bằng nhau, tô màu 1 phần thì đã tô màu $\\frac{1}{5}$ hình.”", True, "Chia 5 phần bằng nhau, lấy 1 phần → $\\frac{1}{5}$ → **Đúng**."),
             mcq("vandung", "Mỗi hộp có 8 cái bánh. Hỏi 6 hộp như thế có bao nhiêu cái bánh?", ["14", "42", "48", "56"], 2, "8 × 6 = **48** (cái bánh)."),
-            short("vandung", "Lớp 3A có 35 học sinh, trong đó 1/7 số học sinh là học sinh giỏi Toán. Hỏi lớp có bao nhiêu học sinh giỏi Toán?", ["5"],
-                  "1/7 của 35 là 35 : 7 = 5 (học sinh).\nĐáp số: **5 học sinh**.", unit="học sinh"),
+            short("vandung", "Lớp 3A có 35 học sinh, trong đó $\\frac{1}{7}$ số học sinh là học sinh giỏi Toán. Hỏi lớp có bao nhiêu học sinh giỏi Toán?", ["5"], "$\\frac{1}{7}$ của 35 là 35 : 7 = 5 (học sinh).\nĐáp số: **5 học sinh**.", unit="học sinh"),
         ],
     },
-    # ===================== CHỦ ĐỀ 3 =====================
     {
         "topic": "l3-cd03-hinh-phang-hinh-khoi",
         "title": "Làm quen với hình phẳng, hình khối",
@@ -137,24 +138,29 @@ LESSONS = [
             "- **Khối lập phương, khối hộp chữ nhật**: đều có **8 đỉnh, 12 cạnh, 6 mặt**; khối lập phương có 6 mặt là hình vuông bằng nhau."
         ),
         "theory": (
-            "### Bài 16. Điểm ở giữa, trung điểm của đoạn thẳng\n- Trung điểm chia đoạn thẳng thành hai phần dài bằng nhau.\n"
-            "### Bài 17. Hình tròn. Tâm, bán kính, đường kính của hình tròn\n- Mọi bán kính bằng nhau; đường kính gấp đôi bán kính.\n"
-            "### Bài 18. Góc, góc vuông, góc không vuông\n- Góc gồm đỉnh và hai cạnh; góc vuông khớp với góc ê-ke.\n"
-            "### Bài 19. Hình tam giác, hình tứ giác. Hình chữ nhật, hình vuông\n- Tam giác: 3 đỉnh, 3 cạnh, 3 góc; tứ giác: 4 đỉnh, 4 cạnh, 4 góc.\n"
+            "### Bài 16. Điểm ở giữa, trung điểm của đoạn thẳng\n"
+            "- Trung điểm chia đoạn thẳng thành hai phần dài bằng nhau.\n"
+            "### Bài 17. Hình tròn. Tâm, bán kính, đường kính của hình tròn\n"
+            "- Mọi bán kính bằng nhau; đường kính gấp đôi bán kính.\n"
+            "### Bài 18. Góc, góc vuông, góc không vuông\n"
+            "- Góc gồm đỉnh và hai cạnh; góc vuông khớp với góc ê-ke.\n"
+            "### Bài 19. Hình tam giác, hình tứ giác. Hình chữ nhật, hình vuông\n"
+            "- Tam giác: 3 đỉnh, 3 cạnh, 3 góc; tứ giác: 4 đỉnh, 4 cạnh, 4 góc.\n"
             "### Bài 20. Thực hành vẽ góc vuông, vẽ đường tròn, hình vuông, hình chữ nhật và vẽ trang trí\n"
             "### Bài 21. Khối lập phương, khối hộp chữ nhật\n"
             "### Bài 22. Luyện tập chung"
         ),
         "formulas": [
-            G("I. Đoạn thẳng & hình tròn", F("Trung điểm M của AB", "MA = MB = AB : 2"),
-              F("Đường kính", "d = 2 × r", "r = 3 cm ⇒ d = 6 cm.")),
-            G("II. Hình phẳng", F("Hình chữ nhật", "4 góc vuông · 2 chiều dài bằng nhau · 2 chiều rộng bằng nhau"),
-              F("Hình vuông", "4 góc vuông · 4 cạnh bằng nhau")),
+            G("I. Đoạn thẳng & hình tròn", F("Trung điểm M của AB", "MA = MB = AB : 2"), F("Đường kính", "d = 2 × r", "r = 3 cm ⇒ d = 6 cm.")),
+            G("II. Hình phẳng", F("Hình chữ nhật", "4 góc vuông · 2 chiều dài bằng nhau · 2 chiều rộng bằng nhau"), F("Hình vuông", "4 góc vuông · 4 cạnh bằng nhau")),
             G("III. Hình khối", F("Khối lập phương / hộp chữ nhật", "8 đỉnh · 12 cạnh · 6 mặt")),
         ],
         "example": "Đoạn thẳng AB dài 10 cm, M là trung điểm của AB. Tính độ dài AM.",
         "example_answer": "M là trung điểm nên AM = MB = 10 : 2 = **5 cm**.",
-        "real_life": "- Dùng compa vẽ hình tròn trang trí; dùng ê-ke kiểm tra góc tường, góc bàn.\n- Hộp quà, viên xúc xắc là khối lập phương; bao diêm là khối hộp chữ nhật.",
+        "real_life": (
+            "- Dùng compa vẽ hình tròn trang trí; dùng ê-ke kiểm tra góc tường, góc bàn.\n"
+            "- Hộp quà, viên xúc xắc là khối lập phương; bao diêm là khối hộp chữ nhật."
+        ),
         "quiz": [
             mcq("biet", "Hình tròn có bán kính 4 cm thì đường kính là:", ["2 cm", "4 cm", "8 cm", "16 cm"], 2, "d = 2 × 4 = **8 cm**."),
             mcq("biet", "Dụng cụ dùng để kiểm tra góc vuông là:", ["Compa", "Ê-ke", "Thước dây", "Cân"], 1, "Dùng **ê-ke** để kiểm tra, vẽ góc vuông."),
@@ -165,11 +171,9 @@ LESSONS = [
             tf("hieu", "Nhận định: “Hình chữ nhật có 4 góc vuông.”", True, "Đúng theo đặc điểm hình chữ nhật → **Đúng**."),
             tf("hieu", "Nhận định: “Điểm O nằm giữa hai điểm A, B thì O chắc chắn là trung điểm của AB.”", False, "Trung điểm còn cần OA = OB; điểm ở giữa chưa chắc chia đôi đoạn thẳng → **Sai**."),
             mcq("vandung", "Một chiếc đĩa tròn có đường kính 20 cm. Bán kính của đĩa là:", ["40 cm", "10 cm", "20 cm", "5 cm"], 1, "r = d : 2 = 20 : 2 = **10 cm**."),
-            short("vandung", "Bạn Mai dán một viền giấy màu dọc theo tất cả các cạnh của một hộp quà hình lập phương. Hỏi Mai cần dán bao nhiêu đoạn viền (mỗi cạnh một đoạn)?", ["12"],
-                  "Khối lập phương có 12 cạnh nên cần **12** đoạn viền.", unit="đoạn"),
+            short("vandung", "Bạn Mai dán một viền giấy màu dọc theo tất cả các cạnh của một hộp quà hình lập phương. Hỏi Mai cần dán bao nhiêu đoạn viền (mỗi cạnh một đoạn)?", ["12"], "Khối lập phương có 12 cạnh nên cần **12** đoạn viền.", unit="đoạn"),
         ],
     },
-    # ===================== CHỦ ĐỀ 4 =====================
     {
         "topic": "l3-cd04-nhan-chia-pham-vi-100",
         "title": "Phép nhân, phép chia trong phạm vi 100",
@@ -187,23 +191,33 @@ LESSONS = [
             "- **Bài toán hai bước tính**: tìm một đại lượng trung gian trước, rồi dùng nó tính kết quả."
         ),
         "theory": (
-            "### Bài 23. Nhân số có hai chữ số với số có một chữ số\n- 26 × 3: 6 × 3 = 18, viết 8 nhớ 1; 2 × 3 = 6, thêm 1 là 7 → 78.\n"
-            "### Bài 24. Gấp một số lên một số lần\n- 5 gấp lên 4 lần: 5 × 4 = 20.\n"
-            "### Bài 25. Phép chia hết, phép chia có dư\n- 17 : 5 = 3 (dư 2) vì 3 × 5 + 2 = 17.\n"
-            "### Bài 26. Chia số có hai chữ số cho số có một chữ số\n- 84 : 4: 8 : 4 = 2; 4 : 4 = 1 → 21. 75 : 3: 7 : 3 = 2 dư 1, hạ 5 được 15; 15 : 3 = 5 → 25.\n"
-            "### Bài 27. Giảm một số đi một số lần\n- 36 giảm đi 4 lần: 36 : 4 = 9.\n"
+            "### Bài 23. Nhân số có hai chữ số với số có một chữ số\n"
+            "- 26 × 3: 6 × 3 = 18, viết 8 nhớ 1; 2 × 3 = 6, thêm 1 là 7 → 78.\n"
+            "### Bài 24. Gấp một số lên một số lần\n"
+            "- 5 gấp lên 4 lần: 5 × 4 = 20.\n"
+            "### Bài 25. Phép chia hết, phép chia có dư\n"
+            "- 17 : 5 = 3 (dư 2) vì 3 × 5 + 2 = 17.\n"
+            "### Bài 26. Chia số có hai chữ số cho số có một chữ số\n"
+            "- 84 : 4: 8 : 4 = 2; 4 : 4 = 1 → 21. 75 : 3: 7 : 3 = 2 dư 1, hạ 5 được 15; 15 : 3 = 5 → 25.\n"
+            "### Bài 27. Giảm một số đi một số lần\n"
+            "- 36 giảm đi 4 lần: 36 : 4 = 9.\n"
             "### Bài 28. Bài toán giải bằng hai bước tính\n"
             "### Bài 29. Luyện tập chung"
         ),
         "formulas": [
-            G("I. Gấp – giảm", F("Gấp lên n lần", "a × n"), F("Giảm đi n lần", "a : n"),
-              F("Phân biệt", "“thêm n đơn vị” → a + n · “gấp n lần” → a × n")),
-            G("II. Phép chia có dư", F("Quan hệ", "Số bị chia = Thương × Số chia + Số dư"),
-              F("Điều kiện", "Số dư < Số chia", "Chia cho 4 thì số dư chỉ có thể là 0, 1, 2, 3.")),
+            G("I. Gấp – giảm", F("Gấp lên n lần", "a × n"), F("Giảm đi n lần", "a : n"), F("Phân biệt", "“thêm n đơn vị” → a + n · “gấp n lần” → a × n")),
+            G("II. Phép chia có dư", F("Quan hệ", "Số bị chia = Thương × Số chia + Số dư"), F("Điều kiện", "Số dư < Số chia", "Chia cho 4 thì số dư chỉ có thể là 0, 1, 2, 3.")),
         ],
         "example": "Thùng thứ nhất có 15 l dầu, thùng thứ hai có số dầu gấp 3 lần thùng thứ nhất. Hỏi cả hai thùng có bao nhiêu lít dầu?",
-        "example_answer": "Bước 1 – Thùng thứ hai: 15 × 3 = 45 (l).\nBước 2 – Cả hai thùng: 15 + 45 = **60** (l).\nĐáp số: 60 l dầu.",
-        "real_life": "- Mua 4 quyển vở, mỗi quyển 12 nghìn đồng.\n- Xếp 50 quả trứng vào khay 6 quả: được 8 khay và thừa 2 quả.",
+        "example_answer": (
+            "Bước 1 – Thùng thứ hai: 15 × 3 = 45 (l).\n"
+            "Bước 2 – Cả hai thùng: 15 + 45 = **60** (l).\n"
+            "Đáp số: 60 l dầu."
+        ),
+        "real_life": (
+            "- Mua 4 quyển vở, mỗi quyển 12 nghìn đồng.\n"
+            "- Xếp 50 quả trứng vào khay 6 quả: được 8 khay và thừa 2 quả."
+        ),
         "quiz": [
             mcq("biet", "23 × 3 = ?", ["66", "69", "26", "96"], 1, "3 × 3 = 9; 2 × 3 = 6 → **69**."),
             mcq("biet", "Gấp 7 lên 5 lần được:", ["12", "35", "2", "75"], 1, "7 × 5 = **35**.", note="Không lấy 7 + 5."),
@@ -213,16 +227,10 @@ LESSONS = [
             mcq("hieu", "18 × 4 = ?", ["42", "72", "62", "48"], 1, "8 × 4 = 32, viết 2 nhớ 3; 1 × 4 = 4, thêm 3 là 7 → **72**."),
             tf("hieu", "Nhận định: “96 : 3 = 32.”", True, "9 : 3 = 3; 6 : 3 = 2 → 32 → **Đúng**."),
             tf("hieu", "Nhận định: “Gấp 6 lên 3 lần được 9.”", False, "Gấp 3 lần: 6 × 3 = 18; 9 là kết quả của “thêm 3” → **Sai**."),
-            mcq("vandung", "Có 34 học sinh, mỗi bàn ngồi 4 bạn. Cần ít nhất bao nhiêu bàn để ai cũng có chỗ?", ["8", "9", "7", "10"], 1,
-                "34 : 4 = 8 (dư 2). 8 bàn còn 2 bạn chưa có chỗ nên cần thêm 1 bàn: 8 + 1 = **9** bàn.", note="Bài toán “ít nhất” khi có dư phải cộng thêm 1."),
-            short("vandung", "Lan có 12 nhãn vở, Hoa có số nhãn vở gấp 4 lần Lan. Hỏi Hoa có nhiều hơn Lan bao nhiêu nhãn vở?", ["36"],
-                  "Hoa có: 12 × 4 = 48 (nhãn vở). Hoa nhiều hơn Lan: 48 − 12 = 36 (nhãn vở).\nĐáp số: **36**.", unit="nhãn vở"),
+            mcq("vandung", "Có 34 học sinh, mỗi bàn ngồi 4 bạn. Cần ít nhất bao nhiêu bàn để ai cũng có chỗ?", ["8", "9", "7", "10"], 1, "34 : 4 = 8 (dư 2). 8 bàn còn 2 bạn chưa có chỗ nên cần thêm 1 bàn: 8 + 1 = **9** bàn.", note="Bài toán “ít nhất” khi có dư phải cộng thêm 1."),
+            short("vandung", "Lan có 12 nhãn vở, Hoa có số nhãn vở gấp 4 lần Lan. Hỏi Hoa có nhiều hơn Lan bao nhiêu nhãn vở?", ["36"], "Hoa có: 12 × 4 = 48 (nhãn vở). Hoa nhiều hơn Lan: 48 − 12 = 36 (nhãn vở).\nĐáp số: **36**.", unit="nhãn vở"),
         ],
     },
-]
-
-LESSONS += [
-    # ===================== CHỦ ĐỀ 5 =====================
     {
         "topic": "l3-cd05-don-vi-do-do-dai-khoi-luong-dung-tich-nhiet-do",
         "title": "Một số đơn vị đo độ dài, khối lượng, dung tích, nhiệt độ",
@@ -241,10 +249,14 @@ LESSONS += [
             "- **Độ C** (°C): đơn vị đo nhiệt độ; đo bằng **nhiệt kế**. Nước đá tan ở 0 °C, nước sôi ở 100 °C; thân nhiệt người khoảng 37 °C."
         ),
         "theory": (
-            "### Bài 30. Mi-li-mét\n- Thước kẻ chia vạch nhỏ nhất là 1 mm; 1 cm = 10 mm.\n"
-            "### Bài 31. Gam\n- Gói muối 500 g; quả trứng khoảng 50 g; 1 kg = 1000 g.\n"
-            "### Bài 32. Mi-li-lít\n- Thìa thuốc 5 ml; chai nước 500 ml; 1 l = 1000 ml.\n"
-            "### Bài 33. Nhiệt độ. Đơn vị đo nhiệt độ\n- Đọc nhiệt kế: 25 °C đọc là “hai mươi lăm độ C”.\n"
+            "### Bài 30. Mi-li-mét\n"
+            "- Thước kẻ chia vạch nhỏ nhất là 1 mm; 1 cm = 10 mm.\n"
+            "### Bài 31. Gam\n"
+            "- Gói muối 500 g; quả trứng khoảng 50 g; 1 kg = 1000 g.\n"
+            "### Bài 32. Mi-li-lít\n"
+            "- Thìa thuốc 5 ml; chai nước 500 ml; 1 l = 1000 ml.\n"
+            "### Bài 33. Nhiệt độ. Đơn vị đo nhiệt độ\n"
+            "- Đọc nhiệt kế: 25 °C đọc là “hai mươi lăm độ C”.\n"
             "### Bài 34. Thực hành và trải nghiệm với các đơn vị mi-li-mét, gam, mi-li-lít, độ C\n"
             "### Bài 35. Luyện tập chung"
         ),
@@ -255,7 +267,10 @@ LESSONS += [
         ],
         "example": "Đổi: 4 cm = … mm; 2 kg = … g; 3 l = … ml.",
         "example_answer": "4 cm = **40 mm**; 2 kg = **2000 g**; 3 l = **3000 ml**.",
-        "real_life": "- Đọc khối lượng trên bao bì (gói mì 75 g), dung tích hộp sữa (180 ml).\n- Đo nhiệt độ khi bị sốt; xem dự báo thời tiết.",
+        "real_life": (
+            "- Đọc khối lượng trên bao bì (gói mì 75 g), dung tích hộp sữa (180 ml).\n"
+            "- Đo nhiệt độ khi bị sốt; xem dự báo thời tiết."
+        ),
         "quiz": [
             mcq("biet", "1 cm = … mm?", ["10", "100", "1000", "1"], 0, "1 cm = **10 mm**."),
             mcq("biet", "1 kg = … g?", ["10", "100", "1000", "500"], 2, "1 kg = **1000 g**."),
@@ -265,13 +280,10 @@ LESSONS += [
             mcq("hieu", "500 g + 300 g = ?", ["800 g", "8 kg", "200 g", "800 kg"], 0, "500 + 300 = 800 → **800 g**."),
             tf("hieu", "Nhận định: “Một quả trứng gà nặng khoảng 50 kg.”", False, "Quả trứng gà nặng khoảng 50 **g**, không phải 50 kg → **Sai**."),
             tf("hieu", "Nhận định: “1 m = 1000 mm.”", True, "1 m = 100 cm = 100 × 10 mm = 1000 mm → **Đúng**."),
-            mcq("vandung", "Mẹ có 1 l sữa, rót ra 3 cốc, mỗi cốc 200 ml. Còn lại bao nhiêu mi-li-lít sữa?", ["400 ml", "600 ml", "800 ml", "700 ml"], 0,
-                "Đã rót: 200 × 3 = 600 (ml). Đổi 1 l = 1000 ml. Còn lại: 1000 − 600 = **400 ml**."),
-            short("vandung", "Quả dưa nặng 2 kg, quả bí nặng 750 g. Quả dưa nặng hơn quả bí bao nhiêu gam?", ["1250"],
-                  "Đổi 2 kg = 2000 g. Hơn: 2000 − 750 = 1250 (g).\nĐáp số: **1250 g**.", unit="g", note="Phải đổi cùng đơn vị trước khi trừ."),
+            mcq("vandung", "Mẹ có 1 l sữa, rót ra 3 cốc, mỗi cốc 200 ml. Còn lại bao nhiêu mi-li-lít sữa?", ["400 ml", "600 ml", "800 ml", "700 ml"], 0, "Đã rót: 200 × 3 = 600 (ml). Đổi 1 l = 1000 ml. Còn lại: 1000 − 600 = **400 ml**."),
+            short("vandung", "Quả dưa nặng 2 kg, quả bí nặng 750 g. Quả dưa nặng hơn quả bí bao nhiêu gam?", ["1250"], "Đổi 2 kg = 2000 g. Hơn: 2000 − 750 = 1250 (g).\nĐáp số: **1250 g**.", unit="g", note="Phải đổi cùng đơn vị trước khi trừ."),
         ],
     },
-    # ===================== CHỦ ĐỀ 6 =====================
     {
         "topic": "l3-cd06-nhan-chia-pham-vi-1000",
         "title": "Phép nhân, phép chia trong phạm vi 1 000",
@@ -288,20 +300,29 @@ LESSONS += [
             "- **Số lớn gấp mấy lần số bé**: lấy số lớn **chia** cho số bé."
         ),
         "theory": (
-            "### Bài 36. Nhân số có ba chữ số với số có một chữ số\n- 216 × 3 = 648; 134 × 4: 4 × 4 = 16, viết 6 nhớ 1; 3 × 4 = 12, thêm 1 = 13, viết 3 nhớ 1; 1 × 4 = 4, thêm 1 = 5 → 536.\n"
-            "### Bài 37. Chia số có ba chữ số cho số có một chữ số\n- 648 : 3 = 216; 236 : 4 = 59 (23 : 4 = 5 dư 3, hạ 6 → 36 : 4 = 9).\n"
-            "### Bài 38. Biểu thức số. Tính giá trị của biểu thức số\n- 60 + 20 × 3 = 60 + 60 = 120; (60 + 20) × 3 = 80 × 3 = 240.\n"
-            "### Bài 39. So sánh số lớn gấp mấy lần số bé\n- 18 gấp 6 số lần: 18 : 6 = 3 lần.\n"
+            "### Bài 36. Nhân số có ba chữ số với số có một chữ số\n"
+            "- 216 × 3 = 648; 134 × 4: 4 × 4 = 16, viết 6 nhớ 1; 3 × 4 = 12, thêm 1 = 13, viết 3 nhớ 1; 1 × 4 = 4, thêm 1 = 5 → 536.\n"
+            "### Bài 37. Chia số có ba chữ số cho số có một chữ số\n"
+            "- 648 : 3 = 216; 236 : 4 = 59 (23 : 4 = 5 dư 3, hạ 6 → 36 : 4 = 9).\n"
+            "### Bài 38. Biểu thức số. Tính giá trị của biểu thức số\n"
+            "- 60 + 20 × 3 = 60 + 60 = 120; (60 + 20) × 3 = 80 × 3 = 240.\n"
+            "### Bài 39. So sánh số lớn gấp mấy lần số bé\n"
+            "- 18 gấp 6 số lần: 18 : 6 = 3 lần.\n"
             "### Bài 40. Luyện tập chung"
         ),
         "formulas": [
-            G("I. Thứ tự thực hiện", F("Có ngoặc", "( ) trước"), F("Không ngoặc", "× , : trước; + , − sau"),
-              F("Cùng loại", "Từ trái sang phải", "48 : 4 × 2 = 12 × 2 = 24.")),
+            G("I. Thứ tự thực hiện", F("Có ngoặc", "( ) trước"), F("Không ngoặc", "× , : trước; + , − sau"), F("Cùng loại", "Từ trái sang phải", "48 : 4 × 2 = 12 × 2 = 24.")),
             G("II. So sánh gấp", F("Số lớn gấp mấy lần số bé", "Số lớn : Số bé", "Mẹ 30 tuổi, con 6 tuổi: 30 : 6 = 5 lần.")),
         ],
         "example": "Tính giá trị biểu thức: 120 − 40 : 5 và (120 − 40) : 5.",
-        "example_answer": "120 − 40 : 5 = 120 − 8 = **112** (chia trước).\n(120 − 40) : 5 = 80 : 5 = **16** (trong ngoặc trước).",
-        "real_life": "- Tính tiền: mua 3 hộp bút giá 125 nghìn đồng một hộp.\n- So sánh chiều cao: cây cao 12 m gấp mấy lần cột cờ 4 m.",
+        "example_answer": (
+            "120 − 40 : 5 = 120 − 8 = **112** (chia trước).\n"
+            "(120 − 40) : 5 = 80 : 5 = **16** (trong ngoặc trước)."
+        ),
+        "real_life": (
+            "- Tính tiền: mua 3 hộp bút giá 125 nghìn đồng một hộp.\n"
+            "- So sánh chiều cao: cây cao 12 m gấp mấy lần cột cờ 4 m."
+        ),
         "quiz": [
             mcq("biet", "213 × 3 = ?", ["639", "636", "216", "693"], 0, "3 × 3 = 9; 1 × 3 = 3; 2 × 3 = 6 → **639**."),
             mcq("biet", "Trong biểu thức 45 + 15 : 3, ta thực hiện phép tính nào trước?", ["Phép cộng", "Phép chia", "Tùy ý", "Từ trái sang phải"], 1, "Không có ngoặc: **chia trước**, cộng sau."),
@@ -311,13 +332,10 @@ LESSONS += [
             mcq("hieu", "125 × 4 = ?", ["500", "480", "520", "800"], 0, "5 × 4 = 20, viết 0 nhớ 2; 2 × 4 + 2 = 10, viết 0 nhớ 1; 1 × 4 + 1 = 5 → **500**."),
             tf("hieu", "Nhận định: “(30 + 6) : 6 = 31.”", False, "Trong ngoặc trước: 36 : 6 = 6, không phải 31 → **Sai**."),
             tf("hieu", "Nhận định: “Số 42 gấp 7 lần số 6.”", True, "42 : 6 = 7 → **Đúng**."),
-            mcq("vandung", "Một cuộn dây dài 156 m, cắt thành 4 đoạn bằng nhau. Mỗi đoạn dài:", ["39 m", "38 m", "624 m", "152 m"], 0,
-                "156 : 4: 15 : 4 = 3 dư 3, hạ 6 → 36 : 4 = 9 → **39 m**."),
-            short("vandung", "Trong vườn có 8 cây cam và 48 cây chanh. Hỏi số cây chanh gấp mấy lần số cây cam?", ["6"],
-                  "48 : 8 = 6 (lần).\nĐáp số: **6 lần**.", unit="lần"),
+            mcq("vandung", "Một cuộn dây dài 156 m, cắt thành 4 đoạn bằng nhau. Mỗi đoạn dài:", ["39 m", "38 m", "624 m", "152 m"], 0, "156 : 4: 15 : 4 = 3 dư 3, hạ 6 → 36 : 4 = 9 → **39 m**."),
+            short("vandung", "Trong vườn có 8 cây cam và 48 cây chanh. Hỏi số cây chanh gấp mấy lần số cây cam?", ["6"], "48 : 8 = 6 (lần).\nĐáp số: **6 lần**.", unit="lần"),
         ],
     },
-    # ===================== CHỦ ĐỀ 7 =====================
     {
         "topic": "l3-cd07-on-tap-hoc-ki-1",
         "title": "Ôn tập học kì 1",
@@ -342,8 +360,7 @@ LESSONS += [
             "### Bài 44. Ôn tập chung"
         ),
         "formulas": [
-            G("I. Phép tính", F("Chia có dư", "Số bị chia = Thương × Số chia + Số dư (dư < số chia)"),
-              F("Thứ tự", "( ) → × : → + −")),
+            G("I. Phép tính", F("Chia có dư", "Số bị chia = Thương × Số chia + Số dư (dư < số chia)"), F("Thứ tự", "( ) → × : → + −")),
             G("II. Đo lường", F("Đổi đơn vị", "1 cm = 10 mm · 1 kg = 1000 g · 1 l = 1000 ml")),
         ],
         "example": "Tính: 7 × 8 − 26 và 7 × (8 − 2).",
@@ -358,13 +375,10 @@ LESSONS += [
             mcq("hieu", "Tìm số bị chia: ? : 6 = 15", ["90", "21", "9", "80"], 0, "Số bị chia = 15 × 6 = **90**."),
             tf("hieu", "Nhận định: “427 : 7 = 61.”", True, "42 : 7 = 6; 7 : 7 = 1 → 61 → **Đúng**.", alt="Thử lại: 61 × 7 = 427 ✔."),
             tf("hieu", "Nhận định: “Giảm 56 đi 8 lần được 48.”", False, "Giảm 8 lần: 56 : 8 = 7; 48 là kết quả của “bớt 8” → **Sai**."),
-            mcq("vandung", "Mỗi xe chở 9 bao xi măng. Có 5 xe như vậy đã chở được tất cả 45 bao, sau đó chở thêm 18 bao nữa. Tổng số bao đã chở là:", ["63", "53", "72", "27"], 0,
-                "5 × 9 = 45 (bao); 45 + 18 = **63** (bao)."),
-            short("vandung", "Một trang trại có 135 con gà, số vịt bằng số gà giảm đi 3 lần. Hỏi trang trại có tất cả bao nhiêu con gà và vịt?", ["180"],
-                  "Số vịt: 135 : 3 = 45 (con). Cả gà và vịt: 135 + 45 = 180 (con).\nĐáp số: **180 con**.", unit="con"),
+            mcq("vandung", "Mỗi xe chở 9 bao xi măng. Có 5 xe như vậy đã chở được tất cả 45 bao, sau đó chở thêm 18 bao nữa. Tổng số bao đã chở là:", ["63", "53", "72", "27"], 0, "5 × 9 = 45 (bao); 45 + 18 = **63** (bao)."),
+            short("vandung", "Một trang trại có 135 con gà, số vịt bằng số gà giảm đi 3 lần. Hỏi trang trại có tất cả bao nhiêu con gà và vịt?", ["180"], "Số vịt: 135 : 3 = 45 (con). Cả gà và vịt: 135 + 45 = 180 (con).\nĐáp số: **180 con**.", unit="con"),
         ],
     },
-    # ===================== CHỦ ĐỀ 8 =====================
     {
         "topic": "l3-cd08-cac-so-den-10000",
         "title": "Các số đến 10 000",
@@ -383,21 +397,30 @@ LESSONS += [
             "- **Làm tròn đến hàng chục**: chữ số hàng đơn vị < 5 thì làm tròn xuống, ≥ 5 thì làm tròn lên (tương tự cho hàng trăm, xét chữ số hàng chục)."
         ),
         "theory": (
-            "### Bài 45. Các số có bốn chữ số. Số 10 000\n- 4058: bốn nghìn không trăm năm mươi tám.\n"
-            "### Bài 46. So sánh các số trong phạm vi 10 000\n- 5891 < 6012 (5 nghìn < 6 nghìn); 9999 < 10 000.\n"
-            "### Bài 47. Làm quen với chữ số La Mã\n- Chữ số đứng sau lớn hơn → trừ (IV = 5 − 1); đứng sau nhỏ hơn → cộng (VI = 5 + 1). Một chữ số không lặp quá 3 lần.\n"
-            "### Bài 48. Làm tròn số đến hàng chục, hàng trăm\n- 1234 làm tròn đến hàng chục được 1230; 3478 làm tròn đến hàng trăm được 3500.\n"
+            "### Bài 45. Các số có bốn chữ số. Số 10 000\n"
+            "- 4058: bốn nghìn không trăm năm mươi tám.\n"
+            "### Bài 46. So sánh các số trong phạm vi 10 000\n"
+            "- 5891 < 6012 (5 nghìn < 6 nghìn); 9999 < 10 000.\n"
+            "### Bài 47. Làm quen với chữ số La Mã\n"
+            "- Chữ số đứng sau lớn hơn → trừ (IV = 5 − 1); đứng sau nhỏ hơn → cộng (VI = 5 + 1). Một chữ số không lặp quá 3 lần.\n"
+            "### Bài 48. Làm tròn số đến hàng chục, hàng trăm\n"
+            "- 1234 làm tròn đến hàng chục được 1230; 3478 làm tròn đến hàng trăm được 3500.\n"
             "### Bài 49. Luyện tập chung"
         ),
         "formulas": [
             G("I. Cấu tạo số", F("Số bốn chữ số", "abcd = a nghìn + b trăm + c chục + d đơn vị", "6204 = 6000 + 200 + 4.")),
-            G("II. Chữ số La Mã", F("Ký hiệu", "I = 1 · V = 5 · X = 10"),
-              F("Quy tắc", "Nhỏ đứng trước lớn → trừ; nhỏ đứng sau lớn → cộng", "IX = 9, XI = 11, XIV = 14.")),
+            G("II. Chữ số La Mã", F("Ký hiệu", "I = 1 · V = 5 · X = 10"), F("Quy tắc", "Nhỏ đứng trước lớn → trừ; nhỏ đứng sau lớn → cộng", "IX = 9, XI = 11, XIV = 14.")),
             G("III. Làm tròn", F("Quy tắc 5", "Chữ số bên phải hàng làm tròn: < 5 → xuống; ≥ 5 → lên", "2650 → tròn trăm: 2700.")),
         ],
         "example": "Làm tròn số 4762 đến hàng chục và hàng trăm.",
-        "example_answer": "Đến hàng chục: hàng đơn vị là 2 < 5 → **4760**.\nĐến hàng trăm: hàng chục là 6 ≥ 5 → **4800**.",
-        "real_life": "- Mặt đồng hồ dùng số La Mã; tên thế kỉ (thế kỉ XX, XXI).\n- Làm tròn giá tiền, số dân để ước lượng nhanh.",
+        "example_answer": (
+            "Đến hàng chục: hàng đơn vị là 2 < 5 → **4760**.\n"
+            "Đến hàng trăm: hàng chục là 6 ≥ 5 → **4800**."
+        ),
+        "real_life": (
+            "- Mặt đồng hồ dùng số La Mã; tên thế kỉ (thế kỉ XX, XXI).\n"
+            "- Làm tròn giá tiền, số dân để ước lượng nhanh."
+        ),
         "quiz": [
             mcq("biet", "Số “năm nghìn không trăm linh bảy” viết là:", ["5007", "5070", "507", "50 007"], 0, "5000 + 0 + 0 + 7 = **5007**."),
             mcq("biet", "Chữ số La Mã X có giá trị là:", ["5", "10", "1", "50"], 1, "X = **10**."),
@@ -407,16 +430,10 @@ LESSONS += [
             mcq("hieu", "Làm tròn số 2385 đến hàng trăm được:", ["2300", "2400", "2390", "2380"], 1, "Hàng chục là 8 ≥ 5 → làm tròn lên: **2400**."),
             tf("hieu", "Nhận định: “7099 > 7100.”", False, "Cùng 7 nghìn; hàng trăm 0 < 1 → 7099 < 7100 → **Sai**."),
             tf("hieu", "Nhận định: “Số 14 viết bằng chữ số La Mã là XIV.”", True, "XIV = X + IV = 10 + 4 = 14 → **Đúng**."),
-            mcq("vandung", "Sắp xếp các số 4320, 4302, 4230, 4203 theo thứ tự từ lớn đến bé:", ["4320, 4302, 4230, 4203", "4203, 4230, 4302, 4320", "4302, 4320, 4230, 4203", "4320, 4230, 4302, 4203"], 0,
-                "So sánh hàng trăm: 3 > 2; trong nhóm 43..: 4320 > 4302; nhóm 42..: 4230 > 4203 → **4320, 4302, 4230, 4203**."),
-            short("vandung", "Một trường có 1347 học sinh. Làm tròn số học sinh đến hàng chục thì được bao nhiêu?", ["1350"],
-                  "Hàng đơn vị là 7 ≥ 5 → làm tròn lên: 1347 → **1350**."),
+            mcq("vandung", "Sắp xếp các số 4320, 4302, 4230, 4203 theo thứ tự từ lớn đến bé:", ["4320, 4302, 4230, 4203", "4203, 4230, 4302, 4320", "4302, 4320, 4230, 4203", "4320, 4230, 4302, 4203"], 0, "So sánh hàng trăm: 3 > 2; trong nhóm 43..: 4320 > 4302; nhóm 42..: 4230 > 4203 → **4320, 4302, 4230, 4203**."),
+            short("vandung", "Một trường có 1347 học sinh. Làm tròn số học sinh đến hàng chục thì được bao nhiêu?", ["1350"], "Hàng đơn vị là 7 ≥ 5 → làm tròn lên: 1347 → **1350**."),
         ],
     },
-]
-
-LESSONS += [
-    # ===================== CHỦ ĐỀ 9 =====================
     {
         "topic": "l3-cd09-chu-vi-dien-tich",
         "title": "Chu vi, diện tích một số hình phẳng",
@@ -437,20 +454,25 @@ LESSONS += [
             "### Bài 50. Chu vi hình tam giác, hình tứ giác, hình chữ nhật, hình vuông\n"
             "- Tam giác cạnh 3, 4, 5 cm: chu vi = 3 + 4 + 5 = 12 cm.\n"
             "- Hình chữ nhật dài 6 cm, rộng 4 cm: chu vi = (6 + 4) × 2 = 20 cm. Hình vuông cạnh 5 cm: chu vi = 5 × 4 = 20 cm.\n"
-            "### Bài 51. Diện tích của một hình. Xăng-ti-mét vuông\n- Đếm số ô vuông 1 cm² phủ kín hình.\n"
-            "### Bài 52. Diện tích hình chữ nhật, diện tích hình vuông\n- Hình chữ nhật 6 cm × 4 cm: S = 24 cm²; hình vuông cạnh 5 cm: S = 25 cm².\n"
+            "### Bài 51. Diện tích của một hình. Xăng-ti-mét vuông\n"
+            "- Đếm số ô vuông 1 cm² phủ kín hình.\n"
+            "### Bài 52. Diện tích hình chữ nhật, diện tích hình vuông\n"
+            "- Hình chữ nhật 6 cm × 4 cm: S = 24 cm²; hình vuông cạnh 5 cm: S = 25 cm².\n"
             "### Bài 53. Luyện tập chung"
         ),
         "formulas": [
-            G("I. Chu vi", F("Tam giác, tứ giác", "P = tổng độ dài các cạnh"),
-              F("Hình chữ nhật", "P = (a + b) × 2", "a: chiều dài, b: chiều rộng (cùng đơn vị)."),
-              F("Hình vuông", "P = a × 4")),
-            G("II. Diện tích", F("Hình chữ nhật", "S = a × b"), F("Hình vuông", "S = a × a"),
-              F("Đơn vị", "cm² — đọc “xăng-ti-mét vuông”")),
+            G("I. Chu vi", F("Tam giác, tứ giác", "P = tổng độ dài các cạnh"), F("Hình chữ nhật", "P = (a + b) × 2", "a: chiều dài, b: chiều rộng (cùng đơn vị)."), F("Hình vuông", "P = a × 4")),
+            G("II. Diện tích", F("Hình chữ nhật", "S = a × b"), F("Hình vuông", "S = a × a"), F("Đơn vị", "cm² — đọc “xăng-ti-mét vuông”")),
         ],
         "example": "Một hình chữ nhật có chiều dài 9 cm, chiều rộng 5 cm. Tính chu vi và diện tích.",
-        "example_answer": "Chu vi: (9 + 5) × 2 = **28 cm**.\nDiện tích: 9 × 5 = **45 cm²**.",
-        "real_life": "- Tính chiều dài hàng rào quanh vườn (chu vi); tính số viên gạch lát nền (diện tích).\n- Bọc bìa quyển sách, dán giấy trang trí.",
+        "example_answer": (
+            "Chu vi: (9 + 5) × 2 = **28 cm**.\n"
+            "Diện tích: 9 × 5 = **45 cm²**."
+        ),
+        "real_life": (
+            "- Tính chiều dài hàng rào quanh vườn (chu vi); tính số viên gạch lát nền (diện tích).\n"
+            "- Bọc bìa quyển sách, dán giấy trang trí."
+        ),
         "quiz": [
             mcq("biet", "Chu vi hình vuông cạnh 6 cm là:", ["12 cm", "24 cm", "36 cm", "36 cm²"], 1, "P = 6 × 4 = **24 cm**."),
             mcq("biet", "Diện tích hình vuông cạnh 6 cm là:", ["24 cm²", "36 cm²", "12 cm²", "36 cm"], 1, "S = 6 × 6 = **36 cm²**.", note="Diện tích dùng đơn vị cm², không phải cm."),
@@ -458,15 +480,12 @@ LESSONS += [
             mcq("biet", "Tam giác có ba cạnh 5 cm, 7 cm, 8 cm. Chu vi tam giác là:", ["20 cm", "15 cm", "280 cm", "13 cm"], 0, "5 + 7 + 8 = **20 cm**."),
             mcq("hieu", "Hình chữ nhật dài 8 cm, rộng 3 cm có diện tích là:", ["22 cm²", "24 cm²", "11 cm²", "24 cm"], 1, "S = 8 × 3 = **24 cm²**."),
             mcq("hieu", "Hình chữ nhật dài 2 dm, rộng 8 cm có chu vi là:", ["20 cm", "56 cm", "160 cm", "28 cm"], 1, "Đổi 2 dm = 20 cm. P = (20 + 8) × 2 = **56 cm**.", note="Hai cạnh phải cùng đơn vị."),
-            tf("hieu", "Nhận định: “Hình chữ nhật dài 5 cm, rộng 3 cm có diện tích 16 cm².”", False,
-               "S = 5 × 3 = 15 cm²; 16 cm là chu vi (5 + 3) × 2 → **Sai**.", note="Đừng nhầm công thức chu vi với diện tích."),
+            tf("hieu", "Nhận định: “Hình chữ nhật dài 5 cm, rộng 3 cm có diện tích 16 cm².”", False, "S = 5 × 3 = 15 cm²; 16 cm là chu vi (5 + 3) × 2 → **Sai**.", note="Đừng nhầm công thức chu vi với diện tích."),
             tf("hieu", "Nhận định: “Chu vi hình chữ nhật dài 7 cm, rộng 5 cm là 24 cm.”", True, "(7 + 5) × 2 = 24 cm → **Đúng**."),
             mcq("vandung", "Một mảnh vườn hình vuông có chu vi 36 m. Cạnh của mảnh vườn dài:", ["9 m", "18 m", "6 m", "144 m"], 0, "Cạnh = chu vi : 4 = 36 : 4 = **9 m**."),
-            short("vandung", "Một tấm bìa hình chữ nhật có chiều rộng 6 cm, chiều dài gấp 2 lần chiều rộng. Tính diện tích tấm bìa (cm²).", ["72"],
-                  "Chiều dài: 6 × 2 = 12 (cm). Diện tích: 12 × 6 = 72 (cm²).\nĐáp số: **72 cm²**.", unit="cm²"),
+            short("vandung", "Một tấm bìa hình chữ nhật có chiều rộng 6 cm, chiều dài gấp 2 lần chiều rộng. Tính diện tích tấm bìa (cm²).", ["72"], "Chiều dài: 6 × 2 = 12 (cm). Diện tích: 12 × 6 = 72 (cm²).\nĐáp số: **72 cm²**.", unit="cm²"),
         ],
     },
-    # ===================== CHỦ ĐỀ 10 =====================
     {
         "topic": "l3-cd10-cong-tru-nhan-chia-pham-vi-10000",
         "title": "Cộng, trừ, nhân, chia trong phạm vi 10 000",
@@ -484,19 +503,25 @@ LESSONS += [
             "- Nhẩm: 3000 + 4000 = 7000 (3 nghìn + 4 nghìn); 2000 × 3 = 6000; 8000 : 4 = 2000."
         ),
         "theory": (
-            "### Bài 54. Phép cộng trong phạm vi 10 000\n- 3526 + 2748 = 6274.\n"
-            "### Bài 55. Phép trừ trong phạm vi 10 000\n- 7452 − 3218 = 4234.\n"
-            "### Bài 56. Nhân số có bốn chữ số với số có một chữ số\n- 1218 × 4 = 4872.\n"
-            "### Bài 57. Chia số có bốn chữ số cho số có một chữ số\n- 6369 : 3 = 2123; 4218 : 6 = 703 (42 : 6 = 7; hạ 1, 1 : 6 = 0; hạ 8, 18 : 6 = 3).\n"
+            "### Bài 54. Phép cộng trong phạm vi 10 000\n"
+            "- 3526 + 2748 = 6274.\n"
+            "### Bài 55. Phép trừ trong phạm vi 10 000\n"
+            "- 7452 − 3218 = 4234.\n"
+            "### Bài 56. Nhân số có bốn chữ số với số có một chữ số\n"
+            "- 1218 × 4 = 4872.\n"
+            "### Bài 57. Chia số có bốn chữ số cho số có một chữ số\n"
+            "- 6369 : 3 = 2123; 4218 : 6 = 703 (42 : 6 = 7; hạ 1, 1 : 6 = 0; hạ 8, 18 : 6 = 3).\n"
             "### Bài 58. Luyện tập chung"
         ),
         "formulas": [
-            G("I. Quy tắc tính viết", F("Cộng, trừ, nhân", "Tính từ phải sang trái, nhớ sang hàng kế tiếp"),
-              F("Chia", "Từ trái sang phải: chia → nhân → trừ → hạ", "Lượt nào số bị chia nhỏ hơn số chia thì viết 0 ở thương.")),
+            G("I. Quy tắc tính viết", F("Cộng, trừ, nhân", "Tính từ phải sang trái, nhớ sang hàng kế tiếp"), F("Chia", "Từ trái sang phải: chia → nhân → trừ → hạ", "Lượt nào số bị chia nhỏ hơn số chia thì viết 0 ở thương.")),
             G("II. Thử lại", F("Phép trừ", "Hiệu + Số trừ = Số bị trừ"), F("Phép chia", "Thương × Số chia (+ Số dư) = Số bị chia")),
         ],
         "example": "Đặt tính rồi tính: 2615 × 3 và 3640 : 5.",
-        "example_answer": "2615 × 3: 5 × 3 = 15 viết 5 nhớ 1; 1 × 3 + 1 = 4; 6 × 3 = 18 viết 8 nhớ 1; 2 × 3 + 1 = 7 → **7845**.\n3640 : 5: 36 : 5 = 7 dư 1; hạ 4 → 14 : 5 = 2 dư 4; hạ 0 → 40 : 5 = 8 → **728**.",
+        "example_answer": (
+            "2615 × 3: 5 × 3 = 15 viết 5 nhớ 1; 1 × 3 + 1 = 4; 6 × 3 = 18 viết 8 nhớ 1; 2 × 3 + 1 = 7 → **7845**.\n"
+            "3640 : 5: 36 : 5 = 7 dư 1; hạ 4 → 14 : 5 = 2 dư 4; hạ 0 → 40 : 5 = 8 → **728**."
+        ),
         "real_life": "- Tính tổng tiền mua sắm (đơn vị nghìn đồng); chia đều số sách cho các lớp.",
         "quiz": [
             mcq("biet", "4000 + 3000 = ?", ["7000", "700", "70 000", "1000"], 0, "4 nghìn + 3 nghìn = **7000**."),
@@ -507,13 +532,10 @@ LESSONS += [
             mcq("hieu", "2436 : 4 = ?", ["609", "690", "69", "6009"], 0, "24 : 4 = 6; hạ 3, 3 : 4 = 0 (viết 0); hạ 6 → 36 : 4 = 9 → **609**.", note="Quên viết chữ số 0 ở thương sẽ ra 69."),
             tf("hieu", "Nhận định: “6000 − 2785 = 3215.”", True, "Thử lại: 3215 + 2785 = 6000 → **Đúng**."),
             tf("hieu", "Nhận định: “1625 × 4 = 6400.”", False, "1625 × 4 = 6500 (5 × 4 = 20; 2 × 4 + 2 = 10; 6 × 4 + 1 = 25; 1 × 4 + 2 = 6) → **Sai**."),
-            mcq("vandung", "Một nhà máy ngày đầu sản xuất 1250 sản phẩm, ngày thứ hai sản xuất gấp đôi ngày đầu. Cả hai ngày sản xuất được:", ["2500", "3750", "3500", "1252"], 1,
-                "Ngày thứ hai: 1250 × 2 = 2500. Cả hai ngày: 1250 + 2500 = **3750** sản phẩm."),
-            short("vandung", "Có 2835 quyển sách xếp đều vào 5 tủ. Mỗi tủ có bao nhiêu quyển sách?", ["567"],
-                  "2835 : 5: 28 : 5 = 5 dư 3; hạ 3 → 33 : 5 = 6 dư 3; hạ 5 → 35 : 5 = 7 → 567.\nĐáp số: **567 quyển**.", unit="quyển"),
+            mcq("vandung", "Một nhà máy ngày đầu sản xuất 1250 sản phẩm, ngày thứ hai sản xuất gấp đôi ngày đầu. Cả hai ngày sản xuất được:", ["2500", "3750", "3500", "1252"], 1, "Ngày thứ hai: 1250 × 2 = 2500. Cả hai ngày: 1250 + 2500 = **3750** sản phẩm."),
+            short("vandung", "Có 2835 quyển sách xếp đều vào 5 tủ. Mỗi tủ có bao nhiêu quyển sách?", ["567"], "2835 : 5: 28 : 5 = 5 dư 3; hạ 3 → 33 : 5 = 6 dư 3; hạ 5 → 35 : 5 = 7 → 567.\nĐáp số: **567 quyển**.", unit="quyển"),
         ],
     },
-    # ===================== CHỦ ĐỀ 11 =====================
     {
         "topic": "l3-cd11-cac-so-den-100000",
         "title": "Các số đến 100 000",
@@ -530,19 +552,24 @@ LESSONS += [
             "- **Làm tròn đến hàng nghìn**: xét chữ số hàng trăm; **đến hàng chục nghìn**: xét chữ số hàng nghìn (< 5 xuống, ≥ 5 lên)."
         ),
         "theory": (
-            "### Bài 59. Các số có năm chữ số. Số 100 000\n- 70 506: bảy mươi nghìn năm trăm linh sáu.\n"
-            "### Bài 60. So sánh các số trong phạm vi 100 000\n- 48 920 < 51 003 (4 chục nghìn < 5 chục nghìn).\n"
-            "### Bài 61. Làm tròn số đến hàng nghìn, hàng chục nghìn\n- 36 452 → tròn nghìn: 36 000; tròn chục nghìn: 40 000.\n"
+            "### Bài 59. Các số có năm chữ số. Số 100 000\n"
+            "- 70 506: bảy mươi nghìn năm trăm linh sáu.\n"
+            "### Bài 60. So sánh các số trong phạm vi 100 000\n"
+            "- 48 920 < 51 003 (4 chục nghìn < 5 chục nghìn).\n"
+            "### Bài 61. Làm tròn số đến hàng nghìn, hàng chục nghìn\n"
+            "- 36 452 → tròn nghìn: 36 000; tròn chục nghìn: 40 000.\n"
             "### Bài 62. Luyện tập chung"
         ),
         "formulas": [
             G("I. Cấu tạo số", F("Số năm chữ số", "abcde = a chục nghìn + b nghìn + c trăm + d chục + e đơn vị")),
-            G("II. So sánh – làm tròn", F("So sánh", "Nhiều chữ số hơn thì lớn hơn; cùng số chữ số: so từ trái sang phải"),
-              F("Làm tròn", "Nhìn chữ số ngay bên phải hàng cần làm tròn: < 5 → giữ; ≥ 5 → tăng 1", "72 680 → tròn nghìn: 73 000.")),
+            G("II. So sánh – làm tròn", F("So sánh", "Nhiều chữ số hơn thì lớn hơn; cùng số chữ số: so từ trái sang phải"), F("Làm tròn", "Nhìn chữ số ngay bên phải hàng cần làm tròn: < 5 → giữ; ≥ 5 → tăng 1", "72 680 → tròn nghìn: 73 000.")),
         ],
         "example": "Viết số gồm 6 chục nghìn, 0 nghìn, 4 trăm, 0 chục, 9 đơn vị; đọc số đó.",
         "example_answer": "**60 409** — đọc: sáu mươi nghìn bốn trăm linh chín.",
-        "real_life": "- Đọc số dân của một xã (12 450 người), giá tiền (85 000 đồng).\n- Làm tròn để ước lượng: khoảng 12 000 người.",
+        "real_life": (
+            "- Đọc số dân của một xã (12 450 người), giá tiền (85 000 đồng).\n"
+            "- Làm tròn để ước lượng: khoảng 12 000 người."
+        ),
         "quiz": [
             mcq("biet", "Số “ba mươi hai nghìn không trăm mười lăm” viết là:", ["32 015", "32 150", "3215", "320 015"], 0, "30 000 + 2000 + 0 + 10 + 5 = **32 015**."),
             mcq("biet", "Trong số 58 247, chữ số 8 thuộc hàng:", ["Chục nghìn", "Nghìn", "Trăm", "Chục"], 1, "5 chục nghìn, **8 nghìn**, 2 trăm, 4 chục, 7 đơn vị."),
@@ -553,11 +580,9 @@ LESSONS += [
             tf("hieu", "Nhận định: “40 000 + 5000 + 30 + 8 = 45 038.”", True, "4 chục nghìn, 5 nghìn, 0 trăm, 3 chục, 8 đơn vị → 45 038 → **Đúng**."),
             tf("hieu", "Nhận định: “Làm tròn 25 300 đến hàng chục nghìn được 20 000.”", False, "Chữ số hàng nghìn là 5 ≥ 5 → làm tròn lên 30 000 → **Sai**."),
             mcq("vandung", "Dân số xã A là 12 876 người, xã B là 12 867 người, xã C là 13 002 người. Xã nào đông dân nhất?", ["Xã A", "Xã B", "Xã C", "Bằng nhau"], 2, "13 002 có 3 nghìn > 2 nghìn → **xã C**."),
-            short("vandung", "Viết số lớn nhất có năm chữ số khác nhau.", ["98765", "98 765"],
-                  "Chọn chữ số lớn nhất lần lượt cho các hàng: 9, 8, 7, 6, 5 → **98 765**.", note="Không phải 99 999 vì các chữ số phải khác nhau."),
+            short("vandung", "Viết số lớn nhất có năm chữ số khác nhau.", ["98765", "98 765"], "Chọn chữ số lớn nhất lần lượt cho các hàng: 9, 8, 7, 6, 5 → **98 765**.", note="Không phải 99 999 vì các chữ số phải khác nhau."),
         ],
     },
-    # ===================== CHỦ ĐỀ 12 =====================
     {
         "topic": "l3-cd12-cong-tru-pham-vi-100000",
         "title": "Cộng, trừ trong phạm vi 100 000",
@@ -573,8 +598,10 @@ LESSONS += [
             "- **Quan hệ cộng – trừ**: a + b = c ⇒ c − a = b và c − b = a (dùng để thử lại, tìm thành phần chưa biết)."
         ),
         "theory": (
-            "### Bài 63. Phép cộng trong phạm vi 100 000\n- 35 248 + 41 637 = 76 885. Tính nhanh: 2500 + 1300 + 7500 = (2500 + 7500) + 1300 = 11 300.\n"
-            "### Bài 64. Phép trừ trong phạm vi 100 000\n- 85 372 − 26 145 = 59 227.\n"
+            "### Bài 63. Phép cộng trong phạm vi 100 000\n"
+            "- 35 248 + 41 637 = 76 885. Tính nhanh: 2500 + 1300 + 7500 = (2500 + 7500) + 1300 = 11 300.\n"
+            "### Bài 64. Phép trừ trong phạm vi 100 000\n"
+            "- 85 372 − 26 145 = 59 227.\n"
             "### Bài 65. Luyện tập chung"
         ),
         "formulas": [
@@ -593,17 +620,10 @@ LESSONS += [
             mcq("hieu", "Tìm x biết: x + 25 600 = 70 000", ["44 400", "95 600", "45 400", "54 400"], 0, "x = 70 000 − 25 600 = **44 400**."),
             tf("hieu", "Nhận định: “1800 + 3500 + 200 = 5500.”", True, "(1800 + 200) + 3500 = 2000 + 3500 = 5500 → **Đúng**."),
             tf("hieu", "Nhận định: “47 280 + 36 450 = 73 730.”", False, "47 280 + 36 450 = 83 730 (cộng hàng chục nghìn: 4 + 3 + 1 nhớ = 8) → **Sai**.", note="Lỗi quên nhớ khi cộng hàng nghìn (7 + 6 = 13)."),
-            mcq("vandung", "Mẹ mang 100 000 đồng đi chợ, mua thịt hết 45 000 đồng và rau hết 12 000 đồng. Mẹ còn lại:", ["43 000 đồng", "57 000 đồng", "33 000 đồng", "53 000 đồng"], 0,
-                "Đã mua: 45 000 + 12 000 = 57 000. Còn: 100 000 − 57 000 = **43 000 đồng**."),
-            short("vandung", "Một kho có 35 750 kg thóc. Lần đầu xuất 12 500 kg, lần sau xuất 8 250 kg. Hỏi kho còn lại bao nhiêu ki-lô-gam thóc?", ["15000", "15 000"],
-                  "Đã xuất: 12 500 + 8 250 = 20 750 (kg). Còn lại: 35 750 − 20 750 = 15 000 (kg).\nĐáp số: **15 000 kg**.", unit="kg",
-                  alt="35 750 − 12 500 = 23 250; 23 250 − 8 250 = 15 000."),
+            mcq("vandung", "Mẹ mang 100 000 đồng đi chợ, mua thịt hết 45 000 đồng và rau hết 12 000 đồng. Mẹ còn lại:", ["43 000 đồng", "57 000 đồng", "33 000 đồng", "53 000 đồng"], 0, "Đã mua: 45 000 + 12 000 = 57 000. Còn: 100 000 − 57 000 = **43 000 đồng**."),
+            short("vandung", "Một kho có 35 750 kg thóc. Lần đầu xuất 12 500 kg, lần sau xuất 8 250 kg. Hỏi kho còn lại bao nhiêu ki-lô-gam thóc?", ["15000", "15 000"], "Đã xuất: 12 500 + 8 250 = 20 750 (kg). Còn lại: 35 750 − 20 750 = 15 000 (kg).\nĐáp số: **15 000 kg**.", unit="kg", alt="35 750 − 12 500 = 23 250; 23 250 − 8 250 = 15 000."),
         ],
     },
-]
-
-LESSONS += [
-    # ===================== CHỦ ĐỀ 13 =====================
     {
         "topic": "l3-cd13-dong-ho-thang-nam-tien",
         "title": "Xem đồng hồ. Tháng – năm. Tiền Việt Nam",
@@ -622,36 +642,37 @@ LESSONS += [
             "- **Tiền Việt Nam** (đồng): các tờ 1000, 2000, 5000, 10 000, 20 000, 50 000, 100 000, 200 000, 500 000 đồng."
         ),
         "theory": (
-            "### Bài 66. Xem đồng hồ. Tháng – năm\n- Kim phút chỉ số 7 → 35 phút. Kim phút chỉ giữa vạch → đếm từng phút.\n"
-            "### Bài 67. Thực hành xem đồng hồ, xem lịch\n- Xem lịch: ngày, thứ trong tuần; 1 tuần = 7 ngày.\n"
-            "### Bài 68. Tiền Việt Nam\n- Đổi tiền, cộng trừ tiền khi mua bán.\n"
+            "### Bài 66. Xem đồng hồ. Tháng – năm\n"
+            "- Kim phút chỉ số 7 → 35 phút. Kim phút chỉ giữa vạch → đếm từng phút.\n"
+            "### Bài 67. Thực hành xem đồng hồ, xem lịch\n"
+            "- Xem lịch: ngày, thứ trong tuần; 1 tuần = 7 ngày.\n"
+            "### Bài 68. Tiền Việt Nam\n"
+            "- Đổi tiền, cộng trừ tiền khi mua bán.\n"
             "### Bài 69. Luyện tập chung"
         ),
         "formulas": [
-            G("I. Thời gian", F("Quan hệ", "1 giờ = 60 phút · 1 ngày = 24 giờ · 1 tuần = 7 ngày · 1 năm = 12 tháng"),
-              F("Kim phút", "Mỗi số = 5 phút", "Chỉ số 9 → 45 phút."),
-              F("Mẹo nhớ ngày trong tháng", "Đếm trên khớp nắm tay: tháng ở khớp lồi có 31 ngày")),
+            G("I. Thời gian", F("Quan hệ", "1 giờ = 60 phút · 1 ngày = 24 giờ · 1 tuần = 7 ngày · 1 năm = 12 tháng"), F("Kim phút", "Mỗi số = 5 phút", "Chỉ số 9 → 45 phút."), F("Mẹo nhớ ngày trong tháng", "Đếm trên khớp nắm tay: tháng ở khớp lồi có 31 ngày")),
             G("II. Tiền", F("Đơn vị", "đồng"), F("Tiền thừa", "Tiền đưa − Tiền hàng")),
         ],
         "example": "Một bộ phim bắt đầu lúc 7 giờ 15 phút và kéo dài 50 phút. Phim kết thúc lúc mấy giờ?",
         "example_answer": "7 giờ 15 phút + 50 phút = 7 giờ 65 phút = **8 giờ 5 phút**.",
-        "real_life": "- Lên thời gian biểu; tính số ngày đến sinh nhật.\n- Mua đồ ở căng tin, tính tiền thừa.",
+        "real_life": (
+            "- Lên thời gian biểu; tính số ngày đến sinh nhật.\n"
+            "- Mua đồ ở căng tin, tính tiền thừa."
+        ),
         "quiz": [
             mcq("biet", "Một năm có bao nhiêu tháng?", ["10", "12", "7", "30"], 1, "Một năm có **12** tháng."),
             mcq("biet", "Tháng nào có 30 ngày?", ["Tháng 1", "Tháng 4", "Tháng 8", "Tháng 12"], 1, "Các tháng 4, 6, 9, 11 có 30 ngày → **Tháng 4**."),
             mcq("biet", "Kim phút chỉ vào số 6 nghĩa là:", ["6 phút", "30 phút", "60 phút", "15 phút"], 1, "6 × 5 = **30 phút**."),
             mcq("biet", "Tờ tiền có mệnh giá lớn nhất trong các tờ sau là:", ["50 000 đồng", "20 000 đồng", "100 000 đồng", "10 000 đồng"], 2, "**100 000 đồng** lớn nhất."),
             mcq("hieu", "8 giờ 50 phút còn gọi là:", ["8 giờ kém 10 phút", "9 giờ kém 10 phút", "9 giờ 10 phút", "10 giờ kém 50 phút"], 1, "Còn 10 phút nữa đến 9 giờ → **9 giờ kém 10 phút**."),
-            mcq("hieu", "Ngày 28 tháng 3 là thứ Hai. Ngày 4 tháng 4 cùng năm là thứ mấy?", ["Chủ nhật", "Thứ Hai", "Thứ Ba", "Thứ Bảy"], 1,
-                "Tháng 3 có 31 ngày: từ 28/3 đến 4/4 là 7 ngày = 1 tuần → vẫn là **thứ Hai**."),
+            mcq("hieu", "Ngày 28 tháng 3 là thứ Hai. Ngày 4 tháng 4 cùng năm là thứ mấy?", ["Chủ nhật", "Thứ Hai", "Thứ Ba", "Thứ Bảy"], 1, "Tháng 3 có 31 ngày: từ $\\frac{28}{3}$ đến $\\frac{4}{4}$ là 7 ngày = 1 tuần → vẫn là **thứ Hai**."),
             tf("hieu", "Nhận định: “Tháng 2 luôn có 30 ngày.”", False, "Tháng 2 có 28 hoặc 29 ngày → **Sai**."),
             tf("hieu", "Nhận định: “2 tờ 20 000 đồng và 1 tờ 10 000 đồng là 50 000 đồng.”", True, "20 000 × 2 + 10 000 = 50 000 → **Đúng**."),
             mcq("vandung", "Lan đưa cô bán hàng tờ 50 000 đồng để mua quyển truyện giá 35 000 đồng. Cô trả lại Lan:", ["15 000 đồng", "25 000 đồng", "85 000 đồng", "5000 đồng"], 0, "50 000 − 35 000 = **15 000 đồng**."),
-            short("vandung", "Bạn Minh bắt đầu làm bài lúc 19 giờ 20 phút và làm xong lúc 20 giờ 5 phút. Minh làm bài trong bao nhiêu phút?", ["45"],
-                  "Từ 19 giờ 20 phút đến 20 giờ là 40 phút; thêm 5 phút → 45 phút.\nĐáp số: **45 phút**.", unit="phút"),
+            short("vandung", "Bạn Minh bắt đầu làm bài lúc 19 giờ 20 phút và làm xong lúc 20 giờ 5 phút. Minh làm bài trong bao nhiêu phút?", ["45"], "Từ 19 giờ 20 phút đến 20 giờ là 40 phút; thêm 5 phút → 45 phút.\nĐáp số: **45 phút**.", unit="phút"),
         ],
     },
-    # ===================== CHỦ ĐỀ 14 =====================
     {
         "topic": "l3-cd14-nhan-chia-pham-vi-100000",
         "title": "Nhân, chia trong phạm vi 100 000",
@@ -668,8 +689,10 @@ LESSONS += [
             "- Nhẩm: 12 000 × 4 = 48 000 (12 nghìn × 4); 60 000 : 3 = 20 000."
         ),
         "theory": (
-            "### Bài 70. Nhân số có năm chữ số với số có một chữ số\n- 21 304 × 3 = 63 912; 13 052 × 4 = 52 208.\n"
-            "### Bài 71. Chia số có năm chữ số cho số có một chữ số\n- 36 284 : 4 = 9071; 25 609 : 5 = 5121 (dư 4).\n"
+            "### Bài 70. Nhân số có năm chữ số với số có một chữ số\n"
+            "- 21 304 × 3 = 63 912; 13 052 × 4 = 52 208.\n"
+            "### Bài 71. Chia số có năm chữ số cho số có một chữ số\n"
+            "- 36 284 : 4 = 9071; 25 609 : 5 = 5121 (dư 4).\n"
             "### Bài 72. Luyện tập chung"
         ),
         "formulas": [
@@ -677,7 +700,10 @@ LESSONS += [
             G("II. Chia có dư", F("Quan hệ", "Số bị chia = Thương × Số chia + Số dư"), F("Điều kiện", "0 < Số dư < Số chia")),
         ],
         "example": "Đặt tính rồi tính: 14 216 × 5 và 48 567 : 7.",
-        "example_answer": "14 216 × 5 = **71 080**.\n48 567 : 7: 48 : 7 = 6 dư 6; hạ 5 → 65 : 7 = 9 dư 2; hạ 6 → 26 : 7 = 3 dư 5; hạ 7 → 57 : 7 = 8 dư 1 → **6938 (dư 1)**.",
+        "example_answer": (
+            "14 216 × 5 = **71 080**.\n"
+            "48 567 : 7: 48 : 7 = 6 dư 6; hạ 5 → 65 : 7 = 9 dư 2; hạ 6 → 26 : 7 = 3 dư 5; hạ 7 → 57 : 7 = 8 dư 1 → **6938 (dư 1)**."
+        ),
         "real_life": "- Tính tiền mua 4 chiếc áo giá 85 000 đồng; chia đều số gạo vào các bao.",
         "quiz": [
             mcq("biet", "20 000 × 3 = ?", ["60 000", "6000", "600 000", "23 000"], 0, "2 chục nghìn × 3 = **60 000**."),
@@ -689,11 +715,9 @@ LESSONS += [
             tf("hieu", "Nhận định: “15 000 × 6 = 90 000.”", True, "15 nghìn × 6 = 90 nghìn → **Đúng**."),
             tf("hieu", "Nhận định: “Phép chia 32 157 : 4 có số dư là 5.”", False, "Số dư phải bé hơn 4; thực tế 32 157 : 4 = 8039 dư 1 → **Sai**."),
             mcq("vandung", "Một xe chở 4 chuyến, mỗi chuyến 12 500 kg hàng. Xe đã chở tất cả:", ["50 000 kg", "48 000 kg", "16 500 kg", "45 000 kg"], 0, "12 500 × 4 = **50 000 kg**."),
-            short("vandung", "Có 45 650 quyển vở chia đều cho 5 trường. Hỏi mỗi trường nhận được bao nhiêu quyển vở?", ["9130", "9 130"],
-                  "45 650 : 5: 45 : 5 = 9; 6 : 5 = 1 dư 1; 15 : 5 = 3; 0 : 5 = 0 → 9130.\nĐáp số: **9130 quyển**.", unit="quyển"),
+            short("vandung", "Có 45 650 quyển vở chia đều cho 5 trường. Hỏi mỗi trường nhận được bao nhiêu quyển vở?", ["9130", "9 130"], "45 650 : 5: 45 : 5 = 9; 6 : 5 = 1 dư 1; 15 : 5 = 3; 0 : 5 = 0 → 9130.\nĐáp số: **9130 quyển**.", unit="quyển"),
         ],
     },
-    # ===================== CHỦ ĐỀ 15 =====================
     {
         "topic": "l3-cd15-thong-ke-xac-suat",
         "title": "Làm quen với yếu tố thống kê, xác suất",
@@ -709,8 +733,10 @@ LESSONS += [
             "- **Khả năng xảy ra**: liệt kê mọi kết quả có thể có. Tung 1 đồng xu: có **2 khả năng** — mặt sấp hoặc mặt ngửa. Lấy 1 bóng từ hộp có bóng xanh và đỏ: 2 khả năng — xanh hoặc đỏ."
         ),
         "theory": (
-            "### Bài 73. Thu thập, phân loại, ghi chép số liệu. Bảng số liệu\n- Lập bảng số bạn thích từng môn thể thao; đọc bảng: nhiều nhất, ít nhất, tổng.\n"
-            "### Bài 74. Khả năng xảy ra của một sự kiện\n- Gieo xúc xắc: 6 khả năng (1 → 6 chấm).\n"
+            "### Bài 73. Thu thập, phân loại, ghi chép số liệu. Bảng số liệu\n"
+            "- Lập bảng số bạn thích từng môn thể thao; đọc bảng: nhiều nhất, ít nhất, tổng.\n"
+            "### Bài 74. Khả năng xảy ra của một sự kiện\n"
+            "- Gieo xúc xắc: 6 khả năng (1 → 6 chấm).\n"
             "### Bài 75. Thực hành và trải nghiệm thu thập, phân loại, ghi chép số liệu, đọc bảng số liệu"
         ),
         "formulas": [
@@ -730,11 +756,9 @@ LESSONS += [
             tf("hieu", "Nhận định: “Theo bảng (Táo 12, Cam 9, Xoài 15), có tất cả 36 bạn được hỏi.”", True, "12 + 9 + 15 = 36 → **Đúng**."),
             tf("hieu", "Nhận định: “Tung đồng xu một lần thì chắc chắn được mặt ngửa.”", False, "Có 2 khả năng (sấp hoặc ngửa) nên không chắc chắn → **Sai**."),
             mcq("vandung", "Bảng số học sinh: Khối 3: 124 em; Khối 4: 118 em; Khối 5: 130 em. Khối 5 nhiều hơn khối 4 bao nhiêu em?", ["6", "12", "248", "8"], 1, "130 − 118 = **12** em."),
-            short("vandung", "Trong hộp có 4 thẻ ghi số 1, 2, 3, 4. Rút 1 thẻ. Có bao nhiêu khả năng rút được thẻ ghi số chẵn?", ["2"],
-                  "Các số chẵn là 2 và 4 → **2** khả năng."),
+            short("vandung", "Trong hộp có 4 thẻ ghi số 1, 2, 3, 4. Rút 1 thẻ. Có bao nhiêu khả năng rút được thẻ ghi số chẵn?", ["2"], "Các số chẵn là 2 và 4 → **2** khả năng."),
         ],
     },
-    # ===================== CHỦ ĐỀ 16 =====================
     {
         "topic": "l3-cd16-on-tap-cuoi-nam",
         "title": "Ôn tập cuối năm",
@@ -761,8 +785,7 @@ LESSONS += [
         ),
         "formulas": [
             G("I. Số và phép tính", F("Thứ tự", "( ) → × : → + −"), F("Chia có dư", "SBC = Thương × SC + dư")),
-            G("II. Hình học – đo lường", F("Hình chữ nhật", "P = (a + b) × 2 · S = a × b"), F("Hình vuông", "P = a × 4 · S = a × a"),
-              F("Đổi đơn vị", "1 m = 1000 mm · 1 kg = 1000 g · 1 l = 1000 ml · 1 giờ = 60 phút")),
+            G("II. Hình học – đo lường", F("Hình chữ nhật", "P = (a + b) × 2 · S = a × b"), F("Hình vuông", "P = a × 4 · S = a × a"), F("Đổi đơn vị", "1 m = 1000 mm · 1 kg = 1000 g · 1 l = 1000 ml · 1 giờ = 60 phút")),
         ],
         "example": "Tính giá trị biểu thức: (12 500 + 7500) × 3.",
         "example_answer": "Trong ngoặc trước: 12 500 + 7500 = 20 000; 20 000 × 3 = **60 000**.",
@@ -776,10 +799,8 @@ LESSONS += [
             mcq("hieu", "Hình chữ nhật có chiều dài 15 m, chiều rộng 8 m có chu vi là:", ["46 m", "120 m", "23 m", "46 m²"], 0, "(15 + 8) × 2 = **46 m**."),
             tf("hieu", "Nhận định: “35 728 < 35 782.”", True, "Cùng 35 7..; hàng chục 2 < 8 → **Đúng**."),
             tf("hieu", "Nhận định: “Tìm x: x : 4 = 2500 thì x = 625.”", False, "Số bị chia = 2500 × 4 = 10 000; 625 là 2500 : 4 → **Sai**."),
-            mcq("vandung", "Một mảnh đất hình chữ nhật dài 25 m, rộng 12 m. Người ta rào xung quanh, chừa 2 m làm cổng. Hàng rào dài:", ["74 m", "72 m", "300 m", "37 m"], 1,
-                "Chu vi: (25 + 12) × 2 = 74 (m). Trừ cổng: 74 − 2 = **72 m**."),
-            short("vandung", "Mua 3 quyển sách, mỗi quyển giá 24 500 đồng. Đưa người bán tờ 100 000 đồng thì được trả lại bao nhiêu đồng?", ["26500", "26 500"],
-                  "Tiền sách: 24 500 × 3 = 73 500 (đồng). Tiền trả lại: 100 000 − 73 500 = 26 500 (đồng).\nĐáp số: **26 500 đồng**.", unit="đồng"),
+            mcq("vandung", "Một mảnh đất hình chữ nhật dài 25 m, rộng 12 m. Người ta rào xung quanh, chừa 2 m làm cổng. Hàng rào dài:", ["74 m", "72 m", "300 m", "37 m"], 1, "Chu vi: (25 + 12) × 2 = 74 (m). Trừ cổng: 74 − 2 = **72 m**."),
+            short("vandung", "Mua 3 quyển sách, mỗi quyển giá 24 500 đồng. Đưa người bán tờ 100 000 đồng thì được trả lại bao nhiêu đồng?", ["26500", "26 500"], "Tiền sách: 24 500 × 3 = 73 500 (đồng). Tiền trả lại: 100 000 − 73 500 = 26 500 (đồng).\nĐáp số: **26 500 đồng**.", unit="đồng"),
         ],
     },
 ]

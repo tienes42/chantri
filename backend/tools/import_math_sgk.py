@@ -1,6 +1,6 @@
-"""Nhập nội dung Toán lớp 1–9 theo SGK "Kết nối tri thức với cuộc sống".
+"""Nhập nội dung Toán lớp 1–12 theo SGK "Kết nối tri thức với cuộc sống".
 
-Mỗi bài học = 1 chủ đề (lớp 1–5) / 1 chương (lớp 6–9) được đánh số trong SGK,
+Mỗi bài học = 1 chủ đề (lớp 1–5) / 1 chương (lớp 6–12) được đánh số trong SGK,
 xếp đúng thứ tự mục lục. Dữ liệu nằm trong backend/tools/math_sgk/lopN.py.
 
 Script sẽ: kiểm tra dữ liệu -> bổ sung cột mới (requirements, quiz) nếu thiếu
@@ -9,7 +9,7 @@ Script sẽ: kiểm tra dữ liệu -> bổ sung cột mới (requirements, quiz
 Cách dùng (chạy trong thư mục backend):
     python tools/import_math_sgk.py --grades 1 --dry-run      # chỉ kiểm tra dữ liệu
     python tools/import_math_sgk.py --grades 1                # ghi vào CSDL trong .env
-    python tools/import_math_sgk.py --grades 1-9 --write-catalog
+    python tools/import_math_sgk.py --grades 1-12 --write-catalog
     python tools/import_math_sgk.py --grades 1 --db-url sqlite:///./thu.db
 """
 import argparse
@@ -46,9 +46,9 @@ def parse_grades(text: str) -> list[int]:
             grades.update(range(int(a), int(b) + 1))
         else:
             grades.add(int(part))
-    bad = [g for g in grades if g < 1 or g > 9]
+    bad = [g for g in grades if g < 1 or g > 12]
     if bad:
-        raise SystemExit(f"Lớp không hợp lệ: {bad} (chỉ hỗ trợ 1–9)")
+        raise SystemExit(f"Lớp không hợp lệ: {bad} (chỉ hỗ trợ 1–12)")
     return sorted(grades)
 
 
@@ -151,7 +151,7 @@ def to_row(subject_id: int, grade: int, lesson: dict) -> dict:
         question=first_mcq["q"], answers=first_mcq["options"], correct=first_mcq["answer"],
         application=lesson.get("application") or lesson["real_life"],
         challenge=lesson.get("challenge"), challenge_answer=lesson.get("challenge_answer"),
-        game_title=None, game_description=None, game_type=None,
+        game_title=lesson.get("game_title"), game_description=lesson.get("game_description"), game_type=lesson.get("game_type"),
         requirements=lesson["requirements"], quiz=quiz,
     )
 
@@ -191,7 +191,7 @@ def bump_data_version() -> None:
 
 def main() -> None:
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
-    ap.add_argument("--grades", default="1", help="vd: 1 | 1,2,3 | 1-9")
+    ap.add_argument("--grades", default="1", help="vd: 1 | 1,2,3 | 1-12")
     ap.add_argument("--db-url", help="ghi đè DATABASE_URL (vd sqlite:///./thu.db)")
     ap.add_argument("--dry-run", action="store_true", help="chỉ kiểm tra dữ liệu, không ghi CSDL")
     ap.add_argument("--write-catalog", action="store_true", help="tạo lại public/lesson-catalog.json sau khi nhập")

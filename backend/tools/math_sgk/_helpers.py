@@ -1,4 +1,4 @@
-"""Hàm tạo câu hỏi dùng chung cho dữ liệu Toán SGK (lớp 2–9)."""
+"""Hàm tạo câu hỏi dùng chung cho dữ liệu Toán SGK (lớp 2–12)."""
 
 
 def mcq(level, q, options, answer, solution, alt=None, note=None):
@@ -14,7 +14,7 @@ def tf(level, q, answer, solution, alt=None, note=None):
 
 
 def tf4(level, q, statements, answers, solution, alt=None, note=None):
-    """Đúng/Sai 4 ý a), b), c), d) (lớp 6–9)."""
+    """Đúng/Sai 4 ý a), b), c), d) (lớp 6–12)."""
     return {"level": level, "type": "tf4", "q": q, "statements": statements, "answer": answers,
             "solution": solution, "alt": alt, "note": note}
 

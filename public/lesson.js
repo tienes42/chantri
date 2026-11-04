@@ -208,7 +208,7 @@ if (fontIncreaseBtn) {
 }
 
 /* =========================================================
-   ESCAPE HTML & BỘ ĐỊNH DẠNG VĂN BẢN DÀI TỪ BACKEND
+   ESCAPE HTML & BỘ DỰNG CÔNG THỨC TOÁN - LÝ - HÓA (KaTeX + Offline)
 ========================================================= */
 function escapeHTML(value) {
   if (value === null || value === undefined) return "";
@@ -220,11 +220,300 @@ function escapeHTML(value) {
     .replace(/'/g, "&#039;");
 }
 
-function formatInlineStyles(escapedStr) {
-  return escapedStr
-    .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
-    .replace(/`([^`]+)`/g, "<code>$1</code>");
+const SUP_CHAR_MAP = {
+  "⁰": "0", "¹": "1", "²": "2", "³": "3", "⁴": "4",
+  "⁵": "5", "⁶": "6", "⁷": "7", "⁸": "8", "⁹": "9",
+  "ⁿ": "n", "ᵐ": "m", "⁺": "+", "⁻": "−"
+};
+const SUB_CHAR_MAP = {
+  "₀": "0", "₁": "1", "₂": "2", "₃": "3", "₄": "4",
+  "₅": "5", "₆": "6", "₇": "7", "₈": "8", "₉": "9",
+  "₊": "+", "₋": "−"
+};
+
+const LATEX_SYMBOLS = {
+  "\\cdot": "·", "\\times": "×", "\\div": ":", "\\pm": "±", "\\mp": "∓",
+  "\\le": "≤", "\\leq": "≤", "\\ge": "≥", "\\geq": "≥",
+  "\\ne": "≠", "\\neq": "≠", "\\approx": "≈", "\\equiv": "≡",
+  "\\sim": "∼", "\\simeq": "≃", "\\cong": "≅",
+  "\\in": "∈", "\\notin": "∉", "\\subset": "⊂", "\\subseteq": "⊆", "\\supset": "⊃", "\\supseteq": "⊇", "\\setminus": "\\", "\\int": "∫", "\\sum": "∑", "\\prod": "∏",
+  "\\cup": "∪", "\\cap": "∩", "\\emptyset": "∅", "\\varnothing": "∅",
+  "\\Rightarrow": "⇒", "\\Leftarrow": "⇐", "\\Leftrightarrow": "⇔",
+  "\\rightarrow": "→", "\\to": "→", "\\leftarrow": "←", "\\mapsto": "↦",
+  "\\forall": "∀", "\\exists": "∃",
+  "\\perp": "⊥", "\\parallel": "∥", "\\triangle": "△", "\\angle": "∠",
+  "\\pi": "π", "\\alpha": "α", "\\beta": "β", "\\gamma": "γ", "\\delta": "δ",
+  "\\Delta": "Δ", "\\epsilon": "ε", "\\varepsilon": "ε", "\\theta": "θ",
+  "\\lambda": "λ", "\\mu": "μ", "\\rho": "ρ", "\\sigma": "σ", "\\tau": "τ",
+  "\\varphi": "φ", "\\phi": "ϕ", "\\omega": "ω", "\\Omega": "Ω",
+  "\\infty": "∞", "\\dots": "…", "\\ldots": "…", "\\cdots": "⋯",
+  "\\circ": "°", "\\%": "%", "\\{": "{", "\\}": "}", "\\,": " ", "\\;": " ", "\\:": " ", "\\!": ""
+};
+
+function takeBraced(s, pos) {
+  while (pos < s.length && s[pos] === " ") pos++;
+  if (pos >= s.length || s[pos] !== "{") return null;
+  let depth = 0;
+  let start = pos + 1;
+  for (let i = pos; i < s.length; i++) {
+    if (s[i] === "\\") { i++; continue; }
+    if (s[i] === "{") depth++;
+    else if (s[i] === "}") {
+      depth--;
+      if (depth === 0) return { content: s.slice(start, i), next: i + 1 };
+    }
+  }
+  return { content: s.slice(start), next: s.length };
 }
+
+function takeBracketed(s, pos) {
+  while (pos < s.length && s[pos] === " ") pos++;
+  if (pos >= s.length || s[pos] !== "[") return null;
+  let depth = 0;
+  let start = pos + 1;
+  for (let i = pos; i < s.length; i++) {
+    if (s[i] === "[") depth++;
+    else if (s[i] === "]") {
+      depth--;
+      if (depth === 0) return { content: s.slice(start, i), next: i + 1 };
+    }
+  }
+  return null;
+}
+
+function renderLatexOffline(tex) {
+  if (!tex) return "";
+  let s = String(tex).trim()
+    .replace(/\\left\s*([(\[\{|])/g, "$1")
+    .replace(/\\right\s*([)\]\}|])/g, "$1")
+    .replace(/\\left\s*\\\{/g, "{")
+    .replace(/\\right\s*\\\}/g, "}")
+    .replace(/\\mathbb\{N\}\^\*/g, "ℕ*")
+    .replace(/\\mathbb\{N\}/g, "ℕ")
+    .replace(/\\mathbb\{Z\}/g, "ℤ")
+    .replace(/\\mathbb\{Q\}/g, "ℚ")
+    .replace(/\\mathbb\{R\}/g, "ℝ").replace(/\\mathbb\{C\}/g, "ℂ").replace(/\\not\\subset/g, "⊄").replace(/\\not\\in/g, "∉");
+
+  s = s.replace(/\\begin\{cases\}([\s\S]*?)\\end\{cases\}/g, (_, body) => {
+    const rows = body.split(/\\\\/).map(r => r.trim()).filter(Boolean);
+    const rowsHtml = rows.map(r => {
+      const cols = r.split("&").map(c => renderLatexOffline(c.trim()));
+      return `<span class="m-cases-row">${cols.join(" &nbsp; ")}</span>`;
+    }).join("");
+    return `\x00CASES_START\x00${rowsHtml}\x00CASES_END\x00`;
+  });
+  let out = "";
+  let i = 0;
+  while (i < s.length) {
+    const ch = s[i];
+    if (ch === "\\") {
+      const mCmd = s.slice(i).match(/^\\([a-zA-Z]+|[{},;:%!])/);
+      if (mCmd) {
+        const fullCmd = "\\" + mCmd[1];
+        const nextPos = i + fullCmd.length;
+        if (fullCmd === "\\frac" || fullCmd === "\\dfrac" || fullCmd === "\\tfrac") {
+          const num = takeBraced(s, nextPos);
+          if (num) {
+            const den = takeBraced(s, num.next);
+            if (den) {
+              out += `<span class="m-frac"><span class="m-num">${renderLatexOffline(num.content)}</span><span class="m-den">${renderLatexOffline(den.content)}</span></span>`;
+              i = den.next;
+              continue;
+            }
+          }
+        } else if (fullCmd === "\\sqrt") {
+          const opt = takeBracketed(s, nextPos);
+          const radPos = opt ? opt.next : nextPos;
+          const rad = takeBraced(s, radPos);
+          if (rad) {
+            const rootHtml = opt ? `<sup class="m-root">${renderLatexOffline(opt.content)}</sup>` : "";
+            out += `<span class="m-sqrt">${rootHtml}<span class="m-rad">√</span><span class="m-radicand">${renderLatexOffline(rad.content)}</span></span>`;
+            i = rad.next;
+            continue;
+          }
+        } else if (fullCmd === "\\widehat" || fullCmd === "\\hat") {
+          const arg = takeBraced(s, nextPos);
+          if (arg) {
+            out += `<span class="m-hat">${renderLatexOffline(arg.content)}</span>`;
+            i = arg.next;
+            continue;
+          }
+        } else if (fullCmd === "\\overline" || fullCmd === "\\bar") {
+          const arg = takeBraced(s, nextPos);
+          if (arg) {
+            out += `<span class="m-overline">${renderLatexOffline(arg.content)}</span>`;
+            i = arg.next;
+            continue;
+          }
+        } else if (fullCmd === "\\overrightarrow" || fullCmd === "\\vec") {
+          const arg = takeBraced(s, nextPos);
+          if (arg) {
+            out += `<span class="m-vec">${renderLatexOffline(arg.content)}</span>`;
+            i = arg.next;
+            continue;
+          }
+        } else if (fullCmd === "\\mathbf" || fullCmd === "\\boldsymbol") {
+          const arg = takeBraced(s, nextPos);
+          if (arg) {
+            out += `<strong>${renderLatexOffline(arg.content)}</strong>`;
+            i = arg.next;
+            continue;
+          }
+        } else if (fullCmd === "\\text" || fullCmd === "\\mathrm" || fullCmd === "\\textbf") {
+          const arg = takeBraced(s, nextPos);
+          if (arg) {
+            const inner = (fullCmd === "\\textbf")
+              ? `<strong>${escapeHTML(arg.content)}</strong>`
+              : escapeHTML(arg.content);
+            out += `<span class="m-text">${inner}</span>`;
+            i = arg.next;
+            continue;
+          }
+        } else if (fullCmd === "\\sin" || fullCmd === "\\cos" || fullCmd === "\\tan" || fullCmd === "\\cot" || fullCmd === "\\log" || fullCmd === "\\ln" || fullCmd === "\\lim") {
+          out += `<span class="m-text">${mCmd[1]}</span>`;
+          i = nextPos;
+          continue;
+        } else if (Object.prototype.hasOwnProperty.call(LATEX_SYMBOLS, fullCmd)) {
+          out += LATEX_SYMBOLS[fullCmd];
+          i = nextPos;
+          continue;
+        }
+        out += escapeHTML(mCmd[1]);
+        i = nextPos;
+        continue;
+      }
+    }
+
+    if (ch === "^" || ch === "_") {
+      const tag = ch === "^" ? "sup" : "sub";
+      const cls = ch === "^" ? "m-sup" : "m-sub";
+      const braced = takeBraced(s, i + 1);
+      if (braced) {
+        if (ch === "^" && braced.content.trim() === "\\circ") {
+          out += "°";
+        } else {
+          out += `<${tag} class="${cls}">${renderLatexOffline(braced.content)}</${tag}>`;
+        }
+        i = braced.next;
+        continue;
+      }
+      if (s.slice(i + 1).startsWith("\\circ")) {
+        out += "°";
+        i += 6;
+        continue;
+      }
+      if (i + 1 < s.length) {
+        out += `<${tag} class="${cls}">${escapeHTML(s[i + 1])}</${tag}>`;
+        i += 2;
+        continue;
+      }
+    }
+
+    if (ch === "{") {
+      const braced = takeBraced(s, i);
+      if (braced) {
+        out += renderLatexOffline(braced.content);
+        i = braced.next;
+        continue;
+      }
+    }
+
+    if (ch === "-") {
+      out += "−";
+    } else {
+      out += escapeHTML(ch);
+    }
+    i++;
+  }
+  return out.replace(/\x00CASES_START\x00([\s\S]*?)\x00CASES_END\x00/g, '<span class="m-cases"><span class="m-brace">{</span><span class="m-cases-rows">$1</span></span>');
+}
+
+function renderLatexToken(tex, isDisplay) {
+  const cleanTex = String(tex).trim();
+  const attrTex = escapeHTML(cleanTex);
+  if (window.katex && typeof window.katex.renderToString === "function") {
+    try {
+      return window.katex.renderToString(cleanTex, {
+        throwOnError: false,
+        displayMode: !!isDisplay
+      });
+    } catch (_) {}
+  }
+  const cls = isDisplay ? "m-math m-math-block" : "m-math";
+  return `<span class="${cls}" data-tex="${attrTex}" data-display="${isDisplay ? 1 : 0}">${renderLatexOffline(cleanTex)}</span>`;
+}
+
+function upgradeKatex() {
+  if (!window.katex || typeof window.katex.renderToString !== "function") return;
+  document.querySelectorAll(".m-math[data-tex]").forEach((el) => {
+    const tex = el.getAttribute("data-tex");
+    const isDisplay = el.getAttribute("data-display") === "1";
+    if (!tex) return;
+    try {
+      el.outerHTML = window.katex.renderToString(tex, {
+        throwOnError: false,
+        displayMode: isDisplay
+      });
+    } catch (_) {}
+  });
+}
+
+function formatPlainMathAndChem(escapedStr) {
+  if (!escapedStr) return "";
+  let s = escapedStr;
+  // Convert Unicode superscripts (e.g., cm², m³, 2³) -> <sup class="m-sup">...</sup>
+  s = s.replace(/([⁰¹²³⁴⁵⁶⁷⁸⁹ⁿᵐ⁺⁻]+)/g, (m) => {
+    const mapped = Array.from(m).map((c) => SUP_CHAR_MAP[c] || c).join("");
+    return `<sup class="m-sup">${mapped}</sup>`;
+  });
+  // Convert Unicode subscripts (e.g., H₂O, CO₂, x₁) -> <sub class="m-sub">...</sub>
+  s = s.replace(/([₀₁₂₃₄₅₆₇₈₉₊₋]+)/g, (m) => {
+    const mapped = Array.from(m).map((c) => SUB_CHAR_MAP[c] || c).join("");
+    return `<sub class="m-sub">${mapped}</sub>`;
+  });
+  // Convert common ASCII chemical formulas (e.g., H2O, CO2, H2SO4, Ca(OH)2, Fe2O3, CH3COOH)
+  s = s.replace(/\b((?:[A-Z][a-z]?\d*|\([A-Za-z0-9]+\)\d+){2,})\b/g, (word) => {
+    if (!/\d/.test(word)) return word;
+    if (/^(?:M\d+|L\d+|B\d+|C\d+|A\d+|Q\d+|TC\d+|2D|3D|4G|5G|MP3|MP4|H1|H2|H3|H4|H5|H6)$/.test(word)) return word;
+    return word.replace(/([A-Za-z\)])(\d+)/g, '$1<sub class="m-sub">$2</sub>');
+  });
+  return s;
+}
+
+function formatInlineStyles(rawOrEscapedStr, alreadyEscaped = false) {
+  if (rawOrEscapedStr === null || rawOrEscapedStr === undefined) return "";
+  const raw = alreadyEscaped
+    ? String(rawOrEscapedStr)
+        .replace(/&amp;/g, "&")
+        .replace(/&lt;/g, "<")
+        .replace(/&gt;/g, ">")
+        .replace(/&quot;/g, '"')
+        .replace(/&#039;/g, "'")
+    : String(rawOrEscapedStr);
+
+  // Split by $$...$$ and $...$ so math tokens are rendered cleanly while text outside is escaped & styled
+  const tokenRe = /(\$\$[\s\S]+?\$\$|\$[^$\n]+?\$)/g;
+  const parts = raw.split(tokenRe);
+  return parts.map((part) => {
+    if (part.startsWith("$$") && part.endsWith("$$") && part.length > 4) {
+      return renderLatexToken(part.slice(2, -2), true);
+    }
+    if (part.startsWith("$") && part.endsWith("$") && part.length > 2) {
+      return renderLatexToken(part.slice(1, -1), false);
+    }
+    let esc = escapeHTML(part);
+    esc = esc
+      .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
+      .replace(/`([^`]+)`/g, "<code>$1</code>");
+    return formatPlainMathAndChem(esc);
+  }).join("");
+}
+
+window.HDLGMath = {
+  formatInline: function (rawStr) { return formatInlineStyles(rawStr, false); },
+  renderLatexToken: renderLatexToken,
+  upgradeKatex: upgradeKatex
+};
 
 function formatRichText(rawValue) {
   if (rawValue === null || rawValue === undefined) return "";
@@ -384,15 +673,15 @@ function renderFormulas(data, singleFormula) {
         if (typeof item === "string") {
           html += `
             <div class="formula-item">
-              <div class="formula-expression">${escapeHTML(item)}</div>
+              <div class="formula-expression">${formatInlineStyles(item)}</div>
             </div>
           `;
           return;
         }
         html += `
           <div class="formula-item">
-            ${item.name ? `<div class="formula-name">${escapeHTML(item.name)}</div>` : ""}
-            ${item.formula ? `<div class="formula-expression">${escapeHTML(item.formula)}</div>` : ""}
+            ${item.name ? `<div class="formula-name">${formatInlineStyles(item.name)}</div>` : ""}
+            ${item.formula ? `<div class="formula-expression">${formatInlineStyles(item.formula)}</div>` : ""}
             ${item.note ? `<div class="formula-note">${formatRichText(item.note)}</div>` : ""}
           </div>
         `;
@@ -404,8 +693,8 @@ function renderFormulas(data, singleFormula) {
     if (group && typeof group === "object") {
       html += `
         <div class="formula-item">
-          ${group.name ? `<div class="formula-name">${escapeHTML(group.name)}</div>` : ""}
-          ${group.formula ? `<div class="formula-expression">${escapeHTML(group.formula)}</div>` : ""}
+          ${group.name ? `<div class="formula-name">${formatInlineStyles(group.name)}</div>` : ""}
+          ${group.formula ? `<div class="formula-expression">${formatInlineStyles(group.formula)}</div>` : ""}
           ${group.note ? `<div class="formula-note">${formatRichText(group.note)}</div>` : ""}
         </div>
       `;
@@ -414,7 +703,7 @@ function renderFormulas(data, singleFormula) {
 
     html += `
       <div class="formula-item">
-        <div class="formula-expression">${escapeHTML(group)}</div>
+        <div class="formula-expression">${formatInlineStyles(group)}</div>
       </div>
     `;
   });
@@ -449,7 +738,7 @@ function renderAnswers(answerList, correctIndex) {
     const letter = letters[index] || String(index + 1);
     option.innerHTML = `
       <span class="option-letter">${letter}</span>
-      <span>${escapeHTML(answer)}</span>
+      <span>${formatInlineStyles(answer)}</span>
     `;
 
     option.addEventListener("click", function () {
