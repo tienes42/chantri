@@ -378,40 +378,40 @@ LESSONS = [
             r"Lấy được ví dụ chứng tỏ giác quan của chúng ta có thể cảm nhận sai về nhiệt độ của các vật.",
             r"Phát biểu được nhiệt độ là số đo độ “nóng”, “lạnh” của vật; vật nóng hơn có nhiệt độ cao hơn, vật lạnh hơn có nhiệt độ thấp hơn.",
             r"Nêu được nguyên tắc cấu tạo và hoạt động của nhiệt kế chất lỏng dựa trên hiện tượng dãn nở vì nhiệt của chất lỏng.",
-            r"Xác định được đơn vị đo nhiệt độ trong hệ SI là Kelvin ($\text{K}$), đơn vị thông dụng ở Việt Nam là độ Celsius ($^\circ\text{C}$) và ở các nước nói tiếng Anh là độ Fahrenheit ($^\circ\text{F}$); chuyển đổi được giữa các thang nhiệt độ.",
+            r"Xác định được đơn vị đo nhiệt độ trong hệ SI là Kelvin ($\text{K}$), đơn vị thông dụng ở Việt Nam là độ Celsius (${}^\circ\text{C}$) và ở các nước nói tiếng Anh là độ Fahrenheit (${}^\circ\text{F}$); chuyển đổi được giữa các thang nhiệt độ.",
             r"Thực hiện được phép đo nhiệt độ của cơ thể và của nước bằng nhiệt kế đúng quy tắc và an toàn.",
         ],
         "definition": (
             r"- **Nhiệt độ** là số đo mức độ “nóng”, “lạnh” của một vật. Vật nóng hơn có nhiệt độ cao hơn; vật lạnh hơn có nhiệt độ thấp hơn." "\n"
-            r"- Đơn vị đo nhiệt độ trong hệ SI là **Kelvin** (kí hiệu $\text{K}$); đơn vị đo nhiệt độ thông dụng ở Việt Nam là **độ Celsius** (kí hiệu $^\circ\text{C}$); một số nước sử dụng **độ Fahrenheit** (kí hiệu $^\circ\text{F}$)." "\n"
+            r"- Đơn vị đo nhiệt độ trong hệ SI là **Kelvin** (kí hiệu $\text{K}$); đơn vị đo nhiệt độ thông dụng ở Việt Nam là **độ Celsius** (kí hiệu ${}^\circ\text{C}$); một số nước sử dụng **độ Fahrenheit** (kí hiệu ${}^\circ\text{F}$)." "\n"
             r"- **Nhiệt kế chất lỏng** (rượu, thuỷ ngân, dầu màu) hoạt động dựa trên hiện tượng **dãn nở vì nhiệt của chất lỏng**."
         ),
         "theory": (
             r"### Bài 8. Đo nhiệt độ" "\n"
             r"- **Thí nghiệm cảm giác tay với 3 cốc nước** (lạnh, nguội, ấm): Ngón tay nhúng từ nước lạnh sang nước nguội thấy ấm, còn ngón tay nhúng từ nước ấm sang nước nguội lại thấy lạnh. Điều đó chứng tỏ giác quan không thể xác định chính xác nhiệt độ mà phải dùng **nhiệt kế**." "\n"
             r"- **Ba thang nhiệt độ phổ biến**:" "\n"
-            r"  + **Thang nhiệt độ Celsius ($^\circ\text{C}$)**: Chọn nhiệt độ của nước đá đang tan ở áp suất tiêu chuẩn là $0^\circ\text{C}$ và nhiệt độ của hơi nước đang sôi là $100^\circ\text{C}$." "\n"
-            r"  + **Thang nhiệt độ Fahrenheit ($^\circ\text{F}$)**: Nhiệt độ của nước đá đang tan là $32^\circ\text{F}$ và nhiệt độ của hơi nước đang sôi là $212^\circ\text{F}$ (chia thành $180$ khoảng đều nhau, nên độ biến thiên $1^\circ\text{C}$ tương ứng với $1{,}8^\circ\text{F}$)." "\n"
+            r"  + **Thang nhiệt độ Celsius (${}^\circ\text{C}$)**: Chọn nhiệt độ của nước đá đang tan ở áp suất tiêu chuẩn là $0^\circ\text{C}$ và nhiệt độ của hơi nước đang sôi là $100^\circ\text{C}$." "\n"
+            r"  + **Thang nhiệt độ Fahrenheit (${}^\circ\text{F}$)**: Nhiệt độ của nước đá đang tan là $32^\circ\text{F}$ và nhiệt độ của hơi nước đang sôi là $212^\circ\text{F}$ (chia thành $180$ khoảng đều nhau, nên độ biến thiên $1^\circ\text{C}$ tương ứng với $1{,}8^\circ\text{F}$)." "\n"
             r"  + **Thang nhiệt độ tuyệt đối Kelvin ($\text{K}$)**: Nhiệt độ nước đá đang tan là $273{,}15\text{ K}$ (thường lấy tròn là $273\text{ K}$) và hơi nước đang sôi là $373\text{ K}$. Độ biến thiên $1^\circ\text{C}$ bằng đúng độ biến thiên $1\text{ K}$." "\n"
             r"- **Cấu tạo đặc biệt của nhiệt kế y tế chất lỏng**: Có $\text{GHĐ}$ từ $35^\circ\text{C}$ đến $42^\circ\text{C}$, $\text{ĐCNN} = 0{,}1^\circ\text{C}$. Phần ống quản gần bầu chứa có một **chỗ thắt** ngăn không cho chất lỏng tự tụt xuống khi lấy nhiệt kế ra khỏi cơ thể để người dùng đọc kết quả chính xác; vì vậy trước khi đo phải **vảy mạnh** cho cột chất lỏng tụt xuống dưới vạch $35^\circ\text{C}$."
         ),
         "formulas": [
             G(
                 "I. Chuyển đổi giữa các thang nhiệt độ",
-                F("Từ độ Celsius sang độ Fahrenheit", r"$t(^\circ\text{F}) = t(^\circ\text{C}) \cdot 1{,}8 + 32$", r"Ví dụ: $0^\circ\text{C} = 32^\circ\text{F}$; $100^\circ\text{C} = 212^\circ\text{F}$."),
-                F("Từ độ Fahrenheit sang độ Celsius", r"$t(^\circ\text{C}) = \dfrac{t(^\circ\text{F}) - 32}{1{,}8} = \dfrac{5}{9}\cdot \left[t(^\circ\text{F}) - 32\right]$"),
-                F("Giữa độ Celsius và Kelvin", r"$T(\text{K}) = t(^\circ\text{C}) + 273 \iff t(^\circ\text{C}) = T(\text{K}) - 273$", r"Chính xác hơn là cộng $273{,}15$."),
+                F("Từ độ Celsius sang độ Fahrenheit", r"$t({}^\circ\text{F}) = t({}^\circ\text{C}) \cdot 1{,}8 + 32$", r"Ví dụ: $0^\circ\text{C} = 32^\circ\text{F}$; $100^\circ\text{C} = 212^\circ\text{F}$."),
+                F("Từ độ Fahrenheit sang độ Celsius", r"$t({}^\circ\text{C}) = \dfrac{t({}^\circ\text{F}) - 32}{1{,}8} = \dfrac{5}{9}\cdot \left[t({}^\circ\text{F}) - 32\right]$"),
+                F("Giữa độ Celsius và Kelvin", r"$T(\text{K}) = t({}^\circ\text{C}) + 273 \iff t({}^\circ\text{C}) = T(\text{K}) - 273$", r"Chính xác hơn là cộng $273{,}15$."),
             ),
             G(
                 "II. Độ biến thiên nhiệt độ",
-                F("Liên hệ độ tăng giảm nhiệt độ", r"$\Delta T(\text{K}) = \Delta t(^\circ\text{C}); \quad \Delta t(^\circ\text{F}) = 1{,}8 \cdot \Delta t(^\circ\text{C})$", r"Khi nhiệt độ tăng thêm $10^\circ\text{C}$ thì trong thang $\text{K}$ tăng $10\text{ K}$ và trong thang $^\circ\text{F}$ tăng $18^\circ\text{F}$."),
+                F("Liên hệ độ tăng giảm nhiệt độ", r"$\Delta T(\text{K}) = \Delta t({}^\circ\text{C}); \quad \Delta t({}^\circ\text{F}) = 1{,}8 \cdot \Delta t({}^\circ\text{C})$", r"Khi nhiệt độ tăng thêm $10^\circ\text{C}$ thì trong thang $\text{K}$ tăng $10\text{ K}$ và trong thang ${}^\circ\text{F}$ tăng $18^\circ\text{F}$."),
             ),
         ],
         "example": (
-            r"Nhiệt độ cơ thể người bình thường là $37^\circ\text{C}$. Hãy tính nhiệt độ này theo thang nhiệt độ Fahrenheit ($^\circ\text{F}$) và thang nhiệt độ Kelvin ($\text{K}$)."
+            r"Nhiệt độ cơ thể người bình thường là $37^\circ\text{C}$. Hãy tính nhiệt độ này theo thang nhiệt độ Fahrenheit (${}^\circ\text{F}$) và thang nhiệt độ Kelvin ($\text{K}$)."
         ),
         "example_answer": (
-            r"- Theo thang nhiệt độ Fahrenheit: $t(^\circ\text{F}) = 37 \cdot 1{,}8 + 32 = 66{,}6 + 32 = 98{,}6^\circ\text{F}$." "\n"
+            r"- Theo thang nhiệt độ Fahrenheit: $t({}^\circ\text{F}) = 37 \cdot 1{,}8 + 32 = 66{,}6 + 32 = 98{,}6^\circ\text{F}$." "\n"
             r"- Theo thang nhiệt độ Kelvin: $T(\text{K}) = 37 + 273 = 310\text{ K}$."
         ),
         "real_life": (
@@ -424,7 +424,7 @@ LESSONS = [
         "quiz": [
             mcq(
                 "biet",
-                r"Trong thang nhiệt độ Celsius ($^\circ\text{C}$), nhiệt độ của nước đá đang tan và nhiệt độ của hơi nước đang sôi ở áp suất tiêu chuẩn lần lượt là:",
+                r"Trong thang nhiệt độ Celsius (${}^\circ\text{C}$), nhiệt độ của nước đá đang tan và nhiệt độ của hơi nước đang sôi ở áp suất tiêu chuẩn lần lượt là:",
                 [
                     r"$0^\circ\text{C}$ và $100^\circ\text{C}$.",
                     r"$32^\circ\text{C}$ và $212^\circ\text{C}$.",
@@ -463,8 +463,8 @@ LESSONS = [
                 r"Đơn vị đo nhiệt độ cơ bản trong hệ thống đo lường quốc tế SI là:",
                 [
                     r"Kelvin ($\text{K}$).",
-                    r"Độ Celsius ($^\circ\text{C}$).",
-                    r"Độ Fahrenheit ($^\circ\text{F}$).",
+                    r"Độ Celsius (${}^\circ\text{C}$).",
+                    r"Độ Fahrenheit (${}^\circ\text{F}$).",
                     r"Jun ($\text{J}$).",
                 ],
                 0,
@@ -472,7 +472,7 @@ LESSONS = [
             ),
             mcq(
                 "hieu",
-                r"Bản tin dự báo thời tiết tại Hà Nội cho biết nhiệt độ ban trưa là $25^\circ\text{C}$. Giá trị nhiệt độ này tương ứng với bao nhiêu độ Fahrenheit ($^\circ\text{F}$)?",
+                r"Bản tin dự báo thời tiết tại Hà Nội cho biết nhiệt độ ban trưa là $25^\circ\text{C}$. Giá trị nhiệt độ này tương ứng với bao nhiêu độ Fahrenheit (${}^\circ\text{F}$)?",
                 [
                     r"$77^\circ\text{F}$.",
                     r"$57^\circ\text{F}$.",
@@ -480,7 +480,7 @@ LESSONS = [
                     r"$298^\circ\text{F}$.",
                 ],
                 0,
-                r"Áp dụng công thức chuyển đổi: $t(^\circ\text{F}) = t(^\circ\text{C}) \cdot 1{,}8 + 32 = 25 \cdot 1{,}8 + 32 = 45 + 32 = 77^\circ\text{F}$.",
+                r"Áp dụng công thức chuyển đổi: $t({}^\circ\text{F}) = t({}^\circ\text{C}) \cdot 1{,}8 + 32 = 25 \cdot 1{,}8 + 32 = 45 + 32 = 77^\circ\text{F}$.",
             ),
             mcq(
                 "hieu",
@@ -507,11 +507,11 @@ LESSONS = [
                 r"a) Đúng vì chỗ thắt giữ cột chất lỏng đứng yên để người đo đọc kết quả sau khi lấy ra khỏi cơ thể." "\n"
                 r"b) Sai vì nhiệt kế phòng thí nghiệm không có chỗ thắt; khi đọc kết quả phải giữ nguyên bầu nhiệt kế ngập trong nước (không chạm đáy và thành cốc)." "\n"
                 r"c) Đúng vì thuỷ ngân dễ bay hơi và rất độc đối với hệ thần kinh, hô hấp." "\n"
-                r"d) Sai vì độ biến thiên $\Delta T(\text{K}) = \Delta t(^\circ\text{C}) = 10\text{ K}$ chứ không phải cộng thêm $273$.",
+                r"d) Sai vì độ biến thiên $\Delta T(\text{K}) = \Delta t({}^\circ\text{C}) = 10\text{ K}$ chứ không phải cộng thêm $273$.",
             ),
             tf4(
                 "hieu",
-                r"Xét sự quy đổi giữa ba thang nhiệt độ Celsius ($^\circ\text{C}$), Fahrenheit ($^\circ\text{F}$) và Kelvin ($\text{K}$). Mỗi khẳng định sau đúng hay sai?",
+                r"Xét sự quy đổi giữa ba thang nhiệt độ Celsius (${}^\circ\text{C}$), Fahrenheit (${}^\circ\text{F}$) và Kelvin ($\text{K}$). Mỗi khẳng định sau đúng hay sai?",
                 [
                     r"a) $0^\circ\text{C}$ tương ứng với $32^\circ\text{F}$ và $273\text{ K}$.",
                     r"b) $100^\circ\text{C}$ tương ứng với $212^\circ\text{F}$ và $373\text{ K}$.",
@@ -521,7 +521,7 @@ LESSONS = [
                 [True, True, True, False],
                 r"a) Đúng theo mốc nhiệt độ nước đá đang tan." "\n"
                 r"b) Đúng theo mốc nhiệt độ hơi nước đang sôi." "\n"
-                r"c) Đúng vì $t(^\circ\text{C}) = \dfrac{50 - 32}{1{,}8} = \dfrac{18}{1{,}8} = 10^\circ\text{C}$." "\n"
+                r"c) Đúng vì $t({}^\circ\text{C}) = \dfrac{50 - 32}{1{,}8} = \dfrac{18}{1{,}8} = 10^\circ\text{C}$." "\n"
                 r"d) Sai vì $300\text{ K} = 300 - 273 = 27^\circ\text{C} < 40^\circ\text{C}$.",
             ),
             mcq(
@@ -538,9 +538,9 @@ LESSONS = [
             ),
             short(
                 "vandung",
-                r"Một du khách tại New York thấy bảng điện tử ngoài trời hiển thị nhiệt độ là $68^\circ\text{F}$. Hãy tính nhiệt độ đó theo đơn vị độ Celsius ($^\circ\text{C}$).",
+                r"Một du khách tại New York thấy bảng điện tử ngoài trời hiển thị nhiệt độ là $68^\circ\text{F}$. Hãy tính nhiệt độ đó theo đơn vị độ Celsius (${}^\circ\text{C}$).",
                 ["20", "20,0", "20.0"],
-                r"Áp dụng công thức đổi từ $^\circ\text{F}$ sang $^\circ\text{C}$: $t(^\circ\text{C}) = \dfrac{68 - 32}{1{,}8} = \dfrac{36}{1{,}8} = 20^\circ\text{C}$.",
+                r"Áp dụng công thức đổi từ ${}^\circ\text{F}$ sang ${}^\circ\text{C}$: $t({}^\circ\text{C}) = \dfrac{68 - 32}{1{,}8} = \dfrac{36}{1{,}8} = 20^\circ\text{C}$.",
             ),
         ],
     },

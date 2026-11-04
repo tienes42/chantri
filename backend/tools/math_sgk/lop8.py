@@ -297,7 +297,7 @@ LESSONS = [
         ],
         "example": "Cho hàm số bậc nhất $y = 2x - 4$ có đồ thị là đường thẳng $(d)$. Xác định hệ số góc của $(d)$, tìm tọa độ giao điểm của $(d)$ với hai trục tọa độ và tìm $m$ để đường thẳng $(d'): y = (m - 1)x + 3$ song song với $(d)$.",
         "example_answer": "Đường thẳng $(d): y = 2x - 4$ có hệ số góc $a = 2$. Cho $x = 0 \\implies y = -4$, giao điểm với trục $Oy$ là $A(0; -4)$. Cho $y = 0 \\implies 2x - 4 = 0 \\iff x = 2$, giao điểm với trục $Ox$ là $B(2; 0)$. Để $(d') \\parallel (d)$ thì $m - 1 = 2$ (và $3 \\neq -4$, luôn đúng) $\\iff m = 3$.",
-        "real_life": "Phương trình và hàm số bậc nhất mô tả chính xác công thức tính cước phí taxi theo quãng đường, chuyển đổi nhiệt độ giữa độ Celsius ($^\\circ\\text{C}$) và độ Fahrenheit ($^\\circ\\text{F}$): $F = 1,8C + 32$, cũng như bài toán gửi tiết kiệm lãi đơn.",
+        "real_life": "Phương trình và hàm số bậc nhất mô tả chính xác công thức tính cước phí taxi theo quãng đường, chuyển đổi nhiệt độ giữa độ Celsius (${}^\\circ\\text{C}$) và độ Fahrenheit (${}^\\circ\\text{F}$): $F = 1,8C + 32$, cũng như bài toán gửi tiết kiệm lãi đơn.",
         "quiz": [
             mcq("biet", "Phương trình nào dưới đây là phương trình bậc nhất một ẩn?", ["$3x - 9 = 0$", "$x^2 + 2x = 0$", "$0x + 5 = 0$", "$\\frac{2}{x} - 1 = 0$"], 0, "Phương trình $3x - 9 = 0$ có dạng $ax + b = 0$ với $a = 3 \\neq 0, b = -9$."),
             mcq("biet", "Nghiệm của phương trình $4x - 12 = 0$ là:", ["$x = 3$", "$x = -3$", "$x = 4$", "$x = 8$"], 0, "Ta có $4x - 12 = 0 \\iff 4x = 12 \\iff x = 3$."),

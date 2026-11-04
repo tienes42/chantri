@@ -1,3 +1,11 @@
+function normalizeKatexInput(tex) {
+  let s = unescapeHTML(String(tex || "").trim());
+  if (/&(?:amp|lt|gt|quot|#039|#39|apos);/.test(s)) s = unescapeHTML(s);
+  s = s.replace(/\\[,;:!]\s*([\^_])/g, "$1");
+  s = s.replace(/(^|[+\-=(,;:\[]|\\(?:rightarrow|to|Rightarrow|Leftrightarrow|longrightarrow|mapsto|times|cdot|pm|quad|qquad))\s*([\^_])/g, "$1{}$2");
+  return s;
+}
+
 function unescapeHTML(str) {
   if (str === null || str === undefined) return "";
   return String(str)
@@ -443,13 +451,13 @@ function renderLatexOffline(tex) {
 }
 
 function renderLatexToken(tex, isDisplay) {
-  let cleanTex = unescapeHTML(String(tex).trim());
-  if (/&(?:amp|lt|gt|quot|#039|#39|apos);/.test(cleanTex)) cleanTex = unescapeHTML(cleanTex);
+  const cleanTex = normalizeKatexInput(tex);
   const attrTex = escapeHTML(cleanTex);
   if (window.katex && typeof window.katex.renderToString === "function") {
     try {
       return window.katex.renderToString(cleanTex, {
-        throwOnError: false,
+        throwOnError: true,
+        strict: false,
         displayMode: !!isDisplay
       });
     } catch (_) {}
@@ -464,11 +472,11 @@ function upgradeKatex() {
     let tex = el.getAttribute("data-tex");
     const isDisplay = el.getAttribute("data-display") === "1";
     if (!tex) return;
-    tex = unescapeHTML(tex);
-    if (/&(?:amp|lt|gt|quot|#039|#39|apos);/.test(tex)) tex = unescapeHTML(tex);
+    tex = normalizeKatexInput(tex);
     try {
       el.outerHTML = window.katex.renderToString(tex, {
-        throwOnError: false,
+        throwOnError: true,
+        strict: false,
         displayMode: isDisplay
       });
     } catch (_) {}

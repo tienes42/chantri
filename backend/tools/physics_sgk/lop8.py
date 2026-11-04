@@ -755,7 +755,7 @@ $$\mathcal{P} = \dfrac{A}{t} = \dfrac{120000}{20} = 6000\text{ W} = 6\text{ kW}$
         "formulas": [
             G(
                 "I. Nhiệt lượng và cân bằng nhiệt",
-                F("Nhiệt lượng thu vào hoặc tỏa ra", r"$Q = m \cdot c \cdot \Delta t = m \cdot c \cdot |t_2 - t_1|$", r"$Q$ ($\text{J}$), $m$ ($\text{kg}$), $c$: nhiệt dung riêng ($\text{J/(kg}\cdot\text{K)}$), $\Delta t$ ($^\circ\text{C}$ hoặc $\text{K}$)"),
+                F("Nhiệt lượng thu vào hoặc tỏa ra", r"$Q = m \cdot c \cdot \Delta t = m \cdot c \cdot |t_2 - t_1|$", r"$Q$ ($\text{J}$), $m$ ($\text{kg}$), $c$: nhiệt dung riêng ($\text{J/(kg}\cdot\text{K)}$), $\Delta t$ (${}^\circ\text{C}$ hoặc $\text{K}$)"),
                 F("Phương trình cân bằng nhiệt (bỏ qua hao phí)", r"$Q_{\text{tỏa}} = Q_{\text{thu}} \iff m_1 c_1 (t_1 - t) = m_2 c_2 (t - t_2)$", r"$t$: nhiệt độ khi có cân bằng nhiệt ($t_2 < t < t_1$)"),
             ),
             G(
@@ -871,7 +871,7 @@ $$Q = m \cdot c \cdot \Delta t = 1{,}5 \cdot 4200 \cdot 80 = 504000\text{ J} = 5
             ),
             short(
                 "vandung",
-                r"Thả một thỏi đồng có khối lượng $m_1 = 0{,}5\text{ kg}$ đang ở nhiệt độ $t_1 = 120^\circ\text{C}$ vào một bình cách nhiệt chứa $m_2 = 0{,}5\text{ kg}$ nước ở nhiệt độ $t_2 = 20^\circ\text{C}$. Biết nhiệt dung riêng của đồng là $c_1 = 380\text{ J/(kg}\cdot\text{K)}$ và của nước là $c_2 = 4200\text{ J/(kg}\cdot\text{K)}$. Bỏ qua sự trao đổi nhiệt với bình và môi trường. Tính nhiệt độ cân bằng $t$ của hệ theo đơn vị $^\circ\text{C}$ (làm tròn đến hàng phần mười).",
+                r"Thả một thỏi đồng có khối lượng $m_1 = 0{,}5\text{ kg}$ đang ở nhiệt độ $t_1 = 120^\circ\text{C}$ vào một bình cách nhiệt chứa $m_2 = 0{,}5\text{ kg}$ nước ở nhiệt độ $t_2 = 20^\circ\text{C}$. Biết nhiệt dung riêng của đồng là $c_1 = 380\text{ J/(kg}\cdot\text{K)}$ và của nước là $c_2 = 4200\text{ J/(kg}\cdot\text{K)}$. Bỏ qua sự trao đổi nhiệt với bình và môi trường. Tính nhiệt độ cân bằng $t$ của hệ theo đơn vị ${}^\circ\text{C}$ (làm tròn đến hàng phần mười).",
                 ["28,3", "28.3"],
                 r"Áp dụng phương trình cân bằng nhiệt $Q_{\text{tỏa}} = Q_{\text{thu}}$: $m_1 c_1 (t_1 - t) = m_2 c_2 (t - t_2) \iff 0{,}5 \cdot 380 \cdot (120 - t) = 0{,}5 \cdot 4200 \cdot (t - 20) \iff 38(120 - t) = 420(t - 20) \iff 4560 - 38t = 420t - 8400 \iff 458t = 12960 \Rightarrow t \approx 28{,}3^\circ\text{C}$.",
             ),

@@ -37,7 +37,7 @@ LESSONS = [
             r"Thực hiện thí nghiệm, nêu được mối liên hệ giữa nội năng $U$ của vật với năng lượng của các phân tử tạo nên vật và phát biểu được Định luật $1$ của nhiệt động lực học $\Delta U = Q + A$.",
             r"Vận dụng được Định luật $1$ của nhiệt động lực học $\Delta U = Q + A$ (kèm quy ước dấu của nhiệt lượng $Q$ và công $A$) trong một số trường hợp thực tiễn.",
             r"Thực hiện thí nghiệm đơn giản, thảo luận để nêu được sự chênh lệch nhiệt độ giữa hai vật tiếp xúc nhau cho biết chiều truyền năng lượng nhiệt giữa chúng; khi hai vật tiếp xúc đạt trạng thái cân bằng nhiệt thì có cùng nhiệt độ.",
-            r"Nêu được mỗi độ chia ($1\,^\circ\text{C}$) trong thang Celsius bằng $\dfrac{1}{100}$ khoảng cách giữa nhiệt độ tan chảy của nước tinh khiết đóng băng ($0\,^\circ\text{C}$) và nhiệt độ sôi của nước tinh khiết ($100\,^\circ\text{C}$) ở áp suất tiêu chuẩn; mỗi độ chia ($1\text{ K}$) trong thang Kelvin bằng $\dfrac{1}{273{,}16}$ khoảng cách giữa nhiệt độ không tuyệt đối ($0\text{ K}$) và nhiệt độ điểm ba của nước ($273{,}16\text{ K}$).",
+            r"Nêu được mỗi độ chia ($1^\circ\text{C}$) trong thang Celsius bằng $\dfrac{1}{100}$ khoảng cách giữa nhiệt độ tan chảy của nước tinh khiết đóng băng ($0^\circ\text{C}$) và nhiệt độ sôi của nước tinh khiết ($100^\circ\text{C}$) ở áp suất tiêu chuẩn; mỗi độ chia ($1\text{ K}$) trong thang Kelvin bằng $\dfrac{1}{273{,}16}$ khoảng cách giữa nhiệt độ không tuyệt đối ($0\text{ K}$) và nhiệt độ điểm ba của nước ($273{,}16\text{ K}$).",
             r"Chuyển đổi được nhiệt độ đo theo thang Celsius sang nhiệt độ đo theo thang Kelvin và ngược lại theo công thức $T\text{ (K)} = t\text{ (}^\circ\text{C)} + 273{,}15$ (hoặc $T \approx t + 273$).",
             r"Nêu được định nghĩa nhiệt dung riêng $c$ ($\text{J/(kg}\cdot\text{K)}$), nhiệt nóng chảy riêng $\lambda$ ($\text{J/kg}$), nhiệt hoá hơi riêng $L$ ($\text{J/kg}$) và đơn vị đo của chúng trong hệ SI.",
             r"Thảo luận để thiết kế phương án hoặc lựa chọn phương án và thực hiện phương án đo được nhiệt dung riêng $c$, nhiệt nóng chảy riêng $\lambda$ của nước đá và nhiệt hoá hơi riêng $L$ của nước bằng dụng cụ thực hành.",
@@ -60,18 +60,18 @@ LESSONS = [
             r"- **Quy ước dấu**: $Q > 0$ (hệ nhận nhiệt), $Q < 0$ (hệ toả nhiệt); $A > 0$ (hệ nhận công), $A < 0$ (hệ sinh công); $\Delta U > 0$ (nội năng tăng), $\Delta U < 0$ (nội năng giảm)." "\n"
             r"### Bài 3. Nhiệt độ. Thang nhiệt độ – nhiệt kế" "\n"
             r"- **Sự truyền nhiệt và cân bằng nhiệt**: Năng lượng nhiệt tự truyền từ vật có nhiệt độ cao hơn sang vật có nhiệt độ thấp hơn. Khi hai vật đạt trạng thái cân bằng nhiệt thì nhiệt độ của chúng bằng nhau." "\n"
-            r"- **Thang Celsius ($t$), Kelvin ($T$) và Fahrenheit ($T_{\text{F}}$)**: Điểm đóng băng và điểm sôi của nước tinh khiết ở áp suất $1\text{ atm}$ tương ứng là $0\,^\circ\text{C}$ ($273{,}15\text{ K}$) và $100\,^\circ\text{C}$ ($373{,}15\text{ K}$). Không độ tuyệt đối $0\text{ K}$ ($-273{,}15\,^\circ\text{C}$) là giới hạn nhiệt độ thấp nhất mà tại đó động năng chuyển động nhiệt của các phân tử đạt giá trị tối thiểu. Điểm ba của nước (nước tinh khiết đồng thời tồn tại ở cả ba thể rắn, lỏng, hơi) có nhiệt độ chính xác bằng $273{,}16\text{ K}$ ($0{,}01\,^\circ\text{C}$). Công thức đổi thang Fahrenheit: $T_{\text{F}}\text{ (}^\circ\text{F)} = 1{,}8t\text{ (}^\circ\text{C)} + 32$." "\n"
+            r"- **Thang Celsius ($t$), Kelvin ($T$) và Fahrenheit ($T_{\text{F}}$)**: Điểm đóng băng và điểm sôi của nước tinh khiết ở áp suất $1\text{ atm}$ tương ứng là $0^\circ\text{C}$ ($273{,}15\text{ K}$) và $100^\circ\text{C}$ ($373{,}15\text{ K}$). Không độ tuyệt đối $0\text{ K}$ ($-273{,}15^\circ\text{C}$) là giới hạn nhiệt độ thấp nhất mà tại đó động năng chuyển động nhiệt của các phân tử đạt giá trị tối thiểu. Điểm ba của nước (nước tinh khiết đồng thời tồn tại ở cả ba thể rắn, lỏng, hơi) có nhiệt độ chính xác bằng $273{,}16\text{ K}$ ($0{,}01^\circ\text{C}$). Công thức đổi thang Fahrenheit: $T_{\text{F}}\text{ (}^\circ\text{F)} = 1{,}8t\text{ (}^\circ\text{C)} + 32$." "\n"
             r"- **Nguyên lí nhiệt kế**: Dựa trên sự phụ thuộc của một đại lượng vật lí vào nhiệt độ như sự nở vì nhiệt của cột chất lỏng (thuỷ ngân, rượu), sự biến thiên điện trở kim loại hoặc bán dẫn (nhiệt kế điện trở), hoặc bức xạ hồng ngoại (nhiệt kế hồng ngoại)." "\n"
             r"### Bài 4. Nhiệt dung riêng" "\n"
-            r"- **Công thức tính nhiệt lượng làm thay đổi nhiệt độ**: $Q = mc\Delta T = mc(t_2 - t_1)$, trong đó $m$ ($\text{kg}$) là khối lượng, $c$ ($\text{J/(kg}\cdot\text{K)}$) là nhiệt dung riêng, $\Delta T$ ($\text{K}$ hoặc $^\circ\text{C}$) là độ tăng nhiệt độ. Tích $C = mc$ (đơn vị $\text{J/K}$) gọi là **nhiệt dung** của vật." "\n"
+            r"- **Công thức tính nhiệt lượng làm thay đổi nhiệt độ**: $Q = mc\Delta T = mc(t_2 - t_1)$, trong đó $m$ ($\text{kg}$) là khối lượng, $c$ ($\text{J/(kg}\cdot\text{K)}$) là nhiệt dung riêng, $\Delta T$ ($\text{K}$ hoặc ${}^\circ\text{C}$) là độ tăng nhiệt độ. Tích $C = mc$ (đơn vị $\text{J/K}$) gọi là **nhiệt dung** của vật." "\n"
             r"- **Thí nghiệm đo nhiệt dung riêng của nước**: Đun nước có khối lượng $m$ trong bình nhiệt lượng kế bằng dây điện trở công suất $\mathcal{P}$ trong thời gian $\tau$; bỏ qua hao phí nhiệt ra môi trường thì $c = \dfrac{\mathcal{P}\tau}{m\Delta T}$." "\n"
             r"### Bài 5. Nhiệt nóng chảy riêng" "\n"
-            r"- **Công thức tính nhiệt lượng nóng chảy**: Ở nhiệt độ nóng chảy $t_{\text{nc}}$, nhiệt lượng cần cung cấp để làm nóng chảy hoàn toàn khối chất rắn kết tinh có khối lượng $m$ là $Q = m\lambda$, với $\lambda$ ($\text{J/kg}$) là nhiệt nóng chảy riêng (của nước đá ở $0\,^\circ\text{C}$ là $\lambda \approx 3{,}34 \times 10^5\text{ J/kg}$)." "\n"
+            r"- **Công thức tính nhiệt lượng nóng chảy**: Ở nhiệt độ nóng chảy $t_{\text{nc}}$, nhiệt lượng cần cung cấp để làm nóng chảy hoàn toàn khối chất rắn kết tinh có khối lượng $m$ là $Q = m\lambda$, với $\lambda$ ($\text{J/kg}$) là nhiệt nóng chảy riêng (của nước đá ở $0^\circ\text{C}$ là $\lambda \approx 3{,}34 \times 10^5\text{ J/kg}$)." "\n"
             r"### Bài 6. Nhiệt hoá hơi riêng" "\n"
-            r"- **Công thức tính nhiệt lượng hoá hơi**: Ở nhiệt độ hoá hơi xác định, nhiệt lượng cần cung cấp để khối chất lỏng khối lượng $m$ hoá hơi hoàn toàn là $Q = mL$, với $L$ ($\text{J/kg}$) là nhiệt hoá hơi riêng (của nước ở $100\,^\circ\text{C}$ là $L \approx 2{,}26 \times 10^6\text{ J/kg}$)." "\n"
+            r"- **Công thức tính nhiệt lượng hoá hơi**: Ở nhiệt độ hoá hơi xác định, nhiệt lượng cần cung cấp để khối chất lỏng khối lượng $m$ hoá hơi hoàn toàn là $Q = mL$, với $L$ ($\text{J/kg}$) là nhiệt hoá hơi riêng (của nước ở $100^\circ\text{C}$ là $L \approx 2{,}26 \times 10^6\text{ J/kg}$)." "\n"
             r"### Bài 7. Bài tập về vật lí nhiệt" "\n"
             r"- **Phương trình cân bằng nhiệt**: Trong một hệ cô lập về nhiệt gồm các vật chỉ truyền nhiệt cho nhau, tổng nhiệt lượng do các vật có nhiệt độ cao hơn toả ra bằng tổng nhiệt lượng do các vật có nhiệt độ thấp hơn thu vào: $\sum Q_{\text{toả}} = \sum Q_{\text{thu}}$, hay $\sum Q_i = 0$." "\n"
-            r"- **Bài toán nhiều giai đoạn (vừa tăng nhiệt độ vừa chuyển thể)**: Khi đun nước đá từ $t_1 < 0\,^\circ\text{C}$ thành hơi nước ở $100\,^\circ\text{C}$, tổng nhiệt lượng cần cung cấp là $Q = m c_{\text{đá}}(0 - t_1) + m\lambda + m c_{\text{nước}}(100 - 0) + mL$."
+            r"- **Bài toán nhiều giai đoạn (vừa tăng nhiệt độ vừa chuyển thể)**: Khi đun nước đá từ $t_1 < 0^\circ\text{C}$ thành hơi nước ở $100^\circ\text{C}$, tổng nhiệt lượng cần cung cấp là $Q = m c_{\text{đá}}(0 - t_1) + m\lambda + m c_{\text{nước}}(100 - 0) + mL$."
         ),
         "formulas": [
             G(
@@ -95,16 +95,16 @@ LESSONS = [
         ],
         "example": (
             r"Một ấm điện có công suất $\mathcal{P} = 1500\text{ W}$ và hiệu suất đun là $H = 84\%$ dùng để đun một khối nước đá "
-            r"có khối lượng $m = 0{,}5\text{ kg}$ ở nhiệt độ ban đầu $t_0 = -10\,^\circ\text{C}$ cho đến khi nước sôi và có $20\%$ khối lượng nước đã hoá hơi ở $100\,^\circ\text{C}$. "
+            r"có khối lượng $m = 0{,}5\text{ kg}$ ở nhiệt độ ban đầu $t_0 = -10^\circ\text{C}$ cho đến khi nước sôi và có $20\%$ khối lượng nước đã hoá hơi ở $100^\circ\text{C}$. "
             r"Biết nhiệt dung riêng của nước đá là $c_1 = 2100\text{ J/(kg}\cdot\text{K)}$, của nước là $c_2 = 4200\text{ J/(kg}\cdot\text{K)}$, "
-            r"nhiệt nóng chảy riêng của nước đá là $\lambda = 3{,}34 \times 10^5\text{ J/kg}$ và nhiệt hoá hơi riêng của nước ở $100\,^\circ\text{C}$ là $L = 2{,}26 \times 10^6\text{ J/kg}$. "
+            r"nhiệt nóng chảy riêng của nước đá là $\lambda = 3{,}34 \times 10^5\text{ J/kg}$ và nhiệt hoá hơi riêng của nước ở $100^\circ\text{C}$ là $L = 2{,}26 \times 10^6\text{ J/kg}$. "
             r"Tính tổng nhiệt lượng có ích cần cung cấp và thời gian đun $\tau$."
         ),
         "example_answer": (
-            r"- **Giai đoạn 1** (tăng nhiệt độ nước đá từ $-10\,^\circ\text{C}$ đến $0\,^\circ\text{C}$): $Q_1 = m c_1 \Delta t_1 = 0{,}5 \cdot 2100 \cdot 10 = 10\,500\text{ J}$." "\n"
-            r"- **Giai đoạn 2** (nóng chảy hoàn toàn ở $0\,^\circ\text{C}$): $Q_2 = m\lambda = 0{,}5 \cdot 3{,}34 \times 10^5 = 167\,000\text{ J}$." "\n"
-            r"- **Giai đoạn 3** (đun nước từ $0\,^\circ\text{C}$ đến $100\,^\circ\text{C}$): $Q_3 = m c_2 \Delta t_2 = 0{,}5 \cdot 4200 \cdot 100 = 210\,000\text{ J}$." "\n"
-            r"- **Giai đoạn 4** (hoá hơi $20\%$ khối lượng nước, tức $\Delta m = 0{,}2 \cdot 0{,}5 = 0{,}1\text{ kg}$ ở $100\,^\circ\text{C}$): $Q_4 = \Delta m \cdot L = 0{,}1 \cdot 2{,}26 \times 10^6 = 226\,000\text{ J}$." "\n"
+            r"- **Giai đoạn 1** (tăng nhiệt độ nước đá từ $-10^\circ\text{C}$ đến $0^\circ\text{C}$): $Q_1 = m c_1 \Delta t_1 = 0{,}5 \cdot 2100 \cdot 10 = 10\,500\text{ J}$." "\n"
+            r"- **Giai đoạn 2** (nóng chảy hoàn toàn ở $0^\circ\text{C}$): $Q_2 = m\lambda = 0{,}5 \cdot 3{,}34 \times 10^5 = 167\,000\text{ J}$." "\n"
+            r"- **Giai đoạn 3** (đun nước từ $0^\circ\text{C}$ đến $100^\circ\text{C}$): $Q_3 = m c_2 \Delta t_2 = 0{,}5 \cdot 4200 \cdot 100 = 210\,000\text{ J}$." "\n"
+            r"- **Giai đoạn 4** (hoá hơi $20\%$ khối lượng nước, tức $\Delta m = 0{,}2 \cdot 0{,}5 = 0{,}1\text{ kg}$ ở $100^\circ\text{C}$): $Q_4 = \Delta m \cdot L = 0{,}1 \cdot 2{,}26 \times 10^6 = 226\,000\text{ J}$." "\n"
             r"- **Tổng nhiệt lượng có ích**: $Q_{\text{ích}} = Q_1 + Q_2 + Q_3 + Q_4 = 10\,500 + 167\,000 + 210\,000 + 226\,000 = \mathbf{613\,500\text{ J}} = \mathbf{613{,}5\text{ kJ}}$." "\n"
             r"- **Thời gian đun**: Từ $Q_{\text{ích}} = H\mathcal{P}\tau \Rightarrow \tau = \dfrac{Q_{\text{ích}}}{H\mathcal{P}} = \dfrac{613\,500}{0{,}84 \cdot 1500} = \dfrac{613\,500}{1260} \approx \mathbf{486{,}9\text{ s}}$ (khoảng $8\text{ phút } 7\text{ giây}$)."
         ),
@@ -155,7 +155,7 @@ LESSONS = [
             ),
             mcq(
                 "biet",
-                r"Nhiệt độ của một vật trên thang Celsius là $t = 37\,^\circ\text{C}$. Nhiệt độ tương ứng trên thang Kelvin (lấy $T\text{ (K)} = t\text{ (}^\circ\text{C)} + 273{,}15$) là:",
+                r"Nhiệt độ của một vật trên thang Celsius là $t = 37^\circ\text{C}$. Nhiệt độ tương ứng trên thang Kelvin (lấy $T\text{ (K)} = t\text{ (}^\circ\text{C)} + 273{,}15$) là:",
                 [
                     r"$310{,}15\text{ K}$",
                     r"$236{,}15\text{ K}$",
@@ -179,7 +179,7 @@ LESSONS = [
             ),
             mcq(
                 "hieu",
-                r"Cần cung cấp nhiệt lượng bằng bao nhiêu để làm nóng chảy hoàn toàn một cục nước đá khối lượng $m = 200\text{ g}$ đang ở nhiệt độ $0\,^\circ\text{C}$? Biết nhiệt nóng chảy riêng của nước đá là $\lambda = 3{,}34 \times 10^5\text{ J/kg}$.",
+                r"Cần cung cấp nhiệt lượng bằng bao nhiêu để làm nóng chảy hoàn toàn một cục nước đá khối lượng $m = 200\text{ g}$ đang ở nhiệt độ $0^\circ\text{C}$? Biết nhiệt nóng chảy riêng của nước đá là $\lambda = 3{,}34 \times 10^5\text{ J/kg}$.",
                 [
                     r"$66{,}8\text{ kJ}$",
                     r"$668\text{ kJ}$",
@@ -194,7 +194,7 @@ LESSONS = [
                 r"Xét tính đúng hay sai của các phát biểu sau về sự chuyển thể, nội năng và các thang nhiệt độ:",
                 [
                     r"a) Trong suốt quá trình nóng chảy của chất rắn kết tinh ở áp suất tiêu chuẩn, vật tiếp tục thu nhiệt nhưng nhiệt độ của vật không thay đổi.",
-                    r"b) Khi nhiệt độ của một vật tăng thêm $25\,^\circ\text{C}$ thì trên thang Kelvin nhiệt độ của vật đó tăng thêm $298{,}15\text{ K}$.",
+                    r"b) Khi nhiệt độ của một vật tăng thêm $25^\circ\text{C}$ thì trên thang Kelvin nhiệt độ của vật đó tăng thêm $298{,}15\text{ K}$.",
                     r"c) Nội năng của một vật phụ thuộc vào nhiệt độ và thể tích của vật, không phải là nhiệt lượng mà vật có được.",
                     r"d) Sự sôi là sự hoá hơi chỉ xảy ra trên bề mặt thoáng của chất lỏng ở một nhiệt độ bất kì.",
                 ],
@@ -206,12 +206,12 @@ LESSONS = [
             ),
             tf4(
                 "hieu",
-                r"Một học sinh dùng ấm đun siêu tốc công suất $\mathcal{P} = 1800\text{ W}$ để đun $m = 1{,}5\text{ kg}$ nước từ $t_1 = 20\,^\circ\text{C}$ đến khi sôi ở $t_2 = 100\,^\circ\text{C}$. Cho nhiệt dung riêng của nước $c = 4200\text{ J/(kg}\cdot\text{K)}$ và nhiệt hoá hơi riêng của nước ở $100\,^\circ\text{C}$ là $L = 2{,}26 \times 10^6\text{ J/kg}$. Xét các nhận định sau:",
+                r"Một học sinh dùng ấm đun siêu tốc công suất $\mathcal{P} = 1800\text{ W}$ để đun $m = 1{,}5\text{ kg}$ nước từ $t_1 = 20^\circ\text{C}$ đến khi sôi ở $t_2 = 100^\circ\text{C}$. Cho nhiệt dung riêng của nước $c = 4200\text{ J/(kg}\cdot\text{K)}$ và nhiệt hoá hơi riêng của nước ở $100^\circ\text{C}$ là $L = 2{,}26 \times 10^6\text{ J/kg}$. Xét các nhận định sau:",
                 [
-                    r"a) Nhiệt lượng có ích mà nước thu vào để tăng nhiệt độ từ $20\,^\circ\text{C}$ đến $100\,^\circ\text{C}$ là $Q_1 = 504\text{ kJ}$.",
-                    r"b) Nếu bỏ qua mọi hao phí nhiệt thì thời gian đun nước từ $20\,^\circ\text{C}$ tới khi bắt đầu sôi ở $100\,^\circ\text{C}$ là $280\text{ s}$.",
+                    r"a) Nhiệt lượng có ích mà nước thu vào để tăng nhiệt độ từ $20^\circ\text{C}$ đến $100^\circ\text{C}$ là $Q_1 = 504\text{ kJ}$.",
+                    r"b) Nếu bỏ qua mọi hao phí nhiệt thì thời gian đun nước từ $20^\circ\text{C}$ tới khi bắt đầu sôi ở $100^\circ\text{C}$ là $280\text{ s}$.",
                     r"c) Nếu hiệu suất của ấm đun là $H = 80\%$ thì thời gian thực tế để đun sôi lượng nước trên là $224\text{ s}$.",
-                    r"d) Sau khi nước đã đạt $100\,^\circ\text{C}$, để làm hoá hơi thêm $100\text{ g}$ nước thì nước cần thu thêm nhiệt lượng $Q_2 = 226\text{ kJ}$.",
+                    r"d) Sau khi nước đã đạt $100^\circ\text{C}$, để làm hoá hơi thêm $100\text{ g}$ nước thì nước cần thu thêm nhiệt lượng $Q_2 = 226\text{ kJ}$.",
                 ],
                 [True, True, False, True],
                 r"- **a) Đúng**: $Q_1 = mc(t_2 - t_1) = 1{,}5 \cdot 4200 \cdot (100 - 20) = 504\,000\text{ J} = 504\text{ kJ}$." "\n"
@@ -221,24 +221,24 @@ LESSONS = [
             ),
             mcq(
                 "vandung",
-                r"Thả một quả cầu bằng đồng có khối lượng $m_1 = 0{,}6\text{ kg}$ được nung nóng tới $t_1 = 120\,^\circ\text{C}$ vào một bình cách nhiệt chứa $m_2 = 0{,}5\text{ kg}$ nước ở nhiệt độ $t_2 = 20\,^\circ\text{C}$. Bỏ qua sự trao đổi nhiệt với bình và môi trường. Biết nhiệt dung riêng của đồng là $c_1 = 380\text{ J/(kg}\cdot\text{K)}$ và của nước là $c_2 = 4200\text{ J/(kg}\cdot\text{K)}$. Nhiệt độ khi có sự cân bằng nhiệt gần nhất với giá trị nào sau đây?",
+                r"Thả một quả cầu bằng đồng có khối lượng $m_1 = 0{,}6\text{ kg}$ được nung nóng tới $t_1 = 120^\circ\text{C}$ vào một bình cách nhiệt chứa $m_2 = 0{,}5\text{ kg}$ nước ở nhiệt độ $t_2 = 20^\circ\text{C}$. Bỏ qua sự trao đổi nhiệt với bình và môi trường. Biết nhiệt dung riêng của đồng là $c_1 = 380\text{ J/(kg}\cdot\text{K)}$ và của nước là $c_2 = 4200\text{ J/(kg}\cdot\text{K)}$. Nhiệt độ khi có sự cân bằng nhiệt gần nhất với giá trị nào sau đây?",
                 [
-                    r"$29{,}8\,^\circ\text{C}$",
-                    r"$35{,}4\,^\circ\text{C}$",
-                    r"$24{,}6\,^\circ\text{C}$",
-                    r"$70{,}0\,^\circ\text{C}$",
+                    r"$29{,}8^\circ\text{C}$",
+                    r"$35{,}4^\circ\text{C}$",
+                    r"$24{,}6^\circ\text{C}$",
+                    r"$70{,}0^\circ\text{C}$",
                 ],
                 0,
-                r"Phương trình cân bằng nhiệt: $m_1 c_1 (t_1 - t) = m_2 c_2 (t - t_2) \Rightarrow t = \dfrac{m_1 c_1 t_1 + m_2 c_2 t_2}{m_1 c_1 + m_2 c_2} = \dfrac{0{,}6 \cdot 380 \cdot 120 + 0{,}5 \cdot 4200 \cdot 20}{0{,}6 \cdot 380 + 0{,}5 \cdot 4200} = \dfrac{27\,360 + 42\,000}{228 + 2100} = \dfrac{69\,360}{2328} \approx \mathbf{29{,}8\,^\circ\text{C}}$.",
+                r"Phương trình cân bằng nhiệt: $m_1 c_1 (t_1 - t) = m_2 c_2 (t - t_2) \Rightarrow t = \dfrac{m_1 c_1 t_1 + m_2 c_2 t_2}{m_1 c_1 + m_2 c_2} = \dfrac{0{,}6 \cdot 380 \cdot 120 + 0{,}5 \cdot 4200 \cdot 20}{0{,}6 \cdot 380 + 0{,}5 \cdot 4200} = \dfrac{27\,360 + 42\,000}{228 + 2100} = \dfrac{69\,360}{2328} \approx \mathbf{29{,}8^\circ\text{C}}$.",
             ),
             short(
                 "vandung",
-                r"Người ta bỏ một cục nước đá khối lượng $m_1 = 100\text{ g}$ ở $t_1 = 0\,^\circ\text{C}$ vào một bình cách nhiệt chứa $m_2 = 400\text{ g}$ nước ở $t_2 = 35\,^\circ\text{C}$. Cho nhiệt nóng chảy riêng của nước đá $\lambda = 3{,}36 \times 10^5\text{ J/kg}$ và nhiệt dung riêng của nước $c = 4200\text{ J/(kg}\cdot\text{K)}$. Bỏ qua nhiệt dung của bình. Tính nhiệt độ cân bằng cuối cùng của hỗn hợp theo đơn vị $^\circ\text{C}$.",
+                r"Người ta bỏ một cục nước đá khối lượng $m_1 = 100\text{ g}$ ở $t_1 = 0^\circ\text{C}$ vào một bình cách nhiệt chứa $m_2 = 400\text{ g}$ nước ở $t_2 = 35^\circ\text{C}$. Cho nhiệt nóng chảy riêng của nước đá $\lambda = 3{,}36 \times 10^5\text{ J/kg}$ và nhiệt dung riêng của nước $c = 4200\text{ J/(kg}\cdot\text{K)}$. Bỏ qua nhiệt dung của bình. Tính nhiệt độ cân bằng cuối cùng của hỗn hợp theo đơn vị ${}^\circ\text{C}$.",
                 ["12"],
-                r"Đổi $m_1 = 0{,}1\text{ kg}$, $m_2 = 0{,}4\text{ kg}$. Nhiệt lượng cần để nước đá tan hết ở $0\,^\circ\text{C}$ là $Q_{\text{nc}} = m_1\lambda = 0{,}1 \cdot 3{,}36 \times 10^5 = 33\,600\text{ J}$. "
-                r"Nhiệt lượng tối đa mà $0{,}4\text{ kg}$ nước ở $35\,^\circ\text{C}$ toả ra khi hạ về $0\,^\circ\text{C}$ là $Q_{\max} = m_2 c t_2 = 0{,}4 \cdot 4200 \cdot 35 = 58\,800\text{ J} > Q_{\text{nc}}$, nên nước đá tan hết. "
-                r"Phương trình cân bằng nhiệt: $m_1\lambda + m_1 c(t - 0) = m_2 c(35 - t) \Rightarrow 33\,600 + 0{,}1 \cdot 4200 \cdot t = 58\,800 - 0{,}4 \cdot 4200 \cdot t \Rightarrow 2100t = 25\,200 \Rightarrow t = \mathbf{12}\,^\circ\text{C}$.",
-                unit=r"$^\circ\text{C}$",
+                r"Đổi $m_1 = 0{,}1\text{ kg}$, $m_2 = 0{,}4\text{ kg}$. Nhiệt lượng cần để nước đá tan hết ở $0^\circ\text{C}$ là $Q_{\text{nc}} = m_1\lambda = 0{,}1 \cdot 3{,}36 \times 10^5 = 33\,600\text{ J}$. "
+                r"Nhiệt lượng tối đa mà $0{,}4\text{ kg}$ nước ở $35^\circ\text{C}$ toả ra khi hạ về $0^\circ\text{C}$ là $Q_{\max} = m_2 c t_2 = 0{,}4 \cdot 4200 \cdot 35 = 58\,800\text{ J} > Q_{\text{nc}}$, nên nước đá tan hết. "
+                r"Phương trình cân bằng nhiệt: $m_1\lambda + m_1 c(t - 0) = m_2 c(35 - t) \Rightarrow 33\,600 + 0{,}1 \cdot 4200 \cdot t = 58\,800 - 0{,}4 \cdot 4200 \cdot t \Rightarrow 2100t = 25\,200 \Rightarrow t = \mathbf{12}^\circ\text{C}$.",
+                unit=r"${}^\circ\text{C}$",
             ),
         ],
     },
@@ -313,10 +313,10 @@ LESSONS = [
             ),
         ],
         "example": (
-            r"Một bình kín có dung tích $V = 16{,}62\text{ L}$ chứa khí helium ($\text{He}$, có khối lượng mol $M = 4\text{ g/mol}$) ở áp suất $p_1 = 3 \times 10^5\text{ Pa}$ và nhiệt độ $t_1 = 27\,^\circ\text{C}$. "
+            r"Một bình kín có dung tích $V = 16{,}62\text{ L}$ chứa khí helium ($\text{He}$, có khối lượng mol $M = 4\text{ g/mol}$) ở áp suất $p_1 = 3 \times 10^5\text{ Pa}$ và nhiệt độ $t_1 = 27^\circ\text{C}$. "
             r"Lấy $R = 8{,}31\text{ J/(mol}\cdot\text{K)}$ và $k = 1{,}38 \times 10^{-23}\text{ J/K}$. "
             r"a) Tính số mol $n$ và khối lượng $m$ của khí helium trong bình. "
-            r"b) Khi đun nóng bình tới nhiệt độ $t_2 = 127\,^\circ\text{C}$ (bỏ qua sự nở vì nhiệt của bình), hãy tính áp suất $p_2$ và động năng tịnh tiến trung bình $\overline{W_{\text{đ}}}$ của mỗi phân tử khí helium ở trạng thái này."
+            r"b) Khi đun nóng bình tới nhiệt độ $t_2 = 127^\circ\text{C}$ (bỏ qua sự nở vì nhiệt của bình), hãy tính áp suất $p_2$ và động năng tịnh tiến trung bình $\overline{W_{\text{đ}}}$ của mỗi phân tử khí helium ở trạng thái này."
         ),
         "example_answer": (
             r"- **Câu a**: Đổi $V = 16{,}62\text{ L} = 16{,}62 \times 10^{-3}\text{ m}^3$; $T_1 = 27 + 273 = 300\text{ K}$." "\n"
@@ -398,7 +398,7 @@ LESSONS = [
             ),
             mcq(
                 "hieu",
-                r"Một khối khí lí tưởng thực hiện quá trình giãn nở đẳng áp từ nhiệt độ $t_1 = 27\,^\circ\text{C}$ đến nhiệt độ $t_2 = 127\,^\circ\text{C}$. Nếu thể tích ban đầu là $V_1 = 3\text{ L}$ thì thể tích $V_2$ ở cuối quá trình là:",
+                r"Một khối khí lí tưởng thực hiện quá trình giãn nở đẳng áp từ nhiệt độ $t_1 = 27^\circ\text{C}$ đến nhiệt độ $t_2 = 127^\circ\text{C}$. Nếu thể tích ban đầu là $V_1 = 3\text{ L}$ thì thể tích $V_2$ ở cuối quá trình là:",
                 [
                     r"$4\text{ L}$",
                     r"$14{,}1\text{ L}$",
@@ -415,7 +415,7 @@ LESSONS = [
                     r"a) Chuyển động Brown của các hạt phấn hoa trong nước là bằng chứng thực nghiệm chứng tỏ các phân tử môi trường chuyển động hỗn loạn không ngừng.",
                     r"b) Khi nhiệt độ tuyệt đối $T$ của một khối khí lí tưởng tăng gấp $4$ lần thì tốc độ căn quân phương $v_{\text{rms}} = \sqrt{\overline{v^2}}$ của các phân tử khí tăng gấp $4$ lần.",
                     r"c) Ở cùng một nhiệt độ tuyệt đối $T$, động năng tịnh tiến trung bình của phân tử khí hydrogen ($\text{H}_2$) bằng động năng tịnh tiến trung bình của phân tử khí oxygen ($\text{O}_2$).",
-                    r"d) Trong quá trình biến đổi đẳng tích của một lượng khí lí tưởng xác định, nếu nhiệt độ Celsius $t$ tăng gấp đôi từ $20\,^\circ\text{C}$ lên $40\,^\circ\text{C}$ thì áp suất khí tăng gấp đôi.",
+                    r"d) Trong quá trình biến đổi đẳng tích của một lượng khí lí tưởng xác định, nếu nhiệt độ Celsius $t$ tăng gấp đôi từ $20^\circ\text{C}$ lên $40^\circ\text{C}$ thì áp suất khí tăng gấp đôi.",
                 ],
                 [True, False, True, False],
                 r"- **a) Đúng**: Các phân tử môi trường chuyển động nhiệt va chạm không cân bằng vào hạt phấn hoa gây ra chuyển động Brown." "\n"
@@ -440,7 +440,7 @@ LESSONS = [
             ),
             mcq(
                 "vandung",
-                r"Một bọt khí nổi từ đáy một hồ nước sâu $h = 15\text{ m}$ lên sát mặt nước. Biết nhiệt độ ở đáy hồ là $t_1 = 7\,^\circ\text{C}$, nhiệt độ ở sát mặt nước là $t_2 = 27\,^\circ\text{C}$, áp suất khí quyển là $p_0 = 10^5\text{ Pa}$, khối lượng riêng của nước hồ là $\rho = 1000\text{ kg/m}^3$ và $g = 10\text{ m/s}^2$. Khi lên tới sát mặt nước, thể tích của bọt khí tăng lên bao nhiêu lần so với ở đáy hồ?",
+                r"Một bọt khí nổi từ đáy một hồ nước sâu $h = 15\text{ m}$ lên sát mặt nước. Biết nhiệt độ ở đáy hồ là $t_1 = 7^\circ\text{C}$, nhiệt độ ở sát mặt nước là $t_2 = 27^\circ\text{C}$, áp suất khí quyển là $p_0 = 10^5\text{ Pa}$, khối lượng riêng của nước hồ là $\rho = 1000\text{ kg/m}^3$ và $g = 10\text{ m/s}^2$. Khi lên tới sát mặt nước, thể tích của bọt khí tăng lên bao nhiêu lần so với ở đáy hồ?",
                 [
                     r"$2{,}68\text{ lần}$",
                     r"$2{,}50\text{ lần}$",
@@ -454,7 +454,7 @@ LESSONS = [
             ),
             short(
                 "vandung",
-                r"Một bình chứa khí oxygen ($\text{O}_2$, có khối lượng mol $M = 32\text{ g/mol}$) có dung tích $V = 8{,}31\text{ L}$ ở áp suất $p = 6 \times 10^5\text{ Pa}$ và nhiệt độ $t = 27\,^\circ\text{C}$. Lấy $R = 8{,}31\text{ J/(mol}\cdot\text{K)}$. Khối lượng khí oxygen trong bình bằng bao nhiêu gam?",
+                r"Một bình chứa khí oxygen ($\text{O}_2$, có khối lượng mol $M = 32\text{ g/mol}$) có dung tích $V = 8{,}31\text{ L}$ ở áp suất $p = 6 \times 10^5\text{ Pa}$ và nhiệt độ $t = 27^\circ\text{C}$. Lấy $R = 8{,}31\text{ J/(mol}\cdot\text{K)}$. Khối lượng khí oxygen trong bình bằng bao nhiêu gam?",
                 ["64"],
                 r"Đổi $V = 8{,}31\text{ L} = 8{,}31 \times 10^{-3}\text{ m}^3$; $T = 27 + 273 = 300\text{ K}$. "
                 r"Số mol khí oxygen trong bình: $n = \dfrac{pV}{RT} = \dfrac{6 \times 10^5 \cdot 8{,}31 \times 10^{-3}}{8{,}31 \cdot 300} = 2\text{ mol}$. "
@@ -892,34 +892,34 @@ LESSONS = [
             "Hiện tượng phóng xạ, chu kì bán rã và độ phóng xạ; Công nghiệp hạt nhân và bài tập vật lí hạt nhân."
         ),
         "requirements": [
-            r"Rút ra được sự tồn tại và kích thước rất nhỏ của hạt nhân từ kết quả thí nghiệm tán xạ hạt alpha ($\alpha$) của Rutherford; biểu diễn được kí hiệu hạt nhân $_Z^A\text{X}$ và nêu được khái niệm đồng vị.",
+            r"Rút ra được sự tồn tại và kích thước rất nhỏ của hạt nhân từ kết quả thí nghiệm tán xạ hạt alpha ($\alpha$) của Rutherford; biểu diễn được kí hiệu hạt nhân ${}_Z^A\text{X}$ và nêu được khái niệm đồng vị.",
             r"Nêu được bản chất của lực hạt nhân là lực tương tác mạnh giữa các nucleon trong phạm vi kích thước hạt nhân ($\sim 10^{-15}\text{ m}$); sử dụng được đơn vị khối lượng nguyên tử $\text{amu}$ ($1\text{ amu} \approx 931{,}5\text{ MeV}/c^2$).",
             r"Nêu được mối liên hệ giữa năng lượng và khối lượng theo hệ thức Einstein $E = mc^2$; định nghĩa và tính được độ hụt khối $\Delta m = [Zm_p + (A - Z)m_n] - m_{\text{X}}$, năng lượng liên kết $W_{\text{lk}} = \Delta m \cdot c^2$ và năng lượng liên kết riêng $W_{\text{lkr}} = \dfrac{W_{\text{lk}}}{A}$ để so sánh mức độ bền vững của các hạt nhân.",
             r"Nêu được khái niệm phản ứng hạt nhân (tự phát và kích thích), các định luật bảo toàn trong phản ứng hạt nhân (bảo toàn số nucleon $A$, bảo toàn điện tích $Z$, bảo toàn năng lượng toàn phần và bảo toàn động lượng), phản ứng phân hạch và phản ứng tổng hợp hạt nhân (nhiệt hạch).",
-            r"Nêu được bản chất tự phát, ngẫu nhiên của sự phóng xạ và đặc điểm của ba loại tia phóng xạ $\alpha$ ($_{2}^{4}\text{He}$), $\beta$ ($\beta^-$ là $_{ -1}^{0}\text{e}$, $\beta^+$ là $_{ +1}^{0}\text{e}$) và $\gamma$ (photon năng lượng cao).",
+            r"Nêu được bản chất tự phát, ngẫu nhiên của sự phóng xạ và đặc điểm của ba loại tia phóng xạ $\alpha$ (${}_{2}^{4}\text{He}$), $\beta$ ($\beta^-$ là ${}_{ -1}^{0}\text{e}$, $\beta^+$ là ${}_{ +1}^{0}\text{e}$) và $\gamma$ (photon năng lượng cao).",
             r"Định nghĩa được chu kì bán rã $T$, hằng số phóng xạ $\lambda = \dfrac{\ln 2}{T}$, độ phóng xạ $H = \lambda N$ (đơn vị becquerel $\text{Bq}$) và vận dụng được các công thức định luật phóng xạ $N(t) = N_0 \cdot 2^{-\frac{t}{T}} = N_0 e^{-\lambda t}$, $H(t) = H_0 \cdot 2^{-\frac{t}{T}}$.",
-            r"Mô tả được nguyên tắc hoạt động của nhà máy điện hạt nhân, các ứng dụng của đồng vị phóng xạ trong y học, nông nghiệp, khảo cổ học ($_{6}^{14}\text{C}$) và các quy tắc an toàn phóng xạ.",
+            r"Mô tả được nguyên tắc hoạt động của nhà máy điện hạt nhân, các ứng dụng của đồng vị phóng xạ trong y học, nông nghiệp, khảo cổ học (${}_{6}^{14}\text{C}$) và các quy tắc an toàn phóng xạ.",
         ],
         "definition": (
-            r"- **Cấu trúc hạt nhân ($_Z^A\text{X}$)**: Hạt nhân nguyên tử có điện tích $+Ze$, cấu tạo từ $A$ **nucleon** gồm $Z$ **proton** ($m_p \approx 1{,}00728\text{ amu}$) và $N = A - Z$ **neutron** ($m_n \approx 1{,}00866\text{ amu}$). Bán kính hạt nhân: $R = R_0 A^{\frac{1}{3}}$ với $R_0 \approx 1{,}2 \times 10^{-15}\text{ m}$. **Đồng vị** là các hạt nhân có cùng số proton $Z$ nhưng khác nhau số neutron $N$ (khác số khối $A$)." "\n"
-            r"- **Độ hụt khối và Năng lượng liên kết**: Khối lượng của một hạt nhân luôn nhỏ hơn tổng khối lượng của các nucleon tạo thành nó một lượng gọi là **độ hụt khối**: $\Delta m = [Zm_p + (A - Z)m_n] - m_{\text{X}}$. **Năng lượng liên kết** $W_{\text{lk}} = \Delta m \cdot c^2$ là năng lượng tối thiểu cần cung cấp để tách hạt nhân thành các nucleon riêng rẽ. **Năng lượng liên kết riêng** $W_{\text{lkr}} = \dfrac{W_{\text{lk}}}{A}$ đặc trưng cho mức độ bền vững của hạt nhân (các hạt nhân trung bình có $50 \le A \le 80$ như $_{26}^{56}\text{Fe}$ có $W_{\text{lkr}} \approx 8{,}8\text{ MeV/nucleon}$ lớn nhất nên bền vững nhất)." "\n"
-            r"- **Phản ứng hạt nhân**: Trong phản ứng $_{Z_1}^{A_1}\text{X}_1 + {}_{Z_2}^{A_2}\text{X}_2 \rightarrow {}_{Z_3}^{A_3}\text{X}_3 + {}_{Z_4}^{A_4}\text{X}_4$, luôn bảo toàn số nucleon ($A_1 + A_2 = A_3 + A_4$) và bảo toàn số nguyên tử hay điện tích ($Z_1 + Z_2 = Z_3 + Z_4$). Năng lượng phản ứng hạt nhân: $\Delta E = (m_{\text{trước}} - m_{\text{sau}})c^2$; nếu $\Delta E > 0$ thì phản ứng toả năng lượng, nếu $\Delta E < 0$ thì phản ứng thu năng lượng." "\n"
+            r"- **Cấu trúc hạt nhân (${}_Z^A\text{X}$)**: Hạt nhân nguyên tử có điện tích $+Ze$, cấu tạo từ $A$ **nucleon** gồm $Z$ **proton** ($m_p \approx 1{,}00728\text{ amu}$) và $N = A - Z$ **neutron** ($m_n \approx 1{,}00866\text{ amu}$). Bán kính hạt nhân: $R = R_0 A^{\frac{1}{3}}$ với $R_0 \approx 1{,}2 \times 10^{-15}\text{ m}$. **Đồng vị** là các hạt nhân có cùng số proton $Z$ nhưng khác nhau số neutron $N$ (khác số khối $A$)." "\n"
+            r"- **Độ hụt khối và Năng lượng liên kết**: Khối lượng của một hạt nhân luôn nhỏ hơn tổng khối lượng của các nucleon tạo thành nó một lượng gọi là **độ hụt khối**: $\Delta m = [Zm_p + (A - Z)m_n] - m_{\text{X}}$. **Năng lượng liên kết** $W_{\text{lk}} = \Delta m \cdot c^2$ là năng lượng tối thiểu cần cung cấp để tách hạt nhân thành các nucleon riêng rẽ. **Năng lượng liên kết riêng** $W_{\text{lkr}} = \dfrac{W_{\text{lk}}}{A}$ đặc trưng cho mức độ bền vững của hạt nhân (các hạt nhân trung bình có $50 \le A \le 80$ như ${}_{26}^{56}\text{Fe}$ có $W_{\text{lkr}} \approx 8{,}8\text{ MeV/nucleon}$ lớn nhất nên bền vững nhất)." "\n"
+            r"- **Phản ứng hạt nhân**: Trong phản ứng ${}_{Z_1}^{A_1}\text{X}_1 + {}_{Z_2}^{A_2}\text{X}_2 \rightarrow {}_{Z_3}^{A_3}\text{X}_3 + {}_{Z_4}^{A_4}\text{X}_4$, luôn bảo toàn số nucleon ($A_1 + A_2 = A_3 + A_4$) và bảo toàn số nguyên tử hay điện tích ($Z_1 + Z_2 = Z_3 + Z_4$). Năng lượng phản ứng hạt nhân: $\Delta E = (m_{\text{trước}} - m_{\text{sau}})c^2$; nếu $\Delta E > 0$ thì phản ứng toả năng lượng, nếu $\Delta E < 0$ thì phản ứng thu năng lượng." "\n"
             r"- **Định luật phóng xạ và Độ phóng xạ**: Số hạt nhân (và khối lượng) chất phóng xạ còn lại sau thời gian $t$: $N(t) = N_0 \cdot 2^{-\frac{t}{T}} = N_0 e^{-\lambda t}$ và $m(t) = m_0 \cdot 2^{-\frac{t}{T}}$, với hằng số phóng xạ $\lambda = \dfrac{\ln 2}{T}$. **Độ phóng xạ** $H(t) = \lambda N(t) = H_0 \cdot 2^{-\frac{t}{T}}$ (đơn vị trong hệ SI là **becquerel**, ký hiệu $\text{Bq}$, $1\text{ Bq} = 1\text{ phân rã/s}$; $1\text{ Ci} = 3{,}7 \times 10^{10}\text{ Bq}$)."
         ),
         "theory": (
             r"### Bài 21. Cấu trúc hạt nhân" "\n"
-            r"- **Thí nghiệm tán xạ hạt alpha ($\alpha$) của Rutherford**: Chùm hạt $\alpha$ ($_{2}^{4}\text{He}$) bắn vào lá vàng cực mỏng thì hầu hết đi thẳng, chỉ một tỉ lệ rất nhỏ bị lệch góc lớn hoặc bật ngược trở lại. Điều này chứng tỏ nguyên tử có cấu tạo rỗng, toàn bộ điện tích dương và gần như toàn bộ khối lượng nguyên tử tập trung tại **hạt nhân** có kích thước rất nhỏ ($\sim 10^{-15}\text{ m} - 10^{-14}\text{ m}$) so với kích thước nguyên tử ($\sim 10^{-10}\text{ m}$)." "\n"
-            r"- **Đơn vị khối lượng nguyên tử ($\text{amu}$)**: $1\text{ amu}$ bằng $\dfrac{1}{12}$ khối lượng nguyên tử đồng vị carbon $_{6}^{12}\text{C}$: $1\text{ amu} \approx 1{,}66054 \times 10^{-27}\text{ kg} \approx 931{,}5\text{ MeV}/c^2$." "\n"
+            r"- **Thí nghiệm tán xạ hạt alpha ($\alpha$) của Rutherford**: Chùm hạt $\alpha$ (${}_{2}^{4}\text{He}$) bắn vào lá vàng cực mỏng thì hầu hết đi thẳng, chỉ một tỉ lệ rất nhỏ bị lệch góc lớn hoặc bật ngược trở lại. Điều này chứng tỏ nguyên tử có cấu tạo rỗng, toàn bộ điện tích dương và gần như toàn bộ khối lượng nguyên tử tập trung tại **hạt nhân** có kích thước rất nhỏ ($\sim 10^{-15}\text{ m} - 10^{-14}\text{ m}$) so với kích thước nguyên tử ($\sim 10^{-10}\text{ m}$)." "\n"
+            r"- **Đơn vị khối lượng nguyên tử ($\text{amu}$)**: $1\text{ amu}$ bằng $\dfrac{1}{12}$ khối lượng nguyên tử đồng vị carbon ${}_{6}^{12}\text{C}$: $1\text{ amu} \approx 1{,}66054 \times 10^{-27}\text{ kg} \approx 931{,}5\text{ MeV}/c^2$." "\n"
             r"### Bài 22. Phản ứng hạt nhân và năng lượng liên kết" "\n"
             r"- **Lực hạt nhân**: Là lực hút tương tác mạnh giữa các nucleon (proton – proton, neutron – neutron, proton – neutron), không phụ thuộc vào điện tích và chỉ phát huy tác dụng trong phạm vi bán kính khoảng $10^{-15}\text{ m}$." "\n"
-            r"- **Phản ứng phân hạch**: Là phản ứng trong đó một hạt nhân nặng (như $_{92}^{235}\text{U}$ hoặc $_{94}^{239}\text{Pu}$) hấp thụ một neutron chậm rồi vỡ thành hai hạt nhân trung bình kèm theo $2$ đến $3$ neutron mới và toả ra năng lượng lớn (khoảng $200\text{ MeV}$ cho mỗi phân hạch). Nếu số neutron trung bình sau mỗi phân hạch tiếp tục gây phân hạch mới là $k = 1$, ta có phản ứng dây chuyền tự duy trì có điều khiển (trong lò phản ứng hạt nhân)." "\n"
-            r"- **Phản ứng tổng hợp hạt nhân (nhiệt hạch)**: Là quá trình hai hạt nhân rất nhẹ (như $_{1}^{2}\text{H}$ và $_{1}^{3}\text{H}$) kết hợp thành một hạt nhân nặng hơn ($_{2}^{4}\text{He}$) ở nhiệt độ cực cao (hàng chục đến hàng trăm triệu độ Kelvin), toả ra năng lượng tính trên một đơn vị khối lượng nhiên liệu lớn hơn nhiều so với phân hạch." "\n"
+            r"- **Phản ứng phân hạch**: Là phản ứng trong đó một hạt nhân nặng (như ${}_{92}^{235}\text{U}$ hoặc ${}_{94}^{239}\text{Pu}$) hấp thụ một neutron chậm rồi vỡ thành hai hạt nhân trung bình kèm theo $2$ đến $3$ neutron mới và toả ra năng lượng lớn (khoảng $200\text{ MeV}$ cho mỗi phân hạch). Nếu số neutron trung bình sau mỗi phân hạch tiếp tục gây phân hạch mới là $k = 1$, ta có phản ứng dây chuyền tự duy trì có điều khiển (trong lò phản ứng hạt nhân)." "\n"
+            r"- **Phản ứng tổng hợp hạt nhân (nhiệt hạch)**: Là quá trình hai hạt nhân rất nhẹ (như ${}_{1}^{2}\text{H}$ và ${}_{1}^{3}\text{H}$) kết hợp thành một hạt nhân nặng hơn (${}_{2}^{4}\text{He}$) ở nhiệt độ cực cao (hàng chục đến hàng trăm triệu độ Kelvin), toả ra năng lượng tính trên một đơn vị khối lượng nhiên liệu lớn hơn nhiều so với phân hạch." "\n"
             r"### Bài 23. Hiện tượng phóng xạ" "\n"
-            r"- **Ba loại tia phóng xạ**: (1) **Phóng xạ $\alpha$**: $_Z^A\text{X} \rightarrow {}_{Z-2}^{A-4}\text{Y} + {}_{2}^{4}\text{He}$ (khả năng ion hoá mạnh nhưng đâm xuyên yếu, bị chặn bởi một tờ giấy); (2) **Phóng xạ $\beta^-$**: $_Z^A\text{X} \rightarrow {}_{Z+1}^{A}\text{Y} + {}_{-1}^{0}\text{e} + \tilde{\nu}$ và **phóng xạ $\beta^+$**: $_Z^A\text{X} \rightarrow {}_{Z-1}^{A}\text{Y} + {}_{+1}^{0}\text{e} + \nu$ (bị lệch trong điện trường và từ trường, đâm xuyên mạnh hơn tia $\alpha$); (3) **Phóng xạ $\gamma$**: Là sóng điện từ bước sóng rất ngắn ($\lambda < 10^{-11}\text{ m}$), không mang điện, không làm thay đổi $A$ và $Z$, khả năng đâm xuyên rất mạnh (cần tấm chì dày hoặc bê tông dày để chắn)." "\n"
+            r"- **Ba loại tia phóng xạ**: (1) **Phóng xạ $\alpha$**: ${}_Z^A\text{X} \rightarrow {}_{Z-2}^{A-4}\text{Y} + {}_{2}^{4}\text{He}$ (khả năng ion hoá mạnh nhưng đâm xuyên yếu, bị chặn bởi một tờ giấy); (2) **Phóng xạ $\beta^-$**: ${}_Z^A\text{X} \rightarrow {}_{Z+1}^{A}\text{Y} + {}_{-1}^{0}\text{e} + \tilde{\nu}$ và **phóng xạ $\beta^+$**: ${}_Z^A\text{X} \rightarrow {}_{Z-1}^{A}\text{Y} + {}_{+1}^{0}\text{e} + \nu$ (bị lệch trong điện trường và từ trường, đâm xuyên mạnh hơn tia $\alpha$); (3) **Phóng xạ $\gamma$**: Là sóng điện từ bước sóng rất ngắn ($\lambda < 10^{-11}\text{ m}$), không mang điện, không làm thay đổi $A$ và $Z$, khả năng đâm xuyên rất mạnh (cần tấm chì dày hoặc bê tông dày để chắn)." "\n"
             r"- **Chu kì bán rã ($T$) và Độ phóng xạ ($H$)**: Sau mỗi chu kì bán rã $T$, một nửa số hạt nhân hiện có bị phân rã. Số hạt nhân đã bị phân rã (bằng số hạt nhân con tạo thành) sau thời gian $t$ là $\Delta N = N_0 - N(t) = N_0\left(1 - 2^{-\frac{t}{T}}\right)$." "\n"
             r"### Bài 24. Công nghiệp hạt nhân" "\n"
             r"- **Nhà máy điện hạt nhân**: Nhiệt năng toả ra từ phản ứng phân hạch dây chuyền có điều khiển ($k = 1$, dùng các thanh điều khiển chứa boron hoặc cadmium để hấp thụ neutron thừa) được chất tải nhiệt đưa tới sinh hơi làm quay tuabin máy phát điện." "\n"
-            r"- **Ứng dụng trong y học, nông nghiệp, công nghiệp và khảo cổ**: Xạ trị ung thư bằng đồng vị $_{27}^{60}\text{Co}$ hoặc dược chất phóng xạ $_{53}^{131}\text{I}$; chiếu xạ bảo quản thực phẩm và tạo giống cây trồng đột biến; kiểm tra khuyết tật mối hàn kim loại; định tuổi cổ vật hữu cơ bằng đồng vị $_{6}^{14}\text{C}$ ($T \approx 5730\text{ năm}$)." "\n"
+            r"- **Ứng dụng trong y học, nông nghiệp, công nghiệp và khảo cổ**: Xạ trị ung thư bằng đồng vị ${}_{27}^{60}\text{Co}$ hoặc dược chất phóng xạ ${}_{53}^{131}\text{I}$; chiếu xạ bảo quản thực phẩm và tạo giống cây trồng đột biến; kiểm tra khuyết tật mối hàn kim loại; định tuổi cổ vật hữu cơ bằng đồng vị ${}_{6}^{14}\text{C}$ ($T \approx 5730\text{ năm}$)." "\n"
             r"- **Ba nguyên tắc cơ bản về an toàn phóng xạ**: (1) **Giảm thời gian** tiếp xúc với nguồn phóng xạ; (2) **Tăng khoảng cách** tới nguồn phóng xạ; (3) **Che chắn** bằng các vật liệu hấp thụ thích hợp (chì, bê tông)." "\n"
             r"### Bài 25. Bài tập về vật lí hạt nhân" "\n"
             r"- **Các dạng bài tập trọng tâm**: Tính độ hụt khối $\Delta m$, năng lượng liên kết $W_{\text{lk}}$ và năng lượng liên kết riêng $W_{\text{lkr}}$; cân bằng phương trình phản ứng hạt nhân và tính năng lượng thu vào hoặc toả ra $\Delta E$; bài toán định luật phóng xạ tìm $N(t)$, $m(t)$, độ phóng xạ $H(t)$ và tỉ số $\dfrac{N_{\text{Y}}}{N_{\text{X}}} = 2^{\frac{t}{T}} - 1$."
@@ -928,7 +928,7 @@ LESSONS = [
             G(
                 "I. Cấu trúc hạt nhân, Độ hụt khối và Năng lượng liên kết",
                 F("Số khối và Bán kính hạt nhân", r"$A = Z + N; \quad R = R_0 A^{\frac{1}{3}}\text{ (với }R_0 \approx 1{,}2 \times 10^{-15}\text{ m)}$", r"Thể tích hạt nhân tỉ lệ thuận với số khối $A$."),
-                F(r"Độ hụt khối của hạt nhân $_Z^A\text{X}$", r"$\Delta m = [Zm_p + (A - Z)m_n] - m_{\text{X}}$", r"$1\text{ amu} \approx 931{,}5\text{ MeV}/c^2$."),
+                F(r"Độ hụt khối của hạt nhân ${}_Z^A\text{X}$", r"$\Delta m = [Zm_p + (A - Z)m_n] - m_{\text{X}}$", r"$1\text{ amu} \approx 931{,}5\text{ MeV}/c^2$."),
                 F("Năng lượng liên kết và Năng lượng liên kết riêng", r"$W_{\text{lk}} = \Delta m \cdot c^2; \quad W_{\text{lkr}} = \dfrac{W_{\text{lk}}}{A}$", r"$W_{\text{lkr}}$ càng lớn thì hạt nhân càng bền vững."),
             ),
             G(
@@ -944,25 +944,25 @@ LESSONS = [
             ),
         ],
         "example": (
-            r"Cho hạt nhân helium $_{2}^{4}\text{He}$ có khối lượng $m_{\text{He}} = 4{,}0015\text{ amu}$. Biết khối lượng của proton là $m_p = 1{,}0073\text{ amu}$, "
+            r"Cho hạt nhân helium ${}_{2}^{4}\text{He}$ có khối lượng $m_{\text{He}} = 4{,}0015\text{ amu}$. Biết khối lượng của proton là $m_p = 1{,}0073\text{ amu}$, "
             r"khối lượng của neutron là $m_n = 1{,}0087\text{ amu}$ và $1\text{ amu} = 931{,}5\text{ MeV}/c^2$. "
-            r"a) Tính độ hụt khối $\Delta m$, năng lượng liên kết $W_{\text{lk}}$ và năng lượng liên kết riêng $W_{\text{lkr}}$ của hạt nhân $_{2}^{4}\text{He}$. "
-            r"b) Một mẫu chất phóng xạ polonium $_{84}^{210}\text{Po}$ (phóng xạ $\alpha$ tạo thành hạt nhân chì $_{82}^{206}\text{Pb}$) có chu kì bán rã $T = 138\text{ ngày}$ và khối lượng ban đầu $m_0 = 42\text{ g}$. "
-            r"Tính khối lượng $_{84}^{210}\text{Po}$ còn lại và khối lượng chì $_{82}^{206}\text{Pb}$ được tạo thành sau thời gian $t = 276\text{ ngày}$."
+            r"a) Tính độ hụt khối $\Delta m$, năng lượng liên kết $W_{\text{lk}}$ và năng lượng liên kết riêng $W_{\text{lkr}}$ của hạt nhân ${}_{2}^{4}\text{He}$. "
+            r"b) Một mẫu chất phóng xạ polonium ${}_{84}^{210}\text{Po}$ (phóng xạ $\alpha$ tạo thành hạt nhân chì ${}_{82}^{206}\text{Pb}$) có chu kì bán rã $T = 138\text{ ngày}$ và khối lượng ban đầu $m_0 = 42\text{ g}$. "
+            r"Tính khối lượng ${}_{84}^{210}\text{Po}$ còn lại và khối lượng chì ${}_{82}^{206}\text{Pb}$ được tạo thành sau thời gian $t = 276\text{ ngày}$."
         ),
         "example_answer": (
-            r"- **Câu a**: Hạt nhân $_{2}^{4}\text{He}$ có $Z = 2$ proton và $N = 4 - 2 = 2$ neutron." "\n"
+            r"- **Câu a**: Hạt nhân ${}_{2}^{4}\text{He}$ có $Z = 2$ proton và $N = 4 - 2 = 2$ neutron." "\n"
             r"  Độ hụt khối: $\Delta m = (2m_p + 2m_n) - m_{\text{He}} = 2(1{,}0073 + 1{,}0087) - 4{,}0015 = 4{,}0320 - 4{,}0015 = \mathbf{0{,}0305\text{ amu}}$." "\n"
             r"  Năng lượng liên kết: $W_{\text{lk}} = \Delta m \cdot c^2 = 0{,}0305 \cdot 931{,}5 \approx \mathbf{28{,}41\text{ MeV}}$." "\n"
             r"  Năng lượng liên kết riêng: $W_{\text{lkr}} = \dfrac{W_{\text{lk}}}{A} = \dfrac{28{,}41}{4} \approx \mathbf{7{,}10\text{ MeV/nucleon}}$." "\n"
             r"- **Câu b**: Ta có $\dfrac{t}{T} = \dfrac{276}{138} = 2$ chu kì bán rã." "\n"
-            r"  Khối lượng $_{84}^{210}\text{Po}$ còn lại: $m = m_0 \cdot 2^{-\frac{t}{T}} = 42 \cdot 2^{-2} = \mathbf{10{,}5\text{ g}}$." "\n"
-            r"  Số mol $_{84}^{210}\text{Po}$ đã bị phân rã là $\Delta n = \dfrac{m_0 - m}{210} = \dfrac{42 - 10{,}5}{210} = 0{,}15\text{ mol}$. Khối lượng chì $_{82}^{206}\text{Pb}$ tạo thành là $m_{\text{Pb}} = \Delta n \cdot 206 = 0{,}15 \cdot 206 = \mathbf{30{,}9\text{ g}}$."
+            r"  Khối lượng ${}_{84}^{210}\text{Po}$ còn lại: $m = m_0 \cdot 2^{-\frac{t}{T}} = 42 \cdot 2^{-2} = \mathbf{10{,}5\text{ g}}$." "\n"
+            r"  Số mol ${}_{84}^{210}\text{Po}$ đã bị phân rã là $\Delta n = \dfrac{m_0 - m}{210} = \dfrac{42 - 10{,}5}{210} = 0{,}15\text{ mol}$. Khối lượng chì ${}_{82}^{206}\text{Pb}$ tạo thành là $m_{\text{Pb}} = \Delta n \cdot 206 = 0{,}15 \cdot 206 = \mathbf{30{,}9\text{ g}}$."
         ),
         "real_life": (
-            r"- **Y học hạt nhân và điều trị ung thư**: Sử dụng đồng vị phóng xạ $_{53}^{131}\text{I}$ ($T = 8\text{ ngày}$) trong chẩn đoán và điều trị bệnh tuyến giáp, tia $\gamma$ từ nguồn $_{27}^{60}\text{Co}$ hoặc dao gamma trong xạ trị khối u." "\n"
-            r"- **Nhà máy điện hạt nhân và năng lượng sạch**: Một kilôgam $_{92}^{235}\text{U}$ phân hạch hoàn toàn toả ra năng lượng tương đương việc đốt cháy khoảng $2500\text{ tấn}$ than đá mà không phát thải khí nhà kính $\text{CO}_2$." "\n"
-            r"- **Định tuổi khảo cổ học và địa chất**: Đo độ phóng xạ của đồng vị carbon $_{6}^{14}\text{C}$ trong mẫu gỗ, xương cổ để xác định niên đại di chỉ khảo cổ lên tới hàng chục nghìn năm."
+            r"- **Y học hạt nhân và điều trị ung thư**: Sử dụng đồng vị phóng xạ ${}_{53}^{131}\text{I}$ ($T = 8\text{ ngày}$) trong chẩn đoán và điều trị bệnh tuyến giáp, tia $\gamma$ từ nguồn ${}_{27}^{60}\text{Co}$ hoặc dao gamma trong xạ trị khối u." "\n"
+            r"- **Nhà máy điện hạt nhân và năng lượng sạch**: Một kilôgam ${}_{92}^{235}\text{U}$ phân hạch hoàn toàn toả ra năng lượng tương đương việc đốt cháy khoảng $2500\text{ tấn}$ than đá mà không phát thải khí nhà kính $\text{CO}_2$." "\n"
+            r"- **Định tuổi khảo cổ học và địa chất**: Đo độ phóng xạ của đồng vị carbon ${}_{6}^{14}\text{C}$ trong mẫu gỗ, xương cổ để xác định niên đại di chỉ khảo cổ lên tới hàng chục nghìn năm."
         ),
         "game_title": "Mô phỏng Phản ứng Hạt nhân, Phân hạch và Chu kì Bán rã",
         "game_description": "Thực hiện thí nghiệm tán xạ Rutherford, lắp ráp nucleon tính năng lượng liên kết, điều khiển lò phản ứng phân hạch U-235 và khảo sát đường cong phân rã phóng xạ.",
@@ -970,7 +970,7 @@ LESSONS = [
         "quiz": [
             mcq(
                 "biet",
-                r"Số neutron $N$ có trong một hạt nhân uranium $_{92}^{235}\text{U}$ là:",
+                r"Số neutron $N$ có trong một hạt nhân uranium ${}_{92}^{235}\text{U}$ là:",
                 [
                     r"$143$",
                     r"$92$",
@@ -978,7 +978,7 @@ LESSONS = [
                     r"$327$",
                 ],
                 0,
-                r"Hạt nhân $_{92}^{235}\text{U}$ có số khối $A = 235$ và số proton $Z = 92$, suy ra số neutron là $N = A - Z = 235 - 92 = \mathbf{143}$.",
+                r"Hạt nhân ${}_{92}^{235}\text{U}$ có số khối $A = 235$ và số proton $Z = 92$, suy ra số neutron là $N = A - Z = 235 - 92 = \mathbf{143}$.",
             ),
             mcq(
                 "biet",
@@ -1018,7 +1018,7 @@ LESSONS = [
             ),
             mcq(
                 "hieu",
-                r"Cho phản ứng hạt nhân: $_{0}^{1}\text{n} + {}_{92}^{235}\text{U} \rightarrow {}_{56}^{144}\text{Ba} + {}_{36}^{89}\text{Kr} + k\,{}_{0}^{1}\text{n}$. Giá trị của hệ số $k$ (số neutron giải phóng) trong phản ứng phân hạch trên là:",
+                r"Cho phản ứng hạt nhân: ${}_{0}^{1}\text{n} + {}_{92}^{235}\text{U} \rightarrow {}_{56}^{144}\text{Ba} + {}_{36}^{89}\text{Kr} + k\,{}_{0}^{1}\text{n}$. Giá trị của hệ số $k$ (số neutron giải phóng) trong phản ứng phân hạch trên là:",
                 [
                     r"$k = 3$",
                     r"$k = 2$",
@@ -1030,7 +1030,7 @@ LESSONS = [
             ),
             mcq(
                 "hieu",
-                r"Một mẫu chất phóng xạ iodine $_{53}^{131}\text{I}$ dùng trong y tế có chu kì bán rã $T = 8\text{ ngày}$ và độ phóng xạ ban đầu là $H_0 = 640\text{ MBq}$. Độ phóng xạ $H$ của mẫu chất này sau $24\text{ ngày}$ là:",
+                r"Một mẫu chất phóng xạ iodine ${}_{53}^{131}\text{I}$ dùng trong y tế có chu kì bán rã $T = 8\text{ ngày}$ và độ phóng xạ ban đầu là $H_0 = 640\text{ MBq}$. Độ phóng xạ $H$ của mẫu chất này sau $24\text{ ngày}$ là:",
                 [
                     r"$80\text{ MBq}$",
                     r"$160\text{ MBq}$",
@@ -1046,33 +1046,33 @@ LESSONS = [
                 [
                     r"a) Lực hạt nhân là lực tương tác mạnh liên kết các nucleon trong hạt nhân, có bán kính tác dụng rất ngắn vào cỡ $10^{-15}\text{ m}$ và không phụ thuộc vào điện tích của nucleon.",
                     r"b) Trong mọi phản ứng hạt nhân, tổng khối lượng nghỉ của các hạt trước phản ứng luôn bằng tổng khối lượng nghỉ của các hạt sau phản ứng.",
-                    r"c) Khi hạt nhân $_Z^A\text{X}$ phóng xạ $\alpha$ ($_{2}^{4}\text{He}$) thì hạt nhân con tạo thành có số khối giảm đi $4$ và số hiệu nguyên tử giảm đi $2$.",
+                    r"c) Khi hạt nhân ${}_Z^A\text{X}$ phóng xạ $\alpha$ (${}_{2}^{4}\text{He}$) thì hạt nhân con tạo thành có số khối giảm đi $4$ và số hiệu nguyên tử giảm đi $2$.",
                     r"d) Nếu tăng nhiệt độ và áp suất tác dụng lên một mẫu chất phóng xạ thì chu kì bán rã $T$ của chất phóng xạ đó sẽ giảm xuống.",
                 ],
                 [True, False, True, False],
                 r"- **a) Đúng**: Lực hạt nhân là tương tác mạnh, bán kính tác dụng cỡ kích thước hạt nhân ($\sim 10^{-15}\text{ m}$) và độc lập với điện tích." "\n"
                 r"- **b) Sai**: Trong phản ứng hạt nhân không có định luật bảo toàn khối lượng nghỉ (mà bảo toàn số nucleon $A$ và bảo toàn năng lượng toàn phần); độ chênh lệch khối lượng nghỉ chuyển hoá thành năng lượng thu vào hoặc toả ra $\Delta E = \Delta m \cdot c^2$." "\n"
-                r"- **c) Đúng**: Phương trình phóng xạ $\alpha$ là $_Z^A\text{X} \rightarrow {}_{Z-2}^{A-4}\text{Y} + {}_{2}^{4}\text{He}$." "\n"
+                r"- **c) Đúng**: Phương trình phóng xạ $\alpha$ là ${}_Z^A\text{X} \rightarrow {}_{Z-2}^{A-4}\text{Y} + {}_{2}^{4}\text{He}$." "\n"
                 r"- **d) Sai**: Quá trình phóng xạ có bản chất hạt nhân, hoàn toàn không phụ thuộc vào các tác động lí – hoá bên ngoài như nhiệt độ hay áp suất.",
             ),
             tf4(
                 "hieu",
-                r"Xét phản ứng tổng hợp hạt nhân (nhiệt hạch): $_{1}^{2}\text{H} + {}_{1}^{3}\text{H} \rightarrow {}_{2}^{4}\text{He} + {}_{0}^{1}\text{n}$. Biết khối lượng của các hạt nhân là $m_{\text{D}} = 2{,}0141\text{ amu}$, $m_{\text{T}} = 3{,}0160\text{ amu}$, $m_{\text{He}} = 4{,}0026\text{ amu}$, $m_n = 1{,}0087\text{ amu}$ và lấy $1\text{ amu} = 931{,}5\text{ MeV}/c^2$. Mỗi nhận định sau đúng hay sai?",
+                r"Xét phản ứng tổng hợp hạt nhân (nhiệt hạch): ${}_{1}^{2}\text{H} + {}_{1}^{3}\text{H} \rightarrow {}_{2}^{4}\text{He} + {}_{0}^{1}\text{n}$. Biết khối lượng của các hạt nhân là $m_{\text{D}} = 2{,}0141\text{ amu}$, $m_{\text{T}} = 3{,}0160\text{ amu}$, $m_{\text{He}} = 4{,}0026\text{ amu}$, $m_n = 1{,}0087\text{ amu}$ và lấy $1\text{ amu} = 931{,}5\text{ MeV}/c^2$. Mỗi nhận định sau đúng hay sai?",
                 [
-                    r"a) Hai hạt nhân $_{1}^{2}\text{H}$ (deuterium) và $_{1}^{3}\text{H}$ (tritium) là hai đồng vị của nguyên tố hydrogen.",
+                    r"a) Hai hạt nhân ${}_{1}^{2}\text{H}$ (deuterium) và ${}_{1}^{3}\text{H}$ (tritium) là hai đồng vị của nguyên tố hydrogen.",
                     r"b) Tổng khối lượng của các hạt trước phản ứng lớn hơn tổng khối lượng của các hạt sau phản ứng một lượng $\Delta m = 0{,}0188\text{ amu}$.",
                     r"c) Phản ứng trên là phản ứng thu năng lượng với nhiệt lượng thu vào cho mỗi phản ứng là $17{,}51\text{ MeV}$.",
                     r"d) Để thực hiện phản ứng tổng hợp hạt nhân này, hỗn hợp nhiên liệu cần được nung nóng đến nhiệt độ cực cao (hàng chục triệu đến hàng trăm triệu độ Kelvin) để các hạt nhân thắng được lực đẩy tĩnh điện Coulomb.",
                 ],
                 [True, True, False, True],
-                r"- **a) Đúng**: $_{1}^{2}\text{H}$ và $_{1}^{3}\text{H}$ có cùng $Z = 1$ proton nhưng khác số khối $A$ nên là hai đồng vị của hydrogen." "\n"
+                r"- **a) Đúng**: ${}_{1}^{2}\text{H}$ và ${}_{1}^{3}\text{H}$ có cùng $Z = 1$ proton nhưng khác số khối $A$ nên là hai đồng vị của hydrogen." "\n"
                 r"- **b) Đúng**: $m_{\text{trước}} = 2{,}0141 + 3{,}0160 = 5{,}0301\text{ amu}$; $m_{\text{sau}} = 4{,}0026 + 1{,}0087 = 5{,}0113\text{ amu}$. Suy ra $\Delta m = m_{\text{trước}} - m_{\text{sau}} = 5{,}0301 - 5{,}0113 = 0{,}0188\text{ amu}$." "\n"
                 r"- **c) Sai**: Vì $m_{\text{trước}} > m_{\text{sau}}$ nên phản ứng **toả** năng lượng $\Delta E = 0{,}0188 \cdot 931{,}5 \approx 17{,}51\text{ MeV}$ (không phải thu năng lượng)." "\n"
                 r"- **d) Đúng**: Phản ứng tổng hợp hạt nhân đòi hỏi nhiệt độ cực cao (phản ứng nhiệt hạch) để các hạt nhân mang điện dương lại gần nhau trong phạm vi tác dụng của lực hạt nhân.",
             ),
             mcq(
                 "vandung",
-                r"Hạt nhân sắt $_{26}^{56}\text{Fe}$ có khối lượng $m_{\text{Fe}} = 55{,}9207\text{ amu}$. Cho khối lượng của proton là $m_p = 1{,}0073\text{ amu}$, của neutron là $m_n = 1{,}0087\text{ amu}$ và $1\text{ amu} = 931{,}5\text{ MeV}/c^2$. Năng lượng liên kết riêng $W_{\text{lkr}}$ của hạt nhân $_{26}^{56}\text{Fe}$ gần nhất với giá trị nào sau đây?",
+                r"Hạt nhân sắt ${}_{26}^{56}\text{Fe}$ có khối lượng $m_{\text{Fe}} = 55{,}9207\text{ amu}$. Cho khối lượng của proton là $m_p = 1{,}0073\text{ amu}$, của neutron là $m_n = 1{,}0087\text{ amu}$ và $1\text{ amu} = 931{,}5\text{ MeV}/c^2$. Năng lượng liên kết riêng $W_{\text{lkr}}$ của hạt nhân ${}_{26}^{56}\text{Fe}$ gần nhất với giá trị nào sau đây?",
                 [
                     r"$8{,}79\text{ MeV/nucleon}$",
                     r"$7{,}45\text{ MeV/nucleon}$",
@@ -1080,11 +1080,11 @@ LESSONS = [
                     r"$9{,}42\text{ MeV/nucleon}$",
                 ],
                 0,
-                r"Hạt nhân $_{26}^{56}\text{Fe}$ có $Z = 26$ proton và $N = 56 - 26 = 30$ neutron. Độ hụt khối: $\Delta m = 26 \cdot 1{,}0073 + 30 \cdot 1{,}0087 - 55{,}9207 = 26{,}1898 + 30{,}2610 - 55{,}9207 = 0{,}5301\text{ amu}$. Năng lượng liên kết: $W_{\text{lk}} = 0{,}5301 \cdot 931{,}5 \approx 493{,}79\text{ MeV}$. Năng lượng liên kết riêng: $W_{\text{lkr}} = \dfrac{493{,}79}{56} \approx \mathbf{8{,}82\text{ MeV/nucleon}}$ (gần nhất với $8{,}79\text{ MeV/nucleon}$).",
+                r"Hạt nhân ${}_{26}^{56}\text{Fe}$ có $Z = 26$ proton và $N = 56 - 26 = 30$ neutron. Độ hụt khối: $\Delta m = 26 \cdot 1{,}0073 + 30 \cdot 1{,}0087 - 55{,}9207 = 26{,}1898 + 30{,}2610 - 55{,}9207 = 0{,}5301\text{ amu}$. Năng lượng liên kết: $W_{\text{lk}} = 0{,}5301 \cdot 931{,}5 \approx 493{,}79\text{ MeV}$. Năng lượng liên kết riêng: $W_{\text{lkr}} = \dfrac{493{,}79}{56} \approx \mathbf{8{,}82\text{ MeV/nucleon}}$ (gần nhất với $8{,}79\text{ MeV/nucleon}$).",
             ),
             short(
                 "vandung",
-                r"Ban đầu có một mẫu chất phóng xạ nguyên chất $_Z^A\text{X}$ có chu kì bán rã $T = 15\text{ giờ}$, phân rã tạo thành hạt nhân con bền $\text{Y}$. Sau khoảng thời gian $t$ bằng bao nhiêu giờ thì tỉ số giữa số hạt nhân con $\text{Y}$ tạo thành và số hạt nhân mẹ $\text{X}$ còn lại trong mẫu bằng $7$?",
+                r"Ban đầu có một mẫu chất phóng xạ nguyên chất ${}_Z^A\text{X}$ có chu kì bán rã $T = 15\text{ giờ}$, phân rã tạo thành hạt nhân con bền $\text{Y}$. Sau khoảng thời gian $t$ bằng bao nhiêu giờ thì tỉ số giữa số hạt nhân con $\text{Y}$ tạo thành và số hạt nhân mẹ $\text{X}$ còn lại trong mẫu bằng $7$?",
                 ["45"],
                 r"Số hạt nhân con tạo thành bằng số hạt nhân mẹ đã phân rã: $N_{\text{Y}} = \Delta N = N_0\left(1 - 2^{-\frac{t}{T}}\right)$. "
                 r"Theo đề bài: $\dfrac{N_{\text{Y}}}{N_{\text{X}}} = 2^{\frac{t}{T}} - 1 = 7 \Rightarrow 2^{\frac{t}{T}} = 8 = 2^3 \Rightarrow \dfrac{t}{T} = 3 \Rightarrow t = 3T = 3 \cdot 15 = \mathbf{45}\text{ giờ}$.",
@@ -1127,7 +1127,7 @@ LESSONS = [
             r"- **Bài 3. Máy biến áp và Truyền tải điện năng**: Máy biến áp hoạt động dựa trên hiện tượng cảm ứng điện từ, dùng để đổi điện áp xoay chiều mà không làm thay đổi tần số: $\dfrac{U_1}{U_2} = \dfrac{N_1}{N_2}$ ($N_2 > N_1$ là máy tăng áp, $N_2 < N_1$ là máy hạ áp). Khi truyền tải công suất $\mathcal{P}$ đi xa trên đường dây có điện trở $R$, công suất hao phí do toả nhiệt là $\Delta \mathcal{P} = \dfrac{\mathcal{P}^2 R}{U^2\cos^2\varphi}$; tăng điện áp truyền tải $U$ lên $k$ lần giúp giảm công suất hao phí $k^2$ lần." "\n"
             r"- **Bài 4. Chỉnh lưu dòng điện xoay chiều**: Sử dụng tính dẫn điện một chiều của diode bán dẫn để biến đổi dòng điện xoay chiều thành dòng điện một chiều thông qua mạch chỉnh lưu nửa chu kì (dùng $1$ diode) hoặc mạch chỉnh lưu cả chu kì (dùng cầu chỉnh lưu $4$ diode kết hợp tụ lọc)." "\n"
             r"### Chuyên đề 2. Tia X, Hiện tượng quang điện và Năng lượng photon $\varepsilon = hf$ (Bài 5 – Bài 12 Chuyên đề Vật lí 12 KNTT)" "\n"
-            r"- **Bài 5 – Bài 8. Tia X và Chẩn đoán hình ảnh y học**: Tia X là sóng điện từ có bước sóng từ $10^{-11}\text{ m}$ đến $10^{-8}\text{ m}$, được tạo ra khi chùm electron có động năng lớn ($eU_{\text{AK}}$) đập vào đối katốt (anode) bằng kim loại có nguyên tử lượng lớn và nhiệt độ nóng chảy cao (như tungsten hay vonfram). Bước sóng ngắn nhất của tia X phát ra xác định bởi $hf_{\max} = \dfrac{hc}{\lambda_{\min}} = eU_{\text{AK}}$. Trong y học, chụp X-quang và chụp cắt lớp CT dựa trên sự hấp thụ tia X khác nhau của xương và mô mềm; siêu âm dùng sóng cơ tần số $f > 20\text{ kHz}$; chụp cộng hưởng từ (MRI) dựa trên hiện tượng cộng hưởng từ hạt nhân hydrogen ($_{1}^{1}\text{H}$) trong cơ thể mà không dùng bức xạ ion hoá." "\n"
+            r"- **Bài 5 – Bài 8. Tia X và Chẩn đoán hình ảnh y học**: Tia X là sóng điện từ có bước sóng từ $10^{-11}\text{ m}$ đến $10^{-8}\text{ m}$, được tạo ra khi chùm electron có động năng lớn ($eU_{\text{AK}}$) đập vào đối katốt (anode) bằng kim loại có nguyên tử lượng lớn và nhiệt độ nóng chảy cao (như tungsten hay vonfram). Bước sóng ngắn nhất của tia X phát ra xác định bởi $hf_{\max} = \dfrac{hc}{\lambda_{\min}} = eU_{\text{AK}}$. Trong y học, chụp X-quang và chụp cắt lớp CT dựa trên sự hấp thụ tia X khác nhau của xương và mô mềm; siêu âm dùng sóng cơ tần số $f > 20\text{ kHz}$; chụp cộng hưởng từ (MRI) dựa trên hiện tượng cộng hưởng từ hạt nhân hydrogen (${}_{1}^{1}\text{H}$) trong cơ thể mà không dùng bức xạ ion hoá." "\n"
             r"- **Bài 9. Hiệu ứng quang điện và Năng lượng của photon**: Hiện tượng ánh sáng làm bật các electron ra khỏi bề mặt kim loại gọi là hiện tượng quang điện ngoài. Điều kiện xảy ra là bước sóng ánh sáng kích thích phải nhỏ hơn hoặc bằng giới hạn quang điện của kim loại: $\lambda \le \lambda_0 = \dfrac{hc}{A}$ (với $1\text{ eV} = 1{,}6 \times 10^{-19}\text{ J}$). Động năng ban đầu cực đại của quang electron liên hệ với hiệu điện thế hãm $U_{\text{h}}$ theo công thức $W_{\text{đ0max}} = \dfrac{1}{2}mv_{0\max}^2 = eU_{\text{h}} = hf - A$." "\n"
             r"- **Bài 10 – Bài 12. Lưỡng tính sóng hạt, Quang phổ vạch và Vùng năng lượng chất rắn**: Bước sóng de Broglie của vi hạt $\lambda = \dfrac{h}{mv}$. Trong nguyên tử hydrogen, các mức năng lượng dừng $E_n = -\dfrac{13{,}6}{n^2}\text{ (eV)}$ ($n \in \mathbb{N}^*$); khi electron chuyển từ mức $E_n$ về mức $E_m$ thấp hơn thì phát ra vạch quang phổ có bước sóng $\dfrac{hc}{\lambda_{nm}} = E_n - E_m$. Trong tinh thể chất rắn, dựa vào độ rộng vùng cấm $E_g$ giữa vùng hoá trị và vùng dẫn, ta phân biệt được chất dẫn điện (vùng dẫn và vùng hoá trị chồng lấn), chất bán dẫn ($E_g$ nhỏ, cỡ $0{,}1\text{ eV} - 4\text{ eV}$) và chất điện môi ($E_g > 4\text{ eV}$)." "\n"
             r"### Chuyên đề 3. Hệ thức Einstein $E = mc^2$ và Vật lí hiện đại" "\n"

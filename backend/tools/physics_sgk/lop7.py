@@ -552,7 +552,7 @@ LESSONS = [
             ),
             short(
                 "vandung",
-                r"Chiếu một tia sáng $SI$ tới một gương phẳng sao cho góc hợp bởi tia tới và mặt gương bằng một nửa góc tới ($\alpha = \dfrac{1}{2}i$). Hãy tính số đo góc hợp bởi tia tới và tia phản xạ $\widehat{SIR}$ theo đơn vị độ ($^\circ$).",
+                r"Chiếu một tia sáng $SI$ tới một gương phẳng sao cho góc hợp bởi tia tới và mặt gương bằng một nửa góc tới ($\alpha = \dfrac{1}{2}i$). Hãy tính số đo góc hợp bởi tia tới và tia phản xạ $\widehat{SIR}$ theo đơn vị độ (${}^\circ$).",
                 ["120", "120,0", "120.0"],
                 r"Ta có $\alpha + i = 90^\circ$. Thay $\alpha = \dfrac{1}{2}i$ vào được $\dfrac{3}{2}i = 90^\circ \Rightarrow i = 60^\circ$. Góc hợp bởi tia tới và tia phản xạ là $\widehat{SIR} = 2i = 2 \cdot 60^\circ = 120^\circ$.",
             ),
