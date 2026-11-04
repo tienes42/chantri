@@ -507,6 +507,9 @@ function upgradeKatex() {
       });
     } catch (_) {}
   });
+  if (typeof drawMindmapConnections === "function") {
+    requestAnimationFrame(drawMindmapConnections);
+  }
 }
 
 function formatPlainMathAndChem(escapedStr) {
@@ -927,7 +930,8 @@ function renderRequirements(lesson) {
     .map((item) => `<li>${formatInlineStyles(item)}</li>`)
     .join("");
   if (sgkRef) {
-    sgkRef.textContent = "Theo Chương trình giáo dục phổ thông môn Toán 2018 (Thông tư 32/2018/TT-BGDĐT). Sau chủ đề này, em cần:";
+    const subjLabel = subject === "physics" ? "môn Vật lý / KHTN" : subject === "chemistry" ? "môn Hóa học / KHTN" : "môn Toán";
+    sgkRef.textContent = `Theo Chương trình giáo dục phổ thông ${subjLabel} 2018 (Thông tư 32/2018/TT-BGDĐT). Sau chủ đề này, em cần:`;
   }
   setSectionVisible(requirementsSection, true);
 }
@@ -979,6 +983,524 @@ function handleQuizSetReward(result) {
 /* =========================================================
    RENDER LESSON
 ========================================================= */
+
+/* =========================================================
+   SƠ ĐỒ TƯ DUY TƯƠNG TÁC 2.5D (AUTO-MINDMAP GENERATOR)
+========================================================= */
+let mmZoomLevel = 1;
+let mmIsFullscreen = false;
+
+function truncateLatexSafe(rawStr, maxChars = 135) {
+  if (!rawStr) return "";
+  let cleaned = String(rawStr)
+    .replace(/^[-*•+]\s+/, "")
+    .replace(/^#{1,4}\s+/, "")
+    .trim();
+  if (cleaned.length <= maxChars) return cleaned;
+
+  const tokenRe = /(\$\$[\s\S]+?\$\$|\$[^$\n]+?\$)/g;
+  const parts = cleaned.split(tokenRe);
+  let out = "";
+  let plainLen = 0;
+
+  for (let i = 0; i < parts.length; i++) {
+    const p = parts[i];
+    if (!p) continue;
+    const isMath = (p.startsWith("$") && p.endsWith("$"));
+    if (isMath) {
+      if (plainLen > maxChars) break;
+      out += p;
+      plainLen += Math.min(p.length, 18);
+    } else {
+      if (plainLen + p.length > maxChars) {
+        const remain = Math.max(12, maxChars - plainLen);
+        let slice = p.slice(0, remain);
+        const lastSpace = slice.lastIndexOf(" ");
+        if (lastSpace > 8) slice = slice.slice(0, lastSpace);
+        out += slice.replace(/[,;:\s]+$/, "") + "…";
+        break;
+      }
+      out += p;
+      plainLen += p.length;
+    }
+  }
+  return out.trim();
+}
+
+function splitCleanLines(text, maxItems = 4, maxChars = 135) {
+  if (!text) return [];
+  const rawLines = String(text)
+    .replace(/\r\n/g, "\n")
+    .split("\n")
+    .map((l) => l.trim())
+    .filter((l) => l && !/^#{1,4}\s+/.test(l));
+
+  const results = [];
+  for (const line of rawLines) {
+    const cleaned = truncateLatexSafe(line, maxChars);
+    if (cleaned && results.length < maxItems) {
+      results.push(cleaned);
+    }
+  }
+  return results;
+}
+
+function parseTheorySubBranches(theoryText) {
+  if (!theoryText) return [];
+  const lines = String(theoryText).replace(/\r\n/g, "\n").split("\n");
+  const groups = [];
+  let currentGroup = null;
+
+  for (const rawLine of lines) {
+    const line = rawLine.trim();
+    if (!line) continue;
+    if (/^#{2,4}\s+/.test(line)) {
+      const heading = line.replace(/^#{2,4}\s+/, "").trim();
+      currentGroup = {
+        type: "subbranch",
+        title: truncateLatexSafe(heading, 90),
+        items: []
+      };
+      groups.push(currentGroup);
+    } else if (currentGroup) {
+      if (currentGroup.items.length < 3) {
+        currentGroup.items.push(truncateLatexSafe(line, 125));
+      }
+    }
+  }
+
+  if (groups.length > 0) {
+    return groups.slice(0, 5);
+  }
+  return splitCleanLines(theoryText, 4, 130).map((item) => ({
+    type: "leaf",
+    text: item
+  }));
+}
+
+function extractFormulaNodes(formulasData, singleFormula) {
+  let list = Array.isArray(formulasData) ? formulasData : [];
+  if (!list.length && singleFormula) list = [singleFormula];
+  const nodes = [];
+
+  for (const group of list) {
+    if (group && typeof group === "object" && Array.isArray(group.items)) {
+      for (const it of group.items) {
+        if (nodes.length >= 5) break;
+        if (typeof it === "string") {
+          nodes.push({ type: "formula", name: "", formula: it });
+        } else if (it && (it.formula || it.name)) {
+          nodes.push({
+            type: "formula",
+            name: truncateLatexSafe(it.name || "", 70),
+            formula: it.formula || ""
+          });
+        }
+      }
+    } else if (group && typeof group === "object" && (group.formula || group.name)) {
+      if (nodes.length < 5) {
+        nodes.push({
+          type: "formula",
+          name: truncateLatexSafe(group.name || "", 70),
+          formula: group.formula || ""
+        });
+      }
+    } else if (typeof group === "string" && nodes.length < 5) {
+      nodes.push({ type: "formula", name: "", formula: group });
+    }
+  }
+  return nodes;
+}
+
+function buildMindmapBranches(lesson) {
+  const branches = [];
+
+  // 1. Yêu cầu cần đạt
+  const reqs = Array.isArray(lesson.requirements)
+    ? lesson.requirements.filter(Boolean).slice(0, 4).map((r) => ({
+        type: "leaf",
+        text: truncateLatexSafe(r, 130)
+      }))
+    : [];
+  if (reqs.length > 0) {
+    branches.push({
+      id: "mm-req",
+      title: "Mục tiêu cần đạt",
+      icon: "🎯",
+      color: "indigo",
+      stroke: "#4f46e5",
+      targetId: "requirementsSection",
+      children: reqs
+    });
+  }
+
+  // 2. Định nghĩa & Khái niệm
+  const defItems = splitCleanLines(lesson.definition || lesson.concept, 3, 135).map((t) => ({
+    type: "leaf",
+    text: t
+  }));
+  if (defItems.length > 0) {
+    branches.push({
+      id: "mm-def",
+      title: "Khái niệm cốt lõi",
+      icon: "💡",
+      color: "sky",
+      stroke: "#0284c7",
+      targetId: "definitionSection",
+      children: defItems
+    });
+  }
+
+  // 3. Hệ thống lý thuyết trọng tâm
+  const theoryNodes = parseTheorySubBranches(lesson.theory);
+  if (theoryNodes.length > 0) {
+    branches.push({
+      id: "mm-theory",
+      title: "Kiến thức trọng tâm",
+      icon: "🧠",
+      color: "teal",
+      stroke: "#0d9488",
+      targetId: "theorySection",
+      children: theoryNodes
+    });
+  }
+
+  // 4. Công thức & Quy tắc
+  const formulaNodes = extractFormulaNodes(lesson.formulas, lesson.formula);
+  if (formulaNodes.length > 0) {
+    branches.push({
+      id: "mm-formula",
+      title: "Công thức & Quy tắc",
+      icon: "📐",
+      color: "amber",
+      stroke: "#d97706",
+      targetId: "formulaSection",
+      children: formulaNodes
+    });
+  }
+
+  // 5. Ứng dụng & Đời sống
+  const appSource = lesson.real_life || lesson.application || lesson.context || "";
+  const appItems = splitCleanLines(appSource, 3, 130).map((t) => ({
+    type: "leaf",
+    text: t
+  }));
+  if (appItems.length > 0) {
+    branches.push({
+      id: "mm-app",
+      title: "Thực tiễn & Ứng dụng",
+      icon: "🌍",
+      color: "emerald",
+      stroke: "#16a34a",
+      targetId: lesson.real_life ? "realLifeSection" : "applicationSection",
+      children: appItems
+    });
+  }
+
+  return branches;
+}
+
+function drawMindmapConnections() {
+  const stage = document.getElementById("mindmapStage");
+  const svg = document.getElementById("mindmapSvgLinks");
+  const canvas = document.getElementById("mindmapCanvas");
+  if (!stage || !svg || !canvas) return;
+
+  if (stage.getAttribute("data-layout") !== "tree") {
+    svg.innerHTML = "";
+    return;
+  }
+
+  const rootCard = canvas.querySelector(".mm-root-card");
+  if (!rootCard) return;
+
+  const prevTransform = stage.style.transform;
+  stage.style.transform = "none";
+
+  const stageRect = stage.getBoundingClientRect();
+  const rootRect = rootCard.getBoundingClientRect();
+  const w = Math.max(stage.scrollWidth, stageRect.width);
+  const h = Math.max(stage.scrollHeight, stageRect.height);
+
+  svg.setAttribute("width", String(w));
+  svg.setAttribute("height", String(h));
+  svg.setAttribute("viewBox", `0 0 ${w} ${h}`);
+
+  const rootX = rootRect.right - stageRect.left;
+  const rootY = rootRect.top - stageRect.top + rootRect.height / 2;
+
+  let pathsHtml = "";
+  const branchRows = canvas.querySelectorAll(".mm-branch-row");
+
+  branchRows.forEach((row) => {
+    const stroke = row.getAttribute("data-stroke") || "#0284c7";
+    const branchNode = row.querySelector(".mm-branch-node");
+    if (!branchNode) return;
+
+    const bRect = branchNode.getBoundingClientRect();
+    const bLeftX = bRect.left - stageRect.left;
+    const bCenterY = bRect.top - stageRect.top + bRect.height / 2;
+    const dx1 = Math.max(24, (bLeftX - rootX) * 0.5);
+
+    pathsHtml += `<path class="mm-link-path" stroke="${stroke}" d="M ${rootX} ${rootY} C ${rootX + dx1} ${rootY}, ${bLeftX - dx1} ${bCenterY}, ${bLeftX} ${bCenterY}" />`;
+
+    if (!row.classList.contains("is-collapsed")) {
+      const bRightX = bRect.right - stageRect.left;
+      const leaves = row.querySelectorAll(".mm-leaf-card");
+      leaves.forEach((leaf) => {
+        const lRect = leaf.getBoundingClientRect();
+        const lLeftX = lRect.left - stageRect.left;
+        const lCenterY = lRect.top - stageRect.top + lRect.height / 2;
+        const dx2 = Math.max(18, (lLeftX - bRightX) * 0.5);
+        pathsHtml += `<path class="mm-link-path mm-link-sub" stroke="${stroke}" d="M ${bRightX} ${bCenterY} C ${bRightX + dx2} ${bCenterY}, ${lLeftX - dx2} ${lCenterY}, ${lLeftX} ${lCenterY}" />`;
+      });
+    }
+  });
+
+  svg.innerHTML = pathsHtml;
+  stage.style.transform = prevTransform;
+}
+
+function renderMindmapChildHtml(child) {
+  if (child.type === "formula") {
+    return `
+      <div class="mm-leaf-card mm-formula-pill">
+        ${child.name ? `<span class="mm-formula-name">${formatInlineStyles(child.name)}</span>` : ""}
+        <span class="mm-formula-eq">${formatInlineStyles(child.formula)}</span>
+      </div>
+    `;
+  }
+  if (child.type === "subbranch") {
+    const subItemsHtml = (child.items || [])
+      .map((it) => `<li>${formatInlineStyles(it)}</li>`)
+      .join("");
+    return `
+      <div class="mm-leaf-card">
+        <div class="mm-subbranch-title"><span>▸</span><span>${formatInlineStyles(child.title)}</span></div>
+        ${subItemsHtml ? `<ul class="mm-subbranch-list">${subItemsHtml}</ul>` : ""}
+      </div>
+    `;
+  }
+  return `
+    <div class="mm-leaf-card">
+      ${formatInlineStyles(child.text || "")}
+    </div>
+  `;
+}
+
+function renderMindmap(lesson) {
+  const section = document.getElementById("mindmapSection");
+  const canvas = document.getElementById("mindmapCanvas");
+  if (!section || !canvas) return;
+
+  const branches = buildMindmapBranches(lesson);
+  if (!branches.length) {
+    setSectionVisible(section, false);
+    return;
+  }
+  setSectionVisible(section, true);
+
+  const g = lesson.grade || gradeFromUrl || "";
+  const subjName = subject === "physics" ? "Vật lý" : subject === "chemistry" ? "Hóa học" : "Toán học";
+  const badgeText = g ? `${subjName} • Lớp ${g}` : subjName;
+
+  const branchesHtml = branches
+    .map((b) => {
+      const childrenHtml = b.children.map((ch) => renderMindmapChildHtml(ch)).join("");
+      return `
+        <div class="mm-branch-row" data-color="${b.color}" data-stroke="${b.stroke}" id="${b.id}">
+          <div class="mm-branch-node">
+            <div class="mm-branch-top">
+              <div class="mm-branch-label">
+                <span class="mm-branch-ico">${b.icon}</span>
+                <span>${escapeHTML(b.title)}</span>
+              </div>
+              <button type="button" class="mm-toggle-btn" data-mm-toggle="${b.id}" title="Thu gọn / Mở rộng nhánh này">
+                − (${b.children.length})
+              </button>
+            </div>
+            <div class="mm-branch-actions">
+              <span>${b.children.length} ý chính</span>
+              <button type="button" class="mm-jump-link" data-mm-jump="${b.targetId}">
+                Xem mục ↗
+              </button>
+            </div>
+          </div>
+          <div class="mm-children-col">
+            ${childrenHtml}
+          </div>
+        </div>
+      `;
+    })
+    .join("");
+
+  canvas.innerHTML = `
+    <div class="mm-root-col">
+      <div class="mm-root-card">
+        <div class="mm-root-icon">${escapeHTML(lesson.icon || "📚")}</div>
+        <div class="mm-root-badge">${escapeHTML(badgeText)}</div>
+        <div class="mm-root-title">${escapeHTML(lesson.title || "Bài học")}</div>
+        <div class="mm-root-desc">${escapeHTML(truncateLatexSafe(lesson.description || "", 110))}</div>
+      </div>
+    </div>
+    <div class="mm-branches-col">
+      ${branchesHtml}
+    </div>
+  `;
+
+  upgradeKatex();
+  requestAnimationFrame(() => {
+    drawMindmapConnections();
+    setTimeout(drawMindmapConnections, 160);
+  });
+}
+
+function initMindmapInteractions() {
+  const section = document.getElementById("mindmapSection");
+  const viewport = document.getElementById("mindmapViewport");
+  const stage = document.getElementById("mindmapStage");
+  const canvas = document.getElementById("mindmapCanvas");
+  const zoomLabel = document.getElementById("mmZoomLabel");
+  const jumpBtn = document.getElementById("jumpMindmapBtn");
+
+  if (!section || !viewport || !stage || !canvas) return;
+
+  if (jumpBtn) {
+    jumpBtn.addEventListener("click", () => {
+      section.scrollIntoView({ behavior: "smooth", block: "start" });
+    });
+  }
+
+  // Đóng/mở từng nhánh & Nhảy tới mục chi tiết
+  canvas.addEventListener("click", (e) => {
+    const toggleBtn = e.target.closest("[data-mm-toggle]");
+    if (toggleBtn) {
+      const rowId = toggleBtn.getAttribute("data-mm-toggle");
+      const row = document.getElementById(rowId);
+      if (row) {
+        const collapsed = row.classList.toggle("is-collapsed");
+        const count = row.querySelectorAll(".mm-leaf-card").length;
+        toggleBtn.textContent = `${collapsed ? "+" : "−"} (${count})`;
+        requestAnimationFrame(drawMindmapConnections);
+      }
+      return;
+    }
+
+    const jumpLink = e.target.closest("[data-mm-jump]");
+    if (jumpLink) {
+      const targetId = jumpLink.getAttribute("data-mm-jump");
+      const targetEl = targetId ? document.getElementById(targetId) : null;
+      if (targetEl) {
+        if (mmIsFullscreen) {
+          mmIsFullscreen = false;
+          section.classList.remove("is-fullscreen");
+        }
+        targetEl.scrollIntoView({ behavior: "smooth", block: "start" });
+      }
+    }
+  });
+
+  // Đổi chế độ bố cục: Nhánh ngang (tree) <-> Tỏa tâm (radial)
+  section.querySelectorAll("[data-mm-layout]").forEach((btn) => {
+    btn.addEventListener("click", () => {
+      const layout = btn.getAttribute("data-mm-layout") || "tree";
+      stage.setAttribute("data-layout", layout);
+      section.querySelectorAll("[data-mm-layout]").forEach((b) => b.classList.toggle("active", b === btn));
+      requestAnimationFrame(drawMindmapConnections);
+    });
+  });
+
+  // Mở hết / Thu gọn hết
+  const expandAllBtn = document.getElementById("mmExpandAllBtn");
+  const collapseAllBtn = document.getElementById("mmCollapseAllBtn");
+  if (expandAllBtn) {
+    expandAllBtn.addEventListener("click", () => {
+      canvas.querySelectorAll(".mm-branch-row").forEach((row) => {
+        row.classList.remove("is-collapsed");
+        const count = row.querySelectorAll(".mm-leaf-card").length;
+        const btn = row.querySelector(".mm-toggle-btn");
+        if (btn) btn.textContent = `− (${count})`;
+      });
+      requestAnimationFrame(drawMindmapConnections);
+    });
+  }
+  if (collapseAllBtn) {
+    collapseAllBtn.addEventListener("click", () => {
+      canvas.querySelectorAll(".mm-branch-row").forEach((row) => {
+        row.classList.add("is-collapsed");
+        const count = row.querySelectorAll(".mm-leaf-card").length;
+        const btn = row.querySelector(".mm-toggle-btn");
+        if (btn) btn.textContent = `+ (${count})`;
+      });
+      requestAnimationFrame(drawMindmapConnections);
+    });
+  }
+
+  // Thu phóng
+  const applyZoom = (newZoom) => {
+    mmZoomLevel = Math.min(1.3, Math.max(0.75, Math.round(newZoom * 100) / 100));
+    stage.style.transform = `scale(${mmZoomLevel})`;
+    if (zoomLabel) zoomLabel.textContent = `${Math.round(mmZoomLevel * 100)}%`;
+  };
+  const zoomInBtn = document.getElementById("mmZoomInBtn");
+  const zoomOutBtn = document.getElementById("mmZoomOutBtn");
+  if (zoomInBtn) zoomInBtn.addEventListener("click", () => applyZoom(mmZoomLevel + 0.1));
+  if (zoomOutBtn) zoomOutBtn.addEventListener("click", () => applyZoom(mmZoomLevel - 0.1));
+
+  // Toàn màn hình
+  const fullscreenBtn = document.getElementById("mmFullscreenBtn");
+  if (fullscreenBtn) {
+    fullscreenBtn.addEventListener("click", () => {
+      mmIsFullscreen = !mmIsFullscreen;
+      section.classList.toggle("is-fullscreen", mmIsFullscreen);
+      fullscreenBtn.textContent = mmIsFullscreen ? "✕ Đóng toàn màn hình" : "⛶ Toàn màn hình";
+      requestAnimationFrame(drawMindmapConnections);
+    });
+  }
+  window.addEventListener("keydown", (e) => {
+    if (e.key === "Escape" && mmIsFullscreen) {
+      mmIsFullscreen = false;
+      section.classList.remove("is-fullscreen");
+      if (fullscreenBtn) fullscreenBtn.textContent = "⛶ Toàn màn hình";
+      requestAnimationFrame(drawMindmapConnections);
+    }
+  });
+
+  // Kéo chuột để di chuyển vùng nhìn (Drag to pan)
+  let isDown = false;
+  let startX = 0;
+  let startY = 0;
+  let scrollL = 0;
+  let scrollT = 0;
+  viewport.addEventListener("mousedown", (e) => {
+    if (e.target.closest("button, a")) return;
+    isDown = true;
+    viewport.classList.add("is-dragging");
+    startX = e.pageX - viewport.offsetLeft;
+    startY = e.pageY - viewport.offsetTop;
+    scrollL = viewport.scrollLeft;
+    scrollT = viewport.scrollTop;
+  });
+  window.addEventListener("mouseup", () => {
+    isDown = false;
+    viewport.classList.remove("is-dragging");
+  });
+  viewport.addEventListener("mousemove", (e) => {
+    if (!isDown) return;
+    e.preventDefault();
+    const x = e.pageX - viewport.offsetLeft;
+    const y = e.pageY - viewport.offsetTop;
+    viewport.scrollLeft = scrollL - (x - startX);
+    viewport.scrollTop = scrollT - (y - startY);
+  });
+
+  window.addEventListener("resize", () => {
+    requestAnimationFrame(drawMindmapConnections);
+  });
+}
+
+initMindmapInteractions();
+
 function renderLesson(lesson) {
   if (lessonIcon) lessonIcon.textContent = lesson.icon || "📚";
   if (lessonGrade) {
@@ -1033,6 +1555,7 @@ function renderLesson(lesson) {
   }
 
   renderRequirements(lesson);
+  renderMindmap(lesson);
 
   if (Array.isArray(lesson.quiz) && lesson.quiz.length && window.HDLGQuiz) {
     renderQuizSet(lesson);

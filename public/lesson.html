@@ -126,6 +126,11 @@
             </div>
             <h1 id="lessonTitle">Tên bài học</h1>
             <p id="lessonDescription">Mô tả bài học</p>
+            <div class="hero-quick-actions">
+              <button type="button" class="btn-25d hero-mindmap-btn" id="jumpMindmapBtn">
+                🗺️ Xem Sơ đồ tư duy bài học
+              </button>
+            </div>
           </div>
 
           <!-- Quả cầu biểu tượng 2.5D góc phải Banner -->
@@ -144,6 +149,41 @@
           </div>
           <div id="sgkRef" class="sgk-ref"></div>
           <ul id="requirements" class="requirements-list"></ul>
+        </section>
+
+        <!-- 0B. SƠ ĐỒ TƯ DUY TỔNG QUAN BÀI HỌC -->
+        <section class="lesson-section card-25d mindmap-section" id="mindmapSection" data-toc="Sơ đồ tư duy">
+          <div class="section-head mindmap-section-head">
+            <div class="mindmap-head-left">
+              <span class="section-badge">01</span>
+              <h2 class="section-title">🗺️ Sơ đồ tư duy tổng quan</h2>
+            </div>
+            <div class="mindmap-toolbar" role="toolbar" aria-label="Công cụ sơ đồ tư duy">
+              <div class="mm-btn-group" role="group" aria-label="Kiểu bố cục">
+                <button type="button" class="mm-tool-btn active" data-mm-layout="tree" title="Chế độ cây nhánh ngang có đường nối">🌿 Nhánh ngang</button>
+                <button type="button" class="mm-tool-btn" data-mm-layout="radial" title="Chế độ thẻ tỏa tâm">🎯 Tỏa tâm</button>
+              </div>
+              <div class="mm-btn-group" role="group" aria-label="Đóng mở nhánh">
+                <button type="button" class="mm-tool-btn" id="mmExpandAllBtn" title="Mở rộng toàn bộ các nhánh">➕ Mở hết</button>
+                <button type="button" class="mm-tool-btn" id="mmCollapseAllBtn" title="Thu gọn các nhánh để tự nhẩm ôn bài">➖ Thu gọn</button>
+              </div>
+              <div class="mm-btn-group" role="group" aria-label="Thu phóng">
+                <button type="button" class="mm-tool-btn" id="mmZoomOutBtn" title="Thu nhỏ sơ đồ">−</button>
+                <span class="mm-zoom-label" id="mmZoomLabel">100%</span>
+                <button type="button" class="mm-tool-btn" id="mmZoomInBtn" title="Phóng to sơ đồ">+</button>
+              </div>
+              <button type="button" class="mm-tool-btn mm-fullscreen-btn" id="mmFullscreenBtn" title="Xem toàn màn hình">⛶ Toàn màn hình</button>
+            </div>
+          </div>
+          <p class="mindmap-hint">
+            💡 <strong>Mẹo học nhanh:</strong> Bấm <code>➖ Thu gọn</code> để tự nhẩm lại kiến thức theo từng nhánh, bấm vào dấu <code>+</code> trên nhánh để mở chi tiết hoặc bấm <code>Xem mục ↗</code> để nhảy tới phần giải thích sâu.
+          </p>
+          <div class="mindmap-viewport" id="mindmapViewport">
+            <div class="mindmap-stage" id="mindmapStage" data-layout="tree">
+              <svg class="mindmap-svg-links" id="mindmapSvgLinks" aria-hidden="true"></svg>
+              <div class="mindmap-canvas" id="mindmapCanvas"></div>
+            </div>
+          </div>
         </section>
 
         <!-- 1. ĐỊNH NGHĨA -->

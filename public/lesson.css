@@ -1570,3 +1570,506 @@ body[data-theme="dark"] .qz-level-title.lv-vandung, body[data-theme="dark"] .qz-
   text-align: left;
   line-height: 1.3;
 }
+
+/* =========================================================
+   SƠ ĐỒ TƯ DUY TƯƠNG TÁC 2.5D (MINDMAP SECTION)
+========================================================= */
+.hero-quick-actions {
+  margin-top: 14px;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+}
+
+.hero-mindmap-btn {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 16px;
+  border-radius: 999px;
+  font-size: 0.92rem;
+  font-weight: 700;
+  color: var(--subject-dark);
+  background: var(--bg-surface);
+  border: 1.5px solid var(--subject-border);
+  box-shadow: 0 3px 0 var(--card-lip), 0 6px 14px rgba(15, 23, 42, 0.08);
+  cursor: pointer;
+  transition: transform 0.15s ease, box-shadow 0.15s ease, background 0.15s ease;
+}
+
+.hero-mindmap-btn:hover {
+  transform: translateY(-2px);
+  background: var(--subject-soft);
+}
+
+.hero-mindmap-btn:active {
+  transform: translateY(1px);
+}
+
+body[data-theme="dark"] .hero-mindmap-btn {
+  color: #38bdf8;
+  background: rgba(15, 23, 42, 0.75);
+}
+
+.mindmap-section-head {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 12px;
+}
+
+.mindmap-head-left {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+}
+
+.mindmap-toolbar {
+  display: flex;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.mm-btn-group {
+  display: inline-flex;
+  align-items: center;
+  background: var(--bg-subtle);
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  padding: 3px;
+  gap: 2px;
+}
+
+.mm-tool-btn {
+  border: none;
+  background: transparent;
+  color: var(--text-secondary);
+  font-size: 0.82rem;
+  font-weight: 600;
+  padding: 5px 10px;
+  border-radius: 7px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+  white-space: nowrap;
+}
+
+.mm-tool-btn:hover {
+  background: var(--bg-muted);
+  color: var(--text-primary);
+}
+
+.mm-tool-btn.active {
+  background: var(--subject-primary);
+  color: #ffffff;
+  box-shadow: 0 2px 6px rgba(2, 132, 199, 0.28);
+}
+
+.mm-fullscreen-btn {
+  background: var(--bg-subtle);
+  border: 1px solid var(--card-border);
+  border-radius: 10px;
+  padding: 6px 12px;
+}
+
+.mm-zoom-label {
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--text-muted);
+  min-width: 42px;
+  text-align: center;
+}
+
+.mindmap-hint {
+  font-size: 0.88rem;
+  color: var(--text-muted);
+  background: var(--bg-subtle);
+  border-left: 3.5px solid var(--subject-primary);
+  padding: 8px 12px;
+  border-radius: 0 8px 8px 0;
+  margin-bottom: 14px;
+}
+
+.mindmap-viewport {
+  position: relative;
+  width: 100%;
+  overflow: auto;
+  background:
+    radial-gradient(circle at 1px 1px, var(--card-border) 1.1px, transparent 0);
+  background-size: 22px 22px;
+  background-color: var(--bg-subtle);
+  border: 1.5px solid var(--card-border);
+  border-radius: 16px;
+  padding: 24px 20px;
+  min-height: 360px;
+  cursor: grab;
+}
+
+.mindmap-viewport.is-dragging {
+  cursor: grabbing;
+  user-select: none;
+}
+
+.mindmap-stage {
+  position: relative;
+  transform-origin: top left;
+  transition: transform 0.18s ease;
+  min-width: min-content;
+}
+
+.mindmap-svg-links {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  overflow: visible;
+}
+
+.mm-link-path {
+  fill: none;
+  stroke-width: 2.6px;
+  stroke-linecap: round;
+  opacity: 0.82;
+  transition: d 0.2s ease, opacity 0.2s ease;
+}
+
+.mm-link-sub {
+  stroke-width: 1.9px;
+  stroke-dasharray: 4 3;
+  opacity: 0.7;
+}
+
+.mindmap-canvas {
+  position: relative;
+  z-index: 2;
+}
+
+/* Chế độ 1: Sơ đồ nhánh ngang (Tree Layout) */
+.mindmap-stage[data-layout="tree"] .mindmap-canvas {
+  display: flex;
+  align-items: center;
+  gap: 54px;
+  padding: 8px 6px;
+}
+
+.mm-root-col {
+  flex: 0 0 250px;
+  display: flex;
+  align-items: center;
+}
+
+.mm-root-card {
+  width: 250px;
+  background: var(--subject-Banner-grad);
+  border: 2px solid var(--subject-primary);
+  border-radius: 18px;
+  padding: 18px 16px;
+  box-shadow: 0 5px 0 var(--card-lip), 0 12px 24px rgba(15, 23, 42, 0.12);
+  text-align: center;
+  position: relative;
+}
+
+.mm-root-icon {
+  font-size: 2.2rem;
+  line-height: 1.1;
+  margin-bottom: 6px;
+}
+
+.mm-root-badge {
+  display: inline-block;
+  font-size: 0.74rem;
+  font-weight: 800;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+  color: #ffffff;
+  background: var(--subject-primary);
+  padding: 3px 10px;
+  border-radius: 999px;
+  margin-bottom: 8px;
+}
+
+.mm-root-title {
+  font-size: 1.05rem;
+  font-weight: 800;
+  color: var(--text-primary);
+  line-height: 1.35;
+  margin-bottom: 6px;
+}
+
+.mm-root-desc {
+  font-size: 0.82rem;
+  color: var(--text-secondary);
+  line-height: 1.4;
+}
+
+.mm-branches-col {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.mm-branch-row {
+  display: flex;
+  align-items: center;
+  gap: 42px;
+}
+
+/* Bảng màu cho từng nhánh tư duy */
+.mm-branch-row[data-color="indigo"], .mm-radial-card[data-color="indigo"] {
+  --mm-color: #4f46e5;
+  --mm-soft: rgba(79, 70, 229, 0.1);
+  --mm-border: rgba(79, 70, 229, 0.42);
+}
+.mm-branch-row[data-color="sky"], .mm-radial-card[data-color="sky"] {
+  --mm-color: #0284c7;
+  --mm-soft: rgba(2, 132, 199, 0.1);
+  --mm-border: rgba(2, 132, 199, 0.42);
+}
+.mm-branch-row[data-color="teal"], .mm-radial-card[data-color="teal"] {
+  --mm-color: #0d9488;
+  --mm-soft: rgba(13, 148, 136, 0.1);
+  --mm-border: rgba(13, 148, 136, 0.42);
+}
+.mm-branch-row[data-color="amber"], .mm-radial-card[data-color="amber"] {
+  --mm-color: #d97706;
+  --mm-soft: rgba(217, 119, 6, 0.11);
+  --mm-border: rgba(217, 119, 6, 0.45);
+}
+.mm-branch-row[data-color="emerald"], .mm-radial-card[data-color="emerald"] {
+  --mm-color: #16a34a;
+  --mm-soft: rgba(22, 163, 74, 0.1);
+  --mm-border: rgba(22, 163, 74, 0.42);
+}
+
+.mm-branch-node {
+  flex: 0 0 220px;
+  width: 220px;
+  background: var(--bg-surface);
+  border: 2px solid var(--mm-border);
+  border-left: 6px solid var(--mm-color);
+  border-radius: 14px;
+  padding: 12px 14px;
+  box-shadow: 0 3px 0 var(--card-lip), 0 8px 16px rgba(15, 23, 42, 0.06);
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  transition: transform 0.15s ease, box-shadow 0.15s ease;
+}
+
+.mm-branch-node:hover {
+  transform: translateY(-1px);
+}
+
+.mm-branch-top {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 8px;
+}
+
+.mm-branch-label {
+  display: flex;
+  align-items: center;
+  gap: 7px;
+  font-size: 0.94rem;
+  font-weight: 800;
+  color: var(--text-primary);
+}
+
+.mm-branch-ico {
+  font-size: 1.15rem;
+}
+
+.mm-toggle-btn {
+  border: 1px solid var(--mm-border);
+  background: var(--mm-soft);
+  color: var(--mm-color);
+  font-size: 0.78rem;
+  font-weight: 800;
+  border-radius: 8px;
+  padding: 2px 8px;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.mm-toggle-btn:hover {
+  background: var(--mm-color);
+  color: #ffffff;
+}
+
+.mm-branch-actions {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  font-size: 0.76rem;
+  color: var(--text-muted);
+}
+
+.mm-jump-link {
+  border: none;
+  background: none;
+  color: var(--mm-color);
+  font-size: 0.76rem;
+  font-weight: 700;
+  cursor: pointer;
+  padding: 0;
+  text-decoration: none;
+}
+
+.mm-jump-link:hover {
+  text-decoration: underline;
+}
+
+.mm-children-col {
+  flex: 1 1 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  min-width: 320px;
+  max-width: 540px;
+}
+
+.mm-branch-row.is-collapsed .mm-children-col {
+  display: none;
+}
+
+.mm-leaf-card {
+  background: var(--bg-surface);
+  border: 1.5px solid var(--mm-border);
+  border-radius: 12px;
+  padding: 10px 13px;
+  font-size: 0.88rem;
+  line-height: 1.48;
+  color: var(--text-primary);
+  box-shadow: 0 2px 6px rgba(15, 23, 42, 0.04);
+  position: relative;
+}
+
+.mm-subbranch-title {
+  font-size: 0.88rem;
+  font-weight: 800;
+  color: var(--mm-color);
+  margin-bottom: 5px;
+  display: flex;
+  align-items: center;
+  gap: 6px;
+}
+
+.mm-subbranch-list {
+  margin: 0;
+  padding-left: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.mm-formula-pill {
+  display: flex;
+  flex-direction: column;
+  gap: 3px;
+}
+
+.mm-formula-name {
+  font-size: 0.8rem;
+  font-weight: 700;
+  color: var(--text-muted);
+}
+
+.mm-formula-eq {
+  font-size: 0.94rem;
+  color: var(--text-primary);
+  background: var(--mm-soft);
+  padding: 4px 9px;
+  border-radius: 8px;
+  display: inline-block;
+  align-self: flex-start;
+}
+
+/* Chế độ 2: Sơ đồ tỏa tâm (Radial / Hub Grid Layout) */
+.mindmap-stage[data-layout="radial"] .mindmap-svg-links {
+  display: none;
+}
+
+.mindmap-stage[data-layout="radial"] .mindmap-canvas {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 22px;
+}
+
+.mindmap-stage[data-layout="radial"] .mm-root-col {
+  flex: none;
+  justify-content: center;
+}
+
+.mindmap-stage[data-layout="radial"] .mm-root-card {
+  width: min(100%, 480px);
+}
+
+.mindmap-stage[data-layout="radial"] .mm-branches-col {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+  gap: 18px;
+  align-items: start;
+}
+
+.mindmap-stage[data-layout="radial"] .mm-branch-row {
+  flex-direction: column;
+  align-items: stretch;
+  gap: 10px;
+  background: var(--bg-surface);
+  border: 1.5px solid var(--mm-border);
+  border-top: 5px solid var(--mm-color);
+  border-radius: 16px;
+  padding: 14px;
+  box-shadow: 0 4px 0 var(--card-lip), 0 10px 20px rgba(15, 23, 42, 0.06);
+}
+
+.mindmap-stage[data-layout="radial"] .mm-branch-node {
+  flex: none;
+  width: 100%;
+  border: none;
+  box-shadow: none;
+  padding: 0 0 8px 0;
+  border-bottom: 1px dashed var(--card-border);
+  border-radius: 0;
+}
+
+.mindmap-stage[data-layout="radial"] .mm-children-col {
+  min-width: 0;
+  max-width: none;
+}
+
+/* Chế độ Toàn màn hình (Fullscreen Mindmap) */
+.mindmap-section.is-fullscreen {
+  position: fixed !important;
+  inset: 12px !important;
+  z-index: 9999 !important;
+  margin: 0 !important;
+  display: flex !important;
+  flex-direction: column !important;
+  background: var(--bg-surface) !important;
+  box-shadow: 0 25px 60px rgba(0, 0, 0, 0.45) !important;
+}
+
+.mindmap-section.is-fullscreen .mindmap-viewport {
+  flex: 1 1 auto;
+  height: calc(100vh - 160px);
+}
+
+@media (max-width: 860px) {
+  .mindmap-stage[data-layout="tree"] .mindmap-canvas {
+    gap: 28px;
+  }
+  .mm-branch-row {
+    gap: 24px;
+  }
+}
