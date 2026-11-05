@@ -1,215 +1,148 @@
 <!DOCTYPE html>
-
 <html lang="vi">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
-<title>Thử thách Hàm số</title>
-
-<style>
-    * {
-        box-sizing: border-box;
-    }
-
-    body {
-        margin: 0;
-        font-family: Arial, sans-serif;
-        background: #f4f7fb;
-        color: #1f2937;
-    }
-
-    .container {
-        max-width: 900px;
-        margin: 0 auto;
-        padding: 30px 20px;
-    }
-
-    .top {
-        display: flex;
-        justify-content: space-between;
-        align-items: center;
-        margin-bottom: 25px;
-    }
-
-    .back-btn {
-        border: none;
-        background: white;
-        padding: 10px 16px;
-        border-radius: 10px;
-        cursor: pointer;
-        box-shadow: 0 2px 8px rgba(0,0,0,.08);
-    }
-
-    .score {
-        font-weight: bold;
-        font-size: 18px;
-    }
-
-    .card {
-        background: white;
-        border-radius: 20px;
-        padding: 30px;
-        box-shadow: 0 5px 20px rgba(0,0,0,.08);
-        margin-bottom: 20px;
-    }
-
-    h1 {
-        margin-top: 0;
-    }
-
-    .function-box {
-        background: #f1f5f9;
-        border-radius: 15px;
-        padding: 25px;
-        text-align: center;
-        margin: 25px 0;
-    }
-
-    .function {
-        font-size: 32px;
-        font-weight: bold;
-    }
-
-    .target {
-        font-size: 22px;
-        margin-top: 15px;
-    }
-
-    .options {
-        display: grid;
-        grid-template-columns: repeat(5, 1fr);
-        gap: 12px;
-        margin-top: 20px;
-    }
-
-    .option {
-        padding: 16px;
-        border: 2px solid #dbe3ec;
-        background: white;
-        border-radius: 12px;
-        font-size: 18px;
-        cursor: pointer;
-    }
-
-    .option:hover {
-        border-color: #2563eb;
-    }
-
-    .option:disabled {
-        cursor: not-allowed;
-        opacity: .7;
-    }
-
-    .message {
-        min-height: 30px;
-        margin-top: 20px;
-        font-weight: bold;
-        text-align: center;
-    }
-
-    .progress {
-        margin-top: 20px;
-        color: #64748b;
-        text-align: center;
-    }
-
-    .finish {
-        display: none;
-        text-align: center;
-    }
-
-    .finish button {
-        border: none;
-        padding: 13px 25px;
-        border-radius: 12px;
-        background: #2563eb;
-        color: white;
-        cursor: pointer;
-        font-size: 16px;
-    }
-
-    @media (max-width: 650px) {
+    <title>Trạm Điều Hành Đạo Hàm – Toán 11 (CT GDPT 2018) — HỌC ĐỂ LÀM GÌ</title>
+    <style>
+        * { box-sizing: border-box; }
+        body {
+            margin: 0;
+            font-family: "Segoe UI", system-ui, -apple-system, sans-serif;
+            background: linear-gradient(155deg, #0f172a 0%, #1e293b 55%, #0f2942 100%);
+            color: #f8fafc;
+            min-height: 100vh;
+        }
+        .container { max-width: 920px; margin: 0 auto; padding: 24px 18px 40px; }
+        .top {
+            display: flex; justify-content: space-between; align-items: center;
+            margin-bottom: 18px; gap: 12px;
+        }
+        .back-btn {
+            border: 1px solid rgba(148, 163, 184, 0.4);
+            background: rgba(15, 23, 42, 0.8); color: #f8fafc;
+            padding: 9px 16px; border-radius: 12px; font-weight: 700; cursor: pointer;
+        }
+        .back-btn:hover { background: rgba(30, 41, 59, 0.95); }
+        .score-pill {
+            background: rgba(245, 158, 11, 0.18); border: 1.5px solid #fbbf24;
+            color: #fde68a; padding: 8px 16px; border-radius: 999px; font-weight: 800; font-size: 16px;
+        }
+        .card {
+            background: rgba(15, 23, 42, 0.88);
+            border: 1.5px solid rgba(148, 163, 184, 0.28);
+            border-radius: 20px; padding: 24px;
+            box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+            margin-bottom: 18px;
+        }
+        .badge-subj {
+            display: inline-block; font-size: 12px; font-weight: 800; letter-spacing: 0.08em;
+            color: #38bdf8; background: rgba(56, 189, 248, 0.14);
+            border: 1px solid rgba(56, 189, 248, 0.4);
+            padding: 4px 12px; border-radius: 999px; margin-bottom: 8px;
+        }
+        h1 { margin: 4px 0 10px; font-size: 25px; color: #fef08a; }
+        .intro-story {
+            background: rgba(30, 41, 59, 0.75); border-left: 4px solid #38bdf8;
+            border-radius: 12px; padding: 12px 16px; font-size: 14.5px; line-height: 1.55; color: #e2e8f0;
+            margin-bottom: 16px;
+        }
+        .stage-dialogue {
+            background: rgba(12, 26, 48, 0.92); border: 1.5px solid #f59e0b;
+            border-radius: 16px; padding: 15px 18px; margin-bottom: 16px; line-height: 1.58;
+        }
+        .stage-dialogue .speaker {
+            font-weight: 800; color: #fbbf24; font-size: 14px; margin-bottom: 6px;
+        }
+        .guide-row { margin-top: 8px; font-size: 14.5px; }
+        .guide-row b.lbl-p { color: #fcd34d; }
+        .guide-row b.lbl-f { color: #c084fc; }
+        .guide-row b.lbl-a { color: #4ade80; }
+        .function-box {
+            background: linear-gradient(180deg, rgba(30, 41, 59, 0.95), rgba(15, 23, 42, 0.95));
+            border: 1.5px solid rgba(96, 165, 250, 0.45);
+            border-radius: 16px; padding: 20px; text-align: center; margin: 16px 0;
+        }
+        .function { font-size: 27px; font-weight: 800; color: #38bdf8; }
+        .target { font-size: 19px; margin-top: 10px; color: #f1f5f9; }
         .options {
-            grid-template-columns: repeat(2, 1fr);
+            display: grid; grid-template-columns: repeat(5, 1fr); gap: 12px; margin-top: 18px;
         }
-
-        .function {
-            font-size: 25px;
+        .option {
+            padding: 15px 10px; border: 2px solid rgba(148, 163, 184, 0.35);
+            background: rgba(30, 41, 59, 0.9); color: #f8fafc;
+            border-radius: 14px; font-size: 17px; font-weight: 800; cursor: pointer;
+            transition: all 0.15s ease;
         }
-    }
-</style>
-
-
-<script src="/firebase-config.js"></script><script src="/auth.js"></script><script src="/games/hdlg-game.js"></script>
+        .option:hover:not(:disabled) {
+            border-color: #fbbf24; background: rgba(51, 65, 85, 0.95); transform: translateY(-2px);
+        }
+        .option:disabled { cursor: not-allowed; opacity: 0.7; }
+        .message { min-height: 36px; margin-top: 16px; font-weight: 700; text-align: center; font-size: 15.5px; line-height: 1.45; }
+        .progress { margin-top: 14px; color: #94a3b8; text-align: center; font-weight: 700; }
+        .finish { display: none; text-align: center; }
+        .finish button {
+            border: none; padding: 13px 26px; border-radius: 12px;
+            background: linear-gradient(180deg, #fbbf24, #d97706); color: #0f172a;
+            font-weight: 800; cursor: pointer; font-size: 16px; margin: 6px;
+        }
+        @media (max-width: 650px) {
+            .options { grid-template-columns: repeat(2, 1fr); }
+            .function { font-size: 21px; }
+        }
+    </style>
+    <script src="/firebase-config.js"></script>
+    <script src="/auth.js"></script>
+    <script src="/games/hdlg-game.js"></script>
 </head>
-
 <body>
-
 <div class="container">
-
-<div class="top">
-    <button class="back-btn" onclick="goBack()">
-        ← Quay lại
-    </button>
-
-    <div class="score">
-        Điểm: <span id="score">0</span>
+    <div class="top">
+        <button class="back-btn" onclick="goBack()">← Quay lại bài học</button>
+        <div class="score-pill">⭐ Điểm: <span id="score">0</span> / 100</div>
     </div>
-</div>
 
-<div class="card" id="gameCard">
+    <div class="card" id="gameCard">
+        <div class="badge-subj">TOÁN 11 · KẾT NỐI TRI THỨC · CHƯƠNG IX: ĐẠO HÀM</div>
+        <h1>🚀 Trạm Điều Hành Đạo Hàm Thực Tiễn</h1>
 
-    <h1>🎯 Thử thách Hàm số</h1>
-
-    <p>
-        Chọn giá trị <strong>x</strong> sao cho hàm số đạt đúng giá trị
-        <strong>y</strong> được yêu cầu.
-    </p>
-
-    <div class="function-box">
-
-        <div class="function" id="functionText">
-            y = 2x + 3
+        <div class="intro-story">
+            <div><b>📖 Cốt truyện bài học mới:</b> Bạn là kỹ sư điều hành tại Trung tâm Thử nghiệm Công nghệ Cao. Mọi tốc độ tức thời <b>v(t) = s'(t)</b>, gia tốc <b>a(t) = v'(t)</b>, hệ số góc tiếp tuyến <b>k = f'(x₀)</b> và công suất tức thời <b>P(t) = A'(t)</b> đều được quyết định bởi <b>Đạo hàm</b>.</div>
+            <div style="margin-top:6px"><b>📘 Công thức trọng tâm:</b> (xⁿ)' = n·xⁿ⁻¹ · (c)' = 0 · v(t) = s'(t) · a(t) = v'(t) · Hệ số góc tiếp tuyến k = f'(x₀).</div>
+            <div style="margin-top:4px;color:#86efac"><b>🎯 Chốt lại cách chơi:</b> Ở mỗi chặng (1→5), hãy đọc kỹ <b>📊 Thông số</b> và <b>📐 Công thức đạo hàm</b> trong hộp thoại nhiệm vụ, tính giá trị được yêu cầu rồi bấm chọn đáp án đúng bên dưới!</div>
         </div>
 
-        <div class="target">
-            Hãy tìm x khi <strong>y = <span id="targetY">7</span></strong>
+        <div class="stage-dialogue" id="stageDialogueBox">
+            <div class="speaker" id="dlgSpeaker">👨‍🔬 Kỹ sư trưởng Minh · Ca trực số 1</div>
+            <div id="dlgStory"></div>
+            <div class="guide-row"><b class="lbl-p">📊 Thông số để tính toán:</b> <span id="dlgParams"></span></div>
+            <div class="guide-row"><b class="lbl-f">📐 Công thức & cách tính:</b> <span id="dlgFormula"></span></div>
+            <div class="guide-row"><b class="lbl-a">🎯 Chốt lại nhiệm vụ (Cần làm gì):</b> <span id="dlgAction"></span></div>
         </div>
 
+        <div class="function-box">
+            <div class="function" id="functionText">s(t) = 3t² + 4t + 1 (m)</div>
+            <div class="target" id="targetBox">Hãy tìm <strong id="targetY">vận tốc tức thời v(2) = s'(2)</strong></div>
+        </div>
+
+        <div class="options" id="options"></div>
+        <div class="message" id="message"></div>
+        <div class="progress">Chặng <span id="questionNumber">1</span> / 5</div>
     </div>
 
-    <div class="options" id="options"></div>
-
-    <div class="message" id="message"></div>
-
-    <div class="progress">
-        Câu <span id="questionNumber">1</span>/5
+    <div class="card finish" id="finishCard">
+        <h2>🎉 Hoàn thành Ca Trực Đạo Hàm!</h2>
+        <p style="font-size:18px">Tổng điểm của bạn: <strong id="finalScore" style="color:#fde68a">0</strong> / 100</p>
+        <p id="finishMessage" style="line-height:1.6;max-width:640px;margin:12px auto"></p>
+        <div style="background:rgba(30,41,59,.8);border-radius:14px;padding:14px;margin:16px auto;max-width:660px;text-align:left;font-size:14px;line-height:1.6">
+            <b style="color:#fbbf24">🎓 HỌC ĐỂ LÀM GÌ? (Chương IX. Đạo hàm – Toán 11):</b><br>
+            • <b>Ý nghĩa vật lý:</b> Đạo hàm của quãng đường theo thời gian là vận tốc tức thời <b>v(t) = s'(t)</b>; đạo hàm của điện lượng là cường độ dòng điện <b>i(t) = q'(t)</b>.<br>
+            • <b>Ý nghĩa hình học:</b> Đạo hàm <b>f'(x₀)</b> chính là hệ số góc tiếp tuyến của đồ thị tại điểm M(x₀; f(x₀)), ứng dụng trong thiết kế đường dốc, cầu vượt và quỹ đạo.
+        </div>
+        <button onclick="location.reload()">🔄 Chơi lại</button>
+        <button onclick="goBack()">📘 Về bài học</button>
     </div>
-
 </div>
-
-<div class="card finish" id="finishCard">
-
-    <h2>🎉 Hoàn thành!</h2>
-
-    <p>
-        Điểm của bạn:
-        <strong id="finalScore">0</strong>
-    </p>
-
-    <p id="finishMessage"></p>
-
-    <button onclick="location.reload()">
-        Chơi lại
-    </button>
-
-</div>
-
-
-</div>
-
 <script src="function-challenge.js"></script>
-
 </body>
 </html>

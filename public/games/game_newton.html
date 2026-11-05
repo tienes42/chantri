@@ -148,9 +148,9 @@ body { background: radial-gradient(120% 90% at 50% 0%, #5b2a2a 0%, #24110f 55%, 
     <!-- MODAL MỞ ĐẦU -->
     <div id="introModal" class="absolute inset-0 z-40 flex items-center justify-center bg-black/70 p-4 fade-in">
         <div class="dialogue-box rounded-3xl max-w-2xl w-full p-5 md:p-7 pop-in scroll-y">
-            <div class="text-[11px] tracking-[0.25em] text-amber-300 font-extrabold">HỌC ĐỂ LÀM GÌ? · <span id="introSubject">VẬT LÝ 8</span></div>
+            <div class="text-[11px] tracking-[0.25em] text-amber-300 font-extrabold">HỌC ĐỂ LÀM GÌ? · <span id="introSubject">VẬT LÝ 10 · KẾT NỐI TRI THỨC</span></div>
             <h1 class="text-2xl md:text-3xl font-black mt-1 leading-tight">🚀 Trạm Hỏa Tinh: Vận Chuyển Tiếp Tế</h1>
-            <div id="introLessonTitle" class="text-amber-200 font-bold text-sm mt-1">Bài: Ba định luật Newton</div>
+            <div id="introLessonTitle" class="text-amber-200 font-bold text-sm mt-1">Bài: Chương III. Động lực học: Tổng hợp lực, Ba định luật Newton, Các lực cơ học và Moment lực</div>
             <div class="flex gap-3 mt-3 items-start">
                 <div class="text-center flex-shrink-0"><img id="introPortraitA" alt="" class="w-16 h-16 md:w-20 md:h-20 rounded-2xl border-2 border-amber-400 portrait-breathe mx-auto"><div id="introNameA" class="text-[10px] font-bold mt-1 text-amber-200 w-20 leading-tight"></div></div>
                 <div class="text-center flex-shrink-0"><img id="introPortraitB" alt="" class="w-16 h-16 md:w-20 md:h-20 rounded-2xl border-2 border-sky-400 portrait-breathe mx-auto"><div id="introNameB" class="text-[10px] font-bold mt-1 text-sky-200 w-20 leading-tight"></div></div>
@@ -230,10 +230,10 @@ body { background: radial-gradient(120% 90% at 50% 0%, #5b2a2a 0%, #24110f 55%, 
    TRẠM HỎA TINH — Game "Ba định luật Newton" (Vật lý 10)
    Phong cách: tranh minh họa nhìn ngang · sa mạc Sao Hỏa · HUD kính mũ phi hành gia
    ========================================================= */
-const LESSON_ID = 69;
+const LESSON_ID = Number(new URLSearchParams(location.search).get("lesson_id")) || 69;
 const GAME_KEY = "dinh-luat-newton";
 const GAME_FONT = "'Exo 2'";
-const FALLBACK_LESSON = {"id":69,"subject_id":2,"grade":10,"topic":"dinh-luat-newton","title":"Ba định luật Newton","icon":"⚛️","description":"Ba định luật Newton – Vật lý lớp 10","definition":"Ba định luật Newton mô tả mối quan hệ giữa lực và chuyển động của vật.","concept":"Định luật II là nền tảng tính gia tốc từ hợp lực; định luật III mô tả cặp lực tương tác.","formulas":["ΣF = ma","F_AB = -F_BA"],"meaning":"Ứng dụng trong giao thông, cơ khí, robot và thiết kế máy.","real_life":"Điều khiển robot kéo hàng trên mặt phẳng với các lực cản khác nhau.","context_title":null,"context":null,"theory":null,"formula":null,"example":null,"example_answer":null,"question":null,"answers":null,"correct":null,"application":null,"challenge":null,"challenge_answer":null,"game_title":"Thử thách thực tế: Ba định luật Newton","game_description":"Thay đổi lực → quan sát gia tốc → tối ưu lực kéo.","game_type":"simulation"};
+const FALLBACK_LESSON = {"id": 69, "subject_id": 2, "subject": "physics", "subject_label": "VẬT LÝ 10 · KẾT NỐI TRI THỨC", "grade": 10, "topic": "dinh-luat-newton", "title": "Chương III. Động lực học: Tổng hợp lực, Ba định luật Newton, Các lực cơ học và Moment lực", "icon": "🍎", "description": "Khảo sát mối liên hệ giữa lực và chuyển động thông qua ba định luật Newton, trọng lực, lực căng, lực ma sát, lực cản, lực nâng và cân bằng của vật rắn.", "definition": "\n**Động lực học** nghiên cứu nguyên nhân gây ra sự thay đổi trạng thái chuyển động của các vật dưới tác dụng của **lực**. Nền tảng của Động lực học cổ điển là **Ba định luật Newton** (về quán tính, mối liên hệ giữa gia tốc $\\overrightarrow{a} = \\dfrac{\\overrightarrow{F}_{\\text{hl}}}{m}$ và tương tác hai chiều $\\overrightarrow{F}_{AB} = -\\overrightarrow{F}_{BA}$) cùng với **Quy tắc moment lực** ($M = F \\cdot d$) quy định điều kiện cân bằng quay của vật rắn.\n", "concept": "", "formulas": ["Độ lớn hợp lực của hai lực đồng quy: $F = \\sqrt{F_1^2 + F_2^2 + 2F_1 F_2 \\cos\\alpha}$", "Định luật 2 Newton: $\\overrightarrow{a} = \\dfrac{\\overrightarrow{F}_{\\text{hl}}}{m} \\iff \\overrightarrow{F}_{\\text{hl}} = m\\overrightarrow{a}$", "Định luật 3 Newton: $\\overrightarrow{F}_{AB} = -\\overrightarrow{F}_{BA} \\implies F_{AB} = F_{BA}$", "Trọng lực và trọng lượng: $\\overrightarrow{P} = m\\overrightarrow{g} \\implies P = mg$", "Lực ma sát trượt: $F_{\\text{mst}} = \\mu N$", "Áp lực và gia tốc trên mặt phẳng nghiêng góc $\\alpha$: $N = mg\\cos\\alpha \\quad ; \\quad a = g(\\sin\\alpha - \\mu\\cos\\alpha)$", "Lực đẩy Archimedes: $F_A = \\rho g V$", "Moment lực đối với trục quay: $M = F \\cdot d$"], "meaning": "", "real_life": "\nDây đai an toàn và túi khí trên ô tô được thiết kế trực tiếp dựa trên **Định luật 1 Newton** để giữ hành khách không lao về phía trước theo quán tính khi xe phanh gấp hoặc va chạm. Trong khi đó, động cơ tên lửa đẩy tàu vũ trụ rời bệ phóng trong chân không hoạt động dựa trên **Định luật 3 Newton** (phụt luồng khí nóng cực mạnh về phía sau để nhận phản lực đẩy về phía trước), còn cờ lê, tay nắm cửa, cần cẩu tháp đều tối ưu hóa cánh tay đòn $d$ để tạo **moment lực** $M = F \\cdot d$ lớn nhất với lực tác dụng nhỏ nhất.\n", "game_title": "Đấu Trường Động Lực Học Newton & Cân Bằng Đòn Bẩy", "game_description": "Thử nghiệm tổng hợp lực, điều chỉnh lực kéo có ma sát trên mặt phẳng nghiêng và cân bằng hệ thống đòn bẩy bằng moment lực.", "game_type": "game_newton"};
 
 const IMG_SRC = {
   mentorM: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzQwIiB2aWV3Qm94PSIwIDAgMzAwIDM0MCI+PGRlZnM+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJoZyIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzZiNGEzMyIvPjxzdG9wIG9mZnNldD0iLjM1IiBzdG9wLWNvbG9yPSIjMWMxNDBlIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMGIwNjA1Ii8+PC9saW5lYXJHcmFkaWVudD4KICA8bGluZWFyR3JhZGllbnQgaWQ9InNrIiB4MT0iMCIgeTE9IjAiIHgyPSIwIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjZmZlMmNjIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjZjRiOTljIi8+PC9saW5lYXJHcmFkaWVudD4KICA8bGluZWFyR3JhZGllbnQgaWQ9InRwIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjZjFmNWY5Ii8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjOTRhM2I4Ii8+PC9saW5lYXJHcmFkaWVudD4KICA8cmFkaWFsR3JhZGllbnQgaWQ9ImlyIiBjeD0iLjUiIGN5PSIuNzUiIHI9Ii43Ij48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNlMGEwNjAiLz48c3RvcCBvZmZzZXQ9Ii41NSIgc3RvcC1jb2xvcj0iIzZiM2YxZiIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzE0MGEwNSIvPjwvcmFkaWFsR3JhZGllbnQ+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJzaGluZSIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjAiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2ZmZiIgc3RvcC1vcGFjaXR5PSIwIi8+PHN0b3Agb2Zmc2V0PSIuNSIgc3RvcC1jb2xvcj0iI2ZmZiIgc3RvcC1vcGFjaXR5PSIuNTUiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNmZmYiIHN0b3Atb3BhY2l0eT0iMCIvPjwvbGluZWFyR3JhZGllbnQ+CiAgPHJhZGlhbEdyYWRpZW50IGlkPSJyaW0iIGN4PSIuMiIgY3k9Ii4yIiByPSIxIj48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNmZmQ1OWEiIHN0b3Atb3BhY2l0eT0iLjU1Ii8+PHN0b3Agb2Zmc2V0PSIuNSIgc3RvcC1jb2xvcj0iI2ZmZDU5YSIgc3RvcC1vcGFjaXR5PSIwIi8+PC9yYWRpYWxHcmFkaWVudD4KICA8L2RlZnM+PHBhdGggZD0iTTQwIDM0MCBRNDIgMjYyIDEwNCAyNDYgTDE5NiAyNDYgUTI1OCAyNjIgMjYwIDM0MCBaIiBmaWxsPSJ1cmwoI3RwKSIvPgogIDxwYXRoIGQ9Ik0xNTAgMjQ2IEwxOTYgMjQ2IFEyNTggMjYyIDI2MCAzNDAgTDE3NiAzNDAgWiIgZmlsbD0iIzk0YTNiOCIgb3BhY2l0eT0iLjU1Ii8+PHBhdGggZD0iTTQwIDM0MCBRNDIgMjYyIDEwNCAyNDYgTDE5NiAyNDYgUTI1OCAyNjIgMjYwIDM0MCBaIiBmaWxsPSIjZTVlN2ViIi8+PHBhdGggZD0iTTE1MCAyNDYgTDE5NiAyNDYgUTI1OCAyNjIgMjYwIDM0MCBMMTc2IDM0MCBaIiBmaWxsPSIjY2JkNWUxIiBvcGFjaXR5PSIuOCIvPgogICAgPHBhdGggZD0iTTYwIDMzMCBRNjYgMjkwIDkyIDI3MCBNMjQwIDMzMCBRMjM0IDI5MCAyMDggMjcwIiBzdHJva2U9IiM5NGEzYjgiIHN0cm9rZS13aWR0aD0iNCIgZmlsbD0ibm9uZSIvPgogICAgPHJlY3QgeD0iMTE4IiB5PSIyODYiIHdpZHRoPSI2NCIgaGVpZ2h0PSI0MiIgcng9IjciIGZpbGw9IiMzMzQxNTUiIHN0cm9rZT0iIzk0YTNiOCIgc3Ryb2tlLXdpZHRoPSIyLjUiLz48Y2lyY2xlIGN4PSIxMzIiIGN5PSIzMDAiIHI9IjUiIGZpbGw9IiMyMmM1NWUiLz48Y2lyY2xlIGN4PSIxNDgiIGN5PSIzMDAiIHI9IjUiIGZpbGw9IiNmNTllMGIiLz48Y2lyY2xlIGN4PSIxNjQiIGN5PSIzMDAiIHI9IjUiIGZpbGw9IiNlYTU4MGMiLz48cmVjdCB4PSIxMjgiIHk9IjMxMiIgd2lkdGg9IjQ0IiBoZWlnaHQ9IjgiIHJ4PSIzIiBmaWxsPSIjMzhiZGY4IiBvcGFjaXR5PSIuODUiLz4KICAgIDxjaXJjbGUgY3g9Ijg2IiBjeT0iMjkyIiByPSIxMyIgZmlsbD0iIzFkNGVkOCIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjIuNSIvPjxwYXRoIGQ9Ik03OCAyOTYgTDg2IDI4MiBMOTQgMjk2IFoiIGZpbGw9IiNmZmYiLz4KICAgIDxyZWN0IHg9IjIwMCIgeT0iMjgyIiB3aWR0aD0iMzQiIGhlaWdodD0iMTIiIHJ4PSIzIiBmaWxsPSIjZWE1ODBjIi8+PHBhdGggZD0iTTEzMCAyMDYgTDE3MCAyMDYgTDE3MiAyNTIgUTE1MCAyNjIgMTI4IDI1MiBaIiBmaWxsPSJ1cmwoI3NrKSIvPjxwYXRoIGQ9Ik0xMzAgMjIyIFExNTAgMjM2IDE3MCAyMjIgTDE3MCAyMDYgTDEzMCAyMDZaIiBmaWxsPSIjZjRiOTljIiBvcGFjaXR5PSIuOCIvPjxwYXRoIGQ9Ik05NiAyNDYgUTE1MCAyNzYgMjA0IDI0NiBMMjEwIDI2MiBRMTUwIDI5NiA5MCAyNjIgWiIgZmlsbD0iIzk0YTNiOCIgc3Ryb2tlPSIjNjQ3NDhiIiBzdHJva2Utd2lkdGg9IjIiLz48cGF0aCBkPSJNMTAwIDI1MCBRMTUwIDI3OCAyMDAgMjUwIiBzdHJva2U9IiNlMmU4ZjAiIHN0cm9rZS13aWR0aD0iMyIgZmlsbD0ibm9uZSIvPjxlbGxpcHNlIGN4PSI4OCIgY3k9IjE1MCIgcng9IjExIiByeT0iMTYiIGZpbGw9IiNmZmUyY2MiLz48ZWxsaXBzZSBjeD0iMjEyIiBjeT0iMTUwIiByeD0iMTEiIHJ5PSIxNiIgZmlsbD0iI2ZmZTJjYyIvPgogIDxwYXRoIGQ9Ik04NiAxNDQgUTkyIDE1MCA4OCAxNTgiIHN0cm9rZT0iI2Y0Yjk5YyIgc3Ryb2tlLXdpZHRoPSIzIiBmaWxsPSJub25lIi8+PHBhdGggZD0iTTIxNCAxNDQgUTIwOCAxNTAgMjEyIDE1OCIgc3Ryb2tlPSIjZjRiOTljIiBzdHJva2Utd2lkdGg9IjMiIGZpbGw9Im5vbmUiLz48cGF0aCBkPSJNOTIgMTIwIFE5MiA3MCAxNTAgNjYgUTIwOCA3MCAyMDggMTIwIFEyMDggMTc2IDE3NiAyMDQgUTE2MCAyMTYgMTUwIDIxNiBRMTQwIDIxNiAxMjQgMjA0IFE5MiAxNzYgOTIgMTIwIFoiIGZpbGw9InVybCgjc2spIi8+CiAgPHBhdGggZD0iTTkyIDEyMCBROTIgNzAgMTUwIDY2IFEyMDggNzAgMjA4IDEyMCBRMjA4IDE3NiAxNzYgMjA0IFExNjAgMjE2IDE1MCAyMTYgUTE0MCAyMTYgMTI0IDIwNCBROTIgMTc2IDkyIDEyMCBaIiBmaWxsPSJ1cmwoI3JpbSkiLz48ZWxsaXBzZSBjeD0iMTE0IiBjeT0iMTcwIiByeD0iMTQiIHJ5PSI3IiBmaWxsPSIjZmY4ZmEzIiBvcGFjaXR5PSIuNDIiLz48ZWxsaXBzZSBjeD0iMTg2IiBjeT0iMTcwIiByeD0iMTQiIHJ5PSI3IiBmaWxsPSIjZmY4ZmEzIiBvcGFjaXR5PSIuNDIiLz4KICA8cGF0aCBkPSJNMTA4IDE2OCBsNCAtNCBNMTE0IDE2OCBsNCAtNCBNMTgwIDE2OCBsNCAtNCBNMTg2IDE2OCBsNCAtNCIgc3Ryb2tlPSIjZmY2YjhhIiBzdHJva2Utd2lkdGg9IjEuNiIgb3BhY2l0eT0iLjYiLz48cGF0aCBkPSJNMTA1IDE0MCBRMTIyIDEyOCAxMzkgMTQwIEwxMzggMTU4IFExMjIgMTcwIDEwNiAxNTggWiIgZmlsbD0iI2ZmZiIvPgogICAgICA8ZWxsaXBzZSBjeD0iMTIxIiBjeT0iMTUxIiByeD0iMTEiIHJ5PSIxNC41IiBmaWxsPSJ1cmwoI2lyKSIvPgogICAgICA8ZWxsaXBzZSBjeD0iMTIxIiBjeT0iMTUyIiByeD0iNS4yIiByeT0iNy41IiBmaWxsPSIjMTIwODA0Ii8+CiAgICAgIDxlbGxpcHNlIGN4PSIxMTgiIGN5PSIxNDQiIHJ4PSI0LjYiIHJ5PSI1LjYiIGZpbGw9IiNmZmYiLz48Y2lyY2xlIGN4PSIxMjciIGN5PSIxNTgiIHI9IjIuMyIgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iLjkiLz4KICAgICAgPHBhdGggZD0iTTExMyAxNjAgUTEyMiAxNjUgMTMxIDE2MCIgc3Ryb2tlPSIjZTBhMDYwIiBzdHJva2Utd2lkdGg9IjIiIGZpbGw9Im5vbmUiIG9wYWNpdHk9Ii43Ii8+CiAgICAgIDxwYXRoIGQ9Ik0xMDMgMTQxIFExMjIgMTI0IDE0MSAxNDAiIHN0cm9rZT0iIzFkMGUwNiIgc3Ryb2tlLXdpZHRoPSI1LjUiIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogICAgICA8cGF0aCBkPSJNMTA0IDE0MCBsLTcgLTUiIHN0cm9rZT0iIzFkMGUwNiIgc3Ryb2tlLXdpZHRoPSIzLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjxwYXRoIGQ9Ik0xNjEgMTQwIFExNzggMTI4IDE5NSAxNDAgTDE5NCAxNTggUTE3OCAxNzAgMTYyIDE1OCBaIiBmaWxsPSIjZmZmIi8+CiAgICAgIDxlbGxpcHNlIGN4PSIxNzkiIGN5PSIxNTEiIHJ4PSIxMSIgcnk9IjE0LjUiIGZpbGw9InVybCgjaXIpIi8+CiAgICAgIDxlbGxpcHNlIGN4PSIxNzkiIGN5PSIxNTIiIHJ4PSI1LjIiIHJ5PSI3LjUiIGZpbGw9IiMxMjA4MDQiLz4KICAgICAgPGVsbGlwc2UgY3g9IjE3NCIgY3k9IjE0NCIgcng9IjQuNiIgcnk9IjUuNiIgZmlsbD0iI2ZmZiIvPjxjaXJjbGUgY3g9IjE4MyIgY3k9IjE1OCIgcj0iMi4zIiBmaWxsPSIjZmZmIiBvcGFjaXR5PSIuOSIvPgogICAgICA8cGF0aCBkPSJNMTY5IDE2MCBRMTc4IDE2NSAxODcgMTYwIiBzdHJva2U9IiNlMGEwNjAiIHN0cm9rZS13aWR0aD0iMiIgZmlsbD0ibm9uZSIgb3BhY2l0eT0iLjciLz4KICAgICAgPHBhdGggZD0iTTE1OSAxNDEgUTE3OCAxMjQgMTk3IDE0MCIgc3Ryb2tlPSIjMWQwZTA2IiBzdHJva2Utd2lkdGg9IjUuNSIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgICAgIDxwYXRoIGQ9Ik0xOTYgMTQwIGw3IC01IiBzdHJva2U9IiMxZDBlMDYiIHN0cm9rZS13aWR0aD0iMy41IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48cGF0aCBkPSJNMTA0IDEyMCBRMTE4IDExMiAxMzQgMTE4IiBzdHJva2U9IiMxYzE0MGUiIHN0cm9rZS13aWR0aD0iNC41IiBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KICA8cGF0aCBkPSJNMTY2IDExOCBRMTgyIDExMiAxOTYgMTIwIiBzdHJva2U9IiMxYzE0MGUiIHN0cm9rZS13aWR0aD0iNC41IiBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KICA8cGF0aCBkPSJNMTUwIDE2NiBRMTUzIDE3MiAxNDggMTc1IiBzdHJva2U9IiNmNGI5OWMiIHN0cm9rZS13aWR0aD0iMi42IiBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KICA8cGF0aCBkPSJNMTM2IDE4NiBRMTUwIDIwMCAxNjQgMTg2IFExNTAgMTkxIDEzNiAxODYgWiIgZmlsbD0iI2MyNDE0YiIgc3Ryb2tlPSIjN2YxZDJhIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KICA8cGF0aCBkPSJNMTQyIDE5MCBRMTUwIDE5NSAxNTggMTkwIiBzdHJva2U9IiNmZjlhYTgiIHN0cm9rZS13aWR0aD0iMiIgZmlsbD0ibm9uZSIvPjxwYXRoIGQ9Ik04NCAxMjggUTcwIDUyIDE1MCA0NiBRMjMwIDUwIDIxNiAxMjggUTIxMCAxMDAgMTk4IDkwIEwxOTIgMTA4IEwxODAgODQgTDE2OCAxMDQgTDE1NiA4MCBMMTQyIDEwMiBMMTI4IDgyIEwxMTYgMTA2IEwxMDQgOTAgUTkyIDEwMCA4NCAxMjggWiIgZmlsbD0idXJsKCNoZykiLz4KICAgICAgPHBhdGggZD0iTTEwNCA3NCBRMTQwIDU4IDE4MCA2NCIgc3Ryb2tlPSJ1cmwoI3NoaW5lKSIgc3Ryb2tlLXdpZHRoPSI3IiBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48L3N2Zz4=",  mentorM_c: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzQwIiB2aWV3Qm94PSIwIDAgMzAwIDM0MCI+PGRlZnM+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJoZyIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzZiNGEzMyIvPjxzdG9wIG9mZnNldD0iLjM1IiBzdG9wLWNvbG9yPSIjMWMxNDBlIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMGIwNjA1Ii8+PC9saW5lYXJHcmFkaWVudD4KICA8bGluZWFyR3JhZGllbnQgaWQ9InNrIiB4MT0iMCIgeTE9IjAiIHgyPSIwIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjZmZlMmNjIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjZjRiOTljIi8+PC9saW5lYXJHcmFkaWVudD4KICA8bGluZWFyR3JhZGllbnQgaWQ9InRwIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjZjFmNWY5Ii8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjOTRhM2I4Ii8+PC9saW5lYXJHcmFkaWVudD4KICA8cmFkaWFsR3JhZGllbnQgaWQ9ImlyIiBjeD0iLjUiIGN5PSIuNzUiIHI9Ii43Ij48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNlMGEwNjAiLz48c3RvcCBvZmZzZXQ9Ii41NSIgc3RvcC1jb2xvcj0iIzZiM2YxZiIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzE0MGEwNSIvPjwvcmFkaWFsR3JhZGllbnQ+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJzaGluZSIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjAiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2ZmZiIgc3RvcC1vcGFjaXR5PSIwIi8+PHN0b3Agb2Zmc2V0PSIuNSIgc3RvcC1jb2xvcj0iI2ZmZiIgc3RvcC1vcGFjaXR5PSIuNTUiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNmZmYiIHN0b3Atb3BhY2l0eT0iMCIvPjwvbGluZWFyR3JhZGllbnQ+CiAgPHJhZGlhbEdyYWRpZW50IGlkPSJyaW0iIGN4PSIuMiIgY3k9Ii4yIiByPSIxIj48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNmZmQ1OWEiIHN0b3Atb3BhY2l0eT0iLjU1Ii8+PHN0b3Agb2Zmc2V0PSIuNSIgc3RvcC1jb2xvcj0iI2ZmZDU5YSIgc3RvcC1vcGFjaXR5PSIwIi8+PC9yYWRpYWxHcmFkaWVudD4KICA8L2RlZnM+PHBhdGggZD0iTTQwIDM0MCBRNDIgMjYyIDEwNCAyNDYgTDE5NiAyNDYgUTI1OCAyNjIgMjYwIDM0MCBaIiBmaWxsPSJ1cmwoI3RwKSIvPgogIDxwYXRoIGQ9Ik0xNTAgMjQ2IEwxOTYgMjQ2IFEyNTggMjYyIDI2MCAzNDAgTDE3NiAzNDAgWiIgZmlsbD0iIzk0YTNiOCIgb3BhY2l0eT0iLjU1Ii8+PHBhdGggZD0iTTQwIDM0MCBRNDIgMjYyIDEwNCAyNDYgTDE5NiAyNDYgUTI1OCAyNjIgMjYwIDM0MCBaIiBmaWxsPSIjZTVlN2ViIi8+PHBhdGggZD0iTTE1MCAyNDYgTDE5NiAyNDYgUTI1OCAyNjIgMjYwIDM0MCBMMTc2IDM0MCBaIiBmaWxsPSIjY2JkNWUxIiBvcGFjaXR5PSIuOCIvPgogICAgPHBhdGggZD0iTTYwIDMzMCBRNjYgMjkwIDkyIDI3MCBNMjQwIDMzMCBRMjM0IDI5MCAyMDggMjcwIiBzdHJva2U9IiM5NGEzYjgiIHN0cm9rZS13aWR0aD0iNCIgZmlsbD0ibm9uZSIvPgogICAgPHJlY3QgeD0iMTE4IiB5PSIyODYiIHdpZHRoPSI2NCIgaGVpZ2h0PSI0MiIgcng9IjciIGZpbGw9IiMzMzQxNTUiIHN0cm9rZT0iIzk0YTNiOCIgc3Ryb2tlLXdpZHRoPSIyLjUiLz48Y2lyY2xlIGN4PSIxMzIiIGN5PSIzMDAiIHI9IjUiIGZpbGw9IiMyMmM1NWUiLz48Y2lyY2xlIGN4PSIxNDgiIGN5PSIzMDAiIHI9IjUiIGZpbGw9IiNmNTllMGIiLz48Y2lyY2xlIGN4PSIxNjQiIGN5PSIzMDAiIHI9IjUiIGZpbGw9IiNlYTU4MGMiLz48cmVjdCB4PSIxMjgiIHk9IjMxMiIgd2lkdGg9IjQ0IiBoZWlnaHQ9IjgiIHJ4PSIzIiBmaWxsPSIjMzhiZGY4IiBvcGFjaXR5PSIuODUiLz4KICAgIDxjaXJjbGUgY3g9Ijg2IiBjeT0iMjkyIiByPSIxMyIgZmlsbD0iIzFkNGVkOCIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjIuNSIvPjxwYXRoIGQ9Ik03OCAyOTYgTDg2IDI4MiBMOTQgMjk2IFoiIGZpbGw9IiNmZmYiLz4KICAgIDxyZWN0IHg9IjIwMCIgeT0iMjgyIiB3aWR0aD0iMzQiIGhlaWdodD0iMTIiIHJ4PSIzIiBmaWxsPSIjZWE1ODBjIi8+PHBhdGggZD0iTTEzMCAyMDYgTDE3MCAyMDYgTDE3MiAyNTIgUTE1MCAyNjIgMTI4IDI1MiBaIiBmaWxsPSJ1cmwoI3NrKSIvPjxwYXRoIGQ9Ik0xMzAgMjIyIFExNTAgMjM2IDE3MCAyMjIgTDE3MCAyMDYgTDEzMCAyMDZaIiBmaWxsPSIjZjRiOTljIiBvcGFjaXR5PSIuOCIvPjxwYXRoIGQ9Ik05NiAyNDYgUTE1MCAyNzYgMjA0IDI0NiBMMjEwIDI2MiBRMTUwIDI5NiA5MCAyNjIgWiIgZmlsbD0iIzk0YTNiOCIgc3Ryb2tlPSIjNjQ3NDhiIiBzdHJva2Utd2lkdGg9IjIiLz48cGF0aCBkPSJNMTAwIDI1MCBRMTUwIDI3OCAyMDAgMjUwIiBzdHJva2U9IiNlMmU4ZjAiIHN0cm9rZS13aWR0aD0iMyIgZmlsbD0ibm9uZSIvPjxlbGxpcHNlIGN4PSI4OCIgY3k9IjE1MCIgcng9IjExIiByeT0iMTYiIGZpbGw9IiNmZmUyY2MiLz48ZWxsaXBzZSBjeD0iMjEyIiBjeT0iMTUwIiByeD0iMTEiIHJ5PSIxNiIgZmlsbD0iI2ZmZTJjYyIvPgogIDxwYXRoIGQ9Ik04NiAxNDQgUTkyIDE1MCA4OCAxNTgiIHN0cm9rZT0iI2Y0Yjk5YyIgc3Ryb2tlLXdpZHRoPSIzIiBmaWxsPSJub25lIi8+PHBhdGggZD0iTTIxNCAxNDQgUTIwOCAxNTAgMjEyIDE1OCIgc3Ryb2tlPSIjZjRiOTljIiBzdHJva2Utd2lkdGg9IjMiIGZpbGw9Im5vbmUiLz48cGF0aCBkPSJNOTIgMTIwIFE5MiA3MCAxNTAgNjYgUTIwOCA3MCAyMDggMTIwIFEyMDggMTc2IDE3NiAyMDQgUTE2MCAyMTYgMTUwIDIxNiBRMTQwIDIxNiAxMjQgMjA0IFE5MiAxNzYgOTIgMTIwIFoiIGZpbGw9InVybCgjc2spIi8+CiAgPHBhdGggZD0iTTkyIDEyMCBROTIgNzAgMTUwIDY2IFEyMDggNzAgMjA4IDEyMCBRMjA4IDE3NiAxNzYgMjA0IFExNjAgMjE2IDE1MCAyMTYgUTE0MCAyMTYgMTI0IDIwNCBROTIgMTc2IDkyIDEyMCBaIiBmaWxsPSJ1cmwoI3JpbSkiLz48ZWxsaXBzZSBjeD0iMTE0IiBjeT0iMTcwIiByeD0iMTQiIHJ5PSI3IiBmaWxsPSIjZmY4ZmEzIiBvcGFjaXR5PSIuNDIiLz48ZWxsaXBzZSBjeD0iMTg2IiBjeT0iMTcwIiByeD0iMTQiIHJ5PSI3IiBmaWxsPSIjZmY4ZmEzIiBvcGFjaXR5PSIuNDIiLz4KICA8cGF0aCBkPSJNMTA4IDE2OCBsNCAtNCBNMTE0IDE2OCBsNCAtNCBNMTgwIDE2OCBsNCAtNCBNMTg2IDE2OCBsNCAtNCIgc3Ryb2tlPSIjZmY2YjhhIiBzdHJva2Utd2lkdGg9IjEuNiIgb3BhY2l0eT0iLjYiLz48cGF0aCBkPSJNMTA1IDE0NiBRMTIyIDE1OCAxMzkgMTQ2IiBzdHJva2U9IiMyYTE1MDgiIHN0cm9rZS13aWR0aD0iNC41IiBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KICAgICAgPHBhdGggZD0iTTEwNSAxNDYgbC02IC0zIiBzdHJva2U9IiMyYTE1MDgiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PHBhdGggZD0iTTE2MSAxNDYgUTE3OCAxNTggMTk1IDE0NiIgc3Ryb2tlPSIjMmExNTA4IiBzdHJva2Utd2lkdGg9IjQuNSIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgICAgIDxwYXRoIGQ9Ik0xOTUgMTQ2IGw2IC0zIiBzdHJva2U9IiMyYTE1MDgiIHN0cm9rZS13aWR0aD0iMyIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PHBhdGggZD0iTTEwNCAxMjAgUTExOCAxMTIgMTM0IDExOCIgc3Ryb2tlPSIjMWMxNDBlIiBzdHJva2Utd2lkdGg9IjQuNSIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgPHBhdGggZD0iTTE2NiAxMTggUTE4MiAxMTIgMTk2IDEyMCIgc3Ryb2tlPSIjMWMxNDBlIiBzdHJva2Utd2lkdGg9IjQuNSIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgPHBhdGggZD0iTTE1MCAxNjYgUTE1MyAxNzIgMTQ4IDE3NSIgc3Ryb2tlPSIjZjRiOTljIiBzdHJva2Utd2lkdGg9IjIuNiIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgPHBhdGggZD0iTTEzNiAxODYgUTE1MCAyMDAgMTY0IDE4NiBRMTUwIDE5MSAxMzYgMTg2IFoiIGZpbGw9IiNjMjQxNGIiIHN0cm9rZT0iIzdmMWQyYSIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+CiAgPHBhdGggZD0iTTE0MiAxOTAgUTE1MCAxOTUgMTU4IDE5MCIgc3Ryb2tlPSIjZmY5YWE4IiBzdHJva2Utd2lkdGg9IjIiIGZpbGw9Im5vbmUiLz48cGF0aCBkPSJNODQgMTI4IFE3MCA1MiAxNTAgNDYgUTIzMCA1MCAyMTYgMTI4IFEyMTAgMTAwIDE5OCA5MCBMMTkyIDEwOCBMMTgwIDg0IEwxNjggMTA0IEwxNTYgODAgTDE0MiAxMDIgTDEyOCA4MiBMMTE2IDEwNiBMMTA0IDkwIFE5MiAxMDAgODQgMTI4IFoiIGZpbGw9InVybCgjaGcpIi8+CiAgICAgIDxwYXRoIGQ9Ik0xMDQgNzQgUTE0MCA1OCAxODAgNjQiIHN0cm9rZT0idXJsKCNzaGluZSkiIHN0cm9rZS13aWR0aD0iNyIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PC9zdmc+",
@@ -391,7 +391,7 @@ function goNextSet() {
   S.cfg = GM.makeStage(S.stage); S.phase = "intro"; resetStage();
   $("gameplayActionBar").classList.add("hidden"); $("controlHint").classList.add("hidden");
   if (GM.onSetChange) GM.onSetChange();
-  $("introStory").innerHTML = GM.introStory(); renderSetIntro(); hudCache.stageTitleLabel = null;
+  $("introStory").innerHTML = __enrichIntroHtml(GM.introStory()); renderSetIntro(); hudCache.stageTitleLabel = null;
   $("introModal").classList.remove("hidden");
 }
 
@@ -411,7 +411,7 @@ async function loadLessonFromAPI() {
   try {
     const res = await apiFetch(`/api/content/lessons/${LESSON_ID}`);
     const d = res && (res.data || res.lesson || res);
-    if (d && d.title) { LESSON = Object.assign({}, FALLBACK_LESSON, d); applyLessonTexts(); }
+    if (d && d.title && (new URLSearchParams(location.search).get("lesson_id") || d.topic === FALLBACK_LESSON.topic)) { LESSON = Object.assign({}, FALLBACK_LESSON, d); applyLessonTexts(); }
   } catch (e) { console.warn(e); }
 }
 async function startSession() {
@@ -741,7 +741,131 @@ function toast(msg, color, ms) {
 
 /* ---------- Hội thoại cốt truyện ---------- */
 let typeTimer = null;
+
+/* ---------- Nâng cấp Cốt truyện & Thông số tính toán (CT GDPT 2018) ---------- */
+function __cleanCalcText(s) {
+  if (!s) return "";
+  return String(s)
+    .replace(/<br\s*\/?>/gi, " · ")
+    .replace(/<sub>([^<]+)<\/sub>/gi, "_$1")
+    .replace(/<sup>([^<]+)<\/sup>/gi, "^($1)")
+    .replace(/<\/?b[^>]*>/gi, "")
+    .replace(/<\/?[a-z][^>]*>/gi, "")
+    .replace(/&nbsp;/g, " ").replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">")
+    .replace(/\s+/g, " ").trim();
+}
+function __buildStageCalcLines(baseLines) {
+  try {
+    if (!Array.isArray(baseLines) || !baseLines.length) return baseLines;
+    if (baseLines.some(x => x && x.__p)) return baseLines;
+    if (typeof S === "object" && S && Array.isArray(S.hints) && typeof S.stage === "number") {
+      if (!S.hints[S.stage] || S.hints[S.stage] < 1) S.hints[S.stage] = 1;
+    }
+    if (typeof updateAux === "function") { try { updateAux(); } catch (e) {} }
+    if (typeof updateHUD === "function") { try { updateHUD(); } catch (e) {} }
+    const c = (typeof S === "object" && S && S.cfg) || {};
+    const kd = (typeof KDc === "function") ? KDc() : (typeof KD !== "undefined" && Array.isArray(KD) && typeof c.i === "number" ? KD[c.i] : null);
+    const who = baseLines.some(x => x && x.who === "A") ? "A" : baseLines.some(x => x && x.who === "F") ? "F" : (baseLines[baseLines.length - 1] && baseLines[baseLines.length - 1].who) || "A";
+
+    const paramParts = [];
+    let l1 = "";
+    try {
+      if (typeof GM === "object" && GM && typeof GM.hud === "function") {
+        const h = GM.hud();
+        if (h && typeof h.l1 === "string") l1 = h.l1;
+      } else if (kd && typeof kd.h1 === "function") l1 = kd.h1(c);
+      else if ($("telemetryLine1")) l1 = $("telemetryLine1").textContent || "";
+    } catch (e) {}
+    l1 = __cleanCalcText(l1).replace(/^[^0-9A-Za-zÀ-ỹΔλμρπΩ]+/, "").trim();
+    if (l1) paramParts.push(l1);
+    try {
+      if (kd && typeof kd.info === "function") {
+        (kd.info(c) || []).forEach(it => {
+          const s = __cleanCalcText(it).replace(/^•\s*/, "").trim();
+          if (s && !paramParts.join(" ").includes(s)) paramParts.push(s);
+        });
+      }
+    } catch (e) {}
+    const paramsText = paramParts.join(" · ") || "Xem số liệu trên thanh trạng thái phía trên màn hình.";
+
+    let greenText = "";
+    try {
+      if (typeof GM === "object" && GM && typeof GM.greenTag === "function") greenText = __cleanCalcText(GM.greenTag());
+      else if (kd && kd.green) greenText = __cleanCalcText(kd.green);
+    } catch (e) {}
+    greenText = greenText.replace(/^🟢\s*/, "").trim();
+
+    let hint1Text = "";
+    try {
+      let hts = null;
+      if (typeof GM === "object" && GM && typeof GM.hintTexts === "function") hts = GM.hintTexts();
+      else if (typeof hintTexts === "function") hts = hintTexts();
+      if (Array.isArray(hts) && hts[0]) hint1Text = __cleanCalcText(hts[0]);
+      else if (kd && typeof kd.hint1 === "function") hint1Text = __cleanCalcText(kd.hint1(c));
+      else if (kd && typeof kd.hints === "function") { const kh = kd.hints(c); if (Array.isArray(kh) && kh[0]) hint1Text = __cleanCalcText(kh[0]); }
+    } catch (e) {}
+
+    const fParts = [];
+    if (greenText) fParts.push("Điều kiện đạt chuẩn: " + greenText);
+    if (hint1Text && !fParts.join(" ").includes(hint1Text)) fParts.push("Hướng tính: " + hint1Text);
+    const formulaText = fParts.join(" · ") || "Áp dụng công thức của bài học để tính thông số phù hợp.";
+
+    const pDesc = [];
+    try {
+      if (kd && Array.isArray(kd.P)) {
+        kd.P.forEach(p => {
+          if (!p || !p.lab) return;
+          if (Array.isArray(p.opts) && p.opts.length) pDesc.push(`${p.lab} (${p.opts.slice(0, 5).join(", ")}${p.opts.length > 5 ? "…" : ""})`);
+          else if (p.min != null && p.max != null) pDesc.push(`${p.lab} (từ ${p.min} đến ${p.max}${p.unit ? " " + p.unit : ""})`);
+          else pDesc.push(p.lab);
+        });
+      }
+    } catch (e) {}
+    let chint = "";
+    try {
+      if (typeof GM === "object" && GM && typeof GM.controlHint === "function") chint = __cleanCalcText(GM.controlHint());
+      else if (kd && kd.hint) chint = __cleanCalcText(kd.hint);
+      else if ($("controlHint")) chint = __cleanCalcText($("controlHint").textContent);
+    } catch (e) {}
+    chint = chint.replace(/^[^\wÀ-ỹ]+/, "").trim();
+    const execLabel = ($("executeBtnText") && $("executeBtnText").textContent.trim()) || (kd && kd.execLabel) || ($("btnExecuteStage") && $("btnExecuteStage").textContent.trim()) || "Chạy thử ▶";
+
+    let actionText = "Dựa vào thông số và công thức trên, bạn hãy tính giá trị cần thiết";
+    if (pDesc.length) actionText += ` rồi chỉnh [${pDesc.join(" · ")}]`;
+    if (chint) actionText += ` (${chint})`;
+    actionText += `. Sau khi chỉnh xong, bấm nút «${execLabel}» ở góc dưới để kiểm tra kết quả!`;
+
+    return baseLines.concat([
+      { who, __p: 1, text: `📊 Thông số để tính toán: ${paramsText}` },
+      { who, __p: 1, text: `📐 Công thức & cách tính: ${formulaText}` },
+      { who, __p: 1, text: `🎯 Chốt lại nhiệm vụ (Cần làm gì): ${actionText}` }
+    ]);
+  } catch (e) { return baseLines; }
+}
+function __enrichIntroHtml(rawHtml) {
+  if (window.__hdlgEnrichIntroStory) return window.__hdlgEnrichIntroStory(rawHtml);
+  if (!rawHtml || String(rawHtml).includes("hdlg-intro-summary")) return rawHtml;
+  let formulaItems = [];
+  try {
+    const ls = (typeof GM === "object" && GM && typeof GM.summaryLessons === "function") ? GM.summaryLessons() : [];
+    if (Array.isArray(ls) && ls.length) {
+      ls.slice(0, 4).forEach(it => { if (Array.isArray(it) && it.length >= 2) formulaItems.push(`<li><b class="text-amber-200">${it[0]}:</b> ${it[1]}</li>`); });
+    } else if (typeof LESSON === "object" && LESSON && Array.isArray(LESSON.formulas)) {
+      LESSON.formulas.slice(0, 4).forEach(f => {
+        if (typeof f === "string") formulaItems.push(`<li>• ${f}</li>`);
+        else if (f && f.name && f.formula) formulaItems.push(`<li><b class="text-amber-200">${f.name}:</b> ${f.formula}</li>`);
+      });
+    }
+  } catch (e) {}
+  const theoryBlock = formulaItems.length
+    ? `<div class="mt-2.5 p-2.5 rounded-xl bg-slate-900/80 border border-amber-400/40 text-[11.5px] leading-relaxed"><div class="font-extrabold text-amber-300 mb-1">📘 Kiến thức & Công thức trọng tâm (theo bài học mới):</div><ul class="space-y-1 text-slate-200">${formulaItems.join("")}</ul></div>`
+    : "";
+  const missionBlock = `<div class="hdlg-intro-summary mt-2 p-2.5 rounded-xl bg-emerald-950/75 border border-emerald-400/50 text-[11.5px] leading-relaxed text-emerald-100"><div class="font-extrabold text-emerald-300 mb-0.5">🎯 Chốt lại: Vào màn chơi bạn cần làm gì?</div><div><b>Bước 1:</b> Đọc kỹ dòng <b>📊 Thông số để tính toán</b> và <b>📐 Công thức & cách tính</b> xuất hiện ngay trong lời thoại của nhân vật ở mỗi chặng (hoặc bấm nút <b>📋 Thông số & Nhiệm vụ</b> ở góc dưới trái).<br><b>Bước 2:</b> Thay các thông số đã cho vào công thức để tính ra giá trị cần tìm, rồi <b>kéo thanh trượt / xoay núm / chọn linh kiện</b> trên màn hình.<br><b>Bước 3:</b> Bấm nút hành động màu xanh lá (<b>▶</b>) ở góc dưới để chạy kiểm chứng và hoàn thành cả 3 chặng!</div></div>`;
+  return rawHtml + theoryBlock + missionBlock;
+}
+
 function startDialogue(lines, onDone) {
+  if (S.phase === "dialogue") lines = __buildStageCalcLines(lines);
   S.dialogue = { lines, i: 0, onDone, typing: false, prevPhase: S.phase };
   $("dialogueBox").classList.remove("hidden"); $("gameplayActionBar").classList.add("hidden"); $("controlHint").classList.add("hidden"); hideCtxMenu();
   showLine();
@@ -884,7 +1008,7 @@ function goBackToLesson() {
 }
 function applyLessonTexts() {
   $("introLessonTitle").textContent = `Bài: ${LESSON.title} — ${LESSON.description || ""}`;
-  $("introSubject").textContent = `VẬT LÝ ${LESSON.grade || 8}`;
+  $("introSubject").textContent = LESSON.subject_label || "VẬT LÝ 10 · KẾT NỐI TRI THỨC";
 }
 
 /* ---------- Menu ngữ cảnh (HTML) ---------- */
@@ -3750,7 +3874,7 @@ KD[9] = {
   chooseSet(); S.cfg = GM.makeStage(S.stage); GM.reset(); if (GM.onSetChange) GM.onSetChange();
   $("introPortraitA").src = IMG_SRC[CHAR_A.img]; $("introNameA").textContent = `${CHAR_A.name} · ${CHAR_A.job}`;
   $("introPortraitB").src = IMG_SRC[CHAR_B.img]; $("introNameB").textContent = `${CHAR_B.name} · ${CHAR_B.job}`;
-  $("introStory").innerHTML = GM.introStory(); renderSetIntro();
+  $("introStory").innerHTML = __enrichIntroHtml(GM.introStory()); renderSetIntro();
   applyLessonTexts(); syncHubHUD(); updateHUD();
   loadLessonFromAPI();
   requestAnimationFrame(loop);

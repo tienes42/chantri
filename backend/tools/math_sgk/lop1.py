@@ -368,6 +368,9 @@ LESSONS = [
     {
         "topic": "l1-cd07-do-dai",
         "title": "Độ dài và đo độ dài",
+        "game_type": "game_do_luong",
+        "game_title": "Bé Đo Giỏi – Đo độ dài và Thời gian",
+        "game_description": "Thực hành đặt thước đúng vạch 0 để đo độ dài các đồ vật bằng xăng-ti-mét (cm) và xem giờ đúng trên đồng hồ.",
         "icon": "📏",
         "description": "Chủ đề 7 · SGK Toán 1 tập hai (tr. 28–43): Bài 25 – Bài 28. Dài hơn – ngắn hơn, đơn vị xăng-ti-mét, thực hành ước lượng và đo độ dài.",
         "requirements": [
@@ -483,6 +486,9 @@ LESSONS = [
     {
         "topic": "l1-cd09-thoi-gian-gio-lich",
         "title": "Thời gian. Giờ và lịch",
+        "game_type": "game_do_luong",
+        "game_title": "Bé Đo Giỏi – Đo độ dài và Thời gian",
+        "game_description": "Thực hành xem giờ đúng trên đồng hồ kim, đọc lịch ngày trong tuần và đo độ dài đồ vật quanh bé.",
         "icon": "🕘",
         "description": "Chủ đề 9 · SGK Toán 1 tập hai (tr. 72–87): Bài 34 – Bài 37. Xem giờ đúng trên đồng hồ, các ngày trong tuần, xem lịch tờ hằng ngày.",
         "requirements": [

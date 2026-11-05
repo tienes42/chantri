@@ -162,7 +162,7 @@ Trong sản xuất cơ khí chính xác, chế tạo linh kiện bán dẫn và 
 """,
         "game_title": "Phòng Thí Nghiệm Chuẩn Hóa: Thử Thách Đo Lường & Sai Số",
         "game_description": "Thực hành chọn dụng cụ đo phù hợp, nhận diện biển báo an toàn, đọc vạch chia và xử lí bảng số liệu thực nghiệm với sai số nhỏ nhất.",
-        "game_type": "game_do_luong",
+        "game_type": "game_dodai",
         "quiz": [
             mcq(
                 "biet",

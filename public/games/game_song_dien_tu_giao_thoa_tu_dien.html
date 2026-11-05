@@ -148,9 +148,9 @@ body { background: radial-gradient(120% 90% at 50% 0%, #1e1b4b 0%, #0f0c29 55%, 
     <!-- MODAL MỞ ĐẦU -->
     <div id="introModal" class="absolute inset-0 z-40 flex items-center justify-center bg-black/70 p-4 fade-in">
         <div class="dialogue-box rounded-3xl max-w-2xl w-full p-5 md:p-7 pop-in scroll-y">
-            <div class="text-[11px] tracking-[0.25em] text-amber-300 font-extrabold">HỌC ĐỂ LÀM GÌ? · <span id="introSubject">VẬT LÝ 8</span></div>
+            <div class="text-[11px] tracking-[0.25em] text-amber-300 font-extrabold">HỌC ĐỂ LÀM GÌ? · <span id="introSubject">VẬT LÝ 11 · KẾT NỐI TRI THỨC</span></div>
             <h1 class="text-2xl md:text-3xl font-black mt-1 leading-tight">📡 Đội Săn Sóng</h1>
-            <div id="introLessonTitle" class="text-amber-200 font-bold text-sm mt-1">Bài: Giao thoa sóng, Sóng dừng, Sóng điện từ &amp; Tụ điện</div>
+            <div id="introLessonTitle" class="text-amber-200 font-bold text-sm mt-1">Bài: Chương II – Phần 2. Sóng điện từ, Giao thoa sóng và Sóng dừng</div>
             <div class="flex gap-3 mt-3 items-start">
                 <div class="text-center flex-shrink-0"><img id="introPortraitA" alt="" class="w-16 h-16 md:w-20 md:h-20 rounded-2xl border-2 border-amber-400 portrait-breathe mx-auto"><div id="introNameA" class="text-[10px] font-bold mt-1 text-amber-200 w-20 leading-tight"></div></div>
                 <div class="text-center flex-shrink-0"><img id="introPortraitB" alt="" class="w-16 h-16 md:w-20 md:h-20 rounded-2xl border-2 border-sky-400 portrait-breathe mx-auto"><div id="introNameB" class="text-[10px] font-bold mt-1 text-sky-200 w-20 leading-tight"></div></div>
@@ -230,10 +230,10 @@ body { background: radial-gradient(120% 90% at 50% 0%, #1e1b4b 0%, #0f0c29 55%, 
 /* ĐỘI SĂN SÓNG — Game "Giao thoa sóng (Khe Young), Sóng dừng, Sóng điện từ & Tụ điện" (Vật lý 11) */
 /* script khớp màn hình di động có thể phát sự kiện resize trước khi lõi game (GM) nạp xong – chặn sớm để tránh lỗi console */
 window.addEventListener("resize", e => { if (typeof GM === "undefined") e.stopImmediatePropagation(); }, true);
-const LESSON_ID = 169;
+const LESSON_ID = Number(new URLSearchParams(location.search).get("lesson_id")) || 169;
 const GAME_KEY = "song-dien-tu-giao-thoa-tu-dien";
 const GAME_FONT = "'Nunito'";
-const FALLBACK_LESSON = {"id":169,"subject_id":2,"grade":11,"topic":"song-dien-tu-giao-thoa-tu-dien","title":"Giao thoa sóng (Khe Young), Sóng dừng, Sóng điện từ & Tụ điện","icon":"📡","description":"Làm chủ điều kiện cực đại - cực tiểu giao thoa, khoảng vân giao thoa ánh sáng i = λD/a, điều kiện sóng dừng, thang sóng điện từ và tụ điện.","definition":"Giao thoa là hiện tượng hai sóng kết hợp khi gặp nhau thì có những điểm chúng luôn tăng cường lẫn nhau (cực đại) và có những điểm chúng luôn triệt tiêu nhau (cực tiểu). Sóng điện từ là điện từ trường lan truyền trong không gian (và cả trong chân không) với tốc độ ánh sáng c = 3·10⁸ m/s.","concept":"• Giao thoa sóng cơ (2 nguồn cùng pha): Cực đại giao thoa có d₂ − d₁ = kλ; Cực tiểu giao thoa có d₂ − d₁ = (k + 0,5)λ.\n• Giao thoa ánh sáng qua khe Young (khoảng cách 2 khe a, từ 2 khe đến màn D): Khoảng vân i = (λ · D) / a.\n• Sóng dừng trên dây dài l: Khoảng cách giữa 2 nút (hoặc 2 bụng) liên tiếp là λ/2; Hai đầu cố định: l = k·(λ/2); Một đầu cố định, một đầu tự do: l = (2k + 1)·(λ/4).\n• Thang sóng điện từ (Sóng vô tuyến → Vi sóng → Hồng ngoại → Ánh sáng nhìn thấy → Tử ngoại → Tia X → Tia Gamma) và Tụ điện (Điện dung C = Q/U, năng lượng điện trường W = ½CU²).","formulas":[{"items":[{"name":"Giao thoa 2 nguồn cùng pha S₁, S₂","note":"Trên đoạn S₁S₂ cách nhau λ/2 giữa hai cực đại liên tiếp","formula":"Cực đại: d₂ − d₁ = k · λ  ;  Cực tiểu: d₂ − d₁ = (k + 0,5) · λ  (k ∈ ℤ)"},{"name":"Giao thoa khe Young (Khoảng vân i)","note":"thường đo a (mm), D (m), λ (μm) ⇒ i (mm)","formula":"i = (λ · D) / a  ;  Vân sáng bậc k: x_s = k · i  ;  Vân tối: x_t = (k + 0,5) · i"}],"category":"I. Giao thoa Sóng cơ & Giao thoa Ánh sáng (Khe Young)"},{"items":[{"name":"Hai đầu dây cố định (k bó sóng = k bụng, k+1 nút)","note":"Khoảng cách giữa 2 nút liên tiếp bằng λ / 2","formula":"l = k · (λ / 2) = k · v / (2f)  ⇒  fₖ = k · f₁  (k ∈ ℕ*)"},{"name":"Một đầu cố định, một đầu tự do","note":"Số bụng = số nút = k + 1","formula":"l = (2k + 1) · (λ / 4)  (k = 0, 1, 2, ...)"}],"category":"II. Sóng dừng trên dây dài l (tốc độ v, tần số f)"},{"items":[{"name":"Sóng điện từ trong chân không","note":"Bước sóng giảm dần: Vô tuyến > Hồng ngoại > Ánh sáng > Tử ngoại > Tia X > Gamma","formula":"Là sóng NGANG ; truyền được trong chân không với tốc độ c = 3·10⁸ m/s ; λ = c / f"},{"name":"Điện dung, Ghép tụ điện & Năng lượng tụ điện","note":"1 μF = 10⁻⁶ F ; 1 nF = 10⁻⁹ F ; 1 pF = 10⁻¹² F","formula":"Q = C · U ; Ghép nối tiếp: 1/C_nt = 1/C₁ + 1/C₂ ; Song song: C_ss = C₁ + C₂ ; W = (1/2)CU² = Q²/(2C)"}],"category":"III. Sóng điện từ & Tụ điện (Điện dung C - đơn vị Farad F)"}],"meaning":"Ứng dụng đo chính xác bước sóng ánh sáng laser, thiết kế hộp cộng hưởng đàn guitar (sóng dừng), truyền thông 5G/Wi-Fi (sóng điện từ) và lưu trữ năng lượng xung (tụ điện).","real_life":"Thực hiện thí nghiệm giao thoa khe Young để đo bước sóng tia laser và điều chỉnh tần số tạo sóng dừng trên dây.","context_title":"Hiện tượng & Ứng dụng: Giao thoa sóng (Khe Young), Sóng dừng, Sóng điện từ & Tụ điện","context":"Thực hiện thí nghiệm giao thoa khe Young để đo bước sóng tia laser và điều chỉnh tần số tạo sóng dừng trên dây.","theory":"Giao thoa là hiện tượng hai sóng kết hợp khi gặp nhau thì có những điểm chúng luôn tăng cường lẫn nhau (cực đại) và có những điểm chúng luôn triệt tiêu nhau (cực tiểu). Sóng điện từ là điện từ trường lan truyền trong không gian (và cả trong chân không) với tốc độ ánh sáng c = 3·10⁸ m/s.\n\n• Giao thoa sóng cơ (2 nguồn cùng pha): Cực đại giao thoa có d₂ − d₁ = kλ; Cực tiểu giao thoa có d₂ − d₁ = (k + 0,5)λ.\n• Giao thoa ánh sáng qua khe Young (khoảng cách 2 khe a, từ 2 khe đến màn D): Khoảng vân i = (λ · D) / a.\n• Sóng dừng trên dây dài l: Khoảng cách giữa 2 nút (hoặc 2 bụng) liên tiếp là λ/2; Hai đầu cố định: l = k·(λ/2); Một đầu cố định, một đầu tự do: l = (2k + 1)·(λ/4).\n• Thang sóng điện từ (Sóng vô tuyến → Vi sóng → Hồng ngoại → Ánh sáng nhìn thấy → Tử ngoại → Tia X → Tia Gamma) và Tụ điện (Điện dung C = Q/U, năng lượng điện trường W = ½CU²).","formula":"• I. Giao thoa Sóng cơ & Giao thoa Ánh sáng (Khe Young):\n  - Giao thoa 2 nguồn cùng pha S₁, S₂: Cực đại: d₂ − d₁ = k · λ  ;  Cực tiểu: d₂ − d₁ = (k + 0,5) · λ  (k ∈ ℤ) (Trên đoạn S₁S₂ cách nhau λ/2 giữa hai cực đại liên tiếp)\n  - Giao thoa khe Young (Khoảng vân i): i = (λ · D) / a  ;  Vân sáng bậc k: x_s = k · i  ;  Vân tối: x_t = (k + 0,5) · i (thường đo a (mm), D (m), λ (μm) ⇒ i (mm))\n• II. Sóng dừng trên dây dài l (tốc độ v, tần số f):\n  - Hai đầu dây cố định (k bó sóng = k bụng, k+1 nút): l = k · (λ / 2) = k · v / (2f)  ⇒  fₖ = k · f₁  (k ∈ ℕ*) (Khoảng cách giữa 2 nút liên tiếp bằng λ / 2)\n  - Một đầu cố định, một đầu tự do: l = (2k + 1) · (λ / 4)  (k = 0, 1, 2, ...) (Số bụng = số nút = k + 1)\n• III. Sóng điện từ & Tụ điện (Điện dung C - đơn vị Farad F):\n  - Sóng điện từ trong chân không: Là sóng NGANG ; truyền được trong chân không với tốc độ c = 3·10⁸ m/s ; λ = c / f (Bước sóng giảm dần: Vô tuyến > Hồng ngoại > Ánh sáng > Tử ngoại > Tia X > Gamma)\n  - Điện dung, Ghép tụ điện & Năng lượng tụ điện: Q = C · U ; Ghép nối tiếp: 1/C_nt = 1/C₁ + 1/C₂ ; Song song: C_ss = C₁ + C₂ ; W = (1/2)CU² = Q²/(2C) (1 μF = 10⁻⁶ F ; 1 nF = 10⁻⁹ F ; 1 pF = 10⁻¹² F)","example":"Trong thí nghiệm Young về giao thoa ánh sáng đơn sắc, khoảng cách giữa hai khe hẹp là a = 1,2 mm, khoảng cách từ mặt phẳng chứa hai khe đến màn quan sát là D = 2,4 m. Trên màn, người ta đo được khoảng cách giữa 5 vân sáng liên tiếp là 4,8 mm. Tính khoảng vân i và bước sóng λ của ánh sáng dùng trong thí nghiệm.","example_answer":"Khoảng cách giữa 5 vân sáng liên tiếp là 4 khoảng vân: 4i = 4,8 mm ⇒ i = 1,2 (mm). Bước sóng ánh sáng là: λ = (a · i) / D = (1,2 · 1,2) / 2,4 = 0,6 (μm) = 600 (nm) (ánh sáng màu da cam).","question":"Trên một sợi dây đàn hồi dài l = 90 cm có hai đầu cố định đang có sóng dừng với 3 bụng sóng (k = 3). Bước sóng λ của sóng truyền trên dây là:","answers":["30 cm","45 cm","60 cm","90 cm"],"correct":2,"application":"Ứng dụng đo chính xác bước sóng ánh sáng laser, thiết kế hộp cộng hưởng đàn guitar (sóng dừng), truyền thông 5G/Wi-Fi (sóng điện từ) và lưu trữ năng lượng xung (tụ điện).","challenge":"Một tụ điện có điện dung C = 20 μF được tích điện dưới hiệu điện thế U = 100 V. Hãy tính điện tích Q và năng lượng điện trường W dự trữ trong tụ điện đó.","challenge_answer":"Đổi C = 20 μF = 20 · 10⁻⁶ F = 2 · 10⁻⁵ F. Điện tích của tụ: Q = C · U = 2 · 10⁻⁵ · 100 = 2 · 10⁻³ (C) = 2 (mC). Năng lượng điện trường trong tụ: W = (1/2) · C · U² = 0,5 · 2 · 10⁻⁵ · 100² = 0,1 (J).","game_title":"Thử thách thực tế: Giao thoa, Sóng dừng & Tụ điện","game_description":"Khảo sát vân giao thoa khe Young, tạo sóng dừng trên dây đàn và nạp/phóng tụ điện.","game_type":"simulation"};
+const FALLBACK_LESSON = {"id": 169, "subject_id": 2, "subject": "physics", "subject_label": "VẬT LÝ 11 · KẾT NỐI TRI THỨC", "grade": 11, "topic": "song-dien-tu-giao-thoa-tu-dien", "title": "Chương II – Phần 2. Sóng điện từ, Giao thoa sóng và Sóng dừng", "icon": "📡", "description": "Chương II · SGK Vật lí 11 Kết nối tri thức với cuộc sống (tr. 44–60): Bài 11 – Bài 15. Sóng điện từ và thang sóng điện từ; giao thoa sóng cơ và giao thoa ánh sáng qua hai khe Young; sóng dừng trên dây đàn hồi và trong cột khí; thực hành đo tốc độ truyền âm.", "definition": "- **Sóng điện từ**: Là điện từ trường biến thiên lan truyền trong không gian. Sóng điện từ là sóng ngang ($\\vec{E} \\perp \\vec{B} \\perp \\vec{v}$), truyền được trong chân không với tốc độ ánh sáng $c = 3 \\cdot 10^8\\text{ m/s}$.\n- **Giao thoa sóng**: Là hiện tượng hai sóng kết hợp (cùng phương, cùng tần số và có độ lệch pha không đổi theo thời gian) khi gặp nhau thì có những điểm ở đó chúng luôn tăng cường lẫn nhau (cực đại giao thoa) và có những điểm ở đó chúng luôn triệt tiêu lẫn nhau (cực tiểu giao thoa).\n- **Sóng dừng**: Là sóng truyền trên một sợi dây (hoặc cột khí) trong trường hợp xuất hiện các nút sóng (điểm luôn đứng yên) và các bụng sóng (điểm luôn dao động với biên độ cực đại) cố định trong không gian do sự giao thoa của sóng tới và sóng phản xạ.", "concept": "", "formulas": ["Bước sóng điện từ trong chân không: $\\lambda_0 = cT = \\dfrac{c}{f} \\quad (c \\approx 3 \\cdot 10^8\\text{ m/s})$", "Tốc độ và bước sóng trong môi trường chiết suất $n$: $v = \\dfrac{c}{n}, \\quad \\lambda = \\dfrac{\\lambda_0}{n}$", "Cực đại và cực tiểu giao thoa (2 nguồn cùng pha): $d_2 - d_1 = k\\lambda \\ \\text{(cực đại)}, \\quad d_2 - d_1 = \\left(k + \\dfrac{1}{2}\\right)\\lambda \\ \\text{(cực tiểu)}$", "Khoảng vân giao thoa ánh sáng: $i = \\dfrac{\\lambda D}{a} \\iff \\lambda = \\dfrac{ia}{D}$", "Vị trí vân sáng và vân tối trên màn: $x_{\\text{s}} = ki = k\\dfrac{\\lambda D}{a}, \\quad x_{\\text{t}} = \\left(k + 0,5\\right)i$", "Sóng dừng trên dây hai đầu cố định: $L = k\\dfrac{\\lambda}{2} = k\\dfrac{v}{2f} \\quad (k = 1, 2, 3, \\dots)$", "Sóng dừng một đầu cố định, một đầu tự do: $L = (2k + 1)\\dfrac{\\lambda}{4} = (2k + 1)\\dfrac{v}{4f} \\quad (k = 0, 1, 2, \\dots)$", "Đo tốc độ truyền âm bằng cộng hưởng cột khí: $\\Delta l = l_2 - l_1 = \\dfrac{\\lambda}{2} \\implies v = \\lambda f = 2f(l_2 - l_1)$"], "meaning": "", "real_life": "- **Viễn thông không dây và y học hiện đại**: Sóng vô tuyến và vi sóng truyền dữ liệu điện thoại di động, $\\text{Wi-Fi}$, vệ tinh $\\text{GPS}$; tia hồng ngoại dùng trong cảm biến cửa tự động và thiết bị nhìn đêm; tia X dùng chụp X-quang và cắt lớp vi tính ($\\text{CT}$).\n- **Chế tạo nhạc cụ dây và nhạc cụ hơi**: Đàn guitar, đàn bầu, sáo trúc hoạt động dựa trên nguyên lí sóng dừng: khi người nghệ sĩ bấm phím đàn là đang thay đổi chiều dài hiệu dụng $L$ của dây đàn để thay đổi tần số âm cơ bản $f_1 = \\dfrac{v}{2L}$ phát ra.", "game_title": "Phòng thí nghiệm Giao thoa Khe Young, Sóng dừng và Phổ Sóng điện từ", "game_description": "Thực hiện thí nghiệm giao thoa ánh sáng Young, kích thích sóng dừng trên dây đàn hồi để đếm số bụng sóng, nút sóng và khám phá ứng dụng của các bức xạ trong thang sóng điện từ.", "game_type": "game_song_dien_tu_giao_thoa_tu_dien"};
 const THEME_MC = { teal: "#22d3ee", tealD: "#0e7490", or: "#f472b6", orD: "#be185d", rgb: "34,211,238", panel: "17,14,42", lab: "#cffafe", btn: "30,27,75" };
 const IMG_SRC = {
   mentorM: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzQwIiB2aWV3Qm94PSIwIDAgMzAwIDM0MCI+PGRlZnM+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJoZyIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzViNGE3MyIvPjxzdG9wIG9mZnNldD0iLjM1IiBzdG9wLWNvbG9yPSIjMTYxMjFjIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMGIwNjA1Ii8+PC9saW5lYXJHcmFkaWVudD4KICA8bGluZWFyR3JhZGllbnQgaWQ9InNrIiB4MT0iMCIgeTE9IjAiIHgyPSIwIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjZmZlMmNjIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjZjRiOTljIi8+PC9saW5lYXJHcmFkaWVudD4KICA8bGluZWFyR3JhZGllbnQgaWQ9InRwIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjZWVmMmZmIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjODE4Y2Y4Ii8+PC9saW5lYXJHcmFkaWVudD4KICA8cmFkaWFsR3JhZGllbnQgaWQ9ImlyIiBjeD0iLjUiIGN5PSIuNzUiIHI9Ii43Ij48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNlMGEwNjAiLz48c3RvcCBvZmZzZXQ9Ii41NSIgc3RvcC1jb2xvcj0iIzZiM2YxZiIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzE0MGEwNSIvPjwvcmFkaWFsR3JhZGllbnQ+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJzaGluZSIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjAiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2ZmZiIgc3RvcC1vcGFjaXR5PSIwIi8+PHN0b3Agb2Zmc2V0PSIuNSIgc3RvcC1jb2xvcj0iI2ZmZiIgc3RvcC1vcGFjaXR5PSIuNTUiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNmZmYiIHN0b3Atb3BhY2l0eT0iMCIvPjwvbGluZWFyR3JhZGllbnQ+CiAgPHJhZGlhbEdyYWRpZW50IGlkPSJyaW0iIGN4PSIuMiIgY3k9Ii4yIiByPSIxIj48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNmZmQ1OWEiIHN0b3Atb3BhY2l0eT0iLjU1Ii8+PHN0b3Agb2Zmc2V0PSIuNSIgc3RvcC1jb2xvcj0iI2ZmZDU5YSIgc3RvcC1vcGFjaXR5PSIwIi8+PC9yYWRpYWxHcmFkaWVudD4KICA8L2RlZnM+PHBhdGggZD0iTTQwIDM0MCBRNDIgMjYyIDEwNCAyNDYgTDE5NiAyNDYgUTI1OCAyNjIgMjYwIDM0MCBaIiBmaWxsPSJ1cmwoI3RwKSIvPgogIDxwYXRoIGQ9Ik0xNTAgMjQ2IEwxOTYgMjQ2IFEyNTggMjYyIDI2MCAzNDAgTDE3NiAzNDAgWiIgZmlsbD0iIzgxOGNmOCIgb3BhY2l0eT0iLjU1Ii8+PHBhdGggZD0iTTU4IDMwMCBMMTA0IDI1MiBMMTEyIDI2MiBMNzAgMzEyIFoiIGZpbGw9IiNmNDcyYjYiLz48cGF0aCBkPSJNMjQyIDMwMCBMMTk2IDI1MiBMMTg4IDI2MiBMMjMwIDMxMiBaIiBmaWxsPSIjZjQ3MmI2Ii8+CiAgICA8cGF0aCBkPSJNNjAgMzAyIEwxMDYgMjU0IiBzdHJva2U9IiNmZmY3ZDYiIHN0cm9rZS13aWR0aD0iNCIgb3BhY2l0eT0iLjgiLz48cGF0aCBkPSJNMjQwIDMwMiBMMTk0IDI1NCIgc3Ryb2tlPSIjZmZmN2Q2IiBzdHJva2Utd2lkdGg9IjQiIG9wYWNpdHk9Ii44Ii8+CiAgICA8cGF0aCBkPSJNOTYgMjYyIEwxMjAgMzQwIiBzdHJva2U9IiMzYjJhMWYiIHN0cm9rZS13aWR0aD0iMTEiLz48cGF0aCBkPSJNOTYgMjYyIEwxMjAgMzQwIiBzdHJva2U9IiM2YjRhMzMiIHN0cm9rZS13aWR0aD0iNSIvPgogICAgPHJlY3QgeD0iMTc2IiB5PSIyODIiIHdpZHRoPSI0MCIgaGVpZ2h0PSIzMCIgcng9IjUiIGZpbGw9IiNmOGZhZmMiIHN0cm9rZT0iIzk0YTNiOCIgc3Ryb2tlLXdpZHRoPSIyIiB0cmFuc2Zvcm09InJvdGF0ZSgtNiAxOTYgMjk3KSIvPgogICAgPHJlY3QgeD0iMTgyIiB5PSIyODgiIHdpZHRoPSIxMiIgaGVpZ2h0PSIxNiIgcng9IjIiIGZpbGw9IiNmZGU2OGEiIHRyYW5zZm9ybT0icm90YXRlKC02IDE5NiAyOTcpIi8+CiAgICA8dGV4dCB4PSIyMDYiIHk9IjMwMSIgZm9udC1zaXplPSI4IiBmb250LWZhbWlseT0iVmVyZGFuYSIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiMwZjc2NmUiIHRyYW5zZm9ybT0icm90YXRlKC02IDE5NiAyOTcpIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7imqE8L3RleHQ+CiAgICA8cGF0aCBkPSJNMTIwIDI1MCBMMTUwIDI3OCBMMTgwIDI1MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjODE4Y2Y4IiBzdHJva2Utd2lkdGg9IjUiLz48cGF0aCBkPSJNMTMwIDIwNiBMMTcwIDIwNiBMMTcyIDI1MiBRMTUwIDI2MiAxMjggMjUyIFoiIGZpbGw9InVybCgjc2spIi8+PHBhdGggZD0iTTEzMCAyMjIgUTE1MCAyMzYgMTcwIDIyMiBMMTcwIDIwNiBMMTMwIDIwNloiIGZpbGw9IiNmNGI5OWMiIG9wYWNpdHk9Ii44Ii8+PGVsbGlwc2UgY3g9Ijg4IiBjeT0iMTUwIiByeD0iMTEiIHJ5PSIxNiIgZmlsbD0iI2ZmZTJjYyIvPjxlbGxpcHNlIGN4PSIyMTIiIGN5PSIxNTAiIHJ4PSIxMSIgcnk9IjE2IiBmaWxsPSIjZmZlMmNjIi8+CiAgPHBhdGggZD0iTTg2IDE0NCBROTIgMTUwIDg4IDE1OCIgc3Ryb2tlPSIjZjRiOTljIiBzdHJva2Utd2lkdGg9IjMiIGZpbGw9Im5vbmUiLz48cGF0aCBkPSJNMjE0IDE0NCBRMjA4IDE1MCAyMTIgMTU4IiBzdHJva2U9IiNmNGI5OWMiIHN0cm9rZS13aWR0aD0iMyIgZmlsbD0ibm9uZSIvPjxwYXRoIGQ9Ik05MiAxMjAgUTkyIDcwIDE1MCA2NiBRMjA4IDcwIDIwOCAxMjAgUTIwOCAxNzYgMTc2IDIwNCBRMTYwIDIxNiAxNTAgMjE2IFExNDAgMjE2IDEyNCAyMDQgUTkyIDE3NiA5MiAxMjAgWiIgZmlsbD0idXJsKCNzaykiLz4KICA8cGF0aCBkPSJNOTIgMTIwIFE5MiA3MCAxNTAgNjYgUTIwOCA3MCAyMDggMTIwIFEyMDggMTc2IDE3NiAyMDQgUTE2MCAyMTYgMTUwIDIxNiBRMTQwIDIxNiAxMjQgMjA0IFE5MiAxNzYgOTIgMTIwIFoiIGZpbGw9InVybCgjcmltKSIvPjxlbGxpcHNlIGN4PSIxMTQiIGN5PSIxNzAiIHJ4PSIxNCIgcnk9IjciIGZpbGw9IiNmZjhmYTMiIG9wYWNpdHk9Ii40MiIvPjxlbGxpcHNlIGN4PSIxODYiIGN5PSIxNzAiIHJ4PSIxNCIgcnk9IjciIGZpbGw9IiNmZjhmYTMiIG9wYWNpdHk9Ii40MiIvPgogIDxwYXRoIGQ9Ik0xMDggMTY4IGw0IC00IE0xMTQgMTY4IGw0IC00IE0xODAgMTY4IGw0IC00IE0xODYgMTY4IGw0IC00IiBzdHJva2U9IiNmZjZiOGEiIHN0cm9rZS13aWR0aD0iMS42IiBvcGFjaXR5PSIuNiIvPjxwYXRoIGQ9Ik0xMDUgMTQwIFExMjIgMTI4IDEzOSAxNDAgTDEzOCAxNTggUTEyMiAxNzAgMTA2IDE1OCBaIiBmaWxsPSIjZmZmIi8+CiAgICAgIDxlbGxpcHNlIGN4PSIxMjEiIGN5PSIxNTEiIHJ4PSIxMSIgcnk9IjE0LjUiIGZpbGw9InVybCgjaXIpIi8+CiAgICAgIDxlbGxpcHNlIGN4PSIxMjEiIGN5PSIxNTIiIHJ4PSI1LjIiIHJ5PSI3LjUiIGZpbGw9IiMxMjA4MDQiLz4KICAgICAgPGVsbGlwc2UgY3g9IjExOCIgY3k9IjE0NCIgcng9IjQuNiIgcnk9IjUuNiIgZmlsbD0iI2ZmZiIvPjxjaXJjbGUgY3g9IjEyNyIgY3k9IjE1OCIgcj0iMi4zIiBmaWxsPSIjZmZmIiBvcGFjaXR5PSIuOSIvPgogICAgICA8cGF0aCBkPSJNMTEzIDE2MCBRMTIyIDE2NSAxMzEgMTYwIiBzdHJva2U9IiNlMGEwNjAiIHN0cm9rZS13aWR0aD0iMiIgZmlsbD0ibm9uZSIgb3BhY2l0eT0iLjciLz4KICAgICAgPHBhdGggZD0iTTEwMyAxNDEgUTEyMiAxMjQgMTQxIDE0MCIgc3Ryb2tlPSIjMWQwZTA2IiBzdHJva2Utd2lkdGg9IjUuNSIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgICAgIDxwYXRoIGQ9Ik0xMDQgMTQwIGwtNyAtNSIgc3Ryb2tlPSIjMWQwZTA2IiBzdHJva2Utd2lkdGg9IjMuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PHBhdGggZD0iTTE2MSAxNDAgUTE3OCAxMjggMTk1IDE0MCBMMTk0IDE1OCBRMTc4IDE3MCAxNjIgMTU4IFoiIGZpbGw9IiNmZmYiLz4KICAgICAgPGVsbGlwc2UgY3g9IjE3OSIgY3k9IjE1MSIgcng9IjExIiByeT0iMTQuNSIgZmlsbD0idXJsKCNpcikiLz4KICAgICAgPGVsbGlwc2UgY3g9IjE3OSIgY3k9IjE1MiIgcng9IjUuMiIgcnk9IjcuNSIgZmlsbD0iIzEyMDgwNCIvPgogICAgICA8ZWxsaXBzZSBjeD0iMTc0IiBjeT0iMTQ0IiByeD0iNC42IiByeT0iNS42IiBmaWxsPSIjZmZmIi8+PGNpcmNsZSBjeD0iMTgzIiBjeT0iMTU4IiByPSIyLjMiIGZpbGw9IiNmZmYiIG9wYWNpdHk9Ii45Ii8+CiAgICAgIDxwYXRoIGQ9Ik0xNjkgMTYwIFExNzggMTY1IDE4NyAxNjAiIHN0cm9rZT0iI2UwYTA2MCIgc3Ryb2tlLXdpZHRoPSIyIiBmaWxsPSJub25lIiBvcGFjaXR5PSIuNyIvPgogICAgICA8cGF0aCBkPSJNMTU5IDE0MSBRMTc4IDEyNCAxOTcgMTQwIiBzdHJva2U9IiMxZDBlMDYiIHN0cm9rZS13aWR0aD0iNS41IiBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KICAgICAgPHBhdGggZD0iTTE5NiAxNDAgbDcgLTUiIHN0cm9rZT0iIzFkMGUwNiIgc3Ryb2tlLXdpZHRoPSIzLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjxwYXRoIGQ9Ik0xMDQgMTIwIFExMTggMTEyIDEzNCAxMTgiIHN0cm9rZT0iIzE2MTIxYyIgc3Ryb2tlLXdpZHRoPSI0LjUiIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogIDxwYXRoIGQ9Ik0xNjYgMTE4IFExODIgMTEyIDE5NiAxMjAiIHN0cm9rZT0iIzE2MTIxYyIgc3Ryb2tlLXdpZHRoPSI0LjUiIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogIDxwYXRoIGQ9Ik0xNTAgMTY2IFExNTMgMTcyIDE0OCAxNzUiIHN0cm9rZT0iI2Y0Yjk5YyIgc3Ryb2tlLXdpZHRoPSIyLjYiIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogIDxwYXRoIGQ9Ik0xMzYgMTg2IFExNTAgMjAwIDE2NCAxODYgUTE1MCAxOTEgMTM2IDE4NiBaIiBmaWxsPSIjYzI0MTRiIiBzdHJva2U9IiM3ZjFkMmEiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgogIDxwYXRoIGQ9Ik0xNDIgMTkwIFExNTAgMTk1IDE1OCAxOTAiIHN0cm9rZT0iI2ZmOWFhOCIgc3Ryb2tlLXdpZHRoPSIyIiBmaWxsPSJub25lIi8+PHJlY3QgeD0iMTAwIiB5PSIxMzQiIHdpZHRoPSI0NCIgaGVpZ2h0PSIzNCIgcng9IjEyIiBmaWxsPSIjZTBlN2ZmIiBmaWxsLW9wYWNpdHk9Ii4xOCIgc3Ryb2tlPSIjM2IyYTIwIiBzdHJva2Utd2lkdGg9IjMuNSIvPjxyZWN0IHg9IjE1NiIgeT0iMTM0IiB3aWR0aD0iNDQiIGhlaWdodD0iMzQiIHJ4PSIxMiIgZmlsbD0iI2UwZTdmZiIgZmlsbC1vcGFjaXR5PSIuMTgiIHN0cm9rZT0iIzNiMmEyMCIgc3Ryb2tlLXdpZHRoPSIzLjUiLz48cGF0aCBkPSJNMTQ0IDE0OCBRMTUwIDE0MyAxNTYgMTQ4IiBzdHJva2U9IiMzYjJhMjAiIHN0cm9rZS13aWR0aD0iMyIgZmlsbD0ibm9uZSIvPjxwYXRoIGQ9Ik0xMDYgMTQwIEwxMTggMTUyIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iMyIgb3BhY2l0eT0iLjYiLz48cGF0aCBkPSJNODQgMTI4IFE3MCA1MiAxNTAgNDYgUTIzMCA1MCAyMTYgMTI4IFEyMTAgMTAwIDE5OCA5MCBMMTkyIDEwOCBMMTgwIDg0IEwxNjggMTA0IEwxNTYgODAgTDE0MiAxMDIgTDEyOCA4MiBMMTE2IDEwNiBMMTA0IDkwIFE5MiAxMDAgODQgMTI4IFoiIGZpbGw9InVybCgjaGcpIi8+CiAgICAgIDxwYXRoIGQ9Ik0xMDQgNzQgUTE0MCA1OCAxODAgNjQiIHN0cm9rZT0idXJsKCNzaGluZSkiIHN0cm9rZS13aWR0aD0iNyIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PGcgdHJhbnNmb3JtPSJyb3RhdGUoLTggMTUwIDYwKSI+PHJlY3QgeD0iMTA0IiB5PSI1MCIgd2lkdGg9IjkyIiBoZWlnaHQ9IjEyIiByeD0iNiIgZmlsbD0iIzMzNDE1NSIvPjxyZWN0IHg9IjExOCIgeT0iMzgiIHdpZHRoPSIyOCIgaGVpZ2h0PSIyMiIgcng9IjgiIGZpbGw9IiMwZjE3MmEiIHN0cm9rZT0iIzk0YTNiOCIgc3Ryb2tlLXdpZHRoPSIyIi8+PHJlY3QgeD0iMTU0IiB5PSIzOCIgd2lkdGg9IjI4IiBoZWlnaHQ9IjIyIiByeD0iOCIgZmlsbD0iIzBmMTcyYSIgc3Ryb2tlPSIjOTRhM2I4IiBzdHJva2Utd2lkdGg9IjIiLz48cGF0aCBkPSJNMTI0IDQ0IEwxMzQgNTQgTTE2MCA0NCBMMTcwIDU0IiBzdHJva2U9IiNjNGI1ZmQiIHN0cm9rZS13aWR0aD0iMyIgb3BhY2l0eT0iLjgiLz48L2c+PC9zdmc+",
@@ -385,7 +385,7 @@ function goNextSet() {
   S.cfg = GM.makeStage(S.stage); S.phase = "intro"; resetStage();
   $("gameplayActionBar").classList.add("hidden"); $("controlHint").classList.add("hidden");
   if (GM.onSetChange) GM.onSetChange();
-  $("introStory").innerHTML = GM.introStory(); renderSetIntro(); hudCache.stageTitleLabel = null;
+  $("introStory").innerHTML = __enrichIntroHtml(GM.introStory()); renderSetIntro(); hudCache.stageTitleLabel = null;
   $("introModal").classList.remove("hidden");
 }
 
@@ -405,7 +405,7 @@ async function loadLessonFromAPI() {
   try {
     const res = await apiFetch(`/api/content/lessons/${LESSON_ID}`);
     const d = res && (res.data || res.lesson || res);
-    if (d && d.title) { LESSON = Object.assign({}, FALLBACK_LESSON, d); applyLessonTexts(); }
+    if (d && d.title && (new URLSearchParams(location.search).get("lesson_id") || d.topic === FALLBACK_LESSON.topic)) { LESSON = Object.assign({}, FALLBACK_LESSON, d); applyLessonTexts(); }
   } catch (e) { console.warn(e); }
 }
 async function startSession() {
@@ -735,7 +735,131 @@ function toast(msg, color, ms) {
 
 /* ---------- Hội thoại cốt truyện ---------- */
 let typeTimer = null;
+
+/* ---------- Nâng cấp Cốt truyện & Thông số tính toán (CT GDPT 2018) ---------- */
+function __cleanCalcText(s) {
+  if (!s) return "";
+  return String(s)
+    .replace(/<br\s*\/?>/gi, " · ")
+    .replace(/<sub>([^<]+)<\/sub>/gi, "_$1")
+    .replace(/<sup>([^<]+)<\/sup>/gi, "^($1)")
+    .replace(/<\/?b[^>]*>/gi, "")
+    .replace(/<\/?[a-z][^>]*>/gi, "")
+    .replace(/&nbsp;/g, " ").replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">")
+    .replace(/\s+/g, " ").trim();
+}
+function __buildStageCalcLines(baseLines) {
+  try {
+    if (!Array.isArray(baseLines) || !baseLines.length) return baseLines;
+    if (baseLines.some(x => x && x.__p)) return baseLines;
+    if (typeof S === "object" && S && Array.isArray(S.hints) && typeof S.stage === "number") {
+      if (!S.hints[S.stage] || S.hints[S.stage] < 1) S.hints[S.stage] = 1;
+    }
+    if (typeof updateAux === "function") { try { updateAux(); } catch (e) {} }
+    if (typeof updateHUD === "function") { try { updateHUD(); } catch (e) {} }
+    const c = (typeof S === "object" && S && S.cfg) || {};
+    const kd = (typeof KDc === "function") ? KDc() : (typeof KD !== "undefined" && Array.isArray(KD) && typeof c.i === "number" ? KD[c.i] : null);
+    const who = baseLines.some(x => x && x.who === "A") ? "A" : baseLines.some(x => x && x.who === "F") ? "F" : (baseLines[baseLines.length - 1] && baseLines[baseLines.length - 1].who) || "A";
+
+    const paramParts = [];
+    let l1 = "";
+    try {
+      if (typeof GM === "object" && GM && typeof GM.hud === "function") {
+        const h = GM.hud();
+        if (h && typeof h.l1 === "string") l1 = h.l1;
+      } else if (kd && typeof kd.h1 === "function") l1 = kd.h1(c);
+      else if ($("telemetryLine1")) l1 = $("telemetryLine1").textContent || "";
+    } catch (e) {}
+    l1 = __cleanCalcText(l1).replace(/^[^0-9A-Za-zÀ-ỹΔλμρπΩ]+/, "").trim();
+    if (l1) paramParts.push(l1);
+    try {
+      if (kd && typeof kd.info === "function") {
+        (kd.info(c) || []).forEach(it => {
+          const s = __cleanCalcText(it).replace(/^•\s*/, "").trim();
+          if (s && !paramParts.join(" ").includes(s)) paramParts.push(s);
+        });
+      }
+    } catch (e) {}
+    const paramsText = paramParts.join(" · ") || "Xem số liệu trên thanh trạng thái phía trên màn hình.";
+
+    let greenText = "";
+    try {
+      if (typeof GM === "object" && GM && typeof GM.greenTag === "function") greenText = __cleanCalcText(GM.greenTag());
+      else if (kd && kd.green) greenText = __cleanCalcText(kd.green);
+    } catch (e) {}
+    greenText = greenText.replace(/^🟢\s*/, "").trim();
+
+    let hint1Text = "";
+    try {
+      let hts = null;
+      if (typeof GM === "object" && GM && typeof GM.hintTexts === "function") hts = GM.hintTexts();
+      else if (typeof hintTexts === "function") hts = hintTexts();
+      if (Array.isArray(hts) && hts[0]) hint1Text = __cleanCalcText(hts[0]);
+      else if (kd && typeof kd.hint1 === "function") hint1Text = __cleanCalcText(kd.hint1(c));
+      else if (kd && typeof kd.hints === "function") { const kh = kd.hints(c); if (Array.isArray(kh) && kh[0]) hint1Text = __cleanCalcText(kh[0]); }
+    } catch (e) {}
+
+    const fParts = [];
+    if (greenText) fParts.push("Điều kiện đạt chuẩn: " + greenText);
+    if (hint1Text && !fParts.join(" ").includes(hint1Text)) fParts.push("Hướng tính: " + hint1Text);
+    const formulaText = fParts.join(" · ") || "Áp dụng công thức của bài học để tính thông số phù hợp.";
+
+    const pDesc = [];
+    try {
+      if (kd && Array.isArray(kd.P)) {
+        kd.P.forEach(p => {
+          if (!p || !p.lab) return;
+          if (Array.isArray(p.opts) && p.opts.length) pDesc.push(`${p.lab} (${p.opts.slice(0, 5).join(", ")}${p.opts.length > 5 ? "…" : ""})`);
+          else if (p.min != null && p.max != null) pDesc.push(`${p.lab} (từ ${p.min} đến ${p.max}${p.unit ? " " + p.unit : ""})`);
+          else pDesc.push(p.lab);
+        });
+      }
+    } catch (e) {}
+    let chint = "";
+    try {
+      if (typeof GM === "object" && GM && typeof GM.controlHint === "function") chint = __cleanCalcText(GM.controlHint());
+      else if (kd && kd.hint) chint = __cleanCalcText(kd.hint);
+      else if ($("controlHint")) chint = __cleanCalcText($("controlHint").textContent);
+    } catch (e) {}
+    chint = chint.replace(/^[^\wÀ-ỹ]+/, "").trim();
+    const execLabel = ($("executeBtnText") && $("executeBtnText").textContent.trim()) || (kd && kd.execLabel) || ($("btnExecuteStage") && $("btnExecuteStage").textContent.trim()) || "Chạy thử ▶";
+
+    let actionText = "Dựa vào thông số và công thức trên, bạn hãy tính giá trị cần thiết";
+    if (pDesc.length) actionText += ` rồi chỉnh [${pDesc.join(" · ")}]`;
+    if (chint) actionText += ` (${chint})`;
+    actionText += `. Sau khi chỉnh xong, bấm nút «${execLabel}» ở góc dưới để kiểm tra kết quả!`;
+
+    return baseLines.concat([
+      { who, __p: 1, text: `📊 Thông số để tính toán: ${paramsText}` },
+      { who, __p: 1, text: `📐 Công thức & cách tính: ${formulaText}` },
+      { who, __p: 1, text: `🎯 Chốt lại nhiệm vụ (Cần làm gì): ${actionText}` }
+    ]);
+  } catch (e) { return baseLines; }
+}
+function __enrichIntroHtml(rawHtml) {
+  if (window.__hdlgEnrichIntroStory) return window.__hdlgEnrichIntroStory(rawHtml);
+  if (!rawHtml || String(rawHtml).includes("hdlg-intro-summary")) return rawHtml;
+  let formulaItems = [];
+  try {
+    const ls = (typeof GM === "object" && GM && typeof GM.summaryLessons === "function") ? GM.summaryLessons() : [];
+    if (Array.isArray(ls) && ls.length) {
+      ls.slice(0, 4).forEach(it => { if (Array.isArray(it) && it.length >= 2) formulaItems.push(`<li><b class="text-amber-200">${it[0]}:</b> ${it[1]}</li>`); });
+    } else if (typeof LESSON === "object" && LESSON && Array.isArray(LESSON.formulas)) {
+      LESSON.formulas.slice(0, 4).forEach(f => {
+        if (typeof f === "string") formulaItems.push(`<li>• ${f}</li>`);
+        else if (f && f.name && f.formula) formulaItems.push(`<li><b class="text-amber-200">${f.name}:</b> ${f.formula}</li>`);
+      });
+    }
+  } catch (e) {}
+  const theoryBlock = formulaItems.length
+    ? `<div class="mt-2.5 p-2.5 rounded-xl bg-slate-900/80 border border-amber-400/40 text-[11.5px] leading-relaxed"><div class="font-extrabold text-amber-300 mb-1">📘 Kiến thức & Công thức trọng tâm (theo bài học mới):</div><ul class="space-y-1 text-slate-200">${formulaItems.join("")}</ul></div>`
+    : "";
+  const missionBlock = `<div class="hdlg-intro-summary mt-2 p-2.5 rounded-xl bg-emerald-950/75 border border-emerald-400/50 text-[11.5px] leading-relaxed text-emerald-100"><div class="font-extrabold text-emerald-300 mb-0.5">🎯 Chốt lại: Vào màn chơi bạn cần làm gì?</div><div><b>Bước 1:</b> Đọc kỹ dòng <b>📊 Thông số để tính toán</b> và <b>📐 Công thức & cách tính</b> xuất hiện ngay trong lời thoại của nhân vật ở mỗi chặng (hoặc bấm nút <b>📋 Thông số & Nhiệm vụ</b> ở góc dưới trái).<br><b>Bước 2:</b> Thay các thông số đã cho vào công thức để tính ra giá trị cần tìm, rồi <b>kéo thanh trượt / xoay núm / chọn linh kiện</b> trên màn hình.<br><b>Bước 3:</b> Bấm nút hành động màu xanh lá (<b>▶</b>) ở góc dưới để chạy kiểm chứng và hoàn thành cả 3 chặng!</div></div>`;
+  return rawHtml + theoryBlock + missionBlock;
+}
+
 function startDialogue(lines, onDone) {
+  if (S.phase === "dialogue") lines = __buildStageCalcLines(lines);
   S.dialogue = { lines, i: 0, onDone, typing: false, prevPhase: S.phase };
   $("dialogueBox").classList.remove("hidden"); $("gameplayActionBar").classList.add("hidden"); $("controlHint").classList.add("hidden"); hideCtxMenu();
   showLine();
@@ -878,7 +1002,7 @@ function goBackToLesson() {
 }
 function applyLessonTexts() {
   $("introLessonTitle").textContent = `Bài: ${LESSON.title} — ${LESSON.description || ""}`;
-  $("introSubject").textContent = `VẬT LÝ ${LESSON.grade || 8}`;
+  $("introSubject").textContent = LESSON.subject_label || "VẬT LÝ 11 · KẾT NỐI TRI THỨC";
 }
 
 /* ---------- Menu ngữ cảnh (HTML) ---------- */
@@ -3276,7 +3400,7 @@ KD[8] = mk25({
   chooseSet(); S.cfg = GM.makeStage(S.stage); GM.reset(); if (GM.onSetChange) GM.onSetChange();
   $("introPortraitA").src = IMG_SRC[CHAR_A.img]; $("introNameA").textContent = `${CHAR_A.name} · ${CHAR_A.job}`;
   $("introPortraitB").src = IMG_SRC[CHAR_B.img]; $("introNameB").textContent = `${CHAR_B.name} · ${CHAR_B.job}`;
-  $("introStory").innerHTML = GM.introStory(); renderSetIntro();
+  $("introStory").innerHTML = __enrichIntroHtml(GM.introStory()); renderSetIntro();
   applyLessonTexts(); syncHubHUD(); updateHUD();
   loadLessonFromAPI();
   requestAnimationFrame(loop);

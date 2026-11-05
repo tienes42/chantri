@@ -148,9 +148,9 @@ body { background: radial-gradient(120% 90% at 50% 0%, #12305a 0%, #0a1a33 55%, 
     <!-- MODAL MỞ ĐẦU -->
     <div id="introModal" class="absolute inset-0 z-40 flex items-center justify-center bg-black/70 p-4 fade-in">
         <div class="dialogue-box rounded-3xl max-w-2xl w-full p-5 md:p-7 pop-in scroll-y">
-            <div class="text-[11px] tracking-[0.25em] text-amber-300 font-extrabold">HỌC ĐỂ LÀM GÌ? · <span id="introSubject">VẬT LÝ 8</span></div>
+            <div class="text-[11px] tracking-[0.25em] text-amber-300 font-extrabold">HỌC ĐỂ LÀM GÌ? · <span id="introSubject">KHTN 8 · VẬT LÝ</span></div>
             <h1 class="text-2xl md:text-3xl font-black mt-1 leading-tight">💧 Trung Tâm Thủy Lực</h1>
-            <div id="introLessonTitle" class="text-amber-200 font-bold text-sm mt-1">Bài: Chất lưu</div>
+            <div id="introLessonTitle" class="text-amber-200 font-bold text-sm mt-1">Bài: Áp suất trên một bề mặt, Áp suất chất lỏng và Áp suất khí quyển</div>
             <div class="flex gap-3 mt-3 items-start">
                 <div class="text-center flex-shrink-0"><img id="introPortraitA" alt="" class="w-16 h-16 md:w-20 md:h-20 rounded-2xl border-2 border-amber-400 portrait-breathe mx-auto"><div id="introNameA" class="text-[10px] font-bold mt-1 text-amber-200 w-20 leading-tight"></div></div>
                 <div class="text-center flex-shrink-0"><img id="introPortraitB" alt="" class="w-16 h-16 md:w-20 md:h-20 rounded-2xl border-2 border-sky-400 portrait-breathe mx-auto"><div id="introNameB" class="text-[10px] font-bold mt-1 text-sky-200 w-20 leading-tight"></div></div>
@@ -227,10 +227,10 @@ body { background: radial-gradient(120% 90% at 50% 0%, #12305a 0%, #0a1a33 55%, 
 <script>
 "use strict";
 /* TRUNG TÂM THỦY LỰC — Game "Chất lưu" (Vật lý 10) */
-const LESSON_ID = 72;
+const LESSON_ID = Number(new URLSearchParams(location.search).get("lesson_id")) || 56;
 const GAME_KEY = "dong-luc-hoc-chat-long";
 const GAME_FONT = "'Lexend'";
-const FALLBACK_LESSON = {"id": 72, "subject_id": 2, "grade": 10, "topic": "dong-luc-hoc-chat-long", "title": "Chất lưu", "icon": "⚛️", "description": "Chất lưu – Vật lý lớp 10", "definition": "Chất lưu gồm chất lỏng và chất khí, có thể chảy và gây áp suất.", "concept": "Áp suất trong chất lỏng tăng theo độ sâu; chất lưu chuyển động có thể tạo ra các hiệu ứng lực.", "formulas": ["p = p0 + ρgh", "F_A = ρgV"], "meaning": "Ứng dụng trong bơm nước, thủy lực, tàu thuyền và thiết kế đường ống.", "real_life": "Điều khiển bơm nước giữa các bể có độ cao khác nhau.", "context_title": null, "context": null, "theory": null, "example_question": null, "example_answer": null, "challenge_question": null, "challenge_answer": null, "game_title": "Thử thách thực tế: Chất lưu", "game_type": "simulation", "game_description": "Chọn lưu lượng → mở van → theo dõi áp suất và mực nước."};
+const FALLBACK_LESSON = {"id": 56, "subject_id": 2, "subject": "physics", "subject_label": "KHTN 8 · VẬT LÝ", "grade": 8, "topic": "ap-suat", "title": "Áp suất trên một bề mặt, Áp suất chất lỏng và Áp suất khí quyển", "icon": "🚜", "description": "Chương III · SGK Khoa học tự nhiên 8 Kết nối tri thức với cuộc sống (Bài 15 – Bài 16): Áp lực, công thức tính áp suất trên một bề mặt, nguyên tắc tăng giảm áp suất, áp suất chất lỏng, bình thông nhau và áp suất khí quyển.", "definition": "- **Áp lực** là lực ép có phương vuông góc với mặt bị ép.\n- **Áp suất** ($p$) được tính bằng độ lớn của áp lực ($F$) trên một đơn vị diện tích bị ép ($S$): $p = \\dfrac{F}{S}$.\n- **Áp suất chất lỏng** tại độ sâu $h$ so với mặt thoáng là $p = d \\cdot h = D \\cdot g \\cdot h$, tác dụng theo mọi phương.\n- **Áp suất khí quyển** là áp suất do lớp không khí bao quanh Trái Đất gây ra theo mọi phương lên mọi vật trên mặt đất.", "concept": "", "formulas": ["Công thức tính áp suất: $p = \\dfrac{F}{S} \\Rightarrow F = p \\cdot S;\\quad S = \\dfrac{F}{p}$", "Đổi đơn vị diện tích và áp suất: $1\\text{ Pa} = 1\\text{ N/m}^2;\\quad 1\\text{ kPa} = 1000\\text{ Pa};\\quad 1\\text{ cm}^2 = 10^{-4}\\text{ m}^2$", "Áp suất cột chất lỏng ở độ sâu $h$: $p = d \\cdot h = 10D \\cdot h$", "Áp suất tuyệt đối tại độ sâu $h$: $p_{\\text{tổng}} = p_0 + d \\cdot h$", "Hệ thức máy nén thủy lực: $\\dfrac{F_2}{F_1} = \\dfrac{S_2}{S_1}$"], "meaning": "", "real_life": "- **Kĩ thuật xây dựng và thủy lợi**: Đê chắn sóng và đập thủy điện luôn được xây có phần chân đê rộng hơn nhiều so với mặt đê vì càng xuống sâu áp suất nước $p = d \\cdot h$ càng lớn.\n- **Cơ khí và đời sống**: Kích thủy lực nâng ô tô, phanh thủy lực, giác mút treo tường, ống hút nước, lỗ nhỏ trên nắp ấm trà giúp không khí tràn vào để rót nước dễ dàng.", "game_title": "Thử thách thực tế: Áp suất và Thủy lực", "game_description": "Thay đổi diện tích chân đế, độ sâu tàu lặn và tỉ số diện tích pít-tông máy nén thủy lực để kiểm chứng các quy luật áp suất.", "game_type": "game_chat_luu"};
 const THEME_MC = { teal: "#22d3ee", tealD: "#0e7490", or: "#a78bfa", orD: "#7c3aed", rgb: "34,211,238", panel: "6,16,30", lab: "#a5f3fc", btn: "12,30,52" };
 const IMG_SRC = {
   mentorM: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzQwIiB2aWV3Qm94PSIwIDAgMzAwIDM0MCI+PGRlZnM+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJoZyIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzZiNGEzMyIvPjxzdG9wIG9mZnNldD0iLjM1IiBzdG9wLWNvbG9yPSIjMWMxNDBlIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMGIwNjA1Ii8+PC9saW5lYXJHcmFkaWVudD4KICA8bGluZWFyR3JhZGllbnQgaWQ9InNrIiB4MT0iMCIgeTE9IjAiIHgyPSIwIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjZmZlMmNjIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjZjRiOTljIi8+PC9saW5lYXJHcmFkaWVudD4KICA8bGluZWFyR3JhZGllbnQgaWQ9InRwIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjZWNmZWZmIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjNjdlOGY5Ii8+PC9saW5lYXJHcmFkaWVudD4KICA8cmFkaWFsR3JhZGllbnQgaWQ9ImlyIiBjeD0iLjUiIGN5PSIuNzUiIHI9Ii43Ij48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNlMGEwNjAiLz48c3RvcCBvZmZzZXQ9Ii41NSIgc3RvcC1jb2xvcj0iIzZiM2YxZiIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzE0MGEwNSIvPjwvcmFkaWFsR3JhZGllbnQ+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJzaGluZSIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjAiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2ZmZiIgc3RvcC1vcGFjaXR5PSIwIi8+PHN0b3Agb2Zmc2V0PSIuNSIgc3RvcC1jb2xvcj0iI2ZmZiIgc3RvcC1vcGFjaXR5PSIuNTUiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNmZmYiIHN0b3Atb3BhY2l0eT0iMCIvPjwvbGluZWFyR3JhZGllbnQ+CiAgPHJhZGlhbEdyYWRpZW50IGlkPSJyaW0iIGN4PSIuMiIgY3k9Ii4yIiByPSIxIj48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNmZmQ1OWEiIHN0b3Atb3BhY2l0eT0iLjU1Ii8+PHN0b3Agb2Zmc2V0PSIuNSIgc3RvcC1jb2xvcj0iI2ZmZDU5YSIgc3RvcC1vcGFjaXR5PSIwIi8+PC9yYWRpYWxHcmFkaWVudD4KICA8L2RlZnM+PHBhdGggZD0iTTQwIDM0MCBRNDIgMjYyIDEwNCAyNDYgTDE5NiAyNDYgUTI1OCAyNjIgMjYwIDM0MCBaIiBmaWxsPSJ1cmwoI3RwKSIvPgogIDxwYXRoIGQ9Ik0xNTAgMjQ2IEwxOTYgMjQ2IFEyNTggMjYyIDI2MCAzNDAgTDE3NiAzNDAgWiIgZmlsbD0iIzY3ZThmOSIgb3BhY2l0eT0iLjU1Ii8+PHBhdGggZD0iTTY0IDM0MCBRNjYgMjY4IDExMCAyNTAgTDE5MCAyNTAgUTIzNCAyNjggMjM2IDM0MCBaIiBmaWxsPSIjZjk3MzE2IiBvcGFjaXR5PSIuOTUiLz48cGF0aCBkPSJNMTE4IDI1MCBMMTUwIDMwMCBMMTgyIDI1MCIgZmlsbD0iI2VjZmVmZiIvPgogICAgPHBhdGggZD0iTTgwIDI5MCBMMTIwIDI5MCBNMTgwIDI5MCBMMjIwIDI5MCBNNzIgMzE4IEwxMjQgMzE4IE0xNzYgMzE4IEwyMjggMzE4IiBzdHJva2U9IiNlNWU3ZWIiIHN0cm9rZS13aWR0aD0iOCIvPjxwYXRoIGQ9Ik04MCAyOTAgTDEyMCAyOTAgTTE4MCAyOTAgTDIyMCAyOTAgTTcyIDMxOCBMMTI0IDMxOCBNMTc2IDMxOCBMMjI4IDMxOCIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjIiIG9wYWNpdHk9Ii44Ii8+CiAgICA8cmVjdCB4PSIxODYiIHk9IjI2MiIgd2lkdGg9IjIwIiBoZWlnaHQ9IjM0IiByeD0iNCIgZmlsbD0iIzFmMjkzNyIvPjxyZWN0IHg9IjE5MCIgeT0iMjUyIiB3aWR0aD0iNCIgaGVpZ2h0PSIxMiIgZmlsbD0iIzExMTgyNyIvPjxjaXJjbGUgY3g9IjE5NiIgY3k9IjI4MiIgcj0iNCIgZmlsbD0iIzIyYzU1ZSIvPjxwYXRoIGQ9Ik0xMzAgMjA2IEwxNzAgMjA2IEwxNzIgMjUyIFExNTAgMjYyIDEyOCAyNTIgWiIgZmlsbD0idXJsKCNzaykiLz48cGF0aCBkPSJNMTMwIDIyMiBRMTUwIDIzNiAxNzAgMjIyIEwxNzAgMjA2IEwxMzAgMjA2WiIgZmlsbD0iI2Y0Yjk5YyIgb3BhY2l0eT0iLjgiLz48ZWxsaXBzZSBjeD0iODgiIGN5PSIxNTAiIHJ4PSIxMSIgcnk9IjE2IiBmaWxsPSIjZmZlMmNjIi8+PGVsbGlwc2UgY3g9IjIxMiIgY3k9IjE1MCIgcng9IjExIiByeT0iMTYiIGZpbGw9IiNmZmUyY2MiLz4KICA8cGF0aCBkPSJNODYgMTQ0IFE5MiAxNTAgODggMTU4IiBzdHJva2U9IiNmNGI5OWMiIHN0cm9rZS13aWR0aD0iMyIgZmlsbD0ibm9uZSIvPjxwYXRoIGQ9Ik0yMTQgMTQ0IFEyMDggMTUwIDIxMiAxNTgiIHN0cm9rZT0iI2Y0Yjk5YyIgc3Ryb2tlLXdpZHRoPSIzIiBmaWxsPSJub25lIi8+PHBhdGggZD0iTTkyIDEyMCBROTIgNzAgMTUwIDY2IFEyMDggNzAgMjA4IDEyMCBRMjA4IDE3NiAxNzYgMjA0IFExNjAgMjE2IDE1MCAyMTYgUTE0MCAyMTYgMTI0IDIwNCBROTIgMTc2IDkyIDEyMCBaIiBmaWxsPSJ1cmwoI3NrKSIvPgogIDxwYXRoIGQ9Ik05MiAxMjAgUTkyIDcwIDE1MCA2NiBRMjA4IDcwIDIwOCAxMjAgUTIwOCAxNzYgMTc2IDIwNCBRMTYwIDIxNiAxNTAgMjE2IFExNDAgMjE2IDEyNCAyMDQgUTkyIDE3NiA5MiAxMjAgWiIgZmlsbD0idXJsKCNyaW0pIi8+PGVsbGlwc2UgY3g9IjExNCIgY3k9IjE3MCIgcng9IjE0IiByeT0iNyIgZmlsbD0iI2ZmOGZhMyIgb3BhY2l0eT0iLjQyIi8+PGVsbGlwc2UgY3g9IjE4NiIgY3k9IjE3MCIgcng9IjE0IiByeT0iNyIgZmlsbD0iI2ZmOGZhMyIgb3BhY2l0eT0iLjQyIi8+CiAgPHBhdGggZD0iTTEwOCAxNjggbDQgLTQgTTExNCAxNjggbDQgLTQgTTE4MCAxNjggbDQgLTQgTTE4NiAxNjggbDQgLTQiIHN0cm9rZT0iI2ZmNmI4YSIgc3Ryb2tlLXdpZHRoPSIxLjYiIG9wYWNpdHk9Ii42Ii8+PHBhdGggZD0iTTEwNSAxNDAgUTEyMiAxMjggMTM5IDE0MCBMMTM4IDE1OCBRMTIyIDE3MCAxMDYgMTU4IFoiIGZpbGw9IiNmZmYiLz4KICAgICAgPGVsbGlwc2UgY3g9IjEyMSIgY3k9IjE1MSIgcng9IjExIiByeT0iMTQuNSIgZmlsbD0idXJsKCNpcikiLz4KICAgICAgPGVsbGlwc2UgY3g9IjEyMSIgY3k9IjE1MiIgcng9IjUuMiIgcnk9IjcuNSIgZmlsbD0iIzEyMDgwNCIvPgogICAgICA8ZWxsaXBzZSBjeD0iMTE4IiBjeT0iMTQ0IiByeD0iNC42IiByeT0iNS42IiBmaWxsPSIjZmZmIi8+PGNpcmNsZSBjeD0iMTI3IiBjeT0iMTU4IiByPSIyLjMiIGZpbGw9IiNmZmYiIG9wYWNpdHk9Ii45Ii8+CiAgICAgIDxwYXRoIGQ9Ik0xMTMgMTYwIFExMjIgMTY1IDEzMSAxNjAiIHN0cm9rZT0iI2UwYTA2MCIgc3Ryb2tlLXdpZHRoPSIyIiBmaWxsPSJub25lIiBvcGFjaXR5PSIuNyIvPgogICAgICA8cGF0aCBkPSJNMTAzIDE0MSBRMTIyIDEyNCAxNDEgMTQwIiBzdHJva2U9IiMxZDBlMDYiIHN0cm9rZS13aWR0aD0iNS41IiBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KICAgICAgPHBhdGggZD0iTTEwNCAxNDAgbC03IC01IiBzdHJva2U9IiMxZDBlMDYiIHN0cm9rZS13aWR0aD0iMy41IiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48cGF0aCBkPSJNMTYxIDE0MCBRMTc4IDEyOCAxOTUgMTQwIEwxOTQgMTU4IFExNzggMTcwIDE2MiAxNTggWiIgZmlsbD0iI2ZmZiIvPgogICAgICA8ZWxsaXBzZSBjeD0iMTc5IiBjeT0iMTUxIiByeD0iMTEiIHJ5PSIxNC41IiBmaWxsPSJ1cmwoI2lyKSIvPgogICAgICA8ZWxsaXBzZSBjeD0iMTc5IiBjeT0iMTUyIiByeD0iNS4yIiByeT0iNy41IiBmaWxsPSIjMTIwODA0Ii8+CiAgICAgIDxlbGxpcHNlIGN4PSIxNzQiIGN5PSIxNDQiIHJ4PSI0LjYiIHJ5PSI1LjYiIGZpbGw9IiNmZmYiLz48Y2lyY2xlIGN4PSIxODMiIGN5PSIxNTgiIHI9IjIuMyIgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iLjkiLz4KICAgICAgPHBhdGggZD0iTTE2OSAxNjAgUTE3OCAxNjUgMTg3IDE2MCIgc3Ryb2tlPSIjZTBhMDYwIiBzdHJva2Utd2lkdGg9IjIiIGZpbGw9Im5vbmUiIG9wYWNpdHk9Ii43Ii8+CiAgICAgIDxwYXRoIGQ9Ik0xNTkgMTQxIFExNzggMTI0IDE5NyAxNDAiIHN0cm9rZT0iIzFkMGUwNiIgc3Ryb2tlLXdpZHRoPSI1LjUiIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogICAgICA8cGF0aCBkPSJNMTk2IDE0MCBsNyAtNSIgc3Ryb2tlPSIjMWQwZTA2IiBzdHJva2Utd2lkdGg9IjMuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PHBhdGggZD0iTTEwNCAxMjAgUTExOCAxMTIgMTM0IDExOCIgc3Ryb2tlPSIjMWMxNDBlIiBzdHJva2Utd2lkdGg9IjQuNSIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgPHBhdGggZD0iTTE2NiAxMTggUTE4MiAxMTIgMTk2IDEyMCIgc3Ryb2tlPSIjMWMxNDBlIiBzdHJva2Utd2lkdGg9IjQuNSIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgPHBhdGggZD0iTTE1MCAxNjYgUTE1MyAxNzIgMTQ4IDE3NSIgc3Ryb2tlPSIjZjRiOTljIiBzdHJva2Utd2lkdGg9IjIuNiIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgPHBhdGggZD0iTTEzNiAxODYgUTE1MCAyMDAgMTY0IDE4NiBRMTUwIDE5MSAxMzYgMTg2IFoiIGZpbGw9IiNjMjQxNGIiIHN0cm9rZT0iIzdmMWQyYSIgc3Ryb2tlLXdpZHRoPSIyIiBzdHJva2UtbGluZWpvaW49InJvdW5kIi8+CiAgPHBhdGggZD0iTTE0MiAxOTAgUTE1MCAxOTUgMTU4IDE5MCIgc3Ryb2tlPSIjZmY5YWE4IiBzdHJva2Utd2lkdGg9IjIiIGZpbGw9Im5vbmUiLz48cGF0aCBkPSJNODQgMTI4IFE3MCA1MiAxNTAgNDYgUTIzMCA1MCAyMTYgMTI4IFEyMTAgMTAwIDE5OCA5MCBMMTkyIDEwOCBMMTgwIDg0IEwxNjggMTA0IEwxNTYgODAgTDE0MiAxMDIgTDEyOCA4MiBMMTE2IDEwNiBMMTA0IDkwIFE5MiAxMDAgODQgMTI4IFoiIGZpbGw9InVybCgjaGcpIi8+CiAgICAgIDxwYXRoIGQ9Ik0xMDQgNzQgUTE0MCA1OCAxODAgNjQiIHN0cm9rZT0idXJsKCNzaGluZSkiIHN0cm9rZS13aWR0aD0iNyIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PC9zdmc+",  mentorM_c: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzQwIiB2aWV3Qm94PSIwIDAgMzAwIDM0MCI+PGRlZnM+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJoZyIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzZiNGEzMyIvPjxzdG9wIG9mZnNldD0iLjM1IiBzdG9wLWNvbG9yPSIjMWMxNDBlIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMGIwNjA1Ii8+PC9saW5lYXJHcmFkaWVudD4KICA8bGluZWFyR3JhZGllbnQgaWQ9InNrIiB4MT0iMCIgeTE9IjAiIHgyPSIwIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjZmZlMmNjIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjZjRiOTljIi8+PC9saW5lYXJHcmFkaWVudD4KICA8bGluZWFyR3JhZGllbnQgaWQ9InRwIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjZWNmZWZmIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjNjdlOGY5Ii8+PC9saW5lYXJHcmFkaWVudD4KICA8cmFkaWFsR3JhZGllbnQgaWQ9ImlyIiBjeD0iLjUiIGN5PSIuNzUiIHI9Ii43Ij48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNlMGEwNjAiLz48c3RvcCBvZmZzZXQ9Ii41NSIgc3RvcC1jb2xvcj0iIzZiM2YxZiIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzE0MGEwNSIvPjwvcmFkaWFsR3JhZGllbnQ+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJzaGluZSIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjAiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2ZmZiIgc3RvcC1vcGFjaXR5PSIwIi8+PHN0b3Agb2Zmc2V0PSIuNSIgc3RvcC1jb2xvcj0iI2ZmZiIgc3RvcC1vcGFjaXR5PSIuNTUiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNmZmYiIHN0b3Atb3BhY2l0eT0iMCIvPjwvbGluZWFyR3JhZGllbnQ+CiAgPHJhZGlhbEdyYWRpZW50IGlkPSJyaW0iIGN4PSIuMiIgY3k9Ii4yIiByPSIxIj48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNmZmQ1OWEiIHN0b3Atb3BhY2l0eT0iLjU1Ii8+PHN0b3Agb2Zmc2V0PSIuNSIgc3RvcC1jb2xvcj0iI2ZmZDU5YSIgc3RvcC1vcGFjaXR5PSIwIi8+PC9yYWRpYWxHcmFkaWVudD4KICA8L2RlZnM+PHBhdGggZD0iTTQwIDM0MCBRNDIgMjYyIDEwNCAyNDYgTDE5NiAyNDYgUTI1OCAyNjIgMjYwIDM0MCBaIiBmaWxsPSJ1cmwoI3RwKSIvPgogIDxwYXRoIGQ9Ik0xNTAgMjQ2IEwxOTYgMjQ2IFEyNTggMjYyIDI2MCAzNDAgTDE3NiAzNDAgWiIgZmlsbD0iIzY3ZThmOSIgb3BhY2l0eT0iLjU1Ii8+PHBhdGggZD0iTTY0IDM0MCBRNjYgMjY4IDExMCAyNTAgTDE5MCAyNTAgUTIzNCAyNjggMjM2IDM0MCBaIiBmaWxsPSIjZjk3MzE2IiBvcGFjaXR5PSIuOTUiLz48cGF0aCBkPSJNMTE4IDI1MCBMMTUwIDMwMCBMMTgyIDI1MCIgZmlsbD0iI2VjZmVmZiIvPgogICAgPHBhdGggZD0iTTgwIDI5MCBMMTIwIDI5MCBNMTgwIDI5MCBMMjIwIDI5MCBNNzIgMzE4IEwxMjQgMzE4IE0xNzYgMzE4IEwyMjggMzE4IiBzdHJva2U9IiNlNWU3ZWIiIHN0cm9rZS13aWR0aD0iOCIvPjxwYXRoIGQ9Ik04MCAyOTAgTDEyMCAyOTAgTTE4MCAyOTAgTDIyMCAyOTAgTTcyIDMxOCBMMTI0IDMxOCBNMTc2IDMxOCBMMjI4IDMxOCIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjIiIG9wYWNpdHk9Ii44Ii8+CiAgICA8cmVjdCB4PSIxODYiIHk9IjI2MiIgd2lkdGg9IjIwIiBoZWlnaHQ9IjM0IiByeD0iNCIgZmlsbD0iIzFmMjkzNyIvPjxyZWN0IHg9IjE5MCIgeT0iMjUyIiB3aWR0aD0iNCIgaGVpZ2h0PSIxMiIgZmlsbD0iIzExMTgyNyIvPjxjaXJjbGUgY3g9IjE5NiIgY3k9IjI4MiIgcj0iNCIgZmlsbD0iIzIyYzU1ZSIvPjxwYXRoIGQ9Ik0xMzAgMjA2IEwxNzAgMjA2IEwxNzIgMjUyIFExNTAgMjYyIDEyOCAyNTIgWiIgZmlsbD0idXJsKCNzaykiLz48cGF0aCBkPSJNMTMwIDIyMiBRMTUwIDIzNiAxNzAgMjIyIEwxNzAgMjA2IEwxMzAgMjA2WiIgZmlsbD0iI2Y0Yjk5YyIgb3BhY2l0eT0iLjgiLz48ZWxsaXBzZSBjeD0iODgiIGN5PSIxNTAiIHJ4PSIxMSIgcnk9IjE2IiBmaWxsPSIjZmZlMmNjIi8+PGVsbGlwc2UgY3g9IjIxMiIgY3k9IjE1MCIgcng9IjExIiByeT0iMTYiIGZpbGw9IiNmZmUyY2MiLz4KICA8cGF0aCBkPSJNODYgMTQ0IFE5MiAxNTAgODggMTU4IiBzdHJva2U9IiNmNGI5OWMiIHN0cm9rZS13aWR0aD0iMyIgZmlsbD0ibm9uZSIvPjxwYXRoIGQ9Ik0yMTQgMTQ0IFEyMDggMTUwIDIxMiAxNTgiIHN0cm9rZT0iI2Y0Yjk5YyIgc3Ryb2tlLXdpZHRoPSIzIiBmaWxsPSJub25lIi8+PHBhdGggZD0iTTkyIDEyMCBROTIgNzAgMTUwIDY2IFEyMDggNzAgMjA4IDEyMCBRMjA4IDE3NiAxNzYgMjA0IFExNjAgMjE2IDE1MCAyMTYgUTE0MCAyMTYgMTI0IDIwNCBROTIgMTc2IDkyIDEyMCBaIiBmaWxsPSJ1cmwoI3NrKSIvPgogIDxwYXRoIGQ9Ik05MiAxMjAgUTkyIDcwIDE1MCA2NiBRMjA4IDcwIDIwOCAxMjAgUTIwOCAxNzYgMTc2IDIwNCBRMTYwIDIxNiAxNTAgMjE2IFExNDAgMjE2IDEyNCAyMDQgUTkyIDE3NiA5MiAxMjAgWiIgZmlsbD0idXJsKCNyaW0pIi8+PGVsbGlwc2UgY3g9IjExNCIgY3k9IjE3MCIgcng9IjE0IiByeT0iNyIgZmlsbD0iI2ZmOGZhMyIgb3BhY2l0eT0iLjQyIi8+PGVsbGlwc2UgY3g9IjE4NiIgY3k9IjE3MCIgcng9IjE0IiByeT0iNyIgZmlsbD0iI2ZmOGZhMyIgb3BhY2l0eT0iLjQyIi8+CiAgPHBhdGggZD0iTTEwOCAxNjggbDQgLTQgTTExNCAxNjggbDQgLTQgTTE4MCAxNjggbDQgLTQgTTE4NiAxNjggbDQgLTQiIHN0cm9rZT0iI2ZmNmI4YSIgc3Ryb2tlLXdpZHRoPSIxLjYiIG9wYWNpdHk9Ii42Ii8+PHBhdGggZD0iTTEwNSAxNDYgUTEyMiAxNTggMTM5IDE0NiIgc3Ryb2tlPSIjMmExNTA4IiBzdHJva2Utd2lkdGg9IjQuNSIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgICAgIDxwYXRoIGQ9Ik0xMDUgMTQ2IGwtNiAtMyIgc3Ryb2tlPSIjMmExNTA4IiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjxwYXRoIGQ9Ik0xNjEgMTQ2IFExNzggMTU4IDE5NSAxNDYiIHN0cm9rZT0iIzJhMTUwOCIgc3Ryb2tlLXdpZHRoPSI0LjUiIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogICAgICA8cGF0aCBkPSJNMTk1IDE0NiBsNiAtMyIgc3Ryb2tlPSIjMmExNTA4IiBzdHJva2Utd2lkdGg9IjMiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjxwYXRoIGQ9Ik0xMDQgMTIwIFExMTggMTEyIDEzNCAxMTgiIHN0cm9rZT0iIzFjMTQwZSIgc3Ryb2tlLXdpZHRoPSI0LjUiIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogIDxwYXRoIGQ9Ik0xNjYgMTE4IFExODIgMTEyIDE5NiAxMjAiIHN0cm9rZT0iIzFjMTQwZSIgc3Ryb2tlLXdpZHRoPSI0LjUiIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogIDxwYXRoIGQ9Ik0xNTAgMTY2IFExNTMgMTcyIDE0OCAxNzUiIHN0cm9rZT0iI2Y0Yjk5YyIgc3Ryb2tlLXdpZHRoPSIyLjYiIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogIDxwYXRoIGQ9Ik0xMzYgMTg2IFExNTAgMjAwIDE2NCAxODYgUTE1MCAxOTEgMTM2IDE4NiBaIiBmaWxsPSIjYzI0MTRiIiBzdHJva2U9IiM3ZjFkMmEiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgogIDxwYXRoIGQ9Ik0xNDIgMTkwIFExNTAgMTk1IDE1OCAxOTAiIHN0cm9rZT0iI2ZmOWFhOCIgc3Ryb2tlLXdpZHRoPSIyIiBmaWxsPSJub25lIi8+PHBhdGggZD0iTTg0IDEyOCBRNzAgNTIgMTUwIDQ2IFEyMzAgNTAgMjE2IDEyOCBRMjEwIDEwMCAxOTggOTAgTDE5MiAxMDggTDE4MCA4NCBMMTY4IDEwNCBMMTU2IDgwIEwxNDIgMTAyIEwxMjggODIgTDExNiAxMDYgTDEwNCA5MCBROTIgMTAwIDg0IDEyOCBaIiBmaWxsPSJ1cmwoI2hnKSIvPgogICAgICA8cGF0aCBkPSJNMTA0IDc0IFExNDAgNTggMTgwIDY0IiBzdHJva2U9InVybCgjc2hpbmUpIiBzdHJva2Utd2lkdGg9IjciIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjwvc3ZnPg==",
@@ -386,7 +386,7 @@ function goNextSet() {
   S.cfg = GM.makeStage(S.stage); S.phase = "intro"; resetStage();
   $("gameplayActionBar").classList.add("hidden"); $("controlHint").classList.add("hidden");
   if (GM.onSetChange) GM.onSetChange();
-  $("introStory").innerHTML = GM.introStory(); renderSetIntro(); hudCache.stageTitleLabel = null;
+  $("introStory").innerHTML = __enrichIntroHtml(GM.introStory()); renderSetIntro(); hudCache.stageTitleLabel = null;
   $("introModal").classList.remove("hidden");
 }
 
@@ -406,7 +406,7 @@ async function loadLessonFromAPI() {
   try {
     const res = await apiFetch(`/api/content/lessons/${LESSON_ID}`);
     const d = res && (res.data || res.lesson || res);
-    if (d && d.title) { LESSON = Object.assign({}, FALLBACK_LESSON, d); applyLessonTexts(); }
+    if (d && d.title && (new URLSearchParams(location.search).get("lesson_id") || d.topic === FALLBACK_LESSON.topic)) { LESSON = Object.assign({}, FALLBACK_LESSON, d); applyLessonTexts(); }
   } catch (e) { console.warn(e); }
 }
 async function startSession() {
@@ -736,7 +736,131 @@ function toast(msg, color, ms) {
 
 /* ---------- Hội thoại cốt truyện ---------- */
 let typeTimer = null;
+
+/* ---------- Nâng cấp Cốt truyện & Thông số tính toán (CT GDPT 2018) ---------- */
+function __cleanCalcText(s) {
+  if (!s) return "";
+  return String(s)
+    .replace(/<br\s*\/?>/gi, " · ")
+    .replace(/<sub>([^<]+)<\/sub>/gi, "_$1")
+    .replace(/<sup>([^<]+)<\/sup>/gi, "^($1)")
+    .replace(/<\/?b[^>]*>/gi, "")
+    .replace(/<\/?[a-z][^>]*>/gi, "")
+    .replace(/&nbsp;/g, " ").replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">")
+    .replace(/\s+/g, " ").trim();
+}
+function __buildStageCalcLines(baseLines) {
+  try {
+    if (!Array.isArray(baseLines) || !baseLines.length) return baseLines;
+    if (baseLines.some(x => x && x.__p)) return baseLines;
+    if (typeof S === "object" && S && Array.isArray(S.hints) && typeof S.stage === "number") {
+      if (!S.hints[S.stage] || S.hints[S.stage] < 1) S.hints[S.stage] = 1;
+    }
+    if (typeof updateAux === "function") { try { updateAux(); } catch (e) {} }
+    if (typeof updateHUD === "function") { try { updateHUD(); } catch (e) {} }
+    const c = (typeof S === "object" && S && S.cfg) || {};
+    const kd = (typeof KDc === "function") ? KDc() : (typeof KD !== "undefined" && Array.isArray(KD) && typeof c.i === "number" ? KD[c.i] : null);
+    const who = baseLines.some(x => x && x.who === "A") ? "A" : baseLines.some(x => x && x.who === "F") ? "F" : (baseLines[baseLines.length - 1] && baseLines[baseLines.length - 1].who) || "A";
+
+    const paramParts = [];
+    let l1 = "";
+    try {
+      if (typeof GM === "object" && GM && typeof GM.hud === "function") {
+        const h = GM.hud();
+        if (h && typeof h.l1 === "string") l1 = h.l1;
+      } else if (kd && typeof kd.h1 === "function") l1 = kd.h1(c);
+      else if ($("telemetryLine1")) l1 = $("telemetryLine1").textContent || "";
+    } catch (e) {}
+    l1 = __cleanCalcText(l1).replace(/^[^0-9A-Za-zÀ-ỹΔλμρπΩ]+/, "").trim();
+    if (l1) paramParts.push(l1);
+    try {
+      if (kd && typeof kd.info === "function") {
+        (kd.info(c) || []).forEach(it => {
+          const s = __cleanCalcText(it).replace(/^•\s*/, "").trim();
+          if (s && !paramParts.join(" ").includes(s)) paramParts.push(s);
+        });
+      }
+    } catch (e) {}
+    const paramsText = paramParts.join(" · ") || "Xem số liệu trên thanh trạng thái phía trên màn hình.";
+
+    let greenText = "";
+    try {
+      if (typeof GM === "object" && GM && typeof GM.greenTag === "function") greenText = __cleanCalcText(GM.greenTag());
+      else if (kd && kd.green) greenText = __cleanCalcText(kd.green);
+    } catch (e) {}
+    greenText = greenText.replace(/^🟢\s*/, "").trim();
+
+    let hint1Text = "";
+    try {
+      let hts = null;
+      if (typeof GM === "object" && GM && typeof GM.hintTexts === "function") hts = GM.hintTexts();
+      else if (typeof hintTexts === "function") hts = hintTexts();
+      if (Array.isArray(hts) && hts[0]) hint1Text = __cleanCalcText(hts[0]);
+      else if (kd && typeof kd.hint1 === "function") hint1Text = __cleanCalcText(kd.hint1(c));
+      else if (kd && typeof kd.hints === "function") { const kh = kd.hints(c); if (Array.isArray(kh) && kh[0]) hint1Text = __cleanCalcText(kh[0]); }
+    } catch (e) {}
+
+    const fParts = [];
+    if (greenText) fParts.push("Điều kiện đạt chuẩn: " + greenText);
+    if (hint1Text && !fParts.join(" ").includes(hint1Text)) fParts.push("Hướng tính: " + hint1Text);
+    const formulaText = fParts.join(" · ") || "Áp dụng công thức của bài học để tính thông số phù hợp.";
+
+    const pDesc = [];
+    try {
+      if (kd && Array.isArray(kd.P)) {
+        kd.P.forEach(p => {
+          if (!p || !p.lab) return;
+          if (Array.isArray(p.opts) && p.opts.length) pDesc.push(`${p.lab} (${p.opts.slice(0, 5).join(", ")}${p.opts.length > 5 ? "…" : ""})`);
+          else if (p.min != null && p.max != null) pDesc.push(`${p.lab} (từ ${p.min} đến ${p.max}${p.unit ? " " + p.unit : ""})`);
+          else pDesc.push(p.lab);
+        });
+      }
+    } catch (e) {}
+    let chint = "";
+    try {
+      if (typeof GM === "object" && GM && typeof GM.controlHint === "function") chint = __cleanCalcText(GM.controlHint());
+      else if (kd && kd.hint) chint = __cleanCalcText(kd.hint);
+      else if ($("controlHint")) chint = __cleanCalcText($("controlHint").textContent);
+    } catch (e) {}
+    chint = chint.replace(/^[^\wÀ-ỹ]+/, "").trim();
+    const execLabel = ($("executeBtnText") && $("executeBtnText").textContent.trim()) || (kd && kd.execLabel) || ($("btnExecuteStage") && $("btnExecuteStage").textContent.trim()) || "Chạy thử ▶";
+
+    let actionText = "Dựa vào thông số và công thức trên, bạn hãy tính giá trị cần thiết";
+    if (pDesc.length) actionText += ` rồi chỉnh [${pDesc.join(" · ")}]`;
+    if (chint) actionText += ` (${chint})`;
+    actionText += `. Sau khi chỉnh xong, bấm nút «${execLabel}» ở góc dưới để kiểm tra kết quả!`;
+
+    return baseLines.concat([
+      { who, __p: 1, text: `📊 Thông số để tính toán: ${paramsText}` },
+      { who, __p: 1, text: `📐 Công thức & cách tính: ${formulaText}` },
+      { who, __p: 1, text: `🎯 Chốt lại nhiệm vụ (Cần làm gì): ${actionText}` }
+    ]);
+  } catch (e) { return baseLines; }
+}
+function __enrichIntroHtml(rawHtml) {
+  if (window.__hdlgEnrichIntroStory) return window.__hdlgEnrichIntroStory(rawHtml);
+  if (!rawHtml || String(rawHtml).includes("hdlg-intro-summary")) return rawHtml;
+  let formulaItems = [];
+  try {
+    const ls = (typeof GM === "object" && GM && typeof GM.summaryLessons === "function") ? GM.summaryLessons() : [];
+    if (Array.isArray(ls) && ls.length) {
+      ls.slice(0, 4).forEach(it => { if (Array.isArray(it) && it.length >= 2) formulaItems.push(`<li><b class="text-amber-200">${it[0]}:</b> ${it[1]}</li>`); });
+    } else if (typeof LESSON === "object" && LESSON && Array.isArray(LESSON.formulas)) {
+      LESSON.formulas.slice(0, 4).forEach(f => {
+        if (typeof f === "string") formulaItems.push(`<li>• ${f}</li>`);
+        else if (f && f.name && f.formula) formulaItems.push(`<li><b class="text-amber-200">${f.name}:</b> ${f.formula}</li>`);
+      });
+    }
+  } catch (e) {}
+  const theoryBlock = formulaItems.length
+    ? `<div class="mt-2.5 p-2.5 rounded-xl bg-slate-900/80 border border-amber-400/40 text-[11.5px] leading-relaxed"><div class="font-extrabold text-amber-300 mb-1">📘 Kiến thức & Công thức trọng tâm (theo bài học mới):</div><ul class="space-y-1 text-slate-200">${formulaItems.join("")}</ul></div>`
+    : "";
+  const missionBlock = `<div class="hdlg-intro-summary mt-2 p-2.5 rounded-xl bg-emerald-950/75 border border-emerald-400/50 text-[11.5px] leading-relaxed text-emerald-100"><div class="font-extrabold text-emerald-300 mb-0.5">🎯 Chốt lại: Vào màn chơi bạn cần làm gì?</div><div><b>Bước 1:</b> Đọc kỹ dòng <b>📊 Thông số để tính toán</b> và <b>📐 Công thức & cách tính</b> xuất hiện ngay trong lời thoại của nhân vật ở mỗi chặng (hoặc bấm nút <b>📋 Thông số & Nhiệm vụ</b> ở góc dưới trái).<br><b>Bước 2:</b> Thay các thông số đã cho vào công thức để tính ra giá trị cần tìm, rồi <b>kéo thanh trượt / xoay núm / chọn linh kiện</b> trên màn hình.<br><b>Bước 3:</b> Bấm nút hành động màu xanh lá (<b>▶</b>) ở góc dưới để chạy kiểm chứng và hoàn thành cả 3 chặng!</div></div>`;
+  return rawHtml + theoryBlock + missionBlock;
+}
+
 function startDialogue(lines, onDone) {
+  if (S.phase === "dialogue") lines = __buildStageCalcLines(lines);
   S.dialogue = { lines, i: 0, onDone, typing: false, prevPhase: S.phase };
   $("dialogueBox").classList.remove("hidden"); $("gameplayActionBar").classList.add("hidden"); $("controlHint").classList.add("hidden"); hideCtxMenu();
   showLine();
@@ -879,7 +1003,7 @@ function goBackToLesson() {
 }
 function applyLessonTexts() {
   $("introLessonTitle").textContent = `Bài: ${LESSON.title} — ${LESSON.description || ""}`;
-  $("introSubject").textContent = `VẬT LÝ ${LESSON.grade || 8}`;
+  $("introSubject").textContent = LESSON.subject_label || "KHTN 8 · VẬT LÝ";
 }
 
 /* ---------- Menu ngữ cảnh (HTML) ---------- */
@@ -2515,7 +2639,7 @@ KD[8] = mk({
   chooseSet(); S.cfg = GM.makeStage(S.stage); GM.reset(); if (GM.onSetChange) GM.onSetChange();
   $("introPortraitA").src = IMG_SRC[CHAR_A.img]; $("introNameA").textContent = `${CHAR_A.name} · ${CHAR_A.job}`;
   $("introPortraitB").src = IMG_SRC[CHAR_B.img]; $("introNameB").textContent = `${CHAR_B.name} · ${CHAR_B.job}`;
-  $("introStory").innerHTML = GM.introStory(); renderSetIntro();
+  $("introStory").innerHTML = __enrichIntroHtml(GM.introStory()); renderSetIntro();
   applyLessonTexts(); syncHubHUD(); updateHUD();
   loadLessonFromAPI();
   requestAnimationFrame(loop);

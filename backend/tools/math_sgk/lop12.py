@@ -183,6 +183,9 @@ LESSONS = [
     {
         "topic": "l12-ch02-vecto-va-he-truc-toa-do-trong-khong-gian",
         "title": "Vectơ và hệ trục toạ độ trong không gian",
+        "game_type": "game_toa_do_oxyz",
+        "game_title": "Đội Định Vị Oxyz: Vectơ trong không gian & Phương pháp tọa độ Oxyz",
+        "game_description": "Vận dụng tọa độ điểm, phép toán vectơ và tích vô hướng trong không gian Oxyz để điều khiển cáp tời và định vị drone.",
         "icon": "🧭",
         "description": (
             "Chương II · SGK Toán 12 tập một: Bài 6 – Bài 8. Vectơ trong không gian; "

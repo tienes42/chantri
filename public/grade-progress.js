@@ -78,7 +78,7 @@
   function lessonURL(subject, grade, l, hash) {
     return "lesson.html?id=" + encodeURIComponent(l.id) + "&subject=" + subject + "&grade=" + encodeURIComponent(l.grade || grade) + "&topic=" + encodeURIComponent(l.topic || "") + (hash || "");
   }
-  var GAME_FILES = { function_challenge: "function-challenge" };   // game_type khác tên file
+  var GAME_FILES = { function_challenge: "function-challenge", "store-management": "store_management" };   // game_type khác tên file
   function gameURL(l) { var t = l.game_type || "simulation"; return "games/" + encodeURIComponent(GAME_FILES[t] || t) + ".html?lesson_id=" + encodeURIComponent(l.id); }
   function challengeURL(subject, grade) {
     return "/challenge.html?subject=" + subject + "&grade=" + encodeURIComponent(grade) + "&from=" + encodeURIComponent(location.pathname + location.search);

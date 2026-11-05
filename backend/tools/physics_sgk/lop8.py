@@ -206,7 +206,7 @@ $$p_1 = \dfrac{F}{S_1} = \dfrac{600}{0{,}015} = 40000\text{ Pa} = 40\text{ kPa}$
 - **Cơ khí và đời sống**: Kích thủy lực nâng ô tô, phanh thủy lực, giác mút treo tường, ống hút nước, lỗ nhỏ trên nắp ấm trà giúp không khí tràn vào để rót nước dễ dàng.""",
         "game_title": "Thử thách thực tế: Áp suất và Thủy lực",
         "game_description": "Thay đổi diện tích chân đế, độ sâu tàu lặn và tỉ số diện tích pít-tông máy nén thủy lực để kiểm chứng các quy luật áp suất.",
-        "game_type": "simulation",
+        "game_type": "game_chat_luu",
         "quiz": [
             mcq(
                 "biet",

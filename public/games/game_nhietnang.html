@@ -118,9 +118,9 @@
     <!-- MODAL MỞ ĐẦU -->
     <div id="introModal" class="absolute inset-0 z-40 flex items-center justify-center bg-black/70 p-4 fade-in">
         <div class="dialogue-box rounded-3xl max-w-2xl w-full p-5 md:p-7 pop-in scroll-y">
-            <div class="text-[11px] tracking-[0.25em] text-amber-300 font-extrabold">HỌC ĐỂ LÀM GÌ? · <span id="introSubject">VẬT LÝ 8</span></div>
+            <div class="text-[11px] tracking-[0.25em] text-amber-300 font-extrabold">HỌC ĐỂ LÀM GÌ? · <span id="introSubject">KHTN 8 · VẬT LÝ</span></div>
             <h1 class="text-2xl md:text-3xl font-black mt-1 leading-tight">☕ Chuyến Giao Nóng Mùa Đông</h1>
-            <div id="introLessonTitle" class="text-amber-200 font-bold text-sm mt-1">Bài: Nhiệt năng và truyền nhiệt</div>
+            <div id="introLessonTitle" class="text-amber-200 font-bold text-sm mt-1">Bài: Năng lượng nhiệt, Nội năng, Sự truyền nhiệt và Sự nở vì nhiệt</div>
             <div class="flex gap-3 mt-3 items-start">
                 <div class="text-center flex-shrink-0"><img id="introPortraitA" alt="" class="w-16 h-16 md:w-20 md:h-20 rounded-2xl border-2 border-amber-400 portrait-breathe mx-auto"><div id="introNameA" class="text-[10px] font-bold mt-1 text-amber-200 w-20 leading-tight"></div></div>
                 <div class="text-center flex-shrink-0"><img id="introPortraitB" alt="" class="w-16 h-16 md:w-20 md:h-20 rounded-2xl border-2 border-sky-400 portrait-breathe mx-auto"><div id="introNameB" class="text-[10px] font-bold mt-1 text-sky-200 w-20 leading-tight"></div></div>
@@ -197,9 +197,9 @@
    CHUYẾN GIAO NÓNG MÙA ĐÔNG — Game "Nhiệt năng và truyền nhiệt" (Vật lý 8)
    Nền tảng: HỌC ĐỂ LÀM GÌ?
    ========================================================= */
-const LESSON_ID = 59;
+const LESSON_ID = Number(new URLSearchParams(location.search).get("lesson_id")) || 59;
 const GAME_KEY = "nhietnang";
-const FALLBACK_LESSON = {"id":59,"subject_id":2,"grade":8,"topic":"nhiet-nang","title":"Nhiệt năng và truyền nhiệt","icon":"⚛️","description":"Nhiệt năng và truyền nhiệt – Vật lý lớp 8","definition":"Nhiệt năng liên quan chuyển động nhiệt của các hạt cấu tạo nên vật.","concept":"Nhiệt truyền từ vật có nhiệt độ cao sang vật có nhiệt độ thấp bằng dẫn nhiệt, đối lưu hoặc bức xạ.","formulas":["Q = m c ΔT","Q: nhiệt lượng","m: khối lượng","c: nhiệt dung riêng","ΔT: độ biến thiên nhiệt độ"],"meaning":"Ứng dụng trong nấu ăn, cách nhiệt nhà ở, điều hòa và thiết kế bình giữ nhiệt.","real_life":"Thiết kế hộp giữ nhiệt để đồ uống giữ nóng lâu nhất.","game_title":"Thử thách thực tế: Nhiệt năng và truyền nhiệt","game_description":"Chọn vật liệu → mô phỏng truyền nhiệt → so sánh nhiệt độ theo thời gian.","game_type":"simulation"};
+const FALLBACK_LESSON = {"id": 59, "subject_id": 2, "subject": "physics", "subject_label": "KHTN 8 · VẬT LÝ", "grade": 8, "topic": "nhiet-nang", "title": "Năng lượng nhiệt, Nội năng, Sự truyền nhiệt và Sự nở vì nhiệt", "icon": "🔥", "description": "Chương VI · SGK Khoa học tự nhiên 8 Kết nối tri thức với cuộc sống (Bài 26 – Bài 29): Năng lượng nhiệt, nội năng, thực hành đo năng lượng nhiệt bằng Joulemeter, ba hình thức truyền nhiệt (dẫn nhiệt, đối lưu, bức xạ nhiệt) và sự nở vì nhiệt của các chất.", "definition": "- **Năng lượng nhiệt** là năng lượng mà vật có được nhờ chuyển động nhiệt của các phân tử. Phần năng lượng nhiệt mà vật nhận thêm hay mất đi trong quá trình truyền nhiệt gọi là **nhiệt lượng** ($Q$, đơn vị $\\text{J}$).\n- **Nội năng** của một vật là tổng động năng và thế năng của các phân tử, nguyên tử cấu tạo nên vật.\n- **Ba hình thức truyền nhiệt**: dẫn nhiệt (chủ yếu ở chất rắn), đối lưu (ở chất lỏng và chất khí) và bức xạ nhiệt (truyền bằng các tia nhiệt đi thẳng, truyền được cả trong chân không).", "concept": "", "formulas": ["Nhiệt lượng thu vào hoặc tỏa ra: $Q = m \\cdot c \\cdot \\Delta t = m \\cdot c \\cdot |t_2 - t_1|$", "Phương trình cân bằng nhiệt (bỏ qua hao phí): $Q_{\\text{tỏa}} = Q_{\\text{thu}} \\iff m_1 c_1 (t_1 - t) = m_2 c_2 (t - t_2)$", "Hình thức truyền nhiệt chủ yếu theo môi trường: $\\text{Rắn: Dẫn nhiệt};\\quad \\text{Lỏng, Khí: Đối lưu};\\quad \\text{Chân không: Bức xạ nhiệt}$", "So sánh độ nở vì nhiệt của ba thể: $\\text{Chất khí} > \\text{Chất lỏng} > \\text{Chất rắn}$", "Quy tắc uốn cong của băng kép (Đồng – Thép): $t \\text{ tăng} \\Rightarrow \\text{cong về phía Thép};\\quad t \\text{ giảm} \\Rightarrow \\text{cong về phía Đồng}$"], "meaning": "", "real_life": "- **Bình giữ nhiệt (phích nước)**: Gồm hai lớp thủy tinh có lớp chân không ở giữa để ngăn **dẫn nhiệt** và **đối lưu**; mặt trong tráng bạc phản xạ các tia nhiệt để ngăn **bức xạ nhiệt**; nút đậy bằng nhựa hoặc gỗ xốp ngăn đối lưu.\n- **Lắp đặt thiết bị và công trình**: Lắp điều hòa làm lạnh ở trên cao và đặt lò sưởi ở dưới thấp để tận dụng dòng đối lưu không khí; tạo khe hở nhiệt trên đường ray, cầu thép và ống dẫn hơi nóng.", "game_title": "Thử thách thực tế: Nhiệt năng và Truyền nhiệt", "game_description": "Thử nghiệm các lớp vật liệu cách nhiệt, quan sát dòng đối lưu và sự uốn cong của băng kép khi thay đổi nhiệt độ.", "game_type": "game_nhietnang"};
 
 /* ---------- ẢNH BASE64 (nhân vật, bối cảnh) ---------- */
 const IMG_SRC = {
@@ -296,7 +296,7 @@ async function loadLessonFromAPI() {
   try {
     const res = await apiFetch(`/api/content/lessons/${LESSON_ID}`);
     const d = res && (res.data || res.lesson || res);
-    if (d && d.title) { LESSON = Object.assign({}, FALLBACK_LESSON, d); applyLessonTexts(); }
+    if (d && d.title && (new URLSearchParams(location.search).get("lesson_id") || d.topic === FALLBACK_LESSON.topic)) { LESSON = Object.assign({}, FALLBACK_LESSON, d); applyLessonTexts(); }
   } catch (e) { console.warn(e); }
 }
 async function startSession() {
@@ -626,7 +626,131 @@ function toast(msg, color, ms) {
 
 /* ---------- Hội thoại cốt truyện ---------- */
 let typeTimer = null;
+
+/* ---------- Nâng cấp Cốt truyện & Thông số tính toán (CT GDPT 2018) ---------- */
+function __cleanCalcText(s) {
+  if (!s) return "";
+  return String(s)
+    .replace(/<br\s*\/?>/gi, " · ")
+    .replace(/<sub>([^<]+)<\/sub>/gi, "_$1")
+    .replace(/<sup>([^<]+)<\/sup>/gi, "^($1)")
+    .replace(/<\/?b[^>]*>/gi, "")
+    .replace(/<\/?[a-z][^>]*>/gi, "")
+    .replace(/&nbsp;/g, " ").replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">")
+    .replace(/\s+/g, " ").trim();
+}
+function __buildStageCalcLines(baseLines) {
+  try {
+    if (!Array.isArray(baseLines) || !baseLines.length) return baseLines;
+    if (baseLines.some(x => x && x.__p)) return baseLines;
+    if (typeof S === "object" && S && Array.isArray(S.hints) && typeof S.stage === "number") {
+      if (!S.hints[S.stage] || S.hints[S.stage] < 1) S.hints[S.stage] = 1;
+    }
+    if (typeof updateAux === "function") { try { updateAux(); } catch (e) {} }
+    if (typeof updateHUD === "function") { try { updateHUD(); } catch (e) {} }
+    const c = (typeof S === "object" && S && S.cfg) || {};
+    const kd = (typeof KDc === "function") ? KDc() : (typeof KD !== "undefined" && Array.isArray(KD) && typeof c.i === "number" ? KD[c.i] : null);
+    const who = baseLines.some(x => x && x.who === "A") ? "A" : baseLines.some(x => x && x.who === "F") ? "F" : (baseLines[baseLines.length - 1] && baseLines[baseLines.length - 1].who) || "A";
+
+    const paramParts = [];
+    let l1 = "";
+    try {
+      if (typeof GM === "object" && GM && typeof GM.hud === "function") {
+        const h = GM.hud();
+        if (h && typeof h.l1 === "string") l1 = h.l1;
+      } else if (kd && typeof kd.h1 === "function") l1 = kd.h1(c);
+      else if ($("telemetryLine1")) l1 = $("telemetryLine1").textContent || "";
+    } catch (e) {}
+    l1 = __cleanCalcText(l1).replace(/^[^0-9A-Za-zÀ-ỹΔλμρπΩ]+/, "").trim();
+    if (l1) paramParts.push(l1);
+    try {
+      if (kd && typeof kd.info === "function") {
+        (kd.info(c) || []).forEach(it => {
+          const s = __cleanCalcText(it).replace(/^•\s*/, "").trim();
+          if (s && !paramParts.join(" ").includes(s)) paramParts.push(s);
+        });
+      }
+    } catch (e) {}
+    const paramsText = paramParts.join(" · ") || "Xem số liệu trên thanh trạng thái phía trên màn hình.";
+
+    let greenText = "";
+    try {
+      if (typeof GM === "object" && GM && typeof GM.greenTag === "function") greenText = __cleanCalcText(GM.greenTag());
+      else if (kd && kd.green) greenText = __cleanCalcText(kd.green);
+    } catch (e) {}
+    greenText = greenText.replace(/^🟢\s*/, "").trim();
+
+    let hint1Text = "";
+    try {
+      let hts = null;
+      if (typeof GM === "object" && GM && typeof GM.hintTexts === "function") hts = GM.hintTexts();
+      else if (typeof hintTexts === "function") hts = hintTexts();
+      if (Array.isArray(hts) && hts[0]) hint1Text = __cleanCalcText(hts[0]);
+      else if (kd && typeof kd.hint1 === "function") hint1Text = __cleanCalcText(kd.hint1(c));
+      else if (kd && typeof kd.hints === "function") { const kh = kd.hints(c); if (Array.isArray(kh) && kh[0]) hint1Text = __cleanCalcText(kh[0]); }
+    } catch (e) {}
+
+    const fParts = [];
+    if (greenText) fParts.push("Điều kiện đạt chuẩn: " + greenText);
+    if (hint1Text && !fParts.join(" ").includes(hint1Text)) fParts.push("Hướng tính: " + hint1Text);
+    const formulaText = fParts.join(" · ") || "Áp dụng công thức của bài học để tính thông số phù hợp.";
+
+    const pDesc = [];
+    try {
+      if (kd && Array.isArray(kd.P)) {
+        kd.P.forEach(p => {
+          if (!p || !p.lab) return;
+          if (Array.isArray(p.opts) && p.opts.length) pDesc.push(`${p.lab} (${p.opts.slice(0, 5).join(", ")}${p.opts.length > 5 ? "…" : ""})`);
+          else if (p.min != null && p.max != null) pDesc.push(`${p.lab} (từ ${p.min} đến ${p.max}${p.unit ? " " + p.unit : ""})`);
+          else pDesc.push(p.lab);
+        });
+      }
+    } catch (e) {}
+    let chint = "";
+    try {
+      if (typeof GM === "object" && GM && typeof GM.controlHint === "function") chint = __cleanCalcText(GM.controlHint());
+      else if (kd && kd.hint) chint = __cleanCalcText(kd.hint);
+      else if ($("controlHint")) chint = __cleanCalcText($("controlHint").textContent);
+    } catch (e) {}
+    chint = chint.replace(/^[^\wÀ-ỹ]+/, "").trim();
+    const execLabel = ($("executeBtnText") && $("executeBtnText").textContent.trim()) || (kd && kd.execLabel) || ($("btnExecuteStage") && $("btnExecuteStage").textContent.trim()) || "Chạy thử ▶";
+
+    let actionText = "Dựa vào thông số và công thức trên, bạn hãy tính giá trị cần thiết";
+    if (pDesc.length) actionText += ` rồi chỉnh [${pDesc.join(" · ")}]`;
+    if (chint) actionText += ` (${chint})`;
+    actionText += `. Sau khi chỉnh xong, bấm nút «${execLabel}» ở góc dưới để kiểm tra kết quả!`;
+
+    return baseLines.concat([
+      { who, __p: 1, text: `📊 Thông số để tính toán: ${paramsText}` },
+      { who, __p: 1, text: `📐 Công thức & cách tính: ${formulaText}` },
+      { who, __p: 1, text: `🎯 Chốt lại nhiệm vụ (Cần làm gì): ${actionText}` }
+    ]);
+  } catch (e) { return baseLines; }
+}
+function __enrichIntroHtml(rawHtml) {
+  if (window.__hdlgEnrichIntroStory) return window.__hdlgEnrichIntroStory(rawHtml);
+  if (!rawHtml || String(rawHtml).includes("hdlg-intro-summary")) return rawHtml;
+  let formulaItems = [];
+  try {
+    const ls = (typeof GM === "object" && GM && typeof GM.summaryLessons === "function") ? GM.summaryLessons() : [];
+    if (Array.isArray(ls) && ls.length) {
+      ls.slice(0, 4).forEach(it => { if (Array.isArray(it) && it.length >= 2) formulaItems.push(`<li><b class="text-amber-200">${it[0]}:</b> ${it[1]}</li>`); });
+    } else if (typeof LESSON === "object" && LESSON && Array.isArray(LESSON.formulas)) {
+      LESSON.formulas.slice(0, 4).forEach(f => {
+        if (typeof f === "string") formulaItems.push(`<li>• ${f}</li>`);
+        else if (f && f.name && f.formula) formulaItems.push(`<li><b class="text-amber-200">${f.name}:</b> ${f.formula}</li>`);
+      });
+    }
+  } catch (e) {}
+  const theoryBlock = formulaItems.length
+    ? `<div class="mt-2.5 p-2.5 rounded-xl bg-slate-900/80 border border-amber-400/40 text-[11.5px] leading-relaxed"><div class="font-extrabold text-amber-300 mb-1">📘 Kiến thức & Công thức trọng tâm (theo bài học mới):</div><ul class="space-y-1 text-slate-200">${formulaItems.join("")}</ul></div>`
+    : "";
+  const missionBlock = `<div class="hdlg-intro-summary mt-2 p-2.5 rounded-xl bg-emerald-950/75 border border-emerald-400/50 text-[11.5px] leading-relaxed text-emerald-100"><div class="font-extrabold text-emerald-300 mb-0.5">🎯 Chốt lại: Vào màn chơi bạn cần làm gì?</div><div><b>Bước 1:</b> Đọc kỹ dòng <b>📊 Thông số để tính toán</b> và <b>📐 Công thức & cách tính</b> xuất hiện ngay trong lời thoại của nhân vật ở mỗi chặng (hoặc bấm nút <b>📋 Thông số & Nhiệm vụ</b> ở góc dưới trái).<br><b>Bước 2:</b> Thay các thông số đã cho vào công thức để tính ra giá trị cần tìm, rồi <b>kéo thanh trượt / xoay núm / chọn linh kiện</b> trên màn hình.<br><b>Bước 3:</b> Bấm nút hành động màu xanh lá (<b>▶</b>) ở góc dưới để chạy kiểm chứng và hoàn thành cả 3 chặng!</div></div>`;
+  return rawHtml + theoryBlock + missionBlock;
+}
+
 function startDialogue(lines, onDone) {
+  if (S.phase === "dialogue") lines = __buildStageCalcLines(lines);
   S.dialogue = { lines, i: 0, onDone, typing: false, prevPhase: S.phase };
   $("dialogueBox").classList.remove("hidden"); $("gameplayActionBar").classList.add("hidden"); $("controlHint").classList.add("hidden"); hideCtxMenu();
   showLine();
@@ -767,7 +891,7 @@ function goBackToLesson() {
 }
 function applyLessonTexts() {
   $("introLessonTitle").textContent = `Bài: ${LESSON.title} — ${LESSON.description || ""}`;
-  $("introSubject").textContent = `VẬT LÝ ${LESSON.grade || 8}`;
+  $("introSubject").textContent = LESSON.subject_label || "KHTN 8 · VẬT LÝ";
 }
 
 /* ---------- Menu ngữ cảnh (HTML) ---------- */
@@ -1826,7 +1950,7 @@ $("btnPlus").addEventListener("click", () => { if (S.phase !== "setup") return; 
   S.cfg = GM.makeStage(0); GM.reset();
   $("introPortraitA").src = IMG_SRC[CHAR_A.img]; $("introNameA").textContent = `${CHAR_A.name} · ${CHAR_A.job}`;
   $("introPortraitB").src = IMG_SRC[CHAR_B.img]; $("introNameB").textContent = `${CHAR_B.name} · ${CHAR_B.job}`;
-  $("introStory").innerHTML = GM.introStory();
+  $("introStory").innerHTML = __enrichIntroHtml(GM.introStory());
   applyLessonTexts(); syncHubHUD(); updateHUD();
   loadLessonFromAPI();
   requestAnimationFrame(loop);

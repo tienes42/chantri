@@ -153,9 +153,9 @@ body{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
     <!-- MODAL MỞ ĐẦU -->
     <div id="introModal" class="absolute inset-0 z-40 flex items-center justify-center bg-black/70 p-4 fade-in">
         <div class="dialogue-box rounded-3xl max-w-2xl w-full p-5 md:p-7 pop-in scroll-y">
-            <div class="text-[11px] tracking-[0.25em] text-amber-300 font-extrabold">HỌC ĐỂ LÀM GÌ? · <span id="introSubject">VẬT LÝ 8</span></div>
+            <div class="text-[11px] tracking-[0.25em] text-amber-300 font-extrabold">HỌC ĐỂ LÀM GÌ? · <span id="introSubject">TOÁN 12 · KẾT NỐI TRI THỨC</span></div>
             <h1 class="text-2xl md:text-3xl font-black mt-1 leading-tight">📈 Biệt Đội Cực Trị</h1>
-            <div id="introLessonTitle" class="text-amber-200 font-bold text-sm mt-1">Bài: Ứng dụng Đạo hàm để Khảo sát và Vẽ đồ thị của Hàm số</div>
+            <div id="introLessonTitle" class="text-amber-200 font-bold text-sm mt-1">Bài: Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số</div>
             <div class="flex gap-3 mt-3 items-start">
                 <div class="text-center flex-shrink-0"><img id="introPortraitA" alt="" class="w-16 h-16 md:w-20 md:h-20 rounded-2xl border-2 border-amber-400 portrait-breathe mx-auto"><div id="introNameA" class="text-[10px] font-bold mt-1 text-amber-200 w-20 leading-tight"></div></div>
                 <div class="text-center flex-shrink-0"><img id="introPortraitB" alt="" class="w-16 h-16 md:w-20 md:h-20 rounded-2xl border-2 border-sky-400 portrait-breathe mx-auto"><div id="introNameB" class="text-[10px] font-bold mt-1 text-sky-200 w-20 leading-tight"></div></div>
@@ -234,10 +234,10 @@ body{-webkit-font-smoothing:antialiased;text-rendering:optimizeLegibility}
 "use strict";
 /* BIỆT ĐỘI CỰC TRỊ — Game "Ứng dụng Đạo hàm để Khảo sát và Vẽ đồ thị của Hàm số" (Toán 12) */
 window.addEventListener("resize", e => { if (typeof GM === "undefined") e.stopImmediatePropagation(); }, true);
-const LESSON_ID = 143;
+const LESSON_ID = Number(new URLSearchParams(location.search).get("lesson_id")) || 304;
 const GAME_KEY = "ham-so";
 const GAME_FONT = "'Lexend'";
-const FALLBACK_LESSON = {"id":143,"subject_id":1,"grade":12,"topic":"ham-so","title":"Ứng dụng Đạo hàm để Khảo sát và Vẽ đồ thị của Hàm số","icon":"📈","description":"Xét tính đơn điệu, tìm cực trị, giá trị lớn nhất - nhỏ nhất (GTLN - GTNN), đường tiệm cận (đứng, ngang, xiên) và khảo sát đồ thị.","definition":"Khảo sát hàm số sử dụng đạo hàm cấp 1 và cấp 2 để phân tích toàn diện sự biến thiên (đồng biến, nghịch biến), điểm cực đại - cực tiểu, GTLN - GTNN và các đường tiệm cận của đồ thị hàm số.","concept":"• Tính đơn điệu: f'(x) ≥ 0 trên K (bằng 0 tại hữu hạn điểm) ⇒ f(x) đồng biến trên K; f'(x) ≤ 0 ⇒ nghịch biến.\n• Cực trị của hàm số: f'(x) đổi dấu từ '+' sang '−' khi qua x₀ ⇒ x₀ là điểm cực đại; đổi từ '−' sang '+' ⇒ điểm cực tiểu.\n• Tìm GTLN (max) và GTNN (min) của hàm số trên đoạn [a; b] và trong các bài toán tối ưu hóa thực tế.\n• Ba loại đường tiệm cận: Tiệm cận đứng (x = x₀), Tiệm cận ngang (y = y₀) và Tiệm cận xiên (y = ax + b).\n• Khảo sát hàm bậc ba y = ax³ + bx² + cx + d, hàm phân thức bậc nhất/bậc nhất y = (ax+b)/(cx+d) và hàm bậc hai/bậc nhất y = (ax²+bx+c)/(mx+n).","formulas":[{"items":[{"name":"Định lý đơn điệu","note":"","formula":"f'(x) > 0, ∀x ∈ K ⇒ f(x) đồng biến trên K  ;  f'(x) < 0, ∀x ∈ K ⇒ f(x) nghịch biến trên K"},{"name":"Điều kiện Cực trị","note":"","formula":"Điều kiện cần (hàm khả vi): f'(x₀) = 0 ; Điều kiện đủ: f'(x) đổi dấu khi qua x₀ (hoặc f''(x₀) ≠ 0)"},{"name":"Thuật toán tìm Max/Min trên đoạn [a; b]","note":"","formula":"Giải f'(x) = 0 lấy xᵢ ∈ (a; b) ; Tính f(a), f(b), f(xᵢ) rồi so sánh chọn số lớn nhất / nhỏ nhất"}],"category":"I. Tính đơn điệu, Cực trị & GTLN - GTNN trên đoạn [a; b]"},{"items":[{"name":"Tiệm cận ngang (TCN): y = y₀","note":"Hàm y = (ax+b)/(cx+d) có TCN y = a/c","formula":"lim[x→+∞] f(x) = y₀  hoặc  lim[x→−∞] f(x) = y₀"},{"name":"Tiệm cận đứng (TCĐ): x = x₀","note":"Hàm y = (ax+b)/(cx+d) có TCĐ x = −d/c","formula":"lim[x→x₀⁺] f(x) = ±∞  hoặc  lim[x→x₀⁻] f(x) = ±∞"},{"name":"Tiệm cận xiên (TCX): y = ax + b (a ≠ 0)","note":"Hàm y = P₂(x)/Q₁(x) = ax + b + r/(mx+n) có TCX y = ax + b","formula":"a = lim[x→±∞] [f(x)/x]  và  b = lim[x→±∞] [f(x) − ax]  (hoặc chia đa thức tử cho mẫu)"}],"category":"II. Ba loại Đường tiệm cận của đồ thị hàm số y = f(x)"}],"meaning":"Công cụ mạnh nhất để giải các bài toán tối ưu hóa chi phí sản xuất, thiết kế bao bì tiết kiệm nguyên liệu nhất và tối đa hóa lợi nhuận kinh tế.","real_life":"Thiết kế vỏ lon nước ngọt có dung tích cố định V = 330 ml sao cho tốn ít diện tích nhôm nhất, tìm tốc độ tàu chạy tiết kiệm nhiên liệu nhất.","context_title":"Ứng dụng thực tế: Ứng dụng Đạo hàm để Khảo sát và Vẽ đồ thị của Hàm số","context":"Thiết kế vỏ lon nước ngọt có dung tích cố định V = 330 ml sao cho tốn ít diện tích nhôm nhất, tìm tốc độ tàu chạy tiết kiệm nhiên liệu nhất.","theory":"Khảo sát hàm số sử dụng đạo hàm cấp 1 và cấp 2 để phân tích toàn diện sự biến thiên (đồng biến, nghịch biến), điểm cực đại - cực tiểu, GTLN - GTNN và các đường tiệm cận của đồ thị hàm số.\n\n• Tính đơn điệu: f'(x) ≥ 0 trên K (bằng 0 tại hữu hạn điểm) ⇒ f(x) đồng biến trên K; f'(x) ≤ 0 ⇒ nghịch biến.\n• Cực trị của hàm số: f'(x) đổi dấu từ '+' sang '−' khi qua x₀ ⇒ x₀ là điểm cực đại; đổi từ '−' sang '+' ⇒ điểm cực tiểu.\n• Tìm GTLN (max) và GTNN (min) của hàm số trên đoạn [a; b] và trong các bài toán tối ưu hóa thực tế.\n• Ba loại đường tiệm cận: Tiệm cận đứng (x = x₀), Tiệm cận ngang (y = y₀) và Tiệm cận xiên (y = ax + b).\n• Khảo sát hàm bậc ba y = ax³ + bx² + cx + d, hàm phân thức bậc nhất/bậc nhất y = (ax+b)/(cx+d) và hàm bậc hai/bậc nhất y = (ax²+bx+c)/(mx+n).","formula":"• I. Tính đơn điệu, Cực trị & GTLN - GTNN trên đoạn [a; b]:\n  - Định lý đơn điệu: f'(x) > 0, ∀x ∈ K ⇒ f(x) đồng biến trên K  ;  f'(x) < 0, ∀x ∈ K ⇒ f(x) nghịch biến trên K\n  - Điều kiện Cực trị: Điều kiện cần (hàm khả vi): f'(x₀) = 0 ; Điều kiện đủ: f'(x) đổi dấu khi qua x₀ (hoặc f''(x₀) ≠ 0)\n  - Thuật toán tìm Max/Min trên đoạn [a; b]: Giải f'(x) = 0 lấy xᵢ ∈ (a; b) ; Tính f(a), f(b), f(xᵢ) rồi so sánh chọn số lớn nhất / nhỏ nhất\n• II. Ba loại Đường tiệm cận của đồ thị hàm số y = f(x):\n  - Tiệm cận ngang (TCN): y = y₀: lim[x→+∞] f(x) = y₀  hoặc  lim[x→−∞] f(x) = y₀ (Hàm y = (ax+b)/(cx+d) có TCN y = a/c)\n  - Tiệm cận đứng (TCĐ): x = x₀: lim[x→x₀⁺] f(x) = ±∞  hoặc  lim[x→x₀⁻] f(x) = ±∞ (Hàm y = (ax+b)/(cx+d) có TCĐ x = −d/c)\n  - Tiệm cận xiên (TCX): y = ax + b (a ≠ 0): a = lim[x→±∞] [f(x)/x]  và  b = lim[x→±∞] [f(x) − ax]  (hoặc chia đa thức tử cho mẫu) (Hàm y = P₂(x)/Q₁(x) = ax + b + r/(mx+n) có TCX y = ax + b)","example":"Tìm các đường tiệm cận đứng và tiệm cận xiên của đồ thị hàm số y = (2x² − 3x + 5) / (x − 2).","example_answer":"Tập xác định D = ℝ \\ {2}. Vì lim[x→2⁺] y = +∞ và lim[x→2⁻] y = −∞ nên x = 2 là tiệm cận đứng. Chia đa thức tử cho mẫu: y = 2x + 1 + 7/(x − 2). Vì lim[x→±∞] [y − (2x + 1)] = lim[x→±∞] 7/(x − 2) = 0 nên đường thẳng y = 2x + 1 là tiệm cận xiên.","question":"Giá trị lớn nhất của hàm số f(x) = x³ − 3x² − 9x + 10 trên đoạn [−2; 2] bằng:","answers":["15","10","−12","2"],"correct":0,"application":"Công cụ mạnh nhất để giải các bài toán tối ưu hóa chi phí sản xuất, thiết kế bao bì tiết kiệm nguyên liệu nhất và tối đa hóa lợi nhuận kinh tế.","challenge":"Từ một tấm tôn hình vuông có cạnh bằng 12 dm, người ta cắt bỏ ở bốn góc bốn hình vuông nhỏ bằng nhau có cạnh là x (dm), rồi gập các mép lên để hàn thành một chiếc hộp chữ nhật không có nắp. Hỏi phải chọn x bằng bao nhiêu đề-xi-mét để chiếc hộp tạo thành có thể tích lớn nhất?","challenge_answer":"Điều kiện: 0 < x < 6. Đáy hộp là hình vuông cạnh (12 − 2x) dm và chiều cao hộp là x dm. Thể tích hộp: V(x) = x(12 − 2x)² = 4x³ − 48x² + 144x. Đạo hàm: V'(x) = 12x² − 96x + 144 = 0 ⇔ x² − 8x + 12 = 0 ⇔ x = 2 (nhận) hoặc x = 6 (loại). Tại x = 2 dm, thể tích đạt GTLN là V(2) = 2 · 8² = 128 (dm³).","game_title":"Mô phỏng tương tác: Ứng dụng Đạo hàm để Khảo sát và Vẽ đồ thị của Hàm số","game_description":"Khám phá và vận dụng ứng dụng đạo hàm để khảo sát và vẽ đồ thị của hàm số trong bài toán thực tiễn.","game_type":"simulation"};
+const FALLBACK_LESSON = {"id": 304, "subject_id": 1, "subject": "math", "subject_label": "TOÁN 12 · KẾT NỐI TRI THỨC", "grade": 12, "topic": "l12-ch01-ung-dung-dao-ham-khao-sat-va-ve-do-thi-ham-so", "title": "Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số", "icon": "📈", "description": "Chương I · SGK Toán 12 tập một: Bài 1 – Bài 5. Tính đơn điệu và cực trị của hàm số; giá trị lớn nhất và giá trị nhỏ nhất của hàm số; đường tiệm cận của đồ thị hàm số; khảo sát sự biến thiên và vẽ đồ thị của hàm số; ứng dụng đạo hàm để giải quyết một số vấn đề liên quan đến thực tiễn.", "definition": "- **Tính đơn điệu và dấu đạo hàm**: Cho hàm số $y = f(x)$ có đạo hàm trên khoảng $K$. Nếu $f'(x) > 0$ với mọi $x \\in K$ thì $f(x)$ **đồng biến** trên $K$; nếu $f'(x) < 0$ với mọi $x \\in K$ thì $f(x)$ **nghịch biến** trên $K$. Nếu $f'(x) \\geq 0$ (hoặc $f'(x) \\leq 0$) với mọi $x \\in K$ và $f'(x) = 0$ chỉ tại một số hữu hạn điểm của $K$ thì hàm số vẫn đồng biến (hoặc nghịch biến) trên $K$.\n- **Cực trị của hàm số**: Nếu $f'(x)$ đổi dấu từ dương sang âm khi $x$ đi qua $x_0$ thì $x_0$ là **điểm cực đại**, $f(x_0)$ là **giá trị cực đại** (ký hiệu $y_{\\text{CĐ}}$). Nếu $f'(x)$ đổi dấu từ âm sang dương khi $x$ đi qua $x_0$ thì $x_0$ là **điểm cực tiểu**, $f(x_0)$ là **giá trị cực tiểu** (ký hiệu $y_{\\text{CT}}$). Điểm $(x_0; f(x_0))$ gọi là **điểm cực trị của đồ thị hàm số**.\n- **Giá trị lớn nhất – Giá trị nhỏ nhất**: Cho hàm số $y = f(x)$ xác định trên tập $D$. Số $M = \\max_{D} f(x)$ nếu $f(x) \\leq M$ với mọi $x \\in D$ và tồn tại $x_0 \\in D$ sao cho $f(x_0) = M$. Số $m = \\min_{D} f(x)$ nếu $f(x) \\geq m$ với mọi $x \\in D$ và tồn tại $x_0 \\in D$ sao cho $f(x_0) = m$.\n- **Đường tiệm cận của đồ thị hàm số**: Đường thẳng $y = y_0$ là **tiệm cận ngang** nếu $\\lim_{x \\to +\\infty} f(x) = y_0$ hoặc $\\lim_{x \\to -\\infty} f(x) = y_0$. Đường thẳng $x = x_0$ là **tiệm cận đứng** nếu ít nhất một trong các giới hạn $\\lim_{x \\to x_0^+} f(x)$, $\\lim_{x \\to x_0^-} f(x)$ bằng $+\\infty$ hoặc $-\\infty$. Đường thẳng $y = ax + b$ $(a \\neq 0)$ là **tiệm cận xiên** nếu $\\lim_{x \\to +\\infty} [f(x) - (ax + b)] = 0$ hoặc $\\lim_{x \\to -\\infty} [f(x) - (ax + b)] = 0$.", "concept": "", "formulas": ["Đồng biến trên $K$: $f'(x) \\geq 0, \\forall x \\in K$ (bằng $0$ tại hữu hạn điểm)", "Nghịch biến trên $K$: $f'(x) \\leq 0, \\forall x \\in K$ (bằng $0$ tại hữu hạn điểm)", "Điều kiện cần của cực trị: Nếu hàm khả vi đạt cực trị tại $x_0$ thì $f'(x_0) = 0$", "Đạo hàm hàm phân thức bậc nhất: $\\left(\\dfrac{ax + b}{cx + d}\\right)' = \\dfrac{ad - bc}{(cx + d)^2}$", "Giá trị lớn nhất: $M = \\max_{[a;b]} f(x) = \\max\\{f(a), f(b), f(x_1), \\dots, f(x_n)\\}$", "Giá trị nhỏ nhất: $m = \\min_{[a;b]} f(x) = \\min\\{f(a), f(b), f(x_1), \\dots, f(x_n)\\}$", "Tiệm cận ngang: $\\lim_{x \\to +\\infty} f(x) = y_0$ hoặc $\\lim_{x \\to -\\infty} f(x) = y_0 \\Rightarrow y = y_0$", "Tiệm cận đứng: $\\lim_{x \\to x_0^+} f(x) = \\pm\\infty$ hoặc $\\lim_{x \\to x_0^-} f(x) = \\pm\\infty \\Rightarrow x = x_0$"], "meaning": "", "real_life": "- Thiết kế bao bì, hộp chứa hàng hoá sao cho tiết kiệm vật liệu nhất (diện tích toàn phần nhỏ nhất) hoặc thể tích lớn nhất.\n- Phân tích hàm chi phí $C(x)$, hàm doanh thu $R(x)$ và tối đa hoá lợi nhuận $P(x) = R(x) - C(x)$ trong sản xuất kinh doanh.", "game_title": "Biệt Đội Cực Trị: Ứng dụng Đạo hàm để Khảo sát và Vẽ đồ thị Hàm số", "game_description": "Vận dụng đạo hàm xét tính đơn điệu, tìm cực trị và giá trị lớn nhất – nhỏ nhất để giải các bài toán tối ưu thực tiễn.", "game_type": "game_ung_dung_dao_ham"};
 const THEME_MC = { teal: "#a3e635", tealD: "#4d7c0f", or: "#c4b5fd", orD: "#6d28d9", rgb: "163,230,53", panel: "14,30,20", lab: "#ecfccb", btn: "22,44,24" };
 const IMG_SRC = {
   mentorM: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzQwIiB2aWV3Qm94PSIwIDAgMzAwIDM0MCI+PGRlZnM+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJoZyIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzRhMmEzYiIvPjxzdG9wIG9mZnNldD0iLjM1IiBzdG9wLWNvbG9yPSIjMTYxMjFjIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMGIwNjA1Ii8+PC9saW5lYXJHcmFkaWVudD4KICA8bGluZWFyR3JhZGllbnQgaWQ9InNrIiB4MT0iMCIgeTE9IjAiIHgyPSIwIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjZmZlMmNjIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjZjRiOTljIi8+PC9saW5lYXJHcmFkaWVudD4KICA8bGluZWFyR3JhZGllbnQgaWQ9InRwIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjZjBmOWZmIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjZmI3MTg1Ii8+PC9saW5lYXJHcmFkaWVudD4KICA8cmFkaWFsR3JhZGllbnQgaWQ9ImlyIiBjeD0iLjUiIGN5PSIuNzUiIHI9Ii43Ij48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNlMGEwNjAiLz48c3RvcCBvZmZzZXQ9Ii41NSIgc3RvcC1jb2xvcj0iIzZiM2YxZiIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzE0MGEwNSIvPjwvcmFkaWFsR3JhZGllbnQ+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJzaGluZSIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjAiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2ZmZiIgc3RvcC1vcGFjaXR5PSIwIi8+PHN0b3Agb2Zmc2V0PSIuNSIgc3RvcC1jb2xvcj0iI2ZmZiIgc3RvcC1vcGFjaXR5PSIuNTUiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNmZmYiIHN0b3Atb3BhY2l0eT0iMCIvPjwvbGluZWFyR3JhZGllbnQ+CiAgPHJhZGlhbEdyYWRpZW50IGlkPSJyaW0iIGN4PSIuMiIgY3k9Ii4yIiByPSIxIj48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNmZWQ3YWEiIHN0b3Atb3BhY2l0eT0iLjU1Ii8+PHN0b3Agb2Zmc2V0PSIuNSIgc3RvcC1jb2xvcj0iI2ZlZDdhYSIgc3RvcC1vcGFjaXR5PSIwIi8+PC9yYWRpYWxHcmFkaWVudD4KICA8L2RlZnM+PHBhdGggZD0iTTQwIDM0MCBRNDIgMjYyIDEwNCAyNDYgTDE5NiAyNDYgUTI1OCAyNjIgMjYwIDM0MCBaIiBmaWxsPSJ1cmwoI3RwKSIvPgogIDxwYXRoIGQ9Ik0xNTAgMjQ2IEwxOTYgMjQ2IFEyNTggMjYyIDI2MCAzNDAgTDE3NiAzNDAgWiIgZmlsbD0iI2ZiNzE4NSIgb3BhY2l0eT0iLjU1Ii8+PHBhdGggZD0iTTU4IDMwMCBMMTA0IDI1MiBMMTEyIDI2MiBMNzAgMzEyIFoiIGZpbGw9IiM3ZGQzZmMiLz48cGF0aCBkPSJNMjQyIDMwMCBMMTk2IDI1MiBMMTg4IDI2MiBMMjMwIDMxMiBaIiBmaWxsPSIjN2RkM2ZjIi8+CiAgICA8cGF0aCBkPSJNNjAgMzAyIEwxMDYgMjU0IiBzdHJva2U9IiNmZmY3ZDYiIHN0cm9rZS13aWR0aD0iNCIgb3BhY2l0eT0iLjgiLz48cGF0aCBkPSJNMjQwIDMwMiBMMTk0IDI1NCIgc3Ryb2tlPSIjZmZmN2Q2IiBzdHJva2Utd2lkdGg9IjQiIG9wYWNpdHk9Ii44Ii8+CiAgICA8cGF0aCBkPSJNOTYgMjYyIEwxMjAgMzQwIiBzdHJva2U9IiMzYjJhMWYiIHN0cm9rZS13aWR0aD0iMTEiLz48cGF0aCBkPSJNOTYgMjYyIEwxMjAgMzQwIiBzdHJva2U9IiM2YjRhMzMiIHN0cm9rZS13aWR0aD0iNSIvPgogICAgPHJlY3QgeD0iMTc2IiB5PSIyODIiIHdpZHRoPSI0MCIgaGVpZ2h0PSIzMCIgcng9IjUiIGZpbGw9IiNmOGZhZmMiIHN0cm9rZT0iIzk0YTNiOCIgc3Ryb2tlLXdpZHRoPSIyIiB0cmFuc2Zvcm09InJvdGF0ZSgtNiAxOTYgMjk3KSIvPgogICAgPHJlY3QgeD0iMTgyIiB5PSIyODgiIHdpZHRoPSIxMiIgaGVpZ2h0PSIxNiIgcng9IjIiIGZpbGw9IiNiYWU2ZmQiIHRyYW5zZm9ybT0icm90YXRlKC02IDE5NiAyOTcpIi8+CiAgICA8dGV4dCB4PSIyMDYiIHk9IjMwMSIgZm9udC1zaXplPSI4IiBmb250LWZhbWlseT0iVmVyZGFuYSIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiM4ODEzMzciIHRyYW5zZm9ybT0icm90YXRlKC02IDE5NiAyOTcpIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7imqE8L3RleHQ+CiAgICA8cGF0aCBkPSJNMTIwIDI1MCBMMTUwIDI3OCBMMTgwIDI1MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjZmI3MTg1IiBzdHJva2Utd2lkdGg9IjUiLz48cGF0aCBkPSJNMTMwIDIwNiBMMTcwIDIwNiBMMTcyIDI1MiBRMTUwIDI2MiAxMjggMjUyIFoiIGZpbGw9InVybCgjc2spIi8+PHBhdGggZD0iTTEzMCAyMjIgUTE1MCAyMzYgMTcwIDIyMiBMMTcwIDIwNiBMMTMwIDIwNloiIGZpbGw9IiNmNGI5OWMiIG9wYWNpdHk9Ii44Ii8+PGVsbGlwc2UgY3g9Ijg4IiBjeT0iMTUwIiByeD0iMTEiIHJ5PSIxNiIgZmlsbD0iI2ZmZTJjYyIvPjxlbGxpcHNlIGN4PSIyMTIiIGN5PSIxNTAiIHJ4PSIxMSIgcnk9IjE2IiBmaWxsPSIjZmZlMmNjIi8+CiAgPHBhdGggZD0iTTg2IDE0NCBROTIgMTUwIDg4IDE1OCIgc3Ryb2tlPSIjZjRiOTljIiBzdHJva2Utd2lkdGg9IjMiIGZpbGw9Im5vbmUiLz48cGF0aCBkPSJNMjE0IDE0NCBRMjA4IDE1MCAyMTIgMTU4IiBzdHJva2U9IiNmNGI5OWMiIHN0cm9rZS13aWR0aD0iMyIgZmlsbD0ibm9uZSIvPjxwYXRoIGQ9Ik05MiAxMjAgUTkyIDcwIDE1MCA2NiBRMjA4IDcwIDIwOCAxMjAgUTIwOCAxNzYgMTc2IDIwNCBRMTYwIDIxNiAxNTAgMjE2IFExNDAgMjE2IDEyNCAyMDQgUTkyIDE3NiA5MiAxMjAgWiIgZmlsbD0idXJsKCNzaykiLz4KICA8cGF0aCBkPSJNOTIgMTIwIFE5MiA3MCAxNTAgNjYgUTIwOCA3MCAyMDggMTIwIFEyMDggMTc2IDE3NiAyMDQgUTE2MCAyMTYgMTUwIDIxNiBRMTQwIDIxNiAxMjQgMjA0IFE5MiAxNzYgOTIgMTIwIFoiIGZpbGw9InVybCgjcmltKSIvPjxlbGxpcHNlIGN4PSIxMTQiIGN5PSIxNzAiIHJ4PSIxNCIgcnk9IjciIGZpbGw9IiNmZjhmYTMiIG9wYWNpdHk9Ii40MiIvPjxlbGxpcHNlIGN4PSIxODYiIGN5PSIxNzAiIHJ4PSIxNCIgcnk9IjciIGZpbGw9IiNmZjhmYTMiIG9wYWNpdHk9Ii40MiIvPgogIDxwYXRoIGQ9Ik0xMDggMTY4IGw0IC00IE0xMTQgMTY4IGw0IC00IE0xODAgMTY4IGw0IC00IE0xODYgMTY4IGw0IC00IiBzdHJva2U9IiNmZjZiOGEiIHN0cm9rZS13aWR0aD0iMS42IiBvcGFjaXR5PSIuNiIvPjxwYXRoIGQ9Ik0xMDUgMTQwIFExMjIgMTI4IDEzOSAxNDAgTDEzOCAxNTggUTEyMiAxNzAgMTA2IDE1OCBaIiBmaWxsPSIjZmZmIi8+CiAgICAgIDxlbGxpcHNlIGN4PSIxMjEiIGN5PSIxNTEiIHJ4PSIxMSIgcnk9IjE0LjUiIGZpbGw9InVybCgjaXIpIi8+CiAgICAgIDxlbGxpcHNlIGN4PSIxMjEiIGN5PSIxNTIiIHJ4PSI1LjIiIHJ5PSI3LjUiIGZpbGw9IiMxMjA4MDQiLz4KICAgICAgPGVsbGlwc2UgY3g9IjExOCIgY3k9IjE0NCIgcng9IjQuNiIgcnk9IjUuNiIgZmlsbD0iI2ZmZiIvPjxjaXJjbGUgY3g9IjEyNyIgY3k9IjE1OCIgcj0iMi4zIiBmaWxsPSIjZmZmIiBvcGFjaXR5PSIuOSIvPgogICAgICA8cGF0aCBkPSJNMTEzIDE2MCBRMTIyIDE2NSAxMzEgMTYwIiBzdHJva2U9IiNlMGEwNjAiIHN0cm9rZS13aWR0aD0iMiIgZmlsbD0ibm9uZSIgb3BhY2l0eT0iLjciLz4KICAgICAgPHBhdGggZD0iTTEwMyAxNDEgUTEyMiAxMjQgMTQxIDE0MCIgc3Ryb2tlPSIjMWQwZTA2IiBzdHJva2Utd2lkdGg9IjUuNSIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgICAgIDxwYXRoIGQ9Ik0xMDQgMTQwIGwtNyAtNSIgc3Ryb2tlPSIjMWQwZTA2IiBzdHJva2Utd2lkdGg9IjMuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PHBhdGggZD0iTTE2MSAxNDAgUTE3OCAxMjggMTk1IDE0MCBMMTk0IDE1OCBRMTc4IDE3MCAxNjIgMTU4IFoiIGZpbGw9IiNmZmYiLz4KICAgICAgPGVsbGlwc2UgY3g9IjE3OSIgY3k9IjE1MSIgcng9IjExIiByeT0iMTQuNSIgZmlsbD0idXJsKCNpcikiLz4KICAgICAgPGVsbGlwc2UgY3g9IjE3OSIgY3k9IjE1MiIgcng9IjUuMiIgcnk9IjcuNSIgZmlsbD0iIzEyMDgwNCIvPgogICAgICA8ZWxsaXBzZSBjeD0iMTc0IiBjeT0iMTQ0IiByeD0iNC42IiByeT0iNS42IiBmaWxsPSIjZmZmIi8+PGNpcmNsZSBjeD0iMTgzIiBjeT0iMTU4IiByPSIyLjMiIGZpbGw9IiNmZmYiIG9wYWNpdHk9Ii45Ii8+CiAgICAgIDxwYXRoIGQ9Ik0xNjkgMTYwIFExNzggMTY1IDE4NyAxNjAiIHN0cm9rZT0iI2UwYTA2MCIgc3Ryb2tlLXdpZHRoPSIyIiBmaWxsPSJub25lIiBvcGFjaXR5PSIuNyIvPgogICAgICA8cGF0aCBkPSJNMTU5IDE0MSBRMTc4IDEyNCAxOTcgMTQwIiBzdHJva2U9IiMxZDBlMDYiIHN0cm9rZS13aWR0aD0iNS41IiBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KICAgICAgPHBhdGggZD0iTTE5NiAxNDAgbDcgLTUiIHN0cm9rZT0iIzFkMGUwNiIgc3Ryb2tlLXdpZHRoPSIzLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjxwYXRoIGQ9Ik0xMDQgMTIwIFExMTggMTEyIDEzNCAxMTgiIHN0cm9rZT0iIzE2MTIxYyIgc3Ryb2tlLXdpZHRoPSI0LjUiIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogIDxwYXRoIGQ9Ik0xNjYgMTE4IFExODIgMTEyIDE5NiAxMjAiIHN0cm9rZT0iIzE2MTIxYyIgc3Ryb2tlLXdpZHRoPSI0LjUiIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogIDxwYXRoIGQ9Ik0xNTAgMTY2IFExNTMgMTcyIDE0OCAxNzUiIHN0cm9rZT0iI2Y0Yjk5YyIgc3Ryb2tlLXdpZHRoPSIyLjYiIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogIDxwYXRoIGQ9Ik0xMzYgMTg2IFExNTAgMjAwIDE2NCAxODYgUTE1MCAxOTEgMTM2IDE4NiBaIiBmaWxsPSIjYzI0MTRiIiBzdHJva2U9IiM3ZjFkMmEiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgogIDxwYXRoIGQ9Ik0xNDIgMTkwIFExNTAgMTk1IDE1OCAxOTAiIHN0cm9rZT0iI2ZmOWFhOCIgc3Ryb2tlLXdpZHRoPSIyIiBmaWxsPSJub25lIi8+PHJlY3QgeD0iMTAwIiB5PSIxMzQiIHdpZHRoPSI0NCIgaGVpZ2h0PSIzNCIgcng9IjEyIiBmaWxsPSIjZmZlNGU2IiBmaWxsLW9wYWNpdHk9Ii4xOCIgc3Ryb2tlPSIjM2IyYTIwIiBzdHJva2Utd2lkdGg9IjMuNSIvPjxyZWN0IHg9IjE1NiIgeT0iMTM0IiB3aWR0aD0iNDQiIGhlaWdodD0iMzQiIHJ4PSIxMiIgZmlsbD0iI2ZmZTRlNiIgZmlsbC1vcGFjaXR5PSIuMTgiIHN0cm9rZT0iIzNiMmEyMCIgc3Ryb2tlLXdpZHRoPSIzLjUiLz48cGF0aCBkPSJNMTQ0IDE0OCBRMTUwIDE0MyAxNTYgMTQ4IiBzdHJva2U9IiMzYjJhMjAiIHN0cm9rZS13aWR0aD0iMyIgZmlsbD0ibm9uZSIvPjxwYXRoIGQ9Ik0xMDYgMTQwIEwxMTggMTUyIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iMyIgb3BhY2l0eT0iLjYiLz48cGF0aCBkPSJNODQgMTI4IFE3MCA1MiAxNTAgNDYgUTIzMCA1MCAyMTYgMTI4IFEyMTAgMTAwIDE5OCA5MCBMMTkyIDEwOCBMMTgwIDg0IEwxNjggMTA0IEwxNTYgODAgTDE0MiAxMDIgTDEyOCA4MiBMMTE2IDEwNiBMMTA0IDkwIFE5MiAxMDAgODQgMTI4IFoiIGZpbGw9InVybCgjaGcpIi8+CiAgICAgIDxwYXRoIGQ9Ik0xMDQgNzQgUTE0MCA1OCAxODAgNjQiIHN0cm9rZT0idXJsKCNzaGluZSkiIHN0cm9rZS13aWR0aD0iNyIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PGcgdHJhbnNmb3JtPSJyb3RhdGUoLTggMTUwIDYwKSI+PHJlY3QgeD0iMTA0IiB5PSI1MCIgd2lkdGg9IjkyIiBoZWlnaHQ9IjEyIiByeD0iNiIgZmlsbD0iIzMzNDE1NSIvPjxyZWN0IHg9IjExOCIgeT0iMzgiIHdpZHRoPSIyOCIgaGVpZ2h0PSIyMiIgcng9IjgiIGZpbGw9IiMwZjE3MmEiIHN0cm9rZT0iIzk0YTNiOCIgc3Ryb2tlLXdpZHRoPSIyIi8+PHJlY3QgeD0iMTU0IiB5PSIzOCIgd2lkdGg9IjI4IiBoZWlnaHQ9IjIyIiByeD0iOCIgZmlsbD0iIzBmMTcyYSIgc3Ryb2tlPSIjOTRhM2I4IiBzdHJva2Utd2lkdGg9IjIiLz48cGF0aCBkPSJNMTI0IDQ0IEwxMzQgNTQgTTE2MCA0NCBMMTcwIDU0IiBzdHJva2U9IiNiYWU2ZmQiIHN0cm9rZS13aWR0aD0iMyIgb3BhY2l0eT0iLjgiLz48L2c+PC9zdmc+",
@@ -398,7 +398,7 @@ function goNextSet() {
   S.cfg = GM.makeStage(S.stage); S.phase = "intro"; resetStage();
   $("gameplayActionBar").classList.add("hidden"); $("controlHint").classList.add("hidden");
   if (GM.onSetChange) GM.onSetChange();
-  $("introStory").innerHTML = GM.introStory(); renderSetIntro(); hudCache.stageTitleLabel = null;
+  $("introStory").innerHTML = __enrichIntroHtml(GM.introStory()); renderSetIntro(); hudCache.stageTitleLabel = null;
   $("introModal").classList.remove("hidden");
 }
 
@@ -418,7 +418,7 @@ async function loadLessonFromAPI() {
   try {
     const res = await apiFetch(`/api/content/lessons/${LESSON_ID}`);
     const d = res && (res.data || res.lesson || res);
-    if (d && d.title) { LESSON = Object.assign({}, FALLBACK_LESSON, d); applyLessonTexts(); }
+    if (d && d.title && (new URLSearchParams(location.search).get("lesson_id") || d.topic === FALLBACK_LESSON.topic)) { LESSON = Object.assign({}, FALLBACK_LESSON, d); applyLessonTexts(); }
   } catch (e) { console.warn(e); }
 }
 async function startSession() {
@@ -748,7 +748,131 @@ function toast(msg, color, ms) {
 
 /* ---------- Hội thoại cốt truyện ---------- */
 let typeTimer = null;
+
+/* ---------- Nâng cấp Cốt truyện & Thông số tính toán (CT GDPT 2018) ---------- */
+function __cleanCalcText(s) {
+  if (!s) return "";
+  return String(s)
+    .replace(/<br\s*\/?>/gi, " · ")
+    .replace(/<sub>([^<]+)<\/sub>/gi, "_$1")
+    .replace(/<sup>([^<]+)<\/sup>/gi, "^($1)")
+    .replace(/<\/?b[^>]*>/gi, "")
+    .replace(/<\/?[a-z][^>]*>/gi, "")
+    .replace(/&nbsp;/g, " ").replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">")
+    .replace(/\s+/g, " ").trim();
+}
+function __buildStageCalcLines(baseLines) {
+  try {
+    if (!Array.isArray(baseLines) || !baseLines.length) return baseLines;
+    if (baseLines.some(x => x && x.__p)) return baseLines;
+    if (typeof S === "object" && S && Array.isArray(S.hints) && typeof S.stage === "number") {
+      if (!S.hints[S.stage] || S.hints[S.stage] < 1) S.hints[S.stage] = 1;
+    }
+    if (typeof updateAux === "function") { try { updateAux(); } catch (e) {} }
+    if (typeof updateHUD === "function") { try { updateHUD(); } catch (e) {} }
+    const c = (typeof S === "object" && S && S.cfg) || {};
+    const kd = (typeof KDc === "function") ? KDc() : (typeof KD !== "undefined" && Array.isArray(KD) && typeof c.i === "number" ? KD[c.i] : null);
+    const who = baseLines.some(x => x && x.who === "A") ? "A" : baseLines.some(x => x && x.who === "F") ? "F" : (baseLines[baseLines.length - 1] && baseLines[baseLines.length - 1].who) || "A";
+
+    const paramParts = [];
+    let l1 = "";
+    try {
+      if (typeof GM === "object" && GM && typeof GM.hud === "function") {
+        const h = GM.hud();
+        if (h && typeof h.l1 === "string") l1 = h.l1;
+      } else if (kd && typeof kd.h1 === "function") l1 = kd.h1(c);
+      else if ($("telemetryLine1")) l1 = $("telemetryLine1").textContent || "";
+    } catch (e) {}
+    l1 = __cleanCalcText(l1).replace(/^[^0-9A-Za-zÀ-ỹΔλμρπΩ]+/, "").trim();
+    if (l1) paramParts.push(l1);
+    try {
+      if (kd && typeof kd.info === "function") {
+        (kd.info(c) || []).forEach(it => {
+          const s = __cleanCalcText(it).replace(/^•\s*/, "").trim();
+          if (s && !paramParts.join(" ").includes(s)) paramParts.push(s);
+        });
+      }
+    } catch (e) {}
+    const paramsText = paramParts.join(" · ") || "Xem số liệu trên thanh trạng thái phía trên màn hình.";
+
+    let greenText = "";
+    try {
+      if (typeof GM === "object" && GM && typeof GM.greenTag === "function") greenText = __cleanCalcText(GM.greenTag());
+      else if (kd && kd.green) greenText = __cleanCalcText(kd.green);
+    } catch (e) {}
+    greenText = greenText.replace(/^🟢\s*/, "").trim();
+
+    let hint1Text = "";
+    try {
+      let hts = null;
+      if (typeof GM === "object" && GM && typeof GM.hintTexts === "function") hts = GM.hintTexts();
+      else if (typeof hintTexts === "function") hts = hintTexts();
+      if (Array.isArray(hts) && hts[0]) hint1Text = __cleanCalcText(hts[0]);
+      else if (kd && typeof kd.hint1 === "function") hint1Text = __cleanCalcText(kd.hint1(c));
+      else if (kd && typeof kd.hints === "function") { const kh = kd.hints(c); if (Array.isArray(kh) && kh[0]) hint1Text = __cleanCalcText(kh[0]); }
+    } catch (e) {}
+
+    const fParts = [];
+    if (greenText) fParts.push("Điều kiện đạt chuẩn: " + greenText);
+    if (hint1Text && !fParts.join(" ").includes(hint1Text)) fParts.push("Hướng tính: " + hint1Text);
+    const formulaText = fParts.join(" · ") || "Áp dụng công thức của bài học để tính thông số phù hợp.";
+
+    const pDesc = [];
+    try {
+      if (kd && Array.isArray(kd.P)) {
+        kd.P.forEach(p => {
+          if (!p || !p.lab) return;
+          if (Array.isArray(p.opts) && p.opts.length) pDesc.push(`${p.lab} (${p.opts.slice(0, 5).join(", ")}${p.opts.length > 5 ? "…" : ""})`);
+          else if (p.min != null && p.max != null) pDesc.push(`${p.lab} (từ ${p.min} đến ${p.max}${p.unit ? " " + p.unit : ""})`);
+          else pDesc.push(p.lab);
+        });
+      }
+    } catch (e) {}
+    let chint = "";
+    try {
+      if (typeof GM === "object" && GM && typeof GM.controlHint === "function") chint = __cleanCalcText(GM.controlHint());
+      else if (kd && kd.hint) chint = __cleanCalcText(kd.hint);
+      else if ($("controlHint")) chint = __cleanCalcText($("controlHint").textContent);
+    } catch (e) {}
+    chint = chint.replace(/^[^\wÀ-ỹ]+/, "").trim();
+    const execLabel = ($("executeBtnText") && $("executeBtnText").textContent.trim()) || (kd && kd.execLabel) || ($("btnExecuteStage") && $("btnExecuteStage").textContent.trim()) || "Chạy thử ▶";
+
+    let actionText = "Dựa vào thông số và công thức trên, bạn hãy tính giá trị cần thiết";
+    if (pDesc.length) actionText += ` rồi chỉnh [${pDesc.join(" · ")}]`;
+    if (chint) actionText += ` (${chint})`;
+    actionText += `. Sau khi chỉnh xong, bấm nút «${execLabel}» ở góc dưới để kiểm tra kết quả!`;
+
+    return baseLines.concat([
+      { who, __p: 1, text: `📊 Thông số để tính toán: ${paramsText}` },
+      { who, __p: 1, text: `📐 Công thức & cách tính: ${formulaText}` },
+      { who, __p: 1, text: `🎯 Chốt lại nhiệm vụ (Cần làm gì): ${actionText}` }
+    ]);
+  } catch (e) { return baseLines; }
+}
+function __enrichIntroHtml(rawHtml) {
+  if (window.__hdlgEnrichIntroStory) return window.__hdlgEnrichIntroStory(rawHtml);
+  if (!rawHtml || String(rawHtml).includes("hdlg-intro-summary")) return rawHtml;
+  let formulaItems = [];
+  try {
+    const ls = (typeof GM === "object" && GM && typeof GM.summaryLessons === "function") ? GM.summaryLessons() : [];
+    if (Array.isArray(ls) && ls.length) {
+      ls.slice(0, 4).forEach(it => { if (Array.isArray(it) && it.length >= 2) formulaItems.push(`<li><b class="text-amber-200">${it[0]}:</b> ${it[1]}</li>`); });
+    } else if (typeof LESSON === "object" && LESSON && Array.isArray(LESSON.formulas)) {
+      LESSON.formulas.slice(0, 4).forEach(f => {
+        if (typeof f === "string") formulaItems.push(`<li>• ${f}</li>`);
+        else if (f && f.name && f.formula) formulaItems.push(`<li><b class="text-amber-200">${f.name}:</b> ${f.formula}</li>`);
+      });
+    }
+  } catch (e) {}
+  const theoryBlock = formulaItems.length
+    ? `<div class="mt-2.5 p-2.5 rounded-xl bg-slate-900/80 border border-amber-400/40 text-[11.5px] leading-relaxed"><div class="font-extrabold text-amber-300 mb-1">📘 Kiến thức & Công thức trọng tâm (theo bài học mới):</div><ul class="space-y-1 text-slate-200">${formulaItems.join("")}</ul></div>`
+    : "";
+  const missionBlock = `<div class="hdlg-intro-summary mt-2 p-2.5 rounded-xl bg-emerald-950/75 border border-emerald-400/50 text-[11.5px] leading-relaxed text-emerald-100"><div class="font-extrabold text-emerald-300 mb-0.5">🎯 Chốt lại: Vào màn chơi bạn cần làm gì?</div><div><b>Bước 1:</b> Đọc kỹ dòng <b>📊 Thông số để tính toán</b> và <b>📐 Công thức & cách tính</b> xuất hiện ngay trong lời thoại của nhân vật ở mỗi chặng (hoặc bấm nút <b>📋 Thông số & Nhiệm vụ</b> ở góc dưới trái).<br><b>Bước 2:</b> Thay các thông số đã cho vào công thức để tính ra giá trị cần tìm, rồi <b>kéo thanh trượt / xoay núm / chọn linh kiện</b> trên màn hình.<br><b>Bước 3:</b> Bấm nút hành động màu xanh lá (<b>▶</b>) ở góc dưới để chạy kiểm chứng và hoàn thành cả 3 chặng!</div></div>`;
+  return rawHtml + theoryBlock + missionBlock;
+}
+
 function startDialogue(lines, onDone) {
+  if (S.phase === "dialogue") lines = __buildStageCalcLines(lines);
   S.dialogue = { lines, i: 0, onDone, typing: false, prevPhase: S.phase };
   $("dialogueBox").classList.remove("hidden"); $("gameplayActionBar").classList.add("hidden"); $("controlHint").classList.add("hidden"); hideCtxMenu();
   showLine();
@@ -891,7 +1015,7 @@ function goBackToLesson() {
 }
 function applyLessonTexts() {
   $("introLessonTitle").textContent = `Bài: ${LESSON.title} — ${LESSON.description || ""}`;
-  $("introSubject").textContent = `${(LESSON.subject_id || FALLBACK_LESSON.subject_id) === 1 ? "TOÁN" : "VẬT LÝ"} ${LESSON.grade || 12}`;
+  $("introSubject").textContent = LESSON.subject_label || "TOÁN 12 · KẾT NỐI TRI THỨC";
 }
 
 /* ---------- Menu ngữ cảnh (HTML) ---------- */
@@ -3626,7 +3750,7 @@ window.PF_THEME = { c0: { t: ["city", "birds"], seed: 1 }, c1: { t: ["sea", "bir
   chooseSet(); S.cfg = GM.makeStage(S.stage); GM.reset(); if (GM.onSetChange) GM.onSetChange();
   $("introPortraitA").src = IMG_SRC[CHAR_A.img]; $("introNameA").textContent = `${CHAR_A.name} · ${CHAR_A.job}`;
   $("introPortraitB").src = IMG_SRC[CHAR_B.img]; $("introNameB").textContent = `${CHAR_B.name} · ${CHAR_B.job}`;
-  $("introStory").innerHTML = GM.introStory(); renderSetIntro();
+  $("introStory").innerHTML = __enrichIntroHtml(GM.introStory()); renderSetIntro();
   applyLessonTexts(); syncHubHUD(); updateHUD();
   loadLessonFromAPI();
   requestAnimationFrame(loop);

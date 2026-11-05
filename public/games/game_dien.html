@@ -118,9 +118,9 @@
     <!-- MODAL MỞ ĐẦU -->
     <div id="introModal" class="absolute inset-0 z-40 flex items-center justify-center bg-black/70 p-4 fade-in">
         <div class="dialogue-box rounded-3xl max-w-2xl w-full p-5 md:p-7 pop-in scroll-y">
-            <div class="text-[11px] tracking-[0.25em] text-amber-300 font-extrabold">HỌC ĐỂ LÀM GÌ? · <span id="introSubject">VẬT LÝ 8</span></div>
+            <div class="text-[11px] tracking-[0.25em] text-amber-300 font-extrabold">HỌC ĐỂ LÀM GÌ? · <span id="introSubject">KHTN 8 · VẬT LÝ</span></div>
             <h1 class="text-2xl md:text-3xl font-black mt-1 leading-tight">🔦 Thợ Điện Khu Phố</h1>
-            <div id="introLessonTitle" class="text-amber-200 font-bold text-sm mt-1">Bài: Điện và mạch điện</div>
+            <div id="introLessonTitle" class="text-amber-200 font-bold text-sm mt-1">Bài: Sự nhiễm điện, Dòng điện, Nguồn điện, Mạch điện, Các tác dụng và Đo cường độ dòng điện, hiệu điện thế</div>
             <div class="flex gap-3 mt-3 items-start">
                 <div class="text-center flex-shrink-0"><img id="introPortraitA" alt="" class="w-16 h-16 md:w-20 md:h-20 rounded-2xl border-2 border-amber-400 portrait-breathe mx-auto"><div id="introNameA" class="text-[10px] font-bold mt-1 text-amber-200 w-20 leading-tight"></div></div>
                 <div class="text-center flex-shrink-0"><img id="introPortraitB" alt="" class="w-16 h-16 md:w-20 md:h-20 rounded-2xl border-2 border-sky-400 portrait-breathe mx-auto"><div id="introNameB" class="text-[10px] font-bold mt-1 text-sky-200 w-20 leading-tight"></div></div>
@@ -197,9 +197,9 @@
    THỢ ĐIỆN KHU PHỐ — Game "Điện và mạch điện" (Vật lý 8)
    Nền tảng: HỌC ĐỂ LÀM GÌ?
    ========================================================= */
-const LESSON_ID = 60;
+const LESSON_ID = Number(new URLSearchParams(location.search).get("lesson_id")) || 60;
 const GAME_KEY = "dien";
-const FALLBACK_LESSON = {"id":60,"subject_id":2,"grade":8,"topic":"dien","title":"Điện và mạch điện","icon":"⚛️","description":"Điện và mạch điện – Vật lý lớp 8","definition":"Dòng điện là dòng chuyển dời có hướng của các hạt mang điện.","concept":"Mạch điện cần nguồn điện, vật dẫn và thiết bị tiêu thụ được nối thành mạch kín.","formulas":["I: cường độ dòng điện (A)","U: hiệu điện thế (V)","R: điện trở (Ω)"],"meaning":"Điện là nền tảng của đèn, quạt, máy tính và thiết bị gia dụng.","real_life":"Lắp mạch đèn đơn giản và tìm lỗi khi đèn không sáng.","game_title":"Thử thách thực tế: Điện và mạch điện","game_description":"Nối mạch → bật nguồn → tìm điểm hở → sửa mạch.","game_type":"simulation"};
+const FALLBACK_LESSON = {"id": 60, "subject_id": 2, "subject": "physics", "subject_label": "KHTN 8 · VẬT LÝ", "grade": 8, "topic": "dien", "title": "Sự nhiễm điện, Dòng điện, Nguồn điện, Mạch điện, Các tác dụng và Đo cường độ dòng điện, hiệu điện thế", "icon": "⚡", "description": "Chương V · SGK Khoa học tự nhiên 8 Kết nối tri thức với cuộc sống (Bài 20 – Bài 25): Hiện tượng nhiễm điện do cọ xát, dòng điện và nguồn điện, sơ đồ mạch điện đơn giản, các tác dụng của dòng điện, cường độ dòng điện và hiệu điện thế.", "definition": "- **Sự nhiễm điện**: Có hai loại điện tích là điện tích dương ($+$) và điện tích âm ($-$). Các điện tích cùng dấu thì đẩy nhau, trái dấu thì hút nhau.\n- **Dòng điện**: Là dòng chuyển dời có hướng của các hạt mang điện (trong kim loại là dòng các electron tự do dịch chuyển có hướng).\n- **Cường độ dòng điện** ($I$, đơn vị $\\text{A}$) đặc trưng cho tác dụng mạnh hay yếu của dòng điện; **Hiệu điện thế** ($U$, đơn vị $\\text{V}$) đặc trưng cho khả năng tạo ra dòng điện của nguồn điện.", "concept": "", "formulas": ["Đơn vị cường độ dòng điện ($I$): $1\\text{ A} = 1000\\text{ mA};\\quad 1\\text{ mA} = 10^{-3}\\text{ A} = 0{,}001\\text{ A}$", "Đơn vị hiệu điện thế ($U$): $1\\text{ kV} = 1000\\text{ V};\\quad 1\\text{ V} = 1000\\text{ mV} = 10^3\\text{ mV}$", "Sự nhiễm điện do trao đổi electron: $\\text{Nhận thêm } e^- \\Rightarrow \\text{nhiễm điện âm } (-);\\quad \\text{Mất bớt } e^- \\Rightarrow \\text{nhiễm điện dương } (+)$", "Chiều dòng điện quy ước trong kim loại: $\\text{Chiều dòng điện quy ước } (+\\to -) \\text{ ngược với chiều dịch chuyển của } e^- (-\\to +)$", "Tác dụng của cầu chì và mạ điện: $\\text{Cầu chì: Tác dụng nhiệt};\\quad \\text{Mạ điện: Tác dụng hóa học (vật cần mạ nối cực âm)}$"], "meaning": "", "real_life": "- **Phòng chống tĩnh điện**: Xe bồn chở xăng dầu luôn có một sợi dây xích sắt thả chạm mặt đường để dẫn các điện tích sinh ra do ma sát truyền xuống đất, tránh phóng tia lửa điện gây cháy nổ.\n- **Kĩ thuật điện gia dụng và công nghiệp**: Đèn LED tiết kiệm điện, công nghệ mạ vàng trang sức, mạ crom chống gỉ cho chi tiết máy, cầu chì và aptomat bảo vệ mạng điện gia đình.", "game_title": "Thử thách thực tế: Điện và Mạch điện", "game_description": "Lắp ráp sơ đồ mạch điện đơn giản, mắc đúng ampe kế và vôn kế để đo thông số và chẩn đoán sự cố trong mạch.", "game_type": "game_dien"};
 
 const IMG_SRC = {
   elecM: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIyNDAiIGhlaWdodD0iMjQwIiB2aWV3Qm94PSIwIDAgMjQwIDI0MCI+PGRlZnM+CiAgPHJhZGlhbEdyYWRpZW50IGlkPSJiZyIgY3g9IjAuNSIgY3k9IjAuMzUiIHI9IjAuNzUiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2JhZTZmZCIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzFlM2E4YSIvPjwvcmFkaWFsR3JhZGllbnQ+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJzayIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2ZmZGNjMiIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2YyYjg5YSIvPjwvbGluZWFyR3JhZGllbnQ+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJociIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzFhMTIwYyIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzAwMCIvPjwvbGluZWFyR3JhZGllbnQ+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJodCIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2ZmZjU5ZCIvPjxzdG9wIG9mZnNldD0iMC40NSIgc3RvcC1jb2xvcj0iI2ZhY2MxNSIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iI2ExNjIwNyIvPjwvbGluZWFyR3JhZGllbnQ+CiAgPHJhZGlhbEdyYWRpZW50IGlkPSJpciIgY3g9IjAuNSIgY3k9IjAuNyIgcj0iMC42Ij48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNjNThiNGEiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiM0YTJiMTQiLz48L3JhZGlhbEdyYWRpZW50PgogIDxsaW5lYXJHcmFkaWVudCBpZD0ic2giIHgxPSIwIiB5MT0iMCIgeDI9IjAiIHkyPSIxIj48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiMxZTQwYWYiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiMwYjFiM2EiLz48L2xpbmVhckdyYWRpZW50PgogIDxyYWRpYWxHcmFkaWVudCBpZD0icmltIiBjeD0iMC4zIiBjeT0iMC4yIiByPSIwLjkiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2ZmZiIgc3RvcC1vcGFjaXR5PSIwLjM1Ii8+PHN0b3Agb2Zmc2V0PSIwLjYiIHN0b3AtY29sb3I9IiNmZmYiIHN0b3Atb3BhY2l0eT0iMCIvPjwvcmFkaWFsR3JhZGllbnQ+CiAgPGNsaXBQYXRoIGlkPSJjbCI+PGNpcmNsZSBjeD0iMTIwIiBjeT0iMTIwIiByPSIxMTYiLz48L2NsaXBQYXRoPjwvZGVmcz4KICA8Y2lyY2xlIGN4PSIxMjAiIGN5PSIxMjAiIHI9IjExOCIgZmlsbD0idXJsKCNiZykiLz48ZyBjbGlwLXBhdGg9InVybCgjY2wpIj48Y2lyY2xlIGN4PSIzMCIgY3k9IjQwIiByPSIzIiBmaWxsPSIjZmZmIiBvcGFjaXR5PSIwLjI1Ii8+PGNpcmNsZSBjeD0iNTEiIGN5PSI3MCIgcj0iNCIgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iMC4yNSIvPjxjaXJjbGUgY3g9IjcyIiBjeT0iMTAwIiByPSI1IiBmaWxsPSIjZmZmIiBvcGFjaXR5PSIwLjI1Ii8+PGNpcmNsZSBjeD0iOTMiIGN5PSI0MCIgcj0iNiIgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iMC4yNSIvPjxjaXJjbGUgY3g9IjExNCIgY3k9IjcwIiByPSIzIiBmaWxsPSIjZmZmIiBvcGFjaXR5PSIwLjI1Ii8+PGNpcmNsZSBjeD0iMTM1IiBjeT0iMTAwIiByPSI0IiBmaWxsPSIjZmZmIiBvcGFjaXR5PSIwLjI1Ii8+PGNpcmNsZSBjeD0iMTU2IiBjeT0iNDAiIHI9IjUiIGZpbGw9IiNmZmYiIG9wYWNpdHk9IjAuMjUiLz48Y2lyY2xlIGN4PSIxNzciIGN5PSI3MCIgcj0iNiIgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iMC4yNSIvPjxjaXJjbGUgY3g9IjE5OCIgY3k9IjEwMCIgcj0iMyIgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iMC4yNSIvPjxjaXJjbGUgY3g9IjIxOSIgY3k9IjQwIiByPSI0IiBmaWxsPSIjZmZmIiBvcGFjaXR5PSIwLjI1Ii8+PHBhdGggZD0iTTMwIDI0MCBRMzYgMTkwIDkyIDE4MCBMMTQ4IDE4MCBRMjA0IDE5MCAyMTAgMjQwIFoiIGZpbGw9InVybCgjc2gpIi8+PHBhdGggZD0iTTQwIDI0MCBRNDYgMTk2IDkyIDE4NCBMMTA0IDI0MCBaIiBmaWxsPSIjZjk3MzE2Ii8+PHBhdGggZD0iTTIwMCAyNDAgUTE5NCAxOTYgMTQ4IDE4NCBMMTM2IDI0MCBaIiBmaWxsPSIjZjk3MzE2Ii8+PHBhdGggZD0iTTQ4IDIxNCBMMTAwIDIxNCBMMTAxIDIyNCBMNDUgMjI0WiIgZmlsbD0iI2U1ZTdlYiIvPjxwYXRoIGQ9Ik0xOTIgMjE0IEwxNDAgMjE0IEwxMzkgMjI0IEwxOTUgMjI0WiIgZmlsbD0iI2U1ZTdlYiIvPjxyZWN0IHg9IjEwNiIgeT0iMTYwIiB3aWR0aD0iMjgiIGhlaWdodD0iMjYiIHJ4PSI4IiBmaWxsPSIjZjBiNDkzIi8+CiAgPGVsbGlwc2UgY3g9IjcwIiBjeT0iMTIyIiByeD0iOSIgcnk9IjEzIiBmaWxsPSJ1cmwoI3NrKSIvPjxlbGxpcHNlIGN4PSIxNzAiIGN5PSIxMjIiIHJ4PSI5IiByeT0iMTMiIGZpbGw9InVybCgjc2spIi8+CiAgPHBhdGggZD0iTTcwIDExMCBRNzAgNjIgMTIwIDYwIFExNzAgNjIgMTcwIDExMCBRMTcwIDE1OCAxMjAgMTc2IFE3MCAxNTggNzAgMTEwIFoiIGZpbGw9InVybCgjc2spIi8+PHBhdGggZD0iTTY2IDEwOCBRNjAgNTAgMTIwIDQ4IFExODAgNTAgMTc0IDEwOCBRMTY4IDg2IDE1NiA4MCBMMTUwIDkyIEwxNDAgNzYgTDEyOCA5MCBMMTE4IDc0IEwxMDYgOTAgTDk2IDc4IEw4NiA5NCBRNzYgOTIgNjYgMTA4IFoiIGZpbGw9InVybCgjaHIpIi8+PGVsbGlwc2UgY3g9Ijk4IiBjeT0iMTIyIiByeD0iMTMiIHJ5PSIxNiIgZmlsbD0iI2ZmZiIvPjxlbGxpcHNlIGN4PSI5OCIgY3k9IjEyNCIgcng9IjEwIiByeT0iMTMiIGZpbGw9InVybCgjaXIpIi8+PGVsbGlwc2UgY3g9Ijk4IiBjeT0iMTI1IiByeD0iNSIgcnk9IjciIGZpbGw9IiMxYjBmMDgiLz4KICAgIDxjaXJjbGUgY3g9Ijk0IiBjeT0iMTE3IiByPSI0IiBmaWxsPSIjZmZmIi8+PGNpcmNsZSBjeD0iMTAyIiBjeT0iMTMwIiByPSIyIiBmaWxsPSIjZmZmIiBvcGFjaXR5PSIwLjkiLz4KICAgIDxwYXRoIGQ9Ik04MyAxMTIgUTk4IDEwMiAxMTMgMTEyIiBzdHJva2U9IiMxYjBmMDgiIHN0cm9rZS13aWR0aD0iNCIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PGVsbGlwc2UgY3g9IjE0MiIgY3k9IjEyMiIgcng9IjEzIiByeT0iMTYiIGZpbGw9IiNmZmYiLz48ZWxsaXBzZSBjeD0iMTQyIiBjeT0iMTI0IiByeD0iMTAiIHJ5PSIxMyIgZmlsbD0idXJsKCNpcikiLz48ZWxsaXBzZSBjeD0iMTQyIiBjeT0iMTI1IiByeD0iNSIgcnk9IjciIGZpbGw9IiMxYjBmMDgiLz4KICAgIDxjaXJjbGUgY3g9IjEzOCIgY3k9IjExNyIgcj0iNCIgZmlsbD0iI2ZmZiIvPjxjaXJjbGUgY3g9IjE0NiIgY3k9IjEzMCIgcj0iMiIgZmlsbD0iI2ZmZiIgb3BhY2l0eT0iMC45Ii8+CiAgICA8cGF0aCBkPSJNMTI3IDExMiBRMTQyIDEwMiAxNTcgMTEyIiBzdHJva2U9IiMxYjBmMDgiIHN0cm9rZS13aWR0aD0iNCIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PHBhdGggZD0iTTg0IDEwMCBROTggOTIgMTEwIDk4IiBzdHJva2U9IiMxYTEyMGMiIHN0cm9rZS13aWR0aD0iNCIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PHBhdGggZD0iTTEzMCA5OCBRMTQyIDkyIDE1NiAxMDAiIHN0cm9rZT0iIzFhMTIwYyIgc3Ryb2tlLXdpZHRoPSI0IiBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KICA8ZWxsaXBzZSBjeD0iODgiIGN5PSIxNDYiIHJ4PSIxMCIgcnk9IjUiIGZpbGw9IiNmZjhmYTMiIG9wYWNpdHk9IjAuNDUiLz48ZWxsaXBzZSBjeD0iMTUyIiBjeT0iMTQ2IiByeD0iMTAiIHJ5PSI1IiBmaWxsPSIjZmY4ZmEzIiBvcGFjaXR5PSIwLjQ1Ii8+CiAgPHBhdGggZD0iTTExOCAxMzggUTEyMSAxNDMgMTE3IDE0NSIgc3Ryb2tlPSIjZDQ4YjZhIiBzdHJva2Utd2lkdGg9IjIiIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogIDxwYXRoIGQ9Ik0xMDYgMTUyIFExMjAgMTY2IDEzNCAxNTIgUTEyMCAxNTggMTA2IDE1MiBaIiBmaWxsPSIjYjUzODNmIiBzdHJva2U9IiM3YTFmMjUiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPjxwYXRoIGQ9Ik02NCA5NiBRNjYgMzQgMTIwIDMyIFExNzQgMzQgMTc2IDk2IFoiIGZpbGw9InVybCgjaHQpIiBzdHJva2U9IiMwMDAwMDA0NCIgc3Ryb2tlLXdpZHRoPSIyIi8+PHBhdGggZD0iTTExNCAzMyBMMTI2IDMzIEwxMjggOTQgTDExMiA5NCBaIiBmaWxsPSIjZmFjYzE1IiBvcGFjaXR5PSIwLjgiLz48cGF0aCBkPSJNNTIgOTIgUTEyMCA4MCAxODggOTIgTDE5MCAxMDIgUTEyMCA5MiA1MCAxMDIgWiIgZmlsbD0iI2ZhY2MxNSIgc3Ryb2tlPSIjMDAwMDAwNDQiIHN0cm9rZS13aWR0aD0iMiIvPjxwYXRoIGQ9Ik04MiA1MiBROTYgNDAgMTEyIDQwIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iNSIgb3BhY2l0eT0iMC42IiBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48L2c+PGNpcmNsZSBjeD0iMTIwIiBjeT0iMTIwIiByPSIxMTgiIGZpbGw9InVybCgjcmltKSIvPjxjaXJjbGUgY3g9IjEyMCIgY3k9IjEyMCIgcj0iMTE2IiBmaWxsPSJub25lIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iNCIgb3BhY2l0eT0iMC42Ii8+PC9zdmc+",
@@ -293,7 +293,7 @@ async function loadLessonFromAPI() {
   try {
     const res = await apiFetch(`/api/content/lessons/${LESSON_ID}`);
     const d = res && (res.data || res.lesson || res);
-    if (d && d.title) { LESSON = Object.assign({}, FALLBACK_LESSON, d); applyLessonTexts(); }
+    if (d && d.title && (new URLSearchParams(location.search).get("lesson_id") || d.topic === FALLBACK_LESSON.topic)) { LESSON = Object.assign({}, FALLBACK_LESSON, d); applyLessonTexts(); }
   } catch (e) { console.warn(e); }
 }
 async function startSession() {
@@ -623,7 +623,131 @@ function toast(msg, color, ms) {
 
 /* ---------- Hội thoại cốt truyện ---------- */
 let typeTimer = null;
+
+/* ---------- Nâng cấp Cốt truyện & Thông số tính toán (CT GDPT 2018) ---------- */
+function __cleanCalcText(s) {
+  if (!s) return "";
+  return String(s)
+    .replace(/<br\s*\/?>/gi, " · ")
+    .replace(/<sub>([^<]+)<\/sub>/gi, "_$1")
+    .replace(/<sup>([^<]+)<\/sup>/gi, "^($1)")
+    .replace(/<\/?b[^>]*>/gi, "")
+    .replace(/<\/?[a-z][^>]*>/gi, "")
+    .replace(/&nbsp;/g, " ").replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">")
+    .replace(/\s+/g, " ").trim();
+}
+function __buildStageCalcLines(baseLines) {
+  try {
+    if (!Array.isArray(baseLines) || !baseLines.length) return baseLines;
+    if (baseLines.some(x => x && x.__p)) return baseLines;
+    if (typeof S === "object" && S && Array.isArray(S.hints) && typeof S.stage === "number") {
+      if (!S.hints[S.stage] || S.hints[S.stage] < 1) S.hints[S.stage] = 1;
+    }
+    if (typeof updateAux === "function") { try { updateAux(); } catch (e) {} }
+    if (typeof updateHUD === "function") { try { updateHUD(); } catch (e) {} }
+    const c = (typeof S === "object" && S && S.cfg) || {};
+    const kd = (typeof KDc === "function") ? KDc() : (typeof KD !== "undefined" && Array.isArray(KD) && typeof c.i === "number" ? KD[c.i] : null);
+    const who = baseLines.some(x => x && x.who === "A") ? "A" : baseLines.some(x => x && x.who === "F") ? "F" : (baseLines[baseLines.length - 1] && baseLines[baseLines.length - 1].who) || "A";
+
+    const paramParts = [];
+    let l1 = "";
+    try {
+      if (typeof GM === "object" && GM && typeof GM.hud === "function") {
+        const h = GM.hud();
+        if (h && typeof h.l1 === "string") l1 = h.l1;
+      } else if (kd && typeof kd.h1 === "function") l1 = kd.h1(c);
+      else if ($("telemetryLine1")) l1 = $("telemetryLine1").textContent || "";
+    } catch (e) {}
+    l1 = __cleanCalcText(l1).replace(/^[^0-9A-Za-zÀ-ỹΔλμρπΩ]+/, "").trim();
+    if (l1) paramParts.push(l1);
+    try {
+      if (kd && typeof kd.info === "function") {
+        (kd.info(c) || []).forEach(it => {
+          const s = __cleanCalcText(it).replace(/^•\s*/, "").trim();
+          if (s && !paramParts.join(" ").includes(s)) paramParts.push(s);
+        });
+      }
+    } catch (e) {}
+    const paramsText = paramParts.join(" · ") || "Xem số liệu trên thanh trạng thái phía trên màn hình.";
+
+    let greenText = "";
+    try {
+      if (typeof GM === "object" && GM && typeof GM.greenTag === "function") greenText = __cleanCalcText(GM.greenTag());
+      else if (kd && kd.green) greenText = __cleanCalcText(kd.green);
+    } catch (e) {}
+    greenText = greenText.replace(/^🟢\s*/, "").trim();
+
+    let hint1Text = "";
+    try {
+      let hts = null;
+      if (typeof GM === "object" && GM && typeof GM.hintTexts === "function") hts = GM.hintTexts();
+      else if (typeof hintTexts === "function") hts = hintTexts();
+      if (Array.isArray(hts) && hts[0]) hint1Text = __cleanCalcText(hts[0]);
+      else if (kd && typeof kd.hint1 === "function") hint1Text = __cleanCalcText(kd.hint1(c));
+      else if (kd && typeof kd.hints === "function") { const kh = kd.hints(c); if (Array.isArray(kh) && kh[0]) hint1Text = __cleanCalcText(kh[0]); }
+    } catch (e) {}
+
+    const fParts = [];
+    if (greenText) fParts.push("Điều kiện đạt chuẩn: " + greenText);
+    if (hint1Text && !fParts.join(" ").includes(hint1Text)) fParts.push("Hướng tính: " + hint1Text);
+    const formulaText = fParts.join(" · ") || "Áp dụng công thức của bài học để tính thông số phù hợp.";
+
+    const pDesc = [];
+    try {
+      if (kd && Array.isArray(kd.P)) {
+        kd.P.forEach(p => {
+          if (!p || !p.lab) return;
+          if (Array.isArray(p.opts) && p.opts.length) pDesc.push(`${p.lab} (${p.opts.slice(0, 5).join(", ")}${p.opts.length > 5 ? "…" : ""})`);
+          else if (p.min != null && p.max != null) pDesc.push(`${p.lab} (từ ${p.min} đến ${p.max}${p.unit ? " " + p.unit : ""})`);
+          else pDesc.push(p.lab);
+        });
+      }
+    } catch (e) {}
+    let chint = "";
+    try {
+      if (typeof GM === "object" && GM && typeof GM.controlHint === "function") chint = __cleanCalcText(GM.controlHint());
+      else if (kd && kd.hint) chint = __cleanCalcText(kd.hint);
+      else if ($("controlHint")) chint = __cleanCalcText($("controlHint").textContent);
+    } catch (e) {}
+    chint = chint.replace(/^[^\wÀ-ỹ]+/, "").trim();
+    const execLabel = ($("executeBtnText") && $("executeBtnText").textContent.trim()) || (kd && kd.execLabel) || ($("btnExecuteStage") && $("btnExecuteStage").textContent.trim()) || "Chạy thử ▶";
+
+    let actionText = "Dựa vào thông số và công thức trên, bạn hãy tính giá trị cần thiết";
+    if (pDesc.length) actionText += ` rồi chỉnh [${pDesc.join(" · ")}]`;
+    if (chint) actionText += ` (${chint})`;
+    actionText += `. Sau khi chỉnh xong, bấm nút «${execLabel}» ở góc dưới để kiểm tra kết quả!`;
+
+    return baseLines.concat([
+      { who, __p: 1, text: `📊 Thông số để tính toán: ${paramsText}` },
+      { who, __p: 1, text: `📐 Công thức & cách tính: ${formulaText}` },
+      { who, __p: 1, text: `🎯 Chốt lại nhiệm vụ (Cần làm gì): ${actionText}` }
+    ]);
+  } catch (e) { return baseLines; }
+}
+function __enrichIntroHtml(rawHtml) {
+  if (window.__hdlgEnrichIntroStory) return window.__hdlgEnrichIntroStory(rawHtml);
+  if (!rawHtml || String(rawHtml).includes("hdlg-intro-summary")) return rawHtml;
+  let formulaItems = [];
+  try {
+    const ls = (typeof GM === "object" && GM && typeof GM.summaryLessons === "function") ? GM.summaryLessons() : [];
+    if (Array.isArray(ls) && ls.length) {
+      ls.slice(0, 4).forEach(it => { if (Array.isArray(it) && it.length >= 2) formulaItems.push(`<li><b class="text-amber-200">${it[0]}:</b> ${it[1]}</li>`); });
+    } else if (typeof LESSON === "object" && LESSON && Array.isArray(LESSON.formulas)) {
+      LESSON.formulas.slice(0, 4).forEach(f => {
+        if (typeof f === "string") formulaItems.push(`<li>• ${f}</li>`);
+        else if (f && f.name && f.formula) formulaItems.push(`<li><b class="text-amber-200">${f.name}:</b> ${f.formula}</li>`);
+      });
+    }
+  } catch (e) {}
+  const theoryBlock = formulaItems.length
+    ? `<div class="mt-2.5 p-2.5 rounded-xl bg-slate-900/80 border border-amber-400/40 text-[11.5px] leading-relaxed"><div class="font-extrabold text-amber-300 mb-1">📘 Kiến thức & Công thức trọng tâm (theo bài học mới):</div><ul class="space-y-1 text-slate-200">${formulaItems.join("")}</ul></div>`
+    : "";
+  const missionBlock = `<div class="hdlg-intro-summary mt-2 p-2.5 rounded-xl bg-emerald-950/75 border border-emerald-400/50 text-[11.5px] leading-relaxed text-emerald-100"><div class="font-extrabold text-emerald-300 mb-0.5">🎯 Chốt lại: Vào màn chơi bạn cần làm gì?</div><div><b>Bước 1:</b> Đọc kỹ dòng <b>📊 Thông số để tính toán</b> và <b>📐 Công thức & cách tính</b> xuất hiện ngay trong lời thoại của nhân vật ở mỗi chặng (hoặc bấm nút <b>📋 Thông số & Nhiệm vụ</b> ở góc dưới trái).<br><b>Bước 2:</b> Thay các thông số đã cho vào công thức để tính ra giá trị cần tìm, rồi <b>kéo thanh trượt / xoay núm / chọn linh kiện</b> trên màn hình.<br><b>Bước 3:</b> Bấm nút hành động màu xanh lá (<b>▶</b>) ở góc dưới để chạy kiểm chứng và hoàn thành cả 3 chặng!</div></div>`;
+  return rawHtml + theoryBlock + missionBlock;
+}
+
 function startDialogue(lines, onDone) {
+  if (S.phase === "dialogue") lines = __buildStageCalcLines(lines);
   S.dialogue = { lines, i: 0, onDone, typing: false, prevPhase: S.phase };
   $("dialogueBox").classList.remove("hidden"); $("gameplayActionBar").classList.add("hidden"); $("controlHint").classList.add("hidden"); hideCtxMenu();
   showLine();
@@ -764,7 +888,7 @@ function goBackToLesson() {
 }
 function applyLessonTexts() {
   $("introLessonTitle").textContent = `Bài: ${LESSON.title} — ${LESSON.description || ""}`;
-  $("introSubject").textContent = `VẬT LÝ ${LESSON.grade || 8}`;
+  $("introSubject").textContent = LESSON.subject_label || "KHTN 8 · VẬT LÝ";
 }
 
 /* ---------- Menu ngữ cảnh (HTML) ---------- */
@@ -1736,7 +1860,7 @@ $("btnPlus").addEventListener("click", () => { if (S.phase !== "setup") return; 
   S.cfg = GM.makeStage(0); GM.reset();
   $("introPortraitA").src = IMG_SRC[CHAR_A.img]; $("introNameA").textContent = `${CHAR_A.name} · ${CHAR_A.job}`;
   $("introPortraitB").src = IMG_SRC[CHAR_B.img]; $("introNameB").textContent = `${CHAR_B.name} · ${CHAR_B.job}`;
-  $("introStory").innerHTML = GM.introStory();
+  $("introStory").innerHTML = __enrichIntroHtml(GM.introStory());
   applyLessonTexts(); syncHubHUD(); updateHUD();
   loadLessonFromAPI();
   requestAnimationFrame(loop);

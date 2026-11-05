@@ -148,9 +148,9 @@ body { background: radial-gradient(120% 90% at 50% 0%, #101632 0%, #0a0d22 55%, 
     <!-- MODAL MỞ ĐẦU -->
     <div id="introModal" class="absolute inset-0 z-40 flex items-center justify-center bg-black/70 p-4 fade-in">
         <div class="dialogue-box rounded-3xl max-w-2xl w-full p-5 md:p-7 pop-in scroll-y">
-            <div class="text-[11px] tracking-[0.25em] text-amber-300 font-extrabold">HỌC ĐỂ LÀM GÌ? · <span id="introSubject">VẬT LÝ 8</span></div>
+            <div class="text-[11px] tracking-[0.25em] text-amber-300 font-extrabold">HỌC ĐỂ LÀM GÌ? · <span id="introSubject">VẬT LÝ 11 · KẾT NỐI TRI THỨC</span></div>
             <h1 class="text-2xl md:text-3xl font-black mt-1 leading-tight">🎯 Phòng Lái Tia</h1>
-            <div id="introLessonTitle" class="text-amber-200 font-bold text-sm mt-1">Bài: Điện trường đều · Hạt mang điện · Công lực điện</div>
+            <div id="introLessonTitle" class="text-amber-200 font-bold text-sm mt-1">Bài: Chương III – Phần 2. Thế năng điện, Điện thế và Tụ điện</div>
             <div class="flex gap-3 mt-3 items-start">
                 <div class="text-center flex-shrink-0"><img id="introPortraitA" alt="" class="w-16 h-16 md:w-20 md:h-20 rounded-2xl border-2 border-amber-400 portrait-breathe mx-auto"><div id="introNameA" class="text-[10px] font-bold mt-1 text-amber-200 w-20 leading-tight"></div></div>
                 <div class="text-center flex-shrink-0"><img id="introPortraitB" alt="" class="w-16 h-16 md:w-20 md:h-20 rounded-2xl border-2 border-sky-400 portrait-breathe mx-auto"><div id="introNameB" class="text-[10px] font-bold mt-1 text-sky-200 w-20 leading-tight"></div></div>
@@ -227,10 +227,10 @@ body { background: radial-gradient(120% 90% at 50% 0%, #101632 0%, #0a0d22 55%, 
 <script>
 "use strict";
 /* PHÒNG LÁI TIA — Game "Điện trường đều, chuyển động hạt mang điện & công lực điện" (Vật lý 12) */
-const LESSON_ID = 79;
+const LESSON_ID = Number(new URLSearchParams(location.search).get("lesson_id")) || 189;
 const GAME_KEY = "dien-truong-cuong-do";
 const GAME_FONT = "'Lexend'";
-const FALLBACK_LESSON = {"id": 79, "subject_id": 2, "grade": 12, "topic": "dien-truong-cuong-do", "title": "Điện trường đều, Chuyển động của Hạt mang điện trong Điện trường & Công của Lực điện", "icon": "⚡", "description": "Phân tích chuyển động giống vật ném ngang của hạt mang điện trong điện trường đều giữa hai bản phẳng song song và tính công A = qEd.", "definition": "Điện trường đều là điện trường mà vectơ cường độ điện trường E⃗ tại mọi điểm đều có cùng phương, cùng chiều và cùng độ lớn; đường sức điện là những đường thẳng song song, cách đều nhau (như giữa hai bản kim loại phẳng đặt song song tích điện trái dấu).", "concept": "• Cường độ điện trường đều giữa hai bản phẳng song song cách nhau đoạn d, hiệu điện thế U: E = U / d (hướng từ bản dương sang bản âm).\n• Gia tốc của hạt mang điện tích q, khối lượng m trong điện trường đều: a⃗ = F⃗ / m = (q · E⃗) / m.\n• Nếu hạt mang điện bay vào điện trường đều theo phương vuông góc với đường sức điện (với vận tốc đầu v₀), hạt sẽ chuyển động theo quỹ đạo Parabol giống hệt chuyển động ném ngang với gia tốc a = |q|E/m.\n• Công của lực điện trường: A_MN = q · E · d (trong đó d = s · cos α là hình chiếu của đường đi MN lên phương của đường sức điện; công của lực tĩnh điện KHÔNG phụ thuộc hình dạng đường đi mà chỉ phụ thuộc vị trí điểm đầu M và điểm cuối N).", "formulas": [{"items": [{"name": "Liên hệ giữa E và U trong điện trường đều", "note": "d là khoảng cách giữa hai bản phẳng theo phương đường sức (m)", "formula": "E = U / d  ⇔  U = E · d"}, {"name": "Công của lực điện khi q di chuyển từ M đến N", "note": "d_MN > 0 nếu hình chiếu đi xuôi chiều đường sức ; Trên đường cong kín: A_kín = 0", "formula": "A_MN = q · E · d_MN = q · E · s · cos α"}], "category": "I. Điện trường đều & Công của Lực điện (Trường thế)"}, {"items": [{"name": "Gia tốc của hạt (khối lượng m, điện tích q)", "note": "Hạt dương (q > 0) lệch về bản âm ; hạt âm (q < 0) lệch về bản dương", "formula": "a = |q| · E / m = (|q| · U) / (m · d)"}, {"name": "Phương trình quỹ đạo & Độ lệch y khi ra khỏi bản dài L", "note": "", "formula": "t = L / v₀  ;  y = (1/2) · a · t² = [ |q| · E · L² ] / (2 · m · v₀²)"}], "category": "II. Quỹ đạo Hạt mang điện bay vuông góc vào Điện trường đều (giống Ném ngang)"}], "meaning": "Ứng dụng trong ống phóng điện tử (dao động ký điện tử), máy gia tốc tuyến tính và màn hình hiển thị.", "real_life": "Đặt hiệu điện thế U lên hai bản lái tia để điều khiển quỹ đạo chùm electron bắn trúng điểm đích trên màn huỳnh quang.", "context_title": "Hiện tượng & Ứng dụng: Điện trường đều, Chuyển động của Hạt mang điện trong Điện trường & Công của Lực điện", "context": "Đặt hiệu điện thế U lên hai bản lái tia để điều khiển quỹ đạo chùm electron bắn trúng điểm đích trên màn huỳnh quang.", "theory": "Điện trường đều là điện trường mà vectơ cường độ điện trường E⃗ tại mọi điểm đều có cùng phương, cùng chiều và cùng độ lớn; đường sức điện là những đường thẳng song song, cách đều nhau (như giữa hai bản kim loại phẳng đặt song song tích điện trái dấu).\n\n• Cường độ điện trường đều giữa hai bản phẳng song song cách nhau đoạn d, hiệu điện thế U: E = U / d (hướng từ bản dương sang bản âm).\n• Gia tốc của hạt mang điện tích q, khối lượng m trong điện trường đều: a⃗ = F⃗ / m = (q · E⃗) / m.\n• Nếu hạt mang điện bay vào điện trường đều theo phương vuông góc với đường sức điện (với vận tốc đầu v₀), hạt sẽ chuyển động theo quỹ đạo Parabol giống hệt chuyển động ném ngang với gia tốc a = |q|E/m.\n• Công của lực điện trường: A_MN = q · E · d (trong đó d = s · cos α là hình chiếu của đường đi MN lên phương của đường sức điện; công của lực tĩnh điện KHÔNG phụ thuộc hình dạng đường đi mà chỉ phụ thuộc vị trí điểm đầu M và điểm cuối N).", "formula": "• I. Điện trường đều & Công của Lực điện (Trường thế):\n  - Liên hệ giữa E và U trong điện trường đều: E = U / d  ⇔  U = E · d (d là khoảng cách giữa hai bản phẳng theo phương đường sức (m))\n  - Công của lực điện khi q di chuyển từ M đến N: A_MN = q · E · d_MN = q · E · s · cos α (d_MN > 0 nếu hình chiếu đi xuôi chiều đường sức ; Trên đường cong kín: A_kín = 0)\n• II. Quỹ đạo Hạt mang điện bay vuông góc vào Điện trường đều (giống Ném ngang):\n  - Gia tốc của hạt (khối lượng m, điện tích q): a = |q| · E / m = (|q| · U) / (m · d) (Hạt dương (q > 0) lệch về bản âm ; hạt âm (q < 0) lệch về bản dương)\n  - Phương trình quỹ đạo & Độ lệch y khi ra khỏi bản dài L: t = L / v₀  ;  y = (1/2) · a · t² = [ |q| · E · L² ] / (2 · m · v₀²)", "example": "Hai bản kim loại phẳng đặt song song nằm ngang cách nhau d = 2 cm, tích điện trái dấu với hiệu điện thế U = 120 V. Một hạt bụi tích điện q = −2 · 10⁻¹⁰ C nằm lơ lửng cân bằng chính giữa hai bản (lấy g = 10 m/s²). Hỏi bản nào tích điện dương và khối lượng m của hạt bụi bằng bao nhiêu?", "example_answer": "Đổi d = 0,02 m. Cường độ điện trường giữa hai bản là: E = U / d = 120 / 0,02 = 6 000 (V/m). Để hạt bụi lơ lửng cân bằng thì lực điện F⃗ phải hướng thẳng đứng lên trên (ngược chiều trọng lực P⃗). Vì hạt bụi mang điện âm (q < 0) nên E⃗ phải hướng thẳng đứng từ trên xuống dưới, tức là BẢN TRÊN tích điện dương (+). Khi cân bằng: |q| · E = m · g ⇒ m = (2·10⁻¹⁰ · 6000) / 10 = 1,2 · 10⁻⁷ (kg) = 0,12 (mg).", "question": "Một điện tích q = +5 μC di chuyển dọc theo cạnh một tam giác đều ABC cạnh a = 10 cm đặt trong điện trường đều có E⃗ song song với cạnh BC và có độ lớn E = 4 000 V/m. Công của lực điện khi điện tích q di chuyển từ B đến C là:", "answers": ["0,02 J (20 mJ)", "0,01 J", "−0,02 J", "0 J"], "correct": 0, "application": "Ứng dụng trong ống phóng điện tử (dao động ký điện tử), máy gia tốc tuyến tính và màn hình hiển thị.", "challenge": "Một electron (m = 9,1 · 10⁻³¹ kg, q = −1,6 · 10⁻¹⁹ C) bay từ bản dương sang bản âm dọc theo đường sức của một điện trường đều có E = 1 000 V/m với vận tốc ban đầu v₀ = 6 · 10⁶ m/s. Hỏi electron đi được quãng đường tối đa bao nhiêu xăng-ti-mét trước khi dừng lại rồi quay đầu chuyển động ngược lại?", "challenge_answer": "Vì electron mang điện âm (q < 0) bay cùng chiều E⃗ nên lực điện ngược chiều chuyển động, thực hiện công cản làm electron chậm dần. Áp dụng định lý động năng: 0 − (1/2)mv₀² = q · E · s (với q < 0) ⇒ s = (m · v₀²) / (2 · |q| · E) = (9,1·10⁻³¹ · 36·10¹²) / (2 · 1,6·10⁻¹⁹ · 1000) ≈ 0,1024 (m) = 10,24 (cm).", "game_title": "Thử thách thực tế: Chuyển động hạt trong Điện trường", "game_description": "Thay đổi điện áp hai bản phẳng → quan sát quỹ đạo parabol của hạt mang điện.", "game_type": "simulation"};
+const FALLBACK_LESSON = {"id": 189, "subject_id": 2, "subject": "physics", "subject_label": "VẬT LÝ 11 · KẾT NỐI TRI THỨC", "grade": 11, "topic": "dien-the", "title": "Chương III – Phần 2. Thế năng điện, Điện thế và Tụ điện", "icon": "🔋", "description": "Chương III · SGK Vật lí 11 Kết nối tri thức với cuộc sống (tr. 76–89): Bài 19 – Bài 21. Công của lực điện và thế năng điện; điện thế, hiệu điện thế và mối liên hệ với cường độ điện trường; tụ điện, điện dung của bộ tụ ghép nối tiếp và song song, năng lượng của tụ điện.", "definition": "- **Công của lực điện và thế năng điện**: Lực tĩnh điện là lực thế; công của lực điện trong dịch chuyển của điện tích $q$ từ $M$ đến $N$ trong điện trường đều là $A_{MN} = qEd$ (với $d$ là độ dài đại số hình chiếu của $\\overrightarrow{MN}$ lên chiều đường sức). Thế năng của điện tích $q$ tại điểm $M$ là $W_M = A_{M\\infty}$.\n- **Điện thế và hiệu điện thế**: Điện thế tại điểm $M$ là $V_M = \\dfrac{W_M}{q} = \\dfrac{A_{M\\infty}}{q}$ ($\\text{V}$). Hiệu điện thế giữa hai điểm $M$, $N$ là $U_{MN} = V_M - V_N = \\dfrac{A_{MN}}{q}$.\n- **Tụ điện và điện dung**: Tụ điện là một hệ hai vật dẫn đặt gần nhau và ngăn cách nhau bằng một lớp cách điện (điện môi), dùng để tích và phóng điện trong mạch. Điện dung của tụ điện là $C = \\dfrac{Q}{U}$ (đơn vị fara, kí hiệu $\\text{F}$), đặc trưng cho khả năng tích điện của tụ điện ở một hiệu điện thế nhất định.", "concept": "", "formulas": ["Công của lực điện trong điện trường đều: $A_{MN} = qEd = qEs\\cos\\alpha = W_M - W_N$", "Điện thế và hiệu điện thế: $V_M = \\dfrac{A_{M\\infty}}{q} = \\dfrac{W_M}{q}, \\quad U_{MN} = V_M - V_N = \\dfrac{A_{MN}}{q}$", "Định lí động năng cho hạt mang điện: $\\Delta W_{\\text{đ}} = \\dfrac{1}{2}mv_N^2 - \\dfrac{1}{2}mv_M^2 = A_{MN} = qU_{MN}$", "Định nghĩa điện dung của tụ điện: $C = \\dfrac{Q}{U} \\iff Q = CU$", "Bộ tụ điện ghép nối tiếp: $Q_{\\text{bộ}} = Q_1 = Q_2, \\quad U_{\\text{bộ}} = U_1 + U_2, \\quad \\dfrac{1}{C_{\\text{bộ}}} = \\dfrac{1}{C_1} + \\dfrac{1}{C_2}$", "Bộ tụ điện ghép song song: $U_{\\text{bộ}} = U_1 = U_2, \\quad Q_{\\text{bộ}} = Q_1 + Q_2, \\quad C_{\\text{bộ}} = C_1 + C_2$", "Năng lượng điện trường trong tụ điện: $W = \\dfrac{1}{2}QU = \\dfrac{1}{2}CU^2 = \\dfrac{Q^2}{2C}$"], "meaning": "", "real_life": "- **Máy khử rung tim (Defibrillator) và đèn Flash máy ảnh**: Tụ điện có khả năng tích điện từ từ rồi phóng trả toàn bộ năng lượng cực nhanh trong vài phần nghìn giây, tạo xung dòng điện lớn giúp kích nhịp tim cấp cứu hoặc làm loé sáng đèn Flash.\n- **Màn hình cảm ứng điện dung và bộ nhớ DRAM**: Màn hình điện thoại thông minh hoạt động dựa trên lưới tụ điện siêu nhỏ; khi ngón tay (vật dẫn) chạm vào màn hình sẽ làm thay đổi điện dung cục bộ tại điểm chạm, giúp chip xử lí định vị toạ độ chạm chính xác.", "game_title": "Phòng thí nghiệm Điện thế và Lắp mạch Tụ điện (Nối tiếp – Song song)", "game_description": "Khảo sát các mặt đẳng thế trong điện trường, đo công của lực điện khi di chuyển điện tích và lắp ghép các bộ tụ điện nối tiếp, song song để nạp và phóng năng lượng điện trường.", "game_type": "game_dien_truong_deu"};
 const THEME_MC = { teal: "#22d3ee", tealD: "#0e7490", or: "#f0abfc", orD: "#a21caf", rgb: "34,211,238", panel: "12,16,34", lab: "#cffafe", btn: "18,22,44" };
 const IMG_SRC = {
   mentorM: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzQwIiB2aWV3Qm94PSIwIDAgMzAwIDM0MCI+PGRlZnM+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJoZyIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzViNGE3MyIvPjxzdG9wIG9mZnNldD0iLjM1IiBzdG9wLWNvbG9yPSIjMTYxMjFjIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMGIwNjA1Ii8+PC9saW5lYXJHcmFkaWVudD4KICA8bGluZWFyR3JhZGllbnQgaWQ9InNrIiB4MT0iMCIgeTE9IjAiIHgyPSIwIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjZmZlMmNjIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjZjRiOTljIi8+PC9saW5lYXJHcmFkaWVudD4KICA8bGluZWFyR3JhZGllbnQgaWQ9InRwIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjZGJlYWZlIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjNjBhNWZhIi8+PC9saW5lYXJHcmFkaWVudD4KICA8cmFkaWFsR3JhZGllbnQgaWQ9ImlyIiBjeD0iLjUiIGN5PSIuNzUiIHI9Ii43Ij48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNlMGEwNjAiLz48c3RvcCBvZmZzZXQ9Ii41NSIgc3RvcC1jb2xvcj0iIzZiM2YxZiIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzE0MGEwNSIvPjwvcmFkaWFsR3JhZGllbnQ+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJzaGluZSIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjAiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2ZmZiIgc3RvcC1vcGFjaXR5PSIwIi8+PHN0b3Agb2Zmc2V0PSIuNSIgc3RvcC1jb2xvcj0iI2ZmZiIgc3RvcC1vcGFjaXR5PSIuNTUiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNmZmYiIHN0b3Atb3BhY2l0eT0iMCIvPjwvbGluZWFyR3JhZGllbnQ+CiAgPHJhZGlhbEdyYWRpZW50IGlkPSJyaW0iIGN4PSIuMiIgY3k9Ii4yIiByPSIxIj48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNmZmQ1OWEiIHN0b3Atb3BhY2l0eT0iLjU1Ii8+PHN0b3Agb2Zmc2V0PSIuNSIgc3RvcC1jb2xvcj0iI2ZmZDU5YSIgc3RvcC1vcGFjaXR5PSIwIi8+PC9yYWRpYWxHcmFkaWVudD4KICA8L2RlZnM+PHBhdGggZD0iTTQwIDM0MCBRNDIgMjYyIDEwNCAyNDYgTDE5NiAyNDYgUTI1OCAyNjIgMjYwIDM0MCBaIiBmaWxsPSJ1cmwoI3RwKSIvPgogIDxwYXRoIGQ9Ik0xNTAgMjQ2IEwxOTYgMjQ2IFEyNTggMjYyIDI2MCAzNDAgTDE3NiAzNDAgWiIgZmlsbD0iIzYwYTVmYSIgb3BhY2l0eT0iLjU1Ii8+PHBhdGggZD0iTTU4IDMwMCBMMTA0IDI1MiBMMTEyIDI2MiBMNzAgMzEyIFoiIGZpbGw9IiNlZjQ0NDQiLz48cGF0aCBkPSJNMjQyIDMwMCBMMTk2IDI1MiBMMTg4IDI2MiBMMjMwIDMxMiBaIiBmaWxsPSIjZWY0NDQ0Ii8+CiAgICA8cGF0aCBkPSJNNjAgMzAyIEwxMDYgMjU0IiBzdHJva2U9IiNmZmY3ZDYiIHN0cm9rZS13aWR0aD0iNCIgb3BhY2l0eT0iLjgiLz48cGF0aCBkPSJNMjQwIDMwMiBMMTk0IDI1NCIgc3Ryb2tlPSIjZmZmN2Q2IiBzdHJva2Utd2lkdGg9IjQiIG9wYWNpdHk9Ii44Ii8+CiAgICA8cGF0aCBkPSJNOTYgMjYyIEwxMjAgMzQwIiBzdHJva2U9IiMzYjJhMWYiIHN0cm9rZS13aWR0aD0iMTEiLz48cGF0aCBkPSJNOTYgMjYyIEwxMjAgMzQwIiBzdHJva2U9IiM2YjRhMzMiIHN0cm9rZS13aWR0aD0iNSIvPgogICAgPHJlY3QgeD0iMTc2IiB5PSIyODIiIHdpZHRoPSI0MCIgaGVpZ2h0PSIzMCIgcng9IjUiIGZpbGw9IiNmOGZhZmMiIHN0cm9rZT0iIzk0YTNiOCIgc3Ryb2tlLXdpZHRoPSIyIiB0cmFuc2Zvcm09InJvdGF0ZSgtNiAxOTYgMjk3KSIvPgogICAgPHJlY3QgeD0iMTgyIiB5PSIyODgiIHdpZHRoPSIxMiIgaGVpZ2h0PSIxNiIgcng9IjIiIGZpbGw9IiNmZGU2OGEiIHRyYW5zZm9ybT0icm90YXRlKC02IDE5NiAyOTcpIi8+CiAgICA8dGV4dCB4PSIyMDYiIHk9IjMwMSIgZm9udC1zaXplPSI4IiBmb250LWZhbWlseT0iVmVyZGFuYSIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiMwZjc2NmUiIHRyYW5zZm9ybT0icm90YXRlKC02IDE5NiAyOTcpIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7imqE8L3RleHQ+CiAgICA8cGF0aCBkPSJNMTIwIDI1MCBMMTUwIDI3OCBMMTgwIDI1MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNjBhNWZhIiBzdHJva2Utd2lkdGg9IjUiLz48cGF0aCBkPSJNMTMwIDIwNiBMMTcwIDIwNiBMMTcyIDI1MiBRMTUwIDI2MiAxMjggMjUyIFoiIGZpbGw9InVybCgjc2spIi8+PHBhdGggZD0iTTEzMCAyMjIgUTE1MCAyMzYgMTcwIDIyMiBMMTcwIDIwNiBMMTMwIDIwNloiIGZpbGw9IiNmNGI5OWMiIG9wYWNpdHk9Ii44Ii8+PGVsbGlwc2UgY3g9Ijg4IiBjeT0iMTUwIiByeD0iMTEiIHJ5PSIxNiIgZmlsbD0iI2ZmZTJjYyIvPjxlbGxpcHNlIGN4PSIyMTIiIGN5PSIxNTAiIHJ4PSIxMSIgcnk9IjE2IiBmaWxsPSIjZmZlMmNjIi8+CiAgPHBhdGggZD0iTTg2IDE0NCBROTIgMTUwIDg4IDE1OCIgc3Ryb2tlPSIjZjRiOTljIiBzdHJva2Utd2lkdGg9IjMiIGZpbGw9Im5vbmUiLz48cGF0aCBkPSJNMjE0IDE0NCBRMjA4IDE1MCAyMTIgMTU4IiBzdHJva2U9IiNmNGI5OWMiIHN0cm9rZS13aWR0aD0iMyIgZmlsbD0ibm9uZSIvPjxwYXRoIGQ9Ik05MiAxMjAgUTkyIDcwIDE1MCA2NiBRMjA4IDcwIDIwOCAxMjAgUTIwOCAxNzYgMTc2IDIwNCBRMTYwIDIxNiAxNTAgMjE2IFExNDAgMjE2IDEyNCAyMDQgUTkyIDE3NiA5MiAxMjAgWiIgZmlsbD0idXJsKCNzaykiLz4KICA8cGF0aCBkPSJNOTIgMTIwIFE5MiA3MCAxNTAgNjYgUTIwOCA3MCAyMDggMTIwIFEyMDggMTc2IDE3NiAyMDQgUTE2MCAyMTYgMTUwIDIxNiBRMTQwIDIxNiAxMjQgMjA0IFE5MiAxNzYgOTIgMTIwIFoiIGZpbGw9InVybCgjcmltKSIvPjxlbGxpcHNlIGN4PSIxMTQiIGN5PSIxNzAiIHJ4PSIxNCIgcnk9IjciIGZpbGw9IiNmZjhmYTMiIG9wYWNpdHk9Ii40MiIvPjxlbGxpcHNlIGN4PSIxODYiIGN5PSIxNzAiIHJ4PSIxNCIgcnk9IjciIGZpbGw9IiNmZjhmYTMiIG9wYWNpdHk9Ii40MiIvPgogIDxwYXRoIGQ9Ik0xMDggMTY4IGw0IC00IE0xMTQgMTY4IGw0IC00IE0xODAgMTY4IGw0IC00IE0xODYgMTY4IGw0IC00IiBzdHJva2U9IiNmZjZiOGEiIHN0cm9rZS13aWR0aD0iMS42IiBvcGFjaXR5PSIuNiIvPjxwYXRoIGQ9Ik0xMDUgMTQwIFExMjIgMTI4IDEzOSAxNDAgTDEzOCAxNTggUTEyMiAxNzAgMTA2IDE1OCBaIiBmaWxsPSIjZmZmIi8+CiAgICAgIDxlbGxpcHNlIGN4PSIxMjEiIGN5PSIxNTEiIHJ4PSIxMSIgcnk9IjE0LjUiIGZpbGw9InVybCgjaXIpIi8+CiAgICAgIDxlbGxpcHNlIGN4PSIxMjEiIGN5PSIxNTIiIHJ4PSI1LjIiIHJ5PSI3LjUiIGZpbGw9IiMxMjA4MDQiLz4KICAgICAgPGVsbGlwc2UgY3g9IjExOCIgY3k9IjE0NCIgcng9IjQuNiIgcnk9IjUuNiIgZmlsbD0iI2ZmZiIvPjxjaXJjbGUgY3g9IjEyNyIgY3k9IjE1OCIgcj0iMi4zIiBmaWxsPSIjZmZmIiBvcGFjaXR5PSIuOSIvPgogICAgICA8cGF0aCBkPSJNMTEzIDE2MCBRMTIyIDE2NSAxMzEgMTYwIiBzdHJva2U9IiNlMGEwNjAiIHN0cm9rZS13aWR0aD0iMiIgZmlsbD0ibm9uZSIgb3BhY2l0eT0iLjciLz4KICAgICAgPHBhdGggZD0iTTEwMyAxNDEgUTEyMiAxMjQgMTQxIDE0MCIgc3Ryb2tlPSIjMWQwZTA2IiBzdHJva2Utd2lkdGg9IjUuNSIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+CiAgICAgIDxwYXRoIGQ9Ik0xMDQgMTQwIGwtNyAtNSIgc3Ryb2tlPSIjMWQwZTA2IiBzdHJva2Utd2lkdGg9IjMuNSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PHBhdGggZD0iTTE2MSAxNDAgUTE3OCAxMjggMTk1IDE0MCBMMTk0IDE1OCBRMTc4IDE3MCAxNjIgMTU4IFoiIGZpbGw9IiNmZmYiLz4KICAgICAgPGVsbGlwc2UgY3g9IjE3OSIgY3k9IjE1MSIgcng9IjExIiByeT0iMTQuNSIgZmlsbD0idXJsKCNpcikiLz4KICAgICAgPGVsbGlwc2UgY3g9IjE3OSIgY3k9IjE1MiIgcng9IjUuMiIgcnk9IjcuNSIgZmlsbD0iIzEyMDgwNCIvPgogICAgICA8ZWxsaXBzZSBjeD0iMTc0IiBjeT0iMTQ0IiByeD0iNC42IiByeT0iNS42IiBmaWxsPSIjZmZmIi8+PGNpcmNsZSBjeD0iMTgzIiBjeT0iMTU4IiByPSIyLjMiIGZpbGw9IiNmZmYiIG9wYWNpdHk9Ii45Ii8+CiAgICAgIDxwYXRoIGQ9Ik0xNjkgMTYwIFExNzggMTY1IDE4NyAxNjAiIHN0cm9rZT0iI2UwYTA2MCIgc3Ryb2tlLXdpZHRoPSIyIiBmaWxsPSJub25lIiBvcGFjaXR5PSIuNyIvPgogICAgICA8cGF0aCBkPSJNMTU5IDE0MSBRMTc4IDEyNCAxOTcgMTQwIiBzdHJva2U9IiMxZDBlMDYiIHN0cm9rZS13aWR0aD0iNS41IiBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KICAgICAgPHBhdGggZD0iTTE5NiAxNDAgbDcgLTUiIHN0cm9rZT0iIzFkMGUwNiIgc3Ryb2tlLXdpZHRoPSIzLjUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjxwYXRoIGQ9Ik0xMDQgMTIwIFExMTggMTEyIDEzNCAxMTgiIHN0cm9rZT0iIzE2MTIxYyIgc3Ryb2tlLXdpZHRoPSI0LjUiIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogIDxwYXRoIGQ9Ik0xNjYgMTE4IFExODIgMTEyIDE5NiAxMjAiIHN0cm9rZT0iIzE2MTIxYyIgc3Ryb2tlLXdpZHRoPSI0LjUiIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogIDxwYXRoIGQ9Ik0xNTAgMTY2IFExNTMgMTcyIDE0OCAxNzUiIHN0cm9rZT0iI2Y0Yjk5YyIgc3Ryb2tlLXdpZHRoPSIyLjYiIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogIDxwYXRoIGQ9Ik0xMzYgMTg2IFExNTAgMjAwIDE2NCAxODYgUTE1MCAxOTEgMTM2IDE4NiBaIiBmaWxsPSIjYzI0MTRiIiBzdHJva2U9IiM3ZjFkMmEiIHN0cm9rZS13aWR0aD0iMiIgc3Ryb2tlLWxpbmVqb2luPSJyb3VuZCIvPgogIDxwYXRoIGQ9Ik0xNDIgMTkwIFExNTAgMTk1IDE1OCAxOTAiIHN0cm9rZT0iI2ZmOWFhOCIgc3Ryb2tlLXdpZHRoPSIyIiBmaWxsPSJub25lIi8+PHJlY3QgeD0iMTAwIiB5PSIxMzQiIHdpZHRoPSI0NCIgaGVpZ2h0PSIzNCIgcng9IjEyIiBmaWxsPSIjYmZlM2ZmIiBmaWxsLW9wYWNpdHk9Ii4xOCIgc3Ryb2tlPSIjM2IyYTIwIiBzdHJva2Utd2lkdGg9IjMuNSIvPjxyZWN0IHg9IjE1NiIgeT0iMTM0IiB3aWR0aD0iNDQiIGhlaWdodD0iMzQiIHJ4PSIxMiIgZmlsbD0iI2JmZTNmZiIgZmlsbC1vcGFjaXR5PSIuMTgiIHN0cm9rZT0iIzNiMmEyMCIgc3Ryb2tlLXdpZHRoPSIzLjUiLz48cGF0aCBkPSJNMTQ0IDE0OCBRMTUwIDE0MyAxNTYgMTQ4IiBzdHJva2U9IiMzYjJhMjAiIHN0cm9rZS13aWR0aD0iMyIgZmlsbD0ibm9uZSIvPjxwYXRoIGQ9Ik0xMDYgMTQwIEwxMTggMTUyIiBzdHJva2U9IiNmZmYiIHN0cm9rZS13aWR0aD0iMyIgb3BhY2l0eT0iLjYiLz48cGF0aCBkPSJNODQgMTI4IFE3MCA1MiAxNTAgNDYgUTIzMCA1MCAyMTYgMTI4IFEyMTAgMTAwIDE5OCA5MCBMMTkyIDEwOCBMMTgwIDg0IEwxNjggMTA0IEwxNTYgODAgTDE0MiAxMDIgTDEyOCA4MiBMMTE2IDEwNiBMMTA0IDkwIFE5MiAxMDAgODQgMTI4IFoiIGZpbGw9InVybCgjaGcpIi8+CiAgICAgIDxwYXRoIGQ9Ik0xMDQgNzQgUTE0MCA1OCAxODAgNjQiIHN0cm9rZT0idXJsKCNzaGluZSkiIHN0cm9rZS13aWR0aD0iNyIgZmlsbD0ibm9uZSIgc3Ryb2tlLWxpbmVjYXA9InJvdW5kIi8+PGcgdHJhbnNmb3JtPSJyb3RhdGUoLTggMTUwIDYwKSI+PHJlY3QgeD0iMTA0IiB5PSI1MCIgd2lkdGg9IjkyIiBoZWlnaHQ9IjEyIiByeD0iNiIgZmlsbD0iIzMzNDE1NSIvPjxyZWN0IHg9IjExOCIgeT0iMzgiIHdpZHRoPSIyOCIgaGVpZ2h0PSIyMiIgcng9IjgiIGZpbGw9IiMwZjE3MmEiIHN0cm9rZT0iIzk0YTNiOCIgc3Ryb2tlLXdpZHRoPSIyIi8+PHJlY3QgeD0iMTU0IiB5PSIzOCIgd2lkdGg9IjI4IiBoZWlnaHQ9IjIyIiByeD0iOCIgZmlsbD0iIzBmMTcyYSIgc3Ryb2tlPSIjOTRhM2I4IiBzdHJva2Utd2lkdGg9IjIiLz48cGF0aCBkPSJNMTI0IDQ0IEwxMzQgNTQgTTE2MCA0NCBMMTcwIDU0IiBzdHJva2U9IiM3ZGQzZmMiIHN0cm9rZS13aWR0aD0iMyIgb3BhY2l0eT0iLjgiLz48L2c+PC9zdmc+",  mentorM_c: "data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHdpZHRoPSIzMDAiIGhlaWdodD0iMzQwIiB2aWV3Qm94PSIwIDAgMzAwIDM0MCI+PGRlZnM+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJoZyIgeDE9IjAiIHkxPSIwIiB4Mj0iMCIgeTI9IjEiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iIzViNGE3MyIvPjxzdG9wIG9mZnNldD0iLjM1IiBzdG9wLWNvbG9yPSIjMTYxMjFjIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjMGIwNjA1Ii8+PC9saW5lYXJHcmFkaWVudD4KICA8bGluZWFyR3JhZGllbnQgaWQ9InNrIiB4MT0iMCIgeTE9IjAiIHgyPSIwIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjZmZlMmNjIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjZjRiOTljIi8+PC9saW5lYXJHcmFkaWVudD4KICA8bGluZWFyR3JhZGllbnQgaWQ9InRwIiB4MT0iMCIgeTE9IjAiIHgyPSIxIiB5Mj0iMSI+PHN0b3Agb2Zmc2V0PSIwIiBzdG9wLWNvbG9yPSIjZGJlYWZlIi8+PHN0b3Agb2Zmc2V0PSIxIiBzdG9wLWNvbG9yPSIjNjBhNWZhIi8+PC9saW5lYXJHcmFkaWVudD4KICA8cmFkaWFsR3JhZGllbnQgaWQ9ImlyIiBjeD0iLjUiIGN5PSIuNzUiIHI9Ii43Ij48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNlMGEwNjAiLz48c3RvcCBvZmZzZXQ9Ii41NSIgc3RvcC1jb2xvcj0iIzZiM2YxZiIvPjxzdG9wIG9mZnNldD0iMSIgc3RvcC1jb2xvcj0iIzE0MGEwNSIvPjwvcmFkaWFsR3JhZGllbnQ+CiAgPGxpbmVhckdyYWRpZW50IGlkPSJzaGluZSIgeDE9IjAiIHkxPSIwIiB4Mj0iMSIgeTI9IjAiPjxzdG9wIG9mZnNldD0iMCIgc3RvcC1jb2xvcj0iI2ZmZiIgc3RvcC1vcGFjaXR5PSIwIi8+PHN0b3Agb2Zmc2V0PSIuNSIgc3RvcC1jb2xvcj0iI2ZmZiIgc3RvcC1vcGFjaXR5PSIuNTUiLz48c3RvcCBvZmZzZXQ9IjEiIHN0b3AtY29sb3I9IiNmZmYiIHN0b3Atb3BhY2l0eT0iMCIvPjwvbGluZWFyR3JhZGllbnQ+CiAgPHJhZGlhbEdyYWRpZW50IGlkPSJyaW0iIGN4PSIuMiIgY3k9Ii4yIiByPSIxIj48c3RvcCBvZmZzZXQ9IjAiIHN0b3AtY29sb3I9IiNmZmQ1OWEiIHN0b3Atb3BhY2l0eT0iLjU1Ii8+PHN0b3Agb2Zmc2V0PSIuNSIgc3RvcC1jb2xvcj0iI2ZmZDU5YSIgc3RvcC1vcGFjaXR5PSIwIi8+PC9yYWRpYWxHcmFkaWVudD4KICA8L2RlZnM+PHBhdGggZD0iTTQwIDM0MCBRNDIgMjYyIDEwNCAyNDYgTDE5NiAyNDYgUTI1OCAyNjIgMjYwIDM0MCBaIiBmaWxsPSJ1cmwoI3RwKSIvPgogIDxwYXRoIGQ9Ik0xNTAgMjQ2IEwxOTYgMjQ2IFEyNTggMjYyIDI2MCAzNDAgTDE3NiAzNDAgWiIgZmlsbD0iIzYwYTVmYSIgb3BhY2l0eT0iLjU1Ii8+PHBhdGggZD0iTTU4IDMwMCBMMTA0IDI1MiBMMTEyIDI2MiBMNzAgMzEyIFoiIGZpbGw9IiNlZjQ0NDQiLz48cGF0aCBkPSJNMjQyIDMwMCBMMTk2IDI1MiBMMTg4IDI2MiBMMjMwIDMxMiBaIiBmaWxsPSIjZWY0NDQ0Ii8+CiAgICA8cGF0aCBkPSJNNjAgMzAyIEwxMDYgMjU0IiBzdHJva2U9IiNmZmY3ZDYiIHN0cm9rZS13aWR0aD0iNCIgb3BhY2l0eT0iLjgiLz48cGF0aCBkPSJNMjQwIDMwMiBMMTk0IDI1NCIgc3Ryb2tlPSIjZmZmN2Q2IiBzdHJva2Utd2lkdGg9IjQiIG9wYWNpdHk9Ii44Ii8+CiAgICA8cGF0aCBkPSJNOTYgMjYyIEwxMjAgMzQwIiBzdHJva2U9IiMzYjJhMWYiIHN0cm9rZS13aWR0aD0iMTEiLz48cGF0aCBkPSJNOTYgMjYyIEwxMjAgMzQwIiBzdHJva2U9IiM2YjRhMzMiIHN0cm9rZS13aWR0aD0iNSIvPgogICAgPHJlY3QgeD0iMTc2IiB5PSIyODIiIHdpZHRoPSI0MCIgaGVpZ2h0PSIzMCIgcng9IjUiIGZpbGw9IiNmOGZhZmMiIHN0cm9rZT0iIzk0YTNiOCIgc3Ryb2tlLXdpZHRoPSIyIiB0cmFuc2Zvcm09InJvdGF0ZSgtNiAxOTYgMjk3KSIvPgogICAgPHJlY3QgeD0iMTgyIiB5PSIyODgiIHdpZHRoPSIxMiIgaGVpZ2h0PSIxNiIgcng9IjIiIGZpbGw9IiNmZGU2OGEiIHRyYW5zZm9ybT0icm90YXRlKC02IDE5NiAyOTcpIi8+CiAgICA8dGV4dCB4PSIyMDYiIHk9IjMwMSIgZm9udC1zaXplPSI4IiBmb250LWZhbWlseT0iVmVyZGFuYSIgZm9udC13ZWlnaHQ9ImJvbGQiIGZpbGw9IiMwZjc2NmUiIHRyYW5zZm9ybT0icm90YXRlKC02IDE5NiAyOTcpIiB0ZXh0LWFuY2hvcj0ibWlkZGxlIj7imqE8L3RleHQ+CiAgICA8cGF0aCBkPSJNMTIwIDI1MCBMMTUwIDI3OCBMMTgwIDI1MCIgZmlsbD0ibm9uZSIgc3Ryb2tlPSIjNjBhNWZhIiBzdHJva2Utd2lkdGg9IjUiLz48cGF0aCBkPSJNMTMwIDIwNiBMMTcwIDIwNiBMMTcyIDI1MiBRMTUwIDI2MiAxMjggMjUyIFoiIGZpbGw9InVybCgjc2spIi8+PHBhdGggZD0iTTEzMCAyMjIgUTE1MCAyMzYgMTcwIDIyMiBMMTcwIDIwNiBMMTMwIDIwNloiIGZpbGw9IiNmNGI5OWMiIG9wYWNpdHk9Ii44Ii8+PGVsbGlwc2UgY3g9Ijg4IiBjeT0iMTUwIiByeD0iMTEiIHJ5PSIxNiIgZmlsbD0iI2ZmZTJjYyIvPjxlbGxpcHNlIGN4PSIyMTIiIGN5PSIxNTAiIHJ4PSIxMSIgcnk9IjE2IiBmaWxsPSIjZmZlMmNjIi8+CiAgPHBhdGggZD0iTTg2IDE0NCBROTIgMTUwIDg4IDE1OCIgc3Ryb2tlPSIjZjRiOTljIiBzdHJva2Utd2lkdGg9IjMiIGZpbGw9Im5vbmUiLz48cGF0aCBkPSJNMjE0IDE0NCBRMjA4IDE1MCAyMTIgMTU4IiBzdHJva2U9IiNmNGI5OWMiIHN0cm9rZS13aWR0aD0iMyIgZmlsbD0ibm9uZSIvPjxwYXRoIGQ9Ik05MiAxMjAgUTkyIDcwIDE1MCA2NiBRMjA4IDcwIDIwOCAxMjAgUTIwOCAxNzYgMTc2IDIwNCBRMTYwIDIxNiAxNTAgMjE2IFExNDAgMjE2IDEyNCAyMDQgUTkyIDE3NiA5MiAxMjAgWiIgZmlsbD0idXJsKCNzaykiLz4KICA8cGF0aCBkPSJNOTIgMTIwIFE5MiA3MCAxNTAgNjYgUTIwOCA3MCAyMDggMTIwIFEyMDggMTc2IDE3NiAyMDQgUTE2MCAyMTYgMTUwIDIxNiBRMTQwIDIxNiAxMjQgMjA0IFE5MiAxNzYgOTIgMTIwIFoiIGZpbGw9InVybCgjcmltKSIvPjxlbGxpcHNlIGN4PSIxMTQiIGN5PSIxNzAiIHJ4PSIxNCIgcnk9IjciIGZpbGw9IiNmZjhmYTMiIG9wYWNpdHk9Ii40MiIvPjxlbGxpcHNlIGN4PSIxODYiIGN5PSIxNzAiIHJ4PSIxNCIgcnk9IjciIGZpbGw9IiNmZjhmYTMiIG9wYWNpdHk9Ii40MiIvPgogIDxwYXRoIGQ9Ik0xMDggMTY4IGw0IC00IE0xMTQgMTY4IGw0IC00IE0xODAgMTY4IGw0IC00IE0xODYgMTY4IGw0IC00IiBzdHJva2U9IiNmZjZiOGEiIHN0cm9rZS13aWR0aD0iMS42IiBvcGFjaXR5PSIuNiIvPjxwYXRoIGQ9Ik0xMDUgMTQ2IFExMjIgMTU4IDEzOSAxNDYiIHN0cm9rZT0iIzJhMTUwOCIgc3Ryb2tlLXdpZHRoPSI0LjUiIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPgogICAgICA8cGF0aCBkPSJNMTA1IDE0NiBsLTYgLTMiIHN0cm9rZT0iIzJhMTUwOCIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48cGF0aCBkPSJNMTYxIDE0NiBRMTc4IDE1OCAxOTUgMTQ2IiBzdHJva2U9IiMyYTE1MDgiIHN0cm9rZS13aWR0aD0iNC41IiBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KICAgICAgPHBhdGggZD0iTTE5NSAxNDYgbDYgLTMiIHN0cm9rZT0iIzJhMTUwOCIgc3Ryb2tlLXdpZHRoPSIzIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz48cGF0aCBkPSJNMTA0IDEyMCBRMTE4IDExMiAxMzQgMTE4IiBzdHJva2U9IiMxNjEyMWMiIHN0cm9rZS13aWR0aD0iNC41IiBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KICA8cGF0aCBkPSJNMTY2IDExOCBRMTgyIDExMiAxOTYgMTIwIiBzdHJva2U9IiMxNjEyMWMiIHN0cm9rZS13aWR0aD0iNC41IiBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KICA8cGF0aCBkPSJNMTUwIDE2NiBRMTUzIDE3MiAxNDggMTc1IiBzdHJva2U9IiNmNGI5OWMiIHN0cm9rZS13aWR0aD0iMi42IiBmaWxsPSJub25lIiBzdHJva2UtbGluZWNhcD0icm91bmQiLz4KICA8cGF0aCBkPSJNMTM2IDE4NiBRMTUwIDIwMCAxNjQgMTg2IFExNTAgMTkxIDEzNiAxODYgWiIgZmlsbD0iI2MyNDE0YiIgc3Ryb2tlPSIjN2YxZDJhIiBzdHJva2Utd2lkdGg9IjIiIHN0cm9rZS1saW5lam9pbj0icm91bmQiLz4KICA8cGF0aCBkPSJNMTQyIDE5MCBRMTUwIDE5NSAxNTggMTkwIiBzdHJva2U9IiNmZjlhYTgiIHN0cm9rZS13aWR0aD0iMiIgZmlsbD0ibm9uZSIvPjxyZWN0IHg9IjEwMCIgeT0iMTM0IiB3aWR0aD0iNDQiIGhlaWdodD0iMzQiIHJ4PSIxMiIgZmlsbD0iI2JmZTNmZiIgZmlsbC1vcGFjaXR5PSIuMTgiIHN0cm9rZT0iIzNiMmEyMCIgc3Ryb2tlLXdpZHRoPSIzLjUiLz48cmVjdCB4PSIxNTYiIHk9IjEzNCIgd2lkdGg9IjQ0IiBoZWlnaHQ9IjM0IiByeD0iMTIiIGZpbGw9IiNiZmUzZmYiIGZpbGwtb3BhY2l0eT0iLjE4IiBzdHJva2U9IiMzYjJhMjAiIHN0cm9rZS13aWR0aD0iMy41Ii8+PHBhdGggZD0iTTE0NCAxNDggUTE1MCAxNDMgMTU2IDE0OCIgc3Ryb2tlPSIjM2IyYTIwIiBzdHJva2Utd2lkdGg9IjMiIGZpbGw9Im5vbmUiLz48cGF0aCBkPSJNMTA2IDE0MCBMMTE4IDE1MiIgc3Ryb2tlPSIjZmZmIiBzdHJva2Utd2lkdGg9IjMiIG9wYWNpdHk9Ii42Ii8+PHBhdGggZD0iTTg0IDEyOCBRNzAgNTIgMTUwIDQ2IFEyMzAgNTAgMjE2IDEyOCBRMjEwIDEwMCAxOTggOTAgTDE5MiAxMDggTDE4MCA4NCBMMTY4IDEwNCBMMTU2IDgwIEwxNDIgMTAyIEwxMjggODIgTDExNiAxMDYgTDEwNCA5MCBROTIgMTAwIDg0IDEyOCBaIiBmaWxsPSJ1cmwoI2hnKSIvPgogICAgICA8cGF0aCBkPSJNMTA0IDc0IFExNDAgNTggMTgwIDY0IiBzdHJva2U9InVybCgjc2hpbmUpIiBzdHJva2Utd2lkdGg9IjciIGZpbGw9Im5vbmUiIHN0cm9rZS1saW5lY2FwPSJyb3VuZCIvPjxnIHRyYW5zZm9ybT0icm90YXRlKC04IDE1MCA2MCkiPjxyZWN0IHg9IjEwNCIgeT0iNTAiIHdpZHRoPSI5MiIgaGVpZ2h0PSIxMiIgcng9IjYiIGZpbGw9IiMzMzQxNTUiLz48cmVjdCB4PSIxMTgiIHk9IjM4IiB3aWR0aD0iMjgiIGhlaWdodD0iMjIiIHJ4PSI4IiBmaWxsPSIjMGYxNzJhIiBzdHJva2U9IiM5NGEzYjgiIHN0cm9rZS13aWR0aD0iMiIvPjxyZWN0IHg9IjE1NCIgeT0iMzgiIHdpZHRoPSIyOCIgaGVpZ2h0PSIyMiIgcng9IjgiIGZpbGw9IiMwZjE3MmEiIHN0cm9rZT0iIzk0YTNiOCIgc3Ryb2tlLXdpZHRoPSIyIi8+PHBhdGggZD0iTTEyNCA0NCBMMTM0IDU0IE0xNjAgNDQgTDE3MCA1NCIgc3Ryb2tlPSIjN2RkM2ZjIiBzdHJva2Utd2lkdGg9IjMiIG9wYWNpdHk9Ii44Ii8+PC9nPjwvc3ZnPg==",
@@ -382,7 +382,7 @@ function goNextSet() {
   S.cfg = GM.makeStage(S.stage); S.phase = "intro"; resetStage();
   $("gameplayActionBar").classList.add("hidden"); $("controlHint").classList.add("hidden");
   if (GM.onSetChange) GM.onSetChange();
-  $("introStory").innerHTML = GM.introStory(); renderSetIntro(); hudCache.stageTitleLabel = null;
+  $("introStory").innerHTML = __enrichIntroHtml(GM.introStory()); renderSetIntro(); hudCache.stageTitleLabel = null;
   $("introModal").classList.remove("hidden");
 }
 
@@ -402,7 +402,7 @@ async function loadLessonFromAPI() {
   try {
     const res = await apiFetch(`/api/content/lessons/${LESSON_ID}`);
     const d = res && (res.data || res.lesson || res);
-    if (d && d.title) { LESSON = Object.assign({}, FALLBACK_LESSON, d); applyLessonTexts(); }
+    if (d && d.title && (new URLSearchParams(location.search).get("lesson_id") || d.topic === FALLBACK_LESSON.topic)) { LESSON = Object.assign({}, FALLBACK_LESSON, d); applyLessonTexts(); }
   } catch (e) { console.warn(e); }
 }
 async function startSession() {
@@ -732,7 +732,131 @@ function toast(msg, color, ms) {
 
 /* ---------- Hội thoại cốt truyện ---------- */
 let typeTimer = null;
+
+/* ---------- Nâng cấp Cốt truyện & Thông số tính toán (CT GDPT 2018) ---------- */
+function __cleanCalcText(s) {
+  if (!s) return "";
+  return String(s)
+    .replace(/<br\s*\/?>/gi, " · ")
+    .replace(/<sub>([^<]+)<\/sub>/gi, "_$1")
+    .replace(/<sup>([^<]+)<\/sup>/gi, "^($1)")
+    .replace(/<\/?b[^>]*>/gi, "")
+    .replace(/<\/?[a-z][^>]*>/gi, "")
+    .replace(/&nbsp;/g, " ").replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">")
+    .replace(/\s+/g, " ").trim();
+}
+function __buildStageCalcLines(baseLines) {
+  try {
+    if (!Array.isArray(baseLines) || !baseLines.length) return baseLines;
+    if (baseLines.some(x => x && x.__p)) return baseLines;
+    if (typeof S === "object" && S && Array.isArray(S.hints) && typeof S.stage === "number") {
+      if (!S.hints[S.stage] || S.hints[S.stage] < 1) S.hints[S.stage] = 1;
+    }
+    if (typeof updateAux === "function") { try { updateAux(); } catch (e) {} }
+    if (typeof updateHUD === "function") { try { updateHUD(); } catch (e) {} }
+    const c = (typeof S === "object" && S && S.cfg) || {};
+    const kd = (typeof KDc === "function") ? KDc() : (typeof KD !== "undefined" && Array.isArray(KD) && typeof c.i === "number" ? KD[c.i] : null);
+    const who = baseLines.some(x => x && x.who === "A") ? "A" : baseLines.some(x => x && x.who === "F") ? "F" : (baseLines[baseLines.length - 1] && baseLines[baseLines.length - 1].who) || "A";
+
+    const paramParts = [];
+    let l1 = "";
+    try {
+      if (typeof GM === "object" && GM && typeof GM.hud === "function") {
+        const h = GM.hud();
+        if (h && typeof h.l1 === "string") l1 = h.l1;
+      } else if (kd && typeof kd.h1 === "function") l1 = kd.h1(c);
+      else if ($("telemetryLine1")) l1 = $("telemetryLine1").textContent || "";
+    } catch (e) {}
+    l1 = __cleanCalcText(l1).replace(/^[^0-9A-Za-zÀ-ỹΔλμρπΩ]+/, "").trim();
+    if (l1) paramParts.push(l1);
+    try {
+      if (kd && typeof kd.info === "function") {
+        (kd.info(c) || []).forEach(it => {
+          const s = __cleanCalcText(it).replace(/^•\s*/, "").trim();
+          if (s && !paramParts.join(" ").includes(s)) paramParts.push(s);
+        });
+      }
+    } catch (e) {}
+    const paramsText = paramParts.join(" · ") || "Xem số liệu trên thanh trạng thái phía trên màn hình.";
+
+    let greenText = "";
+    try {
+      if (typeof GM === "object" && GM && typeof GM.greenTag === "function") greenText = __cleanCalcText(GM.greenTag());
+      else if (kd && kd.green) greenText = __cleanCalcText(kd.green);
+    } catch (e) {}
+    greenText = greenText.replace(/^🟢\s*/, "").trim();
+
+    let hint1Text = "";
+    try {
+      let hts = null;
+      if (typeof GM === "object" && GM && typeof GM.hintTexts === "function") hts = GM.hintTexts();
+      else if (typeof hintTexts === "function") hts = hintTexts();
+      if (Array.isArray(hts) && hts[0]) hint1Text = __cleanCalcText(hts[0]);
+      else if (kd && typeof kd.hint1 === "function") hint1Text = __cleanCalcText(kd.hint1(c));
+      else if (kd && typeof kd.hints === "function") { const kh = kd.hints(c); if (Array.isArray(kh) && kh[0]) hint1Text = __cleanCalcText(kh[0]); }
+    } catch (e) {}
+
+    const fParts = [];
+    if (greenText) fParts.push("Điều kiện đạt chuẩn: " + greenText);
+    if (hint1Text && !fParts.join(" ").includes(hint1Text)) fParts.push("Hướng tính: " + hint1Text);
+    const formulaText = fParts.join(" · ") || "Áp dụng công thức của bài học để tính thông số phù hợp.";
+
+    const pDesc = [];
+    try {
+      if (kd && Array.isArray(kd.P)) {
+        kd.P.forEach(p => {
+          if (!p || !p.lab) return;
+          if (Array.isArray(p.opts) && p.opts.length) pDesc.push(`${p.lab} (${p.opts.slice(0, 5).join(", ")}${p.opts.length > 5 ? "…" : ""})`);
+          else if (p.min != null && p.max != null) pDesc.push(`${p.lab} (từ ${p.min} đến ${p.max}${p.unit ? " " + p.unit : ""})`);
+          else pDesc.push(p.lab);
+        });
+      }
+    } catch (e) {}
+    let chint = "";
+    try {
+      if (typeof GM === "object" && GM && typeof GM.controlHint === "function") chint = __cleanCalcText(GM.controlHint());
+      else if (kd && kd.hint) chint = __cleanCalcText(kd.hint);
+      else if ($("controlHint")) chint = __cleanCalcText($("controlHint").textContent);
+    } catch (e) {}
+    chint = chint.replace(/^[^\wÀ-ỹ]+/, "").trim();
+    const execLabel = ($("executeBtnText") && $("executeBtnText").textContent.trim()) || (kd && kd.execLabel) || ($("btnExecuteStage") && $("btnExecuteStage").textContent.trim()) || "Chạy thử ▶";
+
+    let actionText = "Dựa vào thông số và công thức trên, bạn hãy tính giá trị cần thiết";
+    if (pDesc.length) actionText += ` rồi chỉnh [${pDesc.join(" · ")}]`;
+    if (chint) actionText += ` (${chint})`;
+    actionText += `. Sau khi chỉnh xong, bấm nút «${execLabel}» ở góc dưới để kiểm tra kết quả!`;
+
+    return baseLines.concat([
+      { who, __p: 1, text: `📊 Thông số để tính toán: ${paramsText}` },
+      { who, __p: 1, text: `📐 Công thức & cách tính: ${formulaText}` },
+      { who, __p: 1, text: `🎯 Chốt lại nhiệm vụ (Cần làm gì): ${actionText}` }
+    ]);
+  } catch (e) { return baseLines; }
+}
+function __enrichIntroHtml(rawHtml) {
+  if (window.__hdlgEnrichIntroStory) return window.__hdlgEnrichIntroStory(rawHtml);
+  if (!rawHtml || String(rawHtml).includes("hdlg-intro-summary")) return rawHtml;
+  let formulaItems = [];
+  try {
+    const ls = (typeof GM === "object" && GM && typeof GM.summaryLessons === "function") ? GM.summaryLessons() : [];
+    if (Array.isArray(ls) && ls.length) {
+      ls.slice(0, 4).forEach(it => { if (Array.isArray(it) && it.length >= 2) formulaItems.push(`<li><b class="text-amber-200">${it[0]}:</b> ${it[1]}</li>`); });
+    } else if (typeof LESSON === "object" && LESSON && Array.isArray(LESSON.formulas)) {
+      LESSON.formulas.slice(0, 4).forEach(f => {
+        if (typeof f === "string") formulaItems.push(`<li>• ${f}</li>`);
+        else if (f && f.name && f.formula) formulaItems.push(`<li><b class="text-amber-200">${f.name}:</b> ${f.formula}</li>`);
+      });
+    }
+  } catch (e) {}
+  const theoryBlock = formulaItems.length
+    ? `<div class="mt-2.5 p-2.5 rounded-xl bg-slate-900/80 border border-amber-400/40 text-[11.5px] leading-relaxed"><div class="font-extrabold text-amber-300 mb-1">📘 Kiến thức & Công thức trọng tâm (theo bài học mới):</div><ul class="space-y-1 text-slate-200">${formulaItems.join("")}</ul></div>`
+    : "";
+  const missionBlock = `<div class="hdlg-intro-summary mt-2 p-2.5 rounded-xl bg-emerald-950/75 border border-emerald-400/50 text-[11.5px] leading-relaxed text-emerald-100"><div class="font-extrabold text-emerald-300 mb-0.5">🎯 Chốt lại: Vào màn chơi bạn cần làm gì?</div><div><b>Bước 1:</b> Đọc kỹ dòng <b>📊 Thông số để tính toán</b> và <b>📐 Công thức & cách tính</b> xuất hiện ngay trong lời thoại của nhân vật ở mỗi chặng (hoặc bấm nút <b>📋 Thông số & Nhiệm vụ</b> ở góc dưới trái).<br><b>Bước 2:</b> Thay các thông số đã cho vào công thức để tính ra giá trị cần tìm, rồi <b>kéo thanh trượt / xoay núm / chọn linh kiện</b> trên màn hình.<br><b>Bước 3:</b> Bấm nút hành động màu xanh lá (<b>▶</b>) ở góc dưới để chạy kiểm chứng và hoàn thành cả 3 chặng!</div></div>`;
+  return rawHtml + theoryBlock + missionBlock;
+}
+
 function startDialogue(lines, onDone) {
+  if (S.phase === "dialogue") lines = __buildStageCalcLines(lines);
   S.dialogue = { lines, i: 0, onDone, typing: false, prevPhase: S.phase };
   $("dialogueBox").classList.remove("hidden"); $("gameplayActionBar").classList.add("hidden"); $("controlHint").classList.add("hidden"); hideCtxMenu();
   showLine();
@@ -875,7 +999,7 @@ function goBackToLesson() {
 }
 function applyLessonTexts() {
   $("introLessonTitle").textContent = `Bài: ${LESSON.title} — ${LESSON.description || ""}`;
-  $("introSubject").textContent = `VẬT LÝ ${LESSON.grade || 8}`;
+  $("introSubject").textContent = LESSON.subject_label || "VẬT LÝ 11 · KẾT NỐI TRI THỨC";
 }
 
 /* ---------- Menu ngữ cảnh (HTML) ---------- */
@@ -3451,7 +3575,7 @@ KD[8] = mk25({
   chooseSet(); S.cfg = GM.makeStage(S.stage); GM.reset(); if (GM.onSetChange) GM.onSetChange();
   $("introPortraitA").src = IMG_SRC[CHAR_A.img]; $("introNameA").textContent = `${CHAR_A.name} · ${CHAR_A.job}`;
   $("introPortraitB").src = IMG_SRC[CHAR_B.img]; $("introNameB").textContent = `${CHAR_B.name} · ${CHAR_B.job}`;
-  $("introStory").innerHTML = GM.introStory(); renderSetIntro();
+  $("introStory").innerHTML = __enrichIntroHtml(GM.introStory()); renderSetIntro();
   applyLessonTexts(); syncHubHUD(); updateHUD();
   loadLessonFromAPI();
   requestAnimationFrame(loop);

@@ -571,7 +571,7 @@ function selectEvent() {
 
 
     renderEventChoices();
-
+    renderMathFormulaGuide();
 }
 
 
@@ -1092,8 +1092,7 @@ async function chooseSpecialEvent(
 
 
     updateHUD();
-
-
+    renderMathFormulaGuide();
     selectedButton.style.background =
         "#dff2e3";
 
@@ -1107,6 +1106,50 @@ async function chooseSpecialEvent(
    PRICE UI
 ========================================================= */
 
+
+/* =========================================================
+   BẢNG THÔNG SỐ HÀM SỐ & CHỐT NHIỆM VỤ (TOÁN 10 CHƯƠNG VI)
+========================================================= */
+function renderMathFormulaGuide() {
+    const ev = state.currentEvent;
+    if (!ev) return;
+    let box = document.getElementById("mathFormulaGuideBox");
+    if (!box) {
+        box = document.createElement("div");
+        box.id = "mathFormulaGuideBox";
+        box.style.marginTop = "12px";
+        box.style.padding = "12px 14px";
+        box.style.borderRadius = "12px";
+        box.style.background = "#f0f7ff";
+        box.style.border = "1.5px solid #93c5fd";
+        box.style.fontSize = "13.5px";
+        box.style.lineHeight = "1.55";
+        box.style.color = "#1e293b";
+        const parent = (eventDescription && eventDescription.parentElement) || document.body;
+        parent.appendChild(box);
+    }
+    const a = ev.baseDemand, b = ev.sensitivity, k = state.demandMultiplier || 1;
+    let rawQ = (a - b * state.price) * k;
+    let estQ = Math.max(0, Math.round(rawQ));
+    if (state.price >= 27) estQ = Math.round(estQ * 0.75);
+    if (state.price <= 13) estQ = Math.round(estQ * 1.08);
+    const totalStock = state.stock + state.restock;
+    const estSold = Math.min(estQ, totalStock);
+    const estRev = estSold * state.price * 1000;
+    const restockCost = state.restock * 8000;
+    const estProfit = estRev - restockCost;
+    const pOpt = Math.min(22, Math.max(17, Math.round(a / (2 * b))));
+
+    box.innerHTML =
+        `<div style="font-weight:800;color:#1d4ed8;margin-bottom:4px">📘 Toán 10 Chương VI (Hàm số bậc nhất & bậc hai ứng dụng kinh doanh)</div>` +
+        `<div><b style="color:#b45309">📊 Thông số hôm nay:</b> Nhu cầu gốc <b>a = ${a}</b> · Hệ số nhạy giá <b>b = ${b}</b> · Hệ số sự kiện <b>k = ${k}</b> · Giá nhập <b>8.000đ/sp</b> · Tồn kho sẵn: <b>${state.stock} sp</b>.</div>` +
+        `<div style="margin-top:4px"><b style="color:#7e22ce">📐 Công thức & tính nhẩm với P = ${state.price} (nghìn đ):</b><br>` +
+        `• Hàm cầu bậc nhất: <b>Q(P) = k·(a − b·P) = ${k}×(${a} − ${b}×${state.price}) ≈ ${estQ} khách</b>.<br>` +
+        `• Tổng hàng trong kho (Tồn + Nhập): <b>${state.stock} + ${state.restock} = ${totalStock} sp</b> ⇒ Bán được: <b>${estSold} sp</b>.<br>` +
+        `• Doanh thu bậc hai: <b>R(P) = ${money(estRev)}</b> · Chi phí nhập: <b>${money(restockCost)}</b> ⇒ Lợi nhuận ngày dự kiến: <b style="color:${estProfit >= 0 ? '#15803d' : '#dc2626'}">${money(estProfit)}</b> (Đỉnh parabol tối ưu quanh <b>P ≈ ${pOpt}.000đ</b>, vùng điểm thưởng <b>17.000đ–23.000đ</b>).</div>` +
+        `<div style="margin-top:5px;padding-top:5px;border-top:1px dashed #93c5fd"><b style="color:#15803d">🎯 Chốt lại nhiệm vụ (Cần làm gì):</b> (1) Chọn 1 nút chiến lược sự kiện phía trên; (2) Kéo thanh trượt <b>Giá bán</b> vào khoảng <b>18.000đ–22.000đ</b> và bấm <b>+/− Nhập thêm hàng</b> sao cho Tổng hàng ≥ <b>${estQ} sp</b>; (3) Bấm nút <b>🚀 Mở cửa bán hàng</b>!</div>`;
+}
+
 function updatePrice() {
 
     state.price =
@@ -1115,10 +1158,8 @@ function updatePrice() {
         );
 
 
-    priceValue.textContent =
-        money(
-            state.price * 1000
-        );
+    priceValue.textContent = money(state.price * 1000);
+    renderMathFormulaGuide();
 
 }
 
@@ -1133,8 +1174,8 @@ function updateRestockDisplay() {
         state.restock;
 
 
-    restockDisplay.textContent =
-        `${state.restock} sản phẩm`;
+    restockDisplay.textContent = `${state.restock} sản phẩm`;
+    renderMathFormulaGuide();
 
 }
 

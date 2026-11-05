@@ -30,6 +30,7 @@ input[type=range]{width:100%;accent-color:#ffd166}
 .dots span{display:inline-block;width:12px;height:12px;border-radius:50%;background:rgba(255,255,255,.3);margin-right:6px}
 .dots .on{background:#ffd166}.dots .done{background:#5ee08e}
 .tag{display:inline-block;background:#ffd166;color:#4a2c00;border-radius:20px;padding:2px 12px;font-weight:800;font-size:12px;margin:4px 4px 0 0}
+.guide-box{background:rgba(9,20,40,.55);border-left:4px solid #ffd166;border-radius:10px;padding:10px 14px;margin-top:8px;font-size:14px;line-height:1.55}
 </style>
 <script src="/firebase-config.js"></script><script src="/auth.js"></script><script src="/games/hdlg-game.js"></script>
 </head>
@@ -44,11 +45,7 @@ input[type=range]{width:100%;accent-color:#ffd166}
 /* =========================================================
    GAME TÌNH HUỐNG DÙNG CHUNG — lessons có game_type = "simulation"
    Trang này tự đọc ?lesson_id=..., lấy bài học từ backend, rồi chọn
-   màn chơi trong SCENARIOS theo "topic" của bài.
-
-   ➜ THÊM MÀN CHƠI CHO BÀI MỚI: copy 1 khối trong SCENARIOS, đổi tên key
-     thành topic của bài (vd 'ap-suat'), sửa story / params / rounds / calc / draw / reveal.
-     Không cần sửa engine bên dưới.
+   màn chơi trong SCENARIOS theo "topic" của bài (CT GDPT 2018).
 ========================================================= */
 const API = window.HOC_API_BASE || (["127.0.0.1","localhost"].includes(location.hostname)&&location.port!=="8000"?"http://127.0.0.1:8000/api":"/api");
 const Q = new URLSearchParams(location.search);
@@ -57,30 +54,150 @@ const USER_ID = Number(localStorage.getItem('user_id')) || 1;
 const $ = id => document.getElementById(id);
 const fmt = (n, d = 2) => Number(n).toLocaleString('vi-VN', { maximumFractionDigits: d });
 
-/* ---------- Các bài dùng chung 1 màn chơi ---------- */
 const ALIAS = { 'toc-do': 'toc-do-chuyen-dong', 'dinh-luat-ohm': 'dien-tro', 'dong-dien': 'dien-tro' };
 
-/* =========================================================
-   KHO MÀN CHƠI (SCENARIOS)
-   params : thanh trượt người chơi điều chỉnh
-   rounds : mỗi vòng là 1 tình huống (env = điều kiện của vòng)
-   calc   : tính kết quả từ params + env -> {ok, why, lines:[[nhãn, giá trị, cảnh báo?]]}
-   draw   : vẽ minh hoạ lên canvas
-   reveal : phần "HỌC ĐỂ LÀM GÌ?" hiện khi kết thúc
-========================================================= */
 const SCENARIOS = {
+
+/* ---------- KHTN 8: Khối lượng riêng & Thực hành xác định khối lượng riêng ---------- */
+'khoi-luong-rieng': {
+  icon: '🧱', title: 'Xưởng Đúc & Kiểm Định Vật Liệu (KHTN 8: Khối lượng riêng D = m / V)',
+  story: 'Bạn là kỹ sư kiểm định vật liệu tại xưởng cơ khí. Mỗi chi tiết máy đòi hỏi đúng khối lượng m và thể tích V để đạt khối lượng riêng D = m / V (g/cm³ hoặc kg/m³) theo thiết kế. Hãy tính toán từ thông số của từng ca rồi kéo thanh trượt chọn khối lượng m và thể tích V chính xác!',
+  params: [
+    { k: 'm', label: 'Khối lượng phôi đúc (m)', unit: 'g', min: 100, max: 3000, step: 50, v: 500 },
+    { k: 'V', label: 'Thể tích khuôn đúc (V)', unit: 'cm³', min: 50, max: 1000, step: 25, v: 200 }
+  ],
+  rounds: [
+    {
+      brief: '<b>Ca 1 · Đúc chi tiết Hợp kim Nhôm nhẹ:</b> Thiết kế máy bay mô hình cần một phôi nhôm đặc có thể tích khuôn từ <b>200 đến 400 cm³</b>.<br>📊 <b>Thông số:</b> Khối lượng riêng của nhôm chuẩn là <b>D = 2,7 g/cm³</b> (cho phép sai số từ <b>2,6 đến 2,8 g/cm³</b>); thể tích yêu cầu <b>200 ≤ V ≤ 400 cm³</b>.<br>📐 <b>Công thức:</b> D = m / V ⇒ m = D · V (ví dụ chọn V = 250 cm³ thì m = 2,7 × 250 = 675 g ≈ 650–700 g; hoặc V = 300 cm³ thì m = 800 g).<br>🎯 <b>Chốt nhiệm vụ:</b> Kéo thanh trượt <b>Thể tích V</b> trong khoảng 200–400 cm³ và chỉnh <b>Khối lượng m</b> sao cho D = m / V nằm trong 2,6–2,8 g/cm³, rồi bấm <b>✔ Kiểm tra</b>!',
+      env: { Dmin: 2.6, Dmax: 2.8, Vmin: 200, Vmax: 400, mat: 'Hợp kim Nhôm (D ≈ 2,7 g/cm³)', liqD: 1.0 }
+    },
+    {
+      brief: '<b>Ca 2 · Chế tạo Phao cứu sinh nổi trên nước:</b> Xưởng cần đúc khối phao xốp đặc có khối lượng <b>m ≥ 400 g</b> để chịu va đập, nhưng phải nổi cao trên mặt nước ngọt.<br>📊 <b>Thông số:</b> Nước ngọt có D_nước = 1,0 g/cm³; để phao nổi ít nhất một nửa thể tích trên mặt nước thì khối lượng riêng phao phải đạt <b>0,45 ≤ D ≤ 0,55 g/cm³</b> và khối lượng <b>m ≥ 400 g</b> (thể tích khuôn V ≥ 800 cm³).<br>📐 <b>Công thức:</b> D = m / V ∈ [0,45; 0,55] g/cm³ (ví dụ với V = 900 cm³ thì m = 0,5 × 900 = 450 g).<br>🎯 <b>Chốt nhiệm vụ:</b> Kéo thanh trượt chọn <b>m ≥ 400 g</b> và <b>V (800–1000 cm³)</b> để D = m / V đạt 0,45–0,55 g/cm³, rồi bấm <b>✔ Kiểm tra</b>!',
+      env: { Dmin: 0.45, Dmax: 0.55, Vmin: 800, Vmax: 1000, mMin: 400, mat: 'Xốp kỹ thuật nổi (D ≈ 0,5 g/cm³)', liqD: 1.0 }
+    },
+    {
+      brief: '<b>Ca 3 · Quả đối trọng bằng Thép đặc:</b> Cần cẩu mini cần quả đối trọng bằng thép có khối lượng <b>m ≥ 1900 g</b> nhưng kích thước gọn (<b>V ≤ 300 cm³</b>).<br>📊 <b>Thông số:</b> Khối lượng riêng của thép chuẩn là <b>7,6 ≤ D ≤ 8,0 g/cm³</b>; yêu cầu <b>m ≥ 1900 g</b> và <b>250 ≤ V ≤ 300 cm³</b>.<br>📐 <b>Công thức:</b> m = D · V (với V = 250 cm³ thì m = 7,8 × 250 = 1950 g; với V = 300 cm³ thì m = 7,8 × 300 = 2340 g ≈ 2300–2400 g).<br>🎯 <b>Chốt nhiệm vụ:</b> Kéo thanh trượt đặt <b>V = 250 hoặc 275 hoặc 300 cm³</b> và chỉnh <b>m ≥ 1900 g</b> để D = m / V nằm trong 7,6–8,0 g/cm³, rồi bấm <b>✔ Kiểm tra</b>!',
+      env: { Dmin: 7.6, Dmax: 8.0, Vmin: 250, Vmax: 300, mMin: 1900, mat: 'Thép đặc (D ≈ 7,8 g/cm³)', liqD: 1.0 }
+    }
+  ],
+  calc(p, e) {
+    const D = p.m / p.V, d = D * 10000;
+    const dOk = D >= e.Dmin && D <= e.Dmax;
+    const vOk = p.V >= e.Vmin && p.V <= e.Vmax;
+    const mOk = !e.mMin || p.m >= e.mMin;
+    const ok = dOk && vOk && mOk;
+    let why;
+    if (!dOk) why = `Khối lượng riêng D = m / V = ${fmt(D, 2)} g/cm³ nằm ngoài khoảng chuẩn [${fmt(e.Dmin, 2)}; ${fmt(e.Dmax, 2)}] g/cm³ của ${e.mat}.`;
+    else if (!vOk) why = `D = ${fmt(D, 2)} g/cm³ đã đúng chất liệu, nhưng thể tích V = ${p.V} cm³ nằm ngoài yêu cầu [${e.Vmin}; ${e.Vmax}] cm³.`;
+    else if (!mOk) why = `Khối lượng m = ${p.m} g chưa đủ mức tối thiểu ${e.mMin} g.`;
+    else why = `Chính xác! Phôi đạt D = ${fmt(D, 2)} g/cm³ (${fmt(D * 1000, 0)} kg/m³), trọng lượng riêng d = 10·D = ${fmt(d, 0)} N/m³.`;
+    return {
+      ok, why, D,
+      lines: [
+        ['Khối lượng riêng D = m / V', fmt(D, 2) + ' g/cm³ (' + fmt(D * 1000, 0) + ' kg/m³)', !dOk],
+        ['Khoảng D yêu cầu', fmt(e.Dmin, 2) + ' – ' + fmt(e.Dmax, 2) + ' g/cm³'],
+        ['Thể tích khuôn V', p.V + ' cm³ (cần ' + e.Vmin + '–' + e.Vmax + ')', !vOk],
+        ['Trọng lượng riêng d = 10·D', fmt(d, 0) + ' N/m³']
+      ]
+    };
+  },
+  draw(c, p, e, r) {
+    c.fillStyle = '#0f172a'; c.fillRect(0, 0, 640, 300);
+    c.fillStyle = '#1e293b'; c.fillRect(30, 40, 260, 220);
+    c.fillStyle = '#38bdf8'; c.font = 'bold 15px Arial'; c.fillText('⚖️ Cân & Bình chia độ', 45, 68);
+    const sz = Math.max(40, Math.min(130, Math.cbrt(p.V) * 13));
+    c.fillStyle = r.ok ? '#34d399' : '#fbbf24';
+    c.fillRect(160 - sz / 2, 190 - sz, sz, sz);
+    c.strokeStyle = '#fff'; c.lineWidth = 2; c.strokeRect(160 - sz / 2, 190 - sz, sz, sz);
+    c.fillStyle = '#0f172a'; c.font = 'bold 13px Arial';
+    c.fillText(p.m + ' g', 135, 190 - sz / 2);
+    c.fillStyle = '#e2e8f0'; c.fillText('V = ' + p.V + ' cm³', 115, 225);
+    c.fillStyle = '#bae6fd'; c.fillRect(350, 120, 230, 140);
+    const sinkRatio = Math.min(1.2, r.D / e.liqD);
+    const by = 120 + Math.min(90, sinkRatio * 60) - 30;
+    c.fillStyle = r.ok ? '#10b981' : '#f97316';
+    c.fillRect(435, by, 60, 60);
+    c.fillStyle = '#fff'; c.font = 'bold 14px Arial';
+    c.fillText('Bể thử nước (D = 1 g/cm³)', 365, 95);
+    c.fillText('D = ' + fmt(r.D, 2) + ' g/cm³', 405, 65);
+  },
+  reveal: {
+    formula: 'D = m / V   |   d = 10 · D   |   1 g/cm³ = 1000 kg/m³',
+    jobs: ['Kỹ sư vật liệu & luyện kim', 'Kiểm định viên chất lượng (QA/QC)', 'Kỹ sư đóng tàu & xây dựng'],
+    text: 'Biết khối lượng riêng D = m / V giúp kỹ sư phân biệt vật liệu thật – giả, tính khối lượng các kết cấu thép khổng lồ không thể đưa lên bàn cân và thiết kế phao, tàu thuyền nổi an toàn.'
+  }
+},
+
+/* ---------- KHTN 8: Áp suất trên một bề mặt & Áp suất chất lỏng ---------- */
+'ap-suat': {
+  icon: '🚜', title: 'Kỹ Sư Nền Móng & Thủy Lực (KHTN 8: Áp suất p = F / S)',
+  story: 'Một chiếc xe tải nặng đi qua nền đất yếu rất dễ bị lún nếu diện tích tiếp xúc S quá nhỏ làm áp suất p = F / S vượt ngưỡng chịu tải của đất. Hãy tính áp lực F = 10·m và chọn diện tích tấm ván lót S phù hợp!',
+  params: [
+    { k: 'm', label: 'Tổng khối lượng xe & hàng (m)', unit: 'tấn', min: 2, max: 20, step: 1, v: 6 },
+    { k: 'S', label: 'Diện tích tấm lót tiếp xúc (S)', unit: 'm²', min: 1, max: 10, step: 0.5, v: 2 }
+  ],
+  rounds: [
+    {
+      brief: '<b>Ca 1 · Qua đường đất nông thôn:</b> Hợp đồng yêu cầu chở ít nhất <b>m ≥ 8 tấn</b> vật liệu qua nền đất chỉ chịu được áp suất tối đa <b>p_max = 25 kPa (25 000 Pa)</b>.<br>📊 <b>Thông số:</b> m ≥ 8 tấn (8000 kg) ⇒ Áp lực F = 10·m ≥ 80 000 N (80 kN); giới hạn nền đất p ≤ 25 kPa; diện tích ván lót tối đa của kho là <b>S ≤ 4 m²</b>.<br>📐 <b>Công thức:</b> p = F / S ≤ 25 kPa (với m = 8 tấn ⇒ F = 80 kN, chọn S = 3,5 hoặc 4,0 m² thì p = 80 / 4 = 20 kPa ≤ 25 kPa).<br>🎯 <b>Chốt nhiệm vụ:</b> Chỉnh thanh trượt <b>Khối lượng m = 8–10 tấn</b> và <b>Diện tích S = 3,5–4,0 m²</b> sao cho p ≤ 25 kPa rồi bấm <b>✔ Kiểm tra</b>!',
+      env: { mMin: 8, pMax: 25, sMax: 4, ground: 'Đất pha cát (p ≤ 25 kPa)' }
+    },
+    {
+      brief: '<b>Ca 2 · Vượt bãi bùn ven sông:</b> Cần chở máy xúc nặng ít nhất <b>m ≥ 12 tấn</b> qua bãi bùn rất mềm chỉ chịu được áp suất <b>p_max = 20 kPa</b>.<br>📊 <b>Thông số:</b> m ≥ 12 tấn ⇒ F = 10·m ≥ 120 kN; p ≤ 20 kPa; kho có bộ tấm thép ghép rộng tối đa <b>S ≤ 7,5 m²</b>.<br>📐 <b>Công thức:</b> S ≥ F / p_max = 120 / 20 = 6,0 m² (chọn m = 12–14 tấn và S từ 6,0 đến 7,5 m² sao cho p = 10·m / S ≤ 20 kPa).<br>🎯 <b>Chốt nhiệm vụ:</b> Kéo thanh trượt <b>m ≥ 12 tấn</b> và tăng <b>Diện tích S (6,0–7,5 m²)</b> để giảm áp suất p ≤ 20 kPa, rồi bấm <b>✔ Kiểm tra</b>!',
+      env: { mMin: 12, pMax: 20, sMax: 7.5, ground: 'Bãi bùn mềm (p ≤ 20 kPa)' }
+    },
+    {
+      brief: '<b>Ca 3 · Đặt bồn chứa lên sàn bê tông:</b> Cần đặt bồn nước tổng khối lượng <b>m ≥ 16 tấn</b> lên sàn kho chịu áp suất tối đa <b>p_max = 18 kPa</b>.<br>📊 <b>Thông số:</b> m ≥ 16 tấn ⇒ F = 10·m ≥ 160 kN; p ≤ 18 kPa; diện tích bệ đỡ cho phép <b>S ≤ 10 m²</b>.<br>📐 <b>Công thức:</b> S ≥ F / p_max = 160 / 18 ≈ 8,9 m² (chọn m = 16–18 tấn và S = 9,0–10,0 m² để p ≤ 18 kPa).<br>🎯 <b>Chốt nhiệm vụ:</b> Đặt <b>m = 16–18 tấn</b> và <b>S = 9,0–10,0 m²</b> sao cho p = F / S ≤ 18 kPa, rồi bấm <b>✔ Kiểm tra</b>!',
+      env: { mMin: 16, pMax: 18, sMax: 10, ground: 'Sàn kho (p ≤ 18 kPa)' }
+    }
+  ],
+  calc(p, e) {
+    const F = p.m * 10, pr = F / p.S; // F in kN, pr in kPa
+    const mOk = p.m >= e.mMin, sOk = p.S <= e.sMax, pOk = pr <= e.pMax;
+    const ok = mOk && sOk && pOk;
+    let why;
+    if (!pOk) why = `Lún nền! Áp suất p = F / S = ${fmt(pr, 1)} kPa vượt giới hạn chịu tải ${e.pMax} kPa của ${e.ground}. Hãy tăng diện tích bị ép S hoặc giảm bớt tải!`;
+    else if (!sOk) why = `Diện tích tấm lót S = ${p.S} m² vượt quá giới hạn mặt bằng cho phép (${e.sMax} m²).`;
+    else if (!mOk) why = `An toàn nhưng khối lượng m = ${p.m} tấn chưa đạt mức tối thiểu ${e.mMin} tấn của hợp đồng.`;
+    else why = `Hoàn hảo! Áp lực F = ${F} kN phân bố trên S = ${p.S} m² chỉ gây áp suất p = ${fmt(pr, 1)} kPa ≤ ${e.pMax} kPa.`;
+    return {
+      ok, why, F, pr,
+      lines: [
+        ['Áp lực F = P = 10·m', F + ' kN (' + fmt(F * 1000, 0) + ' N)', !mOk],
+        ['Diện tích bị ép S (tối đa ' + e.sMax + ' m²)', fmt(p.S, 1) + ' m²', !sOk],
+        ['Áp suất p = F / S', fmt(pr, 1) + ' kPa (giới hạn ≤ ' + e.pMax + ' kPa)', !pOk]
+      ]
+    };
+  },
+  draw(c, p, e, r) {
+    c.fillStyle = '#dbeafe'; c.fillRect(0, 0, 640, 300);
+    c.fillStyle = '#78350f'; c.fillRect(0, 200, 640, 100);
+    const sink = r.pr > e.pMax ? Math.min(45, (r.pr - e.pMax) * 2.2) : 4;
+    const pw = 80 + p.S * 38, x = (640 - pw) / 2, y = 200 + sink;
+    c.fillStyle = '#94a3b8'; c.fillRect(x, y - 14, pw, 14);
+    c.fillStyle = r.ok ? '#16a34a' : '#dc2626';
+    c.fillRect(240, y - 84, 160, 70);
+    c.fillStyle = '#fff'; c.font = 'bold 14px Arial';
+    c.fillText(`F = ${r.F} kN`, 280, y - 45);
+    c.fillStyle = '#1e293b'; c.fillText(`${e.ground} · p = ${fmt(r.pr, 1)} kPa`, 20, 32);
+  },
+  reveal: {
+    formula: 'p = F / S   (p: Pa, F: N, S: m²)   |   Áp suất chất lỏng: p = d · h',
+    jobs: ['Kỹ sư xây dựng & nền móng', 'Kỹ sư chế tạo máy nông nghiệp / bánh xích', 'Kỹ sư hệ thống thủy lực'],
+    text: 'Xe tăng và máy xúc dùng bản xích rộng (tăng S) để giảm áp suất p = F / S nên không lún trên bùn; ngược lại mũi kim, lưỡi dao làm S thật nhỏ để tăng áp suất giúp xuyên qua vật dễ dàng.'
+  }
+},
 
 /* ---------- Vật lý 8: Lực đẩy Archimedes ---------- */
 'luc-day-archimedes': {
-  icon: '🚢', title: 'Thuyền chở hàng: nổi hay chìm?',
-  story: 'Bạn là chủ một chiếc thuyền chở hàng. Mỗi chuyến chở quá ít thì lỗ, chở quá nhiều thì thuyền chìm — mất cả hàng lẫn thuyền. Hãy chọn lượng hàng và bề rộng thuyền để chuyến đi vừa lời vừa an toàn.',
+  icon: '🚢', title: 'Thuyền chở hàng: nổi hay chìm? (KHTN 8: Lực đẩy Archimedes)',
+  story: 'Bạn là chủ một chiếc thuyền chở hàng. Mỗi chuyến chở quá ít thì lỗ, chở quá nhiều thì thuyền chìm — mất cả hàng lẫn thuyền. Hãy áp dụng công thức F_A = d · V và mớn nước h_c = (m_vỏ + m_hàng) / (D · L · w) để chọn lượng hàng và bề rộng thuyền vừa lời vừa an toàn.',
   params: [
-    { k: 'load', label: 'Khối lượng hàng', unit: 'kg', min: 0, max: 5000, step: 50, v: 500 },
-    { k: 'w', label: 'Bề rộng thuyền', unit: 'm', min: 1, max: 4, step: 0.1, v: 2 }],
+    { k: 'load', label: 'Khối lượng hàng (m_hàng)', unit: 'kg', min: 0, max: 5000, step: 50, v: 500 },
+    { k: 'w', label: 'Bề rộng thuyền (w)', unit: 'm', min: 1, max: 4, step: 0.1, v: 2 }],
   rounds: [
-    { brief: 'Sông nước ngọt. Hợp đồng yêu cầu chở ít nhất 2000 kg, mạn khô (phần thân thuyền còn nhô trên mặt nước) phải ≥ 15 cm.', env: { rho: 1000, L: 4, H: 0.6, hull: 400, need: 2000, free: 0.15, name: 'sông' } },
-    { brief: 'Ra biển có sóng. Cần chở ≥ 2500 kg và mạn khô ≥ 25 cm để sóng không tràn vào. Gợi ý: bề rộng thuyền ảnh hưởng thể tích chiếm chỗ.', env: { rho: 1025, L: 4, H: 0.6, hull: 400, need: 2500, free: 0.25, name: 'biển' } },
-    { brief: 'Thuyền ra biển rồi quay vào sông, nước ngọt nhẹ hơn nước mặn. Chở ≥ 3000 kg, mạn khô ≥ 20 cm, thân thuyền thấp hơn (H = 55 cm).', env: { rho: 1000, L: 4, H: 0.55, hull: 400, need: 3000, free: 0.2, name: 'sông' } }],
+    { brief: '<b>Tình huống 1 · Sông nước ngọt:</b><br>📊 <b>Thông số:</b> Nước sông có D = 1000 kg/m³ (d = 10 000 N/m³); thuyền dài L = 4 m, cao H = 0,6 m (60 cm), vỏ thuyền nặng m_vỏ = 400 kg. Hợp đồng yêu cầu chở <b>m_hàng ≥ 2000 kg</b> và <b>mạn khô ≥ 15 cm (0,15 m)</b>.<br>📐 <b>Công thức:</b> Mớn nước chìm h_c = (400 + m_hàng) / (1000 × 4 × w) ≤ 0,45 m.<br>🎯 <b>Chốt nhiệm vụ:</b> Kéo thanh trượt chọn <b>Khối lượng hàng ≥ 2000 kg</b> và <b>Bề rộng thuyền w</b> sao cho Mạn khô ≥ 15 cm, rồi bấm <b>✔ Kiểm tra</b>!', env: { rho: 1000, L: 4, H: 0.6, hull: 400, need: 2000, free: 0.15, name: 'sông' } },
+    { brief: '<b>Tình huống 2 · Ra biển lớn có sóng:</b><br>📊 <b>Thông số:</b> Nước biển có D = 1025 kg/m³; thuyền dài L = 4 m, cao H = 0,6 m (60 cm), vỏ nặng m_vỏ = 400 kg. Yêu cầu chở <b>m_hàng ≥ 2500 kg</b> và <b>mạn khô ≥ 25 cm (0,25 m)</b> (mớn nước h_c ≤ 0,35 m).<br>📐 <b>Công thức:</b> h_c = (400 + m_hàng) / (1025 × 4 × w) ≤ 0,35 m (tăng bề rộng w giúp tăng thể tích chiếm chỗ V).<br>🎯 <b>Chốt nhiệm vụ:</b> Chỉnh <b>Khối lượng hàng ≥ 2500 kg</b> và tăng <b>Bề rộng thuyền w</b> để Mạn khô ≥ 25 cm, rồi bấm <b>✔ Kiểm tra</b>!', env: { rho: 1025, L: 4, H: 0.6, hull: 400, need: 2500, free: 0.25, name: 'biển' } },
+    { brief: '<b>Tình huống 3 · Từ biển quay vào cửa sông:</b><br>📊 <b>Thông số:</b> Nước sông ngọt nhẹ hơn (D = 1000 kg/m³); thân thuyền cao H = 0,55 m (55 cm), dài L = 4 m, vỏ nặng 400 kg. Cần chở <b>m_hàng ≥ 3000 kg</b> và giữ <b>mạn khô ≥ 20 cm (0,20 m)</b> (h_c ≤ 0,35 m).<br>📐 <b>Công thức:</b> 400 + m_hàng ≤ 1000 × 4 × w × 0,35 ⇒ với m_hàng = 3000 kg thì cần w ≥ 3400 / 1400 ≈ 2,5 m.<br>🎯 <b>Chốt nhiệm vụ:</b> Kéo thanh trượt đặt <b>Khối lượng hàng ≥ 3000 kg</b> và <b>Bề rộng thuyền w ≥ 2,5 m</b> để Mạn khô ≥ 20 cm, rồi bấm <b>✔ Kiểm tra</b>!', env: { rho: 1000, L: 4, H: 0.55, hull: 400, need: 3000, free: 0.2, name: 'sông' } }],
   calc(p, e) {
     const m = e.hull + p.load, V = e.L * p.w * e.H;
     const draft = m / (e.rho * e.L * p.w), fa = e.rho * 10 * V, P = m * 10, free = e.H - draft;
@@ -109,14 +226,14 @@ const SCENARIOS = {
 
 /* ---------- Vật lý 9: Điện trở & định luật Ohm ---------- */
 'dien-tro': {
-  icon: '💡', title: 'Cứu chiếc đèn LED',
-  story: 'Bạn lắp mạch đèn LED cho bảng hiệu cửa hàng. LED rất "mong manh": dòng 10–20 mA thì sáng đẹp, vượt ~25 mA là cháy. Nguồn điện mỗi nơi một khác — chọn điện trở R để đèn sáng mà không cháy, và bản thân điện trở không nóng quá.',
-  params: [{ k: 'R', label: 'Điện trở R', unit: 'Ω', min: 50, max: 2000, step: 10, v: 1500 }],
+  icon: '💡', title: 'Cứu chiếc đèn LED (KHTN 9: Định luật Ohm I = U / R)',
+  story: 'Bạn lắp mạch đèn LED cho bảng hiệu cửa hàng. LED giữ hiệu điện thế cố định U_LED = 2 V, dòng 10–20 mA thì sáng đẹp, vượt ~25 mA là cháy. Hãy tính điện trở hạn dòng R = (U_nguồn − 2) / I sao cho dòng I ∈ [10; 20] mA và công suất P = I²·R ≤ 0,25 W!',
+  params: [{ k: 'R', label: 'Điện trở hạn dòng R', unit: 'Ω', min: 50, max: 2000, step: 10, v: 1500 }],
   rounds: [
-    { brief: 'Nguồn 3 V (2 pin AA). LED có hiệu điện thế làm việc 2 V.', env: { U: 3, Vf: 2, nguon: '2 pin AA' } },
-    { brief: 'Nguồn 5 V (cổng sạc USB).', env: { U: 5, Vf: 2, nguon: 'cổng USB' } },
-    { brief: 'Nguồn 9 V (pin vuông). Chú ý: điện trở chỉ chịu được 0,25 W, quá sẽ nóng và cháy.', env: { U: 9, Vf: 2, nguon: 'pin vuông 9 V' } },
-    { brief: 'Nguồn 12 V (ắc quy xe). Điện trở 0,25 W — chọn R sao cho dòng vừa đúng và R không quá nóng.', env: { U: 12, Vf: 2, nguon: 'ắc quy 12 V' } }],
+    { brief: '<b>Tình huống 1 · Nguồn 2 pin AA:</b><br>📊 <b>Thông số:</b> U_nguồn = 3 V, U_LED = 2 V ⇒ U_R = 3 − 2 = 1 V; cần I ∈ [10; 20] mA (0,01–0,02 A).<br>📐 <b>Công thức:</b> R = U_R / I = 1 / I ⇒ R từ 50 Ω đến 100 Ω.<br>🎯 <b>Chốt nhiệm vụ:</b> Kéo thanh trượt <b>Điện trở R</b> về khoảng <b>50–100 Ω</b> rồi bấm <b>✔ Kiểm tra</b>!', env: { U: 3, Vf: 2, nguon: '2 pin AA' } },
+    { brief: '<b>Tình huống 2 · Sạc USB 5 V:</b><br>📊 <b>Thông số:</b> U_nguồn = 5 V, U_LED = 2 V ⇒ U_R = 5 − 2 = 3 V; cần I ∈ [10; 20] mA.<br>📐 <b>Công thức:</b> R = U_R / I = 3 / I ⇒ R từ 150 Ω đến 300 Ω.<br>🎯 <b>Chốt nhiệm vụ:</b> Kéo thanh trượt <b>Điện trở R</b> về khoảng <b>150–300 Ω</b> rồi bấm <b>✔ Kiểm tra</b>!', env: { U: 5, Vf: 2, nguon: 'cổng USB' } },
+    { brief: '<b>Tình huống 3 · Pin vuông 9 V:</b><br>📊 <b>Thông số:</b> U_nguồn = 9 V, U_LED = 2 V ⇒ U_R = 7 V; cần I ∈ [10; 20] mA và P = I²·R ≤ 0,25 W.<br>📐 <b>Công thức:</b> R = 7 / I ⇒ R từ 350 Ω đến 700 Ω.<br>🎯 <b>Chốt nhiệm vụ:</b> Kéo thanh trượt <b>Điện trở R</b> về khoảng <b>350–700 Ω</b> rồi bấm <b>✔ Kiểm tra</b>!', env: { U: 9, Vf: 2, nguon: 'pin vuông 9 V' } },
+    { brief: '<b>Tình huống 4 · Ắc quy 12 V:</b><br>📊 <b>Thông số:</b> U_nguồn = 12 V, U_LED = 2 V ⇒ U_R = 10 V; cần I ∈ [10; 20] mA và công suất P = I²·R ≤ 0,25 W.<br>📐 <b>Công thức:</b> R = 10 / I ∈ [500; 1000] Ω (tại đó P = 100 / R ≤ 0,20 W ≤ 0,25 W).<br>🎯 <b>Chốt nhiệm vụ:</b> Kéo thanh trượt <b>Điện trở R</b> về khoảng <b>500–1000 Ω</b> rồi bấm <b>✔ Kiểm tra</b>!', env: { U: 12, Vf: 2, nguon: 'ắc quy 12 V' } }],
   calc(p, e) {
     const I = (e.U - e.Vf) / p.R, mA = I * 1000, P = I * I * p.R;
     const ok = mA >= 10 && mA <= 20 && P <= 0.25; let why;
@@ -144,13 +261,13 @@ const SCENARIOS = {
 
 /* ---------- Vật lý 7: Tốc độ chuyển động ---------- */
 'toc-do-chuyen-dong': {
-  icon: '🚚', title: 'Giao hàng đúng giờ',
-  story: 'Bạn lái xe giao hàng. Đi chậm thì trễ giờ bị phạt, đi quá tốc độ cho phép thì bị phạt nặng hơn và nguy hiểm. Hãy chọn tốc độ cho từng đoạn đường bằng kiến thức t = s / v.',
-  params: [{ k: 'v1', label: 'Tốc độ đoạn 1', unit: 'km/h', min: 10, max: 100, step: 1, v: 30 }, { k: 'v2', label: 'Tốc độ đoạn 2', unit: 'km/h', min: 10, max: 100, step: 1, v: 40 }],
+  icon: '🚚', title: 'Giao hàng đúng giờ (KHTN 7: Tốc độ v = s / t)',
+  story: 'Bạn lái xe giao hàng. Đi chậm thì trễ giờ bị phạt, đi quá tốc độ cho phép thì bị phạt nặng hơn và nguy hiểm. Hãy chọn tốc độ cho từng đoạn đường bằng công thức t = s / v.',
+  params: [{ k: 'v1', label: 'Tốc độ đoạn 1 (v₁)', unit: 'km/h', min: 10, max: 100, step: 1, v: 30 }, { k: 'v2', label: 'Tốc độ đoạn 2 (v₂)', unit: 'km/h', min: 10, max: 100, step: 1, v: 40 }],
   rounds: [
-    { brief: 'Đoạn 1: 10 km khu dân cư (tối đa 40 km/h). Đoạn 2: 20 km quốc lộ (tối đa 60 km/h). Phải giao trong 40 phút.', env: { s1: 10, l1: 40, s2: 20, l2: 60, T: 40 } },
-    { brief: 'Đoạn 1: 12 km (tối đa 40 km/h). Đoạn 2: 18 km (tối đa 60 km/h). Hạn giao: 38 phút.', env: { s1: 12, l1: 40, s2: 18, l2: 60, T: 38 } },
-    { brief: 'Tắc đường! Đoạn 1: 6 km chỉ đi được tối đa 20 km/h. Đoạn 2: 24 km đường cao tốc (tối đa 80 km/h). Vẫn phải giao trong 40 phút — hãy tính tốc độ cần thiết cho đoạn 2.', env: { s1: 6, l1: 20, s2: 24, l2: 80, T: 40 } }],
+    { brief: '<b>Tình huống 1 · Khu dân cư & Quốc lộ:</b><br>📊 <b>Thông số:</b> Đoạn 1 dài s₁ = 10 km (v₁ ≤ 40 km/h); Đoạn 2 dài s₂ = 20 km (v₂ ≤ 60 km/h); tổng thời gian yêu cầu <b>T ≤ 40 phút</b>.<br>📐 <b>Công thức:</b> t = (s₁/v₁ + s₂/v₂) × 60 ≤ 40 phút (nếu chọn v₁ = 40 km/h ⇒ t₁ = 15 phút, cần t₂ ≤ 25 phút ⇒ v₂ ∈ [48; 60] km/h).<br>🎯 <b>Chốt nhiệm vụ:</b> Kéo thanh trượt đặt <b>v₁ ≤ 40 km/h</b> và <b>v₂ (48–60 km/h)</b> sao cho tổng thời gian ≤ 40 phút rồi bấm <b>✔ Kiểm tra</b>!', env: { s1: 10, l1: 40, s2: 20, l2: 60, T: 40 } },
+    { brief: '<b>Tình huống 2 · Đơn hàng giao gấp:</b><br>📊 <b>Thông số:</b> Đoạn 1 dài s₁ = 12 km (v₁ ≤ 40 km/h); Đoạn 2 dài s₂ = 18 km (v₂ ≤ 60 km/h); hạn giao <b>T ≤ 38 phút</b>.<br>📐 <b>Công thức:</b> Nếu v₁ = 40 km/h ⇒ t₁ = (12/40)×60 = 18 phút; còn ≤ 20 phút cho 18 km ⇒ cần v₂ ∈ [54; 60] km/h.<br>🎯 <b>Chốt nhiệm vụ:</b> Chỉnh <b>v₁ = 38–40 km/h</b> và <b>v₂ = 54–60 km/h</b> rồi bấm <b>✔ Kiểm tra</b>!', env: { s1: 12, l1: 40, s2: 18, l2: 60, T: 38 } },
+    { brief: '<b>Tình huống 3 · Kẹt xe nội đô:</b><br>📊 <b>Thông số:</b> Đoạn 1 dài s₁ = 6 km bị kẹt xe (v₁ ≤ 20 km/h); Đoạn 2 cao tốc dài s₂ = 24 km (v₂ ≤ 80 km/h); hạn giao <b>T ≤ 40 phút</b>.<br>📐 <b>Công thức:</b> Đi đoạn 1 với v₁ = 20 km/h mất t₁ = (6/20)×60 = 18 phút; còn 22 phút cho 24 km ⇒ cần v₂ ≥ (24/22)×60 ≈ 66 km/h (66–80 km/h).<br>🎯 <b>Chốt nhiệm vụ:</b> Chỉnh <b>v₁ = 18–20 km/h</b> và <b>v₂ = 66–80 km/h</b> rồi bấm <b>✔ Kiểm tra</b>!', env: { s1: 6, l1: 20, s2: 24, l2: 80, T: 40 } }],
   calc(p, e) {
     const t1 = e.s1 / p.v1 * 60, t2 = e.s2 / p.v2 * 60, t = t1 + t2, avg = (e.s1 + e.s2) / (t / 60);
     const over = p.v1 > e.l1 || p.v2 > e.l2, late = t > e.T, ok = !over && !late; let why;
@@ -174,7 +291,7 @@ const SCENARIOS = {
 };
 
 /* =========================================================
-   ENGINE (không cần sửa)
+   ENGINE
 ========================================================= */
 let S = null, sc = null, lesson = null, ri = 0, tries = 0, score = 0, sid = null, lastEv = 0;
 
@@ -190,7 +307,7 @@ async function init() {
   if (LESSON_ID) {
     try { lesson = await api('/content/lessons/' + LESSON_ID); topic = lesson.topic; } catch (e) { console.warn('Không tải được bài học (chạy offline):', e.message); }
   }
-  topic = ALIAS[topic] || topic; sc = SCENARIOS[topic];
+  topic = ALIAS[topic] || topic; sc = SCENARIOS[topic] || SCENARIOS['khoi-luong-rieng'];
   if (!sc) return noScenario();
   try { const g = await api(`/content/lessons/${LESSON_ID}/games`); if (g[0]) { const s = await api('/games/sessions', { method: 'POST', body: JSON.stringify({ user_id: USER_ID, game_id: g[0].id }) }); sid = s.id; } } catch (e) { }
   intro();
@@ -200,13 +317,15 @@ function noScenario() {
   $('app').innerHTML = `<div class="card"><h1>🚧 Màn chơi đang được xây dựng</h1><p>${lesson ? 'Bài "<b>' + lesson.title + '</b>" chưa có thử thách thực tế.' : 'Chưa xác định được bài học.'}</p>${lesson && lesson.real_life ? '<p><b>Ý tưởng:</b> ' + lesson.real_life + '</p>' : ''}<button class="big" onclick="goBack()">Quay lại</button></div>`;
 }
 function intro() {
-  $('app').innerHTML = `<div class="card"><h1>${sc.icon} ${sc.title}</h1><p>${sc.story}</p><p>🎯 Có <b>${sc.rounds.length} tình huống</b>, mỗi tình huống một thử thách khác nhau.</p><button class="big" onclick="round(0)">Bắt đầu</button></div>`;
+  $('app').innerHTML = `<div class="card"><h1>${sc.icon} ${sc.title}</h1><p>${sc.story}</p>
+  <div class="guide-box"><b>📘 Công thức trọng tâm:</b> ${sc.reveal.formula}<br><b>🎯 Chốt nhiệm vụ của bạn:</b> Qua <b>${sc.rounds.length} tình huống</b>, hãy đọc kỹ <b>📊 Thông số</b> và <b>📐 Công thức</b> ở đề bài từng tình huống, kéo thanh trượt điều chỉnh thông số cho khớp yêu cầu rồi bấm <b>✔ Kiểm tra</b>!</div>
+  <button class="big" onclick="round(0)">Bắt đầu thực hành ▶</button></div>`;
 }
 function round(i) {
   ri = i; tries = 0; const R = sc.rounds[i];
   S = {}; sc.params.forEach(p => S[p.k] = p.v);
   const dots = sc.rounds.map((_, k) => `<span class="${k < i ? 'done' : k === i ? 'on' : ''}"></span>`).join('');
-  $('app').innerHTML = `<div class="card"><div class="dots">${dots}</div><h2>Tình huống ${i + 1}/${sc.rounds.length}</h2><p>${R.brief}</p></div>
+  $('app').innerHTML = `<div class="card"><div class="dots">${dots}</div><h2>Tình huống ${i + 1}/${sc.rounds.length}</h2><div class="guide-box">${R.brief}</div></div>
   <div class="game"><div class="card"><canvas id="cv" width="640" height="300"></canvas></div>
   <div class="card">${sc.params.map(p => `<div class="sl"><label><span>${p.label}</span><b id="v_${p.k}"></b></label><input type="range" id="r_${p.k}" min="${p.min}" max="${p.max}" step="${p.step}" value="${p.v}"></div>`).join('')}
   <div id="mt"></div><button class="big" id="chk">✔ Kiểm tra</button><div id="out"></div></div></div>`;
