@@ -1,7 +1,7 @@
 /* =========================================================================
    CHÂN TRI — BOT HƯỚNG DẪN "TRI" (tour cho người mới)
    Nhúng:  <script src="/guide-bot.js" defer></script>
-   Trang có tour: index.html → physics.html → physics-grade.html?grade=12 → lesson.html
+   Trang có tour: index.html → physics.html → physics-grade.html?grade=9 → lesson.html
    - Trang chủ: Bot luôn nằm giữa cạnh phải, bấm vào để bắt đầu hướng dẫn.
    - Các trang khác: Bot chỉ hiện khi đang trong tour.
    API: HDLGTour.start() | HDLGTour.stop() | HDLGTour.reset()
@@ -19,8 +19,8 @@
   var URLS = {
     index: "index.html",
     physics: "physics.html",
-    "physics-grade": "physics-grade.html?grade=12",
-    lesson: "lesson.html?id=85&subject=physics&grade=12&topic=thuyet-tuong-doi"
+    "physics-grade": "physics-grade.html?grade=9",
+    lesson: "lesson.html?id=62&subject=physics&grade=9&topic=doan-mach-noi-tiep"
   };
 
   /* ---------- KỊCH BẢN HƯỚNG DẪN ---------- */
@@ -31,23 +31,23 @@
       text: "Mỗi hòn <b>đảo bay</b> là một <b>môn học</b>. Bấm vào <b>Đảo Vật lý</b> để vào khu học Vật lý — nơi có bài học theo từng lớp, phòng thí nghiệm ảo và thử thách nhanh."
     },
     grade: {
-      page: "physics", n: 2, hole: '.class-card[data-grade="12"]', click: '.class-card[data-grade="12"]', next: "gradeGo",
+      page: "physics", n: 2, hole: '.class-card[data-grade="9"]', click: '.class-card[data-grade="9"]', next: "gradeGo",
       title: "Chọn lớp học 🎓",
-      text: "Bài học được chia theo <b>khối lớp 6 → 12</b>, bám sát chương trình trên lớp. Bấm vào <b>Lớp 12</b> để xem các chủ đề của lớp 12 nhé!"
+      text: "Bài học được chia theo <b>khối lớp 6 → 12</b>, bám sát chương trình trên lớp. Bấm vào <b>Lớp 9</b> để xem các chủ đề của lớp 9 nhé!"
     },
     gradeGo: {
       page: "physics", n: 2, hole: "#mathPopup .math-popup", click: "#mathPopupButton", next: "topic",
       need: "#mathPopup.show", back: "grade",
-      title: "Mở lớp 12 🚪",
-      text: "Đây là thông tin của mô-đun lớp 12. Bấm <b>Bắt đầu Khám phá →</b> để mở danh sách bài học."
+      title: "Mở lớp 9 🚪",
+      text: "Đây là thông tin của mô-đun lớp 9. Bấm <b>Bắt đầu Khám phá →</b> để mở danh sách bài học."
     },
     topic: {
-      page: "physics-grade", n: 3, grade: "12", hole: '.topic-card[data-topic="thuyet-tuong-doi"]', click: '.topic-card[data-topic="thuyet-tuong-doi"]', next: "topicGo",
+      page: "physics-grade", n: 3, grade: "9", hole: '.topic-card[data-topic="doan-mach-noi-tiep"]', click: '.topic-card[data-topic="doan-mach-noi-tiep"]', next: "topicGo",
       title: "Chọn bài học 📚",
-      text: "Mỗi thẻ là một <b>bài học</b>, thanh tiến độ cho biết bạn đã học được bao nhiêu. Thử mở bài <b>Thuyết tương đối hẹp của Einstein</b> — bài cực hay về <b>E = mc²</b>!"
+      text: "Mỗi thẻ là một <b>bài học</b>, thanh tiến độ cho biết bạn đã học được bao nhiêu. Thử mở bài <b>Đoạn mạch nối tiếp</b> — bài cực hay về dòng điện và hiệu điện thế trong mạch điện nhé!"
     },
     topicGo: {
-      page: "physics-grade", n: 3, grade: "12", hole: "#topicPopup .popup", click: "#popupStart", next: "reading",
+      page: "physics-grade", n: 3, grade: "9", hole: "#topicPopup .popup", click: "#popupStart", next: "reading",
       need: "#topicPopup.show", back: "topic",
       title: "Vào bài học ▶",
       text: "Mỗi bài học đọc xong sẽ nhận <b>sao ⭐</b> để lên cấp. Bấm <b>Bắt đầu học →</b> để vào bài."
@@ -468,13 +468,27 @@
     place(null);
   }
 
+  function resolveLessonUrl() {
+    try {
+      var list = JSON.parse(sessionStorage.getItem("hdlg_lessons_physics_9") || sessionStorage.getItem("hdlg_catalog") || "null");
+      if (Array.isArray(list)) {
+        for (var i = 0; i < list.length; i++) {
+          if (list[i] && list[i].topic === "doan-mach-noi-tiep" && (!list[i].subject || list[i].subject === "physics")) {
+            return "lesson.html?id=" + encodeURIComponent(list[i].id) + "&subject=physics&grade=9&topic=doan-mach-noi-tiep";
+          }
+        }
+      }
+    } catch (e) {}
+    return URLS.lesson;
+  }
+
   function wrongPage(id) {
     var s = STEPS[id];
     clearSpot(); cur = null; curId = null;
     setDim(false);
     document.body.classList.add("tg-on");
     box.classList.remove("idle"); box.classList.add("tour");
-    var url = URLS[s.page];
+    var url = s.page === "lesson" ? resolveLessonUrl() : URLS[s.page];
     bubble({
       n: s.n, title: "Tiếp tục hướng dẫn?",
       text: "Bạn đang ở trang khác so với hướng dẫn. Bấm <b>Tiếp tục</b> để mình đưa bạn tới đúng chỗ nhé!",
