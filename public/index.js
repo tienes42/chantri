@@ -230,7 +230,7 @@ async function processIslandImage(src, selector) {
       }
     }
 
-    ctx.putImageData(imgData, 0, 0);
+   ctx.putImageData(imgData, 0, 0);
     c.toBlob(blob => {
       if (!blob) return;
       const url = URL.createObjectURL(blob);
@@ -239,7 +239,14 @@ async function processIslandImage(src, selector) {
       });
     }, 'image/png');
   } catch (e) {
-    console.error('Lỗi xử lý ảnh đảo:', src, e);
+    console.warn('Không tìm thấy ' + src + ', tự động chuyển sang đảo gốc làm xám:', e);
+    // Nếu thiếu file island-locked.png trên server, tự động lấy luôn island-subject.png có sẵn
+    if (src.includes('island-locked.png')) {
+      processIslandImage('assets/island-subject.png', selector);
+      document.querySelectorAll(selector).forEach(el => {
+        el.style.filter = 'grayscale(0.85) brightness(0.95) drop-shadow(0 18px 22px rgba(2, 8, 24, 0.82))';
+      });
+    }
   }
 }
 
