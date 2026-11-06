@@ -1,5 +1,1 @@
-"""Dữ liệu Toán 1–12 theo SGK (bộ Kết nối tri thức với cuộc sống).
-
-Mỗi file lopN.py khai báo LESSONS = [ {...}, ... ] — mỗi phần tử là 1 chủ đề/chương
-được đánh số trong SGK, xếp đúng thứ tự mục lục.
-"""
+"""Bộ dữ liệu Toán lớp 1–12 theo SGK Kết nối tri thức với cuộc sống (chia chi tiết từng Chương -> từng Bài học, chuẩn KaTeX)."""

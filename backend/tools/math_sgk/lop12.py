@@ -1,998 +1,3486 @@
-"""TOÁN 12 — Kết nối tri thức với cuộc sống (tập một, tập hai).
-
-6 chương đánh số (I – VI) đúng thứ tự mục lục SGK:
-- Tập một: Chương I, Chương II, Chương III.
-- Tập hai: Chương IV, Chương V, Chương VI.
-Mỗi chương: Yêu cầu cần đạt (CT GDPT 2018), lý thuyết theo từng bài, công thức,
-ví dụ, ứng dụng và 10 câu hỏi: Biết 4 TN | Hiểu 2 TN + 2 Đúng/Sai (4 ý a–d) | Vận dụng 1 TN + 1 trả lời ngắn.
+"""Dữ liệu bài học SGK Toán Lớp 12 — Kết nối tri thức với cuộc sống (NXB Giáo dục Việt Nam).
+Cấu trúc 3 cấp: Lớp 12 ➔ Chương/Chủ đề (topic) ➔ Từng Bài học (title).
+Mỗi bài học gồm đầy đủ Yêu cầu cần đạt (requirements), Định nghĩa, Lý thuyết, Công thức, Ví dụ, Ứng dụng thực tế
+và đúng 10 câu hỏi luyện tập theo 3 mức độ: 4 Nhận biết + 4 Thông hiểu + 2 Vận dụng.
 """
-from ._helpers import F, G, mcq, short, tf4
 
 GRADE = 12
 
-LESSONS = [
-    # ===================== CHƯƠNG I =====================
-    {
-        "topic": "l12-ch01-ung-dung-dao-ham-khao-sat-va-ve-do-thi-ham-so",
-        "game_title": "Biệt Đội Cực Trị: Ứng dụng Đạo hàm để Khảo sát và Vẽ đồ thị Hàm số",
-        "game_description": "Vận dụng đạo hàm xét tính đơn điệu, tìm cực trị và giá trị lớn nhất – nhỏ nhất để giải các bài toán tối ưu thực tiễn.",
-        "game_type": "game_ung_dung_dao_ham",
-        "title": "Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số",
-        "icon": "📈",
-        "description": (
-            "Chương I · SGK Toán 12 tập một: Bài 1 – Bài 5. Tính đơn điệu và cực trị của hàm số; "
-            "giá trị lớn nhất và giá trị nhỏ nhất của hàm số; đường tiệm cận của đồ thị hàm số; "
-            "khảo sát sự biến thiên và vẽ đồ thị của hàm số; ứng dụng đạo hàm để giải quyết một số vấn đề liên quan đến thực tiễn."
-        ),
-        "requirements": [
-            "Nhận biết được tính đồng biến, nghịch biến của một hàm số trên một khoảng dựa vào dấu của đạo hàm cấp một của nó.",
-            "Thể hiện được tính đồng biến, nghịch biến của hàm số trong bảng biến thiên.",
-            "Nhận biết được tính đơn điệu, điểm cực trị, giá trị cực trị của hàm số thông qua bảng biến thiên hoặc thông qua hình ảnh hình học của đồ thị hàm số.",
-            "Nhận biết được giá trị lớn nhất, giá trị nhỏ nhất của hàm số trên một tập xác định cho trước; tìm được giá trị lớn nhất và giá trị nhỏ nhất của hàm số bằng đạo hàm trong những trường hợp đơn giản.",
-            "Nhận biết được hình ảnh hình học của đường tiệm cận ngang, đường tiệm cận đứng, đường tiệm cận xiên của đồ thị hàm số.",
-            "Mô tả được sơ đồ tổng quát để khảo sát hàm số (tìm tập xác định, xét chiều biến thiên, tìm cực trị, tìm tiệm cận, lập bảng biến thiên, vẽ đồ thị).",
-            "Khảo sát được tập xác định, chiều biến thiên, cực trị, tiệm cận, bảng biến thiên và vẽ đồ thị của các hàm số: $y = ax^3 + bx^2 + cx + d$ $(a \\neq 0)$; $y = \\dfrac{ax + b}{cx + d}$ $(c \\neq 0, ad - bc \\neq 0)$; $y = \\dfrac{ax^2 + bx + c}{mx + n}$ $(a \\neq 0, m \\neq 0)$ và đa thức tử không chia hết cho đa thức mẫu.",
-            "Nhận biết được tính đối xứng (trục đối xứng, tâm đối xứng) của đồ thị các hàm số trên.",
-            "Vận dụng được đạo hàm và khảo sát hàm số để giải quyết một số vấn đề liên quan đến thực tiễn (tối ưu hoá chi phí, doanh thu, lợi nhuận, thể tích, tốc độ thay đổi).",
-        ],
-        "definition": (
-            "- **Tính đơn điệu và dấu đạo hàm**: Cho hàm số $y = f(x)$ có đạo hàm trên khoảng $K$. Nếu $f'(x) > 0$ với mọi $x \\in K$ thì $f(x)$ **đồng biến** trên $K$; nếu $f'(x) < 0$ với mọi $x \\in K$ thì $f(x)$ **nghịch biến** trên $K$. Nếu $f'(x) \\geq 0$ (hoặc $f'(x) \\leq 0$) với mọi $x \\in K$ và $f'(x) = 0$ chỉ tại một số hữu hạn điểm của $K$ thì hàm số vẫn đồng biến (hoặc nghịch biến) trên $K$.\n"
-            "- **Cực trị của hàm số**: Nếu $f'(x)$ đổi dấu từ dương sang âm khi $x$ đi qua $x_0$ thì $x_0$ là **điểm cực đại**, $f(x_0)$ là **giá trị cực đại** (ký hiệu $y_{\\text{CĐ}}$). Nếu $f'(x)$ đổi dấu từ âm sang dương khi $x$ đi qua $x_0$ thì $x_0$ là **điểm cực tiểu**, $f(x_0)$ là **giá trị cực tiểu** (ký hiệu $y_{\\text{CT}}$). Điểm $(x_0; f(x_0))$ gọi là **điểm cực trị của đồ thị hàm số**.\n"
-            "- **Giá trị lớn nhất – Giá trị nhỏ nhất**: Cho hàm số $y = f(x)$ xác định trên tập $D$. Số $M = \\max_{D} f(x)$ nếu $f(x) \\leq M$ với mọi $x \\in D$ và tồn tại $x_0 \\in D$ sao cho $f(x_0) = M$. Số $m = \\min_{D} f(x)$ nếu $f(x) \\geq m$ với mọi $x \\in D$ và tồn tại $x_0 \\in D$ sao cho $f(x_0) = m$.\n"
-            "- **Đường tiệm cận của đồ thị hàm số**: Đường thẳng $y = y_0$ là **tiệm cận ngang** nếu $\\lim_{x \\to +\\infty} f(x) = y_0$ hoặc $\\lim_{x \\to -\\infty} f(x) = y_0$. Đường thẳng $x = x_0$ là **tiệm cận đứng** nếu ít nhất một trong các giới hạn $\\lim_{x \\to x_0^+} f(x)$, $\\lim_{x \\to x_0^-} f(x)$ bằng $+\\infty$ hoặc $-\\infty$. Đường thẳng $y = ax + b$ $(a \\neq 0)$ là **tiệm cận xiên** nếu $\\lim_{x \\to +\\infty} [f(x) - (ax + b)] = 0$ hoặc $\\lim_{x \\to -\\infty} [f(x) - (ax + b)] = 0$."
-        ),
-        "theory": (
-            "### Bài 1. Tính đơn điệu và cực trị của hàm số\n"
-            "- **Các bước xét tính đơn điệu và tìm cực trị**: (1) Tìm tập xác định $D$; (2) Tính đạo hàm $f'(x)$, tìm các điểm $x_i \\in D$ mà tại đó $f'(x) = 0$ hoặc $f'(x)$ không tồn tại; (3) Lập bảng biến thiên xét dấu $f'(x)$; (4) Kết luận các khoảng đồng biến, nghịch biến và các điểm cực đại, cực tiểu.\n"
-            "- **Chú ý**: Đối với hàm phân thức $y = \\dfrac{ax + b}{cx + d}$ $(c \\neq 0, ad - bc \\neq 0)$, ta kết luận đồng biến hoặc nghịch biến trên từng khoảng xác định $\\left(-\\infty; -\\dfrac{d}{c}\\right)$ và $\\left(-\\dfrac{d}{c}; +\\infty\\right)$, tuyệt đối không gộp bằng ký hiệu hợp $\\cup$.\n"
-            "### Bài 2. Giá trị lớn nhất và giá trị nhỏ nhất của hàm số\n"
-            "- **Quy tắc tìm $\\max_{[a;b]} f(x)$ và $\\min_{[a;b]} f(x)$ của hàm số liên tục trên đoạn $[a; b]$**: (1) Tìm các điểm $x_1, x_2, \\dots, x_n \\in (a; b)$ tại đó $f'(x) = 0$ hoặc $f'(x)$ không tồn tại; (2) Tính $f(a), f(b), f(x_1), \\dots, f(x_n)$; (3) Số lớn nhất trong các giá trị đó là $\\max_{[a;b]} f(x)$ và số nhỏ nhất là $\\min_{[a;b]} f(x)$.\n"
-            "### Bài 3. Đường tiệm cận của đồ thị hàm số\n"
-            "- **Hàm bậc nhất trên bậc nhất** $y = \\dfrac{ax + b}{cx + d}$ $(c \\neq 0, ad - bc \\neq 0)$: có tiệm cận đứng $x = -\\dfrac{d}{c}$ và tiệm cận ngang $y = \\dfrac{a}{c}$.\n"
-            "- **Hàm bậc hai trên bậc nhất** $y = \\dfrac{ax^2 + bx + c}{mx + n} = px + q + \\dfrac{r}{mx + n}$ $(a \\neq 0, m \\neq 0, r \\neq 0)$: có tiệm cận đứng $x = -\\dfrac{n}{m}$ và tiệm cận xiên $y = px + q$.\n"
-            "### Bài 4. Khảo sát sự biến thiên và vẽ đồ thị của hàm số\n"
-            "- **Sơ đồ khảo sát**: (1) Tìm tập xác định; (2) Xét sự biến thiên (tính $y'$, tìm cực trị, giới hạn tại vô cực và các đường tiệm cận, lập bảng biến thiên); (3) Vẽ đồ thị (xác định các điểm cực trị, giao điểm với các trục toạ độ, tâm đối xứng).\n"
-            "- **Tâm đối xứng**: Đồ thị hàm bậc ba $y = ax^3 + bx^2 + cx + d$ nhận điểm uốn $I(x_0; y_0)$ với $x_0 = -\\dfrac{b}{3a}$ (nghiệm của $y'' = 0$) làm tâm đối xứng. Đồ thị hàm phân thức nhận giao điểm hai đường tiệm cận làm tâm đối xứng.\n"
-            "### Bài 5. Ứng dụng đạo hàm để giải quyết một số vấn đề liên quan đến thực tiễn\n"
-            "- **Tốc độ thay đổi tức thời**: Nếu đại lượng $y = f(t)$ phụ thuộc thời gian $t$ thì $f'(t_0)$ là tốc độ thay đổi tức thời của $y$ tại thời điểm $t_0$ (như vận tốc tức thời $v(t) = s'(t)$, gia tốc $a(t) = v'(t)$, chi phí biên $C'(x)$, doanh thu biên $R'(x)$).\n"
-            "- **Bài toán tối ưu thực tiễn**: Chọn biến số $x$ kèm điều kiện xác định thực tế, biểu diễn đại lượng cần tối ưu thành hàm số $f(x)$, rồi dùng đạo hàm tìm $\\max$ hoặc $\\min$.\n"
-            "### Bài tập cuối chương I"
-        ),
-        "formulas": [
-            G(
-                "I. Đạo hàm, đơn điệu và cực trị",
-                F("Đồng biến trên $K$", "$f'(x) \\geq 0, \\forall x \\in K$ (bằng $0$ tại hữu hạn điểm)"),
-                F("Nghịch biến trên $K$", "$f'(x) \\leq 0, \\forall x \\in K$ (bằng $0$ tại hữu hạn điểm)"),
-                F("Điều kiện cần của cực trị", "Nếu hàm khả vi đạt cực trị tại $x_0$ thì $f'(x_0) = 0$"),
-                F("Đạo hàm hàm phân thức bậc nhất", "$\\left(\\dfrac{ax + b}{cx + d}\\right)' = \\dfrac{ad - bc}{(cx + d)^2}$"),
-            ),
-            G(
-                "II. Giá trị lớn nhất – Giá trị nhỏ nhất trên đoạn $[a; b]$",
-                F("Giá trị lớn nhất", "$M = \\max_{[a;b]} f(x) = \\max\\{f(a), f(b), f(x_1), \\dots, f(x_n)\\}$"),
-                F("Giá trị nhỏ nhất", "$m = \\min_{[a;b]} f(x) = \\min\\{f(a), f(b), f(x_1), \\dots, f(x_n)\\}$"),
-            ),
-            G(
-                "III. Các đường tiệm cận và tâm đối xứng",
-                F("Tiệm cận ngang", "$\\lim_{x \\to +\\infty} f(x) = y_0$ hoặc $\\lim_{x \\to -\\infty} f(x) = y_0 \\Rightarrow y = y_0$"),
-                F("Tiệm cận đứng", "$\\lim_{x \\to x_0^+} f(x) = \\pm\\infty$ hoặc $\\lim_{x \\to x_0^-} f(x) = \\pm\\infty \\Rightarrow x = x_0$"),
-                F("Tiệm cận xiên", "$\\lim_{x \\to \\pm\\infty} [f(x) - (ax + b)] = 0 \\Rightarrow y = ax + b$ $(a \\neq 0)$"),
-                F("Tâm đối xứng đồ thị bậc ba", "$I\\left(-\\dfrac{b}{3a}; f\\left(-\\dfrac{b}{3a}\\right)\\right)$ với $y''(x_0) = 0$"),
-            ),
-        ],
-        "example": "Tìm các khoảng đơn điệu, cực trị và giá trị lớn nhất, giá trị nhỏ nhất trên đoạn $[0; 3]$ của hàm số $y = f(x) = x^3 - 3x^2 + 2$.",
-        "example_answer": (
-            "Tập xác định $D = \\mathbb{R}$. Đạo hàm $f'(x) = 3x^2 - 6x = 3x(x - 2)$; $f'(x) = 0 \\Leftrightarrow x = 0$ hoặc $x = 2$.\n"
-            "- Hàm số đồng biến trên $(-\\infty; 0)$ và $(2; +\\infty)$; nghịch biến trên $(0; 2)$.\n"
-            "- Hàm số đạt cực đại tại $x = 0$, $y_{\\text{CĐ}} = f(0) = 2$; đạt cực tiểu tại $x = 2$, $y_{\\text{CT}} = f(2) = -2$.\n"
-            "- Trên đoạn $[0; 3]$: ta có $x = 2 \\in (0; 3)$, tính $f(0) = 2$, $f(2) = -2$, $f(3) = 2$. Vậy $\\max_{[0;3]} f(x) = \\mathbf{2}$ và $\\min_{[0;3]} f(x) = \\mathbf{-2}$."
-        ),
-        "real_life": (
-            "- Thiết kế bao bì, hộp chứa hàng hoá sao cho tiết kiệm vật liệu nhất (diện tích toàn phần nhỏ nhất) hoặc thể tích lớn nhất.\n"
-            "- Phân tích hàm chi phí $C(x)$, hàm doanh thu $R(x)$ và tối đa hoá lợi nhuận $P(x) = R(x) - C(x)$ trong sản xuất kinh doanh."
-        ),
-        "quiz": [
-            mcq(
-                "biet",
-                "Cho hàm số $y = f(x)$ có đạo hàm $f'(x) = x - 3$ với mọi $x \\in \\mathbb{R}$. Hàm số đã cho đồng biến trên khoảng nào dưới đây?",
-                ["$(3; +\\infty)$", "$(-\\infty; 3)$", "$(-\\infty; +\\infty)$", "$(0; 3)$"],
-                0,
-                "Ta có $f'(x) > 0 \\Leftrightarrow x - 3 > 0 \\Leftrightarrow x > 3$. Vậy hàm số đồng biến trên khoảng **$(3; +\\infty)$**.",
-            ),
-            mcq(
-                "biet",
-                "Điểm cực tiểu của hàm số $y = x^3 - 3x + 1$ là:",
-                ["$x = 1$", "$x = -1$", "$y = -1$", "$y = 3$"],
-                0,
-                "Ta có $y' = 3x^2 - 3 = 0 \\Leftrightarrow x = \\pm 1$. Vì $y'$ đổi dấu từ âm sang dương khi qua $x = 1$ nên điểm cực tiểu của hàm số là **$x = 1$**.",
-            ),
-            mcq(
-                "biet",
-                "Đường tiệm cận ngang của đồ thị hàm số $y = \\dfrac{2x - 1}{x + 3}$ là đường thẳng có phương trình:",
-                ["$y = 2$", "$x = -3$", "$y = -3$", "$x = 2$"],
-                0,
-                "Vì $\\lim_{x \\to \\pm\\infty} \\dfrac{2x - 1}{x + 3} = 2$ nên đường tiệm cận ngang của đồ thị hàm số là **$y = 2$**.",
-            ),
-            mcq(
-                "biet",
-                "Đường tiệm cận đứng của đồ thị hàm số $y = \\dfrac{x + 2}{x - 4}$ là đường thẳng:",
-                ["$x = 4$", "$x = -2$", "$y = 1$", "$y = 4$"],
-                0,
-                "Tập xác định $D = \\mathbb{R} \\setminus \\{4\\}$. Vì $\\lim_{x \\to 4^+} \\dfrac{x + 2}{x - 4} = +\\infty$ nên đường thẳng **$x = 4$** là tiệm cận đứng.",
-            ),
-            mcq(
-                "hieu",
-                "Giá trị lớn nhất của hàm số $f(x) = x^3 - 3x^2 - 9x + 10$ trên đoạn $[-2; 2]$ bằng:",
-                ["$15$", "$10$", "$-12$", "$0$"],
-                0,
-                "Trên $[-2; 2]$, ta có $f'(x) = 3x^2 - 6x - 9 = 0 \\Leftrightarrow x = -1 \\in (-2; 2)$ (loại $x = 3 \\notin [-2; 2]$). Tính $f(-2) = 8$, $f(-1) = 15$, $f(2) = -12$. Vậy $\\max_{[-2;2]} f(x) = \\mathbf{15}$.",
-            ),
-            mcq(
-                "hieu",
-                "Đồ thị hàm số $y = \\dfrac{x^2 + 2x + 3}{x + 1}$ có đường tiệm cận xiên là:",
-                ["$y = x + 1$", "$y = x + 2$", "$y = x - 1$", "$y = 2x + 1$"],
-                0,
-                "Chia đa thức: $y = \\dfrac{(x + 1)^2 + 2}{x + 1} = x + 1 + \\dfrac{2}{x + 1}$. Do $\\lim_{x \\to \\pm\\infty} [y - (x + 1)] = \\lim_{x \\to \\pm\\infty} \\dfrac{2}{x + 1} = 0$ nên tiệm cận xiên là **$y = x + 1$**.",
-            ),
-            tf4(
-                "hieu",
-                "Cho hàm số $y = f(x) = x^3 - 3x^2 + 4$ có đồ thị $(C)$. Xét tính đúng sai của các mệnh đề sau:",
-                [
-                    "a) Đạo hàm của hàm số là $f'(x) = 3x^2 - 6x$.",
-                    "b) Hàm số đồng biến trên khoảng $(0; 2)$.",
-                    "c) Giá trị cực đại của hàm số bằng $4$ và giá trị cực tiểu bằng $0$.",
-                    "d) Đồ thị $(C)$ nhận điểm $I(1; 2)$ làm tâm đối xứng.",
-                ],
-                [True, False, True, True],
-                "a) $f'(x) = 3x^2 - 6x \\Rightarrow$ **Đúng**.\n"
-                "b) Trên $(0; 2)$, $f'(x) = 3x(x - 2) < 0$ nên hàm số nghịch biến trên $(0; 2) \\Rightarrow$ **Sai**.\n"
-                "c) Hàm số đạt cực đại tại $x = 0 \\Rightarrow y_{\\text{CĐ}} = f(0) = 4$; đạt cực tiểu tại $x = 2 \\Rightarrow y_{\\text{CT}} = f(2) = 0 \\Rightarrow$ **Đúng**.\n"
-                "d) Ta có $f''(x) = 6x - 6 = 0 \\Leftrightarrow x = 1$, $f(1) = 2$ nên $I(1; 2)$ là tâm đối xứng của $(C) \\Rightarrow$ **Đúng**.",
-            ),
-            tf4(
-                "hieu",
-                "Cho hàm số $y = f(x) = x + 1 + \\dfrac{4}{x - 1}$ với $x \\neq 1$. Xét tính đúng sai của các mệnh đề sau:",
-                [
-                    "a) Đồ thị hàm số có tiệm cận đứng là đường thẳng $x = 1$.",
-                    "b) Đồ thị hàm số có tiệm cận xiên là đường thẳng $y = x + 1$.",
-                    "c) Đạo hàm của hàm số là $f'(x) = 1 + \\dfrac{4}{(x - 1)^2}$ với mọi $x \\neq 1$.",
-                    "d) Giá trị nhỏ nhất của hàm số trên khoảng $(1; +\\infty)$ bằng $6$.",
-                ],
-                [True, True, False, True],
-                "a) $\\lim_{x \\to 1^+} f(x) = +\\infty$ nên $x = 1$ là tiệm cận đứng $\\Rightarrow$ **Đúng**.\n"
-                "b) $\\lim_{x \\to \\pm\\infty} [f(x) - (x + 1)] = \\lim_{x \\to \\pm\\infty} \\dfrac{4}{x - 1} = 0$ nên $y = x + 1$ là tiệm cận xiên $\\Rightarrow$ **Đúng**.\n"
-                "c) $f'(x) = 1 - \\dfrac{4}{(x - 1)^2} \\Rightarrow$ **Sai**.\n"
-                "d) Trên $(1; +\\infty)$, $f'(x) = 0 \\Leftrightarrow (x - 1)^2 = 4 \\Leftrightarrow x = 3$. Bảng biến thiên trên $(1; +\\infty)$ cho $\\min_{(1;+\\infty)} f(x) = f(3) = 3 + 1 + \\dfrac{4}{2} = 6 \\Rightarrow$ **Đúng**.",
-            ),
-            mcq(
-                "vandung",
-                "Một tấm bìa hình vuông cạnh $12\\text{ cm}$ được cắt bỏ bốn hình vuông nhỏ bằng nhau có cạnh $x\\text{ cm}$ ở bốn góc rồi gấp lên thành một hình hộp chữ nhật không nắp. Thể tích lớn nhất của chiếc hộp đó bằng:",
-                ["$128\\text{ cm}^3$", "$144\\text{ cm}^3$", "$108\\text{ cm}^3$", "$96\\text{ cm}^3$"],
-                0,
-                "Đáy hộp là hình vuông cạnh $12 - 2x$ và chiều cao là $x$ với $0 < x < 6$. Thể tích $V(x) = x(12 - 2x)^2 = 4x(6 - x)^2$. Ta có $V'(x) = 4[(6 - x)^2 - 2x(6 - x)] = 4(6 - x)(6 - 3x) = 0 \\Leftrightarrow x = 2 \\in (0; 6)$. Khi đó $V_{\\max} = V(2) = 2 \\cdot (12 - 4)^2 = \\mathbf{128\\text{ cm}^3}$.",
-            ),
-            short(
-                "vandung",
-                "Một doanh nghiệp sản xuất $x$ sản phẩm trong một ngày $(1 \\leq x \\leq 50)$ có tổng lợi nhuận (đơn vị: triệu đồng) được mô tả bởi hàm số $P(x) = -x^3 + 30x^2 + 50$. Hỏi doanh nghiệp cần sản xuất bao nhiêu sản phẩm mỗi ngày để đạt lợi nhuận lớn nhất?",
-                ["20"],
-                "Ta có $P'(x) = -3x^2 + 60x = 3x(20 - x)$. Trên đoạn $[1; 50]$, $P'(x) = 0 \\Leftrightarrow x = 20$. Vì $P'(x) > 0$ trên $(1; 20)$ và $P'(x) < 0$ trên $(20; 50)$ nên lợi nhuận đạt giá trị lớn nhất tại $x = \\mathbf{20}$ sản phẩm.",
-                unit="sản phẩm",
-            ),
-        ],
-    },
-    # ===================== CHƯƠNG II =====================
-    {
-        "topic": "l12-ch02-vecto-va-he-truc-toa-do-trong-khong-gian",
-        "title": "Vectơ và hệ trục toạ độ trong không gian",
-        "game_type": "game_toa_do_oxyz",
-        "game_title": "Đội Định Vị Oxyz: Vectơ trong không gian & Phương pháp tọa độ Oxyz",
-        "game_description": "Vận dụng tọa độ điểm, phép toán vectơ và tích vô hướng trong không gian Oxyz để điều khiển cáp tời và định vị drone.",
-        "icon": "🧭",
-        "description": (
-            "Chương II · SGK Toán 12 tập một: Bài 6 – Bài 8. Vectơ trong không gian; "
-            "hệ trục toạ độ trong không gian; biểu thức toạ độ của các phép toán vectơ."
-        ),
-        "requirements": [
-            "Nhận biết được vectơ và các phép toán vectơ trong không gian (tổng và hiệu của hai vectơ, tích của một số với một vectơ, tích vô hướng của hai vectơ).",
-            "Vận dụng được quy tắc hình hộp, quy tắc ba điểm, quy tắc hình bình hành và tính chất trọng tâm để thực hiện các phép toán vectơ trong không gian.",
-            "Nhận biết được toạ độ của một điểm và toạ độ của một vectơ đối với hệ trục toạ độ $Oxyz$ trong không gian.",
-            "Xác định được độ dài của một vectơ, khoảng cách giữa hai điểm, toạ độ trung điểm đoạn thẳng và toạ độ trọng tâm tam giác khi biết toạ độ.",
-            "Sử dụng được biểu thức toạ độ của các phép toán vectơ (cộng, trừ, nhân với một số, tích vô hướng) và tính được côsin góc giữa hai vectơ.",
-            "Vận dụng được toạ độ và các phép toán vectơ để giải một số bài toán thực tiễn (tổng hợp lực trong không gian, định vị vị trí 3D).",
-        ],
-        "definition": (
-            "- **Vectơ trong không gian**: Là một đoạn thẳng có hướng. Ký hiệu $\\overrightarrow{AB}$ chỉ vectơ có điểm đầu $A$, điểm cuối $B$; độ dài là $|\\overrightarrow{AB}| = AB$.\n"
-            "- **Quy tắc hình hộp**: Cho hình hộp $ABCD.A'B'C'D'$, khi đó $\\overrightarrow{AB} + \\overrightarrow{AD} + \\overrightarrow{AA'} = \\overrightarrow{AC'}$.\n"
-            "- **Hệ trục toạ độ $Oxyz$**: Gồm ba trục $Ox, Oy, Oz$ đôi một vuông góc tại gốc $O$ với các vectơ đơn vị tương ứng $\\overrightarrow{i}, \\overrightarrow{j}, \\overrightarrow{k}$ thoả mãn $|\\overrightarrow{i}| = |\\overrightarrow{j}| = |\\overrightarrow{k}| = 1$.\n"
-            "- **Toạ độ của điểm và vectơ**: Nếu $\\overrightarrow{u} = x\\overrightarrow{i} + y\\overrightarrow{j} + z\\overrightarrow{k}$ thì $\\overrightarrow{u} = (x; y; z)$. Điểm $M(x; y; z) \\Leftrightarrow \\overrightarrow{OM} = x\\overrightarrow{i} + y\\overrightarrow{j} + z\\overrightarrow{k}$."
-        ),
-        "theory": (
-            "### Bài 6. Vectơ trong không gian\n"
-            "- **Các quy tắc cơ bản**: Quy tắc ba điểm $\\overrightarrow{AB} + \\overrightarrow{BC} = \\overrightarrow{AC}$; quy tắc hiệu $\\overrightarrow{AB} - \\overrightarrow{AC} = \\overrightarrow{CB}$; quy tắc hình bình hành $\\overrightarrow{AB} + \\overrightarrow{AD} = \\overrightarrow{AC}$; quy tắc hình hộp $\\overrightarrow{AB} + \\overrightarrow{AD} + \\overrightarrow{AA'} = \\overrightarrow{AC'}$.\n"
-            "- **Hệ thức trung điểm và trọng tâm**: Nếu $I$ là trung điểm $AB$ thì $\\overrightarrow{IA} + \\overrightarrow{IB} = \\overrightarrow{0}$ và $\\overrightarrow{MA} + \\overrightarrow{MB} = 2\\overrightarrow{MI}$. Nếu $G$ là trọng tâm tam giác $ABC$ thì $\\overrightarrow{GA} + \\overrightarrow{GB} + \\overrightarrow{GC} = \\overrightarrow{0}$.\n"
-            "- **Tích vô hướng**: $\\overrightarrow{a} \\cdot \\overrightarrow{b} = |\\overrightarrow{a}| \\cdot |\\overrightarrow{b}| \\cdot \\cos(\\overrightarrow{a}, \\overrightarrow{b})$. Hai vectơ khác $\\overrightarrow{0}$ vuông góc khi và chỉ khi $\\overrightarrow{a} \\cdot \\overrightarrow{b} = 0$.\n"
-            "### Bài 7. Hệ trục toạ độ trong không gian\n"
-            "- **Toạ độ vectơ theo hai đầu mút**: Với $A(x_A; y_A; z_A)$ và $B(x_B; y_B; z_B)$, ta có $\\overrightarrow{AB} = (x_B - x_A; y_B - y_A; z_B - z_A)$.\n"
-            "- **Hình chiếu của điểm $M(x_0; y_0; z_0)$**: Trên $Ox$ là $(x_0; 0; 0)$, trên $Oy$ là $(0; y_0; 0)$, trên $Oz$ là $(0; 0; z_0)$; trên mặt phẳng $(Oxy)$ là $(x_0; y_0; 0)$, trên $(Oyz)$ là $(0; y_0; z_0)$, trên $(Ozx)$ là $(x_0; 0; z_0)$.\n"
-            "### Bài 8. Biểu thức toạ độ của các phép toán vectơ\n"
-            "- Cho $\\overrightarrow{u} = (x_1; y_1; z_1)$ và $\\overrightarrow{v} = (x_2; y_2; z_2)$: $\\overrightarrow{u} \\pm \\overrightarrow{v} = (x_1 \\pm x_2; y_1 \\pm y_2; z_1 \\pm z_2)$ và $k\\overrightarrow{u} = (kx_1; ky_1; kz_1)$.\n"
-            "- **Tích vô hướng và độ dài**: $\\overrightarrow{u} \\cdot \\overrightarrow{v} = x_1x_2 + y_1y_2 + z_1z_2$; $|\\overrightarrow{u}| = \\sqrt{x_1^2 + y_1^2 + z_1^2}$.\n"
-            "### Bài tập cuối chương II"
-        ),
-        "formulas": [
-            G(
-                "I. Các phép toán vectơ trong không gian",
-                F("Quy tắc ba điểm và hiệu", "$\\overrightarrow{AB} + \\overrightarrow{BC} = \\overrightarrow{AC} \\quad ; \\quad \\overrightarrow{AB} - \\overrightarrow{AC} = \\overrightarrow{CB}$"),
-                F("Quy tắc hình hộp", "$\\overrightarrow{AB} + \\overrightarrow{AD} + \\overrightarrow{AA'} = \\overrightarrow{AC'}$"),
-                F("Tích vô hướng", "$\\overrightarrow{a} \\cdot \\overrightarrow{b} = |\\overrightarrow{a}| \\cdot |\\overrightarrow{b}| \\cdot \\cos(\\overrightarrow{a}, \\overrightarrow{b})$"),
-            ),
-            G(
-                "II. Biểu thức toạ độ của vectơ",
-                F("Tổng, hiệu và tích với số", "$\\overrightarrow{u} \\pm \\overrightarrow{v} = (x_1 \\pm x_2; y_1 \\pm y_2; z_1 \\pm z_2) \\quad ; \\quad k\\overrightarrow{u} = (kx_1; ky_1; kz_1)$"),
-                F("Tích vô hướng theo toạ độ", "$\\overrightarrow{u} \\cdot \\overrightarrow{v} = x_1x_2 + y_1y_2 + z_1z_2$"),
-                F("Độ dài và khoảng cách", "$|\\overrightarrow{u}| = \\sqrt{x_1^2 + y_1^2 + z_1^2} \\quad ; \\quad AB = \\sqrt{(x_B - x_A)^2 + (y_B - y_A)^2 + (z_B - z_A)^2}$"),
-                F("Côsin góc giữa hai vectơ", "$\\cos(\\overrightarrow{u}, \\overrightarrow{v}) = \\dfrac{x_1x_2 + y_1y_2 + z_1z_2}{\\sqrt{x_1^2 + y_1^2 + z_1^2}\\sqrt{x_2^2 + y_2^2 + z_2^2}}$"),
-            ),
-            G(
-                "III. Toạ độ trung điểm và trọng tâm",
-                F("Trung điểm $I$ của $AB$", "$I\\left(\\dfrac{x_A + x_B}{2}; \\dfrac{y_A + y_B}{2}; \\dfrac{z_A + z_B}{2}\\right)$"),
-                F("Trọng tâm $G$ của $\\triangle ABC$", "$G\\left(\\dfrac{x_A + x_B + x_C}{3}; \\dfrac{y_A + y_B + y_C}{3}; \\dfrac{z_A + z_C + z_B}{3}\\right)$"),
-            ),
-        ],
-        "example": "Trong không gian $Oxyz$, cho ba điểm $A(1; 2; -1)$, $B(3; 0; 3)$ và $C(2; 4; 1)$. Tìm toạ độ vectơ $\\overrightarrow{AB}$, độ dài đoạn $AB$, toạ độ trung điểm $I$ của $AB$ và trọng tâm $G$ của tam giác $ABC$.",
-        "example_answer": (
-            "- Ta có $\\overrightarrow{AB} = (3 - 1; 0 - 2; 3 - (-1)) = \\mathbf{(2; -2; 4)}$.\n"
-            "- Độ dài $AB = |\\overrightarrow{AB}| = \\sqrt{2^2 + (-2)^2 + 4^2} = \\sqrt{24} = \\mathbf{2\\sqrt{6}}$.\n"
-            "- Trung điểm $I$ của $AB$: $I\\left(\\dfrac{1 + 3}{2}; \\dfrac{2 + 0}{2}; \\dfrac{-1 + 3}{2}\\right) = \\mathbf{I(2; 1; 1)}$.\n"
-            "- Trọng tâm $G$ của $\\triangle ABC$: $G\\left(\\dfrac{1 + 3 + 2}{3}; \\dfrac{2 + 0 + 4}{3}; \\dfrac{-1 + 3 + 1}{3}\\right) = \\mathbf{G(2; 2; 1)}$."
-        ),
-        "real_life": (
-            "- Định vị toạ độ máy bay, tàu biển hoặc thiết bị bay không người lái (drone) trong hệ toạ độ không gian ba chiều $Oxyz$.\n"
-            "- Tổng hợp các lực căng dây cáp treo một vật nặng trong không gian xây dựng và cơ khí."
-        ),
-        "quiz": [
-            mcq(
-                "biet",
-                "Trong không gian $Oxyz$, cho $\\overrightarrow{u} = 2\\overrightarrow{i} - 3\\overrightarrow{j} + 4\\overrightarrow{k}$. Toạ độ của vectơ $\\overrightarrow{u}$ là:",
-                ["$(2; -3; 4)$", "$(2; 3; 4)$", "$(-2; 3; -4)$", "$(4; -3; 2)$"],
-                0,
-                "Theo định nghĩa toạ độ của vectơ, $\\overrightarrow{u} = 2\\overrightarrow{i} - 3\\overrightarrow{j} + 4\\overrightarrow{k} \\Rightarrow \\overrightarrow{u} = \\mathbf{(2; -3; 4)}$.",
-            ),
-            mcq(
-                "biet",
-                "Trong không gian $Oxyz$, cho hai điểm $A(1; -2; 3)$ và $B(4; 2; -1)$. Toạ độ của vectơ $\\overrightarrow{AB}$ là:",
-                ["$(3; 4; -4)$", "$(-3; -4; 4)$", "$(5; 0; 2)$", "$(4; -4; -3)$"],
-                0,
-                "Ta có $\\overrightarrow{AB} = (x_B - x_A; y_B - y_A; z_B - z_A) = (4 - 1; 2 - (-2); -1 - 3) = \\mathbf{(3; 4; -4)}$.",
-            ),
-            mcq(
-                "biet",
-                "Trong không gian $Oxyz$, hình chiếu vuông góc của điểm $M(3; -4; 5)$ trên mặt phẳng $(Oxy)$ có toạ độ là:",
-                ["$(3; -4; 0)$", "$(0; -4; 5)$", "$(3; 0; 5)$", "$(0; 0; 5)$"],
-                0,
-                "Hình chiếu vuông góc của điểm $M(x_0; y_0; z_0)$ trên mặt phẳng $(Oxy)$ có cao độ $z = 0$, tức là **$(3; -4; 0)$**.",
-            ),
-            mcq(
-                "biet",
-                "Trong không gian $Oxyz$, cho hai điểm $A(2; 4; -2)$ và $B(6; 0; 4)$. Toạ độ trung điểm $I$ của đoạn thẳng $AB$ là:",
-                ["$(4; 2; 1)$", "$(8; 4; 2)$", "$(2; -2; 3)$", "$(4; 4; 1)$"],
-                0,
-                "Trung điểm $I$ có toạ độ $\\left(\\dfrac{2 + 6}{2}; \\dfrac{4 + 0}{2}; \\dfrac{-2 + 4}{2}\\right) = \\mathbf{(4; 2; 1)}$.",
-            ),
-            mcq(
-                "hieu",
-                "Trong không gian $Oxyz$, cho hai vectơ $\\overrightarrow{a} = (1; -2; 2)$ và $\\overrightarrow{b} = (2; 1; -2)$. Tích vô hướng $\\overrightarrow{a} \\cdot \\overrightarrow{b}$ bằng:",
-                ["$-4$", "$4$", "$0$", "$-2$"],
-                0,
-                "Ta có $\\overrightarrow{a} \\cdot \\overrightarrow{b} = 1 \\cdot 2 + (-2) \\cdot 1 + 2 \\cdot (-2) = 2 - 2 - 4 = \\mathbf{-4}$.",
-            ),
-            mcq(
-                "hieu",
-                "Trong không gian $Oxyz$, cho hai vectơ $\\overrightarrow{u} = (1; 2; -1)$ và $\\overrightarrow{v} = (3; 0; 2)$. Toạ độ của vectơ $\\overrightarrow{w} = 2\\overrightarrow{u} - \\overrightarrow{v}$ là:",
-                ["$(-1; 4; -4)$", "$(5; 4; 0)$", "$(-1; 2; -4)$", "$(1; -4; 4)$"],
-                0,
-                "Ta có $2\\overrightarrow{u} = (2; 4; -2)$, suy ra $\\overrightarrow{w} = 2\\overrightarrow{u} - \\overrightarrow{v} = (2 - 3; 4 - 0; -2 - 2) = \\mathbf{(-1; 4; -4)}$.",
-            ),
-            tf4(
-                "hieu",
-                "Cho hình hộp $ABCD.A'B'C'D'$. Xét tính đúng sai của các mệnh đề sau:",
-                [
-                    "a) $\\overrightarrow{AB} = \\overrightarrow{D'C'}$.",
-                    "b) $\\overrightarrow{AB} + \\overrightarrow{AD} = \\overrightarrow{AC}$.",
-                    "c) $\\overrightarrow{AB} + \\overrightarrow{AD} + \\overrightarrow{AA'} = \\overrightarrow{AC'}$.",
-                    "d) $\\overrightarrow{AB} + \\overrightarrow{B'C'} + \\overrightarrow{DD'} = \\overrightarrow{AC}$.",
-                ],
-                [True, True, True, False],
-                "a) Trong hình hộp, $AB \\parallel D'C'$ và $AB = D'C'$, hai vectơ $\\overrightarrow{AB}, \\overrightarrow{D'C'}$ cùng hướng nên $\\overrightarrow{AB} = \\overrightarrow{D'C'} \\Rightarrow$ **Đúng**.\n"
-                "b) Theo quy tắc hình bình hành trong đáy $ABCD$, $\\overrightarrow{AB} + \\overrightarrow{AD} = \\overrightarrow{AC} \\Rightarrow$ **Đúng**.\n"
-                "c) Theo quy tắc hình hộp, $\\overrightarrow{AB} + \\overrightarrow{AD} + \\overrightarrow{AA'} = \\overrightarrow{AC'} \\Rightarrow$ **Đúng**.\n"
-                "d) Vì $\\overrightarrow{B'C'} = \\overrightarrow{AD}$ và $\\overrightarrow{DD'} = \\overrightarrow{AA'}$ nên $\\overrightarrow{AB} + \\overrightarrow{B'C'} + \\overrightarrow{DD'} = \\overrightarrow{AC'} \\neq \\overrightarrow{AC} \\Rightarrow$ **Sai**.",
-            ),
-            tf4(
-                "hieu",
-                "Trong không gian $Oxyz$, cho ba điểm $A(1; 0; 2)$, $B(2; 2; 4)$ và $C(0; 1; 0)$. Xét tính đúng sai của các mệnh đề sau:",
-                [
-                    "a) Toạ độ của vectơ $\\overrightarrow{AB}$ là $(1; 2; 2)$.",
-                    "b) Độ dài đoạn thẳng $AB$ bằng $3$.",
-                    "c) Hai vectơ $\\overrightarrow{AB}$ và $\\overrightarrow{AC}$ vuông góc với nhau.",
-                    "d) Trọng tâm $G$ của tam giác $ABC$ có toạ độ là $(1; 1; 2)$.",
-                ],
-                [True, True, False, True],
-                "a) $\\overrightarrow{AB} = (2 - 1; 2 - 0; 4 - 2) = (1; 2; 2) \\Rightarrow$ **Đúng**.\n"
-                "b) $AB = \\sqrt{1^2 + 2^2 + 2^2} = \\sqrt{9} = 3 \\Rightarrow$ **Đúng**.\n"
-                "c) Ta có $\\overrightarrow{AC} = (-1; 1; -2)$ nên $\\overrightarrow{AB} \\cdot \\overrightarrow{AC} = 1(-1) + 2(1) + 2(-2) = -3 \\neq 0 \\Rightarrow$ **Sai**.\n"
-                "d) Trọng tâm $G\\left(\\dfrac{1 + 2 + 0}{3}; \\dfrac{0 + 2 + 1}{3}; \\dfrac{2 + 4 + 0}{3}\\right) = (1; 1; 2) \\Rightarrow$ **Đúng**.",
-            ),
-            mcq(
-                "vandung",
-                "Trong không gian $Oxyz$ (đơn vị trên mỗi trục là kilômét), một trạm kiểm soát không lưu đặt tại gốc toạ độ $O(0; 0; 0)$ phát hiện hai máy bay tại các vị trí $A(3; 4; 2)$ và $B(6; 8; 14)$. Khoảng cách giữa hai máy bay tại thời điểm đó bằng:",
-                ["$13\\text{ km}$", "$12\\text{ km}$", "$15\\text{ km}$", "$10\\text{ km}$"],
-                0,
-                "Ta có $\\overrightarrow{AB} = (6 - 3; 8 - 4; 14 - 2) = (3; 4; 12)$. Khoảng cách giữa hai máy bay là $AB = \\sqrt{3^2 + 4^2 + 12^2} = \\sqrt{9 + 16 + 144} = \\sqrt{169} = \\mathbf{13\\text{ km}}$.",
-            ),
-            short(
-                "vandung",
-                "Một vật nặng trong không gian chịu tác dụng đồng thời của ba lực $\\overrightarrow{F_1} = (2; 1; 3)$, $\\overrightarrow{F_2} = (1; -3; 2)$ và $\\overrightarrow{F_3} = (0; 6; -5)$ (đơn vị trên mỗi trục là Newton). Tính độ lớn của hợp lực $\\overrightarrow{F} = \\overrightarrow{F_1} + \\overrightarrow{F_2} + \\overrightarrow{F_3}$ tác dụng lên vật.",
-                ["5"],
-                "Ta có hợp lực $\\overrightarrow{F} = \\overrightarrow{F_1} + \\overrightarrow{F_2} + \\overrightarrow{F_3} = (2 + 1 + 0; 1 - 3 + 6; 3 + 2 - 5) = (3; 4; 0)$. Độ lớn hợp lực là $|\\overrightarrow{F}| = \\sqrt{3^2 + 4^2 + 0^2} = \\mathbf{5}\\text{ N}$.",
-                unit="N",
-            ),
-        ],
-    },
-    # ===================== CHƯƠNG III =====================
-    {
-        "topic": "l12-ch03-cac-so-dac-trung-do-muc-do-phan-tan-cua-mau-so-lieu-ghep-nhom",
-        "title": "Các số đặc trưng đo mức độ phân tán của mẫu số liệu ghép nhóm",
-        "icon": "📊",
-        "description": (
-            "Chương III · SGK Toán 12 tập một: Bài 9 – Bài 10. Khoảng biến thiên và khoảng tứ phân vị "
-            "của mẫu số liệu ghép nhóm; phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm."
-        ),
-        "requirements": [
-            "Tính được khoảng biến thiên, khoảng tứ phân vị của mẫu số liệu ghép nhóm.",
-            "Tính được phương sai, độ lệch chuẩn của mẫu số liệu ghép nhóm.",
-            "Hiểu được ý nghĩa và vai trò của khoảng biến thiên, khoảng tứ phân vị, phương sai và độ lệch chuẩn trong việc đo mức độ phân tán của mẫu số liệu ghép nhóm.",
-            "Chỉ ra được những kết luận hợp lí dựa trên việc so sánh các số đặc trưng đo mức độ phân tán của hai mẫu số liệu ghép nhóm trong thực tiễn.",
-        ],
-        "definition": (
-            "- **Khoảng biến thiên của mẫu số liệu ghép nhóm**: Cho mẫu số liệu ghép nhóm có nhóm đầu tiên là $[a_1; a_2)$ và nhóm cuối cùng là $[a_k; a_{k+1})$ (các nhóm có tần số dương). Khoảng biến thiên là $R = a_{k+1} - a_1$.\n"
-            "- **Khoảng tứ phân vị của mẫu số liệu ghép nhóm**: Là hiệu giữa tứ phân vị thứ ba $Q_3$ và tứ phân vị thứ nhất $Q_1$, ký hiệu $\\Delta_Q = Q_3 - Q_1$.\n"
-            "- **Phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm**: Với cỡ mẫu $n = n_1 + n_2 + \\dots + n_k$, giá trị đại diện nhóm thứ $i$ là $x_i = \\dfrac{a_i + a_{i+1}}{2}$ và số trung bình $\\bar{x} = \\dfrac{1}{n}\\sum_{i=1}^k n_i x_i$, **phương sai** là $s^2 = \\dfrac{1}{n}\\sum_{i=1}^k n_i(x_i - \\bar{x})^2 = \\left(\\dfrac{1}{n}\\sum_{i=1}^k n_i x_i^2\\right) - (\\bar{x})^2$, còn **độ lệch chuẩn** là $s = \\sqrt{s^2}$."
-        ),
-        "theory": (
-            "### Bài 9. Khoảng biến thiên và khoảng tứ phân vị\n"
-            "- **Khoảng biến thiên** $R = a_{k+1} - a_1$: tính nhanh nhưng phụ thuộc hoàn toàn vào hai đầu mút nên dễ bị ảnh hưởng bởi các giá trị bất thường.\n"
-            "- **Tứ phân vị thứ $r$** $(r \\in \\{1; 2; 3\\})$: Giả sử nhóm $[u_m; u_{m+1})$ là nhóm đầu tiên có tần số tích luỹ lớn hơn hoặc bằng $\\dfrac{rn}{4}$. Khi đó $Q_r = u_m + \\dfrac{\\dfrac{rn}{4} - C}{n_m}(u_{m+1} - u_m)$, trong đó $n_m$ là tần số của nhóm chứa $Q_r$ và $C$ là tần số tích luỹ của các nhóm đứng trước nhóm đó.\n"
-            "- **Ý nghĩa của khoảng tứ phân vị** $\\Delta_Q = Q_3 - Q_1$: đo mức độ phân tán của $50\%$ số liệu chính giữa và **không bị ảnh hưởng** bởi các giá trị ngoại lệ.\n"
-            "### Bài 10. Phương sai và độ lệch chuẩn\n"
-            "- **Các bước tính phương sai $s^2$ và độ lệch chuẩn $s$**: (1) Xác định giá trị đại diện $x_i = \\dfrac{a_i + a_{i+1}}{2}$ của mỗi nhóm; (2) Tính số trung bình $\\bar{x} = \\dfrac{n_1x_1 + \\dots + n_kx_k}{n}$; (3) Tính $s^2 = \\dfrac{1}{n}\\sum_{i=1}^k n_i(x_i - \\bar{x})^2$ và $s = \\sqrt{s^2}$.\n"
-            "- **Ý nghĩa**: Độ lệch chuẩn $s$ có **cùng đơn vị đo** với dữ liệu gốc. Phương sai $s^2$ và độ lệch chuẩn $s$ càng nhỏ thì số liệu càng tập trung quanh số trung bình $\\bar{x}$ (độ đồng đều, độ ổn định càng cao).\n"
-            "### Bài tập cuối chương III"
-        ),
-        "formulas": [
-            G(
-                "I. Khoảng biến thiên và khoảng tứ phân vị",
-                F("Khoảng biến thiên", "$R = a_{k+1} - a_1$"),
-                F("Công thức tứ phân vị $Q_r$ $(r = 1, 2, 3)$", "$Q_r = u_m + \\dfrac{\\dfrac{rn}{4} - C}{n_m}(u_{m+1} - u_m)$"),
-                F("Khoảng tứ phân vị", "$\\Delta_Q = Q_3 - Q_1$"),
-            ),
-            G(
-                "II. Phương sai và độ lệch chuẩn",
-                F("Giá trị đại diện nhóm $[a_i; a_{i+1})$", "$x_i = \\dfrac{a_i + a_{i+1}}{2}$"),
-                F("Số trung bình mẫu ghép nhóm", "$\\bar{x} = \\dfrac{1}{n}(n_1x_1 + n_2x_2 + \\dots + n_kx_k)$"),
-                F("Phương sai mẫu ghép nhóm", "$s^2 = \\dfrac{1}{n}\\sum_{i=1}^k n_i(x_i - \\bar{x})^2 = \\dfrac{1}{n}\\sum_{i=1}^k n_ix_i^2 - (\\bar{x})^2$"),
-                F("Độ lệch chuẩn", "$s = \\sqrt{s^2}$"),
-            ),
-        ],
-        "example": (
-            "Thời gian tự học mỗi ngày (đơn vị: phút) của $20$ học sinh được ghép thành $3$ nhóm: "
-            "$[20; 40)$ có $5$ học sinh; $[40; 60)$ có $10$ học sinh; $[60; 80)$ có $5$ học sinh. "
-            "Tính khoảng biến thiên $R$, số trung bình $\\bar{x}$, phương sai $s^2$ và độ lệch chuẩn $s$."
-        ),
-        "example_answer": (
-            "- Khoảng biến thiên: $R = 80 - 20 = \\mathbf{60}$ (phút).\n"
-            "- Giá trị đại diện các nhóm: $x_1 = 30$, $x_2 = 50$, $x_3 = 70$. Số trung bình: $\\bar{x} = \\dfrac{5 \\cdot 30 + 10 \\cdot 50 + 5 \\cdot 70}{20} = \\mathbf{50}$ (phút).\n"
-            "- Phương sai: $s^2 = \\dfrac{5(30 - 50)^2 + 10(50 - 50)^2 + 5(70 - 50)^2}{20} = \\dfrac{5 \\cdot 400 + 0 + 5 \\cdot 400}{20} = \\mathbf{200}$.\n"
-            "- Độ lệch chuẩn: $s = \\sqrt{200} = \\mathbf{10\\sqrt{2}} \\approx 14,14$ (phút)."
-        ),
-        "real_life": (
-            "- Đánh giá độ ổn định của nhiệt độ giữa các vùng địa lí, độ đồng đều về khối lượng sản phẩm trên dây chuyền đóng gói tự động.\n"
-            "- So sánh mức độ biến động (rủi ro) của lợi suất đầu tư giữa các danh mục tài chính."
-        ),
-        "quiz": [
-            mcq(
-                "biet",
-                "Cho mẫu số liệu ghép nhóm có nhóm đầu tiên là $[10; 20)$ và nhóm cuối cùng là $[50; 60)$. Khoảng biến thiên $R$ của mẫu số liệu ghép nhóm đó bằng:",
-                ["$50$", "$40$", "$10$", "$60$"],
-                0,
-                "Khoảng biến thiên của mẫu số liệu ghép nhóm là $R = a_{k+1} - a_1 = 60 - 10 = \\mathbf{50}$.",
-            ),
-            mcq(
-                "biet",
-                "Cho mẫu số liệu ghép nhóm có tứ phân vị thứ nhất $Q_1 = 18$ và tứ phân vị thứ ba $Q_3 = 31$. Khoảng tứ phân vị $\\Delta_Q$ của mẫu số liệu đó bằng:",
-                ["$13$", "$49$", "$18$", "$31$"],
-                0,
-                "Theo định nghĩa, khoảng tứ phân vị là $\\Delta_Q = Q_3 - Q_1 = 31 - 18 = \\mathbf{13}$.",
-            ),
-            mcq(
-                "biet",
-                "Một mẫu số liệu ghép nhóm có phương sai bằng $36$. Độ lệch chuẩn $s$ của mẫu số liệu đó bằng:",
-                ["$6$", "$18$", "$1296$", "$12$"],
-                0,
-                "Độ lệch chuẩn là căn bậc hai số học của phương sai: $s = \\sqrt{s^2} = \\sqrt{36} = \\mathbf{6}$.",
-            ),
-            mcq(
-                "biet",
-                "Trong một mẫu số liệu ghép nhóm, giá trị đại diện của nhóm $[15; 25)$ bằng:",
-                ["$20$", "$10$", "$15$", "$25$"],
-                0,
-                "Giá trị đại diện của nhóm $[15; 25)$ là trung bình cộng hai đầu mút: $x_i = \\dfrac{15 + 25}{2} = \\mathbf{20}$.",
-            ),
-            mcq(
-                "hieu",
-                "Khảo sát điểm kiểm tra của hai lớp $12A$ và $12B$ thu được cùng số trung bình $\\bar{x}_A = \\bar{x}_B = 7,5$, nhưng độ lệch chuẩn lần lượt là $s_A = 0,8$ và $s_B = 1,5$. Khẳng định nào dưới đây đúng?",
-                [
-                    "Điểm kiểm tra của lớp $12A$ đồng đều hơn lớp $12B$.",
-                    "Điểm kiểm tra của lớp $12B$ đồng đều hơn lớp $12A$.",
-                    "Mức độ phân tán điểm của hai lớp là như nhau.",
-                    "Khoảng biến thiên của lớp $12A$ chắc chắn lớn hơn lớp $12B$.",
-                ],
-                0,
-                "Vì $s_A = 0,8 < s_B = 1,5$ nên mức độ phân tán điểm của lớp $12A$ nhỏ hơn, tức là **điểm kiểm tra của lớp $12A$ đồng đều hơn lớp $12B$**.",
-            ),
-            mcq(
-                "hieu",
-                "Cho mẫu số liệu ghép nhóm có $3$ nhóm $[0; 10)$, $[10; 20)$, $[20; 30)$ với tần số lần lượt là $2, 6, 2$. Phương sai $s^2$ của mẫu số liệu ghép nhóm trên bằng:",
-                ["$40$", "$20$", "$15$", "$100$"],
-                0,
-                "Cỡ mẫu $n = 10$; giá trị đại diện $x_1 = 5, x_2 = 15, x_3 = 25$; số trung bình $\\bar{x} = \\dfrac{2 \\cdot 5 + 6 \\cdot 15 + 2 \\cdot 25}{10} = 15$. Phương sai $s^2 = \\dfrac{2(5 - 15)^2 + 6(15 - 15)^2 + 2(25 - 15)^2}{10} = \\dfrac{200 + 0 + 200}{10} = \\mathbf{40}$.",
-            ),
-            tf4(
-                "hieu",
-                "Xét các tính chất của các số đặc trưng đo mức độ phân tán của mẫu số liệu ghép nhóm. Mỗi khẳng định sau đúng hay sai?",
-                [
-                    "a) Khoảng biến thiên $R$ chỉ phụ thuộc vào đầu mút trái của nhóm đầu tiên và đầu mút phải của nhóm cuối cùng.",
-                    "b) Khoảng tứ phân vị $\\Delta_Q$ không bị ảnh hưởng bởi các giá trị ngoại lệ (quá lớn hoặc quá nhỏ).",
-                    "c) Phương sai $s^2$ luôn có cùng đơn vị đo với đơn vị của mẫu số liệu gốc.",
-                    "d) Độ lệch chuẩn càng nhỏ thì các số liệu trong mẫu càng ít phân tán quanh giá trị trung bình.",
-                ],
-                [True, True, False, True],
-                "a) $R = a_{k+1} - a_1$ nên chỉ phụ thuộc hai đầu mút ngoài cùng $\\Rightarrow$ **Đúng**.\n"
-                "b) $\\Delta_Q = Q_3 - Q_1$ đo độ trải của $50\%$ số liệu ở giữa nên không bị ảnh hưởng bởi giá trị ngoại lệ $\\Rightarrow$ **Đúng**.\n"
-                "c) Đơn vị của phương sai là bình phương đơn vị gốc, chỉ có độ lệch chuẩn $s$ mới cùng đơn vị với dữ liệu gốc $\\Rightarrow$ **Sai**.\n"
-                "d) Độ lệch chuẩn càng nhỏ thì số liệu càng tập trung sát quanh $\\bar{x} \\Rightarrow$ **Đúng**.",
-            ),
-            tf4(
-                "hieu",
-                "Chiều cao (đơn vị: $\\text{cm}$) của $40$ cây giống được ghép thành $4$ nhóm: $[10; 20)$ có $8$ cây; $[20; 30)$ có $12$ cây; $[30; 40)$ có $12$ cây; $[40; 50)$ có $8$ cây. Xét tính đúng sai của các mệnh đề sau:",
-                [
-                    "a) Khoảng biến thiên của mẫu số liệu ghép nhóm là $R = 40\\text{ cm}$.",
-                    "b) Số trung bình của mẫu số liệu ghép nhóm là $\\bar{x} = 30\\text{ cm}$.",
-                    "c) Tứ phân vị thứ nhất của mẫu số liệu là $Q_1 = 20\\text{ cm}$.",
-                    "d) Phương sai của mẫu số liệu ghép nhóm là $s^2 = 110$.",
-                ],
-                [True, True, False, True],
-                "a) $R = 50 - 10 = 40\\text{ cm} \\Rightarrow$ **Đúng**.\n"
-                "b) Giá trị đại diện: $15, 25, 35, 45$. Ta có $\\bar{x} = \\dfrac{8 \\cdot 15 + 12 \\cdot 25 + 12 \\cdot 35 + 8 \\cdot 45}{40} = 30\\text{ cm} \\Rightarrow$ **Đúng**.\n"
-                "c) Ta có $\\dfrac{n}{4} = 10$; nhóm $[20; 30)$ chứa $Q_1$ với $C = 8, n_2 = 12 \\Rightarrow Q_1 = 20 + \\dfrac{10 - 8}{12} \\cdot 10 = \\dfrac{65}{3} \\neq 20 \\Rightarrow$ **Sai**.\n"
-                "d) $s^2 = \\dfrac{8(15 - 30)^2 + 12(25 - 30)^2 + 12(35 - 30)^2 + 8(45 - 30)^2}{40} = \\dfrac{1800 + 300 + 300 + 1800}{40} = 110 \\Rightarrow$ **Đúng**.",
-            ),
-            mcq(
-                "vandung",
-                "Cho mẫu số liệu ghép nhóm gồm $20$ số liệu được chia thành $3$ nhóm: $[0; 10)$ có tần số $5$; $[10; 20)$ có tần số $10$; $[20; 30)$ có tần số $5$. Khoảng tứ phân vị $\\Delta_Q$ của mẫu số liệu ghép nhóm này bằng:",
-                ["$10$", "$15$", "$20$", "$5$"],
-                0,
-                "Cỡ mẫu $n = 20$. Ta có $\\dfrac{n}{4} = 5$ nên nhóm $[0; 10)$ chứa $Q_1$: $Q_1 = 0 + \\dfrac{5 - 0}{5} \\cdot 10 = 10$. Tiếp theo $\\dfrac{3n}{4} = 15$, tần số tích luỹ nhóm $1$ là $5$, nhóm $2$ là $15$ nên $Q_3$ thuộc nhóm $[10; 20)$: $Q_3 = 10 + \\dfrac{15 - 5}{10} \\cdot 10 = 20$. Vậy $\\Delta_Q = Q_3 - Q_1 = 20 - 10 = \\mathbf{10}$.",
-            ),
-            short(
-                "vandung",
-                "Khối lượng (đơn vị: gam) của $10$ quả táo được chia thành $2$ nhóm: nhóm $[180; 200)$ có $5$ quả và nhóm $[200; 220)$ có $5$ quả. Tính độ lệch chuẩn $s$ của mẫu số liệu ghép nhóm trên.",
-                ["10"],
-                "Giá trị đại diện hai nhóm là $x_1 = 190$ và $x_2 = 210$. Số trung bình $\\bar{x} = \\dfrac{5 \\cdot 190 + 5 \\cdot 210}{10} = 200$. Phương sai $s^2 = \\dfrac{5(190 - 200)^2 + 5(210 - 200)^2}{10} = 100$. Vậy độ lệch chuẩn là $s = \\sqrt{100} = \\mathbf{10}$ gam.",
-                unit="gam",
-            ),
-        ],
-    },
-    # ===================== CHƯƠNG IV =====================
-    {
-        "topic": "l12-ch04-nguyen-ham-va-tich-phan",
-        "game_title": "Nguyên Hàm & Tích Phân: Tổng tích lũy thực tiễn",
-        "game_description": "Vận dụng nguyên hàm và công thức tích phân Newton – Leibniz để tính quãng đường chuyển động, diện tích hình phẳng và thể tích vật thể.",
-        "game_type": "game_nguyen_ham",
-        "title": "Nguyên hàm và tích phân",
-        "icon": "📐",
-        "description": (
-            "Chương IV · SGK Toán 12 tập hai: Bài 11 – Bài 13. Nguyên hàm; "
-            "tích phân; ứng dụng hình học của tích phân."
-        ),
-        "requirements": [
-            "Nhận biết được khái niệm nguyên hàm của một hàm số và giải thích được tính chất cơ bản của nguyên hàm.",
-            "Xác định được nguyên hàm của một số hàm số sơ cấp thường gặp (hàm luỹ thừa, hàm phân thức $\\dfrac{1}{x}$, hàm lượng giác, hàm mũ).",
-            "Nhận biết được định nghĩa và các tính chất của tích phân; tính được tích phân trong những trường hợp đơn giản bằng công thức Newton – Leibniz.",
-            "Sử dụng được tích phân để tính diện tích của một số hình phẳng giới hạn bởi các đường cong và tính thể tích của một số hình khối tròn xoay trong không gian.",
-            "Vận dụng được nguyên hàm và tích phân để giải quyết một số bài toán thực tiễn (tính quãng đường từ vận tốc, lưu lượng nước, công cơ học).",
-        ],
-        "definition": (
-            "- **Nguyên hàm**: Cho hàm số $f(x)$ xác định trên khoảng $K$. Hàm số $F(x)$ được gọi là **nguyên hàm** của $f(x)$ trên $K$ nếu $F'(x) = f(x)$ với mọi $x \\in K$. Họ tất cả các nguyên hàm của $f(x)$ trên $K$ là $\\int f(x)\\,\\text{d}x = F(x) + C$ $(C \\in \\mathbb{R})$.\n"
-            "- **Tích phân (Công thức Newton – Leibniz)**: Cho $f(x)$ là hàm số liên tục trên đoạn $[a; b]$ và $F(x)$ là một nguyên hàm của $f(x)$ trên $[a; b]$. Khi đó $\\int_a^b f(x)\\,\\text{d}x = F(x)\\Big|_a^b = F(b) - F(a)$.\n"
-            "- **Diện tích hình phẳng**: Diện tích hình phẳng giới hạn bởi đồ thị $y = f(x)$, $y = g(x)$ (liên tục trên $[a; b]$) và hai đường thẳng $x = a$, $x = b$ là $S = \\int_a^b |f(x) - g(x)|\\,\\text{d}x$.\n"
-            "- **Thể tích khối tròn xoay**: Quay hình phẳng giới hạn bởi $y = f(x)$, trục $Ox$, $x = a$, $x = b$ quanh trục $Ox$ tạo thành khối tròn xoay có thể tích $V = \\pi \\int_a^b [f(x)]^2\\,\\text{d}x$."
-        ),
-        "theory": (
-            "### Bài 11. Nguyên hàm\n"
-            "- **Tính chất cơ bản của nguyên hàm**: $\\int kf(x)\\,\\text{d}x = k\\int f(x)\\,\\text{d}x$ $(k \\neq 0)$ và $\\int [f(x) \\pm g(x)]\\,\\text{d}x = \\int f(x)\\,\\text{d}x \\pm \\int g(x)\\,\\text{d}x$.\n"
-            "- **Bảng nguyên hàm các hàm số sơ cấp**: $\\int x^\\alpha\\,\\text{d}x = \\dfrac{x^{\\alpha+1}}{\\alpha + 1} + C$ $(\\alpha \\neq -1)$; $\\int \\dfrac{1}{x}\\,\\text{d}x = \\ln|x| + C$; $\\int e^x\\,\\text{d}x = e^x + C$; $\\int a^x\\,\\text{d}x = \\dfrac{a^x}{\\ln a} + C$; $\\int \\cos x\\,\\text{d}x = \\sin x + C$; $\\int \\sin x\\,\\text{d}x = -\\cos x + C$; $\\int \\dfrac{1}{\\cos^2 x}\\,\\text{d}x = \\tan x + C$; $\\int \\dfrac{1}{\\sin^2 x}\\,\\text{d}x = -\\cot x + C$.\n"
-            "### Bài 12. Tích phân\n"
-            "- **Quy ước và tính chất**: $\\int_a^a f(x)\\,\\text{d}x = 0$; $\\int_a^b f(x)\\,\\text{d}x = -\\int_b^a f(x)\\,\\text{d}x$; tính chất chèn cận $\\int_a^b f(x)\\,\\text{d}x = \\int_a^c f(x)\\,\\text{d}x + \\int_c^b f(x)\\,\\text{d}x$.\n"
-            "- **Ý nghĩa vật lí**: Nếu vật chuyển động thẳng với vận tốc $v(t) \\geq 0$ thì quãng đường vật đi được từ thời điểm $t = a$ đến $t = b$ là $s = \\int_a^b v(t)\\,\\text{d}t$.\n"
-            "### Bài 13. Ứng dụng hình học của tích phân\n"
-            "- **Diện tích hình phẳng**: Giới hạn bởi $y = f(x)$, trục $Ox$, $x = a, x = b$ là $S = \\int_a^b |f(x)|\\,\\text{d}x$. Giới hạn bởi hai đồ thị $y = f(x)$ và $y = g(x)$ từ $x = a$ đến $x = b$ là $S = \\int_a^b |f(x) - g(x)|\\,\\text{d}x$.\n"
-            "- **Thể tích vật thể**: Cắt vật thể bởi mặt phẳng vuông góc trục $Ox$ tại $x \\in [a; b]$ được thiết diện có diện tích $S(x)$ liên tục thì $V = \\int_a^b S(x)\\,\\text{d}x$. Đặc biệt, khối tròn xoay quanh $Ox$ có $V = \\pi \\int_a^b [f(x)]^2\\,\\text{d}x$.\n"
-            "### Bài tập cuối chương IV"
-        ),
-        "formulas": [
-            G(
-                "I. Bảng nguyên hàm cơ bản",
-                F("Nguyên hàm hàm luỹ thừa", "$\\int x^\\alpha\\,\\text{d}x = \\dfrac{x^{\\alpha+1}}{\\alpha + 1} + C \\quad (\\alpha \\neq -1) \\quad ; \\quad \\int \\dfrac{1}{x}\\,\\text{d}x = \\ln|x| + C$"),
-                F("Nguyên hàm hàm mũ", "$\\int e^x\\,\\text{d}x = e^x + C \\quad ; \\quad \\int a^x\\,\\text{d}x = \\dfrac{a^x}{\\ln a} + C \\quad (0 < a \\neq 1)$"),
-                F("Nguyên hàm hàm lượng giác", "$\\int \\cos x\\,\\text{d}x = \\sin x + C \\quad ; \\quad \\int \\sin x\\,\\text{d}x = -\\cos x + C$"),
-                F("Nguyên hàm $\\tan, \\cot$", "$\\int \\dfrac{1}{\\cos^2 x}\\,\\text{d}x = \\tan x + C \\quad ; \\quad \\int \\dfrac{1}{\\sin^2 x}\\,\\text{d}x = -\\cot x + C$"),
-            ),
-            G(
-                "II. Định nghĩa và tính chất tích phân",
-                F("Công thức Newton – Leibniz", "$\\int_a^b f(x)\\,\\text{d}x = F(x)\\Big|_a^b = F(b) - F(a)$"),
-                F("Tính chất tuyến tính", "$\\int_a^b [kf(x) \\pm lg(x)]\\,\\text{d}x = k\\int_a^b f(x)\\,\\text{d}x \\pm l\\int_a^b g(x)\\,\\text{d}x$"),
-                F("Tính chất chèn cận", "$\\int_a^b f(x)\\,\\text{d}x = \\int_a^c f(x)\\,\\text{d}x + \\int_c^b f(x)\\,\\text{d}x$"),
-            ),
-            G(
-                "III. Ứng dụng hình học và vật lí của tích phân",
-                F("Diện tích hình phẳng", "$S = \\int_a^b |f(x) - g(x)|\\,\\text{d}x$"),
-                F("Thể tích theo thiết diện và khối tròn xoay", "$V = \\int_a^b S(x)\\,\\text{d}x \\quad ; \\quad V_{Ox} = \\pi \\int_a^b [f(x)]^2\\,\\text{d}x$"),
-                F("Quãng đường chuyển động", "$s = \\int_{t_1}^{t_2} v(t)\\,\\text{d}t \\quad (\\text{khi } v(t) \\geq 0)$"),
-            ),
-        ],
-        "example": "Tính tích phân $I = \\int_0^2 (3x^2 - 2x + 1)\\,\\text{d}x$ và diện tích hình phẳng giới hạn bởi đồ thị hàm số $y = x^2 - 4$, trục hoành $Ox$ và hai đường thẳng $x = 0$, $x = 2$.",
-        "example_answer": (
-            "- Tính tích phân: $I = \\left(x^3 - x^2 + x\\right)\\Big|_0^2 = (8 - 4 + 2) - 0 = \\mathbf{6}$.\n"
-            "- Trên đoạn $[0; 2]$, ta có $x^2 - 4 \\leq 0$ nên diện tích hình phẳng là $S = \\int_0^2 |x^2 - 4|\\,\\text{d}x = \\int_0^2 (4 - x^2)\\,\\text{d}x = \\left(4x - \\dfrac{x^3}{3}\\right)\\Big|_0^2 = 8 - \\dfrac{8}{3} = \\mathbf{\\dfrac{16}{3}}$."
-        ),
-        "real_life": (
-            "- Tính quãng đường ô tô đi được khi phanh gấp từ biểu thức vận tốc $v(t)$.\n"
-            "- Tính diện tích mặt cắt cổng chào hình parabol và thể tích của bình gốm, chi tiết máy có dạng khối tròn xoay."
-        ),
-        "quiz": [
-            mcq(
-                "biet",
-                "Họ tất cả các nguyên hàm của hàm số $f(x) = 4x^3 + 2x$ trên $\\mathbb{R}$ là:",
-                ["$x^4 + x^2 + C$", "$12x^2 + 2 + C$", "$4x^4 + 2x^2 + C$", "$\\dfrac{x^4}{4} + x^2 + C$"],
-                0,
-                "Ta có $\\int (4x^3 + 2x)\\,\\text{d}x = 4 \\cdot \\dfrac{x^4}{4} + 2 \\cdot \\dfrac{x^2}{2} + C = \\mathbf{x^4 + x^2 + C}$.",
-            ),
-            mcq(
-                "biet",
-                "Trên khoảng $(0; +\\infty)$, họ tất cả các nguyên hàm của hàm số $f(x) = e^x + \\dfrac{1}{x}$ là:",
-                ["$e^x + \\ln x + C$", "$e^x - \\dfrac{1}{x^2} + C$", "$e^x + \\dfrac{1}{x^2} + C$", "$xe^x + \\ln x + C$"],
-                0,
-                "Với $x > 0$, ta có $\\int \\left(e^x + \\dfrac{1}{x}\\right)\\text{d}x = \\mathbf{e^x + \\ln x + C}$.",
-            ),
-            mcq(
-                "biet",
-                "Giá trị của tích phân $\\int_0^1 (3x^2 + 1)\\,\\text{d}x$ bằng:",
-                ["$2$", "$1$", "$4$", "$3$"],
-                0,
-                "Ta có $\\int_0^1 (3x^2 + 1)\\,\\text{d}x = (x^3 + x)\\Big|_0^1 = (1 + 1) - 0 = \\mathbf{2}$.",
-            ),
-            mcq(
-                "biet",
-                "Cho hàm số $y = f(x)$ liên tục trên đoạn $[a; b]$. Diện tích $S$ của hình phẳng giới hạn bởi đồ thị hàm số $y = f(x)$, trục hoành $Ox$ và hai đường thẳng $x = a$, $x = b$ được tính theo công thức:",
-                [
-                    "$S = \\int_a^b |f(x)|\\,\\text{d}x$",
-                    "$S = \\pi \\int_a^b [f(x)]^2\\,\\text{d}x$",
-                    "$S = \\int_a^b f(x)\\,\\text{d}x$",
-                    "$S = \\pi \\int_a^b |f(x)|\\,\\text{d}x$",
-                ],
-                0,
-                "Theo định nghĩa, diện tích hình phẳng giới hạn bởi $y = f(x)$, trục $Ox$, $x = a, x = b$ là **$S = \\int_a^b |f(x)|\\,\\text{d}x$**.",
-            ),
-            mcq(
-                "hieu",
-                "Cho biết $\\int_1^3 f(x)\\,\\text{d}x = 5$ và $\\int_1^3 g(x)\\,\\text{d}x = -2$. Giá trị của $\\int_1^3 [2f(x) - 3g(x)]\\,\\text{d}x$ bằng:",
-                ["$16$", "$4$", "$10$", "$-16$"],
-                0,
-                "Theo tính chất tuyến tính của tích phân: $\\int_1^3 [2f(x) - 3g(x)]\\,\\text{d}x = 2\\int_1^3 f(x)\\,\\text{d}x - 3\\int_1^3 g(x)\\,\\text{d}x = 2 \\cdot 5 - 3 \\cdot (-2) = \\mathbf{16}$.",
-            ),
-            mcq(
-                "hieu",
-                "Cho hàm số $f(x) = 2x + 3$ có một nguyên hàm là $F(x)$ thoả mãn $F(1) = 6$. Giá trị của $F(2)$ bằng:",
-                ["$12$", "$10$", "$8$", "$14$"],
-                0,
-                "Ta có $F(x) = \\int (2x + 3)\\,\\text{d}x = x^2 + 3x + C$. Do $F(1) = 6 \\Rightarrow 1 + 3 + C = 6 \\Rightarrow C = 2$. Vậy $F(2) = 2^2 + 3 \\cdot 2 + 2 = \\mathbf{12}$.",
-            ),
-            tf4(
-                "hieu",
-                "Cho hai hàm số $f(x) = 3x^2 - 2x$ và $g(x) = \\cos x$. Xét tính đúng sai của các mệnh đề sau:",
-                [
-                    "a) Một nguyên hàm của hàm số $f(x)$ trên $\\mathbb{R}$ là $F(x) = x^3 - x^2$.",
-                    "b) Họ tất cả các nguyên hàm của hàm số $g(x)$ là $\\int \\cos x\\,\\text{d}x = -\\sin x + C$.",
-                    "c) Tích phân $\\int_0^2 f(x)\\,\\text{d}x$ có giá trị bằng $4$.",
-                    "d) Tích phân $\\int_0^{\\pi} g(x)\\,\\text{d}x$ có giá trị bằng $0$.",
-                ],
-                [True, False, True, True],
-                "a) $(x^3 - x^2)' = 3x^2 - 2x = f(x) \\Rightarrow$ **Đúng**.\n"
-                "b) $\\int \\cos x\\,\\text{d}x = \\sin x + C$ (không có dấu trừ) $\\Rightarrow$ **Sai**.\n"
-                "c) $\\int_0^2 (3x^2 - 2x)\\,\\text{d}x = (x^3 - x^2)\\Big|_0^2 = 8 - 4 = 4 \\Rightarrow$ **Đúng**.\n"
-                "d) $\\int_0^{\\pi} \\cos x\\,\\text{d}x = \\sin x\\Big|_0^{\\pi} = \\sin\\pi - \\sin 0 = 0 \\Rightarrow$ **Đúng**.",
-            ),
-            tf4(
-                "hieu",
-                "Xét hình phẳng $(H)$ giới hạn bởi đồ thị hàm số $y = x^2$, trục hoành $Ox$ và hai đường thẳng $x = 0$, $x = 2$. Xét tính đúng sai của các mệnh đề sau:",
-                [
-                    "a) Diện tích của hình phẳng $(H)$ được tính bởi công thức $S = \\int_0^2 x^2\\,\\text{d}x$.",
-                    "b) Giá trị diện tích của hình phẳng $(H)$ bằng $\\dfrac{8}{3}$.",
-                    "c) Thể tích khối tròn xoay khi quay $(H)$ quanh trục $Ox$ là $V = \\int_0^2 x^4\\,\\text{d}x$.",
-                    "d) Thể tích khối tròn xoay khi quay $(H)$ quanh trục $Ox$ bằng $\\dfrac{32\\pi}{5}$.",
-                ],
-                [True, True, False, True],
-                "a) Vì $x^2 \\geq 0$ trên $[0; 2]$ nên $S = \\int_0^2 |x^2|\\,\\text{d}x = \\int_0^2 x^2\\,\\text{d}x \\Rightarrow$ **Đúng**.\n"
-                "b) $S = \\dfrac{x^3}{3}\\Big|_0^2 = \\dfrac{8}{3} \\Rightarrow$ **Đúng**.\n"
-                "c) Công thức thể tích khối tròn xoay quanh $Ox$ phải có thừa số $\\pi$: $V = \\pi \\int_0^2 x^4\\,\\text{d}x \\Rightarrow$ **Sai**.\n"
-                "d) $V = \\pi \\cdot \\dfrac{x^5}{5}\\Big|_0^2 = \\dfrac{32\\pi}{5} \\Rightarrow$ **Đúng**.",
-            ),
-            mcq(
-                "vandung",
-                "Diện tích hình phẳng giới hạn bởi parabol $y = x^2 - 2x$ và đường thẳng $y = x$ bằng:",
-                ["$\\dfrac{9}{2}$", "$\\dfrac{7}{2}$", "$9$", "$\\dfrac{9}{4}$"],
-                0,
-                "Phương trình hoành độ giao điểm: $x^2 - 2x = x \\Leftrightarrow x^2 - 3x = 0 \\Leftrightarrow x = 0$ hoặc $x = 3$. Trên $[0; 3]$, ta có $x \\geq x^2 - 2x$ nên diện tích cần tìm là $S = \\int_0^3 (3x - x^2)\\,\\text{d}x = \\left(\\dfrac{3x^2}{2} - \\dfrac{x^3}{3}\\right)\\Big|_0^3 = \\dfrac{27}{2} - 9 = \\mathbf{\\dfrac{9}{2}}$.",
-            ),
-            short(
-                "vandung",
-                "Một ô tô đang chạy với vận tốc $20\\text{ m}\\cdot\\text{s}^{-1}$ thì người lái đạp phanh; từ thời điểm đó ô tô chuyển động chậm dần đều với vận tốc $v(t) = 20 - 5t$ (đơn vị: $\\text{m}\\cdot\\text{s}^{-1}$), trong đó $t$ là thời gian tính bằng giây kể từ lúc bắt đầu đạp phanh. Hỏi từ lúc đạp phanh đến khi dừng hẳn, ô tô còn di chuyển được bao nhiêu mét?",
-                ["40"],
-                "Khi ô tô dừng hẳn thì $v(t) = 0 \\Leftrightarrow 20 - 5t = 0 \\Leftrightarrow t = 4\\text{ (s)}$. Quãng đường ô tô đi được từ lúc đạp phanh đến khi dừng hẳn là $s = \\int_0^4 (20 - 5t)\\,\\text{d}t = \\left(20t - \\dfrac{5t^2}{2}\\right)\\Big|_0^4 = 80 - 40 = \\mathbf{40}\\text{ (m)}$.",
-                unit="m",
-            ),
-        ],
-    },
-    # ===================== CHƯƠNG V =====================
-    {
-        "topic": "l12-ch05-phuong-phap-toa-do-trong-khong-gian",
-        "game_title": "Không gian Oxyz: Phương trình Mặt phẳng, Đường thẳng & Mặt cầu",
-        "game_description": "Mô hình hóa không gian ba chiều Oxyz để xác định tọa độ, khoảng cách, góc và vị trí tương đối giữa mặt phẳng, đường thẳng và mặt cầu.",
-        "game_type": "game_toa_do_oxyz",
-        "title": "Phương pháp toạ độ trong không gian",
-        "icon": "🌐",
-        "description": (
-            "Chương V · SGK Toán 12 tập hai: Bài 14 – Bài 17. Phương trình mặt phẳng; "
-            "phương trình đường thẳng trong không gian; công thức tính góc trong không gian; phương trình mặt cầu."
-        ),
-        "requirements": [
-            "Nhận biết được khái niệm vectơ pháp tuyến của mặt phẳng, viết được phương trình tổng quát của mặt phẳng và tính được khoảng cách từ một điểm đến một mặt phẳng.",
-            "Nhận biết được vectơ chỉ phương của đường thẳng; viết được phương trình tham số và phương trình chính tắc của đường thẳng trong không gian; xét được vị trí tương đối giữa hai đường thẳng.",
-            "Vận dụng được công thức tính góc giữa hai đường thẳng, góc giữa đường thẳng và mặt phẳng, góc giữa hai mặt phẳng trong không gian.",
-            "Nhận biết được phương trình mặt cầu, xác định được tâm và bán kính mặt cầu, lập được phương trình mặt cầu và giải quyết các bài toán thực tiễn liên quan (vùng phủ sóng radar, định vị vệ tinh).",
-        ],
-        "definition": (
-            "- **Phương trình tổng quát của mặt phẳng**: Trong không gian $Oxyz$, mọi mặt phẳng đều có phương trình dạng $Ax + By + Cz + D = 0$ với $A^2 + B^2 + C^2 > 0$, nhận $\\overrightarrow{n} = (A; B; C)$ làm một **vectơ pháp tuyến**.\n"
-            "- **Phương trình đường thẳng**: Đường thẳng $\\Delta$ đi qua $M_0(x_0; y_0; z_0)$ và có **vectơ chỉ phương** $\\overrightarrow{u} = (a; b; c) \\neq \\overrightarrow{0}$ có phương trình tham số $x = x_0 + at, y = y_0 + bt, z = z_0 + ct$ $(t \\in \\mathbb{R})$ và phương trình chính tắc $\\dfrac{x - x_0}{a} = \\dfrac{y - y_0}{b} = \\dfrac{z - z_0}{c}$ (khi $abc \\neq 0$).\n"
-            "- **Phương trình mặt cầu**: Mặt cầu $(S)$ tâm $I(a; b; c)$, bán kính $R > 0$ có phương trình $(x - a)^2 + (y - b)^2 + (z - c)^2 = R^2$."
-        ),
-        "theory": (
-            "### Bài 14. Phương trình mặt phẳng\n"
-            "- **Tích có hướng của hai vectơ**: Cho $\\overrightarrow{u} = (x_1; y_1; z_1)$ và $\\overrightarrow{v} = (x_2; y_2; z_2)$. Vectơ $\\left[\\overrightarrow{u}, \\overrightarrow{v}\\right] = (y_1z_2 - z_1y_2; z_1x_2 - x_1z_2; x_1y_2 - y_1x_2)$ vuông góc với cả $\\overrightarrow{u}$ và $\\overrightarrow{v}$. Nếu mặt phẳng $(\\alpha)$ có cặp vectơ chỉ phương không cùng phương $\\overrightarrow{u}, \\overrightarrow{v}$ thì $\\overrightarrow{n} = \\left[\\overrightarrow{u}, \\overrightarrow{v}\\right]$ là một vectơ pháp tuyến.\n"
-            "- **Mặt phẳng qua $M_0(x_0; y_0; z_0)$ có vectơ pháp tuyến $\\overrightarrow{n} = (A; B; C)$**: $A(x - x_0) + B(y - y_0) + C(z - z_0) = 0$.\n"
-            "- **Phương trình mặt phẳng theo đoạn chắn**: Đi qua $A(a; 0; 0)$, $B(0; b; 0)$, $C(0; 0; c)$ với $abc \\neq 0$ là $\\dfrac{x}{a} + \\dfrac{y}{b} + \\dfrac{z}{c} = 1$.\n"
-            "- **Khoảng cách từ điểm $M_0(x_0; y_0; z_0)$ đến mặt phẳng $(P): Ax + By + Cz + D = 0$**: $d(M_0, (P)) = \\dfrac{|Ax_0 + By_0 + Cz_0 + D|}{\\sqrt{A^2 + B^2 + C^2}}$.\n"
-            "### Bài 15. Phương trình đường thẳng trong không gian\n"
-            "- **Vị trí tương đối của hai đường thẳng**: Trong không gian, hai đường thẳng có thể song song, trùng nhau, cắt nhau hoặc chéo nhau.\n"
-            "### Bài 16. Công thức tính góc trong không gian\n"
-            "- **Góc giữa hai đường thẳng $\\Delta_1, \\Delta_2$** (có vectơ chỉ phương $\\overrightarrow{u_1}, \\overrightarrow{u_2}$): $\\cos(\\Delta_1, \\Delta_2) = \\dfrac{|\\overrightarrow{u_1} \\cdot \\overrightarrow{u_2}|}{|\\overrightarrow{u_1}| \\cdot |\\overrightarrow{u_2}|}$.\n"
-            "- **Góc giữa đường thẳng $\\Delta$** (vectơ chỉ phương $\\overrightarrow{u}$) và **mặt phẳng $(P)$** (vectơ pháp tuyến $\\overrightarrow{n}$): $\\sin(\\Delta, (P)) = \\dfrac{|\\overrightarrow{u} \\cdot \\overrightarrow{n}|}{|\\overrightarrow{u}| \\cdot |\\overrightarrow{n}|}$.\n"
-            "- **Góc giữa hai mặt phẳng $(P_1), (P_2)$** (vectơ pháp tuyến $\\overrightarrow{n_1}, \\overrightarrow{n_2}$): $\\cos((P_1), (P_2)) = \\dfrac{|\\overrightarrow{n_1} \\cdot \\overrightarrow{n_2}|}{|\\overrightarrow{n_1}| \\cdot |\\overrightarrow{n_2}|}$.\n"
-            "### Bài 17. Phương trình mặt cầu\n"
-            "- **Dạng khai triển**: Phương trình $x^2 + y^2 + z^2 - 2ax - 2by - 2cz + d = 0$ là phương trình mặt cầu khi và chỉ khi $a^2 + b^2 + c^2 - d > 0$; khi đó tâm là $I(a; b; c)$ và bán kính $R = \\sqrt{a^2 + b^2 + c^2 - d}$.\n"
-            "### Bài tập cuối chương V"
-        ),
-        "formulas": [
-            G(
-                "I. Phương trình mặt phẳng và khoảng cách",
-                F("Phương trình tổng quát mặt phẳng", "$Ax + By + Cz + D = 0 \\quad (\\overrightarrow{n} = (A; B; C))$"),
-                F("Phương trình theo đoạn chắn", "$\\dfrac{x}{a} + \\dfrac{y}{b} + \\dfrac{z}{c} = 1 \\quad (abc \\neq 0)$"),
-                F("Khoảng cách từ điểm đến mặt phẳng", "$d(M_0, (P)) = \\dfrac{|Ax_0 + By_0 + Cz_0 + D|}{\\sqrt{A^2 + B^2 + C^2}}$"),
-            ),
-            G(
-                "II. Phương trình đường thẳng và góc trong không gian",
-                F("Phương trình chính tắc đường thẳng", "$\\dfrac{x - x_0}{a} = \\dfrac{y - y_0}{b} = \\dfrac{z - z_0}{c} \\quad (\\overrightarrow{u} = (a; b; c))$"),
-                F("Góc giữa hai đường thẳng", "$\\cos(\\Delta_1, \\Delta_2) = \\dfrac{|\\overrightarrow{u_1} \\cdot \\overrightarrow{u_2}|}{|\\overrightarrow{u_1}| \\cdot |\\overrightarrow{u_2}|}$"),
-                F("Góc giữa đường thẳng và mặt phẳng", "$\\sin(\\Delta, (P)) = \\dfrac{|\\overrightarrow{u} \\cdot \\overrightarrow{n}|}{|\\overrightarrow{u}| \\cdot |\\overrightarrow{n}|}$"),
-                F("Góc giữa hai mặt phẳng", "$\\cos((P_1), (P_2)) = \\dfrac{|\\overrightarrow{n_1} \\cdot \\overrightarrow{n_2}|}{|\\overrightarrow{n_1}| \\cdot |\\overrightarrow{n_2}|}$"),
-            ),
-            G(
-                "III. Phương trình mặt cầu",
-                F("Phương trình chính tắc mặt cầu", "$(x - a)^2 + (y - b)^2 + (z - c)^2 = R^2$"),
-                F("Bán kính từ dạng khai triển", "$R = \\sqrt{a^2 + b^2 + c^2 - d} \\quad (a^2 + b^2 + c^2 - d > 0)$"),
-            ),
-        ],
-        "example": (
-            "Trong không gian $Oxyz$, cho điểm $I(1; -2; 3)$ và mặt phẳng $(P): 2x - 2y + z + 3 = 0$. "
-            "Tính khoảng cách từ $I$ đến $(P)$ và viết phương trình mặt cầu $(S)$ tâm $I$ tiếp xúc với mặt phẳng $(P)$."
-        ),
-        "example_answer": (
-            "- Khoảng cách từ tâm $I(1; -2; 3)$ đến mặt phẳng $(P)$ là:\n"
-            "  $d(I, (P)) = \\dfrac{|2 \\cdot 1 - 2 \\cdot (-2) + 1 \\cdot 3 + 3|}{\\sqrt{2^2 + (-2)^2 + 1^2}} = \\dfrac{12}{3} = \\mathbf{4}$.\n"
-            "- Vì mặt cầu $(S)$ tiếp xúc với $(P)$ nên bán kính mặt cầu là $R = d(I, (P)) = 4$.\n"
-            "- Phương trình mặt cầu $(S)$ là: $\\mathbf{(x - 1)^2 + (y + 2)^2 + (z - 3)^2 = 16}$."
-        ),
-        "real_life": (
-            "- Xác định vùng phủ sóng hình cầu của trạm radar hàng không hoặc trạm phát sóng viễn thông.\n"
-            "- Kiểm tra hành trình bay thẳng của máy bay trong không gian xem có đi vào vùng phủ sóng hoặc vùng cấm bay hay không."
-        ),
-        "quiz": [
-            mcq(
-                "biet",
-                "Trong không gian $Oxyz$, mặt phẳng $(P): 2x - 3y + 5z - 7 = 0$ có một vectơ pháp tuyến là:",
-                [
-                    "$\\overrightarrow{n} = (2; -3; 5)$",
-                    "$\\overrightarrow{n} = (2; 3; 5)$",
-                    "$\\overrightarrow{n} = (-3; 5; -7)$",
-                    "$\\overrightarrow{n} = (2; -3; -7)$",
-                ],
-                0,
-                "Mặt phẳng $Ax + By + Cz + D = 0$ nhận $\\overrightarrow{n} = (A; B; C) = \\mathbf{(2; -3; 5)}$ làm một vectơ pháp tuyến.",
-            ),
-            mcq(
-                "biet",
-                "Trong không gian $Oxyz$, đường thẳng $d: \\dfrac{x - 1}{2} = \\dfrac{y + 2}{-1} = \\dfrac{z - 3}{4}$ có một vectơ chỉ phương là:",
-                [
-                    "$\\overrightarrow{u} = (2; -1; 4)$",
-                    "$\\overrightarrow{u} = (1; -2; 3)$",
-                    "$\\overrightarrow{u} = (-1; 2; -3)$",
-                    "$\\overrightarrow{u} = (2; 1; 4)$",
-                ],
-                0,
-                "Đường thẳng có phương trình chính tắc $\\dfrac{x - x_0}{a} = \\dfrac{y - y_0}{b} = \\dfrac{z - z_0}{c}$ nhận $\\overrightarrow{u} = (a; b; c) = \\mathbf{(2; -1; 4)}$ làm vectơ chỉ phương.",
-            ),
-            mcq(
-                "biet",
-                "Trong không gian $Oxyz$, mặt cầu $(S): (x - 1)^2 + (y + 3)^2 + (z - 2)^2 = 9$ có tâm $I$ và bán kính $R$ lần lượt là:",
-                [
-                    "$I(1; -3; 2), R = 3$",
-                    "$I(-1; 3; -2), R = 3$",
-                    "$I(1; -3; 2), R = 9$",
-                    "$I(1; 3; 2), R = 3$",
-                ],
-                0,
-                "Từ phương trình $(x - 1)^2 + (y + 3)^2 + (z - 2)^2 = 3^2$, suy ra tâm **$I(1; -3; 2)$** và bán kính **$R = 3$**.",
-            ),
-            mcq(
-                "biet",
-                "Trong không gian $Oxyz$, khoảng cách từ điểm $M(1; 2; 1)$ đến mặt phẳng $(P): 2x - y + 2z + 5 = 0$ bằng:",
-                ["$3$", "$9$", "$2$", "$4$"],
-                0,
-                "Ta có $d(M, (P)) = \\dfrac{|2 \\cdot 1 - 1 \\cdot 2 + 2 \\cdot 1 + 5|}{\\sqrt{2^2 + (-1)^2 + 2^2}} = \\dfrac{7 + 2}{3} = \\mathbf{3}$.",
-            ),
-            mcq(
-                "hieu",
-                "Trong không gian $Oxyz$, phương trình mặt phẳng đi qua điểm $A(1; 0; -2)$ và vuông góc với đường thẳng $d: \\dfrac{x}{2} = \\dfrac{y - 1}{1} = \\dfrac{z + 3}{-3}$ là:",
-                [
-                    "$2x + y - 3z - 8 = 0$",
-                    "$2x + y - 3z + 8 = 0$",
-                    "$x - 2z - 5 = 0$",
-                    "$2x - y - 3z - 8 = 0$",
-                ],
-                0,
-                "Mặt phẳng vuông góc với $d$ nên nhận vectơ chỉ phương của $d$ là $\\overrightarrow{n} = (2; 1; -3)$ làm vectơ pháp tuyến. Phương trình mặt phẳng là $2(x - 1) + 1(y - 0) - 3(z + 2) = 0 \\Leftrightarrow \\mathbf{2x + y - 3z - 8 = 0}$.",
-            ),
-            mcq(
-                "hieu",
-                "Trong không gian $Oxyz$, góc giữa đường thẳng $d: \\dfrac{x}{1} = \\dfrac{y}{1} = \\dfrac{z}{0}$ và mặt phẳng $(P): x + y + \\sqrt{2}z - 1 = 0$ bằng:",
-                ["$45^\\circ$", "$30^\\circ$", "$60^\\circ$", "$90^\\circ$"],
-                0,
-                "Đường thẳng $d$ có $\\overrightarrow{u} = (1; 1; 0)$ với $|\\overrightarrow{u}| = \\sqrt{2}$; mặt phẳng $(P)$ có $\\overrightarrow{n} = (1; 1; \\sqrt{2})$ với $|\\overrightarrow{n}| = 2$. Ta có $\\sin(d, (P)) = \\dfrac{|1 \\cdot 1 + 1 \\cdot 1 + 0 \\cdot \\sqrt{2}|}{\\sqrt{2} \\cdot 2} = \\dfrac{2}{2\\sqrt{2}} = \\dfrac{\\sqrt{2}}{2} \\Rightarrow (d, (P)) = \\mathbf{45^\\circ}$.",
-            ),
-            tf4(
-                "hieu",
-                "Trong không gian $Oxyz$, cho điểm $A(1; 2; -1)$ và mặt phẳng $(P): x - 2y + 2z + 6 = 0$. Xét tính đúng sai của các mệnh đề sau:",
-                [
-                    "a) Vectơ $\\overrightarrow{n} = (1; -2; 2)$ là một vectơ pháp tuyến của mặt phẳng $(P)$.",
-                    "b) Điểm $A(1; 2; -1)$ thuộc mặt phẳng $(P)$.",
-                    "c) Khoảng cách từ gốc toạ độ $O(0; 0; 0)$ đến mặt phẳng $(P)$ bằng $2$.",
-                    "d) Đường thẳng đi qua $A$ và vuông góc với $(P)$ có phương trình tham số là $x = 1 + t, y = 2 - 2t, z = -1 + 2t$.",
-                ],
-                [True, False, True, True],
-                "a) Hệ số của $x, y, z$ trong $(P)$ là $(1; -2; 2) \\Rightarrow$ **Đúng**.\n"
-                "b) Thay toạ độ $A$ vào $(P)$: $1 - 2 \\cdot 2 + 2 \\cdot (-1) + 6 = 1 \\neq 0$ nên $A \\notin (P) \\Rightarrow$ **Sai**.\n"
-                "c) $d(O, (P)) = \\dfrac{|6|}{\\sqrt{1^2 + (-2)^2 + 2^2}} = \\dfrac{6}{3} = 2 \\Rightarrow$ **Đúng**.\n"
-                "d) Đường thẳng qua $A(1; 2; -1)$ vuông góc với $(P)$ nhận $\\overrightarrow{n} = (1; -2; 2)$ làm vectơ chỉ phương nên có phương trình $x = 1 + t, y = 2 - 2t, z = -1 + 2t \\Rightarrow$ **Đúng**.",
-            ),
-            tf4(
-                "hieu",
-                "Trong không gian $Oxyz$, cho phương trình $x^2 + y^2 + z^2 - 2x + 4y - 6z - 11 = 0$ $(1)$. Xét tính đúng sai của các mệnh đề sau:",
-                [
-                    "a) Phương trình $(1)$ là phương trình của một mặt cầu $(S)$.",
-                    "b) Tâm của mặt cầu $(S)$ có toạ độ là $I(-1; 2; -3)$.",
-                    "c) Bán kính của mặt cầu $(S)$ bằng $5$.",
-                    "d) Điểm $M(1; 1; 7)$ nằm trên mặt cầu $(S)$.",
-                ],
-                [True, False, True, True],
-                "a) Ta có $a = 1, b = -2, c = 3, d = -11 \\Rightarrow a^2 + b^2 + c^2 - d = 1 + 4 + 9 + 11 = 25 > 0$ nên $(1)$ là phương trình mặt cầu $\\Rightarrow$ **Đúng**.\n"
-                "b) Tâm mặt cầu là $I(1; -2; 3)$ chứ không phải $(-1; 2; -3) \\Rightarrow$ **Sai**.\n"
-                "c) Bán kính $R = \\sqrt{25} = 5 \\Rightarrow$ **Đúng**.\n"
-                "d) Ta có $IM = \\sqrt{(1 - 1)^2 + (1 + 2)^2 + (7 - 3)^2} = \\sqrt{0 + 9 + 16} = 5 = R$ nên $M \\in (S) \\Rightarrow$ **Đúng**.",
-            ),
-            mcq(
-                "vandung",
-                "Trong không gian $Oxyz$, mặt phẳng $(P)$ đi qua ba điểm $A(2; 0; 0)$, $B(0; 3; 0)$, $C(0; 0; 6)$ có phương trình tổng quát là:",
-                [
-                    "$3x + 2y + z - 6 = 0$",
-                    "$2x + 3y + 6z - 6 = 0$",
-                    "$3x + 2y + z + 6 = 0$",
-                    "$x + 2y + 3z - 6 = 0$",
-                ],
-                0,
-                "Theo phương trình mặt phẳng theo đoạn chắn: $\\dfrac{x}{2} + \\dfrac{y}{3} + \\dfrac{z}{6} = 1 \\Leftrightarrow \\mathbf{3x + 2y + z - 6 = 0}$.",
-            ),
-            short(
-                "vandung",
-                "Trong không gian $Oxyz$ (đơn vị trên mỗi trục là kilômét), một trạm radar đặt tại điểm $I(2; 3; 1)$ có bán kính quét sóng tối đa là $10\\text{ km}$. Một thiết bị bay ở vị trí $M(8; 11; 1)$. Hỏi khoảng cách từ thiết bị bay $M$ đến trạm radar $I$ bằng bao nhiêu kilômét?",
-                ["10"],
-                "Khoảng cách từ $M(8; 11; 1)$ đến trạm radar $I(2; 3; 1)$ là $IM = \\sqrt{(8 - 2)^2 + (11 - 3)^2 + (1 - 1)^2} = \\sqrt{36 + 64 + 0} = \\sqrt{100} = \\mathbf{10}\\text{ km}$.",
-                unit="km",
-            ),
-        ],
-    },
-    # ===================== CHƯƠNG VI =====================
-    {
-        "topic": "l12-ch06-xac-suat-co-dieu-kien",
-        "game_title": "Tổng ôn Toán THPT & Mô hình hóa Xác suất Bayes thực tiễn",
-        "game_description": "Vận dụng xác suất có điều kiện, công thức xác suất toàn phần và công thức Bayes để phân tích quyết định trong y học, kiểm định chất lượng và dự báo.",
-        "game_type": "game_on_tap_thpt",
-        "title": "Xác suất có điều kiện",
-        "icon": "🎲",
-        "description": (
-            "Chương VI · SGK Toán 12 tập hai: Bài 18 – Bài 19. Xác suất có điều kiện; "
-            "công thức xác suất toàn phần và công thức Bayes."
-        ),
-        "requirements": [
-            "Nhận biết được khái niệm xác suất có điều kiện và giải thích được ý nghĩa của xác suất có điều kiện trong những tình huống thực tiễn quen thuộc.",
-            "Sử dụng được công thức tính xác suất có điều kiện $P(A|B) = \\dfrac{P(AB)}{P(B)}$ và công thức nhân xác suất $P(AB) = P(B) \\cdot P(A|B)$.",
-            "Mô tả được công thức xác suất toàn phần, công thức Bayes thông qua bảng dữ liệu thống kê $2 \\times 2$ và sơ đồ hình cây.",
-            "Sử dụng được công thức xác suất toàn phần và công thức Bayes để tính xác suất trong một số bài toán thực tiễn (chẩn đoán y khoa, kiểm định chất lượng sản phẩm).",
-        ],
-        "definition": (
-            "- **Xác suất có điều kiện**: Cho hai biến cố $A$ và $B$ với $P(B) > 0$. Xác suất của biến cố $A$ với điều kiện biến cố $B$ đã xảy ra được ký hiệu là $P(A|B)$ và xác định bởi công thức $P(A|B) = \\dfrac{P(AB)}{P(B)}$.\n"
-            "- **Công thức nhân xác suất**: Với hai biến cố $A, B$ bất kỳ, $P(AB) = P(B) \\cdot P(A|B) = P(A) \\cdot P(B|A)$ (khi $P(A) > 0, P(B) > 0$).\n"
-            "- **Công thức xác suất toàn phần**: Cho hai biến cố $A$ và $B$ với $0 < P(B) < 1$, khi đó $P(A) = P(B) \\cdot P(A|B) + P(\\overline{B}) \\cdot P(A|\\overline{B})$.\n"
-            "- **Công thức Bayes**: Với $P(A) > 0$ và $0 < P(B) < 1$, ta có $P(B|A) = \\dfrac{P(B) \\cdot P(A|B)}{P(A)} = \\dfrac{P(B) \\cdot P(A|B)}{P(B) \\cdot P(A|B) + P(\\overline{B}) \\cdot P(A|\\overline{B})}$."
-        ),
-        "theory": (
-            "### Bài 18. Xác suất có điều kiện\n"
-            "- **Tính chất**: Với $P(B) > 0$, ta luôn có $0 \\leq P(A|B) \\leq 1$ và $P(\\overline{A}|B) = 1 - P(A|B)$.\n"
-            "- **Liên hệ với biến cố độc lập**: Hai biến cố $A$ và $B$ (với $0 < P(A) < 1, 0 < P(B) < 1$) độc lập khi và chỉ khi $P(A|B) = P(A) = P(A|\\overline{B})$, tương đương với $P(AB) = P(A) \\cdot P(B)$.\n"
-            "- **Tính trực tiếp trong không gian mẫu đồng khả năng**: $P(A|B) = \\dfrac{n(AB)}{n(B)}$, trong đó $n(B)$ và $n(AB)$ là số phần tử của $B$ và $AB$.\n"
-            "### Bài 19. Công thức xác suất toàn phần và công thức Bayes\n"
-            "- **Sử dụng sơ đồ hình cây**: Nhánh cấp $1$ biểu diễn biến cố điều kiện $B$ và $\\overline{B}$ với xác suất $P(B), P(\\overline{B})$; nhánh cấp $2$ biểu diễn $A$ và $\\overline{A}$ với xác suất có điều kiện $P(A|B), P(A|\\overline{B})$.\n"
-            "- **Ý nghĩa của công thức Bayes**: Cho phép cập nhật xác suất xảy ra của nguyên nhân $B$ sau khi đã quan sát thấy kết quả $A$ xảy ra.\n"
-            "### Bài tập cuối chương VI"
-        ),
-        "formulas": [
-            G(
-                "I. Xác suất có điều kiện và công thức nhân",
-                F("Định nghĩa xác suất có điều kiện", "$P(A|B) = \\dfrac{P(AB)}{P(B)} \\quad (P(B) > 0)$"),
-                F("Trường hợp đồng khả năng", "$P(A|B) = \\dfrac{n(AB)}{n(B)}$"),
-                F("Biến cố đối có điều kiện", "$P(\\overline{A}|B) = 1 - P(A|B)$"),
-                F("Công thức nhân xác suất", "$P(AB) = P(B) \\cdot P(A|B) = P(A) \\cdot P(B|A)$"),
-            ),
-            G(
-                "II. Công thức xác suất toàn phần và công thức Bayes",
-                F("Công thức xác suất toàn phần", "$P(A) = P(B) \\cdot P(A|B) + P(\\overline{B}) \\cdot P(A|\\overline{B})$"),
-                F("Công thức Bayes", "$P(B|A) = \\dfrac{P(B) \\cdot P(A|B)}{P(B) \\cdot P(A|B) + P(\\overline{B}) \\cdot P(A|\\overline{B})}$"),
-            ),
-        ],
-        "example": (
-            "Một nhà máy có hai dây chuyền sản xuất $I$ và $II$ cung cấp lần lượt $60\%$ và $40\%$ tổng sản lượng. "
-            "Tỉ lệ phế phẩm của dây chuyền $I$ là $2\%$ và của dây chuyền $II$ là $3\%$. Chọn ngẫu nhiên một sản phẩm của nhà máy. "
-            "Tính xác suất để sản phẩm đó là phế phẩm; nếu biết sản phẩm đó là phế phẩm, tính xác suất nó do dây chuyền $I$ sản xuất."
-        ),
-        "example_answer": (
-            "Gọi $B$ là biến cố “Sản phẩm do dây chuyền $I$ sản xuất” $\\Rightarrow P(B) = 0,6$ và $P(\\overline{B}) = 0,4$. Gọi $A$ là biến cố “Sản phẩm là phế phẩm” $\\Rightarrow P(A|B) = 0,02$ và $P(A|\\overline{B}) = 0,03$.\n"
-            "- Theo công thức xác suất toàn phần: $P(A) = 0,6 \\cdot 0,02 + 0,4 \\cdot 0,03 = 0,012 + 0,012 = \\mathbf{0,024}$.\n"
-            "- Theo công thức Bayes, xác suất phế phẩm đó do dây chuyền $I$ sản xuất là: $P(B|A) = \\dfrac{0,6 \\cdot 0,02}{0,024} = \\dfrac{0,012}{0,024} = \\mathbf{0,5}$."
-        ),
-        "real_life": (
-            "- Đánh giá độ chính xác thực tế của xét nghiệm y tế (xác suất một người thực sự mắc bệnh khi có kết quả xét nghiệm dương tính).\n"
-            "- Truy xuất nguồn gốc lỗi sản phẩm giữa các phân xưởng sản xuất và lọc thư rác (spam filter) trong trí tuệ nhân tạo."
-        ),
-        "quiz": [
-            mcq(
-                "biet",
-                "Cho hai biến cố $A$ và $B$ với $P(B) > 0$. Công thức tính xác suất của biến cố $A$ với điều kiện biến cố $B$ đã xảy ra là:",
-                [
-                    "$P(A|B) = \\dfrac{P(AB)}{P(B)}$",
-                    "$P(A|B) = \\dfrac{P(AB)}{P(A)}$",
-                    "$P(A|B) = P(A) \\cdot P(B)$",
-                    "$P(A|B) = \\dfrac{P(A)}{P(B)}$",
-                ],
-                0,
-                "Theo định nghĩa xác suất có điều kiện, với $P(B) > 0$ ta có **$P(A|B) = \\dfrac{P(AB)}{P(B)}$**.",
-            ),
-            mcq(
-                "biet",
-                "Cho hai biến cố $A$ và $B$ thoả mãn $P(B) = 0,5$ và $P(AB) = 0,2$. Giá trị của $P(A|B)$ bằng:",
-                ["$0,4$", "$0,1$", "$0,7$", "$0,25$"],
-                0,
-                "Áp dụng công thức $P(A|B) = \\dfrac{P(AB)}{P(B)} = \\dfrac{0,2}{0,5} = \\mathbf{0,4}$.",
-            ),
-            mcq(
-                "biet",
-                "Cho hai biến cố $A$ và $B$ thoả mãn $P(A) = 0,6$ và $P(B|A) = 0,5$. Xác suất của biến cố giao $AB$ bằng:",
-                ["$0,3$", "$0,1$", "$0,8$", "$0,55$"],
-                0,
-                "Theo công thức nhân xác suất: $P(AB) = P(A) \\cdot P(B|A) = 0,6 \\cdot 0,5 = \\mathbf{0,3}$.",
-            ),
-            mcq(
-                "biet",
-                "Cho hai biến cố $A$ và $B$ với $P(B) > 0$ và $P(A|B) = 0,35$. Khi đó $P(\\overline{A}|B)$ bằng:",
-                ["$0,65$", "$0,35$", "$0,5$", "$0,75$"],
-                0,
-                "Theo tính chất của xác suất có điều kiện: $P(\\overline{A}|B) = 1 - P(A|B) = 1 - 0,35 = \\mathbf{0,65}$.",
-            ),
-            mcq(
-                "hieu",
-                "Một lớp học có $40$ học sinh, trong đó có $25$ học sinh thích môn Toán, $20$ học sinh thích môn Vật lí và $15$ học sinh thích cả hai môn Toán và Vật lí. Chọn ngẫu nhiên một học sinh trong lớp. Biết rằng học sinh đó thích môn Toán, xác suất để học sinh đó cũng thích môn Vật lí bằng:",
-                ["$\\dfrac{3}{5}$", "$\\dfrac{3}{4}$", "$\\dfrac{3}{8}$", "$\\dfrac{1}{2}$"],
-                0,
-                "Gọi $A$ là biến cố “Học sinh thích môn Vật lí”, $B$ là biến cố “Học sinh thích môn Toán”. Ta có $n(B) = 25$ và $n(AB) = 15$, suy ra $P(A|B) = \\dfrac{n(AB)}{n(B)} = \\dfrac{15}{25} = \\mathbf{\\dfrac{3}{5}}$.",
-            ),
-            mcq(
-                "hieu",
-                "Cho hai biến cố $A$ và $B$ thoả mãn $P(B) = 0,4$, $P(A|B) = 0,7$ và $P(A|\\overline{B}) = 0,2$. Theo công thức xác suất toàn phần, xác suất $P(A)$ bằng:",
-                ["$0,4$", "$0,45$", "$0,9$", "$0,28$"],
-                0,
-                "Ta có $P(\\overline{B}) = 1 - P(B) = 0,6$. Áp dụng công thức xác suất toàn phần: $P(A) = P(B) \\cdot P(A|B) + P(\\overline{B}) \\cdot P(A|\\overline{B}) = 0,4 \\cdot 0,7 + 0,6 \\cdot 0,2 = 0,28 + 0,12 = \\mathbf{0,4}$.",
-            ),
-            tf4(
-                "hieu",
-                "Một hộp có $6$ bi trắng và $4$ bi đen cùng kích thước. Lấy ngẫu nhiên lần lượt $2$ viên bi không hoàn lại. Gọi $A$ là biến cố “Viên bi thứ nhất màu trắng” và $B$ là biến cố “Viên bi thứ hai màu trắng”. Xét tính đúng sai của các mệnh đề sau:",
-                [
-                    "a) Xác suất của biến cố $A$ là $P(A) = \\dfrac{3}{5}$.",
-                    "b) Biết viên thứ nhất màu trắng, xác suất viên thứ hai màu trắng là $P(B|A) = \\dfrac{5}{9}$.",
-                    "c) Xác suất cả hai viên bi lấy ra đều màu trắng là $P(AB) = \\dfrac{1}{3}$.",
-                    "d) Hai biến cố $A$ và $B$ là hai biến cố độc lập.",
-                ],
-                [True, True, True, False],
-                "a) $P(A) = \\dfrac{6}{10} = \\dfrac{3}{5} \\Rightarrow$ **Đúng**.\n"
-                "b) Khi $A$ đã xảy ra, trong hộp còn $9$ bi gồm $5$ bi trắng nên $P(B|A) = \\dfrac{5}{9} \\Rightarrow$ **Đúng**.\n"
-                "c) $P(AB) = P(A) \\cdot P(B|A) = \\dfrac{3}{5} \\cdot \\dfrac{5}{9} = \\dfrac{1}{3} \\Rightarrow$ **Đúng**.\n"
-                "d) Vì lấy không hoàn lại nên $P(B|A) = \\dfrac{5}{9} \\neq P(B|\\overline{A}) = \\dfrac{6}{9}$, do đó $A$ và $B$ không độc lập $\\Rightarrow$ **Sai**.",
-            ),
-            tf4(
-                "hieu",
-                "Cho hai biến cố $A$ và $B$ thoả mãn $P(B) = 0,8$, $P(\\overline{B}) = 0,2$, $P(A|B) = 0,5$ và $P(A|\\overline{B}) = 0,5$. Xét tính đúng sai của các mệnh đề sau:",
-                [
-                    "a) Xác suất $P(AB)$ bằng $0,4$.",
-                    "b) Theo công thức xác suất toàn phần, $P(A) = 0,5$.",
-                    "c) Theo công thức Bayes, $P(B|A) = 0,6$.",
-                    "d) Hai biến cố $A$ và $B$ là hai biến cố độc lập.",
-                ],
-                [True, True, False, True],
-                "a) $P(AB) = P(B) \\cdot P(A|B) = 0,8 \\cdot 0,5 = 0,4 \\Rightarrow$ **Đúng**.\n"
-                "b) $P(A) = 0,8 \\cdot 0,5 + 0,2 \\cdot 0,5 = 0,4 + 0,1 = 0,5 \\Rightarrow$ **Đúng**.\n"
-                "c) Theo công thức Bayes: $P(B|A) = \\dfrac{P(AB)}{P(A)} = \\dfrac{0,4}{0,5} = 0,8 \\neq 0,6 \\Rightarrow$ **Sai**.\n"
-                "d) Vì $P(AB) = 0,4 = P(A) \\cdot P(B)$ nên $A$ và $B$ độc lập $\\Rightarrow$ **Đúng**.",
-            ),
-            mcq(
-                "vandung",
-                "Một căn bệnh có tỉ lệ người mắc trong cộng đồng là $1\%$. Một xét nghiệm chẩn đoán cho kết quả dương tính với $99\%$ người mắc bệnh và cho kết quả dương tính giả với $1\%$ người không mắc bệnh. Chọn ngẫu nhiên một người đi xét nghiệm và có kết quả dương tính. Xác suất để người đó thực sự mắc bệnh bằng:",
-                ["$0,5$", "$0,99$", "$0,9$", "$0,01$"],
-                0,
-                "Gọi $B$ là biến cố “Người đó mắc bệnh” $\\Rightarrow P(B) = 0,01$ và $P(\\overline{B}) = 0,99$. Gọi $A$ là biến cố “Xét nghiệm dương tính” $\\Rightarrow P(A|B) = 0,99$ và $P(A|\\overline{B}) = 0,01$. Theo công thức Bayes: $P(B|A) = \\dfrac{0,01 \\cdot 0,99}{0,01 \\cdot 0,99 + 0,99 \\cdot 0,01} = \\mathbf{0,5}$.",
-            ),
-            short(
-                "vandung",
-                "Có hai hộp đựng bi: hộp $I$ có $4$ bi đỏ và $6$ bi xanh; hộp $II$ có $7$ bi đỏ và $3$ bi xanh. Tung một đồng xu cân đối và đồng chất: nếu xuất hiện mặt sấp thì lấy ngẫu nhiên $1$ viên bi từ hộp $I$, nếu xuất hiện mặt ngửa thì lấy ngẫu nhiên $1$ viên bi từ hộp $II$. Biết rằng viên bi lấy ra có màu đỏ, xác suất để viên bi đó được lấy từ hộp $II$ bằng $\\dfrac{a}{b}$ (với $\\dfrac{a}{b}$ là phân số tối giản, $a, b \\in \\mathbb{N}^*$). Tính giá trị biểu thức $T = a + b$.",
-                ["18"],
-                "Gọi $B_1, B_2$ lần lượt là biến cố chọn hộp $I$, hộp $II$ $\\Rightarrow P(B_1) = P(B_2) = 0,5$. Gọi $A$ là biến cố “Lấy được bi đỏ” $\\Rightarrow P(A|B_1) = 0,4$ và $P(A|B_2) = 0,7$. Theo công thức Bayes: $P(B_2|A) = \\dfrac{0,5 \\cdot 0,7}{0,5 \\cdot 0,4 + 0,5 \\cdot 0,7} = \\dfrac{7}{11}$. Suy ra $a = 7, b = 11 \\Rightarrow T = a + b = \\mathbf{18}$.",
-            ),
-        ],
-    },
-]
+LESSONS = [{'topic': 'l12-ch01-ung-dung-dao-ham',
+  'context_title': 'Chương I: Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số',
+  'context': 'Chương I · SGK Toán 12: Đơn điệu, cực trị, giá trị lớn nhất - nhỏ nhất, tiệm cận và khảo sát '
+             'vẽ đồ thị hàm số.',
+  'title': 'Bài 1: Tính đơn điệu và cực trị của hàm số',
+  'icon': '📈',
+  'description': 'Mối liên hệ giữa dấu của đạo hàm với tính đồng biến, nghịch biến và điểm cực đại, cực tiểu '
+                 'của hàm số.',
+  'requirements': ['Nhận biết được tính đồng biến, nghịch biến của hàm số trên một khoảng dựa vào dấu của '
+                   "đạo hàm cấp một $f'(x)$.",
+                   'Xác định được điểm cực đại, điểm cực tiểu, giá trị cực đại, giá trị cực tiểu của hàm số '
+                   "thông qua bảng biến thiên hoặc đạo hàm cấp hai $f''(x)$.",
+                   'Vận dụng điều kiện đơn điệu và cực trị để giải các bài toán chứa tham số $m$.'],
+  'definition': 'Cho hàm số $y = f(x)$ xác định trên khoảng $K$. Hàm số đồng biến trên $K$ nếu $\\forall '
+                'x_1, x_2 \\in K, x_1 < x_2 \\Rightarrow f(x_1) < f(x_2)$; nghịch biến trên $K$ nếu $x_1 < '
+                'x_2 \\Rightarrow f(x_1) > f(x_2)$. Điểm $x_0 \\in K$ gọi là điểm cực đại (hoặc cực tiểu) '
+                'nếu tồn tại lân cận $(a; b) \\subset K$ chứa $x_0$ sao cho $f(x) < f(x_0)$ (hoặc $f(x) > '
+                'f(x_0)$) với mọi $x \\in (a; b) \\setminus \\{x_0\\}$.',
+  'theory': "1. Định lí đơn điệu: Nếu $f'(x) > 0$ với mọi $x \\in K$ thì $f(x)$ đồng biến trên $K$; nếu "
+            "$f'(x) < 0$ với mọi $x \\in K$ thì $f(x)$ nghịch biến trên $K$ (nếu $f'(x) = 0$ chỉ tại hữu hạn "
+            "điểm thì tính đơn điệu vẫn giữ nguyên). 2. Dấu hiệu cực trị: Nếu $f'(x)$ đổi dấu từ dương sang "
+            'âm khi qua $x_0$ thì $x_0$ là điểm cực đại; đổi dấu từ âm sang dương khi qua $x_0$ thì $x_0$ là '
+            "điểm cực tiểu. 3. Quy tắc 2: Nếu $f'(x_0) = 0$ và $f''(x_0) < 0$ thì $x_0$ là điểm cực đại; nếu "
+            "$f'(x_0) = 0$ và $f''(x_0) > 0$ thì $x_0$ là điểm cực tiểu.",
+  'formulas': [{'category': 'Điều kiện đơn điệu và cực trị',
+                'items': [{'name': 'Đồng biến trên khoảng',
+                           'formula': "$f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm)"},
+                          {'name': 'Nghịch biến trên khoảng',
+                           'formula': "$f'(x) \\le 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm)"},
+                          {'name': 'Điều kiện cần của cực trị',
+                           'formula': '$f(x)$ đạt cực trị tại $x_0$ và có đạo hàm tại $x_0 \\Rightarrow '
+                                      "f'(x_0) = 0$"},
+                          {'name': 'Cực trị bằng đạo hàm cấp hai',
+                           'formula': "$f'(x_0) = 0, f''(x_0) < 0 \\Rightarrow x_{CĐ}; \\quad f'(x_0) = 0, "
+                                      "f''(x_0) > 0 \\Rightarrow x_{CT}$"}]}],
+  'example': 'Tìm các khoảng đơn điệu và cực trị của hàm số $y = x^3 - 3x^2 + 2$.',
+  'example_answer': "Tập xác định $D = \\mathbb{R}$. Ta có $y' = 3x^2 - 6x = 3x(x - 2)$. Cho $y' = 0 "
+                    "\\Leftrightarrow x = 0$ hoặc $x = 2$. Bảng xét dấu $y'$: trên $(-\\infty; 0)$ và $(2; "
+                    "+\\infty)$ ta có $y' > 0$ nên hàm số đồng biến; trên $(0; 2)$ ta có $y' < 0$ nên hàm số "
+                    'nghịch biến. Hàm số đạt cực đại tại $x = 0$, giá trị cực đại $y_{CĐ} = 2$; đạt cực tiểu '
+                    'tại $x = 2$, giá trị cực tiểu $y_{CT} = -2$.',
+  'real_life': 'Phân tích tốc độ tăng trưởng kinh tế, xác định thời điểm lợi nhuận đạt đỉnh (cực đại) hoặc '
+               'chi phí vận hành xuống mức thấp nhất (cực tiểu).',
+  'quiz': [{'level': 'biet',
+            'type': 'mcq',
+            'q': 'Cho hàm số $y = f(x)$ có đạo hàm trên khoảng $(a; b)$. Mệnh đề nào dưới đây đúng?',
+            'options': ["Nếu $f'(x) > 0$ với mọi $x \\in (a; b)$ thì hàm số đồng biến trên $(a; b)$.",
+                        "Nếu $f'(x) > 0$ với mọi $x \\in (a; b)$ thì hàm số nghịch biến trên $(a; b)$.",
+                        "Nếu $f(x)$ đồng biến trên $(a; b)$ thì $f'(x) < 0$ với mọi $x \\in (a; b)$.",
+                        "Nếu $f'(x) = 0$ tại $x_0 \\in (a; b)$ thì $x_0$ luôn là điểm cực trị."],
+            'answer': 0,
+            'solution': "Theo định lí về tính đơn điệu, nếu $f'(x) > 0, \\forall x \\in (a; b)$ thì hàm số "
+                        '$f(x)$ đồng biến trên khoảng $(a; b)$.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Hàm số $y = x^3 - 3x + 1$ nghịch biến trên khoảng nào dưới đây?',
+            'options': ['$(-\\infty; -1)$', '$(-1; 1)$', '$(1; +\\infty)$', '$(0; 2)$'],
+            'answer': 1,
+            'solution': "Ta có $y' = 3x^2 - 3$. Giải $y' < 0 \\Leftrightarrow 3(x^2 - 1) < 0 "
+                        '\\Leftrightarrow -1 < x < 1$. Vậy hàm số nghịch biến trên $(-1; 1)$.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Theo nội dung trọng tâm của **Bài 1: Tính đơn điệu và cực trị của hàm số**, công thức hoặc '
+                 'quy tắc nào sau đây biểu diễn đúng **Đồng biến trên khoảng**?',
+            'options': ["$f'(x) \\le 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm)",
+                        "$f(x)$ đạt cực trị tại $x_0$ và có đạo hàm tại $x_0 \\Rightarrow f'(x_0) = 0$",
+                        "$f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm)",
+                        "$f'(x_0) = 0, f''(x_0) < 0 \\Rightarrow x_{CĐ}; \\quad f'(x_0) = 0, f''(x_0) > 0 "
+                        '\\Rightarrow x_{CT}$'],
+            'answer': 2,
+            'solution': 'Theo bảng công thức trọng tâm của Bài 1: Tính đơn điệu và cực trị của hàm số, '
+                        "**Đồng biến trên khoảng** được xác định bởi: $f'(x) \\ge 0, \\forall x \\in K$ (dấu "
+                        '$=$ tại hữu hạn điểm).'},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': "Trong **Bài 1: Tính đơn điệu và cực trị của hàm số**, nội dung/biểu thức $f'(x) \\le 0, "
+                 '\\forall x \\in K$ (dấu $=$ tại hữu hạn điểm) là quy tắc hoặc công thức của mục nào sau '
+                 'đây?',
+            'options': ['Đồng biến trên khoảng',
+                        'Điều kiện cần của cực trị',
+                        'Cực trị bằng đạo hàm cấp hai',
+                        'Nghịch biến trên khoảng'],
+            'answer': 3,
+            'solution': "Trong Bài 1: Tính đơn điệu và cực trị của hàm số, biểu thức/quy tắc $f'(x) \\le 0, "
+                        '\\forall x \\in K$ (dấu $=$ tại hữu hạn điểm) chính là nội dung của **Nghịch biến '
+                        'trên khoảng**.'},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Giá trị cực đại của hàm số $y = -x^4 + 2x^2 + 3$ bằng bao nhiêu?',
+            'options': ['$4$', '$3$', '$1$', '$2$'],
+            'answer': 0,
+            'solution': "Ta có $y' = -4x^3 + 4x = -4x(x^2 - 1) = 0 \\Leftrightarrow x \\in \\{-1; 0; 1\\}$. "
+                        'Đạo hàm đổi dấu từ dương sang âm qua $x = -1$ và $x = 1$, tại đó $y_{CĐ} = -1 + 2 + '
+                        '3 = 4$.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Khi học **Bài 1: Tính đơn điệu và cực trị của hàm số** (Chương I: Ứng dụng đạo hàm để khảo '
+                 'sát và vẽ đồ thị hàm số), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản '
+                 'chất kiến thức của bài?',
+            'options': ['Nhận biết được khái niệm giá trị lớn nhất $\\max_D f(x)$ và giá trị nhỏ nhất '
+                        '$\\min_D f(x)$ của hàm số trên tập $D$.',
+                        'Nhận biết được tính đồng biến, nghịch biến của hàm số trên một khoảng dựa vào dấu '
+                        "của đạo hàm cấp một $f'(x)$.",
+                        'Tìm được giá trị lớn nhất và giá trị nhỏ nhất của hàm số liên tục trên một đoạn '
+                        '$[a; b]$ hoặc một khoảng.',
+                        'Vận dụng vào các bài toán tối ưu hóa hình học và thực tế.'],
+            'answer': 1,
+            'solution': 'Theo yêu cầu cần đạt của Bài 1: Tính đơn điệu và cực trị của hàm số: Nhận biết được '
+                        'tính đồng biến, nghịch biến của hàm số trên một khoảng dựa vào dấu của đạo hàm cấp '
+                        "một $f'(x)$."},
+           {'level': 'hieu',
+            'type': 'tf4',
+            'q': 'Cho hàm số $y = f(x) = x^3 - 3x^2 - 9x + 5$ xác định trên $\\mathbb{R}$. Xét tính đúng sai '
+                 'của các mệnh đề sau:',
+            'statements': ["Đạo hàm của hàm số đã cho là $f'(x) = 3x^2 - 6x - 9$.",
+                           'Hàm số nghịch biến trên khoảng $(-1; 3)$.',
+                           'Điểm cực đại của hàm số là $x = 3$.',
+                           'Tổng giá trị cực đại và giá trị cực tiểu của hàm số bằng $-12$.'],
+            'answer': [True, True, False, True],
+            'solution': "a) Đúng vì $f'(x) = 3x^2 - 6x - 9$. b) Đúng vì $f'(x) < 0 \\Leftrightarrow -1 < x < "
+                        "3$. c) Sai vì $f'(x)$ đổi dấu từ dương sang âm tại $x = -1$ nên $x_{CĐ} = -1$, còn "
+                        '$x = 3$ là điểm cực tiểu. d) Đúng vì $y_{CĐ} = f(-1) = 10$ và $y_{CT} = f(3) = '
+                        '-22$, tổng là $10 + (-22) = -12$.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'tf4',
+            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 1: Tính đơn điệu và cực '
+                 'trị của hàm số**:',
+            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được tính đồng biến, '
+                           "nghịch biến của hàm số trên một khoảng dựa vào dấu của đạo hàm cấp một $f'(x)$.",
+                           "Quy tắc/công thức **Đồng biến trên khoảng** trong bài được xác định bởi: $f'(x) "
+                           '\\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm).',
+                           'Trong mọi trường hợp, **Đồng biến trên khoảng** luôn được tính bằng công thức '
+                           '$\\max_{[a; b]} f(x) = \\max \\{f(a), f(b), f(x_i)\\}$ với $x_i \\in (a; b), '
+                           "f'(x_i) = 0$ (thuộc Giá trị lớn nhất trên đoạn) mà không cần điều kiện của Bài "
+                           '1: Tính đơn điệu và cực trị của hàm số.',
+                           'Với bài toán minh họa: “Tìm các khoảng đơn điệu và cực trị của hàm số $y = x^3 - '
+                           "3x^2 + 2$.”, lời giải đúng là: Tập xác định $D = \\mathbb{R}$. Ta có $y' = 3x^2 "
+                           "- 6x = 3x(x - 2)$. Cho $y' = 0 \\Leftrightarrow x = 0$ hoặc $x = 2$. Bảng xét "
+                           "dấu $y'$: trên..."],
+            'answer': [True, True, False, True],
+            'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 1: Tính đơn điệu và cực trị của hàm số. b) '
+                        "**Đúng** theo công thức trọng tâm **Đồng biến trên khoảng** ($f'(x) \\ge 0, "
+                        '\\forall x \\in K$ (dấu $=$ tại hữu hạn điểm)). c) **Sai** vì $\\max_{[a; b]} f(x) '
+                        "= \\max \\{f(a), f(b), f(x_i)\\}$ với $x_i \\in (a; b), f'(x_i) = 0$ là công thức "
+                        'của nội dung khác, không phải quy tắc chung của **Đồng biến trên khoảng**. d) '
+                        '**Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+           {'level': 'vandung',
+            'type': 'mcq',
+            'q': 'Vận dụng kiến thức **Bài 1: Tính đơn điệu và cực trị của hàm số** để giải quyết tình huống '
+                 'sau: Tìm các khoảng đơn điệu và cực trị của hàm số $y = x^3 - 3x^2 + 2$. Kết quả và hướng '
+                 'giải nào dưới đây là **đúng**?',
+            'options': ["Hàm số liên tục trên $[0; 2]$. Ta có $f'(x) = 3x^2 - 3 = 0 \\Leftrightarrow x = 1 "
+                        '\\in (0; 2)$ hoặc $x = -1 \\notin (0; 2)$. Tính giá trị: $f(0) = 2$; $f(1) = 0$...',
+                        'Tập xác định $D = \\mathbb{R} \\setminus \\{1\\}$. Chia đa thức ta có $y = 2x + 1 + '
+                        '\\dfrac{2}{x - 1}$. Vì $\\lim_{x \\to 1^+} y = +\\infty$ và $\\lim_{x \\to 1^-} y = '
+                        '-\\infty$...',
+                        "Tập xác định $D = \\mathbb{R}$. Ta có $y' = 3x^2 - 6x = 3x(x - 2)$. Cho $y' = 0 "
+                        "\\Leftrightarrow x = 0$ hoặc $x = 2$. Bảng xét dấu $y'$: trên $(-\\infty; 0)$...",
+                        "Ta có $y' = 3x^2 - 6x$ và $y'' = 6x - 6$. Cho $y'' = 0 \\Leftrightarrow 6x - 6 = 0 "
+                        '\\Leftrightarrow x = 1$. Với $x = 1 \\Rightarrow y = 1^3 - 3 \\cdot 1^2 + 1 = '
+                        '-1$...'],
+            'answer': 2,
+            'solution': 'Lời giải chi tiết theo Bài 1: Tính đơn điệu và cực trị của hàm số: Tập xác định $D '
+                        "= \\mathbb{R}$. Ta có $y' = 3x^2 - 6x = 3x(x - 2)$. Cho $y' = 0 \\Leftrightarrow x "
+                        "= 0$ hoặc $x = 2$. Bảng xét dấu $y'$: trên $(-\\infty; 0)$ và $(2; +\\infty)$ ta có "
+                        "$y' > 0$ nên hàm số đồng biến; trên $(0; 2)$ ta có $y' < 0$ nên hàm số nghịch biến. "
+                        'Hàm số đạt cực đại tại $x = 0$, giá trị cực đại $y_{CĐ} = 2$; đạt cực tiểu tại $x = '
+                        '2$, giá trị cực tiểu $y_{CT} = -2$.'},
+           {'level': 'vandung',
+            'type': 'short',
+            'q': 'Có bao nhiêu giá trị nguyên của tham số $m$ để hàm số $y = \\dfrac{1}{3}x^3 - mx^2 + (m + '
+                 '2)x - 1$ đồng biến trên $\\mathbb{R}$?',
+            'answer': ['4'],
+            'unit': None,
+            'solution': "Ta có $y' = x^2 - 2mx + m + 2$. Hàm số đồng biến trên $\\mathbb{R} \\Leftrightarrow "
+                        "y' \\ge 0, \\forall x \\in \\mathbb{R} \\Leftrightarrow \\Delta' = m^2 - (m + 2) "
+                        '\\le 0 \\Leftrightarrow m^2 - m - 2 \\le 0 \\Leftrightarrow -1 \\le m \\le 2$. Có '
+                        '$4$ giá trị nguyên là $m \\in \\{-1; 0; 1; 2\\}$.',
+            'alt': None,
+            'note': None}]},
+ {'topic': 'l12-ch01-ung-dung-dao-ham',
+  'context_title': 'Chương I: Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số',
+  'context': 'Chương I · SGK Toán 12: Đơn điệu, cực trị, giá trị lớn nhất - nhỏ nhất, tiệm cận và khảo sát '
+             'vẽ đồ thị hàm số.',
+  'title': 'Bài 2: Giá trị lớn nhất và giá trị nhỏ nhất của hàm số',
+  'icon': '🏔️',
+  'description': 'Khái niệm giá trị lớn nhất, giá trị nhỏ nhất của hàm số trên một tập hợp và quy tắc tìm '
+                 'trên đoạn.',
+  'requirements': ['Nhận biết được khái niệm giá trị lớn nhất $\\max_D f(x)$ và giá trị nhỏ nhất $\\min_D '
+                   'f(x)$ của hàm số trên tập $D$.',
+                   'Tìm được giá trị lớn nhất và giá trị nhỏ nhất của hàm số liên tục trên một đoạn $[a; b]$ '
+                   'hoặc một khoảng.',
+                   'Vận dụng vào các bài toán tối ưu hóa hình học và thực tế.'],
+  'definition': 'Cho hàm số $y = f(x)$ xác định trên tập $D$. Số $M$ gọi là giá trị lớn nhất của $f(x)$ trên '
+                '$D$, kí hiệu $M = \\max_{x \\in D} f(x)$, nếu $f(x) \\le M$ với mọi $x \\in D$ và tồn tại '
+                '$x_0 \\in D$ sao cho $f(x_0) = M$. Số $m$ gọi là giá trị nhỏ nhất của $f(x)$ trên $D$, kí '
+                'hiệu $m = \\min_{x \\in D} f(x)$, nếu $f(x) \\ge m$ với mọi $x \\in D$ và tồn tại $x_0 \\in '
+                'D$ sao cho $f(x_0) = m$.',
+  'theory': 'Quy tắc tìm $\\max, \\min$ của hàm số $f(x)$ liên tục trên đoạn $[a; b]$: Bước 1: Tìm các điểm '
+            "$x_1, x_2, \\dots, x_n \\in (a; b)$ mà tại đó $f'(x) = 0$ hoặc $f'(x)$ không xác định. Bước 2: "
+            'Tính $f(a), f(b), f(x_1), \\dots, f(x_n)$. Bước 3: Số lớn nhất trong các giá trị vừa tính là '
+            '$\\max_{[a; b]} f(x)$ và số nhỏ nhất là $\\min_{[a; b]} f(x)$.',
+  'formulas': [{'category': 'Quy tắc trên đoạn',
+                'items': [{'name': 'Giá trị lớn nhất trên đoạn',
+                           'formula': '$\\max_{[a; b]} f(x) = \\max \\{f(a), f(b), f(x_i)\\}$ với $x_i \\in '
+                                      "(a; b), f'(x_i) = 0$"},
+                          {'name': 'Giá trị nhỏ nhất trên đoạn',
+                           'formula': '$\\min_{[a; b]} f(x) = \\min \\{f(a), f(b), f(x_i)\\}$ với $x_i \\in '
+                                      "(a; b), f'(x_i) = 0$"},
+                          {'name': 'Hàm phân thức bậc nhất trên đoạn',
+                           'formula': '$y = \\dfrac{ax + b}{cx + d}$ đơn điệu trên $[x_1; x_2]$ nên đạt '
+                                      '$\\max, \\min$ tại hai đầu mút'}]}],
+  'example': 'Tìm giá trị lớn nhất và giá trị nhỏ nhất của hàm số $f(x) = x^3 - 3x + 2$ trên đoạn $[0; 2]$.',
+  'example_answer': "Hàm số liên tục trên $[0; 2]$. Ta có $f'(x) = 3x^2 - 3 = 0 \\Leftrightarrow x = 1 \\in "
+                    '(0; 2)$ hoặc $x = -1 \\notin (0; 2)$. Tính giá trị: $f(0) = 2$; $f(1) = 0$; $f(2) = 4$. '
+                    'Vậy $\\max_{[0; 2]} f(x) = f(2) = 4$ và $\\min_{[0; 2]} f(x) = f(1) = 0$.',
+  'real_life': 'Thiết kế bao bì hộp sữa có dung tích cố định sao cho diện tích vỏ hộp tốn ít nguyên liệu '
+               'nhất.',
+  'quiz': [{'level': 'biet',
+            'type': 'mcq',
+            'q': 'Giá trị nhỏ nhất của hàm số $f(x) = x^2 - 4x + 5$ trên đoạn $[1; 4]$ bằng bao nhiêu?',
+            'options': ['$2$', '$1$', '$5$', '$0$'],
+            'answer': 1,
+            'solution': "Ta có $f'(x) = 2x - 4 = 0 \\Leftrightarrow x = 2 \\in [1; 4]$. Tính $f(1) = 2, f(2) "
+                        '= 1, f(4) = 5$. Vậy $\\min_{[1; 4]} f(x) = 1$.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Giá trị lớn nhất của hàm số $y = \\dfrac{x - 1}{x + 1}$ trên đoạn $[0; 3]$ bằng bao nhiêu?',
+            'options': ['$-1$', '$1$', '$\\dfrac{1}{2}$', '$\\dfrac{3}{4}$'],
+            'answer': 2,
+            'solution': "Ta có $y' = \\dfrac{2}{(x + 1)^2} > 0, \\forall x \\in [0; 3]$. Hàm số đồng biến "
+                        'trên $[0; 3]$ nên $\\max_{[0; 3]} y = y(3) = \\dfrac{3 - 1}{3 + 1} = '
+                        '\\dfrac{1}{2}$.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Theo nội dung trọng tâm của **Bài 2: Giá trị lớn nhất và giá trị nhỏ nhất của hàm số**, '
+                 'công thức hoặc quy tắc nào sau đây biểu diễn đúng **Giá trị lớn nhất trên đoạn**?',
+            'options': ['$\\min_{[a; b]} f(x) = \\min \\{f(a), f(b), f(x_i)\\}$ với $x_i \\in (a; b), '
+                        "f'(x_i) = 0$",
+                        '$y = \\dfrac{ax + b}{cx + d}$ đơn điệu trên $[x_1; x_2]$ nên đạt $\\max, \\min$ tại '
+                        'hai đầu mút',
+                        "$f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm)",
+                        '$\\max_{[a; b]} f(x) = \\max \\{f(a), f(b), f(x_i)\\}$ với $x_i \\in (a; b), '
+                        "f'(x_i) = 0$"],
+            'answer': 3,
+            'solution': 'Theo bảng công thức trọng tâm của Bài 2: Giá trị lớn nhất và giá trị nhỏ nhất của '
+                        'hàm số, **Giá trị lớn nhất trên đoạn** được xác định bởi: $\\max_{[a; b]} f(x) = '
+                        "\\max \\{f(a), f(b), f(x_i)\\}$ với $x_i \\in (a; b), f'(x_i) = 0$."},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Trong **Bài 2: Giá trị lớn nhất và giá trị nhỏ nhất của hàm số**, nội dung/biểu thức '
+                 "$\\min_{[a; b]} f(x) = \\min \\{f(a), f(b), f(x_i)\\}$ với $x_i \\in (a; b), f'(x_i) = 0$ "
+                 'là quy tắc hoặc công thức của mục nào sau đây?',
+            'options': ['Giá trị nhỏ nhất trên đoạn',
+                        'Giá trị lớn nhất trên đoạn',
+                        'Hàm phân thức bậc nhất trên đoạn',
+                        'Đồng biến trên khoảng'],
+            'answer': 0,
+            'solution': 'Trong Bài 2: Giá trị lớn nhất và giá trị nhỏ nhất của hàm số, biểu thức/quy tắc '
+                        '$\\min_{[a; b]} f(x) = \\min \\{f(a), f(b), f(x_i)\\}$ với $x_i \\in (a; b), '
+                        "f'(x_i) = 0$ chính là nội dung của **Giá trị nhỏ nhất trên đoạn**."},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Cho hàm số $f(x) = x + \\dfrac{4}{x}$ xét trên khoảng $(0; +\\infty)$. Giá trị nhỏ nhất '
+                 'của hàm số trên khoảng $(0; +\\infty)$ là:',
+            'options': ['$2$', '$4$', '$5$', '$8$'],
+            'answer': 1,
+            'solution': "Với $x > 0$, ta có $f'(x) = 1 - \\dfrac{4}{x^2} = 0 \\Leftrightarrow x = 2$. Lập "
+                        'bảng biến thiên trên $(0; +\\infty)$, hàm số đạt giá trị nhỏ nhất tại $x = 2$ với '
+                        '$f(2) = 2 + \\dfrac{4}{2} = 4$.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Khi học **Bài 2: Giá trị lớn nhất và giá trị nhỏ nhất của hàm số** (Chương I: Ứng dụng đạo '
+                 'hàm để khảo sát và vẽ đồ thị hàm số), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần '
+                 'đạt và bản chất kiến thức của bài?',
+            'options': ['Nhận biết được tính đồng biến, nghịch biến của hàm số trên một khoảng dựa vào dấu '
+                        "của đạo hàm cấp một $f'(x)$.",
+                        'Xác định được điểm cực đại, điểm cực tiểu, giá trị cực đại, giá trị cực tiểu của '
+                        "hàm số thông qua bảng biến thiên hoặc đạo hàm cấp hai $f''(x)$.",
+                        'Nhận biết được khái niệm giá trị lớn nhất $\\max_D f(x)$ và giá trị nhỏ nhất '
+                        '$\\min_D f(x)$ của hàm số trên tập $D$.',
+                        'Vận dụng điều kiện đơn điệu và cực trị để giải các bài toán chứa tham số $m$.'],
+            'answer': 2,
+            'solution': 'Theo yêu cầu cần đạt của Bài 2: Giá trị lớn nhất và giá trị nhỏ nhất của hàm số: '
+                        'Nhận biết được khái niệm giá trị lớn nhất $\\max_D f(x)$ và giá trị nhỏ nhất '
+                        '$\\min_D f(x)$ của hàm số trên tập $D$.'},
+           {'level': 'hieu',
+            'type': 'tf4',
+            'q': 'Cho hàm số $f(x) = x^4 - 2x^2 + 3$ trên đoạn $[0; 2]$. Xét tính đúng sai của các mệnh đề '
+                 'sau:',
+            'statements': ["Đạo hàm của hàm số là $f'(x) = 4x^3 - 4x$.",
+                           "Trên khoảng $(0; 2)$, phương trình $f'(x) = 0$ có đúng 2 nghiệm.",
+                           'Giá trị nhỏ nhất của hàm số trên đoạn $[0; 2]$ bằng $2$.',
+                           'Giá trị lớn nhất của hàm số trên đoạn $[0; 2]$ bằng $11$.'],
+            'answer': [True, False, True, True],
+            'solution': "a) Đúng vì $f'(x) = 4x^3 - 4x$. b) Sai vì $f'(x) = 0 \\Leftrightarrow x \\in \\{-1; "
+                        '0; 1\\}$, chỉ có $x = 1$ thuộc khoảng $(0; 2)$. c) Đúng vì $f(0) = 3, f(1) = 2, '
+                        'f(2) = 11 \\Rightarrow \\min_{[0; 2]} f(x) = 2$. d) Đúng vì $\\max_{[0; 2]} f(x) = '
+                        'f(2) = 11$.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'tf4',
+            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 2: Giá trị lớn nhất và '
+                 'giá trị nhỏ nhất của hàm số**:',
+            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được khái niệm giá trị '
+                           'lớn nhất $\\max_D f(x)$ và giá trị nhỏ nhất $\\min_D f(x)$ của hàm số trên tập '
+                           '$D$.',
+                           'Quy tắc/công thức **Giá trị lớn nhất trên đoạn** trong bài được xác định bởi: '
+                           '$\\max_{[a; b]} f(x) = \\max \\{f(a), f(b), f(x_i)\\}$ với $x_i \\in (a; b), '
+                           "f'(x_i) = 0$.",
+                           'Trong mọi trường hợp, **Giá trị lớn nhất trên đoạn** luôn được tính bằng công '
+                           "thức $f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm) (thuộc Đồng "
+                           'biến trên khoảng) mà không cần điều kiện của Bài 2: Giá trị lớn nhất và giá trị '
+                           'nhỏ nhất của hàm số.',
+                           'Với bài toán minh họa: “Tìm giá trị lớn nhất và giá trị nhỏ nhất của hàm số '
+                           '$f(x) = x^3 - 3x + 2$ trên đoạn $[0; 2]$.”, lời giải đúng là: Hàm số liên tục '
+                           "trên $[0; 2]$. Ta có $f'(x) = 3x^2 - 3 = 0 \\Leftrightarrow x = 1 \\in (0; 2)$ "
+                           'hoặc $x = -1 \\notin (0; 2)$. Tính giá trị: $f(0) = 2$...'],
+            'answer': [True, True, False, True],
+            'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 2: Giá trị lớn nhất và giá trị nhỏ nhất '
+                        'của hàm số. b) **Đúng** theo công thức trọng tâm **Giá trị lớn nhất trên đoạn** '
+                        '($\\max_{[a; b]} f(x) = \\max \\{f(a), f(b), f(x_i)\\}$ với $x_i \\in (a; b), '
+                        "f'(x_i) = 0$). c) **Sai** vì $f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn "
+                        'điểm) là công thức của nội dung khác, không phải quy tắc chung của **Giá trị lớn '
+                        'nhất trên đoạn**. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+           {'level': 'vandung',
+            'type': 'mcq',
+            'q': 'Vận dụng kiến thức **Bài 2: Giá trị lớn nhất và giá trị nhỏ nhất của hàm số** để giải '
+                 'quyết tình huống sau: Tìm giá trị lớn nhất và giá trị nhỏ nhất của hàm số $f(x) = x^3 - 3x '
+                 '+ 2$ trên đoạn $[0; 2]$. Kết quả và hướng giải nào dưới đây là **đúng**?',
+            'options': ["Tập xác định $D = \\mathbb{R}$. Ta có $y' = 3x^2 - 6x = 3x(x - 2)$. Cho $y' = 0 "
+                        "\\Leftrightarrow x = 0$ hoặc $x = 2$. Bảng xét dấu $y'$: trên $(-\\infty; 0)$...",
+                        'Tập xác định $D = \\mathbb{R} \\setminus \\{1\\}$. Chia đa thức ta có $y = 2x + 1 + '
+                        '\\dfrac{2}{x - 1}$. Vì $\\lim_{x \\to 1^+} y = +\\infty$ và $\\lim_{x \\to 1^-} y = '
+                        '-\\infty$...',
+                        "Ta có $y' = 3x^2 - 6x$ và $y'' = 6x - 6$. Cho $y'' = 0 \\Leftrightarrow 6x - 6 = 0 "
+                        '\\Leftrightarrow x = 1$. Với $x = 1 \\Rightarrow y = 1^3 - 3 \\cdot 1^2 + 1 = '
+                        '-1$...',
+                        "Hàm số liên tục trên $[0; 2]$. Ta có $f'(x) = 3x^2 - 3 = 0 \\Leftrightarrow x = 1 "
+                        '\\in (0; 2)$ hoặc $x = -1 \\notin (0; 2)$. Tính giá trị: $f(0) = 2$; $f(1) = 0$...'],
+            'answer': 3,
+            'solution': 'Lời giải chi tiết theo Bài 2: Giá trị lớn nhất và giá trị nhỏ nhất của hàm số: Hàm '
+                        "số liên tục trên $[0; 2]$. Ta có $f'(x) = 3x^2 - 3 = 0 \\Leftrightarrow x = 1 \\in "
+                        '(0; 2)$ hoặc $x = -1 \\notin (0; 2)$. Tính giá trị: $f(0) = 2$; $f(1) = 0$; $f(2) = '
+                        '4$. Vậy $\\max_{[0; 2]} f(x) = f(2) = 4$ và $\\min_{[0; 2]} f(x) = f(1) = 0$.'},
+           {'level': 'vandung',
+            'type': 'short',
+            'q': 'Tổng giá trị lớn nhất và giá trị nhỏ nhất của hàm số $y = x^3 - 3x^2 - 9x + 10$ trên đoạn '
+                 '$[-2; 2]$ bằng bao nhiêu?',
+            'answer': ['3'],
+            'unit': None,
+            'solution': "Ta có $y' = 3x^2 - 6x - 9 = 0 \\Leftrightarrow x = -1 \\in [-2; 2]$ hoặc $x = 3 "
+                        '\\notin [-2; 2]$. Tính $y(-2) = 8, y(-1) = 15, y(2) = -12$. Vậy $\\max = 15, \\min '
+                        '= -12$, tổng bằng $15 + (-12) = 3$.',
+            'alt': None,
+            'note': None}]},
+ {'topic': 'l12-ch01-ung-dung-dao-ham',
+  'context_title': 'Chương I: Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số',
+  'context': 'Chương I · SGK Toán 12: Đơn điệu, cực trị, giá trị lớn nhất - nhỏ nhất, tiệm cận và khảo sát '
+             'vẽ đồ thị hàm số.',
+  'title': 'Bài 3: Đường tiệm cận của đồ thị hàm số',
+  'icon': '🛤️',
+  'description': 'Cách xác định đường tiệm cận ngang, tiệm cận đứng và tiệm cận xiên của đồ thị hàm số thông '
+                 'qua giới hạn.',
+  'requirements': ['Nhận biết được đường tiệm cận ngang, tiệm cận đứng và tiệm cận xiên của đồ thị hàm số.',
+                   'Tìm được phương trình các đường tiệm cận của hàm phân thức hữu tỉ bậc nhất trên bậc nhất '
+                   'và bậc hai trên bậc nhất.',
+                   'Giải quyết được bài toán biện luận số đường tiệm cận của đồ thị hàm số.'],
+  'definition': 'Đường thẳng $y = y_0$ là tiệm cận ngang nếu $\\lim_{x \\to +\\infty} f(x) = y_0$ hoặc '
+                '$\\lim_{x \\to -\\infty} f(x) = y_0$. Đường thẳng $x = x_0$ là tiệm cận đứng nếu ít nhất '
+                'một trong các giới hạn một bên $\\lim_{x \\to x_0^+} f(x), \\lim_{x \\to x_0^-} f(x)$ bằng '
+                '$+\\infty$ hoặc $-\\infty$. Đường thẳng $y = ax + b$ ($a \\ne 0$) là tiệm cận xiên nếu '
+                '$\\lim_{x \\to +\\infty} [f(x) - (ax + b)] = 0$ hoặc $\\lim_{x \\to -\\infty} [f(x) - (ax + '
+                'b)] = 0$.',
+  'theory': '1. Đối với hàm phân thức $y = \\dfrac{ax + b}{cx + d}$ ($c \\ne 0, ad - bc \\ne 0$): tiệm cận '
+            'đứng là $x = -\\dfrac{d}{c}$ và tiệm cận ngang là $y = \\dfrac{a}{c}$. 2. Đối với hàm phân thức '
+            '$y = \\dfrac{ax^2 + bx + c}{mx + n}$ ($a \\ne 0, m \\ne 0$): chia đa thức được $y = px + q + '
+            '\\dfrac{r}{mx + n}$ ($r \\ne 0$), khi đó tiệm cận đứng là $x = -\\dfrac{n}{m}$ và tiệm cận xiên '
+            'là $y = px + q$.',
+  'formulas': [{'category': 'Công thức tìm tiệm cận',
+                'items': [{'name': 'Tiệm cận ngang',
+                           'formula': '$\\lim_{x \\to \\pm\\infty} f(x) = y_0 \\Rightarrow \\text{TCN: } y = '
+                                      'y_0$'},
+                          {'name': 'Tiệm cận đứng',
+                           'formula': '$\\lim_{x \\to x_0^\\pm} f(x) = \\pm\\infty \\Rightarrow \\text{TCĐ: '
+                                      '} x = x_0$'},
+                          {'name': 'Hệ số tiệm cận xiên',
+                           'formula': '$a = \\lim_{x \\to \\pm\\infty} \\dfrac{f(x)}{x}, \\quad b = \\lim_{x '
+                                      '\\to \\pm\\infty} [f(x) - ax]$'}]}],
+  'example': 'Tìm các đường tiệm cận của đồ thị hàm số $y = \\dfrac{2x^2 - x + 1}{x - 1}$.',
+  'example_answer': 'Tập xác định $D = \\mathbb{R} \\setminus \\{1\\}$. Chia đa thức ta có $y = 2x + 1 + '
+                    '\\dfrac{2}{x - 1}$. Vì $\\lim_{x \\to 1^+} y = +\\infty$ và $\\lim_{x \\to 1^-} y = '
+                    '-\\infty$ nên $x = 1$ là tiệm cận đứng. Vì $\\lim_{x \\to \\pm\\infty} [y - (2x + 1)] = '
+                    '\\lim_{x \\to \\pm\\infty} \\dfrac{2}{x - 1} = 0$ nên $y = 2x + 1$ là tiệm cận xiên.',
+  'real_life': 'Mô tả nồng độ thuốc trong máu hoặc chi phí trung bình sản xuất mỗi sản phẩm tiến dần về một '
+               'mức ổn định khi số lượng sản phẩm tăng lên vô hạn.',
+  'quiz': [{'level': 'biet',
+            'type': 'mcq',
+            'q': 'Tiệm cận ngang của đồ thị hàm số $y = \\dfrac{3x - 2}{x + 1}$ là đường thẳng nào dưới đây?',
+            'options': ['$x = -1$', '$y = -2$', '$y = 3$', '$x = 3$'],
+            'answer': 2,
+            'solution': 'Ta có $\\lim_{x \\to \\pm\\infty} \\dfrac{3x - 2}{x + 1} = 3$ nên tiệm cận ngang '
+                        'của đồ thị là đường thẳng $y = 3$.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Tiệm cận đứng của đồ thị hàm số $y = \\dfrac{2x + 1}{x - 2}$ là đường thẳng:',
+            'options': ['$y = 2$', '$x = -\\dfrac{1}{2}$', '$y = -2$', '$x = 2$'],
+            'answer': 3,
+            'solution': 'Vì $\\lim_{x \\to 2^+} \\dfrac{2x + 1}{x - 2} = +\\infty$ nên đường thẳng $x = 2$ '
+                        'là tiệm cận đứng.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Theo nội dung trọng tâm của **Bài 3: Đường tiệm cận của đồ thị hàm số**, công thức hoặc '
+                 'quy tắc nào sau đây biểu diễn đúng **Tiệm cận ngang**?',
+            'options': ['$\\lim_{x \\to \\pm\\infty} f(x) = y_0 \\Rightarrow \\text{TCN: } y = y_0$',
+                        '$\\lim_{x \\to x_0^\\pm} f(x) = \\pm\\infty \\Rightarrow \\text{TCĐ: } x = x_0$',
+                        '$a = \\lim_{x \\to \\pm\\infty} \\dfrac{f(x)}{x}, \\quad b = \\lim_{x \\to '
+                        '\\pm\\infty} [f(x) - ax]$',
+                        "$f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm)"],
+            'answer': 0,
+            'solution': 'Theo bảng công thức trọng tâm của Bài 3: Đường tiệm cận của đồ thị hàm số, **Tiệm '
+                        'cận ngang** được xác định bởi: $\\lim_{x \\to \\pm\\infty} f(x) = y_0 \\Rightarrow '
+                        '\\text{TCN: } y = y_0$.'},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Trong **Bài 3: Đường tiệm cận của đồ thị hàm số**, nội dung/biểu thức $\\lim_{x \\to '
+                 'x_0^\\pm} f(x) = \\pm\\infty \\Rightarrow \\text{TCĐ: } x = x_0$ là quy tắc hoặc công thức '
+                 'của mục nào sau đây?',
+            'options': ['Tiệm cận ngang', 'Tiệm cận đứng', 'Hệ số tiệm cận xiên', 'Đồng biến trên khoảng'],
+            'answer': 1,
+            'solution': 'Trong Bài 3: Đường tiệm cận của đồ thị hàm số, biểu thức/quy tắc $\\lim_{x \\to '
+                        'x_0^\\pm} f(x) = \\pm\\infty \\Rightarrow \\text{TCĐ: } x = x_0$ chính là nội dung '
+                        'của **Tiệm cận đứng**.'},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Đường tiệm cận xiên của đồ thị hàm số $y = x - 2 + \\dfrac{3}{x + 1}$ có phương trình là:',
+            'options': ['$y = x + 1$', '$y = 3x - 2$', '$y = x - 2$', '$x = -1$'],
+            'answer': 2,
+            'solution': 'Ta có $\\lim_{x \\to \\pm\\infty} [y - (x - 2)] = \\lim_{x \\to \\pm\\infty} '
+                        '\\dfrac{3}{x + 1} = 0$, do đó tiệm cận xiên là đường thẳng $y = x - 2$.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Khi học **Bài 3: Đường tiệm cận của đồ thị hàm số** (Chương I: Ứng dụng đạo hàm để khảo '
+                 'sát và vẽ đồ thị hàm số), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản '
+                 'chất kiến thức của bài?',
+            'options': ['Nhận biết được tính đồng biến, nghịch biến của hàm số trên một khoảng dựa vào dấu '
+                        "của đạo hàm cấp một $f'(x)$.",
+                        'Xác định được điểm cực đại, điểm cực tiểu, giá trị cực đại, giá trị cực tiểu của '
+                        "hàm số thông qua bảng biến thiên hoặc đạo hàm cấp hai $f''(x)$.",
+                        'Vận dụng điều kiện đơn điệu và cực trị để giải các bài toán chứa tham số $m$.',
+                        'Nhận biết được đường tiệm cận ngang, tiệm cận đứng và tiệm cận xiên của đồ thị hàm '
+                        'số.'],
+            'answer': 3,
+            'solution': 'Theo yêu cầu cần đạt của Bài 3: Đường tiệm cận của đồ thị hàm số: Nhận biết được '
+                        'đường tiệm cận ngang, tiệm cận đứng và tiệm cận xiên của đồ thị hàm số.'},
+           {'level': 'hieu',
+            'type': 'tf4',
+            'q': 'Cho hàm số $y = \\dfrac{x^2 + 2x - 2}{x + 1}$ có đồ thị $(C)$. Xét tính đúng sai của các '
+                 'mệnh đề sau:',
+            'statements': ['Đồ thị $(C)$ có tiệm cận đứng là đường thẳng $x = -1$.',
+                           'Đồ thị $(C)$ có tiệm cận ngang là đường thẳng $y = 1$.',
+                           'Đồ thị $(C)$ có tiệm cận xiên là đường thẳng $y = x + 1$.',
+                           'Giao điểm hai đường tiệm cận của đồ thị $(C)$ có tọa độ là $(-1; 0)$.'],
+            'answer': [True, False, True, True],
+            'solution': 'Ta viết lại $y = x + 1 - \\dfrac{3}{x + 1}$. a) Đúng vì $\\lim_{x \\to -1^+} y = '
+                        '-\\infty$. b) Sai vì $\\lim_{x \\to \\pm\\infty} y = \\pm\\infty$ nên không có tiệm '
+                        'cận ngang. c) Đúng vì $\\lim_{x \\to \\pm\\infty} [y - (x + 1)] = 0$. d) Đúng vì '
+                        'giao của $x = -1$ và $y = x + 1$ là điểm $(-1; 0)$.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'tf4',
+            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 3: Đường tiệm cận của '
+                 'đồ thị hàm số**:',
+            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được đường tiệm cận '
+                           'ngang, tiệm cận đứng và tiệm cận xiên của đồ thị hàm số.',
+                           'Quy tắc/công thức **Tiệm cận ngang** trong bài được xác định bởi: $\\lim_{x \\to '
+                           '\\pm\\infty} f(x) = y_0 \\Rightarrow \\text{TCN: } y = y_0$.',
+                           "Trong mọi trường hợp, **Tiệm cận ngang** luôn được tính bằng công thức $f'(x) "
+                           '\\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm) (thuộc Đồng biến trên '
+                           'khoảng) mà không cần điều kiện của Bài 3: Đường tiệm cận của đồ thị hàm số.',
+                           'Với bài toán minh họa: “Tìm các đường tiệm cận của đồ thị hàm số $y = '
+                           '\\dfrac{2x^2 - x + 1}{x - 1}$.”, lời giải đúng là: Tập xác định $D = \\mathbb{R} '
+                           '\\setminus \\{1\\}$. Chia đa thức ta có $y = 2x + 1 + \\dfrac{2}{x - 1}$. Vì '
+                           '$\\lim_{x \\to 1^+} y = +\\infty$ và $\\lim_{x \\to 1^-} y = -\\infty$...'],
+            'answer': [True, True, False, True],
+            'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 3: Đường tiệm cận của đồ thị hàm số. b) '
+                        '**Đúng** theo công thức trọng tâm **Tiệm cận ngang** ($\\lim_{x \\to \\pm\\infty} '
+                        "f(x) = y_0 \\Rightarrow \\text{TCN: } y = y_0$). c) **Sai** vì $f'(x) \\ge 0, "
+                        '\\forall x \\in K$ (dấu $=$ tại hữu hạn điểm) là công thức của nội dung khác, không '
+                        'phải quy tắc chung của **Tiệm cận ngang**. d) **Đúng** theo lời giải ví dụ minh họa '
+                        'trong bài học.'},
+           {'level': 'vandung',
+            'type': 'mcq',
+            'q': 'Vận dụng kiến thức **Bài 3: Đường tiệm cận của đồ thị hàm số** để giải quyết tình huống '
+                 'sau: Tìm các đường tiệm cận của đồ thị hàm số $y = \\dfrac{2x^2 - x + 1}{x - 1}$. Kết quả '
+                 'và hướng giải nào dưới đây là **đúng**?',
+            'options': ['Tập xác định $D = \\mathbb{R} \\setminus \\{1\\}$. Chia đa thức ta có $y = 2x + 1 + '
+                        '\\dfrac{2}{x - 1}$. Vì $\\lim_{x \\to 1^+} y = +\\infty$ và $\\lim_{x \\to 1^-} y = '
+                        '-\\infty$...',
+                        "Tập xác định $D = \\mathbb{R}$. Ta có $y' = 3x^2 - 6x = 3x(x - 2)$. Cho $y' = 0 "
+                        "\\Leftrightarrow x = 0$ hoặc $x = 2$. Bảng xét dấu $y'$: trên $(-\\infty; 0)$...",
+                        "Hàm số liên tục trên $[0; 2]$. Ta có $f'(x) = 3x^2 - 3 = 0 \\Leftrightarrow x = 1 "
+                        '\\in (0; 2)$ hoặc $x = -1 \\notin (0; 2)$. Tính giá trị: $f(0) = 2$; $f(1) = 0$...',
+                        "Ta có $y' = 3x^2 - 6x$ và $y'' = 6x - 6$. Cho $y'' = 0 \\Leftrightarrow 6x - 6 = 0 "
+                        '\\Leftrightarrow x = 1$. Với $x = 1 \\Rightarrow y = 1^3 - 3 \\cdot 1^2 + 1 = '
+                        '-1$...'],
+            'answer': 0,
+            'solution': 'Lời giải chi tiết theo Bài 3: Đường tiệm cận của đồ thị hàm số: Tập xác định $D = '
+                        '\\mathbb{R} \\setminus \\{1\\}$. Chia đa thức ta có $y = 2x + 1 + \\dfrac{2}{x - '
+                        '1}$. Vì $\\lim_{x \\to 1^+} y = +\\infty$ và $\\lim_{x \\to 1^-} y = -\\infty$ nên '
+                        '$x = 1$ là tiệm cận đứng. Vì $\\lim_{x \\to \\pm\\infty} [y - (2x + 1)] = \\lim_{x '
+                        '\\to \\pm\\infty} \\dfrac{2}{x - 1} = 0$ nên $y = 2x + 1$ là tiệm cận xiên.'},
+           {'level': 'vandung',
+            'type': 'short',
+            'q': 'Tổng số đường tiệm cận đứng và tiệm cận ngang của đồ thị hàm số $y = \\dfrac{x - 1}{x^2 - '
+                 '4x + 3}$ là bao nhiêu?',
+            'answer': ['2'],
+            'unit': None,
+            'solution': 'Với $x \\ne 1, x \\ne 3$, rút gọn $y = \\dfrac{x - 1}{(x - 1)(x - 3)} = '
+                        '\\dfrac{1}{x - 3}$. Khi $x \\to 1$, $\\lim_{x \\to 1} y = -\\dfrac{1}{2}$ nên $x = '
+                        '1$ không là TCĐ. Chỉ có 1 TCĐ là $x = 3$ và 1 TCN là $y = 0$. Tổng cộng có $2$ '
+                        'đường tiệm cận.',
+            'alt': None,
+            'note': None}]},
+ {'topic': 'l12-ch01-ung-dung-dao-ham',
+  'context_title': 'Chương I: Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số',
+  'context': 'Chương I · SGK Toán 12: Đơn điệu, cực trị, giá trị lớn nhất - nhỏ nhất, tiệm cận và khảo sát '
+             'vẽ đồ thị hàm số.',
+  'title': 'Bài 4: Khảo sát sự biến thiên và vẽ đồ thị của hàm số',
+  'icon': '📊',
+  'description': 'Quy trình khảo sát sự biến thiên và vẽ đồ thị hàm số bậc ba, hàm phân thức hữu tỉ và nhận '
+                 'diện đồ thị.',
+  'requirements': ['Nắm vững sơ đồ tổng quát khảo sát sự biến thiên và vẽ đồ thị hàm số.',
+                   'Khảo sát và vẽ được đồ thị hàm số bậc ba $y = ax^3 + bx^2 + cx + d$, hàm phân thức $y = '
+                   '\\dfrac{ax + b}{cx + d}$ và $y = \\dfrac{ax^2 + bx + c}{mx + n}$.',
+                   'Nhận diện được dấu các hệ số và tính chất đối xứng của đồ thị hàm số.'],
+  'definition': 'Khảo sát sự biến thiên và vẽ đồ thị hàm số là việc tìm tập xác định, xét chiều biến thiên '
+                '(đạo hàm, cực trị, giới hạn, tiệm cận, bảng biến thiên) và vẽ đồ thị minh họa trên mặt '
+                'phẳng tọa độ $Oxy$.',
+  'theory': '1. Đồ thị hàm số bậc ba $y = ax^3 + bx^2 + cx + d$ ($a \\ne 0$) luôn nhận điểm uốn $I(x_0; '
+            "y_0)$ với $x_0 = -\\dfrac{b}{3a}$ (nghiệm của $y'' = 0$) làm tâm đối xứng. 2. Đồ thị hàm phân "
+            'thức $y = \\dfrac{ax + b}{cx + d}$ và $y = \\dfrac{ax^2 + bx + c}{mx + n}$ luôn nhận giao điểm '
+            'hai đường tiệm cận làm tâm đối xứng.',
+  'formulas': [{'category': 'Tâm đối xứng và nhận diện hệ số',
+                'items': [{'name': 'Tâm đối xứng hàm bậc ba',
+                           'formula': "$y'' = 6ax + 2b = 0 \\Leftrightarrow x_I = -\\dfrac{b}{3a}$"},
+                          {'name': 'Tâm đối xứng hàm nhất biến',
+                           'formula': '$I\\left(-\\dfrac{d}{c}; \\dfrac{a}{c}\\right)$ (giao điểm của TCĐ và '
+                                      'TCN)'},
+                          {'name': 'Nhánh cuối đồ thị bậc ba',
+                           'formula': '$\\lim_{x \\to +\\infty} y = +\\infty \\Leftrightarrow a > 0; \\quad '
+                                      '\\lim_{x \\to +\\infty} y = -\\infty \\Leftrightarrow a < 0$'}]}],
+  'example': 'Tìm tọa độ tâm đối xứng của đồ thị hàm số $y = x^3 - 3x^2 + 1$.',
+  'example_answer': "Ta có $y' = 3x^2 - 6x$ và $y'' = 6x - 6$. Cho $y'' = 0 \\Leftrightarrow 6x - 6 = 0 "
+                    '\\Leftrightarrow x = 1$. Với $x = 1 \\Rightarrow y = 1^3 - 3 \\cdot 1^2 + 1 = -1$. Vậy '
+                    'tâm đối xứng của đồ thị là điểm $I(1; -1)$.',
+  'real_life': 'Biểu diễn trực quan các đường cong tăng trưởng kinh tế, đường cong cầu - cung và quỹ đạo '
+               'chuyển động trong kỹ thuật.',
+  'quiz': [{'level': 'biet',
+            'type': 'mcq',
+            'q': 'Đồ thị của hàm số nào dưới đây có dạng đường cong bậc ba với nhánh bên phải đi lên khi $x '
+                 '\\to +\\infty$?',
+            'options': ['$y = -x^3 + 3x + 1$',
+                        '$y = \\dfrac{x + 1}{x - 1}$',
+                        '$y = x^2 - 2x + 1$',
+                        '$y = x^3 - 3x + 1$'],
+            'answer': 3,
+            'solution': 'Hàm bậc ba có nhánh phải đi lên khi $x \\to +\\infty$ ứng với hệ số $a > 0$, tức là '
+                        '$y = x^3 - 3x + 1$.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Tâm đối xứng của đồ thị hàm số $y = \\dfrac{2x - 1}{x + 3}$ có tọa độ là:',
+            'options': ['$(-3; 2)$', '$(3; 2)$', '$(-3; -1)$', '$(2; -3)$'],
+            'answer': 0,
+            'solution': 'Đồ thị có tiệm cận đứng $x = -3$ và tiệm cận ngang $y = 2$, nên tâm đối xứng là '
+                        'giao điểm $I(-3; 2)$.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Theo nội dung trọng tâm của **Bài 4: Khảo sát sự biến thiên và vẽ đồ thị của hàm số**, '
+                 'công thức hoặc quy tắc nào sau đây biểu diễn đúng **Tâm đối xứng hàm bậc ba**?',
+            'options': ['$I\\left(-\\dfrac{d}{c}; \\dfrac{a}{c}\\right)$ (giao điểm của TCĐ và TCN)',
+                        "$y'' = 6ax + 2b = 0 \\Leftrightarrow x_I = -\\dfrac{b}{3a}$",
+                        '$\\lim_{x \\to +\\infty} y = +\\infty \\Leftrightarrow a > 0; \\quad \\lim_{x \\to '
+                        '+\\infty} y = -\\infty \\Leftrightarrow a < 0$',
+                        "$f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm)"],
+            'answer': 1,
+            'solution': 'Theo bảng công thức trọng tâm của Bài 4: Khảo sát sự biến thiên và vẽ đồ thị của '
+                        "hàm số, **Tâm đối xứng hàm bậc ba** được xác định bởi: $y'' = 6ax + 2b = 0 "
+                        '\\Leftrightarrow x_I = -\\dfrac{b}{3a}$.'},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Trong **Bài 4: Khảo sát sự biến thiên và vẽ đồ thị của hàm số**, nội dung/biểu thức '
+                 '$I\\left(-\\dfrac{d}{c}; \\dfrac{a}{c}\\right)$ (giao điểm của TCĐ và TCN) là quy tắc hoặc '
+                 'công thức của mục nào sau đây?',
+            'options': ['Tâm đối xứng hàm bậc ba',
+                        'Nhánh cuối đồ thị bậc ba',
+                        'Tâm đối xứng hàm nhất biến',
+                        'Đồng biến trên khoảng'],
+            'answer': 2,
+            'solution': 'Trong Bài 4: Khảo sát sự biến thiên và vẽ đồ thị của hàm số, biểu thức/quy tắc '
+                        '$I\\left(-\\dfrac{d}{c}; \\dfrac{a}{c}\\right)$ (giao điểm của TCĐ và TCN) chính là '
+                        'nội dung của **Tâm đối xứng hàm nhất biến**.'},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Số giao điểm của đồ thị hàm số $y = x^3 - 3x + 2$ và trục hoành $Ox$ là bao nhiêu?',
+            'options': ['$3$', '$1$', '$0$', '$2$'],
+            'answer': 3,
+            'solution': 'Phương trình hoành độ giao điểm: $x^3 - 3x + 2 = 0 \\Leftrightarrow (x - 1)^2(x + '
+                        '2) = 0 \\Leftrightarrow x = 1$ hoặc $x = -2$. Vậy có $2$ giao điểm.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Khi học **Bài 4: Khảo sát sự biến thiên và vẽ đồ thị của hàm số** (Chương I: Ứng dụng đạo '
+                 'hàm để khảo sát và vẽ đồ thị hàm số), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần '
+                 'đạt và bản chất kiến thức của bài?',
+            'options': ['Nắm vững sơ đồ tổng quát khảo sát sự biến thiên và vẽ đồ thị hàm số.',
+                        'Nhận biết được tính đồng biến, nghịch biến của hàm số trên một khoảng dựa vào dấu '
+                        "của đạo hàm cấp một $f'(x)$.",
+                        'Xác định được điểm cực đại, điểm cực tiểu, giá trị cực đại, giá trị cực tiểu của '
+                        "hàm số thông qua bảng biến thiên hoặc đạo hàm cấp hai $f''(x)$.",
+                        'Vận dụng điều kiện đơn điệu và cực trị để giải các bài toán chứa tham số $m$.'],
+            'answer': 0,
+            'solution': 'Theo yêu cầu cần đạt của Bài 4: Khảo sát sự biến thiên và vẽ đồ thị của hàm số: Nắm '
+                        'vững sơ đồ tổng quát khảo sát sự biến thiên và vẽ đồ thị hàm số.'},
+           {'level': 'hieu',
+            'type': 'tf4',
+            'q': 'Cho hàm số $y = \\dfrac{x - 2}{x + 1}$ có đồ thị $(C)$. Xét tính đúng sai của các mệnh đề '
+                 'sau:',
+            'statements': ['Hàm số đồng biến trên từng khoảng $(-\\infty; -1)$ và $(-1; +\\infty)$.',
+                           'Đồ thị $(C)$ cắt trục tung tại điểm có tọa độ $(0; -2)$.',
+                           'Đồ thị $(C)$ cắt trục hoành tại điểm có tọa độ $(-2; 0)$.',
+                           'Tâm đối xứng của đồ thị $(C)$ là điểm $I(-1; 1)$.'],
+            'answer': [True, True, False, True],
+            'solution': "a) Đúng vì $y' = \\dfrac{3}{(x + 1)^2} > 0, \\forall x \\ne -1$. b) Đúng vì $x = 0 "
+                        '\\Rightarrow y = -2$. c) Sai vì $y = 0 \\Leftrightarrow x = 2$, giao điểm với trục '
+                        'hoành là $(2; 0)$. d) Đúng vì TCĐ $x = -1$ và TCN $y = 1$ cắt nhau tại $I(-1; 1)$.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'tf4',
+            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 4: Khảo sát sự biến '
+                 'thiên và vẽ đồ thị của hàm số**:',
+            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nắm vững sơ đồ tổng quát khảo sát '
+                           'sự biến thiên và vẽ đồ thị hàm số.',
+                           "Quy tắc/công thức **Tâm đối xứng hàm bậc ba** trong bài được xác định bởi: $y'' "
+                           '= 6ax + 2b = 0 \\Leftrightarrow x_I = -\\dfrac{b}{3a}$.',
+                           'Trong mọi trường hợp, **Tâm đối xứng hàm bậc ba** luôn được tính bằng công thức '
+                           "$f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm) (thuộc Đồng biến "
+                           'trên khoảng) mà không cần điều kiện của Bài 4: Khảo sát sự biến thiên và vẽ đồ '
+                           'thị của hàm số.',
+                           'Với bài toán minh họa: “Tìm tọa độ tâm đối xứng của đồ thị hàm số $y = x^3 - '
+                           "3x^2 + 1$.”, lời giải đúng là: Ta có $y' = 3x^2 - 6x$ và $y'' = 6x - 6$. Cho "
+                           "$y'' = 0 \\Leftrightarrow 6x - 6 = 0 \\Leftrightarrow x = 1$. Với $x = 1 "
+                           '\\Rightarrow y = 1^3 - 3 \\cdot 1^2 + 1 = -1$...'],
+            'answer': [True, True, False, True],
+            'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 4: Khảo sát sự biến thiên và vẽ đồ thị của '
+                        "hàm số. b) **Đúng** theo công thức trọng tâm **Tâm đối xứng hàm bậc ba** ($y'' = "
+                        "6ax + 2b = 0 \\Leftrightarrow x_I = -\\dfrac{b}{3a}$). c) **Sai** vì $f'(x) \\ge 0, "
+                        '\\forall x \\in K$ (dấu $=$ tại hữu hạn điểm) là công thức của nội dung khác, không '
+                        'phải quy tắc chung của **Tâm đối xứng hàm bậc ba**. d) **Đúng** theo lời giải ví dụ '
+                        'minh họa trong bài học.'},
+           {'level': 'vandung',
+            'type': 'mcq',
+            'q': 'Vận dụng kiến thức **Bài 4: Khảo sát sự biến thiên và vẽ đồ thị của hàm số** để giải quyết '
+                 'tình huống sau: Tìm tọa độ tâm đối xứng của đồ thị hàm số $y = x^3 - 3x^2 + 1$. Kết quả và '
+                 'hướng giải nào dưới đây là **đúng**?',
+            'options': ["Tập xác định $D = \\mathbb{R}$. Ta có $y' = 3x^2 - 6x = 3x(x - 2)$. Cho $y' = 0 "
+                        "\\Leftrightarrow x = 0$ hoặc $x = 2$. Bảng xét dấu $y'$: trên $(-\\infty; 0)$...",
+                        "Ta có $y' = 3x^2 - 6x$ và $y'' = 6x - 6$. Cho $y'' = 0 \\Leftrightarrow 6x - 6 = 0 "
+                        '\\Leftrightarrow x = 1$. Với $x = 1 \\Rightarrow y = 1^3 - 3 \\cdot 1^2 + 1 = '
+                        '-1$...',
+                        "Hàm số liên tục trên $[0; 2]$. Ta có $f'(x) = 3x^2 - 3 = 0 \\Leftrightarrow x = 1 "
+                        '\\in (0; 2)$ hoặc $x = -1 \\notin (0; 2)$. Tính giá trị: $f(0) = 2$; $f(1) = 0$...',
+                        'Tập xác định $D = \\mathbb{R} \\setminus \\{1\\}$. Chia đa thức ta có $y = 2x + 1 + '
+                        '\\dfrac{2}{x - 1}$. Vì $\\lim_{x \\to 1^+} y = +\\infty$ và $\\lim_{x \\to 1^-} y = '
+                        '-\\infty$...'],
+            'answer': 1,
+            'solution': 'Lời giải chi tiết theo Bài 4: Khảo sát sự biến thiên và vẽ đồ thị của hàm số: Ta có '
+                        "$y' = 3x^2 - 6x$ và $y'' = 6x - 6$. Cho $y'' = 0 \\Leftrightarrow 6x - 6 = 0 "
+                        '\\Leftrightarrow x = 1$. Với $x = 1 \\Rightarrow y = 1^3 - 3 \\cdot 1^2 + 1 = -1$. '
+                        'Vậy tâm đối xứng của đồ thị là điểm $I(1; -1)$.'},
+           {'level': 'vandung',
+            'type': 'short',
+            'q': 'Biết đồ thị hàm số $y = ax^3 + bx^2 + cx + d$ đạt cực đại tại $A(0; 2)$ và đạt cực tiểu '
+                 'tại $B(2; -2)$. Tính giá trị của $a + b + c + d$.',
+            'answer': ['0'],
+            'unit': None,
+            'solution': "Vì hàm số đạt cực trị tại $x = 0$ và $x = 2$ nên $y' = 3ax(x - 2) = 3ax^2 - 6ax "
+                        '\\Rightarrow c = 0, b = -3a$. Do $A(0; 2) \\in (C) \\Rightarrow d = 2$. Do $B(2; '
+                        '-2) \\in (C) \\Rightarrow 8a - 12a + 2 = -2 \\Leftrightarrow a = 1 \\Rightarrow b = '
+                        '-3$. Khi đó $a + b + c + d = 1 - 3 + 0 + 2 = 0$.',
+            'alt': None,
+            'note': None}]},
+ {'topic': 'l12-ch01-ung-dung-dao-ham',
+  'context_title': 'Chương I: Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số',
+  'context': 'Chương I · SGK Toán 12: Đơn điệu, cực trị, giá trị lớn nhất - nhỏ nhất, tiệm cận và khảo sát '
+             'vẽ đồ thị hàm số.',
+  'title': 'Bài 5: Ứng dụng đạo hàm để giải quyết một số vấn đề liên quan đến thực tiễn',
+  'icon': '⚙️',
+  'description': 'Sử dụng đạo hàm để tính tốc độ thay đổi tức thời và giải các bài toán tối ưu hóa trong vật '
+                 'lí, hóa học, sinh học và kinh tế.',
+  'requirements': ["Hiểu được đạo hàm $f'(t)$ biểu thị tốc độ thay đổi tức thời của đại lượng $y = f(t)$ "
+                   'theo biến $t$.',
+                   'Thiết lập được hàm số mô tả bài toán tối ưu trong hình học, vật lí và kinh tế.',
+                   'Tìm được phương án tối ưu (chi phí nhỏ nhất, lợi nhuận lớn nhất, thể tích lớn nhất) bằng '
+                   'đạo hàm.'],
+  'definition': "Nếu đại lượng $y$ phụ thuộc vào đại lượng $x$ theo hàm số $y = f(x)$ thì đạo hàm $f'(x_0)$ "
+                'biểu thị tốc độ thay đổi tức thời của đại lượng $y$ theo đại lượng $x$ tại điểm $x_0$.',
+  'theory': "1. Trong chuyển động: vận tốc tức thời $v(t) = s'(t)$, gia tốc tức thời $a(t) = v'(t) = "
+            "s''(t)$. 2. Trong kinh tế: nếu $C(x), R(x), P(x) = R(x) - C(x)$ lần lượt là hàm chi phí, doanh "
+            "thu và lợi nhuận khi sản xuất $x$ đơn vị hàng hóa thì $C'(x), R'(x), P'(x)$ gọi là chi phí "
+            'biên, doanh thu biên và lợi nhuận biên.',
+  'formulas': [{'category': 'Tốc độ thay đổi và bài toán kinh tế',
+                'items': [{'name': 'Vận tốc và gia tốc tức thời',
+                           'formula': "$v(t) = s'(t), \\quad a(t) = v'(t) = s''(t)$"},
+                          {'name': 'Hàm lợi nhuận', 'formula': '$P(x) = R(x) - C(x)$'},
+                          {'name': 'Chi phí biên và doanh thu biên',
+                           'formula': "$MC = C'(x), \\quad MR = R'(x)$"}]}],
+  'example': 'Một tấm bìa hình vuông cạnh $12\\text{ cm}$. Người ta cắt bỏ ở bốn góc bốn hình vuông bằng '
+             'nhau cạnh $x\\text{ cm}$ rồi gấp lại thành một hình hộp chữ nhật không nắp. Tìm $x$ để thể '
+             'tích hộp lớn nhất.',
+  'example_answer': 'Điều kiện $0 < x < 6$. Đáy hộp là hình vuông cạnh $12 - 2x$, chiều cao hộp là $x$. Thể '
+                    "tích hộp là $V(x) = x(12 - 2x)^2 = 4x(6 - x)^2 = 4(x^3 - 12x^2 + 36x)$. Ta có $V'(x) = "
+                    "4(3x^2 - 24x + 36) = 12(x - 2)(x - 6)$. Trên $(0; 6)$, $V'(x) = 0 \\Leftrightarrow x = "
+                    '2$. Lập bảng biến thiên suy ra $\\max_{(0; 6)} V(x) = V(2) = 128\\text{ cm}^3$ khi $x = '
+                    '2\\text{ cm}$.',
+  'real_life': 'Tối ưu hóa giá bán vé máy bay, thiết kế kích thước lon nước giải khát và điều chỉnh liều '
+               'lượng thuốc điều trị.',
+  'quiz': [{'level': 'biet',
+            'type': 'mcq',
+            'q': 'Một chất điểm chuyển động theo phương trình $s(t) = t^3 - 3t^2 + 5t$ ($s$ tính bằng mét, '
+                 '$t$ tính bằng giây). Vận tốc tức thời của chất điểm tại thời điểm $t = 2$ giây là:',
+            'options': ['$5\\text{ m/s}$', '$6\\text{ m/s}$', '$2\\text{ m/s}$', '$10\\text{ m/s}$'],
+            'answer': 0,
+            'solution': "Ta có $v(t) = s'(t) = 3t^2 - 6t + 5$. Tại $t = 2$, vận tốc là $v(2) = 3 \\cdot 2^2 "
+                        '- 6 \\cdot 2 + 5 = 5\\text{ m/s}$.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Giả sử chi phí sản xuất $x$ sản phẩm của một xí nghiệp được cho bởi $C(x) = x^2 + 20x + '
+                 "500$ (nghìn đồng). Hàm chi phí biên $C'(x)$ là:",
+            'options': ['$x + 20$', '$2x + 20$', '$2x + 500$', '$x^2 + 20$'],
+            'answer': 1,
+            'solution': "Chi phí biên là đạo hàm của hàm chi phí theo $x$: $C'(x) = 2x + 20$.",
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Theo nội dung trọng tâm của **Bài 5: Ứng dụng đạo hàm để giải quyết một số vấn đề liên '
+                 'quan đến thực tiễn**, công thức hoặc quy tắc nào sau đây biểu diễn đúng **Vận tốc và gia '
+                 'tốc tức thời**?',
+            'options': ['$P(x) = R(x) - C(x)$',
+                        "$MC = C'(x), \\quad MR = R'(x)$",
+                        "$v(t) = s'(t), \\quad a(t) = v'(t) = s''(t)$",
+                        "$f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm)"],
+            'answer': 2,
+            'solution': 'Theo bảng công thức trọng tâm của Bài 5: Ứng dụng đạo hàm để giải quyết một số vấn '
+                        'đề liên quan đến thực tiễn, **Vận tốc và gia tốc tức thời** được xác định bởi: '
+                        "$v(t) = s'(t), \\quad a(t) = v'(t) = s''(t)$."},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Trong **Bài 5: Ứng dụng đạo hàm để giải quyết một số vấn đề liên quan đến thực tiễn**, nội '
+                 'dung/biểu thức $P(x) = R(x) - C(x)$ là quy tắc hoặc công thức của mục nào sau đây?',
+            'options': ['Vận tốc và gia tốc tức thời',
+                        'Chi phí biên và doanh thu biên',
+                        'Đồng biến trên khoảng',
+                        'Hàm lợi nhuận'],
+            'answer': 3,
+            'solution': 'Trong Bài 5: Ứng dụng đạo hàm để giải quyết một số vấn đề liên quan đến thực tiễn, '
+                        'biểu thức/quy tắc $P(x) = R(x) - C(x)$ chính là nội dung của **Hàm lợi nhuận**.'},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Một vật được ném thẳng đứng lên cao với độ cao $h(t) = -5t^2 + 20t + 1$ ($h$ tính bằng '
+                 'mét, $t$ tính bằng giây). Độ cao lớn nhất mà vật đạt được là:',
+            'options': ['$21\\text{ m}$', '$20\\text{ m}$', '$16\\text{ m}$', '$25\\text{ m}$'],
+            'answer': 0,
+            'solution': "Ta có $h'(t) = -10t + 20 = 0 \\Leftrightarrow t = 2\\text{ s}$. Độ cao lớn nhất là "
+                        '$h(2) = -5 \\cdot 4 + 20 \\cdot 2 + 1 = 21\\text{ m}$.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Khi học **Bài 5: Ứng dụng đạo hàm để giải quyết một số vấn đề liên quan đến thực tiễn** '
+                 '(Chương I: Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số), khẳng định nào sau đây phản '
+                 'ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
+            'options': ['Nhận biết được tính đồng biến, nghịch biến của hàm số trên một khoảng dựa vào dấu '
+                        "của đạo hàm cấp một $f'(x)$.",
+                        "Hiểu được đạo hàm $f'(t)$ biểu thị tốc độ thay đổi tức thời của đại lượng $y = "
+                        'f(t)$ theo biến $t$.',
+                        'Xác định được điểm cực đại, điểm cực tiểu, giá trị cực đại, giá trị cực tiểu của '
+                        "hàm số thông qua bảng biến thiên hoặc đạo hàm cấp hai $f''(x)$.",
+                        'Vận dụng điều kiện đơn điệu và cực trị để giải các bài toán chứa tham số $m$.'],
+            'answer': 1,
+            'solution': 'Theo yêu cầu cần đạt của Bài 5: Ứng dụng đạo hàm để giải quyết một số vấn đề liên '
+                        "quan đến thực tiễn: Hiểu được đạo hàm $f'(t)$ biểu thị tốc độ thay đổi tức thời của "
+                        'đại lượng $y = f(t)$ theo biến $t$.'},
+           {'level': 'hieu',
+            'type': 'tf4',
+            'q': 'Một hộ sản xuất bán $x$ kg sản phẩm mỗi ngày ($1 \\le x \\le 30$) với hàm doanh thu $R(x) '
+                 '= 100x - x^2$ (nghìn đồng) và hàm chi phí $C(x) = x^2 - 20x + 300$ (nghìn đồng). Xét tính '
+                 'đúng sai của các mệnh đề sau:',
+            'statements': ['Hàm lợi nhuận mỗi ngày là $P(x) = -2x^2 + 120x - 300$ (nghìn đồng).',
+                           "Đạo hàm của hàm lợi nhuận là $P'(x) = -4x + 120$.",
+                           'Hộ sản xuất đạt lợi nhuận lớn nhất khi bán $20$ kg sản phẩm mỗi ngày.',
+                           'Lợi nhuận lớn nhất mỗi ngày mà hộ sản xuất thu được là $1500$ nghìn đồng.'],
+            'answer': [True, True, False, True],
+            'solution': 'a) Đúng vì $P(x) = R(x) - C(x) = (100x - x^2) - (x^2 - 20x + 300) = -2x^2 + 120x - '
+                        "300$. b) Đúng vì $P'(x) = -4x + 120$. c) Sai vì $P'(x) = 0 \\Leftrightarrow x = "
+                        '30\\text{ kg}$. d) Đúng vì $P(30) = -2 \\cdot 30^2 + 120 \\cdot 30 - 300 = 1500$ '
+                        'nghìn đồng.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'tf4',
+            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 5: Ứng dụng đạo hàm để '
+                 'giải quyết một số vấn đề liên quan đến thực tiễn**:',
+            'statements': ["Một trong các yêu cầu cần đạt của bài học là: Hiểu được đạo hàm $f'(t)$ biểu thị "
+                           'tốc độ thay đổi tức thời của đại lượng $y = f(t)$ theo biến $t$.',
+                           'Quy tắc/công thức **Vận tốc và gia tốc tức thời** trong bài được xác định bởi: '
+                           "$v(t) = s'(t), \\quad a(t) = v'(t) = s''(t)$.",
+                           'Trong mọi trường hợp, **Vận tốc và gia tốc tức thời** luôn được tính bằng công '
+                           "thức $f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm) (thuộc Đồng "
+                           'biến trên khoảng) mà không cần điều kiện của Bài 5: Ứng dụng đạo hàm để giải '
+                           'quyết một số vấn đề liên quan đến thực tiễn.',
+                           'Với bài toán minh họa: “Một tấm bìa hình vuông cạnh $12\\text{ cm}$. Người ta '
+                           'cắt bỏ ở bốn góc bốn hình vuông bằng nhau cạnh $x\\text{ cm}$ rồi gấp lại thành '
+                           'một hình...”, lời giải đúng là: Điều kiện $0 < x < 6$. Đáy hộp là hình vuông '
+                           'cạnh $12 - 2x$, chiều cao hộp là $x$. Thể tích hộp là $V(x) = x(12 - 2x)^2 = '
+                           '4x(6 - x)^2 = 4(x^3 - 12x^2 + 36x)$...'],
+            'answer': [True, True, False, True],
+            'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 5: Ứng dụng đạo hàm để giải quyết một số '
+                        'vấn đề liên quan đến thực tiễn. b) **Đúng** theo công thức trọng tâm **Vận tốc và '
+                        "gia tốc tức thời** ($v(t) = s'(t), \\quad a(t) = v'(t) = s''(t)$). c) **Sai** vì "
+                        "$f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm) là công thức của nội "
+                        'dung khác, không phải quy tắc chung của **Vận tốc và gia tốc tức thời**. d) '
+                        '**Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+           {'level': 'vandung',
+            'type': 'mcq',
+            'q': 'Vận dụng kiến thức **Bài 5: Ứng dụng đạo hàm để giải quyết một số vấn đề liên quan đến '
+                 'thực tiễn** để giải quyết tình huống sau: Một tấm bìa hình vuông cạnh $12\\text{ cm}$. '
+                 'Người ta cắt bỏ ở bốn góc bốn hình vuông bằng nhau cạnh $x\\text{ cm}$ rồi gấp lại thành '
+                 'một hình hộp chữ nhật không nắp. Tìm $x$ để thể tích hộp lớn nhất. Kết quả và hướng giải '
+                 'nào dưới đây là **đúng**?',
+            'options': ["Tập xác định $D = \\mathbb{R}$. Ta có $y' = 3x^2 - 6x = 3x(x - 2)$. Cho $y' = 0 "
+                        "\\Leftrightarrow x = 0$ hoặc $x = 2$. Bảng xét dấu $y'$: trên $(-\\infty; 0)$...",
+                        "Hàm số liên tục trên $[0; 2]$. Ta có $f'(x) = 3x^2 - 3 = 0 \\Leftrightarrow x = 1 "
+                        '\\in (0; 2)$ hoặc $x = -1 \\notin (0; 2)$. Tính giá trị: $f(0) = 2$; $f(1) = 0$...',
+                        'Điều kiện $0 < x < 6$. Đáy hộp là hình vuông cạnh $12 - 2x$, chiều cao hộp là $x$. '
+                        'Thể tích hộp là $V(x) = x(12 - 2x)^2 = 4x(6 - x)^2 = 4(x^3 - 12x^2 + 36x)$...',
+                        'Tập xác định $D = \\mathbb{R} \\setminus \\{1\\}$. Chia đa thức ta có $y = 2x + 1 + '
+                        '\\dfrac{2}{x - 1}$. Vì $\\lim_{x \\to 1^+} y = +\\infty$ và $\\lim_{x \\to 1^-} y = '
+                        '-\\infty$...'],
+            'answer': 2,
+            'solution': 'Lời giải chi tiết theo Bài 5: Ứng dụng đạo hàm để giải quyết một số vấn đề liên '
+                        'quan đến thực tiễn: Điều kiện $0 < x < 6$. Đáy hộp là hình vuông cạnh $12 - 2x$, '
+                        'chiều cao hộp là $x$. Thể tích hộp là $V(x) = x(12 - 2x)^2 = 4x(6 - x)^2 = 4(x^3 - '
+                        "12x^2 + 36x)$. Ta có $V'(x) = 4(3x^2 - 24x + 36) = 12(x - 2)(x - 6)$. Trên $(0; "
+                        "6)$, $V'(x) = 0 \\Leftrightarrow x = 2$. Lập bảng biến thiên suy ra $\\max_{(0; 6)} "
+                        'V(x) = V(2) = 128\\text{ cm}^3$ khi $x = 2\\text{ cm}$.'},
+           {'level': 'vandung',
+            'type': 'short',
+            'q': 'Người ta muốn rào một khu đất hình chữ nhật dọc theo một bờ tường có sẵn (bờ tường làm một '
+                 'cạnh của hình chữ nhật, chỉ cần rào 3 cạnh còn lại) bằng một lưới thép dài $40\\text{ m}$. '
+                 'Diện tích lớn nhất của khu đất rào được là bao nhiêu mét vuông?',
+            'answer': ['200'],
+            'unit': None,
+            'solution': 'Gọi $x\\text{ (m)}$ là chiều rộng vuông góc với tường ($0 < x < 20$), khi đó chiều '
+                        'dài song song với tường là $40 - 2x\\text{ (m)}$. Diện tích $S(x) = x(40 - 2x) = '
+                        "-2x^2 + 40x$. Ta có $S'(x) = -4x + 40 = 0 \\Leftrightarrow x = 10$. Vậy $\\max S = "
+                        'S(10) = 200\\text{ m}^2$.',
+            'alt': None,
+            'note': None}]},
+ {'topic': 'l12-ch02-vecto-khong-gian',
+  'context_title': 'Chương II: Vectơ và hệ trục tọa độ trong không gian',
+  'context': 'Chương II · SGK Toán 12: Vectơ trong không gian, hệ trục tọa độ Oxyz và biểu thức tọa độ của '
+             'các phép toán vectơ.',
+  'title': 'Bài 6: Vectơ trong không gian',
+  'icon': '🧭',
+  'description': 'Khái niệm vectơ trong không gian, quy tắc hình hộp, tích của một số với vectơ và tích vô '
+                 'hướng của hai vectơ trong không gian.',
+  'requirements': ['Nhận biết được vectơ trong không gian, hai vectơ cùng phương, cùng hướng, bằng nhau.',
+                   'Vận dụng được quy tắc ba điểm, quy tắc hình bình hành, quy tắc hình hộp và hệ thức trọng '
+                   'tâm trong không gian.',
+                   'Tính được góc và tích vô hướng của hai vectơ trong không gian.'],
+  'definition': "Vectơ trong không gian là một đoạn thẳng có hướng. Cho hình hộp $ABCD.A'B'C'D'$, quy tắc "
+                'hình hộp khẳng định tổng ba vectơ xuất phát từ một đỉnh theo ba cạnh bằng vectơ đường chéo: '
+                "$\\overrightarrow{AB} + \\overrightarrow{AD} + \\overrightarrow{AA'} = "
+                "\\overrightarrow{AC'}$.",
+  'theory': '1. Quy tắc 3 điểm: $\\overrightarrow{AB} + \\overrightarrow{BC} = \\overrightarrow{AC}$ và '
+            '$\\overrightarrow{OB} - \\overrightarrow{OA} = \\overrightarrow{AB}$. 2. Hệ thức trung điểm $I$ '
+            'của $AB$: $\\overrightarrow{IA} + \\overrightarrow{IB} = \\overrightarrow{0}$ và '
+            '$\\overrightarrow{MA} + \\overrightarrow{MB} = 2\\overrightarrow{MI}$. 3. Hệ thức trọng tâm $G$ '
+            'của tam giác $ABC$: $\\overrightarrow{GA} + \\overrightarrow{GB} + \\overrightarrow{GC} = '
+            '\\overrightarrow{0}$. 4. Tích vô hướng: $\\vec{a} \\cdot \\vec{b} = |\\vec{a}| \\cdot '
+            '|\\vec{b}| \\cdot \\cos(\\vec{a}, \\vec{b})$.',
+  'formulas': [{'category': 'Các quy tắc vectơ trong không gian',
+                'items': [{'name': 'Quy tắc hình hộp',
+                           'formula': "$\\overrightarrow{AB} + \\overrightarrow{AD} + \\overrightarrow{AA'} "
+                                      "= \\overrightarrow{AC'}$"},
+                          {'name': 'Trọng tâm tam giác',
+                           'formula': '$\\overrightarrow{MA} + \\overrightarrow{MB} + \\overrightarrow{MC} = '
+                                      '3\\overrightarrow{MG}$'},
+                          {'name': 'Tích vô hướng',
+                           'formula': '$\\vec{a} \\cdot \\vec{b} = |\\vec{a}| \\cdot |\\vec{b}| \\cdot '
+                                      '\\cos(\\vec{a}, \\vec{b})$'}]}],
+  'example': "Cho hình lập phương $ABCD.A'B'C'D'$ có cạnh bằng $a$. Tính tích vô hướng $\\overrightarrow{AB} "
+             "\\cdot \\overrightarrow{A'C'}$.",
+  'example_answer': "Vì $\\overrightarrow{A'C'} = \\overrightarrow{AC}$ nên $\\overrightarrow{AB} \\cdot "
+                    "\\overrightarrow{A'C'} = \\overrightarrow{AB} \\cdot \\overrightarrow{AC}$. Trong hình "
+                    'vuông $ABCD$ cạnh $a$, ta có $AC = a\\sqrt{2}$ và góc $(\\overrightarrow{AB}, '
+                    '\\overrightarrow{AC}) = \\widehat{BAC} = 45^\\circ$. Do đó $\\overrightarrow{AB} \\cdot '
+                    "\\overrightarrow{A'C'} = a \\cdot a\\sqrt{2} \\cdot \\cos 45^\\circ = a^2$.",
+  'real_life': 'Tổng hợp lực căng dây cáp treo hoặc phân tích các lực tác dụng lên cấu trúc cầu treo trong '
+               'không gian ba chiều.',
+  'quiz': [{'level': 'biet',
+            'type': 'mcq',
+            'q': "Cho hình hộp $ABCD.A'B'C'D'$. Đẳng thức nào dưới đây là quy tắc hình hộp?",
+            'options': ["$\\overrightarrow{AB} + \\overrightarrow{AD} + \\overrightarrow{AA'} = "
+                        '\\overrightarrow{AC}$',
+                        "$\\overrightarrow{AB} + \\overrightarrow{AD} + \\overrightarrow{AA'} = "
+                        "\\overrightarrow{AC'}$",
+                        "$\\overrightarrow{AB} + \\overrightarrow{AC} + \\overrightarrow{AA'} = "
+                        "\\overrightarrow{AC'}$",
+                        "$\\overrightarrow{AB} + \\overrightarrow{AD} + \\overrightarrow{A'A} = "
+                        "\\overrightarrow{AC'}$"],
+            'answer': 1,
+            'solution': 'Theo quy tắc hình hộp, tổng ba vectơ cạnh chung gốc $A$ là $\\overrightarrow{AB} + '
+                        "\\overrightarrow{AD} + \\overrightarrow{AA'} = \\overrightarrow{AC'}$.",
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Cho hai vectơ $\\vec{u}$ và $\\vec{v}$ trong không gian thỏa mãn $|\\vec{u}| = 2$, '
+                 '$|\\vec{v}| = 3$ và $(\\vec{u}, \\vec{v}) = 60^\\circ$. Tích vô hướng $\\vec{u} \\cdot '
+                 '\\vec{v}$ bằng:',
+            'options': ['$6$', '$3\\sqrt{3}$', '$3$', '$-3$'],
+            'answer': 2,
+            'solution': 'Ta có $\\vec{u} \\cdot \\vec{v} = |\\vec{u}| \\cdot |\\vec{v}| \\cdot \\cos '
+                        '60^\\circ = 2 \\cdot 3 \\cdot \\dfrac{1}{2} = 3$.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Theo nội dung trọng tâm của **Bài 6: Vectơ trong không gian**, công thức hoặc quy tắc nào '
+                 'sau đây biểu diễn đúng **Quy tắc hình hộp**?',
+            'options': ['$\\overrightarrow{MA} + \\overrightarrow{MB} + \\overrightarrow{MC} = '
+                        '3\\overrightarrow{MG}$',
+                        '$\\vec{a} \\cdot \\vec{b} = |\\vec{a}| \\cdot |\\vec{b}| \\cdot \\cos(\\vec{a}, '
+                        '\\vec{b})$',
+                        "$f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm)",
+                        "$\\overrightarrow{AB} + \\overrightarrow{AD} + \\overrightarrow{AA'} = "
+                        "\\overrightarrow{AC'}$"],
+            'answer': 3,
+            'solution': 'Theo bảng công thức trọng tâm của Bài 6: Vectơ trong không gian, **Quy tắc hình '
+                        'hộp** được xác định bởi: $\\overrightarrow{AB} + \\overrightarrow{AD} + '
+                        "\\overrightarrow{AA'} = \\overrightarrow{AC'}$."},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Trong **Bài 6: Vectơ trong không gian**, nội dung/biểu thức $\\overrightarrow{MA} + '
+                 '\\overrightarrow{MB} + \\overrightarrow{MC} = 3\\overrightarrow{MG}$ là quy tắc hoặc công '
+                 'thức của mục nào sau đây?',
+            'options': ['Trọng tâm tam giác', 'Quy tắc hình hộp', 'Tích vô hướng', 'Đồng biến trên khoảng'],
+            'answer': 0,
+            'solution': 'Trong Bài 6: Vectơ trong không gian, biểu thức/quy tắc $\\overrightarrow{MA} + '
+                        '\\overrightarrow{MB} + \\overrightarrow{MC} = 3\\overrightarrow{MG}$ chính là nội '
+                        'dung của **Trọng tâm tam giác**.'},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Cho tứ diện $ABCD$ có $G$ là trọng tâm tam giác $BCD$. Đẳng thức nào dưới đây đúng?',
+            'options': ['$\\overrightarrow{AB} + \\overrightarrow{AC} + \\overrightarrow{AD} = '
+                        '\\overrightarrow{AG}$',
+                        '$\\overrightarrow{AB} + \\overrightarrow{AC} + \\overrightarrow{AD} = '
+                        '3\\overrightarrow{AG}$',
+                        '$\\overrightarrow{AB} + \\overrightarrow{AC} + \\overrightarrow{AD} = '
+                        '2\\overrightarrow{AG}$',
+                        '$\\overrightarrow{AB} + \\overrightarrow{AC} + \\overrightarrow{AD} = '
+                        '4\\overrightarrow{AG}$'],
+            'answer': 1,
+            'solution': 'Vì $G$ là trọng tâm tam giác $BCD$ nên với điểm $A$ bất kì ta luôn có '
+                        '$\\overrightarrow{AB} + \\overrightarrow{AC} + \\overrightarrow{AD} = '
+                        '3\\overrightarrow{AG}$.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Khi học **Bài 6: Vectơ trong không gian** (Chương II: Vectơ và hệ trục tọa độ trong không '
+                 'gian), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của '
+                 'bài?',
+            'options': ['Nhận biết được tính đồng biến, nghịch biến của hàm số trên một khoảng dựa vào dấu '
+                        "của đạo hàm cấp một $f'(x)$.",
+                        'Xác định được điểm cực đại, điểm cực tiểu, giá trị cực đại, giá trị cực tiểu của '
+                        "hàm số thông qua bảng biến thiên hoặc đạo hàm cấp hai $f''(x)$.",
+                        'Nhận biết được vectơ trong không gian, hai vectơ cùng phương, cùng hướng, bằng '
+                        'nhau.',
+                        'Vận dụng điều kiện đơn điệu và cực trị để giải các bài toán chứa tham số $m$.'],
+            'answer': 2,
+            'solution': 'Theo yêu cầu cần đạt của Bài 6: Vectơ trong không gian: Nhận biết được vectơ trong '
+                        'không gian, hai vectơ cùng phương, cùng hướng, bằng nhau.'},
+           {'level': 'hieu',
+            'type': 'tf4',
+            'q': 'Cho tứ diện đều $ABCD$ có tất cả các cạnh bằng $a$. Xét tính đúng sai của các mệnh đề sau:',
+            'statements': ['Góc giữa hai vectơ $\\overrightarrow{AB}$ và $\\overrightarrow{AC}$ bằng '
+                           '$60^\\circ$.',
+                           'Góc giữa hai vectơ $\\overrightarrow{AB}$ và $\\overrightarrow{BC}$ bằng '
+                           '$60^\\circ$.',
+                           'Tích vô hướng $\\overrightarrow{AB} \\cdot \\overrightarrow{AC} = '
+                           '\\dfrac{a^2}{2}$.',
+                           'Hai vectơ $\\overrightarrow{AB}$ và $\\overrightarrow{CD}$ vuông góc với nhau.'],
+            'answer': [True, False, True, True],
+            'solution': 'a) Đúng vì $\\triangle ABC$ đều nên $(\\overrightarrow{AB}, \\overrightarrow{AC}) = '
+                        '60^\\circ$. b) Sai vì $(\\overrightarrow{AB}, \\overrightarrow{BC}) = 180^\\circ - '
+                        '\\widehat{ABC} = 120^\\circ$. c) Đúng vì $\\overrightarrow{AB} \\cdot '
+                        '\\overrightarrow{AC} = a \\cdot a \\cdot \\cos 60^\\circ = \\dfrac{a^2}{2}$. d) '
+                        'Đúng vì $\\overrightarrow{AB} \\cdot \\overrightarrow{CD} = \\overrightarrow{AB} '
+                        '\\cdot (\\overrightarrow{AD} - \\overrightarrow{AC}) = \\dfrac{a^2}{2} - '
+                        '\\dfrac{a^2}{2} = 0$.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'tf4',
+            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 6: Vectơ trong không '
+                 'gian**:',
+            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được vectơ trong không '
+                           'gian, hai vectơ cùng phương, cùng hướng, bằng nhau.',
+                           'Quy tắc/công thức **Quy tắc hình hộp** trong bài được xác định bởi: '
+                           "$\\overrightarrow{AB} + \\overrightarrow{AD} + \\overrightarrow{AA'} = "
+                           "\\overrightarrow{AC'}$.",
+                           "Trong mọi trường hợp, **Quy tắc hình hộp** luôn được tính bằng công thức $f'(x) "
+                           '\\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm) (thuộc Đồng biến trên '
+                           'khoảng) mà không cần điều kiện của Bài 6: Vectơ trong không gian.',
+                           "Với bài toán minh họa: “Cho hình lập phương $ABCD.A'B'C'D'$ có cạnh bằng $a$. "
+                           "Tính tích vô hướng $\\overrightarrow{AB} \\cdot \\overrightarrow{A'C'}$.”, lời "
+                           "giải đúng là: Vì $\\overrightarrow{A'C'} = \\overrightarrow{AC}$ nên "
+                           "$\\overrightarrow{AB} \\cdot \\overrightarrow{A'C'} = \\overrightarrow{AB} "
+                           '\\cdot \\overrightarrow{AC}$...'],
+            'answer': [True, True, False, True],
+            'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 6: Vectơ trong không gian. b) **Đúng** '
+                        'theo công thức trọng tâm **Quy tắc hình hộp** ($\\overrightarrow{AB} + '
+                        "\\overrightarrow{AD} + \\overrightarrow{AA'} = \\overrightarrow{AC'}$). c) **Sai** "
+                        "vì $f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm) là công thức của "
+                        'nội dung khác, không phải quy tắc chung của **Quy tắc hình hộp**. d) **Đúng** theo '
+                        'lời giải ví dụ minh họa trong bài học.'},
+           {'level': 'vandung',
+            'type': 'mcq',
+            'q': 'Vận dụng kiến thức **Bài 6: Vectơ trong không gian** để giải quyết tình huống sau: Cho '
+                 "hình lập phương $ABCD.A'B'C'D'$ có cạnh bằng $a$. Tính tích vô hướng $\\overrightarrow{AB} "
+                 "\\cdot \\overrightarrow{A'C'}$. Kết quả và hướng giải nào dưới đây là **đúng**?",
+            'options': ["Tập xác định $D = \\mathbb{R}$. Ta có $y' = 3x^2 - 6x = 3x(x - 2)$. Cho $y' = 0 "
+                        "\\Leftrightarrow x = 0$ hoặc $x = 2$. Bảng xét dấu $y'$: trên $(-\\infty; 0)$...",
+                        "Hàm số liên tục trên $[0; 2]$. Ta có $f'(x) = 3x^2 - 3 = 0 \\Leftrightarrow x = 1 "
+                        '\\in (0; 2)$ hoặc $x = -1 \\notin (0; 2)$. Tính giá trị: $f(0) = 2$; $f(1) = 0$...',
+                        'Tập xác định $D = \\mathbb{R} \\setminus \\{1\\}$. Chia đa thức ta có $y = 2x + 1 + '
+                        '\\dfrac{2}{x - 1}$. Vì $\\lim_{x \\to 1^+} y = +\\infty$ và $\\lim_{x \\to 1^-} y = '
+                        '-\\infty$...',
+                        "Vì $\\overrightarrow{A'C'} = \\overrightarrow{AC}$ nên $\\overrightarrow{AB} \\cdot "
+                        "\\overrightarrow{A'C'} = \\overrightarrow{AB} \\cdot \\overrightarrow{AC}$. Tro..."],
+            'answer': 3,
+            'solution': "Lời giải chi tiết theo Bài 6: Vectơ trong không gian: Vì $\\overrightarrow{A'C'} = "
+                        "\\overrightarrow{AC}$ nên $\\overrightarrow{AB} \\cdot \\overrightarrow{A'C'} = "
+                        '\\overrightarrow{AB} \\cdot \\overrightarrow{AC}$. Trong hình vuông $ABCD$ cạnh '
+                        '$a$, ta có $AC = a\\sqrt{2}$ và góc $(\\overrightarrow{AB}, \\overrightarrow{AC}) = '
+                        '\\widehat{BAC} = 45^\\circ$. Do đó $\\overrightarrow{AB} \\cdot '
+                        "\\overrightarrow{A'C'} = a \\cdot a\\sqrt{2} \\cdot \\cos 45^\\circ = a^2$."},
+           {'level': 'vandung',
+            'type': 'short',
+            'q': 'Ba lực $\\vec{F}_1, \\vec{F}_2, \\vec{F}_3$ đôi một vuông góc với nhau cùng tác dụng vào '
+                 'một vật tại điểm $O$ với độ lớn lần lượt là $3\\text{ N}, 4\\text{ N}, 12\\text{ N}$. Tính '
+                 'độ lớn hợp lực $\\vec{F} = \\vec{F}_1 + \\vec{F}_2 + \\vec{F}_3$ (đơn vị: N).',
+            'answer': ['13'],
+            'unit': None,
+            'solution': 'Vì ba lực đôi một vuông góc nên theo quy tắc hình hộp chữ nhật, độ lớn hợp lực là '
+                        '$|\\vec{F}| = \\sqrt{|\\vec{F}_1|^2 + |\\vec{F}_2|^2 + |\\vec{F}_3|^2} = \\sqrt{3^2 '
+                        '+ 4^2 + 12^2} = \\sqrt{169} = 13\\text{ N}$.',
+            'alt': None,
+            'note': None}]},
+ {'topic': 'l12-ch02-vecto-khong-gian',
+  'context_title': 'Chương II: Vectơ và hệ trục tọa độ trong không gian',
+  'context': 'Chương II · SGK Toán 12: Vectơ trong không gian, hệ trục tọa độ Oxyz và biểu thức tọa độ của '
+             'các phép toán vectơ.',
+  'title': 'Bài 7: Hệ trục tọa độ trong không gian',
+  'icon': '🌐',
+  'description': 'Hệ trục tọa độ Oxyz, tọa độ của điểm, tọa độ của vectơ và hình chiếu của điểm trên các '
+                 'trục và mặt phẳng tọa độ.',
+  'requirements': ['Nhận biết được hệ trục tọa độ $Oxyz$ với ba vectơ đơn vị $\\vec{i}, \\vec{j}, \\vec{k}$ '
+                   'đôi một vuông góc.',
+                   'Xác định được tọa độ của điểm $M(x; y; z)$ và tọa độ của vectơ $\\vec{u} = (x; y; z)$ '
+                   'trong không gian.',
+                   'Tìm được tọa độ hình chiếu vuông góc và điểm đối xứng qua các trục, các mặt phẳng tọa '
+                   'độ.'],
+  'definition': 'Hệ trục tọa độ $Oxyz$ gồm ba trục $Ox, Oy, Oz$ đôi một vuông góc tại gốc $O$, với các vectơ '
+                'đơn vị tương ứng là $\\vec{i}, \\vec{j}, \\vec{k}$. Nếu $\\vec{u} = x\\vec{i} + y\\vec{j} + '
+                'z\\vec{k}$ thì $\\vec{u} = (x; y; z)$. Điểm $M$ có tọa độ $(x; y; z)$ khi và chỉ khi '
+                '$\\overrightarrow{OM} = x\\vec{i} + y\\vec{j} + z\\vec{k}$.',
+  'theory': '1. Cho $A(x_A; y_A; z_A)$ và $B(x_B; y_B; z_B)$, ta có $\\overrightarrow{AB} = (x_B - x_A; y_B '
+            '- y_A; z_B - z_A)$. 2. Hình chiếu vuông góc của $M(x; y; z)$ lên trục $Ox, Oy, Oz$ lần lượt là '
+            '$(x; 0; 0), (0; y; 0), (0; 0; z)$. 3. Hình chiếu vuông góc của $M(x; y; z)$ lên mặt phẳng '
+            '$(Oxy), (Oyz), (Ozx)$ lần lượt là $(x; y; 0), (0; y; z), (x; 0; z)$.',
+  'formulas': [{'category': 'Tọa độ điểm và vectơ',
+                'items': [{'name': 'Biểu diễn qua vectơ đơn vị',
+                           'formula': '$\\vec{u} = x\\vec{i} + y\\vec{j} + z\\vec{k} \\Leftrightarrow '
+                                      '\\vec{u} = (x; y; z)$'},
+                          {'name': 'Tọa độ vectơ theo hai đầu mút',
+                           'formula': '$\\overrightarrow{AB} = (x_B - x_A; y_B - y_A; z_B - z_A)$'},
+                          {'name': 'Hình chiếu lên mặt phẳng (Oxy)',
+                           'formula': "$M(x; y; z) \\mapsto M'(x; y; 0)$"}]}],
+  'example': 'Trong không gian $Oxyz$, cho hai điểm $A(1; -2; 3)$ và $B(4; 1; -1)$. Tìm tọa độ vectơ '
+             '$\\overrightarrow{AB}$ và hình chiếu của $A$ lên mặt phẳng $(Oxz)$.',
+  'example_answer': 'Ta có $\\overrightarrow{AB} = (4 - 1; 1 - (-2); -1 - 3) = (3; 3; -4)$. Hình chiếu vuông '
+                    "góc của $A(1; -2; 3)$ lên mặt phẳng $(Oxz)$ có tung độ bằng $0$, tức là điểm $A'(1; 0; "
+                    '3)$.',
+  'real_life': 'Xác định vị trí máy bay hoặc vệ tinh trong không gian ba chiều thông qua kinh độ, vĩ độ và '
+               'độ cao.',
+  'quiz': [{'level': 'biet',
+            'type': 'mcq',
+            'q': 'Trong không gian $Oxyz$, cho vectơ $\\vec{u} = 2\\vec{i} - 3\\vec{j} + 5\\vec{k}$. Tọa độ '
+                 'của vectơ $\\vec{u}$ là:',
+            'options': ['$(2; 3; 5)$', '$(-2; 3; -5)$', '$(2; -3; 5)$', '$(2; -3; -5)$'],
+            'answer': 2,
+            'solution': 'Theo định nghĩa tọa độ vectơ, $\\vec{u} = 2\\vec{i} - 3\\vec{j} + 5\\vec{k}$ có tọa '
+                        'độ là $(2; -3; 5)$.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Trong không gian $Oxyz$, hình chiếu vuông góc của điểm $M(3; -4; 2)$ trên mặt phẳng '
+                 '$(Oxy)$ có tọa độ là:',
+            'options': ['$(0; -4; 2)$', '$(3; 0; 2)$', '$(0; 0; 2)$', '$(3; -4; 0)$'],
+            'answer': 3,
+            'solution': 'Hình chiếu vuông góc của $M(x; y; z)$ trên mặt phẳng $(Oxy)$ là $(x; y; 0)$, nên '
+                        'tọa độ cần tìm là $(3; -4; 0)$.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Theo nội dung trọng tâm của **Bài 7: Hệ trục tọa độ trong không gian**, công thức hoặc quy '
+                 'tắc nào sau đây biểu diễn đúng **Biểu diễn qua vectơ đơn vị**?',
+            'options': ['$\\vec{u} = x\\vec{i} + y\\vec{j} + z\\vec{k} \\Leftrightarrow \\vec{u} = (x; y; '
+                        'z)$',
+                        '$\\overrightarrow{AB} = (x_B - x_A; y_B - y_A; z_B - z_A)$',
+                        "$M(x; y; z) \\mapsto M'(x; y; 0)$",
+                        "$f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm)"],
+            'answer': 0,
+            'solution': 'Theo bảng công thức trọng tâm của Bài 7: Hệ trục tọa độ trong không gian, **Biểu '
+                        'diễn qua vectơ đơn vị** được xác định bởi: $\\vec{u} = x\\vec{i} + y\\vec{j} + '
+                        'z\\vec{k} \\Leftrightarrow \\vec{u} = (x; y; z)$.'},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Trong **Bài 7: Hệ trục tọa độ trong không gian**, nội dung/biểu thức $\\overrightarrow{AB} '
+                 '= (x_B - x_A; y_B - y_A; z_B - z_A)$ là quy tắc hoặc công thức của mục nào sau đây?',
+            'options': ['Biểu diễn qua vectơ đơn vị',
+                        'Tọa độ vectơ theo hai đầu mút',
+                        'Hình chiếu lên mặt phẳng (Oxy)',
+                        'Đồng biến trên khoảng'],
+            'answer': 1,
+            'solution': 'Trong Bài 7: Hệ trục tọa độ trong không gian, biểu thức/quy tắc '
+                        '$\\overrightarrow{AB} = (x_B - x_A; y_B - y_A; z_B - z_A)$ chính là nội dung của '
+                        '**Tọa độ vectơ theo hai đầu mút**.'},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Trong không gian $Oxyz$, cho hai điểm $A(2; 1; -3)$ và $B(5; -1; 1)$. Tọa độ của vectơ '
+                 '$\\overrightarrow{AB}$ là:',
+            'options': ['$(-3; 2; -4)$', '$(7; 0; -2)$', '$(3; -2; 4)$', '$(3; 2; -4)$'],
+            'answer': 2,
+            'solution': 'Ta có $\\overrightarrow{AB} = (5 - 2; -1 - 1; 1 - (-3)) = (3; -2; 4)$.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Khi học **Bài 7: Hệ trục tọa độ trong không gian** (Chương II: Vectơ và hệ trục tọa độ '
+                 'trong không gian), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất '
+                 'kiến thức của bài?',
+            'options': ['Nhận biết được tính đồng biến, nghịch biến của hàm số trên một khoảng dựa vào dấu '
+                        "của đạo hàm cấp một $f'(x)$.",
+                        'Xác định được điểm cực đại, điểm cực tiểu, giá trị cực đại, giá trị cực tiểu của '
+                        "hàm số thông qua bảng biến thiên hoặc đạo hàm cấp hai $f''(x)$.",
+                        'Vận dụng điều kiện đơn điệu và cực trị để giải các bài toán chứa tham số $m$.',
+                        'Nhận biết được hệ trục tọa độ $Oxyz$ với ba vectơ đơn vị $\\vec{i}, \\vec{j}, '
+                        '\\vec{k}$ đôi một vuông góc.'],
+            'answer': 3,
+            'solution': 'Theo yêu cầu cần đạt của Bài 7: Hệ trục tọa độ trong không gian: Nhận biết được hệ '
+                        'trục tọa độ $Oxyz$ với ba vectơ đơn vị $\\vec{i}, \\vec{j}, \\vec{k}$ đôi một vuông '
+                        'góc.'},
+           {'level': 'hieu',
+            'type': 'tf4',
+            'q': 'Trong không gian $Oxyz$, cho điểm $A(2; -3; 4)$. Xét tính đúng sai của các mệnh đề sau:',
+            'statements': ['Vectơ $\\overrightarrow{OA} = 2\\vec{i} - 3\\vec{j} + 4\\vec{k}$.',
+                           'Hình chiếu vuông góc của điểm $A$ trên trục $Oz$ là điểm $H(0; 0; 4)$.',
+                           "Điểm đối xứng của $A$ qua mặt phẳng $(Oxy)$ là điểm $A'(-2; 3; 4)$.",
+                           'Khoảng cách từ điểm $A$ đến mặt phẳng $(Oyz)$ bằng $2$.'],
+            'answer': [True, True, False, True],
+            'solution': 'a) Đúng theo định nghĩa tọa độ điểm. b) Đúng vì chiếu lên $Oz$ giữ nguyên cao độ $z '
+                        '= 4$. c) Sai vì đối xứng qua $(Oxy)$ đổi dấu cao độ $z$, được $(2; -3; -4)$. d) '
+                        'Đúng vì khoảng cách từ $A(x; y; z)$ đến $(Oyz)$ là $|x| = |2| = 2$.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'tf4',
+            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 7: Hệ trục tọa độ trong '
+                 'không gian**:',
+            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được hệ trục tọa độ '
+                           '$Oxyz$ với ba vectơ đơn vị $\\vec{i}, \\vec{j}, \\vec{k}$ đôi một vuông góc.',
+                           'Quy tắc/công thức **Biểu diễn qua vectơ đơn vị** trong bài được xác định bởi: '
+                           '$\\vec{u} = x\\vec{i} + y\\vec{j} + z\\vec{k} \\Leftrightarrow \\vec{u} = (x; y; '
+                           'z)$.',
+                           'Trong mọi trường hợp, **Biểu diễn qua vectơ đơn vị** luôn được tính bằng công '
+                           "thức $f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm) (thuộc Đồng "
+                           'biến trên khoảng) mà không cần điều kiện của Bài 7: Hệ trục tọa độ trong không '
+                           'gian.',
+                           'Với bài toán minh họa: “Trong không gian $Oxyz$, cho hai điểm $A(1; -2; 3)$ và '
+                           '$B(4; 1; -1)$. Tìm tọa độ vectơ $\\overrightarrow{AB}$ và hình chiếu của $A$ lên '
+                           'mặt p...”, lời giải đúng là: Ta có $\\overrightarrow{AB} = (4 - 1; 1 - (-2); -1 '
+                           '- 3) = (3; 3; -4)$. Hình chiếu vuông góc của $A(1; -2; 3)$ lên mặt phẳng $(Oxz)$ '
+                           'có tung đ...'],
+            'answer': [True, True, False, True],
+            'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 7: Hệ trục tọa độ trong không gian. b) '
+                        '**Đúng** theo công thức trọng tâm **Biểu diễn qua vectơ đơn vị** ($\\vec{u} = '
+                        'x\\vec{i} + y\\vec{j} + z\\vec{k} \\Leftrightarrow \\vec{u} = (x; y; z)$). c) '
+                        "**Sai** vì $f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm) là công "
+                        'thức của nội dung khác, không phải quy tắc chung của **Biểu diễn qua vectơ đơn '
+                        'vị**. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+           {'level': 'vandung',
+            'type': 'mcq',
+            'q': 'Vận dụng kiến thức **Bài 7: Hệ trục tọa độ trong không gian** để giải quyết tình huống '
+                 'sau: Trong không gian $Oxyz$, cho hai điểm $A(1; -2; 3)$ và $B(4; 1; -1)$. Tìm tọa độ '
+                 'vectơ $\\overrightarrow{AB}$ và hình chiếu của $A$ lên mặt phẳng $(Oxz)$. Kết quả và hướng '
+                 'giải nào dưới đây là **đúng**?',
+            'options': ['Ta có $\\overrightarrow{AB} = (4 - 1; 1 - (-2); -1 - 3) = (3; 3; -4)$. Hình chiếu '
+                        'vuông góc của $A(1; -2; 3)$ lên mặt phẳng $(Oxz)$ có tung độ bằng $0$, tức...',
+                        "Tập xác định $D = \\mathbb{R}$. Ta có $y' = 3x^2 - 6x = 3x(x - 2)$. Cho $y' = 0 "
+                        "\\Leftrightarrow x = 0$ hoặc $x = 2$. Bảng xét dấu $y'$: trên $(-\\infty; 0)$...",
+                        "Hàm số liên tục trên $[0; 2]$. Ta có $f'(x) = 3x^2 - 3 = 0 \\Leftrightarrow x = 1 "
+                        '\\in (0; 2)$ hoặc $x = -1 \\notin (0; 2)$. Tính giá trị: $f(0) = 2$; $f(1) = 0$...',
+                        'Tập xác định $D = \\mathbb{R} \\setminus \\{1\\}$. Chia đa thức ta có $y = 2x + 1 + '
+                        '\\dfrac{2}{x - 1}$. Vì $\\lim_{x \\to 1^+} y = +\\infty$ và $\\lim_{x \\to 1^-} y = '
+                        '-\\infty$...'],
+            'answer': 0,
+            'solution': 'Lời giải chi tiết theo Bài 7: Hệ trục tọa độ trong không gian: Ta có '
+                        '$\\overrightarrow{AB} = (4 - 1; 1 - (-2); -1 - 3) = (3; 3; -4)$. Hình chiếu vuông '
+                        "góc của $A(1; -2; 3)$ lên mặt phẳng $(Oxz)$ có tung độ bằng $0$, tức là điểm $A'(1; "
+                        '0; 3)$.'},
+           {'level': 'vandung',
+            'type': 'short',
+            'q': 'Trong không gian $Oxyz$, cho ba điểm $A(1; 2; 0)$, $B(3; -1; 2)$ và $C(2; 4; -1)$. Tìm '
+                 'hoành độ của điểm $D$ sao cho tứ giác $ABCD$ là hình bình hành.',
+            'answer': ['0'],
+            'unit': None,
+            'solution': 'Để $ABCD$ là hình bình hành thì $\\overrightarrow{AB} = \\overrightarrow{DC}$. Ta '
+                        'có $\\overrightarrow{AB} = (2; -3; 2)$ và $\\overrightarrow{DC} = (2 - x_D; 4 - '
+                        'y_D; -1 - z_D)$. Suy ra $2 - x_D = 2 \\Leftrightarrow x_D = 0$.',
+            'alt': None,
+            'note': None}]},
+ {'topic': 'l12-ch02-vecto-khong-gian',
+  'context_title': 'Chương II: Vectơ và hệ trục tọa độ trong không gian',
+  'context': 'Chương II · SGK Toán 12: Vectơ trong không gian, hệ trục tọa độ Oxyz và biểu thức tọa độ của '
+             'các phép toán vectơ.',
+  'title': 'Bài 8: Biểu thức tọa độ của các phép toán vectơ',
+  'icon': '🧮',
+  'description': 'Công thức tọa độ của tổng, hiệu hai vectơ, tích vô hướng, độ dài đoạn thẳng, tọa độ trung '
+                 'điểm và trọng tâm tam giác.',
+  'requirements': ['Thực hiện được các phép toán cộng, trừ vectơ, nhân một số với vectơ và tích vô hướng '
+                   'bằng tọa độ.',
+                   'Tính được độ dài vectơ, khoảng cách giữa hai điểm và góc giữa hai vectơ trong không gian '
+                   '$Oxyz$.',
+                   'Xác định được tọa độ trung điểm đoạn thẳng và tọa độ trọng tâm tam giác.'],
+  'definition': 'Trong không gian $Oxyz$, cho $\\vec{a} = (x_1; y_1; z_1)$ và $\\vec{b} = (x_2; y_2; z_2)$. '
+                'Khi đó $\\vec{a} \\pm \\vec{b} = (x_1 \\pm x_2; y_1 \\pm y_2; z_1 \\pm z_2)$, $k\\vec{a} = '
+                '(kx_1; ky_1; kz_1)$ và tích vô hướng $\\vec{a} \\cdot \\vec{b} = x_1x_2 + y_1y_2 + z_1z_2$.',
+  'theory': '1. Độ dài vectơ: $|\\vec{a}| = \\sqrt{x_1^2 + y_1^2 + z_1^2}$; khoảng cách $AB = \\sqrt{(x_B - '
+            'x_A)^2 + (y_B - y_A)^2 + (z_B - z_A)^2}$. 2. Hai vectơ vuông góc: $\\vec{a} \\perp \\vec{b} '
+            '\\Leftrightarrow x_1x_2 + y_1y_2 + z_1z_2 = 0$. 3. Trung điểm $I$ của $AB$: '
+            '$I\\left(\\dfrac{x_A + x_B}{2}; \\dfrac{y_A + y_B}{2}; \\dfrac{z_A + z_B}{2}\\right)$; trọng '
+            'tâm $G$ của $\\triangle ABC$: $G\\left(\\dfrac{x_A + x_B + x_C}{3}; \\dfrac{y_A + y_B + '
+            'y_C}{3}; \\dfrac{z_A + z_B + z_C}{3}\\right)$.',
+  'formulas': [{'category': 'Biểu thức tọa độ trong không gian Oxyz',
+                'items': [{'name': 'Tích vô hướng',
+                           'formula': '$\\vec{a} \\cdot \\vec{b} = x_1x_2 + y_1y_2 + z_1z_2$'},
+                          {'name': 'Côsin góc giữa hai vectơ',
+                           'formula': '$\\cos(\\vec{a}, \\vec{b}) = \\dfrac{x_1x_2 + y_1y_2 + '
+                                      'z_1z_2}{\\sqrt{x_1^2 + y_1^2 + z_1^2} \\cdot \\sqrt{x_2^2 + y_2^2 + '
+                                      'z_2^2}}$'},
+                          {'name': 'Khoảng cách giữa hai điểm',
+                           'formula': '$AB = \\sqrt{(x_B - x_A)^2 + (y_B - y_A)^2 + (z_B - z_A)^2}$'}]}],
+  'example': 'Trong không gian $Oxyz$, cho $\\vec{a} = (1; 2; -2)$ và $\\vec{b} = (2; -1; 2)$. Tính '
+             '$\\vec{a} \\cdot \\vec{b}$ và $\\cos(\\vec{a}, \\vec{b})$.',
+  'example_answer': 'Ta có $\\vec{a} \\cdot \\vec{b} = 1 \\cdot 2 + 2 \\cdot (-1) + (-2) \\cdot 2 = -4$. Độ '
+                    'dài $|\\vec{a}| = \\sqrt{1^2 + 2^2 + (-2)^2} = 3$ và $|\\vec{b}| = \\sqrt{2^2 + (-1)^2 '
+                    '+ 2^2} = 3$. Suy ra $\\cos(\\vec{a}, \\vec{b}) = \\dfrac{-4}{3 \\cdot 3} = '
+                    '-\\dfrac{4}{9}$.',
+  'real_life': 'Tính khoảng cách giữa hai máy bay trên màn hình radar kiểm soát không lưu và lập trình đồ '
+               'họa 3D.',
+  'quiz': [{'level': 'biet',
+            'type': 'mcq',
+            'q': 'Trong không gian $Oxyz$, cho hai điểm $A(1; 3; -2)$ và $B(3; -1; 4)$. Tọa độ trung điểm '
+                 '$I$ của đoạn thẳng $AB$ là:',
+            'options': ['$(4; 2; 2)$', '$(1; -2; 3)$', '$(2; 2; 1)$', '$(2; 1; 1)$'],
+            'answer': 3,
+            'solution': 'Tọa độ trung điểm $I$ là $\\left(\\dfrac{1 + 3}{2}; \\dfrac{3 + (-1)}{2}; '
+                        '\\dfrac{-2 + 4}{2}\\right) = (2; 1; 1)$.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Trong không gian $Oxyz$, cho hai vectơ $\\vec{u} = (1; -2; 3)$ và $\\vec{v} = (2; 4; 2)$. '
+                 'Tích vô hướng $\\vec{u} \\cdot \\vec{v}$ bằng:',
+            'options': ['$0$', '$16$', '$-4$', '$6$'],
+            'answer': 0,
+            'solution': 'Ta có $\\vec{u} \\cdot \\vec{v} = 1 \\cdot 2 + (-2) \\cdot 4 + 3 \\cdot 2 = 2 - 8 + '
+                        '6 = 0$.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Theo nội dung trọng tâm của **Bài 8: Biểu thức tọa độ của các phép toán vectơ**, công thức '
+                 'hoặc quy tắc nào sau đây biểu diễn đúng **Tích vô hướng**?',
+            'options': ['$\\cos(\\vec{a}, \\vec{b}) = \\dfrac{x_1x_2 + y_1y_2 + z_1z_2}{\\sqrt{x_1^2 + y_1^2 '
+                        '+ z_1^2} \\cdot \\sqrt{x_2^2 + y_2^2 + z_2^2}}$',
+                        '$\\vec{a} \\cdot \\vec{b} = x_1x_2 + y_1y_2 + z_1z_2$',
+                        '$AB = \\sqrt{(x_B - x_A)^2 + (y_B - y_A)^2 + (z_B - z_A)^2}$',
+                        "$f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm)"],
+            'answer': 1,
+            'solution': 'Theo bảng công thức trọng tâm của Bài 8: Biểu thức tọa độ của các phép toán vectơ, '
+                        '**Tích vô hướng** được xác định bởi: $\\vec{a} \\cdot \\vec{b} = x_1x_2 + y_1y_2 + '
+                        'z_1z_2$.'},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Trong **Bài 8: Biểu thức tọa độ của các phép toán vectơ**, nội dung/biểu thức '
+                 '$\\cos(\\vec{a}, \\vec{b}) = \\dfrac{x_1x_2 + y_1y_2 + z_1z_2}{\\sqrt{x_1^2 + y_1^2 + '
+                 'z_1^2} \\cdot \\sqrt{x_2^2 + y_2^2 + z_2^2}}$ là quy tắc hoặc công thức của mục nào sau '
+                 'đây?',
+            'options': ['Tích vô hướng',
+                        'Khoảng cách giữa hai điểm',
+                        'Côsin góc giữa hai vectơ',
+                        'Đồng biến trên khoảng'],
+            'answer': 2,
+            'solution': 'Trong Bài 8: Biểu thức tọa độ của các phép toán vectơ, biểu thức/quy tắc '
+                        '$\\cos(\\vec{a}, \\vec{b}) = \\dfrac{x_1x_2 + y_1y_2 + z_1z_2}{\\sqrt{x_1^2 + y_1^2 '
+                        '+ z_1^2} \\cdot \\sqrt{x_2^2 + y_2^2 + z_2^2}}$ chính là nội dung của **Côsin góc '
+                        'giữa hai vectơ**.'},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Trong không gian $Oxyz$, khoảng cách giữa hai điểm $M(1; -1; 2)$ và $N(3; 1; -1)$ bằng:',
+            'options': ['$17$', '$3$', '$\\sqrt{13}$', '$\\sqrt{17}$'],
+            'answer': 3,
+            'solution': 'Ta có $\\overrightarrow{MN} = (2; 2; -3) \\Rightarrow MN = \\sqrt{2^2 + 2^2 + '
+                        '(-3)^2} = \\sqrt{17}$.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Khi học **Bài 8: Biểu thức tọa độ của các phép toán vectơ** (Chương II: Vectơ và hệ trục '
+                 'tọa độ trong không gian), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản '
+                 'chất kiến thức của bài?',
+            'options': ['Thực hiện được các phép toán cộng, trừ vectơ, nhân một số với vectơ và tích vô '
+                        'hướng bằng tọa độ.',
+                        'Nhận biết được tính đồng biến, nghịch biến của hàm số trên một khoảng dựa vào dấu '
+                        "của đạo hàm cấp một $f'(x)$.",
+                        'Xác định được điểm cực đại, điểm cực tiểu, giá trị cực đại, giá trị cực tiểu của '
+                        "hàm số thông qua bảng biến thiên hoặc đạo hàm cấp hai $f''(x)$.",
+                        'Vận dụng điều kiện đơn điệu và cực trị để giải các bài toán chứa tham số $m$.'],
+            'answer': 0,
+            'solution': 'Theo yêu cầu cần đạt của Bài 8: Biểu thức tọa độ của các phép toán vectơ: Thực hiện '
+                        'được các phép toán cộng, trừ vectơ, nhân một số với vectơ và tích vô hướng bằng tọa '
+                        'độ.'},
+           {'level': 'hieu',
+            'type': 'tf4',
+            'q': 'Trong không gian $Oxyz$, cho tam giác $ABC$ có $A(1; 0; 2)$, $B(2; 3; 1)$ và $C(0; 3; 3)$. '
+                 'Xét tính đúng sai của các mệnh đề sau:',
+            'statements': ['Trọng tâm $G$ của tam giác $ABC$ có tọa độ là $(1; 2; 2)$.',
+                           'Độ dài cạnh $AB$ bằng $\\sqrt{11}$.',
+                           'Hai vectơ $\\overrightarrow{AB}$ và $\\overrightarrow{AC}$ vuông góc với nhau.',
+                           'Chu vi của tam giác $ABC$ bằng $6$.'],
+            'answer': [True, True, False, False],
+            'solution': 'a) Đúng vì $G\\left(\\dfrac{1+2+0}{3}; \\dfrac{0+3+3}{3}; \\dfrac{2+1+3}{3}\\right) '
+                        '= (1; 2; 2)$. b) Đúng vì $\\overrightarrow{AB} = (1; 3; -1) \\Rightarrow AB = '
+                        '\\sqrt{1 + 9 + 1} = \\sqrt{11}$. c) Sai vì $\\overrightarrow{AC} = (-1; 3; 1) '
+                        '\\Rightarrow \\overrightarrow{AB} \\cdot \\overrightarrow{AC} = -1 + 9 - 1 = 7 \\ne '
+                        '0$. d) Sai vì $AB = AC = \\sqrt{11}$ và $BC = \\sqrt{(-2)^2 + 0^2 + 2^2} = '
+                        '2\\sqrt{2}$, chu vi là $2\\sqrt{11} + 2\\sqrt{2} \\ne 6$.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'tf4',
+            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 8: Biểu thức tọa độ của '
+                 'các phép toán vectơ**:',
+            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Thực hiện được các phép toán cộng, '
+                           'trừ vectơ, nhân một số với vectơ và tích vô hướng bằng tọa độ.',
+                           'Quy tắc/công thức **Tích vô hướng** trong bài được xác định bởi: $\\vec{a} '
+                           '\\cdot \\vec{b} = x_1x_2 + y_1y_2 + z_1z_2$.',
+                           "Trong mọi trường hợp, **Tích vô hướng** luôn được tính bằng công thức $f'(x) "
+                           '\\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm) (thuộc Đồng biến trên '
+                           'khoảng) mà không cần điều kiện của Bài 8: Biểu thức tọa độ của các phép toán '
+                           'vectơ.',
+                           'Với bài toán minh họa: “Trong không gian $Oxyz$, cho $\\vec{a} = (1; 2; -2)$ và '
+                           '$\\vec{b} = (2; -1; 2)$. Tính $\\vec{a} \\cdot \\vec{b}$ và $\\cos(\\vec{a}, '
+                           '\\vec{b})$.”, lời giải đúng là: Ta có $\\vec{a} \\cdot \\vec{b} = 1 \\cdot 2 + 2 '
+                           '\\cdot (-1) + (-2) \\cdot 2 = -4$. Độ dài $|\\vec{a}| = \\sqrt{1^2 + 2^2 + '
+                           '(-2)^2} = 3$ và $|\\vec{b}| = \\sqrt{2^2 + (-1)^2 + 2^2} = 3$...'],
+            'answer': [True, True, False, True],
+            'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 8: Biểu thức tọa độ của các phép toán '
+                        'vectơ. b) **Đúng** theo công thức trọng tâm **Tích vô hướng** ($\\vec{a} \\cdot '
+                        "\\vec{b} = x_1x_2 + y_1y_2 + z_1z_2$). c) **Sai** vì $f'(x) \\ge 0, \\forall x \\in "
+                        'K$ (dấu $=$ tại hữu hạn điểm) là công thức của nội dung khác, không phải quy tắc '
+                        'chung của **Tích vô hướng**. d) **Đúng** theo lời giải ví dụ minh họa trong bài '
+                        'học.'},
+           {'level': 'vandung',
+            'type': 'mcq',
+            'q': 'Vận dụng kiến thức **Bài 8: Biểu thức tọa độ của các phép toán vectơ** để giải quyết tình '
+                 'huống sau: Trong không gian $Oxyz$, cho $\\vec{a} = (1; 2; -2)$ và $\\vec{b} = (2; -1; '
+                 '2)$. Tính $\\vec{a} \\cdot \\vec{b}$ và $\\cos(\\vec{a}, \\vec{b})$. Kết quả và hướng giải '
+                 'nào dưới đây là **đúng**?',
+            'options': ["Tập xác định $D = \\mathbb{R}$. Ta có $y' = 3x^2 - 6x = 3x(x - 2)$. Cho $y' = 0 "
+                        "\\Leftrightarrow x = 0$ hoặc $x = 2$. Bảng xét dấu $y'$: trên $(-\\infty; 0)$...",
+                        'Ta có $\\vec{a} \\cdot \\vec{b} = 1 \\cdot 2 + 2 \\cdot (-1) + (-2) \\cdot 2 = -4$. '
+                        'Độ dài $|\\vec{a}| = \\sqrt{1^2 + 2^2 + (-2)^2} = 3$ và $|\\vec{b}| = \\sqrt{2^2 + '
+                        '(-1)^2 + 2^2} = 3$...',
+                        "Hàm số liên tục trên $[0; 2]$. Ta có $f'(x) = 3x^2 - 3 = 0 \\Leftrightarrow x = 1 "
+                        '\\in (0; 2)$ hoặc $x = -1 \\notin (0; 2)$. Tính giá trị: $f(0) = 2$; $f(1) = 0$...',
+                        'Tập xác định $D = \\mathbb{R} \\setminus \\{1\\}$. Chia đa thức ta có $y = 2x + 1 + '
+                        '\\dfrac{2}{x - 1}$. Vì $\\lim_{x \\to 1^+} y = +\\infty$ và $\\lim_{x \\to 1^-} y = '
+                        '-\\infty$...'],
+            'answer': 1,
+            'solution': 'Lời giải chi tiết theo Bài 8: Biểu thức tọa độ của các phép toán vectơ: Ta có '
+                        '$\\vec{a} \\cdot \\vec{b} = 1 \\cdot 2 + 2 \\cdot (-1) + (-2) \\cdot 2 = -4$. Độ '
+                        'dài $|\\vec{a}| = \\sqrt{1^2 + 2^2 + (-2)^2} = 3$ và $|\\vec{b}| = \\sqrt{2^2 + '
+                        '(-1)^2 + 2^2} = 3$. Suy ra $\\cos(\\vec{a}, \\vec{b}) = \\dfrac{-4}{3 \\cdot 3} = '
+                        '-\\dfrac{4}{9}$.'},
+           {'level': 'vandung',
+            'type': 'short',
+            'q': 'Trong không gian $Oxyz$, cho hai điểm $A(1; 2; 3)$ và $B(3; 4; -1)$. Điểm $M(0; b; 0)$ '
+                 'thuộc trục $Oy$ sao cho $MA^2 + MB^2$ đạt giá trị nhỏ nhất. Tìm giá trị của $b$.',
+            'answer': ['3'],
+            'unit': None,
+            'solution': 'Gọi $I(2; 3; 1)$ là trung điểm của $AB$. Ta có $MA^2 + MB^2 = 2MI^2 + '
+                        '\\dfrac{AB^2}{2}$, đạt giá trị nhỏ nhất khi $MI$ nhỏ nhất, tức $M$ là hình chiếu '
+                        'vuông góc của $I(2; 3; 1)$ trên trục $Oy$. Vậy $M(0; 3; 0) \\Rightarrow b = 3$.',
+            'alt': None,
+            'note': None}]},
+ {'topic': 'l12-ch03-phan-tan-ghep-nhom',
+  'context_title': 'Chương III: Các số đặc trưng đo mức độ phân tán của mẫu số liệu ghép nhóm',
+  'context': 'Chương III · SGK Toán 12: Các số đặc trưng đo mức độ phân tán của mẫu số liệu ghép nhóm '
+             '(khoảng biến thiên, khoảng tứ phân vị, phương sai, độ lệch chuẩn).',
+  'title': 'Bài 9: Khoảng biến thiên và khoảng tứ phân vị của mẫu số liệu ghép nhóm',
+  'icon': '📉',
+  'description': 'Cách tính và ý nghĩa của khoảng biến thiên, khoảng tứ phân vị của mẫu số liệu ghép nhóm '
+                 'trong phân tích thống kê.',
+  'requirements': ['Tính được khoảng biến thiên $R$ của mẫu số liệu ghép nhóm từ hai đầu mút của bảng tần '
+                   'số.',
+                   'Xác định được tứ phân vị thứ nhất $Q_1$, tứ phân vị thứ ba $Q_3$ và khoảng tứ phân vị '
+                   '$\\Delta_Q = Q_3 - Q_1$.',
+                   'Sử dụng được khoảng biến thiên và khoảng tứ phân vị để so sánh mức độ phân tán của các '
+                   'mẫu số liệu.'],
+  'definition': 'Cho mẫu số liệu ghép nhóm với nhóm đầu tiên là $[a_1; a_2)$ và nhóm cuối cùng là $[a_k; '
+                'a_{k+1})$. Khoảng biến thiên của mẫu số liệu ghép nhóm là $R = a_{k+1} - a_1$. Khoảng tứ '
+                'phân vị của mẫu số liệu ghép nhóm là $\\Delta_Q = Q_3 - Q_1$.',
+  'theory': '1. Khoảng biến thiên $R$ càng lớn thì mẫu số liệu càng phân tán, nhưng $R$ phụ thuộc vào các '
+            'giá trị ngoại lệ ở hai đầu. 2. Khoảng tứ phân vị $\\Delta_Q = Q_3 - Q_1$ đo mức độ phân tán của '
+            '$50\\%$ số liệu chính giữa mẫu nên không bị ảnh hưởng bởi các giá trị bất thường.',
+  'formulas': [{'category': 'Khoảng biến thiên và khoảng tứ phân vị',
+                'items': [{'name': 'Khoảng biến thiên', 'formula': '$R = a_{k+1} - a_1$'},
+                          {'name': 'Tứ phân vị thứ r (r = 1, 2, 3)',
+                           'formula': '$Q_r = u_m + \\dfrac{\\dfrac{r \\cdot n}{4} - C}{n_m} \\cdot (u_{m+1} '
+                                      '- u_m)$'},
+                          {'name': 'Khoảng tứ phân vị', 'formula': '$\\Delta_Q = Q_3 - Q_1$'}]}],
+  'example': 'Chiều cao (đơn vị: cm) của 40 học sinh được ghép thành 4 nhóm: $[150; 155)$ có 6 em; $[155; '
+             '160)$ có 14 em; $[160; 165)$ có 12 em; $[165; 170)$ có 8 em. Tính khoảng biến thiên $R$ và tứ '
+             'phân vị thứ nhất $Q_1$.',
+  'example_answer': 'Khoảng biến thiên là $R = 170 - 150 = 20\\text{ (cm)}$. Cỡ mẫu $n = 40 \\Rightarrow '
+                    '\\dfrac{n}{4} = 10$. Nhóm chứa $Q_1$ là nhóm thứ hai $[155; 160)$ vì $6 < 10 \\le 6 + '
+                    '14$. Ta có $Q_1 = 155 + \\dfrac{10 - 6}{14} \\cdot (160 - 155) = 155 + \\dfrac{10}{7} '
+                    '\\approx 156,43\\text{ (cm)}$.',
+  'real_life': 'Đánh giá biên độ dao động nhiệt độ trong tháng và phân tích sự chênh lệch thu nhập của nhóm '
+               'lao động phổ thông.',
+  'quiz': [{'level': 'biet',
+            'type': 'mcq',
+            'q': 'Một mẫu số liệu ghép nhóm gồm các nhóm $[10; 20), [20; 30), [30; 40), [40; 50)$. Khoảng '
+                 'biến thiên $R$ của mẫu số liệu ghép nhóm này bằng:',
+            'options': ['$40$', '$30$', '$50$', '$10$'],
+            'answer': 0,
+            'solution': 'Khoảng biến thiên của mẫu số liệu ghép nhóm là hiệu giữa đầu mút phải của nhóm cuối '
+                        'cùng và đầu mút trái của nhóm đầu tiên: $R = 50 - 10 = 40$.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Cho mẫu số liệu ghép nhóm có tứ phân vị thứ nhất $Q_1 = 15,2$ và tứ phân vị thứ ba $Q_3 = '
+                 '24,8$. Khoảng tứ phân vị $\\Delta_Q$ của mẫu số liệu bằng:',
+            'options': ['$40,0$', '$9,6$', '$20,0$', '$4,8$'],
+            'answer': 1,
+            'solution': 'Ta có $\\Delta_Q = Q_3 - Q_1 = 24,8 - 15,2 = 9,6$.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Theo nội dung trọng tâm của **Bài 9: Khoảng biến thiên và khoảng tứ phân vị của mẫu số '
+                 'liệu ghép nhóm**, công thức hoặc quy tắc nào sau đây biểu diễn đúng **Khoảng biến thiên**?',
+            'options': ['$Q_r = u_m + \\dfrac{\\dfrac{r \\cdot n}{4} - C}{n_m} \\cdot (u_{m+1} - u_m)$',
+                        '$\\Delta_Q = Q_3 - Q_1$',
+                        '$R = a_{k+1} - a_1$',
+                        "$f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm)"],
+            'answer': 2,
+            'solution': 'Theo bảng công thức trọng tâm của Bài 9: Khoảng biến thiên và khoảng tứ phân vị của '
+                        'mẫu số liệu ghép nhóm, **Khoảng biến thiên** được xác định bởi: $R = a_{k+1} - '
+                        'a_1$.'},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Trong **Bài 9: Khoảng biến thiên và khoảng tứ phân vị của mẫu số liệu ghép nhóm**, nội '
+                 'dung/biểu thức $Q_r = u_m + \\dfrac{\\dfrac{r \\cdot n}{4} - C}{n_m} \\cdot (u_{m+1} - '
+                 'u_m)$ là quy tắc hoặc công thức của mục nào sau đây?',
+            'options': ['Khoảng biến thiên',
+                        'Khoảng tứ phân vị',
+                        'Đồng biến trên khoảng',
+                        'Tứ phân vị thứ r (r = 1, 2, 3)'],
+            'answer': 3,
+            'solution': 'Trong Bài 9: Khoảng biến thiên và khoảng tứ phân vị của mẫu số liệu ghép nhóm, biểu '
+                        'thức/quy tắc $Q_r = u_m + \\dfrac{\\dfrac{r \\cdot n}{4} - C}{n_m} \\cdot (u_{m+1} '
+                        '- u_m)$ chính là nội dung của **Tứ phân vị thứ r (r = 1, 2, 3)**.'},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Số đặc trưng nào dưới đây đo mức độ phân tán của mẫu số liệu ghép nhóm mà không bị ảnh '
+                 'hưởng bởi các giá trị ngoại lệ (bất thường)?',
+            'options': ['Khoảng tứ phân vị $\\Delta_Q$',
+                        'Khoảng biến thiên $R$',
+                        'Số trung bình $\\bar{x}$',
+                        'Mốt $M_o$'],
+            'answer': 0,
+            'solution': 'Khoảng tứ phân vị $\\Delta_Q = Q_3 - Q_1$ chỉ phụ thuộc vào $50\\%$ số liệu ở giữa '
+                        'nên không bị ảnh hưởng bởi các giá trị ngoại lệ.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Khi học **Bài 9: Khoảng biến thiên và khoảng tứ phân vị của mẫu số liệu ghép nhóm** '
+                 '(Chương III: Các số đặc trưng đo mức độ phân tán của mẫu số liệu ghép nhóm), khẳng định '
+                 'nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
+            'options': ['Nhận biết được tính đồng biến, nghịch biến của hàm số trên một khoảng dựa vào dấu '
+                        "của đạo hàm cấp một $f'(x)$.",
+                        'Tính được khoảng biến thiên $R$ của mẫu số liệu ghép nhóm từ hai đầu mút của bảng '
+                        'tần số.',
+                        'Xác định được điểm cực đại, điểm cực tiểu, giá trị cực đại, giá trị cực tiểu của '
+                        "hàm số thông qua bảng biến thiên hoặc đạo hàm cấp hai $f''(x)$.",
+                        'Vận dụng điều kiện đơn điệu và cực trị để giải các bài toán chứa tham số $m$.'],
+            'answer': 1,
+            'solution': 'Theo yêu cầu cần đạt của Bài 9: Khoảng biến thiên và khoảng tứ phân vị của mẫu số '
+                        'liệu ghép nhóm: Tính được khoảng biến thiên $R$ của mẫu số liệu ghép nhóm từ hai '
+                        'đầu mút của bảng tần số.'},
+           {'level': 'hieu',
+            'type': 'tf4',
+            'q': 'Thời gian tự học (phút/ngày) của $40$ học sinh được cho bởi bảng ghép nhóm: $[30; 60)$ có '
+                 '$10$ học sinh; $[60; 90)$ có $15$ học sinh; $[90; 120)$ có $10$ học sinh; $[120; 150)$ có '
+                 '$5$ học sinh. Xét tính đúng sai của các mệnh đề sau:',
+            'statements': ['Khoảng biến thiên của mẫu số liệu ghép nhóm là $R = 120$ phút.',
+                           'Tứ phân vị thứ nhất của mẫu số liệu ghép nhóm là $Q_1 = 60$.',
+                           'Nhóm chứa tứ phân vị thứ ba $Q_3$ là nhóm $[90; 120)$.',
+                           'Khoảng tứ phân vị của mẫu số liệu ghép nhóm là $\\Delta_Q = 45$.'],
+            'answer': [True, True, True, True],
+            'solution': 'a) Đúng vì $R = 150 - 30 = 120$. b) Đúng vì $\\dfrac{n}{4} = 10$ trùng tần số tích '
+                        'lũy nhóm đầu $[30; 60)$ nên $Q_1 = 60$. c) Đúng vì $\\dfrac{3n}{4} = 30$, tần số '
+                        'tích lũy đến nhóm 2 là $25 < 30 \\le 35$ nên $Q_3$ thuộc $[90; 120)$. d) Đúng vì '
+                        '$Q_3 = 90 + \\dfrac{30 - 25}{10} \\cdot 30 = 105 \\Rightarrow \\Delta_Q = 105 - 60 '
+                        '= 45$.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'tf4',
+            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 9: Khoảng biến thiên và '
+                 'khoảng tứ phân vị của mẫu số liệu ghép nhóm**:',
+            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Tính được khoảng biến thiên $R$ '
+                           'của mẫu số liệu ghép nhóm từ hai đầu mút của bảng tần số.',
+                           'Quy tắc/công thức **Khoảng biến thiên** trong bài được xác định bởi: $R = '
+                           'a_{k+1} - a_1$.',
+                           "Trong mọi trường hợp, **Khoảng biến thiên** luôn được tính bằng công thức $f'(x) "
+                           '\\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm) (thuộc Đồng biến trên '
+                           'khoảng) mà không cần điều kiện của Bài 9: Khoảng biến thiên và khoảng tứ phân vị '
+                           'của mẫu số liệu ghép nhóm.',
+                           'Với bài toán minh họa: “Chiều cao (đơn vị: cm) của 40 học sinh được ghép thành 4 '
+                           'nhóm: $[150; 155)$ có 6 em; $[155; 160)$ có 14 em; $[160; 165)$ có 12 em; $[165; '
+                           '170)$...”, lời giải đúng là: Khoảng biến thiên là $R = 170 - 150 = 20\\text{ '
+                           '(cm)}$. Cỡ mẫu $n = 40 \\Rightarrow \\dfrac{n}{4} = 10$. Nhóm chứa $Q_1$ là nhóm '
+                           'thứ hai $[155; 160)$...'],
+            'answer': [True, True, False, True],
+            'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 9: Khoảng biến thiên và khoảng tứ phân vị '
+                        'của mẫu số liệu ghép nhóm. b) **Đúng** theo công thức trọng tâm **Khoảng biến '
+                        "thiên** ($R = a_{k+1} - a_1$). c) **Sai** vì $f'(x) \\ge 0, \\forall x \\in K$ (dấu "
+                        '$=$ tại hữu hạn điểm) là công thức của nội dung khác, không phải quy tắc chung của '
+                        '**Khoảng biến thiên**. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+           {'level': 'vandung',
+            'type': 'mcq',
+            'q': 'Vận dụng kiến thức **Bài 9: Khoảng biến thiên và khoảng tứ phân vị của mẫu số liệu ghép '
+                 'nhóm** để giải quyết tình huống sau: Chiều cao (đơn vị: cm) của 40 học sinh được ghép '
+                 'thành 4 nhóm: $[150; 155)$ có 6 em; $[155; 160)$ có 14 em; $[160; 165)$ có 12 em; $[165; '
+                 '170)$ có 8 em. Tính khoảng biến thiên $R$ và tứ phân vị thứ nhất $Q_1$. Kết quả và hướng '
+                 'giải nào dưới đây là **đúng**?',
+            'options': ["Tập xác định $D = \\mathbb{R}$. Ta có $y' = 3x^2 - 6x = 3x(x - 2)$. Cho $y' = 0 "
+                        "\\Leftrightarrow x = 0$ hoặc $x = 2$. Bảng xét dấu $y'$: trên $(-\\infty; 0)$...",
+                        "Hàm số liên tục trên $[0; 2]$. Ta có $f'(x) = 3x^2 - 3 = 0 \\Leftrightarrow x = 1 "
+                        '\\in (0; 2)$ hoặc $x = -1 \\notin (0; 2)$. Tính giá trị: $f(0) = 2$; $f(1) = 0$...',
+                        'Khoảng biến thiên là $R = 170 - 150 = 20\\text{ (cm)}$. Cỡ mẫu $n = 40 \\Rightarrow '
+                        '\\dfrac{n}{4} = 10$. Nhóm chứa $Q_1$ là nhóm thứ hai $[155; 160)$ vì $6 < 10 \\le 6 '
+                        '+ 14$...',
+                        'Tập xác định $D = \\mathbb{R} \\setminus \\{1\\}$. Chia đa thức ta có $y = 2x + 1 + '
+                        '\\dfrac{2}{x - 1}$. Vì $\\lim_{x \\to 1^+} y = +\\infty$ và $\\lim_{x \\to 1^-} y = '
+                        '-\\infty$...'],
+            'answer': 2,
+            'solution': 'Lời giải chi tiết theo Bài 9: Khoảng biến thiên và khoảng tứ phân vị của mẫu số '
+                        'liệu ghép nhóm: Khoảng biến thiên là $R = 170 - 150 = 20\\text{ (cm)}$. Cỡ mẫu $n = '
+                        '40 \\Rightarrow \\dfrac{n}{4} = 10$. Nhóm chứa $Q_1$ là nhóm thứ hai $[155; 160)$ '
+                        'vì $6 < 10 \\le 6 + 14$. Ta có $Q_1 = 155 + \\dfrac{10 - 6}{14} \\cdot (160 - 155) '
+                        '= 155 + \\dfrac{10}{7} \\approx 156,43\\text{ (cm)}$.'},
+           {'level': 'vandung',
+            'type': 'short',
+            'q': 'Cho mẫu số liệu ghép nhóm về điểm thi của 20 học sinh gồm 4 nhóm: $[2; 4)$ có 3 em; $[4; '
+                 '6)$ có 7 em; $[6; 8)$ có 5 em; $[8; 10)$ có 5 em. Tính khoảng tứ phân vị $\\Delta_Q$ của '
+                 'mẫu số liệu (làm tròn đến hàng phần mười nếu cần).',
+            'answer': ['3,4', '3.4'],
+            'unit': None,
+            'solution': 'Ta có $n = 20 \\Rightarrow \\dfrac{n}{4} = 5$ thuộc nhóm $[4; 6)$ nên $Q_1 = 4 + '
+                        '\\dfrac{5 - 3}{7} \\cdot 2 = \\dfrac{32}{7}$. Lại có $\\dfrac{3n}{4} = 15$ là tần '
+                        'số tích lũy hết nhóm $[6; 8)$ nên $Q_3 = 8$. Vậy $\\Delta_Q = 8 - \\dfrac{32}{7} = '
+                        '\\dfrac{24}{7} \\approx 3,4$.',
+            'alt': None,
+            'note': None}]},
+ {'topic': 'l12-ch03-phan-tan-ghep-nhom',
+  'context_title': 'Chương III: Các số đặc trưng đo mức độ phân tán của mẫu số liệu ghép nhóm',
+  'context': 'Chương III · SGK Toán 12: Các số đặc trưng đo mức độ phân tán của mẫu số liệu ghép nhóm '
+             '(khoảng biến thiên, khoảng tứ phân vị, phương sai, độ lệch chuẩn).',
+  'title': 'Bài 10: Phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm',
+  'icon': '📊',
+  'description': 'Công thức tính phương sai, độ lệch chuẩn của mẫu số liệu ghép nhóm qua giá trị đại diện và '
+                 'ứng dụng đánh giá độ rủi ro, độ ổn định.',
+  'requirements': ['Xác định được giá trị đại diện $x_i$ của mỗi nhóm và số trung bình $\\bar{x}$ của mẫu số '
+                   'liệu ghép nhóm.',
+                   'Tính được phương sai $s^2$ và độ lệch chuẩn $s = \\sqrt{s^2}$ của mẫu số liệu ghép nhóm.',
+                   'Giải thích được ý nghĩa của phương sai và độ lệch chuẩn trong việc đánh giá độ đồng đều, '
+                   'độ ổn định của dữ liệu.'],
+  'definition': 'Với mẫu số liệu ghép nhóm có giá trị đại diện $x_i = \\dfrac{a_i + a_{i+1}}{2}$, tần số '
+                '$n_i$ ($i = 1, \\dots, k$), cỡ mẫu $n = \\sum n_i$ và số trung bình $\\bar{x} = '
+                '\\dfrac{1}{n}\\sum n_i x_i$. Phương sai của mẫu số liệu ghép nhóm là $s^2 = '
+                '\\dfrac{1}{n}\\sum_{i=1}^k n_i(x_i - \\bar{x})^2 = \\left(\\dfrac{1}{n}\\sum_{i=1}^k n_i '
+                'x_i^2\\right) - \\bar{x}^2$. Độ lệch chuẩn là $s = \\sqrt{s^2}$.',
+  'theory': '1. Độ lệch chuẩn $s$ có cùng đơn vị đo với dữ liệu ban đầu nên thuận tiện để giải thích ý nghĩa '
+            'thực tế. 2. Phương sai $s^2$ và độ lệch chuẩn $s$ càng nhỏ thì các số liệu trong mẫu càng tập '
+            'trung quanh số trung bình $\\bar{x}$ (độ ổn định cao, rủi ro thấp).',
+  'formulas': [{'category': 'Phương sai và độ lệch chuẩn',
+                'items': [{'name': 'Số trung bình mẫu ghép nhóm',
+                           'formula': '$\\bar{x} = \\dfrac{n_1 x_1 + n_2 x_2 + \\dots + n_k x_k}{n}$'},
+                          {'name': 'Phương sai mẫu ghép nhóm',
+                           'formula': '$s^2 = \\dfrac{1}{n}\\sum_{i=1}^k n_i(x_i - \\bar{x})^2 = '
+                                      '\\dfrac{1}{n}\\sum_{i=1}^k n_i x_i^2 - \\bar{x}^2$'},
+                          {'name': 'Độ lệch chuẩn', 'formula': '$s = \\sqrt{s^2}$'}]}],
+  'example': 'Khảo sát cân nặng (kg) của 10 quả bưởi thu được: nhóm $[0,8; 1,0)$ có 4 quả; nhóm $[1,0; 1,2)$ '
+             'có 6 quả. Tính số trung bình $\\bar{x}$ và phương sai $s^2$.',
+  'example_answer': 'Giá trị đại diện của hai nhóm lần lượt là $x_1 = 0,9$ và $x_2 = 1,1$. Số trung bình '
+                    '$\\bar{x} = \\dfrac{4 \\cdot 0,9 + 6 \\cdot 1,1}{10} = 1,02\\text{ (kg)}$. Phương sai '
+                    '$s^2 = \\dfrac{4 \\cdot (0,9 - 1,02)^2 + 6 \\cdot (1,1 - 1,02)^2}{10} = \\dfrac{4 '
+                    '\\cdot 0,0144 + 6 \\cdot 0,0064}{10} = 0,0096$.',
+  'real_life': 'Đánh giá độ đồng đều kích thước chi tiết máy trên dây chuyền tự động và đo mức độ biến động '
+               'rủi ro của cổ phiếu.',
+  'quiz': [{'level': 'biet',
+            'type': 'mcq',
+            'q': 'Nếu một mẫu số liệu ghép nhóm có phương sai bằng $s^2 = 16$ thì độ lệch chuẩn $s$ của mẫu '
+                 'số liệu đó bằng:',
+            'options': ['$8$', '$4$', '$256$', '$2$'],
+            'answer': 1,
+            'solution': 'Độ lệch chuẩn là căn bậc hai số học của phương sai: $s = \\sqrt{s^2} = \\sqrt{16} = '
+                        '4$.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Giá trị đại diện của nhóm $[20; 30)$ trong bảng tần số ghép nhóm là:',
+            'options': ['$10$', '$20$', '$25$', '$30$'],
+            'answer': 2,
+            'solution': 'Giá trị đại diện là trung bình cộng hai đầu mút của nhóm: $x_i = \\dfrac{20 + '
+                        '30}{2} = 25$.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Theo nội dung trọng tâm của **Bài 10: Phương sai và độ lệch chuẩn của mẫu số liệu ghép '
+                 'nhóm**, công thức hoặc quy tắc nào sau đây biểu diễn đúng **Số trung bình mẫu ghép nhóm**?',
+            'options': ['$s^2 = \\dfrac{1}{n}\\sum_{i=1}^k n_i(x_i - \\bar{x})^2 = '
+                        '\\dfrac{1}{n}\\sum_{i=1}^k n_i x_i^2 - \\bar{x}^2$',
+                        '$s = \\sqrt{s^2}$',
+                        "$f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm)",
+                        '$\\bar{x} = \\dfrac{n_1 x_1 + n_2 x_2 + \\dots + n_k x_k}{n}$'],
+            'answer': 3,
+            'solution': 'Theo bảng công thức trọng tâm của Bài 10: Phương sai và độ lệch chuẩn của mẫu số '
+                        'liệu ghép nhóm, **Số trung bình mẫu ghép nhóm** được xác định bởi: $\\bar{x} = '
+                        '\\dfrac{n_1 x_1 + n_2 x_2 + \\dots + n_k x_k}{n}$.'},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Trong **Bài 10: Phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm**, nội dung/biểu '
+                 'thức $s^2 = \\dfrac{1}{n}\\sum_{i=1}^k n_i(x_i - \\bar{x})^2 = \\dfrac{1}{n}\\sum_{i=1}^k '
+                 'n_i x_i^2 - \\bar{x}^2$ là quy tắc hoặc công thức của mục nào sau đây?',
+            'options': ['Phương sai mẫu ghép nhóm',
+                        'Số trung bình mẫu ghép nhóm',
+                        'Độ lệch chuẩn',
+                        'Đồng biến trên khoảng'],
+            'answer': 0,
+            'solution': 'Trong Bài 10: Phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm, biểu thức/quy '
+                        'tắc $s^2 = \\dfrac{1}{n}\\sum_{i=1}^k n_i(x_i - \\bar{x})^2 = '
+                        '\\dfrac{1}{n}\\sum_{i=1}^k n_i x_i^2 - \\bar{x}^2$ chính là nội dung của **Phương '
+                        'sai mẫu ghép nhóm**.'},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Hai xạ thủ A và B cùng bắn thử 30 viên đạn và có điểm trung bình bằng nhau. Độ lệch chuẩn '
+                 'điểm bắn của A là $s_A = 0,85$ và của B là $s_B = 1,24$. Khẳng định nào sau đây đúng?',
+            'options': ['Xạ thủ B có phong độ bắn ổn định hơn xạ thủ A.',
+                        'Xạ thủ A có phong độ bắn ổn định hơn xạ thủ B.',
+                        'Hai xạ thủ có độ ổn định như nhau.',
+                        'Không thể so sánh độ ổn định bằng độ lệch chuẩn.'],
+            'answer': 1,
+            'solution': 'Vì $s_A = 0,85 < s_B = 1,24$ nên điểm số của xạ thủ A ít phân tán hơn, tức A bắn ổn '
+                        'định hơn B.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Khi học **Bài 10: Phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm** (Chương III: Các '
+                 'số đặc trưng đo mức độ phân tán của mẫu số liệu ghép nhóm), khẳng định nào sau đây phản '
+                 'ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
+            'options': ['Nhận biết được tính đồng biến, nghịch biến của hàm số trên một khoảng dựa vào dấu '
+                        "của đạo hàm cấp một $f'(x)$.",
+                        'Xác định được điểm cực đại, điểm cực tiểu, giá trị cực đại, giá trị cực tiểu của '
+                        "hàm số thông qua bảng biến thiên hoặc đạo hàm cấp hai $f''(x)$.",
+                        'Xác định được giá trị đại diện $x_i$ của mỗi nhóm và số trung bình $\\bar{x}$ của '
+                        'mẫu số liệu ghép nhóm.',
+                        'Vận dụng điều kiện đơn điệu và cực trị để giải các bài toán chứa tham số $m$.'],
+            'answer': 2,
+            'solution': 'Theo yêu cầu cần đạt của Bài 10: Phương sai và độ lệch chuẩn của mẫu số liệu ghép '
+                        'nhóm: Xác định được giá trị đại diện $x_i$ của mỗi nhóm và số trung bình $\\bar{x}$ '
+                        'của mẫu số liệu ghép nhóm.'},
+           {'level': 'hieu',
+            'type': 'tf4',
+            'q': 'Một mẫu số liệu ghép nhóm có $n = 10$ gồm 2 nhóm: nhóm $[2; 6)$ có tần số $n_1 = 5$ và '
+                 'nhóm $[6; 10)$ có tần số $n_2 = 5$. Xét tính đúng sai của các mệnh đề sau:',
+            'statements': ['Giá trị đại diện của hai nhóm lần lượt là $x_1 = 4$ và $x_2 = 8$.',
+                           'Số trung bình của mẫu số liệu ghép nhóm là $\\bar{x} = 6$.',
+                           'Phương sai của mẫu số liệu ghép nhóm là $s^2 = 4$.',
+                           'Độ lệch chuẩn của mẫu số liệu ghép nhóm là $s = 4$.'],
+            'answer': [True, True, True, False],
+            'solution': 'a) Đúng vì $x_1 = \\dfrac{2+6}{2} = 4, x_2 = \\dfrac{6+10}{2} = 8$. b) Đúng vì '
+                        '$\\bar{x} = \\dfrac{5 \\cdot 4 + 5 \\cdot 8}{10} = 6$. c) Đúng vì $s^2 = '
+                        '\\dfrac{5(4-6)^2 + 5(8-6)^2}{10} = 4$. d) Sai vì độ lệch chuẩn là $s = \\sqrt{4} = '
+                        '2$.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'tf4',
+            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 10: Phương sai và độ '
+                 'lệch chuẩn của mẫu số liệu ghép nhóm**:',
+            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Xác định được giá trị đại diện '
+                           '$x_i$ của mỗi nhóm và số trung bình $\\bar{x}$ của mẫu số liệu ghép nhóm.',
+                           'Quy tắc/công thức **Số trung bình mẫu ghép nhóm** trong bài được xác định bởi: '
+                           '$\\bar{x} = \\dfrac{n_1 x_1 + n_2 x_2 + \\dots + n_k x_k}{n}$.',
+                           'Trong mọi trường hợp, **Số trung bình mẫu ghép nhóm** luôn được tính bằng công '
+                           "thức $f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm) (thuộc Đồng "
+                           'biến trên khoảng) mà không cần điều kiện của Bài 10: Phương sai và độ lệch chuẩn '
+                           'của mẫu số liệu ghép nhóm.',
+                           'Với bài toán minh họa: “Khảo sát cân nặng (kg) của 10 quả bưởi thu được: nhóm '
+                           '$[0,8; 1,0)$ có 4 quả; nhóm $[1,0; 1,2)$ có 6 quả. Tính số trung bình $\\bar{x}$ '
+                           'và phư...”, lời giải đúng là: Giá trị đại diện của hai nhóm lần lượt là $x_1 = '
+                           '0,9$ và $x_2 = 1,1$. Số trung bình $\\bar{x} = \\dfrac{4 \\cdot 0,9 + 6 \\cdot '
+                           '1,1}{10} = 1,02\\text{ (kg)}$...'],
+            'answer': [True, True, False, True],
+            'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 10: Phương sai và độ lệch chuẩn của mẫu số '
+                        'liệu ghép nhóm. b) **Đúng** theo công thức trọng tâm **Số trung bình mẫu ghép '
+                        'nhóm** ($\\bar{x} = \\dfrac{n_1 x_1 + n_2 x_2 + \\dots + n_k x_k}{n}$). c) **Sai** '
+                        "vì $f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm) là công thức của "
+                        'nội dung khác, không phải quy tắc chung của **Số trung bình mẫu ghép nhóm**. d) '
+                        '**Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+           {'level': 'vandung',
+            'type': 'mcq',
+            'q': 'Vận dụng kiến thức **Bài 10: Phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm** để '
+                 'giải quyết tình huống sau: Khảo sát cân nặng (kg) của 10 quả bưởi thu được: nhóm $[0,8; '
+                 '1,0)$ có 4 quả; nhóm $[1,0; 1,2)$ có 6 quả. Tính số trung bình $\\bar{x}$ và phương sai '
+                 '$s^2$. Kết quả và hướng giải nào dưới đây là **đúng**?',
+            'options': ["Tập xác định $D = \\mathbb{R}$. Ta có $y' = 3x^2 - 6x = 3x(x - 2)$. Cho $y' = 0 "
+                        "\\Leftrightarrow x = 0$ hoặc $x = 2$. Bảng xét dấu $y'$: trên $(-\\infty; 0)$...",
+                        "Hàm số liên tục trên $[0; 2]$. Ta có $f'(x) = 3x^2 - 3 = 0 \\Leftrightarrow x = 1 "
+                        '\\in (0; 2)$ hoặc $x = -1 \\notin (0; 2)$. Tính giá trị: $f(0) = 2$; $f(1) = 0$...',
+                        'Tập xác định $D = \\mathbb{R} \\setminus \\{1\\}$. Chia đa thức ta có $y = 2x + 1 + '
+                        '\\dfrac{2}{x - 1}$. Vì $\\lim_{x \\to 1^+} y = +\\infty$ và $\\lim_{x \\to 1^-} y = '
+                        '-\\infty$...',
+                        'Giá trị đại diện của hai nhóm lần lượt là $x_1 = 0,9$ và $x_2 = 1,1$. Số trung bình '
+                        '$\\bar{x} = \\dfrac{4 \\cdot 0,9 + 6 \\cdot 1,1}{10} = 1,02\\text{ (kg)}$. P...'],
+            'answer': 3,
+            'solution': 'Lời giải chi tiết theo Bài 10: Phương sai và độ lệch chuẩn của mẫu số liệu ghép '
+                        'nhóm: Giá trị đại diện của hai nhóm lần lượt là $x_1 = 0,9$ và $x_2 = 1,1$. Số '
+                        'trung bình $\\bar{x} = \\dfrac{4 \\cdot 0,9 + 6 \\cdot 1,1}{10} = 1,02\\text{ '
+                        '(kg)}$. Phương sai $s^2 = \\dfrac{4 \\cdot (0,9 - 1,02)^2 + 6 \\cdot (1,1 - '
+                        '1,02)^2}{10} = \\dfrac{4 \\cdot 0,0144 + 6 \\cdot 0,0064}{10} = 0,0096$.'},
+           {'level': 'vandung',
+            'type': 'short',
+            'q': 'Cho mẫu số liệu ghép nhóm có cỡ mẫu $n = 20$ gồm 3 nhóm: $[0; 2)$ có 5 số liệu; $[2; 4)$ '
+                 'có 10 số liệu; $[4; 6)$ có 5 số liệu. Tính phương sai $s^2$ của mẫu số liệu ghép nhóm này.',
+            'answer': ['2'],
+            'unit': None,
+            'solution': 'Giá trị đại diện là $x_1 = 1, x_2 = 3, x_3 = 5$. Số trung bình $\\bar{x} = '
+                        '\\dfrac{5 \\cdot 1 + 10 \\cdot 3 + 5 \\cdot 5}{20} = 3$. Phương sai $s^2 = '
+                        '\\dfrac{5(1 - 3)^2 + 10(3 - 3)^2 + 5(5 - 3)^2}{20} = \\dfrac{20 + 0 + 20}{20} = 2$.',
+            'alt': None,
+            'note': None}]},
+ {'topic': 'l12-ch04-nguyen-ham-tich-phan',
+  'context_title': 'Chương IV: Nguyên hàm và tích phân',
+  'context': 'Chương IV · SGK Toán 12: Nguyên hàm, tích phân và ứng dụng hình học của tích phân tính diện '
+             'tích, thể tích.',
+  'title': 'Bài 11: Nguyên hàm',
+  'icon': '∫',
+  'description': 'Khái niệm nguyên hàm, tính chất cơ bản của nguyên hàm và bảng nguyên hàm của các hàm số sơ '
+                 'cấp thường gặp.',
+  'requirements': ['Nhận biết được định nghĩa nguyên hàm: $F(x)$ là nguyên hàm của $f(x)$ trên $K$ nếu '
+                   "$F'(x) = f(x)$ với mọi $x \\in K$.",
+                   'Thuộc và áp dụng được bảng nguyên hàm của hàm lũy thừa, hàm lượng giác, hàm số mũ.',
+                   'Vận dụng tính chất tuyến tính của nguyên hàm để tìm họ nguyên hàm và bài toán chuyển '
+                   'động.'],
+  'definition': 'Cho hàm số $f(x)$ xác định trên khoảng $K$. Hàm số $F(x)$ được gọi là một nguyên hàm của '
+                "hàm số $f(x)$ trên $K$ nếu $F'(x) = f(x)$ với mọi $x \\in K$. Họ tất cả các nguyên hàm của "
+                '$f(x)$ trên $K$ được kí hiệu là $\\int f(x)\\,\\mathrm{d}x = F(x) + C$ ($C \\in '
+                '\\mathbb{R}$).',
+  'theory': '1. Tính chất: $\\int k f(x)\\,\\mathrm{d}x = k \\int f(x)\\,\\mathrm{d}x$ ($k \\ne 0$) và '
+            '$\\int [f(x) \\pm g(x)]\\,\\mathrm{d}x = \\int f(x)\\,\\mathrm{d}x \\pm \\int '
+            'g(x)\\,\\mathrm{d}x$. 2. Trong vật lí, nếu biết vận tốc $v(t)$ thì quãng đường $s(t) = \\int '
+            'v(t)\\,\\mathrm{d}t$; nếu biết gia tốc $a(t)$ thì vận tốc $v(t) = \\int a(t)\\,\\mathrm{d}t$.',
+  'formulas': [{'category': 'Bảng nguyên hàm cơ bản',
+                'items': [{'name': 'Nguyên hàm hàm lũy thừa',
+                           'formula': '$\\int x^\\alpha\\,\\mathrm{d}x = \\dfrac{x^{\\alpha + 1}}{\\alpha + '
+                                      '1} + C \\quad (\\alpha \\ne -1), \\quad \\int '
+                                      '\\dfrac{1}{x}\\,\\mathrm{d}x = \\ln|x| + C$'},
+                          {'name': 'Nguyên hàm hàm lượng giác',
+                           'formula': '$\\int \\cos x\\,\\mathrm{d}x = \\sin x + C, \\quad \\int \\sin '
+                                      'x\\,\\mathrm{d}x = -\\cos x + C$'},
+                          {'name': 'Nguyên hàm hàm số mũ',
+                           'formula': '$\\int e^x\\,\\mathrm{d}x = e^x + C, \\quad \\int a^x\\,\\mathrm{d}x '
+                                      '= \\dfrac{a^x}{\\ln a} + C$'}]}],
+  'example': 'Tìm nguyên hàm $F(x)$ của hàm số $f(x) = 3x^2 - 2x + 1$ biết $F(1) = 4$.',
+  'example_answer': 'Ta có $F(x) = \\int (3x^2 - 2x + 1)\\,\\mathrm{d}x = x^3 - x^2 + x + C$. Theo giả thiết '
+                    '$F(1) = 4 \\Leftrightarrow 1^3 - 1^2 + 1 + C = 4 \\Leftrightarrow C = 3$. Vậy $F(x) = '
+                    'x^3 - x^2 + x + 3$.',
+  'real_life': 'Khôi phục phương trình quãng đường di chuyển của tàu vũ trụ hoặc ô tô từ dữ liệu cảm biến '
+               'vận tốc theo thời gian.',
+  'quiz': [{'level': 'biet',
+            'type': 'mcq',
+            'q': 'Họ tất cả các nguyên hàm của hàm số $f(x) = 4x^3 + 2x$ là:',
+            'options': ['$12x^2 + 2 + C$', '$4x^4 + 2x^2 + C$', '$x^4 + x^2 + C$', '$x^4 + 2x^2 + C$'],
+            'answer': 2,
+            'solution': 'Ta có $\\int (4x^3 + 2x)\\,\\mathrm{d}x = 4 \\cdot \\dfrac{x^4}{4} + 2 \\cdot '
+                        '\\dfrac{x^2}{2} + C = x^4 + x^2 + C$.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Khẳng định nào dưới đây đúng?',
+            'options': ['$\\int \\cos x\\,\\mathrm{d}x = -\\sin x + C$',
+                        '$\\int \\sin x\\,\\mathrm{d}x = \\cos x + C$',
+                        '$\\int e^x\\,\\mathrm{d}x = x e^{x - 1} + C$',
+                        '$\\int \\cos x\\,\\mathrm{d}x = \\sin x + C$'],
+            'answer': 3,
+            'solution': "Vì $(\\sin x)' = \\cos x$ nên $\\int \\cos x\\,\\mathrm{d}x = \\sin x + C$.",
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Theo nội dung trọng tâm của **Bài 11: Nguyên hàm**, công thức hoặc quy tắc nào sau đây '
+                 'biểu diễn đúng **Nguyên hàm hàm lũy thừa**?',
+            'options': ['$\\int x^\\alpha\\,\\mathrm{d}x = \\dfrac{x^{\\alpha + 1}}{\\alpha + 1} + C \\quad '
+                        '(\\alpha \\ne -1), \\quad \\int \\dfrac{1}{x}\\,\\mathrm{d}x = \\ln|x| + C$',
+                        '$\\int \\cos x\\,\\mathrm{d}x = \\sin x + C, \\quad \\int \\sin x\\,\\mathrm{d}x = '
+                        '-\\cos x + C$',
+                        '$\\int e^x\\,\\mathrm{d}x = e^x + C, \\quad \\int a^x\\,\\mathrm{d}x = '
+                        '\\dfrac{a^x}{\\ln a} + C$',
+                        "$f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm)"],
+            'answer': 0,
+            'solution': 'Theo bảng công thức trọng tâm của Bài 11: Nguyên hàm, **Nguyên hàm hàm lũy thừa** '
+                        'được xác định bởi: $\\int x^\\alpha\\,\\mathrm{d}x = \\dfrac{x^{\\alpha + '
+                        '1}}{\\alpha + 1} + C \\quad (\\alpha \\ne -1), \\quad \\int '
+                        '\\dfrac{1}{x}\\,\\mathrm{d}x = \\ln|x| + C$.'},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Trong **Bài 11: Nguyên hàm**, nội dung/biểu thức $\\int \\cos x\\,\\mathrm{d}x = \\sin x + '
+                 'C, \\quad \\int \\sin x\\,\\mathrm{d}x = -\\cos x + C$ là quy tắc hoặc công thức của mục '
+                 'nào sau đây?',
+            'options': ['Nguyên hàm hàm lũy thừa',
+                        'Nguyên hàm hàm lượng giác',
+                        'Nguyên hàm hàm số mũ',
+                        'Đồng biến trên khoảng'],
+            'answer': 1,
+            'solution': 'Trong Bài 11: Nguyên hàm, biểu thức/quy tắc $\\int \\cos x\\,\\mathrm{d}x = \\sin x '
+                        '+ C, \\quad \\int \\sin x\\,\\mathrm{d}x = -\\cos x + C$ chính là nội dung của '
+                        '**Nguyên hàm hàm lượng giác**.'},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Cho hàm số $f(x) = e^x + 2x$. Nguyên hàm $F(x)$ của hàm số $f(x)$ thỏa mãn $F(0) = 3$ là:',
+            'options': ['$F(x) = e^x + x^2 + 3$',
+                        '$F(x) = e^x + 2x^2 + 2$',
+                        '$F(x) = e^x + x^2 + 2$',
+                        '$F(x) = e^x + x^2 + 1$'],
+            'answer': 2,
+            'solution': 'Ta có $F(x) = e^x + x^2 + C$. Do $F(0) = 3 \\Rightarrow e^0 + 0 + C = 3 '
+                        '\\Leftrightarrow C = 2$. Vậy $F(x) = e^x + x^2 + 2$.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Khi học **Bài 11: Nguyên hàm** (Chương IV: Nguyên hàm và tích phân), khẳng định nào sau '
+                 'đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
+            'options': ['Nhận biết được tính đồng biến, nghịch biến của hàm số trên một khoảng dựa vào dấu '
+                        "của đạo hàm cấp một $f'(x)$.",
+                        'Xác định được điểm cực đại, điểm cực tiểu, giá trị cực đại, giá trị cực tiểu của '
+                        "hàm số thông qua bảng biến thiên hoặc đạo hàm cấp hai $f''(x)$.",
+                        'Vận dụng điều kiện đơn điệu và cực trị để giải các bài toán chứa tham số $m$.',
+                        'Nhận biết được định nghĩa nguyên hàm: $F(x)$ là nguyên hàm của $f(x)$ trên $K$ nếu '
+                        "$F'(x) = f(x)$ với mọi $x \\in K$."],
+            'answer': 3,
+            'solution': 'Theo yêu cầu cần đạt của Bài 11: Nguyên hàm: Nhận biết được định nghĩa nguyên hàm: '
+                        "$F(x)$ là nguyên hàm của $f(x)$ trên $K$ nếu $F'(x) = f(x)$ với mọi $x \\in K$."},
+           {'level': 'hieu',
+            'type': 'tf4',
+            'q': 'Cho hàm số $f(x) = 2x + \\dfrac{1}{x}$ xác định trên khoảng $(0; +\\infty)$. Xét tính đúng '
+                 'sai của các mệnh đề sau:',
+            'statements': ['Họ nguyên hàm của $f(x)$ trên $(0; +\\infty)$ là $F(x) = x^2 + \\ln x + C$.',
+                           "Nếu $F(x)$ là một nguyên hàm của $f(x)$ thì $F'(1) = 3$.",
+                           'Nguyên hàm $F(x)$ của $f(x)$ thỏa mãn $F(1) = 2$ là $F(x) = x^2 + \\ln x + 2$.',
+                           'Trên khoảng $(0; +\\infty)$, mọi nguyên hàm của $f(x)$ đều là hàm số đồng biến.'],
+            'answer': [True, True, False, True],
+            'solution': 'a) Đúng vì trên $(0; +\\infty)$, $|x| = x$ nên $\\int (2x + '
+                        "\\dfrac{1}{x})\\,\\mathrm{d}x = x^2 + \\ln x + C$. b) Đúng vì $F'(1) = f(1) = 2 "
+                        '\\cdot 1 + 1 = 3$. c) Sai vì $F(1) = 1^2 + \\ln 1 + C = 1 + C = 2 \\Rightarrow C = '
+                        "1$. d) Đúng vì $F'(x) = 2x + \\dfrac{1}{x} > 0, \\forall x > 0$.",
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'tf4',
+            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 11: Nguyên hàm**:',
+            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được định nghĩa nguyên '
+                           "hàm: $F(x)$ là nguyên hàm của $f(x)$ trên $K$ nếu $F'(x) = f(x)$ với mọi $x \\in "
+                           'K$.',
+                           'Quy tắc/công thức **Nguyên hàm hàm lũy thừa** trong bài được xác định bởi: '
+                           '$\\int x^\\alpha\\,\\mathrm{d}x = \\dfrac{x^{\\alpha + 1}}{\\alpha + 1} + C '
+                           '\\quad (\\alpha \\ne -1), \\quad \\int \\dfrac{1}{x}\\,\\mathrm{d}x = \\ln|x| + '
+                           'C$.',
+                           'Trong mọi trường hợp, **Nguyên hàm hàm lũy thừa** luôn được tính bằng công thức '
+                           "$f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm) (thuộc Đồng biến "
+                           'trên khoảng) mà không cần điều kiện của Bài 11: Nguyên hàm.',
+                           'Với bài toán minh họa: “Tìm nguyên hàm $F(x)$ của hàm số $f(x) = 3x^2 - 2x + 1$ '
+                           'biết $F(1) = 4$.”, lời giải đúng là: Ta có $F(x) = \\int (3x^2 - 2x + '
+                           '1)\\,\\mathrm{d}x = x^3 - x^2 + x + C$. Theo giả thiết $F(1) = 4 '
+                           '\\Leftrightarrow 1^3 - 1^2 + 1 + C = 4 \\Leftrightarrow C = 3$...'],
+            'answer': [True, True, False, True],
+            'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 11: Nguyên hàm. b) **Đúng** theo công thức '
+                        'trọng tâm **Nguyên hàm hàm lũy thừa** ($\\int x^\\alpha\\,\\mathrm{d}x = '
+                        '\\dfrac{x^{\\alpha + 1}}{\\alpha + 1} + C \\quad (\\alpha \\ne -1), \\quad \\int '
+                        "\\dfrac{1}{x}\\,\\mathrm{d}x = \\ln|x| + C$). c) **Sai** vì $f'(x) \\ge 0, \\forall "
+                        'x \\in K$ (dấu $=$ tại hữu hạn điểm) là công thức của nội dung khác, không phải quy '
+                        'tắc chung của **Nguyên hàm hàm lũy thừa**. d) **Đúng** theo lời giải ví dụ minh họa '
+                        'trong bài học.'},
+           {'level': 'vandung',
+            'type': 'mcq',
+            'q': 'Vận dụng kiến thức **Bài 11: Nguyên hàm** để giải quyết tình huống sau: Tìm nguyên hàm '
+                 '$F(x)$ của hàm số $f(x) = 3x^2 - 2x + 1$ biết $F(1) = 4$. Kết quả và hướng giải nào dưới '
+                 'đây là **đúng**?',
+            'options': ['Ta có $F(x) = \\int (3x^2 - 2x + 1)\\,\\mathrm{d}x = x^3 - x^2 + x + C$. Theo giả '
+                        'thiết $F(1) = 4 \\Leftrightarrow 1^3 - 1^2 + 1 + C = 4 \\Leftrightarrow C = 3$...',
+                        "Tập xác định $D = \\mathbb{R}$. Ta có $y' = 3x^2 - 6x = 3x(x - 2)$. Cho $y' = 0 "
+                        "\\Leftrightarrow x = 0$ hoặc $x = 2$. Bảng xét dấu $y'$: trên $(-\\infty; 0)$...",
+                        "Hàm số liên tục trên $[0; 2]$. Ta có $f'(x) = 3x^2 - 3 = 0 \\Leftrightarrow x = 1 "
+                        '\\in (0; 2)$ hoặc $x = -1 \\notin (0; 2)$. Tính giá trị: $f(0) = 2$; $f(1) = 0$...',
+                        'Tập xác định $D = \\mathbb{R} \\setminus \\{1\\}$. Chia đa thức ta có $y = 2x + 1 + '
+                        '\\dfrac{2}{x - 1}$. Vì $\\lim_{x \\to 1^+} y = +\\infty$ và $\\lim_{x \\to 1^-} y = '
+                        '-\\infty$...'],
+            'answer': 0,
+            'solution': 'Lời giải chi tiết theo Bài 11: Nguyên hàm: Ta có $F(x) = \\int (3x^2 - 2x + '
+                        '1)\\,\\mathrm{d}x = x^3 - x^2 + x + C$. Theo giả thiết $F(1) = 4 \\Leftrightarrow '
+                        '1^3 - 1^2 + 1 + C = 4 \\Leftrightarrow C = 3$. Vậy $F(x) = x^3 - x^2 + x + 3$.'},
+           {'level': 'vandung',
+            'type': 'short',
+            'q': 'Một ô tô đang chạy với vận tốc $20\\text{ m/s}$ thì người lái đạp phanh; từ thời điểm đó ô '
+                 'tô chuyển động chậm dần đều với vận tốc $v(t) = -4t + 20\\text{ (m/s)}$, trong đó $t$ là '
+                 'thời gian tính bằng giây kể từ lúc đạp phanh. Tính quãng đường ô tô đi được từ lúc đạp '
+                 'phanh đến khi dừng hẳn (đơn vị: mét).',
+            'answer': ['50'],
+            'unit': None,
+            'solution': 'Khi ô tô dừng hẳn thì $v(t) = 0 \\Leftrightarrow -4t + 20 = 0 \\Leftrightarrow t = '
+                        '5\\text{ (s)}$. Quãng đường đi được là $s(t) = \\int v(t)\\,\\mathrm{d}t = -2t^2 + '
+                        '20t + C$. Với $s(0) = 0 \\Rightarrow C = 0$, suy ra $s(5) = -2 \\cdot 5^2 + 20 '
+                        '\\cdot 5 = 50\\text{ (m)}$.',
+            'alt': None,
+            'note': None}]},
+ {'topic': 'l12-ch04-nguyen-ham-tich-phan',
+  'context_title': 'Chương IV: Nguyên hàm và tích phân',
+  'context': 'Chương IV · SGK Toán 12: Nguyên hàm, tích phân và ứng dụng hình học của tích phân tính diện '
+             'tích, thể tích.',
+  'title': 'Bài 12: Tích phân',
+  'icon': '📐',
+  'description': 'Định nghĩa tích phân, công thức Newton-Leibniz, các tính chất của tích phân và ứng dụng '
+                 'trong bài toán thực tiễn.',
+  'requirements': ['Hiểu được định nghĩa tích phân xác định và ý nghĩa hình học của tích phân qua diện tích '
+                   'hình thang cong.',
+                   'Vận dụng thành thạo công thức Newton-Leibniz $\\int_a^b f(x)\\,\\mathrm{d}x = F(b) - '
+                   'F(a)$ và các tính chất của tích phân.',
+                   'Giải quyết được bài toán tính quãng đường, điện lượng hoặc lượng nước chảy qua tích '
+                   'phân.'],
+  'definition': 'Cho hàm số $f(x)$ liên tục trên đoạn $[a; b]$. Nếu $F(x)$ là một nguyên hàm của $f(x)$ trên '
+                '$[a; b]$ thì hiệu số $F(b) - F(a)$ được gọi là tích phân từ $a$ đến $b$ của hàm số $f(x)$, '
+                'kí hiệu là $\\int_a^b f(x)\\,\\mathrm{d}x$.',
+  'theory': '1. Công thức Newton-Leibniz: $\\int_a^b f(x)\\,\\mathrm{d}x = F(x)\\Big|_a^b = F(b) - F(a)$. 2. '
+            'Tính chất cận: $\\int_a^a f(x)\\,\\mathrm{d}x = 0$, $\\int_a^b f(x)\\,\\mathrm{d}x = -\\int_b^a '
+            'f(x)\\,\\mathrm{d}x$, và tính chất chèn cận $\\int_a^b f(x)\\,\\mathrm{d}x = \\int_a^c '
+            'f(x)\\,\\mathrm{d}x + \\int_c^b f(x)\\,\\mathrm{d}x$.',
+  'formulas': [{'category': 'Công thức và tính chất tích phân',
+                'items': [{'name': 'Công thức Newton-Leibniz',
+                           'formula': '$\\int_a^b f(x)\\,\\mathrm{d}x = F(x)\\Big|_a^b = F(b) - F(a)$'},
+                          {'name': 'Tính chất tuyến tính',
+                           'formula': '$\\int_a^b [k f(x) + l g(x)]\\,\\mathrm{d}x = k\\int_a^b '
+                                      'f(x)\\,\\mathrm{d}x + l\\int_a^b g(x)\\,\\mathrm{d}x$'},
+                          {'name': 'Tính chất chèn cận',
+                           'formula': '$\\int_a^c f(x)\\,\\mathrm{d}x + \\int_c^b f(x)\\,\\mathrm{d}x = '
+                                      '\\int_a^b f(x)\\,\\mathrm{d}x$'}]}],
+  'example': 'Tính tích phân $I = \\int_0^2 (3x^2 - 2x + 1)\\,\\mathrm{d}x$.',
+  'example_answer': 'Ta có $I = (x^3 - x^2 + x)\\Big|_0^2 = (2^3 - 2^2 + 2) - 0 = 8 - 4 + 2 = 6$.',
+  'real_life': 'Tính tổng điện năng tiêu thụ từ công suất tức thời hoặc tổng lưu lượng nước xả qua đập thủy '
+               'điện theo thời gian.',
+  'quiz': [{'level': 'biet',
+            'type': 'mcq',
+            'q': 'Cho hàm số $f(x)$ liên tục trên đoạn $[a; b]$ và $F(x)$ là một nguyên hàm của $f(x)$ trên '
+                 '$[a; b]$. Khẳng định nào dưới đây đúng?',
+            'options': ['$\\int_a^b f(x)\\,\\mathrm{d}x = F(a) - F(b)$',
+                        "$\\int_a^b f(x)\\,\\mathrm{d}x = f'(b) - f'(a)$",
+                        '$\\int_a^b f(x)\\,\\mathrm{d}x = F(b) + F(a)$',
+                        '$\\int_a^b f(x)\\,\\mathrm{d}x = F(b) - F(a)$'],
+            'answer': 3,
+            'solution': 'Theo công thức Newton-Leibniz, $\\int_a^b f(x)\\,\\mathrm{d}x = F(b) - F(a)$.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Giá trị của tích phân $\\int_0^1 2x\\,\\mathrm{d}x$ bằng:',
+            'options': ['$1$', '$2$', '$0$', '$\\dfrac{1}{2}$'],
+            'answer': 0,
+            'solution': 'Ta có $\\int_0^1 2x\\,\\mathrm{d}x = x^2\\Big|_0^1 = 1^2 - 0^2 = 1$.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Theo nội dung trọng tâm của **Bài 12: Tích phân**, công thức hoặc quy tắc nào sau đây biểu '
+                 'diễn đúng **Công thức Newton-Leibniz**?',
+            'options': ['$\\int_a^b [k f(x) + l g(x)]\\,\\mathrm{d}x = k\\int_a^b f(x)\\,\\mathrm{d}x + '
+                        'l\\int_a^b g(x)\\,\\mathrm{d}x$',
+                        '$\\int_a^b f(x)\\,\\mathrm{d}x = F(x)\\Big|_a^b = F(b) - F(a)$',
+                        '$\\int_a^c f(x)\\,\\mathrm{d}x + \\int_c^b f(x)\\,\\mathrm{d}x = \\int_a^b '
+                        'f(x)\\,\\mathrm{d}x$',
+                        "$f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm)"],
+            'answer': 1,
+            'solution': 'Theo bảng công thức trọng tâm của Bài 12: Tích phân, **Công thức Newton-Leibniz** '
+                        'được xác định bởi: $\\int_a^b f(x)\\,\\mathrm{d}x = F(x)\\Big|_a^b = F(b) - F(a)$.'},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Trong **Bài 12: Tích phân**, nội dung/biểu thức $\\int_a^b [k f(x) + l '
+                 'g(x)]\\,\\mathrm{d}x = k\\int_a^b f(x)\\,\\mathrm{d}x + l\\int_a^b g(x)\\,\\mathrm{d}x$ là '
+                 'quy tắc hoặc công thức của mục nào sau đây?',
+            'options': ['Công thức Newton-Leibniz',
+                        'Tính chất chèn cận',
+                        'Tính chất tuyến tính',
+                        'Đồng biến trên khoảng'],
+            'answer': 2,
+            'solution': 'Trong Bài 12: Tích phân, biểu thức/quy tắc $\\int_a^b [k f(x) + l '
+                        'g(x)]\\,\\mathrm{d}x = k\\int_a^b f(x)\\,\\mathrm{d}x + l\\int_a^b '
+                        'g(x)\\,\\mathrm{d}x$ chính là nội dung của **Tính chất tuyến tính**.'},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Biết $\\int_1^3 f(x)\\,\\mathrm{d}x = 4$ và $\\int_1^3 g(x)\\,\\mathrm{d}x = -2$. Giá trị '
+                 'của $\\int_1^3 [2f(x) - 3g(x)]\\,\\mathrm{d}x$ bằng:',
+            'options': ['$2$', '$10$', '$-14$', '$14$'],
+            'answer': 3,
+            'solution': 'Ta có $\\int_1^3 [2f(x) - 3g(x)]\\,\\mathrm{d}x = 2\\int_1^3 f(x)\\,\\mathrm{d}x - '
+                        '3\\int_1^3 g(x)\\,\\mathrm{d}x = 2 \\cdot 4 - 3 \\cdot (-2) = 14$.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Khi học **Bài 12: Tích phân** (Chương IV: Nguyên hàm và tích phân), khẳng định nào sau đây '
+                 'phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
+            'options': ['Hiểu được định nghĩa tích phân xác định và ý nghĩa hình học của tích phân qua diện '
+                        'tích hình thang cong.',
+                        'Nhận biết được tính đồng biến, nghịch biến của hàm số trên một khoảng dựa vào dấu '
+                        "của đạo hàm cấp một $f'(x)$.",
+                        'Xác định được điểm cực đại, điểm cực tiểu, giá trị cực đại, giá trị cực tiểu của '
+                        "hàm số thông qua bảng biến thiên hoặc đạo hàm cấp hai $f''(x)$.",
+                        'Vận dụng điều kiện đơn điệu và cực trị để giải các bài toán chứa tham số $m$.'],
+            'answer': 0,
+            'solution': 'Theo yêu cầu cần đạt của Bài 12: Tích phân: Hiểu được định nghĩa tích phân xác định '
+                        'và ý nghĩa hình học của tích phân qua diện tích hình thang cong.'},
+           {'level': 'hieu',
+            'type': 'tf4',
+            'q': 'Cho hai hàm số $f(x), g(x)$ liên tục trên đoạn $[0; 5]$ thỏa mãn $\\int_0^2 '
+                 'f(x)\\,\\mathrm{d}x = 3$ và $\\int_2^5 f(x)\\,\\mathrm{d}x = 7$. Xét tính đúng sai của các '
+                 'mệnh đề sau:',
+            'statements': ['Tích phân $\\int_0^5 f(x)\\,\\mathrm{d}x = 10$.',
+                           'Tích phân $\\int_2^0 f(x)\\,\\mathrm{d}x = 3$.',
+                           'Tích phân $\\int_0^2 [f(x) + 1]\\,\\mathrm{d}x = 5$.',
+                           'Tích phân $\\int_0^5 3f(x)\\,\\mathrm{d}x = 30$.'],
+            'answer': [True, False, True, True],
+            'solution': 'a) Đúng vì $\\int_0^5 f(x)\\,\\mathrm{d}x = \\int_0^2 f(x)\\,\\mathrm{d}x + '
+                        '\\int_2^5 f(x)\\,\\mathrm{d}x = 3 + 7 = 10$. b) Sai vì đảo cận phải đổi dấu: '
+                        '$\\int_2^0 f(x)\\,\\mathrm{d}x = -3$. c) Đúng vì $3 + \\int_0^2 1\\,\\mathrm{d}x = '
+                        '3 + 2 = 5$. d) Đúng vì $3 \\cdot 10 = 30$.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'tf4',
+            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 12: Tích phân**:',
+            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Hiểu được định nghĩa tích phân xác '
+                           'định và ý nghĩa hình học của tích phân qua diện tích hình thang cong.',
+                           'Quy tắc/công thức **Công thức Newton-Leibniz** trong bài được xác định bởi: '
+                           '$\\int_a^b f(x)\\,\\mathrm{d}x = F(x)\\Big|_a^b = F(b) - F(a)$.',
+                           'Trong mọi trường hợp, **Công thức Newton-Leibniz** luôn được tính bằng công thức '
+                           "$f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm) (thuộc Đồng biến "
+                           'trên khoảng) mà không cần điều kiện của Bài 12: Tích phân.',
+                           'Với bài toán minh họa: “Tính tích phân $I = \\int_0^2 (3x^2 - 2x + '
+                           '1)\\,\\mathrm{d}x$.”, lời giải đúng là: Ta có $I = (x^3 - x^2 + x)\\Big|_0^2 = '
+                           '(2^3 - 2^2 + 2) - 0 = 8 - 4 + 2 = 6$.'],
+            'answer': [True, True, False, True],
+            'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 12: Tích phân. b) **Đúng** theo công thức '
+                        'trọng tâm **Công thức Newton-Leibniz** ($\\int_a^b f(x)\\,\\mathrm{d}x = '
+                        "F(x)\\Big|_a^b = F(b) - F(a)$). c) **Sai** vì $f'(x) \\ge 0, \\forall x \\in K$ "
+                        '(dấu $=$ tại hữu hạn điểm) là công thức của nội dung khác, không phải quy tắc chung '
+                        'của **Công thức Newton-Leibniz**. d) **Đúng** theo lời giải ví dụ minh họa trong '
+                        'bài học.'},
+           {'level': 'vandung',
+            'type': 'mcq',
+            'q': 'Vận dụng kiến thức **Bài 12: Tích phân** để giải quyết tình huống sau: Tính tích phân $I = '
+                 '\\int_0^2 (3x^2 - 2x + 1)\\,\\mathrm{d}x$. Kết quả và hướng giải nào dưới đây là **đúng**?',
+            'options': ["Tập xác định $D = \\mathbb{R}$. Ta có $y' = 3x^2 - 6x = 3x(x - 2)$. Cho $y' = 0 "
+                        "\\Leftrightarrow x = 0$ hoặc $x = 2$. Bảng xét dấu $y'$: trên $(-\\infty; 0)$...",
+                        'Ta có $I = (x^3 - x^2 + x)\\Big|_0^2 = (2^3 - 2^2 + 2) - 0 = 8 - 4 + 2 = 6$.',
+                        "Hàm số liên tục trên $[0; 2]$. Ta có $f'(x) = 3x^2 - 3 = 0 \\Leftrightarrow x = 1 "
+                        '\\in (0; 2)$ hoặc $x = -1 \\notin (0; 2)$. Tính giá trị: $f(0) = 2$; $f(1) = 0$...',
+                        'Tập xác định $D = \\mathbb{R} \\setminus \\{1\\}$. Chia đa thức ta có $y = 2x + 1 + '
+                        '\\dfrac{2}{x - 1}$. Vì $\\lim_{x \\to 1^+} y = +\\infty$ và $\\lim_{x \\to 1^-} y = '
+                        '-\\infty$...'],
+            'answer': 1,
+            'solution': 'Lời giải chi tiết theo Bài 12: Tích phân: Ta có $I = (x^3 - x^2 + x)\\Big|_0^2 = '
+                        '(2^3 - 2^2 + 2) - 0 = 8 - 4 + 2 = 6$.'},
+           {'level': 'vandung',
+            'type': 'short',
+            'q': 'Cho hàm số $f(x) = \\begin{cases} 2x + 1 & \\text{khi } x \\ge 1 \\\\ 3x^2 & \\text{khi } '
+                 'x < 1 \\end{cases}$. Tính giá trị của tích phân $I = \\int_0^2 f(x)\\,\\mathrm{d}x$.',
+            'answer': ['5'],
+            'unit': None,
+            'solution': 'Tách cận tại $x = 1$: $I = \\int_0^1 3x^2\\,\\mathrm{d}x + \\int_1^2 (2x + '
+                        '1)\\,\\mathrm{d}x = x^3\\Big|_0^1 + (x^2 + x)\\Big|_1^2 = 1 + (6 - 2) = 5$.',
+            'alt': None,
+            'note': None}]},
+ {'topic': 'l12-ch04-nguyen-ham-tich-phan',
+  'context_title': 'Chương IV: Nguyên hàm và tích phân',
+  'context': 'Chương IV · SGK Toán 12: Nguyên hàm, tích phân và ứng dụng hình học của tích phân tính diện '
+             'tích, thể tích.',
+  'title': 'Bài 13: Ứng dụng hình học của tích phân (Diện tích hình phẳng và thể tích vật thể)',
+  'icon': '🏺',
+  'description': 'Ứng dụng tích phân để tính diện tích hình phẳng giới hạn bởi các đường cong và thể tích '
+                 'vật thể, khối tròn xoay.',
+  'requirements': ['Viết và tính được công thức diện tích hình phẳng giới hạn bởi đồ thị hàm số $y = f(x), y '
+                   '= g(x)$ và hai đường thẳng $x = a, x = b$.',
+                   'Tính được thể tích vật thể theo diện tích thiết diện $S(x)$ và thể tích khối tròn xoay '
+                   'khi quay hình phẳng quanh trục $Ox$.',
+                   'Vận dụng tính diện tích, thể tích các vật thể thực tế có hình dạng parabol, elip hoặc '
+                   'khối tròn xoay.'],
+  'definition': '1. Diện tích hình phẳng giới hạn bởi hai đồ thị hàm số liên tục $y = f(x), y = g(x)$ và hai '
+                'đường thẳng $x = a, x = b$ ($a < b$) là $S = \\int_a^b |f(x) - g(x)|\\,\\mathrm{d}x$. 2. '
+                'Thể tích khối tròn xoay sinh ra khi quay hình phẳng giới hạn bởi $y = f(x)$, trục $Ox$, $x '
+                '= a, x = b$ quanh trục $Ox$ là $V = \\pi \\int_a^b [f(x)]^2\\,\\mathrm{d}x$.',
+  'theory': '1. Thể tích vật thể giới hạn bởi hai mặt phẳng vuông góc với trục $Ox$ tại $x = a, x = b$ có '
+            'diện tích thiết diện $S(x)$ liên tục là $V = \\int_a^b S(x)\\,\\mathrm{d}x$. 2. Khi hình phẳng '
+            'chưa cho sẵn cận $a, b$, ta giải phương trình hoành độ giao điểm $f(x) = g(x)$ để tìm cận nhỏ '
+            'nhất và lớn nhất.',
+  'formulas': [{'category': 'Công thức diện tích và thể tích',
+                'items': [{'name': 'Diện tích hình phẳng giới hạn bởi 2 đường',
+                           'formula': '$S = \\int_a^b |f(x) - g(x)|\\,\\mathrm{d}x$'},
+                          {'name': 'Thể tích vật thể theo thiết diện',
+                           'formula': '$V = \\int_a^b S(x)\\,\\mathrm{d}x$'},
+                          {'name': 'Thể tích khối tròn xoay quanh trục Ox',
+                           'formula': '$V = \\pi \\int_a^b [f(x)]^2\\,\\mathrm{d}x$'}]}],
+  'example': 'Tính diện tích hình phẳng giới hạn bởi parabol $y = x^2$ và đường thẳng $y = 2x$.',
+  'example_answer': 'Phương trình hoành độ giao điểm: $x^2 = 2x \\Leftrightarrow x = 0$ hoặc $x = 2$. Diện '
+                    'tích hình phẳng là $S = \\int_0^2 |2x - x^2|\\,\\mathrm{d}x = \\int_0^2 (2x - '
+                    'x^2)\\,\\mathrm{d}x = \\left(x^2 - \\dfrac{x^3}{3}\\right)\\Big|_0^2 = 4 - '
+                    '\\dfrac{8}{3} = \\dfrac{4}{3}$.',
+  'real_life': 'Tính diện tích mặt cắt cổng vòm parabol, dung tích bình hoa gốm sứ, thùng rượu vang và các '
+               'chi tiết tiện cơ khí.',
+  'quiz': [{'level': 'biet',
+            'type': 'mcq',
+            'q': 'Diện tích $S$ của hình phẳng giới hạn bởi đồ thị hàm số $y = f(x)$ liên tục trên $[a; b]$, '
+                 'trục hoành $Ox$ và hai đường thẳng $x = a, x = b$ ($a < b$) được tính theo công thức:',
+            'options': ['$S = \\int_a^b |f(x)|\\,\\mathrm{d}x$',
+                        '$S = \\pi \\int_a^b [f(x)]^2\\,\\mathrm{d}x$',
+                        '$S = \\int_a^b f(x)\\,\\mathrm{d}x$',
+                        '$S = \\pi \\int_a^b |f(x)|\\,\\mathrm{d}x$'],
+            'answer': 0,
+            'solution': 'Công thức tính diện tích hình phẳng giới hạn bởi $y = f(x)$, trục $Ox$ và $x = a, x '
+                        '= b$ là $S = \\int_a^b |f(x)|\\,\\mathrm{d}x$.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Thể tích $V$ của khối tròn xoay tạo thành khi quay hình phẳng giới hạn bởi đường $y = '
+                 '\\sqrt{x}$, trục hoành $Ox$ và hai đường thẳng $x = 0, x = 4$ quanh trục $Ox$ bằng:',
+            'options': ['$8$', '$8\\pi$', '$4\\pi$', '$16\\pi$'],
+            'answer': 1,
+            'solution': 'Ta có $V = \\pi \\int_0^4 (\\sqrt{x})^2\\,\\mathrm{d}x = \\pi \\int_0^4 '
+                        'x\\,\\mathrm{d}x = \\pi \\cdot \\dfrac{x^2}{2}\\Big|_0^4 = 8\\pi$.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Theo nội dung trọng tâm của **Bài 13: Ứng dụng hình học của tích phân (Diện tích hình '
+                 'phẳng và thể tích vật thể)**, công thức hoặc quy tắc nào sau đây biểu diễn đúng **Diện '
+                 'tích hình phẳng giới hạn bởi 2 đường**?',
+            'options': ['$V = \\int_a^b S(x)\\,\\mathrm{d}x$',
+                        '$V = \\pi \\int_a^b [f(x)]^2\\,\\mathrm{d}x$',
+                        '$S = \\int_a^b |f(x) - g(x)|\\,\\mathrm{d}x$',
+                        "$f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm)"],
+            'answer': 2,
+            'solution': 'Theo bảng công thức trọng tâm của Bài 13: Ứng dụng hình học của tích phân (Diện '
+                        'tích hình phẳng và thể tích vật thể), **Diện tích hình phẳng giới hạn bởi 2 đường** '
+                        'được xác định bởi: $S = \\int_a^b |f(x) - g(x)|\\,\\mathrm{d}x$.'},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Trong **Bài 13: Ứng dụng hình học của tích phân (Diện tích hình phẳng và thể tích vật '
+                 'thể)**, nội dung/biểu thức $V = \\int_a^b S(x)\\,\\mathrm{d}x$ là quy tắc hoặc công thức '
+                 'của mục nào sau đây?',
+            'options': ['Diện tích hình phẳng giới hạn bởi 2 đường',
+                        'Thể tích khối tròn xoay quanh trục Ox',
+                        'Đồng biến trên khoảng',
+                        'Thể tích vật thể theo thiết diện'],
+            'answer': 3,
+            'solution': 'Trong Bài 13: Ứng dụng hình học của tích phân (Diện tích hình phẳng và thể tích vật '
+                        'thể), biểu thức/quy tắc $V = \\int_a^b S(x)\\,\\mathrm{d}x$ chính là nội dung của '
+                        '**Thể tích vật thể theo thiết diện**.'},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Diện tích hình phẳng giới hạn bởi hai đường $y = x^2 - 1$ và $y = 3$ bằng bao nhiêu?',
+            'options': ['$\\dfrac{32}{3}$', '$\\dfrac{16}{3}$', '$8$', '$12$'],
+            'answer': 0,
+            'solution': 'Hoành độ giao điểm: $x^2 - 1 = 3 \\Leftrightarrow x = \\pm 2$. Suy ra $S = '
+                        '\\int_{-2}^2 (4 - x^2)\\,\\mathrm{d}x = \\left(4x - '
+                        '\\dfrac{x^3}{3}\\right)\\Big|_{-2}^2 = \\dfrac{32}{3}$.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Khi học **Bài 13: Ứng dụng hình học của tích phân (Diện tích hình phẳng và thể tích vật '
+                 'thể)** (Chương IV: Nguyên hàm và tích phân), khẳng định nào sau đây phản ánh **đúng** yêu '
+                 'cầu cần đạt và bản chất kiến thức của bài?',
+            'options': ['Nhận biết được tính đồng biến, nghịch biến của hàm số trên một khoảng dựa vào dấu '
+                        "của đạo hàm cấp một $f'(x)$.",
+                        'Viết và tính được công thức diện tích hình phẳng giới hạn bởi đồ thị hàm số $y = '
+                        'f(x), y = g(x)$ và hai đường thẳng $x = a, x = b$.',
+                        'Xác định được điểm cực đại, điểm cực tiểu, giá trị cực đại, giá trị cực tiểu của '
+                        "hàm số thông qua bảng biến thiên hoặc đạo hàm cấp hai $f''(x)$.",
+                        'Vận dụng điều kiện đơn điệu và cực trị để giải các bài toán chứa tham số $m$.'],
+            'answer': 1,
+            'solution': 'Theo yêu cầu cần đạt của Bài 13: Ứng dụng hình học của tích phân (Diện tích hình '
+                        'phẳng và thể tích vật thể): Viết và tính được công thức diện tích hình phẳng giới '
+                        'hạn bởi đồ thị hàm số $y = f(x), y = g(x)$ và hai đường thẳng $x = a, x = b$.'},
+           {'level': 'hieu',
+            'type': 'tf4',
+            'q': 'Cho hình phẳng $(H)$ giới hạn bởi đồ thị hàm số $y = x^2$, trục hoành $Ox$ và hai đường '
+                 'thẳng $x = 0, x = 2$. Xét tính đúng sai của các mệnh đề sau:',
+            'statements': ['Diện tích của hình phẳng $(H)$ được tính bởi công thức $S = \\int_0^2 '
+                           'x^2\\,\\mathrm{d}x$.',
+                           'Giá trị diện tích của hình phẳng $(H)$ bằng $\\dfrac{8}{3}$.',
+                           'Thể tích khối tròn xoay khi quay $(H)$ quanh trục $Ox$ là $V = \\int_0^2 '
+                           'x^4\\,\\mathrm{d}x$.',
+                           'Giá trị thể tích khối tròn xoay khi quay $(H)$ quanh trục $Ox$ bằng '
+                           '$\\dfrac{32\\pi}{5}$.'],
+            'answer': [True, True, False, True],
+            'solution': 'a) Đúng vì $x^2 \\ge 0$ trên $[0; 2]$. b) Đúng vì $\\int_0^2 x^2\\,\\mathrm{d}x = '
+                        '\\dfrac{8}{3}$. c) Sai vì công thức thể tích khối tròn xoay thiếu thừa số $\\pi$: '
+                        '$V = \\pi \\int_0^2 x^4\\,\\mathrm{d}x$. d) Đúng vì $V = \\pi \\cdot '
+                        '\\dfrac{x^5}{5}\\Big|_0^2 = \\dfrac{32\\pi}{5}$.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'tf4',
+            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 13: Ứng dụng hình học '
+                 'của tích phân (Diện tích hình phẳng và thể tích vật thể)**:',
+            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Viết và tính được công thức diện '
+                           'tích hình phẳng giới hạn bởi đồ thị hàm số $y = f(x), y = g(x)$ và hai đường '
+                           'thẳng $x = a, x = b$.',
+                           'Quy tắc/công thức **Diện tích hình phẳng giới hạn bởi 2 đường** trong bài được '
+                           'xác định bởi: $S = \\int_a^b |f(x) - g(x)|\\,\\mathrm{d}x$.',
+                           'Trong mọi trường hợp, **Diện tích hình phẳng giới hạn bởi 2 đường** luôn được '
+                           "tính bằng công thức $f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm) "
+                           '(thuộc Đồng biến trên khoảng) mà không cần điều kiện của Bài 13: Ứng dụng hình '
+                           'học của tích phân (Diện tích hình phẳng và thể tích vật thể).',
+                           'Với bài toán minh họa: “Tính diện tích hình phẳng giới hạn bởi parabol $y = x^2$ '
+                           'và đường thẳng $y = 2x$.”, lời giải đúng là: Phương trình hoành độ giao điểm: '
+                           '$x^2 = 2x \\Leftrightarrow x = 0$ hoặc $x = 2$. Diện tích hình phẳng là...'],
+            'answer': [True, True, False, True],
+            'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 13: Ứng dụng hình học của tích phân (Diện '
+                        'tích hình phẳng và thể tích vật thể). b) **Đúng** theo công thức trọng tâm **Diện '
+                        'tích hình phẳng giới hạn bởi 2 đường** ($S = \\int_a^b |f(x) - '
+                        "g(x)|\\,\\mathrm{d}x$). c) **Sai** vì $f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ "
+                        'tại hữu hạn điểm) là công thức của nội dung khác, không phải quy tắc chung của '
+                        '**Diện tích hình phẳng giới hạn bởi 2 đường**. d) **Đúng** theo lời giải ví dụ minh '
+                        'họa trong bài học.'},
+           {'level': 'vandung',
+            'type': 'mcq',
+            'q': 'Vận dụng kiến thức **Bài 13: Ứng dụng hình học của tích phân (Diện tích hình phẳng và thể '
+                 'tích vật thể)** để giải quyết tình huống sau: Tính diện tích hình phẳng giới hạn bởi '
+                 'parabol $y = x^2$ và đường thẳng $y = 2x$. Kết quả và hướng giải nào dưới đây là **đúng**?',
+            'options': ["Tập xác định $D = \\mathbb{R}$. Ta có $y' = 3x^2 - 6x = 3x(x - 2)$. Cho $y' = 0 "
+                        "\\Leftrightarrow x = 0$ hoặc $x = 2$. Bảng xét dấu $y'$: trên $(-\\infty; 0)$...",
+                        "Hàm số liên tục trên $[0; 2]$. Ta có $f'(x) = 3x^2 - 3 = 0 \\Leftrightarrow x = 1 "
+                        '\\in (0; 2)$ hoặc $x = -1 \\notin (0; 2)$. Tính giá trị: $f(0) = 2$; $f(1) = 0$...',
+                        'Phương trình hoành độ giao điểm: $x^2 = 2x \\Leftrightarrow x = 0$ hoặc $x = 2$. '
+                        'Diện tích hình phẳng là...',
+                        'Tập xác định $D = \\mathbb{R} \\setminus \\{1\\}$. Chia đa thức ta có $y = 2x + 1 + '
+                        '\\dfrac{2}{x - 1}$. Vì $\\lim_{x \\to 1^+} y = +\\infty$ và $\\lim_{x \\to 1^-} y = '
+                        '-\\infty$...'],
+            'answer': 2,
+            'solution': 'Lời giải chi tiết theo Bài 13: Ứng dụng hình học của tích phân (Diện tích hình '
+                        'phẳng và thể tích vật thể): Phương trình hoành độ giao điểm: $x^2 = 2x '
+                        '\\Leftrightarrow x = 0$ hoặc $x = 2$. Diện tích hình phẳng là $S = \\int_0^2 |2x - '
+                        'x^2|\\,\\mathrm{d}x = \\int_0^2 (2x - x^2)\\,\\mathrm{d}x = \\left(x^2 - '
+                        '\\dfrac{x^3}{3}\\right)\\Big|_0^2 = 4 - \\dfrac{8}{3} = \\dfrac{4}{3}$.'},
+           {'level': 'vandung',
+            'type': 'short',
+            'q': 'Một vật thể nằm giữa hai mặt phẳng $x = 0$ và $x = 3$. Biết rằng thiết diện của vật thể '
+                 'cắt bởi mặt phẳng vuông góc với trục $Ox$ tại điểm có hoành độ $x$ ($0 \\le x \\le 3$) là '
+                 'một hình vuông có cạnh bằng $\\sqrt{4x + 1}$. Tính thể tích của vật thể đó.',
+            'answer': ['21'],
+            'unit': None,
+            'solution': 'Diện tích thiết diện là $S(x) = (\\sqrt{4x + 1})^2 = 4x + 1$. Thể tích vật thể là '
+                        '$V = \\int_0^3 (4x + 1)\\,\\mathrm{d}x = (2x^2 + x)\\Big|_0^3 = 2 \\cdot 9 + 3 = '
+                        '21$.',
+            'alt': None,
+            'note': None}]},
+ {'topic': 'l12-ch05-phuong-phap-toa-do-khong-gian',
+  'context_title': 'Chương V: Phương pháp tọa độ trong không gian',
+  'context': 'Chương V · SGK Toán 12: Phương trình mặt phẳng, phương trình đường thẳng, công thức tính góc '
+             'và phương trình mặt cầu trong không gian Oxyz.',
+  'title': 'Bài 14: Phương trình mặt phẳng',
+  'icon': '🟦',
+  'description': 'Vectơ pháp tuyến, cặp vectơ chỉ phương, phương trình tổng quát của mặt phẳng, điều kiện '
+                 'song song, vuông góc và khoảng cách từ điểm đến mặt phẳng.',
+  'requirements': ['Xác định được vectơ pháp tuyến $\\vec{n}$ của mặt phẳng và tính tích có hướng '
+                   '$[\\vec{u}, \\vec{v}]$ của cặp vectơ chỉ phương.',
+                   'Viết được phương trình tổng quát của mặt phẳng và phương trình mặt phẳng theo đoạn chắn.',
+                   'Tính được khoảng cách từ một điểm đến một mặt phẳng và xét vị trí tương đối giữa hai mặt '
+                   'phẳng.'],
+  'definition': 'Trong không gian $Oxyz$, vectơ $\\vec{n} \\ne \\vec{0}$ có giá vuông góc với mặt phẳng '
+                '$(\\alpha)$ gọi là vectơ pháp tuyến của $(\\alpha)$. Phương trình mặt phẳng đi qua điểm '
+                '$M_0(x_0; y_0; z_0)$ và có vectơ pháp tuyến $\\vec{n} = (A; B; C)$ là $A(x - x_0) + B(y - '
+                'y_0) + C(z - z_0) = 0$.',
+  'theory': '1. Nếu mặt phẳng $(\\alpha)$ có cặp vectơ chỉ phương không cùng phương $\\vec{u} = (a_1; a_2; '
+            'a_3)$ và $\\vec{v} = (b_1; b_2; b_3)$ thì $\\vec{n} = [\\vec{u}, \\vec{v}] = (a_2b_3 - a_3b_2; '
+            'a_3b_1 - a_1b_3; a_1b_2 - a_2b_1)$ là một vectơ pháp tuyến. 2. Phương trình mặt phẳng theo đoạn '
+            'chắn đi qua $A(a; 0; 0), B(0; b; 0), C(0; 0; c)$ ($abc \\ne 0$) là $\\dfrac{x}{a} + '
+            '\\dfrac{y}{b} + \\dfrac{z}{c} = 1$.',
+  'formulas': [{'category': 'Phương trình mặt phẳng và khoảng cách',
+                'items': [{'name': 'Phương trình tổng quát',
+                           'formula': '$Ax + By + Cz + D = 0 \\quad (A^2 + B^2 + C^2 > 0)$'},
+                          {'name': 'Phương trình mặt phẳng đoạn chắn',
+                           'formula': '$\\dfrac{x}{a} + \\dfrac{y}{b} + \\dfrac{z}{c} = 1 \\quad (abc \\ne '
+                                      '0)$'},
+                          {'name': 'Khoảng cách từ điểm đến mặt phẳng',
+                           'formula': '$d(M_0, (\\alpha)) = \\dfrac{|Ax_0 + By_0 + Cz_0 + D|}{\\sqrt{A^2 + '
+                                      'B^2 + C^2}}$'}]}],
+  'example': 'Viết phương trình mặt phẳng $(P)$ đi qua điểm $A(1; -2; 3)$ và có vectơ pháp tuyến $\\vec{n} = '
+             '(2; 1; -1)$.',
+  'example_answer': 'Phương trình mặt phẳng $(P)$ là $2(x - 1) + 1(y + 2) - 1(z - 3) = 0 \\Leftrightarrow 2x '
+                    '+ y - z + 3 = 0$.',
+  'real_life': 'Mô hình hóa các bề mặt mái nhà nghiêng, tấm pin năng lượng mặt trời và tính khoảng cách an '
+               'toàn trong xây dựng.',
+  'quiz': [{'level': 'biet',
+            'type': 'mcq',
+            'q': 'Trong không gian $Oxyz$, mặt phẳng $(P): 2x - 3y + z - 5 = 0$ có một vectơ pháp tuyến là:',
+            'options': ['$\\vec{n} = (2; 3; 1)$',
+                        '$\\vec{n} = (2; -3; 1)$',
+                        '$\\vec{n} = (2; -3; -5)$',
+                        '$\\vec{n} = (-2; 3; 1)$'],
+            'answer': 1,
+            'solution': 'Mặt phẳng $Ax + By + Cz + D = 0$ có một vectơ pháp tuyến là $\\vec{n} = (A; B; C) = '
+                        '(2; -3; 1)$.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Trong không gian $Oxyz$, phương trình mặt phẳng đi qua ba điểm $A(2; 0; 0)$, $B(0; -3; 0)$ '
+                 'và $C(0; 0; 4)$ là:',
+            'options': ['$\\dfrac{x}{2} + \\dfrac{y}{3} + \\dfrac{z}{4} = 1$',
+                        '$\\dfrac{x}{2} + \\dfrac{y}{-3} + \\dfrac{z}{4} = 0$',
+                        '$\\dfrac{x}{2} + \\dfrac{y}{-3} + \\dfrac{z}{4} = 1$',
+                        '$2x - 3y + 4z - 1 = 0$'],
+            'answer': 2,
+            'solution': 'Theo công thức phương trình mặt phẳng theo đoạn chắn, phương trình là '
+                        '$\\dfrac{x}{2} + \\dfrac{y}{-3} + \\dfrac{z}{4} = 1$.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Theo nội dung trọng tâm của **Bài 14: Phương trình mặt phẳng**, công thức hoặc quy tắc nào '
+                 'sau đây biểu diễn đúng **Phương trình tổng quát**?',
+            'options': ['$\\dfrac{x}{a} + \\dfrac{y}{b} + \\dfrac{z}{c} = 1 \\quad (abc \\ne 0)$',
+                        '$d(M_0, (\\alpha)) = \\dfrac{|Ax_0 + By_0 + Cz_0 + D|}{\\sqrt{A^2 + B^2 + C^2}}$',
+                        "$f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm)",
+                        '$Ax + By + Cz + D = 0 \\quad (A^2 + B^2 + C^2 > 0)$'],
+            'answer': 3,
+            'solution': 'Theo bảng công thức trọng tâm của Bài 14: Phương trình mặt phẳng, **Phương trình '
+                        'tổng quát** được xác định bởi: $Ax + By + Cz + D = 0 \\quad (A^2 + B^2 + C^2 > '
+                        '0)$.'},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Trong **Bài 14: Phương trình mặt phẳng**, nội dung/biểu thức $\\dfrac{x}{a} + '
+                 '\\dfrac{y}{b} + \\dfrac{z}{c} = 1 \\quad (abc \\ne 0)$ là quy tắc hoặc công thức của mục '
+                 'nào sau đây?',
+            'options': ['Phương trình mặt phẳng đoạn chắn',
+                        'Phương trình tổng quát',
+                        'Khoảng cách từ điểm đến mặt phẳng',
+                        'Đồng biến trên khoảng'],
+            'answer': 0,
+            'solution': 'Trong Bài 14: Phương trình mặt phẳng, biểu thức/quy tắc $\\dfrac{x}{a} + '
+                        '\\dfrac{y}{b} + \\dfrac{z}{c} = 1 \\quad (abc \\ne 0)$ chính là nội dung của '
+                        '**Phương trình mặt phẳng đoạn chắn**.'},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Trong không gian $Oxyz$, khoảng cách từ điểm $M(1; 2; -1)$ đến mặt phẳng $(P): x + 2y - 2z '
+                 '+ 2 = 0$ bằng:',
+            'options': ['$9$', '$3$', '$1$', '$2$'],
+            'answer': 1,
+            'solution': 'Áp dụng công thức khoảng cách: $d(M, (P)) = \\dfrac{|1 + 2 \\cdot 2 - 2 \\cdot (-1) '
+                        '+ 2|}{\\sqrt{1^2 + 2^2 + (-2)^2}} = \\dfrac{9}{3} = 3$.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Khi học **Bài 14: Phương trình mặt phẳng** (Chương V: Phương pháp tọa độ trong không '
+                 'gian), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của '
+                 'bài?',
+            'options': ['Nhận biết được tính đồng biến, nghịch biến của hàm số trên một khoảng dựa vào dấu '
+                        "của đạo hàm cấp một $f'(x)$.",
+                        'Xác định được điểm cực đại, điểm cực tiểu, giá trị cực đại, giá trị cực tiểu của '
+                        "hàm số thông qua bảng biến thiên hoặc đạo hàm cấp hai $f''(x)$.",
+                        'Xác định được vectơ pháp tuyến $\\vec{n}$ của mặt phẳng và tính tích có hướng '
+                        '$[\\vec{u}, \\vec{v}]$ của cặp vectơ chỉ phương.',
+                        'Vận dụng điều kiện đơn điệu và cực trị để giải các bài toán chứa tham số $m$.'],
+            'answer': 2,
+            'solution': 'Theo yêu cầu cần đạt của Bài 14: Phương trình mặt phẳng: Xác định được vectơ pháp '
+                        'tuyến $\\vec{n}$ của mặt phẳng và tính tích có hướng $[\\vec{u}, \\vec{v}]$ của cặp '
+                        'vectơ chỉ phương.'},
+           {'level': 'hieu',
+            'type': 'tf4',
+            'q': 'Trong không gian $Oxyz$, cho hai điểm $A(1; 0; 2), B(3; 2; 4)$ và mặt phẳng $(P): x + y + '
+                 'z - 3 = 0$. Xét tính đúng sai của các mệnh đề sau:',
+            'statements': ['Điểm $A$ thuộc mặt phẳng $(P)$.',
+                           'Vectơ $\\overrightarrow{AB} = (2; 2; 2)$ là một vectơ pháp tuyến của mặt phẳng '
+                           'trung trực đoạn $AB$.',
+                           'Mặt phẳng trung trực của đoạn thẳng $AB$ có phương trình là $x + y + z - 6 = 0$.',
+                           'Mặt phẳng trung trực của đoạn thẳng $AB$ vuông góc với mặt phẳng $(P)$.'],
+            'answer': [True, True, True, False],
+            'solution': 'a) Đúng vì $1 + 0 + 2 - 3 = 0$. b) Đúng vì mặt phẳng trung trực vuông góc với $AB$. '
+                        'c) Đúng vì trung điểm $I(2; 1; 3)$ và VTPT $\\vec{n} = (1; 1; 1)$ cho phương trình '
+                        '$(x - 2) + (y - 1) + (z - 3) = 0 \\Leftrightarrow x + y + z - 6 = 0$. d) Sai vì hai '
+                        'mặt phẳng có cùng VTPT $(1; 1; 1)$ nên song song với nhau.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'tf4',
+            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 14: Phương trình mặt '
+                 'phẳng**:',
+            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Xác định được vectơ pháp tuyến '
+                           '$\\vec{n}$ của mặt phẳng và tính tích có hướng $[\\vec{u}, \\vec{v}]$ của cặp '
+                           'vectơ chỉ phương.',
+                           'Quy tắc/công thức **Phương trình tổng quát** trong bài được xác định bởi: $Ax + '
+                           'By + Cz + D = 0 \\quad (A^2 + B^2 + C^2 > 0)$.',
+                           'Trong mọi trường hợp, **Phương trình tổng quát** luôn được tính bằng công thức '
+                           "$f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm) (thuộc Đồng biến "
+                           'trên khoảng) mà không cần điều kiện của Bài 14: Phương trình mặt phẳng.',
+                           'Với bài toán minh họa: “Viết phương trình mặt phẳng $(P)$ đi qua điểm $A(1; -2; '
+                           '3)$ và có vectơ pháp tuyến $\\vec{n} = (2; 1; -1)$.”, lời giải đúng là: Phương '
+                           'trình mặt phẳng $(P)$ là $2(x - 1) + 1(y + 2) - 1(z - 3) = 0 \\Leftrightarrow 2x '
+                           '+ y - z + 3 = 0$.'],
+            'answer': [True, True, False, True],
+            'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 14: Phương trình mặt phẳng. b) **Đúng** '
+                        'theo công thức trọng tâm **Phương trình tổng quát** ($Ax + By + Cz + D = 0 \\quad '
+                        "(A^2 + B^2 + C^2 > 0)$). c) **Sai** vì $f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ "
+                        'tại hữu hạn điểm) là công thức của nội dung khác, không phải quy tắc chung của '
+                        '**Phương trình tổng quát**. d) **Đúng** theo lời giải ví dụ minh họa trong bài '
+                        'học.'},
+           {'level': 'vandung',
+            'type': 'mcq',
+            'q': 'Vận dụng kiến thức **Bài 14: Phương trình mặt phẳng** để giải quyết tình huống sau: Viết '
+                 'phương trình mặt phẳng $(P)$ đi qua điểm $A(1; -2; 3)$ và có vectơ pháp tuyến $\\vec{n} = '
+                 '(2; 1; -1)$. Kết quả và hướng giải nào dưới đây là **đúng**?',
+            'options': ["Tập xác định $D = \\mathbb{R}$. Ta có $y' = 3x^2 - 6x = 3x(x - 2)$. Cho $y' = 0 "
+                        "\\Leftrightarrow x = 0$ hoặc $x = 2$. Bảng xét dấu $y'$: trên $(-\\infty; 0)$...",
+                        "Hàm số liên tục trên $[0; 2]$. Ta có $f'(x) = 3x^2 - 3 = 0 \\Leftrightarrow x = 1 "
+                        '\\in (0; 2)$ hoặc $x = -1 \\notin (0; 2)$. Tính giá trị: $f(0) = 2$; $f(1) = 0$...',
+                        'Tập xác định $D = \\mathbb{R} \\setminus \\{1\\}$. Chia đa thức ta có $y = 2x + 1 + '
+                        '\\dfrac{2}{x - 1}$. Vì $\\lim_{x \\to 1^+} y = +\\infty$ và $\\lim_{x \\to 1^-} y = '
+                        '-\\infty$...',
+                        'Phương trình mặt phẳng $(P)$ là $2(x - 1) + 1(y + 2) - 1(z - 3) = 0 '
+                        '\\Leftrightarrow 2x + y - z + 3 = 0$.'],
+            'answer': 3,
+            'solution': 'Lời giải chi tiết theo Bài 14: Phương trình mặt phẳng: Phương trình mặt phẳng $(P)$ '
+                        'là $2(x - 1) + 1(y + 2) - 1(z - 3) = 0 \\Leftrightarrow 2x + y - z + 3 = 0$.'},
+           {'level': 'vandung',
+            'type': 'short',
+            'q': 'Trong không gian $Oxyz$, mặt phẳng $(P)$ đi qua điểm $M(1; 1; 1)$ và cắt các tia $Ox, Oy, '
+                 'Oz$ lần lượt tại $A(a; 0; 0), B(0; b; 0), C(0; 0; c)$ sao cho thể tích khối tứ diện $OABC$ '
+                 'đạt giá trị nhỏ nhất. Tính giá trị của $a + b + c$.',
+            'answer': ['9'],
+            'unit': None,
+            'solution': 'Phương trình $(P): \\dfrac{x}{a} + \\dfrac{y}{b} + \\dfrac{z}{c} = 1$ ($a, b, c > '
+                        '0$). Do $M(1; 1; 1) \\in (P)$ nên $\\dfrac{1}{a} + \\dfrac{1}{b} + \\dfrac{1}{c} = '
+                        '1 \\ge \\dfrac{3}{\\sqrt[3]{abc}} \\Rightarrow abc \\ge 27$. Thể tích $V_{OABC} = '
+                        '\\dfrac{1}{6}abc$ nhỏ nhất khi $a = b = c = 3$. Vậy $a + b + c = 9$.',
+            'alt': None,
+            'note': None}]},
+ {'topic': 'l12-ch05-phuong-phap-toa-do-khong-gian',
+  'context_title': 'Chương V: Phương pháp tọa độ trong không gian',
+  'context': 'Chương V · SGK Toán 12: Phương trình mặt phẳng, phương trình đường thẳng, công thức tính góc '
+             'và phương trình mặt cầu trong không gian Oxyz.',
+  'title': 'Bài 15: Phương trình đường thẳng trong không gian',
+  'icon': '📏',
+  'description': 'Vectơ chỉ phương của đường thẳng, phương trình tham số, phương trình chính tắc và vị trí '
+                 'tương đối giữa hai đường thẳng trong không gian.',
+  'requirements': ['Xác định được vectơ chỉ phương $\\vec{u}$ của đường thẳng trong không gian.',
+                   'Viết được phương trình tham số và phương trình chính tắc của đường thẳng.',
+                   'Xét được vị trí tương đối giữa hai đường thẳng (song song, trùng nhau, cắt nhau, chéo '
+                   'nhau) và giữa đường thẳng với mặt phẳng.'],
+  'definition': 'Vectơ $\\vec{u} = (a; b; c) \\ne \\vec{0}$ có giá song song hoặc trùng với đường thẳng '
+                '$\\Delta$ gọi là vectơ chỉ phương của $\\Delta$. Đường thẳng $\\Delta$ đi qua $M_0(x_0; '
+                'y_0; z_0)$ có vectơ chỉ phương $\\vec{u} = (a; b; c)$ có phương trình tham số là $x = x_0 + '
+                'at, y = y_0 + bt, z = z_0 + ct$ ($t \\in \\mathbb{R}$).',
+  'theory': '1. Nếu $abc \\ne 0$, phương trình chính tắc của $\\Delta$ là $\\dfrac{x - x_0}{a} = \\dfrac{y - '
+            'y_0}{b} = \\dfrac{z - z_0}{c}$. 2. Hai đường thẳng $\\Delta_1, \\Delta_2$ có VTCP $\\vec{u}_1, '
+            '\\vec{u}_2$: nếu $\\vec{u}_1, \\vec{u}_2$ cùng phương thì $\\Delta_1 \\parallel \\Delta_2$ hoặc '
+            '$\\Delta_1 \\equiv \\Delta_2$; nếu $\\vec{u}_1, \\vec{u}_2$ không cùng phương thì $\\Delta_1, '
+            '\\Delta_2$ cắt nhau (hệ có 1 nghiệm) hoặc chéo nhau (hệ vô nghiệm).',
+  'formulas': [{'category': 'Phương trình đường thẳng trong không gian',
+                'items': [{'name': 'Phương trình tham số',
+                           'formula': '$\\begin{cases} x = x_0 + at \\\\ y = y_0 + bt \\\\ z = z_0 + ct '
+                                      '\\end{cases} \\quad (t \\in \\mathbb{R})$'},
+                          {'name': 'Phương trình chính tắc',
+                           'formula': '$\\dfrac{x - x_0}{a} = \\dfrac{y - y_0}{b} = \\dfrac{z - z_0}{c} '
+                                      '\\quad (abc \\ne 0)$'},
+                          {'name': 'Điều kiện hai đường thẳng vuông góc',
+                           'formula': '$\\Delta_1 \\perp \\Delta_2 \\Leftrightarrow \\vec{u}_1 \\cdot '
+                                      '\\vec{u}_2 = a_1a_2 + b_1b_2 + c_1c_2 = 0$'}]}],
+  'example': 'Viết phương trình chính tắc của đường thẳng $d$ đi qua hai điểm $A(1; 2; -1)$ và $B(3; -1; '
+             '4)$.',
+  'example_answer': 'Đường thẳng $d$ đi qua $A(1; 2; -1)$ và nhận $\\overrightarrow{AB} = (2; -3; 5)$ làm '
+                    'vectơ chỉ phương. Phương trình chính tắc của $d$ là $\\dfrac{x - 1}{2} = \\dfrac{y - '
+                    '2}{-3} = \\dfrac{z + 1}{5}$.',
+  'real_life': 'Xác định đường bay của máy bay, hướng chiếu của tia laser phẫu thuật và kiểm tra xung đột '
+               'đường ống kỹ thuật trong tòa nhà.',
+  'quiz': [{'level': 'biet',
+            'type': 'mcq',
+            'q': 'Trong không gian $Oxyz$, cho đường thẳng $d: \\dfrac{x - 1}{2} = \\dfrac{y + 2}{-1} = '
+                 '\\dfrac{z}{3}$. Vectơ nào dưới đây là một vectơ chỉ phương của $d$?',
+            'options': ['$\\vec{u} = (1; -2; 0)$',
+                        '$\\vec{u} = (2; 1; 3)$',
+                        '$\\vec{u} = (2; -1; 3)$',
+                        '$\\vec{u} = (-2; -1; 3)$'],
+            'answer': 2,
+            'solution': 'Từ phương trình chính tắc, mẫu số cho ta tọa độ vectơ chỉ phương $\\vec{u} = (2; '
+                        '-1; 3)$.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Trong không gian $Oxyz$, điểm nào dưới đây thuộc đường thẳng $\\Delta: \\begin{cases} x = '
+                 '1 + 2t \\\\ y = -3 + t \\\\ z = 2 - t \\end{cases}$?',
+            'options': ['$N(2; 1; -1)$', '$P(1; 3; 2)$', '$Q(-1; 3; -2)$', '$M(1; -3; 2)$'],
+            'answer': 3,
+            'solution': 'Cho $t = 0$ ta được điểm $M(1; -3; 2)$ thuộc đường thẳng $\\Delta$.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Theo nội dung trọng tâm của **Bài 15: Phương trình đường thẳng trong không gian**, công '
+                 'thức hoặc quy tắc nào sau đây biểu diễn đúng **Phương trình tham số**?',
+            'options': ['$\\begin{cases} x = x_0 + at \\\\ y = y_0 + bt \\\\ z = z_0 + ct \\end{cases} '
+                        '\\quad (t \\in \\mathbb{R})$',
+                        '$\\dfrac{x - x_0}{a} = \\dfrac{y - y_0}{b} = \\dfrac{z - z_0}{c} \\quad (abc \\ne '
+                        '0)$',
+                        '$\\Delta_1 \\perp \\Delta_2 \\Leftrightarrow \\vec{u}_1 \\cdot \\vec{u}_2 = a_1a_2 '
+                        '+ b_1b_2 + c_1c_2 = 0$',
+                        "$f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm)"],
+            'answer': 0,
+            'solution': 'Theo bảng công thức trọng tâm của Bài 15: Phương trình đường thẳng trong không '
+                        'gian, **Phương trình tham số** được xác định bởi: $\\begin{cases} x = x_0 + at \\\\ '
+                        'y = y_0 + bt \\\\ z = z_0 + ct \\end{cases} \\quad (t \\in \\mathbb{R})$.'},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Trong **Bài 15: Phương trình đường thẳng trong không gian**, nội dung/biểu thức $\\dfrac{x '
+                 '- x_0}{a} = \\dfrac{y - y_0}{b} = \\dfrac{z - z_0}{c} \\quad (abc \\ne 0)$ là quy tắc hoặc '
+                 'công thức của mục nào sau đây?',
+            'options': ['Phương trình tham số',
+                        'Phương trình chính tắc',
+                        'Điều kiện hai đường thẳng vuông góc',
+                        'Đồng biến trên khoảng'],
+            'answer': 1,
+            'solution': 'Trong Bài 15: Phương trình đường thẳng trong không gian, biểu thức/quy tắc '
+                        '$\\dfrac{x - x_0}{a} = \\dfrac{y - y_0}{b} = \\dfrac{z - z_0}{c} \\quad (abc \\ne '
+                        '0)$ chính là nội dung của **Phương trình chính tắc**.'},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Trong không gian $Oxyz$, đường thẳng đi qua điểm $A(2; 0; -1)$ và vuông góc với mặt phẳng '
+                 '$(P): 3x - y + 2z - 5 = 0$ có phương trình tham số là:',
+            'options': ['$\\begin{cases} x = 3 + 2t \\\\ y = -1 \\\\ z = 2 - t \\end{cases}$',
+                        '$\\begin{cases} x = 2 + 3t \\\\ y = t \\\\ z = -1 + 2t \\end{cases}$',
+                        '$\\begin{cases} x = 2 + 3t \\\\ y = -t \\\\ z = -1 + 2t \\end{cases}$',
+                        '$\\begin{cases} x = -2 + 3t \\\\ y = -t \\\\ z = 1 + 2t \\end{cases}$'],
+            'answer': 2,
+            'solution': 'Đường thẳng vuông góc với $(P)$ nên nhận VTPT $\\vec{n}_P = (3; -1; 2)$ làm vectơ '
+                        'chỉ phương, đi qua $A(2; 0; -1)$.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Khi học **Bài 15: Phương trình đường thẳng trong không gian** (Chương V: Phương pháp tọa '
+                 'độ trong không gian), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất '
+                 'kiến thức của bài?',
+            'options': ['Nhận biết được tính đồng biến, nghịch biến của hàm số trên một khoảng dựa vào dấu '
+                        "của đạo hàm cấp một $f'(x)$.",
+                        'Xác định được điểm cực đại, điểm cực tiểu, giá trị cực đại, giá trị cực tiểu của '
+                        "hàm số thông qua bảng biến thiên hoặc đạo hàm cấp hai $f''(x)$.",
+                        'Vận dụng điều kiện đơn điệu và cực trị để giải các bài toán chứa tham số $m$.',
+                        'Xác định được vectơ chỉ phương $\\vec{u}$ của đường thẳng trong không gian.'],
+            'answer': 3,
+            'solution': 'Theo yêu cầu cần đạt của Bài 15: Phương trình đường thẳng trong không gian: Xác '
+                        'định được vectơ chỉ phương $\\vec{u}$ của đường thẳng trong không gian.'},
+           {'level': 'hieu',
+            'type': 'tf4',
+            'q': 'Trong không gian $Oxyz$, cho đường thẳng $d: \\begin{cases} x = 1 + t \\\\ y = 2 - t \\\\ '
+                 'z = 3 + 2t \\end{cases}$ và mặt phẳng $(P): x + 2y + z - 9 = 0$. Xét tính đúng sai của các '
+                 'mệnh đề sau:',
+            'statements': ['Vectơ $\\vec{u} = (1; -1; 2)$ là một vectơ chỉ phương của đường thẳng $d$.',
+                           'Điểm $A(2; 1; 5)$ thuộc đường thẳng $d$.',
+                           'Đường thẳng $d$ song song với mặt phẳng $(P)$.',
+                           'Giao điểm của đường thẳng $d$ và mặt phẳng $(P)$ có tọa độ là $(2; 1; 5)$.'],
+            'answer': [True, True, False, True],
+            'solution': 'a) Đúng. b) Đúng vì ứng với $t = 1$. c) Sai vì $\\vec{u} \\cdot \\vec{n}_P = 1 '
+                        '\\cdot 1 + (-1) \\cdot 2 + 2 \\cdot 1 = 1 \\ne 0$ nên $d$ cắt $(P)$. d) Đúng vì '
+                        'thay tọa độ $d$ vào $(P)$: $(1 + t) + 2(2 - t) + (3 + 2t) - 9 = 0 \\Leftrightarrow '
+                        't = 1 \\Rightarrow I(2; 1; 5)$.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'tf4',
+            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 15: Phương trình đường '
+                 'thẳng trong không gian**:',
+            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Xác định được vectơ chỉ phương '
+                           '$\\vec{u}$ của đường thẳng trong không gian.',
+                           'Quy tắc/công thức **Phương trình tham số** trong bài được xác định bởi: '
+                           '$\\begin{cases} x = x_0 + at \\\\ y = y_0 + bt \\\\ z = z_0 + ct \\end{cases} '
+                           '\\quad (t \\in \\mathbb{R})$.',
+                           'Trong mọi trường hợp, **Phương trình tham số** luôn được tính bằng công thức '
+                           "$f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm) (thuộc Đồng biến "
+                           'trên khoảng) mà không cần điều kiện của Bài 15: Phương trình đường thẳng trong '
+                           'không gian.',
+                           'Với bài toán minh họa: “Viết phương trình chính tắc của đường thẳng $d$ đi qua '
+                           'hai điểm $A(1; 2; -1)$ và $B(3; -1; 4)$.”, lời giải đúng là: Đường thẳng $d$ đi '
+                           'qua $A(1; 2; -1)$ và nhận $\\overrightarrow{AB} = (2; -3; 5)$ làm vectơ chỉ '
+                           'phương. Phương trình chính tắc của $d$ là $\\dfrac{x - 1}{2} = \\dfrac{y - '
+                           '2}{-3} = \\dfrac{z + 1}{5}$...'],
+            'answer': [True, True, False, True],
+            'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 15: Phương trình đường thẳng trong không '
+                        'gian. b) **Đúng** theo công thức trọng tâm **Phương trình tham số** '
+                        '($\\begin{cases} x = x_0 + at \\\\ y = y_0 + bt \\\\ z = z_0 + ct \\end{cases} '
+                        "\\quad (t \\in \\mathbb{R})$). c) **Sai** vì $f'(x) \\ge 0, \\forall x \\in K$ (dấu "
+                        '$=$ tại hữu hạn điểm) là công thức của nội dung khác, không phải quy tắc chung của '
+                        '**Phương trình tham số**. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+           {'level': 'vandung',
+            'type': 'mcq',
+            'q': 'Vận dụng kiến thức **Bài 15: Phương trình đường thẳng trong không gian** để giải quyết '
+                 'tình huống sau: Viết phương trình chính tắc của đường thẳng $d$ đi qua hai điểm $A(1; 2; '
+                 '-1)$ và $B(3; -1; 4)$. Kết quả và hướng giải nào dưới đây là **đúng**?',
+            'options': ['Đường thẳng $d$ đi qua $A(1; 2; -1)$ và nhận $\\overrightarrow{AB} = (2; -3; 5)$ '
+                        'làm vectơ chỉ phương. Phương trình chính tắc của $d$ là $\\dfrac{x - 1}{2} = '
+                        '\\dfrac{y - 2}{-3} = \\dfrac{z + 1}{5}$...',
+                        "Tập xác định $D = \\mathbb{R}$. Ta có $y' = 3x^2 - 6x = 3x(x - 2)$. Cho $y' = 0 "
+                        "\\Leftrightarrow x = 0$ hoặc $x = 2$. Bảng xét dấu $y'$: trên $(-\\infty; 0)$...",
+                        "Hàm số liên tục trên $[0; 2]$. Ta có $f'(x) = 3x^2 - 3 = 0 \\Leftrightarrow x = 1 "
+                        '\\in (0; 2)$ hoặc $x = -1 \\notin (0; 2)$. Tính giá trị: $f(0) = 2$; $f(1) = 0$...',
+                        'Tập xác định $D = \\mathbb{R} \\setminus \\{1\\}$. Chia đa thức ta có $y = 2x + 1 + '
+                        '\\dfrac{2}{x - 1}$. Vì $\\lim_{x \\to 1^+} y = +\\infty$ và $\\lim_{x \\to 1^-} y = '
+                        '-\\infty$...'],
+            'answer': 0,
+            'solution': 'Lời giải chi tiết theo Bài 15: Phương trình đường thẳng trong không gian: Đường '
+                        'thẳng $d$ đi qua $A(1; 2; -1)$ và nhận $\\overrightarrow{AB} = (2; -3; 5)$ làm '
+                        'vectơ chỉ phương. Phương trình chính tắc của $d$ là $\\dfrac{x - 1}{2} = \\dfrac{y '
+                        '- 2}{-3} = \\dfrac{z + 1}{5}$.'},
+           {'level': 'vandung',
+            'type': 'short',
+            'q': 'Trong không gian $Oxyz$, cho điểm $A(1; 2; 3)$ và mặt phẳng $(P): x + y + z - 3 = 0$. Gọi '
+                 '$H(a; b; c)$ là hình chiếu vuông góc của điểm $A$ trên mặt phẳng $(P)$. Tính giá trị của '
+                 '$a + 2b + 3c$.',
+            'answer': ['8'],
+            'unit': None,
+            'solution': 'Đường thẳng $AH$ đi qua $A(1; 2; 3)$ và vuông góc với $(P)$ có phương trình $x = 1 '
+                        '+ t, y = 2 + t, z = 3 + t$. Vì $H \\in (P)$ nên $(1 + t) + (2 + t) + (3 + t) - 3 = '
+                        '0 \\Leftrightarrow t = -1 \\Rightarrow H(0; 1; 2)$. Vậy $a + 2b + 3c = 0 + 2 \\cdot '
+                        '1 + 3 \\cdot 2 = 8$.',
+            'alt': None,
+            'note': None}]},
+ {'topic': 'l12-ch05-phuong-phap-toa-do-khong-gian',
+  'context_title': 'Chương V: Phương pháp tọa độ trong không gian',
+  'context': 'Chương V · SGK Toán 12: Phương trình mặt phẳng, phương trình đường thẳng, công thức tính góc '
+             'và phương trình mặt cầu trong không gian Oxyz.',
+  'title': 'Bài 16: Công thức tính góc trong không gian',
+  'icon': '📐',
+  'description': 'Công thức tọa độ tính góc giữa hai đường thẳng, góc giữa đường thẳng và mặt phẳng, góc '
+                 'giữa hai mặt phẳng trong không gian Oxyz.',
+  'requirements': ['Tính được côsin góc giữa hai đường thẳng thông qua hai vectơ chỉ phương.',
+                   'Tính được sin của góc giữa đường thẳng và mặt phẳng thông qua vectơ chỉ phương và vectơ '
+                   'pháp tuyến.',
+                   'Tính được côsin góc giữa hai mặt phẳng thông qua hai vectơ pháp tuyến.'],
+  'definition': 'Trong không gian $Oxyz$, góc giữa hai đường thẳng, góc giữa đường thẳng và mặt phẳng, góc '
+                'giữa hai mặt phẳng đều thuộc đoạn $[0^\\circ; 90^\\circ]$ và được xác định thông qua giá '
+                'trị tuyệt đối của tích vô hướng các vectơ đặc trưng.',
+  'theory': '1. Góc giữa hai đường thẳng $\\Delta_1, \\Delta_2$ có VTCP $\\vec{u}_1, \\vec{u}_2$: '
+            '$\\cos(\\Delta_1, \\Delta_2) = |\\cos(\\vec{u}_1, \\vec{u}_2)| = \\dfrac{|\\vec{u}_1 \\cdot '
+            '\\vec{u}_2|}{|\\vec{u}_1| \\cdot |\\vec{u}_2|}$. 2. Góc giữa đường thẳng $\\Delta$ (VTCP '
+            '$\\vec{u}$) và mặt phẳng $(P)$ (VTPT $\\vec{n}$): $\\sin(\\Delta, (P)) = |\\cos(\\vec{u}, '
+            '\\vec{n})| = \\dfrac{|\\vec{u} \\cdot \\vec{n}|}{|\\vec{u}| \\cdot |\\vec{n}|}$. 3. Góc giữa '
+            'hai mặt phẳng $(P_1), (P_2)$ có VTPT $\\vec{n}_1, \\vec{n}_2$: $\\cos((P_1), (P_2)) = '
+            '|\\cos(\\vec{n}_1, \\vec{n}_2)| = \\dfrac{|\\vec{n}_1 \\cdot \\vec{n}_2|}{|\\vec{n}_1| \\cdot '
+            '|\\vec{n}_2|}$.',
+  'formulas': [{'category': 'Ba công thức tính góc trong không gian Oxyz',
+                'items': [{'name': 'Góc giữa hai đường thẳng',
+                           'formula': '$\\cos(\\Delta_1, \\Delta_2) = \\dfrac{|\\vec{u}_1 \\cdot '
+                                      '\\vec{u}_2|}{|\\vec{u}_1| \\cdot |\\vec{u}_2|}$'},
+                          {'name': 'Góc giữa đường thẳng và mặt phẳng',
+                           'formula': '$\\sin(\\Delta, (P)) = \\dfrac{|\\vec{u} \\cdot \\vec{n}|}{|\\vec{u}| '
+                                      '\\cdot |\\vec{n}|}$'},
+                          {'name': 'Góc giữa hai mặt phẳng',
+                           'formula': '$\\cos((P_1), (P_2)) = \\dfrac{|\\vec{n}_1 \\cdot '
+                                      '\\vec{n}_2|}{|\\vec{n}_1| \\cdot |\\vec{n}_2|}$'}]}],
+  'example': 'Trong không gian $Oxyz$, tính góc giữa đường thẳng $d: \\dfrac{x}{1} = \\dfrac{y}{-1} = '
+             '\\dfrac{z}{2}$ và mặt phẳng $(P): x - y + 2z - 5 = 0$.',
+  'example_answer': 'Đường thẳng $d$ có VTCP $\\vec{u} = (1; -1; 2)$ và mặt phẳng $(P)$ có VTPT $\\vec{n} = '
+                    '(1; -1; 2)$. Ta có $\\sin(d, (P)) = \\dfrac{|\\vec{u} \\cdot \\vec{n}|}{|\\vec{u}| '
+                    '\\cdot |\\vec{n}|} = \\dfrac{|1 + 1 + 4|}{\\sqrt{6} \\cdot \\sqrt{6}} = 1$. Suy ra góc '
+                    'giữa $d$ và $(P)$ bằng $90^\\circ$ (hay $d \\perp (P)$).',
+  'real_life': 'Tính độ dốc mái nhà, góc nghiêng của đường băng sân bay và góc đón nắng tối ưu cho tấm pin '
+               'mặt trời.',
+  'quiz': [{'level': 'biet',
+            'type': 'mcq',
+            'q': 'Trong không gian $Oxyz$, cho đường thẳng $\\Delta$ có vectơ chỉ phương $\\vec{u}$ và mặt '
+                 'phẳng $(P)$ có vectơ pháp tuyến $\\vec{n}$. Công thức nào dưới đây đúng?',
+            'options': ['$\\cos(\\Delta, (P)) = \\dfrac{|\\vec{u} \\cdot \\vec{n}|}{|\\vec{u}| \\cdot '
+                        '|\\vec{n}|}$',
+                        '$\\sin(\\Delta, (P)) = \\dfrac{\\vec{u} \\cdot \\vec{n}}{|\\vec{u}| \\cdot '
+                        '|\\vec{n}|}$',
+                        '$\\tan(\\Delta, (P)) = \\dfrac{|\\vec{u} \\cdot \\vec{n}|}{|\\vec{u}| \\cdot '
+                        '|\\vec{n}|}$',
+                        '$\\sin(\\Delta, (P)) = \\dfrac{|\\vec{u} \\cdot \\vec{n}|}{|\\vec{u}| \\cdot '
+                        '|\\vec{n}|}$'],
+            'answer': 3,
+            'solution': 'Sin của góc giữa đường thẳng và mặt phẳng bằng giá trị tuyệt đối của côsin góc giữa '
+                        'VTCP $\\vec{u}$ và VTPT $\\vec{n}$.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Trong không gian $Oxyz$, góc giữa hai mặt phẳng $(Oxy)$ và $(Oyz)$ bằng:',
+            'options': ['$90^\\circ$', '$60^\\circ$', '$45^\\circ$', '$0^\\circ$'],
+            'answer': 0,
+            'solution': 'Hai mặt phẳng tọa độ $(Oxy)$ và $(Oyz)$ vuông góc với nhau nên góc giữa chúng bằng '
+                        '$90^\\circ$.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Theo nội dung trọng tâm của **Bài 16: Công thức tính góc trong không gian**, công thức '
+                 'hoặc quy tắc nào sau đây biểu diễn đúng **Góc giữa hai đường thẳng**?',
+            'options': ['$\\sin(\\Delta, (P)) = \\dfrac{|\\vec{u} \\cdot \\vec{n}|}{|\\vec{u}| \\cdot '
+                        '|\\vec{n}|}$',
+                        '$\\cos(\\Delta_1, \\Delta_2) = \\dfrac{|\\vec{u}_1 \\cdot \\vec{u}_2|}{|\\vec{u}_1| '
+                        '\\cdot |\\vec{u}_2|}$',
+                        '$\\cos((P_1), (P_2)) = \\dfrac{|\\vec{n}_1 \\cdot \\vec{n}_2|}{|\\vec{n}_1| \\cdot '
+                        '|\\vec{n}_2|}$',
+                        "$f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm)"],
+            'answer': 1,
+            'solution': 'Theo bảng công thức trọng tâm của Bài 16: Công thức tính góc trong không gian, '
+                        '**Góc giữa hai đường thẳng** được xác định bởi: $\\cos(\\Delta_1, \\Delta_2) = '
+                        '\\dfrac{|\\vec{u}_1 \\cdot \\vec{u}_2|}{|\\vec{u}_1| \\cdot |\\vec{u}_2|}$.'},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Trong **Bài 16: Công thức tính góc trong không gian**, nội dung/biểu thức $\\sin(\\Delta, '
+                 '(P)) = \\dfrac{|\\vec{u} \\cdot \\vec{n}|}{|\\vec{u}| \\cdot |\\vec{n}|}$ là quy tắc hoặc '
+                 'công thức của mục nào sau đây?',
+            'options': ['Góc giữa hai đường thẳng',
+                        'Góc giữa hai mặt phẳng',
+                        'Góc giữa đường thẳng và mặt phẳng',
+                        'Đồng biến trên khoảng'],
+            'answer': 2,
+            'solution': 'Trong Bài 16: Công thức tính góc trong không gian, biểu thức/quy tắc '
+                        '$\\sin(\\Delta, (P)) = \\dfrac{|\\vec{u} \\cdot \\vec{n}|}{|\\vec{u}| \\cdot '
+                        '|\\vec{n}|}$ chính là nội dung của **Góc giữa đường thẳng và mặt phẳng**.'},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Trong không gian $Oxyz$, góc giữa hai đường thẳng $d_1: \\dfrac{x}{1} = \\dfrac{y}{1} = '
+                 '\\dfrac{z}{0}$ và $d_2: \\dfrac{x}{1} = \\dfrac{y}{0} = \\dfrac{z}{1}$ bằng:',
+            'options': ['$30^\\circ$', '$45^\\circ$', '$90^\\circ$', '$60^\\circ$'],
+            'answer': 3,
+            'solution': 'Ta có $\\vec{u}_1 = (1; 1; 0)$ và $\\vec{u}_2 = (1; 0; 1)$. Khi đó $\\cos(d_1, d_2) '
+                        '= \\dfrac{|1 \\cdot 1 + 1 \\cdot 0 + 0 \\cdot 1|}{\\sqrt{2} \\cdot \\sqrt{2}} = '
+                        '\\dfrac{1}{2} \\Rightarrow (d_1, d_2) = 60^\\circ$.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Khi học **Bài 16: Công thức tính góc trong không gian** (Chương V: Phương pháp tọa độ '
+                 'trong không gian), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất '
+                 'kiến thức của bài?',
+            'options': ['Tính được côsin góc giữa hai đường thẳng thông qua hai vectơ chỉ phương.',
+                        'Nhận biết được tính đồng biến, nghịch biến của hàm số trên một khoảng dựa vào dấu '
+                        "của đạo hàm cấp một $f'(x)$.",
+                        'Xác định được điểm cực đại, điểm cực tiểu, giá trị cực đại, giá trị cực tiểu của '
+                        "hàm số thông qua bảng biến thiên hoặc đạo hàm cấp hai $f''(x)$.",
+                        'Vận dụng điều kiện đơn điệu và cực trị để giải các bài toán chứa tham số $m$.'],
+            'answer': 0,
+            'solution': 'Theo yêu cầu cần đạt của Bài 16: Công thức tính góc trong không gian: Tính được '
+                        'côsin góc giữa hai đường thẳng thông qua hai vectơ chỉ phương.'},
+           {'level': 'hieu',
+            'type': 'tf4',
+            'q': 'Trong không gian $Oxyz$, cho mặt phẳng $(P): x + y - 2 = 0$ và đường thẳng $d: '
+                 '\\dfrac{x}{1} = \\dfrac{y}{0} = \\dfrac{z}{1}$. Xét tính đúng sai của các mệnh đề sau:',
+            'statements': ['Mặt phẳng $(P)$ có một vectơ pháp tuyến là $\\vec{n} = (1; 1; 0)$.',
+                           'Đường thẳng $d$ có một vectơ chỉ phương là $\\vec{u} = (1; 0; 1)$.',
+                           'Góc giữa đường thẳng $d$ và mặt phẳng $(P)$ bằng $60^\\circ$.',
+                           'Góc giữa mặt phẳng $(P)$ và mặt phẳng $(Oyz)$ bằng $45^\\circ$.'],
+            'answer': [True, True, False, True],
+            'solution': 'a) Đúng. b) Đúng. c) Sai vì $\\sin(d, (P)) = \\dfrac{|1 \\cdot 1 + 0 \\cdot 1 + 1 '
+                        '\\cdot 0|}{\\sqrt{2} \\cdot \\sqrt{2}} = \\dfrac{1}{2} \\Rightarrow (d, (P)) = '
+                        '30^\\circ$. d) Đúng vì $(Oyz)$ có VTPT $\\vec{i} = (1; 0; 0)$, $\\cos((P), (Oyz)) = '
+                        '\\dfrac{1}{\\sqrt{2} \\cdot 1} = \\dfrac{\\sqrt{2}}{2} \\Rightarrow 45^\\circ$.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'tf4',
+            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 16: Công thức tính góc '
+                 'trong không gian**:',
+            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Tính được côsin góc giữa hai đường '
+                           'thẳng thông qua hai vectơ chỉ phương.',
+                           'Quy tắc/công thức **Góc giữa hai đường thẳng** trong bài được xác định bởi: '
+                           '$\\cos(\\Delta_1, \\Delta_2) = \\dfrac{|\\vec{u}_1 \\cdot '
+                           '\\vec{u}_2|}{|\\vec{u}_1| \\cdot |\\vec{u}_2|}$.',
+                           'Trong mọi trường hợp, **Góc giữa hai đường thẳng** luôn được tính bằng công thức '
+                           "$f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm) (thuộc Đồng biến "
+                           'trên khoảng) mà không cần điều kiện của Bài 16: Công thức tính góc trong không '
+                           'gian.',
+                           'Với bài toán minh họa: “Trong không gian $Oxyz$, tính góc giữa đường thẳng $d: '
+                           '\\dfrac{x}{1} = \\dfrac{y}{-1} = \\dfrac{z}{2}$ và mặt phẳng $(P): x - y + 2z - '
+                           '5 = 0$.”, lời giải đúng là: Đường thẳng $d$ có VTCP $\\vec{u} = (1; -1; 2)$ và '
+                           'mặt phẳng $(P)$ có VTPT $\\vec{n} = (1; -1; 2)$. Ta có...'],
+            'answer': [True, True, False, True],
+            'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 16: Công thức tính góc trong không gian. '
+                        'b) **Đúng** theo công thức trọng tâm **Góc giữa hai đường thẳng** '
+                        '($\\cos(\\Delta_1, \\Delta_2) = \\dfrac{|\\vec{u}_1 \\cdot '
+                        "\\vec{u}_2|}{|\\vec{u}_1| \\cdot |\\vec{u}_2|}$). c) **Sai** vì $f'(x) \\ge 0, "
+                        '\\forall x \\in K$ (dấu $=$ tại hữu hạn điểm) là công thức của nội dung khác, không '
+                        'phải quy tắc chung của **Góc giữa hai đường thẳng**. d) **Đúng** theo lời giải ví '
+                        'dụ minh họa trong bài học.'},
+           {'level': 'vandung',
+            'type': 'mcq',
+            'q': 'Vận dụng kiến thức **Bài 16: Công thức tính góc trong không gian** để giải quyết tình '
+                 'huống sau: Trong không gian $Oxyz$, tính góc giữa đường thẳng $d: \\dfrac{x}{1} = '
+                 '\\dfrac{y}{-1} = \\dfrac{z}{2}$ và mặt phẳng $(P): x - y + 2z - 5 = 0$. Kết quả và hướng '
+                 'giải nào dưới đây là **đúng**?',
+            'options': ["Tập xác định $D = \\mathbb{R}$. Ta có $y' = 3x^2 - 6x = 3x(x - 2)$. Cho $y' = 0 "
+                        "\\Leftrightarrow x = 0$ hoặc $x = 2$. Bảng xét dấu $y'$: trên $(-\\infty; 0)$...",
+                        'Đường thẳng $d$ có VTCP $\\vec{u} = (1; -1; 2)$ và mặt phẳng $(P)$ có VTPT '
+                        '$\\vec{n} = (1; -1; 2)$. Ta có...',
+                        "Hàm số liên tục trên $[0; 2]$. Ta có $f'(x) = 3x^2 - 3 = 0 \\Leftrightarrow x = 1 "
+                        '\\in (0; 2)$ hoặc $x = -1 \\notin (0; 2)$. Tính giá trị: $f(0) = 2$; $f(1) = 0$...',
+                        'Tập xác định $D = \\mathbb{R} \\setminus \\{1\\}$. Chia đa thức ta có $y = 2x + 1 + '
+                        '\\dfrac{2}{x - 1}$. Vì $\\lim_{x \\to 1^+} y = +\\infty$ và $\\lim_{x \\to 1^-} y = '
+                        '-\\infty$...'],
+            'answer': 1,
+            'solution': 'Lời giải chi tiết theo Bài 16: Công thức tính góc trong không gian: Đường thẳng $d$ '
+                        'có VTCP $\\vec{u} = (1; -1; 2)$ và mặt phẳng $(P)$ có VTPT $\\vec{n} = (1; -1; 2)$. '
+                        'Ta có $\\sin(d, (P)) = \\dfrac{|\\vec{u} \\cdot \\vec{n}|}{|\\vec{u}| \\cdot '
+                        '|\\vec{n}|} = \\dfrac{|1 + 1 + 4|}{\\sqrt{6} \\cdot \\sqrt{6}} = 1$. Suy ra góc '
+                        'giữa $d$ và $(P)$ bằng $90^\\circ$ (hay $d \\perp (P)$).'},
+           {'level': 'vandung',
+            'type': 'short',
+            'q': 'Trong không gian $Oxyz$, tính số đo góc (theo đơn vị độ) giữa đường thẳng $d: \\dfrac{x - '
+                 '1}{1} = \\dfrac{y + 2}{1} = \\dfrac{z}{\\sqrt{2}}$ và mặt phẳng $(Oxy)$.',
+            'answer': ['45'],
+            'unit': None,
+            'solution': 'Đường thẳng $d$ có VTCP $\\vec{u} = (1; 1; \\sqrt{2})$ và mặt phẳng $(Oxy)$ có VTPT '
+                        '$\\vec{k} = (0; 0; 1)$. Ta có $\\sin(d, (Oxy)) = \\dfrac{|\\sqrt{2}|}{\\sqrt{1 + 1 '
+                        '+ 2} \\cdot 1} = \\dfrac{\\sqrt{2}}{2}$, suy ra góc bằng $45^\\circ$.',
+            'alt': None,
+            'note': None}]},
+ {'topic': 'l12-ch05-phuong-phap-toa-do-khong-gian',
+  'context_title': 'Chương V: Phương pháp tọa độ trong không gian',
+  'context': 'Chương V · SGK Toán 12: Phương trình mặt phẳng, phương trình đường thẳng, công thức tính góc '
+             'và phương trình mặt cầu trong không gian Oxyz.',
+  'title': 'Bài 17: Phương trình mặt cầu',
+  'icon': '🌐',
+  'description': 'Phương trình chính tắc và phương trình tổng quát của mặt cầu, cách xác định tâm, bán kính '
+                 'và vị trí tương đối với mặt phẳng.',
+  'requirements': ['Nhận biết và viết được phương trình mặt cầu tâm $I(a; b; c)$ bán kính $R$ dưới dạng $(x '
+                   '- a)^2 + (y - b)^2 + (z - c)^2 = R^2$.',
+                   'Xác định được điều kiện để phương trình $x^2 + y^2 + z^2 - 2ax - 2by - 2cz + d = 0$ là '
+                   'phương trình mặt cầu và tìm được tâm, bán kính.',
+                   'Giải quyết được các bài toán giao của mặt cầu với mặt phẳng, đường thẳng và ứng dụng '
+                   'định vị GPS.'],
+  'definition': 'Trong không gian $Oxyz$, mặt cầu $(S)$ tâm $I(a; b; c)$ bán kính $R > 0$ là tập hợp tất cả '
+                'các điểm $M(x; y; z)$ thỏa mãn $IM = R$, có phương trình là $(x - a)^2 + (y - b)^2 + (z - '
+                'c)^2 = R^2$.',
+  'theory': '1. Phương trình dạng khai triển $x^2 + y^2 + z^2 - 2ax - 2by - 2cz + d = 0$ là phương trình của '
+            'một mặt cầu khi và chỉ khi $a^2 + b^2 + c^2 - d > 0$; khi đó tâm là $I(a; b; c)$ và bán kính là '
+            '$R = \\sqrt{a^2 + b^2 + c^2 - d}$. 2. Nếu mặt phẳng $(P)$ cắt mặt cầu $(S)$ theo giao tuyến là '
+            'đường tròn bán kính $r$ thì $R^2 = d^2(I, (P)) + r^2$.',
+  'formulas': [{'category': 'Phương trình mặt cầu',
+                'items': [{'name': 'Phương trình chính tắc',
+                           'formula': '$(x - a)^2 + (y - b)^2 + (z - c)^2 = R^2$'},
+                          {'name': 'Bán kính từ dạng khai triển',
+                           'formula': '$R = \\sqrt{a^2 + b^2 + c^2 - d} \\quad (\\text{với } a^2 + b^2 + c^2 '
+                                      '- d > 0)$'},
+                          {'name': 'Hệ thức mặt phẳng cắt mặt cầu',
+                           'formula': '$R^2 = d^2(I, (P)) + r^2$'}]}],
+  'example': 'Tìm tâm $I$ và bán kính $R$ của mặt cầu $(S): x^2 + y^2 + z^2 - 4x + 2y - 6z + 5 = 0$.',
+  'example_answer': 'Ta có $a = 2, b = -1, c = 3, d = 5$. Vậy mặt cầu $(S)$ có tâm $I(2; -1; 3)$ và bán kính '
+                    '$R = \\sqrt{2^2 + (-1)^2 + 3^2 - 5} = \\sqrt{9} = 3$.',
+  'real_life': 'Xác định vùng phủ sóng của trạm phát Wi-Fi, radar phòng không và định vị toàn cầu GPS dựa '
+               'trên giao của các mặt cầu.',
+  'quiz': [{'level': 'biet',
+            'type': 'mcq',
+            'q': 'Trong không gian $Oxyz$, mặt cầu $(S): (x - 1)^2 + (y + 2)^2 + (z - 3)^2 = 16$ có tâm $I$ '
+                 'và bán kính $R$ lần lượt là:',
+            'options': ['$I(1; -2; 3), R = 4$',
+                        '$I(-1; 2; -3), R = 4$',
+                        '$I(1; -2; 3), R = 16$',
+                        '$I(1; 2; 3), R = 4$'],
+            'answer': 0,
+            'solution': 'Từ phương trình $(x - 1)^2 + (y + 2)^2 + (z - 3)^2 = 4^2$, suy ra tâm $I(1; -2; 3)$ '
+                        'và bán kính $R = 4$.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Trong không gian $Oxyz$, phương trình mặt cầu tâm $O(0; 0; 0)$ và bán kính $R = 3$ là:',
+            'options': ['$x^2 + y^2 + z^2 = 3$',
+                        '$x^2 + y^2 + z^2 = 9$',
+                        '$(x - 3)^2 + (y - 3)^2 + (z - 3)^2 = 9$',
+                        '$x^2 + y^2 + z^2 = 6$'],
+            'answer': 1,
+            'solution': 'Mặt cầu tâm $O(0; 0; 0)$ bán kính $R = 3$ có phương trình $x^2 + y^2 + z^2 = 3^2 = '
+                        '9$.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Theo nội dung trọng tâm của **Bài 17: Phương trình mặt cầu**, công thức hoặc quy tắc nào '
+                 'sau đây biểu diễn đúng **Phương trình chính tắc**?',
+            'options': ['$R = \\sqrt{a^2 + b^2 + c^2 - d} \\quad (\\text{với } a^2 + b^2 + c^2 - d > 0)$',
+                        '$R^2 = d^2(I, (P)) + r^2$',
+                        '$(x - a)^2 + (y - b)^2 + (z - c)^2 = R^2$',
+                        "$f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm)"],
+            'answer': 2,
+            'solution': 'Theo bảng công thức trọng tâm của Bài 17: Phương trình mặt cầu, **Phương trình '
+                        'chính tắc** được xác định bởi: $(x - a)^2 + (y - b)^2 + (z - c)^2 = R^2$.'},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Trong **Bài 17: Phương trình mặt cầu**, nội dung/biểu thức $R = \\sqrt{a^2 + b^2 + c^2 - '
+                 'd} \\quad (\\text{với } a^2 + b^2 + c^2 - d > 0)$ là quy tắc hoặc công thức của mục nào '
+                 'sau đây?',
+            'options': ['Phương trình chính tắc',
+                        'Hệ thức mặt phẳng cắt mặt cầu',
+                        'Đồng biến trên khoảng',
+                        'Bán kính từ dạng khai triển'],
+            'answer': 3,
+            'solution': 'Trong Bài 17: Phương trình mặt cầu, biểu thức/quy tắc $R = \\sqrt{a^2 + b^2 + c^2 - '
+                        'd} \\quad (\\text{với } a^2 + b^2 + c^2 - d > 0)$ chính là nội dung của **Bán kính '
+                        'từ dạng khai triển**.'},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Trong không gian $Oxyz$, mặt cầu đường kính $AB$ với $A(1; 2; -1)$ và $B(3; 0; 3)$ có '
+                 'phương trình là:',
+            'options': ['$(x - 2)^2 + (y - 1)^2 + (z - 1)^2 = 6$',
+                        '$(x - 2)^2 + (y - 1)^2 + (z - 1)^2 = 24$',
+                        '$(x + 2)^2 + (y + 1)^2 + (z + 1)^2 = 6$',
+                        '$(x - 2)^2 + (y - 1)^2 + (z - 1)^2 = \\sqrt{6}$'],
+            'answer': 0,
+            'solution': 'Tâm $I$ là trung điểm của $AB \\Rightarrow I(2; 1; 1)$. Bán kính $R = IA = '
+                        '\\sqrt{(1 - 2)^2 + (2 - 1)^2 + (-1 - 1)^2} = \\sqrt{6} \\Rightarrow R^2 = 6$.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Khi học **Bài 17: Phương trình mặt cầu** (Chương V: Phương pháp tọa độ trong không gian), '
+                 'khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
+            'options': ['Nhận biết được tính đồng biến, nghịch biến của hàm số trên một khoảng dựa vào dấu '
+                        "của đạo hàm cấp một $f'(x)$.",
+                        'Nhận biết và viết được phương trình mặt cầu tâm $I(a; b; c)$ bán kính $R$ dưới dạng '
+                        '$(x - a)^2 + (y - b)^2 + (z - c)^2 = R^2$.',
+                        'Xác định được điểm cực đại, điểm cực tiểu, giá trị cực đại, giá trị cực tiểu của '
+                        "hàm số thông qua bảng biến thiên hoặc đạo hàm cấp hai $f''(x)$.",
+                        'Vận dụng điều kiện đơn điệu và cực trị để giải các bài toán chứa tham số $m$.'],
+            'answer': 1,
+            'solution': 'Theo yêu cầu cần đạt của Bài 17: Phương trình mặt cầu: Nhận biết và viết được '
+                        'phương trình mặt cầu tâm $I(a; b; c)$ bán kính $R$ dưới dạng $(x - a)^2 + (y - b)^2 '
+                        '+ (z - c)^2 = R^2$.'},
+           {'level': 'hieu',
+            'type': 'tf4',
+            'q': 'Trong không gian $Oxyz$, cho mặt cầu $(S): x^2 + y^2 + z^2 - 2x - 4y - 4z - 7 = 0$. Xét '
+                 'tính đúng sai của các mệnh đề sau:',
+            'statements': ['Tâm của mặt cầu $(S)$ là điểm $I(1; 2; 2)$.',
+                           'Bán kính của mặt cầu $(S)$ bằng $4$.',
+                           'Điểm $A(1; 2; 6)$ nằm trên mặt cầu $(S)$.',
+                           'Mặt phẳng $(Oxy)$ tiếp xúc với mặt cầu $(S)$.'],
+            'answer': [True, True, True, False],
+            'solution': 'a) Đúng vì $a = 1, b = 2, c = 2$. b) Đúng vì $R = \\sqrt{1^2 + 2^2 + 2^2 - (-7)} = '
+                        '\\sqrt{16} = 4$. c) Đúng vì $IA = \\sqrt{0 + 0 + 4^2} = 4 = R$. d) Sai vì $d(I, '
+                        '(Oxy)) = |z_I| = 2 < R = 4$ nên $(Oxy)$ cắt mặt cầu $(S)$.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'tf4',
+            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 17: Phương trình mặt '
+                 'cầu**:',
+            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết và viết được phương '
+                           'trình mặt cầu tâm $I(a; b; c)$ bán kính $R$ dưới dạng $(x - a)^2 + (y - b)^2 + '
+                           '(z - c)^2 = R^2$.',
+                           'Quy tắc/công thức **Phương trình chính tắc** trong bài được xác định bởi: $(x - '
+                           'a)^2 + (y - b)^2 + (z - c)^2 = R^2$.',
+                           'Trong mọi trường hợp, **Phương trình chính tắc** luôn được tính bằng công thức '
+                           "$f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm) (thuộc Đồng biến "
+                           'trên khoảng) mà không cần điều kiện của Bài 17: Phương trình mặt cầu.',
+                           'Với bài toán minh họa: “Tìm tâm $I$ và bán kính $R$ của mặt cầu $(S): x^2 + y^2 '
+                           '+ z^2 - 4x + 2y - 6z + 5 = 0$.”, lời giải đúng là: Ta có $a = 2, b = -1, c = 3, '
+                           'd = 5$. Vậy mặt cầu $(S)$ có tâm $I(2; -1; 3)$ và bán kính $R = \\sqrt{2^2 + '
+                           '(-1)^2 + 3^2 - 5} = \\sqrt{9} = 3$.'],
+            'answer': [True, True, False, True],
+            'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 17: Phương trình mặt cầu. b) **Đúng** theo '
+                        'công thức trọng tâm **Phương trình chính tắc** ($(x - a)^2 + (y - b)^2 + (z - c)^2 '
+                        "= R^2$). c) **Sai** vì $f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm) "
+                        'là công thức của nội dung khác, không phải quy tắc chung của **Phương trình chính '
+                        'tắc**. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+           {'level': 'vandung',
+            'type': 'mcq',
+            'q': 'Vận dụng kiến thức **Bài 17: Phương trình mặt cầu** để giải quyết tình huống sau: Tìm tâm '
+                 '$I$ và bán kính $R$ của mặt cầu $(S): x^2 + y^2 + z^2 - 4x + 2y - 6z + 5 = 0$. Kết quả và '
+                 'hướng giải nào dưới đây là **đúng**?',
+            'options': ["Tập xác định $D = \\mathbb{R}$. Ta có $y' = 3x^2 - 6x = 3x(x - 2)$. Cho $y' = 0 "
+                        "\\Leftrightarrow x = 0$ hoặc $x = 2$. Bảng xét dấu $y'$: trên $(-\\infty; 0)$...",
+                        "Hàm số liên tục trên $[0; 2]$. Ta có $f'(x) = 3x^2 - 3 = 0 \\Leftrightarrow x = 1 "
+                        '\\in (0; 2)$ hoặc $x = -1 \\notin (0; 2)$. Tính giá trị: $f(0) = 2$; $f(1) = 0$...',
+                        'Ta có $a = 2, b = -1, c = 3, d = 5$. Vậy mặt cầu $(S)$ có tâm $I(2; -1; 3)$ và bán '
+                        'kính $R = \\sqrt{2^2 + (-1)^2 + 3^2 - 5} = \\sqrt{9} = 3$.',
+                        'Tập xác định $D = \\mathbb{R} \\setminus \\{1\\}$. Chia đa thức ta có $y = 2x + 1 + '
+                        '\\dfrac{2}{x - 1}$. Vì $\\lim_{x \\to 1^+} y = +\\infty$ và $\\lim_{x \\to 1^-} y = '
+                        '-\\infty$...'],
+            'answer': 2,
+            'solution': 'Lời giải chi tiết theo Bài 17: Phương trình mặt cầu: Ta có $a = 2, b = -1, c = 3, d '
+                        '= 5$. Vậy mặt cầu $(S)$ có tâm $I(2; -1; 3)$ và bán kính $R = \\sqrt{2^2 + (-1)^2 + '
+                        '3^2 - 5} = \\sqrt{9} = 3$.'},
+           {'level': 'vandung',
+            'type': 'short',
+            'q': 'Trong không gian $Oxyz$, cho mặt cầu $(S): (x - 1)^2 + (y - 2)^2 + (z - 2)^2 = 25$ và mặt '
+                 'phẳng $(P): 2x + 2y + z + 4 = 0$. Biết mặt phẳng $(P)$ cắt mặt cầu $(S)$ theo giao tuyến '
+                 'là một đường tròn. Tính bán kính $r$ của đường tròn giao tuyến đó.',
+            'answer': ['3'],
+            'unit': None,
+            'solution': 'Mặt cầu $(S)$ có tâm $I(1; 2; 2)$ và bán kính $R = 5$. Khoảng cách từ $I$ đến $(P)$ '
+                        'là $d = \\dfrac{|2 \\cdot 1 + 2 \\cdot 2 + 2 + 4|}{\\sqrt{2^2 + 2^2 + 1^2}} = '
+                        '\\dfrac{12}{3} = 4$. Suy ra bán kính đường tròn giao tuyến là $r = \\sqrt{R^2 - '
+                        'd^2} = \\sqrt{5^2 - 4^2} = 3$.',
+            'alt': None,
+            'note': None}]},
+ {'topic': 'l12-ch06-xac-suat-co-dieu-kien',
+  'context_title': 'Chương VI: Xác suất có điều kiện',
+  'context': 'Chương VI · SGK Toán 12: Xác suất có điều kiện, sơ đồ hình cây, công thức xác suất toàn phần '
+             'và công thức Bayes.',
+  'title': 'Bài 18: Xác suất có điều kiện',
+  'icon': '🎲',
+  'description': 'Khái niệm xác suất có điều kiện, công thức tính xác suất có điều kiện và công thức nhân '
+                 'xác suất cho hai biến cố bất kì.',
+  'requirements': ['Hiểu được khái niệm xác suất của biến cố $A$ với điều kiện biến cố $B$ đã xảy ra, kí '
+                   'hiệu $P(A | B)$.',
+                   'Tính được $P(A | B) = \\dfrac{P(AB)}{P(B)}$ khi $P(B) > 0$ và vận dụng được công thức '
+                   'nhân xác suất $P(AB) = P(B) \\cdot P(A | B)$.',
+                   'Sử dụng được sơ đồ hình cây và bảng tần số hai chiều để giải các bài toán xác suất có '
+                   'điều kiện.'],
+  'definition': 'Cho hai biến cố $A$ và $B$ với $P(B) > 0$. Xác suất của biến cố $A$ với điều kiện biến cố '
+                '$B$ đã xảy ra được kí hiệu là $P(A | B)$ và được xác định bởi công thức $P(A | B) = '
+                '\\dfrac{P(AB)}{P(B)}$.',
+  'theory': '1. Công thức nhân xác suất cho hai biến cố bất kì: $P(AB) = P(B) \\cdot P(A | B) = P(A) \\cdot '
+            'P(B | A)$. 2. Với mọi biến cố $A$ và $B$ ($P(B) > 0$), ta có $P(\\overline{A} | B) = 1 - P(A | '
+            'B)$. 3. Hai biến cố $A$ và $B$ độc lập khi và chỉ khi $P(A | B) = P(A)$.',
+  'formulas': [{'category': 'Xác suất có điều kiện và công thức nhân',
+                'items': [{'name': 'Định nghĩa xác suất có điều kiện',
+                           'formula': '$P(A | B) = \\dfrac{P(AB)}{P(B)} = \\dfrac{n(AB)}{n(B)} \\quad (P(B) '
+                                      '> 0)$'},
+                          {'name': 'Công thức nhân xác suất',
+                           'formula': '$P(AB) = P(A) \\cdot P(B | A) = P(B) \\cdot P(A | B)$'},
+                          {'name': 'Biến cố đối có điều kiện',
+                           'formula': '$P(\\overline{A} | B) = 1 - P(A | B)$'}]}],
+  'example': 'Một lớp có $40$ học sinh, trong đó có $25$ học sinh thích môn Toán, $20$ học sinh thích môn Lý '
+             'và $15$ học sinh thích cả hai môn. Chọn ngẫu nhiên một học sinh, biết học sinh đó thích môn '
+             'Toán, tính xác suất để học sinh đó cũng thích môn Lý.',
+  'example_answer': 'Gọi $A$ là biến cố học sinh thích Lý, $B$ là biến cố học sinh thích Toán. Ta có $n(B) = '
+                    '25$ và $n(AB) = 15$. Xác suất cần tìm là $P(A | B) = \\dfrac{n(AB)}{n(B)} = '
+                    '\\dfrac{15}{25} = \\dfrac{3}{5} = 0,6$.',
+  'real_life': 'Đánh giá nguy cơ mắc bệnh tim mạch khi biết bệnh nhân có tiền sử huyết áp cao và phân tích '
+               'hành vi mua sắm khách hàng.',
+  'quiz': [{'level': 'biet',
+            'type': 'mcq',
+            'q': 'Cho hai biến cố $A$ và $B$ với $P(B) > 0$. Công thức tính xác suất của biến cố $A$ với '
+                 'điều kiện biến cố $B$ đã xảy ra là:',
+            'options': ['$P(A | B) = \\dfrac{P(AB)}{P(A)}$',
+                        '$P(A | B) = \\dfrac{P(AB)}{P(B)}$',
+                        '$P(A | B) = P(A) \\cdot P(B)$',
+                        '$P(A | B) = \\dfrac{P(A)}{P(B)}$'],
+            'answer': 1,
+            'solution': 'Theo định nghĩa, $P(A | B) = \\dfrac{P(AB)}{P(B)}$ với $P(B) > 0$.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Cho hai biến cố $A$ và $B$ có $P(A) = 0,5$, $P(B) = 0,4$ và $P(AB) = 0,2$. Giá trị của '
+                 '$P(A | B)$ bằng:',
+            'options': ['$0,4$', '$0,8$', '$0,5$', '$0,1$'],
+            'answer': 2,
+            'solution': 'Ta có $P(A | B) = \\dfrac{P(AB)}{P(B)} = \\dfrac{0,2}{0,4} = 0,5$.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Theo nội dung trọng tâm của **Bài 18: Xác suất có điều kiện**, công thức hoặc quy tắc nào '
+                 'sau đây biểu diễn đúng **Định nghĩa xác suất có điều kiện**?',
+            'options': ['$P(AB) = P(A) \\cdot P(B | A) = P(B) \\cdot P(A | B)$',
+                        '$P(\\overline{A} | B) = 1 - P(A | B)$',
+                        "$f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm)",
+                        '$P(A | B) = \\dfrac{P(AB)}{P(B)} = \\dfrac{n(AB)}{n(B)} \\quad (P(B) > 0)$'],
+            'answer': 3,
+            'solution': 'Theo bảng công thức trọng tâm của Bài 18: Xác suất có điều kiện, **Định nghĩa xác '
+                        'suất có điều kiện** được xác định bởi: $P(A | B) = \\dfrac{P(AB)}{P(B)} = '
+                        '\\dfrac{n(AB)}{n(B)} \\quad (P(B) > 0)$.'},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Trong **Bài 18: Xác suất có điều kiện**, nội dung/biểu thức $P(AB) = P(A) \\cdot P(B | A) '
+                 '= P(B) \\cdot P(A | B)$ là quy tắc hoặc công thức của mục nào sau đây?',
+            'options': ['Công thức nhân xác suất',
+                        'Định nghĩa xác suất có điều kiện',
+                        'Biến cố đối có điều kiện',
+                        'Đồng biến trên khoảng'],
+            'answer': 0,
+            'solution': 'Trong Bài 18: Xác suất có điều kiện, biểu thức/quy tắc $P(AB) = P(A) \\cdot P(B | '
+                        'A) = P(B) \\cdot P(A | B)$ chính là nội dung của **Công thức nhân xác suất**.'},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Một hộp có $6$ bi trắng và $4$ bi đen. Lấy ngẫu nhiên lần lượt $2$ viên bi không hoàn lại. '
+                 'Xác suất để cả $2$ viên bi lấy ra đều màu trắng là:',
+            'options': ['$\\dfrac{9}{25}$', '$\\dfrac{1}{3}$', '$\\dfrac{2}{5}$', '$\\dfrac{1}{5}$'],
+            'answer': 1,
+            'solution': 'Gọi $A_1, A_2$ là biến cố viên thứ nhất, thứ hai màu trắng. Theo công thức nhân: '
+                        '$P(A_1A_2) = P(A_1) \\cdot P(A_2 | A_1) = \\dfrac{6}{10} \\cdot \\dfrac{5}{9} = '
+                        '\\dfrac{30}{90} = \\dfrac{1}{3}$.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Khi học **Bài 18: Xác suất có điều kiện** (Chương VI: Xác suất có điều kiện), khẳng định '
+                 'nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
+            'options': ['Nhận biết được tính đồng biến, nghịch biến của hàm số trên một khoảng dựa vào dấu '
+                        "của đạo hàm cấp một $f'(x)$.",
+                        'Xác định được điểm cực đại, điểm cực tiểu, giá trị cực đại, giá trị cực tiểu của '
+                        "hàm số thông qua bảng biến thiên hoặc đạo hàm cấp hai $f''(x)$.",
+                        'Hiểu được khái niệm xác suất của biến cố $A$ với điều kiện biến cố $B$ đã xảy ra, '
+                        'kí hiệu $P(A | B)$.',
+                        'Vận dụng điều kiện đơn điệu và cực trị để giải các bài toán chứa tham số $m$.'],
+            'answer': 2,
+            'solution': 'Theo yêu cầu cần đạt của Bài 18: Xác suất có điều kiện: Hiểu được khái niệm xác '
+                        'suất của biến cố $A$ với điều kiện biến cố $B$ đã xảy ra, kí hiệu $P(A | B)$.'},
+           {'level': 'hieu',
+            'type': 'tf4',
+            'q': 'Cho hai biến cố $A$ và $B$ thỏa mãn $P(A) = 0,6$; $P(B) = 0,5$ và $P(A | B) = 0,4$. Xét '
+                 'tính đúng sai của các mệnh đề sau:',
+            'statements': ['Xác suất của biến cố giao $AB$ là $P(AB) = 0,2$.',
+                           'Xác suất có điều kiện $P(\\overline{A} | B) = 0,6$.',
+                           'Xác suất có điều kiện $P(B | A) = \\dfrac{1}{3}$.',
+                           'Hai biến cố $A$ và $B$ là hai biến cố độc lập.'],
+            'answer': [True, True, True, False],
+            'solution': 'a) Đúng vì $P(AB) = P(B) \\cdot P(A | B) = 0,5 \\cdot 0,4 = 0,2$. b) Đúng vì '
+                        '$P(\\overline{A} | B) = 1 - P(A | B) = 0,6$. c) Đúng vì $P(B | A) = '
+                        '\\dfrac{P(AB)}{P(A)} = \\dfrac{0,2}{0,6} = \\dfrac{1}{3}$. d) Sai vì $P(A | B) = '
+                        '0,4 \\ne P(A) = 0,6$.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'tf4',
+            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 18: Xác suất có điều '
+                 'kiện**:',
+            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Hiểu được khái niệm xác suất của '
+                           'biến cố $A$ với điều kiện biến cố $B$ đã xảy ra, kí hiệu $P(A | B)$.',
+                           'Quy tắc/công thức **Định nghĩa xác suất có điều kiện** trong bài được xác định '
+                           'bởi: $P(A | B) = \\dfrac{P(AB)}{P(B)} = \\dfrac{n(AB)}{n(B)} \\quad (P(B) > 0)$.',
+                           'Trong mọi trường hợp, **Định nghĩa xác suất có điều kiện** luôn được tính bằng '
+                           "công thức $f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm) (thuộc "
+                           'Đồng biến trên khoảng) mà không cần điều kiện của Bài 18: Xác suất có điều kiện.',
+                           'Với bài toán minh họa: “Một lớp có $40$ học sinh, trong đó có $25$ học sinh '
+                           'thích môn Toán, $20$ học sinh thích môn Lý và $15$ học sinh thích cả hai môn. '
+                           'Chọn ngẫu...”, lời giải đúng là: Gọi $A$ là biến cố học sinh thích Lý, $B$ là '
+                           'biến cố học sinh thích Toán. Ta có $n(B) = 25$ và $n(AB) = 15$. Xác suất cần tìm '
+                           'là $P(A | B) = \\dfrac{n(AB)}{n(B)} = \\dfrac{15}{25} = \\dfrac{3}{5} = 0,6$...'],
+            'answer': [True, True, False, True],
+            'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 18: Xác suất có điều kiện. b) **Đúng** '
+                        'theo công thức trọng tâm **Định nghĩa xác suất có điều kiện** ($P(A | B) = '
+                        '\\dfrac{P(AB)}{P(B)} = \\dfrac{n(AB)}{n(B)} \\quad (P(B) > 0)$). c) **Sai** vì '
+                        "$f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm) là công thức của nội "
+                        'dung khác, không phải quy tắc chung của **Định nghĩa xác suất có điều kiện**. d) '
+                        '**Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+           {'level': 'vandung',
+            'type': 'mcq',
+            'q': 'Vận dụng kiến thức **Bài 18: Xác suất có điều kiện** để giải quyết tình huống sau: Một lớp '
+                 'có $40$ học sinh, trong đó có $25$ học sinh thích môn Toán, $20$ học sinh thích môn Lý và '
+                 '$15$ học sinh thích cả hai môn. Chọn ngẫu nhiên một học sinh, biết học sinh đó thích môn '
+                 'Toán, tính xác suất để học sinh đó cũng thích môn Lý. Kết quả và hướng giải nào dưới đây '
+                 'là **đúng**?',
+            'options': ["Tập xác định $D = \\mathbb{R}$. Ta có $y' = 3x^2 - 6x = 3x(x - 2)$. Cho $y' = 0 "
+                        "\\Leftrightarrow x = 0$ hoặc $x = 2$. Bảng xét dấu $y'$: trên $(-\\infty; 0)$...",
+                        "Hàm số liên tục trên $[0; 2]$. Ta có $f'(x) = 3x^2 - 3 = 0 \\Leftrightarrow x = 1 "
+                        '\\in (0; 2)$ hoặc $x = -1 \\notin (0; 2)$. Tính giá trị: $f(0) = 2$; $f(1) = 0$...',
+                        'Tập xác định $D = \\mathbb{R} \\setminus \\{1\\}$. Chia đa thức ta có $y = 2x + 1 + '
+                        '\\dfrac{2}{x - 1}$. Vì $\\lim_{x \\to 1^+} y = +\\infty$ và $\\lim_{x \\to 1^-} y = '
+                        '-\\infty$...',
+                        'Gọi $A$ là biến cố học sinh thích Lý, $B$ là biến cố học sinh thích Toán. Ta có '
+                        '$n(B) = 25$ và $n(AB) = 15$. Xác suất cần tìm là $P(A | B) = \\dfrac{n(AB)}{n(B)} = '
+                        '\\dfrac{15}{25} = \\dfrac{3}{5} = 0,6$...'],
+            'answer': 3,
+            'solution': 'Lời giải chi tiết theo Bài 18: Xác suất có điều kiện: Gọi $A$ là biến cố học sinh '
+                        'thích Lý, $B$ là biến cố học sinh thích Toán. Ta có $n(B) = 25$ và $n(AB) = 15$. '
+                        'Xác suất cần tìm là $P(A | B) = \\dfrac{n(AB)}{n(B)} = \\dfrac{15}{25} = '
+                        '\\dfrac{3}{5} = 0,6$.'},
+           {'level': 'vandung',
+            'type': 'short',
+            'q': 'Gieo một con xúc xắc cân đối và đồng chất hai lần liên tiếp. Biết rằng tổng số chấm xuất '
+                 'hiện trong hai lần gieo bằng $8$, tính xác suất để có ít nhất một lần xuất hiện mặt $5$ '
+                 'chấm.',
+            'answer': ['0,4', '0.4'],
+            'unit': None,
+            'solution': 'Biến cố $B$: tổng số chấm bằng $8$ gồm $5$ kết quả: $\\{(2; 6), (3; 5), (4; 4), (5; '
+                        '3), (6; 2)\\} \\Rightarrow n(B) = 5$. Biến cố $AB$: tổng bằng $8$ và có mặt $5$ '
+                        'chấm gồm $2$ kết quả: $\\{(3; 5), (5; 3)\\} \\Rightarrow n(AB) = 2$. Vậy $P(A | B) '
+                        '= \\dfrac{2}{5} = 0,4$.',
+            'alt': None,
+            'note': None}]},
+ {'topic': 'l12-ch06-xac-suat-co-dieu-kien',
+  'context_title': 'Chương VI: Xác suất có điều kiện',
+  'context': 'Chương VI · SGK Toán 12: Xác suất có điều kiện, sơ đồ hình cây, công thức xác suất toàn phần '
+             'và công thức Bayes.',
+  'title': 'Bài 19: Công thức xác suất toàn phần và công thức Bayes',
+  'icon': '🌳',
+  'description': 'Công thức xác suất toàn phần, công thức Bayes và ứng dụng trong chẩn đoán y khoa, kiểm '
+                 'định chất lượng và lọc thư rác.',
+  'requirements': ['Phát biểu và áp dụng được công thức xác suất toàn phần $P(A) = P(B)P(A | B) + '
+                   'P(\\overline{B})P(A | \\overline{B})$.',
+                   'Phát biểu và vận dụng được công thức Bayes để tính xác suất hậu nghiệm $P(B | A)$.',
+                   'Giải quyết được bài toán thực tế về độ chính xác của xét nghiệm y tế và phân loại sản '
+                   'phẩm từ nhiều dây chuyền.'],
+  'definition': 'Cho hai biến cố $A$ và $B$ với $0 < P(B) < 1$. Công thức xác suất toàn phần: $P(A) = P(B) '
+                '\\cdot P(A | B) + P(\\overline{B}) \\cdot P(A | \\overline{B})$. Công thức Bayes (khi $P(A) '
+                '> 0$): $P(B | A) = \\dfrac{P(B) \\cdot P(A | B)}{P(A)} = \\dfrac{P(B) \\cdot P(A | B)}{P(B) '
+                '\\cdot P(A | B) + P(\\overline{B}) \\cdot P(A | \\overline{B})}$.',
+  'theory': '1. Công thức xác suất toàn phần cho phép tính xác suất của biến cố $A$ bằng cách phân chia '
+            'không gian mẫu thành hai trường hợp xung khắc $B$ và $\\overline{B}$ (hoặc hệ đầy đủ $B_1, B_2, '
+            '\\dots, B_n$). 2. Công thức Bayes cho phép cập nhật xác suất của nguyên nhân $B$ sau khi đã '
+            'quan sát thấy kết quả $A$ xảy ra.',
+  'formulas': [{'category': 'Công thức xác suất toàn phần và công thức Bayes',
+                'items': [{'name': 'Công thức xác suất toàn phần',
+                           'formula': '$P(A) = P(B) \\cdot P(A | B) + P(\\overline{B}) \\cdot P(A | '
+                                      '\\overline{B})$'},
+                          {'name': 'Công thức Bayes',
+                           'formula': '$P(B | A) = \\dfrac{P(B) \\cdot P(A | B)}{P(B) \\cdot P(A | B) + '
+                                      'P(\\overline{B}) \\cdot P(A | \\overline{B})}$'},
+                          {'name': 'Tổng quát cho n nhóm xung khắc',
+                           'formula': '$P(A) = \\sum_{i=1}^n P(B_i) \\cdot P(A | B_i)$'}]}],
+  'example': 'Một nhà máy có hai phân xưởng I và II lần lượt sản xuất $60\\%$ và $40\\%$ tổng sản lượng. Tỉ '
+             'lệ phế phẩm của phân xưởng I là $2\\%$, của phân xưởng II là $3\\%$. Chọn ngẫu nhiên một sản '
+             'phẩm của nhà máy thì thấy nó là phế phẩm. Tính xác suất phế phẩm đó do phân xưởng I sản xuất.',
+  'example_answer': 'Gọi $B$ là biến cố sản phẩm do phân xưởng I sản xuất ($P(B) = 0,6; P(\\overline{B}) = '
+                    '0,4$) và $A$ là biến cố sản phẩm là phế phẩm ($P(A | B) = 0,02; P(A | \\overline{B}) = '
+                    '0,03$). Theo công thức xác suất toàn phần: $P(A) = 0,6 \\cdot 0,02 + 0,4 \\cdot 0,03 = '
+                    '0,024$. Theo công thức Bayes: $P(B | A) = \\dfrac{0,6 \\cdot 0,02}{0,024} = '
+                    '\\dfrac{0,012}{0,024} = 0,5$.',
+  'real_life': 'Tính xác suất thực sự mắc bệnh khi có kết quả xét nghiệm dương tính và thuật toán lọc email '
+               'spam trong trí tuệ nhân tạo.',
+  'quiz': [{'level': 'biet',
+            'type': 'mcq',
+            'q': 'Cho hai biến cố $A$ và $B$ với $0 < P(B) < 1$. Công thức nào dưới đây là công thức xác '
+                 'suất toàn phần?',
+            'options': ['$P(A) = P(B) + P(\\overline{B})$',
+                        '$P(A) = P(A | B) + P(A | \\overline{B})$',
+                        '$P(A) = P(B)P(A | B) + P(\\overline{B})P(A | \\overline{B})$',
+                        '$P(A) = P(B)P(B | A) + P(\\overline{B})P(\\overline{B} | A)$'],
+            'answer': 2,
+            'solution': 'Theo định lí xác suất toàn phần, $P(A) = P(B)P(A | B) + P(\\overline{B})P(A | '
+                        '\\overline{B})$.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Cho hai biến cố $A$ và $B$ với $P(A) > 0, P(B) > 0$. Công thức Bayes để tính $P(B | A)$ '
+                 'là:',
+            'options': ['$P(B | A) = \\dfrac{P(A) \\cdot P(A | B)}{P(B)}$',
+                        '$P(B | A) = \\dfrac{P(B)}{P(A) \\cdot P(A | B)}$',
+                        '$P(B | A) = P(B) \\cdot P(A | B) \\cdot P(A)$',
+                        '$P(B | A) = \\dfrac{P(B) \\cdot P(A | B)}{P(A)}$'],
+            'answer': 3,
+            'solution': 'Theo công thức Bayes, $P(B | A) = \\dfrac{P(B) \\cdot P(A | B)}{P(A)}$.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Theo nội dung trọng tâm của **Bài 19: Công thức xác suất toàn phần và công thức Bayes**, '
+                 'công thức hoặc quy tắc nào sau đây biểu diễn đúng **Công thức xác suất toàn phần**?',
+            'options': ['$P(A) = P(B) \\cdot P(A | B) + P(\\overline{B}) \\cdot P(A | \\overline{B})$',
+                        '$P(B | A) = \\dfrac{P(B) \\cdot P(A | B)}{P(B) \\cdot P(A | B) + P(\\overline{B}) '
+                        '\\cdot P(A | \\overline{B})}$',
+                        '$P(A) = \\sum_{i=1}^n P(B_i) \\cdot P(A | B_i)$',
+                        "$f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm)"],
+            'answer': 0,
+            'solution': 'Theo bảng công thức trọng tâm của Bài 19: Công thức xác suất toàn phần và công thức '
+                        'Bayes, **Công thức xác suất toàn phần** được xác định bởi: $P(A) = P(B) \\cdot P(A '
+                        '| B) + P(\\overline{B}) \\cdot P(A | \\overline{B})$.'},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Trong **Bài 19: Công thức xác suất toàn phần và công thức Bayes**, nội dung/biểu thức $P(B '
+                 '| A) = \\dfrac{P(B) \\cdot P(A | B)}{P(B) \\cdot P(A | B) + P(\\overline{B}) \\cdot P(A | '
+                 '\\overline{B})}$ là quy tắc hoặc công thức của mục nào sau đây?',
+            'options': ['Công thức xác suất toàn phần',
+                        'Công thức Bayes',
+                        'Tổng quát cho n nhóm xung khắc',
+                        'Đồng biến trên khoảng'],
+            'answer': 1,
+            'solution': 'Trong Bài 19: Công thức xác suất toàn phần và công thức Bayes, biểu thức/quy tắc '
+                        '$P(B | A) = \\dfrac{P(B) \\cdot P(A | B)}{P(B) \\cdot P(A | B) + P(\\overline{B}) '
+                        '\\cdot P(A | \\overline{B})}$ chính là nội dung của **Công thức Bayes**.'},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Cho $P(B) = 0,4$; $P(A | B) = 0,5$ và $P(A | \\overline{B}) = 0,2$. Giá trị của $P(A)$ '
+                 'bằng:',
+            'options': ['$0,70$', '$0,20$', '$0,32$', '$0,28$'],
+            'answer': 2,
+            'solution': 'Ta có $P(\\overline{B}) = 1 - 0,4 = 0,6$. Theo công thức xác suất toàn phần: $P(A) '
+                        '= 0,4 \\cdot 0,5 + 0,6 \\cdot 0,2 = 0,20 + 0,12 = 0,32$.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Khi học **Bài 19: Công thức xác suất toàn phần và công thức Bayes** (Chương VI: Xác suất '
+                 'có điều kiện), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến '
+                 'thức của bài?',
+            'options': ['Nhận biết được tính đồng biến, nghịch biến của hàm số trên một khoảng dựa vào dấu '
+                        "của đạo hàm cấp một $f'(x)$.",
+                        'Xác định được điểm cực đại, điểm cực tiểu, giá trị cực đại, giá trị cực tiểu của '
+                        "hàm số thông qua bảng biến thiên hoặc đạo hàm cấp hai $f''(x)$.",
+                        'Vận dụng điều kiện đơn điệu và cực trị để giải các bài toán chứa tham số $m$.',
+                        'Phát biểu và áp dụng được công thức xác suất toàn phần $P(A) = P(B)P(A | B) + '
+                        'P(\\overline{B})P(A | \\overline{B})$.'],
+            'answer': 3,
+            'solution': 'Theo yêu cầu cần đạt của Bài 19: Công thức xác suất toàn phần và công thức Bayes: '
+                        'Phát biểu và áp dụng được công thức xác suất toàn phần $P(A) = P(B)P(A | B) + '
+                        'P(\\overline{B})P(A | \\overline{B})$.'},
+           {'level': 'hieu',
+            'type': 'tf4',
+            'q': 'Hộp thứ nhất có $3$ bi đỏ, $2$ bi xanh; hộp thứ hai có $2$ bi đỏ, $3$ bi xanh. Chọn ngẫu '
+                 'nhiên một hộp rồi từ hộp đó lấy ngẫu nhiên $1$ viên bi. Gọi $B$ là biến cố chọn được hộp '
+                 'thứ nhất và $A$ là biến cố lấy được bi đỏ. Xét tính đúng sai của các mệnh đề sau:',
+            'statements': ['Xác suất chọn được hộp thứ nhất là $P(B) = 0,5$.',
+                           'Xác suất lấy được bi đỏ biết rằng đã chọn hộp thứ nhất là $P(A | B) = 0,6$.',
+                           'Xác suất lấy được bi đỏ là $P(A) = 0,5$.',
+                           'Biết viên bi lấy ra màu đỏ, xác suất nó thuộc hộp thứ nhất là $P(B | A) = 0,4$.'],
+            'answer': [True, True, True, False],
+            'solution': 'a) Đúng vì chọn ngẫu nhiên 1 trong 2 hộp nên $P(B) = P(\\overline{B}) = 0,5$. b) '
+                        'Đúng vì hộp I có $\\dfrac{3}{5} = 0,6$ bi đỏ. c) Đúng vì $P(A) = 0,5 \\cdot 0,6 + '
+                        '0,5 \\cdot 0,4 = 0,5$. d) Sai vì theo Bayes, $P(B | A) = \\dfrac{0,5 \\cdot '
+                        '0,6}{0,5} = 0,6$.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'tf4',
+            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 19: Công thức xác suất '
+                 'toàn phần và công thức Bayes**:',
+            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Phát biểu và áp dụng được công '
+                           'thức xác suất toàn phần $P(A) = P(B)P(A | B) + P(\\overline{B})P(A | '
+                           '\\overline{B})$.',
+                           'Quy tắc/công thức **Công thức xác suất toàn phần** trong bài được xác định bởi: '
+                           '$P(A) = P(B) \\cdot P(A | B) + P(\\overline{B}) \\cdot P(A | \\overline{B})$.',
+                           'Trong mọi trường hợp, **Công thức xác suất toàn phần** luôn được tính bằng công '
+                           "thức $f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm) (thuộc Đồng "
+                           'biến trên khoảng) mà không cần điều kiện của Bài 19: Công thức xác suất toàn '
+                           'phần và công thức Bayes.',
+                           'Với bài toán minh họa: “Một nhà máy có hai phân xưởng I và II lần lượt sản xuất '
+                           '$60\\%$ và $40\\%$ tổng sản lượng. Tỉ lệ phế phẩm của phân xưởng I là $2\\%$, '
+                           'của phân...”, lời giải đúng là: Gọi $B$ là biến cố sản phẩm do phân xưởng I sản '
+                           'xuất ($P(B) = 0,6; P(\\overline{B}) = 0,4$) và $A$ là biến cố sản phẩm là phế '
+                           'phẩm ($P(A | B) = 0,02; P(A | \\overline{B}) = 0,03$...'],
+            'answer': [True, True, False, True],
+            'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 19: Công thức xác suất toàn phần và công '
+                        'thức Bayes. b) **Đúng** theo công thức trọng tâm **Công thức xác suất toàn phần** '
+                        '($P(A) = P(B) \\cdot P(A | B) + P(\\overline{B}) \\cdot P(A | \\overline{B})$). c) '
+                        "**Sai** vì $f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm) là công "
+                        'thức của nội dung khác, không phải quy tắc chung của **Công thức xác suất toàn '
+                        'phần**. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+           {'level': 'vandung',
+            'type': 'mcq',
+            'q': 'Vận dụng kiến thức **Bài 19: Công thức xác suất toàn phần và công thức Bayes** để giải '
+                 'quyết tình huống sau: Một nhà máy có hai phân xưởng I và II lần lượt sản xuất $60\\%$ và '
+                 '$40\\%$ tổng sản lượng. Tỉ lệ phế phẩm của phân xưởng I là $2\\%$, của phân xưởng II là '
+                 '$3\\%$. Chọn ngẫu nhiên một sản phẩm của nhà máy thì thấy nó là phế phẩm. Tính xác suất '
+                 'phế phẩm đó do phân xưởng I sản xuất. Kết quả và hướng giải nào dưới đây là **đúng**?',
+            'options': ['Gọi $B$ là biến cố sản phẩm do phân xưởng I sản xuất ($P(B) = 0,6; P(\\overline{B}) '
+                        '= 0,4$) và $A$ là biến cố sản phẩm là phế phẩm ($P(A | B) = 0,02; P(A | '
+                        '\\overline{B}) = 0,03$...',
+                        "Tập xác định $D = \\mathbb{R}$. Ta có $y' = 3x^2 - 6x = 3x(x - 2)$. Cho $y' = 0 "
+                        "\\Leftrightarrow x = 0$ hoặc $x = 2$. Bảng xét dấu $y'$: trên $(-\\infty; 0)$...",
+                        "Hàm số liên tục trên $[0; 2]$. Ta có $f'(x) = 3x^2 - 3 = 0 \\Leftrightarrow x = 1 "
+                        '\\in (0; 2)$ hoặc $x = -1 \\notin (0; 2)$. Tính giá trị: $f(0) = 2$; $f(1) = 0$...',
+                        'Tập xác định $D = \\mathbb{R} \\setminus \\{1\\}$. Chia đa thức ta có $y = 2x + 1 + '
+                        '\\dfrac{2}{x - 1}$. Vì $\\lim_{x \\to 1^+} y = +\\infty$ và $\\lim_{x \\to 1^-} y = '
+                        '-\\infty$...'],
+            'answer': 0,
+            'solution': 'Lời giải chi tiết theo Bài 19: Công thức xác suất toàn phần và công thức Bayes: Gọi '
+                        '$B$ là biến cố sản phẩm do phân xưởng I sản xuất ($P(B) = 0,6; P(\\overline{B}) = '
+                        '0,4$) và $A$ là biến cố sản phẩm là phế phẩm ($P(A | B) = 0,02; P(A | '
+                        '\\overline{B}) = 0,03$). Theo công thức xác suất toàn phần: $P(A) = 0,6 \\cdot 0,02 '
+                        '+ 0,4 \\cdot 0,03 = 0,024$. Theo công thức Bayes: $P(B | A) = \\dfrac{0,6 \\cdot '
+                        '0,02}{0,024} = \\dfrac{0,012}{0,024} = 0,5$.'},
+           {'level': 'vandung',
+            'type': 'short',
+            'q': 'Một lô hàng có $70\\%$ sản phẩm do máy I sản xuất và $30\\%$ sản phẩm do máy II sản xuất. '
+                 'Tỉ lệ sản phẩm đạt chuẩn của máy I là $90\\%$ và của máy II là $80\\%$. Lấy ngẫu nhiên $1$ '
+                 'sản phẩm từ lô hàng. Tính xác suất để sản phẩm lấy ra đạt chuẩn.',
+            'answer': ['0,87', '0.87'],
+            'unit': None,
+            'solution': 'Theo công thức xác suất toàn phần, xác suất sản phẩm đạt chuẩn là $P(A) = 0,7 '
+                        '\\cdot 0,9 + 0,3 \\cdot 0,8 = 0,63 + 0,24 = 0,87$.',
+            'alt': None,
+            'note': None}]}]

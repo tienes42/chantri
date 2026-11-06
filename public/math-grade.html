@@ -60,18 +60,17 @@
       </div>
     </div>
 
-    <!-- Trong math-grade.html, physics-grade.html, chemistry-knowledge.html -->
-<div class="player" id="playerCard" title="Tài khoản của tôi" style="cursor: pointer;">
-    <div class="player-avatar" id="playerAvatar">👨‍🎓</div>
-    <div class="player-info">
+    <div class="player" id="playerCard" title="Tài khoản của tôi" style="cursor: pointer;">
+      <div class="player-avatar" id="playerAvatar">👨‍🎓</div>
+      <div class="player-info">
         <strong id="playerName">Tên người chơi</strong>
         <div class="xp-line" style="display:flex; align-items:center; gap:6px;">
-            <div class="xp-bar"><div class="xp-progress" id="playerXpBar"></div></div>
-            <small id="playerXpText" style="font-size:10px; color:#99f6e4;">0/100</small>
+          <div class="xp-bar"><div class="xp-progress" id="playerXpBar"></div></div>
+          <small id="playerXpText" style="font-size:10px; color:#99f6e4;">0/100</small>
         </div>
+      </div>
+      <span class="level" id="playerLevel">Lv.1</span>
     </div>
-    <span class="level" id="playerLevel">Lv.1</span>
-</div>
   </header>
 
   <!-- =========================
@@ -85,7 +84,7 @@
         <span class="hero-label">✦ HÀNH TRÌNH TRI THỨC</span>
         <h2 id="gradeTitle">TOÁN LỚP 10</h2>
         <p id="gradeDescription">
-          Khám phá những kiến thức toán học và biến chúng thành công cụ giải quyết vấn đề trong cuộc sống.
+          Khám phá những kiến thức toán học theo từng chương và từng bài học cụ thể.
         </p>
 
         <div class="progress-box">
@@ -118,7 +117,7 @@
         <div class="stat-icon" data-sprite="stat1"><span>📚</span></div>
         <div>
           <strong id="topicCount">0</strong>
-          <span>Chủ đề</span>
+          <span id="topicStatLabel">Chương học</span>
         </div>
       </div>
 
@@ -134,7 +133,7 @@
         <div class="stat-icon" data-sprite="stat3"><span>⭐</span></div>
         <div>
           <strong id="xpCount">0</strong>
-          <span>XP đạt được</span>
+          <span>Sao đạt được</span>
         </div>
       </div>
 
@@ -147,18 +146,18 @@
       </div>
     </section>
 
-    <!-- TOPICS -->
+    <!-- CHAPTERS / TOPICS -->
     <section class="topics-section">
       <div class="section-heading">
         <div>
-          <span>BƯỚC 02 • CHỌN MÔ-ĐUN KIẾN THỨC</span>
-          <h2>Chọn chủ đề</h2>
+          <span id="stepHeadingBadge">BƯỚC 02 • CHỌN CHƯƠNG KIẾN THỨC</span>
+          <h2 id="stepHeadingTitle">Chọn chương học</h2>
         </div>
-        <p>Học theo từng chủ đề để xây dựng nền tảng vững chắc.</p>
+        <p id="stepHeadingDesc">Bấm vào một chương để mở danh sách từng bài học cụ thể trong chương đó.</p>
       </div>
 
       <div class="topics-grid" id="topicsGrid">
-        <div class="loading-state">Đang tải dữ liệu bài học...</div>
+        <div class="loading-state">Đang tải danh sách chương và bài học...</div>
       </div>
     </section>
 
@@ -200,7 +199,7 @@
         <span class="action-sprite" data-sprite="progress">📊</span>
         <div>
           <strong>Tiến trình</strong>
-          <small>Xem năng lực & thống kê của bạn</small>
+          <small>Xem năng lực & thống kê theo từng chương, từng bài</small>
         </div>
         <b>→</b>
       </button>
@@ -209,34 +208,51 @@
   </main>
 
   <!-- =========================
-       TOPIC POPUP
+       CHAPTER -> LESSONS POPUP MODAL
   ========================== -->
   <div class="popup-overlay" id="topicPopup" aria-hidden="true">
-    <div class="popup" role="dialog" aria-modal="true" aria-labelledby="popupTitle">
+    <div class="popup popup-chapter-lessons" role="dialog" aria-modal="true" aria-labelledby="popupTitle">
       <button class="popup-close" id="popupClose" type="button" aria-label="Đóng">×</button>
-      <div class="popup-icon" id="popupIcon">📚</div>
-      <span class="popup-label" id="popupLabel">CHỦ ĐỀ</span>
-      <h2 id="popupTitle">Hàm số</h2>
-      <p id="popupDescription">Khám phá kiến thức và luyện tập thông qua các bài học.</p>
 
-      <div class="popup-info">
-        <div>
-          <strong id="popupLessons">10</strong>
-          <span>bài học</span>
-        </div>
-        <div>
-          <strong id="popupXP">100</strong>
-          <span>XP</span>
+      <div class="popup-chapter-head">
+        <div class="popup-icon" id="popupIcon">📚</div>
+        <div class="popup-head-text">
+          <span class="popup-label" id="popupLabel">CHƯƠNG 01</span>
+          <h2 id="popupTitle">Tên chương học</h2>
+          <p id="popupDescription">Chọn bài học bên dưới để bắt đầu khám phá kiến thức và luyện tập.</p>
         </div>
       </div>
 
+      <div class="popup-info">
+        <div>
+          <strong id="popupLessons">0</strong>
+          <span>bài học trong chương</span>
+        </div>
+        <div>
+          <strong id="popupDoneCount">0/0</strong>
+          <span>đã hoàn thành</span>
+        </div>
+        <div>
+          <strong id="popupXP">0</strong>
+          <span>sao tối đa ⭐</span>
+        </div>
+      </div>
+
+      <div class="popup-lessons-header">
+        <span>📑 DANH SÁCH BÀI HỌC TRONG CHƯƠNG</span>
+        <small>Bấm vào bài bất kỳ để vào học</small>
+      </div>
+
+      <div class="popup-lessons-list" id="popupLessonsList" role="list"></div>
+
       <button class="popup-start" id="popupStart" type="button">
-        Bắt đầu học <span>→</span>
+        Bắt đầu học bài đầu tiên <span>→</span>
       </button>
     </div>
   </div>
 
   <script src="math-grade.js"></script>
+  <script src="/guide-bot.js" defer></script>
 </body>
 
 </html>

@@ -1,599 +1,4453 @@
-"""TOÁN 1 — Kết nối tri thức với cuộc sống (tập một, tập hai).
-
-10 chủ đề đánh số trong SGK, đúng thứ tự mục lục.
-Mỗi chủ đề có: Yêu cầu cần đạt (CT GDPT 2018), kiến thức theo từng bài,
-công thức/quy tắc cần nhớ, ví dụ, ứng dụng và 10 câu hỏi 3 mức độ:
-  Biết: 4 trắc nghiệm | Hiểu: 2 trắc nghiệm + 2 Đúng/Sai | Vận dụng: 1 trắc nghiệm + 1 trả lời ngắn
+"""Dữ liệu bài học SGK Toán Lớp 1 — Kết nối tri thức với cuộc sống (NXB Giáo dục Việt Nam).
+Cấu trúc 3 cấp: Lớp 1 ➔ Chương/Chủ đề (topic) ➔ Từng Bài học (title).
+Mỗi bài học gồm đầy đủ Yêu cầu cần đạt (requirements), Định nghĩa, Lý thuyết, Công thức, Ví dụ, Ứng dụng thực tế
+và đúng 10 câu hỏi luyện tập theo 3 mức độ: 4 Nhận biết + 4 Thông hiểu + 2 Vận dụng.
 """
-from ._helpers import F, G, mcq, short, tf
 
 GRADE = 1
 
-LESSONS = [
-    {
-        "topic": "l1-cd01-cac-so-tu-0-den-10",
-        "title": "Các số từ 0 đến 10",
-        "icon": "🔢",
-        "description": "Chủ đề 1 · SGK Toán 1 tập một (tr. 6–45): Tiết học đầu tiên, Bài 1 – Bài 6. Đếm, đọc, viết, so sánh và tách – gộp các số từ 0 đến 10.",
-        "requirements": [
-            "Đếm, đọc, viết được các số trong phạm vi 10.",
-            "Nhận biết được số 0 (dùng để chỉ “không có” đồ vật nào).",
-            "Nhận biết được “nhiều hơn”, “ít hơn”, “bằng nhau” khi so sánh hai nhóm đồ vật.",
-            "Nhận biết được cách so sánh, xếp thứ tự các số trong phạm vi 10 (ở các nhóm có không quá 4 số); sử dụng đúng các dấu >, <, =.",
-            "Nhận biết được cấu tạo số (“mấy và mấy”): tách một số thành hai số và gộp hai số thành một số trong phạm vi 10.",
-            "Vận dụng đếm, so sánh số để giải quyết tình huống đơn giản trong cuộc sống.",
-        ],
-        "definition": (
-            "**Số** dùng để chỉ số lượng đồ vật. Mỗi nhóm đồ vật có bao nhiêu cái thì ta dùng số đó để ghi lại.\n"
-            "- **Số 0** chỉ “không có” đồ vật nào (ví dụ: đĩa không có quả cam nào → 0 quả cam).\n"
-            "- **Dãy số từ 0 đến 10:** 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10. Số đứng sau hơn số đứng ngay trước nó 1 đơn vị.\n"
-            "- **Dấu so sánh:** > (lớn hơn), < (bé hơn), = (bằng).\n"
-            "- **Mấy và mấy:** một số có thể tách thành hai số; hai số đó gộp lại được số ban đầu (8 gồm 5 và 3)."
-        ),
-        "theory": (
-            "### Tiết học đầu tiên\n"
-            "- Làm quen với sách Toán 1, bộ đồ dùng học Toán (que tính, chấm tròn, các hình, thẻ số) và các hoạt động: Khám phá, Hoạt động, Trò chơi, Luyện tập.\n"
-            "### Bài 1. Các số 0, 1, 2, 3, 4, 5\n"
-            "- Đếm số lượng đồ vật (mỗi đồ vật đếm một lần, không bỏ sót), đọc và viết các số 0, 1, 2, 3, 4, 5.\n"
-            "- Số 0 dùng khi không có đồ vật nào.\n"
-            "### Bài 2. Các số 6, 7, 8, 9, 10\n"
-            "- Đếm, đọc, viết các số 6, 7, 8, 9, 10; số 10 được viết bằng hai chữ số: 1 và 0.\n"
-            "- Đếm xuôi 0 → 10 và đếm ngược 10 → 0.\n"
-            "### Bài 3. Nhiều hơn, ít hơn, bằng nhau\n"
-            "- So sánh hai nhóm đồ vật bằng cách **ghép đôi (nối 1 – 1)**: nhóm nào còn thừa thì nhiều hơn; nhóm kia ít hơn; vừa đủ thì bằng nhau.\n"
-            "### Bài 4. So sánh số\n"
-            "- Dùng dấu >, <, = để so sánh hai số: 5 > 3; 3 < 5; 4 = 4.\n"
-            "- Trong dãy số từ 0 đến 10, số đứng trước bé hơn số đứng sau. Xếp thứ tự các số từ bé đến lớn hoặc từ lớn đến bé; tìm số lớn nhất, bé nhất.\n"
-            "### Bài 5. Mấy và mấy\n"
-            "- Tách một nhóm đồ vật thành hai phần: 5 gồm 2 và 3; 5 gồm 4 và 1…\n"
-            "- Gộp hai phần lại được cả nhóm.\n"
-            "### Bài 6. Luyện tập chung\n"
-            "- Ôn đếm, đọc, viết, so sánh, sắp xếp và tách – gộp các số trong phạm vi 10."
-        ),
-        "formulas": [
-            G("I. Dãy số từ 0 đến 10", F("Đếm xuôi", "0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10", "Số liền sau = số đó thêm 1 (sau 6 là 7)."), F("Đếm ngược", "10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0", "Số liền trước = số đó bớt 1 (trước 6 là 5)."), F("Số 0", "Không có đồ vật nào → 0", "0 là số bé nhất trong các số đã học.")),
-            G("II. So sánh số", F("Lớn hơn", "7 > 4  (đọc: bảy lớn hơn bốn)"), F("Bé hơn", "4 < 7  (đọc: bốn bé hơn bảy)"), F("Bằng nhau", "6 = 6  (đọc: sáu bằng sáu)"), F("Mẹo nhớ dấu", "Đầu nhọn của dấu > hoặc < luôn chỉ về số bé hơn", "Trong dãy 0 → 10: số đứng sau lớn hơn số đứng trước.")),
-            G("III. Mấy và mấy (cấu tạo số)", F("Số 5", "5 gồm 1 và 4 · 2 và 3"), F("Số 6", "6 gồm 1 và 5 · 2 và 4 · 3 và 3"), F("Số 7", "7 gồm 1 và 6 · 2 và 5 · 3 và 4"), F("Số 8", "8 gồm 1 và 7 · 2 và 6 · 3 và 5 · 4 và 4"), F("Số 9", "9 gồm 1 và 8 · 2 và 7 · 3 và 6 · 4 và 5"), F("Số 10", "10 gồm 1 và 9 · 2 và 8 · 3 và 7 · 4 và 6 · 5 và 5")),
-        ],
-        "example": (
-            "a) Điền dấu >, <, = vào chỗ chấm: 7 … 9.\n"
-            "b) Xếp các số 6, 2, 9, 4 theo thứ tự từ bé đến lớn.\n"
-            "c) Số 9 gồm 4 và mấy?"
-        ),
-        "example_answer": (
-            "a) Trong dãy số, 7 đứng trước 9 nên 7 bé hơn 9: **7 < 9**.\n"
-            "b) Số bé nhất là 2, rồi đến 4, 6, lớn nhất là 9: **2, 4, 6, 9**.\n"
-            "c) Từ 4 đếm thêm: 5, 6, 7, 8, 9 (đếm thêm 5 lần) → **9 gồm 4 và 5**."
-        ),
-        "real_life": (
-            "- Đếm số bạn trong tổ, số bút trong hộp, số bậc cầu thang.\n"
-            "- So sánh xem ai có nhiều viên bi hơn, nhóm nào có ít quả hơn.\n"
-            "- Chia kẹo, chia bánh thành hai phần (mấy và mấy) cho hai bạn."
-        ),
-        "quiz": [
-            mcq("biet", "Đếm số quả táo: 🍎🍎🍎🍎🍎🍎🍎\nCó bao nhiêu quả táo?", ["6", "7", "8", "5"], 1, "Chỉ tay vào từng quả và đếm: 1, 2, 3, 4, 5, 6, 7. Quả cuối cùng ứng với số 7.\nVậy có **7 quả táo**.", note="Mỗi quả chỉ đếm một lần, không bỏ sót và không đếm lặp lại."),
-            mcq("biet", "Số “chín” được viết là:", ["6", "9", "7", "10"], 1, "Số chín viết là **9**.", note="Dễ nhầm 6 với 9: số 6 có vòng tròn ở dưới, số 9 có vòng tròn ở trên."),
-            mcq("biet", "Trong dãy số 0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10, số đứng liền sau số 6 là:", ["5", "8", "7", "6"], 2, "Số liền sau là số đếm tiếp theo (thêm 1): đếm 6 rồi đến **7**.", note="Số liền **trước** 6 là 5, số liền **sau** 6 là 7 — đừng nhầm hai từ này."),
-            mcq("biet", "Chiếc đĩa không có quả cam nào. Số chỉ số quả cam trên đĩa là:", ["1", "0", "10", "Không viết được số"], 1, "Không có quả nào thì ta dùng **số 0**."),
-            mcq("hieu", "Dấu thích hợp điền vào chỗ chấm: 8 … 5", ["<", ">", "=", "+"], 1, "Trong dãy số, 8 đứng sau 5 nên 8 lớn hơn 5. Ta viết **8 > 5**.", alt="Lấy 8 chấm tròn và 5 chấm tròn rồi nối mỗi chấm của nhóm 5 với một chấm của nhóm 8: nhóm 8 còn thừa 3 chấm, nên 8 nhiều hơn 5.", note="Đầu nhọn của dấu luôn chỉ về số bé hơn (ở đây là số 5)."),
-            mcq("hieu", "Số 8 gồm 3 và mấy?", ["4", "6", "5", "3"], 2, "Từ 3 đếm thêm đến 8: 4, 5, 6, 7, 8 — đếm thêm 5 lần.\nVậy **8 gồm 3 và 5**.", alt="Lấy 8 que tính, tách ra 3 que; đếm số que còn lại được 5 que."),
-            tf("hieu", "Có 4 con thỏ 🐰🐰🐰🐰 và 3 củ cà rốt 🥕🥕🥕.\nNhận định: “Số thỏ ít hơn số cà rốt.”", False, "Nối mỗi con thỏ với một củ cà rốt: còn thừa 1 con thỏ chưa có cà rốt.\nVậy số thỏ **nhiều hơn** số cà rốt (4 > 3). Nhận định đã cho là **Sai**."),
-            tf("hieu", "Nhận định: “Các số 7, 2, 10, 5 xếp theo thứ tự từ bé đến lớn là 2, 5, 7, 10.”", True, "Tìm số bé nhất: 2; tiếp theo: 5; rồi 7; lớn nhất: 10.\nThứ tự từ bé đến lớn là 2, 5, 7, 10 → nhận định **Đúng**."),
-            mcq("vandung", "Mai có 6 bông hoa, Lan có 9 bông hoa, Hà có 4 bông hoa. Bạn nào có nhiều bông hoa nhất?", ["Mai", "Lan", "Hà", "Ba bạn bằng nhau"], 1, "So sánh ba số 6, 9, 4: số lớn nhất là 9.\nVậy **Lan** có nhiều bông hoa nhất.", alt="Xếp các số từ bé đến lớn: 4, 6, 9 → số đứng cuối (9) là lớn nhất."),
-            short("vandung", "Em hãy tìm số lớn hơn 7 nhưng bé hơn 9.", ["8"], "Các số lớn hơn 7 là 8, 9, 10. Trong đó chỉ có **8** bé hơn 9.\nVậy số cần tìm là **8**.", alt="Trên dãy số: 7, **8**, 9 — số nằm giữa 7 và 9 là 8."),
-        ],
-    },
-    {
-        "topic": "l1-cd02-hinh-phang",
-        "title": "Làm quen với một số hình phẳng",
-        "icon": "🔷",
-        "description": "Chủ đề 2 · SGK Toán 1 tập một (tr. 46–55): Bài 7 – Bài 9. Nhận dạng hình vuông, hình tròn, hình tam giác, hình chữ nhật; lắp ghép, xếp hình.",
-        "requirements": [
-            "Nhận dạng được hình vuông, hình tròn, hình tam giác, hình chữ nhật thông qua việc sử dụng bộ đồ dùng học tập cá nhân hoặc vật thật.",
-            "Nhận biết và thực hiện được việc lắp ghép, xếp hình gắn với sử dụng bộ đồ dùng học tập cá nhân hoặc vật thật.",
-            "Đếm được số hình mỗi loại có trong một hình ghép hoặc một bức tranh.",
-        ],
-        "definition": (
-            "- **Hình vuông:** có 4 cạnh, các cạnh dài bằng nhau.\n"
-            "- **Hình chữ nhật:** có 4 cạnh, gồm 2 cạnh dài bằng nhau và 2 cạnh ngắn bằng nhau.\n"
-            "- **Hình tam giác:** có 3 cạnh.\n"
-            "- **Hình tròn:** là một đường cong khép kín, không có cạnh thẳng.\n"
-            "Một hình dù đặt xoay, đặt nghiêng hay có màu sắc, kích thước khác nhau thì vẫn là hình đó."
-        ),
-        "theory": (
-            "### Bài 7. Hình vuông, hình tròn, hình tam giác, hình chữ nhật\n"
-            "- Quan sát đồ vật thật để nhận ra hình: mặt khăn tay (hình vuông), mặt đồng hồ (hình tròn), biển báo (hình tam giác), mặt bảng lớp (hình chữ nhật).\n"
-            "- Phân biệt các hình theo số cạnh và hình dạng các cạnh.\n"
-            "### Bài 8. Thực hành lắp ghép, xếp hình\n"
-            "- Dùng que tính xếp hình: hình tam giác cần 3 que, hình vuông cần 4 que.\n"
-            "- Ghép các hình đã học thành hình mới: 2 hình tam giác có thể ghép thành hình vuông hoặc hình chữ nhật; ghép hình ngôi nhà, con cá, cái thuyền…\n"
-            "### Bài 9. Luyện tập chung\n"
-            "- Nhận dạng, đếm số hình mỗi loại trong tranh; tìm quy luật dãy hình; lắp ghép hình theo mẫu."
-        ),
-        "formulas": [
-            G("I. Đặc điểm nhận dạng hình phẳng", F("Hình vuông", "4 cạnh · các cạnh dài bằng nhau", "Ví dụ: mặt viên gạch hoa, khăn tay, ô cửa sổ vuông."), F("Hình chữ nhật", "4 cạnh · 2 cạnh dài bằng nhau, 2 cạnh ngắn bằng nhau", "Ví dụ: mặt bảng lớp, quyển vở, cánh cửa."), F("Hình tam giác", "3 cạnh", "Ví dụ: biển báo nguy hiểm, miếng bánh cắt chéo, mái nhà."), F("Hình tròn", "Đường cong khép kín · không có cạnh thẳng", "Ví dụ: mặt đồng hồ, đĩa, bánh xe.")),
-            G("II. Xếp hình bằng que tính", F("Hình tam giác", "Cần 3 que tính"), F("Hình vuông", "Cần 4 que tính (dài bằng nhau)"), F("Ghép hình", "2 hình tam giác → 1 hình vuông (hoặc 1 hình chữ nhật)", "2 hình vuông bằng nhau đặt cạnh nhau → 1 hình chữ nhật.")),
-        ],
-        "example": "Một bức tranh ngôi nhà gồm: mái nhà là 1 hình tam giác, thân nhà là 1 hình vuông, 1 cửa ra vào hình chữ nhật và 1 ông mặt trời hình tròn. Bức tranh có mấy loại hình? Đó là những hình nào?",
-        "example_answer": "Bức tranh có **4 loại hình**: hình tam giác (mái nhà), hình vuông (thân nhà), hình chữ nhật (cửa ra vào), hình tròn (mặt trời).",
-        "real_life": (
-            "- Nhận ra hình dạng đồ vật quanh em: bàn, bảng, cửa, đồng hồ, biển báo giao thông.\n"
-            "- Xếp, ghép hình để làm đồ chơi, trang trí lớp học, vẽ tranh."
-        ),
-        "quiz": [
-            mcq("biet", "Hình nào có 3 cạnh?", ["Hình vuông", "Hình tròn", "Hình tam giác", "Hình chữ nhật"], 2, "**Hình tam giác** có 3 cạnh. Hình vuông và hình chữ nhật có 4 cạnh; hình tròn không có cạnh thẳng."),
-            mcq("biet", "Mặt chiếc đồng hồ treo tường (loại tròn) có dạng hình gì?", ["Hình tròn", "Hình vuông", "Hình tam giác", "Hình chữ nhật"], 0, "Mặt đồng hồ là một đường cong khép kín, không có cạnh thẳng → **hình tròn**."),
-            mcq("biet", "Mặt bảng lớp em thường có dạng hình gì?", ["Hình tròn", "Hình tam giác", "Hình chữ nhật", "Hình vuông"], 2, "Mặt bảng có 4 cạnh: 2 cạnh dài bằng nhau và 2 cạnh ngắn bằng nhau → **hình chữ nhật**.", note="Hình vuông cũng có 4 cạnh nhưng các cạnh dài bằng nhau; mặt bảng dài hơn hẳn chiều cao nên không phải hình vuông."),
-            mcq("biet", "Hình vuông có mấy cạnh?", ["3", "4", "5", "Không có cạnh"], 1, "Hình vuông có **4 cạnh** và các cạnh dài bằng nhau."),
-            mcq("hieu", "Cắt một tờ giấy hình vuông theo đường thẳng nối hai góc đối diện, em được hai hình gì?", ["2 hình tròn", "2 hình tam giác", "2 hình chữ nhật", "2 hình vuông"], 1, "Mỗi phần sau khi cắt có 3 cạnh (2 cạnh của hình vuông và đường cắt) → mỗi phần là một **hình tam giác**.", alt="Làm ngược lại: ghép 2 hình tam giác bằng nhau theo cạnh dài nhất sẽ được lại hình vuông ban đầu."),
-            mcq("hieu", "Dùng các que tính dài bằng nhau, cần ít nhất bao nhiêu que tính để xếp được 1 hình vuông?", ["3", "4", "5", "6"], 1, "Hình vuông có 4 cạnh dài bằng nhau, mỗi cạnh là 1 que tính → cần **4 que tính**.", note="3 que tính chỉ xếp được hình tam giác."),
-            tf("hieu", "Nhận định: “Hình chữ nhật và hình vuông đều có 4 cạnh.”", True, "Hình chữ nhật có 4 cạnh, hình vuông cũng có 4 cạnh → nhận định **Đúng**.\nĐiểm khác: hình vuông có 4 cạnh dài bằng nhau."),
-            tf("hieu", "Nhận định: “Nếu xoay nghiêng một hình tam giác thì nó không còn là hình tam giác nữa.”", False, "Xoay, đặt nghiêng hay đổi màu thì hình vẫn có 3 cạnh, nên vẫn là **hình tam giác**. Nhận định **Sai**."),
-            mcq("vandung", "Bạn Nam xếp hình ngôi nhà gồm: mái nhà là 1 hình tam giác, thân nhà là 1 hình vuông, 2 cửa sổ là 2 hình vuông nhỏ và 1 cửa ra vào là hình chữ nhật. Hình ngôi nhà có tất cả bao nhiêu hình vuông?", ["1", "2", "3", "4"], 2, "Đếm các hình vuông: thân nhà (1), cửa sổ thứ nhất (2), cửa sổ thứ hai (3).\nVậy có **3 hình vuông**.", note="Cửa ra vào là hình chữ nhật, mái nhà là hình tam giác — không đếm vào."),
-            short("vandung", "Bạn Hà dùng que tính xếp 2 hình tam giác rời nhau (hai hình không dùng chung que nào). Hỏi Hà cần tất cả bao nhiêu que tính?", ["6"], "Mỗi hình tam giác có 3 cạnh nên cần 3 que tính.\nHình thứ nhất: đếm 1, 2, 3; hình thứ hai đếm tiếp: 4, 5, 6.\nVậy Hà cần **6 que tính**.", unit="que tính"),
-        ],
-    },
-    {
-        "topic": "l1-cd03-cong-tru-pham-vi-10",
-        "title": "Phép cộng, phép trừ trong phạm vi 10",
-        "icon": "➕",
-        "description": "Chủ đề 3 · SGK Toán 1 tập một (tr. 56–91): Bài 10 – Bài 13. Ý nghĩa, cách tính và bảng cộng, bảng trừ trong phạm vi 10.",
-        "requirements": [
-            "Nhận biết được ý nghĩa của phép cộng (gộp lại, thêm vào) và phép trừ (bớt đi, tách ra).",
-            "Thực hiện được phép cộng, phép trừ các số trong phạm vi 10.",
-            "Thực hiện được việc cộng, trừ nhẩm trong phạm vi 10; thuộc bảng cộng, bảng trừ trong phạm vi 10.",
-            "Nhận biết được ý nghĩa thực tiễn của phép tính (cộng, trừ) thông qua tranh ảnh, hình vẽ hoặc tình huống thực tiễn; viết được phép tính thích hợp.",
-            "Làm quen với tính chất đổi chỗ của phép cộng, số 0 trong phép cộng, phép trừ và mối liên hệ giữa phép cộng với phép trừ.",
-        ],
-        "definition": (
-            "- **Phép cộng** (dấu +) dùng khi **gộp lại** hai nhóm hoặc **thêm vào**: 3 + 2 = 5 (đọc: ba cộng hai bằng năm).\n"
-            "- **Phép trừ** (dấu −) dùng khi **bớt đi** hoặc **tách ra** để tìm phần còn lại: 6 − 1 = 5 (đọc: sáu trừ một bằng năm).\n"
-            "- **Số 0:** cộng hay trừ với 0 thì số đó không đổi; một số trừ chính nó bằng 0."
-        ),
-        "theory": (
-            "### Bài 10. Phép cộng trong phạm vi 10\n"
-            "- Gộp lại thì bằng mấy? (gộp 3 quả bóng và 2 quả bóng được 5 quả: 3 + 2 = 5).\n"
-            "- Thêm vào thì bằng mấy? Tính bằng cách **đếm thêm**: 5 + 2 → đếm tiếp 6, 7 → 5 + 2 = 7.\n"
-            "- Số 0 trong phép cộng: 4 + 0 = 4; 0 + 2 = 2.\n"
-            "- Đổi chỗ các số trong phép cộng thì kết quả không thay đổi: 3 + 4 = 4 + 3.\n"
-            "### Bài 11. Phép trừ trong phạm vi 10\n"
-            "- Bớt đi còn lại mấy? (có 6 quả, bớt 1 quả còn 5 quả: 6 − 1 = 5).\n"
-            "- Tách ra: 7 bông hoa gồm 5 bông đỏ và 2 bông vàng → 7 − 2 = 5. Tính bằng cách **đếm bớt** (đếm lùi).\n"
-            "- Số 0 trong phép trừ: 3 − 0 = 3; 3 − 3 = 0.\n"
-            "### Bài 12. Bảng cộng, bảng trừ trong phạm vi 10\n"
-            "- Lập và ghi nhớ bảng cộng, bảng trừ; dùng bảng để tính nhẩm nhanh.\n"
-            "- Từ một phép cộng viết được hai phép trừ: 3 + 5 = 8 → 8 − 3 = 5 và 8 − 5 = 3.\n"
-            "### Bài 13. Luyện tập chung\n"
-            "- Tính nhẩm, so sánh kết quả phép tính, viết phép tính thích hợp với tranh vẽ/tình huống."
-        ),
-        "formulas": [
-            G("I. Ý nghĩa phép tính", F("Phép cộng", "Gộp lại / Thêm vào → dùng dấu +", "3 + 2 = 5: 3 và 2 là hai số được cộng, 5 là kết quả."), F("Phép trừ", "Bớt đi / Tách ra (còn lại) → dùng dấu −", "6 − 1 = 5: có 6, bớt 1, còn 5.")),
-            G("II. Tính chất & số 0", F("Đổi chỗ trong phép cộng", "a + b = b + a   (vd: 2 + 7 = 7 + 2 = 9)"), F("Cộng với 0", "a + 0 = 0 + a = a   (vd: 5 + 0 = 5)"), F("Trừ đi 0", "a − 0 = a   (vd: 8 − 0 = 8)"), F("Trừ chính nó", "a − a = 0   (vd: 8 − 8 = 0)"), F("Cộng ↔ Trừ", "Nếu a + b = c thì c − a = b và c − b = a", "6 + 3 = 9 → 9 − 6 = 3; 9 − 3 = 6.")),
-            G("III. Các phép cộng bằng 10 (cần thuộc)", F("Bảng “tròn 10”", "1 + 9 = 2 + 8 = 3 + 7 = 4 + 6 = 5 + 5 = 10"), F("Bảng trừ từ 10", "10 − 1 = 9 · 10 − 2 = 8 · 10 − 3 = 7 · 10 − 4 = 6 · 10 − 5 = 5"), F("Cách tính nhẩm", "Cộng: đếm thêm từ số lớn hơn · Trừ: đếm bớt (đếm lùi)", "2 + 6: đếm từ 6 thêm 2 → 7, 8 → 2 + 6 = 8.")),
-        ],
-        "example": "Trong bến có 8 chiếc ô tô, 3 chiếc rời bến. Hỏi trong bến còn lại mấy chiếc ô tô? Viết phép tính thích hợp.",
-        "example_answer": (
-            "“Rời bến” là bớt đi nên dùng phép trừ: **8 − 3 = 5**.\n"
-            "Trong bến còn lại **5 chiếc ô tô**.\n"
-            "Kiểm tra lại: 5 + 3 = 8 ✔."
-        ),
-        "real_life": (
-            "- Tính số bạn trong nhóm khi có thêm bạn đến chơi, số kẹo còn lại sau khi ăn bớt.\n"
-            "- Đếm tiền lẻ, chia đồ dùng cho bạn, kiểm tra đồ vật còn thiếu."
-        ),
-        "quiz": [
-            mcq("biet", "3 + 4 = ?", ["6", "7", "8", "5"], 1, "Đếm thêm từ 4: 5, 6, 7 (thêm 3 lần) → **3 + 4 = 7**.", alt="Dùng bảng cộng: 3 + 4 = 4 + 3 = 7."),
-            mcq("biet", "9 − 5 = ?", ["4", "5", "3", "14"], 0, "Đếm lùi 5 lần từ 9: 8, 7, 6, 5, 4 → **9 − 5 = 4**.", alt="Vì 4 + 5 = 9 nên 9 − 5 = 4.", note="14 là kết quả của phép cộng 9 + 5 — hãy nhìn kỹ dấu “−”."),
-            mcq("biet", "5 + 0 = ?", ["0", "1", "5", "50"], 2, "Một số cộng với 0 thì bằng chính số đó: **5 + 0 = 5**."),
-            mcq("biet", "Có 4 quả bóng, gộp thêm 2 quả bóng nữa. Phép tính thích hợp là:", ["4 − 2 = 2", "4 + 2 = 6", "2 + 2 = 4", "6 − 2 = 4"], 1, "“Gộp thêm” là thêm vào nên dùng phép cộng: **4 + 2 = 6**."),
-            mcq("hieu", "Biết 6 + 3 = 9. Phép trừ nào dưới đây đúng?", ["9 − 6 = 3", "9 − 3 = 5", "6 − 3 = 9", "9 − 9 = 3"], 0, "Từ 6 + 3 = 9 ta có hai phép trừ: 9 − 6 = 3 và 9 − 3 = 6.\nVậy phép tính đúng là **9 − 6 = 3**.", note="9 − 3 bằng 6 chứ không bằng 5; 9 − 9 = 0."),
-            mcq("hieu", "Phép tính nào có kết quả bằng 10?", ["4 + 5", "7 + 2", "6 + 4", "10 − 1"], 2, "Tính từng phép: 4 + 5 = 9; 7 + 2 = 9; **6 + 4 = 10**; 10 − 1 = 9.\nVậy đáp án là 6 + 4.", alt="Nhớ các cặp “tròn 10”: 1 và 9, 2 và 8, 3 và 7, 4 và 6, 5 và 5 → 6 + 4 = 10."),
-            tf("hieu", "Nhận định: “2 + 7 = 7 + 2.”", True, "2 + 7 = 9 và 7 + 2 = 9. Khi đổi chỗ các số trong phép cộng, kết quả không thay đổi → **Đúng**."),
-            tf("hieu", "Nhận định: “8 − 8 = 8.”", False, "Có 8, bớt đi cả 8 thì không còn gì: 8 − 8 = **0**. Nhận định **Sai**.", note="Phân biệt: 8 − 0 = 8 (không bớt gì) nhưng 8 − 8 = 0 (bớt hết)."),
-            mcq("vandung", "Trên cành có 7 con chim, sau đó 3 con bay đi. Hỏi trên cành còn lại mấy con chim?", ["10", "4", "3", "5"], 1, "“Bay đi” là bớt đi nên dùng phép trừ: 7 − 3 = 4.\nTrên cành còn lại **4 con chim**.", note="Nếu chọn 10 là em đã cộng 7 + 3 — đọc kỹ đề: chim bay đi thì số chim ít đi."),
-            short("vandung", "Lan có 2 cái kẹo. Mẹ cho Lan thêm một số kẹo nữa thì Lan có tất cả 9 cái kẹo. Hỏi mẹ đã cho Lan mấy cái kẹo?", ["7"], "Ta cần tìm số: 2 + ? = 9. Đếm thêm từ 2 đến 9: 3, 4, 5, 6, 7, 8, 9 → đếm thêm 7 lần.\nVậy mẹ đã cho Lan **7 cái kẹo**.", unit="cái kẹo", alt="Lấy tổng số kẹo trừ đi số kẹo Lan có lúc đầu: 9 − 2 = 7."),
-        ],
-    },
-    {
-        "topic": "l1-cd04-hinh-khoi-vi-tri",
-        "title": "Làm quen với một số hình khối",
-        "icon": "🧊",
-        "description": "Chủ đề 4 · SGK Toán 1 tập một (tr. 92–101): Bài 14 – Bài 16. Khối lập phương, khối hộp chữ nhật; vị trí và định hướng trong không gian.",
-        "requirements": [
-            "Nhận dạng được khối lập phương, khối hộp chữ nhật thông qua việc sử dụng bộ đồ dùng học tập cá nhân hoặc vật thật.",
-            "Nhận biết được vị trí, định hướng trong không gian: trên – dưới, phải – trái, trước – sau, ở giữa.",
-            "Nhận biết và thực hiện được việc lắp ghép, xếp hình gắn với các hình khối đơn giản.",
-        ],
-        "definition": (
-            "- **Khối lập phương:** hình khối có các mặt đều là **hình vuông** (ví dụ: con xúc xắc, khối rubik).\n"
-            "- **Khối hộp chữ nhật:** hình khối có các mặt là **hình chữ nhật** (ví dụ: hộp sữa giấy, viên gạch, bao diêm).\n"
-            "- **Vị trí trong không gian:** trên – dưới, trước – sau, bên phải – bên trái, ở giữa.\n"
-            "Hình vuông, hình chữ nhật là **hình phẳng** (vẽ trên giấy); khối lập phương, khối hộp chữ nhật là **hình khối** (cầm được, xếp chồng được)."
-        ),
-        "theory": (
-            "### Bài 14. Khối lập phương, khối hộp chữ nhật\n"
-            "- Nhận dạng khối lập phương, khối hộp chữ nhật qua đồ vật thật và bộ đồ dùng học Toán.\n"
-            "- Đếm số khối lập phương/khối hộp chữ nhật trong hình xếp; xếp các khối thành hình theo mẫu.\n"
-            "### Bài 15. Vị trí, định hướng trong không gian\n"
-            "- Mô tả vị trí đồ vật: ở trên, ở dưới, ở trước, ở sau, ở giữa, bên phải, bên trái.\n"
-            "- Tay cầm bút viết thường là tay phải; khi đứng đối diện nhau thì bên phải của em là bên trái của bạn.\n"
-            "### Bài 16. Luyện tập chung\n"
-            "- Nhận dạng hình khối, mô tả vị trí đồ vật trong tranh, xếp hình khối theo yêu cầu."
-        ),
-        "formulas": [
-            G("I. Nhận dạng hình khối", F("Khối lập phương", "Các mặt đều là hình vuông", "Con xúc xắc, khối rubik, hộp quà vuông."), F("Khối hộp chữ nhật", "Các mặt là hình chữ nhật (có thể có 2 mặt hình vuông)", "Hộp sữa, viên gạch, hộp bút, tủ lạnh."), F("Phân biệt", "Hình phẳng (vẽ trên giấy) ≠ Hình khối (cầm được)", "Mặt của khối lập phương là hình vuông.")),
-            G("II. Vị trí – định hướng", F("Trên – dưới", "Quyển sách ở trên bàn · Con mèo ở dưới gầm bàn"), F("Trước – sau", "Bạn đứng trước em · Em đứng sau bạn"), F("Phải – trái", "Xác định theo tay phải, tay trái của chính mình (hoặc của nhân vật trong tranh)"), F("Ở giữa", "Vật nằm giữa hai vật khác (A – B – C: B ở giữa)")),
-        ],
-        "example": "Trên kệ, từ trái sang phải có: con gấu, hộp bút (khối hộp chữ nhật), con xúc xắc (khối lập phương). Đồ vật nào ở giữa? Đồ vật nào có dạng khối lập phương?",
-        "example_answer": (
-            "- Ba đồ vật: con gấu – hộp bút – con xúc xắc → **hộp bút ở giữa**.\n"
-            "- **Con xúc xắc** có dạng khối lập phương (các mặt đều là hình vuông)."
-        ),
-        "real_life": (
-            "- Xếp đồ chơi, xếp sách vở gọn gàng; nhận ra hình dạng các hộp, thùng đựng đồ.\n"
-            "- Chỉ đường, mô tả vị trí đồ vật cho người khác: “quyển truyện ở ngăn trên, bên trái”."
-        ),
-        "quiz": [
-            mcq("biet", "Con xúc xắc có dạng khối gì?", ["Khối lập phương", "Khối hộp chữ nhật", "Hình tròn", "Hình tam giác"], 0, "Các mặt của con xúc xắc đều là hình vuông → **khối lập phương**."),
-            mcq("biet", "Viên gạch (hoặc hộp sữa giấy) thường có dạng hình gì?", ["Khối lập phương", "Khối hộp chữ nhật", "Hình vuông", "Hình chữ nhật"], 1, "Viên gạch có các mặt là hình chữ nhật và cầm được → **khối hộp chữ nhật**.", note="“Hình chữ nhật” là hình phẳng vẽ trên giấy; viên gạch là đồ vật cầm được nên là hình khối."),
-            mcq("biet", "Các mặt của khối lập phương đều là hình gì?", ["Hình tròn", "Hình tam giác", "Hình vuông", "Hình chữ nhật dài"], 2, "Mỗi mặt của khối lập phương là một **hình vuông**."),
-            mcq("biet", "Quyển sách đặt trên mặt bàn. Vậy mặt bàn ở … quyển sách.", ["trên", "dưới", "trước", "bên trái"], 1, "Quyển sách ở trên mặt bàn thì mặt bàn ở **dưới** quyển sách."),
-            mcq("hieu", "Ba bạn xếp hàng dọc: An đứng đầu, Bình đứng sau An, Chi đứng sau Bình. Bạn nào đứng ở giữa?", ["An", "Bình", "Chi", "Không có ai"], 1, "Thứ tự hàng: An – Bình – Chi. Bạn có một bạn đứng trước và một bạn đứng sau là **Bình** → Bình đứng ở giữa."),
-            mcq("hieu", "Trên kệ, từ trái sang phải có: quả bóng, con gấu, ô tô. Đồ vật ở bên phải con gấu là:", ["quả bóng", "ô tô", "con gấu", "không có đồ vật nào"], 1, "Theo thứ tự từ trái sang phải: quả bóng – con gấu – ô tô.\nĐồ vật đứng sau con gấu theo chiều sang phải là **ô tô**.", note="Quả bóng ở bên trái con gấu."),
-            tf("hieu", "Nhận định: “Khối lập phương có các mặt là hình vuông nên khối lập phương chính là hình vuông.”", False, "Hình vuông là hình phẳng; khối lập phương là hình khối có **các mặt** là hình vuông. Hai hình này khác nhau → nhận định **Sai**."),
-            tf("hieu", "Con mèo nằm dưới gầm bàn, quả bóng ở trên mặt bàn.\nNhận định: “Quả bóng ở dưới con mèo.”", False, "Quả bóng ở trên mặt bàn, con mèo ở dưới gầm bàn → quả bóng ở **trên** con mèo. Nhận định **Sai**."),
-            mcq("vandung", "Bạn Việt xếp các khối lập phương thành một cái tháp: tầng dưới cùng có 3 khối, tầng giữa có 2 khối, tầng trên cùng có 1 khối. Cái tháp có tất cả bao nhiêu khối lập phương?", ["5", "6", "3", "7"], 1, "Đếm từng tầng: tầng dưới 3 khối, tầng giữa 2 khối, tầng trên 1 khối.\n3 + 2 = 5; 5 + 1 = 6. Cái tháp có **6 khối lập phương**.", alt="Đếm lần lượt: 1, 2, 3 (tầng dưới), 4, 5 (tầng giữa), 6 (tầng trên)."),
-            short("vandung", "Giá sách có 3 ngăn: ngăn trên cùng có 4 quyển truyện, ngăn ở giữa có 3 quyển, ngăn dưới cùng có 2 quyển. Hỏi ngăn ở giữa và ngăn dưới cùng có tất cả bao nhiêu quyển truyện?", ["5"], "Ngăn ở giữa có 3 quyển, ngăn dưới cùng có 2 quyển.\nGộp lại: 3 + 2 = 5. Có tất cả **5 quyển truyện**.", unit="quyển", note="Không cộng ngăn trên cùng (4 quyển) vì đề chỉ hỏi ngăn ở giữa và ngăn dưới cùng."),
-        ],
-    },
-    {
-        "topic": "l1-cd05-on-tap-hoc-ki-1",
-        "title": "Ôn tập học kì 1",
-        "icon": "📝",
-        "description": "Chủ đề 5 · SGK Toán 1 tập một (tr. 102–113): Bài 17 – Bài 20. Ôn tập các số, phép cộng, phép trừ trong phạm vi 10 và hình học.",
-        "requirements": [
-            "Củng cố việc đếm, đọc, viết, so sánh, xếp thứ tự các số trong phạm vi 10.",
-            "Thực hiện thành thạo phép cộng, phép trừ (tính nhẩm) trong phạm vi 10.",
-            "Làm quen với việc thực hiện tính toán trong trường hợp có hai dấu phép tính cộng, trừ (theo thứ tự từ trái sang phải).",
-            "Nhận dạng được các hình phẳng (hình vuông, hình tròn, hình tam giác, hình chữ nhật) và các hình khối (khối lập phương, khối hộp chữ nhật).",
-            "Vận dụng phép cộng, phép trừ để giải quyết tình huống thực tế đơn giản.",
-        ],
-        "definition": (
-            "Chủ đề ôn tập giúp em hệ thống lại toàn bộ kiến thức học kì 1:\n"
-            "- Các số từ 0 đến 10 (đếm, so sánh, mấy và mấy).\n"
-            "- Phép cộng, phép trừ trong phạm vi 10.\n"
-            "- Hình phẳng, hình khối và vị trí trong không gian.\n"
-            "- **Tính có hai dấu phép tính:** thực hiện lần lượt **từ trái sang phải**."
-        ),
-        "theory": (
-            "### Bài 17. Ôn tập các số trong phạm vi 10\n"
-            "- Đếm, đọc, viết số; so sánh và sắp xếp; tìm số lớn nhất, bé nhất; mấy và mấy.\n"
-            "### Bài 18. Ôn tập phép cộng, phép trừ trong phạm vi 10\n"
-            "- Tính nhẩm theo bảng cộng, bảng trừ; viết phép tính thích hợp với tranh; tính có hai dấu phép tính (từ trái sang phải).\n"
-            "### Bài 19. Ôn tập hình học\n"
-            "- Nhận dạng hình vuông, hình tròn, hình tam giác, hình chữ nhật, khối lập phương, khối hộp chữ nhật; đếm hình; vị trí trên – dưới, trái – phải, trước – sau.\n"
-            "### Bài 20. Ôn tập chung\n"
-            "- Tổng hợp các dạng bài: số, phép tính, hình học và bài toán thực tế."
-        ),
-        "formulas": [
-            G("I. Số trong phạm vi 10", F("Thứ tự", "0 < 1 < 2 < 3 < 4 < 5 < 6 < 7 < 8 < 9 < 10"), F("Mấy và mấy", "Nếu a gồm b và c thì b + c = a", "7 gồm 3 và 4 → 3 + 4 = 7.")),
-            G("II. Phép cộng, phép trừ", F("Đổi chỗ", "a + b = b + a"), F("Số 0", "a + 0 = a · a − 0 = a · a − a = 0"), F("Cộng ↔ Trừ", "a + b = c ⇒ c − a = b; c − b = a"), F("Hai dấu phép tính", "Tính lần lượt từ trái sang phải", "5 − 2 + 3: 5 − 2 = 3, rồi 3 + 3 = 6.")),
-            G("III. Hình học", F("Hình phẳng", "Vuông (4 cạnh bằng nhau) · Chữ nhật (4 cạnh) · Tam giác (3 cạnh) · Tròn (không có cạnh)"), F("Hình khối", "Khối lập phương (mặt hình vuông) · Khối hộp chữ nhật (mặt hình chữ nhật)")),
-        ],
-        "example": "Tính: 4 + 3 − 2 = ?",
-        "example_answer": (
-            "Tính lần lượt từ trái sang phải:\n"
-            "- 4 + 3 = 7\n"
-            "- 7 − 2 = 5\n"
-            "Vậy **4 + 3 − 2 = 5**."
-        ),
-        "real_life": (
-            "- Kiểm tra lại đồ dùng học tập (đủ hay thiếu, nhiều hay ít).\n"
-            "- Tính nhẩm nhanh khi chơi trò chơi, đi chợ cùng bố mẹ."
-        ),
-        "quiz": [
-            mcq("biet", "Số lớn nhất trong các số 3, 8, 6, 5 là:", ["3", "8", "6", "5"], 1, "So sánh: 3 < 5 < 6 < 8. Số lớn nhất là **8**."),
-            mcq("biet", "10 − 4 = ?", ["5", "6", "7", "14"], 1, "Đếm lùi 4 lần từ 10: 9, 8, 7, 6 → **10 − 4 = 6**.", alt="Vì 4 + 6 = 10 nên 10 − 4 = 6."),
-            mcq("biet", "Hình có 4 cạnh dài bằng nhau là:", ["Hình tròn", "Hình tam giác", "Hình vuông", "Khối hộp chữ nhật"], 2, "**Hình vuông** có 4 cạnh dài bằng nhau."),
-            mcq("biet", "Số 7 gồm 4 và mấy?", ["2", "3", "4", "11"], 1, "Từ 4 đếm thêm: 5, 6, 7 (3 lần) → **7 gồm 4 và 3**."),
-            mcq("hieu", "Phép tính nào có kết quả bé nhất?", ["2 + 5", "9 − 1", "4 + 4", "10 − 6"], 3, "Tính: 2 + 5 = 7; 9 − 1 = 8; 4 + 4 = 8; 10 − 6 = 4.\nSố bé nhất là 4 → phép tính **10 − 6**."),
-            mcq("hieu", "Dấu thích hợp điền vào chỗ chấm: 4 + 3 … 9 − 2", [">", "<", "=", "+"], 2, "Tính từng vế: 4 + 3 = 7; 9 − 2 = 7. Hai kết quả bằng nhau → **4 + 3 = 9 − 2**.", note="Phải tính kết quả hai bên trước rồi mới so sánh."),
-            tf("hieu", "Nhận định: “Số 0 bé hơn tất cả các số 1, 2, 3, …, 10.”", True, "Trong dãy số, 0 đứng đầu tiên nên 0 bé hơn mọi số đứng sau nó → **Đúng**."),
-            tf("hieu", "Nhận định: “Kết quả của phép tính 5 + 4 lớn hơn 10.”", False, "5 + 4 = 9 và 9 < 10. Vậy kết quả **không** lớn hơn 10 → nhận định **Sai**."),
-            mcq("vandung", "Hà có 5 bút chì. Hà cho em 2 bút chì, sau đó mẹ mua thêm cho Hà 3 bút chì. Hỏi lúc này Hà có mấy bút chì?", ["6", "10", "4", "0"], 0, "Cho em 2 bút: 5 − 2 = 3 (bút). Mẹ mua thêm 3 bút: 3 + 3 = 6 (bút).\nViết gọn: 5 − 2 + 3 = **6**. Hà có **6 bút chì**.", note="Tính lần lượt từ trái sang phải. Nếu chọn 10 là em đã cộng cả 2 bút cho em — “cho em” là bớt đi."),
-            short("vandung", "Trong vườn có 10 cây, trong đó có 6 cây cam, còn lại là cây bưởi. Hỏi trong vườn có mấy cây bưởi?", ["4"], "Tách 10 cây thành cây cam và cây bưởi: 10 − 6 = 4.\nTrong vườn có **4 cây bưởi**.", unit="cây", alt="10 gồm 6 và 4 → số cây bưởi là 4."),
-        ],
-    },
-    {
-        "topic": "l1-cd06-cac-so-den-100",
-        "title": "Các số đến 100",
-        "icon": "💯",
-        "description": "Chủ đề 6 · SGK Toán 1 tập hai (tr. 4–27): Bài 21 – Bài 24. Số có hai chữ số, chục và đơn vị, so sánh số, bảng các số từ 1 đến 100.",
-        "requirements": [
-            "Đếm, đọc, viết được các số trong phạm vi 20; trong phạm vi 100.",
-            "Nhận biết được chục và đơn vị, số tròn chục.",
-            "Nhận biết được cách so sánh, xếp thứ tự các số trong phạm vi 100 (ở các nhóm có không quá 4 số).",
-            "Sử dụng được bảng các số từ 1 đến 100 để tìm số liền trước, số liền sau và quy luật của dãy số.",
-        ],
-        "definition": (
-            "- **10 đơn vị = 1 chục.** Số 10 còn gọi là “một chục”.\n"
-            "- **Số có hai chữ số** gồm chữ số hàng chục (bên trái) và chữ số hàng đơn vị (bên phải): 45 gồm 4 chục và 5 đơn vị.\n"
-            "- **Số tròn chục:** 10, 20, 30, 40, 50, 60, 70, 80, 90 (chữ số hàng đơn vị là 0).\n"
-            "- **Số 100** (một trăm) là số liền sau của 99; 100 = 10 chục."
-        ),
-        "theory": (
-            "### Bài 21. Số có hai chữ số\n"
-            "- Các số từ 11 đến 20: 11 (mười một), 12 (mười hai)… 15 (mười lăm)… 20 (hai mươi).\n"
-            "- Các số có hai chữ số đến 99: đọc theo chục và đơn vị: 21 (hai mươi mốt), 34 (ba mươi tư), 55 (năm mươi lăm), 70 (bảy mươi).\n"
-            "- Viết số theo cấu tạo: 3 chục và 6 đơn vị viết là 36.\n"
-            "### Bài 22. So sánh số có hai chữ số\n"
-            "- So sánh chữ số hàng chục trước: số nào có hàng chục lớn hơn thì lớn hơn (58 < 85).\n"
-            "- Nếu hàng chục bằng nhau thì so sánh hàng đơn vị (47 > 43).\n"
-            "### Bài 23. Bảng các số từ 1 đến 100\n"
-            "- Bảng có 10 hàng, mỗi hàng 10 số. Đi sang phải 1 ô: thêm 1; đi xuống 1 ô: thêm 10.\n"
-            "- Tìm số liền trước, liền sau; nhận ra các số tròn chục ở cột cuối.\n"
-            "### Bài 24. Luyện tập chung\n"
-            "- Đọc, viết, phân tích số; so sánh, sắp xếp; số tròn chục; bài toán thực tế về chục và đơn vị."
-        ),
-        "formulas": [
-            G("I. Chục và đơn vị", F("Quy đổi", "10 đơn vị = 1 chục · 10 chục = 100"), F("Cấu tạo số", "Số ab gồm a chục và b đơn vị", "45 gồm 4 chục và 5 đơn vị; 70 gồm 7 chục và 0 đơn vị."), F("Số tròn chục", "10, 20, 30, 40, 50, 60, 70, 80, 90")),
-            G("II. Cách đọc số", F("Từ 11 đến 19", "mười một, mười hai, …, mười lăm, …, mười chín", "15 đọc là “mười lăm” (không đọc “mười năm”)."), F("Hàng đơn vị là 1", "21: hai mươi mốt · 41: bốn mươi mốt"), F("Hàng đơn vị là 4", "24: hai mươi tư (hoặc hai mươi bốn)"), F("Hàng đơn vị là 5", "25: hai mươi lăm")),
-            G("III. So sánh số có hai chữ số", F("Bước 1", "So sánh chữ số hàng chục: hàng chục lớn hơn thì số lớn hơn", "58 < 85 vì 5 < 8."), F("Bước 2", "Hàng chục bằng nhau thì so sánh hàng đơn vị", "47 > 43 vì 7 > 3."), F("Bảng 1 – 100", "Sang phải 1 ô: +1 · Xuống dưới 1 ô: +10")),
-        ],
-        "example": (
-            "a) Viết số gồm 6 chục và 2 đơn vị, rồi đọc số đó.\n"
-            "b) So sánh: 39 … 41."
-        ),
-        "example_answer": (
-            "a) 6 chục và 2 đơn vị viết là **62**, đọc là **sáu mươi hai**.\n"
-            "b) Hàng chục: 3 < 4 nên **39 < 41**."
-        ),
-        "real_life": (
-            "- Đọc số nhà, số trang sách, số ghế trong rạp, số áo cầu thủ.\n"
-            "- Đếm đồ vật theo chục (bó que tính, vỉ trứng 10 quả) để đếm nhanh."
-        ),
-        "quiz": [
-            mcq("biet", "Số gồm 3 chục và 6 đơn vị là:", ["63", "36", "306", "9"], 1, "Chữ số hàng chục là 3 (viết bên trái), chữ số hàng đơn vị là 6 (viết bên phải) → **36**.", note="63 là số gồm 6 chục và 3 đơn vị — đừng viết ngược thứ tự."),
-            mcq("biet", "Số “bảy mươi lăm” viết là:", ["705", "57", "75", "7"], 2, "Bảy mươi → 7 chục; lăm → 5 đơn vị. Viết là **75**."),
-            mcq("biet", "Trong các số dưới đây, số nào là số tròn chục?", ["45", "60", "61", "9"], 1, "Số tròn chục có chữ số hàng đơn vị là 0 → **60** (6 chục)."),
-            mcq("biet", "Số liền sau của 39 là:", ["38", "40", "49", "30"], 1, "Số liền sau là số đó thêm 1: 39 thêm 1 là **40** (3 chục 9 đơn vị thêm 1 đơn vị thành 4 chục).", note="38 là số liền trước của 39."),
-            mcq("hieu", "Dấu thích hợp điền vào chỗ chấm: 58 … 85", [">", "<", "=", "+"], 1, "So sánh chữ số hàng chục: 5 < 8 nên **58 < 85**.", note="Hai số có cùng các chữ số 5 và 8 nhưng giá trị khác nhau: phải xem chữ số nào ở hàng chục."),
-            mcq("hieu", "Các số 47, 74, 40, 70 xếp theo thứ tự từ bé đến lớn là:", ["40, 47, 70, 74", "47, 40, 70, 74", "40, 70, 47, 74", "74, 70, 47, 40"], 0, "Nhóm hàng chục 4: 40 < 47; nhóm hàng chục 7: 70 < 74; mà 4 chục < 7 chục.\nThứ tự từ bé đến lớn: **40, 47, 70, 74**.", note="Đáp án 74, 70, 47, 40 là thứ tự từ lớn đến bé."),
-            tf("hieu", "Nhận định: “Số 16 đọc là ‘mười sáu’ và gồm 1 chục và 6 đơn vị.”", True, "16 có chữ số hàng chục là 1, hàng đơn vị là 6; đọc là “mười sáu” → **Đúng**."),
-            tf("hieu", "Nhận định: “Trong bảng các số từ 1 đến 100, số ở ngay bên dưới số 34 (cùng cột) là 35.”", False, "Đi xuống 1 ô thì số tăng thêm 10 (1 chục): ô dưới số 34 là **44**. Số 35 nằm ở ngay bên phải số 34. Nhận định **Sai**."),
-            mcq("vandung", "Mẹ mua 5 bó đũa, mỗi bó có 1 chục chiếc đũa. Hỏi mẹ mua tất cả bao nhiêu chiếc đũa?", ["5", "15", "50", "10"], 2, "Mỗi bó có 1 chục chiếc, 5 bó có 5 chục chiếc. 5 chục = **50** chiếc đũa.", alt="Đếm theo chục: 10, 20, 30, 40, 50."),
-            short("vandung", "Tìm số có hai chữ số, biết chữ số hàng chục là 6 và chữ số hàng đơn vị bé hơn chữ số hàng chục 2 đơn vị.", ["64"], "Chữ số hàng đơn vị: 6 − 2 = 4.\nSố cần tìm có 6 chục và 4 đơn vị: **64**.", note="Viết chữ số hàng chục ở bên trái, chữ số hàng đơn vị ở bên phải (không viết 46)."),
-        ],
-    },
-    {
-        "topic": "l1-cd07-do-dai",
-        "title": "Độ dài và đo độ dài",
-        "game_type": "game_do_luong",
-        "game_title": "Bé Đo Giỏi – Đo độ dài và Thời gian",
-        "game_description": "Thực hành đặt thước đúng vạch 0 để đo độ dài các đồ vật bằng xăng-ti-mét (cm) và xem giờ đúng trên đồng hồ.",
-        "icon": "📏",
-        "description": "Chủ đề 7 · SGK Toán 1 tập hai (tr. 28–43): Bài 25 – Bài 28. Dài hơn – ngắn hơn, đơn vị xăng-ti-mét, thực hành ước lượng và đo độ dài.",
-        "requirements": [
-            "Nhận biết được về “dài hơn”, “ngắn hơn” (“cao hơn”, “thấp hơn”).",
-            "Nhận biết được đơn vị đo độ dài: cm (xăng-ti-mét); đọc và viết được số đo độ dài trong phạm vi 100 cm.",
-            "Thực hiện được việc đo và ước lượng độ dài theo đơn vị đo tự quy ước (gang tay, bước chân, que tính…).",
-            "Thực hiện được việc đo độ dài bằng thước thẳng với đơn vị đo là cm.",
-            "Giải quyết được một số vấn đề thực tiễn đơn giản liên quan đến đo độ dài.",
-        ],
-        "definition": (
-            "- **Dài hơn – ngắn hơn:** đặt hai vật thẳng hàng, một đầu bằng nhau; vật nào thò ra xa hơn thì dài hơn.\n"
-            "- **Xăng-ti-mét** là đơn vị đo độ dài, viết tắt là **cm**. Trên thước kẻ, khoảng cách giữa hai vạch số liền nhau là 1 cm.\n"
-            "- **Đơn vị tự quy ước:** gang tay, sải tay, bước chân, que tính… (mỗi người có thể đo ra kết quả khác nhau)."
-        ),
-        "theory": (
-            "### Bài 25. Dài hơn, ngắn hơn\n"
-            "- So sánh trực tiếp độ dài hai vật (đặt cạnh nhau, một đầu bằng nhau); so sánh cao hơn – thấp hơn; tìm vật dài nhất, ngắn nhất.\n"
-            "- Đo độ dài bằng đơn vị tự quy ước: bàn dài 5 gang tay, bảng dài 8 sải tay…\n"
-            "### Bài 26. Đơn vị đo độ dài\n"
-            "- Làm quen đơn vị **xăng-ti-mét (cm)**; đo bằng thước có vạch chia cm.\n"
-            "- Cách đo: đặt **vạch 0** của thước trùng với một đầu của vật, đọc số ở vạch trùng với đầu kia.\n"
-            "### Bài 27. Thực hành ước lượng và đo độ dài\n"
-            "- Ước lượng độ dài đồ vật (bút chì khoảng 15 cm…) rồi đo lại bằng thước để kiểm tra.\n"
-            "- Thực hành đo bằng gang tay, bước chân, que tính.\n"
-            "### Bài 28. Luyện tập chung\n"
-            "- So sánh, đo độ dài; cộng, trừ số đo độ dài có đơn vị cm; giải bài toán thực tế."
-        ),
-        "formulas": [
-            G("I. Đơn vị đo độ dài", F("Xăng-ti-mét", "Viết tắt: cm · đọc: xăng-ti-mét", "15 cm đọc là “mười lăm xăng-ti-mét”."), F("Thước kẻ", "Hai vạch số liền nhau cách nhau 1 cm")),
-            G("II. Cách đo độ dài bằng thước", F("Bước 1", "Đặt vạch 0 của thước trùng với một đầu của vật"), F("Bước 2", "Đặt thước dọc theo vật (thẳng, sát vật)"), F("Bước 3", "Đọc số ở vạch trùng với đầu còn lại → độ dài vật", "Đầu kia ở vạch 7 → vật dài 7 cm.")),
-            G("III. Tính với số đo độ dài", F("Cộng", "6 cm + 3 cm = 9 cm", "Cộng các số rồi viết đơn vị cm."), F("Trừ (dài hơn bao nhiêu)", "9 cm − 6 cm = 3 cm", "Vật 9 cm dài hơn vật 6 cm là 3 cm.")),
-        ],
-        "example": "Bút chì xanh dài 8 cm, bút chì đỏ dài 5 cm. Bút chì nào dài hơn và dài hơn bao nhiêu xăng-ti-mét?",
-        "example_answer": (
-            "So sánh 8 > 5 nên **bút chì xanh dài hơn**.\n"
-            "Dài hơn: 8 cm − 5 cm = **3 cm**."
-        ),
-        "real_life": (
-            "- Đo chiều dài bàn học, quyển vở, chiều cao của em để theo dõi lớn lên.\n"
-            "- Ước lượng chiều dài đồ vật khi không có thước (dùng gang tay, bước chân)."
-        ),
-        "quiz": [
-            mcq("biet", "Xăng-ti-mét viết tắt là:", ["m", "cm", "kg", "xm"], 1, "Xăng-ti-mét viết tắt là **cm**."),
-            mcq("biet", "Bút chì đỏ dài hơn bút chì xanh. Vậy bút chì xanh … bút chì đỏ.", ["dài hơn", "ngắn hơn", "cao hơn", "dài bằng"], 1, "Bút đỏ dài hơn bút xanh thì ngược lại, bút xanh **ngắn hơn** bút đỏ."),
-            mcq("biet", "Khi đo độ dài bằng thước, em đặt vạch nào của thước trùng với một đầu của vật?", ["Vạch 0", "Vạch 1", "Vạch 10", "Vạch bất kì"], 0, "Phải đặt **vạch 0** trùng với một đầu của vật thì số đọc được ở đầu kia mới đúng là độ dài của vật.", note="Nếu đặt vạch 1 ở đầu vật, kết quả đọc được sẽ bị thừa 1 cm."),
-            mcq("biet", "Số đo “15 cm” được đọc là:", ["Mười lăm xăng-ti-mét", "Một năm xăng-ti-mét", "Năm mươi một xăng-ti-mét", "Mười năm mét"], 0, "15 đọc là “mười lăm”, cm đọc là “xăng-ti-mét” → **Mười lăm xăng-ti-mét**."),
-            mcq("hieu", "Một đầu chiếc tẩy đặt ở vạch 0, đầu kia ở vạch 4 của thước. Chiếc tẩy dài:", ["0 cm", "3 cm", "4 cm", "5 cm"], 2, "Vạch 0 trùng một đầu tẩy, đầu kia ở vạch 4 → chiếc tẩy dài **4 cm**."),
-            mcq("hieu", "Em có thể đo độ dài đồ vật nào dưới đây bằng thước kẻ có vạch chia xăng-ti-mét của mình?", ["Chiều dài sân trường", "Chiều dài cái bút chì", "Quãng đường từ nhà đến trường", "Chiều dài một con sông"], 1, "Thước kẻ của em chỉ dài khoảng 20 – 30 cm, phù hợp để đo đồ vật nhỏ như **cái bút chì**.\nSân trường, quãng đường, con sông dài hơn rất nhiều."),
-            tf("hieu", "Nhận định: “6 cm + 3 cm = 9 cm.”", True, "Cộng các số: 6 + 3 = 9, rồi viết đơn vị: **9 cm** → **Đúng**."),
-            tf("hieu", "Mai và bố cùng đo chiều dài một cái bàn bằng gang tay. Mai đo được 6 gang tay, bố đo được 4 gang tay.\nNhận định: “Gang tay của Mai dài hơn gang tay của bố.”", False, "Cùng một cái bàn: gang tay càng **ngắn** thì phải đo càng **nhiều** lần. Mai đo nhiều lần hơn (6 > 4) nên gang tay của Mai **ngắn hơn** gang tay của bố → **Sai**.", note="Đây là lí do người ta dùng đơn vị đo chung là xăng-ti-mét: ai đo cũng ra cùng kết quả."),
-            mcq("vandung", "Sợi dây xanh dài 9 cm, sợi dây đỏ dài 6 cm. Sợi dây xanh dài hơn sợi dây đỏ bao nhiêu xăng-ti-mét?", ["15 cm", "3 cm", "2 cm", "6 cm"], 1, "Dài hơn bao nhiêu → lấy số lớn trừ số bé: 9 cm − 6 cm = **3 cm**.", note="15 cm là tổng độ dài hai sợi dây (9 + 6), không phải phần dài hơn."),
-            short("vandung", "Bạn Nam nối một đoạn dây dài 5 cm với một đoạn dây dài 4 cm (nối sát nhau, không chồng lên nhau). Hỏi đoạn dây sau khi nối dài bao nhiêu xăng-ti-mét?", ["9", "9cm"], "Nối hai đoạn là gộp lại độ dài: 5 cm + 4 cm = **9 cm**.", unit="cm"),
-        ],
-    },
-    {
-        "topic": "l1-cd08-cong-tru-pham-vi-100",
-        "title": "Phép cộng, phép trừ (không nhớ) trong phạm vi 100",
-        "icon": "🧮",
-        "description": "Chủ đề 8 · SGK Toán 1 tập hai (tr. 44–71): Bài 29 – Bài 33. Cộng, trừ số có hai chữ số với số có một, hai chữ số (không nhớ); tính nhẩm số tròn chục; bài toán có lời văn.",
-        "requirements": [
-            "Thực hiện được phép cộng, phép trừ (không nhớ) các số trong phạm vi 100 (đặt tính rồi tính và tính nhẩm).",
-            "Thực hiện được việc cộng, trừ nhẩm các số tròn chục.",
-            "Làm quen với việc thực hiện tính toán trong trường hợp có hai dấu phép tính cộng, trừ (theo thứ tự từ trái sang phải).",
-            "Nhận biết và viết được phép tính (cộng, trừ) phù hợp với câu trả lời của bài toán có lời văn và tính được kết quả đúng.",
-        ],
-        "definition": (
-            "- **Đặt tính:** viết các số thẳng cột: đơn vị thẳng đơn vị, chục thẳng chục; viết dấu + hoặc − ở giữa, kẻ vạch ngang.\n"
-            "- **Tính:** thực hiện **từ phải sang trái**: tính hàng đơn vị trước, hàng chục sau.\n"
-            "- **Không nhớ:** cộng/trừ ở mỗi hàng đều không vượt quá 9 và không phải “mượn”.\n"
-            "- **Bài toán có lời văn:** đọc kĩ đề, tìm cái đã cho, cái cần tìm; viết phép tính và câu trả lời."
-        ),
-        "theory": (
-            "### Bài 29. Phép cộng số có hai chữ số với số có một chữ số\n"
-            "- Ví dụ 42 + 4: 2 + 4 = 6, viết 6; hạ 4 → 46.\n"
-            "### Bài 30. Phép cộng số có hai chữ số với số có hai chữ số\n"
-            "- Ví dụ 42 + 35: 2 + 5 = 7, viết 7; 4 + 3 = 7, viết 7 → 77. Cộng nhẩm số tròn chục: 30 + 20 = 50 (3 chục + 2 chục = 5 chục).\n"
-            "### Bài 31. Phép trừ số có hai chữ số cho số có một chữ số\n"
-            "- Ví dụ 76 − 5: 6 − 5 = 1, viết 1; hạ 7 → 71. Đếm lùi để trừ nhẩm: 18 − 3 → 17, 16, 15.\n"
-            "### Bài 32. Phép trừ số có hai chữ số cho số có hai chữ số\n"
-            "- Ví dụ 86 − 64: 6 − 4 = 2; 8 − 6 = 2 → 22. Trừ nhẩm số tròn chục: 60 − 20 = 40.\n"
-            "### Bài 33. Luyện tập chung\n"
-            "- Tính có hai dấu phép tính từ trái sang phải: 37 + 12 − 23 = 49 − 23 = 26.\n"
-            "- Giải bài toán có lời văn: “Trên cây có 74 quả thị, gió làm rụng 21 quả. Hỏi trên cây còn lại bao nhiêu quả?” → 74 − 21 = 53."
-        ),
-        "formulas": [
-            G("I. Đặt tính và tính", F("Đặt tính", "Đơn vị thẳng cột đơn vị · Chục thẳng cột chục", "Số có một chữ số viết thẳng cột hàng đơn vị."), F("Thứ tự tính", "Từ phải sang trái: hàng đơn vị → hàng chục"), F("Ví dụ cộng", "42 + 35 = 77   (2 + 5 = 7; 4 + 3 = 7)"), F("Ví dụ trừ", "76 − 5 = 71   (6 − 5 = 1; hạ 7)")),
-            G("II. Tính nhẩm số tròn chục", F("Cộng", "30 + 20 = 50  (3 chục + 2 chục = 5 chục)"), F("Trừ", "60 − 20 = 40  (6 chục − 2 chục = 4 chục)")),
-            G("III. Hai dấu phép tính & bài toán có lời văn", F("Hai dấu phép tính", "Tính lần lượt từ trái sang phải", "37 + 12 − 23 = 49 − 23 = 26."), F("Chọn phép tính", "Thêm, gộp, tất cả → phép cộng · Bớt, cho đi, bay đi, còn lại → phép trừ"), F("Trình bày", "Phép tính: 74 − 21 = 53 · Trả lời: Trên cây còn lại 53 quả thị.")),
-        ],
-        "example": "Đặt tính rồi tính: 53 + 24 và 68 − 35.",
-        "example_answer": (
-            "- 53 + 24: 3 + 4 = 7, viết 7; 5 + 2 = 7, viết 7 → **77**.\n"
-            "- 68 − 35: 8 − 5 = 3, viết 3; 6 − 3 = 3, viết 3 → **33**.\n"
-            "Kiểm tra: 33 + 35 = 68 ✔."
-        ),
-        "real_life": (
-            "- Tính số học sinh cả lớp (bạn nam + bạn nữ), số trang sách còn phải đọc.\n"
-            "- Tính tiền khi mua bán đơn giản, đếm số đồ vật còn lại sau khi dùng."
-        ),
-        "quiz": [
-            mcq("biet", "34 + 5 = ?", ["39", "84", "38", "29"], 0, "Cộng hàng đơn vị: 4 + 5 = 9; hàng chục giữ nguyên 3 → **39**.", note="84 là do cộng nhầm 5 vào hàng chục (3 + 5). Số 5 là 5 đơn vị nên phải cộng với hàng đơn vị."),
-            mcq("biet", "76 − 5 = ?", ["26", "71", "81", "70"], 1, "Trừ hàng đơn vị: 6 − 5 = 1; hàng chục giữ nguyên 7 → **71**.", note="26 là do trừ nhầm vào hàng chục (7 − 5)."),
-            mcq("biet", "40 + 30 = ?", ["7", "70", "43", "700"], 1, "4 chục + 3 chục = 7 chục = **70**."),
-            mcq("biet", "Khi tính 52 + 36 (đặt tính), ta thực hiện theo thứ tự nào?", ["Cộng hàng chục trước, rồi cộng hàng đơn vị", "Cộng hàng đơn vị trước, rồi cộng hàng chục", "Cộng chữ số nào trước cũng được", "Chỉ cộng hàng chục"], 1, "Đặt tính xong, ta tính **từ phải sang trái**: cộng hàng đơn vị trước (2 + 6 = 8), rồi hàng chục (5 + 3 = 8) → 88."),
-            mcq("hieu", "Kết quả của 37 + 12 − 23 là:", ["26", "72", "49", "36"], 0, "Tính từ trái sang phải: 37 + 12 = 49; 49 − 23 = **26**.", note="49 mới chỉ là kết quả bước 1 — còn phải trừ tiếp 23."),
-            mcq("hieu", "Phép tính nào có kết quả bằng 50?", ["20 + 20", "90 − 40", "70 − 30", "10 + 30"], 1, "Tính nhẩm số tròn chục: 20 + 20 = 40; **90 − 40 = 50**; 70 − 30 = 40; 10 + 30 = 40."),
-            tf("hieu", "Bạn Bi đặt tính 45 − 3 bằng cách viết số 3 thẳng cột với chữ số 4 (hàng chục) và được kết quả 15.\nNhận định: “Bạn Bi làm đúng.”", False, "Số 3 là 3 đơn vị nên phải viết thẳng cột với chữ số 5 (hàng đơn vị).\nTính đúng: 5 − 3 = 2, hạ 4 → 45 − 3 = **42**. Bạn Bi làm **Sai**."),
-            tf("hieu", "Nhận định: “65 − 25 = 40.”", True, "Hàng đơn vị: 5 − 5 = 0; hàng chục: 6 − 2 = 4 → 65 − 25 = **40** → **Đúng**.", alt="Kiểm tra bằng phép cộng: 40 + 25 = 65 ✔."),
-            mcq("vandung", "Trên cây có 74 quả thị. Gió lay làm rụng 21 quả. Hỏi trên cây còn lại bao nhiêu quả thị?", ["95", "53", "43", "54"], 1, "“Rụng” là bớt đi nên dùng phép trừ: 74 − 21.\nHàng đơn vị: 4 − 1 = 3; hàng chục: 7 − 2 = 5 → 53.\nTrả lời: Trên cây còn lại **53 quả thị**.", note="95 là kết quả của phép cộng 74 + 21 — số quả trên cây phải ít đi chứ không nhiều lên."),
-            short("vandung", "Lớp 1A có 23 bạn nữ và 15 bạn nam. Hỏi lớp 1A có tất cả bao nhiêu bạn?", ["38"], "“Tất cả” là gộp lại nên dùng phép cộng: 23 + 15.\nHàng đơn vị: 3 + 5 = 8; hàng chục: 2 + 1 = 3 → 38.\nTrả lời: Lớp 1A có tất cả **38 bạn**.", unit="bạn", alt="Cộng chục với chục, đơn vị với đơn vị: 20 + 10 = 30; 3 + 5 = 8; 30 + 8 = 38."),
-        ],
-    },
-    {
-        "topic": "l1-cd09-thoi-gian-gio-lich",
-        "title": "Thời gian. Giờ và lịch",
-        "game_type": "game_do_luong",
-        "game_title": "Bé Đo Giỏi – Đo độ dài và Thời gian",
-        "game_description": "Thực hành xem giờ đúng trên đồng hồ kim, đọc lịch ngày trong tuần và đo độ dài đồ vật quanh bé.",
-        "icon": "🕘",
-        "description": "Chủ đề 9 · SGK Toán 1 tập hai (tr. 72–87): Bài 34 – Bài 37. Xem giờ đúng trên đồng hồ, các ngày trong tuần, xem lịch tờ hằng ngày.",
-        "requirements": [
-            "Nhận biết được giờ đúng trên đồng hồ; thực hiện được việc đọc giờ đúng trên đồng hồ.",
-            "Nhận biết được mỗi tuần lễ có 7 ngày và tên gọi, thứ tự các ngày trong tuần lễ.",
-            "Xác định được thứ, ngày trong tuần khi xem lịch (loại lịch tờ hằng ngày).",
-            "Giải quyết được một số vấn đề thực tiễn đơn giản liên quan đến đọc giờ đúng và xem lịch.",
-        ],
-        "definition": (
-            "- **Đồng hồ** có kim ngắn (chỉ **giờ**) và kim dài (chỉ **phút**).\n"
-            "- **Giờ đúng:** kim dài chỉ vào số **12**, kim ngắn chỉ vào số nào thì đó là mấy giờ (kim ngắn chỉ 8 → 8 giờ).\n"
-            "- **Một tuần lễ có 7 ngày:** Thứ Hai, Thứ Ba, Thứ Tư, Thứ Năm, Thứ Sáu, Thứ Bảy, Chủ nhật.\n"
-            "- **Lịch tờ hằng ngày** cho biết: tháng, ngày (số in to) và thứ."
-        ),
-        "theory": (
-            "### Bài 34. Xem giờ đúng trên đồng hồ\n"
-            "- Nhận biết mặt đồng hồ (12 số), kim giờ, kim phút; đọc giờ đúng; quay kim đồng hồ chỉ giờ đúng.\n"
-            "- Gắn giờ với hoạt động hằng ngày: 6 giờ thức dậy, 7 giờ vào học, 9 giờ đi ngủ…\n"
-            "### Bài 35. Các ngày trong tuần\n"
-            "- Tên và thứ tự 7 ngày trong tuần; hôm qua – hôm nay – ngày mai; ngày đi học, ngày nghỉ.\n"
-            "### Bài 36. Thực hành xem lịch và giờ\n"
-            "- Đọc lịch tờ: hôm nay là thứ mấy, ngày bao nhiêu, tháng mấy; tính ngày, thứ của hôm qua, ngày mai.\n"
-            "- Đọc thời gian biểu, lịch hoạt động trong tuần.\n"
-            "### Bài 37. Luyện tập chung\n"
-            "- Xem giờ đúng, xem lịch, giải quyết tình huống thực tế về thời gian."
-        ),
-        "formulas": [
-            G("I. Đồng hồ – Giờ đúng", F("Kim ngắn", "Chỉ giờ"), F("Kim dài", "Chỉ phút"), F("Giờ đúng", "Kim dài chỉ số 12 · Kim ngắn chỉ số k → k giờ", "Kim dài chỉ 12, kim ngắn chỉ 3 → 3 giờ.")),
-            G("II. Tuần lễ và lịch", F("Tuần lễ", "1 tuần lễ = 7 ngày"), F("Thứ tự các ngày", "Thứ Hai → Thứ Ba → Thứ Tư → Thứ Năm → Thứ Sáu → Thứ Bảy → Chủ nhật → (Thứ Hai tuần sau)"), F("Hôm qua – hôm nay – ngày mai", "Hôm qua = ngày liền trước hôm nay · Ngày mai = ngày liền sau hôm nay"), F("Cùng thứ tuần sau", "Ngày cùng thứ của tuần sau = ngày hôm nay + 7", "Thứ Hai ngày 10 → Thứ Hai tuần sau là ngày 17.")),
-        ],
-        "example": "Tờ lịch hôm nay ghi: Tháng 5 – 19 – Thứ Tư. Hỏi ngày mai là thứ mấy, ngày bao nhiêu?",
-        "example_answer": (
-            "Ngày liền sau Thứ Tư là **Thứ Năm**; ngày liền sau ngày 19 là ngày **20**.\n"
-            "Vậy ngày mai là Thứ Năm, ngày 20 tháng 5."
-        ),
-        "real_life": (
-            "- Biết giờ để đi học đúng giờ, sắp xếp giờ ăn, giờ học, giờ ngủ.\n"
-            "- Xem lịch để nhớ ngày sinh nhật, ngày nghỉ, lịch học trong tuần."
-        ),
-        "quiz": [
-            mcq("biet", "Một tuần lễ có mấy ngày?", ["5", "6", "7", "10"], 2, "Một tuần lễ có **7 ngày**: Thứ Hai, Thứ Ba, Thứ Tư, Thứ Năm, Thứ Sáu, Thứ Bảy, Chủ nhật."),
-            mcq("biet", "Đồng hồ có kim dài chỉ số 12, kim ngắn chỉ số 8. Đồng hồ chỉ:", ["12 giờ", "8 giờ", "2 giờ", "4 giờ"], 1, "Kim dài chỉ số 12 → giờ đúng; kim ngắn (kim giờ) chỉ số 8 → **8 giờ**.", note="Không đọc theo kim dài: kim dài chỉ 12 không có nghĩa là 12 giờ."),
-            mcq("biet", "Ngày liền sau Thứ Bảy là:", ["Thứ Sáu", "Thứ Hai", "Chủ nhật", "Thứ Bảy"], 2, "Thứ tự: … Thứ Sáu, Thứ Bảy, **Chủ nhật**, Thứ Hai…"),
-            mcq("biet", "Trên đồng hồ, kim nào chỉ giờ?", ["Kim dài", "Kim ngắn", "Cả hai kim", "Không kim nào"], 1, "**Kim ngắn** chỉ giờ, kim dài chỉ phút."),
-            mcq("hieu", "Hôm nay là Thứ Tư. Hôm qua là:", ["Thứ Ba", "Thứ Năm", "Thứ Hai", "Chủ nhật"], 0, "Hôm qua là ngày liền trước hôm nay. Liền trước Thứ Tư là **Thứ Ba**.", note="Thứ Năm là ngày mai, không phải hôm qua."),
-            mcq("hieu", "Tờ lịch hôm nay ghi: Tháng 5 – 19 – Thứ Năm. Vậy ngày 20 tháng 5 là thứ mấy?", ["Thứ Tư", "Thứ Sáu", "Thứ Bảy", "Thứ Năm"], 1, "Ngày 20 là ngày liền sau ngày 19 (ngày mai). Liền sau Thứ Năm là **Thứ Sáu**."),
-            tf("hieu", "Nhận định: “Lúc 3 giờ đúng, kim dài của đồng hồ chỉ vào số 3.”", False, "Lúc 3 giờ đúng: **kim dài chỉ số 12**, kim ngắn chỉ số 3. Nhận định **Sai**."),
-            tf("hieu", "Nhận định: “Nếu hôm nay là Chủ nhật thì ngày mai là Thứ Hai.”", True, "Sau Chủ nhật là Thứ Hai của tuần mới → **Đúng**."),
-            mcq("vandung", "Mai đi ngủ lúc 9 giờ tối và thức dậy lúc 6 giờ sáng. Lúc Mai thức dậy, kim ngắn của đồng hồ chỉ vào số mấy?", ["9", "12", "6", "3"], 2, "Mai thức dậy lúc 6 giờ: kim dài chỉ số 12, kim ngắn chỉ số **6**.", note="9 là giờ đi ngủ; câu hỏi hỏi lúc thức dậy."),
-            short("vandung", "Hôm nay là Thứ Hai, ngày 10. Hỏi Thứ Hai tuần sau là ngày bao nhiêu?", ["17"], "Đếm tiếp từng ngày: 11 (Thứ Ba), 12 (Thứ Tư), 13 (Thứ Năm), 14 (Thứ Sáu), 15 (Thứ Bảy), 16 (Chủ nhật), **17 (Thứ Hai)**.\nVậy Thứ Hai tuần sau là ngày **17**.", alt="Một tuần có 7 ngày nên cùng thứ của tuần sau là: 10 + 7 = 17."),
-        ],
-    },
-    {
-        "topic": "l1-cd10-on-tap-cuoi-nam",
-        "title": "Ôn tập cuối năm",
-        "icon": "🏆",
-        "description": "Chủ đề 10 · SGK Toán 1 tập hai (tr. 88–105): Bài 38 – Bài 41. Ôn tập các số và phép tính trong phạm vi 10, 100; ôn tập hình học và đo lường.",
-        "requirements": [
-            "Đếm, đọc, viết, so sánh, xếp thứ tự các số trong phạm vi 100; nhận biết chục và đơn vị.",
-            "Thực hiện được phép cộng, phép trừ (không nhớ) trong phạm vi 100; tính nhẩm trong phạm vi 10 và với số tròn chục; tính có hai dấu phép tính.",
-            "Nhận dạng được hình phẳng, hình khối đã học; vị trí, định hướng trong không gian.",
-            "Đo độ dài bằng đơn vị cm, đọc giờ đúng, xem lịch tờ hằng ngày.",
-            "Giải quyết được vấn đề thực tiễn đơn giản bằng phép cộng, phép trừ (bài toán có lời văn).",
-        ],
-        "definition": (
-            "Ôn tập toàn bộ chương trình Toán 1:\n"
-            "- **Số và phép tính:** số đến 100, chục – đơn vị, cộng trừ không nhớ trong phạm vi 100.\n"
-            "- **Hình học:** hình vuông, hình tròn, hình tam giác, hình chữ nhật; khối lập phương, khối hộp chữ nhật.\n"
-            "- **Đo lường:** xăng-ti-mét (cm), giờ đúng, ngày trong tuần, lịch."
-        ),
-        "theory": (
-            "### Bài 38. Ôn tập các số và phép tính trong phạm vi 10\n"
-            "- Đếm, so sánh, mấy và mấy; bảng cộng, bảng trừ trong phạm vi 10.\n"
-            "### Bài 39. Ôn tập các số và phép tính trong phạm vi 100\n"
-            "- Đọc, viết, phân tích số có hai chữ số; so sánh; cộng, trừ không nhớ; tính hai dấu phép tính; bài toán có lời văn.\n"
-            "### Bài 40. Ôn tập hình học và đo lường\n"
-            "- Nhận dạng hình; đo độ dài (cm); xem giờ đúng; xem lịch, các ngày trong tuần.\n"
-            "### Bài 41. Ôn tập chung\n"
-            "- Luyện tập tổng hợp và các bài toán thực tế."
-        ),
-        "formulas": [
-            G("I. Số và phép tính", F("Cấu tạo số", "Số ab gồm a chục và b đơn vị (64 gồm 6 chục và 4 đơn vị)"), F("So sánh", "So sánh hàng chục trước, hàng chục bằng nhau thì so sánh hàng đơn vị"), F("Cộng, trừ không nhớ", "Đặt tính thẳng cột · Tính từ phải sang trái"), F("Hai dấu phép tính", "Tính từ trái sang phải: 56 − 20 + 3 = 36 + 3 = 39"), F("Số 0 & đổi chỗ", "a + 0 = a · a − 0 = a · a − a = 0 · a + b = b + a")),
-            G("II. Hình học và đo lường", F("Hình phẳng", "Vuông · Chữ nhật · Tam giác · Tròn"), F("Hình khối", "Khối lập phương · Khối hộp chữ nhật"), F("Độ dài", "Đơn vị cm · Đặt vạch 0 trùng đầu vật"), F("Thời gian", "Giờ đúng: kim dài chỉ 12 · 1 tuần = 7 ngày")),
-        ],
-        "example": "Cửa hàng có 68 quả bóng, đã bán 25 quả. Hỏi cửa hàng còn lại bao nhiêu quả bóng?",
-        "example_answer": (
-            "“Đã bán” là bớt đi → phép trừ: 68 − 25.\n"
-            "Hàng đơn vị: 8 − 5 = 3; hàng chục: 6 − 2 = 4 → 43.\n"
-            "Trả lời: Cửa hàng còn lại **43 quả bóng**."
-        ),
-        "real_life": (
-            "- Vận dụng tổng hợp: đếm tiền, đo đồ vật, xem giờ đi học, xem lịch nghỉ hè.\n"
-            "- Chuẩn bị nền tảng vững chắc để học Toán 2."
-        ),
-        "quiz": [
-            mcq("biet", "Số “sáu mươi tư” viết là:", ["604", "46", "64", "6"], 2, "Sáu mươi → 6 chục; tư → 4 đơn vị. Viết là **64**."),
-            mcq("biet", "Số bé nhất trong các số 52, 25, 50, 20 là:", ["52", "25", "50", "20"], 3, "So sánh hàng chục: 25 và 20 có hàng chục là 2 (bé hơn 5). So sánh tiếp hàng đơn vị: 0 < 5 nên 20 < 25.\nSố bé nhất là **20**."),
-            mcq("biet", "8 + 2 = ?", ["6", "10", "9", "82"], 1, "8 và 2 là cặp “tròn 10”: **8 + 2 = 10**."),
-            mcq("biet", "Đồng hồ chỉ 10 giờ đúng khi kim dài chỉ số 12 và kim ngắn chỉ số:", ["12", "10", "1", "2"], 1, "Giờ đúng: kim ngắn chỉ số nào thì là mấy giờ → kim ngắn chỉ số **10**."),
-            mcq("hieu", "56 − 20 + 3 = ?", ["39", "33", "36", "79"], 0, "Tính từ trái sang phải: 56 − 20 = 36; 36 + 3 = **39**.", note="Nếu tính 20 + 3 = 23 trước rồi lấy 56 − 23 = 33 là sai thứ tự tính."),
-            mcq("hieu", "Số nào lớn hơn 68 và bé hơn 71?", ["67", "69", "72", "61"], 1, "Các số lớn hơn 68 và bé hơn 71 là 69 và 70. Trong các đáp án chỉ có **69**.", alt="Trên bảng số: 68, **69**, 70, 71 — số 69 nằm giữa 68 và 71."),
-            tf("hieu", "Nhận định: “45 + 32 = 77.”", True, "Hàng đơn vị: 5 + 2 = 7; hàng chục: 4 + 3 = 7 → 45 + 32 = **77** → **Đúng**."),
-            tf("hieu", "Nhận định: “Khối hộp chữ nhật có các mặt đều là hình tròn.”", False, "Các mặt của khối hộp chữ nhật là **hình chữ nhật** (có thể có mặt hình vuông), không có mặt hình tròn → **Sai**."),
-            mcq("vandung", "Cửa hàng có 68 quả bóng, đã bán 25 quả. Hỏi cửa hàng còn lại bao nhiêu quả bóng?", ["43", "93", "33", "42"], 0, "“Đã bán” là bớt đi → 68 − 25: 8 − 5 = 3; 6 − 2 = 4 → **43**.\nTrả lời: Cửa hàng còn lại 43 quả bóng.", alt="Trừ chục trước: 68 − 20 = 48; rồi trừ đơn vị: 48 − 5 = 43.", note="93 là kết quả phép cộng 68 + 25 (có nhớ) — sai vì bán đi thì số bóng phải ít đi."),
-            short("vandung", "Một sợi dây dài 86 cm. Bạn Hà cắt đi một đoạn dài 40 cm. Hỏi đoạn dây còn lại dài bao nhiêu xăng-ti-mét?", ["46", "46cm"], "“Cắt đi” là bớt đi → 86 cm − 40 cm.\nHàng đơn vị: 6 − 0 = 6; hàng chục: 8 − 4 = 4 → **46 cm**.\nTrả lời: Đoạn dây còn lại dài 46 cm.", unit="cm", alt="Trừ nhẩm số tròn chục: 8 chục − 4 chục = 4 chục, giữ nguyên 6 đơn vị → 46."),
-        ],
-    },
-]
+LESSONS = [{'topic': 'l1-cd01-cac-so-tu-0-den-10',
+  'context_title': 'Chủ đề 1: Các số từ 0 đến 10',
+  'context': 'SGK Toán 1 · Chủ đề 1: Đếm, đọc, viết, so sánh và tách – gộp các số từ 0 đến 10.',
+  'title': 'Bài 1: Các số 0, 1, 2, 3, 4, 5',
+  'icon': '🔢',
+  'description': 'Đếm, đọc, viết các số từ 0 đến 5 và nhận biết ý nghĩa của số 0.',
+  'requirements': ['Đếm, đọc, viết được các số $0, 1, 2, 3, 4, 5$.',
+                   'Nhận biết được số $0$ dùng để chỉ không có đồ vật nào.',
+                   'Nhận biết thứ tự các số từ $0$ đến $5$.'],
+  'definition': '**Số** dùng để chỉ số lượng đồ vật trong một nhóm. Nhóm không có đồ vật nào được ghi bằng '
+                'số $0$. Các số theo thứ tự từ bé đến lớn trong phạm vi $5$ là: $0, 1, 2, 3, 4, 5$.',
+  'theory': '- Khi đếm đồ vật, ta chỉ vào từng vật và đếm lần lượt $1, 2, 3, 4, 5$ (mỗi vật đếm đúng $1$ '
+            'lần, không bỏ sót).\n'
+            '- Số cuối cùng vừa đếm chính là số lượng đồ vật của cả nhóm.\n'
+            '- **Số $0$:** chiếc đĩa không có quả cam nào, ta nói có $0$ quả cam.\n'
+            '- Trong dãy $0, 1, 2, 3, 4, 5$, mỗi số đứng sau bằng số đứng ngay trước nó thêm $1$ đơn vị.',
+  'formulas': [{'category': 'Quy tắc đếm và đọc số từ 0 đến 5',
+                'items': [{'name': 'Dãy số từ 0 đến 5',
+                           'formula': '$0, 1, 2, 3, 4, 5$',
+                           'note': 'Đọc: không, một, hai, ba, bốn, năm.'},
+                          {'name': 'Ý nghĩa số 0',
+                           'formula': '$0$ chỉ không có đồ vật nào',
+                           'note': 'Ví dụ: lọ hoa không có bông nào là $0$ bông hoa.'},
+                          {'name': 'Số liền sau',
+                           'formula': 'Số đứng ngay sau lớn hơn $1$ đơn vị',
+                           'note': 'Liền sau $3$ là $4$; liền sau $4$ là $5$.'}]}],
+  'example': 'Trên bàn có 4 quyển vở, trong hộp không có cái bút nào. Hãy viết số chỉ số quyển vở và số chỉ '
+             'số cái bút.',
+  'example_answer': 'Đếm số quyển vở: $1, 2, 3, 4$ nên viết số $4$. Trong hộp không có bút nào nên viết số '
+                    '$0$.',
+  'real_life': 'Đếm số ngón tay trên một bàn tay ($5$ ngón), số chân ghế ($4$ chân), số chiếc bánh trên đĩa.',
+  'quiz': [{'level': 'biet',
+            'type': 'mcq',
+            'q': 'Đếm số quả táo: 🍎🍎🍎🍎. Có bao nhiêu quả táo?',
+            'options': ['$4$', '$3$', '$5$', '$2$'],
+            'answer': 0,
+            'solution': 'Đếm lần lượt từng quả: $1, 2, 3, 4$. Vậy có $4$ quả táo.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Chiếc đĩa không có quả cam nào. Số chỉ số quả cam trên đĩa là:',
+            'options': ['$1$', '$0$', '$5$', '$2$'],
+            'answer': 1,
+            'solution': 'Không có quả nào thì ta dùng số $0$.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Theo nội dung trọng tâm của **Bài 1: Các số 0, 1, 2, 3, 4, 5**, công thức hoặc quy tắc nào '
+                 'sau đây biểu diễn đúng **Dãy số từ 0 đến 5**?',
+            'options': ['$0$ chỉ không có đồ vật nào',
+                        'Số đứng ngay sau lớn hơn $1$ đơn vị',
+                        '$0, 1, 2, 3, 4, 5$',
+                        '$0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10$'],
+            'answer': 2,
+            'solution': 'Theo bảng công thức trọng tâm của Bài 1: Các số 0, 1, 2, 3, 4, 5, **Dãy số từ 0 đến '
+                        '5** được xác định bởi: $0, 1, 2, 3, 4, 5$. (Đọc: không, một, hai, ba, bốn, năm.)'},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Trong **Bài 1: Các số 0, 1, 2, 3, 4, 5**, nội dung/biểu thức $0$ chỉ không có đồ vật nào '
+                 'là quy tắc hoặc công thức của mục nào sau đây?',
+            'options': ['Dãy số từ 0 đến 5', 'Số liền sau', 'Đếm xuôi', 'Ý nghĩa số 0'],
+            'answer': 3,
+            'solution': 'Trong Bài 1: Các số 0, 1, 2, 3, 4, 5, biểu thức/quy tắc $0$ chỉ không có đồ vật nào '
+                        'chính là nội dung của **Ý nghĩa số 0**.'},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Trong dãy số $0, 1, 2, 3, 4, 5$, số đứng ngay sau số $3$ là số nào?',
+            'options': ['$4$', '$2$', '$5$', '$1$'],
+            'answer': 0,
+            'solution': 'Đếm theo thứ tự: $0, 1, 2, 3, 4, 5$. Số đứng ngay sau số $3$ là số $4$.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Khi học **Bài 1: Các số 0, 1, 2, 3, 4, 5** (Chủ đề 1: Các số từ 0 đến 10), khẳng định nào '
+                 'sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
+            'options': ['Đếm, đọc, viết được các số $6, 7, 8, 9, 10$.',
+                        'Đếm, đọc, viết được các số $0, 1, 2, 3, 4, 5$.',
+                        'Đếm xuôi từ $0$ đến $10$ và đếm ngược từ $10$ về $0$.',
+                        'Tìm được số liền trước, số liền sau trong phạm vi $10$.'],
+            'answer': 1,
+            'solution': 'Theo yêu cầu cần đạt của Bài 1: Các số 0, 1, 2, 3, 4, 5: Đếm, đọc, viết được các số '
+                        '$0, 1, 2, 3, 4, 5$.'},
+           {'level': 'hieu',
+            'type': 'tf',
+            'q': 'Nhận định: “Số $5$ đọc là năm và đứng ngay sau số $4$ trong dãy số từ $0$ đến $5$.”',
+            'answer': True,
+            'solution': 'Trong dãy $0, 1, 2, 3, 4, 5$, số $5$ đọc là năm và đứng liền sau số $4$ nên nhận '
+                        'định Đúng.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'tf',
+            'q': 'Trong **Bài 1: Các số 0, 1, 2, 3, 4, 5**, quy tắc **Dãy số từ 0 đến 5** được xác định bởi '
+                 '$0, 1, 2, 3, 4, 5$ và áp dụng trực tiếp vào bài toán: “Trên bàn có 4 quyển vở, trong hộp '
+                 'không có cái bút nào. Hãy viết số chỉ số quyển vở và số chỉ số cái bút.”. Đúng hay sai?',
+            'answer': True,
+            'solution': 'Khẳng định **Đúng**. Quy tắc **Dãy số từ 0 đến 5** ($0, 1, 2, 3, 4, 5$) là kiến '
+                        'thức cốt lõi của Bài 1: Các số 0, 1, 2, 3, 4, 5. Đếm số quyển vở: $1, 2, 3, 4$ nên '
+                        'viết số $4$. Trong hộp không có bút nào nên viết số $0$.'},
+           {'level': 'vandung',
+            'type': 'mcq',
+            'q': 'Vận dụng kiến thức **Bài 1: Các số 0, 1, 2, 3, 4, 5** để giải quyết tình huống sau: Trên '
+                 'bàn có 4 quyển vở, trong hộp không có cái bút nào. Hãy viết số chỉ số quyển vở và số chỉ '
+                 'số cái bút. Kết quả và hướng giải nào dưới đây là **đúng**?',
+            'options': ['Đếm tiếp sau $7$ là $8$, sau $9$ là $10$. Dãy số đầy đủ là $6, 7, 8, 9, 10$.',
+                        'Mỗi bạn thỏ nhận $1$ củ cà rốt thì còn $1$ bạn thỏ chưa có cà rốt ($5 > 4$). Vậy số '
+                        'thỏ **nhiều hơn** số cà rốt.',
+                        'Đếm số quyển vở: $1, 2, 3, 4$ nên viết số $4$. Trong hộp không có bút nào nên viết '
+                        'số $0$.',
+                        'a) Vì $7$ đứng trước $9$ nên $7 < 9$. b) Sắp xếp từ bé đến lớn: $2, 4, 6, 9$.'],
+            'answer': 2,
+            'solution': 'Lời giải chi tiết theo Bài 1: Các số 0, 1, 2, 3, 4, 5: Đếm số quyển vở: $1, 2, 3, '
+                        '4$ nên viết số $4$. Trong hộp không có bút nào nên viết số $0$.'},
+           {'level': 'vandung',
+            'type': 'short',
+            'q': 'Một bàn tay có $5$ ngón tay. Nếu em cụp xuống $1$ ngón tay thì còn mấy ngón tay đang xòe '
+                 'ra?',
+            'answer': ['4'],
+            'unit': None,
+            'solution': 'Có $5$ ngón tay, cụp xuống $1$ ngón thì còn $4$ ngón tay đang xòe ($1, 2, 3, 4$).',
+            'alt': None,
+            'note': None}]},
+ {'topic': 'l1-cd01-cac-so-tu-0-den-10',
+  'context_title': 'Chủ đề 1: Các số từ 0 đến 10',
+  'context': 'SGK Toán 1 · Chủ đề 1: Đếm, đọc, viết, so sánh và tách – gộp các số từ 0 đến 10.',
+  'title': 'Bài 2: Các số 6, 7, 8, 9, 10',
+  'icon': '🔢',
+  'description': 'Đếm, đọc, viết các số 6, 7, 8, 9, 10 và đếm xuôi, đếm ngược trong phạm vi 10.',
+  'requirements': ['Đếm, đọc, viết được các số $6, 7, 8, 9, 10$.',
+                   'Đếm xuôi từ $0$ đến $10$ và đếm ngược từ $10$ về $0$.',
+                   'Tìm được số liền trước, số liền sau trong phạm vi $10$.'],
+  'definition': 'Tiếp theo số $5$ là các số $6$ (sáu), $7$ (bảy), $8$ (tám), $9$ (chín), $10$ (mười). Số '
+                '$10$ là số có hai chữ số: chữ số $1$ đứng trước, chữ số $0$ đứng sau.',
+  'theory': '- **Dãy số từ $0$ đến $10$:** $0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10$.\n'
+            '- **Đếm xuôi:** bắt đầu từ $0$ đếm tăng dần lên $10$.\n'
+            '- **Đếm ngược:** bắt đầu từ $10$ đếm lùi dần về $0$: $10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0$.\n'
+            '- Phân biệt chữ số $6$ (vòng tròn ở dưới) và chữ số $9$ (vòng tròn ở trên).',
+  'formulas': [{'category': 'Dãy số từ 0 đến 10',
+                'items': [{'name': 'Đếm xuôi',
+                           'formula': '$0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10$',
+                           'note': 'Số liền sau bằng số đó thêm $1$.'},
+                          {'name': 'Đếm ngược',
+                           'formula': '$10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0$',
+                           'note': 'Số liền trước bằng số đó bớt $1$.'}]}],
+  'example': 'Điền số còn thiếu vào dãy số: $6, 7, \\dots, 9, \\dots$',
+  'example_answer': 'Đếm tiếp sau $7$ là $8$, sau $9$ là $10$. Dãy số đầy đủ là $6, 7, 8, 9, 10$.',
+  'real_life': 'Đếm $7$ sắc cầu vồng, $8$ chân con cua, $10$ ngón tay trên hai bàn tay.',
+  'quiz': [{'level': 'biet',
+            'type': 'mcq',
+            'q': 'Số “chín” được viết là:',
+            'options': ['$6$', '$9$', '$7$', '$10$'],
+            'answer': 1,
+            'solution': 'Số chín được viết là $9$ (vòng tròn ở phía trên).',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Đếm số quả táo: 🍎🍎🍎🍎🍎🍎🍎. Có bao nhiêu quả táo?',
+            'options': ['$6$', '$8$', '$7$', '$9$'],
+            'answer': 2,
+            'solution': 'Đếm lần lượt từ $1$ đến $7$, có tất cả $7$ quả táo.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Theo nội dung trọng tâm của **Bài 2: Các số 6, 7, 8, 9, 10**, công thức hoặc quy tắc nào '
+                 'sau đây biểu diễn đúng **Đếm xuôi**?',
+            'options': ['$10, 9, 8, 7, 6, 5, 4, 3, 2, 1, 0$',
+                        '$0, 1, 2, 3, 4, 5$',
+                        '$0$ chỉ không có đồ vật nào',
+                        '$0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10$'],
+            'answer': 3,
+            'solution': 'Theo bảng công thức trọng tâm của Bài 2: Các số 6, 7, 8, 9, 10, **Đếm xuôi** được '
+                        'xác định bởi: $0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10$. (Số liền sau bằng số đó thêm '
+                        '$1$.)'},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Trong **Bài 2: Các số 6, 7, 8, 9, 10**, nội dung/biểu thức $10, 9, 8, 7, 6, 5, 4, 3, 2, 1, '
+                 '0$ là quy tắc hoặc công thức của mục nào sau đây?',
+            'options': ['Đếm ngược', 'Đếm xuôi', 'Dãy số từ 0 đến 5', 'Ý nghĩa số 0'],
+            'answer': 0,
+            'solution': 'Trong Bài 2: Các số 6, 7, 8, 9, 10, biểu thức/quy tắc $10, 9, 8, 7, 6, 5, 4, 3, 2, '
+                        '1, 0$ chính là nội dung của **Đếm ngược**.'},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Trong dãy số từ $0$ đến $10$, số đứng liền sau số $6$ là số nào?',
+            'options': ['$5$', '$7$', '$8$', '$9$'],
+            'answer': 1,
+            'solution': 'Đếm tiếp sau $6$ là $7$. Vậy số liền sau của $6$ là $7$.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Khi học **Bài 2: Các số 6, 7, 8, 9, 10** (Chủ đề 1: Các số từ 0 đến 10), khẳng định nào '
+                 'sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
+            'options': ['Đếm, đọc, viết được các số $0, 1, 2, 3, 4, 5$.',
+                        'Nhận biết được số $0$ dùng để chỉ không có đồ vật nào.',
+                        'Đếm, đọc, viết được các số $6, 7, 8, 9, 10$.',
+                        'Nhận biết thứ tự các số từ $0$ đến $5$.'],
+            'answer': 2,
+            'solution': 'Theo yêu cầu cần đạt của Bài 2: Các số 6, 7, 8, 9, 10: Đếm, đọc, viết được các số '
+                        '$6, 7, 8, 9, 10$.'},
+           {'level': 'hieu',
+            'type': 'tf',
+            'q': 'Nhận định: “Khi đếm ngược từ $10$ về $0$, ngay sau số $8$ là số $7$.”',
+            'answer': True,
+            'solution': 'Đếm ngược: $10, 9, 8, 7, 6, \\dots$ nên ngay sau số $8$ là số $7$. Nhận định Đúng.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'tf',
+            'q': 'Trong **Bài 2: Các số 6, 7, 8, 9, 10**, quy tắc **Đếm xuôi** được xác định bởi $0, 1, 2, '
+                 '3, 4, 5, 6, 7, 8, 9, 10$ và áp dụng trực tiếp vào bài toán: “Điền số còn thiếu vào dãy số: '
+                 '$6, 7, \\dots, 9, \\dots$”. Đúng hay sai?',
+            'answer': True,
+            'solution': 'Khẳng định **Đúng**. Quy tắc **Đếm xuôi** ($0, 1, 2, 3, 4, 5, 6, 7, 8, 9, 10$) là '
+                        'kiến thức cốt lõi của Bài 2: Các số 6, 7, 8, 9, 10. Đếm tiếp sau $7$ là $8$, sau '
+                        '$9$ là $10$. Dãy số đầy đủ là $6, 7, 8, 9, 10$.'},
+           {'level': 'vandung',
+            'type': 'mcq',
+            'q': 'Vận dụng kiến thức **Bài 2: Các số 6, 7, 8, 9, 10** để giải quyết tình huống sau: Điền số '
+                 'còn thiếu vào dãy số: $6, 7, \\dots, 9, \\dots$ Kết quả và hướng giải nào dưới đây là '
+                 '**đúng**?',
+            'options': ['Đếm số quyển vở: $1, 2, 3, 4$ nên viết số $4$. Trong hộp không có bút nào nên viết '
+                        'số $0$.',
+                        'Mỗi bạn thỏ nhận $1$ củ cà rốt thì còn $1$ bạn thỏ chưa có cà rốt ($5 > 4$). Vậy số '
+                        'thỏ **nhiều hơn** số cà rốt.',
+                        'a) Vì $7$ đứng trước $9$ nên $7 < 9$. b) Sắp xếp từ bé đến lớn: $2, 4, 6, 9$.',
+                        'Đếm tiếp sau $7$ là $8$, sau $9$ là $10$. Dãy số đầy đủ là $6, 7, 8, 9, 10$.'],
+            'answer': 3,
+            'solution': 'Lời giải chi tiết theo Bài 2: Các số 6, 7, 8, 9, 10: Đếm tiếp sau $7$ là $8$, sau '
+                        '$9$ là $10$. Dãy số đầy đủ là $6, 7, 8, 9, 10$.'},
+           {'level': 'vandung',
+            'type': 'short',
+            'q': 'Hai bàn tay của em có tất cả bao nhiêu ngón tay?',
+            'answer': ['10'],
+            'unit': None,
+            'solution': 'Mỗi bàn tay có $5$ ngón, đếm cả hai bàn tay từ $1$ đến $10$ được $10$ ngón tay.',
+            'alt': None,
+            'note': None}]},
+ {'topic': 'l1-cd01-cac-so-tu-0-den-10',
+  'context_title': 'Chủ đề 1: Các số từ 0 đến 10',
+  'context': 'SGK Toán 1 · Chủ đề 1: Đếm, đọc, viết, so sánh và tách – gộp các số từ 0 đến 10.',
+  'title': 'Bài 3: Nhiều hơn, ít hơn, bằng nhau',
+  'icon': '⚖️',
+  'description': 'So sánh số lượng hai nhóm đồ vật bằng cách ghép đôi (nối 1 – 1).',
+  'requirements': ['Biết cách ghép đôi (nối từng cặp $1 - 1$) giữa hai nhóm đồ vật.',
+                   'Nhận biết và sử dụng đúng các từ: “nhiều hơn”, “ít hơn”, “bằng nhau”.',
+                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Nhiều hơn – Ít hơn** (Nhóm có vật thừa ra '
+                   '$\\rightarrow$ nhiều hơn; nhóm kia $\\rightarrow$ ít hơn) vào giải bài tập.'],
+  'definition': 'Khi ghép mỗi đồ vật của nhóm thứ nhất với $1$ đồ vật của nhóm thứ hai:\n'
+                '- Nhóm nào còn thừa ra thì **nhiều hơn**, nhóm kia **ít hơn**.\n'
+                '- Nếu không nhóm nào còn thừa thì số lượng hai nhóm **bằng nhau**.',
+  'theory': '- Ví dụ: Có $4$ cái cốc và $3$ cái thìa. Đặt mỗi cái thìa vào $1$ cái cốc thì còn thừa $1$ cái '
+            'cốc.\n'
+            '- Ta nói: Số cốc **nhiều hơn** số thìa, hay số thìa **ít hơn** số cốc.\n'
+            '- Nếu có $4$ cái cốc và $4$ cái thìa, mỗi cốc đều có đúng $1$ thìa, ta nói số cốc **bằng** số '
+            'thìa.',
+  'formulas': [{'category': 'Quy tắc ghép đôi so sánh',
+                'items': [{'name': 'Nhiều hơn – Ít hơn',
+                           'formula': 'Nhóm có vật thừa ra $\\rightarrow$ nhiều hơn; nhóm kia $\\rightarrow$ '
+                                      'ít hơn'},
+                          {'name': 'Bằng nhau',
+                           'formula': 'Ghép vừa đủ từng cặp $1 - 1$, không thừa vật nào $\\rightarrow$ bằng '
+                                      'nhau'}]}],
+  'example': 'Có $5$ bạn thỏ và $4$ củ cà rốt. Hỏi số thỏ nhiều hơn hay ít hơn số cà rốt?',
+  'example_answer': 'Mỗi bạn thỏ nhận $1$ củ cà rốt thì còn $1$ bạn thỏ chưa có cà rốt ($5 > 4$). Vậy số thỏ '
+                    '**nhiều hơn** số cà rốt.',
+  'real_life': 'Kiểm tra xem số ghế trong phòng họp có đủ cho số người ngồi hay không mà chưa cần đếm hết.',
+  'quiz': [{'level': 'biet',
+            'type': 'mcq',
+            'q': 'Khi ghép đôi mỗi con ong với $1$ bông hoa, nếu còn thừa $2$ bông hoa thì:',
+            'options': ['Số hoa ít hơn số ong',
+                        'Số hoa bằng số ong',
+                        'Số hoa nhiều hơn số ong',
+                        'Không so sánh được'],
+            'answer': 2,
+            'solution': 'Nhóm hoa còn thừa ra $2$ bông nên số hoa nhiều hơn số ong.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Có $3$ cái bát và $3$ cái thìa. Khi đó số bát như thế nào so với số thìa?',
+            'options': ['Nhiều hơn', 'Ít hơn', 'Lớn hơn $1$', 'Bằng nhau'],
+            'answer': 3,
+            'solution': 'Cả hai nhóm đều có $3$ đồ vật, ghép vừa khít từng cặp nên số bát bằng số thìa.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Theo nội dung trọng tâm của **Bài 3: Nhiều hơn, ít hơn, bằng nhau**, công thức hoặc quy '
+                 'tắc nào sau đây biểu diễn đúng **Nhiều hơn – Ít hơn**?',
+            'options': ['Nhóm có vật thừa ra $\\rightarrow$ nhiều hơn; nhóm kia $\\rightarrow$ ít hơn',
+                        'Ghép vừa đủ từng cặp $1 - 1$, không thừa vật nào $\\rightarrow$ bằng nhau',
+                        '$0, 1, 2, 3, 4, 5$',
+                        '$0$ chỉ không có đồ vật nào'],
+            'answer': 0,
+            'solution': 'Theo bảng công thức trọng tâm của Bài 3: Nhiều hơn, ít hơn, bằng nhau, **Nhiều hơn '
+                        '– Ít hơn** được xác định bởi: Nhóm có vật thừa ra $\\rightarrow$ nhiều hơn; nhóm '
+                        'kia $\\rightarrow$ ít hơn.'},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Trong **Bài 3: Nhiều hơn, ít hơn, bằng nhau**, nội dung/biểu thức Ghép vừa đủ từng cặp $1 '
+                 '- 1$, không thừa vật nào $\\rightarrow$ bằng nhau là quy tắc hoặc công thức của mục nào '
+                 'sau đây?',
+            'options': ['Nhiều hơn – Ít hơn', 'Bằng nhau', 'Dãy số từ 0 đến 5', 'Ý nghĩa số 0'],
+            'answer': 1,
+            'solution': 'Trong Bài 3: Nhiều hơn, ít hơn, bằng nhau, biểu thức/quy tắc Ghép vừa đủ từng cặp '
+                        '$1 - 1$, không thừa vật nào $\\rightarrow$ bằng nhau chính là nội dung của **Bằng '
+                        'nhau**.'},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Biết số bút chì nhiều hơn số cục tẩy. Câu nào dưới đây đúng?',
+            'options': ['Số cục tẩy nhiều hơn số bút chì',
+                        'Số cục tẩy bằng số bút chì',
+                        'Số cục tẩy ít hơn số bút chì',
+                        'Không có cục tẩy nào'],
+            'answer': 2,
+            'solution': 'Nếu bút chì nhiều hơn cục tẩy thì ngược lại, số cục tẩy ít hơn số bút chì.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Khi học **Bài 3: Nhiều hơn, ít hơn, bằng nhau** (Chủ đề 1: Các số từ 0 đến 10), khẳng định '
+                 'nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
+            'options': ['Đếm, đọc, viết được các số $0, 1, 2, 3, 4, 5$.',
+                        'Nhận biết được số $0$ dùng để chỉ không có đồ vật nào.',
+                        'Nhận biết thứ tự các số từ $0$ đến $5$.',
+                        'Biết cách ghép đôi (nối từng cặp $1 - 1$) giữa hai nhóm đồ vật.'],
+            'answer': 3,
+            'solution': 'Theo yêu cầu cần đạt của Bài 3: Nhiều hơn, ít hơn, bằng nhau: Biết cách ghép đôi '
+                        '(nối từng cặp $1 - 1$) giữa hai nhóm đồ vật.'},
+           {'level': 'hieu',
+            'type': 'tf',
+            'q': 'Có $4$ con thỏ 🐰🐰🐰🐰 và $3$ củ cà rốt 🥕🥕🥕. Nhận định: “Số thỏ ít hơn số cà rốt.”',
+            'answer': False,
+            'solution': 'Ghép mỗi con thỏ với $1$ củ cà rốt thì thừa $1$ con thỏ, nên số thỏ nhiều hơn số cà '
+                        'rốt. Nhận định Sai.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'tf',
+            'q': 'Trong **Bài 3: Nhiều hơn, ít hơn, bằng nhau**, quy tắc **Nhiều hơn – Ít hơn** được xác '
+                 'định bởi Nhóm có vật thừa ra $\\rightarrow$ nhiều hơn; nhóm kia $\\rightarrow$ ít hơn và '
+                 'áp dụng trực tiếp vào bài toán: “Có $5$ bạn thỏ và $4$ củ cà rốt. Hỏi số thỏ nhiều hơn hay '
+                 'ít hơn số cà rốt?”. Đúng hay sai?',
+            'answer': True,
+            'solution': 'Khẳng định **Đúng**. Quy tắc **Nhiều hơn – Ít hơn** (Nhóm có vật thừa ra '
+                        '$\\rightarrow$ nhiều hơn; nhóm kia $\\rightarrow$ ít hơn) là kiến thức cốt lõi của '
+                        'Bài 3: Nhiều hơn, ít hơn, bằng nhau. Mỗi bạn thỏ nhận $1$ củ cà rốt thì còn $1$ bạn '
+                        'thỏ chưa có cà rốt ($5 > 4$). Vậy số thỏ **nhiều hơn** số cà rốt.'},
+           {'level': 'vandung',
+            'type': 'mcq',
+            'q': 'Vận dụng kiến thức **Bài 3: Nhiều hơn, ít hơn, bằng nhau** để giải quyết tình huống sau: '
+                 'Có $5$ bạn thỏ và $4$ củ cà rốt. Hỏi số thỏ nhiều hơn hay ít hơn số cà rốt? Kết quả và '
+                 'hướng giải nào dưới đây là **đúng**?',
+            'options': ['Mỗi bạn thỏ nhận $1$ củ cà rốt thì còn $1$ bạn thỏ chưa có cà rốt ($5 > 4$). Vậy số '
+                        'thỏ **nhiều hơn** số cà rốt.',
+                        'Đếm số quyển vở: $1, 2, 3, 4$ nên viết số $4$. Trong hộp không có bút nào nên viết '
+                        'số $0$.',
+                        'Đếm tiếp sau $7$ là $8$, sau $9$ là $10$. Dãy số đầy đủ là $6, 7, 8, 9, 10$.',
+                        'a) Vì $7$ đứng trước $9$ nên $7 < 9$. b) Sắp xếp từ bé đến lớn: $2, 4, 6, 9$.'],
+            'answer': 0,
+            'solution': 'Lời giải chi tiết theo Bài 3: Nhiều hơn, ít hơn, bằng nhau: Mỗi bạn thỏ nhận $1$ củ '
+                        'cà rốt thì còn $1$ bạn thỏ chưa có cà rốt ($5 > 4$). Vậy số thỏ **nhiều hơn** số cà '
+                        'rốt.'},
+           {'level': 'vandung',
+            'type': 'short',
+            'q': 'Trên bàn có $6$ cái tách trà nhưng mới có $5$ cái đĩa lót. Cần lấy thêm mấy cái đĩa nữa để '
+                 'số đĩa bằng số tách trà?',
+            'answer': ['1'],
+            'unit': None,
+            'solution': 'Có $5$ cái đĩa cho $6$ cái tách nên còn thiếu $1$ cái đĩa để ghép đủ $6$ cặp.',
+            'alt': None,
+            'note': None}]},
+ {'topic': 'l1-cd01-cac-so-tu-0-den-10',
+  'context_title': 'Chủ đề 1: Các số từ 0 đến 10',
+  'context': 'SGK Toán 1 · Chủ đề 1: Đếm, đọc, viết, so sánh và tách – gộp các số từ 0 đến 10.',
+  'title': 'Bài 4: So sánh số',
+  'icon': '🔍',
+  'description': 'Sử dụng các dấu >, <, = để so sánh hai số và sắp xếp các số trong phạm vi 10.',
+  'requirements': ['Nhận biết và sử dụng đúng các dấu $>$, $<$, $=$ khi so sánh hai số trong phạm vi $10$.',
+                   'Xếp được thứ tự các số (không quá $4$ số) từ bé đến lớn hoặc từ lớn đến bé.',
+                   'Tìm được số lớn nhất, số bé nhất trong một nhóm số.'],
+  'definition': 'Để so sánh hai số, ta dùng các dấu:\n'
+                '- Dấu $>$ (lớn hơn), ví dụ: $7 > 4$.\n'
+                '- Dấu $<$ (bé hơn), ví dụ: $4 < 7$.\n'
+                '- Dấu $=$ (bằng), ví dụ: $6 = 6$.',
+  'theory': '- Trong dãy số từ $0$ đến $10$: số đứng trước **bé hơn** số đứng sau; số đứng sau **lớn hơn** '
+            'số đứng trước.\n'
+            '- Số $0$ là số bé nhất, số $10$ là số lớn nhất trong các số từ $0$ đến $10$.\n'
+            '- **Mẹo nhớ:** Đầu nhọn của dấu $>$ hoặc $<$ luôn chỉ về phía số bé hơn.',
+  'formulas': [{'category': 'Quy tắc so sánh số trong phạm vi 10',
+                'items': [{'name': 'Lớn hơn',
+                           'formula': '$a > b$ khi $a$ đứng sau $b$ trong dãy số',
+                           'note': 'Ví dụ: $8 > 5$.'},
+                          {'name': 'Bé hơn',
+                           'formula': '$a < b$ khi $a$ đứng trước $b$ trong dãy số',
+                           'note': 'Ví dụ: $3 < 6$.'},
+                          {'name': 'Bằng nhau',
+                           'formula': '$a = b$ khi hai số giống nhau',
+                           'note': 'Ví dụ: $9 = 9$.'}]}],
+  'example': 'a) Điền dấu $>, <, =$ vào chỗ chấm: $7 \\dots 9$.\n'
+             'b) Xếp các số $6, 2, 9, 4$ theo thứ tự từ bé đến lớn.',
+  'example_answer': 'a) Vì $7$ đứng trước $9$ nên $7 < 9$.\nb) Sắp xếp từ bé đến lớn: $2, 4, 6, 9$.',
+  'real_life': 'So sánh số điểm thi đua giữa các tổ, xem bạn nào có nhiều bông hoa điểm tốt nhất.',
+  'quiz': [{'level': 'biet',
+            'type': 'mcq',
+            'q': 'Dấu thích hợp điền vào chỗ chấm $8 \\dots 5$ là:',
+            'options': ['$<$', '$=$', '$+$', '$>$'],
+            'answer': 3,
+            'solution': 'Trong dãy số, $8$ đứng sau $5$ nên $8$ lớn hơn $5$, ta viết $8 > 5$.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Trong các số $3, 8, 1, 6$, số bé nhất là:',
+            'options': ['$1$', '$3$', '$8$', '$6$'],
+            'answer': 0,
+            'solution': 'Vì $1 < 3 < 6 < 8$ nên số bé nhất là $1$.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Theo nội dung trọng tâm của **Bài 4: So sánh số**, công thức hoặc quy tắc nào sau đây biểu '
+                 'diễn đúng **Lớn hơn**?',
+            'options': ['$a < b$ khi $a$ đứng trước $b$ trong dãy số',
+                        '$a > b$ khi $a$ đứng sau $b$ trong dãy số',
+                        '$a = b$ khi hai số giống nhau',
+                        '$0, 1, 2, 3, 4, 5$'],
+            'answer': 1,
+            'solution': 'Theo bảng công thức trọng tâm của Bài 4: So sánh số, **Lớn hơn** được xác định bởi: '
+                        '$a > b$ khi $a$ đứng sau $b$ trong dãy số. (Ví dụ: $8 > 5$.)'},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Trong **Bài 4: So sánh số**, nội dung/biểu thức $a < b$ khi $a$ đứng trước $b$ trong dãy '
+                 'số là quy tắc hoặc công thức của mục nào sau đây?',
+            'options': ['Lớn hơn', 'Bằng nhau', 'Bé hơn', 'Dãy số từ 0 đến 5'],
+            'answer': 2,
+            'solution': 'Trong Bài 4: So sánh số, biểu thức/quy tắc $a < b$ khi $a$ đứng trước $b$ trong dãy '
+                        'số chính là nội dung của **Bé hơn**.'},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Các số $7, 2, 10, 5$ viết theo thứ tự từ bé đến lớn là:',
+            'options': ['$10, 7, 5, 2$', '$2, 7, 5, 10$', '$5, 2, 7, 10$', '$2, 5, 7, 10$'],
+            'answer': 3,
+            'solution': 'So sánh: $2 < 5 < 7 < 10$, nên thứ tự từ bé đến lớn là $2, 5, 7, 10$.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Khi học **Bài 4: So sánh số** (Chủ đề 1: Các số từ 0 đến 10), khẳng định nào sau đây phản '
+                 'ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
+            'options': ['Nhận biết và sử dụng đúng các dấu $>$, $<$, $=$ khi so sánh hai số trong phạm vi '
+                        '$10$.',
+                        'Đếm, đọc, viết được các số $0, 1, 2, 3, 4, 5$.',
+                        'Nhận biết được số $0$ dùng để chỉ không có đồ vật nào.',
+                        'Nhận biết thứ tự các số từ $0$ đến $5$.'],
+            'answer': 0,
+            'solution': 'Theo yêu cầu cần đạt của Bài 4: So sánh số: Nhận biết và sử dụng đúng các dấu $>$, '
+                        '$<$, $=$ khi so sánh hai số trong phạm vi $10$.'},
+           {'level': 'hieu',
+            'type': 'tf',
+            'q': 'Nhận định: “Số $0$ bé hơn tất cả các số $1, 2, 3, \\dots, 10$.”',
+            'answer': True,
+            'solution': 'Số $0$ đứng đầu tiên trong dãy số từ $0$ đến $10$ nên bé hơn mọi số đứng sau nó. '
+                        'Nhận định Đúng.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'tf',
+            'q': 'Trong **Bài 4: So sánh số**, quy tắc **Lớn hơn** được xác định bởi $a > b$ khi $a$ đứng '
+                 'sau $b$ trong dãy số và áp dụng trực tiếp vào bài toán: “a) Điền dấu $>, <, =$ vào chỗ '
+                 'chấm: $7 \\dots 9$. b) Xếp các số $6, 2, 9, 4$ theo thứ tự từ bé đến lớn.”. Đúng hay sai?',
+            'answer': True,
+            'solution': 'Khẳng định **Đúng**. Quy tắc **Lớn hơn** ($a > b$ khi $a$ đứng sau $b$ trong dãy '
+                        'số) là kiến thức cốt lõi của Bài 4: So sánh số. a) Vì $7$ đứng trước $9$ nên $7 < '
+                        '9$. b) Sắp xếp từ bé đến lớn: $2, 4, 6, 9$.'},
+           {'level': 'vandung',
+            'type': 'mcq',
+            'q': 'Vận dụng kiến thức **Bài 4: So sánh số** để giải quyết tình huống sau: a) Điền dấu $>, <, '
+                 '=$ vào chỗ chấm: $7 \\dots 9$.\n'
+                 'b) Xếp các số $6, 2, 9, 4$ theo thứ tự từ bé đến lớn. Kết quả và hướng giải nào dưới đây '
+                 'là **đúng**?',
+            'options': ['Đếm số quyển vở: $1, 2, 3, 4$ nên viết số $4$. Trong hộp không có bút nào nên viết '
+                        'số $0$.',
+                        'a) Vì $7$ đứng trước $9$ nên $7 < 9$. b) Sắp xếp từ bé đến lớn: $2, 4, 6, 9$.',
+                        'Đếm tiếp sau $7$ là $8$, sau $9$ là $10$. Dãy số đầy đủ là $6, 7, 8, 9, 10$.',
+                        'Mỗi bạn thỏ nhận $1$ củ cà rốt thì còn $1$ bạn thỏ chưa có cà rốt ($5 > 4$). Vậy số '
+                        'thỏ **nhiều hơn** số cà rốt.'],
+            'answer': 1,
+            'solution': 'Lời giải chi tiết theo Bài 4: So sánh số: a) Vì $7$ đứng trước $9$ nên $7 < 9$.\n'
+                        'b) Sắp xếp từ bé đến lớn: $2, 4, 6, 9$.'},
+           {'level': 'vandung',
+            'type': 'short',
+            'q': 'Em hãy tìm số tự nhiên lớn hơn $7$ nhưng bé hơn $9$.',
+            'answer': ['8'],
+            'unit': None,
+            'solution': 'Trên dãy số $7, 8, 9$, số lớn hơn $7$ và bé hơn $9$ là số $8$.',
+            'alt': None,
+            'note': None}]},
+ {'topic': 'l1-cd01-cac-so-tu-0-den-10',
+  'context_title': 'Chủ đề 1: Các số từ 0 đến 10',
+  'context': 'SGK Toán 1 · Chủ đề 1: Đếm, đọc, viết, so sánh và tách – gộp các số từ 0 đến 10.',
+  'title': 'Bài 5: Mấy và mấy (Luyện tập chung Chủ đề 1)',
+  'icon': '🧩',
+  'description': 'Tách một số thành hai phần và gộp hai phần thành một số trong phạm vi 10.',
+  'requirements': ['Nhận biết được cấu tạo số (“mấy và mấy”) thông qua thao tác tách – gộp đồ vật.',
+                   'Nêu được các cách tách – gộp các số từ $2$ đến $10$.',
+                   'Vận dụng kiến thức đếm, so sánh, tách – gộp để giải bài tập tổng hợp Chủ đề 1.'],
+  'definition': '**Mấy và mấy** là cách nói về cấu tạo của một số: một nhóm đồ vật có thể **tách** thành hai '
+                'phần, và khi **gộp** hai phần đó lại ta được số lượng ban đầu. Ví dụ: $5$ gồm $2$ và $3$; '
+                'gộp $2$ và $3$ được $5$.',
+  'theory': '- **Tách số:** $6$ gồm $1$ và $5$; $2$ và $4$; hoặc $3$ và $3$.\n'
+            '- **Gộp số:** Gộp $4$ và $3$ được $7$; gộp $5$ và $5$ được $10$.\n'
+            '- Nắm vững cấu tạo số (đặc biệt là các cặp số gộp thành $10$: $1$ và $9$, $2$ và $8$, $3$ và '
+            '$7$, $4$ và $6$, $5$ và $5$) là nền tảng để học phép cộng, phép trừ.',
+  'formulas': [{'category': 'Cấu tạo một số thông dụng (Mấy và mấy)',
+                'items': [{'name': 'Số 5', 'formula': '$5$ gồm $1$ và $4$; $2$ và $3$'},
+                          {'name': 'Số 8',
+                           'formula': '$8$ gồm $1$ và $7$; $2$ và $6$; $3$ và $5$; $4$ và $4$'},
+                          {'name': 'Số 10',
+                           'formula': '$10$ gồm $1$ và $9$; $2$ và $8$; $3$ và $7$; $4$ và $6$; $5$ và '
+                                      '$5$'}]}],
+  'example': 'Mẹ có $9$ cái bánh, mẹ xếp vào đĩa thứ nhất $4$ cái bánh. Hỏi đĩa thứ hai có mấy cái bánh?',
+  'example_answer': 'Vì $9$ gồm $4$ và $5$ nên đĩa thứ hai có $5$ cái bánh.',
+  'real_life': 'Chia kẹo hoặc chia bút màu thành hai hộp nhỏ cho hai anh em.',
+  'quiz': [{'level': 'biet',
+            'type': 'mcq',
+            'q': 'Gộp $3$ quả bóng và $4$ quả bóng được mấy quả bóng?',
+            'options': ['$7$', '$6$', '$8$', '$5$'],
+            'answer': 0,
+            'solution': 'Gộp $3$ và $4$ được $7$ quả bóng.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Số $6$ gồm $2$ và mấy?',
+            'options': ['$3$', '$4$', '$5$', '$6$'],
+            'answer': 1,
+            'solution': 'Từ $2$ đếm thêm $3, 4, 5, 6$ (đếm thêm $4$ lần). Vậy $6$ gồm $2$ và $4$.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Theo nội dung trọng tâm của **Bài 5: Mấy và mấy (Luyện tập chung Chủ đề 1)**, công thức '
+                 'hoặc quy tắc nào sau đây biểu diễn đúng **Số 5**?',
+            'options': ['$8$ gồm $1$ và $7$; $2$ và $6$; $3$ và $5$; $4$ và $4$',
+                        '$10$ gồm $1$ và $9$; $2$ và $8$; $3$ và $7$; $4$ và $6$; $5$ và $5$',
+                        '$5$ gồm $1$ và $4$; $2$ và $3$',
+                        '$0, 1, 2, 3, 4, 5$'],
+            'answer': 2,
+            'solution': 'Theo bảng công thức trọng tâm của Bài 5: Mấy và mấy (Luyện tập chung Chủ đề 1), '
+                        '**Số 5** được xác định bởi: $5$ gồm $1$ và $4$; $2$ và $3$.'},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Trong **Bài 5: Mấy và mấy (Luyện tập chung Chủ đề 1)**, nội dung/biểu thức $8$ gồm $1$ và '
+                 '$7$; $2$ và $6$; $3$ và $5$; $4$ và $4$ là quy tắc hoặc công thức của mục nào sau đây?',
+            'options': ['Số 5', 'Số 10', 'Dãy số từ 0 đến 5', 'Số 8'],
+            'answer': 3,
+            'solution': 'Trong Bài 5: Mấy và mấy (Luyện tập chung Chủ đề 1), biểu thức/quy tắc $8$ gồm $1$ '
+                        'và $7$; $2$ và $6$; $3$ và $5$; $4$ và $4$ chính là nội dung của **Số 8**.'},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Số $8$ gồm $3$ và số nào dưới đây?',
+            'options': ['$5$', '$4$', '$6$', '$2$'],
+            'answer': 0,
+            'solution': 'Ta có $8$ gồm $3$ và $5$ (gộp $3$ và $5$ được $8$).',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Khi học **Bài 5: Mấy và mấy (Luyện tập chung Chủ đề 1)** (Chủ đề 1: Các số từ 0 đến 10), '
+                 'khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
+            'options': ['Đếm, đọc, viết được các số $0, 1, 2, 3, 4, 5$.',
+                        'Nhận biết được cấu tạo số (“mấy và mấy”) thông qua thao tác tách – gộp đồ vật.',
+                        'Nhận biết được số $0$ dùng để chỉ không có đồ vật nào.',
+                        'Nhận biết thứ tự các số từ $0$ đến $5$.'],
+            'answer': 1,
+            'solution': 'Theo yêu cầu cần đạt của Bài 5: Mấy và mấy (Luyện tập chung Chủ đề 1): Nhận biết '
+                        'được cấu tạo số (“mấy và mấy”) thông qua thao tác tách – gộp đồ vật.'},
+           {'level': 'hieu',
+            'type': 'tf',
+            'q': 'Nhận định: “Số $10$ gồm $4$ và $6$, hoặc gồm $5$ và $5$.”',
+            'answer': True,
+            'solution': 'Gộp $4$ và $6$ được $10$, gộp $5$ và $5$ cũng được $10$. Nhận định Đúng.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'tf',
+            'q': 'Trong **Bài 5: Mấy và mấy (Luyện tập chung Chủ đề 1)**, quy tắc **Số 5** được xác định bởi '
+                 '$5$ gồm $1$ và $4$; $2$ và $3$ và áp dụng trực tiếp vào bài toán: “Mẹ có $9$ cái bánh, mẹ '
+                 'xếp vào đĩa thứ nhất $4$ cái bánh. Hỏi đĩa thứ hai có mấy cái bánh?”. Đúng hay sai?',
+            'answer': True,
+            'solution': 'Khẳng định **Đúng**. Quy tắc **Số 5** ($5$ gồm $1$ và $4$; $2$ và $3$) là kiến thức '
+                        'cốt lõi của Bài 5: Mấy và mấy (Luyện tập chung Chủ đề 1). Vì $9$ gồm $4$ và $5$ nên '
+                        'đĩa thứ hai có $5$ cái bánh.'},
+           {'level': 'vandung',
+            'type': 'mcq',
+            'q': 'Vận dụng kiến thức **Bài 5: Mấy và mấy (Luyện tập chung Chủ đề 1)** để giải quyết tình '
+                 'huống sau: Mẹ có $9$ cái bánh, mẹ xếp vào đĩa thứ nhất $4$ cái bánh. Hỏi đĩa thứ hai có '
+                 'mấy cái bánh? Kết quả và hướng giải nào dưới đây là **đúng**?',
+            'options': ['Đếm số quyển vở: $1, 2, 3, 4$ nên viết số $4$. Trong hộp không có bút nào nên viết '
+                        'số $0$.',
+                        'Đếm tiếp sau $7$ là $8$, sau $9$ là $10$. Dãy số đầy đủ là $6, 7, 8, 9, 10$.',
+                        'Vì $9$ gồm $4$ và $5$ nên đĩa thứ hai có $5$ cái bánh.',
+                        'Mỗi bạn thỏ nhận $1$ củ cà rốt thì còn $1$ bạn thỏ chưa có cà rốt ($5 > 4$). Vậy số '
+                        'thỏ **nhiều hơn** số cà rốt.'],
+            'answer': 2,
+            'solution': 'Lời giải chi tiết theo Bài 5: Mấy và mấy (Luyện tập chung Chủ đề 1): Vì $9$ gồm $4$ '
+                        'và $5$ nên đĩa thứ hai có $5$ cái bánh.'},
+           {'level': 'vandung',
+            'type': 'short',
+            'q': 'Lan có $9$ bông hoa, Lan cắm vào lọ xanh $4$ bông hoa, số hoa còn lại cắm vào lọ đỏ. Hỏi '
+                 'lọ đỏ có mấy bông hoa?',
+            'answer': ['5'],
+            'unit': None,
+            'solution': 'Vì $9$ gồm $4$ và $5$ nên lọ đỏ có $5$ bông hoa.',
+            'alt': None,
+            'note': None}]},
+ {'topic': 'l1-cd02-hinh-phang',
+  'context_title': 'Chủ đề 2: Làm quen với một số hình phẳng',
+  'context': 'SGK Toán 1 · Chủ đề 2: Nhận dạng hình vuông, hình tròn, hình tam giác, hình chữ nhật; lắp '
+             'ghép, xếp hình.',
+  'title': 'Bài 7: Hình vuông, hình tròn, hình tam giác, hình chữ nhật',
+  'icon': '🔷',
+  'description': 'Nhận dạng và phân biệt hình vuông, hình tròn, hình tam giác, hình chữ nhật qua đồ vật thật '
+                 'và mô hình.',
+  'requirements': ['Nhận dạng được hình vuông, hình tròn, hình tam giác, hình chữ nhật.',
+                   'Phân biệt được các hình dựa vào số cạnh và đặc điểm đường bao.',
+                   'Liên hệ được với các đồ vật quen thuộc trong cuộc sống.'],
+  'definition': '- **Hình vuông:** có $4$ cạnh thẳng dài bằng nhau.\n'
+                '- **Hình chữ nhật:** có $4$ cạnh thẳng, gồm $2$ cạnh dài bằng nhau và $2$ cạnh ngắn bằng '
+                'nhau.\n'
+                '- **Hình tam giác:** có $3$ cạnh thẳng.\n'
+                '- **Hình tròn:** có đường bao cong khép kín, không có cạnh thẳng và không có góc.',
+  'theory': '- Một hình phẳng dù được tô màu khác nhau, có kích thước to hay nhỏ, đặt thẳng hay xoay nghiêng '
+            'thì tên gọi của hình vẫn không thay đổi.\n'
+            '- Đồ vật thực tế: khăn mùi soa, viên gạch hoa (hình vuông); mặt đồng hồ treo tường, chiếc đĩa '
+            '(hình tròn); cờ đuôi nheo, biển báo giao thông (hình tam giác); mặt bảng lớp, bìa quyển vở '
+            '(hình chữ nhật).',
+  'formulas': [{'category': 'Đặc điểm nhận dạng hình phẳng',
+                'items': [{'name': 'Hình tam giác',
+                           'formula': 'Có $3$ cạnh thẳng',
+                           'note': 'Ví dụ: biển báo nguy hiểm.'},
+                          {'name': 'Hình vuông',
+                           'formula': 'Có $4$ cạnh thẳng dài bằng nhau',
+                           'note': 'Ví dụ: mặt viên gạch hoa.'},
+                          {'name': 'Hình chữ nhật',
+                           'formula': 'Có $4$ cạnh ($2$ cạnh dài, $2$ cạnh ngắn)',
+                           'note': 'Ví dụ: mặt bảng lớp, cánh cửa.'},
+                          {'name': 'Hình tròn',
+                           'formula': 'Đường cong khép kín, $0$ cạnh thẳng',
+                           'note': 'Ví dụ: mặt đồng hồ tròn, đĩa tròn.'}]}],
+  'example': 'Quan sát mặt bảng lớp học và chiếc đĩa tròn. Mỗi vật có dạng hình gì?',
+  'example_answer': 'Mặt bảng lớp học có dạng **hình chữ nhật** (có $2$ cạnh dài và $2$ cạnh ngắn); chiếc '
+                    'đĩa có dạng **hình tròn**.',
+  'real_life': 'Nhận biết biển báo giao thông hình tam giác, hình tròn trên đường phố và các đồ dùng trong '
+               'gia đình.',
+  'quiz': [{'level': 'biet',
+            'type': 'mcq',
+            'q': 'Hình nào dưới đây có $3$ cạnh?',
+            'options': ['Hình vuông', 'Hình tam giác', 'Hình tròn', 'Hình chữ nhật'],
+            'answer': 1,
+            'solution': 'Hình tam giác là hình có $3$ cạnh.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Mặt chiếc đồng hồ treo tường loại tròn có dạng hình gì?',
+            'options': ['Hình vuông', 'Hình tam giác', 'Hình tròn', 'Hình chữ nhật'],
+            'answer': 2,
+            'solution': 'Mặt đồng hồ là đường cong khép kín, không có cạnh thẳng nên có dạng hình tròn.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Theo nội dung trọng tâm của **Bài 7: Hình vuông, hình tròn, hình tam giác, hình chữ '
+                 'nhật**, công thức hoặc quy tắc nào sau đây biểu diễn đúng **Hình tam giác**?',
+            'options': ['Có $4$ cạnh thẳng dài bằng nhau',
+                        'Có $4$ cạnh ($2$ cạnh dài, $2$ cạnh ngắn)',
+                        'Đường cong khép kín, $0$ cạnh thẳng',
+                        'Có $3$ cạnh thẳng'],
+            'answer': 3,
+            'solution': 'Theo bảng công thức trọng tâm của Bài 7: Hình vuông, hình tròn, hình tam giác, hình '
+                        'chữ nhật, **Hình tam giác** được xác định bởi: Có $3$ cạnh thẳng. (Ví dụ: biển báo '
+                        'nguy hiểm.)'},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Trong **Bài 7: Hình vuông, hình tròn, hình tam giác, hình chữ nhật**, nội dung/biểu thức '
+                 'Có $4$ cạnh thẳng dài bằng nhau là quy tắc hoặc công thức của mục nào sau đây?',
+            'options': ['Hình vuông', 'Hình tam giác', 'Hình chữ nhật', 'Hình tròn'],
+            'answer': 0,
+            'solution': 'Trong Bài 7: Hình vuông, hình tròn, hình tam giác, hình chữ nhật, biểu thức/quy tắc '
+                        'Có $4$ cạnh thẳng dài bằng nhau chính là nội dung của **Hình vuông**.'},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Hình vuông và hình chữ nhật giống nhau ở điểm nào?',
+            'options': ['Đều không có cạnh', 'Đều có $4$ cạnh', 'Đều có $3$ cạnh', 'Đều là đường cong'],
+            'answer': 1,
+            'solution': 'Cả hình vuông và hình chữ nhật đều có $4$ cạnh thẳng.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Khi học **Bài 7: Hình vuông, hình tròn, hình tam giác, hình chữ nhật** (Chủ đề 2: Làm quen '
+                 'với một số hình phẳng), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản '
+                 'chất kiến thức của bài?',
+            'options': ['Đếm, đọc, viết được các số $0, 1, 2, 3, 4, 5$.',
+                        'Nhận biết được số $0$ dùng để chỉ không có đồ vật nào.',
+                        'Nhận dạng được hình vuông, hình tròn, hình tam giác, hình chữ nhật.',
+                        'Nhận biết thứ tự các số từ $0$ đến $5$.'],
+            'answer': 2,
+            'solution': 'Theo yêu cầu cần đạt của Bài 7: Hình vuông, hình tròn, hình tam giác, hình chữ '
+                        'nhật: Nhận dạng được hình vuông, hình tròn, hình tam giác, hình chữ nhật.'},
+           {'level': 'hieu',
+            'type': 'tf',
+            'q': 'Nhận định: “Nếu xoay nghiêng một hình tam giác thì nó không còn là hình tam giác nữa.”',
+            'answer': False,
+            'solution': 'Khi xoay nghiêng, hình đó vẫn có $3$ cạnh thẳng nên vẫn là hình tam giác. Nhận định '
+                        'Sai.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'tf',
+            'q': 'Trong **Bài 7: Hình vuông, hình tròn, hình tam giác, hình chữ nhật**, quy tắc **Hình tam '
+                 'giác** được xác định bởi Có $3$ cạnh thẳng và áp dụng trực tiếp vào bài toán: “Quan sát '
+                 'mặt bảng lớp học và chiếc đĩa tròn. Mỗi vật có dạng hình gì?”. Đúng hay sai?',
+            'answer': True,
+            'solution': 'Khẳng định **Đúng**. Quy tắc **Hình tam giác** (Có $3$ cạnh thẳng) là kiến thức cốt '
+                        'lõi của Bài 7: Hình vuông, hình tròn, hình tam giác, hình chữ nhật. Mặt bảng lớp '
+                        'học có dạng **hình chữ nhật** (có $2$ cạnh dài và $2$ cạnh ngắn); chiếc đĩa có dạng '
+                        '**hình tròn**.'},
+           {'level': 'vandung',
+            'type': 'mcq',
+            'q': 'Vận dụng kiến thức **Bài 7: Hình vuông, hình tròn, hình tam giác, hình chữ nhật** để giải '
+                 'quyết tình huống sau: Quan sát mặt bảng lớp học và chiếc đĩa tròn. Mỗi vật có dạng hình '
+                 'gì? Kết quả và hướng giải nào dưới đây là **đúng**?',
+            'options': ['Đếm số quyển vở: $1, 2, 3, 4$ nên viết số $4$. Trong hộp không có bút nào nên viết '
+                        'số $0$.',
+                        'Đếm tiếp sau $7$ là $8$, sau $9$ là $10$. Dãy số đầy đủ là $6, 7, 8, 9, 10$.',
+                        'Mỗi bạn thỏ nhận $1$ củ cà rốt thì còn $1$ bạn thỏ chưa có cà rốt ($5 > 4$). Vậy số '
+                        'thỏ **nhiều hơn** số cà rốt.',
+                        'Mặt bảng lớp học có dạng **hình chữ nhật** (có $2$ cạnh dài và $2$ cạnh ngắn); '
+                        'chiếc đĩa có dạng **hình tròn**.'],
+            'answer': 3,
+            'solution': 'Lời giải chi tiết theo Bài 7: Hình vuông, hình tròn, hình tam giác, hình chữ nhật: '
+                        'Mặt bảng lớp học có dạng **hình chữ nhật** (có $2$ cạnh dài và $2$ cạnh ngắn); '
+                        'chiếc đĩa có dạng **hình tròn**.'},
+           {'level': 'vandung',
+            'type': 'short',
+            'q': 'Một hình vuông có tất cả bao nhiêu cạnh?',
+            'answer': ['4'],
+            'unit': None,
+            'solution': 'Theo đặc điểm nhận dạng, hình vuông có $4$ cạnh dài bằng nhau.',
+            'alt': None,
+            'note': None}]},
+ {'topic': 'l1-cd02-hinh-phang',
+  'context_title': 'Chủ đề 2: Làm quen với một số hình phẳng',
+  'context': 'SGK Toán 1 · Chủ đề 2: Nhận dạng hình vuông, hình tròn, hình tam giác, hình chữ nhật; lắp '
+             'ghép, xếp hình.',
+  'title': 'Bài 8: Thực hành lắp ghép, xếp hình',
+  'icon': '🧱',
+  'description': 'Sử dụng que tính và các tấm bìa hình phẳng để xếp, ghép thành những hình mới.',
+  'requirements': ['Dùng que tính xếp được hình tam giác, hình vuông, hình chữ nhật.',
+                   'Ghép được hai hay nhiều hình phẳng thành một hình mới theo mẫu.',
+                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Xếp hình tam giác** (Cần $3$ que tính cho '
+                   '$3$ cạnh) vào giải bài tập.'],
+  'definition': '**Lắp ghép, xếp hình** là việc dùng các que tính hoặc ghép các mảnh bìa hình vuông, hình '
+                'tam giác, hình chữ nhật, hình tròn để tạo thành một hình phẳng mới hoặc các hình quen thuộc '
+                '(ngôi nhà, chiếc thuyền, con cá).',
+  'theory': '- Dùng các que tính dài bằng nhau:\n'
+            '  + Cần ít nhất $3$ que tính để xếp $1$ hình tam giác.\n'
+            '  + Cần ít nhất $4$ que tính để xếp $1$ hình vuông.\n'
+            '- Ghép hình:\n'
+            '  + Ghép $2$ hình tam giác vuông cân bằng nhau có thể tạo thành $1$ hình vuông hoặc $1$ hình '
+            'tam giác lớn.\n'
+            '  + Ghép $2$ hình vuông bằng nhau đặt sát cạnh nhau được $1$ hình chữ nhật.',
+  'formulas': [{'category': 'Quy tắc xếp và ghép hình',
+                'items': [{'name': 'Xếp hình tam giác', 'formula': 'Cần $3$ que tính cho $3$ cạnh'},
+                          {'name': 'Xếp hình vuông',
+                           'formula': 'Cần $4$ que tính dài bằng nhau cho $4$ cạnh'},
+                          {'name': 'Ghép 2 hình vuông',
+                           'formula': '$2$ hình vuông bằng nhau ghép sát cạnh $\\rightarrow 1$ hình chữ '
+                                      'nhật'}]}],
+  'example': 'Cắt một tờ giấy hình vuông theo đường chéo nối hai góc đối diện thì thu được mấy hình tam '
+             'giác?',
+  'example_answer': 'Đường cắt chia hình vuông thành $2$ phần bằng nhau, mỗi phần có $3$ cạnh nên ta thu '
+                    'được $2$ hình tam giác.',
+  'real_life': 'Chơi bộ xếp hình Tangram, ghép gạch lát nền, gấp và cắt dán thủ công.',
+  'quiz': [{'level': 'biet',
+            'type': 'mcq',
+            'q': 'Dùng các que tính dài bằng nhau, cần ít nhất mấy que tính để xếp được $1$ hình tam giác?',
+            'options': ['$2$', '$4$', '$3$', '$5$'],
+            'answer': 2,
+            'solution': 'Hình tam giác có $3$ cạnh nên cần ít nhất $3$ que tính.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Ghép $2$ hình vuông bằng nhau sát cạnh nhau thì ta được một hình gì?',
+            'options': ['Hình tròn', 'Hình tam giác', 'Hình vuông nhỏ hơn', 'Hình chữ nhật'],
+            'answer': 3,
+            'solution': 'Ghép $2$ hình vuông bằng nhau sát cạnh nhau sẽ tạo thành $1$ hình chữ nhật.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Theo nội dung trọng tâm của **Bài 8: Thực hành lắp ghép, xếp hình**, công thức hoặc quy '
+                 'tắc nào sau đây biểu diễn đúng **Xếp hình tam giác**?',
+            'options': ['Cần $3$ que tính cho $3$ cạnh',
+                        'Cần $4$ que tính dài bằng nhau cho $4$ cạnh',
+                        '$2$ hình vuông bằng nhau ghép sát cạnh $\\rightarrow 1$ hình chữ nhật',
+                        '$0, 1, 2, 3, 4, 5$'],
+            'answer': 0,
+            'solution': 'Theo bảng công thức trọng tâm của Bài 8: Thực hành lắp ghép, xếp hình, **Xếp hình '
+                        'tam giác** được xác định bởi: Cần $3$ que tính cho $3$ cạnh.'},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Trong **Bài 8: Thực hành lắp ghép, xếp hình**, nội dung/biểu thức Cần $4$ que tính dài '
+                 'bằng nhau cho $4$ cạnh là quy tắc hoặc công thức của mục nào sau đây?',
+            'options': ['Xếp hình tam giác', 'Xếp hình vuông', 'Ghép 2 hình vuông', 'Dãy số từ 0 đến 5'],
+            'answer': 1,
+            'solution': 'Trong Bài 8: Thực hành lắp ghép, xếp hình, biểu thức/quy tắc Cần $4$ que tính dài '
+                        'bằng nhau cho $4$ cạnh chính là nội dung của **Xếp hình vuông**.'},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Cắt một tờ giấy hình vuông theo đường thẳng nối hai góc đối diện, ta được hai hình gì?',
+            'options': ['$2$ hình tròn', '$2$ hình chữ nhật', '$2$ hình tam giác', '$2$ hình vuông'],
+            'answer': 2,
+            'solution': 'Mỗi mảnh giấy sau khi cắt có $3$ cạnh nên là $2$ hình tam giác.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Khi học **Bài 8: Thực hành lắp ghép, xếp hình** (Chủ đề 2: Làm quen với một số hình '
+                 'phẳng), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của '
+                 'bài?',
+            'options': ['Đếm, đọc, viết được các số $0, 1, 2, 3, 4, 5$.',
+                        'Nhận biết được số $0$ dùng để chỉ không có đồ vật nào.',
+                        'Nhận biết thứ tự các số từ $0$ đến $5$.',
+                        'Dùng que tính xếp được hình tam giác, hình vuông, hình chữ nhật.'],
+            'answer': 3,
+            'solution': 'Theo yêu cầu cần đạt của Bài 8: Thực hành lắp ghép, xếp hình: Dùng que tính xếp '
+                        'được hình tam giác, hình vuông, hình chữ nhật.'},
+           {'level': 'hieu',
+            'type': 'tf',
+            'q': 'Nhận định: “Chỉ cần $3$ que tính dài bằng nhau là xếp được một hình vuông.”',
+            'answer': False,
+            'solution': 'Hình vuông có $4$ cạnh nên cần ít nhất $4$ que tính, $3$ que tính chỉ xếp được hình '
+                        'tam giác. Nhận định Sai.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'tf',
+            'q': 'Trong **Bài 8: Thực hành lắp ghép, xếp hình**, quy tắc **Xếp hình tam giác** được xác định '
+                 'bởi Cần $3$ que tính cho $3$ cạnh và áp dụng trực tiếp vào bài toán: “Cắt một tờ giấy hình '
+                 'vuông theo đường chéo nối hai góc đối diện thì thu được mấy hình tam giác?”. Đúng hay sai?',
+            'answer': True,
+            'solution': 'Khẳng định **Đúng**. Quy tắc **Xếp hình tam giác** (Cần $3$ que tính cho $3$ cạnh) '
+                        'là kiến thức cốt lõi của Bài 8: Thực hành lắp ghép, xếp hình. Đường cắt chia hình '
+                        'vuông thành $2$ phần bằng nhau, mỗi phần có $3$ cạnh nên ta thu được $2$ hình tam '
+                        'giác.'},
+           {'level': 'vandung',
+            'type': 'mcq',
+            'q': 'Vận dụng kiến thức **Bài 8: Thực hành lắp ghép, xếp hình** để giải quyết tình huống sau: '
+                 'Cắt một tờ giấy hình vuông theo đường chéo nối hai góc đối diện thì thu được mấy hình tam '
+                 'giác? Kết quả và hướng giải nào dưới đây là **đúng**?',
+            'options': ['Đường cắt chia hình vuông thành $2$ phần bằng nhau, mỗi phần có $3$ cạnh nên ta thu '
+                        'được $2$ hình tam giác.',
+                        'Đếm số quyển vở: $1, 2, 3, 4$ nên viết số $4$. Trong hộp không có bút nào nên viết '
+                        'số $0$.',
+                        'Đếm tiếp sau $7$ là $8$, sau $9$ là $10$. Dãy số đầy đủ là $6, 7, 8, 9, 10$.',
+                        'Mỗi bạn thỏ nhận $1$ củ cà rốt thì còn $1$ bạn thỏ chưa có cà rốt ($5 > 4$). Vậy số '
+                        'thỏ **nhiều hơn** số cà rốt.'],
+            'answer': 0,
+            'solution': 'Lời giải chi tiết theo Bài 8: Thực hành lắp ghép, xếp hình: Đường cắt chia hình '
+                        'vuông thành $2$ phần bằng nhau, mỗi phần có $3$ cạnh nên ta thu được $2$ hình tam '
+                        'giác.'},
+           {'level': 'vandung',
+            'type': 'short',
+            'q': 'Bạn Hà dùng que tính xếp $1$ hình tam giác và $1$ hình vuông rời nhau (không dùng chung '
+                 'cạnh nào). Hỏi Hà cần tất cả bao nhiêu que tính?',
+            'answer': ['7'],
+            'unit': None,
+            'solution': 'Hình tam giác cần $3$ que tính, hình vuông cần $4$ que tính. Đếm gộp $3$ và $4$ '
+                        'được $7$ que tính.',
+            'alt': None,
+            'note': None}]},
+ {'topic': 'l1-cd02-hinh-phang',
+  'context_title': 'Chủ đề 2: Làm quen với một số hình phẳng',
+  'context': 'SGK Toán 1 · Chủ đề 2: Nhận dạng hình vuông, hình tròn, hình tam giác, hình chữ nhật; lắp '
+             'ghép, xếp hình.',
+  'title': 'Bài 9: Luyện tập chung về hình phẳng',
+  'icon': '🎨',
+  'description': 'Đếm số lượng mỗi loại hình phẳng trong hình vẽ phức hợp và tìm quy luật dãy hình.',
+  'requirements': ['Đếm đúng số hình vuông, hình tròn, hình tam giác, hình chữ nhật trong một bức tranh '
+                   'ghép.',
+                   'Nhận biết quy luật lặp lại của một dãy hình phẳng để tìm hình tiếp theo.',
+                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Đếm theo loại** (Đếm từ trên xuống dưới, từ '
+                   'trái sang phải cho từng loại hình) vào giải bài tập.'],
+  'definition': 'Khi đếm hình trong bức tranh ghép, ta đếm lần lượt từng loại hình (từ trên xuống dưới hoặc '
+                'từ trái sang phải) và đánh dấu để không đếm sót hoặc đếm lặp lại.',
+  'theory': '- **Cách đếm hình:** Tách riêng từng yêu cầu: đếm hết hình tròn, rồi đếm hình tam giác, hình '
+            'vuông, hình chữ nhật.\n'
+            '- **Quy luật dãy hình:** Quan sát nhóm hình lặp đi lặp lại. Ví dụ: Vuông – Tròn – Vuông – Tròn '
+            '– $\\dots$ thì nhóm lặp là (Vuông, Tròn), hình tiếp theo sau Tròn sẽ là Vuông.',
+  'formulas': [{'category': 'Kỹ năng đếm hình và tìm quy luật',
+                'items': [{'name': 'Đếm theo loại',
+                           'formula': 'Đếm từ trên xuống dưới, từ trái sang phải cho từng loại hình'},
+                          {'name': 'Dãy hình có quy luật',
+                           'formula': 'Tìm cụm $2$ hoặc $3$ hình lặp lại liên tiếp'}]}],
+  'example': 'Hình ngôi nhà được ghép bởi: mái nhà là $1$ hình tam giác, thân nhà là $1$ hình vuông, $2$ ô '
+             'cửa sổ là $2$ hình vuông nhỏ và $1$ cửa ra vào hình chữ nhật. Có tất cả bao nhiêu hình vuông?',
+  'example_answer': 'Đếm các hình vuông gồm: $1$ hình vuông lớn (thân nhà) và $2$ hình vuông nhỏ (cửa sổ). '
+                    'Tổng cộng có $3$ hình vuông.',
+  'real_life': 'Trang trí đường diềm vở vẽ, xếp gạch lát sân theo quy luật màu sắc và hình dạng.',
+  'quiz': [{'level': 'biet',
+            'type': 'mcq',
+            'q': 'Cho dãy hình lặp lại: ⭕ 🔺 ⭕ 🔺 ⭕ ... Hình tiếp theo vào chỗ chấm là:',
+            'options': ['Hình tròn ⭕', 'Hình vuông 🟦', 'Hình chữ nhật', 'Hình tam giác 🔺'],
+            'answer': 3,
+            'solution': 'Quy luật là cứ $1$ hình tròn đến $1$ hình tam giác. Sau hình tròn ⭕ là hình tam '
+                        'giác 🔺.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Một bức tranh ông mặt trời và đám mây có $1$ hình tròn làm mặt trời và $5$ hình tam giác '
+                 'làm tia nắng. Hỏi có mấy hình tam giác?',
+            'options': ['$5$', '$1$', '$6$', '$4$'],
+            'answer': 0,
+            'solution': 'Đề bài cho biết có $5$ hình tam giác làm tia nắng.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Theo nội dung trọng tâm của **Bài 9: Luyện tập chung về hình phẳng**, công thức hoặc quy '
+                 'tắc nào sau đây biểu diễn đúng **Đếm theo loại**?',
+            'options': ['Tìm cụm $2$ hoặc $3$ hình lặp lại liên tiếp',
+                        'Đếm từ trên xuống dưới, từ trái sang phải cho từng loại hình',
+                        '$0, 1, 2, 3, 4, 5$',
+                        '$0$ chỉ không có đồ vật nào'],
+            'answer': 1,
+            'solution': 'Theo bảng công thức trọng tâm của Bài 9: Luyện tập chung về hình phẳng, **Đếm theo '
+                        'loại** được xác định bởi: Đếm từ trên xuống dưới, từ trái sang phải cho từng loại '
+                        'hình.'},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Trong **Bài 9: Luyện tập chung về hình phẳng**, nội dung/biểu thức Tìm cụm $2$ hoặc $3$ '
+                 'hình lặp lại liên tiếp là quy tắc hoặc công thức của mục nào sau đây?',
+            'options': ['Đếm theo loại', 'Dãy số từ 0 đến 5', 'Dãy hình có quy luật', 'Ý nghĩa số 0'],
+            'answer': 2,
+            'solution': 'Trong Bài 9: Luyện tập chung về hình phẳng, biểu thức/quy tắc Tìm cụm $2$ hoặc $3$ '
+                        'hình lặp lại liên tiếp chính là nội dung của **Dãy hình có quy luật**.'},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Bạn Nam xếp hình chiếc xe gồm: thân xe là $2$ hình chữ nhật, bánh xe là $2$ hình tròn, đầu '
+                 'xe là $1$ hình vuông. Chiếc xe có tất cả bao nhiêu hình phẳng?',
+            'options': ['$4$', '$3$', '$6$', '$5$'],
+            'answer': 3,
+            'solution': 'Đếm tất cả các hình: $2$ hình chữ nhật, $2$ hình tròn và $1$ hình vuông, gộp lại '
+                        'được $5$ hình phẳng.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Khi học **Bài 9: Luyện tập chung về hình phẳng** (Chủ đề 2: Làm quen với một số hình '
+                 'phẳng), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của '
+                 'bài?',
+            'options': ['Đếm đúng số hình vuông, hình tròn, hình tam giác, hình chữ nhật trong một bức tranh '
+                        'ghép.',
+                        'Đếm, đọc, viết được các số $0, 1, 2, 3, 4, 5$.',
+                        'Nhận biết được số $0$ dùng để chỉ không có đồ vật nào.',
+                        'Nhận biết thứ tự các số từ $0$ đến $5$.'],
+            'answer': 0,
+            'solution': 'Theo yêu cầu cần đạt của Bài 9: Luyện tập chung về hình phẳng: Đếm đúng số hình '
+                        'vuông, hình tròn, hình tam giác, hình chữ nhật trong một bức tranh ghép.'},
+           {'level': 'hieu',
+            'type': 'tf',
+            'q': 'Nhận định: “Trong một hình ghép có $3$ hình vuông và $2$ hình tròn thì số hình vuông nhiều '
+                 'hơn số hình tròn.”',
+            'answer': True,
+            'solution': 'Vì $3 > 2$ nên số hình vuông nhiều hơn số hình tròn. Nhận định Đúng.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'tf',
+            'q': 'Trong **Bài 9: Luyện tập chung về hình phẳng**, quy tắc **Đếm theo loại** được xác định '
+                 'bởi Đếm từ trên xuống dưới, từ trái sang phải cho từng loại hình và áp dụng trực tiếp vào '
+                 'bài toán: “Hình ngôi nhà được ghép bởi: mái nhà là $1$ hình tam giác, thân nhà là $1$ hình '
+                 'vuông, $2$ ô cửa sổ là $2$ hình vuông nhỏ và $1$ cửa ra vào...”. Đúng hay sai?',
+            'answer': True,
+            'solution': 'Khẳng định **Đúng**. Quy tắc **Đếm theo loại** (Đếm từ trên xuống dưới, từ trái '
+                        'sang phải cho từng loại hình) là kiến thức cốt lõi của Bài 9: Luyện tập chung về '
+                        'hình phẳng. Đếm các hình vuông gồm: $1$ hình vuông lớn (thân nhà) và $2$ hình vuông '
+                        'nhỏ (cửa sổ). Tổng cộng có $3$ hình vuông.'},
+           {'level': 'vandung',
+            'type': 'mcq',
+            'q': 'Vận dụng kiến thức **Bài 9: Luyện tập chung về hình phẳng** để giải quyết tình huống sau: '
+                 'Hình ngôi nhà được ghép bởi: mái nhà là $1$ hình tam giác, thân nhà là $1$ hình vuông, $2$ '
+                 'ô cửa sổ là $2$ hình vuông nhỏ và $1$ cửa ra vào hình chữ nhật. Có tất cả bao nhiêu hình '
+                 'vuông? Kết quả và hướng giải nào dưới đây là **đúng**?',
+            'options': ['Đếm số quyển vở: $1, 2, 3, 4$ nên viết số $4$. Trong hộp không có bút nào nên viết '
+                        'số $0$.',
+                        'Đếm các hình vuông gồm: $1$ hình vuông lớn (thân nhà) và $2$ hình vuông nhỏ (cửa '
+                        'sổ). Tổng cộng có $3$ hình vuông.',
+                        'Đếm tiếp sau $7$ là $8$, sau $9$ là $10$. Dãy số đầy đủ là $6, 7, 8, 9, 10$.',
+                        'Mỗi bạn thỏ nhận $1$ củ cà rốt thì còn $1$ bạn thỏ chưa có cà rốt ($5 > 4$). Vậy số '
+                        'thỏ **nhiều hơn** số cà rốt.'],
+            'answer': 1,
+            'solution': 'Lời giải chi tiết theo Bài 9: Luyện tập chung về hình phẳng: Đếm các hình vuông '
+                        'gồm: $1$ hình vuông lớn (thân nhà) và $2$ hình vuông nhỏ (cửa sổ). Tổng cộng có $3$ '
+                        'hình vuông.'},
+           {'level': 'vandung',
+            'type': 'short',
+            'q': 'Bạn An dùng que tính xếp $2$ hình tam giác rời nhau (không chung cạnh). Hỏi bạn An đã dùng '
+                 'tất cả bao nhiêu que tính?',
+            'answer': ['6'],
+            'unit': None,
+            'solution': 'Mỗi hình tam giác dùng $3$ que tính. Hai hình tam giác rời nhau dùng $6$ que tính '
+                        '($1, 2, 3, 4, 5, 6$).',
+            'alt': None,
+            'note': None}]},
+ {'topic': 'l1-cd03-cong-tru-pham-vi-10',
+  'context_title': 'Chủ đề 3: Phép cộng, phép trừ trong phạm vi 10',
+  'context': 'SGK Toán 1 · Chủ đề 3: Ý nghĩa, cách tính và bảng cộng, bảng trừ trong phạm vi 10.',
+  'title': 'Bài 10: Phép cộng trong phạm vi 10',
+  'icon': '➕',
+  'description': 'Nhận biết ý nghĩa phép cộng (gộp lại, thêm vào), tính chất đổi chỗ và phép cộng với số 0.',
+  'requirements': ['Nhận biết ý nghĩa của phép cộng là gộp lại hoặc thêm vào.',
+                   'Thực hiện được phép cộng hai số trong phạm vi $10$.',
+                   'Biết tính chất cộng với $0$ ($a + 0 = a$) và đổi chỗ hai số trong phép cộng ($a + b = b '
+                   '+ a$).'],
+  'definition': '**Phép cộng** (ký hiệu dấu $+$) được dùng khi **gộp** hai nhóm đồ vật lại với nhau hoặc '
+                '**thêm vào** một nhóm. Ví dụ: Gộp $3$ quả bóng và $2$ quả bóng được $5$ quả bóng, viết là '
+                '$3 + 2 = 5$ (đọc: ba cộng hai bằng năm).',
+  'theory': '- **Cách tính bằng đếm thêm:** Để tính $5 + 2$, ta bắt đầu từ $5$ đếm thêm $2$ bước: $6, 7$. '
+            'Vậy $5 + 2 = 7$.\n'
+            '- **Dựa vào cấu tạo số (mấy và mấy):** Vì gộp $4$ và $3$ được $7$ nên $4 + 3 = 7$.\n'
+            '- **Số $0$ trong phép cộng:** Bất kỳ số nào cộng với $0$ (hoặc $0$ cộng với số đó) đều bằng '
+            'chính số đó: $4 + 0 = 4$, $0 + 4 = 4$.\n'
+            '- **Tính chất đổi chỗ:** Khi đổi chỗ hai số trong phép cộng thì kết quả không thay đổi: $2 + 6 '
+            '= 6 + 2 = 8$.',
+  'formulas': [{'category': 'Quy tắc phép cộng trong phạm vi 10',
+                'items': [{'name': 'Ý nghĩa phép cộng',
+                           'formula': 'Gộp lại / Thêm vào $\\rightarrow$ dùng dấu $+$',
+                           'note': 'Ví dụ: $3 + 2 = 5$.'},
+                          {'name': 'Cộng với số 0',
+                           'formula': '$a + 0 = 0 + a = a$',
+                           'note': 'Ví dụ: $6 + 0 = 6$; $0 + 9 = 9$.'},
+                          {'name': 'Đổi chỗ hai số',
+                           'formula': '$a + b = b + a$',
+                           'note': 'Ví dụ: $3 + 5 = 5 + 3 = 8$.'}]}],
+  'example': 'Có $4$ con chim đậu trên cành, sau đó có thêm $3$ con chim bay tới. Hỏi trên cành có tất cả '
+             'mấy con chim?',
+  'example_answer': '“Bay tới” là thêm vào nên ta thực hiện phép cộng: $4 + 3 = 7$ (con chim).',
+  'real_life': 'Tính tổng số bút màu khi gộp hộp bút của hai bạn hoặc khi được mẹ mua thêm.',
+  'quiz': [{'level': 'biet',
+            'type': 'mcq',
+            'q': 'Kết quả của phép tính $3 + 4$ là:',
+            'options': ['$7$', '$6$', '$8$', '$5$'],
+            'answer': 0,
+            'solution': 'Đếm thêm $4$ bắt đầu từ $3$: $4, 5, 6, 7$. Vậy $3 + 4 = 7$.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Kết quả của phép tính $5 + 0$ là:',
+            'options': ['$0$', '$5$', '$1$', '$50$'],
+            'answer': 1,
+            'solution': 'Số nào cộng với $0$ cũng bằng chính số đó: $5 + 0 = 5$.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Theo nội dung trọng tâm của **Bài 10: Phép cộng trong phạm vi 10**, công thức hoặc quy tắc '
+                 'nào sau đây biểu diễn đúng **Ý nghĩa phép cộng**?',
+            'options': ['$a + 0 = 0 + a = a$',
+                        '$a + b = b + a$',
+                        'Gộp lại / Thêm vào $\\rightarrow$ dùng dấu $+$',
+                        '$0, 1, 2, 3, 4, 5$'],
+            'answer': 2,
+            'solution': 'Theo bảng công thức trọng tâm của Bài 10: Phép cộng trong phạm vi 10, **Ý nghĩa '
+                        'phép cộng** được xác định bởi: Gộp lại / Thêm vào $\\rightarrow$ dùng dấu $+$. (Ví '
+                        'dụ: $3 + 2 = 5$.)'},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Trong **Bài 10: Phép cộng trong phạm vi 10**, nội dung/biểu thức $a + 0 = 0 + a = a$ là '
+                 'quy tắc hoặc công thức của mục nào sau đây?',
+            'options': ['Ý nghĩa phép cộng', 'Đổi chỗ hai số', 'Dãy số từ 0 đến 5', 'Cộng với số 0'],
+            'answer': 3,
+            'solution': 'Trong Bài 10: Phép cộng trong phạm vi 10, biểu thức/quy tắc $a + 0 = 0 + a = a$ '
+                        'chính là nội dung của **Cộng với số 0**.'},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Có $4$ quả bóng đỏ, gộp thêm $2$ quả bóng xanh. Phép tính thích hợp để tìm tổng số quả '
+                 'bóng là:',
+            'options': ['$4 + 2 = 6$', '$4 - 2 = 2$', '$2 + 2 = 4$', '$4 + 0 = 4$'],
+            'answer': 0,
+            'solution': 'Gộp thêm $2$ quả bóng ta dùng phép cộng: $4 + 2 = 6$.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Khi học **Bài 10: Phép cộng trong phạm vi 10** (Chủ đề 3: Phép cộng, phép trừ trong phạm '
+                 'vi 10), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của '
+                 'bài?',
+            'options': ['Đếm, đọc, viết được các số $0, 1, 2, 3, 4, 5$.',
+                        'Nhận biết ý nghĩa của phép cộng là gộp lại hoặc thêm vào.',
+                        'Nhận biết được số $0$ dùng để chỉ không có đồ vật nào.',
+                        'Nhận biết thứ tự các số từ $0$ đến $5$.'],
+            'answer': 1,
+            'solution': 'Theo yêu cầu cần đạt của Bài 10: Phép cộng trong phạm vi 10: Nhận biết ý nghĩa của '
+                        'phép cộng là gộp lại hoặc thêm vào.'},
+           {'level': 'hieu',
+            'type': 'tf',
+            'q': 'Nhận định: “$2 + 7 = 7 + 2$.”',
+            'answer': True,
+            'solution': 'Ta có $2 + 7 = 9$ và $7 + 2 = 9$. Khi đổi chỗ các số trong phép cộng, kết quả không '
+                        'đổi nên nhận định Đúng.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'tf',
+            'q': 'Trong **Bài 10: Phép cộng trong phạm vi 10**, quy tắc **Ý nghĩa phép cộng** được xác định '
+                 'bởi Gộp lại / Thêm vào $\\rightarrow$ dùng dấu $+$ và áp dụng trực tiếp vào bài toán: “Có '
+                 '$4$ con chim đậu trên cành, sau đó có thêm $3$ con chim bay tới. Hỏi trên cành có tất cả '
+                 'mấy con chim?”. Đúng hay sai?',
+            'answer': True,
+            'solution': 'Khẳng định **Đúng**. Quy tắc **Ý nghĩa phép cộng** (Gộp lại / Thêm vào '
+                        '$\\rightarrow$ dùng dấu $+$) là kiến thức cốt lõi của Bài 10: Phép cộng trong phạm '
+                        'vi 10. “Bay tới” là thêm vào nên ta thực hiện phép cộng: $4 + 3 = 7$ (con chim).'},
+           {'level': 'vandung',
+            'type': 'mcq',
+            'q': 'Vận dụng kiến thức **Bài 10: Phép cộng trong phạm vi 10** để giải quyết tình huống sau: Có '
+                 '$4$ con chim đậu trên cành, sau đó có thêm $3$ con chim bay tới. Hỏi trên cành có tất cả '
+                 'mấy con chim? Kết quả và hướng giải nào dưới đây là **đúng**?',
+            'options': ['Đếm số quyển vở: $1, 2, 3, 4$ nên viết số $4$. Trong hộp không có bút nào nên viết '
+                        'số $0$.',
+                        'Đếm tiếp sau $7$ là $8$, sau $9$ là $10$. Dãy số đầy đủ là $6, 7, 8, 9, 10$.',
+                        '“Bay tới” là thêm vào nên ta thực hiện phép cộng: $4 + 3 = 7$ (con chim).',
+                        'Mỗi bạn thỏ nhận $1$ củ cà rốt thì còn $1$ bạn thỏ chưa có cà rốt ($5 > 4$). Vậy số '
+                        'thỏ **nhiều hơn** số cà rốt.'],
+            'answer': 2,
+            'solution': 'Lời giải chi tiết theo Bài 10: Phép cộng trong phạm vi 10: “Bay tới” là thêm vào '
+                        'nên ta thực hiện phép cộng: $4 + 3 = 7$ (con chim).'},
+           {'level': 'vandung',
+            'type': 'short',
+            'q': 'Trong giỏ có $6$ quả táo, mẹ bỏ thêm vào giỏ $3$ quả táo nữa. Hỏi trong giỏ có tất cả bao '
+                 'nhiêu quả táo?',
+            'answer': ['9'],
+            'unit': None,
+            'solution': 'Ta có phép cộng: $6 + 3 = 9$ (quả táo).',
+            'alt': None,
+            'note': None}]},
+ {'topic': 'l1-cd03-cong-tru-pham-vi-10',
+  'context_title': 'Chủ đề 3: Phép cộng, phép trừ trong phạm vi 10',
+  'context': 'SGK Toán 1 · Chủ đề 3: Ý nghĩa, cách tính và bảng cộng, bảng trừ trong phạm vi 10.',
+  'title': 'Bài 11: Phép trừ trong phạm vi 10',
+  'icon': '➖',
+  'description': 'Nhận biết ý nghĩa phép trừ (bớt đi, tách ra) và phép trừ với số 0 trong phạm vi 10.',
+  'requirements': ['Nhận biết ý nghĩa của phép trừ là bớt đi hoặc tách ra để tìm phần còn lại.',
+                   'Thực hiện được phép trừ các số trong phạm vi $10$.',
+                   'Biết quy tắc trừ đi $0$ ($a - 0 = a$) và hai số giống nhau trừ nhau ($a - a = 0$).'],
+  'definition': '**Phép trừ** (ký hiệu dấu $-$) được dùng khi **bớt đi** một số đồ vật hoặc **tách** một '
+                'nhóm thành hai phần để tìm phần còn lại. Ví dụ: Có $6$ quả cam, ăn bớt $1$ quả còn lại $5$ '
+                'quả, viết là $6 - 1 = 5$ (đọc: sáu trừ một bằng năm).',
+  'theory': '- **Cách tính bằng đếm bớt (đếm lùi):** Để tính $8 - 3$, ta đếm lùi $3$ bước từ $8$: $7, 6, 5$. '
+            'Vậy $8 - 3 = 5$.\n'
+            '- **Dựa vào cấu tạo số:** Vì $7$ gồm $2$ và $5$ nên khi tách $2$ ra khỏi $7$ ta còn $5$, tức là '
+            '$7 - 2 = 5$.\n'
+            '- **Số $0$ trong phép trừ:**\n'
+            '  + Một số trừ đi $0$ thì vẫn bằng chính số đó: $6 - 0 = 6$.\n'
+            '  + Một số trừ đi chính nó thì bằng $0$: $6 - 6 = 0$.',
+  'formulas': [{'category': 'Quy tắc phép trừ trong phạm vi 10',
+                'items': [{'name': 'Ý nghĩa phép trừ',
+                           'formula': 'Bớt đi / Tách ra tìm phần còn lại $\\rightarrow$ dùng dấu $-$',
+                           'note': 'Ví dụ: $7 - 3 = 4$.'},
+                          {'name': 'Trừ đi 0', 'formula': '$a - 0 = a$', 'note': 'Ví dụ: $8 - 0 = 8$.'},
+                          {'name': 'Trừ chính nó',
+                           'formula': '$a - a = 0$',
+                           'note': 'Ví dụ: $8 - 8 = 0$.'}]}],
+  'example': 'Trong bến có $8$ chiếc ô tô, sau đó $3$ chiếc ô tô rời bến. Hỏi trong bến còn lại mấy chiếc ô '
+             'tô?',
+  'example_answer': '“Rời bến” là bớt đi nên ta dùng phép trừ: $8 - 3 = 5$ (chiếc ô tô).',
+  'real_life': 'Tính số kẹo còn lại sau khi chia cho bạn, số trang truyện còn lại chưa đọc.',
+  'quiz': [{'level': 'biet',
+            'type': 'mcq',
+            'q': 'Kết quả của phép tính $9 - 5$ là:',
+            'options': ['$5$', '$4$', '$3$', '$14$'],
+            'answer': 1,
+            'solution': 'Đếm lùi $5$ bước từ $9$: $8, 7, 6, 5, 4$. Vậy $9 - 5 = 4$.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Kết quả của phép tính $7 - 0$ là:',
+            'options': ['$0$', '$6$', '$7$', '$1$'],
+            'answer': 2,
+            'solution': 'Một số trừ đi $0$ thì bằng chính số đó: $7 - 0 = 7$.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Theo nội dung trọng tâm của **Bài 11: Phép trừ trong phạm vi 10**, công thức hoặc quy tắc '
+                 'nào sau đây biểu diễn đúng **Ý nghĩa phép trừ**?',
+            'options': ['$a - 0 = a$',
+                        '$a - a = 0$',
+                        '$0, 1, 2, 3, 4, 5$',
+                        'Bớt đi / Tách ra tìm phần còn lại $\\rightarrow$ dùng dấu $-$'],
+            'answer': 3,
+            'solution': 'Theo bảng công thức trọng tâm của Bài 11: Phép trừ trong phạm vi 10, **Ý nghĩa phép '
+                        'trừ** được xác định bởi: Bớt đi / Tách ra tìm phần còn lại $\\rightarrow$ dùng dấu '
+                        '$-$. (Ví dụ: $7 - 3 = 4$.)'},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Trong **Bài 11: Phép trừ trong phạm vi 10**, nội dung/biểu thức $a - 0 = a$ là quy tắc '
+                 'hoặc công thức của mục nào sau đây?',
+            'options': ['Trừ đi 0', 'Ý nghĩa phép trừ', 'Trừ chính nó', 'Dãy số từ 0 đến 5'],
+            'answer': 0,
+            'solution': 'Trong Bài 11: Phép trừ trong phạm vi 10, biểu thức/quy tắc $a - 0 = a$ chính là nội '
+                        'dung của **Trừ đi 0**.'},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Có $7$ bông hoa gồm hoa đỏ và hoa vàng, trong đó có $2$ bông hoa vàng. Phép tính tìm số '
+                 'bông hoa đỏ là:',
+            'options': ['$7 + 2 = 9$', '$7 - 2 = 5$', '$7 - 7 = 0$', '$5 - 2 = 3$'],
+            'answer': 1,
+            'solution': 'Tách $2$ bông vàng ra khỏi $7$ bông hoa ta dùng phép trừ: $7 - 2 = 5$.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Khi học **Bài 11: Phép trừ trong phạm vi 10** (Chủ đề 3: Phép cộng, phép trừ trong phạm vi '
+                 '10), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của '
+                 'bài?',
+            'options': ['Đếm, đọc, viết được các số $0, 1, 2, 3, 4, 5$.',
+                        'Nhận biết được số $0$ dùng để chỉ không có đồ vật nào.',
+                        'Nhận biết ý nghĩa của phép trừ là bớt đi hoặc tách ra để tìm phần còn lại.',
+                        'Nhận biết thứ tự các số từ $0$ đến $5$.'],
+            'answer': 2,
+            'solution': 'Theo yêu cầu cần đạt của Bài 11: Phép trừ trong phạm vi 10: Nhận biết ý nghĩa của '
+                        'phép trừ là bớt đi hoặc tách ra để tìm phần còn lại.'},
+           {'level': 'hieu',
+            'type': 'tf',
+            'q': 'Nhận định: “$8 - 8 = 8$.”',
+            'answer': False,
+            'solution': 'Có $8$ bớt đi cả $8$ thì còn $0$, tức là $8 - 8 = 0$. Nhận định Sai.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'tf',
+            'q': 'Trong **Bài 11: Phép trừ trong phạm vi 10**, quy tắc **Ý nghĩa phép trừ** được xác định '
+                 'bởi Bớt đi / Tách ra tìm phần còn lại $\\rightarrow$ dùng dấu $-$ và áp dụng trực tiếp vào '
+                 'bài toán: “Trong bến có $8$ chiếc ô tô, sau đó $3$ chiếc ô tô rời bến. Hỏi trong bến còn '
+                 'lại mấy chiếc ô tô?”. Đúng hay sai?',
+            'answer': True,
+            'solution': 'Khẳng định **Đúng**. Quy tắc **Ý nghĩa phép trừ** (Bớt đi / Tách ra tìm phần còn '
+                        'lại $\\rightarrow$ dùng dấu $-$) là kiến thức cốt lõi của Bài 11: Phép trừ trong '
+                        'phạm vi 10. “Rời bến” là bớt đi nên ta dùng phép trừ: $8 - 3 = 5$ (chiếc ô tô).'},
+           {'level': 'vandung',
+            'type': 'mcq',
+            'q': 'Vận dụng kiến thức **Bài 11: Phép trừ trong phạm vi 10** để giải quyết tình huống sau: '
+                 'Trong bến có $8$ chiếc ô tô, sau đó $3$ chiếc ô tô rời bến. Hỏi trong bến còn lại mấy '
+                 'chiếc ô tô? Kết quả và hướng giải nào dưới đây là **đúng**?',
+            'options': ['Đếm số quyển vở: $1, 2, 3, 4$ nên viết số $4$. Trong hộp không có bút nào nên viết '
+                        'số $0$.',
+                        'Đếm tiếp sau $7$ là $8$, sau $9$ là $10$. Dãy số đầy đủ là $6, 7, 8, 9, 10$.',
+                        'Mỗi bạn thỏ nhận $1$ củ cà rốt thì còn $1$ bạn thỏ chưa có cà rốt ($5 > 4$). Vậy số '
+                        'thỏ **nhiều hơn** số cà rốt.',
+                        '“Rời bến” là bớt đi nên ta dùng phép trừ: $8 - 3 = 5$ (chiếc ô tô).'],
+            'answer': 3,
+            'solution': 'Lời giải chi tiết theo Bài 11: Phép trừ trong phạm vi 10: “Rời bến” là bớt đi nên '
+                        'ta dùng phép trừ: $8 - 3 = 5$ (chiếc ô tô).'},
+           {'level': 'vandung',
+            'type': 'short',
+            'q': 'Trên cành có $7$ con chim, sau đó $3$ con bay đi. Hỏi trên cành còn lại mấy con chim?',
+            'answer': ['4'],
+            'unit': None,
+            'solution': 'Ta thực hiện phép trừ: $7 - 3 = 4$ (con chim).',
+            'alt': None,
+            'note': None}]},
+ {'topic': 'l1-cd03-cong-tru-pham-vi-10',
+  'context_title': 'Chủ đề 3: Phép cộng, phép trừ trong phạm vi 10',
+  'context': 'SGK Toán 1 · Chủ đề 3: Ý nghĩa, cách tính và bảng cộng, bảng trừ trong phạm vi 10.',
+  'title': 'Bài 12: Bảng cộng, bảng trừ trong phạm vi 10',
+  'icon': '📋',
+  'description': 'Ghi nhớ bảng cộng, bảng trừ trong phạm vi 10 và mối liên hệ giữa phép cộng với phép trừ.',
+  'requirements': ['Thuộc và vận dụng được bảng cộng, bảng trừ trong phạm vi $10$ để tính nhẩm nhanh.',
+                   'Nhận biết được các cặp số cộng lại bằng $10$ (bảng tròn $10$).',
+                   'Hiểu mối liên hệ giữa phép cộng và phép trừ: từ $1$ phép cộng viết được $2$ phép trừ '
+                   'tương ứng.'],
+  'definition': '**Bảng cộng, bảng trừ trong phạm vi $10$** hệ thống toàn bộ các phép tính cộng, trừ có kết '
+                'quả không vượt quá $10$. Khi biết $a + b = c$, ta suy ra được hai phép trừ: $c - a = b$ và '
+                '$c - b = a$.',
+  'theory': '- **Các phép cộng bằng $10$ (rất quan trọng):**\n'
+            '  $1 + 9 = 10$; $2 + 8 = 10$; $3 + 7 = 10$; $4 + 6 = 10$; $5 + 5 = 10$.\n'
+            '- **Các phép trừ từ $10$:**\n'
+            '  $10 - 1 = 9$; $10 - 2 = 8$; $10 - 3 = 7$; $10 - 4 = 6$; $10 - 5 = 5$.\n'
+            '- **Liên hệ Cộng – Trừ:** Vì $3 + 5 = 8$ nên $8 - 3 = 5$ và $8 - 5 = 3$.',
+  'formulas': [{'category': 'Bảng tròn 10 và liên hệ Cộng – Trừ',
+                'items': [{'name': 'Các cặp số có tổng bằng 10',
+                           'formula': '$1 + 9 = 2 + 8 = 3 + 7 = 4 + 6 = 5 + 5 = 10$'},
+                          {'name': 'Trừ từ 10',
+                           'formula': '$10 - 1 = 9;\\ 10 - 2 = 8;\\ 10 - 3 = 7;\\ 10 - 4 = 6;\\ 10 - 5 = 5$'},
+                          {'name': 'Mối liên hệ Cộng – Trừ',
+                           'formula': 'Nếu $a + b = c$ thì $c - a = b$ và $c - b = a$',
+                           'note': 'Ví dụ: $6 + 3 = 9 \\Rightarrow 9 - 6 = 3;\\ 9 - 3 = 6$.'}]}],
+  'example': 'Từ phép cộng $4 + 6 = 10$, em hãy viết hai phép trừ tương ứng.',
+  'example_answer': 'Hai phép trừ tương ứng là: $10 - 4 = 6$ và $10 - 6 = 4$.',
+  'real_life': 'Tính nhẩm nhanh tiền thừa khi mua món đồ giá $6$ nghìn đồng bằng tờ $10$ nghìn đồng ($10 - 6 '
+               '= 4$).',
+  'quiz': [{'level': 'biet',
+            'type': 'mcq',
+            'q': 'Phép tính nào dưới đây có kết quả bằng $10$?',
+            'options': ['$4 + 5$', '$7 + 2$', '$6 + 4$', '$10 - 1$'],
+            'answer': 2,
+            'solution': 'Ta có $6 + 4 = 10$ (các phép tính còn lại đều có kết quả bằng $9$).',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Kết quả của phép tính $10 - 3$ là:',
+            'options': ['$6$', '$8$', '$5$', '$7$'],
+            'answer': 3,
+            'solution': 'Vì $3 + 7 = 10$ nên $10 - 3 = 7$.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Theo nội dung trọng tâm của **Bài 12: Bảng cộng, bảng trừ trong phạm vi 10**, công thức '
+                 'hoặc quy tắc nào sau đây biểu diễn đúng **Các cặp số có tổng bằng 10**?',
+            'options': ['$1 + 9 = 2 + 8 = 3 + 7 = 4 + 6 = 5 + 5 = 10$',
+                        '$10 - 1 = 9;\\ 10 - 2 = 8;\\ 10 - 3 = 7;\\ 10 - 4 = 6;\\ 10 - 5 = 5$',
+                        'Nếu $a + b = c$ thì $c - a = b$ và $c - b = a$',
+                        '$0, 1, 2, 3, 4, 5$'],
+            'answer': 0,
+            'solution': 'Theo bảng công thức trọng tâm của Bài 12: Bảng cộng, bảng trừ trong phạm vi 10, '
+                        '**Các cặp số có tổng bằng 10** được xác định bởi: $1 + 9 = 2 + 8 = 3 + 7 = 4 + 6 = '
+                        '5 + 5 = 10$.'},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Trong **Bài 12: Bảng cộng, bảng trừ trong phạm vi 10**, nội dung/biểu thức $10 - 1 = 9;\\ '
+                 '10 - 2 = 8;\\ 10 - 3 = 7;\\ 10 - 4 = 6;\\ 10 - 5 = 5$ là quy tắc hoặc công thức của mục '
+                 'nào sau đây?',
+            'options': ['Các cặp số có tổng bằng 10',
+                        'Trừ từ 10',
+                        'Mối liên hệ Cộng – Trừ',
+                        'Dãy số từ 0 đến 5'],
+            'answer': 1,
+            'solution': 'Trong Bài 12: Bảng cộng, bảng trừ trong phạm vi 10, biểu thức/quy tắc $10 - 1 = '
+                        '9;\\ 10 - 2 = 8;\\ 10 - 3 = 7;\\ 10 - 4 = 6;\\ 10 - 5 = 5$ chính là nội dung của '
+                        '**Trừ từ 10**.'},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Biết $6 + 3 = 9$. Phép trừ nào dưới đây đúng?',
+            'options': ['$9 - 3 = 5$', '$6 - 3 = 9$', '$9 - 6 = 3$', '$9 - 9 = 3$'],
+            'answer': 2,
+            'solution': 'Từ $6 + 3 = 9$ suy ra $9 - 6 = 3$ và $9 - 3 = 6$.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Khi học **Bài 12: Bảng cộng, bảng trừ trong phạm vi 10** (Chủ đề 3: Phép cộng, phép trừ '
+                 'trong phạm vi 10), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất '
+                 'kiến thức của bài?',
+            'options': ['Đếm, đọc, viết được các số $0, 1, 2, 3, 4, 5$.',
+                        'Nhận biết được số $0$ dùng để chỉ không có đồ vật nào.',
+                        'Nhận biết thứ tự các số từ $0$ đến $5$.',
+                        'Thuộc và vận dụng được bảng cộng, bảng trừ trong phạm vi $10$ để tính nhẩm nhanh.'],
+            'answer': 3,
+            'solution': 'Theo yêu cầu cần đạt của Bài 12: Bảng cộng, bảng trừ trong phạm vi 10: Thuộc và vận '
+                        'dụng được bảng cộng, bảng trừ trong phạm vi $10$ để tính nhẩm nhanh.'},
+           {'level': 'hieu',
+            'type': 'tf',
+            'q': 'Nhận định: “Từ phép cộng $2 + 8 = 10$, ta suy ra được $10 - 8 = 2$.”',
+            'answer': True,
+            'solution': 'Lấy kết quả $10$ trừ đi một số trong phép cộng sẽ được số kia: $10 - 8 = 2$. Nhận '
+                        'định Đúng.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'tf',
+            'q': 'Trong **Bài 12: Bảng cộng, bảng trừ trong phạm vi 10**, quy tắc **Các cặp số có tổng bằng '
+                 '10** được xác định bởi $1 + 9 = 2 + 8 = 3 + 7 = 4 + 6 = 5 + 5 = 10$ và áp dụng trực tiếp '
+                 'vào bài toán: “Từ phép cộng $4 + 6 = 10$, em hãy viết hai phép trừ tương ứng.”. Đúng hay '
+                 'sai?',
+            'answer': True,
+            'solution': 'Khẳng định **Đúng**. Quy tắc **Các cặp số có tổng bằng 10** ($1 + 9 = 2 + 8 = 3 + 7 '
+                        '= 4 + 6 = 5 + 5 = 10$) là kiến thức cốt lõi của Bài 12: Bảng cộng, bảng trừ trong '
+                        'phạm vi 10. Hai phép trừ tương ứng là: $10 - 4 = 6$ và $10 - 6 = 4$.'},
+           {'level': 'vandung',
+            'type': 'mcq',
+            'q': 'Vận dụng kiến thức **Bài 12: Bảng cộng, bảng trừ trong phạm vi 10** để giải quyết tình '
+                 'huống sau: Từ phép cộng $4 + 6 = 10$, em hãy viết hai phép trừ tương ứng. Kết quả và hướng '
+                 'giải nào dưới đây là **đúng**?',
+            'options': ['Hai phép trừ tương ứng là: $10 - 4 = 6$ và $10 - 6 = 4$.',
+                        'Đếm số quyển vở: $1, 2, 3, 4$ nên viết số $4$. Trong hộp không có bút nào nên viết '
+                        'số $0$.',
+                        'Đếm tiếp sau $7$ là $8$, sau $9$ là $10$. Dãy số đầy đủ là $6, 7, 8, 9, 10$.',
+                        'Mỗi bạn thỏ nhận $1$ củ cà rốt thì còn $1$ bạn thỏ chưa có cà rốt ($5 > 4$). Vậy số '
+                        'thỏ **nhiều hơn** số cà rốt.'],
+            'answer': 0,
+            'solution': 'Lời giải chi tiết theo Bài 12: Bảng cộng, bảng trừ trong phạm vi 10: Hai phép trừ '
+                        'tương ứng là: $10 - 4 = 6$ và $10 - 6 = 4$.'},
+           {'level': 'vandung',
+            'type': 'short',
+            'q': 'Số thích hợp điền vào chỗ chấm trong phép tính $4 + \\dots = 10$ là số nào?',
+            'answer': ['6'],
+            'unit': None,
+            'solution': 'Vì $10 - 4 = 6$ (hoặc cặp tròn chục $4$ và $6$) nên số cần điền là $6$.',
+            'alt': None,
+            'note': None}]},
+ {'topic': 'l1-cd03-cong-tru-pham-vi-10',
+  'context_title': 'Chủ đề 3: Phép cộng, phép trừ trong phạm vi 10',
+  'context': 'SGK Toán 1 · Chủ đề 3: Ý nghĩa, cách tính và bảng cộng, bảng trừ trong phạm vi 10.',
+  'title': 'Bài 13: Luyện tập chung về phép cộng, phép trừ trong phạm vi 10',
+  'icon': '🎯',
+  'description': 'Thực hiện dãy tính có hai dấu phép tính cộng, trừ và giải toán qua tranh vẽ, tình huống '
+                 'thực tế.',
+  'requirements': ['Tính được biểu thức có hai dấu phép tính cộng, trừ theo thứ tự từ trái sang phải.',
+                   'So sánh được kết quả của hai phép tính.',
+                   'Viết được phép tính cộng hoặc trừ phù hợp với tình huống thực tế.'],
+  'definition': 'Với dãy tính có **hai dấu phép tính** cộng, trừ (ví dụ $8 - 3 + 2$), ta thực hiện lần lượt '
+                '**từ trái sang phải**: tính phép tính bên trái trước, được kết quả bao nhiêu rồi mới thực '
+                'hiện phép tính tiếp theo.',
+  'theory': '- Ví dụ 1: Tính $4 + 3 + 2$. Bước 1: $4 + 3 = 7$. Bước 2: $7 + 2 = 9$. Vậy $4 + 3 + 2 = 9$.\n'
+            '- Ví dụ 2: Tính $9 - 4 + 3$. Bước 1: $9 - 4 = 5$. Bước 2: $5 + 3 = 8$. Vậy $9 - 4 + 3 = 8$.\n'
+            '- Khi so sánh hai phép tính (như $3 + 5 \\dots 10 - 2$), ta tính kết quả mỗi bên trước rồi mới '
+            'điền dấu $>, <, =$.',
+  'formulas': [{'category': 'Quy tắc tính dãy tính và giải toán',
+                'items': [{'name': 'Hai dấu phép tính',
+                           'formula': 'Tính lần lượt từ trái sang phải',
+                           'note': 'Ví dụ: $7 - 2 + 4 = 5 + 4 = 9$.'},
+                          {'name': 'Tìm số chưa biết',
+                           'formula': 'Nếu $a + ? = c$ thì $? = c - a$',
+                           'note': 'Ví dụ: $2 + ? = 9 \\Rightarrow ? = 9 - 2 = 7$.'}]}],
+  'example': 'Tính: $10 - 4 - 3 = ?$',
+  'example_answer': 'Tính từ trái sang phải: $10 - 4 = 6$, rồi lấy $6 - 3 = 3$. Vậy $10 - 4 - 3 = 3$.',
+  'real_life': 'Tính số hành khách trên xe buýt sau khi có người xuống xe và có người mới lên xe tại trạm '
+               'dừng.',
+  'quiz': [{'level': 'biet',
+            'type': 'mcq',
+            'q': 'Kết quả của phép tính $3 + 2 + 4$ là:',
+            'options': ['$8$', '$10$', '$7$', '$9$'],
+            'answer': 3,
+            'solution': 'Tính từ trái sang phải: $3 + 2 = 5$, sau đó $5 + 4 = 9$.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Kết quả của phép tính $8 - 3 + 2$ là:',
+            'options': ['$7$', '$3$', '$9$', '$6$'],
+            'answer': 0,
+            'solution': 'Tính từ trái sang phải: $8 - 3 = 5$, sau đó $5 + 2 = 7$.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Theo nội dung trọng tâm của **Bài 13: Luyện tập chung về phép cộng, phép trừ trong phạm vi '
+                 '10**, công thức hoặc quy tắc nào sau đây biểu diễn đúng **Hai dấu phép tính**?',
+            'options': ['Nếu $a + ? = c$ thì $? = c - a$',
+                        'Tính lần lượt từ trái sang phải',
+                        '$0, 1, 2, 3, 4, 5$',
+                        '$0$ chỉ không có đồ vật nào'],
+            'answer': 1,
+            'solution': 'Theo bảng công thức trọng tâm của Bài 13: Luyện tập chung về phép cộng, phép trừ '
+                        'trong phạm vi 10, **Hai dấu phép tính** được xác định bởi: Tính lần lượt từ trái '
+                        'sang phải. (Ví dụ: $7 - 2 + 4 = 5 + 4 = 9$.)'},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Trong **Bài 13: Luyện tập chung về phép cộng, phép trừ trong phạm vi 10**, nội dung/biểu '
+                 'thức Nếu $a + ? = c$ thì $? = c - a$ là quy tắc hoặc công thức của mục nào sau đây?',
+            'options': ['Hai dấu phép tính', 'Dãy số từ 0 đến 5', 'Tìm số chưa biết', 'Ý nghĩa số 0'],
+            'answer': 2,
+            'solution': 'Trong Bài 13: Luyện tập chung về phép cộng, phép trừ trong phạm vi 10, biểu '
+                        'thức/quy tắc Nếu $a + ? = c$ thì $? = c - a$ chính là nội dung của **Tìm số chưa '
+                        'biết**.'},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Dấu thích hợp điền vào chỗ chấm $5 + 3 \\dots 10 - 2$ là:',
+            'options': ['$>$', '$<$', '$-$', '$=$'],
+            'answer': 3,
+            'solution': 'Ta có $5 + 3 = 8$ và $10 - 2 = 8$. Vì $8 = 8$ nên điền dấu $=$.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Khi học **Bài 13: Luyện tập chung về phép cộng, phép trừ trong phạm vi 10** (Chủ đề 3: '
+                 'Phép cộng, phép trừ trong phạm vi 10), khẳng định nào sau đây phản ánh **đúng** yêu cầu '
+                 'cần đạt và bản chất kiến thức của bài?',
+            'options': ['Tính được biểu thức có hai dấu phép tính cộng, trừ theo thứ tự từ trái sang phải.',
+                        'Đếm, đọc, viết được các số $0, 1, 2, 3, 4, 5$.',
+                        'Nhận biết được số $0$ dùng để chỉ không có đồ vật nào.',
+                        'Nhận biết thứ tự các số từ $0$ đến $5$.'],
+            'answer': 0,
+            'solution': 'Theo yêu cầu cần đạt của Bài 13: Luyện tập chung về phép cộng, phép trừ trong phạm '
+                        'vi 10: Tính được biểu thức có hai dấu phép tính cộng, trừ theo thứ tự từ trái sang '
+                        'phải.'},
+           {'level': 'hieu',
+            'type': 'tf',
+            'q': 'Nhận định: “Kết quả của phép tính $6 + 4 - 5$ bằng $5$.”',
+            'answer': True,
+            'solution': 'Tính từ trái sang phải: $6 + 4 = 10$, rồi $10 - 5 = 5$. Nhận định Đúng.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'tf',
+            'q': 'Trong **Bài 13: Luyện tập chung về phép cộng, phép trừ trong phạm vi 10**, quy tắc **Hai '
+                 'dấu phép tính** được xác định bởi Tính lần lượt từ trái sang phải và áp dụng trực tiếp vào '
+                 'bài toán: “Tính: $10 - 4 - 3 = ?$”. Đúng hay sai?',
+            'answer': True,
+            'solution': 'Khẳng định **Đúng**. Quy tắc **Hai dấu phép tính** (Tính lần lượt từ trái sang '
+                        'phải) là kiến thức cốt lõi của Bài 13: Luyện tập chung về phép cộng, phép trừ trong '
+                        'phạm vi 10. Tính từ trái sang phải: $10 - 4 = 6$, rồi lấy $6 - 3 = 3$. Vậy $10 - 4 '
+                        '- 3 = 3$.'},
+           {'level': 'vandung',
+            'type': 'mcq',
+            'q': 'Vận dụng kiến thức **Bài 13: Luyện tập chung về phép cộng, phép trừ trong phạm vi 10** để '
+                 'giải quyết tình huống sau: Tính: $10 - 4 - 3 = ?$ Kết quả và hướng giải nào dưới đây là '
+                 '**đúng**?',
+            'options': ['Đếm số quyển vở: $1, 2, 3, 4$ nên viết số $4$. Trong hộp không có bút nào nên viết '
+                        'số $0$.',
+                        'Tính từ trái sang phải: $10 - 4 = 6$, rồi lấy $6 - 3 = 3$. Vậy $10 - 4 - 3 = 3$.',
+                        'Đếm tiếp sau $7$ là $8$, sau $9$ là $10$. Dãy số đầy đủ là $6, 7, 8, 9, 10$.',
+                        'Mỗi bạn thỏ nhận $1$ củ cà rốt thì còn $1$ bạn thỏ chưa có cà rốt ($5 > 4$). Vậy số '
+                        'thỏ **nhiều hơn** số cà rốt.'],
+            'answer': 1,
+            'solution': 'Lời giải chi tiết theo Bài 13: Luyện tập chung về phép cộng, phép trừ trong phạm vi '
+                        '10: Tính từ trái sang phải: $10 - 4 = 6$, rồi lấy $6 - 3 = 3$. Vậy $10 - 4 - 3 = '
+                        '3$.'},
+           {'level': 'vandung',
+            'type': 'short',
+            'q': 'Lan có $2$ cái kẹo. Mẹ cho Lan thêm một số kẹo nữa thì Lan có tất cả $9$ cái kẹo. Hỏi mẹ '
+                 'đã cho Lan mấy cái kẹo?',
+            'answer': ['7'],
+            'unit': None,
+            'solution': 'Số kẹo mẹ cho thêm là: $9 - 2 = 7$ (cái kẹo).',
+            'alt': None,
+            'note': None}]},
+ {'topic': 'l1-cd04-hinh-khoi-vi-tri',
+  'context_title': 'Chủ đề 4: Làm quen với một số hình khối',
+  'context': 'SGK Toán 1 · Chủ đề 4: Khối lập phương, khối hộp chữ nhật; vị trí và định hướng trong không '
+             'gian.',
+  'title': 'Bài 14: Khối lập phương, khối hộp chữ nhật',
+  'icon': '🧊',
+  'description': 'Nhận dạng khối lập phương, khối hộp chữ nhật thông qua đồ vật thật và mô hình.',
+  'requirements': ['Nhận dạng được khối lập phương và khối hộp chữ nhật.',
+                   'Biết đặc điểm các mặt của khối lập phương (đều là hình vuông) và khối hộp chữ nhật (các '
+                   'mặt là hình chữ nhật).',
+                   'Kể tên được các đồ vật thực tế có dạng khối lập phương, khối hộp chữ nhật.'],
+  'definition': '- **Khối lập phương:** là hình khối có $6$ mặt đều là **hình vuông** bằng nhau (ví dụ: con '
+                'xúc xắc, khối rubik).\n'
+                '- **Khối hộp chữ nhật:** là hình khối có $6$ mặt là **hình chữ nhật** (có thể có $2$ mặt là '
+                'hình vuông), ví dụ: hộp sữa giấy, viên gạch, hộp bút.',
+  'theory': '- **Phân biệt hình phẳng và hình khối:** Hình vuông, hình chữ nhật là hình phẳng vẽ trên mặt '
+            'giấy; còn khối lập phương, khối hộp chữ nhật là hình khối có thể cầm nắm và xếp chồng lên nhau '
+            'được.\n'
+            '- Vì các mặt đều phẳng nên cả khối lập phương và khối hộp chữ nhật đều đặt đứng vững, dễ xếp '
+            'chồng thành tháp, tường nhà.',
+  'formulas': [{'category': 'Đặc điểm nhận dạng hình khối',
+                'items': [{'name': 'Khối lập phương',
+                           'formula': 'Có $6$ mặt đều là hình vuông',
+                           'note': 'Ví dụ: con xúc xắc, khối rubik.'},
+                          {'name': 'Khối hộp chữ nhật',
+                           'formula': 'Có $6$ mặt là hình chữ nhật',
+                           'note': 'Ví dụ: viên gạch, hộp sữa giấy, bao diêm.'}]}],
+  'example': 'Trong các đồ vật: con xúc xắc, hộp sữa tươi, chiếc đĩa tròn, đồ vật nào có dạng khối lập '
+             'phương? Đồ vật nào có dạng khối hộp chữ nhật?',
+  'example_answer': 'Con xúc xắc có dạng **khối lập phương**; hộp sữa tươi có dạng **khối hộp chữ nhật**.',
+  'real_life': 'Xếp các hộp quà, thùng carton, gạch xây nhà hoặc lắp ráp đồ chơi hình khối.',
+  'quiz': [{'level': 'biet',
+            'type': 'mcq',
+            'q': 'Con xúc xắc có dạng hình khối gì?',
+            'options': ['Khối lập phương', 'Khối hộp chữ nhật', 'Hình tròn', 'Hình tam giác'],
+            'answer': 0,
+            'solution': 'Con xúc xắc có $6$ mặt đều là hình vuông nên có dạng khối lập phương.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Mỗi mặt của khối lập phương là hình gì?',
+            'options': ['Hình tròn', 'Hình vuông', 'Hình tam giác', 'Hình chữ nhật dài'],
+            'answer': 1,
+            'solution': 'Tất cả $6$ mặt của khối lập phương đều là hình vuông.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Theo nội dung trọng tâm của **Bài 14: Khối lập phương, khối hộp chữ nhật**, công thức hoặc '
+                 'quy tắc nào sau đây biểu diễn đúng **Khối lập phương**?',
+            'options': ['Có $6$ mặt là hình chữ nhật',
+                        '$0, 1, 2, 3, 4, 5$',
+                        'Có $6$ mặt đều là hình vuông',
+                        '$0$ chỉ không có đồ vật nào'],
+            'answer': 2,
+            'solution': 'Theo bảng công thức trọng tâm của Bài 14: Khối lập phương, khối hộp chữ nhật, '
+                        '**Khối lập phương** được xác định bởi: Có $6$ mặt đều là hình vuông. (Ví dụ: con '
+                        'xúc xắc, khối rubik.)'},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Trong **Bài 14: Khối lập phương, khối hộp chữ nhật**, nội dung/biểu thức Có $6$ mặt là '
+                 'hình chữ nhật là quy tắc hoặc công thức của mục nào sau đây?',
+            'options': ['Khối lập phương', 'Dãy số từ 0 đến 5', 'Ý nghĩa số 0', 'Khối hộp chữ nhật'],
+            'answer': 3,
+            'solution': 'Trong Bài 14: Khối lập phương, khối hộp chữ nhật, biểu thức/quy tắc Có $6$ mặt là '
+                        'hình chữ nhật chính là nội dung của **Khối hộp chữ nhật**.'},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Viên gạch xây nhà hoặc hộp sữa giấy thường có dạng hình gì?',
+            'options': ['Khối hộp chữ nhật', 'Khối lập phương', 'Hình vuông', 'Hình tròn'],
+            'answer': 0,
+            'solution': 'Viên gạch và hộp sữa giấy là hình khối có các mặt là hình chữ nhật nên có dạng khối '
+                        'hộp chữ nhật.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Khi học **Bài 14: Khối lập phương, khối hộp chữ nhật** (Chủ đề 4: Làm quen với một số hình '
+                 'khối), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của '
+                 'bài?',
+            'options': ['Đếm, đọc, viết được các số $0, 1, 2, 3, 4, 5$.',
+                        'Nhận dạng được khối lập phương và khối hộp chữ nhật.',
+                        'Nhận biết được số $0$ dùng để chỉ không có đồ vật nào.',
+                        'Nhận biết thứ tự các số từ $0$ đến $5$.'],
+            'answer': 1,
+            'solution': 'Theo yêu cầu cần đạt của Bài 14: Khối lập phương, khối hộp chữ nhật: Nhận dạng được '
+                        'khối lập phương và khối hộp chữ nhật.'},
+           {'level': 'hieu',
+            'type': 'tf',
+            'q': 'Nhận định: “Khối lập phương có các mặt là hình vuông nên khối lập phương chính là hình '
+                 'vuông.”',
+            'answer': False,
+            'solution': 'Hình vuông là hình phẳng, còn khối lập phương là hình khối trong không gian có các '
+                        'mặt là hình vuông. Nhận định Sai.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'tf',
+            'q': 'Trong **Bài 14: Khối lập phương, khối hộp chữ nhật**, quy tắc **Khối lập phương** được xác '
+                 'định bởi Có $6$ mặt đều là hình vuông và áp dụng trực tiếp vào bài toán: “Trong các đồ '
+                 'vật: con xúc xắc, hộp sữa tươi, chiếc đĩa tròn, đồ vật nào có dạng khối lập phương? Đồ vật '
+                 'nào có dạng khối hộp chữ nhật?”. Đúng hay sai?',
+            'answer': True,
+            'solution': 'Khẳng định **Đúng**. Quy tắc **Khối lập phương** (Có $6$ mặt đều là hình vuông) là '
+                        'kiến thức cốt lõi của Bài 14: Khối lập phương, khối hộp chữ nhật. Con xúc xắc có '
+                        'dạng **khối lập phương**; hộp sữa tươi có dạng **khối hộp chữ nhật**.'},
+           {'level': 'vandung',
+            'type': 'mcq',
+            'q': 'Vận dụng kiến thức **Bài 14: Khối lập phương, khối hộp chữ nhật** để giải quyết tình huống '
+                 'sau: Trong các đồ vật: con xúc xắc, hộp sữa tươi, chiếc đĩa tròn, đồ vật nào có dạng khối '
+                 'lập phương? Đồ vật nào có dạng khối hộp chữ nhật? Kết quả và hướng giải nào dưới đây là '
+                 '**đúng**?',
+            'options': ['Đếm số quyển vở: $1, 2, 3, 4$ nên viết số $4$. Trong hộp không có bút nào nên viết '
+                        'số $0$.',
+                        'Đếm tiếp sau $7$ là $8$, sau $9$ là $10$. Dãy số đầy đủ là $6, 7, 8, 9, 10$.',
+                        'Con xúc xắc có dạng **khối lập phương**; hộp sữa tươi có dạng **khối hộp chữ '
+                        'nhật**.',
+                        'Mỗi bạn thỏ nhận $1$ củ cà rốt thì còn $1$ bạn thỏ chưa có cà rốt ($5 > 4$). Vậy số '
+                        'thỏ **nhiều hơn** số cà rốt.'],
+            'answer': 2,
+            'solution': 'Lời giải chi tiết theo Bài 14: Khối lập phương, khối hộp chữ nhật: Con xúc xắc có '
+                        'dạng **khối lập phương**; hộp sữa tươi có dạng **khối hộp chữ nhật**.'},
+           {'level': 'vandung',
+            'type': 'short',
+            'q': 'Một khối lập phương có tất cả bao nhiêu mặt là hình vuông?',
+            'answer': ['6'],
+            'unit': None,
+            'solution': 'Khối lập phương (như con xúc xắc có các mặt từ $1$ chấm đến $6$ chấm) có tất cả $6$ '
+                        'mặt là hình vuông.',
+            'alt': None,
+            'note': None}]},
+ {'topic': 'l1-cd04-hinh-khoi-vi-tri',
+  'context_title': 'Chủ đề 4: Làm quen với một số hình khối',
+  'context': 'SGK Toán 1 · Chủ đề 4: Khối lập phương, khối hộp chữ nhật; vị trí và định hướng trong không '
+             'gian.',
+  'title': 'Bài 15: Vị trí, định hướng trong không gian',
+  'icon': '🧭',
+  'description': 'Nhận biết và mô tả vị trí: trên – dưới, trước – sau, phải – trái, ở giữa.',
+  'requirements': ['Nhận biết và sử dụng đúng các từ chỉ vị trí: trên – dưới, trước – sau, bên phải – bên '
+                   'trái, ở giữa.',
+                   'Xác định được vị trí tương đối giữa các đồ vật hoặc con người trong tranh và trong thực '
+                   'tế.',
+                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Trên – Dưới** (A ở trên B '
+                   '$\\Leftrightarrow$ B ở dưới A) vào giải bài tập.'],
+  'definition': 'Các cặp từ dùng để chỉ vị trí trong không gian:\n'
+                '- **Trên – dưới** (theo chiều thẳng đứng).\n'
+                '- **Trước – sau** (theo hướng nhìn hoặc hướng xếp hàng).\n'
+                '- **Bên phải – bên trái** (xác định theo tay phải, tay trái).\n'
+                '- **Ở giữa** (nằm xen giữa hai vật ở hai bên).',
+  'theory': '- Nếu vật A ở **trên** vật B thì vật B ở **dưới** vật A.\n'
+            '- Nếu bạn A đứng **trước** bạn B thì bạn B đứng **sau** bạn A.\n'
+            '- Khi ba vật xếp theo thứ tự A – B – C trên một hàng thì vật B nằm **ở giữa** A và C, vật A ở '
+            'bên trái B, vật C ở bên phải B.',
+  'formulas': [{'category': 'Các mối quan hệ vị trí',
+                'items': [{'name': 'Trên – Dưới', 'formula': 'A ở trên B $\\Leftrightarrow$ B ở dưới A'},
+                          {'name': 'Trước – Sau',
+                           'formula': 'A đứng trước B $\\Leftrightarrow$ B đứng sau A'},
+                          {'name': 'Ở giữa', 'formula': 'Trong hàng A – B – C thì B đứng ở giữa A và C'}]}],
+  'example': 'Trên bàn học, từ trái sang phải có: hộp bút, quyển vở, bình nước. Đồ vật nào ở giữa? Đồ vật '
+             'nào ở bên phải quyển vở?',
+  'example_answer': '**Quyển vở** nằm ở giữa hộp bút và bình nước. **Bình nước** nằm ở bên phải quyển vở.',
+  'real_life': 'Đi đường đúng lề bên phải, sắp xếp sách vở ngăn trên – ngăn dưới, xếp hàng vào lớp.',
+  'quiz': [{'level': 'biet',
+            'type': 'mcq',
+            'q': 'Quyển sách đặt ở trên mặt bàn. Khi đó mặt bàn ở vị trí nào so với quyển sách?',
+            'options': ['Ở trên', 'Ở dưới', 'Ở bên trái', 'Ở giữa'],
+            'answer': 1,
+            'solution': 'Quyển sách ở trên mặt bàn thì mặt bàn ở dưới quyển sách.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Ba bạn xếp hàng dọc: An đứng đầu hàng, Bình đứng sau An, Chi đứng sau Bình. Bạn nào đứng ở '
+                 'giữa?',
+            'options': ['An', 'Chi', 'Bình', 'Không có ai'],
+            'answer': 2,
+            'solution': 'Thứ tự hàng là An – Bình – Chi nên bạn đứng ở giữa là Bình.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Theo nội dung trọng tâm của **Bài 15: Vị trí, định hướng trong không gian**, công thức '
+                 'hoặc quy tắc nào sau đây biểu diễn đúng **Trên – Dưới**?',
+            'options': ['A đứng trước B $\\Leftrightarrow$ B đứng sau A',
+                        'Trong hàng A – B – C thì B đứng ở giữa A và C',
+                        '$0, 1, 2, 3, 4, 5$',
+                        'A ở trên B $\\Leftrightarrow$ B ở dưới A'],
+            'answer': 3,
+            'solution': 'Theo bảng công thức trọng tâm của Bài 15: Vị trí, định hướng trong không gian, '
+                        '**Trên – Dưới** được xác định bởi: A ở trên B $\\Leftrightarrow$ B ở dưới A.'},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Trong **Bài 15: Vị trí, định hướng trong không gian**, nội dung/biểu thức A đứng trước B '
+                 '$\\Leftrightarrow$ B đứng sau A là quy tắc hoặc công thức của mục nào sau đây?',
+            'options': ['Trước – Sau', 'Trên – Dưới', 'Ở giữa', 'Dãy số từ 0 đến 5'],
+            'answer': 0,
+            'solution': 'Trong Bài 15: Vị trí, định hướng trong không gian, biểu thức/quy tắc A đứng trước B '
+                        '$\\Leftrightarrow$ B đứng sau A chính là nội dung của **Trước – Sau**.'},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Trên kệ đồ chơi, từ trái sang phải có: quả bóng, con gấu bông, chiếc ô tô. Đồ vật ở bên '
+                 'phải con gấu bông là:',
+            'options': ['Quả bóng', 'Chiếc ô tô', 'Con gấu bông', 'Không có đồ vật nào'],
+            'answer': 1,
+            'solution': 'Từ trái sang phải là: quả bóng – con gấu bông – chiếc ô tô. Vậy bên phải con gấu '
+                        'bông là chiếc ô tô.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Khi học **Bài 15: Vị trí, định hướng trong không gian** (Chủ đề 4: Làm quen với một số '
+                 'hình khối), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức '
+                 'của bài?',
+            'options': ['Đếm, đọc, viết được các số $0, 1, 2, 3, 4, 5$.',
+                        'Nhận biết được số $0$ dùng để chỉ không có đồ vật nào.',
+                        'Nhận biết và sử dụng đúng các từ chỉ vị trí: trên – dưới, trước – sau, bên phải – '
+                        'bên trái, ở giữa.',
+                        'Nhận biết thứ tự các số từ $0$ đến $5$.'],
+            'answer': 2,
+            'solution': 'Theo yêu cầu cần đạt của Bài 15: Vị trí, định hướng trong không gian: Nhận biết và '
+                        'sử dụng đúng các từ chỉ vị trí: trên – dưới, trước – sau, bên phải – bên trái, ở '
+                        'giữa.'},
+           {'level': 'hieu',
+            'type': 'tf',
+            'q': 'Con mèo nằm dưới gầm bàn, lọ hoa đặt trên mặt bàn. Nhận định: “Lọ hoa ở dưới con mèo.”',
+            'answer': False,
+            'solution': 'Lọ hoa trên mặt bàn còn con mèo dưới gầm bàn nên lọ hoa ở trên con mèo. Nhận định '
+                        'Sai.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'tf',
+            'q': 'Trong **Bài 15: Vị trí, định hướng trong không gian**, quy tắc **Trên – Dưới** được xác '
+                 'định bởi A ở trên B $\\Leftrightarrow$ B ở dưới A và áp dụng trực tiếp vào bài toán: “Trên '
+                 'bàn học, từ trái sang phải có: hộp bút, quyển vở, bình nước. Đồ vật nào ở giữa? Đồ vật nào '
+                 'ở bên phải quyển vở?”. Đúng hay sai?',
+            'answer': True,
+            'solution': 'Khẳng định **Đúng**. Quy tắc **Trên – Dưới** (A ở trên B $\\Leftrightarrow$ B ở '
+                        'dưới A) là kiến thức cốt lõi của Bài 15: Vị trí, định hướng trong không gian. '
+                        '**Quyển vở** nằm ở giữa hộp bút và bình nước. **Bình nước** nằm ở bên phải quyển '
+                        'vở.'},
+           {'level': 'vandung',
+            'type': 'mcq',
+            'q': 'Vận dụng kiến thức **Bài 15: Vị trí, định hướng trong không gian** để giải quyết tình '
+                 'huống sau: Trên bàn học, từ trái sang phải có: hộp bút, quyển vở, bình nước. Đồ vật nào ở '
+                 'giữa? Đồ vật nào ở bên phải quyển vở? Kết quả và hướng giải nào dưới đây là **đúng**?',
+            'options': ['Đếm số quyển vở: $1, 2, 3, 4$ nên viết số $4$. Trong hộp không có bút nào nên viết '
+                        'số $0$.',
+                        'Đếm tiếp sau $7$ là $8$, sau $9$ là $10$. Dãy số đầy đủ là $6, 7, 8, 9, 10$.',
+                        'Mỗi bạn thỏ nhận $1$ củ cà rốt thì còn $1$ bạn thỏ chưa có cà rốt ($5 > 4$). Vậy số '
+                        'thỏ **nhiều hơn** số cà rốt.',
+                        '**Quyển vở** nằm ở giữa hộp bút và bình nước. **Bình nước** nằm ở bên phải quyển '
+                        'vở.'],
+            'answer': 3,
+            'solution': 'Lời giải chi tiết theo Bài 15: Vị trí, định hướng trong không gian: **Quyển vở** '
+                        'nằm ở giữa hộp bút và bình nước. **Bình nước** nằm ở bên phải quyển vở.'},
+           {'level': 'vandung',
+            'type': 'short',
+            'q': 'Trong một hàng dọc có $3$ bạn: bạn Nam đứng đầu hàng, bạn Mai đứng ở giữa, bạn Việt đứng '
+                 'cuối hàng. Hỏi có mấy bạn đứng trước bạn Việt?',
+            'answer': ['2'],
+            'unit': None,
+            'solution': 'Thứ tự là Nam – Mai – Việt nên đứng trước bạn Việt có $2$ bạn là Nam và Mai.',
+            'alt': None,
+            'note': None}]},
+ {'topic': 'l1-cd04-hinh-khoi-vi-tri',
+  'context_title': 'Chủ đề 4: Làm quen với một số hình khối',
+  'context': 'SGK Toán 1 · Chủ đề 4: Khối lập phương, khối hộp chữ nhật; vị trí và định hướng trong không '
+             'gian.',
+  'title': 'Bài 16: Luyện tập chung về hình khối và vị trí',
+  'icon': '🏗️',
+  'description': 'Thực hành đếm số khối lập phương, khối hộp chữ nhật trong hình ghép và xác định vị trí đồ '
+                 'vật.',
+  'requirements': ['Đếm đúng số khối lập phương, khối hộp chữ nhật trong các hình xếp tầng.',
+                   'Kết hợp nhận dạng hình khối với xác định vị trí trên – dưới, trái – phải, ở giữa.',
+                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Đếm theo tầng** (Tổng số khối = Số khối '
+                   'tầng dưới $+$ Số khối tầng giữa $+$ Số khối tầng trên) vào giải bài tập.'],
+  'definition': 'Khi đếm số hình khối được xếp thành nhiều tầng (như bậc thang, cái tháp), ta đếm số khối ở '
+                '**từng tầng** (hoặc từng cột) rồi cộng lại để không bỏ sót các khối nằm khuất ở tầng dưới.',
+  'theory': '- Ví dụ: Một cái tháp có tầng dưới gồm $3$ khối lập phương, tầng trên đặt $1$ khối lập phương '
+            'lên giữa. Tổng số khối lập phương là $3 + 1 = 4$ khối.\n'
+            '- Khi ghép $2$ khối lập phương bằng nhau đặt sát cạnh nhau (hoặc chồng lên nhau), ta được một '
+            'hình có dạng **khối hộp chữ nhật**.',
+  'formulas': [{'category': 'Phương pháp đếm khối và ghép khối',
+                'items': [{'name': 'Đếm theo tầng',
+                           'formula': 'Tổng số khối = Số khối tầng dưới $+$ Số khối tầng giữa $+$ Số khối '
+                                      'tầng trên'},
+                          {'name': 'Ghép 2 khối lập phương',
+                           'formula': '$2$ khối lập phương bằng nhau ghép sát nhau $\\rightarrow 1$ khối hộp '
+                                      'chữ nhật'}]}],
+  'example': 'Bạn Việt xếp các khối lập phương thành một cái tháp: tầng dưới cùng có $3$ khối, tầng giữa có '
+             '$2$ khối, tầng trên cùng có $1$ khối. Cái tháp có tất cả bao nhiêu khối lập phương?',
+  'example_answer': 'Tổng số khối lập phương là: $3 + 2 + 1 = 6$ (khối lập phương).',
+  'real_life': 'Đếm số thùng hàng xếp trong kho, lắp ghép mô hình bằng gạch đồ chơi Lego.',
+  'quiz': [{'level': 'biet',
+            'type': 'mcq',
+            'q': 'Ghép $2$ khối lập phương bằng nhau đặt chồng khít lên nhau thì tạo thành một khối có dạng '
+                 'gì?',
+            'options': ['Hình tròn', 'Hình tam giác', 'Khối hộp chữ nhật', 'Vẫn là khối lập phương'],
+            'answer': 2,
+            'solution': 'Khi chồng $2$ khối lập phương bằng nhau lên nhau, chiều cao tăng gấp đôi nên tạo '
+                        'thành khối hộp chữ nhật.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Một bậc thang đồ chơi có cột bên trái gồm $1$ khối lập phương, cột bên phải gồm $2$ khối '
+                 'lập phương. Có tất cả mấy khối lập phương?',
+            'options': ['$2$', '$4$', '$1$', '$3$'],
+            'answer': 3,
+            'solution': 'Ta có $1 + 2 = 3$ (khối lập phương).',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Theo nội dung trọng tâm của **Bài 16: Luyện tập chung về hình khối và vị trí**, công thức '
+                 'hoặc quy tắc nào sau đây biểu diễn đúng **Đếm theo tầng**?',
+            'options': ['Tổng số khối = Số khối tầng dưới $+$ Số khối tầng giữa $+$ Số khối tầng trên',
+                        '$2$ khối lập phương bằng nhau ghép sát nhau $\\rightarrow 1$ khối hộp chữ nhật',
+                        '$0, 1, 2, 3, 4, 5$',
+                        '$0$ chỉ không có đồ vật nào'],
+            'answer': 0,
+            'solution': 'Theo bảng công thức trọng tâm của Bài 16: Luyện tập chung về hình khối và vị trí, '
+                        '**Đếm theo tầng** được xác định bởi: Tổng số khối = Số khối tầng dưới $+$ Số khối '
+                        'tầng giữa $+$ Số khối tầng trên.'},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Trong **Bài 16: Luyện tập chung về hình khối và vị trí**, nội dung/biểu thức $2$ khối lập '
+                 'phương bằng nhau ghép sát nhau $\\rightarrow 1$ khối hộp chữ nhật là quy tắc hoặc công '
+                 'thức của mục nào sau đây?',
+            'options': ['Đếm theo tầng', 'Ghép 2 khối lập phương', 'Dãy số từ 0 đến 5', 'Ý nghĩa số 0'],
+            'answer': 1,
+            'solution': 'Trong Bài 16: Luyện tập chung về hình khối và vị trí, biểu thức/quy tắc $2$ khối '
+                        'lập phương bằng nhau ghép sát nhau $\\rightarrow 1$ khối hộp chữ nhật chính là nội '
+                        'dung của **Ghép 2 khối lập phương**.'},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Xếp $3$ khối hộp chữ nhật chồng lên nhau: khối màu đỏ ở dưới cùng, khối màu vàng ở giữa, '
+                 'khối màu xanh ở trên cùng. Khối nào nằm ngay trên khối màu vàng?',
+            'options': ['Khối màu đỏ', 'Khối màu vàng', 'Khối màu xanh', 'Không có khối nào'],
+            'answer': 2,
+            'solution': 'Vì khối vàng ở giữa và khối xanh ở trên cùng nên khối màu xanh nằm ngay trên khối '
+                        'màu vàng.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Khi học **Bài 16: Luyện tập chung về hình khối và vị trí** (Chủ đề 4: Làm quen với một số '
+                 'hình khối), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức '
+                 'của bài?',
+            'options': ['Đếm, đọc, viết được các số $0, 1, 2, 3, 4, 5$.',
+                        'Nhận biết được số $0$ dùng để chỉ không có đồ vật nào.',
+                        'Nhận biết thứ tự các số từ $0$ đến $5$.',
+                        'Đếm đúng số khối lập phương, khối hộp chữ nhật trong các hình xếp tầng.'],
+            'answer': 3,
+            'solution': 'Theo yêu cầu cần đạt của Bài 16: Luyện tập chung về hình khối và vị trí: Đếm đúng '
+                        'số khối lập phương, khối hộp chữ nhật trong các hình xếp tầng.'},
+           {'level': 'hieu',
+            'type': 'tf',
+            'q': 'Nhận định: “Nếu tầng dưới có $4$ khối lập phương và tầng trên có $2$ khối lập phương thì '
+                 'cả hình có $6$ khối lập phương.”',
+            'answer': True,
+            'solution': 'Ta có $4 + 2 = 6$ khối lập phương. Nhận định Đúng.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'tf',
+            'q': 'Trong **Bài 16: Luyện tập chung về hình khối và vị trí**, quy tắc **Đếm theo tầng** được '
+                 'xác định bởi Tổng số khối = Số khối tầng dưới $+$ Số khối tầng giữa $+$ Số khối tầng trên '
+                 'và áp dụng trực tiếp vào bài toán: “Bạn Việt xếp các khối lập phương thành một cái tháp: '
+                 'tầng dưới cùng có $3$ khối, tầng giữa có $2$ khối, tầng trên cùng có $1$ khối. Cái '
+                 'tháp...”. Đúng hay sai?',
+            'answer': True,
+            'solution': 'Khẳng định **Đúng**. Quy tắc **Đếm theo tầng** (Tổng số khối = Số khối tầng dưới '
+                        '$+$ Số khối tầng giữa $+$ Số khối tầng trên) là kiến thức cốt lõi của Bài 16: Luyện '
+                        'tập chung về hình khối và vị trí. Tổng số khối lập phương là: $3 + 2 + 1 = 6$ (khối '
+                        'lập phương).'},
+           {'level': 'vandung',
+            'type': 'mcq',
+            'q': 'Vận dụng kiến thức **Bài 16: Luyện tập chung về hình khối và vị trí** để giải quyết tình '
+                 'huống sau: Bạn Việt xếp các khối lập phương thành một cái tháp: tầng dưới cùng có $3$ '
+                 'khối, tầng giữa có $2$ khối, tầng trên cùng có $1$ khối. Cái tháp có tất cả bao nhiêu khối '
+                 'lập phương? Kết quả và hướng giải nào dưới đây là **đúng**?',
+            'options': ['Tổng số khối lập phương là: $3 + 2 + 1 = 6$ (khối lập phương).',
+                        'Đếm số quyển vở: $1, 2, 3, 4$ nên viết số $4$. Trong hộp không có bút nào nên viết '
+                        'số $0$.',
+                        'Đếm tiếp sau $7$ là $8$, sau $9$ là $10$. Dãy số đầy đủ là $6, 7, 8, 9, 10$.',
+                        'Mỗi bạn thỏ nhận $1$ củ cà rốt thì còn $1$ bạn thỏ chưa có cà rốt ($5 > 4$). Vậy số '
+                        'thỏ **nhiều hơn** số cà rốt.'],
+            'answer': 0,
+            'solution': 'Lời giải chi tiết theo Bài 16: Luyện tập chung về hình khối và vị trí: Tổng số khối '
+                        'lập phương là: $3 + 2 + 1 = 6$ (khối lập phương).'},
+           {'level': 'vandung',
+            'type': 'short',
+            'q': 'Giá sách có $3$ ngăn: ngăn trên cùng có $4$ quyển truyện, ngăn ở giữa có $3$ quyển, ngăn '
+                 'dưới cùng có $2$ quyển. Hỏi ngăn ở giữa và ngăn dưới cùng có tất cả bao nhiêu quyển '
+                 'truyện?',
+            'answer': ['5'],
+            'unit': None,
+            'solution': 'Ngăn ở giữa ($3$ quyển) cộng ngăn dưới cùng ($2$ quyển) là: $3 + 2 = 5$ (quyển '
+                        'truyện).',
+            'alt': None,
+            'note': None}]},
+ {'topic': 'l1-cd05-on-tap-hoc-ki-1',
+  'context_title': 'Chủ đề 5: Ôn tập học kì 1',
+  'context': 'SGK Toán 1 · Chủ đề 5: Ôn tập các số, phép cộng, phép trừ trong phạm vi 10 và hình học.',
+  'title': 'Bài 17: Ôn tập các số trong phạm vi 10',
+  'icon': '📝',
+  'description': 'Hệ thống lại kỹ năng đếm, đọc, viết, so sánh, sắp xếp và cấu tạo các số từ 0 đến 10.',
+  'requirements': ['Đếm, đọc, viết thành thạo các số từ $0$ đến $10$.',
+                   'So sánh, xếp thứ tự các số từ bé đến lớn và từ lớn đến bé.',
+                   'Nắm vững cấu tạo số (mấy và mấy) trong phạm vi $10$.'],
+  'definition': 'Dãy số tự nhiên từ $0$ đến $10$ theo thứ tự tăng dần là: $0, 1, 2, 3, 4, 5, 6, 7, 8, 9, '
+                '10$. Số đứng trước luôn bé hơn số đứng sau.',
+  'theory': '- **So sánh và sắp xếp:** Muốn xếp theo thứ tự từ bé đến lớn, ta tìm số bé nhất viết trước rồi '
+            'tăng dần; ngược lại từ lớn đến bé thì viết số lớn nhất trước.\n'
+            '- **Tìm số theo điều kiện:** Ví dụ các số lớn hơn $6$ và bé hơn $10$ là $7, 8, 9$.\n'
+            '- **Cấu tạo số:** Nếu $a$ gồm $b$ và $c$ thì $b + c = a$.',
+  'formulas': [{'category': 'Hệ thống kiến thức số từ 0 đến 10',
+                'items': [{'name': 'Thứ tự tăng dần',
+                           'formula': '$0 < 1 < 2 < 3 < 4 < 5 < 6 < 7 < 8 < 9 < 10$'},
+                          {'name': 'Thứ tự giảm dần',
+                           'formula': '$10 > 9 > 8 > 7 > 6 > 5 > 4 > 3 > 2 > 1 > 0$'}]}],
+  'example': 'Cho các số $3, 8, 6, 5$. Hãy tìm số lớn nhất, số bé nhất và xếp các số theo thứ tự từ lớn đến '
+             'bé.',
+  'example_answer': 'Số lớn nhất là $8$, số bé nhất là $3$. Thứ tự từ lớn đến bé là: $8, 6, 5, 3$.',
+  'real_life': 'Đọc số tầng thang máy, xếp thứ tự danh sách học sinh, kiểm đếm đồ dùng học tập.',
+  'quiz': [{'level': 'biet',
+            'type': 'mcq',
+            'q': 'Số lớn nhất trong các số $3, 8, 6, 5$ là:',
+            'options': ['$3$', '$6$', '$5$', '$8$'],
+            'answer': 3,
+            'solution': 'Vì $3 < 5 < 6 < 8$ nên số lớn nhất là $8$.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Số $7$ gồm $4$ và mấy?',
+            'options': ['$3$', '$2$', '$4$', '$5$'],
+            'answer': 0,
+            'solution': 'Vì $4 + 3 = 7$ nên $7$ gồm $4$ và $3$.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Theo nội dung trọng tâm của **Bài 17: Ôn tập các số trong phạm vi 10**, công thức hoặc quy '
+                 'tắc nào sau đây biểu diễn đúng **Thứ tự tăng dần**?',
+            'options': ['$10 > 9 > 8 > 7 > 6 > 5 > 4 > 3 > 2 > 1 > 0$',
+                        '$0 < 1 < 2 < 3 < 4 < 5 < 6 < 7 < 8 < 9 < 10$',
+                        '$0, 1, 2, 3, 4, 5$',
+                        '$0$ chỉ không có đồ vật nào'],
+            'answer': 1,
+            'solution': 'Theo bảng công thức trọng tâm của Bài 17: Ôn tập các số trong phạm vi 10, **Thứ tự '
+                        'tăng dần** được xác định bởi: $0 < 1 < 2 < 3 < 4 < 5 < 6 < 7 < 8 < 9 < 10$.'},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Trong **Bài 17: Ôn tập các số trong phạm vi 10**, nội dung/biểu thức $10 > 9 > 8 > 7 > 6 > '
+                 '5 > 4 > 3 > 2 > 1 > 0$ là quy tắc hoặc công thức của mục nào sau đây?',
+            'options': ['Thứ tự tăng dần', 'Dãy số từ 0 đến 5', 'Thứ tự giảm dần', 'Ý nghĩa số 0'],
+            'answer': 2,
+            'solution': 'Trong Bài 17: Ôn tập các số trong phạm vi 10, biểu thức/quy tắc $10 > 9 > 8 > 7 > 6 '
+                        '> 5 > 4 > 3 > 2 > 1 > 0$ chính là nội dung của **Thứ tự giảm dần**.'},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Có bao nhiêu số lớn hơn $5$ nhưng bé hơn $9$?',
+            'options': ['$2$ số', '$4$ số', '$1$ số', '$3$ số'],
+            'answer': 3,
+            'solution': 'Các số lớn hơn $5$ và bé hơn $9$ là $6, 7, 8$. Vậy có $3$ số.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Khi học **Bài 17: Ôn tập các số trong phạm vi 10** (Chủ đề 5: Ôn tập học kì 1), khẳng định '
+                 'nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
+            'options': ['Đếm, đọc, viết thành thạo các số từ $0$ đến $10$.',
+                        'Đếm, đọc, viết được các số $0, 1, 2, 3, 4, 5$.',
+                        'Nhận biết được số $0$ dùng để chỉ không có đồ vật nào.',
+                        'Nhận biết thứ tự các số từ $0$ đến $5$.'],
+            'answer': 0,
+            'solution': 'Theo yêu cầu cần đạt của Bài 17: Ôn tập các số trong phạm vi 10: Đếm, đọc, viết '
+                        'thành thạo các số từ $0$ đến $10$.'},
+           {'level': 'hieu',
+            'type': 'tf',
+            'q': 'Nhận định: “Các số $9, 4, 7, 1$ được viết theo thứ tự từ lớn đến bé.”',
+            'answer': False,
+            'solution': 'Vì $4 < 7$ nên thứ tự từ lớn đến bé đúng phải là $9, 7, 4, 1$. Nhận định Sai.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'tf',
+            'q': 'Trong **Bài 17: Ôn tập các số trong phạm vi 10**, quy tắc **Thứ tự tăng dần** được xác '
+                 'định bởi $0 < 1 < 2 < 3 < 4 < 5 < 6 < 7 < 8 < 9 < 10$ và áp dụng trực tiếp vào bài toán: '
+                 '“Cho các số $3, 8, 6, 5$. Hãy tìm số lớn nhất, số bé nhất và xếp các số theo thứ tự từ lớn '
+                 'đến bé.”. Đúng hay sai?',
+            'answer': True,
+            'solution': 'Khẳng định **Đúng**. Quy tắc **Thứ tự tăng dần** ($0 < 1 < 2 < 3 < 4 < 5 < 6 < 7 < '
+                        '8 < 9 < 10$) là kiến thức cốt lõi của Bài 17: Ôn tập các số trong phạm vi 10. Số '
+                        'lớn nhất là $8$, số bé nhất là $3$. Thứ tự từ lớn đến bé là: $8, 6, 5, 3$.'},
+           {'level': 'vandung',
+            'type': 'mcq',
+            'q': 'Vận dụng kiến thức **Bài 17: Ôn tập các số trong phạm vi 10** để giải quyết tình huống '
+                 'sau: Cho các số $3, 8, 6, 5$. Hãy tìm số lớn nhất, số bé nhất và xếp các số theo thứ tự từ '
+                 'lớn đến bé. Kết quả và hướng giải nào dưới đây là **đúng**?',
+            'options': ['Đếm số quyển vở: $1, 2, 3, 4$ nên viết số $4$. Trong hộp không có bút nào nên viết '
+                        'số $0$.',
+                        'Số lớn nhất là $8$, số bé nhất là $3$. Thứ tự từ lớn đến bé là: $8, 6, 5, 3$.',
+                        'Đếm tiếp sau $7$ là $8$, sau $9$ là $10$. Dãy số đầy đủ là $6, 7, 8, 9, 10$.',
+                        'Mỗi bạn thỏ nhận $1$ củ cà rốt thì còn $1$ bạn thỏ chưa có cà rốt ($5 > 4$). Vậy số '
+                        'thỏ **nhiều hơn** số cà rốt.'],
+            'answer': 1,
+            'solution': 'Lời giải chi tiết theo Bài 17: Ôn tập các số trong phạm vi 10: Số lớn nhất là $8$, '
+                        'số bé nhất là $3$. Thứ tự từ lớn đến bé là: $8, 6, 5, 3$.'},
+           {'level': 'vandung',
+            'type': 'short',
+            'q': 'Số chẵn lớn nhất có một chữ số là số nào?',
+            'answer': ['8'],
+            'unit': None,
+            'solution': 'Các số có một chữ số là từ $0$ đến $9$. Trong các số $0, 2, 4, 6, 8$ thì số lớn '
+                        'nhất là $8$.',
+            'alt': None,
+            'note': None}]},
+ {'topic': 'l1-cd05-on-tap-hoc-ki-1',
+  'context_title': 'Chủ đề 5: Ôn tập học kì 1',
+  'context': 'SGK Toán 1 · Chủ đề 5: Ôn tập các số, phép cộng, phép trừ trong phạm vi 10 và hình học.',
+  'title': 'Bài 18: Ôn tập phép cộng, phép trừ trong phạm vi 10',
+  'icon': '➕',
+  'description': 'Củng cố tính nhẩm bảng cộng, bảng trừ, tính biểu thức hai dấu phép tính và giải toán trong '
+                 'phạm vi 10.',
+  'requirements': ['Tính nhẩm nhanh các phép cộng, phép trừ trong phạm vi $10$.',
+                   'Thực hiện thành thạo dãy tính có hai dấu phép tính cộng, trừ.',
+                   'Giải được bài toán thực tế có một hoặc hai bước tính đơn giản trong phạm vi $10$.'],
+  'definition': '- Khi đổi chỗ các số trong phép cộng thì kết quả không đổi: $a + b = b + a$.\n'
+                '- Từ một phép cộng $a + b = c$, ta viết được hai phép trừ: $c - a = b$ và $c - b = a$.',
+  'theory': '- **Tính chất số $0$:** $a + 0 = 0 + a = a$; $a - 0 = a$; $a - a = 0$.\n'
+            '- **Hai dấu phép tính:** Luôn thực hiện từ trái sang phải. Ví dụ: $5 - 2 + 3 = 3 + 3 = 6$.\n'
+            '- **So sánh biểu thức:** Tính giá trị của từng vế rồi so sánh hai số vừa tìm được.',
+  'formulas': [{'category': 'Các quy tắc tính nhẩm trọng tâm',
+                'items': [{'name': 'Số 0 trong cộng, trừ',
+                           'formula': '$a + 0 = a;\\ a - 0 = a;\\ a - a = 0$'},
+                          {'name': 'Liên hệ Cộng – Trừ',
+                           'formula': '$a + b = c \\Rightarrow c - a = b$ và $c - b = a$'},
+                          {'name': 'Dãy tính 2 bước',
+                           'formula': 'Tính lần lượt từ trái sang phải',
+                           'note': 'Ví dụ: $10 - 3 - 4 = 7 - 4 = 3$.'}]}],
+  'example': 'Điền dấu $>, <, =$ thích hợp vào chỗ chấm: $4 + 3 \\dots 9 - 2$.',
+  'example_answer': 'Ta có $4 + 3 = 7$ và $9 - 2 = 7$. Vì $7 = 7$ nên ta điền dấu $=$, tức là $4 + 3 = 9 - '
+                    '2$.',
+  'real_life': 'Tính số bút chì, số quyển vở sau khi cho bạn mượn và được mẹ mua thêm.',
+  'quiz': [{'level': 'biet',
+            'type': 'mcq',
+            'q': 'Kết quả của phép tính $10 - 4$ là:',
+            'options': ['$6$', '$5$', '$7$', '$4$'],
+            'answer': 0,
+            'solution': 'Vì $4 + 6 = 10$ nên $10 - 4 = 6$.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Phép tính nào dưới đây có kết quả bé nhất?',
+            'options': ['$2 + 5$', '$10 - 6$', '$9 - 1$', '$4 + 4$'],
+            'answer': 1,
+            'solution': 'Tính từng phép tính: $2 + 5 = 7$; $9 - 1 = 8$; $4 + 4 = 8$; $10 - 6 = 4$. Bé nhất '
+                        'là $4$.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Theo nội dung trọng tâm của **Bài 18: Ôn tập phép cộng, phép trừ trong phạm vi 10**, công '
+                 'thức hoặc quy tắc nào sau đây biểu diễn đúng **Số 0 trong cộng, trừ**?',
+            'options': ['$a + b = c \\Rightarrow c - a = b$ và $c - b = a$',
+                        'Tính lần lượt từ trái sang phải',
+                        '$a + 0 = a;\\ a - 0 = a;\\ a - a = 0$',
+                        '$0, 1, 2, 3, 4, 5$'],
+            'answer': 2,
+            'solution': 'Theo bảng công thức trọng tâm của Bài 18: Ôn tập phép cộng, phép trừ trong phạm vi '
+                        '10, **Số 0 trong cộng, trừ** được xác định bởi: $a + 0 = a;\\ a - 0 = a;\\ a - a = '
+                        '0$.'},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Trong **Bài 18: Ôn tập phép cộng, phép trừ trong phạm vi 10**, nội dung/biểu thức $a + b = '
+                 'c \\Rightarrow c - a = b$ và $c - b = a$ là quy tắc hoặc công thức của mục nào sau đây?',
+            'options': ['Số 0 trong cộng, trừ', 'Dãy tính 2 bước', 'Dãy số từ 0 đến 5', 'Liên hệ Cộng – Trừ'],
+            'answer': 3,
+            'solution': 'Trong Bài 18: Ôn tập phép cộng, phép trừ trong phạm vi 10, biểu thức/quy tắc $a + b '
+                        '= c \\Rightarrow c - a = b$ và $c - b = a$ chính là nội dung của **Liên hệ Cộng – '
+                        'Trừ**.'},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Hà có $5$ bút chì. Hà cho em $2$ bút chì, sau đó mẹ mua thêm cho Hà $3$ bút chì. Hỏi lúc '
+                 'này Hà có mấy bút chì?',
+            'options': ['$6$ bút chì', '$10$ bút chì', '$4$ bút chì', '$5$ bút chì'],
+            'answer': 0,
+            'solution': 'Ta có phép tính: $5 - 2 + 3 = 3 + 3 = 6$ (bút chì).',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Khi học **Bài 18: Ôn tập phép cộng, phép trừ trong phạm vi 10** (Chủ đề 5: Ôn tập học kì '
+                 '1), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của '
+                 'bài?',
+            'options': ['Đếm, đọc, viết được các số $0, 1, 2, 3, 4, 5$.',
+                        'Tính nhẩm nhanh các phép cộng, phép trừ trong phạm vi $10$.',
+                        'Nhận biết được số $0$ dùng để chỉ không có đồ vật nào.',
+                        'Nhận biết thứ tự các số từ $0$ đến $5$.'],
+            'answer': 1,
+            'solution': 'Theo yêu cầu cần đạt của Bài 18: Ôn tập phép cộng, phép trừ trong phạm vi 10: Tính '
+                        'nhẩm nhanh các phép cộng, phép trừ trong phạm vi $10$.'},
+           {'level': 'hieu',
+            'type': 'tf',
+            'q': 'Nhận định: “Kết quả của phép tính $5 + 4$ lớn hơn $10$.”',
+            'answer': False,
+            'solution': 'Ta có $5 + 4 = 9$, mà $9 < 10$ nên kết quả bé hơn $10$. Nhận định Sai.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'tf',
+            'q': 'Trong **Bài 18: Ôn tập phép cộng, phép trừ trong phạm vi 10**, quy tắc **Số 0 trong cộng, '
+                 'trừ** được xác định bởi $a + 0 = a;\\ a - 0 = a;\\ a - a = 0$ và áp dụng trực tiếp vào bài '
+                 'toán: “Điền dấu $>, <, =$ thích hợp vào chỗ chấm: $4 + 3 \\dots 9 - 2$.”. Đúng hay sai?',
+            'answer': True,
+            'solution': 'Khẳng định **Đúng**. Quy tắc **Số 0 trong cộng, trừ** ($a + 0 = a;\\ a - 0 = a;\\ a '
+                        '- a = 0$) là kiến thức cốt lõi của Bài 18: Ôn tập phép cộng, phép trừ trong phạm vi '
+                        '10. Ta có $4 + 3 = 7$ và $9 - 2 = 7$. Vì $7 = 7$ nên ta điền dấu $=$, tức là $4 + 3 '
+                        '= 9 - 2$.'},
+           {'level': 'vandung',
+            'type': 'mcq',
+            'q': 'Vận dụng kiến thức **Bài 18: Ôn tập phép cộng, phép trừ trong phạm vi 10** để giải quyết '
+                 'tình huống sau: Điền dấu $>, <, =$ thích hợp vào chỗ chấm: $4 + 3 \\dots 9 - 2$. Kết quả '
+                 'và hướng giải nào dưới đây là **đúng**?',
+            'options': ['Đếm số quyển vở: $1, 2, 3, 4$ nên viết số $4$. Trong hộp không có bút nào nên viết '
+                        'số $0$.',
+                        'Đếm tiếp sau $7$ là $8$, sau $9$ là $10$. Dãy số đầy đủ là $6, 7, 8, 9, 10$.',
+                        'Ta có $4 + 3 = 7$ và $9 - 2 = 7$. Vì $7 = 7$ nên ta điền dấu $=$, tức là $4 + 3 = 9 '
+                        '- 2$.',
+                        'Mỗi bạn thỏ nhận $1$ củ cà rốt thì còn $1$ bạn thỏ chưa có cà rốt ($5 > 4$). Vậy số '
+                        'thỏ **nhiều hơn** số cà rốt.'],
+            'answer': 2,
+            'solution': 'Lời giải chi tiết theo Bài 18: Ôn tập phép cộng, phép trừ trong phạm vi 10: Ta có '
+                        '$4 + 3 = 7$ và $9 - 2 = 7$. Vì $7 = 7$ nên ta điền dấu $=$, tức là $4 + 3 = 9 - '
+                        '2$.'},
+           {'level': 'vandung',
+            'type': 'short',
+            'q': 'Trong vườn có $10$ cây ăn quả gồm cây cam và cây bưởi, trong đó có $6$ cây cam. Hỏi trong '
+                 'vườn có mấy cây bưởi?',
+            'answer': ['4'],
+            'unit': None,
+            'solution': 'Số cây bưởi trong vườn là: $10 - 6 = 4$ (cây).',
+            'alt': None,
+            'note': None}]},
+ {'topic': 'l1-cd05-on-tap-hoc-ki-1',
+  'context_title': 'Chủ đề 5: Ôn tập học kì 1',
+  'context': 'SGK Toán 1 · Chủ đề 5: Ôn tập các số, phép cộng, phép trừ trong phạm vi 10 và hình học.',
+  'title': 'Bài 19: Ôn tập hình học và Ôn tập chung học kì 1',
+  'icon': '🏆',
+  'description': 'Ôn tập nhận dạng hình phẳng, hình khối, vị trí trong không gian và giải bài toán tổng hợp '
+                 'học kì 1.',
+  'requirements': ['Phân biệt rõ các hình phẳng (vuông, tròn, tam giác, chữ nhật) và các hình khối (khối lập '
+                   'phương, khối hộp chữ nhật).',
+                   'Đếm đúng số hình phẳng, hình khối trong các mô hình lắp ghép.',
+                   'Vận dụng tổng hợp kiến thức số học và hình học để giải quyết tình huống thực tế.'],
+  'definition': '- **Hình phẳng:** Hình vuông ($4$ cạnh bằng nhau), hình chữ nhật ($4$ cạnh), hình tam giác '
+                '($3$ cạnh), hình tròn (đường cong kín).\n'
+                '- **Hình khối:** Khối lập phương ($6$ mặt đều là hình vuông), khối hộp chữ nhật ($6$ mặt là '
+                'hình chữ nhật).',
+  'theory': '- Khi đếm số hình tam giác hoặc hình vuông trên hình vẽ có đường kẻ chia nhỏ, cần đếm các '
+            '**hình đơn** trước rồi đếm các **hình ghép** từ $2$ hình nhỏ trở lên.\n'
+            '- Ví dụ: Một hình vuông được kẻ $1$ đường chéo nối hai góc đối diện sẽ tạo ra $2$ hình tam giác '
+            'bên trong $1$ hình vuông.',
+  'formulas': [{'category': 'Tổng hợp hình học học kì 1',
+                'items': [{'name': 'Số cạnh hình phẳng',
+                           'formula': 'Tam giác: $3$ cạnh; Hình vuông, Hình chữ nhật: $4$ cạnh; Hình tròn: '
+                                      '$0$ cạnh thẳng'},
+                          {'name': 'Đếm hình có ghép',
+                           'formula': 'Tổng số hình = Số hình đơn $+$ Số hình ghép từ $2$ phần trở lên'}]}],
+  'example': 'Một tờ bìa hình chữ nhật được cắt bởi $1$ đường chéo nối hai góc đối diện. Hỏi thu được mấy '
+             'hình tam giác?',
+  'example_answer': 'Đường chéo chia tờ bìa hình chữ nhật thành $2$ mảnh, mỗi mảnh có $3$ cạnh nên thu được '
+                    '$2$ hình tam giác.',
+  'real_life': 'Nhận dạng hình học trong kiến trúc nhà cửa, đồ chơi lắp ghép và kiểm tra tổng kết cuối học '
+               'kì 1.',
+  'quiz': [{'level': 'biet',
+            'type': 'mcq',
+            'q': 'Hình nào có $4$ cạnh dài bằng nhau?',
+            'options': ['Hình tròn', 'Hình vuông', 'Hình tam giác', 'Hình chữ nhật dài'],
+            'answer': 1,
+            'solution': 'Hình vuông có $4$ cạnh thẳng dài bằng nhau.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Đồ vật nào dưới đây có dạng khối hộp chữ nhật?',
+            'options': ['Quả bóng bàn', 'Chiếc đĩa tròn', 'Hộp sữa giấy', 'Khăn tay vuông'],
+            'answer': 2,
+            'solution': 'Hộp sữa giấy là hình khối có các mặt là hình chữ nhật nên có dạng khối hộp chữ '
+                        'nhật.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Theo nội dung trọng tâm của **Bài 19: Ôn tập hình học và Ôn tập chung học kì 1**, công '
+                 'thức hoặc quy tắc nào sau đây biểu diễn đúng **Số cạnh hình phẳng**?',
+            'options': ['Tổng số hình = Số hình đơn $+$ Số hình ghép từ $2$ phần trở lên',
+                        '$0, 1, 2, 3, 4, 5$',
+                        '$0$ chỉ không có đồ vật nào',
+                        'Tam giác: $3$ cạnh; Hình vuông, Hình chữ nhật: $4$ cạnh; Hình tròn: $0$ cạnh thẳng'],
+            'answer': 3,
+            'solution': 'Theo bảng công thức trọng tâm của Bài 19: Ôn tập hình học và Ôn tập chung học kì 1, '
+                        '**Số cạnh hình phẳng** được xác định bởi: Tam giác: $3$ cạnh; Hình vuông, Hình chữ '
+                        'nhật: $4$ cạnh; Hình tròn: $0$ cạnh thẳng.'},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Trong **Bài 19: Ôn tập hình học và Ôn tập chung học kì 1**, nội dung/biểu thức Tổng số '
+                 'hình = Số hình đơn $+$ Số hình ghép từ $2$ phần trở lên là quy tắc hoặc công thức của mục '
+                 'nào sau đây?',
+            'options': ['Đếm hình có ghép', 'Số cạnh hình phẳng', 'Dãy số từ 0 đến 5', 'Ý nghĩa số 0'],
+            'answer': 0,
+            'solution': 'Trong Bài 19: Ôn tập hình học và Ôn tập chung học kì 1, biểu thức/quy tắc Tổng số '
+                        'hình = Số hình đơn $+$ Số hình ghép từ $2$ phần trở lên chính là nội dung của **Đếm '
+                        'hình có ghép**.'},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Ghép $2$ hình tam giác vuông cân bằng nhau theo cạnh dài nhất thì tạo thành được $1$ hình '
+                 'vuông. Nếu có $6$ hình tam giác như thế thì ghép được mấy hình vuông rời nhau?',
+            'options': ['$2$ hình vuông', '$3$ hình vuông', '$4$ hình vuông', '$6$ hình vuông'],
+            'answer': 1,
+            'solution': 'Cứ $2$ hình tam giác ghép được $1$ hình vuông. Có $6$ hình tam giác ($2 + 2 + 2 = '
+                        '6$) nên ghép được $3$ hình vuông.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Khi học **Bài 19: Ôn tập hình học và Ôn tập chung học kì 1** (Chủ đề 5: Ôn tập học kì 1), '
+                 'khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
+            'options': ['Đếm, đọc, viết được các số $0, 1, 2, 3, 4, 5$.',
+                        'Nhận biết được số $0$ dùng để chỉ không có đồ vật nào.',
+                        'Phân biệt rõ các hình phẳng (vuông, tròn, tam giác, chữ nhật) và các hình khối '
+                        '(khối lập phương, khối hộp chữ nhật).',
+                        'Nhận biết thứ tự các số từ $0$ đến $5$.'],
+            'answer': 2,
+            'solution': 'Theo yêu cầu cần đạt của Bài 19: Ôn tập hình học và Ôn tập chung học kì 1: Phân '
+                        'biệt rõ các hình phẳng (vuông, tròn, tam giác, chữ nhật) và các hình khối (khối lập '
+                        'phương, khối hộp chữ nhật).'},
+           {'level': 'hieu',
+            'type': 'tf',
+            'q': 'Nhận định: “Mọi mặt của khối lập phương đều là hình vuông.”',
+            'answer': True,
+            'solution': 'Khối lập phương có $6$ mặt và tất cả các mặt đều là hình vuông. Nhận định Đúng.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'tf',
+            'q': 'Trong **Bài 19: Ôn tập hình học và Ôn tập chung học kì 1**, quy tắc **Số cạnh hình phẳng** '
+                 'được xác định bởi Tam giác: $3$ cạnh; Hình vuông, Hình chữ nhật: $4$ cạnh; Hình tròn: $0$ '
+                 'cạnh thẳng và áp dụng trực tiếp vào bài toán: “Một tờ bìa hình chữ nhật được cắt bởi $1$ '
+                 'đường chéo nối hai góc đối diện. Hỏi thu được mấy hình tam giác?”. Đúng hay sai?',
+            'answer': True,
+            'solution': 'Khẳng định **Đúng**. Quy tắc **Số cạnh hình phẳng** (Tam giác: $3$ cạnh; Hình '
+                        'vuông, Hình chữ nhật: $4$ cạnh; Hình tròn: $0$ cạnh thẳng) là kiến thức cốt lõi của '
+                        'Bài 19: Ôn tập hình học và Ôn tập chung học kì 1. Đường chéo chia tờ bìa hình chữ '
+                        'nhật thành $2$ mảnh, mỗi mảnh có $3$ cạnh nên thu được $2$ hình tam giác.'},
+           {'level': 'vandung',
+            'type': 'mcq',
+            'q': 'Vận dụng kiến thức **Bài 19: Ôn tập hình học và Ôn tập chung học kì 1** để giải quyết tình '
+                 'huống sau: Một tờ bìa hình chữ nhật được cắt bởi $1$ đường chéo nối hai góc đối diện. Hỏi '
+                 'thu được mấy hình tam giác? Kết quả và hướng giải nào dưới đây là **đúng**?',
+            'options': ['Đếm số quyển vở: $1, 2, 3, 4$ nên viết số $4$. Trong hộp không có bút nào nên viết '
+                        'số $0$.',
+                        'Đếm tiếp sau $7$ là $8$, sau $9$ là $10$. Dãy số đầy đủ là $6, 7, 8, 9, 10$.',
+                        'Mỗi bạn thỏ nhận $1$ củ cà rốt thì còn $1$ bạn thỏ chưa có cà rốt ($5 > 4$). Vậy số '
+                        'thỏ **nhiều hơn** số cà rốt.',
+                        'Đường chéo chia tờ bìa hình chữ nhật thành $2$ mảnh, mỗi mảnh có $3$ cạnh nên thu '
+                        'được $2$ hình tam giác.'],
+            'answer': 3,
+            'solution': 'Lời giải chi tiết theo Bài 19: Ôn tập hình học và Ôn tập chung học kì 1: Đường chéo '
+                        'chia tờ bìa hình chữ nhật thành $2$ mảnh, mỗi mảnh có $3$ cạnh nên thu được $2$ '
+                        'hình tam giác.'},
+           {'level': 'vandung',
+            'type': 'short',
+            'q': 'Một hình vuông lớn được kẻ một đường thẳng nối hai góc đối diện (chia đôi hình vuông). Hỏi '
+                 'trên hình vẽ có tất cả bao nhiêu hình tam giác?',
+            'answer': ['2'],
+            'unit': None,
+            'solution': 'Đường chéo chia hình vuông thành $2$ hình tam giác.',
+            'alt': None,
+            'note': None}]},
+ {'topic': 'l1-cd06-cac-so-den-100',
+  'context_title': 'Chủ đề 6: Các số đến 100',
+  'context': 'SGK Toán 1 · Chủ đề 6: Số có hai chữ số, chục và đơn vị, so sánh số, bảng các số từ 1 đến 100.',
+  'title': 'Bài 21: Số có hai chữ số',
+  'icon': '💯',
+  'description': 'Nhận biết chục và đơn vị, số tròn chục; đếm, đọc, viết các số có hai chữ số đến 99.',
+  'requirements': ['Nhận biết $10$ đơn vị bằng $1$ chục; nhận biết các số tròn chục ($10, 20, \\dots, 90$).',
+                   'Đếm, đọc, viết được các số từ $11$ đến $99$.',
+                   'Nêu được cấu tạo của số có hai chữ số gồm mấy chục và mấy đơn vị.'],
+  'definition': '- **$10$ đơn vị $= 1$ chục.**\n'
+                '- **Số có hai chữ số** gồm chữ số **hàng chục** viết ở bên trái và chữ số **hàng đơn vị** '
+                'viết ở bên phải. Ví dụ: Số $36$ gồm $3$ chục và $6$ đơn vị.',
+  'theory': '- **Các số từ $11$ đến $19$:** gồm $1$ chục và $1, 2, \\dots, 9$ đơn vị. Đọc là: mười một '
+            '($11$), mười hai ($12$), ..., mười lăm ($15$), ..., mười chín ($19$).\n'
+            '- **Các số tròn chục:** $10, 20, 30, 40, 50, 60, 70, 80, 90$ đều có chữ số hàng đơn vị là $0$.\n'
+            '- **Lưu ý cách đọc số từ $20$ đến $99$:**\n'
+            '  + Hàng đơn vị là $1$ (từ $21$ trở đi) đọc là **mốt**: $21$ đọc là hai mươi mốt.\n'
+            '  + Hàng đơn vị là $4$ (từ $24$ trở đi) đọc là **tư** (hoặc bốn): $34$ đọc là ba mươi tư.\n'
+            '  + Hàng đơn vị là $5$ (từ $15$ trở đi) đọc là **lăm**: $75$ đọc là bảy mươi lăm.',
+  'formulas': [{'category': 'Cấu tạo và cách đọc số có hai chữ số',
+                'items': [{'name': 'Quy đổi chục – đơn vị', 'formula': '$1$ chục $= 10$ đơn vị'},
+                          {'name': 'Cấu tạo số',
+                           'formula': 'Số $\\overline{ab}$ gồm $a$ chục và $b$ đơn vị ($a \\neq 0$)',
+                           'note': 'Ví dụ: $45$ gồm $4$ chục và $5$ đơn vị.'},
+                          {'name': 'Các số tròn chục',
+                           'formula': '$10, 20, 30, 40, 50, 60, 70, 80, 90$',
+                           'note': 'Chữ số hàng đơn vị bằng $0$.'}]}],
+  'example': 'Viết số gồm $6$ chục và $2$ đơn vị, rồi nêu cách đọc số đó.',
+  'example_answer': 'Số gồm $6$ chục và $2$ đơn vị viết là $62$, đọc là **sáu mươi hai**.',
+  'real_life': 'Đếm trứng theo vỉ $10$ quả ($1$ chục), đếm đũa theo bó $1$ chục chiếc, đọc số nhà và số '
+               'trang sách.',
+  'quiz': [{'level': 'biet',
+            'type': 'mcq',
+            'q': 'Số gồm $3$ chục và $6$ đơn vị được viết là:',
+            'options': ['$63$', '$306$', '$36$', '$9$'],
+            'answer': 2,
+            'solution': 'Chữ số hàng chục là $3$ viết bên trái, chữ số hàng đơn vị là $6$ viết bên phải, ta '
+                        'được số $36$.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Số “bảy mươi lăm” được viết là:',
+            'options': ['$705$', '$57$', '$7$', '$75$'],
+            'answer': 3,
+            'solution': 'Bảy mươi là $7$ chục, lăm là $5$ đơn vị, viết là $75$.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Theo nội dung trọng tâm của **Bài 21: Số có hai chữ số**, công thức hoặc quy tắc nào sau '
+                 'đây biểu diễn đúng **Quy đổi chục – đơn vị**?',
+            'options': ['$1$ chục $= 10$ đơn vị',
+                        'Số $\\overline{ab}$ gồm $a$ chục và $b$ đơn vị ($a \\neq 0$)',
+                        '$10, 20, 30, 40, 50, 60, 70, 80, 90$',
+                        '$0, 1, 2, 3, 4, 5$'],
+            'answer': 0,
+            'solution': 'Theo bảng công thức trọng tâm của Bài 21: Số có hai chữ số, **Quy đổi chục – đơn '
+                        'vị** được xác định bởi: $1$ chục $= 10$ đơn vị.'},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Trong **Bài 21: Số có hai chữ số**, nội dung/biểu thức Số $\\overline{ab}$ gồm $a$ chục và '
+                 '$b$ đơn vị ($a \\neq 0$) là quy tắc hoặc công thức của mục nào sau đây?',
+            'options': ['Quy đổi chục – đơn vị', 'Cấu tạo số', 'Các số tròn chục', 'Dãy số từ 0 đến 5'],
+            'answer': 1,
+            'solution': 'Trong Bài 21: Số có hai chữ số, biểu thức/quy tắc Số $\\overline{ab}$ gồm $a$ chục '
+                        'và $b$ đơn vị ($a \\neq 0$) chính là nội dung của **Cấu tạo số**.'},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Trong các số $45, 60, 61, 9$, số nào là số tròn chục?',
+            'options': ['$45$', '$61$', '$60$', '$9$'],
+            'answer': 2,
+            'solution': 'Số tròn chục là số có hai chữ số và chữ số hàng đơn vị bằng $0$, đó là số $60$ ($6$ '
+                        'chục).',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Khi học **Bài 21: Số có hai chữ số** (Chủ đề 6: Các số đến 100), khẳng định nào sau đây '
+                 'phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
+            'options': ['Đếm, đọc, viết được các số $0, 1, 2, 3, 4, 5$.',
+                        'Nhận biết được số $0$ dùng để chỉ không có đồ vật nào.',
+                        'Nhận biết thứ tự các số từ $0$ đến $5$.',
+                        'Nhận biết $10$ đơn vị bằng $1$ chục; nhận biết các số tròn chục ($10, 20, \\dots, '
+                        '90$).'],
+            'answer': 3,
+            'solution': 'Theo yêu cầu cần đạt của Bài 21: Số có hai chữ số: Nhận biết $10$ đơn vị bằng $1$ '
+                        'chục; nhận biết các số tròn chục ($10, 20, \\dots, 90$).'},
+           {'level': 'hieu',
+            'type': 'tf',
+            'q': 'Nhận định: “Số $15$ đọc là mười lăm và gồm $1$ chục và $5$ đơn vị.”',
+            'answer': True,
+            'solution': 'Số $15$ có chữ số hàng chục là $1$, hàng đơn vị là $5$ và đọc là mười lăm. Nhận '
+                        'định Đúng.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'tf',
+            'q': 'Trong **Bài 21: Số có hai chữ số**, quy tắc **Quy đổi chục – đơn vị** được xác định bởi '
+                 '$1$ chục $= 10$ đơn vị và áp dụng trực tiếp vào bài toán: “Viết số gồm $6$ chục và $2$ đơn '
+                 'vị, rồi nêu cách đọc số đó.”. Đúng hay sai?',
+            'answer': True,
+            'solution': 'Khẳng định **Đúng**. Quy tắc **Quy đổi chục – đơn vị** ($1$ chục $= 10$ đơn vị) là '
+                        'kiến thức cốt lõi của Bài 21: Số có hai chữ số. Số gồm $6$ chục và $2$ đơn vị viết '
+                        'là $62$, đọc là **sáu mươi hai**.'},
+           {'level': 'vandung',
+            'type': 'mcq',
+            'q': 'Vận dụng kiến thức **Bài 21: Số có hai chữ số** để giải quyết tình huống sau: Viết số gồm '
+                 '$6$ chục và $2$ đơn vị, rồi nêu cách đọc số đó. Kết quả và hướng giải nào dưới đây là '
+                 '**đúng**?',
+            'options': ['Số gồm $6$ chục và $2$ đơn vị viết là $62$, đọc là **sáu mươi hai**.',
+                        'Đếm số quyển vở: $1, 2, 3, 4$ nên viết số $4$. Trong hộp không có bút nào nên viết '
+                        'số $0$.',
+                        'Đếm tiếp sau $7$ là $8$, sau $9$ là $10$. Dãy số đầy đủ là $6, 7, 8, 9, 10$.',
+                        'Mỗi bạn thỏ nhận $1$ củ cà rốt thì còn $1$ bạn thỏ chưa có cà rốt ($5 > 4$). Vậy số '
+                        'thỏ **nhiều hơn** số cà rốt.'],
+            'answer': 0,
+            'solution': 'Lời giải chi tiết theo Bài 21: Số có hai chữ số: Số gồm $6$ chục và $2$ đơn vị viết '
+                        'là $62$, đọc là **sáu mươi hai**.'},
+           {'level': 'vandung',
+            'type': 'short',
+            'q': 'Mẹ mua $5$ bó đũa, mỗi bó có $1$ chục chiếc đũa. Hỏi mẹ đã mua tất cả bao nhiêu chiếc đũa?',
+            'answer': ['50'],
+            'unit': None,
+            'solution': 'Mỗi bó có $1$ chục chiếc, $5$ bó có $5$ chục chiếc đũa. Mà $5$ chục $= 50$ nên mẹ '
+                        'mua $50$ chiếc đũa.',
+            'alt': None,
+            'note': None}]},
+ {'topic': 'l1-cd06-cac-so-den-100',
+  'context_title': 'Chủ đề 6: Các số đến 100',
+  'context': 'SGK Toán 1 · Chủ đề 6: Số có hai chữ số, chục và đơn vị, so sánh số, bảng các số từ 1 đến 100.',
+  'title': 'Bài 22: So sánh số có hai chữ số',
+  'icon': '⚖️',
+  'description': 'Quy tắc so sánh hai số có hai chữ số theo hàng chục và hàng đơn vị.',
+  'requirements': ['Biết so sánh hai số có hai chữ số bằng cách so sánh chữ số hàng chục trước, hàng đơn vị '
+                   'sau.',
+                   'Sắp xếp được nhóm không quá $4$ số trong phạm vi $100$ theo thứ tự từ bé đến lớn hoặc từ '
+                   'lớn đến bé.',
+                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Khác chữ số hàng chục** (Hàng chục lớn hơn '
+                   '$\\rightarrow$ số đó lớn hơn) vào giải bài tập.'],
+  'definition': 'Khi so sánh hai số có hai chữ số:\n'
+                '- **Bước 1:** So sánh chữ số **hàng chục** trước. Số nào có chữ số hàng chục lớn hơn thì số '
+                'đó lớn hơn.\n'
+                '- **Bước 2:** Nếu chữ số hàng chục bằng nhau thì so sánh chữ số **hàng đơn vị**. Số nào có '
+                'chữ số hàng đơn vị lớn hơn thì lớn hơn.',
+  'theory': '- Ví dụ 1: So sánh $58$ và $85$. Hàng chục có $5 < 8$ nên $58 < 85$.\n'
+            '- Ví dụ 2: So sánh $47$ và $43$. Hai số có cùng $4$ chục; xét hàng đơn vị có $7 > 3$ nên $47 > '
+            '43$.\n'
+            '- Nếu cả chữ số hàng chục và chữ số hàng đơn vị đều giống nhau thì hai số bằng nhau ($64 = '
+            '64$).\n'
+            '- Mọi số có một chữ số ($0$ đến $9$) đều bé hơn mọi số có hai chữ số ($10$ đến $99$).',
+  'formulas': [{'category': 'Quy tắc so sánh hai số có hai chữ số',
+                'items': [{'name': 'Khác chữ số hàng chục',
+                           'formula': 'Hàng chục lớn hơn $\\rightarrow$ số đó lớn hơn',
+                           'note': 'Ví dụ: $62 > 49$ vì $6 > 4$.'},
+                          {'name': 'Cùng chữ số hàng chục',
+                           'formula': 'So sánh tiếp chữ số hàng đơn vị',
+                           'note': 'Ví dụ: $73 < 78$ vì cùng $7$ chục và $3 < 8$.'}]}],
+  'example': 'Xếp các số $47, 74, 40, 70$ theo thứ tự từ bé đến lớn.',
+  'example_answer': 'Nhóm có $4$ chục gồm $40 < 47$; nhóm có $7$ chục gồm $70 < 74$. Vì $4$ chục $< 7$ chục '
+                    'nên thứ tự từ bé đến lớn là: $40, 47, 70, 74$.',
+  'real_life': 'So sánh số tuổi của các thành viên trong gia đình, so sánh giá tiền hoặc điểm số.',
+  'quiz': [{'level': 'biet',
+            'type': 'mcq',
+            'q': 'Dấu thích hợp điền vào chỗ chấm $58 \\dots 85$ là:',
+            'options': ['$>$', '$=$', '$+$', '$<$'],
+            'answer': 3,
+            'solution': 'So sánh chữ số hàng chục: $5 < 8$ nên $58 < 85$.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Trong các số $52, 25, 50, 20$, số bé nhất là:',
+            'options': ['$20$', '$52$', '$25$', '$50$'],
+            'answer': 0,
+            'solution': 'Hai số có hàng chục bé hơn là $25$ và $20$. Vì $0 < 5$ nên $20 < 25$. Vậy số bé '
+                        'nhất là $20$.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Theo nội dung trọng tâm của **Bài 22: So sánh số có hai chữ số**, công thức hoặc quy tắc '
+                 'nào sau đây biểu diễn đúng **Khác chữ số hàng chục**?',
+            'options': ['So sánh tiếp chữ số hàng đơn vị',
+                        'Hàng chục lớn hơn $\\rightarrow$ số đó lớn hơn',
+                        '$0, 1, 2, 3, 4, 5$',
+                        '$0$ chỉ không có đồ vật nào'],
+            'answer': 1,
+            'solution': 'Theo bảng công thức trọng tâm của Bài 22: So sánh số có hai chữ số, **Khác chữ số '
+                        'hàng chục** được xác định bởi: Hàng chục lớn hơn $\\rightarrow$ số đó lớn hơn. (Ví '
+                        'dụ: $62 > 49$ vì $6 > 4$.)'},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Trong **Bài 22: So sánh số có hai chữ số**, nội dung/biểu thức So sánh tiếp chữ số hàng '
+                 'đơn vị là quy tắc hoặc công thức của mục nào sau đây?',
+            'options': ['Khác chữ số hàng chục',
+                        'Dãy số từ 0 đến 5',
+                        'Cùng chữ số hàng chục',
+                        'Ý nghĩa số 0'],
+            'answer': 2,
+            'solution': 'Trong Bài 22: So sánh số có hai chữ số, biểu thức/quy tắc So sánh tiếp chữ số hàng '
+                        'đơn vị chính là nội dung của **Cùng chữ số hàng chục**.'},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Các số $47, 74, 40, 70$ xếp theo thứ tự từ bé đến lớn là:',
+            'options': ['$47, 40, 70, 74$', '$40, 70, 47, 74$', '$74, 70, 47, 40$', '$40, 47, 70, 74$'],
+            'answer': 3,
+            'solution': 'So sánh ta có $40 < 47 < 70 < 74$.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Khi học **Bài 22: So sánh số có hai chữ số** (Chủ đề 6: Các số đến 100), khẳng định nào '
+                 'sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
+            'options': ['Biết so sánh hai số có hai chữ số bằng cách so sánh chữ số hàng chục trước, hàng '
+                        'đơn vị sau.',
+                        'Đếm, đọc, viết được các số $0, 1, 2, 3, 4, 5$.',
+                        'Nhận biết được số $0$ dùng để chỉ không có đồ vật nào.',
+                        'Nhận biết thứ tự các số từ $0$ đến $5$.'],
+            'answer': 0,
+            'solution': 'Theo yêu cầu cần đạt của Bài 22: So sánh số có hai chữ số: Biết so sánh hai số có '
+                        'hai chữ số bằng cách so sánh chữ số hàng chục trước, hàng đơn vị sau.'},
+           {'level': 'hieu',
+            'type': 'tf',
+            'q': 'Nhận định: “Số $69$ lớn hơn số $71$ vì $9 > 1$.”',
+            'answer': False,
+            'solution': 'Khi so sánh phải xét hàng chục trước: $6$ chục $< 7$ chục nên $69 < 71$. Nhận định '
+                        'Sai.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'tf',
+            'q': 'Trong **Bài 22: So sánh số có hai chữ số**, quy tắc **Khác chữ số hàng chục** được xác '
+                 'định bởi Hàng chục lớn hơn $\\rightarrow$ số đó lớn hơn và áp dụng trực tiếp vào bài toán: '
+                 '“Xếp các số $47, 74, 40, 70$ theo thứ tự từ bé đến lớn.”. Đúng hay sai?',
+            'answer': True,
+            'solution': 'Khẳng định **Đúng**. Quy tắc **Khác chữ số hàng chục** (Hàng chục lớn hơn '
+                        '$\\rightarrow$ số đó lớn hơn) là kiến thức cốt lõi của Bài 22: So sánh số có hai '
+                        'chữ số. Nhóm có $4$ chục gồm $40 < 47$; nhóm có $7$ chục gồm $70 < 74$. Vì $4$ chục '
+                        '$< 7$ chục nên thứ tự từ bé đến lớn là: $40, 47, 70, 74$.'},
+           {'level': 'vandung',
+            'type': 'mcq',
+            'q': 'Vận dụng kiến thức **Bài 22: So sánh số có hai chữ số** để giải quyết tình huống sau: Xếp '
+                 'các số $47, 74, 40, 70$ theo thứ tự từ bé đến lớn. Kết quả và hướng giải nào dưới đây là '
+                 '**đúng**?',
+            'options': ['Đếm số quyển vở: $1, 2, 3, 4$ nên viết số $4$. Trong hộp không có bút nào nên viết '
+                        'số $0$.',
+                        'Nhóm có $4$ chục gồm $40 < 47$; nhóm có $7$ chục gồm $70 < 74$. Vì $4$ chục $< 7$ '
+                        'chục nên thứ tự từ bé đến lớn là: $40, 47, 70, 74$.',
+                        'Đếm tiếp sau $7$ là $8$, sau $9$ là $10$. Dãy số đầy đủ là $6, 7, 8, 9, 10$.',
+                        'Mỗi bạn thỏ nhận $1$ củ cà rốt thì còn $1$ bạn thỏ chưa có cà rốt ($5 > 4$). Vậy số '
+                        'thỏ **nhiều hơn** số cà rốt.'],
+            'answer': 1,
+            'solution': 'Lời giải chi tiết theo Bài 22: So sánh số có hai chữ số: Nhóm có $4$ chục gồm $40 < '
+                        '47$; nhóm có $7$ chục gồm $70 < 74$. Vì $4$ chục $< 7$ chục nên thứ tự từ bé đến '
+                        'lớn là: $40, 47, 70, 74$.'},
+           {'level': 'vandung',
+            'type': 'short',
+            'q': 'Trong các số $38, 83, 79, 80$, số lớn nhất là số nào?',
+            'answer': ['83'],
+            'unit': None,
+            'solution': 'Hai số có hàng chục lớn nhất ($8$ chục) là $83$ và $80$. Vì $83 > 80$ nên số lớn '
+                        'nhất là $83$.',
+            'alt': None,
+            'note': None}]},
+ {'topic': 'l1-cd06-cac-so-den-100',
+  'context_title': 'Chủ đề 6: Các số đến 100',
+  'context': 'SGK Toán 1 · Chủ đề 6: Số có hai chữ số, chục và đơn vị, so sánh số, bảng các số từ 1 đến 100.',
+  'title': 'Bài 23: Bảng các số từ 1 đến 100 (Luyện tập chung Chủ đề 6)',
+  'icon': '📅',
+  'description': 'Khám phá quy luật bảng các số từ 1 đến 100, làm quen số 100 và tìm số liền trước, số liền '
+                 'sau.',
+  'requirements': ['Nhận biết số $100$ (một trăm) là số liền sau của $99$ và $100 = 10$ chục.',
+                   'Sử dụng bảng các số từ $1$ đến $100$ để tìm số liền trước, số liền sau và nhận biết quy '
+                   'luật theo hàng, theo cột.',
+                   'Vận dụng cấu tạo số để giải các bài toán lập số trong phạm vi $100$.'],
+  'definition': '- **Số $100$** (đọc là **một trăm**) là số đứng liền sau số $99$. Ta có $10$ chục $= 100$.\n'
+                '- **Bảng các số từ $1$ đến $100$** gồm $10$ hàng và $10$ cột.',
+  'theory': '- **Quy luật trong bảng các số từ $1$ đến $100$:**\n'
+            '  + Trong cùng một hàng (từ trái sang phải): hai số cạnh nhau hơn kém nhau $1$ đơn vị.\n'
+            '  + Trong cùng một cột (từ trên xuống dưới): số ở ô ngay bên dưới lớn hơn số ở ô ngay bên trên '
+            '$10$ đơn vị ($1$ chục).\n'
+            '  + Cột cuối cùng bên phải gồm các số tròn chục: $10, 20, 30, 40, 50, 60, 70, 80, 90$ và số '
+            '$100$.\n'
+            '- **Số lớn nhất có một chữ số** là $9$; **số bé nhất có hai chữ số** là $10$; **số lớn nhất có '
+            'hai chữ số** là $99$.',
+  'formulas': [{'category': 'Quy luật bảng các số từ 1 đến 100',
+                'items': [{'name': 'Đi sang phải 1 ô',
+                           'formula': 'Số tăng thêm $1$ đơn vị (số liền sau)',
+                           'note': 'Ví dụ: liền sau $39$ là $40$.'},
+                          {'name': 'Đi xuống dưới 1 ô',
+                           'formula': 'Số tăng thêm $10$ đơn vị ($1$ chục)',
+                           'note': 'Ví dụ: ngay dưới $34$ là $44$.'},
+                          {'name': 'Các số đặc biệt',
+                           'formula': 'Số bé nhất có $2$ chữ số là $10$; lớn nhất có $2$ chữ số là $99$'}]}],
+  'example': 'Tìm số có hai chữ số, biết chữ số hàng chục là $6$ và chữ số hàng đơn vị bé hơn chữ số hàng '
+             'chục $2$ đơn vị.',
+  'example_answer': 'Chữ số hàng đơn vị là: $6 - 2 = 4$. Số gồm $6$ chục và $4$ đơn vị là $64$.',
+  'real_life': 'Tra cứu số ghế trong rạp chiếu phim, tìm trang sách, kiểm đếm đủ $100$ món đồ.',
+  'quiz': [{'level': 'biet',
+            'type': 'mcq',
+            'q': 'Số liền sau của số $39$ là số nào?',
+            'options': ['$40$', '$38$', '$49$', '$30$'],
+            'answer': 0,
+            'solution': 'Đếm thêm $1$ sau $39$ ta được $40$. Vậy số liền sau của $39$ là $40$.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Số liền sau của số $99$ là số nào?',
+            'options': ['$98$', '$100$', '$90$', '$10$'],
+            'answer': 1,
+            'solution': 'Đếm tiếp sau $99$ là $100$ (một trăm).',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Theo nội dung trọng tâm của **Bài 23: Bảng các số từ 1 đến 100 (Luyện tập chung Chủ đề '
+                 '6)**, công thức hoặc quy tắc nào sau đây biểu diễn đúng **Đi sang phải 1 ô**?',
+            'options': ['Số tăng thêm $10$ đơn vị ($1$ chục)',
+                        'Số bé nhất có $2$ chữ số là $10$; lớn nhất có $2$ chữ số là $99$',
+                        'Số tăng thêm $1$ đơn vị (số liền sau)',
+                        '$0, 1, 2, 3, 4, 5$'],
+            'answer': 2,
+            'solution': 'Theo bảng công thức trọng tâm của Bài 23: Bảng các số từ 1 đến 100 (Luyện tập chung '
+                        'Chủ đề 6), **Đi sang phải 1 ô** được xác định bởi: Số tăng thêm $1$ đơn vị (số liền '
+                        'sau). (Ví dụ: liền sau $39$ là $40$.)'},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Trong **Bài 23: Bảng các số từ 1 đến 100 (Luyện tập chung Chủ đề 6)**, nội dung/biểu thức '
+                 'Số tăng thêm $10$ đơn vị ($1$ chục) là quy tắc hoặc công thức của mục nào sau đây?',
+            'options': ['Đi sang phải 1 ô', 'Các số đặc biệt', 'Dãy số từ 0 đến 5', 'Đi xuống dưới 1 ô'],
+            'answer': 3,
+            'solution': 'Trong Bài 23: Bảng các số từ 1 đến 100 (Luyện tập chung Chủ đề 6), biểu thức/quy '
+                        'tắc Số tăng thêm $10$ đơn vị ($1$ chục) chính là nội dung của **Đi xuống dưới 1 '
+                        'ô**.'},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Số nào dưới đây lớn hơn $68$ và bé hơn $71$?',
+            'options': ['$69$', '$67$', '$72$', '$61$'],
+            'answer': 0,
+            'solution': 'Các số tự nhiên lớn hơn $68$ và bé hơn $71$ là $69$ và $70$. Trong các phương án có '
+                        'số $69$.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Khi học **Bài 23: Bảng các số từ 1 đến 100 (Luyện tập chung Chủ đề 6)** (Chủ đề 6: Các số '
+                 'đến 100), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức '
+                 'của bài?',
+            'options': ['Đếm, đọc, viết được các số $0, 1, 2, 3, 4, 5$.',
+                        'Nhận biết số $100$ (một trăm) là số liền sau của $99$ và $100 = 10$ chục.',
+                        'Nhận biết được số $0$ dùng để chỉ không có đồ vật nào.',
+                        'Nhận biết thứ tự các số từ $0$ đến $5$.'],
+            'answer': 1,
+            'solution': 'Theo yêu cầu cần đạt của Bài 23: Bảng các số từ 1 đến 100 (Luyện tập chung Chủ đề '
+                        '6): Nhận biết số $100$ (một trăm) là số liền sau của $99$ và $100 = 10$ chục.'},
+           {'level': 'hieu',
+            'type': 'tf',
+            'q': 'Nhận định: “Trong bảng các số từ $1$ đến $100$, số nằm ở ô ngay bên dưới số $34$ (cùng '
+                 'cột) là số $35$.”',
+            'answer': False,
+            'solution': 'Đi xuống dưới $1$ ô trong cùng cột thì số tăng thêm $10$ đơn vị, nên ô ngay dưới số '
+                        '$34$ là $44$ (còn $35$ nằm bên phải $34$). Nhận định Sai.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'tf',
+            'q': 'Trong **Bài 23: Bảng các số từ 1 đến 100 (Luyện tập chung Chủ đề 6)**, quy tắc **Đi sang '
+                 'phải 1 ô** được xác định bởi Số tăng thêm $1$ đơn vị (số liền sau) và áp dụng trực tiếp '
+                 'vào bài toán: “Tìm số có hai chữ số, biết chữ số hàng chục là $6$ và chữ số hàng đơn vị bé '
+                 'hơn chữ số hàng chục $2$ đơn vị.”. Đúng hay sai?',
+            'answer': True,
+            'solution': 'Khẳng định **Đúng**. Quy tắc **Đi sang phải 1 ô** (Số tăng thêm $1$ đơn vị (số liền '
+                        'sau)) là kiến thức cốt lõi của Bài 23: Bảng các số từ 1 đến 100 (Luyện tập chung '
+                        'Chủ đề 6). Chữ số hàng đơn vị là: $6 - 2 = 4$. Số gồm $6$ chục và $4$ đơn vị là '
+                        '$64$.'},
+           {'level': 'vandung',
+            'type': 'mcq',
+            'q': 'Vận dụng kiến thức **Bài 23: Bảng các số từ 1 đến 100 (Luyện tập chung Chủ đề 6)** để giải '
+                 'quyết tình huống sau: Tìm số có hai chữ số, biết chữ số hàng chục là $6$ và chữ số hàng '
+                 'đơn vị bé hơn chữ số hàng chục $2$ đơn vị. Kết quả và hướng giải nào dưới đây là **đúng**?',
+            'options': ['Đếm số quyển vở: $1, 2, 3, 4$ nên viết số $4$. Trong hộp không có bút nào nên viết '
+                        'số $0$.',
+                        'Đếm tiếp sau $7$ là $8$, sau $9$ là $10$. Dãy số đầy đủ là $6, 7, 8, 9, 10$.',
+                        'Chữ số hàng đơn vị là: $6 - 2 = 4$. Số gồm $6$ chục và $4$ đơn vị là $64$.',
+                        'Mỗi bạn thỏ nhận $1$ củ cà rốt thì còn $1$ bạn thỏ chưa có cà rốt ($5 > 4$). Vậy số '
+                        'thỏ **nhiều hơn** số cà rốt.'],
+            'answer': 2,
+            'solution': 'Lời giải chi tiết theo Bài 23: Bảng các số từ 1 đến 100 (Luyện tập chung Chủ đề 6): '
+                        'Chữ số hàng đơn vị là: $6 - 2 = 4$. Số gồm $6$ chục và $4$ đơn vị là $64$.'},
+           {'level': 'vandung',
+            'type': 'short',
+            'q': 'Tìm số có hai chữ số, biết chữ số hàng chục là $6$ và chữ số hàng đơn vị bé hơn chữ số '
+                 'hàng chục $2$ đơn vị.',
+            'answer': ['64'],
+            'unit': None,
+            'solution': 'Chữ số hàng đơn vị là $6 - 2 = 4$. Số có $6$ chục và $4$ đơn vị là $64$.',
+            'alt': None,
+            'note': None}]},
+ {'topic': 'l1-cd07-do-dai',
+  'context_title': 'Chủ đề 7: Độ dài và đo độ dài',
+  'context': 'SGK Toán 1 · Chủ đề 7: Dài hơn – ngắn hơn, đơn vị xăng-ti-mét, thực hành ước lượng và đo độ '
+             'dài.',
+  'title': 'Bài 25: Dài hơn, ngắn hơn',
+  'icon': '📏',
+  'description': 'Nhận biết dài hơn, ngắn hơn, cao hơn, thấp hơn và đo độ dài bằng đơn vị tự quy ước.',
+  'requirements': ['Biết cách so sánh trực tiếp độ dài hai vật để nhận ra vật nào dài hơn, ngắn hơn (hoặc '
+                   'cao hơn, thấp hơn).',
+                   'Tìm được vật dài nhất, vật ngắn nhất trong một nhóm đồ vật.',
+                   'Biết đo độ dài bằng các đơn vị tự quy ước như gang tay, sải tay, bước chân, que tính.'],
+  'definition': 'Muốn so sánh độ dài hai vật trực tiếp, ta đặt hai vật nằm dọc sát cạnh nhau sao cho **một '
+                'đầu của hai vật bằng nhau** (thẳng hàng). Đầu còn lại của vật nào dài thò ra xa hơn thì vật '
+                'đó **dài hơn**, vật kia **ngắn hơn**.',
+  'theory': '- Khi so sánh chiều cao của hai người hoặc hai cái cây đứng trên cùng mặt đất, ta dùng từ **cao '
+            'hơn – thấp hơn – cao bằng nhau**.\n'
+            '- Khi chưa có thước kẻ, ta có thể ước lượng và đo độ dài bằng **gang tay**, **sải tay**, **bước '
+            'chân** hoặc **que tính**.\n'
+            '- Lưu ý: Gang tay của mỗi người dài ngắn khác nhau nên đo cùng một cái bàn có thể ra số gang '
+            'tay khác nhau.',
+  'formulas': [{'category': 'Quy tắc so sánh độ dài',
+                'items': [{'name': 'So sánh trực tiếp',
+                           'formula': 'Đặt một đầu bằng nhau $\\rightarrow$ đầu kia vươn xa hơn là dài hơn'},
+                          {'name': 'Quan hệ ngược', 'formula': 'A dài hơn B $\\Leftrightarrow$ B ngắn hơn A'},
+                          {'name': 'Đo bằng gang tay',
+                           'formula': 'Gang tay càng ngắn thì số lần đo trên cùng một vật càng nhiều'}]}],
+  'example': 'Bút chì đỏ dài hơn bút chì xanh, bút chì xanh dài hơn bút chì vàng. Hỏi bút chì nào dài nhất, '
+             'bút chì nào ngắn nhất?',
+  'example_answer': '**Bút chì đỏ** dài nhất và **bút chì vàng** ngắn nhất.',
+  'real_life': 'So sánh chiều cao các bạn khi xếp hàng tập thể dục, chọn sợi dây dài hơn để buộc đồ.',
+  'quiz': [{'level': 'biet',
+            'type': 'mcq',
+            'q': 'Bút chì đỏ dài hơn bút chì xanh. Vậy bút chì xanh như thế nào so với bút chì đỏ?',
+            'options': ['Dài hơn', 'Ngắn hơn', 'Dài bằng nhau', 'Cao hơn'],
+            'answer': 1,
+            'solution': 'Nếu bút chì đỏ dài hơn bút chì xanh thì bút chì xanh ngắn hơn bút chì đỏ.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Khi so sánh chiều cao của hai bạn đứng trên sân phẳng, ta thường dùng cặp từ nào?',
+            'options': ['Rộng hơn – hẹp hơn',
+                        'Nặng hơn – nhẹ hơn',
+                        'Cao hơn – thấp hơn',
+                        'Nhiều hơn – ít hơn'],
+            'answer': 2,
+            'solution': 'Chiều cao của con người hay cây cối được so sánh bằng từ cao hơn – thấp hơn.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Theo nội dung trọng tâm của **Bài 25: Dài hơn, ngắn hơn**, công thức hoặc quy tắc nào sau '
+                 'đây biểu diễn đúng **So sánh trực tiếp**?',
+            'options': ['A dài hơn B $\\Leftrightarrow$ B ngắn hơn A',
+                        'Gang tay càng ngắn thì số lần đo trên cùng một vật càng nhiều',
+                        '$0, 1, 2, 3, 4, 5$',
+                        'Đặt một đầu bằng nhau $\\rightarrow$ đầu kia vươn xa hơn là dài hơn'],
+            'answer': 3,
+            'solution': 'Theo bảng công thức trọng tâm của Bài 25: Dài hơn, ngắn hơn, **So sánh trực tiếp** '
+                        'được xác định bởi: Đặt một đầu bằng nhau $\\rightarrow$ đầu kia vươn xa hơn là dài '
+                        'hơn.'},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Trong **Bài 25: Dài hơn, ngắn hơn**, nội dung/biểu thức A dài hơn B $\\Leftrightarrow$ B '
+                 'ngắn hơn A là quy tắc hoặc công thức của mục nào sau đây?',
+            'options': ['Quan hệ ngược', 'So sánh trực tiếp', 'Đo bằng gang tay', 'Dãy số từ 0 đến 5'],
+            'answer': 0,
+            'solution': 'Trong Bài 25: Dài hơn, ngắn hơn, biểu thức/quy tắc A dài hơn B $\\Leftrightarrow$ B '
+                        'ngắn hơn A chính là nội dung của **Quan hệ ngược**.'},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Thước kẻ dài $3$ que tính, hộp bút dài $2$ que tính, cái bàn dài $8$ que tính. Đồ vật nào '
+                 'dài nhất?',
+            'options': ['Thước kẻ', 'Cái bàn', 'Hộp bút', 'Ba vật bằng nhau'],
+            'answer': 1,
+            'solution': 'Vì $8 > 3 > 2$ nên cái bàn dài nhất ($8$ que tính).',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Khi học **Bài 25: Dài hơn, ngắn hơn** (Chủ đề 7: Độ dài và đo độ dài), khẳng định nào sau '
+                 'đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
+            'options': ['Đếm, đọc, viết được các số $0, 1, 2, 3, 4, 5$.',
+                        'Nhận biết được số $0$ dùng để chỉ không có đồ vật nào.',
+                        'Biết cách so sánh trực tiếp độ dài hai vật để nhận ra vật nào dài hơn, ngắn hơn '
+                        '(hoặc cao hơn, thấp hơn).',
+                        'Nhận biết thứ tự các số từ $0$ đến $5$.'],
+            'answer': 2,
+            'solution': 'Theo yêu cầu cần đạt của Bài 25: Dài hơn, ngắn hơn: Biết cách so sánh trực tiếp độ '
+                        'dài hai vật để nhận ra vật nào dài hơn, ngắn hơn (hoặc cao hơn, thấp hơn).'},
+           {'level': 'hieu',
+            'type': 'tf',
+            'q': 'Mai và bố cùng đo chiều dài một cái bàn bằng gang tay: Mai đo được $6$ gang tay, bố đo '
+                 'được $4$ gang tay. Nhận định: “Gang tay của Mai dài hơn gang tay của bố.”',
+            'answer': False,
+            'solution': 'Cùng một cái bàn, gang tay của Mai ngắn hơn nên phải đo nhiều lần hơn ($6 > 4$). '
+                        'Nhận định Sai.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'tf',
+            'q': 'Trong **Bài 25: Dài hơn, ngắn hơn**, quy tắc **So sánh trực tiếp** được xác định bởi Đặt '
+                 'một đầu bằng nhau $\\rightarrow$ đầu kia vươn xa hơn là dài hơn và áp dụng trực tiếp vào '
+                 'bài toán: “Bút chì đỏ dài hơn bút chì xanh, bút chì xanh dài hơn bút chì vàng. Hỏi bút chì '
+                 'nào dài nhất, bút chì nào ngắn nhất?”. Đúng hay sai?',
+            'answer': True,
+            'solution': 'Khẳng định **Đúng**. Quy tắc **So sánh trực tiếp** (Đặt một đầu bằng nhau '
+                        '$\\rightarrow$ đầu kia vươn xa hơn là dài hơn) là kiến thức cốt lõi của Bài 25: Dài '
+                        'hơn, ngắn hơn. **Bút chì đỏ** dài nhất và **bút chì vàng** ngắn nhất.'},
+           {'level': 'vandung',
+            'type': 'mcq',
+            'q': 'Vận dụng kiến thức **Bài 25: Dài hơn, ngắn hơn** để giải quyết tình huống sau: Bút chì đỏ '
+                 'dài hơn bút chì xanh, bút chì xanh dài hơn bút chì vàng. Hỏi bút chì nào dài nhất, bút chì '
+                 'nào ngắn nhất? Kết quả và hướng giải nào dưới đây là **đúng**?',
+            'options': ['Đếm số quyển vở: $1, 2, 3, 4$ nên viết số $4$. Trong hộp không có bút nào nên viết '
+                        'số $0$.',
+                        'Đếm tiếp sau $7$ là $8$, sau $9$ là $10$. Dãy số đầy đủ là $6, 7, 8, 9, 10$.',
+                        'Mỗi bạn thỏ nhận $1$ củ cà rốt thì còn $1$ bạn thỏ chưa có cà rốt ($5 > 4$). Vậy số '
+                        'thỏ **nhiều hơn** số cà rốt.',
+                        '**Bút chì đỏ** dài nhất và **bút chì vàng** ngắn nhất.'],
+            'answer': 3,
+            'solution': 'Lời giải chi tiết theo Bài 25: Dài hơn, ngắn hơn: **Bút chì đỏ** dài nhất và **bút '
+                        'chì vàng** ngắn nhất.'},
+           {'level': 'vandung',
+            'type': 'short',
+            'q': 'Cây thước dài bằng $3$ cái kẹp giấy, cây bút chì dài bằng $5$ cái kẹp giấy. Hỏi cây bút '
+                 'chì dài hơn cây thước mấy cái kẹp giấy?',
+            'answer': ['2'],
+            'unit': None,
+            'solution': 'Cây bút chì dài hơn cây thước là: $5 - 3 = 2$ (cái kẹp giấy).',
+            'alt': None,
+            'note': None}]},
+ {'topic': 'l1-cd07-do-dai',
+  'context_title': 'Chủ đề 7: Độ dài và đo độ dài',
+  'context': 'SGK Toán 1 · Chủ đề 7: Dài hơn – ngắn hơn, đơn vị xăng-ti-mét, thực hành ước lượng và đo độ '
+             'dài.',
+  'title': 'Bài 26: Đơn vị đo độ dài (Xăng-ti-mét)',
+  'icon': '📐',
+  'description': 'Nhận biết đơn vị xăng-ti-mét (cm) và cách dùng thước thẳng có vạch chia cm để đo độ dài.',
+  'requirements': ['Nhận biết **xăng-ti-mét** là đơn vị đo độ dài chuẩn, viết tắt là $\\text{cm}$.',
+                   'Đọc và viết đúng các số đo độ dài có đơn vị $\\text{cm}$.',
+                   'Biết cách đặt thước thẳng có vạch chia $\\text{cm}$ để đo độ dài đoạn thẳng, đồ vật.'],
+  'definition': '**Xăng-ti-mét** là một đơn vị đo độ dài, viết tắt là $\\text{cm}$. Trên thước kẻ học sinh, '
+                'khoảng cách giữa hai vạch số liền nhau (như từ vạch $0$ đến vạch $1$) là $1\\text{ cm}$.',
+  'theory': '- **Cách đọc, viết:** $1\\text{ cm}$ đọc là một xăng-ti-mét; $15\\text{ cm}$ đọc là mười lăm '
+            'xăng-ti-mét.\n'
+            '- **Ba bước đo độ dài bằng thước thẳng:**\n'
+            '  + Bước 1: Đặt **vạch $0$** của thước trùng với một đầu của vật.\n'
+            '  + Bước 2: Đặt mép thước sát và dọc theo chiều dài của vật.\n'
+            '  + Bước 3: Nhìn đầu kia của vật trùng với vạch số mấy trên thước thì đọc số đo đó kèm theo đơn '
+            'vị $\\text{cm}$.',
+  'formulas': [{'category': 'Quy tắc đo độ dài với đơn vị cm',
+                'items': [{'name': 'Ký hiệu đơn vị',
+                           'formula': 'Xăng-ti-mét viết tắt là $\\text{cm}$',
+                           'note': 'Ví dụ: $8\\text{ cm}$ đọc là tám xăng-ti-mét.'},
+                          {'name': 'Đặt thước đúng',
+                           'formula': 'Đầu vật trùng vạch $0$, đầu kia trùng vạch $a \\Rightarrow$ vật dài '
+                                      '$a\\text{ cm}$'},
+                          {'name': 'Đặt thước từ vạch khác 0',
+                           'formula': 'Một đầu ở vạch $a$, đầu kia ở vạch $b$ ($b > a$) $\\Rightarrow$ dài '
+                                      '$(b - a)\\text{ cm}$'}]}],
+  'example': 'Một đầu chiếc tẩy đặt trùng với vạch $0$ của thước, đầu kia trùng với vạch số $4$. Hỏi chiếc '
+             'tẩy dài bao nhiêu xăng-ti-mét?',
+  'example_answer': 'Vì một đầu trùng vạch $0$ và đầu kia trùng vạch $4$ nên chiếc tẩy dài $4\\text{ cm}$.',
+  'real_life': 'Dùng thước kẻ đo độ dài bút chì, cục tẩy, quyển vở trong cặp sách.',
+  'quiz': [{'level': 'biet',
+            'type': 'mcq',
+            'q': 'Đơn vị đo độ dài “xăng-ti-mét” được viết tắt là:',
+            'options': ['$\\text{m}$', '$\\text{kg}$', '$\\text{cm}$', '$\\text{xm}$'],
+            'answer': 2,
+            'solution': 'Xăng-ti-mét viết tắt là $\\text{cm}$.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Khi đo độ dài bằng thước thẳng, ta cần đặt vạch nào của thước trùng với một đầu của vật?',
+            'options': ['Vạch $1$', 'Vạch $10$', 'Vạch bất kỳ', 'Vạch $0$'],
+            'answer': 3,
+            'solution': 'Phải đặt vạch $0$ trùng với một đầu của vật thì vạch ở đầu kia mới chỉ đúng độ dài '
+                        'của vật.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Theo nội dung trọng tâm của **Bài 26: Đơn vị đo độ dài (Xăng-ti-mét)**, công thức hoặc quy '
+                 'tắc nào sau đây biểu diễn đúng **Ký hiệu đơn vị**?',
+            'options': ['Xăng-ti-mét viết tắt là $\\text{cm}$',
+                        'Đầu vật trùng vạch $0$, đầu kia trùng vạch $a \\Rightarrow$ vật dài $a\\text{ cm}$',
+                        'Một đầu ở vạch $a$, đầu kia ở vạch $b$ ($b > a$) $\\Rightarrow$ dài $(b - a)\\text{ '
+                        'cm}$',
+                        '$0, 1, 2, 3, 4, 5$'],
+            'answer': 0,
+            'solution': 'Theo bảng công thức trọng tâm của Bài 26: Đơn vị đo độ dài (Xăng-ti-mét), **Ký hiệu '
+                        'đơn vị** được xác định bởi: Xăng-ti-mét viết tắt là $\\text{cm}$. (Ví dụ: $8\\text{ '
+                        'cm}$ đọc là tám xăng-ti-mét.)'},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Trong **Bài 26: Đơn vị đo độ dài (Xăng-ti-mét)**, nội dung/biểu thức Đầu vật trùng vạch '
+                 '$0$, đầu kia trùng vạch $a \\Rightarrow$ vật dài $a\\text{ cm}$ là quy tắc hoặc công thức '
+                 'của mục nào sau đây?',
+            'options': ['Ký hiệu đơn vị', 'Đặt thước đúng', 'Đặt thước từ vạch khác 0', 'Dãy số từ 0 đến 5'],
+            'answer': 1,
+            'solution': 'Trong Bài 26: Đơn vị đo độ dài (Xăng-ti-mét), biểu thức/quy tắc Đầu vật trùng vạch '
+                        '$0$, đầu kia trùng vạch $a \\Rightarrow$ vật dài $a\\text{ cm}$ chính là nội dung '
+                        'của **Đặt thước đúng**.'},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Số đo “$15\\text{ cm}$” được đọc là:',
+            'options': ['Một năm xăng-ti-mét',
+                        'Năm mươi mốt xăng-ti-mét',
+                        'Mười lăm xăng-ti-mét',
+                        'Mười năm xăng-ti-mét'],
+            'answer': 2,
+            'solution': '$15$ đọc là mười lăm, $\\text{cm}$ đọc là xăng-ti-mét.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Khi học **Bài 26: Đơn vị đo độ dài (Xăng-ti-mét)** (Chủ đề 7: Độ dài và đo độ dài), khẳng '
+                 'định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
+            'options': ['Đếm, đọc, viết được các số $0, 1, 2, 3, 4, 5$.',
+                        'Nhận biết được số $0$ dùng để chỉ không có đồ vật nào.',
+                        'Nhận biết thứ tự các số từ $0$ đến $5$.',
+                        'Nhận biết **xăng-ti-mét** là đơn vị đo độ dài chuẩn, viết tắt là $\\text{cm}$.'],
+            'answer': 3,
+            'solution': 'Theo yêu cầu cần đạt của Bài 26: Đơn vị đo độ dài (Xăng-ti-mét): Nhận biết '
+                        '**xăng-ti-mét** là đơn vị đo độ dài chuẩn, viết tắt là $\\text{cm}$.'},
+           {'level': 'hieu',
+            'type': 'tf',
+            'q': 'Nhận định: “Nếu đặt một đầu bút chì ở vạch $1$ và đầu kia ở vạch $8$ của thước thì bút chì '
+                 'dài $8\\text{ cm}$.”',
+            'answer': False,
+            'solution': 'Vì đặt từ vạch $1$ đến vạch $8$ nên độ dài bút chì chỉ là $8 - 1 = 7\\text{ cm}$, '
+                        'không phải $8\\text{ cm}$. Nhận định Sai.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'tf',
+            'q': 'Trong **Bài 26: Đơn vị đo độ dài (Xăng-ti-mét)**, quy tắc **Ký hiệu đơn vị** được xác định '
+                 'bởi Xăng-ti-mét viết tắt là $\\text{cm}$ và áp dụng trực tiếp vào bài toán: “Một đầu chiếc '
+                 'tẩy đặt trùng với vạch $0$ của thước, đầu kia trùng với vạch số $4$. Hỏi chiếc tẩy dài bao '
+                 'nhiêu xăng-ti-mét?”. Đúng hay sai?',
+            'answer': True,
+            'solution': 'Khẳng định **Đúng**. Quy tắc **Ký hiệu đơn vị** (Xăng-ti-mét viết tắt là '
+                        '$\\text{cm}$) là kiến thức cốt lõi của Bài 26: Đơn vị đo độ dài (Xăng-ti-mét). Vì '
+                        'một đầu trùng vạch $0$ và đầu kia trùng vạch $4$ nên chiếc tẩy dài $4\\text{ cm}$.'},
+           {'level': 'vandung',
+            'type': 'mcq',
+            'q': 'Vận dụng kiến thức **Bài 26: Đơn vị đo độ dài (Xăng-ti-mét)** để giải quyết tình huống '
+                 'sau: Một đầu chiếc tẩy đặt trùng với vạch $0$ của thước, đầu kia trùng với vạch số $4$. '
+                 'Hỏi chiếc tẩy dài bao nhiêu xăng-ti-mét? Kết quả và hướng giải nào dưới đây là **đúng**?',
+            'options': ['Vì một đầu trùng vạch $0$ và đầu kia trùng vạch $4$ nên chiếc tẩy dài $4\\text{ '
+                        'cm}$.',
+                        'Đếm số quyển vở: $1, 2, 3, 4$ nên viết số $4$. Trong hộp không có bút nào nên viết '
+                        'số $0$.',
+                        'Đếm tiếp sau $7$ là $8$, sau $9$ là $10$. Dãy số đầy đủ là $6, 7, 8, 9, 10$.',
+                        'Mỗi bạn thỏ nhận $1$ củ cà rốt thì còn $1$ bạn thỏ chưa có cà rốt ($5 > 4$). Vậy số '
+                        'thỏ **nhiều hơn** số cà rốt.'],
+            'answer': 0,
+            'solution': 'Lời giải chi tiết theo Bài 26: Đơn vị đo độ dài (Xăng-ti-mét): Vì một đầu trùng '
+                        'vạch $0$ và đầu kia trùng vạch $4$ nên chiếc tẩy dài $4\\text{ cm}$.'},
+           {'level': 'vandung',
+            'type': 'short',
+            'q': 'Một đoạn thẳng có điểm đầu trùng với vạch $0$ và điểm cuối trùng với vạch $9$ trên thước '
+                 'kẻ chia xăng-ti-mét. Đoạn thẳng đó dài bao nhiêu xăng-ti-mét?',
+            'answer': ['9', '9cm', '9 cm'],
+            'unit': None,
+            'solution': 'Điểm đầu ở vạch $0$, điểm cuối ở vạch $9$ nên đoạn thẳng dài $9\\text{ cm}$.',
+            'alt': None,
+            'note': None}]},
+ {'topic': 'l1-cd07-do-dai',
+  'context_title': 'Chủ đề 7: Độ dài và đo độ dài',
+  'context': 'SGK Toán 1 · Chủ đề 7: Dài hơn – ngắn hơn, đơn vị xăng-ti-mét, thực hành ước lượng và đo độ '
+             'dài.',
+  'title': 'Bài 27: Thực hành ước lượng và đo độ dài (Luyện tập chung Chủ đề 7)',
+  'icon': '✂️',
+  'description': 'Ước lượng độ dài theo cm, cộng trừ số đo độ dài và giải bài toán thực tế về độ dài.',
+  'requirements': ['Ước lượng được độ dài một số đồ vật quen thuộc theo đơn vị $\\text{cm}$ rồi kiểm tra lại '
+                   'bằng thước.',
+                   'Thực hiện được phép cộng, phép trừ các số đo độ dài có cùng đơn vị $\\text{cm}$.',
+                   'Giải được bài toán thực tế về nối thêm hoặc cắt bớt đoạn dây, băng giấy.'],
+  'definition': 'Khi cộng hoặc trừ các số đo độ dài có cùng đơn vị $\\text{cm}$, ta thực hiện cộng hoặc trừ '
+                'các số như bình thường rồi **viết thêm đơn vị $\\text{cm}$** vào sau kết quả. Ví dụ: '
+                '$6\\text{ cm} + 3\\text{ cm} = 9\\text{ cm}$.',
+  'theory': '- **Ước lượng độ dài:** Chiều rộng một ngón tay út của học sinh lớp $1$ khoảng $1\\text{ cm}$; '
+            'một gang tay khoảng $12\\text{ cm}$ đến $15\\text{ cm}$; chiếc bút chì mới dài khoảng '
+            '$15\\text{ cm}$ đến $18\\text{ cm}$.\n'
+            '- **Bài toán nối thêm / cắt bớt:**\n'
+            '  + Nối hai đoạn thẳng (không chồng lên nhau) $\\rightarrow$ dùng phép cộng.\n'
+            '  + Cắt bớt đi hoặc hỏi đoạn này dài hơn đoạn kia bao nhiêu $\\rightarrow$ dùng phép trừ.',
+  'formulas': [{'category': 'Phép tính với số đo độ dài (cm)',
+                'items': [{'name': 'Cộng độ dài',
+                           'formula': '$a\\text{ cm} + b\\text{ cm} = (a + b)\\text{ cm}$',
+                           'note': 'Ví dụ: $5\\text{ cm} + 4\\text{ cm} = 9\\text{ cm}$.'},
+                          {'name': 'Trừ độ dài',
+                           'formula': '$a\\text{ cm} - b\\text{ cm} = (a - b)\\text{ cm}$',
+                           'note': 'Ví dụ: $10\\text{ cm} - 4\\text{ cm} = 6\\text{ cm}$.'}]}],
+  'example': 'Sợi dây xanh dài $9\\text{ cm}$, sợi dây đỏ dài $6\\text{ cm}$. Hỏi sợi dây xanh dài hơn sợi '
+             'dây đỏ bao nhiêu xăng-ti-mét?',
+  'example_answer': 'Sợi dây xanh dài hơn sợi dây đỏ là: $9\\text{ cm} - 6\\text{ cm} = 3\\text{ cm}$.',
+  'real_life': 'Đo băng giấy để làm thủ công, ước lượng kích thước hộp bút xem có vừa chiếc thước kẻ '
+               '$20\\text{ cm}$ hay không.',
+  'quiz': [{'level': 'biet',
+            'type': 'mcq',
+            'q': 'Kết quả của phép tính $6\\text{ cm} + 3\\text{ cm}$ là:',
+            'options': ['$9$', '$3\\text{ cm}$', '$10\\text{ cm}$', '$9\\text{ cm}$'],
+            'answer': 3,
+            'solution': 'Cộng hai số: $6 + 3 = 9$, giữ nguyên đơn vị $\\text{cm}$ được $9\\text{ cm}$.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Đồ vật nào dưới đây phù hợp để đo bằng chiếc thước kẻ học sinh dài $20\\text{ cm}$?',
+            'options': ['Chiều dài cái bút chì',
+                        'Quãng đường từ nhà đến trường',
+                        'Chiều dài một con sông',
+                        'Chiều cao tòa nhà $10$ tầng'],
+            'answer': 0,
+            'solution': 'Chiếc bút chì dài khoảng $15\\text{ cm}$ nên đo dễ dàng bằng thước kẻ $20\\text{ '
+                        'cm}$.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Theo nội dung trọng tâm của **Bài 27: Thực hành ước lượng và đo độ dài (Luyện tập chung '
+                 'Chủ đề 7)**, công thức hoặc quy tắc nào sau đây biểu diễn đúng **Cộng độ dài**?',
+            'options': ['$a\\text{ cm} - b\\text{ cm} = (a - b)\\text{ cm}$',
+                        '$a\\text{ cm} + b\\text{ cm} = (a + b)\\text{ cm}$',
+                        '$0, 1, 2, 3, 4, 5$',
+                        '$0$ chỉ không có đồ vật nào'],
+            'answer': 1,
+            'solution': 'Theo bảng công thức trọng tâm của Bài 27: Thực hành ước lượng và đo độ dài (Luyện '
+                        'tập chung Chủ đề 7), **Cộng độ dài** được xác định bởi: $a\\text{ cm} + b\\text{ '
+                        'cm} = (a + b)\\text{ cm}$. (Ví dụ: $5\\text{ cm} + 4\\text{ cm} = 9\\text{ cm}$.)'},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Trong **Bài 27: Thực hành ước lượng và đo độ dài (Luyện tập chung Chủ đề 7)**, nội '
+                 'dung/biểu thức $a\\text{ cm} - b\\text{ cm} = (a - b)\\text{ cm}$ là quy tắc hoặc công '
+                 'thức của mục nào sau đây?',
+            'options': ['Cộng độ dài', 'Dãy số từ 0 đến 5', 'Trừ độ dài', 'Ý nghĩa số 0'],
+            'answer': 2,
+            'solution': 'Trong Bài 27: Thực hành ước lượng và đo độ dài (Luyện tập chung Chủ đề 7), biểu '
+                        'thức/quy tắc $a\\text{ cm} - b\\text{ cm} = (a - b)\\text{ cm}$ chính là nội dung '
+                        'của **Trừ độ dài**.'},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Sợi dây xanh dài $9\\text{ cm}$, sợi dây đỏ dài $6\\text{ cm}$. Sợi dây xanh dài hơn sợi '
+                 'dây đỏ bao nhiêu xăng-ti-mét?',
+            'options': ['$15\\text{ cm}$', '$2\\text{ cm}$', '$4\\text{ cm}$', '$3\\text{ cm}$'],
+            'answer': 3,
+            'solution': 'Lấy độ dài sợi dây xanh trừ độ dài sợi dây đỏ: $9\\text{ cm} - 6\\text{ cm} = '
+                        '3\\text{ cm}$.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Khi học **Bài 27: Thực hành ước lượng và đo độ dài (Luyện tập chung Chủ đề 7)** (Chủ đề 7: '
+                 'Độ dài và đo độ dài), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất '
+                 'kiến thức của bài?',
+            'options': ['Ước lượng được độ dài một số đồ vật quen thuộc theo đơn vị $\\text{cm}$ rồi kiểm '
+                        'tra lại bằng thước.',
+                        'Đếm, đọc, viết được các số $0, 1, 2, 3, 4, 5$.',
+                        'Nhận biết được số $0$ dùng để chỉ không có đồ vật nào.',
+                        'Nhận biết thứ tự các số từ $0$ đến $5$.'],
+            'answer': 0,
+            'solution': 'Theo yêu cầu cần đạt của Bài 27: Thực hành ước lượng và đo độ dài (Luyện tập chung '
+                        'Chủ đề 7): Ước lượng được độ dài một số đồ vật quen thuộc theo đơn vị $\\text{cm}$ '
+                        'rồi kiểm tra lại bằng thước.'},
+           {'level': 'hieu',
+            'type': 'tf',
+            'q': 'Nhận định: “$10\\text{ cm} - 4\\text{ cm} = 6\\text{ cm}$.”',
+            'answer': True,
+            'solution': 'Ta có $10 - 4 = 6$, viết kèm đơn vị $\\text{cm}$ là $6\\text{ cm}$. Nhận định Đúng.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'tf',
+            'q': 'Trong **Bài 27: Thực hành ước lượng và đo độ dài (Luyện tập chung Chủ đề 7)**, quy tắc '
+                 '**Cộng độ dài** được xác định bởi $a\\text{ cm} + b\\text{ cm} = (a + b)\\text{ cm}$ và áp '
+                 'dụng trực tiếp vào bài toán: “Sợi dây xanh dài $9\\text{ cm}$, sợi dây đỏ dài $6\\text{ '
+                 'cm}$. Hỏi sợi dây xanh dài hơn sợi dây đỏ bao nhiêu xăng-ti-mét?”. Đúng hay sai?',
+            'answer': True,
+            'solution': 'Khẳng định **Đúng**. Quy tắc **Cộng độ dài** ($a\\text{ cm} + b\\text{ cm} = (a + '
+                        'b)\\text{ cm}$) là kiến thức cốt lõi của Bài 27: Thực hành ước lượng và đo độ dài '
+                        '(Luyện tập chung Chủ đề 7). Sợi dây xanh dài hơn sợi dây đỏ là: $9\\text{ cm} - '
+                        '6\\text{ cm} = 3\\text{ cm}$.'},
+           {'level': 'vandung',
+            'type': 'mcq',
+            'q': 'Vận dụng kiến thức **Bài 27: Thực hành ước lượng và đo độ dài (Luyện tập chung Chủ đề 7)** '
+                 'để giải quyết tình huống sau: Sợi dây xanh dài $9\\text{ cm}$, sợi dây đỏ dài $6\\text{ '
+                 'cm}$. Hỏi sợi dây xanh dài hơn sợi dây đỏ bao nhiêu xăng-ti-mét? Kết quả và hướng giải nào '
+                 'dưới đây là **đúng**?',
+            'options': ['Đếm số quyển vở: $1, 2, 3, 4$ nên viết số $4$. Trong hộp không có bút nào nên viết '
+                        'số $0$.',
+                        'Sợi dây xanh dài hơn sợi dây đỏ là: $9\\text{ cm} - 6\\text{ cm} = 3\\text{ cm}$.',
+                        'Đếm tiếp sau $7$ là $8$, sau $9$ là $10$. Dãy số đầy đủ là $6, 7, 8, 9, 10$.',
+                        'Mỗi bạn thỏ nhận $1$ củ cà rốt thì còn $1$ bạn thỏ chưa có cà rốt ($5 > 4$). Vậy số '
+                        'thỏ **nhiều hơn** số cà rốt.'],
+            'answer': 1,
+            'solution': 'Lời giải chi tiết theo Bài 27: Thực hành ước lượng và đo độ dài (Luyện tập chung '
+                        'Chủ đề 7): Sợi dây xanh dài hơn sợi dây đỏ là: $9\\text{ cm} - 6\\text{ cm} = '
+                        '3\\text{ cm}$.'},
+           {'level': 'vandung',
+            'type': 'short',
+            'q': 'Bạn Nam nối một đoạn dây dài $5\\text{ cm}$ với một đoạn dây dài $4\\text{ cm}$ (nối sát '
+                 'đầu nhau, không chồng lên nhau). Hỏi đoạn dây sau khi nối dài bao nhiêu xăng-ti-mét?',
+            'answer': ['9', '9cm', '9 cm'],
+            'unit': None,
+            'solution': 'Độ dài đoạn dây sau khi nối là: $5\\text{ cm} + 4\\text{ cm} = 9\\text{ cm}$.',
+            'alt': None,
+            'note': None}]},
+ {'topic': 'l1-cd08-cong-tru-pham-vi-100',
+  'context_title': 'Chủ đề 8: Phép cộng, phép trừ (không nhớ) trong phạm vi 100',
+  'context': 'SGK Toán 1 · Chủ đề 8: Cộng, trừ số có hai chữ số với số có một, hai chữ số (không nhớ); tính '
+             'nhẩm số tròn chục; bài toán có lời văn.',
+  'title': 'Bài 29: Phép cộng số có hai chữ số với số có một chữ số',
+  'icon': '🧮',
+  'description': 'Đặt tính và tính phép cộng (không nhớ) số có hai chữ số với số có một chữ số.',
+  'requirements': ['Biết cách đặt tính thẳng cột: chữ số đơn vị của số có một chữ số thẳng cột với chữ số '
+                   'hàng đơn vị của số có hai chữ số.',
+                   'Thực hiện tính đúng từ phải sang trái (hàng đơn vị cộng trước, hàng chục hạ xuống).',
+                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Đặt tính** (Số có $1$ chữ số phải thẳng cột '
+                   'với hàng đơn vị) vào giải bài tập.'],
+  'definition': 'Khi cộng số có hai chữ số với số có một chữ số (không nhớ), ta viết số có một chữ số '
+                '**thẳng cột với hàng đơn vị**, cộng các chữ số hàng đơn vị với nhau, rồi hạ chữ số hàng '
+                'chục xuống.',
+  'theory': '- **Ví dụ: Tính $42 + 4$.**\n'
+            '  + Đặt tính: Viết $42$ ở hàng trên, viết $4$ ở hàng dưới thẳng cột với chữ số $2$ (hàng đơn '
+            'vị).\n'
+            '  + Tính từ phải sang trái: $2 + 4 = 6$, viết $6$; hạ $4$, viết $4$. Kết quả: $42 + 4 = 46$.\n'
+            '- **Lỗi cần tránh:** Không được viết số có một chữ số thẳng cột với hàng chục!',
+  'formulas': [{'category': 'Quy tắc cộng số có hai chữ số với số có một chữ số',
+                'items': [{'name': 'Đặt tính', 'formula': 'Số có $1$ chữ số phải thẳng cột với hàng đơn vị'},
+                          {'name': 'Thứ tự tính',
+                           'formula': 'Tính hàng đơn vị trước: $\\overline{ab} + c = \\overline{a(b+c)}$ '
+                                      '(với $b + c < 10$)',
+                           'note': 'Ví dụ: $34 + 5 = 39$.'}]}],
+  'example': 'Đặt tính rồi tính: $63 + 5$.',
+  'example_answer': 'Cộng hàng đơn vị: $3 + 5 = 8$, viết $8$; hạ $6$ chục, viết $6$. Vậy $63 + 5 = 68$.',
+  'real_life': 'Tính tổng số quyển truyện trên kệ khi có sẵn $24$ quyển và mua thêm $5$ quyển nữa.',
+  'quiz': [{'level': 'biet',
+            'type': 'mcq',
+            'q': 'Kết quả của phép tính $34 + 5$ là:',
+            'options': ['$39$', '$84$', '$38$', '$29$'],
+            'answer': 0,
+            'solution': 'Cộng hàng đơn vị: $4 + 5 = 9$; giữ nguyên $3$ chục được $39$.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Khi đặt tính $52 + 6$, chữ số $6$ phải viết thẳng cột với chữ số nào của số $52$?',
+            'options': ['Chữ số $5$', 'Chữ số $2$', 'Viết ở đâu cũng được', 'Viết bên trái chữ số $5$'],
+            'answer': 1,
+            'solution': 'Số $6$ là $6$ đơn vị nên phải viết thẳng cột với chữ số hàng đơn vị là chữ số $2$.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Theo nội dung trọng tâm của **Bài 29: Phép cộng số có hai chữ số với số có một chữ số**, '
+                 'công thức hoặc quy tắc nào sau đây biểu diễn đúng **Đặt tính**?',
+            'options': ['Tính hàng đơn vị trước: $\\overline{ab} + c = \\overline{a(b+c)}$ (với $b + c < '
+                        '10$)',
+                        '$0, 1, 2, 3, 4, 5$',
+                        'Số có $1$ chữ số phải thẳng cột với hàng đơn vị',
+                        '$0$ chỉ không có đồ vật nào'],
+            'answer': 2,
+            'solution': 'Theo bảng công thức trọng tâm của Bài 29: Phép cộng số có hai chữ số với số có một '
+                        'chữ số, **Đặt tính** được xác định bởi: Số có $1$ chữ số phải thẳng cột với hàng '
+                        'đơn vị.'},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Trong **Bài 29: Phép cộng số có hai chữ số với số có một chữ số**, nội dung/biểu thức Tính '
+                 'hàng đơn vị trước: $\\overline{ab} + c = \\overline{a(b+c)}$ (với $b + c < 10$) là quy tắc '
+                 'hoặc công thức của mục nào sau đây?',
+            'options': ['Đặt tính', 'Dãy số từ 0 đến 5', 'Ý nghĩa số 0', 'Thứ tự tính'],
+            'answer': 3,
+            'solution': 'Trong Bài 29: Phép cộng số có hai chữ số với số có một chữ số, biểu thức/quy tắc '
+                        'Tính hàng đơn vị trước: $\\overline{ab} + c = \\overline{a(b+c)}$ (với $b + c < '
+                        '10$) chính là nội dung của **Thứ tự tính**.'},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Phép tính nào dưới đây có kết quả bằng $78$?',
+            'options': ['$71 + 7$', '$70 + 6$', '$27 + 5$', '$7 + 8$'],
+            'answer': 0,
+            'solution': 'Ta có $71 + 7 = 78$ ($1 + 7 = 8$, hạ $7$).',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Khi học **Bài 29: Phép cộng số có hai chữ số với số có một chữ số** (Chủ đề 8: Phép cộng, '
+                 'phép trừ (không nhớ) trong phạm vi 100), khẳng định nào sau đây phản ánh **đúng** yêu cầu '
+                 'cần đạt và bản chất kiến thức của bài?',
+            'options': ['Đếm, đọc, viết được các số $0, 1, 2, 3, 4, 5$.',
+                        'Biết cách đặt tính thẳng cột: chữ số đơn vị của số có một chữ số thẳng cột với chữ '
+                        'số hàng đơn vị của số có hai chữ số.',
+                        'Nhận biết được số $0$ dùng để chỉ không có đồ vật nào.',
+                        'Nhận biết thứ tự các số từ $0$ đến $5$.'],
+            'answer': 1,
+            'solution': 'Theo yêu cầu cần đạt của Bài 29: Phép cộng số có hai chữ số với số có một chữ số: '
+                        'Biết cách đặt tính thẳng cột: chữ số đơn vị của số có một chữ số thẳng cột với chữ '
+                        'số hàng đơn vị của số có hai chữ số.'},
+           {'level': 'hieu',
+            'type': 'tf',
+            'q': 'Nhận định: “$43 + 5 = 93$.”',
+            'answer': False,
+            'solution': 'Cộng $5$ vào hàng đơn vị ($3 + 5 = 8$), kết quả đúng là $43 + 5 = 48$ chứ không '
+                        'phải $93$. Nhận định Sai.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'tf',
+            'q': 'Trong **Bài 29: Phép cộng số có hai chữ số với số có một chữ số**, quy tắc **Đặt tính** '
+                 'được xác định bởi Số có $1$ chữ số phải thẳng cột với hàng đơn vị và áp dụng trực tiếp vào '
+                 'bài toán: “Đặt tính rồi tính: $63 + 5$.”. Đúng hay sai?',
+            'answer': True,
+            'solution': 'Khẳng định **Đúng**. Quy tắc **Đặt tính** (Số có $1$ chữ số phải thẳng cột với hàng '
+                        'đơn vị) là kiến thức cốt lõi của Bài 29: Phép cộng số có hai chữ số với số có một '
+                        'chữ số. Cộng hàng đơn vị: $3 + 5 = 8$, viết $8$; hạ $6$ chục, viết $6$. Vậy $63 + 5 '
+                        '= 68$.'},
+           {'level': 'vandung',
+            'type': 'mcq',
+            'q': 'Vận dụng kiến thức **Bài 29: Phép cộng số có hai chữ số với số có một chữ số** để giải '
+                 'quyết tình huống sau: Đặt tính rồi tính: $63 + 5$. Kết quả và hướng giải nào dưới đây là '
+                 '**đúng**?',
+            'options': ['Đếm số quyển vở: $1, 2, 3, 4$ nên viết số $4$. Trong hộp không có bút nào nên viết '
+                        'số $0$.',
+                        'Đếm tiếp sau $7$ là $8$, sau $9$ là $10$. Dãy số đầy đủ là $6, 7, 8, 9, 10$.',
+                        'Cộng hàng đơn vị: $3 + 5 = 8$, viết $8$; hạ $6$ chục, viết $6$. Vậy $63 + 5 = 68$.',
+                        'Mỗi bạn thỏ nhận $1$ củ cà rốt thì còn $1$ bạn thỏ chưa có cà rốt ($5 > 4$). Vậy số '
+                        'thỏ **nhiều hơn** số cà rốt.'],
+            'answer': 2,
+            'solution': 'Lời giải chi tiết theo Bài 29: Phép cộng số có hai chữ số với số có một chữ số: '
+                        'Cộng hàng đơn vị: $3 + 5 = 8$, viết $8$; hạ $6$ chục, viết $6$. Vậy $63 + 5 = 68$.'},
+           {'level': 'vandung',
+            'type': 'short',
+            'q': 'Trong rổ có $32$ quả trứng, mẹ bỏ thêm vào $6$ quả trứng nữa. Hỏi trong rổ có tất cả bao '
+                 'nhiêu quả trứng?',
+            'answer': ['38'],
+            'unit': None,
+            'solution': 'Ta có phép cộng: $32 + 6 = 38$ (quả trứng).',
+            'alt': None,
+            'note': None}]},
+ {'topic': 'l1-cd08-cong-tru-pham-vi-100',
+  'context_title': 'Chủ đề 8: Phép cộng, phép trừ (không nhớ) trong phạm vi 100',
+  'context': 'SGK Toán 1 · Chủ đề 8: Cộng, trừ số có hai chữ số với số có một, hai chữ số (không nhớ); tính '
+             'nhẩm số tròn chục; bài toán có lời văn.',
+  'title': 'Bài 30: Phép cộng số có hai chữ số với số có hai chữ số',
+  'icon': '➕',
+  'description': 'Đặt tính và tính phép cộng (không nhớ) hai số có hai chữ số; cộng nhẩm các số tròn chục.',
+  'requirements': ['Thực hiện được phép cộng (không nhớ) số có hai chữ số với số có hai chữ số.',
+                   'Cộng nhẩm thành thạo các số tròn chục trong phạm vi $100$.',
+                   'Vận dụng giải bài toán thực tế có phép cộng hai số có hai chữ số.'],
+  'definition': 'Khi cộng hai số có hai chữ số (không nhớ), ta đặt tính sao cho **hàng đơn vị thẳng cột hàng '
+                'đơn vị, hàng chục thẳng cột hàng chục**, sau đó cộng từ phải sang trái (hàng đơn vị trước, '
+                'hàng chục sau).',
+  'theory': '- **Ví dụ: Tính $42 + 35$.**\n'
+            '  + Hàng đơn vị: $2 + 5 = 7$, viết $7$.\n'
+            '  + Hàng chục: $4 + 3 = 7$, viết $7$.\n'
+            '  + Vậy $42 + 35 = 77$.\n'
+            '- **Cộng nhẩm hai số tròn chục:** Đổi sang chục rồi cộng. Ví dụ: $30 + 20 = ?$ Ta nhẩm $3$ chục '
+            '$+ 2$ chục $= 5$ chục, vậy $30 + 20 = 50$.',
+  'formulas': [{'category': 'Quy tắc cộng hai số có hai chữ số',
+                'items': [{'name': 'Cộng theo cột',
+                           'formula': 'Đơn vị cộng đơn vị, chục cộng chục (từ phải sang trái)',
+                           'note': 'Ví dụ: $53 + 24 = 77$.'},
+                          {'name': 'Cộng nhẩm số tròn chục',
+                           'formula': '$a0 + b0 = (a + b)0$',
+                           'note': 'Ví dụ: $40 + 30 = 70$ ($4$ chục $+ 3$ chục $= 7$ chục).'}]}],
+  'example': 'Đặt tính rồi tính: $53 + 24$ và tính nhẩm: $50 + 40$.',
+  'example_answer': '- $53 + 24$: hàng đơn vị $3 + 4 = 7$, hàng chục $5 + 2 = 7 \\Rightarrow 53 + 24 = 77$.\n'
+                    '- Nhẩm: $5$ chục $+ 4$ chục $= 9$ chục $\\Rightarrow 50 + 40 = 90$.',
+  'real_life': 'Tính tổng số học sinh của hai lớp 1A và 1B khi đi tham quan dã ngoại.',
+  'quiz': [{'level': 'biet',
+            'type': 'mcq',
+            'q': 'Kết quả của phép tính $40 + 30$ là:',
+            'options': ['$7$', '$70$', '$43$', '$700$'],
+            'answer': 1,
+            'solution': '$4$ chục $+ 3$ chục $= 7$ chục $= 70$.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Khi đặt tính $52 + 36$, ta thực hiện tính theo thứ tự nào?',
+            'options': ['Cộng hàng chục trước, rồi cộng hàng đơn vị',
+                        'Cộng hàng nào trước cũng được',
+                        'Cộng hàng đơn vị trước, rồi cộng hàng chục',
+                        'Chỉ cộng hàng chục'],
+            'answer': 2,
+            'solution': 'Ta luôn tính từ phải sang trái: cộng hàng đơn vị trước ($2 + 6 = 8$), rồi cộng hàng '
+                        'chục ($5 + 3 = 8$).',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Theo nội dung trọng tâm của **Bài 30: Phép cộng số có hai chữ số với số có hai chữ số**, '
+                 'công thức hoặc quy tắc nào sau đây biểu diễn đúng **Cộng theo cột**?',
+            'options': ['$a0 + b0 = (a + b)0$',
+                        '$0, 1, 2, 3, 4, 5$',
+                        '$0$ chỉ không có đồ vật nào',
+                        'Đơn vị cộng đơn vị, chục cộng chục (từ phải sang trái)'],
+            'answer': 3,
+            'solution': 'Theo bảng công thức trọng tâm của Bài 30: Phép cộng số có hai chữ số với số có hai '
+                        'chữ số, **Cộng theo cột** được xác định bởi: Đơn vị cộng đơn vị, chục cộng chục (từ '
+                        'phải sang trái). (Ví dụ: $53 + 24 = 77$.)'},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Trong **Bài 30: Phép cộng số có hai chữ số với số có hai chữ số**, nội dung/biểu thức $a0 '
+                 '+ b0 = (a + b)0$ là quy tắc hoặc công thức của mục nào sau đây?',
+            'options': ['Cộng nhẩm số tròn chục', 'Cộng theo cột', 'Dãy số từ 0 đến 5', 'Ý nghĩa số 0'],
+            'answer': 0,
+            'solution': 'Trong Bài 30: Phép cộng số có hai chữ số với số có hai chữ số, biểu thức/quy tắc '
+                        '$a0 + b0 = (a + b)0$ chính là nội dung của **Cộng nhẩm số tròn chục**.'},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Kết quả của phép tính $45 + 32$ là:',
+            'options': ['$73$', '$77$', '$87$', '$67$'],
+            'answer': 1,
+            'solution': 'Hàng đơn vị: $5 + 2 = 7$; hàng chục: $4 + 3 = 7$. Vậy $45 + 32 = 77$.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Khi học **Bài 30: Phép cộng số có hai chữ số với số có hai chữ số** (Chủ đề 8: Phép cộng, '
+                 'phép trừ (không nhớ) trong phạm vi 100), khẳng định nào sau đây phản ánh **đúng** yêu cầu '
+                 'cần đạt và bản chất kiến thức của bài?',
+            'options': ['Đếm, đọc, viết được các số $0, 1, 2, 3, 4, 5$.',
+                        'Nhận biết được số $0$ dùng để chỉ không có đồ vật nào.',
+                        'Thực hiện được phép cộng (không nhớ) số có hai chữ số với số có hai chữ số.',
+                        'Nhận biết thứ tự các số từ $0$ đến $5$.'],
+            'answer': 2,
+            'solution': 'Theo yêu cầu cần đạt của Bài 30: Phép cộng số có hai chữ số với số có hai chữ số: '
+                        'Thực hiện được phép cộng (không nhớ) số có hai chữ số với số có hai chữ số.'},
+           {'level': 'hieu',
+            'type': 'tf',
+            'q': 'Nhận định: “$26 + 53 = 79$.”',
+            'answer': True,
+            'solution': 'Hàng đơn vị: $6 + 3 = 9$; hàng chục: $2 + 5 = 7$. Vậy $26 + 53 = 79$. Nhận định '
+                        'Đúng.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'tf',
+            'q': 'Trong **Bài 30: Phép cộng số có hai chữ số với số có hai chữ số**, quy tắc **Cộng theo '
+                 'cột** được xác định bởi Đơn vị cộng đơn vị, chục cộng chục (từ phải sang trái) và áp dụng '
+                 'trực tiếp vào bài toán: “Đặt tính rồi tính: $53 + 24$ và tính nhẩm: $50 + 40$.”. Đúng hay '
+                 'sai?',
+            'answer': True,
+            'solution': 'Khẳng định **Đúng**. Quy tắc **Cộng theo cột** (Đơn vị cộng đơn vị, chục cộng chục '
+                        '(từ phải sang trái)) là kiến thức cốt lõi của Bài 30: Phép cộng số có hai chữ số '
+                        'với số có hai chữ số. - $53 + 24$: hàng đơn vị $3 + 4 = 7$, hàng chục $5 + 2 = 7 '
+                        '\\Rightarrow 53 + 24 = 77$. - Nhẩm: $5$ chục $+ 4$ chục $= 9$ chục $\\Rightarrow 50 '
+                        '+ 40 = 90$...'},
+           {'level': 'vandung',
+            'type': 'mcq',
+            'q': 'Vận dụng kiến thức **Bài 30: Phép cộng số có hai chữ số với số có hai chữ số** để giải '
+                 'quyết tình huống sau: Đặt tính rồi tính: $53 + 24$ và tính nhẩm: $50 + 40$. Kết quả và '
+                 'hướng giải nào dưới đây là **đúng**?',
+            'options': ['Đếm số quyển vở: $1, 2, 3, 4$ nên viết số $4$. Trong hộp không có bút nào nên viết '
+                        'số $0$.',
+                        'Đếm tiếp sau $7$ là $8$, sau $9$ là $10$. Dãy số đầy đủ là $6, 7, 8, 9, 10$.',
+                        'Mỗi bạn thỏ nhận $1$ củ cà rốt thì còn $1$ bạn thỏ chưa có cà rốt ($5 > 4$). Vậy số '
+                        'thỏ **nhiều hơn** số cà rốt.',
+                        '- $53 + 24$: hàng đơn vị $3 + 4 = 7$, hàng chục $5 + 2 = 7 \\Rightarrow 53 + 24 = '
+                        '77$. - Nhẩm: $5$ chục $+ 4$ chục $= 9$ chục $\\Rightarrow 50 + 40 = 90$.'],
+            'answer': 3,
+            'solution': 'Lời giải chi tiết theo Bài 30: Phép cộng số có hai chữ số với số có hai chữ số: - '
+                        '$53 + 24$: hàng đơn vị $3 + 4 = 7$, hàng chục $5 + 2 = 7 \\Rightarrow 53 + 24 = '
+                        '77$.\n'
+                        '- Nhẩm: $5$ chục $+ 4$ chục $= 9$ chục $\\Rightarrow 50 + 40 = 90$.'},
+           {'level': 'vandung',
+            'type': 'short',
+            'q': 'Lớp 1A có $23$ bạn nữ và $15$ bạn nam. Hỏi lớp 1A có tất cả bao nhiêu bạn?',
+            'answer': ['38'],
+            'unit': None,
+            'solution': 'Tổng số bạn của lớp 1A là: $23 + 15 = 38$ (bạn).',
+            'alt': None,
+            'note': None}]},
+ {'topic': 'l1-cd08-cong-tru-pham-vi-100',
+  'context_title': 'Chủ đề 8: Phép cộng, phép trừ (không nhớ) trong phạm vi 100',
+  'context': 'SGK Toán 1 · Chủ đề 8: Cộng, trừ số có hai chữ số với số có một, hai chữ số (không nhớ); tính '
+             'nhẩm số tròn chục; bài toán có lời văn.',
+  'title': 'Bài 31: Phép trừ số có hai chữ số cho số có một chữ số',
+  'icon': '➖',
+  'description': 'Đặt tính và tính phép trừ (không nhớ) số có hai chữ số cho số có một chữ số.',
+  'requirements': ['Đặt tính đúng: viết số có một chữ số thẳng cột với chữ số hàng đơn vị của số có hai chữ '
+                   'số.',
+                   'Tính đúng từ phải sang trái: trừ hàng đơn vị trước, hạ chữ số hàng chục xuống.',
+                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Đặt tính** (Số trừ có $1$ chữ số phải thẳng '
+                   'cột với hàng đơn vị) vào giải bài tập.'],
+  'definition': 'Khi trừ số có hai chữ số cho số có một chữ số (không nhớ), ta viết số có một chữ số **thẳng '
+                'cột với hàng đơn vị**, lấy chữ số hàng đơn vị trừ đi số có một chữ số, rồi hạ chữ số hàng '
+                'chục xuống.',
+  'theory': '- **Ví dụ: Tính $76 - 5$.**\n'
+            '  + Hàng đơn vị: $6 - 5 = 1$, viết $1$.\n'
+            '  + Hàng chục: hạ $7$, viết $7$.\n'
+            '  + Vậy $76 - 5 = 71$.\n'
+            '- **Trường hợp hàng đơn vị bằng nhau:** $48 - 8 = 40$ (vì $8 - 8 = 0$, hạ $4$ chục được số tròn '
+            'chục $40$).',
+  'formulas': [{'category': 'Quy tắc trừ số có hai chữ số cho số có một chữ số',
+                'items': [{'name': 'Đặt tính',
+                           'formula': 'Số trừ có $1$ chữ số phải thẳng cột với hàng đơn vị'},
+                          {'name': 'Cách tính',
+                           'formula': '$\\overline{ab} - c = \\overline{a(b-c)}$ (với $b \\ge c$)',
+                           'note': 'Ví dụ: $76 - 5 = 71$; $54 - 4 = 50$.'}]}],
+  'example': 'Đặt tính rồi tính: $89 - 6$ và $65 - 5$.',
+  'example_answer': '- $89 - 6$: hàng đơn vị $9 - 6 = 3$, hạ $8 \\Rightarrow 89 - 6 = 83$.\n'
+                    '- $65 - 5$: hàng đơn vị $5 - 5 = 0$, hạ $6 \\Rightarrow 65 - 5 = 60$.',
+  'real_life': 'Tính số quả trứng còn lại trong khay $36$ quả sau khi mẹ lấy ra $4$ quả để nấu ăn.',
+  'quiz': [{'level': 'biet',
+            'type': 'mcq',
+            'q': 'Kết quả của phép tính $76 - 5$ là:',
+            'options': ['$26$', '$81$', '$71$', '$70$'],
+            'answer': 2,
+            'solution': 'Trừ hàng đơn vị: $6 - 5 = 1$, hạ $7$ chục được $71$.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Kết quả của phép tính $48 - 8$ là:',
+            'options': ['$48$', '$8$', '$30$', '$40$'],
+            'answer': 3,
+            'solution': 'Hàng đơn vị: $8 - 8 = 0$, hạ $4$ chục được $40$.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Theo nội dung trọng tâm của **Bài 31: Phép trừ số có hai chữ số cho số có một chữ số**, '
+                 'công thức hoặc quy tắc nào sau đây biểu diễn đúng **Đặt tính**?',
+            'options': ['Số trừ có $1$ chữ số phải thẳng cột với hàng đơn vị',
+                        '$\\overline{ab} - c = \\overline{a(b-c)}$ (với $b \\ge c$)',
+                        '$0, 1, 2, 3, 4, 5$',
+                        '$0$ chỉ không có đồ vật nào'],
+            'answer': 0,
+            'solution': 'Theo bảng công thức trọng tâm của Bài 31: Phép trừ số có hai chữ số cho số có một '
+                        'chữ số, **Đặt tính** được xác định bởi: Số trừ có $1$ chữ số phải thẳng cột với '
+                        'hàng đơn vị.'},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Trong **Bài 31: Phép trừ số có hai chữ số cho số có một chữ số**, nội dung/biểu thức '
+                 '$\\overline{ab} - c = \\overline{a(b-c)}$ (với $b \\ge c$) là quy tắc hoặc công thức của '
+                 'mục nào sau đây?',
+            'options': ['Đặt tính', 'Cách tính', 'Dãy số từ 0 đến 5', 'Ý nghĩa số 0'],
+            'answer': 1,
+            'solution': 'Trong Bài 31: Phép trừ số có hai chữ số cho số có một chữ số, biểu thức/quy tắc '
+                        '$\\overline{ab} - c = \\overline{a(b-c)}$ (với $b \\ge c$) chính là nội dung của '
+                        '**Cách tính**.'},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Phép tính nào dưới đây có kết quả bằng $52$?',
+            'options': ['$57 - 2$', '$75 - 5$', '$57 - 5$', '$52 - 2$'],
+            'answer': 2,
+            'solution': 'Ta có $57 - 5 = 52$ ($7 - 5 = 2$, hạ $5$).',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Khi học **Bài 31: Phép trừ số có hai chữ số cho số có một chữ số** (Chủ đề 8: Phép cộng, '
+                 'phép trừ (không nhớ) trong phạm vi 100), khẳng định nào sau đây phản ánh **đúng** yêu cầu '
+                 'cần đạt và bản chất kiến thức của bài?',
+            'options': ['Đếm, đọc, viết được các số $0, 1, 2, 3, 4, 5$.',
+                        'Nhận biết được số $0$ dùng để chỉ không có đồ vật nào.',
+                        'Nhận biết thứ tự các số từ $0$ đến $5$.',
+                        'Đặt tính đúng: viết số có một chữ số thẳng cột với chữ số hàng đơn vị của số có hai '
+                        'chữ số.'],
+            'answer': 3,
+            'solution': 'Theo yêu cầu cần đạt của Bài 31: Phép trừ số có hai chữ số cho số có một chữ số: '
+                        'Đặt tính đúng: viết số có một chữ số thẳng cột với chữ số hàng đơn vị của số có hai '
+                        'chữ số.'},
+           {'level': 'hieu',
+            'type': 'tf',
+            'q': 'Bạn Bi đặt tính $45 - 3$ bằng cách viết số $3$ thẳng cột với chữ số $4$ (hàng chục) và ra '
+                 'kết quả là $15$. Nhận định: “Bạn Bi đã làm đúng.”',
+            'answer': False,
+            'solution': 'Số $3$ là $3$ đơn vị nên phải viết thẳng cột với chữ số $5$. Kết quả đúng là $45 - '
+                        '3 = 42$. Nhận định Sai.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'tf',
+            'q': 'Trong **Bài 31: Phép trừ số có hai chữ số cho số có một chữ số**, quy tắc **Đặt tính** '
+                 'được xác định bởi Số trừ có $1$ chữ số phải thẳng cột với hàng đơn vị và áp dụng trực tiếp '
+                 'vào bài toán: “Đặt tính rồi tính: $89 - 6$ và $65 - 5$.”. Đúng hay sai?',
+            'answer': True,
+            'solution': 'Khẳng định **Đúng**. Quy tắc **Đặt tính** (Số trừ có $1$ chữ số phải thẳng cột với '
+                        'hàng đơn vị) là kiến thức cốt lõi của Bài 31: Phép trừ số có hai chữ số cho số có '
+                        'một chữ số. - $89 - 6$: hàng đơn vị $9 - 6 = 3$, hạ $8 \\Rightarrow 89 - 6 = 83$. - '
+                        '$65 - 5$: hàng đơn vị $5 - 5 = 0$, hạ $6 \\Rightarrow 65 - 5 = 60$.'},
+           {'level': 'vandung',
+            'type': 'mcq',
+            'q': 'Vận dụng kiến thức **Bài 31: Phép trừ số có hai chữ số cho số có một chữ số** để giải '
+                 'quyết tình huống sau: Đặt tính rồi tính: $89 - 6$ và $65 - 5$. Kết quả và hướng giải nào '
+                 'dưới đây là **đúng**?',
+            'options': ['- $89 - 6$: hàng đơn vị $9 - 6 = 3$, hạ $8 \\Rightarrow 89 - 6 = 83$. - $65 - 5$: '
+                        'hàng đơn vị $5 - 5 = 0$, hạ $6 \\Rightarrow 65 - 5 = 60$.',
+                        'Đếm số quyển vở: $1, 2, 3, 4$ nên viết số $4$. Trong hộp không có bút nào nên viết '
+                        'số $0$.',
+                        'Đếm tiếp sau $7$ là $8$, sau $9$ là $10$. Dãy số đầy đủ là $6, 7, 8, 9, 10$.',
+                        'Mỗi bạn thỏ nhận $1$ củ cà rốt thì còn $1$ bạn thỏ chưa có cà rốt ($5 > 4$). Vậy số '
+                        'thỏ **nhiều hơn** số cà rốt.'],
+            'answer': 0,
+            'solution': 'Lời giải chi tiết theo Bài 31: Phép trừ số có hai chữ số cho số có một chữ số: - '
+                        '$89 - 6$: hàng đơn vị $9 - 6 = 3$, hạ $8 \\Rightarrow 89 - 6 = 83$.\n'
+                        '- $65 - 5$: hàng đơn vị $5 - 5 = 0$, hạ $6 \\Rightarrow 65 - 5 = 60$.'},
+           {'level': 'vandung',
+            'type': 'short',
+            'q': 'An có $28$ viên bi, An cho bạn $6$ viên bi. Hỏi An còn lại bao nhiêu viên bi?',
+            'answer': ['22'],
+            'unit': None,
+            'solution': 'Số viên bi An còn lại là: $28 - 6 = 22$ (viên bi).',
+            'alt': None,
+            'note': None}]},
+ {'topic': 'l1-cd08-cong-tru-pham-vi-100',
+  'context_title': 'Chủ đề 8: Phép cộng, phép trừ (không nhớ) trong phạm vi 100',
+  'context': 'SGK Toán 1 · Chủ đề 8: Cộng, trừ số có hai chữ số với số có một, hai chữ số (không nhớ); tính '
+             'nhẩm số tròn chục; bài toán có lời văn.',
+  'title': 'Bài 32: Phép trừ số có hai chữ số cho số có hai chữ số (Luyện tập chung)',
+  'icon': '📝',
+  'description': 'Thực hiện phép trừ hai số có hai chữ số (không nhớ), trừ nhẩm số tròn chục và giải bài '
+                 'toán có lời văn.',
+  'requirements': ['Thực hiện được phép trừ (không nhớ) số có hai chữ số cho số có hai chữ số.',
+                   'Trừ nhẩm thành thạo các số tròn chục; tính được biểu thức có hai dấu phép tính cộng, '
+                   'trừ.',
+                   'Viết được phép tính và câu trả lời cho bài toán có lời văn.'],
+  'definition': '- Khi trừ số có hai chữ số cho số có hai chữ số (không nhớ), ta đặt tính thẳng cột rồi trừ '
+                'từ phải sang trái: **đơn vị trừ đơn vị, chục trừ chục**.\n'
+                '- Khi giải **bài toán có lời văn**, ta đọc kỹ cái đã cho và câu hỏi, viết **phép tính** '
+                'thích hợp và viết **câu trả lời**.',
+  'theory': '- **Ví dụ: Tính $86 - 64$.** Hàng đơn vị: $6 - 4 = 2$, viết $2$; hàng chục: $8 - 6 = 2$, viết '
+            '$2$. Vậy $86 - 64 = 22$.\n'
+            '- **Trừ nhẩm số tròn chục:** $60 - 20 = ?$ Nhẩm: $6$ chục $- 2$ chục $= 4$ chục, vậy $60 - 20 = '
+            '40$.\n'
+            '- **Hai dấu phép tính:** Tính lần lượt từ trái sang phải, ví dụ $37 + 12 - 23 = 49 - 23 = 26$.',
+  'formulas': [{'category': 'Quy tắc trừ hai số có hai chữ số và giải toán',
+                'items': [{'name': 'Trừ theo cột',
+                           'formula': 'Đơn vị trừ đơn vị, chục trừ chục (từ phải sang trái)',
+                           'note': 'Ví dụ: $68 - 35 = 33$.'},
+                          {'name': 'Trừ nhẩm số tròn chục',
+                           'formula': '$a0 - b0 = (a - b)0$',
+                           'note': 'Ví dụ: $90 - 40 = 50$.'},
+                          {'name': 'Hai dấu phép tính',
+                           'formula': 'Thực hiện từ trái sang phải',
+                           'note': 'Ví dụ: $56 - 20 + 3 = 36 + 3 = 39$.'}]}],
+  'example': 'Trên cây có $74$ quả thị, gió làm rụng $21$ quả. Hỏi trên cây còn lại bao nhiêu quả thị?',
+  'example_answer': 'Phép tính: $74 - 21 = 53$.\nTrả lời: Trên cây còn lại $53$ quả thị.',
+  'real_life': 'Tính số trang sách còn phải đọc, số quả bóng còn lại trong cửa hàng sau khi đã bán.',
+  'quiz': [{'level': 'biet',
+            'type': 'mcq',
+            'q': 'Phép tính nào dưới đây có kết quả bằng $50$?',
+            'options': ['$20 + 20$', '$70 - 30$', '$10 + 30$', '$90 - 40$'],
+            'answer': 3,
+            'solution': '$9$ chục $- 4$ chục $= 5$ chục $= 50$. Vậy $90 - 40 = 50$.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Kết quả của phép tính $68 - 35$ là:',
+            'options': ['$33$', '$23$', '$32$', '$93$'],
+            'answer': 0,
+            'solution': 'Hàng đơn vị: $8 - 5 = 3$; hàng chục: $6 - 3 = 3$. Vậy $68 - 35 = 33$.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Theo nội dung trọng tâm của **Bài 32: Phép trừ số có hai chữ số cho số có hai chữ số '
+                 '(Luyện tập chung)**, công thức hoặc quy tắc nào sau đây biểu diễn đúng **Trừ theo cột**?',
+            'options': ['$a0 - b0 = (a - b)0$',
+                        'Đơn vị trừ đơn vị, chục trừ chục (từ phải sang trái)',
+                        'Thực hiện từ trái sang phải',
+                        '$0, 1, 2, 3, 4, 5$'],
+            'answer': 1,
+            'solution': 'Theo bảng công thức trọng tâm của Bài 32: Phép trừ số có hai chữ số cho số có hai '
+                        'chữ số (Luyện tập chung), **Trừ theo cột** được xác định bởi: Đơn vị trừ đơn vị, '
+                        'chục trừ chục (từ phải sang trái). (Ví dụ: $68 - 35 = 33$.)'},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Trong **Bài 32: Phép trừ số có hai chữ số cho số có hai chữ số (Luyện tập chung)**, nội '
+                 'dung/biểu thức $a0 - b0 = (a - b)0$ là quy tắc hoặc công thức của mục nào sau đây?',
+            'options': ['Trừ theo cột', 'Hai dấu phép tính', 'Trừ nhẩm số tròn chục', 'Dãy số từ 0 đến 5'],
+            'answer': 2,
+            'solution': 'Trong Bài 32: Phép trừ số có hai chữ số cho số có hai chữ số (Luyện tập chung), '
+                        'biểu thức/quy tắc $a0 - b0 = (a - b)0$ chính là nội dung của **Trừ nhẩm số tròn '
+                        'chục**.'},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Kết quả của dãy tính $37 + 12 - 23$ là:',
+            'options': ['$72$', '$49$', '$36$', '$26$'],
+            'answer': 3,
+            'solution': 'Tính từ trái sang phải: $37 + 12 = 49$, sau đó $49 - 23 = 26$.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Khi học **Bài 32: Phép trừ số có hai chữ số cho số có hai chữ số (Luyện tập chung)** (Chủ '
+                 'đề 8: Phép cộng, phép trừ (không nhớ) trong phạm vi 100), khẳng định nào sau đây phản ánh '
+                 '**đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
+            'options': ['Thực hiện được phép trừ (không nhớ) số có hai chữ số cho số có hai chữ số.',
+                        'Đếm, đọc, viết được các số $0, 1, 2, 3, 4, 5$.',
+                        'Nhận biết được số $0$ dùng để chỉ không có đồ vật nào.',
+                        'Nhận biết thứ tự các số từ $0$ đến $5$.'],
+            'answer': 0,
+            'solution': 'Theo yêu cầu cần đạt của Bài 32: Phép trừ số có hai chữ số cho số có hai chữ số '
+                        '(Luyện tập chung): Thực hiện được phép trừ (không nhớ) số có hai chữ số cho số có '
+                        'hai chữ số.'},
+           {'level': 'hieu',
+            'type': 'tf',
+            'q': 'Nhận định: “$65 - 25 = 40$.”',
+            'answer': True,
+            'solution': 'Hàng đơn vị: $5 - 5 = 0$; hàng chục: $6 - 2 = 4$. Vậy $65 - 25 = 40$. Nhận định '
+                        'Đúng.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'tf',
+            'q': 'Trong **Bài 32: Phép trừ số có hai chữ số cho số có hai chữ số (Luyện tập chung)**, quy '
+                 'tắc **Trừ theo cột** được xác định bởi Đơn vị trừ đơn vị, chục trừ chục (từ phải sang '
+                 'trái) và áp dụng trực tiếp vào bài toán: “Trên cây có $74$ quả thị, gió làm rụng $21$ quả. '
+                 'Hỏi trên cây còn lại bao nhiêu quả thị?”. Đúng hay sai?',
+            'answer': True,
+            'solution': 'Khẳng định **Đúng**. Quy tắc **Trừ theo cột** (Đơn vị trừ đơn vị, chục trừ chục (từ '
+                        'phải sang trái)) là kiến thức cốt lõi của Bài 32: Phép trừ số có hai chữ số cho số '
+                        'có hai chữ số (Luyện tập chung). Phép tính: $74 - 21 = 53$. Trả lời: Trên cây còn '
+                        'lại $53$ quả thị.'},
+           {'level': 'vandung',
+            'type': 'mcq',
+            'q': 'Vận dụng kiến thức **Bài 32: Phép trừ số có hai chữ số cho số có hai chữ số (Luyện tập '
+                 'chung)** để giải quyết tình huống sau: Trên cây có $74$ quả thị, gió làm rụng $21$ quả. '
+                 'Hỏi trên cây còn lại bao nhiêu quả thị? Kết quả và hướng giải nào dưới đây là **đúng**?',
+            'options': ['Đếm số quyển vở: $1, 2, 3, 4$ nên viết số $4$. Trong hộp không có bút nào nên viết '
+                        'số $0$.',
+                        'Phép tính: $74 - 21 = 53$. Trả lời: Trên cây còn lại $53$ quả thị.',
+                        'Đếm tiếp sau $7$ là $8$, sau $9$ là $10$. Dãy số đầy đủ là $6, 7, 8, 9, 10$.',
+                        'Mỗi bạn thỏ nhận $1$ củ cà rốt thì còn $1$ bạn thỏ chưa có cà rốt ($5 > 4$). Vậy số '
+                        'thỏ **nhiều hơn** số cà rốt.'],
+            'answer': 1,
+            'solution': 'Lời giải chi tiết theo Bài 32: Phép trừ số có hai chữ số cho số có hai chữ số '
+                        '(Luyện tập chung): Phép tính: $74 - 21 = 53$.\n'
+                        'Trả lời: Trên cây còn lại $53$ quả thị.'},
+           {'level': 'vandung',
+            'type': 'short',
+            'q': 'Trên cây có $74$ quả thị, gió lay làm rụng $21$ quả. Hỏi trên cây còn lại bao nhiêu quả '
+                 'thị?',
+            'answer': ['53'],
+            'unit': None,
+            'solution': 'Số quả thị còn lại trên cây là: $74 - 21 = 53$ (quả thị).',
+            'alt': None,
+            'note': None}]},
+ {'topic': 'l1-cd09-thoi-gian-gio-lich',
+  'context_title': 'Chủ đề 9: Thời gian. Giờ và lịch',
+  'context': 'SGK Toán 1 · Chủ đề 9: Xem giờ đúng trên đồng hồ, các ngày trong tuần, xem lịch tờ hằng ngày.',
+  'title': 'Bài 34: Xem giờ đúng trên đồng hồ',
+  'icon': '🕘',
+  'description': 'Nhận biết kim giờ, kim phút và đọc giờ đúng trên mặt đồng hồ.',
+  'requirements': ['Nhận biết trên mặt đồng hồ có $12$ số (từ $1$ đến $12$), kim ngắn chỉ giờ, kim dài chỉ '
+                   'phút.',
+                   'Đọc được giờ đúng khi kim dài chỉ vào số $12$.',
+                   'Gắn được giờ đúng với các hoạt động sinh hoạt hằng ngày.'],
+  'definition': '- Trên mặt đồng hồ: **kim ngắn** chỉ **giờ**, **kim dài** chỉ **phút**.\n'
+                '- **Giờ đúng:** Khi kim dài chỉ đúng vào số $12$, kim ngắn chỉ vào số nào thì đồng hồ chỉ '
+                'mấy giờ.',
+  'theory': '- Ví dụ 1: Kim dài chỉ số $12$, kim ngắn chỉ số $8$ $\\rightarrow$ đồng hồ chỉ $8$ giờ.\n'
+            '- Ví dụ 2: Lúc $12$ giờ đúng, cả kim ngắn và kim dài đều cùng chỉ vào số $12$.\n'
+            '- Cần tránh nhầm lẫn giữa kim ngắn và kim dài: kim dài chỉ số $12$ không có nghĩa là $12$ giờ, '
+            'phải nhìn xem **kim ngắn** chỉ vào số mấy.',
+  'formulas': [{'category': 'Quy tắc đọc giờ đúng',
+                'items': [{'name': 'Kim đồng hồ',
+                           'formula': 'Kim ngắn $\\rightarrow$ chỉ giờ; Kim dài $\\rightarrow$ chỉ phút'},
+                          {'name': 'Giờ đúng',
+                           'formula': 'Kim dài chỉ số $12$, kim ngắn chỉ số $k \\Rightarrow k$ giờ',
+                           'note': 'Ví dụ: Kim dài chỉ $12$, kim ngắn chỉ $7 \\Rightarrow 7$ giờ.'}]}],
+  'example': 'Đồng hồ có kim dài chỉ vào số $12$, kim ngắn chỉ vào số $9$. Hỏi đồng hồ chỉ mấy giờ?',
+  'example_answer': 'Vì kim dài chỉ số $12$ và kim ngắn chỉ số $9$ nên đồng hồ chỉ $9$ giờ.',
+  'real_life': 'Xem đồng hồ để thức dậy lúc $6$ giờ sáng, vào lớp lúc $7$ giờ, đi ngủ lúc $9$ giờ tối.',
+  'quiz': [{'level': 'biet',
+            'type': 'mcq',
+            'q': 'Trên mặt đồng hồ, kim nào dùng để chỉ giờ?',
+            'options': ['Kim ngắn', 'Kim dài', 'Cả hai kim', 'Không kim nào'],
+            'answer': 0,
+            'solution': 'Trên mặt đồng hồ, kim ngắn chỉ giờ và kim dài chỉ phút.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Đồng hồ có kim dài chỉ số $12$, kim ngắn chỉ số $8$. Đồng hồ đang chỉ mấy giờ?',
+            'options': ['$12$ giờ', '$8$ giờ', '$2$ giờ', '$4$ giờ'],
+            'answer': 1,
+            'solution': 'Kim dài chỉ số $12$ (giờ đúng), kim ngắn chỉ số $8$ nên đồng hồ chỉ $8$ giờ.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Theo nội dung trọng tâm của **Bài 34: Xem giờ đúng trên đồng hồ**, công thức hoặc quy tắc '
+                 'nào sau đây biểu diễn đúng **Kim đồng hồ**?',
+            'options': ['Kim dài chỉ số $12$, kim ngắn chỉ số $k \\Rightarrow k$ giờ',
+                        '$0, 1, 2, 3, 4, 5$',
+                        'Kim ngắn $\\rightarrow$ chỉ giờ; Kim dài $\\rightarrow$ chỉ phút',
+                        '$0$ chỉ không có đồ vật nào'],
+            'answer': 2,
+            'solution': 'Theo bảng công thức trọng tâm của Bài 34: Xem giờ đúng trên đồng hồ, **Kim đồng '
+                        'hồ** được xác định bởi: Kim ngắn $\\rightarrow$ chỉ giờ; Kim dài $\\rightarrow$ chỉ '
+                        'phút.'},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Trong **Bài 34: Xem giờ đúng trên đồng hồ**, nội dung/biểu thức Kim dài chỉ số $12$, kim '
+                 'ngắn chỉ số $k \\Rightarrow k$ giờ là quy tắc hoặc công thức của mục nào sau đây?',
+            'options': ['Kim đồng hồ', 'Dãy số từ 0 đến 5', 'Ý nghĩa số 0', 'Giờ đúng'],
+            'answer': 3,
+            'solution': 'Trong Bài 34: Xem giờ đúng trên đồng hồ, biểu thức/quy tắc Kim dài chỉ số $12$, kim '
+                        'ngắn chỉ số $k \\Rightarrow k$ giờ chính là nội dung của **Giờ đúng**.'},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Khi đồng hồ chỉ $10$ giờ đúng thì kim dài và kim ngắn chỉ vào những số nào?',
+            'options': ['Kim dài chỉ số $12$, kim ngắn chỉ số $10$',
+                        'Kim dài chỉ số $10$, kim ngắn chỉ số $12$',
+                        'Cả hai kim đều chỉ số $10$',
+                        'Kim dài chỉ số $6$, kim ngắn chỉ số $10$'],
+            'answer': 0,
+            'solution': 'Lúc $10$ giờ đúng, kim dài chỉ số $12$ và kim ngắn chỉ số $10$.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Khi học **Bài 34: Xem giờ đúng trên đồng hồ** (Chủ đề 9: Thời gian. Giờ và lịch), khẳng '
+                 'định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
+            'options': ['Đếm, đọc, viết được các số $0, 1, 2, 3, 4, 5$.',
+                        'Nhận biết trên mặt đồng hồ có $12$ số (từ $1$ đến $12$), kim ngắn chỉ giờ, kim dài '
+                        'chỉ phút.',
+                        'Nhận biết được số $0$ dùng để chỉ không có đồ vật nào.',
+                        'Nhận biết thứ tự các số từ $0$ đến $5$.'],
+            'answer': 1,
+            'solution': 'Theo yêu cầu cần đạt của Bài 34: Xem giờ đúng trên đồng hồ: Nhận biết trên mặt đồng '
+                        'hồ có $12$ số (từ $1$ đến $12$), kim ngắn chỉ giờ, kim dài chỉ phút.'},
+           {'level': 'hieu',
+            'type': 'tf',
+            'q': 'Nhận định: “Lúc $3$ giờ đúng, kim dài của đồng hồ chỉ vào số $3$.”',
+            'answer': False,
+            'solution': 'Lúc $3$ giờ đúng, kim dài phải chỉ vào số $12$, còn kim ngắn mới chỉ vào số $3$. '
+                        'Nhận định Sai.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'tf',
+            'q': 'Trong **Bài 34: Xem giờ đúng trên đồng hồ**, quy tắc **Kim đồng hồ** được xác định bởi Kim '
+                 'ngắn $\\rightarrow$ chỉ giờ; Kim dài $\\rightarrow$ chỉ phút và áp dụng trực tiếp vào bài '
+                 'toán: “Đồng hồ có kim dài chỉ vào số $12$, kim ngắn chỉ vào số $9$. Hỏi đồng hồ chỉ mấy '
+                 'giờ?”. Đúng hay sai?',
+            'answer': True,
+            'solution': 'Khẳng định **Đúng**. Quy tắc **Kim đồng hồ** (Kim ngắn $\\rightarrow$ chỉ giờ; Kim '
+                        'dài $\\rightarrow$ chỉ phút) là kiến thức cốt lõi của Bài 34: Xem giờ đúng trên '
+                        'đồng hồ. Vì kim dài chỉ số $12$ và kim ngắn chỉ số $9$ nên đồng hồ chỉ $9$ giờ.'},
+           {'level': 'vandung',
+            'type': 'mcq',
+            'q': 'Vận dụng kiến thức **Bài 34: Xem giờ đúng trên đồng hồ** để giải quyết tình huống sau: '
+                 'Đồng hồ có kim dài chỉ vào số $12$, kim ngắn chỉ vào số $9$. Hỏi đồng hồ chỉ mấy giờ? Kết '
+                 'quả và hướng giải nào dưới đây là **đúng**?',
+            'options': ['Đếm số quyển vở: $1, 2, 3, 4$ nên viết số $4$. Trong hộp không có bút nào nên viết '
+                        'số $0$.',
+                        'Đếm tiếp sau $7$ là $8$, sau $9$ là $10$. Dãy số đầy đủ là $6, 7, 8, 9, 10$.',
+                        'Vì kim dài chỉ số $12$ và kim ngắn chỉ số $9$ nên đồng hồ chỉ $9$ giờ.',
+                        'Mỗi bạn thỏ nhận $1$ củ cà rốt thì còn $1$ bạn thỏ chưa có cà rốt ($5 > 4$). Vậy số '
+                        'thỏ **nhiều hơn** số cà rốt.'],
+            'answer': 2,
+            'solution': 'Lời giải chi tiết theo Bài 34: Xem giờ đúng trên đồng hồ: Vì kim dài chỉ số $12$ và '
+                        'kim ngắn chỉ số $9$ nên đồng hồ chỉ $9$ giờ.'},
+           {'level': 'vandung',
+            'type': 'short',
+            'q': 'Mai đi ngủ lúc $9$ giờ tối và thức dậy lúc $6$ giờ sáng hôm sau. Hỏi lúc Mai thức dậy, kim '
+                 'ngắn của đồng hồ chỉ vào số mấy?',
+            'answer': ['6'],
+            'unit': None,
+            'solution': 'Lúc Mai thức dậy là $6$ giờ sáng nên kim ngắn chỉ vào số $6$.',
+            'alt': None,
+            'note': None}]},
+ {'topic': 'l1-cd09-thoi-gian-gio-lich',
+  'context_title': 'Chủ đề 9: Thời gian. Giờ và lịch',
+  'context': 'SGK Toán 1 · Chủ đề 9: Xem giờ đúng trên đồng hồ, các ngày trong tuần, xem lịch tờ hằng ngày.',
+  'title': 'Bài 35: Các ngày trong tuần',
+  'icon': '📆',
+  'description': 'Nhận biết một tuần lễ có 7 ngày, thứ tự các ngày trong tuần và hôm qua – hôm nay – ngày '
+                 'mai.',
+  'requirements': ['Biết một tuần lễ có $7$ ngày và kể đúng thứ tự từ Thứ Hai đến Chủ nhật.',
+                   'Xác định được thứ của ngày hôm qua và ngày mai khi biết thứ của ngày hôm nay.',
+                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Số ngày trong 1 tuần** ($1$ tuần lễ $= 7$ '
+                   'ngày) vào giải bài tập.'],
+  'definition': '**Một tuần lễ có $7$ ngày**, theo thứ tự lần lượt là: **Thứ Hai, Thứ Ba, Thứ Tư, Thứ Năm, '
+                'Thứ Sáu, Thứ Bảy, Chủ nhật**. Hết Chủ nhật lại quay vòng sang Thứ Hai của tuần tiếp theo.',
+  'theory': '- **Hôm qua – Hôm nay – Ngày mai:**\n'
+            '  + **Hôm qua** là ngày liền trước ngày hôm nay.\n'
+            '  + **Ngày mai** là ngày liền sau ngày hôm nay.\n'
+            '- Học sinh thường đi học $5$ ngày trong tuần (từ Thứ Hai đến Thứ Sáu) và nghỉ cuối tuần vào $2$ '
+            'ngày (Thứ Bảy, Chủ nhật).',
+  'formulas': [{'category': 'Thứ tự các ngày trong tuần lễ',
+                'items': [{'name': 'Số ngày trong 1 tuần', 'formula': '$1$ tuần lễ $= 7$ ngày'},
+                          {'name': 'Vòng tuần hoàn',
+                           'formula': 'Thứ Hai $\\rightarrow$ Thứ Ba $\\rightarrow$ Thứ Tư $\\rightarrow$ '
+                                      'Thứ Năm $\\rightarrow$ Thứ Sáu $\\rightarrow$ Thứ Bảy $\\rightarrow$ '
+                                      'Chủ nhật $\\rightarrow$ Thứ Hai'},
+                          {'name': 'Liên hệ hôm qua – ngày mai',
+                           'formula': 'Hôm qua $\\rightarrow$ Hôm nay $\\rightarrow$ Ngày mai'}]}],
+  'example': 'Nếu hôm nay là Thứ Tư thì hôm qua là thứ mấy và ngày mai là thứ mấy?',
+  'example_answer': 'Nếu hôm nay là Thứ Tư thì **hôm qua là Thứ Ba** và **ngày mai là Thứ Năm**.',
+  'real_life': 'Xem thời khóa biểu từng thứ trong tuần để chuẩn bị sách vở và đồ dùng học tập.',
+  'quiz': [{'level': 'biet',
+            'type': 'mcq',
+            'q': 'Một tuần lễ có tất cả mấy ngày?',
+            'options': ['$5$ ngày', '$7$ ngày', '$6$ ngày', '$10$ ngày'],
+            'answer': 1,
+            'solution': 'Một tuần lễ có $7$ ngày (từ Thứ Hai đến Chủ nhật).',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Ngày liền sau Thứ Bảy là ngày nào?',
+            'options': ['Thứ Sáu', 'Thứ Hai', 'Chủ nhật', 'Thứ Năm'],
+            'answer': 2,
+            'solution': 'Theo thứ tự các ngày trong tuần, liền sau Thứ Bảy là Chủ nhật.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Theo nội dung trọng tâm của **Bài 35: Các ngày trong tuần**, công thức hoặc quy tắc nào '
+                 'sau đây biểu diễn đúng **Số ngày trong 1 tuần**?',
+            'options': ['Thứ Hai $\\rightarrow$ Thứ Ba $\\rightarrow$ Thứ Tư $\\rightarrow$ Thứ Năm '
+                        '$\\rightarrow$ Thứ Sáu $\\rightarrow$ Thứ Bảy $\\rightarrow$ Chủ nhật '
+                        '$\\rightarrow$ Thứ Hai',
+                        'Hôm qua $\\rightarrow$ Hôm nay $\\rightarrow$ Ngày mai',
+                        '$0, 1, 2, 3, 4, 5$',
+                        '$1$ tuần lễ $= 7$ ngày'],
+            'answer': 3,
+            'solution': 'Theo bảng công thức trọng tâm của Bài 35: Các ngày trong tuần, **Số ngày trong 1 '
+                        'tuần** được xác định bởi: $1$ tuần lễ $= 7$ ngày.'},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Trong **Bài 35: Các ngày trong tuần**, nội dung/biểu thức Thứ Hai $\\rightarrow$ Thứ Ba '
+                 '$\\rightarrow$ Thứ Tư $\\rightarrow$ Thứ Năm $\\rightarrow$ Thứ Sáu $\\rightarrow$ Thứ Bảy '
+                 '$\\rightarrow$ Chủ nhật $\\rightarrow$ Thứ Hai là quy tắc hoặc công thức của mục nào sau '
+                 'đây?',
+            'options': ['Vòng tuần hoàn',
+                        'Số ngày trong 1 tuần',
+                        'Liên hệ hôm qua – ngày mai',
+                        'Dãy số từ 0 đến 5'],
+            'answer': 0,
+            'solution': 'Trong Bài 35: Các ngày trong tuần, biểu thức/quy tắc Thứ Hai $\\rightarrow$ Thứ Ba '
+                        '$\\rightarrow$ Thứ Tư $\\rightarrow$ Thứ Năm $\\rightarrow$ Thứ Sáu $\\rightarrow$ '
+                        'Thứ Bảy $\\rightarrow$ Chủ nhật $\\rightarrow$ Thứ Hai chính là nội dung của **Vòng '
+                        'tuần hoàn**.'},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Nếu hôm nay là Thứ Tư thì ngày hôm qua là thứ mấy?',
+            'options': ['Thứ Năm', 'Thứ Ba', 'Thứ Hai', 'Chủ nhật'],
+            'answer': 1,
+            'solution': 'Hôm qua là ngày liền trước hôm nay. Liền trước Thứ Tư là Thứ Ba.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Khi học **Bài 35: Các ngày trong tuần** (Chủ đề 9: Thời gian. Giờ và lịch), khẳng định nào '
+                 'sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
+            'options': ['Đếm, đọc, viết được các số $0, 1, 2, 3, 4, 5$.',
+                        'Nhận biết được số $0$ dùng để chỉ không có đồ vật nào.',
+                        'Biết một tuần lễ có $7$ ngày và kể đúng thứ tự từ Thứ Hai đến Chủ nhật.',
+                        'Nhận biết thứ tự các số từ $0$ đến $5$.'],
+            'answer': 2,
+            'solution': 'Theo yêu cầu cần đạt của Bài 35: Các ngày trong tuần: Biết một tuần lễ có $7$ ngày '
+                        'và kể đúng thứ tự từ Thứ Hai đến Chủ nhật.'},
+           {'level': 'hieu',
+            'type': 'tf',
+            'q': 'Nhận định: “Nếu hôm nay là Chủ nhật thì ngày mai là Thứ Hai.”',
+            'answer': True,
+            'solution': 'Hết ngày Chủ nhật sẽ sang ngày Thứ Hai của tuần lễ tiếp theo. Nhận định Đúng.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'tf',
+            'q': 'Trong **Bài 35: Các ngày trong tuần**, quy tắc **Số ngày trong 1 tuần** được xác định bởi '
+                 '$1$ tuần lễ $= 7$ ngày và áp dụng trực tiếp vào bài toán: “Nếu hôm nay là Thứ Tư thì hôm '
+                 'qua là thứ mấy và ngày mai là thứ mấy?”. Đúng hay sai?',
+            'answer': True,
+            'solution': 'Khẳng định **Đúng**. Quy tắc **Số ngày trong 1 tuần** ($1$ tuần lễ $= 7$ ngày) là '
+                        'kiến thức cốt lõi của Bài 35: Các ngày trong tuần. Nếu hôm nay là Thứ Tư thì **hôm '
+                        'qua là Thứ Ba** và **ngày mai là Thứ Năm**.'},
+           {'level': 'vandung',
+            'type': 'mcq',
+            'q': 'Vận dụng kiến thức **Bài 35: Các ngày trong tuần** để giải quyết tình huống sau: Nếu hôm '
+                 'nay là Thứ Tư thì hôm qua là thứ mấy và ngày mai là thứ mấy? Kết quả và hướng giải nào '
+                 'dưới đây là **đúng**?',
+            'options': ['Đếm số quyển vở: $1, 2, 3, 4$ nên viết số $4$. Trong hộp không có bút nào nên viết '
+                        'số $0$.',
+                        'Đếm tiếp sau $7$ là $8$, sau $9$ là $10$. Dãy số đầy đủ là $6, 7, 8, 9, 10$.',
+                        'Mỗi bạn thỏ nhận $1$ củ cà rốt thì còn $1$ bạn thỏ chưa có cà rốt ($5 > 4$). Vậy số '
+                        'thỏ **nhiều hơn** số cà rốt.',
+                        'Nếu hôm nay là Thứ Tư thì **hôm qua là Thứ Ba** và **ngày mai là Thứ Năm**.'],
+            'answer': 3,
+            'solution': 'Lời giải chi tiết theo Bài 35: Các ngày trong tuần: Nếu hôm nay là Thứ Tư thì **hôm '
+                        'qua là Thứ Ba** và **ngày mai là Thứ Năm**.'},
+           {'level': 'vandung',
+            'type': 'short',
+            'q': 'Em đi học từ Thứ Hai đến Thứ Sáu, nghỉ Thứ Bảy và Chủ nhật. Hỏi mỗi tuần lễ em đi học ở '
+                 'trường mấy ngày?',
+            'answer': ['5'],
+            'unit': None,
+            'solution': 'Từ Thứ Hai đến Thứ Sáu gồm: Thứ Hai, Thứ Ba, Thứ Tư, Thứ Năm, Thứ Sáu, tất cả là '
+                        '$5$ ngày.',
+            'alt': None,
+            'note': None}]},
+ {'topic': 'l1-cd09-thoi-gian-gio-lich',
+  'context_title': 'Chủ đề 9: Thời gian. Giờ và lịch',
+  'context': 'SGK Toán 1 · Chủ đề 9: Xem giờ đúng trên đồng hồ, các ngày trong tuần, xem lịch tờ hằng ngày.',
+  'title': 'Bài 36: Thực hành xem lịch và giờ (Luyện tập chung Chủ đề 9)',
+  'icon': '🗓️',
+  'description': 'Đọc thông tin thứ, ngày, tháng trên tờ lịch hằng ngày và giải toán thực tế về thời gian.',
+  'requirements': ['Đọc được thứ, ngày, tháng trên tờ lịch bóc hằng ngày.',
+                   'Tìm được thứ, ngày của hôm qua, ngày mai hoặc ngày cùng thứ ở tuần sau.',
+                   'Kết hợp xem giờ đúng và xem lịch để lập thời gian biểu cá nhân.'],
+  'definition': 'Trên **tờ lịch hằng ngày** có ghi rõ: **Tháng** (ở phía trên), **Ngày** (số in to ở giữa) '
+                'và **Thứ** (ở phía dưới). Cứ sau $1$ tuần lễ ($7$ ngày) thì thứ trong tuần lại lặp lại.',
+  'theory': '- Ví dụ: Tờ lịch hôm nay ghi **Tháng $5$ – Ngày $19$ – Thứ Tư**.\n'
+            '  + Hôm qua là Thứ Ba, ngày $18$ tháng $5$ ($19 - 1 = 18$).\n'
+            '  + Ngày mai là Thứ Năm, ngày $20$ tháng $5$ ($19 + 1 = 20$).\n'
+            '- **Mẹo tính ngày cùng thứ của tuần sau:** Lấy số ngày hôm nay cộng thêm $7$. Ví dụ: Thứ Hai '
+            'tuần này là ngày $10$ thì Thứ Hai tuần sau là ngày $10 + 7 = 17$.',
+  'formulas': [{'category': 'Quy tắc tính ngày trên lịch',
+                'items': [{'name': 'Ngày hôm qua',
+                           'formula': 'Ngày hôm nay $- 1$',
+                           'note': 'Thứ lùi lại $1$ ngày.'},
+                          {'name': 'Ngày mai',
+                           'formula': 'Ngày hôm nay $+ 1$',
+                           'note': 'Thứ tiến lên $1$ ngày.'},
+                          {'name': 'Cùng thứ tuần sau',
+                           'formula': 'Ngày hôm nay $+ 7$',
+                           'note': 'Ví dụ: Thứ Hai ngày $10 \\rightarrow$ Thứ Hai tuần sau là ngày $17$.'}]}],
+  'example': 'Hôm nay là Thứ Sáu, ngày $12$ tháng $10$. Hỏi Chủ nhật tuần này là ngày bao nhiêu tháng $10$?',
+  'example_answer': 'Thứ Sáu là ngày $12$, Thứ Bảy là ngày $13$, vậy **Chủ nhật là ngày $14$ tháng $10$** '
+                    '($12 + 2 = 14$).',
+  'real_life': 'Nhớ các ngày lễ lớn (như ngày $19$ tháng $5$ sinh nhật Bác Hồ, ngày $20$ tháng $11$ ngày Nhà '
+               'giáo Việt Nam) và ngày sinh nhật của người thân.',
+  'quiz': [{'level': 'biet',
+            'type': 'mcq',
+            'q': 'Tờ lịch hôm nay ghi: Tháng $5$ – Ngày $19$ – Thứ Năm. Vậy ngày $20$ tháng $5$ là thứ mấy?',
+            'options': ['Thứ Tư', 'Thứ Bảy', 'Thứ Sáu', 'Chủ nhật'],
+            'answer': 2,
+            'solution': 'Ngày $20$ là ngày liền sau ngày $19$. Liền sau Thứ Năm là Thứ Sáu.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Nếu hôm nay là ngày $15$ tháng $3$ thì ngày hôm qua là ngày mấy tháng $3$?',
+            'options': ['Ngày $16$', 'Ngày $13$', 'Ngày $10$', 'Ngày $14$'],
+            'answer': 3,
+            'solution': 'Ngày hôm qua liền trước ngày $15$ nên là ngày $15 - 1 = 14$.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Theo nội dung trọng tâm của **Bài 36: Thực hành xem lịch và giờ (Luyện tập chung Chủ đề '
+                 '9)**, công thức hoặc quy tắc nào sau đây biểu diễn đúng **Ngày hôm qua**?',
+            'options': ['Ngày hôm nay $- 1$',
+                        'Ngày hôm nay $+ 1$',
+                        'Ngày hôm nay $+ 7$',
+                        '$0, 1, 2, 3, 4, 5$'],
+            'answer': 0,
+            'solution': 'Theo bảng công thức trọng tâm của Bài 36: Thực hành xem lịch và giờ (Luyện tập '
+                        'chung Chủ đề 9), **Ngày hôm qua** được xác định bởi: Ngày hôm nay $- 1$. (Thứ lùi '
+                        'lại $1$ ngày.)'},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Trong **Bài 36: Thực hành xem lịch và giờ (Luyện tập chung Chủ đề 9)**, nội dung/biểu thức '
+                 'Ngày hôm nay $+ 1$ là quy tắc hoặc công thức của mục nào sau đây?',
+            'options': ['Ngày hôm qua', 'Ngày mai', 'Cùng thứ tuần sau', 'Dãy số từ 0 đến 5'],
+            'answer': 1,
+            'solution': 'Trong Bài 36: Thực hành xem lịch và giờ (Luyện tập chung Chủ đề 9), biểu thức/quy '
+                        'tắc Ngày hôm nay $+ 1$ chính là nội dung của **Ngày mai**.'},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Bạn Nam học vẽ vào lúc $8$ giờ sáng Chủ nhật và học trong $2$ giờ. Hỏi Nam học xong lúc '
+                 'mấy giờ?',
+            'options': ['$9$ giờ', '$11$ giờ', '$10$ giờ', '$6$ giờ'],
+            'answer': 2,
+            'solution': 'Bắt đầu lúc $8$ giờ, học thêm $2$ giờ: $8 + 2 = 10$ (giờ).',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Khi học **Bài 36: Thực hành xem lịch và giờ (Luyện tập chung Chủ đề 9)** (Chủ đề 9: Thời '
+                 'gian. Giờ và lịch), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất '
+                 'kiến thức của bài?',
+            'options': ['Đếm, đọc, viết được các số $0, 1, 2, 3, 4, 5$.',
+                        'Nhận biết được số $0$ dùng để chỉ không có đồ vật nào.',
+                        'Nhận biết thứ tự các số từ $0$ đến $5$.',
+                        'Đọc được thứ, ngày, tháng trên tờ lịch bóc hằng ngày.'],
+            'answer': 3,
+            'solution': 'Theo yêu cầu cần đạt của Bài 36: Thực hành xem lịch và giờ (Luyện tập chung Chủ đề '
+                        '9): Đọc được thứ, ngày, tháng trên tờ lịch bóc hằng ngày.'},
+           {'level': 'hieu',
+            'type': 'tf',
+            'q': 'Nhận định: “Nếu Thứ Ba tuần này là ngày $11$ thì Thứ Ba tuần sau là ngày $18$.”',
+            'answer': True,
+            'solution': 'Một tuần lễ có $7$ ngày nên Thứ Ba tuần sau là ngày $11 + 7 = 18$. Nhận định Đúng.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'tf',
+            'q': 'Trong **Bài 36: Thực hành xem lịch và giờ (Luyện tập chung Chủ đề 9)**, quy tắc **Ngày hôm '
+                 'qua** được xác định bởi Ngày hôm nay $- 1$ và áp dụng trực tiếp vào bài toán: “Hôm nay là '
+                 'Thứ Sáu, ngày $12$ tháng $10$. Hỏi Chủ nhật tuần này là ngày bao nhiêu tháng $10$?”. Đúng '
+                 'hay sai?',
+            'answer': True,
+            'solution': 'Khẳng định **Đúng**. Quy tắc **Ngày hôm qua** (Ngày hôm nay $- 1$) là kiến thức cốt '
+                        'lõi của Bài 36: Thực hành xem lịch và giờ (Luyện tập chung Chủ đề 9). Thứ Sáu là '
+                        'ngày $12$, Thứ Bảy là ngày $13$, vậy **Chủ nhật là ngày $14$ tháng $10$** ($12 + 2 '
+                        '= 14$).'},
+           {'level': 'vandung',
+            'type': 'mcq',
+            'q': 'Vận dụng kiến thức **Bài 36: Thực hành xem lịch và giờ (Luyện tập chung Chủ đề 9)** để '
+                 'giải quyết tình huống sau: Hôm nay là Thứ Sáu, ngày $12$ tháng $10$. Hỏi Chủ nhật tuần này '
+                 'là ngày bao nhiêu tháng $10$? Kết quả và hướng giải nào dưới đây là **đúng**?',
+            'options': ['Thứ Sáu là ngày $12$, Thứ Bảy là ngày $13$, vậy **Chủ nhật là ngày $14$ tháng '
+                        '$10$** ($12 + 2 = 14$).',
+                        'Đếm số quyển vở: $1, 2, 3, 4$ nên viết số $4$. Trong hộp không có bút nào nên viết '
+                        'số $0$.',
+                        'Đếm tiếp sau $7$ là $8$, sau $9$ là $10$. Dãy số đầy đủ là $6, 7, 8, 9, 10$.',
+                        'Mỗi bạn thỏ nhận $1$ củ cà rốt thì còn $1$ bạn thỏ chưa có cà rốt ($5 > 4$). Vậy số '
+                        'thỏ **nhiều hơn** số cà rốt.'],
+            'answer': 0,
+            'solution': 'Lời giải chi tiết theo Bài 36: Thực hành xem lịch và giờ (Luyện tập chung Chủ đề '
+                        '9): Thứ Sáu là ngày $12$, Thứ Bảy là ngày $13$, vậy **Chủ nhật là ngày $14$ tháng '
+                        '$10$** ($12 + 2 = 14$).'},
+           {'level': 'vandung',
+            'type': 'short',
+            'q': 'Hôm nay là Thứ Hai, ngày $10$. Hỏi Thứ Hai tuần sau là ngày bao nhiêu?',
+            'answer': ['17'],
+            'unit': None,
+            'solution': 'Một tuần lễ có $7$ ngày, nên Thứ Hai tuần sau là ngày: $10 + 7 = 17$.',
+            'alt': None,
+            'note': None}]},
+ {'topic': 'l1-cd10-on-tap-cuoi-nam',
+  'context_title': 'Chủ đề 10: Ôn tập cuối năm',
+  'context': 'SGK Toán 1 · Chủ đề 10: Ôn tập các số và phép tính trong phạm vi 10, 100; ôn tập hình học và '
+             'đo lường.',
+  'title': 'Bài 38: Ôn tập các số và phép tính trong phạm vi 10',
+  'icon': '🌟',
+  'description': 'Hệ thống lại cấu tạo số, so sánh số và bảng cộng, bảng trừ trong phạm vi 10.',
+  'requirements': ['Nắm chắc thứ tự, so sánh và cấu tạo các số từ $0$ đến $10$.',
+                   'Tính nhẩm thành thạo các phép cộng, phép trừ và dãy tính hai bước trong phạm vi $10$.',
+                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Các cặp số tròn 10** ($1 + 9 = 2 + 8 = 3 + '
+                   '7 = 4 + 6 = 5 + 5 = 10$) vào giải bài tập.'],
+  'definition': 'Trong phạm vi $10$, các cặp số cộng lại bằng $10$ ($1 + 9, 2 + 8, 3 + 7, 4 + 6, 5 + 5$) và '
+                'mối liên hệ giữa phép cộng với phép trừ giúp em tính nhẩm nhanh và chính xác.',
+  'theory': '- **Tính chất giao hoán của phép cộng:** $a + b = b + a$.\n'
+            '- **Tính chất của số $0$:** $a + 0 = 0 + a = a$; $a - 0 = a$; $a - a = 0$.\n'
+            '- **Dãy tính có hai dấu phép tính:** Tính lần lượt từ trái sang phải.',
+  'formulas': [{'category': 'Ôn tập phạm vi 10',
+                'items': [{'name': 'Các cặp số tròn 10',
+                           'formula': '$1 + 9 = 2 + 8 = 3 + 7 = 4 + 6 = 5 + 5 = 10$'},
+                          {'name': 'Quan hệ Cộng – Trừ',
+                           'formula': '$a + b = c \\Leftrightarrow c - a = b$ và $c - b = a$'}]}],
+  'example': 'Tìm số thích hợp điền vào chỗ chấm: $10 - 7 + \\dots = 9$.',
+  'example_answer': 'Ta có $10 - 7 = 3$. Để $3 + \\dots = 9$ thì số cần điền là $9 - 3 = 6$.',
+  'real_life': 'Tính nhẩm nhanh số lượng đồ vật nhỏ hằng ngày trong phạm vi $10$.',
+  'quiz': [{'level': 'biet',
+            'type': 'mcq',
+            'q': 'Kết quả của phép tính $8 + 2$ là:',
+            'options': ['$6$', '$9$', '$82$', '$10$'],
+            'answer': 3,
+            'solution': '$8$ và $2$ là cặp số tròn chục: $8 + 2 = 10$.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Kết quả của phép tính $10 - 6$ là:',
+            'options': ['$4$', '$3$', '$5$', '$6$'],
+            'answer': 0,
+            'solution': 'Vì $6 + 4 = 10$ nên $10 - 6 = 4$.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Theo nội dung trọng tâm của **Bài 38: Ôn tập các số và phép tính trong phạm vi 10**, công '
+                 'thức hoặc quy tắc nào sau đây biểu diễn đúng **Các cặp số tròn 10**?',
+            'options': ['$a + b = c \\Leftrightarrow c - a = b$ và $c - b = a$',
+                        '$1 + 9 = 2 + 8 = 3 + 7 = 4 + 6 = 5 + 5 = 10$',
+                        '$0, 1, 2, 3, 4, 5$',
+                        '$0$ chỉ không có đồ vật nào'],
+            'answer': 1,
+            'solution': 'Theo bảng công thức trọng tâm của Bài 38: Ôn tập các số và phép tính trong phạm vi '
+                        '10, **Các cặp số tròn 10** được xác định bởi: $1 + 9 = 2 + 8 = 3 + 7 = 4 + 6 = 5 + '
+                        '5 = 10$.'},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Trong **Bài 38: Ôn tập các số và phép tính trong phạm vi 10**, nội dung/biểu thức $a + b = '
+                 'c \\Leftrightarrow c - a = b$ và $c - b = a$ là quy tắc hoặc công thức của mục nào sau '
+                 'đây?',
+            'options': ['Các cặp số tròn 10', 'Dãy số từ 0 đến 5', 'Quan hệ Cộng – Trừ', 'Ý nghĩa số 0'],
+            'answer': 2,
+            'solution': 'Trong Bài 38: Ôn tập các số và phép tính trong phạm vi 10, biểu thức/quy tắc $a + b '
+                        '= c \\Leftrightarrow c - a = b$ và $c - b = a$ chính là nội dung của **Quan hệ Cộng '
+                        '– Trừ**.'},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Dãy tính $9 - 5 + 4$ có kết quả bằng bao nhiêu?',
+            'options': ['$0$', '$7$', '$9$', '$8$'],
+            'answer': 3,
+            'solution': 'Tính từ trái sang phải: $9 - 5 = 4$, sau đó $4 + 4 = 8$.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Khi học **Bài 38: Ôn tập các số và phép tính trong phạm vi 10** (Chủ đề 10: Ôn tập cuối '
+                 'năm), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của '
+                 'bài?',
+            'options': ['Nắm chắc thứ tự, so sánh và cấu tạo các số từ $0$ đến $10$.',
+                        'Đếm, đọc, viết được các số $0, 1, 2, 3, 4, 5$.',
+                        'Nhận biết được số $0$ dùng để chỉ không có đồ vật nào.',
+                        'Nhận biết thứ tự các số từ $0$ đến $5$.'],
+            'answer': 0,
+            'solution': 'Theo yêu cầu cần đạt của Bài 38: Ôn tập các số và phép tính trong phạm vi 10: Nắm '
+                        'chắc thứ tự, so sánh và cấu tạo các số từ $0$ đến $10$.'},
+           {'level': 'hieu',
+            'type': 'tf',
+            'q': 'Nhận định: “$3 + 6 = 10 - 1$.”',
+            'answer': True,
+            'solution': 'Ta có $3 + 6 = 9$ và $10 - 1 = 9$, hai vế cùng bằng $9$. Nhận định Đúng.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'tf',
+            'q': 'Trong **Bài 38: Ôn tập các số và phép tính trong phạm vi 10**, quy tắc **Các cặp số tròn '
+                 '10** được xác định bởi $1 + 9 = 2 + 8 = 3 + 7 = 4 + 6 = 5 + 5 = 10$ và áp dụng trực tiếp '
+                 'vào bài toán: “Tìm số thích hợp điền vào chỗ chấm: $10 - 7 + \\dots = 9$.”. Đúng hay sai?',
+            'answer': True,
+            'solution': 'Khẳng định **Đúng**. Quy tắc **Các cặp số tròn 10** ($1 + 9 = 2 + 8 = 3 + 7 = 4 + 6 '
+                        '= 5 + 5 = 10$) là kiến thức cốt lõi của Bài 38: Ôn tập các số và phép tính trong '
+                        'phạm vi 10. Ta có $10 - 7 = 3$. Để $3 + \\dots = 9$ thì số cần điền là $9 - 3 = '
+                        '6$.'},
+           {'level': 'vandung',
+            'type': 'mcq',
+            'q': 'Vận dụng kiến thức **Bài 38: Ôn tập các số và phép tính trong phạm vi 10** để giải quyết '
+                 'tình huống sau: Tìm số thích hợp điền vào chỗ chấm: $10 - 7 + \\dots = 9$. Kết quả và '
+                 'hướng giải nào dưới đây là **đúng**?',
+            'options': ['Đếm số quyển vở: $1, 2, 3, 4$ nên viết số $4$. Trong hộp không có bút nào nên viết '
+                        'số $0$.',
+                        'Ta có $10 - 7 = 3$. Để $3 + \\dots = 9$ thì số cần điền là $9 - 3 = 6$.',
+                        'Đếm tiếp sau $7$ là $8$, sau $9$ là $10$. Dãy số đầy đủ là $6, 7, 8, 9, 10$.',
+                        'Mỗi bạn thỏ nhận $1$ củ cà rốt thì còn $1$ bạn thỏ chưa có cà rốt ($5 > 4$). Vậy số '
+                        'thỏ **nhiều hơn** số cà rốt.'],
+            'answer': 1,
+            'solution': 'Lời giải chi tiết theo Bài 38: Ôn tập các số và phép tính trong phạm vi 10: Ta có '
+                        '$10 - 7 = 3$. Để $3 + \\dots = 9$ thì số cần điền là $9 - 3 = 6$.'},
+           {'level': 'vandung',
+            'type': 'short',
+            'q': 'Số thích hợp điền vào chỗ chấm trong phép tính $\\dots + 4 = 10$ là số nào?',
+            'answer': ['6'],
+            'unit': None,
+            'solution': 'Vì $10 - 4 = 6$ nên số cần điền là $6$.',
+            'alt': None,
+            'note': None}]},
+ {'topic': 'l1-cd10-on-tap-cuoi-nam',
+  'context_title': 'Chủ đề 10: Ôn tập cuối năm',
+  'context': 'SGK Toán 1 · Chủ đề 10: Ôn tập các số và phép tính trong phạm vi 10, 100; ôn tập hình học và '
+             'đo lường.',
+  'title': 'Bài 39: Ôn tập các số và phép tính trong phạm vi 100',
+  'icon': '💯',
+  'description': 'Ôn tập cấu tạo số có hai chữ số, so sánh số và cộng, trừ (không nhớ) trong phạm vi 100.',
+  'requirements': ['Đọc, viết, phân tích cấu tạo chục – đơn vị và so sánh thành thạo các số đến $100$.',
+                   'Đặt tính và tính đúng phép cộng, phép trừ (không nhớ) trong phạm vi $100$.',
+                   'Giải được bài toán có lời văn bằng một phép tính cộng hoặc trừ trong phạm vi $100$.'],
+  'definition': 'Số có hai chữ số $\\overline{ab}$ gồm $a$ chục và $b$ đơn vị. Khi đặt tính cộng hoặc trừ '
+                '(không nhớ), ta viết thẳng cột hàng đơn vị với hàng đơn vị, hàng chục với hàng chục rồi '
+                'tính từ phải sang trái.',
+  'theory': '- **So sánh số:** So sánh hàng chục trước; nếu hàng chục bằng nhau mới so sánh hàng đơn vị.\n'
+            '- **Tính nhẩm số tròn chục:** Cộng, trừ số chục rồi viết thêm chữ số $0$ ở hàng đơn vị.\n'
+            '- **Bài toán có lời văn:** Tìm từ khóa “thêm”, “tất cả”, “cả hai” (thường là phép cộng) hoặc '
+            '“bớt”, “đã bán”, “cắt đi”, “còn lại” (thường là phép trừ).',
+  'formulas': [{'category': 'Ôn tập số và phép tính phạm vi 100',
+                'items': [{'name': 'Cấu tạo số', 'formula': '$\\overline{ab} = a$ chục $+ b$ đơn vị'},
+                          {'name': 'Đặt tính cộng, trừ',
+                           'formula': 'Đơn vị thẳng đơn vị, chục thẳng chục; tính từ phải sang trái'},
+                          {'name': 'Biểu thức 2 bước',
+                           'formula': 'Thực hiện lần lượt từ trái sang phải',
+                           'note': 'Ví dụ: $56 - 20 + 3 = 36 + 3 = 39$.'}]}],
+  'example': 'Cửa hàng có $68$ quả bóng, đã bán $25$ quả. Hỏi cửa hàng còn lại bao nhiêu quả bóng?',
+  'example_answer': 'Phép tính: $68 - 25 = 43$.\nTrả lời: Cửa hàng còn lại $43$ quả bóng.',
+  'real_life': 'Kiểm đếm sách vở, tính toán số lượng đồ vật trong phạm vi $100$.',
+  'quiz': [{'level': 'biet',
+            'type': 'mcq',
+            'q': 'Số “sáu mươi tư” được viết là:',
+            'options': ['$64$', '$604$', '$46$', '$6$'],
+            'answer': 0,
+            'solution': 'Sáu mươi là $6$ chục, tư là $4$ đơn vị, viết là $64$.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Kết quả của phép tính $45 + 32$ là:',
+            'options': ['$73$', '$77$', '$67$', '$87$'],
+            'answer': 1,
+            'solution': 'Hàng đơn vị: $5 + 2 = 7$; hàng chục: $4 + 3 = 7$. Vậy $45 + 32 = 77$.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Theo nội dung trọng tâm của **Bài 39: Ôn tập các số và phép tính trong phạm vi 100**, công '
+                 'thức hoặc quy tắc nào sau đây biểu diễn đúng **Cấu tạo số**?',
+            'options': ['Đơn vị thẳng đơn vị, chục thẳng chục; tính từ phải sang trái',
+                        'Thực hiện lần lượt từ trái sang phải',
+                        '$\\overline{ab} = a$ chục $+ b$ đơn vị',
+                        '$0, 1, 2, 3, 4, 5$'],
+            'answer': 2,
+            'solution': 'Theo bảng công thức trọng tâm của Bài 39: Ôn tập các số và phép tính trong phạm vi '
+                        '100, **Cấu tạo số** được xác định bởi: $\\overline{ab} = a$ chục $+ b$ đơn vị.'},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Trong **Bài 39: Ôn tập các số và phép tính trong phạm vi 100**, nội dung/biểu thức Đơn vị '
+                 'thẳng đơn vị, chục thẳng chục; tính từ phải sang trái là quy tắc hoặc công thức của mục '
+                 'nào sau đây?',
+            'options': ['Cấu tạo số', 'Biểu thức 2 bước', 'Dãy số từ 0 đến 5', 'Đặt tính cộng, trừ'],
+            'answer': 3,
+            'solution': 'Trong Bài 39: Ôn tập các số và phép tính trong phạm vi 100, biểu thức/quy tắc Đơn '
+                        'vị thẳng đơn vị, chục thẳng chục; tính từ phải sang trái chính là nội dung của '
+                        '**Đặt tính cộng, trừ**.'},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Kết quả của dãy tính $56 - 20 + 3$ là:',
+            'options': ['$39$', '$33$', '$36$', '$79$'],
+            'answer': 0,
+            'solution': 'Tính từ trái sang phải: $56 - 20 = 36$, rồi lấy $36 + 3 = 39$.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Khi học **Bài 39: Ôn tập các số và phép tính trong phạm vi 100** (Chủ đề 10: Ôn tập cuối '
+                 'năm), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của '
+                 'bài?',
+            'options': ['Đếm, đọc, viết được các số $0, 1, 2, 3, 4, 5$.',
+                        'Đọc, viết, phân tích cấu tạo chục – đơn vị và so sánh thành thạo các số đến $100$.',
+                        'Nhận biết được số $0$ dùng để chỉ không có đồ vật nào.',
+                        'Nhận biết thứ tự các số từ $0$ đến $5$.'],
+            'answer': 1,
+            'solution': 'Theo yêu cầu cần đạt của Bài 39: Ôn tập các số và phép tính trong phạm vi 100: Đọc, '
+                        'viết, phân tích cấu tạo chục – đơn vị và so sánh thành thạo các số đến $100$.'},
+           {'level': 'hieu',
+            'type': 'tf',
+            'q': 'Nhận định: “Số $80$ vừa là số có hai chữ số, vừa là số tròn chục.”',
+            'answer': True,
+            'solution': 'Số $80$ gồm $2$ chữ số ($8$ và $0$) và có chữ số hàng đơn vị bằng $0$ nên là số '
+                        'tròn chục. Nhận định Đúng.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'tf',
+            'q': 'Trong **Bài 39: Ôn tập các số và phép tính trong phạm vi 100**, quy tắc **Cấu tạo số** '
+                 'được xác định bởi $\\overline{ab} = a$ chục $+ b$ đơn vị và áp dụng trực tiếp vào bài '
+                 'toán: “Cửa hàng có $68$ quả bóng, đã bán $25$ quả. Hỏi cửa hàng còn lại bao nhiêu quả '
+                 'bóng?”. Đúng hay sai?',
+            'answer': True,
+            'solution': 'Khẳng định **Đúng**. Quy tắc **Cấu tạo số** ($\\overline{ab} = a$ chục $+ b$ đơn '
+                        'vị) là kiến thức cốt lõi của Bài 39: Ôn tập các số và phép tính trong phạm vi 100. '
+                        'Phép tính: $68 - 25 = 43$. Trả lời: Cửa hàng còn lại $43$ quả bóng.'},
+           {'level': 'vandung',
+            'type': 'mcq',
+            'q': 'Vận dụng kiến thức **Bài 39: Ôn tập các số và phép tính trong phạm vi 100** để giải quyết '
+                 'tình huống sau: Cửa hàng có $68$ quả bóng, đã bán $25$ quả. Hỏi cửa hàng còn lại bao nhiêu '
+                 'quả bóng? Kết quả và hướng giải nào dưới đây là **đúng**?',
+            'options': ['Đếm số quyển vở: $1, 2, 3, 4$ nên viết số $4$. Trong hộp không có bút nào nên viết '
+                        'số $0$.',
+                        'Đếm tiếp sau $7$ là $8$, sau $9$ là $10$. Dãy số đầy đủ là $6, 7, 8, 9, 10$.',
+                        'Phép tính: $68 - 25 = 43$. Trả lời: Cửa hàng còn lại $43$ quả bóng.',
+                        'Mỗi bạn thỏ nhận $1$ củ cà rốt thì còn $1$ bạn thỏ chưa có cà rốt ($5 > 4$). Vậy số '
+                        'thỏ **nhiều hơn** số cà rốt.'],
+            'answer': 2,
+            'solution': 'Lời giải chi tiết theo Bài 39: Ôn tập các số và phép tính trong phạm vi 100: Phép '
+                        'tính: $68 - 25 = 43$.\n'
+                        'Trả lời: Cửa hàng còn lại $43$ quả bóng.'},
+           {'level': 'vandung',
+            'type': 'short',
+            'q': 'Cửa hàng có $68$ quả bóng, đã bán $25$ quả bóng. Hỏi cửa hàng còn lại bao nhiêu quả bóng?',
+            'answer': ['43'],
+            'unit': None,
+            'solution': 'Số quả bóng cửa hàng còn lại là: $68 - 25 = 43$ (quả bóng).',
+            'alt': None,
+            'note': None}]},
+ {'topic': 'l1-cd10-on-tap-cuoi-nam',
+  'context_title': 'Chủ đề 10: Ôn tập cuối năm',
+  'context': 'SGK Toán 1 · Chủ đề 10: Ôn tập các số và phép tính trong phạm vi 10, 100; ôn tập hình học và '
+             'đo lường.',
+  'title': 'Bài 40: Ôn tập hình học và đo lường (Ôn tập chung cuối năm)',
+  'icon': '🏆',
+  'description': 'Ôn tập tổng hợp về hình phẳng, hình khối, độ dài (cm), xem giờ đúng và xem lịch.',
+  'requirements': ['Nhận dạng thành thạo hình vuông, hình tròn, hình tam giác, hình chữ nhật, khối lập '
+                   'phương, khối hộp chữ nhật.',
+                   'Thực hiện được phép cộng, phép trừ số đo độ dài với đơn vị $\\text{cm}$.',
+                   'Đọc đúng giờ đúng trên đồng hồ và xác định thứ, ngày trên tờ lịch.'],
+  'definition': 'Tổng hợp kiến thức Hình học và Đo lường lớp 1:\n'
+                '- **Độ dài:** Đơn vị xăng-ti-mét ($\\text{cm}$), đặt vạch $0$ trùng một đầu vật khi đo.\n'
+                '- **Thời gian:** Giờ đúng (kim dài chỉ số $12$), $1$ tuần lễ có $7$ ngày.',
+  'theory': '- **Hình học:** Phân biệt rõ hình phẳng ($2$ chiều) và hình khối ($3$ chiều).\n'
+            '- **Đo độ dài:** Khi cắt bớt một đoạn dây, độ dài còn lại bằng độ dài ban đầu trừ đi độ dài '
+            'đoạn cắt ra.\n'
+            '- **Thời gian:** Kết hợp xem đồng hồ và xem lịch để giải các bài toán thực tế về sinh hoạt hằng '
+            'ngày.',
+  'formulas': [{'category': 'Tổng hợp Hình học & Đo lường lớp 1',
+                'items': [{'name': 'Tính với đơn vị cm',
+                           'formula': '$a\\text{ cm} \\pm b\\text{ cm} = (a \\pm b)\\text{ cm}$',
+                           'note': 'Ví dụ: $86\\text{ cm} - 40\\text{ cm} = 46\\text{ cm}$.'},
+                          {'name': 'Đồng hồ giờ đúng',
+                           'formula': 'Kim dài chỉ $12$, kim ngắn chỉ $k \\Rightarrow k$ giờ'},
+                          {'name': 'Tuần lễ',
+                           'formula': '$1$ tuần lễ $= 7$ ngày (Thứ Hai $\\rightarrow$ Chủ nhật)'}]}],
+  'example': 'Một sợi dây dài $86\\text{ cm}$. Bạn Hà cắt đi một đoạn dài $40\\text{ cm}$. Hỏi đoạn dây còn '
+             'lại dài bao nhiêu xăng-ti-mét?',
+  'example_answer': 'Đoạn dây còn lại dài là: $86\\text{ cm} - 40\\text{ cm} = 46\\text{ cm}$.',
+  'real_life': 'Vận dụng đo độ dài, xem giờ học bài, xem lịch nghỉ hè và chuẩn bị hành trang lên lớp 2.',
+  'quiz': [{'level': 'biet',
+            'type': 'mcq',
+            'q': 'Đồng hồ chỉ $10$ giờ đúng khi kim dài chỉ số $12$ và kim ngắn chỉ vào số nào?',
+            'options': ['$12$', '$10$', '$1$', '$2$'],
+            'answer': 1,
+            'solution': 'Giờ đúng có kim dài chỉ số $12$, kim ngắn chỉ số $10$ thì là $10$ giờ.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Kết quả của phép tính $35\\text{ cm} + 20\\text{ cm}$ là:',
+            'options': ['$55$', '$15\\text{ cm}$', '$55\\text{ cm}$', '$50\\text{ cm}$'],
+            'answer': 2,
+            'solution': 'Ta có $35 + 20 = 55$, viết kèm đơn vị đo độ dài là $55\\text{ cm}$.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Theo nội dung trọng tâm của **Bài 40: Ôn tập hình học và đo lường (Ôn tập chung cuối '
+                 'năm)**, công thức hoặc quy tắc nào sau đây biểu diễn đúng **Tính với đơn vị cm**?',
+            'options': ['Kim dài chỉ $12$, kim ngắn chỉ $k \\Rightarrow k$ giờ',
+                        '$1$ tuần lễ $= 7$ ngày (Thứ Hai $\\rightarrow$ Chủ nhật)',
+                        '$0, 1, 2, 3, 4, 5$',
+                        '$a\\text{ cm} \\pm b\\text{ cm} = (a \\pm b)\\text{ cm}$'],
+            'answer': 3,
+            'solution': 'Theo bảng công thức trọng tâm của Bài 40: Ôn tập hình học và đo lường (Ôn tập chung '
+                        'cuối năm), **Tính với đơn vị cm** được xác định bởi: $a\\text{ cm} \\pm b\\text{ '
+                        'cm} = (a \\pm b)\\text{ cm}$. (Ví dụ: $86\\text{ cm} - 40\\text{ cm} = 46\\text{ '
+                        'cm}$.)'},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Trong **Bài 40: Ôn tập hình học và đo lường (Ôn tập chung cuối năm)**, nội dung/biểu thức '
+                 'Kim dài chỉ $12$, kim ngắn chỉ $k \\Rightarrow k$ giờ là quy tắc hoặc công thức của mục '
+                 'nào sau đây?',
+            'options': ['Đồng hồ giờ đúng', 'Tính với đơn vị cm', 'Tuần lễ', 'Dãy số từ 0 đến 5'],
+            'answer': 0,
+            'solution': 'Trong Bài 40: Ôn tập hình học và đo lường (Ôn tập chung cuối năm), biểu thức/quy '
+                        'tắc Kim dài chỉ $12$, kim ngắn chỉ $k \\Rightarrow k$ giờ chính là nội dung của '
+                        '**Đồng hồ giờ đúng**.'},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Nếu hôm nay là Thứ Bảy ngày $20$ thì Chủ nhật ngày mai là ngày bao nhiêu?',
+            'options': ['Ngày $19$', 'Ngày $21$', 'Ngày $22$', 'Ngày $27$'],
+            'answer': 1,
+            'solution': 'Ngày mai liền sau ngày $20$ là ngày $20 + 1 = 21$.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Khi học **Bài 40: Ôn tập hình học và đo lường (Ôn tập chung cuối năm)** (Chủ đề 10: Ôn tập '
+                 'cuối năm), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức '
+                 'của bài?',
+            'options': ['Đếm, đọc, viết được các số $0, 1, 2, 3, 4, 5$.',
+                        'Nhận biết được số $0$ dùng để chỉ không có đồ vật nào.',
+                        'Nhận dạng thành thạo hình vuông, hình tròn, hình tam giác, hình chữ nhật, khối lập '
+                        'phương, khối hộp chữ nhật.',
+                        'Nhận biết thứ tự các số từ $0$ đến $5$.'],
+            'answer': 2,
+            'solution': 'Theo yêu cầu cần đạt của Bài 40: Ôn tập hình học và đo lường (Ôn tập chung cuối '
+                        'năm): Nhận dạng thành thạo hình vuông, hình tròn, hình tam giác, hình chữ nhật, '
+                        'khối lập phương, khối hộp chữ nhật.'},
+           {'level': 'hieu',
+            'type': 'tf',
+            'q': 'Nhận định: “Khối hộp chữ nhật có các mặt đều là hình tròn.”',
+            'answer': False,
+            'solution': 'Các mặt của khối hộp chữ nhật là hình chữ nhật (có thể có $2$ mặt hình vuông), '
+                        'không có mặt nào là hình tròn. Nhận định Sai.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'tf',
+            'q': 'Trong **Bài 40: Ôn tập hình học và đo lường (Ôn tập chung cuối năm)**, quy tắc **Tính với '
+                 'đơn vị cm** được xác định bởi $a\\text{ cm} \\pm b\\text{ cm} = (a \\pm b)\\text{ cm}$ và '
+                 'áp dụng trực tiếp vào bài toán: “Một sợi dây dài $86\\text{ cm}$. Bạn Hà cắt đi một đoạn '
+                 'dài $40\\text{ cm}$. Hỏi đoạn dây còn lại dài bao nhiêu xăng-ti-mét?”. Đúng hay sai?',
+            'answer': True,
+            'solution': 'Khẳng định **Đúng**. Quy tắc **Tính với đơn vị cm** ($a\\text{ cm} \\pm b\\text{ '
+                        'cm} = (a \\pm b)\\text{ cm}$) là kiến thức cốt lõi của Bài 40: Ôn tập hình học và '
+                        'đo lường (Ôn tập chung cuối năm). Đoạn dây còn lại dài là: $86\\text{ cm} - '
+                        '40\\text{ cm} = 46\\text{ cm}$.'},
+           {'level': 'vandung',
+            'type': 'mcq',
+            'q': 'Vận dụng kiến thức **Bài 40: Ôn tập hình học và đo lường (Ôn tập chung cuối năm)** để giải '
+                 'quyết tình huống sau: Một sợi dây dài $86\\text{ cm}$. Bạn Hà cắt đi một đoạn dài '
+                 '$40\\text{ cm}$. Hỏi đoạn dây còn lại dài bao nhiêu xăng-ti-mét? Kết quả và hướng giải nào '
+                 'dưới đây là **đúng**?',
+            'options': ['Đếm số quyển vở: $1, 2, 3, 4$ nên viết số $4$. Trong hộp không có bút nào nên viết '
+                        'số $0$.',
+                        'Đếm tiếp sau $7$ là $8$, sau $9$ là $10$. Dãy số đầy đủ là $6, 7, 8, 9, 10$.',
+                        'Mỗi bạn thỏ nhận $1$ củ cà rốt thì còn $1$ bạn thỏ chưa có cà rốt ($5 > 4$). Vậy số '
+                        'thỏ **nhiều hơn** số cà rốt.',
+                        'Đoạn dây còn lại dài là: $86\\text{ cm} - 40\\text{ cm} = 46\\text{ cm}$.'],
+            'answer': 3,
+            'solution': 'Lời giải chi tiết theo Bài 40: Ôn tập hình học và đo lường (Ôn tập chung cuối năm): '
+                        'Đoạn dây còn lại dài là: $86\\text{ cm} - 40\\text{ cm} = 46\\text{ cm}$.'},
+           {'level': 'vandung',
+            'type': 'short',
+            'q': 'Một sợi dây dài $86\\text{ cm}$. Bạn Hà cắt đi một đoạn dài $40\\text{ cm}$. Hỏi đoạn dây '
+                 'còn lại dài bao nhiêu xăng-ti-mét?',
+            'answer': ['46', '46cm', '46 cm'],
+            'unit': None,
+            'solution': 'Độ dài đoạn dây còn lại là: $86 - 40 = 46$ ($\\text{cm}$).',
+            'alt': None,
+            'note': None}]}]

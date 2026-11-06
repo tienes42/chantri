@@ -38,12 +38,20 @@
     var parts = 2 + (hasGame ? 1 : 0), got = (st.read ? 1 : 0) + (st.quiz ? 1 : 0) + (game ? 1 : 0);
     return { l: l, read: !!st.read, quiz: !!st.quiz, stars: st.stars || 0, hasGame: hasGame, game: game, score: got / parts, got: got, parts: parts };
   }
+  function resolveChapterName(l) {
+    var ct = String(l.context_title || "").trim();
+    if (/^(Chương|Chủ đề|Chuyên đề)\b/i.test(ct)) return ct;
+    return l.title || "Chương học";
+  }
   function analyse(lessons) {
     var done = completedSet(), rows = lessons.map(function (l) { return lessonState(l, done); });
     var topics = [], map = {};
     rows.forEach(function (r) {
       var key = r.l.topic || "khac";
-      if (!map[key]) { map[key] = { slug: key, name: r.l.title, icon: r.l.icon || "📚", rows: [] }; topics.push(map[key]); }
+      if (!map[key]) {
+        map[key] = { slug: key, name: resolveChapterName(r.l), icon: r.l.icon || "📚", rows: [] };
+        topics.push(map[key]);
+      }
       map[key].rows.push(r);
     });
     topics.forEach(function (t) {
@@ -78,7 +86,7 @@
   function lessonURL(subject, grade, l, hash) {
     return "lesson.html?id=" + encodeURIComponent(l.id) + "&subject=" + subject + "&grade=" + encodeURIComponent(l.grade || grade) + "&topic=" + encodeURIComponent(l.topic || "") + (hash || "");
   }
-  var GAME_FILES = { function_challenge: "function-challenge", "store-management": "store_management" };   // game_type khác tên file
+  var GAME_FILES = { function_challenge: "function-challenge" };   // game_type khác tên file
   function gameURL(l) { var t = l.game_type || "simulation"; return "games/" + encodeURIComponent(GAME_FILES[t] || t) + ".html?lesson_id=" + encodeURIComponent(l.id); }
   function challengeURL(subject, grade) {
     return "/challenge.html?subject=" + subject + "&grade=" + encodeURIComponent(grade) + "&from=" + encodeURIComponent(location.pathname + location.search);
@@ -206,9 +214,10 @@
     // chủ đề mạnh / cần cố gắng
     var started = a.topics.filter(function (x) { return x.mastery > 0; }).slice().sort(function (x, y) { return y.mastery - x.mastery; });
     var weak = a.topics.filter(function (x) { return x.mastery < 100; }).slice().sort(function (x, y) { return x.mastery - y.mastery; });
-    h += '<div class="gp-h">Theo chủ đề</div>';
+    h += '<div class="gp-h">Theo chương / chủ đề</div>';
     a.topics.forEach(function (tp) {
-      h += '<div class="gp-topic" style="padding:9px 12px;display:flex;align-items:center;gap:10px"><span class="ti">' + esc(tp.icon) + '</span><div class="tn" style="flex:1;min-width:0"><b style="font-size:13.5px;display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">' + esc(tp.name) + "</b>" + bar(tp.mastery) + '</div><span class="tp" style="color:' + rank(tp.mastery).c + '">' + tp.mastery + "%</span></div>";
+      var doneCount = tp.rows.filter(function (r) { return r.read || r.quiz; }).length;
+      h += '<div class="gp-topic" style="padding:9px 12px;display:flex;align-items:center;gap:10px"><span class="ti">' + esc(tp.icon) + '</span><div class="tn" style="flex:1;min-width:0"><b style="font-size:13.5px;display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap">' + esc(tp.name) + ' <span style="font-weight:600;color:#8aa0cc;font-size:12px">(' + doneCount + "/" + tp.rows.length + ' bài)</span></b>' + bar(tp.mastery) + '</div><span class="tp" style="color:' + rank(tp.mastery).c + '">' + tp.mastery + "%</span></div>";
     });
     if (started.length || weak.length) {
       h += '<div class="gp-cards" style="margin-top:10px">';
@@ -216,18 +225,18 @@
       if (weak.length) h += '<div class="gp-card"><h4>🎯 Nên ôn thêm</h4><div style="font-size:13px;color:#dbe7ff">' + esc(weak[0].name) + " · <b>" + weak[0].mastery + "%</b></div></div>";
       h += "</div>";
     }
-    h += "<p class='gp-note'>Mức thành thạo mỗi bài gồm 3 phần: 📖 đọc hết bài · 🧠 trả lời đúng Kiểm tra nhanh ngay lần đầu · 🎮 vượt qua game Thử thách thực tế (đạt từ 50% điểm). Tiến trình được lưu vào tài khoản và đồng bộ trên mọi thiết bị khi đăng nhập.</p>";
+    h += "<p class='gp-note'>Mức thành thạo mỗi bài gồm 3 phần: 📖 đọc hết bài · 🧠 hoàn thành Luyện tập / Kiểm tra nhanh · 🎮 vượt qua game Thử thách thực tế. Tiến trình được lưu vào tài khoản và đồng bộ trên mọi thiết bị khi đăng nhập.</p>";
     return h;
   }
 
   function viewLessons(a) {
     var h = "";
-    a.topics.forEach(function (tp, i) {
-      h += '<details class="gp-topic"' + (tp.mastery < 100 && h.indexOf(" open") < 0 ? " open" : "") + '><summary><span class="ti">' + esc(tp.icon) + '</span><div class="tn"><b>' + esc(tp.name) + "</b>" + bar(tp.mastery) + '</div><span class="tp" style="color:' + rank(tp.mastery).c + '">' + tp.mastery + '%</span><span class="ch">›</span></summary>';
+    a.topics.forEach(function (tp) {
+      h += '<details class="gp-topic"' + (tp.mastery < 100 && h.indexOf(" open") < 0 ? " open" : "") + '><summary><span class="ti">' + esc(tp.icon) + '</span><div class="tn"><b>' + esc(tp.name) + " (" + tp.rows.length + " bài)</b>" + bar(tp.mastery) + '</div><span class="tp" style="color:' + rank(tp.mastery).c + '">' + tp.mastery + '%</span><span class="ch">›</span></summary>';
       tp.rows.forEach(function (r) {
         h += '<div class="gp-les"><div class="lt">' + esc(r.l.title) + '</div><div class="gp-chips">' +
           '<span class="gp-chip' + (r.read ? " ok" : "") + '" title="Đọc hết bài">📖 ' + (r.read ? "Đã học" : "Chưa học") + "</span>" +
-          '<span class="gp-chip' + (r.quiz ? " ok" : "") + '" title="Đúng Kiểm tra nhanh ngay lần đầu">🧠 ' + (r.quiz ? "Đúng" : "Chưa") + "</span>" +
+          '<span class="gp-chip' + (r.quiz ? " ok" : "") + '" title="Hoàn thành Luyện tập">🧠 ' + (r.quiz ? "Đạt" : "Chưa") + "</span>" +
           (r.hasGame ? '<span class="gp-chip' + (r.game ? " ok" : "") + '" title="Vượt qua game Thử thách thực tế">🎮 ' + (r.game ? "Qua" : "Chưa") + "</span>" : "") +
           '<span class="gp-chip" title="Sao đã nhận">⭐ ' + r.stars + "</span>" +
           '</div><div class="gp-acts"><a href="' + esc(lessonURL(opts.subject, opts.grade, r.l)) + '">' + (r.read ? "Ôn bài" : "Học") + "</a>" +
@@ -279,16 +288,16 @@
     try { var c = jparse(sessionStorage.getItem(key), null); if (Array.isArray(c) && c.length) { allLessons = c; allLoading = false; return; } } catch (e) {}
     fetch((opts.apiBase || "/api") + "/content/subjects/" + opts.subject + "/lessons")
       .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })
-      .then(function (d) { allLessons = Array.isArray(d) ? d : []; try { sessionStorage.setItem(key, JSON.stringify(allLessons.map(function (l) { return { id: l.id, grade: l.grade, topic: l.topic, title: l.title, icon: l.icon, game_type: l.game_type, game_title: l.game_title }; }))); } catch (e) {} })
+      .then(function (d) { allLessons = Array.isArray(d) ? d : []; try { sessionStorage.setItem(key, JSON.stringify(allLessons.map(function (l) { return { id: l.id, grade: l.grade, topic: l.topic, title: l.title, context_title: l.context_title, icon: l.icon, game_type: l.game_type, game_title: l.game_title }; }))); } catch (e) {} })
       .catch(function () { allLessons = []; })
       .then(function () { allLoading = false; if (ov && tab === "grades") render(); });
   }
 
   /* xuất báo cáo CSV (mở được bằng Excel) */
   function exportCSV(a) {
-    var S = SUBJ[opts.subject], rows = [["Môn", "Lớp", "Chủ đề", "Bài học", "Đã học", "Kiểm tra nhanh", "Game thực tế", "Sao", "Thành thạo (%)"]];
+    var S = SUBJ[opts.subject], rows = [["Môn", "Lớp", "Chương/Chủ đề", "Bài học", "Đã học", "Kiểm tra nhanh", "Game thực tế", "Sao", "Thành thạo (%)"]];
     a.rows.forEach(function (r) {
-      rows.push([S.name, opts.grade, r.l.topic || "", r.l.title, r.read ? "Có" : "Chưa", r.quiz ? "Đúng" : "Chưa", r.hasGame ? (r.game ? "Qua" : "Chưa") : "Không có", r.stars, Math.round(100 * r.score)]);
+      rows.push([S.name, opts.grade, resolveChapterName(r.l), r.l.title, r.read ? "Có" : "Chưa", r.quiz ? "Đúng" : "Chưa", r.hasGame ? (r.game ? "Qua" : "Chưa") : "Không có", r.stars, Math.round(100 * r.score)]);
     });
     rows.push([]); rows.push(["Tổng", opts.grade, "", a.tot.n + " bài", a.tot.read, a.tot.quiz, a.tot.gameDone + "/" + a.tot.games, a.tot.stars, a.tot.mastery]);
     var csv = "\ufeff" + rows.map(function (r) { return r.map(function (v) { v = String(v == null ? "" : v); return /[",\n;]/.test(v) ? '"' + v.replace(/"/g, '""') + '"' : v; }).join(","); }).join("\r\n");

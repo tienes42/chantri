@@ -1125,3 +1125,271 @@ button {
 @media (max-width: 900px) {
   .sanctum-bg { background-image: url("assets/math-bg-960.webp"); }
 }
+
+/* =========================================================
+   9. CẤU TRÚC 3 CẤP: CHƯƠNG / CHỦ ĐỀ ➔ DANH SÁCH TỪNG BÀI HỌC
+========================================================= */
+.topic-card {
+  display: flex;
+  flex-direction: column;
+  min-height: 265px;
+  padding-bottom: 44px;
+}
+
+.topic-lessons-preview {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  margin-bottom: 16px;
+}
+
+.topic-lesson-chip {
+  display: inline-block;
+  max-width: 100%;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  white-space: nowrap;
+  font-size: 11.5px;
+  font-weight: 600;
+  color: #e2e8f0;
+  background: rgba(15, 42, 68, 0.78);
+  border: 1px solid rgba(45, 212, 191, 0.28);
+  padding: 4px 10px;
+  border-radius: 999px;
+}
+
+.topic-lesson-chip.is-more {
+  color: #fde047;
+  border-color: rgba(251, 191, 36, 0.45);
+  background: rgba(251, 191, 36, 0.12);
+}
+
+.topic-arrow {
+  font-size: 13px;
+  background: rgba(251, 191, 36, 0.14);
+  border: 1px solid rgba(251, 191, 36, 0.45);
+  padding: 4px 11px;
+  border-radius: 999px;
+  bottom: 14px;
+  right: 18px;
+}
+
+/* Modal Danh sách Bài học trong Chương */
+.popup.popup-chapter-lessons {
+  width: min(680px, 100%);
+  max-height: 88vh;
+  display: flex;
+  flex-direction: column;
+  text-align: left;
+  padding: 28px 28px 24px;
+}
+
+.popup-chapter-head {
+  display: flex;
+  align-items: center;
+  gap: 18px;
+  padding-right: 32px;
+}
+
+.popup-chapter-head .popup-icon {
+  margin: 0;
+  flex: 0 0 68px;
+  width: 68px;
+  height: 68px;
+  font-size: 30px;
+}
+
+.popup-head-text {
+  flex: 1;
+  min-width: 0;
+}
+
+.popup-head-text .popup-label {
+  margin-top: 0;
+}
+
+.popup-head-text h2 {
+  font-size: 22px;
+  margin: 4px 0 6px;
+  line-height: 1.25;
+}
+
+.popup-head-text p {
+  font-size: 13px;
+  line-height: 1.45;
+  color: #cbd5e1;
+}
+
+.popup.popup-chapter-lessons .popup-info {
+  grid-template-columns: repeat(3, 1fr);
+  margin: 16px 0;
+  text-align: center;
+}
+
+.popup-lessons-header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 10px;
+  padding: 0 4px;
+}
+
+.popup-lessons-header span {
+  font-size: 11.5px;
+  font-weight: 800;
+  letter-spacing: 1.2px;
+  color: #fde047;
+}
+
+.popup-lessons-header small {
+  font-size: 11.5px;
+  color: #99f6e4;
+}
+
+.popup-lessons-list {
+  flex: 1 1 auto;
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  padding-right: 6px;
+  margin-bottom: 16px;
+  max-height: 360px;
+}
+
+.popup-lessons-list::-webkit-scrollbar {
+  width: 6px;
+}
+
+.popup-lessons-list::-webkit-scrollbar-thumb {
+  background: rgba(251, 191, 36, 0.45);
+  border-radius: 999px;
+}
+
+.chapter-lesson-item {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  text-align: left;
+  padding: 13px 16px;
+  border-radius: 16px;
+  background: rgba(6, 18, 34, 0.78);
+  border: 1.5px solid rgba(45, 212, 191, 0.3);
+  color: #f8fafc;
+  cursor: pointer;
+  transition: transform 0.18s ease, border-color 0.18s ease, background 0.18s ease;
+}
+
+.chapter-lesson-item:hover {
+  transform: translateX(4px);
+  border-color: #fde047;
+  background: rgba(14, 38, 64, 0.92);
+}
+
+.chapter-lesson-item.is-done {
+  border-color: rgba(52, 211, 153, 0.55);
+}
+
+.chapter-lesson-item.is-progress {
+  border-color: rgba(251, 191, 36, 0.55);
+}
+
+.cl-num {
+  flex: 0 0 38px;
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  background: rgba(45, 212, 191, 0.15);
+  border: 1px solid rgba(45, 212, 191, 0.45);
+  color: #5eead4;
+  font-size: 13px;
+  font-weight: 900;
+  display: grid;
+  place-items: center;
+}
+
+.chapter-lesson-item.is-done .cl-num {
+  background: rgba(16, 185, 129, 0.2);
+  border-color: rgba(52, 211, 153, 0.6);
+  color: #34d399;
+}
+
+.cl-body {
+  flex: 1;
+  min-width: 0;
+}
+
+.cl-title-row {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  flex-wrap: wrap;
+  gap: 8px;
+}
+
+.cl-title {
+  font-size: 15px;
+  font-weight: 800;
+  color: #ffffff;
+}
+
+.cl-status {
+  font-size: 11px;
+  font-weight: 700;
+  padding: 2px 8px;
+  border-radius: 999px;
+  background: rgba(148, 163, 184, 0.16);
+  color: #cbd5e1;
+}
+
+.cl-status.is-done {
+  background: rgba(16, 185, 129, 0.2);
+  color: #6ee7b7;
+}
+
+.cl-status.is-progress {
+  background: rgba(251, 191, 36, 0.2);
+  color: #fde047;
+}
+
+.cl-desc {
+  margin-top: 4px !important;
+  font-size: 12.5px !important;
+  line-height: 1.45 !important;
+  color: #94a3b8 !important;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+.cl-go {
+  flex: 0 0 auto;
+  font-size: 12.5px;
+  font-weight: 800;
+  color: #fde047;
+  padding: 6px 11px;
+  border-radius: 10px;
+  background: rgba(251, 191, 36, 0.14);
+  border: 1px solid rgba(251, 191, 36, 0.4);
+  white-space: nowrap;
+}
+
+@media (max-width: 650px) {
+  .popup.popup-chapter-lessons {
+    padding: 20px 16px;
+  }
+  .popup-chapter-head {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+  }
+  .popup.popup-chapter-lessons .popup-info {
+    grid-template-columns: repeat(3, 1fr);
+    gap: 8px;
+  }
+  .cl-go {
+    display: none;
+  }
+}

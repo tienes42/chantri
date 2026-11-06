@@ -1,26 +1,11 @@
-function normalizeKatexInput(tex) {
-  let s = unescapeHTML(String(tex || "").trim());
-  if (/&(?:amp|lt|gt|quot|#039|#39|apos);/.test(s)) s = unescapeHTML(s);
-  s = s.replace(/\\[,;:!]\s*([\^_])/g, "$1");
-  s = s.replace(/(^|[+\-=(,;:\[]|\\(?:rightarrow|to|Rightarrow|Leftrightarrow|longrightarrow|mapsto|times|cdot|pm|quad|qquad))\s*([\^_])/g, "$1{}$2");
-  return s;
-}
-
-function unescapeHTML(str) {
-  if (str === null || str === undefined) return "";
-  return String(str)
-    .replace(/&amp;/g, "&")
-    .replace(/&lt;/g, "<")
-    .replace(/&gt;/g, ">")
-    .replace(/&quot;/g, '"')
-    .replace(/&#039;/g, "'")
-    .replace(/&#39;/g, "'")
-    .replace(/&apos;/g, "'");
-}
-
 /* =========================================================
    LESSON.JS — SÁCH HỌC VIỆN NỔI 2.5D & ĐỌC HIỂU CHUYÊN SÂU
    Dùng chung cho: Math, Physics, Chemistry và các môn khác
+   Hỗ trợ:
+   - KaTeX 0.16.11 + Offline Math/Chem Renderer (window.HDLGMath)
+   - Sơ đồ tư duy tổng quan 2.5D tương tác (#mindmapSection)
+   - Cấu trúc 3 cấp: Lớp ➔ Chương/Chủ đề ➔ Từng Bài học
+     (Breadcrumb Chương, Sidebar Danh sách bài trong Chương, Điều hướng Bài trước / Bài tiếp theo)
    API: GET /api/content/lessons/{id}
 ========================================================= */
 
@@ -33,6 +18,8 @@ const params = new URLSearchParams(window.location.search);
 const lessonId = params.get("id");
 const subject = (params.get("subject") || "math").toLowerCase();
 const gradeFromUrl = params.get("grade");
+const topicFromUrl = params.get("topic");
+const subIndexFromUrl = params.get("sub") !== null ? parseInt(params.get("sub"), 10) : null;
 
 /* =========================================================
    DOM ELEMENTS
@@ -45,8 +32,15 @@ const subjectPill = document.getElementById("subjectPill");
 
 const lessonIcon = document.getElementById("lessonIcon");
 const lessonGrade = document.getElementById("lessonGrade");
+const lessonChapterBadge = document.getElementById("lessonChapterBadge");
 const lessonTitle = document.getElementById("lessonTitle");
 const lessonDescription = document.getElementById("lessonDescription");
+
+const chapterLessonsCard = document.getElementById("chapterLessonsCard");
+const chapterSidebarTitle = document.getElementById("chapterSidebarTitle");
+const chapterSidebarProgress = document.getElementById("chapterSidebarProgress");
+const chapterLessonsList = document.getElementById("chapterLessonsList");
+const chapterNavFooter = document.getElementById("chapterNavFooter");
 
 const definition = document.getElementById("definition");
 const concept = document.getElementById("concept");
@@ -94,8 +88,9 @@ const meaningSection = document.getElementById("meaningSection");
 const applicationSection = document.getElementById("applicationSection");
 const realLifeSection = document.getElementById("realLifeSection");
 const challengeSection = document.getElementById("challengeSection");
+const mindmapSection = document.getElementById("mindmapSection");
 
-// Chương trình SGK mới: Yêu cầu cần đạt + bộ 10 câu hỏi 3 mức độ
+// Chương trình SGK mới: Yêu cầu cần đạt + bộ câu hỏi 3 mức độ
 const requirementsSection = document.getElementById("requirementsSection");
 const requirementsList = document.getElementById("requirements");
 const sgkRef = document.getElementById("sgkRef");
@@ -113,6 +108,12 @@ const subjectNames = {
   literature: "Ngữ văn",
   history: "Lịch sử",
   geography: "Địa lý"
+};
+
+const subjectGradePages = {
+  math: "math-grade.html",
+  physics: "physics-grade.html",
+  chemistry: "chemistry-knowledge.html"
 };
 
 document.body.setAttribute("data-subject", subject);
@@ -228,7 +229,7 @@ if (fontIncreaseBtn) {
 }
 
 /* =========================================================
-   ESCAPE HTML & BỘ DỰNG CÔNG THỨC TOÁN - LÝ - HÓA (KaTeX + Offline)
+   ESCAPE HTML & BỘ DỰNG CÔNG THỨC TOÁN / LÝ / HÓA (KaTeX + OFFLINE)
 ========================================================= */
 function escapeHTML(value) {
   if (value === null || value === undefined) return "";
@@ -240,333 +241,250 @@ function escapeHTML(value) {
     .replace(/'/g, "&#039;");
 }
 
-const SUP_CHAR_MAP = {
-  "⁰": "0", "¹": "1", "²": "2", "³": "3", "⁴": "4",
-  "⁵": "5", "⁶": "6", "⁷": "7", "⁸": "8", "⁹": "9",
-  "ⁿ": "n", "ᵐ": "m", "⁺": "+", "⁻": "−"
-};
-const SUB_CHAR_MAP = {
-  "₀": "0", "₁": "1", "₂": "2", "₃": "3", "₄": "4",
-  "₅": "5", "₆": "6", "₇": "7", "₈": "8", "₉": "9",
-  "₊": "+", "₋": "−"
+const LATEX_SYMBOLS = {
+  "\\alpha": "α", "\\beta": "β", "\\gamma": "γ", "\\delta": "δ", "\\epsilon": "ε", "\\varepsilon": "ε",
+  "\\zeta": "ζ", "\\eta": "η", "\\theta": "θ", "\\vartheta": "ϑ", "\\iota": "ι", "\\kappa": "κ",
+  "\\lambda": "λ", "\\mu": "μ", "\\nu": "ν", "\\xi": "ξ", "\\pi": "π", "\\rho": "ρ",
+  "\\sigma": "σ", "\\tau": "τ", "\\upsilon": "υ", "\\phi": "φ", "\\varphi": "φ", "\\chi": "χ",
+  "\\psi": "ψ", "\\omega": "ω",
+  "\\Gamma": "Γ", "\\Delta": "Δ", "\\Theta": "Θ", "\\Lambda": "Λ", "\\Xi": "Ξ", "\\Pi": "Π",
+  "\\Sigma": "Σ", "\\Phi": "Φ", "\\Psi": "Ψ", "\\Omega": "Ω",
+  "\\cdot": "·", "\\times": "×", "\\div": "÷", "\\pm": "±", "\\mp": "∓", "\\ast": "∗",
+  "\\le": "≤", "\\leq": "≤", "\\ge": "≥", "\\geq": "≥", "\\ne": "≠", "\\neq": "≠",
+  "\\approx": "≈", "\\equiv": "≡", "\\sim": "∼", "\\simeq": "≃", "\\cong": "≅", "\\propto": "∝",
+  "\\infty": "∞", "\\partial": "∂", "\\nabla": "∇", "\\forall": "∀", "\\exists": "∃", "\\nexists": "∄",
+  "\\in": "∈", "\\notin": "∉", "\\ni": "∋", "\\subset": "⊂", "\\supset": "⊃",
+  "\\subseteq": "⊆", "\\supseteq": "⊇", "\\cup": "∪", "\\cap": "∩", "\\setminus": "∖",
+  "\\emptyset": "∅", "\\varnothing": "∅",
+  "\\to": "→", "\\rightarrow": "→", "\\leftarrow": "←", "\\leftrightarrow": "↔",
+  "\\Rightarrow": "⇒", "\\Leftarrow": "⇐", "\\Leftrightarrow": "⇔", "\\iff": "⇔", "\\implies": "⇒",
+  "\\mapsto": "↦", "\\uparrow": "↑", "\\downarrow": "↓", "\\upharpoonright": "↑",
+  "\\perp": "⊥", "\\parallel": "∥", "\\angle": "∠", "\\widehat": "", "\\triangle": "△",
+  "\\circ": "°", "\\degree": "°", "\\prime": "′", "\\dots": "…", "\\ldots": "…", "\\cdots": "⋯",
+  "\\quad": " ", "\\qquad": "  ", "\\,": " ", "\\;": " ", "\\:": " ", "\\!": "", "\\ ": " ",
+  "\\left": "", "\\right": "", "\\bigl": "", "\\bigr": "", "\\Bigl": "", "\\Bigr": "",
+  "\\displaystyle": "", "\\textstyle": "",
+  "\\sin": "sin", "\\cos": "cos", "\\tan": "tan", "\\cot": "cot", "\\arcsin": "arcsin", "\\arccos": "arccos", "\\arctan": "arctan",
+  "\\ln": "ln", "\\log": "log", "\\lg": "lg", "\\lim": "lim", "\\max": "max", "\\min": "min", "\\gcd": "ƯCLN", "\\lcm": "BCNN",
+  "\\int": "∫", "\\oint": "∮", "\\sum": "∑", "\\prod": "∏"
 };
 
-const LATEX_SYMBOLS = {
-  "\\cdot": "·", "\\times": "×", "\\div": ":", "\\pm": "±", "\\mp": "∓",
-  "\\le": "≤", "\\leq": "≤", "\\ge": "≥", "\\geq": "≥",
-  "\\ne": "≠", "\\neq": "≠", "\\approx": "≈", "\\equiv": "≡",
-  "\\sim": "∼", "\\simeq": "≃", "\\cong": "≅",
-  "\\in": "∈", "\\notin": "∉", "\\subset": "⊂", "\\subseteq": "⊆", "\\supset": "⊃", "\\supseteq": "⊇", "\\setminus": "\\", "\\int": "∫", "\\sum": "∑", "\\prod": "∏",
-  "\\cup": "∪", "\\cap": "∩", "\\emptyset": "∅", "\\varnothing": "∅",
-  "\\Rightarrow": "⇒", "\\Leftarrow": "⇐", "\\Leftrightarrow": "⇔",
-  "\\rightarrow": "→", "\\to": "→", "\\leftarrow": "←", "\\mapsto": "↦", "\\longrightarrow": "⟶", "\\longleftarrow": "⟵", "\\leftrightarrow": "↔", "\\rightleftharpoons": "⇌", "\\leftrightharpoons": "⇋", "\\uparrow": "↑", "\\downarrow": "↓",
-  "\\forall": "∀", "\\exists": "∃",
-  "\\perp": "⊥", "\\parallel": "∥", "\\triangle": "△", "\\angle": "∠",
-  "\\pi": "π", "\\alpha": "α", "\\beta": "β", "\\gamma": "γ", "\\delta": "δ",
-  "\\Delta": "Δ", "\\epsilon": "ε", "\\varepsilon": "ε", "\\theta": "θ",
-  "\\lambda": "λ", "\\mu": "μ", "\\rho": "ρ", "\\sigma": "σ", "\\tau": "τ",
-  "\\varphi": "φ", "\\phi": "ϕ", "\\omega": "ω", "\\Omega": "Ω",
-  "\\infty": "∞", "\\dots": "…", "\\ldots": "…", "\\cdots": "⋯",
-  "\\circ": "°", "\\%": "%", "\\{": "{", "\\}": "}", "\\,": " ", "\\;": " ", "\\:": " ", "\\!": ""
-};
+const MATHBB_MAP = { N: "ℕ", Z: "ℤ", Q: "ℚ", R: "ℝ", C: "ℂ", P: "ℙ" };
 
 function takeBraced(s, pos) {
   while (pos < s.length && s[pos] === " ") pos++;
-  if (pos >= s.length || s[pos] !== "{") return null;
-  let depth = 0;
-  let start = pos + 1;
-  for (let i = pos; i < s.length; i++) {
-    if (s[i] === "\\") { i++; continue; }
+  if (s[pos] !== "{") {
+    if (s[pos] === "\\" && pos + 1 < s.length) {
+      let m = s.slice(pos).match(/^\\[a-zA-Z]+/);
+      if (m) return [m[0], pos + m[0].length];
+    }
+    return [s[pos] || "", pos + 1];
+  }
+  let depth = 0, i = pos;
+  for (; i < s.length; i++) {
+    if (s[i] === "\\" && i + 1 < s.length) { i++; continue; }
     if (s[i] === "{") depth++;
     else if (s[i] === "}") {
       depth--;
-      if (depth === 0) return { content: s.slice(start, i), next: i + 1 };
+      if (depth === 0) return [s.slice(pos + 1, i), i + 1];
     }
   }
-  return { content: s.slice(start), next: s.length };
+  return [s.slice(pos + 1), s.length];
 }
 
-function takeBracketed(s, pos) {
-  while (pos < s.length && s[pos] === " ") pos++;
-  if (pos >= s.length || s[pos] !== "[") return null;
-  let depth = 0;
-  let start = pos + 1;
-  for (let i = pos; i < s.length; i++) {
-    if (s[i] === "[") depth++;
-    else if (s[i] === "]") {
-      depth--;
-      if (depth === 0) return { content: s.slice(start, i), next: i + 1 };
-    }
-  }
-  return null;
+function normalizeKatexInput(tex) {
+  return String(tex || "")
+    .replace(/\\[,;:!]\s*\^/g, "^")
+    .replace(/\\[,;:!]\s*_/g, "_")
+    .replace(/(\s)\^/g, "$1{}^")
+    .replace(/^(\s*)\^/, "$1{}^")
+    .replace(/([({\[=+\-*/<>|,;:])\s*\^/g, "$1{}^")
+    .replace(/([({\[=+\-*/<>|,;:])\s*_/g, "$1{}_")
+    .replace(/\\degree\b/g, "^\\circ");
 }
 
 function renderLatexOffline(tex) {
-  if (!tex) return "";
-  let s = String(tex).trim()
-    .replace(/\\left\s*([(\[\{|])/g, "$1")
-    .replace(/\\right\s*([)\]\}|])/g, "$1")
-    .replace(/\\left\s*\\\{/g, "{")
-    .replace(/\\right\s*\\\}/g, "}")
-    .replace(/\\mathbb\{N\}\^\*/g, "ℕ*")
-    .replace(/\\mathbb\{N\}/g, "ℕ")
-    .replace(/\\mathbb\{Z\}/g, "ℤ")
-    .replace(/\\mathbb\{Q\}/g, "ℚ")
-    .replace(/\\mathbb\{R\}/g, "ℝ").replace(/\\mathbb\{C\}/g, "ℂ").replace(/\\not\\subset/g, "⊄").replace(/\\not\\in/g, "∉");
+  let s = String(tex).trim();
+  if (!s) return "";
 
-  s = s.replace(/\\begin\{cases\}([\s\S]*?)\\end\{cases\}/g, (_, body) => {
-    const rows = body.split(/\\\\/).map(r => r.trim()).filter(Boolean);
-    const rowsHtml = rows.map(r => {
-      const cols = r.split("&").map(c => renderLatexOffline(c.trim()));
-      return `<span class="m-cases-row">${cols.join(" &nbsp; ")}</span>`;
+  s = s.replace(/\\begin\{(cases|aligned|array|matrix|pmatrix|bmatrix|vmatrix)\}([\s\S]*?)\\end\{\1\}/g, function (_, env, body) {
+    body = body.replace(/^\s*\{[^}]*\}/, "");
+    const rows = body.split(/\\\\/).map((r) => r.trim()).filter(Boolean);
+    const renderedRows = rows.map((r) => {
+      const cells = r.split("&").map((c) => renderLatexOffline(c.trim()));
+      return `<span class="m-row">${cells.map((c) => `<span class="m-cell">${c}</span>`).join("")}</span>`;
     }).join("");
-    return `\x00CASES_START\x00${rowsHtml}\x00CASES_END\x00`;
+    if (env === "cases") return `<span class="m-cases">{<span class="m-rows">${renderedRows}</span></span>`;
+    const lbr = env === "pmatrix" ? "(" : env === "bmatrix" ? "[" : env === "vmatrix" ? "|" : "";
+    const rbr = env === "pmatrix" ? ")" : env === "bmatrix" ? "]" : env === "vmatrix" ? "|" : "";
+    return `<span class="m-matrix">${lbr}<span class="m-rows">${renderedRows}</span>${rbr}</span>`;
   });
-  let out = "";
-  let i = 0;
+
+  let out = "", i = 0;
   while (i < s.length) {
-    const ch = s[i];
-    if (ch === "\\") {
-      const mCmd = s.slice(i).match(/^\\([a-zA-Z]+|[{},;:%!])/);
-      if (mCmd) {
-        const fullCmd = "\\" + mCmd[1];
-        const nextPos = i + fullCmd.length;
-        if (fullCmd === "\\frac" || fullCmd === "\\dfrac" || fullCmd === "\\tfrac") {
-          const num = takeBraced(s, nextPos);
-          if (num) {
-            const den = takeBraced(s, num.next);
-            if (den) {
-              out += `<span class="m-frac"><span class="m-num">${renderLatexOffline(num.content)}</span><span class="m-den">${renderLatexOffline(den.content)}</span></span>`;
-              i = den.next;
-              continue;
-            }
-          }
-        } else if (fullCmd === "\\sqrt") {
-          const opt = takeBracketed(s, nextPos);
-          const radPos = opt ? opt.next : nextPos;
-          const rad = takeBraced(s, radPos);
-          if (rad) {
-            const rootHtml = opt ? `<sup class="m-root">${renderLatexOffline(opt.content)}</sup>` : "";
-            out += `<span class="m-sqrt">${rootHtml}<span class="m-rad">√</span><span class="m-radicand">${renderLatexOffline(rad.content)}</span></span>`;
-            i = rad.next;
-            continue;
-          }
-        } else if (fullCmd === "\\widehat" || fullCmd === "\\hat") {
-          const arg = takeBraced(s, nextPos);
-          if (arg) {
-            out += `<span class="m-hat">${renderLatexOffline(arg.content)}</span>`;
-            i = arg.next;
-            continue;
-          }
-        } else if (fullCmd === "\\overline" || fullCmd === "\\bar") {
-          const arg = takeBraced(s, nextPos);
-          if (arg) {
-            out += `<span class="m-overline">${renderLatexOffline(arg.content)}</span>`;
-            i = arg.next;
-            continue;
-          }
-        } else if (fullCmd === "\\overrightarrow" || fullCmd === "\\vec") {
-          const arg = takeBraced(s, nextPos);
-          if (arg) {
-            out += `<span class="m-vec">${renderLatexOffline(arg.content)}</span>`;
-            i = arg.next;
-            continue;
-          }
-        } else if (fullCmd === "\\xrightarrow" || fullCmd === "\\xleftarrow") {
-          const opt = takeBracketed(s, nextPos);
-          const bracePos = opt ? opt.next : nextPos;
-          const arg = takeBraced(s, bracePos);
-          if (arg) {
-            const arrowChar = fullCmd === "\\xrightarrow" ? "⟶" : "⟵";
-            const topHtml = arg.content ? `<span class="m-num" style="font-size:0.75em;border-bottom:none;padding:0 2px;">${renderLatexOffline(arg.content)}</span>` : "";
-            const botHtml = opt && opt.content ? `<span class="m-den" style="font-size:0.75em;padding:0 2px;">${renderLatexOffline(opt.content)}</span>` : "";
-            out += `<span class="m-frac" style="vertical-align:middle;margin:0 3px;">${topHtml}<span style="line-height:0.9;">${arrowChar}</span>${botHtml}</span>`;
-            i = arg.next;
-            continue;
-          }
-        } else if (fullCmd === "\\overset" || fullCmd === "\\underset") {
-          const first = takeBraced(s, nextPos);
-          if (first) {
-            const second = takeBraced(s, first.next);
-            if (second) {
-              if (fullCmd === "\\overset") {
-                out += `<span class="m-frac" style="vertical-align:middle;"><span class="m-num" style="font-size:0.72em;border-bottom:none;padding:0 1px;">${renderLatexOffline(first.content)}</span><span>${renderLatexOffline(second.content)}</span></span>`;
-              } else {
-                out += `<span class="m-frac" style="vertical-align:middle;"><span>${renderLatexOffline(second.content)}</span><span class="m-den" style="font-size:0.72em;padding:0 1px;">${renderLatexOffline(first.content)}</span></span>`;
-              }
-              i = second.next;
-              continue;
-            }
-          }
-        } else if (fullCmd === "\\mathbf" || fullCmd === "\\boldsymbol") {
-          const arg = takeBraced(s, nextPos);
-          if (arg) {
-            out += `<strong>${renderLatexOffline(arg.content)}</strong>`;
-            i = arg.next;
-            continue;
-          }
-        } else if (fullCmd === "\\text" || fullCmd === "\\mathrm" || fullCmd === "\\textbf") {
-          const arg = takeBraced(s, nextPos);
-          if (arg) {
-            const inner = (fullCmd === "\\textbf")
-              ? `<strong>${escapeHTML(arg.content)}</strong>`
-              : escapeHTML(arg.content);
-            out += `<span class="m-text">${inner}</span>`;
-            i = arg.next;
-            continue;
-          }
-        } else if (fullCmd === "\\sin" || fullCmd === "\\cos" || fullCmd === "\\tan" || fullCmd === "\\cot" || fullCmd === "\\log" || fullCmd === "\\ln" || fullCmd === "\\lim") {
-          out += `<span class="m-text">${mCmd[1]}</span>`;
-          i = nextPos;
-          continue;
-        } else if (Object.prototype.hasOwnProperty.call(LATEX_SYMBOLS, fullCmd)) {
-          out += LATEX_SYMBOLS[fullCmd];
-          i = nextPos;
+    if (s[i] === "\\") {
+      const rest = s.slice(i);
+      let m = rest.match(/^\\(d?frac|tfrac)\b/);
+      if (m) {
+        let [num, p1] = takeBraced(s, i + m[0].length);
+        let [den, p2] = takeBraced(s, p1);
+        out += `<span class="m-frac"><span class="m-num">${renderLatexOffline(num)}</span><span class="m-den">${renderLatexOffline(den)}</span></span>`;
+        i = p2; continue;
+      }
+      m = rest.match(/^\\sqrt\[([^\]]+)\]/);
+      if (m) {
+        let [rad, p1] = takeBraced(s, i + m[0].length);
+        out += `<span class="m-sqrt"><sup class="m-root">${renderLatexOffline(m[1])}</sup>√<span class="m-rad">${renderLatexOffline(rad)}</span></span>`;
+        i = p1; continue;
+      }
+      m = rest.match(/^\\sqrt\b/);
+      if (m) {
+        let [rad, p1] = takeBraced(s, i + m[0].length);
+        out += `<span class="m-sqrt">√<span class="m-rad">${renderLatexOffline(rad)}</span></span>`;
+        i = p1; continue;
+      }
+      m = rest.match(/^\\(overrightarrow|vec|overline|bar|widehat|hat|tilde)\b/);
+      if (m) {
+        let [arg, p1] = takeBraced(s, i + m[0].length);
+        const cls = (m[1] === "overrightarrow" || m[1] === "vec") ? "m-vec" : (m[1] === "widehat" || m[1] === "hat") ? "m-hat" : "m-bar";
+        out += `<span class="${cls}">${renderLatexOffline(arg)}</span>`;
+        i = p1; continue;
+      }
+      m = rest.match(/^\\(text|mathrm|textbf|mathbf|mathit|operatorname)\b/);
+      if (m) {
+        let [arg, p1] = takeBraced(s, i + m[0].length);
+        const tag = (m[1] === "textbf" || m[1] === "mathbf") ? "strong" : "span";
+        out += `<${tag} class="m-text">${renderLatexOffline(arg)}</${tag}>`;
+        i = p1; continue;
+      }
+      m = rest.match(/^\\mathbb\b/);
+      if (m) {
+        let [arg, p1] = takeBraced(s, i + m[0].length);
+        out += `<span class="m-bb">${MATHBB_MAP[arg.trim()] || escapeHTML(arg)}</span>`;
+        i = p1; continue;
+      }
+      m = rest.match(/^\\(overset|stackrel)\b/);
+      if (m) {
+        let [top, p1] = takeBraced(s, i + m[0].length);
+        let [bot, p2] = takeBraced(s, p1);
+        out += `<span class="m-over"><span class="m-top">${renderLatexOffline(top)}</span><span class="m-bot">${renderLatexOffline(bot)}</span></span>`;
+        i = p2; continue;
+      }
+      m = rest.match(/^\\(\|[a-zA-Z]+|[^a-zA-Z])/);
+      if (m) {
+        const tok = m[0];
+        if (tok === "\\{" || tok === "\\}") { out += tok.slice(1); i += 2; continue; }
+        if (tok === "\\%") { out += "%"; i += 2; continue; }
+        if (Object.prototype.hasOwnProperty.call(LATEX_SYMBOLS, tok)) {
+          out += LATEX_SYMBOLS[tok];
+          i += tok.length;
+          if (s[i] === " " && /^\\[a-zA-Z]+$/.test(tok)) i++;
           continue;
         }
-        out += escapeHTML(mCmd[1]);
-        i = nextPos;
+        out += escapeHTML(tok.slice(1));
+        i += tok.length;
         continue;
       }
     }
-
-    if (ch === "^" || ch === "_") {
-      const tag = ch === "^" ? "sup" : "sub";
-      const cls = ch === "^" ? "m-sup" : "m-sub";
-      const braced = takeBraced(s, i + 1);
-      if (braced) {
-        if (ch === "^" && braced.content.trim() === "\\circ") {
-          out += "°";
-        } else {
-          out += `<${tag} class="${cls}">${renderLatexOffline(braced.content)}</${tag}>`;
-        }
-        i = braced.next;
-        continue;
-      }
-      if (s.slice(i + 1).startsWith("\\circ")) {
-        out += "°";
-        i += 6;
-        continue;
-      }
-      if (i + 1 < s.length) {
-        out += `<${tag} class="${cls}">${escapeHTML(s[i + 1])}</${tag}>`;
-        i += 2;
-        continue;
-      }
+    if (s[i] === "^" || s[i] === "_") {
+      const tag = s[i] === "^" ? "sup" : "sub";
+      let [arg, p1] = takeBraced(s, i + 1);
+      out += `<${tag}>${renderLatexOffline(arg)}</${tag}>`;
+      i = p1; continue;
     }
-
-    if (ch === "{") {
-      const braced = takeBraced(s, i);
-      if (braced) {
-        out += renderLatexOffline(braced.content);
-        i = braced.next;
-        continue;
-      }
+    if (s[i] === "{") {
+      let [arg, p1] = takeBraced(s, i);
+      out += renderLatexOffline(arg);
+      i = p1; continue;
     }
-
-    if (ch === "-") {
-      out += "−";
-    } else if (ch === "'") {
-      out += "′";
-    } else {
-      out += escapeHTML(ch);
+    if (s[i] === "}") { i++; continue; }
+    if (s[i] === "-" && (i === 0 || /[\s({\[=+,;<>]/.test(s[i - 1]))) {
+      out += "−"; i++; continue;
     }
+    out += escapeHTML(s[i]);
     i++;
   }
-  return out.replace(/\x00CASES_START\x00([\s\S]*?)\x00CASES_END\x00/g, '<span class="m-cases"><span class="m-brace">{</span><span class="m-cases-rows">$1</span></span>');
+  return out;
 }
 
-function renderLatexToken(tex, isDisplay) {
-  const cleanTex = normalizeKatexInput(tex);
-  const attrTex = escapeHTML(cleanTex);
+function renderMathToken(tex, displayMode) {
+  const clean = normalizeKatexInput(String(tex).trim());
+  if (!clean) return "";
   if (window.katex && typeof window.katex.renderToString === "function") {
     try {
-      return window.katex.renderToString(cleanTex, {
-        throwOnError: true,
-        strict: false,
-        displayMode: !!isDisplay
-      });
+      return window.katex.renderToString(clean, { throwOnError: false, displayMode: !!displayMode, strict: false });
     } catch (_) {}
   }
-  const cls = isDisplay ? "m-math m-math-block" : "m-math";
-  return `<span class="${cls}" data-tex="${attrTex}" data-display="${isDisplay ? 1 : 0}">${renderLatexOffline(cleanTex)}</span>`;
+  const attr = escapeHTML(clean);
+  const tag = displayMode ? "div" : "span";
+  return `<${tag} class="m-math${displayMode ? " m-block" : ""}" data-latex="${attr}">${renderLatexOffline(clean)}</${tag}>`;
 }
 
-function upgradeKatex() {
+function upgradeKatex(root) {
   if (!window.katex || typeof window.katex.renderToString !== "function") return;
-  document.querySelectorAll(".m-math[data-tex]").forEach((el) => {
-    let tex = el.getAttribute("data-tex");
-    const isDisplay = el.getAttribute("data-display") === "1";
+  (root || document).querySelectorAll(".m-math[data-latex]").forEach((el) => {
+    const tex = normalizeKatexInput(el.getAttribute("data-latex"));
     if (!tex) return;
-    tex = normalizeKatexInput(tex);
     try {
-      el.outerHTML = window.katex.renderToString(tex, {
-        throwOnError: true,
-        strict: false,
-        displayMode: isDisplay
+      el.innerHTML = window.katex.renderToString(tex, {
+        throwOnError: false,
+        displayMode: el.classList.contains("m-block"),
+        strict: false
       });
+      el.removeAttribute("data-latex");
     } catch (_) {}
   });
-  if (typeof drawMindmapConnections === "function") {
-    requestAnimationFrame(drawMindmapConnections);
+}
+window.addEventListener("load", () => upgradeKatex(document));
+
+function formatInlineStyles(rawStr) {
+  if (!rawStr) return "";
+  const stash = [];
+  const put = (html) => { const id = `\u0000M${stash.length}\u0000`; stash.push(html); return id; };
+
+  let s = String(rawStr)
+    .replace(/\$\$([\s\S]+?)\$\$/g, (_, m) => put(renderMathToken(m, true)))
+    .replace(/\\\[([\s\S]+?)\\\]/g, (_, m) => put(renderMathToken(m, true)))
+    .replace(/\\\(([\s\S]+?)\\\)/g, (_, m) => put(renderMathToken(m, false)))
+    .replace(/\$([^$\n]+?)\$/g, (_, m) => put(renderMathToken(m, false)));
+
+  s = s.replace(/`([^`]+)`/g, (_, c) => put(`<code>${escapeHTML(c)}</code>`));
+
+  if (/\\(d?frac|sqrt|overrightarrow|vec|widehat|triangle|angle|cdot|times|div|pm|le|leq|ge|geq|ne|neq|approx|equiv|infty|in|notin|subset|subseteq|cup|cap|emptyset|alpha|beta|gamma|delta|Delta|pi|omega|Omega|sigma|lambda|mu|theta|sin|cos|tan|cot|log|ln|lim|sum|int|mathbb|mathrm|text)\b/.test(s)) {
+    s = s.replace(/((?:\\[a-zA-Z]+(?:\{[^}]*\})*|\b[a-zA-Z0-9]+\s*[_^]\s*(?:\{[^}]+\}|[a-zA-Z0-9+-]+))(?:[\s+\-*/=<>≤≥≠≈·×÷,()0-9a-zA-Z\\_{}^]*))/g, (m) => {
+      if (m.indexOf("\u0000") !== -1) return m;
+      return put(renderMathToken(m, false));
+    });
   }
+
+  s = escapeHTML(s)
+    .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
+    .replace(/\b([A-Za-z][a-z]?\d*(?:\([A-Za-z0-9]+\)\d*)*)\^(\d*[+-])/g, "$1<sup>$2</sup>")
+    .replace(/(\([A-Za-z]{1,3}\d*\))(\d+)/g, "$1<sub>$2</sub>")
+    .replace(/\b((?:[A-Z][a-z]?\d*)+)\b/g, (word) => {
+      if (!/\d/.test(word)) return word;
+      if (!/^(?:H|He|Li|Be|B|C|N|O|F|Ne|Na|Mg|Al|Si|P|S|Cl|Ar|K|Ca|Sc|Ti|V|Cr|Mn|Fe|Co|Ni|Cu|Zn|Ga|Ge|As|Se|Br|Kr|Rb|Sr|Ag|Cd|In|Sn|Sb|Te|I|Xe|Cs|Ba|Au|Hg|Pb|Bi|Cr|Mn|Cu|Zn|Fe|Al|Mg|Ca|Na|K|Ba|Ag|H|C|N|O|S|P|Cl|Br|I|F|\d)+$/.test(word)) return word;
+      return word.replace(/([A-Za-z])(\d+)/g, "$1<sub>$2</sub>");
+    });
+
+  return s.replace(/\u0000M(\d+)\u0000/g, (_, idx) => stash[Number(idx)] || "");
 }
 
-function formatPlainMathAndChem(escapedStr) {
-  if (!escapedStr) return "";
-  let s = escapedStr;
-  // Convert Unicode superscripts (e.g., cm², m³, 2³) -> <sup class="m-sup">...</sup>
-  s = s.replace(/([⁰¹²³⁴⁵⁶⁷⁸⁹ⁿᵐ⁺⁻]+)/g, (m) => {
-    const mapped = Array.from(m).map((c) => SUP_CHAR_MAP[c] || c).join("");
-    return `<sup class="m-sup">${mapped}</sup>`;
-  });
-  // Convert Unicode subscripts (e.g., H₂O, CO₂, x₁) -> <sub class="m-sub">...</sub>
-  s = s.replace(/([₀₁₂₃₄₅₆₇₈₉₊₋]+)/g, (m) => {
-    const mapped = Array.from(m).map((c) => SUB_CHAR_MAP[c] || c).join("");
-    return `<sub class="m-sub">${mapped}</sub>`;
-  });
-  // Convert common ASCII chemical formulas (e.g., H2O, CO2, H2SO4, Ca(OH)2, Fe2O3, CH3COOH)
-  s = s.replace(/\b((?:[A-Z][a-z]?\d*|\([A-Za-z0-9]+\)\d+){2,})\b/g, (word) => {
-    if (!/\d/.test(word)) return word;
-    if (/^(?:M\d+|L\d+|B\d+|C\d+|A\d+|Q\d+|TC\d+|2D|3D|4G|5G|MP3|MP4|H1|H2|H3|H4|H5|H6)$/.test(word)) return word;
-    return word.replace(/([A-Za-z\)])(\d+)/g, '$1<sub class="m-sub">$2</sub>');
-  });
-  return s;
-}
-
-function formatInlineStyles(rawOrEscapedStr, alreadyEscaped = false) {
-  if (rawOrEscapedStr === null || rawOrEscapedStr === undefined) return "";
-  const raw = alreadyEscaped
-    ? String(rawOrEscapedStr)
-        .replace(/&amp;/g, "&")
-        .replace(/&lt;/g, "<")
-        .replace(/&gt;/g, ">")
-        .replace(/&quot;/g, '"')
-        .replace(/&#039;/g, "'")
-    : String(rawOrEscapedStr);
-
-  // Split by $$...$$ and $...$ so math tokens are rendered cleanly while text outside is escaped & styled
-  const tokenRe = /(\$\$[\s\S]+?\$\$|\$[^$\n]+?\$)/g;
-  const parts = raw.split(tokenRe);
-  return parts.map((part) => {
-    if (part.startsWith("$$") && part.endsWith("$$") && part.length > 4) {
-      return renderLatexToken(part.slice(2, -2), true);
-    }
-    if (part.startsWith("$") && part.endsWith("$") && part.length > 2) {
-      return renderLatexToken(part.slice(1, -1), false);
-    }
-    let esc = escapeHTML(part);
-    esc = esc
-      .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
-      .replace(/`([^`]+)`/g, "<code>$1</code>");
-    return formatPlainMathAndChem(esc);
-  }).join("");
+function renderMathText(str, displayMode) {
+  if (str === null || str === undefined) return "";
+  const raw = String(str).trim();
+  if (!raw) return "";
+  if (raw.includes("$") || /\\\[|\\\(/.test(raw)) return formatInlineStyles(raw);
+  if (/\\[a-zA-Z]+|[_^]\s*\{|[a-zA-Z0-9]\s*\^\s*[0-9a-zA-Z+-]/.test(raw)) {
+    return renderMathToken(raw, !!displayMode);
+  }
+  return formatInlineStyles(raw);
 }
 
 window.HDLGMath = {
-  formatInline: function (rawStr) { return formatInlineStyles(rawStr, false); },
-  renderLatexToken: renderLatexToken,
-  upgradeKatex: upgradeKatex
+  inline: formatInlineStyles,
+  formula: renderMathText,
+  upgrade: upgradeKatex
 };
 
 function formatRichText(rawValue) {
@@ -657,6 +575,13 @@ function setSectionVisible(section, visible) {
 ========================================================= */
 if (backButton) {
   backButton.addEventListener("click", function () {
+    const page = subjectGradePages[subject];
+    const g = gradeFromUrl || (currentLessonData && currentLessonData.grade);
+    const tp = topicFromUrl || (currentLessonData && currentLessonData.topic);
+    if (page && g) {
+      window.location.href = `${page}?grade=${encodeURIComponent(g)}${tp ? `&topic=${encodeURIComponent(tp)}` : ""}`;
+      return;
+    }
     window.history.back();
   });
 }
@@ -720,14 +645,14 @@ function renderFormulas(data, singleFormula) {
     if (group && typeof group === "object" && group.category && Array.isArray(group.items)) {
       html += `
         <div class="formula-category">
-          <h3 class="formula-category-title">${escapeHTML(group.category)}</h3>
+          <h3 class="formula-category-title">${formatInlineStyles(group.category)}</h3>
           <div class="formula-category-items">
       `;
       group.items.forEach(function (item) {
         if (typeof item === "string") {
           html += `
             <div class="formula-item">
-              <div class="formula-expression">${formatInlineStyles(item)}</div>
+              <div class="formula-expression">${renderMathText(item, true)}</div>
             </div>
           `;
           return;
@@ -735,7 +660,7 @@ function renderFormulas(data, singleFormula) {
         html += `
           <div class="formula-item">
             ${item.name ? `<div class="formula-name">${formatInlineStyles(item.name)}</div>` : ""}
-            ${item.formula ? `<div class="formula-expression">${formatInlineStyles(item.formula)}</div>` : ""}
+            ${item.formula ? `<div class="formula-expression">${renderMathText(item.formula, true)}</div>` : ""}
             ${item.note ? `<div class="formula-note">${formatRichText(item.note)}</div>` : ""}
           </div>
         `;
@@ -748,7 +673,7 @@ function renderFormulas(data, singleFormula) {
       html += `
         <div class="formula-item">
           ${group.name ? `<div class="formula-name">${formatInlineStyles(group.name)}</div>` : ""}
-          ${group.formula ? `<div class="formula-expression">${formatInlineStyles(group.formula)}</div>` : ""}
+          ${group.formula ? `<div class="formula-expression">${renderMathText(group.formula, true)}</div>` : ""}
           ${group.note ? `<div class="formula-note">${formatRichText(group.note)}</div>` : ""}
         </div>
       `;
@@ -757,7 +682,7 @@ function renderFormulas(data, singleFormula) {
 
     html += `
       <div class="formula-item">
-        <div class="formula-expression">${formatInlineStyles(group)}</div>
+        <div class="formula-expression">${renderMathText(group, true)}</div>
       </div>
     `;
   });
@@ -858,6 +783,510 @@ function renderExtraBackendSections(lesson) {
 }
 
 /* =========================================================
+   SƠ ĐỒ TƯ DUY TỔNG QUAN 2.5D (TỰ ĐỘNG TỔNG HỢP TỪ BÀI HỌC)
+========================================================= */
+const mindmapState = {
+  zoom: 1,
+  panX: 0,
+  panY: 0,
+  expandedAll: false,
+  activeBranchId: null,
+  branches: []
+};
+
+function stripMarkdownPlain(str) {
+  return String(str || "")
+    .replace(/\*\*(.+?)\*\*/g, "$1")
+    .replace(/^#{1,4}\s+/gm, "")
+    .replace(/^[-*•+]\s+/gm, "")
+    .trim();
+}
+
+function truncateMindmapText(str, maxLen) {
+  const s = String(str || "").trim();
+  if (s.length <= maxLen) return s;
+  const idx = s.indexOf("$");
+  if (idx !== -1) {
+    const dollarMatches = s.match(/\$/g);
+    if (dollarMatches && dollarMatches.length % 2 === 0 && s.length <= maxLen + 35) {
+      return s;
+    }
+  }
+  let cut = s.slice(0, maxLen);
+  const dCount = (cut.match(/\$/g) || []).length;
+  if (dCount % 2 === 1) {
+    const nextDollar = s.indexOf("$", maxLen);
+    if (nextDollar !== -1 && nextDollar < maxLen + 45) {
+      cut = s.slice(0, nextDollar + 1);
+    } else {
+      cut = cut.slice(0, cut.lastIndexOf("$"));
+    }
+  }
+  return cut.trim() + "…";
+}
+
+function extractMindmapBranches(lesson) {
+  const branches = [];
+
+  if (Array.isArray(lesson.requirements) && lesson.requirements.length) {
+    branches.push({
+      id: "mm-req",
+      icon: "🎯",
+      title: "Mục tiêu cần đạt",
+      color: "#6366f1",
+      targetId: "requirementsSection",
+      items: lesson.requirements.slice(0, 4).map((r) => truncateMindmapText(r, 95)),
+      fullItems: lesson.requirements
+    });
+  }
+
+  if (lesson.definition) {
+    const defLines = String(lesson.definition)
+      .split(/\n+/)
+      .map((l) => l.replace(/^[-*•+]\s+/, "").trim())
+      .filter(Boolean);
+    const items = defLines.length > 1
+      ? defLines.slice(0, 3).map((l) => truncateMindmapText(l, 100))
+      : String(lesson.definition).split(/(?<=[.!?;])\s+/).filter(Boolean).slice(0, 3).map((l) => truncateMindmapText(l, 100));
+    if (items.length) {
+      branches.push({
+        id: "mm-def",
+        icon: "📖",
+        title: "Khái niệm cốt lõi",
+        color: "#0284c7",
+        targetId: "definitionSection",
+        items: items,
+        fullItems: defLines.length ? defLines : items
+      });
+    }
+  }
+
+  if (lesson.theory) {
+    const rawLines = String(lesson.theory).replace(/\r\n/g, "\n").split("\n");
+    const headings = [];
+    const bullets = [];
+    rawLines.forEach((raw) => {
+      const line = raw.trim();
+      if (/^#{2,4}\s+/.test(line)) {
+        headings.push(line.replace(/^#{2,4}\s+/, "").trim());
+      } else if (/^[-*•+]\s+/.test(line)) {
+        bullets.push(line.replace(/^[-*•+]\s+/, "").trim());
+      } else if (/^\*\*([^*]{3,65})\*\*/.test(line)) {
+        const m = line.match(/^\*\*([^*]{3,65})\*\*/);
+        if (m) headings.push(m[1].replace(/:$/, "").trim());
+      }
+    });
+    const sourceList = headings.length >= 2 ? headings : bullets.length ? bullets : rawLines.filter(Boolean);
+    if (sourceList.length) {
+      branches.push({
+        id: "mm-theory",
+        icon: "🧠",
+        title: "Trọng tâm lý thuyết",
+        color: "#059669",
+        targetId: "theorySection",
+        items: sourceList.slice(0, 4).map((t) => truncateMindmapText(t, 92)),
+        fullItems: sourceList.slice(0, 8)
+      });
+    }
+  }
+
+  const formulaList = Array.isArray(lesson.formulas) ? lesson.formulas : (lesson.formula ? [lesson.formula] : []);
+  if (formulaList.length) {
+    const fItems = [];
+    const fFull = [];
+    formulaList.forEach((group) => {
+      if (group && typeof group === "object" && Array.isArray(group.items)) {
+        group.items.forEach((it) => {
+          if (typeof it === "string") {
+            fFull.push(it);
+            if (fItems.length < 4) fItems.push(truncateMindmapText(it, 95));
+          } else if (it && (it.name || it.formula)) {
+            const fStr = it.formula ? (String(it.formula).includes("$") ? it.formula : `$${it.formula}$`) : "";
+            const combined = it.name && fStr ? `**${it.name}:** ${fStr}` : (it.name || fStr);
+            fFull.push(combined);
+            if (fItems.length < 4) fItems.push(combined);
+          }
+        });
+      } else if (group && typeof group === "object" && (group.name || group.formula)) {
+        const fStr = group.formula ? (String(group.formula).includes("$") ? group.formula : `$${group.formula}$`) : "";
+        const combined = group.name && fStr ? `**${group.name}:** ${fStr}` : (group.name || fStr);
+        fFull.push(combined);
+        if (fItems.length < 4) fItems.push(combined);
+      } else if (typeof group === "string") {
+        fFull.push(group);
+        if (fItems.length < 4) fItems.push(truncateMindmapText(group, 95));
+      }
+    });
+    if (fItems.length) {
+      branches.push({
+        id: "mm-formula",
+        icon: "📐",
+        title: "Công thức & Quy tắc",
+        color: "#d97706",
+        targetId: "formulaSection",
+        items: fItems,
+        fullItems: fFull
+      });
+    }
+  }
+
+  if (lesson.example) {
+    const exLines = String(lesson.example).split(/\n+/).map((l) => l.replace(/^[-*•+]\s+/, "").trim()).filter(Boolean);
+    branches.push({
+      id: "mm-example",
+      icon: "📝",
+      title: "Dạng bài & Ví dụ",
+      color: "#db2777",
+      targetId: "exampleSection",
+      items: exLines.slice(0, 2).map((l) => truncateMindmapText(l, 95)),
+      fullItems: exLines
+    });
+  }
+
+  const appSource = lesson.real_life || lesson.application || lesson.context;
+  const appTarget = lesson.real_life ? "realLifeSection" : lesson.application ? "applicationSection" : "contextSection";
+  if (appSource) {
+    const appLines = String(appSource)
+      .split(/\n+/)
+      .map((l) => l.replace(/^[-*•+]\s+/, "").trim())
+      .filter(Boolean);
+    if (appLines.length) {
+      branches.push({
+        id: "mm-app",
+        icon: "🌍",
+        title: "Ứng dụng thực tiễn",
+        color: "#7c3aed",
+        targetId: appTarget,
+        items: appLines.slice(0, 3).map((l) => truncateMindmapText(l, 95)),
+        fullItems: appLines
+      });
+    }
+  }
+
+  return branches;
+}
+
+function drawMindmapConnections() {
+  const stage = document.getElementById("mindmapStage");
+  const svg = document.getElementById("mindmapSvg");
+  const centerNode = document.getElementById("mmCenterNode");
+  if (!stage || !svg || !centerNode) return;
+
+  if (window.innerWidth <= 860) {
+    svg.innerHTML = "";
+    return;
+  }
+
+  const stageW = stage.offsetWidth || 920;
+  const stageH = stage.offsetHeight || 600;
+  svg.setAttribute("viewBox", `0 0 ${stageW} ${stageH}`);
+
+  const cx = centerNode.offsetLeft + centerNode.offsetWidth / 2;
+  const cy = centerNode.offsetTop + centerNode.offsetHeight / 2;
+
+  let pathsHtml = "";
+  const branchNodes = stage.querySelectorAll(".mm-branch-node");
+
+  branchNodes.forEach((node) => {
+    const color = node.getAttribute("data-color") || "#6366f1";
+    const isActive = node.classList.contains("is-active");
+    const bx = node.offsetLeft + node.offsetWidth / 2;
+    const by = node.offsetTop + node.offsetHeight / 2;
+
+    const dx = bx - cx;
+    const startX = cx + (dx >= 0 ? Math.min(75, centerNode.offsetWidth * 0.42) : -Math.min(75, centerNode.offsetWidth * 0.42));
+    const startY = cy + (by - cy) * 0.22;
+    const endX = bx + (dx >= 0 ? -node.offsetWidth * 0.46 : node.offsetWidth * 0.46);
+    const endY = by;
+
+    const c1x = startX + (endX - startX) * 0.48;
+    const c1y = startY;
+    const c2x = startX + (endX - startX) * 0.56;
+    const c2y = endY;
+
+    const d = `M ${startX.toFixed(1)} ${startY.toFixed(1)} C ${c1x.toFixed(1)} ${c1y.toFixed(1)}, ${c2x.toFixed(1)} ${c2y.toFixed(1)}, ${endX.toFixed(1)} ${endY.toFixed(1)}`;
+    pathsHtml += `<path d="${d}" fill="none" stroke="${color}" stroke-width="${isActive ? 4.2 : 2.8}" stroke-linecap="round" opacity="${isActive ? 0.98 : 0.72}" class="mm-connector-path" />`;
+    pathsHtml += `<circle cx="${endX.toFixed(1)}" cy="${endY.toFixed(1)}" r="${isActive ? 5.5 : 4}" fill="${color}" />`;
+  });
+
+  svg.innerHTML = pathsHtml;
+}
+
+function applyMindmapTransform() {
+  const stage = document.getElementById("mindmapStage");
+  if (!stage) return;
+  if (window.innerWidth <= 860) {
+    stage.style.transform = "";
+    return;
+  }
+  stage.style.transform = `translate(${mindmapState.panX}px, ${mindmapState.panY}px) scale(${mindmapState.zoom})`;
+}
+
+function showMindmapBranchDetail(branch) {
+  const panel = document.getElementById("mindmapDetailPanel");
+  if (!panel || !branch) return;
+
+  mindmapState.activeBranchId = branch.id;
+  document.querySelectorAll(".mm-branch-node").forEach((el) => {
+    el.classList.toggle("is-active", el.getAttribute("data-branch-id") === branch.id);
+  });
+
+  const listHtml = (branch.fullItems || branch.items || [])
+    .map((item) => `<li>${formatInlineStyles(stripMarkdownPlain(item))}</li>`)
+    .join("");
+
+  panel.style.setProperty("--mm-branch-color", branch.color);
+  panel.classList.remove("hidden");
+  panel.innerHTML = `
+    <div class="mm-detail-head">
+      <div class="mm-detail-title">
+        <span class="mm-detail-icon">${branch.icon}</span>
+        <strong>${escapeHTML(branch.title)}</strong>
+      </div>
+      <div class="mm-detail-actions">
+        <a href="#${escapeHTML(branch.targetId)}" class="mm-jump-btn btn-25d">↓ Đi tới mục chi tiết</a>
+        <button type="button" class="mm-close-btn" id="mmDetailCloseBtn" aria-label="Đóng bảng chi tiết">✕</button>
+      </div>
+    </div>
+    <ul class="mm-detail-list">${listHtml}</ul>
+  `;
+
+  const closeBtn = document.getElementById("mmDetailCloseBtn");
+  if (closeBtn) {
+    closeBtn.onclick = () => {
+      panel.classList.add("hidden");
+      mindmapState.activeBranchId = null;
+      document.querySelectorAll(".mm-branch-node").forEach((el) => el.classList.remove("is-active"));
+      drawMindmapConnections();
+    };
+  }
+
+  upgradeKatex(panel);
+  drawMindmapConnections();
+}
+
+function renderMindmap(lesson) {
+  if (!mindmapSection) return;
+  const nodesContainer = document.getElementById("mindmapNodes");
+  const detailPanel = document.getElementById("mindmapDetailPanel");
+  if (!nodesContainer) return;
+
+  const branches = extractMindmapBranches(lesson);
+  mindmapState.branches = branches;
+  mindmapState.zoom = 1;
+  mindmapState.panX = 0;
+  mindmapState.panY = 0;
+  mindmapState.expandedAll = false;
+  mindmapState.activeBranchId = null;
+  if (detailPanel) detailPanel.classList.add("hidden");
+
+  if (branches.length < 2) {
+    setSectionVisible(mindmapSection, false);
+    return;
+  }
+
+  setSectionVisible(mindmapSection, true);
+
+  const slotLayouts = {
+    2: [
+      { left: 20, top: 50, side: "left" },
+      { left: 80, top: 50, side: "right" }
+    ],
+    3: [
+      { left: 20, top: 32, side: "left" },
+      { left: 80, top: 32, side: "right" },
+      { left: 50, top: 82, side: "bottom" }
+    ],
+    4: [
+      { left: 20, top: 26, side: "left" },
+      { left: 80, top: 26, side: "right" },
+      { left: 20, top: 76, side: "left" },
+      { left: 80, top: 76, side: "right" }
+    ],
+    5: [
+      { left: 20, top: 22, side: "left" },
+      { left: 80, top: 22, side: "right" },
+      { left: 19, top: 74, side: "left" },
+      { left: 81, top: 74, side: "right" },
+      { left: 50, top: 85, side: "bottom" }
+    ],
+    6: [
+      { left: 19, top: 20, side: "left" },
+      { left: 81, top: 20, side: "right" },
+      { left: 17, top: 52, side: "left" },
+      { left: 83, top: 52, side: "right" },
+      { left: 20, top: 83, side: "left" },
+      { left: 80, top: 83, side: "right" }
+    ]
+  };
+  const slots = slotLayouts[Math.min(6, branches.length)] || slotLayouts[6];
+
+  const shortTitle = String(lesson.title || "Bài học")
+    .replace(/^(Chương|Chủ đề)\s+[^:–-]+[:–-]\s*/i, "")
+    .trim();
+  const gradeLabel = lesson.grade || gradeFromUrl ? `Lớp ${lesson.grade || gradeFromUrl}` : (subjectNames[subject] || "Bài học");
+
+  let html = `
+    <div class="mm-center-node" id="mmCenterNode">
+      <div class="mm-center-glow"></div>
+      <span class="mm-center-badge">${escapeHTML(gradeLabel)} · ${branches.length} nhánh trọng tâm</span>
+      <div class="mm-center-icon">${escapeHTML(lesson.icon || "🗺️")}</div>
+      <strong class="mm-center-title">${formatInlineStyles(shortTitle)}</strong>
+    </div>
+  `;
+
+  branches.slice(0, 6).forEach((b, idx) => {
+    const slot = slots[idx] || { left: 50, top: 50, side: "right" };
+    const previewItems = (mindmapState.expandedAll ? b.fullItems : b.items.slice(0, 2)) || [];
+    const bulletsHtml = previewItems
+      .map((it) => `<li>${formatInlineStyles(stripMarkdownPlain(it))}</li>`)
+      .join("");
+    const moreCount = Math.max(0, (b.fullItems ? b.fullItems.length : b.items.length) - previewItems.length);
+
+    html += `
+      <div class="mm-branch-node side-${slot.side}"
+           data-branch-id="${b.id}"
+           data-color="${b.color}"
+           style="left:${slot.left}%; top:${slot.top}%; --mm-color:${b.color};"
+           role="button"
+           tabindex="0"
+           aria-label="Nhánh ${escapeHTML(b.title)}">
+        <div class="mm-branch-head">
+          <span class="mm-branch-icon">${b.icon}</span>
+          <strong class="mm-branch-title">${escapeHTML(b.title)}</strong>
+          <span class="mm-branch-count">${(b.fullItems || b.items).length} ý</span>
+        </div>
+        <ul class="mm-branch-list">${bulletsHtml}</ul>
+        ${moreCount > 0 ? `<div class="mm-branch-more">+${moreCount} ý chi tiết · Nhấn để xem</div>` : `<div class="mm-branch-more">Nhấn để xem chi tiết →</div>`}
+      </div>
+    `;
+  });
+
+  nodesContainer.innerHTML = html;
+
+  nodesContainer.querySelectorAll(".mm-branch-node").forEach((node) => {
+    const branchId = node.getAttribute("data-branch-id");
+    const branchObj = branches.find((x) => x.id === branchId);
+    if (!branchObj) return;
+    node.addEventListener("click", (e) => {
+      e.stopPropagation();
+      showMindmapBranchDetail(branchObj);
+    });
+    node.addEventListener("keydown", (e) => {
+      if (e.key === "Enter" || e.key === " ") {
+        e.preventDefault();
+        showMindmapBranchDetail(branchObj);
+      }
+    });
+  });
+
+  const centerNode = document.getElementById("mmCenterNode");
+  if (centerNode) {
+    centerNode.addEventListener("click", () => {
+      const expandBtn = document.getElementById("mmExpandAllBtn");
+      if (expandBtn) expandBtn.click();
+    });
+  }
+
+  upgradeKatex(nodesContainer);
+  requestAnimationFrame(() => {
+    drawMindmapConnections();
+    setTimeout(drawMindmapConnections, 180);
+  });
+}
+
+(function initMindmapInteractions() {
+  const viewport = document.getElementById("mindmapViewport");
+  const expandBtn = document.getElementById("mmExpandAllBtn");
+  const zoomInBtn = document.getElementById("mmZoomInBtn");
+  const zoomOutBtn = document.getElementById("mmZoomOutBtn");
+  const resetBtn = document.getElementById("mmResetBtn");
+
+  if (expandBtn) {
+    expandBtn.addEventListener("click", () => {
+      mindmapState.expandedAll = !mindmapState.expandedAll;
+      expandBtn.textContent = mindmapState.expandedAll ? "🔼 Thu gọn nhánh" : "🔍 Mở rộng chi tiết";
+      const stage = document.getElementById("mindmapStage");
+      if (stage) stage.classList.toggle("is-expanded-all", mindmapState.expandedAll);
+
+      document.querySelectorAll(".mm-branch-node").forEach((node) => {
+        const b = mindmapState.branches.find((x) => x.id === node.getAttribute("data-branch-id"));
+        if (!b) return;
+        const listEl = node.querySelector(".mm-branch-list");
+        const moreEl = node.querySelector(".mm-branch-more");
+        const items = mindmapState.expandedAll ? (b.fullItems || b.items) : b.items.slice(0, 2);
+        if (listEl) {
+          listEl.innerHTML = items.map((it) => `<li>${formatInlineStyles(stripMarkdownPlain(it))}</li>`).join("");
+          upgradeKatex(listEl);
+        }
+        if (moreEl) {
+          const leftCount = Math.max(0, (b.fullItems || b.items).length - items.length);
+          moreEl.textContent = leftCount > 0 ? `+${leftCount} ý chi tiết · Nhấn để xem` : "Nhấn để mở mục tương ứng →";
+        }
+      });
+
+      requestAnimationFrame(drawMindmapConnections);
+    });
+  }
+
+  if (zoomInBtn) {
+    zoomInBtn.addEventListener("click", () => {
+      mindmapState.zoom = Math.min(1.35, +(mindmapState.zoom + 0.1).toFixed(2));
+      applyMindmapTransform();
+    });
+  }
+
+  if (zoomOutBtn) {
+    zoomOutBtn.addEventListener("click", () => {
+      mindmapState.zoom = Math.max(0.75, +(mindmapState.zoom - 0.1).toFixed(2));
+      applyMindmapTransform();
+    });
+  }
+
+  if (resetBtn) {
+    resetBtn.addEventListener("click", () => {
+      mindmapState.zoom = 1;
+      mindmapState.panX = 0;
+      mindmapState.panY = 0;
+      applyMindmapTransform();
+      requestAnimationFrame(drawMindmapConnections);
+    });
+  }
+
+  if (viewport) {
+    let isDragging = false;
+    let startX = 0;
+    let startY = 0;
+
+    viewport.addEventListener("mousedown", (e) => {
+      if (window.innerWidth <= 860) return;
+      if (e.target.closest(".mm-branch-node") || e.target.closest(".mm-center-node")) return;
+      isDragging = true;
+      startX = e.clientX - mindmapState.panX;
+      startY = e.clientY - mindmapState.panY;
+      viewport.classList.add("is-panning");
+    });
+
+    window.addEventListener("mousemove", (e) => {
+      if (!isDragging) return;
+      mindmapState.panX = Math.max(-220, Math.min(220, e.clientX - startX));
+      mindmapState.panY = Math.max(-160, Math.min(160, e.clientY - startY));
+      applyMindmapTransform();
+    });
+
+    window.addEventListener("mouseup", () => {
+      if (!isDragging) return;
+      isDragging = false;
+      viewport.classList.remove("is-panning");
+    });
+  }
+
+  window.addEventListener("resize", () => {
+    requestAnimationFrame(drawMindmapConnections);
+  });
+})();
+
+/* =========================================================
    TỰ ĐỘNG TẠO MỤC LỤC BÊN TRÁI
 ========================================================= */
 function buildTableOfContents() {
@@ -884,605 +1313,10 @@ function buildTableOfContents() {
 }
 
 /* =========================================================
-   RENDER GAME (HỖ TRỢ ĐA GAME CHO BÀI GỘP & SỬA LỆCH BÀI HỌC - GAME)
+   RENDER GAME
 ========================================================= */
-const GAME_FILES_MAP = {
-  function_challenge: "function-challenge",
-  "store-management": "store_management"
-};
-
-const LESSON_GAMES_BY_TOPIC = {
-  /* ---------------- VẬT LÝ 12 ---------------- */
-  "quang-dien": [
-    {
-      badge: "Chuyên đề 1 · Mạch RLC",
-      icon: "📻",
-      title: "Trạm Dò Sóng: Mạch điện xoay chiều RLC & Cộng hưởng điện",
-      desc: "Tính cảm kháng Z_L, dung kháng Z_C, tổng trở Z, hệ số công suất cosφ và điều chỉnh tụ xoay để thu sóng cộng hưởng Z_L = Z_C.",
-      file: "game_mach_rlc",
-      btn: "🚀 Chơi Game Mạch RLC"
-    },
-    {
-      badge: "Chuyên đề 2 · Lượng tử ánh sáng",
-      icon: "🔬",
-      title: "Xưởng Photon: Lượng tử ánh sáng, Hiện tượng Quang điện & Mẫu Bohr",
-      desc: "Khảo sát năng lượng photon ε = hf = hc/λ, giới hạn quang điện λ₀, công thoát A và quang phổ vạch nguyên tử Hydro.",
-      file: "game_quang_dien",
-      btn: "🚀 Chơi Game Quang điện"
-    },
-    {
-      badge: "Chuyên đề 3 · Thuyết tương đối",
-      icon: "🚀",
-      title: "Trạm Ánh Sáng: Thuyết tương đối hẹp Einstein & Hệ thức E = mc²",
-      desc: "Tính hệ số Lorentz γ, sự giãn thời gian, co chiều dài tương đối tính, năng lượng nghỉ E₀ = m₀c² và động năng hạt tốc độ cao.",
-      file: "game_thuyet_tuong_doi",
-      btn: "🚀 Chơi Game Thuyết tương đối"
-    }
-  ],
-
-  "mach-xoay-chieu": [
-    {
-      badge: "Phần 1 · Dòng điện xoay chiều",
-      icon: "⚡",
-      title: "Đội Điều Độ Xoay Chiều: Máy phát điện, Giá trị hiệu dụng & cosφ",
-      desc: "Vận hành máy phát xoay chiều, tính giá trị hiệu dụng U, I, công suất P = UIcosφ và giảm hao phí truyền tải điện năng.",
-      file: "game_mach_xoay_chieu",
-      btn: "🚀 Chơi Game Điện xoay chiều"
-    },
-    {
-      badge: "Phần 2 · Cảm ứng điện từ",
-      icon: "🧲",
-      title: "Trạm Cảm Ứng: Từ thông Φ, Định luật Faraday & Dòng điện Foucault",
-      desc: "Khảo sát từ thông Φ = NBScosα, suất điện động cảm ứng e = −ΔΦ/Δt, định luật Lenz, bếp từ và phanh điện từ.",
-      file: "game_cam_ung_dien_tu",
-      btn: "🚀 Chơi Game Cảm ứng điện từ"
-    },
-    {
-      badge: "Phần 3 · Mạch RLC nối tiếp",
-      icon: "📻",
-      title: "Trạm Dò Sóng: Mạch RLC mắc nối tiếp & Cộng hưởng điện",
-      desc: "Khảo sát mạch RLC nối tiếp, độ lệch pha u – i và hiện tượng cộng hưởng điện f₀ = 1/(2π√(LC)).",
-      file: "game_mach_rlc",
-      btn: "🚀 Chơi Game Mạch RLC"
-    }
-  ],
-
-  "tu-truong": [
-    {
-      badge: "Phần 1 · Từ trường & Lực từ",
-      icon: "🧲",
-      title: "Viện Nam Châm: Cảm ứng từ B, Lực từ F = BIl·sinα & Lực Lorentz",
-      desc: "Điều khiển lực từ tác dụng lên đoạn dây dẫn mang dòng điện, cân từ và quỹ đạo hạt mang điện trong từ trường đều.",
-      file: "game_tu_truong",
-      btn: "🚀 Chơi Game Từ trường & Lực từ"
-    },
-    {
-      badge: "Phần 2 · Cảm ứng điện từ",
-      icon: "⚡",
-      title: "Trạm Cảm Ứng: Từ thông, Định luật Faraday & Định luật Lenz",
-      desc: "Thực hành tạo dòng điện cảm ứng khi từ thông biến thiên, tính suất điện động cảm ứng và suất điện động tự cảm.",
-      file: "game_cam_ung_dien_tu",
-      btn: "🚀 Chơi Game Cảm ứng điện từ"
-    }
-  ],
-
-  "vat-ly-nhiet": [
-    {
-      badge: "Đề A · Chuyển thể & Nhiệt lượng",
-      icon: "🧊",
-      title: "Biệt Đội Nhiệt Động (Đề A): Nhiệt dung riêng, Nhiệt nóng chảy λ & Nhiệt hóa hơi L",
-      desc: "Tính lượng nước đá ướp cá Q = λm, chưng tinh dầu tràm Q = mcΔt + Lm và nấu chảy nhôm tại xưởng đúc.",
-      file: "game_vat_ly_nhiet_khi_ly_tuong",
-      set: 0,
-      btn: "🚀 Chơi Đề A: Vật lí nhiệt"
-    },
-    {
-      badge: "Đề B · Định luật 1 NĐLH",
-      icon: "🚂",
-      title: "Biệt Đội Nhiệt Động (Đề B): Nội năng & Định luật 1 Nhiệt động lực học (ΔU = A + Q)",
-      desc: "Vận hành xi-lanh hơi nước, làm mát phanh xe tải đổ đèo và tính công suất máy lạnh kho bảo quản.",
-      file: "game_vat_ly_nhiet_khi_ly_tuong",
-      set: 1,
-      btn: "🚀 Chơi Đề B: Định luật 1 NĐLH"
-    }
-  ],
-
-  "vat-ly-nhiet-khi-ly-tuong": [
-    {
-      badge: "Đề C · Trọng tâm Chương II",
-      icon: "🎈",
-      title: "Biệt Đội Nhiệt Động (Đề C): Định luật Boyle, Charles & Phương trình Khí lí tưởng",
-      desc: "Tính số lần bơm lốp xe chở nho (p₁V₁ = p₂V₂, p/T = const), bơm khí heli nâng băng rôn (pV = nRT) và van an toàn nồi hấp.",
-      file: "game_vat_ly_nhiet_khi_ly_tuong",
-      set: 2,
-      btn: "🚀 Chơi Đề C: Khí lí tưởng"
-    },
-    {
-      badge: "Ôn tập kết hợp · Nhiệt & Công",
-      icon: "🔥",
-      title: "Biệt Đội Nhiệt Động (Đề A & B): Chuyển thể & Định luật 1 Nhiệt động lực học",
-      desc: "Ôn tập kết hợp quá trình truyền nhiệt, chuyển thể và công cơ học của khối khí.",
-      file: "game_vat_ly_nhiet_khi_ly_tuong",
-      set: 0,
-      btn: "🚀 Chơi Đề A & B: Nhiệt động học"
-    }
-  ],
-
-  /* ---------------- VẬT LÝ 11 ---------------- */
-  "dien-truong": [
-    {
-      badge: "Phần 1 · Định luật Coulomb & E",
-      icon: "⚡",
-      title: "Xưởng Tia Lửa: Lực tĩnh điện Coulomb & Cường độ điện trường",
-      desc: "Khảo sát lực tương tác F = k|q₁q₂|/r², cân bằng giọt dầu Millikan và tổng hợp cường độ điện trường.",
-      file: "game_dien_truong",
-      btn: "🚀 Chơi Game Điện trường"
-    },
-    {
-      badge: "Phần 2 · Điện trường đều",
-      icon: "🎯",
-      title: "Phòng Lái Tia: Điện trường đều E = U/d & Quỹ đạo hạt mang điện",
-      desc: "Điều khiển điện áp bản phẳng để lái chùm hạt mang điện bay theo quỹ đạo parabol trúng bia đích.",
-      file: "game_dien_truong_deu",
-      btn: "🚀 Chơi Game Điện trường đều"
-    }
-  ],
-
-  "dien-the": [
-    {
-      badge: "Phần 1 · Thế năng điện & Tụ điện",
-      icon: "🔋",
-      title: "Biệt Đội Electron-Volt: Công lực điện A = qEd, Điện thế & Tụ điện",
-      desc: "Tính công của lực điện, hiệu điện thế U_MN, đơn vị eV và năng lượng tích trữ trong bộ tụ điện.",
-      file: "game_dien_the",
-      btn: "🚀 Chơi Game Điện thế & Tụ điện"
-    },
-    {
-      badge: "Phần 2 · Lái hạt mang điện",
-      icon: "🎯",
-      title: "Phòng Lái Tia: Chuyển động hạt mang điện trong Điện trường đều",
-      desc: "Vận dụng định lý động năng W_đ2 − W_đ1 = qU để tăng tốc và lái chùm tia điện tử.",
-      file: "game_dien_truong_deu",
-      btn: "🚀 Chơi Game Phòng Lái Tia"
-    }
-  ],
-
-  "song-dien-tu-giao-thoa-tu-dien": [
-    {
-      badge: "Đề A · Giao thoa sóng",
-      icon: "🌊",
-      title: "Đội Săn Sóng (Đề A): Giao thoa sóng cơ & Khe Young ánh sáng (i = λD/a)",
-      desc: "Tính khoảng vân giao thoa i = λD/a, bước sóng ánh sáng và vị trí cực đại – cực tiểu giao thoa.",
-      file: "game_song_dien_tu_giao_thoa_tu_dien",
-      set: 0,
-      btn: "🚀 Chơi Đề A: Giao thoa sóng"
-    },
-    {
-      badge: "Đề B · Sóng dừng",
-      icon: "🎸",
-      title: "Đội Săn Sóng (Đề B): Sóng dừng trên dây đàn hồi & trong cột khí",
-      desc: "Điều chỉnh chiều dài dây l = k·λ/2, tần số họa âm và cộng hưởng ống sáo.",
-      file: "game_song_dien_tu_giao_thoa_tu_dien",
-      set: 1,
-      btn: "🚀 Chơi Đề B: Sóng dừng"
-    },
-    {
-      badge: "Đề C · Sóng điện từ",
-      icon: "📡",
-      title: "Đội Săn Sóng (Đề C): Thang sóng điện từ, Radar & Thu phát sóng (λ = c/f)",
-      desc: "Chọn tần số sóng điện từ, bước sóng λ = c/f và công suất phát radar.",
-      file: "game_song_dien_tu_giao_thoa_tu_dien",
-      set: 2,
-      btn: "🚀 Chơi Đề C: Sóng điện từ"
-    }
-  ],
-
-  /* ---------------- VẬT LÝ 10 ---------------- */
-  "do-luong": [
-    {
-      badge: "Chương I · Vật lí 10",
-      icon: "📏",
-      title: "Thực Hành Đo Lường: Chọn dụng cụ theo GHĐ – ĐCNN, Ngắm đúng vạch & Đổi đơn vị",
-      desc: "Thực hành chọn thước kẹp (ĐCNN 0,1 mm), thước cuộn, đặt mắt vuông góc tránh sai số thị sai và quy đổi đơn vị chuẩn.",
-      file: "game_dodai",
-      btn: "🚀 Bắt đầu Thực hành Đo lường"
-    }
-  ],
-
-  "dinh-luat-newton": [
-    {
-      badge: "Game 1 · Trạm Hỏa Tinh (10 chặng)",
-      icon: "🚀",
-      title: "Trạm Hỏa Tinh: Tổng hợp lực, Ba định luật Newton & Các lực cơ học",
-      desc: "Vận dụng F = ma, lực ma sát F_ms = μN, lực căng dây và phản lực đẩy trong không gian qua 3 đề thực chiến.",
-      file: "game_newton",
-      btn: "🚀 Chơi Game Trạm Hỏa Tinh"
-    },
-    {
-      badge: "Game 2 · Đêm Nhạc Hội Trường",
-      icon: "🎸",
-      title: "Đêm Nhạc Hội Trường: Bài Toán Của Lực (Ma sát dốc · Cân bằng giàn đèn · Phanh ABS)",
-      desc: "Trải nghiệm 3 màn cốt truyện liên hoàn: Kéo loa qua dốc ma sát 14°, Cân bằng moment lực giàn đèn và Lái xe kéo phanh ABS đêm mưa.",
-      file: "force_real_life_game",
-      btn: "🚀 Chơi Đêm Nhạc Hội Trường"
-    }
-  ],
-
-  "chuyen-dong-tron-bien-dang-lo-xo": [
-    {
-      badge: "Đề A · Moment lực & Cân bằng",
-      icon: "⚖️",
-      title: "Xưởng Cơ Học (Đề A): Moment lực M = F·d & Điều kiện cân bằng vật rắn",
-      desc: "Cân bằng cần cẩu tháp, cầu nâng và dầm chịu lực bằng quy tắc moment lực.",
-      file: "game_chuyen_dong_tron_lo_xo",
-      set: 0,
-      btn: "🚀 Chơi Đề A: Cân bằng vật rắn"
-    },
-    {
-      badge: "Đề B · Chuyển động tròn đều",
-      icon: "🎡",
-      title: "Xưởng Cơ Học (Đề B): Chuyển động tròn đều, Tốc độ góc ω & Lực hướng tâm F_ht = mv²/r",
-      desc: "Tính tốc độ an toàn qua khúc cua nghiêng, lực hướng tâm và chu kì quay.",
-      file: "game_chuyen_dong_tron_lo_xo",
-      set: 1,
-      btn: "🚀 Chơi Đề B: Chuyển động tròn đều"
-    },
-    {
-      badge: "Đề C · Định luật Hooke",
-      icon: "🔩",
-      title: "Xưởng Cơ Học (Đề C): Biến dạng đàn hồi & Định luật Hooke F_đh = k·|Δl|",
-      desc: "Chọn độ cứng lò xo k, giới hạn đàn hồi và thiết kế hệ giảm xóc chịu tải.",
-      file: "game_chuyen_dong_tron_lo_xo",
-      set: 2,
-      btn: "🚀 Chơi Đề C: Định luật Hooke"
-    }
-  ],
-
-  /* ---------------- KHTN 9 (VẬT LÝ) ---------------- */
-  "co-nang-khuc-xa-anh-sang": [
-    {
-      badge: "Đề A · Cơ năng (Bài 2–4)",
-      icon: "🎢",
-      title: "Năng Lượng & Ánh Sáng (Đề A): Động năng W_đ = ½mv², Thế năng W_t = P·h & Cơ năng",
-      desc: "Thiết kế đường ray tàu lượn, búa máy đóng cọc và trạm thủy điện bằng định luật bảo toàn cơ năng.",
-      file: "game_co_nang_khuc_xa",
-      set: 0,
-      btn: "🚀 Chơi Đề A: Động năng & Thế năng"
-    },
-    {
-      badge: "Đề B · Khúc xạ ánh sáng (Bài 5)",
-      icon: "🔦",
-      title: "Năng Lượng & Ánh Sáng (Đề B): Định luật Khúc xạ n₁·sin i = n₂·sin r & Chiết suất",
-      desc: "Chiếu đèn laser ngắm mục tiêu dưới nước và đo chiết suất môi trường trong suốt.",
-      file: "game_co_nang_khuc_xa",
-      set: 1,
-      btn: "🚀 Chơi Đề B: Khúc xạ ánh sáng"
-    },
-    {
-      badge: "Đề C · Phản xạ toàn phần & Lăng kính (Bài 6–7)",
-      icon: "💎",
-      title: "Năng Lượng & Ánh Sáng (Đề C): Phản xạ toàn phần (sin i_gh = n₂/n₁), Cáp quang & Lăng kính",
-      desc: "Chọn góc chiếu vào lõi cáp quang, góc mài kim cương và góc lệch tia sáng qua lăng kính.",
-      file: "game_co_nang_khuc_xa",
-      set: 2,
-      btn: "🚀 Chơi Đề C: Cáp quang & Lăng kính"
-    }
-  ],
-
-  /* ---------------- KHTN 8 (VẬT LÝ) ---------------- */
-  "khoi-luong-rieng": [
-    {
-      badge: "Game 1 · Xưởng Đúc & Kiểm Định",
-      icon: "🧱",
-      title: "Xưởng Đúc Vật Liệu: Tính Khối lượng riêng D = m / V & Trọng lượng riêng d = 10D",
-      desc: "Chọn khối lượng phôi m và thể tích khuôn V để đúc hợp kim nhôm (D = 2,7 g/cm³), phao nổi và quả đối trọng thép.",
-      file: "simulation_classic",
-      query: "topic=khoi-luong-rieng",
-      btn: "🚀 Chơi Game Khối lượng riêng"
-    },
-    {
-      badge: "Game 2 · Trung Tâm Thủy Lực",
-      icon: "🚢",
-      title: "Trung Tâm Thủy Lực: Ứng dụng Khối lượng riêng chất lỏng & Áp suất",
-      desc: "Vận dụng khối lượng riêng ρ của nước ngọt, nước biển và dầu trong bình thông nhau và bể chứa.",
-      file: "game_chat_luu",
-      set: 0,
-      btn: "🚀 Chơi Trung Tâm Thủy Lực"
-    }
-  ],
-
-  "ap-suat": [
-    {
-      badge: "Game 1 · Trung Tâm Thủy Lực (9 chặng)",
-      icon: "🚰",
-      title: "Trung Tâm Thủy Lực: Áp suất bề mặt p = F/S, Áp suất chất lỏng p = d·h & Máy nén thủy lực",
-      desc: "Thực hành thiết kế móng trụ, đập nước, bình thông nhau và kích thủy lực Pascal F₂/F₁ = S₂/S₁.",
-      file: "game_chat_luu",
-      set: 0,
-      btn: "🚀 Chơi Trung Tâm Thủy Lực (9 chặng)"
-    },
-    {
-      badge: "Game 2 · Thử thách Nền Móng",
-      icon: "🚜",
-      title: "Kỹ Sư Nền Móng: Tính nhanh Áp suất xe tải p = F / S qua nền đất yếu",
-      desc: "Chọn tải trọng xe m và diện tích tấm ván lót S để áp suất p = 10m/S không vượt giới hạn lún của nền đất.",
-      file: "simulation_classic",
-      query: "topic=ap-suat",
-      btn: "🚀 Chơi Thử thách Nền Móng"
-    }
-  ],
-
-  "luc-day-archimedes": [
-    {
-      badge: "Game 1 · Bến Sông Chở Hàng",
-      icon: "⛵",
-      title: "Bến Sông Chở Hàng: Lực đẩy Archimedes F_A = d·V & Vạch tải an toàn",
-      desc: "Kéo thả các kiện Gạo, Xi măng, Trái cây lên thuyền qua sông nước ngọt và biển nước mặn sao cho mạn khô an toàn.",
-      file: "simulation",
-      query: "topic=luc-day-archimedes",
-      btn: "🚀 Chơi Game Bến Sông"
-    },
-    {
-      badge: "Game 2 · Tàu Ngầm & Cứu Hộ Thủy Lực",
-      icon: "🚢",
-      title: "Trung Tâm Thủy Lực (Đề B): Lực đẩy Archimedes, Khinh khí cầu & Tàu ngầm",
-      desc: "Tính toán thể tích chiếm chỗ V, điều chỉnh két nước dằn tàu ngầm và trục vớt vật chìm.",
-      file: "game_chat_luu",
-      set: 1,
-      btn: "🚀 Chơi Game Tàu Ngầm & Thủy Lực"
-    },
-    {
-      badge: "Game 3 · Mô phỏng Thanh trượt",
-      icon: "📊",
-      title: "Mô Phỏng Thiết Kế Thuyền: Chỉnh bề rộng thuyền w & Khối lượng hàng",
-      desc: "Khảo sát sự thay đổi của mớn nước và lực đẩy Archimedes khi thay đổi bề rộng thân thuyền.",
-      file: "simulation_classic",
-      query: "topic=luc-day-archimedes",
-      btn: "🚀 Chơi Mô phỏng Thanh trượt"
-    }
-  ],
-
-  /* ---------------- KHTN 6 (VẬT LÝ) ---------------- */
-  "luc": [
-    {
-      badge: "Game 1 · Cứu hộ đêm mưa",
-      icon: "🛟",
-      title: "Cứu Hộ Đêm Mưa: Biểu diễn Lực (Gốc, Phương, Chiều, Độ lớn) & Kéo tời",
-      desc: "Điều chỉnh hướng và độ lớn mũi tên lực kéo (kN) để giải cứu 3 xe sa lầy sát mép mương an toàn.",
-      file: "game_luc",
-      btn: "🚀 Chơi Game Cứu hộ đêm mưa"
-    },
-    {
-      badge: "Game 2 · Đêm Nhạc Hội Trường",
-      icon: "🎸",
-      title: "Đêm Nhạc Hội Trường: Bài Toán Của Lực (Kéo loa · Treo giàn đèn · Xe kéo)",
-      desc: "Vận dụng tổng hợp lực, lực căng dây T = P/(2·sinα) và lực ma sát trong đêm nhạc hội trường.",
-      file: "force_real_life_game",
-      btn: "🚀 Chơi Đêm Nhạc Hội Trường"
-    }
-  ],
-
-  "luc-ma-sat": [
-    {
-      badge: "Game 1 · Kiểm định lốp xe",
-      icon: "🛞",
-      title: "Trung Tâm Kiểm Định: Lực ma sát trượt, Ma sát lăn, Ma sát nghỉ & Quãng đường phanh",
-      desc: "Đo quãng đường phanh trên 4 mặt đường, chọn lốp đi đèo mưa và xử lý ma sát có lợi – có hại.",
-      file: "game_lucmasat",
-      btn: "🚀 Chơi Game Kiểm định lốp xe"
-    },
-    {
-      badge: "Game 2 · Đêm Nhạc Hội Trường",
-      icon: "🎸",
-      title: "Đêm Nhạc Hội Trường: Kéo kiện âm thanh 900 N qua dốc gỗ bằng con lăn",
-      desc: "So sánh ma sát trượt (μ = 0,42) với ma sát lăn (μ = 0,085) và tìm góc kéo dây α tối ưu.",
-      file: "force_real_life_game",
-      btn: "🚀 Chơi Đêm Nhạc Hội Trường"
-    }
-  ],
-
-  /* ---------------- TOÁN 1 & TOÁN 12 ---------------- */
-  "l1-cd07-do-dai": [
-    {
-      badge: "Chủ đề 7 · Toán 1",
-      icon: "📏",
-      title: "Bé Đo Giỏi (Đề A): Đặt thước đúng vạch 0 & Đo độ dài bằng xăng-ti-mét (cm)",
-      desc: "Thực hành kéo thước kẻ đặt vạch 0 trùng đầu bút chì, chọn băng giấy đúng số cm và cộng độ dài.",
-      file: "game_do_luong",
-      set: 0,
-      btn: "🚀 Chơi Đề A: Đo độ dài (cm)"
-    }
-  ],
-
-  "l1-cd09-thoi-gian-gio-lich": [
-    {
-      badge: "Đề B · Xem đồng hồ",
-      icon: "🕘",
-      title: "Bé Đo Giỏi (Đề B): Xem giờ đúng trên đồng hồ kim & Cộng thêm giờ",
-      desc: "Thực hành xoay kim ngắn, kim dài chỉ giờ đúng (kim dài chỉ số 12) và tính giờ tàu đến ga.",
-      file: "game_do_luong",
-      set: 1,
-      btn: "🚀 Chơi Đề B: Xem giờ đồng hồ"
-    },
-    {
-      badge: "Đề C · Thứ, ngày & Lịch",
-      icon: "📅",
-      title: "Bé Đo Giỏi (Đề C): Các ngày trong tuần & Xem tờ lịch hằng ngày",
-      desc: "Đọc thứ, ngày trên tờ lịch và tính ngày sinh nhật, ngày đi dã ngoại trong tuần lễ 7 ngày.",
-      file: "game_do_luong",
-      set: 2,
-      btn: "🚀 Chơi Đề C: Xem lịch tuần"
-    }
-  ],
-
-  "l12-ch02-vecto-va-he-truc-toa-do-trong-khong-gian": [
-    {
-      badge: "Đề A · Vectơ & Tọa độ Oxyz",
-      icon: "🧭",
-      title: "Đội Định Vị Oxyz (Đề A): Tọa độ điểm, Phép toán Vectơ, Trọng tâm & Tích vô hướng",
-      desc: "Xác định tọa độ 3D (x; y; z), tính độ dài đoạn thẳng AB, tọa độ trọng tâm G và góc giữa hai vectơ.",
-      file: "game_toa_do_oxyz",
-      set: 0,
-      btn: "🚀 Chơi Đề A: Vectơ & Tọa độ Oxyz"
-    }
-  ],
-
-  "l12-ch05-phuong-phap-toa-do-trong-khong-gian": [
-    {
-      badge: "Đề B · Mặt phẳng & Đường thẳng",
-      icon: "📐",
-      title: "Đội Định Vị Oxyz (Đề B): Phương trình Mặt phẳng, Đường thẳng & Khoảng cách",
-      desc: "Lập phương trình mặt phẳng, tìm vectơ pháp tuyến, vectơ chỉ phương và khoảng cách từ điểm đến mặt phẳng.",
-      file: "game_toa_do_oxyz",
-      set: 1,
-      btn: "🚀 Chơi Đề B: Mặt phẳng & Đường thẳng"
-    },
-    {
-      badge: "Đề C · Mặt cầu & Tối ưu 3D",
-      icon: "🌐",
-      title: "Đội Định Vị Oxyz (Đề C): Phương trình Mặt cầu, Giao tuyến & Vùng phủ sóng 3D",
-      desc: "Xác định tâm I(a; b; c), bán kính R của mặt cầu phát sóng và bài toán vị trí tương đối trong không gian.",
-      file: "game_toa_do_oxyz",
-      set: 2,
-      btn: "🚀 Chơi Đề C: Mặt cầu Oxyz"
-    }
-  ]
-};
-
-function resolveLessonGamesList(lesson) {
-  if (!lesson) return null;
-  const topicKey = (lesson.topic || params.get("topic") || "").trim();
-  if (topicKey && LESSON_GAMES_BY_TOPIC[topicKey]) {
-    return LESSON_GAMES_BY_TOPIC[topicKey];
-  }
-  /* Dự phòng nhận diện theo tiêu đề bài học nếu topic trong CSDL cũ khác tên */
-  const t = (lesson.title || "").toLowerCase();
-  const g = Number(lesson.grade || gradeFromUrl || 0);
-  if (t.includes("thuyết tương đối") || t.includes("lượng tử ánh sáng") || t.includes("chuyên đề vật lí 12")) {
-    return LESSON_GAMES_BY_TOPIC["quang-dien"];
-  }
-  if (g === 12 && (t.includes("máy phát điện xoay chiều") || t.includes("dòng điện xoay chiều"))) {
-    return LESSON_GAMES_BY_TOPIC["mach-xoay-chieu"];
-  }
-  if (g === 12 && t.includes("từ trường")) {
-    return LESSON_GAMES_BY_TOPIC["tu-truong"];
-  }
-  if (g === 12 && t.includes("khí lí tưởng")) {
-    return LESSON_GAMES_BY_TOPIC["vat-ly-nhiet-khi-ly-tuong"];
-  }
-  if (g === 12 && t.includes("vật lí nhiệt")) {
-    return LESSON_GAMES_BY_TOPIC["vat-ly-nhiet"];
-  }
-  if (g === 11 && (t.includes("thế năng điện") || t.includes("tụ điện"))) {
-    return LESSON_GAMES_BY_TOPIC["dien-the"];
-  }
-  if (g === 11 && (t.includes("lực tĩnh điện") || t.includes("cường độ điện trường"))) {
-    return LESSON_GAMES_BY_TOPIC["dien-truong"];
-  }
-  if (g === 10 && (t.includes("làm quen với vật lí") || t.includes("sai số phép đo"))) {
-    return LESSON_GAMES_BY_TOPIC["do-luong"];
-  }
-  if (g === 8 && t.includes("áp suất")) {
-    return LESSON_GAMES_BY_TOPIC["ap-suat"];
-  }
-  if (g === 8 && t.includes("archimedes")) {
-    return LESSON_GAMES_BY_TOPIC["luc-day-archimedes"];
-  }
-  if (g === 8 && t.includes("khối lượng riêng")) {
-    return LESSON_GAMES_BY_TOPIC["khoi-luong-rieng"];
-  }
-  if (g === 1 && t.includes("độ dài")) {
-    return LESSON_GAMES_BY_TOPIC["l1-cd07-do-dai"];
-  }
-  if (g === 1 && (t.includes("thời gian") || t.includes("giờ và lịch"))) {
-    return LESSON_GAMES_BY_TOPIC["l1-cd09-thoi-gian-gio-lich"];
-  }
-  if (g === 12 && t.includes("vectơ và hệ trục")) {
-    return LESSON_GAMES_BY_TOPIC["l12-ch02-vecto-va-he-truc-toa-do-trong-khong-gian"];
-  }
-  return null;
-}
-
-function buildGameHref(lessonIdVal, item) {
-  const file = GAME_FILES_MAP[item.file] || item.file;
-  const q = [];
-  if (lessonIdVal != null) q.push("lesson_id=" + encodeURIComponent(lessonIdVal));
-  if (item.set != null) q.push("set=" + encodeURIComponent(item.set));
-  if (item.query) q.push(item.query);
-  return "games/" + encodeURIComponent(file) + ".html" + (q.length ? "?" + q.join("&") : "");
-}
-
 function renderGame(lesson) {
   if (!gameDescription || !gameButton || !noGame) return;
-
-  let multiBox = document.getElementById("multiGamesContainer");
-  if (multiBox) multiBox.innerHTML = "";
-
-  if (!lesson) {
-    gameDescription.textContent = "";
-    gameButton.style.display = "none";
-    noGame.classList.remove("hidden");
-    return;
-  }
-
-  const customList = resolveLessonGamesList(lesson);
-
-  if (customList && customList.length > 0) {
-    noGame.classList.add("hidden");
-
-    if (customList.length === 1) {
-      const g = customList[0];
-      gameDescription.innerHTML = `<strong>${escapeHTML(g.icon)} ${escapeHTML(g.title)}:</strong> ${escapeHTML(g.desc)}`;
-      gameButton.style.display = "inline-block";
-      gameButton.textContent = g.btn || "🚀 Bắt đầu trải nghiệm";
-      gameButton.onclick = function () {
-        window.location.href = buildGameHref(lesson.id, g);
-      };
-      return;
-    }
-
-    gameDescription.innerHTML =
-      `Bài học này tích hợp <strong>${customList.length} chủ đề thực hành</strong>. Bạn có thể chọn chơi từng game tương ứng với từng phần kiến thức bên dưới:`;
-    gameButton.style.display = "none";
-
-    if (!multiBox) {
-      multiBox = document.createElement("div");
-      multiBox.id = "multiGamesContainer";
-      multiBox.style.cssText =
-        "display:grid;grid-template-columns:repeat(auto-fit,minmax(250px,1fr));gap:14px;margin-top:16px;";
-      gameButton.parentNode.insertBefore(multiBox, gameButton.nextSibling);
-    }
-
-    multiBox.innerHTML = customList
-      .map(
-        (g, idx) => `
-        <div style="background:rgba(15,23,42,0.88);border:1.5px solid rgba(56,189,248,0.4);border-radius:16px;padding:16px;display:flex;flex-direction:column;justify-content:space-between;box-shadow:0 8px 20px rgba(0,0,0,0.22);text-align:left;">
-          <div>
-            <div style="display:inline-block;font-size:11.5px;font-weight:800;color:#fde68a;background:rgba(245,158,11,0.2);border:1px solid rgba(251,191,36,0.5);padding:3px 10px;border-radius:999px;margin-bottom:8px;">
-              ${escapeHTML(g.badge || "Phần " + (idx + 1))}
-            </div>
-            <div style="font-size:16px;font-weight:800;color:#f8fafc;line-height:1.38;margin-bottom:6px;">
-              ${escapeHTML(g.icon || "🎮")} ${escapeHTML(g.title)}
-            </div>
-            <div style="font-size:13.5px;color:#cbd5e1;line-height:1.52;margin-bottom:14px;">
-              ${escapeHTML(g.desc)}
-            </div>
-          </div>
-          <button type="button" data-game-idx="${idx}" style="width:100%;padding:10px 14px;border:none;border-radius:12px;background:linear-gradient(180deg,#22c55e,#15803d);color:#fff;font-weight:800;font-size:14px;cursor:pointer;box-shadow:0 4px 0 #14532d;">
-            ${escapeHTML(g.btn || "🚀 Bắt đầu trải nghiệm")}
-          </button>
-        </div>`
-      )
-      .join("");
-
-    multiBox.querySelectorAll("button[data-game-idx]").forEach((btn) => {
-      btn.addEventListener("click", function () {
-        const g = customList[Number(this.getAttribute("data-game-idx"))];
-        if (g) window.location.href = buildGameHref(lesson.id, g);
-      });
-    });
-    return;
-  }
 
   if (!lesson.game_title && !lesson.game_description && !lesson.game_type) {
     gameDescription.textContent = "";
@@ -1500,7 +1334,8 @@ function renderGame(lesson) {
     gameButton.style.display = "inline-block";
     gameButton.textContent = "🚀 Bắt đầu trải nghiệm";
     gameButton.onclick = function () {
-      const file = GAME_FILES_MAP[lesson.game_type] || lesson.game_type;
+      const GAME_FILES = { function_challenge: "function-challenge", "store-management": "store_management" };
+      const file = GAME_FILES[lesson.game_type] || lesson.game_type;
       window.location.href = `games/${encodeURIComponent(file)}.html?lesson_id=${lesson.id}`;
     };
     noGame.classList.add("hidden");
@@ -1511,7 +1346,7 @@ function renderGame(lesson) {
 }
 
 /* =========================================================
-   YÊU CẦU CẦN ĐẠT & BỘ 10 CÂU HỎI (CHƯƠNG TRÌNH SGK MỚI)
+   YÊU CẦU CẦN ĐẠT & BỘ CÂU HỎI 3 MỨC ĐỘ (CHƯƠNG TRÌNH SGK MỚI)
 ========================================================= */
 function renderRequirements(lesson) {
   if (!requirementsSection || !requirementsList) return;
@@ -1524,8 +1359,8 @@ function renderRequirements(lesson) {
     .map((item) => `<li>${formatInlineStyles(item)}</li>`)
     .join("");
   if (sgkRef) {
-    const subjLabel = subject === "physics" ? "môn Vật lý / KHTN" : subject === "chemistry" ? "môn Hóa học / KHTN" : "môn Toán";
-    sgkRef.textContent = `Theo Chương trình giáo dục phổ thông ${subjLabel} 2018 (Thông tư 32/2018/TT-BGDĐT). Sau chủ đề này, em cần:`;
+    const subjLabel = subjectNames[subject] || "môn học";
+    sgkRef.textContent = `Theo Chương trình giáo dục phổ thông môn ${subjLabel} 2018 (Thông tư 32/2018/TT-BGDĐT). Sau bài học này, em cần:`;
   }
   setSectionVisible(requirementsSection, true);
 }
@@ -1544,6 +1379,7 @@ function renderQuizSet(lesson) {
 
   window.HDLGQuiz.render(quizSet, lesson.quiz, {
     format: formatRichText,
+    inline: formatInlineStyles,
     onComplete: function (result) {
       handleQuizSetReward(result);
     }
@@ -1575,538 +1411,229 @@ function handleQuizSetReward(result) {
 }
 
 /* =========================================================
-   RENDER LESSON
+   HỖ TRỢ TÁCH BÀI HỌC TỰ ĐỘNG (NẾU MỞ ?sub=N TRÊN DB CŨ CHƯA IMPORT LẠI)
+   & ĐIỀU HƯỚNG CÁC BÀI HỌC TRONG CÙNG CHƯƠNG
 ========================================================= */
+let currentLessonData = null;
+
+function splitCombinedTheorySections(rawTheory) {
+  const text = String(rawTheory || "").replace(/\r\n/g, "\n");
+  if (!text) return [];
+  const regex = /^###\s+((?:Bài|Chủ đề|Phần|Mục)\s+[^\n]+)$/gm;
+  const matches = [];
+  let m;
+  while ((m = regex.exec(text)) !== null) {
+    matches.push({ heading: m[1].trim(), startIdx: m.index, bodyStart: m.index + m[0].length });
+  }
+  if (matches.length < 2) return [];
+  return matches.map((item, idx) => {
+    const endIdx = idx + 1 < matches.length ? matches[idx + 1].startIdx : text.length;
+    const body = text.slice(item.bodyStart, endIdx).trim();
+    const firstBullet = body.split("\n").map((l) => l.replace(/^[-*•+]\s+/, "").trim()).find(Boolean) || "";
+    return {
+      subIndex: idx,
+      title: item.heading,
+      description: firstBullet.replace(/\*\*/g, "").slice(0, 150),
+      theory: `### ${item.heading}\n${body}`
+    };
+  });
+}
+
+function applyVirtualSubLessonIfAny(rawLesson) {
+  if (subIndexFromUrl === null || isNaN(subIndexFromUrl)) return rawLesson;
+  const subSections = splitCombinedTheorySections(rawLesson.theory);
+  if (!subSections.length || !subSections[subIndexFromUrl]) return rawLesson;
+
+  const chosen = subSections[subIndexFromUrl];
+  const totalSubs = subSections.length;
+  const clone = Object.assign({}, rawLesson);
+  clone._virtualSiblings = subSections.map((s) => ({
+    id: rawLesson.id,
+    subIndex: s.subIndex,
+    title: s.title,
+    topic: rawLesson.topic,
+    grade: rawLesson.grade
+  }));
+  clone.context_title = rawLesson.context_title && /^(Chương|Chủ đề)/i.test(rawLesson.context_title)
+    ? rawLesson.context_title
+    : rawLesson.title;
+  clone.title = chosen.title;
+  if (chosen.description) clone.description = chosen.description;
+  clone.theory = chosen.theory;
+
+  if (Array.isArray(rawLesson.quiz) && rawLesson.quiz.length >= totalSubs * 2) {
+    const chunkSize = Math.max(3, Math.ceil(rawLesson.quiz.length / totalSubs));
+    const startQ = Math.min(subIndexFromUrl * Math.floor(rawLesson.quiz.length / totalSubs), Math.max(0, rawLesson.quiz.length - chunkSize));
+    clone.quiz = rawLesson.quiz.slice(startQ, startQ + chunkSize);
+  }
+  return clone;
+}
+
+function resolveChapterTitle(lesson) {
+  const ct = String(lesson.context_title || "").trim();
+  if (/^(Chương|Chủ đề|Chuyên đề)\b/i.test(ct)) return ct;
+  return "";
+}
+
+function buildLessonHref(item, fallbackGrade, fallbackTopic) {
+  const g = item.grade || fallbackGrade || "";
+  const tp = item.topic || fallbackTopic || "";
+  const subParam = typeof item.subIndex === "number" ? `&sub=${item.subIndex}` : "";
+  return `lesson.html?id=${encodeURIComponent(item.id)}&subject=${encodeURIComponent(subject)}&grade=${encodeURIComponent(g)}&topic=${encodeURIComponent(tp)}${subParam}`;
+}
+
+async function loadChapterSiblingLessons(lesson) {
+  if (!chapterLessonsCard || !chapterLessonsList) return;
+  const g = lesson.grade || gradeFromUrl;
+  const tp = lesson.topic || topicFromUrl;
+  if (!tp) {
+    chapterLessonsCard.classList.add("hidden");
+    if (chapterNavFooter) chapterNavFooter.classList.add("hidden");
+    return;
+  }
+
+  let siblings = [];
+  if (Array.isArray(lesson._virtualSiblings) && lesson._virtualSiblings.length > 1) {
+    siblings = lesson._virtualSiblings;
+  } else {
+    let allGradeLessons = null;
+    const cacheKey = `hdlg_lessons_${subject}_${g}`;
+    try {
+      const cached = sessionStorage.getItem(cacheKey);
+      if (cached) allGradeLessons = JSON.parse(cached);
+    } catch (_) {}
+
+    if (!Array.isArray(allGradeLessons) || !allGradeLessons.length) {
+      try {
+        const res = await fetch(`${API_BASE}/content/subjects/${encodeURIComponent(subject)}/lessons${g ? `?grade=${encodeURIComponent(g)}` : ""}`);
+        if (res.ok) {
+          allGradeLessons = await res.json();
+          try { sessionStorage.setItem(cacheKey, JSON.stringify(allGradeLessons)); } catch (_) {}
+        }
+      } catch (_) {}
+    }
+
+    if (Array.isArray(allGradeLessons)) {
+      siblings = allGradeLessons
+        .filter((l) => String(l.topic || "") === String(tp))
+        .sort((a, b) => (a.order || a.id || 0) - (b.order || b.id || 0));
+    }
+  }
+
+  if (!Array.isArray(siblings) || siblings.length <= 1) {
+    chapterLessonsCard.classList.add("hidden");
+    if (chapterNavFooter) chapterNavFooter.classList.add("hidden");
+    return;
+  }
+
+  // Render Sidebar Chapter Lessons Card
+  chapterLessonsCard.classList.remove("hidden");
+  const chapterName = resolveChapterTitle(lesson) || "Các bài trong chương";
+  if (chapterSidebarTitle) {
+    const shortChap = chapterName.split(":")[0].trim();
+    chapterSidebarTitle.textContent = `📚 ${shortChap.toUpperCase()}`;
+  }
+
+  let completedCount = 0;
+  let currentIdx = -1;
+
+  const listHtml = siblings.map((item, idx) => {
+    const isCurrent = typeof item.subIndex === "number"
+      ? item.subIndex === subIndexFromUrl
+      : String(item.id) === String(lesson.id);
+    if (isCurrent) currentIdx = idx;
+
+    const st = window.HDLG && typeof HDLG.lessonStatus === "function"
+      ? HDLG.lessonStatus(item.id)
+      : { read: false, quiz: false, stars: 0 };
+    const isDone = !!(st.read || st.quiz);
+    if (isDone) completedCount++;
+
+    const href = buildLessonHref(item, g, tp);
+    return `
+      <a href="${escapeHTML(href)}" class="ch-lesson-link${isCurrent ? " active" : ""}${isDone ? " is-done" : ""}">
+        <span class="ch-lesson-num">${isDone ? "✓" : idx + 1}</span>
+        <span class="ch-lesson-name">${escapeHTML(item.title || `Bài ${idx + 1}`)}</span>
+      </a>
+    `;
+  }).join("");
+
+  chapterLessonsList.innerHTML = listHtml;
+  if (chapterSidebarProgress) {
+    chapterSidebarProgress.textContent = `${ currentIdx >= 0 ? currentIdx + 1 : completedCount }/${siblings.length} bài`;
+  }
+
+  // Render Bottom Prev / Next Chapter Navigation Bar
+  if (chapterNavFooter && currentIdx !== -1) {
+    const prevItem = currentIdx > 0 ? siblings[currentIdx - 1] : null;
+    const nextItem = currentIdx + 1 < siblings.length ? siblings[currentIdx + 1] : null;
+    const gradePage = subjectGradePages[subject] || "math-grade.html";
+    const chapterListUrl = `${gradePage}?grade=${encodeURIComponent(g || "")}&topic=${encodeURIComponent(tp)}`;
+
+    chapterNavFooter.classList.remove("hidden");
+    chapterNavFooter.innerHTML = `
+      <div class="ch-nav-grid">
+        ${prevItem ? `
+          <a href="${escapeHTML(buildLessonHref(prevItem, g, tp))}" class="ch-nav-btn ch-nav-prev">
+            <span class="ch-nav-dir">← Bài trước</span>
+            <strong class="ch-nav-title">${escapeHTML(prevItem.title)}</strong>
+          </a>
+        ` : `<div class="ch-nav-btn ch-nav-disabled"><span class="ch-nav-dir">Đầu chương</span><strong class="ch-nav-title">${escapeHTML(chapterName)}</strong></div>`}
+
+        <a href="${escapeHTML(chapterListUrl)}" class="ch-nav-btn ch-nav-center">
+          <span class="ch-nav-dir">📑 Chương hiện tại</span>
+          <strong class="ch-nav-title">Xem tất cả ${siblings.length} bài học</strong>
+        </a>
+
+        ${nextItem ? `
+          <a href="${escapeHTML(buildLessonHref(nextItem, g, tp))}" class="ch-nav-btn ch-nav-next">
+            <span class="ch-nav-dir">Bài tiếp theo →</span>
+            <strong class="ch-nav-title">${escapeHTML(nextItem.title)}</strong>
+          </a>
+        ` : `
+          <a href="${escapeHTML(chapterListUrl)}" class="ch-nav-btn ch-nav-next is-finish">
+            <span class="ch-nav-dir">🎉 Hoàn thành chương</span>
+            <strong class="ch-nav-title">Quay lại chọn Chương tiếp theo →</strong>
+          </a>
+        `}
+      </div>
+    `;
+  }
+}
 
 /* =========================================================
-   SƠ ĐỒ TƯ DUY TƯƠNG TÁC 2.5D (AUTO-MINDMAP GENERATOR)
+   RENDER LESSON
 ========================================================= */
-let mmZoomLevel = 1;
-let mmIsFullscreen = false;
+function renderLesson(rawLesson) {
+  const lesson = applyVirtualSubLessonIfAny(rawLesson);
+  currentLessonData = lesson;
 
-function truncateLatexSafe(rawStr, maxChars = 135) {
-  if (!rawStr) return "";
-  let cleaned = String(rawStr)
-    .replace(/^[-*•+]\s+/, "")
-    .replace(/^#{1,4}\s+/, "")
-    .trim();
-  if (cleaned.length <= maxChars) return cleaned;
-
-  const tokenRe = /(\$\$[\s\S]+?\$\$|\$[^$\n]+?\$)/g;
-  const parts = cleaned.split(tokenRe);
-  let out = "";
-  let plainLen = 0;
-
-  for (let i = 0; i < parts.length; i++) {
-    const p = parts[i];
-    if (!p) continue;
-    const isMath = (p.startsWith("$") && p.endsWith("$"));
-    if (isMath) {
-      if (plainLen > maxChars) break;
-      out += p;
-      plainLen += Math.min(p.length, 18);
-    } else {
-      if (plainLen + p.length > maxChars) {
-        const remain = Math.max(12, maxChars - plainLen);
-        let slice = p.slice(0, remain);
-        const lastSpace = slice.lastIndexOf(" ");
-        if (lastSpace > 8) slice = slice.slice(0, lastSpace);
-        out += slice.replace(/[,;:\s]+$/, "") + "…";
-        break;
-      }
-      out += p;
-      plainLen += p.length;
-    }
-  }
-  return out.trim();
-}
-
-function splitCleanLines(text, maxItems = 4, maxChars = 135) {
-  if (!text) return [];
-  const rawLines = String(text)
-    .replace(/\r\n/g, "\n")
-    .split("\n")
-    .map((l) => l.trim())
-    .filter((l) => l && !/^#{1,4}\s+/.test(l));
-
-  const results = [];
-  for (const line of rawLines) {
-    const cleaned = truncateLatexSafe(line, maxChars);
-    if (cleaned && results.length < maxItems) {
-      results.push(cleaned);
-    }
-  }
-  return results;
-}
-
-function parseTheorySubBranches(theoryText) {
-  if (!theoryText) return [];
-  const lines = String(theoryText).replace(/\r\n/g, "\n").split("\n");
-  const groups = [];
-  let currentGroup = null;
-
-  for (const rawLine of lines) {
-    const line = rawLine.trim();
-    if (!line) continue;
-    if (/^#{2,4}\s+/.test(line)) {
-      const heading = line.replace(/^#{2,4}\s+/, "").trim();
-      currentGroup = {
-        type: "subbranch",
-        title: truncateLatexSafe(heading, 90),
-        items: []
-      };
-      groups.push(currentGroup);
-    } else if (currentGroup) {
-      if (currentGroup.items.length < 3) {
-        currentGroup.items.push(truncateLatexSafe(line, 125));
-      }
-    }
-  }
-
-  if (groups.length > 0) {
-    return groups.slice(0, 5);
-  }
-  return splitCleanLines(theoryText, 4, 130).map((item) => ({
-    type: "leaf",
-    text: item
-  }));
-}
-
-function extractFormulaNodes(formulasData, singleFormula) {
-  let list = Array.isArray(formulasData) ? formulasData : [];
-  if (!list.length && singleFormula) list = [singleFormula];
-  const nodes = [];
-
-  for (const group of list) {
-    if (group && typeof group === "object" && Array.isArray(group.items)) {
-      for (const it of group.items) {
-        if (nodes.length >= 5) break;
-        if (typeof it === "string") {
-          nodes.push({ type: "formula", name: "", formula: it });
-        } else if (it && (it.formula || it.name)) {
-          nodes.push({
-            type: "formula",
-            name: truncateLatexSafe(it.name || "", 70),
-            formula: it.formula || ""
-          });
-        }
-      }
-    } else if (group && typeof group === "object" && (group.formula || group.name)) {
-      if (nodes.length < 5) {
-        nodes.push({
-          type: "formula",
-          name: truncateLatexSafe(group.name || "", 70),
-          formula: group.formula || ""
-        });
-      }
-    } else if (typeof group === "string" && nodes.length < 5) {
-      nodes.push({ type: "formula", name: "", formula: group });
-    }
-  }
-  return nodes;
-}
-
-function buildMindmapBranches(lesson) {
-  const branches = [];
-
-  // 1. Yêu cầu cần đạt
-  const reqs = Array.isArray(lesson.requirements)
-    ? lesson.requirements.filter(Boolean).slice(0, 4).map((r) => ({
-        type: "leaf",
-        text: truncateLatexSafe(r, 130)
-      }))
-    : [];
-  if (reqs.length > 0) {
-    branches.push({
-      id: "mm-req",
-      title: "Mục tiêu cần đạt",
-      icon: "🎯",
-      color: "indigo",
-      stroke: "#4f46e5",
-      targetId: "requirementsSection",
-      children: reqs
-    });
-  }
-
-  // 2. Định nghĩa & Khái niệm
-  const defItems = splitCleanLines(lesson.definition || lesson.concept, 3, 135).map((t) => ({
-    type: "leaf",
-    text: t
-  }));
-  if (defItems.length > 0) {
-    branches.push({
-      id: "mm-def",
-      title: "Khái niệm cốt lõi",
-      icon: "💡",
-      color: "sky",
-      stroke: "#0284c7",
-      targetId: "definitionSection",
-      children: defItems
-    });
-  }
-
-  // 3. Hệ thống lý thuyết trọng tâm
-  const theoryNodes = parseTheorySubBranches(lesson.theory);
-  if (theoryNodes.length > 0) {
-    branches.push({
-      id: "mm-theory",
-      title: "Kiến thức trọng tâm",
-      icon: "🧠",
-      color: "teal",
-      stroke: "#0d9488",
-      targetId: "theorySection",
-      children: theoryNodes
-    });
-  }
-
-  // 4. Công thức & Quy tắc
-  const formulaNodes = extractFormulaNodes(lesson.formulas, lesson.formula);
-  if (formulaNodes.length > 0) {
-    branches.push({
-      id: "mm-formula",
-      title: "Công thức & Quy tắc",
-      icon: "📐",
-      color: "amber",
-      stroke: "#d97706",
-      targetId: "formulaSection",
-      children: formulaNodes
-    });
-  }
-
-  // 5. Ứng dụng & Đời sống
-  const appSource = lesson.real_life || lesson.application || lesson.context || "";
-  const appItems = splitCleanLines(appSource, 3, 130).map((t) => ({
-    type: "leaf",
-    text: t
-  }));
-  if (appItems.length > 0) {
-    branches.push({
-      id: "mm-app",
-      title: "Thực tiễn & Ứng dụng",
-      icon: "🌍",
-      color: "emerald",
-      stroke: "#16a34a",
-      targetId: lesson.real_life ? "realLifeSection" : "applicationSection",
-      children: appItems
-    });
-  }
-
-  return branches;
-}
-
-function drawMindmapConnections() {
-  const stage = document.getElementById("mindmapStage");
-  const svg = document.getElementById("mindmapSvgLinks");
-  const canvas = document.getElementById("mindmapCanvas");
-  if (!stage || !svg || !canvas) return;
-
-  if (stage.getAttribute("data-layout") !== "tree") {
-    svg.innerHTML = "";
-    return;
-  }
-
-  const rootCard = canvas.querySelector(".mm-root-card");
-  if (!rootCard) return;
-
-  const prevTransform = stage.style.transform;
-  stage.style.transform = "none";
-
-  const stageRect = stage.getBoundingClientRect();
-  const rootRect = rootCard.getBoundingClientRect();
-  const w = Math.max(stage.scrollWidth, stageRect.width);
-  const h = Math.max(stage.scrollHeight, stageRect.height);
-
-  svg.setAttribute("width", String(w));
-  svg.setAttribute("height", String(h));
-  svg.setAttribute("viewBox", `0 0 ${w} ${h}`);
-
-  const rootX = rootRect.right - stageRect.left;
-  const rootY = rootRect.top - stageRect.top + rootRect.height / 2;
-
-  let pathsHtml = "";
-  const branchRows = canvas.querySelectorAll(".mm-branch-row");
-
-  branchRows.forEach((row) => {
-    const stroke = row.getAttribute("data-stroke") || "#0284c7";
-    const branchNode = row.querySelector(".mm-branch-node");
-    if (!branchNode) return;
-
-    const bRect = branchNode.getBoundingClientRect();
-    const bLeftX = bRect.left - stageRect.left;
-    const bCenterY = bRect.top - stageRect.top + bRect.height / 2;
-    const dx1 = Math.max(24, (bLeftX - rootX) * 0.5);
-
-    pathsHtml += `<path class="mm-link-path" stroke="${stroke}" d="M ${rootX} ${rootY} C ${rootX + dx1} ${rootY}, ${bLeftX - dx1} ${bCenterY}, ${bLeftX} ${bCenterY}" />`;
-
-    if (!row.classList.contains("is-collapsed")) {
-      const bRightX = bRect.right - stageRect.left;
-      const leaves = row.querySelectorAll(".mm-leaf-card");
-      leaves.forEach((leaf) => {
-        const lRect = leaf.getBoundingClientRect();
-        const lLeftX = lRect.left - stageRect.left;
-        const lCenterY = lRect.top - stageRect.top + lRect.height / 2;
-        const dx2 = Math.max(18, (lLeftX - bRightX) * 0.5);
-        pathsHtml += `<path class="mm-link-path mm-link-sub" stroke="${stroke}" d="M ${bRightX} ${bCenterY} C ${bRightX + dx2} ${bCenterY}, ${lLeftX - dx2} ${lCenterY}, ${lLeftX} ${lCenterY}" />`;
-      });
-    }
-  });
-
-  svg.innerHTML = pathsHtml;
-  stage.style.transform = prevTransform;
-}
-
-function renderMindmapChildHtml(child) {
-  if (child.type === "formula") {
-    return `
-      <div class="mm-leaf-card mm-formula-pill">
-        ${child.name ? `<span class="mm-formula-name">${formatInlineStyles(child.name)}</span>` : ""}
-        <span class="mm-formula-eq">${formatInlineStyles(child.formula)}</span>
-      </div>
-    `;
-  }
-  if (child.type === "subbranch") {
-    const subItemsHtml = (child.items || [])
-      .map((it) => `<li>${formatInlineStyles(it)}</li>`)
-      .join("");
-    return `
-      <div class="mm-leaf-card">
-        <div class="mm-subbranch-title"><span>▸</span><span>${formatInlineStyles(child.title)}</span></div>
-        ${subItemsHtml ? `<ul class="mm-subbranch-list">${subItemsHtml}</ul>` : ""}
-      </div>
-    `;
-  }
-  return `
-    <div class="mm-leaf-card">
-      ${formatInlineStyles(child.text || "")}
-    </div>
-  `;
-}
-
-function renderMindmap(lesson) {
-  const section = document.getElementById("mindmapSection");
-  const canvas = document.getElementById("mindmapCanvas");
-  if (!section || !canvas) return;
-
-  const branches = buildMindmapBranches(lesson);
-  if (!branches.length) {
-    setSectionVisible(section, false);
-    return;
-  }
-  setSectionVisible(section, true);
-
-  const g = lesson.grade || gradeFromUrl || "";
-  const subjName = subject === "physics" ? "Vật lý" : subject === "chemistry" ? "Hóa học" : "Toán học";
-  const badgeText = g ? `${subjName} • Lớp ${g}` : subjName;
-
-  const branchesHtml = branches
-    .map((b) => {
-      const childrenHtml = b.children.map((ch) => renderMindmapChildHtml(ch)).join("");
-      return `
-        <div class="mm-branch-row" data-color="${b.color}" data-stroke="${b.stroke}" id="${b.id}">
-          <div class="mm-branch-node">
-            <div class="mm-branch-top">
-              <div class="mm-branch-label">
-                <span class="mm-branch-ico">${b.icon}</span>
-                <span>${escapeHTML(b.title)}</span>
-              </div>
-              <button type="button" class="mm-toggle-btn" data-mm-toggle="${b.id}" title="Thu gọn / Mở rộng nhánh này">
-                − (${b.children.length})
-              </button>
-            </div>
-            <div class="mm-branch-actions">
-              <span>${b.children.length} ý chính</span>
-              <button type="button" class="mm-jump-link" data-mm-jump="${b.targetId}">
-                Xem mục ↗
-              </button>
-            </div>
-          </div>
-          <div class="mm-children-col">
-            ${childrenHtml}
-          </div>
-        </div>
-      `;
-    })
-    .join("");
-
-  canvas.innerHTML = `
-    <div class="mm-root-col">
-      <div class="mm-root-card">
-        <div class="mm-root-icon">${escapeHTML(lesson.icon || "📚")}</div>
-        <div class="mm-root-badge">${escapeHTML(badgeText)}</div>
-        <div class="mm-root-title">${escapeHTML(lesson.title || "Bài học")}</div>
-        <div class="mm-root-desc">${escapeHTML(truncateLatexSafe(lesson.description || "", 110))}</div>
-      </div>
-    </div>
-    <div class="mm-branches-col">
-      ${branchesHtml}
-    </div>
-  `;
-
-  upgradeKatex();
-  requestAnimationFrame(() => {
-    drawMindmapConnections();
-    setTimeout(drawMindmapConnections, 160);
-  });
-}
-
-function initMindmapInteractions() {
-  const section = document.getElementById("mindmapSection");
-  const viewport = document.getElementById("mindmapViewport");
-  const stage = document.getElementById("mindmapStage");
-  const canvas = document.getElementById("mindmapCanvas");
-  const zoomLabel = document.getElementById("mmZoomLabel");
-  const jumpBtn = document.getElementById("jumpMindmapBtn");
-
-  if (!section || !viewport || !stage || !canvas) return;
-
-  if (jumpBtn) {
-    jumpBtn.addEventListener("click", () => {
-      section.scrollIntoView({ behavior: "smooth", block: "start" });
-    });
-  }
-
-  // Đóng/mở từng nhánh & Nhảy tới mục chi tiết
-  canvas.addEventListener("click", (e) => {
-    const toggleBtn = e.target.closest("[data-mm-toggle]");
-    if (toggleBtn) {
-      const rowId = toggleBtn.getAttribute("data-mm-toggle");
-      const row = document.getElementById(rowId);
-      if (row) {
-        const collapsed = row.classList.toggle("is-collapsed");
-        const count = row.querySelectorAll(".mm-leaf-card").length;
-        toggleBtn.textContent = `${collapsed ? "+" : "−"} (${count})`;
-        requestAnimationFrame(drawMindmapConnections);
-      }
-      return;
-    }
-
-    const jumpLink = e.target.closest("[data-mm-jump]");
-    if (jumpLink) {
-      const targetId = jumpLink.getAttribute("data-mm-jump");
-      const targetEl = targetId ? document.getElementById(targetId) : null;
-      if (targetEl) {
-        if (mmIsFullscreen) {
-          mmIsFullscreen = false;
-          section.classList.remove("is-fullscreen");
-        }
-        targetEl.scrollIntoView({ behavior: "smooth", block: "start" });
-      }
-    }
-  });
-
-  // Đổi chế độ bố cục: Nhánh ngang (tree) <-> Tỏa tâm (radial)
-  section.querySelectorAll("[data-mm-layout]").forEach((btn) => {
-    btn.addEventListener("click", () => {
-      const layout = btn.getAttribute("data-mm-layout") || "tree";
-      stage.setAttribute("data-layout", layout);
-      section.querySelectorAll("[data-mm-layout]").forEach((b) => b.classList.toggle("active", b === btn));
-      requestAnimationFrame(drawMindmapConnections);
-    });
-  });
-
-  // Mở hết / Thu gọn hết
-  const expandAllBtn = document.getElementById("mmExpandAllBtn");
-  const collapseAllBtn = document.getElementById("mmCollapseAllBtn");
-  if (expandAllBtn) {
-    expandAllBtn.addEventListener("click", () => {
-      canvas.querySelectorAll(".mm-branch-row").forEach((row) => {
-        row.classList.remove("is-collapsed");
-        const count = row.querySelectorAll(".mm-leaf-card").length;
-        const btn = row.querySelector(".mm-toggle-btn");
-        if (btn) btn.textContent = `− (${count})`;
-      });
-      requestAnimationFrame(drawMindmapConnections);
-    });
-  }
-  if (collapseAllBtn) {
-    collapseAllBtn.addEventListener("click", () => {
-      canvas.querySelectorAll(".mm-branch-row").forEach((row) => {
-        row.classList.add("is-collapsed");
-        const count = row.querySelectorAll(".mm-leaf-card").length;
-        const btn = row.querySelector(".mm-toggle-btn");
-        if (btn) btn.textContent = `+ (${count})`;
-      });
-      requestAnimationFrame(drawMindmapConnections);
-    });
-  }
-
-  // Thu phóng
-  const applyZoom = (newZoom) => {
-    mmZoomLevel = Math.min(1.3, Math.max(0.75, Math.round(newZoom * 100) / 100));
-    stage.style.transform = `scale(${mmZoomLevel})`;
-    if (zoomLabel) zoomLabel.textContent = `${Math.round(mmZoomLevel * 100)}%`;
-  };
-  const zoomInBtn = document.getElementById("mmZoomInBtn");
-  const zoomOutBtn = document.getElementById("mmZoomOutBtn");
-  if (zoomInBtn) zoomInBtn.addEventListener("click", () => applyZoom(mmZoomLevel + 0.1));
-  if (zoomOutBtn) zoomOutBtn.addEventListener("click", () => applyZoom(mmZoomLevel - 0.1));
-
-  // Toàn màn hình
-  const fullscreenBtn = document.getElementById("mmFullscreenBtn");
-  if (fullscreenBtn) {
-    fullscreenBtn.addEventListener("click", () => {
-      mmIsFullscreen = !mmIsFullscreen;
-      section.classList.toggle("is-fullscreen", mmIsFullscreen);
-      fullscreenBtn.textContent = mmIsFullscreen ? "✕ Đóng toàn màn hình" : "⛶ Toàn màn hình";
-      requestAnimationFrame(drawMindmapConnections);
-    });
-  }
-  window.addEventListener("keydown", (e) => {
-    if (e.key === "Escape" && mmIsFullscreen) {
-      mmIsFullscreen = false;
-      section.classList.remove("is-fullscreen");
-      if (fullscreenBtn) fullscreenBtn.textContent = "⛶ Toàn màn hình";
-      requestAnimationFrame(drawMindmapConnections);
-    }
-  });
-
-  // Kéo chuột để di chuyển vùng nhìn (Drag to pan)
-  let isDown = false;
-  let startX = 0;
-  let startY = 0;
-  let scrollL = 0;
-  let scrollT = 0;
-  viewport.addEventListener("mousedown", (e) => {
-    if (e.target.closest("button, a")) return;
-    isDown = true;
-    viewport.classList.add("is-dragging");
-    startX = e.pageX - viewport.offsetLeft;
-    startY = e.pageY - viewport.offsetTop;
-    scrollL = viewport.scrollLeft;
-    scrollT = viewport.scrollTop;
-  });
-  window.addEventListener("mouseup", () => {
-    isDown = false;
-    viewport.classList.remove("is-dragging");
-  });
-  viewport.addEventListener("mousemove", (e) => {
-    if (!isDown) return;
-    e.preventDefault();
-    const x = e.pageX - viewport.offsetLeft;
-    const y = e.pageY - viewport.offsetTop;
-    viewport.scrollLeft = scrollL - (x - startX);
-    viewport.scrollTop = scrollT - (y - startY);
-  });
-
-  window.addEventListener("resize", () => {
-    requestAnimationFrame(drawMindmapConnections);
-  });
-}
-
-initMindmapInteractions();
-
-function renderLesson(lesson) {
   if (lessonIcon) lessonIcon.textContent = lesson.icon || "📚";
+  const g = lesson.grade || gradeFromUrl;
+  const tp = lesson.topic || topicFromUrl;
   if (lessonGrade) {
-    const g = lesson.grade || gradeFromUrl;
     lessonGrade.textContent = g ? `Lớp ${g}` : "Bài học";
   }
+
+  // Hiển thị huy hiệu Chương / Chủ đề trên đầu bài học
+  const chapName = resolveChapterTitle(lesson);
+  if (lessonChapterBadge) {
+    if (chapName) {
+      const gradePage = subjectGradePages[subject] || "math-grade.html";
+      lessonChapterBadge.textContent = `📂 ${chapName}`;
+      lessonChapterBadge.href = `${gradePage}?grade=${encodeURIComponent(g || "")}${tp ? `&topic=${encodeURIComponent(tp)}` : ""}`;
+      lessonChapterBadge.classList.remove("hidden");
+    } else {
+      lessonChapterBadge.classList.add("hidden");
+    }
+  }
+
   if (lessonTitle) {
     lessonTitle.textContent = lesson.title || "Bài học";
     document.title = `${lesson.title || "Bài học"} - HỌC ĐỂ LÀM GÌ`;
   }
   if (lessonDescription) {
-    lessonDescription.textContent = lesson.description || "";
+    lessonDescription.innerHTML = formatInlineStyles(lesson.description || "");
   }
 
   if (lesson.definition) {
@@ -2117,9 +1644,11 @@ function renderLesson(lesson) {
   }
 
   if (lesson.context || lesson.context_title) {
-    if (contextTitle) contextTitle.textContent = lesson.context_title || "Bối cảnh thực tế";
+    if (contextTitle) {
+      contextTitle.textContent = chapName ? `📖 Tổng quan ${chapName}` : (lesson.context_title || "Bối cảnh thực tế");
+    }
     setText(context, lesson.context || "");
-    setSectionVisible(contextSection, true);
+    setSectionVisible(contextSection, !!lesson.context);
   } else {
     setSectionVisible(contextSection, false);
   }
@@ -2195,9 +1724,11 @@ function renderLesson(lesson) {
   renderExtraBackendSections(lesson);
   renderGame(lesson);
   initLessonReward(lesson);
+  loadChapterSiblingLessons(lesson);
   if (window.HDLG && typeof HDLG.track === "function") whenHdlgReady(function () { HDLG.track("open", lesson.id); });
 
   finishLoading();
+  upgradeKatex(lessonContent);
   buildTableOfContents();
   updateReadingProgress();
 }
@@ -2231,17 +1762,15 @@ window.addEventListener("scroll", updateReadingProgress, { passive: true });
 
 /* =========================================================
    CỘNG SAO KHI HỌC BÀI
-   - 📖 Đọc hết bài (cuộn tới cuối + ở lại đủ thời gian tối thiểu): +5 sao
-   - ❓ Trả lời đúng "Kiểm tra nhanh" ngay lần chọn đầu tiên: +5 sao
-   - Bài không có câu Kiểm tra nhanh: đọc hết bài nhận trọn 10 sao
-   Mỗi phần chỉ nhận 1 lần / bài (lưu qua HDLG.lessonReward → đồng bộ Firebase).
 ========================================================= */
-const READ_DONE_PERCENT = 92;      // cuộn tới >= 92% trang là "đã tới cuối bài"
-const MIN_READ_SECONDS = 30;       // phải ở lại bài ít nhất ngần này giây
+const READ_DONE_PERCENT = 92;
+const MIN_READ_SECONDS = 30;
 
 const rewardState = {
   lessonId: null,
   hasQuiz: false,
+  isQuizSet: false,
+  quizCount: 0,
   readStars: 5,
   quizStars: 5,
   startedAt: Date.now(),
@@ -2254,7 +1783,6 @@ function hdlgReady() {
   return window.HDLG && typeof HDLG.lessonReward === "function";
 }
 
-// Chờ Firebase đăng nhập & đồng bộ xong rồi mới cộng sao (tránh bị dữ liệu cũ ghi đè)
 function whenHdlgReady(fn) {
   if (window.HDLG && HDLG.ready && typeof HDLG.ready.then === "function") {
     HDLG.ready.then(fn, fn);
@@ -2307,20 +1835,22 @@ function renderRewardCard() {
     setRewardItem("rewardRead", "rewardReadHint", "rewardReadPts", "", hint, `+${rewardState.readStars}`);
   }
 
-  // Kiểm tra nhanh
+  // Kiểm tra nhanh / Luyện tập
   const quizItem = document.getElementById("rewardQuiz");
   if (quizItem) quizItem.style.display = rewardState.hasQuiz ? "" : "none";
   if (rewardState.hasQuiz) {
+    const qTotal = rewardState.quizCount || 10;
+    const qNeed = Math.ceil(qTotal * 0.7);
     if (st.quiz) {
       setRewardItem("rewardQuiz", "rewardQuizHint", "rewardQuizPts", "done", "Đã nhận sao", "✓");
     } else if (rewardState.quizAttempted) {
       setRewardItem("rewardQuiz", "rewardQuizHint", "rewardQuizPts", "missed",
         rewardState.isQuizSet
-          ? "Chưa đạt 7/10 — xem lời giải rồi bấm “Làm lại”"
+          ? `Chưa đạt ${qNeed}/${qTotal} — xem lời giải rồi bấm “Làm lại”`
           : "Chưa đúng — ôn lại rồi mở lại bài để thử lần nữa", `+${rewardState.quizStars}`);
     } else {
       setRewardItem("rewardQuiz", "rewardQuizHint", "rewardQuizPts", "",
-        rewardState.isQuizSet ? "Làm đúng từ 7/10 câu luyện tập" : "Chọn đúng ngay lần đầu", `+${rewardState.quizStars}`);
+        rewardState.isQuizSet ? `Làm đúng từ ${qNeed}/${qTotal} câu luyện tập` : "Chọn đúng ngay lần đầu", `+${rewardState.quizStars}`);
     }
   }
 }
@@ -2373,8 +1903,7 @@ function checkReadReward(percent) {
 
 function handleQuizReward(isCorrect) {
   if (!rewardState.hasQuiz || rewardState.quizAttempted) return;
-  rewardState.quizAttempted = true;          // chỉ tính lần chọn ĐẦU TIÊN
-  // Ghi lại câu trả lời sai để Trợ lý Tri gợi ý ôn lại bài này
+  rewardState.quizAttempted = true;
   if (!isCorrect && window.HDLG && typeof HDLG.track === "function") {
     const lid = rewardState.lessonId;
     whenHdlgReady(function () { if (!getLessonStatus().quiz) HDLG.track("quizWrong", lid); });
@@ -2396,6 +1925,7 @@ function handleQuizReward(isCorrect) {
 function initLessonReward(lesson) {
   rewardState.lessonId = lesson.id;
   rewardState.isQuizSet = !!(Array.isArray(lesson.quiz) && lesson.quiz.length);
+  rewardState.quizCount = rewardState.isQuizSet ? lesson.quiz.length : 0;
   rewardState.hasQuiz = rewardState.isQuizSet || !!(lesson.question && Array.isArray(lesson.answers) && lesson.answers.length);
   const total = (window.HDLG && HDLG.LESSON_STARS) || 10;
   if (rewardState.hasQuiz) {
@@ -2408,7 +1938,6 @@ function initLessonReward(lesson) {
   rewardState.startedAt = Date.now();
   renderRewardCard();
 
-  // Chờ đăng nhập/đồng bộ xong rồi vẽ lại (tránh hiển thị sai trạng thái cũ)
   if (window.HDLG && HDLG.ready && typeof HDLG.ready.then === "function") {
     HDLG.ready.then(renderRewardCard);
   }

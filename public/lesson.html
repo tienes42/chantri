@@ -7,7 +7,7 @@
 
   <link rel="stylesheet" href="lesson.css">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous" onload="window.HDLGMath && window.HDLGMath.upgradeKatex && window.HDLGMath.upgradeKatex()"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
   <script src="/firebase-config.js"></script>
   <script src="/auth.js"></script>
 </head>
@@ -83,7 +83,7 @@
     <!-- CONTENT (2 CỘT: MỤC LỤC 2.5D + TRANG SÁCH 2.5D) -->
     <div id="lessonContent" class="lesson-layout hidden">
 
-      <!-- CỘT TRÁI: MỤC LỤC TỰ ĐỘNG -->
+      <!-- CỘT TRÁI: MỤC LỤC TỰ ĐỘNG & DANH SÁCH BÀI HỌC TRONG CHƯƠNG -->
       <aside class="lesson-sidebar" aria-label="Mục lục bài học">
         <!-- PHẦN THƯỞNG SAO KHI HỌC BÀI -->
         <div class="reward-card card-25d" id="rewardCard" aria-live="polite">
@@ -104,6 +104,16 @@
             </li>
           </ul>
         </div>
+
+        <!-- DANH SÁCH CÁC BÀI HỌC TRONG CÙNG CHƯƠNG / CHỦ ĐỀ -->
+        <div class="chapter-lessons-card card-25d hidden" id="chapterLessonsCard">
+          <div class="chapter-lessons-head">
+            <span id="chapterSidebarTitle">📚 BÀI TRONG CHƯƠNG</span>
+            <strong id="chapterSidebarProgress">1/1</strong>
+          </div>
+          <nav id="chapterLessonsList" class="chapter-lessons-list" aria-label="Các bài học trong chương"></nav>
+        </div>
+
         <div class="toc-card card-25d">
           <div class="toc-header">
             <span>📑 MỤC LỤC BÀI HỌC</span>
@@ -123,14 +133,10 @@
             <div class="lesson-meta-top">
               <div id="lessonIcon" class="lesson-icon">📚</div>
               <div id="lessonGrade" class="lesson-grade">Lớp</div>
+              <a id="lessonChapterBadge" class="lesson-chapter-badge hidden" href="#" title="Xem tất cả bài học của chương này">Chương</a>
             </div>
             <h1 id="lessonTitle">Tên bài học</h1>
             <p id="lessonDescription">Mô tả bài học</p>
-            <div class="hero-quick-actions">
-              <button type="button" class="btn-25d hero-mindmap-btn" id="jumpMindmapBtn">
-                🗺️ Xem Sơ đồ tư duy bài học
-              </button>
-            </div>
           </div>
 
           <!-- Quả cầu biểu tượng 2.5D góc phải Banner -->
@@ -151,39 +157,29 @@
           <ul id="requirements" class="requirements-list"></ul>
         </section>
 
-        <!-- 0B. SƠ ĐỒ TƯ DUY TỔNG QUAN BÀI HỌC -->
-        <section class="lesson-section card-25d mindmap-section" id="mindmapSection" data-toc="Sơ đồ tư duy">
+        <!-- SƠ ĐỒ TƯ DUY TỔNG QUAN 2.5D (TỰ ĐỘNG TẠO TỪ DỮ LIỆU BÀI HỌC) -->
+        <section class="lesson-section card-25d" id="mindmapSection" data-toc="Sơ đồ tư duy" style="display:none">
           <div class="section-head mindmap-section-head">
             <div class="mindmap-head-left">
               <span class="section-badge">01</span>
               <h2 class="section-title">🗺️ Sơ đồ tư duy tổng quan</h2>
             </div>
-            <div class="mindmap-toolbar" role="toolbar" aria-label="Công cụ sơ đồ tư duy">
-              <div class="mm-btn-group" role="group" aria-label="Kiểu bố cục">
-                <button type="button" class="mm-tool-btn active" data-mm-layout="tree" title="Chế độ cây nhánh ngang có đường nối">🌿 Nhánh ngang</button>
-                <button type="button" class="mm-tool-btn" data-mm-layout="radial" title="Chế độ thẻ tỏa tâm">🎯 Tỏa tâm</button>
-              </div>
-              <div class="mm-btn-group" role="group" aria-label="Đóng mở nhánh">
-                <button type="button" class="mm-tool-btn" id="mmExpandAllBtn" title="Mở rộng toàn bộ các nhánh">➕ Mở hết</button>
-                <button type="button" class="mm-tool-btn" id="mmCollapseAllBtn" title="Thu gọn các nhánh để tự nhẩm ôn bài">➖ Thu gọn</button>
-              </div>
-              <div class="mm-btn-group" role="group" aria-label="Thu phóng">
-                <button type="button" class="mm-tool-btn" id="mmZoomOutBtn" title="Thu nhỏ sơ đồ">−</button>
-                <span class="mm-zoom-label" id="mmZoomLabel">100%</span>
-                <button type="button" class="mm-tool-btn" id="mmZoomInBtn" title="Phóng to sơ đồ">+</button>
-              </div>
-              <button type="button" class="mm-tool-btn mm-fullscreen-btn" id="mmFullscreenBtn" title="Xem toàn màn hình">⛶ Toàn màn hình</button>
+            <div class="mindmap-controls">
+              <button type="button" class="mm-ctrl-btn btn-25d" id="mmExpandAllBtn" title="Mở rộng hoặc thu gọn chi tiết các nhánh">🔍 Mở rộng chi tiết</button>
+              <button type="button" class="mm-ctrl-btn btn-25d" id="mmZoomInBtn" title="Phóng to sơ đồ">＋</button>
+              <button type="button" class="mm-ctrl-btn btn-25d" id="mmZoomOutBtn" title="Thu nhỏ sơ đồ">－</button>
+              <button type="button" class="mm-ctrl-btn btn-25d" id="mmResetBtn" title="Đặt lại góc nhìn">⟲ Đặt lại</button>
             </div>
           </div>
-          <p class="mindmap-hint">
-            💡 <strong>Mẹo học nhanh:</strong> Bấm <code>➖ Thu gọn</code> để tự nhẩm lại kiến thức theo từng nhánh, bấm vào dấu <code>+</code> trên nhánh để mở chi tiết hoặc bấm <code>Xem mục ↗</code> để nhảy tới phần giải thích sâu.
-          </p>
+          <p class="mindmap-hint">💡 Nhấn vào từng nhánh để xem tóm tắt nhanh hoặc chuyển thẳng tới mục tương ứng trong bài học. Có thể kéo giữ chuột để di chuyển sơ đồ.</p>
           <div class="mindmap-viewport" id="mindmapViewport">
-            <div class="mindmap-stage" id="mindmapStage" data-layout="tree">
-              <svg class="mindmap-svg-links" id="mindmapSvgLinks" aria-hidden="true"></svg>
-              <div class="mindmap-canvas" id="mindmapCanvas"></div>
+            <div class="mindmap-stage" id="mindmapStage">
+              <svg class="mindmap-svg" id="mindmapSvg" aria-hidden="true"></svg>
+              <div class="mindmap-nodes" id="mindmapNodes"></div>
             </div>
           </div>
+          <!-- Bảng chi tiết nhánh khi người dùng bấm chọn -->
+          <div class="mindmap-detail-panel hidden" id="mindmapDetailPanel" aria-live="polite"></div>
         </section>
 
         <!-- 1. ĐỊNH NGHĨA -->
@@ -195,7 +191,7 @@
           <div id="definition" class="section-content definition-box rich-content"></div>
         </section>
 
-        <!-- 2. BỐI CẢNH ĐỜI SỐNG -->
+        <!-- 2. BỐI CẢNH ĐỜI SỐNG / TỔNG QUAN CHƯƠNG -->
         <section class="lesson-section card-25d" id="contextSection" data-toc="Bối cảnh thực tế">
           <div class="section-head">
             <span class="section-badge">02</span>
@@ -264,7 +260,7 @@
             <h2 class="section-title">❓ Kiểm tra nhanh</h2>
           </div>
 
-          <!-- Bộ 10 câu hỏi theo 3 mức độ (chỉ hiện khi bài có dữ liệu quiz) -->
+          <!-- Bộ câu hỏi theo 3 mức độ (chỉ hiện khi bài có dữ liệu quiz) -->
           <div id="quizSet" class="quiz-set" style="display:none"></div>
 
           <div class="question-box" id="singleQuestionBox">
@@ -344,6 +340,9 @@
           <div class="game-trophy-25d" data-sprite="trophy" aria-hidden="true"></div>
         </section>
 
+        <!-- 13. ĐIỀU HƯỚNG BÀI HỌC TRƯỚC / TIẾP THEO TRONG CHƯƠNG -->
+        <nav id="chapterNavFooter" class="chapter-nav-footer card-25d hidden" aria-label="Điều hướng bài học trong chương"></nav>
+
       </article>
     </div>
 
@@ -351,6 +350,6 @@
 
   <script src="lesson-quiz.js"></script>
   <script src="lesson.js"></script>
-<script src="/guide-bot.js" defer></script>
+  <script src="/guide-bot.js" defer></script>
 </body>
 </html>

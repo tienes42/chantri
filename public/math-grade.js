@@ -1,10 +1,11 @@
 /* =========================================================
-   MATH GRADE PAGE — THÁNH ĐƯỜNG HÌNH HỌC & TỶ LỆ VÀNG
+   MATH GRADE PAGE — CẤU TRÚC 3 CẤP: LỚP ➔ CHƯƠNG/CHỦ ĐỀ ➔ TỪNG BÀI HỌC
    HỌC ĐỂ LÀM GÌ (API VERSION + 2.5D SPRITES)
 ========================================================= */
 
 const urlParams = new URLSearchParams(window.location.search);
 const grade = urlParams.get("grade") || "10";
+const initialTopicSlug = urlParams.get("topic") || "";
 
 const API_BASE =
   ["127.0.0.1", "localhost"].includes(location.hostname) && location.port !== "8000"
@@ -18,6 +19,7 @@ const gradeTitle = document.getElementById("gradeTitle");
 const gradeDescription = document.getElementById("gradeDescription");
 const topicsGrid = document.getElementById("topicsGrid");
 const topicCount = document.getElementById("topicCount");
+const topicStatLabel = document.getElementById("topicStatLabel");
 const lessonCount = document.getElementById("lessonCount");
 const challengeCount = document.getElementById("challengeCount");
 const progressPercent = document.getElementById("progressPercent");
@@ -26,6 +28,10 @@ const progressText = document.getElementById("progressText");
 const xpCount = document.getElementById("xpCount");
 const xpProgress = document.getElementById("xpProgress");
 
+const stepHeadingBadge = document.getElementById("stepHeadingBadge");
+const stepHeadingTitle = document.getElementById("stepHeadingTitle");
+const stepHeadingDesc = document.getElementById("stepHeadingDesc");
+
 const topicPopup = document.getElementById("topicPopup");
 const popupClose = document.getElementById("popupClose");
 const popupIcon = document.getElementById("popupIcon");
@@ -33,25 +39,27 @@ const popupLabel = document.getElementById("popupLabel");
 const popupTitle = document.getElementById("popupTitle");
 const popupDescription = document.getElementById("popupDescription");
 const popupLessons = document.getElementById("popupLessons");
+const popupDoneCount = document.getElementById("popupDoneCount");
 const popupXP = document.getElementById("popupXP");
+const popupLessonsList = document.getElementById("popupLessonsList");
 const popupStart = document.getElementById("popupStart");
 
 /* =========================================================
    GRADE INFORMATION & TOPIC MAPPINGS
 ========================================================= */
 const gradeDescriptions = {
-  1: "Làm quen với những con số, phép tính và hình dạng đầu tiên.",
-  2: "Phát triển khả năng tính toán và tư duy logic.",
-  3: "Mở rộng khả năng tính toán và giải quyết vấn đề.",
-  4: "Xây dựng nền tảng vững chắc về số học và hình học.",
-  5: "Hoàn thiện nền tảng toán học tiểu học.",
-  6: "Bước vào thế giới toán học THCS.",
-  7: "Khám phá đại số và hình học thông qua tư duy logic.",
-  8: "Phát triển tư duy đại số và khả năng giải quyết vấn đề.",
-  9: "Chuẩn bị nền tảng toán học cho bậc THPT.",
-  10: "Xây dựng nền tảng tư duy toán học và khám phá cách Toán được sử dụng để giải quyết vấn đề.",
-  11: "Tiến sâu vào giải tích, hình học và xác suất.",
-  12: "Chinh phục những kiến thức trọng tâm và vận dụng Toán vào giải quyết vấn đề."
+  1: "Làm quen với những con số, phép tính và hình dạng đầu tiên qua từng chủ đề và bài học cụ thể.",
+  2: "Phát triển khả năng tính toán và tư duy logic theo từng chủ đề và từng bài học SGK.",
+  3: "Mở rộng khả năng tính toán và giải quyết vấn đề qua từng chủ đề và từng bài học.",
+  4: "Xây dựng nền tảng vững chắc về số học và hình học theo từng chủ đề và bài học.",
+  5: "Hoàn thiện nền tảng toán học tiểu học qua hệ thống chủ đề và từng bài học chi tiết.",
+  6: "Bước vào thế giới toán học THCS: chọn chương học và khám phá từng bài học cụ thể.",
+  7: "Khám phá đại số và hình học thông qua hệ thống chương và từng bài học chi tiết.",
+  8: "Phát triển tư duy đại số, hình học và thống kê theo từng chương và từng bài học.",
+  9: "Chuẩn bị nền tảng toán học vững chắc cho bậc THPT qua từng chương và từng bài học.",
+  10: "Xây dựng nền tảng tư duy toán học THPT theo từng chương và từng bài học chuyên sâu.",
+  11: "Tiến sâu vào giải tích, hình học không gian và xác suất theo từng chương và bài học.",
+  12: "Chinh phục những kiến thức trọng tâm lớp 12 theo từng chương và từng bài học cụ thể."
 };
 
 const topicIcons = {
@@ -91,33 +99,25 @@ const topicIcons = {
   "on-tap-thpt": "🏆"
 };
 
-const topicDescriptions = {
-  "menh-de": "Làm quen với ngôn ngữ và tư duy logic của Toán học.",
-  "tap-hop": "Khám phá tập hợp, phép toán trên tập hợp và ứng dụng.",
-  "ham-so": "Hiểu hàm số và cách mô tả sự thay đổi.",
-  "vecto": "Khám phá vectơ và các ứng dụng hình học.",
-  "hinh-hoc": "Khám phá các kiến thức hình học và ứng dụng.",
-  "thong-ke": "Thu thập, biểu diễn và phân tích dữ liệu.",
-  "so-hoc": "Làm việc với các số và phép tính.",
-  "phep-cong": "Khám phá phép cộng qua những tình huống gần gũi.",
-  "phep-tru": "Hiểu cách lấy bớt và tìm phần còn lại.",
-  "phep-nhan": "Khám phá phép nhân và ứng dụng.",
-  "phep-chia": "Hiểu và vận dụng phép chia.",
-  "phan-so": "Khám phá và thực hiện các phép toán với phân số.",
-  "dai-luong": "Làm việc với các đại lượng và đơn vị đo.",
-  "do-luong": "Làm quen với độ dài, thời gian và đơn vị.",
-  "du-lieu": "Thu thập và biểu diễn dữ liệu.",
-  "bieu-do": "Đọc và phân tích dữ liệu bằng biểu đồ.",
-  "xac-suat": "Khám phá xác suất và các bài toán thực tế.",
-  "toan-thuc-te": "Vận dụng Toán học để giải quyết các vấn đề thực tế."
-};
-
 let lessons = [];
 let topics = [];
 let selectedTopic = null;
 const slicedSprites = [];
 
-let progress = 0; // tính lại từ số bài đã học thật (xem updateProgress)
+let progress = 0;
+
+function escapeHTML(str) {
+  return String(str == null ? "" : str)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
+}
+
+function getChapterUnitLabel() {
+  return Number(grade) <= 5 ? "CHỦ ĐỀ" : "CHƯƠNG";
+}
 
 /* =========================================================
    TỰ ĐỘNG CẮT & TÁCH NỀN 16 ICON TOÁN 2.5D (assets/math-icons.webp)
@@ -178,27 +178,65 @@ async function initMathGradeSprites() {
 }
 
 /* =========================================================
+   TÁCH BÀI HỌC TỰ ĐỘNG NẾU DB ĐANG LƯU GỘP 1 CHƯƠNG = 1 BẢN GHI
+========================================================= */
+function extractSubLessonsFromCombinedChapter(chapterLesson) {
+  const theoryText = String(chapterLesson.theory || "");
+  const parts = theoryText.split(/(?=^###\s+)/m).map(s => s.trim()).filter(Boolean);
+  const subItems = [];
+
+  parts.forEach((block, idx) => {
+    const lines = block.split("\n").map(l => l.trim()).filter(Boolean);
+    if (!lines.length) return;
+    const rawHeading = lines[0].replace(/^###\s+/, "").trim();
+    const bodyLines = lines.slice(1);
+    // Bỏ qua tiêu đề Luyện tập chung rỗng không có nội dung
+    if (!bodyLines.length && /luyện tập chung|bài tập cuối chương/i.test(rawHeading)) {
+      return;
+    }
+    const summary = bodyLines.length
+      ? bodyLines[0].replace(/^[-*•+]\s+/, "").replace(/\$/g, "")
+      : chapterLesson.description || "";
+    subItems.push({
+      id: chapterLesson.id,
+      subIndex: idx + 1,
+      isVirtualSub: true,
+      topic: chapterLesson.topic,
+      title: rawHeading,
+      description: summary,
+      icon: chapterLesson.icon || "📐",
+      parentLesson: chapterLesson
+    });
+  });
+
+  if (subItems.length > 1) return subItems;
+  return [{
+    id: chapterLesson.id,
+    subIndex: null,
+    isVirtualSub: false,
+    topic: chapterLesson.topic,
+    title: chapterLesson.title,
+    description: chapterLesson.description || "",
+    icon: chapterLesson.icon || "📐",
+    parentLesson: chapterLesson
+  }];
+}
+
+/* =========================================================
    LOAD LESSONS FROM API
 ========================================================= */
 async function loadLessons() {
   try {
-    const cacheKey = `hdlg_lessons_math_${grade}`;
-    const cached = sessionStorage.getItem(cacheKey);
-    if (cached) {
-      try { lessons = JSON.parse(cached); } catch (_) {}
-    }
-    if (!Array.isArray(lessons) || !lessons.length) {
-      const url = `${API_BASE}/content/subjects/math/lessons?grade=${encodeURIComponent(grade)}`;
-      const response = await fetch(url);
-      if (!response.ok) throw new Error(`HTTP ${response.status}`);
-      lessons = await response.json();
-      try {
-        sessionStorage.setItem(cacheKey, JSON.stringify(lessons));
-        lessons.forEach(l => {
-          if (l && l.id != null) sessionStorage.setItem(`hdlg_lesson_${l.id}`, JSON.stringify(l));
-        });
-      } catch (_) {}
-    }
+    const url = `${API_BASE}/content/subjects/math/lessons?grade=${encodeURIComponent(grade)}`;
+    const response = await fetch(url);
+    if (!response.ok) throw new Error(`HTTP ${response.status}`);
+    lessons = await response.json();
+    try {
+      sessionStorage.setItem(`hdlg_lessons_math_${grade}`, JSON.stringify(lessons));
+      lessons.forEach(l => {
+        if (l && l.id != null) sessionStorage.setItem(`hdlg_lesson_${l.id}`, JSON.stringify(l));
+      });
+    } catch (_) {}
 
     if (!Array.isArray(lessons)) {
       throw new Error("API không trả về danh sách bài học");
@@ -206,13 +244,20 @@ async function loadLessons() {
 
     buildTopics();
     renderPage();
+
+    if (initialTopicSlug) {
+      const foundIdx = topics.findIndex(t => t.slug === initialTopicSlug);
+      if (foundIdx >= 0) {
+        openTopic(topics[foundIdx], foundIdx);
+      }
+    }
   } catch (error) {
     console.error("LỖI LOAD LESSONS:", error);
     if (topicsGrid) {
       topicsGrid.innerHTML = `
         <div class="error-state">
           <h3>Không thể tải dữ liệu bài học</h3>
-          <p>${error.message}</p>
+          <p>${escapeHTML(error.message)}</p>
           <button onclick="location.reload()" class="retry-btn">Thử lại</button>
         </div>
       `;
@@ -221,8 +266,29 @@ async function loadLessons() {
 }
 
 /* =========================================================
-   BUILD TOPICS & RENDER PAGE
+   BUILD CHAPTERS (TOPICS) & THEIR INDIVIDUAL LESSONS
 ========================================================= */
+function resolveChapterTitle(firstLesson, index) {
+  const ctxTitle = String(firstLesson.context_title || "").trim();
+  if (ctxTitle && !/^Ứng dụng thực tế:/i.test(ctxTitle) && !/^Thực tiễn & Ứng dụng/i.test(ctxTitle)) {
+    return ctxTitle;
+  }
+  // Nếu bài học có description kiểu "Chương I · ..." hoặc title chính là tên chương
+  return firstLesson.title || `${getChapterUnitLabel()} ${index + 1}`;
+}
+
+function resolveChapterDescription(firstLesson, lessonItems) {
+  const ctxDesc = String(firstLesson.context || "").trim();
+  if (ctxDesc && ctxDesc.length <= 240 && ctxDesc !== firstLesson.real_life) {
+    return ctxDesc;
+  }
+  if (lessonItems.length > 1) {
+    const previewNames = lessonItems.slice(0, 3).map(it => it.title).join(" · ");
+    return `Gồm ${lessonItems.length} bài học: ${previewNames}${lessonItems.length > 3 ? "…" : ""}`;
+  }
+  return firstLesson.description || "Khám phá kiến thức Toán học theo từng bài học.";
+}
+
 function buildTopics() {
   const topicMap = new Map();
 
@@ -230,23 +296,64 @@ function buildTopics() {
     if (!topicMap.has(lesson.topic)) {
       topicMap.set(lesson.topic, {
         slug: lesson.topic,
-        name: lesson.title,
-        description:
-          lesson.description ||
-          topicDescriptions[lesson.topic] ||
-          "Khám phá kiến thức Toán học.",
-        icon: lesson.icon || topicIcons[lesson.topic] || "📚",
-        lessons: 0
+        rawLessons: [],
+        icon: lesson.icon || topicIcons[lesson.topic] || "📚"
       });
     }
-    topicMap.get(lesson.topic).lessons++;
+    topicMap.get(lesson.topic).rawLessons.push(lesson);
   });
 
-  topics = Array.from(topicMap.values());
+  topics = Array.from(topicMap.values()).map((entry, idx) => {
+    const first = entry.rawLessons[0];
+    let lessonItems = [];
+
+    if (entry.rawLessons.length > 1) {
+      // CSDL đã lưu tách riêng từng Bài học trong cùng 1 Chương (cùng topic)
+      lessonItems = entry.rawLessons.map((l, lIdx) => ({
+        id: l.id,
+        subIndex: null,
+        isVirtualSub: false,
+        orderNum: lIdx + 1,
+        topic: l.topic,
+        title: l.title,
+        description: l.description || "",
+        icon: l.icon || entry.icon,
+        rawLesson: l
+      }));
+    } else {
+      // Dự phòng: nếu CSDL vẫn đang có 1 bản ghi gộp cả Chương, tự tách các mục ### Bài X...
+      const extracted = extractSubLessonsFromCombinedChapter(first);
+      lessonItems = extracted.map((sub, lIdx) => ({
+        id: sub.id,
+        subIndex: sub.subIndex,
+        isVirtualSub: sub.isVirtualSub,
+        orderNum: lIdx + 1,
+        topic: sub.topic,
+        title: sub.title,
+        description: sub.description || "",
+        icon: sub.icon || entry.icon,
+        rawLesson: first
+      }));
+    }
+
+    const chapterName = resolveChapterTitle(first, idx);
+    const chapterDesc = resolveChapterDescription(first, lessonItems);
+
+    return {
+      slug: entry.slug,
+      name: chapterName,
+      description: chapterDesc,
+      icon: entry.icon,
+      rawLessons: entry.rawLessons,
+      lessonItems: lessonItems,
+      lessons: lessonItems.length
+    };
+  });
 }
 
 function renderPage() {
   const gradeNumber = Number(grade);
+  const isPrimary = gradeNumber <= 5;
 
   if (gradeTitle) {
     gradeTitle.textContent = `TOÁN LỚP ${grade}`;
@@ -254,18 +361,35 @@ function renderPage() {
   if (gradeDescription) {
     gradeDescription.textContent =
       gradeDescriptions[gradeNumber] ||
-      "Khám phá Toán học qua kiến thức và thực hành.";
+      "Khám phá Toán học qua từng chương và từng bài học cụ thể.";
   }
 
-  const totalLessons = lessons.length;
+  if (topicStatLabel) {
+    topicStatLabel.textContent = isPrimary ? "Chủ đề" : "Chương học";
+  }
+  if (stepHeadingBadge) {
+    stepHeadingBadge.textContent = isPrimary
+      ? "BƯỚC 02 • CHỌN CHỦ ĐỀ KIẾN THỨC"
+      : "BƯỚC 02 • CHỌN CHƯƠNG KIẾN THỨC";
+  }
+  if (stepHeadingTitle) {
+    stepHeadingTitle.textContent = isPrimary ? "Chọn chủ đề học" : "Chọn chương học";
+  }
+  if (stepHeadingDesc) {
+    stepHeadingDesc.textContent = isPrimary
+      ? "Bấm vào một chủ đề để mở danh sách từng bài học bên trong."
+      : "Bấm vào một chương để mở danh sách từng bài học bên trong.";
+  }
+
+  const totalDisplayedLessons = topics.reduce((sum, t) => sum + t.lessonItems.length, 0);
   if (topicCount) topicCount.textContent = topics.length;
-  if (lessonCount) lessonCount.textContent = totalLessons;
+  if (lessonCount) lessonCount.textContent = totalDisplayedLessons;
   if (challengeCount) {
-    challengeCount.textContent = lessons.filter(l => l && (l.game_type || l.game_title)).length || topics.length; // số game Thử thách thực tế thật
+    challengeCount.textContent =
+      lessons.filter(l => l && (l.game_type || l.game_title)).length || topics.length;
   }
 
-  updateProgress(totalLessons);
-
+  updateProgress();
   renderTopics();
 }
 
@@ -274,6 +398,13 @@ function getStats(list) {
   list = list || lessons;
   if (window.HDLG && typeof HDLG.lessonStats === "function") return HDLG.lessonStats(list);
   return { done: 0, total: list.length, stars: 0, maxStars: list.length * 10, percent: 0 };
+}
+
+function getSingleLessonStatus(lessonId) {
+  if (window.HDLG && typeof HDLG.lessonStatus === "function") {
+    return HDLG.lessonStatus(lessonId) || { read: false, quiz: false, stars: 0 };
+  }
+  return { read: false, quiz: false, stars: 0 };
 }
 
 function updateProgress() {
@@ -292,10 +423,10 @@ function updateProgress() {
   }
 }
 
-function getTopicProgress(index) {
+function getTopicStats(index) {
   const topic = topics[index];
-  if (!topic) return 0;
-  return getStats(lessons.filter(lesson => lesson.topic === topic.slug)).percent;
+  if (!topic) return { done: 0, total: 0, stars: 0, maxStars: 0, percent: 0 };
+  return getStats(topic.rawLessons);
 }
 
 function renderTopics() {
@@ -304,16 +435,18 @@ function renderTopics() {
   if (!topics.length) {
     topicsGrid.innerHTML = `
       <div class="loading-state">
-        <strong>Chưa có dữ liệu bài học cho lớp ${grade}.</strong>
+        <strong>Chưa có dữ liệu bài học cho lớp ${escapeHTML(grade)}.</strong>
       </div>
     `;
     return;
   }
 
   topicsGrid.innerHTML = "";
+  const unitLabel = getChapterUnitLabel();
 
   topics.forEach(function (topic, index) {
-    const topicProgress = getTopicProgress(index);
+    const tStats = getTopicStats(index);
+    const topicProgress = tStats.percent;
     const card = document.createElement("button");
     card.type = "button";
     card.className = "topic-card";
@@ -325,25 +458,34 @@ function renderTopics() {
     const iconStyle = spriteUrl
       ? `style="background-image:url('${spriteUrl}')"`
       : "";
-    const iconContent = spriteUrl ? "" : topic.icon;
+    const iconContent = spriteUrl ? "" : escapeHTML(topic.icon);
+
+    const previewItems = topic.lessonItems.slice(0, 3);
+    const extraCount = Math.max(0, topic.lessonItems.length - previewItems.length);
+    const previewHtml = previewItems
+      .map(it => `<span class="topic-lesson-chip">${escapeHTML(it.title)}</span>`)
+      .join("") + (extraCount > 0 ? `<span class="topic-lesson-chip is-more">+${extraCount} bài nữa</span>` : "");
 
     card.innerHTML = `
       <div class="topic-top">
         <div class="topic-icon" ${iconStyle}>${iconContent}</div>
-        <span class="topic-number">CHỦ ĐỀ ${String(index + 1).padStart(2, "0")}</span>
+        <span class="topic-number">${unitLabel} ${String(index + 1).padStart(2, "0")}</span>
       </div>
-      <h3>${topic.name}</h3>
-      <p>${topic.description}</p>
+      <h3>${escapeHTML(topic.name)}</h3>
+      <p>${escapeHTML(topic.description)}</p>
+      <div class="topic-lessons-preview">
+        ${previewHtml}
+      </div>
       <div class="topic-progress">
         <div class="topic-progress-top">
-          <span>${topic.lessons} bài học</span>
+          <span>📑 ${topic.lessons} bài học (${tStats.done}/${tStats.total} hoàn thành)</span>
           <span>${topicProgress}%</span>
         </div>
         <div class="topic-progress-bar">
           <div class="topic-progress-fill" style="width:${topicProgress}%"></div>
         </div>
       </div>
-      <span class="topic-arrow">→</span>
+      <span class="topic-arrow" title="Mở danh sách bài học">Chọn bài →</span>
     `;
 
     card.addEventListener("click", function () {
@@ -355,8 +497,22 @@ function renderTopics() {
 }
 
 /* =========================================================
-   TOPIC POPUP
+   CHAPTER -> LESSONS SELECTOR MODAL
 ========================================================= */
+function buildLessonUrl(item, topicSlug) {
+  let url =
+    "lesson.html?id=" +
+    encodeURIComponent(item.id) +
+    "&subject=math&grade=" +
+    encodeURIComponent(grade) +
+    "&topic=" +
+    encodeURIComponent(topicSlug);
+  if (item.isVirtualSub && item.subIndex) {
+    url += "&sub=" + encodeURIComponent(item.subIndex);
+  }
+  return url;
+}
+
 function openTopic(topic, topicIdx = 0) {
   if (!topic) return;
   selectedTopic = topic;
@@ -374,23 +530,75 @@ function openTopic(topic, topicIdx = 0) {
     }
   }
 
-  if (popupLabel) popupLabel.textContent = `TOÁN LỚP ${grade}`;
+  const unitLabel = getChapterUnitLabel();
+  const tStats = getTopicStats(topicIdx);
+
+  if (popupLabel) {
+    popupLabel.textContent = `TOÁN LỚP ${grade} • ${unitLabel} ${String(topicIdx + 1).padStart(2, "0")}`;
+  }
   if (popupTitle) popupTitle.textContent = topic.name;
   if (popupDescription) popupDescription.textContent = topic.description;
   if (popupLessons) popupLessons.textContent = topic.lessons;
+  if (popupDoneCount) popupDoneCount.textContent = `${tStats.done}/${tStats.total}`;
   if (popupXP) popupXP.textContent = topic.lessons * 10;
 
-  const topicIndex = topics.findIndex(item => item.slug === topic.slug);
-  const topicProgress = getTopicProgress(topicIndex);
+  // Render danh sách từng Bài học trong Chương
+  if (popupLessonsList) {
+    popupLessonsList.innerHTML = "";
+    topic.lessonItems.forEach((item, idx) => {
+      const st = getSingleLessonStatus(item.id);
+      const isDone = !!(st.read && st.quiz) || st.stars >= 10;
+      const inProg = !isDone && (st.read || st.quiz || st.stars > 0);
 
-  if (popupStart) {
-    if (topicProgress >= 100) {
-      popupStart.innerHTML = "Ôn tập lại <span>→</span>";
-    } else if (topicProgress > 0) {
-      popupStart.innerHTML = "Tiếp tục học <span>→</span>";
+      let badgeHtml = `<span class="cl-status">⭐ 0/10</span>`;
+      if (isDone) {
+        badgeHtml = `<span class="cl-status is-done">✓ Đã học • ${st.stars || 10}/10 ⭐</span>`;
+      } else if (inProg) {
+        badgeHtml = `<span class="cl-status is-progress">⏳ Đang học • ${st.stars}/10 ⭐</span>`;
+      }
+
+      const rowBtn = document.createElement("button");
+      rowBtn.type = "button";
+      rowBtn.className = "chapter-lesson-item" + (isDone ? " is-done" : inProg ? " is-progress" : "");
+      rowBtn.setAttribute("role", "listitem");
+      rowBtn.innerHTML = `
+        <div class="cl-num">${String(idx + 1).padStart(2, "0")}</div>
+        <div class="cl-body">
+          <div class="cl-title-row">
+            <strong class="cl-title">${escapeHTML(item.title)}</strong>
+            ${badgeHtml}
+          </div>
+          ${item.description ? `<p class="cl-desc">${escapeHTML(item.description)}</p>` : ""}
+        </div>
+        <span class="cl-go">Vào học →</span>
+      `;
+
+      rowBtn.addEventListener("click", () => {
+        window.location.href = buildLessonUrl(item, topic.slug);
+      });
+
+      popupLessonsList.appendChild(rowBtn);
+    });
+  }
+
+  // Nút CTA dưới đáy: tìm bài đầu tiên chưa hoàn thành trong chương
+  const nextUnfinished =
+    topic.lessonItems.find(it => {
+      const st = getSingleLessonStatus(it.id);
+      return !((st.read && st.quiz) || st.stars >= 10);
+    }) || topic.lessonItems[0];
+
+  if (popupStart && nextUnfinished) {
+    if (tStats.percent >= 100) {
+      popupStart.innerHTML = `Ôn lại từ đầu: ${escapeHTML(topic.lessonItems[0].title)} <span>→</span>`;
+    } else if (tStats.done > 0) {
+      popupStart.innerHTML = `Học tiếp: ${escapeHTML(nextUnfinished.title)} <span>→</span>`;
     } else {
-      popupStart.innerHTML = "Bắt đầu học <span>→</span>";
+      popupStart.innerHTML = `Bắt đầu: ${escapeHTML(nextUnfinished.title)} <span>→</span>`;
     }
+    popupStart.onclick = function () {
+      window.location.href = buildLessonUrl(nextUnfinished, topic.slug);
+    };
   }
 
   if (topicPopup) {
@@ -422,31 +630,6 @@ document.addEventListener("keydown", function (event) {
   }
 });
 
-if (popupStart) {
-  popupStart.addEventListener("click", function () {
-    if (!selectedTopic || !selectedTopic.slug) return;
-
-    const topicLessons = lessons.filter(
-      lesson => lesson.topic === selectedTopic.slug
-    );
-    if (topicLessons.length === 0) {
-      alert("Không tìm thấy bài học.");
-      return;
-    }
-
-    const firstLesson = topicLessons[0];
-    const lessonURL =
-      "lesson.html?id=" +
-      encodeURIComponent(firstLesson.id) +
-      "&subject=math&grade=" +
-      encodeURIComponent(grade) +
-      "&topic=" +
-      encodeURIComponent(selectedTopic.slug);
-
-    window.location.href = lessonURL;
-  });
-}
-
 /* =========================================================
    NAVIGATION & TOOLS
 ========================================================= */
@@ -466,7 +649,7 @@ function withGradeProgress(fn) {
   if (!s) {
     s = document.createElement("script");
     s.id = "gradeProgressScript";
-    s.src = "/grade-progress.js?v=1";
+    s.src = "/grade-progress.js?v=2";
     document.head.appendChild(s);
   }
   s.addEventListener("load", () => fn(window.HDLGProgress));
@@ -477,7 +660,7 @@ function openGradeProgress() {
 }
 function gradeChallengeURL() {
   return "/challenge.html?subject=" + "math" + "&grade=" + encodeURIComponent(grade) +
-    "&from=" + encodeURIComponent(location.pathname + location.search);
+         "&from=" + encodeURIComponent(location.pathname + location.search);
 }
 
 const challengeButton = document.getElementById("challengeButton");
@@ -506,12 +689,8 @@ if (progressButton) {
 ========================================================= */
 const parallaxBg = document.getElementById("parallaxBg");
 const parallaxRelics = document.getElementById("parallaxRelics");
-let mouseX = window.innerWidth / 2;
-let mouseY = window.innerHeight / 2;
 
 window.addEventListener("mousemove", function (e) {
-  mouseX = e.clientX;
-  mouseY = e.clientY;
   const nx = e.clientX / window.innerWidth - 0.5;
   const ny = e.clientY / window.innerHeight - 0.5;
   if (parallaxBg) {
@@ -593,60 +772,60 @@ document.addEventListener("DOMContentLoaded", function () {
   loadLessons();
 });
 
-// ===== Đồng bộ khung Tài khoản người chơi & Sự kiện Click giống trang Index =====
+// ===== Đồng bộ khung Tài khoản người chơi & Sự kiện Click =====
 (function accountHudGrade() {
-    const card = document.getElementById('playerCard') || document.querySelector('.player');
-    if (card) {
-        card.style.cursor = 'pointer';
-        card.title = 'Tài khoản của tôi';
-        card.addEventListener('click', () => {
-            if (window.HDLG && typeof HDLG.showAccount === 'function') {
-                HDLG.showAccount();
-            }
-        });
+  const card = document.getElementById("playerCard") || document.querySelector(".player");
+  if (card) {
+    card.style.cursor = "pointer";
+    card.title = "Tài khoản của tôi";
+    card.addEventListener("click", () => {
+      if (window.HDLG && typeof HDLG.showAccount === "function") {
+        HDLG.showAccount();
+      }
+    });
+  }
+
+  function renderPlayer(d) {
+    if (!d) return;
+    const nameEl = document.getElementById("playerName") || document.querySelector(".player-info strong");
+    const lvlEl = document.getElementById("playerLevel") || document.querySelector(".player .level");
+    const barEl = document.getElementById("playerXpBar") || document.getElementById("xpProgress");
+    const txtEl = document.getElementById("playerXpText");
+    const av = document.getElementById("playerAvatar") || document.querySelector(".player-avatar");
+
+    const level = d.level || (Math.floor((d.xp || 0) / 100) + 1);
+    const inLevel = d.inLevel !== undefined ? d.inLevel : ((d.xp || 0) % 100);
+
+    if (nameEl) nameEl.textContent = d.name || "Tên người chơi";
+    if (lvlEl) lvlEl.textContent = "Lv." + level;
+    if (barEl) barEl.style.width = inLevel + "%";
+    if (txtEl) txtEl.textContent = inLevel + "/100";
+
+    if (av) {
+      if (d.photo) {
+        const cur = av.querySelector("img");
+        if (cur && cur.getAttribute("src") === d.photo) return;
+        av.innerHTML = "";
+        const img = document.createElement("img");
+        img.src = d.photo;
+        img.referrerPolicy = "no-referrer";
+        img.alt = "";
+        img.style.cssText = "width:100%;height:100%;border-radius:50%;object-fit:cover";
+        av.appendChild(img);
+      } else if (d.name) {
+        av.textContent = d.name.charAt(0).toUpperCase();
+      }
     }
+  }
 
-    function renderPlayer(d) {
-        if (!d) return;
-        const nameEl = document.getElementById('playerName') || document.querySelector('.player-info strong');
-        const lvlEl = document.getElementById('playerLevel') || document.querySelector('.player .level');
-        const barEl = document.getElementById('playerXpBar') || document.getElementById('xpProgress');
-        const txtEl = document.getElementById('playerXpText');
-        const av = document.getElementById('playerAvatar') || document.querySelector('.player-avatar');
-
-        const level = d.level || (Math.floor((d.xp || 0) / 100) + 1);
-        const inLevel = d.inLevel !== undefined ? d.inLevel : ((d.xp || 0) % 100);
-
-        if (nameEl) nameEl.textContent = d.name || 'Tên người chơi';
-        if (lvlEl) lvlEl.textContent = 'Lv.' + level;
-        if (barEl) barEl.style.width = inLevel + '%';
-        if (txtEl) txtEl.textContent = inLevel + '/100';
-
-        if (av) {
-            if (d.photo) {
-                const cur = av.querySelector('img');
-                if (cur && cur.getAttribute('src') === d.photo) return;
-                av.innerHTML = '';
-                const img = document.createElement('img');
-                img.src = d.photo;
-                img.referrerPolicy = 'no-referrer';
-                img.alt = '';
-                img.style.cssText = 'width:100%;height:100%;border-radius:50%;object-fit:cover';
-                av.appendChild(img);
-            } else if (d.name) {
-                av.textContent = d.name.charAt(0).toUpperCase();
-            }
-        }
-    }
-
-    window.addEventListener('hdlg:update', e => renderPlayer(e.detail));
-    if (window.HDLG && typeof HDLG.getState === 'function') renderPlayer(HDLG.getState());
-    if (window.HDLG && HDLG.ready) {
-        HDLG.ready.then(() => {
-            if (typeof HDLG.getState === 'function') renderPlayer(HDLG.getState());
-            else if (HDLG.user) renderPlayer(HDLG.user);
-        });
-    }
+  window.addEventListener("hdlg:update", e => renderPlayer(e.detail));
+  if (window.HDLG && typeof HDLG.getState === "function") renderPlayer(HDLG.getState());
+  if (window.HDLG && HDLG.ready) {
+    HDLG.ready.then(() => {
+      if (typeof HDLG.getState === "function") renderPlayer(HDLG.getState());
+      else if (HDLG.user) renderPlayer(HDLG.user);
+    });
+  }
 })();
 
 /* Cập nhật lại tiến độ khi sao thay đổi / quay lại trang bằng nút Back */
@@ -654,6 +833,10 @@ function refreshRealProgress() {
   if (!lessons.length) return;
   updateProgress();
   renderTopics();
+  if (selectedTopic && topicPopup && topicPopup.classList.contains("show")) {
+    const idx = topics.findIndex(t => t.slug === selectedTopic.slug);
+    if (idx >= 0) openTopic(topics[idx], idx);
+  }
 }
 window.addEventListener("hdlg:update", refreshRealProgress);
 window.addEventListener("pageshow", refreshRealProgress);
