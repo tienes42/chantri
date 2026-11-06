@@ -148,7 +148,7 @@ document.querySelectorAll('.hit[data-popup]').forEach(b => {
   });
 });
 
-/* ================= 1. ENGINE FLOOD FILL TÁCH NỀN CHO ĐẢO MỞ & ĐẢO KHÓA ================= */
+/* ================= 1. ENGINE FLOOD FILL TÁCH NỀN CHO ĐẢO (.WEBP & .PNG) ================= */
 function loadImg(src) {
   return new Promise((resolve, reject) => {
     const img = new Image();
@@ -158,7 +158,7 @@ function loadImg(src) {
   });
 }
 
-async function processIslandImage(src, selector) {
+async function processIslandImage(src, selector, isGrayFallback = false) {
   try {
     const img = await loadImg(src);
     const maxDim = 960;
@@ -230,22 +230,41 @@ async function processIslandImage(src, selector) {
       }
     }
 
-   ctx.putImageData(imgData, 0, 0);
+    ctx.putImageData(imgData, 0, 0);
+
+    // Xuất dưới định dạng image/webp nhẹ máy
     c.toBlob(blob => {
       if (!blob) return;
       const url = URL.createObjectURL(blob);
       document.querySelectorAll(selector).forEach(el => {
         el.style.backgroundImage = `url("${url}")`;
+        if (isGrayFallback) {
+          el.style.setProperty(
+            'filter',
+            'grayscale(0.85) brightness(0.95) drop-shadow(0 18px 22px rgba(2, 8, 24, 0.82))',
+            'important'
+          );
+        }
       });
-    }, 'image/png');
+
+      // Nếu là đảo khóa, cung cấp hàm downloadLockedWebp() để tải file .webp về máy bất cứ lúc nào
+      if (src.includes('island-locked')) {
+        window.downloadLockedWebp = () => {
+          const a = document.createElement('a');
+          a.href = url;
+          a.download = 'island-locked.webp';
+          a.click();
+        };
+      }
+    }, 'image/webp', 0.9);
   } catch (e) {
-    console.warn('Không tìm thấy ' + src + ', tự động chuyển sang đảo gốc làm xám:', e);
-    // Nếu thiếu file island-locked.png trên server, tự động lấy luôn island-subject.png có sẵn
-    if (src.includes('island-locked.png')) {
-      processIslandImage('assets/island-subject.png', selector);
-      document.querySelectorAll(selector).forEach(el => {
-        el.style.filter = 'grayscale(0.85) brightness(0.95) drop-shadow(0 18px 22px rgba(2, 8, 24, 0.82))';
-      });
+    // Cơ chế dự phòng tự động: .webp -> .png -> island-subject.webp làm xám
+    if (src === 'assets/island-locked.webp') {
+      processIslandImage('assets/island-locked.png', selector, false);
+    } else if (src === 'assets/island-locked.png') {
+      processIslandImage('assets/island-subject.webp', selector, true);
+    } else {
+      console.error('Lỗi xử lý ảnh đảo:', src, e);
     }
   }
 }
@@ -322,7 +341,7 @@ async function processSpriteSheet(src, mappingList) {
       }
 
       ctx.putImageData(imgData, 0, 0);
-      const dataUrl = c.toDataURL('image/png');
+      const dataUrl = c.toDataURL('image/webp', 0.92);
 
       if (saveKey) {
         birdFrames[saveKey] = dataUrl;
@@ -338,10 +357,10 @@ async function processSpriteSheet(src, mappingList) {
   }
 }
 
-// Khởi chạy tách nền Flood Fill cho Đảo Trung Tâm, 3 Đảo Mở và 8 Đảo Bị Xích
-processIslandImage('assets/island-center.png', '.island-center-art');
-processIslandImage('assets/island-subject.png', '.hit:not(.is-locked) .island-art');
-processIslandImage('assets/island-locked.png', '.hit.is-locked .island-art');
+// Khởi chạy tách nền bằng định dạng .webp (PIC) đồng bộ cho cả 3 loại đảo
+processIslandImage('assets/island-center.webp', '.island-center-art');
+processIslandImage('assets/island-subject.webp', '.hit:not(.is-locked) .island-art');
+processIslandImage('assets/island-locked.webp', '.hit.is-locked .island-art');
 
 processSpriteSheet('assets/props-sheet-1.png', [
   { col: 0, row: 0, selector: '.flask-left' },
