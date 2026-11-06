@@ -3,7 +3,7 @@
       - 📘 Lý thuyết & Công thức trọng tâm (theo bài học mới)
       - 🎯 Chốt nhiệm vụ (Đọc xong cốt truyện cần làm gì?)
    2. Bổ sung vào hội thoại mỗi chặng (GM.stageLines / stageLines):
-      - 📊 Thông số để tính toán: toàn bộ số liệu, hằng số (r, T, m, U, I, R, f…), giới hạn an toàn của chặng.
+      - 📊 Thông số để tính toán: toàn bộ số liệu, bảng sổ ghi trên cảnh, hằng số (r, T, m, U, I, R, f…), giới hạn an toàn.
       - 📐 Công thức & cách tính (theo bài học mới): công thức áp dụng và hướng thay số cụ thể của chặng.
       - 🎯 Chốt lại nhiệm vụ (Cần làm gì): chỉ rõ cần chỉnh thanh trượt / núm xoay / linh kiện nào và bấm nút nào để chạy.
    3. Mở khóa miễn phí Gợi ý 1 (Cách lập luận & công thức) và hiển thị nút "📋 Thông số & Nhiệm vụ" ngay trong màn chơi. */
@@ -18,8 +18,26 @@
   }
   function $(id) { return document.getElementById(id); }
 
+  function optStr(o) {
+    if (o == null) return "";
+    if (typeof o === "string" || typeof o === "number") return String(o);
+    if (typeof o === "object") {
+      return String(o.n || o.s || o.lab || o.name || o.l || o.t || o.title || o.text || o.v || "");
+    }
+    return "";
+  }
+
+  function labStr(lab, defVal) {
+    if (typeof lab === "function") {
+      try { return String(lab(defVal != null ? defVal : 0)); } catch (e) { return "Thông số"; }
+    }
+    if (lab && typeof lab === "object") return optStr(lab);
+    return String(lab == null ? "" : lab);
+  }
+
   function cleanHtml(s) {
     if (!s) return "";
+    if (typeof s === "object") s = optStr(s);
     return String(s)
       .replace(/<br\s*\/?>/gi, " · ")
       .replace(/<sub>([^<]+)<\/sub>/gi, "_$1")
@@ -30,17 +48,18 @@
       .replace(/&amp;/g, "&")
       .replace(/&lt;/g, "<")
       .replace(/&gt;/g, ">")
+      .replace(/\[object Object\]/g, "")
       .replace(/\s+/g, " ")
       .trim();
   }
 
-  /* Ghi lại các dòng "• …" đang được vẽ trên canvas (bảng số liệu của chặng) */
+  /* Ghi lại các dòng "• …" đang được vẽ trên canvas (bảng số liệu / sổ ghi của chặng) */
   var bullets = new Map();
   var CP = window.CanvasRenderingContext2D && CanvasRenderingContext2D.prototype;
   if (CP && CP.fillText && !CP.fillText.__sp) {
     var ft = CP.fillText;
     CP.fillText = function (t) {
-      if (typeof t === "string" && t.charCodeAt(0) === 0x2022 && /\d/.test(t) && t.length < 220) {
+      if (typeof t === "string" && t.charCodeAt(0) === 0x2022 && /\d/.test(t) && t.length < 240) {
         bullets.set(t, Date.now());
         if (bullets.size > 120) bullets.delete(bullets.keys().next().value);
       }
@@ -50,16 +69,20 @@
   }
   var HOWTO = /^•\s*(Đã|Bấm|Kéo|Nhấn|Chạm|Chọn|Gạt|Xoay|Thả|Mở|Đóng|Đặt|Click|Hãy)\b/i;
   function boardNow() {
+    if (!bullets.size) {
+      var rg = G("renderGame");
+      if (typeof rg === "function") { try { rg(); } catch (e) {} }
+    }
     var now = Date.now(), out = [];
     bullets.forEach(function (t, s) {
-      if (now - t < 1500 && !HOWTO.test(s)) out.push(s.replace(/^•\s*/, "").trim());
+      if (now - t < 2500 && !HOWTO.test(s)) out.push(s.replace(/^•\s*/, "").trim());
     });
     return out.slice(0, 8);
   }
 
   /* Trích xuất thông tin đầy đủ của chặng hiện tại */
   function extractStageGuide() {
-    var GM = G("GM"), S = G("S"), KDc = G("KDc"), KD = G("KD");
+    var GM = G("GM"), S = G("S"), KDc = G("KDc"), KD = G("KD"), PP = G("PP");
     var updateAux = G("updateAux"), updateHUD = G("updateHUD");
     if (typeof updateAux === "function") { try { updateAux(); } catch (e) {} }
     if (typeof updateHUD === "function") { try { updateHUD(); } catch (e) {} }
@@ -95,7 +118,8 @@
 
     var bNow = boardNow();
     bNow.forEach(function (b) {
-      if (b && paramParts.join(" ").indexOf(b) < 0) paramParts.push(b);
+      var s = cleanHtml(b);
+      if (s && paramParts.join(" ").indexOf(s) < 0) paramParts.push(s);
     });
 
     var paramsText = paramParts.join(" · ");
@@ -134,17 +158,24 @@
     /* 3. Chốt lại nhiệm vụ (Cần chỉnh thông số gì, thao tác thế nào, bấm nút nào) */
     var pDesc = [];
     try {
-      var P = (kd && Array.isArray(kd.P)) ? kd.P : null;
+      var P = (kd && Array.isArray(kd.P)) ? kd.P : (PP && c && typeof c.i === "number" && Array.isArray(PP[c.i]) ? PP[c.i] : null);
       if (P && P.length) {
         P.forEach(function (p) {
-          if (!p || !p.lab) return;
+          if (!p) return;
+          var label = cleanHtml(labStr(p.lab, p.def));
+          if (!label) return;
           if (Array.isArray(p.opts) && p.opts.length) {
-            var sample = p.opts.slice(0, 5).join(", ") + (p.opts.length > 5 ? "…" : "");
-            pDesc.push(p.lab + " (" + sample + ")");
-          } else if (p.min != null && p.max != null) {
-            pDesc.push(p.lab + " (từ " + p.min + " đến " + p.max + (p.unit ? " " + p.unit : "") + ")");
+            var names = p.opts.map(optStr).filter(Boolean);
+            if (names.length) {
+              var sample = names.slice(0, 5).join(", ") + (names.length > 5 ? "…" : "");
+              pDesc.push(label + " (" + sample + ")");
+            } else {
+              pDesc.push(label);
+            }
+          } else if (typeof p.min === "number" && typeof p.max === "number") {
+            pDesc.push(label + " (từ " + p.min + " đến " + p.max + (p.unit ? " " + p.unit : "") + ")");
           } else {
-            pDesc.push(p.lab);
+            pDesc.push(label);
           }
         });
       }
@@ -163,7 +194,7 @@
       if ($("executeBtnText") && $("executeBtnText").textContent.trim()) {
         execLabel = $("executeBtnText").textContent.trim();
       } else if (kd && kd.execLabel) {
-        execLabel = kd.execLabel;
+        execLabel = cleanHtml(kd.execLabel);
       } else if ($("btnExecuteStage") && $("btnExecuteStage").textContent.trim()) {
         execLabel = $("btnExecuteStage").textContent.trim();
       }
@@ -175,9 +206,9 @@
     actionText += ". Sau khi chỉnh xong, bấm nút «" + execLabel + "» ở góc dưới để kiểm tra kết quả!";
 
     return {
-      paramsText: paramsText,
-      formulaText: formulaText,
-      actionText: actionText,
+      paramsText: cleanHtml(paramsText),
+      formulaText: cleanHtml(formulaText),
+      actionText: cleanHtml(actionText),
       execLabel: execLabel
     };
   }
@@ -223,7 +254,7 @@
         get: function () { return "🎯 Chốt lại nhiệm vụ (Cần làm gì): " + getG().actionText; }
       });
 
-      setTimeout(updateQuickGuidePanel, 60);
+      setTimeout(updateQuickGuidePanel, 80);
       return L.concat([lParams, lFormula, lAction]);
     } catch (e) {
       return L;
@@ -270,7 +301,7 @@
       var missionBlock =
         "<div class='hdlg-intro-summary mt-2 p-2.5 rounded-xl bg-emerald-950/75 border border-emerald-400/50 text-[11.5px] leading-relaxed text-emerald-100'>" +
           "<div class='font-extrabold text-emerald-300 mb-0.5'>🎯 Chốt lại: Vào màn chơi bạn cần làm gì?</div>" +
-          "<div><b>Bước 1:</b> Đọc kỹ dòng <b>📊 Thông số để tính toán</b> và <b>📐 Công thức & cách tính</b> xuất hiện ngay trong lời thoại của nhân vật ở mỗi chặng (hoặc bấm nút <b>📋 Tóm tắt</b> ở góc trên).<br>" +
+          "<div><b>Bước 1:</b> Đọc kỹ dòng <b>📊 Thông số để tính toán</b> và <b>📐 Công thức & cách tính</b> xuất hiện ngay trong lời thoại của nhân vật ở mỗi chặng (hoặc bấm nút <b>📋 Thông số & Nhiệm vụ</b> ở góc dưới trái).<br>" +
           "<b>Bước 2:</b> Thay các thông số đã cho vào công thức để tính ra giá trị cần tìm, rồi <b>kéo thanh trượt / xoay núm / chọn linh kiện</b> trên màn hình.<br>" +
           "<b>Bước 3:</b> Bấm nút hành động màu xanh lá (<b>▶</b>) ở góc dưới để chạy kiểm chứng và hoàn thành cả 3 chặng!</div>" +
         "</div>";
@@ -283,7 +314,7 @@
 
   window.__hdlgEnrichIntroStory = enrichIntroStoryHtml;
 
-  /* Bảng nổi "📋 Thông số & Nhiệm vụ" trong lúc thiết lập (setup) để người chơi vừa nhìn số liệu vừa chỉnh thanh trượt */
+  /* Bảng nổi "📋 Thông số & Nhiệm vụ" trong lúc thiết lập (setup) */
   var panelOpen = false;
   function ensureQuickGuideUI() {
     if ($("hdlgQuickGuideWrap")) return;
@@ -363,7 +394,6 @@
       patched = true;
     }
 
-    /* Hỗ trợ game_congsuat.html (dùng hàm stageLines toàn cục thay vì GM.stageLines) */
     var globalSL = G("stageLines");
     if (!GM && typeof globalSL === "function" && !globalSL.__params) {
       try {

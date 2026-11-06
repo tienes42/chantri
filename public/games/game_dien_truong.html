@@ -735,8 +735,20 @@ function toast(msg, color, ms) {
 let typeTimer = null;
 
 /* ---------- Nâng cấp Cốt truyện & Thông số tính toán (CT GDPT 2018) ---------- */
+function __optStr(o) {
+  if (o == null) return "";
+  if (typeof o === "string" || typeof o === "number") return String(o);
+  if (typeof o === "object") return String(o.n || o.s || o.lab || o.name || o.l || o.t || o.title || o.text || o.v || "");
+  return "";
+}
+function __labStr(lab, defVal) {
+  if (typeof lab === "function") { try { return String(lab(defVal != null ? defVal : 0)); } catch (e) { return "Thông số"; } }
+  if (lab && typeof lab === "object") return __optStr(lab);
+  return String(lab == null ? "" : lab);
+}
 function __cleanCalcText(s) {
   if (!s) return "";
+  if (typeof s === "object") s = __optStr(s);
   return String(s)
     .replace(/<br\s*\/?>/gi, " · ")
     .replace(/<sub>([^<]+)<\/sub>/gi, "_$1")
@@ -744,9 +756,13 @@ function __cleanCalcText(s) {
     .replace(/<\/?b[^>]*>/gi, "")
     .replace(/<\/?[a-z][^>]*>/gi, "")
     .replace(/&nbsp;/g, " ").replace(/&amp;/g, "&").replace(/&lt;/g, "<").replace(/&gt;/g, ">")
+    .replace(/\[object Object\]/g, "")
     .replace(/\s+/g, " ").trim();
 }
 function __buildStageCalcLines(baseLines) {
+  if (typeof window.__hdlgEnrichStageLines === "function") {
+    return window.__hdlgEnrichStageLines(baseLines);
+  }
   try {
     if (!Array.isArray(baseLines) || !baseLines.length) return baseLines;
     if (baseLines.some(x => x && x.__p)) return baseLines;
@@ -804,12 +820,21 @@ function __buildStageCalcLines(baseLines) {
 
     const pDesc = [];
     try {
-      if (kd && Array.isArray(kd.P)) {
-        kd.P.forEach(p => {
-          if (!p || !p.lab) return;
-          if (Array.isArray(p.opts) && p.opts.length) pDesc.push(`${p.lab} (${p.opts.slice(0, 5).join(", ")}${p.opts.length > 5 ? "…" : ""})`);
-          else if (p.min != null && p.max != null) pDesc.push(`${p.lab} (từ ${p.min} đến ${p.max}${p.unit ? " " + p.unit : ""})`);
-          else pDesc.push(p.lab);
+      const P = (kd && Array.isArray(kd.P)) ? kd.P : (typeof PP !== "undefined" && PP && typeof c.i === "number" && Array.isArray(PP[c.i]) ? PP[c.i] : null);
+      if (P && P.length) {
+        P.forEach(p => {
+          if (!p) return;
+          const label = __cleanCalcText(__labStr(p.lab, p.def));
+          if (!label) return;
+          if (Array.isArray(p.opts) && p.opts.length) {
+            const names = p.opts.map(__optStr).filter(Boolean);
+            if (names.length) pDesc.push(`${label} (${names.slice(0, 5).join(", ")}${names.length > 5 ? "…" : ""})`);
+            else pDesc.push(label);
+          } else if (typeof p.min === "number" && typeof p.max === "number") {
+            pDesc.push(`${label} (từ ${p.min} đến ${p.max}${p.unit ? " " + p.unit : ""})`);
+          } else {
+            pDesc.push(label);
+          }
         });
       }
     } catch (e) {}
@@ -828,9 +853,9 @@ function __buildStageCalcLines(baseLines) {
     actionText += `. Sau khi chỉnh xong, bấm nút «${execLabel}» ở góc dưới để kiểm tra kết quả!`;
 
     return baseLines.concat([
-      { who, __p: 1, text: `📊 Thông số để tính toán: ${paramsText}` },
-      { who, __p: 1, text: `📐 Công thức & cách tính: ${formulaText}` },
-      { who, __p: 1, text: `🎯 Chốt lại nhiệm vụ (Cần làm gì): ${actionText}` }
+      { who, __p: 1, text: `📊 Thông số để tính toán: ${__cleanCalcText(paramsText)}` },
+      { who, __p: 1, text: `📐 Công thức & cách tính: ${__cleanCalcText(formulaText)}` },
+      { who, __p: 1, text: `🎯 Chốt lại nhiệm vụ (Cần làm gì): ${__cleanCalcText(actionText)}` }
     ]);
   } catch (e) { return baseLines; }
 }
