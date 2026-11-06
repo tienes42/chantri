@@ -32,16 +32,44 @@ confirmDialog.addEventListener('click', () => {
 });
 document.addEventListener('keydown', e => { if (e.key === 'Escape') hideDialog(); });
 
-// Điều hướng khi bấm vào các đảo môn học
+// ================= DANH SÁCH ĐẢO ĐÃ MỞ & PHONG ẤN ĐẢO CHƯA MỞ =================
+// Khi làm xong môn học mới, bạn chỉ cần thêm tên file HTML vào mảng này:
+const UNLOCKED_PAGES = ['math.html', 'physics.html', 'chemistry.html'];
+
 document.querySelectorAll('.hit[data-page]').forEach(b => {
+  const page = b.dataset.page;
+  const isUnlocked = UNLOCKED_PAGES.includes(page);
+
+  if (!isUnlocked) {
+    b.classList.add('is-locked');
+    const labelEl = b.querySelector('.island-label');
+    const subjectName = labelEl ? labelEl.textContent.replace(/^[^\wÀ-ỹ]+/, '').trim() : 'Môn học này';
+    if (labelEl && !labelEl.textContent.includes('🔒')) {
+      labelEl.textContent = '🔒 ' + subjectName;
+    }
+  }
+
   b.addEventListener('click', () => {
-    window.location.href = b.dataset.page;
+    if (isUnlocked) {
+      window.location.href = page;
+    } else {
+      b.classList.remove('rattle-lock');
+      void b.offsetWidth;
+      b.classList.add('rattle-lock');
+
+      const rawLabel = b.getAttribute('aria-label') || 'Môn học này';
+      showDialog(
+        '🔒 Đảo ' + rawLabel + ' đang bị phong ấn',
+        'Vùng đất ' + rawLabel + ' hiện đang bị xiềng xích cổ đại phong ấn và sẽ sớm được khai mở trong bản cập nhật tới. Hãy khám phá đảo Toán học, Vật lý và Hóa học trước nhé!',
+        'Đã hiểu'
+      );
+    }
   });
 });
 
 // Các nút thông tin & Popup
 document.getElementById('centerHit').addEventListener('click', () =>
-  showDialog('Chân Tri', 'Khám phá kiến thức qua tình huống thực tế và mini game để vận dụng điều đã học vào giải quyết vấn đề.')
+  showDialog('HỌC ĐỂ LÀM GÌ?', 'Khám phá kiến thức qua tình huống thực tế và mini game để vận dụng điều đã học vào giải quyết vấn đề.')
 );
 
 document.getElementById('rankingButton').addEventListener('click', () => {
@@ -53,10 +81,13 @@ document.getElementById('rankingButton').addEventListener('click', () => {
 (function accountHud() {
   const $ = id => document.getElementById(id);
   const card = $('playerCard');
-  card.style.cursor = 'pointer';
-  card.addEventListener('click', () => { if (window.HDLG) HDLG.showAccount(); });
+  if (card) {
+    card.style.cursor = 'pointer';
+    card.addEventListener('click', () => { if (window.HDLG) HDLG.showAccount(); });
+  }
 
   function renderPlayer(d) {
+    if (!d) return;
     $('playerName').textContent = d.name || 'Tên người chơi';
     $('playerLevel').textContent = 'Lv.' + d.level;
     $('playerXpBar').style.width = d.inLevel + '%';
@@ -76,7 +107,7 @@ document.getElementById('rankingButton').addEventListener('click', () => {
   let rankTimer = null;
   function renderRanking() {
     const panel = $('rankingPanel');
-    if (!window.HDLG || !HDLG.configured || !HDLG.user) return;
+    if (!panel || !window.HDLG || !HDLG.configured || !HDLG.user) return;
     HDLG.getLeaderboard(5).then(list => {
       panel.querySelectorAll('.rank-row').forEach(r => r.remove());
       list.forEach((r, i) => {
@@ -117,9 +148,7 @@ document.querySelectorAll('.hit[data-popup]').forEach(b => {
   });
 });
 
-/* ================= 1. LOAD ĐẢO & ĐẠO CỤ ĐÃ TÁCH NỀN SẴN TRONG ASSETS/*.PNG (SIÊU NHANH, 0MS FLOOD FILL) ================= */
-const birdFrames = { up: '', down: '' };
-
+/* ================= 1. ENGINE FLOOD FILL TÁCH NỀN CHO ĐẢO MỞ & ĐẢO KHÓA ================= */
 function loadImg(src) {
   return new Promise((resolve, reject) => {
     const img = new Image();
@@ -129,51 +158,204 @@ function loadImg(src) {
   });
 }
 
-// 2 mẫu đảo đã được tách nền & nén WebP sẵn (assets/*.webp)
-document.querySelectorAll('.island-center-art').forEach(el => {
-  el.style.backgroundImage = 'url("assets/island-center.webp")';
-});
-document.querySelectorAll('.island-art').forEach(el => {
-  el.style.backgroundImage = 'url("assets/island-subject.webp")';
-});
+async function processIslandImage(src, selector) {
+  try {
+    const img = await loadImg(src);
+    const maxDim = 960;
+    const scale = Math.min(1, maxDim / Math.max(img.naturalWidth, img.naturalHeight));
+    const w = Math.round(img.naturalWidth * scale);
+    const h = Math.round(img.naturalHeight * scale);
 
-/* Đạo cụ đã được CẮT SẴN từ props-sheet-1/2 thành từng file nhỏ assets/props/p{sheet}-{hàng}{cột}.webp
-   → không còn tải 2 ảnh sheet ~1MB và không phải cắt bằng canvas trên máy người dùng nữa. */
-function applySprites(sheet, mappingList) {
-  for (const { col, row, selector, saveKey } of mappingList) {
-    const url = `assets/props/p${sheet}-${row}${col}.webp`;
-    if (saveKey) {
-      birdFrames[saveKey] = url;
-      loadImg(url).catch(() => {}); // nạp trước để chim vỗ cánh không bị nháy
+    const c = document.createElement('canvas');
+    c.width = w;
+    c.height = h;
+    const ctx = c.getContext('2d');
+    ctx.drawImage(img, 0, 0, w, h);
+
+    const imgData = ctx.getImageData(0, 0, w, h);
+    const d = imgData.data;
+    const visited = new Uint8Array(w * h);
+
+    // Xóa watermark góc dưới phải
+    for (let y = Math.floor(h * 0.88); y < h; y++) {
+      for (let x = Math.floor(w * 0.88); x < w; x++) {
+        d[(y * w + x) * 4 + 3] = 0;
+      }
     }
-    if (selector) {
+
+    // Phân biệt nền trắng/xám trung tính với bọt thác nước (bọt thác có ánh xanh B > R)
+    const isBgPixel = idx => {
+      const r = d[idx], g = d[idx + 1], b = d[idx + 2];
+      const max = Math.max(r, g, b), min = Math.min(r, g, b);
+      return (r > 228 && g > 228 && b > 228 && (b - r) < 10) || (max - min < 16 && min > 195);
+    };
+
+    const stack = [];
+    for (let x = 0; x < w; x++) stack.push(x, (h - 1) * w + x);
+    for (let y = 0; y < h; y++) stack.push(y * w, y * w + (w - 1));
+
+    while (stack.length > 0) {
+      const p = stack.pop();
+      if (p < 0 || p >= w * h || visited[p]) continue;
+      visited[p] = 1;
+
+      const idx = p * 4;
+      if (isBgPixel(idx)) {
+        d[idx + 3] = 0;
+        const x = p % w;
+        const y = (p / w) | 0;
+        if (x > 0) stack.push(p - 1);
+        if (x < w - 1) stack.push(p + 1);
+        if (y > 0) stack.push(p - w);
+        if (y < h - 1) stack.push(p + w);
+      } else {
+        const r = d[idx], g = d[idx + 1], b = d[idx + 2];
+        if (r > 210 && g > 210 && b > 210 && (b - r) < 12) {
+          d[idx + 3] = Math.max(0, 255 - ((r + g + b) / 3 - 210) * 5.5);
+        }
+      }
+    }
+
+    // Xóa các khe trắng thuần túy (#FFFFFF) bị kẹt giữa các mắt xích, dây leo và vòm cổng đá
+    for (let i = 0; i < w * h; i++) {
+      const idx = i * 4;
+      if (d[idx + 3] > 0) {
+        const r = d[idx], g = d[idx + 1], b = d[idx + 2];
+        const diff = Math.max(r, g, b) - Math.min(r, g, b);
+        if (r > 240 && g > 240 && b > 240 && diff < 8) {
+          d[idx + 3] = 0;
+        } else if (r > 226 && g > 226 && b > 226 && diff < 8) {
+          d[idx + 3] = Math.round(d[idx + 3] * 0.2);
+        }
+      }
+    }
+
+    ctx.putImageData(imgData, 0, 0);
+    c.toBlob(blob => {
+      if (!blob) return;
+      const url = URL.createObjectURL(blob);
       document.querySelectorAll(selector).forEach(el => {
         el.style.backgroundImage = `url("${url}")`;
       });
-    }
+    }, 'image/png');
+  } catch (e) {
+    console.error('Lỗi xử lý ảnh đảo:', src, e);
   }
 }
 
-applySprites(1, [
+const birdFrames = { up: '', down: '' };
+
+async function processSpriteSheet(src, mappingList) {
+  try {
+    const img = await loadImg(src);
+    const W = img.naturalWidth;
+    const H = img.naturalHeight;
+    const cellW = W / 4;
+    const cellH = H / 4;
+
+    for (const item of mappingList) {
+      const { col, row, selector, removeInnerWhite, saveKey } = item;
+      const padX = cellW * 0.04;
+      const padY = cellH * 0.04;
+      const sx = col * cellW + padX;
+      const sy = row * cellH + padY;
+      const sw = cellW - padX * 2;
+      const sh = cellH - padY * 2;
+
+      const size = 240;
+      const c = document.createElement('canvas');
+      c.width = size;
+      c.height = size;
+      const ctx = c.getContext('2d');
+      ctx.drawImage(img, sx, sy, sw, sh, 0, 0, size, size);
+
+      const imgData = ctx.getImageData(0, 0, size, size);
+      const d = imgData.data;
+      const visited = new Uint8Array(size * size);
+
+      const isBg = idx => {
+        const r = d[idx], g = d[idx + 1], b = d[idx + 2];
+        const max = Math.max(r, g, b), min = Math.min(r, g, b);
+        return (r > 224 && g > 224 && b > 224) || (max - min < 20 && min > 165);
+      };
+
+      const stack = [];
+      for (let x = 0; x < size; x++) stack.push(x, (size - 1) * size + x);
+      for (let y = 0; y < size; y++) stack.push(y * size, y * size + (size - 1));
+
+      while (stack.length > 0) {
+        const p = stack.pop();
+        if (p < 0 || p >= size * size || visited[p]) continue;
+        visited[p] = 1;
+
+        const idx = p * 4;
+        if (isBg(idx)) {
+          d[idx + 3] = 0;
+          const x = p % size;
+          const y = (p / size) | 0;
+          if (x > 0) stack.push(p - 1);
+          if (x < size - 1) stack.push(p + 1);
+          if (y > 0) stack.push(p - size);
+          if (y < size - 1) stack.push(p + size);
+        } else {
+          const r = d[idx], g = d[idx + 1], b = d[idx + 2];
+          if (r > 205 && g > 205 && b > 205) {
+            d[idx + 3] = Math.max(0, 255 - ((r + g + b) / 3 - 205) * 5);
+          }
+        }
+      }
+
+      if (removeInnerWhite) {
+        for (let i = 0; i < size * size; i++) {
+          const idx = i * 4;
+          if (d[idx + 3] > 0 && d[idx] > 238 && d[idx + 1] > 238 && d[idx + 2] > 238) {
+            d[idx + 3] = 0;
+          }
+        }
+      }
+
+      ctx.putImageData(imgData, 0, 0);
+      const dataUrl = c.toDataURL('image/png');
+
+      if (saveKey) {
+        birdFrames[saveKey] = dataUrl;
+      }
+      if (selector) {
+        document.querySelectorAll(selector).forEach(el => {
+          el.style.backgroundImage = `url("${dataUrl}")`;
+        });
+      }
+    }
+  } catch (e) {
+    console.error('Lỗi cắt Sprite Sheet:', src, e);
+  }
+}
+
+// Khởi chạy tách nền Flood Fill cho Đảo Trung Tâm, 3 Đảo Mở và 8 Đảo Bị Xích
+processIslandImage('assets/island-center.png', '.island-center-art');
+processIslandImage('assets/island-subject.png', '.hit:not(.is-locked) .island-art');
+processIslandImage('assets/island-locked.png', '.hit.is-locked .island-art');
+
+processSpriteSheet('assets/props-sheet-1.png', [
   { col: 0, row: 0, selector: '.flask-left' },
   { col: 1, row: 0, selector: '.flask-right' },
   { col: 2, row: 0, selector: '.chem-boom, .spark, .lava' },
   { col: 3, row: 0, selector: '.chem-smoke' },
-  { col: 0, row: 1, selector: '.ruler' },
-  { col: 1, row: 1, selector: '.compass' },
-  { col: 2, row: 1, selector: '.magnet' },
+  { col: 0, row: 1, selector: '.ruler', removeInnerWhite: true },
+  { col: 1, row: 1, selector: '.compass', removeInnerWhite: true },
+  { col: 2, row: 1, selector: '.magnet', removeInnerWhite: true },
   { col: 3, row: 1, selector: '.apple' },
   { col: 0, row: 2, selector: '.book' },
   { col: 1, row: 2, selector: '.quill, .brush' },
   { col: 2, row: 2, selector: '.shoe' },
   { col: 3, row: 2, selector: '.ball' },
-  { col: 0, row: 3, selector: '.palette' },
+  { col: 0, row: 3, selector: '.palette', removeInnerWhite: true },
   { col: 1, row: 3, selector: '.globe' },
   { col: 2, row: 3, selector: '.volcano' },
   { col: 3, row: 3, selector: '.laptop' }
 ]);
 
-applySprites(2, [
+processSpriteSheet('assets/props-sheet-2.png', [
   { col: 0, row: 0, selector: '.sprout, .bush-l, .bush-r' },
   { col: 1, row: 0, selector: '.flower, .rainbow' },
   { col: 2, row: 0, selector: '.butterfly, .bird-paper' },
@@ -271,7 +453,7 @@ function renderCinematicCanvas() {
     ctx.save();
     ctx.globalAlpha = o.alpha;
     ctx.shadowColor = o.hue;
-    // shadowBlur removed for 60fps GPU speed
+    ctx.shadowBlur = 12;
     ctx.fillStyle = o.hue;
     ctx.beginPath();
     ctx.arc(o.x, o.y, o.r, 0, Math.PI * 2);
@@ -325,4 +507,3 @@ setInterval(() => {
     spawnFlyingBirds();
   }
 }, 5200);
-
