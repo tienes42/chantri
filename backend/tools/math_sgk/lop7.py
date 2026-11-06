@@ -1,7 +1,6 @@
 """Dữ liệu bài học SGK Toán Lớp 7 — Kết nối tri thức với cuộc sống (NXB Giáo dục Việt Nam).
-Cấu trúc 3 cấp: Lớp 7 ➔ Chương/Chủ đề (topic) ➔ Từng Bài học (title).
-Mỗi bài học gồm đầy đủ Yêu cầu cần đạt (requirements), Định nghĩa, Lý thuyết, Công thức, Ví dụ, Ứng dụng thực tế
-và đúng 10 câu hỏi luyện tập theo 3 mức độ: 4 Nhận biết + 4 Thông hiểu + 2 Vận dụng.
+Cấu trúc 3 cấp: Lớp 7 ➔ Chương/Chủ đề (topic) ➔ Từng Bài học độc lập (title).
+Mỗi bài học chỉ chứa kiến thức, công thức, ví dụ và 10 câu hỏi của riêng bài học đó.
 """
 
 GRADE = 7
@@ -61,28 +60,32 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 1: Tập hợp các số hữu tỉ**, công thức hoặc quy tắc nào '
-                 'sau đây biểu diễn đúng **Định nghĩa tập $\\mathbb{Q}$**?',
-            'options': ['$\\mathbb{N} \\subset \\mathbb{Z} \\subset \\mathbb{Q}$',
-                        '$-(-a) = a$ với mọi $a \\in \\mathbb{Q}$',
+            'q': 'Trong **Bài 1: Tập hợp các số hữu tỉ**, quy tắc hoặc công thức nào sau đây xác định đúng '
+                 '**Định nghĩa tập $\\mathbb{Q}$**?',
+            'options': ['$\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} \\;\\middle|\\; a, b \\notin \\mathbb{Z}, b '
+                        '\\neq 0 \\right\\}$',
+                        '$\\mathbb{Q} = \\left\\{ \\dfrac{b}{a} \\;\\middle|\\; a, b \\in \\mathbb{Z}, b '
+                        '\\neq 0 \\right\\}$',
                         '$\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} \\;\\middle|\\; a, b \\in \\mathbb{Z}, b '
                         '\\neq 0 \\right\\}$',
-                        'Nếu $x < y$ và $y < z$ thì $x < z$'],
+                        '$\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} \\;\\middle|\\; a, b \\in \\mathbb{Z}, b '
+                        '\\neq 2 \\right\\}$'],
             'answer': 2,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 1: Tập hợp các số hữu tỉ, **Định nghĩa tập '
+            'solution': 'Theo kiến thức trọng tâm của Bài 1: Tập hợp các số hữu tỉ, **Định nghĩa tập '
                         '$\\mathbb{Q}$** được xác định bởi: $\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} '
                         '\\;\\middle|\\; a, b \\in \\mathbb{Z}, b \\neq 0 \\right\\}$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 1: Tập hợp các số hữu tỉ**, nội dung/biểu thức $\\mathbb{N} \\subset '
-                 '\\mathbb{Z} \\subset \\mathbb{Q}$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Định nghĩa tập $\\mathbb{Q}$',
-                        'Tính chất số đối',
-                        'Tính chất bắc cầu',
-                        'Quan hệ tập hợp'],
+            'q': 'Khi học **Bài 1: Tập hợp các số hữu tỉ**, biểu thức hoặc quy tắc nào dưới đây biểu diễn '
+                 'đúng **Quan hệ tập hợp**?',
+            'options': ['$\\mathbb{N} \\supset \\mathbb{Z} \\subset \\mathbb{Q}$',
+                        'Đảo ngược vế của quy tắc: $\\mathbb{N} \\subset \\mathbb{Z} \\subset \\mathbb{Q}$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\mathbb{N} \\subset '
+                        '\\mathbb{Z} \\subset \\mathbb{Q}$',
+                        '$\\mathbb{N} \\subset \\mathbb{Z} \\subset \\mathbb{Q}$'],
             'answer': 3,
-            'solution': 'Trong Bài 1: Tập hợp các số hữu tỉ, biểu thức/quy tắc $\\mathbb{N} \\subset '
-                        '\\mathbb{Z} \\subset \\mathbb{Q}$ chính là nội dung của **Quan hệ tập hợp**.'},
+            'solution': 'Trong Bài 1: Tập hợp các số hữu tỉ, **Quan hệ tập hợp** có công thức/quy tắc là: '
+                        '$\\mathbb{N} \\subset \\mathbb{Z} \\subset \\mathbb{Q}$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Trong các số hữu tỉ $\\dfrac{-2}{3}; -0,5; 0; \\dfrac{3}{4}$, số nhỏ nhất là:',
@@ -95,17 +98,18 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 1: Tập hợp các số hữu tỉ** (Chương I: Số hữu tỉ), khẳng định nào sau đây '
-                 'phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Thực hiện được các phép tính cộng, trừ, nhân, chia trong tập hợp số hữu tỉ '
-                        '$\\mathbb{Q}$.',
+            'q': 'Để nắm vững bản chất của **Bài 1: Tập hợp các số hữu tỉ**, nhận định nào sau đây là '
+                 '**chính xác**?',
+            'options': ['Nhận biết được số hữu tỉ và lấy được ví dụ về số hữu tỉ, nhận biết tập hợp các số '
+                        'hữu tỉ $\\mathbb{Q}$. (với dấu ngược lại)',
                         'Nhận biết được số hữu tỉ và lấy được ví dụ về số hữu tỉ, nhận biết tập hợp các số '
                         'hữu tỉ $\\mathbb{Q}$.',
-                        'Vận dụng được các tính chất giao hoán, kết hợp, phân phối của phép nhân đối với '
-                        'phép cộng để tính nhẩm và tính hợp lí.',
-                        'Giải quyết được một số vấn đề thực tiễn gắn với các phép tính về số hữu tỉ.'],
+                        'Đảo ngược vế của quy tắc: Nhận biết được số hữu tỉ và lấy được ví dụ về số hữu tỉ, '
+                        'nhận biết tập hợp các số hữu tỉ $\\mathbb{Q}$.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nhận biết được số hữu tỉ và lấy '
+                        'được ví dụ về số hữu tỉ, nhận biết tập hợp các số hữu tỉ $\\mathbb{Q}$.'],
             'answer': 1,
-            'solution': 'Theo yêu cầu cần đạt của Bài 1: Tập hợp các số hữu tỉ: Nhận biết được số hữu tỉ và '
+            'solution': 'Theo nội dung cốt lõi của Bài 1: Tập hợp các số hữu tỉ: Nhận biết được số hữu tỉ và '
                         'lấy được ví dụ về số hữu tỉ, nhận biết tập hợp các số hữu tỉ $\\mathbb{Q}$.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -123,44 +127,42 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 1: Tập hợp các số hữu '
-                 'tỉ**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được số hữu tỉ và lấy '
-                           'được ví dụ về số hữu tỉ, nhận biết tập hợp các số hữu tỉ $\\mathbb{Q}$.',
-                           'Quy tắc/công thức **Định nghĩa tập $\\mathbb{Q}$** trong bài được xác định bởi: '
-                           '$\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} \\;\\middle|\\; a, b \\in \\mathbb{Z}, b '
-                           '\\neq 0 \\right\\}$.',
-                           'Trong mọi trường hợp, **Định nghĩa tập $\\mathbb{Q}$** luôn được tính bằng công '
-                           'thức $\\dfrac{a}{m} + \\dfrac{b}{m} = \\dfrac{a+b}{m}; \\quad \\dfrac{a}{m} - '
-                           '\\dfrac{b}{m} = \\dfrac{a-b}{m} \\quad (m > 0)$ (thuộc Phép cộng, trừ cùng mẫu '
-                           'dương) mà không cần điều kiện của Bài 1: Tập hợp các số hữu tỉ.',
-                           'Với bài toán minh họa: “Viết các số $-2,5$; $1\\dfrac{2}{3}$; $-4$ dưới dạng '
-                           'phân số và sắp xếp chúng theo thứ tự tăng dần.”, lời giải đúng là: Ta có: $-2,5 '
-                           '= \\dfrac{-5}{2} = \\dfrac{-15}{6}$; $1\\dfrac{2}{3} = \\dfrac{5}{3}$; $-4 = '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 1: Tập hợp các số hữu tỉ**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết được số hữu tỉ và lấy được ví '
+                           'dụ về số hữu tỉ, nhận biết tập hợp các số hữu tỉ $\\mathbb{Q}$.',
+                           'Trong **Bài 1: Tập hợp các số hữu tỉ**, quy tắc/công thức **Định nghĩa tập '
+                           '$\\mathbb{Q}$** được viết là: $\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} '
+                           '\\;\\middle|\\; a, b \\in \\mathbb{Z}, b \\neq 0 \\right\\}$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} '
+                           '\\;\\middle|\\; a, b \\notin \\mathbb{Z}, b \\neq 0 \\right\\}$ thì kết quả của '
+                           '**Định nghĩa tập $\\mathbb{Q}$** trong **Bài 1: Tập hợp các số hữu tỉ** vẫn '
+                           'không thay đổi.',
+                           'Xét ví dụ của bài: “Viết các số $-2,5$; $1\\dfrac{2}{3}$; $-4$ dưới dạng phân số '
+                           'và sắp xếp chúng theo thứ tự tăng dần.”, kết quả giải đúng là: Ta có: $-2,5 = '
+                           '\\dfrac{-5}{2} = \\dfrac{-15}{6}$; $1\\dfrac{2}{3} = \\dfrac{5}{3}$; $-4 = '
                            '\\dfrac{-4}{1} = \\dfrac{-24}{6}$. Vì $-4 < -2,5 < 0 < 1\\dfrac{2}{3}$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 1: Tập hợp các số hữu tỉ. b) **Đúng** theo '
-                        'công thức trọng tâm **Định nghĩa tập $\\mathbb{Q}$** ($\\mathbb{Q} = \\left\\{ '
-                        '\\dfrac{a}{b} \\;\\middle|\\; a, b \\in \\mathbb{Z}, b \\neq 0 \\right\\}$). c) '
-                        '**Sai** vì $\\dfrac{a}{m} + \\dfrac{b}{m} = \\dfrac{a+b}{m}; \\quad \\dfrac{a}{m} - '
-                        '\\dfrac{b}{m} = \\dfrac{a-b}{m} \\quad (m > 0)$ là công thức của nội dung khác, '
-                        'không phải quy tắc chung của **Định nghĩa tập $\\mathbb{Q}$**. d) **Đúng** theo lời '
-                        'giải ví dụ minh họa trong bài học.'},
+                        'công thức **Định nghĩa tập $\\mathbb{Q}$** ($\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} '
+                        '\\;\\middle|\\; a, b \\in \\mathbb{Z}, b \\neq 0 \\right\\}$). c) **Sai** vì công '
+                        'thức đúng của **Định nghĩa tập $\\mathbb{Q}$** phải là $\\mathbb{Q} = \\left\\{ '
+                        '\\dfrac{a}{b} \\;\\middle|\\; a, b \\in \\mathbb{Z}, b \\neq 0 \\right\\}$ chứ '
+                        'không phải $\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} \\;\\middle|\\; a, b \\notin '
+                        '\\mathbb{Z}, b \\neq 0 \\right\\}$. d) **Đúng** theo lời giải ví dụ minh họa trong '
+                        'bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 1: Tập hợp các số hữu tỉ** để giải quyết tình huống sau: Viết các '
-                 'số $-2,5$; $1\\dfrac{2}{3}$; $-4$ dưới dạng phân số và sắp xếp chúng theo thứ tự tăng dần. '
-                 'Kết quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Áp dụng tính chất phân phối của phép nhân đối với phép cộng: $A = \\dfrac{-3}{7} '
-                        '\\cdot \\left(\\dfrac{5}{9} + \\dfrac{4}{9}\\right) + \\dfrac{10}{7} = '
-                        '\\dfrac{-3}{7} \\cdot 1 + \\dfrac{10}{7} = \\dfrac{7}{7} = 1$...',
-                        'Ta có: $M = \\dfrac{(2^3)^{10}}{(2^2)^8} = \\dfrac{2^{30}}{2^{16}} = 2^{30-16} = '
-                        '2^{14} = 16384$. $N = (0,125 \\cdot 8)^3 = 1^3 = 1$.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 1: Tập hợp các số hữu tỉ** để giải bài toán sau: '
+                 'Viết các số $-2,5$; $1\\dfrac{2}{3}$; $-4$ dưới dạng phân số và sắp xếp chúng theo thứ tự '
+                 'tăng dần. Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Ta có: $-2,5 = \\dfrac{-5}{2} = \\dfrac{-15}{6}$; $1\\dfrac{2}{3} = \\dfrac{5}{3}$; '
+                        '$-4 = \\dfrac{-4}{1} = \\dfrac{-24}{6}$. Vì $-4 > -2,5 < 0 < 1\\dfrac{2}{3}$...',
+                        'Ta có: $-2,5 = \\dfrac{2}{-5} = \\dfrac{-15}{6}$; $1\\dfrac{2}{3} = \\dfrac{5}{3}$; '
+                        '$-4 = \\dfrac{-4}{1} = \\dfrac{-24}{6}$. Vì $-4 < -2,5 < 0 < 1\\dfrac{2}{3}$...',
                         'Ta có: $-2,5 = \\dfrac{-5}{2} = \\dfrac{-15}{6}$; $1\\dfrac{2}{3} = \\dfrac{5}{3}$; '
-                        '$-4 = \\dfrac{-4}{1} = \\dfrac{-24}{6}$. Vì $-4 < -2,5 < 0 < 1\\dfrac{2}{3}$ n...',
-                        'Ta có: $\\dfrac{5}{4} - \\dfrac{7}{5} = \\dfrac{25 - 28}{20} = \\dfrac{-3}{20}$. '
-                        'Đẳng thức trở thành: $x - \\left(\\dfrac{-3}{20}\\right) = \\dfrac{9}{20}$. Áp '
-                        'dụn...'],
+                        '$-4 = \\dfrac{-4}{1} = \\dfrac{-24}{6}$. Vì $-4 < -2,5 < 0 < 1\\dfrac{2}{3}$...',
+                        'Ta có: $-4,5 = \\dfrac{-5}{2} = \\dfrac{-15}{6}$; $1\\dfrac{2}{3} = \\dfrac{5}{3}$; '
+                        '$-4 = \\dfrac{-4}{1} = \\dfrac{-24}{6}$. Vì $-4 < -2,5 < 0 < 1\\dfrac{2}{3}$...'],
             'answer': 2,
             'solution': 'Lời giải chi tiết theo Bài 1: Tập hợp các số hữu tỉ: Ta có: $-2,5 = \\dfrac{-5}{2} '
                         '= \\dfrac{-15}{6}$; $1\\dfrac{2}{3} = \\dfrac{5}{3}$; $-4 = \\dfrac{-4}{1} = '
@@ -237,34 +239,37 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 2: Cộng, trừ, nhân, chia số hữu tỉ**, công thức hoặc quy '
-                 'tắc nào sau đây biểu diễn đúng **Phép cộng, trừ cùng mẫu dương**?',
-            'options': ['$\\dfrac{a}{b} \\cdot \\dfrac{c}{d} = \\dfrac{a \\cdot c}{b \\cdot d} \\quad (b, d '
-                        '\\neq 0)$',
-                        '$\\dfrac{a}{b} : \\dfrac{c}{d} = \\dfrac{a}{b} \\cdot \\dfrac{d}{c} = \\dfrac{a '
-                        '\\cdot d}{b \\cdot c} \\quad (b, c, d \\neq 0)$',
-                        '$x \\cdot (y + z) = x \\cdot y + x \\cdot z; \\quad x \\cdot (y - z) = x \\cdot y - '
-                        'x \\cdot z$',
+            'q': 'Trong **Bài 2: Cộng, trừ, nhân, chia số hữu tỉ**, quy tắc hoặc công thức nào sau đây xác '
+                 'định đúng **Phép cộng, trừ cùng mẫu dương**?',
+            'options': ['$\\dfrac{a}{m} - \\dfrac{b}{m} = \\dfrac{a+b}{m}; \\quad \\dfrac{a}{m} - '
+                        '\\dfrac{b}{m} = \\dfrac{a-b}{m} \\quad (m > 0)$',
+                        '$\\dfrac{m}{a} + \\dfrac{b}{m} = \\dfrac{a+b}{m}; \\quad \\dfrac{a}{m} - '
+                        '\\dfrac{b}{m} = \\dfrac{a-b}{m} \\quad (m > 0)$',
+                        '$\\dfrac{a}{m} + \\dfrac{b}{m} = \\dfrac{a+b}{m}; \\quad \\dfrac{a}{m} - '
+                        '\\dfrac{b}{m} = \\dfrac{a-b}{m} \\quad (m > 2)$',
                         '$\\dfrac{a}{m} + \\dfrac{b}{m} = \\dfrac{a+b}{m}; \\quad \\dfrac{a}{m} - '
                         '\\dfrac{b}{m} = \\dfrac{a-b}{m} \\quad (m > 0)$'],
             'answer': 3,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 2: Cộng, trừ, nhân, chia số hữu tỉ, **Phép '
-                        'cộng, trừ cùng mẫu dương** được xác định bởi: $\\dfrac{a}{m} + \\dfrac{b}{m} = '
+            'solution': 'Theo kiến thức trọng tâm của Bài 2: Cộng, trừ, nhân, chia số hữu tỉ, **Phép cộng, '
+                        'trừ cùng mẫu dương** được xác định bởi: $\\dfrac{a}{m} + \\dfrac{b}{m} = '
                         '\\dfrac{a+b}{m}; \\quad \\dfrac{a}{m} - \\dfrac{b}{m} = \\dfrac{a-b}{m} \\quad (m > '
                         '0)$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 2: Cộng, trừ, nhân, chia số hữu tỉ**, nội dung/biểu thức $\\dfrac{a}{b} \\cdot '
-                 '\\dfrac{c}{d} = \\dfrac{a \\cdot c}{b \\cdot d} \\quad (b, d \\neq 0)$ là quy tắc hoặc '
-                 'công thức của mục nào sau đây?',
-            'options': ['Phép nhân hai số hữu tỉ',
-                        'Phép cộng, trừ cùng mẫu dương',
-                        'Phép chia hai số hữu tỉ',
-                        'Tính chất phân phối'],
+            'q': 'Khi học **Bài 2: Cộng, trừ, nhân, chia số hữu tỉ**, biểu thức hoặc quy tắc nào dưới đây '
+                 'biểu diễn đúng **Phép nhân hai số hữu tỉ**?',
+            'options': ['$\\dfrac{a}{b} \\cdot \\dfrac{c}{d} = \\dfrac{a \\cdot c}{b \\cdot d} \\quad (b, d '
+                        '\\neq 0)$',
+                        '$\\dfrac{a}{b} : \\dfrac{c}{d} = \\dfrac{a \\cdot c}{b \\cdot d} \\quad (b, d \\neq '
+                        '0)$',
+                        '$\\dfrac{b}{a} \\cdot \\dfrac{c}{d} = \\dfrac{a \\cdot c}{b \\cdot d} \\quad (b, d '
+                        '\\neq 0)$',
+                        '$\\dfrac{a}{b} \\cdot \\dfrac{c}{d} = \\dfrac{a \\cdot c}{b \\cdot d} \\quad (b, d '
+                        '\\neq 2)$'],
             'answer': 0,
-            'solution': 'Trong Bài 2: Cộng, trừ, nhân, chia số hữu tỉ, biểu thức/quy tắc $\\dfrac{a}{b} '
-                        '\\cdot \\dfrac{c}{d} = \\dfrac{a \\cdot c}{b \\cdot d} \\quad (b, d \\neq 0)$ chính '
-                        'là nội dung của **Phép nhân hai số hữu tỉ**.'},
+            'solution': 'Trong Bài 2: Cộng, trừ, nhân, chia số hữu tỉ, **Phép nhân hai số hữu tỉ** có công '
+                        'thức/quy tắc là: $\\dfrac{a}{b} \\cdot \\dfrac{c}{d} = \\dfrac{a \\cdot c}{b \\cdot '
+                        'd} \\quad (b, d \\neq 0)$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Giá trị của biểu thức $\\dfrac{3}{5} - \\dfrac{1}{2} : \\dfrac{5}{4}$ bằng:',
@@ -276,17 +281,19 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 2: Cộng, trừ, nhân, chia số hữu tỉ** (Chương I: Số hữu tỉ), khẳng định nào '
-                 'sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Nhận biết được số hữu tỉ và lấy được ví dụ về số hữu tỉ, nhận biết tập hợp các số '
-                        'hữu tỉ $\\mathbb{Q}$.',
-                        'Biểu diễn được số hữu tỉ trên trục số và nhận biết được số đối của một số hữu tỉ.',
+            'q': 'Để nắm vững bản chất của **Bài 2: Cộng, trừ, nhân, chia số hữu tỉ**, nhận định nào sau đây '
+                 'là **chính xác**?',
+            'options': ['Thực hiện được các phép tính cộng, trừ, nhân, chia trong tập hợp số hữu tỉ '
+                        '$\\mathbb{Q}$. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Thực hiện được các phép tính cộng, trừ, nhân, chia trong '
+                        'tập hợp số hữu tỉ $\\mathbb{Q}$.',
                         'Thực hiện được các phép tính cộng, trừ, nhân, chia trong tập hợp số hữu tỉ '
                         '$\\mathbb{Q}$.',
-                        'Nhận biết được thứ tự trong tập hợp các số hữu tỉ và so sánh được hai số hữu tỉ.'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Thực hiện được các phép tính '
+                        'cộng, trừ, nhân, chia trong tập hợp số hữu tỉ $\\mathbb{Q}$.'],
             'answer': 2,
-            'solution': 'Theo yêu cầu cần đạt của Bài 2: Cộng, trừ, nhân, chia số hữu tỉ: Thực hiện được các '
-                        'phép tính cộng, trừ, nhân, chia trong tập hợp số hữu tỉ $\\mathbb{Q}$.'},
+            'solution': 'Theo nội dung cốt lõi của Bài 2: Cộng, trừ, nhân, chia số hữu tỉ: Thực hiện được '
+                        'các phép tính cộng, trừ, nhân, chia trong tập hợp số hữu tỉ $\\mathbb{Q}$.'},
            {'level': 'hieu',
             'type': 'tf4',
             'q': 'Cho hai số hữu tỉ $x = \\dfrac{-3}{4}$ và $y = \\dfrac{2}{3}$. Xét các khẳng định sau:',
@@ -303,40 +310,45 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 2: Cộng, trừ, nhân, '
-                 'chia số hữu tỉ**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Thực hiện được các phép tính cộng, '
-                           'trừ, nhân, chia trong tập hợp số hữu tỉ $\\mathbb{Q}$.',
-                           'Quy tắc/công thức **Phép cộng, trừ cùng mẫu dương** trong bài được xác định bởi: '
-                           '$\\dfrac{a}{m} + \\dfrac{b}{m} = \\dfrac{a+b}{m}; \\quad \\dfrac{a}{m} - '
-                           '\\dfrac{b}{m} = \\dfrac{a-b}{m} \\quad (m > 0)$.',
-                           'Trong mọi trường hợp, **Phép cộng, trừ cùng mẫu dương** luôn được tính bằng công '
-                           'thức $\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} \\;\\middle|\\; a, b \\in '
-                           '\\mathbb{Z}, b \\neq 0 \\right\\}$ (thuộc Định nghĩa tập $\\mathbb{Q}$) mà không '
-                           'cần điều kiện của Bài 2: Cộng, trừ, nhân, chia số hữu tỉ.',
-                           'Với bài toán minh họa: “Tính một cách hợp lí: $A = \\dfrac{-3}{7} \\cdot '
-                           '\\dfrac{5}{9} + \\dfrac{-3}{7} \\cdot \\dfrac{4}{9} + 1\\dfrac{3}{7}$.”, lời '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 2: Cộng, trừ, nhân, chia số '
+                 'hữu tỉ**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Thực hiện được các phép tính cộng, trừ, '
+                           'nhân, chia trong tập hợp số hữu tỉ $\\mathbb{Q}$.',
+                           'Trong **Bài 2: Cộng, trừ, nhân, chia số hữu tỉ**, quy tắc/công thức **Phép cộng, '
+                           'trừ cùng mẫu dương** được viết là: $\\dfrac{a}{m} + \\dfrac{b}{m} = '
+                           '\\dfrac{a+b}{m}; \\quad \\dfrac{a}{m} - \\dfrac{b}{m} = \\dfrac{a-b}{m} \\quad '
+                           '(m > 0)$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $\\dfrac{a}{m} - \\dfrac{b}{m} = '
+                           '\\dfrac{a+b}{m}; \\quad \\dfrac{a}{m} - \\dfrac{b}{m} = \\dfrac{a-b}{m} \\quad '
+                           '(m > 0)$ thì kết quả của **Phép cộng, trừ cùng mẫu dương** trong **Bài 2: Cộng, '
+                           'trừ, nhân, chia số hữu tỉ** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Tính một cách hợp lí: $A = \\dfrac{-3}{7} \\cdot '
+                           '\\dfrac{5}{9} + \\dfrac{-3}{7} \\cdot \\dfrac{4}{9} + 1\\dfrac{3}{7}$.”, kết quả '
                            'giải đúng là: Áp dụng tính chất phân phối của phép nhân đối với phép cộng...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 2: Cộng, trừ, nhân, chia số hữu tỉ. b) '
-                        '**Đúng** theo công thức trọng tâm **Phép cộng, trừ cùng mẫu dương** ($\\dfrac{a}{m} '
-                        '+ \\dfrac{b}{m} = \\dfrac{a+b}{m}; \\quad \\dfrac{a}{m} - \\dfrac{b}{m} = '
-                        '\\dfrac{a-b}{m} \\quad (m > 0)$). c) **Sai** vì $\\mathbb{Q} = \\left\\{ '
-                        '\\dfrac{a}{b} \\;\\middle|\\; a, b \\in \\mathbb{Z}, b \\neq 0 \\right\\}$ là công '
-                        'thức của nội dung khác, không phải quy tắc chung của **Phép cộng, trừ cùng mẫu '
-                        'dương**. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        '**Đúng** theo công thức **Phép cộng, trừ cùng mẫu dương** ($\\dfrac{a}{m} + '
+                        '\\dfrac{b}{m} = \\dfrac{a+b}{m}; \\quad \\dfrac{a}{m} - \\dfrac{b}{m} = '
+                        '\\dfrac{a-b}{m} \\quad (m > 0)$). c) **Sai** vì công thức đúng của **Phép cộng, trừ '
+                        'cùng mẫu dương** phải là $\\dfrac{a}{m} + \\dfrac{b}{m} = \\dfrac{a+b}{m}; \\quad '
+                        '\\dfrac{a}{m} - \\dfrac{b}{m} = \\dfrac{a-b}{m} \\quad (m > 0)$ chứ không phải '
+                        '$\\dfrac{a}{m} - \\dfrac{b}{m} = \\dfrac{a+b}{m}; \\quad \\dfrac{a}{m} - '
+                        '\\dfrac{b}{m} = \\dfrac{a-b}{m} \\quad (m > 0)$. d) **Đúng** theo lời giải ví dụ '
+                        'minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 2: Cộng, trừ, nhân, chia số hữu tỉ** để giải quyết tình huống '
-                 'sau: Tính một cách hợp lí: $A = \\dfrac{-3}{7} \\cdot \\dfrac{5}{9} + \\dfrac{-3}{7} '
-                 '\\cdot \\dfrac{4}{9} + 1\\dfrac{3}{7}$. Kết quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Ta có: $-2,5 = \\dfrac{-5}{2} = \\dfrac{-15}{6}$; $1\\dfrac{2}{3} = \\dfrac{5}{3}$; '
-                        '$-4 = \\dfrac{-4}{1} = \\dfrac{-24}{6}$. Vì $-4 < -2,5 < 0 < 1\\dfrac{2}{3}$ n...',
-                        'Ta có: $M = \\dfrac{(2^3)^{10}}{(2^2)^8} = \\dfrac{2^{30}}{2^{16}} = 2^{30-16} = '
-                        '2^{14} = 16384$. $N = (0,125 \\cdot 8)^3 = 1^3 = 1$.',
-                        'Ta có: $\\dfrac{5}{4} - \\dfrac{7}{5} = \\dfrac{25 - 28}{20} = \\dfrac{-3}{20}$. '
-                        'Đẳng thức trở thành: $x - \\left(\\dfrac{-3}{20}\\right) = \\dfrac{9}{20}$. Áp '
-                        'dụn...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 2: Cộng, trừ, nhân, chia số hữu tỉ** để giải bài '
+                 'toán sau: Tính một cách hợp lí: $A = \\dfrac{-3}{7} \\cdot \\dfrac{5}{9} + \\dfrac{-3}{7} '
+                 '\\cdot \\dfrac{4}{9} + 1\\dfrac{3}{7}$. Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Áp dụng tính chất phân phối của phép nhân đối với phép cộng: $A = \\dfrac{-3}{7} '
+                        '\\cdot \\geft(\\dfrac{5}{9} + \\dfrac{4}{9}\\right) + \\dfrac{10}{7} = '
+                        '\\dfrac{-3}{7} \\cdot 1 + \\dfrac{10}{7} = \\dfrac{7}{7} = 1$...',
+                        'Áp dụng tính chất phân phối của phép nhân đối với phép cộng: $A = \\dfrac{7}{-3} '
+                        '\\cdot \\left(\\dfrac{5}{9} + \\dfrac{4}{9}\\right) + \\dfrac{10}{7} = '
+                        '\\dfrac{-3}{7} \\cdot 1 + \\dfrac{10}{7} = \\dfrac{7}{7} = 1$...',
+                        'Áp dụng tính chất phân phối của phép nhân đối với phép cộng: $A = \\dfrac{-6}{7} '
+                        '\\cdot \\left(\\dfrac{5}{9} + \\dfrac{4}{9}\\right) + \\dfrac{10}{7} = '
+                        '\\dfrac{-3}{7} \\cdot 1 + \\dfrac{10}{7} = \\dfrac{7}{7} = 1$...',
                         'Áp dụng tính chất phân phối của phép nhân đối với phép cộng: $A = \\dfrac{-3}{7} '
                         '\\cdot \\left(\\dfrac{5}{9} + \\dfrac{4}{9}\\right) + \\dfrac{10}{7} = '
                         '\\dfrac{-3}{7} \\cdot 1 + \\dfrac{10}{7} = \\dfrac{7}{7} = 1$...'],
@@ -365,9 +377,8 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
   'requirements': ['Mô tả được phép tính lũy thừa với số mũ tự nhiên của một số hữu tỉ.',
                    'Thực hiện được các phép tính: nhân, chia hai lũy thừa cùng cơ số, tính lũy thừa của một '
                    'lũy thừa, lũy thừa của một tích và một thương.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Lũy thừa của phân số** '
-                   '($\\left(\\dfrac{a}{b}\\right)^n = \\dfrac{a^n}{b^n} \\quad (b \\neq 0, n \\in '
-                   '\\mathbb{N})$) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 3: Lũy thừa với số mũ tự nhiên của một số hữu tỉ** để giải '
+                   'bài tập minh họa và bài toán thực tiễn.'],
   'definition': 'Lũy thừa bậc $n$ của một số hữu tỉ $x$, kí hiệu $x^n$, là tích của $n$ thừa số $x$ ($n$ là '
                 'số tự nhiên lớn hơn $1$): $x^n = \\underbrace{x \\cdot x \\cdots x}_{n \\text{ thừa số } '
                 'x}$.',
@@ -418,30 +429,33 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 3: Lũy thừa với số mũ tự nhiên của một số hữu tỉ**, công '
-                 'thức hoặc quy tắc nào sau đây biểu diễn đúng **Lũy thừa của phân số**?',
+            'q': 'Trong **Bài 3: Lũy thừa với số mũ tự nhiên của một số hữu tỉ**, quy tắc hoặc công thức nào '
+                 'sau đây xác định đúng **Lũy thừa của phân số**?',
             'options': ['$\\left(\\dfrac{a}{b}\\right)^n = \\dfrac{a^n}{b^n} \\quad (b \\neq 0, n \\in '
                         '\\mathbb{N})$',
-                        '$x^m \\cdot x^n = x^{m+n} \\quad (m, n \\in \\mathbb{N})$',
-                        '$x^m : x^n = x^{m-n} \\quad (x \\neq 0, m \\ge n)$',
-                        '$\\left(x^m\\right)^n = x^{m \\cdot n}$'],
+                        '$\\left(\\dfrac{a}{b}\\right)^n = \\dfrac{a^n}{b^n} \\quad (b \\neq 0, n \\notin '
+                        '\\mathbb{N})$',
+                        '$\\left(\\dfrac{b}{a}\\right)^n = \\dfrac{a^n}{b^n} \\quad (b \\neq 0, n \\in '
+                        '\\mathbb{N})$',
+                        '$\\left(\\dfrac{a}{b}\\right)^n = \\dfrac{a^n}{b^n} \\quad (b \\neq 2, n \\in '
+                        '\\mathbb{N})$'],
             'answer': 0,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 3: Lũy thừa với số mũ tự nhiên của một số hữu '
-                        'tỉ, **Lũy thừa của phân số** được xác định bởi: $\\left(\\dfrac{a}{b}\\right)^n = '
+            'solution': 'Theo kiến thức trọng tâm của Bài 3: Lũy thừa với số mũ tự nhiên của một số hữu tỉ, '
+                        '**Lũy thừa của phân số** được xác định bởi: $\\left(\\dfrac{a}{b}\\right)^n = '
                         '\\dfrac{a^n}{b^n} \\quad (b \\neq 0, n \\in \\mathbb{N})$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 3: Lũy thừa với số mũ tự nhiên của một số hữu tỉ**, nội dung/biểu thức $x^m '
-                 '\\cdot x^n = x^{m+n} \\quad (m, n \\in \\mathbb{N})$ là quy tắc hoặc công thức của mục nào '
-                 'sau đây?',
-            'options': ['Lũy thừa của phân số',
-                        'Nhân hai lũy thừa cùng cơ số',
-                        'Chia hai lũy thừa cùng cơ số',
-                        'Lũy thừa của lũy thừa'],
+            'q': 'Khi học **Bài 3: Lũy thừa với số mũ tự nhiên của một số hữu tỉ**, biểu thức hoặc quy tắc '
+                 'nào dưới đây biểu diễn đúng **Nhân hai lũy thừa cùng cơ số**?',
+            'options': ['$x^m \\cdot x^n = x^{m+n} \\quad (m, n \\notin \\mathbb{N})$',
+                        '$x^m \\cdot x^n = x^{m+n} \\quad (m, n \\in \\mathbb{N})$',
+                        '$x^m \\cdot x^n = x^{m \\cdot n} \\quad (m, n \\in \\mathbb{N})$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $x^m \\cdot x^n = x^{m+n} '
+                        '\\quad (m, n \\in \\mathbb{N})$'],
             'answer': 1,
-            'solution': 'Trong Bài 3: Lũy thừa với số mũ tự nhiên của một số hữu tỉ, biểu thức/quy tắc $x^m '
-                        '\\cdot x^n = x^{m+n} \\quad (m, n \\in \\mathbb{N})$ chính là nội dung của **Nhân '
-                        'hai lũy thừa cùng cơ số**.'},
+            'solution': 'Trong Bài 3: Lũy thừa với số mũ tự nhiên của một số hữu tỉ, **Nhân hai lũy thừa '
+                        'cùng cơ số** có công thức/quy tắc là: $x^m \\cdot x^n = x^{m+n} \\quad (m, n \\in '
+                        '\\mathbb{N})$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Kết quả của phép tính $\\left[\\left(\\dfrac{-1}{2}\\right)^2\\right]^3$ bằng:',
@@ -453,15 +467,17 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 3: Lũy thừa với số mũ tự nhiên của một số hữu tỉ** (Chương I: Số hữu tỉ), '
-                 'khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Nhận biết được số hữu tỉ và lấy được ví dụ về số hữu tỉ, nhận biết tập hợp các số '
-                        'hữu tỉ $\\mathbb{Q}$.',
-                        'Biểu diễn được số hữu tỉ trên trục số và nhận biết được số đối của một số hữu tỉ.',
-                        'Nhận biết được thứ tự trong tập hợp các số hữu tỉ và so sánh được hai số hữu tỉ.',
+            'q': 'Để nắm vững bản chất của **Bài 3: Lũy thừa với số mũ tự nhiên của một số hữu tỉ**, nhận '
+                 'định nào sau đây là **chính xác**?',
+            'options': ['Mô tả được phép tính lũy thừa với số mũ tự nhiên của một số hữu tỉ. (với dấu ngược '
+                        'lại)',
+                        'Đảo ngược vế của quy tắc: Mô tả được phép tính lũy thừa với số mũ tự nhiên của một '
+                        'số hữu tỉ.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Mô tả được phép tính lũy thừa '
+                        'với số mũ tự nhiên của một số hữu tỉ.',
                         'Mô tả được phép tính lũy thừa với số mũ tự nhiên của một số hữu tỉ.'],
             'answer': 3,
-            'solution': 'Theo yêu cầu cần đạt của Bài 3: Lũy thừa với số mũ tự nhiên của một số hữu tỉ: Mô '
+            'solution': 'Theo nội dung cốt lõi của Bài 3: Lũy thừa với số mũ tự nhiên của một số hữu tỉ: Mô '
                         'tả được phép tính lũy thừa với số mũ tự nhiên của một số hữu tỉ.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -479,44 +495,43 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 3: Lũy thừa với số mũ '
-                 'tự nhiên của một số hữu tỉ**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Mô tả được phép tính lũy thừa với '
-                           'số mũ tự nhiên của một số hữu tỉ.',
-                           'Quy tắc/công thức **Lũy thừa của phân số** trong bài được xác định bởi: '
-                           '$\\left(\\dfrac{a}{b}\\right)^n = \\dfrac{a^n}{b^n} \\quad (b \\neq 0, n \\in '
-                           '\\mathbb{N})$.',
-                           'Trong mọi trường hợp, **Lũy thừa của phân số** luôn được tính bằng công thức '
-                           '$\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} \\;\\middle|\\; a, b \\in \\mathbb{Z}, b '
-                           '\\neq 0 \\right\\}$ (thuộc Định nghĩa tập $\\mathbb{Q}$) mà không cần điều kiện '
-                           'của Bài 3: Lũy thừa với số mũ tự nhiên của một số hữu tỉ.',
-                           'Với bài toán minh họa: “Rút gọn và tính giá trị của biểu thức $M = '
-                           '\\dfrac{8^{10}}{4^8}$ và $N = (0,125)^3 \\cdot 8^3$.”, lời giải đúng là: Ta có: '
-                           '$M = \\dfrac{(2^3)^{10}}{(2^2)^8} = \\dfrac{2^{30}}{2^{16}} = 2^{30-16} = 2^{14} '
-                           '= 16384$. $N = (0,125 \\cdot 8)^3 = 1^3 = 1$.'],
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 3: Lũy thừa với số mũ tự '
+                 'nhiên của một số hữu tỉ**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Mô tả được phép tính lũy thừa với số mũ '
+                           'tự nhiên của một số hữu tỉ.',
+                           'Trong **Bài 3: Lũy thừa với số mũ tự nhiên của một số hữu tỉ**, quy tắc/công '
+                           'thức **Lũy thừa của phân số** được viết là: $\\left(\\dfrac{a}{b}\\right)^n = '
+                           '\\dfrac{a^n}{b^n} \\quad (b \\neq 0, n \\in \\mathbb{N})$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $\\left(\\dfrac{a}{b}\\right)^n = '
+                           '\\dfrac{a^n}{b^n} \\quad (b \\neq 0, n \\notin \\mathbb{N})$ thì kết quả của '
+                           '**Lũy thừa của phân số** trong **Bài 3: Lũy thừa với số mũ tự nhiên của một số '
+                           'hữu tỉ** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Rút gọn và tính giá trị của biểu thức $M = '
+                           '\\dfrac{8^{10}}{4^8}$ và $N = (0,125)^3 \\cdot 8^3$.”, kết quả giải đúng là: Ta '
+                           'có: $M = \\dfrac{(2^3)^{10}}{(2^2)^8} = \\dfrac{2^{30}}{2^{16}} = 2^{30-16} = '
+                           '2^{14} = 16384$. $N = (0,125 \\cdot 8)^3 = 1^3 = 1$.'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 3: Lũy thừa với số mũ tự nhiên của một số '
-                        'hữu tỉ. b) **Đúng** theo công thức trọng tâm **Lũy thừa của phân số** '
+                        'hữu tỉ. b) **Đúng** theo công thức **Lũy thừa của phân số** '
                         '($\\left(\\dfrac{a}{b}\\right)^n = \\dfrac{a^n}{b^n} \\quad (b \\neq 0, n \\in '
-                        '\\mathbb{N})$). c) **Sai** vì $\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} '
-                        '\\;\\middle|\\; a, b \\in \\mathbb{Z}, b \\neq 0 \\right\\}$ là công thức của nội '
-                        'dung khác, không phải quy tắc chung của **Lũy thừa của phân số**. d) **Đúng** theo '
-                        'lời giải ví dụ minh họa trong bài học.'},
+                        '\\mathbb{N})$). c) **Sai** vì công thức đúng của **Lũy thừa của phân số** phải là '
+                        '$\\left(\\dfrac{a}{b}\\right)^n = \\dfrac{a^n}{b^n} \\quad (b \\neq 0, n \\in '
+                        '\\mathbb{N})$ chứ không phải $\\left(\\dfrac{a}{b}\\right)^n = \\dfrac{a^n}{b^n} '
+                        '\\quad (b \\neq 0, n \\notin \\mathbb{N})$. d) **Đúng** theo lời giải ví dụ minh '
+                        'họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 3: Lũy thừa với số mũ tự nhiên của một số hữu tỉ** để giải quyết '
-                 'tình huống sau: Rút gọn và tính giá trị của biểu thức $M = \\dfrac{8^{10}}{4^8}$ và $N = '
-                 '(0,125)^3 \\cdot 8^3$. Kết quả và hướng giải nào dưới đây là **đúng**?',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 3: Lũy thừa với số mũ tự nhiên của một số hữu tỉ** '
+                 'để giải bài toán sau: Rút gọn và tính giá trị của biểu thức $M = \\dfrac{8^{10}}{4^8}$ và '
+                 '$N = (0,125)^3 \\cdot 8^3$. Cách giải và kết quả nào dưới đây là **đúng**?',
             'options': ['Ta có: $M = \\dfrac{(2^3)^{10}}{(2^2)^8} = \\dfrac{2^{30}}{2^{16}} = 2^{30-16} = '
                         '2^{14} = 16384$. $N = (0,125 \\cdot 8)^3 = 1^3 = 1$.',
-                        'Ta có: $-2,5 = \\dfrac{-5}{2} = \\dfrac{-15}{6}$; $1\\dfrac{2}{3} = \\dfrac{5}{3}$; '
-                        '$-4 = \\dfrac{-4}{1} = \\dfrac{-24}{6}$. Vì $-4 < -2,5 < 0 < 1\\dfrac{2}{3}$ n...',
-                        'Áp dụng tính chất phân phối của phép nhân đối với phép cộng: $A = \\dfrac{-3}{7} '
-                        '\\cdot \\left(\\dfrac{5}{9} + \\dfrac{4}{9}\\right) + \\dfrac{10}{7} = '
-                        '\\dfrac{-3}{7} \\cdot 1 + \\dfrac{10}{7} = \\dfrac{7}{7} = 1$...',
-                        'Ta có: $\\dfrac{5}{4} - \\dfrac{7}{5} = \\dfrac{25 - 28}{20} = \\dfrac{-3}{20}$. '
-                        'Đẳng thức trở thành: $x - \\left(\\dfrac{-3}{20}\\right) = \\dfrac{9}{20}$. Áp '
-                        'dụn...'],
+                        'Ta có: $M = \\dfrac{(2^3)^{10}}{(2^2)^8} = \\dfrac{2^{30}}{2^{16}} = 2^{30-16} = '
+                        '2^{14} = 16384$. $N = (0,125 : 8)^3 = 1^3 = 1$.',
+                        'Ta có: $M = \\dfrac{(2^3)^{10}}{(2^2)^8} = \\dfrac{2^{30}}{2^{16}} = 2^{30-16} = '
+                        '2^{14} = 16384$. $N = (0,125 \\cdot 8)^3 = 1^3 = 2$.',
+                        'Ta có: $M = \\dfrac{(4^3)^{10}}{(2^2)^8} = \\dfrac{2^{30}}{2^{16}} = 2^{30-16} = '
+                        '2^{14} = 16384$. $N = (0,125 \\cdot 8)^3 = 1^3 = 1$.'],
             'answer': 0,
             'solution': 'Lời giải chi tiết theo Bài 3: Lũy thừa với số mũ tự nhiên của một số hữu tỉ: Ta có: '
                         '$M = \\dfrac{(2^3)^{10}}{(2^2)^8} = \\dfrac{2^{30}}{2^{16}} = 2^{30-16} = 2^{14} = '
@@ -591,29 +606,29 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 4: Thứ tự thực hiện các phép tính. Quy tắc chuyển vế**, '
-                 'công thức hoặc quy tắc nào sau đây biểu diễn đúng **Quy tắc chuyển vế (cộng sang trừ)**?',
-            'options': ['$x - y = z \\Rightarrow x = z + y$',
+            'q': 'Trong **Bài 4: Thứ tự thực hiện các phép tính. Quy tắc chuyển vế**, quy tắc hoặc công thức '
+                 'nào sau đây xác định đúng **Quy tắc chuyển vế (cộng sang trừ)**?',
+            'options': ['$x - y = z \\Rightarrow x = z - y$',
                         '$x + y = z \\Rightarrow x = z - y$',
-                        '$-(a + b - c) = -a - b + c$',
-                        '$\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} \\;\\middle|\\; a, b \\in \\mathbb{Z}, b '
-                        '\\neq 0 \\right\\}$'],
+                        'Đảo ngược vế của quy tắc: $x + y = z \\Rightarrow x = z - y$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $x + y = z \\Rightarrow x = z - '
+                        'y$'],
             'answer': 1,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 4: Thứ tự thực hiện các phép tính. Quy tắc '
-                        'chuyển vế, **Quy tắc chuyển vế (cộng sang trừ)** được xác định bởi: $x + y = z '
+            'solution': 'Theo kiến thức trọng tâm của Bài 4: Thứ tự thực hiện các phép tính. Quy tắc chuyển '
+                        'vế, **Quy tắc chuyển vế (cộng sang trừ)** được xác định bởi: $x + y = z '
                         '\\Rightarrow x = z - y$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 4: Thứ tự thực hiện các phép tính. Quy tắc chuyển vế**, nội dung/biểu thức $x '
-                 '- y = z \\Rightarrow x = z + y$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Quy tắc chuyển vế (cộng sang trừ)',
-                        'Quy tắc bỏ dấu ngoặc có dấu trừ đằng trước',
-                        'Quy tắc chuyển vế (trừ sang cộng)',
-                        'Định nghĩa tập $\\mathbb{Q}$'],
+            'q': 'Khi học **Bài 4: Thứ tự thực hiện các phép tính. Quy tắc chuyển vế**, biểu thức hoặc quy '
+                 'tắc nào dưới đây biểu diễn đúng **Quy tắc chuyển vế (trừ sang cộng)**?',
+            'options': ['$x - y = z \\Rightarrow x = z - y$',
+                        'Đảo ngược vế của quy tắc: $x - y = z \\Rightarrow x = z + y$',
+                        '$x - y = z \\Rightarrow x = z + y$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $x - y = z \\Rightarrow x = z + '
+                        'y$'],
             'answer': 2,
-            'solution': 'Trong Bài 4: Thứ tự thực hiện các phép tính. Quy tắc chuyển vế, biểu thức/quy tắc '
-                        '$x - y = z \\Rightarrow x = z + y$ chính là nội dung của **Quy tắc chuyển vế (trừ '
-                        'sang cộng)**.'},
+            'solution': 'Trong Bài 4: Thứ tự thực hiện các phép tính. Quy tắc chuyển vế, **Quy tắc chuyển vế '
+                        '(trừ sang cộng)** có công thức/quy tắc là: $x - y = z \\Rightarrow x = z + y$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Giá trị của $x$ thỏa mãn $\\dfrac{3}{4} - 2x = \\dfrac{1}{4}$ là:',
@@ -625,16 +640,17 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 4: Thứ tự thực hiện các phép tính. Quy tắc chuyển vế** (Chương I: Số hữu '
-                 'tỉ), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của '
-                 'bài?',
+            'q': 'Để nắm vững bản chất của **Bài 4: Thứ tự thực hiện các phép tính. Quy tắc chuyển vế**, '
+                 'nhận định nào sau đây là **chính xác**?',
             'options': ['Mô tả được thứ tự thực hiện các phép tính trong biểu thức chứa số hữu tỉ.',
-                        'Nhận biết được số hữu tỉ và lấy được ví dụ về số hữu tỉ, nhận biết tập hợp các số '
-                        'hữu tỉ $\\mathbb{Q}$.',
-                        'Biểu diễn được số hữu tỉ trên trục số và nhận biết được số đối của một số hữu tỉ.',
-                        'Nhận biết được thứ tự trong tập hợp các số hữu tỉ và so sánh được hai số hữu tỉ.'],
+                        'Mô tả được thứ tự thực hiện các phép tính trong biểu thức chứa số hữu tỉ. (với dấu '
+                        'ngược lại)',
+                        'Đảo ngược vế của quy tắc: Mô tả được thứ tự thực hiện các phép tính trong biểu thức '
+                        'chứa số hữu tỉ.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Mô tả được thứ tự thực hiện các '
+                        'phép tính trong biểu thức chứa số hữu tỉ.'],
             'answer': 0,
-            'solution': 'Theo yêu cầu cần đạt của Bài 4: Thứ tự thực hiện các phép tính. Quy tắc chuyển vế: '
+            'solution': 'Theo nội dung cốt lõi của Bài 4: Thứ tự thực hiện các phép tính. Quy tắc chuyển vế: '
                         'Mô tả được thứ tự thực hiện các phép tính trong biểu thức chứa số hữu tỉ.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -652,42 +668,40 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 4: Thứ tự thực hiện các '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 4: Thứ tự thực hiện các '
                  'phép tính. Quy tắc chuyển vế**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Mô tả được thứ tự thực hiện các '
-                           'phép tính trong biểu thức chứa số hữu tỉ.',
-                           'Quy tắc/công thức **Quy tắc chuyển vế (cộng sang trừ)** trong bài được xác định '
-                           'bởi: $x + y = z \\Rightarrow x = z - y$.',
-                           'Trong mọi trường hợp, **Quy tắc chuyển vế (cộng sang trừ)** luôn được tính bằng '
-                           'công thức $\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} \\;\\middle|\\; a, b \\in '
-                           '\\mathbb{Z}, b \\neq 0 \\right\\}$ (thuộc Định nghĩa tập $\\mathbb{Q}$) mà không '
-                           'cần điều kiện của Bài 4: Thứ tự thực hiện các phép tính. Quy tắc chuyển vế.',
-                           'Với bài toán minh họa: “Tìm $x$, biết: $x - \\left(\\dfrac{5}{4} - '
-                           '\\dfrac{7}{5}\\right) = \\dfrac{9}{20}$.”, lời giải đúng là: Ta có: '
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Mô tả được thứ tự thực hiện các phép '
+                           'tính trong biểu thức chứa số hữu tỉ.',
+                           'Trong **Bài 4: Thứ tự thực hiện các phép tính. Quy tắc chuyển vế**, quy tắc/công '
+                           'thức **Quy tắc chuyển vế (cộng sang trừ)** được viết là: $x + y = z \\Rightarrow '
+                           'x = z - y$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $x - y = z \\Rightarrow x = z - y$ thì kết '
+                           'quả của **Quy tắc chuyển vế (cộng sang trừ)** trong **Bài 4: Thứ tự thực hiện '
+                           'các phép tính. Quy tắc chuyển vế** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Tìm $x$, biết: $x - \\left(\\dfrac{5}{4} - '
+                           '\\dfrac{7}{5}\\right) = \\dfrac{9}{20}$.”, kết quả giải đúng là: Ta có: '
                            '$\\dfrac{5}{4} - \\dfrac{7}{5} = \\dfrac{25 - 28}{20} = \\dfrac{-3}{20}$. Đẳng '
                            'thức trở thành: $x - \\left(\\dfrac{-3}{20}\\right) = \\dfrac{9}{20}$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 4: Thứ tự thực hiện các phép tính. Quy tắc '
-                        'chuyển vế. b) **Đúng** theo công thức trọng tâm **Quy tắc chuyển vế (cộng sang '
-                        'trừ)** ($x + y = z \\Rightarrow x = z - y$). c) **Sai** vì $\\mathbb{Q} = \\left\\{ '
-                        '\\dfrac{a}{b} \\;\\middle|\\; a, b \\in \\mathbb{Z}, b \\neq 0 \\right\\}$ là công '
-                        'thức của nội dung khác, không phải quy tắc chung của **Quy tắc chuyển vế (cộng sang '
-                        'trừ)**. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        'chuyển vế. b) **Đúng** theo công thức **Quy tắc chuyển vế (cộng sang trừ)** ($x + y '
+                        '= z \\Rightarrow x = z - y$). c) **Sai** vì công thức đúng của **Quy tắc chuyển vế '
+                        '(cộng sang trừ)** phải là $x + y = z \\Rightarrow x = z - y$ chứ không phải $x - y '
+                        '= z \\Rightarrow x = z - y$. d) **Đúng** theo lời giải ví dụ minh họa trong bài '
+                        'học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 4: Thứ tự thực hiện các phép tính. Quy tắc chuyển vế** để giải '
-                 'quyết tình huống sau: Tìm $x$, biết: $x - \\left(\\dfrac{5}{4} - \\dfrac{7}{5}\\right) = '
-                 '\\dfrac{9}{20}$. Kết quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Ta có: $-2,5 = \\dfrac{-5}{2} = \\dfrac{-15}{6}$; $1\\dfrac{2}{3} = \\dfrac{5}{3}$; '
-                        '$-4 = \\dfrac{-4}{1} = \\dfrac{-24}{6}$. Vì $-4 < -2,5 < 0 < 1\\dfrac{2}{3}$ n...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 4: Thứ tự thực hiện các phép tính. Quy tắc chuyển '
+                 'vế** để giải bài toán sau: Tìm $x$, biết: $x - \\left(\\dfrac{5}{4} - '
+                 '\\dfrac{7}{5}\\right) = \\dfrac{9}{20}$. Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Ta có: $\\dfrac{5}{4} - \\dfrac{7}{5} = \\dfrac{25 - 28}{20} = \\dfrac{-3}{20}$. '
+                        'Đẳng thức trở thành: $x - \\geft(\\dfrac{-3}{20}\\right) = \\dfrac{9}{20}$. Á...',
                         'Ta có: $\\dfrac{5}{4} - \\dfrac{7}{5} = \\dfrac{25 - 28}{20} = \\dfrac{-3}{20}$. '
-                        'Đẳng thức trở thành: $x - \\left(\\dfrac{-3}{20}\\right) = \\dfrac{9}{20}$. Áp '
-                        'dụn...',
-                        'Áp dụng tính chất phân phối của phép nhân đối với phép cộng: $A = \\dfrac{-3}{7} '
-                        '\\cdot \\left(\\dfrac{5}{9} + \\dfrac{4}{9}\\right) + \\dfrac{10}{7} = '
-                        '\\dfrac{-3}{7} \\cdot 1 + \\dfrac{10}{7} = \\dfrac{7}{7} = 1$...',
-                        'Ta có: $M = \\dfrac{(2^3)^{10}}{(2^2)^8} = \\dfrac{2^{30}}{2^{16}} = 2^{30-16} = '
-                        '2^{14} = 16384$. $N = (0,125 \\cdot 8)^3 = 1^3 = 1$.'],
+                        'Đẳng thức trở thành: $x - \\left(\\dfrac{-3}{20}\\right) = \\dfrac{9}{20}$. Á...',
+                        'Ta có: $\\dfrac{4}{5} - \\dfrac{7}{5} = \\dfrac{25 - 28}{20} = \\dfrac{-3}{20}$. '
+                        'Đẳng thức trở thành: $x - \\left(\\dfrac{-3}{20}\\right) = \\dfrac{9}{20}$. Á...',
+                        'Ta có: $\\dfrac{10}{4} - \\dfrac{7}{5} = \\dfrac{25 - 28}{20} = \\dfrac{-3}{20}$. '
+                        'Đẳng thức trở thành: $x - \\left(\\dfrac{-3}{20}\\right) = \\dfrac{9}{20}$. Á...'],
             'answer': 1,
             'solution': 'Lời giải chi tiết theo Bài 4: Thứ tự thực hiện các phép tính. Quy tắc chuyển vế: Ta '
                         'có: $\\dfrac{5}{4} - \\dfrac{7}{5} = \\dfrac{25 - 28}{20} = \\dfrac{-3}{20}$.\n'
@@ -761,30 +775,32 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 5: Làm quen với số thập phân vô hạn tuần hoàn**, công '
-                 'thức hoặc quy tắc nào sau đây biểu diễn đúng **Cách viết gọn chu kì**?',
-            'options': ['$0,(1) = \\dfrac{1}{9}; \\quad 0,(a) = \\dfrac{a}{9}$ với $a \\in \\{1; 2; \\ldots; '
-                        '8\\}$',
-                        'Làm tròn số đến hàng phần mười (chữ số thập phân thứ nhất)',
+            'q': 'Trong **Bài 5: Làm quen với số thập phân vô hạn tuần hoàn**, quy tắc hoặc công thức nào '
+                 'sau đây xác định đúng **Cách viết gọn chu kì**?',
+            'options': ['$1,333\\ldots = 0,(3); \\quad -1,24545\\ldots = -1,2(45)$',
+                        '$0,333\\ldots = 0,(3); \\quad -1,24545\\ldots = -1,2(44)$',
                         '$0,333\\ldots = 0,(3); \\quad -1,24545\\ldots = -1,2(45)$',
-                        'Làm tròn số đến hàng phần trăm (chữ số thập phân thứ hai)'],
+                        '$2,333\\ldots = 0,(3); \\quad -1,24545\\ldots = -1,2(45)$'],
             'answer': 2,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 5: Làm quen với số thập phân vô hạn tuần '
-                        'hoàn, **Cách viết gọn chu kì** được xác định bởi: $0,333\\ldots = 0,(3); \\quad '
+            'solution': 'Theo kiến thức trọng tâm của Bài 5: Làm quen với số thập phân vô hạn tuần hoàn, '
+                        '**Cách viết gọn chu kì** được xác định bởi: $0,333\\ldots = 0,(3); \\quad '
                         '-1,24545\\ldots = -1,2(45)$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 5: Làm quen với số thập phân vô hạn tuần hoàn**, nội dung/biểu thức $0,(1) = '
-                 '\\dfrac{1}{9}; \\quad 0,(a) = \\dfrac{a}{9}$ với $a \\in \\{1; 2; \\ldots; 8\\}$ là quy '
-                 'tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Cách viết gọn chu kì',
-                        'Độ chính xác $d = 0,05$',
-                        'Độ chính xác $d = 0,005$',
-                        'Đổi chu kì đơn giản ra phân số'],
+            'q': 'Khi học **Bài 5: Làm quen với số thập phân vô hạn tuần hoàn**, biểu thức hoặc quy tắc nào '
+                 'dưới đây biểu diễn đúng **Đổi chu kì đơn giản ra phân số**?',
+            'options': ['$0,(1) = \\dfrac{1}{9}; \\quad 0,(a) = \\dfrac{a}{9}$ với $a \\notin \\{1; 2; '
+                        '\\ldots; 8\\}$',
+                        '$0,(1) = \\dfrac{9}{1}; \\quad 0,(a) = \\dfrac{a}{9}$ với $a \\in \\{1; 2; \\ldots; '
+                        '8\\}$',
+                        '$2,(1) = \\dfrac{1}{9}; \\quad 0,(a) = \\dfrac{a}{9}$ với $a \\in \\{1; 2; \\ldots; '
+                        '8\\}$',
+                        '$0,(1) = \\dfrac{1}{9}; \\quad 0,(a) = \\dfrac{a}{9}$ với $a \\in \\{1; 2; \\ldots; '
+                        '8\\}$'],
             'answer': 3,
-            'solution': 'Trong Bài 5: Làm quen với số thập phân vô hạn tuần hoàn, biểu thức/quy tắc $0,(1) = '
-                        '\\dfrac{1}{9}; \\quad 0,(a) = \\dfrac{a}{9}$ với $a \\in \\{1; 2; \\ldots; 8\\}$ '
-                        'chính là nội dung của **Đổi chu kì đơn giản ra phân số**.'},
+            'solution': 'Trong Bài 5: Làm quen với số thập phân vô hạn tuần hoàn, **Đổi chu kì đơn giản ra '
+                        'phân số** có công thức/quy tắc là: $0,(1) = \\dfrac{1}{9}; \\quad 0,(a) = '
+                        '\\dfrac{a}{9}$ với $a \\in \\{1; 2; \\ldots; 8\\}$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Làm tròn số $3,14159$ với độ chính xác $0,005$ ta được kết quả là:',
@@ -796,15 +812,17 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 5: Làm quen với số thập phân vô hạn tuần hoàn** (Chương II: Số thực), khẳng '
-                 'định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Nhận biết được số hữu tỉ và lấy được ví dụ về số hữu tỉ, nhận biết tập hợp các số '
-                        'hữu tỉ $\\mathbb{Q}$.',
+            'q': 'Để nắm vững bản chất của **Bài 5: Làm quen với số thập phân vô hạn tuần hoàn**, nhận định '
+                 'nào sau đây là **chính xác**?',
+            'options': ['Nhận biết được số thập phân hữu hạn và số thập phân vô hạn tuần hoàn. (với dấu '
+                        'ngược lại)',
                         'Nhận biết được số thập phân hữu hạn và số thập phân vô hạn tuần hoàn.',
-                        'Biểu diễn được số hữu tỉ trên trục số và nhận biết được số đối của một số hữu tỉ.',
-                        'Nhận biết được thứ tự trong tập hợp các số hữu tỉ và so sánh được hai số hữu tỉ.'],
+                        'Đảo ngược vế của quy tắc: Nhận biết được số thập phân hữu hạn và số thập phân vô '
+                        'hạn tuần hoàn.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nhận biết được số thập phân hữu '
+                        'hạn và số thập phân vô hạn tuần hoàn.'],
             'answer': 1,
-            'solution': 'Theo yêu cầu cần đạt của Bài 5: Làm quen với số thập phân vô hạn tuần hoàn: Nhận '
+            'solution': 'Theo nội dung cốt lõi của Bài 5: Làm quen với số thập phân vô hạn tuần hoàn: Nhận '
                         'biết được số thập phân hữu hạn và số thập phân vô hạn tuần hoàn.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -820,41 +838,41 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 5: Làm quen với số thập '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 5: Làm quen với số thập '
                  'phân vô hạn tuần hoàn**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được số thập phân hữu '
-                           'hạn và số thập phân vô hạn tuần hoàn.',
-                           'Quy tắc/công thức **Cách viết gọn chu kì** trong bài được xác định bởi: '
-                           '$0,333\\ldots = 0,(3); \\quad -1,24545\\ldots = -1,2(45)$.',
-                           'Trong mọi trường hợp, **Cách viết gọn chu kì** luôn được tính bằng công thức '
-                           '$\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} \\;\\middle|\\; a, b \\in \\mathbb{Z}, b '
-                           '\\neq 0 \\right\\}$ (thuộc Định nghĩa tập $\\mathbb{Q}$) mà không cần điều kiện '
-                           'của Bài 5: Làm quen với số thập phân vô hạn tuần hoàn.',
-                           'Với bài toán minh họa: “Viết phân số $\\dfrac{5}{12}$ dưới dạng số thập phân vô '
-                           'hạn tuần hoàn và làm tròn kết quả với độ chính xác $0,005$.”, lời giải đúng là: '
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết được số thập phân hữu hạn và '
+                           'số thập phân vô hạn tuần hoàn.',
+                           'Trong **Bài 5: Làm quen với số thập phân vô hạn tuần hoàn**, quy tắc/công thức '
+                           '**Cách viết gọn chu kì** được viết là: $0,333\\ldots = 0,(3); \\quad '
+                           '-1,24545\\ldots = -1,2(45)$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $1,333\\ldots = 0,(3); \\quad '
+                           '-1,24545\\ldots = -1,2(45)$ thì kết quả của **Cách viết gọn chu kì** trong **Bài '
+                           '5: Làm quen với số thập phân vô hạn tuần hoàn** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Viết phân số $\\dfrac{5}{12}$ dưới dạng số thập phân vô hạn '
+                           'tuần hoàn và làm tròn kết quả với độ chính xác $0,005$.”, kết quả giải đúng là: '
                            'Chia tử cho mẫu ta được $\\dfrac{5}{12} = 0,41666\\ldots = 0,41(6)$. Làm tròn '
-                           '$0,41666\\ldots$ với độ chính xác $0,005$ tức là làm tròn đến hàn...'],
+                           '$0,41666\\ldots$ với độ chính xác $0,005$ tức là làm tròn đế...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 5: Làm quen với số thập phân vô hạn tuần '
-                        'hoàn. b) **Đúng** theo công thức trọng tâm **Cách viết gọn chu kì** ($0,333\\ldots '
-                        '= 0,(3); \\quad -1,24545\\ldots = -1,2(45)$). c) **Sai** vì $\\mathbb{Q} = '
-                        '\\left\\{ \\dfrac{a}{b} \\;\\middle|\\; a, b \\in \\mathbb{Z}, b \\neq 0 '
-                        '\\right\\}$ là công thức của nội dung khác, không phải quy tắc chung của **Cách '
-                        'viết gọn chu kì**. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        'hoàn. b) **Đúng** theo công thức **Cách viết gọn chu kì** ($0,333\\ldots = 0,(3); '
+                        '\\quad -1,24545\\ldots = -1,2(45)$). c) **Sai** vì công thức đúng của **Cách viết '
+                        'gọn chu kì** phải là $0,333\\ldots = 0,(3); \\quad -1,24545\\ldots = -1,2(45)$ chứ '
+                        'không phải $1,333\\ldots = 0,(3); \\quad -1,24545\\ldots = -1,2(45)$. d) **Đúng** '
+                        'theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 5: Làm quen với số thập phân vô hạn tuần hoàn** để giải quyết '
-                 'tình huống sau: Viết phân số $\\dfrac{5}{12}$ dưới dạng số thập phân vô hạn tuần hoàn và '
-                 'làm tròn kết quả với độ chính xác $0,005$. Kết quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Ta có: $-2,5 = \\dfrac{-5}{2} = \\dfrac{-15}{6}$; $1\\dfrac{2}{3} = \\dfrac{5}{3}$; '
-                        '$-4 = \\dfrac{-4}{1} = \\dfrac{-24}{6}$. Vì $-4 < -2,5 < 0 < 1\\dfrac{2}{3}$ n...',
-                        'Áp dụng tính chất phân phối của phép nhân đối với phép cộng: $A = \\dfrac{-3}{7} '
-                        '\\cdot \\left(\\dfrac{5}{9} + \\dfrac{4}{9}\\right) + \\dfrac{10}{7} = '
-                        '\\dfrac{-3}{7} \\cdot 1 + \\dfrac{10}{7} = \\dfrac{7}{7} = 1$...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 5: Làm quen với số thập phân vô hạn tuần hoàn** để '
+                 'giải bài toán sau: Viết phân số $\\dfrac{5}{12}$ dưới dạng số thập phân vô hạn tuần hoàn '
+                 'và làm tròn kết quả với độ chính xác $0,005$. Cách giải và kết quả nào dưới đây là '
+                 '**đúng**?',
+            'options': ['Chia tử cho mẫu ta được $\\dfrac{6}{12} = 0,41666\\ldots = 0,41(6)$. Làm tròn '
+                        '$0,41666\\ldots$ với độ chính xác $0,005$ tức là làm tròn đến hàng phần tră...',
+                        'Chia tử cho mẫu ta được $\\dfrac{12}{5} = 0,41666\\ldots = 0,41(6)$. Làm tròn '
+                        '$0,41666\\ldots$ với độ chính xác $0,005$ tức là làm tròn đến hàng phần tră...',
                         'Chia tử cho mẫu ta được $\\dfrac{5}{12} = 0,41666\\ldots = 0,41(6)$. Làm tròn '
-                        '$0,41666\\ldots$ với độ chính xác $0,005$ tức là làm tròn đến hàng phần trăm: ta...',
-                        'Ta có: $M = \\dfrac{(2^3)^{10}}{(2^2)^8} = \\dfrac{2^{30}}{2^{16}} = 2^{30-16} = '
-                        '2^{14} = 16384$. $N = (0,125 \\cdot 8)^3 = 1^3 = 1$.'],
+                        '$0,41666\\ldots$ với độ chính xác $0,005$ tức là làm tròn đến hàng phần tră...',
+                        'Chia tử cho mẫu ta được $\\dfrac{10}{12} = 0,41666\\ldots = 0,41(6)$. Làm tròn '
+                        '$0,41666\\ldots$ với độ chính xác $0,005$ tức là làm tròn đến hàng phần tră...'],
             'answer': 2,
             'solution': 'Lời giải chi tiết theo Bài 5: Làm quen với số thập phân vô hạn tuần hoàn: Chia tử '
                         'cho mẫu ta được $\\dfrac{5}{12} = 0,41666\\ldots = 0,41(6)$.\n'
@@ -920,29 +938,31 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 6: Số vô tỉ. Căn bậc hai số học**, công thức hoặc quy '
-                 'tắc nào sau đây biểu diễn đúng **Định nghĩa căn bậc hai số học**?',
-            'options': ['$(\\sqrt{a})^2 = a \\quad (a \\ge 0)$',
-                        '$\\sqrt{a^2} = a \\quad (a \\ge 0)$',
-                        '$\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} \\;\\middle|\\; a, b \\in \\mathbb{Z}, b '
-                        '\\neq 0 \\right\\}$',
+            'q': 'Trong **Bài 6: Số vô tỉ. Căn bậc hai số học**, quy tắc hoặc công thức nào sau đây xác định '
+                 'đúng **Định nghĩa căn bậc hai số học**?',
+            'options': ['$x = \\sqrt{a} \\Leftrightarrow \\begin{cases} x \\le 0 \\\\ x^2 = a \\end{cases} '
+                        '\\quad (a \\ge 0)$',
+                        '$x = \\sqrt{a} \\Leftrightarrow \\begin{cases} x \\ge 0 \\\\ x^2 = a \\end{cases} '
+                        '\\quad (a \\ge 1)$',
+                        '$x = \\sqrt{a} \\Leftrightarrow \\begin{cases} x \\ge 2 \\\\ x^2 = a \\end{cases} '
+                        '\\quad (a \\ge 0)$',
                         '$x = \\sqrt{a} \\Leftrightarrow \\begin{cases} x \\ge 0 \\\\ x^2 = a \\end{cases} '
                         '\\quad (a \\ge 0)$'],
             'answer': 3,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 6: Số vô tỉ. Căn bậc hai số học, **Định nghĩa '
-                        'căn bậc hai số học** được xác định bởi: $x = \\sqrt{a} \\Leftrightarrow '
-                        '\\begin{cases} x \\ge 0 \\\\ x^2 = a \\end{cases} \\quad (a \\ge 0)$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 6: Số vô tỉ. Căn bậc hai số học, **Định nghĩa căn '
+                        'bậc hai số học** được xác định bởi: $x = \\sqrt{a} \\Leftrightarrow \\begin{cases} '
+                        'x \\ge 0 \\\\ x^2 = a \\end{cases} \\quad (a \\ge 0)$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 6: Số vô tỉ. Căn bậc hai số học**, nội dung/biểu thức $(\\sqrt{a})^2 = a '
-                 '\\quad (a \\ge 0)$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Bình phương của căn bậc hai',
-                        'Định nghĩa căn bậc hai số học',
-                        'Căn bậc hai của bình phương số không âm',
-                        'Định nghĩa tập $\\mathbb{Q}$'],
+            'q': 'Khi học **Bài 6: Số vô tỉ. Căn bậc hai số học**, biểu thức hoặc quy tắc nào dưới đây biểu '
+                 'diễn đúng **Bình phương của căn bậc hai**?',
+            'options': ['$(\\sqrt{a})^2 = a \\quad (a \\ge 0)$',
+                        '$(\\sqrt{a})^2 = a \\quad (a \\le 0)$',
+                        '$(\\sqrt{a})^2 = a \\quad (a \\ge 1)$',
+                        '$(\\sqrt{a})^4 = a \\quad (a \\ge 0)$'],
             'answer': 0,
-            'solution': 'Trong Bài 6: Số vô tỉ. Căn bậc hai số học, biểu thức/quy tắc $(\\sqrt{a})^2 = a '
-                        '\\quad (a \\ge 0)$ chính là nội dung của **Bình phương của căn bậc hai**.'},
+            'solution': 'Trong Bài 6: Số vô tỉ. Căn bậc hai số học, **Bình phương của căn bậc hai** có công '
+                        'thức/quy tắc là: $(\\sqrt{a})^2 = a \\quad (a \\ge 0)$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Giá trị của biểu thức $\\sqrt{36} + \\sqrt{0,09}$ bằng:',
@@ -954,15 +974,15 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 6: Số vô tỉ. Căn bậc hai số học** (Chương II: Số thực), khẳng định nào sau '
-                 'đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Nhận biết được số hữu tỉ và lấy được ví dụ về số hữu tỉ, nhận biết tập hợp các số '
-                        'hữu tỉ $\\mathbb{Q}$.',
-                        'Biểu diễn được số hữu tỉ trên trục số và nhận biết được số đối của một số hữu tỉ.',
+            'q': 'Để nắm vững bản chất của **Bài 6: Số vô tỉ. Căn bậc hai số học**, nhận định nào sau đây là '
+                 '**chính xác**?',
+            'options': ['Nhận biết được số vô tỉ và lấy được ví dụ về số vô tỉ. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Nhận biết được số vô tỉ và lấy được ví dụ về số vô tỉ.',
                         'Nhận biết được số vô tỉ và lấy được ví dụ về số vô tỉ.',
-                        'Nhận biết được thứ tự trong tập hợp các số hữu tỉ và so sánh được hai số hữu tỉ.'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nhận biết được số vô tỉ và lấy '
+                        'được ví dụ về số vô tỉ.'],
             'answer': 2,
-            'solution': 'Theo yêu cầu cần đạt của Bài 6: Số vô tỉ. Căn bậc hai số học: Nhận biết được số vô '
+            'solution': 'Theo nội dung cốt lõi của Bài 6: Số vô tỉ. Căn bậc hai số học: Nhận biết được số vô '
                         'tỉ và lấy được ví dụ về số vô tỉ.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -978,41 +998,41 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 6: Số vô tỉ. Căn bậc '
-                 'hai số học**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được số vô tỉ và lấy '
-                           'được ví dụ về số vô tỉ.',
-                           'Quy tắc/công thức **Định nghĩa căn bậc hai số học** trong bài được xác định bởi: '
-                           '$x = \\sqrt{a} \\Leftrightarrow \\begin{cases} x \\ge 0 \\\\ x^2 = a '
-                           '\\end{cases} \\quad (a \\ge 0)$.',
-                           'Trong mọi trường hợp, **Định nghĩa căn bậc hai số học** luôn được tính bằng công '
-                           'thức $\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} \\;\\middle|\\; a, b \\in '
-                           '\\mathbb{Z}, b \\neq 0 \\right\\}$ (thuộc Định nghĩa tập $\\mathbb{Q}$) mà không '
-                           'cần điều kiện của Bài 6: Số vô tỉ. Căn bậc hai số học.',
-                           'Với bài toán minh họa: “Tính giá trị của biểu thức $A = \\sqrt{81} - 2\\sqrt{25} '
-                           '+ \\sqrt{(-4)^2}$.”, lời giải đúng là: Ta có: $\\sqrt{81} = 9$; $\\sqrt{25} = '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 6: Số vô tỉ. Căn bậc hai số '
+                 'học**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết được số vô tỉ và lấy được ví '
+                           'dụ về số vô tỉ.',
+                           'Trong **Bài 6: Số vô tỉ. Căn bậc hai số học**, quy tắc/công thức **Định nghĩa '
+                           'căn bậc hai số học** được viết là: $x = \\sqrt{a} \\Leftrightarrow '
+                           '\\begin{cases} x \\ge 0 \\\\ x^2 = a \\end{cases} \\quad (a \\ge 0)$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $x = \\sqrt{a} \\Leftrightarrow '
+                           '\\begin{cases} x \\le 0 \\\\ x^2 = a \\end{cases} \\quad (a \\ge 0)$ thì kết quả '
+                           'của **Định nghĩa căn bậc hai số học** trong **Bài 6: Số vô tỉ. Căn bậc hai số '
+                           'học** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Tính giá trị của biểu thức $A = \\sqrt{81} - 2\\sqrt{25} + '
+                           '\\sqrt{(-4)^2}$.”, kết quả giải đúng là: Ta có: $\\sqrt{81} = 9$; $\\sqrt{25} = '
                            '5$; $\\sqrt{(-4)^2} = \\sqrt{16} = 4$. Do đó $A = 9 - 2 \\cdot 5 + 4 = 9 - 10 + '
                            '4 = 3$.'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 6: Số vô tỉ. Căn bậc hai số học. b) '
-                        '**Đúng** theo công thức trọng tâm **Định nghĩa căn bậc hai số học** ($x = \\sqrt{a} '
+                        '**Đúng** theo công thức **Định nghĩa căn bậc hai số học** ($x = \\sqrt{a} '
                         '\\Leftrightarrow \\begin{cases} x \\ge 0 \\\\ x^2 = a \\end{cases} \\quad (a \\ge '
-                        '0)$). c) **Sai** vì $\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} \\;\\middle|\\; a, b '
-                        '\\in \\mathbb{Z}, b \\neq 0 \\right\\}$ là công thức của nội dung khác, không phải '
-                        'quy tắc chung của **Định nghĩa căn bậc hai số học**. d) **Đúng** theo lời giải ví '
+                        '0)$). c) **Sai** vì công thức đúng của **Định nghĩa căn bậc hai số học** phải là $x '
+                        '= \\sqrt{a} \\Leftrightarrow \\begin{cases} x \\ge 0 \\\\ x^2 = a \\end{cases} '
+                        '\\quad (a \\ge 0)$ chứ không phải $x = \\sqrt{a} \\Leftrightarrow \\begin{cases} x '
+                        '\\le 0 \\\\ x^2 = a \\end{cases} \\quad (a \\ge 0)$. d) **Đúng** theo lời giải ví '
                         'dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 6: Số vô tỉ. Căn bậc hai số học** để giải quyết tình huống sau: '
-                 'Tính giá trị của biểu thức $A = \\sqrt{81} - 2\\sqrt{25} + \\sqrt{(-4)^2}$. Kết quả và '
-                 'hướng giải nào dưới đây là **đúng**?',
-            'options': ['Ta có: $-2,5 = \\dfrac{-5}{2} = \\dfrac{-15}{6}$; $1\\dfrac{2}{3} = \\dfrac{5}{3}$; '
-                        '$-4 = \\dfrac{-4}{1} = \\dfrac{-24}{6}$. Vì $-4 < -2,5 < 0 < 1\\dfrac{2}{3}$ n...',
-                        'Áp dụng tính chất phân phối của phép nhân đối với phép cộng: $A = \\dfrac{-3}{7} '
-                        '\\cdot \\left(\\dfrac{5}{9} + \\dfrac{4}{9}\\right) + \\dfrac{10}{7} = '
-                        '\\dfrac{-3}{7} \\cdot 1 + \\dfrac{10}{7} = \\dfrac{7}{7} = 1$...',
-                        'Ta có: $M = \\dfrac{(2^3)^{10}}{(2^2)^8} = \\dfrac{2^{30}}{2^{16}} = 2^{30-16} = '
-                        '2^{14} = 16384$. $N = (0,125 \\cdot 8)^3 = 1^3 = 1$.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 6: Số vô tỉ. Căn bậc hai số học** để giải bài toán '
+                 'sau: Tính giá trị của biểu thức $A = \\sqrt{81} - 2\\sqrt{25} + \\sqrt{(-4)^2}$. Cách giải '
+                 'và kết quả nào dưới đây là **đúng**?',
+            'options': ['Ta có: $\\sqrt{81} = 9$; $\\sqrt{25} = 5$; $\\sqrt{(-4)^2} = \\sqrt{16} = 4$. Do đó '
+                        '$A = 9 - 2 \\cdot 5 - 4 = 9 - 10 + 4 = 3$.',
+                        'Ta có: $\\sqrt{81} = 9$; $\\sqrt{25} = 5$; $\\sqrt{(-4)^2} = \\sqrt{16} = 4$. Do đó '
+                        '$A = 9 - 2 \\cdot 5 + 4 = 9 - 10 + 4 = 2$.',
+                        'Ta có: $\\sqrt{83} = 9$; $\\sqrt{25} = 5$; $\\sqrt{(-4)^2} = \\sqrt{16} = 4$. Do đó '
+                        '$A = 9 - 2 \\cdot 5 + 4 = 9 - 10 + 4 = 3$.',
                         'Ta có: $\\sqrt{81} = 9$; $\\sqrt{25} = 5$; $\\sqrt{(-4)^2} = \\sqrt{16} = 4$. Do đó '
                         '$A = 9 - 2 \\cdot 5 + 4 = 9 - 10 + 4 = 3$.'],
             'answer': 3,
@@ -1090,33 +1110,38 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 7: Tập hợp các số thực và giá trị tuyệt đối**, công thức '
-                 'hoặc quy tắc nào sau đây biểu diễn đúng **Quan hệ các tập hợp số**?',
+            'q': 'Trong **Bài 7: Tập hợp các số thực và giá trị tuyệt đối**, quy tắc hoặc công thức nào sau '
+                 'đây xác định đúng **Quan hệ các tập hợp số**?',
             'options': ['$\\mathbb{N} \\subset \\mathbb{Z} \\subset \\mathbb{Q} \\subset \\mathbb{R}; \\quad '
                         '\\mathbb{R} = \\mathbb{Q} \\cup \\mathbb{I}$',
-                        '$|a| = \\begin{cases} a & \\text{nếu } a \\ge 0 \\\\ -a & \\text{nếu } a < 0 '
-                        '\\end{cases}$',
-                        '$|a| \\ge 0; \\quad |-a| = |a|; \\quad \\sqrt{a^2} = |a|$ với mọi $a \\in '
-                        '\\mathbb{R}$',
-                        'Với $a, b \\ge 0$: $a < b \\Leftrightarrow \\sqrt{a} < \\sqrt{b}$'],
+                        '$\\mathbb{N} \\subset \\mathbb{Z} \\subset \\mathbb{Q} \\subset \\mathbb{R}; \\quad '
+                        '\\mathbb{R} = \\mathbb{Q} \\cap \\mathbb{I}$',
+                        'Đảo ngược vế của quy tắc: $\\mathbb{N} \\subset \\mathbb{Z} \\subset \\mathbb{Q} '
+                        '\\subset \\mathbb{R}; \\quad \\mathbb{R} = \\mathbb{Q} \\cup \\mathbb{I}$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\mathbb{N} \\subset '
+                        '\\mathbb{Z} \\subset \\mathbb{Q} \\subset \\mathbb{R}; \\quad \\mathbb{R} = '
+                        '\\mathbb{Q} \\cup \\mathbb{I}$'],
             'answer': 0,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 7: Tập hợp các số thực và giá trị tuyệt đối, '
+            'solution': 'Theo kiến thức trọng tâm của Bài 7: Tập hợp các số thực và giá trị tuyệt đối, '
                         '**Quan hệ các tập hợp số** được xác định bởi: $\\mathbb{N} \\subset \\mathbb{Z} '
                         '\\subset \\mathbb{Q} \\subset \\mathbb{R}; \\quad \\mathbb{R} = \\mathbb{Q} \\cup '
                         '\\mathbb{I}$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 7: Tập hợp các số thực và giá trị tuyệt đối**, nội dung/biểu thức $|a| = '
-                 '\\begin{cases} a & \\text{nếu } a \\ge 0 \\\\ -a & \\text{nếu } a < 0 \\end{cases}$ là quy '
-                 'tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Quan hệ các tập hợp số',
-                        'Định nghĩa giá trị tuyệt đối',
-                        'Tính chất giá trị tuyệt đối',
-                        'So sánh hai căn bậc hai'],
+            'q': 'Khi học **Bài 7: Tập hợp các số thực và giá trị tuyệt đối**, biểu thức hoặc quy tắc nào '
+                 'dưới đây biểu diễn đúng **Định nghĩa giá trị tuyệt đối**?',
+            'options': ['$|a| = \\begin{cases} a & \\text{nếu } a \\le 0 \\\\ -a & \\text{nếu } a < 0 '
+                        '\\end{cases}$',
+                        '$|a| = \\begin{cases} a & \\text{nếu } a \\ge 0 \\\\ -a & \\text{nếu } a < 0 '
+                        '\\end{cases}$',
+                        '$|a| = \\begin{cases} a & \\text{nếu } a \\ge 0 \\\\ -a & \\text{nếu } a < 1 '
+                        '\\end{cases}$',
+                        '$|a| = \\begin{cases} a & \\text{nếu } a \\ge 2 \\\\ -a & \\text{nếu } a < 0 '
+                        '\\end{cases}$'],
             'answer': 1,
-            'solution': 'Trong Bài 7: Tập hợp các số thực và giá trị tuyệt đối, biểu thức/quy tắc $|a| = '
-                        '\\begin{cases} a & \\text{nếu } a \\ge 0 \\\\ -a & \\text{nếu } a < 0 \\end{cases}$ '
-                        'chính là nội dung của **Định nghĩa giá trị tuyệt đối**.'},
+            'solution': 'Trong Bài 7: Tập hợp các số thực và giá trị tuyệt đối, **Định nghĩa giá trị tuyệt '
+                        'đối** có công thức/quy tắc là: $|a| = \\begin{cases} a & \\text{nếu } a \\ge 0 \\\\ '
+                        '-a & \\text{nếu } a < 0 \\end{cases}$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'So sánh hai số thực $4$ và $\\sqrt{15}$ ta được:',
@@ -1128,16 +1153,18 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 7: Tập hợp các số thực và giá trị tuyệt đối** (Chương II: Số thực), khẳng '
-                 'định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Nhận biết được số hữu tỉ và lấy được ví dụ về số hữu tỉ, nhận biết tập hợp các số '
-                        'hữu tỉ $\\mathbb{Q}$.',
-                        'Biểu diễn được số hữu tỉ trên trục số và nhận biết được số đối của một số hữu tỉ.',
-                        'Nhận biết được thứ tự trong tập hợp các số hữu tỉ và so sánh được hai số hữu tỉ.',
+            'q': 'Để nắm vững bản chất của **Bài 7: Tập hợp các số thực và giá trị tuyệt đối**, nhận định '
+                 'nào sau đây là **chính xác**?',
+            'options': ['Nhận biết được số thực, tập hợp các số thực $\\mathbb{R}$ và trục số thực. (với dấu '
+                        'ngược lại)',
+                        'Đảo ngược vế của quy tắc: Nhận biết được số thực, tập hợp các số thực $\\mathbb{R}$ '
+                        'và trục số thực.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nhận biết được số thực, tập hợp '
+                        'các số thực $\\mathbb{R}$ và trục số thực.',
                         'Nhận biết được số thực, tập hợp các số thực $\\mathbb{R}$ và trục số thực.'],
             'answer': 3,
-            'solution': 'Theo yêu cầu cần đạt của Bài 7: Tập hợp các số thực và giá trị tuyệt đối: Nhận biết '
-                        'được số thực, tập hợp các số thực $\\mathbb{R}$ và trục số thực.'},
+            'solution': 'Theo nội dung cốt lõi của Bài 7: Tập hợp các số thực và giá trị tuyệt đối: Nhận '
+                        'biết được số thực, tập hợp các số thực $\\mathbb{R}$ và trục số thực.'},
            {'level': 'hieu',
             'type': 'tf4',
             'q': 'Xét tính đúng sai của các khẳng định sau với mọi số thực $x$:',
@@ -1152,44 +1179,49 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 7: Tập hợp các số thực '
-                 'và giá trị tuyệt đối**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được số thực, tập hợp '
-                           'các số thực $\\mathbb{R}$ và trục số thực.',
-                           'Quy tắc/công thức **Quan hệ các tập hợp số** trong bài được xác định bởi: '
-                           '$\\mathbb{N} \\subset \\mathbb{Z} \\subset \\mathbb{Q} \\subset \\mathbb{R}; '
-                           '\\quad \\mathbb{R} = \\mathbb{Q} \\cup \\mathbb{I}$.',
-                           'Trong mọi trường hợp, **Quan hệ các tập hợp số** luôn được tính bằng công thức '
-                           '$\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} \\;\\middle|\\; a, b \\in \\mathbb{Z}, b '
-                           '\\neq 0 \\right\\}$ (thuộc Định nghĩa tập $\\mathbb{Q}$) mà không cần điều kiện '
-                           'của Bài 7: Tập hợp các số thực và giá trị tuyệt đối.',
-                           'Với bài toán minh họa: “Tìm tất cả các số thực $x$ thỏa mãn $|x - 1,5| = 2,5$.”, '
-                           'lời giải đúng là: Vì $|x - 1,5| = 2,5$ nên xảy ra hai trường hợp: - Trường hợp '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 7: Tập hợp các số thực và '
+                 'giá trị tuyệt đối**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết được số thực, tập hợp các số '
+                           'thực $\\mathbb{R}$ và trục số thực.',
+                           'Trong **Bài 7: Tập hợp các số thực và giá trị tuyệt đối**, quy tắc/công thức '
+                           '**Quan hệ các tập hợp số** được viết là: $\\mathbb{N} \\subset \\mathbb{Z} '
+                           '\\subset \\mathbb{Q} \\subset \\mathbb{R}; \\quad \\mathbb{R} = \\mathbb{Q} '
+                           '\\cup \\mathbb{I}$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $\\mathbb{N} \\subset \\mathbb{Z} \\subset '
+                           '\\mathbb{Q} \\subset \\mathbb{R}; \\quad \\mathbb{R} = \\mathbb{Q} \\cap '
+                           '\\mathbb{I}$ thì kết quả của **Quan hệ các tập hợp số** trong **Bài 7: Tập hợp '
+                           'các số thực và giá trị tuyệt đối** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Tìm tất cả các số thực $x$ thỏa mãn $|x - 1,5| = 2,5$.”, kết '
+                           'quả giải đúng là: Vì $|x - 1,5| = 2,5$ nên xảy ra hai trường hợp: - Trường hợp '
                            '1: $x - 1,5 = 2,5 \\Rightarrow x = 2,5 + 1,5 = 4$. - Trường hợp 2: $x - 1,5 = '
                            '-2,5 \\Rightarrow x = -2,5 + 1,5 = -1$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 7: Tập hợp các số thực và giá trị tuyệt '
-                        'đối. b) **Đúng** theo công thức trọng tâm **Quan hệ các tập hợp số** ($\\mathbb{N} '
-                        '\\subset \\mathbb{Z} \\subset \\mathbb{Q} \\subset \\mathbb{R}; \\quad \\mathbb{R} '
-                        '= \\mathbb{Q} \\cup \\mathbb{I}$). c) **Sai** vì $\\mathbb{Q} = \\left\\{ '
-                        '\\dfrac{a}{b} \\;\\middle|\\; a, b \\in \\mathbb{Z}, b \\neq 0 \\right\\}$ là công '
-                        'thức của nội dung khác, không phải quy tắc chung của **Quan hệ các tập hợp số**. d) '
-                        '**Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        'đối. b) **Đúng** theo công thức **Quan hệ các tập hợp số** ($\\mathbb{N} \\subset '
+                        '\\mathbb{Z} \\subset \\mathbb{Q} \\subset \\mathbb{R}; \\quad \\mathbb{R} = '
+                        '\\mathbb{Q} \\cup \\mathbb{I}$). c) **Sai** vì công thức đúng của **Quan hệ các tập '
+                        'hợp số** phải là $\\mathbb{N} \\subset \\mathbb{Z} \\subset \\mathbb{Q} \\subset '
+                        '\\mathbb{R}; \\quad \\mathbb{R} = \\mathbb{Q} \\cup \\mathbb{I}$ chứ không phải '
+                        '$\\mathbb{N} \\subset \\mathbb{Z} \\subset \\mathbb{Q} \\subset \\mathbb{R}; \\quad '
+                        '\\mathbb{R} = \\mathbb{Q} \\cap \\mathbb{I}$. d) **Đúng** theo lời giải ví dụ minh '
+                        'họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 7: Tập hợp các số thực và giá trị tuyệt đối** để giải quyết tình '
-                 'huống sau: Tìm tất cả các số thực $x$ thỏa mãn $|x - 1,5| = 2,5$. Kết quả và hướng giải '
-                 'nào dưới đây là **đúng**?',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 7: Tập hợp các số thực và giá trị tuyệt đối** để '
+                 'giải bài toán sau: Tìm tất cả các số thực $x$ thỏa mãn $|x - 1,5| = 2,5$. Cách giải và kết '
+                 'quả nào dưới đây là **đúng**?',
             'options': ['Vì $|x - 1,5| = 2,5$ nên xảy ra hai trường hợp: - Trường hợp 1: $x - 1,5 = 2,5 '
                         '\\Rightarrow x = 2,5 + 1,5 = 4$. - Trường hợp 2: $x - 1,5 = -2,5 \\Rightarrow x = '
                         '-2,5 + 1,5 = -1$...',
-                        'Ta có: $-2,5 = \\dfrac{-5}{2} = \\dfrac{-15}{6}$; $1\\dfrac{2}{3} = \\dfrac{5}{3}$; '
-                        '$-4 = \\dfrac{-4}{1} = \\dfrac{-24}{6}$. Vì $-4 < -2,5 < 0 < 1\\dfrac{2}{3}$ n...',
-                        'Áp dụng tính chất phân phối của phép nhân đối với phép cộng: $A = \\dfrac{-3}{7} '
-                        '\\cdot \\left(\\dfrac{5}{9} + \\dfrac{4}{9}\\right) + \\dfrac{10}{7} = '
-                        '\\dfrac{-3}{7} \\cdot 1 + \\dfrac{10}{7} = \\dfrac{7}{7} = 1$...',
-                        'Ta có: $M = \\dfrac{(2^3)^{10}}{(2^2)^8} = \\dfrac{2^{30}}{2^{16}} = 2^{30-16} = '
-                        '2^{14} = 16384$. $N = (0,125 \\cdot 8)^3 = 1^3 = 1$.'],
+                        'Vì $|x - 1,5| = 2,5$ nên xảy ra hai trường hợp: - Trường hợp 1: $x - 1,5 = 2,5 '
+                        '\\Rightarrow x = 2,5 - 1,5 = 4$. - Trường hợp 2: $x - 1,5 = -2,5 \\Rightarrow x = '
+                        '-2,5 + 1,5 = -1$...',
+                        'Vì $|x - 1,5| = 2,5$ nên xảy ra hai trường hợp: - Trường hợp 1: $x - 1,5 = 2,5 '
+                        '\\Rightarrow x = 2,5 + 1,5 = 4$. - Trường hợp 2: $x - 1,5 = -2,5 \\Rightarrow x = '
+                        '-2,5 + 1,5 = -2$...',
+                        'Vì $|x - 2,5| = 2,5$ nên xảy ra hai trường hợp: - Trường hợp 1: $x - 1,5 = 2,5 '
+                        '\\Rightarrow x = 2,5 + 1,5 = 4$. - Trường hợp 2: $x - 1,5 = -2,5 \\Rightarrow x = '
+                        '-2,5 + 1,5 = -1$...'],
             'answer': 0,
             'solution': 'Lời giải chi tiết theo Bài 7: Tập hợp các số thực và giá trị tuyệt đối: Vì $|x - '
                         '1,5| = 2,5$ nên xảy ra hai trường hợp:\n'
@@ -1260,32 +1292,32 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 8: Góc ở vị trí đặc biệt. Tia phân giác của một góc**, '
-                 'công thức hoặc quy tắc nào sau đây biểu diễn đúng **Hai góc kề bù**?',
-            'options': ["$\\widehat{xOy}$ và $\\widehat{x'Oy'}$ đối đỉnh $\\Rightarrow \\widehat{xOy} = "
-                        "\\widehat{x'Oy'}$",
+            'q': 'Trong **Bài 8: Góc ở vị trí đặc biệt. Tia phân giác của một góc**, quy tắc hoặc công thức '
+                 'nào sau đây xác định đúng **Hai góc kề bù**?',
+            'options': ['$\\widehat{xOy} - \\widehat{yOz} = 180^\\circ$ (khi $Ox, Oz$ là hai tia đối nhau)',
                         '$\\widehat{xOy} + \\widehat{yOz} = 180^\\circ$ (khi $Ox, Oz$ là hai tia đối nhau)',
-                        '$Oz$ là tia phân giác của $\\widehat{xOy} \\Rightarrow \\widehat{xOz} = '
-                        '\\widehat{zOy} = \\dfrac{\\widehat{xOy}}{2}$',
-                        '$\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} \\;\\middle|\\; a, b \\in \\mathbb{Z}, b '
-                        '\\neq 0 \\right\\}$'],
+                        '$\\widehat{xOy} + \\widehat{yOz} = 179^\\circ$ (khi $Ox, Oz$ là hai tia đối nhau)',
+                        '$\\widehat{xOy} + \\widehat{yOz} = 182^\\circ$ (khi $Ox, Oz$ là hai tia đối nhau)'],
             'answer': 1,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 8: Góc ở vị trí đặc biệt. Tia phân giác của '
-                        'một góc, **Hai góc kề bù** được xác định bởi: $\\widehat{xOy} + \\widehat{yOz} = '
+            'solution': 'Theo kiến thức trọng tâm của Bài 8: Góc ở vị trí đặc biệt. Tia phân giác của một '
+                        'góc, **Hai góc kề bù** được xác định bởi: $\\widehat{xOy} + \\widehat{yOz} = '
                         '180^\\circ$ (khi $Ox, Oz$ là hai tia đối nhau).'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 8: Góc ở vị trí đặc biệt. Tia phân giác của một góc**, nội dung/biểu thức '
-                 "$\\widehat{xOy}$ và $\\widehat{x'Oy'}$ đối đỉnh $\\Rightarrow \\widehat{xOy} = "
-                 "\\widehat{x'Oy'}$ là quy tắc hoặc công thức của mục nào sau đây?",
-            'options': ['Hai góc kề bù',
-                        'Tính chất tia phân giác',
-                        'Hai góc đối đỉnh',
-                        'Định nghĩa tập $\\mathbb{Q}$'],
-            'answer': 2,
-            'solution': 'Trong Bài 8: Góc ở vị trí đặc biệt. Tia phân giác của một góc, biểu thức/quy tắc '
+            'q': 'Khi học **Bài 8: Góc ở vị trí đặc biệt. Tia phân giác của một góc**, biểu thức hoặc quy '
+                 'tắc nào dưới đây biểu diễn đúng **Hai góc đối đỉnh**?',
+            'options': ["$\\widehat{xOy}$ và $\\widehat{x'Oy'}$ đối đỉnh $\\Rightarrow \\widehat{xOy} = "
+                        "\\widehat{x'Oy'}$ (với dấu ngược lại)",
+                        "Đảo ngược vế của quy tắc: $\\widehat{xOy}$ và $\\widehat{x'Oy'}$ đối đỉnh "
+                        "$\\Rightarrow \\widehat{xOy} = \\widehat{x'Oy'}$",
                         "$\\widehat{xOy}$ và $\\widehat{x'Oy'}$ đối đỉnh $\\Rightarrow \\widehat{xOy} = "
-                        "\\widehat{x'Oy'}$ chính là nội dung của **Hai góc đối đỉnh**."},
+                        "\\widehat{x'Oy'}$",
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\widehat{xOy}$ và '
+                        "$\\widehat{x'Oy'}$ đối đỉnh $\\Rightarrow \\widehat{xOy} = \\widehat{x'Oy'}$"],
+            'answer': 2,
+            'solution': 'Trong Bài 8: Góc ở vị trí đặc biệt. Tia phân giác của một góc, **Hai góc đối đỉnh** '
+                        "có công thức/quy tắc là: $\\widehat{xOy}$ và $\\widehat{x'Oy'}$ đối đỉnh "
+                        "$\\Rightarrow \\widehat{xOy} = \\widehat{x'Oy'}$."},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Cho góc $\\widehat{AOB} = 120^\\circ$. Tia $OC$ là tia phân giác của $\\widehat{AOB}$. Số '
@@ -1298,16 +1330,17 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 8: Góc ở vị trí đặc biệt. Tia phân giác của một góc** (Chương III: Góc và '
-                 'đường thẳng song song), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản '
-                 'chất kiến thức của bài?',
+            'q': 'Để nắm vững bản chất của **Bài 8: Góc ở vị trí đặc biệt. Tia phân giác của một góc**, nhận '
+                 'định nào sau đây là **chính xác**?',
             'options': ['Nhận biết được hai góc kề nhau, hai góc bù nhau, hai góc kề bù và hai góc đối đỉnh.',
-                        'Nhận biết được số hữu tỉ và lấy được ví dụ về số hữu tỉ, nhận biết tập hợp các số '
-                        'hữu tỉ $\\mathbb{Q}$.',
-                        'Biểu diễn được số hữu tỉ trên trục số và nhận biết được số đối của một số hữu tỉ.',
-                        'Nhận biết được thứ tự trong tập hợp các số hữu tỉ và so sánh được hai số hữu tỉ.'],
+                        'Nhận biết được hai góc kề nhau, hai góc bù nhau, hai góc kề bù và hai góc đối đỉnh. '
+                        '(với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Nhận biết được hai góc kề nhau, hai góc bù nhau, hai góc '
+                        'kề bù và hai góc đối đỉnh.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nhận biết được hai góc kề nhau, '
+                        'hai góc bù nhau, hai góc kề bù và hai góc đối đỉnh.'],
             'answer': 0,
-            'solution': 'Theo yêu cầu cần đạt của Bài 8: Góc ở vị trí đặc biệt. Tia phân giác của một góc: '
+            'solution': 'Theo nội dung cốt lõi của Bài 8: Góc ở vị trí đặc biệt. Tia phân giác của một góc: '
                         'Nhận biết được hai góc kề nhau, hai góc bù nhau, hai góc kề bù và hai góc đối '
                         'đỉnh.'},
            {'level': 'hieu',
@@ -1328,45 +1361,48 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 8: Góc ở vị trí đặc '
-                 'biệt. Tia phân giác của một góc**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được hai góc kề nhau, '
-                           'hai góc bù nhau, hai góc kề bù và hai góc đối đỉnh.',
-                           'Quy tắc/công thức **Hai góc kề bù** trong bài được xác định bởi: $\\widehat{xOy} '
-                           '+ \\widehat{yOz} = 180^\\circ$ (khi $Ox, Oz$ là hai tia đối nhau).',
-                           'Trong mọi trường hợp, **Hai góc kề bù** luôn được tính bằng công thức '
-                           '$\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} \\;\\middle|\\; a, b \\in \\mathbb{Z}, b '
-                           '\\neq 0 \\right\\}$ (thuộc Định nghĩa tập $\\mathbb{Q}$) mà không cần điều kiện '
-                           'của Bài 8: Góc ở vị trí đặc biệt. Tia phân giác của một góc.',
-                           'Với bài toán minh họa: “Cho hai góc kề bù $\\widehat{xOy}$ và $\\widehat{yOz}$, '
-                           'biết $\\widehat{xOy} = 70^\\circ$. Gọi $Ot$ là tia phân giác của '
-                           '$\\widehat{yOz}$. Tính s...”, lời giải đúng là: Vì $\\widehat{xOy}$ và '
-                           '$\\widehat{yOz}$ là hai góc kề bù nên $\\widehat{xOy} + \\widehat{yOz} = '
-                           '180^\\circ$, suy ra $\\widehat{yOz} = 180^\\circ - 70^\\circ = 110^\\circ$...'],
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 8: Góc ở vị trí đặc biệt. '
+                 'Tia phân giác của một góc**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết được hai góc kề nhau, hai góc '
+                           'bù nhau, hai góc kề bù và hai góc đối đỉnh.',
+                           'Trong **Bài 8: Góc ở vị trí đặc biệt. Tia phân giác của một góc**, quy tắc/công '
+                           'thức **Hai góc kề bù** được viết là: $\\widehat{xOy} + \\widehat{yOz} = '
+                           '180^\\circ$ (khi $Ox, Oz$ là hai tia đối nhau).',
+                           'Nếu áp dụng sai dấu/phép tính thành $\\widehat{xOy} - \\widehat{yOz} = '
+                           '180^\\circ$ (khi $Ox, Oz$ là hai tia đối nhau) thì kết quả của **Hai góc kề bù** '
+                           'trong **Bài 8: Góc ở vị trí đặc biệt. Tia phân giác của một góc** vẫn không thay '
+                           'đổi.',
+                           'Xét ví dụ của bài: “Cho hai góc kề bù $\\widehat{xOy}$ và $\\widehat{yOz}$, biết '
+                           '$\\widehat{xOy} = 70^\\circ$. Gọi $Ot$ là tia phân giác của $\\widehat{yOz}$. '
+                           'T...”, kết quả giải đúng là: Vì $\\widehat{xOy}$ và $\\widehat{yOz}$ là hai góc '
+                           'kề bù nên $\\widehat{xOy} + \\widehat{yOz} = 180^\\circ$, suy ra $\\widehat{yOz} '
+                           '= 180^\\circ - 70^\\circ = 110^\\circ$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 8: Góc ở vị trí đặc biệt. Tia phân giác '
-                        'của một góc. b) **Đúng** theo công thức trọng tâm **Hai góc kề bù** '
-                        '($\\widehat{xOy} + \\widehat{yOz} = 180^\\circ$ (khi $Ox, Oz$ là hai tia đối '
-                        'nhau)). c) **Sai** vì $\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} \\;\\middle|\\; a, b '
-                        '\\in \\mathbb{Z}, b \\neq 0 \\right\\}$ là công thức của nội dung khác, không phải '
-                        'quy tắc chung của **Hai góc kề bù**. d) **Đúng** theo lời giải ví dụ minh họa trong '
-                        'bài học.'},
+                        'của một góc. b) **Đúng** theo công thức **Hai góc kề bù** ($\\widehat{xOy} + '
+                        '\\widehat{yOz} = 180^\\circ$ (khi $Ox, Oz$ là hai tia đối nhau)). c) **Sai** vì '
+                        'công thức đúng của **Hai góc kề bù** phải là $\\widehat{xOy} + \\widehat{yOz} = '
+                        '180^\\circ$ (khi $Ox, Oz$ là hai tia đối nhau) chứ không phải $\\widehat{xOy} - '
+                        '\\widehat{yOz} = 180^\\circ$ (khi $Ox, Oz$ là hai tia đối nhau). d) **Đúng** theo '
+                        'lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 8: Góc ở vị trí đặc biệt. Tia phân giác của một góc** để giải '
-                 'quyết tình huống sau: Cho hai góc kề bù $\\widehat{xOy}$ và $\\widehat{yOz}$, biết '
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 8: Góc ở vị trí đặc biệt. Tia phân giác của một '
+                 'góc** để giải bài toán sau: Cho hai góc kề bù $\\widehat{xOy}$ và $\\widehat{yOz}$, biết '
                  '$\\widehat{xOy} = 70^\\circ$. Gọi $Ot$ là tia phân giác của $\\widehat{yOz}$. Tính số đo '
-                 '$\\widehat{yOt}$. Kết quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Ta có: $-2,5 = \\dfrac{-5}{2} = \\dfrac{-15}{6}$; $1\\dfrac{2}{3} = \\dfrac{5}{3}$; '
-                        '$-4 = \\dfrac{-4}{1} = \\dfrac{-24}{6}$. Vì $-4 < -2,5 < 0 < 1\\dfrac{2}{3}$ n...',
+                 '$\\widehat{yOt}$. Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Vì $\\widehat{xOy}$ và $\\widehat{yOz}$ là hai góc kề bù nên $\\widehat{xOy} - '
+                        '\\widehat{yOz} = 180^\\circ$, suy ra $\\widehat{yOz} = 180^\\circ - 70^\\circ = '
+                        '110^\\circ$...',
                         'Vì $\\widehat{xOy}$ và $\\widehat{yOz}$ là hai góc kề bù nên $\\widehat{xOy} + '
                         '\\widehat{yOz} = 180^\\circ$, suy ra $\\widehat{yOz} = 180^\\circ - 70^\\circ = '
                         '110^\\circ$...',
-                        'Áp dụng tính chất phân phối của phép nhân đối với phép cộng: $A = \\dfrac{-3}{7} '
-                        '\\cdot \\left(\\dfrac{5}{9} + \\dfrac{4}{9}\\right) + \\dfrac{10}{7} = '
-                        '\\dfrac{-3}{7} \\cdot 1 + \\dfrac{10}{7} = \\dfrac{7}{7} = 1$...',
-                        'Ta có: $M = \\dfrac{(2^3)^{10}}{(2^2)^8} = \\dfrac{2^{30}}{2^{16}} = 2^{30-16} = '
-                        '2^{14} = 16384$. $N = (0,125 \\cdot 8)^3 = 1^3 = 1$.'],
+                        'Vì $\\widehat{xOy}$ và $\\widehat{yOz}$ là hai góc kề bù nên $\\widehat{xOy} + '
+                        '\\widehat{yOz} = 180^\\circ$, suy ra $\\widehat{yOz} = 180^\\circ - 70^\\circ = '
+                        '109^\\circ$...',
+                        'Vì $\\widehat{xOy}$ và $\\widehat{yOz}$ là hai góc kề bù nên $\\widehat{xOy} + '
+                        '\\widehat{yOz} = 182^\\circ$, suy ra $\\widehat{yOz} = 180^\\circ - 70^\\circ = '
+                        '110^\\circ$...'],
             'answer': 1,
             'solution': 'Lời giải chi tiết theo Bài 8: Góc ở vị trí đặc biệt. Tia phân giác của một góc: Vì '
                         '$\\widehat{xOy}$ và $\\widehat{yOz}$ là hai góc kề bù nên $\\widehat{xOy} + '
@@ -1396,8 +1432,8 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
                    'hai góc đồng vị.',
                    'Mô tả và vận dụng được dấu hiệu nhận biết hai đường thẳng song song thông qua cặp góc so '
                    'le trong hoặc cặp góc đồng vị.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Theo góc so le trong** (Cặp góc so le trong '
-                   '$\\widehat{A_1} = \\widehat{B_1} \\Rightarrow a \\parallel b$) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 9: Hai đường thẳng song song và dấu hiệu nhận biết** để '
+                   'giải bài tập minh họa và bài toán thực tiễn.'],
   'definition': 'Nếu đường thẳng $c$ cắt hai đường thẳng phân biệt $a, b$ và trong các góc tạo thành có một '
                 'cặp góc so le trong bằng nhau hoặc một cặp góc đồng vị bằng nhau thì $a$ và $b$ song song '
                 'với nhau (kí hiệu $a \\parallel b$).',
@@ -1447,30 +1483,34 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 9: Hai đường thẳng song song và dấu hiệu nhận biết**, '
-                 'công thức hoặc quy tắc nào sau đây biểu diễn đúng **Theo góc so le trong**?',
-            'options': ['Cặp góc đồng vị $\\widehat{A_2} = \\widehat{B_2} \\Rightarrow a \\parallel b$',
-                        '$a \\perp c$ và $b \\perp c$ ($a \\neq b$) $\\Rightarrow a \\parallel b$',
+            'q': 'Trong **Bài 9: Hai đường thẳng song song và dấu hiệu nhận biết**, quy tắc hoặc công thức '
+                 'nào sau đây xác định đúng **Theo góc so le trong**?',
+            'options': ['Cặp góc so le trong $\\widehat{A_1} = \\widehat{B_1} \\Rightarrow a \\parallel b$ '
+                        '(với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Cặp góc so le trong $\\widehat{A_1} = \\widehat{B_1} '
+                        '\\Rightarrow a \\parallel b$',
                         'Cặp góc so le trong $\\widehat{A_1} = \\widehat{B_1} \\Rightarrow a \\parallel b$',
-                        '$\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} \\;\\middle|\\; a, b \\in \\mathbb{Z}, b '
-                        '\\neq 0 \\right\\}$'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Cặp góc so le trong '
+                        '$\\widehat{A_1} = \\widehat{B_1} \\Rightarrow a \\parallel b$'],
             'answer': 2,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 9: Hai đường thẳng song song và dấu hiệu nhận '
+            'solution': 'Theo kiến thức trọng tâm của Bài 9: Hai đường thẳng song song và dấu hiệu nhận '
                         'biết, **Theo góc so le trong** được xác định bởi: Cặp góc so le trong '
                         '$\\widehat{A_1} = \\widehat{B_1} \\Rightarrow a \\parallel b$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 9: Hai đường thẳng song song và dấu hiệu nhận biết**, nội dung/biểu thức Cặp '
-                 'góc đồng vị $\\widehat{A_2} = \\widehat{B_2} \\Rightarrow a \\parallel b$ là quy tắc hoặc '
-                 'công thức của mục nào sau đây?',
-            'options': ['Theo góc so le trong',
-                        'Cùng vuông góc đường thứ ba',
-                        'Định nghĩa tập $\\mathbb{Q}$',
-                        'Theo góc đồng vị'],
+            'q': 'Khi học **Bài 9: Hai đường thẳng song song và dấu hiệu nhận biết**, biểu thức hoặc quy tắc '
+                 'nào dưới đây biểu diễn đúng **Theo góc đồng vị**?',
+            'options': ['Cặp góc đồng vị $\\widehat{A_2} = \\widehat{B_2} \\Rightarrow a \\parallel b$ (với '
+                        'dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Cặp góc đồng vị $\\widehat{A_2} = \\widehat{B_2} '
+                        '\\Rightarrow a \\parallel b$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Cặp góc đồng vị $\\widehat{A_2} '
+                        '= \\widehat{B_2} \\Rightarrow a \\parallel b$',
+                        'Cặp góc đồng vị $\\widehat{A_2} = \\widehat{B_2} \\Rightarrow a \\parallel b$'],
             'answer': 3,
-            'solution': 'Trong Bài 9: Hai đường thẳng song song và dấu hiệu nhận biết, biểu thức/quy tắc Cặp '
-                        'góc đồng vị $\\widehat{A_2} = \\widehat{B_2} \\Rightarrow a \\parallel b$ chính là '
-                        'nội dung của **Theo góc đồng vị**.'},
+            'solution': 'Trong Bài 9: Hai đường thẳng song song và dấu hiệu nhận biết, **Theo góc đồng vị** '
+                        'có công thức/quy tắc là: Cặp góc đồng vị $\\widehat{A_2} = \\widehat{B_2} '
+                        '\\Rightarrow a \\parallel b$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Đường thẳng $c$ cắt hai đường thẳng $a$ và $b$ tạo thành cặp góc trong cùng phía có số đo '
@@ -1487,17 +1527,18 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 9: Hai đường thẳng song song và dấu hiệu nhận biết** (Chương III: Góc và '
-                 'đường thẳng song song), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản '
-                 'chất kiến thức của bài?',
-            'options': ['Nhận biết được số hữu tỉ và lấy được ví dụ về số hữu tỉ, nhận biết tập hợp các số '
-                        'hữu tỉ $\\mathbb{Q}$.',
+            'q': 'Để nắm vững bản chất của **Bài 9: Hai đường thẳng song song và dấu hiệu nhận biết**, nhận '
+                 'định nào sau đây là **chính xác**?',
+            'options': ['Nhận biết được các góc tạo bởi một đường thẳng cắt hai đường thẳng: hai góc so le '
+                        'trong, hai góc đồng vị. (với dấu ngược lại)',
                         'Nhận biết được các góc tạo bởi một đường thẳng cắt hai đường thẳng: hai góc so le '
                         'trong, hai góc đồng vị.',
-                        'Biểu diễn được số hữu tỉ trên trục số và nhận biết được số đối của một số hữu tỉ.',
-                        'Nhận biết được thứ tự trong tập hợp các số hữu tỉ và so sánh được hai số hữu tỉ.'],
+                        'Đảo ngược vế của quy tắc: Nhận biết được các góc tạo bởi một đường thẳng cắt hai '
+                        'đường thẳng: hai góc so le trong, hai góc đồng vị.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nhận biết được các góc tạo bởi '
+                        'một đường thẳng cắt hai đường thẳng: hai góc so le trong, hai góc đồng vị.'],
             'answer': 1,
-            'solution': 'Theo yêu cầu cần đạt của Bài 9: Hai đường thẳng song song và dấu hiệu nhận biết: '
+            'solution': 'Theo nội dung cốt lõi của Bài 9: Hai đường thẳng song song và dấu hiệu nhận biết: '
                         'Nhận biết được các góc tạo bởi một đường thẳng cắt hai đường thẳng: hai góc so le '
                         'trong, hai góc đồng vị.'},
            {'level': 'hieu',
@@ -1515,45 +1556,45 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 9: Hai đường thẳng song '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 9: Hai đường thẳng song '
                  'song và dấu hiệu nhận biết**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được các góc tạo bởi một '
-                           'đường thẳng cắt hai đường thẳng: hai góc so le trong, hai góc đồng vị.',
-                           'Quy tắc/công thức **Theo góc so le trong** trong bài được xác định bởi: Cặp góc '
-                           'so le trong $\\widehat{A_1} = \\widehat{B_1} \\Rightarrow a \\parallel b$.',
-                           'Trong mọi trường hợp, **Theo góc so le trong** luôn được tính bằng công thức '
-                           '$\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} \\;\\middle|\\; a, b \\in \\mathbb{Z}, b '
-                           '\\neq 0 \\right\\}$ (thuộc Định nghĩa tập $\\mathbb{Q}$) mà không cần điều kiện '
-                           'của Bài 9: Hai đường thẳng song song và dấu hiệu nhận biết.',
-                           'Với bài toán minh họa: “Đường thẳng $c$ cắt hai đường thẳng $a, b$ tại $A$ và '
-                           '$B$. Biết cặp góc so le trong $\\widehat{A_1} = 60^\\circ$ và $\\widehat{B_3} = '
-                           '60^\\circ$...”, lời giải đúng là: Ta có hai góc $\\widehat{A_1}$ và '
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết được các góc tạo bởi một đường '
+                           'thẳng cắt hai đường thẳng: hai góc so le trong, hai góc đồng vị.',
+                           'Trong **Bài 9: Hai đường thẳng song song và dấu hiệu nhận biết**, quy tắc/công '
+                           'thức **Theo góc so le trong** được viết là: Cặp góc so le trong $\\widehat{A_1} '
+                           '= \\widehat{B_1} \\Rightarrow a \\parallel b$.',
+                           'Nếu áp dụng sai dấu/phép tính thành Cặp góc so le trong $\\widehat{A_1} = '
+                           '\\widehat{B_1} \\Rightarrow a \\parallel b$ (với dấu ngược lại) thì kết quả của '
+                           '**Theo góc so le trong** trong **Bài 9: Hai đường thẳng song song và dấu hiệu '
+                           'nhận biết** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Đường thẳng $c$ cắt hai đường thẳng $a, b$ tại $A$ và $B$. '
+                           'Biết cặp góc so le trong $\\widehat{A_1} = 60^\\circ$ và $\\widehat{B_3} = '
+                           '60^\\circ$...”, kết quả giải đúng là: Ta có hai góc $\\widehat{A_1}$ và '
                            '$\\widehat{B_3}$ ở vị trí so le trong và $\\widehat{A_1} = \\widehat{B_3} = '
-                           '60^\\circ$. Theo dấu hiệu nhận biết...'],
+                           '60^\\circ$. Theo dấu hiệu nhận...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 9: Hai đường thẳng song song và dấu hiệu '
-                        'nhận biết. b) **Đúng** theo công thức trọng tâm **Theo góc so le trong** (Cặp góc '
-                        'so le trong $\\widehat{A_1} = \\widehat{B_1} \\Rightarrow a \\parallel b$). c) '
-                        '**Sai** vì $\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} \\;\\middle|\\; a, b \\in '
-                        '\\mathbb{Z}, b \\neq 0 \\right\\}$ là công thức của nội dung khác, không phải quy '
-                        'tắc chung của **Theo góc so le trong**. d) **Đúng** theo lời giải ví dụ minh họa '
-                        'trong bài học.'},
+                        'nhận biết. b) **Đúng** theo công thức **Theo góc so le trong** (Cặp góc so le trong '
+                        '$\\widehat{A_1} = \\widehat{B_1} \\Rightarrow a \\parallel b$). c) **Sai** vì công '
+                        'thức đúng của **Theo góc so le trong** phải là Cặp góc so le trong $\\widehat{A_1} '
+                        '= \\widehat{B_1} \\Rightarrow a \\parallel b$ chứ không phải Cặp góc so le trong '
+                        '$\\widehat{A_1} = \\widehat{B_1} \\Rightarrow a \\parallel b$ (với dấu ngược lại). '
+                        'd) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 9: Hai đường thẳng song song và dấu hiệu nhận biết** để giải '
-                 'quyết tình huống sau: Đường thẳng $c$ cắt hai đường thẳng $a, b$ tại $A$ và $B$. Biết cặp '
-                 'góc so le trong $\\widehat{A_1} = 60^\\circ$ và $\\widehat{B_3} = 60^\\circ$. Chứng tỏ $a '
-                 '\\parallel b$. Kết quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Ta có: $-2,5 = \\dfrac{-5}{2} = \\dfrac{-15}{6}$; $1\\dfrac{2}{3} = \\dfrac{5}{3}$; '
-                        '$-4 = \\dfrac{-4}{1} = \\dfrac{-24}{6}$. Vì $-4 < -2,5 < 0 < 1\\dfrac{2}{3}$ n...',
-                        'Áp dụng tính chất phân phối của phép nhân đối với phép cộng: $A = \\dfrac{-3}{7} '
-                        '\\cdot \\left(\\dfrac{5}{9} + \\dfrac{4}{9}\\right) + \\dfrac{10}{7} = '
-                        '\\dfrac{-3}{7} \\cdot 1 + \\dfrac{10}{7} = \\dfrac{7}{7} = 1$...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 9: Hai đường thẳng song song và dấu hiệu nhận '
+                 'biết** để giải bài toán sau: Đường thẳng $c$ cắt hai đường thẳng $a, b$ tại $A$ và $B$. '
+                 'Biết cặp góc so le trong $\\widehat{A_1} = 60^\\circ$ và $\\widehat{B_3} = 60^\\circ$. '
+                 'Chứng tỏ $a \\parallel b$. Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Ta có hai góc $\\widehat{A_1}$ và $\\widehat{B_3}$ ở vị trí so le trong và '
+                        '$\\widehat{A_1} = \\widehat{B_3} = 70^\\circ$. Theo dấu hiệu nhận biết hai đường...',
                         'Ta có hai góc $\\widehat{A_1}$ và $\\widehat{B_3}$ ở vị trí so le trong và '
-                        '$\\widehat{A_1} = \\widehat{B_3} = 60^\\circ$. Theo dấu hiệu nhận biết hai đường '
-                        'thẳn...',
-                        'Ta có: $M = \\dfrac{(2^3)^{10}}{(2^2)^8} = \\dfrac{2^{30}}{2^{16}} = 2^{30-16} = '
-                        '2^{14} = 16384$. $N = (0,125 \\cdot 8)^3 = 1^3 = 1$.'],
+                        '$\\widehat{A_1} = \\widehat{B_3} = 59^\\circ$. Theo dấu hiệu nhận biết hai đường...',
+                        'Ta có hai góc $\\widehat{A_1}$ và $\\widehat{B_3}$ ở vị trí so le trong và '
+                        '$\\widehat{A_1} = \\widehat{B_3} = 60^\\circ$. Theo dấu hiệu nhận biết hai đường...',
+                        'Ta có hai góc $\\widehat{A_1}$ và $\\widehat{B_3}$ ở vị trí so le trong và '
+                        '$\\widehat{A_1} = \\widehat{B_3} = 62^\\circ$. Theo dấu hiệu nhận biết hai '
+                        'đường...'],
             'answer': 2,
             'solution': 'Lời giải chi tiết theo Bài 9: Hai đường thẳng song song và dấu hiệu nhận biết: Ta '
                         'có hai góc $\\widehat{A_1}$ và $\\widehat{B_3}$ ở vị trí so le trong và '
@@ -1580,9 +1621,8 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
   'requirements': ['Nhận biết được tiên đề Euclid về đường thẳng song song.',
                    'Mô tả và vận dụng được các tính chất của hai đường thẳng song song (hai góc so le trong '
                    'bằng nhau, hai góc đồng vị bằng nhau).',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Tính chất góc so le trong, đồng vị** ($a '
-                   '\\parallel b \\Rightarrow$ hai góc so le trong bằng nhau, hai góc đồng vị bằng nhau) vào '
-                   'giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 10: Tiên đề Euclid. Tính chất của hai đường thẳng song '
+                   'song** để giải bài tập minh họa và bài toán thực tiễn.'],
   'definition': 'Tiên đề Euclid: Qua một điểm ở ngoài một đường thẳng, chỉ có một đường thẳng song song với '
                 'đường thẳng đó.',
   'theory': '1. Tiên đề Euclid và hệ quả: Nếu một đường thẳng cắt một trong hai đường thẳng song song thì nó '
@@ -1640,32 +1680,32 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 10: Tiên đề Euclid. Tính chất của hai đường thẳng song '
-                 'song**, công thức hoặc quy tắc nào sau đây biểu diễn đúng **Tính chất góc so le trong, '
-                 'đồng vị**?',
-            'options': ['$a \\parallel b \\Rightarrow$ tổng hai góc trong cùng phía bằng $180^\\circ$',
-                        '$a \\parallel b$ và $c \\perp a \\Rightarrow c \\perp b$',
-                        '$a \\parallel c$ và $b \\parallel c$ ($a \\neq b$) $\\Rightarrow a \\parallel b$',
+            'q': 'Trong **Bài 10: Tiên đề Euclid. Tính chất của hai đường thẳng song song**, quy tắc hoặc '
+                 'công thức nào sau đây xác định đúng **Tính chất góc so le trong, đồng vị**?',
+            'options': ['$a \\parallel b \\Rightarrow$ hai góc so le trong bằng nhau, hai góc đồng vị bằng '
+                        'nhau (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: $a \\parallel b \\Rightarrow$ hai góc so le trong bằng '
+                        'nhau, hai góc đồng vị bằng nhau',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $a \\parallel b \\Rightarrow$ '
+                        'hai góc so le trong bằng nhau, hai góc đồng vị bằng nhau',
                         '$a \\parallel b \\Rightarrow$ hai góc so le trong bằng nhau, hai góc đồng vị bằng '
                         'nhau'],
             'answer': 3,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 10: Tiên đề Euclid. Tính chất của hai đường '
-                        'thẳng song song, **Tính chất góc so le trong, đồng vị** được xác định bởi: $a '
-                        '\\parallel b \\Rightarrow$ hai góc so le trong bằng nhau, hai góc đồng vị bằng '
-                        'nhau.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 10: Tiên đề Euclid. Tính chất của hai đường thẳng '
+                        'song song, **Tính chất góc so le trong, đồng vị** được xác định bởi: $a \\parallel '
+                        'b \\Rightarrow$ hai góc so le trong bằng nhau, hai góc đồng vị bằng nhau.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 10: Tiên đề Euclid. Tính chất của hai đường thẳng song song**, nội dung/biểu '
-                 'thức $a \\parallel b \\Rightarrow$ tổng hai góc trong cùng phía bằng $180^\\circ$ là quy '
-                 'tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Tính chất góc trong cùng phía',
-                        'Tính chất góc so le trong, đồng vị',
-                        'Quan hệ vuông góc - song song',
-                        'Ba đường thẳng song song'],
+            'q': 'Khi học **Bài 10: Tiên đề Euclid. Tính chất của hai đường thẳng song song**, biểu thức '
+                 'hoặc quy tắc nào dưới đây biểu diễn đúng **Tính chất góc trong cùng phía**?',
+            'options': ['$a \\parallel b \\Rightarrow$ tổng hai góc trong cùng phía bằng $180^\\circ$',
+                        '$a \\parallel b \\Rightarrow$ tổng hai góc trong cùng phía bằng $190^\\circ$',
+                        '$a \\parallel b \\Rightarrow$ tổng hai góc trong cùng phía bằng $179^\\circ$',
+                        '$a \\parallel b \\Rightarrow$ tổng hai góc trong cùng phía bằng $182^\\circ$'],
             'answer': 0,
-            'solution': 'Trong Bài 10: Tiên đề Euclid. Tính chất của hai đường thẳng song song, biểu '
-                        'thức/quy tắc $a \\parallel b \\Rightarrow$ tổng hai góc trong cùng phía bằng '
-                        '$180^\\circ$ chính là nội dung của **Tính chất góc trong cùng phía**.'},
+            'solution': 'Trong Bài 10: Tiên đề Euclid. Tính chất của hai đường thẳng song song, **Tính chất '
+                        'góc trong cùng phía** có công thức/quy tắc là: $a \\parallel b \\Rightarrow$ tổng '
+                        'hai góc trong cùng phía bằng $180^\\circ$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Cho $a \\parallel b$, đường thẳng $c$ cắt $a, b$ lần lượt tại $A, B$. Biết một góc tại $A$ '
@@ -1677,17 +1717,16 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 10: Tiên đề Euclid. Tính chất của hai đường thẳng song song** (Chương III: '
-                 'Góc và đường thẳng song song), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và '
-                 'bản chất kiến thức của bài?',
-            'options': ['Nhận biết được số hữu tỉ và lấy được ví dụ về số hữu tỉ, nhận biết tập hợp các số '
-                        'hữu tỉ $\\mathbb{Q}$.',
-                        'Biểu diễn được số hữu tỉ trên trục số và nhận biết được số đối của một số hữu tỉ.',
+            'q': 'Để nắm vững bản chất của **Bài 10: Tiên đề Euclid. Tính chất của hai đường thẳng song '
+                 'song**, nhận định nào sau đây là **chính xác**?',
+            'options': ['Nhận biết được tiên đề Euclid về đường thẳng cắt nhau.',
+                        'Đảo ngược vế của quy tắc: Nhận biết được tiên đề Euclid về đường thẳng song song.',
                         'Nhận biết được tiên đề Euclid về đường thẳng song song.',
-                        'Nhận biết được thứ tự trong tập hợp các số hữu tỉ và so sánh được hai số hữu tỉ.'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nhận biết được tiên đề Euclid '
+                        'về đường thẳng song song.'],
             'answer': 2,
-            'solution': 'Theo yêu cầu cần đạt của Bài 10: Tiên đề Euclid. Tính chất của hai đường thẳng song '
-                        'song: Nhận biết được tiên đề Euclid về đường thẳng song song.'},
+            'solution': 'Theo nội dung cốt lõi của Bài 10: Tiên đề Euclid. Tính chất của hai đường thẳng '
+                        'song song: Nhận biết được tiên đề Euclid về đường thẳng song song.'},
            {'level': 'hieu',
             'type': 'tf4',
             'q': 'Cho ba đường thẳng phân biệt $a, b, c$. Xét tính đúng sai của các khẳng định sau:',
@@ -1704,46 +1743,48 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 10: Tiên đề Euclid. '
-                 'Tính chất của hai đường thẳng song song**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được tiên đề Euclid về '
-                           'đường thẳng song song.',
-                           'Quy tắc/công thức **Tính chất góc so le trong, đồng vị** trong bài được xác định '
-                           'bởi: $a \\parallel b \\Rightarrow$ hai góc so le trong bằng nhau, hai góc đồng '
-                           'vị bằng nhau.',
-                           'Trong mọi trường hợp, **Tính chất góc so le trong, đồng vị** luôn được tính bằng '
-                           'công thức $\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} \\;\\middle|\\; a, b \\in '
-                           '\\mathbb{Z}, b \\neq 0 \\right\\}$ (thuộc Định nghĩa tập $\\mathbb{Q}$) mà không '
-                           'cần điều kiện của Bài 10: Tiên đề Euclid. Tính chất của hai đường thẳng song '
-                           'song.',
-                           'Với bài toán minh họa: “Cho hai đường thẳng song song $a \\parallel b$. Đường '
-                           'thẳng $c$ cắt $a$ tại $A$ và cắt $b$ tại $B$. Biết $\\widehat{A_1} = '
-                           '130^\\circ$, tính gó...”, lời giải đúng là: Vì $a \\parallel b$ nên hai góc '
-                           'trong cùng phía $\\widehat{A_1}$ và $\\widehat{B_2}$ bù nhau: $\\widehat{A_1} + '
-                           '\\widehat{B_2} = 180^\\circ \\Rightarrow \\widehat{B_2} = 180^\\circ - '
-                           '130^\\circ = 50^\\circ$...'],
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 10: Tiên đề Euclid. Tính '
+                 'chất của hai đường thẳng song song**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết được tiên đề Euclid về đường '
+                           'thẳng song song.',
+                           'Trong **Bài 10: Tiên đề Euclid. Tính chất của hai đường thẳng song song**, quy '
+                           'tắc/công thức **Tính chất góc so le trong, đồng vị** được viết là: $a \\parallel '
+                           'b \\Rightarrow$ hai góc so le trong bằng nhau, hai góc đồng vị bằng nhau.',
+                           'Nếu áp dụng sai dấu/phép tính thành $a \\parallel b \\Rightarrow$ hai góc so le '
+                           'trong bằng nhau, hai góc đồng vị bằng nhau (với dấu ngược lại) thì kết quả của '
+                           '**Tính chất góc so le trong, đồng vị** trong **Bài 10: Tiên đề Euclid. Tính chất '
+                           'của hai đường thẳng song song** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Cho hai đường thẳng song song $a \\parallel b$. Đường thẳng '
+                           '$c$ cắt $a$ tại $A$ và cắt $b$ tại $B$. Biết $\\widehat{A_1} = 130^\\circ$, '
+                           'tí...”, kết quả giải đúng là: Vì $a \\parallel b$ nên hai góc trong cùng phía '
+                           '$\\widehat{A_1}$ và $\\widehat{B_2}$ bù nhau: $\\widehat{A_1} + \\widehat{B_2} = '
+                           '180^\\circ \\Rightarrow \\widehat{B_2} = 180^\\circ - 130^\\circ = '
+                           '50^\\circ$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 10: Tiên đề Euclid. Tính chất của hai '
-                        'đường thẳng song song. b) **Đúng** theo công thức trọng tâm **Tính chất góc so le '
-                        'trong, đồng vị** ($a \\parallel b \\Rightarrow$ hai góc so le trong bằng nhau, hai '
-                        'góc đồng vị bằng nhau). c) **Sai** vì $\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} '
-                        '\\;\\middle|\\; a, b \\in \\mathbb{Z}, b \\neq 0 \\right\\}$ là công thức của nội '
-                        'dung khác, không phải quy tắc chung của **Tính chất góc so le trong, đồng vị**. d) '
-                        '**Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        'đường thẳng song song. b) **Đúng** theo công thức **Tính chất góc so le trong, đồng '
+                        'vị** ($a \\parallel b \\Rightarrow$ hai góc so le trong bằng nhau, hai góc đồng vị '
+                        'bằng nhau). c) **Sai** vì công thức đúng của **Tính chất góc so le trong, đồng vị** '
+                        'phải là $a \\parallel b \\Rightarrow$ hai góc so le trong bằng nhau, hai góc đồng '
+                        'vị bằng nhau chứ không phải $a \\parallel b \\Rightarrow$ hai góc so le trong bằng '
+                        'nhau, hai góc đồng vị bằng nhau (với dấu ngược lại). d) **Đúng** theo lời giải ví '
+                        'dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 10: Tiên đề Euclid. Tính chất của hai đường thẳng song song** để '
-                 'giải quyết tình huống sau: Cho hai đường thẳng song song $a \\parallel b$. Đường thẳng $c$ '
-                 'cắt $a$ tại $A$ và cắt $b$ tại $B$. Biết $\\widehat{A_1} = 130^\\circ$, tính góc trong '
-                 'cùng phía $\\widehat{B_2}$ với $\\widehat{A_1}$. Kết quả và hướng giải nào dưới đây là '
-                 '**đúng**?',
-            'options': ['Ta có: $-2,5 = \\dfrac{-5}{2} = \\dfrac{-15}{6}$; $1\\dfrac{2}{3} = \\dfrac{5}{3}$; '
-                        '$-4 = \\dfrac{-4}{1} = \\dfrac{-24}{6}$. Vì $-4 < -2,5 < 0 < 1\\dfrac{2}{3}$ n...',
-                        'Áp dụng tính chất phân phối của phép nhân đối với phép cộng: $A = \\dfrac{-3}{7} '
-                        '\\cdot \\left(\\dfrac{5}{9} + \\dfrac{4}{9}\\right) + \\dfrac{10}{7} = '
-                        '\\dfrac{-3}{7} \\cdot 1 + \\dfrac{10}{7} = \\dfrac{7}{7} = 1$...',
-                        'Ta có: $M = \\dfrac{(2^3)^{10}}{(2^2)^8} = \\dfrac{2^{30}}{2^{16}} = 2^{30-16} = '
-                        '2^{14} = 16384$. $N = (0,125 \\cdot 8)^3 = 1^3 = 1$.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 10: Tiên đề Euclid. Tính chất của hai đường thẳng '
+                 'song song** để giải bài toán sau: Cho hai đường thẳng song song $a \\parallel b$. Đường '
+                 'thẳng $c$ cắt $a$ tại $A$ và cắt $b$ tại $B$. Biết $\\widehat{A_1} = 130^\\circ$, tính góc '
+                 'trong cùng phía $\\widehat{B_2}$ với $\\widehat{A_1}$. Cách giải và kết quả nào dưới đây '
+                 'là **đúng**?',
+            'options': ['Vì $a \\parallel b$ nên hai góc trong cùng phía $\\widehat{A_1}$ và '
+                        '$\\widehat{B_2}$ bù nhau: $\\widehat{A_1} - \\widehat{B_2} = 180^\\circ '
+                        '\\Rightarrow \\widehat{B_2} = 180^\\circ - 130^\\circ = 50^\\circ$...',
+                        'Vì $a \\parallel b$ nên hai góc trong cùng phía $\\widehat{A_1}$ và '
+                        '$\\widehat{B_2}$ bù nhau: $\\widehat{A_1} + \\widehat{B_2} = 180^\\circ '
+                        '\\Rightarrow \\widehat{B_2} = 180^\\circ - 130^\\circ = 49^\\circ$...',
+                        'Vì $a \\parallel b$ nên hai góc trong cùng phía $\\widehat{A_1}$ và '
+                        '$\\widehat{B_2}$ bù nhau: $\\widehat{A_1} + \\widehat{B_2} = 182^\\circ '
+                        '\\Rightarrow \\widehat{B_2} = 180^\\circ - 130^\\circ = 50^\\circ$...',
                         'Vì $a \\parallel b$ nên hai góc trong cùng phía $\\widehat{A_1}$ và '
                         '$\\widehat{B_2}$ bù nhau: $\\widehat{A_1} + \\widehat{B_2} = 180^\\circ '
                         '\\Rightarrow \\widehat{B_2} = 180^\\circ - 130^\\circ = 50^\\circ$...'],
@@ -1821,32 +1862,35 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 11: Định lí và chứng minh định lí**, công thức hoặc quy '
-                 'tắc nào sau đây biểu diễn đúng **Dạng phát biểu chuẩn**?',
+            'q': 'Trong **Bài 11: Định lí và chứng minh định lí**, quy tắc hoặc công thức nào sau đây xác '
+                 'định đúng **Dạng phát biểu chuẩn**?',
             'options': ['Nếu $[\\text{Giả thiết (GT)}]$ thì $[\\text{Kết luận (KL)}]$',
-                        '$\\text{GT: } \\widehat{O_1} \\text{ và } \\widehat{O_3} \\text{ đối đỉnh} '
-                        '\\Rightarrow \\text{KL: } \\widehat{O_1} = \\widehat{O_3}$',
-                        '$\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} \\;\\middle|\\; a, b \\in \\mathbb{Z}, b '
-                        '\\neq 0 \\right\\}$',
-                        '$\\mathbb{N} \\subset \\mathbb{Z} \\subset \\mathbb{Q}$'],
+                        'Nếu $[\\text{Giả thiết (GT)}]$ thì $[\\text{Kết luận (KL)}]$ (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Nếu $[\\text{Giả thiết (GT)}]$ thì $[\\text{Kết luận '
+                        '(KL)}]$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nếu $[\\text{Giả thiết (GT)}]$ '
+                        'thì $[\\text{Kết luận (KL)}]$'],
             'answer': 0,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 11: Định lí và chứng minh định lí, **Dạng '
-                        'phát biểu chuẩn** được xác định bởi: Nếu $[\\text{Giả thiết (GT)}]$ thì '
-                        '$[\\text{Kết luận (KL)}]$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 11: Định lí và chứng minh định lí, **Dạng phát '
+                        'biểu chuẩn** được xác định bởi: Nếu $[\\text{Giả thiết (GT)}]$ thì $[\\text{Kết '
+                        'luận (KL)}]$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 11: Định lí và chứng minh định lí**, nội dung/biểu thức $\\text{GT: } '
-                 '\\widehat{O_1} \\text{ và } \\widehat{O_3} \\text{ đối đỉnh} \\Rightarrow \\text{KL: } '
-                 '\\widehat{O_1} = \\widehat{O_3}$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Dạng phát biểu chuẩn',
-                        'Ví dụ định lí hai góc đối đỉnh',
-                        'Định nghĩa tập $\\mathbb{Q}$',
-                        'Quan hệ tập hợp'],
+            'q': 'Khi học **Bài 11: Định lí và chứng minh định lí**, biểu thức hoặc quy tắc nào dưới đây '
+                 'biểu diễn đúng **Ví dụ định lí hai góc đối đỉnh**?',
+            'options': ['$\\text{GT: } \\widehat{O_1} \\text{ và } \\widehat{O_3} \\text{ đối đỉnh} '
+                        '\\Rightarrow \\text{KL: } \\widehat{O_1} = \\widehat{O_3}$ (với dấu ngược lại)',
+                        '$\\text{GT: } \\widehat{O_1} \\text{ và } \\widehat{O_3} \\text{ đối đỉnh} '
+                        '\\Rightarrow \\text{KL: } \\widehat{O_1} = \\widehat{O_3}$',
+                        'Đảo ngược vế của quy tắc: $\\text{GT: } \\widehat{O_1} \\text{ và } \\widehat{O_3} '
+                        '\\text{ đối đỉnh} \\Rightarrow \\text{KL: } \\widehat{O_1} = \\widehat{O_3}$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\text{GT: } \\widehat{O_1} '
+                        '\\text{ và } \\widehat{O_3} \\text{ đối đỉnh} \\Rightarrow \\text{KL: } '
+                        '\\widehat{O_1} = \\widehat{O_3}$'],
             'answer': 1,
-            'solution': 'Trong Bài 11: Định lí và chứng minh định lí, biểu thức/quy tắc $\\text{GT: } '
-                        '\\widehat{O_1} \\text{ và } \\widehat{O_3} \\text{ đối đỉnh} \\Rightarrow '
-                        '\\text{KL: } \\widehat{O_1} = \\widehat{O_3}$ chính là nội dung của **Ví dụ định lí '
-                        'hai góc đối đỉnh**.'},
+            'solution': 'Trong Bài 11: Định lí và chứng minh định lí, **Ví dụ định lí hai góc đối đỉnh** có '
+                        'công thức/quy tắc là: $\\text{GT: } \\widehat{O_1} \\text{ và } \\widehat{O_3} '
+                        '\\text{ đối đỉnh} \\Rightarrow \\text{KL: } \\widehat{O_1} = \\widehat{O_3}$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': "Cho định lí: 'Hai đường thẳng phân biệt cùng vuông góc với một đường thẳng thứ ba thì "
@@ -1862,16 +1906,15 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 11: Định lí và chứng minh định lí** (Chương III: Góc và đường thẳng song '
-                 'song), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của '
-                 'bài?',
-            'options': ['Nhận biết được số hữu tỉ và lấy được ví dụ về số hữu tỉ, nhận biết tập hợp các số '
-                        'hữu tỉ $\\mathbb{Q}$.',
-                        'Biểu diễn được số hữu tỉ trên trục số và nhận biết được số đối của một số hữu tỉ.',
-                        'Nhận biết được thứ tự trong tập hợp các số hữu tỉ và so sánh được hai số hữu tỉ.',
+            'q': 'Để nắm vững bản chất của **Bài 11: Định lí và chứng minh định lí**, nhận định nào sau đây '
+                 'là **chính xác**?',
+            'options': ['Nhận biết được thế nào là một định lí. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Nhận biết được thế nào là một định lí.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nhận biết được thế nào là một '
+                        'định lí.',
                         'Nhận biết được thế nào là một định lí.'],
             'answer': 3,
-            'solution': 'Theo yêu cầu cần đạt của Bài 11: Định lí và chứng minh định lí: Nhận biết được thế '
+            'solution': 'Theo nội dung cốt lõi của Bài 11: Định lí và chứng minh định lí: Nhận biết được thế '
                         'nào là một định lí.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -1891,42 +1934,38 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 11: Định lí và chứng '
-                 'minh định lí**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được thế nào là một định '
-                           'lí.',
-                           'Quy tắc/công thức **Dạng phát biểu chuẩn** trong bài được xác định bởi: Nếu '
-                           '$[\\text{Giả thiết (GT)}]$ thì $[\\text{Kết luận (KL)}]$.',
-                           'Trong mọi trường hợp, **Dạng phát biểu chuẩn** luôn được tính bằng công thức '
-                           '$\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} \\;\\middle|\\; a, b \\in \\mathbb{Z}, b '
-                           '\\neq 0 \\right\\}$ (thuộc Định nghĩa tập $\\mathbb{Q}$) mà không cần điều kiện '
-                           'của Bài 11: Định lí và chứng minh định lí.',
-                           "Với bài toán minh họa: “Hãy chỉ rõ giả thiết và kết luận của định lí: 'Nếu một "
-                           "đường thẳng cắt hai đường thẳng song song thì hai góc đồng vị bằng nhau'.”, lời "
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 11: Định lí và chứng minh '
+                 'định lí**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết được thế nào là một định lí.',
+                           'Trong **Bài 11: Định lí và chứng minh định lí**, quy tắc/công thức **Dạng phát '
+                           'biểu chuẩn** được viết là: Nếu $[\\text{Giả thiết (GT)}]$ thì $[\\text{Kết luận '
+                           '(KL)}]$.',
+                           'Nếu áp dụng sai dấu/phép tính thành Nếu $[\\text{Giả thiết (GT)}]$ thì '
+                           '$[\\text{Kết luận (KL)}]$ (với dấu ngược lại) thì kết quả của **Dạng phát biểu '
+                           'chuẩn** trong **Bài 11: Định lí và chứng minh định lí** vẫn không thay đổi.',
+                           "Xét ví dụ của bài: “Hãy chỉ rõ giả thiết và kết luận của định lí: 'Nếu một đường "
+                           "thẳng cắt hai đường thẳng song song thì hai góc đồng vị bằng nhau'.”, kết quả "
                            'giải đúng là: - Giả thiết (GT): Đường thẳng $c$ cắt hai đường thẳng song song '
-                           '$a$ và $b$ ($a \\parallel b$). - Kết luận (KL): Hai góc đồng vị tạo thành '
-                           'bằn...'],
+                           '$a$ và $b$ ($a \\parallel b$). - Kết luận (KL): Hai góc đồng vị tạo thàn...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 11: Định lí và chứng minh định lí. b) '
-                        '**Đúng** theo công thức trọng tâm **Dạng phát biểu chuẩn** (Nếu $[\\text{Giả thiết '
-                        '(GT)}]$ thì $[\\text{Kết luận (KL)}]$). c) **Sai** vì $\\mathbb{Q} = \\left\\{ '
-                        '\\dfrac{a}{b} \\;\\middle|\\; a, b \\in \\mathbb{Z}, b \\neq 0 \\right\\}$ là công '
-                        'thức của nội dung khác, không phải quy tắc chung của **Dạng phát biểu chuẩn**. d) '
-                        '**Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        '**Đúng** theo công thức **Dạng phát biểu chuẩn** (Nếu $[\\text{Giả thiết (GT)}]$ '
+                        'thì $[\\text{Kết luận (KL)}]$). c) **Sai** vì công thức đúng của **Dạng phát biểu '
+                        'chuẩn** phải là Nếu $[\\text{Giả thiết (GT)}]$ thì $[\\text{Kết luận (KL)}]$ chứ '
+                        'không phải Nếu $[\\text{Giả thiết (GT)}]$ thì $[\\text{Kết luận (KL)}]$ (với dấu '
+                        'ngược lại). d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 11: Định lí và chứng minh định lí** để giải quyết tình huống sau: '
-                 "Hãy chỉ rõ giả thiết và kết luận của định lí: 'Nếu một đường thẳng cắt hai đường thẳng "
-                 "song song thì hai góc đồng vị bằng nhau'. Kết quả và hướng giải nào dưới đây là **đúng**?",
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 11: Định lí và chứng minh định lí** để giải bài '
+                 "toán sau: Hãy chỉ rõ giả thiết và kết luận của định lí: 'Nếu một đường thẳng cắt hai đường "
+                 "thẳng song song thì hai góc đồng vị bằng nhau'. Cách giải và kết quả nào dưới đây là "
+                 '**đúng**?',
             'options': ['- Giả thiết (GT): Đường thẳng $c$ cắt hai đường thẳng song song $a$ và $b$ ($a '
                         '\\parallel b$). - Kết luận (KL): Hai góc đồng vị tạo thành bằng nhau.',
-                        'Ta có: $-2,5 = \\dfrac{-5}{2} = \\dfrac{-15}{6}$; $1\\dfrac{2}{3} = \\dfrac{5}{3}$; '
-                        '$-4 = \\dfrac{-4}{1} = \\dfrac{-24}{6}$. Vì $-4 < -2,5 < 0 < 1\\dfrac{2}{3}$ n...',
-                        'Áp dụng tính chất phân phối của phép nhân đối với phép cộng: $A = \\dfrac{-3}{7} '
-                        '\\cdot \\left(\\dfrac{5}{9} + \\dfrac{4}{9}\\right) + \\dfrac{10}{7} = '
-                        '\\dfrac{-3}{7} \\cdot 1 + \\dfrac{10}{7} = \\dfrac{7}{7} = 1$...',
-                        'Ta có: $M = \\dfrac{(2^3)^{10}}{(2^2)^8} = \\dfrac{2^{30}}{2^{16}} = 2^{30-16} = '
-                        '2^{14} = 16384$. $N = (0,125 \\cdot 8)^3 = 1^3 = 1$.'],
+                        '- Giả thiết (GT): Đường thẳng $c$ cắt hai đường thẳng song song $a$ và $b$ ($a '
+                        '\\parallel b$). + Kết luận (KL): Hai góc đồng vị tạo thành bằng nhau.',
+                        'Thực hiện theo thứ tự ngược lại và bỏ qua điều kiện xác định trong bài',
+                        'Đổi ngược dấu của phép tính chính và không kiểm tra lại kết quả'],
             'answer': 0,
             'solution': 'Lời giải chi tiết theo Bài 11: Định lí và chứng minh định lí: - Giả thiết (GT): '
                         'Đường thẳng $c$ cắt hai đường thẳng song song $a$ và $b$ ($a \\parallel b$).\n'
@@ -2000,31 +2039,32 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 12: Tổng các góc trong một tam giác**, công thức hoặc '
-                 'quy tắc nào sau đây biểu diễn đúng **Tổng ba góc trong $\\triangle ABC$**?',
-            'options': ['$\\triangle ABC$ vuông tại $A$ $\\Rightarrow \\widehat{B} + \\widehat{C} = '
-                        '90^\\circ$',
+            'q': 'Trong **Bài 12: Tổng các góc trong một tam giác**, quy tắc hoặc công thức nào sau đây xác '
+                 'định đúng **Tổng ba góc trong $\\triangle ABC$**?',
+            'options': ['$\\widehat{A} - \\widehat{B} + \\widehat{C} = 180^\\circ$',
                         '$\\widehat{A} + \\widehat{B} + \\widehat{C} = 180^\\circ$',
-                        '$\\widehat{ACx} = \\widehat{A} + \\widehat{B}$',
-                        '$\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} \\;\\middle|\\; a, b \\in \\mathbb{Z}, b '
-                        '\\neq 0 \\right\\}$'],
+                        '$\\widehat{A} + \\widehat{B} + \\widehat{C} = 179^\\circ$',
+                        '$\\widehat{A} + \\widehat{B} + \\widehat{C} = 182^\\circ$'],
             'answer': 1,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 12: Tổng các góc trong một tam giác, **Tổng '
-                        'ba góc trong $\\triangle ABC$** được xác định bởi: $\\widehat{A} + \\widehat{B} + '
+            'solution': 'Theo kiến thức trọng tâm của Bài 12: Tổng các góc trong một tam giác, **Tổng ba góc '
+                        'trong $\\triangle ABC$** được xác định bởi: $\\widehat{A} + \\widehat{B} + '
                         '\\widehat{C} = 180^\\circ$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 12: Tổng các góc trong một tam giác**, nội dung/biểu thức $\\triangle ABC$ '
-                 'vuông tại $A$ $\\Rightarrow \\widehat{B} + \\widehat{C} = 90^\\circ$ là quy tắc hoặc công '
-                 'thức của mục nào sau đây?',
-            'options': ['Tổng ba góc trong $\\triangle ABC$',
-                        'Góc ngoài tại đỉnh $C$',
-                        'Hai góc nhọn trong tam giác vuông',
-                        'Định nghĩa tập $\\mathbb{Q}$'],
+            'q': 'Khi học **Bài 12: Tổng các góc trong một tam giác**, biểu thức hoặc quy tắc nào dưới đây '
+                 'biểu diễn đúng **Hai góc nhọn trong tam giác vuông**?',
+            'options': ['$\\triangle ABC$ vuông tại $A$ $\\Rightarrow \\widehat{B} - \\widehat{C} = '
+                        '90^\\circ$',
+                        '$\\triangle ABC$ vuông tại $A$ $\\Rightarrow \\widehat{B} + \\widehat{C} = '
+                        '89^\\circ$',
+                        '$\\triangle ABC$ vuông tại $A$ $\\Rightarrow \\widehat{B} + \\widehat{C} = '
+                        '90^\\circ$',
+                        '$\\triangle ABC$ vuông tại $A$ $\\Rightarrow \\widehat{B} + \\widehat{C} = '
+                        '92^\\circ$'],
             'answer': 2,
-            'solution': 'Trong Bài 12: Tổng các góc trong một tam giác, biểu thức/quy tắc $\\triangle ABC$ '
-                        'vuông tại $A$ $\\Rightarrow \\widehat{B} + \\widehat{C} = 90^\\circ$ chính là nội '
-                        'dung của **Hai góc nhọn trong tam giác vuông**.'},
+            'solution': 'Trong Bài 12: Tổng các góc trong một tam giác, **Hai góc nhọn trong tam giác '
+                        'vuông** có công thức/quy tắc là: $\\triangle ABC$ vuông tại $A$ $\\Rightarrow '
+                        '\\widehat{B} + \\widehat{C} = 90^\\circ$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Cho $\\triangle ABC$ có $\\widehat{A} = 75^\\circ, \\widehat{B} = 45^\\circ$. Số đo góc '
@@ -2036,15 +2076,14 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 12: Tổng các góc trong một tam giác** (Chương IV: Tam giác bằng nhau), khẳng '
-                 'định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
+            'q': 'Để nắm vững bản chất của **Bài 12: Tổng các góc trong một tam giác**, nhận định nào sau '
+                 'đây là **chính xác**?',
             'options': ['Giải thích được định lí về tổng các góc trong một tam giác bằng $180^\\circ$.',
-                        'Nhận biết được số hữu tỉ và lấy được ví dụ về số hữu tỉ, nhận biết tập hợp các số '
-                        'hữu tỉ $\\mathbb{Q}$.',
-                        'Biểu diễn được số hữu tỉ trên trục số và nhận biết được số đối của một số hữu tỉ.',
-                        'Nhận biết được thứ tự trong tập hợp các số hữu tỉ và so sánh được hai số hữu tỉ.'],
+                        'Giải thích được định lí về tổng các góc trong một tam giác bằng $190^\\circ$.',
+                        'Giải thích được định lí về tổng các góc trong một tam giác bằng $179^\\circ$.',
+                        'Giải thích được định lí về tổng các góc trong một tam giác bằng $182^\\circ$.'],
             'answer': 0,
-            'solution': 'Theo yêu cầu cần đạt của Bài 12: Tổng các góc trong một tam giác: Giải thích được '
+            'solution': 'Theo nội dung cốt lõi của Bài 12: Tổng các góc trong một tam giác: Giải thích được '
                         'định lí về tổng các góc trong một tam giác bằng $180^\\circ$.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -2062,45 +2101,46 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 12: Tổng các góc trong '
-                 'một tam giác**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Giải thích được định lí về tổng '
-                           'các góc trong một tam giác bằng $180^\\circ$.',
-                           'Quy tắc/công thức **Tổng ba góc trong $\\triangle ABC$** trong bài được xác định '
-                           'bởi: $\\widehat{A} + \\widehat{B} + \\widehat{C} = 180^\\circ$.',
-                           'Trong mọi trường hợp, **Tổng ba góc trong $\\triangle ABC$** luôn được tính bằng '
-                           'công thức $\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} \\;\\middle|\\; a, b \\in '
-                           '\\mathbb{Z}, b \\neq 0 \\right\\}$ (thuộc Định nghĩa tập $\\mathbb{Q}$) mà không '
-                           'cần điều kiện của Bài 12: Tổng các góc trong một tam giác.',
-                           'Với bài toán minh họa: “Cho $\\triangle ABC$ có $\\widehat{A} = 60^\\circ, '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 12: Tổng các góc trong một '
+                 'tam giác**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Giải thích được định lí về tổng các góc '
+                           'trong một tam giác bằng $180^\\circ$.',
+                           'Trong **Bài 12: Tổng các góc trong một tam giác**, quy tắc/công thức **Tổng ba '
+                           'góc trong $\\triangle ABC$** được viết là: $\\widehat{A} + \\widehat{B} + '
+                           '\\widehat{C} = 180^\\circ$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $\\widehat{A} - \\widehat{B} + \\widehat{C} '
+                           '= 180^\\circ$ thì kết quả của **Tổng ba góc trong $\\triangle ABC$** trong **Bài '
+                           '12: Tổng các góc trong một tam giác** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Cho $\\triangle ABC$ có $\\widehat{A} = 60^\\circ, '
                            '\\widehat{B} = 50^\\circ$. Tính số đo góc $\\widehat{C}$ và góc ngoài tại đỉnh '
-                           '$C$.”, lời giải đúng là: Áp dụng định lí tổng ba góc trong $\\triangle ABC$: '
+                           '$C$.”, kết quả giải đúng là: Áp dụng định lí tổng ba góc trong $\\triangle ABC$: '
                            '$\\widehat{C} = 180^\\circ - (\\widehat{A} + \\widehat{B}) = 180^\\circ - '
                            '(60^\\circ + 50^\\circ) = 70^\\circ$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 12: Tổng các góc trong một tam giác. b) '
-                        '**Đúng** theo công thức trọng tâm **Tổng ba góc trong $\\triangle ABC$** '
-                        '($\\widehat{A} + \\widehat{B} + \\widehat{C} = 180^\\circ$). c) **Sai** vì '
-                        '$\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} \\;\\middle|\\; a, b \\in \\mathbb{Z}, b '
-                        '\\neq 0 \\right\\}$ là công thức của nội dung khác, không phải quy tắc chung của '
-                        '**Tổng ba góc trong $\\triangle ABC$**. d) **Đúng** theo lời giải ví dụ minh họa '
-                        'trong bài học.'},
+                        '**Đúng** theo công thức **Tổng ba góc trong $\\triangle ABC$** ($\\widehat{A} + '
+                        '\\widehat{B} + \\widehat{C} = 180^\\circ$). c) **Sai** vì công thức đúng của **Tổng '
+                        'ba góc trong $\\triangle ABC$** phải là $\\widehat{A} + \\widehat{B} + \\widehat{C} '
+                        '= 180^\\circ$ chứ không phải $\\widehat{A} - \\widehat{B} + \\widehat{C} = '
+                        '180^\\circ$. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 12: Tổng các góc trong một tam giác** để giải quyết tình huống '
-                 'sau: Cho $\\triangle ABC$ có $\\widehat{A} = 60^\\circ, \\widehat{B} = 50^\\circ$. Tính số '
-                 'đo góc $\\widehat{C}$ và góc ngoài tại đỉnh $C$. Kết quả và hướng giải nào dưới đây là '
-                 '**đúng**?',
-            'options': ['Ta có: $-2,5 = \\dfrac{-5}{2} = \\dfrac{-15}{6}$; $1\\dfrac{2}{3} = \\dfrac{5}{3}$; '
-                        '$-4 = \\dfrac{-4}{1} = \\dfrac{-24}{6}$. Vì $-4 < -2,5 < 0 < 1\\dfrac{2}{3}$ n...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 12: Tổng các góc trong một tam giác** để giải bài '
+                 'toán sau: Cho $\\triangle ABC$ có $\\widehat{A} = 60^\\circ, \\widehat{B} = 50^\\circ$. '
+                 'Tính số đo góc $\\widehat{C}$ và góc ngoài tại đỉnh $C$. Cách giải và kết quả nào dưới đây '
+                 'là **đúng**?',
+            'options': ['Áp dụng định lí tổng ba góc trong $\\triangle ABC$: $\\widehat{C} = 180^\\circ - '
+                        '(\\widehat{A} - \\widehat{B}) = 180^\\circ - (60^\\circ + 50^\\circ) = '
+                        '70^\\circ$...',
                         'Áp dụng định lí tổng ba góc trong $\\triangle ABC$: $\\widehat{C} = 180^\\circ - '
                         '(\\widehat{A} + \\widehat{B}) = 180^\\circ - (60^\\circ + 50^\\circ) = '
-                        '70^\\circ$....',
-                        'Áp dụng tính chất phân phối của phép nhân đối với phép cộng: $A = \\dfrac{-3}{7} '
-                        '\\cdot \\left(\\dfrac{5}{9} + \\dfrac{4}{9}\\right) + \\dfrac{10}{7} = '
-                        '\\dfrac{-3}{7} \\cdot 1 + \\dfrac{10}{7} = \\dfrac{7}{7} = 1$...',
-                        'Ta có: $M = \\dfrac{(2^3)^{10}}{(2^2)^8} = \\dfrac{2^{30}}{2^{16}} = 2^{30-16} = '
-                        '2^{14} = 16384$. $N = (0,125 \\cdot 8)^3 = 1^3 = 1$.'],
+                        '70^\\circ$...',
+                        'Áp dụng định lí tổng ba góc trong $\\triangle ABC$: $\\widehat{C} = 180^\\circ - '
+                        '(\\widehat{A} + \\widehat{B}) = 180^\\circ - (60^\\circ + 50^\\circ) = '
+                        '69^\\circ$...',
+                        'Áp dụng định lí tổng ba góc trong $\\triangle ABC$: $\\widehat{C} = 182^\\circ - '
+                        '(\\widehat{A} + \\widehat{B}) = 180^\\circ - (60^\\circ + 50^\\circ) = '
+                        '70^\\circ$...'],
             'answer': 1,
             'solution': 'Lời giải chi tiết theo Bài 12: Tổng các góc trong một tam giác: Áp dụng định lí '
                         'tổng ba góc trong $\\triangle ABC$:\n'
@@ -2130,10 +2170,8 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
                    'bằng nhau.',
                    'Giải thích và vận dụng được trường hợp bằng nhau thứ nhất của hai tam giác: cạnh - cạnh '
                    '- cạnh (c.c.c).',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Định nghĩa $\\triangle ABC = \\triangle '
-                   "A'B'C'$** ($\\begin{cases} AB = A'B', \\; BC = B'C', \\; CA = C'A' \\\\ \\widehat{A} = "
-                   "\\widehat{A'}, \\; \\widehat{B} = \\widehat{B'}, \\; \\widehat{C} = \\widehat{C'} "
-                   '\\end{cases}$) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 13: Hai tam giác bằng nhau. Trường hợp bằng nhau thứ nhất '
+                   '(c.c.c)** để giải bài tập minh họa và bài toán thực tiễn.'],
   'definition': 'Hai tam giác bằng nhau là hai tam giác có các cạnh tương ứng bằng nhau và các góc tương ứng '
                 'bằng nhau. Nếu ba cạnh của tam giác này bằng ba cạnh của tam giác kia thì hai tam giác đó '
                 'bằng nhau (trường hợp c.c.c).',
@@ -2180,37 +2218,43 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 13: Hai tam giác bằng nhau. Trường hợp bằng nhau thứ '
-                 'nhất (c.c.c)**, công thức hoặc quy tắc nào sau đây biểu diễn đúng **Định nghĩa $\\triangle '
-                 "ABC = \\triangle A'B'C'$**?",
-            'options': ["$AB = A'B', \\; BC = B'C', \\; CA = C'A' \\Rightarrow \\triangle ABC = \\triangle "
-                        "A'B'C'$",
-                        '$\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} \\;\\middle|\\; a, b \\in \\mathbb{Z}, b '
-                        '\\neq 0 \\right\\}$',
+            'q': 'Trong **Bài 13: Hai tam giác bằng nhau. Trường hợp bằng nhau thứ nhất (c.c.c)**, quy tắc '
+                 'hoặc công thức nào sau đây xác định đúng **Định nghĩa $\\triangle ABC = \\triangle '
+                 "A'B'C'$**?",
+            'options': ["$\\begin{cases} AB = A'B', \\; BC = B'C', \\; CA = C'A' \\\\ \\widehat{A} = "
+                        "\\widehat{A'}, \\; \\widehat{B} = \\widehat{B'}, \\; \\widehat{C} = \\widehat{C'} "
+                        '\\end{cases}$ (với dấu ngược lại)',
+                        "Đảo ngược vế của quy tắc: $\\begin{cases} AB = A'B', \\; BC = B'C', \\; CA = C'A' "
+                        "\\\\ \\widehat{A} = \\widehat{A'}, \\; \\widehat{B} = \\widehat{B'}, \\; "
+                        "\\widehat{C} = \\widehat{C'} \\end{cases}$",
                         "$\\begin{cases} AB = A'B', \\; BC = B'C', \\; CA = C'A' \\\\ \\widehat{A} = "
                         "\\widehat{A'}, \\; \\widehat{B} = \\widehat{B'}, \\; \\widehat{C} = \\widehat{C'} "
                         '\\end{cases}$',
-                        '$\\mathbb{N} \\subset \\mathbb{Z} \\subset \\mathbb{Q}$'],
+                        "Trường hợp trái ngược: không thỏa mãn điều kiện của $\\begin{cases} AB = A'B', \\; "
+                        "BC = B'C', \\; CA = C'A' \\\\ \\widehat{A} = \\widehat{A'}, \\; \\widehat{B} = "
+                        "\\widehat{B'}, \\; \\widehat{C} = \\widehat{C'} \\end{cases}$"],
             'answer': 2,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 13: Hai tam giác bằng nhau. Trường hợp bằng '
-                        "nhau thứ nhất (c.c.c), **Định nghĩa $\\triangle ABC = \\triangle A'B'C'$** được xác "
-                        "định bởi: $\\begin{cases} AB = A'B', \\; BC = B'C', \\; CA = C'A' \\\\ \\widehat{A} "
-                        "= \\widehat{A'}, \\; \\widehat{B} = \\widehat{B'}, \\; \\widehat{C} = \\widehat{C'} "
+            'solution': 'Theo kiến thức trọng tâm của Bài 13: Hai tam giác bằng nhau. Trường hợp bằng nhau '
+                        "thứ nhất (c.c.c), **Định nghĩa $\\triangle ABC = \\triangle A'B'C'$** được xác định "
+                        "bởi: $\\begin{cases} AB = A'B', \\; BC = B'C', \\; CA = C'A' \\\\ \\widehat{A} = "
+                        "\\widehat{A'}, \\; \\widehat{B} = \\widehat{B'}, \\; \\widehat{C} = \\widehat{C'} "
                         '\\end{cases}$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 13: Hai tam giác bằng nhau. Trường hợp bằng nhau thứ nhất (c.c.c)**, nội '
-                 "dung/biểu thức $AB = A'B', \\; BC = B'C', \\; CA = C'A' \\Rightarrow \\triangle ABC = "
-                 "\\triangle A'B'C'$ là quy tắc hoặc công thức của mục nào sau đây?",
-            'options': ["Định nghĩa $\\triangle ABC = \\triangle A'B'C'$",
-                        'Định nghĩa tập $\\mathbb{Q}$',
-                        'Quan hệ tập hợp',
-                        'Trường hợp cạnh - cạnh - cạnh (c.c.c)'],
+            'q': 'Khi học **Bài 13: Hai tam giác bằng nhau. Trường hợp bằng nhau thứ nhất (c.c.c)**, biểu '
+                 'thức hoặc quy tắc nào dưới đây biểu diễn đúng **Trường hợp cạnh - cạnh - cạnh (c.c.c)**?',
+            'options': ["$AB = A'B', \\; BC = B'C', \\; CA = C'A' \\Rightarrow \\triangle ABC = \\triangle "
+                        "A'B'C'$ (với dấu ngược lại)",
+                        "Đảo ngược vế của quy tắc: $AB = A'B', \\; BC = B'C', \\; CA = C'A' \\Rightarrow "
+                        "\\triangle ABC = \\triangle A'B'C'$",
+                        "Trường hợp trái ngược: không thỏa mãn điều kiện của $AB = A'B', \\; BC = B'C', \\; "
+                        "CA = C'A' \\Rightarrow \\triangle ABC = \\triangle A'B'C'$",
+                        "$AB = A'B', \\; BC = B'C', \\; CA = C'A' \\Rightarrow \\triangle ABC = \\triangle "
+                        "A'B'C'$"],
             'answer': 3,
-            'solution': 'Trong Bài 13: Hai tam giác bằng nhau. Trường hợp bằng nhau thứ nhất (c.c.c), biểu '
-                        "thức/quy tắc $AB = A'B', \\; BC = B'C', \\; CA = C'A' \\Rightarrow \\triangle ABC = "
-                        "\\triangle A'B'C'$ chính là nội dung của **Trường hợp cạnh - cạnh - cạnh "
-                        '(c.c.c)**.'},
+            'solution': 'Trong Bài 13: Hai tam giác bằng nhau. Trường hợp bằng nhau thứ nhất (c.c.c), '
+                        "**Trường hợp cạnh - cạnh - cạnh (c.c.c)** có công thức/quy tắc là: $AB = A'B', \\; "
+                        "BC = B'C', \\; CA = C'A' \\Rightarrow \\triangle ABC = \\triangle A'B'C'$."},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Cho $\\triangle ABC = \\triangle HIK$, biết $\\widehat{A} = 55^\\circ, \\widehat{I} = '
@@ -2224,17 +2268,18 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 13: Hai tam giác bằng nhau. Trường hợp bằng nhau thứ nhất (c.c.c)** (Chương '
-                 'IV: Tam giác bằng nhau), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản '
-                 'chất kiến thức của bài?',
-            'options': ['Nhận biết được số hữu tỉ và lấy được ví dụ về số hữu tỉ, nhận biết tập hợp các số '
-                        'hữu tỉ $\\mathbb{Q}$.',
+            'q': 'Để nắm vững bản chất của **Bài 13: Hai tam giác bằng nhau. Trường hợp bằng nhau thứ nhất '
+                 '(c.c.c)**, nhận định nào sau đây là **chính xác**?',
+            'options': ['Nhận biết được hai tam giác bằng nhau và chỉ ra các cạnh tương ứng, các góc tương '
+                        'ứng bằng nhau. (với dấu ngược lại)',
                         'Nhận biết được hai tam giác bằng nhau và chỉ ra các cạnh tương ứng, các góc tương '
                         'ứng bằng nhau.',
-                        'Biểu diễn được số hữu tỉ trên trục số và nhận biết được số đối của một số hữu tỉ.',
-                        'Nhận biết được thứ tự trong tập hợp các số hữu tỉ và so sánh được hai số hữu tỉ.'],
+                        'Đảo ngược vế của quy tắc: Nhận biết được hai tam giác bằng nhau và chỉ ra các cạnh '
+                        'tương ứng, các góc tương ứng bằng nhau.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nhận biết được hai tam giác '
+                        'bằng nhau và chỉ ra các cạnh tương ứng, các góc tương ứng bằng nhau.'],
             'answer': 1,
-            'solution': 'Theo yêu cầu cần đạt của Bài 13: Hai tam giác bằng nhau. Trường hợp bằng nhau thứ '
+            'solution': 'Theo nội dung cốt lõi của Bài 13: Hai tam giác bằng nhau. Trường hợp bằng nhau thứ '
                         'nhất (c.c.c): Nhận biết được hai tam giác bằng nhau và chỉ ra các cạnh tương ứng, '
                         'các góc tương ứng bằng nhau.'},
            {'level': 'hieu',
@@ -2253,50 +2298,57 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 13: Hai tam giác bằng '
-                 'nhau. Trường hợp bằng nhau thứ nhất (c.c.c)**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được hai tam giác bằng '
-                           'nhau và chỉ ra các cạnh tương ứng, các góc tương ứng bằng nhau.',
-                           "Quy tắc/công thức **Định nghĩa $\\triangle ABC = \\triangle A'B'C'$** trong bài "
-                           "được xác định bởi: $\\begin{cases} AB = A'B', \\; BC = B'C', \\; CA = C'A' \\\\ "
-                           "\\widehat{A} = \\widehat{A'}, \\; \\widehat{B} = \\widehat{B'}, \\; \\widehat{C} "
-                           "= \\widehat{C'} \\end{cases}$.",
-                           "Trong mọi trường hợp, **Định nghĩa $\\triangle ABC = \\triangle A'B'C'$** luôn "
-                           'được tính bằng công thức $\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} \\;\\middle|\\; '
-                           'a, b \\in \\mathbb{Z}, b \\neq 0 \\right\\}$ (thuộc Định nghĩa tập '
-                           '$\\mathbb{Q}$) mà không cần điều kiện của Bài 13: Hai tam giác bằng nhau. Trường '
-                           'hợp bằng nhau thứ nhất (c.c.c).',
-                           'Với bài toán minh họa: “Cho $\\triangle ABC = \\triangle DEF$. Biết $AB = '
-                           '5\\text{ cm}, BC = 7\\text{ cm}, DF = 6\\text{ cm}$. Tính chu vi của $\\triangle '
-                           'ABC$.”, lời giải đúng là: Vì $\\triangle ABC = \\triangle DEF$ nên các cạnh '
-                           'tương ứng bằng nhau: $AC = DF = 6\\text{ cm}$. Chu vi của $\\triangle ABC$ là '
-                           '$AB + BC + AC = 5 + 7 + 6 = 18\\text{ (cm)}$...'],
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 13: Hai tam giác bằng nhau. '
+                 'Trường hợp bằng nhau thứ nhất (c.c.c)**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết được hai tam giác bằng nhau và '
+                           'chỉ ra các cạnh tương ứng, các góc tương ứng bằng nhau.',
+                           'Trong **Bài 13: Hai tam giác bằng nhau. Trường hợp bằng nhau thứ nhất (c.c.c)**, '
+                           "quy tắc/công thức **Định nghĩa $\\triangle ABC = \\triangle A'B'C'$** được viết "
+                           "là: $\\begin{cases} AB = A'B', \\; BC = B'C', \\; CA = C'A' \\\\ \\widehat{A} = "
+                           "\\widehat{A'}, \\; \\widehat{B} = \\widehat{B'}, \\; \\widehat{C} = "
+                           "\\widehat{C'} \\end{cases}$.",
+                           "Nếu áp dụng sai dấu/phép tính thành $\\begin{cases} AB = A'B', \\; BC = B'C', "
+                           "\\; CA = C'A' \\\\ \\widehat{A} = \\widehat{A'}, \\; \\widehat{B} = "
+                           "\\widehat{B'}, \\; \\widehat{C} = \\widehat{C'} \\end{cases}$ (với dấu ngược "
+                           "lại) thì kết quả của **Định nghĩa $\\triangle ABC = \\triangle A'B'C'$** trong "
+                           '**Bài 13: Hai tam giác bằng nhau. Trường hợp bằng nhau thứ nhất (c.c.c)** vẫn '
+                           'không thay đổi.',
+                           'Xét ví dụ của bài: “Cho $\\triangle ABC = \\triangle DEF$. Biết $AB = 5\\text{ '
+                           'cm}, BC = 7\\text{ cm}, DF = 6\\text{ cm}$. Tính chu vi của $\\triangle ABC$.”, '
+                           'kết quả giải đúng là: Vì $\\triangle ABC = \\triangle DEF$ nên các cạnh tương '
+                           'ứng bằng nhau: $AC = DF = 6\\text{ cm}$. Chu vi của $\\triangle ABC$ là $AB + BC '
+                           '+ AC = 5 + 7 + 6 = 18\\text{ (cm)}$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 13: Hai tam giác bằng nhau. Trường hợp '
-                        'bằng nhau thứ nhất (c.c.c). b) **Đúng** theo công thức trọng tâm **Định nghĩa '
-                        "$\\triangle ABC = \\triangle A'B'C'$** ($\\begin{cases} AB = A'B', \\; BC = B'C', "
-                        "\\; CA = C'A' \\\\ \\widehat{A} = \\widehat{A'}, \\; \\widehat{B} = \\widehat{B'}, "
-                        "\\; \\widehat{C} = \\widehat{C'} \\end{cases}$). c) **Sai** vì $\\mathbb{Q} = "
-                        '\\left\\{ \\dfrac{a}{b} \\;\\middle|\\; a, b \\in \\mathbb{Z}, b \\neq 0 '
-                        '\\right\\}$ là công thức của nội dung khác, không phải quy tắc chung của **Định '
-                        "nghĩa $\\triangle ABC = \\triangle A'B'C'$**. d) **Đúng** theo lời giải ví dụ minh "
-                        'họa trong bài học.'},
+                        'bằng nhau thứ nhất (c.c.c). b) **Đúng** theo công thức **Định nghĩa $\\triangle ABC '
+                        "= \\triangle A'B'C'$** ($\\begin{cases} AB = A'B', \\; BC = B'C', \\; CA = C'A' "
+                        "\\\\ \\widehat{A} = \\widehat{A'}, \\; \\widehat{B} = \\widehat{B'}, \\; "
+                        "\\widehat{C} = \\widehat{C'} \\end{cases}$). c) **Sai** vì công thức đúng của "
+                        "**Định nghĩa $\\triangle ABC = \\triangle A'B'C'$** phải là $\\begin{cases} AB = "
+                        "A'B', \\; BC = B'C', \\; CA = C'A' \\\\ \\widehat{A} = \\widehat{A'}, \\; "
+                        "\\widehat{B} = \\widehat{B'}, \\; \\widehat{C} = \\widehat{C'} \\end{cases}$ chứ "
+                        "không phải $\\begin{cases} AB = A'B', \\; BC = B'C', \\; CA = C'A' \\\\ "
+                        "\\widehat{A} = \\widehat{A'}, \\; \\widehat{B} = \\widehat{B'}, \\; \\widehat{C} = "
+                        "\\widehat{C'} \\end{cases}$ (với dấu ngược lại). d) **Đúng** theo lời giải ví dụ "
+                        'minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 13: Hai tam giác bằng nhau. Trường hợp bằng nhau thứ nhất '
-                 '(c.c.c)** để giải quyết tình huống sau: Cho $\\triangle ABC = \\triangle DEF$. Biết $AB = '
-                 '5\\text{ cm}, BC = 7\\text{ cm}, DF = 6\\text{ cm}$. Tính chu vi của $\\triangle ABC$. Kết '
-                 'quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Ta có: $-2,5 = \\dfrac{-5}{2} = \\dfrac{-15}{6}$; $1\\dfrac{2}{3} = \\dfrac{5}{3}$; '
-                        '$-4 = \\dfrac{-4}{1} = \\dfrac{-24}{6}$. Vì $-4 < -2,5 < 0 < 1\\dfrac{2}{3}$ n...',
-                        'Áp dụng tính chất phân phối của phép nhân đối với phép cộng: $A = \\dfrac{-3}{7} '
-                        '\\cdot \\left(\\dfrac{5}{9} + \\dfrac{4}{9}\\right) + \\dfrac{10}{7} = '
-                        '\\dfrac{-3}{7} \\cdot 1 + \\dfrac{10}{7} = \\dfrac{7}{7} = 1$...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 13: Hai tam giác bằng nhau. Trường hợp bằng nhau '
+                 'thứ nhất (c.c.c)** để giải bài toán sau: Cho $\\triangle ABC = \\triangle DEF$. Biết $AB = '
+                 '5\\text{ cm}, BC = 7\\text{ cm}, DF = 6\\text{ cm}$. Tính chu vi của $\\triangle ABC$. '
+                 'Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Vì $\\triangle ABC = \\triangle DEF$ nên các cạnh tương ứng bằng nhau: $AC = DF = '
+                        '6\\text{ cm}$. Chu vi của $\\triangle ABC$ là $AB - BC + AC = 5 + 7 + 6 = 18\\text{ '
+                        '(cm)}$...',
+                        'Vì $\\triangle ABC = \\triangle DEF$ nên các cạnh tương ứng bằng nhau: $AC = DF = '
+                        '6\\text{ cm}$. Chu vi của $\\triangle ABC$ là $AB + BC + AC = 5 + 7 + 6 = 17\\text{ '
+                        '(cm)}$...',
                         'Vì $\\triangle ABC = \\triangle DEF$ nên các cạnh tương ứng bằng nhau: $AC = DF = '
                         '6\\text{ cm}$. Chu vi của $\\triangle ABC$ là $AB + BC + AC = 5 + 7 + 6 = 18\\text{ '
                         '(cm)}$...',
-                        'Ta có: $M = \\dfrac{(2^3)^{10}}{(2^2)^8} = \\dfrac{2^{30}}{2^{16}} = 2^{30-16} = '
-                        '2^{14} = 16384$. $N = (0,125 \\cdot 8)^3 = 1^3 = 1$.'],
+                        'Vì $\\triangle ABC = \\triangle DEF$ nên các cạnh tương ứng bằng nhau: $AC = DF = '
+                        '12\\text{ cm}$. Chu vi của $\\triangle ABC$ là $AB + BC + AC = 5 + 7 + 6 = '
+                        '18\\text{ (cm)}$...'],
             'answer': 2,
             'solution': 'Lời giải chi tiết theo Bài 13: Hai tam giác bằng nhau. Trường hợp bằng nhau thứ '
                         'nhất (c.c.c): Vì $\\triangle ABC = \\triangle DEF$ nên các cạnh tương ứng bằng '
@@ -2378,36 +2430,40 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 14: Trường hợp bằng nhau thứ hai và thứ ba của tam giác '
-                 '(c.g.c và g.c.g)**, công thức hoặc quy tắc nào sau đây biểu diễn đúng **Trường hợp cạnh - '
-                 'góc - cạnh (c.g.c)**?',
-            'options': ["$\\widehat{B} = \\widehat{B'}, \\; BC = B'C', \\; \\widehat{C} = \\widehat{C'} "
-                        "\\Rightarrow \\triangle ABC = \\triangle A'B'C'$",
-                        '$\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} \\;\\middle|\\; a, b \\in \\mathbb{Z}, b '
-                        '\\neq 0 \\right\\}$',
-                        '$\\mathbb{N} \\subset \\mathbb{Z} \\subset \\mathbb{Q}$',
+            'q': 'Trong **Bài 14: Trường hợp bằng nhau thứ hai và thứ ba của tam giác (c.g.c và g.c.g)**, '
+                 'quy tắc hoặc công thức nào sau đây xác định đúng **Trường hợp cạnh - góc - cạnh (c.g.c)**?',
+            'options': ["$AB = A'B', \\; \\widehat{B} = \\widehat{B'}, \\; BC = B'C' \\Rightarrow \\triangle "
+                        "ABC = \\triangle A'B'C'$ (với dấu ngược lại)",
+                        "Đảo ngược vế của quy tắc: $AB = A'B', \\; \\widehat{B} = \\widehat{B'}, \\; BC = "
+                        "B'C' \\Rightarrow \\triangle ABC = \\triangle A'B'C'$",
+                        "Trường hợp trái ngược: không thỏa mãn điều kiện của $AB = A'B', \\; \\widehat{B} = "
+                        "\\widehat{B'}, \\; BC = B'C' \\Rightarrow \\triangle ABC = \\triangle A'B'C'$",
                         "$AB = A'B', \\; \\widehat{B} = \\widehat{B'}, \\; BC = B'C' \\Rightarrow \\triangle "
                         "ABC = \\triangle A'B'C'$"],
             'answer': 3,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 14: Trường hợp bằng nhau thứ hai và thứ ba '
-                        'của tam giác (c.g.c và g.c.g), **Trường hợp cạnh - góc - cạnh (c.g.c)** được xác '
-                        "định bởi: $AB = A'B', \\; \\widehat{B} = \\widehat{B'}, \\; BC = B'C' \\Rightarrow "
-                        "\\triangle ABC = \\triangle A'B'C'$."},
+            'solution': 'Theo kiến thức trọng tâm của Bài 14: Trường hợp bằng nhau thứ hai và thứ ba của tam '
+                        'giác (c.g.c và g.c.g), **Trường hợp cạnh - góc - cạnh (c.g.c)** được xác định bởi: '
+                        "$AB = A'B', \\; \\widehat{B} = \\widehat{B'}, \\; BC = B'C' \\Rightarrow \\triangle "
+                        "ABC = \\triangle A'B'C'$."},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 14: Trường hợp bằng nhau thứ hai và thứ ba của tam giác (c.g.c và g.c.g)**, '
-                 "nội dung/biểu thức $\\widehat{B} = \\widehat{B'}, \\; BC = B'C', \\; \\widehat{C} = "
-                 "\\widehat{C'} \\Rightarrow \\triangle ABC = \\triangle A'B'C'$ là quy tắc hoặc công thức "
-                 'của mục nào sau đây?',
-            'options': ['Trường hợp góc - cạnh - góc (g.c.g)',
-                        'Trường hợp cạnh - góc - cạnh (c.g.c)',
-                        'Định nghĩa tập $\\mathbb{Q}$',
-                        'Quan hệ tập hợp'],
+            'q': 'Khi học **Bài 14: Trường hợp bằng nhau thứ hai và thứ ba của tam giác (c.g.c và g.c.g)**, '
+                 'biểu thức hoặc quy tắc nào dưới đây biểu diễn đúng **Trường hợp góc - cạnh - góc '
+                 '(g.c.g)**?',
+            'options': ["$\\widehat{B} = \\widehat{B'}, \\; BC = B'C', \\; \\widehat{C} = \\widehat{C'} "
+                        "\\Rightarrow \\triangle ABC = \\triangle A'B'C'$",
+                        "$\\widehat{B} = \\widehat{B'}, \\; BC = B'C', \\; \\widehat{C} = \\widehat{C'} "
+                        "\\Rightarrow \\triangle ABC = \\triangle A'B'C'$ (với dấu ngược lại)",
+                        "Đảo ngược vế của quy tắc: $\\widehat{B} = \\widehat{B'}, \\; BC = B'C', \\; "
+                        "\\widehat{C} = \\widehat{C'} \\Rightarrow \\triangle ABC = \\triangle A'B'C'$",
+                        "Trường hợp trái ngược: không thỏa mãn điều kiện của $\\widehat{B} = \\widehat{B'}, "
+                        "\\; BC = B'C', \\; \\widehat{C} = \\widehat{C'} \\Rightarrow \\triangle ABC = "
+                        "\\triangle A'B'C'$"],
             'answer': 0,
             'solution': 'Trong Bài 14: Trường hợp bằng nhau thứ hai và thứ ba của tam giác (c.g.c và g.c.g), '
-                        "biểu thức/quy tắc $\\widehat{B} = \\widehat{B'}, \\; BC = B'C', \\; \\widehat{C} = "
-                        "\\widehat{C'} \\Rightarrow \\triangle ABC = \\triangle A'B'C'$ chính là nội dung "
-                        'của **Trường hợp góc - cạnh - góc (g.c.g)**.'},
+                        '**Trường hợp góc - cạnh - góc (g.c.g)** có công thức/quy tắc là: $\\widehat{B} = '
+                        "\\widehat{B'}, \\; BC = B'C', \\; \\widehat{C} = \\widehat{C'} \\Rightarrow "
+                        "\\triangle ABC = \\triangle A'B'C'$."},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Cho góc $\\widehat{xOy}$, trên tia $Ox$ lấy điểm $A$, trên tia $Oy$ lấy điểm $B$ sao cho '
@@ -2421,17 +2477,18 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 14: Trường hợp bằng nhau thứ hai và thứ ba của tam giác (c.g.c và g.c.g)** '
-                 '(Chương IV: Tam giác bằng nhau), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt '
-                 'và bản chất kiến thức của bài?',
-            'options': ['Nhận biết được số hữu tỉ và lấy được ví dụ về số hữu tỉ, nhận biết tập hợp các số '
-                        'hữu tỉ $\\mathbb{Q}$.',
-                        'Biểu diễn được số hữu tỉ trên trục số và nhận biết được số đối của một số hữu tỉ.',
+            'q': 'Để nắm vững bản chất của **Bài 14: Trường hợp bằng nhau thứ hai và thứ ba của tam giác '
+                 '(c.g.c và g.c.g)**, nhận định nào sau đây là **chính xác**?',
+            'options': ['Giải thích và vận dụng được trường hợp bằng nhau thứ hai của tam giác: cạnh + góc - '
+                        'cạnh (c.g.c).',
+                        'Đảo ngược vế của quy tắc: Giải thích và vận dụng được trường hợp bằng nhau thứ hai '
+                        'của tam giác: cạnh - góc - cạnh (c.g.c).',
                         'Giải thích và vận dụng được trường hợp bằng nhau thứ hai của tam giác: cạnh - góc - '
                         'cạnh (c.g.c).',
-                        'Nhận biết được thứ tự trong tập hợp các số hữu tỉ và so sánh được hai số hữu tỉ.'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Giải thích và vận dụng được '
+                        'trường hợp bằng nhau thứ hai của tam giác: cạnh - góc - cạnh (c.g.c).'],
             'answer': 2,
-            'solution': 'Theo yêu cầu cần đạt của Bài 14: Trường hợp bằng nhau thứ hai và thứ ba của tam '
+            'solution': 'Theo nội dung cốt lõi của Bài 14: Trường hợp bằng nhau thứ hai và thứ ba của tam '
                         'giác (c.g.c và g.c.g): Giải thích và vận dụng được trường hợp bằng nhau thứ hai của '
                         'tam giác: cạnh - góc - cạnh (c.g.c).'},
            {'level': 'hieu',
@@ -2454,46 +2511,45 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 14: Trường hợp bằng '
-                 'nhau thứ hai và thứ ba của tam giác (c.g.c và g.c.g)**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Giải thích và vận dụng được trường '
-                           'hợp bằng nhau thứ hai của tam giác: cạnh - góc - cạnh (c.g.c).',
-                           'Quy tắc/công thức **Trường hợp cạnh - góc - cạnh (c.g.c)** trong bài được xác '
-                           "định bởi: $AB = A'B', \\; \\widehat{B} = \\widehat{B'}, \\; BC = B'C' "
-                           "\\Rightarrow \\triangle ABC = \\triangle A'B'C'$.",
-                           'Trong mọi trường hợp, **Trường hợp cạnh - góc - cạnh (c.g.c)** luôn được tính '
-                           'bằng công thức $\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} \\;\\middle|\\; a, b \\in '
-                           '\\mathbb{Z}, b \\neq 0 \\right\\}$ (thuộc Định nghĩa tập $\\mathbb{Q}$) mà không '
-                           'cần điều kiện của Bài 14: Trường hợp bằng nhau thứ hai và thứ ba của tam giác '
-                           '(c.g.c và g.c.g).',
-                           'Với bài toán minh họa: “Cho đoạn thẳng $AB$ và $CD$ cắt nhau tại trung điểm $O$ '
-                           'của mỗi đoạn. Chứng minh $\\triangle OAC = \\triangle OBD$ và $AC = BD$.”, lời '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 14: Trường hợp bằng nhau '
+                 'thứ hai và thứ ba của tam giác (c.g.c và g.c.g)**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Giải thích và vận dụng được trường hợp '
+                           'bằng nhau thứ hai của tam giác: cạnh - góc - cạnh (c.g.c).',
+                           'Trong **Bài 14: Trường hợp bằng nhau thứ hai và thứ ba của tam giác (c.g.c và '
+                           'g.c.g)**, quy tắc/công thức **Trường hợp cạnh - góc - cạnh (c.g.c)** được viết '
+                           "là: $AB = A'B', \\; \\widehat{B} = \\widehat{B'}, \\; BC = B'C' \\Rightarrow "
+                           "\\triangle ABC = \\triangle A'B'C'$.",
+                           "Nếu áp dụng sai dấu/phép tính thành $AB = A'B', \\; \\widehat{B} = "
+                           "\\widehat{B'}, \\; BC = B'C' \\Rightarrow \\triangle ABC = \\triangle A'B'C'$ "
+                           '(với dấu ngược lại) thì kết quả của **Trường hợp cạnh - góc - cạnh (c.g.c)** '
+                           'trong **Bài 14: Trường hợp bằng nhau thứ hai và thứ ba của tam giác (c.g.c và '
+                           'g.c.g)** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Cho đoạn thẳng $AB$ và $CD$ cắt nhau tại trung điểm $O$ của '
+                           'mỗi đoạn. Chứng minh $\\triangle OAC = \\triangle OBD$ và $AC = BD$.”, kết quả '
                            'giải đúng là: Xét $\\triangle OAC$ và $\\triangle OBD$ có: - $OA = OB$ ($O$ là '
-                           'trung điểm của $AB$); - $\\widehat{AOC} = \\widehat{BOD}$ (hai góc đối đỉnh)...'],
+                           'trung điểm của $AB$); - $\\widehat{AOC} = \\widehat{BOD}$ (hai góc đối đỉn...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 14: Trường hợp bằng nhau thứ hai và thứ ba '
-                        'của tam giác (c.g.c và g.c.g). b) **Đúng** theo công thức trọng tâm **Trường hợp '
-                        "cạnh - góc - cạnh (c.g.c)** ($AB = A'B', \\; \\widehat{B} = \\widehat{B'}, \\; BC = "
-                        "B'C' \\Rightarrow \\triangle ABC = \\triangle A'B'C'$). c) **Sai** vì $\\mathbb{Q} "
-                        '= \\left\\{ \\dfrac{a}{b} \\;\\middle|\\; a, b \\in \\mathbb{Z}, b \\neq 0 '
-                        '\\right\\}$ là công thức của nội dung khác, không phải quy tắc chung của **Trường '
-                        'hợp cạnh - góc - cạnh (c.g.c)**. d) **Đúng** theo lời giải ví dụ minh họa trong bài '
-                        'học.'},
+                        'của tam giác (c.g.c và g.c.g). b) **Đúng** theo công thức **Trường hợp cạnh - góc - '
+                        "cạnh (c.g.c)** ($AB = A'B', \\; \\widehat{B} = \\widehat{B'}, \\; BC = B'C' "
+                        "\\Rightarrow \\triangle ABC = \\triangle A'B'C'$). c) **Sai** vì công thức đúng của "
+                        "**Trường hợp cạnh - góc - cạnh (c.g.c)** phải là $AB = A'B', \\; \\widehat{B} = "
+                        "\\widehat{B'}, \\; BC = B'C' \\Rightarrow \\triangle ABC = \\triangle A'B'C'$ chứ "
+                        "không phải $AB = A'B', \\; \\widehat{B} = \\widehat{B'}, \\; BC = B'C' \\Rightarrow "
+                        "\\triangle ABC = \\triangle A'B'C'$ (với dấu ngược lại). d) **Đúng** theo lời giải "
+                        'ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 14: Trường hợp bằng nhau thứ hai và thứ ba của tam giác (c.g.c và '
-                 'g.c.g)** để giải quyết tình huống sau: Cho đoạn thẳng $AB$ và $CD$ cắt nhau tại trung điểm '
-                 '$O$ của mỗi đoạn. Chứng minh $\\triangle OAC = \\triangle OBD$ và $AC = BD$. Kết quả và '
-                 'hướng giải nào dưới đây là **đúng**?',
-            'options': ['Ta có: $-2,5 = \\dfrac{-5}{2} = \\dfrac{-15}{6}$; $1\\dfrac{2}{3} = \\dfrac{5}{3}$; '
-                        '$-4 = \\dfrac{-4}{1} = \\dfrac{-24}{6}$. Vì $-4 < -2,5 < 0 < 1\\dfrac{2}{3}$ n...',
-                        'Áp dụng tính chất phân phối của phép nhân đối với phép cộng: $A = \\dfrac{-3}{7} '
-                        '\\cdot \\left(\\dfrac{5}{9} + \\dfrac{4}{9}\\right) + \\dfrac{10}{7} = '
-                        '\\dfrac{-3}{7} \\cdot 1 + \\dfrac{10}{7} = \\dfrac{7}{7} = 1$...',
-                        'Ta có: $M = \\dfrac{(2^3)^{10}}{(2^2)^8} = \\dfrac{2^{30}}{2^{16}} = 2^{30-16} = '
-                        '2^{14} = 16384$. $N = (0,125 \\cdot 8)^3 = 1^3 = 1$.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 14: Trường hợp bằng nhau thứ hai và thứ ba của tam '
+                 'giác (c.g.c và g.c.g)** để giải bài toán sau: Cho đoạn thẳng $AB$ và $CD$ cắt nhau tại '
+                 'trung điểm $O$ của mỗi đoạn. Chứng minh $\\triangle OAC = \\triangle OBD$ và $AC = BD$. '
+                 'Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Xét $\\triangle OAC$ và $\\triangle OBD$ có: + $OA = OB$ ($O$ là trung điểm của '
+                        '$AB$); - $\\widehat{AOC} = \\widehat{BOD}$ (hai góc đối đỉnh); - $OC = OD$...',
+                        'Thực hiện theo thứ tự ngược lại và bỏ qua điều kiện xác định trong bài',
+                        'Đổi ngược dấu của phép tính chính và không kiểm tra lại kết quả',
                         'Xét $\\triangle OAC$ và $\\triangle OBD$ có: - $OA = OB$ ($O$ là trung điểm của '
-                        '$AB$); - $\\widehat{AOC} = \\widehat{BOD}$ (hai góc đối đỉnh); - $OC = OD$ ($O$...'],
+                        '$AB$); - $\\widehat{AOC} = \\widehat{BOD}$ (hai góc đối đỉnh); - $OC = OD$...'],
             'answer': 3,
             'solution': 'Lời giải chi tiết theo Bài 14: Trường hợp bằng nhau thứ hai và thứ ba của tam giác '
                         '(c.g.c và g.c.g): Xét $\\triangle OAC$ và $\\triangle OBD$ có:\n'
@@ -2522,8 +2578,8 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
   'requirements': ['Giải thích và vận dụng được các trường hợp bằng nhau của hai tam giác vuông.',
                    'Đặc biệt nắm vững hai trường hợp đặc trưng: cạnh huyền - góc nhọn và cạnh huyền - cạnh '
                    'góc vuông.',
-                   "Ghi nhớ và vận dụng đúng quy tắc/công thức **Hai cạnh góc vuông** ($AB = A'B', \\; AC = "
-                   "A'C' \\Rightarrow \\triangle ABC = \\triangle A'B'C'$) vào giải bài tập."],
+                   'Vận dụng kiến thức của **Bài 15: Các trường hợp bằng nhau của tam giác vuông** để giải '
+                   'bài tập minh họa và bài toán thực tiễn.'],
   'definition': 'Trong tam giác vuông, cạnh đối diện với góc vuông gọi là cạnh huyền, hai cạnh kề với góc '
                 'vuông gọi là hai cạnh góc vuông. Hai tam giác vuông bằng nhau nếu có: hai cạnh góc vuông '
                 'bằng nhau; hoặc một cạnh góc vuông và góc nhọn kề bằng nhau; hoặc cạnh huyền và một góc '
@@ -2589,31 +2645,35 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 15: Các trường hợp bằng nhau của tam giác vuông**, công '
-                 'thức hoặc quy tắc nào sau đây biểu diễn đúng **Hai cạnh góc vuông**?',
+            'q': 'Trong **Bài 15: Các trường hợp bằng nhau của tam giác vuông**, quy tắc hoặc công thức nào '
+                 'sau đây xác định đúng **Hai cạnh góc vuông**?',
             'options': ["$AB = A'B', \\; AC = A'C' \\Rightarrow \\triangle ABC = \\triangle A'B'C'$",
-                        "$AB = A'B', \\; \\widehat{B} = \\widehat{B'} \\Rightarrow \\triangle ABC = "
+                        "$AB = A'B', \\; AC = A'C' \\Rightarrow \\triangle ABC = \\triangle A'B'C'$ (với dấu "
+                        'ngược lại)',
+                        "Đảo ngược vế của quy tắc: $AB = A'B', \\; AC = A'C' \\Rightarrow \\triangle ABC = "
                         "\\triangle A'B'C'$",
-                        "$BC = B'C', \\; \\widehat{B} = \\widehat{B'} \\Rightarrow \\triangle ABC = "
-                        "\\triangle A'B'C'$",
-                        "$BC = B'C', \\; AB = A'B' \\Rightarrow \\triangle ABC = \\triangle A'B'C'$"],
+                        "Trường hợp trái ngược: không thỏa mãn điều kiện của $AB = A'B', \\; AC = A'C' "
+                        "\\Rightarrow \\triangle ABC = \\triangle A'B'C'$"],
             'answer': 0,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 15: Các trường hợp bằng nhau của tam giác '
-                        "vuông, **Hai cạnh góc vuông** được xác định bởi: $AB = A'B', \\; AC = A'C' "
-                        "\\Rightarrow \\triangle ABC = \\triangle A'B'C'$."},
+            'solution': 'Theo kiến thức trọng tâm của Bài 15: Các trường hợp bằng nhau của tam giác vuông, '
+                        "**Hai cạnh góc vuông** được xác định bởi: $AB = A'B', \\; AC = A'C' \\Rightarrow "
+                        "\\triangle ABC = \\triangle A'B'C'$."},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 15: Các trường hợp bằng nhau của tam giác vuông**, nội dung/biểu thức $AB = '
-                 "A'B', \\; \\widehat{B} = \\widehat{B'} \\Rightarrow \\triangle ABC = \\triangle A'B'C'$ là "
-                 'quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Hai cạnh góc vuông',
-                        'Cạnh góc vuông - góc nhọn kề',
-                        'Cạnh huyền - góc nhọn',
-                        'Cạnh huyền - cạnh góc vuông'],
+            'q': 'Khi học **Bài 15: Các trường hợp bằng nhau của tam giác vuông**, biểu thức hoặc quy tắc '
+                 'nào dưới đây biểu diễn đúng **Cạnh góc vuông - góc nhọn kề**?',
+            'options': ["$AB = A'B', \\; \\widehat{B} = \\widehat{B'} \\Rightarrow \\triangle ABC = "
+                        "\\triangle A'B'C'$ (với dấu ngược lại)",
+                        "$AB = A'B', \\; \\widehat{B} = \\widehat{B'} \\Rightarrow \\triangle ABC = "
+                        "\\triangle A'B'C'$",
+                        "Đảo ngược vế của quy tắc: $AB = A'B', \\; \\widehat{B} = \\widehat{B'} \\Rightarrow "
+                        "\\triangle ABC = \\triangle A'B'C'$",
+                        "Trường hợp trái ngược: không thỏa mãn điều kiện của $AB = A'B', \\; \\widehat{B} = "
+                        "\\widehat{B'} \\Rightarrow \\triangle ABC = \\triangle A'B'C'$"],
             'answer': 1,
-            'solution': 'Trong Bài 15: Các trường hợp bằng nhau của tam giác vuông, biểu thức/quy tắc $AB = '
-                        "A'B', \\; \\widehat{B} = \\widehat{B'} \\Rightarrow \\triangle ABC = \\triangle "
-                        "A'B'C'$ chính là nội dung của **Cạnh góc vuông - góc nhọn kề**."},
+            'solution': 'Trong Bài 15: Các trường hợp bằng nhau của tam giác vuông, **Cạnh góc vuông - góc '
+                        "nhọn kề** có công thức/quy tắc là: $AB = A'B', \\; \\widehat{B} = \\widehat{B'} "
+                        "\\Rightarrow \\triangle ABC = \\triangle A'B'C'$."},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Cho tia $Oz$ là tia phân giác của góc $\\widehat{xOy}$. Lấy điểm $M$ trên tia $Oz$, kẻ $MA '
@@ -2630,16 +2690,17 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 15: Các trường hợp bằng nhau của tam giác vuông** (Chương IV: Tam giác bằng '
-                 'nhau), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của '
-                 'bài?',
-            'options': ['Nhận biết được số hữu tỉ và lấy được ví dụ về số hữu tỉ, nhận biết tập hợp các số '
-                        'hữu tỉ $\\mathbb{Q}$.',
-                        'Biểu diễn được số hữu tỉ trên trục số và nhận biết được số đối của một số hữu tỉ.',
-                        'Nhận biết được thứ tự trong tập hợp các số hữu tỉ và so sánh được hai số hữu tỉ.',
+            'q': 'Để nắm vững bản chất của **Bài 15: Các trường hợp bằng nhau của tam giác vuông**, nhận '
+                 'định nào sau đây là **chính xác**?',
+            'options': ['Giải thích và vận dụng được các trường hợp bằng nhau của hai tam giác vuông. (với '
+                        'dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Giải thích và vận dụng được các trường hợp bằng nhau của '
+                        'hai tam giác vuông.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Giải thích và vận dụng được các '
+                        'trường hợp bằng nhau của hai tam giác vuông.',
                         'Giải thích và vận dụng được các trường hợp bằng nhau của hai tam giác vuông.'],
             'answer': 3,
-            'solution': 'Theo yêu cầu cần đạt của Bài 15: Các trường hợp bằng nhau của tam giác vuông: Giải '
+            'solution': 'Theo nội dung cốt lõi của Bài 15: Các trường hợp bằng nhau của tam giác vuông: Giải '
                         'thích và vận dụng được các trường hợp bằng nhau của hai tam giác vuông.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -2657,42 +2718,41 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 15: Các trường hợp bằng '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 15: Các trường hợp bằng '
                  'nhau của tam giác vuông**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Giải thích và vận dụng được các '
-                           'trường hợp bằng nhau của hai tam giác vuông.',
-                           'Quy tắc/công thức **Hai cạnh góc vuông** trong bài được xác định bởi: $AB = '
-                           "A'B', \\; AC = A'C' \\Rightarrow \\triangle ABC = \\triangle A'B'C'$.",
-                           'Trong mọi trường hợp, **Hai cạnh góc vuông** luôn được tính bằng công thức '
-                           '$\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} \\;\\middle|\\; a, b \\in \\mathbb{Z}, b '
-                           '\\neq 0 \\right\\}$ (thuộc Định nghĩa tập $\\mathbb{Q}$) mà không cần điều kiện '
-                           'của Bài 15: Các trường hợp bằng nhau của tam giác vuông.',
-                           'Với bài toán minh họa: “Cho $\\triangle ABC$ có $AB = AC$. Kẻ $AH \\perp BC$ tại '
-                           '$H$. Chứng minh $\\triangle AHB = \\triangle AHC$ và $HB = HC$.”, lời giải đúng '
-                           'là: Xét hai tam giác vuông $\\triangle AHB$ (vuông tại $H$) và $\\triangle AHC$ '
-                           '(vuông tại $H$) có: - Cạnh huyền $AB = AC$ (giả thiết); - Cạnh góc...'],
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Giải thích và vận dụng được các trường '
+                           'hợp bằng nhau của hai tam giác vuông.',
+                           'Trong **Bài 15: Các trường hợp bằng nhau của tam giác vuông**, quy tắc/công thức '
+                           "**Hai cạnh góc vuông** được viết là: $AB = A'B', \\; AC = A'C' \\Rightarrow "
+                           "\\triangle ABC = \\triangle A'B'C'$.",
+                           "Nếu áp dụng sai dấu/phép tính thành $AB = A'B', \\; AC = A'C' \\Rightarrow "
+                           "\\triangle ABC = \\triangle A'B'C'$ (với dấu ngược lại) thì kết quả của **Hai "
+                           'cạnh góc vuông** trong **Bài 15: Các trường hợp bằng nhau của tam giác vuông** '
+                           'vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Cho $\\triangle ABC$ có $AB = AC$. Kẻ $AH \\perp BC$ tại '
+                           '$H$. Chứng minh $\\triangle AHB = \\triangle AHC$ và $HB = HC$.”, kết quả giải '
+                           'đúng là: Xét hai tam giác vuông $\\triangle AHB$ (vuông tại $H$) và $\\triangle '
+                           'AHC$ (vuông tại $H$) có: - Cạnh huyền $AB = AC$ (giả thiết); - Cạn...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 15: Các trường hợp bằng nhau của tam giác '
-                        "vuông. b) **Đúng** theo công thức trọng tâm **Hai cạnh góc vuông** ($AB = A'B', \\; "
-                        "AC = A'C' \\Rightarrow \\triangle ABC = \\triangle A'B'C'$). c) **Sai** vì "
-                        '$\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} \\;\\middle|\\; a, b \\in \\mathbb{Z}, b '
-                        '\\neq 0 \\right\\}$ là công thức của nội dung khác, không phải quy tắc chung của '
-                        '**Hai cạnh góc vuông**. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        "vuông. b) **Đúng** theo công thức **Hai cạnh góc vuông** ($AB = A'B', \\; AC = A'C' "
+                        "\\Rightarrow \\triangle ABC = \\triangle A'B'C'$). c) **Sai** vì công thức đúng của "
+                        "**Hai cạnh góc vuông** phải là $AB = A'B', \\; AC = A'C' \\Rightarrow \\triangle "
+                        "ABC = \\triangle A'B'C'$ chứ không phải $AB = A'B', \\; AC = A'C' \\Rightarrow "
+                        "\\triangle ABC = \\triangle A'B'C'$ (với dấu ngược lại). d) **Đúng** theo lời giải "
+                        'ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 15: Các trường hợp bằng nhau của tam giác vuông** để giải quyết '
-                 'tình huống sau: Cho $\\triangle ABC$ có $AB = AC$. Kẻ $AH \\perp BC$ tại $H$. Chứng minh '
-                 '$\\triangle AHB = \\triangle AHC$ và $HB = HC$. Kết quả và hướng giải nào dưới đây là '
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 15: Các trường hợp bằng nhau của tam giác vuông** '
+                 'để giải bài toán sau: Cho $\\triangle ABC$ có $AB = AC$. Kẻ $AH \\perp BC$ tại $H$. Chứng '
+                 'minh $\\triangle AHB = \\triangle AHC$ và $HB = HC$. Cách giải và kết quả nào dưới đây là '
                  '**đúng**?',
             'options': ['Xét hai tam giác vuông $\\triangle AHB$ (vuông tại $H$) và $\\triangle AHC$ (vuông '
-                        'tại $H$) có: - Cạnh huyền $AB = AC$ (giả thiết); - Cạnh góc vuông $AH$ chu...',
-                        'Ta có: $-2,5 = \\dfrac{-5}{2} = \\dfrac{-15}{6}$; $1\\dfrac{2}{3} = \\dfrac{5}{3}$; '
-                        '$-4 = \\dfrac{-4}{1} = \\dfrac{-24}{6}$. Vì $-4 < -2,5 < 0 < 1\\dfrac{2}{3}$ n...',
-                        'Áp dụng tính chất phân phối của phép nhân đối với phép cộng: $A = \\dfrac{-3}{7} '
-                        '\\cdot \\left(\\dfrac{5}{9} + \\dfrac{4}{9}\\right) + \\dfrac{10}{7} = '
-                        '\\dfrac{-3}{7} \\cdot 1 + \\dfrac{10}{7} = \\dfrac{7}{7} = 1$...',
-                        'Ta có: $M = \\dfrac{(2^3)^{10}}{(2^2)^8} = \\dfrac{2^{30}}{2^{16}} = 2^{30-16} = '
-                        '2^{14} = 16384$. $N = (0,125 \\cdot 8)^3 = 1^3 = 1$.'],
+                        'tại $H$) có: - Cạnh huyền $AB = AC$ (giả thiết); - Cạnh góc vuông $AH$...',
+                        'Xét hai tam giác vuông $\\triangle AHB$ (vuông tại $H$) và $\\triangle AHC$ (vuông '
+                        'tại $H$) có: + Cạnh huyền $AB = AC$ (giả thiết); - Cạnh góc vuông $AH$...',
+                        'Thực hiện theo thứ tự ngược lại và bỏ qua điều kiện xác định trong bài',
+                        'Đổi ngược dấu của phép tính chính và không kiểm tra lại kết quả'],
             'answer': 0,
             'solution': 'Lời giải chi tiết theo Bài 15: Các trường hợp bằng nhau của tam giác vuông: Xét hai '
                         'tam giác vuông $\\triangle AHB$ (vuông tại $H$) và $\\triangle AHC$ (vuông tại $H$) '
@@ -2724,9 +2784,8 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
                    'tam giác cân, tam giác đều.',
                    'Nhận biết được đường trung trực của một đoạn thẳng và tính chất cơ bản của đường trung '
                    'trực.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Tính chất góc ở đáy ($\\triangle ABC$ cân '
-                   'tại $A$)** ($\\widehat{B} = \\widehat{C} = \\dfrac{180^\\circ - \\widehat{A}}{2}$) vào '
-                   'giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 16: Tam giác cân. Đường trung trực của đoạn thẳng** để giải '
+                   'bài tập minh họa và bài toán thực tiễn.'],
   'definition': 'Tam giác cân là tam giác có hai cạnh bằng nhau. Đường thẳng vuông góc với một đoạn thẳng '
                 'tại trung điểm của nó được gọi là đường trung trực của đoạn thẳng đó.',
   'theory': '1. Tam giác cân:\n'
@@ -2781,30 +2840,28 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 16: Tam giác cân. Đường trung trực của đoạn thẳng**, '
-                 'công thức hoặc quy tắc nào sau đây biểu diễn đúng **Tính chất góc ở đáy ($\\triangle ABC$ '
-                 'cân tại $A$)**?',
-            'options': ['$\\widehat{A} = 180^\\circ - 2\\widehat{B}$',
+            'q': 'Trong **Bài 16: Tam giác cân. Đường trung trực của đoạn thẳng**, quy tắc hoặc công thức '
+                 'nào sau đây xác định đúng **Tính chất góc ở đáy ($\\triangle ABC$ cân tại $A$)**?',
+            'options': ['$\\widehat{B} = \\widehat{C} = \\dfrac{180^\\circ + \\widehat{A}}{2}$',
                         '$\\widehat{B} = \\widehat{C} = \\dfrac{180^\\circ - \\widehat{A}}{2}$',
-                        '$AB = BC = CA \\Leftrightarrow \\widehat{A} = \\widehat{B} = \\widehat{C} = '
-                        '60^\\circ$',
-                        '$M \\in d \\Leftrightarrow MA = MB$'],
+                        '$\\widehat{B} = \\widehat{C} = \\dfrac{180^\\circ - \\widehat{A}}{1}$',
+                        '$\\widehat{B} = \\widehat{C} = \\dfrac{182^\\circ - \\widehat{A}}{2}$'],
             'answer': 1,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 16: Tam giác cân. Đường trung trực của đoạn '
-                        'thẳng, **Tính chất góc ở đáy ($\\triangle ABC$ cân tại $A$)** được xác định bởi: '
+            'solution': 'Theo kiến thức trọng tâm của Bài 16: Tam giác cân. Đường trung trực của đoạn thẳng, '
+                        '**Tính chất góc ở đáy ($\\triangle ABC$ cân tại $A$)** được xác định bởi: '
                         '$\\widehat{B} = \\widehat{C} = \\dfrac{180^\\circ - \\widehat{A}}{2}$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 16: Tam giác cân. Đường trung trực của đoạn thẳng**, nội dung/biểu thức '
-                 '$\\widehat{A} = 180^\\circ - 2\\widehat{B}$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Tính chất góc ở đáy ($\\triangle ABC$ cân tại $A$)',
-                        'Tam giác đều $\\triangle ABC$',
-                        'Tính góc ở đỉnh ($\\triangle ABC$ cân tại $A$)',
-                        'Tính chất đường trung trực $d$ của $AB$'],
+            'q': 'Khi học **Bài 16: Tam giác cân. Đường trung trực của đoạn thẳng**, biểu thức hoặc quy tắc '
+                 'nào dưới đây biểu diễn đúng **Tính góc ở đỉnh ($\\triangle ABC$ cân tại $A$)**?',
+            'options': ['$\\widehat{A} = 180^\\circ + 2\\widehat{B}$',
+                        '$\\widehat{A} = 180^\\circ - 1\\widehat{B}$',
+                        '$\\widehat{A} = 180^\\circ - 2\\widehat{B}$',
+                        '$\\widehat{A} = 182^\\circ - 2\\widehat{B}$'],
             'answer': 2,
-            'solution': 'Trong Bài 16: Tam giác cân. Đường trung trực của đoạn thẳng, biểu thức/quy tắc '
-                        '$\\widehat{A} = 180^\\circ - 2\\widehat{B}$ chính là nội dung của **Tính góc ở đỉnh '
-                        '($\\triangle ABC$ cân tại $A$)**.'},
+            'solution': 'Trong Bài 16: Tam giác cân. Đường trung trực của đoạn thẳng, **Tính góc ở đỉnh '
+                        '($\\triangle ABC$ cân tại $A$)** có công thức/quy tắc là: $\\widehat{A} = '
+                        '180^\\circ - 2\\widehat{B}$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Cho $\\triangle ABC$ cân tại $A$ có $\\widehat{B} = 70^\\circ$. Số đo góc ở đỉnh '
@@ -2817,17 +2874,19 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 16: Tam giác cân. Đường trung trực của đoạn thẳng** (Chương IV: Tam giác '
-                 'bằng nhau), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức '
-                 'của bài?',
+            'q': 'Để nắm vững bản chất của **Bài 16: Tam giác cân. Đường trung trực của đoạn thẳng**, nhận '
+                 'định nào sau đây là **chính xác**?',
             'options': ['Mô tả được tam giác cân, tính chất hai góc ở đáy của tam giác cân và dấu hiệu nhận '
                         'biết tam giác cân, tam giác đều.',
-                        'Nhận biết được số hữu tỉ và lấy được ví dụ về số hữu tỉ, nhận biết tập hợp các số '
-                        'hữu tỉ $\\mathbb{Q}$.',
-                        'Biểu diễn được số hữu tỉ trên trục số và nhận biết được số đối của một số hữu tỉ.',
-                        'Nhận biết được thứ tự trong tập hợp các số hữu tỉ và so sánh được hai số hữu tỉ.'],
+                        'Mô tả được tam giác cân, tính chất hai góc ở đáy của tam giác cân và dấu hiệu nhận '
+                        'biết tam giác cân, tam giác đều. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Mô tả được tam giác cân, tính chất hai góc ở đáy của tam '
+                        'giác cân và dấu hiệu nhận biết tam giác cân, tam giác đều.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Mô tả được tam giác cân, tính '
+                        'chất hai góc ở đáy của tam giác cân và dấu hiệu nhận biết tam giác cân, tam giác '
+                        'đều.'],
             'answer': 0,
-            'solution': 'Theo yêu cầu cần đạt của Bài 16: Tam giác cân. Đường trung trực của đoạn thẳng: Mô '
+            'solution': 'Theo nội dung cốt lõi của Bài 16: Tam giác cân. Đường trung trực của đoạn thẳng: Mô '
                         'tả được tam giác cân, tính chất hai góc ở đáy của tam giác cân và dấu hiệu nhận '
                         'biết tam giác cân, tam giác đều.'},
            {'level': 'hieu',
@@ -2845,46 +2904,47 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 16: Tam giác cân. Đường '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 16: Tam giác cân. Đường '
                  'trung trực của đoạn thẳng**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Mô tả được tam giác cân, tính chất '
-                           'hai góc ở đáy của tam giác cân và dấu hiệu nhận biết tam giác cân, tam giác đều.',
-                           'Quy tắc/công thức **Tính chất góc ở đáy ($\\triangle ABC$ cân tại $A$)** trong '
-                           'bài được xác định bởi: $\\widehat{B} = \\widehat{C} = \\dfrac{180^\\circ - '
-                           '\\widehat{A}}{2}$.',
-                           'Trong mọi trường hợp, **Tính chất góc ở đáy ($\\triangle ABC$ cân tại $A$)** '
-                           'luôn được tính bằng công thức $\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} '
-                           '\\;\\middle|\\; a, b \\in \\mathbb{Z}, b \\neq 0 \\right\\}$ (thuộc Định nghĩa '
-                           'tập $\\mathbb{Q}$) mà không cần điều kiện của Bài 16: Tam giác cân. Đường trung '
-                           'trực của đoạn thẳng.',
-                           'Với bài toán minh họa: “Cho $\\triangle ABC$ cân tại $A$, biết góc ở đỉnh '
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Mô tả được tam giác cân, tính chất hai '
+                           'góc ở đáy của tam giác cân và dấu hiệu nhận biết tam giác cân, tam giác đều.',
+                           'Trong **Bài 16: Tam giác cân. Đường trung trực của đoạn thẳng**, quy tắc/công '
+                           'thức **Tính chất góc ở đáy ($\\triangle ABC$ cân tại $A$)** được viết là: '
+                           '$\\widehat{B} = \\widehat{C} = \\dfrac{180^\\circ - \\widehat{A}}{2}$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $\\widehat{B} = \\widehat{C} = '
+                           '\\dfrac{180^\\circ + \\widehat{A}}{2}$ thì kết quả của **Tính chất góc ở đáy '
+                           '($\\triangle ABC$ cân tại $A$)** trong **Bài 16: Tam giác cân. Đường trung trực '
+                           'của đoạn thẳng** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Cho $\\triangle ABC$ cân tại $A$, biết góc ở đỉnh '
                            '$\\widehat{A} = 50^\\circ$. Tính số đo hai góc ở đáy $\\widehat{B}$ và '
-                           '$\\widehat{C}$.”, lời giải đúng là: Vì $\\triangle ABC$ cân tại $A$ nên '
+                           '$\\widehat{C}$.”, kết quả giải đúng là: Vì $\\triangle ABC$ cân tại $A$ nên '
                            '$\\widehat{B} = \\widehat{C}$. Mà...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 16: Tam giác cân. Đường trung trực của '
-                        'đoạn thẳng. b) **Đúng** theo công thức trọng tâm **Tính chất góc ở đáy ($\\triangle '
-                        'ABC$ cân tại $A$)** ($\\widehat{B} = \\widehat{C} = \\dfrac{180^\\circ - '
-                        '\\widehat{A}}{2}$). c) **Sai** vì $\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} '
-                        '\\;\\middle|\\; a, b \\in \\mathbb{Z}, b \\neq 0 \\right\\}$ là công thức của nội '
-                        'dung khác, không phải quy tắc chung của **Tính chất góc ở đáy ($\\triangle ABC$ cân '
-                        'tại $A$)**. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        'đoạn thẳng. b) **Đúng** theo công thức **Tính chất góc ở đáy ($\\triangle ABC$ cân '
+                        'tại $A$)** ($\\widehat{B} = \\widehat{C} = \\dfrac{180^\\circ - \\widehat{A}}{2}$). '
+                        'c) **Sai** vì công thức đúng của **Tính chất góc ở đáy ($\\triangle ABC$ cân tại '
+                        '$A$)** phải là $\\widehat{B} = \\widehat{C} = \\dfrac{180^\\circ - '
+                        '\\widehat{A}}{2}$ chứ không phải $\\widehat{B} = \\widehat{C} = \\dfrac{180^\\circ '
+                        '+ \\widehat{A}}{2}$. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 16: Tam giác cân. Đường trung trực của đoạn thẳng** để giải quyết '
-                 'tình huống sau: Cho $\\triangle ABC$ cân tại $A$, biết góc ở đỉnh $\\widehat{A} = '
-                 '50^\\circ$. Tính số đo hai góc ở đáy $\\widehat{B}$ và $\\widehat{C}$. Kết quả và hướng '
-                 'giải nào dưới đây là **đúng**?',
-            'options': ['Ta có: $-2,5 = \\dfrac{-5}{2} = \\dfrac{-15}{6}$; $1\\dfrac{2}{3} = \\dfrac{5}{3}$; '
-                        '$-4 = \\dfrac{-4}{1} = \\dfrac{-24}{6}$. Vì $-4 < -2,5 < 0 < 1\\dfrac{2}{3}$ n...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 16: Tam giác cân. Đường trung trực của đoạn thẳng** '
+                 'để giải bài toán sau: Cho $\\triangle ABC$ cân tại $A$, biết góc ở đỉnh $\\widehat{A} = '
+                 '50^\\circ$. Tính số đo hai góc ở đáy $\\widehat{B}$ và $\\widehat{C}$. Cách giải và kết '
+                 'quả nào dưới đây là **đúng**?',
+            'options': ['Vì $\\triangle ABC$ cân tại $A$ nên $\\widehat{B} = \\widehat{C}$. Mà $\\widehat{A} '
+                        '- \\widehat{B} + \\widehat{C} = 180^\\circ \\Rightarrow \\widehat{B} = \\widehat{C} '
+                        '= \\dfrac{180^\\circ - 50^\\circ}{2} = 65^\\circ$...',
                         'Vì $\\triangle ABC$ cân tại $A$ nên $\\widehat{B} = \\widehat{C}$. Mà $\\widehat{A} '
                         '+ \\widehat{B} + \\widehat{C} = 180^\\circ \\Rightarrow \\widehat{B} = \\widehat{C} '
                         '= \\dfrac{180^\\circ - 50^\\circ}{2} = 65^\\circ$...',
-                        'Áp dụng tính chất phân phối của phép nhân đối với phép cộng: $A = \\dfrac{-3}{7} '
-                        '\\cdot \\left(\\dfrac{5}{9} + \\dfrac{4}{9}\\right) + \\dfrac{10}{7} = '
-                        '\\dfrac{-3}{7} \\cdot 1 + \\dfrac{10}{7} = \\dfrac{7}{7} = 1$...',
-                        'Ta có: $M = \\dfrac{(2^3)^{10}}{(2^2)^8} = \\dfrac{2^{30}}{2^{16}} = 2^{30-16} = '
-                        '2^{14} = 16384$. $N = (0,125 \\cdot 8)^3 = 1^3 = 1$.'],
+                        'Vì $\\triangle ABC$ cân tại $A$ nên $\\widehat{B} = \\widehat{C}$. Mà $\\widehat{A} '
+                        '+ \\widehat{B} + \\widehat{C} = 180^\\circ \\Rightarrow \\widehat{B} = \\widehat{C} '
+                        '= \\dfrac{2}{180^\\circ - 50^\\circ} = 65^\\circ$...',
+                        'Vì $\\triangle ABC$ cân tại $A$ nên $\\widehat{B} = \\widehat{C}$. Mà $\\widehat{A} '
+                        '+ \\widehat{B} + \\widehat{C} = 182^\\circ \\Rightarrow \\widehat{B} = \\widehat{C} '
+                        '= \\dfrac{180^\\circ - 50^\\circ}{2} = 65^\\circ$...'],
             'answer': 1,
             'solution': 'Lời giải chi tiết theo Bài 16: Tam giác cân. Đường trung trực của đoạn thẳng: Vì '
                         '$\\triangle ABC$ cân tại $A$ nên $\\widehat{B} = \\widehat{C}$.\n'
@@ -2963,34 +3023,41 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 17: Thu thập và phân loại dữ liệu**, công thức hoặc quy '
-                 'tắc nào sau đây biểu diễn đúng **Sơ đồ phân loại dữ liệu**?',
-            'options': ['$p\\% = \\dfrac{\\text{Số lượng phần tử của nhóm}}{\\text{Tổng số phần tử khảo '
-                        'sát}} \\cdot 100\\%$',
-                        '$\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} \\;\\middle|\\; a, b \\in \\mathbb{Z}, b '
-                        '\\neq 0 \\right\\}$',
+            'q': 'Trong **Bài 17: Thu thập và phân loại dữ liệu**, quy tắc hoặc công thức nào sau đây xác '
+                 'định đúng **Sơ đồ phân loại dữ liệu**?',
+            'options': ['$\\text{Dữ liệu} \\begin{cases} \\text{Số liệu (là số)} \\\\ \\text{Không là số} '
+                        '\\; (\\text{Có thể sắp thứ tự} \\; / \\; \\text{Không thể sắp thứ tự}) '
+                        '\\end{cases}$ (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: $\\text{Dữ liệu} \\begin{cases} \\text{Số liệu (là số)} '
+                        '\\\\ \\text{Không là số} \\; (\\text{Có thể sắp thứ tự} \\; / \\; \\text{Không thể '
+                        'sắp thứ tự}) \\end{cases}$',
                         '$\\text{Dữ liệu} \\begin{cases} \\text{Số liệu (là số)} \\\\ \\text{Không là số} '
                         '\\; (\\text{Có thể sắp thứ tự} \\; / \\; \\text{Không thể sắp thứ tự}) '
                         '\\end{cases}$',
-                        '$\\mathbb{N} \\subset \\mathbb{Z} \\subset \\mathbb{Q}$'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\text{Dữ liệu} \\begin{cases} '
+                        '\\text{Số liệu (là số)} \\\\ \\text{Không là số} \\; (\\text{Có thể sắp thứ tự} \\; '
+                        '/ \\; \\text{Không thể sắp thứ tự}) \\end{cases}$'],
             'answer': 2,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 17: Thu thập và phân loại dữ liệu, **Sơ đồ '
-                        'phân loại dữ liệu** được xác định bởi: $\\text{Dữ liệu} \\begin{cases} \\text{Số '
-                        'liệu (là số)} \\\\ \\text{Không là số} \\; (\\text{Có thể sắp thứ tự} \\; / \\; '
+            'solution': 'Theo kiến thức trọng tâm của Bài 17: Thu thập và phân loại dữ liệu, **Sơ đồ phân '
+                        'loại dữ liệu** được xác định bởi: $\\text{Dữ liệu} \\begin{cases} \\text{Số liệu '
+                        '(là số)} \\\\ \\text{Không là số} \\; (\\text{Có thể sắp thứ tự} \\; / \\; '
                         '\\text{Không thể sắp thứ tự}) \\end{cases}$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 17: Thu thập và phân loại dữ liệu**, nội dung/biểu thức $p\\% = '
-                 '\\dfrac{\\text{Số lượng phần tử của nhóm}}{\\text{Tổng số phần tử khảo sát}} \\cdot '
-                 '100\\%$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Sơ đồ phân loại dữ liệu',
-                        'Định nghĩa tập $\\mathbb{Q}$',
-                        'Quan hệ tập hợp',
-                        'Tỉ lệ phần trăm của một nhóm'],
+            'q': 'Khi học **Bài 17: Thu thập và phân loại dữ liệu**, biểu thức hoặc quy tắc nào dưới đây '
+                 'biểu diễn đúng **Tỉ lệ phần trăm của một nhóm**?',
+            'options': ['$p\\% = \\dfrac{\\text{Số lượng phần tử của nhóm}}{\\text{Tổng số phần tử khảo '
+                        'sát}} : 100\\%$',
+                        '$p\\% = \\dfrac{\\text{Số lượng phần tử của nhóm}}{\\text{Tổng số phần tử khảo '
+                        'sát}} \\cdot 99\\%$',
+                        '$p\\% = \\dfrac{\\text{Số lượng phần tử của nhóm}}{\\text{Tổng số phần tử khảo '
+                        'sát}} \\cdot 102\\%$',
+                        '$p\\% = \\dfrac{\\text{Số lượng phần tử của nhóm}}{\\text{Tổng số phần tử khảo '
+                        'sát}} \\cdot 100\\%$'],
             'answer': 3,
-            'solution': 'Trong Bài 17: Thu thập và phân loại dữ liệu, biểu thức/quy tắc $p\\% = '
-                        '\\dfrac{\\text{Số lượng phần tử của nhóm}}{\\text{Tổng số phần tử khảo sát}} \\cdot '
-                        '100\\%$ chính là nội dung của **Tỉ lệ phần trăm của một nhóm**.'},
+            'solution': 'Trong Bài 17: Thu thập và phân loại dữ liệu, **Tỉ lệ phần trăm của một nhóm** có '
+                        'công thức/quy tắc là: $p\\% = \\dfrac{\\text{Số lượng phần tử của '
+                        'nhóm}}{\\text{Tổng số phần tử khảo sát}} \\cdot 100\\%$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Để khảo sát thời gian tự học ở nhà của học sinh toàn trường THCS, cách chọn mẫu nào sau '
@@ -3006,17 +3073,18 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 17: Thu thập và phân loại dữ liệu** (Chương V: Thu thập và biểu diễn dữ '
-                 'liệu), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của '
-                 'bài?',
-            'options': ['Nhận biết được số hữu tỉ và lấy được ví dụ về số hữu tỉ, nhận biết tập hợp các số '
-                        'hữu tỉ $\\mathbb{Q}$.',
+            'q': 'Để nắm vững bản chất của **Bài 17: Thu thập và phân loại dữ liệu**, nhận định nào sau đây '
+                 'là **chính xác**?',
+            'options': ['Thực hiện và lí giải được việc thu thập, phân loại dữ liệu theo các tiêu chí cho '
+                        'trước. (với dấu ngược lại)',
                         'Thực hiện và lí giải được việc thu thập, phân loại dữ liệu theo các tiêu chí cho '
                         'trước.',
-                        'Biểu diễn được số hữu tỉ trên trục số và nhận biết được số đối của một số hữu tỉ.',
-                        'Nhận biết được thứ tự trong tập hợp các số hữu tỉ và so sánh được hai số hữu tỉ.'],
+                        'Đảo ngược vế của quy tắc: Thực hiện và lí giải được việc thu thập, phân loại dữ '
+                        'liệu theo các tiêu chí cho trước.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Thực hiện và lí giải được việc '
+                        'thu thập, phân loại dữ liệu theo các tiêu chí cho trước.'],
             'answer': 1,
-            'solution': 'Theo yêu cầu cần đạt của Bài 17: Thu thập và phân loại dữ liệu: Thực hiện và lí '
+            'solution': 'Theo nội dung cốt lõi của Bài 17: Thu thập và phân loại dữ liệu: Thực hiện và lí '
                         'giải được việc thu thập, phân loại dữ liệu theo các tiêu chí cho trước.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -3035,48 +3103,54 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 17: Thu thập và phân '
-                 'loại dữ liệu**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Thực hiện và lí giải được việc thu '
-                           'thập, phân loại dữ liệu theo các tiêu chí cho trước.',
-                           'Quy tắc/công thức **Sơ đồ phân loại dữ liệu** trong bài được xác định bởi: '
-                           '$\\text{Dữ liệu} \\begin{cases} \\text{Số liệu (là số)} \\\\ \\text{Không là số} '
-                           '\\; (\\text{Có thể sắp thứ tự} \\; / \\; \\text{Không thể sắp thứ tự}) '
-                           '\\end{cases}$.',
-                           'Trong mọi trường hợp, **Sơ đồ phân loại dữ liệu** luôn được tính bằng công thức '
-                           '$\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} \\;\\middle|\\; a, b \\in \\mathbb{Z}, b '
-                           '\\neq 0 \\right\\}$ (thuộc Định nghĩa tập $\\mathbb{Q}$) mà không cần điều kiện '
-                           'của Bài 17: Thu thập và phân loại dữ liệu.',
-                           'Với bài toán minh họa: “Khảo sát môn thể thao yêu thích của $40$ học sinh lớp 7A '
-                           'thu được: Bóng đá ($18$ em), Cầu lông ($12$ em), Bơi lội ($10$ em). Dữ liệu tên '
-                           'môn...”, lời giải đúng là: - Tên các môn thể thao (Bóng đá, Cầu lông, Bơi lội) '
-                           'là dữ liệu không là số và không thể sắp thứ tự. - Tỉ lệ học sinh thích Bóng đá '
-                           'là $\\dfrac{18}{40} \\cdot 100\\% = 45\\%$...'],
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 17: Thu thập và phân loại '
+                 'dữ liệu**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Thực hiện và lí giải được việc thu thập, '
+                           'phân loại dữ liệu theo các tiêu chí cho trước.',
+                           'Trong **Bài 17: Thu thập và phân loại dữ liệu**, quy tắc/công thức **Sơ đồ phân '
+                           'loại dữ liệu** được viết là: $\\text{Dữ liệu} \\begin{cases} \\text{Số liệu (là '
+                           'số)} \\\\ \\text{Không là số} \\; (\\text{Có thể sắp thứ tự} \\; / \\; '
+                           '\\text{Không thể sắp thứ tự}) \\end{cases}$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $\\text{Dữ liệu} \\begin{cases} \\text{Số '
+                           'liệu (là số)} \\\\ \\text{Không là số} \\; (\\text{Có thể sắp thứ tự} \\; / \\; '
+                           '\\text{Không thể sắp thứ tự}) \\end{cases}$ (với dấu ngược lại) thì kết quả của '
+                           '**Sơ đồ phân loại dữ liệu** trong **Bài 17: Thu thập và phân loại dữ liệu** vẫn '
+                           'không thay đổi.',
+                           'Xét ví dụ của bài: “Khảo sát môn thể thao yêu thích của $40$ học sinh lớp 7A thu '
+                           'được: Bóng đá ($18$ em), Cầu lông ($12$ em), Bơi lội ($10$ em). Dữ liệu tê...”, '
+                           'kết quả giải đúng là: - Tên các môn thể thao (Bóng đá, Cầu lông, Bơi lội) là dữ '
+                           'liệu không là số và không thể sắp thứ tự. - Tỉ lệ học sinh thích Bóng đá là '
+                           '$\\dfrac{18}{40} \\cdot 100\\% = 45\\%$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 17: Thu thập và phân loại dữ liệu. b) '
-                        '**Đúng** theo công thức trọng tâm **Sơ đồ phân loại dữ liệu** ($\\text{Dữ liệu} '
+                        '**Đúng** theo công thức **Sơ đồ phân loại dữ liệu** ($\\text{Dữ liệu} '
                         '\\begin{cases} \\text{Số liệu (là số)} \\\\ \\text{Không là số} \\; (\\text{Có thể '
                         'sắp thứ tự} \\; / \\; \\text{Không thể sắp thứ tự}) \\end{cases}$). c) **Sai** vì '
-                        '$\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} \\;\\middle|\\; a, b \\in \\mathbb{Z}, b '
-                        '\\neq 0 \\right\\}$ là công thức của nội dung khác, không phải quy tắc chung của '
-                        '**Sơ đồ phân loại dữ liệu**. d) **Đúng** theo lời giải ví dụ minh họa trong bài '
-                        'học.'},
+                        'công thức đúng của **Sơ đồ phân loại dữ liệu** phải là $\\text{Dữ liệu} '
+                        '\\begin{cases} \\text{Số liệu (là số)} \\\\ \\text{Không là số} \\; (\\text{Có thể '
+                        'sắp thứ tự} \\; / \\; \\text{Không thể sắp thứ tự}) \\end{cases}$ chứ không phải '
+                        '$\\text{Dữ liệu} \\begin{cases} \\text{Số liệu (là số)} \\\\ \\text{Không là số} '
+                        '\\; (\\text{Có thể sắp thứ tự} \\; / \\; \\text{Không thể sắp thứ tự}) '
+                        '\\end{cases}$ (với dấu ngược lại). d) **Đúng** theo lời giải ví dụ minh họa trong '
+                        'bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 17: Thu thập và phân loại dữ liệu** để giải quyết tình huống sau: '
-                 'Khảo sát môn thể thao yêu thích của $40$ học sinh lớp 7A thu được: Bóng đá ($18$ em), Cầu '
-                 'lông ($12$ em), Bơi lội ($10$ em). Dữ liệu tên môn thể thao thuộc loại nào và tỉ lệ học '
-                 'sinh thích Bóng đá là bao nhiêu? Kết quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Ta có: $-2,5 = \\dfrac{-5}{2} = \\dfrac{-15}{6}$; $1\\dfrac{2}{3} = \\dfrac{5}{3}$; '
-                        '$-4 = \\dfrac{-4}{1} = \\dfrac{-24}{6}$. Vì $-4 < -2,5 < 0 < 1\\dfrac{2}{3}$ n...',
-                        'Áp dụng tính chất phân phối của phép nhân đối với phép cộng: $A = \\dfrac{-3}{7} '
-                        '\\cdot \\left(\\dfrac{5}{9} + \\dfrac{4}{9}\\right) + \\dfrac{10}{7} = '
-                        '\\dfrac{-3}{7} \\cdot 1 + \\dfrac{10}{7} = \\dfrac{7}{7} = 1$...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 17: Thu thập và phân loại dữ liệu** để giải bài '
+                 'toán sau: Khảo sát môn thể thao yêu thích của $40$ học sinh lớp 7A thu được: Bóng đá ($18$ '
+                 'em), Cầu lông ($12$ em), Bơi lội ($10$ em). Dữ liệu tên môn thể thao thuộc loại nào và tỉ '
+                 'lệ học sinh thích Bóng đá là bao nhiêu? Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['- Tên các môn thể thao (Bóng đá, Cầu lông, Bơi lội) là dữ liệu không là số và không '
+                        'thể sắp thứ tự. + Tỉ lệ học sinh thích Bóng đá là $\\dfrac{18}{40} \\cdot 100\\% = '
+                        '45\\%$...',
+                        '- Tên các môn thể thao (Bóng đá, Cầu lông, Bơi lội) là dữ liệu không là số và không '
+                        'thể sắp thứ tự. - Tỉ lệ học sinh thích Bóng đá là $\\dfrac{40}{18} \\cdot 100\\% = '
+                        '45\\%$...',
                         '- Tên các môn thể thao (Bóng đá, Cầu lông, Bơi lội) là dữ liệu không là số và không '
                         'thể sắp thứ tự. - Tỉ lệ học sinh thích Bóng đá là $\\dfrac{18}{40} \\cdot 100\\% = '
                         '45\\%$...',
-                        'Ta có: $M = \\dfrac{(2^3)^{10}}{(2^2)^8} = \\dfrac{2^{30}}{2^{16}} = 2^{30-16} = '
-                        '2^{14} = 16384$. $N = (0,125 \\cdot 8)^3 = 1^3 = 1$.'],
+                        '- Tên các môn thể thao (Bóng đá, Cầu lông, Bơi lội) là dữ liệu không là số và không '
+                        'thể sắp thứ tự. - Tỉ lệ học sinh thích Bóng đá là $\\dfrac{36}{40} \\cdot 100\\% = '
+                        '45\\%$...'],
             'answer': 2,
             'solution': 'Lời giải chi tiết theo Bài 17: Thu thập và phân loại dữ liệu: - Tên các môn thể '
                         'thao (Bóng đá, Cầu lông, Bơi lội) là dữ liệu không là số và không thể sắp thứ tự.\n'
@@ -3147,28 +3221,26 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 18: Biểu đồ hình quạt tròn**, công thức hoặc quy tắc nào '
-                 'sau đây biểu diễn đúng **Tổng tỉ lệ phần trăm**?',
-            'options': ['$n = N \\cdot \\dfrac{p}{100}$ (với $N$ là tổng số lượng)',
-                        '$\\alpha = 360^\\circ \\cdot \\dfrac{p}{100}$',
-                        '$\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} \\;\\middle|\\; a, b \\in \\mathbb{Z}, b '
-                        '\\neq 0 \\right\\}$',
+            'q': 'Trong **Bài 18: Biểu đồ hình quạt tròn**, quy tắc hoặc công thức nào sau đây xác định đúng '
+                 '**Tổng tỉ lệ phần trăm**?',
+            'options': ['$p_1\\% - p_2\\% + \\cdots + p_k\\% = 100\\%$',
+                        '$p_1\\% + p_2\\% + \\cdots + p_k\\% = 99\\%$',
+                        '$p_1\\% + p_2\\% + \\cdots + p_k\\% = 102\\%$',
                         '$p_1\\% + p_2\\% + \\cdots + p_k\\% = 100\\%$'],
             'answer': 3,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 18: Biểu đồ hình quạt tròn, **Tổng tỉ lệ phần '
+            'solution': 'Theo kiến thức trọng tâm của Bài 18: Biểu đồ hình quạt tròn, **Tổng tỉ lệ phần '
                         'trăm** được xác định bởi: $p_1\\% + p_2\\% + \\cdots + p_k\\% = 100\\%$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 18: Biểu đồ hình quạt tròn**, nội dung/biểu thức $n = N \\cdot '
-                 '\\dfrac{p}{100}$ (với $N$ là tổng số lượng) là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Số lượng của thành phần $p\\%$',
-                        'Tổng tỉ lệ phần trăm',
-                        'Số đo góc ở tâm của hình quạt',
-                        'Định nghĩa tập $\\mathbb{Q}$'],
+            'q': 'Khi học **Bài 18: Biểu đồ hình quạt tròn**, biểu thức hoặc quy tắc nào dưới đây biểu diễn '
+                 'đúng **Số lượng của thành phần $p\\%$**?',
+            'options': ['$n = N \\cdot \\dfrac{p}{100}$ (với $N$ là tổng số lượng)',
+                        '$n = N : \\dfrac{p}{100}$ (với $N$ là tổng số lượng)',
+                        '$n = N \\cdot \\dfrac{100}{p}$ (với $N$ là tổng số lượng)',
+                        '$n = N \\cdot \\dfrac{p}{102}$ (với $N$ là tổng số lượng)'],
             'answer': 0,
-            'solution': 'Trong Bài 18: Biểu đồ hình quạt tròn, biểu thức/quy tắc $n = N \\cdot '
-                        '\\dfrac{p}{100}$ (với $N$ là tổng số lượng) chính là nội dung của **Số lượng của '
-                        'thành phần $p\\%$**.'},
+            'solution': 'Trong Bài 18: Biểu đồ hình quạt tròn, **Số lượng của thành phần $p\\%$** có công '
+                        'thức/quy tắc là: $n = N \\cdot \\dfrac{p}{100}$ (với $N$ là tổng số lượng).'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Một lớp có $40$ học sinh, trên biểu đồ hình quạt tròn tỉ lệ học sinh tham gia câu lạc bộ '
@@ -3181,16 +3253,17 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 18: Biểu đồ hình quạt tròn** (Chương V: Thu thập và biểu diễn dữ liệu), '
-                 'khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Nhận biết được số hữu tỉ và lấy được ví dụ về số hữu tỉ, nhận biết tập hợp các số '
-                        'hữu tỉ $\\mathbb{Q}$.',
-                        'Biểu diễn được số hữu tỉ trên trục số và nhận biết được số đối của một số hữu tỉ.',
+            'q': 'Để nắm vững bản chất của **Bài 18: Biểu đồ hình quạt tròn**, nhận định nào sau đây là '
+                 '**chính xác**?',
+            'options': ['Đọc và mô tả thành thạo dữ liệu từ biểu đồ hình quạt tròn. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Đọc và mô tả thành thạo dữ liệu từ biểu đồ hình quạt '
+                        'tròn.',
                         'Đọc và mô tả thành thạo dữ liệu từ biểu đồ hình quạt tròn.',
-                        'Nhận biết được thứ tự trong tập hợp các số hữu tỉ và so sánh được hai số hữu tỉ.'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Đọc và mô tả thành thạo dữ liệu '
+                        'từ biểu đồ hình quạt tròn.'],
             'answer': 2,
-            'solution': 'Theo yêu cầu cần đạt của Bài 18: Biểu đồ hình quạt tròn: Đọc và mô tả thành thạo dữ '
-                        'liệu từ biểu đồ hình quạt tròn.'},
+            'solution': 'Theo nội dung cốt lõi của Bài 18: Biểu đồ hình quạt tròn: Đọc và mô tả thành thạo '
+                        'dữ liệu từ biểu đồ hình quạt tròn.'},
            {'level': 'hieu',
             'type': 'tf4',
             'q': 'Biểu đồ hình quạt tròn biểu diễn cơ cấu doanh thu $500$ triệu đồng của một cửa hàng gồm 3 '
@@ -3208,43 +3281,40 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 18: Biểu đồ hình quạt '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 18: Biểu đồ hình quạt '
                  'tròn**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Đọc và mô tả thành thạo dữ liệu từ '
-                           'biểu đồ hình quạt tròn.',
-                           'Quy tắc/công thức **Tổng tỉ lệ phần trăm** trong bài được xác định bởi: $p_1\\% '
-                           '+ p_2\\% + \\cdots + p_k\\% = 100\\%$.',
-                           'Trong mọi trường hợp, **Tổng tỉ lệ phần trăm** luôn được tính bằng công thức '
-                           '$\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} \\;\\middle|\\; a, b \\in \\mathbb{Z}, b '
-                           '\\neq 0 \\right\\}$ (thuộc Định nghĩa tập $\\mathbb{Q}$) mà không cần điều kiện '
-                           'của Bài 18: Biểu đồ hình quạt tròn.',
-                           'Với bài toán minh họa: “Biểu đồ hình quạt tròn thống kê xếp loại học tập của '
-                           '$200$ học sinh khối 7 gồm: Tốt ($25\\%$), Khá ($50\\%$), Đạt ($20\\%$) và Chưa '
-                           'đạt ($5\\%$)...”, lời giải đúng là: - Số học sinh xếp loại Tốt là: $200 \\cdot '
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Đọc và mô tả thành thạo dữ liệu từ biểu '
+                           'đồ hình quạt tròn.',
+                           'Trong **Bài 18: Biểu đồ hình quạt tròn**, quy tắc/công thức **Tổng tỉ lệ phần '
+                           'trăm** được viết là: $p_1\\% + p_2\\% + \\cdots + p_k\\% = 100\\%$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $p_1\\% - p_2\\% + \\cdots + p_k\\% = '
+                           '100\\%$ thì kết quả của **Tổng tỉ lệ phần trăm** trong **Bài 18: Biểu đồ hình '
+                           'quạt tròn** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Biểu đồ hình quạt tròn thống kê xếp loại học tập của $200$ '
+                           'học sinh khối 7 gồm: Tốt ($25\\%$), Khá ($50\\%$), Đạt ($20\\%$) và Chưa đạt '
+                           '($5\\%$...”, kết quả giải đúng là: - Số học sinh xếp loại Tốt là: $200 \\cdot '
                            '\\dfrac{25}{100} = 50$ (học sinh). - Số học sinh xếp loại Khá là: $200 \\cdot '
                            '\\dfrac{50}{100} = 100$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 18: Biểu đồ hình quạt tròn. b) **Đúng** '
-                        'theo công thức trọng tâm **Tổng tỉ lệ phần trăm** ($p_1\\% + p_2\\% + \\cdots + '
-                        'p_k\\% = 100\\%$). c) **Sai** vì $\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} '
-                        '\\;\\middle|\\; a, b \\in \\mathbb{Z}, b \\neq 0 \\right\\}$ là công thức của nội '
-                        'dung khác, không phải quy tắc chung của **Tổng tỉ lệ phần trăm**. d) **Đúng** theo '
-                        'lời giải ví dụ minh họa trong bài học.'},
+                        'theo công thức **Tổng tỉ lệ phần trăm** ($p_1\\% + p_2\\% + \\cdots + p_k\\% = '
+                        '100\\%$). c) **Sai** vì công thức đúng của **Tổng tỉ lệ phần trăm** phải là $p_1\\% '
+                        '+ p_2\\% + \\cdots + p_k\\% = 100\\%$ chứ không phải $p_1\\% - p_2\\% + \\cdots + '
+                        'p_k\\% = 100\\%$. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 18: Biểu đồ hình quạt tròn** để giải quyết tình huống sau: Biểu '
-                 'đồ hình quạt tròn thống kê xếp loại học tập của $200$ học sinh khối 7 gồm: Tốt ($25\\%$), '
-                 'Khá ($50\\%$), Đạt ($20\\%$) và Chưa đạt ($5\\%$). Tính số học sinh xếp loại Tốt và loại '
-                 'Khá. Kết quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Ta có: $-2,5 = \\dfrac{-5}{2} = \\dfrac{-15}{6}$; $1\\dfrac{2}{3} = \\dfrac{5}{3}$; '
-                        '$-4 = \\dfrac{-4}{1} = \\dfrac{-24}{6}$. Vì $-4 < -2,5 < 0 < 1\\dfrac{2}{3}$ n...',
-                        'Áp dụng tính chất phân phối của phép nhân đối với phép cộng: $A = \\dfrac{-3}{7} '
-                        '\\cdot \\left(\\dfrac{5}{9} + \\dfrac{4}{9}\\right) + \\dfrac{10}{7} = '
-                        '\\dfrac{-3}{7} \\cdot 1 + \\dfrac{10}{7} = \\dfrac{7}{7} = 1$...',
-                        'Ta có: $M = \\dfrac{(2^3)^{10}}{(2^2)^8} = \\dfrac{2^{30}}{2^{16}} = 2^{30-16} = '
-                        '2^{14} = 16384$. $N = (0,125 \\cdot 8)^3 = 1^3 = 1$.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 18: Biểu đồ hình quạt tròn** để giải bài toán sau: '
+                 'Biểu đồ hình quạt tròn thống kê xếp loại học tập của $200$ học sinh khối 7 gồm: Tốt '
+                 '($25\\%$), Khá ($50\\%$), Đạt ($20\\%$) và Chưa đạt ($5\\%$). Tính số học sinh xếp loại '
+                 'Tốt và loại Khá. Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['- Số học sinh xếp loại Tốt là: $200 \\cdot \\dfrac{25}{100} = 50$ (học sinh). + Số '
+                        'học sinh xếp loại Khá là: $200 \\cdot \\dfrac{50}{100} = 100$ (học sinh...',
+                        '- Số học sinh xếp loại Tốt là: $200 \\cdot \\dfrac{100}{25} = 50$ (học sinh). - Số '
+                        'học sinh xếp loại Khá là: $200 \\cdot \\dfrac{50}{100} = 100$ (học sinh...',
+                        '- Số học sinh xếp loại Tốt là: $202 \\cdot \\dfrac{25}{100} = 50$ (học sinh). - Số '
+                        'học sinh xếp loại Khá là: $200 \\cdot \\dfrac{50}{100} = 100$ (học sinh...',
                         '- Số học sinh xếp loại Tốt là: $200 \\cdot \\dfrac{25}{100} = 50$ (học sinh). - Số '
-                        'học sinh xếp loại Khá là: $200 \\cdot \\dfrac{50}{100} = 100$ (học sinh).'],
+                        'học sinh xếp loại Khá là: $200 \\cdot \\dfrac{50}{100} = 100$ (học sinh...'],
             'answer': 3,
             'solution': 'Lời giải chi tiết theo Bài 18: Biểu đồ hình quạt tròn: - Số học sinh xếp loại Tốt '
                         'là: $200 \\cdot \\dfrac{25}{100} = 50$ (học sinh).\n'
@@ -3313,27 +3383,26 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 19: Biểu đồ đoạn thẳng**, công thức hoặc quy tắc nào sau '
-                 'đây biểu diễn đúng **Độ tăng (hoặc giảm) giữa hai mốc thời gian**?',
+            'q': 'Trong **Bài 19: Biểu đồ đoạn thẳng**, quy tắc hoặc công thức nào sau đây xác định đúng '
+                 '**Độ tăng (hoặc giảm) giữa hai mốc thời gian**?',
             'options': ['$\\Delta y = y_2 - y_1$',
-                        '$r\\% = \\dfrac{y_2 - y_1}{y_1} \\cdot 100\\%$',
-                        '$\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} \\;\\middle|\\; a, b \\in \\mathbb{Z}, b '
-                        '\\neq 0 \\right\\}$',
-                        '$\\mathbb{N} \\subset \\mathbb{Z} \\subset \\mathbb{Q}$'],
+                        '$\\Delta y = y_2 + y_1$',
+                        'Đảo ngược vế của quy tắc: $\\Delta y = y_2 - y_1$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\Delta y = y_2 - y_1$'],
             'answer': 0,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 19: Biểu đồ đoạn thẳng, **Độ tăng (hoặc giảm) '
-                        'giữa hai mốc thời gian** được xác định bởi: $\\Delta y = y_2 - y_1$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 19: Biểu đồ đoạn thẳng, **Độ tăng (hoặc giảm) giữa '
+                        'hai mốc thời gian** được xác định bởi: $\\Delta y = y_2 - y_1$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 19: Biểu đồ đoạn thẳng**, nội dung/biểu thức $r\\% = \\dfrac{y_2 - y_1}{y_1} '
-                 '\\cdot 100\\%$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Độ tăng (hoặc giảm) giữa hai mốc thời gian',
-                        'Tỉ lệ phần trăm tăng trưởng',
-                        'Định nghĩa tập $\\mathbb{Q}$',
-                        'Quan hệ tập hợp'],
+            'q': 'Khi học **Bài 19: Biểu đồ đoạn thẳng**, biểu thức hoặc quy tắc nào dưới đây biểu diễn đúng '
+                 '**Tỉ lệ phần trăm tăng trưởng**?',
+            'options': ['$r\\% = \\dfrac{y_2 + y_1}{y_1} \\cdot 100\\%$',
+                        '$r\\% = \\dfrac{y_2 - y_1}{y_1} \\cdot 100\\%$',
+                        '$r\\% = \\dfrac{y_1}{y_2 - y_1} \\cdot 100\\%$',
+                        '$r\\% = \\dfrac{y_2 - y_1}{y_1} \\cdot 102\\%$'],
             'answer': 1,
-            'solution': 'Trong Bài 19: Biểu đồ đoạn thẳng, biểu thức/quy tắc $r\\% = \\dfrac{y_2 - y_1}{y_1} '
-                        '\\cdot 100\\%$ chính là nội dung của **Tỉ lệ phần trăm tăng trưởng**.'},
+            'solution': 'Trong Bài 19: Biểu đồ đoạn thẳng, **Tỉ lệ phần trăm tăng trưởng** có công thức/quy '
+                        'tắc là: $r\\% = \\dfrac{y_2 - y_1}{y_1} \\cdot 100\\%$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Nhiệt độ đo được lúc $6$ giờ là $22^\\circ\\text{C}$, lúc $9$ giờ là $26^\\circ\\text{C}$, '
@@ -3349,15 +3418,15 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 19: Biểu đồ đoạn thẳng** (Chương V: Thu thập và biểu diễn dữ liệu), khẳng '
-                 'định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Nhận biết được số hữu tỉ và lấy được ví dụ về số hữu tỉ, nhận biết tập hợp các số '
-                        'hữu tỉ $\\mathbb{Q}$.',
-                        'Biểu diễn được số hữu tỉ trên trục số và nhận biết được số đối của một số hữu tỉ.',
-                        'Nhận biết được thứ tự trong tập hợp các số hữu tỉ và so sánh được hai số hữu tỉ.',
+            'q': 'Để nắm vững bản chất của **Bài 19: Biểu đồ đoạn thẳng**, nhận định nào sau đây là **chính '
+                 'xác**?',
+            'options': ['Đọc và mô tả được dữ liệu từ biểu đồ đoạn thẳng. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Đọc và mô tả được dữ liệu từ biểu đồ đoạn thẳng.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Đọc và mô tả được dữ liệu từ '
+                        'biểu đồ đoạn thẳng.',
                         'Đọc và mô tả được dữ liệu từ biểu đồ đoạn thẳng.'],
             'answer': 3,
-            'solution': 'Theo yêu cầu cần đạt của Bài 19: Biểu đồ đoạn thẳng: Đọc và mô tả được dữ liệu từ '
+            'solution': 'Theo nội dung cốt lõi của Bài 19: Biểu đồ đoạn thẳng: Đọc và mô tả được dữ liệu từ '
                         'biểu đồ đoạn thẳng.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -3375,43 +3444,38 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 19: Biểu đồ đoạn '
-                 'thẳng**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Đọc và mô tả được dữ liệu từ biểu '
-                           'đồ đoạn thẳng.',
-                           'Quy tắc/công thức **Độ tăng (hoặc giảm) giữa hai mốc thời gian** trong bài được '
-                           'xác định bởi: $\\Delta y = y_2 - y_1$.',
-                           'Trong mọi trường hợp, **Độ tăng (hoặc giảm) giữa hai mốc thời gian** luôn được '
-                           'tính bằng công thức $\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} \\;\\middle|\\; a, b '
-                           '\\in \\mathbb{Z}, b \\neq 0 \\right\\}$ (thuộc Định nghĩa tập $\\mathbb{Q}$) mà '
-                           'không cần điều kiện của Bài 19: Biểu đồ đoạn thẳng.',
-                           'Với bài toán minh họa: “Số lượng máy tính bán được của một cửa hàng từ tháng 1 '
-                           'đến tháng 4 lần lượt là: $40; 50; 45; 65$ (chiếc). Hỏi tháng nào bán được nhiều '
-                           'nhất...”, lời giải đúng là: - Tháng 4 bán được nhiều nhất với $65$ chiếc. - Từ '
-                           'tháng 3 sang tháng 4, số lượng máy tính bán được tăng thêm: $65 - 45 = 20$ '
-                           '(chiếc).'],
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 19: Biểu đồ đoạn thẳng**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Đọc và mô tả được dữ liệu từ biểu đồ '
+                           'đoạn thẳng.',
+                           'Trong **Bài 19: Biểu đồ đoạn thẳng**, quy tắc/công thức **Độ tăng (hoặc giảm) '
+                           'giữa hai mốc thời gian** được viết là: $\\Delta y = y_2 - y_1$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $\\Delta y = y_2 + y_1$ thì kết quả của **Độ '
+                           'tăng (hoặc giảm) giữa hai mốc thời gian** trong **Bài 19: Biểu đồ đoạn thẳng** '
+                           'vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Số lượng máy tính bán được của một cửa hàng từ tháng 1 đến '
+                           'tháng 4 lần lượt là: $40; 50; 45; 65$ (chiếc). Hỏi tháng nào bán được nhiều...”, '
+                           'kết quả giải đúng là: - Tháng 4 bán được nhiều nhất với $65$ chiếc. - Từ tháng 3 '
+                           'sang tháng 4, số lượng máy tính bán được tăng thêm: $65 - 45 = 20$ (chiếc).'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 19: Biểu đồ đoạn thẳng. b) **Đúng** theo '
-                        'công thức trọng tâm **Độ tăng (hoặc giảm) giữa hai mốc thời gian** ($\\Delta y = '
-                        'y_2 - y_1$). c) **Sai** vì $\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} \\;\\middle|\\; '
-                        'a, b \\in \\mathbb{Z}, b \\neq 0 \\right\\}$ là công thức của nội dung khác, không '
-                        'phải quy tắc chung của **Độ tăng (hoặc giảm) giữa hai mốc thời gian**. d) **Đúng** '
+                        'công thức **Độ tăng (hoặc giảm) giữa hai mốc thời gian** ($\\Delta y = y_2 - y_1$). '
+                        'c) **Sai** vì công thức đúng của **Độ tăng (hoặc giảm) giữa hai mốc thời gian** '
+                        'phải là $\\Delta y = y_2 - y_1$ chứ không phải $\\Delta y = y_2 + y_1$. d) **Đúng** '
                         'theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 19: Biểu đồ đoạn thẳng** để giải quyết tình huống sau: Số lượng '
-                 'máy tính bán được của một cửa hàng từ tháng 1 đến tháng 4 lần lượt là: $40; 50; 45; 65$ '
-                 '(chiếc). Hỏi tháng nào bán được nhiều nhất và từ tháng 3 sang tháng 4 số lượng tăng bao '
-                 'nhiêu chiếc? Kết quả và hướng giải nào dưới đây là **đúng**?',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 19: Biểu đồ đoạn thẳng** để giải bài toán sau: Số '
+                 'lượng máy tính bán được của một cửa hàng từ tháng 1 đến tháng 4 lần lượt là: $40; 50; 45; '
+                 '65$ (chiếc). Hỏi tháng nào bán được nhiều nhất và từ tháng 3 sang tháng 4 số lượng tăng '
+                 'bao nhiêu chiếc? Cách giải và kết quả nào dưới đây là **đúng**?',
             'options': ['- Tháng 4 bán được nhiều nhất với $65$ chiếc. - Từ tháng 3 sang tháng 4, số lượng '
                         'máy tính bán được tăng thêm: $65 - 45 = 20$ (chiếc).',
-                        'Ta có: $-2,5 = \\dfrac{-5}{2} = \\dfrac{-15}{6}$; $1\\dfrac{2}{3} = \\dfrac{5}{3}$; '
-                        '$-4 = \\dfrac{-4}{1} = \\dfrac{-24}{6}$. Vì $-4 < -2,5 < 0 < 1\\dfrac{2}{3}$ n...',
-                        'Áp dụng tính chất phân phối của phép nhân đối với phép cộng: $A = \\dfrac{-3}{7} '
-                        '\\cdot \\left(\\dfrac{5}{9} + \\dfrac{4}{9}\\right) + \\dfrac{10}{7} = '
-                        '\\dfrac{-3}{7} \\cdot 1 + \\dfrac{10}{7} = \\dfrac{7}{7} = 1$...',
-                        'Ta có: $M = \\dfrac{(2^3)^{10}}{(2^2)^8} = \\dfrac{2^{30}}{2^{16}} = 2^{30-16} = '
-                        '2^{14} = 16384$. $N = (0,125 \\cdot 8)^3 = 1^3 = 1$.'],
+                        '- Tháng 4 bán được nhiều nhất với $65$ chiếc. + Từ tháng 3 sang tháng 4, số lượng '
+                        'máy tính bán được tăng thêm: $65 - 45 = 20$ (chiếc).',
+                        '- Tháng 4 bán được nhiều nhất với $65$ chiếc. - Từ tháng 3 sang tháng 4, số lượng '
+                        'máy tính bán được tăng thêm: $65 - 45 = 19$ (chiếc).',
+                        '- Tháng 8 bán được nhiều nhất với $65$ chiếc. - Từ tháng 3 sang tháng 4, số lượng '
+                        'máy tính bán được tăng thêm: $65 - 45 = 20$ (chiếc).'],
             'answer': 0,
             'solution': 'Lời giải chi tiết theo Bài 19: Biểu đồ đoạn thẳng: - Tháng 4 bán được nhiều nhất '
                         'với $65$ chiếc.\n'
@@ -3437,8 +3501,8 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
   'requirements': ['Nhận biết được tỉ lệ thức và các số hạng của tỉ lệ thức.',
                    'Nhận biết và vận dụng được tính chất cơ bản của tỉ lệ thức để tìm số hạng chưa biết và '
                    'lập các tỉ lệ thức mới.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Định nghĩa tỉ lệ thức** ($\\dfrac{a}{b} = '
-                   '\\dfrac{c}{d} \\quad (b, d \\neq 0)$) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 20: Tỉ lệ thức** để giải bài tập minh họa và bài toán thực '
+                   'tiễn.'],
   'definition': 'Tỉ lệ thức là đẳng thức của hai tỉ số $\\dfrac{a}{b} = \\dfrac{c}{d}$ (hoặc viết $a : b = c '
                 ': d$), trong đó $a, d$ gọi là các ngoại tỉ và $b, c$ gọi là các trung tỉ.',
   'theory': '1. Tính chất 1 (Tính chất cơ bản của tỉ lệ thức): Nếu $\\dfrac{a}{b} = \\dfrac{c}{d}$ thì $a '
@@ -3486,28 +3550,27 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 20: Tỉ lệ thức**, công thức hoặc quy tắc nào sau đây '
-                 'biểu diễn đúng **Định nghĩa tỉ lệ thức**?',
-            'options': ['$\\dfrac{a}{b} = \\dfrac{c}{d} \\Rightarrow a \\cdot d = b \\cdot c$',
+            'q': 'Trong **Bài 20: Tỉ lệ thức**, quy tắc hoặc công thức nào sau đây xác định đúng **Định '
+                 'nghĩa tỉ lệ thức**?',
+            'options': ['$\\dfrac{a}{b} = \\dfrac{c}{d} \\quad (b, d \\neq 1)$',
                         '$\\dfrac{a}{b} = \\dfrac{c}{d} \\quad (b, d \\neq 0)$',
-                        '$x = \\dfrac{b \\cdot c}{d}$ khi $\\dfrac{x}{b} = \\dfrac{c}{d}$',
-                        '$\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} \\;\\middle|\\; a, b \\in \\mathbb{Z}, b '
-                        '\\neq 0 \\right\\}$'],
+                        '$\\dfrac{b}{a} = \\dfrac{c}{d} \\quad (b, d \\neq 0)$',
+                        '$\\dfrac{a}{b} = \\dfrac{c}{d} \\quad (b, d \\neq 2)$'],
             'answer': 1,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 20: Tỉ lệ thức, **Định nghĩa tỉ lệ thức** '
-                        'được xác định bởi: $\\dfrac{a}{b} = \\dfrac{c}{d} \\quad (b, d \\neq 0)$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 20: Tỉ lệ thức, **Định nghĩa tỉ lệ thức** được xác '
+                        'định bởi: $\\dfrac{a}{b} = \\dfrac{c}{d} \\quad (b, d \\neq 0)$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 20: Tỉ lệ thức**, nội dung/biểu thức $\\dfrac{a}{b} = \\dfrac{c}{d} '
-                 '\\Rightarrow a \\cdot d = b \\cdot c$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Định nghĩa tỉ lệ thức',
-                        'Tìm một số hạng trong tỉ lệ thức',
-                        'Tính chất cơ bản (nhân chéo)',
-                        'Định nghĩa tập $\\mathbb{Q}$'],
+            'q': 'Khi học **Bài 20: Tỉ lệ thức**, biểu thức hoặc quy tắc nào dưới đây biểu diễn đúng **Tính '
+                 'chất cơ bản (nhân chéo)**?',
+            'options': ['$\\dfrac{a}{b} = \\dfrac{c}{d} \\Rightarrow a : d = b \\cdot c$',
+                        '$\\dfrac{b}{a} = \\dfrac{c}{d} \\Rightarrow a \\cdot d = b \\cdot c$',
+                        '$\\dfrac{a}{b} = \\dfrac{c}{d} \\Rightarrow a \\cdot d = b \\cdot c$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\dfrac{a}{b} = \\dfrac{c}{d} '
+                        '\\Rightarrow a \\cdot d = b \\cdot c$'],
             'answer': 2,
-            'solution': 'Trong Bài 20: Tỉ lệ thức, biểu thức/quy tắc $\\dfrac{a}{b} = \\dfrac{c}{d} '
-                        '\\Rightarrow a \\cdot d = b \\cdot c$ chính là nội dung của **Tính chất cơ bản '
-                        '(nhân chéo)**.'},
+            'solution': 'Trong Bài 20: Tỉ lệ thức, **Tính chất cơ bản (nhân chéo)** có công thức/quy tắc là: '
+                        '$\\dfrac{a}{b} = \\dfrac{c}{d} \\Rightarrow a \\cdot d = b \\cdot c$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Giá trị của $x$ thỏa mãn tỉ lệ thức $\\dfrac{x}{12} = \\dfrac{3}{4}$ là:',
@@ -3518,15 +3581,14 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 20: Tỉ lệ thức** (Chương VI: Tỉ lệ thức và đại lượng tỉ lệ), khẳng định nào '
-                 'sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
+            'q': 'Để nắm vững bản chất của **Bài 20: Tỉ lệ thức**, nhận định nào sau đây là **chính xác**?',
             'options': ['Nhận biết được tỉ lệ thức và các số hạng của tỉ lệ thức.',
-                        'Nhận biết được số hữu tỉ và lấy được ví dụ về số hữu tỉ, nhận biết tập hợp các số '
-                        'hữu tỉ $\\mathbb{Q}$.',
-                        'Biểu diễn được số hữu tỉ trên trục số và nhận biết được số đối của một số hữu tỉ.',
-                        'Nhận biết được thứ tự trong tập hợp các số hữu tỉ và so sánh được hai số hữu tỉ.'],
+                        'Nhận biết được tỉ lệ thức và các số hạng của tỉ lệ thức. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Nhận biết được tỉ lệ thức và các số hạng của tỉ lệ thức.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nhận biết được tỉ lệ thức và '
+                        'các số hạng của tỉ lệ thức.'],
             'answer': 0,
-            'solution': 'Theo yêu cầu cần đạt của Bài 20: Tỉ lệ thức: Nhận biết được tỉ lệ thức và các số '
+            'solution': 'Theo nội dung cốt lõi của Bài 20: Tỉ lệ thức: Nhận biết được tỉ lệ thức và các số '
                         'hạng của tỉ lệ thức.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -3541,39 +3603,37 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 20: Tỉ lệ thức**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được tỉ lệ thức và các '
-                           'số hạng của tỉ lệ thức.',
-                           'Quy tắc/công thức **Định nghĩa tỉ lệ thức** trong bài được xác định bởi: '
-                           '$\\dfrac{a}{b} = \\dfrac{c}{d} \\quad (b, d \\neq 0)$.',
-                           'Trong mọi trường hợp, **Định nghĩa tỉ lệ thức** luôn được tính bằng công thức '
-                           '$\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} \\;\\middle|\\; a, b \\in \\mathbb{Z}, b '
-                           '\\neq 0 \\right\\}$ (thuộc Định nghĩa tập $\\mathbb{Q}$) mà không cần điều kiện '
-                           'của Bài 20: Tỉ lệ thức.',
-                           'Với bài toán minh họa: “Tìm $x$ trong tỉ lệ thức $\\dfrac{x}{6} = '
-                           '\\dfrac{-5}{3}$.”, lời giải đúng là: Áp dụng tính chất cơ bản của tỉ lệ thức, ta '
-                           'có: $3 \\cdot x = 6 \\cdot (-5) \\Rightarrow 3x = -30 \\Rightarrow x = '
-                           '\\dfrac{-30}{3} = -10$.'],
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 20: Tỉ lệ thức**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết được tỉ lệ thức và các số hạng '
+                           'của tỉ lệ thức.',
+                           'Trong **Bài 20: Tỉ lệ thức**, quy tắc/công thức **Định nghĩa tỉ lệ thức** được '
+                           'viết là: $\\dfrac{a}{b} = \\dfrac{c}{d} \\quad (b, d \\neq 0)$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $\\dfrac{a}{b} = \\dfrac{c}{d} \\quad (b, d '
+                           '\\neq 1)$ thì kết quả của **Định nghĩa tỉ lệ thức** trong **Bài 20: Tỉ lệ thức** '
+                           'vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Tìm $x$ trong tỉ lệ thức $\\dfrac{x}{6} = \\dfrac{-5}{3}$.”, '
+                           'kết quả giải đúng là: Áp dụng tính chất cơ bản của tỉ lệ thức, ta có: $3 \\cdot '
+                           'x = 6 \\cdot (-5) \\Rightarrow 3x = -30 \\Rightarrow x = \\dfrac{-30}{3} = '
+                           '-10$.'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 20: Tỉ lệ thức. b) **Đúng** theo công thức '
-                        'trọng tâm **Định nghĩa tỉ lệ thức** ($\\dfrac{a}{b} = \\dfrac{c}{d} \\quad (b, d '
-                        '\\neq 0)$). c) **Sai** vì $\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} \\;\\middle|\\; a, '
-                        'b \\in \\mathbb{Z}, b \\neq 0 \\right\\}$ là công thức của nội dung khác, không '
-                        'phải quy tắc chung của **Định nghĩa tỉ lệ thức**. d) **Đúng** theo lời giải ví dụ '
-                        'minh họa trong bài học.'},
+                        '**Định nghĩa tỉ lệ thức** ($\\dfrac{a}{b} = \\dfrac{c}{d} \\quad (b, d \\neq 0)$). '
+                        'c) **Sai** vì công thức đúng của **Định nghĩa tỉ lệ thức** phải là $\\dfrac{a}{b} = '
+                        '\\dfrac{c}{d} \\quad (b, d \\neq 0)$ chứ không phải $\\dfrac{a}{b} = \\dfrac{c}{d} '
+                        '\\quad (b, d \\neq 1)$. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 20: Tỉ lệ thức** để giải quyết tình huống sau: Tìm $x$ trong tỉ '
-                 'lệ thức $\\dfrac{x}{6} = \\dfrac{-5}{3}$. Kết quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Ta có: $-2,5 = \\dfrac{-5}{2} = \\dfrac{-15}{6}$; $1\\dfrac{2}{3} = \\dfrac{5}{3}$; '
-                        '$-4 = \\dfrac{-4}{1} = \\dfrac{-24}{6}$. Vì $-4 < -2,5 < 0 < 1\\dfrac{2}{3}$ n...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 20: Tỉ lệ thức** để giải bài toán sau: Tìm $x$ '
+                 'trong tỉ lệ thức $\\dfrac{x}{6} = \\dfrac{-5}{3}$. Cách giải và kết quả nào dưới đây là '
+                 '**đúng**?',
+            'options': ['Áp dụng tính chất cơ bản của tỉ lệ thức, ta có: $3 : x = 6 \\cdot (-5) \\Rightarrow '
+                        '3x = -30 \\Rightarrow x = \\dfrac{-30}{3} = -10$.',
                         'Áp dụng tính chất cơ bản của tỉ lệ thức, ta có: $3 \\cdot x = 6 \\cdot (-5) '
                         '\\Rightarrow 3x = -30 \\Rightarrow x = \\dfrac{-30}{3} = -10$.',
-                        'Áp dụng tính chất phân phối của phép nhân đối với phép cộng: $A = \\dfrac{-3}{7} '
-                        '\\cdot \\left(\\dfrac{5}{9} + \\dfrac{4}{9}\\right) + \\dfrac{10}{7} = '
-                        '\\dfrac{-3}{7} \\cdot 1 + \\dfrac{10}{7} = \\dfrac{7}{7} = 1$...',
-                        'Ta có: $M = \\dfrac{(2^3)^{10}}{(2^2)^8} = \\dfrac{2^{30}}{2^{16}} = 2^{30-16} = '
-                        '2^{14} = 16384$. $N = (0,125 \\cdot 8)^3 = 1^3 = 1$.'],
+                        'Áp dụng tính chất cơ bản của tỉ lệ thức, ta có: $3 \\cdot x = 6 \\cdot (-5) '
+                        '\\Rightarrow 3x = -30 \\Rightarrow x = \\dfrac{3}{-30} = -10$.',
+                        'Áp dụng tính chất cơ bản của tỉ lệ thức, ta có: $6 \\cdot x = 6 \\cdot (-5) '
+                        '\\Rightarrow 3x = -30 \\Rightarrow x = \\dfrac{-30}{3} = -10$.'],
             'answer': 1,
             'solution': 'Lời giải chi tiết theo Bài 20: Tỉ lệ thức: Áp dụng tính chất cơ bản của tỉ lệ thức, '
                         'ta có:\n'
@@ -3597,8 +3657,8 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
   'requirements': ['Nhận biết và mô tả được tính chất của dãy tỉ số bằng nhau.',
                    'Vận dụng được tính chất của dãy tỉ số bằng nhau để tìm các số chưa biết và giải quyết '
                    'các bài toán thực tiễn.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Dãy hai tỉ số bằng nhau** ($\\dfrac{a}{b} = '
-                   '\\dfrac{c}{d} = \\dfrac{a + c}{b + d} = \\dfrac{a - c}{b - d}$) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 21: Tính chất của dãy tỉ số bằng nhau** để giải bài tập '
+                   'minh họa và bài toán thực tiễn.'],
   'definition': 'Từ dãy tỉ số bằng nhau $\\dfrac{a}{b} = \\dfrac{c}{d} = \\dfrac{e}{f}$, ta suy ra '
                 '$\\dfrac{a}{b} = \\dfrac{c}{d} = \\dfrac{e}{f} = \\dfrac{a + c + e}{b + d + f} = \\dfrac{a '
                 '- c + e}{b - d + f}$ (giả thiết các tỉ số đều có nghĩa).',
@@ -3648,32 +3708,33 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 21: Tính chất của dãy tỉ số bằng nhau**, công thức hoặc '
-                 'quy tắc nào sau đây biểu diễn đúng **Dãy hai tỉ số bằng nhau**?',
-            'options': ['$\\dfrac{a}{b} = \\dfrac{c}{d} = \\dfrac{e}{f} = \\dfrac{a + c + e}{b + d + f} = '
-                        '\\dfrac{a - c + e}{b - d + f}$',
-                        '$a : b : c = m : n : p \\Leftrightarrow \\dfrac{a}{m} = \\dfrac{b}{n} = '
-                        '\\dfrac{c}{p}$',
+            'q': 'Trong **Bài 21: Tính chất của dãy tỉ số bằng nhau**, quy tắc hoặc công thức nào sau đây '
+                 'xác định đúng **Dãy hai tỉ số bằng nhau**?',
+            'options': ['$\\dfrac{a}{b} = \\dfrac{c}{d} = \\dfrac{a - c}{b + d} = \\dfrac{a - c}{b - d}$',
+                        '$\\dfrac{b}{a} = \\dfrac{c}{d} = \\dfrac{a + c}{b + d} = \\dfrac{a - c}{b - d}$',
                         '$\\dfrac{a}{b} = \\dfrac{c}{d} = \\dfrac{a + c}{b + d} = \\dfrac{a - c}{b - d}$',
-                        '$\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} \\;\\middle|\\; a, b \\in \\mathbb{Z}, b '
-                        '\\neq 0 \\right\\}$'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\dfrac{a}{b} = \\dfrac{c}{d} '
+                        '= \\dfrac{a + c}{b + d} = \\dfrac{a - c}{b - d}$'],
             'answer': 2,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 21: Tính chất của dãy tỉ số bằng nhau, **Dãy '
-                        'hai tỉ số bằng nhau** được xác định bởi: $\\dfrac{a}{b} = \\dfrac{c}{d} = \\dfrac{a '
-                        '+ c}{b + d} = \\dfrac{a - c}{b - d}$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 21: Tính chất của dãy tỉ số bằng nhau, **Dãy hai '
+                        'tỉ số bằng nhau** được xác định bởi: $\\dfrac{a}{b} = \\dfrac{c}{d} = \\dfrac{a + '
+                        'c}{b + d} = \\dfrac{a - c}{b - d}$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 21: Tính chất của dãy tỉ số bằng nhau**, nội dung/biểu thức $\\dfrac{a}{b} = '
-                 '\\dfrac{c}{d} = \\dfrac{e}{f} = \\dfrac{a + c + e}{b + d + f} = \\dfrac{a - c + e}{b - d + '
-                 'f}$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Dãy hai tỉ số bằng nhau',
-                        'Kí hiệu ba số tỉ lệ',
-                        'Định nghĩa tập $\\mathbb{Q}$',
-                        'Dãy ba tỉ số bằng nhau'],
+            'q': 'Khi học **Bài 21: Tính chất của dãy tỉ số bằng nhau**, biểu thức hoặc quy tắc nào dưới đây '
+                 'biểu diễn đúng **Dãy ba tỉ số bằng nhau**?',
+            'options': ['$\\dfrac{a}{b} = \\dfrac{c}{d} = \\dfrac{e}{f} = \\dfrac{a - c + e}{b + d + f} = '
+                        '\\dfrac{a - c + e}{b - d + f}$',
+                        '$\\dfrac{b}{a} = \\dfrac{c}{d} = \\dfrac{e}{f} = \\dfrac{a + c + e}{b + d + f} = '
+                        '\\dfrac{a - c + e}{b - d + f}$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\dfrac{a}{b} = \\dfrac{c}{d} '
+                        '= \\dfrac{e}{f} = \\dfrac{a + c + e}{b + d + f} = \\dfrac{a - c + e}{b - d + f}$',
+                        '$\\dfrac{a}{b} = \\dfrac{c}{d} = \\dfrac{e}{f} = \\dfrac{a + c + e}{b + d + f} = '
+                        '\\dfrac{a - c + e}{b - d + f}$'],
             'answer': 3,
-            'solution': 'Trong Bài 21: Tính chất của dãy tỉ số bằng nhau, biểu thức/quy tắc $\\dfrac{a}{b} = '
-                        '\\dfrac{c}{d} = \\dfrac{e}{f} = \\dfrac{a + c + e}{b + d + f} = \\dfrac{a - c + '
-                        'e}{b - d + f}$ chính là nội dung của **Dãy ba tỉ số bằng nhau**.'},
+            'solution': 'Trong Bài 21: Tính chất của dãy tỉ số bằng nhau, **Dãy ba tỉ số bằng nhau** có công '
+                        'thức/quy tắc là: $\\dfrac{a}{b} = \\dfrac{c}{d} = \\dfrac{e}{f} = \\dfrac{a + c + '
+                        'e}{b + d + f} = \\dfrac{a - c + e}{b - d + f}$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Cho $\\dfrac{x}{4} = \\dfrac{y}{7}$ và $y - x = 12$. Giá trị của $x$ và $y$ lần lượt là:',
@@ -3685,17 +3746,17 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 21: Tính chất của dãy tỉ số bằng nhau** (Chương VI: Tỉ lệ thức và đại lượng '
-                 'tỉ lệ), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của '
-                 'bài?',
-            'options': ['Nhận biết được số hữu tỉ và lấy được ví dụ về số hữu tỉ, nhận biết tập hợp các số '
-                        'hữu tỉ $\\mathbb{Q}$.',
+            'q': 'Để nắm vững bản chất của **Bài 21: Tính chất của dãy tỉ số bằng nhau**, nhận định nào sau '
+                 'đây là **chính xác**?',
+            'options': ['Nhận biết và mô tả được tính chất của dãy tỉ số bằng nhau. (với dấu ngược lại)',
                         'Nhận biết và mô tả được tính chất của dãy tỉ số bằng nhau.',
-                        'Biểu diễn được số hữu tỉ trên trục số và nhận biết được số đối của một số hữu tỉ.',
-                        'Nhận biết được thứ tự trong tập hợp các số hữu tỉ và so sánh được hai số hữu tỉ.'],
+                        'Đảo ngược vế của quy tắc: Nhận biết và mô tả được tính chất của dãy tỉ số bằng '
+                        'nhau.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nhận biết và mô tả được tính '
+                        'chất của dãy tỉ số bằng nhau.'],
             'answer': 1,
-            'solution': 'Theo yêu cầu cần đạt của Bài 21: Tính chất của dãy tỉ số bằng nhau: Nhận biết và mô '
-                        'tả được tính chất của dãy tỉ số bằng nhau.'},
+            'solution': 'Theo nội dung cốt lõi của Bài 21: Tính chất của dãy tỉ số bằng nhau: Nhận biết và '
+                        'mô tả được tính chất của dãy tỉ số bằng nhau.'},
            {'level': 'hieu',
             'type': 'tf4',
             'q': 'Ba lớp 7A, 7B, 7C trồng được tổng cộng $120$ cây xanh. Biết số cây trồng được của ba lớp '
@@ -3711,43 +3772,41 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 21: Tính chất của dãy '
-                 'tỉ số bằng nhau**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết và mô tả được tính chất '
-                           'của dãy tỉ số bằng nhau.',
-                           'Quy tắc/công thức **Dãy hai tỉ số bằng nhau** trong bài được xác định bởi: '
-                           '$\\dfrac{a}{b} = \\dfrac{c}{d} = \\dfrac{a + c}{b + d} = \\dfrac{a - c}{b - d}$.',
-                           'Trong mọi trường hợp, **Dãy hai tỉ số bằng nhau** luôn được tính bằng công thức '
-                           '$\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} \\;\\middle|\\; a, b \\in \\mathbb{Z}, b '
-                           '\\neq 0 \\right\\}$ (thuộc Định nghĩa tập $\\mathbb{Q}$) mà không cần điều kiện '
-                           'của Bài 21: Tính chất của dãy tỉ số bằng nhau.',
-                           'Với bài toán minh họa: “Tìm hai số $x, y$ biết $\\dfrac{x}{3} = \\dfrac{y}{5}$ '
-                           'và $x + y = 24$.”, lời giải đúng là: Áp dụng tính chất của dãy tỉ số bằng nhau, '
-                           'ta có: $\\dfrac{x}{3} = \\dfrac{y}{5} = \\dfrac{x + y}{3 + 5} = \\dfrac{24}{8} = '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 21: Tính chất của dãy tỉ số '
+                 'bằng nhau**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết và mô tả được tính chất của '
+                           'dãy tỉ số bằng nhau.',
+                           'Trong **Bài 21: Tính chất của dãy tỉ số bằng nhau**, quy tắc/công thức **Dãy hai '
+                           'tỉ số bằng nhau** được viết là: $\\dfrac{a}{b} = \\dfrac{c}{d} = \\dfrac{a + '
+                           'c}{b + d} = \\dfrac{a - c}{b - d}$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $\\dfrac{a}{b} = \\dfrac{c}{d} = \\dfrac{a - '
+                           'c}{b + d} = \\dfrac{a - c}{b - d}$ thì kết quả của **Dãy hai tỉ số bằng nhau** '
+                           'trong **Bài 21: Tính chất của dãy tỉ số bằng nhau** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Tìm hai số $x, y$ biết $\\dfrac{x}{3} = \\dfrac{y}{5}$ và $x '
+                           '+ y = 24$.”, kết quả giải đúng là: Áp dụng tính chất của dãy tỉ số bằng nhau, ta '
+                           'có: $\\dfrac{x}{3} = \\dfrac{y}{5} = \\dfrac{x + y}{3 + 5} = \\dfrac{24}{8} = '
                            '3$. Suy ra $x = 3 \\cdot 3 = 9$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 21: Tính chất của dãy tỉ số bằng nhau. b) '
-                        '**Đúng** theo công thức trọng tâm **Dãy hai tỉ số bằng nhau** ($\\dfrac{a}{b} = '
-                        '\\dfrac{c}{d} = \\dfrac{a + c}{b + d} = \\dfrac{a - c}{b - d}$). c) **Sai** vì '
-                        '$\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} \\;\\middle|\\; a, b \\in \\mathbb{Z}, b '
-                        '\\neq 0 \\right\\}$ là công thức của nội dung khác, không phải quy tắc chung của '
-                        '**Dãy hai tỉ số bằng nhau**. d) **Đúng** theo lời giải ví dụ minh họa trong bài '
-                        'học.'},
+                        '**Đúng** theo công thức **Dãy hai tỉ số bằng nhau** ($\\dfrac{a}{b} = \\dfrac{c}{d} '
+                        '= \\dfrac{a + c}{b + d} = \\dfrac{a - c}{b - d}$). c) **Sai** vì công thức đúng của '
+                        '**Dãy hai tỉ số bằng nhau** phải là $\\dfrac{a}{b} = \\dfrac{c}{d} = \\dfrac{a + '
+                        'c}{b + d} = \\dfrac{a - c}{b - d}$ chứ không phải $\\dfrac{a}{b} = \\dfrac{c}{d} = '
+                        '\\dfrac{a - c}{b + d} = \\dfrac{a - c}{b - d}$. d) **Đúng** theo lời giải ví dụ '
+                        'minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 21: Tính chất của dãy tỉ số bằng nhau** để giải quyết tình huống '
-                 'sau: Tìm hai số $x, y$ biết $\\dfrac{x}{3} = \\dfrac{y}{5}$ và $x + y = 24$. Kết quả và '
-                 'hướng giải nào dưới đây là **đúng**?',
-            'options': ['Ta có: $-2,5 = \\dfrac{-5}{2} = \\dfrac{-15}{6}$; $1\\dfrac{2}{3} = \\dfrac{5}{3}$; '
-                        '$-4 = \\dfrac{-4}{1} = \\dfrac{-24}{6}$. Vì $-4 < -2,5 < 0 < 1\\dfrac{2}{3}$ n...',
-                        'Áp dụng tính chất phân phối của phép nhân đối với phép cộng: $A = \\dfrac{-3}{7} '
-                        '\\cdot \\left(\\dfrac{5}{9} + \\dfrac{4}{9}\\right) + \\dfrac{10}{7} = '
-                        '\\dfrac{-3}{7} \\cdot 1 + \\dfrac{10}{7} = \\dfrac{7}{7} = 1$...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 21: Tính chất của dãy tỉ số bằng nhau** để giải bài '
+                 'toán sau: Tìm hai số $x, y$ biết $\\dfrac{x}{3} = \\dfrac{y}{5}$ và $x + y = 24$. Cách '
+                 'giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Áp dụng tính chất của dãy tỉ số bằng nhau, ta có: $\\dfrac{x}{3} = \\dfrac{y}{5} = '
+                        '\\dfrac{x - y}{3 + 5} = \\dfrac{24}{8} = 3$. Suy ra $x = 3 \\cdot 3 = 9$...',
+                        'Áp dụng tính chất của dãy tỉ số bằng nhau, ta có: $\\dfrac{3}{x} = \\dfrac{y}{5} = '
+                        '\\dfrac{x + y}{3 + 5} = \\dfrac{24}{8} = 3$. Suy ra $x = 3 \\cdot 3 = 9$...',
                         'Áp dụng tính chất của dãy tỉ số bằng nhau, ta có: $\\dfrac{x}{3} = \\dfrac{y}{5} = '
-                        '\\dfrac{x + y}{3 + 5} = \\dfrac{24}{8} = 3$. Suy ra $x = 3 \\cdot 3 = 9$ và $y = 5 '
-                        '\\cdot 3 = 15$...',
-                        'Ta có: $M = \\dfrac{(2^3)^{10}}{(2^2)^8} = \\dfrac{2^{30}}{2^{16}} = 2^{30-16} = '
-                        '2^{14} = 16384$. $N = (0,125 \\cdot 8)^3 = 1^3 = 1$.'],
+                        '\\dfrac{x + y}{3 + 5} = \\dfrac{24}{8} = 3$. Suy ra $x = 3 \\cdot 3 = 9$...',
+                        'Áp dụng tính chất của dãy tỉ số bằng nhau, ta có: $\\dfrac{x}{6} = \\dfrac{y}{5} = '
+                        '\\dfrac{x + y}{3 + 5} = \\dfrac{24}{8} = 3$. Suy ra $x = 3 \\cdot 3 = 9$...'],
             'answer': 2,
             'solution': 'Lời giải chi tiết theo Bài 21: Tính chất của dãy tỉ số bằng nhau: Áp dụng tính chất '
                         'của dãy tỉ số bằng nhau, ta có:\n'
@@ -3820,29 +3879,28 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 22: Đại lượng tỉ lệ thuận**, công thức hoặc quy tắc nào '
-                 'sau đây biểu diễn đúng **Công thức tỉ lệ thuận**?',
-            'options': ['$\\dfrac{y_1}{x_1} = \\dfrac{y_2}{x_2} = \\dfrac{y_3}{x_3} = a$',
-                        '$\\dfrac{x_1}{x_2} = \\dfrac{y_1}{y_2}$',
-                        '$\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} \\;\\middle|\\; a, b \\in \\mathbb{Z}, b '
-                        '\\neq 0 \\right\\}$',
+            'q': 'Trong **Bài 22: Đại lượng tỉ lệ thuận**, quy tắc hoặc công thức nào sau đây xác định đúng '
+                 '**Công thức tỉ lệ thuận**?',
+            'options': ['$y = ax \\quad (a \\neq 1) \\Rightarrow x = \\dfrac{1}{a}y$',
+                        '$y = ax \\quad (a \\neq 0) \\Rightarrow x = \\dfrac{a}{1}y$',
+                        '$y = ax \\quad (a \\neq 2) \\Rightarrow x = \\dfrac{1}{a}y$',
                         '$y = ax \\quad (a \\neq 0) \\Rightarrow x = \\dfrac{1}{a}y$'],
             'answer': 3,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 22: Đại lượng tỉ lệ thuận, **Công thức tỉ lệ '
+            'solution': 'Theo kiến thức trọng tâm của Bài 22: Đại lượng tỉ lệ thuận, **Công thức tỉ lệ '
                         'thuận** được xác định bởi: $y = ax \\quad (a \\neq 0) \\Rightarrow x = '
                         '\\dfrac{1}{a}y$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 22: Đại lượng tỉ lệ thuận**, nội dung/biểu thức $\\dfrac{y_1}{x_1} = '
-                 '\\dfrac{y_2}{x_2} = \\dfrac{y_3}{x_3} = a$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Tỉ số các giá trị tương ứng',
-                        'Công thức tỉ lệ thuận',
-                        'Quan hệ hai cặp giá trị',
-                        'Định nghĩa tập $\\mathbb{Q}$'],
+            'q': 'Khi học **Bài 22: Đại lượng tỉ lệ thuận**, biểu thức hoặc quy tắc nào dưới đây biểu diễn '
+                 'đúng **Tỉ số các giá trị tương ứng**?',
+            'options': ['$\\dfrac{y_1}{x_1} = \\dfrac{y_2}{x_2} = \\dfrac{y_3}{x_3} = a$',
+                        '$\\dfrac{y_1}{x_1} = \\dfrac{y_2}{x_2} = \\dfrac{y_3}{x_3} = a$ (với dấu ngược lại)',
+                        '$\\dfrac{x_1}{y_1} = \\dfrac{y_2}{x_2} = \\dfrac{y_3}{x_3} = a$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\dfrac{y_1}{x_1} = '
+                        '\\dfrac{y_2}{x_2} = \\dfrac{y_3}{x_3} = a$'],
             'answer': 0,
-            'solution': 'Trong Bài 22: Đại lượng tỉ lệ thuận, biểu thức/quy tắc $\\dfrac{y_1}{x_1} = '
-                        '\\dfrac{y_2}{x_2} = \\dfrac{y_3}{x_3} = a$ chính là nội dung của **Tỉ số các giá '
-                        'trị tương ứng**.'},
+            'solution': 'Trong Bài 22: Đại lượng tỉ lệ thuận, **Tỉ số các giá trị tương ứng** có công '
+                        'thức/quy tắc là: $\\dfrac{y_1}{x_1} = \\dfrac{y_2}{x_2} = \\dfrac{y_3}{x_3} = a$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Cho hai đại lượng $x$ và $y$ tỉ lệ thuận với nhau và khi $x = 6$ thì $y = 18$. Khi $x = '
@@ -3854,15 +3912,15 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 22: Đại lượng tỉ lệ thuận** (Chương VI: Tỉ lệ thức và đại lượng tỉ lệ), '
-                 'khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Nhận biết được số hữu tỉ và lấy được ví dụ về số hữu tỉ, nhận biết tập hợp các số '
-                        'hữu tỉ $\\mathbb{Q}$.',
-                        'Biểu diễn được số hữu tỉ trên trục số và nhận biết được số đối của một số hữu tỉ.',
+            'q': 'Để nắm vững bản chất của **Bài 22: Đại lượng tỉ lệ thuận**, nhận định nào sau đây là '
+                 '**chính xác**?',
+            'options': ['Nhận biết được hai đại lượng tỉ lệ thuận và hệ số tỉ lệ. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Nhận biết được hai đại lượng tỉ lệ thuận và hệ số tỉ lệ.',
                         'Nhận biết được hai đại lượng tỉ lệ thuận và hệ số tỉ lệ.',
-                        'Nhận biết được thứ tự trong tập hợp các số hữu tỉ và so sánh được hai số hữu tỉ.'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nhận biết được hai đại lượng tỉ '
+                        'lệ thuận và hệ số tỉ lệ.'],
             'answer': 2,
-            'solution': 'Theo yêu cầu cần đạt của Bài 22: Đại lượng tỉ lệ thuận: Nhận biết được hai đại '
+            'solution': 'Theo nội dung cốt lõi của Bài 22: Đại lượng tỉ lệ thuận: Nhận biết được hai đại '
                         'lượng tỉ lệ thuận và hệ số tỉ lệ.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -3879,41 +3937,40 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 22: Đại lượng tỉ lệ '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 22: Đại lượng tỉ lệ '
                  'thuận**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được hai đại lượng tỉ lệ '
-                           'thuận và hệ số tỉ lệ.',
-                           'Quy tắc/công thức **Công thức tỉ lệ thuận** trong bài được xác định bởi: $y = ax '
-                           '\\quad (a \\neq 0) \\Rightarrow x = \\dfrac{1}{a}y$.',
-                           'Trong mọi trường hợp, **Công thức tỉ lệ thuận** luôn được tính bằng công thức '
-                           '$\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} \\;\\middle|\\; a, b \\in \\mathbb{Z}, b '
-                           '\\neq 0 \\right\\}$ (thuộc Định nghĩa tập $\\mathbb{Q}$) mà không cần điều kiện '
-                           'của Bài 22: Đại lượng tỉ lệ thuận.',
-                           'Với bài toán minh họa: “Cho biết $y$ tỉ lệ thuận với $x$ theo hệ số tỉ lệ $a$. '
-                           'Khi $x = 4$ thì $y = 12$. Tìm hệ số tỉ lệ $a$ và tính giá trị của $y$ khi $x = '
-                           '-5$.”, lời giải đúng là: Vì $y = ax$ nên thay $x = 4, y = 12$ ta được $a = '
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết được hai đại lượng tỉ lệ thuận '
+                           'và hệ số tỉ lệ.',
+                           'Trong **Bài 22: Đại lượng tỉ lệ thuận**, quy tắc/công thức **Công thức tỉ lệ '
+                           'thuận** được viết là: $y = ax \\quad (a \\neq 0) \\Rightarrow x = '
+                           '\\dfrac{1}{a}y$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $y = ax \\quad (a \\neq 1) \\Rightarrow x = '
+                           '\\dfrac{1}{a}y$ thì kết quả của **Công thức tỉ lệ thuận** trong **Bài 22: Đại '
+                           'lượng tỉ lệ thuận** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Cho biết $y$ tỉ lệ thuận với $x$ theo hệ số tỉ lệ $a$. Khi '
+                           '$x = 4$ thì $y = 12$. Tìm hệ số tỉ lệ $a$ và tính giá trị của $y$ khi $x = '
+                           '-5$...”, kết quả giải đúng là: Vì $y = ax$ nên thay $x = 4, y = 12$ ta được $a = '
                            '\\dfrac{y}{x} = \\dfrac{12}{4} = 3$. Vậy $y = 3x$. Khi $x = -5$ thì $y = 3 '
                            '\\cdot (-5) = -15$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 22: Đại lượng tỉ lệ thuận. b) **Đúng** '
-                        'theo công thức trọng tâm **Công thức tỉ lệ thuận** ($y = ax \\quad (a \\neq 0) '
-                        '\\Rightarrow x = \\dfrac{1}{a}y$). c) **Sai** vì $\\mathbb{Q} = \\left\\{ '
-                        '\\dfrac{a}{b} \\;\\middle|\\; a, b \\in \\mathbb{Z}, b \\neq 0 \\right\\}$ là công '
-                        'thức của nội dung khác, không phải quy tắc chung của **Công thức tỉ lệ thuận**. d) '
-                        '**Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        'theo công thức **Công thức tỉ lệ thuận** ($y = ax \\quad (a \\neq 0) \\Rightarrow x '
+                        '= \\dfrac{1}{a}y$). c) **Sai** vì công thức đúng của **Công thức tỉ lệ thuận** phải '
+                        'là $y = ax \\quad (a \\neq 0) \\Rightarrow x = \\dfrac{1}{a}y$ chứ không phải $y = '
+                        'ax \\quad (a \\neq 1) \\Rightarrow x = \\dfrac{1}{a}y$. d) **Đúng** theo lời giải '
+                        'ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 22: Đại lượng tỉ lệ thuận** để giải quyết tình huống sau: Cho '
-                 'biết $y$ tỉ lệ thuận với $x$ theo hệ số tỉ lệ $a$. Khi $x = 4$ thì $y = 12$. Tìm hệ số tỉ '
-                 'lệ $a$ và tính giá trị của $y$ khi $x = -5$. Kết quả và hướng giải nào dưới đây là '
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 22: Đại lượng tỉ lệ thuận** để giải bài toán sau: '
+                 'Cho biết $y$ tỉ lệ thuận với $x$ theo hệ số tỉ lệ $a$. Khi $x = 4$ thì $y = 12$. Tìm hệ số '
+                 'tỉ lệ $a$ và tính giá trị của $y$ khi $x = -5$. Cách giải và kết quả nào dưới đây là '
                  '**đúng**?',
-            'options': ['Ta có: $-2,5 = \\dfrac{-5}{2} = \\dfrac{-15}{6}$; $1\\dfrac{2}{3} = \\dfrac{5}{3}$; '
-                        '$-4 = \\dfrac{-4}{1} = \\dfrac{-24}{6}$. Vì $-4 < -2,5 < 0 < 1\\dfrac{2}{3}$ n...',
-                        'Áp dụng tính chất phân phối của phép nhân đối với phép cộng: $A = \\dfrac{-3}{7} '
-                        '\\cdot \\left(\\dfrac{5}{9} + \\dfrac{4}{9}\\right) + \\dfrac{10}{7} = '
-                        '\\dfrac{-3}{7} \\cdot 1 + \\dfrac{10}{7} = \\dfrac{7}{7} = 1$...',
-                        'Ta có: $M = \\dfrac{(2^3)^{10}}{(2^2)^8} = \\dfrac{2^{30}}{2^{16}} = 2^{30-16} = '
-                        '2^{14} = 16384$. $N = (0,125 \\cdot 8)^3 = 1^3 = 1$.',
+            'options': ['Vì $y = ax$ nên thay $x = 4, y = 12$ ta được $a = \\dfrac{y}{x} = \\dfrac{12}{4} = '
+                        '3$. Vậy $y = 3x$. Khi $x = -5$ thì $y = 3 : (-5) = -15$.',
+                        'Vì $y = ax$ nên thay $x = 4, y = 12$ ta được $a = \\dfrac{x}{y} = \\dfrac{12}{4} = '
+                        '3$. Vậy $y = 3x$. Khi $x = -5$ thì $y = 3 \\cdot (-5) = -15$.',
+                        'Vì $y = ax$ nên thay $x = 8, y = 12$ ta được $a = \\dfrac{y}{x} = \\dfrac{12}{4} = '
+                        '3$. Vậy $y = 3x$. Khi $x = -5$ thì $y = 3 \\cdot (-5) = -15$.',
                         'Vì $y = ax$ nên thay $x = 4, y = 12$ ta được $a = \\dfrac{y}{x} = \\dfrac{12}{4} = '
                         '3$. Vậy $y = 3x$. Khi $x = -5$ thì $y = 3 \\cdot (-5) = -15$.'],
             'answer': 3,
@@ -3995,28 +4052,28 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 23: Đại lượng tỉ lệ nghịch**, công thức hoặc quy tắc nào '
-                 'sau đây biểu diễn đúng **Công thức tỉ lệ nghịch**?',
+            'q': 'Trong **Bài 23: Đại lượng tỉ lệ nghịch**, quy tắc hoặc công thức nào sau đây xác định đúng '
+                 '**Công thức tỉ lệ nghịch**?',
             'options': ['$y = \\dfrac{a}{x} \\Leftrightarrow x \\cdot y = a \\quad (a \\neq 0)$',
-                        '$x_1 y_1 = x_2 y_2 = x_3 y_3 = a$',
-                        '$\\dfrac{x_1}{x_2} = \\dfrac{y_2}{y_1}$',
-                        '$\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} \\;\\middle|\\; a, b \\in \\mathbb{Z}, b '
-                        '\\neq 0 \\right\\}$'],
+                        '$y = \\dfrac{a}{x} \\Leftrightarrow x : y = a \\quad (a \\neq 0)$',
+                        '$y = \\dfrac{x}{a} \\Leftrightarrow x \\cdot y = a \\quad (a \\neq 0)$',
+                        '$y = \\dfrac{a}{x} \\Leftrightarrow x \\cdot y = a \\quad (a \\neq 2)$'],
             'answer': 0,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 23: Đại lượng tỉ lệ nghịch, **Công thức tỉ lệ '
+            'solution': 'Theo kiến thức trọng tâm của Bài 23: Đại lượng tỉ lệ nghịch, **Công thức tỉ lệ '
                         'nghịch** được xác định bởi: $y = \\dfrac{a}{x} \\Leftrightarrow x \\cdot y = a '
                         '\\quad (a \\neq 0)$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 23: Đại lượng tỉ lệ nghịch**, nội dung/biểu thức $x_1 y_1 = x_2 y_2 = x_3 y_3 '
-                 '= a$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Công thức tỉ lệ nghịch',
-                        'Tích các giá trị tương ứng không đổi',
-                        'Tỉ số nghịch đảo hai cặp giá trị',
-                        'Định nghĩa tập $\\mathbb{Q}$'],
+            'q': 'Khi học **Bài 23: Đại lượng tỉ lệ nghịch**, biểu thức hoặc quy tắc nào dưới đây biểu diễn '
+                 'đúng **Tích các giá trị tương ứng không đổi**?',
+            'options': ['$x_1 y_1 = x_2 y_2 = x_3 y_3 = a$ (với dấu ngược lại)',
+                        '$x_1 y_1 = x_2 y_2 = x_3 y_3 = a$',
+                        'Đảo ngược vế của quy tắc: $x_1 y_1 = x_2 y_2 = x_3 y_3 = a$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $x_1 y_1 = x_2 y_2 = x_3 y_3 = '
+                        'a$'],
             'answer': 1,
-            'solution': 'Trong Bài 23: Đại lượng tỉ lệ nghịch, biểu thức/quy tắc $x_1 y_1 = x_2 y_2 = x_3 '
-                        'y_3 = a$ chính là nội dung của **Tích các giá trị tương ứng không đổi**.'},
+            'solution': 'Trong Bài 23: Đại lượng tỉ lệ nghịch, **Tích các giá trị tương ứng không đổi** có '
+                        'công thức/quy tắc là: $x_1 y_1 = x_2 y_2 = x_3 y_3 = a$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Cho $x$ và $y$ là hai đại lượng tỉ lệ nghịch. Biết khi $x = 4$ thì $y = -9$. Hỏi khi $x = '
@@ -4029,15 +4086,15 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 23: Đại lượng tỉ lệ nghịch** (Chương VI: Tỉ lệ thức và đại lượng tỉ lệ), '
-                 'khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Nhận biết được số hữu tỉ và lấy được ví dụ về số hữu tỉ, nhận biết tập hợp các số '
-                        'hữu tỉ $\\mathbb{Q}$.',
-                        'Biểu diễn được số hữu tỉ trên trục số và nhận biết được số đối của một số hữu tỉ.',
-                        'Nhận biết được thứ tự trong tập hợp các số hữu tỉ và so sánh được hai số hữu tỉ.',
+            'q': 'Để nắm vững bản chất của **Bài 23: Đại lượng tỉ lệ nghịch**, nhận định nào sau đây là '
+                 '**chính xác**?',
+            'options': ['Nhận biết được hai đại lượng tỉ lệ nghịch và hệ số tỉ lệ. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Nhận biết được hai đại lượng tỉ lệ nghịch và hệ số tỉ lệ.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nhận biết được hai đại lượng tỉ '
+                        'lệ nghịch và hệ số tỉ lệ.',
                         'Nhận biết được hai đại lượng tỉ lệ nghịch và hệ số tỉ lệ.'],
             'answer': 3,
-            'solution': 'Theo yêu cầu cần đạt của Bài 23: Đại lượng tỉ lệ nghịch: Nhận biết được hai đại '
+            'solution': 'Theo nội dung cốt lõi của Bài 23: Đại lượng tỉ lệ nghịch: Nhận biết được hai đại '
                         'lượng tỉ lệ nghịch và hệ số tỉ lệ.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -4055,43 +4112,39 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 23: Đại lượng tỉ lệ '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 23: Đại lượng tỉ lệ '
                  'nghịch**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được hai đại lượng tỉ lệ '
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết được hai đại lượng tỉ lệ '
                            'nghịch và hệ số tỉ lệ.',
-                           'Quy tắc/công thức **Công thức tỉ lệ nghịch** trong bài được xác định bởi: $y = '
-                           '\\dfrac{a}{x} \\Leftrightarrow x \\cdot y = a \\quad (a \\neq 0)$.',
-                           'Trong mọi trường hợp, **Công thức tỉ lệ nghịch** luôn được tính bằng công thức '
-                           '$\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} \\;\\middle|\\; a, b \\in \\mathbb{Z}, b '
-                           '\\neq 0 \\right\\}$ (thuộc Định nghĩa tập $\\mathbb{Q}$) mà không cần điều kiện '
-                           'của Bài 23: Đại lượng tỉ lệ nghịch.',
-                           'Với bài toán minh họa: “Cho biết $12$ công nhân có cùng năng suất hoàn thành một '
-                           'công việc trong $10$ ngày. Hỏi nếu có $15$ công nhân như thế thì hoàn thành công '
-                           'vi...”, lời giải đúng là: Với cùng một khối lượng công việc và cùng năng suất, '
-                           'số công nhân $x$ và số ngày hoàn thành $y$ là hai đại lượng tỉ lệ nghịch. Ta '
-                           'có...'],
+                           'Trong **Bài 23: Đại lượng tỉ lệ nghịch**, quy tắc/công thức **Công thức tỉ lệ '
+                           'nghịch** được viết là: $y = \\dfrac{a}{x} \\Leftrightarrow x \\cdot y = a \\quad '
+                           '(a \\neq 0)$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $y = \\dfrac{a}{x} \\Leftrightarrow x : y = '
+                           'a \\quad (a \\neq 0)$ thì kết quả của **Công thức tỉ lệ nghịch** trong **Bài 23: '
+                           'Đại lượng tỉ lệ nghịch** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Cho biết $12$ công nhân có cùng năng suất hoàn thành một '
+                           'công việc trong $10$ ngày. Hỏi nếu có $15$ công nhân như thế thì hoàn thành '
+                           'cô...”, kết quả giải đúng là: Với cùng một khối lượng công việc và cùng năng '
+                           'suất, số công nhân $x$ và số ngày hoàn thành $y$ là hai đại lượng tỉ lệ nghịch. '
+                           'Ta có...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 23: Đại lượng tỉ lệ nghịch. b) **Đúng** '
-                        'theo công thức trọng tâm **Công thức tỉ lệ nghịch** ($y = \\dfrac{a}{x} '
-                        '\\Leftrightarrow x \\cdot y = a \\quad (a \\neq 0)$). c) **Sai** vì $\\mathbb{Q} = '
-                        '\\left\\{ \\dfrac{a}{b} \\;\\middle|\\; a, b \\in \\mathbb{Z}, b \\neq 0 '
-                        '\\right\\}$ là công thức của nội dung khác, không phải quy tắc chung của **Công '
-                        'thức tỉ lệ nghịch**. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        'theo công thức **Công thức tỉ lệ nghịch** ($y = \\dfrac{a}{x} \\Leftrightarrow x '
+                        '\\cdot y = a \\quad (a \\neq 0)$). c) **Sai** vì công thức đúng của **Công thức tỉ '
+                        'lệ nghịch** phải là $y = \\dfrac{a}{x} \\Leftrightarrow x \\cdot y = a \\quad (a '
+                        '\\neq 0)$ chứ không phải $y = \\dfrac{a}{x} \\Leftrightarrow x : y = a \\quad (a '
+                        '\\neq 0)$. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 23: Đại lượng tỉ lệ nghịch** để giải quyết tình huống sau: Cho '
-                 'biết $12$ công nhân có cùng năng suất hoàn thành một công việc trong $10$ ngày. Hỏi nếu có '
-                 '$15$ công nhân như thế thì hoàn thành công việc đó trong bao nhiêu ngày? Kết quả và hướng '
-                 'giải nào dưới đây là **đúng**?',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 23: Đại lượng tỉ lệ nghịch** để giải bài toán sau: '
+                 'Cho biết $12$ công nhân có cùng năng suất hoàn thành một công việc trong $10$ ngày. Hỏi '
+                 'nếu có $15$ công nhân như thế thì hoàn thành công việc đó trong bao nhiêu ngày? Cách giải '
+                 'và kết quả nào dưới đây là **đúng**?',
             'options': ['Với cùng một khối lượng công việc và cùng năng suất, số công nhân $x$ và số ngày '
                         'hoàn thành $y$ là hai đại lượng tỉ lệ nghịch. Ta có...',
-                        'Ta có: $-2,5 = \\dfrac{-5}{2} = \\dfrac{-15}{6}$; $1\\dfrac{2}{3} = \\dfrac{5}{3}$; '
-                        '$-4 = \\dfrac{-4}{1} = \\dfrac{-24}{6}$. Vì $-4 < -2,5 < 0 < 1\\dfrac{2}{3}$ n...',
-                        'Áp dụng tính chất phân phối của phép nhân đối với phép cộng: $A = \\dfrac{-3}{7} '
-                        '\\cdot \\left(\\dfrac{5}{9} + \\dfrac{4}{9}\\right) + \\dfrac{10}{7} = '
-                        '\\dfrac{-3}{7} \\cdot 1 + \\dfrac{10}{7} = \\dfrac{7}{7} = 1$...',
-                        'Ta có: $M = \\dfrac{(2^3)^{10}}{(2^2)^8} = \\dfrac{2^{30}}{2^{16}} = 2^{30-16} = '
-                        '2^{14} = 16384$. $N = (0,125 \\cdot 8)^3 = 1^3 = 1$.'],
+                        'Chỉ xét trường hợp đặc biệt bằng $0$ và bỏ qua quy tắc chung',
+                        'Thực hiện theo thứ tự ngược lại và bỏ qua điều kiện xác định trong bài',
+                        'Đổi ngược dấu của phép tính chính và không kiểm tra lại kết quả'],
             'answer': 0,
             'solution': 'Lời giải chi tiết theo Bài 23: Đại lượng tỉ lệ nghịch: Với cùng một khối lượng công '
                         'việc và cùng năng suất, số công nhân $x$ và số ngày hoàn thành $y$ là hai đại lượng '
@@ -4160,27 +4213,26 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 24: Biểu thức đại số**, công thức hoặc quy tắc nào sau '
-                 'đây biểu diễn đúng **Chu vi và diện tích hình chữ nhật cạnh $x, y$**?',
-            'options': ['$s = vt$',
+            'q': 'Trong **Bài 24: Biểu thức đại số**, quy tắc hoặc công thức nào sau đây xác định đúng **Chu '
+                 'vi và diện tích hình chữ nhật cạnh $x, y$**?',
+            'options': ['$P = 2(x - y); \\quad S = xy$',
                         '$P = 2(x + y); \\quad S = xy$',
-                        'Thay $x = a$ vào biểu thức và thực hiện phép tính',
-                        '$\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} \\;\\middle|\\; a, b \\in \\mathbb{Z}, b '
-                        '\\neq 0 \\right\\}$'],
+                        '$P = 1(x + y); \\quad S = xy$',
+                        '$P = 4(x + y); \\quad S = xy$'],
             'answer': 1,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 24: Biểu thức đại số, **Chu vi và diện tích '
-                        'hình chữ nhật cạnh $x, y$** được xác định bởi: $P = 2(x + y); \\quad S = xy$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 24: Biểu thức đại số, **Chu vi và diện tích hình '
+                        'chữ nhật cạnh $x, y$** được xác định bởi: $P = 2(x + y); \\quad S = xy$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 24: Biểu thức đại số**, nội dung/biểu thức $s = vt$ là quy tắc hoặc công thức '
-                 'của mục nào sau đây?',
-            'options': ['Chu vi và diện tích hình chữ nhật cạnh $x, y$',
-                        'Giá trị biểu thức $A(x)$ tại $x = a$',
-                        'Quãng đường đi với vận tốc $v$ trong thời gian $t$',
-                        'Định nghĩa tập $\\mathbb{Q}$'],
+            'q': 'Khi học **Bài 24: Biểu thức đại số**, biểu thức hoặc quy tắc nào dưới đây biểu diễn đúng '
+                 '**Quãng đường đi với vận tốc $v$ trong thời gian $t$**?',
+            'options': ['$s = vt$ (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: $s = vt$',
+                        '$s = vt$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $s = vt$'],
             'answer': 2,
-            'solution': 'Trong Bài 24: Biểu thức đại số, biểu thức/quy tắc $s = vt$ chính là nội dung của '
-                        '**Quãng đường đi với vận tốc $v$ trong thời gian $t$**.'},
+            'solution': 'Trong Bài 24: Biểu thức đại số, **Quãng đường đi với vận tốc $v$ trong thời gian '
+                        '$t$** có công thức/quy tắc là: $s = vt$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Giá trị của biểu thức $P = 2x^2 - 3y$ tại $x = -3$ và $y = 2$ là:',
@@ -4192,15 +4244,15 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 24: Biểu thức đại số** (Chương VII: Biểu thức đại số và đa thức một biến), '
-                 'khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
+            'q': 'Để nắm vững bản chất của **Bài 24: Biểu thức đại số**, nhận định nào sau đây là **chính '
+                 'xác**?',
             'options': ['Nhận biết được biểu thức số và biểu thức đại số.',
-                        'Nhận biết được số hữu tỉ và lấy được ví dụ về số hữu tỉ, nhận biết tập hợp các số '
-                        'hữu tỉ $\\mathbb{Q}$.',
-                        'Biểu diễn được số hữu tỉ trên trục số và nhận biết được số đối của một số hữu tỉ.',
-                        'Nhận biết được thứ tự trong tập hợp các số hữu tỉ và so sánh được hai số hữu tỉ.'],
+                        'Nhận biết được biểu thức số và biểu thức đại số. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Nhận biết được biểu thức số và biểu thức đại số.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nhận biết được biểu thức số và '
+                        'biểu thức đại số.'],
             'answer': 0,
-            'solution': 'Theo yêu cầu cần đạt của Bài 24: Biểu thức đại số: Nhận biết được biểu thức số và '
+            'solution': 'Theo nội dung cốt lõi của Bài 24: Biểu thức đại số: Nhận biết được biểu thức số và '
                         'biểu thức đại số.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -4217,39 +4269,36 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 24: Biểu thức đại số**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được biểu thức số và '
-                           'biểu thức đại số.',
-                           'Quy tắc/công thức **Chu vi và diện tích hình chữ nhật cạnh $x, y$** trong bài '
-                           'được xác định bởi: $P = 2(x + y); \\quad S = xy$.',
-                           'Trong mọi trường hợp, **Chu vi và diện tích hình chữ nhật cạnh $x, y$** luôn '
-                           'được tính bằng công thức $\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} \\;\\middle|\\; '
-                           'a, b \\in \\mathbb{Z}, b \\neq 0 \\right\\}$ (thuộc Định nghĩa tập '
-                           '$\\mathbb{Q}$) mà không cần điều kiện của Bài 24: Biểu thức đại số.',
-                           'Với bài toán minh họa: “Tính giá trị của biểu thức đại số $A = 3x^2 - 5x + 2$ '
-                           'tại $x = -2$.”, lời giải đúng là: Thay $x = -2$ vào biểu thức $A$, ta được: $A = '
-                           '3 \\cdot (-2)^2 - 5 \\cdot (-2) + 2 = 3 \\cdot 4 + 10 + 2 = 12 + 10 + 2 = 24$.'],
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 24: Biểu thức đại số**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết được biểu thức số và biểu thức '
+                           'đại số.',
+                           'Trong **Bài 24: Biểu thức đại số**, quy tắc/công thức **Chu vi và diện tích hình '
+                           'chữ nhật cạnh $x, y$** được viết là: $P = 2(x + y); \\quad S = xy$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $P = 2(x - y); \\quad S = xy$ thì kết quả '
+                           'của **Chu vi và diện tích hình chữ nhật cạnh $x, y$** trong **Bài 24: Biểu thức '
+                           'đại số** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Tính giá trị của biểu thức đại số $A = 3x^2 - 5x + 2$ tại $x '
+                           '= -2$.”, kết quả giải đúng là: Thay $x = -2$ vào biểu thức $A$, ta được: $A = 3 '
+                           '\\cdot (-2)^2 - 5 \\cdot (-2) + 2 = 3 \\cdot 4 + 10 + 2 = 12 + 10 + 2 = 24$.'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 24: Biểu thức đại số. b) **Đúng** theo '
-                        'công thức trọng tâm **Chu vi và diện tích hình chữ nhật cạnh $x, y$** ($P = 2(x + '
-                        'y); \\quad S = xy$). c) **Sai** vì $\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} '
-                        '\\;\\middle|\\; a, b \\in \\mathbb{Z}, b \\neq 0 \\right\\}$ là công thức của nội '
-                        'dung khác, không phải quy tắc chung của **Chu vi và diện tích hình chữ nhật cạnh '
-                        '$x, y$**. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        'công thức **Chu vi và diện tích hình chữ nhật cạnh $x, y$** ($P = 2(x + y); \\quad '
+                        'S = xy$). c) **Sai** vì công thức đúng của **Chu vi và diện tích hình chữ nhật cạnh '
+                        '$x, y$** phải là $P = 2(x + y); \\quad S = xy$ chứ không phải $P = 2(x - y); \\quad '
+                        'S = xy$. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 24: Biểu thức đại số** để giải quyết tình huống sau: Tính giá trị '
-                 'của biểu thức đại số $A = 3x^2 - 5x + 2$ tại $x = -2$. Kết quả và hướng giải nào dưới đây '
-                 'là **đúng**?',
-            'options': ['Ta có: $-2,5 = \\dfrac{-5}{2} = \\dfrac{-15}{6}$; $1\\dfrac{2}{3} = \\dfrac{5}{3}$; '
-                        '$-4 = \\dfrac{-4}{1} = \\dfrac{-24}{6}$. Vì $-4 < -2,5 < 0 < 1\\dfrac{2}{3}$ n...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 24: Biểu thức đại số** để giải bài toán sau: Tính '
+                 'giá trị của biểu thức đại số $A = 3x^2 - 5x + 2$ tại $x = -2$. Cách giải và kết quả nào '
+                 'dưới đây là **đúng**?',
+            'options': ['Thay $x = -2$ vào biểu thức $A$, ta được: $A = 3 \\cdot (-2)^2 - 5 \\cdot (-2) - 2 '
+                        '= 3 \\cdot 4 + 10 + 2 = 12 + 10 + 2 = 24$.',
                         'Thay $x = -2$ vào biểu thức $A$, ta được: $A = 3 \\cdot (-2)^2 - 5 \\cdot (-2) + 2 '
                         '= 3 \\cdot 4 + 10 + 2 = 12 + 10 + 2 = 24$.',
-                        'Áp dụng tính chất phân phối của phép nhân đối với phép cộng: $A = \\dfrac{-3}{7} '
-                        '\\cdot \\left(\\dfrac{5}{9} + \\dfrac{4}{9}\\right) + \\dfrac{10}{7} = '
-                        '\\dfrac{-3}{7} \\cdot 1 + \\dfrac{10}{7} = \\dfrac{7}{7} = 1$...',
-                        'Ta có: $M = \\dfrac{(2^3)^{10}}{(2^2)^8} = \\dfrac{2^{30}}{2^{16}} = 2^{30-16} = '
-                        '2^{14} = 16384$. $N = (0,125 \\cdot 8)^3 = 1^3 = 1$.'],
+                        'Thay $x = -2$ vào biểu thức $A$, ta được: $A = 3 \\cdot (-2)^2 - 5 \\cdot (-2) + 2 '
+                        '= 3 \\cdot 4 + 10 + 2 = 12 + 10 + 2 = 23$.',
+                        'Thay $x = -4$ vào biểu thức $A$, ta được: $A = 3 \\cdot (-2)^2 - 5 \\cdot (-2) + 2 '
+                        '= 3 \\cdot 4 + 10 + 2 = 12 + 10 + 2 = 24$.'],
             'answer': 1,
             'solution': 'Lời giải chi tiết theo Bài 24: Biểu thức đại số: Thay $x = -2$ vào biểu thức $A$, '
                         'ta được:\n'
@@ -4318,28 +4367,26 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 25: Đa thức một biến**, công thức hoặc quy tắc nào sau '
-                 'đây biểu diễn đúng **Cộng trừ hai đơn thức cùng bậc**?',
-            'options': ['$P(x) = a_n x^n + a_{n-1} x^{n-1} + \\cdots + a_1 x + a_0$',
-                        '$P(a) = 0$',
+            'q': 'Trong **Bài 25: Đa thức một biến**, quy tắc hoặc công thức nào sau đây xác định đúng '
+                 '**Cộng trừ hai đơn thức cùng bậc**?',
+            'options': ['$ax^k - bx^k = (a + b)x^k$',
+                        'Đảo ngược vế của quy tắc: $ax^k + bx^k = (a + b)x^k$',
                         '$ax^k + bx^k = (a + b)x^k$',
-                        '$\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} \\;\\middle|\\; a, b \\in \\mathbb{Z}, b '
-                        '\\neq 0 \\right\\}$'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $ax^k + bx^k = (a + b)x^k$'],
             'answer': 2,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 25: Đa thức một biến, **Cộng trừ hai đơn thức '
-                        'cùng bậc** được xác định bởi: $ax^k + bx^k = (a + b)x^k$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 25: Đa thức một biến, **Cộng trừ hai đơn thức cùng '
+                        'bậc** được xác định bởi: $ax^k + bx^k = (a + b)x^k$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 25: Đa thức một biến**, nội dung/biểu thức $P(x) = a_n x^n + a_{n-1} x^{n-1} + '
-                 '\\cdots + a_1 x + a_0$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Cộng trừ hai đơn thức cùng bậc',
-                        'Điều kiện $x = a$ là nghiệm của $P(x)$',
-                        'Định nghĩa tập $\\mathbb{Q}$',
-                        'Đa thức bậc $n$ ($a_n \\neq 0$)'],
+            'q': 'Khi học **Bài 25: Đa thức một biến**, biểu thức hoặc quy tắc nào dưới đây biểu diễn đúng '
+                 '**Đa thức bậc $n$ ($a_n \\neq 0$)**?',
+            'options': ['$P(x) = a_n x^n - a_{n-1} x^{n-1} + \\cdots + a_1 x + a_0$',
+                        '$P(x) = a_n x^n + a_{n-1} x^{n-2} + \\cdots + a_1 x + a_0$',
+                        '$P(x) = a_n x^n + a_{n-2} x^{n-1} + \\cdots + a_1 x + a_0$',
+                        '$P(x) = a_n x^n + a_{n-1} x^{n-1} + \\cdots + a_1 x + a_0$'],
             'answer': 3,
-            'solution': 'Trong Bài 25: Đa thức một biến, biểu thức/quy tắc $P(x) = a_n x^n + a_{n-1} x^{n-1} '
-                        '+ \\cdots + a_1 x + a_0$ chính là nội dung của **Đa thức bậc $n$ ($a_n \\neq '
-                        '0$)**.'},
+            'solution': 'Trong Bài 25: Đa thức một biến, **Đa thức bậc $n$ ($a_n \\neq 0$)** có công '
+                        'thức/quy tắc là: $P(x) = a_n x^n + a_{n-1} x^{n-1} + \\cdots + a_1 x + a_0$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Số nào sau đây là nghiệm của đa thức $A(x) = 2x - 6$?',
@@ -4350,16 +4397,18 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 25: Đa thức một biến** (Chương VII: Biểu thức đại số và đa thức một biến), '
-                 'khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Nhận biết được số hữu tỉ và lấy được ví dụ về số hữu tỉ, nhận biết tập hợp các số '
-                        'hữu tỉ $\\mathbb{Q}$.',
+            'q': 'Để nắm vững bản chất của **Bài 25: Đa thức một biến**, nhận định nào sau đây là **chính '
+                 'xác**?',
+            'options': ['Nhận biết được đơn thức một biến, đa thức một biến và dạng thu gọn của đa thức một '
+                        'biến. (với dấu ngược lại)',
                         'Nhận biết được đơn thức một biến, đa thức một biến và dạng thu gọn của đa thức một '
                         'biến.',
-                        'Biểu diễn được số hữu tỉ trên trục số và nhận biết được số đối của một số hữu tỉ.',
-                        'Nhận biết được thứ tự trong tập hợp các số hữu tỉ và so sánh được hai số hữu tỉ.'],
+                        'Đảo ngược vế của quy tắc: Nhận biết được đơn thức một biến, đa thức một biến và '
+                        'dạng thu gọn của đa thức một biến.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nhận biết được đơn thức một '
+                        'biến, đa thức một biến và dạng thu gọn của đa thức một biến.'],
             'answer': 1,
-            'solution': 'Theo yêu cầu cần đạt của Bài 25: Đa thức một biến: Nhận biết được đơn thức một '
+            'solution': 'Theo nội dung cốt lõi của Bài 25: Đa thức một biến: Nhận biết được đơn thức một '
                         'biến, đa thức một biến và dạng thu gọn của đa thức một biến.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -4375,40 +4424,37 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 25: Đa thức một biến**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được đơn thức một biến, '
-                           'đa thức một biến và dạng thu gọn của đa thức một biến.',
-                           'Quy tắc/công thức **Cộng trừ hai đơn thức cùng bậc** trong bài được xác định '
-                           'bởi: $ax^k + bx^k = (a + b)x^k$.',
-                           'Trong mọi trường hợp, **Cộng trừ hai đơn thức cùng bậc** luôn được tính bằng '
-                           'công thức $\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} \\;\\middle|\\; a, b \\in '
-                           '\\mathbb{Z}, b \\neq 0 \\right\\}$ (thuộc Định nghĩa tập $\\mathbb{Q}$) mà không '
-                           'cần điều kiện của Bài 25: Đa thức một biến.',
-                           'Với bài toán minh họa: “Cho đa thức $P(x) = 3x^3 - 2x + 5x^2 - 3x^3 + 6$. Hãy '
-                           'thu gọn, sắp xếp theo lũy thừa giảm dần của biến, tìm bậc và tính $P(-1)$.”, lời '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 25: Đa thức một biến**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết được đơn thức một biến, đa '
+                           'thức một biến và dạng thu gọn của đa thức một biến.',
+                           'Trong **Bài 25: Đa thức một biến**, quy tắc/công thức **Cộng trừ hai đơn thức '
+                           'cùng bậc** được viết là: $ax^k + bx^k = (a + b)x^k$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $ax^k - bx^k = (a + b)x^k$ thì kết quả của '
+                           '**Cộng trừ hai đơn thức cùng bậc** trong **Bài 25: Đa thức một biến** vẫn không '
+                           'thay đổi.',
+                           'Xét ví dụ của bài: “Cho đa thức $P(x) = 3x^3 - 2x + 5x^2 - 3x^3 + 6$. Hãy thu '
+                           'gọn, sắp xếp theo lũy thừa giảm dần của biến, tìm bậc và tính $P(-1)$.”, kết quả '
                            'giải đúng là: Thu gọn và sắp xếp: $P(x) = (3x^3 - 3x^3) + 5x^2 - 2x + 6 = 5x^2 - '
-                           '2x + 6$. Đa thức $P(x)$ có bậc là $2$, hệ số cao nhất là $5$, hệ số tự do...'],
+                           '2x + 6$. Đa thức $P(x)$ có bậc là $2$, hệ số cao nhất là $5$, hệ số...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 25: Đa thức một biến. b) **Đúng** theo '
-                        'công thức trọng tâm **Cộng trừ hai đơn thức cùng bậc** ($ax^k + bx^k = (a + '
-                        'b)x^k$). c) **Sai** vì $\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} \\;\\middle|\\; a, b '
-                        '\\in \\mathbb{Z}, b \\neq 0 \\right\\}$ là công thức của nội dung khác, không phải '
-                        'quy tắc chung của **Cộng trừ hai đơn thức cùng bậc**. d) **Đúng** theo lời giải ví '
-                        'dụ minh họa trong bài học.'},
+                        'công thức **Cộng trừ hai đơn thức cùng bậc** ($ax^k + bx^k = (a + b)x^k$). c) '
+                        '**Sai** vì công thức đúng của **Cộng trừ hai đơn thức cùng bậc** phải là $ax^k + '
+                        'bx^k = (a + b)x^k$ chứ không phải $ax^k - bx^k = (a + b)x^k$. d) **Đúng** theo lời '
+                        'giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 25: Đa thức một biến** để giải quyết tình huống sau: Cho đa thức '
-                 '$P(x) = 3x^3 - 2x + 5x^2 - 3x^3 + 6$. Hãy thu gọn, sắp xếp theo lũy thừa giảm dần của '
-                 'biến, tìm bậc và tính $P(-1)$. Kết quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Ta có: $-2,5 = \\dfrac{-5}{2} = \\dfrac{-15}{6}$; $1\\dfrac{2}{3} = \\dfrac{5}{3}$; '
-                        '$-4 = \\dfrac{-4}{1} = \\dfrac{-24}{6}$. Vì $-4 < -2,5 < 0 < 1\\dfrac{2}{3}$ n...',
-                        'Áp dụng tính chất phân phối của phép nhân đối với phép cộng: $A = \\dfrac{-3}{7} '
-                        '\\cdot \\left(\\dfrac{5}{9} + \\dfrac{4}{9}\\right) + \\dfrac{10}{7} = '
-                        '\\dfrac{-3}{7} \\cdot 1 + \\dfrac{10}{7} = \\dfrac{7}{7} = 1$...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 25: Đa thức một biến** để giải bài toán sau: Cho đa '
+                 'thức $P(x) = 3x^3 - 2x + 5x^2 - 3x^3 + 6$. Hãy thu gọn, sắp xếp theo lũy thừa giảm dần của '
+                 'biến, tìm bậc và tính $P(-1)$. Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Thu gọn và sắp xếp: $P(x) = (3x^3 - 3x^3) - 5x^2 - 2x + 6 = 5x^2 - 2x + 6$. Đa thức '
+                        '$P(x)$ có bậc là $2$, hệ số cao nhất là $5$, hệ số tự do là $6$. T...',
                         'Thu gọn và sắp xếp: $P(x) = (3x^3 - 3x^3) + 5x^2 - 2x + 6 = 5x^2 - 2x + 6$. Đa thức '
-                        '$P(x)$ có bậc là $2$, hệ số cao nhất là $5$, hệ số tự do là $6$. Ta có...',
-                        'Ta có: $M = \\dfrac{(2^3)^{10}}{(2^2)^8} = \\dfrac{2^{30}}{2^{16}} = 2^{30-16} = '
-                        '2^{14} = 16384$. $N = (0,125 \\cdot 8)^3 = 1^3 = 1$.'],
+                        '$P(x)$ có bậc là $2$, hệ số cao nhất là $5$, hệ số tự do là $5$. T...',
+                        'Thu gọn và sắp xếp: $P(x) = (3x^3 - 3x^3) + 5x^2 - 2x + 6 = 5x^2 - 2x + 6$. Đa thức '
+                        '$P(x)$ có bậc là $2$, hệ số cao nhất là $5$, hệ số tự do là $6$. T...',
+                        'Thu gọn và sắp xếp: $P(x) = (3x^6 - 3x^3) + 5x^2 - 2x + 6 = 5x^2 - 2x + 6$. Đa thức '
+                        '$P(x)$ có bậc là $2$, hệ số cao nhất là $5$, hệ số tự do là $6$. T...'],
             'answer': 2,
             'solution': 'Lời giải chi tiết theo Bài 25: Đa thức một biến: Thu gọn và sắp xếp: $P(x) = (3x^3 '
                         '- 3x^3) + 5x^2 - 2x + 6 = 5x^2 - 2x + 6$.\n'
@@ -4431,8 +4477,8 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
   'description': 'Quy tắc cộng, trừ hai đa thức một biến theo hàng ngang hoặc theo cột dọc.',
   'requirements': ['Thực hiện được phép cộng và phép trừ hai đa thức một biến.',
                    'Vận dụng được các tính chất giao hoán, kết hợp của phép cộng đa thức trong tính toán.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Cộng hai hạng tử cùng bậc** ($ax^k + bx^k = '
-                   '(a + b)x^k$) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 26: Phép cộng và phép trừ đa thức một biến** để giải bài '
+                   'tập minh họa và bài toán thực tiễn.'],
   'definition': 'Để cộng hoặc trừ hai đa thức một biến, ta có thể đặt tính theo hàng ngang (bỏ dấu ngoặc rồi '
                 'nhóm các hạng tử cùng bậc) hoặc đặt tính theo cột dọc (sắp xếp các hạng tử cùng bậc thẳng '
                 'cột với nhau rồi cộng hoặc trừ các hệ số).',
@@ -4469,27 +4515,26 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 26: Phép cộng và phép trừ đa thức một biến**, công thức '
-                 'hoặc quy tắc nào sau đây biểu diễn đúng **Cộng hai hạng tử cùng bậc**?',
-            'options': ['$ax^k - bx^k = (a - b)x^k$',
-                        '$P(x) - (ax^2 - bx + c) = P(x) - ax^2 + bx - c$',
-                        '$\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} \\;\\middle|\\; a, b \\in \\mathbb{Z}, b '
-                        '\\neq 0 \\right\\}$',
+            'q': 'Trong **Bài 26: Phép cộng và phép trừ đa thức một biến**, quy tắc hoặc công thức nào sau '
+                 'đây xác định đúng **Cộng hai hạng tử cùng bậc**?',
+            'options': ['$ax^k - bx^k = (a + b)x^k$',
+                        'Đảo ngược vế của quy tắc: $ax^k + bx^k = (a + b)x^k$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $ax^k + bx^k = (a + b)x^k$',
                         '$ax^k + bx^k = (a + b)x^k$'],
             'answer': 3,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 26: Phép cộng và phép trừ đa thức một biến, '
-                        '**Cộng hai hạng tử cùng bậc** được xác định bởi: $ax^k + bx^k = (a + b)x^k$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 26: Phép cộng và phép trừ đa thức một biến, **Cộng '
+                        'hai hạng tử cùng bậc** được xác định bởi: $ax^k + bx^k = (a + b)x^k$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 26: Phép cộng và phép trừ đa thức một biến**, nội dung/biểu thức $ax^k - bx^k '
-                 '= (a - b)x^k$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Trừ hai hạng tử cùng bậc',
-                        'Cộng hai hạng tử cùng bậc',
-                        'Quy tắc đổi dấu khi trừ đa thức',
-                        'Định nghĩa tập $\\mathbb{Q}$'],
+            'q': 'Khi học **Bài 26: Phép cộng và phép trừ đa thức một biến**, biểu thức hoặc quy tắc nào '
+                 'dưới đây biểu diễn đúng **Trừ hai hạng tử cùng bậc**?',
+            'options': ['$ax^k - bx^k = (a - b)x^k$',
+                        '$ax^k + bx^k = (a - b)x^k$',
+                        'Đảo ngược vế của quy tắc: $ax^k - bx^k = (a - b)x^k$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $ax^k - bx^k = (a - b)x^k$'],
             'answer': 0,
-            'solution': 'Trong Bài 26: Phép cộng và phép trừ đa thức một biến, biểu thức/quy tắc $ax^k - '
-                        'bx^k = (a - b)x^k$ chính là nội dung của **Trừ hai hạng tử cùng bậc**.'},
+            'solution': 'Trong Bài 26: Phép cộng và phép trừ đa thức một biến, **Trừ hai hạng tử cùng bậc** '
+                        'có công thức/quy tắc là: $ax^k - bx^k = (a - b)x^k$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Đa thức $P(x)$ thỏa mãn $P(x) + (x^2 - 2x + 5) = 3x^2 + x - 1$ là:',
@@ -4500,16 +4545,16 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 26: Phép cộng và phép trừ đa thức một biến** (Chương VII: Biểu thức đại số '
-                 'và đa thức một biến), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất '
-                 'kiến thức của bài?',
-            'options': ['Nhận biết được số hữu tỉ và lấy được ví dụ về số hữu tỉ, nhận biết tập hợp các số '
-                        'hữu tỉ $\\mathbb{Q}$.',
-                        'Biểu diễn được số hữu tỉ trên trục số và nhận biết được số đối của một số hữu tỉ.',
+            'q': 'Để nắm vững bản chất của **Bài 26: Phép cộng và phép trừ đa thức một biến**, nhận định nào '
+                 'sau đây là **chính xác**?',
+            'options': ['Thực hiện được phép cộng và phép trừ hai đa thức một biến. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Thực hiện được phép cộng và phép trừ hai đa thức một '
+                        'biến.',
                         'Thực hiện được phép cộng và phép trừ hai đa thức một biến.',
-                        'Nhận biết được thứ tự trong tập hợp các số hữu tỉ và so sánh được hai số hữu tỉ.'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Thực hiện được phép cộng và '
+                        'phép trừ hai đa thức một biến.'],
             'answer': 2,
-            'solution': 'Theo yêu cầu cần đạt của Bài 26: Phép cộng và phép trừ đa thức một biến: Thực hiện '
+            'solution': 'Theo nội dung cốt lõi của Bài 26: Phép cộng và phép trừ đa thức một biến: Thực hiện '
                         'được phép cộng và phép trừ hai đa thức một biến.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -4526,39 +4571,36 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 26: Phép cộng và phép '
-                 'trừ đa thức một biến**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Thực hiện được phép cộng và phép '
-                           'trừ hai đa thức một biến.',
-                           'Quy tắc/công thức **Cộng hai hạng tử cùng bậc** trong bài được xác định bởi: '
-                           '$ax^k + bx^k = (a + b)x^k$.',
-                           'Trong mọi trường hợp, **Cộng hai hạng tử cùng bậc** luôn được tính bằng công '
-                           'thức $\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} \\;\\middle|\\; a, b \\in '
-                           '\\mathbb{Z}, b \\neq 0 \\right\\}$ (thuộc Định nghĩa tập $\\mathbb{Q}$) mà không '
-                           'cần điều kiện của Bài 26: Phép cộng và phép trừ đa thức một biến.',
-                           'Với bài toán minh họa: “Cho $P(x) = 3x^2 - 4x + 1$ và $Q(x) = x^2 + 4x - 5$. '
-                           'Tính $P(x) + Q(x)$ và $P(x) - Q(x)$.”, lời giải đúng là: - $P(x) + Q(x) = (3x^2 '
-                           '+ x^2) + (-4x + 4x) + (1 - 5) = 4x^2 - 4$. - $P(x) - Q(x) = (3x^2 - x^2) + (-4x '
-                           '- 4x) + (1 - (-5)) = 2x^2 - 8x + 6$.'],
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 26: Phép cộng và phép trừ '
+                 'đa thức một biến**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Thực hiện được phép cộng và phép trừ hai '
+                           'đa thức một biến.',
+                           'Trong **Bài 26: Phép cộng và phép trừ đa thức một biến**, quy tắc/công thức '
+                           '**Cộng hai hạng tử cùng bậc** được viết là: $ax^k + bx^k = (a + b)x^k$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $ax^k - bx^k = (a + b)x^k$ thì kết quả của '
+                           '**Cộng hai hạng tử cùng bậc** trong **Bài 26: Phép cộng và phép trừ đa thức một '
+                           'biến** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Cho $P(x) = 3x^2 - 4x + 1$ và $Q(x) = x^2 + 4x - 5$. Tính '
+                           '$P(x) + Q(x)$ và $P(x) - Q(x)$.”, kết quả giải đúng là: - $P(x) + Q(x) = (3x^2 + '
+                           'x^2) + (-4x + 4x) + (1 - 5) = 4x^2 - 4$. - $P(x) - Q(x) = (3x^2 - x^2) + (-4x - '
+                           '4x) + (1 - (-5)) = 2x^2 - 8x + 6$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 26: Phép cộng và phép trừ đa thức một '
-                        'biến. b) **Đúng** theo công thức trọng tâm **Cộng hai hạng tử cùng bậc** ($ax^k + '
-                        'bx^k = (a + b)x^k$). c) **Sai** vì $\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} '
-                        '\\;\\middle|\\; a, b \\in \\mathbb{Z}, b \\neq 0 \\right\\}$ là công thức của nội '
-                        'dung khác, không phải quy tắc chung của **Cộng hai hạng tử cùng bậc**. d) **Đúng** '
+                        'biến. b) **Đúng** theo công thức **Cộng hai hạng tử cùng bậc** ($ax^k + bx^k = (a + '
+                        'b)x^k$). c) **Sai** vì công thức đúng của **Cộng hai hạng tử cùng bậc** phải là '
+                        '$ax^k + bx^k = (a + b)x^k$ chứ không phải $ax^k - bx^k = (a + b)x^k$. d) **Đúng** '
                         'theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 26: Phép cộng và phép trừ đa thức một biến** để giải quyết tình '
-                 'huống sau: Cho $P(x) = 3x^2 - 4x + 1$ và $Q(x) = x^2 + 4x - 5$. Tính $P(x) + Q(x)$ và '
-                 '$P(x) - Q(x)$. Kết quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Ta có: $-2,5 = \\dfrac{-5}{2} = \\dfrac{-15}{6}$; $1\\dfrac{2}{3} = \\dfrac{5}{3}$; '
-                        '$-4 = \\dfrac{-4}{1} = \\dfrac{-24}{6}$. Vì $-4 < -2,5 < 0 < 1\\dfrac{2}{3}$ n...',
-                        'Áp dụng tính chất phân phối của phép nhân đối với phép cộng: $A = \\dfrac{-3}{7} '
-                        '\\cdot \\left(\\dfrac{5}{9} + \\dfrac{4}{9}\\right) + \\dfrac{10}{7} = '
-                        '\\dfrac{-3}{7} \\cdot 1 + \\dfrac{10}{7} = \\dfrac{7}{7} = 1$...',
-                        'Ta có: $M = \\dfrac{(2^3)^{10}}{(2^2)^8} = \\dfrac{2^{30}}{2^{16}} = 2^{30-16} = '
-                        '2^{14} = 16384$. $N = (0,125 \\cdot 8)^3 = 1^3 = 1$.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 26: Phép cộng và phép trừ đa thức một biến** để '
+                 'giải bài toán sau: Cho $P(x) = 3x^2 - 4x + 1$ và $Q(x) = x^2 + 4x - 5$. Tính $P(x) + Q(x)$ '
+                 'và $P(x) - Q(x)$. Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['- $P(x) - Q(x) = (3x^2 + x^2) + (-4x + 4x) + (1 - 5) = 4x^2 - 4$. - $P(x) - Q(x) = '
+                        '(3x^2 - x^2) + (-4x - 4x) + (1 - (-5)) = 2x^2 - 8x + 6$.',
+                        '- $P(x) + Q(x) = (3x^2 + x^2) + (-4x + 4x) + (1 - 5) = 4x^2 - 4$. - $P(x) - Q(x) = '
+                        '(3x^2 - x^2) + (-4x - 4x) + (1 - (-5)) = 2x^2 - 8x + 5$.',
+                        '- $P(x) + Q(x) = (3x^4 + x^2) + (-4x + 4x) + (1 - 5) = 4x^2 - 4$. - $P(x) - Q(x) = '
+                        '(3x^2 - x^2) + (-4x - 4x) + (1 - (-5)) = 2x^2 - 8x + 6$.',
                         '- $P(x) + Q(x) = (3x^2 + x^2) + (-4x + 4x) + (1 - 5) = 4x^2 - 4$. - $P(x) - Q(x) = '
                         '(3x^2 - x^2) + (-4x - 4x) + (1 - (-5)) = 2x^2 - 8x + 6$.'],
             'answer': 3,
@@ -4583,8 +4625,8 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
   'description': 'Quy tắc nhân hai đơn thức, nhân đơn thức với đa thức và nhân hai đa thức một biến.',
   'requirements': ['Thực hiện được phép nhân đơn thức với đơn thức và nhân đơn thức với đa thức một biến.',
                    'Thực hiện được phép nhân hai đa thức một biến và thu gọn kết quả.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Nhân hai đơn thức** ($(ax^m) \\cdot (bx^n) '
-                   '= (ab)x^{m+n}$) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 27: Phép nhân đa thức một biến** để giải bài tập minh họa '
+                   'và bài toán thực tiễn.'],
   'definition': 'Muốn nhân một đơn thức với một đa thức, ta nhân đơn thức với từng hạng tử của đa thức rồi '
                 'cộng các tích với nhau. Muốn nhân một đa thức với một đa thức, ta nhân mỗi hạng tử của đa '
                 'thức này với từng hạng tử của đa thức kia rồi cộng các tích với nhau.',
@@ -4620,27 +4662,27 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 27: Phép nhân đa thức một biến**, công thức hoặc quy tắc '
-                 'nào sau đây biểu diễn đúng **Nhân hai đơn thức**?',
+            'q': 'Trong **Bài 27: Phép nhân đa thức một biến**, quy tắc hoặc công thức nào sau đây xác định '
+                 'đúng **Nhân hai đơn thức**?',
             'options': ['$(ax^m) \\cdot (bx^n) = (ab)x^{m+n}$',
-                        '$A(B + C - D) = AB + AC - AD$',
-                        '$(A + B)(C + D) = AC + AD + BC + BD$',
-                        '$\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} \\;\\middle|\\; a, b \\in \\mathbb{Z}, b '
-                        '\\neq 0 \\right\\}$'],
+                        '$(ax^m) : (bx^n) = (ab)x^{m+n}$',
+                        '$(ax^m) \\cdot (bx^n) = (ab)x^{m \\cdot n}$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $(ax^m) \\cdot (bx^n) = '
+                        '(ab)x^{m+n}$'],
             'answer': 0,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 27: Phép nhân đa thức một biến, **Nhân hai '
-                        'đơn thức** được xác định bởi: $(ax^m) \\cdot (bx^n) = (ab)x^{m+n}$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 27: Phép nhân đa thức một biến, **Nhân hai đơn '
+                        'thức** được xác định bởi: $(ax^m) \\cdot (bx^n) = (ab)x^{m+n}$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 27: Phép nhân đa thức một biến**, nội dung/biểu thức $A(B + C - D) = AB + AC - '
-                 'AD$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Nhân hai đơn thức',
-                        'Nhân đơn thức với đa thức',
-                        'Nhân hai đa thức',
-                        'Định nghĩa tập $\\mathbb{Q}$'],
+            'q': 'Khi học **Bài 27: Phép nhân đa thức một biến**, biểu thức hoặc quy tắc nào dưới đây biểu '
+                 'diễn đúng **Nhân đơn thức với đa thức**?',
+            'options': ['$A(B - C - D) = AB + AC - AD$',
+                        '$A(B + C - D) = AB + AC - AD$',
+                        'Đảo ngược vế của quy tắc: $A(B + C - D) = AB + AC - AD$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $A(B + C - D) = AB + AC - AD$'],
             'answer': 1,
-            'solution': 'Trong Bài 27: Phép nhân đa thức một biến, biểu thức/quy tắc $A(B + C - D) = AB + AC '
-                        '- AD$ chính là nội dung của **Nhân đơn thức với đa thức**.'},
+            'solution': 'Trong Bài 27: Phép nhân đa thức một biến, **Nhân đơn thức với đa thức** có công '
+                        'thức/quy tắc là: $A(B + C - D) = AB + AC - AD$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Khai triển và thu gọn tích $(x + 2)(x - 5)$ ta được đa thức nào?',
@@ -4651,17 +4693,18 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 27: Phép nhân đa thức một biến** (Chương VII: Biểu thức đại số và đa thức '
-                 'một biến), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức '
-                 'của bài?',
-            'options': ['Nhận biết được số hữu tỉ và lấy được ví dụ về số hữu tỉ, nhận biết tập hợp các số '
-                        'hữu tỉ $\\mathbb{Q}$.',
-                        'Biểu diễn được số hữu tỉ trên trục số và nhận biết được số đối của một số hữu tỉ.',
-                        'Nhận biết được thứ tự trong tập hợp các số hữu tỉ và so sánh được hai số hữu tỉ.',
+            'q': 'Để nắm vững bản chất của **Bài 27: Phép nhân đa thức một biến**, nhận định nào sau đây là '
+                 '**chính xác**?',
+            'options': ['Thực hiện được phép nhân đơn thức với đơn thức và nhân đơn thức với đa thức một '
+                        'biến. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Thực hiện được phép nhân đơn thức với đơn thức và nhân '
+                        'đơn thức với đa thức một biến.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Thực hiện được phép nhân đơn '
+                        'thức với đơn thức và nhân đơn thức với đa thức một biến.',
                         'Thực hiện được phép nhân đơn thức với đơn thức và nhân đơn thức với đa thức một '
                         'biến.'],
             'answer': 3,
-            'solution': 'Theo yêu cầu cần đạt của Bài 27: Phép nhân đa thức một biến: Thực hiện được phép '
+            'solution': 'Theo nội dung cốt lõi của Bài 27: Phép nhân đa thức một biến: Thực hiện được phép '
                         'nhân đơn thức với đơn thức và nhân đơn thức với đa thức một biến.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -4677,40 +4720,37 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 27: Phép nhân đa thức '
-                 'một biến**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Thực hiện được phép nhân đơn thức '
-                           'với đơn thức và nhân đơn thức với đa thức một biến.',
-                           'Quy tắc/công thức **Nhân hai đơn thức** trong bài được xác định bởi: $(ax^m) '
-                           '\\cdot (bx^n) = (ab)x^{m+n}$.',
-                           'Trong mọi trường hợp, **Nhân hai đơn thức** luôn được tính bằng công thức '
-                           '$\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} \\;\\middle|\\; a, b \\in \\mathbb{Z}, b '
-                           '\\neq 0 \\right\\}$ (thuộc Định nghĩa tập $\\mathbb{Q}$) mà không cần điều kiện '
-                           'của Bài 27: Phép nhân đa thức một biến.',
-                           'Với bài toán minh họa: “Thực hiện phép nhân: $(2x - 3)(x^2 - 2x + 1)$.”, lời '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 27: Phép nhân đa thức một '
+                 'biến**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Thực hiện được phép nhân đơn thức với '
+                           'đơn thức và nhân đơn thức với đa thức một biến.',
+                           'Trong **Bài 27: Phép nhân đa thức một biến**, quy tắc/công thức **Nhân hai đơn '
+                           'thức** được viết là: $(ax^m) \\cdot (bx^n) = (ab)x^{m+n}$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $(ax^m) : (bx^n) = (ab)x^{m+n}$ thì kết quả '
+                           'của **Nhân hai đơn thức** trong **Bài 27: Phép nhân đa thức một biến** vẫn không '
+                           'thay đổi.',
+                           'Xét ví dụ của bài: “Thực hiện phép nhân: $(2x - 3)(x^2 - 2x + 1)$.”, kết quả '
                            'giải đúng là: Ta có: $(2x - 3)(x^2 - 2x + 1) = 2x(x^2 - 2x + 1) - 3(x^2 - 2x + '
                            '1)$ $= 2x^3 - 4x^2 + 2x - 3x^2 + 6x - 3 = 2x^3 - 7x^2 + 8x - 3$.'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 27: Phép nhân đa thức một biến. b) '
-                        '**Đúng** theo công thức trọng tâm **Nhân hai đơn thức** ($(ax^m) \\cdot (bx^n) = '
-                        '(ab)x^{m+n}$). c) **Sai** vì $\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} \\;\\middle|\\; '
-                        'a, b \\in \\mathbb{Z}, b \\neq 0 \\right\\}$ là công thức của nội dung khác, không '
-                        'phải quy tắc chung của **Nhân hai đơn thức**. d) **Đúng** theo lời giải ví dụ minh '
-                        'họa trong bài học.'},
+                        '**Đúng** theo công thức **Nhân hai đơn thức** ($(ax^m) \\cdot (bx^n) = '
+                        '(ab)x^{m+n}$). c) **Sai** vì công thức đúng của **Nhân hai đơn thức** phải là '
+                        '$(ax^m) \\cdot (bx^n) = (ab)x^{m+n}$ chứ không phải $(ax^m) : (bx^n) = '
+                        '(ab)x^{m+n}$. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 27: Phép nhân đa thức một biến** để giải quyết tình huống sau: '
-                 'Thực hiện phép nhân: $(2x - 3)(x^2 - 2x + 1)$. Kết quả và hướng giải nào dưới đây là '
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 27: Phép nhân đa thức một biến** để giải bài toán '
+                 'sau: Thực hiện phép nhân: $(2x - 3)(x^2 - 2x + 1)$. Cách giải và kết quả nào dưới đây là '
                  '**đúng**?',
             'options': ['Ta có: $(2x - 3)(x^2 - 2x + 1) = 2x(x^2 - 2x + 1) - 3(x^2 - 2x + 1)$ $= 2x^3 - 4x^2 '
                         '+ 2x - 3x^2 + 6x - 3 = 2x^3 - 7x^2 + 8x - 3$.',
-                        'Ta có: $-2,5 = \\dfrac{-5}{2} = \\dfrac{-15}{6}$; $1\\dfrac{2}{3} = \\dfrac{5}{3}$; '
-                        '$-4 = \\dfrac{-4}{1} = \\dfrac{-24}{6}$. Vì $-4 < -2,5 < 0 < 1\\dfrac{2}{3}$ n...',
-                        'Áp dụng tính chất phân phối của phép nhân đối với phép cộng: $A = \\dfrac{-3}{7} '
-                        '\\cdot \\left(\\dfrac{5}{9} + \\dfrac{4}{9}\\right) + \\dfrac{10}{7} = '
-                        '\\dfrac{-3}{7} \\cdot 1 + \\dfrac{10}{7} = \\dfrac{7}{7} = 1$...',
-                        'Ta có: $M = \\dfrac{(2^3)^{10}}{(2^2)^8} = \\dfrac{2^{30}}{2^{16}} = 2^{30-16} = '
-                        '2^{14} = 16384$. $N = (0,125 \\cdot 8)^3 = 1^3 = 1$.'],
+                        'Ta có: $(2x - 3)(x^2 - 2x - 1) = 2x(x^2 - 2x + 1) - 3(x^2 - 2x + 1)$ $= 2x^3 - 4x^2 '
+                        '+ 2x - 3x^2 + 6x - 3 = 2x^3 - 7x^2 + 8x - 3$.',
+                        'Ta có: $(2x - 3)(x^2 - 2x + 1) = 2x(x^2 - 2x + 1) - 3(x^2 - 2x + 1)$ $= 2x^3 - 4x^2 '
+                        '+ 2x - 3x^2 + 6x - 3 = 2x^3 - 7x^2 + 8x - 2$.',
+                        'Ta có: $(2x - 6)(x^2 - 2x + 1) = 2x(x^2 - 2x + 1) - 3(x^2 - 2x + 1)$ $= 2x^3 - 4x^2 '
+                        '+ 2x - 3x^2 + 6x - 3 = 2x^3 - 7x^2 + 8x - 3$.'],
             'answer': 0,
             'solution': 'Lời giải chi tiết theo Bài 27: Phép nhân đa thức một biến: Ta có: $(2x - 3)(x^2 - '
                         '2x + 1) = 2x(x^2 - 2x + 1) - 3(x^2 - 2x + 1)$\n'
@@ -4734,8 +4774,8 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
   'requirements': ['Thực hiện được phép chia đơn thức cho đơn thức và chia đa thức cho đơn thức.',
                    'Thực hiện được phép chia đa thức một biến cho đa thức một biến (trường hợp chia hết và '
                    'chia có dư).',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Chia đơn thức cho đơn thức** ($(ax^m) : '
-                   '(bx^n) = \\dfrac{a}{b}x^{m-n} \\quad (b \\neq 0, m \\ge n)$) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 28: Phép chia đa thức một biến** để giải bài tập minh họa '
+                   'và bài toán thực tiễn.'],
   'definition': 'Cho hai đa thức $A$ và $B$ ($B \\neq 0$). Khi đó luôn tồn tại duy nhất cặp đa thức $Q$ '
                 '(thương) và $R$ (dư) sao cho $A = B \\cdot Q + R$, trong đó $R = 0$ (phép chia hết) hoặc '
                 'bậc của $R$ nhỏ hơn bậc của $B$ (phép chia có dư).',
@@ -4780,28 +4820,28 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 28: Phép chia đa thức một biến**, công thức hoặc quy tắc '
-                 'nào sau đây biểu diễn đúng **Chia đơn thức cho đơn thức**?',
-            'options': ['$(A + B - C) : D = (A : D) + (B : D) - (C : D)$',
+            'q': 'Trong **Bài 28: Phép chia đa thức một biến**, quy tắc hoặc công thức nào sau đây xác định '
+                 'đúng **Chia đơn thức cho đơn thức**?',
+            'options': ['$(ax^m) : (bx^n) = \\dfrac{a}{b}x^{m-n} \\quad (b \\neq 0, m \\le n)$',
                         '$(ax^m) : (bx^n) = \\dfrac{a}{b}x^{m-n} \\quad (b \\neq 0, m \\ge n)$',
-                        '$A = B \\cdot Q + R \\quad (\\text{với } R = 0 \\text{ hoặc } \\deg(R) < \\deg(B))$',
-                        '$\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} \\;\\middle|\\; a, b \\in \\mathbb{Z}, b '
-                        '\\neq 0 \\right\\}$'],
+                        '$(ax^m) : (bx^n) = \\dfrac{b}{a}x^{m-n} \\quad (b \\neq 0, m \\ge n)$',
+                        '$(ax^m) : (bx^n) = \\dfrac{a}{b}x^{m-n} \\quad (b \\neq 2, m \\ge n)$'],
             'answer': 1,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 28: Phép chia đa thức một biến, **Chia đơn '
-                        'thức cho đơn thức** được xác định bởi: $(ax^m) : (bx^n) = \\dfrac{a}{b}x^{m-n} '
-                        '\\quad (b \\neq 0, m \\ge n)$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 28: Phép chia đa thức một biến, **Chia đơn thức '
+                        'cho đơn thức** được xác định bởi: $(ax^m) : (bx^n) = \\dfrac{a}{b}x^{m-n} \\quad (b '
+                        '\\neq 0, m \\ge n)$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 28: Phép chia đa thức một biến**, nội dung/biểu thức $(A + B - C) : D = (A : '
-                 'D) + (B : D) - (C : D)$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Chia đơn thức cho đơn thức',
-                        'Hệ thức phép chia có dư',
-                        'Chia đa thức cho đơn thức',
-                        'Định nghĩa tập $\\mathbb{Q}$'],
+            'q': 'Khi học **Bài 28: Phép chia đa thức một biến**, biểu thức hoặc quy tắc nào dưới đây biểu '
+                 'diễn đúng **Chia đa thức cho đơn thức**?',
+            'options': ['$(A - B - C) : D = (A : D) + (B : D) - (C : D)$',
+                        'Đảo ngược vế của quy tắc: $(A + B - C) : D = (A : D) + (B : D) - (C : D)$',
+                        '$(A + B - C) : D = (A : D) + (B : D) - (C : D)$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $(A + B - C) : D = (A : D) + (B '
+                        ': D) - (C : D)$'],
             'answer': 2,
-            'solution': 'Trong Bài 28: Phép chia đa thức một biến, biểu thức/quy tắc $(A + B - C) : D = (A : '
-                        'D) + (B : D) - (C : D)$ chính là nội dung của **Chia đa thức cho đơn thức**.'},
+            'solution': 'Trong Bài 28: Phép chia đa thức một biến, **Chia đa thức cho đơn thức** có công '
+                        'thức/quy tắc là: $(A + B - C) : D = (A : D) + (B : D) - (C : D)$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Thương của phép chia $(x^2 - 4x + 3) : (x - 1)$ là:',
@@ -4812,16 +4852,17 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 28: Phép chia đa thức một biến** (Chương VII: Biểu thức đại số và đa thức '
-                 'một biến), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức '
-                 'của bài?',
+            'q': 'Để nắm vững bản chất của **Bài 28: Phép chia đa thức một biến**, nhận định nào sau đây là '
+                 '**chính xác**?',
             'options': ['Thực hiện được phép chia đơn thức cho đơn thức và chia đa thức cho đơn thức.',
-                        'Nhận biết được số hữu tỉ và lấy được ví dụ về số hữu tỉ, nhận biết tập hợp các số '
-                        'hữu tỉ $\\mathbb{Q}$.',
-                        'Biểu diễn được số hữu tỉ trên trục số và nhận biết được số đối của một số hữu tỉ.',
-                        'Nhận biết được thứ tự trong tập hợp các số hữu tỉ và so sánh được hai số hữu tỉ.'],
+                        'Thực hiện được phép chia đơn thức cho đơn thức và chia đa thức cho đơn thức. (với '
+                        'dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Thực hiện được phép chia đơn thức cho đơn thức và chia đa '
+                        'thức cho đơn thức.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Thực hiện được phép chia đơn '
+                        'thức cho đơn thức và chia đa thức cho đơn thức.'],
             'answer': 0,
-            'solution': 'Theo yêu cầu cần đạt của Bài 28: Phép chia đa thức một biến: Thực hiện được phép '
+            'solution': 'Theo nội dung cốt lõi của Bài 28: Phép chia đa thức một biến: Thực hiện được phép '
                         'chia đơn thức cho đơn thức và chia đa thức cho đơn thức.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -4838,41 +4879,41 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 28: Phép chia đa thức '
-                 'một biến**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Thực hiện được phép chia đơn thức '
-                           'cho đơn thức và chia đa thức cho đơn thức.',
-                           'Quy tắc/công thức **Chia đơn thức cho đơn thức** trong bài được xác định bởi: '
-                           '$(ax^m) : (bx^n) = \\dfrac{a}{b}x^{m-n} \\quad (b \\neq 0, m \\ge n)$.',
-                           'Trong mọi trường hợp, **Chia đơn thức cho đơn thức** luôn được tính bằng công '
-                           'thức $\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} \\;\\middle|\\; a, b \\in '
-                           '\\mathbb{Z}, b \\neq 0 \\right\\}$ (thuộc Định nghĩa tập $\\mathbb{Q}$) mà không '
-                           'cần điều kiện của Bài 28: Phép chia đa thức một biến.',
-                           'Với bài toán minh họa: “Thực hiện phép chia đa thức $(2x^2 - 5x + 3)$ cho $(x - '
-                           '1)$.”, lời giải đúng là: Đặt tính chia hoặc tách hạng tử: $2x^2 - 5x + 3 = 2x(x '
-                           '- 1) - 3(x - 1) = (2x - 3)(x - 1)$. Vậy $(2x^2 - 5x + 3) : (x - 1) = 2x - 3$ '
-                           '(phép ch...'],
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 28: Phép chia đa thức một '
+                 'biến**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Thực hiện được phép chia đơn thức cho '
+                           'đơn thức và chia đa thức cho đơn thức.',
+                           'Trong **Bài 28: Phép chia đa thức một biến**, quy tắc/công thức **Chia đơn thức '
+                           'cho đơn thức** được viết là: $(ax^m) : (bx^n) = \\dfrac{a}{b}x^{m-n} \\quad (b '
+                           '\\neq 0, m \\ge n)$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $(ax^m) : (bx^n) = \\dfrac{a}{b}x^{m-n} '
+                           '\\quad (b \\neq 0, m \\le n)$ thì kết quả của **Chia đơn thức cho đơn thức** '
+                           'trong **Bài 28: Phép chia đa thức một biến** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Thực hiện phép chia đa thức $(2x^2 - 5x + 3)$ cho $(x - '
+                           '1)$.”, kết quả giải đúng là: Đặt tính chia hoặc tách hạng tử: $2x^2 - 5x + 3 = '
+                           '2x(x - 1) - 3(x - 1) = (2x - 3)(x - 1)$. Vậy $(2x^2 - 5x + 3) : (x - 1) = 2x - '
+                           '3$ (ph...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 28: Phép chia đa thức một biến. b) '
-                        '**Đúng** theo công thức trọng tâm **Chia đơn thức cho đơn thức** ($(ax^m) : (bx^n) '
-                        '= \\dfrac{a}{b}x^{m-n} \\quad (b \\neq 0, m \\ge n)$). c) **Sai** vì $\\mathbb{Q} = '
-                        '\\left\\{ \\dfrac{a}{b} \\;\\middle|\\; a, b \\in \\mathbb{Z}, b \\neq 0 '
-                        '\\right\\}$ là công thức của nội dung khác, không phải quy tắc chung của **Chia đơn '
-                        'thức cho đơn thức**. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        '**Đúng** theo công thức **Chia đơn thức cho đơn thức** ($(ax^m) : (bx^n) = '
+                        '\\dfrac{a}{b}x^{m-n} \\quad (b \\neq 0, m \\ge n)$). c) **Sai** vì công thức đúng '
+                        'của **Chia đơn thức cho đơn thức** phải là $(ax^m) : (bx^n) = \\dfrac{a}{b}x^{m-n} '
+                        '\\quad (b \\neq 0, m \\ge n)$ chứ không phải $(ax^m) : (bx^n) = '
+                        '\\dfrac{a}{b}x^{m-n} \\quad (b \\neq 0, m \\le n)$. d) **Đúng** theo lời giải ví dụ '
+                        'minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 28: Phép chia đa thức một biến** để giải quyết tình huống sau: '
-                 'Thực hiện phép chia đa thức $(2x^2 - 5x + 3)$ cho $(x - 1)$. Kết quả và hướng giải nào '
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 28: Phép chia đa thức một biến** để giải bài toán '
+                 'sau: Thực hiện phép chia đa thức $(2x^2 - 5x + 3)$ cho $(x - 1)$. Cách giải và kết quả nào '
                  'dưới đây là **đúng**?',
-            'options': ['Ta có: $-2,5 = \\dfrac{-5}{2} = \\dfrac{-15}{6}$; $1\\dfrac{2}{3} = \\dfrac{5}{3}$; '
-                        '$-4 = \\dfrac{-4}{1} = \\dfrac{-24}{6}$. Vì $-4 < -2,5 < 0 < 1\\dfrac{2}{3}$ n...',
+            'options': ['Đặt tính chia hoặc tách hạng tử: $2x^2 - 5x - 3 = 2x(x - 1) - 3(x - 1) = (2x - 3)(x '
+                        '- 1)$. Vậy $(2x^2 - 5x + 3) : (x - 1) = 2x - 3$ (phép chia hết, dư...',
                         'Đặt tính chia hoặc tách hạng tử: $2x^2 - 5x + 3 = 2x(x - 1) - 3(x - 1) = (2x - 3)(x '
-                        '- 1)$. Vậy $(2x^2 - 5x + 3) : (x - 1) = 2x - 3$ (phép chia hết, dư $R = 0$...',
-                        'Áp dụng tính chất phân phối của phép nhân đối với phép cộng: $A = \\dfrac{-3}{7} '
-                        '\\cdot \\left(\\dfrac{5}{9} + \\dfrac{4}{9}\\right) + \\dfrac{10}{7} = '
-                        '\\dfrac{-3}{7} \\cdot 1 + \\dfrac{10}{7} = \\dfrac{7}{7} = 1$...',
-                        'Ta có: $M = \\dfrac{(2^3)^{10}}{(2^2)^8} = \\dfrac{2^{30}}{2^{16}} = 2^{30-16} = '
-                        '2^{14} = 16384$. $N = (0,125 \\cdot 8)^3 = 1^3 = 1$.'],
+                        '- 1)$. Vậy $(2x^2 - 5x + 3) : (x - 1) = 2x - 3$ (phép chia hết, dư...',
+                        'Đặt tính chia hoặc tách hạng tử: $2x^2 - 5x + 3 = 2x(x - 1) - 3(x - 1) = (2x - 3)(x '
+                        '- 1)$. Vậy $(2x^2 - 5x + 3) : (x - 1) = 2x - 2$ (phép chia hết, dư...',
+                        'Đặt tính chia hoặc tách hạng tử: $2x^4 - 5x + 3 = 2x(x - 1) - 3(x - 1) = (2x - 3)(x '
+                        '- 1)$. Vậy $(2x^2 - 5x + 3) : (x - 1) = 2x - 3$ (phép chia hết, dư...'],
             'answer': 1,
             'solution': 'Lời giải chi tiết theo Bài 28: Phép chia đa thức một biến: Đặt tính chia hoặc tách '
                         'hạng tử: $2x^2 - 5x + 3 = 2x(x - 1) - 3(x - 1) = (2x - 3)(x - 1)$.\n'
@@ -4896,8 +4937,8 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
                  'chơi, thí nghiệm đơn giản.',
   'requirements': ['Làm quen với các khái niệm mở đầu về biến cố trong các trò chơi, thí nghiệm đơn giản.',
                    'Phân biệt được biến cố chắc chắn, biến cố không thể và biến cố ngẫu nhiên.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Tập kết quả khi gieo 1 con xúc xắc** '
-                   '($\\Omega = \\{1; 2; 3; 4; 5; 6\\}$ (gồm $6$ kết quả có thể)) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 29: Làm quen với biến cố** để giải bài tập minh họa và bài '
+                   'toán thực tiễn.'],
   'definition': 'Các hiện tượng, sự kiện trong tự nhiên hay trong một phép thử nghiệm được gọi chung là biến '
                 'cố. Biến cố luôn xảy ra gọi là biến cố chắc chắn; biến cố không bao giờ xảy ra gọi là biến '
                 'cố không thể; biến cố không biết trước có xảy ra hay không gọi là biến cố ngẫu nhiên.',
@@ -4945,29 +4986,30 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 29: Làm quen với biến cố**, công thức hoặc quy tắc nào '
-                 'sau đây biểu diễn đúng **Tập kết quả khi gieo 1 con xúc xắc**?',
-            'options': ['Biến cố chắc chắn $\\mid$ Biến cố không thể $\\mid$ Biến cố ngẫu nhiên',
-                        '$\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} \\;\\middle|\\; a, b \\in \\mathbb{Z}, b '
-                        '\\neq 0 \\right\\}$',
+            'q': 'Trong **Bài 29: Làm quen với biến cố**, quy tắc hoặc công thức nào sau đây xác định đúng '
+                 '**Tập kết quả khi gieo 1 con xúc xắc**?',
+            'options': ['$\\Omega = \\{2; 2; 3; 4; 5; 6\\}$ (gồm $6$ kết quả có thể)',
+                        '$\\Omega = \\{1; 2; 3; 4; 5; 6\\}$ (gồm $5$ kết quả có thể)',
                         '$\\Omega = \\{1; 2; 3; 4; 5; 6\\}$ (gồm $6$ kết quả có thể)',
-                        '$\\mathbb{N} \\subset \\mathbb{Z} \\subset \\mathbb{Q}$'],
+                        'Biến cố chắc chắn $\\mid$ Biến cố không thể $\\mid$ Biến cố ngẫu nhiên'],
             'answer': 2,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 29: Làm quen với biến cố, **Tập kết quả khi '
-                        'gieo 1 con xúc xắc** được xác định bởi: $\\Omega = \\{1; 2; 3; 4; 5; 6\\}$ (gồm $6$ '
-                        'kết quả có thể).'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 29: Làm quen với biến cố, **Tập kết quả khi gieo 1 '
+                        'con xúc xắc** được xác định bởi: $\\Omega = \\{1; 2; 3; 4; 5; 6\\}$ (gồm $6$ kết '
+                        'quả có thể).'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 29: Làm quen với biến cố**, nội dung/biểu thức Biến cố chắc chắn $\\mid$ Biến '
-                 'cố không thể $\\mid$ Biến cố ngẫu nhiên là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Tập kết quả khi gieo 1 con xúc xắc',
-                        'Định nghĩa tập $\\mathbb{Q}$',
-                        'Quan hệ tập hợp',
-                        'Ba loại biến cố'],
+            'q': 'Khi học **Bài 29: Làm quen với biến cố**, biểu thức hoặc quy tắc nào dưới đây biểu diễn '
+                 'đúng **Ba loại biến cố**?',
+            'options': ['Biến cố chắc chắn $\\mid$ Biến cố không thể $\\mid$ Biến cố ngẫu nhiên (với dấu '
+                        'ngược lại)',
+                        'Đảo ngược vế của quy tắc: Biến cố chắc chắn $\\mid$ Biến cố không thể $\\mid$ Biến '
+                        'cố ngẫu nhiên',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Biến cố chắc chắn $\\mid$ Biến '
+                        'cố không thể $\\mid$ Biến cố ngẫu nhiên',
+                        'Biến cố chắc chắn $\\mid$ Biến cố không thể $\\mid$ Biến cố ngẫu nhiên'],
             'answer': 3,
-            'solution': 'Trong Bài 29: Làm quen với biến cố, biểu thức/quy tắc Biến cố chắc chắn $\\mid$ '
-                        'Biến cố không thể $\\mid$ Biến cố ngẫu nhiên chính là nội dung của **Ba loại biến '
-                        'cố**.'},
+            'solution': 'Trong Bài 29: Làm quen với biến cố, **Ba loại biến cố** có công thức/quy tắc là: '
+                        'Biến cố chắc chắn $\\mid$ Biến cố không thể $\\mid$ Biến cố ngẫu nhiên.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Rút ngẫu nhiên một thẻ từ hộp đựng $10$ thẻ đánh số từ $1$ đến $10$. Biến cố nào sau đây '
@@ -4983,17 +5025,18 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 29: Làm quen với biến cố** (Chương VIII: Làm quen với biến cố và xác suất '
-                 'của biến cố), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến '
-                 'thức của bài?',
-            'options': ['Nhận biết được số hữu tỉ và lấy được ví dụ về số hữu tỉ, nhận biết tập hợp các số '
-                        'hữu tỉ $\\mathbb{Q}$.',
+            'q': 'Để nắm vững bản chất của **Bài 29: Làm quen với biến cố**, nhận định nào sau đây là '
+                 '**chính xác**?',
+            'options': ['Làm quen với các khái niệm mở đầu về biến cố trong các trò chơi, thí nghiệm đơn '
+                        'giản. (với dấu ngược lại)',
                         'Làm quen với các khái niệm mở đầu về biến cố trong các trò chơi, thí nghiệm đơn '
                         'giản.',
-                        'Biểu diễn được số hữu tỉ trên trục số và nhận biết được số đối của một số hữu tỉ.',
-                        'Nhận biết được thứ tự trong tập hợp các số hữu tỉ và so sánh được hai số hữu tỉ.'],
+                        'Đảo ngược vế của quy tắc: Làm quen với các khái niệm mở đầu về biến cố trong các '
+                        'trò chơi, thí nghiệm đơn giản.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Làm quen với các khái niệm mở '
+                        'đầu về biến cố trong các trò chơi, thí nghiệm đơn giản.'],
             'answer': 1,
-            'solution': 'Theo yêu cầu cần đạt của Bài 29: Làm quen với biến cố: Làm quen với các khái niệm '
+            'solution': 'Theo nội dung cốt lõi của Bài 29: Làm quen với biến cố: Làm quen với các khái niệm '
                         'mở đầu về biến cố trong các trò chơi, thí nghiệm đơn giản.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -5010,43 +5053,41 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 29: Làm quen với biến '
-                 'cố**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Làm quen với các khái niệm mở đầu '
-                           'về biến cố trong các trò chơi, thí nghiệm đơn giản.',
-                           'Quy tắc/công thức **Tập kết quả khi gieo 1 con xúc xắc** trong bài được xác định '
-                           'bởi: $\\Omega = \\{1; 2; 3; 4; 5; 6\\}$ (gồm $6$ kết quả có thể).',
-                           'Trong mọi trường hợp, **Tập kết quả khi gieo 1 con xúc xắc** luôn được tính bằng '
-                           'công thức $\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} \\;\\middle|\\; a, b \\in '
-                           '\\mathbb{Z}, b \\neq 0 \\right\\}$ (thuộc Định nghĩa tập $\\mathbb{Q}$) mà không '
-                           'cần điều kiện của Bài 29: Làm quen với biến cố.',
-                           'Với bài toán minh họa: “Gieo một con xúc xắc cân đối $6$ mặt. Xét biến cố $A$: '
-                           "'Số chấm xuất hiện là số tự nhiên từ $1$ đến $6$' và biến cố $B$: 'Số chấm xuất "
-                           'hiện...”, lời giải đúng là: - Biến cố $A$ là biến cố chắc chắn vì mặt nào của '
-                           'xúc xắc cũng có số chấm từ $1$ đến $6$. - Biến cố $B$ là biến cố ngẫu nhiên vì '
-                           'có thể xảy...'],
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 29: Làm quen với biến cố**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Làm quen với các khái niệm mở đầu về '
+                           'biến cố trong các trò chơi, thí nghiệm đơn giản.',
+                           'Trong **Bài 29: Làm quen với biến cố**, quy tắc/công thức **Tập kết quả khi gieo '
+                           '1 con xúc xắc** được viết là: $\\Omega = \\{1; 2; 3; 4; 5; 6\\}$ (gồm $6$ kết '
+                           'quả có thể).',
+                           'Nếu áp dụng sai dấu/phép tính thành $\\Omega = \\{2; 2; 3; 4; 5; 6\\}$ (gồm $6$ '
+                           'kết quả có thể) thì kết quả của **Tập kết quả khi gieo 1 con xúc xắc** trong '
+                           '**Bài 29: Làm quen với biến cố** vẫn không thay đổi.',
+                           "Xét ví dụ của bài: “Gieo một con xúc xắc cân đối $6$ mặt. Xét biến cố $A$: 'Số "
+                           "chấm xuất hiện là số tự nhiên từ $1$ đến $6$' và biến cố $B$: 'Số chấm xuất...”, "
+                           'kết quả giải đúng là: - Biến cố $A$ là biến cố chắc chắn vì mặt nào của xúc xắc '
+                           'cũng có số chấm từ $1$ đến $6$. - Biến cố $B$ là biến cố ngẫu nhiên vì có '
+                           'thể...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 29: Làm quen với biến cố. b) **Đúng** theo '
-                        'công thức trọng tâm **Tập kết quả khi gieo 1 con xúc xắc** ($\\Omega = \\{1; 2; 3; '
-                        '4; 5; 6\\}$ (gồm $6$ kết quả có thể)). c) **Sai** vì $\\mathbb{Q} = \\left\\{ '
-                        '\\dfrac{a}{b} \\;\\middle|\\; a, b \\in \\mathbb{Z}, b \\neq 0 \\right\\}$ là công '
-                        'thức của nội dung khác, không phải quy tắc chung của **Tập kết quả khi gieo 1 con '
-                        'xúc xắc**. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        'công thức **Tập kết quả khi gieo 1 con xúc xắc** ($\\Omega = \\{1; 2; 3; 4; 5; '
+                        '6\\}$ (gồm $6$ kết quả có thể)). c) **Sai** vì công thức đúng của **Tập kết quả khi '
+                        'gieo 1 con xúc xắc** phải là $\\Omega = \\{1; 2; 3; 4; 5; 6\\}$ (gồm $6$ kết quả có '
+                        'thể) chứ không phải $\\Omega = \\{2; 2; 3; 4; 5; 6\\}$ (gồm $6$ kết quả có thể). d) '
+                        '**Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 29: Làm quen với biến cố** để giải quyết tình huống sau: Gieo một '
-                 "con xúc xắc cân đối $6$ mặt. Xét biến cố $A$: 'Số chấm xuất hiện là số tự nhiên từ $1$ đến "
-                 "$6$' và biến cố $B$: 'Số chấm xuất hiện là số chẵn'. Phân loại biến cố $A$ và $B$. Kết quả "
-                 'và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Ta có: $-2,5 = \\dfrac{-5}{2} = \\dfrac{-15}{6}$; $1\\dfrac{2}{3} = \\dfrac{5}{3}$; '
-                        '$-4 = \\dfrac{-4}{1} = \\dfrac{-24}{6}$. Vì $-4 < -2,5 < 0 < 1\\dfrac{2}{3}$ n...',
-                        'Áp dụng tính chất phân phối của phép nhân đối với phép cộng: $A = \\dfrac{-3}{7} '
-                        '\\cdot \\left(\\dfrac{5}{9} + \\dfrac{4}{9}\\right) + \\dfrac{10}{7} = '
-                        '\\dfrac{-3}{7} \\cdot 1 + \\dfrac{10}{7} = \\dfrac{7}{7} = 1$...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 29: Làm quen với biến cố** để giải bài toán sau: '
+                 "Gieo một con xúc xắc cân đối $6$ mặt. Xét biến cố $A$: 'Số chấm xuất hiện là số tự nhiên "
+                 "từ $1$ đến $6$' và biến cố $B$: 'Số chấm xuất hiện là số chẵn'. Phân loại biến cố $A$ và "
+                 '$B$. Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['- Biến cố $A$ là biến cố chắc chắn vì mặt nào của xúc xắc cũng có số chấm từ $1$ '
+                        'đến $6$. + Biến cố $B$ là biến cố ngẫu nhiên vì có thể xảy ra (khi ra...',
                         '- Biến cố $A$ là biến cố chắc chắn vì mặt nào của xúc xắc cũng có số chấm từ $1$ '
-                        'đến $6$. - Biến cố $B$ là biến cố ngẫu nhiên vì có thể xảy ra (khi ra mặt...',
-                        'Ta có: $M = \\dfrac{(2^3)^{10}}{(2^2)^8} = \\dfrac{2^{30}}{2^{16}} = 2^{30-16} = '
-                        '2^{14} = 16384$. $N = (0,125 \\cdot 8)^3 = 1^3 = 1$.'],
+                        'đến $5$. - Biến cố $B$ là biến cố ngẫu nhiên vì có thể xảy ra (khi ra...',
+                        '- Biến cố $A$ là biến cố chắc chắn vì mặt nào của xúc xắc cũng có số chấm từ $1$ '
+                        'đến $6$. - Biến cố $B$ là biến cố ngẫu nhiên vì có thể xảy ra (khi ra...',
+                        '- Biến cố $A$ là biến cố chắc chắn vì mặt nào của xúc xắc cũng có số chấm từ $2$ '
+                        'đến $6$. - Biến cố $B$ là biến cố ngẫu nhiên vì có thể xảy ra (khi ra...'],
             'answer': 2,
             'solution': 'Lời giải chi tiết theo Bài 29: Làm quen với biến cố: - Biến cố $A$ là biến cố chắc '
                         'chắn vì mặt nào của xúc xắc cũng có số chấm từ $1$ đến $6$.\n'
@@ -5073,8 +5114,8 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
                    'ra của biến cố đó.',
                    'Tính được xác suất của biến cố chắc chắn, biến cố không thể và các biến cố đồng khả năng '
                    'trong trò chơi đơn giản.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Xác suất của biến cố không thể** ($P(A) = '
-                   '0$) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 30: Làm quen với xác suất của biến cố** để giải bài tập '
+                   'minh họa và bài toán thực tiễn.'],
   'definition': 'Khả năng xảy ra của một biến cố được đo lường bởi một số nhận giá trị từ $0$ đến $1$, gọi '
                 'là xác suất của biến cố đó. Biến cố không thể có xác suất bằng $0$; biến cố chắc chắn có '
                 'xác suất bằng $1$.',
@@ -5117,27 +5158,23 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 30: Làm quen với xác suất của biến cố**, công thức hoặc '
-                 'quy tắc nào sau đây biểu diễn đúng **Xác suất của biến cố không thể**?',
-            'options': ['$P(A) = 1$ (hay $100\\%$)',
-                        '$P = \\dfrac{1}{n}$',
-                        '$\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} \\;\\middle|\\; a, b \\in \\mathbb{Z}, b '
-                        '\\neq 0 \\right\\}$',
-                        '$P(A) = 0$'],
+            'q': 'Trong **Bài 30: Làm quen với xác suất của biến cố**, quy tắc hoặc công thức nào sau đây '
+                 'xác định đúng **Xác suất của biến cố không thể**?',
+            'options': ['$P(A) = 1$', '$P(A) = 2$', '$P(A) = 1$ (hay $100\\%$)', '$P(A) = 0$'],
             'answer': 3,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 30: Làm quen với xác suất của biến cố, **Xác '
-                        'suất của biến cố không thể** được xác định bởi: $P(A) = 0$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 30: Làm quen với xác suất của biến cố, **Xác suất '
+                        'của biến cố không thể** được xác định bởi: $P(A) = 0$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 30: Làm quen với xác suất của biến cố**, nội dung/biểu thức $P(A) = 1$ (hay '
-                 '$100\\%$) là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Xác suất của biến cố chắc chắn',
-                        'Xác suất của biến cố không thể',
-                        'Xác suất của mỗi biến cố trong $n$ biến cố đồng khả năng',
-                        'Định nghĩa tập $\\mathbb{Q}$'],
+            'q': 'Khi học **Bài 30: Làm quen với xác suất của biến cố**, biểu thức hoặc quy tắc nào dưới đây '
+                 'biểu diễn đúng **Xác suất của biến cố chắc chắn**?',
+            'options': ['$P(A) = 1$ (hay $100\\%$)',
+                        '$P(A) = 2$ (hay $100\\%$)',
+                        '$P(A) = 1$ (hay $99\\%$)',
+                        '$P(A) = 0$'],
             'answer': 0,
-            'solution': 'Trong Bài 30: Làm quen với xác suất của biến cố, biểu thức/quy tắc $P(A) = 1$ (hay '
-                        '$100\\%$) chính là nội dung của **Xác suất của biến cố chắc chắn**.'},
+            'solution': 'Trong Bài 30: Làm quen với xác suất của biến cố, **Xác suất của biến cố chắc chắn** '
+                        'có công thức/quy tắc là: $P(A) = 1$ (hay $100\\%$).'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Một hộp có $8$ quả bóng có cùng kích thước và khối lượng được đánh số từ $1$ đến $8$. Lấy '
@@ -5150,17 +5187,18 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 30: Làm quen với xác suất của biến cố** (Chương VIII: Làm quen với biến cố '
-                 'và xác suất của biến cố), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản '
-                 'chất kiến thức của bài?',
-            'options': ['Nhận biết được số hữu tỉ và lấy được ví dụ về số hữu tỉ, nhận biết tập hợp các số '
-                        'hữu tỉ $\\mathbb{Q}$.',
-                        'Biểu diễn được số hữu tỉ trên trục số và nhận biết được số đối của một số hữu tỉ.',
+            'q': 'Để nắm vững bản chất của **Bài 30: Làm quen với xác suất của biến cố**, nhận định nào sau '
+                 'đây là **chính xác**?',
+            'options': ['Nhận biết được xác suất của một biến cố là một số từ $1$ đến $1$ đo lường khả năng '
+                        'xảy ra của biến cố đó.',
+                        'Nhận biết được xác suất của một biến cố là một số từ $0$ đến $2$ đo lường khả năng '
+                        'xảy ra của biến cố đó.',
                         'Nhận biết được xác suất của một biến cố là một số từ $0$ đến $1$ đo lường khả năng '
                         'xảy ra của biến cố đó.',
-                        'Nhận biết được thứ tự trong tập hợp các số hữu tỉ và so sánh được hai số hữu tỉ.'],
+                        'Nhận biết được xác suất của một biến cố là một số từ $2$ đến $1$ đo lường khả năng '
+                        'xảy ra của biến cố đó.'],
             'answer': 2,
-            'solution': 'Theo yêu cầu cần đạt của Bài 30: Làm quen với xác suất của biến cố: Nhận biết được '
+            'solution': 'Theo nội dung cốt lõi của Bài 30: Làm quen với xác suất của biến cố: Nhận biết được '
                         'xác suất của một biến cố là một số từ $0$ đến $1$ đo lường khả năng xảy ra của biến '
                         'cố đó.'},
            {'level': 'hieu',
@@ -5178,39 +5216,35 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 30: Làm quen với xác '
-                 'suất của biến cố**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được xác suất của một '
-                           'biến cố là một số từ $0$ đến $1$ đo lường khả năng xảy ra của biến cố đó.',
-                           'Quy tắc/công thức **Xác suất của biến cố không thể** trong bài được xác định '
-                           'bởi: $P(A) = 0$.',
-                           'Trong mọi trường hợp, **Xác suất của biến cố không thể** luôn được tính bằng '
-                           'công thức $\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} \\;\\middle|\\; a, b \\in '
-                           '\\mathbb{Z}, b \\neq 0 \\right\\}$ (thuộc Định nghĩa tập $\\mathbb{Q}$) mà không '
-                           'cần điều kiện của Bài 30: Làm quen với xác suất của biến cố.',
-                           'Với bài toán minh họa: “Gieo một con xúc xắc $6$ mặt cân đối và đồng chất. Tính '
-                           "xác suất của biến cố $E$: 'Xuất hiện mặt $5$ chấm'.”, lời giải đúng là: Vì con "
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 30: Làm quen với xác suất '
+                 'của biến cố**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết được xác suất của một biến cố '
+                           'là một số từ $0$ đến $1$ đo lường khả năng xảy ra của biến cố đó.',
+                           'Trong **Bài 30: Làm quen với xác suất của biến cố**, quy tắc/công thức **Xác '
+                           'suất của biến cố không thể** được viết là: $P(A) = 0$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $P(A) = 1$ thì kết quả của **Xác suất của '
+                           'biến cố không thể** trong **Bài 30: Làm quen với xác suất của biến cố** vẫn '
+                           'không thay đổi.',
+                           'Xét ví dụ của bài: “Gieo một con xúc xắc $6$ mặt cân đối và đồng chất. Tính xác '
+                           "suất của biến cố $E$: 'Xuất hiện mặt $5$ chấm'.”, kết quả giải đúng là: Vì con "
                            'xúc xắc cân đối và đồng chất nên $6$ biến cố xuất hiện mặt $1; 2; 3; 4; 5; 6$ '
-                           'chấm là đồng khả năng. Vậy xác suất của biến cố $E$ là...'],
+                           'chấm là đồng khả năng. Vậy xác suất của biến cố $E$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 30: Làm quen với xác suất của biến cố. b) '
-                        '**Đúng** theo công thức trọng tâm **Xác suất của biến cố không thể** ($P(A) = 0$). '
-                        'c) **Sai** vì $\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} \\;\\middle|\\; a, b \\in '
-                        '\\mathbb{Z}, b \\neq 0 \\right\\}$ là công thức của nội dung khác, không phải quy '
-                        'tắc chung của **Xác suất của biến cố không thể**. d) **Đúng** theo lời giải ví dụ '
-                        'minh họa trong bài học.'},
+                        '**Đúng** theo công thức **Xác suất của biến cố không thể** ($P(A) = 0$). c) **Sai** '
+                        'vì công thức đúng của **Xác suất của biến cố không thể** phải là $P(A) = 0$ chứ '
+                        'không phải $P(A) = 1$. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 30: Làm quen với xác suất của biến cố** để giải quyết tình huống '
-                 'sau: Gieo một con xúc xắc $6$ mặt cân đối và đồng chất. Tính xác suất của biến cố $E$: '
-                 "'Xuất hiện mặt $5$ chấm'. Kết quả và hướng giải nào dưới đây là **đúng**?",
-            'options': ['Ta có: $-2,5 = \\dfrac{-5}{2} = \\dfrac{-15}{6}$; $1\\dfrac{2}{3} = \\dfrac{5}{3}$; '
-                        '$-4 = \\dfrac{-4}{1} = \\dfrac{-24}{6}$. Vì $-4 < -2,5 < 0 < 1\\dfrac{2}{3}$ n...',
-                        'Áp dụng tính chất phân phối của phép nhân đối với phép cộng: $A = \\dfrac{-3}{7} '
-                        '\\cdot \\left(\\dfrac{5}{9} + \\dfrac{4}{9}\\right) + \\dfrac{10}{7} = '
-                        '\\dfrac{-3}{7} \\cdot 1 + \\dfrac{10}{7} = \\dfrac{7}{7} = 1$...',
-                        'Ta có: $M = \\dfrac{(2^3)^{10}}{(2^2)^8} = \\dfrac{2^{30}}{2^{16}} = 2^{30-16} = '
-                        '2^{14} = 16384$. $N = (0,125 \\cdot 8)^3 = 1^3 = 1$.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 30: Làm quen với xác suất của biến cố** để giải bài '
+                 'toán sau: Gieo một con xúc xắc $6$ mặt cân đối và đồng chất. Tính xác suất của biến cố '
+                 "$E$: 'Xuất hiện mặt $5$ chấm'. Cách giải và kết quả nào dưới đây là **đúng**?",
+            'options': ['Vì con xúc xắc cân đối và đồng chất nên $7$ biến cố xuất hiện mặt $1; 2; 3; 4; 5; '
+                        '6$ chấm là đồng khả năng. Vậy xác suất của biến cố $E$ là $P(E) = \\dfrac{1}{6}$...',
+                        'Vì con xúc xắc cân đối và đồng chất nên $6$ biến cố xuất hiện mặt $1; 2; 3; 4; 5; '
+                        '6$ chấm là đồng khả năng. Vậy xác suất của biến cố $E$ là $P(E) = \\dfrac{6}{1}$...',
+                        'Vì con xúc xắc cân đối và đồng chất nên $12$ biến cố xuất hiện mặt $1; 2; 3; 4; 5; '
+                        '6$ chấm là đồng khả năng. Vậy xác suất của biến cố $E$ là $P(E) = \\dfrac{1}{6}$...',
                         'Vì con xúc xắc cân đối và đồng chất nên $6$ biến cố xuất hiện mặt $1; 2; 3; 4; 5; '
                         '6$ chấm là đồng khả năng. Vậy xác suất của biến cố $E$ là $P(E) = '
                         '\\dfrac{1}{6}$...'],
@@ -5240,8 +5274,8 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
   'requirements': ['Nhận biết được góc đối diện với cạnh và cạnh đối diện với góc trong một tam giác.',
                    'Giải thích và vận dụng được định lí về quan hệ giữa góc và cạnh đối diện trong một tam '
                    'giác để so sánh các cạnh hoặc các góc.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **So sánh hai cạnh và hai góc** ($AC > AB '
-                   '\\Leftrightarrow \\widehat{B} > \\widehat{C}$) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 31: Quan hệ giữa góc và cạnh đối diện trong một tam giác** '
+                   'để giải bài tập minh họa và bài toán thực tiễn.'],
   'definition': 'Trong một tam giác, góc đối diện với cạnh lớn hơn là góc lớn hơn; ngược lại, cạnh đối diện '
                 'với góc lớn hơn là cạnh lớn hơn.',
   'theory': '1. Quan hệ giữa góc và cạnh đối diện trong $\\triangle ABC$:\n'
@@ -5293,30 +5327,31 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 31: Quan hệ giữa góc và cạnh đối diện trong một tam '
-                 'giác**, công thức hoặc quy tắc nào sau đây biểu diễn đúng **So sánh hai cạnh và hai góc**?',
+            'q': 'Trong **Bài 31: Quan hệ giữa góc và cạnh đối diện trong một tam giác**, quy tắc hoặc công '
+                 'thức nào sau đây xác định đúng **So sánh hai cạnh và hai góc**?',
             'options': ['$AC > AB \\Leftrightarrow \\widehat{B} > \\widehat{C}$',
-                        '$BC > AC > AB \\Leftrightarrow \\widehat{A} > \\widehat{B} > \\widehat{C}$',
-                        '$BC > AB$ và $BC > AC$ ($BC$ là cạnh huyền)',
-                        '$\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} \\;\\middle|\\; a, b \\in \\mathbb{Z}, b '
-                        '\\neq 0 \\right\\}$'],
+                        '$AC < AB \\Leftrightarrow \\widehat{B} > \\widehat{C}$',
+                        'Đảo ngược vế của quy tắc: $AC > AB \\Leftrightarrow \\widehat{B} > \\widehat{C}$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $AC > AB \\Leftrightarrow '
+                        '\\widehat{B} > \\widehat{C}$'],
             'answer': 0,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 31: Quan hệ giữa góc và cạnh đối diện trong '
-                        'một tam giác, **So sánh hai cạnh và hai góc** được xác định bởi: $AC > AB '
+            'solution': 'Theo kiến thức trọng tâm của Bài 31: Quan hệ giữa góc và cạnh đối diện trong một '
+                        'tam giác, **So sánh hai cạnh và hai góc** được xác định bởi: $AC > AB '
                         '\\Leftrightarrow \\widehat{B} > \\widehat{C}$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 31: Quan hệ giữa góc và cạnh đối diện trong một tam giác**, nội dung/biểu thức '
-                 '$BC > AC > AB \\Leftrightarrow \\widehat{A} > \\widehat{B} > \\widehat{C}$ là quy tắc hoặc '
-                 'công thức của mục nào sau đây?',
-            'options': ['So sánh hai cạnh và hai góc',
-                        'Thứ tự ba cạnh và ba góc',
-                        'Tam giác vuông tại $A$',
-                        'Định nghĩa tập $\\mathbb{Q}$'],
+            'q': 'Khi học **Bài 31: Quan hệ giữa góc và cạnh đối diện trong một tam giác**, biểu thức hoặc '
+                 'quy tắc nào dưới đây biểu diễn đúng **Thứ tự ba cạnh và ba góc**?',
+            'options': ['$BC < AC > AB \\Leftrightarrow \\widehat{A} > \\widehat{B} > \\widehat{C}$',
+                        '$BC > AC > AB \\Leftrightarrow \\widehat{A} > \\widehat{B} > \\widehat{C}$',
+                        'Đảo ngược vế của quy tắc: $BC > AC > AB \\Leftrightarrow \\widehat{A} > '
+                        '\\widehat{B} > \\widehat{C}$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $BC > AC > AB \\Leftrightarrow '
+                        '\\widehat{A} > \\widehat{B} > \\widehat{C}$'],
             'answer': 1,
-            'solution': 'Trong Bài 31: Quan hệ giữa góc và cạnh đối diện trong một tam giác, biểu thức/quy '
-                        'tắc $BC > AC > AB \\Leftrightarrow \\widehat{A} > \\widehat{B} > \\widehat{C}$ '
-                        'chính là nội dung của **Thứ tự ba cạnh và ba góc**.'},
+            'solution': 'Trong Bài 31: Quan hệ giữa góc và cạnh đối diện trong một tam giác, **Thứ tự ba '
+                        'cạnh và ba góc** có công thức/quy tắc là: $BC > AC > AB \\Leftrightarrow '
+                        '\\widehat{A} > \\widehat{B} > \\widehat{C}$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Cho $\\triangle MNP$ có $\\widehat{M} = 50^\\circ, \\widehat{N} = 70^\\circ$. Cạnh lớn '
@@ -5329,16 +5364,17 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 31: Quan hệ giữa góc và cạnh đối diện trong một tam giác** (Chương IX: Quan '
-                 'hệ giữa các yếu tố trong một tam giác), khẳng định nào sau đây phản ánh **đúng** yêu cầu '
-                 'cần đạt và bản chất kiến thức của bài?',
-            'options': ['Nhận biết được số hữu tỉ và lấy được ví dụ về số hữu tỉ, nhận biết tập hợp các số '
-                        'hữu tỉ $\\mathbb{Q}$.',
-                        'Biểu diễn được số hữu tỉ trên trục số và nhận biết được số đối của một số hữu tỉ.',
-                        'Nhận biết được thứ tự trong tập hợp các số hữu tỉ và so sánh được hai số hữu tỉ.',
+            'q': 'Để nắm vững bản chất của **Bài 31: Quan hệ giữa góc và cạnh đối diện trong một tam giác**, '
+                 'nhận định nào sau đây là **chính xác**?',
+            'options': ['Nhận biết được góc đối diện với cạnh và cạnh đối diện với góc trong một tam giác. '
+                        '(với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Nhận biết được góc đối diện với cạnh và cạnh đối diện với '
+                        'góc trong một tam giác.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nhận biết được góc đối diện với '
+                        'cạnh và cạnh đối diện với góc trong một tam giác.',
                         'Nhận biết được góc đối diện với cạnh và cạnh đối diện với góc trong một tam giác.'],
             'answer': 3,
-            'solution': 'Theo yêu cầu cần đạt của Bài 31: Quan hệ giữa góc và cạnh đối diện trong một tam '
+            'solution': 'Theo nội dung cốt lõi của Bài 31: Quan hệ giữa góc và cạnh đối diện trong một tam '
                         'giác: Nhận biết được góc đối diện với cạnh và cạnh đối diện với góc trong một tam '
                         'giác.'},
            {'level': 'hieu',
@@ -5356,44 +5392,42 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 31: Quan hệ giữa góc và '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 31: Quan hệ giữa góc và '
                  'cạnh đối diện trong một tam giác**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được góc đối diện với '
-                           'cạnh và cạnh đối diện với góc trong một tam giác.',
-                           'Quy tắc/công thức **So sánh hai cạnh và hai góc** trong bài được xác định bởi: '
-                           '$AC > AB \\Leftrightarrow \\widehat{B} > \\widehat{C}$.',
-                           'Trong mọi trường hợp, **So sánh hai cạnh và hai góc** luôn được tính bằng công '
-                           'thức $\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} \\;\\middle|\\; a, b \\in '
-                           '\\mathbb{Z}, b \\neq 0 \\right\\}$ (thuộc Định nghĩa tập $\\mathbb{Q}$) mà không '
-                           'cần điều kiện của Bài 31: Quan hệ giữa góc và cạnh đối diện trong một tam giác.',
-                           'Với bài toán minh họa: “Cho $\\triangle ABC$ có $AB = 4\\text{ cm}, BC = '
-                           '7\\text{ cm}, AC = 5\\text{ cm}$. Hãy sắp xếp các góc $\\widehat{A}, '
-                           '\\widehat{B}, \\widehat{C}$ c...”, lời giải đúng là: Trong $\\triangle ABC$, ta '
-                           'có $AB < AC < BC$ ($4 < 5 < 7$). Các góc đối diện với $AB, AC, BC$ lần lượt là '
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết được góc đối diện với cạnh và '
+                           'cạnh đối diện với góc trong một tam giác.',
+                           'Trong **Bài 31: Quan hệ giữa góc và cạnh đối diện trong một tam giác**, quy '
+                           'tắc/công thức **So sánh hai cạnh và hai góc** được viết là: $AC > AB '
+                           '\\Leftrightarrow \\widehat{B} > \\widehat{C}$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $AC < AB \\Leftrightarrow \\widehat{B} > '
+                           '\\widehat{C}$ thì kết quả của **So sánh hai cạnh và hai góc** trong **Bài 31: '
+                           'Quan hệ giữa góc và cạnh đối diện trong một tam giác** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Cho $\\triangle ABC$ có $AB = 4\\text{ cm}, BC = 7\\text{ '
+                           'cm}, AC = 5\\text{ cm}$. Hãy sắp xếp các góc $\\widehat{A}, \\widehat{B}, '
+                           '\\widehat{C}$...”, kết quả giải đúng là: Trong $\\triangle ABC$, ta có $AB < AC '
+                           '< BC$ ($4 < 5 < 7$). Các góc đối diện với $AB, AC, BC$ lần lượt là '
                            '$\\widehat{C}, \\widehat{B}, \\widehat{A}$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 31: Quan hệ giữa góc và cạnh đối diện '
-                        'trong một tam giác. b) **Đúng** theo công thức trọng tâm **So sánh hai cạnh và hai '
-                        'góc** ($AC > AB \\Leftrightarrow \\widehat{B} > \\widehat{C}$). c) **Sai** vì '
-                        '$\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} \\;\\middle|\\; a, b \\in \\mathbb{Z}, b '
-                        '\\neq 0 \\right\\}$ là công thức của nội dung khác, không phải quy tắc chung của '
-                        '**So sánh hai cạnh và hai góc**. d) **Đúng** theo lời giải ví dụ minh họa trong bài '
-                        'học.'},
+                        'trong một tam giác. b) **Đúng** theo công thức **So sánh hai cạnh và hai góc** ($AC '
+                        '> AB \\Leftrightarrow \\widehat{B} > \\widehat{C}$). c) **Sai** vì công thức đúng '
+                        'của **So sánh hai cạnh và hai góc** phải là $AC > AB \\Leftrightarrow \\widehat{B} '
+                        '> \\widehat{C}$ chứ không phải $AC < AB \\Leftrightarrow \\widehat{B} > '
+                        '\\widehat{C}$. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 31: Quan hệ giữa góc và cạnh đối diện trong một tam giác** để '
-                 'giải quyết tình huống sau: Cho $\\triangle ABC$ có $AB = 4\\text{ cm}, BC = 7\\text{ cm}, '
-                 'AC = 5\\text{ cm}$. Hãy sắp xếp các góc $\\widehat{A}, \\widehat{B}, \\widehat{C}$ của tam '
-                 'giác theo thứ tự từ nhỏ đến lớn. Kết quả và hướng giải nào dưới đây là **đúng**?',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 31: Quan hệ giữa góc và cạnh đối diện trong một tam '
+                 'giác** để giải bài toán sau: Cho $\\triangle ABC$ có $AB = 4\\text{ cm}, BC = 7\\text{ '
+                 'cm}, AC = 5\\text{ cm}$. Hãy sắp xếp các góc $\\widehat{A}, \\widehat{B}, \\widehat{C}$ '
+                 'của tam giác theo thứ tự từ nhỏ đến lớn. Cách giải và kết quả nào dưới đây là **đúng**?',
             'options': ['Trong $\\triangle ABC$, ta có $AB < AC < BC$ ($4 < 5 < 7$). Các góc đối diện với '
-                        '$AB, AC, BC$ lần lượt là $\\widehat{C}, \\widehat{B}, \\widehat{A}$. Theo định...',
-                        'Ta có: $-2,5 = \\dfrac{-5}{2} = \\dfrac{-15}{6}$; $1\\dfrac{2}{3} = \\dfrac{5}{3}$; '
-                        '$-4 = \\dfrac{-4}{1} = \\dfrac{-24}{6}$. Vì $-4 < -2,5 < 0 < 1\\dfrac{2}{3}$ n...',
-                        'Áp dụng tính chất phân phối của phép nhân đối với phép cộng: $A = \\dfrac{-3}{7} '
-                        '\\cdot \\left(\\dfrac{5}{9} + \\dfrac{4}{9}\\right) + \\dfrac{10}{7} = '
-                        '\\dfrac{-3}{7} \\cdot 1 + \\dfrac{10}{7} = \\dfrac{7}{7} = 1$...',
-                        'Ta có: $M = \\dfrac{(2^3)^{10}}{(2^2)^8} = \\dfrac{2^{30}}{2^{16}} = 2^{30-16} = '
-                        '2^{14} = 16384$. $N = (0,125 \\cdot 8)^3 = 1^3 = 1$.'],
+                        '$AB, AC, BC$ lần lượt là $\\widehat{C}, \\widehat{B}, \\widehat{A}$. Theo...',
+                        'Trong $\\triangle ABC$, ta có $AB > AC < BC$ ($4 < 5 < 7$). Các góc đối diện với '
+                        '$AB, AC, BC$ lần lượt là $\\widehat{C}, \\widehat{B}, \\widehat{A}$. Theo...',
+                        'Trong $\\triangle ABC$, ta có $AB < AC < BC$ ($4 < 5 < 6$). Các góc đối diện với '
+                        '$AB, AC, BC$ lần lượt là $\\widehat{C}, \\widehat{B}, \\widehat{A}$. Theo...',
+                        'Trong $\\triangle ABC$, ta có $AB < AC < BC$ ($8 < 5 < 7$). Các góc đối diện với '
+                        '$AB, AC, BC$ lần lượt là $\\widehat{C}, \\widehat{B}, \\widehat{A}$. Theo...'],
             'answer': 0,
             'solution': 'Lời giải chi tiết theo Bài 31: Quan hệ giữa góc và cạnh đối diện trong một tam '
                         'giác: Trong $\\triangle ABC$, ta có $AB < AC < BC$ ($4 < 5 < 7$).\n'
@@ -5424,9 +5458,8 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
                    'đường thẳng đó.',
                    'Giải thích và vận dụng được định lí: Trong các đường xiên và đường vuông góc kẻ từ một '
                    'điểm ở ngoài một đường thẳng đến đường thẳng đó, đường vuông góc là đường ngắn nhất.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **So sánh đường vuông góc và đường xiên** '
-                   '($AH \\perp d$ tại $H$, $M \\in d$ ($M \\neq H$) $\\Rightarrow AH < AM$) vào giải bài '
-                   'tập.'],
+                   'Vận dụng kiến thức của **Bài 32: Quan hệ giữa đường vuông góc và đường xiên** để giải '
+                   'bài tập minh họa và bài toán thực tiễn.'],
   'definition': 'Từ một điểm $A$ không nằm trên đường thẳng $d$, kẻ đường thẳng vuông góc với $d$ tại $H$: '
                 'đoạn thẳng $AH$ gọi là đoạn vuông góc (hay đường vuông góc), $H$ là chân đường vuông góc, '
                 'độ dài $AH$ là khoảng cách từ $A$ đến $d$. Với điểm $M \\in d$ ($M \\neq H$), đoạn $AM$ gọi '
@@ -5473,29 +5506,31 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 32: Quan hệ giữa đường vuông góc và đường xiên**, công '
-                 'thức hoặc quy tắc nào sau đây biểu diễn đúng **So sánh đường vuông góc và đường xiên**?',
-            'options': ['$d(A, d) = AH$ (với $AH \\perp d$ tại $H$)',
+            'q': 'Trong **Bài 32: Quan hệ giữa đường vuông góc và đường xiên**, quy tắc hoặc công thức nào '
+                 'sau đây xác định đúng **So sánh đường vuông góc và đường xiên**?',
+            'options': ['$AH \\perp d$ tại $H$, $M \\notin d$ ($M \\neq H$) $\\Rightarrow AH < AM$',
                         '$AH \\perp d$ tại $H$, $M \\in d$ ($M \\neq H$) $\\Rightarrow AH < AM$',
-                        '$\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} \\;\\middle|\\; a, b \\in \\mathbb{Z}, b '
-                        '\\neq 0 \\right\\}$',
-                        '$\\mathbb{N} \\subset \\mathbb{Z} \\subset \\mathbb{Q}$'],
+                        'Đảo ngược vế của quy tắc: $AH \\perp d$ tại $H$, $M \\in d$ ($M \\neq H$) '
+                        '$\\Rightarrow AH < AM$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $AH \\perp d$ tại $H$, $M \\in '
+                        'd$ ($M \\neq H$) $\\Rightarrow AH < AM$'],
             'answer': 1,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 32: Quan hệ giữa đường vuông góc và đường '
-                        'xiên, **So sánh đường vuông góc và đường xiên** được xác định bởi: $AH \\perp d$ '
-                        'tại $H$, $M \\in d$ ($M \\neq H$) $\\Rightarrow AH < AM$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 32: Quan hệ giữa đường vuông góc và đường xiên, '
+                        '**So sánh đường vuông góc và đường xiên** được xác định bởi: $AH \\perp d$ tại $H$, '
+                        '$M \\in d$ ($M \\neq H$) $\\Rightarrow AH < AM$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 32: Quan hệ giữa đường vuông góc và đường xiên**, nội dung/biểu thức $d(A, d) '
-                 '= AH$ (với $AH \\perp d$ tại $H$) là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['So sánh đường vuông góc và đường xiên',
-                        'Định nghĩa tập $\\mathbb{Q}$',
-                        'Khoảng cách từ điểm $A$ đến đường thẳng $d$',
-                        'Quan hệ tập hợp'],
+            'q': 'Khi học **Bài 32: Quan hệ giữa đường vuông góc và đường xiên**, biểu thức hoặc quy tắc nào '
+                 'dưới đây biểu diễn đúng **Khoảng cách từ điểm $A$ đến đường thẳng $d$**?',
+            'options': ['$d(A, d) = AH$ (với $AH \\perp d$ tại $H$) (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: $d(A, d) = AH$ (với $AH \\perp d$ tại $H$)',
+                        '$d(A, d) = AH$ (với $AH \\perp d$ tại $H$)',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $d(A, d) = AH$ (với $AH \\perp '
+                        'd$ tại $H$)'],
             'answer': 2,
-            'solution': 'Trong Bài 32: Quan hệ giữa đường vuông góc và đường xiên, biểu thức/quy tắc $d(A, '
-                        'd) = AH$ (với $AH \\perp d$ tại $H$) chính là nội dung của **Khoảng cách từ điểm '
-                        '$A$ đến đường thẳng $d$**.'},
+            'solution': 'Trong Bài 32: Quan hệ giữa đường vuông góc và đường xiên, **Khoảng cách từ điểm $A$ '
+                        'đến đường thẳng $d$** có công thức/quy tắc là: $d(A, d) = AH$ (với $AH \\perp d$ '
+                        'tại $H$).'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Cho $\\triangle ABC$ vuông tại $A$, điểm $M$ nằm trên cạnh $AC$ ($M$ khác $A$ và $C$). So '
@@ -5509,17 +5544,18 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 32: Quan hệ giữa đường vuông góc và đường xiên** (Chương IX: Quan hệ giữa '
-                 'các yếu tố trong một tam giác), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt '
-                 'và bản chất kiến thức của bài?',
+            'q': 'Để nắm vững bản chất của **Bài 32: Quan hệ giữa đường vuông góc và đường xiên**, nhận định '
+                 'nào sau đây là **chính xác**?',
             'options': ['Nhận biết được đường vuông góc và đường xiên kẻ từ một điểm nằm ngoài đường thẳng '
                         'đến đường thẳng đó.',
-                        'Nhận biết được số hữu tỉ và lấy được ví dụ về số hữu tỉ, nhận biết tập hợp các số '
-                        'hữu tỉ $\\mathbb{Q}$.',
-                        'Biểu diễn được số hữu tỉ trên trục số và nhận biết được số đối của một số hữu tỉ.',
-                        'Nhận biết được thứ tự trong tập hợp các số hữu tỉ và so sánh được hai số hữu tỉ.'],
+                        'Nhận biết được đường song song và đường xiên kẻ từ một điểm nằm ngoài đường thẳng '
+                        'đến đường thẳng đó.',
+                        'Đảo ngược vế của quy tắc: Nhận biết được đường vuông góc và đường xiên kẻ từ một '
+                        'điểm nằm ngoài đường thẳng đến đường thẳng đó.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nhận biết được đường vuông góc '
+                        'và đường xiên kẻ từ một điểm nằm ngoài đường thẳng đến đường thẳng đó.'],
             'answer': 0,
-            'solution': 'Theo yêu cầu cần đạt của Bài 32: Quan hệ giữa đường vuông góc và đường xiên: Nhận '
+            'solution': 'Theo nội dung cốt lõi của Bài 32: Quan hệ giữa đường vuông góc và đường xiên: Nhận '
                         'biết được đường vuông góc và đường xiên kẻ từ một điểm nằm ngoài đường thẳng đến '
                         'đường thẳng đó.'},
            {'level': 'hieu',
@@ -5537,46 +5573,43 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 32: Quan hệ giữa đường '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 32: Quan hệ giữa đường '
                  'vuông góc và đường xiên**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được đường vuông góc và '
-                           'đường xiên kẻ từ một điểm nằm ngoài đường thẳng đến đường thẳng đó.',
-                           'Quy tắc/công thức **So sánh đường vuông góc và đường xiên** trong bài được xác '
-                           'định bởi: $AH \\perp d$ tại $H$, $M \\in d$ ($M \\neq H$) $\\Rightarrow AH < '
-                           'AM$.',
-                           'Trong mọi trường hợp, **So sánh đường vuông góc và đường xiên** luôn được tính '
-                           'bằng công thức $\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} \\;\\middle|\\; a, b \\in '
-                           '\\mathbb{Z}, b \\neq 0 \\right\\}$ (thuộc Định nghĩa tập $\\mathbb{Q}$) mà không '
-                           'cần điều kiện của Bài 32: Quan hệ giữa đường vuông góc và đường xiên.',
-                           'Với bài toán minh họa: “Từ điểm $A$ trên bờ hồ cách mép đường thẳng $d$ một '
-                           'khoảng $AH = 15\\text{ m}$ ($AH \\perp d$), người ta bắc một cây cầu đi bộ từ '
-                           '$A$ đến một...”, lời giải đúng là: Trong các đoạn thẳng nối từ $A$ đến đường '
-                           'thẳng $d$, đoạn vuông góc $AH$ là ngắn nhất. Vậy cây cầu ngắn nhất khi bắc tại '
-                           'chân đường vuông gó...'],
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết được đường vuông góc và đường '
+                           'xiên kẻ từ một điểm nằm ngoài đường thẳng đến đường thẳng đó.',
+                           'Trong **Bài 32: Quan hệ giữa đường vuông góc và đường xiên**, quy tắc/công thức '
+                           '**So sánh đường vuông góc và đường xiên** được viết là: $AH \\perp d$ tại $H$, '
+                           '$M \\in d$ ($M \\neq H$) $\\Rightarrow AH < AM$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $AH \\perp d$ tại $H$, $M \\notin d$ ($M '
+                           '\\neq H$) $\\Rightarrow AH < AM$ thì kết quả của **So sánh đường vuông góc và '
+                           'đường xiên** trong **Bài 32: Quan hệ giữa đường vuông góc và đường xiên** vẫn '
+                           'không thay đổi.',
+                           'Xét ví dụ của bài: “Từ điểm $A$ trên bờ hồ cách mép đường thẳng $d$ một khoảng '
+                           '$AH = 15\\text{ m}$ ($AH \\perp d$), người ta bắc một cây cầu đi bộ từ $A$ '
+                           'đến...”, kết quả giải đúng là: Trong các đoạn thẳng nối từ $A$ đến đường thẳng '
+                           '$d$, đoạn vuông góc $AH$ là ngắn nhất. Vậy cây cầu ngắn nhất khi bắc tại chân '
+                           'đường vuô...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 32: Quan hệ giữa đường vuông góc và đường '
-                        'xiên. b) **Đúng** theo công thức trọng tâm **So sánh đường vuông góc và đường '
-                        'xiên** ($AH \\perp d$ tại $H$, $M \\in d$ ($M \\neq H$) $\\Rightarrow AH < AM$). c) '
-                        '**Sai** vì $\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} \\;\\middle|\\; a, b \\in '
-                        '\\mathbb{Z}, b \\neq 0 \\right\\}$ là công thức của nội dung khác, không phải quy '
-                        'tắc chung của **So sánh đường vuông góc và đường xiên**. d) **Đúng** theo lời giải '
-                        'ví dụ minh họa trong bài học.'},
+                        'xiên. b) **Đúng** theo công thức **So sánh đường vuông góc và đường xiên** ($AH '
+                        '\\perp d$ tại $H$, $M \\in d$ ($M \\neq H$) $\\Rightarrow AH < AM$). c) **Sai** vì '
+                        'công thức đúng của **So sánh đường vuông góc và đường xiên** phải là $AH \\perp d$ '
+                        'tại $H$, $M \\in d$ ($M \\neq H$) $\\Rightarrow AH < AM$ chứ không phải $AH \\perp '
+                        'd$ tại $H$, $M \\notin d$ ($M \\neq H$) $\\Rightarrow AH < AM$. d) **Đúng** theo '
+                        'lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 32: Quan hệ giữa đường vuông góc và đường xiên** để giải quyết '
-                 'tình huống sau: Từ điểm $A$ trên bờ hồ cách mép đường thẳng $d$ một khoảng $AH = 15\\text{ '
-                 'm}$ ($AH \\perp d$), người ta bắc một cây cầu đi bộ từ $A$ đến một điểm $M$ trên đường '
-                 '$d$. Hỏi chiều dài cây cầu ngắn nhất là bao nhiêu mét? Kết quả và hướng giải nào dưới đây '
-                 'là **đúng**?',
-            'options': ['Ta có: $-2,5 = \\dfrac{-5}{2} = \\dfrac{-15}{6}$; $1\\dfrac{2}{3} = \\dfrac{5}{3}$; '
-                        '$-4 = \\dfrac{-4}{1} = \\dfrac{-24}{6}$. Vì $-4 < -2,5 < 0 < 1\\dfrac{2}{3}$ n...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 32: Quan hệ giữa đường vuông góc và đường xiên** để '
+                 'giải bài toán sau: Từ điểm $A$ trên bờ hồ cách mép đường thẳng $d$ một khoảng $AH = '
+                 '15\\text{ m}$ ($AH \\perp d$), người ta bắc một cây cầu đi bộ từ $A$ đến một điểm $M$ trên '
+                 'đường $d$. Hỏi chiều dài cây cầu ngắn nhất là bao nhiêu mét? Cách giải và kết quả nào dưới '
+                 'đây là **đúng**?',
+            'options': ['Trong các đoạn thẳng nối từ $A$ đến đường thẳng $d$, đoạn song song $AH$ là ngắn '
+                        'nhất. Vậy cây cầu ngắn nhất khi bắc tại chân đường vuông góc $H$ và c...',
                         'Trong các đoạn thẳng nối từ $A$ đến đường thẳng $d$, đoạn vuông góc $AH$ là ngắn '
-                        'nhất. Vậy cây cầu ngắn nhất khi bắc tại chân đường vuông góc $H$ và có chi...',
-                        'Áp dụng tính chất phân phối của phép nhân đối với phép cộng: $A = \\dfrac{-3}{7} '
-                        '\\cdot \\left(\\dfrac{5}{9} + \\dfrac{4}{9}\\right) + \\dfrac{10}{7} = '
-                        '\\dfrac{-3}{7} \\cdot 1 + \\dfrac{10}{7} = \\dfrac{7}{7} = 1$...',
-                        'Ta có: $M = \\dfrac{(2^3)^{10}}{(2^2)^8} = \\dfrac{2^{30}}{2^{16}} = 2^{30-16} = '
-                        '2^{14} = 16384$. $N = (0,125 \\cdot 8)^3 = 1^3 = 1$.'],
+                        'nhất. Vậy cây cầu ngắn nhất khi bắc tại chân đường vuông góc $H$ và c...',
+                        'Thực hiện theo thứ tự ngược lại và bỏ qua điều kiện xác định trong bài',
+                        'Đổi ngược dấu của phép tính chính và không kiểm tra lại kết quả'],
             'answer': 1,
             'solution': 'Lời giải chi tiết theo Bài 32: Quan hệ giữa đường vuông góc và đường xiên: Trong '
                         'các đoạn thẳng nối từ $A$ đến đường thẳng $d$, đoạn vuông góc $AH$ là ngắn nhất.\n'
@@ -5603,8 +5636,8 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
                    'độ dài cạnh còn lại).',
                    'Vận dụng được bất đẳng thức tam giác để kiểm tra ba độ dài có tạo thành một tam giác hay '
                    'không và tìm khoảng giá trị của cạnh thứ ba.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Tổng hai cạnh lớn hơn cạnh thứ ba** ($AB + '
-                   'AC > BC; \\quad AB + BC > AC; \\quad AC + BC > AB$) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 33: Quan hệ giữa ba cạnh của một tam giác** để giải bài tập '
+                   'minh họa và bài toán thực tiễn.'],
   'definition': 'Trong một tam giác, độ dài của một cạnh bất kì luôn nhỏ hơn tổng độ dài hai cạnh còn lại và '
                 'lớn hơn hiệu độ dài hai cạnh đó.',
   'theory': '1. Bất đẳng thức tam giác: Trong $\\triangle ABC$, với ba cạnh $a, b, c$, ta luôn có:\n'
@@ -5647,28 +5680,28 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 33: Quan hệ giữa ba cạnh của một tam giác**, công thức '
-                 'hoặc quy tắc nào sau đây biểu diễn đúng **Tổng hai cạnh lớn hơn cạnh thứ ba**?',
-            'options': ['$|AB - AC| < BC < AB + AC$',
-                        '$\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} \\;\\middle|\\; a, b \\in \\mathbb{Z}, b '
-                        '\\neq 0 \\right\\}$',
+            'q': 'Trong **Bài 33: Quan hệ giữa ba cạnh của một tam giác**, quy tắc hoặc công thức nào sau '
+                 'đây xác định đúng **Tổng hai cạnh lớn hơn cạnh thứ ba**?',
+            'options': ['$AB - AC > BC; \\quad AB + BC > AC; \\quad AC + BC > AB$',
+                        'Đảo ngược vế của quy tắc: $AB + AC > BC; \\quad AB + BC > AC; \\quad AC + BC > AB$',
                         '$AB + AC > BC; \\quad AB + BC > AC; \\quad AC + BC > AB$',
-                        '$\\mathbb{N} \\subset \\mathbb{Z} \\subset \\mathbb{Q}$'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $AB + AC > BC; \\quad AB + BC > '
+                        'AC; \\quad AC + BC > AB$'],
             'answer': 2,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 33: Quan hệ giữa ba cạnh của một tam giác, '
-                        '**Tổng hai cạnh lớn hơn cạnh thứ ba** được xác định bởi: $AB + AC > BC; \\quad AB + '
-                        'BC > AC; \\quad AC + BC > AB$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 33: Quan hệ giữa ba cạnh của một tam giác, **Tổng '
+                        'hai cạnh lớn hơn cạnh thứ ba** được xác định bởi: $AB + AC > BC; \\quad AB + BC > '
+                        'AC; \\quad AC + BC > AB$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 33: Quan hệ giữa ba cạnh của một tam giác**, nội dung/biểu thức $|AB - AC| < '
-                 'BC < AB + AC$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Tổng hai cạnh lớn hơn cạnh thứ ba',
-                        'Định nghĩa tập $\\mathbb{Q}$',
-                        'Quan hệ tập hợp',
-                        'Hệ quả kẹp độ dài một cạnh'],
+            'q': 'Khi học **Bài 33: Quan hệ giữa ba cạnh của một tam giác**, biểu thức hoặc quy tắc nào dưới '
+                 'đây biểu diễn đúng **Hệ quả kẹp độ dài một cạnh**?',
+            'options': ['$|AB - AC| < BC < AB - AC$',
+                        'Đảo ngược vế của quy tắc: $|AB - AC| < BC < AB + AC$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $|AB - AC| < BC < AB + AC$',
+                        '$|AB - AC| < BC < AB + AC$'],
             'answer': 3,
-            'solution': 'Trong Bài 33: Quan hệ giữa ba cạnh của một tam giác, biểu thức/quy tắc $|AB - AC| < '
-                        'BC < AB + AC$ chính là nội dung của **Hệ quả kẹp độ dài một cạnh**.'},
+            'solution': 'Trong Bài 33: Quan hệ giữa ba cạnh của một tam giác, **Hệ quả kẹp độ dài một cạnh** '
+                        'có công thức/quy tắc là: $|AB - AC| < BC < AB + AC$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Một tam giác cân có hai cạnh bằng $3\\text{ cm}$ và $7\\text{ cm}$. Độ dài cạnh còn lại '
@@ -5681,17 +5714,18 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 33: Quan hệ giữa ba cạnh của một tam giác** (Chương IX: Quan hệ giữa các yếu '
-                 'tố trong một tam giác), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản '
-                 'chất kiến thức của bài?',
-            'options': ['Nhận biết được số hữu tỉ và lấy được ví dụ về số hữu tỉ, nhận biết tập hợp các số '
-                        'hữu tỉ $\\mathbb{Q}$.',
+            'q': 'Để nắm vững bản chất của **Bài 33: Quan hệ giữa ba cạnh của một tam giác**, nhận định nào '
+                 'sau đây là **chính xác**?',
+            'options': ['Giải thích được định lí về bất đẳng thức tam giác (tổng độ dài hai cạnh bất kì bé '
+                        'hơn độ dài cạnh còn lại).',
                         'Giải thích được định lí về bất đẳng thức tam giác (tổng độ dài hai cạnh bất kì lớn '
                         'hơn độ dài cạnh còn lại).',
-                        'Biểu diễn được số hữu tỉ trên trục số và nhận biết được số đối của một số hữu tỉ.',
-                        'Nhận biết được thứ tự trong tập hợp các số hữu tỉ và so sánh được hai số hữu tỉ.'],
+                        'Đảo ngược vế của quy tắc: Giải thích được định lí về bất đẳng thức tam giác (tổng '
+                        'độ dài hai cạnh bất kì lớn hơn độ dài cạnh còn lại).',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Giải thích được định lí về bất '
+                        'đẳng thức tam giác (tổng độ dài hai cạnh bất kì lớn hơn độ dài cạnh còn lại).'],
             'answer': 1,
-            'solution': 'Theo yêu cầu cần đạt của Bài 33: Quan hệ giữa ba cạnh của một tam giác: Giải thích '
+            'solution': 'Theo nội dung cốt lõi của Bài 33: Quan hệ giữa ba cạnh của một tam giác: Giải thích '
                         'được định lí về bất đẳng thức tam giác (tổng độ dài hai cạnh bất kì lớn hơn độ dài '
                         'cạnh còn lại).'},
            {'level': 'hieu',
@@ -5710,44 +5744,42 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 33: Quan hệ giữa ba '
-                 'cạnh của một tam giác**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Giải thích được định lí về bất '
-                           'đẳng thức tam giác (tổng độ dài hai cạnh bất kì lớn hơn độ dài cạnh còn lại).',
-                           'Quy tắc/công thức **Tổng hai cạnh lớn hơn cạnh thứ ba** trong bài được xác định '
-                           'bởi: $AB + AC > BC; \\quad AB + BC > AC; \\quad AC + BC > AB$.',
-                           'Trong mọi trường hợp, **Tổng hai cạnh lớn hơn cạnh thứ ba** luôn được tính bằng '
-                           'công thức $\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} \\;\\middle|\\; a, b \\in '
-                           '\\mathbb{Z}, b \\neq 0 \\right\\}$ (thuộc Định nghĩa tập $\\mathbb{Q}$) mà không '
-                           'cần điều kiện của Bài 33: Quan hệ giữa ba cạnh của một tam giác.',
-                           'Với bài toán minh họa: “Cho $\\triangle ABC$ có $AB = 3\\text{ cm}, AC = '
-                           '7\\text{ cm}$. Tìm độ dài cạnh $BC$ biết độ dài $BC$ (tính theo $\\text{cm}$) là '
-                           'một số nguyên...”, lời giải đúng là: Theo bất đẳng thức tam giác: $7 - 3 < BC < '
-                           '7 + 3 \\Leftrightarrow 4 < BC < 10$. Vì $\\triangle ABC$ cân nên $BC = AB = '
-                           '3\\text{ cm}$ hoặc $BC = AC = 7\\text{ cm}$...'],
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 33: Quan hệ giữa ba cạnh '
+                 'của một tam giác**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Giải thích được định lí về bất đẳng thức '
+                           'tam giác (tổng độ dài hai cạnh bất kì lớn hơn độ dài cạnh còn lại).',
+                           'Trong **Bài 33: Quan hệ giữa ba cạnh của một tam giác**, quy tắc/công thức '
+                           '**Tổng hai cạnh lớn hơn cạnh thứ ba** được viết là: $AB + AC > BC; \\quad AB + '
+                           'BC > AC; \\quad AC + BC > AB$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $AB - AC > BC; \\quad AB + BC > AC; \\quad '
+                           'AC + BC > AB$ thì kết quả của **Tổng hai cạnh lớn hơn cạnh thứ ba** trong **Bài '
+                           '33: Quan hệ giữa ba cạnh của một tam giác** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Cho $\\triangle ABC$ có $AB = 3\\text{ cm}, AC = 7\\text{ '
+                           'cm}$. Tìm độ dài cạnh $BC$ biết độ dài $BC$ (tính theo $\\text{cm}$) là một số '
+                           'ng...”, kết quả giải đúng là: Theo bất đẳng thức tam giác: $7 - 3 < BC < 7 + 3 '
+                           '\\Leftrightarrow 4 < BC < 10$. Vì $\\triangle ABC$ cân nên $BC = AB = 3\\text{ '
+                           'cm}$ hoặc...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 33: Quan hệ giữa ba cạnh của một tam giác. '
-                        'b) **Đúng** theo công thức trọng tâm **Tổng hai cạnh lớn hơn cạnh thứ ba** ($AB + '
-                        'AC > BC; \\quad AB + BC > AC; \\quad AC + BC > AB$). c) **Sai** vì $\\mathbb{Q} = '
-                        '\\left\\{ \\dfrac{a}{b} \\;\\middle|\\; a, b \\in \\mathbb{Z}, b \\neq 0 '
-                        '\\right\\}$ là công thức của nội dung khác, không phải quy tắc chung của **Tổng hai '
-                        'cạnh lớn hơn cạnh thứ ba**. d) **Đúng** theo lời giải ví dụ minh họa trong bài '
-                        'học.'},
+                        'b) **Đúng** theo công thức **Tổng hai cạnh lớn hơn cạnh thứ ba** ($AB + AC > BC; '
+                        '\\quad AB + BC > AC; \\quad AC + BC > AB$). c) **Sai** vì công thức đúng của **Tổng '
+                        'hai cạnh lớn hơn cạnh thứ ba** phải là $AB + AC > BC; \\quad AB + BC > AC; \\quad '
+                        'AC + BC > AB$ chứ không phải $AB - AC > BC; \\quad AB + BC > AC; \\quad AC + BC > '
+                        'AB$. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 33: Quan hệ giữa ba cạnh của một tam giác** để giải quyết tình '
-                 'huống sau: Cho $\\triangle ABC$ có $AB = 3\\text{ cm}, AC = 7\\text{ cm}$. Tìm độ dài cạnh '
-                 '$BC$ biết độ dài $BC$ (tính theo $\\text{cm}$) là một số nguyên và $\\triangle ABC$ là tam '
-                 'giác cân. Kết quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Ta có: $-2,5 = \\dfrac{-5}{2} = \\dfrac{-15}{6}$; $1\\dfrac{2}{3} = \\dfrac{5}{3}$; '
-                        '$-4 = \\dfrac{-4}{1} = \\dfrac{-24}{6}$. Vì $-4 < -2,5 < 0 < 1\\dfrac{2}{3}$ n...',
-                        'Áp dụng tính chất phân phối của phép nhân đối với phép cộng: $A = \\dfrac{-3}{7} '
-                        '\\cdot \\left(\\dfrac{5}{9} + \\dfrac{4}{9}\\right) + \\dfrac{10}{7} = '
-                        '\\dfrac{-3}{7} \\cdot 1 + \\dfrac{10}{7} = \\dfrac{7}{7} = 1$...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 33: Quan hệ giữa ba cạnh của một tam giác** để giải '
+                 'bài toán sau: Cho $\\triangle ABC$ có $AB = 3\\text{ cm}, AC = 7\\text{ cm}$. Tìm độ dài '
+                 'cạnh $BC$ biết độ dài $BC$ (tính theo $\\text{cm}$) là một số nguyên và $\\triangle ABC$ '
+                 'là tam giác cân. Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Theo bất đẳng thức tam giác: $7 - 3 < BC < 7 - 3 \\Leftrightarrow 4 < BC < 10$. Vì '
+                        '$\\triangle ABC$ cân nên $BC = AB = 3\\text{ cm}$ hoặc $BC = AC = 7\\text{ cm}$...',
+                        'Theo bất đẳng thức tam giác: $7 - 3 < BC < 7 + 3 \\Leftrightarrow 4 < BC < 10$. Vì '
+                        '$\\triangle ABC$ cân nên $BC = AB = 3\\text{ cm}$ hoặc $BC = AC = 6\\text{ cm}$...',
                         'Theo bất đẳng thức tam giác: $7 - 3 < BC < 7 + 3 \\Leftrightarrow 4 < BC < 10$. Vì '
                         '$\\triangle ABC$ cân nên $BC = AB = 3\\text{ cm}$ hoặc $BC = AC = 7\\text{ cm}$...',
-                        'Ta có: $M = \\dfrac{(2^3)^{10}}{(2^2)^8} = \\dfrac{2^{30}}{2^{16}} = 2^{30-16} = '
-                        '2^{14} = 16384$. $N = (0,125 \\cdot 8)^3 = 1^3 = 1$.'],
+                        'Theo bất đẳng thức tam giác: $14 - 3 < BC < 7 + 3 \\Leftrightarrow 4 < BC < 10$. Vì '
+                        '$\\triangle ABC$ cân nên $BC = AB = 3\\text{ cm}$ hoặc $BC = AC = 7\\text{ cm}$...'],
             'answer': 2,
             'solution': 'Lời giải chi tiết theo Bài 33: Quan hệ giữa ba cạnh của một tam giác: Theo bất đẳng '
                         'thức tam giác: $7 - 3 < BC < 7 + 3 \\Leftrightarrow 4 < BC < 10$.\n'
@@ -5775,9 +5807,8 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
   'requirements': ['Nhận biết được đường trung tuyến, trọng tâm và tính chất trọng tâm của tam giác.',
                    'Nhận biết được sự đồng quy của ba đường phân giác trong một tam giác và tính chất điểm '
                    'đồng quy cách đều ba cạnh.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Hệ thức trọng tâm $G$ trên trung tuyến '
-                   '$AM$** ($AG = \\dfrac{2}{3}AM; \\quad GM = \\dfrac{1}{3}AM; \\quad AG = 2GM$) vào giải '
-                   'bài tập.'],
+                   'Vận dụng kiến thức của **Bài 34: Sự đồng quy của ba đường trung tuyến, ba đường phân '
+                   'giác trong một tam giác** để giải bài tập minh họa và bài toán thực tiễn.'],
   'definition': 'Đường trung tuyến của tam giác là đoạn thẳng nối một đỉnh với trung điểm của cạnh đối diện. '
                 'Ba đường trung tuyến của một tam giác cùng đi qua một điểm gọi là trọng tâm. Ba đường phân '
                 'giác của một tam giác cùng đi qua một điểm và điểm đó cách đều ba cạnh của tam giác.',
@@ -5828,32 +5859,34 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 34: Sự đồng quy của ba đường trung tuyến, ba đường phân '
-                 'giác trong một tam giác**, công thức hoặc quy tắc nào sau đây biểu diễn đúng **Hệ thức '
-                 'trọng tâm $G$ trên trung tuyến $AM$**?',
-            'options': ['Khoảng cách từ $I$ đến ba cạnh $AB, BC, CA$ bằng nhau ($IH = IK = IL$)',
-                        '$\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} \\;\\middle|\\; a, b \\in \\mathbb{Z}, b '
-                        '\\neq 0 \\right\\}$',
-                        '$\\mathbb{N} \\subset \\mathbb{Z} \\subset \\mathbb{Q}$',
+            'q': 'Trong **Bài 34: Sự đồng quy của ba đường trung tuyến, ba đường phân giác trong một tam '
+                 'giác**, quy tắc hoặc công thức nào sau đây xác định đúng **Hệ thức trọng tâm $G$ trên '
+                 'trung tuyến $AM$**?',
+            'options': ['$AG = \\dfrac{3}{3}AM; \\quad GM = \\dfrac{1}{3}AM; \\quad AG = 2GM$',
+                        '$AG = \\dfrac{3}{2}AM; \\quad GM = \\dfrac{1}{3}AM; \\quad AG = 2GM$',
+                        '$AG = \\dfrac{4}{3}AM; \\quad GM = \\dfrac{1}{3}AM; \\quad AG = 2GM$',
                         '$AG = \\dfrac{2}{3}AM; \\quad GM = \\dfrac{1}{3}AM; \\quad AG = 2GM$'],
             'answer': 3,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 34: Sự đồng quy của ba đường trung tuyến, ba '
-                        'đường phân giác trong một tam giác, **Hệ thức trọng tâm $G$ trên trung tuyến $AM$** '
-                        'được xác định bởi: $AG = \\dfrac{2}{3}AM; \\quad GM = \\dfrac{1}{3}AM; \\quad AG = '
+            'solution': 'Theo kiến thức trọng tâm của Bài 34: Sự đồng quy của ba đường trung tuyến, ba đường '
+                        'phân giác trong một tam giác, **Hệ thức trọng tâm $G$ trên trung tuyến $AM$** được '
+                        'xác định bởi: $AG = \\dfrac{2}{3}AM; \\quad GM = \\dfrac{1}{3}AM; \\quad AG = '
                         '2GM$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 34: Sự đồng quy của ba đường trung tuyến, ba đường phân giác trong một tam '
-                 'giác**, nội dung/biểu thức Khoảng cách từ $I$ đến ba cạnh $AB, BC, CA$ bằng nhau ($IH = IK '
-                 '= IL$) là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Giao điểm $I$ của ba đường phân giác',
-                        'Hệ thức trọng tâm $G$ trên trung tuyến $AM$',
-                        'Định nghĩa tập $\\mathbb{Q}$',
-                        'Quan hệ tập hợp'],
+            'q': 'Khi học **Bài 34: Sự đồng quy của ba đường trung tuyến, ba đường phân giác trong một tam '
+                 'giác**, biểu thức hoặc quy tắc nào dưới đây biểu diễn đúng **Giao điểm $I$ của ba đường '
+                 'phân giác**?',
+            'options': ['Khoảng cách từ $I$ đến ba cạnh $AB, BC, CA$ bằng nhau ($IH = IK = IL$)',
+                        'Khoảng cách từ $I$ đến ba cạnh $AB, BC, CA$ bằng nhau ($IH = IK = IL$) (với dấu '
+                        'ngược lại)',
+                        'Đảo ngược vế của quy tắc: Khoảng cách từ $I$ đến ba cạnh $AB, BC, CA$ bằng nhau '
+                        '($IH = IK = IL$)',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Khoảng cách từ $I$ đến ba cạnh '
+                        '$AB, BC, CA$ bằng nhau ($IH = IK = IL$)'],
             'answer': 0,
             'solution': 'Trong Bài 34: Sự đồng quy của ba đường trung tuyến, ba đường phân giác trong một '
-                        'tam giác, biểu thức/quy tắc Khoảng cách từ $I$ đến ba cạnh $AB, BC, CA$ bằng nhau '
-                        '($IH = IK = IL$) chính là nội dung của **Giao điểm $I$ của ba đường phân giác**.'},
+                        'tam giác, **Giao điểm $I$ của ba đường phân giác** có công thức/quy tắc là: Khoảng '
+                        'cách từ $I$ đến ba cạnh $AB, BC, CA$ bằng nhau ($IH = IK = IL$).'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Cho $\\triangle ABC$ có trung tuyến $AM = 9\\text{ cm}$ và trọng tâm $G$. Độ dài đoạn '
@@ -5866,16 +5899,17 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 34: Sự đồng quy của ba đường trung tuyến, ba đường phân giác trong một tam '
-                 'giác** (Chương IX: Quan hệ giữa các yếu tố trong một tam giác), khẳng định nào sau đây '
-                 'phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Nhận biết được số hữu tỉ và lấy được ví dụ về số hữu tỉ, nhận biết tập hợp các số '
-                        'hữu tỉ $\\mathbb{Q}$.',
-                        'Biểu diễn được số hữu tỉ trên trục số và nhận biết được số đối của một số hữu tỉ.',
+            'q': 'Để nắm vững bản chất của **Bài 34: Sự đồng quy của ba đường trung tuyến, ba đường phân '
+                 'giác trong một tam giác**, nhận định nào sau đây là **chính xác**?',
+            'options': ['Nhận biết được đường trung tuyến, trọng tâm và tính chất trọng tâm của tam giác. '
+                        '(với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Nhận biết được đường trung tuyến, trọng tâm và tính chất '
+                        'trọng tâm của tam giác.',
                         'Nhận biết được đường trung tuyến, trọng tâm và tính chất trọng tâm của tam giác.',
-                        'Nhận biết được thứ tự trong tập hợp các số hữu tỉ và so sánh được hai số hữu tỉ.'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nhận biết được đường trung '
+                        'tuyến, trọng tâm và tính chất trọng tâm của tam giác.'],
             'answer': 2,
-            'solution': 'Theo yêu cầu cần đạt của Bài 34: Sự đồng quy của ba đường trung tuyến, ba đường '
+            'solution': 'Theo nội dung cốt lõi của Bài 34: Sự đồng quy của ba đường trung tuyến, ba đường '
                         'phân giác trong một tam giác: Nhận biết được đường trung tuyến, trọng tâm và tính '
                         'chất trọng tâm của tam giác.'},
            {'level': 'hieu',
@@ -5893,44 +5927,47 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 34: Sự đồng quy của ba '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 34: Sự đồng quy của ba '
                  'đường trung tuyến, ba đường phân giác trong một tam giác**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được đường trung tuyến, '
-                           'trọng tâm và tính chất trọng tâm của tam giác.',
-                           'Quy tắc/công thức **Hệ thức trọng tâm $G$ trên trung tuyến $AM$** trong bài được '
-                           'xác định bởi: $AG = \\dfrac{2}{3}AM; \\quad GM = \\dfrac{1}{3}AM; \\quad AG = '
-                           '2GM$.',
-                           'Trong mọi trường hợp, **Hệ thức trọng tâm $G$ trên trung tuyến $AM$** luôn được '
-                           'tính bằng công thức $\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} \\;\\middle|\\; a, b '
-                           '\\in \\mathbb{Z}, b \\neq 0 \\right\\}$ (thuộc Định nghĩa tập $\\mathbb{Q}$) mà '
-                           'không cần điều kiện của Bài 34: Sự đồng quy của ba đường trung tuyến, ba đường '
-                           'phân giác trong một tam giác.',
-                           'Với bài toán minh họa: “Cho $\\triangle ABC$ có đường trung tuyến $AM = '
-                           '12\\text{ cm}$ và trọng tâm $G$. Tính độ dài các đoạn thẳng $AG$ và $GM$.”, lời '
-                           'giải đúng là: Vì $G$ là trọng tâm của $\\triangle ABC$ nên: - $AG = '
-                           '\\dfrac{2}{3}AM = \\dfrac{2}{3} \\cdot 12 = 8\\text{ (cm)}$; - $GM = '
-                           '\\dfrac{1}{3}AM = \\dfrac{1}{3} \\cdot 12 = 4\\text{ (cm)}$...'],
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết được đường trung tuyến, trọng '
+                           'tâm và tính chất trọng tâm của tam giác.',
+                           'Trong **Bài 34: Sự đồng quy của ba đường trung tuyến, ba đường phân giác trong '
+                           'một tam giác**, quy tắc/công thức **Hệ thức trọng tâm $G$ trên trung tuyến '
+                           '$AM$** được viết là: $AG = \\dfrac{2}{3}AM; \\quad GM = \\dfrac{1}{3}AM; \\quad '
+                           'AG = 2GM$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $AG = \\dfrac{3}{3}AM; \\quad GM = '
+                           '\\dfrac{1}{3}AM; \\quad AG = 2GM$ thì kết quả của **Hệ thức trọng tâm $G$ trên '
+                           'trung tuyến $AM$** trong **Bài 34: Sự đồng quy của ba đường trung tuyến, ba '
+                           'đường phân giác trong một tam giác** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Cho $\\triangle ABC$ có đường trung tuyến $AM = 12\\text{ '
+                           'cm}$ và trọng tâm $G$. Tính độ dài các đoạn thẳng $AG$ và $GM$.”, kết quả giải '
+                           'đúng là: Vì $G$ là trọng tâm của $\\triangle ABC$ nên: - $AG = \\dfrac{2}{3}AM = '
+                           '\\dfrac{2}{3} \\cdot 12 = 8\\text{ (cm)}$; - $GM = \\dfrac{1}{3}AM = '
+                           '\\dfrac{1}{3} \\cdot 12 = 4\\text{ (cm)}$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 34: Sự đồng quy của ba đường trung tuyến, '
-                        'ba đường phân giác trong một tam giác. b) **Đúng** theo công thức trọng tâm **Hệ '
-                        'thức trọng tâm $G$ trên trung tuyến $AM$** ($AG = \\dfrac{2}{3}AM; \\quad GM = '
-                        '\\dfrac{1}{3}AM; \\quad AG = 2GM$). c) **Sai** vì $\\mathbb{Q} = \\left\\{ '
-                        '\\dfrac{a}{b} \\;\\middle|\\; a, b \\in \\mathbb{Z}, b \\neq 0 \\right\\}$ là công '
-                        'thức của nội dung khác, không phải quy tắc chung của **Hệ thức trọng tâm $G$ trên '
-                        'trung tuyến $AM$**. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        'ba đường phân giác trong một tam giác. b) **Đúng** theo công thức **Hệ thức trọng '
+                        'tâm $G$ trên trung tuyến $AM$** ($AG = \\dfrac{2}{3}AM; \\quad GM = '
+                        '\\dfrac{1}{3}AM; \\quad AG = 2GM$). c) **Sai** vì công thức đúng của **Hệ thức '
+                        'trọng tâm $G$ trên trung tuyến $AM$** phải là $AG = \\dfrac{2}{3}AM; \\quad GM = '
+                        '\\dfrac{1}{3}AM; \\quad AG = 2GM$ chứ không phải $AG = \\dfrac{3}{3}AM; \\quad GM = '
+                        '\\dfrac{1}{3}AM; \\quad AG = 2GM$. d) **Đúng** theo lời giải ví dụ minh họa trong '
+                        'bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 34: Sự đồng quy của ba đường trung tuyến, ba đường phân giác '
-                 'trong một tam giác** để giải quyết tình huống sau: Cho $\\triangle ABC$ có đường trung '
-                 'tuyến $AM = 12\\text{ cm}$ và trọng tâm $G$. Tính độ dài các đoạn thẳng $AG$ và $GM$. Kết '
-                 'quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Ta có: $-2,5 = \\dfrac{-5}{2} = \\dfrac{-15}{6}$; $1\\dfrac{2}{3} = \\dfrac{5}{3}$; '
-                        '$-4 = \\dfrac{-4}{1} = \\dfrac{-24}{6}$. Vì $-4 < -2,5 < 0 < 1\\dfrac{2}{3}$ n...',
-                        'Áp dụng tính chất phân phối của phép nhân đối với phép cộng: $A = \\dfrac{-3}{7} '
-                        '\\cdot \\left(\\dfrac{5}{9} + \\dfrac{4}{9}\\right) + \\dfrac{10}{7} = '
-                        '\\dfrac{-3}{7} \\cdot 1 + \\dfrac{10}{7} = \\dfrac{7}{7} = 1$...',
-                        'Ta có: $M = \\dfrac{(2^3)^{10}}{(2^2)^8} = \\dfrac{2^{30}}{2^{16}} = 2^{30-16} = '
-                        '2^{14} = 16384$. $N = (0,125 \\cdot 8)^3 = 1^3 = 1$.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 34: Sự đồng quy của ba đường trung tuyến, ba đường '
+                 'phân giác trong một tam giác** để giải bài toán sau: Cho $\\triangle ABC$ có đường trung '
+                 'tuyến $AM = 12\\text{ cm}$ và trọng tâm $G$. Tính độ dài các đoạn thẳng $AG$ và $GM$. Cách '
+                 'giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Vì $G$ là trọng tâm của $\\triangle ABC$ nên: + $AG = \\dfrac{2}{3}AM = '
+                        '\\dfrac{2}{3} \\cdot 12 = 8\\text{ (cm)}$; - $GM = \\dfrac{1}{3}AM = \\dfrac{1}{3} '
+                        '\\cdot 12 = 4\\text{ (cm)}$...',
+                        'Vì $G$ là trọng tâm của $\\triangle ABC$ nên: - $AG = \\dfrac{3}{2}AM = '
+                        '\\dfrac{2}{3} \\cdot 12 = 8\\text{ (cm)}$; - $GM = \\dfrac{1}{3}AM = \\dfrac{1}{3} '
+                        '\\cdot 12 = 4\\text{ (cm)}$...',
+                        'Vì $G$ là trọng tâm của $\\triangle ABC$ nên: - $AG = \\dfrac{4}{3}AM = '
+                        '\\dfrac{2}{3} \\cdot 12 = 8\\text{ (cm)}$; - $GM = \\dfrac{1}{3}AM = \\dfrac{1}{3} '
+                        '\\cdot 12 = 4\\text{ (cm)}$...',
                         'Vì $G$ là trọng tâm của $\\triangle ABC$ nên: - $AG = \\dfrac{2}{3}AM = '
                         '\\dfrac{2}{3} \\cdot 12 = 8\\text{ (cm)}$; - $GM = \\dfrac{1}{3}AM = \\dfrac{1}{3} '
                         '\\cdot 12 = 4\\text{ (cm)}$...'],
@@ -5960,8 +5997,8 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
                    'tại một điểm cách đều ba đỉnh.',
                    'Nhận biết được đường cao của tam giác và sự đồng quy của ba đường cao tại trực tâm của '
                    'tam giác.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Giao điểm 3 đường trung trực $O$** ($OA = '
-                   'OB = OC$ (cách đều ba đỉnh $A, B, C$)) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 35: Sự đồng quy của ba đường trung trực, ba đường cao trong '
+                   'một tam giác** để giải bài tập minh họa và bài toán thực tiễn.'],
   'definition': 'Ba đường trung trực của một tam giác cùng đi qua một điểm và điểm này cách đều ba đỉnh của '
                 'tam giác. Đường thẳng kẻ từ một đỉnh và vuông góc với cạnh đối diện gọi là đường cao của '
                 'tam giác; ba đường cao của tam giác cùng đi qua một điểm gọi là trực tâm.',
@@ -6014,31 +6051,31 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 35: Sự đồng quy của ba đường trung trực, ba đường cao '
-                 'trong một tam giác**, công thức hoặc quy tắc nào sau đây biểu diễn đúng **Giao điểm 3 '
-                 'đường trung trực $O$**?',
+            'q': 'Trong **Bài 35: Sự đồng quy của ba đường trung trực, ba đường cao trong một tam giác**, '
+                 'quy tắc hoặc công thức nào sau đây xác định đúng **Giao điểm 3 đường trung trực $O$**?',
             'options': ['$OA = OB = OC$ (cách đều ba đỉnh $A, B, C$)',
-                        '$AH \\perp BC, \\; BH \\perp AC, \\; CH \\perp AB$',
-                        'Đường trung tuyến, phân giác, đường cao kẻ từ $A$ và trung trực của $BC$ trùng nhau',
-                        '$\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} \\;\\middle|\\; a, b \\in \\mathbb{Z}, b '
-                        '\\neq 0 \\right\\}$'],
+                        '$OA = OB = OC$ (cách đều ba đỉnh $A, B, C$) (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: $OA = OB = OC$ (cách đều ba đỉnh $A, B, C$)',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $OA = OB = OC$ (cách đều ba '
+                        'đỉnh $A, B, C$)'],
             'answer': 0,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 35: Sự đồng quy của ba đường trung trực, ba '
-                        'đường cao trong một tam giác, **Giao điểm 3 đường trung trực $O$** được xác định '
-                        'bởi: $OA = OB = OC$ (cách đều ba đỉnh $A, B, C$).'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 35: Sự đồng quy của ba đường trung trực, ba đường '
+                        'cao trong một tam giác, **Giao điểm 3 đường trung trực $O$** được xác định bởi: $OA '
+                        '= OB = OC$ (cách đều ba đỉnh $A, B, C$).'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 35: Sự đồng quy của ba đường trung trực, ba đường cao trong một tam giác**, '
-                 'nội dung/biểu thức $AH \\perp BC, \\; BH \\perp AC, \\; CH \\perp AB$ là quy tắc hoặc công '
-                 'thức của mục nào sau đây?',
-            'options': ['Giao điểm 3 đường trung trực $O$',
-                        'Giao điểm 3 đường cao $H$ (trực tâm)',
-                        'Tính chất tam giác cân tại $A$',
-                        'Định nghĩa tập $\\mathbb{Q}$'],
+            'q': 'Khi học **Bài 35: Sự đồng quy của ba đường trung trực, ba đường cao trong một tam giác**, '
+                 'biểu thức hoặc quy tắc nào dưới đây biểu diễn đúng **Giao điểm 3 đường cao $H$ (trực '
+                 'tâm)**?',
+            'options': ['$AH \\perp BC, \\; BH \\perp AC, \\; CH \\perp AB$ (với dấu ngược lại)',
+                        '$AH \\perp BC, \\; BH \\perp AC, \\; CH \\perp AB$',
+                        'Đảo ngược vế của quy tắc: $AH \\perp BC, \\; BH \\perp AC, \\; CH \\perp AB$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $AH \\perp BC, \\; BH \\perp '
+                        'AC, \\; CH \\perp AB$'],
             'answer': 1,
             'solution': 'Trong Bài 35: Sự đồng quy của ba đường trung trực, ba đường cao trong một tam giác, '
-                        'biểu thức/quy tắc $AH \\perp BC, \\; BH \\perp AC, \\; CH \\perp AB$ chính là nội '
-                        'dung của **Giao điểm 3 đường cao $H$ (trực tâm)**.'},
+                        '**Giao điểm 3 đường cao $H$ (trực tâm)** có công thức/quy tắc là: $AH \\perp BC, '
+                        '\\; BH \\perp AC, \\; CH \\perp AB$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Trong một tam giác vuông, trực tâm của tam giác nằm ở vị trí nào?',
@@ -6053,17 +6090,19 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 35: Sự đồng quy của ba đường trung trực, ba đường cao trong một tam giác** '
-                 '(Chương IX: Quan hệ giữa các yếu tố trong một tam giác), khẳng định nào sau đây phản ánh '
-                 '**đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Nhận biết được số hữu tỉ và lấy được ví dụ về số hữu tỉ, nhận biết tập hợp các số '
-                        'hữu tỉ $\\mathbb{Q}$.',
-                        'Biểu diễn được số hữu tỉ trên trục số và nhận biết được số đối của một số hữu tỉ.',
-                        'Nhận biết được thứ tự trong tập hợp các số hữu tỉ và so sánh được hai số hữu tỉ.',
+            'q': 'Để nắm vững bản chất của **Bài 35: Sự đồng quy của ba đường trung trực, ba đường cao trong '
+                 'một tam giác**, nhận định nào sau đây là **chính xác**?',
+            'options': ['Nhận biết được đường trung trực của tam giác và tính chất ba đường trung trực đồng '
+                        'quy tại một điểm cách đều ba đỉnh. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Nhận biết được đường trung trực của tam giác và tính chất '
+                        'ba đường trung trực đồng quy tại một điểm cách đều ba đỉnh.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nhận biết được đường trung trực '
+                        'của tam giác và tính chất ba đường trung trực đồng quy tại một điểm cách đều ba '
+                        'đỉnh.',
                         'Nhận biết được đường trung trực của tam giác và tính chất ba đường trung trực đồng '
                         'quy tại một điểm cách đều ba đỉnh.'],
             'answer': 3,
-            'solution': 'Theo yêu cầu cần đạt của Bài 35: Sự đồng quy của ba đường trung trực, ba đường cao '
+            'solution': 'Theo nội dung cốt lõi của Bài 35: Sự đồng quy của ba đường trung trực, ba đường cao '
                         'trong một tam giác: Nhận biết được đường trung trực của tam giác và tính chất ba '
                         'đường trung trực đồng quy tại một điểm cách đều ba đỉnh.'},
            {'level': 'hieu',
@@ -6083,45 +6122,39 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 35: Sự đồng quy của ba '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 35: Sự đồng quy của ba '
                  'đường trung trực, ba đường cao trong một tam giác**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được đường trung trực '
-                           'của tam giác và tính chất ba đường trung trực đồng quy tại một điểm cách đều ba '
-                           'đỉnh.',
-                           'Quy tắc/công thức **Giao điểm 3 đường trung trực $O$** trong bài được xác định '
-                           'bởi: $OA = OB = OC$ (cách đều ba đỉnh $A, B, C$).',
-                           'Trong mọi trường hợp, **Giao điểm 3 đường trung trực $O$** luôn được tính bằng '
-                           'công thức $\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} \\;\\middle|\\; a, b \\in '
-                           '\\mathbb{Z}, b \\neq 0 \\right\\}$ (thuộc Định nghĩa tập $\\mathbb{Q}$) mà không '
-                           'cần điều kiện của Bài 35: Sự đồng quy của ba đường trung trực, ba đường cao '
-                           'trong một tam giác.',
-                           'Với bài toán minh họa: “Cho $\\triangle ABC$ có hai đường cao $BD$ và $CE$ cắt '
-                           'nhau tại $H$. Chứng minh $AH \\perp BC$.”, lời giải đúng là: Trong $\\triangle '
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết được đường trung trực của tam '
+                           'giác và tính chất ba đường trung trực đồng quy tại một điểm cách đều ba đỉnh.',
+                           'Trong **Bài 35: Sự đồng quy của ba đường trung trực, ba đường cao trong một tam '
+                           'giác**, quy tắc/công thức **Giao điểm 3 đường trung trực $O$** được viết là: $OA '
+                           '= OB = OC$ (cách đều ba đỉnh $A, B, C$).',
+                           'Nếu áp dụng sai dấu/phép tính thành $OA = OB = OC$ (cách đều ba đỉnh $A, B, C$) '
+                           '(với dấu ngược lại) thì kết quả của **Giao điểm 3 đường trung trực $O$** trong '
+                           '**Bài 35: Sự đồng quy của ba đường trung trực, ba đường cao trong một tam giác** '
+                           'vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Cho $\\triangle ABC$ có hai đường cao $BD$ và $CE$ cắt nhau '
+                           'tại $H$. Chứng minh $AH \\perp BC$.”, kết quả giải đúng là: Trong $\\triangle '
                            'ABC$, hai đường cao $BD$ và $CE$ cắt nhau tại $H$ nên $H$ là trực tâm của '
-                           '$\\triangle ABC$. Vì ba đường cao của tam giác đồn...'],
+                           '$\\triangle ABC$. Vì ba đường cao của tam giá...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 35: Sự đồng quy của ba đường trung trực, '
-                        'ba đường cao trong một tam giác. b) **Đúng** theo công thức trọng tâm **Giao điểm 3 '
-                        'đường trung trực $O$** ($OA = OB = OC$ (cách đều ba đỉnh $A, B, C$)). c) **Sai** vì '
-                        '$\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} \\;\\middle|\\; a, b \\in \\mathbb{Z}, b '
-                        '\\neq 0 \\right\\}$ là công thức của nội dung khác, không phải quy tắc chung của '
-                        '**Giao điểm 3 đường trung trực $O$**. d) **Đúng** theo lời giải ví dụ minh họa '
-                        'trong bài học.'},
+                        'ba đường cao trong một tam giác. b) **Đúng** theo công thức **Giao điểm 3 đường '
+                        'trung trực $O$** ($OA = OB = OC$ (cách đều ba đỉnh $A, B, C$)). c) **Sai** vì công '
+                        'thức đúng của **Giao điểm 3 đường trung trực $O$** phải là $OA = OB = OC$ (cách đều '
+                        'ba đỉnh $A, B, C$) chứ không phải $OA = OB = OC$ (cách đều ba đỉnh $A, B, C$) (với '
+                        'dấu ngược lại). d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 35: Sự đồng quy của ba đường trung trực, ba đường cao trong một '
-                 'tam giác** để giải quyết tình huống sau: Cho $\\triangle ABC$ có hai đường cao $BD$ và '
-                 '$CE$ cắt nhau tại $H$. Chứng minh $AH \\perp BC$. Kết quả và hướng giải nào dưới đây là '
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 35: Sự đồng quy của ba đường trung trực, ba đường '
+                 'cao trong một tam giác** để giải bài toán sau: Cho $\\triangle ABC$ có hai đường cao $BD$ '
+                 'và $CE$ cắt nhau tại $H$. Chứng minh $AH \\perp BC$. Cách giải và kết quả nào dưới đây là '
                  '**đúng**?',
             'options': ['Trong $\\triangle ABC$, hai đường cao $BD$ và $CE$ cắt nhau tại $H$ nên $H$ là trực '
-                        'tâm của $\\triangle ABC$. Vì ba đường cao của tam giác đồng quy tại trực...',
-                        'Ta có: $-2,5 = \\dfrac{-5}{2} = \\dfrac{-15}{6}$; $1\\dfrac{2}{3} = \\dfrac{5}{3}$; '
-                        '$-4 = \\dfrac{-4}{1} = \\dfrac{-24}{6}$. Vì $-4 < -2,5 < 0 < 1\\dfrac{2}{3}$ n...',
-                        'Áp dụng tính chất phân phối của phép nhân đối với phép cộng: $A = \\dfrac{-3}{7} '
-                        '\\cdot \\left(\\dfrac{5}{9} + \\dfrac{4}{9}\\right) + \\dfrac{10}{7} = '
-                        '\\dfrac{-3}{7} \\cdot 1 + \\dfrac{10}{7} = \\dfrac{7}{7} = 1$...',
-                        'Ta có: $M = \\dfrac{(2^3)^{10}}{(2^2)^8} = \\dfrac{2^{30}}{2^{16}} = 2^{30-16} = '
-                        '2^{14} = 16384$. $N = (0,125 \\cdot 8)^3 = 1^3 = 1$.'],
+                        'tâm của $\\triangle ABC$. Vì ba đường cao của tam giác đồng quy tại...',
+                        'Chỉ xét trường hợp đặc biệt bằng $0$ và bỏ qua quy tắc chung',
+                        'Thực hiện theo thứ tự ngược lại và bỏ qua điều kiện xác định trong bài',
+                        'Đổi ngược dấu của phép tính chính và không kiểm tra lại kết quả'],
             'answer': 0,
             'solution': 'Lời giải chi tiết theo Bài 35: Sự đồng quy của ba đường trung trực, ba đường cao '
                         'trong một tam giác: Trong $\\triangle ABC$, hai đường cao $BD$ và $CE$ cắt nhau tại '
@@ -6150,8 +6183,8 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
                    'hình lập phương, hình lăng trụ đứng tam giác và tứ giác.',
                    'Tính được diện tích xung quanh và thể tích của hình hộp chữ nhật, hình lập phương và '
                    'hình lăng trụ đứng trong thực tiễn.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Hình hộp chữ nhật kích thước $a, b, c$** '
-                   '($S_{xq} = 2(a + b)c; \\quad V = a \\cdot b \\cdot c$) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 36: Hình hộp chữ nhật, hình lập phương và hình lăng trụ '
+                   'đứng tam giác, tứ giác** để giải bài tập minh họa và bài toán thực tiễn.'],
   'definition': 'Hình hộp chữ nhật có $6$ mặt là các hình chữ nhật, $8$ đỉnh, $12$ cạnh. Hình lập phương là '
                 'hình hộp chữ nhật có $6$ mặt đều là hình vuông bằng nhau. Hình lăng trụ đứng tam giác (tứ '
                 'giác) có hai mặt đáy song song là tam giác (tứ giác) và các mặt bên là các hình chữ nhật.',
@@ -6205,31 +6238,29 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 36: Hình hộp chữ nhật, hình lập phương và hình lăng trụ '
-                 'đứng tam giác, tứ giác**, công thức hoặc quy tắc nào sau đây biểu diễn đúng **Hình hộp chữ '
-                 'nhật kích thước $a, b, c$**?',
-            'options': ['$S_{xq} = 4d^2; \\quad S_{tp} = 6d^2; \\quad V = d^3$',
+            'q': 'Trong **Bài 36: Hình hộp chữ nhật, hình lập phương và hình lăng trụ đứng tam giác, tứ '
+                 'giác**, quy tắc hoặc công thức nào sau đây xác định đúng **Hình hộp chữ nhật kích thước '
+                 '$a, b, c$**?',
+            'options': ['$S_{xq} = 2(a - b)c; \\quad V = a \\cdot b \\cdot c$',
                         '$S_{xq} = 2(a + b)c; \\quad V = a \\cdot b \\cdot c$',
-                        '$S_{xq} = C_{\\text{đáy}} \\cdot h; \\quad V = S_{\\text{đáy}} \\cdot h$',
-                        '$\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} \\;\\middle|\\; a, b \\in \\mathbb{Z}, b '
-                        '\\neq 0 \\right\\}$'],
+                        '$S_{xq} = 1(a + b)c; \\quad V = a \\cdot b \\cdot c$',
+                        '$S_{xq} = 4(a + b)c; \\quad V = a \\cdot b \\cdot c$'],
             'answer': 1,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 36: Hình hộp chữ nhật, hình lập phương và '
-                        'hình lăng trụ đứng tam giác, tứ giác, **Hình hộp chữ nhật kích thước $a, b, c$** '
-                        'được xác định bởi: $S_{xq} = 2(a + b)c; \\quad V = a \\cdot b \\cdot c$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 36: Hình hộp chữ nhật, hình lập phương và hình '
+                        'lăng trụ đứng tam giác, tứ giác, **Hình hộp chữ nhật kích thước $a, b, c$** được '
+                        'xác định bởi: $S_{xq} = 2(a + b)c; \\quad V = a \\cdot b \\cdot c$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 36: Hình hộp chữ nhật, hình lập phương và hình lăng trụ đứng tam giác, tứ '
-                 'giác**, nội dung/biểu thức $S_{xq} = 4d^2; \\quad S_{tp} = 6d^2; \\quad V = d^3$ là quy '
-                 'tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Hình hộp chữ nhật kích thước $a, b, c$',
-                        'Hình lăng trụ đứng tam giác, tứ giác',
-                        'Hình lập phương cạnh $d$',
-                        'Định nghĩa tập $\\mathbb{Q}$'],
+            'q': 'Khi học **Bài 36: Hình hộp chữ nhật, hình lập phương và hình lăng trụ đứng tam giác, tứ '
+                 'giác**, biểu thức hoặc quy tắc nào dưới đây biểu diễn đúng **Hình lập phương cạnh $d$**?',
+            'options': ['$S_{xq} = 4d^3; \\quad S_{tp} = 6d^2; \\quad V = d^3$',
+                        '$S_{xq} = 4d^2; \\quad S_{tp} = 6d^2; \\quad V = d^2$',
+                        '$S_{xq} = 4d^2; \\quad S_{tp} = 6d^2; \\quad V = d^3$',
+                        '$S_{xq} = 4d^4; \\quad S_{tp} = 6d^2; \\quad V = d^3$'],
             'answer': 2,
             'solution': 'Trong Bài 36: Hình hộp chữ nhật, hình lập phương và hình lăng trụ đứng tam giác, tứ '
-                        'giác, biểu thức/quy tắc $S_{xq} = 4d^2; \\quad S_{tp} = 6d^2; \\quad V = d^3$ chính '
-                        'là nội dung của **Hình lập phương cạnh $d$**.'},
+                        'giác, **Hình lập phương cạnh $d$** có công thức/quy tắc là: $S_{xq} = 4d^2; \\quad '
+                        'S_{tp} = 6d^2; \\quad V = d^3$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Một hình lập phương có độ dài cạnh bằng $4\\text{ cm}$. Diện tích xung quanh và thể tích '
@@ -6244,17 +6275,20 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 36: Hình hộp chữ nhật, hình lập phương và hình lăng trụ đứng tam giác, tứ '
-                 'giác** (Chương X: Một số hình khối trong thực tiễn), khẳng định nào sau đây phản ánh '
-                 '**đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
+            'q': 'Để nắm vững bản chất của **Bài 36: Hình hộp chữ nhật, hình lập phương và hình lăng trụ '
+                 'đứng tam giác, tứ giác**, nhận định nào sau đây là **chính xác**?',
             'options': ['Mô tả được các yếu tố (đỉnh, cạnh, mặt đáy, mặt bên, chiều cao) của hình hộp chữ '
                         'nhật, hình lập phương, hình lăng trụ đứng tam giác và tứ giác.',
-                        'Nhận biết được số hữu tỉ và lấy được ví dụ về số hữu tỉ, nhận biết tập hợp các số '
-                        'hữu tỉ $\\mathbb{Q}$.',
-                        'Biểu diễn được số hữu tỉ trên trục số và nhận biết được số đối của một số hữu tỉ.',
-                        'Nhận biết được thứ tự trong tập hợp các số hữu tỉ và so sánh được hai số hữu tỉ.'],
+                        'Mô tả được các yếu tố (đỉnh, cạnh, mặt đáy, mặt bên, chiều cao) của hình hộp chữ '
+                        'nhật, hình lập phương, hình lăng trụ đứng tam giác và tứ giác. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Mô tả được các yếu tố (đỉnh, cạnh, mặt đáy, mặt bên, '
+                        'chiều cao) của hình hộp chữ nhật, hình lập phương, hình lăng trụ đứng tam giác và '
+                        'tứ giác.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Mô tả được các yếu tố (đỉnh, '
+                        'cạnh, mặt đáy, mặt bên, chiều cao) của hình hộp chữ nhật, hình lập phương, hình '
+                        'lăng trụ đứng tam giác và tứ giác.'],
             'answer': 0,
-            'solution': 'Theo yêu cầu cần đạt của Bài 36: Hình hộp chữ nhật, hình lập phương và hình lăng '
+            'solution': 'Theo nội dung cốt lõi của Bài 36: Hình hộp chữ nhật, hình lập phương và hình lăng '
                         'trụ đứng tam giác, tứ giác: Mô tả được các yếu tố (đỉnh, cạnh, mặt đáy, mặt bên, '
                         'chiều cao) của hình hộp chữ nhật, hình lập phương, hình lăng trụ đứng tam giác và '
                         'tứ giác.'},
@@ -6274,47 +6308,47 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 36: Hình hộp chữ nhật, '
-                 'hình lập phương và hình lăng trụ đứng tam giác, tứ giác**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Mô tả được các yếu tố (đỉnh, cạnh, '
-                           'mặt đáy, mặt bên, chiều cao) của hình hộp chữ nhật, hình lập phương, hình lăng '
-                           'trụ đứng tam giác và tứ giác.',
-                           'Quy tắc/công thức **Hình hộp chữ nhật kích thước $a, b, c$** trong bài được xác '
-                           'định bởi: $S_{xq} = 2(a + b)c; \\quad V = a \\cdot b \\cdot c$.',
-                           'Trong mọi trường hợp, **Hình hộp chữ nhật kích thước $a, b, c$** luôn được tính '
-                           'bằng công thức $\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} \\;\\middle|\\; a, b \\in '
-                           '\\mathbb{Z}, b \\neq 0 \\right\\}$ (thuộc Định nghĩa tập $\\mathbb{Q}$) mà không '
-                           'cần điều kiện của Bài 36: Hình hộp chữ nhật, hình lập phương và hình lăng trụ '
-                           'đứng tam giác, tứ giác.',
-                           'Với bài toán minh họa: “Một chiếc lều cắm trại có dạng hình lăng trụ đứng tam '
-                           'giác với chiều cao lều (chiều dài lăng trụ) $h = 3\\text{ m}$, đáy là tam giác '
-                           'có cạnh...”, lời giải đúng là: Diện tích mặt đáy hình tam giác là: '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 36: Hình hộp chữ nhật, hình '
+                 'lập phương và hình lăng trụ đứng tam giác, tứ giác**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Mô tả được các yếu tố (đỉnh, cạnh, mặt '
+                           'đáy, mặt bên, chiều cao) của hình hộp chữ nhật, hình lập phương, hình lăng trụ '
+                           'đứng tam giác và tứ giác.',
+                           'Trong **Bài 36: Hình hộp chữ nhật, hình lập phương và hình lăng trụ đứng tam '
+                           'giác, tứ giác**, quy tắc/công thức **Hình hộp chữ nhật kích thước $a, b, c$** '
+                           'được viết là: $S_{xq} = 2(a + b)c; \\quad V = a \\cdot b \\cdot c$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $S_{xq} = 2(a - b)c; \\quad V = a \\cdot b '
+                           '\\cdot c$ thì kết quả của **Hình hộp chữ nhật kích thước $a, b, c$** trong **Bài '
+                           '36: Hình hộp chữ nhật, hình lập phương và hình lăng trụ đứng tam giác, tứ giác** '
+                           'vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Một chiếc lều cắm trại có dạng hình lăng trụ đứng tam giác '
+                           'với chiều cao lều (chiều dài lăng trụ) $h = 3\\text{ m}$, đáy là tam giác '
+                           'có...”, kết quả giải đúng là: Diện tích mặt đáy hình tam giác là: '
                            '$S_{\\text{đáy}} = \\dfrac{1}{2} \\cdot 2 \\cdot 1,5 = 1,5\\text{ '
-                           '(m}^2\\text{)}$. Thể tích không gian bên tro...'],
+                           '(m}^2\\text{)}$. Thể tích không gian bê...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 36: Hình hộp chữ nhật, hình lập phương và '
-                        'hình lăng trụ đứng tam giác, tứ giác. b) **Đúng** theo công thức trọng tâm **Hình '
-                        'hộp chữ nhật kích thước $a, b, c$** ($S_{xq} = 2(a + b)c; \\quad V = a \\cdot b '
-                        '\\cdot c$). c) **Sai** vì $\\mathbb{Q} = \\left\\{ \\dfrac{a}{b} \\;\\middle|\\; a, '
-                        'b \\in \\mathbb{Z}, b \\neq 0 \\right\\}$ là công thức của nội dung khác, không '
-                        'phải quy tắc chung của **Hình hộp chữ nhật kích thước $a, b, c$**. d) **Đúng** theo '
-                        'lời giải ví dụ minh họa trong bài học.'},
+                        'hình lăng trụ đứng tam giác, tứ giác. b) **Đúng** theo công thức **Hình hộp chữ '
+                        'nhật kích thước $a, b, c$** ($S_{xq} = 2(a + b)c; \\quad V = a \\cdot b \\cdot c$). '
+                        'c) **Sai** vì công thức đúng của **Hình hộp chữ nhật kích thước $a, b, c$** phải là '
+                        '$S_{xq} = 2(a + b)c; \\quad V = a \\cdot b \\cdot c$ chứ không phải $S_{xq} = 2(a - '
+                        'b)c; \\quad V = a \\cdot b \\cdot c$. d) **Đúng** theo lời giải ví dụ minh họa '
+                        'trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 36: Hình hộp chữ nhật, hình lập phương và hình lăng trụ đứng tam '
-                 'giác, tứ giác** để giải quyết tình huống sau: Một chiếc lều cắm trại có dạng hình lăng trụ '
-                 'đứng tam giác với chiều cao lều (chiều dài lăng trụ) $h = 3\\text{ m}$, đáy là tam giác có '
-                 'cạnh đáy $2\\text{ m}$ và chiều cao tương ứng của tam giác đáy là $1,5\\text{ m}$. Tính '
-                 'thể tích không gian bên trong lều. Kết quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Ta có: $-2,5 = \\dfrac{-5}{2} = \\dfrac{-15}{6}$; $1\\dfrac{2}{3} = \\dfrac{5}{3}$; '
-                        '$-4 = \\dfrac{-4}{1} = \\dfrac{-24}{6}$. Vì $-4 < -2,5 < 0 < 1\\dfrac{2}{3}$ n...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 36: Hình hộp chữ nhật, hình lập phương và hình lăng '
+                 'trụ đứng tam giác, tứ giác** để giải bài toán sau: Một chiếc lều cắm trại có dạng hình '
+                 'lăng trụ đứng tam giác với chiều cao lều (chiều dài lăng trụ) $h = 3\\text{ m}$, đáy là '
+                 'tam giác có cạnh đáy $2\\text{ m}$ và chiều cao tương ứng của tam giác đáy là $1,5\\text{ '
+                 'm}$. Tính thể tích không gian bên trong lều. Cách giải và kết quả nào dưới đây là '
+                 '**đúng**?',
+            'options': ['Diện tích mặt đáy hình tam giác là: $S_{\\text{đáy}} = \\dfrac{1}{2} : 2 \\cdot 1,5 '
+                        '= 1,5\\text{ (m}^2\\text{)}$. Thể tích không gian bên trong lều là...',
                         'Diện tích mặt đáy hình tam giác là: $S_{\\text{đáy}} = \\dfrac{1}{2} \\cdot 2 '
                         '\\cdot 1,5 = 1,5\\text{ (m}^2\\text{)}$. Thể tích không gian bên trong lều là...',
-                        'Áp dụng tính chất phân phối của phép nhân đối với phép cộng: $A = \\dfrac{-3}{7} '
-                        '\\cdot \\left(\\dfrac{5}{9} + \\dfrac{4}{9}\\right) + \\dfrac{10}{7} = '
-                        '\\dfrac{-3}{7} \\cdot 1 + \\dfrac{10}{7} = \\dfrac{7}{7} = 1$...',
-                        'Ta có: $M = \\dfrac{(2^3)^{10}}{(2^2)^8} = \\dfrac{2^{30}}{2^{16}} = 2^{30-16} = '
-                        '2^{14} = 16384$. $N = (0,125 \\cdot 8)^3 = 1^3 = 1$.'],
+                        'Diện tích mặt đáy hình tam giác là: $S_{\\text{đáy}} = \\dfrac{2}{1} \\cdot 2 '
+                        '\\cdot 1,5 = 1,5\\text{ (m}^2\\text{)}$. Thể tích không gian bên trong lều là...',
+                        'Diện tích mặt đáy hình tam giác là: $S_{\\text{đáy}} = \\dfrac{2}{2} \\cdot 2 '
+                        '\\cdot 1,5 = 1,5\\text{ (m}^2\\text{)}$. Thể tích không gian bên trong lều là...'],
             'answer': 1,
             'solution': 'Lời giải chi tiết theo Bài 36: Hình hộp chữ nhật, hình lập phương và hình lăng trụ '
                         'đứng tam giác, tứ giác: Diện tích mặt đáy hình tam giác là: $S_{\\text{đáy}} = '

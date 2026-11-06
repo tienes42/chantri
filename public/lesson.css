@@ -2105,3 +2105,55 @@ body[data-theme="dark"] .qz-level-title.lv-vandung, body[data-theme="dark"] .qz-
     text-align: left;
   }
 }
+
+/* =========================================================
+   16. FIX CUỘN MƯỢT TOÀN BỘ THANH BÊN TRÁI (.lesson-sidebar)
+========================================================= */
+.lesson-sidebar {
+  position: sticky;
+  top: 82px;
+  max-height: calc(100vh - 94px);
+  overflow-y: auto;
+  overflow-x: hidden;
+  overscroll-behavior: contain;
+  -webkit-overflow-scrolling: touch;
+  padding-right: 6px;
+  padding-bottom: 28px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--subject-primary) var(--bg-subtle);
+}
+
+.lesson-sidebar::-webkit-scrollbar {
+  width: 7px;
+}
+
+.lesson-sidebar::-webkit-scrollbar-track {
+  background: var(--bg-subtle);
+  border-radius: 999px;
+}
+
+.lesson-sidebar::-webkit-scrollbar-thumb {
+  background: var(--subject-border);
+  border-radius: 999px;
+}
+
+.lesson-sidebar::-webkit-scrollbar-thumb:hover {
+  background: var(--subject-primary);
+}
+
+.lesson-sidebar .toc-card,
+.lesson-sidebar .chapter-lessons-list {
+  max-height: none !important;
+  min-height: 0 !important;
+  overflow-y: visible !important;
+}
+
+@media (max-width: 980px) {
+  .lesson-sidebar {
+    position: static;
+    max-height: none;
+    overflow-y: visible;
+    padding-right: 0;
+    padding-bottom: 0;
+  }
+}

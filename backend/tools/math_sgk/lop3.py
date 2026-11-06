@@ -1,7 +1,6 @@
 """Dữ liệu bài học SGK Toán Lớp 3 — Kết nối tri thức với cuộc sống (NXB Giáo dục Việt Nam).
-Cấu trúc 3 cấp: Lớp 3 ➔ Chương/Chủ đề (topic) ➔ Từng Bài học (title).
-Mỗi bài học gồm đầy đủ Yêu cầu cần đạt (requirements), Định nghĩa, Lý thuyết, Công thức, Ví dụ, Ứng dụng thực tế
-và đúng 10 câu hỏi luyện tập theo 3 mức độ: 4 Nhận biết + 4 Thông hiểu + 2 Vận dụng.
+Cấu trúc 3 cấp: Lớp 3 ➔ Chương/Chủ đề (topic) ➔ Từng Bài học độc lập (title).
+Mỗi bài học chỉ chứa kiến thức, công thức, ví dụ và 10 câu hỏi của riêng bài học đó.
 """
 
 GRADE = 3
@@ -29,14 +28,13 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             '- Số có nhiều chữ số hơn thì lớn hơn: $1\\,000 > 999 > 99$.\n'
             '- Hai số có cùng ba chữ số: so sánh từ trái sang phải (trăm $\\rightarrow$ chục $\\rightarrow$ '
             'đơn vị). Ví dụ: $542 < 561$ vì cùng $5$ trăm và $4 < 6$.',
-  'formulas': [{'category': 'I. Cấu tạo thập phân',
+  'formulas': [{'category': 'Công thức & Quy tắc trọng tâm: Ôn tập các số đến 1 000',
                 'items': [{'name': 'Phân tích số',
                            'formula': '$\\overline{abc} = a00 + b0 + c$',
                            'note': 'Ví dụ: $437 = 400 + 30 + 7$'},
                           {'name': 'Số tròn trăm, tròn nghìn',
-                           'formula': '$10 \\text{ chục} = 100$ · $10 \\text{ trăm} = 1\\,000$'}]},
-               {'category': 'II. Quy tắc so sánh',
-                'items': [{'name': 'Cùng số chữ số',
+                           'formula': '$10 \\text{ chục} = 100$ · $10 \\text{ trăm} = 1\\,000$'},
+                          {'name': 'Cùng số chữ số',
                            'formula': 'So sánh hàng trăm $\\rightarrow$ hàng chục $\\rightarrow$ hàng đơn '
                                       'vị'}]}],
   'example': 'Phân tích số $806$ thành tổng các trăm, chục, đơn vị và so sánh $806$ với $798$.',
@@ -64,24 +62,27 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 1: Ôn tập các số đến 1 000**, công thức hoặc quy tắc nào '
-                 'sau đây biểu diễn đúng **Phân tích số**?',
-            'options': ['$10 \\text{ chục} = 100$ · $10 \\text{ trăm} = 1\\,000$',
-                        'So sánh hàng trăm $\\rightarrow$ hàng chục $\\rightarrow$ hàng đơn vị',
+            'q': 'Trong **Bài 1: Ôn tập các số đến 1 000**, quy tắc hoặc công thức nào sau đây xác định đúng '
+                 '**Phân tích số**?',
+            'options': ['$\\overline{abc} = a00 - b0 + c$',
+                        'Đảo ngược vế của quy tắc: $\\overline{abc} = a00 + b0 + c$',
                         '$\\overline{abc} = a00 + b0 + c$',
-                        'Đặt thẳng cột · Tính từ phải sang trái (Đơn vị $\\rightarrow$ Chục $\\rightarrow$ '
-                        'Trăm)'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\overline{abc} = a00 + b0 + '
+                        'c$'],
             'answer': 2,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 1: Ôn tập các số đến 1 000, **Phân tích số** '
-                        'được xác định bởi: $\\overline{abc} = a00 + b0 + c$. (Ví dụ: $437 = 400 + 30 + 7$)'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 1: Ôn tập các số đến 1 000, **Phân tích số** được '
+                        'xác định bởi: $\\overline{abc} = a00 + b0 + c$. (Ví dụ: $437 = 400 + 30 + 7$)'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 1: Ôn tập các số đến 1 000**, nội dung/biểu thức $10 \\text{ chục} = 100$ · '
-                 '$10 \\text{ trăm} = 1\\,000$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Phân tích số', 'Cùng số chữ số', 'Thứ tự tính', 'Số tròn trăm, tròn nghìn'],
+            'q': 'Khi học **Bài 1: Ôn tập các số đến 1 000**, biểu thức hoặc quy tắc nào dưới đây biểu diễn '
+                 'đúng **Số tròn trăm, tròn nghìn**?',
+            'options': ['$11 \\text{ chục} = 100$ · $10 \\text{ trăm} = 1\\,000$',
+                        '$10 \\text{ chục} = 100$ · $10 \\text{ trăm} = 1\\,1$',
+                        '$20 \\text{ chục} = 100$ · $10 \\text{ trăm} = 1\\,000$',
+                        '$10 \\text{ chục} = 100$ · $10 \\text{ trăm} = 1\\,000$'],
             'answer': 3,
-            'solution': 'Trong Bài 1: Ôn tập các số đến 1 000, biểu thức/quy tắc $10 \\text{ chục} = 100$ · '
-                        '$10 \\text{ trăm} = 1\\,000$ chính là nội dung của **Số tròn trăm, tròn nghìn**.'},
+            'solution': 'Trong Bài 1: Ôn tập các số đến 1 000, **Số tròn trăm, tròn nghìn** có công thức/quy '
+                        'tắc là: $10 \\text{ chục} = 100$ · $10 \\text{ trăm} = 1\\,000$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Trong các số $689$, $698$, $869$, $690$, số lớn nhất là:',
@@ -92,15 +93,14 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 1: Ôn tập các số đến 1 000** (Chủ đề 1: Ôn tập và bổ sung), khẳng định nào '
-                 'sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Đặt tính và tính đúng phép cộng, phép trừ các số có đến ba chữ số trong phạm vi 1 '
-                        '000.',
+            'q': 'Để nắm vững bản chất của **Bài 1: Ôn tập các số đến 1 000**, nhận định nào sau đây là '
+                 '**chính xác**?',
+            'options': ['Đọc, viết thành thạo các số có đến ba chữ số trong phạm vi 2 000.',
                         'Đọc, viết thành thạo các số có đến ba chữ số trong phạm vi 1 000.',
-                        'Cộng, trừ nhẩm được các số tròn trăm, tròn chục.',
-                        'Giải được bài toán thực tế có một bước cộng hoặc trừ.'],
+                        'Đọc, viết thành thạo các số có đến ba chữ số trong phạm vi 1 1.',
+                        'Trường hợp sai quy tắc (sai lệch 1 đơn vị so với công thức trong bài)'],
             'answer': 1,
-            'solution': 'Theo yêu cầu cần đạt của Bài 1: Ôn tập các số đến 1 000: Đọc, viết thành thạo các '
+            'solution': 'Theo nội dung cốt lõi của Bài 1: Ôn tập các số đến 1 000: Đọc, viết thành thạo các '
                         'số có đến ba chữ số trong phạm vi 1 000.'},
            {'level': 'hieu',
             'type': 'tf',
@@ -113,26 +113,26 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
            {'level': 'hieu',
             'type': 'tf',
             'q': 'Trong **Bài 1: Ôn tập các số đến 1 000**, quy tắc **Phân tích số** được xác định bởi '
-                 '$\\overline{abc} = a00 + b0 + c$ và áp dụng trực tiếp vào bài toán: “Phân tích số $806$ '
-                 'thành tổng các trăm, chục, đơn vị và so sánh $806$ với $798$.”. Đúng hay sai?',
+                 '$\\overline{abc} = a00 + b0 + c$ và khi áp dụng cho ví dụ “Phân tích số $806$ thành tổng '
+                 'các trăm, chục, đơn vị và so sánh $806$ với $798$.” ta có lời giải: Ta có $806 = 800 + 6$ '
+                 '(gồm $8$ trăm, $0$ chục, $6$ đơn vị). Vì chữ số hàng trăm $8 > 7$ nên **$806 > 798$**.. '
+                 'Đúng hay sai?',
             'answer': True,
-            'solution': 'Khẳng định **Đúng**. Quy tắc **Phân tích số** ($\\overline{abc} = a00 + b0 + c$) là '
-                        'kiến thức cốt lõi của Bài 1: Ôn tập các số đến 1 000. Ta có $806 = 800 + 6$ (gồm '
-                        '$8$ trăm, $0$ chục, $6$ đơn vị). Vì chữ số hàng trăm $8 > 7$ nên **$806 > 798$**.'},
+            'solution': 'Khẳng định **Đúng**. Đó chính là quy tắc **Phân tích số** ($\\overline{abc} = a00 + '
+                        'b0 + c$) và lời giải ví dụ minh họa của Bài 1: Ôn tập các số đến 1 000.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 1: Ôn tập các số đến 1 000** để giải quyết tình huống sau: Phân '
-                 'tích số $806$ thành tổng các trăm, chục, đơn vị và so sánh $806$ với $798$. Kết quả và '
-                 'hướng giải nào dưới đây là **đúng**?',
-            'options': ['- $468 + 325$: $8 + 5 = 13$ (viết $3$ nhớ $1$); $6 + 2 + 1 = 9$; $4 + 3 = 7$ '
-                        '$\\rightarrow$ **$793$**. - $750 - 236$: $10 - 6 = 4$ (viết $4$ nhớ $1$); $5 - (3 + '
-                        '1) = 1$...',
-                        'Áp dụng quy tắc tìm số trừ: $\\text{Số trừ} = \\text{Số bị trừ} - \\text{Hiệu} = 85 '
-                        '- 39 = 46$. Thử lại: $85 - 46 = 39$ (đúng). Vậy số cần tìm là **$46$**.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 1: Ôn tập các số đến 1 000** để giải bài toán sau: '
+                 'Phân tích số $806$ thành tổng các trăm, chục, đơn vị và so sánh $806$ với $798$. Cách giải '
+                 'và kết quả nào dưới đây là **đúng**?',
+            'options': ['Ta có $806 = 800 - 6$ (gồm $8$ trăm, $0$ chục, $6$ đơn vị). Vì chữ số hàng trăm $8 '
+                        '> 7$ nên **$806 > 798$**.',
+                        'Ta có $806 = 800 + 6$ (gồm $8$ trăm, $0$ chục, $6$ đơn vị). Vì chữ số hàng trăm $8 '
+                        '> 7$ nên **$806 > 797$**.',
                         'Ta có $806 = 800 + 6$ (gồm $8$ trăm, $0$ chục, $6$ đơn vị). Vì chữ số hàng trăm $8 '
                         '> 7$ nên **$806 > 798$**.',
-                        '- $3 \\times 9 = 27$ và $24 : 3 = 8$ (vì $3 \\times 8 = 24$). - $4 \\times 7 = 28$ '
-                        'và $32 : 4 = 8$ (vì $4 \\times 8 = 32$).'],
+                        'Ta có $808 = 800 + 6$ (gồm $8$ trăm, $0$ chục, $6$ đơn vị). Vì chữ số hàng trăm $8 '
+                        '> 7$ nên **$806 > 798$**.'],
             'answer': 2,
             'solution': 'Lời giải chi tiết theo Bài 1: Ôn tập các số đến 1 000: Ta có $806 = 800 + 6$ (gồm '
                         '$8$ trăm, $0$ chục, $6$ đơn vị).\n'
@@ -165,12 +165,11 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             '### 2. Phép trừ trong phạm vi $1\\,000$\n'
             '- Ví dụ: $642 - 218$. Trừ hàng đơn vị: $12 - 8 = 4$, viết $4$ nhớ $1$; hàng chục: $2$ thêm $1$ '
             'bằng $3$, $4 - 3 = 1$; hàng trăm: $6 - 2 = 4$. Kết quả: $642 - 218 = 424$.',
-  'formulas': [{'category': 'I. Quy tắc đặt tính',
+  'formulas': [{'category': 'Công thức & Quy tắc trọng tâm: Ôn tập phép cộng, phép trừ trong phạm vi 1 000',
                 'items': [{'name': 'Thứ tự tính',
                            'formula': 'Đặt thẳng cột · Tính từ phải sang trái (Đơn vị $\\rightarrow$ Chục '
-                                      '$\\rightarrow$ Trăm)'}]},
-               {'category': 'II. Tính nhẩm số tròn trăm',
-                'items': [{'name': 'Cộng, trừ tròn trăm',
+                                      '$\\rightarrow$ Trăm)'},
+                          {'name': 'Cộng, trừ tròn trăm',
                            'formula': '$a00 + b00 = (a+b)00$ · $a00 - b00 = (a-b)00$',
                            'note': 'Ví dụ: $300 + 500 = 800$'}]}],
   'example': 'Đặt tính và tính: $468 + 325$ và $750 - 236$.',
@@ -198,26 +197,31 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 2: Ôn tập phép cộng, phép trừ trong phạm vi 1 000**, '
-                 'công thức hoặc quy tắc nào sau đây biểu diễn đúng **Thứ tự tính**?',
-            'options': ['$a00 + b00 = (a+b)00$ · $a00 - b00 = (a-b)00$',
-                        '$\\overline{abc} = a00 + b0 + c$',
-                        '$10 \\text{ chục} = 100$ · $10 \\text{ trăm} = 1\\,000$',
+            'q': 'Trong **Bài 2: Ôn tập phép cộng, phép trừ trong phạm vi 1 000**, quy tắc hoặc công thức '
+                 'nào sau đây xác định đúng **Thứ tự tính**?',
+            'options': ['Đặt thẳng cột · Tính từ trái sang phải (Đơn vị $\\rightarrow$ Chục $\\rightarrow$ '
+                        'Trăm)',
+                        'Đảo ngược vế của quy tắc: Đặt thẳng cột · Tính từ phải sang trái (Đơn vị '
+                        '$\\rightarrow$ Chục $\\rightarrow$ Trăm)',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Đặt thẳng cột · Tính từ phải '
+                        'sang trái (Đơn vị $\\rightarrow$ Chục $\\rightarrow$ Trăm)',
                         'Đặt thẳng cột · Tính từ phải sang trái (Đơn vị $\\rightarrow$ Chục $\\rightarrow$ '
                         'Trăm)'],
             'answer': 3,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 2: Ôn tập phép cộng, phép trừ trong phạm vi 1 '
-                        '000, **Thứ tự tính** được xác định bởi: Đặt thẳng cột · Tính từ phải sang trái (Đơn '
-                        'vị $\\rightarrow$ Chục $\\rightarrow$ Trăm).'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 2: Ôn tập phép cộng, phép trừ trong phạm vi 1 000, '
+                        '**Thứ tự tính** được xác định bởi: Đặt thẳng cột · Tính từ phải sang trái (Đơn vị '
+                        '$\\rightarrow$ Chục $\\rightarrow$ Trăm).'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 2: Ôn tập phép cộng, phép trừ trong phạm vi 1 000**, nội dung/biểu thức $a00 + '
-                 'b00 = (a+b)00$ · $a00 - b00 = (a-b)00$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Cộng, trừ tròn trăm', 'Thứ tự tính', 'Phân tích số', 'Số tròn trăm, tròn nghìn'],
+            'q': 'Khi học **Bài 2: Ôn tập phép cộng, phép trừ trong phạm vi 1 000**, biểu thức hoặc quy tắc '
+                 'nào dưới đây biểu diễn đúng **Cộng, trừ tròn trăm**?',
+            'options': ['$a00 + b00 = (a+b)00$ · $a00 - b00 = (a-b)00$',
+                        '$a00 - b00 = (a+b)00$ · $a00 - b00 = (a-b)00$',
+                        '$a00 + b00 = (a+b)00$ · $a00 - b00 = (a-b)1$',
+                        '$a00 + b00 = (a+b)2$ · $a00 - b00 = (a-b)00$'],
             'answer': 0,
-            'solution': 'Trong Bài 2: Ôn tập phép cộng, phép trừ trong phạm vi 1 000, biểu thức/quy tắc $a00 '
-                        '+ b00 = (a+b)00$ · $a00 - b00 = (a-b)00$ chính là nội dung của **Cộng, trừ tròn '
-                        'trăm**.'},
+            'solution': 'Trong Bài 2: Ôn tập phép cộng, phép trừ trong phạm vi 1 000, **Cộng, trừ tròn '
+                        'trăm** có công thức/quy tắc là: $a00 + b00 = (a+b)00$ · $a00 - b00 = (a-b)00$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Tổng của $367$ và $258$ là:',
@@ -228,17 +232,19 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 2: Ôn tập phép cộng, phép trừ trong phạm vi 1 000** (Chủ đề 1: Ôn tập và bổ '
-                 'sung), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của '
-                 'bài?',
-            'options': ['Đọc, viết thành thạo các số có đến ba chữ số trong phạm vi 1 000.',
-                        'Phân tích được số có ba chữ số thành tổng các trăm, chục, đơn vị.',
+            'q': 'Để nắm vững bản chất của **Bài 2: Ôn tập phép cộng, phép trừ trong phạm vi 1 000**, nhận '
+                 'định nào sau đây là **chính xác**?',
+            'options': ['Đặt tính và tính đúng phép cộng, phép trừ các số có đến ba chữ số trong phạm vi 2 '
+                        '000.',
+                        'Đặt tính và tính đúng phép cộng, phép trừ các số có đến ba chữ số trong phạm vi 1 '
+                        '1.',
                         'Đặt tính và tính đúng phép cộng, phép trừ các số có đến ba chữ số trong phạm vi 1 '
                         '000.',
-                        'So sánh và sắp xếp được các số trong phạm vi 1 000 theo thứ tự.'],
+                        'Trường hợp sai quy tắc (sai lệch 1 đơn vị so với công thức trong bài)'],
             'answer': 2,
-            'solution': 'Theo yêu cầu cần đạt của Bài 2: Ôn tập phép cộng, phép trừ trong phạm vi 1 000: Đặt '
-                        'tính và tính đúng phép cộng, phép trừ các số có đến ba chữ số trong phạm vi 1 000.'},
+            'solution': 'Theo nội dung cốt lõi của Bài 2: Ôn tập phép cộng, phép trừ trong phạm vi 1 000: '
+                        'Đặt tính và tính đúng phép cộng, phép trừ các số có đến ba chữ số trong phạm vi 1 '
+                        '000.'},
            {'level': 'hieu',
             'type': 'tf',
             'q': 'Nhận định: "Hiệu của $800$ và $345$ bằng $555$."',
@@ -250,28 +256,26 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'type': 'tf',
             'q': 'Trong **Bài 2: Ôn tập phép cộng, phép trừ trong phạm vi 1 000**, quy tắc **Thứ tự tính** '
                  'được xác định bởi Đặt thẳng cột · Tính từ phải sang trái (Đơn vị $\\rightarrow$ Chục '
-                 '$\\rightarrow$ Trăm) và áp dụng trực tiếp vào bài toán: “Đặt tính và tính: $468 + 325$ và '
-                 '$750 - 236$.”. Đúng hay sai?',
+                 '$\\rightarrow$ Trăm) và khi áp dụng cho ví dụ “Đặt tính và tính: $468 + 325$ và $750 - '
+                 '236$.” ta có lời giải: - $468 + 325$: $8 + 5 = 13$ (viết $3$ nhớ $1$); $6 + 2 + 1 = 9$; $4 '
+                 '+ 3 = 7$ $\\rightarrow$ **$793$**. - $750 - 236$: $10 - 6 = 4$ (viết.... Đúng hay sai?',
             'answer': True,
-            'solution': 'Khẳng định **Đúng**. Quy tắc **Thứ tự tính** (Đặt thẳng cột · Tính từ phải sang '
-                        'trái (Đơn vị $\\rightarrow$ Chục $\\rightarrow$ Trăm)) là kiến thức cốt lõi của Bài '
-                        '2: Ôn tập phép cộng, phép trừ trong phạm vi 1 000. - $468 + 325$: $8 + 5 = 13$ '
-                        '(viết $3$ nhớ $1$); $6 + 2 + 1 = 9$; $4 + 3 = 7$ $\\rightarrow$ **$793$**. - $750 - '
-                        '236$: $10 - 6 = 4$ (viết $4$...'},
+            'solution': 'Khẳng định **Đúng**. Đó chính là quy tắc **Thứ tự tính** (Đặt thẳng cột · Tính từ '
+                        'phải sang trái (Đơn vị $\\rightarrow$ Chục $\\rightarrow$ Trăm)) và lời giải ví dụ '
+                        'minh họa của Bài 2: Ôn tập phép cộng, phép trừ trong phạm vi 1 000.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 2: Ôn tập phép cộng, phép trừ trong phạm vi 1 000** để giải quyết '
-                 'tình huống sau: Đặt tính và tính: $468 + 325$ và $750 - 236$. Kết quả và hướng giải nào '
-                 'dưới đây là **đúng**?',
-            'options': ['Ta có $806 = 800 + 6$ (gồm $8$ trăm, $0$ chục, $6$ đơn vị). Vì chữ số hàng trăm $8 '
-                        '> 7$ nên **$806 > 798$**.',
-                        'Áp dụng quy tắc tìm số trừ: $\\text{Số trừ} = \\text{Số bị trừ} - \\text{Hiệu} = 85 '
-                        '- 39 = 46$. Thử lại: $85 - 46 = 39$ (đúng). Vậy số cần tìm là **$46$**.',
-                        '- $3 \\times 9 = 27$ và $24 : 3 = 8$ (vì $3 \\times 8 = 24$). - $4 \\times 7 = 28$ '
-                        'và $32 : 4 = 8$ (vì $4 \\times 8 = 32$).',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 2: Ôn tập phép cộng, phép trừ trong phạm vi 1 000** '
+                 'để giải bài toán sau: Đặt tính và tính: $468 + 325$ và $750 - 236$. Cách giải và kết quả '
+                 'nào dưới đây là **đúng**?',
+            'options': ['- $468 - 325$: $8 + 5 = 13$ (viết $3$ nhớ $1$); $6 + 2 + 1 = 9$; $4 + 3 = 7$ '
+                        '$\\rightarrow$ **$793$**. - $750 - 236$: $10 - 6 = 4$ (viết $4$ nhớ $1$)...',
                         '- $468 + 325$: $8 + 5 = 13$ (viết $3$ nhớ $1$); $6 + 2 + 1 = 9$; $4 + 3 = 7$ '
-                        '$\\rightarrow$ **$793$**. - $750 - 236$: $10 - 6 = 4$ (viết $4$ nhớ $1$); $5 - (3 + '
-                        '1) = 1$...'],
+                        '$\\rightarrow$ **$793$**. - $750 - 236$: $10 - 6 = 4$ (viết $4$ nhớ $2$)...',
+                        '- $470 + 325$: $8 + 5 = 13$ (viết $3$ nhớ $1$); $6 + 2 + 1 = 9$; $4 + 3 = 7$ '
+                        '$\\rightarrow$ **$793$**. - $750 - 236$: $10 - 6 = 4$ (viết $4$ nhớ $1$)...',
+                        '- $468 + 325$: $8 + 5 = 13$ (viết $3$ nhớ $1$); $6 + 2 + 1 = 9$; $4 + 3 = 7$ '
+                        '$\\rightarrow$ **$793$**. - $750 - 236$: $10 - 6 = 4$ (viết $4$ nhớ $1$)...'],
             'answer': 3,
             'solution': 'Lời giải chi tiết theo Bài 2: Ôn tập phép cộng, phép trừ trong phạm vi 1 000: - '
                         '$468 + 325$: $8 + 5 = 13$ (viết $3$ nhớ $1$); $6 + 2 + 1 = 9$; $4 + 3 = 7$ '
@@ -309,11 +313,10 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             '- Phép trừ: $\\text{Số bị trừ} - \\text{Số trừ} = \\text{Hiệu}$.\n'
             '- Tìm số bị trừ: $? - 26 = 54 \\Rightarrow ? = 54 + 26 = 80$.\n'
             '- Tìm số trừ: $90 - ? = 37 \\Rightarrow ? = 90 - 37 = 53$.',
-  'formulas': [{'category': 'I. Phép cộng',
+  'formulas': [{'category': 'Công thức & Quy tắc trọng tâm: Tìm thành phần trong phép cộng, phép trừ',
                 'items': [{'name': 'Tìm số hạng',
-                           'formula': '$\\text{Số hạng} = \\text{Tổng} - \\text{Số hạng kia}$'}]},
-               {'category': 'II. Phép trừ',
-                'items': [{'name': 'Tìm số bị trừ',
+                           'formula': '$\\text{Số hạng} = \\text{Tổng} - \\text{Số hạng kia}$'},
+                          {'name': 'Tìm số bị trừ',
                            'formula': '$\\text{Số bị trừ} = \\text{Hiệu} + \\text{Số trừ}$'},
                           {'name': 'Tìm số trừ',
                            'formula': '$\\text{Số trừ} = \\text{Số bị trừ} - \\text{Hiệu}$'}]}],
@@ -344,24 +347,29 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 3: Tìm thành phần trong phép cộng, phép trừ**, công thức '
-                 'hoặc quy tắc nào sau đây biểu diễn đúng **Tìm số hạng**?',
+            'q': 'Trong **Bài 3: Tìm thành phần trong phép cộng, phép trừ**, quy tắc hoặc công thức nào sau '
+                 'đây xác định đúng **Tìm số hạng**?',
             'options': ['$\\text{Số hạng} = \\text{Tổng} - \\text{Số hạng kia}$',
-                        '$\\text{Số bị trừ} = \\text{Hiệu} + \\text{Số trừ}$',
-                        '$\\text{Số trừ} = \\text{Số bị trừ} - \\text{Hiệu}$',
-                        '$\\overline{abc} = a00 + b0 + c$'],
+                        '$\\text{Số hạng} = \\text{Tổng} + \\text{Số hạng kia}$',
+                        'Đảo ngược vế của quy tắc: $\\text{Số hạng} = \\text{Tổng} - \\text{Số hạng kia}$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\text{Số hạng} = \\text{Tổng} '
+                        '- \\text{Số hạng kia}$'],
             'answer': 0,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 3: Tìm thành phần trong phép cộng, phép trừ, '
-                        '**Tìm số hạng** được xác định bởi: $\\text{Số hạng} = \\text{Tổng} - \\text{Số hạng '
+            'solution': 'Theo kiến thức trọng tâm của Bài 3: Tìm thành phần trong phép cộng, phép trừ, **Tìm '
+                        'số hạng** được xác định bởi: $\\text{Số hạng} = \\text{Tổng} - \\text{Số hạng '
                         'kia}$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 3: Tìm thành phần trong phép cộng, phép trừ**, nội dung/biểu thức $\\text{Số '
-                 'bị trừ} = \\text{Hiệu} + \\text{Số trừ}$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Tìm số hạng', 'Tìm số bị trừ', 'Tìm số trừ', 'Phân tích số'],
+            'q': 'Khi học **Bài 3: Tìm thành phần trong phép cộng, phép trừ**, biểu thức hoặc quy tắc nào '
+                 'dưới đây biểu diễn đúng **Tìm số bị trừ**?',
+            'options': ['$\\text{Số bị trừ} = \\text{Hiệu} - \\text{Số trừ}$',
+                        '$\\text{Số bị trừ} = \\text{Hiệu} + \\text{Số trừ}$',
+                        'Đảo ngược vế của quy tắc: $\\text{Số bị trừ} = \\text{Hiệu} + \\text{Số trừ}$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\text{Số bị trừ} = '
+                        '\\text{Hiệu} + \\text{Số trừ}$'],
             'answer': 1,
-            'solution': 'Trong Bài 3: Tìm thành phần trong phép cộng, phép trừ, biểu thức/quy tắc $\\text{Số '
-                        'bị trừ} = \\text{Hiệu} + \\text{Số trừ}$ chính là nội dung của **Tìm số bị trừ**.'},
+            'solution': 'Trong Bài 3: Tìm thành phần trong phép cộng, phép trừ, **Tìm số bị trừ** có công '
+                        'thức/quy tắc là: $\\text{Số bị trừ} = \\text{Hiệu} + \\text{Số trừ}$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Một phép trừ có hiệu là $125$, số trừ là $238$. Số bị trừ của phép trừ đó là:',
@@ -372,14 +380,17 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 3: Tìm thành phần trong phép cộng, phép trừ** (Chủ đề 1: Ôn tập và bổ sung), '
-                 'khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Đọc, viết thành thạo các số có đến ba chữ số trong phạm vi 1 000.',
-                        'Phân tích được số có ba chữ số thành tổng các trăm, chục, đơn vị.',
-                        'So sánh và sắp xếp được các số trong phạm vi 1 000 theo thứ tự.',
+            'q': 'Để nắm vững bản chất của **Bài 3: Tìm thành phần trong phép cộng, phép trừ**, nhận định '
+                 'nào sau đây là **chính xác**?',
+            'options': ['Nêu đúng quy tắc và tìm được số hạng chưa biết khi biết tổng và số hạng kia. (với '
+                        'dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Nêu đúng quy tắc và tìm được số hạng chưa biết khi biết '
+                        'tổng và số hạng kia.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nêu đúng quy tắc và tìm được số '
+                        'hạng chưa biết khi biết tổng và số hạng kia.',
                         'Nêu đúng quy tắc và tìm được số hạng chưa biết khi biết tổng và số hạng kia.'],
             'answer': 3,
-            'solution': 'Theo yêu cầu cần đạt của Bài 3: Tìm thành phần trong phép cộng, phép trừ: Nêu đúng '
+            'solution': 'Theo nội dung cốt lõi của Bài 3: Tìm thành phần trong phép cộng, phép trừ: Nêu đúng '
                         'quy tắc và tìm được số hạng chưa biết khi biết tổng và số hạng kia.'},
            {'level': 'hieu',
             'type': 'tf',
@@ -391,27 +402,27 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
            {'level': 'hieu',
             'type': 'tf',
             'q': 'Trong **Bài 3: Tìm thành phần trong phép cộng, phép trừ**, quy tắc **Tìm số hạng** được '
-                 'xác định bởi $\\text{Số hạng} = \\text{Tổng} - \\text{Số hạng kia}$ và áp dụng trực tiếp '
-                 'vào bài toán: “Tìm số trừ chưa biết trong phép tính: $85 - ? = 39$.”. Đúng hay sai?',
+                 'xác định bởi $\\text{Số hạng} = \\text{Tổng} - \\text{Số hạng kia}$ và khi áp dụng cho ví '
+                 'dụ “Tìm số trừ chưa biết trong phép tính: $85 - ? = 39$.” ta có lời giải: Áp dụng quy tắc '
+                 'tìm số trừ: $\\text{Số trừ} = \\text{Số bị trừ} - \\text{Hiệu} = 85 - 39 = 46$. Thử lại: '
+                 '$85 - 46 = 39$ (đúng). Vậy số cần.... Đúng hay sai?',
             'answer': True,
-            'solution': 'Khẳng định **Đúng**. Quy tắc **Tìm số hạng** ($\\text{Số hạng} = \\text{Tổng} - '
-                        '\\text{Số hạng kia}$) là kiến thức cốt lõi của Bài 3: Tìm thành phần trong phép '
-                        'cộng, phép trừ. Áp dụng quy tắc tìm số trừ: $\\text{Số trừ} = \\text{Số bị trừ} - '
-                        '\\text{Hiệu} = 85 - 39 = 46$. Thử lại: $85 - 46 = 39$ (đúng). Vậy số cần tìm...'},
+            'solution': 'Khẳng định **Đúng**. Đó chính là quy tắc **Tìm số hạng** ($\\text{Số hạng} = '
+                        '\\text{Tổng} - \\text{Số hạng kia}$) và lời giải ví dụ minh họa của Bài 3: Tìm '
+                        'thành phần trong phép cộng, phép trừ.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 3: Tìm thành phần trong phép cộng, phép trừ** để giải quyết tình '
-                 'huống sau: Tìm số trừ chưa biết trong phép tính: $85 - ? = 39$. Kết quả và hướng giải nào '
-                 'dưới đây là **đúng**?',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 3: Tìm thành phần trong phép cộng, phép trừ** để '
+                 'giải bài toán sau: Tìm số trừ chưa biết trong phép tính: $85 - ? = 39$. Cách giải và kết '
+                 'quả nào dưới đây là **đúng**?',
             'options': ['Áp dụng quy tắc tìm số trừ: $\\text{Số trừ} = \\text{Số bị trừ} - \\text{Hiệu} = 85 '
-                        '- 39 = 46$. Thử lại: $85 - 46 = 39$ (đúng). Vậy số cần tìm là **$46$**.',
-                        'Ta có $806 = 800 + 6$ (gồm $8$ trăm, $0$ chục, $6$ đơn vị). Vì chữ số hàng trăm $8 '
-                        '> 7$ nên **$806 > 798$**.',
-                        '- $468 + 325$: $8 + 5 = 13$ (viết $3$ nhớ $1$); $6 + 2 + 1 = 9$; $4 + 3 = 7$ '
-                        '$\\rightarrow$ **$793$**. - $750 - 236$: $10 - 6 = 4$ (viết $4$ nhớ $1$); $5 - (3 + '
-                        '1) = 1$...',
-                        '- $3 \\times 9 = 27$ và $24 : 3 = 8$ (vì $3 \\times 8 = 24$). - $4 \\times 7 = 28$ '
-                        'và $32 : 4 = 8$ (vì $4 \\times 8 = 32$).'],
+                        '- 39 = 46$. Thử lại: $85 - 46 = 39$ (đúng). Vậy số cần tìm là **$46$*...',
+                        'Áp dụng quy tắc tìm số trừ: $\\text{Số trừ} = \\text{Số bị trừ} + \\text{Hiệu} = 85 '
+                        '- 39 = 46$. Thử lại: $85 - 46 = 39$ (đúng). Vậy số cần tìm là **$46$*...',
+                        'Áp dụng quy tắc tìm số trừ: $\\text{Số trừ} = \\text{Số bị trừ} - \\text{Hiệu} = 85 '
+                        '- 39 = 46$. Thử lại: $85 - 46 = 39$ (đúng). Vậy số cần tìm là **$45$*...',
+                        'Áp dụng quy tắc tìm số trừ: $\\text{Số trừ} = \\text{Số bị trừ} - \\text{Hiệu} = 87 '
+                        '- 39 = 46$. Thử lại: $85 - 46 = 39$ (đúng). Vậy số cần tìm là **$46$*...'],
             'answer': 0,
             'solution': 'Lời giải chi tiết theo Bài 3: Tìm thành phần trong phép cộng, phép trừ: Áp dụng quy '
                         'tắc tìm số trừ: $\\text{Số trừ} = \\text{Số bị trừ} - \\text{Hiệu} = 85 - 39 = '
@@ -430,7 +441,7 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
  {'topic': 'l3-cd01-on-tap-va-bo-sung',
   'context_title': 'Chủ đề 1: Ôn tập và bổ sung',
   'context': 'SGK Toán 3 · Chủ đề 1: Ôn tập các số đến 1 000 và bảng nhân, chia 2, 3, 4, 5.',
-  'title': 'Bài 4, 5, 6: Bảng nhân, bảng chia 2, 3, 4, 5',
+  'title': 'Bài 4: Ôn tập bảng nhân 2; 5, bảng chia 2; 5 và Bảng nhân 3, bảng chia 3',
   'icon': '✖️',
   'description': 'Ôn tập bảng nhân, chia 2, 5 và lập, vận dụng bảng nhân, bảng chia 3, 4.',
   'requirements': ['Thuộc và vận dụng thành thạo bảng nhân 2, 3, 4, 5.',
@@ -438,25 +449,14 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
                    'Giải được các bài toán thực tế có một phép nhân hoặc một phép chia trong bảng 2, 3, 4, '
                    '5.'],
   'definition': '- **Bảng nhân $3$**: $3 \\times 1 = 3$, $3 \\times 2 = 6$, ..., $3 \\times 10 = 30$ (hai '
-                'tích liên tiếp hơn kém nhau $3$ đơn vị).\n'
-                '- **Bảng nhân $4$**: $4 \\times 1 = 4$, $4 \\times 2 = 8$, ..., $4 \\times 10 = 40$ (hai '
-                'tích liên tiếp hơn kém nhau $4$ đơn vị).\n'
-                '- **Bảng chia**: từ phép nhân $a \\times b = c$, ta suy ra phép chia $c : a = b$.',
+                'tích liên tiếp hơn kém nhau $3$ đơn vị).',
   'theory': '### 1. Ôn tập bảng nhân, chia $2$ và $5$\n'
             '- Tích trong bảng nhân $2$ là các số chẵn từ $2$ đến $20$; tích trong bảng nhân $5$ có tận cùng '
             'là $0$ hoặc $5$.\n'
-            '### 2. Bảng nhân $3$, bảng chia $3$\n'
-            '- Ví dụ: $3 \\times 7 = 21 \\Rightarrow 21 : 3 = 7$; $3 \\times 8 = 24 \\Rightarrow 24 : 3 = '
-            '8$.\n'
-            '### 3. Bảng nhân $4$, bảng chia $4$\n'
-            '- Ví dụ: $4 \\times 6 = 24 \\Rightarrow 24 : 4 = 6$; $4 \\times 9 = 36 \\Rightarrow 36 : 4 = '
-            '9$.',
-  'formulas': [{'category': 'I. Bảng nhân – chia 3',
+            '### 2. Bảng nhân $3$, bảng chia $3$',
+  'formulas': [{'category': 'Bảng nhân – chia 3',
                 'items': [{'name': 'Bảng nhân 3', 'formula': '$3 \\times 1 = 3, \\dots, 3 \\times 10 = 30$'},
-                          {'name': 'Bảng chia 3', 'formula': '$3 : 3 = 1, \\dots, 30 : 3 = 10$'}]},
-               {'category': 'II. Bảng nhân – chia 4',
-                'items': [{'name': 'Bảng nhân 4', 'formula': '$4 \\times 1 = 4, \\dots, 4 \\times 10 = 40$'},
-                          {'name': 'Bảng chia 4', 'formula': '$4 : 4 = 1, \\dots, 40 : 4 = 10$'}]}],
+                          {'name': 'Bảng chia 3', 'formula': '$3 : 3 = 1, \\dots, 30 : 3 = 10$'}]}],
   'example': 'Tính nhẩm: $3 \\times 9$, $4 \\times 7$, $24 : 3$, $32 : 4$.',
   'example_answer': '- $3 \\times 9 = 27$ và $24 : 3 = 8$ (vì $3 \\times 8 = 24$).\n'
                     '- $4 \\times 7 = 28$ và $32 : 4 = 8$ (vì $4 \\times 8 = 32$).',
@@ -480,23 +480,27 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 4, 5, 6: Bảng nhân, bảng chia 2, 3, 4, 5**, công thức '
-                 'hoặc quy tắc nào sau đây biểu diễn đúng **Bảng nhân 3**?',
-            'options': ['$3 : 3 = 1, \\dots, 30 : 3 = 10$',
+            'q': 'Trong **Bài 4: Ôn tập bảng nhân 2; 5, bảng chia 2; 5 và Bảng nhân 3, bảng chia 3**, quy '
+                 'tắc hoặc công thức nào sau đây xác định đúng **Bảng nhân 3**?',
+            'options': ['$3 : 1 = 3, \\dots, 3 \\times 10 = 30$',
                         '$3 \\times 1 = 3, \\dots, 3 \\times 10 = 30$',
-                        '$4 \\times 1 = 4, \\dots, 4 \\times 10 = 40$',
-                        '$4 : 4 = 1, \\dots, 40 : 4 = 10$'],
+                        '$3 \\times 1 = 3, \\dots, 3 \\times 10 = 29$',
+                        '$6 \\times 1 = 3, \\dots, 3 \\times 10 = 30$'],
             'answer': 1,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 4, 5, 6: Bảng nhân, bảng chia 2, 3, 4, 5, '
-                        '**Bảng nhân 3** được xác định bởi: $3 \\times 1 = 3, \\dots, 3 \\times 10 = 30$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 4: Ôn tập bảng nhân 2; 5, bảng chia 2; 5 và Bảng '
+                        'nhân 3, bảng chia 3, **Bảng nhân 3** được xác định bởi: $3 \\times 1 = 3, \\dots, 3 '
+                        '\\times 10 = 30$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 4, 5, 6: Bảng nhân, bảng chia 2, 3, 4, 5**, nội dung/biểu thức $3 : 3 = 1, '
-                 '\\dots, 30 : 3 = 10$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Bảng nhân 3', 'Bảng nhân 4', 'Bảng chia 3', 'Bảng chia 4'],
+            'q': 'Khi học **Bài 4: Ôn tập bảng nhân 2; 5, bảng chia 2; 5 và Bảng nhân 3, bảng chia 3**, biểu '
+                 'thức hoặc quy tắc nào dưới đây biểu diễn đúng **Bảng chia 3**?',
+            'options': ['$4 : 3 = 1, \\dots, 30 : 3 = 10$',
+                        '$3 : 3 = 1, \\dots, 30 : 3 = 9$',
+                        '$3 : 3 = 1, \\dots, 30 : 3 = 10$',
+                        '$6 : 3 = 1, \\dots, 30 : 3 = 10$'],
             'answer': 2,
-            'solution': 'Trong Bài 4, 5, 6: Bảng nhân, bảng chia 2, 3, 4, 5, biểu thức/quy tắc $3 : 3 = 1, '
-                        '\\dots, 30 : 3 = 10$ chính là nội dung của **Bảng chia 3**.'},
+            'solution': 'Trong Bài 4: Ôn tập bảng nhân 2; 5, bảng chia 2; 5 và Bảng nhân 3, bảng chia 3, '
+                        '**Bảng chia 3** có công thức/quy tắc là: $3 : 3 = 1, \\dots, 30 : 3 = 10$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Số thích hợp điền vào ô trống trong phép tính $4 \\times 9 = 36 \\Rightarrow 36 : 4 = ?$ '
@@ -508,15 +512,15 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 4, 5, 6: Bảng nhân, bảng chia 2, 3, 4, 5** (Chủ đề 1: Ôn tập và bổ sung), '
-                 'khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
+            'q': 'Để nắm vững bản chất của **Bài 4: Ôn tập bảng nhân 2; 5, bảng chia 2; 5 và Bảng nhân 3, '
+                 'bảng chia 3**, nhận định nào sau đây là **chính xác**?',
             'options': ['Thuộc và vận dụng thành thạo bảng nhân 2, 3, 4, 5.',
-                        'Đọc, viết thành thạo các số có đến ba chữ số trong phạm vi 1 000.',
-                        'Phân tích được số có ba chữ số thành tổng các trăm, chục, đơn vị.',
-                        'So sánh và sắp xếp được các số trong phạm vi 1 000 theo thứ tự.'],
+                        'Thuộc và vận dụng thành thạo bảng nhân 3, 3, 4, 5.',
+                        'Thuộc và vận dụng thành thạo bảng nhân 2, 3, 4, 4.',
+                        'Thuộc và vận dụng thành thạo bảng nhân 4, 3, 4, 5.'],
             'answer': 0,
-            'solution': 'Theo yêu cầu cần đạt của Bài 4, 5, 6: Bảng nhân, bảng chia 2, 3, 4, 5: Thuộc và vận '
-                        'dụng thành thạo bảng nhân 2, 3, 4, 5.'},
+            'solution': 'Theo nội dung cốt lõi của Bài 4: Ôn tập bảng nhân 2; 5, bảng chia 2; 5 và Bảng nhân '
+                        '3, bảng chia 3: Thuộc và vận dụng thành thạo bảng nhân 2, 3, 4, 5.'},
            {'level': 'hieu',
             'type': 'tf',
             'q': 'Nhận định: "Phép tính $3 \\times 6$ và phép tính $2 \\times 9$ có cùng kết quả bằng $18$."',
@@ -526,31 +530,31 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'hieu',
             'type': 'tf',
-            'q': 'Trong **Bài 4, 5, 6: Bảng nhân, bảng chia 2, 3, 4, 5**, quy tắc **Bảng nhân 3** được xác '
-                 'định bởi $3 \\times 1 = 3, \\dots, 3 \\times 10 = 30$ và áp dụng trực tiếp vào bài toán: '
-                 '“Tính nhẩm: $3 \\times 9$, $4 \\times 7$, $24 : 3$, $32 : 4$.”. Đúng hay sai?',
+            'q': 'Trong **Bài 4: Ôn tập bảng nhân 2; 5, bảng chia 2; 5 và Bảng nhân 3, bảng chia 3**, quy '
+                 'tắc **Bảng nhân 3** được xác định bởi $3 \\times 1 = 3, \\dots, 3 \\times 10 = 30$ và khi '
+                 'áp dụng cho ví dụ “Tính nhẩm: $3 \\times 9$, $4 \\times 7$, $24 : 3$, $32 : 4$.” ta có lời '
+                 'giải: - $3 \\times 9 = 27$ và $24 : 3 = 8$ (vì $3 \\times 8 = 24$). - $4 \\times 7 = 28$ '
+                 'và $32 : 4 = 8$ (vì $4 \\times 8 = 32$).. Đúng hay sai?',
             'answer': True,
-            'solution': 'Khẳng định **Đúng**. Quy tắc **Bảng nhân 3** ($3 \\times 1 = 3, \\dots, 3 \\times '
-                        '10 = 30$) là kiến thức cốt lõi của Bài 4, 5, 6: Bảng nhân, bảng chia 2, 3, 4, 5. - '
-                        '$3 \\times 9 = 27$ và $24 : 3 = 8$ (vì $3 \\times 8 = 24$). - $4 \\times 7 = 28$ và '
-                        '$32 : 4 = 8$ (vì $4 \\times 8 = 32$).'},
+            'solution': 'Khẳng định **Đúng**. Đó chính là quy tắc **Bảng nhân 3** ($3 \\times 1 = 3, \\dots, '
+                        '3 \\times 10 = 30$) và lời giải ví dụ minh họa của Bài 4: Ôn tập bảng nhân 2; 5, '
+                        'bảng chia 2; 5 và Bảng nhân 3, bảng chia 3.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 4, 5, 6: Bảng nhân, bảng chia 2, 3, 4, 5** để giải quyết tình '
-                 'huống sau: Tính nhẩm: $3 \\times 9$, $4 \\times 7$, $24 : 3$, $32 : 4$. Kết quả và hướng '
-                 'giải nào dưới đây là **đúng**?',
-            'options': ['Ta có $806 = 800 + 6$ (gồm $8$ trăm, $0$ chục, $6$ đơn vị). Vì chữ số hàng trăm $8 '
-                        '> 7$ nên **$806 > 798$**.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 4: Ôn tập bảng nhân 2; 5, bảng chia 2; 5 và Bảng '
+                 'nhân 3, bảng chia 3** để giải bài toán sau: Tính nhẩm: $3 \\times 9$, $4 \\times 7$, $24 : '
+                 '3$, $32 : 4$. Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['- $3 \\times 9 = 27$ và $24 : 3 = 8$ (vì $3 \\times 8 = 24$). + $4 \\times 7 = 28$ '
+                        'và $32 : 4 = 8$ (vì $4 \\times 8 = 32$).',
                         '- $3 \\times 9 = 27$ và $24 : 3 = 8$ (vì $3 \\times 8 = 24$). - $4 \\times 7 = 28$ '
                         'và $32 : 4 = 8$ (vì $4 \\times 8 = 32$).',
-                        '- $468 + 325$: $8 + 5 = 13$ (viết $3$ nhớ $1$); $6 + 2 + 1 = 9$; $4 + 3 = 7$ '
-                        '$\\rightarrow$ **$793$**. - $750 - 236$: $10 - 6 = 4$ (viết $4$ nhớ $1$); $5 - (3 + '
-                        '1) = 1$...',
-                        'Áp dụng quy tắc tìm số trừ: $\\text{Số trừ} = \\text{Số bị trừ} - \\text{Hiệu} = 85 '
-                        '- 39 = 46$. Thử lại: $85 - 46 = 39$ (đúng). Vậy số cần tìm là **$46$**.'],
+                        '- $3 \\times 9 = 27$ và $24 : 3 = 8$ (vì $3 \\times 8 = 24$). - $4 \\times 7 = 28$ '
+                        'và $32 : 4 = 8$ (vì $4 \\times 8 = 31$).',
+                        '- $6 \\times 9 = 27$ và $24 : 3 = 8$ (vì $3 \\times 8 = 24$). - $4 \\times 7 = 28$ '
+                        'và $32 : 4 = 8$ (vì $4 \\times 8 = 32$).'],
             'answer': 1,
-            'solution': 'Lời giải chi tiết theo Bài 4, 5, 6: Bảng nhân, bảng chia 2, 3, 4, 5: - $3 \\times 9 '
-                        '= 27$ và $24 : 3 = 8$ (vì $3 \\times 8 = 24$).\n'
+            'solution': 'Lời giải chi tiết theo Bài 4: Ôn tập bảng nhân 2; 5, bảng chia 2; 5 và Bảng nhân 3, '
+                        'bảng chia 3: - $3 \\times 9 = 27$ và $24 : 3 = 8$ (vì $3 \\times 8 = 24$).\n'
                         '- $4 \\times 7 = 28$ và $32 : 4 = 8$ (vì $4 \\times 8 = 32$).'},
            {'level': 'vandung',
             'type': 'short',
@@ -564,7 +568,135 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
  {'topic': 'l3-cd01-on-tap-va-bo-sung',
   'context_title': 'Chủ đề 1: Ôn tập và bổ sung',
   'context': 'SGK Toán 3 · Chủ đề 1: Ôn tập các số đến 1 000 và bảng nhân, chia 2, 3, 4, 5.',
-  'title': 'Bài 7, 8: Ôn tập hình học, đo lường và luyện tập chung',
+  'title': 'Bài 5: Bảng nhân 4, bảng chia 4',
+  'icon': '✖️',
+  'description': 'Ôn tập bảng nhân, chia 2, 5 và lập, vận dụng bảng nhân, bảng chia 3, 4.',
+  'requirements': ['Thuộc và vận dụng thành thạo bảng nhân 2, 3, 4, 5.',
+                   'Thuộc và vận dụng thành thạo bảng chia 2, 3, 4, 5 từ bảng nhân tương ứng.',
+                   'Giải được các bài toán thực tế có một phép nhân hoặc một phép chia trong bảng 2, 3, 4, '
+                   '5.'],
+  'definition': '- **Bảng nhân $4$**: $4 \\times 1 = 4$, $4 \\times 2 = 8$, ..., $4 \\times 10 = 40$ (hai '
+                'tích liên tiếp hơn kém nhau $4$ đơn vị).\n'
+                '- **Bảng chia**: từ phép nhân $a \\times b = c$, ta suy ra phép chia $c : a = b$.',
+  'theory': '- Ví dụ: $3 \\times 7 = 21 \\Rightarrow 21 : 3 = 7$; $3 \\times 8 = 24 \\Rightarrow 24 : 3 = '
+            '8$.\n'
+            '### 3. Bảng nhân $4$, bảng chia $4$\n'
+            '- Ví dụ: $4 \\times 6 = 24 \\Rightarrow 24 : 4 = 6$; $4 \\times 9 = 36 \\Rightarrow 36 : 4 = '
+            '9$.',
+  'formulas': [{'category': 'Bảng nhân – chia 4',
+                'items': [{'name': 'Bảng nhân 4', 'formula': '$4 \\times 1 = 4, \\dots, 4 \\times 10 = 40$'},
+                          {'name': 'Bảng chia 4', 'formula': '$4 : 4 = 1, \\dots, 40 : 4 = 10$'}]}],
+  'example': 'Tính nhẩm: $3 \\times 9$, $4 \\times 7$, $24 : 3$, $32 : 4$.',
+  'example_answer': '- $3 \\times 9 = 27$ và $24 : 3 = 8$ (vì $3 \\times 8 = 24$).\n'
+                    '- $4 \\times 7 = 28$ và $32 : 4 = 8$ (vì $4 \\times 8 = 32$).',
+  'real_life': '- Tính tổng số bánh khi mỗi hộp có $4$ cái bánh; chia đều $27$ học sinh thành $3$ hàng bằng '
+               'nhau.',
+  'quiz': [{'level': 'biet',
+            'type': 'mcq',
+            'q': 'Kết quả của phép nhân $3 \\times 8$ là:',
+            'options': ['$24$', '$21$', '$27$', '$11$'],
+            'answer': 0,
+            'solution': 'Theo bảng nhân $3$: $3 \\times 8 = 24$.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Kết quả của phép chia $28 : 4$ là:',
+            'options': ['$6$', '$7$', '$8$', '$24$'],
+            'answer': 1,
+            'solution': 'Vì $4 \\times 7 = 28$ nên $28 : 4 = 7$.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Trong **Bài 5: Bảng nhân 4, bảng chia 4**, quy tắc hoặc công thức nào sau đây xác định '
+                 'đúng **Bảng nhân 4**?',
+            'options': ['$4 : 1 = 4, \\dots, 4 \\times 10 = 40$',
+                        '$4 \\times 1 = 4, \\dots, 4 \\times 10 = 39$',
+                        '$4 \\times 1 = 4, \\dots, 4 \\times 10 = 40$',
+                        '$8 \\times 1 = 4, \\dots, 4 \\times 10 = 40$'],
+            'answer': 2,
+            'solution': 'Theo kiến thức trọng tâm của Bài 5: Bảng nhân 4, bảng chia 4, **Bảng nhân 4** được '
+                        'xác định bởi: $4 \\times 1 = 4, \\dots, 4 \\times 10 = 40$.'},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Khi học **Bài 5: Bảng nhân 4, bảng chia 4**, biểu thức hoặc quy tắc nào dưới đây biểu diễn '
+                 'đúng **Bảng chia 4**?',
+            'options': ['$5 : 4 = 1, \\dots, 40 : 4 = 10$',
+                        '$4 : 4 = 1, \\dots, 40 : 4 = 9$',
+                        '$8 : 4 = 1, \\dots, 40 : 4 = 10$',
+                        '$4 : 4 = 1, \\dots, 40 : 4 = 10$'],
+            'answer': 3,
+            'solution': 'Trong Bài 5: Bảng nhân 4, bảng chia 4, **Bảng chia 4** có công thức/quy tắc là: $4 '
+                        ': 4 = 1, \\dots, 40 : 4 = 10$.'},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Số thích hợp điền vào ô trống trong phép tính $4 \\times 9 = 36 \\Rightarrow 36 : 4 = ?$ '
+                 'là:',
+            'options': ['$9$', '$4$', '$6$', '$8$'],
+            'answer': 0,
+            'solution': 'Từ $4 \\times 9 = 36$ suy ra $36 : 4 = 9$.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Để nắm vững bản chất của **Bài 5: Bảng nhân 4, bảng chia 4**, nhận định nào sau đây là '
+                 '**chính xác**?',
+            'options': ['Thuộc và vận dụng thành thạo bảng nhân 3, 3, 4, 5.',
+                        'Thuộc và vận dụng thành thạo bảng nhân 2, 3, 4, 5.',
+                        'Thuộc và vận dụng thành thạo bảng nhân 2, 3, 4, 4.',
+                        'Thuộc và vận dụng thành thạo bảng nhân 4, 3, 4, 5.'],
+            'answer': 1,
+            'solution': 'Theo nội dung cốt lõi của Bài 5: Bảng nhân 4, bảng chia 4: Thuộc và vận dụng thành '
+                        'thạo bảng nhân 2, 3, 4, 5.'},
+           {'level': 'hieu',
+            'type': 'tf',
+            'q': 'Nhận định: "Phép tính $3 \\times 6$ và phép tính $2 \\times 9$ có cùng kết quả bằng $18$."',
+            'answer': True,
+            'solution': 'Ta có $3 \\times 6 = 18$ và $2 \\times 9 = 18$ $\\rightarrow$ **Đúng**.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'tf',
+            'q': 'Trong **Bài 5: Bảng nhân 4, bảng chia 4**, quy tắc **Bảng nhân 4** được xác định bởi $4 '
+                 '\\times 1 = 4, \\dots, 4 \\times 10 = 40$ và khi áp dụng cho ví dụ “Tính nhẩm: $3 \\times '
+                 '9$, $4 \\times 7$, $24 : 3$, $32 : 4$.” ta có lời giải: - $3 \\times 9 = 27$ và $24 : 3 = '
+                 '8$ (vì $3 \\times 8 = 24$). - $4 \\times 7 = 28$ và $32 : 4 = 8$ (vì $4 \\times 8 = 32$).. '
+                 'Đúng hay sai?',
+            'answer': True,
+            'solution': 'Khẳng định **Đúng**. Đó chính là quy tắc **Bảng nhân 4** ($4 \\times 1 = 4, \\dots, '
+                        '4 \\times 10 = 40$) và lời giải ví dụ minh họa của Bài 5: Bảng nhân 4, bảng chia '
+                        '4.'},
+           {'level': 'vandung',
+            'type': 'mcq',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 5: Bảng nhân 4, bảng chia 4** để giải bài toán sau: '
+                 'Tính nhẩm: $3 \\times 9$, $4 \\times 7$, $24 : 3$, $32 : 4$. Cách giải và kết quả nào dưới '
+                 'đây là **đúng**?',
+            'options': ['- $3 \\times 9 = 27$ và $24 : 3 = 8$ (vì $3 \\times 8 = 24$). + $4 \\times 7 = 28$ '
+                        'và $32 : 4 = 8$ (vì $4 \\times 8 = 32$).',
+                        '- $3 \\times 9 = 27$ và $24 : 3 = 8$ (vì $3 \\times 8 = 24$). - $4 \\times 7 = 28$ '
+                        'và $32 : 4 = 8$ (vì $4 \\times 8 = 31$).',
+                        '- $3 \\times 9 = 27$ và $24 : 3 = 8$ (vì $3 \\times 8 = 24$). - $4 \\times 7 = 28$ '
+                        'và $32 : 4 = 8$ (vì $4 \\times 8 = 32$).',
+                        '- $6 \\times 9 = 27$ và $24 : 3 = 8$ (vì $3 \\times 8 = 24$). - $4 \\times 7 = 28$ '
+                        'và $32 : 4 = 8$ (vì $4 \\times 8 = 32$).'],
+            'answer': 2,
+            'solution': 'Lời giải chi tiết theo Bài 5: Bảng nhân 4, bảng chia 4: - $3 \\times 9 = 27$ và $24 '
+                        ': 3 = 8$ (vì $3 \\times 8 = 24$).\n'
+                        '- $4 \\times 7 = 28$ và $32 : 4 = 8$ (vì $4 \\times 8 = 32$).'},
+           {'level': 'vandung',
+            'type': 'short',
+            'q': 'Có $27$ học sinh xếp đều thành $3$ hàng. Hỏi mỗi hàng có bao nhiêu học sinh?',
+            'answer': ['9'],
+            'unit': 'học sinh',
+            'solution': 'Số học sinh ở mỗi hàng là: $27 : 3 = 9\\text{ (học sinh)}$.\n'
+                        'Đáp số: **$9\\text{ học sinh}$**.',
+            'alt': None,
+            'note': None}]},
+ {'topic': 'l3-cd01-on-tap-va-bo-sung',
+  'context_title': 'Chủ đề 1: Ôn tập và bổ sung',
+  'context': 'SGK Toán 3 · Chủ đề 1: Ôn tập các số đến 1 000 và bảng nhân, chia 2, 3, 4, 5.',
+  'title': 'Bài 7: Ôn tập hình học (Đường gấp khúc, hình phẳng, hình khối)',
   'icon': '📏',
   'description': 'Ôn tập đường gấp khúc, hình tứ giác, khối trụ, khối cầu và các đơn vị đo độ dài, khối '
                  'lượng, dung tích.',
@@ -573,22 +705,152 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
                    'Chuyển đổi và tính toán được với các đơn vị đo độ dài ($\\text{cm}, \\text{dm}, '
                    '\\text{m}, \\text{km}$), khối lượng ($\\text{kg}$), dung tích ($\\text{l}$).'],
   'definition': '- **Độ dài đường gấp khúc** bằng tổng độ dài các đoạn thẳng tạo nên đường gấp khúc đó (cùng '
-                'đơn vị đo).\n'
-                '- **Quan hệ đơn vị độ dài**: $1\\text{ m} = 10\\text{ dm} = 100\\text{ cm}$; $1\\text{ km} '
-                '= 1\\,000\\text{ m}$.',
+                'đơn vị đo).',
   'theory': '### 1. Ôn tập hình học\n'
             '- Đường gấp khúc $ABCD$ gồm ba đoạn thẳng $AB$, $BC$, $CD$: độ dài đường gấp khúc là $AB + BC + '
             'CD$.\n'
-            '- Hình tứ giác có $4$ đỉnh và $4$ cạnh. Khối cầu (quả bóng), khối trụ (hộp sữa, khúc gỗ tròn).\n'
-            '### 2. Ôn tập đo lường\n'
+            '- Hình tứ giác có $4$ đỉnh và $4$ cạnh. Khối cầu (quả bóng), khối trụ (hộp sữa, khúc gỗ tròn).',
+  'formulas': [{'category': 'Đường gấp khúc',
+                'items': [{'name': 'Độ dài đường gấp khúc',
+                           'formula': '$L = a + b + c + \\dots$ (cùng đơn vị đo)'}]}],
+  'example': 'Tính độ dài đường gấp khúc $ABC$ biết $AB = 15\\text{ cm}$ và $BC = 2\\text{ dm}$.',
+  'example_answer': 'Đổi $2\\text{ dm} = 20\\text{ cm}$.\n'
+                    'Độ dài đường gấp khúc $ABC$ là: $15 + 20 = 35\\text{ (cm)}$.',
+  'real_life': '- Đo chiều dài quãng đường đi qua nhiều ngã rẽ; ước lượng chiều cao bàn học, chiều dài sân '
+               'trường.',
+  'quiz': [{'level': 'biet',
+            'type': 'mcq',
+            'q': 'Đổi đơn vị: $1\\text{ km}$ bằng bao nhiêu mét?',
+            'options': ['$10\\text{ m}$', '$1\\,000\\text{ m}$', '$100\\text{ m}$', '$10\\,000\\text{ m}$'],
+            'answer': 1,
+            'solution': 'Ta có $1\\text{ km} = 1\\,000\\text{ m}$.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Hình tứ giác có bao nhiêu cạnh?',
+            'options': ['$3$ cạnh', '$5$ cạnh', '$4$ cạnh', '$6$ cạnh'],
+            'answer': 2,
+            'solution': 'Hình tứ giác có **$4$ cạnh** và $4$ đỉnh.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Trong **Bài 7: Ôn tập hình học (Đường gấp khúc, hình phẳng, hình khối)**, quy tắc hoặc '
+                 'công thức nào sau đây xác định đúng **Độ dài đường gấp khúc**?',
+            'options': ['$L = a - b + c + \\dots$ (cùng đơn vị đo)',
+                        'Đảo ngược vế của quy tắc: $L = a + b + c + \\dots$ (cùng đơn vị đo)',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $L = a + b + c + \\dots$ (cùng '
+                        'đơn vị đo)',
+                        '$L = a + b + c + \\dots$ (cùng đơn vị đo)'],
+            'answer': 3,
+            'solution': 'Theo kiến thức trọng tâm của Bài 7: Ôn tập hình học (Đường gấp khúc, hình phẳng, '
+                        'hình khối), **Độ dài đường gấp khúc** được xác định bởi: $L = a + b + c + \\dots$ '
+                        '(cùng đơn vị đo).'},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Theo định nghĩa trong **Bài 7: Ôn tập hình học (Đường gấp khúc, hình phẳng, hình khối)**, '
+                 'khẳng định nào dưới đây là **đúng**?',
+            'options': ['Độ dài đường gấp khúc** bằng tổng độ dài các đoạn thẳng tạo nên đường gấp khúc đó '
+                        '(cùng đơn vị đo).',
+                        'Độ dài đường gấp khúc** bằng tổng độ dài các đoạn thẳng tạo nên đường gấp khúc đó '
+                        '(cùng đơn vị đo). (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Độ dài đường gấp khúc** bằng tổng độ dài các đoạn thẳng '
+                        'tạo nên đường gấp khúc đó (cùng đơn vị đo).',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Độ dài đường gấp khúc** bằng '
+                        'tổng độ dài các đoạn thẳng tạo nên đường gấp khúc đó (cùng đơn vị đo).'],
+            'answer': 0,
+            'solution': 'Theo định nghĩa của Bài 7: Ôn tập hình học (Đường gấp khúc, hình phẳng, hình khối): '
+                        'Độ dài đường gấp khúc** bằng tổng độ dài các đoạn thẳng tạo nên đường gấp khúc đó '
+                        '(cùng đơn vị đo).'},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Đường gấp khúc $MNP$ có $MN = 12\\text{ cm}$ và $NP = 18\\text{ cm}$. Độ dài đường gấp '
+                 'khúc $MNP$ là:',
+            'options': ['$20\\text{ cm}$', '$30\\text{ cm}$', '$6\\text{ cm}$', '$30\\text{ dm}$'],
+            'answer': 1,
+            'solution': 'Độ dài đường gấp khúc $MNP$ là: $12 + 18 = 30\\text{ (cm)}$.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Để nắm vững bản chất của **Bài 7: Ôn tập hình học (Đường gấp khúc, hình phẳng, hình '
+                 'khối)**, nhận định nào sau đây là **chính xác**?',
+            'options': ['Tính được độ dài đường gấp khúc khi biết độ dài các đoạn thẳng thành phần. (với dấu '
+                        'ngược lại)',
+                        'Đảo ngược vế của quy tắc: Tính được độ dài đường gấp khúc khi biết độ dài các đoạn '
+                        'thẳng thành phần.',
+                        'Tính được độ dài đường gấp khúc khi biết độ dài các đoạn thẳng thành phần.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Tính được độ dài đường gấp khúc '
+                        'khi biết độ dài các đoạn thẳng thành phần.'],
+            'answer': 2,
+            'solution': 'Theo nội dung cốt lõi của Bài 7: Ôn tập hình học (Đường gấp khúc, hình phẳng, hình '
+                        'khối): Tính được độ dài đường gấp khúc khi biết độ dài các đoạn thẳng thành phần.'},
+           {'level': 'hieu',
+            'type': 'tf',
+            'q': 'Nhận định: "$3\\text{ m } 5\\text{ dm} = 35\\text{ dm}$."',
+            'answer': True,
+            'solution': 'Vì $3\\text{ m} = 30\\text{ dm}$ nên $30\\text{ dm} + 5\\text{ dm} = 35\\text{ dm}$ '
+                        '$\\rightarrow$ **Đúng**.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'tf',
+            'q': 'Trong **Bài 7: Ôn tập hình học (Đường gấp khúc, hình phẳng, hình khối)**, quy tắc **Độ dài '
+                 'đường gấp khúc** được xác định bởi $L = a + b + c + \\dots$ (cùng đơn vị đo) và khi áp '
+                 'dụng cho ví dụ “Tính độ dài đường gấp khúc $ABC$ biết $AB = 15\\text{ cm}$ và $BC = '
+                 '2\\text{ dm}$.” ta có lời giải: Đổi $2\\text{ dm} = 20\\text{ cm}$. Độ dài đường gấp khúc '
+                 '$ABC$ là: $15 + 20 = 35\\text{ (cm)}$.. Đúng hay sai?',
+            'answer': True,
+            'solution': 'Khẳng định **Đúng**. Đó chính là quy tắc **Độ dài đường gấp khúc** ($L = a + b + c '
+                        '+ \\dots$ (cùng đơn vị đo)) và lời giải ví dụ minh họa của Bài 7: Ôn tập hình học '
+                        '(Đường gấp khúc, hình phẳng, hình khối).'},
+           {'level': 'vandung',
+            'type': 'mcq',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 7: Ôn tập hình học (Đường gấp khúc, hình phẳng, '
+                 'hình khối)** để giải bài toán sau: Tính độ dài đường gấp khúc $ABC$ biết $AB = 15\\text{ '
+                 'cm}$ và $BC = 2\\text{ dm}$. Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Đổi $2\\text{ dm} = 20\\text{ cm}$. Độ dài đường gấp khúc $ABC$ là: $15 - 20 = '
+                        '35\\text{ (cm)}$.',
+                        'Đổi $2\\text{ dm} = 20\\text{ cm}$. Độ dài đường gấp khúc $ABC$ là: $15 + 20 = '
+                        '34\\text{ (cm)}$.',
+                        'Đổi $4\\text{ dm} = 20\\text{ cm}$. Độ dài đường gấp khúc $ABC$ là: $15 + 20 = '
+                        '35\\text{ (cm)}$.',
+                        'Đổi $2\\text{ dm} = 20\\text{ cm}$. Độ dài đường gấp khúc $ABC$ là: $15 + 20 = '
+                        '35\\text{ (cm)}$.'],
+            'answer': 3,
+            'solution': 'Lời giải chi tiết theo Bài 7: Ôn tập hình học (Đường gấp khúc, hình phẳng, hình '
+                        'khối): Đổi $2\\text{ dm} = 20\\text{ cm}$.\n'
+                        'Độ dài đường gấp khúc $ABC$ là: $15 + 20 = 35\\text{ (cm)}$.'},
+           {'level': 'vandung',
+            'type': 'short',
+            'q': 'Một đường gấp khúc gồm $4$ đoạn thẳng bằng nhau, mỗi đoạn dài $4\\text{ cm}$. Hỏi đường '
+                 'gấp khúc đó dài bao nhiêu xăng-ti-mét?',
+            'answer': ['16'],
+            'unit': 'cm',
+            'solution': 'Độ dài đường gấp khúc là: $4 \\times 4 = 16\\text{ (cm)}$.\n'
+                        'Đáp số: **$16\\text{ cm}$**.',
+            'alt': None,
+            'note': None}]},
+ {'topic': 'l3-cd01-on-tap-va-bo-sung',
+  'context_title': 'Chủ đề 1: Ôn tập và bổ sung',
+  'context': 'SGK Toán 3 · Chủ đề 1: Ôn tập các số đến 1 000 và bảng nhân, chia 2, 3, 4, 5.',
+  'title': 'Bài 8: Ôn tập đo lường (Độ dài, khối lượng, dung tích)',
+  'icon': '📏',
+  'description': 'Ôn tập đường gấp khúc, hình tứ giác, khối trụ, khối cầu và các đơn vị đo độ dài, khối '
+                 'lượng, dung tích.',
+  'requirements': ['Tính được độ dài đường gấp khúc khi biết độ dài các đoạn thẳng thành phần.',
+                   'Nhận dạng được hình tứ giác, khối trụ, khối cầu trong thực tế.',
+                   'Chuyển đổi và tính toán được với các đơn vị đo độ dài ($\\text{cm}, \\text{dm}, '
+                   '\\text{m}, \\text{km}$), khối lượng ($\\text{kg}$), dung tích ($\\text{l}$).'],
+  'definition': '- **Quan hệ đơn vị độ dài**: $1\\text{ m} = 10\\text{ dm} = 100\\text{ cm}$; $1\\text{ km} '
+                '= 1\\,000\\text{ m}$.',
+  'theory': '### 2. Ôn tập đo lường\n'
             '- Độ dài: $1\\text{ dm} = 10\\text{ cm}$, $1\\text{ m} = 100\\text{ cm}$, $1\\text{ km} = '
             '1\\,000\\text{ m}$.\n'
             '- Khối lượng và dung tích: thực hiện cộng, trừ các số đo cùng đơn vị $\\text{kg}$ hoặc '
             '$\\text{l}$.',
-  'formulas': [{'category': 'I. Đường gấp khúc',
-                'items': [{'name': 'Độ dài đường gấp khúc',
-                           'formula': '$L = a + b + c + \\dots$ (cùng đơn vị đo)'}]},
-               {'category': 'II. Đổi đơn vị độ dài',
+  'formulas': [{'category': 'Đổi đơn vị độ dài',
                 'items': [{'name': 'Quy đổi',
                            'formula': '$1\\text{ m} = 10\\text{ dm} = 100\\text{ cm}$ · $1\\text{ km} = '
                                       '1\\,000\\text{ m}$'}]}],
@@ -600,61 +862,68 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
   'quiz': [{'level': 'biet',
             'type': 'mcq',
             'q': 'Đổi đơn vị: $1\\text{ km}$ bằng bao nhiêu mét?',
-            'options': ['$1\\,000\\text{ m}$', '$10\\text{ m}$', '$100\\text{ m}$', '$10\\,000\\text{ m}$'],
-            'answer': 0,
+            'options': ['$10\\text{ m}$', '$100\\text{ m}$', '$1\\,000\\text{ m}$', '$10\\,000\\text{ m}$'],
+            'answer': 2,
             'solution': 'Ta có $1\\text{ km} = 1\\,000\\text{ m}$.',
             'alt': None,
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
             'q': 'Hình tứ giác có bao nhiêu cạnh?',
-            'options': ['$3$ cạnh', '$4$ cạnh', '$5$ cạnh', '$6$ cạnh'],
-            'answer': 1,
+            'options': ['$3$ cạnh', '$5$ cạnh', '$6$ cạnh', '$4$ cạnh'],
+            'answer': 3,
             'solution': 'Hình tứ giác có **$4$ cạnh** và $4$ đỉnh.',
             'alt': None,
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 7, 8: Ôn tập hình học, đo lường và luyện tập chung**, '
-                 'công thức hoặc quy tắc nào sau đây biểu diễn đúng **Độ dài đường gấp khúc**?',
+            'q': 'Trong **Bài 8: Ôn tập đo lường (Độ dài, khối lượng, dung tích)**, quy tắc hoặc công thức '
+                 'nào sau đây xác định đúng **Quy đổi**?',
             'options': ['$1\\text{ m} = 10\\text{ dm} = 100\\text{ cm}$ · $1\\text{ km} = 1\\,000\\text{ m}$',
-                        '$\\overline{abc} = a00 + b0 + c$',
-                        '$L = a + b + c + \\dots$ (cùng đơn vị đo)',
-                        '$10 \\text{ chục} = 100$ · $10 \\text{ trăm} = 1\\,000$'],
-            'answer': 2,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 7, 8: Ôn tập hình học, đo lường và luyện tập '
-                        'chung, **Độ dài đường gấp khúc** được xác định bởi: $L = a + b + c + \\dots$ (cùng '
-                        'đơn vị đo).'},
+                        '$2\\text{ m} = 10\\text{ dm} = 100\\text{ cm}$ · $1\\text{ km} = 1\\,000\\text{ m}$',
+                        '$1\\text{ m} = 10\\text{ dm} = 100\\text{ cm}$ · $1\\text{ km} = 1\\,1\\text{ m}$',
+                        'Trường hợp sai quy tắc (sai lệch 1 đơn vị so với công thức trong bài)'],
+            'answer': 0,
+            'solution': 'Theo kiến thức trọng tâm của Bài 8: Ôn tập đo lường (Độ dài, khối lượng, dung '
+                        'tích), **Quy đổi** được xác định bởi: $1\\text{ m} = 10\\text{ dm} = 100\\text{ '
+                        'cm}$ · $1\\text{ km} = 1\\,000\\text{ m}$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 7, 8: Ôn tập hình học, đo lường và luyện tập chung**, nội dung/biểu thức '
-                 '$1\\text{ m} = 10\\text{ dm} = 100\\text{ cm}$ · $1\\text{ km} = 1\\,000\\text{ m}$ là quy '
-                 'tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Độ dài đường gấp khúc', 'Phân tích số', 'Số tròn trăm, tròn nghìn', 'Quy đổi'],
-            'answer': 3,
-            'solution': 'Trong Bài 7, 8: Ôn tập hình học, đo lường và luyện tập chung, biểu thức/quy tắc '
-                        '$1\\text{ m} = 10\\text{ dm} = 100\\text{ cm}$ · $1\\text{ km} = 1\\,000\\text{ m}$ '
-                        'chính là nội dung của **Quy đổi**.'},
+            'q': 'Theo định nghĩa trong **Bài 8: Ôn tập đo lường (Độ dài, khối lượng, dung tích)**, khẳng '
+                 'định nào dưới đây là **đúng**?',
+            'options': ['Quan hệ đơn vị độ dài**: $2\\text{ m} = 10\\text{ dm} = 100\\text{ cm}$; $1\\text{ '
+                        'km} = 1\\,000\\text{ m}$.',
+                        'Quan hệ đơn vị độ dài**: $1\\text{ m} = 10\\text{ dm} = 100\\text{ cm}$; $1\\text{ '
+                        'km} = 1\\,000\\text{ m}$.',
+                        'Quan hệ đơn vị độ dài**: $1\\text{ m} = 10\\text{ dm} = 100\\text{ cm}$; $1\\text{ '
+                        'km} = 1\\,1\\text{ m}$.',
+                        'Trường hợp sai quy tắc (sai lệch 1 đơn vị so với công thức trong bài)'],
+            'answer': 1,
+            'solution': 'Theo định nghĩa của Bài 8: Ôn tập đo lường (Độ dài, khối lượng, dung tích): Quan hệ '
+                        'đơn vị độ dài**: $1\\text{ m} = 10\\text{ dm} = 100\\text{ cm}$; $1\\text{ km} = '
+                        '1\\,000\\text{ m}$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Đường gấp khúc $MNP$ có $MN = 12\\text{ cm}$ và $NP = 18\\text{ cm}$. Độ dài đường gấp '
                  'khúc $MNP$ là:',
-            'options': ['$30\\text{ cm}$', '$20\\text{ cm}$', '$6\\text{ cm}$', '$30\\text{ dm}$'],
-            'answer': 0,
+            'options': ['$20\\text{ cm}$', '$6\\text{ cm}$', '$30\\text{ cm}$', '$30\\text{ dm}$'],
+            'answer': 2,
             'solution': 'Độ dài đường gấp khúc $MNP$ là: $12 + 18 = 30\\text{ (cm)}$.',
             'alt': None,
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 7, 8: Ôn tập hình học, đo lường và luyện tập chung** (Chủ đề 1: Ôn tập và bổ '
-                 'sung), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của '
-                 'bài?',
-            'options': ['Đọc, viết thành thạo các số có đến ba chữ số trong phạm vi 1 000.',
-                        'Tính được độ dài đường gấp khúc khi biết độ dài các đoạn thẳng thành phần.',
-                        'Phân tích được số có ba chữ số thành tổng các trăm, chục, đơn vị.',
-                        'So sánh và sắp xếp được các số trong phạm vi 1 000 theo thứ tự.'],
-            'answer': 1,
-            'solution': 'Theo yêu cầu cần đạt của Bài 7, 8: Ôn tập hình học, đo lường và luyện tập chung: '
+            'q': 'Để nắm vững bản chất của **Bài 8: Ôn tập đo lường (Độ dài, khối lượng, dung tích)**, nhận '
+                 'định nào sau đây là **chính xác**?',
+            'options': ['Tính được độ dài đường gấp khúc khi biết độ dài các đoạn thẳng thành phần. (với dấu '
+                        'ngược lại)',
+                        'Đảo ngược vế của quy tắc: Tính được độ dài đường gấp khúc khi biết độ dài các đoạn '
+                        'thẳng thành phần.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Tính được độ dài đường gấp khúc '
+                        'khi biết độ dài các đoạn thẳng thành phần.',
+                        'Tính được độ dài đường gấp khúc khi biết độ dài các đoạn thẳng thành phần.'],
+            'answer': 3,
+            'solution': 'Theo nội dung cốt lõi của Bài 8: Ôn tập đo lường (Độ dài, khối lượng, dung tích): '
                         'Tính được độ dài đường gấp khúc khi biết độ dài các đoạn thẳng thành phần.'},
            {'level': 'hieu',
             'type': 'tf',
@@ -666,31 +935,30 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'hieu',
             'type': 'tf',
-            'q': 'Trong **Bài 7, 8: Ôn tập hình học, đo lường và luyện tập chung**, quy tắc **Độ dài đường '
-                 'gấp khúc** được xác định bởi $L = a + b + c + \\dots$ (cùng đơn vị đo) và áp dụng trực '
-                 'tiếp vào bài toán: “Tính độ dài đường gấp khúc $ABC$ biết $AB = 15\\text{ cm}$ và $BC = '
-                 '2\\text{ dm}$.”. Đúng hay sai?',
+            'q': 'Trong **Bài 8: Ôn tập đo lường (Độ dài, khối lượng, dung tích)**, quy tắc **Quy đổi** được '
+                 'xác định bởi $1\\text{ m} = 10\\text{ dm} = 100\\text{ cm}$ · $1\\text{ km} = '
+                 '1\\,000\\text{ m}$ và khi áp dụng cho ví dụ “Tính độ dài đường gấp khúc $ABC$ biết $AB = '
+                 '15\\text{ cm}$ và $BC = 2\\text{ dm}$.” ta có lời giải: Đổi $2\\text{ dm} = 20\\text{ '
+                 'cm}$. Độ dài đường gấp khúc $ABC$ là: $15 + 20 = 35\\text{ (cm)}$.. Đúng hay sai?',
             'answer': True,
-            'solution': 'Khẳng định **Đúng**. Quy tắc **Độ dài đường gấp khúc** ($L = a + b + c + \\dots$ '
-                        '(cùng đơn vị đo)) là kiến thức cốt lõi của Bài 7, 8: Ôn tập hình học, đo lường và '
-                        'luyện tập chung. Đổi $2\\text{ dm} = 20\\text{ cm}$. Độ dài đường gấp khúc $ABC$ '
-                        'là: $15 + 20 = 35\\text{ (cm)}$.'},
+            'solution': 'Khẳng định **Đúng**. Đó chính là quy tắc **Quy đổi** ($1\\text{ m} = 10\\text{ dm} '
+                        '= 100\\text{ cm}$ · $1\\text{ km} = 1\\,000\\text{ m}$) và lời giải ví dụ minh họa '
+                        'của Bài 8: Ôn tập đo lường (Độ dài, khối lượng, dung tích).'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 7, 8: Ôn tập hình học, đo lường và luyện tập chung** để giải '
-                 'quyết tình huống sau: Tính độ dài đường gấp khúc $ABC$ biết $AB = 15\\text{ cm}$ và $BC = '
-                 '2\\text{ dm}$. Kết quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Ta có $806 = 800 + 6$ (gồm $8$ trăm, $0$ chục, $6$ đơn vị). Vì chữ số hàng trăm $8 '
-                        '> 7$ nên **$806 > 798$**.',
-                        '- $468 + 325$: $8 + 5 = 13$ (viết $3$ nhớ $1$); $6 + 2 + 1 = 9$; $4 + 3 = 7$ '
-                        '$\\rightarrow$ **$793$**. - $750 - 236$: $10 - 6 = 4$ (viết $4$ nhớ $1$); $5 - (3 + '
-                        '1) = 1$...',
-                        'Đổi $2\\text{ dm} = 20\\text{ cm}$. Độ dài đường gấp khúc $ABC$ là: $15 + 20 = '
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 8: Ôn tập đo lường (Độ dài, khối lượng, dung '
+                 'tích)** để giải bài toán sau: Tính độ dài đường gấp khúc $ABC$ biết $AB = 15\\text{ cm}$ '
+                 'và $BC = 2\\text{ dm}$. Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Đổi $2\\text{ dm} = 20\\text{ cm}$. Độ dài đường gấp khúc $ABC$ là: $15 + 20 = '
                         '35\\text{ (cm)}$.',
-                        'Áp dụng quy tắc tìm số trừ: $\\text{Số trừ} = \\text{Số bị trừ} - \\text{Hiệu} = 85 '
-                        '- 39 = 46$. Thử lại: $85 - 46 = 39$ (đúng). Vậy số cần tìm là **$46$**.'],
-            'answer': 2,
-            'solution': 'Lời giải chi tiết theo Bài 7, 8: Ôn tập hình học, đo lường và luyện tập chung: Đổi '
+                        'Đổi $2\\text{ dm} = 20\\text{ cm}$. Độ dài đường gấp khúc $ABC$ là: $15 - 20 = '
+                        '35\\text{ (cm)}$.',
+                        'Đổi $2\\text{ dm} = 20\\text{ cm}$. Độ dài đường gấp khúc $ABC$ là: $15 + 20 = '
+                        '34\\text{ (cm)}$.',
+                        'Đổi $4\\text{ dm} = 20\\text{ cm}$. Độ dài đường gấp khúc $ABC$ là: $15 + 20 = '
+                        '35\\text{ (cm)}$.'],
+            'answer': 0,
+            'solution': 'Lời giải chi tiết theo Bài 8: Ôn tập đo lường (Độ dài, khối lượng, dung tích): Đổi '
                         '$2\\text{ dm} = 20\\text{ cm}$.\n'
                         'Độ dài đường gấp khúc $ABC$ là: $15 + 20 = 35\\text{ (cm)}$.'},
            {'level': 'vandung',
@@ -707,29 +975,153 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
   'context_title': 'Chủ đề 2: Bảng nhân, bảng chia',
   'context': 'SGK Toán 3 · Chủ đề 2: Bảng nhân, bảng chia 6, 7, 8, 9; tìm thành phần phép nhân, chia; một '
              'phần mấy.',
-  'title': 'Bài 9, 10: Bảng nhân, bảng chia 6 và 7',
+  'title': 'Bài 9: Bảng nhân 6, bảng chia 6',
   'icon': '✖️',
   'description': 'Lập và vận dụng bảng nhân 6, bảng chia 6, bảng nhân 7, bảng chia 7 trong tính toán.',
   'requirements': ['Thuộc và tính nhẩm nhanh các phép tính trong bảng nhân 6, bảng chia 6.',
                    'Thuộc và tính nhẩm nhanh các phép tính trong bảng nhân 7, bảng chia 7.',
                    'Giải được bài toán thực tế liên quan đến bảng nhân, chia 6 và 7.'],
   'definition': '- **Bảng nhân $6$**: $6 \\times 1 = 6, 6 \\times 2 = 12, \\dots, 6 \\times 10 = 60$; từ đó '
-                'suy ra **bảng chia $6$**.\n'
-                '- **Bảng nhân $7$**: $7 \\times 1 = 7, 7 \\times 2 = 14, \\dots, 7 \\times 10 = 70$; từ đó '
-                'suy ra **bảng chia $7$**.',
+                'suy ra **bảng chia $6$**.',
   'theory': '### 1. Bảng nhân $6$, bảng chia $6$\n'
             '- Hai tích liên tiếp trong bảng nhân $6$ hơn kém nhau $6$ đơn vị: $6, 12, 18, 24, 30, 36, 42, '
             '48, 54, 60$.\n'
-            '- Ví dụ: $6 \\times 7 = 42 \\Rightarrow 42 : 6 = 7$ và $42 : 7 = 6$.\n'
-            '### 2. Bảng nhân $7$, bảng chia $7$\n'
+            '- Ví dụ: $6 \\times 7 = 42 \\Rightarrow 42 : 6 = 7$ và $42 : 7 = 6$.',
+  'formulas': [{'category': 'Bảng 6',
+                'items': [{'name': 'Nhân – chia 6',
+                           'formula': '$6 \\times 7 = 42 \\Leftrightarrow 42 : 6 = 7$ · $6 \\times 8 = 48 '
+                                      '\\Leftrightarrow 48 : 6 = 8$'}]}],
+  'example': 'Tính nhẩm: $6 \\times 9$, $54 : 6$, $7 \\times 6$, $63 : 7$.',
+  'example_answer': '- $6 \\times 9 = 54 \\Rightarrow 54 : 6 = 9$.\n'
+                    '- $7 \\times 6 = 42$ và $63 : 7 = 9$ (vì $7 \\times 9 = 63$).',
+  'real_life': '- Một tuần lễ có $7$ ngày: tính số ngày trong $4$ tuần ($7 \\times 4 = 28$ ngày); đóng gói '
+               'các lốc sữa $6$ hộp.',
+  'quiz': [{'level': 'biet',
+            'type': 'mcq',
+            'q': 'Kết quả của phép nhân $6 \\times 7$ là:',
+            'options': ['$36$', '$48$', '$13$', '$42$'],
+            'answer': 3,
+            'solution': 'Theo bảng nhân $6$: $6 \\times 7 = 42$.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Kết quả của phép chia $56 : 7$ là:',
+            'options': ['$8$', '$6$', '$7$', '$9$'],
+            'answer': 0,
+            'solution': 'Vì $7 \\times 8 = 56$ nên $56 : 7 = 8$.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Trong **Bài 9: Bảng nhân 6, bảng chia 6**, quy tắc hoặc công thức nào sau đây xác định '
+                 'đúng **Nhân – chia 6**?',
+            'options': ['$6 : 7 = 42 \\Leftrightarrow 42 : 6 = 7$ · $6 \\times 8 = 48 \\Leftrightarrow 48 : '
+                        '6 = 8$',
+                        '$6 \\times 7 = 42 \\Leftrightarrow 42 : 6 = 7$ · $6 \\times 8 = 48 \\Leftrightarrow '
+                        '48 : 6 = 8$',
+                        '$6 \\times 7 = 42 \\Leftrightarrow 42 : 6 = 7$ · $6 \\times 8 = 48 \\Leftrightarrow '
+                        '48 : 6 = 7$',
+                        '$12 \\times 7 = 42 \\Leftrightarrow 42 : 6 = 7$ · $6 \\times 8 = 48 '
+                        '\\Leftrightarrow 48 : 6 = 8$'],
+            'answer': 1,
+            'solution': 'Theo kiến thức trọng tâm của Bài 9: Bảng nhân 6, bảng chia 6, **Nhân – chia 6** '
+                        'được xác định bởi: $6 \\times 7 = 42 \\Leftrightarrow 42 : 6 = 7$ · $6 \\times 8 = '
+                        '48 \\Leftrightarrow 48 : 6 = 8$.'},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Theo định nghĩa trong **Bài 9: Bảng nhân 6, bảng chia 6**, khẳng định nào dưới đây là '
+                 '**đúng**?',
+            'options': ['Bảng nhân $6$**: $6 : 1 = 6, 6 \\times 2 = 12, \\dots, 6 \\times 10 = 60$; từ đó '
+                        'suy ra **bảng chia $6$**.',
+                        'Bảng nhân $6$**: $6 \\times 1 = 6, 6 \\times 2 = 12, \\dots, 6 \\times 10 = 60$; từ '
+                        'đó suy ra **bảng chia $5$**.',
+                        'Bảng nhân $6$**: $6 \\times 1 = 6, 6 \\times 2 = 12, \\dots, 6 \\times 10 = 60$; từ '
+                        'đó suy ra **bảng chia $6$**.',
+                        'Bảng nhân $12$**: $6 \\times 1 = 6, 6 \\times 2 = 12, \\dots, 6 \\times 10 = 60$; '
+                        'từ đó suy ra **bảng chia $6$**.'],
+            'answer': 2,
+            'solution': 'Theo định nghĩa của Bài 9: Bảng nhân 6, bảng chia 6: Bảng nhân $6$**: $6 \\times 1 '
+                        '= 6, 6 \\times 2 = 12, \\dots, 6 \\times 10 = 60$; từ đó suy ra **bảng chia $6$**.'},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Trong4 tuần lễ có tất cả bao nhiêu ngày?',
+            'options': ['$24$ ngày', '$35$ ngày', '$11$ ngày', '$28$ ngày'],
+            'answer': 3,
+            'solution': 'Mỗi tuần có $7$ ngày nên $4$ tuần có: $7 \\times 4 = 28\\text{ (ngày)}$.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Để nắm vững bản chất của **Bài 9: Bảng nhân 6, bảng chia 6**, nhận định nào sau đây là '
+                 '**chính xác**?',
+            'options': ['Thuộc và tính nhẩm nhanh các phép tính trong bảng nhân 6, bảng chia 6.',
+                        'Thuộc và tính nhẩm nhanh các phép tính trong bảng nhân 7, bảng chia 6.',
+                        'Thuộc và tính nhẩm nhanh các phép tính trong bảng nhân 6, bảng chia 5.',
+                        'Thuộc và tính nhẩm nhanh các phép tính trong bảng nhân 12, bảng chia 6.'],
+            'answer': 0,
+            'solution': 'Theo nội dung cốt lõi của Bài 9: Bảng nhân 6, bảng chia 6: Thuộc và tính nhẩm nhanh '
+                        'các phép tính trong bảng nhân 6, bảng chia 6.'},
+           {'level': 'hieu',
+            'type': 'tf',
+            'q': 'Nhận định: "Phép chia $48 : 6$ có kết quả bằng $7$."',
+            'answer': False,
+            'solution': 'Vì $6 \\times 8 = 48$ nên $48 : 6 = 8$, không phải $7$ $\\rightarrow$ **Sai**.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'tf',
+            'q': 'Trong **Bài 9: Bảng nhân 6, bảng chia 6**, quy tắc **Nhân – chia 6** được xác định bởi $6 '
+                 '\\times 7 = 42 \\Leftrightarrow 42 : 6 = 7$ · $6 \\times 8 = 48 \\Leftrightarrow 48 : 6 = '
+                 '8$ và khi áp dụng cho ví dụ “Tính nhẩm: $6 \\times 9$, $54 : 6$, $7 \\times 6$, $63 : 7$.” '
+                 'ta có lời giải: - $6 \\times 9 = 54 \\Rightarrow 54 : 6 = 9$. - $7 \\times 6 = 42$ và $63 '
+                 ': 7 = 9$ (vì $7 \\times 9 = 63$).. Đúng hay sai?',
+            'answer': True,
+            'solution': 'Khẳng định **Đúng**. Đó chính là quy tắc **Nhân – chia 6** ($6 \\times 7 = 42 '
+                        '\\Leftrightarrow 42 : 6 = 7$ · $6 \\times 8 = 48 \\Leftrightarrow 48 : 6 = 8$) và '
+                        'lời giải ví dụ minh họa của Bài 9: Bảng nhân 6, bảng chia 6.'},
+           {'level': 'vandung',
+            'type': 'mcq',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 9: Bảng nhân 6, bảng chia 6** để giải bài toán sau: '
+                 'Tính nhẩm: $6 \\times 9$, $54 : 6$, $7 \\times 6$, $63 : 7$. Cách giải và kết quả nào dưới '
+                 'đây là **đúng**?',
+            'options': ['- $6 \\times 9 = 54 \\Rightarrow 54 : 6 = 9$. + $7 \\times 6 = 42$ và $63 : 7 = 9$ '
+                        '(vì $7 \\times 9 = 63$).',
+                        '- $6 \\times 9 = 54 \\Rightarrow 54 : 6 = 9$. - $7 \\times 6 = 42$ và $63 : 7 = 9$ '
+                        '(vì $7 \\times 9 = 63$).',
+                        '- $6 \\times 9 = 54 \\Rightarrow 54 : 6 = 9$. - $7 \\times 6 = 42$ và $63 : 7 = 9$ '
+                        '(vì $7 \\times 9 = 62$).',
+                        '- $12 \\times 9 = 54 \\Rightarrow 54 : 6 = 9$. - $7 \\times 6 = 42$ và $63 : 7 = 9$ '
+                        '(vì $7 \\times 9 = 63$).'],
+            'answer': 1,
+            'solution': 'Lời giải chi tiết theo Bài 9: Bảng nhân 6, bảng chia 6: - $6 \\times 9 = 54 '
+                        '\\Rightarrow 54 : 6 = 9$.\n'
+                        '- $7 \\times 6 = 42$ và $63 : 7 = 9$ (vì $7 \\times 9 = 63$).'},
+           {'level': 'vandung',
+            'type': 'short',
+            'q': 'Có $42$ quả cam xếp đều vào $6$ đĩa. Hỏi mỗi đĩa có bao nhiêu quả cam?',
+            'answer': ['7'],
+            'unit': 'quả',
+            'solution': 'Số quả cam ở mỗi đĩa là: $42 : 6 = 7\\text{ (quả)}$.\nĐáp số: **$7\\text{ quả}$**.',
+            'alt': None,
+            'note': None}]},
+ {'topic': 'l3-cd02-bang-nhan-bang-chia',
+  'context_title': 'Chủ đề 2: Bảng nhân, bảng chia',
+  'context': 'SGK Toán 3 · Chủ đề 2: Bảng nhân, bảng chia 6, 7, 8, 9; tìm thành phần phép nhân, chia; một '
+             'phần mấy.',
+  'title': 'Bài 10: Bảng nhân 7, bảng chia 7',
+  'icon': '✖️',
+  'description': 'Lập và vận dụng bảng nhân 6, bảng chia 6, bảng nhân 7, bảng chia 7 trong tính toán.',
+  'requirements': ['Thuộc và tính nhẩm nhanh các phép tính trong bảng nhân 6, bảng chia 6.',
+                   'Thuộc và tính nhẩm nhanh các phép tính trong bảng nhân 7, bảng chia 7.',
+                   'Giải được bài toán thực tế liên quan đến bảng nhân, chia 6 và 7.'],
+  'definition': '- **Bảng nhân $7$**: $7 \\times 1 = 7, 7 \\times 2 = 14, \\dots, 7 \\times 10 = 70$; từ đó '
+                'suy ra **bảng chia $7$**.',
+  'theory': '### 2. Bảng nhân $7$, bảng chia $7$\n'
             '- Hai tích liên tiếp trong bảng nhân $7$ hơn kém nhau $7$ đơn vị: $7, 14, 21, 28, 35, 42, 49, '
             '56, 63, 70$.\n'
             '- Ví dụ: $7 \\times 8 = 56 \\Rightarrow 56 : 7 = 8$.',
-  'formulas': [{'category': 'I. Bảng 6',
-                'items': [{'name': 'Nhân – chia 6',
-                           'formula': '$6 \\times 7 = 42 \\Leftrightarrow 42 : 6 = 7$ · $6 \\times 8 = 48 '
-                                      '\\Leftrightarrow 48 : 6 = 8$'}]},
-               {'category': 'II. Bảng 7',
+  'formulas': [{'category': 'Bảng 7',
                 'items': [{'name': 'Nhân – chia 7',
                            'formula': '$7 \\times 7 = 49 \\Leftrightarrow 49 : 7 = 7$ · $7 \\times 8 = 56 '
                                       '\\Leftrightarrow 56 : 7 = 8$'}]}],
@@ -741,61 +1133,68 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
   'quiz': [{'level': 'biet',
             'type': 'mcq',
             'q': 'Kết quả của phép nhân $6 \\times 7$ là:',
-            'options': ['$36$', '$42$', '$48$', '$13$'],
-            'answer': 1,
+            'options': ['$42$', '$36$', '$48$', '$13$'],
+            'answer': 0,
             'solution': 'Theo bảng nhân $6$: $6 \\times 7 = 42$.',
             'alt': None,
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
             'q': 'Kết quả của phép chia $56 : 7$ là:',
-            'options': ['$6$', '$7$', '$8$', '$9$'],
-            'answer': 2,
+            'options': ['$6$', '$8$', '$7$', '$9$'],
+            'answer': 1,
             'solution': 'Vì $7 \\times 8 = 56$ nên $56 : 7 = 8$.',
             'alt': None,
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 9, 10: Bảng nhân, bảng chia 6 và 7**, công thức hoặc quy '
-                 'tắc nào sau đây biểu diễn đúng **Nhân – chia 6**?',
-            'options': ['$7 \\times 7 = 49 \\Leftrightarrow 49 : 7 = 7$ · $7 \\times 8 = 56 \\Leftrightarrow '
+            'q': 'Trong **Bài 10: Bảng nhân 7, bảng chia 7**, quy tắc hoặc công thức nào sau đây xác định '
+                 'đúng **Nhân – chia 7**?',
+            'options': ['$7 : 7 = 49 \\Leftrightarrow 49 : 7 = 7$ · $7 \\times 8 = 56 \\Leftrightarrow 56 : '
+                        '7 = 8$',
+                        '$7 \\times 7 = 49 \\Leftrightarrow 49 : 7 = 7$ · $7 \\times 8 = 56 \\Leftrightarrow '
+                        '56 : 7 = 7$',
+                        '$7 \\times 7 = 49 \\Leftrightarrow 49 : 7 = 7$ · $7 \\times 8 = 56 \\Leftrightarrow '
                         '56 : 7 = 8$',
-                        '$\\overline{abc} = a00 + b0 + c$',
-                        '$10 \\text{ chục} = 100$ · $10 \\text{ trăm} = 1\\,000$',
-                        '$6 \\times 7 = 42 \\Leftrightarrow 42 : 6 = 7$ · $6 \\times 8 = 48 \\Leftrightarrow '
-                        '48 : 6 = 8$'],
-            'answer': 3,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 9, 10: Bảng nhân, bảng chia 6 và 7, **Nhân – '
-                        'chia 6** được xác định bởi: $6 \\times 7 = 42 \\Leftrightarrow 42 : 6 = 7$ · $6 '
-                        '\\times 8 = 48 \\Leftrightarrow 48 : 6 = 8$.'},
+                        '$14 \\times 7 = 49 \\Leftrightarrow 49 : 7 = 7$ · $7 \\times 8 = 56 '
+                        '\\Leftrightarrow 56 : 7 = 8$'],
+            'answer': 2,
+            'solution': 'Theo kiến thức trọng tâm của Bài 10: Bảng nhân 7, bảng chia 7, **Nhân – chia 7** '
+                        'được xác định bởi: $7 \\times 7 = 49 \\Leftrightarrow 49 : 7 = 7$ · $7 \\times 8 = '
+                        '56 \\Leftrightarrow 56 : 7 = 8$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 9, 10: Bảng nhân, bảng chia 6 và 7**, nội dung/biểu thức $7 \\times 7 = 49 '
-                 '\\Leftrightarrow 49 : 7 = 7$ · $7 \\times 8 = 56 \\Leftrightarrow 56 : 7 = 8$ là quy tắc '
-                 'hoặc công thức của mục nào sau đây?',
-            'options': ['Nhân – chia 7', 'Nhân – chia 6', 'Phân tích số', 'Số tròn trăm, tròn nghìn'],
-            'answer': 0,
-            'solution': 'Trong Bài 9, 10: Bảng nhân, bảng chia 6 và 7, biểu thức/quy tắc $7 \\times 7 = 49 '
-                        '\\Leftrightarrow 49 : 7 = 7$ · $7 \\times 8 = 56 \\Leftrightarrow 56 : 7 = 8$ chính '
-                        'là nội dung của **Nhân – chia 7**.'},
+            'q': 'Theo định nghĩa trong **Bài 10: Bảng nhân 7, bảng chia 7**, khẳng định nào dưới đây là '
+                 '**đúng**?',
+            'options': ['Bảng nhân $7$**: $7 : 1 = 7, 7 \\times 2 = 14, \\dots, 7 \\times 10 = 70$; từ đó '
+                        'suy ra **bảng chia $7$**.',
+                        'Bảng nhân $7$**: $7 \\times 1 = 7, 7 \\times 2 = 14, \\dots, 7 \\times 10 = 70$; từ '
+                        'đó suy ra **bảng chia $6$**.',
+                        'Bảng nhân $14$**: $7 \\times 1 = 7, 7 \\times 2 = 14, \\dots, 7 \\times 10 = 70$; '
+                        'từ đó suy ra **bảng chia $7$**.',
+                        'Bảng nhân $7$**: $7 \\times 1 = 7, 7 \\times 2 = 14, \\dots, 7 \\times 10 = 70$; từ '
+                        'đó suy ra **bảng chia $7$**.'],
+            'answer': 3,
+            'solution': 'Theo định nghĩa của Bài 10: Bảng nhân 7, bảng chia 7: Bảng nhân $7$**: $7 \\times 1 '
+                        '= 7, 7 \\times 2 = 14, \\dots, 7 \\times 10 = 70$; từ đó suy ra **bảng chia $7$**.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Trong4 tuần lễ có tất cả bao nhiêu ngày?',
-            'options': ['$24$ ngày', '$28$ ngày', '$35$ ngày', '$11$ ngày'],
-            'answer': 1,
+            'options': ['$28$ ngày', '$24$ ngày', '$35$ ngày', '$11$ ngày'],
+            'answer': 0,
             'solution': 'Mỗi tuần có $7$ ngày nên $4$ tuần có: $7 \\times 4 = 28\\text{ (ngày)}$.',
             'alt': None,
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 9, 10: Bảng nhân, bảng chia 6 và 7** (Chủ đề 2: Bảng nhân, bảng chia), khẳng '
-                 'định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Đọc, viết thành thạo các số có đến ba chữ số trong phạm vi 1 000.',
-                        'Phân tích được số có ba chữ số thành tổng các trăm, chục, đơn vị.',
+            'q': 'Để nắm vững bản chất của **Bài 10: Bảng nhân 7, bảng chia 7**, nhận định nào sau đây là '
+                 '**chính xác**?',
+            'options': ['Thuộc và tính nhẩm nhanh các phép tính trong bảng nhân 7, bảng chia 6.',
                         'Thuộc và tính nhẩm nhanh các phép tính trong bảng nhân 6, bảng chia 6.',
-                        'So sánh và sắp xếp được các số trong phạm vi 1 000 theo thứ tự.'],
-            'answer': 2,
-            'solution': 'Theo yêu cầu cần đạt của Bài 9, 10: Bảng nhân, bảng chia 6 và 7: Thuộc và tính nhẩm '
+                        'Thuộc và tính nhẩm nhanh các phép tính trong bảng nhân 6, bảng chia 5.',
+                        'Thuộc và tính nhẩm nhanh các phép tính trong bảng nhân 12, bảng chia 6.'],
+            'answer': 1,
+            'solution': 'Theo nội dung cốt lõi của Bài 10: Bảng nhân 7, bảng chia 7: Thuộc và tính nhẩm '
                         'nhanh các phép tính trong bảng nhân 6, bảng chia 6.'},
            {'level': 'hieu',
             'type': 'tf',
@@ -806,31 +1205,30 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'hieu',
             'type': 'tf',
-            'q': 'Trong **Bài 9, 10: Bảng nhân, bảng chia 6 và 7**, quy tắc **Nhân – chia 6** được xác định '
-                 'bởi $6 \\times 7 = 42 \\Leftrightarrow 42 : 6 = 7$ · $6 \\times 8 = 48 \\Leftrightarrow 48 '
-                 ': 6 = 8$ và áp dụng trực tiếp vào bài toán: “Tính nhẩm: $6 \\times 9$, $54 : 6$, $7 '
-                 '\\times 6$, $63 : 7$.”. Đúng hay sai?',
+            'q': 'Trong **Bài 10: Bảng nhân 7, bảng chia 7**, quy tắc **Nhân – chia 7** được xác định bởi $7 '
+                 '\\times 7 = 49 \\Leftrightarrow 49 : 7 = 7$ · $7 \\times 8 = 56 \\Leftrightarrow 56 : 7 = '
+                 '8$ và khi áp dụng cho ví dụ “Tính nhẩm: $6 \\times 9$, $54 : 6$, $7 \\times 6$, $63 : 7$.” '
+                 'ta có lời giải: - $6 \\times 9 = 54 \\Rightarrow 54 : 6 = 9$. - $7 \\times 6 = 42$ và $63 '
+                 ': 7 = 9$ (vì $7 \\times 9 = 63$).. Đúng hay sai?',
             'answer': True,
-            'solution': 'Khẳng định **Đúng**. Quy tắc **Nhân – chia 6** ($6 \\times 7 = 42 \\Leftrightarrow '
-                        '42 : 6 = 7$ · $6 \\times 8 = 48 \\Leftrightarrow 48 : 6 = 8$) là kiến thức cốt lõi '
-                        'của Bài 9, 10: Bảng nhân, bảng chia 6 và 7. - $6 \\times 9 = 54 \\Rightarrow 54 : 6 '
-                        '= 9$. - $7 \\times 6 = 42$ và $63 : 7 = 9$ (vì $7 \\times 9 = 63$).'},
+            'solution': 'Khẳng định **Đúng**. Đó chính là quy tắc **Nhân – chia 7** ($7 \\times 7 = 49 '
+                        '\\Leftrightarrow 49 : 7 = 7$ · $7 \\times 8 = 56 \\Leftrightarrow 56 : 7 = 8$) và '
+                        'lời giải ví dụ minh họa của Bài 10: Bảng nhân 7, bảng chia 7.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 9, 10: Bảng nhân, bảng chia 6 và 7** để giải quyết tình huống '
-                 'sau: Tính nhẩm: $6 \\times 9$, $54 : 6$, $7 \\times 6$, $63 : 7$. Kết quả và hướng giải '
-                 'nào dưới đây là **đúng**?',
-            'options': ['Ta có $806 = 800 + 6$ (gồm $8$ trăm, $0$ chục, $6$ đơn vị). Vì chữ số hàng trăm $8 '
-                        '> 7$ nên **$806 > 798$**.',
-                        '- $468 + 325$: $8 + 5 = 13$ (viết $3$ nhớ $1$); $6 + 2 + 1 = 9$; $4 + 3 = 7$ '
-                        '$\\rightarrow$ **$793$**. - $750 - 236$: $10 - 6 = 4$ (viết $4$ nhớ $1$); $5 - (3 + '
-                        '1) = 1$...',
-                        'Áp dụng quy tắc tìm số trừ: $\\text{Số trừ} = \\text{Số bị trừ} - \\text{Hiệu} = 85 '
-                        '- 39 = 46$. Thử lại: $85 - 46 = 39$ (đúng). Vậy số cần tìm là **$46$**.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 10: Bảng nhân 7, bảng chia 7** để giải bài toán '
+                 'sau: Tính nhẩm: $6 \\times 9$, $54 : 6$, $7 \\times 6$, $63 : 7$. Cách giải và kết quả nào '
+                 'dưới đây là **đúng**?',
+            'options': ['- $6 \\times 9 = 54 \\Rightarrow 54 : 6 = 9$. + $7 \\times 6 = 42$ và $63 : 7 = 9$ '
+                        '(vì $7 \\times 9 = 63$).',
                         '- $6 \\times 9 = 54 \\Rightarrow 54 : 6 = 9$. - $7 \\times 6 = 42$ và $63 : 7 = 9$ '
+                        '(vì $7 \\times 9 = 62$).',
+                        '- $6 \\times 9 = 54 \\Rightarrow 54 : 6 = 9$. - $7 \\times 6 = 42$ và $63 : 7 = 9$ '
+                        '(vì $7 \\times 9 = 63$).',
+                        '- $12 \\times 9 = 54 \\Rightarrow 54 : 6 = 9$. - $7 \\times 6 = 42$ và $63 : 7 = 9$ '
                         '(vì $7 \\times 9 = 63$).'],
-            'answer': 3,
-            'solution': 'Lời giải chi tiết theo Bài 9, 10: Bảng nhân, bảng chia 6 và 7: - $6 \\times 9 = 54 '
+            'answer': 2,
+            'solution': 'Lời giải chi tiết theo Bài 10: Bảng nhân 7, bảng chia 7: - $6 \\times 9 = 54 '
                         '\\Rightarrow 54 : 6 = 9$.\n'
                         '- $7 \\times 6 = 42$ và $63 : 7 = 9$ (vì $7 \\times 9 = 63$).'},
            {'level': 'vandung',
@@ -861,7 +1259,7 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             '\\times 9 = 72$.\n'
             '### 2. Bảng chia $8$\n'
             '- Từ $8 \\times 9 = 72$, ta có ngay $72 : 8 = 9$.',
-  'formulas': [{'category': 'I. Bảng nhân – chia 8',
+  'formulas': [{'category': 'Bảng nhân – chia 8',
                 'items': [{'name': 'Các tích trọng tâm',
                            'formula': '$8 \\times 6 = 48$ · $8 \\times 7 = 56$ · $8 \\times 8 = 64$ · $8 '
                                       '\\times 9 = 72$'},
@@ -875,60 +1273,60 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
   'quiz': [{'level': 'biet',
             'type': 'mcq',
             'q': 'Kết quả của phép tính $8 \\times 8$ là:',
-            'options': ['$16$', '$56$', '$64$', '$72$'],
-            'answer': 2,
+            'options': ['$16$', '$64$', '$56$', '$72$'],
+            'answer': 1,
             'solution': 'Theo bảng nhân $8$: $8 \\times 8 = 64$.',
             'alt': None,
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
             'q': 'Kết quả của phép chia $72 : 8$ là:',
-            'options': ['$7$', '$8$', '$6$', '$9$'],
-            'answer': 3,
+            'options': ['$7$', '$8$', '$9$', '$6$'],
+            'answer': 2,
             'solution': 'Vì $8 \\times 9 = 72$ nên $72 : 8 = 9$.',
             'alt': None,
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 11: Bảng nhân 8, bảng chia 8**, công thức hoặc quy tắc '
-                 'nào sau đây biểu diễn đúng **Các tích trọng tâm**?',
-            'options': ['$8 \\times 6 = 48$ · $8 \\times 7 = 56$ · $8 \\times 8 = 64$ · $8 \\times 9 = 72$',
-                        '$8 \\times n = P \\Leftrightarrow P : 8 = n$',
-                        '$\\overline{abc} = a00 + b0 + c$',
-                        '$10 \\text{ chục} = 100$ · $10 \\text{ trăm} = 1\\,000$'],
-            'answer': 0,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 11: Bảng nhân 8, bảng chia 8, **Các tích '
-                        'trọng tâm** được xác định bởi: $8 \\times 6 = 48$ · $8 \\times 7 = 56$ · $8 \\times '
-                        '8 = 64$ · $8 \\times 9 = 72$.'},
+            'q': 'Trong **Bài 11: Bảng nhân 8, bảng chia 8**, quy tắc hoặc công thức nào sau đây xác định '
+                 'đúng **Các tích trọng tâm**?',
+            'options': ['$8 : 6 = 48$ · $8 \\times 7 = 56$ · $8 \\times 8 = 64$ · $8 \\times 9 = 72$',
+                        '$8 \\times 6 = 48$ · $8 \\times 7 = 56$ · $8 \\times 8 = 64$ · $8 \\times 9 = 71$',
+                        '$16 \\times 6 = 48$ · $8 \\times 7 = 56$ · $8 \\times 8 = 64$ · $8 \\times 9 = 72$',
+                        '$8 \\times 6 = 48$ · $8 \\times 7 = 56$ · $8 \\times 8 = 64$ · $8 \\times 9 = 72$'],
+            'answer': 3,
+            'solution': 'Theo kiến thức trọng tâm của Bài 11: Bảng nhân 8, bảng chia 8, **Các tích trọng '
+                        'tâm** được xác định bởi: $8 \\times 6 = 48$ · $8 \\times 7 = 56$ · $8 \\times 8 = '
+                        '64$ · $8 \\times 9 = 72$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 11: Bảng nhân 8, bảng chia 8**, nội dung/biểu thức $8 \\times n = P '
-                 '\\Leftrightarrow P : 8 = n$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Các tích trọng tâm',
-                        'Quan hệ nhân – chia',
-                        'Phân tích số',
-                        'Số tròn trăm, tròn nghìn'],
-            'answer': 1,
-            'solution': 'Trong Bài 11: Bảng nhân 8, bảng chia 8, biểu thức/quy tắc $8 \\times n = P '
-                        '\\Leftrightarrow P : 8 = n$ chính là nội dung của **Quan hệ nhân – chia**.'},
+            'q': 'Khi học **Bài 11: Bảng nhân 8, bảng chia 8**, biểu thức hoặc quy tắc nào dưới đây biểu '
+                 'diễn đúng **Quan hệ nhân – chia**?',
+            'options': ['$8 \\times n = P \\Leftrightarrow P : 8 = n$',
+                        '$8 : n = P \\Leftrightarrow P : 8 = n$',
+                        '$8 \\times n = P \\Leftrightarrow P : 7 = n$',
+                        '$16 \\times n = P \\Leftrightarrow P : 8 = n$'],
+            'answer': 0,
+            'solution': 'Trong Bài 11: Bảng nhân 8, bảng chia 8, **Quan hệ nhân – chia** có công thức/quy '
+                        'tắc là: $8 \\times n = P \\Leftrightarrow P : 8 = n$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Số thích hợp điền vào chỗ chấm trong dãy số $8, 16, 24, 32, \\dots, 48$ là:',
-            'options': ['$36$', '$42$', '$40$', '$44$'],
-            'answer': 2,
+            'options': ['$36$', '$40$', '$42$', '$44$'],
+            'answer': 1,
             'solution': 'Dãy các tích trong bảng nhân $8$: $32 + 8 = 40$.',
             'alt': None,
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 11: Bảng nhân 8, bảng chia 8** (Chủ đề 2: Bảng nhân, bảng chia), khẳng định '
-                 'nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Đọc, viết thành thạo các số có đến ba chữ số trong phạm vi 1 000.',
-                        'Phân tích được số có ba chữ số thành tổng các trăm, chục, đơn vị.',
-                        'So sánh và sắp xếp được các số trong phạm vi 1 000 theo thứ tự.',
-                        'Lập và học thuộc bảng nhân 8, bảng chia 8.'],
-            'answer': 3,
-            'solution': 'Theo yêu cầu cần đạt của Bài 11: Bảng nhân 8, bảng chia 8: Lập và học thuộc bảng '
+            'q': 'Để nắm vững bản chất của **Bài 11: Bảng nhân 8, bảng chia 8**, nhận định nào sau đây là '
+                 '**chính xác**?',
+            'options': ['Lập và học thuộc bảng nhân 9, bảng chia 8.',
+                        'Lập và học thuộc bảng nhân 8, bảng chia 7.',
+                        'Lập và học thuộc bảng nhân 8, bảng chia 8.',
+                        'Lập và học thuộc bảng nhân 16, bảng chia 8.'],
+            'answer': 2,
+            'solution': 'Theo nội dung cốt lõi của Bài 11: Bảng nhân 8, bảng chia 8: Lập và học thuộc bảng '
                         'nhân 8, bảng chia 8.'},
            {'level': 'hieu',
             'type': 'tf',
@@ -941,28 +1339,27 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'type': 'tf',
             'q': 'Trong **Bài 11: Bảng nhân 8, bảng chia 8**, quy tắc **Các tích trọng tâm** được xác định '
                  'bởi $8 \\times 6 = 48$ · $8 \\times 7 = 56$ · $8 \\times 8 = 64$ · $8 \\times 9 = 72$ và '
-                 'áp dụng trực tiếp vào bài toán: “Mỗi hộp có $8$ cái bánh. Hỏi $6$ hộp như thế có bao nhiêu '
-                 'cái bánh?”. Đúng hay sai?',
+                 'khi áp dụng cho ví dụ “Mỗi hộp có $8$ cái bánh. Hỏi $6$ hộp như thế có bao nhiêu cái '
+                 'bánh?” ta có lời giải: Số cái bánh trong $6$ hộp là: $8 \\times 6 = 48\\text{ (cái '
+                 'bánh)}$. Đáp số: **$48\\text{ cái bánh}$**.. Đúng hay sai?',
             'answer': True,
-            'solution': 'Khẳng định **Đúng**. Quy tắc **Các tích trọng tâm** ($8 \\times 6 = 48$ · $8 '
-                        '\\times 7 = 56$ · $8 \\times 8 = 64$ · $8 \\times 9 = 72$) là kiến thức cốt lõi của '
-                        'Bài 11: Bảng nhân 8, bảng chia 8. Số cái bánh trong $6$ hộp là: $8 \\times 6 = '
-                        '48\\text{ (cái bánh)}$. Đáp số: **$48\\text{ cái bánh}$**.'},
+            'solution': 'Khẳng định **Đúng**. Đó chính là quy tắc **Các tích trọng tâm** ($8 \\times 6 = 48$ '
+                        '· $8 \\times 7 = 56$ · $8 \\times 8 = 64$ · $8 \\times 9 = 72$) và lời giải ví dụ '
+                        'minh họa của Bài 11: Bảng nhân 8, bảng chia 8.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 11: Bảng nhân 8, bảng chia 8** để giải quyết tình huống sau: Mỗi '
-                 'hộp có $8$ cái bánh. Hỏi $6$ hộp như thế có bao nhiêu cái bánh? Kết quả và hướng giải nào '
-                 'dưới đây là **đúng**?',
-            'options': ['Số cái bánh trong $6$ hộp là: $8 \\times 6 = 48\\text{ (cái bánh)}$. Đáp số: '
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 11: Bảng nhân 8, bảng chia 8** để giải bài toán '
+                 'sau: Mỗi hộp có $8$ cái bánh. Hỏi $6$ hộp như thế có bao nhiêu cái bánh? Cách giải và kết '
+                 'quả nào dưới đây là **đúng**?',
+            'options': ['Số cái bánh trong $6$ hộp là: $8 : 6 = 48\\text{ (cái bánh)}$. Đáp số: **$48\\text{ '
+                        'cái bánh}$**.',
+                        'Số cái bánh trong $6$ hộp là: $8 \\times 6 = 48\\text{ (cái bánh)}$. Đáp số: '
+                        '**$47\\text{ cái bánh}$**.',
+                        'Số cái bánh trong $12$ hộp là: $8 \\times 6 = 48\\text{ (cái bánh)}$. Đáp số: '
                         '**$48\\text{ cái bánh}$**.',
-                        'Ta có $806 = 800 + 6$ (gồm $8$ trăm, $0$ chục, $6$ đơn vị). Vì chữ số hàng trăm $8 '
-                        '> 7$ nên **$806 > 798$**.',
-                        '- $468 + 325$: $8 + 5 = 13$ (viết $3$ nhớ $1$); $6 + 2 + 1 = 9$; $4 + 3 = 7$ '
-                        '$\\rightarrow$ **$793$**. - $750 - 236$: $10 - 6 = 4$ (viết $4$ nhớ $1$); $5 - (3 + '
-                        '1) = 1$...',
-                        'Áp dụng quy tắc tìm số trừ: $\\text{Số trừ} = \\text{Số bị trừ} - \\text{Hiệu} = 85 '
-                        '- 39 = 46$. Thử lại: $85 - 46 = 39$ (đúng). Vậy số cần tìm là **$46$**.'],
-            'answer': 0,
+                        'Số cái bánh trong $6$ hộp là: $8 \\times 6 = 48\\text{ (cái bánh)}$. Đáp số: '
+                        '**$48\\text{ cái bánh}$**.'],
+            'answer': 3,
             'solution': 'Lời giải chi tiết theo Bài 11: Bảng nhân 8, bảng chia 8: Số cái bánh trong $6$ hộp '
                         'là: $8 \\times 6 = 48\\text{ (cái bánh)}$.\n'
                         'Đáp số: **$48\\text{ cái bánh}$**.'},
@@ -994,7 +1391,7 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'về $0$, tổng hai chữ số luôn bằng $9$.\n'
             '### 2. Bảng chia $9$\n'
             '- Lập từ bảng nhân $9$: $9 : 9 = 1, 18 : 9 = 2, \\dots, 81 : 9 = 9, 90 : 9 = 10$.',
-  'formulas': [{'category': 'I. Bảng nhân – chia 9',
+  'formulas': [{'category': 'Bảng nhân – chia 9',
                 'items': [{'name': 'Mẹo tính nhẩm',
                            'formula': '$9 \\times n = 10 \\times n - n$',
                            'note': 'Ví dụ: $9 \\times 8 = 80 - 8 = 72$'},
@@ -1006,57 +1403,60 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
   'quiz': [{'level': 'biet',
             'type': 'mcq',
             'q': 'Kết quả của phép nhân $9 \\times 9$ là:',
-            'options': ['$18$', '$72$', '$99$', '$81$'],
-            'answer': 3,
+            'options': ['$18$', '$72$', '$81$', '$99$'],
+            'answer': 2,
             'solution': 'Theo bảng nhân $9$: $9 \\times 9 = 81$.',
             'alt': None,
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
             'q': 'Kết quả của phép chia $63 : 9$ là:',
-            'options': ['$7$', '$6$', '$8$', '$9$'],
-            'answer': 0,
+            'options': ['$6$', '$8$', '$9$', '$7$'],
+            'answer': 3,
             'solution': 'Vì $9 \\times 7 = 63$ nên $63 : 9 = 7$.',
             'alt': None,
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 12: Bảng nhân 9, bảng chia 9**, công thức hoặc quy tắc '
-                 'nào sau đây biểu diễn đúng **Mẹo tính nhẩm**?',
-            'options': ['$9 \\times n = P \\Leftrightarrow P : 9 = n$',
-                        '$9 \\times n = 10 \\times n - n$',
-                        '$\\overline{abc} = a00 + b0 + c$',
-                        '$10 \\text{ chục} = 100$ · $10 \\text{ trăm} = 1\\,000$'],
-            'answer': 1,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 12: Bảng nhân 9, bảng chia 9, **Mẹo tính '
-                        'nhẩm** được xác định bởi: $9 \\times n = 10 \\times n - n$. (Ví dụ: $9 \\times 8 = '
-                        '80 - 8 = 72$)'},
+            'q': 'Trong **Bài 12: Bảng nhân 9, bảng chia 9**, quy tắc hoặc công thức nào sau đây xác định '
+                 'đúng **Mẹo tính nhẩm**?',
+            'options': ['$9 \\times n = 10 \\times n - n$',
+                        '$9 \\times n = 10 \\times n + n$',
+                        '$9 \\times n = 9 \\times n - n$',
+                        '$18 \\times n = 10 \\times n - n$'],
+            'answer': 0,
+            'solution': 'Theo kiến thức trọng tâm của Bài 12: Bảng nhân 9, bảng chia 9, **Mẹo tính nhẩm** '
+                        'được xác định bởi: $9 \\times n = 10 \\times n - n$. (Ví dụ: $9 \\times 8 = 80 - 8 '
+                        '= 72$)'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 12: Bảng nhân 9, bảng chia 9**, nội dung/biểu thức $9 \\times n = P '
-                 '\\Leftrightarrow P : 9 = n$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Mẹo tính nhẩm', 'Phân tích số', 'Chia cho 9', 'Số tròn trăm, tròn nghìn'],
-            'answer': 2,
-            'solution': 'Trong Bài 12: Bảng nhân 9, bảng chia 9, biểu thức/quy tắc $9 \\times n = P '
-                        '\\Leftrightarrow P : 9 = n$ chính là nội dung của **Chia cho 9**.'},
+            'q': 'Khi học **Bài 12: Bảng nhân 9, bảng chia 9**, biểu thức hoặc quy tắc nào dưới đây biểu '
+                 'diễn đúng **Chia cho 9**?',
+            'options': ['$9 : n = P \\Leftrightarrow P : 9 = n$',
+                        '$9 \\times n = P \\Leftrightarrow P : 9 = n$',
+                        '$9 \\times n = P \\Leftrightarrow P : 8 = n$',
+                        '$18 \\times n = P \\Leftrightarrow P : 9 = n$'],
+            'answer': 1,
+            'solution': 'Trong Bài 12: Bảng nhân 9, bảng chia 9, **Chia cho 9** có công thức/quy tắc là: $9 '
+                        '\\times n = P \\Leftrightarrow P : 9 = n$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Tích của $9$ và số lớn nhất có một chữ số là:',
-            'options': ['$90$', '$72$', '$18$', '$81$'],
-            'answer': 3,
+            'options': ['$90$', '$72$', '$81$', '$18$'],
+            'answer': 2,
             'solution': 'Số lớn nhất có một chữ số là $9$. Tích là $9 \\times 9 = 81$.',
             'alt': None,
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 12: Bảng nhân 9, bảng chia 9** (Chủ đề 2: Bảng nhân, bảng chia), khẳng định '
-                 'nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Thuộc bảng nhân 9 và bảng chia 9.',
-                        'Đọc, viết thành thạo các số có đến ba chữ số trong phạm vi 1 000.',
-                        'Phân tích được số có ba chữ số thành tổng các trăm, chục, đơn vị.',
-                        'So sánh và sắp xếp được các số trong phạm vi 1 000 theo thứ tự.'],
-            'answer': 0,
-            'solution': 'Theo yêu cầu cần đạt của Bài 12: Bảng nhân 9, bảng chia 9: Thuộc bảng nhân 9 và '
+            'q': 'Để nắm vững bản chất của **Bài 12: Bảng nhân 9, bảng chia 9**, nhận định nào sau đây là '
+                 '**chính xác**?',
+            'options': ['Thuộc bảng nhân 10 và bảng chia 9.',
+                        'Thuộc bảng nhân 9 và bảng chia 8.',
+                        'Thuộc bảng nhân 18 và bảng chia 9.',
+                        'Thuộc bảng nhân 9 và bảng chia 9.'],
+            'answer': 3,
+            'solution': 'Theo nội dung cốt lõi của Bài 12: Bảng nhân 9, bảng chia 9: Thuộc bảng nhân 9 và '
                         'bảng chia 9.'},
            {'level': 'hieu',
             'type': 'tf',
@@ -1069,26 +1469,22 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
            {'level': 'hieu',
             'type': 'tf',
             'q': 'Trong **Bài 12: Bảng nhân 9, bảng chia 9**, quy tắc **Mẹo tính nhẩm** được xác định bởi $9 '
-                 '\\times n = 10 \\times n - n$ và áp dụng trực tiếp vào bài toán: “Tính: $9 \\times 6$, $9 '
-                 '\\times 9$, $54 : 9$, $81 : 9$.”. Đúng hay sai?',
+                 '\\times n = 10 \\times n - n$ và khi áp dụng cho ví dụ “Tính: $9 \\times 6$, $9 \\times '
+                 '9$, $54 : 9$, $81 : 9$.” ta có lời giải: - $9 \\times 6 = 54$ nên $54 : 9 = 6$. - $9 '
+                 '\\times 9 = 81$ nên $81 : 9 = 9$.. Đúng hay sai?',
             'answer': True,
-            'solution': 'Khẳng định **Đúng**. Quy tắc **Mẹo tính nhẩm** ($9 \\times n = 10 \\times n - n$) '
-                        'là kiến thức cốt lõi của Bài 12: Bảng nhân 9, bảng chia 9. - $9 \\times 6 = 54$ nên '
-                        '$54 : 9 = 6$. - $9 \\times 9 = 81$ nên $81 : 9 = 9$.'},
+            'solution': 'Khẳng định **Đúng**. Đó chính là quy tắc **Mẹo tính nhẩm** ($9 \\times n = 10 '
+                        '\\times n - n$) và lời giải ví dụ minh họa của Bài 12: Bảng nhân 9, bảng chia 9.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 12: Bảng nhân 9, bảng chia 9** để giải quyết tình huống sau: '
-                 'Tính: $9 \\times 6$, $9 \\times 9$, $54 : 9$, $81 : 9$. Kết quả và hướng giải nào dưới đây '
-                 'là **đúng**?',
-            'options': ['Ta có $806 = 800 + 6$ (gồm $8$ trăm, $0$ chục, $6$ đơn vị). Vì chữ số hàng trăm $8 '
-                        '> 7$ nên **$806 > 798$**.',
-                        '- $9 \\times 6 = 54$ nên $54 : 9 = 6$. - $9 \\times 9 = 81$ nên $81 : 9 = 9$.',
-                        '- $468 + 325$: $8 + 5 = 13$ (viết $3$ nhớ $1$); $6 + 2 + 1 = 9$; $4 + 3 = 7$ '
-                        '$\\rightarrow$ **$793$**. - $750 - 236$: $10 - 6 = 4$ (viết $4$ nhớ $1$); $5 - (3 + '
-                        '1) = 1$...',
-                        'Áp dụng quy tắc tìm số trừ: $\\text{Số trừ} = \\text{Số bị trừ} - \\text{Hiệu} = 85 '
-                        '- 39 = 46$. Thử lại: $85 - 46 = 39$ (đúng). Vậy số cần tìm là **$46$**.'],
-            'answer': 1,
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 12: Bảng nhân 9, bảng chia 9** để giải bài toán '
+                 'sau: Tính: $9 \\times 6$, $9 \\times 9$, $54 : 9$, $81 : 9$. Cách giải và kết quả nào dưới '
+                 'đây là **đúng**?',
+            'options': ['- $9 \\times 6 = 54$ nên $54 : 9 = 6$. - $9 \\times 9 = 81$ nên $81 : 9 = 9$.',
+                        '- $9 \\times 6 = 54$ nên $54 : 9 = 6$. + $9 \\times 9 = 81$ nên $81 : 9 = 9$.',
+                        '- $9 \\times 6 = 54$ nên $54 : 9 = 6$. - $9 \\times 9 = 81$ nên $81 : 9 = 8$.',
+                        '- $18 \\times 6 = 54$ nên $54 : 9 = 6$. - $9 \\times 9 = 81$ nên $81 : 9 = 9$.'],
+            'answer': 0,
             'solution': 'Lời giải chi tiết theo Bài 12: Bảng nhân 9, bảng chia 9: - $9 \\times 6 = 54$ nên '
                         '$54 : 9 = 6$.\n'
                         '- $9 \\times 9 = 81$ nên $81 : 9 = 9$.'},
@@ -1125,11 +1521,10 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             '- Phép chia hết: $\\text{Số bị chia} : \\text{Số chia} = \\text{Thương}$.\n'
             '- Tìm số bị chia: $? : 7 = 5 \\Rightarrow ? = 5 \\times 7 = 35$.\n'
             '- Tìm số chia: $48 : ? = 8 \\Rightarrow ? = 48 : 8 = 6$.',
-  'formulas': [{'category': 'I. Phép nhân',
+  'formulas': [{'category': 'Công thức & Quy tắc trọng tâm: Tìm thành phần trong phép nhân, phép chia',
                 'items': [{'name': 'Tìm thừa số',
-                           'formula': '$\\text{Thừa số} = \\text{Tích} : \\text{Thừa số kia}$'}]},
-               {'category': 'II. Phép chia',
-                'items': [{'name': 'Tìm số bị chia',
+                           'formula': '$\\text{Thừa số} = \\text{Tích} : \\text{Thừa số kia}$'},
+                          {'name': 'Tìm số bị chia',
                            'formula': '$\\text{Số bị chia} = \\text{Thương} \\times \\text{Số chia}$'},
                           {'name': 'Tìm số chia',
                            'formula': '$\\text{Số chia} = \\text{Số bị chia} : \\text{Thương}$'}]}],
@@ -1141,63 +1536,67 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
   'quiz': [{'level': 'biet',
             'type': 'mcq',
             'q': 'Muốn tìm một thừa số chưa biết, ta lấy:',
-            'options': ['Tích chia cho thừa số kia',
-                        'Tích nhân với thừa số kia',
+            'options': ['Tích nhân với thừa số kia',
                         'Tích trừ đi thừa số kia',
-                        'Thừa số kia chia cho tích'],
-            'answer': 0,
+                        'Thừa số kia chia cho tích',
+                        'Tích chia cho thừa số kia'],
+            'answer': 3,
             'solution': 'Theo quy tắc: $\\text{Thừa số} = \\text{Tích} : \\text{Thừa số kia}$.',
             'alt': None,
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
             'q': 'Tìm số chia trong phép tính $63 : ? = 9$:',
-            'options': ['$8$', '$7$', '$54$', '$72$'],
-            'answer': 1,
+            'options': ['$7$', '$8$', '$54$', '$72$'],
+            'answer': 0,
             'solution': 'Số chia $= 63 : 9 = 7$.',
             'alt': None,
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 13: Tìm thành phần trong phép nhân, phép chia**, công '
-                 'thức hoặc quy tắc nào sau đây biểu diễn đúng **Tìm thừa số**?',
-            'options': ['$\\text{Số bị chia} = \\text{Thương} \\times \\text{Số chia}$',
-                        '$\\text{Số chia} = \\text{Số bị chia} : \\text{Thương}$',
+            'q': 'Trong **Bài 13: Tìm thành phần trong phép nhân, phép chia**, quy tắc hoặc công thức nào '
+                 'sau đây xác định đúng **Tìm thừa số**?',
+            'options': ['$\\text{Thừa số} = \\text{Tích} : \\text{Thừa số kia}$ (với dấu ngược lại)',
                         '$\\text{Thừa số} = \\text{Tích} : \\text{Thừa số kia}$',
-                        '$\\overline{abc} = a00 + b0 + c$'],
-            'answer': 2,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 13: Tìm thành phần trong phép nhân, phép '
-                        'chia, **Tìm thừa số** được xác định bởi: $\\text{Thừa số} = \\text{Tích} : '
-                        '\\text{Thừa số kia}$.'},
+                        'Đảo ngược vế của quy tắc: $\\text{Thừa số} = \\text{Tích} : \\text{Thừa số kia}$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\text{Thừa số} = \\text{Tích} '
+                        ': \\text{Thừa số kia}$'],
+            'answer': 1,
+            'solution': 'Theo kiến thức trọng tâm của Bài 13: Tìm thành phần trong phép nhân, phép chia, '
+                        '**Tìm thừa số** được xác định bởi: $\\text{Thừa số} = \\text{Tích} : \\text{Thừa số '
+                        'kia}$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 13: Tìm thành phần trong phép nhân, phép chia**, nội dung/biểu thức $\\text{Số '
-                 'bị chia} = \\text{Thương} \\times \\text{Số chia}$ là quy tắc hoặc công thức của mục nào '
-                 'sau đây?',
-            'options': ['Tìm thừa số', 'Tìm số chia', 'Phân tích số', 'Tìm số bị chia'],
-            'answer': 3,
-            'solution': 'Trong Bài 13: Tìm thành phần trong phép nhân, phép chia, biểu thức/quy tắc '
-                        '$\\text{Số bị chia} = \\text{Thương} \\times \\text{Số chia}$ chính là nội dung của '
-                        '**Tìm số bị chia**.'},
+            'q': 'Khi học **Bài 13: Tìm thành phần trong phép nhân, phép chia**, biểu thức hoặc quy tắc nào '
+                 'dưới đây biểu diễn đúng **Tìm số bị chia**?',
+            'options': ['$\\text{Số bị chia} = \\text{Thương} : \\text{Số chia}$',
+                        'Đảo ngược vế của quy tắc: $\\text{Số bị chia} = \\text{Thương} \\times \\text{Số '
+                        'chia}$',
+                        '$\\text{Số bị chia} = \\text{Thương} \\times \\text{Số chia}$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\text{Số bị chia} = '
+                        '\\text{Thương} \\times \\text{Số chia}$'],
+            'answer': 2,
+            'solution': 'Trong Bài 13: Tìm thành phần trong phép nhân, phép chia, **Tìm số bị chia** có công '
+                        'thức/quy tắc là: $\\text{Số bị chia} = \\text{Thương} \\times \\text{Số chia}$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Tìm số bị chia $x$ biết $x : 6 = 8$:',
-            'options': ['$48$', '$14$', '$42$', '$56$'],
-            'answer': 0,
+            'options': ['$14$', '$42$', '$56$', '$48$'],
+            'answer': 3,
             'solution': 'Số bị chia $x = 8 \\times 6 = 48$.',
             'alt': None,
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 13: Tìm thành phần trong phép nhân, phép chia** (Chủ đề 2: Bảng nhân, bảng '
-                 'chia), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của '
-                 'bài?',
-            'options': ['Đọc, viết thành thạo các số có đến ba chữ số trong phạm vi 1 000.',
-                        'Tìm được thừa số chưa biết khi biết tích và thừa số kia.',
-                        'Phân tích được số có ba chữ số thành tổng các trăm, chục, đơn vị.',
-                        'So sánh và sắp xếp được các số trong phạm vi 1 000 theo thứ tự.'],
-            'answer': 1,
-            'solution': 'Theo yêu cầu cần đạt của Bài 13: Tìm thành phần trong phép nhân, phép chia: Tìm '
+            'q': 'Để nắm vững bản chất của **Bài 13: Tìm thành phần trong phép nhân, phép chia**, nhận định '
+                 'nào sau đây là **chính xác**?',
+            'options': ['Tìm được thừa số chưa biết khi biết tích và thừa số kia.',
+                        'Tìm được thừa số chưa biết khi biết tích và thừa số kia. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Tìm được thừa số chưa biết khi biết tích và thừa số kia.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Tìm được thừa số chưa biết khi '
+                        'biết tích và thừa số kia.'],
+            'answer': 0,
+            'solution': 'Theo nội dung cốt lõi của Bài 13: Tìm thành phần trong phép nhân, phép chia: Tìm '
                         'được thừa số chưa biết khi biết tích và thừa số kia.'},
            {'level': 'hieu',
             'type': 'tf',
@@ -1209,28 +1608,28 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
            {'level': 'hieu',
             'type': 'tf',
             'q': 'Trong **Bài 13: Tìm thành phần trong phép nhân, phép chia**, quy tắc **Tìm thừa số** được '
-                 'xác định bởi $\\text{Thừa số} = \\text{Tích} : \\text{Thừa số kia}$ và áp dụng trực tiếp '
-                 'vào bài toán: “Tìm thành phần chưa biết: a) $? : 8 = 7$; b) $63 : ? = 9$.”. Đúng hay sai?',
+                 'xác định bởi $\\text{Thừa số} = \\text{Tích} : \\text{Thừa số kia}$ và khi áp dụng cho ví '
+                 'dụ “Tìm thành phần chưa biết: a) $? : 8 = 7$; b) $63 : ? = 9$.” ta có lời giải: a) Số bị '
+                 'chia $= \\text{Thương} \\times \\text{Số chia} = 7 \\times 8 = 56$. b) Số chia $= '
+                 '\\text{Số bị chia} : \\text{Thương} = 63 : 9 = 7$.. Đúng hay sai?',
             'answer': True,
-            'solution': 'Khẳng định **Đúng**. Quy tắc **Tìm thừa số** ($\\text{Thừa số} = \\text{Tích} : '
-                        '\\text{Thừa số kia}$) là kiến thức cốt lõi của Bài 13: Tìm thành phần trong phép '
-                        'nhân, phép chia. a) Số bị chia $= \\text{Thương} \\times \\text{Số chia} = 7 '
-                        '\\times 8 = 56$. b) Số chia $= \\text{Số bị chia} : \\text{Thương} = 63 : 9 = 7$.'},
+            'solution': 'Khẳng định **Đúng**. Đó chính là quy tắc **Tìm thừa số** ($\\text{Thừa số} = '
+                        '\\text{Tích} : \\text{Thừa số kia}$) và lời giải ví dụ minh họa của Bài 13: Tìm '
+                        'thành phần trong phép nhân, phép chia.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 13: Tìm thành phần trong phép nhân, phép chia** để giải quyết '
-                 'tình huống sau: Tìm thành phần chưa biết: a) $? : 8 = 7$; b) $63 : ? = 9$. Kết quả và '
-                 'hướng giải nào dưới đây là **đúng**?',
-            'options': ['Ta có $806 = 800 + 6$ (gồm $8$ trăm, $0$ chục, $6$ đơn vị). Vì chữ số hàng trăm $8 '
-                        '> 7$ nên **$806 > 798$**.',
-                        '- $468 + 325$: $8 + 5 = 13$ (viết $3$ nhớ $1$); $6 + 2 + 1 = 9$; $4 + 3 = 7$ '
-                        '$\\rightarrow$ **$793$**. - $750 - 236$: $10 - 6 = 4$ (viết $4$ nhớ $1$); $5 - (3 + '
-                        '1) = 1$...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 13: Tìm thành phần trong phép nhân, phép chia** để '
+                 'giải bài toán sau: Tìm thành phần chưa biết: a) $? : 8 = 7$; b) $63 : ? = 9$. Cách giải và '
+                 'kết quả nào dưới đây là **đúng**?',
+            'options': ['a) Số bị chia $= \\text{Thương} : \\text{Số chia} = 7 \\times 8 = 56$. b) Số chia '
+                        '$= \\text{Số bị chia} : \\text{Thương} = 63 : 9 = 7$.',
                         'a) Số bị chia $= \\text{Thương} \\times \\text{Số chia} = 7 \\times 8 = 56$. b) Số '
                         'chia $= \\text{Số bị chia} : \\text{Thương} = 63 : 9 = 7$.',
-                        'Áp dụng quy tắc tìm số trừ: $\\text{Số trừ} = \\text{Số bị trừ} - \\text{Hiệu} = 85 '
-                        '- 39 = 46$. Thử lại: $85 - 46 = 39$ (đúng). Vậy số cần tìm là **$46$**.'],
-            'answer': 2,
+                        'a) Số bị chia $= \\text{Thương} \\times \\text{Số chia} = 7 \\times 8 = 56$. b) Số '
+                        'chia $= \\text{Số bị chia} : \\text{Thương} = 63 : 9 = 6$.',
+                        'a) Số bị chia $= \\text{Thương} \\times \\text{Số chia} = 14 \\times 8 = 56$. b) Số '
+                        'chia $= \\text{Số bị chia} : \\text{Thương} = 63 : 9 = 7$.'],
+            'answer': 1,
             'solution': 'Lời giải chi tiết theo Bài 13: Tìm thành phần trong phép nhân, phép chia: a) Số bị '
                         'chia $= \\text{Thương} \\times \\text{Số chia} = 7 \\times 8 = 56$.\n'
                         'b) Số chia $= \\text{Số bị chia} : \\text{Thương} = 63 : 9 = 7$.'},
@@ -1248,7 +1647,7 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
   'context_title': 'Chủ đề 2: Bảng nhân, bảng chia',
   'context': 'SGK Toán 3 · Chủ đề 2: Bảng nhân, bảng chia 6, 7, 8, 9; tìm thành phần phép nhân, chia; một '
              'phần mấy.',
-  'title': 'Bài 14, 15: Một phần mấy và luyện tập chung',
+  'title': 'Bài 14: Một phần mấy',
   'icon': '🍰',
   'description': 'Nhận biết một phần mấy (từ 1/2 đến 1/9) của một hình hoặc một nhóm đồ vật.',
   'requirements': ['Nhận biết được $\\dfrac{1}{2}, \\dfrac{1}{3}, \\dots, \\dfrac{1}{9}$ qua hình ảnh trực '
@@ -1266,7 +1665,7 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             '### 2. Tìm một phần mấy của một số\n'
             '- Ví dụ: $\\dfrac{1}{4}$ của $20$ cái kẹo là $20 : 4 = 5$ (cái kẹo).\n'
             '- Ví dụ: $\\dfrac{1}{6}$ của $42\\text{ l}$ nước là $42 : 6 = 7\\text{ (l)}$.',
-  'formulas': [{'category': 'I. Một phần mấy',
+  'formulas': [{'category': 'Một phần mấy',
                 'items': [{'name': 'Ký hiệu',
                            'formula': '$\\dfrac{1}{n}$ đọc là "một phần $n$" ($n = 2, 3, \\dots, 9$)'},
                           {'name': 'Tìm 1/n của số a',
@@ -1281,59 +1680,62 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
   'quiz': [{'level': 'biet',
             'type': 'mcq',
             'q': 'Một phần năm được viết là:',
-            'options': ['$\\dfrac{5}{1}$', '$\\dfrac{1}{5}$', '$15$', '$5$'],
-            'answer': 1,
+            'options': ['$\\dfrac{1}{5}$', '$\\dfrac{5}{1}$', '$15$', '$5$'],
+            'answer': 0,
             'solution': 'Một phần năm viết là **$\\dfrac{1}{5}$**.',
             'alt': None,
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
             'q': 'Muốn tìm $\\dfrac{1}{6}$ của $42\\text{ l}$ nước, ta thực hiện phép tính:',
-            'options': ['$42 \\times 6$', '$42 - 6$', '$42 : 6$', '$42 + 6$'],
-            'answer': 2,
+            'options': ['$42 \\times 6$', '$42 : 6$', '$42 - 6$', '$42 + 6$'],
+            'answer': 1,
             'solution': 'Ta lấy $42 : 6 = 7\\text{ (l)}$.',
             'alt': None,
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 14, 15: Một phần mấy và luyện tập chung**, công thức '
-                 'hoặc quy tắc nào sau đây biểu diễn đúng **Ký hiệu**?',
-            'options': ['$\\dfrac{1}{n} \\text{ của } a = a : n$',
-                        '$\\overline{abc} = a00 + b0 + c$',
-                        '$10 \\text{ chục} = 100$ · $10 \\text{ trăm} = 1\\,000$',
-                        '$\\dfrac{1}{n}$ đọc là "một phần $n$" ($n = 2, 3, \\dots, 9$)'],
-            'answer': 3,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 14, 15: Một phần mấy và luyện tập chung, **Ký '
-                        'hiệu** được xác định bởi: $\\dfrac{1}{n}$ đọc là "một phần $n$" ($n = 2, 3, \\dots, '
-                        '9$).'},
+            'q': 'Trong **Bài 14: Một phần mấy**, quy tắc hoặc công thức nào sau đây xác định đúng **Ký '
+                 'hiệu**?',
+            'options': ['$\\dfrac{2}{n}$ đọc là "một phần $n$" ($n = 2, 3, \\dots, 9$)',
+                        '$\\dfrac{n}{1}$ đọc là "một phần $n$" ($n = 2, 3, \\dots, 9$)',
+                        '$\\dfrac{1}{n}$ đọc là "một phần $n$" ($n = 2, 3, \\dots, 9$)',
+                        '$\\dfrac{1}{n} \\text{ của } a = a : n$'],
+            'answer': 2,
+            'solution': 'Theo kiến thức trọng tâm của Bài 14: Một phần mấy, **Ký hiệu** được xác định bởi: '
+                        '$\\dfrac{1}{n}$ đọc là "một phần $n$" ($n = 2, 3, \\dots, 9$).'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 14, 15: Một phần mấy và luyện tập chung**, nội dung/biểu thức $\\dfrac{1}{n} '
-                 '\\text{ của } a = a : n$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Tìm 1/n của số a', 'Ký hiệu', 'Phân tích số', 'Số tròn trăm, tròn nghìn'],
-            'answer': 0,
-            'solution': 'Trong Bài 14, 15: Một phần mấy và luyện tập chung, biểu thức/quy tắc $\\dfrac{1}{n} '
-                        '\\text{ của } a = a : n$ chính là nội dung của **Tìm 1/n của số a**.'},
+            'q': 'Khi học **Bài 14: Một phần mấy**, biểu thức hoặc quy tắc nào dưới đây biểu diễn đúng **Tìm '
+                 '1/n của số a**?',
+            'options': ['$\\dfrac{2}{n} \\text{ của } a = a : n$',
+                        '$\\dfrac{n}{1} \\text{ của } a = a : n$',
+                        '$\\dfrac{1}{n}$ đọc là "một phần $n$" ($n = 2, 3, \\dots, 9$)',
+                        '$\\dfrac{1}{n} \\text{ của } a = a : n$'],
+            'answer': 3,
+            'solution': 'Trong Bài 14: Một phần mấy, **Tìm 1/n của số a** có công thức/quy tắc là: '
+                        '$\\dfrac{1}{n} \\text{ của } a = a : n$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': '$\\dfrac{1}{8}$ của $56\\text{ kg}$ gạo là:',
-            'options': ['$6\\text{ kg}$', '$7\\text{ kg}$', '$8\\text{ kg}$', '$48\\text{ kg}$'],
-            'answer': 1,
+            'options': ['$7\\text{ kg}$', '$6\\text{ kg}$', '$8\\text{ kg}$', '$48\\text{ kg}$'],
+            'answer': 0,
             'solution': 'Ta có $56 : 8 = 7\\text{ (kg)}$.',
             'alt': None,
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 14, 15: Một phần mấy và luyện tập chung** (Chủ đề 2: Bảng nhân, bảng chia), '
-                 'khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Đọc, viết thành thạo các số có đến ba chữ số trong phạm vi 1 000.',
-                        'Phân tích được số có ba chữ số thành tổng các trăm, chục, đơn vị.',
+            'q': 'Để nắm vững bản chất của **Bài 14: Một phần mấy**, nhận định nào sau đây là **chính xác**?',
+            'options': ['Nhận biết được $\\dfrac{2}{2}, \\dfrac{1}{3}, \\dots, \\dfrac{1}{9}$ qua hình ảnh '
+                        'trực quan.',
                         'Nhận biết được $\\dfrac{1}{2}, \\dfrac{1}{3}, \\dots, \\dfrac{1}{9}$ qua hình ảnh '
                         'trực quan.',
-                        'So sánh và sắp xếp được các số trong phạm vi 1 000 theo thứ tự.'],
-            'answer': 2,
-            'solution': 'Theo yêu cầu cần đạt của Bài 14, 15: Một phần mấy và luyện tập chung: Nhận biết '
-                        'được $\\dfrac{1}{2}, \\dfrac{1}{3}, \\dots, \\dfrac{1}{9}$ qua hình ảnh trực quan.'},
+                        'Nhận biết được $\\dfrac{2}{1}, \\dfrac{1}{3}, \\dots, \\dfrac{1}{9}$ qua hình ảnh '
+                        'trực quan.',
+                        'Trường hợp sai quy tắc (sai lệch 1 đơn vị so với công thức trong bài)'],
+            'answer': 1,
+            'solution': 'Theo nội dung cốt lõi của Bài 14: Một phần mấy: Nhận biết được $\\dfrac{1}{2}, '
+                        '\\dfrac{1}{3}, \\dots, \\dfrac{1}{9}$ qua hình ảnh trực quan.'},
            {'level': 'hieu',
             'type': 'tf',
             'q': 'Nhận định: "Chia một hình vuông thành $5$ phần bằng nhau, tô màu $1$ phần thì đã tô màu '
@@ -1345,32 +1747,31 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'hieu',
             'type': 'tf',
-            'q': 'Trong **Bài 14, 15: Một phần mấy và luyện tập chung**, quy tắc **Ký hiệu** được xác định '
-                 'bởi $\\dfrac{1}{n}$ đọc là "một phần $n$" ($n = 2, 3, \\dots, 9$) và áp dụng trực tiếp vào '
-                 'bài toán: “Lớp 3A có $35$ học sinh, trong đó $\\dfrac{1}{7}$ số học sinh đạt giải Cờ vua. '
-                 'Hỏi lớp 3A có bao nhiêu học sinh đạt giải?”. Đúng hay sai?',
+            'q': 'Trong **Bài 14: Một phần mấy**, quy tắc **Ký hiệu** được xác định bởi $\\dfrac{1}{n}$ đọc '
+                 'là "một phần $n$" ($n = 2, 3, \\dots, 9$) và khi áp dụng cho ví dụ “Lớp 3A có $35$ học '
+                 'sinh, trong đó $\\dfrac{1}{7}$ số học sinh đạt giải Cờ vua. Hỏi lớp 3A có bao nhiêu học '
+                 'sinh đạt giải?” ta có lời giải: Số học sinh đạt giải Cờ vua là: $35 : 7 = 5\\text{ (học '
+                 'sinh)}$. Đáp số: **$5\\text{ học sinh}$**.. Đúng hay sai?',
             'answer': True,
-            'solution': 'Khẳng định **Đúng**. Quy tắc **Ký hiệu** ($\\dfrac{1}{n}$ đọc là "một phần $n$" ($n '
-                        '= 2, 3, \\dots, 9$)) là kiến thức cốt lõi của Bài 14, 15: Một phần mấy và luyện tập '
-                        'chung. Số học sinh đạt giải Cờ vua là: $35 : 7 = 5\\text{ (học sinh)}$. Đáp số: '
-                        '**$5\\text{ học sinh}$**.'},
+            'solution': 'Khẳng định **Đúng**. Đó chính là quy tắc **Ký hiệu** ($\\dfrac{1}{n}$ đọc là "một '
+                        'phần $n$" ($n = 2, 3, \\dots, 9$)) và lời giải ví dụ minh họa của Bài 14: Một phần '
+                        'mấy.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 14, 15: Một phần mấy và luyện tập chung** để giải quyết tình '
-                 'huống sau: Lớp 3A có $35$ học sinh, trong đó $\\dfrac{1}{7}$ số học sinh đạt giải Cờ vua. '
-                 'Hỏi lớp 3A có bao nhiêu học sinh đạt giải? Kết quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Ta có $806 = 800 + 6$ (gồm $8$ trăm, $0$ chục, $6$ đơn vị). Vì chữ số hàng trăm $8 '
-                        '> 7$ nên **$806 > 798$**.',
-                        '- $468 + 325$: $8 + 5 = 13$ (viết $3$ nhớ $1$); $6 + 2 + 1 = 9$; $4 + 3 = 7$ '
-                        '$\\rightarrow$ **$793$**. - $750 - 236$: $10 - 6 = 4$ (viết $4$ nhớ $1$); $5 - (3 + '
-                        '1) = 1$...',
-                        'Áp dụng quy tắc tìm số trừ: $\\text{Số trừ} = \\text{Số bị trừ} - \\text{Hiệu} = 85 '
-                        '- 39 = 46$. Thử lại: $85 - 46 = 39$ (đúng). Vậy số cần tìm là **$46$**.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 14: Một phần mấy** để giải bài toán sau: Lớp 3A có '
+                 '$35$ học sinh, trong đó $\\dfrac{1}{7}$ số học sinh đạt giải Cờ vua. Hỏi lớp 3A có bao '
+                 'nhiêu học sinh đạt giải? Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Số học sinh đạt giải Cờ vua là: $45 : 7 = 5\\text{ (học sinh)}$. Đáp số: '
+                        '**$5\\text{ học sinh}$**.',
                         'Số học sinh đạt giải Cờ vua là: $35 : 7 = 5\\text{ (học sinh)}$. Đáp số: '
+                        '**$4\\text{ học sinh}$**.',
+                        'Số học sinh đạt giải Cờ vua là: $35 : 7 = 5\\text{ (học sinh)}$. Đáp số: '
+                        '**$5\\text{ học sinh}$**.',
+                        'Số học sinh đạt giải Cờ vua là: $70 : 7 = 5\\text{ (học sinh)}$. Đáp số: '
                         '**$5\\text{ học sinh}$**.'],
-            'answer': 3,
-            'solution': 'Lời giải chi tiết theo Bài 14, 15: Một phần mấy và luyện tập chung: Số học sinh đạt '
-                        'giải Cờ vua là: $35 : 7 = 5\\text{ (học sinh)}$.\n'
+            'answer': 2,
+            'solution': 'Lời giải chi tiết theo Bài 14: Một phần mấy: Số học sinh đạt giải Cờ vua là: $35 : '
+                        '7 = 5\\text{ (học sinh)}$.\n'
                         'Đáp số: **$5\\text{ học sinh}$**.'},
            {'level': 'vandung',
             'type': 'short',
@@ -1401,7 +1802,7 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             '- Trung điểm chia đoạn thẳng thành hai phần dài bằng nhau: $MA = MB = AB : 2$.\n'
             '- Mọi trung điểm đều là điểm ở giữa, nhưng điểm ở giữa chưa chắc là trung điểm (nếu hai đoạn '
             'không bằng nhau).',
-  'formulas': [{'category': 'I. Trung điểm đoạn thẳng',
+  'formulas': [{'category': 'Trung điểm đoạn thẳng',
                 'items': [{'name': 'Điều kiện', 'formula': '$M$ ở giữa $A, B$ và $MA = MB$'},
                           {'name': 'Tính độ dài', 'formula': '$MA = MB = AB : 2$ · $AB = 2 \\times MA$'}]}],
   'example': 'Cho đoạn thẳng $AB$ dài $10\\text{ cm}$, $M$ là trung điểm của $AB$. Tính độ dài đoạn thẳng '
@@ -1413,58 +1814,63 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
   'quiz': [{'level': 'biet',
             'type': 'mcq',
             'q': 'Nếu $M$ là trung điểm của đoạn thẳng $AB$ thì:',
-            'options': ['$MA > MB$', '$MA < MB$', '$MA = MB$', '$MA = 2 \\times MB$'],
-            'answer': 2,
+            'options': ['$MA > MB$', '$MA = MB$', '$MA < MB$', '$MA = 2 \\times MB$'],
+            'answer': 1,
             'solution': 'Trung điểm chia đoạn thẳng thành hai phần bằng nhau nên **$MA = MB$**.',
             'alt': None,
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
             'q': 'Đoạn thẳng $CD$ dài $14\\text{ cm}$, $I$ là trung điểm của $CD$. Độ dài đoạn $CI$ là:',
-            'options': ['$14\\text{ cm}$', '$28\\text{ cm}$', '$12\\text{ cm}$', '$7\\text{ cm}$'],
-            'answer': 3,
+            'options': ['$14\\text{ cm}$', '$28\\text{ cm}$', '$7\\text{ cm}$', '$12\\text{ cm}$'],
+            'answer': 2,
             'solution': 'Ta có $CI = 14 : 2 = 7\\text{ (cm)}$.',
             'alt': None,
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 16: Điểm ở giữa, trung điểm của đoạn thẳng**, công thức '
-                 'hoặc quy tắc nào sau đây biểu diễn đúng **Điều kiện**?',
-            'options': ['$M$ ở giữa $A, B$ và $MA = MB$',
-                        '$MA = MB = AB : 2$ · $AB = 2 \\times MA$',
-                        '$\\overline{abc} = a00 + b0 + c$',
-                        '$10 \\text{ chục} = 100$ · $10 \\text{ trăm} = 1\\,000$'],
-            'answer': 0,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 16: Điểm ở giữa, trung điểm của đoạn thẳng, '
-                        '**Điều kiện** được xác định bởi: $M$ ở giữa $A, B$ và $MA = MB$.'},
+            'q': 'Trong **Bài 16: Điểm ở giữa, trung điểm của đoạn thẳng**, quy tắc hoặc công thức nào sau '
+                 'đây xác định đúng **Điều kiện**?',
+            'options': ['$M$ ở giữa $A, B$ và $MA = MB$ (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: $M$ ở giữa $A, B$ và $MA = MB$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $M$ ở giữa $A, B$ và $MA = MB$',
+                        '$M$ ở giữa $A, B$ và $MA = MB$'],
+            'answer': 3,
+            'solution': 'Theo kiến thức trọng tâm của Bài 16: Điểm ở giữa, trung điểm của đoạn thẳng, **Điều '
+                        'kiện** được xác định bởi: $M$ ở giữa $A, B$ và $MA = MB$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 16: Điểm ở giữa, trung điểm của đoạn thẳng**, nội dung/biểu thức $MA = MB = AB '
-                 ': 2$ · $AB = 2 \\times MA$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Điều kiện', 'Tính độ dài', 'Phân tích số', 'Số tròn trăm, tròn nghìn'],
-            'answer': 1,
-            'solution': 'Trong Bài 16: Điểm ở giữa, trung điểm của đoạn thẳng, biểu thức/quy tắc $MA = MB = '
-                        'AB : 2$ · $AB = 2 \\times MA$ chính là nội dung của **Tính độ dài**.'},
+            'q': 'Khi học **Bài 16: Điểm ở giữa, trung điểm của đoạn thẳng**, biểu thức hoặc quy tắc nào '
+                 'dưới đây biểu diễn đúng **Tính độ dài**?',
+            'options': ['$MA = MB = AB : 2$ · $AB = 2 \\times MA$',
+                        '$MA = MB = AB : 2$ · $AB = 2 : MA$',
+                        '$MA = MB = AB : 2$ · $AB = 1 \\times MA$',
+                        '$MA = MB = AB : 4$ · $AB = 2 \\times MA$'],
+            'answer': 0,
+            'solution': 'Trong Bài 16: Điểm ở giữa, trung điểm của đoạn thẳng, **Tính độ dài** có công '
+                        'thức/quy tắc là: $MA = MB = AB : 2$ · $AB = 2 \\times MA$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Cho $M$ là trung điểm của đoạn thẳng $PQ$, biết $MP = 6\\text{ cm}$. Độ dài đoạn thẳng '
                  '$PQ$ là:',
-            'options': ['$3\\text{ cm}$', '$6\\text{ cm}$', '$12\\text{ cm}$', '$18\\text{ cm}$'],
-            'answer': 2,
+            'options': ['$3\\text{ cm}$', '$12\\text{ cm}$', '$6\\text{ cm}$', '$18\\text{ cm}$'],
+            'answer': 1,
             'solution': 'Độ dài cả đoạn thẳng $PQ$ gấp đôi $MP$: $6 \\times 2 = 12\\text{ (cm)}$.',
             'alt': None,
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 16: Điểm ở giữa, trung điểm của đoạn thẳng** (Chủ đề 3: Làm quen với hình '
-                 'phẳng, hình khối), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất '
-                 'kiến thức của bài?',
-            'options': ['Đọc, viết thành thạo các số có đến ba chữ số trong phạm vi 1 000.',
-                        'Phân tích được số có ba chữ số thành tổng các trăm, chục, đơn vị.',
-                        'So sánh và sắp xếp được các số trong phạm vi 1 000 theo thứ tự.',
-                        'Xác định được điểm ở giữa hai điểm cho trước trên một đường thẳng.'],
-            'answer': 3,
-            'solution': 'Theo yêu cầu cần đạt của Bài 16: Điểm ở giữa, trung điểm của đoạn thẳng: Xác định '
+            'q': 'Để nắm vững bản chất của **Bài 16: Điểm ở giữa, trung điểm của đoạn thẳng**, nhận định nào '
+                 'sau đây là **chính xác**?',
+            'options': ['Xác định được điểm ở giữa hai điểm cho trước trên một đường thẳng. (với dấu ngược '
+                        'lại)',
+                        'Đảo ngược vế của quy tắc: Xác định được điểm ở giữa hai điểm cho trước trên một '
+                        'đường thẳng.',
+                        'Xác định được điểm ở giữa hai điểm cho trước trên một đường thẳng.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Xác định được điểm ở giữa hai '
+                        'điểm cho trước trên một đường thẳng.'],
+            'answer': 2,
+            'solution': 'Theo nội dung cốt lõi của Bài 16: Điểm ở giữa, trung điểm của đoạn thẳng: Xác định '
                         'được điểm ở giữa hai điểm cho trước trên một đường thẳng.'},
            {'level': 'hieu',
             'type': 'tf',
@@ -1477,29 +1883,28 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
            {'level': 'hieu',
             'type': 'tf',
             'q': 'Trong **Bài 16: Điểm ở giữa, trung điểm của đoạn thẳng**, quy tắc **Điều kiện** được xác '
-                 'định bởi $M$ ở giữa $A, B$ và $MA = MB$ và áp dụng trực tiếp vào bài toán: “Cho đoạn thẳng '
-                 '$AB$ dài $10\\text{ cm}$, $M$ là trung điểm của $AB$. Tính độ dài đoạn thẳng $AM$.”. Đúng '
-                 'hay sai?',
+                 'định bởi $M$ ở giữa $A, B$ và $MA = MB$ và khi áp dụng cho ví dụ “Cho đoạn thẳng $AB$ dài '
+                 '$10\\text{ cm}$, $M$ là trung điểm của $AB$. Tính độ dài đoạn thẳng $AM$.” ta có lời giải: '
+                 'Vì $M$ là trung điểm của đoạn thẳng $AB$ nên $AM = MB = 10 : 2 = 5\\text{ (cm)}$. Đáp số: '
+                 '**$5\\text{ cm}$**.. Đúng hay sai?',
             'answer': True,
-            'solution': 'Khẳng định **Đúng**. Quy tắc **Điều kiện** ($M$ ở giữa $A, B$ và $MA = MB$) là kiến '
-                        'thức cốt lõi của Bài 16: Điểm ở giữa, trung điểm của đoạn thẳng. Vì $M$ là trung '
-                        'điểm của đoạn thẳng $AB$ nên $AM = MB = 10 : 2 = 5\\text{ (cm)}$. Đáp số: '
-                        '**$5\\text{ cm}$**.'},
+            'solution': 'Khẳng định **Đúng**. Đó chính là quy tắc **Điều kiện** ($M$ ở giữa $A, B$ và $MA = '
+                        'MB$) và lời giải ví dụ minh họa của Bài 16: Điểm ở giữa, trung điểm của đoạn '
+                        'thẳng.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 16: Điểm ở giữa, trung điểm của đoạn thẳng** để giải quyết tình '
-                 'huống sau: Cho đoạn thẳng $AB$ dài $10\\text{ cm}$, $M$ là trung điểm của $AB$. Tính độ '
-                 'dài đoạn thẳng $AM$. Kết quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Vì $M$ là trung điểm của đoạn thẳng $AB$ nên $AM = MB = 10 : 2 = 5\\text{ (cm)}$. '
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 16: Điểm ở giữa, trung điểm của đoạn thẳng** để '
+                 'giải bài toán sau: Cho đoạn thẳng $AB$ dài $10\\text{ cm}$, $M$ là trung điểm của $AB$. '
+                 'Tính độ dài đoạn thẳng $AM$. Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Vì $M$ là trung điểm của đoạn thẳng $AB$ nên $AM = MB = 11 : 2 = 5\\text{ (cm)}$. '
                         'Đáp số: **$5\\text{ cm}$**.',
-                        'Ta có $806 = 800 + 6$ (gồm $8$ trăm, $0$ chục, $6$ đơn vị). Vì chữ số hàng trăm $8 '
-                        '> 7$ nên **$806 > 798$**.',
-                        '- $468 + 325$: $8 + 5 = 13$ (viết $3$ nhớ $1$); $6 + 2 + 1 = 9$; $4 + 3 = 7$ '
-                        '$\\rightarrow$ **$793$**. - $750 - 236$: $10 - 6 = 4$ (viết $4$ nhớ $1$); $5 - (3 + '
-                        '1) = 1$...',
-                        'Áp dụng quy tắc tìm số trừ: $\\text{Số trừ} = \\text{Số bị trừ} - \\text{Hiệu} = 85 '
-                        '- 39 = 46$. Thử lại: $85 - 46 = 39$ (đúng). Vậy số cần tìm là **$46$**.'],
-            'answer': 0,
+                        'Vì $M$ là trung điểm của đoạn thẳng $AB$ nên $AM = MB = 10 : 2 = 5\\text{ (cm)}$. '
+                        'Đáp số: **$4\\text{ cm}$**.',
+                        'Vì $M$ là trung điểm của đoạn thẳng $AB$ nên $AM = MB = 20 : 2 = 5\\text{ (cm)}$. '
+                        'Đáp số: **$5\\text{ cm}$**.',
+                        'Vì $M$ là trung điểm của đoạn thẳng $AB$ nên $AM = MB = 10 : 2 = 5\\text{ (cm)}$. '
+                        'Đáp số: **$5\\text{ cm}$**.'],
+            'answer': 3,
             'solution': 'Lời giải chi tiết theo Bài 16: Điểm ở giữa, trung điểm của đoạn thẳng: Vì $M$ là '
                         'trung điểm của đoạn thẳng $AB$ nên $AM = MB = 10 : 2 = 5\\text{ (cm)}$.\n'
                         'Đáp số: **$5\\text{ cm}$**.'},
@@ -1534,7 +1939,7 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'đường kính.\n'
             '### 2. Quan hệ giữa bán kính ($r$) và đường kính ($d$)\n'
             '- Ta luôn có: $d = 2 \\times r$ và $r = d : 2$.',
-  'formulas': [{'category': 'I. Hình tròn tâm O',
+  'formulas': [{'category': 'Hình tròn tâm O',
                 'items': [{'name': 'Đường kính theo bán kính', 'formula': '$d = 2 \\times r$'},
                           {'name': 'Bán kính theo đường kính', 'formula': '$r = d : 2$'}]}],
   'example': 'Một chiếc đĩa tròn có đường kính $20\\text{ cm}$. Tính bán kính của chiếc đĩa đó.',
@@ -1544,64 +1949,60 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
   'quiz': [{'level': 'biet',
             'type': 'mcq',
             'q': 'Hình tròn có bán kính $4\\text{ cm}$ thì đường kính của nó dài:',
-            'options': ['$2\\text{ cm}$', '$4\\text{ cm}$', '$16\\text{ cm}$', '$8\\text{ cm}$'],
-            'answer': 3,
+            'options': ['$2\\text{ cm}$', '$4\\text{ cm}$', '$8\\text{ cm}$', '$16\\text{ cm}$'],
+            'answer': 2,
             'solution': 'Đường kính gấp $2$ lần bán kính: $4 \\times 2 = 8\\text{ (cm)}$.',
             'alt': None,
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
             'q': 'Trong một hình tròn tâm $O$, tâm $O$ là gì của đường kính $AB$?',
-            'options': ['Trung điểm của đoạn thẳng $AB$',
-                        'Điểm bất kì',
+            'options': ['Điểm bất kì',
                         'Đầu mút của $AB$',
-                        'Điểm nằm ngoài $AB$'],
-            'answer': 0,
+                        'Điểm nằm ngoài $AB$',
+                        'Trung điểm của đoạn thẳng $AB$'],
+            'answer': 3,
             'solution': 'Tâm $O$ nằm giữa $A, B$ và $OA = OB$ nên $O$ là **trung điểm của $AB$**.',
             'alt': None,
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 17: Hình tròn. Tâm, bán kính, đường kính của hình '
-                 'tròn**, công thức hoặc quy tắc nào sau đây biểu diễn đúng **Đường kính theo bán kính**?',
-            'options': ['$r = d : 2$',
-                        '$d = 2 \\times r$',
-                        '$\\overline{abc} = a00 + b0 + c$',
-                        '$10 \\text{ chục} = 100$ · $10 \\text{ trăm} = 1\\,000$'],
-            'answer': 1,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 17: Hình tròn. Tâm, bán kính, đường kính của '
-                        'hình tròn, **Đường kính theo bán kính** được xác định bởi: $d = 2 \\times r$.'},
+            'q': 'Trong **Bài 17: Hình tròn. Tâm, bán kính, đường kính của hình tròn**, quy tắc hoặc công '
+                 'thức nào sau đây xác định đúng **Đường kính theo bán kính**?',
+            'options': ['$d = 2 \\times r$', '$d = 2 : r$', '$d = 1 \\times r$', '$d = 4 \\times r$'],
+            'answer': 0,
+            'solution': 'Theo kiến thức trọng tâm của Bài 17: Hình tròn. Tâm, bán kính, đường kính của hình '
+                        'tròn, **Đường kính theo bán kính** được xác định bởi: $d = 2 \\times r$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 17: Hình tròn. Tâm, bán kính, đường kính của hình tròn**, nội dung/biểu thức '
-                 '$r = d : 2$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Đường kính theo bán kính',
-                        'Phân tích số',
-                        'Bán kính theo đường kính',
-                        'Số tròn trăm, tròn nghìn'],
-            'answer': 2,
-            'solution': 'Trong Bài 17: Hình tròn. Tâm, bán kính, đường kính của hình tròn, biểu thức/quy tắc '
-                        '$r = d : 2$ chính là nội dung của **Bán kính theo đường kính**.'},
+            'q': 'Khi học **Bài 17: Hình tròn. Tâm, bán kính, đường kính của hình tròn**, biểu thức hoặc quy '
+                 'tắc nào dưới đây biểu diễn đúng **Bán kính theo đường kính**?',
+            'options': ['$r = d : 3$', '$r = d : 2$', '$r = d : 1$', '$r = d : 4$'],
+            'answer': 1,
+            'solution': 'Trong Bài 17: Hình tròn. Tâm, bán kính, đường kính của hình tròn, **Bán kính theo '
+                        'đường kính** có công thức/quy tắc là: $r = d : 2$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Cho hình tròn tâm $O$ có đường kính $MN = 18\\text{ cm}$ và điểm $P$ nằm trên đường tròn. '
                  'Độ dài bán kính $OP$ là:',
-            'options': ['$18\\text{ cm}$', '$36\\text{ cm}$', '$6\\text{ cm}$', '$9\\text{ cm}$'],
-            'answer': 3,
+            'options': ['$18\\text{ cm}$', '$36\\text{ cm}$', '$9\\text{ cm}$', '$6\\text{ cm}$'],
+            'answer': 2,
             'solution': 'Mọi bán kính đều bằng nửa đường kính: $OP = 18 : 2 = 9\\text{ (cm)}$.',
             'alt': None,
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 17: Hình tròn. Tâm, bán kính, đường kính của hình tròn** (Chủ đề 3: Làm quen '
-                 'với hình phẳng, hình khối), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và '
-                 'bản chất kiến thức của bài?',
-            'options': ['Nhận biết và gọi đúng tên tâm, bán kính, đường kính của một hình tròn.',
-                        'Đọc, viết thành thạo các số có đến ba chữ số trong phạm vi 1 000.',
-                        'Phân tích được số có ba chữ số thành tổng các trăm, chục, đơn vị.',
-                        'So sánh và sắp xếp được các số trong phạm vi 1 000 theo thứ tự.'],
-            'answer': 0,
-            'solution': 'Theo yêu cầu cần đạt của Bài 17: Hình tròn. Tâm, bán kính, đường kính của hình '
+            'q': 'Để nắm vững bản chất của **Bài 17: Hình tròn. Tâm, bán kính, đường kính của hình tròn**, '
+                 'nhận định nào sau đây là **chính xác**?',
+            'options': ['Nhận biết và gọi đúng tên tâm, bán kính, đường kính của một hình tròn. (với dấu '
+                        'ngược lại)',
+                        'Đảo ngược vế của quy tắc: Nhận biết và gọi đúng tên tâm, bán kính, đường kính của '
+                        'một hình tròn.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nhận biết và gọi đúng tên tâm, '
+                        'bán kính, đường kính của một hình tròn.',
+                        'Nhận biết và gọi đúng tên tâm, bán kính, đường kính của một hình tròn.'],
+            'answer': 3,
+            'solution': 'Theo nội dung cốt lõi của Bài 17: Hình tròn. Tâm, bán kính, đường kính của hình '
                         'tròn: Nhận biết và gọi đúng tên tâm, bán kính, đường kính của một hình tròn.'},
            {'level': 'hieu',
             'type': 'tf',
@@ -1615,28 +2016,25 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
            {'level': 'hieu',
             'type': 'tf',
             'q': 'Trong **Bài 17: Hình tròn. Tâm, bán kính, đường kính của hình tròn**, quy tắc **Đường kính '
-                 'theo bán kính** được xác định bởi $d = 2 \\times r$ và áp dụng trực tiếp vào bài toán: '
-                 '“Một chiếc đĩa tròn có đường kính $20\\text{ cm}$. Tính bán kính của chiếc đĩa đó.”. Đúng '
+                 'theo bán kính** được xác định bởi $d = 2 \\times r$ và khi áp dụng cho ví dụ “Một chiếc '
+                 'đĩa tròn có đường kính $20\\text{ cm}$. Tính bán kính của chiếc đĩa đó.” ta có lời giải: '
+                 'Bán kính của chiếc đĩa là: $20 : 2 = 10\\text{ (cm)}$. Đáp số: **$10\\text{ cm}$**.. Đúng '
                  'hay sai?',
             'answer': True,
-            'solution': 'Khẳng định **Đúng**. Quy tắc **Đường kính theo bán kính** ($d = 2 \\times r$) là '
-                        'kiến thức cốt lõi của Bài 17: Hình tròn. Tâm, bán kính, đường kính của hình tròn. '
-                        'Bán kính của chiếc đĩa là: $20 : 2 = 10\\text{ (cm)}$. Đáp số: **$10\\text{ '
-                        'cm}$**.'},
+            'solution': 'Khẳng định **Đúng**. Đó chính là quy tắc **Đường kính theo bán kính** ($d = 2 '
+                        '\\times r$) và lời giải ví dụ minh họa của Bài 17: Hình tròn. Tâm, bán kính, đường '
+                        'kính của hình tròn.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 17: Hình tròn. Tâm, bán kính, đường kính của hình tròn** để giải '
-                 'quyết tình huống sau: Một chiếc đĩa tròn có đường kính $20\\text{ cm}$. Tính bán kính của '
-                 'chiếc đĩa đó. Kết quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Ta có $806 = 800 + 6$ (gồm $8$ trăm, $0$ chục, $6$ đơn vị). Vì chữ số hàng trăm $8 '
-                        '> 7$ nên **$806 > 798$**.',
-                        'Bán kính của chiếc đĩa là: $20 : 2 = 10\\text{ (cm)}$. Đáp số: **$10\\text{ cm}$**.',
-                        '- $468 + 325$: $8 + 5 = 13$ (viết $3$ nhớ $1$); $6 + 2 + 1 = 9$; $4 + 3 = 7$ '
-                        '$\\rightarrow$ **$793$**. - $750 - 236$: $10 - 6 = 4$ (viết $4$ nhớ $1$); $5 - (3 + '
-                        '1) = 1$...',
-                        'Áp dụng quy tắc tìm số trừ: $\\text{Số trừ} = \\text{Số bị trừ} - \\text{Hiệu} = 85 '
-                        '- 39 = 46$. Thử lại: $85 - 46 = 39$ (đúng). Vậy số cần tìm là **$46$**.'],
-            'answer': 1,
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 17: Hình tròn. Tâm, bán kính, đường kính của hình '
+                 'tròn** để giải bài toán sau: Một chiếc đĩa tròn có đường kính $20\\text{ cm}$. Tính bán '
+                 'kính của chiếc đĩa đó. Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Bán kính của chiếc đĩa là: $20 : 2 = 10\\text{ (cm)}$. Đáp số: **$10\\text{ cm}$**.',
+                        'Bán kính của chiếc đĩa là: $30 : 2 = 10\\text{ (cm)}$. Đáp số: **$10\\text{ cm}$**.',
+                        'Bán kính của chiếc đĩa là: $20 : 2 = 10\\text{ (cm)}$. Đáp số: **$9\\text{ cm}$**.',
+                        'Bán kính của chiếc đĩa là: $40 : 2 = 10\\text{ (cm)}$. Đáp số: **$10\\text{ '
+                        'cm}$**.'],
+            'answer': 0,
             'solution': 'Lời giải chi tiết theo Bài 17: Hình tròn. Tâm, bán kính, đường kính của hình tròn: '
                         'Bán kính của chiếc đĩa là: $20 : 2 = 10\\text{ (cm)}$.\n'
                         'Đáp số: **$10\\text{ cm}$**.'},
@@ -1671,10 +2069,9 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             '- Bước 2: Đặt một cạnh góc vuông của ê-ke trùng với một cạnh của góc.\n'
             '- Bước 3: Nếu cạnh còn lại của góc trùng với cạnh góc vuông kia của ê-ke thì góc đó là **góc '
             'vuông**; ngược lại là **góc không vuông**.',
-  'formulas': [{'category': 'I. Cấu tạo góc',
-                'items': [{'name': 'Góc đỉnh O', 'formula': 'Đỉnh $O$ · Hai cạnh $OA, OB$'}]},
-               {'category': 'II. Phân loại bằng ê-ke',
-                'items': [{'name': 'Góc vuông', 'formula': 'Hai cạnh trùng khít hai cạnh góc vuông của ê-ke'},
+  'formulas': [{'category': 'Công thức & Quy tắc trọng tâm: Góc, góc vuông, góc không vuông',
+                'items': [{'name': 'Góc đỉnh O', 'formula': 'Đỉnh $O$ · Hai cạnh $OA, OB$'},
+                          {'name': 'Góc vuông', 'formula': 'Hai cạnh trùng khít hai cạnh góc vuông của ê-ke'},
                           {'name': 'Góc không vuông',
                            'formula': 'Cạnh thứ hai không trùng cạnh góc vuông của ê-ke'}]}],
   'example': 'Cho góc đỉnh $M$, hai cạnh $MN$ và $MP$. Hãy chỉ ra đỉnh và các cạnh của góc đó.',
@@ -1683,58 +2080,63 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
   'quiz': [{'level': 'biet',
             'type': 'mcq',
             'q': 'Dụng cụ dùng để kiểm tra góc vuông là:',
-            'options': ['Ê-ke', 'Compa', 'Cân đồng hồ', 'Nhiệt kế'],
-            'answer': 0,
+            'options': ['Compa', 'Cân đồng hồ', 'Nhiệt kế', 'Ê-ke'],
+            'answer': 3,
             'solution': 'Ta dùng **ê-ke** để kiểm tra và vẽ góc vuông.',
             'alt': None,
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
             'q': 'Góc đỉnh $I$, cạnh $IA, IB$ có đỉnh là:',
-            'options': ['Điểm $A$', 'Điểm $I$', 'Điểm $B$', 'Đoạn $AB$'],
-            'answer': 1,
+            'options': ['Điểm $I$', 'Điểm $A$', 'Điểm $B$', 'Đoạn $AB$'],
+            'answer': 0,
             'solution': 'Tên đỉnh được gọi ngay sau chữ "góc đỉnh" $\\rightarrow$ **Điểm $I$**.',
             'alt': None,
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 18: Góc, góc vuông, góc không vuông**, công thức hoặc '
-                 'quy tắc nào sau đây biểu diễn đúng **Góc đỉnh O**?',
-            'options': ['Hai cạnh trùng khít hai cạnh góc vuông của ê-ke',
-                        'Cạnh thứ hai không trùng cạnh góc vuông của ê-ke',
+            'q': 'Trong **Bài 18: Góc, góc vuông, góc không vuông**, quy tắc hoặc công thức nào sau đây xác '
+                 'định đúng **Góc đỉnh O**?',
+            'options': ['Đỉnh $O$ · Hai cạnh $OA, OB$ (với dấu ngược lại)',
                         'Đỉnh $O$ · Hai cạnh $OA, OB$',
-                        '$\\overline{abc} = a00 + b0 + c$'],
-            'answer': 2,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 18: Góc, góc vuông, góc không vuông, **Góc '
-                        'đỉnh O** được xác định bởi: Đỉnh $O$ · Hai cạnh $OA, OB$.'},
+                        'Đảo ngược vế của quy tắc: Đỉnh $O$ · Hai cạnh $OA, OB$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Đỉnh $O$ · Hai cạnh $OA, OB$'],
+            'answer': 1,
+            'solution': 'Theo kiến thức trọng tâm của Bài 18: Góc, góc vuông, góc không vuông, **Góc đỉnh '
+                        'O** được xác định bởi: Đỉnh $O$ · Hai cạnh $OA, OB$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 18: Góc, góc vuông, góc không vuông**, nội dung/biểu thức Hai cạnh trùng khít '
-                 'hai cạnh góc vuông của ê-ke là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Góc đỉnh O', 'Góc không vuông', 'Phân tích số', 'Góc vuông'],
-            'answer': 3,
-            'solution': 'Trong Bài 18: Góc, góc vuông, góc không vuông, biểu thức/quy tắc Hai cạnh trùng '
-                        'khít hai cạnh góc vuông của ê-ke chính là nội dung của **Góc vuông**.'},
+            'q': 'Khi học **Bài 18: Góc, góc vuông, góc không vuông**, biểu thức hoặc quy tắc nào dưới đây '
+                 'biểu diễn đúng **Góc vuông**?',
+            'options': ['Hai cạnh trùng khít hai cạnh góc vuông của ê-ke (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Hai cạnh trùng khít hai cạnh góc vuông của ê-ke',
+                        'Hai cạnh trùng khít hai cạnh góc vuông của ê-ke',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Hai cạnh trùng khít hai cạnh '
+                        'góc vuông của ê-ke'],
+            'answer': 2,
+            'solution': 'Trong Bài 18: Góc, góc vuông, góc không vuông, **Góc vuông** có công thức/quy tắc '
+                        'là: Hai cạnh trùng khít hai cạnh góc vuông của ê-ke.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Khi đồng hồ chỉ đúng $3$ giờ, kim giờ và kim phút tạo thành góc gì?',
-            'options': ['Góc vuông', 'Góc không vuông', 'Đường thẳng', 'Hình tròn'],
-            'answer': 0,
+            'options': ['Góc không vuông', 'Đường thẳng', 'Hình tròn', 'Góc vuông'],
+            'answer': 3,
             'solution': 'Lúc $3$ giờ đúng, kim giờ chỉ số $3$ và kim phút chỉ số $12$ tạo thành **góc '
                         'vuông**.',
             'alt': None,
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 18: Góc, góc vuông, góc không vuông** (Chủ đề 3: Làm quen với hình phẳng, '
-                 'hình khối), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức '
-                 'của bài?',
-            'options': ['Đọc, viết thành thạo các số có đến ba chữ số trong phạm vi 1 000.',
-                        'Nhận biết được góc, nêu đúng tên đỉnh và hai cạnh của góc.',
-                        'Phân tích được số có ba chữ số thành tổng các trăm, chục, đơn vị.',
-                        'So sánh và sắp xếp được các số trong phạm vi 1 000 theo thứ tự.'],
-            'answer': 1,
-            'solution': 'Theo yêu cầu cần đạt của Bài 18: Góc, góc vuông, góc không vuông: Nhận biết được '
+            'q': 'Để nắm vững bản chất của **Bài 18: Góc, góc vuông, góc không vuông**, nhận định nào sau '
+                 'đây là **chính xác**?',
+            'options': ['Nhận biết được góc, nêu đúng tên đỉnh và hai cạnh của góc.',
+                        'Nhận biết được góc, nêu đúng tên đỉnh và hai cạnh của góc. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Nhận biết được góc, nêu đúng tên đỉnh và hai cạnh của '
+                        'góc.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nhận biết được góc, nêu đúng '
+                        'tên đỉnh và hai cạnh của góc.'],
+            'answer': 0,
+            'solution': 'Theo nội dung cốt lõi của Bài 18: Góc, góc vuông, góc không vuông: Nhận biết được '
                         'góc, nêu đúng tên đỉnh và hai cạnh của góc.'},
            {'level': 'hieu',
             'type': 'tf',
@@ -1747,26 +2149,22 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
            {'level': 'hieu',
             'type': 'tf',
             'q': 'Trong **Bài 18: Góc, góc vuông, góc không vuông**, quy tắc **Góc đỉnh O** được xác định '
-                 'bởi Đỉnh $O$ · Hai cạnh $OA, OB$ và áp dụng trực tiếp vào bài toán: “Cho góc đỉnh $M$, hai '
-                 'cạnh $MN$ và $MP$. Hãy chỉ ra đỉnh và các cạnh của góc đó.”. Đúng hay sai?',
+                 'bởi Đỉnh $O$ · Hai cạnh $OA, OB$ và khi áp dụng cho ví dụ “Cho góc đỉnh $M$, hai cạnh $MN$ '
+                 'và $MP$. Hãy chỉ ra đỉnh và các cạnh của góc đó.” ta có lời giải: Góc đã cho có **đỉnh là '
+                 'điểm $M$**, hai cạnh là **$MN$ và $MP$**.. Đúng hay sai?',
             'answer': True,
-            'solution': 'Khẳng định **Đúng**. Quy tắc **Góc đỉnh O** (Đỉnh $O$ · Hai cạnh $OA, OB$) là kiến '
-                        'thức cốt lõi của Bài 18: Góc, góc vuông, góc không vuông. Góc đã cho có **đỉnh là '
-                        'điểm $M$**, hai cạnh là **$MN$ và $MP$**.'},
+            'solution': 'Khẳng định **Đúng**. Đó chính là quy tắc **Góc đỉnh O** (Đỉnh $O$ · Hai cạnh $OA, '
+                        'OB$) và lời giải ví dụ minh họa của Bài 18: Góc, góc vuông, góc không vuông.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 18: Góc, góc vuông, góc không vuông** để giải quyết tình huống '
-                 'sau: Cho góc đỉnh $M$, hai cạnh $MN$ và $MP$. Hãy chỉ ra đỉnh và các cạnh của góc đó. Kết '
-                 'quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Ta có $806 = 800 + 6$ (gồm $8$ trăm, $0$ chục, $6$ đơn vị). Vì chữ số hàng trăm $8 '
-                        '> 7$ nên **$806 > 798$**.',
-                        '- $468 + 325$: $8 + 5 = 13$ (viết $3$ nhớ $1$); $6 + 2 + 1 = 9$; $4 + 3 = 7$ '
-                        '$\\rightarrow$ **$793$**. - $750 - 236$: $10 - 6 = 4$ (viết $4$ nhớ $1$); $5 - (3 + '
-                        '1) = 1$...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 18: Góc, góc vuông, góc không vuông** để giải bài '
+                 'toán sau: Cho góc đỉnh $M$, hai cạnh $MN$ và $MP$. Hãy chỉ ra đỉnh và các cạnh của góc đó. '
+                 'Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Chỉ xét trường hợp đặc biệt bằng $0$ và bỏ qua quy tắc chung',
                         'Góc đã cho có **đỉnh là điểm $M$**, hai cạnh là **$MN$ và $MP$**.',
-                        'Áp dụng quy tắc tìm số trừ: $\\text{Số trừ} = \\text{Số bị trừ} - \\text{Hiệu} = 85 '
-                        '- 39 = 46$. Thử lại: $85 - 46 = 39$ (đúng). Vậy số cần tìm là **$46$**.'],
-            'answer': 2,
+                        'Thực hiện theo thứ tự ngược lại và bỏ qua điều kiện xác định trong bài',
+                        'Đổi ngược dấu của phép tính chính và không kiểm tra lại kết quả'],
+            'answer': 1,
             'solution': 'Lời giải chi tiết theo Bài 18: Góc, góc vuông, góc không vuông: Góc đã cho có '
                         '**đỉnh là điểm $M$**, hai cạnh là **$MN$ và $MP$**.'},
            {'level': 'vandung',
@@ -1781,7 +2179,7 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
  {'topic': 'l3-cd03-hinh-phang-hinh-khoi',
   'context_title': 'Chủ đề 3: Làm quen với hình phẳng, hình khối',
   'context': 'SGK Toán 3 · Chủ đề 3: Làm quen với hình phẳng và hình khối.',
-  'title': 'Bài 19, 20: Hình tam giác, tứ giác. Hình chữ nhật, hình vuông',
+  'title': 'Bài 19: Hình tam giác, hình tứ giác',
   'icon': '🟦',
   'description': 'Nhận biết đỉnh, cạnh, góc của tam giác, tứ giác; đặc điểm của hình chữ nhật, hình vuông và '
                  'thực hành vẽ.',
@@ -1789,22 +2187,155 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
                    'Nắm vững đặc điểm về góc và cạnh của hình chữ nhật và hình vuông.',
                    'Vẽ được hình chữ nhật, hình vuông trên lưới ô vuông.'],
   'definition': '- **Hình tam giác** có $3$ đỉnh, $3$ cạnh, $3$ góc. **Hình tứ giác** có $4$ đỉnh, $4$ cạnh, '
-                '$4$ góc.\n'
-                '- **Hình chữ nhật** có $4$ góc vuông, $2$ cạnh dài có độ dài bằng nhau và $2$ cạnh ngắn có '
-                'độ dài bằng nhau.\n'
-                '- **Hình vuông** có $4$ góc vuông và $4$ cạnh có độ dài bằng nhau.',
+                '$4$ góc.',
   'theory': '### 1. Hình tam giác và hình tứ giác\n'
             '- Hình tam giác $ABC$ có $3$ đỉnh $A, B, C$; $3$ cạnh $AB, BC, CA$ và $3$ góc.\n'
-            '- Hình tứ giác $MNPQ$ có $4$ đỉnh $M, N, P, Q$; $4$ cạnh $MN, NP, PQ, QM$ và $4$ góc.\n'
-            '### 2. Hình chữ nhật và hình vuông\n'
+            '- Hình tứ giác $MNPQ$ có $4$ đỉnh $M, N, P, Q$; $4$ cạnh $MN, NP, PQ, QM$ và $4$ góc.',
+  'formulas': [{'category': 'Hình phẳng cơ bản',
+                'items': [{'name': 'Tam giác / Tứ giác',
+                           'formula': 'Tam giác: $3$ đỉnh, $3$ cạnh, $3$ góc · Tứ giác: $4$ đỉnh, $4$ cạnh, '
+                                      '$4$ góc'}]}],
+  'example': 'Hình chữ nhật $ABCD$ có chiều dài $AB = 8\\text{ cm}$, chiều rộng $BC = 5\\text{ cm}$. Tìm độ '
+             'dài cạnh $CD$ và $AD$.',
+  'example_answer': 'Trong hình chữ nhật $ABCD$, hai cạnh dài bằng nhau nên $CD = AB = 8\\text{ cm}$; hai '
+                    'cạnh ngắn bằng nhau nên $AD = BC = 5\\text{ cm}$.',
+  'real_life': '- Mặt bảng lớp học, cánh cửa, quyển sách có dạng hình chữ nhật; viên gạch bông lát nền có '
+               'dạng hình vuông.',
+  'quiz': [{'level': 'biet',
+            'type': 'mcq',
+            'q': 'Hình vuông có mấy góc vuông và mấy cạnh bằng nhau?',
+            'options': ['$4$ góc vuông, $4$ cạnh bằng nhau',
+                        '$2$ góc vuông, $2$ cạnh bằng nhau',
+                        '$4$ góc vuông, $2$ cạnh bằng nhau',
+                        '$3$ góc vuông, $3$ cạnh bằng nhau'],
+            'answer': 0,
+            'solution': 'Hình vuông có **$4$ góc vuông và $4$ cạnh bằng nhau**.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Hình tam giác có bao nhiêu đỉnh và bao nhiêu cạnh?',
+            'options': ['$4$ đỉnh, $4$ cạnh',
+                        '$3$ đỉnh, $3$ cạnh',
+                        '$3$ đỉnh, $4$ cạnh',
+                        '$4$ đỉnh, $3$ cạnh'],
+            'answer': 1,
+            'solution': 'Hình tam giác có **$3$ đỉnh và $3$ cạnh**.',
+            'alt': None,
+            'note': None},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Trong **Bài 19: Hình tam giác, hình tứ giác**, quy tắc hoặc công thức nào sau đây xác định '
+                 'đúng **Tam giác / Tứ giác**?',
+            'options': ['Tam giác: $4$ đỉnh, $3$ cạnh, $3$ góc · Tứ giác: $4$ đỉnh, $4$ cạnh, $4$ góc',
+                        'Tam giác: $3$ đỉnh, $3$ cạnh, $3$ góc · Tứ giác: $4$ đỉnh, $4$ cạnh, $3$ góc',
+                        'Tam giác: $3$ đỉnh, $3$ cạnh, $3$ góc · Tứ giác: $4$ đỉnh, $4$ cạnh, $4$ góc',
+                        'Tam giác: $6$ đỉnh, $3$ cạnh, $3$ góc · Tứ giác: $4$ đỉnh, $4$ cạnh, $4$ góc'],
+            'answer': 2,
+            'solution': 'Theo kiến thức trọng tâm của Bài 19: Hình tam giác, hình tứ giác, **Tam giác / Tứ '
+                        'giác** được xác định bởi: Tam giác: $3$ đỉnh, $3$ cạnh, $3$ góc · Tứ giác: $4$ '
+                        'đỉnh, $4$ cạnh, $4$ góc.'},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Theo định nghĩa trong **Bài 19: Hình tam giác, hình tứ giác**, khẳng định nào dưới đây là '
+                 '**đúng**?',
+            'options': ['Hình tam giác** có $4$ đỉnh, $3$ cạnh, $3$ góc. **Hình tứ giác** có $4$ đỉnh, $4$ '
+                        'cạnh, $4$ góc.',
+                        'Hình tam giác** có $3$ đỉnh, $3$ cạnh, $3$ góc. **Hình tứ giác** có $4$ đỉnh, $4$ '
+                        'cạnh, $3$ góc.',
+                        'Hình tam giác** có $6$ đỉnh, $3$ cạnh, $3$ góc. **Hình tứ giác** có $4$ đỉnh, $4$ '
+                        'cạnh, $4$ góc.',
+                        'Hình tam giác** có $3$ đỉnh, $3$ cạnh, $3$ góc. **Hình tứ giác** có $4$ đỉnh, $4$ '
+                        'cạnh, $4$ góc.'],
+            'answer': 3,
+            'solution': 'Theo định nghĩa của Bài 19: Hình tam giác, hình tứ giác: Hình tam giác** có $3$ '
+                        'đỉnh, $3$ cạnh, $3$ góc. **Hình tứ giác** có $4$ đỉnh, $4$ cạnh, $4$ góc.'},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Cho hình chữ nhật $MNPQ$ có $MN = 10\\text{ cm}$ và $NP = 6\\text{ cm}$. Độ dài cạnh $PQ$ '
+                 'là:',
+            'options': ['$10\\text{ cm}$', '$6\\text{ cm}$', '$16\\text{ cm}$', '$4\\text{ cm}$'],
+            'answer': 0,
+            'solution': 'Hai cạnh dài đối diện của hình chữ nhật bằng nhau: $PQ = MN = 10\\text{ cm}$.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'mcq',
+            'q': 'Để nắm vững bản chất của **Bài 19: Hình tam giác, hình tứ giác**, nhận định nào sau đây là '
+                 '**chính xác**?',
+            'options': ['Nêu được số đỉnh, số cạnh, số góc của hình tam giác và hình tứ giác. (với dấu ngược '
+                        'lại)',
+                        'Nêu được số đỉnh, số cạnh, số góc của hình tam giác và hình tứ giác.',
+                        'Đảo ngược vế của quy tắc: Nêu được số đỉnh, số cạnh, số góc của hình tam giác và '
+                        'hình tứ giác.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nêu được số đỉnh, số cạnh, số '
+                        'góc của hình tam giác và hình tứ giác.'],
+            'answer': 1,
+            'solution': 'Theo nội dung cốt lõi của Bài 19: Hình tam giác, hình tứ giác: Nêu được số đỉnh, số '
+                        'cạnh, số góc của hình tam giác và hình tứ giác.'},
+           {'level': 'hieu',
+            'type': 'tf',
+            'q': 'Nhận định: "Tứ giác có $4$ cạnh bằng nhau chắc chắn là hình vuông."',
+            'answer': False,
+            'solution': 'Hình đó còn phải có $4$ góc vuông mới là hình vuông $\\rightarrow$ **Sai**.',
+            'alt': None,
+            'note': None},
+           {'level': 'hieu',
+            'type': 'tf',
+            'q': 'Trong **Bài 19: Hình tam giác, hình tứ giác**, quy tắc **Tam giác / Tứ giác** được xác '
+                 'định bởi Tam giác: $3$ đỉnh, $3$ cạnh, $3$ góc · Tứ giác: $4$ đỉnh, $4$ cạnh, $4$ góc và '
+                 'khi áp dụng cho ví dụ “Hình chữ nhật $ABCD$ có chiều dài $AB = 8\\text{ cm}$, chiều rộng '
+                 '$BC = 5\\text{ cm}$. Tìm độ dài cạnh $CD$ và $AD$.” ta có lời giải: Trong hình chữ nhật '
+                 '$ABCD$, hai cạnh dài bằng nhau nên $CD = AB = 8\\text{ cm}$; hai cạnh ngắn bằng nhau nên '
+                 '$AD = BC = 5\\text{ cm}$.. Đúng hay sai?',
+            'answer': True,
+            'solution': 'Khẳng định **Đúng**. Đó chính là quy tắc **Tam giác / Tứ giác** (Tam giác: $3$ '
+                        'đỉnh, $3$ cạnh, $3$ góc · Tứ giác: $4$ đỉnh, $4$ cạnh, $4$ góc) và lời giải ví dụ '
+                        'minh họa của Bài 19: Hình tam giác, hình tứ giác.'},
+           {'level': 'vandung',
+            'type': 'mcq',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 19: Hình tam giác, hình tứ giác** để giải bài toán '
+                 'sau: Hình chữ nhật $ABCD$ có chiều dài $AB = 8\\text{ cm}$, chiều rộng $BC = 5\\text{ '
+                 'cm}$. Tìm độ dài cạnh $CD$ và $AD$. Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Trong hình chữ nhật $ABCD$, hai cạnh dài bằng nhau nên $CD = AB = 9\\text{ cm}$; '
+                        'hai cạnh ngắn bằng nhau nên $AD = BC = 5\\text{ cm}$.',
+                        'Trong hình chữ nhật $ABCD$, hai cạnh dài bằng nhau nên $CD = AB = 8\\text{ cm}$; '
+                        'hai cạnh ngắn bằng nhau nên $AD = BC = 4\\text{ cm}$.',
+                        'Trong hình chữ nhật $ABCD$, hai cạnh dài bằng nhau nên $CD = AB = 8\\text{ cm}$; '
+                        'hai cạnh ngắn bằng nhau nên $AD = BC = 5\\text{ cm}$.',
+                        'Trong hình chữ nhật $ABCD$, hai cạnh dài bằng nhau nên $CD = AB = 16\\text{ cm}$; '
+                        'hai cạnh ngắn bằng nhau nên $AD = BC = 5\\text{ cm}$.'],
+            'answer': 2,
+            'solution': 'Lời giải chi tiết theo Bài 19: Hình tam giác, hình tứ giác: Trong hình chữ nhật '
+                        '$ABCD$, hai cạnh dài bằng nhau nên $CD = AB = 8\\text{ cm}$; hai cạnh ngắn bằng '
+                        'nhau nên $AD = BC = 5\\text{ cm}$.'},
+           {'level': 'vandung',
+            'type': 'short',
+            'q': 'Để ghép thành một khung tranh hình vuông có cạnh dài $15\\text{ cm}$, bạn Nam cần $4$ '
+                 'thanh gỗ dài bằng nhau. Hỏi mỗi thanh gỗ dài bao nhiêu xăng-ti-mét?',
+            'answer': ['15'],
+            'unit': 'cm',
+            'solution': 'Vì $4$ cạnh hình vuông bằng nhau nên mỗi thanh gỗ dài **$15\\text{ cm}$**.',
+            'alt': None,
+            'note': None}]},
+ {'topic': 'l3-cd03-hinh-phang-hinh-khoi',
+  'context_title': 'Chủ đề 3: Làm quen với hình phẳng, hình khối',
+  'context': 'SGK Toán 3 · Chủ đề 3: Làm quen với hình phẳng và hình khối.',
+  'title': 'Bài 20: Hình chữ nhật, hình vuông',
+  'icon': '🟦',
+  'description': 'Nhận biết đỉnh, cạnh, góc của tam giác, tứ giác; đặc điểm của hình chữ nhật, hình vuông và '
+                 'thực hành vẽ.',
+  'requirements': ['Nêu được số đỉnh, số cạnh, số góc của hình tam giác và hình tứ giác.',
+                   'Nắm vững đặc điểm về góc và cạnh của hình chữ nhật và hình vuông.',
+                   'Vẽ được hình chữ nhật, hình vuông trên lưới ô vuông.'],
+  'definition': '- **Hình chữ nhật** có $4$ góc vuông, $2$ cạnh dài có độ dài bằng nhau và $2$ cạnh ngắn có '
+                'độ dài bằng nhau.\n'
+                '- **Hình vuông** có $4$ góc vuông và $4$ cạnh có độ dài bằng nhau.',
+  'theory': '### 2. Hình chữ nhật và hình vuông\n'
             '- Trong hình chữ nhật, độ dài cạnh dài gọi là **chiều dài**, độ dài cạnh ngắn gọi là **chiều '
             'rộng**.\n'
             '- Hình vuông là hình chữ nhật đặc biệt có chiều dài bằng chiều rộng.',
-  'formulas': [{'category': 'I. Hình phẳng cơ bản',
-                'items': [{'name': 'Tam giác / Tứ giác',
-                           'formula': 'Tam giác: $3$ đỉnh, $3$ cạnh, $3$ góc · Tứ giác: $4$ đỉnh, $4$ cạnh, '
-                                      '$4$ góc'}]},
-               {'category': 'II. Hình chữ nhật & Hình vuông',
+  'formulas': [{'category': 'Hình chữ nhật & Hình vuông',
                 'items': [{'name': 'Hình chữ nhật',
                            'formula': '$4$ góc vuông · $2$ cạnh dài bằng nhau · $2$ cạnh ngắn bằng nhau'},
                           {'name': 'Hình vuông', 'formula': '$4$ góc vuông · $4$ cạnh bằng nhau'}]}],
@@ -1838,26 +2369,27 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 19, 20: Hình tam giác, tứ giác. Hình chữ nhật, hình '
-                 'vuông**, công thức hoặc quy tắc nào sau đây biểu diễn đúng **Tam giác / Tứ giác**?',
-            'options': ['$4$ góc vuông · $2$ cạnh dài bằng nhau · $2$ cạnh ngắn bằng nhau',
-                        '$4$ góc vuông · $4$ cạnh bằng nhau',
-                        '$\\overline{abc} = a00 + b0 + c$',
-                        'Tam giác: $3$ đỉnh, $3$ cạnh, $3$ góc · Tứ giác: $4$ đỉnh, $4$ cạnh, $4$ góc'],
+            'q': 'Trong **Bài 20: Hình chữ nhật, hình vuông**, quy tắc hoặc công thức nào sau đây xác định '
+                 'đúng **Hình chữ nhật**?',
+            'options': ['$5$ góc vuông · $2$ cạnh dài bằng nhau · $2$ cạnh ngắn bằng nhau',
+                        '$4$ góc vuông · $2$ cạnh dài bằng nhau · $1$ cạnh ngắn bằng nhau',
+                        '$8$ góc vuông · $2$ cạnh dài bằng nhau · $2$ cạnh ngắn bằng nhau',
+                        '$4$ góc vuông · $2$ cạnh dài bằng nhau · $2$ cạnh ngắn bằng nhau'],
             'answer': 3,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 19, 20: Hình tam giác, tứ giác. Hình chữ '
-                        'nhật, hình vuông, **Tam giác / Tứ giác** được xác định bởi: Tam giác: $3$ đỉnh, $3$ '
-                        'cạnh, $3$ góc · Tứ giác: $4$ đỉnh, $4$ cạnh, $4$ góc.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 20: Hình chữ nhật, hình vuông, **Hình chữ nhật** '
+                        'được xác định bởi: $4$ góc vuông · $2$ cạnh dài bằng nhau · $2$ cạnh ngắn bằng '
+                        'nhau.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 19, 20: Hình tam giác, tứ giác. Hình chữ nhật, hình vuông**, nội dung/biểu '
-                 'thức $4$ góc vuông · $2$ cạnh dài bằng nhau · $2$ cạnh ngắn bằng nhau là quy tắc hoặc công '
-                 'thức của mục nào sau đây?',
-            'options': ['Hình chữ nhật', 'Tam giác / Tứ giác', 'Hình vuông', 'Phân tích số'],
+            'q': 'Khi học **Bài 20: Hình chữ nhật, hình vuông**, biểu thức hoặc quy tắc nào dưới đây biểu '
+                 'diễn đúng **Hình vuông**?',
+            'options': ['$4$ góc vuông · $4$ cạnh bằng nhau',
+                        '$5$ góc vuông · $4$ cạnh bằng nhau',
+                        '$4$ góc vuông · $3$ cạnh bằng nhau',
+                        '$8$ góc vuông · $4$ cạnh bằng nhau'],
             'answer': 0,
-            'solution': 'Trong Bài 19, 20: Hình tam giác, tứ giác. Hình chữ nhật, hình vuông, biểu thức/quy '
-                        'tắc $4$ góc vuông · $2$ cạnh dài bằng nhau · $2$ cạnh ngắn bằng nhau chính là nội '
-                        'dung của **Hình chữ nhật**.'},
+            'solution': 'Trong Bài 20: Hình chữ nhật, hình vuông, **Hình vuông** có công thức/quy tắc là: '
+                        '$4$ góc vuông · $4$ cạnh bằng nhau.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Cho hình chữ nhật $MNPQ$ có $MN = 10\\text{ cm}$ và $NP = 6\\text{ cm}$. Độ dài cạnh $PQ$ '
@@ -1869,16 +2401,18 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 19, 20: Hình tam giác, tứ giác. Hình chữ nhật, hình vuông** (Chủ đề 3: Làm '
-                 'quen với hình phẳng, hình khối), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt '
-                 'và bản chất kiến thức của bài?',
-            'options': ['Đọc, viết thành thạo các số có đến ba chữ số trong phạm vi 1 000.',
-                        'Phân tích được số có ba chữ số thành tổng các trăm, chục, đơn vị.',
+            'q': 'Để nắm vững bản chất của **Bài 20: Hình chữ nhật, hình vuông**, nhận định nào sau đây là '
+                 '**chính xác**?',
+            'options': ['Nêu được số đỉnh, số cạnh, số góc của hình tam giác và hình tứ giác. (với dấu ngược '
+                        'lại)',
+                        'Đảo ngược vế của quy tắc: Nêu được số đỉnh, số cạnh, số góc của hình tam giác và '
+                        'hình tứ giác.',
                         'Nêu được số đỉnh, số cạnh, số góc của hình tam giác và hình tứ giác.',
-                        'So sánh và sắp xếp được các số trong phạm vi 1 000 theo thứ tự.'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nêu được số đỉnh, số cạnh, số '
+                        'góc của hình tam giác và hình tứ giác.'],
             'answer': 2,
-            'solution': 'Theo yêu cầu cần đạt của Bài 19, 20: Hình tam giác, tứ giác. Hình chữ nhật, hình '
-                        'vuông: Nêu được số đỉnh, số cạnh, số góc của hình tam giác và hình tứ giác.'},
+            'solution': 'Theo nội dung cốt lõi của Bài 20: Hình chữ nhật, hình vuông: Nêu được số đỉnh, số '
+                        'cạnh, số góc của hình tam giác và hình tứ giác.'},
            {'level': 'hieu',
             'type': 'tf',
             'q': 'Nhận định: "Tứ giác có $4$ cạnh bằng nhau chắc chắn là hình vuông."',
@@ -1888,36 +2422,33 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'hieu',
             'type': 'tf',
-            'q': 'Trong **Bài 19, 20: Hình tam giác, tứ giác. Hình chữ nhật, hình vuông**, quy tắc **Tam '
-                 'giác / Tứ giác** được xác định bởi Tam giác: $3$ đỉnh, $3$ cạnh, $3$ góc · Tứ giác: $4$ '
-                 'đỉnh, $4$ cạnh, $4$ góc và áp dụng trực tiếp vào bài toán: “Hình chữ nhật $ABCD$ có chiều '
-                 'dài $AB = 8\\text{ cm}$, chiều rộng $BC = 5\\text{ cm}$. Tìm độ dài cạnh $CD$ và $AD$.”. '
-                 'Đúng hay sai?',
+            'q': 'Trong **Bài 20: Hình chữ nhật, hình vuông**, quy tắc **Hình chữ nhật** được xác định bởi '
+                 '$4$ góc vuông · $2$ cạnh dài bằng nhau · $2$ cạnh ngắn bằng nhau và khi áp dụng cho ví dụ '
+                 '“Hình chữ nhật $ABCD$ có chiều dài $AB = 8\\text{ cm}$, chiều rộng $BC = 5\\text{ cm}$. '
+                 'Tìm độ dài cạnh $CD$ và $AD$.” ta có lời giải: Trong hình chữ nhật $ABCD$, hai cạnh dài '
+                 'bằng nhau nên $CD = AB = 8\\text{ cm}$; hai cạnh ngắn bằng nhau nên $AD = BC = 5\\text{ '
+                 'cm}$.. Đúng hay sai?',
             'answer': True,
-            'solution': 'Khẳng định **Đúng**. Quy tắc **Tam giác / Tứ giác** (Tam giác: $3$ đỉnh, $3$ cạnh, '
-                        '$3$ góc · Tứ giác: $4$ đỉnh, $4$ cạnh, $4$ góc) là kiến thức cốt lõi của Bài 19, '
-                        '20: Hình tam giác, tứ giác. Hình chữ nhật, hình vuông. Trong hình chữ nhật $ABCD$, '
-                        'hai cạnh dài bằng nhau nên $CD = AB = 8\\text{ cm}$; hai cạnh ngắn bằng nhau nên '
-                        '$AD = BC = 5\\text{ cm}$.'},
+            'solution': 'Khẳng định **Đúng**. Đó chính là quy tắc **Hình chữ nhật** ($4$ góc vuông · $2$ '
+                        'cạnh dài bằng nhau · $2$ cạnh ngắn bằng nhau) và lời giải ví dụ minh họa của Bài '
+                        '20: Hình chữ nhật, hình vuông.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 19, 20: Hình tam giác, tứ giác. Hình chữ nhật, hình vuông** để '
-                 'giải quyết tình huống sau: Hình chữ nhật $ABCD$ có chiều dài $AB = 8\\text{ cm}$, chiều '
-                 'rộng $BC = 5\\text{ cm}$. Tìm độ dài cạnh $CD$ và $AD$. Kết quả và hướng giải nào dưới đây '
-                 'là **đúng**?',
-            'options': ['Ta có $806 = 800 + 6$ (gồm $8$ trăm, $0$ chục, $6$ đơn vị). Vì chữ số hàng trăm $8 '
-                        '> 7$ nên **$806 > 798$**.',
-                        '- $468 + 325$: $8 + 5 = 13$ (viết $3$ nhớ $1$); $6 + 2 + 1 = 9$; $4 + 3 = 7$ '
-                        '$\\rightarrow$ **$793$**. - $750 - 236$: $10 - 6 = 4$ (viết $4$ nhớ $1$); $5 - (3 + '
-                        '1) = 1$...',
-                        'Áp dụng quy tắc tìm số trừ: $\\text{Số trừ} = \\text{Số bị trừ} - \\text{Hiệu} = 85 '
-                        '- 39 = 46$. Thử lại: $85 - 46 = 39$ (đúng). Vậy số cần tìm là **$46$**.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 20: Hình chữ nhật, hình vuông** để giải bài toán '
+                 'sau: Hình chữ nhật $ABCD$ có chiều dài $AB = 8\\text{ cm}$, chiều rộng $BC = 5\\text{ '
+                 'cm}$. Tìm độ dài cạnh $CD$ và $AD$. Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Trong hình chữ nhật $ABCD$, hai cạnh dài bằng nhau nên $CD = AB = 9\\text{ cm}$; '
+                        'hai cạnh ngắn bằng nhau nên $AD = BC = 5\\text{ cm}$.',
+                        'Trong hình chữ nhật $ABCD$, hai cạnh dài bằng nhau nên $CD = AB = 8\\text{ cm}$; '
+                        'hai cạnh ngắn bằng nhau nên $AD = BC = 4\\text{ cm}$.',
+                        'Trong hình chữ nhật $ABCD$, hai cạnh dài bằng nhau nên $CD = AB = 16\\text{ cm}$; '
+                        'hai cạnh ngắn bằng nhau nên $AD = BC = 5\\text{ cm}$.',
                         'Trong hình chữ nhật $ABCD$, hai cạnh dài bằng nhau nên $CD = AB = 8\\text{ cm}$; '
                         'hai cạnh ngắn bằng nhau nên $AD = BC = 5\\text{ cm}$.'],
             'answer': 3,
-            'solution': 'Lời giải chi tiết theo Bài 19, 20: Hình tam giác, tứ giác. Hình chữ nhật, hình '
-                        'vuông: Trong hình chữ nhật $ABCD$, hai cạnh dài bằng nhau nên $CD = AB = 8\\text{ '
-                        'cm}$; hai cạnh ngắn bằng nhau nên $AD = BC = 5\\text{ cm}$.'},
+            'solution': 'Lời giải chi tiết theo Bài 20: Hình chữ nhật, hình vuông: Trong hình chữ nhật '
+                        '$ABCD$, hai cạnh dài bằng nhau nên $CD = AB = 8\\text{ cm}$; hai cạnh ngắn bằng '
+                        'nhau nên $AD = BC = 5\\text{ cm}$.'},
            {'level': 'vandung',
             'type': 'short',
             'q': 'Để ghép thành một khung tranh hình vuông có cạnh dài $15\\text{ cm}$, bạn Nam cần $4$ '
@@ -1930,7 +2461,7 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
  {'topic': 'l3-cd03-hinh-phang-hinh-khoi',
   'context_title': 'Chủ đề 3: Làm quen với hình phẳng, hình khối',
   'context': 'SGK Toán 3 · Chủ đề 3: Làm quen với hình phẳng và hình khối.',
-  'title': 'Bài 21, 22: Khối lập phương, khối hộp chữ nhật và luyện tập chung',
+  'title': 'Bài 21: Khối lập phương, khối hộp chữ nhật',
   'icon': '🧊',
   'description': 'Nhận biết số đỉnh, số cạnh, số mặt của khối lập phương và khối hộp chữ nhật.',
   'requirements': ['Nêu đúng số đỉnh ($8$ đỉnh), số cạnh ($12$ cạnh), số mặt ($6$ mặt) của khối lập phương '
@@ -1947,7 +2478,7 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             '### 2. Đặc điểm của khối hộp chữ nhật\n'
             '- Có $8$ đỉnh, $12$ cạnh, $6$ mặt đều là hình chữ nhật (hai mặt đối diện bằng nhau).\n'
             '- Ví dụ thực tế: hộp bánh, bao diêm, viên gạch xây nhà.',
-  'formulas': [{'category': 'I. Hình khối',
+  'formulas': [{'category': 'Hình khối',
                 'items': [{'name': 'Số yếu tố chung', 'formula': '$8$ đỉnh · $12$ cạnh · $6$ mặt'},
                           {'name': 'Hình dạng mặt',
                            'formula': 'Khối lập phương: $6$ mặt hình vuông · Khối hộp chữ nhật: $6$ mặt hình '
@@ -1979,26 +2510,27 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 21, 22: Khối lập phương, khối hộp chữ nhật và luyện tập '
-                 'chung**, công thức hoặc quy tắc nào sau đây biểu diễn đúng **Số yếu tố chung**?',
+            'q': 'Trong **Bài 21: Khối lập phương, khối hộp chữ nhật**, quy tắc hoặc công thức nào sau đây '
+                 'xác định đúng **Số yếu tố chung**?',
             'options': ['$8$ đỉnh · $12$ cạnh · $6$ mặt',
-                        'Khối lập phương: $6$ mặt hình vuông · Khối hộp chữ nhật: $6$ mặt hình chữ nhật',
-                        '$\\overline{abc} = a00 + b0 + c$',
-                        '$10 \\text{ chục} = 100$ · $10 \\text{ trăm} = 1\\,000$'],
+                        '$9$ đỉnh · $12$ cạnh · $6$ mặt',
+                        '$8$ đỉnh · $12$ cạnh · $5$ mặt',
+                        '$16$ đỉnh · $12$ cạnh · $6$ mặt'],
             'answer': 0,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 21, 22: Khối lập phương, khối hộp chữ nhật và '
-                        'luyện tập chung, **Số yếu tố chung** được xác định bởi: $8$ đỉnh · $12$ cạnh · $6$ '
-                        'mặt.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 21: Khối lập phương, khối hộp chữ nhật, **Số yếu '
+                        'tố chung** được xác định bởi: $8$ đỉnh · $12$ cạnh · $6$ mặt.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 21, 22: Khối lập phương, khối hộp chữ nhật và luyện tập chung**, nội dung/biểu '
-                 'thức Khối lập phương: $6$ mặt hình vuông · Khối hộp chữ nhật: $6$ mặt hình chữ nhật là quy '
-                 'tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Số yếu tố chung', 'Hình dạng mặt', 'Phân tích số', 'Số tròn trăm, tròn nghìn'],
+            'q': 'Khi học **Bài 21: Khối lập phương, khối hộp chữ nhật**, biểu thức hoặc quy tắc nào dưới '
+                 'đây biểu diễn đúng **Hình dạng mặt**?',
+            'options': ['Khối lập phương: $7$ mặt hình vuông · Khối hộp chữ nhật: $6$ mặt hình chữ nhật',
+                        'Khối lập phương: $6$ mặt hình vuông · Khối hộp chữ nhật: $6$ mặt hình chữ nhật',
+                        'Khối lập phương: $6$ mặt hình vuông · Khối hộp chữ nhật: $5$ mặt hình chữ nhật',
+                        'Khối lập phương: $12$ mặt hình vuông · Khối hộp chữ nhật: $6$ mặt hình chữ nhật'],
             'answer': 1,
-            'solution': 'Trong Bài 21, 22: Khối lập phương, khối hộp chữ nhật và luyện tập chung, biểu '
-                        'thức/quy tắc Khối lập phương: $6$ mặt hình vuông · Khối hộp chữ nhật: $6$ mặt hình '
-                        'chữ nhật chính là nội dung của **Hình dạng mặt**.'},
+            'solution': 'Trong Bài 21: Khối lập phương, khối hộp chữ nhật, **Hình dạng mặt** có công '
+                        'thức/quy tắc là: Khối lập phương: $6$ mặt hình vuông · Khối hộp chữ nhật: $6$ mặt '
+                        'hình chữ nhật.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Các mặt của khối lập phương là hình gì?',
@@ -2009,18 +2541,20 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 21, 22: Khối lập phương, khối hộp chữ nhật và luyện tập chung** (Chủ đề 3: '
-                 'Làm quen với hình phẳng, hình khối), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần '
-                 'đạt và bản chất kiến thức của bài?',
-            'options': ['Đọc, viết thành thạo các số có đến ba chữ số trong phạm vi 1 000.',
-                        'Phân tích được số có ba chữ số thành tổng các trăm, chục, đơn vị.',
-                        'So sánh và sắp xếp được các số trong phạm vi 1 000 theo thứ tự.',
+            'q': 'Để nắm vững bản chất của **Bài 21: Khối lập phương, khối hộp chữ nhật**, nhận định nào sau '
+                 'đây là **chính xác**?',
+            'options': ['Nêu đúng số đỉnh ($9$ đỉnh), số cạnh ($12$ cạnh), số mặt ($6$ mặt) của khối lập '
+                        'phương và khối hộp chữ nhật.',
+                        'Nêu đúng số đỉnh ($8$ đỉnh), số cạnh ($12$ cạnh), số mặt ($5$ mặt) của khối lập '
+                        'phương và khối hộp chữ nhật.',
+                        'Nêu đúng số đỉnh ($16$ đỉnh), số cạnh ($12$ cạnh), số mặt ($6$ mặt) của khối lập '
+                        'phương và khối hộp chữ nhật.',
                         'Nêu đúng số đỉnh ($8$ đỉnh), số cạnh ($12$ cạnh), số mặt ($6$ mặt) của khối lập '
                         'phương và khối hộp chữ nhật.'],
             'answer': 3,
-            'solution': 'Theo yêu cầu cần đạt của Bài 21, 22: Khối lập phương, khối hộp chữ nhật và luyện '
-                        'tập chung: Nêu đúng số đỉnh ($8$ đỉnh), số cạnh ($12$ cạnh), số mặt ($6$ mặt) của '
-                        'khối lập phương và khối hộp chữ nhật.'},
+            'solution': 'Theo nội dung cốt lõi của Bài 21: Khối lập phương, khối hộp chữ nhật: Nêu đúng số '
+                        'đỉnh ($8$ đỉnh), số cạnh ($12$ cạnh), số mặt ($6$ mặt) của khối lập phương và khối '
+                        'hộp chữ nhật.'},
            {'level': 'hieu',
             'type': 'tf',
             'q': 'Nhận định: "Khối lập phương và khối hộp chữ nhật có số đỉnh bằng nhau và số cạnh bằng '
@@ -2031,34 +2565,32 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'hieu',
             'type': 'tf',
-            'q': 'Trong **Bài 21, 22: Khối lập phương, khối hộp chữ nhật và luyện tập chung**, quy tắc **Số '
-                 'yếu tố chung** được xác định bởi $8$ đỉnh · $12$ cạnh · $6$ mặt và áp dụng trực tiếp vào '
-                 'bài toán: “Bạn Mai muốn dán giấy màu kín tất cả các mặt của $1$ chiếc hộp hình lập phương. '
-                 'Hỏi Mai cần cắt bao nhiêu mảnh giấy hình vuông?”. Đúng hay sai?',
+            'q': 'Trong **Bài 21: Khối lập phương, khối hộp chữ nhật**, quy tắc **Số yếu tố chung** được xác '
+                 'định bởi $8$ đỉnh · $12$ cạnh · $6$ mặt và khi áp dụng cho ví dụ “Bạn Mai muốn dán giấy '
+                 'màu kín tất cả các mặt của $1$ chiếc hộp hình lập phương. Hỏi Mai cần cắt bao nhiêu mảnh '
+                 'giấy hình vuông?” ta có lời giải: Vì khối lập phương có $6$ mặt đều là hình vuông nên Mai '
+                 'cần cắt **$6$ mảnh giấy** hình vuông.. Đúng hay sai?',
             'answer': True,
-            'solution': 'Khẳng định **Đúng**. Quy tắc **Số yếu tố chung** ($8$ đỉnh · $12$ cạnh · $6$ mặt) '
-                        'là kiến thức cốt lõi của Bài 21, 22: Khối lập phương, khối hộp chữ nhật và luyện '
-                        'tập chung. Vì khối lập phương có $6$ mặt đều là hình vuông nên Mai cần cắt **$6$ '
-                        'mảnh giấy** hình vuông.'},
+            'solution': 'Khẳng định **Đúng**. Đó chính là quy tắc **Số yếu tố chung** ($8$ đỉnh · $12$ cạnh '
+                        '· $6$ mặt) và lời giải ví dụ minh họa của Bài 21: Khối lập phương, khối hộp chữ '
+                        'nhật.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 21, 22: Khối lập phương, khối hộp chữ nhật và luyện tập chung** '
-                 'để giải quyết tình huống sau: Bạn Mai muốn dán giấy màu kín tất cả các mặt của $1$ chiếc '
-                 'hộp hình lập phương. Hỏi Mai cần cắt bao nhiêu mảnh giấy hình vuông? Kết quả và hướng giải '
-                 'nào dưới đây là **đúng**?',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 21: Khối lập phương, khối hộp chữ nhật** để giải '
+                 'bài toán sau: Bạn Mai muốn dán giấy màu kín tất cả các mặt của $1$ chiếc hộp hình lập '
+                 'phương. Hỏi Mai cần cắt bao nhiêu mảnh giấy hình vuông? Cách giải và kết quả nào dưới đây '
+                 'là **đúng**?',
             'options': ['Vì khối lập phương có $6$ mặt đều là hình vuông nên Mai cần cắt **$6$ mảnh giấy** '
                         'hình vuông.',
-                        'Ta có $806 = 800 + 6$ (gồm $8$ trăm, $0$ chục, $6$ đơn vị). Vì chữ số hàng trăm $8 '
-                        '> 7$ nên **$806 > 798$**.',
-                        '- $468 + 325$: $8 + 5 = 13$ (viết $3$ nhớ $1$); $6 + 2 + 1 = 9$; $4 + 3 = 7$ '
-                        '$\\rightarrow$ **$793$**. - $750 - 236$: $10 - 6 = 4$ (viết $4$ nhớ $1$); $5 - (3 + '
-                        '1) = 1$...',
-                        'Áp dụng quy tắc tìm số trừ: $\\text{Số trừ} = \\text{Số bị trừ} - \\text{Hiệu} = 85 '
-                        '- 39 = 46$. Thử lại: $85 - 46 = 39$ (đúng). Vậy số cần tìm là **$46$**.'],
+                        'Vì khối lập phương có $7$ mặt đều là hình vuông nên Mai cần cắt **$6$ mảnh giấy** '
+                        'hình vuông.',
+                        'Vì khối lập phương có $6$ mặt đều là hình vuông nên Mai cần cắt **$5$ mảnh giấy** '
+                        'hình vuông.',
+                        'Vì khối lập phương có $12$ mặt đều là hình vuông nên Mai cần cắt **$6$ mảnh giấy** '
+                        'hình vuông.'],
             'answer': 0,
-            'solution': 'Lời giải chi tiết theo Bài 21, 22: Khối lập phương, khối hộp chữ nhật và luyện tập '
-                        'chung: Vì khối lập phương có $6$ mặt đều là hình vuông nên Mai cần cắt **$6$ mảnh '
-                        'giấy** hình vuông.'},
+            'solution': 'Lời giải chi tiết theo Bài 21: Khối lập phương, khối hộp chữ nhật: Vì khối lập '
+                        'phương có $6$ mặt đều là hình vuông nên Mai cần cắt **$6$ mảnh giấy** hình vuông.'},
            {'level': 'vandung',
             'type': 'short',
             'q': 'Bác thợ hàn dùng các thanh sắt dài bằng nhau để hàn thành khung của một chiếc lồng hình '
@@ -2089,7 +2621,7 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             '### 2. Phép nhân có nhớ\n'
             '- Ví dụ: $26 \\times 3$. Ta tính $3 \\times 6 = 18$, viết $8$ nhớ $1$; $3 \\times 2 = 6$, thêm '
             '$1$ bằng $7$, viết $7$. Vậy $26 \\times 3 = 78$.',
-  'formulas': [{'category': 'I. Quy tắc nhân viết',
+  'formulas': [{'category': 'Quy tắc nhân viết',
                 'items': [{'name': 'Thứ tự nhân',
                            'formula': 'Nhân hàng đơn vị $\\rightarrow$ Nhân hàng chục (cộng phần nhớ)'},
                           {'name': 'Nhân số tròn chục',
@@ -2118,24 +2650,29 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 23: Nhân số có hai chữ số với số có một chữ số**, công '
-                 'thức hoặc quy tắc nào sau đây biểu diễn đúng **Thứ tự nhân**?',
-            'options': ['$a0 \\times b = (a \\times b)0$',
+            'q': 'Trong **Bài 23: Nhân số có hai chữ số với số có một chữ số**, quy tắc hoặc công thức nào '
+                 'sau đây xác định đúng **Thứ tự nhân**?',
+            'options': ['Nhân hàng đơn vị $\\rightarrow$ Nhân hàng chục (cộng phần nhớ) (với dấu ngược lại)',
                         'Nhân hàng đơn vị $\\rightarrow$ Nhân hàng chục (cộng phần nhớ)',
-                        '$\\overline{abc} = a00 + b0 + c$',
-                        '$10 \\text{ chục} = 100$ · $10 \\text{ trăm} = 1\\,000$'],
+                        'Đảo ngược vế của quy tắc: Nhân hàng đơn vị $\\rightarrow$ Nhân hàng chục (cộng phần '
+                        'nhớ)',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nhân hàng đơn vị $\\rightarrow$ '
+                        'Nhân hàng chục (cộng phần nhớ)'],
             'answer': 1,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 23: Nhân số có hai chữ số với số có một chữ '
-                        'số, **Thứ tự nhân** được xác định bởi: Nhân hàng đơn vị $\\rightarrow$ Nhân hàng '
-                        'chục (cộng phần nhớ).'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 23: Nhân số có hai chữ số với số có một chữ số, '
+                        '**Thứ tự nhân** được xác định bởi: Nhân hàng đơn vị $\\rightarrow$ Nhân hàng chục '
+                        '(cộng phần nhớ).'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 23: Nhân số có hai chữ số với số có một chữ số**, nội dung/biểu thức $a0 '
-                 '\\times b = (a \\times b)0$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Thứ tự nhân', 'Phân tích số', 'Nhân số tròn chục', 'Số tròn trăm, tròn nghìn'],
+            'q': 'Khi học **Bài 23: Nhân số có hai chữ số với số có một chữ số**, biểu thức hoặc quy tắc nào '
+                 'dưới đây biểu diễn đúng **Nhân số tròn chục**?',
+            'options': ['$a0 : b = (a \\times b)0$',
+                        '$a0 \\times b = (a \\times b)1$',
+                        '$a0 \\times b = (a \\times b)0$',
+                        '$a0 \\times b = (a \\times b)2$'],
             'answer': 2,
-            'solution': 'Trong Bài 23: Nhân số có hai chữ số với số có một chữ số, biểu thức/quy tắc $a0 '
-                        '\\times b = (a \\times b)0$ chính là nội dung của **Nhân số tròn chục**.'},
+            'solution': 'Trong Bài 23: Nhân số có hai chữ số với số có một chữ số, **Nhân số tròn chục** có '
+                        'công thức/quy tắc là: $a0 \\times b = (a \\times b)0$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Kết quả của phép nhân $18 \\times 4$ là:',
@@ -2146,16 +2683,16 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 23: Nhân số có hai chữ số với số có một chữ số** (Chủ đề 4: Phép nhân, phép '
-                 'chia trong phạm vi 100), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản '
-                 'chất kiến thức của bài?',
+            'q': 'Để nắm vững bản chất của **Bài 23: Nhân số có hai chữ số với số có một chữ số**, nhận định '
+                 'nào sau đây là **chính xác**?',
             'options': ['Đặt tính và tính đúng phép nhân số có hai chữ số với số có một chữ số (không nhớ và '
                         'có nhớ $1$ lượt).',
-                        'Đọc, viết thành thạo các số có đến ba chữ số trong phạm vi 1 000.',
-                        'Phân tích được số có ba chữ số thành tổng các trăm, chục, đơn vị.',
-                        'So sánh và sắp xếp được các số trong phạm vi 1 000 theo thứ tự.'],
+                        'Đặt tính và tính đúng phép nhân số có hai chữ số với số có một chữ số (không nhớ và '
+                        'có nhớ $2$ lượt).',
+                        'Trường hợp sai quy tắc (sai lệch 1 đơn vị so với công thức trong bài)',
+                        'Trường hợp sai quy tắc (sai lệch 2 đơn vị so với công thức trong bài)'],
             'answer': 0,
-            'solution': 'Theo yêu cầu cần đạt của Bài 23: Nhân số có hai chữ số với số có một chữ số: Đặt '
+            'solution': 'Theo nội dung cốt lõi của Bài 23: Nhân số có hai chữ số với số có một chữ số: Đặt '
                         'tính và tính đúng phép nhân số có hai chữ số với số có một chữ số (không nhớ và có '
                         'nhớ $1$ lượt).'},
            {'level': 'hieu',
@@ -2169,30 +2706,27 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
            {'level': 'hieu',
             'type': 'tf',
             'q': 'Trong **Bài 23: Nhân số có hai chữ số với số có một chữ số**, quy tắc **Thứ tự nhân** được '
-                 'xác định bởi Nhân hàng đơn vị $\\rightarrow$ Nhân hàng chục (cộng phần nhớ) và áp dụng '
-                 'trực tiếp vào bài toán: “Đặt tính rồi tính: $18 \\times 4$ và $32 \\times 3$.”. Đúng hay '
-                 'sai?',
+                 'xác định bởi Nhân hàng đơn vị $\\rightarrow$ Nhân hàng chục (cộng phần nhớ) và khi áp dụng '
+                 'cho ví dụ “Đặt tính rồi tính: $18 \\times 4$ và $32 \\times 3$.” ta có lời giải: - $18 '
+                 '\\times 4$: $4 \\times 8 = 32$ (viết $2$ nhớ $3$); $4 \\times 1 = 4$, thêm $3$ bằng $7$ '
+                 '$\\rightarrow$ **$72$**. - $32 \\times 3$: $3 \\times 2 = 6$.... Đúng hay sai?',
             'answer': True,
-            'solution': 'Khẳng định **Đúng**. Quy tắc **Thứ tự nhân** (Nhân hàng đơn vị $\\rightarrow$ Nhân '
-                        'hàng chục (cộng phần nhớ)) là kiến thức cốt lõi của Bài 23: Nhân số có hai chữ số '
-                        'với số có một chữ số. - $18 \\times 4$: $4 \\times 8 = 32$ (viết $2$ nhớ $3$); $4 '
-                        '\\times 1 = 4$, thêm $3$ bằng $7$ $\\rightarrow$ **$72$**. - $32 \\times 3$: $3 '
-                        '\\times 2 = 6$...'},
+            'solution': 'Khẳng định **Đúng**. Đó chính là quy tắc **Thứ tự nhân** (Nhân hàng đơn vị '
+                        '$\\rightarrow$ Nhân hàng chục (cộng phần nhớ)) và lời giải ví dụ minh họa của Bài '
+                        '23: Nhân số có hai chữ số với số có một chữ số.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 23: Nhân số có hai chữ số với số có một chữ số** để giải quyết '
-                 'tình huống sau: Đặt tính rồi tính: $18 \\times 4$ và $32 \\times 3$. Kết quả và hướng giải '
-                 'nào dưới đây là **đúng**?',
-            'options': ['Ta có $806 = 800 + 6$ (gồm $8$ trăm, $0$ chục, $6$ đơn vị). Vì chữ số hàng trăm $8 '
-                        '> 7$ nên **$806 > 798$**.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 23: Nhân số có hai chữ số với số có một chữ số** để '
+                 'giải bài toán sau: Đặt tính rồi tính: $18 \\times 4$ và $32 \\times 3$. Cách giải và kết '
+                 'quả nào dưới đây là **đúng**?',
+            'options': ['- $18 \\times 4$: $4 \\times 8 = 32$ (viết $2$ nhớ $3$); $4 \\times 1 = 4$, thêm '
+                        '$3$ bằng $7$ $\\rightarrow$ **$72$**. + $32 \\times 3$: $3 \\times 2 = 6$...',
                         '- $18 \\times 4$: $4 \\times 8 = 32$ (viết $2$ nhớ $3$); $4 \\times 1 = 4$, thêm '
-                        '$3$ bằng $7$ $\\rightarrow$ **$72$**. - $32 \\times 3$: $3 \\times 2 = 6$; $3 '
-                        '\\times 3 = 9$...',
-                        '- $468 + 325$: $8 + 5 = 13$ (viết $3$ nhớ $1$); $6 + 2 + 1 = 9$; $4 + 3 = 7$ '
-                        '$\\rightarrow$ **$793$**. - $750 - 236$: $10 - 6 = 4$ (viết $4$ nhớ $1$); $5 - (3 + '
-                        '1) = 1$...',
-                        'Áp dụng quy tắc tìm số trừ: $\\text{Số trừ} = \\text{Số bị trừ} - \\text{Hiệu} = 85 '
-                        '- 39 = 46$. Thử lại: $85 - 46 = 39$ (đúng). Vậy số cần tìm là **$46$**.'],
+                        '$3$ bằng $7$ $\\rightarrow$ **$72$**. - $32 \\times 3$: $3 \\times 2 = 6$...',
+                        '- $18 \\times 4$: $4 \\times 8 = 32$ (viết $2$ nhớ $3$); $4 \\times 1 = 4$, thêm '
+                        '$3$ bằng $7$ $\\rightarrow$ **$72$**. - $32 \\times 3$: $3 \\times 2 = 5$...',
+                        '- $36 \\times 4$: $4 \\times 8 = 32$ (viết $2$ nhớ $3$); $4 \\times 1 = 4$, thêm '
+                        '$3$ bằng $7$ $\\rightarrow$ **$72$**. - $32 \\times 3$: $3 \\times 2 = 6$...'],
             'answer': 1,
             'solution': 'Lời giải chi tiết theo Bài 23: Nhân số có hai chữ số với số có một chữ số: - $18 '
                         '\\times 4$: $4 \\times 8 = 32$ (viết $2$ nhớ $3$); $4 \\times 1 = 4$, thêm $3$ bằng '
@@ -2211,7 +2745,7 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
  {'topic': 'l3-cd04-nhan-chia-pham-vi-100',
   'context_title': 'Chủ đề 4: Phép nhân, phép chia trong phạm vi 100',
   'context': 'SGK Toán 3 · Chủ đề 4: Phép nhân, phép chia trong phạm vi 100.',
-  'title': 'Bài 24, 27: Gấp một số lên một số lần. Giảm một số đi một số lần',
+  'title': 'Bài 24: Gấp một số lên một số lần. Giảm một số đi một số lần',
   'icon': '📈',
   'description': 'Quy tắc gấp một số lên một số lần, giảm một số đi một số lần và phân biệt với thêm, bớt.',
   'requirements': ['Biết cách gấp một số lên một số lần bằng phép nhân.',
@@ -2228,7 +2762,7 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             '### 2. Giảm một số đi $n$ lần\n'
             '- Ví dụ: Giảm $48$ đi $6$ lần ta được $48 : 6 = 8$.\n'
             '- Phân biệt: "Bớt $6$ đơn vị" là $48 - 6 = 42$; còn "giảm $6$ lần" là $48 : 6 = 8$.',
-  'formulas': [{'category': 'I. Gấp và giảm số lần',
+  'formulas': [{'category': 'Gấp và giảm số lần',
                 'items': [{'name': 'Gấp số a lên n lần', 'formula': '$a \\times n$'},
                           {'name': 'Giảm số a đi n lần', 'formula': '$a : n$'},
                           {'name': 'Phân biệt với thêm/bớt',
@@ -2256,23 +2790,26 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 24, 27: Gấp một số lên một số lần. Giảm một số đi một số '
-                 'lần**, công thức hoặc quy tắc nào sau đây biểu diễn đúng **Gấp số a lên n lần**?',
+            'q': 'Trong **Bài 24: Gấp một số lên một số lần. Giảm một số đi một số lần**, quy tắc hoặc công '
+                 'thức nào sau đây xác định đúng **Gấp số a lên n lần**?',
             'options': ['$a : n$',
-                        'Thêm $n$: $a + n$ · Bớt $n$: $a - n$',
+                        'Đảo ngược vế của quy tắc: $a \\times n$',
                         '$a \\times n$',
-                        '$\\overline{abc} = a00 + b0 + c$'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $a \\times n$'],
             'answer': 2,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 24, 27: Gấp một số lên một số lần. Giảm một '
-                        'số đi một số lần, **Gấp số a lên n lần** được xác định bởi: $a \\times n$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 24: Gấp một số lên một số lần. Giảm một số đi một '
+                        'số lần, **Gấp số a lên n lần** được xác định bởi: $a \\times n$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 24, 27: Gấp một số lên một số lần. Giảm một số đi một số lần**, nội dung/biểu '
-                 'thức $a : n$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Gấp số a lên n lần', 'Phân biệt với thêm/bớt', 'Phân tích số', 'Giảm số a đi n lần'],
+            'q': 'Khi học **Bài 24: Gấp một số lên một số lần. Giảm một số đi một số lần**, biểu thức hoặc '
+                 'quy tắc nào dưới đây biểu diễn đúng **Giảm số a đi n lần**?',
+            'options': ['$a : n$ (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: $a : n$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $a : n$',
+                        '$a : n$'],
             'answer': 3,
-            'solution': 'Trong Bài 24, 27: Gấp một số lên một số lần. Giảm một số đi một số lần, biểu '
-                        'thức/quy tắc $a : n$ chính là nội dung của **Giảm số a đi n lần**.'},
+            'solution': 'Trong Bài 24: Gấp một số lên một số lần. Giảm một số đi một số lần, **Giảm số a đi '
+                        'n lần** có công thức/quy tắc là: $a : n$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Số $12$ gấp lên $4$ lần rồi bớt đi $8$ đơn vị thì được kết quả là:',
@@ -2283,16 +2820,16 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 24, 27: Gấp một số lên một số lần. Giảm một số đi một số lần** (Chủ đề 4: '
-                 'Phép nhân, phép chia trong phạm vi 100), khẳng định nào sau đây phản ánh **đúng** yêu cầu '
-                 'cần đạt và bản chất kiến thức của bài?',
-            'options': ['Đọc, viết thành thạo các số có đến ba chữ số trong phạm vi 1 000.',
+            'q': 'Để nắm vững bản chất của **Bài 24: Gấp một số lên một số lần. Giảm một số đi một số lần**, '
+                 'nhận định nào sau đây là **chính xác**?',
+            'options': ['Biết cách gấp một số lên một số lần bằng phép nhân. (với dấu ngược lại)',
                         'Biết cách gấp một số lên một số lần bằng phép nhân.',
-                        'Phân tích được số có ba chữ số thành tổng các trăm, chục, đơn vị.',
-                        'So sánh và sắp xếp được các số trong phạm vi 1 000 theo thứ tự.'],
+                        'Đảo ngược vế của quy tắc: Biết cách gấp một số lên một số lần bằng phép nhân.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Biết cách gấp một số lên một số '
+                        'lần bằng phép nhân.'],
             'answer': 1,
-            'solution': 'Theo yêu cầu cần đạt của Bài 24, 27: Gấp một số lên một số lần. Giảm một số đi một '
-                        'số lần: Biết cách gấp một số lên một số lần bằng phép nhân.'},
+            'solution': 'Theo nội dung cốt lõi của Bài 24: Gấp một số lên một số lần. Giảm một số đi một số '
+                        'lần: Biết cách gấp một số lên một số lần bằng phép nhân.'},
            {'level': 'hieu',
             'type': 'tf',
             'q': 'Nhận định: "Gấp $6$ lên $3$ lần thì được $9$."',
@@ -2303,30 +2840,27 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'hieu',
             'type': 'tf',
-            'q': 'Trong **Bài 24, 27: Gấp một số lên một số lần. Giảm một số đi một số lần**, quy tắc **Gấp '
-                 'số a lên n lần** được xác định bởi $a \\times n$ và áp dụng trực tiếp vào bài toán: “Đoạn '
-                 'thẳng $AB$ dài $24\\text{ cm}$. Đoạn thẳng $CD$ có độ dài bằng đoạn thẳng $AB$ giảm đi $3$ '
-                 'lần. Tính độ dài đoạn $CD$.”. Đúng hay sai?',
+            'q': 'Trong **Bài 24: Gấp một số lên một số lần. Giảm một số đi một số lần**, quy tắc **Gấp số a '
+                 'lên n lần** được xác định bởi $a \\times n$ và khi áp dụng cho ví dụ “Đoạn thẳng $AB$ dài '
+                 '$24\\text{ cm}$. Đoạn thẳng $CD$ có độ dài bằng đoạn thẳng $AB$ giảm đi $3$ lần. Tính độ '
+                 'dài đoạn $CD$.” ta có lời giải: Độ dài đoạn thẳng $CD$ là: $24 : 3 = 8\\text{ (cm)}$. Đáp '
+                 'số: **$8\\text{ cm}$**.. Đúng hay sai?',
             'answer': True,
-            'solution': 'Khẳng định **Đúng**. Quy tắc **Gấp số a lên n lần** ($a \\times n$) là kiến thức '
-                        'cốt lõi của Bài 24, 27: Gấp một số lên một số lần. Giảm một số đi một số lần. Độ '
-                        'dài đoạn thẳng $CD$ là: $24 : 3 = 8\\text{ (cm)}$. Đáp số: **$8\\text{ cm}$**.'},
+            'solution': 'Khẳng định **Đúng**. Đó chính là quy tắc **Gấp số a lên n lần** ($a \\times n$) và '
+                        'lời giải ví dụ minh họa của Bài 24: Gấp một số lên một số lần. Giảm một số đi một '
+                        'số lần.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 24, 27: Gấp một số lên một số lần. Giảm một số đi một số lần** để '
-                 'giải quyết tình huống sau: Đoạn thẳng $AB$ dài $24\\text{ cm}$. Đoạn thẳng $CD$ có độ dài '
-                 'bằng đoạn thẳng $AB$ giảm đi $3$ lần. Tính độ dài đoạn $CD$. Kết quả và hướng giải nào '
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 24: Gấp một số lên một số lần. Giảm một số đi một '
+                 'số lần** để giải bài toán sau: Đoạn thẳng $AB$ dài $24\\text{ cm}$. Đoạn thẳng $CD$ có độ '
+                 'dài bằng đoạn thẳng $AB$ giảm đi $3$ lần. Tính độ dài đoạn $CD$. Cách giải và kết quả nào '
                  'dưới đây là **đúng**?',
-            'options': ['Ta có $806 = 800 + 6$ (gồm $8$ trăm, $0$ chục, $6$ đơn vị). Vì chữ số hàng trăm $8 '
-                        '> 7$ nên **$806 > 798$**.',
-                        '- $468 + 325$: $8 + 5 = 13$ (viết $3$ nhớ $1$); $6 + 2 + 1 = 9$; $4 + 3 = 7$ '
-                        '$\\rightarrow$ **$793$**. - $750 - 236$: $10 - 6 = 4$ (viết $4$ nhớ $1$); $5 - (3 + '
-                        '1) = 1$...',
+            'options': ['Độ dài đoạn thẳng $CD$ là: $34 : 3 = 8\\text{ (cm)}$. Đáp số: **$8\\text{ cm}$**.',
+                        'Độ dài đoạn thẳng $CD$ là: $24 : 3 = 8\\text{ (cm)}$. Đáp số: **$7\\text{ cm}$**.',
                         'Độ dài đoạn thẳng $CD$ là: $24 : 3 = 8\\text{ (cm)}$. Đáp số: **$8\\text{ cm}$**.',
-                        'Áp dụng quy tắc tìm số trừ: $\\text{Số trừ} = \\text{Số bị trừ} - \\text{Hiệu} = 85 '
-                        '- 39 = 46$. Thử lại: $85 - 46 = 39$ (đúng). Vậy số cần tìm là **$46$**.'],
+                        'Độ dài đoạn thẳng $CD$ là: $48 : 3 = 8\\text{ (cm)}$. Đáp số: **$8\\text{ cm}$**.'],
             'answer': 2,
-            'solution': 'Lời giải chi tiết theo Bài 24, 27: Gấp một số lên một số lần. Giảm một số đi một số '
+            'solution': 'Lời giải chi tiết theo Bài 24: Gấp một số lên một số lần. Giảm một số đi một số '
                         'lần: Độ dài đoạn thẳng $CD$ là: $24 : 3 = 8\\text{ (cm)}$.\n'
                         'Đáp số: **$8\\text{ cm}$**.'},
            {'level': 'vandung',
@@ -2358,7 +2892,7 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             '### 2. Số dư lớn nhất trong phép chia\n'
             '- Vì số dư luôn bé hơn số chia nên khi chia cho $b$, số dư lớn nhất có thể là $b - 1$. Ví dụ: '
             'chia cho $5$ thì số dư chỉ có thể là $1, 2, 3, 4$ (lớn nhất là $4$).',
-  'formulas': [{'category': 'I. Phép chia có dư',
+  'formulas': [{'category': 'Phép chia có dư',
                 'items': [{'name': 'Công thức liên hệ',
                            'formula': '$\\text{Số bị chia} = \\text{Thương} \\times \\text{Số chia} + '
                                       '\\text{Số dư}$'},
@@ -2392,27 +2926,34 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 25: Phép chia hết, phép chia có dư**, công thức hoặc quy '
-                 'tắc nào sau đây biểu diễn đúng **Công thức liên hệ**?',
-            'options': ['$0 < \\text{Số dư} < \\text{Số chia}$ · $\\text{Số dư lớn nhất} = \\text{Số chia} - '
-                        '1$',
-                        '$\\overline{abc} = a00 + b0 + c$',
-                        '$10 \\text{ chục} = 100$ · $10 \\text{ trăm} = 1\\,000$',
+            'q': 'Trong **Bài 25: Phép chia hết, phép chia có dư**, quy tắc hoặc công thức nào sau đây xác '
+                 'định đúng **Công thức liên hệ**?',
+            'options': ['$\\text{Số bị chia} = \\text{Thương} \\times \\text{Số chia} - \\text{Số dư}$',
+                        'Đảo ngược vế của quy tắc: $\\text{Số bị chia} = \\text{Thương} \\times \\text{Số '
+                        'chia} + \\text{Số dư}$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\text{Số bị chia} = '
+                        '\\text{Thương} \\times \\text{Số chia} + \\text{Số dư}$',
                         '$\\text{Số bị chia} = \\text{Thương} \\times \\text{Số chia} + \\text{Số dư}$'],
             'answer': 3,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 25: Phép chia hết, phép chia có dư, **Công '
-                        'thức liên hệ** được xác định bởi: $\\text{Số bị chia} = \\text{Thương} \\times '
-                        '\\text{Số chia} + \\text{Số dư}$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 25: Phép chia hết, phép chia có dư, **Công thức '
+                        'liên hệ** được xác định bởi: $\\text{Số bị chia} = \\text{Thương} \\times \\text{Số '
+                        'chia} + \\text{Số dư}$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 25: Phép chia hết, phép chia có dư**, nội dung/biểu thức $0 < \\text{Số dư} < '
-                 '\\text{Số chia}$ · $\\text{Số dư lớn nhất} = \\text{Số chia} - 1$ là quy tắc hoặc công '
-                 'thức của mục nào sau đây?',
-            'options': ['Điều kiện số dư', 'Công thức liên hệ', 'Phân tích số', 'Số tròn trăm, tròn nghìn'],
+            'q': 'Khi học **Bài 25: Phép chia hết, phép chia có dư**, biểu thức hoặc quy tắc nào dưới đây '
+                 'biểu diễn đúng **Điều kiện số dư**?',
+            'options': ['$0 < \\text{Số dư} < \\text{Số chia}$ · $\\text{Số dư lớn nhất} = \\text{Số chia} - '
+                        '1$',
+                        '$0 < \\text{Số dư} < \\text{Số chia}$ · $\\text{Số dư lớn nhất} = \\text{Số chia} + '
+                        '1$',
+                        '$0 < \\text{Số dư} < \\text{Số chia}$ · $\\text{Số dư lớn nhất} = \\text{Số chia} - '
+                        '2$',
+                        '$2 < \\text{Số dư} < \\text{Số chia}$ · $\\text{Số dư lớn nhất} = \\text{Số chia} - '
+                        '1$'],
             'answer': 0,
-            'solution': 'Trong Bài 25: Phép chia hết, phép chia có dư, biểu thức/quy tắc $0 < \\text{Số dư} '
-                        '< \\text{Số chia}$ · $\\text{Số dư lớn nhất} = \\text{Số chia} - 1$ chính là nội '
-                        'dung của **Điều kiện số dư**.'},
+            'solution': 'Trong Bài 25: Phép chia hết, phép chia có dư, **Điều kiện số dư** có công thức/quy '
+                        'tắc là: $0 < \\text{Số dư} < \\text{Số chia}$ · $\\text{Số dư lớn nhất} = \\text{Số '
+                        'chia} - 1$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Một số chia cho $6$ được thương là $4$ và số dư là $3$. Số bị chia đó là:',
@@ -2423,15 +2964,14 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 25: Phép chia hết, phép chia có dư** (Chủ đề 4: Phép nhân, phép chia trong '
-                 'phạm vi 100), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến '
-                 'thức của bài?',
-            'options': ['Đọc, viết thành thạo các số có đến ba chữ số trong phạm vi 1 000.',
-                        'Phân tích được số có ba chữ số thành tổng các trăm, chục, đơn vị.',
+            'q': 'Để nắm vững bản chất của **Bài 25: Phép chia hết, phép chia có dư**, nhận định nào sau đây '
+                 'là **chính xác**?',
+            'options': ['Phân biệt được phép không chia hết (số dư bằng 0) và phép chia có dư.',
+                        'Phân biệt được phép chia hết (số dư bằng 1) và phép chia có dư.',
                         'Phân biệt được phép chia hết (số dư bằng 0) và phép chia có dư.',
-                        'So sánh và sắp xếp được các số trong phạm vi 1 000 theo thứ tự.'],
+                        'Phân biệt được phép chia hết (số dư bằng 2) và phép chia có dư.'],
             'answer': 2,
-            'solution': 'Theo yêu cầu cần đạt của Bài 25: Phép chia hết, phép chia có dư: Phân biệt được '
+            'solution': 'Theo nội dung cốt lõi của Bài 25: Phép chia hết, phép chia có dư: Phân biệt được '
                         'phép chia hết (số dư bằng 0) và phép chia có dư.'},
            {'level': 'hieu',
             'type': 'tf',
@@ -2445,29 +2985,27 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'type': 'tf',
             'q': 'Trong **Bài 25: Phép chia hết, phép chia có dư**, quy tắc **Công thức liên hệ** được xác '
                  'định bởi $\\text{Số bị chia} = \\text{Thương} \\times \\text{Số chia} + \\text{Số dư}$ và '
-                 'áp dụng trực tiếp vào bài toán: “Có $34$ học sinh, mỗi bàn ngồi tối đa $4$ bạn. Cần ít '
-                 'nhất bao nhiêu bàn để tất cả học sinh đều có chỗ ngồi?”. Đúng hay sai?',
+                 'khi áp dụng cho ví dụ “Có $34$ học sinh, mỗi bàn ngồi tối đa $4$ bạn. Cần ít nhất bao '
+                 'nhiêu bàn để tất cả học sinh đều có chỗ ngồi?” ta có lời giải: Ta có phép chia: $34 : 4 = '
+                 '8 \\text{ (dư } 2\\text{)}$. $8$ bàn ngồi được $32$ bạn, còn dư $2$ bạn cũng cần thêm $1$ '
+                 'bàn nữa. Vậy số bàn.... Đúng hay sai?',
             'answer': True,
-            'solution': 'Khẳng định **Đúng**. Quy tắc **Công thức liên hệ** ($\\text{Số bị chia} = '
-                        '\\text{Thương} \\times \\text{Số chia} + \\text{Số dư}$) là kiến thức cốt lõi của '
-                        'Bài 25: Phép chia hết, phép chia có dư. Ta có phép chia: $34 : 4 = 8 \\text{ (dư } '
-                        '2\\text{)}$. $8$ bàn ngồi được $32$ bạn, còn dư $2$ bạn cũng cần thêm $1$ bàn nữa. '
-                        'Vậy số bàn cần í...'},
+            'solution': 'Khẳng định **Đúng**. Đó chính là quy tắc **Công thức liên hệ** ($\\text{Số bị chia} '
+                        '= \\text{Thương} \\times \\text{Số chia} + \\text{Số dư}$) và lời giải ví dụ minh '
+                        'họa của Bài 25: Phép chia hết, phép chia có dư.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 25: Phép chia hết, phép chia có dư** để giải quyết tình huống '
-                 'sau: Có $34$ học sinh, mỗi bàn ngồi tối đa $4$ bạn. Cần ít nhất bao nhiêu bàn để tất cả '
-                 'học sinh đều có chỗ ngồi? Kết quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Ta có $806 = 800 + 6$ (gồm $8$ trăm, $0$ chục, $6$ đơn vị). Vì chữ số hàng trăm $8 '
-                        '> 7$ nên **$806 > 798$**.',
-                        '- $468 + 325$: $8 + 5 = 13$ (viết $3$ nhớ $1$); $6 + 2 + 1 = 9$; $4 + 3 = 7$ '
-                        '$\\rightarrow$ **$793$**. - $750 - 236$: $10 - 6 = 4$ (viết $4$ nhớ $1$); $5 - (3 + '
-                        '1) = 1$...',
-                        'Áp dụng quy tắc tìm số trừ: $\\text{Số trừ} = \\text{Số bị trừ} - \\text{Hiệu} = 85 '
-                        '- 39 = 46$. Thử lại: $85 - 46 = 39$ (đúng). Vậy số cần tìm là **$46$**.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 25: Phép chia hết, phép chia có dư** để giải bài '
+                 'toán sau: Có $34$ học sinh, mỗi bàn ngồi tối đa $4$ bạn. Cần ít nhất bao nhiêu bàn để tất '
+                 'cả học sinh đều có chỗ ngồi? Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Ta có phép chia: $44 : 4 = 8 \\text{ (dư } 2\\text{)}$. $8$ bàn ngồi được $32$ bạn, '
+                        'còn dư $2$ bạn cũng cần thêm $1$ bàn nữa. Vậy số bàn cần ít nhất là...',
                         'Ta có phép chia: $34 : 4 = 8 \\text{ (dư } 2\\text{)}$. $8$ bàn ngồi được $32$ bạn, '
-                        'còn dư $2$ bạn cũng cần thêm $1$ bàn nữa. Vậy số bàn cần ít nhất là: $8 + 1 = '
-                        '9\\text{ (bàn)}$...'],
+                        'còn dư $2$ bạn cũng cần thêm $2$ bàn nữa. Vậy số bàn cần ít nhất là...',
+                        'Ta có phép chia: $68 : 4 = 8 \\text{ (dư } 2\\text{)}$. $8$ bàn ngồi được $32$ bạn, '
+                        'còn dư $2$ bạn cũng cần thêm $1$ bàn nữa. Vậy số bàn cần ít nhất là...',
+                        'Ta có phép chia: $34 : 4 = 8 \\text{ (dư } 2\\text{)}$. $8$ bàn ngồi được $32$ bạn, '
+                        'còn dư $2$ bạn cũng cần thêm $1$ bàn nữa. Vậy số bàn cần ít nhất là...'],
             'answer': 3,
             'solution': 'Lời giải chi tiết theo Bài 25: Phép chia hết, phép chia có dư: Ta có phép chia: $34 '
                         ': 4 = 8 \\text{ (dư } 2\\text{)}$.\n'
@@ -2505,7 +3043,7 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             '### 2. Lượt chia thứ nhất có dư\n'
             '- Ví dụ: $75 : 3$. Lượt 1: $7 : 3 = 2$, $2 \\times 3 = 6$, $7 - 6 = 1$. Lượt 2: hạ $5$ được '
             '$15$; $15 : 3 = 5$, $5 \\times 3 = 15$, $15 - 15 = 0$. Vậy $75 : 3 = 25$.',
-  'formulas': [{'category': 'I. Quy trình 4 bước mỗi lượt chia',
+  'formulas': [{'category': 'Quy trình 4 bước mỗi lượt chia',
                 'items': [{'name': 'Bước 1 – 4',
                            'formula': 'Chia $\\rightarrow$ Nhân $\\rightarrow$ Trừ $\\rightarrow$ Hạ chữ số '
                                       'tiếp theo'},
@@ -2536,26 +3074,33 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 26: Chia số có hai chữ số cho số có một chữ số**, công '
-                 'thức hoặc quy tắc nào sau đây biểu diễn đúng **Bước 1 – 4**?',
+            'q': 'Trong **Bài 26: Chia số có hai chữ số cho số có một chữ số**, quy tắc hoặc công thức nào '
+                 'sau đây xác định đúng **Bước 1 – 4**?',
             'options': ['Chia $\\rightarrow$ Nhân $\\rightarrow$ Trừ $\\rightarrow$ Hạ chữ số tiếp theo',
-                        '$\\text{Thương} \\times \\text{Số chia} + \\text{Số dư} = \\text{Số bị chia}$',
-                        '$\\overline{abc} = a00 + b0 + c$',
-                        '$10 \\text{ chục} = 100$ · $10 \\text{ trăm} = 1\\,000$'],
+                        'Chia $\\rightarrow$ Nhân $\\rightarrow$ Trừ $\\rightarrow$ Hạ chữ số tiếp theo (với '
+                        'dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Chia $\\rightarrow$ Nhân $\\rightarrow$ Trừ '
+                        '$\\rightarrow$ Hạ chữ số tiếp theo',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Chia $\\rightarrow$ Nhân '
+                        '$\\rightarrow$ Trừ $\\rightarrow$ Hạ chữ số tiếp theo'],
             'answer': 0,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 26: Chia số có hai chữ số cho số có một chữ '
-                        'số, **Bước 1 – 4** được xác định bởi: Chia $\\rightarrow$ Nhân $\\rightarrow$ Trừ '
+            'solution': 'Theo kiến thức trọng tâm của Bài 26: Chia số có hai chữ số cho số có một chữ số, '
+                        '**Bước 1 – 4** được xác định bởi: Chia $\\rightarrow$ Nhân $\\rightarrow$ Trừ '
                         '$\\rightarrow$ Hạ chữ số tiếp theo.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 26: Chia số có hai chữ số cho số có một chữ số**, nội dung/biểu thức '
-                 '$\\text{Thương} \\times \\text{Số chia} + \\text{Số dư} = \\text{Số bị chia}$ là quy tắc '
-                 'hoặc công thức của mục nào sau đây?',
-            'options': ['Bước 1 – 4', 'Kiểm tra', 'Phân tích số', 'Số tròn trăm, tròn nghìn'],
+            'q': 'Khi học **Bài 26: Chia số có hai chữ số cho số có một chữ số**, biểu thức hoặc quy tắc nào '
+                 'dưới đây biểu diễn đúng **Kiểm tra**?',
+            'options': ['$\\text{Thương} \\times \\text{Số chia} - \\text{Số dư} = \\text{Số bị chia}$',
+                        '$\\text{Thương} \\times \\text{Số chia} + \\text{Số dư} = \\text{Số bị chia}$',
+                        'Đảo ngược vế của quy tắc: $\\text{Thương} \\times \\text{Số chia} + \\text{Số dư} = '
+                        '\\text{Số bị chia}$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\text{Thương} \\times '
+                        '\\text{Số chia} + \\text{Số dư} = \\text{Số bị chia}$'],
             'answer': 1,
-            'solution': 'Trong Bài 26: Chia số có hai chữ số cho số có một chữ số, biểu thức/quy tắc '
-                        '$\\text{Thương} \\times \\text{Số chia} + \\text{Số dư} = \\text{Số bị chia}$ chính '
-                        'là nội dung của **Kiểm tra**.'},
+            'solution': 'Trong Bài 26: Chia số có hai chữ số cho số có một chữ số, **Kiểm tra** có công '
+                        'thức/quy tắc là: $\\text{Thương} \\times \\text{Số chia} + \\text{Số dư} = '
+                        '\\text{Số bị chia}$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Phép chia $67 : 4$ có thương và số dư là:',
@@ -2570,16 +3115,18 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 26: Chia số có hai chữ số cho số có một chữ số** (Chủ đề 4: Phép nhân, phép '
-                 'chia trong phạm vi 100), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản '
-                 'chất kiến thức của bài?',
-            'options': ['Đọc, viết thành thạo các số có đến ba chữ số trong phạm vi 1 000.',
-                        'Phân tích được số có ba chữ số thành tổng các trăm, chục, đơn vị.',
-                        'So sánh và sắp xếp được các số trong phạm vi 1 000 theo thứ tự.',
+            'q': 'Để nắm vững bản chất của **Bài 26: Chia số có hai chữ số cho số có một chữ số**, nhận định '
+                 'nào sau đây là **chính xác**?',
+            'options': ['Đặt tính dọc và chia đúng số có hai chữ số cho số có một chữ số từ hàng chục đến '
+                        'hàng đơn vị. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Đặt tính dọc và chia đúng số có hai chữ số cho số có một '
+                        'chữ số từ hàng chục đến hàng đơn vị.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Đặt tính dọc và chia đúng số có '
+                        'hai chữ số cho số có một chữ số từ hàng chục đến hàng đơn vị.',
                         'Đặt tính dọc và chia đúng số có hai chữ số cho số có một chữ số từ hàng chục đến '
                         'hàng đơn vị.'],
             'answer': 3,
-            'solution': 'Theo yêu cầu cần đạt của Bài 26: Chia số có hai chữ số cho số có một chữ số: Đặt '
+            'solution': 'Theo nội dung cốt lõi của Bài 26: Chia số có hai chữ số cho số có một chữ số: Đặt '
                         'tính dọc và chia đúng số có hai chữ số cho số có một chữ số từ hàng chục đến hàng '
                         'đơn vị.'},
            {'level': 'hieu',
@@ -2593,28 +3140,26 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'type': 'tf',
             'q': 'Trong **Bài 26: Chia số có hai chữ số cho số có một chữ số**, quy tắc **Bước 1 – 4** được '
                  'xác định bởi Chia $\\rightarrow$ Nhân $\\rightarrow$ Trừ $\\rightarrow$ Hạ chữ số tiếp '
-                 'theo và áp dụng trực tiếp vào bài toán: “Đặt tính rồi tính: $96 : 3$ và $85 : 5$.”. Đúng '
-                 'hay sai?',
+                 'theo và khi áp dụng cho ví dụ “Đặt tính rồi tính: $96 : 3$ và $85 : 5$.” ta có lời giải: - '
+                 '$96 : 3$: $9 : 3 = 3$; hạ $6$, $6 : 3 = 2$ $\\rightarrow$ **$32$**. - $85 : 5$: $8 : 5 = '
+                 '1$ (dư $3$); hạ $5$ được $35$, $35 : 5 = 7$ $\\rightarrow$.... Đúng hay sai?',
             'answer': True,
-            'solution': 'Khẳng định **Đúng**. Quy tắc **Bước 1 – 4** (Chia $\\rightarrow$ Nhân '
-                        '$\\rightarrow$ Trừ $\\rightarrow$ Hạ chữ số tiếp theo) là kiến thức cốt lõi của Bài '
-                        '26: Chia số có hai chữ số cho số có một chữ số. - $96 : 3$: $9 : 3 = 3$; hạ $6$, $6 '
-                        ': 3 = 2$ $\\rightarrow$ **$32$**. - $85 : 5$: $8 : 5 = 1$ (dư $3$); hạ $5$ được '
-                        '$35$, $35 : 5 = 7$ $\\rightarrow$...'},
+            'solution': 'Khẳng định **Đúng**. Đó chính là quy tắc **Bước 1 – 4** (Chia $\\rightarrow$ Nhân '
+                        '$\\rightarrow$ Trừ $\\rightarrow$ Hạ chữ số tiếp theo) và lời giải ví dụ minh họa '
+                        'của Bài 26: Chia số có hai chữ số cho số có một chữ số.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 26: Chia số có hai chữ số cho số có một chữ số** để giải quyết '
-                 'tình huống sau: Đặt tính rồi tính: $96 : 3$ và $85 : 5$. Kết quả và hướng giải nào dưới '
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 26: Chia số có hai chữ số cho số có một chữ số** để '
+                 'giải bài toán sau: Đặt tính rồi tính: $96 : 3$ và $85 : 5$. Cách giải và kết quả nào dưới '
                  'đây là **đúng**?',
             'options': ['- $96 : 3$: $9 : 3 = 3$; hạ $6$, $6 : 3 = 2$ $\\rightarrow$ **$32$**. - $85 : 5$: '
-                        '$8 : 5 = 1$ (dư $3$); hạ $5$ được $35$, $35 : 5 = 7$ $\\rightarrow$ **$17$*...',
-                        'Ta có $806 = 800 + 6$ (gồm $8$ trăm, $0$ chục, $6$ đơn vị). Vì chữ số hàng trăm $8 '
-                        '> 7$ nên **$806 > 798$**.',
-                        '- $468 + 325$: $8 + 5 = 13$ (viết $3$ nhớ $1$); $6 + 2 + 1 = 9$; $4 + 3 = 7$ '
-                        '$\\rightarrow$ **$793$**. - $750 - 236$: $10 - 6 = 4$ (viết $4$ nhớ $1$); $5 - (3 + '
-                        '1) = 1$...',
-                        'Áp dụng quy tắc tìm số trừ: $\\text{Số trừ} = \\text{Số bị trừ} - \\text{Hiệu} = 85 '
-                        '- 39 = 46$. Thử lại: $85 - 46 = 39$ (đúng). Vậy số cần tìm là **$46$**.'],
+                        '$8 : 5 = 1$ (dư $3$); hạ $5$ được $35$, $35 : 5 = 7$ $\\rightarrow$ **...',
+                        '- $96 : 3$: $9 : 3 = 3$; hạ $6$, $6 : 3 = 2$ $\\rightarrow$ **$32$**. + $85 : 5$: '
+                        '$8 : 5 = 1$ (dư $3$); hạ $5$ được $35$, $35 : 5 = 7$ $\\rightarrow$ **...',
+                        '- $96 : 3$: $9 : 3 = 3$; hạ $6$, $6 : 3 = 2$ $\\rightarrow$ **$32$**. - $85 : 5$: '
+                        '$8 : 5 = 1$ (dư $3$); hạ $5$ được $35$, $35 : 5 = 6$ $\\rightarrow$ **...',
+                        '- $98 : 3$: $9 : 3 = 3$; hạ $6$, $6 : 3 = 2$ $\\rightarrow$ **$32$**. - $85 : 5$: '
+                        '$8 : 5 = 1$ (dư $3$); hạ $5$ được $35$, $35 : 5 = 7$ $\\rightarrow$ **...'],
             'answer': 0,
             'solution': 'Lời giải chi tiết theo Bài 26: Chia số có hai chữ số cho số có một chữ số: - $96 : '
                         '3$: $9 : 3 = 3$; hạ $6$, $6 : 3 = 2$ $\\rightarrow$ **$32$**.\n'
@@ -2632,7 +3177,7 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
  {'topic': 'l3-cd04-nhan-chia-pham-vi-100',
   'context_title': 'Chủ đề 4: Phép nhân, phép chia trong phạm vi 100',
   'context': 'SGK Toán 3 · Chủ đề 4: Phép nhân, phép chia trong phạm vi 100.',
-  'title': 'Bài 28, 29: Bài toán giải bằng hai bước tính và luyện tập chung',
+  'title': 'Bài 28: Bài toán giải bằng hai bước tính',
   'icon': '🧠',
   'description': 'Phương pháp phân tích và trình bày bài giải bài toán có lời văn bằng hai bước tính.',
   'requirements': ['Xác định được đại lượng trung gian cần tìm ở bước thứ nhất.',
@@ -2647,7 +3192,7 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             '- Bước 2: Cả hai tổ trồng được là $15 + 45 = 60$ (cây).\n'
             '### 2. Lưu ý khi trình bày\n'
             '- Tóm tắt bài toán bằng sơ đồ đoạn thẳng để dễ nhìn mối quan hệ giữa các đại lượng.',
-  'formulas': [{'category': 'I. Sơ đồ hai bước tính',
+  'formulas': [{'category': 'Sơ đồ hai bước tính',
                 'items': [{'name': 'Bước 1',
                            'formula': 'Tìm giá trị đại lượng thứ hai (nhân, chia, cộng hoặc trừ)'},
                           {'name': 'Bước 2',
@@ -2681,26 +3226,28 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 28, 29: Bài toán giải bằng hai bước tính và luyện tập '
-                 'chung**, công thức hoặc quy tắc nào sau đây biểu diễn đúng **Bước 1**?',
-            'options': ['Tính tổng $A + B$ hoặc hiệu $A - B$ theo yêu cầu đề bài',
+            'q': 'Trong **Bài 28: Bài toán giải bằng hai bước tính**, quy tắc hoặc công thức nào sau đây xác '
+                 'định đúng **Bước 1**?',
+            'options': ['Tìm giá trị đại lượng thứ hai (nhân, chia, cộng hoặc trừ) (với dấu ngược lại)',
                         'Tìm giá trị đại lượng thứ hai (nhân, chia, cộng hoặc trừ)',
-                        '$\\overline{abc} = a00 + b0 + c$',
-                        '$10 \\text{ chục} = 100$ · $10 \\text{ trăm} = 1\\,000$'],
+                        'Đảo ngược vế của quy tắc: Tìm giá trị đại lượng thứ hai (nhân, chia, cộng hoặc trừ)',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Tìm giá trị đại lượng thứ hai '
+                        '(nhân, chia, cộng hoặc trừ)'],
             'answer': 1,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 28, 29: Bài toán giải bằng hai bước tính và '
-                        'luyện tập chung, **Bước 1** được xác định bởi: Tìm giá trị đại lượng thứ hai (nhân, '
-                        'chia, cộng hoặc trừ).'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 28: Bài toán giải bằng hai bước tính, **Bước 1** '
+                        'được xác định bởi: Tìm giá trị đại lượng thứ hai (nhân, chia, cộng hoặc trừ).'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 28, 29: Bài toán giải bằng hai bước tính và luyện tập chung**, nội dung/biểu '
-                 'thức Tính tổng $A + B$ hoặc hiệu $A - B$ theo yêu cầu đề bài là quy tắc hoặc công thức của '
-                 'mục nào sau đây?',
-            'options': ['Bước 1', 'Phân tích số', 'Bước 2', 'Số tròn trăm, tròn nghìn'],
+            'q': 'Khi học **Bài 28: Bài toán giải bằng hai bước tính**, biểu thức hoặc quy tắc nào dưới đây '
+                 'biểu diễn đúng **Bước 2**?',
+            'options': ['Tính tổng $A - B$ hoặc hiệu $A - B$ theo yêu cầu đề bài',
+                        'Đảo ngược vế của quy tắc: Tính tổng $A + B$ hoặc hiệu $A - B$ theo yêu cầu đề bài',
+                        'Tính tổng $A + B$ hoặc hiệu $A - B$ theo yêu cầu đề bài',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Tính tổng $A + B$ hoặc hiệu $A '
+                        '- B$ theo yêu cầu đề bài'],
             'answer': 2,
-            'solution': 'Trong Bài 28, 29: Bài toán giải bằng hai bước tính và luyện tập chung, biểu '
-                        'thức/quy tắc Tính tổng $A + B$ hoặc hiệu $A - B$ theo yêu cầu đề bài chính là nội '
-                        'dung của **Bước 2**.'},
+            'solution': 'Trong Bài 28: Bài toán giải bằng hai bước tính, **Bước 2** có công thức/quy tắc là: '
+                        'Tính tổng $A + B$ hoặc hiệu $A - B$ theo yêu cầu đề bài.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Bao gạo tẻ nặng $36\\text{ kg}$, bao gạo nếp nhẹ hơn bao gạo tẻ $18\\text{ kg}$. Cả hai '
@@ -2713,16 +3260,17 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 28, 29: Bài toán giải bằng hai bước tính và luyện tập chung** (Chủ đề 4: '
-                 'Phép nhân, phép chia trong phạm vi 100), khẳng định nào sau đây phản ánh **đúng** yêu cầu '
-                 'cần đạt và bản chất kiến thức của bài?',
+            'q': 'Để nắm vững bản chất của **Bài 28: Bài toán giải bằng hai bước tính**, nhận định nào sau '
+                 'đây là **chính xác**?',
             'options': ['Xác định được đại lượng trung gian cần tìm ở bước thứ nhất.',
-                        'Đọc, viết thành thạo các số có đến ba chữ số trong phạm vi 1 000.',
-                        'Phân tích được số có ba chữ số thành tổng các trăm, chục, đơn vị.',
-                        'So sánh và sắp xếp được các số trong phạm vi 1 000 theo thứ tự.'],
+                        'Xác định được đại lượng trung gian cần tìm ở bước thứ nhất. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Xác định được đại lượng trung gian cần tìm ở bước thứ '
+                        'nhất.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Xác định được đại lượng trung '
+                        'gian cần tìm ở bước thứ nhất.'],
             'answer': 0,
-            'solution': 'Theo yêu cầu cần đạt của Bài 28, 29: Bài toán giải bằng hai bước tính và luyện tập '
-                        'chung: Xác định được đại lượng trung gian cần tìm ở bước thứ nhất.'},
+            'solution': 'Theo nội dung cốt lõi của Bài 28: Bài toán giải bằng hai bước tính: Xác định được '
+                        'đại lượng trung gian cần tìm ở bước thứ nhất.'},
            {'level': 'hieu',
             'type': 'tf',
             'q': 'Nhận định: "Can thứ nhất có $10\\text{ l}$ nước, can thứ hai có gấp đôi can thứ nhất thì '
@@ -2734,35 +3282,37 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'hieu',
             'type': 'tf',
-            'q': 'Trong **Bài 28, 29: Bài toán giải bằng hai bước tính và luyện tập chung**, quy tắc **Bước '
-                 '1** được xác định bởi Tìm giá trị đại lượng thứ hai (nhân, chia, cộng hoặc trừ) và áp dụng '
-                 'trực tiếp vào bài toán: “Thùng thứ nhất có $15\\text{ l}$ dầu, thùng thứ hai có số dầu gấp '
-                 '$3$ lần thùng thứ nhất. Hỏi cả hai thùng có bao nhiêu lít dầu?”. Đúng hay sai?',
+            'q': 'Trong **Bài 28: Bài toán giải bằng hai bước tính**, quy tắc **Bước 1** được xác định bởi '
+                 'Tìm giá trị đại lượng thứ hai (nhân, chia, cộng hoặc trừ) và khi áp dụng cho ví dụ “Thùng '
+                 'thứ nhất có $15\\text{ l}$ dầu, thùng thứ hai có số dầu gấp $3$ lần thùng thứ nhất. Hỏi cả '
+                 'hai thùng có bao nhiêu lít dầu?” ta có lời giải: - Bước 1: Số lít dầu ở thùng thứ hai là: '
+                 '$15 \\times 3 = 45\\text{ (l)}$. - Bước 2: Số lít dầu ở cả hai thùng là: $15 + 45 = '
+                 '60\\text{ (l)}$.... Đúng hay sai?',
             'answer': True,
-            'solution': 'Khẳng định **Đúng**. Quy tắc **Bước 1** (Tìm giá trị đại lượng thứ hai (nhân, chia, '
-                        'cộng hoặc trừ)) là kiến thức cốt lõi của Bài 28, 29: Bài toán giải bằng hai bước '
-                        'tính và luyện tập chung. - Bước 1: Số lít dầu ở thùng thứ hai là: $15 \\times 3 = '
-                        '45\\text{ (l)}$. - Bước 2: Số lít dầu ở cả hai thùng là: $15 + 45 = 60\\text{ '
-                        '(l)}$. Đ...'},
+            'solution': 'Khẳng định **Đúng**. Đó chính là quy tắc **Bước 1** (Tìm giá trị đại lượng thứ hai '
+                        '(nhân, chia, cộng hoặc trừ)) và lời giải ví dụ minh họa của Bài 28: Bài toán giải '
+                        'bằng hai bước tính.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 28, 29: Bài toán giải bằng hai bước tính và luyện tập chung** để '
-                 'giải quyết tình huống sau: Thùng thứ nhất có $15\\text{ l}$ dầu, thùng thứ hai có số dầu '
-                 'gấp $3$ lần thùng thứ nhất. Hỏi cả hai thùng có bao nhiêu lít dầu? Kết quả và hướng giải '
-                 'nào dưới đây là **đúng**?',
-            'options': ['Ta có $806 = 800 + 6$ (gồm $8$ trăm, $0$ chục, $6$ đơn vị). Vì chữ số hàng trăm $8 '
-                        '> 7$ nên **$806 > 798$**.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 28: Bài toán giải bằng hai bước tính** để giải bài '
+                 'toán sau: Thùng thứ nhất có $15\\text{ l}$ dầu, thùng thứ hai có số dầu gấp $3$ lần thùng '
+                 'thứ nhất. Hỏi cả hai thùng có bao nhiêu lít dầu? Cách giải và kết quả nào dưới đây là '
+                 '**đúng**?',
+            'options': ['- Bước 1: Số lít dầu ở thùng thứ hai là: $15 \\times 3 = 45\\text{ (l)}$. - Bước 2: '
+                        'Số lít dầu ở cả hai thùng là: $15 - 45 = 60\\text{ (l)}$. Đáp số: **$60\\text{ '
+                        'l}$...',
                         '- Bước 1: Số lít dầu ở thùng thứ hai là: $15 \\times 3 = 45\\text{ (l)}$. - Bước 2: '
                         'Số lít dầu ở cả hai thùng là: $15 + 45 = 60\\text{ (l)}$. Đáp số: **$60\\text{ '
                         'l}$...',
-                        '- $468 + 325$: $8 + 5 = 13$ (viết $3$ nhớ $1$); $6 + 2 + 1 = 9$; $4 + 3 = 7$ '
-                        '$\\rightarrow$ **$793$**. - $750 - 236$: $10 - 6 = 4$ (viết $4$ nhớ $1$); $5 - (3 + '
-                        '1) = 1$...',
-                        'Áp dụng quy tắc tìm số trừ: $\\text{Số trừ} = \\text{Số bị trừ} - \\text{Hiệu} = 85 '
-                        '- 39 = 46$. Thử lại: $85 - 46 = 39$ (đúng). Vậy số cần tìm là **$46$**.'],
+                        '- Bước 1: Số lít dầu ở thùng thứ hai là: $15 \\times 3 = 45\\text{ (l)}$. - Bước 2: '
+                        'Số lít dầu ở cả hai thùng là: $15 + 45 = 60\\text{ (l)}$. Đáp số: **$59\\text{ '
+                        'l}$...',
+                        '- Bước 2: Số lít dầu ở thùng thứ hai là: $15 \\times 3 = 45\\text{ (l)}$. - Bước 2: '
+                        'Số lít dầu ở cả hai thùng là: $15 + 45 = 60\\text{ (l)}$. Đáp số: **$60\\text{ '
+                        'l}$...'],
             'answer': 1,
-            'solution': 'Lời giải chi tiết theo Bài 28, 29: Bài toán giải bằng hai bước tính và luyện tập '
-                        'chung: - Bước 1: Số lít dầu ở thùng thứ hai là: $15 \\times 3 = 45\\text{ (l)}$.\n'
+            'solution': 'Lời giải chi tiết theo Bài 28: Bài toán giải bằng hai bước tính: - Bước 1: Số lít '
+                        'dầu ở thùng thứ hai là: $15 \\times 3 = 45\\text{ (l)}$.\n'
                         '- Bước 2: Số lít dầu ở cả hai thùng là: $15 + 45 = 60\\text{ (l)}$.\n'
                         'Đáp số: **$60\\text{ l}$**.'},
            {'level': 'vandung',
@@ -2798,7 +3348,7 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             '### 2. Chuyển đổi đơn vị đo độ dài\n'
             '- Ví dụ: $4\\text{ cm} = 40\\text{ mm}$; $3\\text{ cm } 5\\text{ mm} = 30\\text{ mm} + 5\\text{ '
             'mm} = 35\\text{ mm}$.',
-  'formulas': [{'category': 'I. Quan hệ đơn vị độ dài',
+  'formulas': [{'category': 'Quan hệ đơn vị độ dài',
                 'items': [{'name': 'Quy đổi sang mm',
                            'formula': '$1\\text{ cm} = 10\\text{ mm}$ · $1\\text{ dm} = 100\\text{ mm}$ · '
                                       '$1\\text{ m} = 1\\,000\\text{ mm}$'}]}],
@@ -2825,27 +3375,33 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 30: Mi-li-mét**, công thức hoặc quy tắc nào sau đây biểu '
-                 'diễn đúng **Quy đổi sang mm**?',
-            'options': ['$\\overline{abc} = a00 + b0 + c$',
-                        '$10 \\text{ chục} = 100$ · $10 \\text{ trăm} = 1\\,000$',
+            'q': 'Trong **Bài 30: Mi-li-mét**, quy tắc hoặc công thức nào sau đây xác định đúng **Quy đổi '
+                 'sang mm**?',
+            'options': ['$2\\text{ cm} = 10\\text{ mm}$ · $1\\text{ dm} = 100\\text{ mm}$ · $1\\text{ m} = '
+                        '1\\,000\\text{ mm}$',
+                        '$1\\text{ cm} = 10\\text{ mm}$ · $1\\text{ dm} = 100\\text{ mm}$ · $1\\text{ m} = '
+                        '1\\,1\\text{ mm}$',
                         '$1\\text{ cm} = 10\\text{ mm}$ · $1\\text{ dm} = 100\\text{ mm}$ · $1\\text{ m} = '
                         '1\\,000\\text{ mm}$',
-                        'So sánh hàng trăm $\\rightarrow$ hàng chục $\\rightarrow$ hàng đơn vị'],
+                        'Trường hợp sai quy tắc (sai lệch 1 đơn vị so với công thức trong bài)'],
             'answer': 2,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 30: Mi-li-mét, **Quy đổi sang mm** được xác '
-                        'định bởi: $1\\text{ cm} = 10\\text{ mm}$ · $1\\text{ dm} = 100\\text{ mm}$ · '
-                        '$1\\text{ m} = 1\\,000\\text{ mm}$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 30: Mi-li-mét, **Quy đổi sang mm** được xác định '
+                        'bởi: $1\\text{ cm} = 10\\text{ mm}$ · $1\\text{ dm} = 100\\text{ mm}$ · $1\\text{ '
+                        'm} = 1\\,000\\text{ mm}$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 30: Mi-li-mét**, nội dung/biểu thức $1\\text{ cm} = 10\\text{ mm}$ · $1\\text{ '
-                 'dm} = 100\\text{ mm}$ · $1\\text{ m} = 1\\,000\\text{ mm}$ là quy tắc hoặc công thức của '
-                 'mục nào sau đây?',
-            'options': ['Phân tích số', 'Số tròn trăm, tròn nghìn', 'Cùng số chữ số', 'Quy đổi sang mm'],
+            'q': 'Theo định nghĩa trong **Bài 30: Mi-li-mét**, khẳng định nào dưới đây là **đúng**?',
+            'options': ['Mi-li-mét** là một đơn vị đo độ dài (dùng để đo những vật rất nhỏ hoặc rất mỏng), '
+                        'viết tắt là $\\text{mm}$. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Mi-li-mét** là một đơn vị đo độ dài (dùng để đo những vật '
+                        'rất nhỏ hoặc rất mỏng), viết tắt là $\\text{mm}$.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Mi-li-mét** là một đơn vị đo độ '
+                        'dài (dùng để đo những vật rất nhỏ hoặc rất mỏng), viết tắt là $\\text{mm}$.',
+                        'Mi-li-mét** là một đơn vị đo độ dài (dùng để đo những vật rất nhỏ hoặc rất mỏng), '
+                        'viết tắt là $\\text{mm}$.'],
             'answer': 3,
-            'solution': 'Trong Bài 30: Mi-li-mét, biểu thức/quy tắc $1\\text{ cm} = 10\\text{ mm}$ · '
-                        '$1\\text{ dm} = 100\\text{ mm}$ · $1\\text{ m} = 1\\,000\\text{ mm}$ chính là nội '
-                        'dung của **Quy đổi sang mm**.'},
+            'solution': 'Theo định nghĩa của Bài 30: Mi-li-mét: Mi-li-mét** là một đơn vị đo độ dài (dùng để '
+                        'đo những vật rất nhỏ hoặc rất mỏng), viết tắt là $\\text{mm}$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Số thích hợp điền vào chỗ chấm $5\\text{ cm } 4\\text{ mm} = \\dots\\text{ mm}$ là:',
@@ -2857,15 +3413,16 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 30: Mi-li-mét** (Chủ đề 5: Một số đơn vị đo độ dài, khối lượng, dung tích, '
-                 'nhiệt độ), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức '
-                 'của bài?',
-            'options': ['Đọc, viết thành thạo các số có đến ba chữ số trong phạm vi 1 000.',
+            'q': 'Để nắm vững bản chất của **Bài 30: Mi-li-mét**, nhận định nào sau đây là **chính xác**?',
+            'options': ['Nhận biết được đơn vị đo độ dài mi-li-mét ($\\text{mm}$) trên thước kẻ. (với dấu '
+                        'ngược lại)',
                         'Nhận biết được đơn vị đo độ dài mi-li-mét ($\\text{mm}$) trên thước kẻ.',
-                        'Phân tích được số có ba chữ số thành tổng các trăm, chục, đơn vị.',
-                        'So sánh và sắp xếp được các số trong phạm vi 1 000 theo thứ tự.'],
+                        'Đảo ngược vế của quy tắc: Nhận biết được đơn vị đo độ dài mi-li-mét ($\\text{mm}$) '
+                        'trên thước kẻ.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nhận biết được đơn vị đo độ dài '
+                        'mi-li-mét ($\\text{mm}$) trên thước kẻ.'],
             'answer': 1,
-            'solution': 'Theo yêu cầu cần đạt của Bài 30: Mi-li-mét: Nhận biết được đơn vị đo độ dài '
+            'solution': 'Theo nội dung cốt lõi của Bài 30: Mi-li-mét: Nhận biết được đơn vị đo độ dài '
                         'mi-li-mét ($\\text{mm}$) trên thước kẻ.'},
            {'level': 'hieu',
             'type': 'tf',
@@ -2879,27 +3436,27 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'type': 'tf',
             'q': 'Trong **Bài 30: Mi-li-mét**, quy tắc **Quy đổi sang mm** được xác định bởi $1\\text{ cm} = '
                  '10\\text{ mm}$ · $1\\text{ dm} = 100\\text{ mm}$ · $1\\text{ m} = 1\\,000\\text{ mm}$ và '
-                 'áp dụng trực tiếp vào bài toán: “Đổi các đơn vị sau: $6\\text{ cm} = \\dots\\text{ mm}$; '
-                 '$2\\text{ cm } 8\\text{ mm} = \\dots\\text{ mm}$.”. Đúng hay sai?',
+                 'khi áp dụng cho ví dụ “Đổi các đơn vị sau: $6\\text{ cm} = \\dots\\text{ mm}$; $2\\text{ '
+                 'cm } 8\\text{ mm} = \\dots\\text{ mm}$.” ta có lời giải: - $6\\text{ cm} = 60\\text{ mm}$. '
+                 '- $2\\text{ cm } 8\\text{ mm} = 20\\text{ mm} + 8\\text{ mm} = 28\\text{ mm}$.. Đúng hay '
+                 'sai?',
             'answer': True,
-            'solution': 'Khẳng định **Đúng**. Quy tắc **Quy đổi sang mm** ($1\\text{ cm} = 10\\text{ mm}$ · '
-                        '$1\\text{ dm} = 100\\text{ mm}$ · $1\\text{ m} = 1\\,000\\text{ mm}$) là kiến thức '
-                        'cốt lõi của Bài 30: Mi-li-mét. - $6\\text{ cm} = 60\\text{ mm}$. - $2\\text{ cm } '
-                        '8\\text{ mm} = 20\\text{ mm} + 8\\text{ mm} = 28\\text{ mm}$.'},
+            'solution': 'Khẳng định **Đúng**. Đó chính là quy tắc **Quy đổi sang mm** ($1\\text{ cm} = '
+                        '10\\text{ mm}$ · $1\\text{ dm} = 100\\text{ mm}$ · $1\\text{ m} = 1\\,000\\text{ '
+                        'mm}$) và lời giải ví dụ minh họa của Bài 30: Mi-li-mét.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 30: Mi-li-mét** để giải quyết tình huống sau: Đổi các đơn vị sau: '
-                 '$6\\text{ cm} = \\dots\\text{ mm}$; $2\\text{ cm } 8\\text{ mm} = \\dots\\text{ mm}$. Kết '
-                 'quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Ta có $806 = 800 + 6$ (gồm $8$ trăm, $0$ chục, $6$ đơn vị). Vì chữ số hàng trăm $8 '
-                        '> 7$ nên **$806 > 798$**.',
-                        '- $468 + 325$: $8 + 5 = 13$ (viết $3$ nhớ $1$); $6 + 2 + 1 = 9$; $4 + 3 = 7$ '
-                        '$\\rightarrow$ **$793$**. - $750 - 236$: $10 - 6 = 4$ (viết $4$ nhớ $1$); $5 - (3 + '
-                        '1) = 1$...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 30: Mi-li-mét** để giải bài toán sau: Đổi các đơn '
+                 'vị sau: $6\\text{ cm} = \\dots\\text{ mm}$; $2\\text{ cm } 8\\text{ mm} = \\dots\\text{ '
+                 'mm}$. Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['- $6\\text{ cm} = 60\\text{ mm}$. - $2\\text{ cm } 8\\text{ mm} = 20\\text{ mm} - '
+                        '8\\text{ mm} = 28\\text{ mm}$.',
+                        '- $6\\text{ cm} = 60\\text{ mm}$. - $2\\text{ cm } 8\\text{ mm} = 20\\text{ mm} + '
+                        '8\\text{ mm} = 27\\text{ mm}$.',
                         '- $6\\text{ cm} = 60\\text{ mm}$. - $2\\text{ cm } 8\\text{ mm} = 20\\text{ mm} + '
                         '8\\text{ mm} = 28\\text{ mm}$.',
-                        'Áp dụng quy tắc tìm số trừ: $\\text{Số trừ} = \\text{Số bị trừ} - \\text{Hiệu} = 85 '
-                        '- 39 = 46$. Thử lại: $85 - 46 = 39$ (đúng). Vậy số cần tìm là **$46$**.'],
+                        '- $12\\text{ cm} = 60\\text{ mm}$. - $2\\text{ cm } 8\\text{ mm} = 20\\text{ mm} + '
+                        '8\\text{ mm} = 28\\text{ mm}$.'],
             'answer': 2,
             'solution': 'Lời giải chi tiết theo Bài 30: Mi-li-mét: - $6\\text{ cm} = 60\\text{ mm}$.\n'
                         '- $2\\text{ cm } 8\\text{ mm} = 20\\text{ mm} + 8\\text{ mm} = 28\\text{ mm}$.'},
@@ -2933,7 +3490,7 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             '### 2. Chuyển đổi và tính toán\n'
             '- Khi cộng hoặc trừ khối lượng có đơn vị khác nhau ($\\text{kg}$ và $\\text{g}$), ta phải đổi '
             'về cùng đơn vị $\\text{g}$ trước khi tính.',
-  'formulas': [{'category': 'I. Đơn vị khối lượng',
+  'formulas': [{'category': 'Đơn vị khối lượng',
                 'items': [{'name': 'Quy đổi',
                            'formula': '$1\\text{ kg} = 1\\,000\\text{ g}$ · $1\\,000\\text{ g} = 1\\text{ '
                                       'kg}$'},
@@ -2962,23 +3519,25 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 31: Gam**, công thức hoặc quy tắc nào sau đây biểu diễn '
-                 'đúng **Quy đổi**?',
-            'options': ['Nửa ki-lô-gam $= 500\\text{ g}$',
-                        '$\\overline{abc} = a00 + b0 + c$',
-                        '$10 \\text{ chục} = 100$ · $10 \\text{ trăm} = 1\\,000$',
+            'q': 'Trong **Bài 31: Gam**, quy tắc hoặc công thức nào sau đây xác định đúng **Quy đổi**?',
+            'options': ['$2\\text{ kg} = 1\\,000\\text{ g}$ · $1\\,000\\text{ g} = 1\\text{ kg}$',
+                        '$1\\text{ kg} = 1\\,000\\text{ g}$ · $1\\,000\\text{ g} = 2\\text{ kg}$',
+                        'Nửa ki-lô-gam $= 500\\text{ g}$',
                         '$1\\text{ kg} = 1\\,000\\text{ g}$ · $1\\,000\\text{ g} = 1\\text{ kg}$'],
             'answer': 3,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 31: Gam, **Quy đổi** được xác định bởi: '
-                        '$1\\text{ kg} = 1\\,000\\text{ g}$ · $1\\,000\\text{ g} = 1\\text{ kg}$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 31: Gam, **Quy đổi** được xác định bởi: $1\\text{ '
+                        'kg} = 1\\,000\\text{ g}$ · $1\\,000\\text{ g} = 1\\text{ kg}$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 31: Gam**, nội dung/biểu thức Nửa ki-lô-gam $= 500\\text{ g}$ là quy tắc hoặc '
-                 'công thức của mục nào sau đây?',
-            'options': ['Mốc thường gặp', 'Quy đổi', 'Phân tích số', 'Số tròn trăm, tròn nghìn'],
+            'q': 'Khi học **Bài 31: Gam**, biểu thức hoặc quy tắc nào dưới đây biểu diễn đúng **Mốc thường '
+                 'gặp**?',
+            'options': ['Nửa ki-lô-gam $= 500\\text{ g}$',
+                        'Nửa ki-lô-gam $= 510\\text{ g}$',
+                        'Nửa ki-lô-gam $= 499\\text{ g}$',
+                        'Nửa ki-lô-gam $= 502\\text{ g}$'],
             'answer': 0,
-            'solution': 'Trong Bài 31: Gam, biểu thức/quy tắc Nửa ki-lô-gam $= 500\\text{ g}$ chính là nội '
-                        'dung của **Mốc thường gặp**.'},
+            'solution': 'Trong Bài 31: Gam, **Mốc thường gặp** có công thức/quy tắc là: Nửa ki-lô-gam $= '
+                        '500\\text{ g}$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Mẹ mua $1\\text{ kg}$ đường, mẹ đã dùng hết $400\\text{ g}$ đường để nấu chè. Số đường còn '
@@ -2990,15 +3549,16 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 31: Gam** (Chủ đề 5: Một số đơn vị đo độ dài, khối lượng, dung tích, nhiệt '
-                 'độ), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của '
-                 'bài?',
-            'options': ['Đọc, viết thành thạo các số có đến ba chữ số trong phạm vi 1 000.',
-                        'Phân tích được số có ba chữ số thành tổng các trăm, chục, đơn vị.',
+            'q': 'Để nắm vững bản chất của **Bài 31: Gam**, nhận định nào sau đây là **chính xác**?',
+            'options': ['Nhận biết được đơn vị đo khối lượng gam ($\\text{g}$) dùng để cân các vật nhẹ. (với '
+                        'dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Nhận biết được đơn vị đo khối lượng gam ($\\text{g}$) '
+                        'dùng để cân các vật nhẹ.',
                         'Nhận biết được đơn vị đo khối lượng gam ($\\text{g}$) dùng để cân các vật nhẹ.',
-                        'So sánh và sắp xếp được các số trong phạm vi 1 000 theo thứ tự.'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nhận biết được đơn vị đo khối '
+                        'lượng gam ($\\text{g}$) dùng để cân các vật nhẹ.'],
             'answer': 2,
-            'solution': 'Theo yêu cầu cần đạt của Bài 31: Gam: Nhận biết được đơn vị đo khối lượng gam '
+            'solution': 'Theo nội dung cốt lõi của Bài 31: Gam: Nhận biết được đơn vị đo khối lượng gam '
                         '($\\text{g}$) dùng để cân các vật nhẹ.'},
            {'level': 'hieu',
             'type': 'tf',
@@ -3011,26 +3571,25 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
            {'level': 'hieu',
             'type': 'tf',
             'q': 'Trong **Bài 31: Gam**, quy tắc **Quy đổi** được xác định bởi $1\\text{ kg} = '
-                 '1\\,000\\text{ g}$ · $1\\,000\\text{ g} = 1\\text{ kg}$ và áp dụng trực tiếp vào bài toán: '
-                 '“Quả dưa hấu cân nặng $2\\text{ kg}$, quả bí cân nặng $750\\text{ g}$. Hỏi quả dưa hấu '
-                 'nặng hơn quả bí bao nhiêu gam?”. Đúng hay sai?',
+                 '1\\,000\\text{ g}$ · $1\\,000\\text{ g} = 1\\text{ kg}$ và khi áp dụng cho ví dụ “Quả dưa '
+                 'hấu cân nặng $2\\text{ kg}$, quả bí cân nặng $750\\text{ g}$. Hỏi quả dưa hấu nặng hơn quả '
+                 'bí bao nhiêu gam?” ta có lời giải: Đổi $2\\text{ kg} = 2\\,000\\text{ g}$. Quả dưa hấu '
+                 'nặng hơn quả bí số gam là: $2\\,000 - 750 = 1\\,250\\text{ (g)}$.. Đúng hay sai?',
             'answer': True,
-            'solution': 'Khẳng định **Đúng**. Quy tắc **Quy đổi** ($1\\text{ kg} = 1\\,000\\text{ g}$ · '
-                        '$1\\,000\\text{ g} = 1\\text{ kg}$) là kiến thức cốt lõi của Bài 31: Gam. Đổi '
-                        '$2\\text{ kg} = 2\\,000\\text{ g}$. Quả dưa hấu nặng hơn quả bí số gam là: $2\\,000 '
-                        '- 750 = 1\\,250\\text{ (g)}$.'},
+            'solution': 'Khẳng định **Đúng**. Đó chính là quy tắc **Quy đổi** ($1\\text{ kg} = '
+                        '1\\,000\\text{ g}$ · $1\\,000\\text{ g} = 1\\text{ kg}$) và lời giải ví dụ minh họa '
+                        'của Bài 31: Gam.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 31: Gam** để giải quyết tình huống sau: Quả dưa hấu cân nặng '
-                 '$2\\text{ kg}$, quả bí cân nặng $750\\text{ g}$. Hỏi quả dưa hấu nặng hơn quả bí bao nhiêu '
-                 'gam? Kết quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Ta có $806 = 800 + 6$ (gồm $8$ trăm, $0$ chục, $6$ đơn vị). Vì chữ số hàng trăm $8 '
-                        '> 7$ nên **$806 > 798$**.',
-                        '- $468 + 325$: $8 + 5 = 13$ (viết $3$ nhớ $1$); $6 + 2 + 1 = 9$; $4 + 3 = 7$ '
-                        '$\\rightarrow$ **$793$**. - $750 - 236$: $10 - 6 = 4$ (viết $4$ nhớ $1$); $5 - (3 + '
-                        '1) = 1$...',
-                        'Áp dụng quy tắc tìm số trừ: $\\text{Số trừ} = \\text{Số bị trừ} - \\text{Hiệu} = 85 '
-                        '- 39 = 46$. Thử lại: $85 - 46 = 39$ (đúng). Vậy số cần tìm là **$46$**.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 31: Gam** để giải bài toán sau: Quả dưa hấu cân '
+                 'nặng $2\\text{ kg}$, quả bí cân nặng $750\\text{ g}$. Hỏi quả dưa hấu nặng hơn quả bí bao '
+                 'nhiêu gam? Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Đổi $2\\text{ kg} = 2\\,000\\text{ g}$. Quả dưa hấu nặng hơn quả bí số gam là: '
+                        '$2\\,000 + 750 = 1\\,250\\text{ (g)}$.',
+                        'Đổi $2\\text{ kg} = 2\\,000\\text{ g}$. Quả dưa hấu nặng hơn quả bí số gam là: '
+                        '$2\\,000 - 750 = 1\\,249\\text{ (g)}$.',
+                        'Đổi $4\\text{ kg} = 2\\,000\\text{ g}$. Quả dưa hấu nặng hơn quả bí số gam là: '
+                        '$2\\,000 - 750 = 1\\,250\\text{ (g)}$.',
                         'Đổi $2\\text{ kg} = 2\\,000\\text{ g}$. Quả dưa hấu nặng hơn quả bí số gam là: '
                         '$2\\,000 - 750 = 1\\,250\\text{ (g)}$.'],
             'answer': 3,
@@ -3067,7 +3626,7 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             '### 2. Tính toán với đơn vị $\\text{ml}$\n'
             '- Khi thực hiện phép tính giữa $\\text{l}$ và $\\text{ml}$, ta đổi $1\\text{ l} = '
             '1\\,000\\text{ ml}$ rồi cộng, trừ như số tự nhiên.',
-  'formulas': [{'category': 'I. Đơn vị dung tích',
+  'formulas': [{'category': 'Đơn vị dung tích',
                 'items': [{'name': 'Quy đổi',
                            'formula': '$1\\text{ l} = 1\\,000\\text{ ml}$ · $1\\,000\\text{ ml} = 1\\text{ '
                                       'l}$'}]}],
@@ -3095,23 +3654,27 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 32: Mi-li-lít**, công thức hoặc quy tắc nào sau đây biểu '
-                 'diễn đúng **Quy đổi**?',
+            'q': 'Trong **Bài 32: Mi-li-lít**, quy tắc hoặc công thức nào sau đây xác định đúng **Quy đổi**?',
             'options': ['$1\\text{ l} = 1\\,000\\text{ ml}$ · $1\\,000\\text{ ml} = 1\\text{ l}$',
-                        '$\\overline{abc} = a00 + b0 + c$',
-                        '$10 \\text{ chục} = 100$ · $10 \\text{ trăm} = 1\\,000$',
-                        'So sánh hàng trăm $\\rightarrow$ hàng chục $\\rightarrow$ hàng đơn vị'],
+                        '$2\\text{ l} = 1\\,000\\text{ ml}$ · $1\\,000\\text{ ml} = 1\\text{ l}$',
+                        '$1\\text{ l} = 1\\,000\\text{ ml}$ · $1\\,000\\text{ ml} = 2\\text{ l}$',
+                        'Trường hợp sai quy tắc (sai lệch 1 đơn vị so với công thức trong bài)'],
             'answer': 0,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 32: Mi-li-lít, **Quy đổi** được xác định bởi: '
+            'solution': 'Theo kiến thức trọng tâm của Bài 32: Mi-li-lít, **Quy đổi** được xác định bởi: '
                         '$1\\text{ l} = 1\\,000\\text{ ml}$ · $1\\,000\\text{ ml} = 1\\text{ l}$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 32: Mi-li-lít**, nội dung/biểu thức $1\\text{ l} = 1\\,000\\text{ ml}$ · '
-                 '$1\\,000\\text{ ml} = 1\\text{ l}$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Phân tích số', 'Quy đổi', 'Số tròn trăm, tròn nghìn', 'Cùng số chữ số'],
+            'q': 'Theo định nghĩa trong **Bài 32: Mi-li-lít**, khẳng định nào dưới đây là **đúng**?',
+            'options': ['Mi-li-lít** là đơn vị đo dung tích (nhỏ hơn lít), viết tắt là $\\text{ml}$. (với '
+                        'dấu ngược lại)',
+                        'Mi-li-lít** là đơn vị đo dung tích (nhỏ hơn lít), viết tắt là $\\text{ml}$.',
+                        'Đảo ngược vế của quy tắc: Mi-li-lít** là đơn vị đo dung tích (nhỏ hơn lít), viết '
+                        'tắt là $\\text{ml}$.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Mi-li-lít** là đơn vị đo dung '
+                        'tích (nhỏ hơn lít), viết tắt là $\\text{ml}$.'],
             'answer': 1,
-            'solution': 'Trong Bài 32: Mi-li-lít, biểu thức/quy tắc $1\\text{ l} = 1\\,000\\text{ ml}$ · '
-                        '$1\\,000\\text{ ml} = 1\\text{ l}$ chính là nội dung của **Quy đổi**.'},
+            'solution': 'Theo định nghĩa của Bài 32: Mi-li-lít: Mi-li-lít** là đơn vị đo dung tích (nhỏ hơn '
+                        'lít), viết tắt là $\\text{ml}$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Một chai nước có $750\\text{ ml}$ nước, bạn Nam uống hết $250\\text{ ml}$. Trong chai còn '
@@ -3123,16 +3686,17 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 32: Mi-li-lít** (Chủ đề 5: Một số đơn vị đo độ dài, khối lượng, dung tích, '
-                 'nhiệt độ), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức '
-                 'của bài?',
-            'options': ['Đọc, viết thành thạo các số có đến ba chữ số trong phạm vi 1 000.',
-                        'Phân tích được số có ba chữ số thành tổng các trăm, chục, đơn vị.',
-                        'So sánh và sắp xếp được các số trong phạm vi 1 000 theo thứ tự.',
+            'q': 'Để nắm vững bản chất của **Bài 32: Mi-li-lít**, nhận định nào sau đây là **chính xác**?',
+            'options': ['Nhận biết được đơn vị đo dung tích mi-li-lít ($\\text{ml}$) dùng để đo lượng chất '
+                        'lỏng nhỏ. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Nhận biết được đơn vị đo dung tích mi-li-lít '
+                        '($\\text{ml}$) dùng để đo lượng chất lỏng nhỏ.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nhận biết được đơn vị đo dung '
+                        'tích mi-li-lít ($\\text{ml}$) dùng để đo lượng chất lỏng nhỏ.',
                         'Nhận biết được đơn vị đo dung tích mi-li-lít ($\\text{ml}$) dùng để đo lượng chất '
                         'lỏng nhỏ.'],
             'answer': 3,
-            'solution': 'Theo yêu cầu cần đạt của Bài 32: Mi-li-lít: Nhận biết được đơn vị đo dung tích '
+            'solution': 'Theo nội dung cốt lõi của Bài 32: Mi-li-lít: Nhận biết được đơn vị đo dung tích '
                         'mi-li-lít ($\\text{ml}$) dùng để đo lượng chất lỏng nhỏ.'},
            {'level': 'hieu',
             'type': 'tf',
@@ -3146,28 +3710,28 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
            {'level': 'hieu',
             'type': 'tf',
             'q': 'Trong **Bài 32: Mi-li-lít**, quy tắc **Quy đổi** được xác định bởi $1\\text{ l} = '
-                 '1\\,000\\text{ ml}$ · $1\\,000\\text{ ml} = 1\\text{ l}$ và áp dụng trực tiếp vào bài '
-                 'toán: “Mẹ có $1\\text{ l}$ sữa, mẹ rót đều ra $3$ cốc, mỗi cốc $200\\text{ ml}$. Hỏi trong '
-                 'bình còn lại bao nhiêu mi-li-lít sữa?”. Đúng hay sai?',
+                 '1\\,000\\text{ ml}$ · $1\\,000\\text{ ml} = 1\\text{ l}$ và khi áp dụng cho ví dụ “Mẹ có '
+                 '$1\\text{ l}$ sữa, mẹ rót đều ra $3$ cốc, mỗi cốc $200\\text{ ml}$. Hỏi trong bình còn lại '
+                 'bao nhiêu mi-li-lít sữa?” ta có lời giải: Đổi $1\\text{ l} = 1\\,000\\text{ ml}$. Số sữa '
+                 'đã rót ra $3$ cốc là: $200 \\times 3 = 600\\text{ (ml)}$. Số sữa còn lại là: $1\\,000 - '
+                 '600 = 400\\text{ (ml)}$.... Đúng hay sai?',
             'answer': True,
-            'solution': 'Khẳng định **Đúng**. Quy tắc **Quy đổi** ($1\\text{ l} = 1\\,000\\text{ ml}$ · '
-                        '$1\\,000\\text{ ml} = 1\\text{ l}$) là kiến thức cốt lõi của Bài 32: Mi-li-lít. Đổi '
-                        '$1\\text{ l} = 1\\,000\\text{ ml}$. Số sữa đã rót ra $3$ cốc là: $200 \\times 3 = '
-                        '600\\text{ (ml)}$. Số sữa còn lại là: $1\\,000 - 600 = 400\\text{ (ml)}$...'},
+            'solution': 'Khẳng định **Đúng**. Đó chính là quy tắc **Quy đổi** ($1\\text{ l} = 1\\,000\\text{ '
+                        'ml}$ · $1\\,000\\text{ ml} = 1\\text{ l}$) và lời giải ví dụ minh họa của Bài 32: '
+                        'Mi-li-lít.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 32: Mi-li-lít** để giải quyết tình huống sau: Mẹ có $1\\text{ l}$ '
-                 'sữa, mẹ rót đều ra $3$ cốc, mỗi cốc $200\\text{ ml}$. Hỏi trong bình còn lại bao nhiêu '
-                 'mi-li-lít sữa? Kết quả và hướng giải nào dưới đây là **đúng**?',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 32: Mi-li-lít** để giải bài toán sau: Mẹ có '
+                 '$1\\text{ l}$ sữa, mẹ rót đều ra $3$ cốc, mỗi cốc $200\\text{ ml}$. Hỏi trong bình còn lại '
+                 'bao nhiêu mi-li-lít sữa? Cách giải và kết quả nào dưới đây là **đúng**?',
             'options': ['Đổi $1\\text{ l} = 1\\,000\\text{ ml}$. Số sữa đã rót ra $3$ cốc là: $200 \\times 3 '
-                        '= 600\\text{ (ml)}$. Số sữa còn lại là: $1\\,000 - 600 = 400\\text{ (ml)}$.',
-                        'Ta có $806 = 800 + 6$ (gồm $8$ trăm, $0$ chục, $6$ đơn vị). Vì chữ số hàng trăm $8 '
-                        '> 7$ nên **$806 > 798$**.',
-                        '- $468 + 325$: $8 + 5 = 13$ (viết $3$ nhớ $1$); $6 + 2 + 1 = 9$; $4 + 3 = 7$ '
-                        '$\\rightarrow$ **$793$**. - $750 - 236$: $10 - 6 = 4$ (viết $4$ nhớ $1$); $5 - (3 + '
-                        '1) = 1$...',
-                        'Áp dụng quy tắc tìm số trừ: $\\text{Số trừ} = \\text{Số bị trừ} - \\text{Hiệu} = 85 '
-                        '- 39 = 46$. Thử lại: $85 - 46 = 39$ (đúng). Vậy số cần tìm là **$46$**.'],
+                        '= 600\\text{ (ml)}$. Số sữa còn lại là: $1\\,000 - 600 = 400\\text{ (ml)}$...',
+                        'Đổi $1\\text{ l} = 1\\,000\\text{ ml}$. Số sữa đã rót ra $3$ cốc là: $200 \\times 3 '
+                        '= 600\\text{ (ml)}$. Số sữa còn lại là: $1\\,000 + 600 = 400\\text{ (ml)}$...',
+                        'Đổi $1\\text{ l} = 1\\,000\\text{ ml}$. Số sữa đã rót ra $3$ cốc là: $200 \\times 3 '
+                        '= 600\\text{ (ml)}$. Số sữa còn lại là: $1\\,000 - 600 = 399\\text{ (ml)}$...',
+                        'Đổi $2\\text{ l} = 1\\,000\\text{ ml}$. Số sữa đã rót ra $3$ cốc là: $200 \\times 3 '
+                        '= 600\\text{ (ml)}$. Số sữa còn lại là: $1\\,000 - 600 = 400\\text{ (ml)}$...'],
             'answer': 0,
             'solution': 'Lời giải chi tiết theo Bài 32: Mi-li-lít: Đổi $1\\text{ l} = 1\\,000\\text{ ml}$.\n'
                         'Số sữa đã rót ra $3$ cốc là: $200 \\times 3 = 600\\text{ (ml)}$.\n'
@@ -3186,7 +3750,7 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
   'context_title': 'Chủ đề 5: Một số đơn vị đo độ dài, khối lượng, dung tích, nhiệt độ',
   'context': 'SGK Toán 3 · Chủ đề 5: Một số đơn vị đo độ dài (mm), khối lượng (g), dung tích (ml), nhiệt độ '
              '(độ C).',
-  'title': 'Bài 33, 34, 35: Nhiệt độ. Đơn vị đo nhiệt độ và luyện tập chung',
+  'title': 'Bài 33: Nhiệt độ. Đơn vị đo nhiệt độ',
   'icon': '🌡️',
   'description': 'Nhận biết đơn vị đo nhiệt độ (độ C), cách đọc nhiệt kế và thực hành các đơn vị mm, g, ml, '
                  'độ C.',
@@ -3205,7 +3769,7 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'điện tử).\n'
             '### 2. So sánh nhiệt độ\n'
             '- Nhiệt độ cao hơn thì trời nóng hơn (hoặc nước ấm hơn); nhiệt độ thấp hơn thì trời lạnh hơn.',
-  'formulas': [{'category': 'I. Các mốc nhiệt độ chuẩn',
+  'formulas': [{'category': 'Các mốc nhiệt độ chuẩn',
                 'items': [{'name': 'Nước đá tan', 'formula': '$0^\\circ\\text{C}$'},
                           {'name': 'Cơ thể người bình thường', 'formula': '$37^\\circ\\text{C}$'},
                           {'name': 'Hơi nước đang sôi', 'formula': '$100^\\circ\\text{C}$'}]}],
@@ -3237,24 +3801,26 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 33, 34, 35: Nhiệt độ. Đơn vị đo nhiệt độ và luyện tập '
-                 'chung**, công thức hoặc quy tắc nào sau đây biểu diễn đúng **Nước đá tan**?',
-            'options': ['$37^\\circ\\text{C}$',
+            'q': 'Trong **Bài 33: Nhiệt độ. Đơn vị đo nhiệt độ**, quy tắc hoặc công thức nào sau đây xác '
+                 'định đúng **Nước đá tan**?',
+            'options': ['$1^\\circ\\text{C}$',
                         '$0^\\circ\\text{C}$',
-                        '$100^\\circ\\text{C}$',
-                        '$\\overline{abc} = a00 + b0 + c$'],
+                        '$2^\\circ\\text{C}$',
+                        '$37^\\circ\\text{C}$'],
             'answer': 1,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 33, 34, 35: Nhiệt độ. Đơn vị đo nhiệt độ và '
-                        'luyện tập chung, **Nước đá tan** được xác định bởi: $0^\\circ\\text{C}$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 33: Nhiệt độ. Đơn vị đo nhiệt độ, **Nước đá tan** '
+                        'được xác định bởi: $0^\\circ\\text{C}$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 33, 34, 35: Nhiệt độ. Đơn vị đo nhiệt độ và luyện tập chung**, nội dung/biểu '
-                 'thức $37^\\circ\\text{C}$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Nước đá tan', 'Hơi nước đang sôi', 'Cơ thể người bình thường', 'Phân tích số'],
+            'q': 'Khi học **Bài 33: Nhiệt độ. Đơn vị đo nhiệt độ**, biểu thức hoặc quy tắc nào dưới đây biểu '
+                 'diễn đúng **Cơ thể người bình thường**?',
+            'options': ['$47^\\circ\\text{C}$',
+                        '$36^\\circ\\text{C}$',
+                        '$37^\\circ\\text{C}$',
+                        '$74^\\circ\\text{C}$'],
             'answer': 2,
-            'solution': 'Trong Bài 33, 34, 35: Nhiệt độ. Đơn vị đo nhiệt độ và luyện tập chung, biểu '
-                        'thức/quy tắc $37^\\circ\\text{C}$ chính là nội dung của **Cơ thể người bình '
-                        'thường**.'},
+            'solution': 'Trong Bài 33: Nhiệt độ. Đơn vị đo nhiệt độ, **Cơ thể người bình thường** có công '
+                        'thức/quy tắc là: $37^\\circ\\text{C}$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Nhiệt độ tại Sa Pa là $12^\\circ\\text{C}$, tại Cần Thơ là $31^\\circ\\text{C}$. Nhiệt độ '
@@ -3269,18 +3835,20 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 33, 34, 35: Nhiệt độ. Đơn vị đo nhiệt độ và luyện tập chung** (Chủ đề 5: Một '
-                 'số đơn vị đo độ dài, khối lượng, dung tích, nhiệt độ), khẳng định nào sau đây phản ánh '
-                 '**đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
+            'q': 'Để nắm vững bản chất của **Bài 33: Nhiệt độ. Đơn vị đo nhiệt độ**, nhận định nào sau đây '
+                 'là **chính xác**?',
             'options': ['Nhận biết được đơn vị đo nhiệt độ là độ C (ký hiệu $^\\circ\\text{C}$) và dụng cụ '
                         'đo nhiệt độ là nhiệt kế.',
-                        'Đọc, viết thành thạo các số có đến ba chữ số trong phạm vi 1 000.',
-                        'Phân tích được số có ba chữ số thành tổng các trăm, chục, đơn vị.',
-                        'So sánh và sắp xếp được các số trong phạm vi 1 000 theo thứ tự.'],
+                        'Nhận biết được đơn vị đo nhiệt độ là độ C (ký hiệu $^\\circ\\text{C}$) và dụng cụ '
+                        'đo nhiệt độ là nhiệt kế. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Nhận biết được đơn vị đo nhiệt độ là độ C (ký hiệu '
+                        '$^\\circ\\text{C}$) và dụng cụ đo nhiệt độ là nhiệt kế.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nhận biết được đơn vị đo nhiệt '
+                        'độ là độ C (ký hiệu $^\\circ\\text{C}$) và dụng cụ đo nhiệt độ là nhiệt kế.'],
             'answer': 0,
-            'solution': 'Theo yêu cầu cần đạt của Bài 33, 34, 35: Nhiệt độ. Đơn vị đo nhiệt độ và luyện tập '
-                        'chung: Nhận biết được đơn vị đo nhiệt độ là độ C (ký hiệu $^\\circ\\text{C}$) và '
-                        'dụng cụ đo nhiệt độ là nhiệt kế.'},
+            'solution': 'Theo nội dung cốt lõi của Bài 33: Nhiệt độ. Đơn vị đo nhiệt độ: Nhận biết được đơn '
+                        'vị đo nhiệt độ là độ C (ký hiệu $^\\circ\\text{C}$) và dụng cụ đo nhiệt độ là nhiệt '
+                        'kế.'},
            {'level': 'hieu',
             'type': 'tf',
             'q': 'Nhận định: "Nước sôi ở nhiệt độ $100^\\circ\\text{C}$ và nước đá đang tan ở '
@@ -3291,34 +3859,32 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'hieu',
             'type': 'tf',
-            'q': 'Trong **Bài 33, 34, 35: Nhiệt độ. Đơn vị đo nhiệt độ và luyện tập chung**, quy tắc **Nước '
-                 'đá tan** được xác định bởi $0^\\circ\\text{C}$ và áp dụng trực tiếp vào bài toán: “Buổi '
-                 'sáng nhiệt độ ở Hà Nội là $21^\\circ\\text{C}$, đến buổi trưa nhiệt độ tăng thêm '
-                 '$6^\\circ\\text{C}$. Hỏi buổi trưa nhiệt độ là bao nhiêu đ...”. Đúng hay sai?',
+            'q': 'Trong **Bài 33: Nhiệt độ. Đơn vị đo nhiệt độ**, quy tắc **Nước đá tan** được xác định bởi '
+                 '$0^\\circ\\text{C}$ và khi áp dụng cho ví dụ “Buổi sáng nhiệt độ ở Hà Nội là '
+                 '$21^\\circ\\text{C}$, đến buổi trưa nhiệt độ tăng thêm $6^\\circ\\text{C}$. Hỏi buổi trưa '
+                 'nhiệt độ là bao nh...” ta có lời giải: Nhiệt độ buổi trưa ở Hà Nội là: $21^\\circ\\text{C} '
+                 '+ 6^\\circ\\text{C} = 27^\\circ\\text{C}$. Đáp số: **$27^\\circ\\text{C}$**.. Đúng hay '
+                 'sai?',
             'answer': True,
-            'solution': 'Khẳng định **Đúng**. Quy tắc **Nước đá tan** ($0^\\circ\\text{C}$) là kiến thức cốt '
-                        'lõi của Bài 33, 34, 35: Nhiệt độ. Đơn vị đo nhiệt độ và luyện tập chung. Nhiệt độ '
-                        'buổi trưa ở Hà Nội là: $21^\\circ\\text{C} + 6^\\circ\\text{C} = '
-                        '27^\\circ\\text{C}$. Đáp số: **$27^\\circ\\text{C}$**.'},
+            'solution': 'Khẳng định **Đúng**. Đó chính là quy tắc **Nước đá tan** ($0^\\circ\\text{C}$) và '
+                        'lời giải ví dụ minh họa của Bài 33: Nhiệt độ. Đơn vị đo nhiệt độ.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 33, 34, 35: Nhiệt độ. Đơn vị đo nhiệt độ và luyện tập chung** để '
-                 'giải quyết tình huống sau: Buổi sáng nhiệt độ ở Hà Nội là $21^\\circ\\text{C}$, đến buổi '
-                 'trưa nhiệt độ tăng thêm $6^\\circ\\text{C}$. Hỏi buổi trưa nhiệt độ là bao nhiêu độ C? Kết '
-                 'quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Ta có $806 = 800 + 6$ (gồm $8$ trăm, $0$ chục, $6$ đơn vị). Vì chữ số hàng trăm $8 '
-                        '> 7$ nên **$806 > 798$**.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 33: Nhiệt độ. Đơn vị đo nhiệt độ** để giải bài toán '
+                 'sau: Buổi sáng nhiệt độ ở Hà Nội là $21^\\circ\\text{C}$, đến buổi trưa nhiệt độ tăng thêm '
+                 '$6^\\circ\\text{C}$. Hỏi buổi trưa nhiệt độ là bao nhiêu độ C? Cách giải và kết quả nào '
+                 'dưới đây là **đúng**?',
+            'options': ['Nhiệt độ buổi trưa ở Hà Nội là: $21^\\circ\\text{C} - 6^\\circ\\text{C} = '
+                        '27^\\circ\\text{C}$. Đáp số: **$27^\\circ\\text{C}$**.',
                         'Nhiệt độ buổi trưa ở Hà Nội là: $21^\\circ\\text{C} + 6^\\circ\\text{C} = '
                         '27^\\circ\\text{C}$. Đáp số: **$27^\\circ\\text{C}$**.',
-                        '- $468 + 325$: $8 + 5 = 13$ (viết $3$ nhớ $1$); $6 + 2 + 1 = 9$; $4 + 3 = 7$ '
-                        '$\\rightarrow$ **$793$**. - $750 - 236$: $10 - 6 = 4$ (viết $4$ nhớ $1$); $5 - (3 + '
-                        '1) = 1$...',
-                        'Áp dụng quy tắc tìm số trừ: $\\text{Số trừ} = \\text{Số bị trừ} - \\text{Hiệu} = 85 '
-                        '- 39 = 46$. Thử lại: $85 - 46 = 39$ (đúng). Vậy số cần tìm là **$46$**.'],
+                        'Nhiệt độ buổi trưa ở Hà Nội là: $21^\\circ\\text{C} + 6^\\circ\\text{C} = '
+                        '27^\\circ\\text{C}$. Đáp số: **$26^\\circ\\text{C}$**.',
+                        'Nhiệt độ buổi trưa ở Hà Nội là: $42^\\circ\\text{C} + 6^\\circ\\text{C} = '
+                        '27^\\circ\\text{C}$. Đáp số: **$27^\\circ\\text{C}$**.'],
             'answer': 1,
-            'solution': 'Lời giải chi tiết theo Bài 33, 34, 35: Nhiệt độ. Đơn vị đo nhiệt độ và luyện tập '
-                        'chung: Nhiệt độ buổi trưa ở Hà Nội là: $21^\\circ\\text{C} + 6^\\circ\\text{C} = '
-                        '27^\\circ\\text{C}$.\n'
+            'solution': 'Lời giải chi tiết theo Bài 33: Nhiệt độ. Đơn vị đo nhiệt độ: Nhiệt độ buổi trưa ở '
+                        'Hà Nội là: $21^\\circ\\text{C} + 6^\\circ\\text{C} = 27^\\circ\\text{C}$.\n'
                         'Đáp số: **$27^\\circ\\text{C}$**.'},
            {'level': 'vandung',
             'type': 'short',
@@ -3351,7 +3917,7 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             '- Ví dụ: $134 \\times 4$. Ta tính: $4 \\times 4 = 16$ (viết $6$ nhớ $1$); $4 \\times 3 = 12$, '
             'thêm $1$ bằng $13$ (viết $3$ nhớ $1$); $4 \\times 1 = 4$, thêm $1$ bằng $5$. Vậy $134 \\times 4 '
             '= 536$.',
-  'formulas': [{'category': 'I. Nhân số có ba chữ số',
+  'formulas': [{'category': 'Nhân số có ba chữ số',
                 'items': [{'name': 'Thứ tự nhân',
                            'formula': 'Đơn vị $\\rightarrow$ Chục $\\rightarrow$ Trăm (cộng phần nhớ vào '
                                       'hàng liền sau)'},
@@ -3383,24 +3949,30 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 36: Nhân số có ba chữ số với số có một chữ số**, công '
-                 'thức hoặc quy tắc nào sau đây biểu diễn đúng **Thứ tự nhân**?',
-            'options': ['$a00 \\times b = (a \\times b)00$',
-                        '$\\overline{abc} = a00 + b0 + c$',
+            'q': 'Trong **Bài 36: Nhân số có ba chữ số với số có một chữ số**, quy tắc hoặc công thức nào '
+                 'sau đây xác định đúng **Thứ tự nhân**?',
+            'options': ['Đơn vị $\\rightarrow$ Chục $\\rightarrow$ Trăm (cộng phần nhớ vào hàng liền sau) '
+                        '(với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Đơn vị $\\rightarrow$ Chục $\\rightarrow$ Trăm (cộng phần '
+                        'nhớ vào hàng liền sau)',
                         'Đơn vị $\\rightarrow$ Chục $\\rightarrow$ Trăm (cộng phần nhớ vào hàng liền sau)',
-                        '$10 \\text{ chục} = 100$ · $10 \\text{ trăm} = 1\\,000$'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Đơn vị $\\rightarrow$ Chục '
+                        '$\\rightarrow$ Trăm (cộng phần nhớ vào hàng liền sau)'],
             'answer': 2,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 36: Nhân số có ba chữ số với số có một chữ '
-                        'số, **Thứ tự nhân** được xác định bởi: Đơn vị $\\rightarrow$ Chục $\\rightarrow$ '
-                        'Trăm (cộng phần nhớ vào hàng liền sau).'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 36: Nhân số có ba chữ số với số có một chữ số, '
+                        '**Thứ tự nhân** được xác định bởi: Đơn vị $\\rightarrow$ Chục $\\rightarrow$ Trăm '
+                        '(cộng phần nhớ vào hàng liền sau).'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 36: Nhân số có ba chữ số với số có một chữ số**, nội dung/biểu thức $a00 '
-                 '\\times b = (a \\times b)00$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Thứ tự nhân', 'Phân tích số', 'Số tròn trăm, tròn nghìn', 'Nhân số tròn trăm'],
+            'q': 'Khi học **Bài 36: Nhân số có ba chữ số với số có một chữ số**, biểu thức hoặc quy tắc nào '
+                 'dưới đây biểu diễn đúng **Nhân số tròn trăm**?',
+            'options': ['$a00 : b = (a \\times b)00$',
+                        '$a00 \\times b = (a \\times b)1$',
+                        '$a00 \\times b = (a \\times b)2$',
+                        '$a00 \\times b = (a \\times b)00$'],
             'answer': 3,
-            'solution': 'Trong Bài 36: Nhân số có ba chữ số với số có một chữ số, biểu thức/quy tắc $a00 '
-                        '\\times b = (a \\times b)00$ chính là nội dung của **Nhân số tròn trăm**.'},
+            'solution': 'Trong Bài 36: Nhân số có ba chữ số với số có một chữ số, **Nhân số tròn trăm** có '
+                        'công thức/quy tắc là: $a00 \\times b = (a \\times b)00$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Kết quả của phép nhân $125 \\times 4$ là:',
@@ -3411,15 +3983,17 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 36: Nhân số có ba chữ số với số có một chữ số** (Chủ đề 6: Phép nhân, phép '
-                 'chia trong phạm vi 1 000), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản '
-                 'chất kiến thức của bài?',
-            'options': ['Đọc, viết thành thạo các số có đến ba chữ số trong phạm vi 1 000.',
+            'q': 'Để nắm vững bản chất của **Bài 36: Nhân số có ba chữ số với số có một chữ số**, nhận định '
+                 'nào sau đây là **chính xác**?',
+            'options': ['Đặt tính và tính đúng phép nhân số có ba chữ số với số có một chữ số. (với dấu '
+                        'ngược lại)',
                         'Đặt tính và tính đúng phép nhân số có ba chữ số với số có một chữ số.',
-                        'Phân tích được số có ba chữ số thành tổng các trăm, chục, đơn vị.',
-                        'So sánh và sắp xếp được các số trong phạm vi 1 000 theo thứ tự.'],
+                        'Đảo ngược vế của quy tắc: Đặt tính và tính đúng phép nhân số có ba chữ số với số có '
+                        'một chữ số.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Đặt tính và tính đúng phép nhân '
+                        'số có ba chữ số với số có một chữ số.'],
             'answer': 1,
-            'solution': 'Theo yêu cầu cần đạt của Bài 36: Nhân số có ba chữ số với số có một chữ số: Đặt '
+            'solution': 'Theo nội dung cốt lõi của Bài 36: Nhân số có ba chữ số với số có một chữ số: Đặt '
                         'tính và tính đúng phép nhân số có ba chữ số với số có một chữ số.'},
            {'level': 'hieu',
             'type': 'tf',
@@ -3433,29 +4007,27 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'type': 'tf',
             'q': 'Trong **Bài 36: Nhân số có ba chữ số với số có một chữ số**, quy tắc **Thứ tự nhân** được '
                  'xác định bởi Đơn vị $\\rightarrow$ Chục $\\rightarrow$ Trăm (cộng phần nhớ vào hàng liền '
-                 'sau) và áp dụng trực tiếp vào bài toán: “Đặt tính rồi tính: $125 \\times 4$ và $308 '
-                 '\\times 3$.”. Đúng hay sai?',
+                 'sau) và khi áp dụng cho ví dụ “Đặt tính rồi tính: $125 \\times 4$ và $308 \\times 3$.” ta '
+                 'có lời giải: - $125 \\times 4 = 500$ (vì $5 \\times 4 = 20$ viết $0$ nhớ $2$; $2 \\times 4 '
+                 '+ 2 = 10$ viết $0$ nhớ $1$; $1 \\times 4 + 1 = 5$). - $308 \\times 3 = 924$.... Đúng hay '
+                 'sai?',
             'answer': True,
-            'solution': 'Khẳng định **Đúng**. Quy tắc **Thứ tự nhân** (Đơn vị $\\rightarrow$ Chục '
-                        '$\\rightarrow$ Trăm (cộng phần nhớ vào hàng liền sau)) là kiến thức cốt lõi của Bài '
-                        '36: Nhân số có ba chữ số với số có một chữ số. - $125 \\times 4 = 500$ (vì $5 '
-                        '\\times 4 = 20$ viết $0$ nhớ $2$; $2 \\times 4 + 2 = 10$ viết $0$ nhớ $1$; $1 '
-                        '\\times 4 + 1 = 5$). - $308 \\times 3 = 924$...'},
+            'solution': 'Khẳng định **Đúng**. Đó chính là quy tắc **Thứ tự nhân** (Đơn vị $\\rightarrow$ '
+                        'Chục $\\rightarrow$ Trăm (cộng phần nhớ vào hàng liền sau)) và lời giải ví dụ minh '
+                        'họa của Bài 36: Nhân số có ba chữ số với số có một chữ số.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 36: Nhân số có ba chữ số với số có một chữ số** để giải quyết '
-                 'tình huống sau: Đặt tính rồi tính: $125 \\times 4$ và $308 \\times 3$. Kết quả và hướng '
-                 'giải nào dưới đây là **đúng**?',
-            'options': ['Ta có $806 = 800 + 6$ (gồm $8$ trăm, $0$ chục, $6$ đơn vị). Vì chữ số hàng trăm $8 '
-                        '> 7$ nên **$806 > 798$**.',
-                        '- $468 + 325$: $8 + 5 = 13$ (viết $3$ nhớ $1$); $6 + 2 + 1 = 9$; $4 + 3 = 7$ '
-                        '$\\rightarrow$ **$793$**. - $750 - 236$: $10 - 6 = 4$ (viết $4$ nhớ $1$); $5 - (3 + '
-                        '1) = 1$...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 36: Nhân số có ba chữ số với số có một chữ số** để '
+                 'giải bài toán sau: Đặt tính rồi tính: $125 \\times 4$ và $308 \\times 3$. Cách giải và kết '
+                 'quả nào dưới đây là **đúng**?',
+            'options': ['- $125 \\times 4 = 500$ (vì $5 \\times 4 = 20$ viết $0$ nhớ $2$; $2 \\times 4 - 2 = '
+                        '10$ viết $0$ nhớ $1$; $1 \\times 4 + 1 = 5$). - $308 \\times 3 = 924$ (...',
                         '- $125 \\times 4 = 500$ (vì $5 \\times 4 = 20$ viết $0$ nhớ $2$; $2 \\times 4 + 2 = '
-                        '10$ viết $0$ nhớ $1$; $1 \\times 4 + 1 = 5$). - $308 \\times 3 = 924$ (vì $8 '
-                        '\\times 3 = 24$...',
-                        'Áp dụng quy tắc tìm số trừ: $\\text{Số trừ} = \\text{Số bị trừ} - \\text{Hiệu} = 85 '
-                        '- 39 = 46$. Thử lại: $85 - 46 = 39$ (đúng). Vậy số cần tìm là **$46$**.'],
+                        '10$ viết $0$ nhớ $1$; $1 \\times 4 + 1 = 5$). - $308 \\times 3 = 923$ (...',
+                        '- $125 \\times 4 = 500$ (vì $5 \\times 4 = 20$ viết $0$ nhớ $2$; $2 \\times 4 + 2 = '
+                        '10$ viết $0$ nhớ $1$; $1 \\times 4 + 1 = 5$). - $308 \\times 3 = 924$ (...',
+                        '- $127 \\times 4 = 500$ (vì $5 \\times 4 = 20$ viết $0$ nhớ $2$; $2 \\times 4 + 2 = '
+                        '10$ viết $0$ nhớ $1$; $1 \\times 4 + 1 = 5$). - $308 \\times 3 = 924$ (...'],
             'answer': 2,
             'solution': 'Lời giải chi tiết theo Bài 36: Nhân số có ba chữ số với số có một chữ số: - $125 '
                         '\\times 4 = 500$ (vì $5 \\times 4 = 20$ viết $0$ nhớ $2$; $2 \\times 4 + 2 = 10$ '
@@ -3495,7 +4067,7 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             '### 2. Thương có hai chữ số (chữ số hàng trăm bé hơn số chia)\n'
             '- Ví dụ: $236 : 4$. Lấy $23 : 4 = 5$ (dư $3$); hạ $6$ được $36 : 4 = 9 \\Rightarrow 236 : 4 = '
             '59$.',
-  'formulas': [{'category': 'I. Quy tắc chia số có ba chữ số',
+  'formulas': [{'category': 'Quy tắc chia số có ba chữ số',
                 'items': [{'name': 'Thứ tự chia',
                            'formula': 'Từ hàng cao nhất (trái sang phải): Chia $\\rightarrow$ Nhân '
                                       '$\\rightarrow$ Trừ $\\rightarrow$ Hạ'},
@@ -3526,27 +4098,32 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 37: Chia số có ba chữ số cho số có một chữ số**, công '
-                 'thức hoặc quy tắc nào sau đây biểu diễn đúng **Thứ tự chia**?',
-            'options': ['Hạ xuống mà bé hơn số chia $\\rightarrow$ viết $0$ vào thương',
-                        '$\\overline{abc} = a00 + b0 + c$',
-                        '$10 \\text{ chục} = 100$ · $10 \\text{ trăm} = 1\\,000$',
+            'q': 'Trong **Bài 37: Chia số có ba chữ số cho số có một chữ số**, quy tắc hoặc công thức nào '
+                 'sau đây xác định đúng **Thứ tự chia**?',
+            'options': ['Từ hàng cao nhất (phải sang trái): Chia $\\rightarrow$ Nhân $\\rightarrow$ Trừ '
+                        '$\\rightarrow$ Hạ',
+                        'Đảo ngược vế của quy tắc: Từ hàng cao nhất (trái sang phải): Chia $\\rightarrow$ '
+                        'Nhân $\\rightarrow$ Trừ $\\rightarrow$ Hạ',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Từ hàng cao nhất (trái sang '
+                        'phải): Chia $\\rightarrow$ Nhân $\\rightarrow$ Trừ $\\rightarrow$ Hạ',
                         'Từ hàng cao nhất (trái sang phải): Chia $\\rightarrow$ Nhân $\\rightarrow$ Trừ '
                         '$\\rightarrow$ Hạ'],
             'answer': 3,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 37: Chia số có ba chữ số cho số có một chữ '
-                        'số, **Thứ tự chia** được xác định bởi: Từ hàng cao nhất (trái sang phải): Chia '
+            'solution': 'Theo kiến thức trọng tâm của Bài 37: Chia số có ba chữ số cho số có một chữ số, '
+                        '**Thứ tự chia** được xác định bởi: Từ hàng cao nhất (trái sang phải): Chia '
                         '$\\rightarrow$ Nhân $\\rightarrow$ Trừ $\\rightarrow$ Hạ.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 37: Chia số có ba chữ số cho số có một chữ số**, nội dung/biểu thức Hạ xuống '
-                 'mà bé hơn số chia $\\rightarrow$ viết $0$ vào thương là quy tắc hoặc công thức của mục nào '
-                 'sau đây?',
-            'options': ['Lưu ý chữ số 0 ở thương', 'Thứ tự chia', 'Phân tích số', 'Số tròn trăm, tròn nghìn'],
+            'q': 'Khi học **Bài 37: Chia số có ba chữ số cho số có một chữ số**, biểu thức hoặc quy tắc nào '
+                 'dưới đây biểu diễn đúng **Lưu ý chữ số 0 ở thương**?',
+            'options': ['Hạ xuống mà bé hơn số chia $\\rightarrow$ viết $0$ vào thương',
+                        'Hạ xuống mà lớn hơn số chia $\\rightarrow$ viết $0$ vào thương',
+                        'Hạ xuống mà bé hơn số chia $\\rightarrow$ viết $1$ vào thương',
+                        'Hạ xuống mà bé hơn số chia $\\rightarrow$ viết $2$ vào thương'],
             'answer': 0,
-            'solution': 'Trong Bài 37: Chia số có ba chữ số cho số có một chữ số, biểu thức/quy tắc Hạ xuống '
-                        'mà bé hơn số chia $\\rightarrow$ viết $0$ vào thương chính là nội dung của **Lưu ý '
-                        'chữ số 0 ở thương**.'},
+            'solution': 'Trong Bài 37: Chia số có ba chữ số cho số có một chữ số, **Lưu ý chữ số 0 ở '
+                        'thương** có công thức/quy tắc là: Hạ xuống mà bé hơn số chia $\\rightarrow$ viết '
+                        '$0$ vào thương.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Thương của phép chia $816 : 8$ là:',
@@ -3558,15 +4135,16 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 37: Chia số có ba chữ số cho số có một chữ số** (Chủ đề 6: Phép nhân, phép '
-                 'chia trong phạm vi 1 000), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản '
-                 'chất kiến thức của bài?',
-            'options': ['Đọc, viết thành thạo các số có đến ba chữ số trong phạm vi 1 000.',
-                        'Phân tích được số có ba chữ số thành tổng các trăm, chục, đơn vị.',
+            'q': 'Để nắm vững bản chất của **Bài 37: Chia số có ba chữ số cho số có một chữ số**, nhận định '
+                 'nào sau đây là **chính xác**?',
+            'options': ['Đặt tính dọc và chia đúng số có ba chữ số cho số có một chữ số từ phải sang trái.',
+                        'Đảo ngược vế của quy tắc: Đặt tính dọc và chia đúng số có ba chữ số cho số có một '
+                        'chữ số từ trái sang phải.',
                         'Đặt tính dọc và chia đúng số có ba chữ số cho số có một chữ số từ trái sang phải.',
-                        'So sánh và sắp xếp được các số trong phạm vi 1 000 theo thứ tự.'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Đặt tính dọc và chia đúng số có '
+                        'ba chữ số cho số có một chữ số từ trái sang phải.'],
             'answer': 2,
-            'solution': 'Theo yêu cầu cần đạt của Bài 37: Chia số có ba chữ số cho số có một chữ số: Đặt '
+            'solution': 'Theo nội dung cốt lõi của Bài 37: Chia số có ba chữ số cho số có một chữ số: Đặt '
                         'tính dọc và chia đúng số có ba chữ số cho số có một chữ số từ trái sang phải.'},
            {'level': 'hieu',
             'type': 'tf',
@@ -3580,28 +4158,27 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'type': 'tf',
             'q': 'Trong **Bài 37: Chia số có ba chữ số cho số có một chữ số**, quy tắc **Thứ tự chia** được '
                  'xác định bởi Từ hàng cao nhất (trái sang phải): Chia $\\rightarrow$ Nhân $\\rightarrow$ '
-                 'Trừ $\\rightarrow$ Hạ và áp dụng trực tiếp vào bài toán: “Đặt tính rồi tính: $848 : 4$, '
-                 '$425 : 5$ và $612 : 3$.”. Đúng hay sai?',
+                 'Trừ $\\rightarrow$ Hạ và khi áp dụng cho ví dụ “Đặt tính rồi tính: $848 : 4$, $425 : 5$ và '
+                 '$612 : 3$.” ta có lời giải: - $848 : 4 = 212$. - $425 : 5$: lấy $42 : 5 = 8$ (dư $2$), hạ '
+                 '$5$ được $25 : 5 = 5 \\rightarrow 85$. - $612 : 3$: $6 : 3 = 2$, hạ $1$ ($1 : 3 = 0$.... '
+                 'Đúng hay sai?',
             'answer': True,
-            'solution': 'Khẳng định **Đúng**. Quy tắc **Thứ tự chia** (Từ hàng cao nhất (trái sang phải): '
-                        'Chia $\\rightarrow$ Nhân $\\rightarrow$ Trừ $\\rightarrow$ Hạ) là kiến thức cốt lõi '
-                        'của Bài 37: Chia số có ba chữ số cho số có một chữ số. - $848 : 4 = 212$. - $425 : '
-                        '5$: lấy $42 : 5 = 8$ (dư $2$), hạ $5$ được $25 : 5 = 5 \\rightarrow 85$. - $612 : '
-                        '3$: $6 : 3 = 2$, hạ $1$ ($1 : 3 = 0$...'},
+            'solution': 'Khẳng định **Đúng**. Đó chính là quy tắc **Thứ tự chia** (Từ hàng cao nhất (trái '
+                        'sang phải): Chia $\\rightarrow$ Nhân $\\rightarrow$ Trừ $\\rightarrow$ Hạ) và lời '
+                        'giải ví dụ minh họa của Bài 37: Chia số có ba chữ số cho số có một chữ số.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 37: Chia số có ba chữ số cho số có một chữ số** để giải quyết '
-                 'tình huống sau: Đặt tính rồi tính: $848 : 4$, $425 : 5$ và $612 : 3$. Kết quả và hướng '
-                 'giải nào dưới đây là **đúng**?',
-            'options': ['Ta có $806 = 800 + 6$ (gồm $8$ trăm, $0$ chục, $6$ đơn vị). Vì chữ số hàng trăm $8 '
-                        '> 7$ nên **$806 > 798$**.',
-                        '- $468 + 325$: $8 + 5 = 13$ (viết $3$ nhớ $1$); $6 + 2 + 1 = 9$; $4 + 3 = 7$ '
-                        '$\\rightarrow$ **$793$**. - $750 - 236$: $10 - 6 = 4$ (viết $4$ nhớ $1$); $5 - (3 + '
-                        '1) = 1$...',
-                        'Áp dụng quy tắc tìm số trừ: $\\text{Số trừ} = \\text{Số bị trừ} - \\text{Hiệu} = 85 '
-                        '- 39 = 46$. Thử lại: $85 - 46 = 39$ (đúng). Vậy số cần tìm là **$46$**.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 37: Chia số có ba chữ số cho số có một chữ số** để '
+                 'giải bài toán sau: Đặt tính rồi tính: $848 : 4$, $425 : 5$ và $612 : 3$. Cách giải và kết '
+                 'quả nào dưới đây là **đúng**?',
+            'options': ['- $848 : 4 = 212$. + $425 : 5$: lấy $42 : 5 = 8$ (dư $2$), hạ $5$ được $25 : 5 = 5 '
+                        '\\rightarrow 85$. - $612 : 3$: $6 : 3 = 2$, hạ $1$ ($1 : 3 = 0$), hạ...',
                         '- $848 : 4 = 212$. - $425 : 5$: lấy $42 : 5 = 8$ (dư $2$), hạ $5$ được $25 : 5 = 5 '
-                        '\\rightarrow 85$. - $612 : 3$: $6 : 3 = 2$, hạ $1$ ($1 : 3 = 0$), hạ $2$...'],
+                        '\\rightarrow 85$. - $612 : 3$: $6 : 3 = 2$, hạ $1$ ($1 : 3 = 1$), hạ...',
+                        '- $850 : 4 = 212$. - $425 : 5$: lấy $42 : 5 = 8$ (dư $2$), hạ $5$ được $25 : 5 = 5 '
+                        '\\rightarrow 85$. - $612 : 3$: $6 : 3 = 2$, hạ $1$ ($1 : 3 = 0$), hạ...',
+                        '- $848 : 4 = 212$. - $425 : 5$: lấy $42 : 5 = 8$ (dư $2$), hạ $5$ được $25 : 5 = 5 '
+                        '\\rightarrow 85$. - $612 : 3$: $6 : 3 = 2$, hạ $1$ ($1 : 3 = 0$), hạ...'],
             'answer': 3,
             'solution': 'Lời giải chi tiết theo Bài 37: Chia số có ba chữ số cho số có một chữ số: - $848 : '
                         '4 = 212$.\n'
@@ -3641,7 +4218,7 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             '- Khác mức độ ưu tiên: $60 + 20 \\times 3 = 60 + 60 = 120$ (thực hiện $20 \\times 3$ trước).\n'
             '### 2. Biểu thức có dấu ngoặc\n'
             '- Ví dụ: $(60 + 20) \\times 3 = 80 \\times 3 = 240$ (thực hiện trong ngoặc $60 + 20$ trước).',
-  'formulas': [{'category': 'I. Quy tắc thứ tự thực hiện phép tính',
+  'formulas': [{'category': 'Quy tắc thứ tự thực hiện phép tính',
                 'items': [{'name': 'Có ngoặc ()', 'formula': 'Tính trong ngoặc $()$ trước'},
                           {'name': 'Không ngoặc (khác cấp)',
                            'formula': 'Nhân $\\times$, chia $:$ trước $\\rightarrow$ Cộng $+$, trừ $-$ sau'},
@@ -3669,25 +4246,30 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 38: Biểu thức số. Tính giá trị của biểu thức số**, công '
-                 'thức hoặc quy tắc nào sau đây biểu diễn đúng **Có ngoặc ()**?',
+            'q': 'Trong **Bài 38: Biểu thức số. Tính giá trị của biểu thức số**, quy tắc hoặc công thức nào '
+                 'sau đây xác định đúng **Có ngoặc ()**?',
             'options': ['Tính trong ngoặc $()$ trước',
-                        'Nhân $\\times$, chia $:$ trước $\\rightarrow$ Cộng $+$, trừ $-$ sau',
-                        'Tính lần lượt từ trái sang phải',
-                        '$\\overline{abc} = a00 + b0 + c$'],
+                        'Tính trong ngoặc $()$ trước (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Tính trong ngoặc $()$ trước',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Tính trong ngoặc $()$ trước'],
             'answer': 0,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 38: Biểu thức số. Tính giá trị của biểu thức '
-                        'số, **Có ngoặc ()** được xác định bởi: Tính trong ngoặc $()$ trước.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 38: Biểu thức số. Tính giá trị của biểu thức số, '
+                        '**Có ngoặc ()** được xác định bởi: Tính trong ngoặc $()$ trước.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 38: Biểu thức số. Tính giá trị của biểu thức số**, nội dung/biểu thức Nhân '
-                 '$\\times$, chia $:$ trước $\\rightarrow$ Cộng $+$, trừ $-$ sau là quy tắc hoặc công thức '
-                 'của mục nào sau đây?',
-            'options': ['Có ngoặc ()', 'Không ngoặc (khác cấp)', 'Không ngoặc (cùng cấp)', 'Phân tích số'],
+            'q': 'Khi học **Bài 38: Biểu thức số. Tính giá trị của biểu thức số**, biểu thức hoặc quy tắc '
+                 'nào dưới đây biểu diễn đúng **Không ngoặc (khác cấp)**?',
+            'options': ['Nhân $\\times$, chia $:$ trước $\\rightarrow$ Cộng $+$, trừ $-$ sau (với dấu ngược '
+                        'lại)',
+                        'Nhân $\\times$, chia $:$ trước $\\rightarrow$ Cộng $+$, trừ $-$ sau',
+                        'Đảo ngược vế của quy tắc: Nhân $\\times$, chia $:$ trước $\\rightarrow$ Cộng $+$, '
+                        'trừ $-$ sau',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nhân $\\times$, chia $:$ trước '
+                        '$\\rightarrow$ Cộng $+$, trừ $-$ sau'],
             'answer': 1,
-            'solution': 'Trong Bài 38: Biểu thức số. Tính giá trị của biểu thức số, biểu thức/quy tắc Nhân '
-                        '$\\times$, chia $:$ trước $\\rightarrow$ Cộng $+$, trừ $-$ sau chính là nội dung '
-                        'của **Không ngoặc (khác cấp)**.'},
+            'solution': 'Trong Bài 38: Biểu thức số. Tính giá trị của biểu thức số, **Không ngoặc (khác '
+                        'cấp)** có công thức/quy tắc là: Nhân $\\times$, chia $:$ trước $\\rightarrow$ Cộng '
+                        '$+$, trừ $-$ sau.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Giá trị của biểu thức $100 - 4 \\times 9$ là:',
@@ -3698,15 +4280,15 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 38: Biểu thức số. Tính giá trị của biểu thức số** (Chủ đề 6: Phép nhân, phép '
-                 'chia trong phạm vi 1 000), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản '
-                 'chất kiến thức của bài?',
-            'options': ['Đọc, viết thành thạo các số có đến ba chữ số trong phạm vi 1 000.',
-                        'Phân tích được số có ba chữ số thành tổng các trăm, chục, đơn vị.',
-                        'So sánh và sắp xếp được các số trong phạm vi 1 000 theo thứ tự.',
+            'q': 'Để nắm vững bản chất của **Bài 38: Biểu thức số. Tính giá trị của biểu thức số**, nhận '
+                 'định nào sau đây là **chính xác**?',
+            'options': ['Nhận biết được biểu thức số và giá trị của biểu thức số. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Nhận biết được biểu thức số và giá trị của biểu thức số.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nhận biết được biểu thức số và '
+                        'giá trị của biểu thức số.',
                         'Nhận biết được biểu thức số và giá trị của biểu thức số.'],
             'answer': 3,
-            'solution': 'Theo yêu cầu cần đạt của Bài 38: Biểu thức số. Tính giá trị của biểu thức số: Nhận '
+            'solution': 'Theo nội dung cốt lõi của Bài 38: Biểu thức số. Tính giá trị của biểu thức số: Nhận '
                         'biết được biểu thức số và giá trị của biểu thức số.'},
            {'level': 'hieu',
             'type': 'tf',
@@ -3719,27 +4301,27 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
            {'level': 'hieu',
             'type': 'tf',
             'q': 'Trong **Bài 38: Biểu thức số. Tính giá trị của biểu thức số**, quy tắc **Có ngoặc ()** '
-                 'được xác định bởi Tính trong ngoặc $()$ trước và áp dụng trực tiếp vào bài toán: “Tính giá '
-                 'trị của hai biểu thức: a) $120 - 40 : 5$; b) $(120 - 40) : 5$.”. Đúng hay sai?',
+                 'được xác định bởi Tính trong ngoặc $()$ trước và khi áp dụng cho ví dụ “Tính giá trị của '
+                 'hai biểu thức: a) $120 - 40 : 5$; b) $(120 - 40) : 5$.” ta có lời giải: a) $120 - 40 : 5 = '
+                 '120 - 8 = 112$ (chia trước, trừ sau). b) $(120 - 40) : 5 = 80 : 5 = 16$ (trong ngoặc '
+                 'trước).. Đúng hay sai?',
             'answer': True,
-            'solution': 'Khẳng định **Đúng**. Quy tắc **Có ngoặc ()** (Tính trong ngoặc $()$ trước) là kiến '
-                        'thức cốt lõi của Bài 38: Biểu thức số. Tính giá trị của biểu thức số. a) $120 - 40 '
-                        ': 5 = 120 - 8 = 112$ (chia trước, trừ sau). b) $(120 - 40) : 5 = 80 : 5 = 16$ '
-                        '(trong ngoặc trước).'},
+            'solution': 'Khẳng định **Đúng**. Đó chính là quy tắc **Có ngoặc ()** (Tính trong ngoặc $()$ '
+                        'trước) và lời giải ví dụ minh họa của Bài 38: Biểu thức số. Tính giá trị của biểu '
+                        'thức số.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 38: Biểu thức số. Tính giá trị của biểu thức số** để giải quyết '
-                 'tình huống sau: Tính giá trị của hai biểu thức: a) $120 - 40 : 5$; b) $(120 - 40) : 5$. '
-                 'Kết quả và hướng giải nào dưới đây là **đúng**?',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 38: Biểu thức số. Tính giá trị của biểu thức số** '
+                 'để giải bài toán sau: Tính giá trị của hai biểu thức: a) $120 - 40 : 5$; b) $(120 - 40) : '
+                 '5$. Cách giải và kết quả nào dưới đây là **đúng**?',
             'options': ['a) $120 - 40 : 5 = 120 - 8 = 112$ (chia trước, trừ sau). b) $(120 - 40) : 5 = 80 : '
                         '5 = 16$ (trong ngoặc trước).',
-                        'Ta có $806 = 800 + 6$ (gồm $8$ trăm, $0$ chục, $6$ đơn vị). Vì chữ số hàng trăm $8 '
-                        '> 7$ nên **$806 > 798$**.',
-                        '- $468 + 325$: $8 + 5 = 13$ (viết $3$ nhớ $1$); $6 + 2 + 1 = 9$; $4 + 3 = 7$ '
-                        '$\\rightarrow$ **$793$**. - $750 - 236$: $10 - 6 = 4$ (viết $4$ nhớ $1$); $5 - (3 + '
-                        '1) = 1$...',
-                        'Áp dụng quy tắc tìm số trừ: $\\text{Số trừ} = \\text{Số bị trừ} - \\text{Hiệu} = 85 '
-                        '- 39 = 46$. Thử lại: $85 - 46 = 39$ (đúng). Vậy số cần tìm là **$46$**.'],
+                        'a) $120 + 40 : 5 = 120 - 8 = 112$ (chia trước, trừ sau). b) $(120 - 40) : 5 = 80 : '
+                        '5 = 16$ (trong ngoặc trước).',
+                        'a) $120 - 40 : 5 = 120 - 8 = 112$ (chia trước, trừ sau). b) $(120 - 40) : 5 = 80 : '
+                        '5 = 15$ (trong ngoặc trước).',
+                        'a) $122 - 40 : 5 = 120 - 8 = 112$ (chia trước, trừ sau). b) $(120 - 40) : 5 = 80 : '
+                        '5 = 16$ (trong ngoặc trước).'],
             'answer': 0,
             'solution': 'Lời giải chi tiết theo Bài 38: Biểu thức số. Tính giá trị của biểu thức số: a) $120 '
                         '- 40 : 5 = 120 - 8 = 112$ (chia trước, trừ sau).\n'
@@ -3757,7 +4339,7 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
  {'topic': 'l3-cd06-nhan-chia-pham-vi-1000',
   'context_title': 'Chủ đề 6: Phép nhân, phép chia trong phạm vi 1 000',
   'context': 'SGK Toán 3 · Chủ đề 6: Phép nhân, phép chia trong phạm vi 1 000; biểu thức số.',
-  'title': 'Bài 39, 40: So sánh số lớn gấp mấy lần số bé và luyện tập chung',
+  'title': 'Bài 39: So sánh số lớn gấp mấy lần số bé',
   'icon': '⚖️',
   'description': 'Quy tắc tìm xem số lớn gấp mấy lần số bé và phân biệt với tìm số lớn hơn số bé bao nhiêu '
                  'đơn vị.',
@@ -3775,7 +4357,7 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             '\\text{Số bé}$.\n'
             '- Hỏi "Số lớn **gấp mấy lần** số bé?" $\\rightarrow$ Dùng phép chia: $\\text{Số lớn} : '
             '\\text{Số bé}$.',
-  'formulas': [{'category': 'I. So sánh hai số',
+  'formulas': [{'category': 'So sánh hai số',
                 'items': [{'name': 'Số lớn gấp mấy lần số bé',
                            'formula': '$\\text{Số lần} = \\text{Số lớn} : \\text{Số bé}$'},
                           {'name': 'Số lớn hơn số bé bao nhiêu',
@@ -3806,29 +4388,29 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 39, 40: So sánh số lớn gấp mấy lần số bé và luyện tập '
-                 'chung**, công thức hoặc quy tắc nào sau đây biểu diễn đúng **Số lớn gấp mấy lần số bé**?',
-            'options': ['$\\text{Hiệu} = \\text{Số lớn} - \\text{Số bé}$',
+            'q': 'Trong **Bài 39: So sánh số lớn gấp mấy lần số bé**, quy tắc hoặc công thức nào sau đây xác '
+                 'định đúng **Số lớn gấp mấy lần số bé**?',
+            'options': ['$\\text{Số lần} = \\text{Số lớn} : \\text{Số bé}$ (với dấu ngược lại)',
                         '$\\text{Số lần} = \\text{Số lớn} : \\text{Số bé}$',
-                        '$\\overline{abc} = a00 + b0 + c$',
-                        '$10 \\text{ chục} = 100$ · $10 \\text{ trăm} = 1\\,000$'],
+                        'Đảo ngược vế của quy tắc: $\\text{Số lần} = \\text{Số lớn} : \\text{Số bé}$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\text{Số lần} = \\text{Số '
+                        'lớn} : \\text{Số bé}$'],
             'answer': 1,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 39, 40: So sánh số lớn gấp mấy lần số bé và '
-                        'luyện tập chung, **Số lớn gấp mấy lần số bé** được xác định bởi: $\\text{Số lần} = '
-                        '\\text{Số lớn} : \\text{Số bé}$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 39: So sánh số lớn gấp mấy lần số bé, **Số lớn gấp '
+                        'mấy lần số bé** được xác định bởi: $\\text{Số lần} = \\text{Số lớn} : \\text{Số '
+                        'bé}$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 39, 40: So sánh số lớn gấp mấy lần số bé và luyện tập chung**, nội dung/biểu '
-                 'thức $\\text{Hiệu} = \\text{Số lớn} - \\text{Số bé}$ là quy tắc hoặc công thức của mục nào '
-                 'sau đây?',
-            'options': ['Số lớn gấp mấy lần số bé',
-                        'Phân tích số',
-                        'Số lớn hơn số bé bao nhiêu',
-                        'Số tròn trăm, tròn nghìn'],
+            'q': 'Khi học **Bài 39: So sánh số lớn gấp mấy lần số bé**, biểu thức hoặc quy tắc nào dưới đây '
+                 'biểu diễn đúng **Số lớn hơn số bé bao nhiêu**?',
+            'options': ['$\\text{Hiệu} = \\text{Số lớn} + \\text{Số bé}$',
+                        'Đảo ngược vế của quy tắc: $\\text{Hiệu} = \\text{Số lớn} - \\text{Số bé}$',
+                        '$\\text{Hiệu} = \\text{Số lớn} - \\text{Số bé}$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\text{Hiệu} = \\text{Số lớn} '
+                        '- \\text{Số bé}$'],
             'answer': 2,
-            'solution': 'Trong Bài 39, 40: So sánh số lớn gấp mấy lần số bé và luyện tập chung, biểu '
-                        'thức/quy tắc $\\text{Hiệu} = \\text{Số lớn} - \\text{Số bé}$ chính là nội dung của '
-                        '**Số lớn hơn số bé bao nhiêu**.'},
+            'solution': 'Trong Bài 39: So sánh số lớn gấp mấy lần số bé, **Số lớn hơn số bé bao nhiêu** có '
+                        'công thức/quy tắc là: $\\text{Hiệu} = \\text{Số lớn} - \\text{Số bé}$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Một sợi dây đỏ dài $2\\text{ dm}$, sợi dây xanh dài $5\\text{ cm}$. Sợi dây đỏ dài gấp mấy '
@@ -3841,16 +4423,16 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 39, 40: So sánh số lớn gấp mấy lần số bé và luyện tập chung** (Chủ đề 6: '
-                 'Phép nhân, phép chia trong phạm vi 1 000), khẳng định nào sau đây phản ánh **đúng** yêu '
-                 'cầu cần đạt và bản chất kiến thức của bài?',
+            'q': 'Để nắm vững bản chất của **Bài 39: So sánh số lớn gấp mấy lần số bé**, nhận định nào sau '
+                 'đây là **chính xác**?',
             'options': ['Biết cách tìm số lớn gấp mấy lần số bé bằng phép chia.',
-                        'Đọc, viết thành thạo các số có đến ba chữ số trong phạm vi 1 000.',
-                        'Phân tích được số có ba chữ số thành tổng các trăm, chục, đơn vị.',
-                        'So sánh và sắp xếp được các số trong phạm vi 1 000 theo thứ tự.'],
+                        'Biết cách tìm số lớn gấp mấy lần số bé bằng phép chia. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Biết cách tìm số lớn gấp mấy lần số bé bằng phép chia.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Biết cách tìm số lớn gấp mấy '
+                        'lần số bé bằng phép chia.'],
             'answer': 0,
-            'solution': 'Theo yêu cầu cần đạt của Bài 39, 40: So sánh số lớn gấp mấy lần số bé và luyện tập '
-                        'chung: Biết cách tìm số lớn gấp mấy lần số bé bằng phép chia.'},
+            'solution': 'Theo nội dung cốt lõi của Bài 39: So sánh số lớn gấp mấy lần số bé: Biết cách tìm '
+                        'số lớn gấp mấy lần số bé bằng phép chia.'},
            {'level': 'hieu',
             'type': 'tf',
             'q': 'Nhận định: "Con lợn nặng $64\\text{ kg}$, con ngỗng nặng $8\\text{ kg}$ thì con lợn nặng '
@@ -3861,32 +4443,31 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'hieu',
             'type': 'tf',
-            'q': 'Trong **Bài 39, 40: So sánh số lớn gấp mấy lần số bé và luyện tập chung**, quy tắc **Số '
-                 'lớn gấp mấy lần số bé** được xác định bởi $\\text{Số lần} = \\text{Số lớn} : \\text{Số '
-                 'bé}$ và áp dụng trực tiếp vào bài toán: “Năm nay mẹ $35$ tuổi, con $7$ tuổi. Hỏi tuổi mẹ '
-                 'gấp mấy lần tuổi con?”. Đúng hay sai?',
+            'q': 'Trong **Bài 39: So sánh số lớn gấp mấy lần số bé**, quy tắc **Số lớn gấp mấy lần số bé** '
+                 'được xác định bởi $\\text{Số lần} = \\text{Số lớn} : \\text{Số bé}$ và khi áp dụng cho ví '
+                 'dụ “Năm nay mẹ $35$ tuổi, con $7$ tuổi. Hỏi tuổi mẹ gấp mấy lần tuổi con?” ta có lời giải: '
+                 'Tuổi mẹ gấp tuổi con số lần là: $35 : 7 = 5\\text{ (lần)}$. Đáp số: **$5\\text{ lần}$**.. '
+                 'Đúng hay sai?',
             'answer': True,
-            'solution': 'Khẳng định **Đúng**. Quy tắc **Số lớn gấp mấy lần số bé** ($\\text{Số lần} = '
-                        '\\text{Số lớn} : \\text{Số bé}$) là kiến thức cốt lõi của Bài 39, 40: So sánh số '
-                        'lớn gấp mấy lần số bé và luyện tập chung. Tuổi mẹ gấp tuổi con số lần là: $35 : 7 = '
-                        '5\\text{ (lần)}$. Đáp số: **$5\\text{ lần}$**.'},
+            'solution': 'Khẳng định **Đúng**. Đó chính là quy tắc **Số lớn gấp mấy lần số bé** ($\\text{Số '
+                        'lần} = \\text{Số lớn} : \\text{Số bé}$) và lời giải ví dụ minh họa của Bài 39: So '
+                        'sánh số lớn gấp mấy lần số bé.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 39, 40: So sánh số lớn gấp mấy lần số bé và luyện tập chung** để '
-                 'giải quyết tình huống sau: Năm nay mẹ $35$ tuổi, con $7$ tuổi. Hỏi tuổi mẹ gấp mấy lần '
-                 'tuổi con? Kết quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Ta có $806 = 800 + 6$ (gồm $8$ trăm, $0$ chục, $6$ đơn vị). Vì chữ số hàng trăm $8 '
-                        '> 7$ nên **$806 > 798$**.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 39: So sánh số lớn gấp mấy lần số bé** để giải bài '
+                 'toán sau: Năm nay mẹ $35$ tuổi, con $7$ tuổi. Hỏi tuổi mẹ gấp mấy lần tuổi con? Cách giải '
+                 'và kết quả nào dưới đây là **đúng**?',
+            'options': ['Tuổi mẹ gấp tuổi con số lần là: $45 : 7 = 5\\text{ (lần)}$. Đáp số: **$5\\text{ '
+                        'lần}$**.',
                         'Tuổi mẹ gấp tuổi con số lần là: $35 : 7 = 5\\text{ (lần)}$. Đáp số: **$5\\text{ '
                         'lần}$**.',
-                        '- $468 + 325$: $8 + 5 = 13$ (viết $3$ nhớ $1$); $6 + 2 + 1 = 9$; $4 + 3 = 7$ '
-                        '$\\rightarrow$ **$793$**. - $750 - 236$: $10 - 6 = 4$ (viết $4$ nhớ $1$); $5 - (3 + '
-                        '1) = 1$...',
-                        'Áp dụng quy tắc tìm số trừ: $\\text{Số trừ} = \\text{Số bị trừ} - \\text{Hiệu} = 85 '
-                        '- 39 = 46$. Thử lại: $85 - 46 = 39$ (đúng). Vậy số cần tìm là **$46$**.'],
+                        'Tuổi mẹ gấp tuổi con số lần là: $35 : 7 = 5\\text{ (lần)}$. Đáp số: **$4\\text{ '
+                        'lần}$**.',
+                        'Tuổi mẹ gấp tuổi con số lần là: $70 : 7 = 5\\text{ (lần)}$. Đáp số: **$5\\text{ '
+                        'lần}$**.'],
             'answer': 1,
-            'solution': 'Lời giải chi tiết theo Bài 39, 40: So sánh số lớn gấp mấy lần số bé và luyện tập '
-                        'chung: Tuổi mẹ gấp tuổi con số lần là: $35 : 7 = 5\\text{ (lần)}$.\n'
+            'solution': 'Lời giải chi tiết theo Bài 39: So sánh số lớn gấp mấy lần số bé: Tuổi mẹ gấp tuổi '
+                        'con số lần là: $35 : 7 = 5\\text{ (lần)}$.\n'
                         'Đáp số: **$5\\text{ lần}$**.'},
            {'level': 'vandung',
             'type': 'short',
@@ -3916,7 +4497,7 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             '### 2. Ôn tập giải toán hai bước tính\n'
             '- Kết hợp các dạng: gấp một số lên $n$ lần, giảm một số đi $n$ lần, tìm một phần mấy của một '
             'số.',
-  'formulas': [{'category': 'I. Quan hệ phép tính',
+  'formulas': [{'category': 'Quan hệ phép tính',
                 'items': [{'name': 'Chia có dư',
                            'formula': '$\\text{Số bị chia} = \\text{Thương} \\times \\text{Số chia} + '
                                       '\\text{Số dư}$ ($0 < r < b$)'},
@@ -3947,28 +4528,36 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 41: Ôn tập phép nhân, phép chia trong phạm vi 100, 1 '
-                 '000**, công thức hoặc quy tắc nào sau đây biểu diễn đúng **Chia có dư**?',
-            'options': ['$\\text{Thừa số} = \\text{Tích} : \\text{Thừa số kia}$ · $\\text{SBC} = '
-                        '\\text{Thương} \\times \\text{SC}$',
-                        '$\\overline{abc} = a00 + b0 + c$',
+            'q': 'Trong **Bài 41: Ôn tập phép nhân, phép chia trong phạm vi 100, 1 000**, quy tắc hoặc công '
+                 'thức nào sau đây xác định đúng **Chia có dư**?',
+            'options': ['$\\text{Số bị chia} = \\text{Thương} \\times \\text{Số chia} - \\text{Số dư}$ ($0 < '
+                        'r < b$)',
+                        '$\\text{Số bị chia} = \\text{Thương} \\times \\text{Số chia} + \\text{Số dư}$ ($1 < '
+                        'r < b$)',
                         '$\\text{Số bị chia} = \\text{Thương} \\times \\text{Số chia} + \\text{Số dư}$ ($0 < '
                         'r < b$)',
-                        '$10 \\text{ chục} = 100$ · $10 \\text{ trăm} = 1\\,000$'],
+                        '$\\text{Số bị chia} = \\text{Thương} \\times \\text{Số chia} + \\text{Số dư}$ ($2 < '
+                        'r < b$)'],
             'answer': 2,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 41: Ôn tập phép nhân, phép chia trong phạm vi '
-                        '100, 1 000, **Chia có dư** được xác định bởi: $\\text{Số bị chia} = \\text{Thương} '
+            'solution': 'Theo kiến thức trọng tâm của Bài 41: Ôn tập phép nhân, phép chia trong phạm vi 100, '
+                        '1 000, **Chia có dư** được xác định bởi: $\\text{Số bị chia} = \\text{Thương} '
                         '\\times \\text{Số chia} + \\text{Số dư}$ ($0 < r < b$).'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 41: Ôn tập phép nhân, phép chia trong phạm vi 100, 1 000**, nội dung/biểu thức '
-                 '$\\text{Thừa số} = \\text{Tích} : \\text{Thừa số kia}$ · $\\text{SBC} = \\text{Thương} '
-                 '\\times \\text{SC}$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Chia có dư', 'Phân tích số', 'Số tròn trăm, tròn nghìn', 'Tìm thành phần'],
+            'q': 'Khi học **Bài 41: Ôn tập phép nhân, phép chia trong phạm vi 100, 1 000**, biểu thức hoặc '
+                 'quy tắc nào dưới đây biểu diễn đúng **Tìm thành phần**?',
+            'options': ['$\\text{Thừa số} = \\text{Tích} : \\text{Thừa số kia}$ · $\\text{SBC} = '
+                        '\\text{Thương} : \\text{SC}$',
+                        'Đảo ngược vế của quy tắc: $\\text{Thừa số} = \\text{Tích} : \\text{Thừa số kia}$ · '
+                        '$\\text{SBC} = \\text{Thương} \\times \\text{SC}$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\text{Thừa số} = \\text{Tích} '
+                        ': \\text{Thừa số kia}$ · $\\text{SBC} = \\text{Thương} \\times \\text{SC}$',
+                        '$\\text{Thừa số} = \\text{Tích} : \\text{Thừa số kia}$ · $\\text{SBC} = '
+                        '\\text{Thương} \\times \\text{SC}$'],
             'answer': 3,
-            'solution': 'Trong Bài 41: Ôn tập phép nhân, phép chia trong phạm vi 100, 1 000, biểu thức/quy '
-                        'tắc $\\text{Thừa số} = \\text{Tích} : \\text{Thừa số kia}$ · $\\text{SBC} = '
-                        '\\text{Thương} \\times \\text{SC}$ chính là nội dung của **Tìm thành phần**.'},
+            'solution': 'Trong Bài 41: Ôn tập phép nhân, phép chia trong phạm vi 100, 1 000, **Tìm thành '
+                        'phần** có công thức/quy tắc là: $\\text{Thừa số} = \\text{Tích} : \\text{Thừa số '
+                        'kia}$ · $\\text{SBC} = \\text{Thương} \\times \\text{SC}$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Phép chia $518 : 5$ có kết quả là:',
@@ -3980,15 +4569,14 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 41: Ôn tập phép nhân, phép chia trong phạm vi 100, 1 000** (Chủ đề 7: Ôn tập '
-                 'học kì 1), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức '
-                 'của bài?',
-            'options': ['Đọc, viết thành thạo các số có đến ba chữ số trong phạm vi 1 000.',
+            'q': 'Để nắm vững bản chất của **Bài 41: Ôn tập phép nhân, phép chia trong phạm vi 100, 1 000**, '
+                 'nhận định nào sau đây là **chính xác**?',
+            'options': ['Thực hiện thành thạo phép nhân, phép chia trong phạm vi $110$ và $1\\,000$.',
                         'Thực hiện thành thạo phép nhân, phép chia trong phạm vi $100$ và $1\\,000$.',
-                        'Phân tích được số có ba chữ số thành tổng các trăm, chục, đơn vị.',
-                        'So sánh và sắp xếp được các số trong phạm vi 1 000 theo thứ tự.'],
+                        'Thực hiện thành thạo phép nhân, phép chia trong phạm vi $100$ và $1\\,1$.',
+                        'Thực hiện thành thạo phép nhân, phép chia trong phạm vi $102$ và $1\\,000$.'],
             'answer': 1,
-            'solution': 'Theo yêu cầu cần đạt của Bài 41: Ôn tập phép nhân, phép chia trong phạm vi 100, 1 '
+            'solution': 'Theo nội dung cốt lõi của Bài 41: Ôn tập phép nhân, phép chia trong phạm vi 100, 1 '
                         '000: Thực hiện thành thạo phép nhân, phép chia trong phạm vi $100$ và $1\\,000$.'},
            {'level': 'hieu',
             'type': 'tf',
@@ -4001,30 +4589,28 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'type': 'tf',
             'q': 'Trong **Bài 41: Ôn tập phép nhân, phép chia trong phạm vi 100, 1 000**, quy tắc **Chia có '
                  'dư** được xác định bởi $\\text{Số bị chia} = \\text{Thương} \\times \\text{Số chia} + '
-                 '\\text{Số dư}$ ($0 < r < b$) và áp dụng trực tiếp vào bài toán: “Một trang trại có $135$ '
-                 'con gà, số vịt bằng số gà giảm đi $3$ lần. Hỏi trang trại có tất cả bao nhiêu con gà và '
-                 'vịt?”. Đúng hay sai?',
+                 '\\text{Số dư}$ ($0 < r < b$) và khi áp dụng cho ví dụ “Một trang trại có $135$ con gà, số '
+                 'vịt bằng số gà giảm đi $3$ lần. Hỏi trang trại có tất cả bao nhiêu con gà và vịt?” ta có '
+                 'lời giải: Số con vịt là: $135 : 3 = 45\\text{ (con)}$. Tổng số gà và vịt là: $135 + 45 = '
+                 '180\\text{ (con)}$. Đáp số: **$180\\text{ con}$**.. Đúng hay sai?',
             'answer': True,
-            'solution': 'Khẳng định **Đúng**. Quy tắc **Chia có dư** ($\\text{Số bị chia} = \\text{Thương} '
-                        '\\times \\text{Số chia} + \\text{Số dư}$ ($0 < r < b$)) là kiến thức cốt lõi của '
-                        'Bài 41: Ôn tập phép nhân, phép chia trong phạm vi 100, 1 000. Số con vịt là: $135 : '
-                        '3 = 45\\text{ (con)}$. Tổng số gà và vịt là: $135 + 45 = 180\\text{ (con)}$. Đáp '
-                        'số: **$180\\text{ con}$**.'},
+            'solution': 'Khẳng định **Đúng**. Đó chính là quy tắc **Chia có dư** ($\\text{Số bị chia} = '
+                        '\\text{Thương} \\times \\text{Số chia} + \\text{Số dư}$ ($0 < r < b$)) và lời giải '
+                        'ví dụ minh họa của Bài 41: Ôn tập phép nhân, phép chia trong phạm vi 100, 1 000.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 41: Ôn tập phép nhân, phép chia trong phạm vi 100, 1 000** để '
-                 'giải quyết tình huống sau: Một trang trại có $135$ con gà, số vịt bằng số gà giảm đi $3$ '
-                 'lần. Hỏi trang trại có tất cả bao nhiêu con gà và vịt? Kết quả và hướng giải nào dưới đây '
-                 'là **đúng**?',
-            'options': ['Ta có $806 = 800 + 6$ (gồm $8$ trăm, $0$ chục, $6$ đơn vị). Vì chữ số hàng trăm $8 '
-                        '> 7$ nên **$806 > 798$**.',
-                        '- $468 + 325$: $8 + 5 = 13$ (viết $3$ nhớ $1$); $6 + 2 + 1 = 9$; $4 + 3 = 7$ '
-                        '$\\rightarrow$ **$793$**. - $750 - 236$: $10 - 6 = 4$ (viết $4$ nhớ $1$); $5 - (3 + '
-                        '1) = 1$...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 41: Ôn tập phép nhân, phép chia trong phạm vi 100, '
+                 '1 000** để giải bài toán sau: Một trang trại có $135$ con gà, số vịt bằng số gà giảm đi '
+                 '$3$ lần. Hỏi trang trại có tất cả bao nhiêu con gà và vịt? Cách giải và kết quả nào dưới '
+                 'đây là **đúng**?',
+            'options': ['Số con vịt là: $135 : 3 = 45\\text{ (con)}$. Tổng số gà và vịt là: $135 - 45 = '
+                        '180\\text{ (con)}$. Đáp số: **$180\\text{ con}$**.',
+                        'Số con vịt là: $135 : 3 = 45\\text{ (con)}$. Tổng số gà và vịt là: $135 + 45 = '
+                        '180\\text{ (con)}$. Đáp số: **$179\\text{ con}$**.',
                         'Số con vịt là: $135 : 3 = 45\\text{ (con)}$. Tổng số gà và vịt là: $135 + 45 = '
                         '180\\text{ (con)}$. Đáp số: **$180\\text{ con}$**.',
-                        'Áp dụng quy tắc tìm số trừ: $\\text{Số trừ} = \\text{Số bị trừ} - \\text{Hiệu} = 85 '
-                        '- 39 = 46$. Thử lại: $85 - 46 = 39$ (đúng). Vậy số cần tìm là **$46$**.'],
+                        'Số con vịt là: $137 : 3 = 45\\text{ (con)}$. Tổng số gà và vịt là: $135 + 45 = '
+                        '180\\text{ (con)}$. Đáp số: **$180\\text{ con}$**.'],
             'answer': 2,
             'solution': 'Lời giải chi tiết theo Bài 41: Ôn tập phép nhân, phép chia trong phạm vi 100, 1 '
                         '000: Số con vịt là: $135 : 3 = 45\\text{ (con)}$.\n'
@@ -4056,7 +4642,7 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             '- Dấu ngoặc làm thay đổi thứ tự thực hiện phép tính nên làm thay đổi giá trị của biểu thức.\n'
             '### 2. Vận dụng vào giải toán\n'
             '- Có thể gộp hai bước tính thành một biểu thức số duy nhất để tính kết quả.',
-  'formulas': [{'category': 'I. Thứ tự ưu tiên',
+  'formulas': [{'category': 'Thứ tự ưu tiên',
                 'items': [{'name': 'Quy tắc 3 bước',
                            'formula': '$() \\rightarrow \\times, : \\rightarrow +, -$'},
                           {'name': 'Cùng cấp', 'formula': 'Trái $\\rightarrow$ Phải'}]}],
@@ -4081,23 +4667,27 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 42: Ôn tập biểu thức số**, công thức hoặc quy tắc nào '
-                 'sau đây biểu diễn đúng **Quy tắc 3 bước**?',
-            'options': ['Trái $\\rightarrow$ Phải',
-                        '$\\overline{abc} = a00 + b0 + c$',
-                        '$10 \\text{ chục} = 100$ · $10 \\text{ trăm} = 1\\,000$',
+            'q': 'Trong **Bài 42: Ôn tập biểu thức số**, quy tắc hoặc công thức nào sau đây xác định đúng '
+                 '**Quy tắc 3 bước**?',
+            'options': ['$() \\rightarrow \\times, : \\rightarrow +, -$ (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: $() \\rightarrow \\times, : \\rightarrow +, -$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $() \\rightarrow \\times, : '
+                        '\\rightarrow +, -$',
                         '$() \\rightarrow \\times, : \\rightarrow +, -$'],
             'answer': 3,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 42: Ôn tập biểu thức số, **Quy tắc 3 bước** '
-                        'được xác định bởi: $() \\rightarrow \\times, : \\rightarrow +, -$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 42: Ôn tập biểu thức số, **Quy tắc 3 bước** được '
+                        'xác định bởi: $() \\rightarrow \\times, : \\rightarrow +, -$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 42: Ôn tập biểu thức số**, nội dung/biểu thức Trái $\\rightarrow$ Phải là quy '
-                 'tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Cùng cấp', 'Quy tắc 3 bước', 'Phân tích số', 'Số tròn trăm, tròn nghìn'],
+            'q': 'Khi học **Bài 42: Ôn tập biểu thức số**, biểu thức hoặc quy tắc nào dưới đây biểu diễn '
+                 'đúng **Cùng cấp**?',
+            'options': ['Trái $\\rightarrow$ Phải',
+                        'Trái $\\rightarrow$ Phải (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Trái $\\rightarrow$ Phải',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Trái $\\rightarrow$ Phải'],
             'answer': 0,
-            'solution': 'Trong Bài 42: Ôn tập biểu thức số, biểu thức/quy tắc Trái $\\rightarrow$ Phải chính '
-                        'là nội dung của **Cùng cấp**.'},
+            'solution': 'Trong Bài 42: Ôn tập biểu thức số, **Cùng cấp** có công thức/quy tắc là: Trái '
+                        '$\\rightarrow$ Phải.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Giá trị của biểu thức $90 : 3 \\times 2$ là:',
@@ -4109,15 +4699,18 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 42: Ôn tập biểu thức số** (Chủ đề 7: Ôn tập học kì 1), khẳng định nào sau '
-                 'đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Đọc, viết thành thạo các số có đến ba chữ số trong phạm vi 1 000.',
-                        'Phân tích được số có ba chữ số thành tổng các trăm, chục, đơn vị.',
+            'q': 'Để nắm vững bản chất của **Bài 42: Ôn tập biểu thức số**, nhận định nào sau đây là **chính '
+                 'xác**?',
+            'options': ['Tính đúng giá trị biểu thức số có đến hai dấu phép tính (có hoặc không có dấu '
+                        'ngoặc). (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Tính đúng giá trị biểu thức số có đến hai dấu phép tính '
+                        '(có hoặc không có dấu ngoặc).',
                         'Tính đúng giá trị biểu thức số có đến hai dấu phép tính (có hoặc không có dấu '
                         'ngoặc).',
-                        'So sánh và sắp xếp được các số trong phạm vi 1 000 theo thứ tự.'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Tính đúng giá trị biểu thức số '
+                        'có đến hai dấu phép tính (có hoặc không có dấu ngoặc).'],
             'answer': 2,
-            'solution': 'Theo yêu cầu cần đạt của Bài 42: Ôn tập biểu thức số: Tính đúng giá trị biểu thức '
+            'solution': 'Theo nội dung cốt lõi của Bài 42: Ôn tập biểu thức số: Tính đúng giá trị biểu thức '
                         'số có đến hai dấu phép tính (có hoặc không có dấu ngoặc).'},
            {'level': 'hieu',
             'type': 'tf',
@@ -4129,24 +4722,21 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
            {'level': 'hieu',
             'type': 'tf',
             'q': 'Trong **Bài 42: Ôn tập biểu thức số**, quy tắc **Quy tắc 3 bước** được xác định bởi $() '
-                 '\\rightarrow \\times, : \\rightarrow +, -$ và áp dụng trực tiếp vào bài toán: “Tính giá '
-                 'trị của biểu thức: a) $240 - 35 \\times 4$; b) $(136 + 64) : 5$.”. Đúng hay sai?',
+                 '\\rightarrow \\times, : \\rightarrow +, -$ và khi áp dụng cho ví dụ “Tính giá trị của biểu '
+                 'thức: a) $240 - 35 \\times 4$; b) $(136 + 64) : 5$.” ta có lời giải: a) $240 - 35 \\times '
+                 '4 = 240 - 140 = 100$. b) $(136 + 64) : 5 = 200 : 5 = 40$.. Đúng hay sai?',
             'answer': True,
-            'solution': 'Khẳng định **Đúng**. Quy tắc **Quy tắc 3 bước** ($() \\rightarrow \\times, : '
-                        '\\rightarrow +, -$) là kiến thức cốt lõi của Bài 42: Ôn tập biểu thức số. a) $240 - '
-                        '35 \\times 4 = 240 - 140 = 100$. b) $(136 + 64) : 5 = 200 : 5 = 40$.'},
+            'solution': 'Khẳng định **Đúng**. Đó chính là quy tắc **Quy tắc 3 bước** ($() \\rightarrow '
+                        '\\times, : \\rightarrow +, -$) và lời giải ví dụ minh họa của Bài 42: Ôn tập biểu '
+                        'thức số.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 42: Ôn tập biểu thức số** để giải quyết tình huống sau: Tính giá '
-                 'trị của biểu thức: a) $240 - 35 \\times 4$; b) $(136 + 64) : 5$. Kết quả và hướng giải nào '
-                 'dưới đây là **đúng**?',
-            'options': ['Ta có $806 = 800 + 6$ (gồm $8$ trăm, $0$ chục, $6$ đơn vị). Vì chữ số hàng trăm $8 '
-                        '> 7$ nên **$806 > 798$**.',
-                        '- $468 + 325$: $8 + 5 = 13$ (viết $3$ nhớ $1$); $6 + 2 + 1 = 9$; $4 + 3 = 7$ '
-                        '$\\rightarrow$ **$793$**. - $750 - 236$: $10 - 6 = 4$ (viết $4$ nhớ $1$); $5 - (3 + '
-                        '1) = 1$...',
-                        'Áp dụng quy tắc tìm số trừ: $\\text{Số trừ} = \\text{Số bị trừ} - \\text{Hiệu} = 85 '
-                        '- 39 = 46$. Thử lại: $85 - 46 = 39$ (đúng). Vậy số cần tìm là **$46$**.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 42: Ôn tập biểu thức số** để giải bài toán sau: '
+                 'Tính giá trị của biểu thức: a) $240 - 35 \\times 4$; b) $(136 + 64) : 5$. Cách giải và kết '
+                 'quả nào dưới đây là **đúng**?',
+            'options': ['a) $240 - 35 \\times 4 = 240 - 140 = 100$. b) $(136 - 64) : 5 = 200 : 5 = 40$.',
+                        'a) $240 - 35 \\times 4 = 240 - 140 = 100$. b) $(136 + 64) : 5 = 200 : 5 = 39$.',
+                        'a) $242 - 35 \\times 4 = 240 - 140 = 100$. b) $(136 + 64) : 5 = 200 : 5 = 40$.',
                         'a) $240 - 35 \\times 4 = 240 - 140 = 100$. b) $(136 + 64) : 5 = 200 : 5 = 40$.'],
             'answer': 3,
             'solution': 'Lời giải chi tiết theo Bài 42: Ôn tập biểu thức số: a) $240 - 35 \\times 4 = 240 - '
@@ -4165,7 +4755,7 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
  {'topic': 'l3-cd07-on-tap-hoc-ki-1',
   'context_title': 'Chủ đề 7: Ôn tập học kì 1',
   'context': 'SGK Toán 3 · Chủ đề 7: Ôn tập tổng hợp kiến thức học kì 1.',
-  'title': 'Bài 43, 44: Ôn tập hình học, đo lường và ôn tập chung',
+  'title': 'Bài 43: Ôn tập hình học, đo lường',
   'icon': '📐',
   'description': 'Hệ thống hóa kiến thức về trung điểm, hình tròn, góc vuông, hình phẳng, hình khối và các '
                  'đơn vị mm, g, ml, độ C.',
@@ -4183,11 +4773,10 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             '- Hình vuông có $4$ góc vuông và $4$ cạnh bằng nhau.\n'
             '### 2. Tóm tắt đo lường học kì 1\n'
             '- Đổi về cùng đơn vị đo trước khi thực hiện các phép cộng, trừ hoặc so sánh.',
-  'formulas': [{'category': 'I. Hình học',
+  'formulas': [{'category': 'Công thức & Quy tắc trọng tâm: Ôn tập hình học, đo lường',
                 'items': [{'name': 'Trung điểm & Hình tròn',
-                           'formula': '$MA = MB = AB : 2$ · $d = 2 \\times r$'}]},
-               {'category': 'II. Đo lường',
-                'items': [{'name': 'Quy đổi chuẩn',
+                           'formula': '$MA = MB = AB : 2$ · $d = 2 \\times r$'},
+                          {'name': 'Quy đổi chuẩn',
                            'formula': '$1\\text{ cm} = 10\\text{ mm}$ · $1\\text{ kg} = 1\\,000\\text{ g}$ · '
                                       '$1\\text{ l} = 1\\,000\\text{ ml}$'}]}],
   'example': 'Hình tròn tâm $O$ có đường kính $16\\text{ cm}$. Tính bán kính của hình tròn đó theo đơn vị '
@@ -4213,30 +4802,30 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 43, 44: Ôn tập hình học, đo lường và ôn tập chung**, '
-                 'công thức hoặc quy tắc nào sau đây biểu diễn đúng **Trung điểm & Hình tròn**?',
+            'q': 'Trong **Bài 43: Ôn tập hình học, đo lường**, quy tắc hoặc công thức nào sau đây xác định '
+                 'đúng **Trung điểm & Hình tròn**?',
             'options': ['$MA = MB = AB : 2$ · $d = 2 \\times r$',
-                        '$1\\text{ cm} = 10\\text{ mm}$ · $1\\text{ kg} = 1\\,000\\text{ g}$ · $1\\text{ l} '
-                        '= 1\\,000\\text{ ml}$',
-                        '$\\overline{abc} = a00 + b0 + c$',
-                        '$10 \\text{ chục} = 100$ · $10 \\text{ trăm} = 1\\,000$'],
+                        '$MA = MB = AB : 2$ · $d = 2 : r$',
+                        '$MA = MB = AB : 2$ · $d = 1 \\times r$',
+                        '$MA = MB = AB : 4$ · $d = 2 \\times r$'],
             'answer': 0,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 43, 44: Ôn tập hình học, đo lường và ôn tập '
-                        'chung, **Trung điểm & Hình tròn** được xác định bởi: $MA = MB = AB : 2$ · $d = 2 '
-                        '\\times r$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 43: Ôn tập hình học, đo lường, **Trung điểm & Hình '
+                        'tròn** được xác định bởi: $MA = MB = AB : 2$ · $d = 2 \\times r$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 43, 44: Ôn tập hình học, đo lường và ôn tập chung**, nội dung/biểu thức '
-                 '$1\\text{ cm} = 10\\text{ mm}$ · $1\\text{ kg} = 1\\,000\\text{ g}$ · $1\\text{ l} = '
-                 '1\\,000\\text{ ml}$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Trung điểm & Hình tròn',
-                        'Quy đổi chuẩn',
-                        'Phân tích số',
-                        'Số tròn trăm, tròn nghìn'],
-            'answer': 1,
-            'solution': 'Trong Bài 43, 44: Ôn tập hình học, đo lường và ôn tập chung, biểu thức/quy tắc '
+            'q': 'Khi học **Bài 43: Ôn tập hình học, đo lường**, biểu thức hoặc quy tắc nào dưới đây biểu '
+                 'diễn đúng **Quy đổi chuẩn**?',
+            'options': ['$2\\text{ cm} = 10\\text{ mm}$ · $1\\text{ kg} = 1\\,000\\text{ g}$ · $1\\text{ l} '
+                        '= 1\\,000\\text{ ml}$',
                         '$1\\text{ cm} = 10\\text{ mm}$ · $1\\text{ kg} = 1\\,000\\text{ g}$ · $1\\text{ l} '
-                        '= 1\\,000\\text{ ml}$ chính là nội dung của **Quy đổi chuẩn**.'},
+                        '= 1\\,000\\text{ ml}$',
+                        '$1\\text{ cm} = 10\\text{ mm}$ · $1\\text{ kg} = 1\\,000\\text{ g}$ · $1\\text{ l} '
+                        '= 1\\,1\\text{ ml}$',
+                        '$MA = MB = AB : 2$ · $d = 2 \\times r$'],
+            'answer': 1,
+            'solution': 'Trong Bài 43: Ôn tập hình học, đo lường, **Quy đổi chuẩn** có công thức/quy tắc là: '
+                        '$1\\text{ cm} = 10\\text{ mm}$ · $1\\text{ kg} = 1\\,000\\text{ g}$ · $1\\text{ l} '
+                        '= 1\\,000\\text{ ml}$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Một chai dầu ăn chứa $1\\text{ l}$, mẹ đã dùng hết $350\\text{ ml}$. Lượng dầu ăn còn lại '
@@ -4249,18 +4838,21 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 43, 44: Ôn tập hình học, đo lường và ôn tập chung** (Chủ đề 7: Ôn tập học kì '
-                 '1), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của '
-                 'bài?',
-            'options': ['Đọc, viết thành thạo các số có đến ba chữ số trong phạm vi 1 000.',
-                        'Phân tích được số có ba chữ số thành tổng các trăm, chục, đơn vị.',
-                        'So sánh và sắp xếp được các số trong phạm vi 1 000 theo thứ tự.',
+            'q': 'Để nắm vững bản chất của **Bài 43: Ôn tập hình học, đo lường**, nhận định nào sau đây là '
+                 '**chính xác**?',
+            'options': ['Xác định đúng trung điểm, tâm, bán kính, đường kính, góc vuông, hình chữ nhật, hình '
+                        'vuông, khối lập phương, khối hộp chữ nhật. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Xác định đúng trung điểm, tâm, bán kính, đường kính, góc '
+                        'vuông, hình chữ nhật, hình vuông, khối lập phương, khối hộp chữ nhật.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Xác định đúng trung điểm, tâm, '
+                        'bán kính, đường kính, góc vuông, hình chữ nhật, hình vuông, khối lập phương, khối '
+                        'hộp chữ nhật.',
                         'Xác định đúng trung điểm, tâm, bán kính, đường kính, góc vuông, hình chữ nhật, hình '
                         'vuông, khối lập phương, khối hộp chữ nhật.'],
             'answer': 3,
-            'solution': 'Theo yêu cầu cần đạt của Bài 43, 44: Ôn tập hình học, đo lường và ôn tập chung: Xác '
-                        'định đúng trung điểm, tâm, bán kính, đường kính, góc vuông, hình chữ nhật, hình '
-                        'vuông, khối lập phương, khối hộp chữ nhật.'},
+            'solution': 'Theo nội dung cốt lõi của Bài 43: Ôn tập hình học, đo lường: Xác định đúng trung '
+                        'điểm, tâm, bán kính, đường kính, góc vuông, hình chữ nhật, hình vuông, khối lập '
+                        'phương, khối hộp chữ nhật.'},
            {'level': 'hieu',
             'type': 'tf',
             'q': 'Nhận định: "Khối hộp chữ nhật có $8$ đỉnh, $12$ cạnh và $6$ mặt."',
@@ -4270,32 +4862,31 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'hieu',
             'type': 'tf',
-            'q': 'Trong **Bài 43, 44: Ôn tập hình học, đo lường và ôn tập chung**, quy tắc **Trung điểm & '
-                 'Hình tròn** được xác định bởi $MA = MB = AB : 2$ · $d = 2 \\times r$ và áp dụng trực tiếp '
-                 'vào bài toán: “Hình tròn tâm $O$ có đường kính $16\\text{ cm}$. Tính bán kính của hình '
-                 'tròn đó theo đơn vị mi-li-mét.”. Đúng hay sai?',
+            'q': 'Trong **Bài 43: Ôn tập hình học, đo lường**, quy tắc **Trung điểm & Hình tròn** được xác '
+                 'định bởi $MA = MB = AB : 2$ · $d = 2 \\times r$ và khi áp dụng cho ví dụ “Hình tròn tâm '
+                 '$O$ có đường kính $16\\text{ cm}$. Tính bán kính của hình tròn đó theo đơn vị mi-li-mét.” '
+                 'ta có lời giải: Bán kính của hình tròn là: $16 : 2 = 8\\text{ (cm)}$. Đổi sang mi-li-mét: '
+                 '$8\\text{ cm} = 80\\text{ mm}$.. Đúng hay sai?',
             'answer': True,
-            'solution': 'Khẳng định **Đúng**. Quy tắc **Trung điểm & Hình tròn** ($MA = MB = AB : 2$ · $d = '
-                        '2 \\times r$) là kiến thức cốt lõi của Bài 43, 44: Ôn tập hình học, đo lường và ôn '
-                        'tập chung. Bán kính của hình tròn là: $16 : 2 = 8\\text{ (cm)}$. Đổi sang '
-                        'mi-li-mét: $8\\text{ cm} = 80\\text{ mm}$.'},
+            'solution': 'Khẳng định **Đúng**. Đó chính là quy tắc **Trung điểm & Hình tròn** ($MA = MB = AB '
+                        ': 2$ · $d = 2 \\times r$) và lời giải ví dụ minh họa của Bài 43: Ôn tập hình học, '
+                        'đo lường.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 43, 44: Ôn tập hình học, đo lường và ôn tập chung** để giải quyết '
-                 'tình huống sau: Hình tròn tâm $O$ có đường kính $16\\text{ cm}$. Tính bán kính của hình '
-                 'tròn đó theo đơn vị mi-li-mét. Kết quả và hướng giải nào dưới đây là **đúng**?',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 43: Ôn tập hình học, đo lường** để giải bài toán '
+                 'sau: Hình tròn tâm $O$ có đường kính $16\\text{ cm}$. Tính bán kính của hình tròn đó theo '
+                 'đơn vị mi-li-mét. Cách giải và kết quả nào dưới đây là **đúng**?',
             'options': ['Bán kính của hình tròn là: $16 : 2 = 8\\text{ (cm)}$. Đổi sang mi-li-mét: $8\\text{ '
                         'cm} = 80\\text{ mm}$.',
-                        'Ta có $806 = 800 + 6$ (gồm $8$ trăm, $0$ chục, $6$ đơn vị). Vì chữ số hàng trăm $8 '
-                        '> 7$ nên **$806 > 798$**.',
-                        '- $468 + 325$: $8 + 5 = 13$ (viết $3$ nhớ $1$); $6 + 2 + 1 = 9$; $4 + 3 = 7$ '
-                        '$\\rightarrow$ **$793$**. - $750 - 236$: $10 - 6 = 4$ (viết $4$ nhớ $1$); $5 - (3 + '
-                        '1) = 1$...',
-                        'Áp dụng quy tắc tìm số trừ: $\\text{Số trừ} = \\text{Số bị trừ} - \\text{Hiệu} = 85 '
-                        '- 39 = 46$. Thử lại: $85 - 46 = 39$ (đúng). Vậy số cần tìm là **$46$**.'],
+                        'Bán kính của hình tròn là: $17 : 2 = 8\\text{ (cm)}$. Đổi sang mi-li-mét: $8\\text{ '
+                        'cm} = 80\\text{ mm}$.',
+                        'Bán kính của hình tròn là: $16 : 2 = 8\\text{ (cm)}$. Đổi sang mi-li-mét: $8\\text{ '
+                        'cm} = 79\\text{ mm}$.',
+                        'Bán kính của hình tròn là: $32 : 2 = 8\\text{ (cm)}$. Đổi sang mi-li-mét: $8\\text{ '
+                        'cm} = 80\\text{ mm}$.'],
             'answer': 0,
-            'solution': 'Lời giải chi tiết theo Bài 43, 44: Ôn tập hình học, đo lường và ôn tập chung: Bán '
-                        'kính của hình tròn là: $16 : 2 = 8\\text{ (cm)}$.\n'
+            'solution': 'Lời giải chi tiết theo Bài 43: Ôn tập hình học, đo lường: Bán kính của hình tròn '
+                        'là: $16 : 2 = 8\\text{ (cm)}$.\n'
                         'Đổi sang mi-li-mét: $8\\text{ cm} = 80\\text{ mm}$.'},
            {'level': 'vandung',
             'type': 'short',
@@ -4328,7 +4919,7 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'không trăm linh bảy".\n'
             '### 2. Cấu tạo thập phân của số\n'
             '- Ví dụ: $3\\,725 = 3\\,000 + 700 + 20 + 5$.',
-  'formulas': [{'category': 'I. Cấu tạo số có bốn chữ số',
+  'formulas': [{'category': 'Cấu tạo số có bốn chữ số',
                 'items': [{'name': 'Khai triển tổng',
                            'formula': '$\\overline{abcd} = a \\times 1\\,000 + b \\times 100 + c \\times 10 '
                                       '+ d$'},
@@ -4355,24 +4946,27 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 45: Các số có bốn chữ số. Số 10 000**, công thức hoặc '
-                 'quy tắc nào sau đây biểu diễn đúng **Khai triển tổng**?',
-            'options': ['$10 \\text{ nghìn} = 10\\,000$ · $9\\,999 + 1 = 10\\,000$',
+            'q': 'Trong **Bài 45: Các số có bốn chữ số. Số 10 000**, quy tắc hoặc công thức nào sau đây xác '
+                 'định đúng **Khai triển tổng**?',
+            'options': ['$\\overline{abcd} = a \\times 1\\,000 - b \\times 100 + c \\times 10 + d$',
                         '$\\overline{abcd} = a \\times 1\\,000 + b \\times 100 + c \\times 10 + d$',
-                        '$\\overline{abc} = a00 + b0 + c$',
-                        '$10 \\text{ chục} = 100$ · $10 \\text{ trăm} = 1\\,000$'],
+                        '$\\overline{abcd} = a \\times 1\\,000 + b \\times 100 + c \\times 9 + d$',
+                        '$\\overline{abcd} = a \\times 2\\,000 + b \\times 100 + c \\times 10 + d$'],
             'answer': 1,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 45: Các số có bốn chữ số. Số 10 000, **Khai '
-                        'triển tổng** được xác định bởi: $\\overline{abcd} = a \\times 1\\,000 + b \\times '
-                        '100 + c \\times 10 + d$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 45: Các số có bốn chữ số. Số 10 000, **Khai triển '
+                        'tổng** được xác định bởi: $\\overline{abcd} = a \\times 1\\,000 + b \\times 100 + c '
+                        '\\times 10 + d$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 45: Các số có bốn chữ số. Số 10 000**, nội dung/biểu thức $10 \\text{ nghìn} = '
-                 '10\\,000$ · $9\\,999 + 1 = 10\\,000$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Khai triển tổng', 'Phân tích số', 'Số mười nghìn', 'Số tròn trăm, tròn nghìn'],
+            'q': 'Khi học **Bài 45: Các số có bốn chữ số. Số 10 000**, biểu thức hoặc quy tắc nào dưới đây '
+                 'biểu diễn đúng **Số mười nghìn**?',
+            'options': ['$10 \\text{ nghìn} = 10\\,000$ · $9\\,999 - 1 = 10\\,000$',
+                        '$10 \\text{ nghìn} = 10\\,000$ · $9\\,999 + 1 = 10\\,1$',
+                        '$10 \\text{ nghìn} = 10\\,000$ · $9\\,999 + 1 = 10\\,000$',
+                        '$20 \\text{ nghìn} = 10\\,000$ · $9\\,999 + 1 = 10\\,000$'],
             'answer': 2,
-            'solution': 'Trong Bài 45: Các số có bốn chữ số. Số 10 000, biểu thức/quy tắc $10 \\text{ nghìn} '
-                        '= 10\\,000$ · $9\\,999 + 1 = 10\\,000$ chính là nội dung của **Số mười nghìn**.'},
+            'solution': 'Trong Bài 45: Các số có bốn chữ số. Số 10 000, **Số mười nghìn** có công thức/quy '
+                        'tắc là: $10 \\text{ nghìn} = 10\\,000$ · $9\\,999 + 1 = 10\\,000$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Số $3\\,082$ gồm:',
@@ -4386,14 +4980,14 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 45: Các số có bốn chữ số. Số 10 000** (Chủ đề 8: Các số đến 10 000), khẳng '
-                 'định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
+            'q': 'Để nắm vững bản chất của **Bài 45: Các số có bốn chữ số. Số 10 000**, nhận định nào sau '
+                 'đây là **chính xác**?',
             'options': ['Đọc, viết được các số có bốn chữ số và số $10\\,000$.',
-                        'Đọc, viết thành thạo các số có đến ba chữ số trong phạm vi 1 000.',
-                        'Phân tích được số có ba chữ số thành tổng các trăm, chục, đơn vị.',
-                        'So sánh và sắp xếp được các số trong phạm vi 1 000 theo thứ tự.'],
+                        'Đọc, viết được các số có bốn chữ số và số $11\\,000$.',
+                        'Đọc, viết được các số có bốn chữ số và số $10\\,1$.',
+                        'Đọc, viết được các số có bốn chữ số và số $20\\,000$.'],
             'answer': 0,
-            'solution': 'Theo yêu cầu cần đạt của Bài 45: Các số có bốn chữ số. Số 10 000: Đọc, viết được '
+            'solution': 'Theo nội dung cốt lõi của Bài 45: Các số có bốn chữ số. Số 10 000: Đọc, viết được '
                         'các số có bốn chữ số và số $10\\,000$.'},
            {'level': 'hieu',
             'type': 'tf',
@@ -4405,27 +4999,23 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
            {'level': 'hieu',
             'type': 'tf',
             'q': 'Trong **Bài 45: Các số có bốn chữ số. Số 10 000**, quy tắc **Khai triển tổng** được xác '
-                 'định bởi $\\overline{abcd} = a \\times 1\\,000 + b \\times 100 + c \\times 10 + d$ và áp '
-                 'dụng trực tiếp vào bài toán: “Viết số gồm $6$ nghìn, $2$ trăm, $0$ chục, $4$ đơn vị và '
-                 'viết số đó thành tổng.”. Đúng hay sai?',
+                 'định bởi $\\overline{abcd} = a \\times 1\\,000 + b \\times 100 + c \\times 10 + d$ và khi '
+                 'áp dụng cho ví dụ “Viết số gồm $6$ nghìn, $2$ trăm, $0$ chục, $4$ đơn vị và viết số đó '
+                 'thành tổng.” ta có lời giải: Số đó viết là **$6\\,204$**. Viết thành tổng: $6\\,204 = '
+                 '6\\,000 + 200 + 4$.. Đúng hay sai?',
             'answer': True,
-            'solution': 'Khẳng định **Đúng**. Quy tắc **Khai triển tổng** ($\\overline{abcd} = a \\times '
-                        '1\\,000 + b \\times 100 + c \\times 10 + d$) là kiến thức cốt lõi của Bài 45: Các '
-                        'số có bốn chữ số. Số 10 000. Số đó viết là **$6\\,204$**. Viết thành tổng: $6\\,204 '
-                        '= 6\\,000 + 200 + 4$.'},
+            'solution': 'Khẳng định **Đúng**. Đó chính là quy tắc **Khai triển tổng** ($\\overline{abcd} = a '
+                        '\\times 1\\,000 + b \\times 100 + c \\times 10 + d$) và lời giải ví dụ minh họa của '
+                        'Bài 45: Các số có bốn chữ số. Số 10 000.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 45: Các số có bốn chữ số. Số 10 000** để giải quyết tình huống '
-                 'sau: Viết số gồm $6$ nghìn, $2$ trăm, $0$ chục, $4$ đơn vị và viết số đó thành tổng. Kết '
-                 'quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Ta có $806 = 800 + 6$ (gồm $8$ trăm, $0$ chục, $6$ đơn vị). Vì chữ số hàng trăm $8 '
-                        '> 7$ nên **$806 > 798$**.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 45: Các số có bốn chữ số. Số 10 000** để giải bài '
+                 'toán sau: Viết số gồm $6$ nghìn, $2$ trăm, $0$ chục, $4$ đơn vị và viết số đó thành tổng. '
+                 'Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Số đó viết là **$6\\,204$**. Viết thành tổng: $6\\,204 = 6\\,000 - 200 + 4$.',
                         'Số đó viết là **$6\\,204$**. Viết thành tổng: $6\\,204 = 6\\,000 + 200 + 4$.',
-                        '- $468 + 325$: $8 + 5 = 13$ (viết $3$ nhớ $1$); $6 + 2 + 1 = 9$; $4 + 3 = 7$ '
-                        '$\\rightarrow$ **$793$**. - $750 - 236$: $10 - 6 = 4$ (viết $4$ nhớ $1$); $5 - (3 + '
-                        '1) = 1$...',
-                        'Áp dụng quy tắc tìm số trừ: $\\text{Số trừ} = \\text{Số bị trừ} - \\text{Hiệu} = 85 '
-                        '- 39 = 46$. Thử lại: $85 - 46 = 39$ (đúng). Vậy số cần tìm là **$46$**.'],
+                        'Số đó viết là **$6\\,204$**. Viết thành tổng: $6\\,204 = 6\\,000 + 200 + 3$.',
+                        'Số đó viết là **$12\\,204$**. Viết thành tổng: $6\\,204 = 6\\,000 + 200 + 4$.'],
             'answer': 1,
             'solution': 'Lời giải chi tiết theo Bài 45: Các số có bốn chữ số. Số 10 000: Số đó viết là '
                         '**$6\\,204$**.\n'
@@ -4457,7 +5047,7 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             '- Nếu cùng hàng nghìn thì so sánh hàng trăm: $4\\,320 > 4\\,230$ vì $3 > 2$.\n'
             '- Nếu cùng hàng nghìn, hàng trăm thì so sánh hàng chục rồi đến hàng đơn vị: $4\\,320 > 4\\,302$ '
             'vì $2 > 0$.',
-  'formulas': [{'category': 'I. Quy tắc so sánh',
+  'formulas': [{'category': 'Quy tắc so sánh',
                 'items': [{'name': 'Khác số chữ số', 'formula': 'Nhiều chữ số hơn $\\rightarrow$ Lớn hơn'},
                           {'name': 'Cùng bốn chữ số',
                            'formula': 'So sánh: Hàng nghìn $\\rightarrow$ Hàng trăm $\\rightarrow$ Hàng chục '
@@ -4486,26 +5076,32 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 46: So sánh các số trong phạm vi 10 000**, công thức '
-                 'hoặc quy tắc nào sau đây biểu diễn đúng **Khác số chữ số**?',
-            'options': ['So sánh: Hàng nghìn $\\rightarrow$ Hàng trăm $\\rightarrow$ Hàng chục '
-                        '$\\rightarrow$ Hàng đơn vị',
-                        '$\\overline{abc} = a00 + b0 + c$',
+            'q': 'Trong **Bài 46: So sánh các số trong phạm vi 10 000**, quy tắc hoặc công thức nào sau đây '
+                 'xác định đúng **Khác số chữ số**?',
+            'options': ['Nhiều chữ số hơn $\\rightarrow$ Lớn hơn (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Nhiều chữ số hơn $\\rightarrow$ Lớn hơn',
                         'Nhiều chữ số hơn $\\rightarrow$ Lớn hơn',
-                        '$10 \\text{ chục} = 100$ · $10 \\text{ trăm} = 1\\,000$'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nhiều chữ số hơn $\\rightarrow$ '
+                        'Lớn hơn'],
             'answer': 2,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 46: So sánh các số trong phạm vi 10 000, '
-                        '**Khác số chữ số** được xác định bởi: Nhiều chữ số hơn $\\rightarrow$ Lớn hơn.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 46: So sánh các số trong phạm vi 10 000, **Khác số '
+                        'chữ số** được xác định bởi: Nhiều chữ số hơn $\\rightarrow$ Lớn hơn.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 46: So sánh các số trong phạm vi 10 000**, nội dung/biểu thức So sánh: Hàng '
-                 'nghìn $\\rightarrow$ Hàng trăm $\\rightarrow$ Hàng chục $\\rightarrow$ Hàng đơn vị là quy '
-                 'tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Khác số chữ số', 'Phân tích số', 'Số tròn trăm, tròn nghìn', 'Cùng bốn chữ số'],
+            'q': 'Khi học **Bài 46: So sánh các số trong phạm vi 10 000**, biểu thức hoặc quy tắc nào dưới '
+                 'đây biểu diễn đúng **Cùng bốn chữ số**?',
+            'options': ['So sánh: Hàng nghìn $\\rightarrow$ Hàng trăm $\\rightarrow$ Hàng chục '
+                        '$\\rightarrow$ Hàng đơn vị (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: So sánh: Hàng nghìn $\\rightarrow$ Hàng trăm '
+                        '$\\rightarrow$ Hàng chục $\\rightarrow$ Hàng đơn vị',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của So sánh: Hàng nghìn '
+                        '$\\rightarrow$ Hàng trăm $\\rightarrow$ Hàng chục $\\rightarrow$ Hàng đơn vị',
+                        'So sánh: Hàng nghìn $\\rightarrow$ Hàng trăm $\\rightarrow$ Hàng chục '
+                        '$\\rightarrow$ Hàng đơn vị'],
             'answer': 3,
-            'solution': 'Trong Bài 46: So sánh các số trong phạm vi 10 000, biểu thức/quy tắc So sánh: Hàng '
-                        'nghìn $\\rightarrow$ Hàng trăm $\\rightarrow$ Hàng chục $\\rightarrow$ Hàng đơn vị '
-                        'chính là nội dung của **Cùng bốn chữ số**.'},
+            'solution': 'Trong Bài 46: So sánh các số trong phạm vi 10 000, **Cùng bốn chữ số** có công '
+                        'thức/quy tắc là: So sánh: Hàng nghìn $\\rightarrow$ Hàng trăm $\\rightarrow$ Hàng '
+                        'chục $\\rightarrow$ Hàng đơn vị.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Sắp xếp các số $4\\,320$; $4\\,302$; $4\\,230$; $4\\,203$ theo thứ tự từ lớn đến bé ta '
@@ -4520,14 +5116,14 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 46: So sánh các số trong phạm vi 10 000** (Chủ đề 8: Các số đến 10 000), '
-                 'khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Đọc, viết thành thạo các số có đến ba chữ số trong phạm vi 1 000.',
+            'q': 'Để nắm vững bản chất của **Bài 46: So sánh các số trong phạm vi 10 000**, nhận định nào '
+                 'sau đây là **chính xác**?',
+            'options': ['So sánh được hai số bất kỳ trong phạm vi $11\\,000$.',
                         'So sánh được hai số bất kỳ trong phạm vi $10\\,000$.',
-                        'Phân tích được số có ba chữ số thành tổng các trăm, chục, đơn vị.',
-                        'So sánh và sắp xếp được các số trong phạm vi 1 000 theo thứ tự.'],
+                        'So sánh được hai số bất kỳ trong phạm vi $10\\,1$.',
+                        'So sánh được hai số bất kỳ trong phạm vi $20\\,000$.'],
             'answer': 1,
-            'solution': 'Theo yêu cầu cần đạt của Bài 46: So sánh các số trong phạm vi 10 000: So sánh được '
+            'solution': 'Theo nội dung cốt lõi của Bài 46: So sánh các số trong phạm vi 10 000: So sánh được '
                         'hai số bất kỳ trong phạm vi $10\\,000$.'},
            {'level': 'hieu',
             'type': 'tf',
@@ -4540,29 +5136,31 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
            {'level': 'hieu',
             'type': 'tf',
             'q': 'Trong **Bài 46: So sánh các số trong phạm vi 10 000**, quy tắc **Khác số chữ số** được xác '
-                 'định bởi Nhiều chữ số hơn $\\rightarrow$ Lớn hơn và áp dụng trực tiếp vào bài toán: “Sắp '
-                 'xếp các số $4\\,320$; $4\\,302$; $4\\,230$; $4\\,203$ theo thứ tự từ lớn đến bé.”. Đúng '
-                 'hay sai?',
+                 'định bởi Nhiều chữ số hơn $\\rightarrow$ Lớn hơn và khi áp dụng cho ví dụ “Sắp xếp các số '
+                 '$4\\,320$; $4\\,302$; $4\\,230$; $4\\,203$ theo thứ tự từ lớn đến bé.” ta có lời giải: Cả '
+                 'bốn số đều có $4$ nghìn. Nhóm có $3$ trăm: $4\\,320 > 4\\,302$. Nhóm có $2$ trăm: $4\\,230 '
+                 '> 4\\,203$. Thứ tự từ lớn đến bé là: **$4\\,320$.... Đúng hay sai?',
             'answer': True,
-            'solution': 'Khẳng định **Đúng**. Quy tắc **Khác số chữ số** (Nhiều chữ số hơn $\\rightarrow$ '
-                        'Lớn hơn) là kiến thức cốt lõi của Bài 46: So sánh các số trong phạm vi 10 000. Cả '
-                        'bốn số đều có $4$ nghìn. Nhóm có $3$ trăm: $4\\,320 > 4\\,302$. Nhóm có $2$ trăm: '
-                        '$4\\,230 > 4\\,203$. Thứ tự từ lớn đến bé là: **$4\\,320$; $4\\,302$...'},
+            'solution': 'Khẳng định **Đúng**. Đó chính là quy tắc **Khác số chữ số** (Nhiều chữ số hơn '
+                        '$\\rightarrow$ Lớn hơn) và lời giải ví dụ minh họa của Bài 46: So sánh các số trong '
+                        'phạm vi 10 000.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 46: So sánh các số trong phạm vi 10 000** để giải quyết tình '
-                 'huống sau: Sắp xếp các số $4\\,320$; $4\\,302$; $4\\,230$; $4\\,203$ theo thứ tự từ lớn '
-                 'đến bé. Kết quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Ta có $806 = 800 + 6$ (gồm $8$ trăm, $0$ chục, $6$ đơn vị). Vì chữ số hàng trăm $8 '
-                        '> 7$ nên **$806 > 798$**.',
-                        '- $468 + 325$: $8 + 5 = 13$ (viết $3$ nhớ $1$); $6 + 2 + 1 = 9$; $4 + 3 = 7$ '
-                        '$\\rightarrow$ **$793$**. - $750 - 236$: $10 - 6 = 4$ (viết $4$ nhớ $1$); $5 - (3 + '
-                        '1) = 1$...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 46: So sánh các số trong phạm vi 10 000** để giải '
+                 'bài toán sau: Sắp xếp các số $4\\,320$; $4\\,302$; $4\\,230$; $4\\,203$ theo thứ tự từ lớn '
+                 'đến bé. Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Cả bốn số đều có $4$ nghìn. Nhóm có $3$ trăm: $4\\,320 < 4\\,302$. Nhóm có $2$ '
+                        'trăm: $4\\,230 > 4\\,203$. Thứ tự từ lớn đến bé là: **$4\\,320$; $4\\,302$; '
+                        '$4\\,230$...',
+                        'Cả bốn số đều có $4$ nghìn. Nhóm có $3$ trăm: $4\\,320 > 4\\,302$. Nhóm có $2$ '
+                        'trăm: $4\\,230 > 4\\,203$. Thứ tự từ lớn đến bé là: **$4\\,320$; $4\\,302$; '
+                        '$4\\,229$...',
                         'Cả bốn số đều có $4$ nghìn. Nhóm có $3$ trăm: $4\\,320 > 4\\,302$. Nhóm có $2$ '
                         'trăm: $4\\,230 > 4\\,203$. Thứ tự từ lớn đến bé là: **$4\\,320$; $4\\,302$; '
                         '$4\\,230$...',
-                        'Áp dụng quy tắc tìm số trừ: $\\text{Số trừ} = \\text{Số bị trừ} - \\text{Hiệu} = 85 '
-                        '- 39 = 46$. Thử lại: $85 - 46 = 39$ (đúng). Vậy số cần tìm là **$46$**.'],
+                        'Cả bốn số đều có $8$ nghìn. Nhóm có $3$ trăm: $4\\,320 > 4\\,302$. Nhóm có $2$ '
+                        'trăm: $4\\,230 > 4\\,203$. Thứ tự từ lớn đến bé là: **$4\\,320$; $4\\,302$; '
+                        '$4\\,230$...'],
             'answer': 2,
             'solution': 'Lời giải chi tiết theo Bài 46: So sánh các số trong phạm vi 10 000: Cả bốn số đều '
                         'có $4$ nghìn. Nhóm có $3$ trăm: $4\\,320 > 4\\,302$. Nhóm có $2$ trăm: $4\\,230 > '
@@ -4603,7 +5201,7 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             '- Ghép $\\text{X}$ ($10$) ở bên trái với các số từ $\\text{I}$ đến $\\text{X}$ ở bên phải:\n'
             '- $\\text{XI} = 11$, $\\text{XII} = 12$, ..., $\\text{XIV} = 14$, $\\text{XV} = 15$, '
             '$\\text{XVI} = 16$, ..., $\\text{XIX} = 19$, $\\text{XX} = 20$.',
-  'formulas': [{'category': 'I. Ký hiệu La Mã',
+  'formulas': [{'category': 'Ký hiệu La Mã',
                 'items': [{'name': 'Cơ bản',
                            'formula': '$\\text{I} = 1$ · $\\text{V} = 5$ · $\\text{X} = 10$'},
                           {'name': 'Cặp trừ cần nhớ',
@@ -4633,25 +5231,26 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 47: Làm quen với chữ số La Mã**, công thức hoặc quy tắc '
-                 'nào sau đây biểu diễn đúng **Cơ bản**?',
-            'options': ['$\\text{IV} = 4$ · $\\text{IX} = 9$ · $\\text{XIV} = 14$ · $\\text{XIX} = 19$',
-                        '$\\overline{abc} = a00 + b0 + c$',
-                        '$10 \\text{ chục} = 100$ · $10 \\text{ trăm} = 1\\,000$',
+            'q': 'Trong **Bài 47: Làm quen với chữ số La Mã**, quy tắc hoặc công thức nào sau đây xác định '
+                 'đúng **Cơ bản**?',
+            'options': ['$\\text{I} = 2$ · $\\text{V} = 5$ · $\\text{X} = 10$',
+                        '$\\text{I} = 1$ · $\\text{V} = 5$ · $\\text{X} = 9$',
+                        '$\\text{IV} = 4$ · $\\text{IX} = 9$ · $\\text{XIV} = 14$ · $\\text{XIX} = 19$',
                         '$\\text{I} = 1$ · $\\text{V} = 5$ · $\\text{X} = 10$'],
             'answer': 3,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 47: Làm quen với chữ số La Mã, **Cơ bản** '
-                        'được xác định bởi: $\\text{I} = 1$ · $\\text{V} = 5$ · $\\text{X} = 10$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 47: Làm quen với chữ số La Mã, **Cơ bản** được xác '
+                        'định bởi: $\\text{I} = 1$ · $\\text{V} = 5$ · $\\text{X} = 10$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 47: Làm quen với chữ số La Mã**, nội dung/biểu thức $\\text{IV} = 4$ · '
-                 '$\\text{IX} = 9$ · $\\text{XIV} = 14$ · $\\text{XIX} = 19$ là quy tắc hoặc công thức của '
-                 'mục nào sau đây?',
-            'options': ['Cặp trừ cần nhớ', 'Cơ bản', 'Phân tích số', 'Số tròn trăm, tròn nghìn'],
+            'q': 'Khi học **Bài 47: Làm quen với chữ số La Mã**, biểu thức hoặc quy tắc nào dưới đây biểu '
+                 'diễn đúng **Cặp trừ cần nhớ**?',
+            'options': ['$\\text{IV} = 4$ · $\\text{IX} = 9$ · $\\text{XIV} = 14$ · $\\text{XIX} = 19$',
+                        '$\\text{IV} = 5$ · $\\text{IX} = 9$ · $\\text{XIV} = 14$ · $\\text{XIX} = 19$',
+                        '$\\text{IV} = 4$ · $\\text{IX} = 9$ · $\\text{XIV} = 14$ · $\\text{XIX} = 18$',
+                        '$\\text{IV} = 8$ · $\\text{IX} = 9$ · $\\text{XIV} = 14$ · $\\text{XIX} = 19$'],
             'answer': 0,
-            'solution': 'Trong Bài 47: Làm quen với chữ số La Mã, biểu thức/quy tắc $\\text{IV} = 4$ · '
-                        '$\\text{IX} = 9$ · $\\text{XIV} = 14$ · $\\text{XIX} = 19$ chính là nội dung của '
-                        '**Cặp trừ cần nhớ**.'},
+            'solution': 'Trong Bài 47: Làm quen với chữ số La Mã, **Cặp trừ cần nhớ** có công thức/quy tắc '
+                        'là: $\\text{IV} = 4$ · $\\text{IX} = 9$ · $\\text{XIV} = 14$ · $\\text{XIX} = 19$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Số $17$ được viết bằng chữ số La Mã là:',
@@ -4662,15 +5261,17 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 47: Làm quen với chữ số La Mã** (Chủ đề 8: Các số đến 10 000), khẳng định '
-                 'nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Đọc, viết thành thạo các số có đến ba chữ số trong phạm vi 1 000.',
-                        'Phân tích được số có ba chữ số thành tổng các trăm, chục, đơn vị.',
+            'q': 'Để nắm vững bản chất của **Bài 47: Làm quen với chữ số La Mã**, nhận định nào sau đây là '
+                 '**chính xác**?',
+            'options': ['Nhận biết giá trị của ba ký hiệu chữ số La Mã cơ bản: $\\text{I} = 2$, $\\text{V} = '
+                        '5$, $\\text{X} = 10$.',
+                        'Nhận biết giá trị của ba ký hiệu chữ số La Mã cơ bản: $\\text{I} = 1$, $\\text{V} = '
+                        '5$, $\\text{X} = 9$.',
                         'Nhận biết giá trị của ba ký hiệu chữ số La Mã cơ bản: $\\text{I} = 1$, $\\text{V} = '
                         '5$, $\\text{X} = 10$.',
-                        'So sánh và sắp xếp được các số trong phạm vi 1 000 theo thứ tự.'],
+                        'Trường hợp sai quy tắc (sai lệch 1 đơn vị so với công thức trong bài)'],
             'answer': 2,
-            'solution': 'Theo yêu cầu cần đạt của Bài 47: Làm quen với chữ số La Mã: Nhận biết giá trị của '
+            'solution': 'Theo nội dung cốt lõi của Bài 47: Làm quen với chữ số La Mã: Nhận biết giá trị của '
                         'ba ký hiệu chữ số La Mã cơ bản: $\\text{I} = 1$, $\\text{V} = 5$, $\\text{X} = '
                         '10$.'},
            {'level': 'hieu',
@@ -4684,26 +5285,25 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
            {'level': 'hieu',
             'type': 'tf',
             'q': 'Trong **Bài 47: Làm quen với chữ số La Mã**, quy tắc **Cơ bản** được xác định bởi '
-                 '$\\text{I} = 1$ · $\\text{V} = 5$ · $\\text{X} = 10$ và áp dụng trực tiếp vào bài toán: '
-                 '“Đọc các số La Mã sau sang số tự nhiên: $\\text{V}, \\text{IX}, \\text{XIV}, \\text{XVII}, '
-                 '\\text{XIX}$.”. Đúng hay sai?',
+                 '$\\text{I} = 1$ · $\\text{V} = 5$ · $\\text{X} = 10$ và khi áp dụng cho ví dụ “Đọc các số '
+                 'La Mã sau sang số tự nhiên: $\\text{V}, \\text{IX}, \\text{XIV}, \\text{XVII}, '
+                 '\\text{XIX}$.” ta có lời giải: Ta có: $\\text{IV} = 4$; $\\text{IX} = 9$; $\\text{XIV} = '
+                 '14$; $\\text{XVII} = 17$; $\\text{XIX} = 19$.. Đúng hay sai?',
             'answer': True,
-            'solution': 'Khẳng định **Đúng**. Quy tắc **Cơ bản** ($\\text{I} = 1$ · $\\text{V} = 5$ · '
-                        '$\\text{X} = 10$) là kiến thức cốt lõi của Bài 47: Làm quen với chữ số La Mã. Ta '
-                        'có: $\\text{IV} = 4$; $\\text{IX} = 9$; $\\text{XIV} = 14$; $\\text{XVII} = 17$; '
-                        '$\\text{XIX} = 19$.'},
+            'solution': 'Khẳng định **Đúng**. Đó chính là quy tắc **Cơ bản** ($\\text{I} = 1$ · $\\text{V} = '
+                        '5$ · $\\text{X} = 10$) và lời giải ví dụ minh họa của Bài 47: Làm quen với chữ số '
+                        'La Mã.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 47: Làm quen với chữ số La Mã** để giải quyết tình huống sau: Đọc '
-                 'các số La Mã sau sang số tự nhiên: $\\text{V}, \\text{IX}, \\text{XIV}, \\text{XVII}, '
-                 '\\text{XIX}$. Kết quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Ta có $806 = 800 + 6$ (gồm $8$ trăm, $0$ chục, $6$ đơn vị). Vì chữ số hàng trăm $8 '
-                        '> 7$ nên **$806 > 798$**.',
-                        '- $468 + 325$: $8 + 5 = 13$ (viết $3$ nhớ $1$); $6 + 2 + 1 = 9$; $4 + 3 = 7$ '
-                        '$\\rightarrow$ **$793$**. - $750 - 236$: $10 - 6 = 4$ (viết $4$ nhớ $1$); $5 - (3 + '
-                        '1) = 1$...',
-                        'Áp dụng quy tắc tìm số trừ: $\\text{Số trừ} = \\text{Số bị trừ} - \\text{Hiệu} = 85 '
-                        '- 39 = 46$. Thử lại: $85 - 46 = 39$ (đúng). Vậy số cần tìm là **$46$**.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 47: Làm quen với chữ số La Mã** để giải bài toán '
+                 'sau: Đọc các số La Mã sau sang số tự nhiên: $\\text{V}, \\text{IX}, \\text{XIV}, '
+                 '\\text{XVII}, \\text{XIX}$. Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Ta có: $\\text{IV} = 5$; $\\text{IX} = 9$; $\\text{XIV} = 14$; $\\text{XVII} = 17$; '
+                        '$\\text{XIX} = 19$.',
+                        'Ta có: $\\text{IV} = 4$; $\\text{IX} = 9$; $\\text{XIV} = 14$; $\\text{XVII} = 17$; '
+                        '$\\text{XIX} = 18$.',
+                        'Ta có: $\\text{IV} = 8$; $\\text{IX} = 9$; $\\text{XIV} = 14$; $\\text{XVII} = 17$; '
+                        '$\\text{XIX} = 19$.',
                         'Ta có: $\\text{IV} = 4$; $\\text{IX} = 9$; $\\text{XIV} = 14$; $\\text{XVII} = 17$; '
                         '$\\text{XIX} = 19$.'],
             'answer': 3,
@@ -4721,7 +5321,7 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
  {'topic': 'l3-cd08-cac-so-den-10000',
   'context_title': 'Chủ đề 8: Các số đến 10 000',
   'context': 'SGK Toán 3 · Chủ đề 8: Các số đến 10 000; chữ số La Mã; làm tròn số.',
-  'title': 'Bài 48, 49: Làm tròn số đến hàng chục, hàng trăm và luyện tập chung',
+  'title': 'Bài 48: Làm tròn số đến hàng chục, hàng trăm',
   'icon': '🔄',
   'description': 'Quy tắc làm tròn số đến hàng chục và làm tròn số đến hàng trăm trong phạm vi 10 000.',
   'requirements': ['Làm tròn được một số đến hàng chục dựa vào chữ số hàng đơn vị.',
@@ -4739,7 +5339,7 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             '$1\\,350$.\n'
             '### 2. Làm tròn số đến hàng trăm\n'
             '- Ví dụ: $2\\,385$ có chữ số hàng chục là $8 \\ge 5 \\rightarrow$ làm tròn lên thành $2\\,400$.',
-  'formulas': [{'category': 'I. Quy tắc làm tròn số',
+  'formulas': [{'category': 'Quy tắc làm tròn số',
                 'items': [{'name': 'Làm tròn đến hàng chục',
                            'formula': 'Xét hàng đơn vị: $< 5 \\rightarrow$ xuống · $\\ge 5 \\rightarrow$ '
                                       'lên'},
@@ -4768,29 +5368,28 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 48, 49: Làm tròn số đến hàng chục, hàng trăm và luyện '
-                 'tập chung**, công thức hoặc quy tắc nào sau đây biểu diễn đúng **Làm tròn đến hàng chục**?',
+            'q': 'Trong **Bài 48: Làm tròn số đến hàng chục, hàng trăm**, quy tắc hoặc công thức nào sau đây '
+                 'xác định đúng **Làm tròn đến hàng chục**?',
             'options': ['Xét hàng đơn vị: $< 5 \\rightarrow$ xuống · $\\ge 5 \\rightarrow$ lên',
-                        'Xét hàng chục: $< 5 \\rightarrow$ xuống · $\\ge 5 \\rightarrow$ lên',
-                        '$\\overline{abc} = a00 + b0 + c$',
-                        '$10 \\text{ chục} = 100$ · $10 \\text{ trăm} = 1\\,000$'],
+                        'Xét hàng đơn vị: $< 5 \\rightarrow$ xuống · $\\le 5 \\rightarrow$ lên',
+                        'Xét hàng đơn vị: $< 5 \\rightarrow$ xuống · $\\ge 4 \\rightarrow$ lên',
+                        'Xét hàng đơn vị: $< 10 \\rightarrow$ xuống · $\\ge 5 \\rightarrow$ lên'],
             'answer': 0,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 48, 49: Làm tròn số đến hàng chục, hàng trăm '
-                        'và luyện tập chung, **Làm tròn đến hàng chục** được xác định bởi: Xét hàng đơn vị: '
-                        '$< 5 \\rightarrow$ xuống · $\\ge 5 \\rightarrow$ lên.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 48: Làm tròn số đến hàng chục, hàng trăm, **Làm '
+                        'tròn đến hàng chục** được xác định bởi: Xét hàng đơn vị: $< 5 \\rightarrow$ xuống · '
+                        '$\\ge 5 \\rightarrow$ lên.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 48, 49: Làm tròn số đến hàng chục, hàng trăm và luyện tập chung**, nội '
-                 'dung/biểu thức Xét hàng chục: $< 5 \\rightarrow$ xuống · $\\ge 5 \\rightarrow$ lên là quy '
-                 'tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Làm tròn đến hàng chục',
-                        'Làm tròn đến hàng trăm',
-                        'Phân tích số',
-                        'Số tròn trăm, tròn nghìn'],
+            'q': 'Khi học **Bài 48: Làm tròn số đến hàng chục, hàng trăm**, biểu thức hoặc quy tắc nào dưới '
+                 'đây biểu diễn đúng **Làm tròn đến hàng trăm**?',
+            'options': ['Xét hàng chục: $< 5 \\rightarrow$ xuống · $\\le 5 \\rightarrow$ lên',
+                        'Xét hàng chục: $< 5 \\rightarrow$ xuống · $\\ge 5 \\rightarrow$ lên',
+                        'Xét hàng chục: $< 5 \\rightarrow$ xuống · $\\ge 4 \\rightarrow$ lên',
+                        'Xét hàng chục: $< 10 \\rightarrow$ xuống · $\\ge 5 \\rightarrow$ lên'],
             'answer': 1,
-            'solution': 'Trong Bài 48, 49: Làm tròn số đến hàng chục, hàng trăm và luyện tập chung, biểu '
-                        'thức/quy tắc Xét hàng chục: $< 5 \\rightarrow$ xuống · $\\ge 5 \\rightarrow$ lên '
-                        'chính là nội dung của **Làm tròn đến hàng trăm**.'},
+            'solution': 'Trong Bài 48: Làm tròn số đến hàng chục, hàng trăm, **Làm tròn đến hàng trăm** có '
+                        'công thức/quy tắc là: Xét hàng chục: $< 5 \\rightarrow$ xuống · $\\ge 5 '
+                        '\\rightarrow$ lên.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Khi làm tròn số $3\\,650$ đến hàng trăm, ta được số nào?',
@@ -4801,16 +5400,17 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 48, 49: Làm tròn số đến hàng chục, hàng trăm và luyện tập chung** (Chủ đề 8: '
-                 'Các số đến 10 000), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất '
-                 'kiến thức của bài?',
-            'options': ['Đọc, viết thành thạo các số có đến ba chữ số trong phạm vi 1 000.',
-                        'Phân tích được số có ba chữ số thành tổng các trăm, chục, đơn vị.',
-                        'So sánh và sắp xếp được các số trong phạm vi 1 000 theo thứ tự.',
+            'q': 'Để nắm vững bản chất của **Bài 48: Làm tròn số đến hàng chục, hàng trăm**, nhận định nào '
+                 'sau đây là **chính xác**?',
+            'options': ['Làm tròn được một số đến hàng chục dựa vào chữ số hàng đơn vị. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Làm tròn được một số đến hàng chục dựa vào chữ số hàng '
+                        'đơn vị.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Làm tròn được một số đến hàng '
+                        'chục dựa vào chữ số hàng đơn vị.',
                         'Làm tròn được một số đến hàng chục dựa vào chữ số hàng đơn vị.'],
             'answer': 3,
-            'solution': 'Theo yêu cầu cần đạt của Bài 48, 49: Làm tròn số đến hàng chục, hàng trăm và luyện '
-                        'tập chung: Làm tròn được một số đến hàng chục dựa vào chữ số hàng đơn vị.'},
+            'solution': 'Theo nội dung cốt lõi của Bài 48: Làm tròn số đến hàng chục, hàng trăm: Làm tròn '
+                        'được một số đến hàng chục dựa vào chữ số hàng đơn vị.'},
            {'level': 'hieu',
             'type': 'tf',
             'q': 'Nhận định: "Số $5\\,429$ làm tròn đến hàng chục được $5\\,430$, còn làm tròn đến hàng trăm '
@@ -4822,34 +5422,31 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'hieu',
             'type': 'tf',
-            'q': 'Trong **Bài 48, 49: Làm tròn số đến hàng chục, hàng trăm và luyện tập chung**, quy tắc '
-                 '**Làm tròn đến hàng chục** được xác định bởi Xét hàng đơn vị: $< 5 \\rightarrow$ xuống · '
-                 '$\\ge 5 \\rightarrow$ lên và áp dụng trực tiếp vào bài toán: “Làm tròn số $4\\,762$ đến '
-                 'hàng chục và đến hàng trăm.”. Đúng hay sai?',
+            'q': 'Trong **Bài 48: Làm tròn số đến hàng chục, hàng trăm**, quy tắc **Làm tròn đến hàng chục** '
+                 'được xác định bởi Xét hàng đơn vị: $< 5 \\rightarrow$ xuống · $\\ge 5 \\rightarrow$ lên và '
+                 'khi áp dụng cho ví dụ “Làm tròn số $4\\,762$ đến hàng chục và đến hàng trăm.” ta có lời '
+                 'giải: - Làm tròn đến hàng chục: chữ số hàng đơn vị là $2 < 5$ nên được **$4\\,760$**. - '
+                 'Làm tròn đến hàng trăm: chữ số hàng chục là $6 \\ge 5$.... Đúng hay sai?',
             'answer': True,
-            'solution': 'Khẳng định **Đúng**. Quy tắc **Làm tròn đến hàng chục** (Xét hàng đơn vị: $< 5 '
-                        '\\rightarrow$ xuống · $\\ge 5 \\rightarrow$ lên) là kiến thức cốt lõi của Bài 48, '
-                        '49: Làm tròn số đến hàng chục, hàng trăm và luyện tập chung. - Làm tròn đến hàng '
-                        'chục: chữ số hàng đơn vị là $2 < 5$ nên được **$4\\,760$**. - Làm tròn đến hàng '
-                        'trăm: chữ số hàng chục là $6 \\ge 5$ nên đ...'},
+            'solution': 'Khẳng định **Đúng**. Đó chính là quy tắc **Làm tròn đến hàng chục** (Xét hàng đơn '
+                        'vị: $< 5 \\rightarrow$ xuống · $\\ge 5 \\rightarrow$ lên) và lời giải ví dụ minh '
+                        'họa của Bài 48: Làm tròn số đến hàng chục, hàng trăm.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 48, 49: Làm tròn số đến hàng chục, hàng trăm và luyện tập chung** '
-                 'để giải quyết tình huống sau: Làm tròn số $4\\,762$ đến hàng chục và đến hàng trăm. Kết '
-                 'quả và hướng giải nào dưới đây là **đúng**?',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 48: Làm tròn số đến hàng chục, hàng trăm** để giải '
+                 'bài toán sau: Làm tròn số $4\\,762$ đến hàng chục và đến hàng trăm. Cách giải và kết quả '
+                 'nào dưới đây là **đúng**?',
             'options': ['- Làm tròn đến hàng chục: chữ số hàng đơn vị là $2 < 5$ nên được **$4\\,760$**. - '
-                        'Làm tròn đến hàng trăm: chữ số hàng chục là $6 \\ge 5$ nên được **$4\\,800$*...',
-                        'Ta có $806 = 800 + 6$ (gồm $8$ trăm, $0$ chục, $6$ đơn vị). Vì chữ số hàng trăm $8 '
-                        '> 7$ nên **$806 > 798$**.',
-                        '- $468 + 325$: $8 + 5 = 13$ (viết $3$ nhớ $1$); $6 + 2 + 1 = 9$; $4 + 3 = 7$ '
-                        '$\\rightarrow$ **$793$**. - $750 - 236$: $10 - 6 = 4$ (viết $4$ nhớ $1$); $5 - (3 + '
-                        '1) = 1$...',
-                        'Áp dụng quy tắc tìm số trừ: $\\text{Số trừ} = \\text{Số bị trừ} - \\text{Hiệu} = 85 '
-                        '- 39 = 46$. Thử lại: $85 - 46 = 39$ (đúng). Vậy số cần tìm là **$46$**.'],
+                        'Làm tròn đến hàng trăm: chữ số hàng chục là $6 \\ge 5$ nên được **$4\\,800$...',
+                        '- Làm tròn đến hàng chục: chữ số hàng đơn vị là $2 < 5$ nên được **$4\\,760$**. - '
+                        'Làm tròn đến hàng trăm: chữ số hàng chục là $6 \\le 5$ nên được **$4\\,800$...',
+                        '- Làm tròn đến hàng chục: chữ số hàng đơn vị là $2 < 5$ nên được **$4\\,760$**. - '
+                        'Làm tròn đến hàng trăm: chữ số hàng chục là $6 \\ge 5$ nên được **$4\\,799$...',
+                        '- Làm tròn đến hàng chục: chữ số hàng đơn vị là $4 < 5$ nên được **$4\\,760$**. - '
+                        'Làm tròn đến hàng trăm: chữ số hàng chục là $6 \\ge 5$ nên được **$4\\,800$...'],
             'answer': 0,
-            'solution': 'Lời giải chi tiết theo Bài 48, 49: Làm tròn số đến hàng chục, hàng trăm và luyện '
-                        'tập chung: - Làm tròn đến hàng chục: chữ số hàng đơn vị là $2 < 5$ nên được '
-                        '**$4\\,760$**.\n'
+            'solution': 'Lời giải chi tiết theo Bài 48: Làm tròn số đến hàng chục, hàng trăm: - Làm tròn đến '
+                        'hàng chục: chữ số hàng đơn vị là $2 < 5$ nên được **$4\\,760$**.\n'
                         '- Làm tròn đến hàng trăm: chữ số hàng chục là $6 \\ge 5$ nên được **$4\\,800$**.'},
            {'level': 'vandung',
             'type': 'short',
@@ -4883,7 +5480,7 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             '- Hình chữ nhật có chiều dài $a$, chiều rộng $b$: $P = (a + b) \\times 2$. Nửa chu vi là $a + b '
             '= P : 2$.\n'
             '- Hình vuông có cạnh $a$: $P = a \\times 4 \\Rightarrow a = P : 4$.',
-  'formulas': [{'category': 'I. Công thức chu vi',
+  'formulas': [{'category': 'Công thức chu vi',
                 'items': [{'name': 'Hình tam giác, tứ giác', 'formula': '$P = \\text{Tổng độ dài các cạnh}$'},
                           {'name': 'Hình chữ nhật', 'formula': '$P = (a + b) \\times 2$ (cùng đơn vị đo)'},
                           {'name': 'Hình vuông',
@@ -4912,27 +5509,28 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 50: Chu vi hình tam giác, hình tứ giác, hình chữ nhật, '
-                 'hình vuông**, công thức hoặc quy tắc nào sau đây biểu diễn đúng **Hình tam giác, tứ '
-                 'giác**?',
-            'options': ['$P = (a + b) \\times 2$ (cùng đơn vị đo)',
+            'q': 'Trong **Bài 50: Chu vi hình tam giác, hình tứ giác, hình chữ nhật, hình vuông**, quy tắc '
+                 'hoặc công thức nào sau đây xác định đúng **Hình tam giác, tứ giác**?',
+            'options': ['$P = \\text{Tổng độ dài các cạnh}$ (với dấu ngược lại)',
                         '$P = \\text{Tổng độ dài các cạnh}$',
-                        '$P = a \\times 4 \\Leftrightarrow a = P : 4$',
-                        '$\\overline{abc} = a00 + b0 + c$'],
+                        'Đảo ngược vế của quy tắc: $P = \\text{Tổng độ dài các cạnh}$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $P = \\text{Tổng độ dài các '
+                        'cạnh}$'],
             'answer': 1,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 50: Chu vi hình tam giác, hình tứ giác, hình '
-                        'chữ nhật, hình vuông, **Hình tam giác, tứ giác** được xác định bởi: $P = '
-                        '\\text{Tổng độ dài các cạnh}$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 50: Chu vi hình tam giác, hình tứ giác, hình chữ '
+                        'nhật, hình vuông, **Hình tam giác, tứ giác** được xác định bởi: $P = \\text{Tổng độ '
+                        'dài các cạnh}$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 50: Chu vi hình tam giác, hình tứ giác, hình chữ nhật, hình vuông**, nội '
-                 'dung/biểu thức $P = (a + b) \\times 2$ (cùng đơn vị đo) là quy tắc hoặc công thức của mục '
-                 'nào sau đây?',
-            'options': ['Hình tam giác, tứ giác', 'Hình vuông', 'Hình chữ nhật', 'Phân tích số'],
+            'q': 'Khi học **Bài 50: Chu vi hình tam giác, hình tứ giác, hình chữ nhật, hình vuông**, biểu '
+                 'thức hoặc quy tắc nào dưới đây biểu diễn đúng **Hình chữ nhật**?',
+            'options': ['$P = (a - b) \\times 2$ (cùng đơn vị đo)',
+                        '$P = (a + b) \\times 1$ (cùng đơn vị đo)',
+                        '$P = (a + b) \\times 2$ (cùng đơn vị đo)',
+                        '$P = (a + b) \\times 4$ (cùng đơn vị đo)'],
             'answer': 2,
-            'solution': 'Trong Bài 50: Chu vi hình tam giác, hình tứ giác, hình chữ nhật, hình vuông, biểu '
-                        'thức/quy tắc $P = (a + b) \\times 2$ (cùng đơn vị đo) chính là nội dung của **Hình '
-                        'chữ nhật**.'},
+            'solution': 'Trong Bài 50: Chu vi hình tam giác, hình tứ giác, hình chữ nhật, hình vuông, **Hình '
+                        'chữ nhật** có công thức/quy tắc là: $P = (a + b) \\times 2$ (cùng đơn vị đo).'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Một hình chữ nhật có chiều dài $9\\text{ cm}$ và chiều rộng $5\\text{ cm}$. Chu vi hình '
@@ -4944,16 +5542,19 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 50: Chu vi hình tam giác, hình tứ giác, hình chữ nhật, hình vuông** (Chủ đề '
-                 '9: Chu vi, diện tích một số hình phẳng), khẳng định nào sau đây phản ánh **đúng** yêu cầu '
-                 'cần đạt và bản chất kiến thức của bài?',
+            'q': 'Để nắm vững bản chất của **Bài 50: Chu vi hình tam giác, hình tứ giác, hình chữ nhật, hình '
+                 'vuông**, nhận định nào sau đây là **chính xác**?',
             'options': ['Hiểu chu vi của một hình phẳng là tổng độ dài các cạnh của hình đó.',
-                        'Đọc, viết thành thạo các số có đến ba chữ số trong phạm vi 1 000.',
-                        'Phân tích được số có ba chữ số thành tổng các trăm, chục, đơn vị.',
-                        'So sánh và sắp xếp được các số trong phạm vi 1 000 theo thứ tự.'],
+                        'Hiểu chu vi của một hình phẳng là tổng độ dài các cạnh của hình đó. (với dấu ngược '
+                        'lại)',
+                        'Đảo ngược vế của quy tắc: Hiểu chu vi của một hình phẳng là tổng độ dài các cạnh '
+                        'của hình đó.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Hiểu chu vi của một hình phẳng '
+                        'là tổng độ dài các cạnh của hình đó.'],
             'answer': 0,
-            'solution': 'Theo yêu cầu cần đạt của Bài 50: Chu vi hình tam giác, hình tứ giác, hình chữ nhật, '
-                        'hình vuông: Hiểu chu vi của một hình phẳng là tổng độ dài các cạnh của hình đó.'},
+            'solution': 'Theo nội dung cốt lõi của Bài 50: Chu vi hình tam giác, hình tứ giác, hình chữ '
+                        'nhật, hình vuông: Hiểu chu vi của một hình phẳng là tổng độ dài các cạnh của hình '
+                        'đó.'},
            {'level': 'hieu',
             'type': 'tf',
             'q': 'Nhận định: "Hình chữ nhật có chiều dài $1\\text{ dm}$, chiều rộng $4\\text{ cm}$ thì có '
@@ -4966,28 +5567,27 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
            {'level': 'hieu',
             'type': 'tf',
             'q': 'Trong **Bài 50: Chu vi hình tam giác, hình tứ giác, hình chữ nhật, hình vuông**, quy tắc '
-                 '**Hình tam giác, tứ giác** được xác định bởi $P = \\text{Tổng độ dài các cạnh}$ và áp dụng '
-                 'trực tiếp vào bài toán: “Tính chu vi hình chữ nhật có chiều dài $2\\text{ dm}$ và chiều '
-                 'rộng $8\\text{ cm}$.”. Đúng hay sai?',
+                 '**Hình tam giác, tứ giác** được xác định bởi $P = \\text{Tổng độ dài các cạnh}$ và khi áp '
+                 'dụng cho ví dụ “Tính chu vi hình chữ nhật có chiều dài $2\\text{ dm}$ và chiều rộng '
+                 '$8\\text{ cm}$.” ta có lời giải: Đổi $2\\text{ dm} = 20\\text{ cm}$. Chu vi hình chữ nhật '
+                 'là: $(20 + 8) \\times 2 = 56\\text{ (cm)}$. Đáp số: **$56\\text{ cm}$**.. Đúng hay sai?',
             'answer': True,
-            'solution': 'Khẳng định **Đúng**. Quy tắc **Hình tam giác, tứ giác** ($P = \\text{Tổng độ dài '
-                        'các cạnh}$) là kiến thức cốt lõi của Bài 50: Chu vi hình tam giác, hình tứ giác, '
-                        'hình chữ nhật, hình vuông. Đổi $2\\text{ dm} = 20\\text{ cm}$. Chu vi hình chữ nhật '
-                        'là: $(20 + 8) \\times 2 = 56\\text{ (cm)}$. Đáp số: **$56\\text{ cm}$**.'},
+            'solution': 'Khẳng định **Đúng**. Đó chính là quy tắc **Hình tam giác, tứ giác** ($P = '
+                        '\\text{Tổng độ dài các cạnh}$) và lời giải ví dụ minh họa của Bài 50: Chu vi hình '
+                        'tam giác, hình tứ giác, hình chữ nhật, hình vuông.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 50: Chu vi hình tam giác, hình tứ giác, hình chữ nhật, hình '
-                 'vuông** để giải quyết tình huống sau: Tính chu vi hình chữ nhật có chiều dài $2\\text{ '
-                 'dm}$ và chiều rộng $8\\text{ cm}$. Kết quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Ta có $806 = 800 + 6$ (gồm $8$ trăm, $0$ chục, $6$ đơn vị). Vì chữ số hàng trăm $8 '
-                        '> 7$ nên **$806 > 798$**.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 50: Chu vi hình tam giác, hình tứ giác, hình chữ '
+                 'nhật, hình vuông** để giải bài toán sau: Tính chu vi hình chữ nhật có chiều dài $2\\text{ '
+                 'dm}$ và chiều rộng $8\\text{ cm}$. Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Đổi $2\\text{ dm} = 20\\text{ cm}$. Chu vi hình chữ nhật là: $(20 - 8) \\times 2 = '
+                        '56\\text{ (cm)}$. Đáp số: **$56\\text{ cm}$**.',
                         'Đổi $2\\text{ dm} = 20\\text{ cm}$. Chu vi hình chữ nhật là: $(20 + 8) \\times 2 = '
                         '56\\text{ (cm)}$. Đáp số: **$56\\text{ cm}$**.',
-                        '- $468 + 325$: $8 + 5 = 13$ (viết $3$ nhớ $1$); $6 + 2 + 1 = 9$; $4 + 3 = 7$ '
-                        '$\\rightarrow$ **$793$**. - $750 - 236$: $10 - 6 = 4$ (viết $4$ nhớ $1$); $5 - (3 + '
-                        '1) = 1$...',
-                        'Áp dụng quy tắc tìm số trừ: $\\text{Số trừ} = \\text{Số bị trừ} - \\text{Hiệu} = 85 '
-                        '- 39 = 46$. Thử lại: $85 - 46 = 39$ (đúng). Vậy số cần tìm là **$46$**.'],
+                        'Đổi $2\\text{ dm} = 20\\text{ cm}$. Chu vi hình chữ nhật là: $(20 + 8) \\times 2 = '
+                        '56\\text{ (cm)}$. Đáp số: **$55\\text{ cm}$**.',
+                        'Đổi $4\\text{ dm} = 20\\text{ cm}$. Chu vi hình chữ nhật là: $(20 + 8) \\times 2 = '
+                        '56\\text{ (cm)}$. Đáp số: **$56\\text{ cm}$**.'],
             'answer': 1,
             'solution': 'Lời giải chi tiết theo Bài 50: Chu vi hình tam giác, hình tứ giác, hình chữ nhật, '
                         'hình vuông: Đổi $2\\text{ dm} = 20\\text{ cm}$.\n'
@@ -5026,7 +5626,7 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'nhỏ.\n'
             '### 2. Tính diện tích bằng cách đếm ô vuông $1\\text{ cm}^2$\n'
             '- Một hình được ghép bởi $n$ ô vuông cạnh $1\\text{ cm}$ thì có diện tích là $n\\text{ cm}^2$.',
-  'formulas': [{'category': 'I. Đơn vị đo diện tích',
+  'formulas': [{'category': 'Đơn vị đo diện tích',
                 'items': [{'name': 'Xăng-ti-mét vuông',
                            'formula': '$1\\text{ cm}^2$: diện tích hình vuông cạnh $1\\text{ cm}$'},
                           {'name': 'Cộng, trừ diện tích',
@@ -5054,29 +5654,27 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 51: Diện tích của một hình. Xăng-ti-mét vuông**, công '
-                 'thức hoặc quy tắc nào sau đây biểu diễn đúng **Xăng-ti-mét vuông**?',
-            'options': ['$a\\text{ cm}^2 + b\\text{ cm}^2 = (a + b)\\text{ cm}^2$',
-                        '$\\overline{abc} = a00 + b0 + c$',
+            'q': 'Trong **Bài 51: Diện tích của một hình. Xăng-ti-mét vuông**, quy tắc hoặc công thức nào '
+                 'sau đây xác định đúng **Xăng-ti-mét vuông**?',
+            'options': ['$2\\text{ cm}^2$: diện tích hình vuông cạnh $1\\text{ cm}$',
+                        '$1\\text{ cm}^2$: diện tích hình vuông cạnh $2\\text{ cm}$',
                         '$1\\text{ cm}^2$: diện tích hình vuông cạnh $1\\text{ cm}$',
-                        '$10 \\text{ chục} = 100$ · $10 \\text{ trăm} = 1\\,000$'],
+                        '$a\\text{ cm}^2 + b\\text{ cm}^2 = (a + b)\\text{ cm}^2$'],
             'answer': 2,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 51: Diện tích của một hình. Xăng-ti-mét '
-                        'vuông, **Xăng-ti-mét vuông** được xác định bởi: $1\\text{ cm}^2$: diện tích hình '
-                        'vuông cạnh $1\\text{ cm}$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 51: Diện tích của một hình. Xăng-ti-mét vuông, '
+                        '**Xăng-ti-mét vuông** được xác định bởi: $1\\text{ cm}^2$: diện tích hình vuông '
+                        'cạnh $1\\text{ cm}$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 51: Diện tích của một hình. Xăng-ti-mét vuông**, nội dung/biểu thức $a\\text{ '
-                 'cm}^2 + b\\text{ cm}^2 = (a + b)\\text{ cm}^2$ là quy tắc hoặc công thức của mục nào sau '
-                 'đây?',
-            'options': ['Xăng-ti-mét vuông',
-                        'Phân tích số',
-                        'Số tròn trăm, tròn nghìn',
-                        'Cộng, trừ diện tích'],
+            'q': 'Khi học **Bài 51: Diện tích của một hình. Xăng-ti-mét vuông**, biểu thức hoặc quy tắc nào '
+                 'dưới đây biểu diễn đúng **Cộng, trừ diện tích**?',
+            'options': ['$a\\text{ cm}^2 - b\\text{ cm}^2 = (a + b)\\text{ cm}^2$',
+                        '$a\\text{ cm}^2 + b\\text{ cm}^2 = (a + b)\\text{ cm}^1$',
+                        '$a\\text{ cm}^4 + b\\text{ cm}^2 = (a + b)\\text{ cm}^2$',
+                        '$a\\text{ cm}^2 + b\\text{ cm}^2 = (a + b)\\text{ cm}^2$'],
             'answer': 3,
-            'solution': 'Trong Bài 51: Diện tích của một hình. Xăng-ti-mét vuông, biểu thức/quy tắc '
-                        '$a\\text{ cm}^2 + b\\text{ cm}^2 = (a + b)\\text{ cm}^2$ chính là nội dung của '
-                        '**Cộng, trừ diện tích**.'},
+            'solution': 'Trong Bài 51: Diện tích của một hình. Xăng-ti-mét vuông, **Cộng, trừ diện tích** có '
+                        'công thức/quy tắc là: $a\\text{ cm}^2 + b\\text{ cm}^2 = (a + b)\\text{ cm}^2$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Một hình phẳng được ghép bởi $9$ ô vuông, mỗi ô vuông có diện tích $1\\text{ cm}^2$. Diện '
@@ -5088,16 +5686,18 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 51: Diện tích của một hình. Xăng-ti-mét vuông** (Chủ đề 9: Chu vi, diện tích '
-                 'một số hình phẳng), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất '
-                 'kiến thức của bài?',
-            'options': ['Đọc, viết thành thạo các số có đến ba chữ số trong phạm vi 1 000.',
+            'q': 'Để nắm vững bản chất của **Bài 51: Diện tích của một hình. Xăng-ti-mét vuông**, nhận định '
+                 'nào sau đây là **chính xác**?',
+            'options': ['Nhận biết và so sánh được diện tích của các hình thông qua đặt chồng hình hoặc tách '
+                        '– ghép hình. (với dấu ngược lại)',
                         'Nhận biết và so sánh được diện tích của các hình thông qua đặt chồng hình hoặc tách '
                         '– ghép hình.',
-                        'Phân tích được số có ba chữ số thành tổng các trăm, chục, đơn vị.',
-                        'So sánh và sắp xếp được các số trong phạm vi 1 000 theo thứ tự.'],
+                        'Đảo ngược vế của quy tắc: Nhận biết và so sánh được diện tích của các hình thông '
+                        'qua đặt chồng hình hoặc tách – ghép hình.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nhận biết và so sánh được diện '
+                        'tích của các hình thông qua đặt chồng hình hoặc tách – ghép hình.'],
             'answer': 1,
-            'solution': 'Theo yêu cầu cần đạt của Bài 51: Diện tích của một hình. Xăng-ti-mét vuông: Nhận '
+            'solution': 'Theo nội dung cốt lõi của Bài 51: Diện tích của một hình. Xăng-ti-mét vuông: Nhận '
                         'biết và so sánh được diện tích của các hình thông qua đặt chồng hình hoặc tách – '
                         'ghép hình.'},
            {'level': 'hieu',
@@ -5111,30 +5711,29 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
            {'level': 'hieu',
             'type': 'tf',
             'q': 'Trong **Bài 51: Diện tích của một hình. Xăng-ti-mét vuông**, quy tắc **Xăng-ti-mét vuông** '
-                 'được xác định bởi $1\\text{ cm}^2$: diện tích hình vuông cạnh $1\\text{ cm}$ và áp dụng '
-                 'trực tiếp vào bài toán: “Hình $M$ gồm $7$ ô vuông $1\\text{ cm}^2$, hình $N$ gồm $5$ ô '
-                 'vuông $1\\text{ cm}^2$. Tính tổng diện tích hai hình.”. Đúng hay sai?',
+                 'được xác định bởi $1\\text{ cm}^2$: diện tích hình vuông cạnh $1\\text{ cm}$ và khi áp '
+                 'dụng cho ví dụ “Hình $M$ gồm $7$ ô vuông $1\\text{ cm}^2$, hình $N$ gồm $5$ ô vuông '
+                 '$1\\text{ cm}^2$. Tính tổng diện tích hai hình.” ta có lời giải: Diện tích hình $M$ là '
+                 '$7\\text{ cm}^2$, diện tích hình $N$ là $5\\text{ cm}^2$. Tổng diện tích hai hình là: $7 + '
+                 '5 = 12\\text{ (cm}^2\\text{)}$.... Đúng hay sai?',
             'answer': True,
-            'solution': 'Khẳng định **Đúng**. Quy tắc **Xăng-ti-mét vuông** ($1\\text{ cm}^2$: diện tích '
-                        'hình vuông cạnh $1\\text{ cm}$) là kiến thức cốt lõi của Bài 51: Diện tích của một '
-                        'hình. Xăng-ti-mét vuông. Diện tích hình $M$ là $7\\text{ cm}^2$, diện tích hình $N$ '
-                        'là $5\\text{ cm}^2$. Tổng diện tích hai hình là: $7 + 5 = 12\\text{ '
-                        '(cm}^2\\text{)}$.'},
+            'solution': 'Khẳng định **Đúng**. Đó chính là quy tắc **Xăng-ti-mét vuông** ($1\\text{ cm}^2$: '
+                        'diện tích hình vuông cạnh $1\\text{ cm}$) và lời giải ví dụ minh họa của Bài 51: '
+                        'Diện tích của một hình. Xăng-ti-mét vuông.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 51: Diện tích của một hình. Xăng-ti-mét vuông** để giải quyết '
-                 'tình huống sau: Hình $M$ gồm $7$ ô vuông $1\\text{ cm}^2$, hình $N$ gồm $5$ ô vuông '
-                 '$1\\text{ cm}^2$. Tính tổng diện tích hai hình. Kết quả và hướng giải nào dưới đây là '
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 51: Diện tích của một hình. Xăng-ti-mét vuông** để '
+                 'giải bài toán sau: Hình $M$ gồm $7$ ô vuông $1\\text{ cm}^2$, hình $N$ gồm $5$ ô vuông '
+                 '$1\\text{ cm}^2$. Tính tổng diện tích hai hình. Cách giải và kết quả nào dưới đây là '
                  '**đúng**?',
-            'options': ['Ta có $806 = 800 + 6$ (gồm $8$ trăm, $0$ chục, $6$ đơn vị). Vì chữ số hàng trăm $8 '
-                        '> 7$ nên **$806 > 798$**.',
-                        '- $468 + 325$: $8 + 5 = 13$ (viết $3$ nhớ $1$); $6 + 2 + 1 = 9$; $4 + 3 = 7$ '
-                        '$\\rightarrow$ **$793$**. - $750 - 236$: $10 - 6 = 4$ (viết $4$ nhớ $1$); $5 - (3 + '
-                        '1) = 1$...',
+            'options': ['Diện tích hình $M$ là $7\\text{ cm}^2$, diện tích hình $N$ là $5\\text{ cm}^2$. '
+                        'Tổng diện tích hai hình là: $7 - 5 = 12\\text{ (cm}^2\\text{)}$.',
+                        'Diện tích hình $M$ là $7\\text{ cm}^2$, diện tích hình $N$ là $5\\text{ cm}^2$. '
+                        'Tổng diện tích hai hình là: $7 + 5 = 12\\text{ (cm}^1\\text{)}$.',
                         'Diện tích hình $M$ là $7\\text{ cm}^2$, diện tích hình $N$ là $5\\text{ cm}^2$. '
                         'Tổng diện tích hai hình là: $7 + 5 = 12\\text{ (cm}^2\\text{)}$.',
-                        'Áp dụng quy tắc tìm số trừ: $\\text{Số trừ} = \\text{Số bị trừ} - \\text{Hiệu} = 85 '
-                        '- 39 = 46$. Thử lại: $85 - 46 = 39$ (đúng). Vậy số cần tìm là **$46$**.'],
+                        'Diện tích hình $M$ là $14\\text{ cm}^2$, diện tích hình $N$ là $5\\text{ cm}^2$. '
+                        'Tổng diện tích hai hình là: $7 + 5 = 12\\text{ (cm}^2\\text{)}$.'],
             'answer': 2,
             'solution': 'Lời giải chi tiết theo Bài 51: Diện tích của một hình. Xăng-ti-mét vuông: Diện tích '
                         'hình $M$ là $7\\text{ cm}^2$, diện tích hình $N$ là $5\\text{ cm}^2$.\n'
@@ -5152,7 +5751,7 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
  {'topic': 'l3-cd09-chu-vi-dien-tich',
   'context_title': 'Chủ đề 9: Chu vi, diện tích một số hình phẳng',
   'context': 'SGK Toán 3 · Chủ đề 9: Chu vi và diện tích một số hình phẳng.',
-  'title': 'Bài 52, 53: Diện tích hình chữ nhật, diện tích hình vuông và luyện tập chung',
+  'title': 'Bài 52: Diện tích hình chữ nhật, diện tích hình vuông',
   'icon': '⬛',
   'description': 'Công thức tính diện tích hình chữ nhật, diện tích hình vuông và vận dụng giải toán thực '
                  'tiễn.',
@@ -5172,11 +5771,10 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             '### 2. Diện tích hình vuông\n'
             '- Ví dụ: Hình vuông có cạnh $6\\text{ cm}$ có diện tích là $6 \\times 6 = 36\\text{ '
             '(cm}^2\\text{)}$.',
-  'formulas': [{'category': 'I. Công thức diện tích',
+  'formulas': [{'category': 'Công thức & Quy tắc trọng tâm: Diện tích hình chữ nhật, diện tích hình vuông',
                 'items': [{'name': 'Hình chữ nhật', 'formula': '$S = a \\times b$ ($a, b$ cùng đơn vị đo)'},
-                          {'name': 'Hình vuông', 'formula': '$S = a \\times a$'}]},
-               {'category': 'II. Phân biệt Chu vi và Diện tích',
-                'items': [{'name': 'Hình chữ nhật', 'formula': '$P = (a + b) \\times 2$ · $S = a \\times b$'},
+                          {'name': 'Hình vuông', 'formula': '$S = a \\times a$'},
+                          {'name': 'Hình chữ nhật', 'formula': '$P = (a + b) \\times 2$ · $S = a \\times b$'},
                           {'name': 'Hình vuông', 'formula': '$P = a \\times 4$ · $S = a \\times a$'}]}],
   'example': 'Một tấm bìa hình chữ nhật có chiều rộng $6\\text{ cm}$, chiều dài gấp $2$ lần chiều rộng. Tính '
              'diện tích tấm bìa đó.',
@@ -5202,24 +5800,27 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 52, 53: Diện tích hình chữ nhật, diện tích hình vuông và '
-                 'luyện tập chung**, công thức hoặc quy tắc nào sau đây biểu diễn đúng **Hình chữ nhật**?',
-            'options': ['$S = a \\times a$',
-                        '$P = (a + b) \\times 2$ · $S = a \\times b$',
-                        '$P = a \\times 4$ · $S = a \\times a$',
+            'q': 'Trong **Bài 52: Diện tích hình chữ nhật, diện tích hình vuông**, quy tắc hoặc công thức '
+                 'nào sau đây xác định đúng **Hình chữ nhật**?',
+            'options': ['$S = a : b$ ($a, b$ cùng đơn vị đo)',
+                        'Đảo ngược vế của quy tắc: $S = a \\times b$ ($a, b$ cùng đơn vị đo)',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $S = a \\times b$ ($a, b$ cùng '
+                        'đơn vị đo)',
                         '$S = a \\times b$ ($a, b$ cùng đơn vị đo)'],
             'answer': 3,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 52, 53: Diện tích hình chữ nhật, diện tích '
-                        'hình vuông và luyện tập chung, **Hình chữ nhật** được xác định bởi: $S = a \\times '
-                        'b$ ($a, b$ cùng đơn vị đo).'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 52: Diện tích hình chữ nhật, diện tích hình vuông, '
+                        '**Hình chữ nhật** được xác định bởi: $S = a \\times b$ ($a, b$ cùng đơn vị đo).'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 52, 53: Diện tích hình chữ nhật, diện tích hình vuông và luyện tập chung**, '
-                 'nội dung/biểu thức $S = a \\times a$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Hình vuông', 'Hình chữ nhật', 'Phân tích số', 'Số tròn trăm, tròn nghìn'],
+            'q': 'Khi học **Bài 52: Diện tích hình chữ nhật, diện tích hình vuông**, biểu thức hoặc quy tắc '
+                 'nào dưới đây biểu diễn đúng **Hình vuông**?',
+            'options': ['$S = a \\times a$',
+                        '$S = a : a$',
+                        'Đảo ngược vế của quy tắc: $S = a \\times a$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $S = a \\times a$'],
             'answer': 0,
-            'solution': 'Trong Bài 52, 53: Diện tích hình chữ nhật, diện tích hình vuông và luyện tập chung, '
-                        'biểu thức/quy tắc $S = a \\times a$ chính là nội dung của **Hình vuông**.'},
+            'solution': 'Trong Bài 52: Diện tích hình chữ nhật, diện tích hình vuông, **Hình vuông** có công '
+                        'thức/quy tắc là: $S = a \\times a$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Một hình vuông có chu vi là $20\\text{ cm}$. Diện tích của hình vuông đó là:',
@@ -5231,18 +5832,20 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 52, 53: Diện tích hình chữ nhật, diện tích hình vuông và luyện tập chung** '
-                 '(Chủ đề 9: Chu vi, diện tích một số hình phẳng), khẳng định nào sau đây phản ánh **đúng** '
-                 'yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Đọc, viết thành thạo các số có đến ba chữ số trong phạm vi 1 000.',
-                        'Phân tích được số có ba chữ số thành tổng các trăm, chục, đơn vị.',
+            'q': 'Để nắm vững bản chất của **Bài 52: Diện tích hình chữ nhật, diện tích hình vuông**, nhận '
+                 'định nào sau đây là **chính xác**?',
+            'options': ['Thuộc và vận dụng đúng công thức tính diện tích hình chữ nhật $S = a : b$ (cùng đơn '
+                        'vị đo).',
+                        'Đảo ngược vế của quy tắc: Thuộc và vận dụng đúng công thức tính diện tích hình chữ '
+                        'nhật $S = a \\times b$ (cùng đơn vị đo).',
                         'Thuộc và vận dụng đúng công thức tính diện tích hình chữ nhật $S = a \\times b$ '
                         '(cùng đơn vị đo).',
-                        'So sánh và sắp xếp được các số trong phạm vi 1 000 theo thứ tự.'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Thuộc và vận dụng đúng công '
+                        'thức tính diện tích hình chữ nhật $S = a \\times b$ (cùng đơn vị đo).'],
             'answer': 2,
-            'solution': 'Theo yêu cầu cần đạt của Bài 52, 53: Diện tích hình chữ nhật, diện tích hình vuông '
-                        'và luyện tập chung: Thuộc và vận dụng đúng công thức tính diện tích hình chữ nhật '
-                        '$S = a \\times b$ (cùng đơn vị đo).'},
+            'solution': 'Theo nội dung cốt lõi của Bài 52: Diện tích hình chữ nhật, diện tích hình vuông: '
+                        'Thuộc và vận dụng đúng công thức tính diện tích hình chữ nhật $S = a \\times b$ '
+                        '(cùng đơn vị đo).'},
            {'level': 'hieu',
             'type': 'tf',
             'q': 'Nhận định: "Hình chữ nhật có chiều dài $5\\text{ cm}$, chiều rộng $3\\text{ cm}$ thì có '
@@ -5254,34 +5857,33 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'hieu',
             'type': 'tf',
-            'q': 'Trong **Bài 52, 53: Diện tích hình chữ nhật, diện tích hình vuông và luyện tập chung**, '
-                 'quy tắc **Hình chữ nhật** được xác định bởi $S = a \\times b$ ($a, b$ cùng đơn vị đo) và '
-                 'áp dụng trực tiếp vào bài toán: “Một tấm bìa hình chữ nhật có chiều rộng $6\\text{ cm}$, '
-                 'chiều dài gấp $2$ lần chiều rộng. Tính diện tích tấm bìa đó.”. Đúng hay sai?',
+            'q': 'Trong **Bài 52: Diện tích hình chữ nhật, diện tích hình vuông**, quy tắc **Hình chữ nhật** '
+                 'được xác định bởi $S = a \\times b$ ($a, b$ cùng đơn vị đo) và khi áp dụng cho ví dụ “Một '
+                 'tấm bìa hình chữ nhật có chiều rộng $6\\text{ cm}$, chiều dài gấp $2$ lần chiều rộng. Tính '
+                 'diện tích tấm bìa đó.” ta có lời giải: Chiều dài tấm bìa là: $6 \\times 2 = 12\\text{ '
+                 '(cm)}$. Diện tích tấm bìa là: $12 \\times 6 = 72\\text{ (cm}^2\\text{)}$. Đáp số: '
+                 '**$72\\text{ cm}^2$.... Đúng hay sai?',
             'answer': True,
-            'solution': 'Khẳng định **Đúng**. Quy tắc **Hình chữ nhật** ($S = a \\times b$ ($a, b$ cùng đơn '
-                        'vị đo)) là kiến thức cốt lõi của Bài 52, 53: Diện tích hình chữ nhật, diện tích '
-                        'hình vuông và luyện tập chung. Chiều dài tấm bìa là: $6 \\times 2 = 12\\text{ '
-                        '(cm)}$. Diện tích tấm bìa là: $12 \\times 6 = 72\\text{ (cm}^2\\text{)}$. Đáp số: '
-                        '**$72\\text{ cm}^2$...'},
+            'solution': 'Khẳng định **Đúng**. Đó chính là quy tắc **Hình chữ nhật** ($S = a \\times b$ ($a, '
+                        'b$ cùng đơn vị đo)) và lời giải ví dụ minh họa của Bài 52: Diện tích hình chữ nhật, '
+                        'diện tích hình vuông.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 52, 53: Diện tích hình chữ nhật, diện tích hình vuông và luyện '
-                 'tập chung** để giải quyết tình huống sau: Một tấm bìa hình chữ nhật có chiều rộng '
-                 '$6\\text{ cm}$, chiều dài gấp $2$ lần chiều rộng. Tính diện tích tấm bìa đó. Kết quả và '
-                 'hướng giải nào dưới đây là **đúng**?',
-            'options': ['Ta có $806 = 800 + 6$ (gồm $8$ trăm, $0$ chục, $6$ đơn vị). Vì chữ số hàng trăm $8 '
-                        '> 7$ nên **$806 > 798$**.',
-                        '- $468 + 325$: $8 + 5 = 13$ (viết $3$ nhớ $1$); $6 + 2 + 1 = 9$; $4 + 3 = 7$ '
-                        '$\\rightarrow$ **$793$**. - $750 - 236$: $10 - 6 = 4$ (viết $4$ nhớ $1$); $5 - (3 + '
-                        '1) = 1$...',
-                        'Áp dụng quy tắc tìm số trừ: $\\text{Số trừ} = \\text{Số bị trừ} - \\text{Hiệu} = 85 '
-                        '- 39 = 46$. Thử lại: $85 - 46 = 39$ (đúng). Vậy số cần tìm là **$46$**.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 52: Diện tích hình chữ nhật, diện tích hình vuông** '
+                 'để giải bài toán sau: Một tấm bìa hình chữ nhật có chiều rộng $6\\text{ cm}$, chiều dài '
+                 'gấp $2$ lần chiều rộng. Tính diện tích tấm bìa đó. Cách giải và kết quả nào dưới đây là '
+                 '**đúng**?',
+            'options': ['Chiều dài tấm bìa là: $6 : 2 = 12\\text{ (cm)}$. Diện tích tấm bìa là: $12 \\times '
+                        '6 = 72\\text{ (cm}^2\\text{)}$. Đáp số: **$72\\text{ cm}^2$**.',
+                        'Chiều dài tấm bìa là: $6 \\times 2 = 12\\text{ (cm)}$. Diện tích tấm bìa là: $12 '
+                        '\\times 6 = 72\\text{ (cm}^2\\text{)}$. Đáp số: **$72\\text{ cm}^1$**.',
+                        'Chiều dài tấm bìa là: $12 \\times 2 = 12\\text{ (cm)}$. Diện tích tấm bìa là: $12 '
+                        '\\times 6 = 72\\text{ (cm}^2\\text{)}$. Đáp số: **$72\\text{ cm}^2$**.',
                         'Chiều dài tấm bìa là: $6 \\times 2 = 12\\text{ (cm)}$. Diện tích tấm bìa là: $12 '
                         '\\times 6 = 72\\text{ (cm}^2\\text{)}$. Đáp số: **$72\\text{ cm}^2$**.'],
             'answer': 3,
-            'solution': 'Lời giải chi tiết theo Bài 52, 53: Diện tích hình chữ nhật, diện tích hình vuông và '
-                        'luyện tập chung: Chiều dài tấm bìa là: $6 \\times 2 = 12\\text{ (cm)}$.\n'
+            'solution': 'Lời giải chi tiết theo Bài 52: Diện tích hình chữ nhật, diện tích hình vuông: Chiều '
+                        'dài tấm bìa là: $6 \\times 2 = 12\\text{ (cm)}$.\n'
                         'Diện tích tấm bìa là: $12 \\times 6 = 72\\text{ (cm}^2\\text{)}$.\n'
                         'Đáp số: **$72\\text{ cm}^2$**.'},
            {'level': 'vandung',
@@ -5313,7 +5915,7 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             '### 2. Đặt tính rồi tính\n'
             '- Ví dụ: $4\\,527 + 3\\,685$. Ta cộng: $7 + 5 = 12$ (viết $2$ nhớ $1$); $2 + 8 + 1 = 11$ (viết '
             '$1$ nhớ $1$); $5 + 6 + 1 = 12$ (viết $2$ nhớ $1$); $4 + 3 + 1 = 8$. Kết quả: $8\\,212$.',
-  'formulas': [{'category': 'I. Phép cộng trong phạm vi 10 000',
+  'formulas': [{'category': 'Phép cộng trong phạm vi 10 000',
                 'items': [{'name': 'Quy tắc',
                            'formula': 'Đặt thẳng cột · Cộng từ phải sang trái · Nhớ sang hàng liền trước'},
                           {'name': 'Nhẩm số tròn nghìn', 'formula': '$a\\,000 + b\\,000 = (a + b)\\,000$'}]}],
@@ -5339,24 +5941,29 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 54: Phép cộng trong phạm vi 10 000**, công thức hoặc quy '
-                 'tắc nào sau đây biểu diễn đúng **Quy tắc**?',
+            'q': 'Trong **Bài 54: Phép cộng trong phạm vi 10 000**, quy tắc hoặc công thức nào sau đây xác '
+                 'định đúng **Quy tắc**?',
             'options': ['Đặt thẳng cột · Cộng từ phải sang trái · Nhớ sang hàng liền trước',
-                        '$a\\,000 + b\\,000 = (a + b)\\,000$',
-                        '$\\overline{abc} = a00 + b0 + c$',
-                        '$10 \\text{ chục} = 100$ · $10 \\text{ trăm} = 1\\,000$'],
+                        'Đặt thẳng cột · Cộng từ trái sang phải · Nhớ sang hàng liền trước',
+                        'Đảo ngược vế của quy tắc: Đặt thẳng cột · Cộng từ phải sang trái · Nhớ sang hàng '
+                        'liền trước',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Đặt thẳng cột · Cộng từ phải '
+                        'sang trái · Nhớ sang hàng liền trước'],
             'answer': 0,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 54: Phép cộng trong phạm vi 10 000, **Quy '
-                        'tắc** được xác định bởi: Đặt thẳng cột · Cộng từ phải sang trái · Nhớ sang hàng '
-                        'liền trước.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 54: Phép cộng trong phạm vi 10 000, **Quy tắc** '
+                        'được xác định bởi: Đặt thẳng cột · Cộng từ phải sang trái · Nhớ sang hàng liền '
+                        'trước.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 54: Phép cộng trong phạm vi 10 000**, nội dung/biểu thức $a\\,000 + b\\,000 = '
-                 '(a + b)\\,000$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Quy tắc', 'Nhẩm số tròn nghìn', 'Phân tích số', 'Số tròn trăm, tròn nghìn'],
+            'q': 'Khi học **Bài 54: Phép cộng trong phạm vi 10 000**, biểu thức hoặc quy tắc nào dưới đây '
+                 'biểu diễn đúng **Nhẩm số tròn nghìn**?',
+            'options': ['$a\\,000 - b\\,000 = (a + b)\\,000$',
+                        '$a\\,000 + b\\,000 = (a + b)\\,000$',
+                        '$a\\,000 + b\\,000 = (a + b)\\,1$',
+                        '$a\\,2 + b\\,000 = (a + b)\\,000$'],
             'answer': 1,
-            'solution': 'Trong Bài 54: Phép cộng trong phạm vi 10 000, biểu thức/quy tắc $a\\,000 + b\\,000 '
-                        '= (a + b)\\,000$ chính là nội dung của **Nhẩm số tròn nghìn**.'},
+            'solution': 'Trong Bài 54: Phép cộng trong phạm vi 10 000, **Nhẩm số tròn nghìn** có công '
+                        'thức/quy tắc là: $a\\,000 + b\\,000 = (a + b)\\,000$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Tổng của $4\\,527$ và $3\\,685$ là:',
@@ -5367,15 +5974,14 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 54: Phép cộng trong phạm vi 10 000** (Chủ đề 10: Cộng, trừ, nhân, chia trong '
-                 'phạm vi 10 000), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến '
-                 'thức của bài?',
-            'options': ['Đọc, viết thành thạo các số có đến ba chữ số trong phạm vi 1 000.',
-                        'Phân tích được số có ba chữ số thành tổng các trăm, chục, đơn vị.',
-                        'So sánh và sắp xếp được các số trong phạm vi 1 000 theo thứ tự.',
+            'q': 'Để nắm vững bản chất của **Bài 54: Phép cộng trong phạm vi 10 000**, nhận định nào sau đây '
+                 'là **chính xác**?',
+            'options': ['Đặt tính và tính đúng phép cộng các số có đến bốn chữ số trong phạm vi $11\\,000$.',
+                        'Đặt tính và tính đúng phép cộng các số có đến bốn chữ số trong phạm vi $10\\,1$.',
+                        'Đặt tính và tính đúng phép cộng các số có đến bốn chữ số trong phạm vi $20\\,000$.',
                         'Đặt tính và tính đúng phép cộng các số có đến bốn chữ số trong phạm vi $10\\,000$.'],
             'answer': 3,
-            'solution': 'Theo yêu cầu cần đạt của Bài 54: Phép cộng trong phạm vi 10 000: Đặt tính và tính '
+            'solution': 'Theo nội dung cốt lõi của Bài 54: Phép cộng trong phạm vi 10 000: Đặt tính và tính '
                         'đúng phép cộng các số có đến bốn chữ số trong phạm vi $10\\,000$.'},
            {'level': 'hieu',
             'type': 'tf',
@@ -5388,25 +5994,22 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
            {'level': 'hieu',
             'type': 'tf',
             'q': 'Trong **Bài 54: Phép cộng trong phạm vi 10 000**, quy tắc **Quy tắc** được xác định bởi '
-                 'Đặt thẳng cột · Cộng từ phải sang trái · Nhớ sang hàng liền trước và áp dụng trực tiếp vào '
-                 'bài toán: “Đặt tính rồi tính: $3\\,526 + 2\\,748$ và $5\\,400 + 2\\,600$.”. Đúng hay sai?',
+                 'Đặt thẳng cột · Cộng từ phải sang trái · Nhớ sang hàng liền trước và khi áp dụng cho ví dụ '
+                 '“Đặt tính rồi tính: $3\\,526 + 2\\,748$ và $5\\,400 + 2\\,600$.” ta có lời giải: - '
+                 '$3\\,526 + 2\\,748 = 6\\,274$. - $5\\,400 + 2\\,600 = 8\\,000$.. Đúng hay sai?',
             'answer': True,
-            'solution': 'Khẳng định **Đúng**. Quy tắc **Quy tắc** (Đặt thẳng cột · Cộng từ phải sang trái · '
-                        'Nhớ sang hàng liền trước) là kiến thức cốt lõi của Bài 54: Phép cộng trong phạm vi '
-                        '10 000. - $3\\,526 + 2\\,748 = 6\\,274$. - $5\\,400 + 2\\,600 = 8\\,000$.'},
+            'solution': 'Khẳng định **Đúng**. Đó chính là quy tắc **Quy tắc** (Đặt thẳng cột · Cộng từ phải '
+                        'sang trái · Nhớ sang hàng liền trước) và lời giải ví dụ minh họa của Bài 54: Phép '
+                        'cộng trong phạm vi 10 000.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 54: Phép cộng trong phạm vi 10 000** để giải quyết tình huống '
-                 'sau: Đặt tính rồi tính: $3\\,526 + 2\\,748$ và $5\\,400 + 2\\,600$. Kết quả và hướng giải '
-                 'nào dưới đây là **đúng**?',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 54: Phép cộng trong phạm vi 10 000** để giải bài '
+                 'toán sau: Đặt tính rồi tính: $3\\,526 + 2\\,748$ và $5\\,400 + 2\\,600$. Cách giải và kết '
+                 'quả nào dưới đây là **đúng**?',
             'options': ['- $3\\,526 + 2\\,748 = 6\\,274$. - $5\\,400 + 2\\,600 = 8\\,000$.',
-                        'Ta có $806 = 800 + 6$ (gồm $8$ trăm, $0$ chục, $6$ đơn vị). Vì chữ số hàng trăm $8 '
-                        '> 7$ nên **$806 > 798$**.',
-                        '- $468 + 325$: $8 + 5 = 13$ (viết $3$ nhớ $1$); $6 + 2 + 1 = 9$; $4 + 3 = 7$ '
-                        '$\\rightarrow$ **$793$**. - $750 - 236$: $10 - 6 = 4$ (viết $4$ nhớ $1$); $5 - (3 + '
-                        '1) = 1$...',
-                        'Áp dụng quy tắc tìm số trừ: $\\text{Số trừ} = \\text{Số bị trừ} - \\text{Hiệu} = 85 '
-                        '- 39 = 46$. Thử lại: $85 - 46 = 39$ (đúng). Vậy số cần tìm là **$46$**.'],
+                        '- $3\\,526 - 2\\,748 = 6\\,274$. - $5\\,400 + 2\\,600 = 8\\,000$.',
+                        '- $3\\,526 + 2\\,748 = 6\\,274$. - $5\\,400 + 2\\,600 = 8\\,1$.',
+                        '- $6\\,526 + 2\\,748 = 6\\,274$. - $5\\,400 + 2\\,600 = 8\\,000$.'],
             'answer': 0,
             'solution': 'Lời giải chi tiết theo Bài 54: Phép cộng trong phạm vi 10 000: - $3\\,526 + 2\\,748 '
                         '= 6\\,274$.\n'
@@ -5441,7 +6044,7 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             '- Ví dụ: $7\\,452 - 3\\,218 = 4\\,234$.\n'
             '- Ví dụ trừ qua số tròn nghìn: $6\\,000 - 2\\,785 = 3\\,215$ (thử lại: $3\\,215 + 2\\,785 = '
             '6\\,000$).',
-  'formulas': [{'category': 'I. Phép trừ trong phạm vi 10 000',
+  'formulas': [{'category': 'Phép trừ trong phạm vi 10 000',
                 'items': [{'name': 'Quy tắc',
                            'formula': 'Đặt thẳng cột · Trừ từ phải sang trái · Nhớ $1$ khi mượn'},
                           {'name': 'Thử lại phép trừ',
@@ -5468,23 +6071,27 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 55: Phép trừ trong phạm vi 10 000**, công thức hoặc quy '
-                 'tắc nào sau đây biểu diễn đúng **Quy tắc**?',
-            'options': ['$\\text{Hiệu} + \\text{Số trừ} = \\text{Số bị trừ}$',
+            'q': 'Trong **Bài 55: Phép trừ trong phạm vi 10 000**, quy tắc hoặc công thức nào sau đây xác '
+                 'định đúng **Quy tắc**?',
+            'options': ['Đặt thẳng cột · Trừ từ trái sang phải · Nhớ $1$ khi mượn',
                         'Đặt thẳng cột · Trừ từ phải sang trái · Nhớ $1$ khi mượn',
-                        '$\\overline{abc} = a00 + b0 + c$',
-                        '$10 \\text{ chục} = 100$ · $10 \\text{ trăm} = 1\\,000$'],
+                        'Đặt thẳng cột · Trừ từ phải sang trái · Nhớ $2$ khi mượn',
+                        '$\\text{Hiệu} + \\text{Số trừ} = \\text{Số bị trừ}$'],
             'answer': 1,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 55: Phép trừ trong phạm vi 10 000, **Quy '
-                        'tắc** được xác định bởi: Đặt thẳng cột · Trừ từ phải sang trái · Nhớ $1$ khi mượn.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 55: Phép trừ trong phạm vi 10 000, **Quy tắc** '
+                        'được xác định bởi: Đặt thẳng cột · Trừ từ phải sang trái · Nhớ $1$ khi mượn.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 55: Phép trừ trong phạm vi 10 000**, nội dung/biểu thức $\\text{Hiệu} + '
-                 '\\text{Số trừ} = \\text{Số bị trừ}$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Quy tắc', 'Phân tích số', 'Thử lại phép trừ', 'Số tròn trăm, tròn nghìn'],
+            'q': 'Khi học **Bài 55: Phép trừ trong phạm vi 10 000**, biểu thức hoặc quy tắc nào dưới đây '
+                 'biểu diễn đúng **Thử lại phép trừ**?',
+            'options': ['$\\text{Hiệu} - \\text{Số trừ} = \\text{Số bị trừ}$',
+                        'Đảo ngược vế của quy tắc: $\\text{Hiệu} + \\text{Số trừ} = \\text{Số bị trừ}$',
+                        '$\\text{Hiệu} + \\text{Số trừ} = \\text{Số bị trừ}$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\text{Hiệu} + \\text{Số trừ} '
+                        '= \\text{Số bị trừ}$'],
             'answer': 2,
-            'solution': 'Trong Bài 55: Phép trừ trong phạm vi 10 000, biểu thức/quy tắc $\\text{Hiệu} + '
-                        '\\text{Số trừ} = \\text{Số bị trừ}$ chính là nội dung của **Thử lại phép trừ**.'},
+            'solution': 'Trong Bài 55: Phép trừ trong phạm vi 10 000, **Thử lại phép trừ** có công thức/quy '
+                        'tắc là: $\\text{Hiệu} + \\text{Số trừ} = \\text{Số bị trừ}$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Tìm $x$ biết $x + 2\\,450 = 6\\,000$:',
@@ -5495,15 +6102,14 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 55: Phép trừ trong phạm vi 10 000** (Chủ đề 10: Cộng, trừ, nhân, chia trong '
-                 'phạm vi 10 000), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến '
-                 'thức của bài?',
+            'q': 'Để nắm vững bản chất của **Bài 55: Phép trừ trong phạm vi 10 000**, nhận định nào sau đây '
+                 'là **chính xác**?',
             'options': ['Đặt tính và tính đúng phép trừ các số trong phạm vi $10\\,000$.',
-                        'Đọc, viết thành thạo các số có đến ba chữ số trong phạm vi 1 000.',
-                        'Phân tích được số có ba chữ số thành tổng các trăm, chục, đơn vị.',
-                        'So sánh và sắp xếp được các số trong phạm vi 1 000 theo thứ tự.'],
+                        'Đặt tính và tính đúng phép trừ các số trong phạm vi $11\\,000$.',
+                        'Đặt tính và tính đúng phép trừ các số trong phạm vi $10\\,1$.',
+                        'Đặt tính và tính đúng phép trừ các số trong phạm vi $20\\,000$.'],
             'answer': 0,
-            'solution': 'Theo yêu cầu cần đạt của Bài 55: Phép trừ trong phạm vi 10 000: Đặt tính và tính '
+            'solution': 'Theo nội dung cốt lõi của Bài 55: Phép trừ trong phạm vi 10 000: Đặt tính và tính '
                         'đúng phép trừ các số trong phạm vi $10\\,000$.'},
            {'level': 'hieu',
             'type': 'tf',
@@ -5515,25 +6121,22 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
            {'level': 'hieu',
             'type': 'tf',
             'q': 'Trong **Bài 55: Phép trừ trong phạm vi 10 000**, quy tắc **Quy tắc** được xác định bởi Đặt '
-                 'thẳng cột · Trừ từ phải sang trái · Nhớ $1$ khi mượn và áp dụng trực tiếp vào bài toán: '
-                 '“Đặt tính rồi tính: $8\\,536 - 4\\,271$ và $10\\,000 - 3\\,500$.”. Đúng hay sai?',
+                 'thẳng cột · Trừ từ phải sang trái · Nhớ $1$ khi mượn và khi áp dụng cho ví dụ “Đặt tính '
+                 'rồi tính: $8\\,536 - 4\\,271$ và $10\\,000 - 3\\,500$.” ta có lời giải: - $8\\,536 - '
+                 '4\\,271 = 4\\,265$. - $10\\,000 - 3\\,500 = 6\\,500$.. Đúng hay sai?',
             'answer': True,
-            'solution': 'Khẳng định **Đúng**. Quy tắc **Quy tắc** (Đặt thẳng cột · Trừ từ phải sang trái · '
-                        'Nhớ $1$ khi mượn) là kiến thức cốt lõi của Bài 55: Phép trừ trong phạm vi 10 000. - '
-                        '$8\\,536 - 4\\,271 = 4\\,265$. - $10\\,000 - 3\\,500 = 6\\,500$.'},
+            'solution': 'Khẳng định **Đúng**. Đó chính là quy tắc **Quy tắc** (Đặt thẳng cột · Trừ từ phải '
+                        'sang trái · Nhớ $1$ khi mượn) và lời giải ví dụ minh họa của Bài 55: Phép trừ trong '
+                        'phạm vi 10 000.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 55: Phép trừ trong phạm vi 10 000** để giải quyết tình huống sau: '
-                 'Đặt tính rồi tính: $8\\,536 - 4\\,271$ và $10\\,000 - 3\\,500$. Kết quả và hướng giải nào '
-                 'dưới đây là **đúng**?',
-            'options': ['Ta có $806 = 800 + 6$ (gồm $8$ trăm, $0$ chục, $6$ đơn vị). Vì chữ số hàng trăm $8 '
-                        '> 7$ nên **$806 > 798$**.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 55: Phép trừ trong phạm vi 10 000** để giải bài '
+                 'toán sau: Đặt tính rồi tính: $8\\,536 - 4\\,271$ và $10\\,000 - 3\\,500$. Cách giải và kết '
+                 'quả nào dưới đây là **đúng**?',
+            'options': ['- $8\\,536 + 4\\,271 = 4\\,265$. - $10\\,000 - 3\\,500 = 6\\,500$.',
                         '- $8\\,536 - 4\\,271 = 4\\,265$. - $10\\,000 - 3\\,500 = 6\\,500$.',
-                        '- $468 + 325$: $8 + 5 = 13$ (viết $3$ nhớ $1$); $6 + 2 + 1 = 9$; $4 + 3 = 7$ '
-                        '$\\rightarrow$ **$793$**. - $750 - 236$: $10 - 6 = 4$ (viết $4$ nhớ $1$); $5 - (3 + '
-                        '1) = 1$...',
-                        'Áp dụng quy tắc tìm số trừ: $\\text{Số trừ} = \\text{Số bị trừ} - \\text{Hiệu} = 85 '
-                        '- 39 = 46$. Thử lại: $85 - 46 = 39$ (đúng). Vậy số cần tìm là **$46$**.'],
+                        '- $8\\,536 - 4\\,271 = 4\\,265$. - $10\\,000 - 3\\,500 = 6\\,499$.',
+                        '- $16\\,536 - 4\\,271 = 4\\,265$. - $10\\,000 - 3\\,500 = 6\\,500$.'],
             'answer': 1,
             'solution': 'Lời giải chi tiết theo Bài 55: Phép trừ trong phạm vi 10 000: - $8\\,536 - 4\\,271 '
                         '= 4\\,265$.\n'
@@ -5567,7 +6170,7 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             '- Ví dụ: $1\\,218 \\times 4 = 4\\,872$ ($8 \\times 4 = 32$ viết $2$ nhớ $3$; $1 \\times 4 + 3 = '
             '7$; $2 \\times 4 = 8$; $1 \\times 4 = 4$).\n'
             '- Ví dụ: $2\\,615 \\times 3 = 7\\,845$.',
-  'formulas': [{'category': 'I. Nhân số có bốn chữ số',
+  'formulas': [{'category': 'Nhân số có bốn chữ số',
                 'items': [{'name': 'Thứ tự nhân',
                            'formula': 'Đơn vị $\\rightarrow$ Chục $\\rightarrow$ Trăm $\\rightarrow$ Nghìn'},
                           {'name': 'Nhẩm số tròn nghìn',
@@ -5596,25 +6199,30 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 56: Nhân số có bốn chữ số với số có một chữ số**, công '
-                 'thức hoặc quy tắc nào sau đây biểu diễn đúng **Thứ tự nhân**?',
-            'options': ['$a\\,000 \\times b = (a \\times b)\\,000$',
-                        '$\\overline{abc} = a00 + b0 + c$',
+            'q': 'Trong **Bài 56: Nhân số có bốn chữ số với số có một chữ số**, quy tắc hoặc công thức nào '
+                 'sau đây xác định đúng **Thứ tự nhân**?',
+            'options': ['Đơn vị $\\rightarrow$ Chục $\\rightarrow$ Trăm $\\rightarrow$ Nghìn (với dấu ngược '
+                        'lại)',
+                        'Đảo ngược vế của quy tắc: Đơn vị $\\rightarrow$ Chục $\\rightarrow$ Trăm '
+                        '$\\rightarrow$ Nghìn',
                         'Đơn vị $\\rightarrow$ Chục $\\rightarrow$ Trăm $\\rightarrow$ Nghìn',
-                        '$10 \\text{ chục} = 100$ · $10 \\text{ trăm} = 1\\,000$'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Đơn vị $\\rightarrow$ Chục '
+                        '$\\rightarrow$ Trăm $\\rightarrow$ Nghìn'],
             'answer': 2,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 56: Nhân số có bốn chữ số với số có một chữ '
-                        'số, **Thứ tự nhân** được xác định bởi: Đơn vị $\\rightarrow$ Chục $\\rightarrow$ '
-                        'Trăm $\\rightarrow$ Nghìn.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 56: Nhân số có bốn chữ số với số có một chữ số, '
+                        '**Thứ tự nhân** được xác định bởi: Đơn vị $\\rightarrow$ Chục $\\rightarrow$ Trăm '
+                        '$\\rightarrow$ Nghìn.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 56: Nhân số có bốn chữ số với số có một chữ số**, nội dung/biểu thức $a\\,000 '
-                 '\\times b = (a \\times b)\\,000$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Thứ tự nhân', 'Phân tích số', 'Số tròn trăm, tròn nghìn', 'Nhẩm số tròn nghìn'],
+            'q': 'Khi học **Bài 56: Nhân số có bốn chữ số với số có một chữ số**, biểu thức hoặc quy tắc nào '
+                 'dưới đây biểu diễn đúng **Nhẩm số tròn nghìn**?',
+            'options': ['$a\\,000 : b = (a \\times b)\\,000$',
+                        '$a\\,000 \\times b = (a \\times b)\\,1$',
+                        '$a\\,2 \\times b = (a \\times b)\\,000$',
+                        '$a\\,000 \\times b = (a \\times b)\\,000$'],
             'answer': 3,
-            'solution': 'Trong Bài 56: Nhân số có bốn chữ số với số có một chữ số, biểu thức/quy tắc '
-                        '$a\\,000 \\times b = (a \\times b)\\,000$ chính là nội dung của **Nhẩm số tròn '
-                        'nghìn**.'},
+            'solution': 'Trong Bài 56: Nhân số có bốn chữ số với số có một chữ số, **Nhẩm số tròn nghìn** có '
+                        'công thức/quy tắc là: $a\\,000 \\times b = (a \\times b)\\,000$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Kết quả của phép nhân $2\\,615 \\times 3$ là:',
@@ -5625,15 +6233,17 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 56: Nhân số có bốn chữ số với số có một chữ số** (Chủ đề 10: Cộng, trừ, '
-                 'nhân, chia trong phạm vi 10 000), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt '
-                 'và bản chất kiến thức của bài?',
-            'options': ['Đọc, viết thành thạo các số có đến ba chữ số trong phạm vi 1 000.',
+            'q': 'Để nắm vững bản chất của **Bài 56: Nhân số có bốn chữ số với số có một chữ số**, nhận định '
+                 'nào sau đây là **chính xác**?',
+            'options': ['Đặt tính và tính đúng phép nhân số có bốn chữ số với số có một chữ số. (với dấu '
+                        'ngược lại)',
                         'Đặt tính và tính đúng phép nhân số có bốn chữ số với số có một chữ số.',
-                        'Phân tích được số có ba chữ số thành tổng các trăm, chục, đơn vị.',
-                        'So sánh và sắp xếp được các số trong phạm vi 1 000 theo thứ tự.'],
+                        'Đảo ngược vế của quy tắc: Đặt tính và tính đúng phép nhân số có bốn chữ số với số '
+                        'có một chữ số.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Đặt tính và tính đúng phép nhân '
+                        'số có bốn chữ số với số có một chữ số.'],
             'answer': 1,
-            'solution': 'Theo yêu cầu cần đạt của Bài 56: Nhân số có bốn chữ số với số có một chữ số: Đặt '
+            'solution': 'Theo nội dung cốt lõi của Bài 56: Nhân số có bốn chữ số với số có một chữ số: Đặt '
                         'tính và tính đúng phép nhân số có bốn chữ số với số có một chữ số.'},
            {'level': 'hieu',
             'type': 'tf',
@@ -5645,31 +6255,29 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
            {'level': 'hieu',
             'type': 'tf',
             'q': 'Trong **Bài 56: Nhân số có bốn chữ số với số có một chữ số**, quy tắc **Thứ tự nhân** được '
-                 'xác định bởi Đơn vị $\\rightarrow$ Chục $\\rightarrow$ Trăm $\\rightarrow$ Nghìn và áp '
-                 'dụng trực tiếp vào bài toán: “Một nhà máy ngày đầu sản xuất được $1\\,250$ sản phẩm, ngày '
-                 'thứ hai sản xuất gấp đôi ngày đầu. Hỏi cả hai ngày nhà máy sản xuất được bao nhiê...”. '
-                 'Đúng hay sai?',
+                 'xác định bởi Đơn vị $\\rightarrow$ Chục $\\rightarrow$ Trăm $\\rightarrow$ Nghìn và khi áp '
+                 'dụng cho ví dụ “Một nhà máy ngày đầu sản xuất được $1\\,250$ sản phẩm, ngày thứ hai sản '
+                 'xuất gấp đôi ngày đầu. Hỏi cả hai ngày nhà máy sản xuất được bao...” ta có lời giải: Ngày '
+                 'thứ hai sản xuất được: $1\\,250 \\times 2 = 2\\,500\\text{ (sản phẩm)}$. Cả hai ngày sản '
+                 'xuất được: $1\\,250 + 2\\,500 = 3\\,750\\text{ (sản phẩm)}$.... Đúng hay sai?',
             'answer': True,
-            'solution': 'Khẳng định **Đúng**. Quy tắc **Thứ tự nhân** (Đơn vị $\\rightarrow$ Chục '
-                        '$\\rightarrow$ Trăm $\\rightarrow$ Nghìn) là kiến thức cốt lõi của Bài 56: Nhân số '
-                        'có bốn chữ số với số có một chữ số. Ngày thứ hai sản xuất được: $1\\,250 \\times 2 '
-                        '= 2\\,500\\text{ (sản phẩm)}$. Cả hai ngày sản xuất được: $1\\,250 + 2\\,500 = '
-                        '3\\,750\\text{ (sản phẩm)}$...'},
+            'solution': 'Khẳng định **Đúng**. Đó chính là quy tắc **Thứ tự nhân** (Đơn vị $\\rightarrow$ '
+                        'Chục $\\rightarrow$ Trăm $\\rightarrow$ Nghìn) và lời giải ví dụ minh họa của Bài '
+                        '56: Nhân số có bốn chữ số với số có một chữ số.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 56: Nhân số có bốn chữ số với số có một chữ số** để giải quyết '
-                 'tình huống sau: Một nhà máy ngày đầu sản xuất được $1\\,250$ sản phẩm, ngày thứ hai sản '
-                 'xuất gấp đôi ngày đầu. Hỏi cả hai ngày nhà máy sản xuất được bao nhiêu sản phẩm? Kết quả '
-                 'và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Ta có $806 = 800 + 6$ (gồm $8$ trăm, $0$ chục, $6$ đơn vị). Vì chữ số hàng trăm $8 '
-                        '> 7$ nên **$806 > 798$**.',
-                        '- $468 + 325$: $8 + 5 = 13$ (viết $3$ nhớ $1$); $6 + 2 + 1 = 9$; $4 + 3 = 7$ '
-                        '$\\rightarrow$ **$793$**. - $750 - 236$: $10 - 6 = 4$ (viết $4$ nhớ $1$); $5 - (3 + '
-                        '1) = 1$...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 56: Nhân số có bốn chữ số với số có một chữ số** để '
+                 'giải bài toán sau: Một nhà máy ngày đầu sản xuất được $1\\,250$ sản phẩm, ngày thứ hai sản '
+                 'xuất gấp đôi ngày đầu. Hỏi cả hai ngày nhà máy sản xuất được bao nhiêu sản phẩm? Cách giải '
+                 'và kết quả nào dưới đây là **đúng**?',
+            'options': ['Ngày thứ hai sản xuất được: $1\\,250 \\times 2 = 2\\,500\\text{ (sản phẩm)}$. Cả '
+                        'hai ngày sản xuất được: $1\\,250 - 2\\,500 = 3\\,750\\text{ (sản phẩm)}$.',
+                        'Ngày thứ hai sản xuất được: $1\\,250 \\times 2 = 2\\,500\\text{ (sản phẩm)}$. Cả '
+                        'hai ngày sản xuất được: $1\\,250 + 2\\,500 = 3\\,749\\text{ (sản phẩm)}$.',
                         'Ngày thứ hai sản xuất được: $1\\,250 \\times 2 = 2\\,500\\text{ (sản phẩm)}$. Cả '
                         'hai ngày sản xuất được: $1\\,250 + 2\\,500 = 3\\,750\\text{ (sản phẩm)}$.',
-                        'Áp dụng quy tắc tìm số trừ: $\\text{Số trừ} = \\text{Số bị trừ} - \\text{Hiệu} = 85 '
-                        '- 39 = 46$. Thử lại: $85 - 46 = 39$ (đúng). Vậy số cần tìm là **$46$**.'],
+                        'Ngày thứ hai sản xuất được: $2\\,250 \\times 2 = 2\\,500\\text{ (sản phẩm)}$. Cả '
+                        'hai ngày sản xuất được: $1\\,250 + 2\\,500 = 3\\,750\\text{ (sản phẩm)}$.'],
             'answer': 2,
             'solution': 'Lời giải chi tiết theo Bài 56: Nhân số có bốn chữ số với số có một chữ số: Ngày thứ '
                         'hai sản xuất được: $1\\,250 \\times 2 = 2\\,500\\text{ (sản phẩm)}$.\n'
@@ -5687,7 +6295,7 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
  {'topic': 'l3-cd10-cong-tru-nhan-chia-pham-vi-10000',
   'context_title': 'Chủ đề 10: Cộng, trừ, nhân, chia trong phạm vi 10 000',
   'context': 'SGK Toán 3 · Chủ đề 10: Phép cộng, trừ, nhân, chia trong phạm vi 10 000.',
-  'title': 'Bài 57, 58: Chia số có bốn chữ số cho số có một chữ số và luyện tập chung',
+  'title': 'Bài 57: Chia số có bốn chữ số cho số có một chữ số',
   'icon': '➗',
   'description': 'Thực hiện phép chia số có bốn chữ số cho số có một chữ số (chia hết và chia có dư) và giải '
                  'toán.',
@@ -5704,7 +6312,7 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             '= 0$ (viết $0$); hạ $6$ được $36 : 4 = 9$. Vậy $2\\,436 : 4 = 609$.\n'
             '### 2. Chia có dư\n'
             '- Ví dụ: $4\\,219 : 6 = 703 \\text{ (dư } 1\\text{)}$ vì $703 \\times 6 + 1 = 4\\,219$.',
-  'formulas': [{'category': 'I. Quy tắc chia',
+  'formulas': [{'category': 'Quy tắc chia',
                 'items': [{'name': 'Thứ tự',
                            'formula': 'Từ hàng nghìn (bên trái) sang hàng đơn vị (bên phải)'},
                           {'name': 'Thử lại',
@@ -5733,26 +6341,31 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 57, 58: Chia số có bốn chữ số cho số có một chữ số và '
-                 'luyện tập chung**, công thức hoặc quy tắc nào sau đây biểu diễn đúng **Thứ tự**?',
-            'options': ['$\\text{Thương} \\times \\text{Số chia} + \\text{Số dư} = \\text{Số bị chia}$',
-                        '$\\overline{abc} = a00 + b0 + c$',
-                        '$10 \\text{ chục} = 100$ · $10 \\text{ trăm} = 1\\,000$',
+            'q': 'Trong **Bài 57: Chia số có bốn chữ số cho số có một chữ số**, quy tắc hoặc công thức nào '
+                 'sau đây xác định đúng **Thứ tự**?',
+            'options': ['Từ hàng nghìn (bên trái) sang hàng đơn vị (bên phải) (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Từ hàng nghìn (bên trái) sang hàng đơn vị (bên phải)',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Từ hàng nghìn (bên trái) sang '
+                        'hàng đơn vị (bên phải)',
                         'Từ hàng nghìn (bên trái) sang hàng đơn vị (bên phải)'],
             'answer': 3,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 57, 58: Chia số có bốn chữ số cho số có một '
-                        'chữ số và luyện tập chung, **Thứ tự** được xác định bởi: Từ hàng nghìn (bên trái) '
-                        'sang hàng đơn vị (bên phải).'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 57: Chia số có bốn chữ số cho số có một chữ số, '
+                        '**Thứ tự** được xác định bởi: Từ hàng nghìn (bên trái) sang hàng đơn vị (bên '
+                        'phải).'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 57, 58: Chia số có bốn chữ số cho số có một chữ số và luyện tập chung**, nội '
-                 'dung/biểu thức $\\text{Thương} \\times \\text{Số chia} + \\text{Số dư} = \\text{Số bị '
-                 'chia}$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Thử lại', 'Thứ tự', 'Phân tích số', 'Số tròn trăm, tròn nghìn'],
+            'q': 'Khi học **Bài 57: Chia số có bốn chữ số cho số có một chữ số**, biểu thức hoặc quy tắc nào '
+                 'dưới đây biểu diễn đúng **Thử lại**?',
+            'options': ['$\\text{Thương} \\times \\text{Số chia} + \\text{Số dư} = \\text{Số bị chia}$',
+                        '$\\text{Thương} \\times \\text{Số chia} - \\text{Số dư} = \\text{Số bị chia}$',
+                        'Đảo ngược vế của quy tắc: $\\text{Thương} \\times \\text{Số chia} + \\text{Số dư} = '
+                        '\\text{Số bị chia}$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\text{Thương} \\times '
+                        '\\text{Số chia} + \\text{Số dư} = \\text{Số bị chia}$'],
             'answer': 0,
-            'solution': 'Trong Bài 57, 58: Chia số có bốn chữ số cho số có một chữ số và luyện tập chung, '
-                        'biểu thức/quy tắc $\\text{Thương} \\times \\text{Số chia} + \\text{Số dư} = '
-                        '\\text{Số bị chia}$ chính là nội dung của **Thử lại**.'},
+            'solution': 'Trong Bài 57: Chia số có bốn chữ số cho số có một chữ số, **Thử lại** có công '
+                        'thức/quy tắc là: $\\text{Thương} \\times \\text{Số chia} + \\text{Số dư} = '
+                        '\\text{Số bị chia}$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Kết quả của phép chia $2\\,436 : 4$ là:',
@@ -5764,17 +6377,18 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 57, 58: Chia số có bốn chữ số cho số có một chữ số và luyện tập chung** (Chủ '
-                 'đề 10: Cộng, trừ, nhân, chia trong phạm vi 10 000), khẳng định nào sau đây phản ánh '
-                 '**đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Đọc, viết thành thạo các số có đến ba chữ số trong phạm vi 1 000.',
-                        'Phân tích được số có ba chữ số thành tổng các trăm, chục, đơn vị.',
+            'q': 'Để nắm vững bản chất của **Bài 57: Chia số có bốn chữ số cho số có một chữ số**, nhận định '
+                 'nào sau đây là **chính xác**?',
+            'options': ['Đặt tính dọc và chia đúng số có bốn chữ số cho số có một chữ số từ hàng cao nhất. '
+                        '(với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Đặt tính dọc và chia đúng số có bốn chữ số cho số có một '
+                        'chữ số từ hàng cao nhất.',
                         'Đặt tính dọc và chia đúng số có bốn chữ số cho số có một chữ số từ hàng cao nhất.',
-                        'So sánh và sắp xếp được các số trong phạm vi 1 000 theo thứ tự.'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Đặt tính dọc và chia đúng số có '
+                        'bốn chữ số cho số có một chữ số từ hàng cao nhất.'],
             'answer': 2,
-            'solution': 'Theo yêu cầu cần đạt của Bài 57, 58: Chia số có bốn chữ số cho số có một chữ số và '
-                        'luyện tập chung: Đặt tính dọc và chia đúng số có bốn chữ số cho số có một chữ số từ '
-                        'hàng cao nhất.'},
+            'solution': 'Theo nội dung cốt lõi của Bài 57: Chia số có bốn chữ số cho số có một chữ số: Đặt '
+                        'tính dọc và chia đúng số có bốn chữ số cho số có một chữ số từ hàng cao nhất.'},
            {'level': 'hieu',
             'type': 'tf',
             'q': 'Nhận định: "Phép chia $3\\,640 : 5$ có thương là $728$."',
@@ -5784,33 +6398,31 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'hieu',
             'type': 'tf',
-            'q': 'Trong **Bài 57, 58: Chia số có bốn chữ số cho số có một chữ số và luyện tập chung**, quy '
-                 'tắc **Thứ tự** được xác định bởi Từ hàng nghìn (bên trái) sang hàng đơn vị (bên phải) và '
-                 'áp dụng trực tiếp vào bài toán: “Có $2\\,835$ quyển sách xếp đều vào $5$ tủ. Hỏi mỗi tủ có '
-                 'bao nhiêu quyển sách?”. Đúng hay sai?',
+            'q': 'Trong **Bài 57: Chia số có bốn chữ số cho số có một chữ số**, quy tắc **Thứ tự** được xác '
+                 'định bởi Từ hàng nghìn (bên trái) sang hàng đơn vị (bên phải) và khi áp dụng cho ví dụ “Có '
+                 '$2\\,835$ quyển sách xếp đều vào $5$ tủ. Hỏi mỗi tủ có bao nhiêu quyển sách?” ta có lời '
+                 'giải: Thực hiện phép chia $2\\,835 : 5$: - $28 : 5 = 5$ (dư $3$); hạ $3$ được $33 : 5 = 6$ '
+                 '(dư $3$); hạ $5$ được $35 : 5 = 7$. Vậy mỗi tủ có *.... Đúng hay sai?',
             'answer': True,
-            'solution': 'Khẳng định **Đúng**. Quy tắc **Thứ tự** (Từ hàng nghìn (bên trái) sang hàng đơn vị '
-                        '(bên phải)) là kiến thức cốt lõi của Bài 57, 58: Chia số có bốn chữ số cho số có '
-                        'một chữ số và luyện tập chung. Thực hiện phép chia $2\\,835 : 5$: - $28 : 5 = 5$ '
-                        '(dư $3$); hạ $3$ được $33 : 5 = 6$ (dư $3$); hạ $5$ được $35 : 5 = 7$. Vậy mỗi tủ '
-                        'có **$567$...'},
+            'solution': 'Khẳng định **Đúng**. Đó chính là quy tắc **Thứ tự** (Từ hàng nghìn (bên trái) sang '
+                        'hàng đơn vị (bên phải)) và lời giải ví dụ minh họa của Bài 57: Chia số có bốn chữ '
+                        'số cho số có một chữ số.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 57, 58: Chia số có bốn chữ số cho số có một chữ số và luyện tập '
-                 'chung** để giải quyết tình huống sau: Có $2\\,835$ quyển sách xếp đều vào $5$ tủ. Hỏi mỗi '
-                 'tủ có bao nhiêu quyển sách? Kết quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Ta có $806 = 800 + 6$ (gồm $8$ trăm, $0$ chục, $6$ đơn vị). Vì chữ số hàng trăm $8 '
-                        '> 7$ nên **$806 > 798$**.',
-                        '- $468 + 325$: $8 + 5 = 13$ (viết $3$ nhớ $1$); $6 + 2 + 1 = 9$; $4 + 3 = 7$ '
-                        '$\\rightarrow$ **$793$**. - $750 - 236$: $10 - 6 = 4$ (viết $4$ nhớ $1$); $5 - (3 + '
-                        '1) = 1$...',
-                        'Áp dụng quy tắc tìm số trừ: $\\text{Số trừ} = \\text{Số bị trừ} - \\text{Hiệu} = 85 '
-                        '- 39 = 46$. Thử lại: $85 - 46 = 39$ (đúng). Vậy số cần tìm là **$46$**.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 57: Chia số có bốn chữ số cho số có một chữ số** để '
+                 'giải bài toán sau: Có $2\\,835$ quyển sách xếp đều vào $5$ tủ. Hỏi mỗi tủ có bao nhiêu '
+                 'quyển sách? Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Thực hiện phép chia $2\\,835 : 5$: + $28 : 5 = 5$ (dư $3$); hạ $3$ được $33 : 5 = '
+                        '6$ (dư $3$); hạ $5$ được $35 : 5 = 7$. Vậy mỗi tủ có **$567$ quyển sá...',
                         'Thực hiện phép chia $2\\,835 : 5$: - $28 : 5 = 5$ (dư $3$); hạ $3$ được $33 : 5 = '
-                        '6$ (dư $3$); hạ $5$ được $35 : 5 = 7$. Vậy mỗi tủ có **$567$ quyển sách**.'],
+                        '6$ (dư $3$); hạ $5$ được $35 : 5 = 7$. Vậy mỗi tủ có **$566$ quyển sá...',
+                        'Thực hiện phép chia $4\\,835 : 5$: - $28 : 5 = 5$ (dư $3$); hạ $3$ được $33 : 5 = '
+                        '6$ (dư $3$); hạ $5$ được $35 : 5 = 7$. Vậy mỗi tủ có **$567$ quyển sá...',
+                        'Thực hiện phép chia $2\\,835 : 5$: - $28 : 5 = 5$ (dư $3$); hạ $3$ được $33 : 5 = '
+                        '6$ (dư $3$); hạ $5$ được $35 : 5 = 7$. Vậy mỗi tủ có **$567$ quyển sá...'],
             'answer': 3,
-            'solution': 'Lời giải chi tiết theo Bài 57, 58: Chia số có bốn chữ số cho số có một chữ số và '
-                        'luyện tập chung: Thực hiện phép chia $2\\,835 : 5$:\n'
+            'solution': 'Lời giải chi tiết theo Bài 57: Chia số có bốn chữ số cho số có một chữ số: Thực '
+                        'hiện phép chia $2\\,835 : 5$:\n'
                         '- $28 : 5 = 5$ (dư $3$); hạ $3$ được $33 : 5 = 6$ (dư $3$); hạ $5$ được $35 : 5 = '
                         '7$.\n'
                         'Vậy mỗi tủ có **$567$ quyển sách**.'},
@@ -5844,7 +6456,7 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'chín".\n'
             '### 2. Số $100\\,000$\n'
             '- Số liền sau của $99\\,999$ là $100\\,000$ ($99\\,999 + 1 = 100\\,000$).',
-  'formulas': [{'category': 'I. Cấu tạo số năm chữ số',
+  'formulas': [{'category': 'Cấu tạo số năm chữ số',
                 'items': [{'name': 'Khai triển tổng',
                            'formula': '$\\overline{abcde} = a0\\,000 + b\\,000 + c00 + d0 + e$'},
                           {'name': 'Số một trăm nghìn',
@@ -5873,26 +6485,27 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 59: Các số có năm chữ số. Số 100 000**, công thức hoặc '
-                 'quy tắc nào sau đây biểu diễn đúng **Khai triển tổng**?',
+            'q': 'Trong **Bài 59: Các số có năm chữ số. Số 100 000**, quy tắc hoặc công thức nào sau đây xác '
+                 'định đúng **Khai triển tổng**?',
             'options': ['$\\overline{abcde} = a0\\,000 + b\\,000 + c00 + d0 + e$',
-                        '$10 \\text{ chục nghìn} = 100\\,000$ · $99\\,999 + 1 = 100\\,000$',
-                        '$\\overline{abc} = a00 + b0 + c$',
-                        '$10 \\text{ chục} = 100$ · $10 \\text{ trăm} = 1\\,000$'],
+                        '$\\overline{abcde} = a0\\,000 - b\\,000 + c00 + d0 + e$',
+                        '$\\overline{abcde} = a0\\,000 + b\\,1 + c00 + d0 + e$',
+                        '$\\overline{abcde} = a0\\,2 + b\\,000 + c00 + d0 + e$'],
             'answer': 0,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 59: Các số có năm chữ số. Số 100 000, **Khai '
-                        'triển tổng** được xác định bởi: $\\overline{abcde} = a0\\,000 + b\\,000 + c00 + d0 '
-                        '+ e$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 59: Các số có năm chữ số. Số 100 000, **Khai triển '
+                        'tổng** được xác định bởi: $\\overline{abcde} = a0\\,000 + b\\,000 + c00 + d0 + e$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 59: Các số có năm chữ số. Số 100 000**, nội dung/biểu thức $10 \\text{ chục '
-                 'nghìn} = 100\\,000$ · $99\\,999 + 1 = 100\\,000$ là quy tắc hoặc công thức của mục nào sau '
-                 'đây?',
-            'options': ['Khai triển tổng', 'Số một trăm nghìn', 'Phân tích số', 'Số tròn trăm, tròn nghìn'],
+            'q': 'Khi học **Bài 59: Các số có năm chữ số. Số 100 000**, biểu thức hoặc quy tắc nào dưới đây '
+                 'biểu diễn đúng **Số một trăm nghìn**?',
+            'options': ['$10 \\text{ chục nghìn} = 100\\,000$ · $99\\,999 - 1 = 100\\,000$',
+                        '$10 \\text{ chục nghìn} = 100\\,000$ · $99\\,999 + 1 = 100\\,000$',
+                        '$10 \\text{ chục nghìn} = 100\\,000$ · $99\\,999 + 1 = 100\\,1$',
+                        '$20 \\text{ chục nghìn} = 100\\,000$ · $99\\,999 + 1 = 100\\,000$'],
             'answer': 1,
-            'solution': 'Trong Bài 59: Các số có năm chữ số. Số 100 000, biểu thức/quy tắc $10 \\text{ chục '
-                        'nghìn} = 100\\,000$ · $99\\,999 + 1 = 100\\,000$ chính là nội dung của **Số một '
-                        'trăm nghìn**.'},
+            'solution': 'Trong Bài 59: Các số có năm chữ số. Số 100 000, **Số một trăm nghìn** có công '
+                        'thức/quy tắc là: $10 \\text{ chục nghìn} = 100\\,000$ · $99\\,999 + 1 = '
+                        '100\\,000$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Số liền trước của số $100\\,000$ là:',
@@ -5903,14 +6516,14 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 59: Các số có năm chữ số. Số 100 000** (Chủ đề 11: Các số đến 100 000), '
-                 'khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Đọc, viết thành thạo các số có đến ba chữ số trong phạm vi 1 000.',
-                        'Phân tích được số có ba chữ số thành tổng các trăm, chục, đơn vị.',
-                        'So sánh và sắp xếp được các số trong phạm vi 1 000 theo thứ tự.',
+            'q': 'Để nắm vững bản chất của **Bài 59: Các số có năm chữ số. Số 100 000**, nhận định nào sau '
+                 'đây là **chính xác**?',
+            'options': ['Đọc, viết được các số có năm chữ số và số $110\\,000$ (một trăm nghìn).',
+                        'Đọc, viết được các số có năm chữ số và số $100\\,1$ (một trăm nghìn).',
+                        'Đọc, viết được các số có năm chữ số và số $102\\,000$ (một trăm nghìn).',
                         'Đọc, viết được các số có năm chữ số và số $100\\,000$ (một trăm nghìn).'],
             'answer': 3,
-            'solution': 'Theo yêu cầu cần đạt của Bài 59: Các số có năm chữ số. Số 100 000: Đọc, viết được '
+            'solution': 'Theo nội dung cốt lõi của Bài 59: Các số có năm chữ số. Số 100 000: Đọc, viết được '
                         'các số có năm chữ số và số $100\\,000$ (một trăm nghìn).'},
            {'level': 'hieu',
             'type': 'tf',
@@ -5923,28 +6536,27 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
            {'level': 'hieu',
             'type': 'tf',
             'q': 'Trong **Bài 59: Các số có năm chữ số. Số 100 000**, quy tắc **Khai triển tổng** được xác '
-                 'định bởi $\\overline{abcde} = a0\\,000 + b\\,000 + c00 + d0 + e$ và áp dụng trực tiếp vào '
-                 'bài toán: “Viết số "ba mươi hai nghìn không trăm mười lăm" (gồm $5$ chữ số) và chỉ rõ chữ '
-                 'số hàng chục nghìn, hàng nghìn.”. Đúng hay sai?',
+                 'định bởi $\\overline{abcde} = a0\\,000 + b\\,000 + c00 + d0 + e$ và khi áp dụng cho ví dụ '
+                 '“Viết số "ba mươi hai nghìn không trăm mười lăm" (gồm $5$ chữ số) và chỉ rõ chữ số hàng '
+                 'chục nghìn, hàng nghìn.” ta có lời giải: Số đó viết là **$32\\,015$**, trong đó chữ số '
+                 'hàng chục nghìn là **$3$** và chữ số hàng nghìn là **$2$**.. Đúng hay sai?',
             'answer': True,
-            'solution': 'Khẳng định **Đúng**. Quy tắc **Khai triển tổng** ($\\overline{abcde} = a0\\,000 + '
-                        'b\\,000 + c00 + d0 + e$) là kiến thức cốt lõi của Bài 59: Các số có năm chữ số. Số '
-                        '100 000. Số đó viết là **$32\\,015$**, trong đó chữ số hàng chục nghìn là **$3$** '
-                        'và chữ số hàng nghìn là **$2$**.'},
+            'solution': 'Khẳng định **Đúng**. Đó chính là quy tắc **Khai triển tổng** ($\\overline{abcde} = '
+                        'a0\\,000 + b\\,000 + c00 + d0 + e$) và lời giải ví dụ minh họa của Bài 59: Các số '
+                        'có năm chữ số. Số 100 000.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 59: Các số có năm chữ số. Số 100 000** để giải quyết tình huống '
-                 'sau: Viết số "ba mươi hai nghìn không trăm mười lăm" (gồm $5$ chữ số) và chỉ rõ chữ số '
-                 'hàng chục nghìn, hàng nghìn. Kết quả và hướng giải nào dưới đây là **đúng**?',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 59: Các số có năm chữ số. Số 100 000** để giải bài '
+                 'toán sau: Viết số "ba mươi hai nghìn không trăm mười lăm" (gồm $5$ chữ số) và chỉ rõ chữ '
+                 'số hàng chục nghìn, hàng nghìn. Cách giải và kết quả nào dưới đây là **đúng**?',
             'options': ['Số đó viết là **$32\\,015$**, trong đó chữ số hàng chục nghìn là **$3$** và chữ số '
                         'hàng nghìn là **$2$**.',
-                        'Ta có $806 = 800 + 6$ (gồm $8$ trăm, $0$ chục, $6$ đơn vị). Vì chữ số hàng trăm $8 '
-                        '> 7$ nên **$806 > 798$**.',
-                        '- $468 + 325$: $8 + 5 = 13$ (viết $3$ nhớ $1$); $6 + 2 + 1 = 9$; $4 + 3 = 7$ '
-                        '$\\rightarrow$ **$793$**. - $750 - 236$: $10 - 6 = 4$ (viết $4$ nhớ $1$); $5 - (3 + '
-                        '1) = 1$...',
-                        'Áp dụng quy tắc tìm số trừ: $\\text{Số trừ} = \\text{Số bị trừ} - \\text{Hiệu} = 85 '
-                        '- 39 = 46$. Thử lại: $85 - 46 = 39$ (đúng). Vậy số cần tìm là **$46$**.'],
+                        'Số đó viết là **$42\\,015$**, trong đó chữ số hàng chục nghìn là **$3$** và chữ số '
+                        'hàng nghìn là **$2$**.',
+                        'Số đó viết là **$32\\,015$**, trong đó chữ số hàng chục nghìn là **$3$** và chữ số '
+                        'hàng nghìn là **$1$**.',
+                        'Số đó viết là **$64\\,015$**, trong đó chữ số hàng chục nghìn là **$3$** và chữ số '
+                        'hàng nghìn là **$2$**.'],
             'answer': 0,
             'solution': 'Lời giải chi tiết theo Bài 59: Các số có năm chữ số. Số 100 000: Số đó viết là '
                         '**$32\\,015$**, trong đó chữ số hàng chục nghìn là **$3$** và chữ số hàng nghìn là '
@@ -5977,7 +6589,7 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             '0$.\n'
             '### 2. Tìm số lớn nhất, số bé nhất\n'
             '- So sánh hàng cao nhất trước để loại trừ nhanh các số không thỏa mãn.',
-  'formulas': [{'category': 'I. Quy tắc so sánh',
+  'formulas': [{'category': 'Quy tắc so sánh',
                 'items': [{'name': 'Khác số chữ số', 'formula': 'Số có nhiều chữ số hơn thì lớn hơn'},
                           {'name': 'Cùng năm chữ số',
                            'formula': 'So sánh: Chục nghìn $\\rightarrow$ Nghìn $\\rightarrow$ Trăm '
@@ -6006,26 +6618,32 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 60: So sánh các số trong phạm vi 100 000**, công thức '
-                 'hoặc quy tắc nào sau đây biểu diễn đúng **Khác số chữ số**?',
-            'options': ['So sánh: Chục nghìn $\\rightarrow$ Nghìn $\\rightarrow$ Trăm $\\rightarrow$ Chục '
-                        '$\\rightarrow$ Đơn vị',
+            'q': 'Trong **Bài 60: So sánh các số trong phạm vi 100 000**, quy tắc hoặc công thức nào sau đây '
+                 'xác định đúng **Khác số chữ số**?',
+            'options': ['Số có nhiều chữ số hơn thì bé hơn',
                         'Số có nhiều chữ số hơn thì lớn hơn',
-                        '$\\overline{abc} = a00 + b0 + c$',
-                        '$10 \\text{ chục} = 100$ · $10 \\text{ trăm} = 1\\,000$'],
+                        'Đảo ngược vế của quy tắc: Số có nhiều chữ số hơn thì lớn hơn',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Số có nhiều chữ số hơn thì lớn '
+                        'hơn'],
             'answer': 1,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 60: So sánh các số trong phạm vi 100 000, '
-                        '**Khác số chữ số** được xác định bởi: Số có nhiều chữ số hơn thì lớn hơn.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 60: So sánh các số trong phạm vi 100 000, **Khác '
+                        'số chữ số** được xác định bởi: Số có nhiều chữ số hơn thì lớn hơn.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 60: So sánh các số trong phạm vi 100 000**, nội dung/biểu thức So sánh: Chục '
-                 'nghìn $\\rightarrow$ Nghìn $\\rightarrow$ Trăm $\\rightarrow$ Chục $\\rightarrow$ Đơn vị '
-                 'là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Khác số chữ số', 'Phân tích số', 'Cùng năm chữ số', 'Số tròn trăm, tròn nghìn'],
+            'q': 'Khi học **Bài 60: So sánh các số trong phạm vi 100 000**, biểu thức hoặc quy tắc nào dưới '
+                 'đây biểu diễn đúng **Cùng năm chữ số**?',
+            'options': ['So sánh: Chục nghìn $\\rightarrow$ Nghìn $\\rightarrow$ Trăm $\\rightarrow$ Chục '
+                        '$\\rightarrow$ Đơn vị (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: So sánh: Chục nghìn $\\rightarrow$ Nghìn $\\rightarrow$ '
+                        'Trăm $\\rightarrow$ Chục $\\rightarrow$ Đơn vị',
+                        'So sánh: Chục nghìn $\\rightarrow$ Nghìn $\\rightarrow$ Trăm $\\rightarrow$ Chục '
+                        '$\\rightarrow$ Đơn vị',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của So sánh: Chục nghìn '
+                        '$\\rightarrow$ Nghìn $\\rightarrow$ Trăm $\\rightarrow$ Chục $\\rightarrow$ Đơn vị'],
             'answer': 2,
-            'solution': 'Trong Bài 60: So sánh các số trong phạm vi 100 000, biểu thức/quy tắc So sánh: Chục '
-                        'nghìn $\\rightarrow$ Nghìn $\\rightarrow$ Trăm $\\rightarrow$ Chục $\\rightarrow$ '
-                        'Đơn vị chính là nội dung của **Cùng năm chữ số**.'},
+            'solution': 'Trong Bài 60: So sánh các số trong phạm vi 100 000, **Cùng năm chữ số** có công '
+                        'thức/quy tắc là: So sánh: Chục nghìn $\\rightarrow$ Nghìn $\\rightarrow$ Trăm '
+                        '$\\rightarrow$ Chục $\\rightarrow$ Đơn vị.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Dân số xã A là $12\\,876$ người, xã B là $12\\,867$ người, xã C là $13\\,002$ người. Xã '
@@ -6037,15 +6655,15 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 60: So sánh các số trong phạm vi 100 000** (Chủ đề 11: Các số đến 100 000), '
-                 'khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
+            'q': 'Để nắm vững bản chất của **Bài 60: So sánh các số trong phạm vi 100 000**, nhận định nào '
+                 'sau đây là **chính xác**?',
             'options': ['So sánh được hai số trong phạm vi $100\\,000$.',
-                        'Đọc, viết thành thạo các số có đến ba chữ số trong phạm vi 1 000.',
-                        'Phân tích được số có ba chữ số thành tổng các trăm, chục, đơn vị.',
-                        'So sánh và sắp xếp được các số trong phạm vi 1 000 theo thứ tự.'],
+                        'So sánh được hai số trong phạm vi $110\\,000$.',
+                        'So sánh được hai số trong phạm vi $100\\,1$.',
+                        'So sánh được hai số trong phạm vi $102\\,000$.'],
             'answer': 0,
-            'solution': 'Theo yêu cầu cần đạt của Bài 60: So sánh các số trong phạm vi 100 000: So sánh được '
-                        'hai số trong phạm vi $100\\,000$.'},
+            'solution': 'Theo nội dung cốt lõi của Bài 60: So sánh các số trong phạm vi 100 000: So sánh '
+                        'được hai số trong phạm vi $100\\,000$.'},
            {'level': 'hieu',
             'type': 'tf',
             'q': 'Nhận định: "$99\\,998 > 100\\,000$."',
@@ -6057,29 +6675,27 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
            {'level': 'hieu',
             'type': 'tf',
             'q': 'Trong **Bài 60: So sánh các số trong phạm vi 100 000**, quy tắc **Khác số chữ số** được '
-                 'xác định bởi Số có nhiều chữ số hơn thì lớn hơn và áp dụng trực tiếp vào bài toán: “Trong '
-                 'các số $89\\,012$; $89\\,120$; $81\\,920$; $89\\,102$, hãy tìm số lớn nhất và số bé '
-                 'nhất.”. Đúng hay sai?',
+                 'xác định bởi Số có nhiều chữ số hơn thì lớn hơn và khi áp dụng cho ví dụ “Trong các số '
+                 '$89\\,012$; $89\\,120$; $81\\,920$; $89\\,102$, hãy tìm số lớn nhất và số bé nhất.” ta có '
+                 'lời giải: - Số bé nhất là **$81\\,920$** (vì hàng nghìn $1 < 9$). - Trong ba số còn lại '
+                 'cùng có $89$ nghìn, so sánh hàng trăm và hàng chục ta được.... Đúng hay sai?',
             'answer': True,
-            'solution': 'Khẳng định **Đúng**. Quy tắc **Khác số chữ số** (Số có nhiều chữ số hơn thì lớn '
-                        'hơn) là kiến thức cốt lõi của Bài 60: So sánh các số trong phạm vi 100 000. - Số bé '
-                        'nhất là **$81\\,920$** (vì hàng nghìn $1 < 9$). - Trong ba số còn lại cùng có $89$ '
-                        'nghìn, so sánh hàng trăm và hàng chục ta được số l...'},
+            'solution': 'Khẳng định **Đúng**. Đó chính là quy tắc **Khác số chữ số** (Số có nhiều chữ số hơn '
+                        'thì lớn hơn) và lời giải ví dụ minh họa của Bài 60: So sánh các số trong phạm vi '
+                        '100 000.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 60: So sánh các số trong phạm vi 100 000** để giải quyết tình '
-                 'huống sau: Trong các số $89\\,012$; $89\\,120$; $81\\,920$; $89\\,102$, hãy tìm số lớn '
-                 'nhất và số bé nhất. Kết quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Ta có $806 = 800 + 6$ (gồm $8$ trăm, $0$ chục, $6$ đơn vị). Vì chữ số hàng trăm $8 '
-                        '> 7$ nên **$806 > 798$**.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 60: So sánh các số trong phạm vi 100 000** để giải '
+                 'bài toán sau: Trong các số $89\\,012$; $89\\,120$; $81\\,920$; $89\\,102$, hãy tìm số lớn '
+                 'nhất và số bé nhất. Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['- Số bé nhất là **$81\\,920$** (vì hàng nghìn $1 < 9$). + Trong ba số còn lại cùng '
+                        'có $89$ nghìn, so sánh hàng trăm và hàng chục ta được số lớn nhất là...',
                         '- Số bé nhất là **$81\\,920$** (vì hàng nghìn $1 < 9$). - Trong ba số còn lại cùng '
-                        'có $89$ nghìn, so sánh hàng trăm và hàng chục ta được số lớn nhất là '
-                        '**$89\\,120$...',
-                        '- $468 + 325$: $8 + 5 = 13$ (viết $3$ nhớ $1$); $6 + 2 + 1 = 9$; $4 + 3 = 7$ '
-                        '$\\rightarrow$ **$793$**. - $750 - 236$: $10 - 6 = 4$ (viết $4$ nhớ $1$); $5 - (3 + '
-                        '1) = 1$...',
-                        'Áp dụng quy tắc tìm số trừ: $\\text{Số trừ} = \\text{Số bị trừ} - \\text{Hiệu} = 85 '
-                        '- 39 = 46$. Thử lại: $85 - 46 = 39$ (đúng). Vậy số cần tìm là **$46$**.'],
+                        'có $89$ nghìn, so sánh hàng trăm và hàng chục ta được số lớn nhất là...',
+                        '- Số bé nhất là **$81\\,920$** (vì hàng nghìn $1 < 9$). - Trong ba số còn lại cùng '
+                        'có $88$ nghìn, so sánh hàng trăm và hàng chục ta được số lớn nhất là...',
+                        '- Số bé nhất là **$83\\,920$** (vì hàng nghìn $1 < 9$). - Trong ba số còn lại cùng '
+                        'có $89$ nghìn, so sánh hàng trăm và hàng chục ta được số lớn nhất là...'],
             'answer': 1,
             'solution': 'Lời giải chi tiết theo Bài 60: So sánh các số trong phạm vi 100 000: - Số bé nhất '
                         'là **$81\\,920$** (vì hàng nghìn $1 < 9$).\n'
@@ -6098,7 +6714,7 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
  {'topic': 'l3-cd11-cac-so-den-100000',
   'context_title': 'Chủ đề 11: Các số đến 100 000',
   'context': 'SGK Toán 3 · Chủ đề 11: Các số trong phạm vi 100 000.',
-  'title': 'Bài 61, 62: Làm tròn số đến hàng nghìn, hàng chục nghìn và luyện tập chung',
+  'title': 'Bài 61: Làm tròn số đến hàng nghìn, hàng chục nghìn',
   'icon': '🔄',
   'description': 'Quy tắc làm tròn số đến hàng nghìn, hàng chục nghìn và vận dụng ước lượng trong phạm vi '
                  '100 000.',
@@ -6119,7 +6735,7 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             '$40\\,000$.\n'
             '- Ví dụ: $25\\,300$ có chữ số hàng nghìn là $5 \\ge 5 \\rightarrow$ làm tròn lên thành '
             '$30\\,000$.',
-  'formulas': [{'category': 'I. Quy tắc làm tròn',
+  'formulas': [{'category': 'Quy tắc làm tròn',
                 'items': [{'name': 'Đến hàng nghìn',
                            'formula': 'Nhìn chữ số hàng trăm: $< 5 \\rightarrow$ xuống · $\\ge 5 '
                                       '\\rightarrow$ lên'},
@@ -6148,26 +6764,28 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 61, 62: Làm tròn số đến hàng nghìn, hàng chục nghìn và '
-                 'luyện tập chung**, công thức hoặc quy tắc nào sau đây biểu diễn đúng **Đến hàng nghìn**?',
-            'options': ['Nhìn chữ số hàng nghìn: $< 5 \\rightarrow$ xuống · $\\ge 5 \\rightarrow$ lên',
-                        '$\\overline{abc} = a00 + b0 + c$',
+            'q': 'Trong **Bài 61: Làm tròn số đến hàng nghìn, hàng chục nghìn**, quy tắc hoặc công thức nào '
+                 'sau đây xác định đúng **Đến hàng nghìn**?',
+            'options': ['Nhìn chữ số hàng trăm: $< 5 \\rightarrow$ xuống · $\\le 5 \\rightarrow$ lên',
+                        'Nhìn chữ số hàng trăm: $< 5 \\rightarrow$ xuống · $\\ge 4 \\rightarrow$ lên',
                         'Nhìn chữ số hàng trăm: $< 5 \\rightarrow$ xuống · $\\ge 5 \\rightarrow$ lên',
-                        '$10 \\text{ chục} = 100$ · $10 \\text{ trăm} = 1\\,000$'],
+                        'Nhìn chữ số hàng trăm: $< 10 \\rightarrow$ xuống · $\\ge 5 \\rightarrow$ lên'],
             'answer': 2,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 61, 62: Làm tròn số đến hàng nghìn, hàng chục '
-                        'nghìn và luyện tập chung, **Đến hàng nghìn** được xác định bởi: Nhìn chữ số hàng '
-                        'trăm: $< 5 \\rightarrow$ xuống · $\\ge 5 \\rightarrow$ lên.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 61: Làm tròn số đến hàng nghìn, hàng chục nghìn, '
+                        '**Đến hàng nghìn** được xác định bởi: Nhìn chữ số hàng trăm: $< 5 \\rightarrow$ '
+                        'xuống · $\\ge 5 \\rightarrow$ lên.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 61, 62: Làm tròn số đến hàng nghìn, hàng chục nghìn và luyện tập chung**, nội '
-                 'dung/biểu thức Nhìn chữ số hàng nghìn: $< 5 \\rightarrow$ xuống · $\\ge 5 \\rightarrow$ '
-                 'lên là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Đến hàng nghìn', 'Phân tích số', 'Số tròn trăm, tròn nghìn', 'Đến hàng chục nghìn'],
+            'q': 'Khi học **Bài 61: Làm tròn số đến hàng nghìn, hàng chục nghìn**, biểu thức hoặc quy tắc '
+                 'nào dưới đây biểu diễn đúng **Đến hàng chục nghìn**?',
+            'options': ['Nhìn chữ số hàng nghìn: $< 5 \\rightarrow$ xuống · $\\le 5 \\rightarrow$ lên',
+                        'Nhìn chữ số hàng nghìn: $< 5 \\rightarrow$ xuống · $\\ge 4 \\rightarrow$ lên',
+                        'Nhìn chữ số hàng nghìn: $< 10 \\rightarrow$ xuống · $\\ge 5 \\rightarrow$ lên',
+                        'Nhìn chữ số hàng nghìn: $< 5 \\rightarrow$ xuống · $\\ge 5 \\rightarrow$ lên'],
             'answer': 3,
-            'solution': 'Trong Bài 61, 62: Làm tròn số đến hàng nghìn, hàng chục nghìn và luyện tập chung, '
-                        'biểu thức/quy tắc Nhìn chữ số hàng nghìn: $< 5 \\rightarrow$ xuống · $\\ge 5 '
-                        '\\rightarrow$ lên chính là nội dung của **Đến hàng chục nghìn**.'},
+            'solution': 'Trong Bài 61: Làm tròn số đến hàng nghìn, hàng chục nghìn, **Đến hàng chục nghìn** '
+                        'có công thức/quy tắc là: Nhìn chữ số hàng nghìn: $< 5 \\rightarrow$ xuống · $\\ge 5 '
+                        '\\rightarrow$ lên.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Làm tròn số $47\\,500$ đến hàng chục nghìn ta được:',
@@ -6178,16 +6796,16 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 61, 62: Làm tròn số đến hàng nghìn, hàng chục nghìn và luyện tập chung** '
-                 '(Chủ đề 11: Các số đến 100 000), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt '
-                 'và bản chất kiến thức của bài?',
-            'options': ['Đọc, viết thành thạo các số có đến ba chữ số trong phạm vi 1 000.',
+            'q': 'Để nắm vững bản chất của **Bài 61: Làm tròn số đến hàng nghìn, hàng chục nghìn**, nhận '
+                 'định nào sau đây là **chính xác**?',
+            'options': ['Làm tròn được số đến hàng nghìn dựa vào chữ số hàng trăm. (với dấu ngược lại)',
                         'Làm tròn được số đến hàng nghìn dựa vào chữ số hàng trăm.',
-                        'Phân tích được số có ba chữ số thành tổng các trăm, chục, đơn vị.',
-                        'So sánh và sắp xếp được các số trong phạm vi 1 000 theo thứ tự.'],
+                        'Đảo ngược vế của quy tắc: Làm tròn được số đến hàng nghìn dựa vào chữ số hàng trăm.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Làm tròn được số đến hàng nghìn '
+                        'dựa vào chữ số hàng trăm.'],
             'answer': 1,
-            'solution': 'Theo yêu cầu cần đạt của Bài 61, 62: Làm tròn số đến hàng nghìn, hàng chục nghìn và '
-                        'luyện tập chung: Làm tròn được số đến hàng nghìn dựa vào chữ số hàng trăm.'},
+            'solution': 'Theo nội dung cốt lõi của Bài 61: Làm tròn số đến hàng nghìn, hàng chục nghìn: Làm '
+                        'tròn được số đến hàng nghìn dựa vào chữ số hàng trăm.'},
            {'level': 'hieu',
             'type': 'tf',
             'q': 'Nhận định: "Làm tròn số $25\\,300$ đến hàng chục nghìn thì được $20\\,000$."',
@@ -6198,34 +6816,32 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'hieu',
             'type': 'tf',
-            'q': 'Trong **Bài 61, 62: Làm tròn số đến hàng nghìn, hàng chục nghìn và luyện tập chung**, quy '
-                 'tắc **Đến hàng nghìn** được xác định bởi Nhìn chữ số hàng trăm: $< 5 \\rightarrow$ xuống · '
-                 '$\\ge 5 \\rightarrow$ lên và áp dụng trực tiếp vào bài toán: “Làm tròn số $72\\,680$ đến '
-                 'hàng nghìn và đến hàng chục nghìn.”. Đúng hay sai?',
+            'q': 'Trong **Bài 61: Làm tròn số đến hàng nghìn, hàng chục nghìn**, quy tắc **Đến hàng nghìn** '
+                 'được xác định bởi Nhìn chữ số hàng trăm: $< 5 \\rightarrow$ xuống · $\\ge 5 \\rightarrow$ '
+                 'lên và khi áp dụng cho ví dụ “Làm tròn số $72\\,680$ đến hàng nghìn và đến hàng chục '
+                 'nghìn.” ta có lời giải: - Đến hàng nghìn: chữ số hàng trăm là $6 \\ge 5 \\rightarrow$ '
+                 '**$73\\,000$**. - Đến hàng chục nghìn: chữ số hàng nghìn là $2 < 5 \\rightarrow$.... Đúng '
+                 'hay sai?',
             'answer': True,
-            'solution': 'Khẳng định **Đúng**. Quy tắc **Đến hàng nghìn** (Nhìn chữ số hàng trăm: $< 5 '
-                        '\\rightarrow$ xuống · $\\ge 5 \\rightarrow$ lên) là kiến thức cốt lõi của Bài 61, '
-                        '62: Làm tròn số đến hàng nghìn, hàng chục nghìn và luyện tập chung. - Đến hàng '
-                        'nghìn: chữ số hàng trăm là $6 \\ge 5 \\rightarrow$ **$73\\,000$**. - Đến hàng chục '
-                        'nghìn: chữ số hàng nghìn là $2 < 5 \\rightarrow$ *...'},
+            'solution': 'Khẳng định **Đúng**. Đó chính là quy tắc **Đến hàng nghìn** (Nhìn chữ số hàng trăm: '
+                        '$< 5 \\rightarrow$ xuống · $\\ge 5 \\rightarrow$ lên) và lời giải ví dụ minh họa '
+                        'của Bài 61: Làm tròn số đến hàng nghìn, hàng chục nghìn.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 61, 62: Làm tròn số đến hàng nghìn, hàng chục nghìn và luyện tập '
-                 'chung** để giải quyết tình huống sau: Làm tròn số $72\\,680$ đến hàng nghìn và đến hàng '
-                 'chục nghìn. Kết quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Ta có $806 = 800 + 6$ (gồm $8$ trăm, $0$ chục, $6$ đơn vị). Vì chữ số hàng trăm $8 '
-                        '> 7$ nên **$806 > 798$**.',
-                        '- $468 + 325$: $8 + 5 = 13$ (viết $3$ nhớ $1$); $6 + 2 + 1 = 9$; $4 + 3 = 7$ '
-                        '$\\rightarrow$ **$793$**. - $750 - 236$: $10 - 6 = 4$ (viết $4$ nhớ $1$); $5 - (3 + '
-                        '1) = 1$...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 61: Làm tròn số đến hàng nghìn, hàng chục nghìn** '
+                 'để giải bài toán sau: Làm tròn số $72\\,680$ đến hàng nghìn và đến hàng chục nghìn. Cách '
+                 'giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['- Đến hàng nghìn: chữ số hàng trăm là $6 \\le 5 \\rightarrow$ **$73\\,000$**. - Đến '
+                        'hàng chục nghìn: chữ số hàng nghìn là $2 < 5 \\rightarrow$ **$70\\,000$...',
                         '- Đến hàng nghìn: chữ số hàng trăm là $6 \\ge 5 \\rightarrow$ **$73\\,000$**. - Đến '
-                        'hàng chục nghìn: chữ số hàng nghìn là $2 < 5 \\rightarrow$ **$70\\,000$**.',
-                        'Áp dụng quy tắc tìm số trừ: $\\text{Số trừ} = \\text{Số bị trừ} - \\text{Hiệu} = 85 '
-                        '- 39 = 46$. Thử lại: $85 - 46 = 39$ (đúng). Vậy số cần tìm là **$46$**.'],
+                        'hàng chục nghìn: chữ số hàng nghìn là $2 < 5 \\rightarrow$ **$70\\,1$...',
+                        '- Đến hàng nghìn: chữ số hàng trăm là $6 \\ge 5 \\rightarrow$ **$73\\,000$**. - Đến '
+                        'hàng chục nghìn: chữ số hàng nghìn là $2 < 5 \\rightarrow$ **$70\\,000$...',
+                        '- Đến hàng nghìn: chữ số hàng trăm là $12 \\ge 5 \\rightarrow$ **$73\\,000$**. - '
+                        'Đến hàng chục nghìn: chữ số hàng nghìn là $2 < 5 \\rightarrow$ **$70\\,000$...'],
             'answer': 2,
-            'solution': 'Lời giải chi tiết theo Bài 61, 62: Làm tròn số đến hàng nghìn, hàng chục nghìn và '
-                        'luyện tập chung: - Đến hàng nghìn: chữ số hàng trăm là $6 \\ge 5 \\rightarrow$ '
-                        '**$73\\,000$**.\n'
+            'solution': 'Lời giải chi tiết theo Bài 61: Làm tròn số đến hàng nghìn, hàng chục nghìn: - Đến '
+                        'hàng nghìn: chữ số hàng trăm là $6 \\ge 5 \\rightarrow$ **$73\\,000$**.\n'
                         '- Đến hàng chục nghìn: chữ số hàng nghìn là $2 < 5 \\rightarrow$ **$70\\,000$**.'},
            {'level': 'vandung',
             'type': 'short',
@@ -6256,7 +6872,7 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             '### 2. Đặt tính rồi tính\n'
             '- Ví dụ: $35\\,248 + 41\\,637 = 76\\,885$ ($8+7=15$ viết $5$ nhớ $1$; $4+3+1=8$; $2+6=8$; '
             '$5+1=6$; $3+4=7$).',
-  'formulas': [{'category': 'I. Phép cộng phạm vi 100 000',
+  'formulas': [{'category': 'Phép cộng phạm vi 100 000',
                 'items': [{'name': 'Đặt tính', 'formula': 'Thẳng cột theo hàng · Cộng từ phải sang trái'},
                           {'name': 'Nhẩm tròn chục nghìn',
                            'formula': '$a0\\,000 + b0\\,000 = (a + b)0\\,000$'}]}],
@@ -6284,23 +6900,27 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 63: Phép cộng trong phạm vi 100 000**, công thức hoặc '
-                 'quy tắc nào sau đây biểu diễn đúng **Đặt tính**?',
-            'options': ['$a0\\,000 + b0\\,000 = (a + b)0\\,000$',
-                        '$\\overline{abc} = a00 + b0 + c$',
-                        '$10 \\text{ chục} = 100$ · $10 \\text{ trăm} = 1\\,000$',
+            'q': 'Trong **Bài 63: Phép cộng trong phạm vi 100 000**, quy tắc hoặc công thức nào sau đây xác '
+                 'định đúng **Đặt tính**?',
+            'options': ['Thẳng cột theo hàng · Cộng từ trái sang phải',
+                        'Đảo ngược vế của quy tắc: Thẳng cột theo hàng · Cộng từ phải sang trái',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Thẳng cột theo hàng · Cộng từ '
+                        'phải sang trái',
                         'Thẳng cột theo hàng · Cộng từ phải sang trái'],
             'answer': 3,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 63: Phép cộng trong phạm vi 100 000, **Đặt '
-                        'tính** được xác định bởi: Thẳng cột theo hàng · Cộng từ phải sang trái.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 63: Phép cộng trong phạm vi 100 000, **Đặt tính** '
+                        'được xác định bởi: Thẳng cột theo hàng · Cộng từ phải sang trái.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 63: Phép cộng trong phạm vi 100 000**, nội dung/biểu thức $a0\\,000 + b0\\,000 '
-                 '= (a + b)0\\,000$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Nhẩm tròn chục nghìn', 'Đặt tính', 'Phân tích số', 'Số tròn trăm, tròn nghìn'],
+            'q': 'Khi học **Bài 63: Phép cộng trong phạm vi 100 000**, biểu thức hoặc quy tắc nào dưới đây '
+                 'biểu diễn đúng **Nhẩm tròn chục nghìn**?',
+            'options': ['$a0\\,000 + b0\\,000 = (a + b)0\\,000$',
+                        '$a0\\,000 - b0\\,000 = (a + b)0\\,000$',
+                        '$a0\\,000 + b0\\,000 = (a + b)0\\,1$',
+                        '$a0\\,2 + b0\\,000 = (a + b)0\\,000$'],
             'answer': 0,
-            'solution': 'Trong Bài 63: Phép cộng trong phạm vi 100 000, biểu thức/quy tắc $a0\\,000 + '
-                        'b0\\,000 = (a + b)0\\,000$ chính là nội dung của **Nhẩm tròn chục nghìn**.'},
+            'solution': 'Trong Bài 63: Phép cộng trong phạm vi 100 000, **Nhẩm tròn chục nghìn** có công '
+                        'thức/quy tắc là: $a0\\,000 + b0\\,000 = (a + b)0\\,000$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Tổng của $47\\,280$ và $36\\,450$ là:',
@@ -6312,15 +6932,15 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 63: Phép cộng trong phạm vi 100 000** (Chủ đề 12: Cộng, trừ trong phạm vi '
-                 '100 000), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức '
-                 'của bài?',
-            'options': ['Đọc, viết thành thạo các số có đến ba chữ số trong phạm vi 1 000.',
-                        'Phân tích được số có ba chữ số thành tổng các trăm, chục, đơn vị.',
+            'q': 'Để nắm vững bản chất của **Bài 63: Phép cộng trong phạm vi 100 000**, nhận định nào sau '
+                 'đây là **chính xác**?',
+            'options': ['Đặt tính và tính đúng phép cộng các số có đến năm chữ số trong phạm vi $110\\,000$.',
+                        'Đặt tính và tính đúng phép cộng các số có đến năm chữ số trong phạm vi $100\\,1$.',
                         'Đặt tính và tính đúng phép cộng các số có đến năm chữ số trong phạm vi $100\\,000$.',
-                        'So sánh và sắp xếp được các số trong phạm vi 1 000 theo thứ tự.'],
+                        'Đặt tính và tính đúng phép cộng các số có đến năm chữ số trong phạm vi '
+                        '$102\\,000$.'],
             'answer': 2,
-            'solution': 'Theo yêu cầu cần đạt của Bài 63: Phép cộng trong phạm vi 100 000: Đặt tính và tính '
+            'solution': 'Theo nội dung cốt lõi của Bài 63: Phép cộng trong phạm vi 100 000: Đặt tính và tính '
                         'đúng phép cộng các số có đến năm chữ số trong phạm vi $100\\,000$.'},
            {'level': 'hieu',
             'type': 'tf',
@@ -6333,25 +6953,25 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
            {'level': 'hieu',
             'type': 'tf',
             'q': 'Trong **Bài 63: Phép cộng trong phạm vi 100 000**, quy tắc **Đặt tính** được xác định bởi '
-                 'Thẳng cột theo hàng · Cộng từ phải sang trái và áp dụng trực tiếp vào bài toán: “Đặt tính '
-                 'rồi tính: $23\\,415 + 51\\,302$ và $47\\,280 + 36\\,450$.”. Đúng hay sai?',
+                 'Thẳng cột theo hàng · Cộng từ phải sang trái và khi áp dụng cho ví dụ “Đặt tính rồi tính: '
+                 '$23\\,415 + 51\\,302$ và $47\\,280 + 36\\,450$.” ta có lời giải: - $23\\,415 + 51\\,302 = '
+                 '74\\,717$. - $47\\,280 + 36\\,450 = 83\\,730$ (nhớ $1$ từ hàng chục sang trăm và nhớ $1$ '
+                 'từ hàng nghìn sang chục ngh.... Đúng hay sai?',
             'answer': True,
-            'solution': 'Khẳng định **Đúng**. Quy tắc **Đặt tính** (Thẳng cột theo hàng · Cộng từ phải sang '
-                        'trái) là kiến thức cốt lõi của Bài 63: Phép cộng trong phạm vi 100 000. - $23\\,415 '
-                        '+ 51\\,302 = 74\\,717$. - $47\\,280 + 36\\,450 = 83\\,730$ (nhớ $1$ từ hàng chục '
-                        'sang trăm và nhớ $1$ từ hàng nghìn sang chục nghìn).'},
+            'solution': 'Khẳng định **Đúng**. Đó chính là quy tắc **Đặt tính** (Thẳng cột theo hàng · Cộng '
+                        'từ phải sang trái) và lời giải ví dụ minh họa của Bài 63: Phép cộng trong phạm vi '
+                        '100 000.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 63: Phép cộng trong phạm vi 100 000** để giải quyết tình huống '
-                 'sau: Đặt tính rồi tính: $23\\,415 + 51\\,302$ và $47\\,280 + 36\\,450$. Kết quả và hướng '
-                 'giải nào dưới đây là **đúng**?',
-            'options': ['Ta có $806 = 800 + 6$ (gồm $8$ trăm, $0$ chục, $6$ đơn vị). Vì chữ số hàng trăm $8 '
-                        '> 7$ nên **$806 > 798$**.',
-                        '- $468 + 325$: $8 + 5 = 13$ (viết $3$ nhớ $1$); $6 + 2 + 1 = 9$; $4 + 3 = 7$ '
-                        '$\\rightarrow$ **$793$**. - $750 - 236$: $10 - 6 = 4$ (viết $4$ nhớ $1$); $5 - (3 + '
-                        '1) = 1$...',
-                        'Áp dụng quy tắc tìm số trừ: $\\text{Số trừ} = \\text{Số bị trừ} - \\text{Hiệu} = 85 '
-                        '- 39 = 46$. Thử lại: $85 - 46 = 39$ (đúng). Vậy số cần tìm là **$46$**.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 63: Phép cộng trong phạm vi 100 000** để giải bài '
+                 'toán sau: Đặt tính rồi tính: $23\\,415 + 51\\,302$ và $47\\,280 + 36\\,450$. Cách giải và '
+                 'kết quả nào dưới đây là **đúng**?',
+            'options': ['- $23\\,415 - 51\\,302 = 74\\,717$. - $47\\,280 + 36\\,450 = 83\\,730$ (nhớ $1$ từ '
+                        'hàng chục sang trăm và nhớ $1$ từ hàng nghìn sang chục nghìn).',
+                        '- $23\\,415 + 51\\,302 = 74\\,717$. - $47\\,280 + 36\\,450 = 83\\,730$ (nhớ $1$ từ '
+                        'hàng chục sang trăm và nhớ $2$ từ hàng nghìn sang chục nghìn).',
+                        '- $46\\,415 + 51\\,302 = 74\\,717$. - $47\\,280 + 36\\,450 = 83\\,730$ (nhớ $1$ từ '
+                        'hàng chục sang trăm và nhớ $1$ từ hàng nghìn sang chục nghìn).',
                         '- $23\\,415 + 51\\,302 = 74\\,717$. - $47\\,280 + 36\\,450 = 83\\,730$ (nhớ $1$ từ '
                         'hàng chục sang trăm và nhớ $1$ từ hàng nghìn sang chục nghìn).'],
             'answer': 3,
@@ -6387,7 +7007,7 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             '### 2. Đặt tính rồi tính\n'
             '- Ví dụ: $85\\,372 - 26\\,145 = 59\\,227$.\n'
             '- Ví dụ: $62\\,548 - 27\\,316 = 35\\,232$.',
-  'formulas': [{'category': 'I. Phép trừ phạm vi 100 000',
+  'formulas': [{'category': 'Phép trừ phạm vi 100 000',
                 'items': [{'name': 'Nhẩm tròn chục nghìn',
                            'formula': '$a0\\,000 - b0\\,000 = (a - b)0\\,000$'},
                           {'name': 'Quan hệ cộng – trừ',
@@ -6414,28 +7034,27 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 64: Phép trừ trong phạm vi 100 000**, công thức hoặc quy '
-                 'tắc nào sau đây biểu diễn đúng **Nhẩm tròn chục nghìn**?',
+            'q': 'Trong **Bài 64: Phép trừ trong phạm vi 100 000**, quy tắc hoặc công thức nào sau đây xác '
+                 'định đúng **Nhẩm tròn chục nghìn**?',
             'options': ['$a0\\,000 - b0\\,000 = (a - b)0\\,000$',
-                        '$a + b = c \\Rightarrow c - a = b \\text{ và } c - b = a$',
-                        '$\\overline{abc} = a00 + b0 + c$',
-                        '$10 \\text{ chục} = 100$ · $10 \\text{ trăm} = 1\\,000$'],
+                        '$a0\\,000 + b0\\,000 = (a - b)0\\,000$',
+                        '$a0\\,000 - b0\\,000 = (a - b)0\\,1$',
+                        '$a0\\,2 - b0\\,000 = (a - b)0\\,000$'],
             'answer': 0,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 64: Phép trừ trong phạm vi 100 000, **Nhẩm '
-                        'tròn chục nghìn** được xác định bởi: $a0\\,000 - b0\\,000 = (a - b)0\\,000$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 64: Phép trừ trong phạm vi 100 000, **Nhẩm tròn '
+                        'chục nghìn** được xác định bởi: $a0\\,000 - b0\\,000 = (a - b)0\\,000$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 64: Phép trừ trong phạm vi 100 000**, nội dung/biểu thức $a + b = c '
-                 '\\Rightarrow c - a = b \\text{ và } c - b = a$ là quy tắc hoặc công thức của mục nào sau '
-                 'đây?',
-            'options': ['Nhẩm tròn chục nghìn',
-                        'Quan hệ cộng – trừ',
-                        'Phân tích số',
-                        'Số tròn trăm, tròn nghìn'],
+            'q': 'Khi học **Bài 64: Phép trừ trong phạm vi 100 000**, biểu thức hoặc quy tắc nào dưới đây '
+                 'biểu diễn đúng **Quan hệ cộng – trừ**?',
+            'options': ['$a - b = c \\Rightarrow c - a = b \\text{ và } c - b = a$',
+                        '$a + b = c \\Rightarrow c - a = b \\text{ và } c - b = a$',
+                        'Đảo ngược vế của quy tắc: $a + b = c \\Rightarrow c - a = b \\text{ và } c - b = a$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $a + b = c \\Rightarrow c - a = '
+                        'b \\text{ và } c - b = a$'],
             'answer': 1,
-            'solution': 'Trong Bài 64: Phép trừ trong phạm vi 100 000, biểu thức/quy tắc $a + b = c '
-                        '\\Rightarrow c - a = b \\text{ và } c - b = a$ chính là nội dung của **Quan hệ cộng '
-                        '– trừ**.'},
+            'solution': 'Trong Bài 64: Phép trừ trong phạm vi 100 000, **Quan hệ cộng – trừ** có công '
+                        'thức/quy tắc là: $a + b = c \\Rightarrow c - a = b \\text{ và } c - b = a$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Tìm $x$ biết $x + 25\\,600 = 70\\,000$:',
@@ -6446,15 +7065,14 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 64: Phép trừ trong phạm vi 100 000** (Chủ đề 12: Cộng, trừ trong phạm vi 100 '
-                 '000), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của '
-                 'bài?',
-            'options': ['Đọc, viết thành thạo các số có đến ba chữ số trong phạm vi 1 000.',
-                        'Phân tích được số có ba chữ số thành tổng các trăm, chục, đơn vị.',
-                        'So sánh và sắp xếp được các số trong phạm vi 1 000 theo thứ tự.',
+            'q': 'Để nắm vững bản chất của **Bài 64: Phép trừ trong phạm vi 100 000**, nhận định nào sau đây '
+                 'là **chính xác**?',
+            'options': ['Đặt tính và tính đúng phép trừ các số có đến năm chữ số trong phạm vi $110\\,000$.',
+                        'Đặt tính và tính đúng phép trừ các số có đến năm chữ số trong phạm vi $100\\,1$.',
+                        'Đặt tính và tính đúng phép trừ các số có đến năm chữ số trong phạm vi $102\\,000$.',
                         'Đặt tính và tính đúng phép trừ các số có đến năm chữ số trong phạm vi $100\\,000$.'],
             'answer': 3,
-            'solution': 'Theo yêu cầu cần đạt của Bài 64: Phép trừ trong phạm vi 100 000: Đặt tính và tính '
+            'solution': 'Theo nội dung cốt lõi của Bài 64: Phép trừ trong phạm vi 100 000: Đặt tính và tính '
                         'đúng phép trừ các số có đến năm chữ số trong phạm vi $100\\,000$.'},
            {'level': 'hieu',
             'type': 'tf',
@@ -6466,27 +7084,26 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
            {'level': 'hieu',
             'type': 'tf',
             'q': 'Trong **Bài 64: Phép trừ trong phạm vi 100 000**, quy tắc **Nhẩm tròn chục nghìn** được '
-                 'xác định bởi $a0\\,000 - b0\\,000 = (a - b)0\\,000$ và áp dụng trực tiếp vào bài toán: '
-                 '“Tìm $x$ biết: $x + 25\\,600 = 70\\,000$.”. Đúng hay sai?',
+                 'xác định bởi $a0\\,000 - b0\\,000 = (a - b)0\\,000$ và khi áp dụng cho ví dụ “Tìm $x$ '
+                 'biết: $x + 25\\,600 = 70\\,000$.” ta có lời giải: Muốn tìm số hạng chưa biết, ta lấy tổng '
+                 'trừ đi số hạng kia: $x = 70\\,000 - 25\\,600 = 44\\,400$.. Đúng hay sai?',
             'answer': True,
-            'solution': 'Khẳng định **Đúng**. Quy tắc **Nhẩm tròn chục nghìn** ($a0\\,000 - b0\\,000 = (a - '
-                        'b)0\\,000$) là kiến thức cốt lõi của Bài 64: Phép trừ trong phạm vi 100 000. Muốn '
-                        'tìm số hạng chưa biết, ta lấy tổng trừ đi số hạng kia: $x = 70\\,000 - 25\\,600 = '
-                        '44\\,400$.'},
+            'solution': 'Khẳng định **Đúng**. Đó chính là quy tắc **Nhẩm tròn chục nghìn** ($a0\\,000 - '
+                        'b0\\,000 = (a - b)0\\,000$) và lời giải ví dụ minh họa của Bài 64: Phép trừ trong '
+                        'phạm vi 100 000.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 64: Phép trừ trong phạm vi 100 000** để giải quyết tình huống '
-                 'sau: Tìm $x$ biết: $x + 25\\,600 = 70\\,000$. Kết quả và hướng giải nào dưới đây là '
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 64: Phép trừ trong phạm vi 100 000** để giải bài '
+                 'toán sau: Tìm $x$ biết: $x + 25\\,600 = 70\\,000$. Cách giải và kết quả nào dưới đây là '
                  '**đúng**?',
             'options': ['Muốn tìm số hạng chưa biết, ta lấy tổng trừ đi số hạng kia: $x = 70\\,000 - '
                         '25\\,600 = 44\\,400$.',
-                        'Ta có $806 = 800 + 6$ (gồm $8$ trăm, $0$ chục, $6$ đơn vị). Vì chữ số hàng trăm $8 '
-                        '> 7$ nên **$806 > 798$**.',
-                        '- $468 + 325$: $8 + 5 = 13$ (viết $3$ nhớ $1$); $6 + 2 + 1 = 9$; $4 + 3 = 7$ '
-                        '$\\rightarrow$ **$793$**. - $750 - 236$: $10 - 6 = 4$ (viết $4$ nhớ $1$); $5 - (3 + '
-                        '1) = 1$...',
-                        'Áp dụng quy tắc tìm số trừ: $\\text{Số trừ} = \\text{Số bị trừ} - \\text{Hiệu} = 85 '
-                        '- 39 = 46$. Thử lại: $85 - 46 = 39$ (đúng). Vậy số cần tìm là **$46$**.'],
+                        'Muốn tìm số hạng chưa biết, ta lấy tổng trừ đi số hạng kia: $x = 70\\,000 + '
+                        '25\\,600 = 44\\,400$.',
+                        'Muốn tìm số hạng chưa biết, ta lấy tổng trừ đi số hạng kia: $x = 70\\,000 - '
+                        '25\\,600 = 44\\,399$.',
+                        'Muốn tìm số hạng chưa biết, ta lấy tổng trừ đi số hạng kia: $x = 72\\,000 - '
+                        '25\\,600 = 44\\,400$.'],
             'answer': 0,
             'solution': 'Lời giải chi tiết theo Bài 64: Phép trừ trong phạm vi 100 000: Muốn tìm số hạng '
                         'chưa biết, ta lấy tổng trừ đi số hạng kia:\n'
@@ -6522,7 +7139,7 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             '12\\,700$.\n'
             '### 2. Bài toán hai bước tính\n'
             '- Có thể tính tổng số đã bán/đã xuất rồi lấy số ban đầu trừ đi tổng đó.',
-  'formulas': [{'category': 'I. Tính chất phép cộng',
+  'formulas': [{'category': 'Tính chất phép cộng',
                 'items': [{'name': 'Giao hoán', 'formula': '$a + b = b + a$'},
                           {'name': 'Kết hợp', 'formula': '$(a + b) + c = a + (b + c)$'}]}],
   'example': 'Mẹ mang $100\\,000$ đồng đi chợ, mua thịt hết $45\\,000$ đồng và mua rau hết $12\\,000$ đồng. '
@@ -6551,23 +7168,26 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 65: Luyện tập chung cộng, trừ trong phạm vi 100 000**, '
-                 'công thức hoặc quy tắc nào sau đây biểu diễn đúng **Giao hoán**?',
-            'options': ['$(a + b) + c = a + (b + c)$',
+            'q': 'Trong **Bài 65: Luyện tập chung cộng, trừ trong phạm vi 100 000**, quy tắc hoặc công thức '
+                 'nào sau đây xác định đúng **Giao hoán**?',
+            'options': ['$a - b = b + a$',
                         '$a + b = b + a$',
-                        '$\\overline{abc} = a00 + b0 + c$',
-                        '$10 \\text{ chục} = 100$ · $10 \\text{ trăm} = 1\\,000$'],
+                        'Đảo ngược vế của quy tắc: $a + b = b + a$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $a + b = b + a$'],
             'answer': 1,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 65: Luyện tập chung cộng, trừ trong phạm vi '
-                        '100 000, **Giao hoán** được xác định bởi: $a + b = b + a$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 65: Luyện tập chung cộng, trừ trong phạm vi 100 '
+                        '000, **Giao hoán** được xác định bởi: $a + b = b + a$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 65: Luyện tập chung cộng, trừ trong phạm vi 100 000**, nội dung/biểu thức $(a '
-                 '+ b) + c = a + (b + c)$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Giao hoán', 'Phân tích số', 'Kết hợp', 'Số tròn trăm, tròn nghìn'],
+            'q': 'Khi học **Bài 65: Luyện tập chung cộng, trừ trong phạm vi 100 000**, biểu thức hoặc quy '
+                 'tắc nào dưới đây biểu diễn đúng **Kết hợp**?',
+            'options': ['$(a - b) + c = a + (b + c)$',
+                        'Đảo ngược vế của quy tắc: $(a + b) + c = a + (b + c)$',
+                        '$(a + b) + c = a + (b + c)$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $(a + b) + c = a + (b + c)$'],
             'answer': 2,
-            'solution': 'Trong Bài 65: Luyện tập chung cộng, trừ trong phạm vi 100 000, biểu thức/quy tắc '
-                        '$(a + b) + c = a + (b + c)$ chính là nội dung của **Kết hợp**.'},
+            'solution': 'Trong Bài 65: Luyện tập chung cộng, trừ trong phạm vi 100 000, **Kết hợp** có công '
+                        'thức/quy tắc là: $(a + b) + c = a + (b + c)$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Mẹ có $100\\,000$ đồng, mua thịt hết $45\\,000$ đồng và mua rau hết $12\\,000$ đồng. Số '
@@ -6580,16 +7200,18 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 65: Luyện tập chung cộng, trừ trong phạm vi 100 000** (Chủ đề 12: Cộng, trừ '
-                 'trong phạm vi 100 000), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản '
-                 'chất kiến thức của bài?',
+            'q': 'Để nắm vững bản chất của **Bài 65: Luyện tập chung cộng, trừ trong phạm vi 100 000**, nhận '
+                 'định nào sau đây là **chính xác**?',
             'options': ['Nhận biết và vận dụng được tính chất giao hoán, kết hợp của phép cộng để nhóm các '
                         'số tròn nghìn, tròn chục nghìn.',
-                        'Đọc, viết thành thạo các số có đến ba chữ số trong phạm vi 1 000.',
-                        'Phân tích được số có ba chữ số thành tổng các trăm, chục, đơn vị.',
-                        'So sánh và sắp xếp được các số trong phạm vi 1 000 theo thứ tự.'],
+                        'Nhận biết và vận dụng được tính chất giao hoán, kết hợp của phép cộng để nhóm các '
+                        'số tròn nghìn, tròn chục nghìn. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Nhận biết và vận dụng được tính chất giao hoán, kết hợp '
+                        'của phép cộng để nhóm các số tròn nghìn, tròn chục nghìn.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nhận biết và vận dụng được tính '
+                        'chất giao hoán, kết hợp của phép cộng để nhóm các số tròn nghìn, tròn chục nghìn.'],
             'answer': 0,
-            'solution': 'Theo yêu cầu cần đạt của Bài 65: Luyện tập chung cộng, trừ trong phạm vi 100 000: '
+            'solution': 'Theo nội dung cốt lõi của Bài 65: Luyện tập chung cộng, trừ trong phạm vi 100 000: '
                         'Nhận biết và vận dụng được tính chất giao hoán, kết hợp của phép cộng để nhóm các '
                         'số tròn nghìn, tròn chục nghìn.'},
            {'level': 'hieu',
@@ -6603,29 +7225,28 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
            {'level': 'hieu',
             'type': 'tf',
             'q': 'Trong **Bài 65: Luyện tập chung cộng, trừ trong phạm vi 100 000**, quy tắc **Giao hoán** '
-                 'được xác định bởi $a + b = b + a$ và áp dụng trực tiếp vào bài toán: “Mẹ mang $100\\,000$ '
-                 'đồng đi chợ, mua thịt hết $45\\,000$ đồng và mua rau hết $12\\,000$ đồng. Hỏi mẹ còn lại '
-                 'bao nhiêu tiền?”. Đúng hay sai?',
+                 'được xác định bởi $a + b = b + a$ và khi áp dụng cho ví dụ “Mẹ mang $100\\,000$ đồng đi '
+                 'chợ, mua thịt hết $45\\,000$ đồng và mua rau hết $12\\,000$ đồng. Hỏi mẹ còn lại bao nhiêu '
+                 'tiền?” ta có lời giải: Số tiền mẹ đã mua thịt và rau là: $45\\,000 + 12\\,000 = '
+                 '57\\,000\\text{ (đồng)}$. Số tiền mẹ còn lại là: $100\\,000 - 57\\,000 = 43\\,000\\text{ '
+                 '(đồng)}$.... Đúng hay sai?',
             'answer': True,
-            'solution': 'Khẳng định **Đúng**. Quy tắc **Giao hoán** ($a + b = b + a$) là kiến thức cốt lõi '
-                        'của Bài 65: Luyện tập chung cộng, trừ trong phạm vi 100 000. Số tiền mẹ đã mua thịt '
-                        'và rau là: $45\\,000 + 12\\,000 = 57\\,000\\text{ (đồng)}$. Số tiền mẹ còn lại là: '
-                        '$100\\,000 - 57\\,000 = 43\\,000\\text{ (đồng)}$...'},
+            'solution': 'Khẳng định **Đúng**. Đó chính là quy tắc **Giao hoán** ($a + b = b + a$) và lời '
+                        'giải ví dụ minh họa của Bài 65: Luyện tập chung cộng, trừ trong phạm vi 100 000.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 65: Luyện tập chung cộng, trừ trong phạm vi 100 000** để giải '
-                 'quyết tình huống sau: Mẹ mang $100\\,000$ đồng đi chợ, mua thịt hết $45\\,000$ đồng và mua '
-                 'rau hết $12\\,000$ đồng. Hỏi mẹ còn lại bao nhiêu tiền? Kết quả và hướng giải nào dưới đây '
-                 'là **đúng**?',
-            'options': ['Ta có $806 = 800 + 6$ (gồm $8$ trăm, $0$ chục, $6$ đơn vị). Vì chữ số hàng trăm $8 '
-                        '> 7$ nên **$806 > 798$**.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 65: Luyện tập chung cộng, trừ trong phạm vi 100 '
+                 '000** để giải bài toán sau: Mẹ mang $100\\,000$ đồng đi chợ, mua thịt hết $45\\,000$ đồng '
+                 'và mua rau hết $12\\,000$ đồng. Hỏi mẹ còn lại bao nhiêu tiền? Cách giải và kết quả nào '
+                 'dưới đây là **đúng**?',
+            'options': ['Số tiền mẹ đã mua thịt và rau là: $45\\,000 - 12\\,000 = 57\\,000\\text{ (đồng)}$. '
+                        'Số tiền mẹ còn lại là: $100\\,000 - 57\\,000 = 43\\,000\\text{ (đồng)}$.',
                         'Số tiền mẹ đã mua thịt và rau là: $45\\,000 + 12\\,000 = 57\\,000\\text{ (đồng)}$. '
                         'Số tiền mẹ còn lại là: $100\\,000 - 57\\,000 = 43\\,000\\text{ (đồng)}$.',
-                        '- $468 + 325$: $8 + 5 = 13$ (viết $3$ nhớ $1$); $6 + 2 + 1 = 9$; $4 + 3 = 7$ '
-                        '$\\rightarrow$ **$793$**. - $750 - 236$: $10 - 6 = 4$ (viết $4$ nhớ $1$); $5 - (3 + '
-                        '1) = 1$...',
-                        'Áp dụng quy tắc tìm số trừ: $\\text{Số trừ} = \\text{Số bị trừ} - \\text{Hiệu} = 85 '
-                        '- 39 = 46$. Thử lại: $85 - 46 = 39$ (đúng). Vậy số cần tìm là **$46$**.'],
+                        'Số tiền mẹ đã mua thịt và rau là: $45\\,000 + 12\\,000 = 57\\,000\\text{ (đồng)}$. '
+                        'Số tiền mẹ còn lại là: $100\\,000 - 57\\,000 = 43\\,1\\text{ (đồng)}$.',
+                        'Số tiền mẹ đã mua thịt và rau là: $90\\,000 + 12\\,000 = 57\\,000\\text{ (đồng)}$. '
+                        'Số tiền mẹ còn lại là: $100\\,000 - 57\\,000 = 43\\,000\\text{ (đồng)}$.'],
             'answer': 1,
             'solution': 'Lời giải chi tiết theo Bài 65: Luyện tập chung cộng, trừ trong phạm vi 100 000: Số '
                         'tiền mẹ đã mua thịt và rau là: $45\\,000 + 12\\,000 = 57\\,000\\text{ (đồng)}$.\n'
@@ -6666,7 +7287,7 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             '### 2. Mẹo nhớ số ngày trong tháng bằng nắm bàn tay\n'
             '- Đếm lần lượt từ tháng $1$ đến tháng $12$ trên các khớp xương lồi và chỗ lõm của nắm tay: '
             'tháng rơi vào khớp lồi có $31$ ngày, rơi vào chỗ lõm có $30$ ngày (trừ tháng $2$).',
-  'formulas': [{'category': 'I. Quan hệ thời gian',
+  'formulas': [{'category': 'Quan hệ thời gian',
                 'items': [{'name': 'Giờ và phút',
                            'formula': '$1\\text{ giờ} = 60\\text{ phút}$ · Giờ kém: $(h + 1)\\text{ giờ kém '
                                       '} (60 - m)\\text{ phút}$'},
@@ -6699,28 +7320,36 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 66: Xem đồng hồ. Tháng – năm**, công thức hoặc quy tắc '
-                 'nào sau đây biểu diễn đúng **Giờ và phút**?',
-            'options': ['Tháng $31$ ngày: $1, 3, 5, 7, 8, 10, 12$ · Tháng $30$ ngày: $4, 6, 9, 11$ · Tháng '
-                        '$2$: $28$ hoặc $29$ ngày',
-                        '$\\overline{abc} = a00 + b0 + c$',
+            'q': 'Trong **Bài 66: Xem đồng hồ. Tháng – năm**, quy tắc hoặc công thức nào sau đây xác định '
+                 'đúng **Giờ và phút**?',
+            'options': ['$1\\text{ giờ} = 60\\text{ phút}$ · Giờ kém: $(h - 1)\\text{ giờ kém } (60 - '
+                        'm)\\text{ phút}$',
+                        '$1\\text{ giờ} = 60\\text{ phút}$ · Giờ kém: $(h + 1)\\text{ giờ kém } (59 - '
+                        'm)\\text{ phút}$',
                         '$1\\text{ giờ} = 60\\text{ phút}$ · Giờ kém: $(h + 1)\\text{ giờ kém } (60 - '
                         'm)\\text{ phút}$',
-                        '$10 \\text{ chục} = 100$ · $10 \\text{ trăm} = 1\\,000$'],
+                        '$2\\text{ giờ} = 60\\text{ phút}$ · Giờ kém: $(h + 1)\\text{ giờ kém } (60 - '
+                        'm)\\text{ phút}$'],
             'answer': 2,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 66: Xem đồng hồ. Tháng – năm, **Giờ và phút** '
-                        'được xác định bởi: $1\\text{ giờ} = 60\\text{ phút}$ · Giờ kém: $(h + 1)\\text{ giờ '
-                        'kém } (60 - m)\\text{ phút}$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 66: Xem đồng hồ. Tháng – năm, **Giờ và phút** được '
+                        'xác định bởi: $1\\text{ giờ} = 60\\text{ phút}$ · Giờ kém: $(h + 1)\\text{ giờ kém '
+                        '} (60 - m)\\text{ phút}$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 66: Xem đồng hồ. Tháng – năm**, nội dung/biểu thức Tháng $31$ ngày: $1, 3, 5, '
-                 '7, 8, 10, 12$ · Tháng $30$ ngày: $4, 6, 9, 11$ · Tháng $2$: $28$ hoặc $29$ ngày là quy tắc '
-                 'hoặc công thức của mục nào sau đây?',
-            'options': ['Giờ và phút', 'Phân tích số', 'Số tròn trăm, tròn nghìn', 'Số ngày trong tháng'],
+            'q': 'Khi học **Bài 66: Xem đồng hồ. Tháng – năm**, biểu thức hoặc quy tắc nào dưới đây biểu '
+                 'diễn đúng **Số ngày trong tháng**?',
+            'options': ['Tháng $41$ ngày: $1, 3, 5, 7, 8, 10, 12$ · Tháng $30$ ngày: $4, 6, 9, 11$ · Tháng '
+                        '$2$: $28$ hoặc $29$ ngày',
+                        'Tháng $31$ ngày: $1, 3, 5, 7, 8, 10, 12$ · Tháng $30$ ngày: $4, 6, 9, 11$ · Tháng '
+                        '$2$: $28$ hoặc $28$ ngày',
+                        'Tháng $62$ ngày: $1, 3, 5, 7, 8, 10, 12$ · Tháng $30$ ngày: $4, 6, 9, 11$ · Tháng '
+                        '$2$: $28$ hoặc $29$ ngày',
+                        'Tháng $31$ ngày: $1, 3, 5, 7, 8, 10, 12$ · Tháng $30$ ngày: $4, 6, 9, 11$ · Tháng '
+                        '$2$: $28$ hoặc $29$ ngày'],
             'answer': 3,
-            'solution': 'Trong Bài 66: Xem đồng hồ. Tháng – năm, biểu thức/quy tắc Tháng $31$ ngày: $1, 3, '
-                        '5, 7, 8, 10, 12$ · Tháng $30$ ngày: $4, 6, 9, 11$ · Tháng $2$: $28$ hoặc $29$ ngày '
-                        'chính là nội dung của **Số ngày trong tháng**.'},
+            'solution': 'Trong Bài 66: Xem đồng hồ. Tháng – năm, **Số ngày trong tháng** có công thức/quy '
+                        'tắc là: Tháng $31$ ngày: $1, 3, 5, 7, 8, 10, 12$ · Tháng $30$ ngày: $4, 6, 9, 11$ · '
+                        'Tháng $2$: $28$ hoặc $29$ ngày.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': '$8$ giờ $50$ phút còn được đọc là:',
@@ -6735,16 +7364,18 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 66: Xem đồng hồ. Tháng – năm** (Chủ đề 13: Xem đồng hồ. Tháng – năm. Tiền '
-                 'Việt Nam), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức '
-                 'của bài?',
-            'options': ['Đọc, viết thành thạo các số có đến ba chữ số trong phạm vi 1 000.',
+            'q': 'Để nắm vững bản chất của **Bài 66: Xem đồng hồ. Tháng – năm**, nhận định nào sau đây là '
+                 '**chính xác**?',
+            'options': ['Đọc được giờ trên đồng hồ chính xác đến $6$ phút và từng phút (cả cách đọc giờ hơn '
+                        'và giờ kém).',
                         'Đọc được giờ trên đồng hồ chính xác đến $5$ phút và từng phút (cả cách đọc giờ hơn '
                         'và giờ kém).',
-                        'Phân tích được số có ba chữ số thành tổng các trăm, chục, đơn vị.',
-                        'So sánh và sắp xếp được các số trong phạm vi 1 000 theo thứ tự.'],
+                        'Đọc được giờ trên đồng hồ chính xác đến $4$ phút và từng phút (cả cách đọc giờ hơn '
+                        'và giờ kém).',
+                        'Đọc được giờ trên đồng hồ chính xác đến $10$ phút và từng phút (cả cách đọc giờ hơn '
+                        'và giờ kém).'],
             'answer': 1,
-            'solution': 'Theo yêu cầu cần đạt của Bài 66: Xem đồng hồ. Tháng – năm: Đọc được giờ trên đồng '
+            'solution': 'Theo nội dung cốt lõi của Bài 66: Xem đồng hồ. Tháng – năm: Đọc được giờ trên đồng '
                         'hồ chính xác đến $5$ phút và từng phút (cả cách đọc giờ hơn và giờ kém).'},
            {'level': 'hieu',
             'type': 'tf',
@@ -6757,27 +7388,27 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'type': 'tf',
             'q': 'Trong **Bài 66: Xem đồng hồ. Tháng – năm**, quy tắc **Giờ và phút** được xác định bởi '
                  '$1\\text{ giờ} = 60\\text{ phút}$ · Giờ kém: $(h + 1)\\text{ giờ kém } (60 - m)\\text{ '
-                 'phút}$ và áp dụng trực tiếp vào bài toán: “Một bộ phim bắt đầu lúc $7$ giờ $15$ phút và '
-                 'kéo dài trong $50$ phút. Hỏi bộ phim kết thúc lúc mấy giờ?”. Đúng hay sai?',
+                 'phút}$ và khi áp dụng cho ví dụ “Một bộ phim bắt đầu lúc $7$ giờ $15$ phút và kéo dài '
+                 'trong $50$ phút. Hỏi bộ phim kết thúc lúc mấy giờ?” ta có lời giải: Ta có: $7$ giờ $15$ '
+                 'phút $+ 50$ phút $= 7$ giờ $65$ phút. Vì $60$ phút $= 1$ giờ nên $7$ giờ $65$ phút $= 8$ '
+                 'giờ $5$ phút.. Đúng hay sai?',
             'answer': True,
-            'solution': 'Khẳng định **Đúng**. Quy tắc **Giờ và phút** ($1\\text{ giờ} = 60\\text{ phút}$ · '
-                        'Giờ kém: $(h + 1)\\text{ giờ kém } (60 - m)\\text{ phút}$) là kiến thức cốt lõi của '
-                        'Bài 66: Xem đồng hồ. Tháng – năm. Ta có: $7$ giờ $15$ phút $+ 50$ phút $= 7$ giờ '
-                        '$65$ phút. Vì $60$ phút $= 1$ giờ nên $7$ giờ $65$ phút $= 8$ giờ $5$ phút.'},
+            'solution': 'Khẳng định **Đúng**. Đó chính là quy tắc **Giờ và phút** ($1\\text{ giờ} = '
+                        '60\\text{ phút}$ · Giờ kém: $(h + 1)\\text{ giờ kém } (60 - m)\\text{ phút}$) và '
+                        'lời giải ví dụ minh họa của Bài 66: Xem đồng hồ. Tháng – năm.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 66: Xem đồng hồ. Tháng – năm** để giải quyết tình huống sau: Một '
-                 'bộ phim bắt đầu lúc $7$ giờ $15$ phút và kéo dài trong $50$ phút. Hỏi bộ phim kết thúc lúc '
-                 'mấy giờ? Kết quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Ta có $806 = 800 + 6$ (gồm $8$ trăm, $0$ chục, $6$ đơn vị). Vì chữ số hàng trăm $8 '
-                        '> 7$ nên **$806 > 798$**.',
-                        '- $468 + 325$: $8 + 5 = 13$ (viết $3$ nhớ $1$); $6 + 2 + 1 = 9$; $4 + 3 = 7$ '
-                        '$\\rightarrow$ **$793$**. - $750 - 236$: $10 - 6 = 4$ (viết $4$ nhớ $1$); $5 - (3 + '
-                        '1) = 1$...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 66: Xem đồng hồ. Tháng – năm** để giải bài toán '
+                 'sau: Một bộ phim bắt đầu lúc $7$ giờ $15$ phút và kéo dài trong $50$ phút. Hỏi bộ phim kết '
+                 'thúc lúc mấy giờ? Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Ta có: $8$ giờ $15$ phút $+ 50$ phút $= 7$ giờ $65$ phút. Vì $60$ phút $= 1$ giờ '
+                        'nên $7$ giờ $65$ phút $= 8$ giờ $5$ phút.',
+                        'Ta có: $7$ giờ $15$ phút $+ 50$ phút $= 7$ giờ $65$ phút. Vì $60$ phút $= 1$ giờ '
+                        'nên $7$ giờ $65$ phút $= 8$ giờ $4$ phút.',
                         'Ta có: $7$ giờ $15$ phút $+ 50$ phút $= 7$ giờ $65$ phút. Vì $60$ phút $= 1$ giờ '
                         'nên $7$ giờ $65$ phút $= 8$ giờ $5$ phút.',
-                        'Áp dụng quy tắc tìm số trừ: $\\text{Số trừ} = \\text{Số bị trừ} - \\text{Hiệu} = 85 '
-                        '- 39 = 46$. Thử lại: $85 - 46 = 39$ (đúng). Vậy số cần tìm là **$46$**.'],
+                        'Ta có: $14$ giờ $15$ phút $+ 50$ phút $= 7$ giờ $65$ phút. Vì $60$ phút $= 1$ giờ '
+                        'nên $7$ giờ $65$ phút $= 8$ giờ $5$ phút.'],
             'answer': 2,
             'solution': 'Lời giải chi tiết theo Bài 66: Xem đồng hồ. Tháng – năm: Ta có: $7$ giờ $15$ phút '
                         '$+ 50$ phút $= 7$ giờ $65$ phút.\n'
@@ -6814,7 +7445,7 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             '### 2. Thực hành xem đồng hồ\n'
             '- Buổi chiều/tối trên đồng hồ $24$ giờ: $13\\text{ giờ} = 1\\text{ giờ chiều}$, $19\\text{ giờ} '
             '= 7\\text{ giờ tối}$.',
-  'formulas': [{'category': 'I. Quy tắc tính lịch',
+  'formulas': [{'category': 'Quy tắc tính lịch',
                 'items': [{'name': 'Cùng thứ tuần sau',
                            'formula': '$\\text{Ngày mới} = \\text{Ngày cũ} + 7$'},
                           {'name': 'Qua tháng mới',
@@ -6845,25 +7476,26 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 67: Thực hành xem đồng hồ, xem lịch**, công thức hoặc '
-                 'quy tắc nào sau đây biểu diễn đúng **Cùng thứ tuần sau**?',
-            'options': ['Lấy $(\\text{Ngày cũ} + 7) - \\text{Số ngày của tháng hiện tại}$',
-                        '$\\overline{abc} = a00 + b0 + c$',
-                        '$10 \\text{ chục} = 100$ · $10 \\text{ trăm} = 1\\,000$',
+            'q': 'Trong **Bài 67: Thực hành xem đồng hồ, xem lịch**, quy tắc hoặc công thức nào sau đây xác '
+                 'định đúng **Cùng thứ tuần sau**?',
+            'options': ['$\\text{Ngày mới} = \\text{Ngày cũ} - 7$',
+                        '$\\text{Ngày mới} = \\text{Ngày cũ} + 6$',
+                        '$\\text{Ngày mới} = \\text{Ngày cũ} + 14$',
                         '$\\text{Ngày mới} = \\text{Ngày cũ} + 7$'],
             'answer': 3,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 67: Thực hành xem đồng hồ, xem lịch, **Cùng '
-                        'thứ tuần sau** được xác định bởi: $\\text{Ngày mới} = \\text{Ngày cũ} + 7$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 67: Thực hành xem đồng hồ, xem lịch, **Cùng thứ '
+                        'tuần sau** được xác định bởi: $\\text{Ngày mới} = \\text{Ngày cũ} + 7$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 67: Thực hành xem đồng hồ, xem lịch**, nội dung/biểu thức Lấy $(\\text{Ngày '
-                 'cũ} + 7) - \\text{Số ngày của tháng hiện tại}$ là quy tắc hoặc công thức của mục nào sau '
-                 'đây?',
-            'options': ['Qua tháng mới', 'Cùng thứ tuần sau', 'Phân tích số', 'Số tròn trăm, tròn nghìn'],
+            'q': 'Khi học **Bài 67: Thực hành xem đồng hồ, xem lịch**, biểu thức hoặc quy tắc nào dưới đây '
+                 'biểu diễn đúng **Qua tháng mới**?',
+            'options': ['Lấy $(\\text{Ngày cũ} + 7) - \\text{Số ngày của tháng hiện tại}$',
+                        'Lấy $(\\text{Ngày cũ} - 7) - \\text{Số ngày của tháng hiện tại}$',
+                        'Lấy $(\\text{Ngày cũ} + 6) - \\text{Số ngày của tháng hiện tại}$',
+                        'Lấy $(\\text{Ngày cũ} + 14) - \\text{Số ngày của tháng hiện tại}$'],
             'answer': 0,
-            'solution': 'Trong Bài 67: Thực hành xem đồng hồ, xem lịch, biểu thức/quy tắc Lấy $(\\text{Ngày '
-                        'cũ} + 7) - \\text{Số ngày của tháng hiện tại}$ chính là nội dung của **Qua tháng '
-                        'mới**.'},
+            'solution': 'Trong Bài 67: Thực hành xem đồng hồ, xem lịch, **Qua tháng mới** có công thức/quy '
+                        'tắc là: Lấy $(\\text{Ngày cũ} + 7) - \\text{Số ngày của tháng hiện tại}$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Nếu ngày $10$ tháng $5$ là Chủ nhật thì Chủ nhật tuần tiếp theo là ngày mấy tháng $5$?',
@@ -6874,15 +7506,14 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 67: Thực hành xem đồng hồ, xem lịch** (Chủ đề 13: Xem đồng hồ. Tháng – năm. '
-                 'Tiền Việt Nam), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến '
-                 'thức của bài?',
-            'options': ['Đọc, viết thành thạo các số có đến ba chữ số trong phạm vi 1 000.',
-                        'Phân tích được số có ba chữ số thành tổng các trăm, chục, đơn vị.',
+            'q': 'Để nắm vững bản chất của **Bài 67: Thực hành xem đồng hồ, xem lịch**, nhận định nào sau '
+                 'đây là **chính xác**?',
+            'options': ['Đọc và liên hệ được giờ giữa đồng hồ kim và đồng hồ điện tử ($34$ giờ).',
+                        'Đọc và liên hệ được giờ giữa đồng hồ kim và đồng hồ điện tử ($23$ giờ).',
                         'Đọc và liên hệ được giờ giữa đồng hồ kim và đồng hồ điện tử ($24$ giờ).',
-                        'So sánh và sắp xếp được các số trong phạm vi 1 000 theo thứ tự.'],
+                        'Đọc và liên hệ được giờ giữa đồng hồ kim và đồng hồ điện tử ($48$ giờ).'],
             'answer': 2,
-            'solution': 'Theo yêu cầu cần đạt của Bài 67: Thực hành xem đồng hồ, xem lịch: Đọc và liên hệ '
+            'solution': 'Theo nội dung cốt lõi của Bài 67: Thực hành xem đồng hồ, xem lịch: Đọc và liên hệ '
                         'được giờ giữa đồng hồ kim và đồng hồ điện tử ($24$ giờ).'},
            {'level': 'hieu',
             'type': 'tf',
@@ -6895,27 +7526,27 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
            {'level': 'hieu',
             'type': 'tf',
             'q': 'Trong **Bài 67: Thực hành xem đồng hồ, xem lịch**, quy tắc **Cùng thứ tuần sau** được xác '
-                 'định bởi $\\text{Ngày mới} = \\text{Ngày cũ} + 7$ và áp dụng trực tiếp vào bài toán: “Ngày '
-                 '$28$ tháng $3$ là thứ Hai. Hỏi ngày $4$ tháng $4$ cùng năm đó là thứ mấy?”. Đúng hay sai?',
+                 'định bởi $\\text{Ngày mới} = \\text{Ngày cũ} + 7$ và khi áp dụng cho ví dụ “Ngày $28$ '
+                 'tháng $3$ là thứ Hai. Hỏi ngày $4$ tháng $4$ cùng năm đó là thứ mấy?” ta có lời giải: '
+                 'Tháng $3$ có $31$ ngày. Từ ngày $28$ tháng $3$ đến ngày $4$ tháng $4$ có số ngày là: $(31 '
+                 '- 28) + 4 = 7\\text{ (ngày)} = 1\\text{ tuần}$..... Đúng hay sai?',
             'answer': True,
-            'solution': 'Khẳng định **Đúng**. Quy tắc **Cùng thứ tuần sau** ($\\text{Ngày mới} = \\text{Ngày '
-                        'cũ} + 7$) là kiến thức cốt lõi của Bài 67: Thực hành xem đồng hồ, xem lịch. Tháng '
-                        '$3$ có $31$ ngày. Từ ngày $28$ tháng $3$ đến ngày $4$ tháng $4$ có số ngày là: $(31 '
-                        '- 28) + 4 = 7\\text{ (ngày)} = 1\\text{ tuần}$. Vậy...'},
+            'solution': 'Khẳng định **Đúng**. Đó chính là quy tắc **Cùng thứ tuần sau** ($\\text{Ngày mới} = '
+                        '\\text{Ngày cũ} + 7$) và lời giải ví dụ minh họa của Bài 67: Thực hành xem đồng hồ, '
+                        'xem lịch.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 67: Thực hành xem đồng hồ, xem lịch** để giải quyết tình huống '
-                 'sau: Ngày $28$ tháng $3$ là thứ Hai. Hỏi ngày $4$ tháng $4$ cùng năm đó là thứ mấy? Kết '
-                 'quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Ta có $806 = 800 + 6$ (gồm $8$ trăm, $0$ chục, $6$ đơn vị). Vì chữ số hàng trăm $8 '
-                        '> 7$ nên **$806 > 798$**.',
-                        '- $468 + 325$: $8 + 5 = 13$ (viết $3$ nhớ $1$); $6 + 2 + 1 = 9$; $4 + 3 = 7$ '
-                        '$\\rightarrow$ **$793$**. - $750 - 236$: $10 - 6 = 4$ (viết $4$ nhớ $1$); $5 - (3 + '
-                        '1) = 1$...',
-                        'Áp dụng quy tắc tìm số trừ: $\\text{Số trừ} = \\text{Số bị trừ} - \\text{Hiệu} = 85 '
-                        '- 39 = 46$. Thử lại: $85 - 46 = 39$ (đúng). Vậy số cần tìm là **$46$**.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 67: Thực hành xem đồng hồ, xem lịch** để giải bài '
+                 'toán sau: Ngày $28$ tháng $3$ là thứ Hai. Hỏi ngày $4$ tháng $4$ cùng năm đó là thứ mấy? '
+                 'Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Tháng $3$ có $31$ ngày. Từ ngày $28$ tháng $3$ đến ngày $4$ tháng $4$ có số ngày '
+                        'là: $(31 - 28) - 4 = 7\\text{ (ngày)} = 1\\text{ tuần}$. Vậy ngày $4$ t...',
                         'Tháng $3$ có $31$ ngày. Từ ngày $28$ tháng $3$ đến ngày $4$ tháng $4$ có số ngày '
-                        'là: $(31 - 28) + 4 = 7\\text{ (ngày)} = 1\\text{ tuần}$. Vậy ngày $4$ tháng...'],
+                        'là: $(31 - 28) + 4 = 7\\text{ (ngày)} = 1\\text{ tuần}$. Vậy ngày $3$ t...',
+                        'Tháng $6$ có $31$ ngày. Từ ngày $28$ tháng $3$ đến ngày $4$ tháng $4$ có số ngày '
+                        'là: $(31 - 28) + 4 = 7\\text{ (ngày)} = 1\\text{ tuần}$. Vậy ngày $4$ t...',
+                        'Tháng $3$ có $31$ ngày. Từ ngày $28$ tháng $3$ đến ngày $4$ tháng $4$ có số ngày '
+                        'là: $(31 - 28) + 4 = 7\\text{ (ngày)} = 1\\text{ tuần}$. Vậy ngày $4$ t...'],
             'answer': 3,
             'solution': 'Lời giải chi tiết theo Bài 67: Thực hành xem đồng hồ, xem lịch: Tháng $3$ có $31$ '
                         'ngày. Từ ngày $28$ tháng $3$ đến ngày $4$ tháng $4$ có số ngày là: $(31 - 28) + 4 = '
@@ -6935,7 +7566,7 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
  {'topic': 'l3-cd13-dong-ho-thang-nam-tien',
   'context_title': 'Chủ đề 13: Xem đồng hồ. Tháng – năm. Tiền Việt Nam',
   'context': 'SGK Toán 3 · Chủ đề 13: Xem đồng hồ, tháng – năm và tiền Việt Nam.',
-  'title': 'Bài 68, 69: Tiền Việt Nam và luyện tập chung',
+  'title': 'Bài 68: Tiền Việt Nam',
   'icon': '💵',
   'description': 'Nhận biết các mệnh giá tiền Việt Nam đến 100 000 đồng (và 200 000, 500 000 đồng); tính '
                  'toán mua bán.',
@@ -6955,7 +7586,7 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             '### 2. Tính tiền khi mua hàng\n'
             '- Cộng giá tiền các món hàng đã chọn, sau đó lấy số tiền đưa cho người bán trừ đi tổng tiền '
             'hàng.',
-  'formulas': [{'category': 'I. Tính toán với tiền Việt Nam',
+  'formulas': [{'category': 'Tính toán với tiền Việt Nam',
                 'items': [{'name': 'Tổng tiền hàng', 'formula': '$\\text{Đơn giá} \\times \\text{Số lượng}$'},
                           {'name': 'Tiền thừa trả lại',
                            'formula': '$\\text{Tiền đưa} - \\text{Tiền hàng}$'}]}],
@@ -6983,23 +7614,28 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 68, 69: Tiền Việt Nam và luyện tập chung**, công thức '
-                 'hoặc quy tắc nào sau đây biểu diễn đúng **Tổng tiền hàng**?',
+            'q': 'Trong **Bài 68: Tiền Việt Nam**, quy tắc hoặc công thức nào sau đây xác định đúng **Tổng '
+                 'tiền hàng**?',
             'options': ['$\\text{Đơn giá} \\times \\text{Số lượng}$',
-                        '$\\text{Tiền đưa} - \\text{Tiền hàng}$',
-                        '$\\overline{abc} = a00 + b0 + c$',
-                        '$10 \\text{ chục} = 100$ · $10 \\text{ trăm} = 1\\,000$'],
+                        '$\\text{Đơn giá} : \\text{Số lượng}$',
+                        'Đảo ngược vế của quy tắc: $\\text{Đơn giá} \\times \\text{Số lượng}$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\text{Đơn giá} \\times '
+                        '\\text{Số lượng}$'],
             'answer': 0,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 68, 69: Tiền Việt Nam và luyện tập chung, '
-                        '**Tổng tiền hàng** được xác định bởi: $\\text{Đơn giá} \\times \\text{Số lượng}$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 68: Tiền Việt Nam, **Tổng tiền hàng** được xác '
+                        'định bởi: $\\text{Đơn giá} \\times \\text{Số lượng}$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 68, 69: Tiền Việt Nam và luyện tập chung**, nội dung/biểu thức $\\text{Tiền '
-                 'đưa} - \\text{Tiền hàng}$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Tổng tiền hàng', 'Tiền thừa trả lại', 'Phân tích số', 'Số tròn trăm, tròn nghìn'],
+            'q': 'Khi học **Bài 68: Tiền Việt Nam**, biểu thức hoặc quy tắc nào dưới đây biểu diễn đúng '
+                 '**Tiền thừa trả lại**?',
+            'options': ['$\\text{Tiền đưa} + \\text{Tiền hàng}$',
+                        '$\\text{Tiền đưa} - \\text{Tiền hàng}$',
+                        'Đảo ngược vế của quy tắc: $\\text{Tiền đưa} - \\text{Tiền hàng}$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\text{Tiền đưa} - \\text{Tiền '
+                        'hàng}$'],
             'answer': 1,
-            'solution': 'Trong Bài 68, 69: Tiền Việt Nam và luyện tập chung, biểu thức/quy tắc $\\text{Tiền '
-                        'đưa} - \\text{Tiền hàng}$ chính là nội dung của **Tiền thừa trả lại**.'},
+            'solution': 'Trong Bài 68: Tiền Việt Nam, **Tiền thừa trả lại** có công thức/quy tắc là: '
+                        '$\\text{Tiền đưa} - \\text{Tiền hàng}$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Một tờ tiền mệnh giá $100\\,000$ đồng có thể đổi được bao nhiêu tờ tiền mệnh giá '
@@ -7011,18 +7647,20 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 68, 69: Tiền Việt Nam và luyện tập chung** (Chủ đề 13: Xem đồng hồ. Tháng – '
-                 'năm. Tiền Việt Nam), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất '
-                 'kiến thức của bài?',
-            'options': ['Đọc, viết thành thạo các số có đến ba chữ số trong phạm vi 1 000.',
-                        'Phân tích được số có ba chữ số thành tổng các trăm, chục, đơn vị.',
-                        'So sánh và sắp xếp được các số trong phạm vi 1 000 theo thứ tự.',
+            'q': 'Để nắm vững bản chất của **Bài 68: Tiền Việt Nam**, nhận định nào sau đây là **chính '
+                 'xác**?',
+            'options': ['Nhận biết mệnh giá các tờ tiền Việt Nam trong phạm vi $110\\,000$ đồng (và làm quen '
+                        'tờ $200\\,000$, $500\\,000$ đồng).',
+                        'Nhận biết mệnh giá các tờ tiền Việt Nam trong phạm vi $100\\,000$ đồng (và làm quen '
+                        'tờ $200\\,000$, $500\\,1$ đồng).',
+                        'Nhận biết mệnh giá các tờ tiền Việt Nam trong phạm vi $102\\,000$ đồng (và làm quen '
+                        'tờ $200\\,000$, $500\\,000$ đồng).',
                         'Nhận biết mệnh giá các tờ tiền Việt Nam trong phạm vi $100\\,000$ đồng (và làm quen '
                         'tờ $200\\,000$, $500\\,000$ đồng).'],
             'answer': 3,
-            'solution': 'Theo yêu cầu cần đạt của Bài 68, 69: Tiền Việt Nam và luyện tập chung: Nhận biết '
-                        'mệnh giá các tờ tiền Việt Nam trong phạm vi $100\\,000$ đồng (và làm quen tờ '
-                        '$200\\,000$, $500\\,000$ đồng).'},
+            'solution': 'Theo nội dung cốt lõi của Bài 68: Tiền Việt Nam: Nhận biết mệnh giá các tờ tiền '
+                        'Việt Nam trong phạm vi $100\\,000$ đồng (và làm quen tờ $200\\,000$, $500\\,000$ '
+                        'đồng).'},
            {'level': 'hieu',
             'type': 'tf',
             'q': 'Nhận định: "Trong ví có $2$ tờ $20\\,000$ đồng và $1$ tờ $10\\,000$ đồng thì tổng số tiền '
@@ -7033,33 +7671,30 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'hieu',
             'type': 'tf',
-            'q': 'Trong **Bài 68, 69: Tiền Việt Nam và luyện tập chung**, quy tắc **Tổng tiền hàng** được '
-                 'xác định bởi $\\text{Đơn giá} \\times \\text{Số lượng}$ và áp dụng trực tiếp vào bài toán: '
-                 '“Lan đưa cô bán hàng tờ $50\\,000$ đồng để mua một quyển truyện giá $35\\,000$ đồng. Hỏi '
-                 'cô bán hàng phải trả lại Lan bao nhiêu tiền?”. Đúng hay sai?',
+            'q': 'Trong **Bài 68: Tiền Việt Nam**, quy tắc **Tổng tiền hàng** được xác định bởi $\\text{Đơn '
+                 'giá} \\times \\text{Số lượng}$ và khi áp dụng cho ví dụ “Lan đưa cô bán hàng tờ $50\\,000$ '
+                 'đồng để mua một quyển truyện giá $35\\,000$ đồng. Hỏi cô bán hàng phải trả lại Lan bao '
+                 'nhiêu tiền?” ta có lời giải: Số tiền cô bán hàng trả lại Lan là: $50\\,000 - 35\\,000 = '
+                 '15\\,000\\text{ (đồng)}$. Đáp số: **$15\\,000\\text{ đồng}$**.. Đúng hay sai?',
             'answer': True,
-            'solution': 'Khẳng định **Đúng**. Quy tắc **Tổng tiền hàng** ($\\text{Đơn giá} \\times \\text{Số '
-                        'lượng}$) là kiến thức cốt lõi của Bài 68, 69: Tiền Việt Nam và luyện tập chung. Số '
-                        'tiền cô bán hàng trả lại Lan là: $50\\,000 - 35\\,000 = 15\\,000\\text{ (đồng)}$. '
-                        'Đáp số: **$15\\,000\\text{ đồng}$**.'},
+            'solution': 'Khẳng định **Đúng**. Đó chính là quy tắc **Tổng tiền hàng** ($\\text{Đơn giá} '
+                        '\\times \\text{Số lượng}$) và lời giải ví dụ minh họa của Bài 68: Tiền Việt Nam.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 68, 69: Tiền Việt Nam và luyện tập chung** để giải quyết tình '
-                 'huống sau: Lan đưa cô bán hàng tờ $50\\,000$ đồng để mua một quyển truyện giá $35\\,000$ '
-                 'đồng. Hỏi cô bán hàng phải trả lại Lan bao nhiêu tiền? Kết quả và hướng giải nào dưới đây '
-                 'là **đúng**?',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 68: Tiền Việt Nam** để giải bài toán sau: Lan đưa '
+                 'cô bán hàng tờ $50\\,000$ đồng để mua một quyển truyện giá $35\\,000$ đồng. Hỏi cô bán '
+                 'hàng phải trả lại Lan bao nhiêu tiền? Cách giải và kết quả nào dưới đây là **đúng**?',
             'options': ['Số tiền cô bán hàng trả lại Lan là: $50\\,000 - 35\\,000 = 15\\,000\\text{ '
                         '(đồng)}$. Đáp số: **$15\\,000\\text{ đồng}$**.',
-                        'Ta có $806 = 800 + 6$ (gồm $8$ trăm, $0$ chục, $6$ đơn vị). Vì chữ số hàng trăm $8 '
-                        '> 7$ nên **$806 > 798$**.',
-                        '- $468 + 325$: $8 + 5 = 13$ (viết $3$ nhớ $1$); $6 + 2 + 1 = 9$; $4 + 3 = 7$ '
-                        '$\\rightarrow$ **$793$**. - $750 - 236$: $10 - 6 = 4$ (viết $4$ nhớ $1$); $5 - (3 + '
-                        '1) = 1$...',
-                        'Áp dụng quy tắc tìm số trừ: $\\text{Số trừ} = \\text{Số bị trừ} - \\text{Hiệu} = 85 '
-                        '- 39 = 46$. Thử lại: $85 - 46 = 39$ (đúng). Vậy số cần tìm là **$46$**.'],
+                        'Số tiền cô bán hàng trả lại Lan là: $50\\,000 + 35\\,000 = 15\\,000\\text{ '
+                        '(đồng)}$. Đáp số: **$15\\,000\\text{ đồng}$**.',
+                        'Số tiền cô bán hàng trả lại Lan là: $50\\,000 - 35\\,000 = 15\\,000\\text{ '
+                        '(đồng)}$. Đáp số: **$15\\,1\\text{ đồng}$**.',
+                        'Số tiền cô bán hàng trả lại Lan là: $52\\,000 - 35\\,000 = 15\\,000\\text{ '
+                        '(đồng)}$. Đáp số: **$15\\,000\\text{ đồng}$**.'],
             'answer': 0,
-            'solution': 'Lời giải chi tiết theo Bài 68, 69: Tiền Việt Nam và luyện tập chung: Số tiền cô bán '
-                        'hàng trả lại Lan là: $50\\,000 - 35\\,000 = 15\\,000\\text{ (đồng)}$.\n'
+            'solution': 'Lời giải chi tiết theo Bài 68: Tiền Việt Nam: Số tiền cô bán hàng trả lại Lan là: '
+                        '$50\\,000 - 35\\,000 = 15\\,000\\text{ (đồng)}$.\n'
                         'Đáp số: **$15\\,000\\text{ đồng}$**.'},
            {'level': 'vandung',
             'type': 'short',
@@ -7093,7 +7728,7 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             '### 2. Đặt tính rồi tính\n'
             '- Ví dụ: $21\\,304 \\times 3 = 63\\,912$.\n'
             '- Ví dụ có nhớ: $14\\,216 \\times 5 = 71\\,080$.',
-  'formulas': [{'category': 'I. Nhân trong phạm vi 100 000',
+  'formulas': [{'category': 'Nhân trong phạm vi 100 000',
                 'items': [{'name': 'Nhẩm tròn chục nghìn',
                            'formula': '$a0\\,000 \\times b = (a \\times b)0\\,000$'},
                           {'name': 'Thứ tự nhân viết',
@@ -7121,29 +7756,28 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 70: Nhân số có năm chữ số với số có một chữ số**, công '
-                 'thức hoặc quy tắc nào sau đây biểu diễn đúng **Nhẩm tròn chục nghìn**?',
-            'options': ['Từ phải sang trái (Đơn vị $\\rightarrow$ Chục nghìn)',
+            'q': 'Trong **Bài 70: Nhân số có năm chữ số với số có một chữ số**, quy tắc hoặc công thức nào '
+                 'sau đây xác định đúng **Nhẩm tròn chục nghìn**?',
+            'options': ['$a0\\,000 : b = (a \\times b)0\\,000$',
                         '$a0\\,000 \\times b = (a \\times b)0\\,000$',
-                        '$\\overline{abc} = a00 + b0 + c$',
-                        '$10 \\text{ chục} = 100$ · $10 \\text{ trăm} = 1\\,000$'],
+                        '$a0\\,000 \\times b = (a \\times b)0\\,1$',
+                        '$a0\\,2 \\times b = (a \\times b)0\\,000$'],
             'answer': 1,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 70: Nhân số có năm chữ số với số có một chữ '
-                        'số, **Nhẩm tròn chục nghìn** được xác định bởi: $a0\\,000 \\times b = (a \\times '
+            'solution': 'Theo kiến thức trọng tâm của Bài 70: Nhân số có năm chữ số với số có một chữ số, '
+                        '**Nhẩm tròn chục nghìn** được xác định bởi: $a0\\,000 \\times b = (a \\times '
                         'b)0\\,000$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 70: Nhân số có năm chữ số với số có một chữ số**, nội dung/biểu thức Từ phải '
-                 'sang trái (Đơn vị $\\rightarrow$ Chục nghìn) là quy tắc hoặc công thức của mục nào sau '
-                 'đây?',
-            'options': ['Nhẩm tròn chục nghìn',
-                        'Phân tích số',
-                        'Thứ tự nhân viết',
-                        'Số tròn trăm, tròn nghìn'],
+            'q': 'Khi học **Bài 70: Nhân số có năm chữ số với số có một chữ số**, biểu thức hoặc quy tắc nào '
+                 'dưới đây biểu diễn đúng **Thứ tự nhân viết**?',
+            'options': ['Từ trái sang phải (Đơn vị $\\rightarrow$ Chục nghìn)',
+                        'Đảo ngược vế của quy tắc: Từ phải sang trái (Đơn vị $\\rightarrow$ Chục nghìn)',
+                        'Từ phải sang trái (Đơn vị $\\rightarrow$ Chục nghìn)',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Từ phải sang trái (Đơn vị '
+                        '$\\rightarrow$ Chục nghìn)'],
             'answer': 2,
-            'solution': 'Trong Bài 70: Nhân số có năm chữ số với số có một chữ số, biểu thức/quy tắc Từ phải '
-                        'sang trái (Đơn vị $\\rightarrow$ Chục nghìn) chính là nội dung của **Thứ tự nhân '
-                        'viết**.'},
+            'solution': 'Trong Bài 70: Nhân số có năm chữ số với số có một chữ số, **Thứ tự nhân viết** có '
+                        'công thức/quy tắc là: Từ phải sang trái (Đơn vị $\\rightarrow$ Chục nghìn).'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Kết quả của phép nhân $18\\,245 \\times 4$ là:',
@@ -7154,16 +7788,18 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 70: Nhân số có năm chữ số với số có một chữ số** (Chủ đề 14: Nhân, chia '
-                 'trong phạm vi 100 000), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản '
-                 'chất kiến thức của bài?',
+            'q': 'Để nắm vững bản chất của **Bài 70: Nhân số có năm chữ số với số có một chữ số**, nhận định '
+                 'nào sau đây là **chính xác**?',
             'options': ['Đặt tính và tính đúng phép nhân số có năm chữ số với số có một chữ số (có nhớ không '
                         'quá hai lượt).',
-                        'Đọc, viết thành thạo các số có đến ba chữ số trong phạm vi 1 000.',
-                        'Phân tích được số có ba chữ số thành tổng các trăm, chục, đơn vị.',
-                        'So sánh và sắp xếp được các số trong phạm vi 1 000 theo thứ tự.'],
+                        'Đặt tính và tính đúng phép nhân số có năm chữ số với số có một chữ số (có nhớ không '
+                        'quá hai lượt). (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Đặt tính và tính đúng phép nhân số có năm chữ số với số '
+                        'có một chữ số (có nhớ không quá hai lượt).',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Đặt tính và tính đúng phép nhân '
+                        'số có năm chữ số với số có một chữ số (có nhớ không quá hai lượt).'],
             'answer': 0,
-            'solution': 'Theo yêu cầu cần đạt của Bài 70: Nhân số có năm chữ số với số có một chữ số: Đặt '
+            'solution': 'Theo nội dung cốt lõi của Bài 70: Nhân số có năm chữ số với số có một chữ số: Đặt '
                         'tính và tính đúng phép nhân số có năm chữ số với số có một chữ số (có nhớ không quá '
                         'hai lượt).'},
            {'level': 'hieu',
@@ -7176,30 +7812,31 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
            {'level': 'hieu',
             'type': 'tf',
             'q': 'Trong **Bài 70: Nhân số có năm chữ số với số có một chữ số**, quy tắc **Nhẩm tròn chục '
-                 'nghìn** được xác định bởi $a0\\,000 \\times b = (a \\times b)0\\,000$ và áp dụng trực tiếp '
-                 'vào bài toán: “Đặt tính rồi tính: $12\\,031 \\times 3$ và $18\\,245 \\times 4$.”. Đúng hay '
-                 'sai?',
+                 'nghìn** được xác định bởi $a0\\,000 \\times b = (a \\times b)0\\,000$ và khi áp dụng cho '
+                 'ví dụ “Đặt tính rồi tính: $12\\,031 \\times 3$ và $18\\,245 \\times 4$.” ta có lời giải: - '
+                 '$12\\,031 \\times 3 = 36\\,093$. - $18\\,245 \\times 4 = 72\\,980$ ($5\\times4=20$ viết '
+                 '$0$ nhớ $2$; $4\\times4+2=18$ viết $8$ nhớ $1$; $2\\times4+1=9$.... Đúng hay sai?',
             'answer': True,
-            'solution': 'Khẳng định **Đúng**. Quy tắc **Nhẩm tròn chục nghìn** ($a0\\,000 \\times b = (a '
-                        '\\times b)0\\,000$) là kiến thức cốt lõi của Bài 70: Nhân số có năm chữ số với số '
-                        'có một chữ số. - $12\\,031 \\times 3 = 36\\,093$. - $18\\,245 \\times 4 = 72\\,980$ '
-                        '($5\\times4=20$ viết $0$ nhớ $2$; $4\\times4+2=18$ viết $8$ nhớ $1$; '
-                        '$2\\times4+1=9$...'},
+            'solution': 'Khẳng định **Đúng**. Đó chính là quy tắc **Nhẩm tròn chục nghìn** ($a0\\,000 '
+                        '\\times b = (a \\times b)0\\,000$) và lời giải ví dụ minh họa của Bài 70: Nhân số '
+                        'có năm chữ số với số có một chữ số.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 70: Nhân số có năm chữ số với số có một chữ số** để giải quyết '
-                 'tình huống sau: Đặt tính rồi tính: $12\\,031 \\times 3$ và $18\\,245 \\times 4$. Kết quả '
-                 'và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Ta có $806 = 800 + 6$ (gồm $8$ trăm, $0$ chục, $6$ đơn vị). Vì chữ số hàng trăm $8 '
-                        '> 7$ nên **$806 > 798$**.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 70: Nhân số có năm chữ số với số có một chữ số** để '
+                 'giải bài toán sau: Đặt tính rồi tính: $12\\,031 \\times 3$ và $18\\,245 \\times 4$. Cách '
+                 'giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['- $12\\,031 \\times 3 = 36\\,093$. + $18\\,245 \\times 4 = 72\\,980$ '
+                        '($5\\times4=20$ viết $0$ nhớ $2$; $4\\times4+2=18$ viết $8$ nhớ $1$; '
+                        '$2\\times4+1=9$; $8\\times4=32$...',
                         '- $12\\,031 \\times 3 = 36\\,093$. - $18\\,245 \\times 4 = 72\\,980$ '
                         '($5\\times4=20$ viết $0$ nhớ $2$; $4\\times4+2=18$ viết $8$ nhớ $1$; '
                         '$2\\times4+1=9$; $8\\times4=32$...',
-                        '- $468 + 325$: $8 + 5 = 13$ (viết $3$ nhớ $1$); $6 + 2 + 1 = 9$; $4 + 3 = 7$ '
-                        '$\\rightarrow$ **$793$**. - $750 - 236$: $10 - 6 = 4$ (viết $4$ nhớ $1$); $5 - (3 + '
-                        '1) = 1$...',
-                        'Áp dụng quy tắc tìm số trừ: $\\text{Số trừ} = \\text{Số bị trừ} - \\text{Hiệu} = 85 '
-                        '- 39 = 46$. Thử lại: $85 - 46 = 39$ (đúng). Vậy số cần tìm là **$46$**.'],
+                        '- $12\\,031 \\times 3 = 36\\,093$. - $18\\,245 \\times 4 = 72\\,980$ '
+                        '($5\\times4=20$ viết $0$ nhớ $2$; $4\\times4+2=18$ viết $8$ nhớ $1$; '
+                        '$2\\times4+1=9$; $8\\times4=31$...',
+                        '- $24\\,031 \\times 3 = 36\\,093$. - $18\\,245 \\times 4 = 72\\,980$ '
+                        '($5\\times4=20$ viết $0$ nhớ $2$; $4\\times4+2=18$ viết $8$ nhớ $1$; '
+                        '$2\\times4+1=9$; $8\\times4=32$...'],
             'answer': 1,
             'solution': 'Lời giải chi tiết theo Bài 70: Nhân số có năm chữ số với số có một chữ số: - '
                         '$12\\,031 \\times 3 = 36\\,093$.\n'
@@ -7235,7 +7872,7 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             '- Ví dụ có hai chữ số $0$ liên tiếp ở thương: $24\\,036 : 6 = 4\\,006$.\n'
             '### 2. Phép chia có dư\n'
             '- Ví dụ: $25\\,609 : 5 = 5\\,121 \\text{ (dư } 4\\text{)}$.',
-  'formulas': [{'category': 'I. Chia số có năm chữ số',
+  'formulas': [{'category': 'Chia số có năm chữ số',
                 'items': [{'name': 'Nhẩm tròn chục nghìn', 'formula': '$a0\\,000 : b = (a : b)0\\,000$'},
                           {'name': 'Kiểm tra phép chia',
                            'formula': '$\\text{Thương} \\times \\text{Số chia} + \\text{Số dư} = \\text{Số '
@@ -7262,29 +7899,31 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 71: Chia số có năm chữ số cho số có một chữ số**, công '
-                 'thức hoặc quy tắc nào sau đây biểu diễn đúng **Nhẩm tròn chục nghìn**?',
-            'options': ['$\\text{Thương} \\times \\text{Số chia} + \\text{Số dư} = \\text{Số bị chia}$ ($0 '
-                        '\\le r < b$)',
-                        '$\\overline{abc} = a00 + b0 + c$',
+            'q': 'Trong **Bài 71: Chia số có năm chữ số cho số có một chữ số**, quy tắc hoặc công thức nào '
+                 'sau đây xác định đúng **Nhẩm tròn chục nghìn**?',
+            'options': ['$a0\\,1 : b = (a : b)0\\,000$',
+                        '$a0\\,000 : b = (a : b)0\\,1$',
                         '$a0\\,000 : b = (a : b)0\\,000$',
-                        '$10 \\text{ chục} = 100$ · $10 \\text{ trăm} = 1\\,000$'],
+                        '$a0\\,2 : b = (a : b)0\\,000$'],
             'answer': 2,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 71: Chia số có năm chữ số cho số có một chữ '
-                        'số, **Nhẩm tròn chục nghìn** được xác định bởi: $a0\\,000 : b = (a : b)0\\,000$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 71: Chia số có năm chữ số cho số có một chữ số, '
+                        '**Nhẩm tròn chục nghìn** được xác định bởi: $a0\\,000 : b = (a : b)0\\,000$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 71: Chia số có năm chữ số cho số có một chữ số**, nội dung/biểu thức '
-                 '$\\text{Thương} \\times \\text{Số chia} + \\text{Số dư} = \\text{Số bị chia}$ ($0 \\le r < '
-                 'b$) là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Nhẩm tròn chục nghìn',
-                        'Phân tích số',
-                        'Số tròn trăm, tròn nghìn',
-                        'Kiểm tra phép chia'],
-            'answer': 3,
-            'solution': 'Trong Bài 71: Chia số có năm chữ số cho số có một chữ số, biểu thức/quy tắc '
+            'q': 'Khi học **Bài 71: Chia số có năm chữ số cho số có một chữ số**, biểu thức hoặc quy tắc nào '
+                 'dưới đây biểu diễn đúng **Kiểm tra phép chia**?',
+            'options': ['$\\text{Thương} \\times \\text{Số chia} + \\text{Số dư} = \\text{Số bị chia}$ ($0 '
+                        '\\ge r < b$)',
+                        '$\\text{Thương} \\times \\text{Số chia} + \\text{Số dư} = \\text{Số bị chia}$ ($1 '
+                        '\\le r < b$)',
+                        '$\\text{Thương} \\times \\text{Số chia} + \\text{Số dư} = \\text{Số bị chia}$ ($2 '
+                        '\\le r < b$)',
                         '$\\text{Thương} \\times \\text{Số chia} + \\text{Số dư} = \\text{Số bị chia}$ ($0 '
-                        '\\le r < b$) chính là nội dung của **Kiểm tra phép chia**.'},
+                        '\\le r < b$)'],
+            'answer': 3,
+            'solution': 'Trong Bài 71: Chia số có năm chữ số cho số có một chữ số, **Kiểm tra phép chia** có '
+                        'công thức/quy tắc là: $\\text{Thương} \\times \\text{Số chia} + \\text{Số dư} = '
+                        '\\text{Số bị chia}$ ($0 \\le r < b$).'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Kết quả của phép chia $24\\,036 : 6$ là:',
@@ -7296,15 +7935,16 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 71: Chia số có năm chữ số cho số có một chữ số** (Chủ đề 14: Nhân, chia '
-                 'trong phạm vi 100 000), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản '
-                 'chất kiến thức của bài?',
-            'options': ['Đọc, viết thành thạo các số có đến ba chữ số trong phạm vi 1 000.',
+            'q': 'Để nắm vững bản chất của **Bài 71: Chia số có năm chữ số cho số có một chữ số**, nhận định '
+                 'nào sau đây là **chính xác**?',
+            'options': ['Đặt tính dọc và chia đúng số có năm chữ số cho số có một chữ số từ phải sang trái.',
                         'Đặt tính dọc và chia đúng số có năm chữ số cho số có một chữ số từ trái sang phải.',
-                        'Phân tích được số có ba chữ số thành tổng các trăm, chục, đơn vị.',
-                        'So sánh và sắp xếp được các số trong phạm vi 1 000 theo thứ tự.'],
+                        'Đảo ngược vế của quy tắc: Đặt tính dọc và chia đúng số có năm chữ số cho số có một '
+                        'chữ số từ trái sang phải.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Đặt tính dọc và chia đúng số có '
+                        'năm chữ số cho số có một chữ số từ trái sang phải.'],
             'answer': 1,
-            'solution': 'Theo yêu cầu cần đạt của Bài 71: Chia số có năm chữ số cho số có một chữ số: Đặt '
+            'solution': 'Theo nội dung cốt lõi của Bài 71: Chia số có năm chữ số cho số có một chữ số: Đặt '
                         'tính dọc và chia đúng số có năm chữ số cho số có một chữ số từ trái sang phải.'},
            {'level': 'hieu',
             'type': 'tf',
@@ -7317,26 +7957,22 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
            {'level': 'hieu',
             'type': 'tf',
             'q': 'Trong **Bài 71: Chia số có năm chữ số cho số có một chữ số**, quy tắc **Nhẩm tròn chục '
-                 'nghìn** được xác định bởi $a0\\,000 : b = (a : b)0\\,000$ và áp dụng trực tiếp vào bài '
-                 'toán: “Đặt tính rồi tính: $24\\,036 : 6$ và $48\\,567 : 7$.”. Đúng hay sai?',
+                 'nghìn** được xác định bởi $a0\\,000 : b = (a : b)0\\,000$ và khi áp dụng cho ví dụ “Đặt '
+                 'tính rồi tính: $24\\,036 : 6$ và $48\\,567 : 7$.” ta có lời giải: - $24\\,036 : 6 = '
+                 '4\\,006$. - $48\\,567 : 7 = 6\\,938 \\text{ (dư } 1\\text{)}$.. Đúng hay sai?',
             'answer': True,
-            'solution': 'Khẳng định **Đúng**. Quy tắc **Nhẩm tròn chục nghìn** ($a0\\,000 : b = (a : '
-                        'b)0\\,000$) là kiến thức cốt lõi của Bài 71: Chia số có năm chữ số cho số có một '
-                        'chữ số. - $24\\,036 : 6 = 4\\,006$. - $48\\,567 : 7 = 6\\,938 \\text{ (dư } '
-                        '1\\text{)}$.'},
+            'solution': 'Khẳng định **Đúng**. Đó chính là quy tắc **Nhẩm tròn chục nghìn** ($a0\\,000 : b = '
+                        '(a : b)0\\,000$) và lời giải ví dụ minh họa của Bài 71: Chia số có năm chữ số cho '
+                        'số có một chữ số.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 71: Chia số có năm chữ số cho số có một chữ số** để giải quyết '
-                 'tình huống sau: Đặt tính rồi tính: $24\\,036 : 6$ và $48\\,567 : 7$. Kết quả và hướng giải '
-                 'nào dưới đây là **đúng**?',
-            'options': ['Ta có $806 = 800 + 6$ (gồm $8$ trăm, $0$ chục, $6$ đơn vị). Vì chữ số hàng trăm $8 '
-                        '> 7$ nên **$806 > 798$**.',
-                        '- $468 + 325$: $8 + 5 = 13$ (viết $3$ nhớ $1$); $6 + 2 + 1 = 9$; $4 + 3 = 7$ '
-                        '$\\rightarrow$ **$793$**. - $750 - 236$: $10 - 6 = 4$ (viết $4$ nhớ $1$); $5 - (3 + '
-                        '1) = 1$...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 71: Chia số có năm chữ số cho số có một chữ số** để '
+                 'giải bài toán sau: Đặt tính rồi tính: $24\\,036 : 6$ và $48\\,567 : 7$. Cách giải và kết '
+                 'quả nào dưới đây là **đúng**?',
+            'options': ['- $24\\,036 : 6 = 4\\,006$. + $48\\,567 : 7 = 6\\,938 \\text{ (dư } 1\\text{)}$.',
+                        '- $24\\,036 : 6 = 4\\,006$. - $48\\,567 : 7 = 6\\,938 \\text{ (dư } 2\\text{)}$.',
                         '- $24\\,036 : 6 = 4\\,006$. - $48\\,567 : 7 = 6\\,938 \\text{ (dư } 1\\text{)}$.',
-                        'Áp dụng quy tắc tìm số trừ: $\\text{Số trừ} = \\text{Số bị trừ} - \\text{Hiệu} = 85 '
-                        '- 39 = 46$. Thử lại: $85 - 46 = 39$ (đúng). Vậy số cần tìm là **$46$**.'],
+                        '- $48\\,036 : 6 = 4\\,006$. - $48\\,567 : 7 = 6\\,938 \\text{ (dư } 1\\text{)}$.'],
             'answer': 2,
             'solution': 'Lời giải chi tiết theo Bài 71: Chia số có năm chữ số cho số có một chữ số: - '
                         '$24\\,036 : 6 = 4\\,006$.\n'
@@ -7371,7 +8007,7 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             '90\\,000$.\n'
             '### 2. Giải toán hai bước tính\n'
             '- Đọc kỹ đề bài để xác định bước $1$ cần tìm tổng hay tìm giá trị một phần.',
-  'formulas': [{'category': 'I. Tính chất phép nhân',
+  'formulas': [{'category': 'Tính chất phép nhân',
                 'items': [{'name': 'Giao hoán', 'formula': '$a \\times b = b \\times a$'},
                           {'name': 'Kết hợp',
                            'formula': '$(a \\times b) \\times c = a \\times (b \\times c)$'}]}],
@@ -7400,25 +8036,27 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 72: Luyện tập chung nhân, chia trong phạm vi 100 000**, '
-                 'công thức hoặc quy tắc nào sau đây biểu diễn đúng **Giao hoán**?',
-            'options': ['$(a \\times b) \\times c = a \\times (b \\times c)$',
-                        '$\\overline{abc} = a00 + b0 + c$',
-                        '$10 \\text{ chục} = 100$ · $10 \\text{ trăm} = 1\\,000$',
+            'q': 'Trong **Bài 72: Luyện tập chung nhân, chia trong phạm vi 100 000**, quy tắc hoặc công thức '
+                 'nào sau đây xác định đúng **Giao hoán**?',
+            'options': ['$a : b = b \\times a$',
+                        'Đảo ngược vế của quy tắc: $a \\times b = b \\times a$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $a \\times b = b \\times a$',
                         '$a \\times b = b \\times a$'],
             'answer': 3,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 72: Luyện tập chung nhân, chia trong phạm vi '
-                        '100 000, **Giao hoán** được xác định bởi: $a \\times b = b \\times a$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 72: Luyện tập chung nhân, chia trong phạm vi 100 '
+                        '000, **Giao hoán** được xác định bởi: $a \\times b = b \\times a$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 72: Luyện tập chung nhân, chia trong phạm vi 100 000**, nội dung/biểu thức $(a '
-                 '\\times b) \\times c = a \\times (b \\times c)$ là quy tắc hoặc công thức của mục nào sau '
-                 'đây?',
-            'options': ['Kết hợp', 'Giao hoán', 'Phân tích số', 'Số tròn trăm, tròn nghìn'],
+            'q': 'Khi học **Bài 72: Luyện tập chung nhân, chia trong phạm vi 100 000**, biểu thức hoặc quy '
+                 'tắc nào dưới đây biểu diễn đúng **Kết hợp**?',
+            'options': ['$(a \\times b) \\times c = a \\times (b \\times c)$',
+                        '$(a : b) \\times c = a \\times (b \\times c)$',
+                        'Đảo ngược vế của quy tắc: $(a \\times b) \\times c = a \\times (b \\times c)$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $(a \\times b) \\times c = a '
+                        '\\times (b \\times c)$'],
             'answer': 0,
-            'solution': 'Trong Bài 72: Luyện tập chung nhân, chia trong phạm vi 100 000, biểu thức/quy tắc '
-                        '$(a \\times b) \\times c = a \\times (b \\times c)$ chính là nội dung của **Kết '
-                        'hợp**.'},
+            'solution': 'Trong Bài 72: Luyện tập chung nhân, chia trong phạm vi 100 000, **Kết hợp** có công '
+                        'thức/quy tắc là: $(a \\times b) \\times c = a \\times (b \\times c)$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Tìm $x$ biết $x : 4 = 12\\,300$:',
@@ -7429,16 +8067,18 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 72: Luyện tập chung nhân, chia trong phạm vi 100 000** (Chủ đề 14: Nhân, '
-                 'chia trong phạm vi 100 000), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và '
-                 'bản chất kiến thức của bài?',
-            'options': ['Đọc, viết thành thạo các số có đến ba chữ số trong phạm vi 1 000.',
-                        'Phân tích được số có ba chữ số thành tổng các trăm, chục, đơn vị.',
+            'q': 'Để nắm vững bản chất của **Bài 72: Luyện tập chung nhân, chia trong phạm vi 100 000**, '
+                 'nhận định nào sau đây là **chính xác**?',
+            'options': ['Nhận biết và vận dụng được tính chất giao hoán, kết hợp của phép nhân để tính nhẩm '
+                        'nhanh. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Nhận biết và vận dụng được tính chất giao hoán, kết hợp '
+                        'của phép nhân để tính nhẩm nhanh.',
                         'Nhận biết và vận dụng được tính chất giao hoán, kết hợp của phép nhân để tính nhẩm '
                         'nhanh.',
-                        'So sánh và sắp xếp được các số trong phạm vi 1 000 theo thứ tự.'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nhận biết và vận dụng được tính '
+                        'chất giao hoán, kết hợp của phép nhân để tính nhẩm nhanh.'],
             'answer': 2,
-            'solution': 'Theo yêu cầu cần đạt của Bài 72: Luyện tập chung nhân, chia trong phạm vi 100 000: '
+            'solution': 'Theo nội dung cốt lõi của Bài 72: Luyện tập chung nhân, chia trong phạm vi 100 000: '
                         'Nhận biết và vận dụng được tính chất giao hoán, kết hợp của phép nhân để tính nhẩm '
                         'nhanh.'},
            {'level': 'hieu',
@@ -7453,25 +8093,24 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
            {'level': 'hieu',
             'type': 'tf',
             'q': 'Trong **Bài 72: Luyện tập chung nhân, chia trong phạm vi 100 000**, quy tắc **Giao hoán** '
-                 'được xác định bởi $a \\times b = b \\times a$ và áp dụng trực tiếp vào bài toán: “Tính giá '
-                 'trị của biểu thức: $15\\,000 + 42\\,000 : 6$.”. Đúng hay sai?',
+                 'được xác định bởi $a \\times b = b \\times a$ và khi áp dụng cho ví dụ “Tính giá trị của '
+                 'biểu thức: $15\\,000 + 42\\,000 : 6$.” ta có lời giải: Thực hiện phép chia trước: '
+                 '$42\\,000 : 6 = 7\\,000$. Cộng sau: $15\\,000 + 7\\,000 = 22\\,000$.. Đúng hay sai?',
             'answer': True,
-            'solution': 'Khẳng định **Đúng**. Quy tắc **Giao hoán** ($a \\times b = b \\times a$) là kiến '
-                        'thức cốt lõi của Bài 72: Luyện tập chung nhân, chia trong phạm vi 100 000. Thực '
-                        'hiện phép chia trước: $42\\,000 : 6 = 7\\,000$. Cộng sau: $15\\,000 + 7\\,000 = '
-                        '22\\,000$.'},
+            'solution': 'Khẳng định **Đúng**. Đó chính là quy tắc **Giao hoán** ($a \\times b = b \\times '
+                        'a$) và lời giải ví dụ minh họa của Bài 72: Luyện tập chung nhân, chia trong phạm vi '
+                        '100 000.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 72: Luyện tập chung nhân, chia trong phạm vi 100 000** để giải '
-                 'quyết tình huống sau: Tính giá trị của biểu thức: $15\\,000 + 42\\,000 : 6$. Kết quả và '
-                 'hướng giải nào dưới đây là **đúng**?',
-            'options': ['Ta có $806 = 800 + 6$ (gồm $8$ trăm, $0$ chục, $6$ đơn vị). Vì chữ số hàng trăm $8 '
-                        '> 7$ nên **$806 > 798$**.',
-                        '- $468 + 325$: $8 + 5 = 13$ (viết $3$ nhớ $1$); $6 + 2 + 1 = 9$; $4 + 3 = 7$ '
-                        '$\\rightarrow$ **$793$**. - $750 - 236$: $10 - 6 = 4$ (viết $4$ nhớ $1$); $5 - (3 + '
-                        '1) = 1$...',
-                        'Áp dụng quy tắc tìm số trừ: $\\text{Số trừ} = \\text{Số bị trừ} - \\text{Hiệu} = 85 '
-                        '- 39 = 46$. Thử lại: $85 - 46 = 39$ (đúng). Vậy số cần tìm là **$46$**.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 72: Luyện tập chung nhân, chia trong phạm vi 100 '
+                 '000** để giải bài toán sau: Tính giá trị của biểu thức: $15\\,000 + 42\\,000 : 6$. Cách '
+                 'giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Thực hiện phép chia trước: $42\\,000 : 6 = 7\\,000$. Cộng sau: $15\\,000 - 7\\,000 '
+                        '= 22\\,000$.',
+                        'Thực hiện phép chia trước: $42\\,000 : 6 = 7\\,000$. Cộng sau: $15\\,000 + 7\\,000 '
+                        '= 22\\,1$.',
+                        'Thực hiện phép chia trước: $84\\,000 : 6 = 7\\,000$. Cộng sau: $15\\,000 + 7\\,000 '
+                        '= 22\\,000$.',
                         'Thực hiện phép chia trước: $42\\,000 : 6 = 7\\,000$. Cộng sau: $15\\,000 + 7\\,000 '
                         '= 22\\,000$.'],
             'answer': 3,
@@ -7508,7 +8147,7 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             '- Đối tượng nào có số lớn nhất (nhiều nhất), bé nhất (ít nhất).\n'
             '- Tính tổng số lượng tất cả các đối tượng hoặc tính xem đối tượng A nhiều hơn đối tượng B bao '
             'nhiêu.',
-  'formulas': [{'category': 'I. Đọc bảng số liệu',
+  'formulas': [{'category': 'Đọc bảng số liệu',
                 'items': [{'name': 'Tổng số liệu',
                            'formula': '$\\text{Tổng} = \\text{Cộng tất cả các số liệu trong bảng}$'},
                           {'name': 'Hơn kém',
@@ -7538,26 +8177,32 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 73: Thu thập, phân loại, ghi chép số liệu. Bảng số '
-                 'liệu**, công thức hoặc quy tắc nào sau đây biểu diễn đúng **Tổng số liệu**?',
+            'q': 'Trong **Bài 73: Thu thập, phân loại, ghi chép số liệu. Bảng số liệu**, quy tắc hoặc công '
+                 'thức nào sau đây xác định đúng **Tổng số liệu**?',
             'options': ['$\\text{Tổng} = \\text{Cộng tất cả các số liệu trong bảng}$',
-                        '$\\text{Chênh lệch} = \\text{Số liệu lớn} - \\text{Số liệu bé}$',
-                        '$\\overline{abc} = a00 + b0 + c$',
-                        '$10 \\text{ chục} = 100$ · $10 \\text{ trăm} = 1\\,000$'],
+                        '$\\text{Tổng} = \\text{Cộng tất cả các số liệu trong bảng}$ (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: $\\text{Tổng} = \\text{Cộng tất cả các số liệu trong '
+                        'bảng}$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\text{Tổng} = \\text{Cộng tất '
+                        'cả các số liệu trong bảng}$'],
             'answer': 0,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 73: Thu thập, phân loại, ghi chép số liệu. '
-                        'Bảng số liệu, **Tổng số liệu** được xác định bởi: $\\text{Tổng} = \\text{Cộng tất '
-                        'cả các số liệu trong bảng}$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 73: Thu thập, phân loại, ghi chép số liệu. Bảng số '
+                        'liệu, **Tổng số liệu** được xác định bởi: $\\text{Tổng} = \\text{Cộng tất cả các số '
+                        'liệu trong bảng}$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 73: Thu thập, phân loại, ghi chép số liệu. Bảng số liệu**, nội dung/biểu thức '
-                 '$\\text{Chênh lệch} = \\text{Số liệu lớn} - \\text{Số liệu bé}$ là quy tắc hoặc công thức '
-                 'của mục nào sau đây?',
-            'options': ['Tổng số liệu', 'Hơn kém', 'Phân tích số', 'Số tròn trăm, tròn nghìn'],
+            'q': 'Khi học **Bài 73: Thu thập, phân loại, ghi chép số liệu. Bảng số liệu**, biểu thức hoặc '
+                 'quy tắc nào dưới đây biểu diễn đúng **Hơn kém**?',
+            'options': ['$\\text{Chênh lệch} = \\text{Số liệu lớn} + \\text{Số liệu bé}$',
+                        '$\\text{Chênh lệch} = \\text{Số liệu lớn} - \\text{Số liệu bé}$',
+                        'Đảo ngược vế của quy tắc: $\\text{Chênh lệch} = \\text{Số liệu lớn} - \\text{Số '
+                        'liệu bé}$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\text{Chênh lệch} = \\text{Số '
+                        'liệu lớn} - \\text{Số liệu bé}$'],
             'answer': 1,
-            'solution': 'Trong Bài 73: Thu thập, phân loại, ghi chép số liệu. Bảng số liệu, biểu thức/quy '
-                        'tắc $\\text{Chênh lệch} = \\text{Số liệu lớn} - \\text{Số liệu bé}$ chính là nội '
-                        'dung của **Hơn kém**.'},
+            'solution': 'Trong Bài 73: Thu thập, phân loại, ghi chép số liệu. Bảng số liệu, **Hơn kém** có '
+                        'công thức/quy tắc là: $\\text{Chênh lệch} = \\text{Số liệu lớn} - \\text{Số liệu '
+                        'bé}$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Theo bảng trên (Táo: $12$, Cam: $9$, Xoài: $15$), số bạn thích Xoài nhiều hơn số bạn thích '
@@ -7569,15 +8214,17 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 73: Thu thập, phân loại, ghi chép số liệu. Bảng số liệu** (Chủ đề 15: Làm '
-                 'quen với yếu tố thống kê, xác suất), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần '
-                 'đạt và bản chất kiến thức của bài?',
-            'options': ['Đọc, viết thành thạo các số có đến ba chữ số trong phạm vi 1 000.',
-                        'Phân tích được số có ba chữ số thành tổng các trăm, chục, đơn vị.',
-                        'So sánh và sắp xếp được các số trong phạm vi 1 000 theo thứ tự.',
+            'q': 'Để nắm vững bản chất của **Bài 73: Thu thập, phân loại, ghi chép số liệu. Bảng số liệu**, '
+                 'nhận định nào sau đây là **chính xác**?',
+            'options': ['Biết cách phân loại và kiểm đếm số liệu theo các tiêu chí cho trước. (với dấu ngược '
+                        'lại)',
+                        'Đảo ngược vế của quy tắc: Biết cách phân loại và kiểm đếm số liệu theo các tiêu chí '
+                        'cho trước.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Biết cách phân loại và kiểm đếm '
+                        'số liệu theo các tiêu chí cho trước.',
                         'Biết cách phân loại và kiểm đếm số liệu theo các tiêu chí cho trước.'],
             'answer': 3,
-            'solution': 'Theo yêu cầu cần đạt của Bài 73: Thu thập, phân loại, ghi chép số liệu. Bảng số '
+            'solution': 'Theo nội dung cốt lõi của Bài 73: Thu thập, phân loại, ghi chép số liệu. Bảng số '
                         'liệu: Biết cách phân loại và kiểm đếm số liệu theo các tiêu chí cho trước.'},
            {'level': 'hieu',
             'type': 'tf',
@@ -7590,30 +8237,29 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
            {'level': 'hieu',
             'type': 'tf',
             'q': 'Trong **Bài 73: Thu thập, phân loại, ghi chép số liệu. Bảng số liệu**, quy tắc **Tổng số '
-                 'liệu** được xác định bởi $\\text{Tổng} = \\text{Cộng tất cả các số liệu trong bảng}$ và áp '
-                 'dụng trực tiếp vào bài toán: “Bảng số cây trồng của khối 3: Lớp 3A trồng $25$ cây, lớp 3B '
-                 'trồng $30$ cây, lớp 3C trồng $28$ cây. Hỏi lớp nào trồng nhiều cây nhất và cả ba...”. Đúng '
-                 'hay sai?',
+                 'liệu** được xác định bởi $\\text{Tổng} = \\text{Cộng tất cả các số liệu trong bảng}$ và '
+                 'khi áp dụng cho ví dụ “Bảng số cây trồng của khối 3: Lớp 3A trồng $25$ cây, lớp 3B trồng '
+                 '$30$ cây, lớp 3C trồng $28$ cây. Hỏi lớp nào trồng nhiều cây nhất và...” ta có lời giải: - '
+                 'Vì $30 > 28 > 25$ nên **lớp 3B** trồng nhiều cây nhất. - Cả ba lớp trồng được: $25 + 30 + '
+                 '28 = 83\\text{ (cây)}$.. Đúng hay sai?',
             'answer': True,
-            'solution': 'Khẳng định **Đúng**. Quy tắc **Tổng số liệu** ($\\text{Tổng} = \\text{Cộng tất cả '
-                        'các số liệu trong bảng}$) là kiến thức cốt lõi của Bài 73: Thu thập, phân loại, ghi '
-                        'chép số liệu. Bảng số liệu. - Vì $30 > 28 > 25$ nên **lớp 3B** trồng nhiều cây '
-                        'nhất. - Cả ba lớp trồng được: $25 + 30 + 28 = 83\\text{ (cây)}$.'},
+            'solution': 'Khẳng định **Đúng**. Đó chính là quy tắc **Tổng số liệu** ($\\text{Tổng} = '
+                        '\\text{Cộng tất cả các số liệu trong bảng}$) và lời giải ví dụ minh họa của Bài 73: '
+                        'Thu thập, phân loại, ghi chép số liệu. Bảng số liệu.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 73: Thu thập, phân loại, ghi chép số liệu. Bảng số liệu** để giải '
-                 'quyết tình huống sau: Bảng số cây trồng của khối 3: Lớp 3A trồng $25$ cây, lớp 3B trồng '
-                 '$30$ cây, lớp 3C trồng $28$ cây. Hỏi lớp nào trồng nhiều cây nhất và cả ba lớp trồng được '
-                 'bao nhiêu cây? Kết quả và hướng giải nào dưới đây là **đúng**?',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 73: Thu thập, phân loại, ghi chép số liệu. Bảng số '
+                 'liệu** để giải bài toán sau: Bảng số cây trồng của khối 3: Lớp 3A trồng $25$ cây, lớp 3B '
+                 'trồng $30$ cây, lớp 3C trồng $28$ cây. Hỏi lớp nào trồng nhiều cây nhất và cả ba lớp trồng '
+                 'được bao nhiêu cây? Cách giải và kết quả nào dưới đây là **đúng**?',
             'options': ['- Vì $30 > 28 > 25$ nên **lớp 3B** trồng nhiều cây nhất. - Cả ba lớp trồng được: '
                         '$25 + 30 + 28 = 83\\text{ (cây)}$.',
-                        'Ta có $806 = 800 + 6$ (gồm $8$ trăm, $0$ chục, $6$ đơn vị). Vì chữ số hàng trăm $8 '
-                        '> 7$ nên **$806 > 798$**.',
-                        '- $468 + 325$: $8 + 5 = 13$ (viết $3$ nhớ $1$); $6 + 2 + 1 = 9$; $4 + 3 = 7$ '
-                        '$\\rightarrow$ **$793$**. - $750 - 236$: $10 - 6 = 4$ (viết $4$ nhớ $1$); $5 - (3 + '
-                        '1) = 1$...',
-                        'Áp dụng quy tắc tìm số trừ: $\\text{Số trừ} = \\text{Số bị trừ} - \\text{Hiệu} = 85 '
-                        '- 39 = 46$. Thử lại: $85 - 46 = 39$ (đúng). Vậy số cần tìm là **$46$**.'],
+                        '- Vì $30 > 28 > 25$ nên **lớp 3B** trồng nhiều cây nhất. - Cả ba lớp trồng được: '
+                        '$25 - 30 + 28 = 83\\text{ (cây)}$.',
+                        '- Vì $30 > 28 > 25$ nên **lớp 3B** trồng nhiều cây nhất. - Cả ba lớp trồng được: '
+                        '$25 + 30 + 28 = 82\\text{ (cây)}$.',
+                        '- Vì $60 > 28 > 25$ nên **lớp 3B** trồng nhiều cây nhất. - Cả ba lớp trồng được: '
+                        '$25 + 30 + 28 = 83\\text{ (cây)}$.'],
             'answer': 0,
             'solution': 'Lời giải chi tiết theo Bài 73: Thu thập, phân loại, ghi chép số liệu. Bảng số liệu: '
                         '- Vì $30 > 28 > 25$ nên **lớp 3B** trồng nhiều cây nhất.\n'
@@ -7650,7 +8296,7 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             '### 2. Sự kiện chắc chắn, có thể, không thể\n'
             '- Nếu trong hộp chỉ toàn bóng đỏ thì lấy $1$ quả **chắc chắn** là bóng đỏ, **không thể** là '
             'bóng xanh.',
-  'formulas': [{'category': 'I. Các mô hình xác suất cơ bản',
+  'formulas': [{'category': 'Các mô hình xác suất cơ bản',
                 'items': [{'name': 'Tung đồng xu', 'formula': '$2$ khả năng: mặt sấp hoặc mặt ngửa'},
                           {'name': 'Gieo xúc xắc', 'formula': '$6$ khả năng: mặt $1, 2, 3, 4, 5, 6$ chấm'}]}],
   'example': 'Trong hộp có $4$ tấm thẻ ghi các số $1, 2, 3, 4$. Rút ngẫu nhiên $1$ tấm thẻ. Liệt kê các khả '
@@ -7677,23 +8323,26 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 74: Khả năng xảy ra của một sự kiện**, công thức hoặc '
-                 'quy tắc nào sau đây biểu diễn đúng **Tung đồng xu**?',
-            'options': ['$6$ khả năng: mặt $1, 2, 3, 4, 5, 6$ chấm',
+            'q': 'Trong **Bài 74: Khả năng xảy ra của một sự kiện**, quy tắc hoặc công thức nào sau đây xác '
+                 'định đúng **Tung đồng xu**?',
+            'options': ['$3$ khả năng: mặt sấp hoặc mặt ngửa',
                         '$2$ khả năng: mặt sấp hoặc mặt ngửa',
-                        '$\\overline{abc} = a00 + b0 + c$',
-                        '$10 \\text{ chục} = 100$ · $10 \\text{ trăm} = 1\\,000$'],
+                        '$1$ khả năng: mặt sấp hoặc mặt ngửa',
+                        '$4$ khả năng: mặt sấp hoặc mặt ngửa'],
             'answer': 1,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 74: Khả năng xảy ra của một sự kiện, **Tung '
-                        'đồng xu** được xác định bởi: $2$ khả năng: mặt sấp hoặc mặt ngửa.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 74: Khả năng xảy ra của một sự kiện, **Tung đồng '
+                        'xu** được xác định bởi: $2$ khả năng: mặt sấp hoặc mặt ngửa.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 74: Khả năng xảy ra của một sự kiện**, nội dung/biểu thức $6$ khả năng: mặt '
-                 '$1, 2, 3, 4, 5, 6$ chấm là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Tung đồng xu', 'Phân tích số', 'Gieo xúc xắc', 'Số tròn trăm, tròn nghìn'],
+            'q': 'Khi học **Bài 74: Khả năng xảy ra của một sự kiện**, biểu thức hoặc quy tắc nào dưới đây '
+                 'biểu diễn đúng **Gieo xúc xắc**?',
+            'options': ['$7$ khả năng: mặt $1, 2, 3, 4, 5, 6$ chấm',
+                        '$6$ khả năng: mặt $1, 2, 3, 4, 5, 5$ chấm',
+                        '$6$ khả năng: mặt $1, 2, 3, 4, 5, 6$ chấm',
+                        '$12$ khả năng: mặt $1, 2, 3, 4, 5, 6$ chấm'],
             'answer': 2,
-            'solution': 'Trong Bài 74: Khả năng xảy ra của một sự kiện, biểu thức/quy tắc $6$ khả năng: mặt '
-                        '$1, 2, 3, 4, 5, 6$ chấm chính là nội dung của **Gieo xúc xắc**.'},
+            'solution': 'Trong Bài 74: Khả năng xảy ra của một sự kiện, **Gieo xúc xắc** có công thức/quy '
+                        'tắc là: $6$ khả năng: mặt $1, 2, 3, 4, 5, 6$ chấm.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Trong hộp có $3$ quả bóng xanh và $2$ quả bóng đỏ. Không nhìn vào hộp, lấy ra $1$ quả '
@@ -7708,16 +8357,16 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 74: Khả năng xảy ra của một sự kiện** (Chủ đề 15: Làm quen với yếu tố thống '
-                 'kê, xác suất), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến '
-                 'thức của bài?',
+            'q': 'Để nắm vững bản chất của **Bài 74: Khả năng xảy ra của một sự kiện**, nhận định nào sau '
+                 'đây là **chính xác**?',
             'options': ['Nhận biết và nêu được các khả năng có thể xảy ra khi thực hiện $1$ lần thí nghiệm '
                         'đơn giản (tung đồng xu, gieo xúc xắc, rút thẻ).',
-                        'Đọc, viết thành thạo các số có đến ba chữ số trong phạm vi 1 000.',
-                        'Phân tích được số có ba chữ số thành tổng các trăm, chục, đơn vị.',
-                        'So sánh và sắp xếp được các số trong phạm vi 1 000 theo thứ tự.'],
+                        'Nhận biết và nêu được các khả năng có thể xảy ra khi thực hiện $2$ lần thí nghiệm '
+                        'đơn giản (tung đồng xu, gieo xúc xắc, rút thẻ).',
+                        'Trường hợp sai quy tắc (sai lệch 1 đơn vị so với công thức trong bài)',
+                        'Trường hợp sai quy tắc (sai lệch 2 đơn vị so với công thức trong bài)'],
             'answer': 0,
-            'solution': 'Theo yêu cầu cần đạt của Bài 74: Khả năng xảy ra của một sự kiện: Nhận biết và nêu '
+            'solution': 'Theo nội dung cốt lõi của Bài 74: Khả năng xảy ra của một sự kiện: Nhận biết và nêu '
                         'được các khả năng có thể xảy ra khi thực hiện $1$ lần thí nghiệm đơn giản (tung '
                         'đồng xu, gieo xúc xắc, rút thẻ).'},
            {'level': 'hieu',
@@ -7731,28 +8380,27 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
            {'level': 'hieu',
             'type': 'tf',
             'q': 'Trong **Bài 74: Khả năng xảy ra của một sự kiện**, quy tắc **Tung đồng xu** được xác định '
-                 'bởi $2$ khả năng: mặt sấp hoặc mặt ngửa và áp dụng trực tiếp vào bài toán: “Trong hộp có '
-                 '$4$ tấm thẻ ghi các số $1, 2, 3, 4$. Rút ngẫu nhiên $1$ tấm thẻ. Liệt kê các khả năng xảy '
-                 'ra.”. Đúng hay sai?',
+                 'bởi $2$ khả năng: mặt sấp hoặc mặt ngửa và khi áp dụng cho ví dụ “Trong hộp có $4$ tấm thẻ '
+                 'ghi các số $1, 2, 3, 4$. Rút ngẫu nhiên $1$ tấm thẻ. Liệt kê các khả năng xảy ra.” ta có '
+                 'lời giải: Có **$4$ khả năng** xảy ra là rút được thẻ ghi số $1$, thẻ ghi số $2$, thẻ ghi '
+                 'số $3$ hoặc thẻ ghi số $4$.. Đúng hay sai?',
             'answer': True,
-            'solution': 'Khẳng định **Đúng**. Quy tắc **Tung đồng xu** ($2$ khả năng: mặt sấp hoặc mặt ngửa) '
-                        'là kiến thức cốt lõi của Bài 74: Khả năng xảy ra của một sự kiện. Có **$4$ khả '
-                        'năng** xảy ra là rút được thẻ ghi số $1$, thẻ ghi số $2$, thẻ ghi số $3$ hoặc thẻ '
-                        'ghi số $4$.'},
+            'solution': 'Khẳng định **Đúng**. Đó chính là quy tắc **Tung đồng xu** ($2$ khả năng: mặt sấp '
+                        'hoặc mặt ngửa) và lời giải ví dụ minh họa của Bài 74: Khả năng xảy ra của một sự '
+                        'kiện.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 74: Khả năng xảy ra của một sự kiện** để giải quyết tình huống '
-                 'sau: Trong hộp có $4$ tấm thẻ ghi các số $1, 2, 3, 4$. Rút ngẫu nhiên $1$ tấm thẻ. Liệt kê '
-                 'các khả năng xảy ra. Kết quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Ta có $806 = 800 + 6$ (gồm $8$ trăm, $0$ chục, $6$ đơn vị). Vì chữ số hàng trăm $8 '
-                        '> 7$ nên **$806 > 798$**.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 74: Khả năng xảy ra của một sự kiện** để giải bài '
+                 'toán sau: Trong hộp có $4$ tấm thẻ ghi các số $1, 2, 3, 4$. Rút ngẫu nhiên $1$ tấm thẻ. '
+                 'Liệt kê các khả năng xảy ra. Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Có **$5$ khả năng** xảy ra là rút được thẻ ghi số $1$, thẻ ghi số $2$, thẻ ghi số '
+                        '$3$ hoặc thẻ ghi số $4$.',
                         'Có **$4$ khả năng** xảy ra là rút được thẻ ghi số $1$, thẻ ghi số $2$, thẻ ghi số '
                         '$3$ hoặc thẻ ghi số $4$.',
-                        '- $468 + 325$: $8 + 5 = 13$ (viết $3$ nhớ $1$); $6 + 2 + 1 = 9$; $4 + 3 = 7$ '
-                        '$\\rightarrow$ **$793$**. - $750 - 236$: $10 - 6 = 4$ (viết $4$ nhớ $1$); $5 - (3 + '
-                        '1) = 1$...',
-                        'Áp dụng quy tắc tìm số trừ: $\\text{Số trừ} = \\text{Số bị trừ} - \\text{Hiệu} = 85 '
-                        '- 39 = 46$. Thử lại: $85 - 46 = 39$ (đúng). Vậy số cần tìm là **$46$**.'],
+                        'Có **$4$ khả năng** xảy ra là rút được thẻ ghi số $1$, thẻ ghi số $2$, thẻ ghi số '
+                        '$3$ hoặc thẻ ghi số $3$.',
+                        'Có **$8$ khả năng** xảy ra là rút được thẻ ghi số $1$, thẻ ghi số $2$, thẻ ghi số '
+                        '$3$ hoặc thẻ ghi số $4$.'],
             'answer': 1,
             'solution': 'Lời giải chi tiết theo Bài 74: Khả năng xảy ra của một sự kiện: Có **$4$ khả năng** '
                         'xảy ra là rút được thẻ ghi số $1$, thẻ ghi số $2$, thẻ ghi số $3$ hoặc thẻ ghi số '
@@ -7784,7 +8432,7 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'bó $5$, giúp nhân nhẩm theo bảng nhân $5$ rất nhanh.\n'
             '### 2. Trả lời câu hỏi từ bảng số liệu\n'
             '- Đọc kỹ đơn vị của số liệu (quyển, cây, học sinh, ki-lô-gam...) trước khi tính toán.',
-  'formulas': [{'category': 'I. Quy trình thống kê',
+  'formulas': [{'category': 'Quy trình thống kê',
                 'items': [{'name': '5 bước',
                            'formula': 'Thu thập $\\rightarrow$ Phân loại $\\rightarrow$ Kiểm đếm '
                                       '$\\rightarrow$ Lập bảng $\\rightarrow$ Nhận xét'}]}],
@@ -7813,27 +8461,38 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 75: Thực hành thu thập, phân loại, đọc bảng số liệu**, '
-                 'công thức hoặc quy tắc nào sau đây biểu diễn đúng **5 bước**?',
-            'options': ['$\\overline{abc} = a00 + b0 + c$',
-                        '$10 \\text{ chục} = 100$ · $10 \\text{ trăm} = 1\\,000$',
+            'q': 'Trong **Bài 75: Thực hành thu thập, phân loại, đọc bảng số liệu**, quy tắc hoặc công thức '
+                 'nào sau đây xác định đúng **5 bước**?',
+            'options': ['Thu thập $\\rightarrow$ Phân loại $\\rightarrow$ Kiểm đếm $\\rightarrow$ Lập bảng '
+                        '$\\rightarrow$ Nhận xét (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Thu thập $\\rightarrow$ Phân loại $\\rightarrow$ Kiểm đếm '
+                        '$\\rightarrow$ Lập bảng $\\rightarrow$ Nhận xét',
                         'Thu thập $\\rightarrow$ Phân loại $\\rightarrow$ Kiểm đếm $\\rightarrow$ Lập bảng '
                         '$\\rightarrow$ Nhận xét',
-                        'So sánh hàng trăm $\\rightarrow$ hàng chục $\\rightarrow$ hàng đơn vị'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Thu thập $\\rightarrow$ Phân '
+                        'loại $\\rightarrow$ Kiểm đếm $\\rightarrow$ Lập bảng $\\rightarrow$ Nhận xét'],
             'answer': 2,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 75: Thực hành thu thập, phân loại, đọc bảng '
-                        'số liệu, **5 bước** được xác định bởi: Thu thập $\\rightarrow$ Phân loại '
+            'solution': 'Theo kiến thức trọng tâm của Bài 75: Thực hành thu thập, phân loại, đọc bảng số '
+                        'liệu, **5 bước** được xác định bởi: Thu thập $\\rightarrow$ Phân loại '
                         '$\\rightarrow$ Kiểm đếm $\\rightarrow$ Lập bảng $\\rightarrow$ Nhận xét.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 75: Thực hành thu thập, phân loại, đọc bảng số liệu**, nội dung/biểu thức Thu '
-                 'thập $\\rightarrow$ Phân loại $\\rightarrow$ Kiểm đếm $\\rightarrow$ Lập bảng '
-                 '$\\rightarrow$ Nhận xét là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Phân tích số', 'Số tròn trăm, tròn nghìn', 'Cùng số chữ số', '5 bước'],
+            'q': 'Theo định nghĩa trong **Bài 75: Thực hành thu thập, phân loại, đọc bảng số liệu**, khẳng '
+                 'định nào dưới đây là **đúng**?',
+            'options': ['Quy trình thực hành thống kê: **Thu thập dữ liệu $\\rightarrow$ Phân loại theo tiêu '
+                        'chí $\\rightarrow$ Kiểm đếm và ghi chép $\\rightarrow$... (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Quy trình thực hành thống kê: **Thu thập dữ liệu '
+                        '$\\rightarrow$ Phân loại theo tiêu chí $\\rightarrow$ Kiểm đếm và ghi chép '
+                        '$\\rightarrow$...',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Quy trình thực hành thống kê: '
+                        '**Thu thập dữ liệu $\\rightarrow$ Phân loại theo tiêu chí $\\rightarrow$ Kiểm đếm '
+                        'và ghi chép $\\rightarrow$...',
+                        'Quy trình thực hành thống kê: **Thu thập dữ liệu $\\rightarrow$ Phân loại theo tiêu '
+                        'chí $\\rightarrow$ Kiểm đếm và ghi chép $\\rightarrow$...'],
             'answer': 3,
-            'solution': 'Trong Bài 75: Thực hành thu thập, phân loại, đọc bảng số liệu, biểu thức/quy tắc '
-                        'Thu thập $\\rightarrow$ Phân loại $\\rightarrow$ Kiểm đếm $\\rightarrow$ Lập bảng '
-                        '$\\rightarrow$ Nhận xét chính là nội dung của **5 bước**.'},
+            'solution': 'Theo định nghĩa của Bài 75: Thực hành thu thập, phân loại, đọc bảng số liệu: Quy '
+                        'trình thực hành thống kê: **Thu thập dữ liệu $\\rightarrow$ Phân loại theo tiêu chí '
+                        '$\\rightarrow$ Kiểm đếm và ghi chép $\\rightarrow$...'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Theo bảng trên (Gà: $45$ con, Vịt: $30$ con, Ngỗng: $15$ con), số con Gà gấp mấy lần số '
@@ -7845,15 +8504,17 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 75: Thực hành thu thập, phân loại, đọc bảng số liệu** (Chủ đề 15: Làm quen '
-                 'với yếu tố thống kê, xác suất), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt '
-                 'và bản chất kiến thức của bài?',
-            'options': ['Đọc, viết thành thạo các số có đến ba chữ số trong phạm vi 1 000.',
+            'q': 'Để nắm vững bản chất của **Bài 75: Thực hành thu thập, phân loại, đọc bảng số liệu**, nhận '
+                 'định nào sau đây là **chính xác**?',
+            'options': ['Chuyển được dữ liệu từ hình vẽ hoặc vạch kiểm đếm sang bảng số liệu. (với dấu ngược '
+                        'lại)',
                         'Chuyển được dữ liệu từ hình vẽ hoặc vạch kiểm đếm sang bảng số liệu.',
-                        'Phân tích được số có ba chữ số thành tổng các trăm, chục, đơn vị.',
-                        'So sánh và sắp xếp được các số trong phạm vi 1 000 theo thứ tự.'],
+                        'Đảo ngược vế của quy tắc: Chuyển được dữ liệu từ hình vẽ hoặc vạch kiểm đếm sang '
+                        'bảng số liệu.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Chuyển được dữ liệu từ hình vẽ '
+                        'hoặc vạch kiểm đếm sang bảng số liệu.'],
             'answer': 1,
-            'solution': 'Theo yêu cầu cần đạt của Bài 75: Thực hành thu thập, phân loại, đọc bảng số liệu: '
+            'solution': 'Theo nội dung cốt lõi của Bài 75: Thực hành thu thập, phân loại, đọc bảng số liệu: '
                         'Chuyển được dữ liệu từ hình vẽ hoặc vạch kiểm đếm sang bảng số liệu.'},
            {'level': 'hieu',
             'type': 'tf',
@@ -7867,30 +8528,29 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'type': 'tf',
             'q': 'Trong **Bài 75: Thực hành thu thập, phân loại, đọc bảng số liệu**, quy tắc **5 bước** được '
                  'xác định bởi Thu thập $\\rightarrow$ Phân loại $\\rightarrow$ Kiểm đếm $\\rightarrow$ Lập '
-                 'bảng $\\rightarrow$ Nhận xét và áp dụng trực tiếp vào bài toán: “Khi kiểm đếm số quyển '
-                 'truyện của tổ, bạn An ghi được $3$ cụm $5$ vạch và thêm $2$ vạch rời. Hỏi tổ của An có bao '
-                 'nhiêu quyển truyện?”. Đúng hay sai?',
+                 'bảng $\\rightarrow$ Nhận xét và khi áp dụng cho ví dụ “Khi kiểm đếm số quyển truyện của '
+                 'tổ, bạn An ghi được $3$ cụm $5$ vạch và thêm $2$ vạch rời. Hỏi tổ của An có bao nhiêu '
+                 'quyển truyện?” ta có lời giải: Số quyển truyện của tổ là: $5 \\times 3 + 2 = 17\\text{ '
+                 '(quyển)}$. Đáp số: **$17\\text{ quyển}$**.. Đúng hay sai?',
             'answer': True,
-            'solution': 'Khẳng định **Đúng**. Quy tắc **5 bước** (Thu thập $\\rightarrow$ Phân loại '
-                        '$\\rightarrow$ Kiểm đếm $\\rightarrow$ Lập bảng $\\rightarrow$ Nhận xét) là kiến '
-                        'thức cốt lõi của Bài 75: Thực hành thu thập, phân loại, đọc bảng số liệu. Số quyển '
-                        'truyện của tổ là: $5 \\times 3 + 2 = 17\\text{ (quyển)}$. Đáp số: **$17\\text{ '
-                        'quyển}$**.'},
+            'solution': 'Khẳng định **Đúng**. Đó chính là quy tắc **5 bước** (Thu thập $\\rightarrow$ Phân '
+                        'loại $\\rightarrow$ Kiểm đếm $\\rightarrow$ Lập bảng $\\rightarrow$ Nhận xét) và '
+                        'lời giải ví dụ minh họa của Bài 75: Thực hành thu thập, phân loại, đọc bảng số '
+                        'liệu.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 75: Thực hành thu thập, phân loại, đọc bảng số liệu** để giải '
-                 'quyết tình huống sau: Khi kiểm đếm số quyển truyện của tổ, bạn An ghi được $3$ cụm $5$ '
-                 'vạch và thêm $2$ vạch rời. Hỏi tổ của An có bao nhiêu quyển truyện? Kết quả và hướng giải '
-                 'nào dưới đây là **đúng**?',
-            'options': ['Ta có $806 = 800 + 6$ (gồm $8$ trăm, $0$ chục, $6$ đơn vị). Vì chữ số hàng trăm $8 '
-                        '> 7$ nên **$806 > 798$**.',
-                        '- $468 + 325$: $8 + 5 = 13$ (viết $3$ nhớ $1$); $6 + 2 + 1 = 9$; $4 + 3 = 7$ '
-                        '$\\rightarrow$ **$793$**. - $750 - 236$: $10 - 6 = 4$ (viết $4$ nhớ $1$); $5 - (3 + '
-                        '1) = 1$...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 75: Thực hành thu thập, phân loại, đọc bảng số '
+                 'liệu** để giải bài toán sau: Khi kiểm đếm số quyển truyện của tổ, bạn An ghi được $3$ cụm '
+                 '$5$ vạch và thêm $2$ vạch rời. Hỏi tổ của An có bao nhiêu quyển truyện? Cách giải và kết '
+                 'quả nào dưới đây là **đúng**?',
+            'options': ['Số quyển truyện của tổ là: $5 \\times 3 - 2 = 17\\text{ (quyển)}$. Đáp số: '
+                        '**$17\\text{ quyển}$**.',
+                        'Số quyển truyện của tổ là: $5 \\times 3 + 2 = 17\\text{ (quyển)}$. Đáp số: '
+                        '**$16\\text{ quyển}$**.',
                         'Số quyển truyện của tổ là: $5 \\times 3 + 2 = 17\\text{ (quyển)}$. Đáp số: '
                         '**$17\\text{ quyển}$**.',
-                        'Áp dụng quy tắc tìm số trừ: $\\text{Số trừ} = \\text{Số bị trừ} - \\text{Hiệu} = 85 '
-                        '- 39 = 46$. Thử lại: $85 - 46 = 39$ (đúng). Vậy số cần tìm là **$46$**.'],
+                        'Số quyển truyện của tổ là: $10 \\times 3 + 2 = 17\\text{ (quyển)}$. Đáp số: '
+                        '**$17\\text{ quyển}$**.'],
             'answer': 2,
             'solution': 'Lời giải chi tiết theo Bài 75: Thực hành thu thập, phân loại, đọc bảng số liệu: Số '
                         'quyển truyện của tổ là: $5 \\times 3 + 2 = 17\\text{ (quyển)}$.\n'
@@ -7925,7 +8585,7 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             '### 2. Làm tròn số và chữ số La Mã\n'
             '- Làm tròn $47\\,500$ đến hàng chục nghìn được $50\\,000$.\n'
             '- Chữ số La Mã: $\\text{XVII} = 17$, $\\text{XIX} = 19$.',
-  'formulas': [{'category': 'I. Tổng hợp về số đến 100 000',
+  'formulas': [{'category': 'Tổng hợp về số đến 100 000',
                 'items': [{'name': 'Làm tròn',
                            'formula': 'Chữ số bên phải $< 5 \\rightarrow$ xuống · $\\ge 5 \\rightarrow$ lên'},
                           {'name': 'Số La Mã',
@@ -7953,26 +8613,28 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 76: Ôn tập các số trong phạm vi 10 000, 100 000**, công '
-                 'thức hoặc quy tắc nào sau đây biểu diễn đúng **Làm tròn**?',
-            'options': ['$\\text{IV} = 4, \\text{IX} = 9, \\text{XIV} = 14, \\text{XIX} = 19$',
-                        '$\\overline{abc} = a00 + b0 + c$',
-                        '$10 \\text{ chục} = 100$ · $10 \\text{ trăm} = 1\\,000$',
+            'q': 'Trong **Bài 76: Ôn tập các số trong phạm vi 10 000, 100 000**, quy tắc hoặc công thức nào '
+                 'sau đây xác định đúng **Làm tròn**?',
+            'options': ['Chữ số bên phải $< 5 \\rightarrow$ xuống · $\\le 5 \\rightarrow$ lên',
+                        'Chữ số bên phải $< 5 \\rightarrow$ xuống · $\\ge 4 \\rightarrow$ lên',
+                        'Chữ số bên phải $< 10 \\rightarrow$ xuống · $\\ge 5 \\rightarrow$ lên',
                         'Chữ số bên phải $< 5 \\rightarrow$ xuống · $\\ge 5 \\rightarrow$ lên'],
             'answer': 3,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 76: Ôn tập các số trong phạm vi 10 000, 100 '
-                        '000, **Làm tròn** được xác định bởi: Chữ số bên phải $< 5 \\rightarrow$ xuống · '
-                        '$\\ge 5 \\rightarrow$ lên.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 76: Ôn tập các số trong phạm vi 10 000, 100 000, '
+                        '**Làm tròn** được xác định bởi: Chữ số bên phải $< 5 \\rightarrow$ xuống · $\\ge 5 '
+                        '\\rightarrow$ lên.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 76: Ôn tập các số trong phạm vi 10 000, 100 000**, nội dung/biểu thức '
-                 '$\\text{IV} = 4, \\text{IX} = 9, \\text{XIV} = 14, \\text{XIX} = 19$ là quy tắc hoặc công '
-                 'thức của mục nào sau đây?',
-            'options': ['Số La Mã', 'Làm tròn', 'Phân tích số', 'Số tròn trăm, tròn nghìn'],
+            'q': 'Khi học **Bài 76: Ôn tập các số trong phạm vi 10 000, 100 000**, biểu thức hoặc quy tắc '
+                 'nào dưới đây biểu diễn đúng **Số La Mã**?',
+            'options': ['$\\text{IV} = 4, \\text{IX} = 9, \\text{XIV} = 14, \\text{XIX} = 19$',
+                        '$\\text{IV} = 5, \\text{IX} = 9, \\text{XIV} = 14, \\text{XIX} = 19$',
+                        '$\\text{IV} = 4, \\text{IX} = 9, \\text{XIV} = 14, \\text{XIX} = 18$',
+                        '$\\text{IV} = 8, \\text{IX} = 9, \\text{XIV} = 14, \\text{XIX} = 19$'],
             'answer': 0,
-            'solution': 'Trong Bài 76: Ôn tập các số trong phạm vi 10 000, 100 000, biểu thức/quy tắc '
-                        '$\\text{IV} = 4, \\text{IX} = 9, \\text{XIV} = 14, \\text{XIX} = 19$ chính là nội '
-                        'dung của **Số La Mã**.'},
+            'solution': 'Trong Bài 76: Ôn tập các số trong phạm vi 10 000, 100 000, **Số La Mã** có công '
+                        'thức/quy tắc là: $\\text{IV} = 4, \\text{IX} = 9, \\text{XIV} = 14, \\text{XIX} = '
+                        '19$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Số gồm $7$ chục nghìn, $4$ trăm và $5$ đơn vị được viết là:',
@@ -7983,16 +8645,18 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 76: Ôn tập các số trong phạm vi 10 000, 100 000** (Chủ đề 16: Ôn tập cuối '
-                 'năm), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của '
-                 'bài?',
-            'options': ['Đọc, viết thành thạo các số có đến ba chữ số trong phạm vi 1 000.',
-                        'Phân tích được số có ba chữ số thành tổng các trăm, chục, đơn vị.',
+            'q': 'Để nắm vững bản chất của **Bài 76: Ôn tập các số trong phạm vi 10 000, 100 000**, nhận '
+                 'định nào sau đây là **chính xác**?',
+            'options': ['Đọc, viết, phân tích cấu tạo thập phân và so sánh thành thạo các số trong phạm vi '
+                        '$110\\,000$.',
+                        'Đọc, viết, phân tích cấu tạo thập phân và so sánh thành thạo các số trong phạm vi '
+                        '$100\\,1$.',
                         'Đọc, viết, phân tích cấu tạo thập phân và so sánh thành thạo các số trong phạm vi '
                         '$100\\,000$.',
-                        'So sánh và sắp xếp được các số trong phạm vi 1 000 theo thứ tự.'],
+                        'Đọc, viết, phân tích cấu tạo thập phân và so sánh thành thạo các số trong phạm vi '
+                        '$102\\,000$.'],
             'answer': 2,
-            'solution': 'Theo yêu cầu cần đạt của Bài 76: Ôn tập các số trong phạm vi 10 000, 100 000: Đọc, '
+            'solution': 'Theo nội dung cốt lõi của Bài 76: Ôn tập các số trong phạm vi 10 000, 100 000: Đọc, '
                         'viết, phân tích cấu tạo thập phân và so sánh thành thạo các số trong phạm vi '
                         '$100\\,000$.'},
            {'level': 'hieu',
@@ -8006,30 +8670,32 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
            {'level': 'hieu',
             'type': 'tf',
             'q': 'Trong **Bài 76: Ôn tập các số trong phạm vi 10 000, 100 000**, quy tắc **Làm tròn** được '
-                 'xác định bởi Chữ số bên phải $< 5 \\rightarrow$ xuống · $\\ge 5 \\rightarrow$ lên và áp '
-                 'dụng trực tiếp vào bài toán: “Cho số $68\\,374$. Hãy làm tròn số đó đến hàng trăm và đến '
-                 'hàng nghìn.”. Đúng hay sai?',
+                 'xác định bởi Chữ số bên phải $< 5 \\rightarrow$ xuống · $\\ge 5 \\rightarrow$ lên và khi '
+                 'áp dụng cho ví dụ “Cho số $68\\,374$. Hãy làm tròn số đó đến hàng trăm và đến hàng nghìn.” '
+                 'ta có lời giải: - Làm tròn đến hàng trăm: chữ số hàng chục là $7 \\ge 5 \\rightarrow$ '
+                 '**$68\\,400$**. - Làm tròn đến hàng nghìn: chữ số hàng trăm là $3 < 5 \\rightarrow$.... '
+                 'Đúng hay sai?',
             'answer': True,
-            'solution': 'Khẳng định **Đúng**. Quy tắc **Làm tròn** (Chữ số bên phải $< 5 \\rightarrow$ xuống '
-                        '· $\\ge 5 \\rightarrow$ lên) là kiến thức cốt lõi của Bài 76: Ôn tập các số trong '
-                        'phạm vi 10 000, 100 000. - Làm tròn đến hàng trăm: chữ số hàng chục là $7 \\ge 5 '
-                        '\\rightarrow$ **$68\\,400$**. - Làm tròn đến hàng nghìn: chữ số hàng trăm là $3 < 5 '
-                        '\\rightarrow$...'},
+            'solution': 'Khẳng định **Đúng**. Đó chính là quy tắc **Làm tròn** (Chữ số bên phải $< 5 '
+                        '\\rightarrow$ xuống · $\\ge 5 \\rightarrow$ lên) và lời giải ví dụ minh họa của Bài '
+                        '76: Ôn tập các số trong phạm vi 10 000, 100 000.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 76: Ôn tập các số trong phạm vi 10 000, 100 000** để giải quyết '
-                 'tình huống sau: Cho số $68\\,374$. Hãy làm tròn số đó đến hàng trăm và đến hàng nghìn. Kết '
-                 'quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Ta có $806 = 800 + 6$ (gồm $8$ trăm, $0$ chục, $6$ đơn vị). Vì chữ số hàng trăm $8 '
-                        '> 7$ nên **$806 > 798$**.',
-                        '- $468 + 325$: $8 + 5 = 13$ (viết $3$ nhớ $1$); $6 + 2 + 1 = 9$; $4 + 3 = 7$ '
-                        '$\\rightarrow$ **$793$**. - $750 - 236$: $10 - 6 = 4$ (viết $4$ nhớ $1$); $5 - (3 + '
-                        '1) = 1$...',
-                        'Áp dụng quy tắc tìm số trừ: $\\text{Số trừ} = \\text{Số bị trừ} - \\text{Hiệu} = 85 '
-                        '- 39 = 46$. Thử lại: $85 - 46 = 39$ (đúng). Vậy số cần tìm là **$46$**.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 76: Ôn tập các số trong phạm vi 10 000, 100 000** '
+                 'để giải bài toán sau: Cho số $68\\,374$. Hãy làm tròn số đó đến hàng trăm và đến hàng '
+                 'nghìn. Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['- Làm tròn đến hàng trăm: chữ số hàng chục là $7 \\le 5 \\rightarrow$ '
+                        '**$68\\,400$**. - Làm tròn đến hàng nghìn: chữ số hàng trăm là $3 < 5 '
+                        '\\rightarrow$...',
                         '- Làm tròn đến hàng trăm: chữ số hàng chục là $7 \\ge 5 \\rightarrow$ '
-                        '**$68\\,400$**. - Làm tròn đến hàng nghìn: chữ số hàng trăm là $3 < 5 \\rightarrow$ '
-                        '**$68\\,000$...'],
+                        '**$68\\,400$**. - Làm tròn đến hàng nghìn: chữ số hàng trăm là $3 < 4 '
+                        '\\rightarrow$...',
+                        '- Làm tròn đến hàng trăm: chữ số hàng chục là $14 \\ge 5 \\rightarrow$ '
+                        '**$68\\,400$**. - Làm tròn đến hàng nghìn: chữ số hàng trăm là $3 < 5 '
+                        '\\rightarrow$...',
+                        '- Làm tròn đến hàng trăm: chữ số hàng chục là $7 \\ge 5 \\rightarrow$ '
+                        '**$68\\,400$**. - Làm tròn đến hàng nghìn: chữ số hàng trăm là $3 < 5 '
+                        '\\rightarrow$...'],
             'answer': 3,
             'solution': 'Lời giải chi tiết theo Bài 76: Ôn tập các số trong phạm vi 10 000, 100 000: - Làm '
                         'tròn đến hàng trăm: chữ số hàng chục là $7 \\ge 5 \\rightarrow$ **$68\\,400$**.\n'
@@ -8061,7 +8727,7 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             '- Ghép các cặp số tròn nghìn: $12\\,500 + 7\\,500 = 20\\,000$.\n'
             '### 2. Ôn tập giải toán cộng, trừ\n'
             '- Chú ý đọc kỹ từ khóa "nhiều hơn", "ít hơn", "còn lại", "tất cả".',
-  'formulas': [{'category': 'I. Tìm thành phần chưa biết',
+  'formulas': [{'category': 'Tìm thành phần chưa biết',
                 'items': [{'name': 'Phép cộng', 'formula': '$x + a = b \\Rightarrow x = b - a$'},
                           {'name': 'Phép trừ',
                            'formula': '$x - a = b \\Rightarrow x = b + a$ · $a - x = b \\Rightarrow x = a - '
@@ -8088,25 +8754,30 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 77: Ôn tập phép cộng, phép trừ trong phạm vi 100 000**, '
-                 'công thức hoặc quy tắc nào sau đây biểu diễn đúng **Phép cộng**?',
+            'q': 'Trong **Bài 77: Ôn tập phép cộng, phép trừ trong phạm vi 100 000**, quy tắc hoặc công thức '
+                 'nào sau đây xác định đúng **Phép cộng**?',
             'options': ['$x + a = b \\Rightarrow x = b - a$',
-                        '$x - a = b \\Rightarrow x = b + a$ · $a - x = b \\Rightarrow x = a - b$',
-                        '$\\overline{abc} = a00 + b0 + c$',
-                        '$10 \\text{ chục} = 100$ · $10 \\text{ trăm} = 1\\,000$'],
+                        '$x - a = b \\Rightarrow x = b - a$',
+                        'Đảo ngược vế của quy tắc: $x + a = b \\Rightarrow x = b - a$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $x + a = b \\Rightarrow x = b - '
+                        'a$'],
             'answer': 0,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 77: Ôn tập phép cộng, phép trừ trong phạm vi '
-                        '100 000, **Phép cộng** được xác định bởi: $x + a = b \\Rightarrow x = b - a$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 77: Ôn tập phép cộng, phép trừ trong phạm vi 100 '
+                        '000, **Phép cộng** được xác định bởi: $x + a = b \\Rightarrow x = b - a$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 77: Ôn tập phép cộng, phép trừ trong phạm vi 100 000**, nội dung/biểu thức $x '
-                 '- a = b \\Rightarrow x = b + a$ · $a - x = b \\Rightarrow x = a - b$ là quy tắc hoặc công '
-                 'thức của mục nào sau đây?',
-            'options': ['Phép cộng', 'Phép trừ', 'Phân tích số', 'Số tròn trăm, tròn nghìn'],
+            'q': 'Khi học **Bài 77: Ôn tập phép cộng, phép trừ trong phạm vi 100 000**, biểu thức hoặc quy '
+                 'tắc nào dưới đây biểu diễn đúng **Phép trừ**?',
+            'options': ['$x - a = b \\Rightarrow x = b - a$ · $a - x = b \\Rightarrow x = a - b$',
+                        '$x - a = b \\Rightarrow x = b + a$ · $a - x = b \\Rightarrow x = a - b$',
+                        'Đảo ngược vế của quy tắc: $x - a = b \\Rightarrow x = b + a$ · $a - x = b '
+                        '\\Rightarrow x = a - b$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $x - a = b \\Rightarrow x = b + '
+                        'a$ · $a - x = b \\Rightarrow x = a - b$'],
             'answer': 1,
-            'solution': 'Trong Bài 77: Ôn tập phép cộng, phép trừ trong phạm vi 100 000, biểu thức/quy tắc '
-                        '$x - a = b \\Rightarrow x = b + a$ · $a - x = b \\Rightarrow x = a - b$ chính là '
-                        'nội dung của **Phép trừ**.'},
+            'solution': 'Trong Bài 77: Ôn tập phép cộng, phép trừ trong phạm vi 100 000, **Phép trừ** có '
+                        'công thức/quy tắc là: $x - a = b \\Rightarrow x = b + a$ · $a - x = b \\Rightarrow '
+                        'x = a - b$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Giá trị của biểu thức $85\\,000 - (25\\,000 + 15\\,000)$ là:',
@@ -8118,15 +8789,14 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 77: Ôn tập phép cộng, phép trừ trong phạm vi 100 000** (Chủ đề 16: Ôn tập '
-                 'cuối năm), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức '
-                 'của bài?',
-            'options': ['Đọc, viết thành thạo các số có đến ba chữ số trong phạm vi 1 000.',
-                        'Phân tích được số có ba chữ số thành tổng các trăm, chục, đơn vị.',
-                        'So sánh và sắp xếp được các số trong phạm vi 1 000 theo thứ tự.',
+            'q': 'Để nắm vững bản chất của **Bài 77: Ôn tập phép cộng, phép trừ trong phạm vi 100 000**, '
+                 'nhận định nào sau đây là **chính xác**?',
+            'options': ['Tính nhẩm và đặt tính cộng, trừ thành thạo các số trong phạm vi $110\\,000$.',
+                        'Tính nhẩm và đặt tính cộng, trừ thành thạo các số trong phạm vi $100\\,1$.',
+                        'Tính nhẩm và đặt tính cộng, trừ thành thạo các số trong phạm vi $102\\,000$.',
                         'Tính nhẩm và đặt tính cộng, trừ thành thạo các số trong phạm vi $100\\,000$.'],
             'answer': 3,
-            'solution': 'Theo yêu cầu cần đạt của Bài 77: Ôn tập phép cộng, phép trừ trong phạm vi 100 000: '
+            'solution': 'Theo nội dung cốt lõi của Bài 77: Ôn tập phép cộng, phép trừ trong phạm vi 100 000: '
                         'Tính nhẩm và đặt tính cộng, trừ thành thạo các số trong phạm vi $100\\,000$.'},
            {'level': 'hieu',
             'type': 'tf',
@@ -8139,27 +8809,27 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
            {'level': 'hieu',
             'type': 'tf',
             'q': 'Trong **Bài 77: Ôn tập phép cộng, phép trừ trong phạm vi 100 000**, quy tắc **Phép cộng** '
-                 'được xác định bởi $x + a = b \\Rightarrow x = b - a$ và áp dụng trực tiếp vào bài toán: '
-                 '“Tìm $x$ biết: a) $x - 18\\,500 = 31\\,500$; b) $64\\,000 - x = 28\\,000$.”. Đúng hay sai?',
+                 'được xác định bởi $x + a = b \\Rightarrow x = b - a$ và khi áp dụng cho ví dụ “Tìm $x$ '
+                 'biết: a) $x - 18\\,500 = 31\\,500$; b) $64\\,000 - x = 28\\,000$.” ta có lời giải: a) Số '
+                 'bị trừ $x = 31\\,500 + 18\\,500 = 50\\,000$. b) Số trừ $x = 64\\,000 - 28\\,000 = '
+                 '36\\,000$.. Đúng hay sai?',
             'answer': True,
-            'solution': 'Khẳng định **Đúng**. Quy tắc **Phép cộng** ($x + a = b \\Rightarrow x = b - a$) là '
-                        'kiến thức cốt lõi của Bài 77: Ôn tập phép cộng, phép trừ trong phạm vi 100 000. a) '
-                        'Số bị trừ $x = 31\\,500 + 18\\,500 = 50\\,000$. b) Số trừ $x = 64\\,000 - 28\\,000 '
-                        '= 36\\,000$.'},
+            'solution': 'Khẳng định **Đúng**. Đó chính là quy tắc **Phép cộng** ($x + a = b \\Rightarrow x = '
+                        'b - a$) và lời giải ví dụ minh họa của Bài 77: Ôn tập phép cộng, phép trừ trong '
+                        'phạm vi 100 000.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 77: Ôn tập phép cộng, phép trừ trong phạm vi 100 000** để giải '
-                 'quyết tình huống sau: Tìm $x$ biết: a) $x - 18\\,500 = 31\\,500$; b) $64\\,000 - x = '
-                 '28\\,000$. Kết quả và hướng giải nào dưới đây là **đúng**?',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 77: Ôn tập phép cộng, phép trừ trong phạm vi 100 '
+                 '000** để giải bài toán sau: Tìm $x$ biết: a) $x - 18\\,500 = 31\\,500$; b) $64\\,000 - x = '
+                 '28\\,000$. Cách giải và kết quả nào dưới đây là **đúng**?',
             'options': ['a) Số bị trừ $x = 31\\,500 + 18\\,500 = 50\\,000$. b) Số trừ $x = 64\\,000 - '
                         '28\\,000 = 36\\,000$.',
-                        'Ta có $806 = 800 + 6$ (gồm $8$ trăm, $0$ chục, $6$ đơn vị). Vì chữ số hàng trăm $8 '
-                        '> 7$ nên **$806 > 798$**.',
-                        '- $468 + 325$: $8 + 5 = 13$ (viết $3$ nhớ $1$); $6 + 2 + 1 = 9$; $4 + 3 = 7$ '
-                        '$\\rightarrow$ **$793$**. - $750 - 236$: $10 - 6 = 4$ (viết $4$ nhớ $1$); $5 - (3 + '
-                        '1) = 1$...',
-                        'Áp dụng quy tắc tìm số trừ: $\\text{Số trừ} = \\text{Số bị trừ} - \\text{Hiệu} = 85 '
-                        '- 39 = 46$. Thử lại: $85 - 46 = 39$ (đúng). Vậy số cần tìm là **$46$**.'],
+                        'a) Số bị trừ $x = 31\\,500 - 18\\,500 = 50\\,000$. b) Số trừ $x = 64\\,000 - '
+                        '28\\,000 = 36\\,000$.',
+                        'a) Số bị trừ $x = 31\\,500 + 18\\,500 = 50\\,000$. b) Số trừ $x = 64\\,000 - '
+                        '28\\,000 = 36\\,1$.',
+                        'a) Số bị trừ $x = 62\\,500 + 18\\,500 = 50\\,000$. b) Số trừ $x = 64\\,000 - '
+                        '28\\,000 = 36\\,000$.'],
             'answer': 0,
             'solution': 'Lời giải chi tiết theo Bài 77: Ôn tập phép cộng, phép trừ trong phạm vi 100 000: a) '
                         'Số bị trừ $x = 31\\,500 + 18\\,500 = 50\\,000$.\n'
@@ -8193,7 +8863,7 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             '- Ví dụ: $36\\,000 : 6 + 4\\,000 = 6\\,000 + 4\\,000 = 10\\,000$.\n'
             '### 2. Giải toán hai bước tính\n'
             '- Ví dụ: Tính tiền mua nhiều món hàng cùng loại rồi tính số tiền được trả lại.',
-  'formulas': [{'category': 'I. Biểu thức và tìm x',
+  'formulas': [{'category': 'Biểu thức và tìm x',
                 'items': [{'name': 'Thứ tự phép tính',
                            'formula': '$() \\rightarrow \\times, : \\rightarrow +, -$'},
                           {'name': 'Tìm số bị chia',
@@ -8221,24 +8891,29 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 78: Ôn tập phép nhân, phép chia trong phạm vi 100 000**, '
-                 'công thức hoặc quy tắc nào sau đây biểu diễn đúng **Thứ tự phép tính**?',
-            'options': ['$x : a = b \\Rightarrow x = b \\times a$',
+            'q': 'Trong **Bài 78: Ôn tập phép nhân, phép chia trong phạm vi 100 000**, quy tắc hoặc công '
+                 'thức nào sau đây xác định đúng **Thứ tự phép tính**?',
+            'options': ['$() \\rightarrow \\times, : \\rightarrow +, -$ (với dấu ngược lại)',
                         '$() \\rightarrow \\times, : \\rightarrow +, -$',
-                        '$\\overline{abc} = a00 + b0 + c$',
-                        '$10 \\text{ chục} = 100$ · $10 \\text{ trăm} = 1\\,000$'],
+                        'Đảo ngược vế của quy tắc: $() \\rightarrow \\times, : \\rightarrow +, -$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $() \\rightarrow \\times, : '
+                        '\\rightarrow +, -$'],
             'answer': 1,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 78: Ôn tập phép nhân, phép chia trong phạm vi '
-                        '100 000, **Thứ tự phép tính** được xác định bởi: $() \\rightarrow \\times, : '
+            'solution': 'Theo kiến thức trọng tâm của Bài 78: Ôn tập phép nhân, phép chia trong phạm vi 100 '
+                        '000, **Thứ tự phép tính** được xác định bởi: $() \\rightarrow \\times, : '
                         '\\rightarrow +, -$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 78: Ôn tập phép nhân, phép chia trong phạm vi 100 000**, nội dung/biểu thức $x '
-                 ': a = b \\Rightarrow x = b \\times a$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Thứ tự phép tính', 'Phân tích số', 'Tìm số bị chia', 'Số tròn trăm, tròn nghìn'],
+            'q': 'Khi học **Bài 78: Ôn tập phép nhân, phép chia trong phạm vi 100 000**, biểu thức hoặc quy '
+                 'tắc nào dưới đây biểu diễn đúng **Tìm số bị chia**?',
+            'options': ['$x : a = b \\Rightarrow x = b : a$',
+                        'Đảo ngược vế của quy tắc: $x : a = b \\Rightarrow x = b \\times a$',
+                        '$x : a = b \\Rightarrow x = b \\times a$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $x : a = b \\Rightarrow x = b '
+                        '\\times a$'],
             'answer': 2,
-            'solution': 'Trong Bài 78: Ôn tập phép nhân, phép chia trong phạm vi 100 000, biểu thức/quy tắc '
-                        '$x : a = b \\Rightarrow x = b \\times a$ chính là nội dung của **Tìm số bị chia**.'},
+            'solution': 'Trong Bài 78: Ôn tập phép nhân, phép chia trong phạm vi 100 000, **Tìm số bị chia** '
+                        'có công thức/quy tắc là: $x : a = b \\Rightarrow x = b \\times a$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Thương của phép chia $45\\,045 : 9$ là:',
@@ -8250,16 +8925,15 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 78: Ôn tập phép nhân, phép chia trong phạm vi 100 000** (Chủ đề 16: Ôn tập '
-                 'cuối năm), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức '
-                 'của bài?',
+            'q': 'Để nắm vững bản chất của **Bài 78: Ôn tập phép nhân, phép chia trong phạm vi 100 000**, '
+                 'nhận định nào sau đây là **chính xác**?',
             'options': ['Đặt tính và tính đúng phép nhân, phép chia trong phạm vi $100\\,000$.',
-                        'Đọc, viết thành thạo các số có đến ba chữ số trong phạm vi 1 000.',
-                        'Phân tích được số có ba chữ số thành tổng các trăm, chục, đơn vị.',
-                        'So sánh và sắp xếp được các số trong phạm vi 1 000 theo thứ tự.'],
+                        'Đặt tính và tính đúng phép nhân, phép chia trong phạm vi $110\\,000$.',
+                        'Đặt tính và tính đúng phép nhân, phép chia trong phạm vi $100\\,1$.',
+                        'Đặt tính và tính đúng phép nhân, phép chia trong phạm vi $102\\,000$.'],
             'answer': 0,
-            'solution': 'Theo yêu cầu cần đạt của Bài 78: Ôn tập phép nhân, phép chia trong phạm vi 100 000: '
-                        'Đặt tính và tính đúng phép nhân, phép chia trong phạm vi $100\\,000$.'},
+            'solution': 'Theo nội dung cốt lõi của Bài 78: Ôn tập phép nhân, phép chia trong phạm vi 100 '
+                        '000: Đặt tính và tính đúng phép nhân, phép chia trong phạm vi $100\\,000$.'},
            {'level': 'hieu',
             'type': 'tf',
             'q': 'Nhận định: "Tìm $x$ biết $x : 4 = 2\\,500$, ta được $x = 625$."',
@@ -8271,30 +8945,29 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
            {'level': 'hieu',
             'type': 'tf',
             'q': 'Trong **Bài 78: Ôn tập phép nhân, phép chia trong phạm vi 100 000**, quy tắc **Thứ tự phép '
-                 'tính** được xác định bởi $() \\rightarrow \\times, : \\rightarrow +, -$ và áp dụng trực '
-                 'tiếp vào bài toán: “Mua $3$ quyển sách, mỗi quyển giá $24\\,500$ đồng. Đưa người bán tờ '
-                 '$100\\,000$ đồng thì được trả lại bao nhiêu đồng?”. Đúng hay sai?',
+                 'tính** được xác định bởi $() \\rightarrow \\times, : \\rightarrow +, -$ và khi áp dụng cho '
+                 'ví dụ “Mua $3$ quyển sách, mỗi quyển giá $24\\,500$ đồng. Đưa người bán tờ $100\\,000$ '
+                 'đồng thì được trả lại bao nhiêu đồng?” ta có lời giải: Tiền mua $3$ quyển sách là: '
+                 '$24\\,500 \\times 3 = 73\\,500\\text{ (đồng)}$. Số tiền được trả lại là: $100\\,000 - '
+                 '73\\,500 = 26\\,500\\text{ (đồng)}$.... Đúng hay sai?',
             'answer': True,
-            'solution': 'Khẳng định **Đúng**. Quy tắc **Thứ tự phép tính** ($() \\rightarrow \\times, : '
-                        '\\rightarrow +, -$) là kiến thức cốt lõi của Bài 78: Ôn tập phép nhân, phép chia '
-                        'trong phạm vi 100 000. Tiền mua $3$ quyển sách là: $24\\,500 \\times 3 = '
-                        '73\\,500\\text{ (đồng)}$. Số tiền được trả lại là: $100\\,000 - 73\\,500 = '
-                        '26\\,500\\text{ (đồng)}$...'},
+            'solution': 'Khẳng định **Đúng**. Đó chính là quy tắc **Thứ tự phép tính** ($() \\rightarrow '
+                        '\\times, : \\rightarrow +, -$) và lời giải ví dụ minh họa của Bài 78: Ôn tập phép '
+                        'nhân, phép chia trong phạm vi 100 000.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 78: Ôn tập phép nhân, phép chia trong phạm vi 100 000** để giải '
-                 'quyết tình huống sau: Mua $3$ quyển sách, mỗi quyển giá $24\\,500$ đồng. Đưa người bán tờ '
-                 '$100\\,000$ đồng thì được trả lại bao nhiêu đồng? Kết quả và hướng giải nào dưới đây là '
-                 '**đúng**?',
-            'options': ['Ta có $806 = 800 + 6$ (gồm $8$ trăm, $0$ chục, $6$ đơn vị). Vì chữ số hàng trăm $8 '
-                        '> 7$ nên **$806 > 798$**.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 78: Ôn tập phép nhân, phép chia trong phạm vi 100 '
+                 '000** để giải bài toán sau: Mua $3$ quyển sách, mỗi quyển giá $24\\,500$ đồng. Đưa người '
+                 'bán tờ $100\\,000$ đồng thì được trả lại bao nhiêu đồng? Cách giải và kết quả nào dưới đây '
+                 'là **đúng**?',
+            'options': ['Tiền mua $3$ quyển sách là: $24\\,500 \\times 3 = 73\\,500\\text{ (đồng)}$. Số tiền '
+                        'được trả lại là: $100\\,000 + 73\\,500 = 26\\,500\\text{ (đồng)}$.',
                         'Tiền mua $3$ quyển sách là: $24\\,500 \\times 3 = 73\\,500\\text{ (đồng)}$. Số tiền '
                         'được trả lại là: $100\\,000 - 73\\,500 = 26\\,500\\text{ (đồng)}$.',
-                        '- $468 + 325$: $8 + 5 = 13$ (viết $3$ nhớ $1$); $6 + 2 + 1 = 9$; $4 + 3 = 7$ '
-                        '$\\rightarrow$ **$793$**. - $750 - 236$: $10 - 6 = 4$ (viết $4$ nhớ $1$); $5 - (3 + '
-                        '1) = 1$...',
-                        'Áp dụng quy tắc tìm số trừ: $\\text{Số trừ} = \\text{Số bị trừ} - \\text{Hiệu} = 85 '
-                        '- 39 = 46$. Thử lại: $85 - 46 = 39$ (đúng). Vậy số cần tìm là **$46$**.'],
+                        'Tiền mua $3$ quyển sách là: $24\\,500 \\times 3 = 73\\,500\\text{ (đồng)}$. Số tiền '
+                        'được trả lại là: $100\\,000 - 73\\,500 = 26\\,499\\text{ (đồng)}$.',
+                        'Tiền mua $6$ quyển sách là: $24\\,500 \\times 3 = 73\\,500\\text{ (đồng)}$. Số tiền '
+                        'được trả lại là: $100\\,000 - 73\\,500 = 26\\,500\\text{ (đồng)}$.'],
             'answer': 1,
             'solution': 'Lời giải chi tiết theo Bài 78: Ôn tập phép nhân, phép chia trong phạm vi 100 000: '
                         'Tiền mua $3$ quyển sách là: $24\\,500 \\times 3 = 73\\,500\\text{ (đồng)}$.\n'
@@ -8332,11 +9005,10 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'đất} - \\text{Độ rộng cổng}$.\n'
             '### 2. Ôn tập đo lường\n'
             '- Luôn kiểm tra các số đo đã cùng đơn vị chưa trước khi áp dụng công thức.',
-  'formulas': [{'category': 'I. Hình chữ nhật & Hình vuông',
+  'formulas': [{'category': 'Công thức & Quy tắc trọng tâm: Ôn tập hình học và đo lường',
                 'items': [{'name': 'Hình chữ nhật', 'formula': '$P = (a + b) \\times 2$ · $S = a \\times b$'},
-                          {'name': 'Hình vuông', 'formula': '$P = a \\times 4$ · $S = a \\times a$'}]},
-               {'category': 'II. Đơn vị đo',
-                'items': [{'name': 'Quan hệ 1 000',
+                          {'name': 'Hình vuông', 'formula': '$P = a \\times 4$ · $S = a \\times a$'},
+                          {'name': 'Quan hệ 1 000',
                            'formula': '$1\\text{ km} = 1\\,000\\text{ m}$ · $1\\text{ kg} = 1\\,000\\text{ '
                                       'g}$ · $1\\text{ l} = 1\\,000\\text{ ml}$'}]}],
   'example': 'Một mảnh đất hình chữ nhật dài $25\\text{ m}$, rộng $12\\text{ m}$. Người ta làm hàng rào xung '
@@ -8362,24 +9034,26 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 79: Ôn tập hình học và đo lường**, công thức hoặc quy '
-                 'tắc nào sau đây biểu diễn đúng **Hình chữ nhật**?',
-            'options': ['$P = a \\times 4$ · $S = a \\times a$',
-                        '$1\\text{ km} = 1\\,000\\text{ m}$ · $1\\text{ kg} = 1\\,000\\text{ g}$ · $1\\text{ '
-                        'l} = 1\\,000\\text{ ml}$',
+            'q': 'Trong **Bài 79: Ôn tập hình học và đo lường**, quy tắc hoặc công thức nào sau đây xác định '
+                 'đúng **Hình chữ nhật**?',
+            'options': ['$P = (a - b) \\times 2$ · $S = a \\times b$',
+                        '$P = (a + b) \\times 1$ · $S = a \\times b$',
                         '$P = (a + b) \\times 2$ · $S = a \\times b$',
-                        '$\\overline{abc} = a00 + b0 + c$'],
+                        '$P = (a + b) \\times 4$ · $S = a \\times b$'],
             'answer': 2,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 79: Ôn tập hình học và đo lường, **Hình chữ '
-                        'nhật** được xác định bởi: $P = (a + b) \\times 2$ · $S = a \\times b$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 79: Ôn tập hình học và đo lường, **Hình chữ nhật** '
+                        'được xác định bởi: $P = (a + b) \\times 2$ · $S = a \\times b$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 79: Ôn tập hình học và đo lường**, nội dung/biểu thức $P = a \\times 4$ · $S = '
-                 'a \\times a$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Hình chữ nhật', 'Quan hệ 1 000', 'Phân tích số', 'Hình vuông'],
+            'q': 'Khi học **Bài 79: Ôn tập hình học và đo lường**, biểu thức hoặc quy tắc nào dưới đây biểu '
+                 'diễn đúng **Hình vuông**?',
+            'options': ['$P = a : 4$ · $S = a \\times a$',
+                        '$P = a \\times 3$ · $S = a \\times a$',
+                        '$P = a \\times 8$ · $S = a \\times a$',
+                        '$P = a \\times 4$ · $S = a \\times a$'],
             'answer': 3,
-            'solution': 'Trong Bài 79: Ôn tập hình học và đo lường, biểu thức/quy tắc $P = a \\times 4$ · $S '
-                        '= a \\times a$ chính là nội dung của **Hình vuông**.'},
+            'solution': 'Trong Bài 79: Ôn tập hình học và đo lường, **Hình vuông** có công thức/quy tắc là: '
+                        '$P = a \\times 4$ · $S = a \\times a$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Hình chữ nhật có chiều dài $15\\text{ m}$, chiều rộng $8\\text{ m}$ thì có chu vi là:',
@@ -8390,14 +9064,16 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 79: Ôn tập hình học và đo lường** (Chủ đề 16: Ôn tập cuối năm), khẳng định '
-                 'nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Đọc, viết thành thạo các số có đến ba chữ số trong phạm vi 1 000.',
+            'q': 'Để nắm vững bản chất của **Bài 79: Ôn tập hình học và đo lường**, nhận định nào sau đây là '
+                 '**chính xác**?',
+            'options': ['Tính đúng chu vi và diện tích của hình chữ nhật, hình vuông. (với dấu ngược lại)',
                         'Tính đúng chu vi và diện tích của hình chữ nhật, hình vuông.',
-                        'Phân tích được số có ba chữ số thành tổng các trăm, chục, đơn vị.',
-                        'So sánh và sắp xếp được các số trong phạm vi 1 000 theo thứ tự.'],
+                        'Đảo ngược vế của quy tắc: Tính đúng chu vi và diện tích của hình chữ nhật, hình '
+                        'vuông.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Tính đúng chu vi và diện tích '
+                        'của hình chữ nhật, hình vuông.'],
             'answer': 1,
-            'solution': 'Theo yêu cầu cần đạt của Bài 79: Ôn tập hình học và đo lường: Tính đúng chu vi và '
+            'solution': 'Theo nội dung cốt lõi của Bài 79: Ôn tập hình học và đo lường: Tính đúng chu vi và '
                         'diện tích của hình chữ nhật, hình vuông.'},
            {'level': 'hieu',
             'type': 'tf',
@@ -8411,29 +9087,29 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
            {'level': 'hieu',
             'type': 'tf',
             'q': 'Trong **Bài 79: Ôn tập hình học và đo lường**, quy tắc **Hình chữ nhật** được xác định bởi '
-                 '$P = (a + b) \\times 2$ · $S = a \\times b$ và áp dụng trực tiếp vào bài toán: “Một mảnh '
-                 'đất hình chữ nhật dài $25\\text{ m}$, rộng $12\\text{ m}$. Người ta làm hàng rào xung '
-                 'quanh mảnh đất và chừa $2\\text{ m}$ làm cổng. T...”. Đúng hay sai?',
+                 '$P = (a + b) \\times 2$ · $S = a \\times b$ và khi áp dụng cho ví dụ “Một mảnh đất hình '
+                 'chữ nhật dài $25\\text{ m}$, rộng $12\\text{ m}$. Người ta làm hàng rào xung quanh mảnh '
+                 'đất và chừa $2\\text{ m}$ làm cổ...” ta có lời giải: Chu vi mảnh đất hình chữ nhật là: '
+                 '$(25 + 12) \\times 2 = 74\\text{ (m)}$. Độ dài hàng rào là: $74 - 2 = 72\\text{ (m)}$.. '
+                 'Đúng hay sai?',
             'answer': True,
-            'solution': 'Khẳng định **Đúng**. Quy tắc **Hình chữ nhật** ($P = (a + b) \\times 2$ · $S = a '
-                        '\\times b$) là kiến thức cốt lõi của Bài 79: Ôn tập hình học và đo lường. Chu vi '
-                        'mảnh đất hình chữ nhật là: $(25 + 12) \\times 2 = 74\\text{ (m)}$. Độ dài hàng rào '
-                        'là: $74 - 2 = 72\\text{ (m)}$.'},
+            'solution': 'Khẳng định **Đúng**. Đó chính là quy tắc **Hình chữ nhật** ($P = (a + b) \\times 2$ '
+                        '· $S = a \\times b$) và lời giải ví dụ minh họa của Bài 79: Ôn tập hình học và đo '
+                        'lường.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 79: Ôn tập hình học và đo lường** để giải quyết tình huống sau: '
-                 'Một mảnh đất hình chữ nhật dài $25\\text{ m}$, rộng $12\\text{ m}$. Người ta làm hàng rào '
-                 'xung quanh mảnh đất và chừa $2\\text{ m}$ làm cổng. Tính độ dài hàng rào. Kết quả và hướng '
-                 'giải nào dưới đây là **đúng**?',
-            'options': ['Ta có $806 = 800 + 6$ (gồm $8$ trăm, $0$ chục, $6$ đơn vị). Vì chữ số hàng trăm $8 '
-                        '> 7$ nên **$806 > 798$**.',
-                        '- $468 + 325$: $8 + 5 = 13$ (viết $3$ nhớ $1$); $6 + 2 + 1 = 9$; $4 + 3 = 7$ '
-                        '$\\rightarrow$ **$793$**. - $750 - 236$: $10 - 6 = 4$ (viết $4$ nhớ $1$); $5 - (3 + '
-                        '1) = 1$...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 79: Ôn tập hình học và đo lường** để giải bài toán '
+                 'sau: Một mảnh đất hình chữ nhật dài $25\\text{ m}$, rộng $12\\text{ m}$. Người ta làm hàng '
+                 'rào xung quanh mảnh đất và chừa $2\\text{ m}$ làm cổng. Tính độ dài hàng rào. Cách giải và '
+                 'kết quả nào dưới đây là **đúng**?',
+            'options': ['Chu vi mảnh đất hình chữ nhật là: $(25 - 12) \\times 2 = 74\\text{ (m)}$. Độ dài '
+                        'hàng rào là: $74 - 2 = 72\\text{ (m)}$.',
+                        'Chu vi mảnh đất hình chữ nhật là: $(25 + 12) \\times 2 = 74\\text{ (m)}$. Độ dài '
+                        'hàng rào là: $74 - 2 = 71\\text{ (m)}$.',
                         'Chu vi mảnh đất hình chữ nhật là: $(25 + 12) \\times 2 = 74\\text{ (m)}$. Độ dài '
                         'hàng rào là: $74 - 2 = 72\\text{ (m)}$.',
-                        'Áp dụng quy tắc tìm số trừ: $\\text{Số trừ} = \\text{Số bị trừ} - \\text{Hiệu} = 85 '
-                        '- 39 = 46$. Thử lại: $85 - 46 = 39$ (đúng). Vậy số cần tìm là **$46$**.'],
+                        'Chu vi mảnh đất hình chữ nhật là: $(50 + 12) \\times 2 = 74\\text{ (m)}$. Độ dài '
+                        'hàng rào là: $74 - 2 = 72\\text{ (m)}$.'],
             'answer': 2,
             'solution': 'Lời giải chi tiết theo Bài 79: Ôn tập hình học và đo lường: Chu vi mảnh đất hình '
                         'chữ nhật là: $(25 + 12) \\times 2 = 74\\text{ (m)}$.\n'
@@ -8452,7 +9128,7 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
  {'topic': 'l3-cd16-on-tap-cuoi-nam',
   'context_title': 'Chủ đề 16: Ôn tập cuối năm',
   'context': 'SGK Toán 3 · Chủ đề 16: Ôn tập tổng hợp cuối năm học.',
-  'title': 'Bài 80, 81: Ôn tập bảng số liệu, khả năng xảy ra và ôn tập chung',
+  'title': 'Bài 80: Ôn tập bảng số liệu, khả năng xảy ra',
   'icon': '🏁',
   'description': 'Ôn tập đọc bảng số liệu thống kê, mô tả khả năng xảy ra của sự kiện và giải toán tổng hợp '
                  'cuối lớp 3.',
@@ -8469,7 +9145,7 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             '### 2. Tổng kết chương trình Toán lớp 3\n'
             '- Nắm vững các số đến $100\\,000$, bốn phép tính, biểu thức số, chu vi – diện tích hình chữ '
             'nhật, hình vuông và các đơn vị đo.',
-  'formulas': [{'category': 'I. Tổng hợp kiến thức',
+  'formulas': [{'category': 'Tổng hợp kiến thức',
                 'items': [{'name': 'Thống kê',
                            'formula': 'Đọc bảng $\\rightarrow$ So sánh (lớn nhất, bé nhất) $\\rightarrow$ '
                                       'Tính tổng, hiệu'},
@@ -8500,26 +9176,33 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 80, 81: Ôn tập bảng số liệu, khả năng xảy ra và ôn tập '
-                 'chung**, công thức hoặc quy tắc nào sau đây biểu diễn đúng **Thống kê**?',
-            'options': ['Tìm đại lượng trung gian $\\rightarrow$ Tìm đại lượng đề bài hỏi',
-                        '$\\overline{abc} = a00 + b0 + c$',
-                        '$10 \\text{ chục} = 100$ · $10 \\text{ trăm} = 1\\,000$',
+            'q': 'Trong **Bài 80: Ôn tập bảng số liệu, khả năng xảy ra**, quy tắc hoặc công thức nào sau đây '
+                 'xác định đúng **Thống kê**?',
+            'options': ['Đọc bảng $\\rightarrow$ So sánh (lớn nhất, bé nhất) $\\rightarrow$ Tính tổng, hiệu '
+                        '(với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Đọc bảng $\\rightarrow$ So sánh (lớn nhất, bé nhất) '
+                        '$\\rightarrow$ Tính tổng, hiệu',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Đọc bảng $\\rightarrow$ So sánh '
+                        '(lớn nhất, bé nhất) $\\rightarrow$ Tính tổng, hiệu',
                         'Đọc bảng $\\rightarrow$ So sánh (lớn nhất, bé nhất) $\\rightarrow$ Tính tổng, hiệu'],
             'answer': 3,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 80, 81: Ôn tập bảng số liệu, khả năng xảy ra '
-                        'và ôn tập chung, **Thống kê** được xác định bởi: Đọc bảng $\\rightarrow$ So sánh '
-                        '(lớn nhất, bé nhất) $\\rightarrow$ Tính tổng, hiệu.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 80: Ôn tập bảng số liệu, khả năng xảy ra, **Thống '
+                        'kê** được xác định bởi: Đọc bảng $\\rightarrow$ So sánh (lớn nhất, bé nhất) '
+                        '$\\rightarrow$ Tính tổng, hiệu.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 80, 81: Ôn tập bảng số liệu, khả năng xảy ra và ôn tập chung**, nội dung/biểu '
-                 'thức Tìm đại lượng trung gian $\\rightarrow$ Tìm đại lượng đề bài hỏi là quy tắc hoặc công '
-                 'thức của mục nào sau đây?',
-            'options': ['Giải toán 2 bước', 'Thống kê', 'Phân tích số', 'Số tròn trăm, tròn nghìn'],
+            'q': 'Khi học **Bài 80: Ôn tập bảng số liệu, khả năng xảy ra**, biểu thức hoặc quy tắc nào dưới '
+                 'đây biểu diễn đúng **Giải toán 2 bước**?',
+            'options': ['Tìm đại lượng trung gian $\\rightarrow$ Tìm đại lượng đề bài hỏi',
+                        'Tìm đại lượng trung gian $\\rightarrow$ Tìm đại lượng đề bài hỏi (với dấu ngược '
+                        'lại)',
+                        'Đảo ngược vế của quy tắc: Tìm đại lượng trung gian $\\rightarrow$ Tìm đại lượng đề '
+                        'bài hỏi',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Tìm đại lượng trung gian '
+                        '$\\rightarrow$ Tìm đại lượng đề bài hỏi'],
             'answer': 0,
-            'solution': 'Trong Bài 80, 81: Ôn tập bảng số liệu, khả năng xảy ra và ôn tập chung, biểu '
-                        'thức/quy tắc Tìm đại lượng trung gian $\\rightarrow$ Tìm đại lượng đề bài hỏi chính '
-                        'là nội dung của **Giải toán 2 bước**.'},
+            'solution': 'Trong Bài 80: Ôn tập bảng số liệu, khả năng xảy ra, **Giải toán 2 bước** có công '
+                        'thức/quy tắc là: Tìm đại lượng trung gian $\\rightarrow$ Tìm đại lượng đề bài hỏi.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Theo bảng cây hoa ở trên (Hoa hồng: $45$, Hoa cúc: $60$, Hoa đồng tiền: $35$), tổng số cây '
@@ -8531,16 +9214,18 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 80, 81: Ôn tập bảng số liệu, khả năng xảy ra và ôn tập chung** (Chủ đề 16: '
-                 'Ôn tập cuối năm), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất '
-                 'kiến thức của bài?',
-            'options': ['Đọc, viết thành thạo các số có đến ba chữ số trong phạm vi 1 000.',
-                        'Phân tích được số có ba chữ số thành tổng các trăm, chục, đơn vị.',
+            'q': 'Để nắm vững bản chất của **Bài 80: Ôn tập bảng số liệu, khả năng xảy ra**, nhận định nào '
+                 'sau đây là **chính xác**?',
+            'options': ['Đọc, phân tích và tính toán thành thạo từ bảng số liệu thống kê. (với dấu ngược '
+                        'lại)',
+                        'Đảo ngược vế của quy tắc: Đọc, phân tích và tính toán thành thạo từ bảng số liệu '
+                        'thống kê.',
                         'Đọc, phân tích và tính toán thành thạo từ bảng số liệu thống kê.',
-                        'So sánh và sắp xếp được các số trong phạm vi 1 000 theo thứ tự.'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Đọc, phân tích và tính toán '
+                        'thành thạo từ bảng số liệu thống kê.'],
             'answer': 2,
-            'solution': 'Theo yêu cầu cần đạt của Bài 80, 81: Ôn tập bảng số liệu, khả năng xảy ra và ôn tập '
-                        'chung: Đọc, phân tích và tính toán thành thạo từ bảng số liệu thống kê.'},
+            'solution': 'Theo nội dung cốt lõi của Bài 80: Ôn tập bảng số liệu, khả năng xảy ra: Đọc, phân '
+                        'tích và tính toán thành thạo từ bảng số liệu thống kê.'},
            {'level': 'hieu',
             'type': 'tf',
             'q': 'Nhận định: "Trong túi chỉ có các viên bi màu đỏ. Khi lấy ngẫu nhiên $1$ viên bi từ túi thì '
@@ -8552,36 +9237,33 @@ LESSONS = [{'topic': 'l3-cd01-on-tap-va-bo-sung',
             'note': None},
            {'level': 'hieu',
             'type': 'tf',
-            'q': 'Trong **Bài 80, 81: Ôn tập bảng số liệu, khả năng xảy ra và ôn tập chung**, quy tắc '
-                 '**Thống kê** được xác định bởi Đọc bảng $\\rightarrow$ So sánh (lớn nhất, bé nhất) '
-                 '$\\rightarrow$ Tính tổng, hiệu và áp dụng trực tiếp vào bài toán: “Bảng số sách quyên góp '
-                 'của 3 lớp: Lớp 3A ($120$ quyển), Lớp 3B ($135$ quyển), Lớp 3C ($145$ quyển). Tính tổng số '
-                 'sách cả 3 lớp quyên góp đượ...”. Đúng hay sai?',
+            'q': 'Trong **Bài 80: Ôn tập bảng số liệu, khả năng xảy ra**, quy tắc **Thống kê** được xác định '
+                 'bởi Đọc bảng $\\rightarrow$ So sánh (lớn nhất, bé nhất) $\\rightarrow$ Tính tổng, hiệu và '
+                 'khi áp dụng cho ví dụ “Bảng số sách quyên góp của 3 lớp: Lớp 3A ($120$ quyển), Lớp 3B '
+                 '($135$ quyển), Lớp 3C ($145$ quyển). Tính tổng số sách cả 3 lớp quyên gó...” ta có lời '
+                 'giải: Tổng số sách cả $3$ lớp quyên góp được là: $120 + 135 + 145 = 400\\text{ (quyển)}$. '
+                 'Đáp số: **$400\\text{ quyển}$**.. Đúng hay sai?',
             'answer': True,
-            'solution': 'Khẳng định **Đúng**. Quy tắc **Thống kê** (Đọc bảng $\\rightarrow$ So sánh (lớn '
-                        'nhất, bé nhất) $\\rightarrow$ Tính tổng, hiệu) là kiến thức cốt lõi của Bài 80, 81: '
-                        'Ôn tập bảng số liệu, khả năng xảy ra và ôn tập chung. Tổng số sách cả $3$ lớp quyên '
-                        'góp được là: $120 + 135 + 145 = 400\\text{ (quyển)}$. Đáp số: **$400\\text{ '
-                        'quyển}$**.'},
+            'solution': 'Khẳng định **Đúng**. Đó chính là quy tắc **Thống kê** (Đọc bảng $\\rightarrow$ So '
+                        'sánh (lớn nhất, bé nhất) $\\rightarrow$ Tính tổng, hiệu) và lời giải ví dụ minh họa '
+                        'của Bài 80: Ôn tập bảng số liệu, khả năng xảy ra.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 80, 81: Ôn tập bảng số liệu, khả năng xảy ra và ôn tập chung** để '
-                 'giải quyết tình huống sau: Bảng số sách quyên góp của 3 lớp: Lớp 3A ($120$ quyển), Lớp 3B '
-                 '($135$ quyển), Lớp 3C ($145$ quyển). Tính tổng số sách cả 3 lớp quyên góp được. Kết quả và '
-                 'hướng giải nào dưới đây là **đúng**?',
-            'options': ['Ta có $806 = 800 + 6$ (gồm $8$ trăm, $0$ chục, $6$ đơn vị). Vì chữ số hàng trăm $8 '
-                        '> 7$ nên **$806 > 798$**.',
-                        '- $468 + 325$: $8 + 5 = 13$ (viết $3$ nhớ $1$); $6 + 2 + 1 = 9$; $4 + 3 = 7$ '
-                        '$\\rightarrow$ **$793$**. - $750 - 236$: $10 - 6 = 4$ (viết $4$ nhớ $1$); $5 - (3 + '
-                        '1) = 1$...',
-                        'Áp dụng quy tắc tìm số trừ: $\\text{Số trừ} = \\text{Số bị trừ} - \\text{Hiệu} = 85 '
-                        '- 39 = 46$. Thử lại: $85 - 46 = 39$ (đúng). Vậy số cần tìm là **$46$**.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 80: Ôn tập bảng số liệu, khả năng xảy ra** để giải '
+                 'bài toán sau: Bảng số sách quyên góp của 3 lớp: Lớp 3A ($120$ quyển), Lớp 3B ($135$ '
+                 'quyển), Lớp 3C ($145$ quyển). Tính tổng số sách cả 3 lớp quyên góp được. Cách giải và kết '
+                 'quả nào dưới đây là **đúng**?',
+            'options': ['Tổng số sách cả $3$ lớp quyên góp được là: $120 - 135 + 145 = 400\\text{ (quyển)}$. '
+                        'Đáp số: **$400\\text{ quyển}$**.',
+                        'Tổng số sách cả $3$ lớp quyên góp được là: $120 + 135 + 145 = 400\\text{ (quyển)}$. '
+                        'Đáp số: **$399\\text{ quyển}$**.',
+                        'Tổng số sách cả $6$ lớp quyên góp được là: $120 + 135 + 145 = 400\\text{ (quyển)}$. '
+                        'Đáp số: **$400\\text{ quyển}$**.',
                         'Tổng số sách cả $3$ lớp quyên góp được là: $120 + 135 + 145 = 400\\text{ (quyển)}$. '
                         'Đáp số: **$400\\text{ quyển}$**.'],
             'answer': 3,
-            'solution': 'Lời giải chi tiết theo Bài 80, 81: Ôn tập bảng số liệu, khả năng xảy ra và ôn tập '
-                        'chung: Tổng số sách cả $3$ lớp quyên góp được là: $120 + 135 + 145 = 400\\text{ '
-                        '(quyển)}$.\n'
+            'solution': 'Lời giải chi tiết theo Bài 80: Ôn tập bảng số liệu, khả năng xảy ra: Tổng số sách '
+                        'cả $3$ lớp quyên góp được là: $120 + 135 + 145 = 400\\text{ (quyển)}$.\n'
                         'Đáp số: **$400\\text{ quyển}$**.'},
            {'level': 'vandung',
             'type': 'short',

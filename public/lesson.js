@@ -4,10 +4,19 @@
    Hỗ trợ:
    - KaTeX 0.16.11 + Offline Math/Chem Renderer (window.HDLGMath)
    - Sơ đồ tư duy tổng quan 2.5D tương tác (#mindmapSection)
-   - Cấu trúc 3 cấp: Lớp ➔ Chương/Chủ đề ➔ Từng Bài học
-     (Breadcrumb Chương, Sidebar Danh sách bài trong Chương, Điều hướng Bài trước / Bài tiếp theo)
+   - Cấu trúc 3 cấp: Lớp ➔ Chương/Chủ đề ➔ Từng Bài học độc lập
+     (Mỗi bài học chỉ hiển thị kiến thức, công thức, ví dụ và câu hỏi của riêng bài đó)
    API: GET /api/content/lessons/{id}
 ========================================================= */
+
+// Dọn bộ nhớ đệm sessionStorage cũ để tránh hiển thị bản ghi gộp chương từ phiên bản cũ
+try {
+  Object.keys(sessionStorage).forEach((k) => {
+    if ((k.startsWith("hdlg_lesson") || k.startsWith("hdlg_lessons")) && !k.startsWith("hdlg_v6_")) {
+      sessionStorage.removeItem(k);
+    }
+  });
+} catch (_) {}
 
 const API_BASE =
   ["127.0.0.1", "localhost"].includes(location.hostname) && location.port !== "8000"
@@ -90,7 +99,6 @@ const realLifeSection = document.getElementById("realLifeSection");
 const challengeSection = document.getElementById("challengeSection");
 const mindmapSection = document.getElementById("mindmapSection");
 
-// Chương trình SGK mới: Yêu cầu cần đạt + bộ câu hỏi 3 mức độ
 const requirementsSection = document.getElementById("requirementsSection");
 const requirementsList = document.getElementById("requirements");
 const sgkRef = document.getElementById("sgkRef");
@@ -876,7 +884,7 @@ function extractMindmapBranches(lesson) {
         if (m) headings.push(m[1].replace(/:$/, "").trim());
       }
     });
-    const sourceList = headings.length >= 2 ? headings : bullets.length ? bullets : rawLines.filter(Boolean);
+    const sourceList = bullets.length ? bullets : headings.length ? headings : rawLines.filter(Boolean);
     if (sourceList.length) {
       branches.push({
         id: "mm-theory",
@@ -943,8 +951,8 @@ function extractMindmapBranches(lesson) {
     });
   }
 
-  const appSource = lesson.real_life || lesson.application || lesson.context;
-  const appTarget = lesson.real_life ? "realLifeSection" : lesson.application ? "applicationSection" : "contextSection";
+  const appSource = lesson.real_life || lesson.application;
+  const appTarget = lesson.real_life ? "realLifeSection" : "applicationSection";
   if (appSource) {
     const appLines = String(appSource)
       .split(/\n+/)
@@ -1411,8 +1419,8 @@ function handleQuizSetReward(result) {
 }
 
 /* =========================================================
-   HỖ TRỢ TÁCH BÀI HỌC TỰ ĐỘNG (NẾU MỞ ?sub=N TRÊN DB CŨ CHƯA IMPORT LẠI)
-   & ĐIỀU HƯỚNG CÁC BÀI HỌC TRONG CÙNG CHƯƠNG
+   TÁCH RIÊNG KIẾN THỨC & CÔNG THỨC CHO TỪNG BÀI HỌC
+   (Đảm bảo 1 bài học KHÔNG BAO GIỜ lẫn công thức của bài khác cùng chương)
 ========================================================= */
 let currentLessonData = null;
 
@@ -1426,26 +1434,85 @@ function splitCombinedTheorySections(rawTheory) {
     matches.push({ heading: m[1].trim(), startIdx: m.index, bodyStart: m.index + m[0].length });
   }
   if (matches.length < 2) return [];
-  return matches.map((item, idx) => {
+  const validSubs = [];
+  matches.forEach((item, idx) => {
     const endIdx = idx + 1 < matches.length ? matches[idx + 1].startIdx : text.length;
     const body = text.slice(item.bodyStart, endIdx).trim();
-    const firstBullet = body.split("\n").map((l) => l.replace(/^[-*•+]\s+/, "").trim()).find(Boolean) || "";
-    return {
-      subIndex: idx,
-      title: item.heading,
+    const bodyLines = body.split("\n").map((l) => l.trim()).filter(Boolean);
+    if (!bodyLines.length && /luyện tập chung|bài tập cuối chương/i.test(item.heading)) {
+      return;
+    }
+    const firstBullet = bodyLines.map((l) => l.replace(/^[-*•+]\s+/, "").trim()).find(Boolean) || "";
+    validSubs.push({
+      subIndex: validSubs.length,
+      title: item.heading.replace(/^(Bài\s+\d+)\.\s*/, "$1: "),
       description: firstBullet.replace(/\*\*/g, "").slice(0, 150),
-      theory: `### ${item.heading}\n${body}`
-    };
+      body: body,
+      bodyLines: bodyLines,
+      theory: `### ${item.heading.replace(/^(Bài\s+\d+)\.\s*/, "$1: ")}\n${body}`
+    });
   });
+  return validSubs.length >= 2 ? validSubs : [];
+}
+
+function extractFormulasStrictlyForSubLesson(subSection) {
+  const items = [];
+  subSection.bodyLines.forEach((rawLine) => {
+    const line = rawLine.replace(/^[-*•+]\s+/, "").trim();
+    if (!line) return;
+    const boldMatch = line.match(/^\*\*([^*]{2,70})\*\*\s*[:–-]?\s*(.+)$/);
+    if (boldMatch) {
+      items.push({
+        name: boldMatch[1].trim(),
+        formula: boldMatch[2].trim(),
+        note: ""
+      });
+    } else if (line.includes("$")) {
+      const colonIdx = line.indexOf(":");
+      if (colonIdx > 2 && colonIdx < 55 && !line.slice(0, colonIdx).includes("$")) {
+        items.push({
+          name: line.slice(0, colonIdx).replace(/\*\*/g, "").trim(),
+          formula: line.slice(colonIdx + 1).trim(),
+          note: ""
+        });
+      } else {
+        items.push({
+          name: `Quy tắc ${items.length + 1}`,
+          formula: line,
+          note: ""
+        });
+      }
+    }
+  });
+
+  if (!items.length && subSection.bodyLines.length) {
+    subSection.bodyLines.slice(0, 3).forEach((l, i) => {
+      items.push({
+        name: `Nội dung trọng tâm ${i + 1}`,
+        formula: l.replace(/^[-*•+]\s+/, "").trim(),
+        note: ""
+      });
+    });
+  }
+
+  const shortTitle = subSection.title.replace(/^Bài\s+\d+[:.]?\s*/i, "").trim();
+  return [{
+    category: `Công thức & Quy tắc trọng tâm — ${shortTitle}`,
+    items: items
+  }];
 }
 
 function applyVirtualSubLessonIfAny(rawLesson) {
-  if (subIndexFromUrl === null || isNaN(subIndexFromUrl)) return rawLesson;
   const subSections = splitCombinedTheorySections(rawLesson.theory);
-  if (!subSections.length || !subSections[subIndexFromUrl]) return rawLesson;
+  if (!subSections.length) return rawLesson;
 
-  const chosen = subSections[subIndexFromUrl];
+  // Nếu bản ghi trong DB vẫn là bản ghi gộp nhiều bài, tự động chọn đúng bài theo ?sub=N (mặc định bài 0)
+  const targetIdx = (subIndexFromUrl !== null && !isNaN(subIndexFromUrl) && subSections[subIndexFromUrl])
+    ? subIndexFromUrl
+    : 0;
+  const chosen = subSections[targetIdx];
   const totalSubs = subSections.length;
+
   const clone = Object.assign({}, rawLesson);
   clone._virtualSiblings = subSections.map((s) => ({
     id: rawLesson.id,
@@ -1454,6 +1521,8 @@ function applyVirtualSubLessonIfAny(rawLesson) {
     topic: rawLesson.topic,
     grade: rawLesson.grade
   }));
+  clone._currentSubIndex = targetIdx;
+
   clone.context_title = rawLesson.context_title && /^(Chương|Chủ đề)/i.test(rawLesson.context_title)
     ? rawLesson.context_title
     : rawLesson.title;
@@ -1461,9 +1530,16 @@ function applyVirtualSubLessonIfAny(rawLesson) {
   if (chosen.description) clone.description = chosen.description;
   clone.theory = chosen.theory;
 
+  // Tách riêng Định nghĩa, Yêu cầu cần đạt và Công thức của RIÊNG bài học này (không lấy của bài khác trong chương!)
+  clone.definition = chosen.bodyLines.slice(0, 2).join("\n") || chosen.body;
+  clone.formulas = extractFormulasStrictlyForSubLesson(chosen);
+  clone.requirements = chosen.bodyLines.slice(0, 3).map((l) =>
+    "Nắm vững và vận dụng: " + l.replace(/^[-*•+]\s+/, "").replace(/\*\*/g, "").trim()
+  );
+
   if (Array.isArray(rawLesson.quiz) && rawLesson.quiz.length >= totalSubs * 2) {
     const chunkSize = Math.max(3, Math.ceil(rawLesson.quiz.length / totalSubs));
-    const startQ = Math.min(subIndexFromUrl * Math.floor(rawLesson.quiz.length / totalSubs), Math.max(0, rawLesson.quiz.length - chunkSize));
+    const startQ = Math.min(targetIdx * Math.floor(rawLesson.quiz.length / totalSubs), Math.max(0, rawLesson.quiz.length - chunkSize));
     clone.quiz = rawLesson.quiz.slice(startQ, startQ + chunkSize);
   }
   return clone;
@@ -1497,7 +1573,7 @@ async function loadChapterSiblingLessons(lesson) {
     siblings = lesson._virtualSiblings;
   } else {
     let allGradeLessons = null;
-    const cacheKey = `hdlg_lessons_${subject}_${g}`;
+    const cacheKey = `hdlg_v6_lessons_${subject}_${g}`;
     try {
       const cached = sessionStorage.getItem(cacheKey);
       if (cached) allGradeLessons = JSON.parse(cached);
@@ -1536,10 +1612,11 @@ async function loadChapterSiblingLessons(lesson) {
 
   let completedCount = 0;
   let currentIdx = -1;
+  const activeSubIdx = typeof lesson._currentSubIndex === "number" ? lesson._currentSubIndex : subIndexFromUrl;
 
   const listHtml = siblings.map((item, idx) => {
     const isCurrent = typeof item.subIndex === "number"
-      ? item.subIndex === subIndexFromUrl
+      ? item.subIndex === activeSubIdx
       : String(item.id) === String(lesson.id);
     if (isCurrent) currentIdx = idx;
 
@@ -1560,8 +1637,16 @@ async function loadChapterSiblingLessons(lesson) {
 
   chapterLessonsList.innerHTML = listHtml;
   if (chapterSidebarProgress) {
-    chapterSidebarProgress.textContent = `${ currentIdx >= 0 ? currentIdx + 1 : completedCount }/${siblings.length} bài`;
+    chapterSidebarProgress.textContent = `Bài ${currentIdx >= 0 ? currentIdx + 1 : 1}/${siblings.length}`;
   }
+
+  // Cuộn mượt mục bài đang học vào tầm nhìn trong danh sách bên trái
+  requestAnimationFrame(() => {
+    const activeLink = chapterLessonsList.querySelector(".ch-lesson-link.active");
+    if (activeLink && typeof activeLink.scrollIntoView === "function") {
+      activeLink.scrollIntoView({ block: "nearest", behavior: "smooth" });
+    }
+  });
 
   // Render Bottom Prev / Next Chapter Navigation Bar
   if (chapterNavFooter && currentIdx !== -1) {
@@ -1643,9 +1728,11 @@ function renderLesson(rawLesson) {
     setSectionVisible(definitionSection, false);
   }
 
-  if (lesson.context || lesson.context_title) {
+  // Nếu context_title là tên Chương (dùng để gom nhóm Chương), ẩn hộp context chung của cả chương
+  // để trang bài học chỉ hiển thị đúng kiến thức của riêng bài học đó.
+  if (!chapName && (lesson.context || lesson.context_title)) {
     if (contextTitle) {
-      contextTitle.textContent = chapName ? `📖 Tổng quan ${chapName}` : (lesson.context_title || "Bối cảnh thực tế");
+      contextTitle.textContent = lesson.context_title || "Bối cảnh thực tế";
     }
     setText(context, lesson.context || "");
     setSectionVisible(contextSection, !!lesson.context);
@@ -1957,7 +2044,7 @@ async function loadLesson() {
 
   try {
     let lesson = null;
-    const cached = sessionStorage.getItem(`hdlg_lesson_${lessonId}`);
+    const cached = sessionStorage.getItem(`hdlg_v6_lesson_${lessonId}`);
     if (cached) {
       try { lesson = JSON.parse(cached); } catch (_) {}
     }
@@ -1967,7 +2054,7 @@ async function loadLesson() {
         throw new Error(`Không thể tải bài học. HTTP ${response.status}`);
       }
       lesson = await response.json();
-      try { sessionStorage.setItem(`hdlg_lesson_${lessonId}`, JSON.stringify(lesson)); } catch (_) {}
+      try { sessionStorage.setItem(`hdlg_v6_lesson_${lessonId}`, JSON.stringify(lesson)); } catch (_) {}
     }
     if (!lesson || lesson.id === undefined || lesson.id === null) {
       throw new Error("API trả về bài học nhưng không có ID.");

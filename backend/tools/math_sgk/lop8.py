@@ -1,7 +1,6 @@
 """Dữ liệu bài học SGK Toán Lớp 8 — Kết nối tri thức với cuộc sống (NXB Giáo dục Việt Nam).
-Cấu trúc 3 cấp: Lớp 8 ➔ Chương/Chủ đề (topic) ➔ Từng Bài học (title).
-Mỗi bài học gồm đầy đủ Yêu cầu cần đạt (requirements), Định nghĩa, Lý thuyết, Công thức, Ví dụ, Ứng dụng thực tế
-và đúng 10 câu hỏi luyện tập theo 3 mức độ: 4 Nhận biết + 4 Thông hiểu + 2 Vận dụng.
+Cấu trúc 3 cấp: Lớp 8 ➔ Chương/Chủ đề (topic) ➔ Từng Bài học độc lập (title).
+Mỗi bài học chỉ chứa kiến thức, công thức, ví dụ và 10 câu hỏi của riêng bài học đó.
 """
 
 GRADE = 8
@@ -18,8 +17,8 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
                    'đơn thức.',
                    'Nhận biết được các đơn thức đồng dạng và thực hiện được phép cộng, phép trừ các đơn thức '
                    'đồng dạng.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Bậc của đơn thức $a x^m y^n z^p$ ($a \\neq '
-                   '0$)** ($\\text{Bậc} = m + n + p$) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 1: Đơn thức** để giải bài tập minh họa và bài toán thực '
+                   'tiễn.'],
   'definition': 'Đơn thức là biểu thức đại số chỉ gồm một số hoặc một biến, hoặc có dạng tích của những số '
                 'và biến. Hai đơn thức đồng dạng là hai đơn thức với hệ số khác $0$ và có phần biến giống '
                 'nhau.',
@@ -62,29 +61,31 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 1: Đơn thức**, công thức hoặc quy tắc nào sau đây biểu '
-                 'diễn đúng **Bậc của đơn thức $a x^m y^n z^p$ ($a \\neq 0$)**?',
-            'options': ['$a x^m y^n + b x^m y^n = (a + b)x^m y^n; \\quad a x^m y^n - b x^m y^n = (a - b)x^m '
-                        'y^n$',
-                        '$\\deg(P) = \\max\\{\\text{bậc của các hạng tử trong dạng thu gọn của } P\\}$',
+            'q': 'Trong **Bài 1: Đơn thức**, quy tắc hoặc công thức nào sau đây xác định đúng **Bậc của đơn '
+                 'thức $a x^m y^n z^p$ ($a \\neq 0$)**?',
+            'options': ['$\\text{Bậc} = m - n + p$',
+                        'Đảo ngược vế của quy tắc: $\\text{Bậc} = m + n + p$',
                         '$\\text{Bậc} = m + n + p$',
-                        'Thu gọn $P(x, y)$ rồi thay $x = a, y = b$ vào tính'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\text{Bậc} = m + n + p$'],
             'answer': 2,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 1: Đơn thức, **Bậc của đơn thức $a x^m y^n '
-                        'z^p$ ($a \\neq 0$)** được xác định bởi: $\\text{Bậc} = m + n + p$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 1: Đơn thức, **Bậc của đơn thức $a x^m y^n z^p$ '
+                        '($a \\neq 0$)** được xác định bởi: $\\text{Bậc} = m + n + p$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 1: Đơn thức**, nội dung/biểu thức $a x^m y^n + b x^m y^n = (a + b)x^m y^n; '
-                 '\\quad a x^m y^n - b x^m y^n = (a - b)x^m y^n$ là quy tắc hoặc công thức của mục nào sau '
-                 'đây?',
-            'options': ['Bậc của đơn thức $a x^m y^n z^p$ ($a \\neq 0$)',
-                        'Định nghĩa bậc của đa thức $P$',
-                        'Giá trị của đa thức $P(x, y)$ tại $x = a, y = b$',
-                        'Cộng, trừ hai đơn thức đồng dạng'],
+            'q': 'Khi học **Bài 1: Đơn thức**, biểu thức hoặc quy tắc nào dưới đây biểu diễn đúng **Cộng, '
+                 'trừ hai đơn thức đồng dạng**?',
+            'options': ['$a x^m y^n - b x^m y^n = (a + b)x^m y^n; \\quad a x^m y^n - b x^m y^n = (a - b)x^m '
+                        'y^n$',
+                        'Đảo ngược vế của quy tắc: $a x^m y^n + b x^m y^n = (a + b)x^m y^n; \\quad a x^m y^n '
+                        '- b x^m y^n = (a - b)x^m y^n$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $a x^m y^n + b x^m y^n = (a + '
+                        'b)x^m y^n; \\quad a x^m y^n - b x^m y^n = (a - b)x^m y^n$',
+                        '$a x^m y^n + b x^m y^n = (a + b)x^m y^n; \\quad a x^m y^n - b x^m y^n = (a - b)x^m '
+                        'y^n$'],
             'answer': 3,
-            'solution': 'Trong Bài 1: Đơn thức, biểu thức/quy tắc $a x^m y^n + b x^m y^n = (a + b)x^m y^n; '
-                        '\\quad a x^m y^n - b x^m y^n = (a - b)x^m y^n$ chính là nội dung của **Cộng, trừ '
-                        'hai đơn thức đồng dạng**.'},
+            'solution': 'Trong Bài 1: Đơn thức, **Cộng, trừ hai đơn thức đồng dạng** có công thức/quy tắc '
+                        'là: $a x^m y^n + b x^m y^n = (a + b)x^m y^n; \\quad a x^m y^n - b x^m y^n = (a - '
+                        'b)x^m y^n$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Kết quả của phép tính $5x^2y - 8x^2y + 2x^2y$ là:',
@@ -95,15 +96,17 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 1: Đơn thức** (Chương I: Đa thức), khẳng định nào sau đây phản ánh **đúng** '
-                 'yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Nhận biết được đa thức nhiều biến và các hạng tử của đa thức.',
+            'q': 'Để nắm vững bản chất của **Bài 1: Đơn thức**, nhận định nào sau đây là **chính xác**?',
+            'options': ['Nhận biết được đơn thức nhiều biến, đơn thức thu gọn, hệ số, phần biến và bậc của '
+                        'một đơn thức. (với dấu ngược lại)',
                         'Nhận biết được đơn thức nhiều biến, đơn thức thu gọn, hệ số, phần biến và bậc của '
                         'một đơn thức.',
-                        'Thu gọn được đa thức và xác định được bậc của đa thức đã thu gọn.',
-                        'Tính được giá trị của đa thức khi biết giá trị của các biến.'],
+                        'Đảo ngược vế của quy tắc: Nhận biết được đơn thức nhiều biến, đơn thức thu gọn, hệ '
+                        'số, phần biến và bậc của một đơn thức.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nhận biết được đơn thức nhiều '
+                        'biến, đơn thức thu gọn, hệ số, phần biến và bậc của một đơn thức.'],
             'answer': 1,
-            'solution': 'Theo yêu cầu cần đạt của Bài 1: Đơn thức: Nhận biết được đơn thức nhiều biến, đơn '
+            'solution': 'Theo nội dung cốt lõi của Bài 1: Đơn thức: Nhận biết được đơn thức nhiều biến, đơn '
                         'thức thu gọn, hệ số, phần biến và bậc của một đơn thức.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -119,39 +122,37 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 1: Đơn thức**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được đơn thức nhiều '
-                           'biến, đơn thức thu gọn, hệ số, phần biến và bậc của một đơn thức.',
-                           'Quy tắc/công thức **Bậc của đơn thức $a x^m y^n z^p$ ($a \\neq 0$)** trong bài '
-                           'được xác định bởi: $\\text{Bậc} = m + n + p$.',
-                           'Trong mọi trường hợp, **Bậc của đơn thức $a x^m y^n z^p$ ($a \\neq 0$)** luôn '
-                           'được tính bằng công thức $\\deg(P) = \\max\\{\\text{bậc của các hạng tử trong '
-                           'dạng thu gọn của } P\\}$ (thuộc Định nghĩa bậc của đa thức $P$) mà không cần '
-                           'điều kiện của Bài 1: Đơn thức.',
-                           'Với bài toán minh họa: “Thu gọn đơn thức $A = (-2x^2y) \\cdot 3xy^3$, chỉ ra hệ '
-                           'số, phần biến và bậc của đơn thức thu gọn.”, lời giải đúng là: Ta có: $A = (-2 '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 1: Đơn thức**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết được đơn thức nhiều biến, đơn '
+                           'thức thu gọn, hệ số, phần biến và bậc của một đơn thức.',
+                           'Trong **Bài 1: Đơn thức**, quy tắc/công thức **Bậc của đơn thức $a x^m y^n z^p$ '
+                           '($a \\neq 0$)** được viết là: $\\text{Bậc} = m + n + p$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $\\text{Bậc} = m - n + p$ thì kết quả của '
+                           '**Bậc của đơn thức $a x^m y^n z^p$ ($a \\neq 0$)** trong **Bài 1: Đơn thức** vẫn '
+                           'không thay đổi.',
+                           'Xét ví dụ của bài: “Thu gọn đơn thức $A = (-2x^2y) \\cdot 3xy^3$, chỉ ra hệ số, '
+                           'phần biến và bậc của đơn thức thu gọn.”, kết quả giải đúng là: Ta có: $A = (-2 '
                            '\\cdot 3)(x^2 \\cdot x)(y \\cdot y^3) = -6x^3y^4$. Hệ số là $-6$, phần biến là '
                            '$x^3y^4$, bậc của đơn thức là $3 + 4 = 7$.'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 1: Đơn thức. b) **Đúng** theo công thức '
-                        'trọng tâm **Bậc của đơn thức $a x^m y^n z^p$ ($a \\neq 0$)** ($\\text{Bậc} = m + n '
-                        '+ p$). c) **Sai** vì $\\deg(P) = \\max\\{\\text{bậc của các hạng tử trong dạng thu '
-                        'gọn của } P\\}$ là công thức của nội dung khác, không phải quy tắc chung của **Bậc '
-                        'của đơn thức $a x^m y^n z^p$ ($a \\neq 0$)**. d) **Đúng** theo lời giải ví dụ minh '
-                        'họa trong bài học.'},
+                        '**Bậc của đơn thức $a x^m y^n z^p$ ($a \\neq 0$)** ($\\text{Bậc} = m + n + p$). c) '
+                        '**Sai** vì công thức đúng của **Bậc của đơn thức $a x^m y^n z^p$ ($a \\neq 0$)** '
+                        'phải là $\\text{Bậc} = m + n + p$ chứ không phải $\\text{Bậc} = m - n + p$. d) '
+                        '**Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 1: Đơn thức** để giải quyết tình huống sau: Thu gọn đơn thức $A = '
-                 '(-2x^2y) \\cdot 3xy^3$, chỉ ra hệ số, phần biến và bậc của đơn thức thu gọn. Kết quả và '
-                 'hướng giải nào dưới đây là **đúng**?',
-            'options': ['Nhóm các hạng tử đồng dạng: $P = (2x^2y - 2x^2y) + 5x^2y^2 + (-3xy + 4xy) - 1 = '
-                        '5x^2y^2 + xy - 1$. Các hạng tử của dạng thu gọn có bậc lần lượt là $4; 2; 0$...',
-                        '- $M + N = (3x^2 + x^2) + (-2xy + 2xy) + (y^2 - 3y^2) = 4x^2 - 2y^2$. - $M - N = '
-                        '(3x^2 - x^2) + (-2xy - 2xy) + (y^2 + 3y^2) = 2x^2 - 4xy + 4y^2$.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 1: Đơn thức** để giải bài toán sau: Thu gọn đơn '
+                 'thức $A = (-2x^2y) \\cdot 3xy^3$, chỉ ra hệ số, phần biến và bậc của đơn thức thu gọn. '
+                 'Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Ta có: $A = (-2 \\cdot 3)(x^2 \\cdot x)(y \\cdot y^3) = -6x^3y^4$. Hệ số là $-6$, '
+                        'phần biến là $x^3y^4$, bậc của đơn thức là $3 - 4 = 7$.',
+                        'Ta có: $A = (-2 \\cdot 3)(x^2 \\cdot x)(y \\cdot y^3) = -6x^3y^4$. Hệ số là $-6$, '
+                        'phần biến là $x^3y^4$, bậc của đơn thức là $3 + 4 = 6$.',
                         'Ta có: $A = (-2 \\cdot 3)(x^2 \\cdot x)(y \\cdot y^3) = -6x^3y^4$. Hệ số là $-6$, '
                         'phần biến là $x^3y^4$, bậc của đơn thức là $3 + 4 = 7$.',
-                        'Ta có $(x + 2y)(2x - y) = 2x^2 - xy + 4xy - 2y^2 = 2x^2 + 3xy - 2y^2$. Do đó $P = '
-                        '2x^2 + 3xy - 2y^2 - 2x^2 = 3xy - 2y^2$.'],
+                        'Ta có: $A = (-4 \\cdot 3)(x^2 \\cdot x)(y \\cdot y^3) = -6x^3y^4$. Hệ số là $-6$, '
+                        'phần biến là $x^3y^4$, bậc của đơn thức là $3 + 4 = 7$.'],
             'answer': 2,
             'solution': 'Lời giải chi tiết theo Bài 1: Đơn thức: Ta có: $A = (-2 \\cdot 3)(x^2 \\cdot x)(y '
                         '\\cdot y^3) = -6x^3y^4$.\n'
@@ -215,29 +216,31 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 2: Đa thức**, công thức hoặc quy tắc nào sau đây biểu '
-                 'diễn đúng **Định nghĩa bậc của đa thức $P$**?',
-            'options': ['Thu gọn $P(x, y)$ rồi thay $x = a, y = b$ vào tính',
-                        '$\\text{Bậc} = m + n + p$',
-                        '$a x^m y^n + b x^m y^n = (a + b)x^m y^n; \\quad a x^m y^n - b x^m y^n = (a - b)x^m '
-                        'y^n$',
+            'q': 'Trong **Bài 2: Đa thức**, quy tắc hoặc công thức nào sau đây xác định đúng **Định nghĩa '
+                 'bậc của đa thức $P$**?',
+            'options': ['$\\deg(P) = \\max\\{\\text{bậc của các hạng tử trong dạng thu gọn của } P\\}$ (với '
+                        'dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: $\\deg(P) = \\max\\{\\text{bậc của các hạng tử trong dạng '
+                        'thu gọn của } P\\}$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\deg(P) = \\max\\{\\text{bậc '
+                        'của các hạng tử trong dạng thu gọn của } P\\}$',
                         '$\\deg(P) = \\max\\{\\text{bậc của các hạng tử trong dạng thu gọn của } P\\}$'],
             'answer': 3,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 2: Đa thức, **Định nghĩa bậc của đa thức '
-                        '$P$** được xác định bởi: $\\deg(P) = \\max\\{\\text{bậc của các hạng tử trong dạng '
-                        'thu gọn của } P\\}$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 2: Đa thức, **Định nghĩa bậc của đa thức $P$** '
+                        'được xác định bởi: $\\deg(P) = \\max\\{\\text{bậc của các hạng tử trong dạng thu '
+                        'gọn của } P\\}$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 2: Đa thức**, nội dung/biểu thức Thu gọn $P(x, y)$ rồi thay $x = a, y = b$ vào '
-                 'tính là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Giá trị của đa thức $P(x, y)$ tại $x = a, y = b$',
-                        'Định nghĩa bậc của đa thức $P$',
-                        'Bậc của đơn thức $a x^m y^n z^p$ ($a \\neq 0$)',
-                        'Cộng, trừ hai đơn thức đồng dạng'],
+            'q': 'Khi học **Bài 2: Đa thức**, biểu thức hoặc quy tắc nào dưới đây biểu diễn đúng **Giá trị '
+                 'của đa thức $P(x, y)$ tại $x = a, y = b$**?',
+            'options': ['Thu gọn $P(x, y)$ rồi thay $x = a, y = b$ vào tính',
+                        'Thu gọn $P(x, y)$ rồi thay $x = a, y = b$ vào tính (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Thu gọn $P(x, y)$ rồi thay $x = a, y = b$ vào tính',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Thu gọn $P(x, y)$ rồi thay $x = '
+                        'a, y = b$ vào tính'],
             'answer': 0,
-            'solution': 'Trong Bài 2: Đa thức, biểu thức/quy tắc Thu gọn $P(x, y)$ rồi thay $x = a, y = b$ '
-                        'vào tính chính là nội dung của **Giá trị của đa thức $P(x, y)$ tại $x = a, y = '
-                        'b$**.'},
+            'solution': 'Trong Bài 2: Đa thức, **Giá trị của đa thức $P(x, y)$ tại $x = a, y = b$** có công '
+                        'thức/quy tắc là: Thu gọn $P(x, y)$ rồi thay $x = a, y = b$ vào tính.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Bậc của đa thức $P = x^4y - 2x^2y^2 + 3xy - x^4y + 1$ sau khi thu gọn là:',
@@ -249,16 +252,15 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 2: Đa thức** (Chương I: Đa thức), khẳng định nào sau đây phản ánh **đúng** '
-                 'yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Nhận biết được đơn thức nhiều biến, đơn thức thu gọn, hệ số, phần biến và bậc của '
-                        'một đơn thức.',
-                        'Nhận biết được các đơn thức đồng dạng và thực hiện được phép cộng, phép trừ các đơn '
-                        'thức đồng dạng.',
+            'q': 'Để nắm vững bản chất của **Bài 2: Đa thức**, nhận định nào sau đây là **chính xác**?',
+            'options': ['Nhận biết được đa thức nhiều biến và các hạng tử của đa thức. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Nhận biết được đa thức nhiều biến và các hạng tử của đa '
+                        'thức.',
                         'Nhận biết được đa thức nhiều biến và các hạng tử của đa thức.',
-                        'Thực hiện được phép cộng và phép trừ hai đa thức nhiều biến.'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nhận biết được đa thức nhiều '
+                        'biến và các hạng tử của đa thức.'],
             'answer': 2,
-            'solution': 'Theo yêu cầu cần đạt của Bài 2: Đa thức: Nhận biết được đa thức nhiều biến và các '
+            'solution': 'Theo nội dung cốt lõi của Bài 2: Đa thức: Nhận biết được đa thức nhiều biến và các '
                         'hạng tử của đa thức.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -274,36 +276,38 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 2: Đa thức**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được đa thức nhiều biến '
-                           'và các hạng tử của đa thức.',
-                           'Quy tắc/công thức **Định nghĩa bậc của đa thức $P$** trong bài được xác định '
-                           'bởi: $\\deg(P) = \\max\\{\\text{bậc của các hạng tử trong dạng thu gọn của } '
-                           'P\\}$.',
-                           'Trong mọi trường hợp, **Định nghĩa bậc của đa thức $P$** luôn được tính bằng '
-                           'công thức $\\text{Bậc} = m + n + p$ (thuộc Bậc của đơn thức $a x^m y^n z^p$ ($a '
-                           '\\neq 0$)) mà không cần điều kiện của Bài 2: Đa thức.',
-                           'Với bài toán minh họa: “Thu gọn và tìm bậc của đa thức $P = 2x^2y - 3xy + '
-                           '5x^2y^2 - 2x^2y + 4xy - 1$.”, lời giải đúng là: Nhóm các hạng tử đồng dạng: $P = '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 2: Đa thức**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết được đa thức nhiều biến và các '
+                           'hạng tử của đa thức.',
+                           'Trong **Bài 2: Đa thức**, quy tắc/công thức **Định nghĩa bậc của đa thức $P$** '
+                           'được viết là: $\\deg(P) = \\max\\{\\text{bậc của các hạng tử trong dạng thu gọn '
+                           'của } P\\}$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $\\deg(P) = \\max\\{\\text{bậc của các hạng '
+                           'tử trong dạng thu gọn của } P\\}$ (với dấu ngược lại) thì kết quả của **Định '
+                           'nghĩa bậc của đa thức $P$** trong **Bài 2: Đa thức** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Thu gọn và tìm bậc của đa thức $P = 2x^2y - 3xy + 5x^2y^2 - '
+                           '2x^2y + 4xy - 1$.”, kết quả giải đúng là: Nhóm các hạng tử đồng dạng: $P = '
                            '(2x^2y - 2x^2y) + 5x^2y^2 + (-3xy + 4xy) - 1 = 5x^2y^2 + xy - 1$. Các hạng tử '
-                           'của dạng thu gọn có bậc lần l...'],
+                           'của dạng thu gọn có bậc...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 2: Đa thức. b) **Đúng** theo công thức '
-                        'trọng tâm **Định nghĩa bậc của đa thức $P$** ($\\deg(P) = \\max\\{\\text{bậc của '
-                        'các hạng tử trong dạng thu gọn của } P\\}$). c) **Sai** vì $\\text{Bậc} = m + n + '
-                        'p$ là công thức của nội dung khác, không phải quy tắc chung của **Định nghĩa bậc '
-                        'của đa thức $P$**. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        '**Định nghĩa bậc của đa thức $P$** ($\\deg(P) = \\max\\{\\text{bậc của các hạng tử '
+                        'trong dạng thu gọn của } P\\}$). c) **Sai** vì công thức đúng của **Định nghĩa bậc '
+                        'của đa thức $P$** phải là $\\deg(P) = \\max\\{\\text{bậc của các hạng tử trong dạng '
+                        'thu gọn của } P\\}$ chứ không phải $\\deg(P) = \\max\\{\\text{bậc của các hạng tử '
+                        'trong dạng thu gọn của } P\\}$ (với dấu ngược lại). d) **Đúng** theo lời giải ví dụ '
+                        'minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 2: Đa thức** để giải quyết tình huống sau: Thu gọn và tìm bậc của '
-                 'đa thức $P = 2x^2y - 3xy + 5x^2y^2 - 2x^2y + 4xy - 1$. Kết quả và hướng giải nào dưới đây '
-                 'là **đúng**?',
-            'options': ['Ta có: $A = (-2 \\cdot 3)(x^2 \\cdot x)(y \\cdot y^3) = -6x^3y^4$. Hệ số là $-6$, '
-                        'phần biến là $x^3y^4$, bậc của đơn thức là $3 + 4 = 7$.',
-                        '- $M + N = (3x^2 + x^2) + (-2xy + 2xy) + (y^2 - 3y^2) = 4x^2 - 2y^2$. - $M - N = '
-                        '(3x^2 - x^2) + (-2xy - 2xy) + (y^2 + 3y^2) = 2x^2 - 4xy + 4y^2$.',
-                        'Ta có $(x + 2y)(2x - y) = 2x^2 - xy + 4xy - 2y^2 = 2x^2 + 3xy - 2y^2$. Do đó $P = '
-                        '2x^2 + 3xy - 2y^2 - 2x^2 = 3xy - 2y^2$.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 2: Đa thức** để giải bài toán sau: Thu gọn và tìm '
+                 'bậc của đa thức $P = 2x^2y - 3xy + 5x^2y^2 - 2x^2y + 4xy - 1$. Cách giải và kết quả nào '
+                 'dưới đây là **đúng**?',
+            'options': ['Nhóm các hạng tử đồng dạng: $P = (2x^2y - 2x^2y) - 5x^2y^2 + (-3xy + 4xy) - 1 = '
+                        '5x^2y^2 + xy - 1$. Các hạng tử của dạng thu gọn có bậc lần lượt là $4; 2; 0$...',
+                        'Nhóm các hạng tử đồng dạng: $P = (2x^2y - 2x^2y) + 5x^2y^2 + (-3xy + 4xy) - 1 = '
+                        '5x^2y^2 + xy - 1$. Các hạng tử của dạng thu gọn có bậc lần lượt là $4; 2; 1$...',
+                        'Nhóm các hạng tử đồng dạng: $P = (2x^2y - 2x^2y) + 5x^2y^4 + (-3xy + 4xy) - 1 = '
+                        '5x^2y^2 + xy - 1$. Các hạng tử của dạng thu gọn có bậc lần lượt là $4; 2; 0$...',
                         'Nhóm các hạng tử đồng dạng: $P = (2x^2y - 2x^2y) + 5x^2y^2 + (-3xy + 4xy) - 1 = '
                         '5x^2y^2 + xy - 1$. Các hạng tử của dạng thu gọn có bậc lần lượt là $4; 2; 0$...'],
             'answer': 3,
@@ -329,8 +333,8 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
   'description': 'Quy tắc cộng, trừ hai đa thức nhiều biến và vận dụng tính chất của phép cộng đa thức.',
   'requirements': ['Thực hiện được phép cộng và phép trừ hai đa thức nhiều biến.',
                    'Vận dụng được tính chất giao hoán, kết hợp và quy tắc dấu ngoặc trong tính toán đa thức.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Bỏ dấu ngoặc trước có dấu cộng** ($A + (B - '
-                   'C + D) = A + B - C + D$) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 3: Phép cộng và phép trừ đa thức** để giải bài tập minh họa '
+                   'và bài toán thực tiễn.'],
   'definition': 'Cộng (hay trừ) hai đa thức tức là thu gọn đa thức nhận được sau khi nối hai đa thức đã cho '
                 'bởi dấu $+$ (hay dấu $-$) và áp dụng quy tắc bỏ dấu ngoặc.',
   'theory': 'Các bước cộng, trừ hai đa thức $A$ và $B$:\n'
@@ -369,26 +373,28 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 3: Phép cộng và phép trừ đa thức**, công thức hoặc quy '
-                 'tắc nào sau đây biểu diễn đúng **Bỏ dấu ngoặc trước có dấu cộng**?',
+            'q': 'Trong **Bài 3: Phép cộng và phép trừ đa thức**, quy tắc hoặc công thức nào sau đây xác '
+                 'định đúng **Bỏ dấu ngoặc trước có dấu cộng**?',
             'options': ['$A + (B - C + D) = A + B - C + D$',
-                        '$A - (B - C + D) = A - B + C - D$',
-                        '$A + B = B + A; \\quad (A + B) + C = A + (B + C)$',
-                        '$\\text{Bậc} = m + n + p$'],
+                        '$A - (B - C + D) = A + B - C + D$',
+                        'Đảo ngược vế của quy tắc: $A + (B - C + D) = A + B - C + D$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $A + (B - C + D) = A + B - C + '
+                        'D$'],
             'answer': 0,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 3: Phép cộng và phép trừ đa thức, **Bỏ dấu '
-                        'ngoặc trước có dấu cộng** được xác định bởi: $A + (B - C + D) = A + B - C + D$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 3: Phép cộng và phép trừ đa thức, **Bỏ dấu ngoặc '
+                        'trước có dấu cộng** được xác định bởi: $A + (B - C + D) = A + B - C + D$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 3: Phép cộng và phép trừ đa thức**, nội dung/biểu thức $A - (B - C + D) = A - '
-                 'B + C - D$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Bỏ dấu ngoặc trước có dấu cộng',
-                        'Bỏ dấu ngoặc trước có dấu trừ',
-                        'Tính chất giao hoán và kết hợp',
-                        'Bậc của đơn thức $a x^m y^n z^p$ ($a \\neq 0$)'],
+            'q': 'Khi học **Bài 3: Phép cộng và phép trừ đa thức**, biểu thức hoặc quy tắc nào dưới đây biểu '
+                 'diễn đúng **Bỏ dấu ngoặc trước có dấu trừ**?',
+            'options': ['$A - (B - C - D) = A - B + C - D$',
+                        '$A - (B - C + D) = A - B + C - D$',
+                        'Đảo ngược vế của quy tắc: $A - (B - C + D) = A - B + C - D$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $A - (B - C + D) = A - B + C - '
+                        'D$'],
             'answer': 1,
-            'solution': 'Trong Bài 3: Phép cộng và phép trừ đa thức, biểu thức/quy tắc $A - (B - C + D) = A '
-                        '- B + C - D$ chính là nội dung của **Bỏ dấu ngoặc trước có dấu trừ**.'},
+            'solution': 'Trong Bài 3: Phép cộng và phép trừ đa thức, **Bỏ dấu ngoặc trước có dấu trừ** có '
+                        'công thức/quy tắc là: $A - (B - C + D) = A - B + C - D$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Đa thức $C$ thỏa mãn $C + (2x^2y - 3xy) = 5x^2y + xy - 1$ là:',
@@ -399,16 +405,16 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 3: Phép cộng và phép trừ đa thức** (Chương I: Đa thức), khẳng định nào sau '
-                 'đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Nhận biết được đơn thức nhiều biến, đơn thức thu gọn, hệ số, phần biến và bậc của '
-                        'một đơn thức.',
-                        'Nhận biết được các đơn thức đồng dạng và thực hiện được phép cộng, phép trừ các đơn '
-                        'thức đồng dạng.',
-                        'Nhận biết được đa thức nhiều biến và các hạng tử của đa thức.',
+            'q': 'Để nắm vững bản chất của **Bài 3: Phép cộng và phép trừ đa thức**, nhận định nào sau đây '
+                 'là **chính xác**?',
+            'options': ['Thực hiện được phép cộng và phép trừ hai đa thức nhiều biến. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Thực hiện được phép cộng và phép trừ hai đa thức nhiều '
+                        'biến.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Thực hiện được phép cộng và '
+                        'phép trừ hai đa thức nhiều biến.',
                         'Thực hiện được phép cộng và phép trừ hai đa thức nhiều biến.'],
             'answer': 3,
-            'solution': 'Theo yêu cầu cần đạt của Bài 3: Phép cộng và phép trừ đa thức: Thực hiện được phép '
+            'solution': 'Theo nội dung cốt lõi của Bài 3: Phép cộng và phép trừ đa thức: Thực hiện được phép '
                         'cộng và phép trừ hai đa thức nhiều biến.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -425,38 +431,38 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 3: Phép cộng và phép '
-                 'trừ đa thức**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Thực hiện được phép cộng và phép '
-                           'trừ hai đa thức nhiều biến.',
-                           'Quy tắc/công thức **Bỏ dấu ngoặc trước có dấu cộng** trong bài được xác định '
-                           'bởi: $A + (B - C + D) = A + B - C + D$.',
-                           'Trong mọi trường hợp, **Bỏ dấu ngoặc trước có dấu cộng** luôn được tính bằng '
-                           'công thức $\\text{Bậc} = m + n + p$ (thuộc Bậc của đơn thức $a x^m y^n z^p$ ($a '
-                           '\\neq 0$)) mà không cần điều kiện của Bài 3: Phép cộng và phép trừ đa thức.',
-                           'Với bài toán minh họa: “Cho hai đa thức $M = 3x^2 - 2xy + y^2$ và $N = x^2 + 2xy '
-                           '- 3y^2$. Tính $M + N$ và $M - N$.”, lời giải đúng là: - $M + N = (3x^2 + x^2) + '
-                           '(-2xy + 2xy) + (y^2 - 3y^2) = 4x^2 - 2y^2$. - $M - N = (3x^2 - x^2) + (-2xy - '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 3: Phép cộng và phép trừ đa '
+                 'thức**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Thực hiện được phép cộng và phép trừ hai '
+                           'đa thức nhiều biến.',
+                           'Trong **Bài 3: Phép cộng và phép trừ đa thức**, quy tắc/công thức **Bỏ dấu ngoặc '
+                           'trước có dấu cộng** được viết là: $A + (B - C + D) = A + B - C + D$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $A - (B - C + D) = A + B - C + D$ thì kết '
+                           'quả của **Bỏ dấu ngoặc trước có dấu cộng** trong **Bài 3: Phép cộng và phép trừ '
+                           'đa thức** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Cho hai đa thức $M = 3x^2 - 2xy + y^2$ và $N = x^2 + 2xy - '
+                           '3y^2$. Tính $M + N$ và $M - N$.”, kết quả giải đúng là: - $M + N = (3x^2 + x^2) '
+                           '+ (-2xy + 2xy) + (y^2 - 3y^2) = 4x^2 - 2y^2$. - $M - N = (3x^2 - x^2) + (-2xy - '
                            '2xy) + (y^2 + 3y^2) = 2x^2 - 4xy + 4y^2$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 3: Phép cộng và phép trừ đa thức. b) '
-                        '**Đúng** theo công thức trọng tâm **Bỏ dấu ngoặc trước có dấu cộng** ($A + (B - C + '
-                        'D) = A + B - C + D$). c) **Sai** vì $\\text{Bậc} = m + n + p$ là công thức của nội '
-                        'dung khác, không phải quy tắc chung của **Bỏ dấu ngoặc trước có dấu cộng**. d) '
-                        '**Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        '**Đúng** theo công thức **Bỏ dấu ngoặc trước có dấu cộng** ($A + (B - C + D) = A + '
+                        'B - C + D$). c) **Sai** vì công thức đúng của **Bỏ dấu ngoặc trước có dấu cộng** '
+                        'phải là $A + (B - C + D) = A + B - C + D$ chứ không phải $A - (B - C + D) = A + B - '
+                        'C + D$. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 3: Phép cộng và phép trừ đa thức** để giải quyết tình huống sau: '
-                 'Cho hai đa thức $M = 3x^2 - 2xy + y^2$ và $N = x^2 + 2xy - 3y^2$. Tính $M + N$ và $M - N$. '
-                 'Kết quả và hướng giải nào dưới đây là **đúng**?',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 3: Phép cộng và phép trừ đa thức** để giải bài toán '
+                 'sau: Cho hai đa thức $M = 3x^2 - 2xy + y^2$ và $N = x^2 + 2xy - 3y^2$. Tính $M + N$ và $M '
+                 '- N$. Cách giải và kết quả nào dưới đây là **đúng**?',
             'options': ['- $M + N = (3x^2 + x^2) + (-2xy + 2xy) + (y^2 - 3y^2) = 4x^2 - 2y^2$. - $M - N = '
                         '(3x^2 - x^2) + (-2xy - 2xy) + (y^2 + 3y^2) = 2x^2 - 4xy + 4y^2$.',
-                        'Ta có: $A = (-2 \\cdot 3)(x^2 \\cdot x)(y \\cdot y^3) = -6x^3y^4$. Hệ số là $-6$, '
-                        'phần biến là $x^3y^4$, bậc của đơn thức là $3 + 4 = 7$.',
-                        'Nhóm các hạng tử đồng dạng: $P = (2x^2y - 2x^2y) + 5x^2y^2 + (-3xy + 4xy) - 1 = '
-                        '5x^2y^2 + xy - 1$. Các hạng tử của dạng thu gọn có bậc lần lượt là $4; 2; 0$...',
-                        'Ta có $(x + 2y)(2x - y) = 2x^2 - xy + 4xy - 2y^2 = 2x^2 + 3xy - 2y^2$. Do đó $P = '
-                        '2x^2 + 3xy - 2y^2 - 2x^2 = 3xy - 2y^2$.'],
+                        '- $M - N = (3x^2 + x^2) + (-2xy + 2xy) + (y^2 - 3y^2) = 4x^2 - 2y^2$. - $M - N = '
+                        '(3x^2 - x^2) + (-2xy - 2xy) + (y^2 + 3y^2) = 2x^2 - 4xy + 4y^2$.',
+                        '- $M + N = (3x^2 + x^2) + (-2xy + 2xy) + (y^2 - 3y^2) = 4x^2 - 2y^2$. - $M - N = '
+                        '(3x^2 - x^2) + (-2xy - 2xy) + (y^2 + 3y^2) = 2x^2 - 4xy + 4y^1$.',
+                        '- $M + N = (3x^4 + x^2) + (-2xy + 2xy) + (y^2 - 3y^2) = 4x^2 - 2y^2$. - $M - N = '
+                        '(3x^2 - x^2) + (-2xy - 2xy) + (y^2 + 3y^2) = 2x^2 - 4xy + 4y^2$.'],
             'answer': 0,
             'solution': 'Lời giải chi tiết theo Bài 3: Phép cộng và phép trừ đa thức: - $M + N = (3x^2 + '
                         'x^2) + (-2xy + 2xy) + (y^2 - 3y^2) = 4x^2 - 2y^2$.\n'
@@ -481,8 +487,8 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
                  'biến.',
   'requirements': ['Thực hiện được phép nhân hai đơn thức và nhân một đơn thức với một đa thức nhiều biến.',
                    'Thực hiện được phép nhân hai đa thức nhiều biến và rút gọn biểu thức đại số.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Nhân hai đơn thức** ($(ax^m y^n) \\cdot '
-                   '(bx^p y^q) = (ab) x^{m+p} y^{n+q}$) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 4: Phép nhân đa thức** để giải bài tập minh họa và bài toán '
+                   'thực tiễn.'],
   'definition': 'Muốn nhân hai đơn thức, ta nhân hai hệ số với nhau và nhân hai phần biến với nhau. Muốn '
                 'nhân một đơn thức với một đa thức, ta nhân đơn thức với từng hạng tử của đa thức rồi cộng '
                 'các tích với nhau. Muốn nhân một đa thức với một đa thức, ta nhân mỗi hạng tử của đa thức '
@@ -521,26 +527,27 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 4: Phép nhân đa thức**, công thức hoặc quy tắc nào sau '
-                 'đây biểu diễn đúng **Nhân hai đơn thức**?',
-            'options': ['$A(B + C) = AB + AC$',
+            'q': 'Trong **Bài 4: Phép nhân đa thức**, quy tắc hoặc công thức nào sau đây xác định đúng '
+                 '**Nhân hai đơn thức**?',
+            'options': ['$(ax^m y^n) : (bx^p y^q) = (ab) x^{m+p} y^{n+q}$',
                         '$(ax^m y^n) \\cdot (bx^p y^q) = (ab) x^{m+p} y^{n+q}$',
-                        '$(A + B)(C + D) = AC + AD + BC + BD$',
-                        '$\\text{Bậc} = m + n + p$'],
+                        'Đảo ngược vế của quy tắc: $(ax^m y^n) \\cdot (bx^p y^q) = (ab) x^{m+p} y^{n+q}$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $(ax^m y^n) \\cdot (bx^p y^q) = '
+                        '(ab) x^{m+p} y^{n+q}$'],
             'answer': 1,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 4: Phép nhân đa thức, **Nhân hai đơn thức** '
-                        'được xác định bởi: $(ax^m y^n) \\cdot (bx^p y^q) = (ab) x^{m+p} y^{n+q}$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 4: Phép nhân đa thức, **Nhân hai đơn thức** được '
+                        'xác định bởi: $(ax^m y^n) \\cdot (bx^p y^q) = (ab) x^{m+p} y^{n+q}$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 4: Phép nhân đa thức**, nội dung/biểu thức $A(B + C) = AB + AC$ là quy tắc '
-                 'hoặc công thức của mục nào sau đây?',
-            'options': ['Nhân hai đơn thức',
-                        'Nhân đa thức với đa thức',
-                        'Nhân đơn thức với đa thức',
-                        'Bậc của đơn thức $a x^m y^n z^p$ ($a \\neq 0$)'],
+            'q': 'Khi học **Bài 4: Phép nhân đa thức**, biểu thức hoặc quy tắc nào dưới đây biểu diễn đúng '
+                 '**Nhân đơn thức với đa thức**?',
+            'options': ['$A(B - C) = AB + AC$',
+                        'Đảo ngược vế của quy tắc: $A(B + C) = AB + AC$',
+                        '$A(B + C) = AB + AC$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $A(B + C) = AB + AC$'],
             'answer': 2,
-            'solution': 'Trong Bài 4: Phép nhân đa thức, biểu thức/quy tắc $A(B + C) = AB + AC$ chính là nội '
-                        'dung của **Nhân đơn thức với đa thức**.'},
+            'solution': 'Trong Bài 4: Phép nhân đa thức, **Nhân đơn thức với đa thức** có công thức/quy tắc '
+                        'là: $A(B + C) = AB + AC$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Khai triển và rút gọn tích $(x - y)(x + 2y)$ ta được:',
@@ -551,18 +558,19 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 4: Phép nhân đa thức** (Chương I: Đa thức), khẳng định nào sau đây phản ánh '
-                 '**đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
+            'q': 'Để nắm vững bản chất của **Bài 4: Phép nhân đa thức**, nhận định nào sau đây là **chính '
+                 'xác**?',
             'options': ['Thực hiện được phép nhân hai đơn thức và nhân một đơn thức với một đa thức nhiều '
                         'biến.',
-                        'Nhận biết được đơn thức nhiều biến, đơn thức thu gọn, hệ số, phần biến và bậc của '
-                        'một đơn thức.',
-                        'Nhận biết được các đơn thức đồng dạng và thực hiện được phép cộng, phép trừ các đơn '
-                        'thức đồng dạng.',
-                        'Nhận biết được đa thức nhiều biến và các hạng tử của đa thức.'],
+                        'Thực hiện được phép nhân hai đơn thức và nhân một đơn thức với một đa thức nhiều '
+                        'biến. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Thực hiện được phép nhân hai đơn thức và nhân một đơn '
+                        'thức với một đa thức nhiều biến.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Thực hiện được phép nhân hai '
+                        'đơn thức và nhân một đơn thức với một đa thức nhiều biến.'],
             'answer': 0,
-            'solution': 'Theo yêu cầu cần đạt của Bài 4: Phép nhân đa thức: Thực hiện được phép nhân hai đơn '
-                        'thức và nhân một đơn thức với một đa thức nhiều biến.'},
+            'solution': 'Theo nội dung cốt lõi của Bài 4: Phép nhân đa thức: Thực hiện được phép nhân hai '
+                        'đơn thức và nhân một đơn thức với một đa thức nhiều biến.'},
            {'level': 'hieu',
             'type': 'tf4',
             'q': 'Cho biểu thức $A = (x + y)(x^2 - xy + y^2)$. Xét các khẳng định sau:',
@@ -578,36 +586,37 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 4: Phép nhân đa thức**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Thực hiện được phép nhân hai đơn '
-                           'thức và nhân một đơn thức với một đa thức nhiều biến.',
-                           'Quy tắc/công thức **Nhân hai đơn thức** trong bài được xác định bởi: $(ax^m y^n) '
-                           '\\cdot (bx^p y^q) = (ab) x^{m+p} y^{n+q}$.',
-                           'Trong mọi trường hợp, **Nhân hai đơn thức** luôn được tính bằng công thức '
-                           '$\\text{Bậc} = m + n + p$ (thuộc Bậc của đơn thức $a x^m y^n z^p$ ($a \\neq 0$)) '
-                           'mà không cần điều kiện của Bài 4: Phép nhân đa thức.',
-                           'Với bài toán minh họa: “Thực hiện phép nhân và rút gọn: $P = (x + 2y)(2x - y) - '
-                           '2x^2$.”, lời giải đúng là: Ta có $(x + 2y)(2x - y) = 2x^2 - xy + 4xy - 2y^2 = '
-                           '2x^2 + 3xy - 2y^2$. Do đó $P = 2x^2 + 3xy - 2y^2 - 2x^2 = 3xy - 2y^2$.'],
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 4: Phép nhân đa thức**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Thực hiện được phép nhân hai đơn thức và '
+                           'nhân một đơn thức với một đa thức nhiều biến.',
+                           'Trong **Bài 4: Phép nhân đa thức**, quy tắc/công thức **Nhân hai đơn thức** được '
+                           'viết là: $(ax^m y^n) \\cdot (bx^p y^q) = (ab) x^{m+p} y^{n+q}$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $(ax^m y^n) : (bx^p y^q) = (ab) x^{m+p} '
+                           'y^{n+q}$ thì kết quả của **Nhân hai đơn thức** trong **Bài 4: Phép nhân đa '
+                           'thức** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Thực hiện phép nhân và rút gọn: $P = (x + 2y)(2x - y) - '
+                           '2x^2$.”, kết quả giải đúng là: Ta có $(x + 2y)(2x - y) = 2x^2 - xy + 4xy - 2y^2 '
+                           '= 2x^2 + 3xy - 2y^2$. Do đó $P = 2x^2 + 3xy - 2y^2 - 2x^2 = 3xy - 2y^2$.'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 4: Phép nhân đa thức. b) **Đúng** theo '
-                        'công thức trọng tâm **Nhân hai đơn thức** ($(ax^m y^n) \\cdot (bx^p y^q) = (ab) '
-                        'x^{m+p} y^{n+q}$). c) **Sai** vì $\\text{Bậc} = m + n + p$ là công thức của nội '
-                        'dung khác, không phải quy tắc chung của **Nhân hai đơn thức**. d) **Đúng** theo lời '
-                        'giải ví dụ minh họa trong bài học.'},
+                        'công thức **Nhân hai đơn thức** ($(ax^m y^n) \\cdot (bx^p y^q) = (ab) x^{m+p} '
+                        'y^{n+q}$). c) **Sai** vì công thức đúng của **Nhân hai đơn thức** phải là $(ax^m '
+                        'y^n) \\cdot (bx^p y^q) = (ab) x^{m+p} y^{n+q}$ chứ không phải $(ax^m y^n) : (bx^p '
+                        'y^q) = (ab) x^{m+p} y^{n+q}$. d) **Đúng** theo lời giải ví dụ minh họa trong bài '
+                        'học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 4: Phép nhân đa thức** để giải quyết tình huống sau: Thực hiện '
-                 'phép nhân và rút gọn: $P = (x + 2y)(2x - y) - 2x^2$. Kết quả và hướng giải nào dưới đây là '
-                 '**đúng**?',
-            'options': ['Ta có: $A = (-2 \\cdot 3)(x^2 \\cdot x)(y \\cdot y^3) = -6x^3y^4$. Hệ số là $-6$, '
-                        'phần biến là $x^3y^4$, bậc của đơn thức là $3 + 4 = 7$.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 4: Phép nhân đa thức** để giải bài toán sau: Thực '
+                 'hiện phép nhân và rút gọn: $P = (x + 2y)(2x - y) - 2x^2$. Cách giải và kết quả nào dưới '
+                 'đây là **đúng**?',
+            'options': ['Ta có $(x - 2y)(2x - y) = 2x^2 - xy + 4xy - 2y^2 = 2x^2 + 3xy - 2y^2$. Do đó $P = '
+                        '2x^2 + 3xy - 2y^2 - 2x^2 = 3xy - 2y^2$.',
                         'Ta có $(x + 2y)(2x - y) = 2x^2 - xy + 4xy - 2y^2 = 2x^2 + 3xy - 2y^2$. Do đó $P = '
                         '2x^2 + 3xy - 2y^2 - 2x^2 = 3xy - 2y^2$.',
-                        'Nhóm các hạng tử đồng dạng: $P = (2x^2y - 2x^2y) + 5x^2y^2 + (-3xy + 4xy) - 1 = '
-                        '5x^2y^2 + xy - 1$. Các hạng tử của dạng thu gọn có bậc lần lượt là $4; 2; 0$...',
-                        '- $M + N = (3x^2 + x^2) + (-2xy + 2xy) + (y^2 - 3y^2) = 4x^2 - 2y^2$. - $M - N = '
-                        '(3x^2 - x^2) + (-2xy - 2xy) + (y^2 + 3y^2) = 2x^2 - 4xy + 4y^2$.'],
+                        'Ta có $(x + 2y)(2x - y) = 2x^2 - xy + 4xy - 2y^2 = 2x^2 + 3xy - 2y^2$. Do đó $P = '
+                        '2x^2 + 3xy - 2y^2 - 2x^2 = 3xy - 2y^1$.',
+                        'Ta có $(x + 2y)(2x - y) = 2x^4 - xy + 4xy - 2y^2 = 2x^2 + 3xy - 2y^2$. Do đó $P = '
+                        '2x^2 + 3xy - 2y^2 - 2x^2 = 3xy - 2y^2$.'],
             'answer': 1,
             'solution': 'Lời giải chi tiết theo Bài 4: Phép nhân đa thức: Ta có $(x + 2y)(2x - y) = 2x^2 - '
                         'xy + 4xy - 2y^2 = 2x^2 + 3xy - 2y^2$.\n'
@@ -631,9 +640,8 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
   'description': 'Điều kiện chia hết và quy tắc chia đơn thức cho đơn thức, chia đa thức cho đơn thức.',
   'requirements': ['Nhận biết được khi nào một đơn thức (hoặc đa thức) chia hết cho một đơn thức khác $0$.',
                    'Thực hiện được phép chia đơn thức cho đơn thức và phép chia đa thức cho đơn thức.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Chia hai đơn thức** ($(ax^m y^n) : (bx^p '
-                   'y^q) = \\dfrac{a}{b} x^{m-p} y^{n-q} \\quad (b \\neq 0, m \\ge p, n \\ge q)$) vào giải '
-                   'bài tập.'],
+                   'Vận dụng kiến thức của **Bài 5: Phép chia đa thức cho đơn thức** để giải bài tập minh '
+                   'họa và bài toán thực tiễn.'],
   'definition': 'Đơn thức $A$ chia hết cho đơn thức $B$ ($B \\neq 0$) khi mỗi biến của $B$ đều là biến của '
                 '$A$ với số mũ không lớn hơn số mũ của nó trong $A$. Đa thức $A$ chia hết cho đơn thức $B$ '
                 'nếu mọi hạng tử của $A$ đều chia hết cho $B$.',
@@ -672,29 +680,32 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 5: Phép chia đa thức cho đơn thức**, công thức hoặc quy '
-                 'tắc nào sau đây biểu diễn đúng **Chia hai đơn thức**?',
-            'options': ['$(A + B - C) : D = (A : D) + (B : D) - (C : D)$',
-                        '$\\text{Bậc} = m + n + p$',
+            'q': 'Trong **Bài 5: Phép chia đa thức cho đơn thức**, quy tắc hoặc công thức nào sau đây xác '
+                 'định đúng **Chia hai đơn thức**?',
+            'options': ['$(ax^m y^n) : (bx^p y^q) = \\dfrac{a}{b} x^{m-p} y^{n-q} \\quad (b \\neq 0, m \\le '
+                        'p, n \\ge q)$',
+                        '$(ax^m y^n) : (bx^p y^q) = \\dfrac{b}{a} x^{m-p} y^{n-q} \\quad (b \\neq 0, m \\ge '
+                        'p, n \\ge q)$',
                         '$(ax^m y^n) : (bx^p y^q) = \\dfrac{a}{b} x^{m-p} y^{n-q} \\quad (b \\neq 0, m \\ge '
                         'p, n \\ge q)$',
-                        '$a x^m y^n + b x^m y^n = (a + b)x^m y^n; \\quad a x^m y^n - b x^m y^n = (a - b)x^m '
-                        'y^n$'],
+                        '$(ax^m y^n) : (bx^p y^q) = \\dfrac{a}{b} x^{m-p} y^{n-q} \\quad (b \\neq 2, m \\ge '
+                        'p, n \\ge q)$'],
             'answer': 2,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 5: Phép chia đa thức cho đơn thức, **Chia hai '
-                        'đơn thức** được xác định bởi: $(ax^m y^n) : (bx^p y^q) = \\dfrac{a}{b} x^{m-p} '
-                        'y^{n-q} \\quad (b \\neq 0, m \\ge p, n \\ge q)$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 5: Phép chia đa thức cho đơn thức, **Chia hai đơn '
+                        'thức** được xác định bởi: $(ax^m y^n) : (bx^p y^q) = \\dfrac{a}{b} x^{m-p} y^{n-q} '
+                        '\\quad (b \\neq 0, m \\ge p, n \\ge q)$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 5: Phép chia đa thức cho đơn thức**, nội dung/biểu thức $(A + B - C) : D = (A '
-                 ': D) + (B : D) - (C : D)$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Chia hai đơn thức',
-                        'Bậc của đơn thức $a x^m y^n z^p$ ($a \\neq 0$)',
-                        'Cộng, trừ hai đơn thức đồng dạng',
-                        'Chia đa thức cho đơn thức'],
+            'q': 'Khi học **Bài 5: Phép chia đa thức cho đơn thức**, biểu thức hoặc quy tắc nào dưới đây '
+                 'biểu diễn đúng **Chia đa thức cho đơn thức**?',
+            'options': ['$(A - B - C) : D = (A : D) + (B : D) - (C : D)$',
+                        'Đảo ngược vế của quy tắc: $(A + B - C) : D = (A : D) + (B : D) - (C : D)$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $(A + B - C) : D = (A : D) + (B '
+                        ': D) - (C : D)$',
+                        '$(A + B - C) : D = (A : D) + (B : D) - (C : D)$'],
             'answer': 3,
-            'solution': 'Trong Bài 5: Phép chia đa thức cho đơn thức, biểu thức/quy tắc $(A + B - C) : D = '
-                        '(A : D) + (B : D) - (C : D)$ chính là nội dung của **Chia đa thức cho đơn thức**.'},
+            'solution': 'Trong Bài 5: Phép chia đa thức cho đơn thức, **Chia đa thức cho đơn thức** có công '
+                        'thức/quy tắc là: $(A + B - C) : D = (A : D) + (B : D) - (C : D)$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Thương của phép chia $(8x^3y - 12x^2y^2 + 4xy) : (4xy)$ là:',
@@ -705,17 +716,18 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 5: Phép chia đa thức cho đơn thức** (Chương I: Đa thức), khẳng định nào sau '
-                 'đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Nhận biết được đơn thức nhiều biến, đơn thức thu gọn, hệ số, phần biến và bậc của '
-                        'một đơn thức.',
+            'q': 'Để nắm vững bản chất của **Bài 5: Phép chia đa thức cho đơn thức**, nhận định nào sau đây '
+                 'là **chính xác**?',
+            'options': ['Nhận biết được khi nào một đơn thức (hoặc đa thức) không chia hết cho một đơn thức '
+                        'khác $0$.',
                         'Nhận biết được khi nào một đơn thức (hoặc đa thức) chia hết cho một đơn thức khác '
                         '$0$.',
-                        'Nhận biết được các đơn thức đồng dạng và thực hiện được phép cộng, phép trừ các đơn '
-                        'thức đồng dạng.',
-                        'Nhận biết được đa thức nhiều biến và các hạng tử của đa thức.'],
+                        'Nhận biết được khi nào một đơn thức (hoặc đa thức) chia hết cho một đơn thức khác '
+                        '$1$.',
+                        'Nhận biết được khi nào một đơn thức (hoặc đa thức) chia hết cho một đơn thức khác '
+                        '$2$.'],
             'answer': 1,
-            'solution': 'Theo yêu cầu cần đạt của Bài 5: Phép chia đa thức cho đơn thức: Nhận biết được khi '
+            'solution': 'Theo nội dung cốt lõi của Bài 5: Phép chia đa thức cho đơn thức: Nhận biết được khi '
                         'nào một đơn thức (hoặc đa thức) chia hết cho một đơn thức khác $0$.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -732,40 +744,42 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 5: Phép chia đa thức '
-                 'cho đơn thức**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được khi nào một đơn '
-                           'thức (hoặc đa thức) chia hết cho một đơn thức khác $0$.',
-                           'Quy tắc/công thức **Chia hai đơn thức** trong bài được xác định bởi: $(ax^m y^n) '
-                           ': (bx^p y^q) = \\dfrac{a}{b} x^{m-p} y^{n-q} \\quad (b \\neq 0, m \\ge p, n \\ge '
-                           'q)$.',
-                           'Trong mọi trường hợp, **Chia hai đơn thức** luôn được tính bằng công thức '
-                           '$\\text{Bậc} = m + n + p$ (thuộc Bậc của đơn thức $a x^m y^n z^p$ ($a \\neq 0$)) '
-                           'mà không cần điều kiện của Bài 5: Phép chia đa thức cho đơn thức.',
-                           'Với bài toán minh họa: “Thực hiện phép chia: $(15x^3y^2 - 6x^2y^3 + 3x^2y^2) : '
-                           '(3x^2y^2)$.”, lời giải đúng là: Chia từng hạng tử của đa thức cho $3x^2y^2$: '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 5: Phép chia đa thức cho '
+                 'đơn thức**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết được khi nào một đơn thức '
+                           '(hoặc đa thức) chia hết cho một đơn thức khác $0$.',
+                           'Trong **Bài 5: Phép chia đa thức cho đơn thức**, quy tắc/công thức **Chia hai '
+                           'đơn thức** được viết là: $(ax^m y^n) : (bx^p y^q) = \\dfrac{a}{b} x^{m-p} '
+                           'y^{n-q} \\quad (b \\neq 0, m \\ge p, n \\ge q)$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $(ax^m y^n) : (bx^p y^q) = \\dfrac{a}{b} '
+                           'x^{m-p} y^{n-q} \\quad (b \\neq 0, m \\le p, n \\ge q)$ thì kết quả của **Chia '
+                           'hai đơn thức** trong **Bài 5: Phép chia đa thức cho đơn thức** vẫn không thay '
+                           'đổi.',
+                           'Xét ví dụ của bài: “Thực hiện phép chia: $(15x^3y^2 - 6x^2y^3 + 3x^2y^2) : '
+                           '(3x^2y^2)$.”, kết quả giải đúng là: Chia từng hạng tử của đa thức cho $3x^2y^2$: '
                            '$(15x^3y^2 : 3x^2y^2) - (6x^2y^3 : 3x^2y^2) + (3x^2y^2 : 3x^2y^2) = 5x - 2y + '
                            '1$.'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 5: Phép chia đa thức cho đơn thức. b) '
-                        '**Đúng** theo công thức trọng tâm **Chia hai đơn thức** ($(ax^m y^n) : (bx^p y^q) = '
+                        '**Đúng** theo công thức **Chia hai đơn thức** ($(ax^m y^n) : (bx^p y^q) = '
                         '\\dfrac{a}{b} x^{m-p} y^{n-q} \\quad (b \\neq 0, m \\ge p, n \\ge q)$). c) **Sai** '
-                        'vì $\\text{Bậc} = m + n + p$ là công thức của nội dung khác, không phải quy tắc '
-                        'chung của **Chia hai đơn thức**. d) **Đúng** theo lời giải ví dụ minh họa trong bài '
-                        'học.'},
+                        'vì công thức đúng của **Chia hai đơn thức** phải là $(ax^m y^n) : (bx^p y^q) = '
+                        '\\dfrac{a}{b} x^{m-p} y^{n-q} \\quad (b \\neq 0, m \\ge p, n \\ge q)$ chứ không '
+                        'phải $(ax^m y^n) : (bx^p y^q) = \\dfrac{a}{b} x^{m-p} y^{n-q} \\quad (b \\neq 0, m '
+                        '\\le p, n \\ge q)$. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 5: Phép chia đa thức cho đơn thức** để giải quyết tình huống sau: '
-                 'Thực hiện phép chia: $(15x^3y^2 - 6x^2y^3 + 3x^2y^2) : (3x^2y^2)$. Kết quả và hướng giải '
-                 'nào dưới đây là **đúng**?',
-            'options': ['Ta có: $A = (-2 \\cdot 3)(x^2 \\cdot x)(y \\cdot y^3) = -6x^3y^4$. Hệ số là $-6$, '
-                        'phần biến là $x^3y^4$, bậc của đơn thức là $3 + 4 = 7$.',
-                        'Nhóm các hạng tử đồng dạng: $P = (2x^2y - 2x^2y) + 5x^2y^2 + (-3xy + 4xy) - 1 = '
-                        '5x^2y^2 + xy - 1$. Các hạng tử của dạng thu gọn có bậc lần lượt là $4; 2; 0$...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 5: Phép chia đa thức cho đơn thức** để giải bài '
+                 'toán sau: Thực hiện phép chia: $(15x^3y^2 - 6x^2y^3 + 3x^2y^2) : (3x^2y^2)$. Cách giải và '
+                 'kết quả nào dưới đây là **đúng**?',
+            'options': ['Chia từng hạng tử của đa thức cho $3x^2y^2$: $(15x^3y^2 : 3x^2y^2) - (6x^2y^3 : '
+                        '3x^2y^2) - (3x^2y^2 : 3x^2y^2) = 5x - 2y + 1$.',
+                        'Chia từng hạng tử của đa thức cho $3x^2y^2$: $(15x^3y^2 : 3x^2y^2) - (6x^2y^3 : '
+                        '3x^2y^2) + (3x^2y^2 : 3x^2y^2) = 5x - 2y + 2$.',
                         'Chia từng hạng tử của đa thức cho $3x^2y^2$: $(15x^3y^2 : 3x^2y^2) - (6x^2y^3 : '
                         '3x^2y^2) + (3x^2y^2 : 3x^2y^2) = 5x - 2y + 1$.',
-                        '- $M + N = (3x^2 + x^2) + (-2xy + 2xy) + (y^2 - 3y^2) = 4x^2 - 2y^2$. - $M - N = '
-                        '(3x^2 - x^2) + (-2xy - 2xy) + (y^2 + 3y^2) = 2x^2 - 4xy + 4y^2$.'],
+                        'Chia từng hạng tử của đa thức cho $3x^2y^4$: $(15x^3y^2 : 3x^2y^2) - (6x^2y^3 : '
+                        '3x^2y^2) + (3x^2y^2 : 3x^2y^2) = 5x - 2y + 1$.'],
             'answer': 2,
             'solution': 'Lời giải chi tiết theo Bài 5: Phép chia đa thức cho đơn thức: Chia từng hạng tử của '
                         'đa thức cho $3x^2y^2$:\n'
@@ -790,8 +804,8 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
   'requirements': ['Nhận biết được khái niệm đồng nhất thức (hằng đẳng thức).',
                    'Mô tả và vận dụng được ba hằng đẳng thức: hiệu hai bình phương, bình phương của một '
                    'tổng, bình phương của một hiệu để khai triển, rút gọn và tính nhanh.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Hiệu hai bình phương** ($A^2 - B^2 = (A - '
-                   'B)(A + B)$) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 6: Hiệu hai bình phương. Bình phương của một tổng hay một '
+                   'hiệu** để giải bài tập minh họa và bài toán thực tiễn.'],
   'definition': 'Hằng đẳng thức là đẳng thức mà hai vế luôn cùng nhận một giá trị khi thay các chữ trong '
                 'đẳng thức bằng các số tùy ý. Ba hằng đẳng thức bậc hai cơ bản là: $A^2 - B^2 = (A - B)(A + '
                 'B)$; $(A + B)^2 = A^2 + 2AB + B^2$; $(A - B)^2 = A^2 - 2AB + B^2$.',
@@ -827,29 +841,27 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 6: Hiệu hai bình phương. Bình phương của một tổng hay '
-                 'một hiệu**, công thức hoặc quy tắc nào sau đây biểu diễn đúng **Hiệu hai bình phương**?',
-            'options': ['$(A + B)^2 = A^2 + 2AB + B^2$',
-                        '$(A - B)^2 = A^2 - 2AB + B^2$',
-                        '$\\text{Bậc} = m + n + p$',
+            'q': 'Trong **Bài 6: Hiệu hai bình phương. Bình phương của một tổng hay một hiệu**, quy tắc hoặc '
+                 'công thức nào sau đây xác định đúng **Hiệu hai bình phương**?',
+            'options': ['$A^2 - B^2 = (A - B)(A - B)$',
+                        '$A^2 - B^1 = (A - B)(A + B)$',
+                        '$A^4 - B^2 = (A - B)(A + B)$',
                         '$A^2 - B^2 = (A - B)(A + B)$'],
             'answer': 3,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 6: Hiệu hai bình phương. Bình phương của một '
-                        'tổng hay một hiệu, **Hiệu hai bình phương** được xác định bởi: $A^2 - B^2 = (A - '
-                        'B)(A + B)$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 6: Hiệu hai bình phương. Bình phương của một tổng '
+                        'hay một hiệu, **Hiệu hai bình phương** được xác định bởi: $A^2 - B^2 = (A - B)(A + '
+                        'B)$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 6: Hiệu hai bình phương. Bình phương của một tổng hay một hiệu**, nội '
-                 'dung/biểu thức $(A + B)^2 = A^2 + 2AB + B^2$ là quy tắc hoặc công thức của mục nào sau '
-                 'đây?',
-            'options': ['Bình phương của một tổng',
-                        'Hiệu hai bình phương',
-                        'Bình phương của một hiệu',
-                        'Bậc của đơn thức $a x^m y^n z^p$ ($a \\neq 0$)'],
+            'q': 'Khi học **Bài 6: Hiệu hai bình phương. Bình phương của một tổng hay một hiệu**, biểu thức '
+                 'hoặc quy tắc nào dưới đây biểu diễn đúng **Bình phương của một tổng**?',
+            'options': ['$(A + B)^2 = A^2 + 2AB + B^2$',
+                        '$(A - B)^2 = A^2 + 2AB + B^2$',
+                        '$(A + B)^2 = A^2 + 2AB + B^1$',
+                        '$(A + B)^4 = A^2 + 2AB + B^2$'],
             'answer': 0,
-            'solution': 'Trong Bài 6: Hiệu hai bình phương. Bình phương của một tổng hay một hiệu, biểu '
-                        'thức/quy tắc $(A + B)^2 = A^2 + 2AB + B^2$ chính là nội dung của **Bình phương của '
-                        'một tổng**.'},
+            'solution': 'Trong Bài 6: Hiệu hai bình phương. Bình phương của một tổng hay một hiệu, **Bình '
+                        'phương của một tổng** có công thức/quy tắc là: $(A + B)^2 = A^2 + 2AB + B^2$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Biểu thức $4x^2 - 12xy + 9y^2$ viết dưới dạng bình phương của một hiệu là:',
@@ -860,17 +872,15 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 6: Hiệu hai bình phương. Bình phương của một tổng hay một hiệu** (Chương II: '
-                 'Hằng đẳng thức đáng nhớ và ứng dụng), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần '
-                 'đạt và bản chất kiến thức của bài?',
-            'options': ['Nhận biết được đơn thức nhiều biến, đơn thức thu gọn, hệ số, phần biến và bậc của '
-                        'một đơn thức.',
-                        'Nhận biết được các đơn thức đồng dạng và thực hiện được phép cộng, phép trừ các đơn '
-                        'thức đồng dạng.',
+            'q': 'Để nắm vững bản chất của **Bài 6: Hiệu hai bình phương. Bình phương của một tổng hay một '
+                 'hiệu**, nhận định nào sau đây là **chính xác**?',
+            'options': ['Nhận biết được khái niệm đồng nhất thức (hằng đẳng thức). (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Nhận biết được khái niệm đồng nhất thức (hằng đẳng thức).',
                         'Nhận biết được khái niệm đồng nhất thức (hằng đẳng thức).',
-                        'Nhận biết được đa thức nhiều biến và các hạng tử của đa thức.'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nhận biết được khái niệm đồng '
+                        'nhất thức (hằng đẳng thức).'],
             'answer': 2,
-            'solution': 'Theo yêu cầu cần đạt của Bài 6: Hiệu hai bình phương. Bình phương của một tổng hay '
+            'solution': 'Theo nội dung cốt lõi của Bài 6: Hiệu hai bình phương. Bình phương của một tổng hay '
                         'một hiệu: Nhận biết được khái niệm đồng nhất thức (hằng đẳng thức).'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -886,37 +896,37 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 6: Hiệu hai bình '
-                 'phương. Bình phương của một tổng hay một hiệu**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được khái niệm đồng nhất '
-                           'thức (hằng đẳng thức).',
-                           'Quy tắc/công thức **Hiệu hai bình phương** trong bài được xác định bởi: $A^2 - '
-                           'B^2 = (A - B)(A + B)$.',
-                           'Trong mọi trường hợp, **Hiệu hai bình phương** luôn được tính bằng công thức '
-                           '$\\text{Bậc} = m + n + p$ (thuộc Bậc của đơn thức $a x^m y^n z^p$ ($a \\neq 0$)) '
-                           'mà không cần điều kiện của Bài 6: Hiệu hai bình phương. Bình phương của một tổng '
-                           'hay một hiệu.',
-                           'Với bài toán minh họa: “Tính nhanh: a) $101^2$; b) $64^2 - 36^2$.”, lời giải '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 6: Hiệu hai bình phương. '
+                 'Bình phương của một tổng hay một hiệu**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết được khái niệm đồng nhất thức '
+                           '(hằng đẳng thức).',
+                           'Trong **Bài 6: Hiệu hai bình phương. Bình phương của một tổng hay một hiệu**, '
+                           'quy tắc/công thức **Hiệu hai bình phương** được viết là: $A^2 - B^2 = (A - B)(A '
+                           '+ B)$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $A^2 - B^2 = (A - B)(A - B)$ thì kết quả của '
+                           '**Hiệu hai bình phương** trong **Bài 6: Hiệu hai bình phương. Bình phương của '
+                           'một tổng hay một hiệu** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Tính nhanh: a) $101^2$; b) $64^2 - 36^2$.”, kết quả giải '
                            'đúng là: a) $101^2 = (100 + 1)^2 = 100^2 + 2 \\cdot 100 \\cdot 1 + 1^2 = 10000 + '
                            '200 + 1 = 10201$. b) $64^2 - 36^2 = (64 - 36)(64 + 36) = 28 \\cdot 100 = '
                            '2800$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 6: Hiệu hai bình phương. Bình phương của '
-                        'một tổng hay một hiệu. b) **Đúng** theo công thức trọng tâm **Hiệu hai bình '
-                        'phương** ($A^2 - B^2 = (A - B)(A + B)$). c) **Sai** vì $\\text{Bậc} = m + n + p$ là '
-                        'công thức của nội dung khác, không phải quy tắc chung của **Hiệu hai bình phương**. '
+                        'một tổng hay một hiệu. b) **Đúng** theo công thức **Hiệu hai bình phương** ($A^2 - '
+                        'B^2 = (A - B)(A + B)$). c) **Sai** vì công thức đúng của **Hiệu hai bình phương** '
+                        'phải là $A^2 - B^2 = (A - B)(A + B)$ chứ không phải $A^2 - B^2 = (A - B)(A - B)$. '
                         'd) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 6: Hiệu hai bình phương. Bình phương của một tổng hay một hiệu** '
-                 'để giải quyết tình huống sau: Tính nhanh: a) $101^2$; b) $64^2 - 36^2$. Kết quả và hướng '
-                 'giải nào dưới đây là **đúng**?',
-            'options': ['Ta có: $A = (-2 \\cdot 3)(x^2 \\cdot x)(y \\cdot y^3) = -6x^3y^4$. Hệ số là $-6$, '
-                        'phần biến là $x^3y^4$, bậc của đơn thức là $3 + 4 = 7$.',
-                        'Nhóm các hạng tử đồng dạng: $P = (2x^2y - 2x^2y) + 5x^2y^2 + (-3xy + 4xy) - 1 = '
-                        '5x^2y^2 + xy - 1$. Các hạng tử của dạng thu gọn có bậc lần lượt là $4; 2; 0$...',
-                        '- $M + N = (3x^2 + x^2) + (-2xy + 2xy) + (y^2 - 3y^2) = 4x^2 - 2y^2$. - $M - N = '
-                        '(3x^2 - x^2) + (-2xy - 2xy) + (y^2 + 3y^2) = 2x^2 - 4xy + 4y^2$.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 6: Hiệu hai bình phương. Bình phương của một tổng '
+                 'hay một hiệu** để giải bài toán sau: Tính nhanh: a) $101^2$; b) $64^2 - 36^2$. Cách giải '
+                 'và kết quả nào dưới đây là **đúng**?',
+            'options': ['a) $101^2 = (100 - 1)^2 = 100^2 + 2 \\cdot 100 \\cdot 1 + 1^2 = 10000 + 200 + 1 = '
+                        '10201$. b) $64^2 - 36^2 = (64 - 36)(64 + 36) = 28 \\cdot 100 = 2800$.',
+                        'a) $101^2 = (100 + 1)^2 = 100^2 + 2 \\cdot 100 \\cdot 1 + 1^2 = 10000 + 200 + 1 = '
+                        '10201$. b) $64^2 - 36^2 = (64 - 36)(64 + 36) = 28 \\cdot 100 = 2799$.',
+                        'a) $103^2 = (100 + 1)^2 = 100^2 + 2 \\cdot 100 \\cdot 1 + 1^2 = 10000 + 200 + 1 = '
+                        '10201$. b) $64^2 - 36^2 = (64 - 36)(64 + 36) = 28 \\cdot 100 = 2800$.',
                         'a) $101^2 = (100 + 1)^2 = 100^2 + 2 \\cdot 100 \\cdot 1 + 1^2 = 10000 + 200 + 1 = '
                         '10201$. b) $64^2 - 36^2 = (64 - 36)(64 + 36) = 28 \\cdot 100 = 2800$.'],
             'answer': 3,
@@ -942,8 +952,8 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
   'requirements': ['Mô tả được hằng đẳng thức lập phương của một tổng và lập phương của một hiệu.',
                    'Vận dụng hai hằng đẳng thức này để khai triển hoặc viết biểu thức dưới dạng lập phương '
                    'và tính nhanh giá trị biểu thức.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Lập phương của một tổng** ($(A + B)^3 = A^3 '
-                   '+ 3A^2B + 3AB^2 + B^3$) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 7: Lập phương của một tổng. Lập phương của một hiệu** để '
+                   'giải bài tập minh họa và bài toán thực tiễn.'],
   'definition': 'Với hai biểu thức $A, B$ tùy ý, ta có: $(A + B)^3 = A^3 + 3A^2B + 3AB^2 + B^3$ và $(A - '
                 'B)^3 = A^3 - 3A^2B + 3AB^2 - B^3$.',
   'theory': '1. Lập phương của một tổng: $(A + B)^3 = A^3 + 3A^2B + 3AB^2 + B^3$.\n'
@@ -980,29 +990,27 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 7: Lập phương của một tổng. Lập phương của một hiệu**, '
-                 'công thức hoặc quy tắc nào sau đây biểu diễn đúng **Lập phương của một tổng**?',
+            'q': 'Trong **Bài 7: Lập phương của một tổng. Lập phương của một hiệu**, quy tắc hoặc công thức '
+                 'nào sau đây xác định đúng **Lập phương của một tổng**?',
             'options': ['$(A + B)^3 = A^3 + 3A^2B + 3AB^2 + B^3$',
-                        '$(A - B)^3 = A^3 - 3A^2B + 3AB^2 - B^3$',
-                        '$\\text{Bậc} = m + n + p$',
-                        '$a x^m y^n + b x^m y^n = (a + b)x^m y^n; \\quad a x^m y^n - b x^m y^n = (a - b)x^m '
-                        'y^n$'],
+                        '$(A - B)^3 = A^3 + 3A^2B + 3AB^2 + B^3$',
+                        '$(A + B)^3 = A^3 + 3A^2B + 3AB^2 + B^2$',
+                        '$(A + B)^6 = A^3 + 3A^2B + 3AB^2 + B^3$'],
             'answer': 0,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 7: Lập phương của một tổng. Lập phương của '
-                        'một hiệu, **Lập phương của một tổng** được xác định bởi: $(A + B)^3 = A^3 + 3A^2B + '
+            'solution': 'Theo kiến thức trọng tâm của Bài 7: Lập phương của một tổng. Lập phương của một '
+                        'hiệu, **Lập phương của một tổng** được xác định bởi: $(A + B)^3 = A^3 + 3A^2B + '
                         '3AB^2 + B^3$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 7: Lập phương của một tổng. Lập phương của một hiệu**, nội dung/biểu thức $(A '
-                 '- B)^3 = A^3 - 3A^2B + 3AB^2 - B^3$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Lập phương của một tổng',
-                        'Lập phương của một hiệu',
-                        'Bậc của đơn thức $a x^m y^n z^p$ ($a \\neq 0$)',
-                        'Cộng, trừ hai đơn thức đồng dạng'],
+            'q': 'Khi học **Bài 7: Lập phương của một tổng. Lập phương của một hiệu**, biểu thức hoặc quy '
+                 'tắc nào dưới đây biểu diễn đúng **Lập phương của một hiệu**?',
+            'options': ['$(A - B)^3 = A^3 - 3A^2B - 3AB^2 - B^3$',
+                        '$(A - B)^3 = A^3 - 3A^2B + 3AB^2 - B^3$',
+                        '$(A - B)^3 = A^3 - 3A^2B + 3AB^2 - B^2$',
+                        '$(A - B)^6 = A^3 - 3A^2B + 3AB^2 - B^3$'],
             'answer': 1,
-            'solution': 'Trong Bài 7: Lập phương của một tổng. Lập phương của một hiệu, biểu thức/quy tắc '
-                        '$(A - B)^3 = A^3 - 3A^2B + 3AB^2 - B^3$ chính là nội dung của **Lập phương của một '
-                        'hiệu**.'},
+            'solution': 'Trong Bài 7: Lập phương của một tổng. Lập phương của một hiệu, **Lập phương của một '
+                        'hiệu** có công thức/quy tắc là: $(A - B)^3 = A^3 - 3A^2B + 3AB^2 - B^3$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Trong khai triển của $(2x - 1)^3$, hệ số của hạng tử chứa $x^2$ là:',
@@ -1014,17 +1022,17 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 7: Lập phương của một tổng. Lập phương của một hiệu** (Chương II: Hằng đẳng '
-                 'thức đáng nhớ và ứng dụng), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và '
-                 'bản chất kiến thức của bài?',
-            'options': ['Nhận biết được đơn thức nhiều biến, đơn thức thu gọn, hệ số, phần biến và bậc của '
-                        'một đơn thức.',
-                        'Nhận biết được các đơn thức đồng dạng và thực hiện được phép cộng, phép trừ các đơn '
-                        'thức đồng dạng.',
-                        'Nhận biết được đa thức nhiều biến và các hạng tử của đa thức.',
+            'q': 'Để nắm vững bản chất của **Bài 7: Lập phương của một tổng. Lập phương của một hiệu**, nhận '
+                 'định nào sau đây là **chính xác**?',
+            'options': ['Mô tả được hằng đẳng thức lập phương của một tổng và lập phương của một hiệu. (với '
+                        'dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Mô tả được hằng đẳng thức lập phương của một tổng và lập '
+                        'phương của một hiệu.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Mô tả được hằng đẳng thức lập '
+                        'phương của một tổng và lập phương của một hiệu.',
                         'Mô tả được hằng đẳng thức lập phương của một tổng và lập phương của một hiệu.'],
             'answer': 3,
-            'solution': 'Theo yêu cầu cần đạt của Bài 7: Lập phương của một tổng. Lập phương của một hiệu: '
+            'solution': 'Theo nội dung cốt lõi của Bài 7: Lập phương của một tổng. Lập phương của một hiệu: '
                         'Mô tả được hằng đẳng thức lập phương của một tổng và lập phương của một hiệu.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -1040,40 +1048,41 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 7: Lập phương của một '
-                 'tổng. Lập phương của một hiệu**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Mô tả được hằng đẳng thức lập '
-                           'phương của một tổng và lập phương của một hiệu.',
-                           'Quy tắc/công thức **Lập phương của một tổng** trong bài được xác định bởi: $(A + '
-                           'B)^3 = A^3 + 3A^2B + 3AB^2 + B^3$.',
-                           'Trong mọi trường hợp, **Lập phương của một tổng** luôn được tính bằng công thức '
-                           '$\\text{Bậc} = m + n + p$ (thuộc Bậc của đơn thức $a x^m y^n z^p$ ($a \\neq 0$)) '
-                           'mà không cần điều kiện của Bài 7: Lập phương của một tổng. Lập phương của một '
-                           'hiệu.',
-                           'Với bài toán minh họa: “Viết biểu thức $P = x^3 - 6x^2 + 12x - 8$ dưới dạng lập '
-                           'phương của một hiệu và tính giá trị của $P$ tại $x = 12$.”, lời giải đúng là: Ta '
-                           'có: $P = x^3 - 3 \\cdot x^2 \\cdot 2 + 3 \\cdot x \\cdot 2^2 - 2^3 = (x - 2)^3$. '
-                           'Thay $x = 12$ vào $P$, ta được $P = (12 - 2)^3 = 10^3 = 1000$...'],
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 7: Lập phương của một tổng. '
+                 'Lập phương của một hiệu**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Mô tả được hằng đẳng thức lập phương của '
+                           'một tổng và lập phương của một hiệu.',
+                           'Trong **Bài 7: Lập phương của một tổng. Lập phương của một hiệu**, quy tắc/công '
+                           'thức **Lập phương của một tổng** được viết là: $(A + B)^3 = A^3 + 3A^2B + 3AB^2 '
+                           '+ B^3$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $(A - B)^3 = A^3 + 3A^2B + 3AB^2 + B^3$ thì '
+                           'kết quả của **Lập phương của một tổng** trong **Bài 7: Lập phương của một tổng. '
+                           'Lập phương của một hiệu** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Viết biểu thức $P = x^3 - 6x^2 + 12x - 8$ dưới dạng lập '
+                           'phương của một hiệu và tính giá trị của $P$ tại $x = 12$.”, kết quả giải đúng '
+                           'là: Ta có: $P = x^3 - 3 \\cdot x^2 \\cdot 2 + 3 \\cdot x \\cdot 2^2 - 2^3 = (x - '
+                           '2)^3$. Thay $x = 12$ vào $P$, ta được $P = (12 - 2)^3 = 10^3 = 1000$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 7: Lập phương của một tổng. Lập phương của '
-                        'một hiệu. b) **Đúng** theo công thức trọng tâm **Lập phương của một tổng** ($(A + '
-                        'B)^3 = A^3 + 3A^2B + 3AB^2 + B^3$). c) **Sai** vì $\\text{Bậc} = m + n + p$ là công '
-                        'thức của nội dung khác, không phải quy tắc chung của **Lập phương của một tổng**. '
-                        'd) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        'một hiệu. b) **Đúng** theo công thức **Lập phương của một tổng** ($(A + B)^3 = A^3 '
+                        '+ 3A^2B + 3AB^2 + B^3$). c) **Sai** vì công thức đúng của **Lập phương của một '
+                        'tổng** phải là $(A + B)^3 = A^3 + 3A^2B + 3AB^2 + B^3$ chứ không phải $(A - B)^3 = '
+                        'A^3 + 3A^2B + 3AB^2 + B^3$. d) **Đúng** theo lời giải ví dụ minh họa trong bài '
+                        'học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 7: Lập phương của một tổng. Lập phương của một hiệu** để giải '
-                 'quyết tình huống sau: Viết biểu thức $P = x^3 - 6x^2 + 12x - 8$ dưới dạng lập phương của '
-                 'một hiệu và tính giá trị của $P$ tại $x = 12$. Kết quả và hướng giải nào dưới đây là '
-                 '**đúng**?',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 7: Lập phương của một tổng. Lập phương của một '
+                 'hiệu** để giải bài toán sau: Viết biểu thức $P = x^3 - 6x^2 + 12x - 8$ dưới dạng lập '
+                 'phương của một hiệu và tính giá trị của $P$ tại $x = 12$. Cách giải và kết quả nào dưới '
+                 'đây là **đúng**?',
             'options': ['Ta có: $P = x^3 - 3 \\cdot x^2 \\cdot 2 + 3 \\cdot x \\cdot 2^2 - 2^3 = (x - 2)^3$. '
                         'Thay $x = 12$ vào $P$, ta được $P = (12 - 2)^3 = 10^3 = 1000$.',
-                        'Ta có: $A = (-2 \\cdot 3)(x^2 \\cdot x)(y \\cdot y^3) = -6x^3y^4$. Hệ số là $-6$, '
-                        'phần biến là $x^3y^4$, bậc của đơn thức là $3 + 4 = 7$.',
-                        'Nhóm các hạng tử đồng dạng: $P = (2x^2y - 2x^2y) + 5x^2y^2 + (-3xy + 4xy) - 1 = '
-                        '5x^2y^2 + xy - 1$. Các hạng tử của dạng thu gọn có bậc lần lượt là $4; 2; 0$...',
-                        '- $M + N = (3x^2 + x^2) + (-2xy + 2xy) + (y^2 - 3y^2) = 4x^2 - 2y^2$. - $M - N = '
-                        '(3x^2 - x^2) + (-2xy - 2xy) + (y^2 + 3y^2) = 2x^2 - 4xy + 4y^2$.'],
+                        'Ta có: $P = x^3 - 3 \\cdot x^2 \\cdot 2 - 3 \\cdot x \\cdot 2^2 - 2^3 = (x - 2)^3$. '
+                        'Thay $x = 12$ vào $P$, ta được $P = (12 - 2)^3 = 10^3 = 1000$.',
+                        'Ta có: $P = x^3 - 3 \\cdot x^2 \\cdot 2 + 3 \\cdot x \\cdot 2^2 - 2^3 = (x - 2)^3$. '
+                        'Thay $x = 12$ vào $P$, ta được $P = (12 - 2)^3 = 10^3 = 999$.',
+                        'Ta có: $P = x^6 - 3 \\cdot x^2 \\cdot 2 + 3 \\cdot x \\cdot 2^2 - 2^3 = (x - 2)^3$. '
+                        'Thay $x = 12$ vào $P$, ta được $P = (12 - 2)^3 = 10^3 = 1000$.'],
             'answer': 0,
             'solution': 'Lời giải chi tiết theo Bài 7: Lập phương của một tổng. Lập phương của một hiệu: Ta '
                         'có: $P = x^3 - 3 \\cdot x^2 \\cdot 2 + 3 \\cdot x \\cdot 2^2 - 2^3 = (x - 2)^3$.\n'
@@ -1096,8 +1105,8 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
   'requirements': ['Mô tả được hằng đẳng thức tổng hai lập phương và hiệu hai lập phương.',
                    'Vận dụng hai hằng đẳng thức này để viết đa thức dưới dạng tích hoặc rút gọn biểu thức '
                    'đại số.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Tổng hai lập phương** ($A^3 + B^3 = (A + '
-                   'B)(A^2 - AB + B^2)$) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 8: Tổng và hiệu hai lập phương** để giải bài tập minh họa '
+                   'và bài toán thực tiễn.'],
   'definition': 'Với hai biểu thức $A, B$ tùy ý, ta có: $A^3 + B^3 = (A + B)(A^2 - AB + B^2)$ và $A^3 - B^3 '
                 '= (A - B)(A^2 + AB + B^2)$.',
   'theory': '1. Tổng hai lập phương: $A^3 + B^3 = (A + B)(A^2 - AB + B^2)$ (biểu thức $A^2 - AB + B^2$ được '
@@ -1137,27 +1146,26 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 8: Tổng và hiệu hai lập phương**, công thức hoặc quy tắc '
-                 'nào sau đây biểu diễn đúng **Tổng hai lập phương**?',
-            'options': ['$A^3 - B^3 = (A - B)(A^2 + AB + B^2)$',
+            'q': 'Trong **Bài 8: Tổng và hiệu hai lập phương**, quy tắc hoặc công thức nào sau đây xác định '
+                 'đúng **Tổng hai lập phương**?',
+            'options': ['$A^3 - B^3 = (A + B)(A^2 - AB + B^2)$',
                         '$A^3 + B^3 = (A + B)(A^2 - AB + B^2)$',
-                        '$\\text{Bậc} = m + n + p$',
-                        '$a x^m y^n + b x^m y^n = (a + b)x^m y^n; \\quad a x^m y^n - b x^m y^n = (a - b)x^m '
-                        'y^n$'],
+                        '$A^3 + B^3 = (A + B)(A^2 - AB + B^1)$',
+                        '$A^6 + B^3 = (A + B)(A^2 - AB + B^2)$'],
             'answer': 1,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 8: Tổng và hiệu hai lập phương, **Tổng hai '
-                        'lập phương** được xác định bởi: $A^3 + B^3 = (A + B)(A^2 - AB + B^2)$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 8: Tổng và hiệu hai lập phương, **Tổng hai lập '
+                        'phương** được xác định bởi: $A^3 + B^3 = (A + B)(A^2 - AB + B^2)$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 8: Tổng và hiệu hai lập phương**, nội dung/biểu thức $A^3 - B^3 = (A - B)(A^2 '
-                 '+ AB + B^2)$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Tổng hai lập phương',
-                        'Bậc của đơn thức $a x^m y^n z^p$ ($a \\neq 0$)',
-                        'Hiệu hai lập phương',
-                        'Cộng, trừ hai đơn thức đồng dạng'],
+            'q': 'Khi học **Bài 8: Tổng và hiệu hai lập phương**, biểu thức hoặc quy tắc nào dưới đây biểu '
+                 'diễn đúng **Hiệu hai lập phương**?',
+            'options': ['$A^3 - B^3 = (A - B)(A^2 - AB + B^2)$',
+                        '$A^3 - B^3 = (A - B)(A^2 + AB + B^1)$',
+                        '$A^3 - B^3 = (A - B)(A^2 + AB + B^2)$',
+                        '$A^6 - B^3 = (A - B)(A^2 + AB + B^2)$'],
             'answer': 2,
-            'solution': 'Trong Bài 8: Tổng và hiệu hai lập phương, biểu thức/quy tắc $A^3 - B^3 = (A - '
-                        'B)(A^2 + AB + B^2)$ chính là nội dung của **Hiệu hai lập phương**.'},
+            'solution': 'Trong Bài 8: Tổng và hiệu hai lập phương, **Hiệu hai lập phương** có công thức/quy '
+                        'tắc là: $A^3 - B^3 = (A - B)(A^2 + AB + B^2)$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Rút gọn biểu thức $(2x + 1)(4x^2 - 2x + 1)$ ta được kết quả là:',
@@ -1168,17 +1176,17 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 8: Tổng và hiệu hai lập phương** (Chương II: Hằng đẳng thức đáng nhớ và ứng '
-                 'dụng), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của '
-                 'bài?',
+            'q': 'Để nắm vững bản chất của **Bài 8: Tổng và hiệu hai lập phương**, nhận định nào sau đây là '
+                 '**chính xác**?',
             'options': ['Mô tả được hằng đẳng thức tổng hai lập phương và hiệu hai lập phương.',
-                        'Nhận biết được đơn thức nhiều biến, đơn thức thu gọn, hệ số, phần biến và bậc của '
-                        'một đơn thức.',
-                        'Nhận biết được các đơn thức đồng dạng và thực hiện được phép cộng, phép trừ các đơn '
-                        'thức đồng dạng.',
-                        'Nhận biết được đa thức nhiều biến và các hạng tử của đa thức.'],
+                        'Mô tả được hằng đẳng thức tổng hai lập phương và hiệu hai lập phương. (với dấu '
+                        'ngược lại)',
+                        'Đảo ngược vế của quy tắc: Mô tả được hằng đẳng thức tổng hai lập phương và hiệu hai '
+                        'lập phương.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Mô tả được hằng đẳng thức tổng '
+                        'hai lập phương và hiệu hai lập phương.'],
             'answer': 0,
-            'solution': 'Theo yêu cầu cần đạt của Bài 8: Tổng và hiệu hai lập phương: Mô tả được hằng đẳng '
+            'solution': 'Theo nội dung cốt lõi của Bài 8: Tổng và hiệu hai lập phương: Mô tả được hằng đẳng '
                         'thức tổng hai lập phương và hiệu hai lập phương.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -1194,37 +1202,37 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 8: Tổng và hiệu hai lập '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 8: Tổng và hiệu hai lập '
                  'phương**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Mô tả được hằng đẳng thức tổng hai '
-                           'lập phương và hiệu hai lập phương.',
-                           'Quy tắc/công thức **Tổng hai lập phương** trong bài được xác định bởi: $A^3 + '
-                           'B^3 = (A + B)(A^2 - AB + B^2)$.',
-                           'Trong mọi trường hợp, **Tổng hai lập phương** luôn được tính bằng công thức '
-                           '$\\text{Bậc} = m + n + p$ (thuộc Bậc của đơn thức $a x^m y^n z^p$ ($a \\neq 0$)) '
-                           'mà không cần điều kiện của Bài 8: Tổng và hiệu hai lập phương.',
-                           'Với bài toán minh họa: “Rút gọn biểu thức $M = (x + 2)(x^2 - 2x + 4) - (x - '
-                           '1)(x^2 + x + 1)$.”, lời giải đúng là: Áp dụng hằng đẳng thức tổng và hiệu hai '
-                           'lập phương: $M = (x^3 + 2^3) - (x^3 - 1^3) = x^3 + 8 - x^3 + 1 = 9$.'],
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Mô tả được hằng đẳng thức tổng hai lập '
+                           'phương và hiệu hai lập phương.',
+                           'Trong **Bài 8: Tổng và hiệu hai lập phương**, quy tắc/công thức **Tổng hai lập '
+                           'phương** được viết là: $A^3 + B^3 = (A + B)(A^2 - AB + B^2)$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $A^3 - B^3 = (A + B)(A^2 - AB + B^2)$ thì '
+                           'kết quả của **Tổng hai lập phương** trong **Bài 8: Tổng và hiệu hai lập phương** '
+                           'vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Rút gọn biểu thức $M = (x + 2)(x^2 - 2x + 4) - (x - 1)(x^2 + '
+                           'x + 1)$.”, kết quả giải đúng là: Áp dụng hằng đẳng thức tổng và hiệu hai lập '
+                           'phương: $M = (x^3 + 2^3) - (x^3 - 1^3) = x^3 + 8 - x^3 + 1 = 9$.'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 8: Tổng và hiệu hai lập phương. b) '
-                        '**Đúng** theo công thức trọng tâm **Tổng hai lập phương** ($A^3 + B^3 = (A + B)(A^2 '
-                        '- AB + B^2)$). c) **Sai** vì $\\text{Bậc} = m + n + p$ là công thức của nội dung '
-                        'khác, không phải quy tắc chung của **Tổng hai lập phương**. d) **Đúng** theo lời '
-                        'giải ví dụ minh họa trong bài học.'},
+                        '**Đúng** theo công thức **Tổng hai lập phương** ($A^3 + B^3 = (A + B)(A^2 - AB + '
+                        'B^2)$). c) **Sai** vì công thức đúng của **Tổng hai lập phương** phải là $A^3 + B^3 '
+                        '= (A + B)(A^2 - AB + B^2)$ chứ không phải $A^3 - B^3 = (A + B)(A^2 - AB + B^2)$. d) '
+                        '**Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 8: Tổng và hiệu hai lập phương** để giải quyết tình huống sau: '
-                 'Rút gọn biểu thức $M = (x + 2)(x^2 - 2x + 4) - (x - 1)(x^2 + x + 1)$. Kết quả và hướng '
-                 'giải nào dưới đây là **đúng**?',
-            'options': ['Ta có: $A = (-2 \\cdot 3)(x^2 \\cdot x)(y \\cdot y^3) = -6x^3y^4$. Hệ số là $-6$, '
-                        'phần biến là $x^3y^4$, bậc của đơn thức là $3 + 4 = 7$.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 8: Tổng và hiệu hai lập phương** để giải bài toán '
+                 'sau: Rút gọn biểu thức $M = (x + 2)(x^2 - 2x + 4) - (x - 1)(x^2 + x + 1)$. Cách giải và '
+                 'kết quả nào dưới đây là **đúng**?',
+            'options': ['Áp dụng hằng đẳng thức tổng và hiệu hai lập phương: $M = (x^3 - 2^3) - (x^3 - 1^3) '
+                        '= x^3 + 8 - x^3 + 1 = 9$.',
                         'Áp dụng hằng đẳng thức tổng và hiệu hai lập phương: $M = (x^3 + 2^3) - (x^3 - 1^3) '
                         '= x^3 + 8 - x^3 + 1 = 9$.',
-                        'Nhóm các hạng tử đồng dạng: $P = (2x^2y - 2x^2y) + 5x^2y^2 + (-3xy + 4xy) - 1 = '
-                        '5x^2y^2 + xy - 1$. Các hạng tử của dạng thu gọn có bậc lần lượt là $4; 2; 0$...',
-                        '- $M + N = (3x^2 + x^2) + (-2xy + 2xy) + (y^2 - 3y^2) = 4x^2 - 2y^2$. - $M - N = '
-                        '(3x^2 - x^2) + (-2xy - 2xy) + (y^2 + 3y^2) = 2x^2 - 4xy + 4y^2$.'],
+                        'Áp dụng hằng đẳng thức tổng và hiệu hai lập phương: $M = (x^3 + 2^3) - (x^3 - 1^3) '
+                        '= x^3 + 8 - x^3 + 1 = 8$.',
+                        'Áp dụng hằng đẳng thức tổng và hiệu hai lập phương: $M = (x^6 + 2^3) - (x^3 - 1^3) '
+                        '= x^3 + 8 - x^3 + 1 = 9$.'],
             'answer': 1,
             'solution': 'Lời giải chi tiết theo Bài 8: Tổng và hiệu hai lập phương: Áp dụng hằng đẳng thức '
                         'tổng và hiệu hai lập phương:\n'
@@ -1248,8 +1256,8 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
   'requirements': ['Nhận biết được thế nào là phân tích đa thức thành nhân tử.',
                    'Vận dụng được các phương pháp cơ bản: đặt nhân tử chung, sử dụng hằng đẳng thức, nhóm '
                    'các hạng tử để phân tích đa thức thành nhân tử.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Đặt nhân tử chung** ($A \\cdot B + A \\cdot '
-                   'C - A \\cdot D = A(B + C - D)$) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 9: Phân tích đa thức thành nhân tử** để giải bài tập minh '
+                   'họa và bài toán thực tiễn.'],
   'definition': 'Phân tích đa thức thành nhân tử (hay thừa số) là biến đổi đa thức đó thành một tích của '
                 'những đa thức.',
   'theory': 'Ba phương pháp cơ bản để phân tích đa thức thành nhân tử:\n'
@@ -1288,27 +1296,27 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 9: Phân tích đa thức thành nhân tử**, công thức hoặc quy '
-                 'tắc nào sau đây biểu diễn đúng **Đặt nhân tử chung**?',
-            'options': ['$A^2 - B^2 = (A - B)(A + B)$',
-                        '$ac + ad + bc + bd = a(c + d) + b(c + d) = (a + b)(c + d)$',
+            'q': 'Trong **Bài 9: Phân tích đa thức thành nhân tử**, quy tắc hoặc công thức nào sau đây xác '
+                 'định đúng **Đặt nhân tử chung**?',
+            'options': ['$A \\cdot B - A \\cdot C - A \\cdot D = A(B + C - D)$',
+                        'Đảo ngược vế của quy tắc: $A \\cdot B + A \\cdot C - A \\cdot D = A(B + C - D)$',
                         '$A \\cdot B + A \\cdot C - A \\cdot D = A(B + C - D)$',
-                        '$\\text{Bậc} = m + n + p$'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $A \\cdot B + A \\cdot C - A '
+                        '\\cdot D = A(B + C - D)$'],
             'answer': 2,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 9: Phân tích đa thức thành nhân tử, **Đặt '
-                        'nhân tử chung** được xác định bởi: $A \\cdot B + A \\cdot C - A \\cdot D = A(B + C '
-                        '- D)$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 9: Phân tích đa thức thành nhân tử, **Đặt nhân tử '
+                        'chung** được xác định bởi: $A \\cdot B + A \\cdot C - A \\cdot D = A(B + C - D)$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 9: Phân tích đa thức thành nhân tử**, nội dung/biểu thức $A^2 - B^2 = (A - '
-                 'B)(A + B)$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Đặt nhân tử chung',
-                        'Nhóm hạng tử',
-                        'Bậc của đơn thức $a x^m y^n z^p$ ($a \\neq 0$)',
-                        'Dùng hằng đẳng thức hiệu hai bình phương'],
+            'q': 'Khi học **Bài 9: Phân tích đa thức thành nhân tử**, biểu thức hoặc quy tắc nào dưới đây '
+                 'biểu diễn đúng **Dùng hằng đẳng thức hiệu hai bình phương**?',
+            'options': ['$A^2 - B^2 = (A - B)(A - B)$',
+                        '$A^2 - B^1 = (A - B)(A + B)$',
+                        '$A^4 - B^2 = (A - B)(A + B)$',
+                        '$A^2 - B^2 = (A - B)(A + B)$'],
             'answer': 3,
-            'solution': 'Trong Bài 9: Phân tích đa thức thành nhân tử, biểu thức/quy tắc $A^2 - B^2 = (A - '
-                        'B)(A + B)$ chính là nội dung của **Dùng hằng đẳng thức hiệu hai bình phương**.'},
+            'solution': 'Trong Bài 9: Phân tích đa thức thành nhân tử, **Dùng hằng đẳng thức hiệu hai bình '
+                        'phương** có công thức/quy tắc là: $A^2 - B^2 = (A - B)(A + B)$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Phân tích đa thức $x^2 + xy - 3x - 3y$ thành nhân tử ta được:',
@@ -1319,18 +1327,17 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 9: Phân tích đa thức thành nhân tử** (Chương II: Hằng đẳng thức đáng nhớ và '
-                 'ứng dụng), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức '
-                 'của bài?',
-            'options': ['Nhận biết được đơn thức nhiều biến, đơn thức thu gọn, hệ số, phần biến và bậc của '
-                        'một đơn thức.',
+            'q': 'Để nắm vững bản chất của **Bài 9: Phân tích đa thức thành nhân tử**, nhận định nào sau đây '
+                 'là **chính xác**?',
+            'options': ['Nhận biết được thế nào là phân tích đa thức thành nhân tử. (với dấu ngược lại)',
                         'Nhận biết được thế nào là phân tích đa thức thành nhân tử.',
-                        'Nhận biết được các đơn thức đồng dạng và thực hiện được phép cộng, phép trừ các đơn '
-                        'thức đồng dạng.',
-                        'Nhận biết được đa thức nhiều biến và các hạng tử của đa thức.'],
+                        'Đảo ngược vế của quy tắc: Nhận biết được thế nào là phân tích đa thức thành nhân '
+                        'tử.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nhận biết được thế nào là phân '
+                        'tích đa thức thành nhân tử.'],
             'answer': 1,
-            'solution': 'Theo yêu cầu cần đạt của Bài 9: Phân tích đa thức thành nhân tử: Nhận biết được thế '
-                        'nào là phân tích đa thức thành nhân tử.'},
+            'solution': 'Theo nội dung cốt lõi của Bài 9: Phân tích đa thức thành nhân tử: Nhận biết được '
+                        'thế nào là phân tích đa thức thành nhân tử.'},
            {'level': 'hieu',
             'type': 'tf4',
             'q': 'Cho đa thức $A = 2x^3 - 8x$. Xét các khẳng định sau:',
@@ -1345,37 +1352,38 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 9: Phân tích đa thức '
-                 'thành nhân tử**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được thế nào là phân '
-                           'tích đa thức thành nhân tử.',
-                           'Quy tắc/công thức **Đặt nhân tử chung** trong bài được xác định bởi: $A \\cdot B '
-                           '+ A \\cdot C - A \\cdot D = A(B + C - D)$.',
-                           'Trong mọi trường hợp, **Đặt nhân tử chung** luôn được tính bằng công thức '
-                           '$\\text{Bậc} = m + n + p$ (thuộc Bậc của đơn thức $a x^m y^n z^p$ ($a \\neq 0$)) '
-                           'mà không cần điều kiện của Bài 9: Phân tích đa thức thành nhân tử.',
-                           'Với bài toán minh họa: “Phân tích đa thức $P = x^2 - 2xy + y^2 - 9$ thành nhân '
-                           'tử.”, lời giải đúng là: Nhóm ba hạng tử đầu để xuất hiện hằng đẳng thức: $P = '
-                           '(x^2 - 2xy + y^2) - 9 = (x - y)^2 - 3^2 = (x - y - 3)(x - y + 3)$.'],
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 9: Phân tích đa thức thành '
+                 'nhân tử**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết được thế nào là phân tích đa '
+                           'thức thành nhân tử.',
+                           'Trong **Bài 9: Phân tích đa thức thành nhân tử**, quy tắc/công thức **Đặt nhân '
+                           'tử chung** được viết là: $A \\cdot B + A \\cdot C - A \\cdot D = A(B + C - D)$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $A \\cdot B - A \\cdot C - A \\cdot D = A(B '
+                           '+ C - D)$ thì kết quả của **Đặt nhân tử chung** trong **Bài 9: Phân tích đa thức '
+                           'thành nhân tử** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Phân tích đa thức $P = x^2 - 2xy + y^2 - 9$ thành nhân tử.”, '
+                           'kết quả giải đúng là: Nhóm ba hạng tử đầu để xuất hiện hằng đẳng thức: $P = (x^2 '
+                           '- 2xy + y^2) - 9 = (x - y)^2 - 3^2 = (x - y - 3)(x - y + 3)$.'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 9: Phân tích đa thức thành nhân tử. b) '
-                        '**Đúng** theo công thức trọng tâm **Đặt nhân tử chung** ($A \\cdot B + A \\cdot C - '
-                        'A \\cdot D = A(B + C - D)$). c) **Sai** vì $\\text{Bậc} = m + n + p$ là công thức '
-                        'của nội dung khác, không phải quy tắc chung của **Đặt nhân tử chung**. d) **Đúng** '
-                        'theo lời giải ví dụ minh họa trong bài học.'},
+                        '**Đúng** theo công thức **Đặt nhân tử chung** ($A \\cdot B + A \\cdot C - A \\cdot '
+                        'D = A(B + C - D)$). c) **Sai** vì công thức đúng của **Đặt nhân tử chung** phải là '
+                        '$A \\cdot B + A \\cdot C - A \\cdot D = A(B + C - D)$ chứ không phải $A \\cdot B - '
+                        'A \\cdot C - A \\cdot D = A(B + C - D)$. d) **Đúng** theo lời giải ví dụ minh họa '
+                        'trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 9: Phân tích đa thức thành nhân tử** để giải quyết tình huống '
-                 'sau: Phân tích đa thức $P = x^2 - 2xy + y^2 - 9$ thành nhân tử. Kết quả và hướng giải nào '
-                 'dưới đây là **đúng**?',
-            'options': ['Ta có: $A = (-2 \\cdot 3)(x^2 \\cdot x)(y \\cdot y^3) = -6x^3y^4$. Hệ số là $-6$, '
-                        'phần biến là $x^3y^4$, bậc của đơn thức là $3 + 4 = 7$.',
-                        'Nhóm các hạng tử đồng dạng: $P = (2x^2y - 2x^2y) + 5x^2y^2 + (-3xy + 4xy) - 1 = '
-                        '5x^2y^2 + xy - 1$. Các hạng tử của dạng thu gọn có bậc lần lượt là $4; 2; 0$...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 9: Phân tích đa thức thành nhân tử** để giải bài '
+                 'toán sau: Phân tích đa thức $P = x^2 - 2xy + y^2 - 9$ thành nhân tử. Cách giải và kết quả '
+                 'nào dưới đây là **đúng**?',
+            'options': ['Nhóm ba hạng tử đầu để xuất hiện hằng đẳng thức: $P = (x^2 - 2xy - y^2) - 9 = (x - '
+                        'y)^2 - 3^2 = (x - y - 3)(x - y + 3)$.',
+                        'Nhóm ba hạng tử đầu để xuất hiện hằng đẳng thức: $P = (x^2 - 2xy + y^2) - 9 = (x - '
+                        'y)^2 - 3^2 = (x - y - 3)(x - y + 2)$.',
                         'Nhóm ba hạng tử đầu để xuất hiện hằng đẳng thức: $P = (x^2 - 2xy + y^2) - 9 = (x - '
                         'y)^2 - 3^2 = (x - y - 3)(x - y + 3)$.',
-                        '- $M + N = (3x^2 + x^2) + (-2xy + 2xy) + (y^2 - 3y^2) = 4x^2 - 2y^2$. - $M - N = '
-                        '(3x^2 - x^2) + (-2xy - 2xy) + (y^2 + 3y^2) = 2x^2 - 4xy + 4y^2$.'],
+                        'Nhóm ba hạng tử đầu để xuất hiện hằng đẳng thức: $P = (x^4 - 2xy + y^2) - 9 = (x - '
+                        'y)^2 - 3^2 = (x - y - 3)(x - y + 3)$.'],
             'answer': 2,
             'solution': 'Lời giải chi tiết theo Bài 9: Phân tích đa thức thành nhân tử: Nhóm ba hạng tử đầu '
                         'để xuất hiện hằng đẳng thức:\n'
@@ -1398,9 +1406,8 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
   'requirements': ['Mô tả được tứ giác, tứ giác lồi và các yếu tố đỉnh, cạnh, đường chéo, góc của tứ giác.',
                    'Giải thích và vận dụng được định lí về tổng các góc trong một tứ giác lồi bằng '
                    '$360^\\circ$.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Tổng bốn góc trong tứ giác $ABCD$** '
-                   '($\\widehat{A} + \\widehat{B} + \\widehat{C} + \\widehat{D} = 360^\\circ$) vào giải bài '
-                   'tập.'],
+                   'Vận dụng kiến thức của **Bài 10: Tứ giác** để giải bài tập minh họa và bài toán thực '
+                   'tiễn.'],
   'definition': 'Tứ giác lồi là tứ giác luôn nằm về một phía của đường thẳng chứa một cạnh bất kì của tứ '
                 'giác đó. Tổng các góc của một tứ giác bằng $360^\\circ$.',
   'theory': '1. Các yếu tố của tứ giác $ABCD$: Gồm $4$ đỉnh $A, B, C, D$; $4$ cạnh $AB, BC, CD, DA$ và $2$ '
@@ -1442,29 +1449,27 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 10: Tứ giác**, công thức hoặc quy tắc nào sau đây biểu '
-                 'diễn đúng **Tổng bốn góc trong tứ giác $ABCD$**?',
-            'options': ['$\\widehat{D} = 360^\\circ - (\\widehat{A} + \\widehat{B} + \\widehat{C})$',
-                        '$\\text{Bậc} = m + n + p$',
-                        '$a x^m y^n + b x^m y^n = (a + b)x^m y^n; \\quad a x^m y^n - b x^m y^n = (a - b)x^m '
-                        'y^n$',
+            'q': 'Trong **Bài 10: Tứ giác**, quy tắc hoặc công thức nào sau đây xác định đúng **Tổng bốn góc '
+                 'trong tứ giác $ABCD$**?',
+            'options': ['$\\widehat{A} - \\widehat{B} + \\widehat{C} + \\widehat{D} = 360^\\circ$',
+                        '$\\widehat{A} + \\widehat{B} + \\widehat{C} + \\widehat{D} = 359^\\circ$',
+                        '$\\widehat{A} + \\widehat{B} + \\widehat{C} + \\widehat{D} = 362^\\circ$',
                         '$\\widehat{A} + \\widehat{B} + \\widehat{C} + \\widehat{D} = 360^\\circ$'],
             'answer': 3,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 10: Tứ giác, **Tổng bốn góc trong tứ giác '
-                        '$ABCD$** được xác định bởi: $\\widehat{A} + \\widehat{B} + \\widehat{C} + '
-                        '\\widehat{D} = 360^\\circ$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 10: Tứ giác, **Tổng bốn góc trong tứ giác $ABCD$** '
+                        'được xác định bởi: $\\widehat{A} + \\widehat{B} + \\widehat{C} + \\widehat{D} = '
+                        '360^\\circ$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 10: Tứ giác**, nội dung/biểu thức $\\widehat{D} = 360^\\circ - (\\widehat{A} + '
-                 '\\widehat{B} + \\widehat{C})$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Tính góc còn lại khi biết 3 góc',
-                        'Tổng bốn góc trong tứ giác $ABCD$',
-                        'Bậc của đơn thức $a x^m y^n z^p$ ($a \\neq 0$)',
-                        'Cộng, trừ hai đơn thức đồng dạng'],
+            'q': 'Khi học **Bài 10: Tứ giác**, biểu thức hoặc quy tắc nào dưới đây biểu diễn đúng **Tính góc '
+                 'còn lại khi biết 3 góc**?',
+            'options': ['$\\widehat{D} = 360^\\circ - (\\widehat{A} + \\widehat{B} + \\widehat{C})$',
+                        '$\\widehat{D} = 360^\\circ - (\\widehat{A} - \\widehat{B} + \\widehat{C})$',
+                        '$\\widehat{D} = 359^\\circ - (\\widehat{A} + \\widehat{B} + \\widehat{C})$',
+                        '$\\widehat{D} = 362^\\circ - (\\widehat{A} + \\widehat{B} + \\widehat{C})$'],
             'answer': 0,
-            'solution': 'Trong Bài 10: Tứ giác, biểu thức/quy tắc $\\widehat{D} = 360^\\circ - (\\widehat{A} '
-                        '+ \\widehat{B} + \\widehat{C})$ chính là nội dung của **Tính góc còn lại khi biết 3 '
-                        'góc**.'},
+            'solution': 'Trong Bài 10: Tứ giác, **Tính góc còn lại khi biết 3 góc** có công thức/quy tắc là: '
+                        '$\\widehat{D} = 360^\\circ - (\\widehat{A} + \\widehat{B} + \\widehat{C})$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Cho tứ giác $MNPQ$ có $\\widehat{M} = 90^\\circ, \\widehat{N} = 100^\\circ, \\widehat{P} = '
@@ -1477,17 +1482,17 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 10: Tứ giác** (Chương III: Tứ giác), khẳng định nào sau đây phản ánh '
-                 '**đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Nhận biết được đơn thức nhiều biến, đơn thức thu gọn, hệ số, phần biến và bậc của '
-                        'một đơn thức.',
-                        'Nhận biết được các đơn thức đồng dạng và thực hiện được phép cộng, phép trừ các đơn '
-                        'thức đồng dạng.',
+            'q': 'Để nắm vững bản chất của **Bài 10: Tứ giác**, nhận định nào sau đây là **chính xác**?',
+            'options': ['Mô tả được tứ giác, tứ giác lồi và các yếu tố đỉnh, cạnh, đường chéo, góc của tứ '
+                        'giác. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Mô tả được tứ giác, tứ giác lồi và các yếu tố đỉnh, cạnh, '
+                        'đường chéo, góc của tứ giác.',
                         'Mô tả được tứ giác, tứ giác lồi và các yếu tố đỉnh, cạnh, đường chéo, góc của tứ '
                         'giác.',
-                        'Nhận biết được đa thức nhiều biến và các hạng tử của đa thức.'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Mô tả được tứ giác, tứ giác lồi '
+                        'và các yếu tố đỉnh, cạnh, đường chéo, góc của tứ giác.'],
             'answer': 2,
-            'solution': 'Theo yêu cầu cần đạt của Bài 10: Tứ giác: Mô tả được tứ giác, tứ giác lồi và các '
+            'solution': 'Theo nội dung cốt lõi của Bài 10: Tứ giác: Mô tả được tứ giác, tứ giác lồi và các '
                         'yếu tố đỉnh, cạnh, đường chéo, góc của tứ giác.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -1504,36 +1509,42 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 10: Tứ giác**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Mô tả được tứ giác, tứ giác lồi và '
-                           'các yếu tố đỉnh, cạnh, đường chéo, góc của tứ giác.',
-                           'Quy tắc/công thức **Tổng bốn góc trong tứ giác $ABCD$** trong bài được xác định '
-                           'bởi: $\\widehat{A} + \\widehat{B} + \\widehat{C} + \\widehat{D} = 360^\\circ$.',
-                           'Trong mọi trường hợp, **Tổng bốn góc trong tứ giác $ABCD$** luôn được tính bằng '
-                           'công thức $\\text{Bậc} = m + n + p$ (thuộc Bậc của đơn thức $a x^m y^n z^p$ ($a '
-                           '\\neq 0$)) mà không cần điều kiện của Bài 10: Tứ giác.',
-                           'Với bài toán minh họa: “Cho tứ giác $ABCD$ có $\\widehat{A} = 110^\\circ, '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 10: Tứ giác**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Mô tả được tứ giác, tứ giác lồi và các '
+                           'yếu tố đỉnh, cạnh, đường chéo, góc của tứ giác.',
+                           'Trong **Bài 10: Tứ giác**, quy tắc/công thức **Tổng bốn góc trong tứ giác '
+                           '$ABCD$** được viết là: $\\widehat{A} + \\widehat{B} + \\widehat{C} + '
+                           '\\widehat{D} = 360^\\circ$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $\\widehat{A} - \\widehat{B} + \\widehat{C} '
+                           '+ \\widehat{D} = 360^\\circ$ thì kết quả của **Tổng bốn góc trong tứ giác '
+                           '$ABCD$** trong **Bài 10: Tứ giác** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Cho tứ giác $ABCD$ có $\\widehat{A} = 110^\\circ, '
                            '\\widehat{B} = 80^\\circ, \\widehat{C} = 75^\\circ$. Tính số đo góc '
-                           '$\\widehat{D}$.”, lời giải đúng là: Áp dụng định lí tổng các góc của một tứ '
+                           '$\\widehat{D}$.”, kết quả giải đúng là: Áp dụng định lí tổng các góc của một tứ '
                            'giác: $\\widehat{D} = 360^\\circ - (\\widehat{A} + \\widehat{B} + \\widehat{C}) '
                            '= 360^\\circ - (110^\\circ + 80^\\circ + 75^\\circ) = 95^\\circ$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 10: Tứ giác. b) **Đúng** theo công thức '
-                        'trọng tâm **Tổng bốn góc trong tứ giác $ABCD$** ($\\widehat{A} + \\widehat{B} + '
-                        '\\widehat{C} + \\widehat{D} = 360^\\circ$). c) **Sai** vì $\\text{Bậc} = m + n + p$ '
-                        'là công thức của nội dung khác, không phải quy tắc chung của **Tổng bốn góc trong '
-                        'tứ giác $ABCD$**. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        '**Tổng bốn góc trong tứ giác $ABCD$** ($\\widehat{A} + \\widehat{B} + \\widehat{C} '
+                        '+ \\widehat{D} = 360^\\circ$). c) **Sai** vì công thức đúng của **Tổng bốn góc '
+                        'trong tứ giác $ABCD$** phải là $\\widehat{A} + \\widehat{B} + \\widehat{C} + '
+                        '\\widehat{D} = 360^\\circ$ chứ không phải $\\widehat{A} - \\widehat{B} + '
+                        '\\widehat{C} + \\widehat{D} = 360^\\circ$. d) **Đúng** theo lời giải ví dụ minh họa '
+                        'trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 10: Tứ giác** để giải quyết tình huống sau: Cho tứ giác $ABCD$ có '
-                 '$\\widehat{A} = 110^\\circ, \\widehat{B} = 80^\\circ, \\widehat{C} = 75^\\circ$. Tính số '
-                 'đo góc $\\widehat{D}$. Kết quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Ta có: $A = (-2 \\cdot 3)(x^2 \\cdot x)(y \\cdot y^3) = -6x^3y^4$. Hệ số là $-6$, '
-                        'phần biến là $x^3y^4$, bậc của đơn thức là $3 + 4 = 7$.',
-                        'Nhóm các hạng tử đồng dạng: $P = (2x^2y - 2x^2y) + 5x^2y^2 + (-3xy + 4xy) - 1 = '
-                        '5x^2y^2 + xy - 1$. Các hạng tử của dạng thu gọn có bậc lần lượt là $4; 2; 0$...',
-                        '- $M + N = (3x^2 + x^2) + (-2xy + 2xy) + (y^2 - 3y^2) = 4x^2 - 2y^2$. - $M - N = '
-                        '(3x^2 - x^2) + (-2xy - 2xy) + (y^2 + 3y^2) = 2x^2 - 4xy + 4y^2$.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 10: Tứ giác** để giải bài toán sau: Cho tứ giác '
+                 '$ABCD$ có $\\widehat{A} = 110^\\circ, \\widehat{B} = 80^\\circ, \\widehat{C} = 75^\\circ$. '
+                 'Tính số đo góc $\\widehat{D}$. Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Áp dụng định lí tổng các góc của một tứ giác: $\\widehat{D} = 360^\\circ - '
+                        '(\\widehat{A} - \\widehat{B} + \\widehat{C}) = 360^\\circ - (110^\\circ + 80^\\circ '
+                        '+ 75^\\circ) = 95^\\circ$...',
+                        'Áp dụng định lí tổng các góc của một tứ giác: $\\widehat{D} = 360^\\circ - '
+                        '(\\widehat{A} + \\widehat{B} + \\widehat{C}) = 360^\\circ - (110^\\circ + 80^\\circ '
+                        '+ 75^\\circ) = 94^\\circ$...',
+                        'Áp dụng định lí tổng các góc của một tứ giác: $\\widehat{D} = 362^\\circ - '
+                        '(\\widehat{A} + \\widehat{B} + \\widehat{C}) = 360^\\circ - (110^\\circ + 80^\\circ '
+                        '+ 75^\\circ) = 95^\\circ$...',
                         'Áp dụng định lí tổng các góc của một tứ giác: $\\widehat{D} = 360^\\circ - '
                         '(\\widehat{A} + \\widehat{B} + \\widehat{C}) = 360^\\circ - (110^\\circ + 80^\\circ '
                         '+ 75^\\circ) = 95^\\circ$...'],
@@ -1619,31 +1630,36 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 11: Hình thang cân**, công thức hoặc quy tắc nào sau đây '
-                 'biểu diễn đúng **Hai góc kề một cạnh bên**?',
+            'q': 'Trong **Bài 11: Hình thang cân**, quy tắc hoặc công thức nào sau đây xác định đúng **Hai '
+                 'góc kề một cạnh bên**?',
             'options': ['$\\widehat{A} + \\widehat{D} = 180^\\circ; \\quad \\widehat{B} + \\widehat{C} = '
                         '180^\\circ$',
-                        '$\\widehat{A} = \\widehat{B}, \\; \\widehat{C} = \\widehat{D}, \\; AD = BC, \\; AC '
-                        '= BD$',
-                        '$S = \\dfrac{(a + b) \\cdot h}{2}$ ($a, b$ là hai đáy, $h$ là chiều cao)',
-                        '$\\text{Bậc} = m + n + p$'],
+                        '$\\widehat{A} - \\widehat{D} = 180^\\circ; \\quad \\widehat{B} + \\widehat{C} = '
+                        '180^\\circ$',
+                        '$\\widehat{A} + \\widehat{D} = 180^\\circ; \\quad \\widehat{B} + \\widehat{C} = '
+                        '179^\\circ$',
+                        '$\\widehat{A} + \\widehat{D} = 182^\\circ; \\quad \\widehat{B} + \\widehat{C} = '
+                        '180^\\circ$'],
             'answer': 0,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 11: Hình thang cân, **Hai góc kề một cạnh '
-                        'bên** được xác định bởi: $\\widehat{A} + \\widehat{D} = 180^\\circ; \\quad '
-                        '\\widehat{B} + \\widehat{C} = 180^\\circ$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 11: Hình thang cân, **Hai góc kề một cạnh bên** '
+                        'được xác định bởi: $\\widehat{A} + \\widehat{D} = 180^\\circ; \\quad \\widehat{B} + '
+                        '\\widehat{C} = 180^\\circ$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 11: Hình thang cân**, nội dung/biểu thức $\\widehat{A} = \\widehat{B}, \\; '
-                 '\\widehat{C} = \\widehat{D}, \\; AD = BC, \\; AC = BD$ là quy tắc hoặc công thức của mục '
-                 'nào sau đây?',
-            'options': ['Hai góc kề một cạnh bên',
-                        'Tính chất hình thang cân $ABCD$ ($AB \\parallel CD$)',
-                        'Diện tích hình thang',
-                        'Bậc của đơn thức $a x^m y^n z^p$ ($a \\neq 0$)'],
+            'q': 'Khi học **Bài 11: Hình thang cân**, biểu thức hoặc quy tắc nào dưới đây biểu diễn đúng '
+                 '**Tính chất hình thang cân $ABCD$ ($AB \\parallel CD$)**?',
+            'options': ['$\\widehat{A} = \\widehat{B}, \\; \\widehat{C} = \\widehat{D}, \\; AD = BC, \\; AC '
+                        '= BD$ (với dấu ngược lại)',
+                        '$\\widehat{A} = \\widehat{B}, \\; \\widehat{C} = \\widehat{D}, \\; AD = BC, \\; AC '
+                        '= BD$',
+                        'Đảo ngược vế của quy tắc: $\\widehat{A} = \\widehat{B}, \\; \\widehat{C} = '
+                        '\\widehat{D}, \\; AD = BC, \\; AC = BD$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\widehat{A} = \\widehat{B}, '
+                        '\\; \\widehat{C} = \\widehat{D}, \\; AD = BC, \\; AC = BD$'],
             'answer': 1,
-            'solution': 'Trong Bài 11: Hình thang cân, biểu thức/quy tắc $\\widehat{A} = \\widehat{B}, \\; '
-                        '\\widehat{C} = \\widehat{D}, \\; AD = BC, \\; AC = BD$ chính là nội dung của **Tính '
-                        'chất hình thang cân $ABCD$ ($AB \\parallel CD$)**.'},
+            'solution': 'Trong Bài 11: Hình thang cân, **Tính chất hình thang cân $ABCD$ ($AB \\parallel '
+                        'CD$)** có công thức/quy tắc là: $\\widehat{A} = \\widehat{B}, \\; \\widehat{C} = '
+                        '\\widehat{D}, \\; AD = BC, \\; AC = BD$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Cho hình thang cân $ABCD$ ($AB \\parallel CD$) có $\\widehat{A} = 115^\\circ$. Số đo góc '
@@ -1657,16 +1673,16 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 11: Hình thang cân** (Chương III: Tứ giác), khẳng định nào sau đây phản ánh '
-                 '**đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Nhận biết được đơn thức nhiều biến, đơn thức thu gọn, hệ số, phần biến và bậc của '
-                        'một đơn thức.',
-                        'Nhận biết được các đơn thức đồng dạng và thực hiện được phép cộng, phép trừ các đơn '
-                        'thức đồng dạng.',
-                        'Nhận biết được đa thức nhiều biến và các hạng tử của đa thức.',
+            'q': 'Để nắm vững bản chất của **Bài 11: Hình thang cân**, nhận định nào sau đây là **chính '
+                 'xác**?',
+            'options': ['Nhận biết được hình thang, hình thang vuông và hình thang cân. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Nhận biết được hình thang, hình thang vuông và hình thang '
+                        'cân.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nhận biết được hình thang, hình '
+                        'thang vuông và hình thang cân.',
                         'Nhận biết được hình thang, hình thang vuông và hình thang cân.'],
             'answer': 3,
-            'solution': 'Theo yêu cầu cần đạt của Bài 11: Hình thang cân: Nhận biết được hình thang, hình '
+            'solution': 'Theo nội dung cốt lõi của Bài 11: Hình thang cân: Nhận biết được hình thang, hình '
                         'thang vuông và hình thang cân.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -1684,41 +1700,41 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 11: Hình thang cân**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được hình thang, hình '
-                           'thang vuông và hình thang cân.',
-                           'Quy tắc/công thức **Hai góc kề một cạnh bên** trong bài được xác định bởi: '
-                           '$\\widehat{A} + \\widehat{D} = 180^\\circ; \\quad \\widehat{B} + \\widehat{C} = '
-                           '180^\\circ$.',
-                           'Trong mọi trường hợp, **Hai góc kề một cạnh bên** luôn được tính bằng công thức '
-                           '$\\text{Bậc} = m + n + p$ (thuộc Bậc của đơn thức $a x^m y^n z^p$ ($a \\neq 0$)) '
-                           'mà không cần điều kiện của Bài 11: Hình thang cân.',
-                           'Với bài toán minh họa: “Cho hình thang cân $ABCD$ có $AB \\parallel CD$ và '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 11: Hình thang cân**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết được hình thang, hình thang '
+                           'vuông và hình thang cân.',
+                           'Trong **Bài 11: Hình thang cân**, quy tắc/công thức **Hai góc kề một cạnh bên** '
+                           'được viết là: $\\widehat{A} + \\widehat{D} = 180^\\circ; \\quad \\widehat{B} + '
+                           '\\widehat{C} = 180^\\circ$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $\\widehat{A} - \\widehat{D} = 180^\\circ; '
+                           '\\quad \\widehat{B} + \\widehat{C} = 180^\\circ$ thì kết quả của **Hai góc kề '
+                           'một cạnh bên** trong **Bài 11: Hình thang cân** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Cho hình thang cân $ABCD$ có $AB \\parallel CD$ và '
                            '$\\widehat{D} = 70^\\circ$. Tính số đo các góc $\\widehat{C}, \\widehat{A}, '
-                           '\\widehat{B}$.”, lời giải đúng là: Vì $ABCD$ là hình thang cân ($AB \\parallel '
-                           'CD$) nên hai góc kề một đáy bằng nhau: $\\widehat{C} = \\widehat{D} = '
+                           '\\widehat{B}$.”, kết quả giải đúng là: Vì $ABCD$ là hình thang cân ($AB '
+                           '\\parallel CD$) nên hai góc kề một đáy bằng nhau: $\\widehat{C} = \\widehat{D} = '
                            '70^\\circ$. Vì $AB \\parallel CD$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 11: Hình thang cân. b) **Đúng** theo công '
-                        'thức trọng tâm **Hai góc kề một cạnh bên** ($\\widehat{A} + \\widehat{D} = '
-                        '180^\\circ; \\quad \\widehat{B} + \\widehat{C} = 180^\\circ$). c) **Sai** vì '
-                        '$\\text{Bậc} = m + n + p$ là công thức của nội dung khác, không phải quy tắc chung '
-                        'của **Hai góc kề một cạnh bên**. d) **Đúng** theo lời giải ví dụ minh họa trong bài '
-                        'học.'},
+                        'thức **Hai góc kề một cạnh bên** ($\\widehat{A} + \\widehat{D} = 180^\\circ; \\quad '
+                        '\\widehat{B} + \\widehat{C} = 180^\\circ$). c) **Sai** vì công thức đúng của **Hai '
+                        'góc kề một cạnh bên** phải là $\\widehat{A} + \\widehat{D} = 180^\\circ; \\quad '
+                        '\\widehat{B} + \\widehat{C} = 180^\\circ$ chứ không phải $\\widehat{A} - '
+                        '\\widehat{D} = 180^\\circ; \\quad \\widehat{B} + \\widehat{C} = 180^\\circ$. d) '
+                        '**Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 11: Hình thang cân** để giải quyết tình huống sau: Cho hình thang '
-                 'cân $ABCD$ có $AB \\parallel CD$ và $\\widehat{D} = 70^\\circ$. Tính số đo các góc '
-                 '$\\widehat{C}, \\widehat{A}, \\widehat{B}$. Kết quả và hướng giải nào dưới đây là '
-                 '**đúng**?',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 11: Hình thang cân** để giải bài toán sau: Cho hình '
+                 'thang cân $ABCD$ có $AB \\parallel CD$ và $\\widehat{D} = 70^\\circ$. Tính số đo các góc '
+                 '$\\widehat{C}, \\widehat{A}, \\widehat{B}$. Cách giải và kết quả nào dưới đây là **đúng**?',
             'options': ['Vì $ABCD$ là hình thang cân ($AB \\parallel CD$) nên hai góc kề một đáy bằng nhau: '
                         '$\\widehat{C} = \\widehat{D} = 70^\\circ$. Vì $AB \\parallel CD$ nên...',
-                        'Ta có: $A = (-2 \\cdot 3)(x^2 \\cdot x)(y \\cdot y^3) = -6x^3y^4$. Hệ số là $-6$, '
-                        'phần biến là $x^3y^4$, bậc của đơn thức là $3 + 4 = 7$.',
-                        'Nhóm các hạng tử đồng dạng: $P = (2x^2y - 2x^2y) + 5x^2y^2 + (-3xy + 4xy) - 1 = '
-                        '5x^2y^2 + xy - 1$. Các hạng tử của dạng thu gọn có bậc lần lượt là $4; 2; 0$...',
-                        '- $M + N = (3x^2 + x^2) + (-2xy + 2xy) + (y^2 - 3y^2) = 4x^2 - 2y^2$. - $M - N = '
-                        '(3x^2 - x^2) + (-2xy - 2xy) + (y^2 + 3y^2) = 2x^2 - 4xy + 4y^2$.'],
+                        'Vì $ABCD$ là hình thang cân ($AB \\parallel CD$) nên hai góc kề một đáy bằng nhau: '
+                        '$\\widehat{C} = \\widehat{D} = 80^\\circ$. Vì $AB \\parallel CD$ nên...',
+                        'Vì $ABCD$ là hình thang cân ($AB \\parallel CD$) nên hai góc kề một đáy bằng nhau: '
+                        '$\\widehat{C} = \\widehat{D} = 69^\\circ$. Vì $AB \\parallel CD$ nên...',
+                        'Vì $ABCD$ là hình thang cân ($AB \\parallel CD$) nên hai góc kề một đáy bằng nhau: '
+                        '$\\widehat{C} = \\widehat{D} = 72^\\circ$. Vì $AB \\parallel CD$ nên...'],
             'answer': 0,
             'solution': 'Lời giải chi tiết theo Bài 11: Hình thang cân: Vì $ABCD$ là hình thang cân ($AB '
                         '\\parallel CD$) nên hai góc kề một đáy bằng nhau: $\\widehat{C} = \\widehat{D} = '
@@ -1746,9 +1762,8 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
   'requirements': ['Nhận biết được hình bình hành và giải thích được các tính chất của hình bình hành (cạnh '
                    'đối, góc đối, hai đường chéo).',
                    'Vận dụng được các dấu hiệu nhận biết hình bình hành trong chứng minh hình học.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Tính chất cạnh và góc** ($AB = CD, \\; AD = '
-                   'BC; \\quad \\widehat{A} = \\widehat{C}, \\; \\widehat{B} = \\widehat{D}$) vào giải bài '
-                   'tập.'],
+                   'Vận dụng kiến thức của **Bài 12: Hình bình hành** để giải bài tập minh họa và bài toán '
+                   'thực tiễn.'],
   'definition': 'Hình bình hành là tứ giác có các cạnh đối song song.',
   'theory': '1. Tính chất của hình bình hành:\n'
             '- Các cạnh đối bằng nhau.\n'
@@ -1801,29 +1816,32 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 12: Hình bình hành**, công thức hoặc quy tắc nào sau đây '
-                 'biểu diễn đúng **Tính chất cạnh và góc**?',
-            'options': ['$OA = OC = \\dfrac{1}{2}AC; \\quad OB = OD = \\dfrac{1}{2}BD$',
+            'q': 'Trong **Bài 12: Hình bình hành**, quy tắc hoặc công thức nào sau đây xác định đúng **Tính '
+                 'chất cạnh và góc**?',
+            'options': ['$AB = CD, \\; AD = BC; \\quad \\widehat{A} = \\widehat{C}, \\; \\widehat{B} = '
+                        '\\widehat{D}$ (với dấu ngược lại)',
                         '$AB = CD, \\; AD = BC; \\quad \\widehat{A} = \\widehat{C}, \\; \\widehat{B} = '
                         '\\widehat{D}$',
-                        '$P = 2(a + b); \\quad S = a \\cdot h$',
-                        '$\\text{Bậc} = m + n + p$'],
+                        'Đảo ngược vế của quy tắc: $AB = CD, \\; AD = BC; \\quad \\widehat{A} = '
+                        '\\widehat{C}, \\; \\widehat{B} = \\widehat{D}$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $AB = CD, \\; AD = BC; \\quad '
+                        '\\widehat{A} = \\widehat{C}, \\; \\widehat{B} = \\widehat{D}$'],
             'answer': 1,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 12: Hình bình hành, **Tính chất cạnh và góc** '
-                        'được xác định bởi: $AB = CD, \\; AD = BC; \\quad \\widehat{A} = \\widehat{C}, \\; '
+            'solution': 'Theo kiến thức trọng tâm của Bài 12: Hình bình hành, **Tính chất cạnh và góc** được '
+                        'xác định bởi: $AB = CD, \\; AD = BC; \\quad \\widehat{A} = \\widehat{C}, \\; '
                         '\\widehat{B} = \\widehat{D}$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 12: Hình bình hành**, nội dung/biểu thức $OA = OC = \\dfrac{1}{2}AC; \\quad OB '
-                 '= OD = \\dfrac{1}{2}BD$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Tính chất cạnh và góc',
-                        'Chu vi và diện tích hình bình hành',
-                        'Giao điểm $O$ của hai đường chéo',
-                        'Bậc của đơn thức $a x^m y^n z^p$ ($a \\neq 0$)'],
+            'q': 'Khi học **Bài 12: Hình bình hành**, biểu thức hoặc quy tắc nào dưới đây biểu diễn đúng '
+                 '**Giao điểm $O$ của hai đường chéo**?',
+            'options': ['$OA = OC = \\dfrac{2}{2}AC; \\quad OB = OD = \\dfrac{1}{2}BD$',
+                        '$OA = OC = \\dfrac{2}{1}AC; \\quad OB = OD = \\dfrac{1}{2}BD$',
+                        '$OA = OC = \\dfrac{1}{2}AC; \\quad OB = OD = \\dfrac{1}{2}BD$',
+                        '$AB = CD, \\; AD = BC; \\quad \\widehat{A} = \\widehat{C}, \\; \\widehat{B} = '
+                        '\\widehat{D}$'],
             'answer': 2,
-            'solution': 'Trong Bài 12: Hình bình hành, biểu thức/quy tắc $OA = OC = \\dfrac{1}{2}AC; \\quad '
-                        'OB = OD = \\dfrac{1}{2}BD$ chính là nội dung của **Giao điểm $O$ của hai đường '
-                        'chéo**.'},
+            'solution': 'Trong Bài 12: Hình bình hành, **Giao điểm $O$ của hai đường chéo** có công thức/quy '
+                        'tắc là: $OA = OC = \\dfrac{1}{2}AC; \\quad OB = OD = \\dfrac{1}{2}BD$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Cho hình bình hành $ABCD$ có $\\widehat{A} = 65^\\circ$. Số đo của góc $\\widehat{B}$ và '
@@ -1840,17 +1858,19 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 12: Hình bình hành** (Chương III: Tứ giác), khẳng định nào sau đây phản ánh '
-                 '**đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
+            'q': 'Để nắm vững bản chất của **Bài 12: Hình bình hành**, nhận định nào sau đây là **chính '
+                 'xác**?',
             'options': ['Nhận biết được hình bình hành và giải thích được các tính chất của hình bình hành '
                         '(cạnh đối, góc đối, hai đường chéo).',
-                        'Nhận biết được đơn thức nhiều biến, đơn thức thu gọn, hệ số, phần biến và bậc của '
-                        'một đơn thức.',
-                        'Nhận biết được các đơn thức đồng dạng và thực hiện được phép cộng, phép trừ các đơn '
-                        'thức đồng dạng.',
-                        'Nhận biết được đa thức nhiều biến và các hạng tử của đa thức.'],
+                        'Nhận biết được hình bình hành và giải thích được các tính chất của hình bình hành '
+                        '(cạnh đối, góc đối, hai đường chéo). (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Nhận biết được hình bình hành và giải thích được các tính '
+                        'chất của hình bình hành (cạnh đối, góc đối, hai đường chéo).',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nhận biết được hình bình hành '
+                        'và giải thích được các tính chất của hình bình hành (cạnh đối, góc đối, hai đường '
+                        'chéo).'],
             'answer': 0,
-            'solution': 'Theo yêu cầu cần đạt của Bài 12: Hình bình hành: Nhận biết được hình bình hành và '
+            'solution': 'Theo nội dung cốt lõi của Bài 12: Hình bình hành: Nhận biết được hình bình hành và '
                         'giải thích được các tính chất của hình bình hành (cạnh đối, góc đối, hai đường '
                         'chéo).'},
            {'level': 'hieu',
@@ -1869,43 +1889,47 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 12: Hình bình hành**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được hình bình hành và '
-                           'giải thích được các tính chất của hình bình hành (cạnh đối, góc đối, hai đường '
-                           'chéo).',
-                           'Quy tắc/công thức **Tính chất cạnh và góc** trong bài được xác định bởi: $AB = '
-                           'CD, \\; AD = BC; \\quad \\widehat{A} = \\widehat{C}, \\; \\widehat{B} = '
-                           '\\widehat{D}$.',
-                           'Trong mọi trường hợp, **Tính chất cạnh và góc** luôn được tính bằng công thức '
-                           '$\\text{Bậc} = m + n + p$ (thuộc Bậc của đơn thức $a x^m y^n z^p$ ($a \\neq 0$)) '
-                           'mà không cần điều kiện của Bài 12: Hình bình hành.',
-                           'Với bài toán minh họa: “Cho hình bình hành $ABCD$ có hai đường chéo $AC$ và $BD$ '
-                           'cắt nhau tại $O$. Biết $AB = 7\\text{ cm}, BC = 5\\text{ cm}$ và $AC = 10\\text{ '
-                           'cm}$....”, lời giải đúng là: - Chu vi hình bình hành $ABCD$ là $P = 2(AB + BC) = '
-                           '2(7 + 5) = 24\\text{ (cm)}$. - Vì hai đường chéo cắt nhau tại trung điểm $O$ của '
-                           'mỗi đườn...'],
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 12: Hình bình hành**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết được hình bình hành và giải '
+                           'thích được các tính chất của hình bình hành (cạnh đối, góc đối, hai đường chéo).',
+                           'Trong **Bài 12: Hình bình hành**, quy tắc/công thức **Tính chất cạnh và góc** '
+                           'được viết là: $AB = CD, \\; AD = BC; \\quad \\widehat{A} = \\widehat{C}, \\; '
+                           '\\widehat{B} = \\widehat{D}$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $AB = CD, \\; AD = BC; \\quad \\widehat{A} = '
+                           '\\widehat{C}, \\; \\widehat{B} = \\widehat{D}$ (với dấu ngược lại) thì kết quả '
+                           'của **Tính chất cạnh và góc** trong **Bài 12: Hình bình hành** vẫn không thay '
+                           'đổi.',
+                           'Xét ví dụ của bài: “Cho hình bình hành $ABCD$ có hai đường chéo $AC$ và $BD$ cắt '
+                           'nhau tại $O$. Biết $AB = 7\\text{ cm}, BC = 5\\text{ cm}$ và $AC = 10\\text{ '
+                           'cm}$...”, kết quả giải đúng là: - Chu vi hình bình hành $ABCD$ là $P = 2(AB + '
+                           'BC) = 2(7 + 5) = 24\\text{ (cm)}$. - Vì hai đường chéo cắt nhau tại trung điểm '
+                           '$O$ của mỗi...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 12: Hình bình hành. b) **Đúng** theo công '
-                        'thức trọng tâm **Tính chất cạnh và góc** ($AB = CD, \\; AD = BC; \\quad '
-                        '\\widehat{A} = \\widehat{C}, \\; \\widehat{B} = \\widehat{D}$). c) **Sai** vì '
-                        '$\\text{Bậc} = m + n + p$ là công thức của nội dung khác, không phải quy tắc chung '
-                        'của **Tính chất cạnh và góc**. d) **Đúng** theo lời giải ví dụ minh họa trong bài '
-                        'học.'},
+                        'thức **Tính chất cạnh và góc** ($AB = CD, \\; AD = BC; \\quad \\widehat{A} = '
+                        '\\widehat{C}, \\; \\widehat{B} = \\widehat{D}$). c) **Sai** vì công thức đúng của '
+                        '**Tính chất cạnh và góc** phải là $AB = CD, \\; AD = BC; \\quad \\widehat{A} = '
+                        '\\widehat{C}, \\; \\widehat{B} = \\widehat{D}$ chứ không phải $AB = CD, \\; AD = '
+                        'BC; \\quad \\widehat{A} = \\widehat{C}, \\; \\widehat{B} = \\widehat{D}$ (với dấu '
+                        'ngược lại). d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 12: Hình bình hành** để giải quyết tình huống sau: Cho hình bình '
-                 'hành $ABCD$ có hai đường chéo $AC$ và $BD$ cắt nhau tại $O$. Biết $AB = 7\\text{ cm}, BC = '
-                 '5\\text{ cm}$ và $AC = 10\\text{ cm}$. Tính chu vi hình bình hành $ABCD$ và độ dài $OA$. '
-                 'Kết quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Ta có: $A = (-2 \\cdot 3)(x^2 \\cdot x)(y \\cdot y^3) = -6x^3y^4$. Hệ số là $-6$, '
-                        'phần biến là $x^3y^4$, bậc của đơn thức là $3 + 4 = 7$.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 12: Hình bình hành** để giải bài toán sau: Cho hình '
+                 'bình hành $ABCD$ có hai đường chéo $AC$ và $BD$ cắt nhau tại $O$. Biết $AB = 7\\text{ cm}, '
+                 'BC = 5\\text{ cm}$ và $AC = 10\\text{ cm}$. Tính chu vi hình bình hành $ABCD$ và độ dài '
+                 '$OA$. Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['- Chu vi hình bình hành $ABCD$ là $P = 2(AB - BC) = 2(7 + 5) = 24\\text{ (cm)}$. - '
+                        'Vì hai đường chéo cắt nhau tại trung điểm $O$ của mỗi đường nên $OA = '
+                        '\\dfrac{1}{2}AC = 5\\text{ (cm)}$...',
                         '- Chu vi hình bình hành $ABCD$ là $P = 2(AB + BC) = 2(7 + 5) = 24\\text{ (cm)}$. - '
                         'Vì hai đường chéo cắt nhau tại trung điểm $O$ của mỗi đường nên $OA = '
                         '\\dfrac{1}{2}AC = 5\\text{ (cm)}$...',
-                        'Nhóm các hạng tử đồng dạng: $P = (2x^2y - 2x^2y) + 5x^2y^2 + (-3xy + 4xy) - 1 = '
-                        '5x^2y^2 + xy - 1$. Các hạng tử của dạng thu gọn có bậc lần lượt là $4; 2; 0$...',
-                        '- $M + N = (3x^2 + x^2) + (-2xy + 2xy) + (y^2 - 3y^2) = 4x^2 - 2y^2$. - $M - N = '
-                        '(3x^2 - x^2) + (-2xy - 2xy) + (y^2 + 3y^2) = 2x^2 - 4xy + 4y^2$.'],
+                        '- Chu vi hình bình hành $ABCD$ là $P = 2(AB + BC) = 2(7 + 5) = 24\\text{ (cm)}$. - '
+                        'Vì hai đường chéo cắt nhau tại trung điểm $O$ của mỗi đường nên $OA = '
+                        '\\dfrac{2}{1}AC = 5\\text{ (cm)}$...',
+                        '- Chu vi hình bình hành $ABCD$ là $P = 4(AB + BC) = 2(7 + 5) = 24\\text{ (cm)}$. - '
+                        'Vì hai đường chéo cắt nhau tại trung điểm $O$ của mỗi đường nên $OA = '
+                        '\\dfrac{1}{2}AC = 5\\text{ (cm)}$...'],
             'answer': 1,
             'solution': 'Lời giải chi tiết theo Bài 12: Hình bình hành: - Chu vi hình bình hành $ABCD$ là $P '
                         '= 2(AB + BC) = 2(7 + 5) = 24\\text{ (cm)}$.\n'
@@ -1932,8 +1956,8 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
   'requirements': ['Mô tả được định nghĩa, tính chất của hình chữ nhật và tính chất đường trung tuyến ứng '
                    'với cạnh huyền của tam giác vuông.',
                    'Vận dụng được các dấu hiệu nhận biết hình chữ nhật trong giải toán và thực tiễn.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Hai đường chéo hình chữ nhật $ABCD$ (tâm '
-                   '$O$)** ($AC = BD$ và $OA = OB = OC = OD = \\dfrac{1}{2}AC$) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 13: Hình chữ nhật** để giải bài tập minh họa và bài toán '
+                   'thực tiễn.'],
   'definition': 'Hình chữ nhật là tứ giác có bốn góc vuông.',
   'theory': '1. Tính chất của hình chữ nhật: Hình chữ nhật có tất cả các tính chất của hình bình hành và '
             'hình thang cân. Đặc biệt: Trong hình chữ nhật, hai đường chéo bằng nhau và cắt nhau tại trung '
@@ -1983,28 +2007,28 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 13: Hình chữ nhật**, công thức hoặc quy tắc nào sau đây '
-                 'biểu diễn đúng **Hai đường chéo hình chữ nhật $ABCD$ (tâm $O$)**?',
-            'options': ['$AM = BM = CM = \\dfrac{1}{2}BC$',
-                        '$P = 2(a + b); \\quad S = a \\cdot b$',
+            'q': 'Trong **Bài 13: Hình chữ nhật**, quy tắc hoặc công thức nào sau đây xác định đúng **Hai '
+                 'đường chéo hình chữ nhật $ABCD$ (tâm $O$)**?',
+            'options': ['$AC = BD$ và $OA = OB = OC = OD = \\dfrac{2}{2}AC$',
+                        '$AC = BD$ và $OA = OB = OC = OD = \\dfrac{2}{1}AC$',
                         '$AC = BD$ và $OA = OB = OC = OD = \\dfrac{1}{2}AC$',
-                        '$\\text{Bậc} = m + n + p$'],
+                        '$AM = BM = CM = \\dfrac{1}{2}BC$'],
             'answer': 2,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 13: Hình chữ nhật, **Hai đường chéo hình chữ '
-                        'nhật $ABCD$ (tâm $O$)** được xác định bởi: $AC = BD$ và $OA = OB = OC = OD = '
+            'solution': 'Theo kiến thức trọng tâm của Bài 13: Hình chữ nhật, **Hai đường chéo hình chữ nhật '
+                        '$ABCD$ (tâm $O$)** được xác định bởi: $AC = BD$ và $OA = OB = OC = OD = '
                         '\\dfrac{1}{2}AC$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 13: Hình chữ nhật**, nội dung/biểu thức $AM = BM = CM = \\dfrac{1}{2}BC$ là '
-                 'quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Hai đường chéo hình chữ nhật $ABCD$ (tâm $O$)',
-                        'Chu vi và diện tích hình chữ nhật cạnh $a, b$',
-                        'Bậc của đơn thức $a x^m y^n z^p$ ($a \\neq 0$)',
-                        'Trung tuyến $AM$ ứng với cạnh huyền $BC$ ($\\widehat{A} = 90^\\circ$)'],
+            'q': 'Khi học **Bài 13: Hình chữ nhật**, biểu thức hoặc quy tắc nào dưới đây biểu diễn đúng '
+                 '**Trung tuyến $AM$ ứng với cạnh huyền $BC$ ($\\widehat{A} = 90^\\circ$)**?',
+            'options': ['$AM = BM = CM = \\dfrac{2}{2}BC$',
+                        '$AM = BM = CM = \\dfrac{2}{1}BC$',
+                        '$AC = BD$ và $OA = OB = OC = OD = \\dfrac{1}{2}AC$',
+                        '$AM = BM = CM = \\dfrac{1}{2}BC$'],
             'answer': 3,
-            'solution': 'Trong Bài 13: Hình chữ nhật, biểu thức/quy tắc $AM = BM = CM = \\dfrac{1}{2}BC$ '
-                        'chính là nội dung của **Trung tuyến $AM$ ứng với cạnh huyền $BC$ ($\\widehat{A} = '
-                        '90^\\circ$)**.'},
+            'solution': 'Trong Bài 13: Hình chữ nhật, **Trung tuyến $AM$ ứng với cạnh huyền $BC$ '
+                        '($\\widehat{A} = 90^\\circ$)** có công thức/quy tắc là: $AM = BM = CM = '
+                        '\\dfrac{1}{2}BC$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Cho hình chữ nhật $ABCD$ có hai đường chéo cắt nhau tại $O$. Biết $OA = 5\\text{ cm}$, độ '
@@ -2016,17 +2040,19 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 13: Hình chữ nhật** (Chương III: Tứ giác), khẳng định nào sau đây phản ánh '
-                 '**đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Nhận biết được đơn thức nhiều biến, đơn thức thu gọn, hệ số, phần biến và bậc của '
-                        'một đơn thức.',
+            'q': 'Để nắm vững bản chất của **Bài 13: Hình chữ nhật**, nhận định nào sau đây là **chính '
+                 'xác**?',
+            'options': ['Mô tả được định nghĩa, tính chất của hình chữ nhật và tính chất đường trung tuyến '
+                        'ứng với cạnh huyền của tam giác vuông. (với dấu ngược lại)',
                         'Mô tả được định nghĩa, tính chất của hình chữ nhật và tính chất đường trung tuyến '
                         'ứng với cạnh huyền của tam giác vuông.',
-                        'Nhận biết được các đơn thức đồng dạng và thực hiện được phép cộng, phép trừ các đơn '
-                        'thức đồng dạng.',
-                        'Nhận biết được đa thức nhiều biến và các hạng tử của đa thức.'],
+                        'Đảo ngược vế của quy tắc: Mô tả được định nghĩa, tính chất của hình chữ nhật và '
+                        'tính chất đường trung tuyến ứng với cạnh huyền của tam giác vuông.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Mô tả được định nghĩa, tính '
+                        'chất của hình chữ nhật và tính chất đường trung tuyến ứng với cạnh huyền của tam '
+                        'giác vuông.'],
             'answer': 1,
-            'solution': 'Theo yêu cầu cần đạt của Bài 13: Hình chữ nhật: Mô tả được định nghĩa, tính chất '
+            'solution': 'Theo nội dung cốt lõi của Bài 13: Hình chữ nhật: Mô tả được định nghĩa, tính chất '
                         'của hình chữ nhật và tính chất đường trung tuyến ứng với cạnh huyền của tam giác '
                         'vuông.'},
            {'level': 'hieu',
@@ -2045,40 +2071,38 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 13: Hình chữ nhật**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Mô tả được định nghĩa, tính chất '
-                           'của hình chữ nhật và tính chất đường trung tuyến ứng với cạnh huyền của tam giác '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 13: Hình chữ nhật**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Mô tả được định nghĩa, tính chất của '
+                           'hình chữ nhật và tính chất đường trung tuyến ứng với cạnh huyền của tam giác '
                            'vuông.',
-                           'Quy tắc/công thức **Hai đường chéo hình chữ nhật $ABCD$ (tâm $O$)** trong bài '
-                           'được xác định bởi: $AC = BD$ và $OA = OB = OC = OD = \\dfrac{1}{2}AC$.',
-                           'Trong mọi trường hợp, **Hai đường chéo hình chữ nhật $ABCD$ (tâm $O$)** luôn '
-                           'được tính bằng công thức $\\text{Bậc} = m + n + p$ (thuộc Bậc của đơn thức $a '
-                           'x^m y^n z^p$ ($a \\neq 0$)) mà không cần điều kiện của Bài 13: Hình chữ nhật.',
-                           'Với bài toán minh họa: “Cho $\\triangle ABC$ vuông tại $A$ có cạnh huyền $BC = '
+                           'Trong **Bài 13: Hình chữ nhật**, quy tắc/công thức **Hai đường chéo hình chữ '
+                           'nhật $ABCD$ (tâm $O$)** được viết là: $AC = BD$ và $OA = OB = OC = OD = '
+                           '\\dfrac{1}{2}AC$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $AC = BD$ và $OA = OB = OC = OD = '
+                           '\\dfrac{2}{2}AC$ thì kết quả của **Hai đường chéo hình chữ nhật $ABCD$ (tâm '
+                           '$O$)** trong **Bài 13: Hình chữ nhật** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Cho $\\triangle ABC$ vuông tại $A$ có cạnh huyền $BC = '
                            '16\\text{ cm}$. Gọi $M$ là trung điểm của $BC$. Tính độ dài đoạn thẳng $AM$.”, '
-                           'lời giải đúng là: Trong tam giác vuông $\\triangle ABC$, $AM$ là đường trung '
-                           'tuyến ứng với cạnh huyền $BC$. Theo tính chất đường trung tuyến trong tam giác '
-                           'vuô...'],
+                           'kết quả giải đúng là: Trong tam giác vuông $\\triangle ABC$, $AM$ là đường trung '
+                           'tuyến ứng với cạnh huyền $BC$. Theo tính chất đường trung tuyến trong tam '
+                           'giá...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 13: Hình chữ nhật. b) **Đúng** theo công '
-                        'thức trọng tâm **Hai đường chéo hình chữ nhật $ABCD$ (tâm $O$)** ($AC = BD$ và $OA '
-                        '= OB = OC = OD = \\dfrac{1}{2}AC$). c) **Sai** vì $\\text{Bậc} = m + n + p$ là công '
-                        'thức của nội dung khác, không phải quy tắc chung của **Hai đường chéo hình chữ nhật '
-                        '$ABCD$ (tâm $O$)**. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        'thức **Hai đường chéo hình chữ nhật $ABCD$ (tâm $O$)** ($AC = BD$ và $OA = OB = OC '
+                        '= OD = \\dfrac{1}{2}AC$). c) **Sai** vì công thức đúng của **Hai đường chéo hình '
+                        'chữ nhật $ABCD$ (tâm $O$)** phải là $AC = BD$ và $OA = OB = OC = OD = '
+                        '\\dfrac{1}{2}AC$ chứ không phải $AC = BD$ và $OA = OB = OC = OD = \\dfrac{2}{2}AC$. '
+                        'd) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 13: Hình chữ nhật** để giải quyết tình huống sau: Cho $\\triangle '
-                 'ABC$ vuông tại $A$ có cạnh huyền $BC = 16\\text{ cm}$. Gọi $M$ là trung điểm của $BC$. '
-                 'Tính độ dài đoạn thẳng $AM$. Kết quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Ta có: $A = (-2 \\cdot 3)(x^2 \\cdot x)(y \\cdot y^3) = -6x^3y^4$. Hệ số là $-6$, '
-                        'phần biến là $x^3y^4$, bậc của đơn thức là $3 + 4 = 7$.',
-                        'Nhóm các hạng tử đồng dạng: $P = (2x^2y - 2x^2y) + 5x^2y^2 + (-3xy + 4xy) - 1 = '
-                        '5x^2y^2 + xy - 1$. Các hạng tử của dạng thu gọn có bậc lần lượt là $4; 2; 0$...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 13: Hình chữ nhật** để giải bài toán sau: Cho '
+                 '$\\triangle ABC$ vuông tại $A$ có cạnh huyền $BC = 16\\text{ cm}$. Gọi $M$ là trung điểm '
+                 'của $BC$. Tính độ dài đoạn thẳng $AM$. Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Chỉ xét trường hợp đặc biệt bằng $0$ và bỏ qua quy tắc chung',
+                        'Thực hiện theo thứ tự ngược lại và bỏ qua điều kiện xác định trong bài',
                         'Trong tam giác vuông $\\triangle ABC$, $AM$ là đường trung tuyến ứng với cạnh huyền '
-                        '$BC$. Theo tính chất đường trung tuyến trong tam giác vuông, ta có $AM = '
-                        '\\dfrac{1}{2}BC = \\dfrac{1}{2} \\cdot 16 = 8\\text{ (cm)}$...',
-                        '- $M + N = (3x^2 + x^2) + (-2xy + 2xy) + (y^2 - 3y^2) = 4x^2 - 2y^2$. - $M - N = '
-                        '(3x^2 - x^2) + (-2xy - 2xy) + (y^2 + 3y^2) = 2x^2 - 4xy + 4y^2$.'],
+                        '$BC$. Theo tính chất đường trung tuyến trong tam giác vuông, ta có...',
+                        'Đổi ngược dấu của phép tính chính và không kiểm tra lại kết quả'],
             'answer': 2,
             'solution': 'Lời giải chi tiết theo Bài 13: Hình chữ nhật: Trong tam giác vuông $\\triangle '
                         'ABC$, $AM$ là đường trung tuyến ứng với cạnh huyền $BC$.\n'
@@ -2104,8 +2128,8 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
   'requirements': ['Mô tả được định nghĩa, các tính chất về cạnh, góc, đường chéo và dấu hiệu nhận biết của '
                    'hình thoi.',
                    'Mô tả được định nghĩa, các tính chất và dấu hiệu nhận biết của hình vuông.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Tính chất đường chéo hình thoi $ABCD$** '
-                   '($AC \\perp BD$ tại trung điểm $O$ và phân giác các góc) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 14: Hình thoi và hình vuông** để giải bài tập minh họa và '
+                   'bài toán thực tiễn.'],
   'definition': 'Hình thoi là tứ giác có bốn cạnh bằng nhau. Hình vuông là tứ giác có bốn góc vuông và bốn '
                 'cạnh bằng nhau (hình vuông vừa là hình chữ nhật, vừa là hình thoi).',
   'theory': '1. Hình thoi:\n'
@@ -2155,28 +2179,28 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 14: Hình thoi và hình vuông**, công thức hoặc quy tắc '
-                 'nào sau đây biểu diễn đúng **Tính chất đường chéo hình thoi $ABCD$**?',
-            'options': ['$S = \\dfrac{1}{2} d_1 \\cdot d_2$',
-                        '$P = 4a; \\quad S = a^2$',
-                        '$\\text{Bậc} = m + n + p$',
+            'q': 'Trong **Bài 14: Hình thoi và hình vuông**, quy tắc hoặc công thức nào sau đây xác định '
+                 'đúng **Tính chất đường chéo hình thoi $ABCD$**?',
+            'options': ['$AC \\perp BD$ tại trung điểm $O$ và phân giác các góc (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: $AC \\perp BD$ tại trung điểm $O$ và phân giác các góc',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $AC \\perp BD$ tại trung điểm '
+                        '$O$ và phân giác các góc',
                         '$AC \\perp BD$ tại trung điểm $O$ và phân giác các góc'],
             'answer': 3,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 14: Hình thoi và hình vuông, **Tính chất '
-                        'đường chéo hình thoi $ABCD$** được xác định bởi: $AC \\perp BD$ tại trung điểm $O$ '
-                        'và phân giác các góc.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 14: Hình thoi và hình vuông, **Tính chất đường '
+                        'chéo hình thoi $ABCD$** được xác định bởi: $AC \\perp BD$ tại trung điểm $O$ và '
+                        'phân giác các góc.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 14: Hình thoi và hình vuông**, nội dung/biểu thức $S = \\dfrac{1}{2} d_1 '
-                 '\\cdot d_2$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Diện tích hình thoi có hai đường chéo $d_1, d_2$',
-                        'Tính chất đường chéo hình thoi $ABCD$',
-                        'Chu vi và diện tích hình vuông cạnh $a$',
-                        'Bậc của đơn thức $a x^m y^n z^p$ ($a \\neq 0$)'],
+            'q': 'Khi học **Bài 14: Hình thoi và hình vuông**, biểu thức hoặc quy tắc nào dưới đây biểu diễn '
+                 'đúng **Diện tích hình thoi có hai đường chéo $d_1, d_2$**?',
+            'options': ['$S = \\dfrac{1}{2} d_1 \\cdot d_2$',
+                        '$S = \\dfrac{1}{2} d_1 : d_2$',
+                        '$S = \\dfrac{2}{1} d_1 \\cdot d_2$',
+                        '$S = \\dfrac{2}{2} d_1 \\cdot d_2$'],
             'answer': 0,
-            'solution': 'Trong Bài 14: Hình thoi và hình vuông, biểu thức/quy tắc $S = \\dfrac{1}{2} d_1 '
-                        '\\cdot d_2$ chính là nội dung của **Diện tích hình thoi có hai đường chéo $d_1, '
-                        'd_2$**.'},
+            'solution': 'Trong Bài 14: Hình thoi và hình vuông, **Diện tích hình thoi có hai đường chéo '
+                        '$d_1, d_2$** có công thức/quy tắc là: $S = \\dfrac{1}{2} d_1 \\cdot d_2$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Hình thoi $ABCD$ là hình vuông nếu có thêm điều kiện nào sau đây?',
@@ -2188,17 +2212,18 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 14: Hình thoi và hình vuông** (Chương III: Tứ giác), khẳng định nào sau đây '
-                 'phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Nhận biết được đơn thức nhiều biến, đơn thức thu gọn, hệ số, phần biến và bậc của '
-                        'một đơn thức.',
-                        'Nhận biết được các đơn thức đồng dạng và thực hiện được phép cộng, phép trừ các đơn '
-                        'thức đồng dạng.',
+            'q': 'Để nắm vững bản chất của **Bài 14: Hình thoi và hình vuông**, nhận định nào sau đây là '
+                 '**chính xác**?',
+            'options': ['Mô tả được định nghĩa, các tính chất về cạnh, góc, đường chéo và dấu hiệu nhận biết '
+                        'của hình thoi. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Mô tả được định nghĩa, các tính chất về cạnh, góc, đường '
+                        'chéo và dấu hiệu nhận biết của hình thoi.',
                         'Mô tả được định nghĩa, các tính chất về cạnh, góc, đường chéo và dấu hiệu nhận biết '
                         'của hình thoi.',
-                        'Nhận biết được đa thức nhiều biến và các hạng tử của đa thức.'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Mô tả được định nghĩa, các tính '
+                        'chất về cạnh, góc, đường chéo và dấu hiệu nhận biết của hình thoi.'],
             'answer': 2,
-            'solution': 'Theo yêu cầu cần đạt của Bài 14: Hình thoi và hình vuông: Mô tả được định nghĩa, '
+            'solution': 'Theo nội dung cốt lõi của Bài 14: Hình thoi và hình vuông: Mô tả được định nghĩa, '
                         'các tính chất về cạnh, góc, đường chéo và dấu hiệu nhận biết của hình thoi.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -2214,36 +2239,38 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 14: Hình thoi và hình '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 14: Hình thoi và hình '
                  'vuông**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Mô tả được định nghĩa, các tính '
-                           'chất về cạnh, góc, đường chéo và dấu hiệu nhận biết của hình thoi.',
-                           'Quy tắc/công thức **Tính chất đường chéo hình thoi $ABCD$** trong bài được xác '
-                           'định bởi: $AC \\perp BD$ tại trung điểm $O$ và phân giác các góc.',
-                           'Trong mọi trường hợp, **Tính chất đường chéo hình thoi $ABCD$** luôn được tính '
-                           'bằng công thức $\\text{Bậc} = m + n + p$ (thuộc Bậc của đơn thức $a x^m y^n z^p$ '
-                           '($a \\neq 0$)) mà không cần điều kiện của Bài 14: Hình thoi và hình vuông.',
-                           'Với bài toán minh họa: “Một mảnh vườn hình thoi có độ dài hai đường chéo là '
-                           '$12\\text{ m}$ và $16\\text{ m}$. Tính diện tích mảnh vườn đó.”, lời giải đúng '
-                           'là: Diện tích mảnh vườn hình thoi là: $S = \\dfrac{1}{2} \\cdot 12 \\cdot 16 = '
-                           '96\\text{ (m}^2\\text{)}$.'],
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Mô tả được định nghĩa, các tính chất về '
+                           'cạnh, góc, đường chéo và dấu hiệu nhận biết của hình thoi.',
+                           'Trong **Bài 14: Hình thoi và hình vuông**, quy tắc/công thức **Tính chất đường '
+                           'chéo hình thoi $ABCD$** được viết là: $AC \\perp BD$ tại trung điểm $O$ và phân '
+                           'giác các góc.',
+                           'Nếu áp dụng sai dấu/phép tính thành $AC \\perp BD$ tại trung điểm $O$ và phân '
+                           'giác các góc (với dấu ngược lại) thì kết quả của **Tính chất đường chéo hình '
+                           'thoi $ABCD$** trong **Bài 14: Hình thoi và hình vuông** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Một mảnh vườn hình thoi có độ dài hai đường chéo là '
+                           '$12\\text{ m}$ và $16\\text{ m}$. Tính diện tích mảnh vườn đó.”, kết quả giải '
+                           'đúng là: Diện tích mảnh vườn hình thoi là: $S = \\dfrac{1}{2} \\cdot 12 \\cdot '
+                           '16 = 96\\text{ (m}^2\\text{)}$.'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 14: Hình thoi và hình vuông. b) **Đúng** '
-                        'theo công thức trọng tâm **Tính chất đường chéo hình thoi $ABCD$** ($AC \\perp BD$ '
-                        'tại trung điểm $O$ và phân giác các góc). c) **Sai** vì $\\text{Bậc} = m + n + p$ '
-                        'là công thức của nội dung khác, không phải quy tắc chung của **Tính chất đường chéo '
-                        'hình thoi $ABCD$**. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        'theo công thức **Tính chất đường chéo hình thoi $ABCD$** ($AC \\perp BD$ tại trung '
+                        'điểm $O$ và phân giác các góc). c) **Sai** vì công thức đúng của **Tính chất đường '
+                        'chéo hình thoi $ABCD$** phải là $AC \\perp BD$ tại trung điểm $O$ và phân giác các '
+                        'góc chứ không phải $AC \\perp BD$ tại trung điểm $O$ và phân giác các góc (với dấu '
+                        'ngược lại). d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 14: Hình thoi và hình vuông** để giải quyết tình huống sau: Một '
-                 'mảnh vườn hình thoi có độ dài hai đường chéo là $12\\text{ m}$ và $16\\text{ m}$. Tính '
-                 'diện tích mảnh vườn đó. Kết quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Ta có: $A = (-2 \\cdot 3)(x^2 \\cdot x)(y \\cdot y^3) = -6x^3y^4$. Hệ số là $-6$, '
-                        'phần biến là $x^3y^4$, bậc của đơn thức là $3 + 4 = 7$.',
-                        'Nhóm các hạng tử đồng dạng: $P = (2x^2y - 2x^2y) + 5x^2y^2 + (-3xy + 4xy) - 1 = '
-                        '5x^2y^2 + xy - 1$. Các hạng tử của dạng thu gọn có bậc lần lượt là $4; 2; 0$...',
-                        '- $M + N = (3x^2 + x^2) + (-2xy + 2xy) + (y^2 - 3y^2) = 4x^2 - 2y^2$. - $M - N = '
-                        '(3x^2 - x^2) + (-2xy - 2xy) + (y^2 + 3y^2) = 2x^2 - 4xy + 4y^2$.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 14: Hình thoi và hình vuông** để giải bài toán sau: '
+                 'Một mảnh vườn hình thoi có độ dài hai đường chéo là $12\\text{ m}$ và $16\\text{ m}$. Tính '
+                 'diện tích mảnh vườn đó. Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Diện tích mảnh vườn hình thoi là: $S = \\dfrac{1}{2} : 12 \\cdot 16 = 96\\text{ '
+                        '(m}^2\\text{)}$.',
+                        'Diện tích mảnh vườn hình thoi là: $S = \\dfrac{2}{1} \\cdot 12 \\cdot 16 = '
+                        '96\\text{ (m}^2\\text{)}$.',
+                        'Diện tích mảnh vườn hình thoi là: $S = \\dfrac{2}{2} \\cdot 12 \\cdot 16 = '
+                        '96\\text{ (m}^2\\text{)}$.',
                         'Diện tích mảnh vườn hình thoi là: $S = \\dfrac{1}{2} \\cdot 12 \\cdot 16 = '
                         '96\\text{ (m}^2\\text{)}$.'],
             'answer': 3,
@@ -2271,8 +2298,8 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
   'requirements': ['Nhận biết được tỉ số của hai đoạn thẳng và các đoạn thẳng tỉ lệ.',
                    'Giải thích và vận dụng được định lí Thalès thuận, định lí Thalès đảo và hệ quả của định '
                    'lí Thalès trong tam giác.',
-                   "Ghi nhớ và vận dụng đúng quy tắc/công thức **Định lí Thalès thuận** ($B'C' \\parallel BC "
-                   "\\Rightarrow \\dfrac{AB'}{B'B} = \\dfrac{AC'}{C'C}$) vào giải bài tập."],
+                   'Vận dụng kiến thức của **Bài 15: Định lí Thalès trong tam giác** để giải bài tập minh '
+                   'họa và bài toán thực tiễn.'],
   'definition': 'Định lí Thalès: Nếu một đường thẳng song song với một cạnh của tam giác và cắt hai cạnh còn '
                 'lại thì nó định ra trên hai cạnh đó những đoạn thẳng tương ứng tỉ lệ.',
   'theory': "Cho $\\triangle ABC$, đường thẳng $d$ cắt hai cạnh $AB, AC$ lần lượt tại $B', C'$:\n"
@@ -2324,30 +2351,34 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 15: Định lí Thalès trong tam giác**, công thức hoặc quy '
-                 'tắc nào sau đây biểu diễn đúng **Định lí Thalès thuận**?',
+            'q': 'Trong **Bài 15: Định lí Thalès trong tam giác**, quy tắc hoặc công thức nào sau đây xác '
+                 'định đúng **Định lí Thalès thuận**?',
             'options': ["$B'C' \\parallel BC \\Rightarrow \\dfrac{AB'}{B'B} = \\dfrac{AC'}{C'C}$",
-                        "$B'C' \\parallel BC \\Rightarrow \\dfrac{AB'}{AB} = \\dfrac{AC'}{AC} = "
-                        "\\dfrac{B'C'}{BC}$",
-                        "$\\dfrac{AB'}{B'B} = \\dfrac{AC'}{C'C} \\Rightarrow B'C' \\parallel BC$",
-                        '$\\text{Bậc} = m + n + p$'],
+                        "$B'C' \\parallel BC \\Rightarrow \\dfrac{AB'}{B'B} = \\dfrac{AC'}{C'C}$ (với dấu "
+                        'ngược lại)',
+                        "$B'C' \\parallel BC \\Rightarrow \\dfrac{B'B}{AB'} = \\dfrac{AC'}{C'C}$",
+                        "Trường hợp trái ngược: không thỏa mãn điều kiện của $B'C' \\parallel BC "
+                        "\\Rightarrow \\dfrac{AB'}{B'B} = \\dfrac{AC'}{C'C}$"],
             'answer': 0,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 15: Định lí Thalès trong tam giác, **Định lí '
+            'solution': 'Theo kiến thức trọng tâm của Bài 15: Định lí Thalès trong tam giác, **Định lí '
                         "Thalès thuận** được xác định bởi: $B'C' \\parallel BC \\Rightarrow "
                         "\\dfrac{AB'}{B'B} = \\dfrac{AC'}{C'C}$."},
            {'level': 'biet',
             'type': 'mcq',
-            'q': "Trong **Bài 15: Định lí Thalès trong tam giác**, nội dung/biểu thức $B'C' \\parallel BC "
-                 "\\Rightarrow \\dfrac{AB'}{AB} = \\dfrac{AC'}{AC} = \\dfrac{B'C'}{BC}$ là quy tắc hoặc công "
-                 'thức của mục nào sau đây?',
-            'options': ['Định lí Thalès thuận',
-                        'Hệ quả định lí Thalès',
-                        'Định lí Thalès đảo',
-                        'Bậc của đơn thức $a x^m y^n z^p$ ($a \\neq 0$)'],
+            'q': 'Khi học **Bài 15: Định lí Thalès trong tam giác**, biểu thức hoặc quy tắc nào dưới đây '
+                 'biểu diễn đúng **Hệ quả định lí Thalès**?',
+            'options': ["$B'C' \\parallel BC \\Rightarrow \\dfrac{AB'}{AB} = \\dfrac{AC'}{AC} = "
+                        "\\dfrac{B'C'}{BC}$ (với dấu ngược lại)",
+                        "$B'C' \\parallel BC \\Rightarrow \\dfrac{AB'}{AB} = \\dfrac{AC'}{AC} = "
+                        "\\dfrac{B'C'}{BC}$",
+                        "$B'C' \\parallel BC \\Rightarrow \\dfrac{AB}{AB'} = \\dfrac{AC'}{AC} = "
+                        "\\dfrac{B'C'}{BC}$",
+                        "Trường hợp trái ngược: không thỏa mãn điều kiện của $B'C' \\parallel BC "
+                        "\\Rightarrow \\dfrac{AB'}{AB} = \\dfrac{AC'}{AC} = \\dfrac{B'C'}{BC}$"],
             'answer': 1,
-            'solution': "Trong Bài 15: Định lí Thalès trong tam giác, biểu thức/quy tắc $B'C' \\parallel BC "
-                        "\\Rightarrow \\dfrac{AB'}{AB} = \\dfrac{AC'}{AC} = \\dfrac{B'C'}{BC}$ chính là nội "
-                        'dung của **Hệ quả định lí Thalès**.'},
+            'solution': 'Trong Bài 15: Định lí Thalès trong tam giác, **Hệ quả định lí Thalès** có công '
+                        "thức/quy tắc là: $B'C' \\parallel BC \\Rightarrow \\dfrac{AB'}{AB} = "
+                        "\\dfrac{AC'}{AC} = \\dfrac{B'C'}{BC}$."},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Cho $\\triangle ABC$ có $D \\in AB, E \\in AC$ và $DE \\parallel BC$. Biết $AD = 3\\text{ '
@@ -2360,16 +2391,17 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 15: Định lí Thalès trong tam giác** (Chương IV: Định lí Thalès), khẳng định '
-                 'nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Nhận biết được đơn thức nhiều biến, đơn thức thu gọn, hệ số, phần biến và bậc của '
-                        'một đơn thức.',
-                        'Nhận biết được các đơn thức đồng dạng và thực hiện được phép cộng, phép trừ các đơn '
-                        'thức đồng dạng.',
-                        'Nhận biết được đa thức nhiều biến và các hạng tử của đa thức.',
+            'q': 'Để nắm vững bản chất của **Bài 15: Định lí Thalès trong tam giác**, nhận định nào sau đây '
+                 'là **chính xác**?',
+            'options': ['Nhận biết được tỉ số của hai đoạn thẳng và các đoạn thẳng tỉ lệ. (với dấu ngược '
+                        'lại)',
+                        'Đảo ngược vế của quy tắc: Nhận biết được tỉ số của hai đoạn thẳng và các đoạn thẳng '
+                        'tỉ lệ.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nhận biết được tỉ số của hai '
+                        'đoạn thẳng và các đoạn thẳng tỉ lệ.',
                         'Nhận biết được tỉ số của hai đoạn thẳng và các đoạn thẳng tỉ lệ.'],
             'answer': 3,
-            'solution': 'Theo yêu cầu cần đạt của Bài 15: Định lí Thalès trong tam giác: Nhận biết được tỉ '
+            'solution': 'Theo nội dung cốt lõi của Bài 15: Định lí Thalès trong tam giác: Nhận biết được tỉ '
                         'số của hai đoạn thẳng và các đoạn thẳng tỉ lệ.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -2387,40 +2419,47 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 15: Định lí Thalès '
-                 'trong tam giác**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được tỉ số của hai đoạn '
-                           'thẳng và các đoạn thẳng tỉ lệ.',
-                           "Quy tắc/công thức **Định lí Thalès thuận** trong bài được xác định bởi: $B'C' "
-                           "\\parallel BC \\Rightarrow \\dfrac{AB'}{B'B} = \\dfrac{AC'}{C'C}$.",
-                           'Trong mọi trường hợp, **Định lí Thalès thuận** luôn được tính bằng công thức '
-                           '$\\text{Bậc} = m + n + p$ (thuộc Bậc của đơn thức $a x^m y^n z^p$ ($a \\neq 0$)) '
-                           'mà không cần điều kiện của Bài 15: Định lí Thalès trong tam giác.',
-                           'Với bài toán minh họa: “Cho $\\triangle ABC$, lấy $M \\in AB, N \\in AC$ sao cho '
-                           '$MN \\parallel BC$. Biết $AM = 4\\text{ cm}, MB = 6\\text{ cm}$ và $AN = '
-                           '5\\text{ cm}$. Tí...”, lời giải đúng là: Trong $\\triangle ABC$, vì $MN '
-                           '\\parallel BC$ nên theo định lí Thalès ta có...'],
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 15: Định lí Thalès trong '
+                 'tam giác**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết được tỉ số của hai đoạn thẳng '
+                           'và các đoạn thẳng tỉ lệ.',
+                           'Trong **Bài 15: Định lí Thalès trong tam giác**, quy tắc/công thức **Định lí '
+                           "Thalès thuận** được viết là: $B'C' \\parallel BC \\Rightarrow \\dfrac{AB'}{B'B} "
+                           "= \\dfrac{AC'}{C'C}$.",
+                           "Nếu áp dụng sai dấu/phép tính thành $B'C' \\parallel BC \\Rightarrow "
+                           "\\dfrac{AB'}{B'B} = \\dfrac{AC'}{C'C}$ (với dấu ngược lại) thì kết quả của "
+                           '**Định lí Thalès thuận** trong **Bài 15: Định lí Thalès trong tam giác** vẫn '
+                           'không thay đổi.',
+                           'Xét ví dụ của bài: “Cho $\\triangle ABC$, lấy $M \\in AB, N \\in AC$ sao cho $MN '
+                           '\\parallel BC$. Biết $AM = 4\\text{ cm}, MB = 6\\text{ cm}$ và $AN = 5\\text{ '
+                           'cm}$...”, kết quả giải đúng là: Trong $\\triangle ABC$, vì $MN \\parallel BC$ '
+                           'nên theo định lí Thalès ta có...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 15: Định lí Thalès trong tam giác. b) '
-                        "**Đúng** theo công thức trọng tâm **Định lí Thalès thuận** ($B'C' \\parallel BC "
-                        "\\Rightarrow \\dfrac{AB'}{B'B} = \\dfrac{AC'}{C'C}$). c) **Sai** vì $\\text{Bậc} = "
-                        'm + n + p$ là công thức của nội dung khác, không phải quy tắc chung của **Định lí '
-                        'Thalès thuận**. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        "**Đúng** theo công thức **Định lí Thalès thuận** ($B'C' \\parallel BC \\Rightarrow "
+                        "\\dfrac{AB'}{B'B} = \\dfrac{AC'}{C'C}$). c) **Sai** vì công thức đúng của **Định lí "
+                        "Thalès thuận** phải là $B'C' \\parallel BC \\Rightarrow \\dfrac{AB'}{B'B} = "
+                        "\\dfrac{AC'}{C'C}$ chứ không phải $B'C' \\parallel BC \\Rightarrow "
+                        "\\dfrac{AB'}{B'B} = \\dfrac{AC'}{C'C}$ (với dấu ngược lại). d) **Đúng** theo lời "
+                        'giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 15: Định lí Thalès trong tam giác** để giải quyết tình huống sau: '
-                 'Cho $\\triangle ABC$, lấy $M \\in AB, N \\in AC$ sao cho $MN \\parallel BC$. Biết $AM = '
-                 '4\\text{ cm}, MB = 6\\text{ cm}$ và $AN = 5\\text{ cm}$. Tính độ dài $NC$. Kết quả và '
-                 'hướng giải nào dưới đây là **đúng**?',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 15: Định lí Thalès trong tam giác** để giải bài '
+                 'toán sau: Cho $\\triangle ABC$, lấy $M \\in AB, N \\in AC$ sao cho $MN \\parallel BC$. '
+                 'Biết $AM = 4\\text{ cm}, MB = 6\\text{ cm}$ và $AN = 5\\text{ cm}$. Tính độ dài $NC$. Cách '
+                 'giải và kết quả nào dưới đây là **đúng**?',
             'options': ['Trong $\\triangle ABC$, vì $MN \\parallel BC$ nên theo định lí Thalès ta có: '
                         '$\\dfrac{AM}{MB} = \\dfrac{AN}{NC} \\Rightarrow \\dfrac{4}{6} = \\dfrac{5}{NC} '
                         '\\Rightarrow NC = \\dfrac{6 \\cdot 5}{4} = 7,5\\text{ (cm)}$...',
-                        'Ta có: $A = (-2 \\cdot 3)(x^2 \\cdot x)(y \\cdot y^3) = -6x^3y^4$. Hệ số là $-6$, '
-                        'phần biến là $x^3y^4$, bậc của đơn thức là $3 + 4 = 7$.',
-                        'Nhóm các hạng tử đồng dạng: $P = (2x^2y - 2x^2y) + 5x^2y^2 + (-3xy + 4xy) - 1 = '
-                        '5x^2y^2 + xy - 1$. Các hạng tử của dạng thu gọn có bậc lần lượt là $4; 2; 0$...',
-                        '- $M + N = (3x^2 + x^2) + (-2xy + 2xy) + (y^2 - 3y^2) = 4x^2 - 2y^2$. - $M - N = '
-                        '(3x^2 - x^2) + (-2xy - 2xy) + (y^2 + 3y^2) = 2x^2 - 4xy + 4y^2$.'],
+                        'Trong $\\triangle ABC$, vì $MN \\parallel BC$ nên theo định lí Thalès ta có: '
+                        '$\\dfrac{AM}{MB} = \\dfrac{AN}{NC} \\Rightarrow \\dfrac{4}{6} = \\dfrac{5}{NC} '
+                        '\\Rightarrow NC = \\dfrac{6 : 5}{4} = 7,5\\text{ (cm)}$...',
+                        'Trong $\\triangle ABC$, vì $MN \\parallel BC$ nên theo định lí Thalès ta có: '
+                        '$\\dfrac{MB}{AM} = \\dfrac{AN}{NC} \\Rightarrow \\dfrac{4}{6} = \\dfrac{5}{NC} '
+                        '\\Rightarrow NC = \\dfrac{6 \\cdot 5}{4} = 7,5\\text{ (cm)}$...',
+                        'Trong $\\triangle ABC$, vì $MN \\parallel BC$ nên theo định lí Thalès ta có: '
+                        '$\\dfrac{AM}{MB} = \\dfrac{AN}{NC} \\Rightarrow \\dfrac{8}{6} = \\dfrac{5}{NC} '
+                        '\\Rightarrow NC = \\dfrac{6 \\cdot 5}{4} = 7,5\\text{ (cm)}$...'],
             'answer': 0,
             'solution': 'Lời giải chi tiết theo Bài 15: Định lí Thalès trong tam giác: Trong $\\triangle '
                         'ABC$, vì $MN \\parallel BC$ nên theo định lí Thalès ta có:\n'
@@ -2447,8 +2486,8 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
   'requirements': ['Nhận biết được đường trung bình của một tam giác (một tam giác có $3$ đường trung bình).',
                    'Giải thích và vận dụng được tính chất đường trung bình của tam giác (song song với cạnh '
                    'thứ ba và bằng nửa cạnh ấy).',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Với $M, N$ là trung điểm của $AB, AC$** '
-                   '($MN \\parallel BC$ và $MN = \\dfrac{1}{2}BC$) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 16: Đường trung bình của tam giác** để giải bài tập minh '
+                   'họa và bài toán thực tiễn.'],
   'definition': 'Đường trung bình của tam giác là đoạn thẳng nối trung điểm hai cạnh của tam giác. Đường '
                 'trung bình của tam giác thì song song với cạnh thứ ba và bằng nửa cạnh ấy.',
   'theory': '1. Định lí đường trung bình: Trong $\\triangle ABC$, nếu $M$ là trung điểm của $AB$ và $N$ là '
@@ -2492,28 +2531,24 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 16: Đường trung bình của tam giác**, công thức hoặc quy '
-                 'tắc nào sau đây biểu diễn đúng **Với $M, N$ là trung điểm của $AB, AC$**?',
-            'options': ['$BC = 2 \\cdot MN$',
+            'q': 'Trong **Bài 16: Đường trung bình của tam giác**, quy tắc hoặc công thức nào sau đây xác '
+                 'định đúng **Với $M, N$ là trung điểm của $AB, AC$**?',
+            'options': ['$MN \\parallel BC$ và $MN = \\dfrac{2}{2}BC$',
                         '$MN \\parallel BC$ và $MN = \\dfrac{1}{2}BC$',
-                        '$\\text{Bậc} = m + n + p$',
-                        '$a x^m y^n + b x^m y^n = (a + b)x^m y^n; \\quad a x^m y^n - b x^m y^n = (a - b)x^m '
-                        'y^n$'],
+                        '$MN \\parallel BC$ và $MN = \\dfrac{2}{1}BC$',
+                        '$BC = 2 \\cdot MN$'],
             'answer': 1,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 16: Đường trung bình của tam giác, **Với $M, '
-                        'N$ là trung điểm của $AB, AC$** được xác định bởi: $MN \\parallel BC$ và $MN = '
+            'solution': 'Theo kiến thức trọng tâm của Bài 16: Đường trung bình của tam giác, **Với $M, N$ là '
+                        'trung điểm của $AB, AC$** được xác định bởi: $MN \\parallel BC$ và $MN = '
                         '\\dfrac{1}{2}BC$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 16: Đường trung bình của tam giác**, nội dung/biểu thức $BC = 2 \\cdot MN$ là '
-                 'quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Với $M, N$ là trung điểm của $AB, AC$',
-                        'Bậc của đơn thức $a x^m y^n z^p$ ($a \\neq 0$)',
-                        'Tính cạnh đáy từ đường trung bình',
-                        'Cộng, trừ hai đơn thức đồng dạng'],
+            'q': 'Khi học **Bài 16: Đường trung bình của tam giác**, biểu thức hoặc quy tắc nào dưới đây '
+                 'biểu diễn đúng **Tính cạnh đáy từ đường trung bình**?',
+            'options': ['$BC = 2 : MN$', '$BC = 1 \\cdot MN$', '$BC = 2 \\cdot MN$', '$BC = 4 \\cdot MN$'],
             'answer': 2,
-            'solution': 'Trong Bài 16: Đường trung bình của tam giác, biểu thức/quy tắc $BC = 2 \\cdot MN$ '
-                        'chính là nội dung của **Tính cạnh đáy từ đường trung bình**.'},
+            'solution': 'Trong Bài 16: Đường trung bình của tam giác, **Tính cạnh đáy từ đường trung bình** '
+                        'có công thức/quy tắc là: $BC = 2 \\cdot MN$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Cho $\\triangle ABC$ có chu vi bằng $30\\text{ cm}$. Gọi $M, N, P$ lần lượt là trung điểm '
@@ -2526,17 +2561,18 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 16: Đường trung bình của tam giác** (Chương IV: Định lí Thalès), khẳng định '
-                 'nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
+            'q': 'Để nắm vững bản chất của **Bài 16: Đường trung bình của tam giác**, nhận định nào sau đây '
+                 'là **chính xác**?',
             'options': ['Nhận biết được đường trung bình của một tam giác (một tam giác có $3$ đường trung '
                         'bình).',
-                        'Nhận biết được đơn thức nhiều biến, đơn thức thu gọn, hệ số, phần biến và bậc của '
-                        'một đơn thức.',
-                        'Nhận biết được các đơn thức đồng dạng và thực hiện được phép cộng, phép trừ các đơn '
-                        'thức đồng dạng.',
-                        'Nhận biết được đa thức nhiều biến và các hạng tử của đa thức.'],
+                        'Nhận biết được đường trung bình của một tam giác (một tam giác có $4$ đường trung '
+                        'bình).',
+                        'Nhận biết được đường trung bình của một tam giác (một tam giác có $2$ đường trung '
+                        'bình).',
+                        'Nhận biết được đường trung bình của một tam giác (một tam giác có $6$ đường trung '
+                        'bình).'],
             'answer': 0,
-            'solution': 'Theo yêu cầu cần đạt của Bài 16: Đường trung bình của tam giác: Nhận biết được '
+            'solution': 'Theo nội dung cốt lõi của Bài 16: Đường trung bình của tam giác: Nhận biết được '
                         'đường trung bình của một tam giác (một tam giác có $3$ đường trung bình).'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -2553,42 +2589,47 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 16: Đường trung bình '
-                 'của tam giác**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được đường trung bình '
-                           'của một tam giác (một tam giác có $3$ đường trung bình).',
-                           'Quy tắc/công thức **Với $M, N$ là trung điểm của $AB, AC$** trong bài được xác '
-                           'định bởi: $MN \\parallel BC$ và $MN = \\dfrac{1}{2}BC$.',
-                           'Trong mọi trường hợp, **Với $M, N$ là trung điểm của $AB, AC$** luôn được tính '
-                           'bằng công thức $\\text{Bậc} = m + n + p$ (thuộc Bậc của đơn thức $a x^m y^n z^p$ '
-                           '($a \\neq 0$)) mà không cần điều kiện của Bài 16: Đường trung bình của tam giác.',
-                           'Với bài toán minh họa: “Để đo khoảng cách giữa hai địa điểm $B$ và $C$ bị ngăn '
-                           'cách bởi một cái hồ, người ta chọn điểm $A$ trên bờ và xác định trung điểm $M$ '
-                           'của $AB$...”, lời giải đúng là: Vì $M, N$ lần lượt là trung điểm của $AB, AC$ '
-                           'nên $MN$ là đường trung bình của $\\triangle ABC$. Do đó $MN = \\dfrac{1}{2}BC '
-                           '\\Rightarrow BC = 2 \\cdot MN = 2 \\cdot 42 = 84\\text{ (m)}$...'],
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 16: Đường trung bình của '
+                 'tam giác**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết được đường trung bình của một '
+                           'tam giác (một tam giác có $3$ đường trung bình).',
+                           'Trong **Bài 16: Đường trung bình của tam giác**, quy tắc/công thức **Với $M, N$ '
+                           'là trung điểm của $AB, AC$** được viết là: $MN \\parallel BC$ và $MN = '
+                           '\\dfrac{1}{2}BC$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $MN \\parallel BC$ và $MN = \\dfrac{2}{2}BC$ '
+                           'thì kết quả của **Với $M, N$ là trung điểm của $AB, AC$** trong **Bài 16: Đường '
+                           'trung bình của tam giác** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Để đo khoảng cách giữa hai địa điểm $B$ và $C$ bị ngăn cách '
+                           'bởi một cái hồ, người ta chọn điểm $A$ trên bờ và xác định trung điểm $M$ c...”, '
+                           'kết quả giải đúng là: Vì $M, N$ lần lượt là trung điểm của $AB, AC$ nên $MN$ là '
+                           'đường trung bình của $\\triangle ABC$. Do đó $MN = \\dfrac{1}{2}BC \\Rightarrow '
+                           'BC = 2 \\cdot MN = 2 \\cdot 42 = 84\\text{ (m)}$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 16: Đường trung bình của tam giác. b) '
-                        '**Đúng** theo công thức trọng tâm **Với $M, N$ là trung điểm của $AB, AC$** ($MN '
-                        '\\parallel BC$ và $MN = \\dfrac{1}{2}BC$). c) **Sai** vì $\\text{Bậc} = m + n + p$ '
-                        'là công thức của nội dung khác, không phải quy tắc chung của **Với $M, N$ là trung '
-                        'điểm của $AB, AC$**. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        '**Đúng** theo công thức **Với $M, N$ là trung điểm của $AB, AC$** ($MN \\parallel '
+                        'BC$ và $MN = \\dfrac{1}{2}BC$). c) **Sai** vì công thức đúng của **Với $M, N$ là '
+                        'trung điểm của $AB, AC$** phải là $MN \\parallel BC$ và $MN = \\dfrac{1}{2}BC$ chứ '
+                        'không phải $MN \\parallel BC$ và $MN = \\dfrac{2}{2}BC$. d) **Đúng** theo lời giải '
+                        'ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 16: Đường trung bình của tam giác** để giải quyết tình huống sau: '
-                 'Để đo khoảng cách giữa hai địa điểm $B$ và $C$ bị ngăn cách bởi một cái hồ, người ta chọn '
-                 'điểm $A$ trên bờ và xác định trung điểm $M$ của $AB$, trung điểm $N$ của $AC$. Đo được $MN '
-                 '= 42\\text{ m}$, hãy tính khoảng cách $BC$. Kết quả và hướng giải nào dưới đây là '
-                 '**đúng**?',
-            'options': ['Ta có: $A = (-2 \\cdot 3)(x^2 \\cdot x)(y \\cdot y^3) = -6x^3y^4$. Hệ số là $-6$, '
-                        'phần biến là $x^3y^4$, bậc của đơn thức là $3 + 4 = 7$.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 16: Đường trung bình của tam giác** để giải bài '
+                 'toán sau: Để đo khoảng cách giữa hai địa điểm $B$ và $C$ bị ngăn cách bởi một cái hồ, '
+                 'người ta chọn điểm $A$ trên bờ và xác định trung điểm $M$ của $AB$, trung điểm $N$ của '
+                 '$AC$. Đo được $MN = 42\\text{ m}$, hãy tính khoảng cách $BC$. Cách giải và kết quả nào '
+                 'dưới đây là **đúng**?',
+            'options': ['Vì $M, N$ lần lượt là trung điểm của $AB, AC$ nên $MN$ là đường trung bình của '
+                        '$\\triangle ABC$. Do đó $MN = \\dfrac{1}{2}BC \\Rightarrow BC = 2 : MN = 2 \\cdot '
+                        '42 = 84\\text{ (m)}$...',
                         'Vì $M, N$ lần lượt là trung điểm của $AB, AC$ nên $MN$ là đường trung bình của '
                         '$\\triangle ABC$. Do đó $MN = \\dfrac{1}{2}BC \\Rightarrow BC = 2 \\cdot MN = 2 '
                         '\\cdot 42 = 84\\text{ (m)}$...',
-                        'Nhóm các hạng tử đồng dạng: $P = (2x^2y - 2x^2y) + 5x^2y^2 + (-3xy + 4xy) - 1 = '
-                        '5x^2y^2 + xy - 1$. Các hạng tử của dạng thu gọn có bậc lần lượt là $4; 2; 0$...',
-                        '- $M + N = (3x^2 + x^2) + (-2xy + 2xy) + (y^2 - 3y^2) = 4x^2 - 2y^2$. - $M - N = '
-                        '(3x^2 - x^2) + (-2xy - 2xy) + (y^2 + 3y^2) = 2x^2 - 4xy + 4y^2$.'],
+                        'Vì $M, N$ lần lượt là trung điểm của $AB, AC$ nên $MN$ là đường trung bình của '
+                        '$\\triangle ABC$. Do đó $MN = \\dfrac{2}{1}BC \\Rightarrow BC = 2 \\cdot MN = 2 '
+                        '\\cdot 42 = 84\\text{ (m)}$...',
+                        'Vì $M, N$ lần lượt là trung điểm của $AB, AC$ nên $MN$ là đường trung bình của '
+                        '$\\triangle ABC$. Do đó $MN = \\dfrac{2}{2}BC \\Rightarrow BC = 2 \\cdot MN = 2 '
+                        '\\cdot 42 = 84\\text{ (m)}$...'],
             'answer': 1,
             'solution': 'Lời giải chi tiết theo Bài 16: Đường trung bình của tam giác: Vì $M, N$ lần lượt là '
                         'trung điểm của $AB, AC$ nên $MN$ là đường trung bình của $\\triangle ABC$.\n'
@@ -2614,8 +2655,8 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
   'requirements': ['Giải thích được định lí về tính chất đường phân giác trong của tam giác.',
                    'Vận dụng được tính chất đường phân giác của tam giác để tính độ dài đoạn thẳng và chứng '
                    'minh hệ thức tỉ lệ.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Hệ thức tỉ lệ cơ bản** ($\\dfrac{DB}{DC} = '
-                   '\\dfrac{AB}{AC} \\Leftrightarrow \\dfrac{DB}{AB} = \\dfrac{DC}{AC}$) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 17: Tính chất đường phân giác của tam giác** để giải bài '
+                   'tập minh họa và bài toán thực tiễn.'],
   'definition': 'Trong một tam giác, đường phân giác của một góc chia cạnh đối diện thành hai đoạn thẳng tỉ '
                 'lệ với hai cạnh kề hai đoạn ấy.',
   'theory': '1. Định lí tính chất đường phân giác: Trong $\\triangle ABC$, nếu $AD$ là đường phân giác của '
@@ -2663,31 +2704,33 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 17: Tính chất đường phân giác của tam giác**, công thức '
-                 'hoặc quy tắc nào sau đây biểu diễn đúng **Hệ thức tỉ lệ cơ bản**?',
-            'options': ['$DB = \\dfrac{AB}{AB + AC} \\cdot BC; \\quad DC = \\dfrac{AC}{AB + AC} \\cdot BC$',
-                        '$\\text{Bậc} = m + n + p$',
+            'q': 'Trong **Bài 17: Tính chất đường phân giác của tam giác**, quy tắc hoặc công thức nào sau '
+                 'đây xác định đúng **Hệ thức tỉ lệ cơ bản**?',
+            'options': ['$\\dfrac{DB}{DC} = \\dfrac{AB}{AC} \\Leftrightarrow \\dfrac{DB}{AB} = '
+                        '\\dfrac{DC}{AC}$ (với dấu ngược lại)',
+                        '$\\dfrac{DC}{DB} = \\dfrac{AB}{AC} \\Leftrightarrow \\dfrac{DB}{AB} = '
+                        '\\dfrac{DC}{AC}$',
                         '$\\dfrac{DB}{DC} = \\dfrac{AB}{AC} \\Leftrightarrow \\dfrac{DB}{AB} = '
                         '\\dfrac{DC}{AC}$',
-                        '$a x^m y^n + b x^m y^n = (a + b)x^m y^n; \\quad a x^m y^n - b x^m y^n = (a - b)x^m '
-                        'y^n$'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\dfrac{DB}{DC} = '
+                        '\\dfrac{AB}{AC} \\Leftrightarrow \\dfrac{DB}{AB} = \\dfrac{DC}{AC}$'],
             'answer': 2,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 17: Tính chất đường phân giác của tam giác, '
-                        '**Hệ thức tỉ lệ cơ bản** được xác định bởi: $\\dfrac{DB}{DC} = \\dfrac{AB}{AC} '
+            'solution': 'Theo kiến thức trọng tâm của Bài 17: Tính chất đường phân giác của tam giác, **Hệ '
+                        'thức tỉ lệ cơ bản** được xác định bởi: $\\dfrac{DB}{DC} = \\dfrac{AB}{AC} '
                         '\\Leftrightarrow \\dfrac{DB}{AB} = \\dfrac{DC}{AC}$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 17: Tính chất đường phân giác của tam giác**, nội dung/biểu thức $DB = '
-                 '\\dfrac{AB}{AB + AC} \\cdot BC; \\quad DC = \\dfrac{AC}{AB + AC} \\cdot BC$ là quy tắc '
-                 'hoặc công thức của mục nào sau đây?',
-            'options': ['Hệ thức tỉ lệ cơ bản',
-                        'Bậc của đơn thức $a x^m y^n z^p$ ($a \\neq 0$)',
-                        'Cộng, trừ hai đơn thức đồng dạng',
-                        'Tính $DB, DC$ theo $BC$'],
+            'q': 'Khi học **Bài 17: Tính chất đường phân giác của tam giác**, biểu thức hoặc quy tắc nào '
+                 'dưới đây biểu diễn đúng **Tính $DB, DC$ theo $BC$**?',
+            'options': ['$DB = \\dfrac{AB}{AB - AC} \\cdot BC; \\quad DC = \\dfrac{AC}{AB + AC} \\cdot BC$',
+                        '$DB = \\dfrac{AB + AC}{AB} \\cdot BC; \\quad DC = \\dfrac{AC}{AB + AC} \\cdot BC$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $DB = \\dfrac{AB}{AB + AC} '
+                        '\\cdot BC; \\quad DC = \\dfrac{AC}{AB + AC} \\cdot BC$',
+                        '$DB = \\dfrac{AB}{AB + AC} \\cdot BC; \\quad DC = \\dfrac{AC}{AB + AC} \\cdot BC$'],
             'answer': 3,
-            'solution': 'Trong Bài 17: Tính chất đường phân giác của tam giác, biểu thức/quy tắc $DB = '
-                        '\\dfrac{AB}{AB + AC} \\cdot BC; \\quad DC = \\dfrac{AC}{AB + AC} \\cdot BC$ chính '
-                        'là nội dung của **Tính $DB, DC$ theo $BC$**.'},
+            'solution': 'Trong Bài 17: Tính chất đường phân giác của tam giác, **Tính $DB, DC$ theo $BC$** '
+                        'có công thức/quy tắc là: $DB = \\dfrac{AB}{AB + AC} \\cdot BC; \\quad DC = '
+                        '\\dfrac{AC}{AB + AC} \\cdot BC$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Cho $\\triangle ABC$ có đường phân giác $AD$ ($D \\in BC$). Biết $AB = 4\\text{ cm}, AC = '
@@ -2700,17 +2743,18 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 17: Tính chất đường phân giác của tam giác** (Chương IV: Định lí Thalès), '
-                 'khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Nhận biết được đơn thức nhiều biến, đơn thức thu gọn, hệ số, phần biến và bậc của '
-                        'một đơn thức.',
+            'q': 'Để nắm vững bản chất của **Bài 17: Tính chất đường phân giác của tam giác**, nhận định nào '
+                 'sau đây là **chính xác**?',
+            'options': ['Giải thích được định lí về tính chất đường phân giác trong của tam giác. (với dấu '
+                        'ngược lại)',
                         'Giải thích được định lí về tính chất đường phân giác trong của tam giác.',
-                        'Nhận biết được các đơn thức đồng dạng và thực hiện được phép cộng, phép trừ các đơn '
-                        'thức đồng dạng.',
-                        'Nhận biết được đa thức nhiều biến và các hạng tử của đa thức.'],
+                        'Đảo ngược vế của quy tắc: Giải thích được định lí về tính chất đường phân giác '
+                        'trong của tam giác.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Giải thích được định lí về tính '
+                        'chất đường phân giác trong của tam giác.'],
             'answer': 1,
-            'solution': 'Theo yêu cầu cần đạt của Bài 17: Tính chất đường phân giác của tam giác: Giải thích '
-                        'được định lí về tính chất đường phân giác trong của tam giác.'},
+            'solution': 'Theo nội dung cốt lõi của Bài 17: Tính chất đường phân giác của tam giác: Giải '
+                        'thích được định lí về tính chất đường phân giác trong của tam giác.'},
            {'level': 'hieu',
             'type': 'tf4',
             'q': 'Cho $\\triangle ABC$ có $AB = 8\\text{ cm}, AC = 12\\text{ cm}, BC = 15\\text{ cm}$ và '
@@ -2726,43 +2770,49 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 17: Tính chất đường '
-                 'phân giác của tam giác**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Giải thích được định lí về tính '
-                           'chất đường phân giác trong của tam giác.',
-                           'Quy tắc/công thức **Hệ thức tỉ lệ cơ bản** trong bài được xác định bởi: '
-                           '$\\dfrac{DB}{DC} = \\dfrac{AB}{AC} \\Leftrightarrow \\dfrac{DB}{AB} = '
-                           '\\dfrac{DC}{AC}$.',
-                           'Trong mọi trường hợp, **Hệ thức tỉ lệ cơ bản** luôn được tính bằng công thức '
-                           '$\\text{Bậc} = m + n + p$ (thuộc Bậc của đơn thức $a x^m y^n z^p$ ($a \\neq 0$)) '
-                           'mà không cần điều kiện của Bài 17: Tính chất đường phân giác của tam giác.',
-                           'Với bài toán minh họa: “Cho $\\triangle ABC$ có $AB = 6\\text{ cm}, AC = '
-                           '9\\text{ cm}, BC = 10\\text{ cm}$ và đường phân giác $AD$ ($D \\in BC$). Tính độ '
-                           'dài các đoạn th...”, lời giải đúng là: Theo tính chất đường phân giác của '
-                           '$\\triangle ABC$, ta có: $\\dfrac{DB}{AB} = \\dfrac{DC}{AC} = \\dfrac{DB + '
-                           'DC}{AB + AC} = \\dfrac{10}{6 + 9} = \\dfrac{10}{15} = \\dfrac{2}{3}$...'],
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 17: Tính chất đường phân '
+                 'giác của tam giác**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Giải thích được định lí về tính chất '
+                           'đường phân giác trong của tam giác.',
+                           'Trong **Bài 17: Tính chất đường phân giác của tam giác**, quy tắc/công thức **Hệ '
+                           'thức tỉ lệ cơ bản** được viết là: $\\dfrac{DB}{DC} = \\dfrac{AB}{AC} '
+                           '\\Leftrightarrow \\dfrac{DB}{AB} = \\dfrac{DC}{AC}$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $\\dfrac{DB}{DC} = \\dfrac{AB}{AC} '
+                           '\\Leftrightarrow \\dfrac{DB}{AB} = \\dfrac{DC}{AC}$ (với dấu ngược lại) thì kết '
+                           'quả của **Hệ thức tỉ lệ cơ bản** trong **Bài 17: Tính chất đường phân giác của '
+                           'tam giác** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Cho $\\triangle ABC$ có $AB = 6\\text{ cm}, AC = 9\\text{ '
+                           'cm}, BC = 10\\text{ cm}$ và đường phân giác $AD$ ($D \\in BC$). Tính độ dài các '
+                           'đo...”, kết quả giải đúng là: Theo tính chất đường phân giác của $\\triangle '
+                           'ABC$, ta có: $\\dfrac{DB}{AB} = \\dfrac{DC}{AC} = \\dfrac{DB + DC}{AB + AC} = '
+                           '\\dfrac{10}{6 + 9} = \\dfrac{10}{15} = \\dfrac{2}{3}$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 17: Tính chất đường phân giác của tam '
-                        'giác. b) **Đúng** theo công thức trọng tâm **Hệ thức tỉ lệ cơ bản** '
-                        '($\\dfrac{DB}{DC} = \\dfrac{AB}{AC} \\Leftrightarrow \\dfrac{DB}{AB} = '
-                        '\\dfrac{DC}{AC}$). c) **Sai** vì $\\text{Bậc} = m + n + p$ là công thức của nội '
-                        'dung khác, không phải quy tắc chung của **Hệ thức tỉ lệ cơ bản**. d) **Đúng** theo '
-                        'lời giải ví dụ minh họa trong bài học.'},
+                        'giác. b) **Đúng** theo công thức **Hệ thức tỉ lệ cơ bản** ($\\dfrac{DB}{DC} = '
+                        '\\dfrac{AB}{AC} \\Leftrightarrow \\dfrac{DB}{AB} = \\dfrac{DC}{AC}$). c) **Sai** vì '
+                        'công thức đúng của **Hệ thức tỉ lệ cơ bản** phải là $\\dfrac{DB}{DC} = '
+                        '\\dfrac{AB}{AC} \\Leftrightarrow \\dfrac{DB}{AB} = \\dfrac{DC}{AC}$ chứ không phải '
+                        '$\\dfrac{DB}{DC} = \\dfrac{AB}{AC} \\Leftrightarrow \\dfrac{DB}{AB} = '
+                        '\\dfrac{DC}{AC}$ (với dấu ngược lại). d) **Đúng** theo lời giải ví dụ minh họa '
+                        'trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 17: Tính chất đường phân giác của tam giác** để giải quyết tình '
-                 'huống sau: Cho $\\triangle ABC$ có $AB = 6\\text{ cm}, AC = 9\\text{ cm}, BC = 10\\text{ '
-                 'cm}$ và đường phân giác $AD$ ($D \\in BC$). Tính độ dài các đoạn thẳng $DB$ và $DC$. Kết '
-                 'quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Ta có: $A = (-2 \\cdot 3)(x^2 \\cdot x)(y \\cdot y^3) = -6x^3y^4$. Hệ số là $-6$, '
-                        'phần biến là $x^3y^4$, bậc của đơn thức là $3 + 4 = 7$.',
-                        'Nhóm các hạng tử đồng dạng: $P = (2x^2y - 2x^2y) + 5x^2y^2 + (-3xy + 4xy) - 1 = '
-                        '5x^2y^2 + xy - 1$. Các hạng tử của dạng thu gọn có bậc lần lượt là $4; 2; 0$...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 17: Tính chất đường phân giác của tam giác** để '
+                 'giải bài toán sau: Cho $\\triangle ABC$ có $AB = 6\\text{ cm}, AC = 9\\text{ cm}, BC = '
+                 '10\\text{ cm}$ và đường phân giác $AD$ ($D \\in BC$). Tính độ dài các đoạn thẳng $DB$ và '
+                 '$DC$. Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Theo tính chất đường phân giác của $\\triangle ABC$, ta có: $\\dfrac{DB}{AB} = '
+                        '\\dfrac{DC}{AC} = \\dfrac{DB - DC}{AB + AC} = \\dfrac{10}{6 + 9} = \\dfrac{10}{15} '
+                        '= \\dfrac{2}{3}$...',
+                        'Theo tính chất đường phân giác của $\\triangle ABC$, ta có: $\\dfrac{AB}{DB} = '
+                        '\\dfrac{DC}{AC} = \\dfrac{DB + DC}{AB + AC} = \\dfrac{10}{6 + 9} = \\dfrac{10}{15} '
+                        '= \\dfrac{2}{3}$...',
                         'Theo tính chất đường phân giác của $\\triangle ABC$, ta có: $\\dfrac{DB}{AB} = '
                         '\\dfrac{DC}{AC} = \\dfrac{DB + DC}{AB + AC} = \\dfrac{10}{6 + 9} = \\dfrac{10}{15} '
                         '= \\dfrac{2}{3}$...',
-                        '- $M + N = (3x^2 + x^2) + (-2xy + 2xy) + (y^2 - 3y^2) = 4x^2 - 2y^2$. - $M - N = '
-                        '(3x^2 - x^2) + (-2xy - 2xy) + (y^2 + 3y^2) = 2x^2 - 4xy + 4y^2$.'],
+                        'Theo tính chất đường phân giác của $\\triangle ABC$, ta có: $\\dfrac{DB}{AB} = '
+                        '\\dfrac{DC}{AC} = \\dfrac{DB + DC}{AB + AC} = \\dfrac{20}{6 + 9} = \\dfrac{10}{15} '
+                        '= \\dfrac{2}{3}$...'],
             'answer': 2,
             'solution': 'Lời giải chi tiết theo Bài 17: Tính chất đường phân giác của tam giác: Theo tính '
                         'chất đường phân giác của $\\triangle ABC$, ta có:\n'
@@ -2838,29 +2888,31 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 18: Thu thập và phân loại dữ liệu**, công thức hoặc quy '
-                 'tắc nào sau đây biểu diễn đúng **Số liệu (Dữ liệu định lượng)**?',
-            'options': ['Chia thành: Có thể sắp thứ tự và Không thể sắp thứ tự',
-                        '$\\text{Bậc} = m + n + p$',
-                        '$a x^m y^n + b x^m y^n = (a + b)x^m y^n; \\quad a x^m y^n - b x^m y^n = (a - b)x^m '
-                        'y^n$',
+            'q': 'Trong **Bài 18: Thu thập và phân loại dữ liệu**, quy tắc hoặc công thức nào sau đây xác '
+                 'định đúng **Số liệu (Dữ liệu định lượng)**?',
+            'options': ['Chia thành: Số liệu rời rạc (đếm) và Số liệu liên tục (đo lường) (với dấu ngược '
+                        'lại)',
+                        'Đảo ngược vế của quy tắc: Chia thành: Số liệu rời rạc (đếm) và Số liệu liên tục (đo '
+                        'lường)',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Chia thành: Số liệu rời rạc '
+                        '(đếm) và Số liệu liên tục (đo lường)',
                         'Chia thành: Số liệu rời rạc (đếm) và Số liệu liên tục (đo lường)'],
             'answer': 3,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 18: Thu thập và phân loại dữ liệu, **Số liệu '
-                        '(Dữ liệu định lượng)** được xác định bởi: Chia thành: Số liệu rời rạc (đếm) và Số '
-                        'liệu liên tục (đo lường).'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 18: Thu thập và phân loại dữ liệu, **Số liệu (Dữ '
+                        'liệu định lượng)** được xác định bởi: Chia thành: Số liệu rời rạc (đếm) và Số liệu '
+                        'liên tục (đo lường).'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 18: Thu thập và phân loại dữ liệu**, nội dung/biểu thức Chia thành: Có thể sắp '
-                 'thứ tự và Không thể sắp thứ tự là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Dữ liệu không là số (Định tính)',
-                        'Số liệu (Dữ liệu định lượng)',
-                        'Bậc của đơn thức $a x^m y^n z^p$ ($a \\neq 0$)',
-                        'Cộng, trừ hai đơn thức đồng dạng'],
+            'q': 'Khi học **Bài 18: Thu thập và phân loại dữ liệu**, biểu thức hoặc quy tắc nào dưới đây '
+                 'biểu diễn đúng **Dữ liệu không là số (Định tính)**?',
+            'options': ['Chia thành: Có thể sắp thứ tự và Không thể sắp thứ tự',
+                        'Chia thành: Có thể sắp thứ tự và Không thể sắp thứ tự (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Chia thành: Có thể sắp thứ tự và Không thể sắp thứ tự',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Chia thành: Có thể sắp thứ tự '
+                        'và Không thể sắp thứ tự'],
             'answer': 0,
-            'solution': 'Trong Bài 18: Thu thập và phân loại dữ liệu, biểu thức/quy tắc Chia thành: Có thể '
-                        'sắp thứ tự và Không thể sắp thứ tự chính là nội dung của **Dữ liệu không là số '
-                        '(Định tính)**.'},
+            'solution': 'Trong Bài 18: Thu thập và phân loại dữ liệu, **Dữ liệu không là số (Định tính)** có '
+                        'công thức/quy tắc là: Chia thành: Có thể sắp thứ tự và Không thể sắp thứ tự.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Bạn An tra cứu dân số của các tỉnh Đồng bằng sông Cửu Long trên trang web của Tổng cục '
@@ -2876,17 +2928,18 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 18: Thu thập và phân loại dữ liệu** (Chương V: Dữ liệu và biểu đồ), khẳng '
-                 'định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Nhận biết được đơn thức nhiều biến, đơn thức thu gọn, hệ số, phần biến và bậc của '
-                        'một đơn thức.',
-                        'Nhận biết được các đơn thức đồng dạng và thực hiện được phép cộng, phép trừ các đơn '
-                        'thức đồng dạng.',
+            'q': 'Để nắm vững bản chất của **Bài 18: Thu thập và phân loại dữ liệu**, nhận định nào sau đây '
+                 'là **chính xác**?',
+            'options': ['Thực hiện và lí giải được việc thu thập dữ liệu bằng phương pháp trực tiếp hay gián '
+                        'tiếp. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Thực hiện và lí giải được việc thu thập dữ liệu bằng '
+                        'phương pháp trực tiếp hay gián tiếp.',
                         'Thực hiện và lí giải được việc thu thập dữ liệu bằng phương pháp trực tiếp hay gián '
                         'tiếp.',
-                        'Nhận biết được đa thức nhiều biến và các hạng tử của đa thức.'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Thực hiện và lí giải được việc '
+                        'thu thập dữ liệu bằng phương pháp trực tiếp hay gián tiếp.'],
             'answer': 2,
-            'solution': 'Theo yêu cầu cần đạt của Bài 18: Thu thập và phân loại dữ liệu: Thực hiện và lí '
+            'solution': 'Theo nội dung cốt lõi của Bài 18: Thu thập và phân loại dữ liệu: Thực hiện và lí '
                         'giải được việc thu thập dữ liệu bằng phương pháp trực tiếp hay gián tiếp.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -2904,38 +2957,38 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 18: Thu thập và phân '
-                 'loại dữ liệu**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Thực hiện và lí giải được việc thu '
-                           'thập dữ liệu bằng phương pháp trực tiếp hay gián tiếp.',
-                           'Quy tắc/công thức **Số liệu (Dữ liệu định lượng)** trong bài được xác định bởi: '
-                           'Chia thành: Số liệu rời rạc (đếm) và Số liệu liên tục (đo lường).',
-                           'Trong mọi trường hợp, **Số liệu (Dữ liệu định lượng)** luôn được tính bằng công '
-                           'thức $\\text{Bậc} = m + n + p$ (thuộc Bậc của đơn thức $a x^m y^n z^p$ ($a \\neq '
-                           '0$)) mà không cần điều kiện của Bài 18: Thu thập và phân loại dữ liệu.',
-                           'Với bài toán minh họa: “Phân loại các dữ liệu sau: a) Số lượng huy chương của '
-                           'các đoàn thể thao; b) Chiều cao của các cây thông trong vườn ươm.”, lời giải '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 18: Thu thập và phân loại '
+                 'dữ liệu**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Thực hiện và lí giải được việc thu thập '
+                           'dữ liệu bằng phương pháp trực tiếp hay gián tiếp.',
+                           'Trong **Bài 18: Thu thập và phân loại dữ liệu**, quy tắc/công thức **Số liệu (Dữ '
+                           'liệu định lượng)** được viết là: Chia thành: Số liệu rời rạc (đếm) và Số liệu '
+                           'liên tục (đo lường).',
+                           'Nếu áp dụng sai dấu/phép tính thành Chia thành: Số liệu rời rạc (đếm) và Số liệu '
+                           'liên tục (đo lường) (với dấu ngược lại) thì kết quả của **Số liệu (Dữ liệu định '
+                           'lượng)** trong **Bài 18: Thu thập và phân loại dữ liệu** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Phân loại các dữ liệu sau: a) Số lượng huy chương của các '
+                           'đoàn thể thao; b) Chiều cao của các cây thông trong vườn ươm.”, kết quả giải '
                            'đúng là: a) Số lượng huy chương là số tự nhiên thu được từ phép đếm nên là số '
-                           'liệu rời rạc. b) Chiều cao của cây có thể nhận giá trị thực bất kì tron...'],
+                           'liệu rời rạc. b) Chiều cao của cây có thể nhận giá trị thực bất kì...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 18: Thu thập và phân loại dữ liệu. b) '
-                        '**Đúng** theo công thức trọng tâm **Số liệu (Dữ liệu định lượng)** (Chia thành: Số '
-                        'liệu rời rạc (đếm) và Số liệu liên tục (đo lường)). c) **Sai** vì $\\text{Bậc} = m '
-                        '+ n + p$ là công thức của nội dung khác, không phải quy tắc chung của **Số liệu (Dữ '
-                        'liệu định lượng)**. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        '**Đúng** theo công thức **Số liệu (Dữ liệu định lượng)** (Chia thành: Số liệu rời '
+                        'rạc (đếm) và Số liệu liên tục (đo lường)). c) **Sai** vì công thức đúng của **Số '
+                        'liệu (Dữ liệu định lượng)** phải là Chia thành: Số liệu rời rạc (đếm) và Số liệu '
+                        'liên tục (đo lường) chứ không phải Chia thành: Số liệu rời rạc (đếm) và Số liệu '
+                        'liên tục (đo lường) (với dấu ngược lại). d) **Đúng** theo lời giải ví dụ minh họa '
+                        'trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 18: Thu thập và phân loại dữ liệu** để giải quyết tình huống sau: '
-                 'Phân loại các dữ liệu sau: a) Số lượng huy chương của các đoàn thể thao; b) Chiều cao của '
-                 'các cây thông trong vườn ươm. Kết quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Ta có: $A = (-2 \\cdot 3)(x^2 \\cdot x)(y \\cdot y^3) = -6x^3y^4$. Hệ số là $-6$, '
-                        'phần biến là $x^3y^4$, bậc của đơn thức là $3 + 4 = 7$.',
-                        'Nhóm các hạng tử đồng dạng: $P = (2x^2y - 2x^2y) + 5x^2y^2 + (-3xy + 4xy) - 1 = '
-                        '5x^2y^2 + xy - 1$. Các hạng tử của dạng thu gọn có bậc lần lượt là $4; 2; 0$...',
-                        '- $M + N = (3x^2 + x^2) + (-2xy + 2xy) + (y^2 - 3y^2) = 4x^2 - 2y^2$. - $M - N = '
-                        '(3x^2 - x^2) + (-2xy - 2xy) + (y^2 + 3y^2) = 2x^2 - 4xy + 4y^2$.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 18: Thu thập và phân loại dữ liệu** để giải bài '
+                 'toán sau: Phân loại các dữ liệu sau: a) Số lượng huy chương của các đoàn thể thao; b) '
+                 'Chiều cao của các cây thông trong vườn ươm. Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Chỉ xét trường hợp đặc biệt bằng $0$ và bỏ qua quy tắc chung',
+                        'Thực hiện theo thứ tự ngược lại và bỏ qua điều kiện xác định trong bài',
+                        'Đổi ngược dấu của phép tính chính và không kiểm tra lại kết quả',
                         'a) Số lượng huy chương là số tự nhiên thu được từ phép đếm nên là số liệu rời rạc. '
-                        'b) Chiều cao của cây có thể nhận giá trị thực bất kì trong một khoảng (d...'],
+                        'b) Chiều cao của cây có thể nhận giá trị thực bất kì trong một khoả...'],
             'answer': 3,
             'solution': 'Lời giải chi tiết theo Bài 18: Thu thập và phân loại dữ liệu: a) Số lượng huy '
                         'chương là số tự nhiên thu được từ phép đếm nên là số liệu rời rạc.\n'
@@ -2963,9 +3016,8 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
   'requirements': ['Lựa chọn và biểu diễn được dữ liệu vào bảng, biểu đồ thích hợp (biểu đồ cột, cột kép, '
                    'hình quạt tròn, đoạn thẳng).',
                    'Chuyển đổi được dữ liệu từ dạng biểu diễn này sang dạng biểu diễn khác.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Tính tỉ lệ phần trăm để vẽ biểu đồ quạt '
-                   'tròn** ($p_i\\% = \\dfrac{n_i}{N} \\cdot 100\\%$ (với $N = \\sum n_i$)) vào giải bài '
-                   'tập.'],
+                   'Vận dụng kiến thức của **Bài 19: Biểu diễn dữ liệu bằng bảng, biểu đồ** để giải bài tập '
+                   'minh họa và bài toán thực tiễn.'],
   'definition': 'Mỗi dạng biểu đồ có ưu thế riêng: Biểu đồ cột dùng để so sánh các nhóm; biểu đồ cột kép '
                 'dùng để so sánh hai bộ dữ liệu tương ứng; biểu đồ hình quạt tròn dùng để biểu diễn tỉ lệ '
                 'phần trăm các phần trong tổng thể; biểu đồ đoạn thẳng dùng để biểu diễn xu thế theo thời '
@@ -3010,29 +3062,27 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 19: Biểu diễn dữ liệu bằng bảng, biểu đồ**, công thức '
-                 'hoặc quy tắc nào sau đây biểu diễn đúng **Tính tỉ lệ phần trăm để vẽ biểu đồ quạt tròn**?',
+            'q': 'Trong **Bài 19: Biểu diễn dữ liệu bằng bảng, biểu đồ**, quy tắc hoặc công thức nào sau đây '
+                 'xác định đúng **Tính tỉ lệ phần trăm để vẽ biểu đồ quạt tròn**?',
             'options': ['$p_i\\% = \\dfrac{n_i}{N} \\cdot 100\\%$ (với $N = \\sum n_i$)',
-                        '$\\Delta = |A_i - B_i|$',
-                        '$\\text{Bậc} = m + n + p$',
-                        '$a x^m y^n + b x^m y^n = (a + b)x^m y^n; \\quad a x^m y^n - b x^m y^n = (a - b)x^m '
-                        'y^n$'],
+                        '$p_i\\% = \\dfrac{n_i}{N} : 100\\%$ (với $N = \\sum n_i$)',
+                        '$p_i\\% = \\dfrac{N}{n_i} \\cdot 100\\%$ (với $N = \\sum n_i$)',
+                        '$p_i\\% = \\dfrac{n_i}{N} \\cdot 102\\%$ (với $N = \\sum n_i$)'],
             'answer': 0,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 19: Biểu diễn dữ liệu bằng bảng, biểu đồ, '
-                        '**Tính tỉ lệ phần trăm để vẽ biểu đồ quạt tròn** được xác định bởi: $p_i\\% = '
+            'solution': 'Theo kiến thức trọng tâm của Bài 19: Biểu diễn dữ liệu bằng bảng, biểu đồ, **Tính '
+                        'tỉ lệ phần trăm để vẽ biểu đồ quạt tròn** được xác định bởi: $p_i\\% = '
                         '\\dfrac{n_i}{N} \\cdot 100\\%$ (với $N = \\sum n_i$).'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 19: Biểu diễn dữ liệu bằng bảng, biểu đồ**, nội dung/biểu thức $\\Delta = |A_i '
-                 '- B_i|$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Tính tỉ lệ phần trăm để vẽ biểu đồ quạt tròn',
-                        'Chênh lệch giữa hai cột trong biểu đồ cột kép',
-                        'Bậc của đơn thức $a x^m y^n z^p$ ($a \\neq 0$)',
-                        'Cộng, trừ hai đơn thức đồng dạng'],
+            'q': 'Khi học **Bài 19: Biểu diễn dữ liệu bằng bảng, biểu đồ**, biểu thức hoặc quy tắc nào dưới '
+                 'đây biểu diễn đúng **Chênh lệch giữa hai cột trong biểu đồ cột kép**?',
+            'options': ['$\\Delta = |A_i + B_i|$',
+                        '$\\Delta = |A_i - B_i|$',
+                        'Đảo ngược vế của quy tắc: $\\Delta = |A_i - B_i|$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\Delta = |A_i - B_i|$'],
             'answer': 1,
-            'solution': 'Trong Bài 19: Biểu diễn dữ liệu bằng bảng, biểu đồ, biểu thức/quy tắc $\\Delta = '
-                        '|A_i - B_i|$ chính là nội dung của **Chênh lệch giữa hai cột trong biểu đồ cột '
-                        'kép**.'},
+            'solution': 'Trong Bài 19: Biểu diễn dữ liệu bằng bảng, biểu đồ, **Chênh lệch giữa hai cột trong '
+                        'biểu đồ cột kép** có công thức/quy tắc là: $\\Delta = |A_i - B_i|$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Bảng thống kê số lượng xe bán ra của một đại lí trong 4 quý là: Quý I ($20$ xe), Quý II '
@@ -3046,17 +3096,19 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 19: Biểu diễn dữ liệu bằng bảng, biểu đồ** (Chương V: Dữ liệu và biểu đồ), '
-                 'khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Nhận biết được đơn thức nhiều biến, đơn thức thu gọn, hệ số, phần biến và bậc của '
-                        'một đơn thức.',
-                        'Nhận biết được các đơn thức đồng dạng và thực hiện được phép cộng, phép trừ các đơn '
-                        'thức đồng dạng.',
-                        'Nhận biết được đa thức nhiều biến và các hạng tử của đa thức.',
+            'q': 'Để nắm vững bản chất của **Bài 19: Biểu diễn dữ liệu bằng bảng, biểu đồ**, nhận định nào '
+                 'sau đây là **chính xác**?',
+            'options': ['Lựa chọn và biểu diễn được dữ liệu vào bảng, biểu đồ thích hợp (biểu đồ cột, cột '
+                        'kép, hình quạt tròn, đoạn thẳng). (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Lựa chọn và biểu diễn được dữ liệu vào bảng, biểu đồ '
+                        'thích hợp (biểu đồ cột, cột kép, hình quạt tròn, đoạn thẳng).',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Lựa chọn và biểu diễn được dữ '
+                        'liệu vào bảng, biểu đồ thích hợp (biểu đồ cột, cột kép, hình quạt tròn, đoạn '
+                        'thẳng).',
                         'Lựa chọn và biểu diễn được dữ liệu vào bảng, biểu đồ thích hợp (biểu đồ cột, cột '
                         'kép, hình quạt tròn, đoạn thẳng).'],
             'answer': 3,
-            'solution': 'Theo yêu cầu cần đạt của Bài 19: Biểu diễn dữ liệu bằng bảng, biểu đồ: Lựa chọn và '
+            'solution': 'Theo nội dung cốt lõi của Bài 19: Biểu diễn dữ liệu bằng bảng, biểu đồ: Lựa chọn và '
                         'biểu diễn được dữ liệu vào bảng, biểu đồ thích hợp (biểu đồ cột, cột kép, hình quạt '
                         'tròn, đoạn thẳng).'},
            {'level': 'hieu',
@@ -3077,43 +3129,43 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 19: Biểu diễn dữ liệu '
-                 'bằng bảng, biểu đồ**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Lựa chọn và biểu diễn được dữ liệu '
-                           'vào bảng, biểu đồ thích hợp (biểu đồ cột, cột kép, hình quạt tròn, đoạn thẳng).',
-                           'Quy tắc/công thức **Tính tỉ lệ phần trăm để vẽ biểu đồ quạt tròn** trong bài '
-                           'được xác định bởi: $p_i\\% = \\dfrac{n_i}{N} \\cdot 100\\%$ (với $N = \\sum '
-                           'n_i$).',
-                           'Trong mọi trường hợp, **Tính tỉ lệ phần trăm để vẽ biểu đồ quạt tròn** luôn được '
-                           'tính bằng công thức $\\text{Bậc} = m + n + p$ (thuộc Bậc của đơn thức $a x^m y^n '
-                           'z^p$ ($a \\neq 0$)) mà không cần điều kiện của Bài 19: Biểu diễn dữ liệu bằng '
-                           'bảng, biểu đồ.',
-                           'Với bài toán minh họa: “Để biểu diễn đồng thời số học sinh nam và số học sinh nữ '
-                           'của 4 lớp 8A, 8B, 8C, 8D nhằm so sánh trực quan nam và nữ ở từng lớp, ta nên '
-                           'chọn l...”, lời giải đúng là: Ta cần so sánh hai bộ dữ liệu (số học sinh nam và '
-                           'số học sinh nữ) trên cùng 4 đối tượng (lớp 8A, 8B, 8C, 8D), do đó lựa chọn thích '
-                           'hợp nhất...'],
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 19: Biểu diễn dữ liệu bằng '
+                 'bảng, biểu đồ**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Lựa chọn và biểu diễn được dữ liệu vào '
+                           'bảng, biểu đồ thích hợp (biểu đồ cột, cột kép, hình quạt tròn, đoạn thẳng).',
+                           'Trong **Bài 19: Biểu diễn dữ liệu bằng bảng, biểu đồ**, quy tắc/công thức **Tính '
+                           'tỉ lệ phần trăm để vẽ biểu đồ quạt tròn** được viết là: $p_i\\% = '
+                           '\\dfrac{n_i}{N} \\cdot 100\\%$ (với $N = \\sum n_i$).',
+                           'Nếu áp dụng sai dấu/phép tính thành $p_i\\% = \\dfrac{n_i}{N} : 100\\%$ (với $N '
+                           '= \\sum n_i$) thì kết quả của **Tính tỉ lệ phần trăm để vẽ biểu đồ quạt tròn** '
+                           'trong **Bài 19: Biểu diễn dữ liệu bằng bảng, biểu đồ** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Để biểu diễn đồng thời số học sinh nam và số học sinh nữ của '
+                           '4 lớp 8A, 8B, 8C, 8D nhằm so sánh trực quan nam và nữ ở từng lớp, ta nên c...”, '
+                           'kết quả giải đúng là: Ta cần so sánh hai bộ dữ liệu (số học sinh nam và số học '
+                           'sinh nữ) trên cùng 4 đối tượng (lớp 8A, 8B, 8C, 8D), do đó lựa chọn thích '
+                           'hợp...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 19: Biểu diễn dữ liệu bằng bảng, biểu đồ. '
-                        'b) **Đúng** theo công thức trọng tâm **Tính tỉ lệ phần trăm để vẽ biểu đồ quạt '
-                        'tròn** ($p_i\\% = \\dfrac{n_i}{N} \\cdot 100\\%$ (với $N = \\sum n_i$)). c) **Sai** '
-                        'vì $\\text{Bậc} = m + n + p$ là công thức của nội dung khác, không phải quy tắc '
-                        'chung của **Tính tỉ lệ phần trăm để vẽ biểu đồ quạt tròn**. d) **Đúng** theo lời '
-                        'giải ví dụ minh họa trong bài học.'},
+                        'b) **Đúng** theo công thức **Tính tỉ lệ phần trăm để vẽ biểu đồ quạt tròn** '
+                        '($p_i\\% = \\dfrac{n_i}{N} \\cdot 100\\%$ (với $N = \\sum n_i$)). c) **Sai** vì '
+                        'công thức đúng của **Tính tỉ lệ phần trăm để vẽ biểu đồ quạt tròn** phải là $p_i\\% '
+                        '= \\dfrac{n_i}{N} \\cdot 100\\%$ (với $N = \\sum n_i$) chứ không phải $p_i\\% = '
+                        '\\dfrac{n_i}{N} : 100\\%$ (với $N = \\sum n_i$). d) **Đúng** theo lời giải ví dụ '
+                        'minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 19: Biểu diễn dữ liệu bằng bảng, biểu đồ** để giải quyết tình '
-                 'huống sau: Để biểu diễn đồng thời số học sinh nam và số học sinh nữ của 4 lớp 8A, 8B, 8C, '
-                 '8D nhằm so sánh trực quan nam và nữ ở từng lớp, ta nên chọn loại biểu đồ nào? Kết quả và '
-                 'hướng giải nào dưới đây là **đúng**?',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 19: Biểu diễn dữ liệu bằng bảng, biểu đồ** để giải '
+                 'bài toán sau: Để biểu diễn đồng thời số học sinh nam và số học sinh nữ của 4 lớp 8A, 8B, '
+                 '8C, 8D nhằm so sánh trực quan nam và nữ ở từng lớp, ta nên chọn loại biểu đồ nào? Cách '
+                 'giải và kết quả nào dưới đây là **đúng**?',
             'options': ['Ta cần so sánh hai bộ dữ liệu (số học sinh nam và số học sinh nữ) trên cùng 4 đối '
-                        'tượng (lớp 8A, 8B, 8C, 8D), do đó lựa chọn thích hợp nhất là biểu đồ cột...',
-                        'Ta có: $A = (-2 \\cdot 3)(x^2 \\cdot x)(y \\cdot y^3) = -6x^3y^4$. Hệ số là $-6$, '
-                        'phần biến là $x^3y^4$, bậc của đơn thức là $3 + 4 = 7$.',
-                        'Nhóm các hạng tử đồng dạng: $P = (2x^2y - 2x^2y) + 5x^2y^2 + (-3xy + 4xy) - 1 = '
-                        '5x^2y^2 + xy - 1$. Các hạng tử của dạng thu gọn có bậc lần lượt là $4; 2; 0$...',
-                        '- $M + N = (3x^2 + x^2) + (-2xy + 2xy) + (y^2 - 3y^2) = 4x^2 - 2y^2$. - $M - N = '
-                        '(3x^2 - x^2) + (-2xy - 2xy) + (y^2 + 3y^2) = 2x^2 - 4xy + 4y^2$.'],
+                        'tượng (lớp 8A, 8B, 8C, 8D), do đó lựa chọn thích hợp nhất là biểu đồ...',
+                        'Ta cần so sánh hai bộ dữ liệu (số học sinh nam và số học sinh nữ) trên cùng 5 đối '
+                        'tượng (lớp 8A, 8B, 8C, 8D), do đó lựa chọn thích hợp nhất là biểu đồ...',
+                        'Ta cần so sánh hai bộ dữ liệu (số học sinh nam và số học sinh nữ) trên cùng 3 đối '
+                        'tượng (lớp 8A, 8B, 8C, 8D), do đó lựa chọn thích hợp nhất là biểu đồ...',
+                        'Ta cần so sánh hai bộ dữ liệu (số học sinh nam và số học sinh nữ) trên cùng 8 đối '
+                        'tượng (lớp 8A, 8B, 8C, 8D), do đó lựa chọn thích hợp nhất là biểu đồ...'],
             'answer': 0,
             'solution': 'Lời giải chi tiết theo Bài 19: Biểu diễn dữ liệu bằng bảng, biểu đồ: Ta cần so sánh '
                         'hai bộ dữ liệu (số học sinh nam và số học sinh nữ) trên cùng 4 đối tượng (lớp 8A, '
@@ -3141,8 +3193,8 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
                    'dạng bảng và biểu đồ.',
                    'Nhận biết được mối liên hệ toán học giữa các số liệu và tránh những nhận định sai lệch '
                    'do gốc trục đứng không bắt đầu từ $0$.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Giá trị trung bình cộng** ($\\bar{x} = '
-                   '\\dfrac{x_1 + x_2 + \\cdots + x_n}{n}$) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 20: Phân tích số liệu thống kê dựa vào biểu đồ** để giải '
+                   'bài tập minh họa và bài toán thực tiễn.'],
   'definition': 'Phân tích số liệu thống kê dựa vào biểu đồ là việc đọc, so sánh các số liệu, tính toán tốc '
                 'độ tăng trưởng hoặc tỉ lệ để tìm ra xu hướng, quy luật và đưa ra quyết định hợp lí.',
   'theory': '1. Lưu ý khi đọc biểu đồ cột và đoạn thẳng: Cần quan sát kĩ gốc của trục đứng có bắt đầu từ số '
@@ -3193,31 +3245,33 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 20: Phân tích số liệu thống kê dựa vào biểu đồ**, công '
-                 'thức hoặc quy tắc nào sau đây biểu diễn đúng **Giá trị trung bình cộng**?',
-            'options': ['$k = \\dfrac{y_2}{y_1}$ (dựa vào số liệu, không chỉ nhìn chiều cao cột nếu gốc trục '
-                        '$\\neq 0$)',
+            'q': 'Trong **Bài 20: Phân tích số liệu thống kê dựa vào biểu đồ**, quy tắc hoặc công thức nào '
+                 'sau đây xác định đúng **Giá trị trung bình cộng**?',
+            'options': ['$\\bar{x} = \\dfrac{x_1 - x_2 + \\cdots + x_n}{n}$',
                         '$\\bar{x} = \\dfrac{x_1 + x_2 + \\cdots + x_n}{n}$',
-                        '$\\text{Bậc} = m + n + p$',
-                        '$a x^m y^n + b x^m y^n = (a + b)x^m y^n; \\quad a x^m y^n - b x^m y^n = (a - b)x^m '
-                        'y^n$'],
+                        '$\\bar{x} = \\dfrac{n}{x_1 + x_2 + \\cdots + x_n}$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\bar{x} = \\dfrac{x_1 + x_2 + '
+                        '\\cdots + x_n}{n}$'],
             'answer': 1,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 20: Phân tích số liệu thống kê dựa vào biểu '
-                        'đồ, **Giá trị trung bình cộng** được xác định bởi: $\\bar{x} = \\dfrac{x_1 + x_2 + '
+            'solution': 'Theo kiến thức trọng tâm của Bài 20: Phân tích số liệu thống kê dựa vào biểu đồ, '
+                        '**Giá trị trung bình cộng** được xác định bởi: $\\bar{x} = \\dfrac{x_1 + x_2 + '
                         '\\cdots + x_n}{n}$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 20: Phân tích số liệu thống kê dựa vào biểu đồ**, nội dung/biểu thức $k = '
-                 '\\dfrac{y_2}{y_1}$ (dựa vào số liệu, không chỉ nhìn chiều cao cột nếu gốc trục $\\neq 0$) '
-                 'là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Giá trị trung bình cộng',
-                        'Bậc của đơn thức $a x^m y^n z^p$ ($a \\neq 0$)',
-                        'Tỉ số giữa hai giá trị thực tế',
-                        'Cộng, trừ hai đơn thức đồng dạng'],
+            'q': 'Khi học **Bài 20: Phân tích số liệu thống kê dựa vào biểu đồ**, biểu thức hoặc quy tắc nào '
+                 'dưới đây biểu diễn đúng **Tỉ số giữa hai giá trị thực tế**?',
+            'options': ['$k = \\dfrac{y_2}{y_1}$ (dựa vào số liệu, không chỉ nhìn chiều cao cột nếu gốc trục '
+                        '$\\neq 1$)',
+                        '$k = \\dfrac{y_1}{y_2}$ (dựa vào số liệu, không chỉ nhìn chiều cao cột nếu gốc trục '
+                        '$\\neq 0$)',
+                        '$k = \\dfrac{y_2}{y_1}$ (dựa vào số liệu, không chỉ nhìn chiều cao cột nếu gốc trục '
+                        '$\\neq 0$)',
+                        '$k = \\dfrac{y_2}{y_1}$ (dựa vào số liệu, không chỉ nhìn chiều cao cột nếu gốc trục '
+                        '$\\neq 2$)'],
             'answer': 2,
-            'solution': 'Trong Bài 20: Phân tích số liệu thống kê dựa vào biểu đồ, biểu thức/quy tắc $k = '
-                        '\\dfrac{y_2}{y_1}$ (dựa vào số liệu, không chỉ nhìn chiều cao cột nếu gốc trục '
-                        '$\\neq 0$) chính là nội dung của **Tỉ số giữa hai giá trị thực tế**.'},
+            'solution': 'Trong Bài 20: Phân tích số liệu thống kê dựa vào biểu đồ, **Tỉ số giữa hai giá trị '
+                        'thực tế** có công thức/quy tắc là: $k = \\dfrac{y_2}{y_1}$ (dựa vào số liệu, không '
+                        'chỉ nhìn chiều cao cột nếu gốc trục $\\neq 0$).'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Sản lượng cam của một trang trại trong 3 năm $2022, 2023, 2024$ lần lượt là $40$ tấn, $50$ '
@@ -3230,18 +3284,18 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 20: Phân tích số liệu thống kê dựa vào biểu đồ** (Chương V: Dữ liệu và biểu '
-                 'đồ), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của '
-                 'bài?',
+            'q': 'Để nắm vững bản chất của **Bài 20: Phân tích số liệu thống kê dựa vào biểu đồ**, nhận định '
+                 'nào sau đây là **chính xác**?',
             'options': ['Phát hiện được vấn đề hoặc quy luật đơn giản dựa trên phân tích các số liệu thu '
                         'được ở dạng bảng và biểu đồ.',
-                        'Nhận biết được đơn thức nhiều biến, đơn thức thu gọn, hệ số, phần biến và bậc của '
-                        'một đơn thức.',
-                        'Nhận biết được các đơn thức đồng dạng và thực hiện được phép cộng, phép trừ các đơn '
-                        'thức đồng dạng.',
-                        'Nhận biết được đa thức nhiều biến và các hạng tử của đa thức.'],
+                        'Phát hiện được vấn đề hoặc quy luật đơn giản dựa trên phân tích các số liệu thu '
+                        'được ở dạng bảng và biểu đồ. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Phát hiện được vấn đề hoặc quy luật đơn giản dựa trên '
+                        'phân tích các số liệu thu được ở dạng bảng và biểu đồ.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Phát hiện được vấn đề hoặc quy '
+                        'luật đơn giản dựa trên phân tích các số liệu thu được ở dạng bảng và biểu đồ.'],
             'answer': 0,
-            'solution': 'Theo yêu cầu cần đạt của Bài 20: Phân tích số liệu thống kê dựa vào biểu đồ: Phát '
+            'solution': 'Theo nội dung cốt lõi của Bài 20: Phân tích số liệu thống kê dựa vào biểu đồ: Phát '
                         'hiện được vấn đề hoặc quy luật đơn giản dựa trên phân tích các số liệu thu được ở '
                         'dạng bảng và biểu đồ.'},
            {'level': 'hieu',
@@ -3260,41 +3314,43 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 20: Phân tích số liệu '
-                 'thống kê dựa vào biểu đồ**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Phát hiện được vấn đề hoặc quy '
-                           'luật đơn giản dựa trên phân tích các số liệu thu được ở dạng bảng và biểu đồ.',
-                           'Quy tắc/công thức **Giá trị trung bình cộng** trong bài được xác định bởi: '
-                           '$\\bar{x} = \\dfrac{x_1 + x_2 + \\cdots + x_n}{n}$.',
-                           'Trong mọi trường hợp, **Giá trị trung bình cộng** luôn được tính bằng công thức '
-                           '$\\text{Bậc} = m + n + p$ (thuộc Bậc của đơn thức $a x^m y^n z^p$ ($a \\neq 0$)) '
-                           'mà không cần điều kiện của Bài 20: Phân tích số liệu thống kê dựa vào biểu đồ.',
-                           'Với bài toán minh họa: “Trên một biểu đồ cột có gốc trục đứng bắt đầu từ $90$, '
-                           'cột A biểu diễn số liệu $95$ và cột B biểu diễn số liệu $100$. Chiều cao cột B '
-                           'gấp đô...”, lời giải đúng là: Không thể kết luận B gấp đôi A. Do gốc trục đứng '
-                           'bắt đầu từ $90$ nên độ cao hiển thị tỉ lệ với $95 - 90 = 5$ và $100 - 90 = 10$ '
-                           '(gấp đôi trê...'],
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 20: Phân tích số liệu thống '
+                 'kê dựa vào biểu đồ**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Phát hiện được vấn đề hoặc quy luật đơn '
+                           'giản dựa trên phân tích các số liệu thu được ở dạng bảng và biểu đồ.',
+                           'Trong **Bài 20: Phân tích số liệu thống kê dựa vào biểu đồ**, quy tắc/công thức '
+                           '**Giá trị trung bình cộng** được viết là: $\\bar{x} = \\dfrac{x_1 + x_2 + '
+                           '\\cdots + x_n}{n}$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $\\bar{x} = \\dfrac{x_1 - x_2 + \\cdots + '
+                           'x_n}{n}$ thì kết quả của **Giá trị trung bình cộng** trong **Bài 20: Phân tích '
+                           'số liệu thống kê dựa vào biểu đồ** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Trên một biểu đồ cột có gốc trục đứng bắt đầu từ $90$, cột A '
+                           'biểu diễn số liệu $95$ và cột B biểu diễn số liệu $100$. Chiều cao cột B g...”, '
+                           'kết quả giải đúng là: Không thể kết luận B gấp đôi A. Do gốc trục đứng bắt đầu '
+                           'từ $90$ nên độ cao hiển thị tỉ lệ với $95 - 90 = 5$ và $100 - 90 = 10$ (gấp '
+                           'đô...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 20: Phân tích số liệu thống kê dựa vào '
-                        'biểu đồ. b) **Đúng** theo công thức trọng tâm **Giá trị trung bình cộng** '
-                        '($\\bar{x} = \\dfrac{x_1 + x_2 + \\cdots + x_n}{n}$). c) **Sai** vì $\\text{Bậc} = '
-                        'm + n + p$ là công thức của nội dung khác, không phải quy tắc chung của **Giá trị '
-                        'trung bình cộng**. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        'biểu đồ. b) **Đúng** theo công thức **Giá trị trung bình cộng** ($\\bar{x} = '
+                        '\\dfrac{x_1 + x_2 + \\cdots + x_n}{n}$). c) **Sai** vì công thức đúng của **Giá trị '
+                        'trung bình cộng** phải là $\\bar{x} = \\dfrac{x_1 + x_2 + \\cdots + x_n}{n}$ chứ '
+                        'không phải $\\bar{x} = \\dfrac{x_1 - x_2 + \\cdots + x_n}{n}$. d) **Đúng** theo lời '
+                        'giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 20: Phân tích số liệu thống kê dựa vào biểu đồ** để giải quyết '
-                 'tình huống sau: Trên một biểu đồ cột có gốc trục đứng bắt đầu từ $90$, cột A biểu diễn số '
-                 'liệu $95$ và cột B biểu diễn số liệu $100$. Chiều cao cột B gấp đôi chiều cao cột A trên '
-                 'hình vẽ, có thể kết luận giá trị của B gấp đôi A không? Kết quả và hướng giải nào dưới đây '
-                 'là **đúng**?',
-            'options': ['Ta có: $A = (-2 \\cdot 3)(x^2 \\cdot x)(y \\cdot y^3) = -6x^3y^4$. Hệ số là $-6$, '
-                        'phần biến là $x^3y^4$, bậc của đơn thức là $3 + 4 = 7$.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 20: Phân tích số liệu thống kê dựa vào biểu đồ** để '
+                 'giải bài toán sau: Trên một biểu đồ cột có gốc trục đứng bắt đầu từ $90$, cột A biểu diễn '
+                 'số liệu $95$ và cột B biểu diễn số liệu $100$. Chiều cao cột B gấp đôi chiều cao cột A '
+                 'trên hình vẽ, có thể kết luận giá trị của B gấp đôi A không? Cách giải và kết quả nào dưới '
+                 'đây là **đúng**?',
+            'options': ['Không thể kết luận B gấp đôi A. Do gốc trục đứng bắt đầu từ $90$ nên độ cao hiển '
+                        'thị tỉ lệ với $95 + 90 = 5$ và $100 - 90 = 10$ (gấp đôi trên hình), n...',
                         'Không thể kết luận B gấp đôi A. Do gốc trục đứng bắt đầu từ $90$ nên độ cao hiển '
-                        'thị tỉ lệ với $95 - 90 = 5$ và $100 - 90 = 10$ (gấp đôi trên hình), nhưng...',
-                        'Nhóm các hạng tử đồng dạng: $P = (2x^2y - 2x^2y) + 5x^2y^2 + (-3xy + 4xy) - 1 = '
-                        '5x^2y^2 + xy - 1$. Các hạng tử của dạng thu gọn có bậc lần lượt là $4; 2; 0$...',
-                        '- $M + N = (3x^2 + x^2) + (-2xy + 2xy) + (y^2 - 3y^2) = 4x^2 - 2y^2$. - $M - N = '
-                        '(3x^2 - x^2) + (-2xy - 2xy) + (y^2 + 3y^2) = 2x^2 - 4xy + 4y^2$.'],
+                        'thị tỉ lệ với $95 - 90 = 5$ và $100 - 90 = 10$ (gấp đôi trên hình), n...',
+                        'Không thể kết luận B gấp đôi A. Do gốc trục đứng bắt đầu từ $90$ nên độ cao hiển '
+                        'thị tỉ lệ với $95 - 90 = 5$ và $100 - 90 = 9$ (gấp đôi trên hình), n...',
+                        'Không thể kết luận B gấp đôi A. Do gốc trục đứng bắt đầu từ $92$ nên độ cao hiển '
+                        'thị tỉ lệ với $95 - 90 = 5$ và $100 - 90 = 10$ (gấp đôi trên hình), n...'],
             'answer': 1,
             'solution': 'Lời giải chi tiết theo Bài 20: Phân tích số liệu thống kê dựa vào biểu đồ: Không '
                         'thể kết luận B gấp đôi A. Do gốc trục đứng bắt đầu từ $90$ nên độ cao hiển thị tỉ '
@@ -3367,29 +3423,32 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 21: Phân thức đại số**, công thức hoặc quy tắc nào sau '
-                 'đây biểu diễn đúng **Hai phân thức bằng nhau**?',
-            'options': ['$B \\neq 0$',
-                        '$\\text{Bậc} = m + n + p$',
+            'q': 'Trong **Bài 21: Phân thức đại số**, quy tắc hoặc công thức nào sau đây xác định đúng **Hai '
+                 'phân thức bằng nhau**?',
+            'options': ['$\\dfrac{A}{B} = \\dfrac{C}{D} \\Leftrightarrow A : D = B \\cdot C \\quad (B, D '
+                        '\\neq 0)$',
+                        '$\\dfrac{B}{A} = \\dfrac{C}{D} \\Leftrightarrow A \\cdot D = B \\cdot C \\quad (B, '
+                        'D \\neq 0)$',
                         '$\\dfrac{A}{B} = \\dfrac{C}{D} \\Leftrightarrow A \\cdot D = B \\cdot C \\quad (B, '
                         'D \\neq 0)$',
-                        '$a x^m y^n + b x^m y^n = (a + b)x^m y^n; \\quad a x^m y^n - b x^m y^n = (a - b)x^m '
-                        'y^n$'],
+                        '$\\dfrac{A}{B} = \\dfrac{C}{D} \\Leftrightarrow A \\cdot D = B \\cdot C \\quad (B, '
+                        'D \\neq 2)$'],
             'answer': 2,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 21: Phân thức đại số, **Hai phân thức bằng '
-                        'nhau** được xác định bởi: $\\dfrac{A}{B} = \\dfrac{C}{D} \\Leftrightarrow A \\cdot '
-                        'D = B \\cdot C \\quad (B, D \\neq 0)$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 21: Phân thức đại số, **Hai phân thức bằng nhau** '
+                        'được xác định bởi: $\\dfrac{A}{B} = \\dfrac{C}{D} \\Leftrightarrow A \\cdot D = B '
+                        '\\cdot C \\quad (B, D \\neq 0)$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 21: Phân thức đại số**, nội dung/biểu thức $B \\neq 0$ là quy tắc hoặc công '
-                 'thức của mục nào sau đây?',
-            'options': ['Hai phân thức bằng nhau',
-                        'Bậc của đơn thức $a x^m y^n z^p$ ($a \\neq 0$)',
-                        'Cộng, trừ hai đơn thức đồng dạng',
-                        'Điều kiện xác định của $\\dfrac{A}{B}$'],
+            'q': 'Khi học **Bài 21: Phân thức đại số**, biểu thức hoặc quy tắc nào dưới đây biểu diễn đúng '
+                 '**Điều kiện xác định của $\\dfrac{A}{B}$**?',
+            'options': ['$B \\neq 1$',
+                        '$B \\neq 2$',
+                        '$\\dfrac{A}{B} = \\dfrac{C}{D} \\Leftrightarrow A \\cdot D = B \\cdot C \\quad (B, '
+                        'D \\neq 0)$',
+                        '$B \\neq 0$'],
             'answer': 3,
-            'solution': 'Trong Bài 21: Phân thức đại số, biểu thức/quy tắc $B \\neq 0$ chính là nội dung của '
-                        '**Điều kiện xác định của $\\dfrac{A}{B}$**.'},
+            'solution': 'Trong Bài 21: Phân thức đại số, **Điều kiện xác định của $\\dfrac{A}{B}$** có công '
+                        'thức/quy tắc là: $B \\neq 0$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Phân thức nào sau đây bằng với phân thức $\\dfrac{x}{x + 1}$?',
@@ -3404,17 +3463,16 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 21: Phân thức đại số** (Chương VI: Phân thức đại số), khẳng định nào sau đây '
-                 'phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Nhận biết được đơn thức nhiều biến, đơn thức thu gọn, hệ số, phần biến và bậc của '
-                        'một đơn thức.',
+            'q': 'Để nắm vững bản chất của **Bài 21: Phân thức đại số**, nhận định nào sau đây là **chính '
+                 'xác**?',
+            'options': ['Nhận biết được phân thức đại số, tử thức và mẫu thức. (với dấu ngược lại)',
                         'Nhận biết được phân thức đại số, tử thức và mẫu thức.',
-                        'Nhận biết được các đơn thức đồng dạng và thực hiện được phép cộng, phép trừ các đơn '
-                        'thức đồng dạng.',
-                        'Nhận biết được đa thức nhiều biến và các hạng tử của đa thức.'],
+                        'Đảo ngược vế của quy tắc: Nhận biết được phân thức đại số, tử thức và mẫu thức.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nhận biết được phân thức đại '
+                        'số, tử thức và mẫu thức.'],
             'answer': 1,
-            'solution': 'Theo yêu cầu cần đạt của Bài 21: Phân thức đại số: Nhận biết được phân thức đại số, '
-                        'tử thức và mẫu thức.'},
+            'solution': 'Theo nội dung cốt lõi của Bài 21: Phân thức đại số: Nhận biết được phân thức đại '
+                        'số, tử thức và mẫu thức.'},
            {'level': 'hieu',
             'type': 'tf4',
             'q': 'Cho phân thức $Q = \\dfrac{x^2 - 1}{x - 1}$. Xét các khẳng định sau:',
@@ -3429,41 +3487,44 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 21: Phân thức đại số**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được phân thức đại số, '
-                           'tử thức và mẫu thức.',
-                           'Quy tắc/công thức **Hai phân thức bằng nhau** trong bài được xác định bởi: '
-                           '$\\dfrac{A}{B} = \\dfrac{C}{D} \\Leftrightarrow A \\cdot D = B \\cdot C \\quad '
-                           '(B, D \\neq 0)$.',
-                           'Trong mọi trường hợp, **Hai phân thức bằng nhau** luôn được tính bằng công thức '
-                           '$\\text{Bậc} = m + n + p$ (thuộc Bậc của đơn thức $a x^m y^n z^p$ ($a \\neq 0$)) '
-                           'mà không cần điều kiện của Bài 21: Phân thức đại số.',
-                           'Với bài toán minh họa: “Tìm điều kiện xác định của phân thức $P = \\dfrac{x + '
-                           '2}{x - 3}$ và tính giá trị của $P$ tại $x = 5$.”, lời giải đúng là: - Điều kiện '
-                           'xác định của phân thức $P$ là $x - 3 \\neq 0$, hay $x \\neq 3$. - Tại $x = 5$ '
-                           '(thỏa mãn $x \\neq 3$), ta có $P = \\dfrac{5 + 2}{5 - 3} = \\dfrac{7}{2} = '
-                           '3,5$...'],
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 21: Phân thức đại số**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết được phân thức đại số, tử thức '
+                           'và mẫu thức.',
+                           'Trong **Bài 21: Phân thức đại số**, quy tắc/công thức **Hai phân thức bằng '
+                           'nhau** được viết là: $\\dfrac{A}{B} = \\dfrac{C}{D} \\Leftrightarrow A \\cdot D '
+                           '= B \\cdot C \\quad (B, D \\neq 0)$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $\\dfrac{A}{B} = \\dfrac{C}{D} '
+                           '\\Leftrightarrow A : D = B \\cdot C \\quad (B, D \\neq 0)$ thì kết quả của **Hai '
+                           'phân thức bằng nhau** trong **Bài 21: Phân thức đại số** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Tìm điều kiện xác định của phân thức $P = \\dfrac{x + 2}{x - '
+                           '3}$ và tính giá trị của $P$ tại $x = 5$.”, kết quả giải đúng là: - Điều kiện xác '
+                           'định của phân thức $P$ là $x - 3 \\neq 0$, hay $x \\neq 3$. - Tại $x = 5$ (thỏa '
+                           'mãn $x \\neq 3$), ta có $P = \\dfrac{5 + 2}{5 - 3} = \\dfrac{7}{2} = 3,5$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 21: Phân thức đại số. b) **Đúng** theo '
-                        'công thức trọng tâm **Hai phân thức bằng nhau** ($\\dfrac{A}{B} = \\dfrac{C}{D} '
+                        'công thức **Hai phân thức bằng nhau** ($\\dfrac{A}{B} = \\dfrac{C}{D} '
                         '\\Leftrightarrow A \\cdot D = B \\cdot C \\quad (B, D \\neq 0)$). c) **Sai** vì '
-                        '$\\text{Bậc} = m + n + p$ là công thức của nội dung khác, không phải quy tắc chung '
-                        'của **Hai phân thức bằng nhau**. d) **Đúng** theo lời giải ví dụ minh họa trong bài '
-                        'học.'},
+                        'công thức đúng của **Hai phân thức bằng nhau** phải là $\\dfrac{A}{B} = '
+                        '\\dfrac{C}{D} \\Leftrightarrow A \\cdot D = B \\cdot C \\quad (B, D \\neq 0)$ chứ '
+                        'không phải $\\dfrac{A}{B} = \\dfrac{C}{D} \\Leftrightarrow A : D = B \\cdot C '
+                        '\\quad (B, D \\neq 0)$. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 21: Phân thức đại số** để giải quyết tình huống sau: Tìm điều '
-                 'kiện xác định của phân thức $P = \\dfrac{x + 2}{x - 3}$ và tính giá trị của $P$ tại $x = '
-                 '5$. Kết quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Ta có: $A = (-2 \\cdot 3)(x^2 \\cdot x)(y \\cdot y^3) = -6x^3y^4$. Hệ số là $-6$, '
-                        'phần biến là $x^3y^4$, bậc của đơn thức là $3 + 4 = 7$.',
-                        'Nhóm các hạng tử đồng dạng: $P = (2x^2y - 2x^2y) + 5x^2y^2 + (-3xy + 4xy) - 1 = '
-                        '5x^2y^2 + xy - 1$. Các hạng tử của dạng thu gọn có bậc lần lượt là $4; 2; 0$...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 21: Phân thức đại số** để giải bài toán sau: Tìm '
+                 'điều kiện xác định của phân thức $P = \\dfrac{x + 2}{x - 3}$ và tính giá trị của $P$ tại '
+                 '$x = 5$. Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['- Điều kiện xác định của phân thức $P$ là $x - 3 \\neq 0$, hay $x \\neq 3$. - Tại '
+                        '$x = 5$ (thỏa mãn $x \\neq 3$), ta có $P = \\dfrac{5 - 2}{5 - 3} = \\dfrac{7}{2} = '
+                        '3,5$...',
+                        '- Điều kiện xác định của phân thức $P$ là $x - 3 \\neq 0$, hay $x \\neq 3$. - Tại '
+                        '$x = 5$ (thỏa mãn $x \\neq 3$), ta có $P = \\dfrac{5 - 3}{5 + 2} = \\dfrac{7}{2} = '
+                        '3,5$...',
                         '- Điều kiện xác định của phân thức $P$ là $x - 3 \\neq 0$, hay $x \\neq 3$. - Tại '
                         '$x = 5$ (thỏa mãn $x \\neq 3$), ta có $P = \\dfrac{5 + 2}{5 - 3} = \\dfrac{7}{2} = '
                         '3,5$...',
-                        '- $M + N = (3x^2 + x^2) + (-2xy + 2xy) + (y^2 - 3y^2) = 4x^2 - 2y^2$. - $M - N = '
-                        '(3x^2 - x^2) + (-2xy - 2xy) + (y^2 + 3y^2) = 2x^2 - 4xy + 4y^2$.'],
+                        '- Điều kiện xác định của phân thức $P$ là $x - 6 \\neq 0$, hay $x \\neq 3$. - Tại '
+                        '$x = 5$ (thỏa mãn $x \\neq 3$), ta có $P = \\dfrac{5 + 2}{5 - 3} = \\dfrac{7}{2} = '
+                        '3,5$...'],
             'answer': 2,
             'solution': 'Lời giải chi tiết theo Bài 21: Phân thức đại số: - Điều kiện xác định của phân thức '
                         '$P$ là $x - 3 \\neq 0$, hay $x \\neq 3$.\n'
@@ -3535,28 +3596,29 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 22: Tính chất cơ bản của phân thức đại số**, công thức '
-                 'hoặc quy tắc nào sau đây biểu diễn đúng **Nhân cả tử và mẫu với $M \\neq 0$**?',
-            'options': ['$\\dfrac{A}{B} = \\dfrac{A : N}{B : N}$',
-                        '$\\dfrac{A}{B} = \\dfrac{-A}{-B} = -\\dfrac{-A}{B} = -\\dfrac{A}{-B}$',
-                        '$\\text{Bậc} = m + n + p$',
+            'q': 'Trong **Bài 22: Tính chất cơ bản của phân thức đại số**, quy tắc hoặc công thức nào sau '
+                 'đây xác định đúng **Nhân cả tử và mẫu với $M \\neq 0$**?',
+            'options': ['$\\dfrac{A}{B} = \\dfrac{A : M}{B \\cdot M}$',
+                        '$\\dfrac{B}{A} = \\dfrac{A \\cdot M}{B \\cdot M}$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\dfrac{A}{B} = \\dfrac{A '
+                        '\\cdot M}{B \\cdot M}$',
                         '$\\dfrac{A}{B} = \\dfrac{A \\cdot M}{B \\cdot M}$'],
             'answer': 3,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 22: Tính chất cơ bản của phân thức đại số, '
-                        '**Nhân cả tử và mẫu với $M \\neq 0$** được xác định bởi: $\\dfrac{A}{B} = \\dfrac{A '
-                        '\\cdot M}{B \\cdot M}$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 22: Tính chất cơ bản của phân thức đại số, **Nhân '
+                        'cả tử và mẫu với $M \\neq 0$** được xác định bởi: $\\dfrac{A}{B} = \\dfrac{A \\cdot '
+                        'M}{B \\cdot M}$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 22: Tính chất cơ bản của phân thức đại số**, nội dung/biểu thức $\\dfrac{A}{B} '
-                 '= \\dfrac{A : N}{B : N}$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Chia cả tử và mẫu cho nhân tử chung $N$',
-                        'Nhân cả tử và mẫu với $M \\neq 0$',
-                        'Quy tắc đổi dấu',
-                        'Bậc của đơn thức $a x^m y^n z^p$ ($a \\neq 0$)'],
+            'q': 'Khi học **Bài 22: Tính chất cơ bản của phân thức đại số**, biểu thức hoặc quy tắc nào dưới '
+                 'đây biểu diễn đúng **Chia cả tử và mẫu cho nhân tử chung $N$**?',
+            'options': ['$\\dfrac{A}{B} = \\dfrac{A : N}{B : N}$',
+                        '$\\dfrac{A}{B} = \\dfrac{A : N}{B : N}$ (với dấu ngược lại)',
+                        '$\\dfrac{B}{A} = \\dfrac{A : N}{B : N}$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\dfrac{A}{B} = \\dfrac{A : '
+                        'N}{B : N}$'],
             'answer': 0,
-            'solution': 'Trong Bài 22: Tính chất cơ bản của phân thức đại số, biểu thức/quy tắc '
-                        '$\\dfrac{A}{B} = \\dfrac{A : N}{B : N}$ chính là nội dung của **Chia cả tử và mẫu '
-                        'cho nhân tử chung $N$**.'},
+            'solution': 'Trong Bài 22: Tính chất cơ bản của phân thức đại số, **Chia cả tử và mẫu cho nhân '
+                        'tử chung $N$** có công thức/quy tắc là: $\\dfrac{A}{B} = \\dfrac{A : N}{B : N}$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Mẫu thức chung đơn giản nhất của hai phân thức $\\dfrac{1}{2x - 2}$ và $\\dfrac{3}{x^2 - '
@@ -3569,16 +3631,17 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 22: Tính chất cơ bản của phân thức đại số** (Chương VI: Phân thức đại số), '
-                 'khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Nhận biết được đơn thức nhiều biến, đơn thức thu gọn, hệ số, phần biến và bậc của '
-                        'một đơn thức.',
-                        'Nhận biết được các đơn thức đồng dạng và thực hiện được phép cộng, phép trừ các đơn '
-                        'thức đồng dạng.',
+            'q': 'Để nắm vững bản chất của **Bài 22: Tính chất cơ bản của phân thức đại số**, nhận định nào '
+                 'sau đây là **chính xác**?',
+            'options': ['Mô tả được tính chất cơ bản của phân thức đại số và quy tắc đổi dấu. (với dấu ngược '
+                        'lại)',
+                        'Đảo ngược vế của quy tắc: Mô tả được tính chất cơ bản của phân thức đại số và quy '
+                        'tắc đổi dấu.',
                         'Mô tả được tính chất cơ bản của phân thức đại số và quy tắc đổi dấu.',
-                        'Nhận biết được đa thức nhiều biến và các hạng tử của đa thức.'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Mô tả được tính chất cơ bản của '
+                        'phân thức đại số và quy tắc đổi dấu.'],
             'answer': 2,
-            'solution': 'Theo yêu cầu cần đạt của Bài 22: Tính chất cơ bản của phân thức đại số: Mô tả được '
+            'solution': 'Theo nội dung cốt lõi của Bài 22: Tính chất cơ bản của phân thức đại số: Mô tả được '
                         'tính chất cơ bản của phân thức đại số và quy tắc đổi dấu.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -3593,36 +3656,37 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 22: Tính chất cơ bản '
-                 'của phân thức đại số**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Mô tả được tính chất cơ bản của '
-                           'phân thức đại số và quy tắc đổi dấu.',
-                           'Quy tắc/công thức **Nhân cả tử và mẫu với $M \\neq 0$** trong bài được xác định '
-                           'bởi: $\\dfrac{A}{B} = \\dfrac{A \\cdot M}{B \\cdot M}$.',
-                           'Trong mọi trường hợp, **Nhân cả tử và mẫu với $M \\neq 0$** luôn được tính bằng '
-                           'công thức $\\text{Bậc} = m + n + p$ (thuộc Bậc của đơn thức $a x^m y^n z^p$ ($a '
-                           '\\neq 0$)) mà không cần điều kiện của Bài 22: Tính chất cơ bản của phân thức đại '
-                           'số.',
-                           'Với bài toán minh họa: “Rút gọn phân thức $P = \\dfrac{x^2 - 4x + 4}{x^2 - 4}$ '
-                           '(với $x \\neq \\pm 2$).”, lời giải đúng là: Phân tích tử và mẫu thành nhân tử: '
-                           '$P = \\dfrac{(x - 2)^2}{(x - 2)(x + 2)} = \\dfrac{x - 2}{x + 2}$.'],
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 22: Tính chất cơ bản của '
+                 'phân thức đại số**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Mô tả được tính chất cơ bản của phân '
+                           'thức đại số và quy tắc đổi dấu.',
+                           'Trong **Bài 22: Tính chất cơ bản của phân thức đại số**, quy tắc/công thức '
+                           '**Nhân cả tử và mẫu với $M \\neq 0$** được viết là: $\\dfrac{A}{B} = \\dfrac{A '
+                           '\\cdot M}{B \\cdot M}$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $\\dfrac{A}{B} = \\dfrac{A : M}{B \\cdot M}$ '
+                           'thì kết quả của **Nhân cả tử và mẫu với $M \\neq 0$** trong **Bài 22: Tính chất '
+                           'cơ bản của phân thức đại số** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Rút gọn phân thức $P = \\dfrac{x^2 - 4x + 4}{x^2 - 4}$ (với '
+                           '$x \\neq \\pm 2$).”, kết quả giải đúng là: Phân tích tử và mẫu thành nhân tử: $P '
+                           '= \\dfrac{(x - 2)^2}{(x - 2)(x + 2)} = \\dfrac{x - 2}{x + 2}$.'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 22: Tính chất cơ bản của phân thức đại số. '
-                        'b) **Đúng** theo công thức trọng tâm **Nhân cả tử và mẫu với $M \\neq 0$** '
-                        '($\\dfrac{A}{B} = \\dfrac{A \\cdot M}{B \\cdot M}$). c) **Sai** vì $\\text{Bậc} = m '
-                        '+ n + p$ là công thức của nội dung khác, không phải quy tắc chung của **Nhân cả tử '
-                        'và mẫu với $M \\neq 0$**. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        'b) **Đúng** theo công thức **Nhân cả tử và mẫu với $M \\neq 0$** ($\\dfrac{A}{B} = '
+                        '\\dfrac{A \\cdot M}{B \\cdot M}$). c) **Sai** vì công thức đúng của **Nhân cả tử và '
+                        'mẫu với $M \\neq 0$** phải là $\\dfrac{A}{B} = \\dfrac{A \\cdot M}{B \\cdot M}$ chứ '
+                        'không phải $\\dfrac{A}{B} = \\dfrac{A : M}{B \\cdot M}$. d) **Đúng** theo lời giải '
+                        'ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 22: Tính chất cơ bản của phân thức đại số** để giải quyết tình '
-                 'huống sau: Rút gọn phân thức $P = \\dfrac{x^2 - 4x + 4}{x^2 - 4}$ (với $x \\neq \\pm 2$). '
-                 'Kết quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Ta có: $A = (-2 \\cdot 3)(x^2 \\cdot x)(y \\cdot y^3) = -6x^3y^4$. Hệ số là $-6$, '
-                        'phần biến là $x^3y^4$, bậc của đơn thức là $3 + 4 = 7$.',
-                        'Nhóm các hạng tử đồng dạng: $P = (2x^2y - 2x^2y) + 5x^2y^2 + (-3xy + 4xy) - 1 = '
-                        '5x^2y^2 + xy - 1$. Các hạng tử của dạng thu gọn có bậc lần lượt là $4; 2; 0$...',
-                        '- $M + N = (3x^2 + x^2) + (-2xy + 2xy) + (y^2 - 3y^2) = 4x^2 - 2y^2$. - $M - N = '
-                        '(3x^2 - x^2) + (-2xy - 2xy) + (y^2 + 3y^2) = 2x^2 - 4xy + 4y^2$.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 22: Tính chất cơ bản của phân thức đại số** để giải '
+                 'bài toán sau: Rút gọn phân thức $P = \\dfrac{x^2 - 4x + 4}{x^2 - 4}$ (với $x \\neq \\pm '
+                 '2$). Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Phân tích tử và mẫu thành nhân tử: $P = \\dfrac{(x - 2)^2}{(x - 2)(x - 2)} = '
+                        '\\dfrac{x - 2}{x + 2}$.',
+                        'Phân tích tử và mẫu thành nhân tử: $P = \\dfrac{(x - 2)(x + 2)}{(x - 2)^2} = '
+                        '\\dfrac{x - 2}{x + 2}$.',
+                        'Phân tích tử và mẫu thành nhân tử: $P = \\dfrac{(x - 4)^2}{(x - 2)(x + 2)} = '
+                        '\\dfrac{x - 2}{x + 2}$.',
                         'Phân tích tử và mẫu thành nhân tử: $P = \\dfrac{(x - 2)^2}{(x - 2)(x + 2)} = '
                         '\\dfrac{x - 2}{x + 2}$.'],
             'answer': 3,
@@ -3649,9 +3713,8 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
   'requirements': ['Thực hiện được phép cộng và phép trừ hai phân thức cùng mẫu thức hoặc khác mẫu thức.',
                    'Vận dụng được tính chất giao hoán, kết hợp và quy tắc dấu ngoặc để rút gọn biểu thức '
                    'phân thức.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Cộng, trừ cùng mẫu thức** ($\\dfrac{A}{M} + '
-                   '\\dfrac{B}{M} = \\dfrac{A + B}{M}; \\quad \\dfrac{A}{M} - \\dfrac{B}{M} = \\dfrac{A - '
-                   'B}{M}$) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 23: Phép cộng và phép trừ phân thức đại số** để giải bài '
+                   'tập minh họa và bài toán thực tiễn.'],
   'definition': 'Muốn cộng (hoặc trừ) hai phân thức có cùng mẫu thức, ta cộng (hoặc trừ) các tử thức với '
                 'nhau và giữ nguyên mẫu thức. Muốn cộng (hoặc trừ) hai phân thức có mẫu thức khác nhau, ta '
                 'quy đồng mẫu thức rồi cộng (hoặc trừ) các phân thức có cùng mẫu thức vừa tìm được.',
@@ -3698,32 +3761,35 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 23: Phép cộng và phép trừ phân thức đại số**, công thức '
-                 'hoặc quy tắc nào sau đây biểu diễn đúng **Cộng, trừ cùng mẫu thức**?',
+            'q': 'Trong **Bài 23: Phép cộng và phép trừ phân thức đại số**, quy tắc hoặc công thức nào sau '
+                 'đây xác định đúng **Cộng, trừ cùng mẫu thức**?',
             'options': ['$\\dfrac{A}{M} + \\dfrac{B}{M} = \\dfrac{A + B}{M}; \\quad \\dfrac{A}{M} - '
                         '\\dfrac{B}{M} = \\dfrac{A - B}{M}$',
-                        '$\\dfrac{A}{B} \\pm \\dfrac{C}{D} = \\dfrac{A \\cdot D \\pm B \\cdot C}{B \\cdot '
-                        'D}$',
-                        '$\\text{Bậc} = m + n + p$',
-                        '$a x^m y^n + b x^m y^n = (a + b)x^m y^n; \\quad a x^m y^n - b x^m y^n = (a - b)x^m '
-                        'y^n$'],
+                        '$\\dfrac{A}{M} - \\dfrac{B}{M} = \\dfrac{A + B}{M}; \\quad \\dfrac{A}{M} - '
+                        '\\dfrac{B}{M} = \\dfrac{A - B}{M}$',
+                        '$\\dfrac{M}{A} + \\dfrac{B}{M} = \\dfrac{A + B}{M}; \\quad \\dfrac{A}{M} - '
+                        '\\dfrac{B}{M} = \\dfrac{A - B}{M}$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\dfrac{A}{M} + \\dfrac{B}{M} '
+                        '= \\dfrac{A + B}{M}; \\quad \\dfrac{A}{M} - \\dfrac{B}{M} = \\dfrac{A - B}{M}$'],
             'answer': 0,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 23: Phép cộng và phép trừ phân thức đại số, '
+            'solution': 'Theo kiến thức trọng tâm của Bài 23: Phép cộng và phép trừ phân thức đại số, '
                         '**Cộng, trừ cùng mẫu thức** được xác định bởi: $\\dfrac{A}{M} + \\dfrac{B}{M} = '
                         '\\dfrac{A + B}{M}; \\quad \\dfrac{A}{M} - \\dfrac{B}{M} = \\dfrac{A - B}{M}$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 23: Phép cộng và phép trừ phân thức đại số**, nội dung/biểu thức '
-                 '$\\dfrac{A}{B} \\pm \\dfrac{C}{D} = \\dfrac{A \\cdot D \\pm B \\cdot C}{B \\cdot D}$ là '
-                 'quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Cộng, trừ cùng mẫu thức',
-                        'Cộng, trừ khác mẫu thức',
-                        'Bậc của đơn thức $a x^m y^n z^p$ ($a \\neq 0$)',
-                        'Cộng, trừ hai đơn thức đồng dạng'],
-            'answer': 1,
-            'solution': 'Trong Bài 23: Phép cộng và phép trừ phân thức đại số, biểu thức/quy tắc '
+            'q': 'Khi học **Bài 23: Phép cộng và phép trừ phân thức đại số**, biểu thức hoặc quy tắc nào '
+                 'dưới đây biểu diễn đúng **Cộng, trừ khác mẫu thức**?',
+            'options': ['$\\dfrac{A}{B} \\pm \\dfrac{C}{D} = \\dfrac{A : D \\pm B \\cdot C}{B \\cdot D}$',
                         '$\\dfrac{A}{B} \\pm \\dfrac{C}{D} = \\dfrac{A \\cdot D \\pm B \\cdot C}{B \\cdot '
-                        'D}$ chính là nội dung của **Cộng, trừ khác mẫu thức**.'},
+                        'D}$',
+                        '$\\dfrac{B}{A} \\pm \\dfrac{C}{D} = \\dfrac{A \\cdot D \\pm B \\cdot C}{B \\cdot '
+                        'D}$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\dfrac{A}{B} \\pm '
+                        '\\dfrac{C}{D} = \\dfrac{A \\cdot D \\pm B \\cdot C}{B \\cdot D}$'],
+            'answer': 1,
+            'solution': 'Trong Bài 23: Phép cộng và phép trừ phân thức đại số, **Cộng, trừ khác mẫu thức** '
+                        'có công thức/quy tắc là: $\\dfrac{A}{B} \\pm \\dfrac{C}{D} = \\dfrac{A \\cdot D '
+                        '\\pm B \\cdot C}{B \\cdot D}$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Thực hiện phép trừ $\\dfrac{x^2}{x - 1} - \\dfrac{1}{x - 1}$ (với $x \\neq 1$) ta được:',
@@ -3734,17 +3800,18 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 23: Phép cộng và phép trừ phân thức đại số** (Chương VI: Phân thức đại số), '
-                 'khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Nhận biết được đơn thức nhiều biến, đơn thức thu gọn, hệ số, phần biến và bậc của '
-                        'một đơn thức.',
-                        'Nhận biết được các đơn thức đồng dạng và thực hiện được phép cộng, phép trừ các đơn '
-                        'thức đồng dạng.',
-                        'Nhận biết được đa thức nhiều biến và các hạng tử của đa thức.',
+            'q': 'Để nắm vững bản chất của **Bài 23: Phép cộng và phép trừ phân thức đại số**, nhận định nào '
+                 'sau đây là **chính xác**?',
+            'options': ['Thực hiện được phép cộng và phép trừ hai phân thức cùng mẫu thức hoặc khác mẫu '
+                        'thức. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Thực hiện được phép cộng và phép trừ hai phân thức cùng '
+                        'mẫu thức hoặc khác mẫu thức.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Thực hiện được phép cộng và '
+                        'phép trừ hai phân thức cùng mẫu thức hoặc khác mẫu thức.',
                         'Thực hiện được phép cộng và phép trừ hai phân thức cùng mẫu thức hoặc khác mẫu '
                         'thức.'],
             'answer': 3,
-            'solution': 'Theo yêu cầu cần đạt của Bài 23: Phép cộng và phép trừ phân thức đại số: Thực hiện '
+            'solution': 'Theo nội dung cốt lõi của Bài 23: Phép cộng và phép trừ phân thức đại số: Thực hiện '
                         'được phép cộng và phép trừ hai phân thức cùng mẫu thức hoặc khác mẫu thức.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -3762,40 +3829,43 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 23: Phép cộng và phép '
-                 'trừ phân thức đại số**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Thực hiện được phép cộng và phép '
-                           'trừ hai phân thức cùng mẫu thức hoặc khác mẫu thức.',
-                           'Quy tắc/công thức **Cộng, trừ cùng mẫu thức** trong bài được xác định bởi: '
-                           '$\\dfrac{A}{M} + \\dfrac{B}{M} = \\dfrac{A + B}{M}; \\quad \\dfrac{A}{M} - '
-                           '\\dfrac{B}{M} = \\dfrac{A - B}{M}$.',
-                           'Trong mọi trường hợp, **Cộng, trừ cùng mẫu thức** luôn được tính bằng công thức '
-                           '$\\text{Bậc} = m + n + p$ (thuộc Bậc của đơn thức $a x^m y^n z^p$ ($a \\neq 0$)) '
-                           'mà không cần điều kiện của Bài 23: Phép cộng và phép trừ phân thức đại số.',
-                           'Với bài toán minh họa: “Thực hiện phép tính: $P = \\dfrac{x}{x - 2} + '
-                           '\\dfrac{4}{2 - x}$ (với $x \\neq 2$).”, lời giải đúng là: Áp dụng quy tắc đổi '
-                           'dấu cho phân thức thứ hai: $\\dfrac{4}{2 - x} = -\\dfrac{4}{x - 2}$. Khi đó $P = '
-                           '\\dfrac{x}{x - 2} - \\dfrac{4}{x - 2} = \\dfrac{x - 4}{x - 2}$...'],
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 23: Phép cộng và phép trừ '
+                 'phân thức đại số**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Thực hiện được phép cộng và phép trừ hai '
+                           'phân thức cùng mẫu thức hoặc khác mẫu thức.',
+                           'Trong **Bài 23: Phép cộng và phép trừ phân thức đại số**, quy tắc/công thức '
+                           '**Cộng, trừ cùng mẫu thức** được viết là: $\\dfrac{A}{M} + \\dfrac{B}{M} = '
+                           '\\dfrac{A + B}{M}; \\quad \\dfrac{A}{M} - \\dfrac{B}{M} = \\dfrac{A - B}{M}$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $\\dfrac{A}{M} - \\dfrac{B}{M} = \\dfrac{A + '
+                           'B}{M}; \\quad \\dfrac{A}{M} - \\dfrac{B}{M} = \\dfrac{A - B}{M}$ thì kết quả của '
+                           '**Cộng, trừ cùng mẫu thức** trong **Bài 23: Phép cộng và phép trừ phân thức đại '
+                           'số** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Thực hiện phép tính: $P = \\dfrac{x}{x - 2} + \\dfrac{4}{2 - '
+                           'x}$ (với $x \\neq 2$).”, kết quả giải đúng là: Áp dụng quy tắc đổi dấu cho phân '
+                           'thức thứ hai: $\\dfrac{4}{2 - x} = -\\dfrac{4}{x - 2}$. Khi đó $P = \\dfrac{x}{x '
+                           '- 2} - \\dfrac{4}{x - 2} = \\dfrac{x - 4}{x - 2}$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 23: Phép cộng và phép trừ phân thức đại '
-                        'số. b) **Đúng** theo công thức trọng tâm **Cộng, trừ cùng mẫu thức** '
-                        '($\\dfrac{A}{M} + \\dfrac{B}{M} = \\dfrac{A + B}{M}; \\quad \\dfrac{A}{M} - '
-                        '\\dfrac{B}{M} = \\dfrac{A - B}{M}$). c) **Sai** vì $\\text{Bậc} = m + n + p$ là '
-                        'công thức của nội dung khác, không phải quy tắc chung của **Cộng, trừ cùng mẫu '
-                        'thức**. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        'số. b) **Đúng** theo công thức **Cộng, trừ cùng mẫu thức** ($\\dfrac{A}{M} + '
+                        '\\dfrac{B}{M} = \\dfrac{A + B}{M}; \\quad \\dfrac{A}{M} - \\dfrac{B}{M} = \\dfrac{A '
+                        '- B}{M}$). c) **Sai** vì công thức đúng của **Cộng, trừ cùng mẫu thức** phải là '
+                        '$\\dfrac{A}{M} + \\dfrac{B}{M} = \\dfrac{A + B}{M}; \\quad \\dfrac{A}{M} - '
+                        '\\dfrac{B}{M} = \\dfrac{A - B}{M}$ chứ không phải $\\dfrac{A}{M} - \\dfrac{B}{M} = '
+                        '\\dfrac{A + B}{M}; \\quad \\dfrac{A}{M} - \\dfrac{B}{M} = \\dfrac{A - B}{M}$. d) '
+                        '**Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 23: Phép cộng và phép trừ phân thức đại số** để giải quyết tình '
-                 'huống sau: Thực hiện phép tính: $P = \\dfrac{x}{x - 2} + \\dfrac{4}{2 - x}$ (với $x \\neq '
-                 '2$). Kết quả và hướng giải nào dưới đây là **đúng**?',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 23: Phép cộng và phép trừ phân thức đại số** để '
+                 'giải bài toán sau: Thực hiện phép tính: $P = \\dfrac{x}{x - 2} + \\dfrac{4}{2 - x}$ (với '
+                 '$x \\neq 2$). Cách giải và kết quả nào dưới đây là **đúng**?',
             'options': ['Áp dụng quy tắc đổi dấu cho phân thức thứ hai: $\\dfrac{4}{2 - x} = -\\dfrac{4}{x - '
                         '2}$. Khi đó $P = \\dfrac{x}{x - 2} - \\dfrac{4}{x - 2} = \\dfrac{x - 4}{x - 2}$...',
-                        'Ta có: $A = (-2 \\cdot 3)(x^2 \\cdot x)(y \\cdot y^3) = -6x^3y^4$. Hệ số là $-6$, '
-                        'phần biến là $x^3y^4$, bậc của đơn thức là $3 + 4 = 7$.',
-                        'Nhóm các hạng tử đồng dạng: $P = (2x^2y - 2x^2y) + 5x^2y^2 + (-3xy + 4xy) - 1 = '
-                        '5x^2y^2 + xy - 1$. Các hạng tử của dạng thu gọn có bậc lần lượt là $4; 2; 0$...',
-                        '- $M + N = (3x^2 + x^2) + (-2xy + 2xy) + (y^2 - 3y^2) = 4x^2 - 2y^2$. - $M - N = '
-                        '(3x^2 - x^2) + (-2xy - 2xy) + (y^2 + 3y^2) = 2x^2 - 4xy + 4y^2$.'],
+                        'Áp dụng quy tắc đổi dấu cho phân thức thứ hai: $\\dfrac{4}{2 + x} = -\\dfrac{4}{x - '
+                        '2}$. Khi đó $P = \\dfrac{x}{x - 2} - \\dfrac{4}{x - 2} = \\dfrac{x - 4}{x - 2}$...',
+                        'Áp dụng quy tắc đổi dấu cho phân thức thứ hai: $\\dfrac{2 - x}{4} = -\\dfrac{4}{x - '
+                        '2}$. Khi đó $P = \\dfrac{x}{x - 2} - \\dfrac{4}{x - 2} = \\dfrac{x - 4}{x - 2}$...',
+                        'Áp dụng quy tắc đổi dấu cho phân thức thứ hai: $\\dfrac{8}{2 - x} = -\\dfrac{4}{x - '
+                        '2}$. Khi đó $P = \\dfrac{x}{x - 2} - \\dfrac{4}{x - 2} = \\dfrac{x - 4}{x - 2}$...'],
             'answer': 0,
             'solution': 'Lời giải chi tiết theo Bài 23: Phép cộng và phép trừ phân thức đại số: Áp dụng quy '
                         'tắc đổi dấu cho phân thức thứ hai: $\\dfrac{4}{2 - x} = -\\dfrac{4}{x - 2}$.\n'
@@ -3819,8 +3889,8 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
   'requirements': ['Thực hiện được phép nhân và phép chia hai phân thức đại số.',
                    'Vận dụng được các tính chất giao hoán, kết hợp, phân phối của phép nhân phân thức để rút '
                    'gọn biểu thức.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Phép nhân hai phân thức** ($\\dfrac{A}{B} '
-                   '\\cdot \\dfrac{C}{D} = \\dfrac{A \\cdot C}{B \\cdot D}$) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 24: Phép nhân và phép chia phân thức đại số** để giải bài '
+                   'tập minh họa và bài toán thực tiễn.'],
   'definition': 'Muốn nhân hai phân thức, ta nhân các tử thức với nhau, các mẫu thức với nhau: '
                 '$\\dfrac{A}{B} \\cdot \\dfrac{C}{D} = \\dfrac{A \\cdot C}{B \\cdot D}$. Muốn chia phân thức '
                 '$\\dfrac{A}{B}$ cho phân thức $\\dfrac{C}{D}$ khác $0$, ta nhân $\\dfrac{A}{B}$ với phân '
@@ -3868,32 +3938,33 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 24: Phép nhân và phép chia phân thức đại số**, công thức '
-                 'hoặc quy tắc nào sau đây biểu diễn đúng **Phép nhân hai phân thức**?',
-            'options': ['$\\dfrac{A}{B} : \\dfrac{C}{D} = \\dfrac{A}{B} \\cdot \\dfrac{D}{C} = \\dfrac{A '
-                        '\\cdot D}{B \\cdot C} \\quad (C \\neq 0)$',
+            'q': 'Trong **Bài 24: Phép nhân và phép chia phân thức đại số**, quy tắc hoặc công thức nào sau '
+                 'đây xác định đúng **Phép nhân hai phân thức**?',
+            'options': ['$\\dfrac{A}{B} : \\dfrac{C}{D} = \\dfrac{A \\cdot C}{B \\cdot D}$',
                         '$\\dfrac{A}{B} \\cdot \\dfrac{C}{D} = \\dfrac{A \\cdot C}{B \\cdot D}$',
-                        '$\\text{Bậc} = m + n + p$',
-                        '$a x^m y^n + b x^m y^n = (a + b)x^m y^n; \\quad a x^m y^n - b x^m y^n = (a - b)x^m '
-                        'y^n$'],
+                        '$\\dfrac{B}{A} \\cdot \\dfrac{C}{D} = \\dfrac{A \\cdot C}{B \\cdot D}$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\dfrac{A}{B} \\cdot '
+                        '\\dfrac{C}{D} = \\dfrac{A \\cdot C}{B \\cdot D}$'],
             'answer': 1,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 24: Phép nhân và phép chia phân thức đại số, '
+            'solution': 'Theo kiến thức trọng tâm của Bài 24: Phép nhân và phép chia phân thức đại số, '
                         '**Phép nhân hai phân thức** được xác định bởi: $\\dfrac{A}{B} \\cdot \\dfrac{C}{D} '
                         '= \\dfrac{A \\cdot C}{B \\cdot D}$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 24: Phép nhân và phép chia phân thức đại số**, nội dung/biểu thức '
-                 '$\\dfrac{A}{B} : \\dfrac{C}{D} = \\dfrac{A}{B} \\cdot \\dfrac{D}{C} = \\dfrac{A \\cdot '
-                 'D}{B \\cdot C} \\quad (C \\neq 0)$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Phép nhân hai phân thức',
-                        'Bậc của đơn thức $a x^m y^n z^p$ ($a \\neq 0$)',
-                        'Phép chia hai phân thức',
-                        'Cộng, trừ hai đơn thức đồng dạng'],
-            'answer': 2,
-            'solution': 'Trong Bài 24: Phép nhân và phép chia phân thức đại số, biểu thức/quy tắc '
+            'q': 'Khi học **Bài 24: Phép nhân và phép chia phân thức đại số**, biểu thức hoặc quy tắc nào '
+                 'dưới đây biểu diễn đúng **Phép chia hai phân thức**?',
+            'options': ['$\\dfrac{A}{B} : \\dfrac{C}{D} = \\dfrac{A}{B} : \\dfrac{D}{C} = \\dfrac{A \\cdot '
+                        'D}{B \\cdot C} \\quad (C \\neq 0)$',
+                        '$\\dfrac{B}{A} : \\dfrac{C}{D} = \\dfrac{A}{B} \\cdot \\dfrac{D}{C} = \\dfrac{A '
+                        '\\cdot D}{B \\cdot C} \\quad (C \\neq 0)$',
                         '$\\dfrac{A}{B} : \\dfrac{C}{D} = \\dfrac{A}{B} \\cdot \\dfrac{D}{C} = \\dfrac{A '
-                        '\\cdot D}{B \\cdot C} \\quad (C \\neq 0)$ chính là nội dung của **Phép chia hai '
-                        'phân thức**.'},
+                        '\\cdot D}{B \\cdot C} \\quad (C \\neq 0)$',
+                        '$\\dfrac{A}{B} : \\dfrac{C}{D} = \\dfrac{A}{B} \\cdot \\dfrac{D}{C} = \\dfrac{A '
+                        '\\cdot D}{B \\cdot C} \\quad (C \\neq 2)$'],
+            'answer': 2,
+            'solution': 'Trong Bài 24: Phép nhân và phép chia phân thức đại số, **Phép chia hai phân thức** '
+                        'có công thức/quy tắc là: $\\dfrac{A}{B} : \\dfrac{C}{D} = \\dfrac{A}{B} \\cdot '
+                        '\\dfrac{D}{C} = \\dfrac{A \\cdot D}{B \\cdot C} \\quad (C \\neq 0)$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Kết quả của phép chia $\\dfrac{x^2 - 4}{x + 1} : \\dfrac{x - 2}{x + 1}$ (với $x \\neq -1, '
@@ -3905,17 +3976,17 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 24: Phép nhân và phép chia phân thức đại số** (Chương VI: Phân thức đại số), '
-                 'khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
+            'q': 'Để nắm vững bản chất của **Bài 24: Phép nhân và phép chia phân thức đại số**, nhận định '
+                 'nào sau đây là **chính xác**?',
             'options': ['Thực hiện được phép nhân và phép chia hai phân thức đại số.',
-                        'Nhận biết được đơn thức nhiều biến, đơn thức thu gọn, hệ số, phần biến và bậc của '
-                        'một đơn thức.',
-                        'Nhận biết được các đơn thức đồng dạng và thực hiện được phép cộng, phép trừ các đơn '
-                        'thức đồng dạng.',
-                        'Nhận biết được đa thức nhiều biến và các hạng tử của đa thức.'],
+                        'Thực hiện được phép nhân và phép chia hai phân thức đại số. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Thực hiện được phép nhân và phép chia hai phân thức đại '
+                        'số.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Thực hiện được phép nhân và '
+                        'phép chia hai phân thức đại số.'],
             'answer': 0,
-            'solution': 'Theo yêu cầu cần đạt của Bài 24: Phép nhân và phép chia phân thức đại số: Thực hiện '
-                        'được phép nhân và phép chia hai phân thức đại số.'},
+            'solution': 'Theo nội dung cốt lõi của Bài 24: Phép nhân và phép chia phân thức đại số: Thực '
+                        'hiện được phép nhân và phép chia hai phân thức đại số.'},
            {'level': 'hieu',
             'type': 'tf4',
             'q': 'Cho biểu thức $P = \\left(\\dfrac{1}{x - 1} + \\dfrac{1}{x + 1}\\right) \\cdot \\dfrac{x^2 '
@@ -3931,37 +4002,35 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 24: Phép nhân và phép '
-                 'chia phân thức đại số**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Thực hiện được phép nhân và phép '
-                           'chia hai phân thức đại số.',
-                           'Quy tắc/công thức **Phép nhân hai phân thức** trong bài được xác định bởi: '
-                           '$\\dfrac{A}{B} \\cdot \\dfrac{C}{D} = \\dfrac{A \\cdot C}{B \\cdot D}$.',
-                           'Trong mọi trường hợp, **Phép nhân hai phân thức** luôn được tính bằng công thức '
-                           '$\\text{Bậc} = m + n + p$ (thuộc Bậc của đơn thức $a x^m y^n z^p$ ($a \\neq 0$)) '
-                           'mà không cần điều kiện của Bài 24: Phép nhân và phép chia phân thức đại số.',
-                           'Với bài toán minh họa: “Thực hiện phép tính: $M = \\dfrac{x^2 - 1}{2x} : '
-                           '\\dfrac{x - 1}{4x^2}$ (với $x \\neq 0, x \\neq 1$).”, lời giải đúng là: Ta có: '
-                           '$M = \\dfrac{(x - 1)(x + 1)}{2x} \\cdot \\dfrac{4x^2}{x - 1} = 2x(x + 1)$.'],
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 24: Phép nhân và phép chia '
+                 'phân thức đại số**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Thực hiện được phép nhân và phép chia '
+                           'hai phân thức đại số.',
+                           'Trong **Bài 24: Phép nhân và phép chia phân thức đại số**, quy tắc/công thức '
+                           '**Phép nhân hai phân thức** được viết là: $\\dfrac{A}{B} \\cdot \\dfrac{C}{D} = '
+                           '\\dfrac{A \\cdot C}{B \\cdot D}$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $\\dfrac{A}{B} : \\dfrac{C}{D} = \\dfrac{A '
+                           '\\cdot C}{B \\cdot D}$ thì kết quả của **Phép nhân hai phân thức** trong **Bài '
+                           '24: Phép nhân và phép chia phân thức đại số** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Thực hiện phép tính: $M = \\dfrac{x^2 - 1}{2x} : \\dfrac{x - '
+                           '1}{4x^2}$ (với $x \\neq 0, x \\neq 1$).”, kết quả giải đúng là: Ta có: $M = '
+                           '\\dfrac{(x - 1)(x + 1)}{2x} \\cdot \\dfrac{4x^2}{x - 1} = 2x(x + 1)$.'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 24: Phép nhân và phép chia phân thức đại '
-                        'số. b) **Đúng** theo công thức trọng tâm **Phép nhân hai phân thức** '
-                        '($\\dfrac{A}{B} \\cdot \\dfrac{C}{D} = \\dfrac{A \\cdot C}{B \\cdot D}$). c) '
-                        '**Sai** vì $\\text{Bậc} = m + n + p$ là công thức của nội dung khác, không phải quy '
-                        'tắc chung của **Phép nhân hai phân thức**. d) **Đúng** theo lời giải ví dụ minh họa '
-                        'trong bài học.'},
+                        'số. b) **Đúng** theo công thức **Phép nhân hai phân thức** ($\\dfrac{A}{B} \\cdot '
+                        '\\dfrac{C}{D} = \\dfrac{A \\cdot C}{B \\cdot D}$). c) **Sai** vì công thức đúng của '
+                        '**Phép nhân hai phân thức** phải là $\\dfrac{A}{B} \\cdot \\dfrac{C}{D} = \\dfrac{A '
+                        '\\cdot C}{B \\cdot D}$ chứ không phải $\\dfrac{A}{B} : \\dfrac{C}{D} = \\dfrac{A '
+                        '\\cdot C}{B \\cdot D}$. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 24: Phép nhân và phép chia phân thức đại số** để giải quyết tình '
-                 'huống sau: Thực hiện phép tính: $M = \\dfrac{x^2 - 1}{2x} : \\dfrac{x - 1}{4x^2}$ (với $x '
-                 '\\neq 0, x \\neq 1$). Kết quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Ta có: $A = (-2 \\cdot 3)(x^2 \\cdot x)(y \\cdot y^3) = -6x^3y^4$. Hệ số là $-6$, '
-                        'phần biến là $x^3y^4$, bậc của đơn thức là $3 + 4 = 7$.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 24: Phép nhân và phép chia phân thức đại số** để '
+                 'giải bài toán sau: Thực hiện phép tính: $M = \\dfrac{x^2 - 1}{2x} : \\dfrac{x - 1}{4x^2}$ '
+                 '(với $x \\neq 0, x \\neq 1$). Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Ta có: $M = \\dfrac{(x - 1)(x - 1)}{2x} \\cdot \\dfrac{4x^2}{x - 1} = 2x(x + 1)$.',
                         'Ta có: $M = \\dfrac{(x - 1)(x + 1)}{2x} \\cdot \\dfrac{4x^2}{x - 1} = 2x(x + 1)$.',
-                        'Nhóm các hạng tử đồng dạng: $P = (2x^2y - 2x^2y) + 5x^2y^2 + (-3xy + 4xy) - 1 = '
-                        '5x^2y^2 + xy - 1$. Các hạng tử của dạng thu gọn có bậc lần lượt là $4; 2; 0$...',
-                        '- $M + N = (3x^2 + x^2) + (-2xy + 2xy) + (y^2 - 3y^2) = 4x^2 - 2y^2$. - $M - N = '
-                        '(3x^2 - x^2) + (-2xy - 2xy) + (y^2 + 3y^2) = 2x^2 - 4xy + 4y^2$.'],
+                        'Ta có: $M = \\dfrac{2x}{(x - 1)(x + 1)} \\cdot \\dfrac{4x^2}{x - 1} = 2x(x + 1)$.',
+                        'Ta có: $M = \\dfrac{(x - 2)(x + 1)}{2x} \\cdot \\dfrac{4x^2}{x - 1} = 2x(x + 1)$.'],
             'answer': 1,
             'solution': 'Lời giải chi tiết theo Bài 24: Phép nhân và phép chia phân thức đại số: Ta có: $M = '
                         '\\dfrac{(x - 1)(x + 1)}{2x} \\cdot \\dfrac{4x^2}{x - 1} = 2x(x + 1)$.'},
@@ -3986,8 +4055,8 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
                    'ẩn $ax + b = 0$ ($a \\neq 0$).',
                    'Giải được phương trình bậc nhất một ẩn và các phương trình đưa được về dạng phương trình '
                    'bậc nhất một ẩn.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Dạng tổng quát** ($ax + b = 0 \\quad (a '
-                   '\\neq 0)$) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 25: Phương trình bậc nhất một ẩn** để giải bài tập minh họa '
+                   'và bài toán thực tiễn.'],
   'definition': 'Phương trình dạng $ax + b = 0$, với $a$ và $b$ là hai số đã cho và $a \\neq 0$, được gọi là '
                 'phương trình bậc nhất một ẩn $x$. Phương trình bậc nhất $ax + b = 0$ ($a \\neq 0$) luôn có '
                 'một nghiệm duy nhất $x = -\\dfrac{b}{a}$.',
@@ -4029,26 +4098,26 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 25: Phương trình bậc nhất một ẩn**, công thức hoặc quy '
-                 'tắc nào sau đây biểu diễn đúng **Dạng tổng quát**?',
-            'options': ['$x = -\\dfrac{b}{a}$',
-                        '$A(x) + B(x) = C(x) \\Leftrightarrow A(x) = C(x) - B(x)$',
+            'q': 'Trong **Bài 25: Phương trình bậc nhất một ẩn**, quy tắc hoặc công thức nào sau đây xác '
+                 'định đúng **Dạng tổng quát**?',
+            'options': ['$ax - b = 0 \\quad (a \\neq 0)$',
+                        '$ax + b = 0 \\quad (a \\neq 1)$',
                         '$ax + b = 0 \\quad (a \\neq 0)$',
-                        '$\\text{Bậc} = m + n + p$'],
+                        '$ax + b = 2 \\quad (a \\neq 0)$'],
             'answer': 2,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 25: Phương trình bậc nhất một ẩn, **Dạng tổng '
+            'solution': 'Theo kiến thức trọng tâm của Bài 25: Phương trình bậc nhất một ẩn, **Dạng tổng '
                         'quát** được xác định bởi: $ax + b = 0 \\quad (a \\neq 0)$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 25: Phương trình bậc nhất một ẩn**, nội dung/biểu thức $x = -\\dfrac{b}{a}$ là '
-                 'quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Dạng tổng quát',
-                        'Quy tắc biến đổi tương đương',
-                        'Bậc của đơn thức $a x^m y^n z^p$ ($a \\neq 0$)',
-                        'Nghiệm duy nhất'],
+            'q': 'Khi học **Bài 25: Phương trình bậc nhất một ẩn**, biểu thức hoặc quy tắc nào dưới đây biểu '
+                 'diễn đúng **Nghiệm duy nhất**?',
+            'options': ['$x = -\\dfrac{b}{a}$ (với dấu ngược lại)',
+                        '$x = -\\dfrac{a}{b}$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $x = -\\dfrac{b}{a}$',
+                        '$x = -\\dfrac{b}{a}$'],
             'answer': 3,
-            'solution': 'Trong Bài 25: Phương trình bậc nhất một ẩn, biểu thức/quy tắc $x = -\\dfrac{b}{a}$ '
-                        'chính là nội dung của **Nghiệm duy nhất**.'},
+            'solution': 'Trong Bài 25: Phương trình bậc nhất một ẩn, **Nghiệm duy nhất** có công thức/quy '
+                        'tắc là: $x = -\\dfrac{b}{a}$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Nghiệm của phương trình $5x - 3 = 2x + 9$ là:',
@@ -4059,18 +4128,18 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 25: Phương trình bậc nhất một ẩn** (Chương VII: Phương trình bậc nhất và hàm '
-                 'số bậc nhất), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến '
-                 'thức của bài?',
-            'options': ['Nhận biết được đơn thức nhiều biến, đơn thức thu gọn, hệ số, phần biến và bậc của '
-                        'một đơn thức.',
+            'q': 'Để nắm vững bản chất của **Bài 25: Phương trình bậc nhất một ẩn**, nhận định nào sau đây '
+                 'là **chính xác**?',
+            'options': ['Nhận biết được phương trình một ẩn, nghiệm của phương trình và phương trình bậc '
+                        'nhất một ẩn $ax - b = 0$ ($a \\neq 0$).',
                         'Nhận biết được phương trình một ẩn, nghiệm của phương trình và phương trình bậc '
                         'nhất một ẩn $ax + b = 0$ ($a \\neq 0$).',
-                        'Nhận biết được các đơn thức đồng dạng và thực hiện được phép cộng, phép trừ các đơn '
-                        'thức đồng dạng.',
-                        'Nhận biết được đa thức nhiều biến và các hạng tử của đa thức.'],
+                        'Nhận biết được phương trình một ẩn, nghiệm của phương trình và phương trình bậc '
+                        'nhất một ẩn $ax + b = 0$ ($a \\neq 1$).',
+                        'Nhận biết được phương trình một ẩn, nghiệm của phương trình và phương trình bậc '
+                        'nhất một ẩn $ax + b = 2$ ($a \\neq 0$).'],
             'answer': 1,
-            'solution': 'Theo yêu cầu cần đạt của Bài 25: Phương trình bậc nhất một ẩn: Nhận biết được '
+            'solution': 'Theo nội dung cốt lõi của Bài 25: Phương trình bậc nhất một ẩn: Nhận biết được '
                         'phương trình một ẩn, nghiệm của phương trình và phương trình bậc nhất một ẩn $ax + '
                         'b = 0$ ($a \\neq 0$).'},
            {'level': 'hieu',
@@ -4086,39 +4155,42 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 25: Phương trình bậc '
-                 'nhất một ẩn**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được phương trình một '
-                           'ẩn, nghiệm của phương trình và phương trình bậc nhất một ẩn $ax + b = 0$ ($a '
-                           '\\neq 0$).',
-                           'Quy tắc/công thức **Dạng tổng quát** trong bài được xác định bởi: $ax + b = 0 '
-                           '\\quad (a \\neq 0)$.',
-                           'Trong mọi trường hợp, **Dạng tổng quát** luôn được tính bằng công thức '
-                           '$\\text{Bậc} = m + n + p$ (thuộc Bậc của đơn thức $a x^m y^n z^p$ ($a \\neq 0$)) '
-                           'mà không cần điều kiện của Bài 25: Phương trình bậc nhất một ẩn.',
-                           'Với bài toán minh họa: “Giải phương trình: $3(x - 1) - (x - 5) = 10$.”, lời giải '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 25: Phương trình bậc nhất '
+                 'một ẩn**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết được phương trình một ẩn, '
+                           'nghiệm của phương trình và phương trình bậc nhất một ẩn $ax + b = 0$ ($a \\neq '
+                           '0$).',
+                           'Trong **Bài 25: Phương trình bậc nhất một ẩn**, quy tắc/công thức **Dạng tổng '
+                           'quát** được viết là: $ax + b = 0 \\quad (a \\neq 0)$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $ax - b = 0 \\quad (a \\neq 0)$ thì kết quả '
+                           'của **Dạng tổng quát** trong **Bài 25: Phương trình bậc nhất một ẩn** vẫn không '
+                           'thay đổi.',
+                           'Xét ví dụ của bài: “Giải phương trình: $3(x - 1) - (x - 5) = 10$.”, kết quả giải '
                            'đúng là: Khai triển và thu gọn: $3x - 3 - x + 5 = 10 \\Leftrightarrow 2x + 2 = '
-                           '10 \\Leftrightarrow 2x = 8 \\Leftrightarrow x = 4$. Vậy phương trình có n...'],
+                           '10 \\Leftrightarrow 2x = 8 \\Leftrightarrow x = 4$. Vậy phương trình...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 25: Phương trình bậc nhất một ẩn. b) '
-                        '**Đúng** theo công thức trọng tâm **Dạng tổng quát** ($ax + b = 0 \\quad (a \\neq '
-                        '0)$). c) **Sai** vì $\\text{Bậc} = m + n + p$ là công thức của nội dung khác, không '
-                        'phải quy tắc chung của **Dạng tổng quát**. d) **Đúng** theo lời giải ví dụ minh họa '
-                        'trong bài học.'},
+                        '**Đúng** theo công thức **Dạng tổng quát** ($ax + b = 0 \\quad (a \\neq 0)$). c) '
+                        '**Sai** vì công thức đúng của **Dạng tổng quát** phải là $ax + b = 0 \\quad (a '
+                        '\\neq 0)$ chứ không phải $ax - b = 0 \\quad (a \\neq 0)$. d) **Đúng** theo lời giải '
+                        'ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 25: Phương trình bậc nhất một ẩn** để giải quyết tình huống sau: '
-                 'Giải phương trình: $3(x - 1) - (x - 5) = 10$. Kết quả và hướng giải nào dưới đây là '
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 25: Phương trình bậc nhất một ẩn** để giải bài toán '
+                 'sau: Giải phương trình: $3(x - 1) - (x - 5) = 10$. Cách giải và kết quả nào dưới đây là '
                  '**đúng**?',
-            'options': ['Ta có: $A = (-2 \\cdot 3)(x^2 \\cdot x)(y \\cdot y^3) = -6x^3y^4$. Hệ số là $-6$, '
-                        'phần biến là $x^3y^4$, bậc của đơn thức là $3 + 4 = 7$.',
-                        'Nhóm các hạng tử đồng dạng: $P = (2x^2y - 2x^2y) + 5x^2y^2 + (-3xy + 4xy) - 1 = '
-                        '5x^2y^2 + xy - 1$. Các hạng tử của dạng thu gọn có bậc lần lượt là $4; 2; 0$...',
+            'options': ['Khai triển và thu gọn: $3x - 3 - x - 5 = 10 \\Leftrightarrow 2x + 2 = 10 '
+                        '\\Leftrightarrow 2x = 8 \\Leftrightarrow x = 4$. Vậy phương trình có nghiệm là $x = '
+                        '4$...',
+                        'Khai triển và thu gọn: $3x - 3 - x + 5 = 10 \\Leftrightarrow 2x + 2 = 10 '
+                        '\\Leftrightarrow 2x = 8 \\Leftrightarrow x = 4$. Vậy phương trình có nghiệm là $x = '
+                        '3$...',
                         'Khai triển và thu gọn: $3x - 3 - x + 5 = 10 \\Leftrightarrow 2x + 2 = 10 '
                         '\\Leftrightarrow 2x = 8 \\Leftrightarrow x = 4$. Vậy phương trình có nghiệm là $x = '
                         '4$...',
-                        '- $M + N = (3x^2 + x^2) + (-2xy + 2xy) + (y^2 - 3y^2) = 4x^2 - 2y^2$. - $M - N = '
-                        '(3x^2 - x^2) + (-2xy - 2xy) + (y^2 + 3y^2) = 2x^2 - 4xy + 4y^2$.'],
+                        'Khai triển và thu gọn: $3x - 6 - x + 5 = 10 \\Leftrightarrow 2x + 2 = 10 '
+                        '\\Leftrightarrow 2x = 8 \\Leftrightarrow x = 4$. Vậy phương trình có nghiệm là $x = '
+                        '4$...'],
             'answer': 2,
             'solution': 'Lời giải chi tiết theo Bài 25: Phương trình bậc nhất một ẩn: Khai triển và thu '
                         'gọn:\n'
@@ -4145,8 +4217,8 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
   'requirements': ['Nắm vững ba bước giải bài toán bằng cách lập phương trình bậc nhất một ẩn.',
                    'Giải quyết được các bài toán thực tiễn (chuyển động, năng suất, toán có nội dung hình '
                    'học, phần trăm) bằng cách lập phương trình.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Toán chuyển động** ($s = v \\cdot t '
-                   '\\Rightarrow t = \\dfrac{s}{v}; \\quad v = \\dfrac{s}{t}$) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 26: Giải bài toán bằng cách lập phương trình** để giải bài '
+                   'tập minh họa và bài toán thực tiễn.'],
   'definition': 'Giải bài toán bằng cách lập phương trình gồm 3 bước: Bước 1 (Lập phương trình: chọn ẩn và '
                 'đặt điều kiện, biểu diễn các đại lượng chưa biết theo ẩn và lập phương trình); Bước 2 (Giải '
                 'phương trình); Bước 3 (Kiểm tra điều kiện và kết luận).',
@@ -4198,29 +4270,31 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 26: Giải bài toán bằng cách lập phương trình**, công '
-                 'thức hoặc quy tắc nào sau đây biểu diễn đúng **Toán chuyển động**?',
-            'options': ['$A = N \\cdot t$ ($A$: tổng sản phẩm, $N$: năng suất mỗi ngày/giờ, $t$: thời gian)',
-                        '$\\text{Giá sau giảm} = \\text{Giá niêm yết} \\cdot (1 - p\\%)$',
-                        '$\\text{Bậc} = m + n + p$',
+            'q': 'Trong **Bài 26: Giải bài toán bằng cách lập phương trình**, quy tắc hoặc công thức nào sau '
+                 'đây xác định đúng **Toán chuyển động**?',
+            'options': ['$s = v : t \\Rightarrow t = \\dfrac{s}{v}; \\quad v = \\dfrac{s}{t}$',
+                        '$s = v \\cdot t \\Rightarrow t = \\dfrac{v}{s}; \\quad v = \\dfrac{s}{t}$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $s = v \\cdot t \\Rightarrow t '
+                        '= \\dfrac{s}{v}; \\quad v = \\dfrac{s}{t}$',
                         '$s = v \\cdot t \\Rightarrow t = \\dfrac{s}{v}; \\quad v = \\dfrac{s}{t}$'],
             'answer': 3,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 26: Giải bài toán bằng cách lập phương trình, '
+            'solution': 'Theo kiến thức trọng tâm của Bài 26: Giải bài toán bằng cách lập phương trình, '
                         '**Toán chuyển động** được xác định bởi: $s = v \\cdot t \\Rightarrow t = '
                         '\\dfrac{s}{v}; \\quad v = \\dfrac{s}{t}$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 26: Giải bài toán bằng cách lập phương trình**, nội dung/biểu thức $A = N '
-                 '\\cdot t$ ($A$: tổng sản phẩm, $N$: năng suất mỗi ngày/giờ, $t$: thời gian) là quy tắc '
-                 'hoặc công thức của mục nào sau đây?',
-            'options': ['Toán năng suất',
-                        'Toán chuyển động',
-                        'Toán giảm giá $p\\%$',
-                        'Bậc của đơn thức $a x^m y^n z^p$ ($a \\neq 0$)'],
+            'q': 'Khi học **Bài 26: Giải bài toán bằng cách lập phương trình**, biểu thức hoặc quy tắc nào '
+                 'dưới đây biểu diễn đúng **Toán năng suất**?',
+            'options': ['$A = N \\cdot t$ ($A$: tổng sản phẩm, $N$: năng suất mỗi ngày/giờ, $t$: thời gian)',
+                        '$A = N : t$ ($A$: tổng sản phẩm, $N$: năng suất mỗi ngày/giờ, $t$: thời gian)',
+                        'Đảo ngược vế của quy tắc: $A = N \\cdot t$ ($A$: tổng sản phẩm, $N$: năng suất mỗi '
+                        'ngày/giờ, $t$: thời gian)',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $A = N \\cdot t$ ($A$: tổng sản '
+                        'phẩm, $N$: năng suất mỗi ngày/giờ, $t$: thời gian)'],
             'answer': 0,
-            'solution': 'Trong Bài 26: Giải bài toán bằng cách lập phương trình, biểu thức/quy tắc $A = N '
-                        '\\cdot t$ ($A$: tổng sản phẩm, $N$: năng suất mỗi ngày/giờ, $t$: thời gian) chính '
-                        'là nội dung của **Toán năng suất**.'},
+            'solution': 'Trong Bài 26: Giải bài toán bằng cách lập phương trình, **Toán năng suất** có công '
+                        'thức/quy tắc là: $A = N \\cdot t$ ($A$: tổng sản phẩm, $N$: năng suất mỗi ngày/giờ, '
+                        '$t$: thời gian).'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Một hình chữ nhật có chiều dài hơn chiều rộng $6\\text{ m}$ và chu vi bằng $40\\text{ m}$. '
@@ -4235,18 +4309,18 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 26: Giải bài toán bằng cách lập phương trình** (Chương VII: Phương trình bậc '
-                 'nhất và hàm số bậc nhất), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản '
-                 'chất kiến thức của bài?',
-            'options': ['Nhận biết được đơn thức nhiều biến, đơn thức thu gọn, hệ số, phần biến và bậc của '
-                        'một đơn thức.',
-                        'Nhận biết được các đơn thức đồng dạng và thực hiện được phép cộng, phép trừ các đơn '
-                        'thức đồng dạng.',
+            'q': 'Để nắm vững bản chất của **Bài 26: Giải bài toán bằng cách lập phương trình**, nhận định '
+                 'nào sau đây là **chính xác**?',
+            'options': ['Nắm vững ba bước giải bài toán bằng cách lập phương trình bậc nhất một ẩn. (với dấu '
+                        'ngược lại)',
+                        'Đảo ngược vế của quy tắc: Nắm vững ba bước giải bài toán bằng cách lập phương trình '
+                        'bậc nhất một ẩn.',
                         'Nắm vững ba bước giải bài toán bằng cách lập phương trình bậc nhất một ẩn.',
-                        'Nhận biết được đa thức nhiều biến và các hạng tử của đa thức.'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nắm vững ba bước giải bài toán '
+                        'bằng cách lập phương trình bậc nhất một ẩn.'],
             'answer': 2,
-            'solution': 'Theo yêu cầu cần đạt của Bài 26: Giải bài toán bằng cách lập phương trình: Nắm vững '
-                        'ba bước giải bài toán bằng cách lập phương trình bậc nhất một ẩn.'},
+            'solution': 'Theo nội dung cốt lõi của Bài 26: Giải bài toán bằng cách lập phương trình: Nắm '
+                        'vững ba bước giải bài toán bằng cách lập phương trình bậc nhất một ẩn.'},
            {'level': 'hieu',
             'type': 'tf4',
             'q': 'Một xưởng may theo kế hoạch mỗi ngày phải may $30$ bộ quần áo. Nhờ cải tiến kĩ thuật, thực '
@@ -4264,41 +4338,43 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 26: Giải bài toán bằng '
-                 'cách lập phương trình**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nắm vững ba bước giải bài toán '
-                           'bằng cách lập phương trình bậc nhất một ẩn.',
-                           'Quy tắc/công thức **Toán chuyển động** trong bài được xác định bởi: $s = v '
-                           '\\cdot t \\Rightarrow t = \\dfrac{s}{v}; \\quad v = \\dfrac{s}{t}$.',
-                           'Trong mọi trường hợp, **Toán chuyển động** luôn được tính bằng công thức '
-                           '$\\text{Bậc} = m + n + p$ (thuộc Bậc của đơn thức $a x^m y^n z^p$ ($a \\neq 0$)) '
-                           'mà không cần điều kiện của Bài 26: Giải bài toán bằng cách lập phương trình.',
-                           'Với bài toán minh họa: “Một ô tô đi từ $A$ đến $B$ với vận tốc $50\\text{ km/h}$ '
-                           'rồi quay về từ $B$ đến $A$ với vận tốc $40\\text{ km/h}$. Tổng thời gian cả đi '
-                           'và về...”, lời giải đúng là: Gọi độ dài quãng đường $AB$ là $x\\text{ (km)}$ ($x '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 26: Giải bài toán bằng cách '
+                 'lập phương trình**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nắm vững ba bước giải bài toán bằng cách '
+                           'lập phương trình bậc nhất một ẩn.',
+                           'Trong **Bài 26: Giải bài toán bằng cách lập phương trình**, quy tắc/công thức '
+                           '**Toán chuyển động** được viết là: $s = v \\cdot t \\Rightarrow t = '
+                           '\\dfrac{s}{v}; \\quad v = \\dfrac{s}{t}$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $s = v : t \\Rightarrow t = \\dfrac{s}{v}; '
+                           '\\quad v = \\dfrac{s}{t}$ thì kết quả của **Toán chuyển động** trong **Bài 26: '
+                           'Giải bài toán bằng cách lập phương trình** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Một ô tô đi từ $A$ đến $B$ với vận tốc $50\\text{ km/h}$ rồi '
+                           'quay về từ $B$ đến $A$ với vận tốc $40\\text{ km/h}$. Tổng thời gian cả đi '
+                           'v...”, kết quả giải đúng là: Gọi độ dài quãng đường $AB$ là $x\\text{ (km)}$ ($x '
                            '> 0$). Thời gian đi là $\\dfrac{x}{50}$ (giờ), thời gian về là $\\dfrac{x}{40}$ '
-                           '(giờ). Theo...'],
+                           '(giờ)....'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 26: Giải bài toán bằng cách lập phương '
-                        'trình. b) **Đúng** theo công thức trọng tâm **Toán chuyển động** ($s = v \\cdot t '
-                        '\\Rightarrow t = \\dfrac{s}{v}; \\quad v = \\dfrac{s}{t}$). c) **Sai** vì '
-                        '$\\text{Bậc} = m + n + p$ là công thức của nội dung khác, không phải quy tắc chung '
-                        'của **Toán chuyển động**. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        'trình. b) **Đúng** theo công thức **Toán chuyển động** ($s = v \\cdot t '
+                        '\\Rightarrow t = \\dfrac{s}{v}; \\quad v = \\dfrac{s}{t}$). c) **Sai** vì công thức '
+                        'đúng của **Toán chuyển động** phải là $s = v \\cdot t \\Rightarrow t = '
+                        '\\dfrac{s}{v}; \\quad v = \\dfrac{s}{t}$ chứ không phải $s = v : t \\Rightarrow t = '
+                        '\\dfrac{s}{v}; \\quad v = \\dfrac{s}{t}$. d) **Đúng** theo lời giải ví dụ minh họa '
+                        'trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 26: Giải bài toán bằng cách lập phương trình** để giải quyết tình '
-                 'huống sau: Một ô tô đi từ $A$ đến $B$ với vận tốc $50\\text{ km/h}$ rồi quay về từ $B$ đến '
-                 '$A$ với vận tốc $40\\text{ km/h}$. Tổng thời gian cả đi và về là $4,5$ giờ. Tính độ dài '
-                 'quãng đường $AB$. Kết quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Ta có: $A = (-2 \\cdot 3)(x^2 \\cdot x)(y \\cdot y^3) = -6x^3y^4$. Hệ số là $-6$, '
-                        'phần biến là $x^3y^4$, bậc của đơn thức là $3 + 4 = 7$.',
-                        'Nhóm các hạng tử đồng dạng: $P = (2x^2y - 2x^2y) + 5x^2y^2 + (-3xy + 4xy) - 1 = '
-                        '5x^2y^2 + xy - 1$. Các hạng tử của dạng thu gọn có bậc lần lượt là $4; 2; 0$...',
-                        '- $M + N = (3x^2 + x^2) + (-2xy + 2xy) + (y^2 - 3y^2) = 4x^2 - 2y^2$. - $M - N = '
-                        '(3x^2 - x^2) + (-2xy - 2xy) + (y^2 + 3y^2) = 2x^2 - 4xy + 4y^2$.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 26: Giải bài toán bằng cách lập phương trình** để '
+                 'giải bài toán sau: Một ô tô đi từ $A$ đến $B$ với vận tốc $50\\text{ km/h}$ rồi quay về từ '
+                 '$B$ đến $A$ với vận tốc $40\\text{ km/h}$. Tổng thời gian cả đi và về là $4,5$ giờ. Tính '
+                 'độ dài quãng đường $AB$. Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Gọi độ dài quãng đường $AB$ là $x\\text{ (km)}$ ($x < 0$). Thời gian đi là '
+                        '$\\dfrac{x}{50}$ (giờ), thời gian về là $\\dfrac{x}{40}$ (giờ). Theo đề bài ta...',
                         'Gọi độ dài quãng đường $AB$ là $x\\text{ (km)}$ ($x > 0$). Thời gian đi là '
-                        '$\\dfrac{x}{50}$ (giờ), thời gian về là $\\dfrac{x}{40}$ (giờ). Theo đề bài ta có '
-                        'p...'],
+                        '$\\dfrac{50}{x}$ (giờ), thời gian về là $\\dfrac{x}{40}$ (giờ). Theo đề bài ta...',
+                        'Gọi độ dài quãng đường $AB$ là $x\\text{ (km)}$ ($x > 2$). Thời gian đi là '
+                        '$\\dfrac{x}{50}$ (giờ), thời gian về là $\\dfrac{x}{40}$ (giờ). Theo đề bài ta...',
+                        'Gọi độ dài quãng đường $AB$ là $x\\text{ (km)}$ ($x > 0$). Thời gian đi là '
+                        '$\\dfrac{x}{50}$ (giờ), thời gian về là $\\dfrac{x}{40}$ (giờ). Theo đề bài ta...'],
             'answer': 3,
             'solution': 'Lời giải chi tiết theo Bài 26: Giải bài toán bằng cách lập phương trình: Gọi độ dài '
                         'quãng đường $AB$ là $x\\text{ (km)}$ ($x > 0$).\n'
@@ -4375,26 +4451,26 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 27: Khái niệm hàm số và đồ thị của hàm số**, công thức '
-                 'hoặc quy tắc nào sau đây biểu diễn đúng **Giá trị hàm số $y = f(x)$ tại $x = x_0$**?',
+            'q': 'Trong **Bài 27: Khái niệm hàm số và đồ thị của hàm số**, quy tắc hoặc công thức nào sau '
+                 'đây xác định đúng **Giá trị hàm số $y = f(x)$ tại $x = x_0$**?',
             'options': ['$y_0 = f(x_0)$',
-                        '$M(x_0; 0)$ (tung độ bằng $0$)',
-                        '$N(0; y_0)$ (hoành độ bằng $0$)',
-                        '$\\text{Bậc} = m + n + p$'],
+                        '$y_0 = f(x_0)$ (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: $y_0 = f(x_0)$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $y_0 = f(x_0)$'],
             'answer': 0,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 27: Khái niệm hàm số và đồ thị của hàm số, '
-                        '**Giá trị hàm số $y = f(x)$ tại $x = x_0$** được xác định bởi: $y_0 = f(x_0)$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 27: Khái niệm hàm số và đồ thị của hàm số, **Giá '
+                        'trị hàm số $y = f(x)$ tại $x = x_0$** được xác định bởi: $y_0 = f(x_0)$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 27: Khái niệm hàm số và đồ thị của hàm số**, nội dung/biểu thức $M(x_0; 0)$ '
-                 '(tung độ bằng $0$) là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Giá trị hàm số $y = f(x)$ tại $x = x_0$',
-                        'Điểm thuộc trục hoành $Ox$',
-                        'Điểm thuộc trục tung $Oy$',
-                        'Điểm $M(x_0; y_0)$ thuộc đồ thị $y = f(x)$'],
+            'q': 'Khi học **Bài 27: Khái niệm hàm số và đồ thị của hàm số**, biểu thức hoặc quy tắc nào dưới '
+                 'đây biểu diễn đúng **Điểm thuộc trục hoành $Ox$**?',
+            'options': ['$M(x_0; 1)$ (tung độ bằng $0$)',
+                        '$M(x_0; 0)$ (tung độ bằng $0$)',
+                        '$M(x_0; 0)$ (tung độ bằng $1$)',
+                        '$M(x_0; 2)$ (tung độ bằng $0$)'],
             'answer': 1,
-            'solution': 'Trong Bài 27: Khái niệm hàm số và đồ thị của hàm số, biểu thức/quy tắc $M(x_0; 0)$ '
-                        '(tung độ bằng $0$) chính là nội dung của **Điểm thuộc trục hoành $Ox$**.'},
+            'solution': 'Trong Bài 27: Khái niệm hàm số và đồ thị của hàm số, **Điểm thuộc trục hoành $Ox$** '
+                        'có công thức/quy tắc là: $M(x_0; 0)$ (tung độ bằng $0$).'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Điểm nào sau đây thuộc đồ thị của hàm số $y = -2x + 3$?',
@@ -4406,18 +4482,19 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 27: Khái niệm hàm số và đồ thị của hàm số** (Chương VII: Phương trình bậc '
-                 'nhất và hàm số bậc nhất), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản '
-                 'chất kiến thức của bài?',
-            'options': ['Nhận biết được đơn thức nhiều biến, đơn thức thu gọn, hệ số, phần biến và bậc của '
-                        'một đơn thức.',
-                        'Nhận biết được các đơn thức đồng dạng và thực hiện được phép cộng, phép trừ các đơn '
-                        'thức đồng dạng.',
-                        'Nhận biết được đa thức nhiều biến và các hạng tử của đa thức.',
+            'q': 'Để nắm vững bản chất của **Bài 27: Khái niệm hàm số và đồ thị của hàm số**, nhận định nào '
+                 'sau đây là **chính xác**?',
+            'options': ['Nhận biết được những mô hình thực tế dẫn đến khái niệm hàm số và tính được giá trị '
+                        'của hàm số tại giá trị cho trước của biến. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Nhận biết được những mô hình thực tế dẫn đến khái niệm '
+                        'hàm số và tính được giá trị của hàm số tại giá trị cho trước của biến.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nhận biết được những mô hình '
+                        'thực tế dẫn đến khái niệm hàm số và tính được giá trị của hàm số tại giá trị cho '
+                        'trước của biến.',
                         'Nhận biết được những mô hình thực tế dẫn đến khái niệm hàm số và tính được giá trị '
                         'của hàm số tại giá trị cho trước của biến.'],
             'answer': 3,
-            'solution': 'Theo yêu cầu cần đạt của Bài 27: Khái niệm hàm số và đồ thị của hàm số: Nhận biết '
+            'solution': 'Theo nội dung cốt lõi của Bài 27: Khái niệm hàm số và đồ thị của hàm số: Nhận biết '
                         'được những mô hình thực tế dẫn đến khái niệm hàm số và tính được giá trị của hàm số '
                         'tại giá trị cho trước của biến.'},
            {'level': 'hieu',
@@ -4434,40 +4511,39 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 27: Khái niệm hàm số và '
-                 'đồ thị của hàm số**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được những mô hình thực '
-                           'tế dẫn đến khái niệm hàm số và tính được giá trị của hàm số tại giá trị cho '
-                           'trước của biến.',
-                           'Quy tắc/công thức **Giá trị hàm số $y = f(x)$ tại $x = x_0$** trong bài được xác '
-                           'định bởi: $y_0 = f(x_0)$.',
-                           'Trong mọi trường hợp, **Giá trị hàm số $y = f(x)$ tại $x = x_0$** luôn được tính '
-                           'bằng công thức $\\text{Bậc} = m + n + p$ (thuộc Bậc của đơn thức $a x^m y^n z^p$ '
-                           '($a \\neq 0$)) mà không cần điều kiện của Bài 27: Khái niệm hàm số và đồ thị của '
-                           'hàm số.',
-                           'Với bài toán minh họa: “Cho hàm số $y = f(x) = 2x^2 - 1$. Tính $f(0), f(-2)$ và '
-                           'kiểm tra điểm $A(2; 7)$ có thuộc đồ thị hàm số không.”, lời giải đúng là: - Ta '
-                           'có $f(0) = 2 \\cdot 0^2 - 1 = -1$; $f(-2) = 2 \\cdot (-2)^2 - 1 = 7$. - Vì $f(2) '
-                           '= 2 \\cdot 2^2 - 1 = 7 = y_A$ nên điểm $A(2; 7)$ thuộc đồ...'],
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 27: Khái niệm hàm số và đồ '
+                 'thị của hàm số**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết được những mô hình thực tế dẫn '
+                           'đến khái niệm hàm số và tính được giá trị của hàm số tại giá trị cho trước của '
+                           'biến.',
+                           'Trong **Bài 27: Khái niệm hàm số và đồ thị của hàm số**, quy tắc/công thức **Giá '
+                           'trị hàm số $y = f(x)$ tại $x = x_0$** được viết là: $y_0 = f(x_0)$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $y_0 = f(x_0)$ (với dấu ngược lại) thì kết '
+                           'quả của **Giá trị hàm số $y = f(x)$ tại $x = x_0$** trong **Bài 27: Khái niệm '
+                           'hàm số và đồ thị của hàm số** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Cho hàm số $y = f(x) = 2x^2 - 1$. Tính $f(0), f(-2)$ và kiểm '
+                           'tra điểm $A(2; 7)$ có thuộc đồ thị hàm số không.”, kết quả giải đúng là: - Ta có '
+                           '$f(0) = 2 \\cdot 0^2 - 1 = -1$; $f(-2) = 2 \\cdot (-2)^2 - 1 = 7$. - Vì $f(2) = '
+                           '2 \\cdot 2^2 - 1 = 7 = y_A$ nên điểm $A(2; 7)$ thu...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 27: Khái niệm hàm số và đồ thị của hàm số. '
-                        'b) **Đúng** theo công thức trọng tâm **Giá trị hàm số $y = f(x)$ tại $x = x_0$** '
-                        '($y_0 = f(x_0)$). c) **Sai** vì $\\text{Bậc} = m + n + p$ là công thức của nội dung '
-                        'khác, không phải quy tắc chung của **Giá trị hàm số $y = f(x)$ tại $x = x_0$**. d) '
+                        'b) **Đúng** theo công thức **Giá trị hàm số $y = f(x)$ tại $x = x_0$** ($y_0 = '
+                        'f(x_0)$). c) **Sai** vì công thức đúng của **Giá trị hàm số $y = f(x)$ tại $x = '
+                        'x_0$** phải là $y_0 = f(x_0)$ chứ không phải $y_0 = f(x_0)$ (với dấu ngược lại). d) '
                         '**Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 27: Khái niệm hàm số và đồ thị của hàm số** để giải quyết tình '
-                 'huống sau: Cho hàm số $y = f(x) = 2x^2 - 1$. Tính $f(0), f(-2)$ và kiểm tra điểm $A(2; 7)$ '
-                 'có thuộc đồ thị hàm số không. Kết quả và hướng giải nào dưới đây là **đúng**?',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 27: Khái niệm hàm số và đồ thị của hàm số** để giải '
+                 'bài toán sau: Cho hàm số $y = f(x) = 2x^2 - 1$. Tính $f(0), f(-2)$ và kiểm tra điểm $A(2; '
+                 '7)$ có thuộc đồ thị hàm số không. Cách giải và kết quả nào dưới đây là **đúng**?',
             'options': ['- Ta có $f(0) = 2 \\cdot 0^2 - 1 = -1$; $f(-2) = 2 \\cdot (-2)^2 - 1 = 7$. - Vì '
-                        '$f(2) = 2 \\cdot 2^2 - 1 = 7 = y_A$ nên điểm $A(2; 7)$ thuộc đồ thị của hàm số...',
-                        'Ta có: $A = (-2 \\cdot 3)(x^2 \\cdot x)(y \\cdot y^3) = -6x^3y^4$. Hệ số là $-6$, '
-                        'phần biến là $x^3y^4$, bậc của đơn thức là $3 + 4 = 7$.',
-                        'Nhóm các hạng tử đồng dạng: $P = (2x^2y - 2x^2y) + 5x^2y^2 + (-3xy + 4xy) - 1 = '
-                        '5x^2y^2 + xy - 1$. Các hạng tử của dạng thu gọn có bậc lần lượt là $4; 2; 0$...',
-                        '- $M + N = (3x^2 + x^2) + (-2xy + 2xy) + (y^2 - 3y^2) = 4x^2 - 2y^2$. - $M - N = '
-                        '(3x^2 - x^2) + (-2xy - 2xy) + (y^2 + 3y^2) = 2x^2 - 4xy + 4y^2$.'],
+                        '$f(2) = 2 \\cdot 2^2 - 1 = 7 = y_A$ nên điểm $A(2; 7)$ thuộc đồ thị của h...',
+                        '- Ta có $f(0) = 2 \\cdot 0^2 + 1 = -1$; $f(-2) = 2 \\cdot (-2)^2 - 1 = 7$. - Vì '
+                        '$f(2) = 2 \\cdot 2^2 - 1 = 7 = y_A$ nên điểm $A(2; 7)$ thuộc đồ thị của h...',
+                        '- Ta có $f(0) = 2 \\cdot 0^2 - 1 = -1$; $f(-2) = 2 \\cdot (-2)^2 - 1 = 7$. - Vì '
+                        '$f(2) = 2 \\cdot 2^2 - 1 = 7 = y_A$ nên điểm $A(2; 6)$ thuộc đồ thị của h...',
+                        '- Ta có $f(2) = 2 \\cdot 0^2 - 1 = -1$; $f(-2) = 2 \\cdot (-2)^2 - 1 = 7$. - Vì '
+                        '$f(2) = 2 \\cdot 2^2 - 1 = 7 = y_A$ nên điểm $A(2; 7)$ thuộc đồ thị của h...'],
             'answer': 0,
             'solution': 'Lời giải chi tiết theo Bài 27: Khái niệm hàm số và đồ thị của hàm số: - Ta có $f(0) '
                         '= 2 \\cdot 0^2 - 1 = -1$; $f(-2) = 2 \\cdot (-2)^2 - 1 = 7$.\n'
@@ -4532,27 +4608,23 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 28: Hàm số bậc nhất và đồ thị của hàm số bậc nhất**, '
-                 'công thức hoặc quy tắc nào sau đây biểu diễn đúng **Công thức hàm số bậc nhất**?',
-            'options': ['$P(0; b)$',
+            'q': 'Trong **Bài 28: Hàm số bậc nhất và đồ thị của hàm số bậc nhất**, quy tắc hoặc công thức '
+                 'nào sau đây xác định đúng **Công thức hàm số bậc nhất**?',
+            'options': ['$y = ax - b \\quad (a \\neq 0)$',
                         '$y = ax + b \\quad (a \\neq 0)$',
-                        '$Q\\left(-\\dfrac{b}{a}; 0\\right)$',
-                        '$\\text{Bậc} = m + n + p$'],
+                        '$y = ax + b \\quad (a \\neq 1)$',
+                        '$y = ax + b \\quad (a \\neq 2)$'],
             'answer': 1,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 28: Hàm số bậc nhất và đồ thị của hàm số bậc '
-                        'nhất, **Công thức hàm số bậc nhất** được xác định bởi: $y = ax + b \\quad (a \\neq '
-                        '0)$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 28: Hàm số bậc nhất và đồ thị của hàm số bậc nhất, '
+                        '**Công thức hàm số bậc nhất** được xác định bởi: $y = ax + b \\quad (a \\neq 0)$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 28: Hàm số bậc nhất và đồ thị của hàm số bậc nhất**, nội dung/biểu thức $P(0; '
-                 'b)$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Công thức hàm số bậc nhất',
-                        'Giao điểm với trục hoành $Ox$ (cho $y = 0$)',
-                        'Giao điểm với trục tung $Oy$ (cho $x = 0$)',
-                        'Bậc của đơn thức $a x^m y^n z^p$ ($a \\neq 0$)'],
+            'q': 'Khi học **Bài 28: Hàm số bậc nhất và đồ thị của hàm số bậc nhất**, biểu thức hoặc quy tắc '
+                 'nào dưới đây biểu diễn đúng **Giao điểm với trục tung $Oy$ (cho $x = 0$)**?',
+            'options': ['$P(1; b)$', '$P(2; b)$', '$P(0; b)$', '$y = ax + b \\quad (a \\neq 0)$'],
             'answer': 2,
-            'solution': 'Trong Bài 28: Hàm số bậc nhất và đồ thị của hàm số bậc nhất, biểu thức/quy tắc '
-                        '$P(0; b)$ chính là nội dung của **Giao điểm với trục tung $Oy$ (cho $x = 0$)**.'},
+            'solution': 'Trong Bài 28: Hàm số bậc nhất và đồ thị của hàm số bậc nhất, **Giao điểm với trục '
+                        'tung $Oy$ (cho $x = 0$)** có công thức/quy tắc là: $P(0; b)$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Đồ thị của hàm số $y = 2x + 8$ cắt trục hoành $Ox$ tại điểm có tọa độ là:',
@@ -4564,17 +4636,14 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 28: Hàm số bậc nhất và đồ thị của hàm số bậc nhất** (Chương VII: Phương '
-                 'trình bậc nhất và hàm số bậc nhất), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần '
-                 'đạt và bản chất kiến thức của bài?',
+            'q': 'Để nắm vững bản chất của **Bài 28: Hàm số bậc nhất và đồ thị của hàm số bậc nhất**, nhận '
+                 'định nào sau đây là **chính xác**?',
             'options': ['Nhận biết được hàm số bậc nhất $y = ax + b$ ($a \\neq 0$).',
-                        'Nhận biết được đơn thức nhiều biến, đơn thức thu gọn, hệ số, phần biến và bậc của '
-                        'một đơn thức.',
-                        'Nhận biết được các đơn thức đồng dạng và thực hiện được phép cộng, phép trừ các đơn '
-                        'thức đồng dạng.',
-                        'Nhận biết được đa thức nhiều biến và các hạng tử của đa thức.'],
+                        'Nhận biết được hàm số bậc nhất $y = ax - b$ ($a \\neq 0$).',
+                        'Nhận biết được hàm số bậc nhất $y = ax + b$ ($a \\neq 1$).',
+                        'Nhận biết được hàm số bậc nhất $y = ax + b$ ($a \\neq 2$).'],
             'answer': 0,
-            'solution': 'Theo yêu cầu cần đạt của Bài 28: Hàm số bậc nhất và đồ thị của hàm số bậc nhất: '
+            'solution': 'Theo nội dung cốt lõi của Bài 28: Hàm số bậc nhất và đồ thị của hàm số bậc nhất: '
                         'Nhận biết được hàm số bậc nhất $y = ax + b$ ($a \\neq 0$).'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -4590,39 +4659,40 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 28: Hàm số bậc nhất và '
-                 'đồ thị của hàm số bậc nhất**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được hàm số bậc nhất $y '
-                           '= ax + b$ ($a \\neq 0$).',
-                           'Quy tắc/công thức **Công thức hàm số bậc nhất** trong bài được xác định bởi: $y '
-                           '= ax + b \\quad (a \\neq 0)$.',
-                           'Trong mọi trường hợp, **Công thức hàm số bậc nhất** luôn được tính bằng công '
-                           'thức $\\text{Bậc} = m + n + p$ (thuộc Bậc của đơn thức $a x^m y^n z^p$ ($a \\neq '
-                           '0$)) mà không cần điều kiện của Bài 28: Hàm số bậc nhất và đồ thị của hàm số bậc '
-                           'nhất.',
-                           'Với bài toán minh họa: “Cho hàm số bậc nhất $y = 2x - 4$. Tìm tọa độ giao điểm '
-                           'của đồ thị hàm số với trục tung $Oy$ và trục hoành $Ox$.”, lời giải đúng là: - '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 28: Hàm số bậc nhất và đồ '
+                 'thị của hàm số bậc nhất**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết được hàm số bậc nhất $y = ax + '
+                           'b$ ($a \\neq 0$).',
+                           'Trong **Bài 28: Hàm số bậc nhất và đồ thị của hàm số bậc nhất**, quy tắc/công '
+                           'thức **Công thức hàm số bậc nhất** được viết là: $y = ax + b \\quad (a \\neq '
+                           '0)$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $y = ax - b \\quad (a \\neq 0)$ thì kết quả '
+                           'của **Công thức hàm số bậc nhất** trong **Bài 28: Hàm số bậc nhất và đồ thị của '
+                           'hàm số bậc nhất** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Cho hàm số bậc nhất $y = 2x - 4$. Tìm tọa độ giao điểm của '
+                           'đồ thị hàm số với trục tung $Oy$ và trục hoành $Ox$.”, kết quả giải đúng là: - '
                            'Cho $x = 0 \\Rightarrow y = -4$: Đồ thị cắt trục tung $Oy$ tại điểm $P(0; -4)$. '
-                           '- Cho $y = 0 \\Rightarrow 2x - 4 = 0 \\Rightarrow x = 2$: Đồ...'],
+                           '- Cho $y = 0 \\Rightarrow 2x - 4 = 0 \\Rightarrow x = 2$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 28: Hàm số bậc nhất và đồ thị của hàm số '
-                        'bậc nhất. b) **Đúng** theo công thức trọng tâm **Công thức hàm số bậc nhất** ($y = '
-                        'ax + b \\quad (a \\neq 0)$). c) **Sai** vì $\\text{Bậc} = m + n + p$ là công thức '
-                        'của nội dung khác, không phải quy tắc chung của **Công thức hàm số bậc nhất**. d) '
-                        '**Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        'bậc nhất. b) **Đúng** theo công thức **Công thức hàm số bậc nhất** ($y = ax + b '
+                        '\\quad (a \\neq 0)$). c) **Sai** vì công thức đúng của **Công thức hàm số bậc '
+                        'nhất** phải là $y = ax + b \\quad (a \\neq 0)$ chứ không phải $y = ax - b \\quad (a '
+                        '\\neq 0)$. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 28: Hàm số bậc nhất và đồ thị của hàm số bậc nhất** để giải quyết '
-                 'tình huống sau: Cho hàm số bậc nhất $y = 2x - 4$. Tìm tọa độ giao điểm của đồ thị hàm số '
-                 'với trục tung $Oy$ và trục hoành $Ox$. Kết quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Ta có: $A = (-2 \\cdot 3)(x^2 \\cdot x)(y \\cdot y^3) = -6x^3y^4$. Hệ số là $-6$, '
-                        'phần biến là $x^3y^4$, bậc của đơn thức là $3 + 4 = 7$.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 28: Hàm số bậc nhất và đồ thị của hàm số bậc nhất** '
+                 'để giải bài toán sau: Cho hàm số bậc nhất $y = 2x - 4$. Tìm tọa độ giao điểm của đồ thị '
+                 'hàm số với trục tung $Oy$ và trục hoành $Ox$. Cách giải và kết quả nào dưới đây là '
+                 '**đúng**?',
+            'options': ['- Cho $x = 0 \\Rightarrow y = -4$: Đồ thị cắt trục tung $Oy$ tại điểm $P(0; -4)$. + '
+                        'Cho $y = 0 \\Rightarrow 2x - 4 = 0 \\Rightarrow x = 2$: Đồ thị cắt tr...',
                         '- Cho $x = 0 \\Rightarrow y = -4$: Đồ thị cắt trục tung $Oy$ tại điểm $P(0; -4)$. - '
-                        'Cho $y = 0 \\Rightarrow 2x - 4 = 0 \\Rightarrow x = 2$: Đồ thị cắt trục ho...',
-                        'Nhóm các hạng tử đồng dạng: $P = (2x^2y - 2x^2y) + 5x^2y^2 + (-3xy + 4xy) - 1 = '
-                        '5x^2y^2 + xy - 1$. Các hạng tử của dạng thu gọn có bậc lần lượt là $4; 2; 0$...',
-                        '- $M + N = (3x^2 + x^2) + (-2xy + 2xy) + (y^2 - 3y^2) = 4x^2 - 2y^2$. - $M - N = '
-                        '(3x^2 - x^2) + (-2xy - 2xy) + (y^2 + 3y^2) = 2x^2 - 4xy + 4y^2$.'],
+                        'Cho $y = 0 \\Rightarrow 2x - 4 = 0 \\Rightarrow x = 2$: Đồ thị cắt tr...',
+                        '- Cho $x = 0 \\Rightarrow y = -4$: Đồ thị cắt trục tung $Oy$ tại điểm $P(0; -4)$. - '
+                        'Cho $y = 0 \\Rightarrow 2x - 4 = 0 \\Rightarrow x = 1$: Đồ thị cắt tr...',
+                        '- Cho $x = 2 \\Rightarrow y = -4$: Đồ thị cắt trục tung $Oy$ tại điểm $P(0; -4)$. - '
+                        'Cho $y = 0 \\Rightarrow 2x - 4 = 0 \\Rightarrow x = 2$: Đồ thị cắt tr...'],
             'answer': 1,
             'solution': 'Lời giải chi tiết theo Bài 28: Hàm số bậc nhất và đồ thị của hàm số bậc nhất: - Cho '
                         '$x = 0 \\Rightarrow y = -4$: Đồ thị cắt trục tung $Oy$ tại điểm $P(0; -4)$.\n'
@@ -4649,8 +4719,8 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
                    'với góc tạo bởi đường thẳng và trục $Ox$.',
                    'Sử dụng được hệ số góc của đường thẳng để nhận biết và tìm điều kiện cho hai đường thẳng '
                    'song song, cắt nhau hoặc trùng nhau.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Hai đường thẳng song song ($d \\parallel '
-                   "d'$)** ($a = a'$ và $b \\neq b'$) vào giải bài tập."],
+                   'Vận dụng kiến thức của **Bài 29: Hệ số góc của đường thẳng** để giải bài tập minh họa và '
+                   'bài toán thực tiễn.'],
   'definition': 'Trên mặt phẳng tọa độ $Oxy$, hệ số $a$ trong phương trình đường thẳng $y = ax + b$ ($a '
                 '\\neq 0$) được gọi là hệ số góc của đường thẳng đó.',
   'theory': '1. Ý nghĩa hình học của hệ số góc $a$:\n'
@@ -4693,26 +4763,26 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 29: Hệ số góc của đường thẳng**, công thức hoặc quy tắc '
-                 "nào sau đây biểu diễn đúng **Hai đường thẳng song song ($d \\parallel d'$)**?",
-            'options': ["$a = a'$ và $b = b'$",
-                        "$a \\neq a'$",
+            'q': 'Trong **Bài 29: Hệ số góc của đường thẳng**, quy tắc hoặc công thức nào sau đây xác định '
+                 "đúng **Hai đường thẳng song song ($d \\parallel d'$)**?",
+            'options': ["$a = a'$ và $b \\neq b'$ (với dấu ngược lại)",
+                        "Đảo ngược vế của quy tắc: $a = a'$ và $b \\neq b'$",
                         "$a = a'$ và $b \\neq b'$",
-                        '$\\text{Bậc} = m + n + p$'],
+                        "Trường hợp trái ngược: không thỏa mãn điều kiện của $a = a'$ và $b \\neq b'$"],
             'answer': 2,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 29: Hệ số góc của đường thẳng, **Hai đường '
-                        "thẳng song song ($d \\parallel d'$)** được xác định bởi: $a = a'$ và $b \\neq b'$."},
+            'solution': 'Theo kiến thức trọng tâm của Bài 29: Hệ số góc của đường thẳng, **Hai đường thẳng '
+                        "song song ($d \\parallel d'$)** được xác định bởi: $a = a'$ và $b \\neq b'$."},
            {'level': 'biet',
             'type': 'mcq',
-            'q': "Trong **Bài 29: Hệ số góc của đường thẳng**, nội dung/biểu thức $a = a'$ và $b = b'$ là "
-                 'quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ["Hai đường thẳng song song ($d \\parallel d'$)",
-                        "Hai đường thẳng cắt nhau ($d$ cắt $d'$)",
-                        'Bậc của đơn thức $a x^m y^n z^p$ ($a \\neq 0$)',
-                        "Hai đường thẳng trùng nhau ($d \\equiv d'$)"],
+            'q': 'Khi học **Bài 29: Hệ số góc của đường thẳng**, biểu thức hoặc quy tắc nào dưới đây biểu '
+                 "diễn đúng **Hai đường thẳng trùng nhau ($d \\equiv d'$)**?",
+            'options': ["$a = a'$ và $b = b'$ (với dấu ngược lại)",
+                        "Đảo ngược vế của quy tắc: $a = a'$ và $b = b'$",
+                        "Trường hợp trái ngược: không thỏa mãn điều kiện của $a = a'$ và $b = b'$",
+                        "$a = a'$ và $b = b'$"],
             'answer': 3,
-            'solution': "Trong Bài 29: Hệ số góc của đường thẳng, biểu thức/quy tắc $a = a'$ và $b = b'$ "
-                        "chính là nội dung của **Hai đường thẳng trùng nhau ($d \\equiv d'$)**."},
+            'solution': 'Trong Bài 29: Hệ số góc của đường thẳng, **Hai đường thẳng trùng nhau ($d \\equiv '
+                        "d'$)** có công thức/quy tắc là: $a = a'$ và $b = b'$."},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Hai đường thẳng $y = (m + 1)x + 2$ ($m \\neq -1$) và $y = 3x + 2$ cắt nhau khi và chỉ khi:',
@@ -4724,18 +4794,18 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 29: Hệ số góc của đường thẳng** (Chương VII: Phương trình bậc nhất và hàm số '
-                 'bậc nhất), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức '
-                 'của bài?',
-            'options': ['Nhận biết được đơn thức nhiều biến, đơn thức thu gọn, hệ số, phần biến và bậc của '
-                        'một đơn thức.',
+            'q': 'Để nắm vững bản chất của **Bài 29: Hệ số góc của đường thẳng**, nhận định nào sau đây là '
+                 '**chính xác**?',
+            'options': ['Nhận biết được hệ số góc $a$ của đường thẳng $y = ax - b$ ($a \\neq 0$) và mối liên '
+                        'hệ với góc tạo bởi đường thẳng và trục $Ox$.',
                         'Nhận biết được hệ số góc $a$ của đường thẳng $y = ax + b$ ($a \\neq 0$) và mối liên '
                         'hệ với góc tạo bởi đường thẳng và trục $Ox$.',
-                        'Nhận biết được các đơn thức đồng dạng và thực hiện được phép cộng, phép trừ các đơn '
-                        'thức đồng dạng.',
-                        'Nhận biết được đa thức nhiều biến và các hạng tử của đa thức.'],
+                        'Nhận biết được hệ số góc $a$ của đường thẳng $y = ax + b$ ($a \\neq 1$) và mối liên '
+                        'hệ với góc tạo bởi đường thẳng và trục $Ox$.',
+                        'Nhận biết được hệ số góc $a$ của đường thẳng $y = ax + b$ ($a \\neq 2$) và mối liên '
+                        'hệ với góc tạo bởi đường thẳng và trục $Ox$.'],
             'answer': 1,
-            'solution': 'Theo yêu cầu cần đạt của Bài 29: Hệ số góc của đường thẳng: Nhận biết được hệ số '
+            'solution': 'Theo nội dung cốt lõi của Bài 29: Hệ số góc của đường thẳng: Nhận biết được hệ số '
                         'góc $a$ của đường thẳng $y = ax + b$ ($a \\neq 0$) và mối liên hệ với góc tạo bởi '
                         'đường thẳng và trục $Ox$.'},
            {'level': 'hieu',
@@ -4754,40 +4824,40 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 29: Hệ số góc của đường '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 29: Hệ số góc của đường '
                  'thẳng**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được hệ số góc $a$ của '
-                           'đường thẳng $y = ax + b$ ($a \\neq 0$) và mối liên hệ với góc tạo bởi đường '
-                           'thẳng và trục $Ox$.',
-                           "Quy tắc/công thức **Hai đường thẳng song song ($d \\parallel d'$)** trong bài "
-                           "được xác định bởi: $a = a'$ và $b \\neq b'$.",
-                           "Trong mọi trường hợp, **Hai đường thẳng song song ($d \\parallel d'$)** luôn "
-                           'được tính bằng công thức $\\text{Bậc} = m + n + p$ (thuộc Bậc của đơn thức $a '
-                           'x^m y^n z^p$ ($a \\neq 0$)) mà không cần điều kiện của Bài 29: Hệ số góc của '
-                           'đường thẳng.',
-                           'Với bài toán minh họa: “Tìm giá trị của $m$ để đường thẳng $d: y = (m - 2)x + 5$ '
-                           "($m \\neq 2$) song song với đường thẳng $d': y = 3x - 1$.”, lời giải đúng là: Để "
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết được hệ số góc $a$ của đường '
+                           'thẳng $y = ax + b$ ($a \\neq 0$) và mối liên hệ với góc tạo bởi đường thẳng và '
+                           'trục $Ox$.',
+                           'Trong **Bài 29: Hệ số góc của đường thẳng**, quy tắc/công thức **Hai đường thẳng '
+                           "song song ($d \\parallel d'$)** được viết là: $a = a'$ và $b \\neq b'$.",
+                           "Nếu áp dụng sai dấu/phép tính thành $a = a'$ và $b \\neq b'$ (với dấu ngược lại) "
+                           "thì kết quả của **Hai đường thẳng song song ($d \\parallel d'$)** trong **Bài "
+                           '29: Hệ số góc của đường thẳng** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Tìm giá trị của $m$ để đường thẳng $d: y = (m - 2)x + 5$ ($m '
+                           "\\neq 2$) song song với đường thẳng $d': y = 3x - 1$.”, kết quả giải đúng là: Để "
                            "hai đường thẳng $d$ và $d'$ song song với nhau thì $a = a'$ và $b \\neq b'$. Do "
                            '$5 \\neq -1$ luôn đúng nên ta có: $m - 2 = 3 \\Leftrightarrow m = 5$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 29: Hệ số góc của đường thẳng. b) **Đúng** '
-                        "theo công thức trọng tâm **Hai đường thẳng song song ($d \\parallel d'$)** ($a = "
-                        "a'$ và $b \\neq b'$). c) **Sai** vì $\\text{Bậc} = m + n + p$ là công thức của nội "
-                        'dung khác, không phải quy tắc chung của **Hai đường thẳng song song ($d \\parallel '
-                        "d'$)**. d) **Đúng** theo lời giải ví dụ minh họa trong bài học."},
+                        "theo công thức **Hai đường thẳng song song ($d \\parallel d'$)** ($a = a'$ và $b "
+                        "\\neq b'$). c) **Sai** vì công thức đúng của **Hai đường thẳng song song ($d "
+                        "\\parallel d'$)** phải là $a = a'$ và $b \\neq b'$ chứ không phải $a = a'$ và $b "
+                        "\\neq b'$ (với dấu ngược lại). d) **Đúng** theo lời giải ví dụ minh họa trong bài "
+                        'học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 29: Hệ số góc của đường thẳng** để giải quyết tình huống sau: Tìm '
-                 'giá trị của $m$ để đường thẳng $d: y = (m - 2)x + 5$ ($m \\neq 2$) song song với đường '
-                 "thẳng $d': y = 3x - 1$. Kết quả và hướng giải nào dưới đây là **đúng**?",
-            'options': ['Ta có: $A = (-2 \\cdot 3)(x^2 \\cdot x)(y \\cdot y^3) = -6x^3y^4$. Hệ số là $-6$, '
-                        'phần biến là $x^3y^4$, bậc của đơn thức là $3 + 4 = 7$.',
-                        'Nhóm các hạng tử đồng dạng: $P = (2x^2y - 2x^2y) + 5x^2y^2 + (-3xy + 4xy) - 1 = '
-                        '5x^2y^2 + xy - 1$. Các hạng tử của dạng thu gọn có bậc lần lượt là $4; 2; 0$...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 29: Hệ số góc của đường thẳng** để giải bài toán '
+                 'sau: Tìm giá trị của $m$ để đường thẳng $d: y = (m - 2)x + 5$ ($m \\neq 2$) song song với '
+                 "đường thẳng $d': y = 3x - 1$. Cách giải và kết quả nào dưới đây là **đúng**?",
+            'options': ["Để hai đường thẳng $d$ và $d'$ song song với nhau thì $a = a'$ và $b \\neq b'$. Do "
+                        '$5 \\neq -1$ luôn đúng nên ta có: $m + 2 = 3 \\Leftrightarrow m = 5$ (...',
                         "Để hai đường thẳng $d$ và $d'$ song song với nhau thì $a = a'$ và $b \\neq b'$. Do "
-                        '$5 \\neq -1$ luôn đúng nên ta có: $m - 2 = 3 \\Leftrightarrow m = 5$ (thỏa...',
-                        '- $M + N = (3x^2 + x^2) + (-2xy + 2xy) + (y^2 - 3y^2) = 4x^2 - 2y^2$. - $M - N = '
-                        '(3x^2 - x^2) + (-2xy - 2xy) + (y^2 + 3y^2) = 2x^2 - 4xy + 4y^2$.'],
+                        '$5 \\neq -1$ luôn đúng nên ta có: $m - 2 = 3 \\Leftrightarrow m = 4$ (...',
+                        "Để hai đường thẳng $d$ và $d'$ song song với nhau thì $a = a'$ và $b \\neq b'$. Do "
+                        '$5 \\neq -1$ luôn đúng nên ta có: $m - 2 = 3 \\Leftrightarrow m = 5$ (...',
+                        "Để hai đường thẳng $d$ và $d'$ song song với nhau thì $a = a'$ và $b \\neq b'$. Do "
+                        '$10 \\neq -1$ luôn đúng nên ta có: $m - 2 = 3 \\Leftrightarrow m = 5$ (...'],
             'answer': 2,
             'solution': 'Lời giải chi tiết theo Bài 29: Hệ số góc của đường thẳng: Để hai đường thẳng $d$ và '
                         "$d'$ song song với nhau thì $a = a'$ và $b \\neq b'$.\n"
@@ -4813,8 +4883,8 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
   'requirements': ['Nhận biết và liệt kê được tập hợp tất cả các kết quả có thể của một phép thử ngẫu nhiên '
                    'đơn giản.',
                    'Xác định và đếm được số kết quả thuận lợi cho một biến cố.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Số phần tử không gian mẫu** ($n$: tổng số '
-                   'kết quả có thể của phép thử) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 30: Kết quả có thể và kết quả thuận lợi** để giải bài tập '
+                   'minh họa và bài toán thực tiễn.'],
   'definition': 'Một kết quả có thể của hành động, thực nghiệm làm cho biến cố $E$ xảy ra được gọi là một '
                 'kết quả thuận lợi cho biến cố $E$.',
   'theory': '1. Kết quả có thể: Khi thực hiện một hành động hay thực nghiệm ngẫu nhiên (gieo xúc xắc, rút '
@@ -4859,30 +4929,28 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 30: Kết quả có thể và kết quả thuận lợi**, công thức '
-                 'hoặc quy tắc nào sau đây biểu diễn đúng **Số phần tử không gian mẫu**?',
-            'options': ['$k$: số kết quả trong $n$ kết quả có thể làm cho $E$ xảy ra ($0 \\le k \\le n$)',
-                        '$\\text{Bậc} = m + n + p$',
-                        '$a x^m y^n + b x^m y^n = (a + b)x^m y^n; \\quad a x^m y^n - b x^m y^n = (a - b)x^m '
-                        'y^n$',
+            'q': 'Trong **Bài 30: Kết quả có thể và kết quả thuận lợi**, quy tắc hoặc công thức nào sau đây '
+                 'xác định đúng **Số phần tử không gian mẫu**?',
+            'options': ['$n$: tổng số kết quả có thể của phép thử (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: $n$: tổng số kết quả có thể của phép thử',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $n$: tổng số kết quả có thể của '
+                        'phép thử',
                         '$n$: tổng số kết quả có thể của phép thử'],
             'answer': 3,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 30: Kết quả có thể và kết quả thuận lợi, **Số '
-                        'phần tử không gian mẫu** được xác định bởi: $n$: tổng số kết quả có thể của phép '
-                        'thử.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 30: Kết quả có thể và kết quả thuận lợi, **Số phần '
+                        'tử không gian mẫu** được xác định bởi: $n$: tổng số kết quả có thể của phép thử.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 30: Kết quả có thể và kết quả thuận lợi**, nội dung/biểu thức $k$: số kết quả '
-                 'trong $n$ kết quả có thể làm cho $E$ xảy ra ($0 \\le k \\le n$) là quy tắc hoặc công thức '
-                 'của mục nào sau đây?',
-            'options': ['Số kết quả thuận lợi cho biến cố $E$',
-                        'Số phần tử không gian mẫu',
-                        'Bậc của đơn thức $a x^m y^n z^p$ ($a \\neq 0$)',
-                        'Cộng, trừ hai đơn thức đồng dạng'],
+            'q': 'Khi học **Bài 30: Kết quả có thể và kết quả thuận lợi**, biểu thức hoặc quy tắc nào dưới '
+                 'đây biểu diễn đúng **Số kết quả thuận lợi cho biến cố $E$**?',
+            'options': ['$k$: số kết quả trong $n$ kết quả có thể làm cho $E$ xảy ra ($0 \\le k \\le n$)',
+                        '$k$: số kết quả trong $n$ kết quả có thể làm cho $E$ xảy ra ($0 \\ge k \\le n$)',
+                        '$k$: số kết quả trong $n$ kết quả có thể làm cho $E$ xảy ra ($1 \\le k \\le n$)',
+                        '$k$: số kết quả trong $n$ kết quả có thể làm cho $E$ xảy ra ($2 \\le k \\le n$)'],
             'answer': 0,
-            'solution': 'Trong Bài 30: Kết quả có thể và kết quả thuận lợi, biểu thức/quy tắc $k$: số kết '
-                        'quả trong $n$ kết quả có thể làm cho $E$ xảy ra ($0 \\le k \\le n$) chính là nội '
-                        'dung của **Số kết quả thuận lợi cho biến cố $E$**.'},
+            'solution': 'Trong Bài 30: Kết quả có thể và kết quả thuận lợi, **Số kết quả thuận lợi cho biến '
+                        'cố $E$** có công thức/quy tắc là: $k$: số kết quả trong $n$ kết quả có thể làm cho '
+                        '$E$ xảy ra ($0 \\le k \\le n$).'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Rút ngẫu nhiên một thẻ từ hộp gồm $12$ thẻ đánh số từ $1$ đến $12$. Có bao nhiêu kết quả '
@@ -4895,18 +4963,18 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 30: Kết quả có thể và kết quả thuận lợi** (Chương VIII: Mở đầu về tính xác '
-                 'suất của biến cố), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất '
-                 'kiến thức của bài?',
-            'options': ['Nhận biết được đơn thức nhiều biến, đơn thức thu gọn, hệ số, phần biến và bậc của '
-                        'một đơn thức.',
-                        'Nhận biết được các đơn thức đồng dạng và thực hiện được phép cộng, phép trừ các đơn '
-                        'thức đồng dạng.',
+            'q': 'Để nắm vững bản chất của **Bài 30: Kết quả có thể và kết quả thuận lợi**, nhận định nào '
+                 'sau đây là **chính xác**?',
+            'options': ['Nhận biết và liệt kê được tập hợp tất cả các kết quả có thể của một phép thử ngẫu '
+                        'nhiên đơn giản. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Nhận biết và liệt kê được tập hợp tất cả các kết quả có '
+                        'thể của một phép thử ngẫu nhiên đơn giản.',
                         'Nhận biết và liệt kê được tập hợp tất cả các kết quả có thể của một phép thử ngẫu '
                         'nhiên đơn giản.',
-                        'Nhận biết được đa thức nhiều biến và các hạng tử của đa thức.'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nhận biết và liệt kê được tập '
+                        'hợp tất cả các kết quả có thể của một phép thử ngẫu nhiên đơn giản.'],
             'answer': 2,
-            'solution': 'Theo yêu cầu cần đạt của Bài 30: Kết quả có thể và kết quả thuận lợi: Nhận biết và '
+            'solution': 'Theo nội dung cốt lõi của Bài 30: Kết quả có thể và kết quả thuận lợi: Nhận biết và '
                         'liệt kê được tập hợp tất cả các kết quả có thể của một phép thử ngẫu nhiên đơn '
                         'giản.'},
            {'level': 'hieu',
@@ -4926,40 +4994,41 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 30: Kết quả có thể và '
-                 'kết quả thuận lợi**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết và liệt kê được tập hợp '
-                           'tất cả các kết quả có thể của một phép thử ngẫu nhiên đơn giản.',
-                           'Quy tắc/công thức **Số phần tử không gian mẫu** trong bài được xác định bởi: '
-                           '$n$: tổng số kết quả có thể của phép thử.',
-                           'Trong mọi trường hợp, **Số phần tử không gian mẫu** luôn được tính bằng công '
-                           'thức $\\text{Bậc} = m + n + p$ (thuộc Bậc của đơn thức $a x^m y^n z^p$ ($a \\neq '
-                           '0$)) mà không cần điều kiện của Bài 30: Kết quả có thể và kết quả thuận lợi.',
-                           'Với bài toán minh họa: “Từ một hộp đựng $9$ tấm thẻ ghi các số $1; 2; 3; 4; 5; '
-                           '6; 7; 8; 9$, rút ngẫu nhiên một tấm thẻ. Hãy liệt kê các kết quả thuận lợi cho '
-                           'biến c...”, lời giải đúng là: Các kết quả có thể là $9$ tấm thẻ ghi số từ $1$ '
-                           'đến $9$. Các số chính phương trong phạm vi từ $1$ đến $9$ là $1 = 1^2; 4 = 2^2; '
-                           '9 = 3^2$. Vậ...'],
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 30: Kết quả có thể và kết '
+                 'quả thuận lợi**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết và liệt kê được tập hợp tất cả '
+                           'các kết quả có thể của một phép thử ngẫu nhiên đơn giản.',
+                           'Trong **Bài 30: Kết quả có thể và kết quả thuận lợi**, quy tắc/công thức **Số '
+                           'phần tử không gian mẫu** được viết là: $n$: tổng số kết quả có thể của phép thử.',
+                           'Nếu áp dụng sai dấu/phép tính thành $n$: tổng số kết quả có thể của phép thử '
+                           '(với dấu ngược lại) thì kết quả của **Số phần tử không gian mẫu** trong **Bài '
+                           '30: Kết quả có thể và kết quả thuận lợi** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Từ một hộp đựng $9$ tấm thẻ ghi các số $1; 2; 3; 4; 5; 6; 7; '
+                           '8; 9$, rút ngẫu nhiên một tấm thẻ. Hãy liệt kê các kết quả thuận lợi cho b...”, '
+                           'kết quả giải đúng là: Các kết quả có thể là $9$ tấm thẻ ghi số từ $1$ đến $9$. '
+                           'Các số chính phương trong phạm vi từ $1$ đến $9$ là $1 = 1^2; 4 = 2^2; 9 = '
+                           '3^2$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 30: Kết quả có thể và kết quả thuận lợi. '
-                        'b) **Đúng** theo công thức trọng tâm **Số phần tử không gian mẫu** ($n$: tổng số '
-                        'kết quả có thể của phép thử). c) **Sai** vì $\\text{Bậc} = m + n + p$ là công thức '
-                        'của nội dung khác, không phải quy tắc chung của **Số phần tử không gian mẫu**. d) '
-                        '**Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        'b) **Đúng** theo công thức **Số phần tử không gian mẫu** ($n$: tổng số kết quả có '
+                        'thể của phép thử). c) **Sai** vì công thức đúng của **Số phần tử không gian mẫu** '
+                        'phải là $n$: tổng số kết quả có thể của phép thử chứ không phải $n$: tổng số kết '
+                        'quả có thể của phép thử (với dấu ngược lại). d) **Đúng** theo lời giải ví dụ minh '
+                        'họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 30: Kết quả có thể và kết quả thuận lợi** để giải quyết tình '
-                 'huống sau: Từ một hộp đựng $9$ tấm thẻ ghi các số $1; 2; 3; 4; 5; 6; 7; 8; 9$, rút ngẫu '
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 30: Kết quả có thể và kết quả thuận lợi** để giải '
+                 'bài toán sau: Từ một hộp đựng $9$ tấm thẻ ghi các số $1; 2; 3; 4; 5; 6; 7; 8; 9$, rút ngẫu '
                  "nhiên một tấm thẻ. Hãy liệt kê các kết quả thuận lợi cho biến cố $E$: 'Rút được tấm thẻ "
-                 "ghi số chính phương'. Kết quả và hướng giải nào dưới đây là **đúng**?",
-            'options': ['Ta có: $A = (-2 \\cdot 3)(x^2 \\cdot x)(y \\cdot y^3) = -6x^3y^4$. Hệ số là $-6$, '
-                        'phần biến là $x^3y^4$, bậc của đơn thức là $3 + 4 = 7$.',
-                        'Nhóm các hạng tử đồng dạng: $P = (2x^2y - 2x^2y) + 5x^2y^2 + (-3xy + 4xy) - 1 = '
-                        '5x^2y^2 + xy - 1$. Các hạng tử của dạng thu gọn có bậc lần lượt là $4; 2; 0$...',
-                        '- $M + N = (3x^2 + x^2) + (-2xy + 2xy) + (y^2 - 3y^2) = 4x^2 - 2y^2$. - $M - N = '
-                        '(3x^2 - x^2) + (-2xy - 2xy) + (y^2 + 3y^2) = 2x^2 - 4xy + 4y^2$.',
+                 "ghi số chính phương'. Cách giải và kết quả nào dưới đây là **đúng**?",
+            'options': ['Các kết quả có thể là $10$ tấm thẻ ghi số từ $1$ đến $9$. Các số chính phương trong '
+                        'phạm vi từ $1$ đến $9$ là $1 = 1^2; 4 = 2^2; 9 = 3^2$. Vậy có $3$ k...',
                         'Các kết quả có thể là $9$ tấm thẻ ghi số từ $1$ đến $9$. Các số chính phương trong '
-                        'phạm vi từ $1$ đến $9$ là $1 = 1^2; 4 = 2^2; 9 = 3^2$. Vậy có $3$ kết qu...'],
+                        'phạm vi từ $1$ đến $9$ là $1 = 1^2; 4 = 2^2; 9 = 3^2$. Vậy có $2$ k...',
+                        'Các kết quả có thể là $18$ tấm thẻ ghi số từ $1$ đến $9$. Các số chính phương trong '
+                        'phạm vi từ $1$ đến $9$ là $1 = 1^2; 4 = 2^2; 9 = 3^2$. Vậy có $3$ k...',
+                        'Các kết quả có thể là $9$ tấm thẻ ghi số từ $1$ đến $9$. Các số chính phương trong '
+                        'phạm vi từ $1$ đến $9$ là $1 = 1^2; 4 = 2^2; 9 = 3^2$. Vậy có $3$ k...'],
             'answer': 3,
             'solution': 'Lời giải chi tiết theo Bài 30: Kết quả có thể và kết quả thuận lợi: Các kết quả có '
                         'thể là $9$ tấm thẻ ghi số từ $1$ đến $9$.\n'
@@ -4988,9 +5057,8 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
   'requirements': ['Mô tả và vận dụng được công thức tính xác suất của biến cố bằng tỉ số khi các kết quả có '
                    'thể là đồng khả năng.',
                    'Giải quyết được các bài toán tính xác suất thực tế (rút thẻ, chọn bóng, gieo xúc xắc).',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Xác suất của biến cố $E$** ($P(E) = '
-                   '\\dfrac{\\text{Số kết quả thuận lợi cho } E}{\\text{Tổng số kết quả có thể}} = '
-                   '\\dfrac{k}{n}$) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 31: Cách tính xác suất của biến cố bằng tỉ số** để giải bài '
+                   'tập minh họa và bài toán thực tiễn.'],
   'definition': 'Giả sử rằng các kết quả có thể của một hành động hay thực nghiệm là đồng khả năng. Khi đó, '
                 'xác suất của biến cố $E$, kí hiệu là $P(E)$, bằng tỉ số giữa số kết quả thuận lợi cho biến '
                 'cố $E$ và tổng số kết quả có thể.',
@@ -5033,29 +5101,31 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 31: Cách tính xác suất của biến cố bằng tỉ số**, công '
-                 'thức hoặc quy tắc nào sau đây biểu diễn đúng **Xác suất của biến cố $E$**?',
+            'q': 'Trong **Bài 31: Cách tính xác suất của biến cố bằng tỉ số**, quy tắc hoặc công thức nào '
+                 'sau đây xác định đúng **Xác suất của biến cố $E$**?',
             'options': ['$P(E) = \\dfrac{\\text{Số kết quả thuận lợi cho } E}{\\text{Tổng số kết quả có '
                         'thể}} = \\dfrac{k}{n}$',
-                        '$0 \\le P(E) \\le 1$',
-                        '$\\text{Bậc} = m + n + p$',
-                        '$a x^m y^n + b x^m y^n = (a + b)x^m y^n; \\quad a x^m y^n - b x^m y^n = (a - b)x^m '
-                        'y^n$'],
+                        '$P(E) = \\dfrac{\\text{Số kết quả thuận lợi cho } E}{\\text{Tổng số kết quả có '
+                        'thể}} = \\dfrac{k}{n}$ (với dấu ngược lại)',
+                        '$P(E) = \\dfrac{\\text{Số kết quả thuận lợi cho } E}{\\text{Tổng số kết quả có '
+                        'thể}} = \\dfrac{n}{k}$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $P(E) = \\dfrac{\\text{Số kết '
+                        'quả thuận lợi cho } E}{\\text{Tổng số kết quả có thể}} = \\dfrac{k}{n}$'],
             'answer': 0,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 31: Cách tính xác suất của biến cố bằng tỉ '
-                        'số, **Xác suất của biến cố $E$** được xác định bởi: $P(E) = \\dfrac{\\text{Số kết '
-                        'quả thuận lợi cho } E}{\\text{Tổng số kết quả có thể}} = \\dfrac{k}{n}$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 31: Cách tính xác suất của biến cố bằng tỉ số, '
+                        '**Xác suất của biến cố $E$** được xác định bởi: $P(E) = \\dfrac{\\text{Số kết quả '
+                        'thuận lợi cho } E}{\\text{Tổng số kết quả có thể}} = \\dfrac{k}{n}$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 31: Cách tính xác suất của biến cố bằng tỉ số**, nội dung/biểu thức $0 \\le '
-                 'P(E) \\le 1$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Xác suất của biến cố $E$',
-                        'Tính chất xác suất',
-                        'Bậc của đơn thức $a x^m y^n z^p$ ($a \\neq 0$)',
-                        'Cộng, trừ hai đơn thức đồng dạng'],
+            'q': 'Khi học **Bài 31: Cách tính xác suất của biến cố bằng tỉ số**, biểu thức hoặc quy tắc nào '
+                 'dưới đây biểu diễn đúng **Tính chất xác suất**?',
+            'options': ['$0 \\ge P(E) \\le 1$',
+                        '$0 \\le P(E) \\le 1$',
+                        '$0 \\le P(E) \\le 2$',
+                        '$2 \\le P(E) \\le 1$'],
             'answer': 1,
-            'solution': 'Trong Bài 31: Cách tính xác suất của biến cố bằng tỉ số, biểu thức/quy tắc $0 \\le '
-                        'P(E) \\le 1$ chính là nội dung của **Tính chất xác suất**.'},
+            'solution': 'Trong Bài 31: Cách tính xác suất của biến cố bằng tỉ số, **Tính chất xác suất** có '
+                        'công thức/quy tắc là: $0 \\le P(E) \\le 1$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Rút ngẫu nhiên một thẻ từ hộp gồm $15$ thẻ được đánh số từ $1$ đến $15$. Xác suất của biến '
@@ -5068,18 +5138,18 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 31: Cách tính xác suất của biến cố bằng tỉ số** (Chương VIII: Mở đầu về tính '
-                 'xác suất của biến cố), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản '
-                 'chất kiến thức của bài?',
-            'options': ['Nhận biết được đơn thức nhiều biến, đơn thức thu gọn, hệ số, phần biến và bậc của '
-                        'một đơn thức.',
-                        'Nhận biết được các đơn thức đồng dạng và thực hiện được phép cộng, phép trừ các đơn '
-                        'thức đồng dạng.',
-                        'Nhận biết được đa thức nhiều biến và các hạng tử của đa thức.',
+            'q': 'Để nắm vững bản chất của **Bài 31: Cách tính xác suất của biến cố bằng tỉ số**, nhận định '
+                 'nào sau đây là **chính xác**?',
+            'options': ['Mô tả và vận dụng được công thức tính xác suất của biến cố bằng tỉ số khi các kết '
+                        'quả có thể là đồng khả năng. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Mô tả và vận dụng được công thức tính xác suất của biến '
+                        'cố bằng tỉ số khi các kết quả có thể là đồng khả năng.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Mô tả và vận dụng được công '
+                        'thức tính xác suất của biến cố bằng tỉ số khi các kết quả có thể là đồng khả năng.',
                         'Mô tả và vận dụng được công thức tính xác suất của biến cố bằng tỉ số khi các kết '
                         'quả có thể là đồng khả năng.'],
             'answer': 3,
-            'solution': 'Theo yêu cầu cần đạt của Bài 31: Cách tính xác suất của biến cố bằng tỉ số: Mô tả '
+            'solution': 'Theo nội dung cốt lõi của Bài 31: Cách tính xác suất của biến cố bằng tỉ số: Mô tả '
                         'và vận dụng được công thức tính xác suất của biến cố bằng tỉ số khi các kết quả có '
                         'thể là đồng khả năng.'},
            {'level': 'hieu',
@@ -5097,42 +5167,45 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 31: Cách tính xác suất '
-                 'của biến cố bằng tỉ số**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Mô tả và vận dụng được công thức '
-                           'tính xác suất của biến cố bằng tỉ số khi các kết quả có thể là đồng khả năng.',
-                           'Quy tắc/công thức **Xác suất của biến cố $E$** trong bài được xác định bởi: '
-                           '$P(E) = \\dfrac{\\text{Số kết quả thuận lợi cho } E}{\\text{Tổng số kết quả có '
-                           'thể}} = \\dfrac{k}{n}$.',
-                           'Trong mọi trường hợp, **Xác suất của biến cố $E$** luôn được tính bằng công thức '
-                           '$\\text{Bậc} = m + n + p$ (thuộc Bậc của đơn thức $a x^m y^n z^p$ ($a \\neq 0$)) '
-                           'mà không cần điều kiện của Bài 31: Cách tính xác suất của biến cố bằng tỉ số.',
-                           'Với bài toán minh họa: “Một túi đựng $5$ viên bi đỏ, $3$ viên bi xanh và $2$ '
-                           'viên bi vàng có cùng kích thước và khối lượng. Lấy ngẫu nhiên một viên bi từ '
-                           'túi. Tính...”, lời giải đúng là: Tổng số kết quả có thể đồng khả năng là $n = 5 '
-                           '+ 3 + 2 = 10$. Số kết quả thuận lợi cho biến cố $A$ (lấy được viên bi đỏ) là $k '
-                           '= 5$. Vậy xác...'],
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 31: Cách tính xác suất của '
+                 'biến cố bằng tỉ số**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Mô tả và vận dụng được công thức tính '
+                           'xác suất của biến cố bằng tỉ số khi các kết quả có thể là đồng khả năng.',
+                           'Trong **Bài 31: Cách tính xác suất của biến cố bằng tỉ số**, quy tắc/công thức '
+                           '**Xác suất của biến cố $E$** được viết là: $P(E) = \\dfrac{\\text{Số kết quả '
+                           'thuận lợi cho } E}{\\text{Tổng số kết quả có thể}} = \\dfrac{k}{n}$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $P(E) = \\dfrac{\\text{Số kết quả thuận lợi '
+                           'cho } E}{\\text{Tổng số kết quả có thể}} = \\dfrac{k}{n}$ (với dấu ngược lại) '
+                           'thì kết quả của **Xác suất của biến cố $E$** trong **Bài 31: Cách tính xác suất '
+                           'của biến cố bằng tỉ số** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Một túi đựng $5$ viên bi đỏ, $3$ viên bi xanh và $2$ viên bi '
+                           'vàng có cùng kích thước và khối lượng. Lấy ngẫu nhiên một viên bi từ túi....”, '
+                           'kết quả giải đúng là: Tổng số kết quả có thể đồng khả năng là $n = 5 + 3 + 2 = '
+                           '10$. Số kết quả thuận lợi cho biến cố $A$ (lấy được viên bi đỏ) là $k = 5$. '
+                           'Vậ...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 31: Cách tính xác suất của biến cố bằng tỉ '
-                        'số. b) **Đúng** theo công thức trọng tâm **Xác suất của biến cố $E$** ($P(E) = '
+                        'số. b) **Đúng** theo công thức **Xác suất của biến cố $E$** ($P(E) = '
                         '\\dfrac{\\text{Số kết quả thuận lợi cho } E}{\\text{Tổng số kết quả có thể}} = '
-                        '\\dfrac{k}{n}$). c) **Sai** vì $\\text{Bậc} = m + n + p$ là công thức của nội dung '
-                        'khác, không phải quy tắc chung của **Xác suất của biến cố $E$**. d) **Đúng** theo '
-                        'lời giải ví dụ minh họa trong bài học.'},
+                        '\\dfrac{k}{n}$). c) **Sai** vì công thức đúng của **Xác suất của biến cố $E$** phải '
+                        'là $P(E) = \\dfrac{\\text{Số kết quả thuận lợi cho } E}{\\text{Tổng số kết quả có '
+                        'thể}} = \\dfrac{k}{n}$ chứ không phải $P(E) = \\dfrac{\\text{Số kết quả thuận lợi '
+                        'cho } E}{\\text{Tổng số kết quả có thể}} = \\dfrac{k}{n}$ (với dấu ngược lại). d) '
+                        '**Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 31: Cách tính xác suất của biến cố bằng tỉ số** để giải quyết '
-                 'tình huống sau: Một túi đựng $5$ viên bi đỏ, $3$ viên bi xanh và $2$ viên bi vàng có cùng '
-                 'kích thước và khối lượng. Lấy ngẫu nhiên một viên bi từ túi. Tính xác suất của biến cố '
-                 "$A$: 'Lấy được viên bi màu đỏ'. Kết quả và hướng giải nào dưới đây là **đúng**?",
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 31: Cách tính xác suất của biến cố bằng tỉ số** để '
+                 'giải bài toán sau: Một túi đựng $5$ viên bi đỏ, $3$ viên bi xanh và $2$ viên bi vàng có '
+                 'cùng kích thước và khối lượng. Lấy ngẫu nhiên một viên bi từ túi. Tính xác suất của biến '
+                 "cố $A$: 'Lấy được viên bi màu đỏ'. Cách giải và kết quả nào dưới đây là **đúng**?",
             'options': ['Tổng số kết quả có thể đồng khả năng là $n = 5 + 3 + 2 = 10$. Số kết quả thuận lợi '
-                        'cho biến cố $A$ (lấy được viên bi đỏ) là $k = 5$. Vậy xác suất của biến...',
-                        'Ta có: $A = (-2 \\cdot 3)(x^2 \\cdot x)(y \\cdot y^3) = -6x^3y^4$. Hệ số là $-6$, '
-                        'phần biến là $x^3y^4$, bậc của đơn thức là $3 + 4 = 7$.',
-                        'Nhóm các hạng tử đồng dạng: $P = (2x^2y - 2x^2y) + 5x^2y^2 + (-3xy + 4xy) - 1 = '
-                        '5x^2y^2 + xy - 1$. Các hạng tử của dạng thu gọn có bậc lần lượt là $4; 2; 0$...',
-                        '- $M + N = (3x^2 + x^2) + (-2xy + 2xy) + (y^2 - 3y^2) = 4x^2 - 2y^2$. - $M - N = '
-                        '(3x^2 - x^2) + (-2xy - 2xy) + (y^2 + 3y^2) = 2x^2 - 4xy + 4y^2$.'],
+                        'cho biến cố $A$ (lấy được viên bi đỏ) là $k = 5$. Vậy xác suất của...',
+                        'Tổng số kết quả có thể đồng khả năng là $n = 5 - 3 + 2 = 10$. Số kết quả thuận lợi '
+                        'cho biến cố $A$ (lấy được viên bi đỏ) là $k = 5$. Vậy xác suất của...',
+                        'Tổng số kết quả có thể đồng khả năng là $n = 5 + 3 + 2 = 10$. Số kết quả thuận lợi '
+                        'cho biến cố $A$ (lấy được viên bi đỏ) là $k = 4$. Vậy xác suất của...',
+                        'Tổng số kết quả có thể đồng khả năng là $n = 10 + 3 + 2 = 10$. Số kết quả thuận lợi '
+                        'cho biến cố $A$ (lấy được viên bi đỏ) là $k = 5$. Vậy xác suất của...'],
             'answer': 0,
             'solution': 'Lời giải chi tiết theo Bài 31: Cách tính xác suất của biến cố bằng tỉ số: Tổng số '
                         'kết quả có thể đồng khả năng là $n = 5 + 3 + 2 = 10$.\n'
@@ -5160,9 +5233,8 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
   'requirements': ['Tính được xác suất thực nghiệm của một biến cố trong một số phép thử lặp lại.',
                    'Nhận biết được khi số lần thực nghiệm rất lớn thì xác suất thực nghiệm xấp xỉ với xác '
                    'suất lí thuyết và vận dụng vào bài toán ước lượng.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Xác suất thực nghiệm của biến cố $E$** '
-                   '($P_{\\text{tn}}(E) = \\dfrac{k}{n}$ ($k$: số lần $E$ xảy ra trong $n$ lần thử)) vào '
-                   'giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 32: Mối liên hệ giữa xác suất thực nghiệm với xác suất và '
+                   'ứng dụng** để giải bài tập minh họa và bài toán thực tiễn.'],
   'definition': 'Giả sử trong $n$ lần thực nghiệm hoặc quan sát, biến cố $E$ xảy ra $k$ lần. Khi đó tỉ số '
                 '$\\dfrac{k}{n}$ được gọi là xác suất thực nghiệm của biến cố $E$, tức là bằng số lần biến '
                 'cố $E$ xảy ra chia cho tổng số lần thực nghiệm.',
@@ -5213,31 +5285,30 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 32: Mối liên hệ giữa xác suất thực nghiệm với xác suất '
-                 'và ứng dụng**, công thức hoặc quy tắc nào sau đây biểu diễn đúng **Xác suất thực nghiệm '
-                 'của biến cố $E$**?',
-            'options': ['$P(E) \\approx \\dfrac{k}{n}$',
+            'q': 'Trong **Bài 32: Mối liên hệ giữa xác suất thực nghiệm với xác suất và ứng dụng**, quy tắc '
+                 'hoặc công thức nào sau đây xác định đúng **Xác suất thực nghiệm của biến cố $E$**?',
+            'options': ['$P_{\\text{tn}}(E) = \\dfrac{k}{n}$ ($k$: số lần $E$ xảy ra trong $n$ lần thử) (với '
+                        'dấu ngược lại)',
                         '$P_{\\text{tn}}(E) = \\dfrac{k}{n}$ ($k$: số lần $E$ xảy ra trong $n$ lần thử)',
-                        '$\\text{Bậc} = m + n + p$',
-                        '$a x^m y^n + b x^m y^n = (a + b)x^m y^n; \\quad a x^m y^n - b x^m y^n = (a - b)x^m '
-                        'y^n$'],
+                        '$P_{\\text{tn}}(E) = \\dfrac{n}{k}$ ($k$: số lần $E$ xảy ra trong $n$ lần thử)',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $P_{\\text{tn}}(E) = '
+                        '\\dfrac{k}{n}$ ($k$: số lần $E$ xảy ra trong $n$ lần thử)'],
             'answer': 1,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 32: Mối liên hệ giữa xác suất thực nghiệm với '
-                        'xác suất và ứng dụng, **Xác suất thực nghiệm của biến cố $E$** được xác định bởi: '
+            'solution': 'Theo kiến thức trọng tâm của Bài 32: Mối liên hệ giữa xác suất thực nghiệm với xác '
+                        'suất và ứng dụng, **Xác suất thực nghiệm của biến cố $E$** được xác định bởi: '
                         '$P_{\\text{tn}}(E) = \\dfrac{k}{n}$ ($k$: số lần $E$ xảy ra trong $n$ lần thử).'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 32: Mối liên hệ giữa xác suất thực nghiệm với xác suất và ứng dụng**, nội '
-                 'dung/biểu thức $P(E) \\approx \\dfrac{k}{n}$ là quy tắc hoặc công thức của mục nào sau '
-                 'đây?',
-            'options': ['Xác suất thực nghiệm của biến cố $E$',
-                        'Bậc của đơn thức $a x^m y^n z^p$ ($a \\neq 0$)',
-                        'Ước lượng xác suất khi $n$ lớn',
-                        'Cộng, trừ hai đơn thức đồng dạng'],
+            'q': 'Khi học **Bài 32: Mối liên hệ giữa xác suất thực nghiệm với xác suất và ứng dụng**, biểu '
+                 'thức hoặc quy tắc nào dưới đây biểu diễn đúng **Ước lượng xác suất khi $n$ lớn**?',
+            'options': ['$P(E) \\approx \\dfrac{k}{n}$ (với dấu ngược lại)',
+                        '$P(E) \\approx \\dfrac{n}{k}$',
+                        '$P(E) \\approx \\dfrac{k}{n}$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $P(E) \\approx \\dfrac{k}{n}$'],
             'answer': 2,
-            'solution': 'Trong Bài 32: Mối liên hệ giữa xác suất thực nghiệm với xác suất và ứng dụng, biểu '
-                        'thức/quy tắc $P(E) \\approx \\dfrac{k}{n}$ chính là nội dung của **Ước lượng xác '
-                        'suất khi $n$ lớn**.'},
+            'solution': 'Trong Bài 32: Mối liên hệ giữa xác suất thực nghiệm với xác suất và ứng dụng, **Ước '
+                        'lượng xác suất khi $n$ lớn** có công thức/quy tắc là: $P(E) \\approx '
+                        '\\dfrac{k}{n}$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Một xạ thủ bắn $100$ viên đạn vào bia thì có $85$ viên trúng tâm. Xác suất thực nghiệm của '
@@ -5250,19 +5321,19 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 32: Mối liên hệ giữa xác suất thực nghiệm với xác suất và ứng dụng** (Chương '
-                 'VIII: Mở đầu về tính xác suất của biến cố), khẳng định nào sau đây phản ánh **đúng** yêu '
-                 'cầu cần đạt và bản chất kiến thức của bài?',
+            'q': 'Để nắm vững bản chất của **Bài 32: Mối liên hệ giữa xác suất thực nghiệm với xác suất và '
+                 'ứng dụng**, nhận định nào sau đây là **chính xác**?',
             'options': ['Tính được xác suất thực nghiệm của một biến cố trong một số phép thử lặp lại.',
-                        'Nhận biết được đơn thức nhiều biến, đơn thức thu gọn, hệ số, phần biến và bậc của '
-                        'một đơn thức.',
-                        'Nhận biết được các đơn thức đồng dạng và thực hiện được phép cộng, phép trừ các đơn '
-                        'thức đồng dạng.',
-                        'Nhận biết được đa thức nhiều biến và các hạng tử của đa thức.'],
+                        'Tính được xác suất thực nghiệm của một biến cố trong một số phép thử lặp lại. (với '
+                        'dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Tính được xác suất thực nghiệm của một biến cố trong một '
+                        'số phép thử lặp lại.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Tính được xác suất thực nghiệm '
+                        'của một biến cố trong một số phép thử lặp lại.'],
             'answer': 0,
-            'solution': 'Theo yêu cầu cần đạt của Bài 32: Mối liên hệ giữa xác suất thực nghiệm với xác suất '
-                        'và ứng dụng: Tính được xác suất thực nghiệm của một biến cố trong một số phép thử '
-                        'lặp lại.'},
+            'solution': 'Theo nội dung cốt lõi của Bài 32: Mối liên hệ giữa xác suất thực nghiệm với xác '
+                        'suất và ứng dụng: Tính được xác suất thực nghiệm của một biến cố trong một số phép '
+                        'thử lặp lại.'},
            {'level': 'hieu',
             'type': 'tf4',
             'q': 'Gieo thử nghiệm $200$ hạt giống cải thì thấy có $184$ hạt nảy mầm. Xét các khẳng định sau:',
@@ -5280,44 +5351,46 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 32: Mối liên hệ giữa '
-                 'xác suất thực nghiệm với xác suất và ứng dụng**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Tính được xác suất thực nghiệm của '
-                           'một biến cố trong một số phép thử lặp lại.',
-                           'Quy tắc/công thức **Xác suất thực nghiệm của biến cố $E$** trong bài được xác '
-                           'định bởi: $P_{\\text{tn}}(E) = \\dfrac{k}{n}$ ($k$: số lần $E$ xảy ra trong $n$ '
-                           'lần thử).',
-                           'Trong mọi trường hợp, **Xác suất thực nghiệm của biến cố $E$** luôn được tính '
-                           'bằng công thức $\\text{Bậc} = m + n + p$ (thuộc Bậc của đơn thức $a x^m y^n z^p$ '
-                           '($a \\neq 0$)) mà không cần điều kiện của Bài 32: Mối liên hệ giữa xác suất thực '
-                           'nghiệm với xác suất và ứng dụng.',
-                           'Với bài toán minh họa: “Một nhà máy kiểm tra ngẫu nhiên $500$ bóng đèn vừa sản '
-                           'xuất thì thấy có $5$ bóng đèn bị lỗi. Tính xác suất thực nghiệm của biến cố '
-                           "'Bóng đèn...”, lời giải đúng là: - Số bóng đèn không bị lỗi trong mẫu kiểm tra "
-                           'là $500 - 5 = 495$ (bóng). - Xác suất thực nghiệm bóng đèn không bị lỗi là '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 32: Mối liên hệ giữa xác '
+                 'suất thực nghiệm với xác suất và ứng dụng**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Tính được xác suất thực nghiệm của một '
+                           'biến cố trong một số phép thử lặp lại.',
+                           'Trong **Bài 32: Mối liên hệ giữa xác suất thực nghiệm với xác suất và ứng '
+                           'dụng**, quy tắc/công thức **Xác suất thực nghiệm của biến cố $E$** được viết là: '
+                           '$P_{\\text{tn}}(E) = \\dfrac{k}{n}$ ($k$: số lần $E$ xảy ra trong $n$ lần thử).',
+                           'Nếu áp dụng sai dấu/phép tính thành $P_{\\text{tn}}(E) = \\dfrac{k}{n}$ ($k$: số '
+                           'lần $E$ xảy ra trong $n$ lần thử) (với dấu ngược lại) thì kết quả của **Xác suất '
+                           'thực nghiệm của biến cố $E$** trong **Bài 32: Mối liên hệ giữa xác suất thực '
+                           'nghiệm với xác suất và ứng dụng** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Một nhà máy kiểm tra ngẫu nhiên $500$ bóng đèn vừa sản xuất '
+                           "thì thấy có $5$ bóng đèn bị lỗi. Tính xác suất thực nghiệm của biến cố 'Bón...”, "
+                           'kết quả giải đúng là: - Số bóng đèn không bị lỗi trong mẫu kiểm tra là $500 - 5 '
+                           '= 495$ (bóng). - Xác suất thực nghiệm bóng đèn không bị lỗi là '
                            '$\\dfrac{495}{500} = 0,99$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 32: Mối liên hệ giữa xác suất thực nghiệm '
-                        'với xác suất và ứng dụng. b) **Đúng** theo công thức trọng tâm **Xác suất thực '
-                        'nghiệm của biến cố $E$** ($P_{\\text{tn}}(E) = \\dfrac{k}{n}$ ($k$: số lần $E$ xảy '
-                        'ra trong $n$ lần thử)). c) **Sai** vì $\\text{Bậc} = m + n + p$ là công thức của '
-                        'nội dung khác, không phải quy tắc chung của **Xác suất thực nghiệm của biến cố '
-                        '$E$**. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        'với xác suất và ứng dụng. b) **Đúng** theo công thức **Xác suất thực nghiệm của '
+                        'biến cố $E$** ($P_{\\text{tn}}(E) = \\dfrac{k}{n}$ ($k$: số lần $E$ xảy ra trong '
+                        '$n$ lần thử)). c) **Sai** vì công thức đúng của **Xác suất thực nghiệm của biến cố '
+                        '$E$** phải là $P_{\\text{tn}}(E) = \\dfrac{k}{n}$ ($k$: số lần $E$ xảy ra trong $n$ '
+                        'lần thử) chứ không phải $P_{\\text{tn}}(E) = \\dfrac{k}{n}$ ($k$: số lần $E$ xảy ra '
+                        'trong $n$ lần thử) (với dấu ngược lại). d) **Đúng** theo lời giải ví dụ minh họa '
+                        'trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 32: Mối liên hệ giữa xác suất thực nghiệm với xác suất và ứng '
-                 'dụng** để giải quyết tình huống sau: Một nhà máy kiểm tra ngẫu nhiên $500$ bóng đèn vừa '
-                 "sản xuất thì thấy có $5$ bóng đèn bị lỗi. Tính xác suất thực nghiệm của biến cố 'Bóng đèn "
-                 "được chọn không bị lỗi' và ước lượng số bóng đèn đạt chuẩn trong lô hàng $10000$ bóng. Kết "
-                 'quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Ta có: $A = (-2 \\cdot 3)(x^2 \\cdot x)(y \\cdot y^3) = -6x^3y^4$. Hệ số là $-6$, '
-                        'phần biến là $x^3y^4$, bậc của đơn thức là $3 + 4 = 7$.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 32: Mối liên hệ giữa xác suất thực nghiệm với xác '
+                 'suất và ứng dụng** để giải bài toán sau: Một nhà máy kiểm tra ngẫu nhiên $500$ bóng đèn '
+                 "vừa sản xuất thì thấy có $5$ bóng đèn bị lỗi. Tính xác suất thực nghiệm của biến cố 'Bóng "
+                 "đèn được chọn không bị lỗi' và ước lượng số bóng đèn đạt chuẩn trong lô hàng $10000$ bóng. "
+                 'Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['- Số bóng đèn không bị lỗi trong mẫu kiểm tra là $500 + 5 = 495$ (bóng). - Xác suất '
+                        'thực nghiệm bóng đèn không bị lỗi là $\\dfrac{495}{500} = 0,99$....',
                         '- Số bóng đèn không bị lỗi trong mẫu kiểm tra là $500 - 5 = 495$ (bóng). - Xác suất '
-                        'thực nghiệm bóng đèn không bị lỗi là $\\dfrac{495}{500} = 0,99$. - Trong...',
-                        'Nhóm các hạng tử đồng dạng: $P = (2x^2y - 2x^2y) + 5x^2y^2 + (-3xy + 4xy) - 1 = '
-                        '5x^2y^2 + xy - 1$. Các hạng tử của dạng thu gọn có bậc lần lượt là $4; 2; 0$...',
-                        '- $M + N = (3x^2 + x^2) + (-2xy + 2xy) + (y^2 - 3y^2) = 4x^2 - 2y^2$. - $M - N = '
-                        '(3x^2 - x^2) + (-2xy - 2xy) + (y^2 + 3y^2) = 2x^2 - 4xy + 4y^2$.'],
+                        'thực nghiệm bóng đèn không bị lỗi là $\\dfrac{495}{500} = 0,99$....',
+                        '- Số bóng đèn không bị lỗi trong mẫu kiểm tra là $500 - 5 = 495$ (bóng). - Xác suất '
+                        'thực nghiệm bóng đèn không bị lỗi là $\\dfrac{500}{495} = 0,99$....',
+                        '- Số bóng đèn không bị lỗi trong mẫu kiểm tra là $502 - 5 = 495$ (bóng). - Xác suất '
+                        'thực nghiệm bóng đèn không bị lỗi là $\\dfrac{495}{500} = 0,99$....'],
             'answer': 1,
             'solution': 'Lời giải chi tiết theo Bài 32: Mối liên hệ giữa xác suất thực nghiệm với xác suất '
                         'và ứng dụng: - Số bóng đèn không bị lỗi trong mẫu kiểm tra là $500 - 5 = 495$ '
@@ -5347,10 +5420,8 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
   'requirements': ['Mô tả được định nghĩa của hai tam giác đồng dạng và tỉ số đồng dạng.',
                    'Giải thích được tính chất của hai tam giác đồng dạng và định lí về tam giác tạo bởi '
                    'đường thẳng cắt hai cạnh và song song với cạnh còn lại.',
-                   "Ghi nhớ và vận dụng đúng quy tắc/công thức **Định nghĩa $\\triangle A'B'C' \\sim "
-                   "\\triangle ABC$** ($\\widehat{A'} = \\widehat{A}, \\widehat{B'} = \\widehat{B}, "
-                   "\\widehat{C'} = \\widehat{C}$ và $\\dfrac{A'B'}{AB} = \\dfrac{B'C'}{BC} = "
-                   "\\dfrac{C'A'}{CA} = k$) vào giải bài tập."],
+                   'Vận dụng kiến thức của **Bài 33: Hai tam giác đồng dạng** để giải bài tập minh họa và '
+                   'bài toán thực tiễn.'],
   'definition': "Tam giác $\\triangle A'B'C'$ gọi là đồng dạng với tam giác $\\triangle ABC$, kí hiệu "
                 "$\\triangle A'B'C' \\sim \\triangle ABC$, nếu $\\widehat{A'} = \\widehat{A}, \\widehat{B'} "
                 "= \\widehat{B}, \\widehat{C'} = \\widehat{C}$ và $\\dfrac{A'B'}{AB} = \\dfrac{B'C'}{BC} = "
@@ -5401,30 +5472,35 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 33: Hai tam giác đồng dạng**, công thức hoặc quy tắc nào '
-                 "sau đây biểu diễn đúng **Định nghĩa $\\triangle A'B'C' \\sim \\triangle ABC$**?",
-            'options': ["$\\dfrac{P_{\\triangle A'B'C'}}{P_{\\triangle ABC}} = k$",
-                        '$\\triangle AMN \\sim \\triangle ABC$',
+            'q': 'Trong **Bài 33: Hai tam giác đồng dạng**, quy tắc hoặc công thức nào sau đây xác định đúng '
+                 "**Định nghĩa $\\triangle A'B'C' \\sim \\triangle ABC$**?",
+            'options': ["$\\widehat{A'} = \\widehat{A}, \\widehat{B'} = \\widehat{B}, \\widehat{C'} = "
+                        "\\widehat{C}$ và $\\dfrac{A'B'}{AB} = \\dfrac{B'C'}{BC} = \\dfrac{C'A'}{CA} = k$ "
+                        '(với dấu ngược lại)',
+                        "$\\widehat{A'} = \\widehat{A}, \\widehat{B'} = \\widehat{B}, \\widehat{C'} = "
+                        "\\widehat{C}$ và $\\dfrac{AB}{A'B'} = \\dfrac{B'C'}{BC} = \\dfrac{C'A'}{CA} = k$",
                         "$\\widehat{A'} = \\widehat{A}, \\widehat{B'} = \\widehat{B}, \\widehat{C'} = "
                         "\\widehat{C}$ và $\\dfrac{A'B'}{AB} = \\dfrac{B'C'}{BC} = \\dfrac{C'A'}{CA} = k$",
-                        '$\\text{Bậc} = m + n + p$'],
+                        "Trường hợp trái ngược: không thỏa mãn điều kiện của $\\widehat{A'} = \\widehat{A}, "
+                        "\\widehat{B'} = \\widehat{B}, \\widehat{C'} = \\widehat{C}$ và $\\dfrac{A'B'}{AB} = "
+                        "\\dfrac{B'C'}{BC} = \\dfrac{C'A'}{CA} = k$"],
             'answer': 2,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 33: Hai tam giác đồng dạng, **Định nghĩa '
+            'solution': 'Theo kiến thức trọng tâm của Bài 33: Hai tam giác đồng dạng, **Định nghĩa '
                         "$\\triangle A'B'C' \\sim \\triangle ABC$** được xác định bởi: $\\widehat{A'} = "
                         "\\widehat{A}, \\widehat{B'} = \\widehat{B}, \\widehat{C'} = \\widehat{C}$ và "
                         "$\\dfrac{A'B'}{AB} = \\dfrac{B'C'}{BC} = \\dfrac{C'A'}{CA} = k$."},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 33: Hai tam giác đồng dạng**, nội dung/biểu thức $\\dfrac{P_{\\triangle '
-                 "A'B'C'}}{P_{\\triangle ABC}} = k$ là quy tắc hoặc công thức của mục nào sau đây?",
-            'options': ["Định nghĩa $\\triangle A'B'C' \\sim \\triangle ABC$",
-                        'Đường thẳng song song $MN \\parallel BC$',
-                        'Bậc của đơn thức $a x^m y^n z^p$ ($a \\neq 0$)',
-                        'Tỉ số chu vi của hai tam giác đồng dạng'],
+            'q': 'Khi học **Bài 33: Hai tam giác đồng dạng**, biểu thức hoặc quy tắc nào dưới đây biểu diễn '
+                 'đúng **Tỉ số chu vi của hai tam giác đồng dạng**?',
+            'options': ["$\\dfrac{P_{\\triangle A'B'C'}}{P_{\\triangle ABC}} = k$ (với dấu ngược lại)",
+                        "Đảo ngược vế của quy tắc: $\\dfrac{P_{\\triangle A'B'C'}}{P_{\\triangle ABC}} = k$",
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\dfrac{P_{\\triangle '
+                        "A'B'C'}}{P_{\\triangle ABC}} = k$",
+                        "$\\dfrac{P_{\\triangle A'B'C'}}{P_{\\triangle ABC}} = k$"],
             'answer': 3,
-            'solution': 'Trong Bài 33: Hai tam giác đồng dạng, biểu thức/quy tắc $\\dfrac{P_{\\triangle '
-                        "A'B'C'}}{P_{\\triangle ABC}} = k$ chính là nội dung của **Tỉ số chu vi của hai tam "
-                        'giác đồng dạng**.'},
+            'solution': 'Trong Bài 33: Hai tam giác đồng dạng, **Tỉ số chu vi của hai tam giác đồng dạng** '
+                        "có công thức/quy tắc là: $\\dfrac{P_{\\triangle A'B'C'}}{P_{\\triangle ABC}} = k$."},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Cho $\\triangle ABC \\sim \\triangle MNP$, biết $AB = 4\\text{ cm}, BC = 6\\text{ cm}, MN '
@@ -5437,16 +5513,17 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 33: Hai tam giác đồng dạng** (Chương IX: Tam giác đồng dạng), khẳng định nào '
-                 'sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Nhận biết được đơn thức nhiều biến, đơn thức thu gọn, hệ số, phần biến và bậc của '
-                        'một đơn thức.',
+            'q': 'Để nắm vững bản chất của **Bài 33: Hai tam giác đồng dạng**, nhận định nào sau đây là '
+                 '**chính xác**?',
+            'options': ['Mô tả được định nghĩa của hai tam giác đồng dạng và tỉ số đồng dạng. (với dấu ngược '
+                        'lại)',
                         'Mô tả được định nghĩa của hai tam giác đồng dạng và tỉ số đồng dạng.',
-                        'Nhận biết được các đơn thức đồng dạng và thực hiện được phép cộng, phép trừ các đơn '
-                        'thức đồng dạng.',
-                        'Nhận biết được đa thức nhiều biến và các hạng tử của đa thức.'],
+                        'Đảo ngược vế của quy tắc: Mô tả được định nghĩa của hai tam giác đồng dạng và tỉ số '
+                        'đồng dạng.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Mô tả được định nghĩa của hai '
+                        'tam giác đồng dạng và tỉ số đồng dạng.'],
             'answer': 1,
-            'solution': 'Theo yêu cầu cần đạt của Bài 33: Hai tam giác đồng dạng: Mô tả được định nghĩa của '
+            'solution': 'Theo nội dung cốt lõi của Bài 33: Hai tam giác đồng dạng: Mô tả được định nghĩa của '
                         'hai tam giác đồng dạng và tỉ số đồng dạng.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -5465,46 +5542,54 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 33: Hai tam giác đồng '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 33: Hai tam giác đồng '
                  'dạng**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Mô tả được định nghĩa của hai tam '
-                           'giác đồng dạng và tỉ số đồng dạng.',
-                           "Quy tắc/công thức **Định nghĩa $\\triangle A'B'C' \\sim \\triangle ABC$** trong "
-                           "bài được xác định bởi: $\\widehat{A'} = \\widehat{A}, \\widehat{B'} = "
-                           "\\widehat{B}, \\widehat{C'} = \\widehat{C}$ và $\\dfrac{A'B'}{AB} = "
-                           "\\dfrac{B'C'}{BC} = \\dfrac{C'A'}{CA} = k$.",
-                           "Trong mọi trường hợp, **Định nghĩa $\\triangle A'B'C' \\sim \\triangle ABC$** "
-                           'luôn được tính bằng công thức $\\text{Bậc} = m + n + p$ (thuộc Bậc của đơn thức '
-                           '$a x^m y^n z^p$ ($a \\neq 0$)) mà không cần điều kiện của Bài 33: Hai tam giác '
-                           'đồng dạng.',
-                           "Với bài toán minh họa: “Cho $\\triangle A'B'C' \\sim \\triangle ABC$ theo tỉ số "
-                           'đồng dạng $k = \\dfrac{2}{3}$. Biết chu vi của $\\triangle ABC$ là $36\\text{ '
-                           "cm}$, tính c...”, lời giải đúng là: Vì $\\triangle A'B'C' \\sim \\triangle ABC$ "
-                           'theo tỉ số đồng dạng $k = \\dfrac{2}{3}$ nên tỉ số chu vi của hai tam giác cũng '
-                           'bằng $\\dfrac{2}{3}$....'],
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Mô tả được định nghĩa của hai tam giác '
+                           'đồng dạng và tỉ số đồng dạng.',
+                           'Trong **Bài 33: Hai tam giác đồng dạng**, quy tắc/công thức **Định nghĩa '
+                           "$\\triangle A'B'C' \\sim \\triangle ABC$** được viết là: $\\widehat{A'} = "
+                           "\\widehat{A}, \\widehat{B'} = \\widehat{B}, \\widehat{C'} = \\widehat{C}$ và "
+                           "$\\dfrac{A'B'}{AB} = \\dfrac{B'C'}{BC} = \\dfrac{C'A'}{CA} = k$.",
+                           "Nếu áp dụng sai dấu/phép tính thành $\\widehat{A'} = \\widehat{A}, \\widehat{B'} "
+                           "= \\widehat{B}, \\widehat{C'} = \\widehat{C}$ và $\\dfrac{A'B'}{AB} = "
+                           "\\dfrac{B'C'}{BC} = \\dfrac{C'A'}{CA} = k$ (với dấu ngược lại) thì kết quả của "
+                           "**Định nghĩa $\\triangle A'B'C' \\sim \\triangle ABC$** trong **Bài 33: Hai tam "
+                           'giác đồng dạng** vẫn không thay đổi.',
+                           "Xét ví dụ của bài: “Cho $\\triangle A'B'C' \\sim \\triangle ABC$ theo tỉ số đồng "
+                           'dạng $k = \\dfrac{2}{3}$. Biết chu vi của $\\triangle ABC$ là $36\\text{ cm}$, '
+                           "t...”, kết quả giải đúng là: Vì $\\triangle A'B'C' \\sim \\triangle ABC$ theo tỉ "
+                           'số đồng dạng $k = \\dfrac{2}{3}$ nên tỉ số chu vi của hai tam giác cũng bằng '
+                           '$\\dfrac{2}{3}$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 33: Hai tam giác đồng dạng. b) **Đúng** '
-                        "theo công thức trọng tâm **Định nghĩa $\\triangle A'B'C' \\sim \\triangle ABC$** "
+                        "theo công thức **Định nghĩa $\\triangle A'B'C' \\sim \\triangle ABC$** "
                         "($\\widehat{A'} = \\widehat{A}, \\widehat{B'} = \\widehat{B}, \\widehat{C'} = "
                         "\\widehat{C}$ và $\\dfrac{A'B'}{AB} = \\dfrac{B'C'}{BC} = \\dfrac{C'A'}{CA} = k$). "
-                        'c) **Sai** vì $\\text{Bậc} = m + n + p$ là công thức của nội dung khác, không phải '
-                        "quy tắc chung của **Định nghĩa $\\triangle A'B'C' \\sim \\triangle ABC$**. d) "
-                        '**Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        "c) **Sai** vì công thức đúng của **Định nghĩa $\\triangle A'B'C' \\sim \\triangle "
+                        "ABC$** phải là $\\widehat{A'} = \\widehat{A}, \\widehat{B'} = \\widehat{B}, "
+                        "\\widehat{C'} = \\widehat{C}$ và $\\dfrac{A'B'}{AB} = \\dfrac{B'C'}{BC} = "
+                        "\\dfrac{C'A'}{CA} = k$ chứ không phải $\\widehat{A'} = \\widehat{A}, \\widehat{B'} "
+                        "= \\widehat{B}, \\widehat{C'} = \\widehat{C}$ và $\\dfrac{A'B'}{AB} = "
+                        "\\dfrac{B'C'}{BC} = \\dfrac{C'A'}{CA} = k$ (với dấu ngược lại). d) **Đúng** theo "
+                        'lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 33: Hai tam giác đồng dạng** để giải quyết tình huống sau: Cho '
-                 "$\\triangle A'B'C' \\sim \\triangle ABC$ theo tỉ số đồng dạng $k = \\dfrac{2}{3}$. Biết "
-                 "chu vi của $\\triangle ABC$ là $36\\text{ cm}$, tính chu vi của $\\triangle A'B'C'$. Kết "
-                 'quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Ta có: $A = (-2 \\cdot 3)(x^2 \\cdot x)(y \\cdot y^3) = -6x^3y^4$. Hệ số là $-6$, '
-                        'phần biến là $x^3y^4$, bậc của đơn thức là $3 + 4 = 7$.',
-                        'Nhóm các hạng tử đồng dạng: $P = (2x^2y - 2x^2y) + 5x^2y^2 + (-3xy + 4xy) - 1 = '
-                        '5x^2y^2 + xy - 1$. Các hạng tử của dạng thu gọn có bậc lần lượt là $4; 2; 0$...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 33: Hai tam giác đồng dạng** để giải bài toán sau: '
+                 "Cho $\\triangle A'B'C' \\sim \\triangle ABC$ theo tỉ số đồng dạng $k = \\dfrac{2}{3}$. "
+                 "Biết chu vi của $\\triangle ABC$ là $36\\text{ cm}$, tính chu vi của $\\triangle A'B'C'$. "
+                 'Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ["Vì $\\triangle A'B'C' \\sim \\triangle ABC$ theo tỉ số đồng dạng $k = "
+                        '\\dfrac{3}{3}$ nên tỉ số chu vi của hai tam giác cũng bằng $\\dfrac{2}{3}$. Do đó '
+                        'chu...',
+                        "Vì $\\triangle A'B'C' \\sim \\triangle ABC$ theo tỉ số đồng dạng $k = "
+                        '\\dfrac{3}{2}$ nên tỉ số chu vi của hai tam giác cũng bằng $\\dfrac{2}{3}$. Do đó '
+                        'chu...',
                         "Vì $\\triangle A'B'C' \\sim \\triangle ABC$ theo tỉ số đồng dạng $k = "
                         '\\dfrac{2}{3}$ nên tỉ số chu vi của hai tam giác cũng bằng $\\dfrac{2}{3}$. Do đó '
-                        'chu vi c...',
-                        '- $M + N = (3x^2 + x^2) + (-2xy + 2xy) + (y^2 - 3y^2) = 4x^2 - 2y^2$. - $M - N = '
-                        '(3x^2 - x^2) + (-2xy - 2xy) + (y^2 + 3y^2) = 2x^2 - 4xy + 4y^2$.'],
+                        'chu...',
+                        "Vì $\\triangle A'B'C' \\sim \\triangle ABC$ theo tỉ số đồng dạng $k = "
+                        '\\dfrac{4}{3}$ nên tỉ số chu vi của hai tam giác cũng bằng $\\dfrac{2}{3}$. Do đó '
+                        'chu...'],
             'answer': 2,
             'solution': "Lời giải chi tiết theo Bài 33: Hai tam giác đồng dạng: Vì $\\triangle A'B'C' \\sim "
                         '\\triangle ABC$ theo tỉ số đồng dạng $k = \\dfrac{2}{3}$ nên tỉ số chu vi của hai '
@@ -5533,9 +5618,8 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
                    'g.g.',
                    'Vận dụng các trường hợp đồng dạng để tính độ dài đoạn thẳng, chứng minh hai góc bằng '
                    'nhau và hệ thức tích.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Trường hợp cạnh - cạnh - cạnh (c.c.c)** '
-                   "($\\dfrac{A'B'}{AB} = \\dfrac{B'C'}{BC} = \\dfrac{C'A'}{CA} \\Rightarrow \\triangle "
-                   "A'B'C' \\sim \\triangle ABC$) vào giải bài tập."],
+                   'Vận dụng kiến thức của **Bài 34: Ba trường hợp đồng dạng của hai tam giác** để giải bài '
+                   'tập minh họa và bài toán thực tiễn.'],
   'definition': 'Hai tam giác đồng dạng nếu: (1) Ba cạnh của tam giác này tỉ lệ với ba cạnh của tam giác kia '
                 '(c.c.c); hoặc (2) Hai cạnh của tam giác này tỉ lệ với hai cạnh của tam giác kia và hai góc '
                 'tạo bởi các cặp cạnh đó bằng nhau (c.g.c); hoặc (3) Hai góc của tam giác này lần lượt bằng '
@@ -5595,34 +5679,40 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 34: Ba trường hợp đồng dạng của hai tam giác**, công '
-                 'thức hoặc quy tắc nào sau đây biểu diễn đúng **Trường hợp cạnh - cạnh - cạnh (c.c.c)**?',
-            'options': ["$\\dfrac{A'B'}{AB} = \\dfrac{A'C'}{AC}$ và $\\widehat{A'} = \\widehat{A} "
-                        "\\Rightarrow \\triangle A'B'C' \\sim \\triangle ABC$",
-                        "$\\widehat{A'} = \\widehat{A}$ và $\\widehat{B'} = \\widehat{B} \\Rightarrow "
-                        "\\triangle A'B'C' \\sim \\triangle ABC$",
-                        '$\\text{Bậc} = m + n + p$',
+            'q': 'Trong **Bài 34: Ba trường hợp đồng dạng của hai tam giác**, quy tắc hoặc công thức nào sau '
+                 'đây xác định đúng **Trường hợp cạnh - cạnh - cạnh (c.c.c)**?',
+            'options': ["$\\dfrac{A'B'}{AB} = \\dfrac{B'C'}{BC} = \\dfrac{C'A'}{CA} \\Rightarrow \\triangle "
+                        "A'B'C' \\sim \\triangle ABC$ (với dấu ngược lại)",
+                        "$\\dfrac{AB}{A'B'} = \\dfrac{B'C'}{BC} = \\dfrac{C'A'}{CA} \\Rightarrow \\triangle "
+                        "A'B'C' \\sim \\triangle ABC$",
+                        "Trường hợp trái ngược: không thỏa mãn điều kiện của $\\dfrac{A'B'}{AB} = "
+                        "\\dfrac{B'C'}{BC} = \\dfrac{C'A'}{CA} \\Rightarrow \\triangle A'B'C' \\sim "
+                        '\\triangle ABC$',
                         "$\\dfrac{A'B'}{AB} = \\dfrac{B'C'}{BC} = \\dfrac{C'A'}{CA} \\Rightarrow \\triangle "
                         "A'B'C' \\sim \\triangle ABC$"],
             'answer': 3,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 34: Ba trường hợp đồng dạng của hai tam giác, '
+            'solution': 'Theo kiến thức trọng tâm của Bài 34: Ba trường hợp đồng dạng của hai tam giác, '
                         "**Trường hợp cạnh - cạnh - cạnh (c.c.c)** được xác định bởi: $\\dfrac{A'B'}{AB} = "
                         "\\dfrac{B'C'}{BC} = \\dfrac{C'A'}{CA} \\Rightarrow \\triangle A'B'C' \\sim "
                         '\\triangle ABC$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 34: Ba trường hợp đồng dạng của hai tam giác**, nội dung/biểu thức '
-                 "$\\dfrac{A'B'}{AB} = \\dfrac{A'C'}{AC}$ và $\\widehat{A'} = \\widehat{A} \\Rightarrow "
-                 "\\triangle A'B'C' \\sim \\triangle ABC$ là quy tắc hoặc công thức của mục nào sau đây?",
-            'options': ['Trường hợp cạnh - góc - cạnh (c.g.c)',
-                        'Trường hợp cạnh - cạnh - cạnh (c.c.c)',
-                        'Trường hợp góc - góc (g.g)',
-                        'Bậc của đơn thức $a x^m y^n z^p$ ($a \\neq 0$)'],
-            'answer': 0,
-            'solution': 'Trong Bài 34: Ba trường hợp đồng dạng của hai tam giác, biểu thức/quy tắc '
+            'q': 'Khi học **Bài 34: Ba trường hợp đồng dạng của hai tam giác**, biểu thức hoặc quy tắc nào '
+                 'dưới đây biểu diễn đúng **Trường hợp cạnh - góc - cạnh (c.g.c)**?',
+            'options': ["$\\dfrac{A'B'}{AB} = \\dfrac{A'C'}{AC}$ và $\\widehat{A'} = \\widehat{A} "
+                        "\\Rightarrow \\triangle A'B'C' \\sim \\triangle ABC$",
                         "$\\dfrac{A'B'}{AB} = \\dfrac{A'C'}{AC}$ và $\\widehat{A'} = \\widehat{A} "
-                        "\\Rightarrow \\triangle A'B'C' \\sim \\triangle ABC$ chính là nội dung của **Trường "
-                        'hợp cạnh - góc - cạnh (c.g.c)**.'},
+                        "\\Rightarrow \\triangle A'B'C' \\sim \\triangle ABC$ (với dấu ngược lại)",
+                        "$\\dfrac{AB}{A'B'} = \\dfrac{A'C'}{AC}$ và $\\widehat{A'} = \\widehat{A} "
+                        "\\Rightarrow \\triangle A'B'C' \\sim \\triangle ABC$",
+                        "Trường hợp trái ngược: không thỏa mãn điều kiện của $\\dfrac{A'B'}{AB} = "
+                        "\\dfrac{A'C'}{AC}$ và $\\widehat{A'} = \\widehat{A} \\Rightarrow \\triangle A'B'C' "
+                        '\\sim \\triangle ABC$'],
+            'answer': 0,
+            'solution': 'Trong Bài 34: Ba trường hợp đồng dạng của hai tam giác, **Trường hợp cạnh - góc - '
+                        "cạnh (c.g.c)** có công thức/quy tắc là: $\\dfrac{A'B'}{AB} = \\dfrac{A'C'}{AC}$ và "
+                        "$\\widehat{A'} = \\widehat{A} \\Rightarrow \\triangle A'B'C' \\sim \\triangle "
+                        'ABC$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Cho $\\triangle ABC$ và $\\triangle MNP$ có $\\widehat{A} = \\widehat{M} = 70^\\circ, AB = '
@@ -5637,18 +5727,18 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 34: Ba trường hợp đồng dạng của hai tam giác** (Chương IX: Tam giác đồng '
-                 'dạng), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của '
-                 'bài?',
-            'options': ['Nhận biết được đơn thức nhiều biến, đơn thức thu gọn, hệ số, phần biến và bậc của '
-                        'một đơn thức.',
-                        'Nhận biết được các đơn thức đồng dạng và thực hiện được phép cộng, phép trừ các đơn '
-                        'thức đồng dạng.',
+            'q': 'Để nắm vững bản chất của **Bài 34: Ba trường hợp đồng dạng của hai tam giác**, nhận định '
+                 'nào sau đây là **chính xác**?',
+            'options': ['Giải thích và vận dụng được ba trường hợp đồng dạng của hai tam giác: c.c.c, c.g.c '
+                        'và g.g. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Giải thích và vận dụng được ba trường hợp đồng dạng của '
+                        'hai tam giác: c.c.c, c.g.c và g.g.',
                         'Giải thích và vận dụng được ba trường hợp đồng dạng của hai tam giác: c.c.c, c.g.c '
                         'và g.g.',
-                        'Nhận biết được đa thức nhiều biến và các hạng tử của đa thức.'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Giải thích và vận dụng được ba '
+                        'trường hợp đồng dạng của hai tam giác: c.c.c, c.g.c và g.g.'],
             'answer': 2,
-            'solution': 'Theo yêu cầu cần đạt của Bài 34: Ba trường hợp đồng dạng của hai tam giác: Giải '
+            'solution': 'Theo nội dung cốt lõi của Bài 34: Ba trường hợp đồng dạng của hai tam giác: Giải '
                         'thích và vận dụng được ba trường hợp đồng dạng của hai tam giác: c.c.c, c.g.c và '
                         'g.g.'},
            {'level': 'hieu',
@@ -5668,45 +5758,48 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 34: Ba trường hợp đồng '
-                 'dạng của hai tam giác**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Giải thích và vận dụng được ba '
-                           'trường hợp đồng dạng của hai tam giác: c.c.c, c.g.c và g.g.',
-                           'Quy tắc/công thức **Trường hợp cạnh - cạnh - cạnh (c.c.c)** trong bài được xác '
-                           "định bởi: $\\dfrac{A'B'}{AB} = \\dfrac{B'C'}{BC} = \\dfrac{C'A'}{CA} "
-                           "\\Rightarrow \\triangle A'B'C' \\sim \\triangle ABC$.",
-                           'Trong mọi trường hợp, **Trường hợp cạnh - cạnh - cạnh (c.c.c)** luôn được tính '
-                           'bằng công thức $\\text{Bậc} = m + n + p$ (thuộc Bậc của đơn thức $a x^m y^n z^p$ '
-                           '($a \\neq 0$)) mà không cần điều kiện của Bài 34: Ba trường hợp đồng dạng của '
-                           'hai tam giác.',
-                           'Với bài toán minh họa: “Cho $\\triangle ABC$ có $AB = 4\\text{ cm}, AC = '
-                           '6\\text{ cm}$. Trên cạnh $AB$ lấy điểm $D$ sao cho $AD = 3\\text{ cm}$, trên '
-                           'cạnh $AC$ lấy điểm...”, lời giải đúng là: Xét $\\triangle ADE$ và $\\triangle '
-                           'ACB$ có: - Góc $\\widehat{A}$ chung; - $\\dfrac{AD}{AC} = \\dfrac{3}{6} = '
-                           '\\dfrac{1}{2}$ và...'],
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 34: Ba trường hợp đồng dạng '
+                 'của hai tam giác**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Giải thích và vận dụng được ba trường '
+                           'hợp đồng dạng của hai tam giác: c.c.c, c.g.c và g.g.',
+                           'Trong **Bài 34: Ba trường hợp đồng dạng của hai tam giác**, quy tắc/công thức '
+                           "**Trường hợp cạnh - cạnh - cạnh (c.c.c)** được viết là: $\\dfrac{A'B'}{AB} = "
+                           "\\dfrac{B'C'}{BC} = \\dfrac{C'A'}{CA} \\Rightarrow \\triangle A'B'C' \\sim "
+                           '\\triangle ABC$.',
+                           "Nếu áp dụng sai dấu/phép tính thành $\\dfrac{A'B'}{AB} = \\dfrac{B'C'}{BC} = "
+                           "\\dfrac{C'A'}{CA} \\Rightarrow \\triangle A'B'C' \\sim \\triangle ABC$ (với dấu "
+                           'ngược lại) thì kết quả của **Trường hợp cạnh - cạnh - cạnh (c.c.c)** trong **Bài '
+                           '34: Ba trường hợp đồng dạng của hai tam giác** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Cho $\\triangle ABC$ có $AB = 4\\text{ cm}, AC = 6\\text{ '
+                           'cm}$. Trên cạnh $AB$ lấy điểm $D$ sao cho $AD = 3\\text{ cm}$, trên cạnh $AC$ '
+                           'lấy...”, kết quả giải đúng là: Xét $\\triangle ADE$ và $\\triangle ACB$ có: - '
+                           'Góc $\\widehat{A}$ chung; - $\\dfrac{AD}{AC} = \\dfrac{3}{6} = \\dfrac{1}{2}$ '
+                           'và...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 34: Ba trường hợp đồng dạng của hai tam '
-                        'giác. b) **Đúng** theo công thức trọng tâm **Trường hợp cạnh - cạnh - cạnh '
-                        "(c.c.c)** ($\\dfrac{A'B'}{AB} = \\dfrac{B'C'}{BC} = \\dfrac{C'A'}{CA} \\Rightarrow "
-                        "\\triangle A'B'C' \\sim \\triangle ABC$). c) **Sai** vì $\\text{Bậc} = m + n + p$ "
-                        'là công thức của nội dung khác, không phải quy tắc chung của **Trường hợp cạnh - '
-                        'cạnh - cạnh (c.c.c)**. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        'giác. b) **Đúng** theo công thức **Trường hợp cạnh - cạnh - cạnh (c.c.c)** '
+                        "($\\dfrac{A'B'}{AB} = \\dfrac{B'C'}{BC} = \\dfrac{C'A'}{CA} \\Rightarrow \\triangle "
+                        "A'B'C' \\sim \\triangle ABC$). c) **Sai** vì công thức đúng của **Trường hợp cạnh - "
+                        "cạnh - cạnh (c.c.c)** phải là $\\dfrac{A'B'}{AB} = \\dfrac{B'C'}{BC} = "
+                        "\\dfrac{C'A'}{CA} \\Rightarrow \\triangle A'B'C' \\sim \\triangle ABC$ chứ không "
+                        "phải $\\dfrac{A'B'}{AB} = \\dfrac{B'C'}{BC} = \\dfrac{C'A'}{CA} \\Rightarrow "
+                        "\\triangle A'B'C' \\sim \\triangle ABC$ (với dấu ngược lại). d) **Đúng** theo lời "
+                        'giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 34: Ba trường hợp đồng dạng của hai tam giác** để giải quyết tình '
-                 'huống sau: Cho $\\triangle ABC$ có $AB = 4\\text{ cm}, AC = 6\\text{ cm}$. Trên cạnh $AB$ '
-                 'lấy điểm $D$ sao cho $AD = 3\\text{ cm}$, trên cạnh $AC$ lấy điểm $E$ sao cho $AE = '
-                 '2\\text{ cm}$. Chứng minh $\\triangle ADE \\sim \\triangle ACB$. Kết quả và hướng giải nào '
-                 'dưới đây là **đúng**?',
-            'options': ['Ta có: $A = (-2 \\cdot 3)(x^2 \\cdot x)(y \\cdot y^3) = -6x^3y^4$. Hệ số là $-6$, '
-                        'phần biến là $x^3y^4$, bậc của đơn thức là $3 + 4 = 7$.',
-                        'Nhóm các hạng tử đồng dạng: $P = (2x^2y - 2x^2y) + 5x^2y^2 + (-3xy + 4xy) - 1 = '
-                        '5x^2y^2 + xy - 1$. Các hạng tử của dạng thu gọn có bậc lần lượt là $4; 2; 0$...',
-                        '- $M + N = (3x^2 + x^2) + (-2xy + 2xy) + (y^2 - 3y^2) = 4x^2 - 2y^2$. - $M - N = '
-                        '(3x^2 - x^2) + (-2xy - 2xy) + (y^2 + 3y^2) = 2x^2 - 4xy + 4y^2$.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 34: Ba trường hợp đồng dạng của hai tam giác** để '
+                 'giải bài toán sau: Cho $\\triangle ABC$ có $AB = 4\\text{ cm}, AC = 6\\text{ cm}$. Trên '
+                 'cạnh $AB$ lấy điểm $D$ sao cho $AD = 3\\text{ cm}$, trên cạnh $AC$ lấy điểm $E$ sao cho '
+                 '$AE = 2\\text{ cm}$. Chứng minh $\\triangle ADE \\sim \\triangle ACB$. Cách giải và kết '
+                 'quả nào dưới đây là **đúng**?',
+            'options': ['Xét $\\triangle ADE$ và $\\triangle ACB$ có: + Góc $\\widehat{A}$ chung; - '
+                        '$\\dfrac{AD}{AC} = \\dfrac{3}{6} = \\dfrac{1}{2}$ và...',
                         'Xét $\\triangle ADE$ và $\\triangle ACB$ có: - Góc $\\widehat{A}$ chung; - '
-                        '$\\dfrac{AD}{AC} = \\dfrac{3}{6} = \\dfrac{1}{2}$ và $\\dfrac{AE}{AB} = '
-                        '\\dfrac{2}{4} = \\dfrac{1}{2} \\Rightarrow \\dfrac{AD}{AC} = \\dfrac{AE}{AB}$...'],
+                        '$\\dfrac{AC}{AD} = \\dfrac{3}{6} = \\dfrac{1}{2}$ và...',
+                        'Xét $\\triangle ADE$ và $\\triangle ACB$ có: - Góc $\\widehat{A}$ chung; - '
+                        '$\\dfrac{AD}{AC} = \\dfrac{6}{6} = \\dfrac{1}{2}$ và...',
+                        'Xét $\\triangle ADE$ và $\\triangle ACB$ có: - Góc $\\widehat{A}$ chung; - '
+                        '$\\dfrac{AD}{AC} = \\dfrac{3}{6} = \\dfrac{1}{2}$ và...'],
             'answer': 3,
             'solution': 'Lời giải chi tiết theo Bài 34: Ba trường hợp đồng dạng của hai tam giác: Xét '
                         '$\\triangle ADE$ và $\\triangle ACB$ có:\n'
@@ -5736,8 +5829,8 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
   'requirements': ['Giải thích được định lí Pythagore thuận và định lí Pythagore đảo.',
                    'Tính được độ dài cạnh trong tam giác vuông bằng cách sử dụng định lí Pythagore và giải '
                    'quyết các bài toán thực tiễn.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Định lí Pythagore** ($BC^2 = AB^2 + AC^2$) '
-                   'vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 35: Định lí Pythagore và ứng dụng** để giải bài tập minh '
+                   'họa và bài toán thực tiễn.'],
   'definition': 'Định lí Pythagore: Trong một tam giác vuông, bình phương của cạnh huyền bằng tổng các bình '
                 'phương của hai cạnh góc vuông. Định lí Pythagore đảo: Nếu một tam giác có bình phương của '
                 'một cạnh bằng tổng các bình phương của hai cạnh kia thì tam giác đó là tam giác vuông.',
@@ -5787,26 +5880,26 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 35: Định lí Pythagore và ứng dụng**, công thức hoặc quy '
-                 'tắc nào sau đây biểu diễn đúng **Định lí Pythagore**?',
+            'q': 'Trong **Bài 35: Định lí Pythagore và ứng dụng**, quy tắc hoặc công thức nào sau đây xác '
+                 'định đúng **Định lí Pythagore**?',
             'options': ['$BC^2 = AB^2 + AC^2$',
-                        '$BC = \\sqrt{AB^2 + AC^2}$',
-                        '$AB = \\sqrt{BC^2 - AC^2}; \\quad AC = \\sqrt{BC^2 - AB^2}$',
-                        '$d = \\sqrt{a^2 + b^2}$'],
+                        '$BC^2 = AB^2 - AC^2$',
+                        '$BC^2 = AB^2 + AC^1$',
+                        '$BC^4 = AB^2 + AC^2$'],
             'answer': 0,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 35: Định lí Pythagore và ứng dụng, **Định lí '
+            'solution': 'Theo kiến thức trọng tâm của Bài 35: Định lí Pythagore và ứng dụng, **Định lí '
                         'Pythagore** được xác định bởi: $BC^2 = AB^2 + AC^2$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 35: Định lí Pythagore và ứng dụng**, nội dung/biểu thức $BC = \\sqrt{AB^2 + '
-                 'AC^2}$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Định lí Pythagore',
-                        'Tính cạnh huyền',
-                        'Tính cạnh góc vuông',
-                        'Đường chéo hình chữ nhật kích thước $a, b$'],
+            'q': 'Khi học **Bài 35: Định lí Pythagore và ứng dụng**, biểu thức hoặc quy tắc nào dưới đây '
+                 'biểu diễn đúng **Tính cạnh huyền**?',
+            'options': ['$BC = \\sqrt{AB^2 - AC^2}$',
+                        '$BC = \\sqrt{AB^2 + AC^2}$',
+                        '$BC = \\sqrt{AB^2 + AC^1}$',
+                        '$BC = \\sqrt{AB^4 + AC^2}$'],
             'answer': 1,
-            'solution': 'Trong Bài 35: Định lí Pythagore và ứng dụng, biểu thức/quy tắc $BC = \\sqrt{AB^2 + '
-                        'AC^2}$ chính là nội dung của **Tính cạnh huyền**.'},
+            'solution': 'Trong Bài 35: Định lí Pythagore và ứng dụng, **Tính cạnh huyền** có công thức/quy '
+                        'tắc là: $BC = \\sqrt{AB^2 + AC^2}$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Cho $\\triangle ABC$ vuông tại $A$ có $AB = 5\\text{ cm}$ và $BC = 13\\text{ cm}$. Độ dài '
@@ -5819,16 +5912,17 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 35: Định lí Pythagore và ứng dụng** (Chương IX: Tam giác đồng dạng), khẳng '
-                 'định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Nhận biết được đơn thức nhiều biến, đơn thức thu gọn, hệ số, phần biến và bậc của '
-                        'một đơn thức.',
-                        'Nhận biết được các đơn thức đồng dạng và thực hiện được phép cộng, phép trừ các đơn '
-                        'thức đồng dạng.',
-                        'Nhận biết được đa thức nhiều biến và các hạng tử của đa thức.',
+            'q': 'Để nắm vững bản chất của **Bài 35: Định lí Pythagore và ứng dụng**, nhận định nào sau đây '
+                 'là **chính xác**?',
+            'options': ['Giải thích được định lí Pythagore thuận và định lí Pythagore đảo. (với dấu ngược '
+                        'lại)',
+                        'Đảo ngược vế của quy tắc: Giải thích được định lí Pythagore thuận và định lí '
+                        'Pythagore đảo.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Giải thích được định lí '
+                        'Pythagore thuận và định lí Pythagore đảo.',
                         'Giải thích được định lí Pythagore thuận và định lí Pythagore đảo.'],
             'answer': 3,
-            'solution': 'Theo yêu cầu cần đạt của Bài 35: Định lí Pythagore và ứng dụng: Giải thích được '
+            'solution': 'Theo nội dung cốt lõi của Bài 35: Định lí Pythagore và ứng dụng: Giải thích được '
                         'định lí Pythagore thuận và định lí Pythagore đảo.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -5845,40 +5939,39 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 35: Định lí Pythagore '
-                 'và ứng dụng**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Giải thích được định lí Pythagore '
-                           'thuận và định lí Pythagore đảo.',
-                           'Quy tắc/công thức **Định lí Pythagore** trong bài được xác định bởi: $BC^2 = '
-                           'AB^2 + AC^2$.',
-                           'Trong mọi trường hợp, **Định lí Pythagore** luôn được tính bằng công thức '
-                           '$\\text{Bậc} = m + n + p$ (thuộc Bậc của đơn thức $a x^m y^n z^p$ ($a \\neq 0$)) '
-                           'mà không cần điều kiện của Bài 35: Định lí Pythagore và ứng dụng.',
-                           'Với bài toán minh họa: “Một chiếc thang dài $5\\text{ m}$ dựa vào một bức tường '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 35: Định lí Pythagore và '
+                 'ứng dụng**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Giải thích được định lí Pythagore thuận '
+                           'và định lí Pythagore đảo.',
+                           'Trong **Bài 35: Định lí Pythagore và ứng dụng**, quy tắc/công thức **Định lí '
+                           'Pythagore** được viết là: $BC^2 = AB^2 + AC^2$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $BC^2 = AB^2 - AC^2$ thì kết quả của **Định '
+                           'lí Pythagore** trong **Bài 35: Định lí Pythagore và ứng dụng** vẫn không thay '
+                           'đổi.',
+                           'Xét ví dụ của bài: “Một chiếc thang dài $5\\text{ m}$ dựa vào một bức tường '
                            'thẳng đứng, chân thang cách chân tường $3\\text{ m}$. Hỏi đầu trên của thang '
-                           'chạm tườn...”, lời giải đúng là: Thang, tường và mặt đất tạo thành một tam giác '
+                           'chạm...”, kết quả giải đúng là: Thang, tường và mặt đất tạo thành một tam giác '
                            'vuông có cạnh huyền $5\\text{ m}$ và một cạnh góc vuông $3\\text{ m}$. Áp dụng '
-                           'định lí Pythagor...'],
+                           'định lí Pyt...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 35: Định lí Pythagore và ứng dụng. b) '
-                        '**Đúng** theo công thức trọng tâm **Định lí Pythagore** ($BC^2 = AB^2 + AC^2$). c) '
-                        '**Sai** vì $\\text{Bậc} = m + n + p$ là công thức của nội dung khác, không phải quy '
-                        'tắc chung của **Định lí Pythagore**. d) **Đúng** theo lời giải ví dụ minh họa trong '
-                        'bài học.'},
+                        '**Đúng** theo công thức **Định lí Pythagore** ($BC^2 = AB^2 + AC^2$). c) **Sai** vì '
+                        'công thức đúng của **Định lí Pythagore** phải là $BC^2 = AB^2 + AC^2$ chứ không '
+                        'phải $BC^2 = AB^2 - AC^2$. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 35: Định lí Pythagore và ứng dụng** để giải quyết tình huống sau: '
-                 'Một chiếc thang dài $5\\text{ m}$ dựa vào một bức tường thẳng đứng, chân thang cách chân '
-                 'tường $3\\text{ m}$. Hỏi đầu trên của thang chạm tường ở độ cao bao nhiêu mét? Kết quả và '
-                 'hướng giải nào dưới đây là **đúng**?',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 35: Định lí Pythagore và ứng dụng** để giải bài '
+                 'toán sau: Một chiếc thang dài $5\\text{ m}$ dựa vào một bức tường thẳng đứng, chân thang '
+                 'cách chân tường $3\\text{ m}$. Hỏi đầu trên của thang chạm tường ở độ cao bao nhiêu mét? '
+                 'Cách giải và kết quả nào dưới đây là **đúng**?',
             'options': ['Thang, tường và mặt đất tạo thành một tam giác vuông có cạnh huyền $5\\text{ m}$ và '
-                        'một cạnh góc vuông $3\\text{ m}$. Áp dụng định lí Pythagore, độ cao $h$ c...',
-                        'Ta có: $A = (-2 \\cdot 3)(x^2 \\cdot x)(y \\cdot y^3) = -6x^3y^4$. Hệ số là $-6$, '
-                        'phần biến là $x^3y^4$, bậc của đơn thức là $3 + 4 = 7$.',
-                        'Nhóm các hạng tử đồng dạng: $P = (2x^2y - 2x^2y) + 5x^2y^2 + (-3xy + 4xy) - 1 = '
-                        '5x^2y^2 + xy - 1$. Các hạng tử của dạng thu gọn có bậc lần lượt là $4; 2; 0$...',
-                        '- $M + N = (3x^2 + x^2) + (-2xy + 2xy) + (y^2 - 3y^2) = 4x^2 - 2y^2$. - $M - N = '
-                        '(3x^2 - x^2) + (-2xy - 2xy) + (y^2 + 3y^2) = 2x^2 - 4xy + 4y^2$.'],
+                        'một cạnh góc vuông $3\\text{ m}$. Áp dụng định lí Pythagore, độ cao...',
+                        'Thang, tường và mặt đất tạo thành một tam giác vuông có cạnh huyền $6\\text{ m}$ và '
+                        'một cạnh góc vuông $3\\text{ m}$. Áp dụng định lí Pythagore, độ cao...',
+                        'Thang, tường và mặt đất tạo thành một tam giác vuông có cạnh huyền $5\\text{ m}$ và '
+                        'một cạnh góc vuông $2\\text{ m}$. Áp dụng định lí Pythagore, độ cao...',
+                        'Thang, tường và mặt đất tạo thành một tam giác vuông có cạnh huyền $10\\text{ m}$ '
+                        'và một cạnh góc vuông $3\\text{ m}$. Áp dụng định lí Pythagore, độ cao...'],
             'answer': 0,
             'solution': 'Lời giải chi tiết theo Bài 35: Định lí Pythagore và ứng dụng: Thang, tường và mặt '
                         'đất tạo thành một tam giác vuông có cạnh huyền $5\\text{ m}$ và một cạnh góc vuông '
@@ -5907,9 +6000,8 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
                    'hai cạnh góc vuông, cạnh huyền - cạnh góc vuông).',
                    'Vận dụng được tính chất tỉ số hai đường cao tương ứng bằng tỉ số đồng dạng $k$ và tỉ số '
                    'diện tích bằng $k^2$.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Trường hợp cạnh huyền - cạnh góc vuông** '
-                   "($\\widehat{A'} = \\widehat{A} = 90^\\circ$ và $\\dfrac{B'C'}{BC} = \\dfrac{A'B'}{AB} "
-                   "\\Rightarrow \\triangle A'B'C' \\sim \\triangle ABC$) vào giải bài tập."],
+                   'Vận dụng kiến thức của **Bài 36: Các trường hợp đồng dạng của hai tam giác vuông** để '
+                   'giải bài tập minh họa và bài toán thực tiễn.'],
   'definition': 'Hai tam giác vuông đồng dạng nếu: (1) Tam giác vuông này có một góc nhọn bằng góc nhọn của '
                 'tam giác vuông kia; hoặc (2) Hai cạnh góc vuông của tam giác vuông này tỉ lệ với hai cạnh '
                 'góc vuông của tam giác vuông kia; hoặc (3) Cạnh huyền và một cạnh góc vuông của tam giác '
@@ -5967,33 +6059,37 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 36: Các trường hợp đồng dạng của hai tam giác vuông**, '
-                 'công thức hoặc quy tắc nào sau đây biểu diễn đúng **Trường hợp cạnh huyền - cạnh góc '
-                 'vuông**?',
-            'options': ["$\\triangle A'B'C' \\sim \\triangle ABC$ (tỉ số $k$) $\\Rightarrow "
-                        "\\dfrac{A'H'}{AH} = k$",
+            'q': 'Trong **Bài 36: Các trường hợp đồng dạng của hai tam giác vuông**, quy tắc hoặc công thức '
+                 'nào sau đây xác định đúng **Trường hợp cạnh huyền - cạnh góc vuông**?',
+            'options': ["$\\widehat{A'} = \\widehat{A} = 100^\\circ$ và $\\dfrac{B'C'}{BC} = "
+                        "\\dfrac{A'B'}{AB} \\Rightarrow \\triangle A'B'C' \\sim \\triangle ABC$",
                         "$\\widehat{A'} = \\widehat{A} = 90^\\circ$ và $\\dfrac{B'C'}{BC} = "
                         "\\dfrac{A'B'}{AB} \\Rightarrow \\triangle A'B'C' \\sim \\triangle ABC$",
-                        "$\\dfrac{S_{\\triangle A'B'C'}}{S_{\\triangle ABC}} = k^2$",
-                        '$\\text{Bậc} = m + n + p$'],
+                        "$\\widehat{A'} = \\widehat{A} = 90^\\circ$ và $\\dfrac{BC}{B'C'} = "
+                        "\\dfrac{A'B'}{AB} \\Rightarrow \\triangle A'B'C' \\sim \\triangle ABC$",
+                        "$\\widehat{A'} = \\widehat{A} = 92^\\circ$ và $\\dfrac{B'C'}{BC} = "
+                        "\\dfrac{A'B'}{AB} \\Rightarrow \\triangle A'B'C' \\sim \\triangle ABC$"],
             'answer': 1,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 36: Các trường hợp đồng dạng của hai tam giác '
+            'solution': 'Theo kiến thức trọng tâm của Bài 36: Các trường hợp đồng dạng của hai tam giác '
                         "vuông, **Trường hợp cạnh huyền - cạnh góc vuông** được xác định bởi: $\\widehat{A'} "
                         "= \\widehat{A} = 90^\\circ$ và $\\dfrac{B'C'}{BC} = \\dfrac{A'B'}{AB} \\Rightarrow "
                         "\\triangle A'B'C' \\sim \\triangle ABC$."},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 36: Các trường hợp đồng dạng của hai tam giác vuông**, nội dung/biểu thức '
-                 "$\\triangle A'B'C' \\sim \\triangle ABC$ (tỉ số $k$) $\\Rightarrow \\dfrac{A'H'}{AH} = k$ "
-                 'là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Trường hợp cạnh huyền - cạnh góc vuông',
-                        'Tỉ số diện tích hai tam giác đồng dạng',
-                        'Tỉ số hai đường cao tương ứng',
-                        'Bậc của đơn thức $a x^m y^n z^p$ ($a \\neq 0$)'],
-            'answer': 2,
-            'solution': 'Trong Bài 36: Các trường hợp đồng dạng của hai tam giác vuông, biểu thức/quy tắc '
+            'q': 'Khi học **Bài 36: Các trường hợp đồng dạng của hai tam giác vuông**, biểu thức hoặc quy '
+                 'tắc nào dưới đây biểu diễn đúng **Tỉ số hai đường cao tương ứng**?',
+            'options': ["$\\triangle A'B'C' \\sim \\triangle ABC$ (tỉ số $k$) $\\Rightarrow "
+                        "\\dfrac{A'H'}{AH} = k$ (với dấu ngược lại)",
                         "$\\triangle A'B'C' \\sim \\triangle ABC$ (tỉ số $k$) $\\Rightarrow "
-                        "\\dfrac{A'H'}{AH} = k$ chính là nội dung của **Tỉ số hai đường cao tương ứng**."},
+                        "\\dfrac{AH}{A'H'} = k$",
+                        "$\\triangle A'B'C' \\sim \\triangle ABC$ (tỉ số $k$) $\\Rightarrow "
+                        "\\dfrac{A'H'}{AH} = k$",
+                        "Trường hợp trái ngược: không thỏa mãn điều kiện của $\\triangle A'B'C' \\sim "
+                        "\\triangle ABC$ (tỉ số $k$) $\\Rightarrow \\dfrac{A'H'}{AH} = k$"],
+            'answer': 2,
+            'solution': 'Trong Bài 36: Các trường hợp đồng dạng của hai tam giác vuông, **Tỉ số hai đường '
+                        "cao tương ứng** có công thức/quy tắc là: $\\triangle A'B'C' \\sim \\triangle ABC$ "
+                        "(tỉ số $k$) $\\Rightarrow \\dfrac{A'H'}{AH} = k$."},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Cho hai tam giác vuông $\\triangle ABC$ (vuông tại $A$) có $AB = 3\\text{ cm}, BC = '
@@ -6011,18 +6107,19 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 36: Các trường hợp đồng dạng của hai tam giác vuông** (Chương IX: Tam giác '
-                 'đồng dạng), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức '
-                 'của bài?',
+            'q': 'Để nắm vững bản chất của **Bài 36: Các trường hợp đồng dạng của hai tam giác vuông**, nhận '
+                 'định nào sau đây là **chính xác**?',
             'options': ['Giải thích và vận dụng được các trường hợp đồng dạng của hai tam giác vuông (góc '
                         'nhọn, hai cạnh góc vuông, cạnh huyền - cạnh góc vuông).',
-                        'Nhận biết được đơn thức nhiều biến, đơn thức thu gọn, hệ số, phần biến và bậc của '
-                        'một đơn thức.',
-                        'Nhận biết được các đơn thức đồng dạng và thực hiện được phép cộng, phép trừ các đơn '
-                        'thức đồng dạng.',
-                        'Nhận biết được đa thức nhiều biến và các hạng tử của đa thức.'],
+                        'Giải thích và vận dụng được các trường hợp đồng dạng của hai tam giác vuông (góc '
+                        'nhọn, hai cạnh góc vuông, cạnh huyền + cạnh góc vuông).',
+                        'Đảo ngược vế của quy tắc: Giải thích và vận dụng được các trường hợp đồng dạng của '
+                        'hai tam giác vuông (góc nhọn, hai cạnh góc vuông, cạnh huyền - cạnh góc vuông).',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Giải thích và vận dụng được các '
+                        'trường hợp đồng dạng của hai tam giác vuông (góc nhọn, hai cạnh góc vuông, cạnh '
+                        'huyền - cạnh góc vuông).'],
             'answer': 0,
-            'solution': 'Theo yêu cầu cần đạt của Bài 36: Các trường hợp đồng dạng của hai tam giác vuông: '
+            'solution': 'Theo nội dung cốt lõi của Bài 36: Các trường hợp đồng dạng của hai tam giác vuông: '
                         'Giải thích và vận dụng được các trường hợp đồng dạng của hai tam giác vuông (góc '
                         'nhọn, hai cạnh góc vuông, cạnh huyền - cạnh góc vuông).'},
            {'level': 'hieu',
@@ -6041,46 +6138,47 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 36: Các trường hợp đồng '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 36: Các trường hợp đồng '
                  'dạng của hai tam giác vuông**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Giải thích và vận dụng được các '
-                           'trường hợp đồng dạng của hai tam giác vuông (góc nhọn, hai cạnh góc vuông, cạnh '
-                           'huyền - cạnh góc vuông).',
-                           'Quy tắc/công thức **Trường hợp cạnh huyền - cạnh góc vuông** trong bài được xác '
-                           "định bởi: $\\widehat{A'} = \\widehat{A} = 90^\\circ$ và $\\dfrac{B'C'}{BC} = "
-                           "\\dfrac{A'B'}{AB} \\Rightarrow \\triangle A'B'C' \\sim \\triangle ABC$.",
-                           'Trong mọi trường hợp, **Trường hợp cạnh huyền - cạnh góc vuông** luôn được tính '
-                           'bằng công thức $\\text{Bậc} = m + n + p$ (thuộc Bậc của đơn thức $a x^m y^n z^p$ '
-                           '($a \\neq 0$)) mà không cần điều kiện của Bài 36: Các trường hợp đồng dạng của '
-                           'hai tam giác vuông.',
-                           'Với bài toán minh họa: “Cho $\\triangle ABC$ vuông tại $A$ có đường cao $AH '
-                           '\\perp BC$ ($H \\in BC$). Chứng minh $\\triangle HBA \\sim \\triangle ABC$ và '
-                           '$AB^2 = BH \\cdot BC$...”, lời giải đúng là: Xét hai tam giác vuông $\\triangle '
-                           'HBA$ (vuông tại $H$) và $\\triangle ABC$ (vuông tại $A$) có góc nhọn '
-                           '$\\widehat{B}$ chung. Do đó $\\triangle HBA \\sim \\triangle ABC$...'],
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Giải thích và vận dụng được các trường '
+                           'hợp đồng dạng của hai tam giác vuông (góc nhọn, hai cạnh góc vuông, cạnh huyền - '
+                           'cạnh góc vuông).',
+                           'Trong **Bài 36: Các trường hợp đồng dạng của hai tam giác vuông**, quy tắc/công '
+                           "thức **Trường hợp cạnh huyền - cạnh góc vuông** được viết là: $\\widehat{A'} = "
+                           "\\widehat{A} = 90^\\circ$ và $\\dfrac{B'C'}{BC} = \\dfrac{A'B'}{AB} \\Rightarrow "
+                           "\\triangle A'B'C' \\sim \\triangle ABC$.",
+                           "Nếu áp dụng sai dấu/phép tính thành $\\widehat{A'} = \\widehat{A} = 100^\\circ$ "
+                           "và $\\dfrac{B'C'}{BC} = \\dfrac{A'B'}{AB} \\Rightarrow \\triangle A'B'C' \\sim "
+                           '\\triangle ABC$ thì kết quả của **Trường hợp cạnh huyền - cạnh góc vuông** trong '
+                           '**Bài 36: Các trường hợp đồng dạng của hai tam giác vuông** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Cho $\\triangle ABC$ vuông tại $A$ có đường cao $AH \\perp '
+                           'BC$ ($H \\in BC$). Chứng minh $\\triangle HBA \\sim \\triangle ABC$ và $AB^2 = '
+                           'BH \\cdot BC$...”, kết quả giải đúng là: Xét hai tam giác vuông $\\triangle HBA$ '
+                           '(vuông tại $H$) và $\\triangle ABC$ (vuông tại $A$) có góc nhọn $\\widehat{B}$ '
+                           'chung. Do đó $\\triangle HBA \\sim \\triangle ABC$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 36: Các trường hợp đồng dạng của hai tam '
-                        'giác vuông. b) **Đúng** theo công thức trọng tâm **Trường hợp cạnh huyền - cạnh góc '
-                        "vuông** ($\\widehat{A'} = \\widehat{A} = 90^\\circ$ và $\\dfrac{B'C'}{BC} = "
+                        'giác vuông. b) **Đúng** theo công thức **Trường hợp cạnh huyền - cạnh góc vuông** '
+                        "($\\widehat{A'} = \\widehat{A} = 90^\\circ$ và $\\dfrac{B'C'}{BC} = "
                         "\\dfrac{A'B'}{AB} \\Rightarrow \\triangle A'B'C' \\sim \\triangle ABC$). c) **Sai** "
-                        'vì $\\text{Bậc} = m + n + p$ là công thức của nội dung khác, không phải quy tắc '
-                        'chung của **Trường hợp cạnh huyền - cạnh góc vuông**. d) **Đúng** theo lời giải ví '
-                        'dụ minh họa trong bài học.'},
+                        'vì công thức đúng của **Trường hợp cạnh huyền - cạnh góc vuông** phải là '
+                        "$\\widehat{A'} = \\widehat{A} = 90^\\circ$ và $\\dfrac{B'C'}{BC} = "
+                        "\\dfrac{A'B'}{AB} \\Rightarrow \\triangle A'B'C' \\sim \\triangle ABC$ chứ không "
+                        "phải $\\widehat{A'} = \\widehat{A} = 100^\\circ$ và $\\dfrac{B'C'}{BC} = "
+                        "\\dfrac{A'B'}{AB} \\Rightarrow \\triangle A'B'C' \\sim \\triangle ABC$. d) **Đúng** "
+                        'theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 36: Các trường hợp đồng dạng của hai tam giác vuông** để giải '
-                 'quyết tình huống sau: Cho $\\triangle ABC$ vuông tại $A$ có đường cao $AH \\perp BC$ ($H '
-                 '\\in BC$). Chứng minh $\\triangle HBA \\sim \\triangle ABC$ và $AB^2 = BH \\cdot BC$. Kết '
-                 'quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Ta có: $A = (-2 \\cdot 3)(x^2 \\cdot x)(y \\cdot y^3) = -6x^3y^4$. Hệ số là $-6$, '
-                        'phần biến là $x^3y^4$, bậc của đơn thức là $3 + 4 = 7$.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 36: Các trường hợp đồng dạng của hai tam giác '
+                 'vuông** để giải bài toán sau: Cho $\\triangle ABC$ vuông tại $A$ có đường cao $AH \\perp '
+                 'BC$ ($H \\in BC$). Chứng minh $\\triangle HBA \\sim \\triangle ABC$ và $AB^2 = BH \\cdot '
+                 'BC$. Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Chỉ xét trường hợp đặc biệt bằng $0$ và bỏ qua quy tắc chung',
                         'Xét hai tam giác vuông $\\triangle HBA$ (vuông tại $H$) và $\\triangle ABC$ (vuông '
                         'tại $A$) có góc nhọn $\\widehat{B}$ chung. Do đó $\\triangle HBA \\sim \\triangle '
                         'ABC$...',
-                        'Nhóm các hạng tử đồng dạng: $P = (2x^2y - 2x^2y) + 5x^2y^2 + (-3xy + 4xy) - 1 = '
-                        '5x^2y^2 + xy - 1$. Các hạng tử của dạng thu gọn có bậc lần lượt là $4; 2; 0$...',
-                        '- $M + N = (3x^2 + x^2) + (-2xy + 2xy) + (y^2 - 3y^2) = 4x^2 - 2y^2$. - $M - N = '
-                        '(3x^2 - x^2) + (-2xy - 2xy) + (y^2 + 3y^2) = 2x^2 - 4xy + 4y^2$.'],
+                        'Thực hiện theo thứ tự ngược lại và bỏ qua điều kiện xác định trong bài',
+                        'Đổi ngược dấu của phép tính chính và không kiểm tra lại kết quả'],
             'answer': 1,
             'solution': 'Lời giải chi tiết theo Bài 36: Các trường hợp đồng dạng của hai tam giác vuông: Xét '
                         'hai tam giác vuông $\\triangle HBA$ (vuông tại $H$) và $\\triangle ABC$ (vuông tại '
@@ -6109,8 +6207,8 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
   'requirements': ['Nhận biết được hai hình đồng dạng phối cảnh (vị tự) và tâm phối cảnh.',
                    'Nhận biết được hai hình đồng dạng và vẻ đẹp của các hình đồng dạng trong tự nhiên, nghệ '
                    'thuật, kiến trúc.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Định nghĩa tâm phối cảnh $O$, tỉ số $k$** '
-                   "($OM' = k \\cdot OM \\Rightarrow A'B' = k \\cdot AB$) vào giải bài tập."],
+                   'Vận dụng kiến thức của **Bài 37: Hình đồng dạng** để giải bài tập minh họa và bài toán '
+                   'thực tiễn.'],
   'definition': "Nếu với mỗi điểm $M$ thuộc hình $\\mathcal{H}$, lấy điểm $M'$ trên tia $OM$ sao cho $OM' = "
                 "k \\cdot OM$ ($k > 0$) thì các điểm $M'$ tạo thành hình $\\mathcal{H}'$ gọi là đồng dạng "
                 'phối cảnh với hình $\\mathcal{H}$ theo tâm $O$ và tỉ số vị tự $k$. Một hình '
@@ -6160,29 +6258,28 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 37: Hình đồng dạng**, công thức hoặc quy tắc nào sau đây '
-                 'biểu diễn đúng **Định nghĩa tâm phối cảnh $O$, tỉ số $k$**?',
-            'options': ["$\\dfrac{P'}{P} = k; \\quad \\dfrac{S'}{S} = k^2$",
-                        '$\\text{Bậc} = m + n + p$',
+            'q': 'Trong **Bài 37: Hình đồng dạng**, quy tắc hoặc công thức nào sau đây xác định đúng **Định '
+                 'nghĩa tâm phối cảnh $O$, tỉ số $k$**?',
+            'options': ["$OM' = k : OM \\Rightarrow A'B' = k \\cdot AB$",
+                        "Đảo ngược vế của quy tắc: $OM' = k \\cdot OM \\Rightarrow A'B' = k \\cdot AB$",
                         "$OM' = k \\cdot OM \\Rightarrow A'B' = k \\cdot AB$",
-                        '$a x^m y^n + b x^m y^n = (a + b)x^m y^n; \\quad a x^m y^n - b x^m y^n = (a - b)x^m '
-                        'y^n$'],
+                        "Trường hợp trái ngược: không thỏa mãn điều kiện của $OM' = k \\cdot OM \\Rightarrow "
+                        "A'B' = k \\cdot AB$"],
             'answer': 2,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 37: Hình đồng dạng, **Định nghĩa tâm phối '
-                        "cảnh $O$, tỉ số $k$** được xác định bởi: $OM' = k \\cdot OM \\Rightarrow A'B' = k "
-                        '\\cdot AB$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 37: Hình đồng dạng, **Định nghĩa tâm phối cảnh '
+                        "$O$, tỉ số $k$** được xác định bởi: $OM' = k \\cdot OM \\Rightarrow A'B' = k \\cdot "
+                        'AB$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': "Trong **Bài 37: Hình đồng dạng**, nội dung/biểu thức $\\dfrac{P'}{P} = k; \\quad "
-                 "\\dfrac{S'}{S} = k^2$ là quy tắc hoặc công thức của mục nào sau đây?",
-            'options': ['Định nghĩa tâm phối cảnh $O$, tỉ số $k$',
-                        'Bậc của đơn thức $a x^m y^n z^p$ ($a \\neq 0$)',
-                        'Cộng, trừ hai đơn thức đồng dạng',
-                        'Tỉ số chu vi và diện tích hai hình đồng dạng'],
+            'q': 'Khi học **Bài 37: Hình đồng dạng**, biểu thức hoặc quy tắc nào dưới đây biểu diễn đúng '
+                 '**Tỉ số chu vi và diện tích hai hình đồng dạng**?',
+            'options': ["$\\dfrac{P'}{P} = k; \\quad \\dfrac{S'}{S} = k^3$",
+                        "$\\dfrac{P}{P'} = k; \\quad \\dfrac{S'}{S} = k^2$",
+                        "$\\dfrac{P'}{P} = k; \\quad \\dfrac{S'}{S} = k^4$",
+                        "$\\dfrac{P'}{P} = k; \\quad \\dfrac{S'}{S} = k^2$"],
             'answer': 3,
-            'solution': "Trong Bài 37: Hình đồng dạng, biểu thức/quy tắc $\\dfrac{P'}{P} = k; \\quad "
-                        "\\dfrac{S'}{S} = k^2$ chính là nội dung của **Tỉ số chu vi và diện tích hai hình "
-                        'đồng dạng**.'},
+            'solution': 'Trong Bài 37: Hình đồng dạng, **Tỉ số chu vi và diện tích hai hình đồng dạng** có '
+                        "công thức/quy tắc là: $\\dfrac{P'}{P} = k; \\quad \\dfrac{S'}{S} = k^2$."},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Hai hình chữ nhật $\\mathcal{H}_1$ (kích thước $4\\text{ cm} \\times 6\\text{ cm}$) và '
@@ -6196,16 +6293,17 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 37: Hình đồng dạng** (Chương IX: Tam giác đồng dạng), khẳng định nào sau đây '
-                 'phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Nhận biết được đơn thức nhiều biến, đơn thức thu gọn, hệ số, phần biến và bậc của '
-                        'một đơn thức.',
+            'q': 'Để nắm vững bản chất của **Bài 37: Hình đồng dạng**, nhận định nào sau đây là **chính '
+                 'xác**?',
+            'options': ['Nhận biết được hai hình đồng dạng phối cảnh (vị tự) và tâm phối cảnh. (với dấu '
+                        'ngược lại)',
                         'Nhận biết được hai hình đồng dạng phối cảnh (vị tự) và tâm phối cảnh.',
-                        'Nhận biết được các đơn thức đồng dạng và thực hiện được phép cộng, phép trừ các đơn '
-                        'thức đồng dạng.',
-                        'Nhận biết được đa thức nhiều biến và các hạng tử của đa thức.'],
+                        'Đảo ngược vế của quy tắc: Nhận biết được hai hình đồng dạng phối cảnh (vị tự) và '
+                        'tâm phối cảnh.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nhận biết được hai hình đồng '
+                        'dạng phối cảnh (vị tự) và tâm phối cảnh.'],
             'answer': 1,
-            'solution': 'Theo yêu cầu cần đạt của Bài 37: Hình đồng dạng: Nhận biết được hai hình đồng dạng '
+            'solution': 'Theo nội dung cốt lõi của Bài 37: Hình đồng dạng: Nhận biết được hai hình đồng dạng '
                         'phối cảnh (vị tự) và tâm phối cảnh.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -6222,39 +6320,41 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 37: Hình đồng dạng**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được hai hình đồng dạng '
-                           'phối cảnh (vị tự) và tâm phối cảnh.',
-                           'Quy tắc/công thức **Định nghĩa tâm phối cảnh $O$, tỉ số $k$** trong bài được xác '
-                           "định bởi: $OM' = k \\cdot OM \\Rightarrow A'B' = k \\cdot AB$.",
-                           'Trong mọi trường hợp, **Định nghĩa tâm phối cảnh $O$, tỉ số $k$** luôn được tính '
-                           'bằng công thức $\\text{Bậc} = m + n + p$ (thuộc Bậc của đơn thức $a x^m y^n z^p$ '
-                           '($a \\neq 0$)) mà không cần điều kiện của Bài 37: Hình đồng dạng.',
-                           'Với bài toán minh họa: “Một bức ảnh hình chữ nhật có kích thước $10\\text{ cm} '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 37: Hình đồng dạng**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết được hai hình đồng dạng phối '
+                           'cảnh (vị tự) và tâm phối cảnh.',
+                           'Trong **Bài 37: Hình đồng dạng**, quy tắc/công thức **Định nghĩa tâm phối cảnh '
+                           "$O$, tỉ số $k$** được viết là: $OM' = k \\cdot OM \\Rightarrow A'B' = k \\cdot "
+                           'AB$.',
+                           "Nếu áp dụng sai dấu/phép tính thành $OM' = k : OM \\Rightarrow A'B' = k \\cdot "
+                           'AB$ thì kết quả của **Định nghĩa tâm phối cảnh $O$, tỉ số $k$** trong **Bài 37: '
+                           'Hình đồng dạng** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Một bức ảnh hình chữ nhật có kích thước $10\\text{ cm} '
                            '\\times 15\\text{ cm}$ được phóng to thành một bức ảnh đồng dạng có chiều rộng '
-                           '$30\\text{ cm}$...”, lời giải đúng là: Tỉ số đồng dạng của bức ảnh mới so với '
-                           'bức ảnh ban đầu là $k = \\dfrac{30}{10} = 3$. Chiều dài của bức ảnh sau khi '
+                           '$30\\text{ cm}$...”, kết quả giải đúng là: Tỉ số đồng dạng của bức ảnh mới so '
+                           'với bức ảnh ban đầu là $k = \\dfrac{30}{10} = 3$. Chiều dài của bức ảnh sau khi '
                            'phóng to là $15 \\cdot 3 = 45\\text{ (cm)}$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 37: Hình đồng dạng. b) **Đúng** theo công '
-                        "thức trọng tâm **Định nghĩa tâm phối cảnh $O$, tỉ số $k$** ($OM' = k \\cdot OM "
-                        "\\Rightarrow A'B' = k \\cdot AB$). c) **Sai** vì $\\text{Bậc} = m + n + p$ là công "
-                        'thức của nội dung khác, không phải quy tắc chung của **Định nghĩa tâm phối cảnh '
-                        '$O$, tỉ số $k$**. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        "thức **Định nghĩa tâm phối cảnh $O$, tỉ số $k$** ($OM' = k \\cdot OM \\Rightarrow "
+                        "A'B' = k \\cdot AB$). c) **Sai** vì công thức đúng của **Định nghĩa tâm phối cảnh "
+                        "$O$, tỉ số $k$** phải là $OM' = k \\cdot OM \\Rightarrow A'B' = k \\cdot AB$ chứ "
+                        "không phải $OM' = k : OM \\Rightarrow A'B' = k \\cdot AB$. d) **Đúng** theo lời "
+                        'giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 37: Hình đồng dạng** để giải quyết tình huống sau: Một bức ảnh '
-                 'hình chữ nhật có kích thước $10\\text{ cm} \\times 15\\text{ cm}$ được phóng to thành một '
-                 'bức ảnh đồng dạng có chiều rộng $30\\text{ cm}$. Tính tỉ số đồng dạng $k$ và chiều dài của '
-                 'bức ảnh sau khi phóng to. Kết quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Ta có: $A = (-2 \\cdot 3)(x^2 \\cdot x)(y \\cdot y^3) = -6x^3y^4$. Hệ số là $-6$, '
-                        'phần biến là $x^3y^4$, bậc của đơn thức là $3 + 4 = 7$.',
-                        'Nhóm các hạng tử đồng dạng: $P = (2x^2y - 2x^2y) + 5x^2y^2 + (-3xy + 4xy) - 1 = '
-                        '5x^2y^2 + xy - 1$. Các hạng tử của dạng thu gọn có bậc lần lượt là $4; 2; 0$...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 37: Hình đồng dạng** để giải bài toán sau: Một bức '
+                 'ảnh hình chữ nhật có kích thước $10\\text{ cm} \\times 15\\text{ cm}$ được phóng to thành '
+                 'một bức ảnh đồng dạng có chiều rộng $30\\text{ cm}$. Tính tỉ số đồng dạng $k$ và chiều dài '
+                 'của bức ảnh sau khi phóng to. Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Tỉ số đồng dạng của bức ảnh mới so với bức ảnh ban đầu là $k = \\dfrac{30}{10} = '
+                        '3$. Chiều dài của bức ảnh sau khi phóng to là $15 : 3 = 45\\text{ (cm)}$...',
+                        'Tỉ số đồng dạng của bức ảnh mới so với bức ảnh ban đầu là $k = \\dfrac{10}{30} = '
+                        '3$. Chiều dài của bức ảnh sau khi phóng to là $15 \\cdot 3 = 45\\text{ (cm)}$...',
                         'Tỉ số đồng dạng của bức ảnh mới so với bức ảnh ban đầu là $k = \\dfrac{30}{10} = '
                         '3$. Chiều dài của bức ảnh sau khi phóng to là $15 \\cdot 3 = 45\\text{ (cm)}$...',
-                        '- $M + N = (3x^2 + x^2) + (-2xy + 2xy) + (y^2 - 3y^2) = 4x^2 - 2y^2$. - $M - N = '
-                        '(3x^2 - x^2) + (-2xy - 2xy) + (y^2 + 3y^2) = 2x^2 - 4xy + 4y^2$.'],
+                        'Tỉ số đồng dạng của bức ảnh mới so với bức ảnh ban đầu là $k = \\dfrac{60}{10} = '
+                        '3$. Chiều dài của bức ảnh sau khi phóng to là $15 \\cdot 3 = 45\\text{ (cm)}$...'],
             'answer': 2,
             'solution': 'Lời giải chi tiết theo Bài 37: Hình đồng dạng: Tỉ số đồng dạng của bức ảnh mới so '
                         'với bức ảnh ban đầu là $k = \\dfrac{30}{10} = 3$.\n'
@@ -6281,9 +6381,8 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
                    'giác đều.',
                    'Tính được diện tích xung quanh và thể tích của hình chóp tam giác đều trong giải toán và '
                    'thực tiễn.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Diện tích xung quanh (cạnh đáy $a$, trung '
-                   'đoạn $d$)** ($S_{xq} = p \\cdot d = \\dfrac{3a}{2} \\cdot d$ ($p$: nửa chu vi đáy)) vào '
-                   'giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 38: Hình chóp tam giác đều** để giải bài tập minh họa và '
+                   'bài toán thực tiễn.'],
   'definition': 'Hình chóp tam giác đều có đáy là một tam giác đều và các mặt bên là các tam giác cân bằng '
                 'nhau có chung một đỉnh. Đường cao kẻ từ đỉnh của mỗi mặt bên gọi là một trung đoạn của hình '
                 'chóp tam giác đều.',
@@ -6337,27 +6436,28 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 38: Hình chóp tam giác đều**, công thức hoặc quy tắc nào '
-                 'sau đây biểu diễn đúng **Diện tích xung quanh (cạnh đáy $a$, trung đoạn $d$)**?',
-            'options': ['$S_{tp} = S_{xq} + S_{\\text{đáy}}$',
-                        '$V = \\dfrac{1}{3} S_{\\text{đáy}} \\cdot h$ ($h$: chiều cao hình chóp)',
-                        '$\\text{Bậc} = m + n + p$',
+            'q': 'Trong **Bài 38: Hình chóp tam giác đều**, quy tắc hoặc công thức nào sau đây xác định đúng '
+                 '**Diện tích xung quanh (cạnh đáy $a$, trung đoạn $d$)**?',
+            'options': ['$S_{xq} = p : d = \\dfrac{3a}{2} \\cdot d$ ($p$: nửa chu vi đáy)',
+                        '$S_{xq} = p \\cdot d = \\dfrac{2}{3a} \\cdot d$ ($p$: nửa chu vi đáy)',
+                        '$S_{xq} = p \\cdot d = \\dfrac{3a}{4} \\cdot d$ ($p$: nửa chu vi đáy)',
                         '$S_{xq} = p \\cdot d = \\dfrac{3a}{2} \\cdot d$ ($p$: nửa chu vi đáy)'],
             'answer': 3,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 38: Hình chóp tam giác đều, **Diện tích xung '
-                        'quanh (cạnh đáy $a$, trung đoạn $d$)** được xác định bởi: $S_{xq} = p \\cdot d = '
+            'solution': 'Theo kiến thức trọng tâm của Bài 38: Hình chóp tam giác đều, **Diện tích xung quanh '
+                        '(cạnh đáy $a$, trung đoạn $d$)** được xác định bởi: $S_{xq} = p \\cdot d = '
                         '\\dfrac{3a}{2} \\cdot d$ ($p$: nửa chu vi đáy).'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 38: Hình chóp tam giác đều**, nội dung/biểu thức $S_{tp} = S_{xq} + '
-                 'S_{\\text{đáy}}$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Diện tích toàn phần',
-                        'Diện tích xung quanh (cạnh đáy $a$, trung đoạn $d$)',
-                        'Thể tích hình chóp tam giác đều',
-                        'Bậc của đơn thức $a x^m y^n z^p$ ($a \\neq 0$)'],
+            'q': 'Khi học **Bài 38: Hình chóp tam giác đều**, biểu thức hoặc quy tắc nào dưới đây biểu diễn '
+                 'đúng **Diện tích toàn phần**?',
+            'options': ['$S_{tp} = S_{xq} + S_{\\text{đáy}}$',
+                        '$S_{tp} = S_{xq} - S_{\\text{đáy}}$',
+                        'Đảo ngược vế của quy tắc: $S_{tp} = S_{xq} + S_{\\text{đáy}}$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $S_{tp} = S_{xq} + '
+                        'S_{\\text{đáy}}$'],
             'answer': 0,
-            'solution': 'Trong Bài 38: Hình chóp tam giác đều, biểu thức/quy tắc $S_{tp} = S_{xq} + '
-                        'S_{\\text{đáy}}$ chính là nội dung của **Diện tích toàn phần**.'},
+            'solution': 'Trong Bài 38: Hình chóp tam giác đều, **Diện tích toàn phần** có công thức/quy tắc '
+                        'là: $S_{tp} = S_{xq} + S_{\\text{đáy}}$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Một hình chóp tam giác đều có diện tích đáy bằng $18\\text{ cm}^2$ và chiều cao bằng '
@@ -6370,17 +6470,18 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 38: Hình chóp tam giác đều** (Chương X: Một số hình khối trong thực tiễn), '
-                 'khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Nhận biết được đơn thức nhiều biến, đơn thức thu gọn, hệ số, phần biến và bậc của '
-                        'một đơn thức.',
-                        'Nhận biết được các đơn thức đồng dạng và thực hiện được phép cộng, phép trừ các đơn '
-                        'thức đồng dạng.',
+            'q': 'Để nắm vững bản chất của **Bài 38: Hình chóp tam giác đều**, nhận định nào sau đây là '
+                 '**chính xác**?',
+            'options': ['Mô tả được đỉnh, mặt đáy, mặt bên, cạnh bên, đường cao và trung đoạn của hình chóp '
+                        'tam giác đều. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Mô tả được đỉnh, mặt đáy, mặt bên, cạnh bên, đường cao và '
+                        'trung đoạn của hình chóp tam giác đều.',
                         'Mô tả được đỉnh, mặt đáy, mặt bên, cạnh bên, đường cao và trung đoạn của hình chóp '
                         'tam giác đều.',
-                        'Nhận biết được đa thức nhiều biến và các hạng tử của đa thức.'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Mô tả được đỉnh, mặt đáy, mặt '
+                        'bên, cạnh bên, đường cao và trung đoạn của hình chóp tam giác đều.'],
             'answer': 2,
-            'solution': 'Theo yêu cầu cần đạt của Bài 38: Hình chóp tam giác đều: Mô tả được đỉnh, mặt đáy, '
+            'solution': 'Theo nội dung cốt lõi của Bài 38: Hình chóp tam giác đều: Mô tả được đỉnh, mặt đáy, '
                         'mặt bên, cạnh bên, đường cao và trung đoạn của hình chóp tam giác đều.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -6400,41 +6501,44 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 38: Hình chóp tam giác '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 38: Hình chóp tam giác '
                  'đều**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Mô tả được đỉnh, mặt đáy, mặt bên, '
-                           'cạnh bên, đường cao và trung đoạn của hình chóp tam giác đều.',
-                           'Quy tắc/công thức **Diện tích xung quanh (cạnh đáy $a$, trung đoạn $d$)** trong '
-                           'bài được xác định bởi: $S_{xq} = p \\cdot d = \\dfrac{3a}{2} \\cdot d$ ($p$: nửa '
-                           'chu vi đáy).',
-                           'Trong mọi trường hợp, **Diện tích xung quanh (cạnh đáy $a$, trung đoạn $d$)** '
-                           'luôn được tính bằng công thức $\\text{Bậc} = m + n + p$ (thuộc Bậc của đơn thức '
-                           '$a x^m y^n z^p$ ($a \\neq 0$)) mà không cần điều kiện của Bài 38: Hình chóp tam '
-                           'giác đều.',
-                           'Với bài toán minh họa: “Cho hình chóp tam giác đều $S.ABC$ có độ dài cạnh đáy '
-                           'bằng $6\\text{ cm}$ và độ dài trung đoạn $SI = 8\\text{ cm}$. Tính diện tích '
-                           'xung quanh...”, lời giải đúng là: Nửa chu vi mặt đáy tam giác đều là: $p = '
-                           '\\dfrac{6 + 6 + 6}{2} = 9\\text{ (cm)}$. Diện tích xung quanh của hình chóp là: '
-                           '$S_{xq} = p \\cdot d = 9 \\cdot 8 = 72\\text{ (cm}^2\\text{)}$...'],
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Mô tả được đỉnh, mặt đáy, mặt bên, cạnh '
+                           'bên, đường cao và trung đoạn của hình chóp tam giác đều.',
+                           'Trong **Bài 38: Hình chóp tam giác đều**, quy tắc/công thức **Diện tích xung '
+                           'quanh (cạnh đáy $a$, trung đoạn $d$)** được viết là: $S_{xq} = p \\cdot d = '
+                           '\\dfrac{3a}{2} \\cdot d$ ($p$: nửa chu vi đáy).',
+                           'Nếu áp dụng sai dấu/phép tính thành $S_{xq} = p : d = \\dfrac{3a}{2} \\cdot d$ '
+                           '($p$: nửa chu vi đáy) thì kết quả của **Diện tích xung quanh (cạnh đáy $a$, '
+                           'trung đoạn $d$)** trong **Bài 38: Hình chóp tam giác đều** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Cho hình chóp tam giác đều $S.ABC$ có độ dài cạnh đáy bằng '
+                           '$6\\text{ cm}$ và độ dài trung đoạn $SI = 8\\text{ cm}$. Tính diện tích xung '
+                           'q...”, kết quả giải đúng là: Nửa chu vi mặt đáy tam giác đều là: $p = \\dfrac{6 '
+                           '+ 6 + 6}{2} = 9\\text{ (cm)}$. Diện tích xung quanh của hình chóp là: $S_{xq} = '
+                           'p \\cdot d = 9 \\cdot 8 = 72\\text{ (cm}^2\\text{)}$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 38: Hình chóp tam giác đều. b) **Đúng** '
-                        'theo công thức trọng tâm **Diện tích xung quanh (cạnh đáy $a$, trung đoạn $d$)** '
-                        '($S_{xq} = p \\cdot d = \\dfrac{3a}{2} \\cdot d$ ($p$: nửa chu vi đáy)). c) **Sai** '
-                        'vì $\\text{Bậc} = m + n + p$ là công thức của nội dung khác, không phải quy tắc '
-                        'chung của **Diện tích xung quanh (cạnh đáy $a$, trung đoạn $d$)**. d) **Đúng** theo '
-                        'lời giải ví dụ minh họa trong bài học.'},
+                        'theo công thức **Diện tích xung quanh (cạnh đáy $a$, trung đoạn $d$)** ($S_{xq} = p '
+                        '\\cdot d = \\dfrac{3a}{2} \\cdot d$ ($p$: nửa chu vi đáy)). c) **Sai** vì công thức '
+                        'đúng của **Diện tích xung quanh (cạnh đáy $a$, trung đoạn $d$)** phải là $S_{xq} = '
+                        'p \\cdot d = \\dfrac{3a}{2} \\cdot d$ ($p$: nửa chu vi đáy) chứ không phải $S_{xq} '
+                        '= p : d = \\dfrac{3a}{2} \\cdot d$ ($p$: nửa chu vi đáy). d) **Đúng** theo lời giải '
+                        'ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 38: Hình chóp tam giác đều** để giải quyết tình huống sau: Cho '
-                 'hình chóp tam giác đều $S.ABC$ có độ dài cạnh đáy bằng $6\\text{ cm}$ và độ dài trung đoạn '
-                 '$SI = 8\\text{ cm}$. Tính diện tích xung quanh của hình chóp. Kết quả và hướng giải nào '
-                 'dưới đây là **đúng**?',
-            'options': ['Ta có: $A = (-2 \\cdot 3)(x^2 \\cdot x)(y \\cdot y^3) = -6x^3y^4$. Hệ số là $-6$, '
-                        'phần biến là $x^3y^4$, bậc của đơn thức là $3 + 4 = 7$.',
-                        'Nhóm các hạng tử đồng dạng: $P = (2x^2y - 2x^2y) + 5x^2y^2 + (-3xy + 4xy) - 1 = '
-                        '5x^2y^2 + xy - 1$. Các hạng tử của dạng thu gọn có bậc lần lượt là $4; 2; 0$...',
-                        '- $M + N = (3x^2 + x^2) + (-2xy + 2xy) + (y^2 - 3y^2) = 4x^2 - 2y^2$. - $M - N = '
-                        '(3x^2 - x^2) + (-2xy - 2xy) + (y^2 + 3y^2) = 2x^2 - 4xy + 4y^2$.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 38: Hình chóp tam giác đều** để giải bài toán sau: '
+                 'Cho hình chóp tam giác đều $S.ABC$ có độ dài cạnh đáy bằng $6\\text{ cm}$ và độ dài trung '
+                 'đoạn $SI = 8\\text{ cm}$. Tính diện tích xung quanh của hình chóp. Cách giải và kết quả '
+                 'nào dưới đây là **đúng**?',
+            'options': ['Nửa chu vi mặt đáy tam giác đều là: $p = \\dfrac{6 - 6 + 6}{2} = 9\\text{ (cm)}$. '
+                        'Diện tích xung quanh của hình chóp là: $S_{xq} = p \\cdot d = 9 \\cdot 8 = '
+                        '72\\text{ (cm}^2\\text{)}$...',
+                        'Nửa chu vi mặt đáy tam giác đều là: $p = \\dfrac{2}{6 + 6 + 6} = 9\\text{ (cm)}$. '
+                        'Diện tích xung quanh của hình chóp là: $S_{xq} = p \\cdot d = 9 \\cdot 8 = '
+                        '72\\text{ (cm}^2\\text{)}$...',
+                        'Nửa chu vi mặt đáy tam giác đều là: $p = \\dfrac{12 + 6 + 6}{2} = 9\\text{ (cm)}$. '
+                        'Diện tích xung quanh của hình chóp là: $S_{xq} = p \\cdot d = 9 \\cdot 8 = '
+                        '72\\text{ (cm}^2\\text{)}$...',
                         'Nửa chu vi mặt đáy tam giác đều là: $p = \\dfrac{6 + 6 + 6}{2} = 9\\text{ (cm)}$. '
                         'Diện tích xung quanh của hình chóp là: $S_{xq} = p \\cdot d = 9 \\cdot 8 = '
                         '72\\text{ (cm}^2\\text{)}$...'],
@@ -6465,8 +6569,8 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
                    'của hình chóp tứ giác đều.',
                    'Tính được diện tích xung quanh, diện tích toàn phần và thể tích của hình chóp tứ giác '
                    'đều trong các bài toán thực tiễn.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Diện tích xung quanh** ($S_{xq} = p \\cdot '
-                   'd = 2a \\cdot d$) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 39: Hình chóp tứ giác đều** để giải bài tập minh họa và bài '
+                   'toán thực tiễn.'],
   'definition': 'Hình chóp tứ giác đều có mặt đáy là một hình vuông và $4$ mặt bên là các tam giác cân bằng '
                 'nhau có chung một đỉnh. Chân đường cao của hình chóp tứ giác đều trùng với giao điểm hai '
                 'đường chéo của mặt đáy.',
@@ -6523,26 +6627,27 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 39: Hình chóp tứ giác đều**, công thức hoặc quy tắc nào '
-                 'sau đây biểu diễn đúng **Diện tích xung quanh**?',
+            'q': 'Trong **Bài 39: Hình chóp tứ giác đều**, quy tắc hoặc công thức nào sau đây xác định đúng '
+                 '**Diện tích xung quanh**?',
             'options': ['$S_{xq} = p \\cdot d = 2a \\cdot d$',
-                        '$S_{tp} = S_{xq} + S_{\\text{đáy}} = 2ad + a^2$',
-                        '$V = \\dfrac{1}{3} S_{\\text{đáy}} \\cdot h = \\dfrac{1}{3} a^2 h$',
-                        '$d^2 = h^2 + \\left(\\dfrac{a}{2}\\right)^2$'],
+                        '$S_{xq} = p : d = 2a \\cdot d$',
+                        'Đảo ngược vế của quy tắc: $S_{xq} = p \\cdot d = 2a \\cdot d$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $S_{xq} = p \\cdot d = 2a '
+                        '\\cdot d$'],
             'answer': 0,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 39: Hình chóp tứ giác đều, **Diện tích xung '
+            'solution': 'Theo kiến thức trọng tâm của Bài 39: Hình chóp tứ giác đều, **Diện tích xung '
                         'quanh** được xác định bởi: $S_{xq} = p \\cdot d = 2a \\cdot d$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 39: Hình chóp tứ giác đều**, nội dung/biểu thức $S_{tp} = S_{xq} + '
-                 'S_{\\text{đáy}} = 2ad + a^2$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Diện tích xung quanh',
-                        'Diện tích toàn phần',
-                        'Thể tích hình chóp tứ giác đều',
-                        'Hệ thức Pythagore liên hệ $d, h, a$'],
+            'q': 'Khi học **Bài 39: Hình chóp tứ giác đều**, biểu thức hoặc quy tắc nào dưới đây biểu diễn '
+                 'đúng **Diện tích toàn phần**?',
+            'options': ['$S_{tp} = S_{xq} - S_{\\text{đáy}} = 2ad + a^2$',
+                        '$S_{tp} = S_{xq} + S_{\\text{đáy}} = 2ad + a^2$',
+                        '$S_{tp} = S_{xq} + S_{\\text{đáy}} = 2ad + a^1$',
+                        '$S_{tp} = S_{xq} + S_{\\text{đáy}} = 2ad + a^4$'],
             'answer': 1,
-            'solution': 'Trong Bài 39: Hình chóp tứ giác đều, biểu thức/quy tắc $S_{tp} = S_{xq} + '
-                        'S_{\\text{đáy}} = 2ad + a^2$ chính là nội dung của **Diện tích toàn phần**.'},
+            'solution': 'Trong Bài 39: Hình chóp tứ giác đều, **Diện tích toàn phần** có công thức/quy tắc '
+                        'là: $S_{tp} = S_{xq} + S_{\\text{đáy}} = 2ad + a^2$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Cho hình chóp tứ giác đều có độ dài cạnh đáy $a = 6\\text{ cm}$ và độ dài trung đoạn $d = '
@@ -6556,17 +6661,18 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 39: Hình chóp tứ giác đều** (Chương X: Một số hình khối trong thực tiễn), '
-                 'khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Nhận biết được đơn thức nhiều biến, đơn thức thu gọn, hệ số, phần biến và bậc của '
-                        'một đơn thức.',
-                        'Nhận biết được các đơn thức đồng dạng và thực hiện được phép cộng, phép trừ các đơn '
-                        'thức đồng dạng.',
-                        'Nhận biết được đa thức nhiều biến và các hạng tử của đa thức.',
+            'q': 'Để nắm vững bản chất của **Bài 39: Hình chóp tứ giác đều**, nhận định nào sau đây là '
+                 '**chính xác**?',
+            'options': ['Mô tả được đỉnh, mặt đáy (hình vuông), mặt bên (tam giác cân), đường cao và trung '
+                        'đoạn của hình chóp tứ giác đều. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Mô tả được đỉnh, mặt đáy (hình vuông), mặt bên (tam giác '
+                        'cân), đường cao và trung đoạn của hình chóp tứ giác đều.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Mô tả được đỉnh, mặt đáy (hình '
+                        'vuông), mặt bên (tam giác cân), đường cao và trung đoạn của hình chóp tứ giác đều.',
                         'Mô tả được đỉnh, mặt đáy (hình vuông), mặt bên (tam giác cân), đường cao và trung '
                         'đoạn của hình chóp tứ giác đều.'],
             'answer': 3,
-            'solution': 'Theo yêu cầu cần đạt của Bài 39: Hình chóp tứ giác đều: Mô tả được đỉnh, mặt đáy '
+            'solution': 'Theo nội dung cốt lõi của Bài 39: Hình chóp tứ giác đều: Mô tả được đỉnh, mặt đáy '
                         '(hình vuông), mặt bên (tam giác cân), đường cao và trung đoạn của hình chóp tứ giác '
                         'đều.'},
            {'level': 'hieu',
@@ -6584,40 +6690,39 @@ LESSONS = [{'topic': 'l8-ch01-da-thuc',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 39: Hình chóp tứ giác '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 39: Hình chóp tứ giác '
                  'đều**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Mô tả được đỉnh, mặt đáy (hình '
-                           'vuông), mặt bên (tam giác cân), đường cao và trung đoạn của hình chóp tứ giác '
-                           'đều.',
-                           'Quy tắc/công thức **Diện tích xung quanh** trong bài được xác định bởi: $S_{xq} '
-                           '= p \\cdot d = 2a \\cdot d$.',
-                           'Trong mọi trường hợp, **Diện tích xung quanh** luôn được tính bằng công thức '
-                           '$\\text{Bậc} = m + n + p$ (thuộc Bậc của đơn thức $a x^m y^n z^p$ ($a \\neq 0$)) '
-                           'mà không cần điều kiện của Bài 39: Hình chóp tứ giác đều.',
-                           'Với bài toán minh họa: “Một mái che giếng trời có dạng hình chóp tứ giác đều với '
-                           'cạnh đáy $a = 2\\text{ m}$ và chiều cao $h = 1,2\\text{ m}$. Tính thể tích phần '
-                           'không...”, lời giải đúng là: - Diện tích đáy hình vuông là: $S_{\\text{đáy}} = '
-                           '2^2 = 4\\text{ (m}^2\\text{)}$. - Thể tích phần không gian bên trong là...'],
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Mô tả được đỉnh, mặt đáy (hình vuông), '
+                           'mặt bên (tam giác cân), đường cao và trung đoạn của hình chóp tứ giác đều.',
+                           'Trong **Bài 39: Hình chóp tứ giác đều**, quy tắc/công thức **Diện tích xung '
+                           'quanh** được viết là: $S_{xq} = p \\cdot d = 2a \\cdot d$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $S_{xq} = p : d = 2a \\cdot d$ thì kết quả '
+                           'của **Diện tích xung quanh** trong **Bài 39: Hình chóp tứ giác đều** vẫn không '
+                           'thay đổi.',
+                           'Xét ví dụ của bài: “Một mái che giếng trời có dạng hình chóp tứ giác đều với '
+                           'cạnh đáy $a = 2\\text{ m}$ và chiều cao $h = 1,2\\text{ m}$. Tính thể tích '
+                           'phần...”, kết quả giải đúng là: - Diện tích đáy hình vuông là: $S_{\\text{đáy}} '
+                           '= 2^2 = 4\\text{ (m}^2\\text{)}$. - Thể tích phần không gian bên trong là...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 39: Hình chóp tứ giác đều. b) **Đúng** '
-                        'theo công thức trọng tâm **Diện tích xung quanh** ($S_{xq} = p \\cdot d = 2a \\cdot '
-                        'd$). c) **Sai** vì $\\text{Bậc} = m + n + p$ là công thức của nội dung khác, không '
-                        'phải quy tắc chung của **Diện tích xung quanh**. d) **Đúng** theo lời giải ví dụ '
-                        'minh họa trong bài học.'},
+                        'theo công thức **Diện tích xung quanh** ($S_{xq} = p \\cdot d = 2a \\cdot d$). c) '
+                        '**Sai** vì công thức đúng của **Diện tích xung quanh** phải là $S_{xq} = p \\cdot d '
+                        '= 2a \\cdot d$ chứ không phải $S_{xq} = p : d = 2a \\cdot d$. d) **Đúng** theo lời '
+                        'giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 39: Hình chóp tứ giác đều** để giải quyết tình huống sau: Một mái '
-                 'che giếng trời có dạng hình chóp tứ giác đều với cạnh đáy $a = 2\\text{ m}$ và chiều cao '
-                 '$h = 1,2\\text{ m}$. Tính thể tích phần không gian bên trong mái che và độ dài trung đoạn '
-                 'của mái che. Kết quả và hướng giải nào dưới đây là **đúng**?',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 39: Hình chóp tứ giác đều** để giải bài toán sau: '
+                 'Một mái che giếng trời có dạng hình chóp tứ giác đều với cạnh đáy $a = 2\\text{ m}$ và '
+                 'chiều cao $h = 1,2\\text{ m}$. Tính thể tích phần không gian bên trong mái che và độ dài '
+                 'trung đoạn của mái che. Cách giải và kết quả nào dưới đây là **đúng**?',
             'options': ['- Diện tích đáy hình vuông là: $S_{\\text{đáy}} = 2^2 = 4\\text{ (m}^2\\text{)}$. - '
                         'Thể tích phần không gian bên trong là...',
-                        'Ta có: $A = (-2 \\cdot 3)(x^2 \\cdot x)(y \\cdot y^3) = -6x^3y^4$. Hệ số là $-6$, '
-                        'phần biến là $x^3y^4$, bậc của đơn thức là $3 + 4 = 7$.',
-                        'Nhóm các hạng tử đồng dạng: $P = (2x^2y - 2x^2y) + 5x^2y^2 + (-3xy + 4xy) - 1 = '
-                        '5x^2y^2 + xy - 1$. Các hạng tử của dạng thu gọn có bậc lần lượt là $4; 2; 0$...',
-                        '- $M + N = (3x^2 + x^2) + (-2xy + 2xy) + (y^2 - 3y^2) = 4x^2 - 2y^2$. - $M - N = '
-                        '(3x^2 - x^2) + (-2xy - 2xy) + (y^2 + 3y^2) = 2x^2 - 4xy + 4y^2$.'],
+                        '- Diện tích đáy hình vuông là: $S_{\\text{đáy}} = 2^2 = 4\\text{ (m}^2\\text{)}$. + '
+                        'Thể tích phần không gian bên trong là...',
+                        '- Diện tích đáy hình vuông là: $S_{\\text{đáy}} = 2^2 = 4\\text{ (m}^1\\text{)}$. - '
+                        'Thể tích phần không gian bên trong là...',
+                        '- Diện tích đáy hình vuông là: $S_{\\text{đáy}} = 4^2 = 4\\text{ (m}^2\\text{)}$. - '
+                        'Thể tích phần không gian bên trong là...'],
             'answer': 0,
             'solution': 'Lời giải chi tiết theo Bài 39: Hình chóp tứ giác đều: - Diện tích đáy hình vuông '
                         'là: $S_{\\text{đáy}} = 2^2 = 4\\text{ (m}^2\\text{)}$.\n'

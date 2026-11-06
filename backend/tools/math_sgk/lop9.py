@@ -1,7 +1,6 @@
 """Dữ liệu bài học SGK Toán Lớp 9 — Kết nối tri thức với cuộc sống (NXB Giáo dục Việt Nam).
-Cấu trúc 3 cấp: Lớp 9 ➔ Chương/Chủ đề (topic) ➔ Từng Bài học (title).
-Mỗi bài học gồm đầy đủ Yêu cầu cần đạt (requirements), Định nghĩa, Lý thuyết, Công thức, Ví dụ, Ứng dụng thực tế
-và đúng 10 câu hỏi luyện tập theo 3 mức độ: 4 Nhận biết + 4 Thông hiểu + 2 Vận dụng.
+Cấu trúc 3 cấp: Lớp 9 ➔ Chương/Chủ đề (topic) ➔ Từng Bài học độc lập (title).
+Mỗi bài học chỉ chứa kiến thức, công thức, ví dụ và 10 câu hỏi của riêng bài học đó.
 """
 
 GRADE = 9
@@ -62,30 +61,30 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 1: Khái niệm phương trình và hệ hai phương trình bậc '
-                 'nhất hai ẩn**, công thức hoặc quy tắc nào sau đây biểu diễn đúng **Phương trình bậc nhất '
-                 'hai ẩn**?',
-            'options': ['$\\begin{cases} a_1x + b_1y = c_1 \\\\ a_2x + b_2y = c_2 \\end{cases}$',
-                        'Từ $ax + by = c \\Rightarrow y = \\dfrac{c - ax}{b}$ ($b \\neq 0$)',
+            'q': 'Trong **Bài 1: Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn**, quy tắc '
+                 'hoặc công thức nào sau đây xác định đúng **Phương trình bậc nhất hai ẩn**?',
+            'options': ['$ax - by = c$ ($a^2 + b^2 \\neq 0$)',
+                        '$ax + by = c$ ($a^2 + b^2 \\neq 1$)',
                         '$ax + by = c$ ($a^2 + b^2 \\neq 0$)',
-                        'Cộng hoặc trừ từng vế hai phương trình'],
+                        '$ax + by = c$ ($a^4 + b^2 \\neq 0$)'],
             'answer': 2,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 1: Khái niệm phương trình và hệ hai phương '
-                        'trình bậc nhất hai ẩn, **Phương trình bậc nhất hai ẩn** được xác định bởi: $ax + by '
-                        '= c$ ($a^2 + b^2 \\neq 0$). (Tập nghiệm biểu diễn bởi một đường thẳng)'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 1: Khái niệm phương trình và hệ hai phương trình '
+                        'bậc nhất hai ẩn, **Phương trình bậc nhất hai ẩn** được xác định bởi: $ax + by = c$ '
+                        '($a^2 + b^2 \\neq 0$). (Tập nghiệm biểu diễn bởi một đường thẳng)'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 1: Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn**, nội '
-                 'dung/biểu thức $\\begin{cases} a_1x + b_1y = c_1 \\\\ a_2x + b_2y = c_2 \\end{cases}$ là '
-                 'quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Phương trình bậc nhất hai ẩn',
-                        'Phương pháp thế',
-                        'Phương pháp cộng đại số',
-                        'Hệ hai phương trình bậc nhất hai ẩn'],
+            'q': 'Khi học **Bài 1: Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn**, biểu '
+                 'thức hoặc quy tắc nào dưới đây biểu diễn đúng **Hệ hai phương trình bậc nhất hai ẩn**?',
+            'options': ['$\\begin{cases} a_1x - b_1y = c_1 \\\\ a_2x + b_2y = c_2 \\end{cases}$',
+                        'Đảo ngược vế của quy tắc: $\\begin{cases} a_1x + b_1y = c_1 \\\\ a_2x + b_2y = c_2 '
+                        '\\end{cases}$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\begin{cases} a_1x + b_1y = '
+                        'c_1 \\\\ a_2x + b_2y = c_2 \\end{cases}$',
+                        '$\\begin{cases} a_1x + b_1y = c_1 \\\\ a_2x + b_2y = c_2 \\end{cases}$'],
             'answer': 3,
-            'solution': 'Trong Bài 1: Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn, biểu '
-                        'thức/quy tắc $\\begin{cases} a_1x + b_1y = c_1 \\\\ a_2x + b_2y = c_2 \\end{cases}$ '
-                        'chính là nội dung của **Hệ hai phương trình bậc nhất hai ẩn**.'},
+            'solution': 'Trong Bài 1: Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn, **Hệ '
+                        'hai phương trình bậc nhất hai ẩn** có công thức/quy tắc là: $\\begin{cases} a_1x + '
+                        'b_1y = c_1 \\\\ a_2x + b_2y = c_2 \\end{cases}$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Cặp số $(1; -2)$ là nghiệm của hệ phương trình nào dưới đây?',
@@ -100,17 +99,18 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 1: Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn** (Chương '
-                 'I: Phương trình và hệ hai phương trình bậc nhất hai ẩn), khẳng định nào sau đây phản ánh '
-                 '**đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Giải được hệ hai phương trình bậc nhất hai ẩn bằng phương pháp thế.',
+            'q': 'Để nắm vững bản chất của **Bài 1: Khái niệm phương trình và hệ hai phương trình bậc nhất '
+                 'hai ẩn**, nhận định nào sau đây là **chính xác**?',
+            'options': ['Nhận biết được phương trình bậc nhất hai ẩn $ax - by = c$ ($a \\neq 0$ hoặc $b '
+                        '\\neq 0$) và nghiệm của nó.',
                         'Nhận biết được phương trình bậc nhất hai ẩn $ax + by = c$ ($a \\neq 0$ hoặc $b '
                         '\\neq 0$) và nghiệm của nó.',
-                        'Giải được hệ hai phương trình bậc nhất hai ẩn bằng phương pháp cộng đại số.',
-                        'Sử dụng được máy tính cầm tay để tìm nghiệm của hệ hai phương trình bậc nhất hai '
-                        'ẩn.'],
+                        'Nhận biết được phương trình bậc nhất hai ẩn $ax + by = c$ ($a \\neq 0$ hoặc $b '
+                        '\\neq 1$) và nghiệm của nó.',
+                        'Nhận biết được phương trình bậc nhất hai ẩn $ax + by = c$ ($a \\neq 2$ hoặc $b '
+                        '\\neq 0$) và nghiệm của nó.'],
             'answer': 1,
-            'solution': 'Theo yêu cầu cần đạt của Bài 1: Khái niệm phương trình và hệ hai phương trình bậc '
+            'solution': 'Theo nội dung cốt lõi của Bài 1: Khái niệm phương trình và hệ hai phương trình bậc '
                         'nhất hai ẩn: Nhận biết được phương trình bậc nhất hai ẩn $ax + by = c$ ($a \\neq 0$ '
                         'hoặc $b \\neq 0$) và nghiệm của nó.'},
            {'level': 'hieu',
@@ -129,46 +129,46 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 1: Khái niệm phương '
-                 'trình và hệ hai phương trình bậc nhất hai ẩn**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được phương trình bậc '
-                           'nhất hai ẩn $ax + by = c$ ($a \\neq 0$ hoặc $b \\neq 0$) và nghiệm của nó.',
-                           'Quy tắc/công thức **Phương trình bậc nhất hai ẩn** trong bài được xác định bởi: '
-                           '$ax + by = c$ ($a^2 + b^2 \\neq 0$).',
-                           'Trong mọi trường hợp, **Phương trình bậc nhất hai ẩn** luôn được tính bằng công '
-                           'thức Từ $ax + by = c \\Rightarrow y = \\dfrac{c - ax}{b}$ ($b \\neq 0$) (thuộc '
-                           'Phương pháp thế) mà không cần điều kiện của Bài 1: Khái niệm phương trình và hệ '
-                           'hai phương trình bậc nhất hai ẩn.',
-                           'Với bài toán minh họa: “Kiểm tra xem cặp số $(2; -1)$ có phải là nghiệm của hệ '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 1: Khái niệm phương trình '
+                 'và hệ hai phương trình bậc nhất hai ẩn**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết được phương trình bậc nhất hai '
+                           'ẩn $ax + by = c$ ($a \\neq 0$ hoặc $b \\neq 0$) và nghiệm của nó.',
+                           'Trong **Bài 1: Khái niệm phương trình và hệ hai phương trình bậc nhất hai ẩn**, '
+                           'quy tắc/công thức **Phương trình bậc nhất hai ẩn** được viết là: $ax + by = c$ '
+                           '($a^2 + b^2 \\neq 0$).',
+                           'Nếu áp dụng sai dấu/phép tính thành $ax - by = c$ ($a^2 + b^2 \\neq 0$) thì kết '
+                           'quả của **Phương trình bậc nhất hai ẩn** trong **Bài 1: Khái niệm phương trình '
+                           'và hệ hai phương trình bậc nhất hai ẩn** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Kiểm tra xem cặp số $(2; -1)$ có phải là nghiệm của hệ '
                            'phương trình $\\begin{cases} 2x - y = 5 \\\\ x + 3y = -1 \\end{cases}$ hay '
-                           'không.”, lời giải đúng là: Thay $x = 2, y = -1$ vào phương trình thứ nhất: $2 '
-                           '\\cdot 2 - (-1) = 4 + 1 = 5$ (thỏa mãn). Thay $x = 2, y = -1$ vào phương trình '
-                           'thứ hai: $2 + 3 \\cdot (-1) = 2 - 3 = -1$...'],
+                           'không.”, kết quả giải đúng là: Thay $x = 2, y = -1$ vào phương trình thứ nhất: '
+                           '$2 \\cdot 2 - (-1) = 4 + 1 = 5$ (thỏa mãn). Thay $x = 2, y = -1$ vào phương '
+                           'trình thứ ha...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 1: Khái niệm phương trình và hệ hai phương '
-                        'trình bậc nhất hai ẩn. b) **Đúng** theo công thức trọng tâm **Phương trình bậc nhất '
-                        'hai ẩn** ($ax + by = c$ ($a^2 + b^2 \\neq 0$)). c) **Sai** vì Từ $ax + by = c '
-                        '\\Rightarrow y = \\dfrac{c - ax}{b}$ ($b \\neq 0$) là công thức của nội dung khác, '
-                        'không phải quy tắc chung của **Phương trình bậc nhất hai ẩn**. d) **Đúng** theo lời '
-                        'giải ví dụ minh họa trong bài học.'},
+                        'trình bậc nhất hai ẩn. b) **Đúng** theo công thức **Phương trình bậc nhất hai ẩn** '
+                        '($ax + by = c$ ($a^2 + b^2 \\neq 0$)). c) **Sai** vì công thức đúng của **Phương '
+                        'trình bậc nhất hai ẩn** phải là $ax + by = c$ ($a^2 + b^2 \\neq 0$) chứ không phải '
+                        '$ax - by = c$ ($a^2 + b^2 \\neq 0$). d) **Đúng** theo lời giải ví dụ minh họa trong '
+                        'bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 1: Khái niệm phương trình và hệ hai phương trình bậc nhất hai '
-                 'ẩn** để giải quyết tình huống sau: Kiểm tra xem cặp số $(2; -1)$ có phải là nghiệm của hệ '
-                 'phương trình $\\begin{cases} 2x - y = 5 \\\\ x + 3y = -1 \\end{cases}$ hay không. Kết quả '
-                 'và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Cộng từng vế hai phương trình của hệ, ta được: $5x = 10 \\Rightarrow x = 2$. Thay '
-                        '$x = 2$ vào phương trình $2x + y = 5$, ta có: $2 \\cdot 2 + y = 5 \\Rightarrow y = '
-                        '1$...',
-                        'Gọi số thứ nhất là $x$ và số thứ hai là $y$. Theo đề bài, ta có hệ phương trình: '
-                        '$\\begin{cases} x + y = 59 \\\\ 3y - 2x = 7 \\end{cases} \\Leftrightarrow '
-                        '\\begin{cases} 2x + 2y = 118 \\\\ -2x + 3y = 7 \\end{cases}$...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 1: Khái niệm phương trình và hệ hai phương trình '
+                 'bậc nhất hai ẩn** để giải bài toán sau: Kiểm tra xem cặp số $(2; -1)$ có phải là nghiệm '
+                 'của hệ phương trình $\\begin{cases} 2x - y = 5 \\\\ x + 3y = -1 \\end{cases}$ hay không. '
+                 'Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Thay $x = 2, y = -1$ vào phương trình thứ nhất: $2 \\cdot 2 - (-1) = 4 - 1 = 5$ '
+                        '(thỏa mãn). Thay $x = 2, y = -1$ vào phương trình thứ hai: $2 + 3 \\cdot (-1) = 2 - '
+                        '3 = -1$...',
+                        'Thay $x = 2, y = -1$ vào phương trình thứ nhất: $2 \\cdot 2 - (-1) = 4 + 1 = 5$ '
+                        '(thỏa mãn). Thay $x = 2, y = -1$ vào phương trình thứ hai: $2 + 3 \\cdot (-1) = 2 - '
+                        '3 = -2$...',
                         'Thay $x = 2, y = -1$ vào phương trình thứ nhất: $2 \\cdot 2 - (-1) = 4 + 1 = 5$ '
                         '(thỏa mãn). Thay $x = 2, y = -1$ vào phương trình thứ hai: $2 + 3 \\cdot (-1) = 2 - '
                         '3 = -1$...',
-                        'ĐKXĐ: $x \\neq 0$ và $x \\neq 2$. Quy đồng và khử mẫu: $x(x + 2) - (x - 2) = 2 '
-                        '\\Rightarrow x^2 + 2x - x + 2 = 2 \\Rightarrow x^2 + x = 0 \\Rightarrow x(x + 1) = '
-                        '0$...'],
+                        'Thay $x = 4, y = -1$ vào phương trình thứ nhất: $2 \\cdot 2 - (-1) = 4 + 1 = 5$ '
+                        '(thỏa mãn). Thay $x = 2, y = -1$ vào phương trình thứ hai: $2 + 3 \\cdot (-1) = 2 - '
+                        '3 = -1$...'],
             'answer': 2,
             'solution': 'Lời giải chi tiết theo Bài 1: Khái niệm phương trình và hệ hai phương trình bậc '
                         'nhất hai ẩn: Thay $x = 2, y = -1$ vào phương trình thứ nhất: $2 \\cdot 2 - (-1) = 4 '
@@ -235,27 +235,28 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 2: Giải hệ hai phương trình bậc nhất hai ẩn**, công thức '
-                 'hoặc quy tắc nào sau đây biểu diễn đúng **Phương pháp thế**?',
-            'options': ['Cộng hoặc trừ từng vế hai phương trình',
-                        '$ax + by = c$ ($a^2 + b^2 \\neq 0$)',
-                        '$\\begin{cases} a_1x + b_1y = c_1 \\\\ a_2x + b_2y = c_2 \\end{cases}$',
+            'q': 'Trong **Bài 2: Giải hệ hai phương trình bậc nhất hai ẩn**, quy tắc hoặc công thức nào sau '
+                 'đây xác định đúng **Phương pháp thế**?',
+            'options': ['Từ $ax - by = c \\Rightarrow y = \\dfrac{c - ax}{b}$ ($b \\neq 0$)',
+                        'Từ $ax + by = c \\Rightarrow y = \\dfrac{b}{c - ax}$ ($b \\neq 0$)',
+                        'Từ $ax + by = c \\Rightarrow y = \\dfrac{c - ax}{b}$ ($b \\neq 2$)',
                         'Từ $ax + by = c \\Rightarrow y = \\dfrac{c - ax}{b}$ ($b \\neq 0$)'],
             'answer': 3,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 2: Giải hệ hai phương trình bậc nhất hai ẩn, '
+            'solution': 'Theo kiến thức trọng tâm của Bài 2: Giải hệ hai phương trình bậc nhất hai ẩn, '
                         '**Phương pháp thế** được xác định bởi: Từ $ax + by = c \\Rightarrow y = \\dfrac{c - '
                         'ax}{b}$ ($b \\neq 0$). (Thế biểu thức của $y$ vào phương trình còn lại)'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 2: Giải hệ hai phương trình bậc nhất hai ẩn**, nội dung/biểu thức Cộng hoặc '
-                 'trừ từng vế hai phương trình là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Phương pháp cộng đại số',
-                        'Phương pháp thế',
-                        'Phương trình bậc nhất hai ẩn',
-                        'Hệ hai phương trình bậc nhất hai ẩn'],
+            'q': 'Khi học **Bài 2: Giải hệ hai phương trình bậc nhất hai ẩn**, biểu thức hoặc quy tắc nào '
+                 'dưới đây biểu diễn đúng **Phương pháp cộng đại số**?',
+            'options': ['Cộng hoặc trừ từng vế hai phương trình',
+                        'Cộng hoặc trừ từng vế hai phương trình (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Cộng hoặc trừ từng vế hai phương trình',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Cộng hoặc trừ từng vế hai '
+                        'phương trình'],
             'answer': 0,
-            'solution': 'Trong Bài 2: Giải hệ hai phương trình bậc nhất hai ẩn, biểu thức/quy tắc Cộng hoặc '
-                        'trừ từng vế hai phương trình chính là nội dung của **Phương pháp cộng đại số**.'},
+            'solution': 'Trong Bài 2: Giải hệ hai phương trình bậc nhất hai ẩn, **Phương pháp cộng đại số** '
+                        'có công thức/quy tắc là: Cộng hoặc trừ từng vế hai phương trình.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Hệ phương trình $\\begin{cases} 2x - y = 3 \\\\ -4x + 2y = -6 \\end{cases}$ có bao nhiêu '
@@ -268,17 +269,18 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 2: Giải hệ hai phương trình bậc nhất hai ẩn** (Chương I: Phương trình và hệ '
-                 'hai phương trình bậc nhất hai ẩn), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần '
-                 'đạt và bản chất kiến thức của bài?',
-            'options': ['Nhận biết được phương trình bậc nhất hai ẩn $ax + by = c$ ($a \\neq 0$ hoặc $b '
-                        '\\neq 0$) và nghiệm của nó.',
-                        'Nhận biết được hệ hai phương trình bậc nhất hai ẩn và nghiệm của hệ.',
+            'q': 'Để nắm vững bản chất của **Bài 2: Giải hệ hai phương trình bậc nhất hai ẩn**, nhận định '
+                 'nào sau đây là **chính xác**?',
+            'options': ['Giải được hệ hai phương trình bậc nhất hai ẩn bằng phương pháp thế. (với dấu ngược '
+                        'lại)',
+                        'Đảo ngược vế của quy tắc: Giải được hệ hai phương trình bậc nhất hai ẩn bằng phương '
+                        'pháp thế.',
                         'Giải được hệ hai phương trình bậc nhất hai ẩn bằng phương pháp thế.',
-                        'Biểu diễn được tập nghiệm của phương trình bậc nhất hai ẩn trên mặt phẳng tọa độ.'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Giải được hệ hai phương trình '
+                        'bậc nhất hai ẩn bằng phương pháp thế.'],
             'answer': 2,
-            'solution': 'Theo yêu cầu cần đạt của Bài 2: Giải hệ hai phương trình bậc nhất hai ẩn: Giải được '
-                        'hệ hai phương trình bậc nhất hai ẩn bằng phương pháp thế.'},
+            'solution': 'Theo nội dung cốt lõi của Bài 2: Giải hệ hai phương trình bậc nhất hai ẩn: Giải '
+                        'được hệ hai phương trình bậc nhất hai ẩn bằng phương pháp thế.'},
            {'level': 'hieu',
             'type': 'tf4',
             'q': 'Cho hệ phương trình $\\begin{cases} 3x + 2y = 8 \\\\ x - y = 1 \\end{cases}$.',
@@ -294,40 +296,42 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 2: Giải hệ hai phương '
-                 'trình bậc nhất hai ẩn**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Giải được hệ hai phương trình bậc '
-                           'nhất hai ẩn bằng phương pháp thế.',
-                           'Quy tắc/công thức **Phương pháp thế** trong bài được xác định bởi: Từ $ax + by = '
-                           'c \\Rightarrow y = \\dfrac{c - ax}{b}$ ($b \\neq 0$).',
-                           'Trong mọi trường hợp, **Phương pháp thế** luôn được tính bằng công thức $ax + by '
-                           '= c$ ($a^2 + b^2 \\neq 0$) (thuộc Phương trình bậc nhất hai ẩn) mà không cần '
-                           'điều kiện của Bài 2: Giải hệ hai phương trình bậc nhất hai ẩn.',
-                           'Với bài toán minh họa: “Giải hệ phương trình $\\begin{cases} 2x + y = 5 \\\\ 3x '
-                           '- y = 5 \\end{cases}$ bằng phương pháp cộng đại số.”, lời giải đúng là: Cộng '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 2: Giải hệ hai phương trình '
+                 'bậc nhất hai ẩn**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Giải được hệ hai phương trình bậc nhất '
+                           'hai ẩn bằng phương pháp thế.',
+                           'Trong **Bài 2: Giải hệ hai phương trình bậc nhất hai ẩn**, quy tắc/công thức '
+                           '**Phương pháp thế** được viết là: Từ $ax + by = c \\Rightarrow y = \\dfrac{c - '
+                           'ax}{b}$ ($b \\neq 0$).',
+                           'Nếu áp dụng sai dấu/phép tính thành Từ $ax - by = c \\Rightarrow y = \\dfrac{c - '
+                           'ax}{b}$ ($b \\neq 0$) thì kết quả của **Phương pháp thế** trong **Bài 2: Giải hệ '
+                           'hai phương trình bậc nhất hai ẩn** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Giải hệ phương trình $\\begin{cases} 2x + y = 5 \\\\ 3x - y '
+                           '= 5 \\end{cases}$ bằng phương pháp cộng đại số.”, kết quả giải đúng là: Cộng '
                            'từng vế hai phương trình của hệ, ta được: $5x = 10 \\Rightarrow x = 2$. Thay $x '
                            '= 2$ vào phương trình $2x + y = 5$, ta có: $2 \\cdot 2 + y = 5 \\Rightarrow y = '
                            '1$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 2: Giải hệ hai phương trình bậc nhất hai '
-                        'ẩn. b) **Đúng** theo công thức trọng tâm **Phương pháp thế** (Từ $ax + by = c '
-                        '\\Rightarrow y = \\dfrac{c - ax}{b}$ ($b \\neq 0$)). c) **Sai** vì $ax + by = c$ '
-                        '($a^2 + b^2 \\neq 0$) là công thức của nội dung khác, không phải quy tắc chung của '
-                        '**Phương pháp thế**. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        'ẩn. b) **Đúng** theo công thức **Phương pháp thế** (Từ $ax + by = c \\Rightarrow y '
+                        '= \\dfrac{c - ax}{b}$ ($b \\neq 0$)). c) **Sai** vì công thức đúng của **Phương '
+                        'pháp thế** phải là Từ $ax + by = c \\Rightarrow y = \\dfrac{c - ax}{b}$ ($b \\neq '
+                        '0$) chứ không phải Từ $ax - by = c \\Rightarrow y = \\dfrac{c - ax}{b}$ ($b \\neq '
+                        '0$). d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 2: Giải hệ hai phương trình bậc nhất hai ẩn** để giải quyết tình '
-                 'huống sau: Giải hệ phương trình $\\begin{cases} 2x + y = 5 \\\\ 3x - y = 5 \\end{cases}$ '
-                 'bằng phương pháp cộng đại số. Kết quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Thay $x = 2, y = -1$ vào phương trình thứ nhất: $2 \\cdot 2 - (-1) = 4 + 1 = 5$ '
-                        '(thỏa mãn). Thay $x = 2, y = -1$ vào phương trình thứ hai: $2 + 3 \\cdot (-1) = 2 - '
-                        '3 = -1$...',
-                        'Gọi số thứ nhất là $x$ và số thứ hai là $y$. Theo đề bài, ta có hệ phương trình: '
-                        '$\\begin{cases} x + y = 59 \\\\ 3y - 2x = 7 \\end{cases} \\Leftrightarrow '
-                        '\\begin{cases} 2x + 2y = 118 \\\\ -2x + 3y = 7 \\end{cases}$...',
-                        'ĐKXĐ: $x \\neq 0$ và $x \\neq 2$. Quy đồng và khử mẫu: $x(x + 2) - (x - 2) = 2 '
-                        '\\Rightarrow x^2 + 2x - x + 2 = 2 \\Rightarrow x^2 + x = 0 \\Rightarrow x(x + 1) = '
-                        '0$...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 2: Giải hệ hai phương trình bậc nhất hai ẩn** để '
+                 'giải bài toán sau: Giải hệ phương trình $\\begin{cases} 2x + y = 5 \\\\ 3x - y = 5 '
+                 '\\end{cases}$ bằng phương pháp cộng đại số. Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Cộng từng vế hai phương trình của hệ, ta được: $5x = 10 \\Rightarrow x = 2$. Thay '
+                        '$x = 2$ vào phương trình $2x - y = 5$, ta có: $2 \\cdot 2 + y = 5 \\Rightarrow y = '
+                        '1$...',
+                        'Cộng từng vế hai phương trình của hệ, ta được: $5x = 10 \\Rightarrow x = 2$. Thay '
+                        '$x = 2$ vào phương trình $2x + y = 5$, ta có: $2 \\cdot 2 + y = 5 \\Rightarrow y = '
+                        '2$...',
+                        'Cộng từng vế hai phương trình của hệ, ta được: $5x = 20 \\Rightarrow x = 2$. Thay '
+                        '$x = 2$ vào phương trình $2x + y = 5$, ta có: $2 \\cdot 2 + y = 5 \\Rightarrow y = '
+                        '1$...',
                         'Cộng từng vế hai phương trình của hệ, ta được: $5x = 10 \\Rightarrow x = 2$. Thay '
                         '$x = 2$ vào phương trình $2x + y = 5$, ta có: $2 \\cdot 2 + y = 5 \\Rightarrow y = '
                         '1$...'],
@@ -357,8 +361,8 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
   'requirements': ['Nắm vững 3 bước giải bài toán bằng cách lập hệ phương trình.',
                    'Giải quyết được các bài toán thực tiễn (chuyển động, năng suất, phần trăm, hóa học) gắn '
                    'với hệ hai phương trình bậc nhất hai ẩn.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Bài toán chuyển động** ($s = v \\cdot t$) '
-                   'vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 3: Giải bài toán bằng cách lập hệ phương trình** để giải '
+                   'bài tập minh họa và bài toán thực tiễn.'],
   'definition': 'Giải bài toán bằng cách lập hệ phương trình là quá trình chuyển bài toán thực tế sang mô '
                 'hình hệ hai phương trình bậc nhất hai ẩn, giải hệ rồi đối chiếu điều kiện để kết luận.',
   'theory': 'Các bước giải bài toán bằng cách lập hệ phương trình:\n'
@@ -405,29 +409,27 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 3: Giải bài toán bằng cách lập hệ phương trình**, công '
-                 'thức hoặc quy tắc nào sau đây biểu diễn đúng **Bài toán chuyển động**?',
+            'q': 'Trong **Bài 3: Giải bài toán bằng cách lập hệ phương trình**, quy tắc hoặc công thức nào '
+                 'sau đây xác định đúng **Bài toán chuyển động**?',
             'options': ['$s = v \\cdot t$',
-                        '$\\dfrac{1}{x} + \\dfrac{1}{y} = \\dfrac{1}{T}$',
-                        '$ax + by = c$ ($a^2 + b^2 \\neq 0$)',
-                        '$\\begin{cases} a_1x + b_1y = c_1 \\\\ a_2x + b_2y = c_2 \\end{cases}$'],
+                        '$s = v : t$',
+                        'Đảo ngược vế của quy tắc: $s = v \\cdot t$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $s = v \\cdot t$'],
             'answer': 0,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 3: Giải bài toán bằng cách lập hệ phương '
-                        'trình, **Bài toán chuyển động** được xác định bởi: $s = v \\cdot t$. (Quãng đường = '
-                        'Vận tốc $\\times$ Thời gian)'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 3: Giải bài toán bằng cách lập hệ phương trình, '
+                        '**Bài toán chuyển động** được xác định bởi: $s = v \\cdot t$. (Quãng đường = Vận '
+                        'tốc $\\times$ Thời gian)'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 3: Giải bài toán bằng cách lập hệ phương trình**, nội dung/biểu thức '
-                 '$\\dfrac{1}{x} + \\dfrac{1}{y} = \\dfrac{1}{T}$ là quy tắc hoặc công thức của mục nào sau '
-                 'đây?',
-            'options': ['Bài toán chuyển động',
-                        'Bài toán làm chung công việc',
-                        'Phương trình bậc nhất hai ẩn',
-                        'Hệ hai phương trình bậc nhất hai ẩn'],
+            'q': 'Khi học **Bài 3: Giải bài toán bằng cách lập hệ phương trình**, biểu thức hoặc quy tắc nào '
+                 'dưới đây biểu diễn đúng **Bài toán làm chung công việc**?',
+            'options': ['$\\dfrac{1}{x} - \\dfrac{1}{y} = \\dfrac{1}{T}$',
+                        '$\\dfrac{1}{x} + \\dfrac{1}{y} = \\dfrac{1}{T}$',
+                        '$\\dfrac{x}{1} + \\dfrac{1}{y} = \\dfrac{1}{T}$',
+                        '$\\dfrac{2}{x} + \\dfrac{1}{y} = \\dfrac{1}{T}$'],
             'answer': 1,
-            'solution': 'Trong Bài 3: Giải bài toán bằng cách lập hệ phương trình, biểu thức/quy tắc '
-                        '$\\dfrac{1}{x} + \\dfrac{1}{y} = \\dfrac{1}{T}$ chính là nội dung của **Bài toán '
-                        'làm chung công việc**.'},
+            'solution': 'Trong Bài 3: Giải bài toán bằng cách lập hệ phương trình, **Bài toán làm chung công '
+                        'việc** có công thức/quy tắc là: $\\dfrac{1}{x} + \\dfrac{1}{y} = \\dfrac{1}{T}$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Hai người thợ cùng làm một công việc trong $6$ giờ thì xong. Nếu gọi $x, y$ (giờ) lần lượt '
@@ -444,16 +446,14 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 3: Giải bài toán bằng cách lập hệ phương trình** (Chương I: Phương trình và '
-                 'hệ hai phương trình bậc nhất hai ẩn), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần '
-                 'đạt và bản chất kiến thức của bài?',
-            'options': ['Nhận biết được phương trình bậc nhất hai ẩn $ax + by = c$ ($a \\neq 0$ hoặc $b '
-                        '\\neq 0$) và nghiệm của nó.',
-                        'Nhận biết được hệ hai phương trình bậc nhất hai ẩn và nghiệm của hệ.',
-                        'Biểu diễn được tập nghiệm của phương trình bậc nhất hai ẩn trên mặt phẳng tọa độ.',
+            'q': 'Để nắm vững bản chất của **Bài 3: Giải bài toán bằng cách lập hệ phương trình**, nhận định '
+                 'nào sau đây là **chính xác**?',
+            'options': ['Nắm vững 4 bước giải bài toán bằng cách lập hệ phương trình.',
+                        'Nắm vững 2 bước giải bài toán bằng cách lập hệ phương trình.',
+                        'Nắm vững 6 bước giải bài toán bằng cách lập hệ phương trình.',
                         'Nắm vững 3 bước giải bài toán bằng cách lập hệ phương trình.'],
             'answer': 3,
-            'solution': 'Theo yêu cầu cần đạt của Bài 3: Giải bài toán bằng cách lập hệ phương trình: Nắm '
+            'solution': 'Theo nội dung cốt lõi của Bài 3: Giải bài toán bằng cách lập hệ phương trình: Nắm '
                         'vững 3 bước giải bài toán bằng cách lập hệ phương trình.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -472,41 +472,40 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 3: Giải bài toán bằng '
-                 'cách lập hệ phương trình**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nắm vững 3 bước giải bài toán bằng '
-                           'cách lập hệ phương trình.',
-                           'Quy tắc/công thức **Bài toán chuyển động** trong bài được xác định bởi: $s = v '
-                           '\\cdot t$.',
-                           'Trong mọi trường hợp, **Bài toán chuyển động** luôn được tính bằng công thức $ax '
-                           '+ by = c$ ($a^2 + b^2 \\neq 0$) (thuộc Phương trình bậc nhất hai ẩn) mà không '
-                           'cần điều kiện của Bài 3: Giải bài toán bằng cách lập hệ phương trình.',
-                           'Với bài toán minh họa: “Tổng của hai số bằng $59$. Hai lần số thứ nhất bé hơn ba '
-                           'lần số thứ hai là $7$. Tìm hai số đó.”, lời giải đúng là: Gọi số thứ nhất là $x$ '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 3: Giải bài toán bằng cách '
+                 'lập hệ phương trình**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nắm vững 3 bước giải bài toán bằng cách '
+                           'lập hệ phương trình.',
+                           'Trong **Bài 3: Giải bài toán bằng cách lập hệ phương trình**, quy tắc/công thức '
+                           '**Bài toán chuyển động** được viết là: $s = v \\cdot t$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $s = v : t$ thì kết quả của **Bài toán '
+                           'chuyển động** trong **Bài 3: Giải bài toán bằng cách lập hệ phương trình** vẫn '
+                           'không thay đổi.',
+                           'Xét ví dụ của bài: “Tổng của hai số bằng $59$. Hai lần số thứ nhất bé hơn ba lần '
+                           'số thứ hai là $7$. Tìm hai số đó.”, kết quả giải đúng là: Gọi số thứ nhất là $x$ '
                            'và số thứ hai là $y$. Theo đề bài, ta có hệ phương trình...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 3: Giải bài toán bằng cách lập hệ phương '
-                        'trình. b) **Đúng** theo công thức trọng tâm **Bài toán chuyển động** ($s = v \\cdot '
-                        't$). c) **Sai** vì $ax + by = c$ ($a^2 + b^2 \\neq 0$) là công thức của nội dung '
-                        'khác, không phải quy tắc chung của **Bài toán chuyển động**. d) **Đúng** theo lời '
-                        'giải ví dụ minh họa trong bài học.'},
+                        'trình. b) **Đúng** theo công thức **Bài toán chuyển động** ($s = v \\cdot t$). c) '
+                        '**Sai** vì công thức đúng của **Bài toán chuyển động** phải là $s = v \\cdot t$ chứ '
+                        'không phải $s = v : t$. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 3: Giải bài toán bằng cách lập hệ phương trình** để giải quyết '
-                 'tình huống sau: Tổng của hai số bằng $59$. Hai lần số thứ nhất bé hơn ba lần số thứ hai là '
-                 '$7$. Tìm hai số đó. Kết quả và hướng giải nào dưới đây là **đúng**?',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 3: Giải bài toán bằng cách lập hệ phương trình** để '
+                 'giải bài toán sau: Tổng của hai số bằng $59$. Hai lần số thứ nhất bé hơn ba lần số thứ hai '
+                 'là $7$. Tìm hai số đó. Cách giải và kết quả nào dưới đây là **đúng**?',
             'options': ['Gọi số thứ nhất là $x$ và số thứ hai là $y$. Theo đề bài, ta có hệ phương trình: '
                         '$\\begin{cases} x + y = 59 \\\\ 3y - 2x = 7 \\end{cases} \\Leftrightarrow '
                         '\\begin{cases} 2x + 2y = 118 \\\\ -2x + 3y = 7 \\end{cases}$...',
-                        'Thay $x = 2, y = -1$ vào phương trình thứ nhất: $2 \\cdot 2 - (-1) = 4 + 1 = 5$ '
-                        '(thỏa mãn). Thay $x = 2, y = -1$ vào phương trình thứ hai: $2 + 3 \\cdot (-1) = 2 - '
-                        '3 = -1$...',
-                        'Cộng từng vế hai phương trình của hệ, ta được: $5x = 10 \\Rightarrow x = 2$. Thay '
-                        '$x = 2$ vào phương trình $2x + y = 5$, ta có: $2 \\cdot 2 + y = 5 \\Rightarrow y = '
-                        '1$...',
-                        'ĐKXĐ: $x \\neq 0$ và $x \\neq 2$. Quy đồng và khử mẫu: $x(x + 2) - (x - 2) = 2 '
-                        '\\Rightarrow x^2 + 2x - x + 2 = 2 \\Rightarrow x^2 + x = 0 \\Rightarrow x(x + 1) = '
-                        '0$...'],
+                        'Gọi số thứ nhất là $x$ và số thứ hai là $y$. Theo đề bài, ta có hệ phương trình: '
+                        '$\\begin{cases} x - y = 59 \\\\ 3y - 2x = 7 \\end{cases} \\Leftrightarrow '
+                        '\\begin{cases} 2x + 2y = 118 \\\\ -2x + 3y = 7 \\end{cases}$...',
+                        'Gọi số thứ nhất là $x$ và số thứ hai là $y$. Theo đề bài, ta có hệ phương trình: '
+                        '$\\begin{cases} x + y = 59 \\\\ 3y - 2x = 7 \\end{cases} \\Leftrightarrow '
+                        '\\begin{cases} 2x + 2y = 118 \\\\ -2x + 3y = 6 \\end{cases}$...',
+                        'Gọi số thứ nhất là $x$ và số thứ hai là $y$. Theo đề bài, ta có hệ phương trình: '
+                        '$\\begin{cases} x + y = 61 \\\\ 3y - 2x = 7 \\end{cases} \\Leftrightarrow '
+                        '\\begin{cases} 2x + 2y = 118 \\\\ -2x + 3y = 7 \\end{cases}$...'],
             'answer': 0,
             'solution': 'Lời giải chi tiết theo Bài 3: Giải bài toán bằng cách lập hệ phương trình: Gọi số '
                         'thứ nhất là $x$ và số thứ hai là $y$.\n'
@@ -535,8 +534,8 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
   'requirements': ['Giải được phương trình tích có dạng $(a_1x + b_1)(a_2x + b_2) = 0$.',
                    'Tìm được điều kiện xác định và giải được phương trình chứa ẩn ở mẫu quy về phương trình '
                    'bậc nhất.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Phương trình tích** ($A(x) \\cdot B(x) = 0 '
-                   '\\Leftrightarrow A(x) = 0$ hoặc $B(x) = 0$) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 4: Phương trình quy về phương trình bậc nhất một ẩn** để '
+                   'giải bài tập minh họa và bài toán thực tiễn.'],
   'definition': 'Phương trình tích là phương trình có dạng $A(x) \\cdot B(x) = 0$. Phương trình chứa ẩn ở '
                 'mẫu là phương trình có biểu thức chứa ẩn nằm ở mẫu thức.',
   'theory': '1. Muốn giải phương trình tích $(a_1x + b_1)(a_2x + b_2) = 0$, ta giải hai phương trình $a_1x + '
@@ -579,27 +578,27 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 4: Phương trình quy về phương trình bậc nhất một ẩn**, '
-                 'công thức hoặc quy tắc nào sau đây biểu diễn đúng **Phương trình tích**?',
-            'options': ['Mẫu thức $M(x) \\neq 0$',
+            'q': 'Trong **Bài 4: Phương trình quy về phương trình bậc nhất một ẩn**, quy tắc hoặc công thức '
+                 'nào sau đây xác định đúng **Phương trình tích**?',
+            'options': ['$A(x) : B(x) = 0 \\Leftrightarrow A(x) = 0$ hoặc $B(x) = 0$',
                         '$A(x) \\cdot B(x) = 0 \\Leftrightarrow A(x) = 0$ hoặc $B(x) = 0$',
-                        '$ax + by = c$ ($a^2 + b^2 \\neq 0$)',
-                        '$\\begin{cases} a_1x + b_1y = c_1 \\\\ a_2x + b_2y = c_2 \\end{cases}$'],
+                        '$A(x) \\cdot B(x) = 0 \\Leftrightarrow A(x) = 0$ hoặc $B(x) = 1$',
+                        '$A(x) \\cdot B(x) = 2 \\Leftrightarrow A(x) = 0$ hoặc $B(x) = 0$'],
             'answer': 1,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 4: Phương trình quy về phương trình bậc nhất '
-                        'một ẩn, **Phương trình tích** được xác định bởi: $A(x) \\cdot B(x) = 0 '
-                        '\\Leftrightarrow A(x) = 0$ hoặc $B(x) = 0$. (Lấy hợp tất cả các nghiệm)'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 4: Phương trình quy về phương trình bậc nhất một '
+                        'ẩn, **Phương trình tích** được xác định bởi: $A(x) \\cdot B(x) = 0 \\Leftrightarrow '
+                        'A(x) = 0$ hoặc $B(x) = 0$. (Lấy hợp tất cả các nghiệm)'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 4: Phương trình quy về phương trình bậc nhất một ẩn**, nội dung/biểu thức Mẫu '
-                 'thức $M(x) \\neq 0$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Phương trình tích',
-                        'Phương trình bậc nhất hai ẩn',
-                        'Điều kiện xác định',
-                        'Hệ hai phương trình bậc nhất hai ẩn'],
+            'q': 'Khi học **Bài 4: Phương trình quy về phương trình bậc nhất một ẩn**, biểu thức hoặc quy '
+                 'tắc nào dưới đây biểu diễn đúng **Điều kiện xác định**?',
+            'options': ['Mẫu thức $M(x) \\neq 1$',
+                        'Mẫu thức $M(x) \\neq 2$',
+                        'Mẫu thức $M(x) \\neq 0$',
+                        '$A(x) \\cdot B(x) = 0 \\Leftrightarrow A(x) = 0$ hoặc $B(x) = 0$'],
             'answer': 2,
-            'solution': 'Trong Bài 4: Phương trình quy về phương trình bậc nhất một ẩn, biểu thức/quy tắc '
-                        'Mẫu thức $M(x) \\neq 0$ chính là nội dung của **Điều kiện xác định**.'},
+            'solution': 'Trong Bài 4: Phương trình quy về phương trình bậc nhất một ẩn, **Điều kiện xác '
+                        'định** có công thức/quy tắc là: Mẫu thức $M(x) \\neq 0$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Số nghiệm của phương trình $\\dfrac{x}{x - 1} = \\dfrac{1}{x - 1}$ là:',
@@ -611,16 +610,14 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 4: Phương trình quy về phương trình bậc nhất một ẩn** (Chương II: Phương '
-                 'trình và bất phương trình bậc nhất một ẩn), khẳng định nào sau đây phản ánh **đúng** yêu '
-                 'cầu cần đạt và bản chất kiến thức của bài?',
+            'q': 'Để nắm vững bản chất của **Bài 4: Phương trình quy về phương trình bậc nhất một ẩn**, nhận '
+                 'định nào sau đây là **chính xác**?',
             'options': ['Giải được phương trình tích có dạng $(a_1x + b_1)(a_2x + b_2) = 0$.',
-                        'Nhận biết được phương trình bậc nhất hai ẩn $ax + by = c$ ($a \\neq 0$ hoặc $b '
-                        '\\neq 0$) và nghiệm của nó.',
-                        'Nhận biết được hệ hai phương trình bậc nhất hai ẩn và nghiệm của hệ.',
-                        'Biểu diễn được tập nghiệm của phương trình bậc nhất hai ẩn trên mặt phẳng tọa độ.'],
+                        'Giải được phương trình tích có dạng $(a_1x - b_1)(a_2x + b_2) = 0$.',
+                        'Giải được phương trình tích có dạng $(a_1x + b_1)(a_2x + b_2) = 1$.',
+                        'Giải được phương trình tích có dạng $(a_1x + b_1)(a_2x + b_2) = 2$.'],
             'answer': 0,
-            'solution': 'Theo yêu cầu cần đạt của Bài 4: Phương trình quy về phương trình bậc nhất một ẩn: '
+            'solution': 'Theo nội dung cốt lõi của Bài 4: Phương trình quy về phương trình bậc nhất một ẩn: '
                         'Giải được phương trình tích có dạng $(a_1x + b_1)(a_2x + b_2) = 0$.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -636,42 +633,44 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 4: Phương trình quy về '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 4: Phương trình quy về '
                  'phương trình bậc nhất một ẩn**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Giải được phương trình tích có '
-                           'dạng $(a_1x + b_1)(a_2x + b_2) = 0$.',
-                           'Quy tắc/công thức **Phương trình tích** trong bài được xác định bởi: $A(x) '
-                           '\\cdot B(x) = 0 \\Leftrightarrow A(x) = 0$ hoặc $B(x) = 0$.',
-                           'Trong mọi trường hợp, **Phương trình tích** luôn được tính bằng công thức $ax + '
-                           'by = c$ ($a^2 + b^2 \\neq 0$) (thuộc Phương trình bậc nhất hai ẩn) mà không cần '
-                           'điều kiện của Bài 4: Phương trình quy về phương trình bậc nhất một ẩn.',
-                           'Với bài toán minh họa: “Giải phương trình $\\dfrac{x + 2}{x - 2} - \\dfrac{1}{x} '
-                           '= \\dfrac{2}{x(x - 2)}$.”, lời giải đúng là: ĐKXĐ: $x \\neq 0$ và $x \\neq 2$. '
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Giải được phương trình tích có dạng '
+                           '$(a_1x + b_1)(a_2x + b_2) = 0$.',
+                           'Trong **Bài 4: Phương trình quy về phương trình bậc nhất một ẩn**, quy tắc/công '
+                           'thức **Phương trình tích** được viết là: $A(x) \\cdot B(x) = 0 \\Leftrightarrow '
+                           'A(x) = 0$ hoặc $B(x) = 0$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $A(x) : B(x) = 0 \\Leftrightarrow A(x) = 0$ '
+                           'hoặc $B(x) = 0$ thì kết quả của **Phương trình tích** trong **Bài 4: Phương '
+                           'trình quy về phương trình bậc nhất một ẩn** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Giải phương trình $\\dfrac{x + 2}{x - 2} - \\dfrac{1}{x} = '
+                           '\\dfrac{2}{x(x - 2)}$.”, kết quả giải đúng là: ĐKXĐ: $x \\neq 0$ và $x \\neq 2$. '
                            'Quy đồng và khử mẫu: $x(x + 2) - (x - 2) = 2 \\Rightarrow x^2 + 2x - x + 2 = 2 '
                            '\\Rightarrow x^2 + x = 0 \\Rightarrow x(x + 1) = 0$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 4: Phương trình quy về phương trình bậc '
-                        'nhất một ẩn. b) **Đúng** theo công thức trọng tâm **Phương trình tích** ($A(x) '
-                        '\\cdot B(x) = 0 \\Leftrightarrow A(x) = 0$ hoặc $B(x) = 0$). c) **Sai** vì $ax + by '
-                        '= c$ ($a^2 + b^2 \\neq 0$) là công thức của nội dung khác, không phải quy tắc chung '
-                        'của **Phương trình tích**. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        'nhất một ẩn. b) **Đúng** theo công thức **Phương trình tích** ($A(x) \\cdot B(x) = '
+                        '0 \\Leftrightarrow A(x) = 0$ hoặc $B(x) = 0$). c) **Sai** vì công thức đúng của '
+                        '**Phương trình tích** phải là $A(x) \\cdot B(x) = 0 \\Leftrightarrow A(x) = 0$ hoặc '
+                        '$B(x) = 0$ chứ không phải $A(x) : B(x) = 0 \\Leftrightarrow A(x) = 0$ hoặc $B(x) = '
+                        '0$. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 4: Phương trình quy về phương trình bậc nhất một ẩn** để giải '
-                 'quyết tình huống sau: Giải phương trình $\\dfrac{x + 2}{x - 2} - \\dfrac{1}{x} = '
-                 '\\dfrac{2}{x(x - 2)}$. Kết quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Thay $x = 2, y = -1$ vào phương trình thứ nhất: $2 \\cdot 2 - (-1) = 4 + 1 = 5$ '
-                        '(thỏa mãn). Thay $x = 2, y = -1$ vào phương trình thứ hai: $2 + 3 \\cdot (-1) = 2 - '
-                        '3 = -1$...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 4: Phương trình quy về phương trình bậc nhất một '
+                 'ẩn** để giải bài toán sau: Giải phương trình $\\dfrac{x + 2}{x - 2} - \\dfrac{1}{x} = '
+                 '\\dfrac{2}{x(x - 2)}$. Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['ĐKXĐ: $x \\neq 0$ và $x \\neq 2$. Quy đồng và khử mẫu: $x(x - 2) - (x - 2) = 2 '
+                        '\\Rightarrow x^2 + 2x - x + 2 = 2 \\Rightarrow x^2 + x = 0 \\Rightarrow x(x + 1) = '
+                        '0$...',
                         'ĐKXĐ: $x \\neq 0$ và $x \\neq 2$. Quy đồng và khử mẫu: $x(x + 2) - (x - 2) = 2 '
                         '\\Rightarrow x^2 + 2x - x + 2 = 2 \\Rightarrow x^2 + x = 0 \\Rightarrow x(x + 1) = '
                         '0$...',
-                        'Cộng từng vế hai phương trình của hệ, ta được: $5x = 10 \\Rightarrow x = 2$. Thay '
-                        '$x = 2$ vào phương trình $2x + y = 5$, ta có: $2 \\cdot 2 + y = 5 \\Rightarrow y = '
+                        'ĐKXĐ: $x \\neq 0$ và $x \\neq 2$. Quy đồng và khử mẫu: $x(x + 2) - (x - 2) = 2 '
+                        '\\Rightarrow x^2 + 2x - x + 2 = 2 \\Rightarrow x^2 + x = 0 \\Rightarrow x(x + 1) = '
                         '1$...',
-                        'Gọi số thứ nhất là $x$ và số thứ hai là $y$. Theo đề bài, ta có hệ phương trình: '
-                        '$\\begin{cases} x + y = 59 \\\\ 3y - 2x = 7 \\end{cases} \\Leftrightarrow '
-                        '\\begin{cases} 2x + 2y = 118 \\\\ -2x + 3y = 7 \\end{cases}$...'],
+                        'ĐKXĐ: $x \\neq 2$ và $x \\neq 2$. Quy đồng và khử mẫu: $x(x + 2) - (x - 2) = 2 '
+                        '\\Rightarrow x^2 + 2x - x + 2 = 2 \\Rightarrow x^2 + x = 0 \\Rightarrow x(x + 1) = '
+                        '0$...'],
             'answer': 1,
             'solution': 'Lời giải chi tiết theo Bài 4: Phương trình quy về phương trình bậc nhất một ẩn: '
                         'ĐKXĐ: $x \\neq 0$ và $x \\neq 2$.\n'
@@ -698,8 +697,8 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
                  'nhân.',
   'requirements': ['Nhận biết được thứ tự trên tập hợp số thực và khái niệm bất đẳng thức.',
                    'Mô tả được tính chất bắc cầu, tính chất liên hệ giữa thứ tự và phép cộng, phép nhân.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Cộng cùng một số** ($a < b \\Rightarrow a + '
-                   'c < b + c$) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 5: Bất đẳng thức và tính chất** để giải bài tập minh họa và '
+                   'bài toán thực tiễn.'],
   'definition': 'Hệ thức dạng $a < b$ (hay $a > b, a \\le b, a \\ge b$) được gọi là bất đẳng thức, trong đó '
                 '$a$ là vế trái và $b$ là vế phải.',
   'theory': '1. Tính chất liên hệ với phép cộng: Khi cộng cùng một số vào cả hai vế của một bất đẳng thức '
@@ -744,27 +743,28 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 5: Bất đẳng thức và tính chất**, công thức hoặc quy tắc '
-                 'nào sau đây biểu diễn đúng **Cộng cùng một số**?',
-            'options': ['$a < b, c > 0 \\Rightarrow ac < bc$',
-                        '$a < b, c < 0 \\Rightarrow ac > bc$',
+            'q': 'Trong **Bài 5: Bất đẳng thức và tính chất**, quy tắc hoặc công thức nào sau đây xác định '
+                 'đúng **Cộng cùng một số**?',
+            'options': ['$a < b \\Rightarrow a - c < b + c$',
+                        'Đảo ngược vế của quy tắc: $a < b \\Rightarrow a + c < b + c$',
                         '$a < b \\Rightarrow a + c < b + c$',
-                        '$ax + by = c$ ($a^2 + b^2 \\neq 0$)'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $a < b \\Rightarrow a + c < b + '
+                        'c$'],
             'answer': 2,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 5: Bất đẳng thức và tính chất, **Cộng cùng '
-                        'một số** được xác định bởi: $a < b \\Rightarrow a + c < b + c$. (Giữ nguyên chiều '
-                        'bất đẳng thức)'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 5: Bất đẳng thức và tính chất, **Cộng cùng một '
+                        'số** được xác định bởi: $a < b \\Rightarrow a + c < b + c$. (Giữ nguyên chiều bất '
+                        'đẳng thức)'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 5: Bất đẳng thức và tính chất**, nội dung/biểu thức $a < b, c > 0 \\Rightarrow '
-                 'ac < bc$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Cộng cùng một số',
-                        'Nhân với số âm',
-                        'Phương trình bậc nhất hai ẩn',
-                        'Nhân với số dương'],
+            'q': 'Khi học **Bài 5: Bất đẳng thức và tính chất**, biểu thức hoặc quy tắc nào dưới đây biểu '
+                 'diễn đúng **Nhân với số dương**?',
+            'options': ['$a < b, c < 0 \\Rightarrow ac < bc$',
+                        '$a < b, c > 1 \\Rightarrow ac < bc$',
+                        '$a < b, c > 2 \\Rightarrow ac < bc$',
+                        '$a < b, c > 0 \\Rightarrow ac < bc$'],
             'answer': 3,
-            'solution': 'Trong Bài 5: Bất đẳng thức và tính chất, biểu thức/quy tắc $a < b, c > 0 '
-                        '\\Rightarrow ac < bc$ chính là nội dung của **Nhân với số dương**.'},
+            'solution': 'Trong Bài 5: Bất đẳng thức và tính chất, **Nhân với số dương** có công thức/quy tắc '
+                        'là: $a < b, c > 0 \\Rightarrow ac < bc$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Biết $-4a + 1 > -4b + 1$. Kết luận nào sau đây là đúng về hai số $a$ và $b$?',
@@ -776,16 +776,17 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 5: Bất đẳng thức và tính chất** (Chương II: Phương trình và bất phương trình '
-                 'bậc nhất một ẩn), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất '
-                 'kiến thức của bài?',
-            'options': ['Nhận biết được phương trình bậc nhất hai ẩn $ax + by = c$ ($a \\neq 0$ hoặc $b '
-                        '\\neq 0$) và nghiệm của nó.',
+            'q': 'Để nắm vững bản chất của **Bài 5: Bất đẳng thức và tính chất**, nhận định nào sau đây là '
+                 '**chính xác**?',
+            'options': ['Nhận biết được thứ tự trên tập hợp số thực và khái niệm bất đẳng thức. (với dấu '
+                        'ngược lại)',
                         'Nhận biết được thứ tự trên tập hợp số thực và khái niệm bất đẳng thức.',
-                        'Nhận biết được hệ hai phương trình bậc nhất hai ẩn và nghiệm của hệ.',
-                        'Biểu diễn được tập nghiệm của phương trình bậc nhất hai ẩn trên mặt phẳng tọa độ.'],
+                        'Đảo ngược vế của quy tắc: Nhận biết được thứ tự trên tập hợp số thực và khái niệm '
+                        'bất đẳng thức.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nhận biết được thứ tự trên tập '
+                        'hợp số thực và khái niệm bất đẳng thức.'],
             'answer': 1,
-            'solution': 'Theo yêu cầu cần đạt của Bài 5: Bất đẳng thức và tính chất: Nhận biết được thứ tự '
+            'solution': 'Theo nội dung cốt lõi của Bài 5: Bất đẳng thức và tính chất: Nhận biết được thứ tự '
                         'trên tập hợp số thực và khái niệm bất đẳng thức.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -802,41 +803,38 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 5: Bất đẳng thức và '
-                 'tính chất**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được thứ tự trên tập hợp '
-                           'số thực và khái niệm bất đẳng thức.',
-                           'Quy tắc/công thức **Cộng cùng một số** trong bài được xác định bởi: $a < b '
-                           '\\Rightarrow a + c < b + c$.',
-                           'Trong mọi trường hợp, **Cộng cùng một số** luôn được tính bằng công thức $ax + '
-                           'by = c$ ($a^2 + b^2 \\neq 0$) (thuộc Phương trình bậc nhất hai ẩn) mà không cần '
-                           'điều kiện của Bài 5: Bất đẳng thức và tính chất.',
-                           'Với bài toán minh họa: “Cho $a < b$. Hãy so sánh $-3a + 5$ và $-3b + 5$.”, lời '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 5: Bất đẳng thức và tính '
+                 'chất**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết được thứ tự trên tập hợp số '
+                           'thực và khái niệm bất đẳng thức.',
+                           'Trong **Bài 5: Bất đẳng thức và tính chất**, quy tắc/công thức **Cộng cùng một '
+                           'số** được viết là: $a < b \\Rightarrow a + c < b + c$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $a < b \\Rightarrow a - c < b + c$ thì kết '
+                           'quả của **Cộng cùng một số** trong **Bài 5: Bất đẳng thức và tính chất** vẫn '
+                           'không thay đổi.',
+                           'Xét ví dụ của bài: “Cho $a < b$. Hãy so sánh $-3a + 5$ và $-3b + 5$.”, kết quả '
                            'giải đúng là: Vì $a < b$ và $-3 < 0$ nên khi nhân hai vế với $-3$ ta được: $-3a '
                            '> -3b$. Cộng $5$ vào hai vế của bất đẳng thức $-3a > -3b$, ta được: $-3a + 5 > '
                            '-3b + 5$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 5: Bất đẳng thức và tính chất. b) **Đúng** '
-                        'theo công thức trọng tâm **Cộng cùng một số** ($a < b \\Rightarrow a + c < b + c$). '
-                        'c) **Sai** vì $ax + by = c$ ($a^2 + b^2 \\neq 0$) là công thức của nội dung khác, '
-                        'không phải quy tắc chung của **Cộng cùng một số**. d) **Đúng** theo lời giải ví dụ '
-                        'minh họa trong bài học.'},
+                        'theo công thức **Cộng cùng một số** ($a < b \\Rightarrow a + c < b + c$). c) '
+                        '**Sai** vì công thức đúng của **Cộng cùng một số** phải là $a < b \\Rightarrow a + '
+                        'c < b + c$ chứ không phải $a < b \\Rightarrow a - c < b + c$. d) **Đúng** theo lời '
+                        'giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 5: Bất đẳng thức và tính chất** để giải quyết tình huống sau: Cho '
-                 '$a < b$. Hãy so sánh $-3a + 5$ và $-3b + 5$. Kết quả và hướng giải nào dưới đây là '
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 5: Bất đẳng thức và tính chất** để giải bài toán '
+                 'sau: Cho $a < b$. Hãy so sánh $-3a + 5$ và $-3b + 5$. Cách giải và kết quả nào dưới đây là '
                  '**đúng**?',
-            'options': ['Thay $x = 2, y = -1$ vào phương trình thứ nhất: $2 \\cdot 2 - (-1) = 4 + 1 = 5$ '
-                        '(thỏa mãn). Thay $x = 2, y = -1$ vào phương trình thứ hai: $2 + 3 \\cdot (-1) = 2 - '
-                        '3 = -1$...',
-                        'Cộng từng vế hai phương trình của hệ, ta được: $5x = 10 \\Rightarrow x = 2$. Thay '
-                        '$x = 2$ vào phương trình $2x + y = 5$, ta có: $2 \\cdot 2 + y = 5 \\Rightarrow y = '
-                        '1$...',
+            'options': ['Vì $a < b$ và $-3 < 0$ nên khi nhân hai vế với $-3$ ta được: $-3a > -3b$. Cộng $5$ '
+                        'vào hai vế của bất đẳng thức $-3a > -3b$, ta được: $-3a - 5 > -3b + 5$...',
                         'Vì $a < b$ và $-3 < 0$ nên khi nhân hai vế với $-3$ ta được: $-3a > -3b$. Cộng $5$ '
-                        'vào hai vế của bất đẳng thức $-3a > -3b$, ta được: $-3a + 5 > -3b + 5$.',
-                        'Gọi số thứ nhất là $x$ và số thứ hai là $y$. Theo đề bài, ta có hệ phương trình: '
-                        '$\\begin{cases} x + y = 59 \\\\ 3y - 2x = 7 \\end{cases} \\Leftrightarrow '
-                        '\\begin{cases} 2x + 2y = 118 \\\\ -2x + 3y = 7 \\end{cases}$...'],
+                        'vào hai vế của bất đẳng thức $-3a > -3b$, ta được: $-3a + 5 > -3b + 4$...',
+                        'Vì $a < b$ và $-3 < 0$ nên khi nhân hai vế với $-3$ ta được: $-3a > -3b$. Cộng $5$ '
+                        'vào hai vế của bất đẳng thức $-3a > -3b$, ta được: $-3a + 5 > -3b + 5$...',
+                        'Vì $a < b$ và $-6 < 0$ nên khi nhân hai vế với $-3$ ta được: $-3a > -3b$. Cộng $5$ '
+                        'vào hai vế của bất đẳng thức $-3a > -3b$, ta được: $-3a + 5 > -3b + 5$...'],
             'answer': 2,
             'solution': 'Lời giải chi tiết theo Bài 5: Bất đẳng thức và tính chất: Vì $a < b$ và $-3 < 0$ '
                         'nên khi nhân hai vế với $-3$ ta được: $-3a > -3b$.\n'
@@ -859,8 +857,8 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
   'requirements': ['Nhận biết được bất phương trình bậc nhất một ẩn và nghiệm của nó.',
                    'Giải được bất phương trình bậc nhất một ẩn $ax + b < 0$ (hoặc $ax + b > 0, ax + b \\le '
                    '0, ax + b \\ge 0$).',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Trường hợp $a > 0$** ($ax + b < 0 '
-                   '\\Leftrightarrow x < -\\dfrac{b}{a}$) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 6: Bất phương trình bậc nhất một ẩn** để giải bài tập minh '
+                   'họa và bài toán thực tiễn.'],
   'definition': 'Bất phương trình dạng $ax + b < 0$ (hoặc $ax + b > 0, ax + b \\le 0, ax + b \\ge 0$) trong '
                 'đó $a, b$ là hai số đã cho, $a \\neq 0$, được gọi là bất phương trình bậc nhất một ẩn $x$.',
   'theory': 'Cách giải bất phương trình bậc nhất một ẩn $ax + b < 0$ ($a \\neq 0$):\n'
@@ -898,27 +896,27 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 6: Bất phương trình bậc nhất một ẩn**, công thức hoặc '
-                 'quy tắc nào sau đây biểu diễn đúng **Trường hợp $a > 0$**?',
-            'options': ['$ax + b < 0 \\Leftrightarrow x > -\\dfrac{b}{a}$',
-                        '$ax + by = c$ ($a^2 + b^2 \\neq 0$)',
-                        '$\\begin{cases} a_1x + b_1y = c_1 \\\\ a_2x + b_2y = c_2 \\end{cases}$',
+            'q': 'Trong **Bài 6: Bất phương trình bậc nhất một ẩn**, quy tắc hoặc công thức nào sau đây xác '
+                 'định đúng **Trường hợp $a > 0$**?',
+            'options': ['$ax - b < 0 \\Leftrightarrow x < -\\dfrac{b}{a}$',
+                        '$ax + b < 0 \\Leftrightarrow x < -\\dfrac{a}{b}$',
+                        '$ax + b < 2 \\Leftrightarrow x < -\\dfrac{b}{a}$',
                         '$ax + b < 0 \\Leftrightarrow x < -\\dfrac{b}{a}$'],
             'answer': 3,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 6: Bất phương trình bậc nhất một ẩn, **Trường '
-                        'hợp $a > 0$** được xác định bởi: $ax + b < 0 \\Leftrightarrow x < -\\dfrac{b}{a}$. '
+            'solution': 'Theo kiến thức trọng tâm của Bài 6: Bất phương trình bậc nhất một ẩn, **Trường hợp '
+                        '$a > 0$** được xác định bởi: $ax + b < 0 \\Leftrightarrow x < -\\dfrac{b}{a}$. '
                         '(Chia cho số dương: giữ nguyên chiều)'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 6: Bất phương trình bậc nhất một ẩn**, nội dung/biểu thức $ax + b < 0 '
-                 '\\Leftrightarrow x > -\\dfrac{b}{a}$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Trường hợp $a < 0$',
-                        'Trường hợp $a > 0$',
-                        'Phương trình bậc nhất hai ẩn',
-                        'Hệ hai phương trình bậc nhất hai ẩn'],
+            'q': 'Khi học **Bài 6: Bất phương trình bậc nhất một ẩn**, biểu thức hoặc quy tắc nào dưới đây '
+                 'biểu diễn đúng **Trường hợp $a < 0$**?',
+            'options': ['$ax + b < 0 \\Leftrightarrow x > -\\dfrac{b}{a}$',
+                        '$ax - b < 0 \\Leftrightarrow x > -\\dfrac{b}{a}$',
+                        '$ax + b < 0 \\Leftrightarrow x > -\\dfrac{a}{b}$',
+                        '$ax + b < 2 \\Leftrightarrow x > -\\dfrac{b}{a}$'],
             'answer': 0,
-            'solution': 'Trong Bài 6: Bất phương trình bậc nhất một ẩn, biểu thức/quy tắc $ax + b < 0 '
-                        '\\Leftrightarrow x > -\\dfrac{b}{a}$ chính là nội dung của **Trường hợp $a < 0$**.'},
+            'solution': 'Trong Bài 6: Bất phương trình bậc nhất một ẩn, **Trường hợp $a < 0$** có công '
+                        'thức/quy tắc là: $ax + b < 0 \\Leftrightarrow x > -\\dfrac{b}{a}$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Nghiệm của bất phương trình $5 - 2x \\le 1$ là:',
@@ -929,16 +927,17 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 6: Bất phương trình bậc nhất một ẩn** (Chương II: Phương trình và bất phương '
-                 'trình bậc nhất một ẩn), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản '
-                 'chất kiến thức của bài?',
-            'options': ['Nhận biết được phương trình bậc nhất hai ẩn $ax + by = c$ ($a \\neq 0$ hoặc $b '
-                        '\\neq 0$) và nghiệm của nó.',
-                        'Nhận biết được hệ hai phương trình bậc nhất hai ẩn và nghiệm của hệ.',
+            'q': 'Để nắm vững bản chất của **Bài 6: Bất phương trình bậc nhất một ẩn**, nhận định nào sau '
+                 'đây là **chính xác**?',
+            'options': ['Nhận biết được bất phương trình bậc nhất một ẩn và nghiệm của nó. (với dấu ngược '
+                        'lại)',
+                        'Đảo ngược vế của quy tắc: Nhận biết được bất phương trình bậc nhất một ẩn và nghiệm '
+                        'của nó.',
                         'Nhận biết được bất phương trình bậc nhất một ẩn và nghiệm của nó.',
-                        'Biểu diễn được tập nghiệm của phương trình bậc nhất hai ẩn trên mặt phẳng tọa độ.'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nhận biết được bất phương trình '
+                        'bậc nhất một ẩn và nghiệm của nó.'],
             'answer': 2,
-            'solution': 'Theo yêu cầu cần đạt của Bài 6: Bất phương trình bậc nhất một ẩn: Nhận biết được '
+            'solution': 'Theo nội dung cốt lõi của Bài 6: Bất phương trình bậc nhất một ẩn: Nhận biết được '
                         'bất phương trình bậc nhất một ẩn và nghiệm của nó.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -955,40 +954,38 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 6: Bất phương trình bậc '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 6: Bất phương trình bậc '
                  'nhất một ẩn**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được bất phương trình '
-                           'bậc nhất một ẩn và nghiệm của nó.',
-                           'Quy tắc/công thức **Trường hợp $a > 0$** trong bài được xác định bởi: $ax + b < '
-                           '0 \\Leftrightarrow x < -\\dfrac{b}{a}$.',
-                           'Trong mọi trường hợp, **Trường hợp $a > 0$** luôn được tính bằng công thức $ax + '
-                           'by = c$ ($a^2 + b^2 \\neq 0$) (thuộc Phương trình bậc nhất hai ẩn) mà không cần '
-                           'điều kiện của Bài 6: Bất phương trình bậc nhất một ẩn.',
-                           'Với bài toán minh họa: “Giải bất phương trình $-3x + 12 \\ge 0$.”, lời giải đúng '
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết được bất phương trình bậc nhất '
+                           'một ẩn và nghiệm của nó.',
+                           'Trong **Bài 6: Bất phương trình bậc nhất một ẩn**, quy tắc/công thức **Trường '
+                           'hợp $a > 0$** được viết là: $ax + b < 0 \\Leftrightarrow x < -\\dfrac{b}{a}$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $ax - b < 0 \\Leftrightarrow x < '
+                           '-\\dfrac{b}{a}$ thì kết quả của **Trường hợp $a > 0$** trong **Bài 6: Bất phương '
+                           'trình bậc nhất một ẩn** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Giải bất phương trình $-3x + 12 \\ge 0$.”, kết quả giải đúng '
                            'là: Ta có: $-3x + 12 \\ge 0 \\Leftrightarrow -3x \\ge -12$. Chia cả hai vế cho '
-                           '$-3 < 0$ (đổi chiều bất phương trình): $x \\le 4$. Vậy nghiệm của bất...'],
+                           '$-3 < 0$ (đổi chiều bất phương trình): $x \\le 4$. Vậy nghiệm củ...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 6: Bất phương trình bậc nhất một ẩn. b) '
-                        '**Đúng** theo công thức trọng tâm **Trường hợp $a > 0$** ($ax + b < 0 '
-                        '\\Leftrightarrow x < -\\dfrac{b}{a}$). c) **Sai** vì $ax + by = c$ ($a^2 + b^2 '
-                        '\\neq 0$) là công thức của nội dung khác, không phải quy tắc chung của **Trường hợp '
-                        '$a > 0$**. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        '**Đúng** theo công thức **Trường hợp $a > 0$** ($ax + b < 0 \\Leftrightarrow x < '
+                        '-\\dfrac{b}{a}$). c) **Sai** vì công thức đúng của **Trường hợp $a > 0$** phải là '
+                        '$ax + b < 0 \\Leftrightarrow x < -\\dfrac{b}{a}$ chứ không phải $ax - b < 0 '
+                        '\\Leftrightarrow x < -\\dfrac{b}{a}$. d) **Đúng** theo lời giải ví dụ minh họa '
+                        'trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 6: Bất phương trình bậc nhất một ẩn** để giải quyết tình huống '
-                 'sau: Giải bất phương trình $-3x + 12 \\ge 0$. Kết quả và hướng giải nào dưới đây là '
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 6: Bất phương trình bậc nhất một ẩn** để giải bài '
+                 'toán sau: Giải bất phương trình $-3x + 12 \\ge 0$. Cách giải và kết quả nào dưới đây là '
                  '**đúng**?',
-            'options': ['Thay $x = 2, y = -1$ vào phương trình thứ nhất: $2 \\cdot 2 - (-1) = 4 + 1 = 5$ '
-                        '(thỏa mãn). Thay $x = 2, y = -1$ vào phương trình thứ hai: $2 + 3 \\cdot (-1) = 2 - '
-                        '3 = -1$...',
-                        'Cộng từng vế hai phương trình của hệ, ta được: $5x = 10 \\Rightarrow x = 2$. Thay '
-                        '$x = 2$ vào phương trình $2x + y = 5$, ta có: $2 \\cdot 2 + y = 5 \\Rightarrow y = '
-                        '1$...',
-                        'Gọi số thứ nhất là $x$ và số thứ hai là $y$. Theo đề bài, ta có hệ phương trình: '
-                        '$\\begin{cases} x + y = 59 \\\\ 3y - 2x = 7 \\end{cases} \\Leftrightarrow '
-                        '\\begin{cases} 2x + 2y = 118 \\\\ -2x + 3y = 7 \\end{cases}$...',
+            'options': ['Ta có: $-3x + 12 \\ge 0 \\Leftrightarrow -3x \\ge -12$. Chia cả hai vế cho $-3 < 0$ '
+                        '(đổi chiều bất phương trình): $x \\ge 4$. Vậy nghiệm của bất phương tr...',
                         'Ta có: $-3x + 12 \\ge 0 \\Leftrightarrow -3x \\ge -12$. Chia cả hai vế cho $-3 < 0$ '
-                        '(đổi chiều bất phương trình): $x \\le 4$. Vậy nghiệm của bất phương trình l...'],
+                        '(đổi chiều bất phương trình): $x \\le 3$. Vậy nghiệm của bất phương tr...',
+                        'Ta có: $-3x + 24 \\ge 0 \\Leftrightarrow -3x \\ge -12$. Chia cả hai vế cho $-3 < 0$ '
+                        '(đổi chiều bất phương trình): $x \\le 4$. Vậy nghiệm của bất phương tr...',
+                        'Ta có: $-3x + 12 \\ge 0 \\Leftrightarrow -3x \\ge -12$. Chia cả hai vế cho $-3 < 0$ '
+                        '(đổi chiều bất phương trình): $x \\le 4$. Vậy nghiệm của bất phương tr...'],
             'answer': 3,
             'solution': 'Lời giải chi tiết theo Bài 6: Bất phương trình bậc nhất một ẩn: Ta có: $-3x + 12 '
                         '\\ge 0 \\Leftrightarrow -3x \\ge -12$.\n'
@@ -1052,27 +1049,27 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 7: Căn bậc hai và căn thức bậc hai**, công thức hoặc quy '
-                 'tắc nào sau đây biểu diễn đúng **Điều kiện xác định**?',
+            'q': 'Trong **Bài 7: Căn bậc hai và căn thức bậc hai**, quy tắc hoặc công thức nào sau đây xác '
+                 'định đúng **Điều kiện xác định**?',
             'options': ['$\\sqrt{A}$ xác định $\\Leftrightarrow A \\ge 0$',
-                        '$\\sqrt{A^2} = |A|$',
-                        '$ax + by = c$ ($a^2 + b^2 \\neq 0$)',
-                        '$\\begin{cases} a_1x + b_1y = c_1 \\\\ a_2x + b_2y = c_2 \\end{cases}$'],
+                        '$\\sqrt{A}$ xác định $\\Leftrightarrow A \\le 0$',
+                        '$\\sqrt{A}$ xác định $\\Leftrightarrow A \\ge 1$',
+                        '$\\sqrt{A}$ xác định $\\Leftrightarrow A \\ge 2$'],
             'answer': 0,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 7: Căn bậc hai và căn thức bậc hai, **Điều '
-                        'kiện xác định** được xác định bởi: $\\sqrt{A}$ xác định $\\Leftrightarrow A \\ge '
-                        '0$. (Biểu thức dưới dấu căn không âm)'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 7: Căn bậc hai và căn thức bậc hai, **Điều kiện '
+                        'xác định** được xác định bởi: $\\sqrt{A}$ xác định $\\Leftrightarrow A \\ge 0$. '
+                        '(Biểu thức dưới dấu căn không âm)'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 7: Căn bậc hai và căn thức bậc hai**, nội dung/biểu thức $\\sqrt{A^2} = |A|$ '
-                 'là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Điều kiện xác định',
-                        'Hằng đẳng thức căn bậc hai',
-                        'Phương trình bậc nhất hai ẩn',
-                        'Hệ hai phương trình bậc nhất hai ẩn'],
+            'q': 'Khi học **Bài 7: Căn bậc hai và căn thức bậc hai**, biểu thức hoặc quy tắc nào dưới đây '
+                 'biểu diễn đúng **Hằng đẳng thức căn bậc hai**?',
+            'options': ['$\\sqrt{A^3} = |A|$',
+                        '$\\sqrt{A^2} = |A|$',
+                        '$\\sqrt{A^1} = |A|$',
+                        '$\\sqrt{A^4} = |A|$'],
             'answer': 1,
-            'solution': 'Trong Bài 7: Căn bậc hai và căn thức bậc hai, biểu thức/quy tắc $\\sqrt{A^2} = |A|$ '
-                        'chính là nội dung của **Hằng đẳng thức căn bậc hai**.'},
+            'solution': 'Trong Bài 7: Căn bậc hai và căn thức bậc hai, **Hằng đẳng thức căn bậc hai** có '
+                        'công thức/quy tắc là: $\\sqrt{A^2} = |A|$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Giá trị của biểu thức $\\sqrt{(2 - \\sqrt{5})^2}$ bằng:',
@@ -1084,18 +1081,19 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 7: Căn bậc hai và căn thức bậc hai** (Chương III: Căn bậc hai và căn bậc '
-                 'ba), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của '
-                 'bài?',
-            'options': ['Nhận biết được phương trình bậc nhất hai ẩn $ax + by = c$ ($a \\neq 0$ hoặc $b '
-                        '\\neq 0$) và nghiệm của nó.',
-                        'Nhận biết được hệ hai phương trình bậc nhất hai ẩn và nghiệm của hệ.',
-                        'Biểu diễn được tập nghiệm của phương trình bậc nhất hai ẩn trên mặt phẳng tọa độ.',
+            'q': 'Để nắm vững bản chất của **Bài 7: Căn bậc hai và căn thức bậc hai**, nhận định nào sau đây '
+                 'là **chính xác**?',
+            'options': ['Nhận biết được căn bậc hai của một số thực không âm và tính được giá trị bằng máy '
+                        'tính cầm tay. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Nhận biết được căn bậc hai của một số thực không âm và '
+                        'tính được giá trị bằng máy tính cầm tay.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nhận biết được căn bậc hai của '
+                        'một số thực không âm và tính được giá trị bằng máy tính cầm tay.',
                         'Nhận biết được căn bậc hai của một số thực không âm và tính được giá trị bằng máy '
                         'tính cầm tay.'],
             'answer': 3,
-            'solution': 'Theo yêu cầu cần đạt của Bài 7: Căn bậc hai và căn thức bậc hai: Nhận biết được căn '
-                        'bậc hai của một số thực không âm và tính được giá trị bằng máy tính cầm tay.'},
+            'solution': 'Theo nội dung cốt lõi của Bài 7: Căn bậc hai và căn thức bậc hai: Nhận biết được '
+                        'căn bậc hai của một số thực không âm và tính được giá trị bằng máy tính cầm tay.'},
            {'level': 'hieu',
             'type': 'tf4',
             'q': 'Cho biểu thức $A = \\sqrt{9x^2}$ và căn thức $B = \\sqrt{6 - 2x}$.',
@@ -1111,42 +1109,39 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 7: Căn bậc hai và căn '
-                 'thức bậc hai**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được căn bậc hai của một '
-                           'số thực không âm và tính được giá trị bằng máy tính cầm tay.',
-                           'Quy tắc/công thức **Điều kiện xác định** trong bài được xác định bởi: '
-                           '$\\sqrt{A}$ xác định $\\Leftrightarrow A \\ge 0$.',
-                           'Trong mọi trường hợp, **Điều kiện xác định** luôn được tính bằng công thức $ax + '
-                           'by = c$ ($a^2 + b^2 \\neq 0$) (thuộc Phương trình bậc nhất hai ẩn) mà không cần '
-                           'điều kiện của Bài 7: Căn bậc hai và căn thức bậc hai.',
-                           'Với bài toán minh họa: “Tìm điều kiện xác định của căn thức $\\sqrt{2x - 6}$ và '
-                           'rút gọn biểu thức $P = \\sqrt{(x - 3)^2}$ khi $x < 3$.”, lời giải đúng là: Căn '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 7: Căn bậc hai và căn thức '
+                 'bậc hai**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết được căn bậc hai của một số '
+                           'thực không âm và tính được giá trị bằng máy tính cầm tay.',
+                           'Trong **Bài 7: Căn bậc hai và căn thức bậc hai**, quy tắc/công thức **Điều kiện '
+                           'xác định** được viết là: $\\sqrt{A}$ xác định $\\Leftrightarrow A \\ge 0$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $\\sqrt{A}$ xác định $\\Leftrightarrow A '
+                           '\\le 0$ thì kết quả của **Điều kiện xác định** trong **Bài 7: Căn bậc hai và căn '
+                           'thức bậc hai** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Tìm điều kiện xác định của căn thức $\\sqrt{2x - 6}$ và rút '
+                           'gọn biểu thức $P = \\sqrt{(x - 3)^2}$ khi $x < 3$.”, kết quả giải đúng là: Căn '
                            'thức $\\sqrt{2x - 6}$ xác định khi $2x - 6 \\ge 0 \\Leftrightarrow x \\ge 3$. Ta '
                            'có $P = \\sqrt{(x - 3)^2} = |x - 3|$. Vì $x < 3$ nên $x - 3 < 0$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 7: Căn bậc hai và căn thức bậc hai. b) '
-                        '**Đúng** theo công thức trọng tâm **Điều kiện xác định** ($\\sqrt{A}$ xác định '
-                        '$\\Leftrightarrow A \\ge 0$). c) **Sai** vì $ax + by = c$ ($a^2 + b^2 \\neq 0$) là '
-                        'công thức của nội dung khác, không phải quy tắc chung của **Điều kiện xác định**. '
-                        'd) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        '**Đúng** theo công thức **Điều kiện xác định** ($\\sqrt{A}$ xác định '
+                        '$\\Leftrightarrow A \\ge 0$). c) **Sai** vì công thức đúng của **Điều kiện xác '
+                        'định** phải là $\\sqrt{A}$ xác định $\\Leftrightarrow A \\ge 0$ chứ không phải '
+                        '$\\sqrt{A}$ xác định $\\Leftrightarrow A \\le 0$. d) **Đúng** theo lời giải ví dụ '
+                        'minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 7: Căn bậc hai và căn thức bậc hai** để giải quyết tình huống '
-                 'sau: Tìm điều kiện xác định của căn thức $\\sqrt{2x - 6}$ và rút gọn biểu thức $P = '
-                 '\\sqrt{(x - 3)^2}$ khi $x < 3$. Kết quả và hướng giải nào dưới đây là **đúng**?',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 7: Căn bậc hai và căn thức bậc hai** để giải bài '
+                 'toán sau: Tìm điều kiện xác định của căn thức $\\sqrt{2x - 6}$ và rút gọn biểu thức $P = '
+                 '\\sqrt{(x - 3)^2}$ khi $x < 3$. Cách giải và kết quả nào dưới đây là **đúng**?',
             'options': ['Căn thức $\\sqrt{2x - 6}$ xác định khi $2x - 6 \\ge 0 \\Leftrightarrow x \\ge 3$. '
-                        'Ta có $P = \\sqrt{(x - 3)^2} = |x - 3|$. Vì $x < 3$ nên $x - 3 < 0$, do đó $P = 3 - '
-                        'x$...',
-                        'Thay $x = 2, y = -1$ vào phương trình thứ nhất: $2 \\cdot 2 - (-1) = 4 + 1 = 5$ '
-                        '(thỏa mãn). Thay $x = 2, y = -1$ vào phương trình thứ hai: $2 + 3 \\cdot (-1) = 2 - '
-                        '3 = -1$...',
-                        'Cộng từng vế hai phương trình của hệ, ta được: $5x = 10 \\Rightarrow x = 2$. Thay '
-                        '$x = 2$ vào phương trình $2x + y = 5$, ta có: $2 \\cdot 2 + y = 5 \\Rightarrow y = '
-                        '1$...',
-                        'Gọi số thứ nhất là $x$ và số thứ hai là $y$. Theo đề bài, ta có hệ phương trình: '
-                        '$\\begin{cases} x + y = 59 \\\\ 3y - 2x = 7 \\end{cases} \\Leftrightarrow '
-                        '\\begin{cases} 2x + 2y = 118 \\\\ -2x + 3y = 7 \\end{cases}$...'],
+                        'Ta có $P = \\sqrt{(x - 3)^2} = |x - 3|$. Vì $x < 3$ nên $x - 3 < 0$, do đ...',
+                        'Căn thức $\\sqrt{2x - 6}$ xác định khi $2x - 6 \\le 0 \\Leftrightarrow x \\ge 3$. '
+                        'Ta có $P = \\sqrt{(x - 3)^2} = |x - 3|$. Vì $x < 3$ nên $x - 3 < 0$, do đ...',
+                        'Căn thức $\\sqrt{2x - 6}$ xác định khi $2x - 6 \\ge 0 \\Leftrightarrow x \\ge 3$. '
+                        'Ta có $P = \\sqrt{(x - 3)^2} = |x - 3|$. Vì $x < 3$ nên $x - 3 < 1$, do đ...',
+                        'Căn thức $\\sqrt{2x - 12}$ xác định khi $2x - 6 \\ge 0 \\Leftrightarrow x \\ge 3$. '
+                        'Ta có $P = \\sqrt{(x - 3)^2} = |x - 3|$. Vì $x < 3$ nên $x - 3 < 0$, do đ...'],
             'answer': 0,
             'solution': 'Lời giải chi tiết theo Bài 7: Căn bậc hai và căn thức bậc hai: Căn thức $\\sqrt{2x '
                         '- 6}$ xác định khi $2x - 6 \\ge 0 \\Leftrightarrow x \\ge 3$.\n'
@@ -1171,8 +1166,8 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
                  'thức.',
   'requirements': ['Thực hiện được phép khai căn bậc hai của một tích và nhân các căn bậc hai.',
                    'Thực hiện được phép khai căn bậc hai của một thương và chia các căn bậc hai.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Khai căn một tích** ($\\sqrt{A \\cdot B} = '
-                   '\\sqrt{A} \\cdot \\sqrt{B}$ ($A \\ge 0, B \\ge 0$)) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 8: Khai căn bậc hai với phép nhân và phép chia** để giải '
+                   'bài tập minh họa và bài toán thực tiễn.'],
   'definition': 'Với các biểu thức không âm $A, B$, căn bậc hai của một tích bằng tích các căn bậc hai, và '
                 'căn bậc hai của một thương ($B > 0$) bằng thương các căn bậc hai.',
   'theory': '1. Khai căn bậc hai và phép nhân: Với $A \\ge 0, B \\ge 0$, ta có $\\sqrt{A \\cdot B} = '
@@ -1212,30 +1207,29 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 8: Khai căn bậc hai với phép nhân và phép chia**, công '
-                 'thức hoặc quy tắc nào sau đây biểu diễn đúng **Khai căn một tích**?',
-            'options': ['$\\sqrt{\\dfrac{A}{B}} = \\dfrac{\\sqrt{A}}{\\sqrt{B}}$ ($A \\ge 0, B > 0$)',
+            'q': 'Trong **Bài 8: Khai căn bậc hai với phép nhân và phép chia**, quy tắc hoặc công thức nào '
+                 'sau đây xác định đúng **Khai căn một tích**?',
+            'options': ['$\\sqrt{A \\cdot B} = \\sqrt{A} \\cdot \\sqrt{B}$ ($A \\le 0, B \\ge 0$)',
                         '$\\sqrt{A \\cdot B} = \\sqrt{A} \\cdot \\sqrt{B}$ ($A \\ge 0, B \\ge 0$)',
-                        '$ax + by = c$ ($a^2 + b^2 \\neq 0$)',
-                        '$\\begin{cases} a_1x + b_1y = c_1 \\\\ a_2x + b_2y = c_2 \\end{cases}$'],
+                        '$\\sqrt{A \\cdot B} = \\sqrt{A} \\cdot \\sqrt{B}$ ($A \\ge 0, B \\ge 1$)',
+                        '$\\sqrt{A \\cdot B} = \\sqrt{A} \\cdot \\sqrt{B}$ ($A \\ge 2, B \\ge 0$)'],
             'answer': 1,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 8: Khai căn bậc hai với phép nhân và phép '
-                        'chia, **Khai căn một tích** được xác định bởi: $\\sqrt{A \\cdot B} = \\sqrt{A} '
-                        '\\cdot \\sqrt{B}$ ($A \\ge 0, B \\ge 0$). (Chiều ngược lại: $\\sqrt{A} \\cdot '
-                        '\\sqrt{B} = \\sqrt{A \\cdot B}$)'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 8: Khai căn bậc hai với phép nhân và phép chia, '
+                        '**Khai căn một tích** được xác định bởi: $\\sqrt{A \\cdot B} = \\sqrt{A} \\cdot '
+                        '\\sqrt{B}$ ($A \\ge 0, B \\ge 0$). (Chiều ngược lại: $\\sqrt{A} \\cdot \\sqrt{B} = '
+                        '\\sqrt{A \\cdot B}$)'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 8: Khai căn bậc hai với phép nhân và phép chia**, nội dung/biểu thức '
-                 '$\\sqrt{\\dfrac{A}{B}} = \\dfrac{\\sqrt{A}}{\\sqrt{B}}$ ($A \\ge 0, B > 0$) là quy tắc '
-                 'hoặc công thức của mục nào sau đây?',
-            'options': ['Khai căn một tích',
-                        'Phương trình bậc nhất hai ẩn',
-                        'Khai căn một thương',
-                        'Hệ hai phương trình bậc nhất hai ẩn'],
+            'q': 'Khi học **Bài 8: Khai căn bậc hai với phép nhân và phép chia**, biểu thức hoặc quy tắc nào '
+                 'dưới đây biểu diễn đúng **Khai căn một thương**?',
+            'options': ['$\\sqrt{\\dfrac{A}{B}} = \\dfrac{\\sqrt{A}}{\\sqrt{B}}$ ($A \\le 0, B > 0$)',
+                        '$\\sqrt{\\dfrac{B}{A}} = \\dfrac{\\sqrt{A}}{\\sqrt{B}}$ ($A \\ge 0, B > 0$)',
+                        '$\\sqrt{\\dfrac{A}{B}} = \\dfrac{\\sqrt{A}}{\\sqrt{B}}$ ($A \\ge 0, B > 0$)',
+                        '$\\sqrt{\\dfrac{A}{B}} = \\dfrac{\\sqrt{A}}{\\sqrt{B}}$ ($A \\ge 2, B > 0$)'],
             'answer': 2,
-            'solution': 'Trong Bài 8: Khai căn bậc hai với phép nhân và phép chia, biểu thức/quy tắc '
-                        '$\\sqrt{\\dfrac{A}{B}} = \\dfrac{\\sqrt{A}}{\\sqrt{B}}$ ($A \\ge 0, B > 0$) chính '
-                        'là nội dung của **Khai căn một thương**.'},
+            'solution': 'Trong Bài 8: Khai căn bậc hai với phép nhân và phép chia, **Khai căn một thương** '
+                        'có công thức/quy tắc là: $\\sqrt{\\dfrac{A}{B}} = \\dfrac{\\sqrt{A}}{\\sqrt{B}}$ '
+                        '($A \\ge 0, B > 0$).'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Với $a < 0$, rút gọn biểu thức $\\sqrt{16a^2b^4}$ ta được kết quả là:',
@@ -1247,16 +1241,17 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 8: Khai căn bậc hai với phép nhân và phép chia** (Chương III: Căn bậc hai và '
-                 'căn bậc ba), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến '
-                 'thức của bài?',
+            'q': 'Để nắm vững bản chất của **Bài 8: Khai căn bậc hai với phép nhân và phép chia**, nhận định '
+                 'nào sau đây là **chính xác**?',
             'options': ['Thực hiện được phép khai căn bậc hai của một tích và nhân các căn bậc hai.',
-                        'Nhận biết được phương trình bậc nhất hai ẩn $ax + by = c$ ($a \\neq 0$ hoặc $b '
-                        '\\neq 0$) và nghiệm của nó.',
-                        'Nhận biết được hệ hai phương trình bậc nhất hai ẩn và nghiệm của hệ.',
-                        'Biểu diễn được tập nghiệm của phương trình bậc nhất hai ẩn trên mặt phẳng tọa độ.'],
+                        'Thực hiện được phép khai căn bậc hai của một tích và nhân các căn bậc hai. (với dấu '
+                        'ngược lại)',
+                        'Đảo ngược vế của quy tắc: Thực hiện được phép khai căn bậc hai của một tích và nhân '
+                        'các căn bậc hai.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Thực hiện được phép khai căn '
+                        'bậc hai của một tích và nhân các căn bậc hai.'],
             'answer': 0,
-            'solution': 'Theo yêu cầu cần đạt của Bài 8: Khai căn bậc hai với phép nhân và phép chia: Thực '
+            'solution': 'Theo nội dung cốt lõi của Bài 8: Khai căn bậc hai với phép nhân và phép chia: Thực '
                         'hiện được phép khai căn bậc hai của một tích và nhân các căn bậc hai.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -1274,41 +1269,41 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 8: Khai căn bậc hai với '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 8: Khai căn bậc hai với '
                  'phép nhân và phép chia**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Thực hiện được phép khai căn bậc '
-                           'hai của một tích và nhân các căn bậc hai.',
-                           'Quy tắc/công thức **Khai căn một tích** trong bài được xác định bởi: $\\sqrt{A '
-                           '\\cdot B} = \\sqrt{A} \\cdot \\sqrt{B}$ ($A \\ge 0, B \\ge 0$).',
-                           'Trong mọi trường hợp, **Khai căn một tích** luôn được tính bằng công thức $ax + '
-                           'by = c$ ($a^2 + b^2 \\neq 0$) (thuộc Phương trình bậc nhất hai ẩn) mà không cần '
-                           'điều kiện của Bài 8: Khai căn bậc hai với phép nhân và phép chia.',
-                           'Với bài toán minh họa: “Tính giá trị của các biểu thức: a) $\\sqrt{12} \\cdot '
-                           '\\sqrt{3}$; b) $\\dfrac{\\sqrt{50}}{\\sqrt{2}}$.”, lời giải đúng là: a) '
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Thực hiện được phép khai căn bậc hai của '
+                           'một tích và nhân các căn bậc hai.',
+                           'Trong **Bài 8: Khai căn bậc hai với phép nhân và phép chia**, quy tắc/công thức '
+                           '**Khai căn một tích** được viết là: $\\sqrt{A \\cdot B} = \\sqrt{A} \\cdot '
+                           '\\sqrt{B}$ ($A \\ge 0, B \\ge 0$).',
+                           'Nếu áp dụng sai dấu/phép tính thành $\\sqrt{A \\cdot B} = \\sqrt{A} \\cdot '
+                           '\\sqrt{B}$ ($A \\le 0, B \\ge 0$) thì kết quả của **Khai căn một tích** trong '
+                           '**Bài 8: Khai căn bậc hai với phép nhân và phép chia** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Tính giá trị của các biểu thức: a) $\\sqrt{12} \\cdot '
+                           '\\sqrt{3}$; b) $\\dfrac{\\sqrt{50}}{\\sqrt{2}}$.”, kết quả giải đúng là: a) '
                            '$\\sqrt{12} \\cdot \\sqrt{3} = \\sqrt{12 \\cdot 3} = \\sqrt{36} = 6$. b) '
-                           '$\\dfrac{\\sqrt{50}}{\\sqrt{2}} = \\sqrt{\\dfrac{50}{2}} = \\sqrt{25} = 5$.'],
+                           '$\\dfrac{\\sqrt{50}}{\\sqrt{2}} = \\sqrt{\\dfrac{50}{2}} = \\sqrt{25} = 5$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 8: Khai căn bậc hai với phép nhân và phép '
-                        'chia. b) **Đúng** theo công thức trọng tâm **Khai căn một tích** ($\\sqrt{A \\cdot '
-                        'B} = \\sqrt{A} \\cdot \\sqrt{B}$ ($A \\ge 0, B \\ge 0$)). c) **Sai** vì $ax + by = '
-                        'c$ ($a^2 + b^2 \\neq 0$) là công thức của nội dung khác, không phải quy tắc chung '
-                        'của **Khai căn một tích**. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        'chia. b) **Đúng** theo công thức **Khai căn một tích** ($\\sqrt{A \\cdot B} = '
+                        '\\sqrt{A} \\cdot \\sqrt{B}$ ($A \\ge 0, B \\ge 0$)). c) **Sai** vì công thức đúng '
+                        'của **Khai căn một tích** phải là $\\sqrt{A \\cdot B} = \\sqrt{A} \\cdot \\sqrt{B}$ '
+                        '($A \\ge 0, B \\ge 0$) chứ không phải $\\sqrt{A \\cdot B} = \\sqrt{A} \\cdot '
+                        '\\sqrt{B}$ ($A \\le 0, B \\ge 0$). d) **Đúng** theo lời giải ví dụ minh họa trong '
+                        'bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 8: Khai căn bậc hai với phép nhân và phép chia** để giải quyết '
-                 'tình huống sau: Tính giá trị của các biểu thức: a) $\\sqrt{12} \\cdot \\sqrt{3}$; b) '
-                 '$\\dfrac{\\sqrt{50}}{\\sqrt{2}}$. Kết quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Thay $x = 2, y = -1$ vào phương trình thứ nhất: $2 \\cdot 2 - (-1) = 4 + 1 = 5$ '
-                        '(thỏa mãn). Thay $x = 2, y = -1$ vào phương trình thứ hai: $2 + 3 \\cdot (-1) = 2 - '
-                        '3 = -1$...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 8: Khai căn bậc hai với phép nhân và phép chia** để '
+                 'giải bài toán sau: Tính giá trị của các biểu thức: a) $\\sqrt{12} \\cdot \\sqrt{3}$; b) '
+                 '$\\dfrac{\\sqrt{50}}{\\sqrt{2}}$. Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['a) $\\sqrt{12} : \\sqrt{3} = \\sqrt{12 \\cdot 3} = \\sqrt{36} = 6$. b) '
+                        '$\\dfrac{\\sqrt{50}}{\\sqrt{2}} = \\sqrt{\\dfrac{50}{2}} = \\sqrt{25} = 5$.',
                         'a) $\\sqrt{12} \\cdot \\sqrt{3} = \\sqrt{12 \\cdot 3} = \\sqrt{36} = 6$. b) '
                         '$\\dfrac{\\sqrt{50}}{\\sqrt{2}} = \\sqrt{\\dfrac{50}{2}} = \\sqrt{25} = 5$.',
-                        'Cộng từng vế hai phương trình của hệ, ta được: $5x = 10 \\Rightarrow x = 2$. Thay '
-                        '$x = 2$ vào phương trình $2x + y = 5$, ta có: $2 \\cdot 2 + y = 5 \\Rightarrow y = '
-                        '1$...',
-                        'Gọi số thứ nhất là $x$ và số thứ hai là $y$. Theo đề bài, ta có hệ phương trình: '
-                        '$\\begin{cases} x + y = 59 \\\\ 3y - 2x = 7 \\end{cases} \\Leftrightarrow '
-                        '\\begin{cases} 2x + 2y = 118 \\\\ -2x + 3y = 7 \\end{cases}$...'],
+                        'a) $\\sqrt{12} \\cdot \\sqrt{3} = \\sqrt{12 \\cdot 3} = \\sqrt{36} = 6$. b) '
+                        '$\\dfrac{\\sqrt{50}}{\\sqrt{2}} = \\sqrt{\\dfrac{2}{50}} = \\sqrt{25} = 5$.',
+                        'a) $\\sqrt{24} \\cdot \\sqrt{3} = \\sqrt{12 \\cdot 3} = \\sqrt{36} = 6$. b) '
+                        '$\\dfrac{\\sqrt{50}}{\\sqrt{2}} = \\sqrt{\\dfrac{50}{2}} = \\sqrt{25} = 5$.'],
             'answer': 1,
             'solution': 'Lời giải chi tiết theo Bài 8: Khai căn bậc hai với phép nhân và phép chia: a) '
                         '$\\sqrt{12} \\cdot \\sqrt{3} = \\sqrt{12 \\cdot 3} = \\sqrt{36} = 6$.\n'
@@ -1374,32 +1369,28 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 9: Biến đổi đơn giản và rút gọn biểu thức chứa căn thức '
-                 'bậc hai**, công thức hoặc quy tắc nào sau đây biểu diễn đúng **Đưa thừa số ra ngoài dấu '
-                 'căn**?',
-            'options': ['$\\dfrac{A}{\\sqrt{B}} = \\dfrac{A\\sqrt{B}}{B}$ ($B > 0$)',
-                        '$\\dfrac{C}{\\sqrt{A} \\pm \\sqrt{B}} = \\dfrac{C(\\sqrt{A} \\mp \\sqrt{B})}{A - '
-                        'B}$',
+            'q': 'Trong **Bài 9: Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai**, quy tắc '
+                 'hoặc công thức nào sau đây xác định đúng **Đưa thừa số ra ngoài dấu căn**?',
+            'options': ['$\\sqrt{A^2B} = |A|\\sqrt{B}$ ($B \\le 0$)',
+                        '$\\sqrt{A^2B} = |A|\\sqrt{B}$ ($B \\ge 1$)',
                         '$\\sqrt{A^2B} = |A|\\sqrt{B}$ ($B \\ge 0$)',
-                        '$ax + by = c$ ($a^2 + b^2 \\neq 0$)'],
+                        '$\\sqrt{A^2B} = |A|\\sqrt{B}$ ($B \\ge 2$)'],
             'answer': 2,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 9: Biến đổi đơn giản và rút gọn biểu thức '
-                        'chứa căn thức bậc hai, **Đưa thừa số ra ngoài dấu căn** được xác định bởi: '
-                        '$\\sqrt{A^2B} = |A|\\sqrt{B}$ ($B \\ge 0$). (Nếu $A \\ge 0$ thì $\\sqrt{A^2B} = '
-                        'A\\sqrt{B}$)'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 9: Biến đổi đơn giản và rút gọn biểu thức chứa căn '
+                        'thức bậc hai, **Đưa thừa số ra ngoài dấu căn** được xác định bởi: $\\sqrt{A^2B} = '
+                        '|A|\\sqrt{B}$ ($B \\ge 0$). (Nếu $A \\ge 0$ thì $\\sqrt{A^2B} = A\\sqrt{B}$)'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 9: Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai**, nội '
-                 'dung/biểu thức $\\dfrac{A}{\\sqrt{B}} = \\dfrac{A\\sqrt{B}}{B}$ ($B > 0$) là quy tắc hoặc '
-                 'công thức của mục nào sau đây?',
-            'options': ['Đưa thừa số ra ngoài dấu căn',
-                        'Trục căn thức bằng biểu thức liên hợp',
-                        'Phương trình bậc nhất hai ẩn',
-                        'Trục căn thức dạng đơn thức'],
+            'q': 'Khi học **Bài 9: Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai**, biểu thức '
+                 'hoặc quy tắc nào dưới đây biểu diễn đúng **Trục căn thức dạng đơn thức**?',
+            'options': ['$\\dfrac{A}{\\sqrt{B}} = \\dfrac{A\\sqrt{B}}{B}$ ($B < 0$)',
+                        '$\\dfrac{A}{\\sqrt{B}} = \\dfrac{A\\sqrt{B}}{B}$ ($B > 1$)',
+                        '$\\dfrac{A}{\\sqrt{B}} = \\dfrac{A\\sqrt{B}}{B}$ ($B > 2$)',
+                        '$\\dfrac{A}{\\sqrt{B}} = \\dfrac{A\\sqrt{B}}{B}$ ($B > 0$)'],
             'answer': 3,
-            'solution': 'Trong Bài 9: Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai, biểu '
-                        'thức/quy tắc $\\dfrac{A}{\\sqrt{B}} = \\dfrac{A\\sqrt{B}}{B}$ ($B > 0$) chính là '
-                        'nội dung của **Trục căn thức dạng đơn thức**.'},
+            'solution': 'Trong Bài 9: Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai, **Trục '
+                        'căn thức dạng đơn thức** có công thức/quy tắc là: $\\dfrac{A}{\\sqrt{B}} = '
+                        '\\dfrac{A\\sqrt{B}}{B}$ ($B > 0$).'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Rút gọn biểu thức $\\sqrt{12} + \\sqrt{75} - 2\\sqrt{3}$ ta được:',
@@ -1411,16 +1402,17 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 9: Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai** (Chương '
-                 'III: Căn bậc hai và căn bậc ba), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt '
-                 'và bản chất kiến thức của bài?',
-            'options': ['Nhận biết được phương trình bậc nhất hai ẩn $ax + by = c$ ($a \\neq 0$ hoặc $b '
-                        '\\neq 0$) và nghiệm của nó.',
+            'q': 'Để nắm vững bản chất của **Bài 9: Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc '
+                 'hai**, nhận định nào sau đây là **chính xác**?',
+            'options': ['Thực hiện được phép đưa thừa số ra ngoài dấu căn và đưa thừa số vào trong dấu căn. '
+                        '(với dấu ngược lại)',
                         'Thực hiện được phép đưa thừa số ra ngoài dấu căn và đưa thừa số vào trong dấu căn.',
-                        'Nhận biết được hệ hai phương trình bậc nhất hai ẩn và nghiệm của hệ.',
-                        'Biểu diễn được tập nghiệm của phương trình bậc nhất hai ẩn trên mặt phẳng tọa độ.'],
+                        'Đảo ngược vế của quy tắc: Thực hiện được phép đưa thừa số ra ngoài dấu căn và đưa '
+                        'thừa số vào trong dấu căn.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Thực hiện được phép đưa thừa số '
+                        'ra ngoài dấu căn và đưa thừa số vào trong dấu căn.'],
             'answer': 1,
-            'solution': 'Theo yêu cầu cần đạt của Bài 9: Biến đổi đơn giản và rút gọn biểu thức chứa căn '
+            'solution': 'Theo nội dung cốt lõi của Bài 9: Biến đổi đơn giản và rút gọn biểu thức chứa căn '
                         'thức bậc hai: Thực hiện được phép đưa thừa số ra ngoài dấu căn và đưa thừa số vào '
                         'trong dấu căn.'},
            {'level': 'hieu',
@@ -1438,44 +1430,40 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 9: Biến đổi đơn giản và '
-                 'rút gọn biểu thức chứa căn thức bậc hai**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Thực hiện được phép đưa thừa số ra '
-                           'ngoài dấu căn và đưa thừa số vào trong dấu căn.',
-                           'Quy tắc/công thức **Đưa thừa số ra ngoài dấu căn** trong bài được xác định bởi: '
-                           '$\\sqrt{A^2B} = |A|\\sqrt{B}$ ($B \\ge 0$).',
-                           'Trong mọi trường hợp, **Đưa thừa số ra ngoài dấu căn** luôn được tính bằng công '
-                           'thức $ax + by = c$ ($a^2 + b^2 \\neq 0$) (thuộc Phương trình bậc nhất hai ẩn) mà '
-                           'không cần điều kiện của Bài 9: Biến đổi đơn giản và rút gọn biểu thức chứa căn '
-                           'thức bậc hai.',
-                           'Với bài toán minh họa: “Rút gọn biểu thức $A = 3\\sqrt{8} - \\sqrt{50} + '
-                           '\\dfrac{2}{\\sqrt{2} - 1}$.”, lời giải đúng là: Ta có $3\\sqrt{8} = 3 \\cdot '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 9: Biến đổi đơn giản và rút '
+                 'gọn biểu thức chứa căn thức bậc hai**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Thực hiện được phép đưa thừa số ra ngoài '
+                           'dấu căn và đưa thừa số vào trong dấu căn.',
+                           'Trong **Bài 9: Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai**, '
+                           'quy tắc/công thức **Đưa thừa số ra ngoài dấu căn** được viết là: $\\sqrt{A^2B} = '
+                           '|A|\\sqrt{B}$ ($B \\ge 0$).',
+                           'Nếu áp dụng sai dấu/phép tính thành $\\sqrt{A^2B} = |A|\\sqrt{B}$ ($B \\le 0$) '
+                           'thì kết quả của **Đưa thừa số ra ngoài dấu căn** trong **Bài 9: Biến đổi đơn '
+                           'giản và rút gọn biểu thức chứa căn thức bậc hai** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Rút gọn biểu thức $A = 3\\sqrt{8} - \\sqrt{50} + '
+                           '\\dfrac{2}{\\sqrt{2} - 1}$.”, kết quả giải đúng là: Ta có $3\\sqrt{8} = 3 \\cdot '
                            '2\\sqrt{2} = 6\\sqrt{2}$; $\\sqrt{50} = 5\\sqrt{2}$; $\\dfrac{2}{\\sqrt{2} - 1} '
                            '= \\dfrac{2(\\sqrt{2} + 1)}{2 - 1} = 2\\sqrt{2} + 2$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 9: Biến đổi đơn giản và rút gọn biểu thức '
-                        'chứa căn thức bậc hai. b) **Đúng** theo công thức trọng tâm **Đưa thừa số ra ngoài '
-                        'dấu căn** ($\\sqrt{A^2B} = |A|\\sqrt{B}$ ($B \\ge 0$)). c) **Sai** vì $ax + by = c$ '
-                        '($a^2 + b^2 \\neq 0$) là công thức của nội dung khác, không phải quy tắc chung của '
-                        '**Đưa thừa số ra ngoài dấu căn**. d) **Đúng** theo lời giải ví dụ minh họa trong '
-                        'bài học.'},
+                        'chứa căn thức bậc hai. b) **Đúng** theo công thức **Đưa thừa số ra ngoài dấu căn** '
+                        '($\\sqrt{A^2B} = |A|\\sqrt{B}$ ($B \\ge 0$)). c) **Sai** vì công thức đúng của '
+                        '**Đưa thừa số ra ngoài dấu căn** phải là $\\sqrt{A^2B} = |A|\\sqrt{B}$ ($B \\ge 0$) '
+                        'chứ không phải $\\sqrt{A^2B} = |A|\\sqrt{B}$ ($B \\le 0$). d) **Đúng** theo lời '
+                        'giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 9: Biến đổi đơn giản và rút gọn biểu thức chứa căn thức bậc hai** '
-                 'để giải quyết tình huống sau: Rút gọn biểu thức $A = 3\\sqrt{8} - \\sqrt{50} + '
-                 '\\dfrac{2}{\\sqrt{2} - 1}$. Kết quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Thay $x = 2, y = -1$ vào phương trình thứ nhất: $2 \\cdot 2 - (-1) = 4 + 1 = 5$ '
-                        '(thỏa mãn). Thay $x = 2, y = -1$ vào phương trình thứ hai: $2 + 3 \\cdot (-1) = 2 - '
-                        '3 = -1$...',
-                        'Cộng từng vế hai phương trình của hệ, ta được: $5x = 10 \\Rightarrow x = 2$. Thay '
-                        '$x = 2$ vào phương trình $2x + y = 5$, ta có: $2 \\cdot 2 + y = 5 \\Rightarrow y = '
-                        '1$...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 9: Biến đổi đơn giản và rút gọn biểu thức chứa căn '
+                 'thức bậc hai** để giải bài toán sau: Rút gọn biểu thức $A = 3\\sqrt{8} - \\sqrt{50} + '
+                 '\\dfrac{2}{\\sqrt{2} - 1}$. Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Ta có $3\\sqrt{8} = 3 \\cdot 2\\sqrt{2} = 6\\sqrt{2}$; $\\sqrt{50} = 5\\sqrt{2}$; '
+                        '$\\dfrac{2}{\\sqrt{2} - 1} = \\dfrac{2(\\sqrt{2} - 1)}{2 - 1} = 2\\sqrt{2} + 2$...',
                         'Ta có $3\\sqrt{8} = 3 \\cdot 2\\sqrt{2} = 6\\sqrt{2}$; $\\sqrt{50} = 5\\sqrt{2}$; '
-                        '$\\dfrac{2}{\\sqrt{2} - 1} = \\dfrac{2(\\sqrt{2} + 1)}{2 - 1} = 2\\sqrt{2} + 2$. '
-                        'Do...',
-                        'Gọi số thứ nhất là $x$ và số thứ hai là $y$. Theo đề bài, ta có hệ phương trình: '
-                        '$\\begin{cases} x + y = 59 \\\\ 3y - 2x = 7 \\end{cases} \\Leftrightarrow '
-                        '\\begin{cases} 2x + 2y = 118 \\\\ -2x + 3y = 7 \\end{cases}$...'],
+                        '$\\dfrac{2}{\\sqrt{2} - 1} = \\dfrac{2(\\sqrt{2} + 1)}{2 - 1} = 2\\sqrt{2} + 1$...',
+                        'Ta có $3\\sqrt{8} = 3 \\cdot 2\\sqrt{2} = 6\\sqrt{2}$; $\\sqrt{50} = 5\\sqrt{2}$; '
+                        '$\\dfrac{2}{\\sqrt{2} - 1} = \\dfrac{2(\\sqrt{2} + 1)}{2 - 1} = 2\\sqrt{2} + 2$...',
+                        'Ta có $6\\sqrt{8} = 3 \\cdot 2\\sqrt{2} = 6\\sqrt{2}$; $\\sqrt{50} = 5\\sqrt{2}$; '
+                        '$\\dfrac{2}{\\sqrt{2} - 1} = \\dfrac{2(\\sqrt{2} + 1)}{2 - 1} = 2\\sqrt{2} + 2$...'],
             'answer': 2,
             'solution': 'Lời giải chi tiết theo Bài 9: Biến đổi đơn giản và rút gọn biểu thức chứa căn thức '
                         'bậc hai: Ta có $3\\sqrt{8} = 3 \\cdot 2\\sqrt{2} = 6\\sqrt{2}$; $\\sqrt{50} = '
@@ -1499,8 +1487,8 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
   'description': 'Nhận biết và tính căn bậc ba của một số thực, rút gọn biểu thức chứa căn thức bậc ba.',
   'requirements': ['Nhận biết được khái niệm căn bậc ba của một số thực và tính được bằng máy tính cầm tay.',
                    'Rút gọn được các biểu thức chứa căn thức bậc ba.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Định nghĩa** ($(\\sqrt[3]{a})^3 = '
-                   '\\sqrt[3]{a^3} = a$) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 10: Căn bậc ba và căn thức bậc ba** để giải bài tập minh '
+                   'họa và bài toán thực tiễn.'],
   'definition': 'Căn bậc ba của số thực $a$ là số thực $x$ thỏa mãn $x^3 = a$, kí hiệu là $\\sqrt[3]{a}$. '
                 'Mỗi số thực $a$ đều có duy nhất một căn bậc ba.',
   'theory': '1. Với mọi số thực $a$, ta luôn có $(\\sqrt[3]{a})^3 = \\sqrt[3]{a^3} = a$.\n'
@@ -1540,32 +1528,32 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 10: Căn bậc ba và căn thức bậc ba**, công thức hoặc quy '
-                 'tắc nào sau đây biểu diễn đúng **Định nghĩa**?',
-            'options': ['$\\sqrt[3]{ab} = \\sqrt[3]{a} \\cdot \\sqrt[3]{b}$; $\\sqrt[3]{\\dfrac{a}{b}} = '
-                        '\\dfrac{\\sqrt[3]{a}}{\\sqrt[3]{b}}$ ($b \\neq 0$)',
-                        '$ax + by = c$ ($a^2 + b^2 \\neq 0$)',
-                        '$\\begin{cases} a_1x + b_1y = c_1 \\\\ a_2x + b_2y = c_2 \\end{cases}$',
+            'q': 'Trong **Bài 10: Căn bậc ba và căn thức bậc ba**, quy tắc hoặc công thức nào sau đây xác '
+                 'định đúng **Định nghĩa**?',
+            'options': ['$(\\sqrt[4]{a})^3 = \\sqrt[3]{a^3} = a$',
+                        '$(\\sqrt[3]{a})^3 = \\sqrt[3]{a^2} = a$',
+                        '$(\\sqrt[6]{a})^3 = \\sqrt[3]{a^3} = a$',
                         '$(\\sqrt[3]{a})^3 = \\sqrt[3]{a^3} = a$'],
             'answer': 3,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 10: Căn bậc ba và căn thức bậc ba, **Định '
-                        'nghĩa** được xác định bởi: $(\\sqrt[3]{a})^3 = \\sqrt[3]{a^3} = a$. (Đúng với mọi '
-                        '$a \\in \\mathbb{R}$)'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 10: Căn bậc ba và căn thức bậc ba, **Định nghĩa** '
+                        'được xác định bởi: $(\\sqrt[3]{a})^3 = \\sqrt[3]{a^3} = a$. (Đúng với mọi $a \\in '
+                        '\\mathbb{R}$)'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 10: Căn bậc ba và căn thức bậc ba**, nội dung/biểu thức $\\sqrt[3]{ab} = '
-                 '\\sqrt[3]{a} \\cdot \\sqrt[3]{b}$; $\\sqrt[3]{\\dfrac{a}{b}} = '
-                 '\\dfrac{\\sqrt[3]{a}}{\\sqrt[3]{b}}$ ($b \\neq 0$) là quy tắc hoặc công thức của mục nào '
-                 'sau đây?',
-            'options': ['Căn bậc ba của tích và thương',
-                        'Định nghĩa',
-                        'Phương trình bậc nhất hai ẩn',
-                        'Hệ hai phương trình bậc nhất hai ẩn'],
+            'q': 'Khi học **Bài 10: Căn bậc ba và căn thức bậc ba**, biểu thức hoặc quy tắc nào dưới đây '
+                 'biểu diễn đúng **Căn bậc ba của tích và thương**?',
+            'options': ['$\\sqrt[3]{ab} = \\sqrt[3]{a} \\cdot \\sqrt[3]{b}$; $\\sqrt[3]{\\dfrac{a}{b}} = '
+                        '\\dfrac{\\sqrt[3]{a}}{\\sqrt[3]{b}}$ ($b \\neq 0$)',
+                        '$\\sqrt[3]{ab} = \\sqrt[3]{a} : \\sqrt[3]{b}$; $\\sqrt[3]{\\dfrac{a}{b}} = '
+                        '\\dfrac{\\sqrt[3]{a}}{\\sqrt[3]{b}}$ ($b \\neq 0$)',
+                        '$\\sqrt[3]{ab} = \\sqrt[3]{a} \\cdot \\sqrt[3]{b}$; $\\sqrt[3]{\\dfrac{b}{a}} = '
+                        '\\dfrac{\\sqrt[3]{a}}{\\sqrt[3]{b}}$ ($b \\neq 0$)',
+                        '$\\sqrt[6]{ab} = \\sqrt[3]{a} \\cdot \\sqrt[3]{b}$; $\\sqrt[3]{\\dfrac{a}{b}} = '
+                        '\\dfrac{\\sqrt[3]{a}}{\\sqrt[3]{b}}$ ($b \\neq 0$)'],
             'answer': 0,
-            'solution': 'Trong Bài 10: Căn bậc ba và căn thức bậc ba, biểu thức/quy tắc $\\sqrt[3]{ab} = '
-                        '\\sqrt[3]{a} \\cdot \\sqrt[3]{b}$; $\\sqrt[3]{\\dfrac{a}{b}} = '
-                        '\\dfrac{\\sqrt[3]{a}}{\\sqrt[3]{b}}$ ($b \\neq 0$) chính là nội dung của **Căn bậc '
-                        'ba của tích và thương**.'},
+            'solution': 'Trong Bài 10: Căn bậc ba và căn thức bậc ba, **Căn bậc ba của tích và thương** có '
+                        'công thức/quy tắc là: $\\sqrt[3]{ab} = \\sqrt[3]{a} \\cdot \\sqrt[3]{b}$; '
+                        '$\\sqrt[3]{\\dfrac{a}{b}} = \\dfrac{\\sqrt[3]{a}}{\\sqrt[3]{b}}$ ($b \\neq 0$).'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Nghiệm của phương trình $\\sqrt[3]{2x - 1} = -3$ là:',
@@ -1577,17 +1565,19 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 10: Căn bậc ba và căn thức bậc ba** (Chương III: Căn bậc hai và căn bậc ba), '
-                 'khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Nhận biết được phương trình bậc nhất hai ẩn $ax + by = c$ ($a \\neq 0$ hoặc $b '
-                        '\\neq 0$) và nghiệm của nó.',
-                        'Nhận biết được hệ hai phương trình bậc nhất hai ẩn và nghiệm của hệ.',
+            'q': 'Để nắm vững bản chất của **Bài 10: Căn bậc ba và căn thức bậc ba**, nhận định nào sau đây '
+                 'là **chính xác**?',
+            'options': ['Nhận biết được khái niệm căn bậc ba của một số thực và tính được bằng máy tính cầm '
+                        'tay. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Nhận biết được khái niệm căn bậc ba của một số thực và '
+                        'tính được bằng máy tính cầm tay.',
                         'Nhận biết được khái niệm căn bậc ba của một số thực và tính được bằng máy tính cầm '
                         'tay.',
-                        'Biểu diễn được tập nghiệm của phương trình bậc nhất hai ẩn trên mặt phẳng tọa độ.'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nhận biết được khái niệm căn '
+                        'bậc ba của một số thực và tính được bằng máy tính cầm tay.'],
             'answer': 2,
-            'solution': 'Theo yêu cầu cần đạt của Bài 10: Căn bậc ba và căn thức bậc ba: Nhận biết được khái '
-                        'niệm căn bậc ba của một số thực và tính được bằng máy tính cầm tay.'},
+            'solution': 'Theo nội dung cốt lõi của Bài 10: Căn bậc ba và căn thức bậc ba: Nhận biết được '
+                        'khái niệm căn bậc ba của một số thực và tính được bằng máy tính cầm tay.'},
            {'level': 'hieu',
             'type': 'tf4',
             'q': 'Xét các mệnh đề về căn bậc ba:',
@@ -1602,38 +1592,35 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 10: Căn bậc ba và căn '
-                 'thức bậc ba**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được khái niệm căn bậc '
-                           'ba của một số thực và tính được bằng máy tính cầm tay.',
-                           'Quy tắc/công thức **Định nghĩa** trong bài được xác định bởi: $(\\sqrt[3]{a})^3 '
-                           '= \\sqrt[3]{a^3} = a$.',
-                           'Trong mọi trường hợp, **Định nghĩa** luôn được tính bằng công thức $ax + by = c$ '
-                           '($a^2 + b^2 \\neq 0$) (thuộc Phương trình bậc nhất hai ẩn) mà không cần điều '
-                           'kiện của Bài 10: Căn bậc ba và căn thức bậc ba.',
-                           'Với bài toán minh họa: “Tính giá trị của biểu thức $A = \\sqrt[3]{27} + '
-                           '\\sqrt[3]{-64} - \\sqrt[3]{8}$.”, lời giải đúng là: Ta có $\\sqrt[3]{27} = 3$; '
-                           '$\\sqrt[3]{-64} = -4$; $\\sqrt[3]{8} = 2$. Do đó $A = 3 + (-4) - 2 = -3$.'],
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 10: Căn bậc ba và căn thức '
+                 'bậc ba**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết được khái niệm căn bậc ba của '
+                           'một số thực và tính được bằng máy tính cầm tay.',
+                           'Trong **Bài 10: Căn bậc ba và căn thức bậc ba**, quy tắc/công thức **Định '
+                           'nghĩa** được viết là: $(\\sqrt[3]{a})^3 = \\sqrt[3]{a^3} = a$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $(\\sqrt[4]{a})^3 = \\sqrt[3]{a^3} = a$ thì '
+                           'kết quả của **Định nghĩa** trong **Bài 10: Căn bậc ba và căn thức bậc ba** vẫn '
+                           'không thay đổi.',
+                           'Xét ví dụ của bài: “Tính giá trị của biểu thức $A = \\sqrt[3]{27} + '
+                           '\\sqrt[3]{-64} - \\sqrt[3]{8}$.”, kết quả giải đúng là: Ta có $\\sqrt[3]{27} = '
+                           '3$; $\\sqrt[3]{-64} = -4$; $\\sqrt[3]{8} = 2$. Do đó $A = 3 + (-4) - 2 = -3$.'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 10: Căn bậc ba và căn thức bậc ba. b) '
-                        '**Đúng** theo công thức trọng tâm **Định nghĩa** ($(\\sqrt[3]{a})^3 = '
-                        '\\sqrt[3]{a^3} = a$). c) **Sai** vì $ax + by = c$ ($a^2 + b^2 \\neq 0$) là công '
-                        'thức của nội dung khác, không phải quy tắc chung của **Định nghĩa**. d) **Đúng** '
-                        'theo lời giải ví dụ minh họa trong bài học.'},
+                        '**Đúng** theo công thức **Định nghĩa** ($(\\sqrt[3]{a})^3 = \\sqrt[3]{a^3} = a$). '
+                        'c) **Sai** vì công thức đúng của **Định nghĩa** phải là $(\\sqrt[3]{a})^3 = '
+                        '\\sqrt[3]{a^3} = a$ chứ không phải $(\\sqrt[4]{a})^3 = \\sqrt[3]{a^3} = a$. d) '
+                        '**Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 10: Căn bậc ba và căn thức bậc ba** để giải quyết tình huống sau: '
-                 'Tính giá trị của biểu thức $A = \\sqrt[3]{27} + \\sqrt[3]{-64} - \\sqrt[3]{8}$. Kết quả và '
-                 'hướng giải nào dưới đây là **đúng**?',
-            'options': ['Thay $x = 2, y = -1$ vào phương trình thứ nhất: $2 \\cdot 2 - (-1) = 4 + 1 = 5$ '
-                        '(thỏa mãn). Thay $x = 2, y = -1$ vào phương trình thứ hai: $2 + 3 \\cdot (-1) = 2 - '
-                        '3 = -1$...',
-                        'Cộng từng vế hai phương trình của hệ, ta được: $5x = 10 \\Rightarrow x = 2$. Thay '
-                        '$x = 2$ vào phương trình $2x + y = 5$, ta có: $2 \\cdot 2 + y = 5 \\Rightarrow y = '
-                        '1$...',
-                        'Gọi số thứ nhất là $x$ và số thứ hai là $y$. Theo đề bài, ta có hệ phương trình: '
-                        '$\\begin{cases} x + y = 59 \\\\ 3y - 2x = 7 \\end{cases} \\Leftrightarrow '
-                        '\\begin{cases} 2x + 2y = 118 \\\\ -2x + 3y = 7 \\end{cases}$...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 10: Căn bậc ba và căn thức bậc ba** để giải bài '
+                 'toán sau: Tính giá trị của biểu thức $A = \\sqrt[3]{27} + \\sqrt[3]{-64} - \\sqrt[3]{8}$. '
+                 'Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Ta có $\\sqrt[3]{27} = 3$; $\\sqrt[3]{-64} = -4$; $\\sqrt[3]{8} = 2$. Do đó $A = 3 '
+                        '- (-4) - 2 = -3$.',
+                        'Ta có $\\sqrt[3]{27} = 3$; $\\sqrt[3]{-64} = -4$; $\\sqrt[3]{8} = 2$. Do đó $A = 3 '
+                        '+ (-4) - 2 = -2$.',
+                        'Ta có $\\sqrt[6]{27} = 3$; $\\sqrt[3]{-64} = -4$; $\\sqrt[3]{8} = 2$. Do đó $A = 3 '
+                        '+ (-4) - 2 = -3$.',
                         'Ta có $\\sqrt[3]{27} = 3$; $\\sqrt[3]{-64} = -4$; $\\sqrt[3]{8} = 2$. Do đó $A = 3 '
                         '+ (-4) - 2 = -3$.'],
             'answer': 3,
@@ -1708,32 +1695,39 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 11: Tỉ số lượng giác của góc nhọn**, công thức hoặc quy '
-                 'tắc nào sau đây biểu diễn đúng **Sin và Côsin**?',
+            'q': 'Trong **Bài 11: Tỉ số lượng giác của góc nhọn**, quy tắc hoặc công thức nào sau đây xác '
+                 'định đúng **Sin và Côsin**?',
             'options': ['$\\sin \\alpha = \\dfrac{\\text{Cạnh đối}}{\\text{Cạnh huyền}}$; $\\cos \\alpha = '
                         '\\dfrac{\\text{Cạnh kề}}{\\text{Cạnh huyền}}$',
-                        '$\\tan \\alpha = \\dfrac{\\text{Cạnh đối}}{\\text{Cạnh kề}}$; $\\cot \\alpha = '
-                        '\\dfrac{\\text{Cạnh kề}}{\\text{Cạnh đối}}$',
-                        '$\\sin \\alpha = \\cos \\beta$; $\\tan \\alpha = \\cot \\beta$',
-                        '$ax + by = c$ ($a^2 + b^2 \\neq 0$)'],
+                        '$\\sin \\alpha = \\dfrac{\\text{Cạnh đối}}{\\text{Cạnh huyền}}$; $\\cos \\alpha = '
+                        '\\dfrac{\\text{Cạnh kề}}{\\text{Cạnh huyền}}$ (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: $\\sin \\alpha = \\dfrac{\\text{Cạnh đối}}{\\text{Cạnh '
+                        'huyền}}$; $\\cos \\alpha = \\dfrac{\\text{Cạnh kề}}{\\text{Cạnh huyền}}$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\sin \\alpha = '
+                        '\\dfrac{\\text{Cạnh đối}}{\\text{Cạnh huyền}}$; $\\cos \\alpha = '
+                        '\\dfrac{\\text{Cạnh kề}}{\\text{Cạnh huyền}}$'],
             'answer': 0,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 11: Tỉ số lượng giác của góc nhọn, **Sin và '
+            'solution': 'Theo kiến thức trọng tâm của Bài 11: Tỉ số lượng giác của góc nhọn, **Sin và '
                         'Côsin** được xác định bởi: $\\sin \\alpha = \\dfrac{\\text{Cạnh đối}}{\\text{Cạnh '
                         'huyền}}$; $\\cos \\alpha = \\dfrac{\\text{Cạnh kề}}{\\text{Cạnh huyền}}$. ($0 < '
                         '\\sin \\alpha, \\cos \\alpha < 1$)'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 11: Tỉ số lượng giác của góc nhọn**, nội dung/biểu thức $\\tan \\alpha = '
-                 '\\dfrac{\\text{Cạnh đối}}{\\text{Cạnh kề}}$; $\\cot \\alpha = \\dfrac{\\text{Cạnh '
-                 'kề}}{\\text{Cạnh đối}}$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Sin và Côsin',
-                        'Tang và Côtang',
-                        'Hai góc phụ nhau ($\\alpha + \\beta = 90^\\circ$)',
-                        'Phương trình bậc nhất hai ẩn'],
-            'answer': 1,
-            'solution': 'Trong Bài 11: Tỉ số lượng giác của góc nhọn, biểu thức/quy tắc $\\tan \\alpha = '
+            'q': 'Khi học **Bài 11: Tỉ số lượng giác của góc nhọn**, biểu thức hoặc quy tắc nào dưới đây '
+                 'biểu diễn đúng **Tang và Côtang**?',
+            'options': ['$\\tan \\alpha = \\dfrac{\\text{Cạnh đối}}{\\text{Cạnh kề}}$; $\\cot \\alpha = '
+                        '\\dfrac{\\text{Cạnh kề}}{\\text{Cạnh đối}}$ (với dấu ngược lại)',
+                        '$\\tan \\alpha = \\dfrac{\\text{Cạnh đối}}{\\text{Cạnh kề}}$; $\\cot \\alpha = '
+                        '\\dfrac{\\text{Cạnh kề}}{\\text{Cạnh đối}}$',
+                        'Đảo ngược vế của quy tắc: $\\tan \\alpha = \\dfrac{\\text{Cạnh đối}}{\\text{Cạnh '
+                        'kề}}$; $\\cot \\alpha = \\dfrac{\\text{Cạnh kề}}{\\text{Cạnh đối}}$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\tan \\alpha = '
                         '\\dfrac{\\text{Cạnh đối}}{\\text{Cạnh kề}}$; $\\cot \\alpha = \\dfrac{\\text{Cạnh '
-                        'kề}}{\\text{Cạnh đối}}$ chính là nội dung của **Tang và Côtang**.'},
+                        'kề}}{\\text{Cạnh đối}}$'],
+            'answer': 1,
+            'solution': 'Trong Bài 11: Tỉ số lượng giác của góc nhọn, **Tang và Côtang** có công thức/quy '
+                        'tắc là: $\\tan \\alpha = \\dfrac{\\text{Cạnh đối}}{\\text{Cạnh kề}}$; $\\cot '
+                        '\\alpha = \\dfrac{\\text{Cạnh kề}}{\\text{Cạnh đối}}$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Cho hai góc nhọn $\\alpha$ và $\\beta$ phụ nhau ($\\alpha + \\beta = 90^\\circ$). Khẳng '
@@ -1749,17 +1743,18 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 11: Tỉ số lượng giác của góc nhọn** (Chương IV: Hệ thức lượng trong tam giác '
-                 'vuông), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của '
-                 'bài?',
-            'options': ['Nhận biết được phương trình bậc nhất hai ẩn $ax + by = c$ ($a \\neq 0$ hoặc $b '
-                        '\\neq 0$) và nghiệm của nó.',
-                        'Nhận biết được hệ hai phương trình bậc nhất hai ẩn và nghiệm của hệ.',
-                        'Biểu diễn được tập nghiệm của phương trình bậc nhất hai ẩn trên mặt phẳng tọa độ.',
+            'q': 'Để nắm vững bản chất của **Bài 11: Tỉ số lượng giác của góc nhọn**, nhận định nào sau đây '
+                 'là **chính xác**?',
+            'options': ['Nhận biết được các tỉ số lượng giác của góc nhọn ($\\sin, \\cos, \\tan, \\cot$) '
+                        'trong tam giác vuông. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Nhận biết được các tỉ số lượng giác của góc nhọn ($\\sin, '
+                        '\\cos, \\tan, \\cot$) trong tam giác vuông.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nhận biết được các tỉ số lượng '
+                        'giác của góc nhọn ($\\sin, \\cos, \\tan, \\cot$) trong tam giác vuông.',
                         'Nhận biết được các tỉ số lượng giác của góc nhọn ($\\sin, \\cos, \\tan, \\cot$) '
                         'trong tam giác vuông.'],
             'answer': 3,
-            'solution': 'Theo yêu cầu cần đạt của Bài 11: Tỉ số lượng giác của góc nhọn: Nhận biết được các '
+            'solution': 'Theo nội dung cốt lõi của Bài 11: Tỉ số lượng giác của góc nhọn: Nhận biết được các '
                         'tỉ số lượng giác của góc nhọn ($\\sin, \\cos, \\tan, \\cot$) trong tam giác vuông.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -1777,45 +1772,49 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 11: Tỉ số lượng giác '
-                 'của góc nhọn**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được các tỉ số lượng '
-                           'giác của góc nhọn ($\\sin, \\cos, \\tan, \\cot$) trong tam giác vuông.',
-                           'Quy tắc/công thức **Sin và Côsin** trong bài được xác định bởi: $\\sin \\alpha = '
-                           '\\dfrac{\\text{Cạnh đối}}{\\text{Cạnh huyền}}$; $\\cos \\alpha = '
-                           '\\dfrac{\\text{Cạnh kề}}{\\text{Cạnh huyền}}$.',
-                           'Trong mọi trường hợp, **Sin và Côsin** luôn được tính bằng công thức $ax + by = '
-                           'c$ ($a^2 + b^2 \\neq 0$) (thuộc Phương trình bậc nhất hai ẩn) mà không cần điều '
-                           'kiện của Bài 11: Tỉ số lượng giác của góc nhọn.',
-                           'Với bài toán minh họa: “Cho tam giác $ABC$ vuông tại $A$ có $AB = 3$ cm, $AC = '
-                           '4$ cm. Tính các tỉ số lượng giác của góc $B$.”, lời giải đúng là: Theo định lí '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 11: Tỉ số lượng giác của '
+                 'góc nhọn**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết được các tỉ số lượng giác của '
+                           'góc nhọn ($\\sin, \\cos, \\tan, \\cot$) trong tam giác vuông.',
+                           'Trong **Bài 11: Tỉ số lượng giác của góc nhọn**, quy tắc/công thức **Sin và '
+                           'Côsin** được viết là: $\\sin \\alpha = \\dfrac{\\text{Cạnh đối}}{\\text{Cạnh '
+                           'huyền}}$; $\\cos \\alpha = \\dfrac{\\text{Cạnh kề}}{\\text{Cạnh huyền}}$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $\\sin \\alpha = \\dfrac{\\text{Cạnh '
+                           'đối}}{\\text{Cạnh huyền}}$; $\\cos \\alpha = \\dfrac{\\text{Cạnh '
+                           'kề}}{\\text{Cạnh huyền}}$ (với dấu ngược lại) thì kết quả của **Sin và Côsin** '
+                           'trong **Bài 11: Tỉ số lượng giác của góc nhọn** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Cho tam giác $ABC$ vuông tại $A$ có $AB = 3$ cm, $AC = 4$ '
+                           'cm. Tính các tỉ số lượng giác của góc $B$.”, kết quả giải đúng là: Theo định lí '
                            'Pythagore: $BC = \\sqrt{AB^2 + AC^2} = \\sqrt{3^2 + 4^2} = 5$ (cm). Ta có: '
                            '$\\sin B = \\dfrac{AC}{BC} = \\dfrac{4}{5}$; $\\cos B = \\dfrac{AB}{BC} = '
                            '\\dfrac{3}{5}$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 11: Tỉ số lượng giác của góc nhọn. b) '
-                        '**Đúng** theo công thức trọng tâm **Sin và Côsin** ($\\sin \\alpha = '
+                        '**Đúng** theo công thức **Sin và Côsin** ($\\sin \\alpha = \\dfrac{\\text{Cạnh '
+                        'đối}}{\\text{Cạnh huyền}}$; $\\cos \\alpha = \\dfrac{\\text{Cạnh kề}}{\\text{Cạnh '
+                        'huyền}}$). c) **Sai** vì công thức đúng của **Sin và Côsin** phải là $\\sin \\alpha '
+                        '= \\dfrac{\\text{Cạnh đối}}{\\text{Cạnh huyền}}$; $\\cos \\alpha = '
+                        '\\dfrac{\\text{Cạnh kề}}{\\text{Cạnh huyền}}$ chứ không phải $\\sin \\alpha = '
                         '\\dfrac{\\text{Cạnh đối}}{\\text{Cạnh huyền}}$; $\\cos \\alpha = '
-                        '\\dfrac{\\text{Cạnh kề}}{\\text{Cạnh huyền}}$). c) **Sai** vì $ax + by = c$ ($a^2 + '
-                        'b^2 \\neq 0$) là công thức của nội dung khác, không phải quy tắc chung của **Sin và '
-                        'Côsin**. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        '\\dfrac{\\text{Cạnh kề}}{\\text{Cạnh huyền}}$ (với dấu ngược lại). d) **Đúng** theo '
+                        'lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 11: Tỉ số lượng giác của góc nhọn** để giải quyết tình huống sau: '
-                 'Cho tam giác $ABC$ vuông tại $A$ có $AB = 3$ cm, $AC = 4$ cm. Tính các tỉ số lượng giác '
-                 'của góc $B$. Kết quả và hướng giải nào dưới đây là **đúng**?',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 11: Tỉ số lượng giác của góc nhọn** để giải bài '
+                 'toán sau: Cho tam giác $ABC$ vuông tại $A$ có $AB = 3$ cm, $AC = 4$ cm. Tính các tỉ số '
+                 'lượng giác của góc $B$. Cách giải và kết quả nào dưới đây là **đúng**?',
             'options': ['Theo định lí Pythagore: $BC = \\sqrt{AB^2 + AC^2} = \\sqrt{3^2 + 4^2} = 5$ (cm). Ta '
                         'có: $\\sin B = \\dfrac{AC}{BC} = \\dfrac{4}{5}$; $\\cos B = \\dfrac{AB}{BC} = '
                         '\\dfrac{3}{5}$...',
-                        'Thay $x = 2, y = -1$ vào phương trình thứ nhất: $2 \\cdot 2 - (-1) = 4 + 1 = 5$ '
-                        '(thỏa mãn). Thay $x = 2, y = -1$ vào phương trình thứ hai: $2 + 3 \\cdot (-1) = 2 - '
-                        '3 = -1$...',
-                        'Cộng từng vế hai phương trình của hệ, ta được: $5x = 10 \\Rightarrow x = 2$. Thay '
-                        '$x = 2$ vào phương trình $2x + y = 5$, ta có: $2 \\cdot 2 + y = 5 \\Rightarrow y = '
-                        '1$...',
-                        'Gọi số thứ nhất là $x$ và số thứ hai là $y$. Theo đề bài, ta có hệ phương trình: '
-                        '$\\begin{cases} x + y = 59 \\\\ 3y - 2x = 7 \\end{cases} \\Leftrightarrow '
-                        '\\begin{cases} 2x + 2y = 118 \\\\ -2x + 3y = 7 \\end{cases}$...'],
+                        'Theo định lí Pythagore: $BC = \\sqrt{AB^2 - AC^2} = \\sqrt{3^2 + 4^2} = 5$ (cm). Ta '
+                        'có: $\\sin B = \\dfrac{AC}{BC} = \\dfrac{4}{5}$; $\\cos B = \\dfrac{AB}{BC} = '
+                        '\\dfrac{3}{5}$...',
+                        'Theo định lí Pythagore: $BC = \\sqrt{AB^2 + AC^2} = \\sqrt{3^2 + 4^2} = 5$ (cm). Ta '
+                        'có: $\\sin B = \\dfrac{BC}{AC} = \\dfrac{4}{5}$; $\\cos B = \\dfrac{AB}{BC} = '
+                        '\\dfrac{3}{5}$...',
+                        'Theo định lí Pythagore: $BC = \\sqrt{AB^4 + AC^2} = \\sqrt{3^2 + 4^2} = 5$ (cm). Ta '
+                        'có: $\\sin B = \\dfrac{AC}{BC} = \\dfrac{4}{5}$; $\\cos B = \\dfrac{AB}{BC} = '
+                        '\\dfrac{3}{5}$...'],
             'answer': 0,
             'solution': 'Lời giải chi tiết theo Bài 11: Tỉ số lượng giác của góc nhọn: Theo định lí '
                         'Pythagore: $BC = \\sqrt{AB^2 + AC^2} = \\sqrt{3^2 + 4^2} = 5$ (cm).\n'
@@ -1840,8 +1839,8 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
                  'vuông.',
   'requirements': ['Thiết lập và vận dụng được các hệ thức giữa cạnh và góc trong tam giác vuông.',
                    'Giải được tam giác vuông và ứng dụng vào đo chiều cao, khoảng cách thực tế.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Tính theo cạnh huyền $a$** ($b = a \\sin B '
-                   '= a \\cos C$; $c = a \\sin C = a \\cos B$) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 12: Một số hệ thức giữa cạnh, góc trong tam giác vuông và '
+                   'ứng dụng** để giải bài tập minh họa và bài toán thực tiễn.'],
   'definition': 'Trong tam giác vuông, mỗi cạnh góc vuông bằng cạnh huyền nhân với sin góc đối hoặc nhân với '
                 'côsin góc kề; mỗi cạnh góc vuông bằng cạnh góc vuông kia nhân với tang góc đối hoặc nhân '
                 'với côtang góc kề.',
@@ -1886,31 +1885,31 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 12: Một số hệ thức giữa cạnh, góc trong tam giác vuông '
-                 'và ứng dụng**, công thức hoặc quy tắc nào sau đây biểu diễn đúng **Tính theo cạnh huyền '
-                 '$a$**?',
-            'options': ['$b = c \\tan B = c \\cot C$; $c = b \\tan C = b \\cot B$',
+            'q': 'Trong **Bài 12: Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng**, quy tắc '
+                 'hoặc công thức nào sau đây xác định đúng **Tính theo cạnh huyền $a$**?',
+            'options': ['$b = a \\sin B = a \\cos C$; $c = a \\sin C = a \\cos B$ (với dấu ngược lại)',
                         '$b = a \\sin B = a \\cos C$; $c = a \\sin C = a \\cos B$',
-                        '$ax + by = c$ ($a^2 + b^2 \\neq 0$)',
-                        '$\\begin{cases} a_1x + b_1y = c_1 \\\\ a_2x + b_2y = c_2 \\end{cases}$'],
+                        'Đảo ngược vế của quy tắc: $b = a \\sin B = a \\cos C$; $c = a \\sin C = a \\cos B$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $b = a \\sin B = a \\cos C$; $c '
+                        '= a \\sin C = a \\cos B$'],
             'answer': 1,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 12: Một số hệ thức giữa cạnh, góc trong tam '
-                        'giác vuông và ứng dụng, **Tính theo cạnh huyền $a$** được xác định bởi: $b = a '
-                        '\\sin B = a \\cos C$; $c = a \\sin C = a \\cos B$. (Cạnh góc vuông = Cạnh huyền '
-                        '$\\times$ sin góc đối (hoặc cos góc kề))'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 12: Một số hệ thức giữa cạnh, góc trong tam giác '
+                        'vuông và ứng dụng, **Tính theo cạnh huyền $a$** được xác định bởi: $b = a \\sin B = '
+                        'a \\cos C$; $c = a \\sin C = a \\cos B$. (Cạnh góc vuông = Cạnh huyền $\\times$ sin '
+                        'góc đối (hoặc cos góc kề))'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 12: Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng**, nội '
-                 'dung/biểu thức $b = c \\tan B = c \\cot C$; $c = b \\tan C = b \\cot B$ là quy tắc hoặc '
-                 'công thức của mục nào sau đây?',
-            'options': ['Tính theo cạnh huyền $a$',
-                        'Phương trình bậc nhất hai ẩn',
-                        'Tính theo cạnh góc vuông kia',
-                        'Hệ hai phương trình bậc nhất hai ẩn'],
+            'q': 'Khi học **Bài 12: Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng**, biểu '
+                 'thức hoặc quy tắc nào dưới đây biểu diễn đúng **Tính theo cạnh góc vuông kia**?',
+            'options': ['$b = c \\tan B = c \\cot C$; $c = b \\tan C = b \\cot B$ (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: $b = c \\tan B = c \\cot C$; $c = b \\tan C = b \\cot B$',
+                        '$b = c \\tan B = c \\cot C$; $c = b \\tan C = b \\cot B$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $b = c \\tan B = c \\cot C$; $c '
+                        '= b \\tan C = b \\cot B$'],
             'answer': 2,
-            'solution': 'Trong Bài 12: Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng, biểu '
-                        'thức/quy tắc $b = c \\tan B = c \\cot C$; $c = b \\tan C = b \\cot B$ chính là nội '
-                        'dung của **Tính theo cạnh góc vuông kia**.'},
+            'solution': 'Trong Bài 12: Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng, '
+                        '**Tính theo cạnh góc vuông kia** có công thức/quy tắc là: $b = c \\tan B = c \\cot '
+                        'C$; $c = b \\tan C = b \\cot B$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Tia nắng mặt trời tạo với mặt đất một góc $60^\\circ$ và bóng của một cột cờ trên mặt đất '
@@ -1922,18 +1921,19 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 12: Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng** (Chương '
-                 'IV: Hệ thức lượng trong tam giác vuông), khẳng định nào sau đây phản ánh **đúng** yêu cầu '
-                 'cần đạt và bản chất kiến thức của bài?',
+            'q': 'Để nắm vững bản chất của **Bài 12: Một số hệ thức giữa cạnh, góc trong tam giác vuông và '
+                 'ứng dụng**, nhận định nào sau đây là **chính xác**?',
             'options': ['Thiết lập và vận dụng được các hệ thức giữa cạnh và góc trong tam giác vuông.',
-                        'Nhận biết được phương trình bậc nhất hai ẩn $ax + by = c$ ($a \\neq 0$ hoặc $b '
-                        '\\neq 0$) và nghiệm của nó.',
-                        'Nhận biết được hệ hai phương trình bậc nhất hai ẩn và nghiệm của hệ.',
-                        'Biểu diễn được tập nghiệm của phương trình bậc nhất hai ẩn trên mặt phẳng tọa độ.'],
+                        'Thiết lập và vận dụng được các hệ thức giữa cạnh và góc trong tam giác vuông. (với '
+                        'dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Thiết lập và vận dụng được các hệ thức giữa cạnh và góc '
+                        'trong tam giác vuông.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Thiết lập và vận dụng được các '
+                        'hệ thức giữa cạnh và góc trong tam giác vuông.'],
             'answer': 0,
-            'solution': 'Theo yêu cầu cần đạt của Bài 12: Một số hệ thức giữa cạnh, góc trong tam giác vuông '
-                        'và ứng dụng: Thiết lập và vận dụng được các hệ thức giữa cạnh và góc trong tam giác '
-                        'vuông.'},
+            'solution': 'Theo nội dung cốt lõi của Bài 12: Một số hệ thức giữa cạnh, góc trong tam giác '
+                        'vuông và ứng dụng: Thiết lập và vận dụng được các hệ thức giữa cạnh và góc trong '
+                        'tam giác vuông.'},
            {'level': 'hieu',
             'type': 'tf4',
             'q': 'Cho tam giác $ABC$ vuông tại $A$ có cạnh huyền $BC = 12$ cm và $\\widehat{B} = 30^\\circ$.',
@@ -1950,45 +1950,44 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 12: Một số hệ thức giữa '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 12: Một số hệ thức giữa '
                  'cạnh, góc trong tam giác vuông và ứng dụng**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Thiết lập và vận dụng được các hệ '
-                           'thức giữa cạnh và góc trong tam giác vuông.',
-                           'Quy tắc/công thức **Tính theo cạnh huyền $a$** trong bài được xác định bởi: $b = '
-                           'a \\sin B = a \\cos C$; $c = a \\sin C = a \\cos B$.',
-                           'Trong mọi trường hợp, **Tính theo cạnh huyền $a$** luôn được tính bằng công thức '
-                           '$ax + by = c$ ($a^2 + b^2 \\neq 0$) (thuộc Phương trình bậc nhất hai ẩn) mà '
-                           'không cần điều kiện của Bài 12: Một số hệ thức giữa cạnh, góc trong tam giác '
-                           'vuông và ứng dụng.',
-                           'Với bài toán minh họa: “Một chiếc thang dài $4$ m đặt dựa vào tường sao cho góc '
-                           'giữa thang và mặt đất bằng $60^\\circ$. Tính khoảng cách từ chân thang đến chân '
-                           'tường...”, lời giải đúng là: Khoảng cách từ chân thang đến chân tường là cạnh '
-                           'góc vuông kề với góc $60^\\circ$: $d = 4 \\cdot \\cos 60^\\circ = 4 \\cdot '
-                           '\\dfrac{1}{2} = 2$ (m)...'],
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Thiết lập và vận dụng được các hệ thức '
+                           'giữa cạnh và góc trong tam giác vuông.',
+                           'Trong **Bài 12: Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng '
+                           'dụng**, quy tắc/công thức **Tính theo cạnh huyền $a$** được viết là: $b = a '
+                           '\\sin B = a \\cos C$; $c = a \\sin C = a \\cos B$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $b = a \\sin B = a \\cos C$; $c = a \\sin C '
+                           '= a \\cos B$ (với dấu ngược lại) thì kết quả của **Tính theo cạnh huyền $a$** '
+                           'trong **Bài 12: Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng dụng** '
+                           'vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Một chiếc thang dài $4$ m đặt dựa vào tường sao cho góc giữa '
+                           'thang và mặt đất bằng $60^\\circ$. Tính khoảng cách từ chân thang đến chân...”, '
+                           'kết quả giải đúng là: Khoảng cách từ chân thang đến chân tường là cạnh góc vuông '
+                           'kề với góc $60^\\circ$: $d = 4 \\cdot \\cos 60^\\circ = 4 \\cdot \\dfrac{1}{2} = '
+                           '2$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 12: Một số hệ thức giữa cạnh, góc trong '
-                        'tam giác vuông và ứng dụng. b) **Đúng** theo công thức trọng tâm **Tính theo cạnh '
-                        'huyền $a$** ($b = a \\sin B = a \\cos C$; $c = a \\sin C = a \\cos B$). c) **Sai** '
-                        'vì $ax + by = c$ ($a^2 + b^2 \\neq 0$) là công thức của nội dung khác, không phải '
-                        'quy tắc chung của **Tính theo cạnh huyền $a$**. d) **Đúng** theo lời giải ví dụ '
-                        'minh họa trong bài học.'},
+                        'tam giác vuông và ứng dụng. b) **Đúng** theo công thức **Tính theo cạnh huyền $a$** '
+                        '($b = a \\sin B = a \\cos C$; $c = a \\sin C = a \\cos B$). c) **Sai** vì công thức '
+                        'đúng của **Tính theo cạnh huyền $a$** phải là $b = a \\sin B = a \\cos C$; $c = a '
+                        '\\sin C = a \\cos B$ chứ không phải $b = a \\sin B = a \\cos C$; $c = a \\sin C = a '
+                        '\\cos B$ (với dấu ngược lại). d) **Đúng** theo lời giải ví dụ minh họa trong bài '
+                        'học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 12: Một số hệ thức giữa cạnh, góc trong tam giác vuông và ứng '
-                 'dụng** để giải quyết tình huống sau: Một chiếc thang dài $4$ m đặt dựa vào tường sao cho '
-                 'góc giữa thang và mặt đất bằng $60^\\circ$. Tính khoảng cách từ chân thang đến chân tường. '
-                 'Kết quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Thay $x = 2, y = -1$ vào phương trình thứ nhất: $2 \\cdot 2 - (-1) = 4 + 1 = 5$ '
-                        '(thỏa mãn). Thay $x = 2, y = -1$ vào phương trình thứ hai: $2 + 3 \\cdot (-1) = 2 - '
-                        '3 = -1$...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 12: Một số hệ thức giữa cạnh, góc trong tam giác '
+                 'vuông và ứng dụng** để giải bài toán sau: Một chiếc thang dài $4$ m đặt dựa vào tường sao '
+                 'cho góc giữa thang và mặt đất bằng $60^\\circ$. Tính khoảng cách từ chân thang đến chân '
+                 'tường. Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Khoảng cách từ chân thang đến chân tường là cạnh góc vuông kề với góc $60^\\circ$: '
+                        '$d = 4 : \\cos 60^\\circ = 4 \\cdot \\dfrac{1}{2} = 2$ (m).',
                         'Khoảng cách từ chân thang đến chân tường là cạnh góc vuông kề với góc $60^\\circ$: '
                         '$d = 4 \\cdot \\cos 60^\\circ = 4 \\cdot \\dfrac{1}{2} = 2$ (m).',
-                        'Cộng từng vế hai phương trình của hệ, ta được: $5x = 10 \\Rightarrow x = 2$. Thay '
-                        '$x = 2$ vào phương trình $2x + y = 5$, ta có: $2 \\cdot 2 + y = 5 \\Rightarrow y = '
-                        '1$...',
-                        'Gọi số thứ nhất là $x$ và số thứ hai là $y$. Theo đề bài, ta có hệ phương trình: '
-                        '$\\begin{cases} x + y = 59 \\\\ 3y - 2x = 7 \\end{cases} \\Leftrightarrow '
-                        '\\begin{cases} 2x + 2y = 118 \\\\ -2x + 3y = 7 \\end{cases}$...'],
+                        'Khoảng cách từ chân thang đến chân tường là cạnh góc vuông kề với góc $60^\\circ$: '
+                        '$d = 4 \\cdot \\cos 60^\\circ = 4 \\cdot \\dfrac{2}{1} = 2$ (m).',
+                        'Khoảng cách từ chân thang đến chân tường là cạnh góc vuông kề với góc $62^\\circ$: '
+                        '$d = 4 \\cdot \\cos 60^\\circ = 4 \\cdot \\dfrac{1}{2} = 2$ (m).'],
             'answer': 1,
             'solution': 'Lời giải chi tiết theo Bài 12: Một số hệ thức giữa cạnh, góc trong tam giác vuông '
                         'và ứng dụng: Khoảng cách từ chân thang đến chân tường là cạnh góc vuông kề với góc '
@@ -2012,8 +2011,8 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
   'requirements': ['Nhận biết được đường tròn $(O; R)$ và xác định được vị trí tương đối của một điểm đối '
                    'với đường tròn.',
                    'Nhận biết được tâm đối xứng và trục đối xứng của đường tròn.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Điểm thuộc đường tròn** ($OM = R$) vào giải '
-                   'bài tập.'],
+                   'Vận dụng kiến thức của **Bài 13: Mở đầu về đường tròn** để giải bài tập minh họa và bài '
+                   'toán thực tiễn.'],
   'definition': 'Đường tròn tâm $O$ bán kính $R$ ($R > 0$), kí hiệu là $(O; R)$, là hình gồm tất cả các điểm '
                 'cách điểm $O$ một khoảng bằng $R$.',
   'theory': '1. Cho đường tròn $(O; R)$ và điểm $M$:\n'
@@ -2057,26 +2056,27 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 13: Mở đầu về đường tròn**, công thức hoặc quy tắc nào '
-                 'sau đây biểu diễn đúng **Điểm thuộc đường tròn**?',
-            'options': ['$OM < R$ (trong); $OM > R$ (ngoài)',
-                        '$ax + by = c$ ($a^2 + b^2 \\neq 0$)',
+            'q': 'Trong **Bài 13: Mở đầu về đường tròn**, quy tắc hoặc công thức nào sau đây xác định đúng '
+                 '**Điểm thuộc đường tròn**?',
+            'options': ['$OM = R$ (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: $OM = R$',
                         '$OM = R$',
-                        '$\\begin{cases} a_1x + b_1y = c_1 \\\\ a_2x + b_2y = c_2 \\end{cases}$'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $OM = R$'],
             'answer': 2,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 13: Mở đầu về đường tròn, **Điểm thuộc đường '
+            'solution': 'Theo kiến thức trọng tâm của Bài 13: Mở đầu về đường tròn, **Điểm thuộc đường '
                         'tròn** được xác định bởi: $OM = R$. ($M \\in (O; R)$)'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 13: Mở đầu về đường tròn**, nội dung/biểu thức $OM < R$ (trong); $OM > R$ '
-                 '(ngoài) là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Điểm thuộc đường tròn',
-                        'Phương trình bậc nhất hai ẩn',
-                        'Hệ hai phương trình bậc nhất hai ẩn',
-                        'Điểm nằm trong và ngoài'],
+            'q': 'Khi học **Bài 13: Mở đầu về đường tròn**, biểu thức hoặc quy tắc nào dưới đây biểu diễn '
+                 'đúng **Điểm nằm trong và ngoài**?',
+            'options': ['$OM < R$ (trong); $OM < R$ (ngoài)',
+                        'Đảo ngược vế của quy tắc: $OM < R$ (trong); $OM > R$ (ngoài)',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $OM < R$ (trong); $OM > R$ '
+                        '(ngoài)',
+                        '$OM < R$ (trong); $OM > R$ (ngoài)'],
             'answer': 3,
-            'solution': 'Trong Bài 13: Mở đầu về đường tròn, biểu thức/quy tắc $OM < R$ (trong); $OM > R$ '
-                        '(ngoài) chính là nội dung của **Điểm nằm trong và ngoài**.'},
+            'solution': 'Trong Bài 13: Mở đầu về đường tròn, **Điểm nằm trong và ngoài** có công thức/quy '
+                        'tắc là: $OM < R$ (trong); $OM > R$ (ngoài).'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Cho tam giác $ABC$ vuông tại $A$ có cạnh huyền $BC = 10$ cm. Bán kính đường tròn đi qua ba '
@@ -2089,16 +2089,18 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 13: Mở đầu về đường tròn** (Chương V: Đường tròn), khẳng định nào sau đây '
-                 'phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Nhận biết được phương trình bậc nhất hai ẩn $ax + by = c$ ($a \\neq 0$ hoặc $b '
-                        '\\neq 0$) và nghiệm của nó.',
+            'q': 'Để nắm vững bản chất của **Bài 13: Mở đầu về đường tròn**, nhận định nào sau đây là '
+                 '**chính xác**?',
+            'options': ['Nhận biết được đường tròn $(O; R)$ và xác định được vị trí tương đối của một điểm '
+                        'đối với đường tròn. (với dấu ngược lại)',
                         'Nhận biết được đường tròn $(O; R)$ và xác định được vị trí tương đối của một điểm '
                         'đối với đường tròn.',
-                        'Nhận biết được hệ hai phương trình bậc nhất hai ẩn và nghiệm của hệ.',
-                        'Biểu diễn được tập nghiệm của phương trình bậc nhất hai ẩn trên mặt phẳng tọa độ.'],
+                        'Đảo ngược vế của quy tắc: Nhận biết được đường tròn $(O; R)$ và xác định được vị '
+                        'trí tương đối của một điểm đối với đường tròn.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nhận biết được đường tròn $(O; '
+                        'R)$ và xác định được vị trí tương đối của một điểm đối với đường tròn.'],
             'answer': 1,
-            'solution': 'Theo yêu cầu cần đạt của Bài 13: Mở đầu về đường tròn: Nhận biết được đường tròn '
+            'solution': 'Theo nội dung cốt lõi của Bài 13: Mở đầu về đường tròn: Nhận biết được đường tròn '
                         '$(O; R)$ và xác định được vị trí tương đối của một điểm đối với đường tròn.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -2116,44 +2118,42 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 13: Mở đầu về đường '
-                 'tròn**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được đường tròn $(O; R)$ '
-                           'và xác định được vị trí tương đối của một điểm đối với đường tròn.',
-                           'Quy tắc/công thức **Điểm thuộc đường tròn** trong bài được xác định bởi: $OM = '
-                           'R$.',
-                           'Trong mọi trường hợp, **Điểm thuộc đường tròn** luôn được tính bằng công thức '
-                           '$ax + by = c$ ($a^2 + b^2 \\neq 0$) (thuộc Phương trình bậc nhất hai ẩn) mà '
-                           'không cần điều kiện của Bài 13: Mở đầu về đường tròn.',
-                           'Với bài toán minh họa: “Cho hình chữ nhật $ABCD$ có $AB = 6$ cm, $BC = 8$ cm. '
-                           'Chứng minh bốn điểm $A, B, C, D$ cùng thuộc một đường tròn và tính bán kính '
-                           'đường tròn...”, lời giải đúng là: Gọi $O$ là giao điểm hai đường chéo $AC$ và '
-                           '$BD$. Vì $ABCD$ là hình chữ nhật nên $OA = OB = OC = OD = \\dfrac{AC}{2}$. Theo '
-                           'định lí Pythagore...'],
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 13: Mở đầu về đường tròn**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết được đường tròn $(O; R)$ và '
+                           'xác định được vị trí tương đối của một điểm đối với đường tròn.',
+                           'Trong **Bài 13: Mở đầu về đường tròn**, quy tắc/công thức **Điểm thuộc đường '
+                           'tròn** được viết là: $OM = R$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $OM = R$ (với dấu ngược lại) thì kết quả của '
+                           '**Điểm thuộc đường tròn** trong **Bài 13: Mở đầu về đường tròn** vẫn không thay '
+                           'đổi.',
+                           'Xét ví dụ của bài: “Cho hình chữ nhật $ABCD$ có $AB = 6$ cm, $BC = 8$ cm. Chứng '
+                           'minh bốn điểm $A, B, C, D$ cùng thuộc một đường tròn và tính bán kính đường...”, '
+                           'kết quả giải đúng là: Gọi $O$ là giao điểm hai đường chéo $AC$ và $BD$. Vì '
+                           '$ABCD$ là hình chữ nhật nên $OA = OB = OC = OD = \\dfrac{AC}{2}$. Theo định lí '
+                           'Pyth...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 13: Mở đầu về đường tròn. b) **Đúng** theo '
-                        'công thức trọng tâm **Điểm thuộc đường tròn** ($OM = R$). c) **Sai** vì $ax + by = '
-                        'c$ ($a^2 + b^2 \\neq 0$) là công thức của nội dung khác, không phải quy tắc chung '
-                        'của **Điểm thuộc đường tròn**. d) **Đúng** theo lời giải ví dụ minh họa trong bài '
-                        'học.'},
+                        'công thức **Điểm thuộc đường tròn** ($OM = R$). c) **Sai** vì công thức đúng của '
+                        '**Điểm thuộc đường tròn** phải là $OM = R$ chứ không phải $OM = R$ (với dấu ngược '
+                        'lại). d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 13: Mở đầu về đường tròn** để giải quyết tình huống sau: Cho hình '
-                 'chữ nhật $ABCD$ có $AB = 6$ cm, $BC = 8$ cm. Chứng minh bốn điểm $A, B, C, D$ cùng thuộc '
-                 'một đường tròn và tính bán kính đường tròn đó. Kết quả và hướng giải nào dưới đây là '
-                 '**đúng**?',
-            'options': ['Thay $x = 2, y = -1$ vào phương trình thứ nhất: $2 \\cdot 2 - (-1) = 4 + 1 = 5$ '
-                        '(thỏa mãn). Thay $x = 2, y = -1$ vào phương trình thứ hai: $2 + 3 \\cdot (-1) = 2 - '
-                        '3 = -1$...',
-                        'Cộng từng vế hai phương trình của hệ, ta được: $5x = 10 \\Rightarrow x = 2$. Thay '
-                        '$x = 2$ vào phương trình $2x + y = 5$, ta có: $2 \\cdot 2 + y = 5 \\Rightarrow y = '
-                        '1$...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 13: Mở đầu về đường tròn** để giải bài toán sau: '
+                 'Cho hình chữ nhật $ABCD$ có $AB = 6$ cm, $BC = 8$ cm. Chứng minh bốn điểm $A, B, C, D$ '
+                 'cùng thuộc một đường tròn và tính bán kính đường tròn đó. Cách giải và kết quả nào dưới '
+                 'đây là **đúng**?',
+            'options': ['Gọi $O$ là giao điểm hai đường chéo $AC$ và $BD$. Vì $ABCD$ là hình chữ nhật nên '
+                        '$OA = OB = OC = OD = \\dfrac{AC}{2}$. Theo định lí Pythagore: $AC = \\sqrt{AB^2 - '
+                        'BC^2} = \\sqrt{6^2 + 8^2} = 10$...',
+                        'Gọi $O$ là giao điểm hai đường chéo $AC$ và $BD$. Vì $ABCD$ là hình chữ nhật nên '
+                        '$OA = OB = OC = OD = \\dfrac{2}{AC}$. Theo định lí Pythagore: $AC = \\sqrt{AB^2 + '
+                        'BC^2} = \\sqrt{6^2 + 8^2} = 10$...',
                         'Gọi $O$ là giao điểm hai đường chéo $AC$ và $BD$. Vì $ABCD$ là hình chữ nhật nên '
                         '$OA = OB = OC = OD = \\dfrac{AC}{2}$. Theo định lí Pythagore: $AC = \\sqrt{AB^2 + '
                         'BC^2} = \\sqrt{6^2 + 8^2} = 10$...',
-                        'Gọi số thứ nhất là $x$ và số thứ hai là $y$. Theo đề bài, ta có hệ phương trình: '
-                        '$\\begin{cases} x + y = 59 \\\\ 3y - 2x = 7 \\end{cases} \\Leftrightarrow '
-                        '\\begin{cases} 2x + 2y = 118 \\\\ -2x + 3y = 7 \\end{cases}$...'],
+                        'Gọi $O$ là giao điểm hai đường chéo $AC$ và $BD$. Vì $ABCD$ là hình chữ nhật nên '
+                        '$OA = OB = OC = OD = \\dfrac{AC}{4}$. Theo định lí Pythagore: $AC = \\sqrt{AB^2 + '
+                        'BC^2} = \\sqrt{6^2 + 8^2} = 10$...'],
             'answer': 2,
             'solution': 'Lời giải chi tiết theo Bài 13: Mở đầu về đường tròn: Gọi $O$ là giao điểm hai đường '
                         'chéo $AC$ và $BD$. Vì $ABCD$ là hình chữ nhật nên $OA = OB = OC = OD = '
@@ -2178,8 +2178,8 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
   'description': 'Nhận biết dây, đường kính, góc ở tâm, số đo cung và mối liên hệ giữa đường kính và dây.',
   'requirements': ['So sánh được độ dài của đường kính và dây của đường tròn.',
                    'Nhận biết được góc ở tâm, cung tròn và cách tính số đo của cung tròn.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Bất đẳng thức dây cung** ($AB \\le 2R$) vào '
-                   'giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 14: Cung và dây của một đường tròn** để giải bài tập minh '
+                   'họa và bài toán thực tiễn.'],
   'definition': 'Đoạn thẳng nối hai điểm trên đường tròn gọi là dây (dây cung). Dây đi qua tâm là đường '
                 'kính. Góc ở tâm là góc có đỉnh trùng với tâm của đường tròn.',
   'theory': '1. Trong một đường tròn, đường kính là dây lớn nhất: Nếu $AB$ là một dây bất kì của $(O; R)$ '
@@ -2226,28 +2226,27 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 14: Cung và dây của một đường tròn**, công thức hoặc quy '
-                 'tắc nào sau đây biểu diễn đúng **Bất đẳng thức dây cung**?',
-            'options': ['$OI \\perp AB \\Rightarrow IA = IB = \\dfrac{AB}{2}$',
-                        '$\\text{sđ}\\overset{\\frown}{AB}_{\\text{nhỏ}} = \\widehat{AOB}$',
-                        '$ax + by = c$ ($a^2 + b^2 \\neq 0$)',
+            'q': 'Trong **Bài 14: Cung và dây của một đường tròn**, quy tắc hoặc công thức nào sau đây xác '
+                 'định đúng **Bất đẳng thức dây cung**?',
+            'options': ['$AB \\ge 2R$',
+                        'Đảo ngược vế của quy tắc: $AB \\le 2R$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $AB \\le 2R$',
                         '$AB \\le 2R$'],
             'answer': 3,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 14: Cung và dây của một đường tròn, **Bất '
-                        'đẳng thức dây cung** được xác định bởi: $AB \\le 2R$. (Đường kính là dây lớn nhất '
-                        'của đường tròn)'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 14: Cung và dây của một đường tròn, **Bất đẳng '
+                        'thức dây cung** được xác định bởi: $AB \\le 2R$. (Đường kính là dây lớn nhất của '
+                        'đường tròn)'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 14: Cung và dây của một đường tròn**, nội dung/biểu thức $OI \\perp AB '
-                 '\\Rightarrow IA = IB = \\dfrac{AB}{2}$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Đường kính vuông góc với dây',
-                        'Bất đẳng thức dây cung',
-                        'Số đo cung',
-                        'Phương trình bậc nhất hai ẩn'],
+            'q': 'Khi học **Bài 14: Cung và dây của một đường tròn**, biểu thức hoặc quy tắc nào dưới đây '
+                 'biểu diễn đúng **Đường kính vuông góc với dây**?',
+            'options': ['$OI \\perp AB \\Rightarrow IA = IB = \\dfrac{AB}{2}$',
+                        '$OI \\perp AB \\Rightarrow IA = IB = \\dfrac{AB}{3}$',
+                        '$OI \\perp AB \\Rightarrow IA = IB = \\dfrac{2}{AB}$',
+                        '$OI \\perp AB \\Rightarrow IA = IB = \\dfrac{AB}{4}$'],
             'answer': 0,
-            'solution': 'Trong Bài 14: Cung và dây của một đường tròn, biểu thức/quy tắc $OI \\perp AB '
-                        '\\Rightarrow IA = IB = \\dfrac{AB}{2}$ chính là nội dung của **Đường kính vuông góc '
-                        'với dây**.'},
+            'solution': 'Trong Bài 14: Cung và dây của một đường tròn, **Đường kính vuông góc với dây** có '
+                        'công thức/quy tắc là: $OI \\perp AB \\Rightarrow IA = IB = \\dfrac{AB}{2}$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Cho đường tròn $(O; 5\\text{ cm})$, khoảng cách từ tâm $O$ đến dây $AB$ bằng $3$ cm. Độ '
@@ -2260,15 +2259,15 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 14: Cung và dây của một đường tròn** (Chương V: Đường tròn), khẳng định nào '
-                 'sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Nhận biết được phương trình bậc nhất hai ẩn $ax + by = c$ ($a \\neq 0$ hoặc $b '
-                        '\\neq 0$) và nghiệm của nó.',
-                        'Nhận biết được hệ hai phương trình bậc nhất hai ẩn và nghiệm của hệ.',
+            'q': 'Để nắm vững bản chất của **Bài 14: Cung và dây của một đường tròn**, nhận định nào sau đây '
+                 'là **chính xác**?',
+            'options': ['So sánh được độ dài của đường kính và dây của đường tròn. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: So sánh được độ dài của đường kính và dây của đường tròn.',
                         'So sánh được độ dài của đường kính và dây của đường tròn.',
-                        'Biểu diễn được tập nghiệm của phương trình bậc nhất hai ẩn trên mặt phẳng tọa độ.'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của So sánh được độ dài của đường '
+                        'kính và dây của đường tròn.'],
             'answer': 2,
-            'solution': 'Theo yêu cầu cần đạt của Bài 14: Cung và dây của một đường tròn: So sánh được độ '
+            'solution': 'Theo nội dung cốt lõi của Bài 14: Cung và dây của một đường tròn: So sánh được độ '
                         'dài của đường kính và dây của đường tròn.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -2286,42 +2285,36 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 14: Cung và dây của một '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 14: Cung và dây của một '
                  'đường tròn**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: So sánh được độ dài của đường kính '
-                           'và dây của đường tròn.',
-                           'Quy tắc/công thức **Bất đẳng thức dây cung** trong bài được xác định bởi: $AB '
-                           '\\le 2R$.',
-                           'Trong mọi trường hợp, **Bất đẳng thức dây cung** luôn được tính bằng công thức '
-                           '$ax + by = c$ ($a^2 + b^2 \\neq 0$) (thuộc Phương trình bậc nhất hai ẩn) mà '
-                           'không cần điều kiện của Bài 14: Cung và dây của một đường tròn.',
-                           'Với bài toán minh họa: “Cho đường tròn $(O; 13\\text{ cm})$ và dây $AB = 24$ cm. '
-                           'Tính khoảng cách từ tâm $O$ đến dây $AB$.”, lời giải đúng là: Kẻ $OH \\perp AB$ '
-                           'tại $H$, khi đó $H$ là trung điểm của $AB$ nên $AH = \\dfrac{AB}{2} = 12$ (cm). '
-                           'Áp dụng định lí Pythagore trong tam giác vuô...'],
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: So sánh được độ dài của đường kính và '
+                           'dây của đường tròn.',
+                           'Trong **Bài 14: Cung và dây của một đường tròn**, quy tắc/công thức **Bất đẳng '
+                           'thức dây cung** được viết là: $AB \\le 2R$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $AB \\ge 2R$ thì kết quả của **Bất đẳng thức '
+                           'dây cung** trong **Bài 14: Cung và dây của một đường tròn** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Cho đường tròn $(O; 13\\text{ cm})$ và dây $AB = 24$ cm. '
+                           'Tính khoảng cách từ tâm $O$ đến dây $AB$.”, kết quả giải đúng là: Kẻ $OH \\perp '
+                           'AB$ tại $H$, khi đó $H$ là trung điểm của $AB$ nên $AH = \\dfrac{AB}{2} = 12$ '
+                           '(cm). Áp dụng định lí Pythagore trong tam giá...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 14: Cung và dây của một đường tròn. b) '
-                        '**Đúng** theo công thức trọng tâm **Bất đẳng thức dây cung** ($AB \\le 2R$). c) '
-                        '**Sai** vì $ax + by = c$ ($a^2 + b^2 \\neq 0$) là công thức của nội dung khác, '
-                        'không phải quy tắc chung của **Bất đẳng thức dây cung**. d) **Đúng** theo lời giải '
-                        'ví dụ minh họa trong bài học.'},
+                        '**Đúng** theo công thức **Bất đẳng thức dây cung** ($AB \\le 2R$). c) **Sai** vì '
+                        'công thức đúng của **Bất đẳng thức dây cung** phải là $AB \\le 2R$ chứ không phải '
+                        '$AB \\ge 2R$. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 14: Cung và dây của một đường tròn** để giải quyết tình huống '
-                 'sau: Cho đường tròn $(O; 13\\text{ cm})$ và dây $AB = 24$ cm. Tính khoảng cách từ tâm $O$ '
-                 'đến dây $AB$. Kết quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Thay $x = 2, y = -1$ vào phương trình thứ nhất: $2 \\cdot 2 - (-1) = 4 + 1 = 5$ '
-                        '(thỏa mãn). Thay $x = 2, y = -1$ vào phương trình thứ hai: $2 + 3 \\cdot (-1) = 2 - '
-                        '3 = -1$...',
-                        'Cộng từng vế hai phương trình của hệ, ta được: $5x = 10 \\Rightarrow x = 2$. Thay '
-                        '$x = 2$ vào phương trình $2x + y = 5$, ta có: $2 \\cdot 2 + y = 5 \\Rightarrow y = '
-                        '1$...',
-                        'Gọi số thứ nhất là $x$ và số thứ hai là $y$. Theo đề bài, ta có hệ phương trình: '
-                        '$\\begin{cases} x + y = 59 \\\\ 3y - 2x = 7 \\end{cases} \\Leftrightarrow '
-                        '\\begin{cases} 2x + 2y = 118 \\\\ -2x + 3y = 7 \\end{cases}$...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 14: Cung và dây của một đường tròn** để giải bài '
+                 'toán sau: Cho đường tròn $(O; 13\\text{ cm})$ và dây $AB = 24$ cm. Tính khoảng cách từ tâm '
+                 '$O$ đến dây $AB$. Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Kẻ $OH \\perp AB$ tại $H$, khi đó $H$ là trung điểm của $AB$ nên $AH = '
+                        '\\dfrac{AB}{3} = 12$ (cm). Áp dụng định lí Pythagore trong tam giác vuông $OAH$...',
                         'Kẻ $OH \\perp AB$ tại $H$, khi đó $H$ là trung điểm của $AB$ nên $AH = '
-                        '\\dfrac{AB}{2} = 12$ (cm). Áp dụng định lí Pythagore trong tam giác vuông $OAH$: '
-                        '$OH = \\sqrt{OA^2 - AH^2} = \\sqrt{13^2 - 12^2} = 5$...'],
+                        '\\dfrac{2}{AB} = 12$ (cm). Áp dụng định lí Pythagore trong tam giác vuông $OAH$...',
+                        'Kẻ $OH \\perp AB$ tại $H$, khi đó $H$ là trung điểm của $AB$ nên $AH = '
+                        '\\dfrac{AB}{4} = 12$ (cm). Áp dụng định lí Pythagore trong tam giác vuông $OAH$...',
+                        'Kẻ $OH \\perp AB$ tại $H$, khi đó $H$ là trung điểm của $AB$ nên $AH = '
+                        '\\dfrac{AB}{2} = 12$ (cm). Áp dụng định lí Pythagore trong tam giác vuông $OAH$...'],
             'answer': 3,
             'solution': 'Lời giải chi tiết theo Bài 14: Cung và dây của một đường tròn: Kẻ $OH \\perp AB$ '
                         'tại $H$, khi đó $H$ là trung điểm của $AB$ nên $AH = \\dfrac{AB}{2} = 12$ (cm).\n'
@@ -2344,8 +2337,8 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
   'description': 'Tính độ dài cung tròn, diện tích hình quạt tròn và diện tích hình vành khuyên.',
   'requirements': ['Tính được độ dài cung tròn có số đo $n^\\circ$.',
                    'Tính được diện tích hình quạt tròn và diện tích hình vành khuyên.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Độ dài cung $n^\\circ$** ($l = \\dfrac{\\pi '
-                   'R n}{180}$) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 15: Độ dài của cung tròn. Diện tích hình quạt tròn và hình '
+                   'vành khuyên** để giải bài tập minh họa và bài toán thực tiễn.'],
   'definition': 'Hình quạt tròn là phần hình tròn giới hạn bởi một cung tròn và hai bán kính đi qua hai mút '
                 'của cung đó. Hình vành khuyên là phần nằm giữa hai đường tròn đồng tâm.',
   'theory': '1. Trên đường tròn bán kính $R$, độ dài $l$ của một cung $n^\\circ$ được tính theo công thức $l '
@@ -2395,30 +2388,28 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 15: Độ dài của cung tròn. Diện tích hình quạt tròn và '
-                 'hình vành khuyên**, công thức hoặc quy tắc nào sau đây biểu diễn đúng **Độ dài cung '
-                 '$n^\\circ$**?',
+            'q': 'Trong **Bài 15: Độ dài của cung tròn. Diện tích hình quạt tròn và hình vành khuyên**, quy '
+                 'tắc hoặc công thức nào sau đây xác định đúng **Độ dài cung $n^\\circ$**?',
             'options': ['$l = \\dfrac{\\pi R n}{180}$',
-                        '$S_q = \\dfrac{\\pi R^2 n}{360} = \\dfrac{lR}{2}$',
-                        '$S_v = \\pi(R^2 - r^2)$ ($R > r$)',
-                        '$ax + by = c$ ($a^2 + b^2 \\neq 0$)'],
+                        '$l = \\dfrac{\\pi R n}{190}$',
+                        '$l = \\dfrac{180}{\\pi R n}$',
+                        '$l = \\dfrac{\\pi R n}{182}$'],
             'answer': 0,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 15: Độ dài của cung tròn. Diện tích hình quạt '
-                        'tròn và hình vành khuyên, **Độ dài cung $n^\\circ$** được xác định bởi: $l = '
+            'solution': 'Theo kiến thức trọng tâm của Bài 15: Độ dài của cung tròn. Diện tích hình quạt tròn '
+                        'và hình vành khuyên, **Độ dài cung $n^\\circ$** được xác định bởi: $l = '
                         '\\dfrac{\\pi R n}{180}$. (Chu vi đường tròn: $C = 2\\pi R$)'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 15: Độ dài của cung tròn. Diện tích hình quạt tròn và hình vành khuyên**, nội '
-                 'dung/biểu thức $S_q = \\dfrac{\\pi R^2 n}{360} = \\dfrac{lR}{2}$ là quy tắc hoặc công thức '
-                 'của mục nào sau đây?',
-            'options': ['Độ dài cung $n^\\circ$',
-                        'Diện tích hình quạt tròn',
-                        'Diện tích hình vành khuyên',
-                        'Phương trình bậc nhất hai ẩn'],
+            'q': 'Khi học **Bài 15: Độ dài của cung tròn. Diện tích hình quạt tròn và hình vành khuyên**, '
+                 'biểu thức hoặc quy tắc nào dưới đây biểu diễn đúng **Diện tích hình quạt tròn**?',
+            'options': ['$S_q = \\dfrac{\\pi R^3 n}{360} = \\dfrac{lR}{2}$',
+                        '$S_q = \\dfrac{\\pi R^2 n}{360} = \\dfrac{lR}{2}$',
+                        '$S_q = \\dfrac{360}{\\pi R^2 n} = \\dfrac{lR}{2}$',
+                        '$S_q = \\dfrac{\\pi R^4 n}{360} = \\dfrac{lR}{2}$'],
             'answer': 1,
             'solution': 'Trong Bài 15: Độ dài của cung tròn. Diện tích hình quạt tròn và hình vành khuyên, '
-                        'biểu thức/quy tắc $S_q = \\dfrac{\\pi R^2 n}{360} = \\dfrac{lR}{2}$ chính là nội '
-                        'dung của **Diện tích hình quạt tròn**.'},
+                        '**Diện tích hình quạt tròn** có công thức/quy tắc là: $S_q = \\dfrac{\\pi R^2 '
+                        'n}{360} = \\dfrac{lR}{2}$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Diện tích hình vành khuyên giới hạn bởi hai đường tròn đồng tâm có bán kính $R = 5$ cm và '
@@ -2433,16 +2424,15 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 15: Độ dài của cung tròn. Diện tích hình quạt tròn và hình vành khuyên** '
-                 '(Chương V: Đường tròn), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản '
-                 'chất kiến thức của bài?',
-            'options': ['Nhận biết được phương trình bậc nhất hai ẩn $ax + by = c$ ($a \\neq 0$ hoặc $b '
-                        '\\neq 0$) và nghiệm của nó.',
-                        'Nhận biết được hệ hai phương trình bậc nhất hai ẩn và nghiệm của hệ.',
-                        'Biểu diễn được tập nghiệm của phương trình bậc nhất hai ẩn trên mặt phẳng tọa độ.',
+            'q': 'Để nắm vững bản chất của **Bài 15: Độ dài của cung tròn. Diện tích hình quạt tròn và hình '
+                 'vành khuyên**, nhận định nào sau đây là **chính xác**?',
+            'options': ['Tính được độ dài cung tròn có số đo $n^\\circ$. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Tính được độ dài cung tròn có số đo $n^\\circ$.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Tính được độ dài cung tròn có '
+                        'số đo $n^\\circ$.',
                         'Tính được độ dài cung tròn có số đo $n^\\circ$.'],
             'answer': 3,
-            'solution': 'Theo yêu cầu cần đạt của Bài 15: Độ dài của cung tròn. Diện tích hình quạt tròn và '
+            'solution': 'Theo nội dung cốt lõi của Bài 15: Độ dài của cung tròn. Diện tích hình quạt tròn và '
                         'hình vành khuyên: Tính được độ dài cung tròn có số đo $n^\\circ$.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -2461,44 +2451,44 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 15: Độ dài của cung '
-                 'tròn. Diện tích hình quạt tròn và hình vành khuyên**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Tính được độ dài cung tròn có số '
-                           'đo $n^\\circ$.',
-                           'Quy tắc/công thức **Độ dài cung $n^\\circ$** trong bài được xác định bởi: $l = '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 15: Độ dài của cung tròn. '
+                 'Diện tích hình quạt tròn và hình vành khuyên**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Tính được độ dài cung tròn có số đo '
+                           '$n^\\circ$.',
+                           'Trong **Bài 15: Độ dài của cung tròn. Diện tích hình quạt tròn và hình vành '
+                           'khuyên**, quy tắc/công thức **Độ dài cung $n^\\circ$** được viết là: $l = '
                            '\\dfrac{\\pi R n}{180}$.',
-                           'Trong mọi trường hợp, **Độ dài cung $n^\\circ$** luôn được tính bằng công thức '
-                           '$ax + by = c$ ($a^2 + b^2 \\neq 0$) (thuộc Phương trình bậc nhất hai ẩn) mà '
-                           'không cần điều kiện của Bài 15: Độ dài của cung tròn. Diện tích hình quạt tròn '
-                           'và hình vành khuyên.',
-                           'Với bài toán minh họa: “Tính độ dài cung $60^\\circ$ và diện tích hình quạt tròn '
-                           'tương ứng của một đường tròn có bán kính $R = 6$ cm.”, lời giải đúng là: Độ dài '
-                           'cung là $l = \\dfrac{\\pi \\cdot 6 \\cdot 60}{180} = 2\\pi$ (cm). Diện tích hình '
-                           'quạt tròn là $S_q = \\dfrac{\\pi \\cdot 6^2 \\cdot 60}{360} = 6\\pi$...'],
+                           'Nếu áp dụng sai dấu/phép tính thành $l = \\dfrac{\\pi R n}{190}$ thì kết quả của '
+                           '**Độ dài cung $n^\\circ$** trong **Bài 15: Độ dài của cung tròn. Diện tích hình '
+                           'quạt tròn và hình vành khuyên** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Tính độ dài cung $60^\\circ$ và diện tích hình quạt tròn '
+                           'tương ứng của một đường tròn có bán kính $R = 6$ cm.”, kết quả giải đúng là: Độ '
+                           'dài cung là $l = \\dfrac{\\pi \\cdot 6 \\cdot 60}{180} = 2\\pi$ (cm). Diện tích '
+                           'hình quạt tròn là $S_q = \\dfrac{\\pi \\cdot 6^2 \\cdot 60}{360} = 6\\pi$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 15: Độ dài của cung tròn. Diện tích hình '
-                        'quạt tròn và hình vành khuyên. b) **Đúng** theo công thức trọng tâm **Độ dài cung '
-                        '$n^\\circ$** ($l = \\dfrac{\\pi R n}{180}$). c) **Sai** vì $ax + by = c$ ($a^2 + '
-                        'b^2 \\neq 0$) là công thức của nội dung khác, không phải quy tắc chung của **Độ dài '
-                        'cung $n^\\circ$**. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        'quạt tròn và hình vành khuyên. b) **Đúng** theo công thức **Độ dài cung '
+                        '$n^\\circ$** ($l = \\dfrac{\\pi R n}{180}$). c) **Sai** vì công thức đúng của **Độ '
+                        'dài cung $n^\\circ$** phải là $l = \\dfrac{\\pi R n}{180}$ chứ không phải $l = '
+                        '\\dfrac{\\pi R n}{190}$. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 15: Độ dài của cung tròn. Diện tích hình quạt tròn và hình vành '
-                 'khuyên** để giải quyết tình huống sau: Tính độ dài cung $60^\\circ$ và diện tích hình quạt '
-                 'tròn tương ứng của một đường tròn có bán kính $R = 6$ cm. Kết quả và hướng giải nào dưới '
-                 'đây là **đúng**?',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 15: Độ dài của cung tròn. Diện tích hình quạt tròn '
+                 'và hình vành khuyên** để giải bài toán sau: Tính độ dài cung $60^\\circ$ và diện tích hình '
+                 'quạt tròn tương ứng của một đường tròn có bán kính $R = 6$ cm. Cách giải và kết quả nào '
+                 'dưới đây là **đúng**?',
             'options': ['Độ dài cung là $l = \\dfrac{\\pi \\cdot 6 \\cdot 60}{180} = 2\\pi$ (cm). Diện tích '
                         'hình quạt tròn là $S_q = \\dfrac{\\pi \\cdot 6^2 \\cdot 60}{360} = 6\\pi$ '
                         '($\\text{cm}^2$...',
-                        'Thay $x = 2, y = -1$ vào phương trình thứ nhất: $2 \\cdot 2 - (-1) = 4 + 1 = 5$ '
-                        '(thỏa mãn). Thay $x = 2, y = -1$ vào phương trình thứ hai: $2 + 3 \\cdot (-1) = 2 - '
-                        '3 = -1$...',
-                        'Cộng từng vế hai phương trình của hệ, ta được: $5x = 10 \\Rightarrow x = 2$. Thay '
-                        '$x = 2$ vào phương trình $2x + y = 5$, ta có: $2 \\cdot 2 + y = 5 \\Rightarrow y = '
-                        '1$...',
-                        'Gọi số thứ nhất là $x$ và số thứ hai là $y$. Theo đề bài, ta có hệ phương trình: '
-                        '$\\begin{cases} x + y = 59 \\\\ 3y - 2x = 7 \\end{cases} \\Leftrightarrow '
-                        '\\begin{cases} 2x + 2y = 118 \\\\ -2x + 3y = 7 \\end{cases}$...'],
+                        'Độ dài cung là $l = \\dfrac{\\pi : 6 \\cdot 60}{180} = 2\\pi$ (cm). Diện tích hình '
+                        'quạt tròn là $S_q = \\dfrac{\\pi \\cdot 6^2 \\cdot 60}{360} = 6\\pi$ '
+                        '($\\text{cm}^2$...',
+                        'Độ dài cung là $l = \\dfrac{180}{\\pi \\cdot 6 \\cdot 60} = 2\\pi$ (cm). Diện tích '
+                        'hình quạt tròn là $S_q = \\dfrac{\\pi \\cdot 6^2 \\cdot 60}{360} = 6\\pi$ '
+                        '($\\text{cm}^2$...',
+                        'Độ dài cung là $l = \\dfrac{\\pi \\cdot 12 \\cdot 60}{180} = 2\\pi$ (cm). Diện tích '
+                        'hình quạt tròn là $S_q = \\dfrac{\\pi \\cdot 6^2 \\cdot 60}{360} = 6\\pi$ '
+                        '($\\text{cm}^2$...'],
             'answer': 0,
             'solution': 'Lời giải chi tiết theo Bài 15: Độ dài của cung tròn. Diện tích hình quạt tròn và '
                         'hình vành khuyên: Độ dài cung là $l = \\dfrac{\\pi \\cdot 6 \\cdot 60}{180} = '
@@ -2569,29 +2559,32 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 16: Vị trí tương đối của đường thẳng và đường tròn**, '
-                 'công thức hoặc quy tắc nào sau đây biểu diễn đúng **Điều kiện tiếp xúc**?',
-            'options': ['$MA = MB$; $\\widehat{AMO} = \\widehat{BMO}$; $\\widehat{AOM} = \\widehat{BOM}$',
+            'q': 'Trong **Bài 16: Vị trí tương đối của đường thẳng và đường tròn**, quy tắc hoặc công thức '
+                 'nào sau đây xác định đúng **Điều kiện tiếp xúc**?',
+            'options': ['$d = R$ và $a \\perp OA$ tại $A \\notin (O)$',
                         '$d = R$ và $a \\perp OA$ tại $A \\in (O)$',
-                        '$ax + by = c$ ($a^2 + b^2 \\neq 0$)',
-                        '$\\begin{cases} a_1x + b_1y = c_1 \\\\ a_2x + b_2y = c_2 \\end{cases}$'],
+                        'Đảo ngược vế của quy tắc: $d = R$ và $a \\perp OA$ tại $A \\in (O)$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $d = R$ và $a \\perp OA$ tại $A '
+                        '\\in (O)$'],
             'answer': 1,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 16: Vị trí tương đối của đường thẳng và đường '
+            'solution': 'Theo kiến thức trọng tâm của Bài 16: Vị trí tương đối của đường thẳng và đường '
                         'tròn, **Điều kiện tiếp xúc** được xác định bởi: $d = R$ và $a \\perp OA$ tại $A '
                         '\\in (O)$. (Tiếp tuyến vuông góc với bán kính tại tiếp điểm)'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 16: Vị trí tương đối của đường thẳng và đường tròn**, nội dung/biểu thức $MA = '
-                 'MB$; $\\widehat{AMO} = \\widehat{BMO}$; $\\widehat{AOM} = \\widehat{BOM}$ là quy tắc hoặc '
-                 'công thức của mục nào sau đây?',
-            'options': ['Điều kiện tiếp xúc',
-                        'Phương trình bậc nhất hai ẩn',
-                        'Tính chất hai tiếp tuyến cắt nhau',
-                        'Hệ hai phương trình bậc nhất hai ẩn'],
+            'q': 'Khi học **Bài 16: Vị trí tương đối của đường thẳng và đường tròn**, biểu thức hoặc quy tắc '
+                 'nào dưới đây biểu diễn đúng **Tính chất hai tiếp tuyến cắt nhau**?',
+            'options': ['$MA = MB$; $\\widehat{AMO} = \\widehat{BMO}$; $\\widehat{AOM} = \\widehat{BOM}$ '
+                        '(với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: $MA = MB$; $\\widehat{AMO} = \\widehat{BMO}$; '
+                        '$\\widehat{AOM} = \\widehat{BOM}$',
+                        '$MA = MB$; $\\widehat{AMO} = \\widehat{BMO}$; $\\widehat{AOM} = \\widehat{BOM}$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $MA = MB$; $\\widehat{AMO} = '
+                        '\\widehat{BMO}$; $\\widehat{AOM} = \\widehat{BOM}$'],
             'answer': 2,
-            'solution': 'Trong Bài 16: Vị trí tương đối của đường thẳng và đường tròn, biểu thức/quy tắc $MA '
-                        '= MB$; $\\widehat{AMO} = \\widehat{BMO}$; $\\widehat{AOM} = \\widehat{BOM}$ chính '
-                        'là nội dung của **Tính chất hai tiếp tuyến cắt nhau**.'},
+            'solution': 'Trong Bài 16: Vị trí tương đối của đường thẳng và đường tròn, **Tính chất hai tiếp '
+                        'tuyến cắt nhau** có công thức/quy tắc là: $MA = MB$; $\\widehat{AMO} = '
+                        '\\widehat{BMO}$; $\\widehat{AOM} = \\widehat{BOM}$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Từ điểm $M$ ngoài đường tròn $(O)$, kẻ hai tiếp tuyến $MA, MB$ ($A, B$ là hai tiếp điểm). '
@@ -2604,16 +2597,18 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 16: Vị trí tương đối của đường thẳng và đường tròn** (Chương V: Đường tròn), '
-                 'khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
+            'q': 'Để nắm vững bản chất của **Bài 16: Vị trí tương đối của đường thẳng và đường tròn**, nhận '
+                 'định nào sau đây là **chính xác**?',
             'options': ['Nhận biết được 3 vị trí tương đối của đường thẳng và đường tròn (cắt nhau, tiếp xúc '
                         'nhau, không giao nhau).',
-                        'Nhận biết được phương trình bậc nhất hai ẩn $ax + by = c$ ($a \\neq 0$ hoặc $b '
-                        '\\neq 0$) và nghiệm của nó.',
-                        'Nhận biết được hệ hai phương trình bậc nhất hai ẩn và nghiệm của hệ.',
-                        'Biểu diễn được tập nghiệm của phương trình bậc nhất hai ẩn trên mặt phẳng tọa độ.'],
+                        'Nhận biết được 4 vị trí tương đối của đường thẳng và đường tròn (cắt nhau, tiếp xúc '
+                        'nhau, không giao nhau).',
+                        'Nhận biết được 2 vị trí tương đối của đường thẳng và đường tròn (cắt nhau, tiếp xúc '
+                        'nhau, không giao nhau).',
+                        'Nhận biết được 6 vị trí tương đối của đường thẳng và đường tròn (cắt nhau, tiếp xúc '
+                        'nhau, không giao nhau).'],
             'answer': 0,
-            'solution': 'Theo yêu cầu cần đạt của Bài 16: Vị trí tương đối của đường thẳng và đường tròn: '
+            'solution': 'Theo nội dung cốt lõi của Bài 16: Vị trí tương đối của đường thẳng và đường tròn: '
                         'Nhận biết được 3 vị trí tương đối của đường thẳng và đường tròn (cắt nhau, tiếp xúc '
                         'nhau, không giao nhau).'},
            {'level': 'hieu',
@@ -2632,44 +2627,45 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 16: Vị trí tương đối '
-                 'của đường thẳng và đường tròn**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được 3 vị trí tương đối '
-                           'của đường thẳng và đường tròn (cắt nhau, tiếp xúc nhau, không giao nhau).',
-                           'Quy tắc/công thức **Điều kiện tiếp xúc** trong bài được xác định bởi: $d = R$ và '
-                           '$a \\perp OA$ tại $A \\in (O)$.',
-                           'Trong mọi trường hợp, **Điều kiện tiếp xúc** luôn được tính bằng công thức $ax + '
-                           'by = c$ ($a^2 + b^2 \\neq 0$) (thuộc Phương trình bậc nhất hai ẩn) mà không cần '
-                           'điều kiện của Bài 16: Vị trí tương đối của đường thẳng và đường tròn.',
-                           'Với bài toán minh họa: “Từ điểm $M$ nằm ngoài đường tròn $(O; 5\\text{ cm})$ sao '
-                           'cho $OM = 13$ cm, kẻ tiếp tuyến $MA$ với đường tròn ($A$ là tiếp điểm). Tính độ '
-                           'dài...”, lời giải đúng là: Vì $MA$ là tiếp tuyến của $(O)$ tại $A$ nên $OA '
-                           '\\perp MA$, suy ra tam giác $OAM$ vuông tại $A$. Theo định lí Pythagore: $MA = '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 16: Vị trí tương đối của '
+                 'đường thẳng và đường tròn**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết được 3 vị trí tương đối của '
+                           'đường thẳng và đường tròn (cắt nhau, tiếp xúc nhau, không giao nhau).',
+                           'Trong **Bài 16: Vị trí tương đối của đường thẳng và đường tròn**, quy tắc/công '
+                           'thức **Điều kiện tiếp xúc** được viết là: $d = R$ và $a \\perp OA$ tại $A \\in '
+                           '(O)$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $d = R$ và $a \\perp OA$ tại $A \\notin (O)$ '
+                           'thì kết quả của **Điều kiện tiếp xúc** trong **Bài 16: Vị trí tương đối của '
+                           'đường thẳng và đường tròn** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Từ điểm $M$ nằm ngoài đường tròn $(O; 5\\text{ cm})$ sao cho '
+                           '$OM = 13$ cm, kẻ tiếp tuyến $MA$ với đường tròn ($A$ là tiếp điểm). Tính độ...”, '
+                           'kết quả giải đúng là: Vì $MA$ là tiếp tuyến của $(O)$ tại $A$ nên $OA \\perp '
+                           'MA$, suy ra tam giác $OAM$ vuông tại $A$. Theo định lí Pythagore: $MA = '
                            '\\sqrt{OM^2 - OA^2} = \\sqrt{13^2 - 5^2} = 12$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 16: Vị trí tương đối của đường thẳng và '
-                        'đường tròn. b) **Đúng** theo công thức trọng tâm **Điều kiện tiếp xúc** ($d = R$ và '
-                        '$a \\perp OA$ tại $A \\in (O)$). c) **Sai** vì $ax + by = c$ ($a^2 + b^2 \\neq 0$) '
-                        'là công thức của nội dung khác, không phải quy tắc chung của **Điều kiện tiếp '
-                        'xúc**. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        'đường tròn. b) **Đúng** theo công thức **Điều kiện tiếp xúc** ($d = R$ và $a \\perp '
+                        'OA$ tại $A \\in (O)$). c) **Sai** vì công thức đúng của **Điều kiện tiếp xúc** phải '
+                        'là $d = R$ và $a \\perp OA$ tại $A \\in (O)$ chứ không phải $d = R$ và $a \\perp '
+                        'OA$ tại $A \\notin (O)$. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 16: Vị trí tương đối của đường thẳng và đường tròn** để giải '
-                 'quyết tình huống sau: Từ điểm $M$ nằm ngoài đường tròn $(O; 5\\text{ cm})$ sao cho $OM = '
-                 '13$ cm, kẻ tiếp tuyến $MA$ với đường tròn ($A$ là tiếp điểm). Tính độ dài đoạn $MA$. Kết '
-                 'quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Thay $x = 2, y = -1$ vào phương trình thứ nhất: $2 \\cdot 2 - (-1) = 4 + 1 = 5$ '
-                        '(thỏa mãn). Thay $x = 2, y = -1$ vào phương trình thứ hai: $2 + 3 \\cdot (-1) = 2 - '
-                        '3 = -1$...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 16: Vị trí tương đối của đường thẳng và đường '
+                 'tròn** để giải bài toán sau: Từ điểm $M$ nằm ngoài đường tròn $(O; 5\\text{ cm})$ sao cho '
+                 '$OM = 13$ cm, kẻ tiếp tuyến $MA$ với đường tròn ($A$ là tiếp điểm). Tính độ dài đoạn $MA$. '
+                 'Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Vì $MA$ là tiếp tuyến của $(O)$ tại $A$ nên $OA \\perp MA$, suy ra tam giác $OAM$ '
+                        'vuông tại $A$. Theo định lí Pythagore: $MA = \\sqrt{OM^2 + OA^2} = \\sqrt{13^2 - '
+                        '5^2} = 12$...',
                         'Vì $MA$ là tiếp tuyến của $(O)$ tại $A$ nên $OA \\perp MA$, suy ra tam giác $OAM$ '
                         'vuông tại $A$. Theo định lí Pythagore: $MA = \\sqrt{OM^2 - OA^2} = \\sqrt{13^2 - '
                         '5^2} = 12$...',
-                        'Cộng từng vế hai phương trình của hệ, ta được: $5x = 10 \\Rightarrow x = 2$. Thay '
-                        '$x = 2$ vào phương trình $2x + y = 5$, ta có: $2 \\cdot 2 + y = 5 \\Rightarrow y = '
-                        '1$...',
-                        'Gọi số thứ nhất là $x$ và số thứ hai là $y$. Theo đề bài, ta có hệ phương trình: '
-                        '$\\begin{cases} x + y = 59 \\\\ 3y - 2x = 7 \\end{cases} \\Leftrightarrow '
-                        '\\begin{cases} 2x + 2y = 118 \\\\ -2x + 3y = 7 \\end{cases}$...'],
+                        'Vì $MA$ là tiếp tuyến của $(O)$ tại $A$ nên $OA \\perp MA$, suy ra tam giác $OAM$ '
+                        'vuông tại $A$. Theo định lí Pythagore: $MA = \\sqrt{OM^2 - OA^2} = \\sqrt{13^2 - '
+                        '5^2} = 11$...',
+                        'Vì $MA$ là tiếp tuyến của $(O)$ tại $A$ nên $OA \\perp MA$, suy ra tam giác $OAM$ '
+                        'vuông tại $A$. Theo định lí Pythagore: $MA = \\sqrt{OM^4 - OA^2} = \\sqrt{13^2 - '
+                        '5^2} = 12$...'],
             'answer': 1,
             'solution': 'Lời giải chi tiết theo Bài 16: Vị trí tương đối của đường thẳng và đường tròn: Vì '
                         '$MA$ là tiếp tuyến của $(O)$ tại $A$ nên $OA \\perp MA$, suy ra tam giác $OAM$ '
@@ -2695,8 +2691,8 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
   'requirements': ["Nhận biết được vị trí tương đối của hai đường tròn $(O; R)$ và $(O'; r)$ ($R \\ge r$) "
                    "thông qua hệ thức giữa $OO'$ với $R, r$.",
                    'Vận dụng được tính chất đường nối tâm để giải các bài toán hình học.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Hai đường tròn cắt nhau** ($R - r < d < R + '
-                   'r$) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 17: Vị trí tương đối của hai đường tròn** để giải bài tập '
+                   'minh họa và bài toán thực tiễn.'],
   'definition': 'Hai đường tròn phân biệt có thể có $2$ điểm chung (cắt nhau), $1$ điểm chung (tiếp xúc '
                 'ngoài hoặc tiếp xúc trong), hoặc không có điểm chung nào (ngoài nhau, đựng nhau hoặc đồng '
                 'tâm).',
@@ -2741,29 +2737,29 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 17: Vị trí tương đối của hai đường tròn**, công thức '
-                 'hoặc quy tắc nào sau đây biểu diễn đúng **Hai đường tròn cắt nhau**?',
-            'options': ['$d = R + r$ (tiếp xúc ngoài); $d = R - r$ (tiếp xúc trong)',
-                        '$d > R + r$ (ngoài nhau); $d < R - r$ (đựng nhau)',
+            'q': 'Trong **Bài 17: Vị trí tương đối của hai đường tròn**, quy tắc hoặc công thức nào sau đây '
+                 'xác định đúng **Hai đường tròn cắt nhau**?',
+            'options': ['$R - r < d < R - r$',
+                        'Đảo ngược vế của quy tắc: $R - r < d < R + r$',
                         '$R - r < d < R + r$',
-                        '$ax + by = c$ ($a^2 + b^2 \\neq 0$)'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $R - r < d < R + r$'],
             'answer': 2,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 17: Vị trí tương đối của hai đường tròn, '
-                        '**Hai đường tròn cắt nhau** được xác định bởi: $R - r < d < R + r$. (Có $2$ điểm '
-                        'chung)'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 17: Vị trí tương đối của hai đường tròn, **Hai '
+                        'đường tròn cắt nhau** được xác định bởi: $R - r < d < R + r$. (Có $2$ điểm chung)'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 17: Vị trí tương đối của hai đường tròn**, nội dung/biểu thức $d = R + r$ '
-                 '(tiếp xúc ngoài); $d = R - r$ (tiếp xúc trong) là quy tắc hoặc công thức của mục nào sau '
-                 'đây?',
-            'options': ['Hai đường tròn cắt nhau',
-                        'Hai đường tròn không giao nhau',
-                        'Phương trình bậc nhất hai ẩn',
-                        'Hai đường tròn tiếp xúc nhau'],
+            'q': 'Khi học **Bài 17: Vị trí tương đối của hai đường tròn**, biểu thức hoặc quy tắc nào dưới '
+                 'đây biểu diễn đúng **Hai đường tròn tiếp xúc nhau**?',
+            'options': ['$d = R - r$ (tiếp xúc ngoài); $d = R - r$ (tiếp xúc trong)',
+                        'Đảo ngược vế của quy tắc: $d = R + r$ (tiếp xúc ngoài); $d = R - r$ (tiếp xúc '
+                        'trong)',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $d = R + r$ (tiếp xúc ngoài); '
+                        '$d = R - r$ (tiếp xúc trong)',
+                        '$d = R + r$ (tiếp xúc ngoài); $d = R - r$ (tiếp xúc trong)'],
             'answer': 3,
-            'solution': 'Trong Bài 17: Vị trí tương đối của hai đường tròn, biểu thức/quy tắc $d = R + r$ '
-                        '(tiếp xúc ngoài); $d = R - r$ (tiếp xúc trong) chính là nội dung của **Hai đường '
-                        'tròn tiếp xúc nhau**.'},
+            'solution': 'Trong Bài 17: Vị trí tương đối của hai đường tròn, **Hai đường tròn tiếp xúc nhau** '
+                        'có công thức/quy tắc là: $d = R + r$ (tiếp xúc ngoài); $d = R - r$ (tiếp xúc '
+                        'trong).'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': "Cho hai đường tròn $(O; 6\\text{ cm})$ và $(O'; 2\\text{ cm})$ tiếp xúc trong với nhau. "
@@ -2775,16 +2771,19 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 17: Vị trí tương đối của hai đường tròn** (Chương V: Đường tròn), khẳng định '
-                 'nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Nhận biết được phương trình bậc nhất hai ẩn $ax + by = c$ ($a \\neq 0$ hoặc $b '
-                        '\\neq 0$) và nghiệm của nó.',
+            'q': 'Để nắm vững bản chất của **Bài 17: Vị trí tương đối của hai đường tròn**, nhận định nào '
+                 'sau đây là **chính xác**?',
+            'options': ["Nhận biết được vị trí tương đối của hai đường tròn $(O; R)$ và $(O'; r)$ ($R \\le "
+                        "r$) thông qua hệ thức giữa $OO'$ với $R, r$.",
                         "Nhận biết được vị trí tương đối của hai đường tròn $(O; R)$ và $(O'; r)$ ($R \\ge "
                         "r$) thông qua hệ thức giữa $OO'$ với $R, r$.",
-                        'Nhận biết được hệ hai phương trình bậc nhất hai ẩn và nghiệm của hệ.',
-                        'Biểu diễn được tập nghiệm của phương trình bậc nhất hai ẩn trên mặt phẳng tọa độ.'],
+                        'Đảo ngược vế của quy tắc: Nhận biết được vị trí tương đối của hai đường tròn $(O; '
+                        "R)$ và $(O'; r)$ ($R \\ge r$) thông qua hệ thức giữa $OO'$ với $R, r$.",
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nhận biết được vị trí tương đối '
+                        "của hai đường tròn $(O; R)$ và $(O'; r)$ ($R \\ge r$) thông qua hệ thức giữa $OO'$ "
+                        'với $R, r$.'],
             'answer': 1,
-            'solution': 'Theo yêu cầu cần đạt của Bài 17: Vị trí tương đối của hai đường tròn: Nhận biết '
+            'solution': 'Theo nội dung cốt lõi của Bài 17: Vị trí tương đối của hai đường tròn: Nhận biết '
                         "được vị trí tương đối của hai đường tròn $(O; R)$ và $(O'; r)$ ($R \\ge r$) thông "
                         "qua hệ thức giữa $OO'$ với $R, r$."},
            {'level': 'hieu',
@@ -2801,43 +2800,40 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 17: Vị trí tương đối '
-                 'của hai đường tròn**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được vị trí tương đối '
-                           "của hai đường tròn $(O; R)$ và $(O'; r)$ ($R \\ge r$) thông qua hệ thức giữa "
-                           "$OO'$ với $R, r$.",
-                           'Quy tắc/công thức **Hai đường tròn cắt nhau** trong bài được xác định bởi: $R - '
-                           'r < d < R + r$.',
-                           'Trong mọi trường hợp, **Hai đường tròn cắt nhau** luôn được tính bằng công thức '
-                           '$ax + by = c$ ($a^2 + b^2 \\neq 0$) (thuộc Phương trình bậc nhất hai ẩn) mà '
-                           'không cần điều kiện của Bài 17: Vị trí tương đối của hai đường tròn.',
-                           "Với bài toán minh họa: “Cho hai đường tròn $(O; 5\\text{ cm})$ và $(O'; 3\\text{ "
-                           "cm})$ có $OO' = 7$ cm. Xác định vị trí tương đối của hai đường tròn.”, lời giải "
-                           'đúng là: Ta có $R - r = 5 - 3 = 2$ (cm) và $R + r = 5 + 3 = 8$ (cm). Vì $2 < 7 < '
-                           "8$ (tức là $R - r < OO' < R + r$) nên hai đường tròn cắt nhau."],
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 17: Vị trí tương đối của '
+                 'hai đường tròn**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết được vị trí tương đối của hai '
+                           "đường tròn $(O; R)$ và $(O'; r)$ ($R \\ge r$) thông qua hệ thức giữa $OO'$ với "
+                           '$R, r$.',
+                           'Trong **Bài 17: Vị trí tương đối của hai đường tròn**, quy tắc/công thức **Hai '
+                           'đường tròn cắt nhau** được viết là: $R - r < d < R + r$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $R - r < d < R - r$ thì kết quả của **Hai '
+                           'đường tròn cắt nhau** trong **Bài 17: Vị trí tương đối của hai đường tròn** vẫn '
+                           'không thay đổi.',
+                           "Xét ví dụ của bài: “Cho hai đường tròn $(O; 5\\text{ cm})$ và $(O'; 3\\text{ "
+                           "cm})$ có $OO' = 7$ cm. Xác định vị trí tương đối của hai đường tròn.”, kết quả "
+                           'giải đúng là: Ta có $R - r = 5 - 3 = 2$ (cm) và $R + r = 5 + 3 = 8$ (cm). Vì $2 '
+                           "< 7 < 8$ (tức là $R - r < OO' < R + r$) nên hai đường tròn cắt nhau."],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 17: Vị trí tương đối của hai đường tròn. '
-                        'b) **Đúng** theo công thức trọng tâm **Hai đường tròn cắt nhau** ($R - r < d < R + '
-                        'r$). c) **Sai** vì $ax + by = c$ ($a^2 + b^2 \\neq 0$) là công thức của nội dung '
-                        'khác, không phải quy tắc chung của **Hai đường tròn cắt nhau**. d) **Đúng** theo '
-                        'lời giải ví dụ minh họa trong bài học.'},
+                        'b) **Đúng** theo công thức **Hai đường tròn cắt nhau** ($R - r < d < R + r$). c) '
+                        '**Sai** vì công thức đúng của **Hai đường tròn cắt nhau** phải là $R - r < d < R + '
+                        'r$ chứ không phải $R - r < d < R - r$. d) **Đúng** theo lời giải ví dụ minh họa '
+                        'trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 17: Vị trí tương đối của hai đường tròn** để giải quyết tình '
-                 "huống sau: Cho hai đường tròn $(O; 5\\text{ cm})$ và $(O'; 3\\text{ cm})$ có $OO' = 7$ cm. "
-                 'Xác định vị trí tương đối của hai đường tròn. Kết quả và hướng giải nào dưới đây là '
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 17: Vị trí tương đối của hai đường tròn** để giải '
+                 "bài toán sau: Cho hai đường tròn $(O; 5\\text{ cm})$ và $(O'; 3\\text{ cm})$ có $OO' = 7$ "
+                 'cm. Xác định vị trí tương đối của hai đường tròn. Cách giải và kết quả nào dưới đây là '
                  '**đúng**?',
-            'options': ['Thay $x = 2, y = -1$ vào phương trình thứ nhất: $2 \\cdot 2 - (-1) = 4 + 1 = 5$ '
-                        '(thỏa mãn). Thay $x = 2, y = -1$ vào phương trình thứ hai: $2 + 3 \\cdot (-1) = 2 - '
-                        '3 = -1$...',
-                        'Cộng từng vế hai phương trình của hệ, ta được: $5x = 10 \\Rightarrow x = 2$. Thay '
-                        '$x = 2$ vào phương trình $2x + y = 5$, ta có: $2 \\cdot 2 + y = 5 \\Rightarrow y = '
-                        '1$...',
+            'options': ['Ta có $R - r = 5 - 3 = 2$ (cm) và $R - r = 5 + 3 = 8$ (cm). Vì $2 < 7 < 8$ (tức là '
+                        "$R - r < OO' < R + r$) nên hai đường tròn cắt nhau.",
+                        'Ta có $R - r = 5 - 3 = 2$ (cm) và $R + r = 5 + 3 = 8$ (cm). Vì $2 < 7 < 7$ (tức là '
+                        "$R - r < OO' < R + r$) nên hai đường tròn cắt nhau.",
                         'Ta có $R - r = 5 - 3 = 2$ (cm) và $R + r = 5 + 3 = 8$ (cm). Vì $2 < 7 < 8$ (tức là '
                         "$R - r < OO' < R + r$) nên hai đường tròn cắt nhau.",
-                        'Gọi số thứ nhất là $x$ và số thứ hai là $y$. Theo đề bài, ta có hệ phương trình: '
-                        '$\\begin{cases} x + y = 59 \\\\ 3y - 2x = 7 \\end{cases} \\Leftrightarrow '
-                        '\\begin{cases} 2x + 2y = 118 \\\\ -2x + 3y = 7 \\end{cases}$...'],
+                        'Ta có $R - r = 10 - 3 = 2$ (cm) và $R + r = 5 + 3 = 8$ (cm). Vì $2 < 7 < 8$ (tức là '
+                        "$R - r < OO' < R + r$) nên hai đường tròn cắt nhau."],
             'answer': 2,
             'solution': 'Lời giải chi tiết theo Bài 17: Vị trí tương đối của hai đường tròn: Ta có $R - r = '
                         '5 - 3 = 2$ (cm) và $R + r = 5 + 3 = 8$ (cm).\n'
@@ -2861,8 +2857,8 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
   'requirements': ['Tính được giá trị của hàm số $y = ax^2$ ($a \\neq 0$) và lập bảng giá trị.',
                    'Nhận biết được tính chất và vẽ được đồ thị (parabol) của hàm số $y = ax^2$ ($a \\neq '
                    '0$).',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Đỉnh và trục đối xứng** (Đỉnh $O(0; 0)$, '
-                   'trục đối xứng $Oy$) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 18: Hàm số y = ax² (a ≠ 0)** để giải bài tập minh họa và '
+                   'bài toán thực tiễn.'],
   'definition': 'Đồ thị của hàm số $y = ax^2$ ($a \\neq 0$) là một đường cong đi qua gốc tọa độ $O(0; 0)$, '
                 'nhận trục $Oy$ làm trục đối xứng, được gọi là một parabol với đỉnh $O$.',
   'theory': 'Tính chất của đồ thị hàm số $y = ax^2$ ($a \\neq 0$):\n'
@@ -2900,30 +2896,32 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 18: Hàm số y = ax² (a ≠ 0)**, công thức hoặc quy tắc nào '
-                 'sau đây biểu diễn đúng **Đỉnh và trục đối xứng**?',
-            'options': ['$a > 0$: bề lõm quay lên trên ($y \\ge 0$); $a < 0$: bề lõm quay xuống dưới ($y '
-                        '\\le 0$)',
-                        '$ax + by = c$ ($a^2 + b^2 \\neq 0$)',
-                        '$\\begin{cases} a_1x + b_1y = c_1 \\\\ a_2x + b_2y = c_2 \\end{cases}$',
+            'q': 'Trong **Bài 18: Hàm số y = ax² (a ≠ 0)**, quy tắc hoặc công thức nào sau đây xác định đúng '
+                 '**Đỉnh và trục đối xứng**?',
+            'options': ['Đỉnh $O(1; 0)$, trục đối xứng $Oy$',
+                        'Đỉnh $O(0; 1)$, trục đối xứng $Oy$',
+                        'Đỉnh $O(2; 0)$, trục đối xứng $Oy$',
                         'Đỉnh $O(0; 0)$, trục đối xứng $Oy$'],
             'answer': 3,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 18: Hàm số y = ax² (a ≠ 0), **Đỉnh và trục '
-                        'đối xứng** được xác định bởi: Đỉnh $O(0; 0)$, trục đối xứng $Oy$. (Điểm $(x_0; '
-                        'y_0)$ và $(-x_0; y_0)$ đối xứng nhau qua $Oy$)'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 18: Hàm số y = ax² (a ≠ 0), **Đỉnh và trục đối '
+                        'xứng** được xác định bởi: Đỉnh $O(0; 0)$, trục đối xứng $Oy$. (Điểm $(x_0; y_0)$ và '
+                        '$(-x_0; y_0)$ đối xứng nhau qua $Oy$)'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 18: Hàm số y = ax² (a ≠ 0)**, nội dung/biểu thức $a > 0$: bề lõm quay lên trên '
-                 '($y \\ge 0$); $a < 0$: bề lõm quay xuống dưới ($y \\le 0$) là quy tắc hoặc công thức của '
-                 'mục nào sau đây?',
-            'options': ['Bề lõm của parabol',
-                        'Đỉnh và trục đối xứng',
-                        'Phương trình bậc nhất hai ẩn',
-                        'Hệ hai phương trình bậc nhất hai ẩn'],
+            'q': 'Khi học **Bài 18: Hàm số y = ax² (a ≠ 0)**, biểu thức hoặc quy tắc nào dưới đây biểu diễn '
+                 'đúng **Bề lõm của parabol**?',
+            'options': ['$a > 0$: bề lõm quay lên trên ($y \\ge 0$); $a < 0$: bề lõm quay xuống dưới ($y '
+                        '\\le 0$)',
+                        '$a > 0$: bề lõm quay lên trên ($y \\ge 0$); $a < 0$: bề lõm quay xuống dưới ($y '
+                        '\\ge 0$)',
+                        '$a > 0$: bề lõm quay lên trên ($y \\ge 0$); $a < 0$: bề lõm quay xuống dưới ($y '
+                        '\\le 1$)',
+                        '$a > 2$: bề lõm quay lên trên ($y \\ge 0$); $a < 0$: bề lõm quay xuống dưới ($y '
+                        '\\le 0$)'],
             'answer': 0,
-            'solution': 'Trong Bài 18: Hàm số y = ax² (a ≠ 0), biểu thức/quy tắc $a > 0$: bề lõm quay lên '
-                        'trên ($y \\ge 0$); $a < 0$: bề lõm quay xuống dưới ($y \\le 0$) chính là nội dung '
-                        'của **Bề lõm của parabol**.'},
+            'solution': 'Trong Bài 18: Hàm số y = ax² (a ≠ 0), **Bề lõm của parabol** có công thức/quy tắc '
+                        'là: $a > 0$: bề lõm quay lên trên ($y \\ge 0$); $a < 0$: bề lõm quay xuống dưới ($y '
+                        '\\le 0$).'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Biết đồ thị hàm số $y = ax^2$ đi qua điểm $A(-3; 9)$. Giá trị của hệ số $a$ là:',
@@ -2935,16 +2933,14 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 18: Hàm số y = ax² (a ≠ 0)** (Chương VI: Hàm số y = ax² (a ≠ 0). Phương '
-                 'trình bậc hai một ẩn), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản '
-                 'chất kiến thức của bài?',
-            'options': ['Nhận biết được phương trình bậc nhất hai ẩn $ax + by = c$ ($a \\neq 0$ hoặc $b '
-                        '\\neq 0$) và nghiệm của nó.',
-                        'Nhận biết được hệ hai phương trình bậc nhất hai ẩn và nghiệm của hệ.',
+            'q': 'Để nắm vững bản chất của **Bài 18: Hàm số y = ax² (a ≠ 0)**, nhận định nào sau đây là '
+                 '**chính xác**?',
+            'options': ['Tính được giá trị của hàm số $y = ax^3$ ($a \\neq 0$) và lập bảng giá trị.',
+                        'Tính được giá trị của hàm số $y = ax^2$ ($a \\neq 1$) và lập bảng giá trị.',
                         'Tính được giá trị của hàm số $y = ax^2$ ($a \\neq 0$) và lập bảng giá trị.',
-                        'Biểu diễn được tập nghiệm của phương trình bậc nhất hai ẩn trên mặt phẳng tọa độ.'],
+                        'Tính được giá trị của hàm số $y = ax^4$ ($a \\neq 0$) và lập bảng giá trị.'],
             'answer': 2,
-            'solution': 'Theo yêu cầu cần đạt của Bài 18: Hàm số y = ax² (a ≠ 0): Tính được giá trị của hàm '
+            'solution': 'Theo nội dung cốt lõi của Bài 18: Hàm số y = ax² (a ≠ 0): Tính được giá trị của hàm '
                         'số $y = ax^2$ ($a \\neq 0$) và lập bảng giá trị.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -2961,39 +2957,36 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 18: Hàm số y = ax² (a ≠ '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 18: Hàm số y = ax² (a ≠ '
                  '0)**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Tính được giá trị của hàm số $y = '
-                           'ax^2$ ($a \\neq 0$) và lập bảng giá trị.',
-                           'Quy tắc/công thức **Đỉnh và trục đối xứng** trong bài được xác định bởi: Đỉnh '
-                           '$O(0; 0)$, trục đối xứng $Oy$.',
-                           'Trong mọi trường hợp, **Đỉnh và trục đối xứng** luôn được tính bằng công thức '
-                           '$ax + by = c$ ($a^2 + b^2 \\neq 0$) (thuộc Phương trình bậc nhất hai ẩn) mà '
-                           'không cần điều kiện của Bài 18: Hàm số y = ax² (a ≠ 0).',
-                           'Với bài toán minh họa: “Cho hàm số $y = ax^2$. Tìm hệ số $a$ biết đồ thị hàm số '
-                           'đi qua điểm $M(2; -8)$.”, lời giải đúng là: Vì đồ thị hàm số đi qua điểm $M(2; '
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Tính được giá trị của hàm số $y = ax^2$ '
+                           '($a \\neq 0$) và lập bảng giá trị.',
+                           'Trong **Bài 18: Hàm số y = ax² (a ≠ 0)**, quy tắc/công thức **Đỉnh và trục đối '
+                           'xứng** được viết là: Đỉnh $O(0; 0)$, trục đối xứng $Oy$.',
+                           'Nếu áp dụng sai dấu/phép tính thành Đỉnh $O(1; 0)$, trục đối xứng $Oy$ thì kết '
+                           'quả của **Đỉnh và trục đối xứng** trong **Bài 18: Hàm số y = ax² (a ≠ 0)** vẫn '
+                           'không thay đổi.',
+                           'Xét ví dụ của bài: “Cho hàm số $y = ax^2$. Tìm hệ số $a$ biết đồ thị hàm số đi '
+                           'qua điểm $M(2; -8)$.”, kết quả giải đúng là: Vì đồ thị hàm số đi qua điểm $M(2; '
                            '-8)$ nên thay $x = 2, y = -8$ vào công thức $y = ax^2$, ta có: $-8 = a \\cdot '
                            '2^2 \\Rightarrow 4a = -8 \\Rightarrow a = -2$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 18: Hàm số y = ax² (a ≠ 0). b) **Đúng** '
-                        'theo công thức trọng tâm **Đỉnh và trục đối xứng** (Đỉnh $O(0; 0)$, trục đối xứng '
-                        '$Oy$). c) **Sai** vì $ax + by = c$ ($a^2 + b^2 \\neq 0$) là công thức của nội dung '
-                        'khác, không phải quy tắc chung của **Đỉnh và trục đối xứng**. d) **Đúng** theo lời '
-                        'giải ví dụ minh họa trong bài học.'},
+                        'theo công thức **Đỉnh và trục đối xứng** (Đỉnh $O(0; 0)$, trục đối xứng $Oy$). c) '
+                        '**Sai** vì công thức đúng của **Đỉnh và trục đối xứng** phải là Đỉnh $O(0; 0)$, '
+                        'trục đối xứng $Oy$ chứ không phải Đỉnh $O(1; 0)$, trục đối xứng $Oy$. d) **Đúng** '
+                        'theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 18: Hàm số y = ax² (a ≠ 0)** để giải quyết tình huống sau: Cho '
-                 'hàm số $y = ax^2$. Tìm hệ số $a$ biết đồ thị hàm số đi qua điểm $M(2; -8)$. Kết quả và '
-                 'hướng giải nào dưới đây là **đúng**?',
-            'options': ['Thay $x = 2, y = -1$ vào phương trình thứ nhất: $2 \\cdot 2 - (-1) = 4 + 1 = 5$ '
-                        '(thỏa mãn). Thay $x = 2, y = -1$ vào phương trình thứ hai: $2 + 3 \\cdot (-1) = 2 - '
-                        '3 = -1$...',
-                        'Cộng từng vế hai phương trình của hệ, ta được: $5x = 10 \\Rightarrow x = 2$. Thay '
-                        '$x = 2$ vào phương trình $2x + y = 5$, ta có: $2 \\cdot 2 + y = 5 \\Rightarrow y = '
-                        '1$...',
-                        'Gọi số thứ nhất là $x$ và số thứ hai là $y$. Theo đề bài, ta có hệ phương trình: '
-                        '$\\begin{cases} x + y = 59 \\\\ 3y - 2x = 7 \\end{cases} \\Leftrightarrow '
-                        '\\begin{cases} 2x + 2y = 118 \\\\ -2x + 3y = 7 \\end{cases}$...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 18: Hàm số y = ax² (a ≠ 0)** để giải bài toán sau: '
+                 'Cho hàm số $y = ax^2$. Tìm hệ số $a$ biết đồ thị hàm số đi qua điểm $M(2; -8)$. Cách giải '
+                 'và kết quả nào dưới đây là **đúng**?',
+            'options': ['Vì đồ thị hàm số đi qua điểm $M(2; -8)$ nên thay $x = 2, y = -8$ vào công thức $y = '
+                        'ax^2$, ta có: $-8 = a : 2^2 \\Rightarrow 4a = -8 \\Rightarrow a = -2$...',
+                        'Vì đồ thị hàm số đi qua điểm $M(2; -8)$ nên thay $x = 2, y = -8$ vào công thức $y = '
+                        'ax^2$, ta có: $-8 = a \\cdot 2^2 \\Rightarrow 4a = -8 \\Rightarrow a = -1$...',
+                        'Vì đồ thị hàm số đi qua điểm $M(4; -8)$ nên thay $x = 2, y = -8$ vào công thức $y = '
+                        'ax^2$, ta có: $-8 = a \\cdot 2^2 \\Rightarrow 4a = -8 \\Rightarrow a = -2$...',
                         'Vì đồ thị hàm số đi qua điểm $M(2; -8)$ nên thay $x = 2, y = -8$ vào công thức $y = '
                         'ax^2$, ta có: $-8 = a \\cdot 2^2 \\Rightarrow 4a = -8 \\Rightarrow a = -2$...'],
             'answer': 3,
@@ -3020,8 +3013,8 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
   'requirements': ['Nhận biết được phương trình bậc hai một ẩn $ax^2 + bx + c = 0$ ($a \\neq 0$).',
                    "Tính được biệt thức $\\Delta$ (hoặc $\\Delta'$) và giải được phương trình bậc hai một "
                    'ẩn.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Biệt thức $\\Delta$** ($\\Delta = b^2 - '
-                   '4ac$) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 19: Phương trình bậc hai một ẩn** để giải bài tập minh họa '
+                   'và bài toán thực tiễn.'],
   'definition': 'Phương trình bậc hai một ẩn (nói gọn là phương trình bậc hai) là phương trình có dạng $ax^2 '
                 '+ bx + c = 0$, trong đó $x$ là ẩn; $a, b, c$ là những số cho trước gọi là các hệ số và $a '
                 '\\neq 0$.',
@@ -3062,27 +3055,27 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 19: Phương trình bậc hai một ẩn**, công thức hoặc quy '
-                 'tắc nào sau đây biểu diễn đúng **Biệt thức $\\Delta$**?',
+            'q': 'Trong **Bài 19: Phương trình bậc hai một ẩn**, quy tắc hoặc công thức nào sau đây xác định '
+                 'đúng **Biệt thức $\\Delta$**?',
             'options': ['$\\Delta = b^2 - 4ac$',
-                        "$\\Delta' = b'^2 - ac$",
-                        '$ax + by = c$ ($a^2 + b^2 \\neq 0$)',
-                        '$\\begin{cases} a_1x + b_1y = c_1 \\\\ a_2x + b_2y = c_2 \\end{cases}$'],
+                        '$\\Delta = b^2 + 4ac$',
+                        '$\\Delta = b^1 - 4ac$',
+                        '$\\Delta = b^4 - 4ac$'],
             'answer': 0,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 19: Phương trình bậc hai một ẩn, **Biệt thức '
+            'solution': 'Theo kiến thức trọng tâm của Bài 19: Phương trình bậc hai một ẩn, **Biệt thức '
                         '$\\Delta$** được xác định bởi: $\\Delta = b^2 - 4ac$. (Khi $\\Delta > 0$: $x_{1,2} '
                         '= \\dfrac{-b \\pm \\sqrt{\\Delta}}{2a}$)'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': "Trong **Bài 19: Phương trình bậc hai một ẩn**, nội dung/biểu thức $\\Delta' = b'^2 - ac$ "
-                 'là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Biệt thức $\\Delta$',
-                        "Biệt thức thu gọn $\\Delta'$ ($b = 2b'$)",
-                        'Phương trình bậc nhất hai ẩn',
-                        'Hệ hai phương trình bậc nhất hai ẩn'],
+            'q': 'Khi học **Bài 19: Phương trình bậc hai một ẩn**, biểu thức hoặc quy tắc nào dưới đây biểu '
+                 "diễn đúng **Biệt thức thu gọn $\\Delta'$ ($b = 2b'$)**?",
+            'options': ["$\\Delta' = b'^2 + ac$",
+                        "$\\Delta' = b'^2 - ac$",
+                        "$\\Delta' = b'^1 - ac$",
+                        "$\\Delta' = b'^4 - ac$"],
             'answer': 1,
-            'solution': "Trong Bài 19: Phương trình bậc hai một ẩn, biểu thức/quy tắc $\\Delta' = b'^2 - ac$ "
-                        "chính là nội dung của **Biệt thức thu gọn $\\Delta'$ ($b = 2b'$)**."},
+            'solution': "Trong Bài 19: Phương trình bậc hai một ẩn, **Biệt thức thu gọn $\\Delta'$ ($b = "
+                        "2b'$)** có công thức/quy tắc là: $\\Delta' = b'^2 - ac$."},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Phương trình $x^2 - 6x + 9 = 0$ có nghiệm là:',
@@ -3097,17 +3090,15 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 19: Phương trình bậc hai một ẩn** (Chương VI: Hàm số y = ax² (a ≠ 0). Phương '
-                 'trình bậc hai một ẩn), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản '
-                 'chất kiến thức của bài?',
-            'options': ['Nhận biết được phương trình bậc nhất hai ẩn $ax + by = c$ ($a \\neq 0$ hoặc $b '
-                        '\\neq 0$) và nghiệm của nó.',
-                        'Nhận biết được hệ hai phương trình bậc nhất hai ẩn và nghiệm của hệ.',
-                        'Biểu diễn được tập nghiệm của phương trình bậc nhất hai ẩn trên mặt phẳng tọa độ.',
+            'q': 'Để nắm vững bản chất của **Bài 19: Phương trình bậc hai một ẩn**, nhận định nào sau đây là '
+                 '**chính xác**?',
+            'options': ['Nhận biết được phương trình bậc hai một ẩn $ax^2 - bx + c = 0$ ($a \\neq 0$).',
+                        'Nhận biết được phương trình bậc hai một ẩn $ax^2 + bx + c = 0$ ($a \\neq 1$).',
+                        'Nhận biết được phương trình bậc hai một ẩn $ax^4 + bx + c = 0$ ($a \\neq 0$).',
                         'Nhận biết được phương trình bậc hai một ẩn $ax^2 + bx + c = 0$ ($a \\neq 0$).'],
             'answer': 3,
-            'solution': 'Theo yêu cầu cần đạt của Bài 19: Phương trình bậc hai một ẩn: Nhận biết được phương '
-                        'trình bậc hai một ẩn $ax^2 + bx + c = 0$ ($a \\neq 0$).'},
+            'solution': 'Theo nội dung cốt lõi của Bài 19: Phương trình bậc hai một ẩn: Nhận biết được '
+                        'phương trình bậc hai một ẩn $ax^2 + bx + c = 0$ ($a \\neq 0$).'},
            {'level': 'hieu',
             'type': 'tf4',
             'q': 'Cho phương trình bậc hai $2x^2 - 5x + 2 = 0$ (1).',
@@ -3123,41 +3114,40 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 19: Phương trình bậc '
-                 'hai một ẩn**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được phương trình bậc '
-                           'hai một ẩn $ax^2 + bx + c = 0$ ($a \\neq 0$).',
-                           'Quy tắc/công thức **Biệt thức $\\Delta$** trong bài được xác định bởi: $\\Delta '
-                           '= b^2 - 4ac$.',
-                           'Trong mọi trường hợp, **Biệt thức $\\Delta$** luôn được tính bằng công thức $ax '
-                           '+ by = c$ ($a^2 + b^2 \\neq 0$) (thuộc Phương trình bậc nhất hai ẩn) mà không '
-                           'cần điều kiện của Bài 19: Phương trình bậc hai một ẩn.',
-                           'Với bài toán minh họa: “Giải phương trình $x^2 - 5x + 6 = 0$.”, lời giải đúng '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 19: Phương trình bậc hai '
+                 'một ẩn**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết được phương trình bậc hai một '
+                           'ẩn $ax^2 + bx + c = 0$ ($a \\neq 0$).',
+                           'Trong **Bài 19: Phương trình bậc hai một ẩn**, quy tắc/công thức **Biệt thức '
+                           '$\\Delta$** được viết là: $\\Delta = b^2 - 4ac$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $\\Delta = b^2 + 4ac$ thì kết quả của **Biệt '
+                           'thức $\\Delta$** trong **Bài 19: Phương trình bậc hai một ẩn** vẫn không thay '
+                           'đổi.',
+                           'Xét ví dụ của bài: “Giải phương trình $x^2 - 5x + 6 = 0$.”, kết quả giải đúng '
                            'là: Ta có $a = 1, b = -5, c = 6$. Biệt thức $\\Delta = (-5)^2 - 4 \\cdot 1 '
-                           '\\cdot 6 = 25 - 24 = 1 > 0$. Phương trình có hai nghiệm phân biệt: $x_1 = '
-                           '\\dfrac{5 + 1}{2} = 3$...'],
+                           '\\cdot 6 = 25 - 24 = 1 > 0$. Phương trình có hai nghiệm phân biệt...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 19: Phương trình bậc hai một ẩn. b) '
-                        '**Đúng** theo công thức trọng tâm **Biệt thức $\\Delta$** ($\\Delta = b^2 - 4ac$). '
-                        'c) **Sai** vì $ax + by = c$ ($a^2 + b^2 \\neq 0$) là công thức của nội dung khác, '
-                        'không phải quy tắc chung của **Biệt thức $\\Delta$**. d) **Đúng** theo lời giải ví '
-                        'dụ minh họa trong bài học.'},
+                        '**Đúng** theo công thức **Biệt thức $\\Delta$** ($\\Delta = b^2 - 4ac$). c) **Sai** '
+                        'vì công thức đúng của **Biệt thức $\\Delta$** phải là $\\Delta = b^2 - 4ac$ chứ '
+                        'không phải $\\Delta = b^2 + 4ac$. d) **Đúng** theo lời giải ví dụ minh họa trong '
+                        'bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 19: Phương trình bậc hai một ẩn** để giải quyết tình huống sau: '
-                 'Giải phương trình $x^2 - 5x + 6 = 0$. Kết quả và hướng giải nào dưới đây là **đúng**?',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 19: Phương trình bậc hai một ẩn** để giải bài toán '
+                 'sau: Giải phương trình $x^2 - 5x + 6 = 0$. Cách giải và kết quả nào dưới đây là **đúng**?',
             'options': ['Ta có $a = 1, b = -5, c = 6$. Biệt thức $\\Delta = (-5)^2 - 4 \\cdot 1 \\cdot 6 = '
                         '25 - 24 = 1 > 0$. Phương trình có hai nghiệm phân biệt: $x_1 = \\dfrac{5 + 1}{2} = '
                         '3$...',
-                        'Thay $x = 2, y = -1$ vào phương trình thứ nhất: $2 \\cdot 2 - (-1) = 4 + 1 = 5$ '
-                        '(thỏa mãn). Thay $x = 2, y = -1$ vào phương trình thứ hai: $2 + 3 \\cdot (-1) = 2 - '
-                        '3 = -1$...',
-                        'Cộng từng vế hai phương trình của hệ, ta được: $5x = 10 \\Rightarrow x = 2$. Thay '
-                        '$x = 2$ vào phương trình $2x + y = 5$, ta có: $2 \\cdot 2 + y = 5 \\Rightarrow y = '
-                        '1$...',
-                        'Gọi số thứ nhất là $x$ và số thứ hai là $y$. Theo đề bài, ta có hệ phương trình: '
-                        '$\\begin{cases} x + y = 59 \\\\ 3y - 2x = 7 \\end{cases} \\Leftrightarrow '
-                        '\\begin{cases} 2x + 2y = 118 \\\\ -2x + 3y = 7 \\end{cases}$...'],
+                        'Ta có $a = 1, b = -5, c = 6$. Biệt thức $\\Delta = (-5)^2 - 4 \\cdot 1 \\cdot 6 = '
+                        '25 - 24 = 1 > 0$. Phương trình có hai nghiệm phân biệt: $x_1 = \\dfrac{5 - 1}{2} = '
+                        '3$...',
+                        'Ta có $a = 1, b = -5, c = 6$. Biệt thức $\\Delta = (-5)^2 - 4 \\cdot 1 \\cdot 6 = '
+                        '25 - 24 = 1 > 0$. Phương trình có hai nghiệm phân biệt: $x_1 = \\dfrac{2}{5 + 1} = '
+                        '3$...',
+                        'Ta có $a = 2, b = -5, c = 6$. Biệt thức $\\Delta = (-5)^2 - 4 \\cdot 1 \\cdot 6 = '
+                        '25 - 24 = 1 > 0$. Phương trình có hai nghiệm phân biệt: $x_1 = \\dfrac{5 + 1}{2} = '
+                        '3$...'],
             'answer': 0,
             'solution': 'Lời giải chi tiết theo Bài 19: Phương trình bậc hai một ẩn: Ta có $a = 1, b = -5, c '
                         '= 6$. Biệt thức $\\Delta = (-5)^2 - 4 \\cdot 1 \\cdot 6 = 25 - 24 = 1 > 0$.\n'
@@ -3233,28 +3223,28 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 20: Định lí Viète và ứng dụng**, công thức hoặc quy tắc '
-                 'nào sau đây biểu diễn đúng **Hệ thức Viète**?',
-            'options': ['$x_1^2 + x_2^2 = (x_1 + x_2)^2 - 2x_1x_2 = S^2 - 2P$',
+            'q': 'Trong **Bài 20: Định lí Viète và ứng dụng**, quy tắc hoặc công thức nào sau đây xác định '
+                 'đúng **Hệ thức Viète**?',
+            'options': ['$S = x_1 - x_2 = -\\dfrac{b}{a}$; $P = x_1x_2 = \\dfrac{c}{a}$',
                         '$S = x_1 + x_2 = -\\dfrac{b}{a}$; $P = x_1x_2 = \\dfrac{c}{a}$',
-                        '$x^2 - Sx + P = 0$ ($S^2 - 4P \\ge 0$)',
-                        '$ax + by = c$ ($a^2 + b^2 \\neq 0$)'],
+                        '$S = x_1 + x_2 = -\\dfrac{a}{b}$; $P = x_1x_2 = \\dfrac{c}{a}$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $S = x_1 + x_2 = '
+                        '-\\dfrac{b}{a}$; $P = x_1x_2 = \\dfrac{c}{a}$'],
             'answer': 1,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 20: Định lí Viète và ứng dụng, **Hệ thức '
-                        'Viète** được xác định bởi: $S = x_1 + x_2 = -\\dfrac{b}{a}$; $P = x_1x_2 = '
-                        '\\dfrac{c}{a}$. (Điều kiện có nghiệm: $\\Delta \\ge 0$)'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 20: Định lí Viète và ứng dụng, **Hệ thức Viète** '
+                        'được xác định bởi: $S = x_1 + x_2 = -\\dfrac{b}{a}$; $P = x_1x_2 = \\dfrac{c}{a}$. '
+                        '(Điều kiện có nghiệm: $\\Delta \\ge 0$)'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 20: Định lí Viète và ứng dụng**, nội dung/biểu thức $x_1^2 + x_2^2 = (x_1 + '
-                 'x_2)^2 - 2x_1x_2 = S^2 - 2P$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Hệ thức Viète',
-                        'Phương trình tìm hai số',
-                        'Biểu thức đối xứng thường gặp',
-                        'Phương trình bậc nhất hai ẩn'],
+            'q': 'Khi học **Bài 20: Định lí Viète và ứng dụng**, biểu thức hoặc quy tắc nào dưới đây biểu '
+                 'diễn đúng **Biểu thức đối xứng thường gặp**?',
+            'options': ['$x_1^2 - x_2^2 = (x_1 + x_2)^2 - 2x_1x_2 = S^2 - 2P$',
+                        '$x_1^2 + x_2^2 = (x_1 + x_2)^2 - 2x_1x_2 = S^1 - 2P$',
+                        '$x_1^2 + x_2^2 = (x_1 + x_2)^2 - 2x_1x_2 = S^2 - 2P$',
+                        '$x_1^4 + x_2^2 = (x_1 + x_2)^2 - 2x_1x_2 = S^2 - 2P$'],
             'answer': 2,
-            'solution': 'Trong Bài 20: Định lí Viète và ứng dụng, biểu thức/quy tắc $x_1^2 + x_2^2 = (x_1 + '
-                        'x_2)^2 - 2x_1x_2 = S^2 - 2P$ chính là nội dung của **Biểu thức đối xứng thường '
-                        'gặp**.'},
+            'solution': 'Trong Bài 20: Định lí Viète và ứng dụng, **Biểu thức đối xứng thường gặp** có công '
+                        'thức/quy tắc là: $x_1^2 + x_2^2 = (x_1 + x_2)^2 - 2x_1x_2 = S^2 - 2P$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Phương trình $2025x^2 - 2026x + 1 = 0$ có hai nghiệm là:',
@@ -3269,17 +3259,18 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 20: Định lí Viète và ứng dụng** (Chương VI: Hàm số y = ax² (a ≠ 0). Phương '
-                 'trình bậc hai một ẩn), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản '
-                 'chất kiến thức của bài?',
+            'q': 'Để nắm vững bản chất của **Bài 20: Định lí Viète và ứng dụng**, nhận định nào sau đây là '
+                 '**chính xác**?',
             'options': ['Phát biểu và vận dụng được định lí Viète để tính tổng và tích hai nghiệm của phương '
                         'trình bậc hai.',
-                        'Nhận biết được phương trình bậc nhất hai ẩn $ax + by = c$ ($a \\neq 0$ hoặc $b '
-                        '\\neq 0$) và nghiệm của nó.',
-                        'Nhận biết được hệ hai phương trình bậc nhất hai ẩn và nghiệm của hệ.',
-                        'Biểu diễn được tập nghiệm của phương trình bậc nhất hai ẩn trên mặt phẳng tọa độ.'],
+                        'Phát biểu và vận dụng được định lí Viète để tính tổng và tích hai nghiệm của phương '
+                        'trình bậc hai. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Phát biểu và vận dụng được định lí Viète để tính tổng và '
+                        'tích hai nghiệm của phương trình bậc hai.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Phát biểu và vận dụng được định '
+                        'lí Viète để tính tổng và tích hai nghiệm của phương trình bậc hai.'],
             'answer': 0,
-            'solution': 'Theo yêu cầu cần đạt của Bài 20: Định lí Viète và ứng dụng: Phát biểu và vận dụng '
+            'solution': 'Theo nội dung cốt lõi của Bài 20: Định lí Viète và ứng dụng: Phát biểu và vận dụng '
                         'được định lí Viète để tính tổng và tích hai nghiệm của phương trình bậc hai.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -3296,42 +3287,39 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 20: Định lí Viète và '
-                 'ứng dụng**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Phát biểu và vận dụng được định lí '
-                           'Viète để tính tổng và tích hai nghiệm của phương trình bậc hai.',
-                           'Quy tắc/công thức **Hệ thức Viète** trong bài được xác định bởi: $S = x_1 + x_2 '
-                           '= -\\dfrac{b}{a}$; $P = x_1x_2 = \\dfrac{c}{a}$.',
-                           'Trong mọi trường hợp, **Hệ thức Viète** luôn được tính bằng công thức $ax + by = '
-                           'c$ ($a^2 + b^2 \\neq 0$) (thuộc Phương trình bậc nhất hai ẩn) mà không cần điều '
-                           'kiện của Bài 20: Định lí Viète và ứng dụng.',
-                           'Với bài toán minh họa: “Không giải phương trình, hãy tính $x_1^2 + x_2^2$ với '
-                           '$x_1, x_2$ là hai nghiệm của phương trình $x^2 - 5x + 3 = 0$.”, lời giải đúng '
-                           'là: Vì $\\Delta = (-5)^2 - 4 \\cdot 1 \\cdot 3 = 13 > 0$ nên phương trình có hai '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 20: Định lí Viète và ứng '
+                 'dụng**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Phát biểu và vận dụng được định lí Viète '
+                           'để tính tổng và tích hai nghiệm của phương trình bậc hai.',
+                           'Trong **Bài 20: Định lí Viète và ứng dụng**, quy tắc/công thức **Hệ thức Viète** '
+                           'được viết là: $S = x_1 + x_2 = -\\dfrac{b}{a}$; $P = x_1x_2 = \\dfrac{c}{a}$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $S = x_1 - x_2 = -\\dfrac{b}{a}$; $P = '
+                           'x_1x_2 = \\dfrac{c}{a}$ thì kết quả của **Hệ thức Viète** trong **Bài 20: Định '
+                           'lí Viète và ứng dụng** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Không giải phương trình, hãy tính $x_1^2 + x_2^2$ với $x_1, '
+                           'x_2$ là hai nghiệm của phương trình $x^2 - 5x + 3 = 0$.”, kết quả giải đúng là: '
+                           'Vì $\\Delta = (-5)^2 - 4 \\cdot 1 \\cdot 3 = 13 > 0$ nên phương trình có hai '
                            'nghiệm $x_1, x_2$. Theo định lí Viète: $x_1 + x_2 = 5$ và $x_1x_2 = 3$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 20: Định lí Viète và ứng dụng. b) **Đúng** '
-                        'theo công thức trọng tâm **Hệ thức Viète** ($S = x_1 + x_2 = -\\dfrac{b}{a}$; $P = '
-                        'x_1x_2 = \\dfrac{c}{a}$). c) **Sai** vì $ax + by = c$ ($a^2 + b^2 \\neq 0$) là công '
-                        'thức của nội dung khác, không phải quy tắc chung của **Hệ thức Viète**. d) **Đúng** '
-                        'theo lời giải ví dụ minh họa trong bài học.'},
+                        'theo công thức **Hệ thức Viète** ($S = x_1 + x_2 = -\\dfrac{b}{a}$; $P = x_1x_2 = '
+                        '\\dfrac{c}{a}$). c) **Sai** vì công thức đúng của **Hệ thức Viète** phải là $S = '
+                        'x_1 + x_2 = -\\dfrac{b}{a}$; $P = x_1x_2 = \\dfrac{c}{a}$ chứ không phải $S = x_1 - '
+                        'x_2 = -\\dfrac{b}{a}$; $P = x_1x_2 = \\dfrac{c}{a}$. d) **Đúng** theo lời giải ví '
+                        'dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 20: Định lí Viète và ứng dụng** để giải quyết tình huống sau: '
-                 'Không giải phương trình, hãy tính $x_1^2 + x_2^2$ với $x_1, x_2$ là hai nghiệm của phương '
-                 'trình $x^2 - 5x + 3 = 0$. Kết quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Thay $x = 2, y = -1$ vào phương trình thứ nhất: $2 \\cdot 2 - (-1) = 4 + 1 = 5$ '
-                        '(thỏa mãn). Thay $x = 2, y = -1$ vào phương trình thứ hai: $2 + 3 \\cdot (-1) = 2 - '
-                        '3 = -1$...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 20: Định lí Viète và ứng dụng** để giải bài toán '
+                 'sau: Không giải phương trình, hãy tính $x_1^2 + x_2^2$ với $x_1, x_2$ là hai nghiệm của '
+                 'phương trình $x^2 - 5x + 3 = 0$. Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Vì $\\Delta = (-5)^2 - 4 \\cdot 1 \\cdot 3 = 13 > 0$ nên phương trình có hai nghiệm '
+                        '$x_1, x_2$. Theo định lí Viète: $x_1 - x_2 = 5$ và $x_1x_2 = 3$. Do đ...',
                         'Vì $\\Delta = (-5)^2 - 4 \\cdot 1 \\cdot 3 = 13 > 0$ nên phương trình có hai nghiệm '
-                        '$x_1, x_2$. Theo định lí Viète: $x_1 + x_2 = 5$ và $x_1x_2 = 3$. Do đó $x_1^2 + '
-                        'x_2^2 = (x_1 + x_2)^2 - 2x_1x_2 = 5^2 - 2 \\cdot 3 = 19$...',
-                        'Cộng từng vế hai phương trình của hệ, ta được: $5x = 10 \\Rightarrow x = 2$. Thay '
-                        '$x = 2$ vào phương trình $2x + y = 5$, ta có: $2 \\cdot 2 + y = 5 \\Rightarrow y = '
-                        '1$...',
-                        'Gọi số thứ nhất là $x$ và số thứ hai là $y$. Theo đề bài, ta có hệ phương trình: '
-                        '$\\begin{cases} x + y = 59 \\\\ 3y - 2x = 7 \\end{cases} \\Leftrightarrow '
-                        '\\begin{cases} 2x + 2y = 118 \\\\ -2x + 3y = 7 \\end{cases}$...'],
+                        '$x_1, x_2$. Theo định lí Viète: $x_1 + x_2 = 5$ và $x_1x_2 = 3$. Do đ...',
+                        'Vì $\\Delta = (-5)^2 - 4 \\cdot 1 \\cdot 3 = 13 > 0$ nên phương trình có hai nghiệm '
+                        '$x_1, x_2$. Theo định lí Viète: $x_1 + x_2 = 5$ và $x_1x_2 = 2$. Do đ...',
+                        'Vì $\\Delta = (-10)^2 - 4 \\cdot 1 \\cdot 3 = 13 > 0$ nên phương trình có hai '
+                        'nghiệm $x_1, x_2$. Theo định lí Viète: $x_1 + x_2 = 5$ và $x_1x_2 = 3$. Do đ...'],
             'answer': 1,
             'solution': 'Lời giải chi tiết theo Bài 20: Định lí Viète và ứng dụng: Vì $\\Delta = (-5)^2 - 4 '
                         '\\cdot 1 \\cdot 3 = 13 > 0$ nên phương trình có hai nghiệm $x_1, x_2$.\n'
@@ -3356,8 +3344,8 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
                  'động, năng suất.',
   'requirements': ['Biểu diễn được các đại lượng chưa biết qua một ẩn và lập phương trình bậc hai.',
                    'Giải được phương trình và đối chiếu điều kiện thực tế để trả lời bài toán.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Hình chữ nhật** (Diện tích $S = x \\cdot '
-                   'y$; Đường chéo $d = \\sqrt{x^2 + y^2}$) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 21: Giải bài toán bằng cách lập phương trình** để giải bài '
+                   'tập minh họa và bài toán thực tiễn.'],
   'definition': 'Giải bài toán bằng cách lập phương trình bậc hai gồm 3 bước: Lập phương trình (chọn ẩn, đặt '
                 'điều kiện, lập phương trình); Giải phương trình; Kiểm tra điều kiện và kết luận.',
   'theory': 'Khi giải bài toán bằng cách lập phương trình bậc hai, phương trình thường có hai nghiệm nhưng '
@@ -3405,27 +3393,27 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 21: Giải bài toán bằng cách lập phương trình**, công '
-                 'thức hoặc quy tắc nào sau đây biểu diễn đúng **Hình chữ nhật**?',
-            'options': ['$t = \\dfrac{s}{v}$',
-                        '$ax + by = c$ ($a^2 + b^2 \\neq 0$)',
+            'q': 'Trong **Bài 21: Giải bài toán bằng cách lập phương trình**, quy tắc hoặc công thức nào sau '
+                 'đây xác định đúng **Hình chữ nhật**?',
+            'options': ['Diện tích $S = x \\cdot y$; Đường chéo $d = \\sqrt{x^2 - y^2}$',
+                        'Diện tích $S = x \\cdot y$; Đường chéo $d = \\sqrt{x^2 + y^1}$',
                         'Diện tích $S = x \\cdot y$; Đường chéo $d = \\sqrt{x^2 + y^2}$',
-                        '$\\begin{cases} a_1x + b_1y = c_1 \\\\ a_2x + b_2y = c_2 \\end{cases}$'],
+                        'Diện tích $S = x \\cdot y$; Đường chéo $d = \\sqrt{x^4 + y^2}$'],
             'answer': 2,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 21: Giải bài toán bằng cách lập phương trình, '
+            'solution': 'Theo kiến thức trọng tâm của Bài 21: Giải bài toán bằng cách lập phương trình, '
                         '**Hình chữ nhật** được xác định bởi: Diện tích $S = x \\cdot y$; Đường chéo $d = '
                         '\\sqrt{x^2 + y^2}$. ($x, y > 0$ là hai kích thước)'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 21: Giải bài toán bằng cách lập phương trình**, nội dung/biểu thức $t = '
-                 '\\dfrac{s}{v}$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Hình chữ nhật',
-                        'Phương trình bậc nhất hai ẩn',
-                        'Hệ hai phương trình bậc nhất hai ẩn',
-                        'Chuyển động đều'],
+            'q': 'Khi học **Bài 21: Giải bài toán bằng cách lập phương trình**, biểu thức hoặc quy tắc nào '
+                 'dưới đây biểu diễn đúng **Chuyển động đều**?',
+            'options': ['$t = \\dfrac{s}{v}$ (với dấu ngược lại)',
+                        '$t = \\dfrac{v}{s}$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $t = \\dfrac{s}{v}$',
+                        '$t = \\dfrac{s}{v}$'],
             'answer': 3,
-            'solution': 'Trong Bài 21: Giải bài toán bằng cách lập phương trình, biểu thức/quy tắc $t = '
-                        '\\dfrac{s}{v}$ chính là nội dung của **Chuyển động đều**.'},
+            'solution': 'Trong Bài 21: Giải bài toán bằng cách lập phương trình, **Chuyển động đều** có công '
+                        'thức/quy tắc là: $t = \\dfrac{s}{v}$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Một tổ công nhân dự định làm $120$ sản phẩm. Nếu gọi năng suất dự định là $x$ (sản '
@@ -3442,16 +3430,17 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 21: Giải bài toán bằng cách lập phương trình** (Chương VI: Hàm số y = ax² (a '
-                 '≠ 0). Phương trình bậc hai một ẩn), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần '
-                 'đạt và bản chất kiến thức của bài?',
-            'options': ['Nhận biết được phương trình bậc nhất hai ẩn $ax + by = c$ ($a \\neq 0$ hoặc $b '
-                        '\\neq 0$) và nghiệm của nó.',
+            'q': 'Để nắm vững bản chất của **Bài 21: Giải bài toán bằng cách lập phương trình**, nhận định '
+                 'nào sau đây là **chính xác**?',
+            'options': ['Biểu diễn được các đại lượng chưa biết qua một ẩn và lập phương trình bậc hai. (với '
+                        'dấu ngược lại)',
                         'Biểu diễn được các đại lượng chưa biết qua một ẩn và lập phương trình bậc hai.',
-                        'Nhận biết được hệ hai phương trình bậc nhất hai ẩn và nghiệm của hệ.',
-                        'Biểu diễn được tập nghiệm của phương trình bậc nhất hai ẩn trên mặt phẳng tọa độ.'],
+                        'Đảo ngược vế của quy tắc: Biểu diễn được các đại lượng chưa biết qua một ẩn và lập '
+                        'phương trình bậc hai.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Biểu diễn được các đại lượng '
+                        'chưa biết qua một ẩn và lập phương trình bậc hai.'],
             'answer': 1,
-            'solution': 'Theo yêu cầu cần đạt của Bài 21: Giải bài toán bằng cách lập phương trình: Biểu '
+            'solution': 'Theo nội dung cốt lõi của Bài 21: Giải bài toán bằng cách lập phương trình: Biểu '
                         'diễn được các đại lượng chưa biết qua một ẩn và lập phương trình bậc hai.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -3469,43 +3458,45 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 21: Giải bài toán bằng '
-                 'cách lập phương trình**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Biểu diễn được các đại lượng chưa '
-                           'biết qua một ẩn và lập phương trình bậc hai.',
-                           'Quy tắc/công thức **Hình chữ nhật** trong bài được xác định bởi: Diện tích $S = '
-                           'x \\cdot y$; Đường chéo $d = \\sqrt{x^2 + y^2}$.',
-                           'Trong mọi trường hợp, **Hình chữ nhật** luôn được tính bằng công thức $ax + by = '
-                           'c$ ($a^2 + b^2 \\neq 0$) (thuộc Phương trình bậc nhất hai ẩn) mà không cần điều '
-                           'kiện của Bài 21: Giải bài toán bằng cách lập phương trình.',
-                           'Với bài toán minh họa: “Một mảnh đất hình chữ nhật có chiều dài hơn chiều rộng '
-                           '$4$ m và diện tích bằng $60\\text{ m}^2$. Tính chiều rộng của mảnh đất.”, lời '
-                           'giải đúng là: Gọi chiều rộng của mảnh đất là $x$ (m) ($x > 0$), khi đó chiều dài '
-                           'là $x + 4$ (m). Vì diện tích mảnh đất là $60\\text{ m}^2$ nên ta có phương...'],
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 21: Giải bài toán bằng cách '
+                 'lập phương trình**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Biểu diễn được các đại lượng chưa biết '
+                           'qua một ẩn và lập phương trình bậc hai.',
+                           'Trong **Bài 21: Giải bài toán bằng cách lập phương trình**, quy tắc/công thức '
+                           '**Hình chữ nhật** được viết là: Diện tích $S = x \\cdot y$; Đường chéo $d = '
+                           '\\sqrt{x^2 + y^2}$.',
+                           'Nếu áp dụng sai dấu/phép tính thành Diện tích $S = x \\cdot y$; Đường chéo $d = '
+                           '\\sqrt{x^2 - y^2}$ thì kết quả của **Hình chữ nhật** trong **Bài 21: Giải bài '
+                           'toán bằng cách lập phương trình** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Một mảnh đất hình chữ nhật có chiều dài hơn chiều rộng $4$ m '
+                           'và diện tích bằng $60\\text{ m}^2$. Tính chiều rộng của mảnh đất.”, kết quả giải '
+                           'đúng là: Gọi chiều rộng của mảnh đất là $x$ (m) ($x > 0$), khi đó chiều dài là '
+                           '$x + 4$ (m). Vì diện tích mảnh đất là $60\\text{ m}^2$ nên ta có p...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 21: Giải bài toán bằng cách lập phương '
-                        'trình. b) **Đúng** theo công thức trọng tâm **Hình chữ nhật** (Diện tích $S = x '
-                        '\\cdot y$; Đường chéo $d = \\sqrt{x^2 + y^2}$). c) **Sai** vì $ax + by = c$ ($a^2 + '
-                        'b^2 \\neq 0$) là công thức của nội dung khác, không phải quy tắc chung của **Hình '
-                        'chữ nhật**. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        'trình. b) **Đúng** theo công thức **Hình chữ nhật** (Diện tích $S = x \\cdot y$; '
+                        'Đường chéo $d = \\sqrt{x^2 + y^2}$). c) **Sai** vì công thức đúng của **Hình chữ '
+                        'nhật** phải là Diện tích $S = x \\cdot y$; Đường chéo $d = \\sqrt{x^2 + y^2}$ chứ '
+                        'không phải Diện tích $S = x \\cdot y$; Đường chéo $d = \\sqrt{x^2 - y^2}$. d) '
+                        '**Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 21: Giải bài toán bằng cách lập phương trình** để giải quyết tình '
-                 'huống sau: Một mảnh đất hình chữ nhật có chiều dài hơn chiều rộng $4$ m và diện tích bằng '
-                 '$60\\text{ m}^2$. Tính chiều rộng của mảnh đất. Kết quả và hướng giải nào dưới đây là '
-                 '**đúng**?',
-            'options': ['Thay $x = 2, y = -1$ vào phương trình thứ nhất: $2 \\cdot 2 - (-1) = 4 + 1 = 5$ '
-                        '(thỏa mãn). Thay $x = 2, y = -1$ vào phương trình thứ hai: $2 + 3 \\cdot (-1) = 2 - '
-                        '3 = -1$...',
-                        'Cộng từng vế hai phương trình của hệ, ta được: $5x = 10 \\Rightarrow x = 2$. Thay '
-                        '$x = 2$ vào phương trình $2x + y = 5$, ta có: $2 \\cdot 2 + y = 5 \\Rightarrow y = '
-                        '1$...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 21: Giải bài toán bằng cách lập phương trình** để '
+                 'giải bài toán sau: Một mảnh đất hình chữ nhật có chiều dài hơn chiều rộng $4$ m và diện '
+                 'tích bằng $60\\text{ m}^2$. Tính chiều rộng của mảnh đất. Cách giải và kết quả nào dưới '
+                 'đây là **đúng**?',
+            'options': ['Gọi chiều rộng của mảnh đất là $x$ (m) ($x > 0$), khi đó chiều dài là $x - 4$ (m). '
+                        'Vì diện tích mảnh đất là $60\\text{ m}^2$ nên ta có phương trình: $x(x + 4) = 60 '
+                        '\\Leftrightarrow x^2 + 4x - 60 = 0$...',
+                        'Gọi chiều rộng của mảnh đất là $x$ (m) ($x > 0$), khi đó chiều dài là $x + 4$ (m). '
+                        'Vì diện tích mảnh đất là $60\\text{ m}^2$ nên ta có phương trình: $x(x + 4) = 60 '
+                        '\\Leftrightarrow x^2 + 4x - 60 = 1$...',
                         'Gọi chiều rộng của mảnh đất là $x$ (m) ($x > 0$), khi đó chiều dài là $x + 4$ (m). '
                         'Vì diện tích mảnh đất là $60\\text{ m}^2$ nên ta có phương trình: $x(x + 4) = 60 '
                         '\\Leftrightarrow x^2 + 4x - 60 = 0$...',
-                        'Gọi số thứ nhất là $x$ và số thứ hai là $y$. Theo đề bài, ta có hệ phương trình: '
-                        '$\\begin{cases} x + y = 59 \\\\ 3y - 2x = 7 \\end{cases} \\Leftrightarrow '
-                        '\\begin{cases} 2x + 2y = 118 \\\\ -2x + 3y = 7 \\end{cases}$...'],
+                        'Gọi chiều rộng của mảnh đất là $x$ (m) ($x > 2$), khi đó chiều dài là $x + 4$ (m). '
+                        'Vì diện tích mảnh đất là $60\\text{ m}^2$ nên ta có phương trình: $x(x + 4) = 60 '
+                        '\\Leftrightarrow x^2 + 4x - 60 = 0$...'],
             'answer': 2,
             'solution': 'Lời giải chi tiết theo Bài 21: Giải bài toán bằng cách lập phương trình: Gọi chiều '
                         'rộng của mảnh đất là $x$ (m) ($x > 0$), khi đó chiều dài là $x + 4$ (m).\n'
@@ -3533,8 +3524,8 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
   'requirements': ['Xác định được tần số của một giá trị trong mẫu dữ liệu thống kê.',
                    'Lập được bảng tần số và đọc, giải thích được biểu đồ tần số (biểu đồ cột, biểu đồ đoạn '
                    'thẳng).',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Cỡ mẫu** ($N = m_1 + m_2 + \\dots + m_k$) '
-                   'vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 22: Bảng tần số và biểu đồ tần số** để giải bài tập minh '
+                   'họa và bài toán thực tiễn.'],
   'definition': 'Số lần xuất hiện của một giá trị trong mẫu dữ liệu được gọi là tần số của giá trị đó. Bảng '
                 'biểu diễn các giá trị cùng với tần số của chúng được gọi là bảng tần số.',
   'theory': '1. Tổng tất cả các tần số của các giá trị khác nhau trong bảng tần số luôn bằng cỡ mẫu $N$ ($N '
@@ -3570,27 +3561,32 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 22: Bảng tần số và biểu đồ tần số**, công thức hoặc quy '
-                 'tắc nào sau đây biểu diễn đúng **Cỡ mẫu**?',
-            'options': ['$ax + by = c$ ($a^2 + b^2 \\neq 0$)',
-                        '$\\begin{cases} a_1x + b_1y = c_1 \\\\ a_2x + b_2y = c_2 \\end{cases}$',
-                        'Từ $ax + by = c \\Rightarrow y = \\dfrac{c - ax}{b}$ ($b \\neq 0$)',
+            'q': 'Trong **Bài 22: Bảng tần số và biểu đồ tần số**, quy tắc hoặc công thức nào sau đây xác '
+                 'định đúng **Cỡ mẫu**?',
+            'options': ['$N = m_1 - m_2 + \\dots + m_k$',
+                        'Đảo ngược vế của quy tắc: $N = m_1 + m_2 + \\dots + m_k$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $N = m_1 + m_2 + \\dots + m_k$',
                         '$N = m_1 + m_2 + \\dots + m_k$'],
             'answer': 3,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 22: Bảng tần số và biểu đồ tần số, **Cỡ mẫu** '
-                        'được xác định bởi: $N = m_1 + m_2 + \\dots + m_k$. ($m_i$ là tần số của giá trị '
-                        '$x_i$)'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 22: Bảng tần số và biểu đồ tần số, **Cỡ mẫu** được '
+                        'xác định bởi: $N = m_1 + m_2 + \\dots + m_k$. ($m_i$ là tần số của giá trị $x_i$)'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 22: Bảng tần số và biểu đồ tần số**, nội dung/biểu thức $N = m_1 + m_2 + '
-                 '\\dots + m_k$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Cỡ mẫu',
-                        'Phương trình bậc nhất hai ẩn',
-                        'Hệ hai phương trình bậc nhất hai ẩn',
-                        'Phương pháp thế'],
+            'q': 'Theo định nghĩa trong **Bài 22: Bảng tần số và biểu đồ tần số**, khẳng định nào dưới đây '
+                 'là **đúng**?',
+            'options': ['Số lần xuất hiện của một giá trị trong mẫu dữ liệu được gọi là tần số của giá trị '
+                        'đó. Bảng biểu diễn các giá trị cùng với tần số c...',
+                        'Số lần xuất hiện của một giá trị trong mẫu dữ liệu được gọi là tần số của giá trị '
+                        'đó. Bảng biểu diễn các giá trị cùng với tần số c... (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Số lần xuất hiện của một giá trị trong mẫu dữ liệu được '
+                        'gọi là tần số của giá trị đó. Bảng biểu diễn các giá trị cùng với tần số c...',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Số lần xuất hiện của một giá '
+                        'trị trong mẫu dữ liệu được gọi là tần số của giá trị đó. Bảng biểu diễn các giá trị '
+                        'cùng với tần số c...'],
             'answer': 0,
-            'solution': 'Trong Bài 22: Bảng tần số và biểu đồ tần số, biểu thức/quy tắc $N = m_1 + m_2 + '
-                        '\\dots + m_k$ chính là nội dung của **Cỡ mẫu**.'},
+            'solution': 'Theo định nghĩa của Bài 22: Bảng tần số và biểu đồ tần số: Số lần xuất hiện của một '
+                        'giá trị trong mẫu dữ liệu được gọi là tần số của giá trị đó. Bảng biểu diễn các giá '
+                        'trị cùng với tần số c...'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Một bảng tần số thống kê điểm thi của một lớp có 4 mức điểm $6, 7, 8, 9$ với tần số lần '
@@ -3603,16 +3599,17 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 22: Bảng tần số và biểu đồ tần số** (Chương VII: Tần số và tần số tương '
-                 'đối), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của '
-                 'bài?',
-            'options': ['Nhận biết được phương trình bậc nhất hai ẩn $ax + by = c$ ($a \\neq 0$ hoặc $b '
-                        '\\neq 0$) và nghiệm của nó.',
-                        'Nhận biết được hệ hai phương trình bậc nhất hai ẩn và nghiệm của hệ.',
+            'q': 'Để nắm vững bản chất của **Bài 22: Bảng tần số và biểu đồ tần số**, nhận định nào sau đây '
+                 'là **chính xác**?',
+            'options': ['Xác định được tần số của một giá trị trong mẫu dữ liệu thống kê. (với dấu ngược '
+                        'lại)',
+                        'Đảo ngược vế của quy tắc: Xác định được tần số của một giá trị trong mẫu dữ liệu '
+                        'thống kê.',
                         'Xác định được tần số của một giá trị trong mẫu dữ liệu thống kê.',
-                        'Biểu diễn được tập nghiệm của phương trình bậc nhất hai ẩn trên mặt phẳng tọa độ.'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Xác định được tần số của một '
+                        'giá trị trong mẫu dữ liệu thống kê.'],
             'answer': 2,
-            'solution': 'Theo yêu cầu cần đạt của Bài 22: Bảng tần số và biểu đồ tần số: Xác định được tần '
+            'solution': 'Theo nội dung cốt lõi của Bài 22: Bảng tần số và biểu đồ tần số: Xác định được tần '
                         'số của một giá trị trong mẫu dữ liệu thống kê.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -3629,38 +3626,35 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 22: Bảng tần số và biểu '
-                 'đồ tần số**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Xác định được tần số của một giá '
-                           'trị trong mẫu dữ liệu thống kê.',
-                           'Quy tắc/công thức **Cỡ mẫu** trong bài được xác định bởi: $N = m_1 + m_2 + '
-                           '\\dots + m_k$.',
-                           'Trong mọi trường hợp, **Cỡ mẫu** luôn được tính bằng công thức $ax + by = c$ '
-                           '($a^2 + b^2 \\neq 0$) (thuộc Phương trình bậc nhất hai ẩn) mà không cần điều '
-                           'kiện của Bài 22: Bảng tần số và biểu đồ tần số.',
-                           'Với bài toán minh họa: “Điểm kiểm tra của 10 học sinh là: $7, 8, 8, 9, 7, 10, 8, '
-                           '9, 8, 7$. Tìm tần số của điểm $8$.”, lời giải đúng là: Trong dãy dữ liệu trên, '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 22: Bảng tần số và biểu đồ '
+                 'tần số**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Xác định được tần số của một giá trị '
+                           'trong mẫu dữ liệu thống kê.',
+                           'Trong **Bài 22: Bảng tần số và biểu đồ tần số**, quy tắc/công thức **Cỡ mẫu** '
+                           'được viết là: $N = m_1 + m_2 + \\dots + m_k$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $N = m_1 - m_2 + \\dots + m_k$ thì kết quả '
+                           'của **Cỡ mẫu** trong **Bài 22: Bảng tần số và biểu đồ tần số** vẫn không thay '
+                           'đổi.',
+                           'Xét ví dụ của bài: “Điểm kiểm tra của 10 học sinh là: $7, 8, 8, 9, 7, 10, 8, 9, '
+                           '8, 7$. Tìm tần số của điểm $8$.”, kết quả giải đúng là: Trong dãy dữ liệu trên, '
                            'giá trị $8$ xuất hiện $4$ lần nên tần số của điểm $8$ là $m = 4$.'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 22: Bảng tần số và biểu đồ tần số. b) '
-                        '**Đúng** theo công thức trọng tâm **Cỡ mẫu** ($N = m_1 + m_2 + \\dots + m_k$). c) '
-                        '**Sai** vì $ax + by = c$ ($a^2 + b^2 \\neq 0$) là công thức của nội dung khác, '
-                        'không phải quy tắc chung của **Cỡ mẫu**. d) **Đúng** theo lời giải ví dụ minh họa '
-                        'trong bài học.'},
+                        '**Đúng** theo công thức **Cỡ mẫu** ($N = m_1 + m_2 + \\dots + m_k$). c) **Sai** vì '
+                        'công thức đúng của **Cỡ mẫu** phải là $N = m_1 + m_2 + \\dots + m_k$ chứ không phải '
+                        '$N = m_1 - m_2 + \\dots + m_k$. d) **Đúng** theo lời giải ví dụ minh họa trong bài '
+                        'học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 22: Bảng tần số và biểu đồ tần số** để giải quyết tình huống sau: '
-                 'Điểm kiểm tra của 10 học sinh là: $7, 8, 8, 9, 7, 10, 8, 9, 8, 7$. Tìm tần số của điểm '
-                 '$8$. Kết quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Thay $x = 2, y = -1$ vào phương trình thứ nhất: $2 \\cdot 2 - (-1) = 4 + 1 = 5$ '
-                        '(thỏa mãn). Thay $x = 2, y = -1$ vào phương trình thứ hai: $2 + 3 \\cdot (-1) = 2 - '
-                        '3 = -1$...',
-                        'Cộng từng vế hai phương trình của hệ, ta được: $5x = 10 \\Rightarrow x = 2$. Thay '
-                        '$x = 2$ vào phương trình $2x + y = 5$, ta có: $2 \\cdot 2 + y = 5 \\Rightarrow y = '
-                        '1$...',
-                        'Gọi số thứ nhất là $x$ và số thứ hai là $y$. Theo đề bài, ta có hệ phương trình: '
-                        '$\\begin{cases} x + y = 59 \\\\ 3y - 2x = 7 \\end{cases} \\Leftrightarrow '
-                        '\\begin{cases} 2x + 2y = 118 \\\\ -2x + 3y = 7 \\end{cases}$...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 22: Bảng tần số và biểu đồ tần số** để giải bài '
+                 'toán sau: Điểm kiểm tra của 10 học sinh là: $7, 8, 8, 9, 7, 10, 8, 9, 8, 7$. Tìm tần số '
+                 'của điểm $8$. Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Trong dãy dữ liệu trên, giá trị $9$ xuất hiện $4$ lần nên tần số của điểm $8$ là $m '
+                        '= 4$.',
+                        'Trong dãy dữ liệu trên, giá trị $8$ xuất hiện $4$ lần nên tần số của điểm $8$ là $m '
+                        '= 3$.',
+                        'Trong dãy dữ liệu trên, giá trị $16$ xuất hiện $4$ lần nên tần số của điểm $8$ là '
+                        '$m = 4$.',
                         'Trong dãy dữ liệu trên, giá trị $8$ xuất hiện $4$ lần nên tần số của điểm $8$ là $m '
                         '= 4$.'],
             'answer': 3,
@@ -3685,8 +3679,8 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
   'requirements': ['Tính được tần số tương đối của một giá trị trong mẫu dữ liệu.',
                    'Lập được bảng tần số tương đối và vẽ/đọc được biểu đồ tần số tương đối (biểu đồ cột, '
                    'biểu đồ hình quạt tròn).',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Tần số tương đối** ($f_i = \\dfrac{m_i}{N} '
-                   '\\cdot 100\\%$) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 23: Bảng tần số tương đối và biểu đồ tần số tương đối** để '
+                   'giải bài tập minh họa và bài toán thực tiễn.'],
   'definition': 'Tần số tương đối $f_i$ của giá trị $x_i$ là tỉ số giữa tần số $m_i$ của giá trị đó và cỡ '
                 'mẫu $N$: $f_i = \\dfrac{m_i}{N}$ (thường được viết dưới dạng phần trăm).',
   'theory': '1. Tổng tất cả các tần số tương đối của các giá trị khác nhau trong mẫu dữ liệu luôn bằng $1$ '
@@ -3724,27 +3718,27 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 23: Bảng tần số tương đối và biểu đồ tần số tương đối**, '
-                 'công thức hoặc quy tắc nào sau đây biểu diễn đúng **Tần số tương đối**?',
+            'q': 'Trong **Bài 23: Bảng tần số tương đối và biểu đồ tần số tương đối**, quy tắc hoặc công '
+                 'thức nào sau đây xác định đúng **Tần số tương đối**?',
             'options': ['$f_i = \\dfrac{m_i}{N} \\cdot 100\\%$',
-                        '$m_i = N \\cdot f_i$',
-                        '$ax + by = c$ ($a^2 + b^2 \\neq 0$)',
-                        '$\\begin{cases} a_1x + b_1y = c_1 \\\\ a_2x + b_2y = c_2 \\end{cases}$'],
+                        '$f_i = \\dfrac{m_i}{N} : 100\\%$',
+                        '$f_i = \\dfrac{N}{m_i} \\cdot 100\\%$',
+                        '$f_i = \\dfrac{m_i}{N} \\cdot 102\\%$'],
             'answer': 0,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 23: Bảng tần số tương đối và biểu đồ tần số '
-                        'tương đối, **Tần số tương đối** được xác định bởi: $f_i = \\dfrac{m_i}{N} \\cdot '
-                        '100\\%$. ($m_i$ là tần số, $N$ là cỡ mẫu)'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 23: Bảng tần số tương đối và biểu đồ tần số tương '
+                        'đối, **Tần số tương đối** được xác định bởi: $f_i = \\dfrac{m_i}{N} \\cdot 100\\%$. '
+                        '($m_i$ là tần số, $N$ là cỡ mẫu)'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 23: Bảng tần số tương đối và biểu đồ tần số tương đối**, nội dung/biểu thức '
-                 '$m_i = N \\cdot f_i$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Tần số tương đối',
-                        'Tính tần số từ tần số tương đối',
-                        'Phương trình bậc nhất hai ẩn',
-                        'Hệ hai phương trình bậc nhất hai ẩn'],
+            'q': 'Khi học **Bài 23: Bảng tần số tương đối và biểu đồ tần số tương đối**, biểu thức hoặc quy '
+                 'tắc nào dưới đây biểu diễn đúng **Tính tần số từ tần số tương đối**?',
+            'options': ['$m_i = N : f_i$',
+                        '$m_i = N \\cdot f_i$',
+                        'Đảo ngược vế của quy tắc: $m_i = N \\cdot f_i$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $m_i = N \\cdot f_i$'],
             'answer': 1,
-            'solution': 'Trong Bài 23: Bảng tần số tương đối và biểu đồ tần số tương đối, biểu thức/quy tắc '
-                        '$m_i = N \\cdot f_i$ chính là nội dung của **Tính tần số từ tần số tương đối**.'},
+            'solution': 'Trong Bài 23: Bảng tần số tương đối và biểu đồ tần số tương đối, **Tính tần số từ '
+                        'tần số tương đối** có công thức/quy tắc là: $m_i = N \\cdot f_i$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': "Khảo sát 200 khách hàng về mức độ hài lòng, tần số tương đối của mức 'Rất hài lòng' là "
@@ -3756,17 +3750,17 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 23: Bảng tần số tương đối và biểu đồ tần số tương đối** (Chương VII: Tần số '
-                 'và tần số tương đối), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất '
-                 'kiến thức của bài?',
-            'options': ['Nhận biết được phương trình bậc nhất hai ẩn $ax + by = c$ ($a \\neq 0$ hoặc $b '
-                        '\\neq 0$) và nghiệm của nó.',
-                        'Nhận biết được hệ hai phương trình bậc nhất hai ẩn và nghiệm của hệ.',
-                        'Biểu diễn được tập nghiệm của phương trình bậc nhất hai ẩn trên mặt phẳng tọa độ.',
+            'q': 'Để nắm vững bản chất của **Bài 23: Bảng tần số tương đối và biểu đồ tần số tương đối**, '
+                 'nhận định nào sau đây là **chính xác**?',
+            'options': ['Tính được tần số tương đối của một giá trị trong mẫu dữ liệu. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Tính được tần số tương đối của một giá trị trong mẫu dữ '
+                        'liệu.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Tính được tần số tương đối của '
+                        'một giá trị trong mẫu dữ liệu.',
                         'Tính được tần số tương đối của một giá trị trong mẫu dữ liệu.'],
             'answer': 3,
-            'solution': 'Theo yêu cầu cần đạt của Bài 23: Bảng tần số tương đối và biểu đồ tần số tương đối: '
-                        'Tính được tần số tương đối của một giá trị trong mẫu dữ liệu.'},
+            'solution': 'Theo nội dung cốt lõi của Bài 23: Bảng tần số tương đối và biểu đồ tần số tương '
+                        'đối: Tính được tần số tương đối của một giá trị trong mẫu dữ liệu.'},
            {'level': 'hieu',
             'type': 'tf4',
             'q': 'Một cuộc khảo sát phương tiện đến trường của học sinh khối 9 cho kết quả tần số tương đối: '
@@ -3784,39 +3778,34 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 23: Bảng tần số tương '
-                 'đối và biểu đồ tần số tương đối**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Tính được tần số tương đối của một '
-                           'giá trị trong mẫu dữ liệu.',
-                           'Quy tắc/công thức **Tần số tương đối** trong bài được xác định bởi: $f_i = '
-                           '\\dfrac{m_i}{N} \\cdot 100\\%$.',
-                           'Trong mọi trường hợp, **Tần số tương đối** luôn được tính bằng công thức $ax + '
-                           'by = c$ ($a^2 + b^2 \\neq 0$) (thuộc Phương trình bậc nhất hai ẩn) mà không cần '
-                           'điều kiện của Bài 23: Bảng tần số tương đối và biểu đồ tần số tương đối.',
-                           'Với bài toán minh họa: “Trong một lớp 40 học sinh, có 10 học sinh đạt điểm Giỏi. '
-                           'Tính tần số tương đối của mức điểm Giỏi.”, lời giải đúng là: Tần số tương đối '
-                           'của mức điểm Giỏi là $f = \\dfrac{10}{40} \\cdot 100\\% = 25\\%$.'],
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 23: Bảng tần số tương đối '
+                 'và biểu đồ tần số tương đối**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Tính được tần số tương đối của một giá '
+                           'trị trong mẫu dữ liệu.',
+                           'Trong **Bài 23: Bảng tần số tương đối và biểu đồ tần số tương đối**, quy '
+                           'tắc/công thức **Tần số tương đối** được viết là: $f_i = \\dfrac{m_i}{N} \\cdot '
+                           '100\\%$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $f_i = \\dfrac{m_i}{N} : 100\\%$ thì kết quả '
+                           'của **Tần số tương đối** trong **Bài 23: Bảng tần số tương đối và biểu đồ tần số '
+                           'tương đối** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Trong một lớp 40 học sinh, có 10 học sinh đạt điểm Giỏi. '
+                           'Tính tần số tương đối của mức điểm Giỏi.”, kết quả giải đúng là: Tần số tương '
+                           'đối của mức điểm Giỏi là $f = \\dfrac{10}{40} \\cdot 100\\% = 25\\%$.'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 23: Bảng tần số tương đối và biểu đồ tần '
-                        'số tương đối. b) **Đúng** theo công thức trọng tâm **Tần số tương đối** ($f_i = '
-                        '\\dfrac{m_i}{N} \\cdot 100\\%$). c) **Sai** vì $ax + by = c$ ($a^2 + b^2 \\neq 0$) '
-                        'là công thức của nội dung khác, không phải quy tắc chung của **Tần số tương đối**. '
-                        'd) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        'số tương đối. b) **Đúng** theo công thức **Tần số tương đối** ($f_i = '
+                        '\\dfrac{m_i}{N} \\cdot 100\\%$). c) **Sai** vì công thức đúng của **Tần số tương '
+                        'đối** phải là $f_i = \\dfrac{m_i}{N} \\cdot 100\\%$ chứ không phải $f_i = '
+                        '\\dfrac{m_i}{N} : 100\\%$. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 23: Bảng tần số tương đối và biểu đồ tần số tương đối** để giải '
-                 'quyết tình huống sau: Trong một lớp 40 học sinh, có 10 học sinh đạt điểm Giỏi. Tính tần số '
-                 'tương đối của mức điểm Giỏi. Kết quả và hướng giải nào dưới đây là **đúng**?',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 23: Bảng tần số tương đối và biểu đồ tần số tương '
+                 'đối** để giải bài toán sau: Trong một lớp 40 học sinh, có 10 học sinh đạt điểm Giỏi. Tính '
+                 'tần số tương đối của mức điểm Giỏi. Cách giải và kết quả nào dưới đây là **đúng**?',
             'options': ['Tần số tương đối của mức điểm Giỏi là $f = \\dfrac{10}{40} \\cdot 100\\% = 25\\%$.',
-                        'Thay $x = 2, y = -1$ vào phương trình thứ nhất: $2 \\cdot 2 - (-1) = 4 + 1 = 5$ '
-                        '(thỏa mãn). Thay $x = 2, y = -1$ vào phương trình thứ hai: $2 + 3 \\cdot (-1) = 2 - '
-                        '3 = -1$...',
-                        'Cộng từng vế hai phương trình của hệ, ta được: $5x = 10 \\Rightarrow x = 2$. Thay '
-                        '$x = 2$ vào phương trình $2x + y = 5$, ta có: $2 \\cdot 2 + y = 5 \\Rightarrow y = '
-                        '1$...',
-                        'Gọi số thứ nhất là $x$ và số thứ hai là $y$. Theo đề bài, ta có hệ phương trình: '
-                        '$\\begin{cases} x + y = 59 \\\\ 3y - 2x = 7 \\end{cases} \\Leftrightarrow '
-                        '\\begin{cases} 2x + 2y = 118 \\\\ -2x + 3y = 7 \\end{cases}$...'],
+                        'Tần số tương đối của mức điểm Giỏi là $f = \\dfrac{10}{40} : 100\\% = 25\\%$.',
+                        'Tần số tương đối của mức điểm Giỏi là $f = \\dfrac{40}{10} \\cdot 100\\% = 25\\%$.',
+                        'Tần số tương đối của mức điểm Giỏi là $f = \\dfrac{20}{40} \\cdot 100\\% = 25\\%$.'],
             'answer': 0,
             'solution': 'Lời giải chi tiết theo Bài 23: Bảng tần số tương đối và biểu đồ tần số tương đối: '
                         'Tần số tương đối của mức điểm Giỏi là $f = \\dfrac{10}{40} \\cdot 100\\% = 25\\%$.'},
@@ -3838,8 +3827,8 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
   'requirements': ['Hiểu được ý nghĩa của việc ghép nhóm dữ liệu và lập được bảng tần số, tần số tương đối '
                    'ghép nhóm.',
                    'Đọc và phân tích được biểu đồ tần số tương đối ghép nhóm (dạng cột và dạng đoạn thẳng).',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Quy ước nhóm $[a; b)$** ($a \\le x < b$) '
-                   'vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 24: Bảng tần số, tần số tương đối ghép nhóm và biểu đồ** để '
+                   'giải bài tập minh họa và bài toán thực tiễn.'],
   'definition': 'Khi mẫu số liệu có nhiều giá trị khác nhau, người ta thường chia miền giá trị thành các nửa '
                 'khoảng $[a; b)$ (gọi là các nhóm) và đếm số giá trị rơi vào mỗi nhóm để lập bảng tần số '
                 'ghép nhóm.',
@@ -3879,27 +3868,27 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 24: Bảng tần số, tần số tương đối ghép nhóm và biểu '
-                 'đồ**, công thức hoặc quy tắc nào sau đây biểu diễn đúng **Quy ước nhóm $[a; b)$**?',
-            'options': ['$c_i = \\dfrac{a_i + b_i}{2}$',
+            'q': 'Trong **Bài 24: Bảng tần số, tần số tương đối ghép nhóm và biểu đồ**, quy tắc hoặc công '
+                 'thức nào sau đây xác định đúng **Quy ước nhóm $[a; b)$**?',
+            'options': ['$a \\ge x < b$',
                         '$a \\le x < b$',
-                        '$ax + by = c$ ($a^2 + b^2 \\neq 0$)',
-                        '$\\begin{cases} a_1x + b_1y = c_1 \\\\ a_2x + b_2y = c_2 \\end{cases}$'],
+                        'Đảo ngược vế của quy tắc: $a \\le x < b$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $a \\le x < b$'],
             'answer': 1,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 24: Bảng tần số, tần số tương đối ghép nhóm '
-                        'và biểu đồ, **Quy ước nhóm $[a; b)$** được xác định bởi: $a \\le x < b$. (Bao gồm '
-                        'đầu mút trái $a$, không bao gồm đầu mút phải $b$)'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 24: Bảng tần số, tần số tương đối ghép nhóm và '
+                        'biểu đồ, **Quy ước nhóm $[a; b)$** được xác định bởi: $a \\le x < b$. (Bao gồm đầu '
+                        'mút trái $a$, không bao gồm đầu mút phải $b$)'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 24: Bảng tần số, tần số tương đối ghép nhóm và biểu đồ**, nội dung/biểu thức '
-                 '$c_i = \\dfrac{a_i + b_i}{2}$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Quy ước nhóm $[a; b)$',
-                        'Phương trình bậc nhất hai ẩn',
-                        'Giá trị đại diện của nhóm',
-                        'Hệ hai phương trình bậc nhất hai ẩn'],
+            'q': 'Khi học **Bài 24: Bảng tần số, tần số tương đối ghép nhóm và biểu đồ**, biểu thức hoặc quy '
+                 'tắc nào dưới đây biểu diễn đúng **Giá trị đại diện của nhóm**?',
+            'options': ['$c_i = \\dfrac{a_i - b_i}{2}$',
+                        '$c_i = \\dfrac{2}{a_i + b_i}$',
+                        '$c_i = \\dfrac{a_i + b_i}{2}$',
+                        '$c_i = \\dfrac{a_i + b_i}{4}$'],
             'answer': 2,
-            'solution': 'Trong Bài 24: Bảng tần số, tần số tương đối ghép nhóm và biểu đồ, biểu thức/quy tắc '
-                        '$c_i = \\dfrac{a_i + b_i}{2}$ chính là nội dung của **Giá trị đại diện của nhóm**.'},
+            'solution': 'Trong Bài 24: Bảng tần số, tần số tương đối ghép nhóm và biểu đồ, **Giá trị đại '
+                        'diện của nhóm** có công thức/quy tắc là: $c_i = \\dfrac{a_i + b_i}{2}$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Thời gian hoàn thành bài tập (phút) của 40 học sinh được chia thành 4 nhóm: $[5; 10)$, '
@@ -3913,17 +3902,18 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 24: Bảng tần số, tần số tương đối ghép nhóm và biểu đồ** (Chương VII: Tần số '
-                 'và tần số tương đối), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất '
-                 'kiến thức của bài?',
+            'q': 'Để nắm vững bản chất của **Bài 24: Bảng tần số, tần số tương đối ghép nhóm và biểu đồ**, '
+                 'nhận định nào sau đây là **chính xác**?',
             'options': ['Hiểu được ý nghĩa của việc ghép nhóm dữ liệu và lập được bảng tần số, tần số tương '
                         'đối ghép nhóm.',
-                        'Nhận biết được phương trình bậc nhất hai ẩn $ax + by = c$ ($a \\neq 0$ hoặc $b '
-                        '\\neq 0$) và nghiệm của nó.',
-                        'Nhận biết được hệ hai phương trình bậc nhất hai ẩn và nghiệm của hệ.',
-                        'Biểu diễn được tập nghiệm của phương trình bậc nhất hai ẩn trên mặt phẳng tọa độ.'],
+                        'Hiểu được ý nghĩa của việc ghép nhóm dữ liệu và lập được bảng tần số, tần số tương '
+                        'đối ghép nhóm. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Hiểu được ý nghĩa của việc ghép nhóm dữ liệu và lập được '
+                        'bảng tần số, tần số tương đối ghép nhóm.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Hiểu được ý nghĩa của việc ghép '
+                        'nhóm dữ liệu và lập được bảng tần số, tần số tương đối ghép nhóm.'],
             'answer': 0,
-            'solution': 'Theo yêu cầu cần đạt của Bài 24: Bảng tần số, tần số tương đối ghép nhóm và biểu '
+            'solution': 'Theo nội dung cốt lõi của Bài 24: Bảng tần số, tần số tương đối ghép nhóm và biểu '
                         'đồ: Hiểu được ý nghĩa của việc ghép nhóm dữ liệu và lập được bảng tần số, tần số '
                         'tương đối ghép nhóm.'},
            {'level': 'hieu',
@@ -3942,43 +3932,39 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 24: Bảng tần số, tần số '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 24: Bảng tần số, tần số '
                  'tương đối ghép nhóm và biểu đồ**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Hiểu được ý nghĩa của việc ghép '
-                           'nhóm dữ liệu và lập được bảng tần số, tần số tương đối ghép nhóm.',
-                           'Quy tắc/công thức **Quy ước nhóm $[a; b)$** trong bài được xác định bởi: $a \\le '
-                           'x < b$.',
-                           'Trong mọi trường hợp, **Quy ước nhóm $[a; b)$** luôn được tính bằng công thức '
-                           '$ax + by = c$ ($a^2 + b^2 \\neq 0$) (thuộc Phương trình bậc nhất hai ẩn) mà '
-                           'không cần điều kiện của Bài 24: Bảng tần số, tần số tương đối ghép nhóm và biểu '
-                           'đồ.',
-                           'Với bài toán minh họa: “Cho nhóm chiều cao $[155; 160)$ (cm). Hỏi học sinh cao '
-                           '$160$ cm có thuộc nhóm này không? Tìm giá trị đại diện của nhóm.”, lời giải đúng '
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Hiểu được ý nghĩa của việc ghép nhóm dữ '
+                           'liệu và lập được bảng tần số, tần số tương đối ghép nhóm.',
+                           'Trong **Bài 24: Bảng tần số, tần số tương đối ghép nhóm và biểu đồ**, quy '
+                           'tắc/công thức **Quy ước nhóm $[a; b)$** được viết là: $a \\le x < b$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $a \\ge x < b$ thì kết quả của **Quy ước '
+                           'nhóm $[a; b)$** trong **Bài 24: Bảng tần số, tần số tương đối ghép nhóm và biểu '
+                           'đồ** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Cho nhóm chiều cao $[155; 160)$ (cm). Hỏi học sinh cao $160$ '
+                           'cm có thuộc nhóm này không? Tìm giá trị đại diện của nhóm.”, kết quả giải đúng '
                            'là: Nhóm $[155; 160)$ gồm các giá trị $155 \\le x < 160$, nên học sinh cao $160$ '
-                           'cm không thuộc nhóm này (mà thuộc nhóm tiếp theo $[160; 165)$)....'],
+                           'cm không thuộc nhóm này (mà thuộc nhóm tiếp theo $[160; 165)$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 24: Bảng tần số, tần số tương đối ghép '
-                        'nhóm và biểu đồ. b) **Đúng** theo công thức trọng tâm **Quy ước nhóm $[a; b)$** ($a '
-                        '\\le x < b$). c) **Sai** vì $ax + by = c$ ($a^2 + b^2 \\neq 0$) là công thức của '
-                        'nội dung khác, không phải quy tắc chung của **Quy ước nhóm $[a; b)$**. d) **Đúng** '
-                        'theo lời giải ví dụ minh họa trong bài học.'},
+                        'nhóm và biểu đồ. b) **Đúng** theo công thức **Quy ước nhóm $[a; b)$** ($a \\le x < '
+                        'b$). c) **Sai** vì công thức đúng của **Quy ước nhóm $[a; b)$** phải là $a \\le x < '
+                        'b$ chứ không phải $a \\ge x < b$. d) **Đúng** theo lời giải ví dụ minh họa trong '
+                        'bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 24: Bảng tần số, tần số tương đối ghép nhóm và biểu đồ** để giải '
-                 'quyết tình huống sau: Cho nhóm chiều cao $[155; 160)$ (cm). Hỏi học sinh cao $160$ cm có '
-                 'thuộc nhóm này không? Tìm giá trị đại diện của nhóm. Kết quả và hướng giải nào dưới đây là '
-                 '**đúng**?',
-            'options': ['Thay $x = 2, y = -1$ vào phương trình thứ nhất: $2 \\cdot 2 - (-1) = 4 + 1 = 5$ '
-                        '(thỏa mãn). Thay $x = 2, y = -1$ vào phương trình thứ hai: $2 + 3 \\cdot (-1) = 2 - '
-                        '3 = -1$...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 24: Bảng tần số, tần số tương đối ghép nhóm và biểu '
+                 'đồ** để giải bài toán sau: Cho nhóm chiều cao $[155; 160)$ (cm). Hỏi học sinh cao $160$ cm '
+                 'có thuộc nhóm này không? Tìm giá trị đại diện của nhóm. Cách giải và kết quả nào dưới đây '
+                 'là **đúng**?',
+            'options': ['Nhóm $[155; 160)$ gồm các giá trị $155 \\ge x < 160$, nên học sinh cao $160$ cm '
+                        'không thuộc nhóm này (mà thuộc nhóm tiếp theo $[160; 165)$). Giá trị đạ...',
                         'Nhóm $[155; 160)$ gồm các giá trị $155 \\le x < 160$, nên học sinh cao $160$ cm '
-                        'không thuộc nhóm này (mà thuộc nhóm tiếp theo $[160; 165)$). Giá trị đại diệ...',
-                        'Cộng từng vế hai phương trình của hệ, ta được: $5x = 10 \\Rightarrow x = 2$. Thay '
-                        '$x = 2$ vào phương trình $2x + y = 5$, ta có: $2 \\cdot 2 + y = 5 \\Rightarrow y = '
-                        '1$...',
-                        'Gọi số thứ nhất là $x$ và số thứ hai là $y$. Theo đề bài, ta có hệ phương trình: '
-                        '$\\begin{cases} x + y = 59 \\\\ 3y - 2x = 7 \\end{cases} \\Leftrightarrow '
-                        '\\begin{cases} 2x + 2y = 118 \\\\ -2x + 3y = 7 \\end{cases}$...'],
+                        'không thuộc nhóm này (mà thuộc nhóm tiếp theo $[160; 165)$). Giá trị đạ...',
+                        'Nhóm $[155; 160)$ gồm các giá trị $155 \\le x < 160$, nên học sinh cao $160$ cm '
+                        'không thuộc nhóm này (mà thuộc nhóm tiếp theo $[160; 164)$). Giá trị đạ...',
+                        'Nhóm $[157; 160)$ gồm các giá trị $155 \\le x < 160$, nên học sinh cao $160$ cm '
+                        'không thuộc nhóm này (mà thuộc nhóm tiếp theo $[160; 165)$). Giá trị đạ...'],
             'answer': 1,
             'solution': 'Lời giải chi tiết theo Bài 24: Bảng tần số, tần số tương đối ghép nhóm và biểu đồ: '
                         'Nhóm $[155; 160)$ gồm các giá trị $155 \\le x < 160$, nên học sinh cao $160$ cm '
@@ -4004,8 +3990,8 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
                  'biến cố.',
   'requirements': ['Nhận biết được phép thử ngẫu nhiên và xác định được không gian mẫu $\\Omega$.',
                    'Liệt kê và đếm được số kết quả thuận lợi cho một biến cố liên quan tới phép thử.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Gieo 1 đồng xu 2 lần** ($\\Omega = '
-                   '\\{\\text{SS}, \\text{SN}, \\text{NS}, \\text{NN}\\}$) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 25: Phép thử ngẫu nhiên và không gian mẫu** để giải bài tập '
+                   'minh họa và bài toán thực tiễn.'],
   'definition': 'Phép thử ngẫu nhiên (gọi tắt là phép thử) là một hoạt động mà ta không thể biết trước được '
                 'kết quả của nó, nhưng biết tất cả các kết quả có thể xảy ra. Tập hợp tất cả các kết quả có '
                 'thể xảy ra của phép thử gọi là không gian mẫu, kí hiệu là $\\Omega$.',
@@ -4046,28 +4032,30 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 25: Phép thử ngẫu nhiên và không gian mẫu**, công thức '
-                 'hoặc quy tắc nào sau đây biểu diễn đúng **Gieo 1 đồng xu 2 lần**?',
-            'options': ['$\\Omega = \\{(i; j) \\mid 1 \\le i, j \\le 6\\}$',
-                        '$ax + by = c$ ($a^2 + b^2 \\neq 0$)',
+            'q': 'Trong **Bài 25: Phép thử ngẫu nhiên và không gian mẫu**, quy tắc hoặc công thức nào sau '
+                 'đây xác định đúng **Gieo 1 đồng xu 2 lần**?',
+            'options': ['$\\Omega = \\{\\text{SS}, \\text{SN}, \\text{NS}, \\text{NN}\\}$ (với dấu ngược '
+                        'lại)',
+                        'Đảo ngược vế của quy tắc: $\\Omega = \\{\\text{SS}, \\text{SN}, \\text{NS}, '
+                        '\\text{NN}\\}$',
                         '$\\Omega = \\{\\text{SS}, \\text{SN}, \\text{NS}, \\text{NN}\\}$',
-                        '$\\begin{cases} a_1x + b_1y = c_1 \\\\ a_2x + b_2y = c_2 \\end{cases}$'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\Omega = \\{\\text{SS}, '
+                        '\\text{SN}, \\text{NS}, \\text{NN}\\}$'],
             'answer': 2,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 25: Phép thử ngẫu nhiên và không gian mẫu, '
-                        '**Gieo 1 đồng xu 2 lần** được xác định bởi: $\\Omega = \\{\\text{SS}, \\text{SN}, '
+            'solution': 'Theo kiến thức trọng tâm của Bài 25: Phép thử ngẫu nhiên và không gian mẫu, **Gieo '
+                        '1 đồng xu 2 lần** được xác định bởi: $\\Omega = \\{\\text{SS}, \\text{SN}, '
                         '\\text{NS}, \\text{NN}\\}$. (Số phần tử $n(\\Omega) = 4$)'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 25: Phép thử ngẫu nhiên và không gian mẫu**, nội dung/biểu thức $\\Omega = '
-                 '\\{(i; j) \\mid 1 \\le i, j \\le 6\\}$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Gieo 1 đồng xu 2 lần',
-                        'Phương trình bậc nhất hai ẩn',
-                        'Hệ hai phương trình bậc nhất hai ẩn',
-                        'Gieo 2 con xúc xắc'],
+            'q': 'Khi học **Bài 25: Phép thử ngẫu nhiên và không gian mẫu**, biểu thức hoặc quy tắc nào dưới '
+                 'đây biểu diễn đúng **Gieo 2 con xúc xắc**?',
+            'options': ['$\\Omega = \\{(i; j) \\mid 1 \\ge i, j \\le 6\\}$',
+                        '$\\Omega = \\{(i; j) \\mid 1 \\le i, j \\le 5\\}$',
+                        '$\\Omega = \\{(i; j) \\mid 2 \\le i, j \\le 6\\}$',
+                        '$\\Omega = \\{(i; j) \\mid 1 \\le i, j \\le 6\\}$'],
             'answer': 3,
-            'solution': 'Trong Bài 25: Phép thử ngẫu nhiên và không gian mẫu, biểu thức/quy tắc $\\Omega = '
-                        '\\{(i; j) \\mid 1 \\le i, j \\le 6\\}$ chính là nội dung của **Gieo 2 con xúc '
-                        'xắc**.'},
+            'solution': 'Trong Bài 25: Phép thử ngẫu nhiên và không gian mẫu, **Gieo 2 con xúc xắc** có công '
+                        'thức/quy tắc là: $\\Omega = \\{(i; j) \\mid 1 \\le i, j \\le 6\\}$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Một hộp có 4 quả bóng đánh số $1, 2, 3, 4$. Lấy ngẫu nhiên đồng thời 2 quả bóng từ hộp. Số '
@@ -4080,16 +4068,17 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 25: Phép thử ngẫu nhiên và không gian mẫu** (Chương VIII: Xác suất của biến '
-                 'cố trong một số mô hình xác suất đơn giản), khẳng định nào sau đây phản ánh **đúng** yêu '
-                 'cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Nhận biết được phương trình bậc nhất hai ẩn $ax + by = c$ ($a \\neq 0$ hoặc $b '
-                        '\\neq 0$) và nghiệm của nó.',
+            'q': 'Để nắm vững bản chất của **Bài 25: Phép thử ngẫu nhiên và không gian mẫu**, nhận định nào '
+                 'sau đây là **chính xác**?',
+            'options': ['Nhận biết được phép thử ngẫu nhiên và xác định được không gian mẫu $\\Omega$. (với '
+                        'dấu ngược lại)',
                         'Nhận biết được phép thử ngẫu nhiên và xác định được không gian mẫu $\\Omega$.',
-                        'Nhận biết được hệ hai phương trình bậc nhất hai ẩn và nghiệm của hệ.',
-                        'Biểu diễn được tập nghiệm của phương trình bậc nhất hai ẩn trên mặt phẳng tọa độ.'],
+                        'Đảo ngược vế của quy tắc: Nhận biết được phép thử ngẫu nhiên và xác định được không '
+                        'gian mẫu $\\Omega$.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nhận biết được phép thử ngẫu '
+                        'nhiên và xác định được không gian mẫu $\\Omega$.'],
             'answer': 1,
-            'solution': 'Theo yêu cầu cần đạt của Bài 25: Phép thử ngẫu nhiên và không gian mẫu: Nhận biết '
+            'solution': 'Theo nội dung cốt lõi của Bài 25: Phép thử ngẫu nhiên và không gian mẫu: Nhận biết '
                         'được phép thử ngẫu nhiên và xác định được không gian mẫu $\\Omega$.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -4108,44 +4097,44 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 25: Phép thử ngẫu nhiên '
-                 'và không gian mẫu**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được phép thử ngẫu nhiên '
-                           'và xác định được không gian mẫu $\\Omega$.',
-                           'Quy tắc/công thức **Gieo 1 đồng xu 2 lần** trong bài được xác định bởi: $\\Omega '
-                           '= \\{\\text{SS}, \\text{SN}, \\text{NS}, \\text{NN}\\}$.',
-                           'Trong mọi trường hợp, **Gieo 1 đồng xu 2 lần** luôn được tính bằng công thức $ax '
-                           '+ by = c$ ($a^2 + b^2 \\neq 0$) (thuộc Phương trình bậc nhất hai ẩn) mà không '
-                           'cần điều kiện của Bài 25: Phép thử ngẫu nhiên và không gian mẫu.',
-                           'Với bài toán minh họa: “Gieo một đồng xu cân đối hai lần liên tiếp. Viết không '
-                           "gian mẫu $\\Omega$ và liệt kê các kết quả thuận lợi cho biến cố $A$: 'Có đúng "
-                           'một lần...”, lời giải đúng là: Kí hiệu S là mặt sấp, N là mặt ngửa. Không gian '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 25: Phép thử ngẫu nhiên và '
+                 'không gian mẫu**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết được phép thử ngẫu nhiên và '
+                           'xác định được không gian mẫu $\\Omega$.',
+                           'Trong **Bài 25: Phép thử ngẫu nhiên và không gian mẫu**, quy tắc/công thức '
+                           '**Gieo 1 đồng xu 2 lần** được viết là: $\\Omega = \\{\\text{SS}, \\text{SN}, '
+                           '\\text{NS}, \\text{NN}\\}$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $\\Omega = \\{\\text{SS}, \\text{SN}, '
+                           '\\text{NS}, \\text{NN}\\}$ (với dấu ngược lại) thì kết quả của **Gieo 1 đồng xu '
+                           '2 lần** trong **Bài 25: Phép thử ngẫu nhiên và không gian mẫu** vẫn không thay '
+                           'đổi.',
+                           'Xét ví dụ của bài: “Gieo một đồng xu cân đối hai lần liên tiếp. Viết không gian '
+                           "mẫu $\\Omega$ và liệt kê các kết quả thuận lợi cho biến cố $A$: 'Có đúng "
+                           'một...”, kết quả giải đúng là: Kí hiệu S là mặt sấp, N là mặt ngửa. Không gian '
                            'mẫu là $\\Omega = \\{\\text{SS}, \\text{SN}, \\text{NS}, \\text{NN}\\}$ gồm $4$ '
-                           'phần tử. Các kết qu...'],
+                           'phần tử. Các k...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 25: Phép thử ngẫu nhiên và không gian mẫu. '
-                        'b) **Đúng** theo công thức trọng tâm **Gieo 1 đồng xu 2 lần** ($\\Omega = '
-                        '\\{\\text{SS}, \\text{SN}, \\text{NS}, \\text{NN}\\}$). c) **Sai** vì $ax + by = c$ '
-                        '($a^2 + b^2 \\neq 0$) là công thức của nội dung khác, không phải quy tắc chung của '
-                        '**Gieo 1 đồng xu 2 lần**. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        'b) **Đúng** theo công thức **Gieo 1 đồng xu 2 lần** ($\\Omega = \\{\\text{SS}, '
+                        '\\text{SN}, \\text{NS}, \\text{NN}\\}$). c) **Sai** vì công thức đúng của **Gieo 1 '
+                        'đồng xu 2 lần** phải là $\\Omega = \\{\\text{SS}, \\text{SN}, \\text{NS}, '
+                        '\\text{NN}\\}$ chứ không phải $\\Omega = \\{\\text{SS}, \\text{SN}, \\text{NS}, '
+                        '\\text{NN}\\}$ (với dấu ngược lại). d) **Đúng** theo lời giải ví dụ minh họa trong '
+                        'bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 25: Phép thử ngẫu nhiên và không gian mẫu** để giải quyết tình '
-                 'huống sau: Gieo một đồng xu cân đối hai lần liên tiếp. Viết không gian mẫu $\\Omega$ và '
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 25: Phép thử ngẫu nhiên và không gian mẫu** để giải '
+                 'bài toán sau: Gieo một đồng xu cân đối hai lần liên tiếp. Viết không gian mẫu $\\Omega$ và '
                  "liệt kê các kết quả thuận lợi cho biến cố $A$: 'Có đúng một lần xuất hiện mặt sấp (S)'. "
-                 'Kết quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Thay $x = 2, y = -1$ vào phương trình thứ nhất: $2 \\cdot 2 - (-1) = 4 + 1 = 5$ '
-                        '(thỏa mãn). Thay $x = 2, y = -1$ vào phương trình thứ hai: $2 + 3 \\cdot (-1) = 2 - '
-                        '3 = -1$...',
-                        'Cộng từng vế hai phương trình của hệ, ta được: $5x = 10 \\Rightarrow x = 2$. Thay '
-                        '$x = 2$ vào phương trình $2x + y = 5$, ta có: $2 \\cdot 2 + y = 5 \\Rightarrow y = '
-                        '1$...',
+                 'Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Kí hiệu S là mặt sấp, N là mặt ngửa. Không gian mẫu là $\\Omega = \\{\\text{SS}, '
+                        '\\text{SN}, \\text{NS}, \\text{NN}\\}$ gồm $5$ phần tử. Các kết quả thuận lợ...',
                         'Kí hiệu S là mặt sấp, N là mặt ngửa. Không gian mẫu là $\\Omega = \\{\\text{SS}, '
-                        '\\text{SN}, \\text{NS}, \\text{NN}\\}$ gồm $4$ phần tử. Các kết quả thuận lợi '
-                        'cho...',
-                        'Gọi số thứ nhất là $x$ và số thứ hai là $y$. Theo đề bài, ta có hệ phương trình: '
-                        '$\\begin{cases} x + y = 59 \\\\ 3y - 2x = 7 \\end{cases} \\Leftrightarrow '
-                        '\\begin{cases} 2x + 2y = 118 \\\\ -2x + 3y = 7 \\end{cases}$...'],
+                        '\\text{SN}, \\text{NS}, \\text{NN}\\}$ gồm $3$ phần tử. Các kết quả thuận lợ...',
+                        'Kí hiệu S là mặt sấp, N là mặt ngửa. Không gian mẫu là $\\Omega = \\{\\text{SS}, '
+                        '\\text{SN}, \\text{NS}, \\text{NN}\\}$ gồm $4$ phần tử. Các kết quả thuận lợ...',
+                        'Kí hiệu S là mặt sấp, N là mặt ngửa. Không gian mẫu là $\\Omega = \\{\\text{SS}, '
+                        '\\text{SN}, \\text{NS}, \\text{NN}\\}$ gồm $8$ phần tử. Các kết quả thuận lợ...'],
             'answer': 2,
             'solution': 'Lời giải chi tiết theo Bài 25: Phép thử ngẫu nhiên và không gian mẫu: Kí hiệu S là '
                         'mặt sấp, N là mặt ngửa. Không gian mẫu là $\\Omega = \\{\\text{SS}, \\text{SN}, '
@@ -4169,8 +4158,8 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
   'description': 'Tính xác suất của biến cố trong phép thử có các kết quả đồng khả năng.',
   'requirements': ['Nhận biết được tính đồng khả năng của các kết quả trong phép thử ngẫu nhiên.',
                    'Tính được xác suất của biến cố $E$ theo công thức $P(E) = \\dfrac{n(E)}{n(\\Omega)}$.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Xác suất của biến cố $E$** ($P(E) = '
-                   '\\dfrac{n(E)}{n(\\Omega)}$) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 26: Xác suất của biến cố liên quan tới phép thử** để giải '
+                   'bài tập minh họa và bài toán thực tiễn.'],
   'definition': 'Giả sử rằng các kết quả có thể của một phép thử là đồng khả năng. Khi đó, xác suất của biến '
                 'cố $E$, kí hiệu là $P(E)$, bằng tỉ số giữa số kết quả thuận lợi cho biến cố $E$ và tổng số '
                 'phần tử của không gian mẫu $\\Omega$.',
@@ -4216,27 +4205,34 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 26: Xác suất của biến cố liên quan tới phép thử**, công '
-                 'thức hoặc quy tắc nào sau đây biểu diễn đúng **Xác suất của biến cố $E$**?',
-            'options': ['$ax + by = c$ ($a^2 + b^2 \\neq 0$)',
-                        '$\\begin{cases} a_1x + b_1y = c_1 \\\\ a_2x + b_2y = c_2 \\end{cases}$',
-                        'Từ $ax + by = c \\Rightarrow y = \\dfrac{c - ax}{b}$ ($b \\neq 0$)',
+            'q': 'Trong **Bài 26: Xác suất của biến cố liên quan tới phép thử**, quy tắc hoặc công thức nào '
+                 'sau đây xác định đúng **Xác suất của biến cố $E$**?',
+            'options': ['$P(E) = \\dfrac{n(E)}{n(\\Omega)}$ (với dấu ngược lại)',
+                        '$P(E) = \\dfrac{n(\\Omega)}{n(E)}$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $P(E) = '
+                        '\\dfrac{n(E)}{n(\\Omega)}$',
                         '$P(E) = \\dfrac{n(E)}{n(\\Omega)}$'],
             'answer': 3,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 26: Xác suất của biến cố liên quan tới phép '
-                        'thử, **Xác suất của biến cố $E$** được xác định bởi: $P(E) = '
-                        '\\dfrac{n(E)}{n(\\Omega)}$. ($0 \\le P(E) \\le 1$)'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 26: Xác suất của biến cố liên quan tới phép thử, '
+                        '**Xác suất của biến cố $E$** được xác định bởi: $P(E) = \\dfrac{n(E)}{n(\\Omega)}$. '
+                        '($0 \\le P(E) \\le 1$)'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 26: Xác suất của biến cố liên quan tới phép thử**, nội dung/biểu thức $P(E) = '
-                 '\\dfrac{n(E)}{n(\\Omega)}$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Xác suất của biến cố $E$',
-                        'Phương trình bậc nhất hai ẩn',
-                        'Hệ hai phương trình bậc nhất hai ẩn',
-                        'Phương pháp thế'],
+            'q': 'Theo định nghĩa trong **Bài 26: Xác suất của biến cố liên quan tới phép thử**, khẳng định '
+                 'nào dưới đây là **đúng**?',
+            'options': ['Giả sử rằng các kết quả có thể của một phép thử là đồng khả năng. Khi đó, xác suất '
+                        'của biến cố $E$, kí hiệu là $P(E)$, bằng tỉ số...',
+                        'Giả sử rằng các kết quả có thể của một phép thử là đồng khả năng. Khi đó, xác suất '
+                        'của biến cố $E$, kí hiệu là $P(E)$, bằng tỉ số... (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Giả sử rằng các kết quả có thể của một phép thử là đồng '
+                        'khả năng. Khi đó, xác suất của biến cố $E$, kí hiệu là $P(E)$, bằng tỉ số...',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Giả sử rằng các kết quả có thể '
+                        'của một phép thử là đồng khả năng. Khi đó, xác suất của biến cố $E$, kí hiệu là '
+                        '$P(E)$, bằng tỉ số...'],
             'answer': 0,
-            'solution': 'Trong Bài 26: Xác suất của biến cố liên quan tới phép thử, biểu thức/quy tắc $P(E) '
-                        '= \\dfrac{n(E)}{n(\\Omega)}$ chính là nội dung của **Xác suất của biến cố $E$**.'},
+            'solution': 'Theo định nghĩa của Bài 26: Xác suất của biến cố liên quan tới phép thử: Giả sử '
+                        'rằng các kết quả có thể của một phép thử là đồng khả năng. Khi đó, xác suất của '
+                        'biến cố $E$, kí hiệu là $P(E)$, bằng tỉ số...'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': "Gieo đồng thời hai con xúc xắc cân đối. Xác suất của biến cố 'Tổng số chấm xuất hiện trên "
@@ -4249,16 +4245,17 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 26: Xác suất của biến cố liên quan tới phép thử** (Chương VIII: Xác suất của '
-                 'biến cố trong một số mô hình xác suất đơn giản), khẳng định nào sau đây phản ánh **đúng** '
-                 'yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Nhận biết được phương trình bậc nhất hai ẩn $ax + by = c$ ($a \\neq 0$ hoặc $b '
-                        '\\neq 0$) và nghiệm của nó.',
-                        'Nhận biết được hệ hai phương trình bậc nhất hai ẩn và nghiệm của hệ.',
+            'q': 'Để nắm vững bản chất của **Bài 26: Xác suất của biến cố liên quan tới phép thử**, nhận '
+                 'định nào sau đây là **chính xác**?',
+            'options': ['Nhận biết được tính đồng khả năng của các kết quả trong phép thử ngẫu nhiên. (với '
+                        'dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Nhận biết được tính đồng khả năng của các kết quả trong '
+                        'phép thử ngẫu nhiên.',
                         'Nhận biết được tính đồng khả năng của các kết quả trong phép thử ngẫu nhiên.',
-                        'Biểu diễn được tập nghiệm của phương trình bậc nhất hai ẩn trên mặt phẳng tọa độ.'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nhận biết được tính đồng khả '
+                        'năng của các kết quả trong phép thử ngẫu nhiên.'],
             'answer': 2,
-            'solution': 'Theo yêu cầu cần đạt của Bài 26: Xác suất của biến cố liên quan tới phép thử: Nhận '
+            'solution': 'Theo nội dung cốt lõi của Bài 26: Xác suất của biến cố liên quan tới phép thử: Nhận '
                         'biết được tính đồng khả năng của các kết quả trong phép thử ngẫu nhiên.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -4276,43 +4273,40 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 26: Xác suất của biến '
-                 'cố liên quan tới phép thử**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được tính đồng khả năng '
-                           'của các kết quả trong phép thử ngẫu nhiên.',
-                           'Quy tắc/công thức **Xác suất của biến cố $E$** trong bài được xác định bởi: '
-                           '$P(E) = \\dfrac{n(E)}{n(\\Omega)}$.',
-                           'Trong mọi trường hợp, **Xác suất của biến cố $E$** luôn được tính bằng công thức '
-                           '$ax + by = c$ ($a^2 + b^2 \\neq 0$) (thuộc Phương trình bậc nhất hai ẩn) mà '
-                           'không cần điều kiện của Bài 26: Xác suất của biến cố liên quan tới phép thử.',
-                           'Với bài toán minh họa: “Gieo đồng thời hai đồng xu cân đối. Tính xác suất của '
-                           "biến cố $E$: 'Có ít nhất một đồng xu xuất hiện mặt ngửa (N)'.”, lời giải đúng "
-                           'là: Không gian mẫu $\\Omega = \\{\\text{SS}, \\text{SN}, \\text{NS}, '
-                           '\\text{NN}\\}$ có $n(\\Omega) = 4$ kết quả đồng khả năng. Các kết quả thuận lợi '
-                           'cho...'],
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 26: Xác suất của biến cố '
+                 'liên quan tới phép thử**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết được tính đồng khả năng của '
+                           'các kết quả trong phép thử ngẫu nhiên.',
+                           'Trong **Bài 26: Xác suất của biến cố liên quan tới phép thử**, quy tắc/công thức '
+                           '**Xác suất của biến cố $E$** được viết là: $P(E) = \\dfrac{n(E)}{n(\\Omega)}$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $P(E) = \\dfrac{n(E)}{n(\\Omega)}$ (với dấu '
+                           'ngược lại) thì kết quả của **Xác suất của biến cố $E$** trong **Bài 26: Xác suất '
+                           'của biến cố liên quan tới phép thử** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Gieo đồng thời hai đồng xu cân đối. Tính xác suất của biến '
+                           "cố $E$: 'Có ít nhất một đồng xu xuất hiện mặt ngửa (N)'.”, kết quả giải đúng là: "
+                           'Không gian mẫu $\\Omega = \\{\\text{SS}, \\text{SN}, \\text{NS}, \\text{NN}\\}$ '
+                           'có $n(\\Omega) = 4$ kết quả đồng khả năng. Các kết quả thuận lợ...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 26: Xác suất của biến cố liên quan tới '
-                        'phép thử. b) **Đúng** theo công thức trọng tâm **Xác suất của biến cố $E$** ($P(E) '
-                        '= \\dfrac{n(E)}{n(\\Omega)}$). c) **Sai** vì $ax + by = c$ ($a^2 + b^2 \\neq 0$) là '
-                        'công thức của nội dung khác, không phải quy tắc chung của **Xác suất của biến cố '
-                        '$E$**. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        'phép thử. b) **Đúng** theo công thức **Xác suất của biến cố $E$** ($P(E) = '
+                        '\\dfrac{n(E)}{n(\\Omega)}$). c) **Sai** vì công thức đúng của **Xác suất của biến '
+                        'cố $E$** phải là $P(E) = \\dfrac{n(E)}{n(\\Omega)}$ chứ không phải $P(E) = '
+                        '\\dfrac{n(E)}{n(\\Omega)}$ (với dấu ngược lại). d) **Đúng** theo lời giải ví dụ '
+                        'minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 26: Xác suất của biến cố liên quan tới phép thử** để giải quyết '
-                 "tình huống sau: Gieo đồng thời hai đồng xu cân đối. Tính xác suất của biến cố $E$: 'Có ít "
-                 "nhất một đồng xu xuất hiện mặt ngửa (N)'. Kết quả và hướng giải nào dưới đây là **đúng**?",
-            'options': ['Thay $x = 2, y = -1$ vào phương trình thứ nhất: $2 \\cdot 2 - (-1) = 4 + 1 = 5$ '
-                        '(thỏa mãn). Thay $x = 2, y = -1$ vào phương trình thứ hai: $2 + 3 \\cdot (-1) = 2 - '
-                        '3 = -1$...',
-                        'Cộng từng vế hai phương trình của hệ, ta được: $5x = 10 \\Rightarrow x = 2$. Thay '
-                        '$x = 2$ vào phương trình $2x + y = 5$, ta có: $2 \\cdot 2 + y = 5 \\Rightarrow y = '
-                        '1$...',
-                        'Gọi số thứ nhất là $x$ và số thứ hai là $y$. Theo đề bài, ta có hệ phương trình: '
-                        '$\\begin{cases} x + y = 59 \\\\ 3y - 2x = 7 \\end{cases} \\Leftrightarrow '
-                        '\\begin{cases} 2x + 2y = 118 \\\\ -2x + 3y = 7 \\end{cases}$...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 26: Xác suất của biến cố liên quan tới phép thử** '
+                 'để giải bài toán sau: Gieo đồng thời hai đồng xu cân đối. Tính xác suất của biến cố $E$: '
+                 "'Có ít nhất một đồng xu xuất hiện mặt ngửa (N)'. Cách giải và kết quả nào dưới đây là "
+                 '**đúng**?',
+            'options': ['Không gian mẫu $\\Omega = \\{\\text{SS}, \\text{SN}, \\text{NS}, \\text{NN}\\}$ có '
+                        '$n(\\Omega) = 5$ kết quả đồng khả năng. Các kết quả thuận lợi cho biến cố $E$...',
                         'Không gian mẫu $\\Omega = \\{\\text{SS}, \\text{SN}, \\text{NS}, \\text{NN}\\}$ có '
-                        '$n(\\Omega) = 4$ kết quả đồng khả năng. Các kết quả thuận lợi cho biến cố $E$ '
-                        'là...'],
+                        '$n(\\Omega) = 3$ kết quả đồng khả năng. Các kết quả thuận lợi cho biến cố $E$...',
+                        'Không gian mẫu $\\Omega = \\{\\text{SS}, \\text{SN}, \\text{NS}, \\text{NN}\\}$ có '
+                        '$n(\\Omega) = 8$ kết quả đồng khả năng. Các kết quả thuận lợi cho biến cố $E$...',
+                        'Không gian mẫu $\\Omega = \\{\\text{SS}, \\text{SN}, \\text{NS}, \\text{NN}\\}$ có '
+                        '$n(\\Omega) = 4$ kết quả đồng khả năng. Các kết quả thuận lợi cho biến cố $E$...'],
             'answer': 3,
             'solution': 'Lời giải chi tiết theo Bài 26: Xác suất của biến cố liên quan tới phép thử: Không '
                         'gian mẫu $\\Omega = \\{\\text{SS}, \\text{SN}, \\text{NS}, \\text{NN}\\}$ có '
@@ -4387,30 +4381,31 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 27: Góc nội tiếp**, công thức hoặc quy tắc nào sau đây '
-                 'biểu diễn đúng **Số đo góc nội tiếp**?',
+            'q': 'Trong **Bài 27: Góc nội tiếp**, quy tắc hoặc công thức nào sau đây xác định đúng **Số đo '
+                 'góc nội tiếp**?',
             'options': ['$\\widehat{AMB} = \\dfrac{1}{2}\\text{sđ}\\overset{\\frown}{AB} = '
                         '\\dfrac{1}{2}\\widehat{AOB}$',
-                        '$AB$ là đường kính, $M \\in (O) \\Rightarrow \\widehat{AMB} = 90^\\circ$',
-                        '$ax + by = c$ ($a^2 + b^2 \\neq 0$)',
-                        '$\\begin{cases} a_1x + b_1y = c_1 \\\\ a_2x + b_2y = c_2 \\end{cases}$'],
+                        '$\\widehat{AMB} = \\dfrac{2}{2}\\text{sđ}\\overset{\\frown}{AB} = '
+                        '\\dfrac{1}{2}\\widehat{AOB}$',
+                        '$\\widehat{AMB} = \\dfrac{2}{1}\\text{sđ}\\overset{\\frown}{AB} = '
+                        '\\dfrac{1}{2}\\widehat{AOB}$',
+                        '$AB$ là đường kính, $M \\in (O) \\Rightarrow \\widehat{AMB} = 90^\\circ$'],
             'answer': 0,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 27: Góc nội tiếp, **Số đo góc nội tiếp** được '
-                        'xác định bởi: $\\widehat{AMB} = \\dfrac{1}{2}\\text{sđ}\\overset{\\frown}{AB} = '
+            'solution': 'Theo kiến thức trọng tâm của Bài 27: Góc nội tiếp, **Số đo góc nội tiếp** được xác '
+                        'định bởi: $\\widehat{AMB} = \\dfrac{1}{2}\\text{sđ}\\overset{\\frown}{AB} = '
                         '\\dfrac{1}{2}\\widehat{AOB}$. (Bằng nửa số đo cung bị chắn (hoặc góc ở tâm cùng '
                         'chắn một cung))'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 27: Góc nội tiếp**, nội dung/biểu thức $AB$ là đường kính, $M \\in (O) '
-                 '\\Rightarrow \\widehat{AMB} = 90^\\circ$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Số đo góc nội tiếp',
-                        'Góc nội tiếp chắn nửa đường tròn',
-                        'Phương trình bậc nhất hai ẩn',
-                        'Hệ hai phương trình bậc nhất hai ẩn'],
+            'q': 'Khi học **Bài 27: Góc nội tiếp**, biểu thức hoặc quy tắc nào dưới đây biểu diễn đúng **Góc '
+                 'nội tiếp chắn nửa đường tròn**?',
+            'options': ['$AB$ là đường kính, $M \\notin (O) \\Rightarrow \\widehat{AMB} = 90^\\circ$',
+                        '$AB$ là đường kính, $M \\in (O) \\Rightarrow \\widehat{AMB} = 90^\\circ$',
+                        '$AB$ là đường kính, $M \\in (O) \\Rightarrow \\widehat{AMB} = 89^\\circ$',
+                        '$AB$ là đường kính, $M \\in (O) \\Rightarrow \\widehat{AMB} = 92^\\circ$'],
             'answer': 1,
-            'solution': 'Trong Bài 27: Góc nội tiếp, biểu thức/quy tắc $AB$ là đường kính, $M \\in (O) '
-                        '\\Rightarrow \\widehat{AMB} = 90^\\circ$ chính là nội dung của **Góc nội tiếp chắn '
-                        'nửa đường tròn**.'},
+            'solution': 'Trong Bài 27: Góc nội tiếp, **Góc nội tiếp chắn nửa đường tròn** có công thức/quy '
+                        'tắc là: $AB$ là đường kính, $M \\in (O) \\Rightarrow \\widehat{AMB} = 90^\\circ$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Cho đường tròn $(O)$ và hai góc nội tiếp $\\widehat{MAN}, \\widehat{MBN}$ cùng chắn cung '
@@ -4423,16 +4418,14 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 27: Góc nội tiếp** (Chương IX: Đường tròn ngoại tiếp và đường tròn nội '
-                 'tiếp), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của '
-                 'bài?',
-            'options': ['Nhận biết được phương trình bậc nhất hai ẩn $ax + by = c$ ($a \\neq 0$ hoặc $b '
-                        '\\neq 0$) và nghiệm của nó.',
-                        'Nhận biết được hệ hai phương trình bậc nhất hai ẩn và nghiệm của hệ.',
-                        'Biểu diễn được tập nghiệm của phương trình bậc nhất hai ẩn trên mặt phẳng tọa độ.',
+            'q': 'Để nắm vững bản chất của **Bài 27: Góc nội tiếp**, nhận định nào sau đây là **chính xác**?',
+            'options': ['Nhận biết được góc nội tiếp của một đường tròn. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Nhận biết được góc nội tiếp của một đường tròn.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nhận biết được góc nội tiếp của '
+                        'một đường tròn.',
                         'Nhận biết được góc nội tiếp của một đường tròn.'],
             'answer': 3,
-            'solution': 'Theo yêu cầu cần đạt của Bài 27: Góc nội tiếp: Nhận biết được góc nội tiếp của một '
+            'solution': 'Theo nội dung cốt lõi của Bài 27: Góc nội tiếp: Nhận biết được góc nội tiếp của một '
                         'đường tròn.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -4452,45 +4445,46 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 27: Góc nội tiếp**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được góc nội tiếp của '
-                           'một đường tròn.',
-                           'Quy tắc/công thức **Số đo góc nội tiếp** trong bài được xác định bởi: '
-                           '$\\widehat{AMB} = \\dfrac{1}{2}\\text{sđ}\\overset{\\frown}{AB} = '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 27: Góc nội tiếp**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết được góc nội tiếp của một '
+                           'đường tròn.',
+                           'Trong **Bài 27: Góc nội tiếp**, quy tắc/công thức **Số đo góc nội tiếp** được '
+                           'viết là: $\\widehat{AMB} = \\dfrac{1}{2}\\text{sđ}\\overset{\\frown}{AB} = '
                            '\\dfrac{1}{2}\\widehat{AOB}$.',
-                           'Trong mọi trường hợp, **Số đo góc nội tiếp** luôn được tính bằng công thức $ax + '
-                           'by = c$ ($a^2 + b^2 \\neq 0$) (thuộc Phương trình bậc nhất hai ẩn) mà không cần '
-                           'điều kiện của Bài 27: Góc nội tiếp.',
-                           'Với bài toán minh họa: “Cho ba điểm $A, B, C$ thuộc đường tròn $(O)$ sao cho góc '
-                           'ở tâm $\\widehat{BOC} = 110^\\circ$ ($A$ thuộc cung lớn $BC$). Tính số đo góc '
-                           'nội tiế...”, lời giải đúng là: Góc nội tiếp $\\widehat{BAC}$ và góc ở tâm '
+                           'Nếu áp dụng sai dấu/phép tính thành $\\widehat{AMB} = '
+                           '\\dfrac{2}{2}\\text{sđ}\\overset{\\frown}{AB} = \\dfrac{1}{2}\\widehat{AOB}$ thì '
+                           'kết quả của **Số đo góc nội tiếp** trong **Bài 27: Góc nội tiếp** vẫn không thay '
+                           'đổi.',
+                           'Xét ví dụ của bài: “Cho ba điểm $A, B, C$ thuộc đường tròn $(O)$ sao cho góc ở '
+                           'tâm $\\widehat{BOC} = 110^\\circ$ ($A$ thuộc cung lớn $BC$). Tính số đo góc '
+                           'nộ...”, kết quả giải đúng là: Góc nội tiếp $\\widehat{BAC}$ và góc ở tâm '
                            '$\\widehat{BOC}$ cùng chắn cung nhỏ $BC$, do đó: $\\widehat{BAC} = '
                            '\\dfrac{1}{2}\\widehat{BOC} = \\dfrac{110^\\circ}{2} = 55^\\circ$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 27: Góc nội tiếp. b) **Đúng** theo công '
-                        'thức trọng tâm **Số đo góc nội tiếp** ($\\widehat{AMB} = '
+                        'thức **Số đo góc nội tiếp** ($\\widehat{AMB} = '
                         '\\dfrac{1}{2}\\text{sđ}\\overset{\\frown}{AB} = \\dfrac{1}{2}\\widehat{AOB}$). c) '
-                        '**Sai** vì $ax + by = c$ ($a^2 + b^2 \\neq 0$) là công thức của nội dung khác, '
-                        'không phải quy tắc chung của **Số đo góc nội tiếp**. d) **Đúng** theo lời giải ví '
-                        'dụ minh họa trong bài học.'},
+                        '**Sai** vì công thức đúng của **Số đo góc nội tiếp** phải là $\\widehat{AMB} = '
+                        '\\dfrac{1}{2}\\text{sđ}\\overset{\\frown}{AB} = \\dfrac{1}{2}\\widehat{AOB}$ chứ '
+                        'không phải $\\widehat{AMB} = \\dfrac{2}{2}\\text{sđ}\\overset{\\frown}{AB} = '
+                        '\\dfrac{1}{2}\\widehat{AOB}$. d) **Đúng** theo lời giải ví dụ minh họa trong bài '
+                        'học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 27: Góc nội tiếp** để giải quyết tình huống sau: Cho ba điểm $A, '
-                 'B, C$ thuộc đường tròn $(O)$ sao cho góc ở tâm $\\widehat{BOC} = 110^\\circ$ ($A$ thuộc '
-                 'cung lớn $BC$). Tính số đo góc nội tiếp $\\widehat{BAC}$. Kết quả và hướng giải nào dưới '
-                 'đây là **đúng**?',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 27: Góc nội tiếp** để giải bài toán sau: Cho ba '
+                 'điểm $A, B, C$ thuộc đường tròn $(O)$ sao cho góc ở tâm $\\widehat{BOC} = 110^\\circ$ ($A$ '
+                 'thuộc cung lớn $BC$). Tính số đo góc nội tiếp $\\widehat{BAC}$. Cách giải và kết quả nào '
+                 'dưới đây là **đúng**?',
             'options': ['Góc nội tiếp $\\widehat{BAC}$ và góc ở tâm $\\widehat{BOC}$ cùng chắn cung nhỏ '
                         '$BC$, do đó: $\\widehat{BAC} = \\dfrac{1}{2}\\widehat{BOC} = \\dfrac{110^\\circ}{2} '
                         '= 55^\\circ$...',
-                        'Thay $x = 2, y = -1$ vào phương trình thứ nhất: $2 \\cdot 2 - (-1) = 4 + 1 = 5$ '
-                        '(thỏa mãn). Thay $x = 2, y = -1$ vào phương trình thứ hai: $2 + 3 \\cdot (-1) = 2 - '
-                        '3 = -1$...',
-                        'Cộng từng vế hai phương trình của hệ, ta được: $5x = 10 \\Rightarrow x = 2$. Thay '
-                        '$x = 2$ vào phương trình $2x + y = 5$, ta có: $2 \\cdot 2 + y = 5 \\Rightarrow y = '
-                        '1$...',
-                        'Gọi số thứ nhất là $x$ và số thứ hai là $y$. Theo đề bài, ta có hệ phương trình: '
-                        '$\\begin{cases} x + y = 59 \\\\ 3y - 2x = 7 \\end{cases} \\Leftrightarrow '
-                        '\\begin{cases} 2x + 2y = 118 \\\\ -2x + 3y = 7 \\end{cases}$...'],
+                        'Góc nội tiếp $\\widehat{BAC}$ và góc ở tâm $\\widehat{BOC}$ cùng chắn cung nhỏ '
+                        '$BC$, do đó: $\\widehat{BAC} = \\dfrac{2}{2}\\widehat{BOC} = \\dfrac{110^\\circ}{2} '
+                        '= 55^\\circ$...',
+                        'Góc nội tiếp $\\widehat{BAC}$ và góc ở tâm $\\widehat{BOC}$ cùng chắn cung nhỏ '
+                        '$BC$, do đó: $\\widehat{BAC} = \\dfrac{2}{1}\\widehat{BOC} = \\dfrac{110^\\circ}{2} '
+                        '= 55^\\circ$...',
+                        'Trường hợp sai quy tắc (sai lệch 1 đơn vị so với công thức trong bài)'],
             'answer': 0,
             'solution': 'Lời giải chi tiết theo Bài 27: Góc nội tiếp: Góc nội tiếp $\\widehat{BAC}$ và góc ở '
                         'tâm $\\widehat{BOC}$ cùng chắn cung nhỏ $BC$, do đó:\n'
@@ -4517,8 +4511,8 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
   'requirements': ['Nhận biết và xác định được tâm, bán kính đường tròn ngoại tiếp tam giác (đặc biệt là tam '
                    'giác vuông, tam giác đều).',
                    'Nhận biết và xác định được tâm, bán kính đường tròn nội tiếp tam giác.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Tam giác vuông (cạnh huyền $a$)** ($R = '
-                   '\\dfrac{a}{2}$) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 28: Đường tròn ngoại tiếp và đường tròn nội tiếp của một '
+                   'tam giác** để giải bài tập minh họa và bài toán thực tiễn.'],
   'definition': 'Đường tròn đi qua ba đỉnh của tam giác gọi là đường tròn ngoại tiếp tam giác. Đường tròn '
                 'tiếp xúc với ba cạnh của tam giác gọi là đường tròn nội tiếp tam giác.',
   'theory': '1. Tâm đường tròn ngoại tiếp tam giác là giao điểm của ba đường trung trực của tam giác đó.\n'
@@ -4566,30 +4560,28 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 28: Đường tròn ngoại tiếp và đường tròn nội tiếp của một '
-                 'tam giác**, công thức hoặc quy tắc nào sau đây biểu diễn đúng **Tam giác vuông (cạnh huyền '
-                 '$a$)**?',
-            'options': ['$R = \\dfrac{a\\sqrt{3}}{3}$; $r = \\dfrac{a\\sqrt{3}}{6}$',
+            'q': 'Trong **Bài 28: Đường tròn ngoại tiếp và đường tròn nội tiếp của một tam giác**, quy tắc '
+                 'hoặc công thức nào sau đây xác định đúng **Tam giác vuông (cạnh huyền $a$)**?',
+            'options': ['$R = \\dfrac{a}{3}$',
                         '$R = \\dfrac{a}{2}$',
-                        '$ax + by = c$ ($a^2 + b^2 \\neq 0$)',
-                        '$\\begin{cases} a_1x + b_1y = c_1 \\\\ a_2x + b_2y = c_2 \\end{cases}$'],
+                        '$R = \\dfrac{2}{a}$',
+                        '$R = \\dfrac{a}{4}$'],
             'answer': 1,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 28: Đường tròn ngoại tiếp và đường tròn nội '
-                        'tiếp của một tam giác, **Tam giác vuông (cạnh huyền $a$)** được xác định bởi: $R = '
+            'solution': 'Theo kiến thức trọng tâm của Bài 28: Đường tròn ngoại tiếp và đường tròn nội tiếp '
+                        'của một tam giác, **Tam giác vuông (cạnh huyền $a$)** được xác định bởi: $R = '
                         '\\dfrac{a}{2}$. (Tâm ngoại tiếp là trung điểm cạnh huyền)'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 28: Đường tròn ngoại tiếp và đường tròn nội tiếp của một tam giác**, nội '
-                 'dung/biểu thức $R = \\dfrac{a\\sqrt{3}}{3}$; $r = \\dfrac{a\\sqrt{3}}{6}$ là quy tắc hoặc '
-                 'công thức của mục nào sau đây?',
-            'options': ['Tam giác vuông (cạnh huyền $a$)',
-                        'Phương trình bậc nhất hai ẩn',
-                        'Tam giác đều cạnh $a$',
-                        'Hệ hai phương trình bậc nhất hai ẩn'],
+            'q': 'Khi học **Bài 28: Đường tròn ngoại tiếp và đường tròn nội tiếp của một tam giác**, biểu '
+                 'thức hoặc quy tắc nào dưới đây biểu diễn đúng **Tam giác đều cạnh $a$**?',
+            'options': ['$R = \\dfrac{a\\sqrt{4}}{3}$; $r = \\dfrac{a\\sqrt{3}}{6}$',
+                        '$R = \\dfrac{a\\sqrt{3}}{3}$; $r = \\dfrac{a\\sqrt{3}}{5}$',
+                        '$R = \\dfrac{a\\sqrt{3}}{3}$; $r = \\dfrac{a\\sqrt{3}}{6}$',
+                        '$R = \\dfrac{a\\sqrt{6}}{3}$; $r = \\dfrac{a\\sqrt{3}}{6}$'],
             'answer': 2,
-            'solution': 'Trong Bài 28: Đường tròn ngoại tiếp và đường tròn nội tiếp của một tam giác, biểu '
-                        'thức/quy tắc $R = \\dfrac{a\\sqrt{3}}{3}$; $r = \\dfrac{a\\sqrt{3}}{6}$ chính là '
-                        'nội dung của **Tam giác đều cạnh $a$**.'},
+            'solution': 'Trong Bài 28: Đường tròn ngoại tiếp và đường tròn nội tiếp của một tam giác, **Tam '
+                        'giác đều cạnh $a$** có công thức/quy tắc là: $R = \\dfrac{a\\sqrt{3}}{3}$; $r = '
+                        '\\dfrac{a\\sqrt{3}}{6}$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Cho tam giác đều $ABC$ có cạnh bằng $2\\sqrt{3}$ cm. Bán kính đường tròn ngoại tiếp tam '
@@ -4602,17 +4594,19 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 28: Đường tròn ngoại tiếp và đường tròn nội tiếp của một tam giác** (Chương '
-                 'IX: Đường tròn ngoại tiếp và đường tròn nội tiếp), khẳng định nào sau đây phản ánh '
-                 '**đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
+            'q': 'Để nắm vững bản chất của **Bài 28: Đường tròn ngoại tiếp và đường tròn nội tiếp của một '
+                 'tam giác**, nhận định nào sau đây là **chính xác**?',
             'options': ['Nhận biết và xác định được tâm, bán kính đường tròn ngoại tiếp tam giác (đặc biệt '
                         'là tam giác vuông, tam giác đều).',
-                        'Nhận biết được phương trình bậc nhất hai ẩn $ax + by = c$ ($a \\neq 0$ hoặc $b '
-                        '\\neq 0$) và nghiệm của nó.',
-                        'Nhận biết được hệ hai phương trình bậc nhất hai ẩn và nghiệm của hệ.',
-                        'Biểu diễn được tập nghiệm của phương trình bậc nhất hai ẩn trên mặt phẳng tọa độ.'],
+                        'Nhận biết và xác định được tâm, bán kính đường tròn ngoại tiếp tam giác (đặc biệt '
+                        'là tam giác vuông, tam giác đều). (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Nhận biết và xác định được tâm, bán kính đường tròn ngoại '
+                        'tiếp tam giác (đặc biệt là tam giác vuông, tam giác đều).',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nhận biết và xác định được tâm, '
+                        'bán kính đường tròn ngoại tiếp tam giác (đặc biệt là tam giác vuông, tam giác '
+                        'đều).'],
             'answer': 0,
-            'solution': 'Theo yêu cầu cần đạt của Bài 28: Đường tròn ngoại tiếp và đường tròn nội tiếp của '
+            'solution': 'Theo nội dung cốt lõi của Bài 28: Đường tròn ngoại tiếp và đường tròn nội tiếp của '
                         'một tam giác: Nhận biết và xác định được tâm, bán kính đường tròn ngoại tiếp tam '
                         'giác (đặc biệt là tam giác vuông, tam giác đều).'},
            {'level': 'hieu',
@@ -4630,45 +4624,41 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 28: Đường tròn ngoại '
-                 'tiếp và đường tròn nội tiếp của một tam giác**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết và xác định được tâm, '
-                           'bán kính đường tròn ngoại tiếp tam giác (đặc biệt là tam giác vuông, tam giác '
-                           'đều).',
-                           'Quy tắc/công thức **Tam giác vuông (cạnh huyền $a$)** trong bài được xác định '
-                           'bởi: $R = \\dfrac{a}{2}$.',
-                           'Trong mọi trường hợp, **Tam giác vuông (cạnh huyền $a$)** luôn được tính bằng '
-                           'công thức $ax + by = c$ ($a^2 + b^2 \\neq 0$) (thuộc Phương trình bậc nhất hai '
-                           'ẩn) mà không cần điều kiện của Bài 28: Đường tròn ngoại tiếp và đường tròn nội '
-                           'tiếp của một tam giác.',
-                           'Với bài toán minh họa: “Tính bán kính đường tròn ngoại tiếp $R$ và bán kính '
-                           'đường tròn nội tiếp $r$ của tam giác đều $ABC$ có cạnh bằng $6$ cm.”, lời giải '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 28: Đường tròn ngoại tiếp '
+                 'và đường tròn nội tiếp của một tam giác**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết và xác định được tâm, bán kính '
+                           'đường tròn ngoại tiếp tam giác (đặc biệt là tam giác vuông, tam giác đều).',
+                           'Trong **Bài 28: Đường tròn ngoại tiếp và đường tròn nội tiếp của một tam giác**, '
+                           'quy tắc/công thức **Tam giác vuông (cạnh huyền $a$)** được viết là: $R = '
+                           '\\dfrac{a}{2}$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $R = \\dfrac{a}{3}$ thì kết quả của **Tam '
+                           'giác vuông (cạnh huyền $a$)** trong **Bài 28: Đường tròn ngoại tiếp và đường '
+                           'tròn nội tiếp của một tam giác** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Tính bán kính đường tròn ngoại tiếp $R$ và bán kính đường '
+                           'tròn nội tiếp $r$ của tam giác đều $ABC$ có cạnh bằng $6$ cm.”, kết quả giải '
                            'đúng là: Áp dụng công thức cho tam giác đều cạnh $a = 6$ cm: $R = '
                            '\\dfrac{6\\sqrt{3}}{3} = 2\\sqrt{3}$ (cm) và $r = \\dfrac{6\\sqrt{3}}{6} = '
-                           '\\sqrt{3}$ (cm...'],
+                           '\\sqrt{3}$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 28: Đường tròn ngoại tiếp và đường tròn '
-                        'nội tiếp của một tam giác. b) **Đúng** theo công thức trọng tâm **Tam giác vuông '
-                        '(cạnh huyền $a$)** ($R = \\dfrac{a}{2}$). c) **Sai** vì $ax + by = c$ ($a^2 + b^2 '
-                        '\\neq 0$) là công thức của nội dung khác, không phải quy tắc chung của **Tam giác '
-                        'vuông (cạnh huyền $a$)**. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        'nội tiếp của một tam giác. b) **Đúng** theo công thức **Tam giác vuông (cạnh huyền '
+                        '$a$)** ($R = \\dfrac{a}{2}$). c) **Sai** vì công thức đúng của **Tam giác vuông '
+                        '(cạnh huyền $a$)** phải là $R = \\dfrac{a}{2}$ chứ không phải $R = \\dfrac{a}{3}$. '
+                        'd) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 28: Đường tròn ngoại tiếp và đường tròn nội tiếp của một tam '
-                 'giác** để giải quyết tình huống sau: Tính bán kính đường tròn ngoại tiếp $R$ và bán kính '
-                 'đường tròn nội tiếp $r$ của tam giác đều $ABC$ có cạnh bằng $6$ cm. Kết quả và hướng giải '
-                 'nào dưới đây là **đúng**?',
-            'options': ['Thay $x = 2, y = -1$ vào phương trình thứ nhất: $2 \\cdot 2 - (-1) = 4 + 1 = 5$ '
-                        '(thỏa mãn). Thay $x = 2, y = -1$ vào phương trình thứ hai: $2 + 3 \\cdot (-1) = 2 - '
-                        '3 = -1$...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 28: Đường tròn ngoại tiếp và đường tròn nội tiếp '
+                 'của một tam giác** để giải bài toán sau: Tính bán kính đường tròn ngoại tiếp $R$ và bán '
+                 'kính đường tròn nội tiếp $r$ của tam giác đều $ABC$ có cạnh bằng $6$ cm. Cách giải và kết '
+                 'quả nào dưới đây là **đúng**?',
+            'options': ['Áp dụng công thức cho tam giác đều cạnh $a = 7$ cm: $R = \\dfrac{6\\sqrt{3}}{3} = '
+                        '2\\sqrt{3}$ (cm) và $r = \\dfrac{6\\sqrt{3}}{6} = \\sqrt{3}$ (cm).',
                         'Áp dụng công thức cho tam giác đều cạnh $a = 6$ cm: $R = \\dfrac{6\\sqrt{3}}{3} = '
                         '2\\sqrt{3}$ (cm) và $r = \\dfrac{6\\sqrt{3}}{6} = \\sqrt{3}$ (cm).',
-                        'Cộng từng vế hai phương trình của hệ, ta được: $5x = 10 \\Rightarrow x = 2$. Thay '
-                        '$x = 2$ vào phương trình $2x + y = 5$, ta có: $2 \\cdot 2 + y = 5 \\Rightarrow y = '
-                        '1$...',
-                        'Gọi số thứ nhất là $x$ và số thứ hai là $y$. Theo đề bài, ta có hệ phương trình: '
-                        '$\\begin{cases} x + y = 59 \\\\ 3y - 2x = 7 \\end{cases} \\Leftrightarrow '
-                        '\\begin{cases} 2x + 2y = 118 \\\\ -2x + 3y = 7 \\end{cases}$...'],
+                        'Áp dụng công thức cho tam giác đều cạnh $a = 6$ cm: $R = \\dfrac{6\\sqrt{3}}{3} = '
+                        '2\\sqrt{3}$ (cm) và $r = \\dfrac{6\\sqrt{3}}{6} = \\sqrt{2}$ (cm).',
+                        'Áp dụng công thức cho tam giác đều cạnh $a = 12$ cm: $R = \\dfrac{6\\sqrt{3}}{3} = '
+                        '2\\sqrt{3}$ (cm) và $r = \\dfrac{6\\sqrt{3}}{6} = \\sqrt{3}$ (cm).'],
             'answer': 1,
             'solution': 'Lời giải chi tiết theo Bài 28: Đường tròn ngoại tiếp và đường tròn nội tiếp của một '
                         'tam giác: Áp dụng công thức cho tam giác đều cạnh $a = 6$ cm:\n'
@@ -4694,9 +4684,8 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
   'requirements': ['Nhận biết được tứ giác nội tiếp đường tròn và vận dụng tính chất tổng hai góc đối bằng '
                    '$180^\\circ$.',
                    'Xác định được tâm và bán kính đường tròn ngoại tiếp hình chữ nhật, hình vuông.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Tổng hai góc đối** ($\\widehat{A} + '
-                   '\\widehat{C} = 180^\\circ$ và $\\widehat{B} + \\widehat{D} = 180^\\circ$) vào giải bài '
-                   'tập.'],
+                   'Vận dụng kiến thức của **Bài 29: Tứ giác nội tiếp** để giải bài tập minh họa và bài toán '
+                   'thực tiễn.'],
   'definition': 'Một tứ giác có bốn đỉnh nằm trên một đường tròn được gọi là tứ giác nội tiếp đường tròn '
                 '(hoặc tứ giác nội tiếp), và đường tròn đó được gọi là đường tròn ngoại tiếp tứ giác.',
   'theory': '1. Định lí: Trong một tứ giác nội tiếp, tổng số đo hai góc đối diện bằng $180^\\circ$.\n'
@@ -4743,31 +4732,36 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 29: Tứ giác nội tiếp**, công thức hoặc quy tắc nào sau '
-                 'đây biểu diễn đúng **Tổng hai góc đối**?',
-            'options': ['$R_{\\text{HCN}} = \\dfrac{\\sqrt{a^2 + b^2}}{2}$; $R_{\\text{HV}} = '
-                        '\\dfrac{a\\sqrt{2}}{2}$',
-                        '$ax + by = c$ ($a^2 + b^2 \\neq 0$)',
+            'q': 'Trong **Bài 29: Tứ giác nội tiếp**, quy tắc hoặc công thức nào sau đây xác định đúng '
+                 '**Tổng hai góc đối**?',
+            'options': ['$\\widehat{A} - \\widehat{C} = 180^\\circ$ và $\\widehat{B} + \\widehat{D} = '
+                        '180^\\circ$',
+                        '$\\widehat{A} + \\widehat{C} = 180^\\circ$ và $\\widehat{B} + \\widehat{D} = '
+                        '179^\\circ$',
                         '$\\widehat{A} + \\widehat{C} = 180^\\circ$ và $\\widehat{B} + \\widehat{D} = '
                         '180^\\circ$',
-                        '$\\begin{cases} a_1x + b_1y = c_1 \\\\ a_2x + b_2y = c_2 \\end{cases}$'],
+                        '$\\widehat{A} + \\widehat{C} = 182^\\circ$ và $\\widehat{B} + \\widehat{D} = '
+                        '180^\\circ$'],
             'answer': 2,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 29: Tứ giác nội tiếp, **Tổng hai góc đối** '
-                        'được xác định bởi: $\\widehat{A} + \\widehat{C} = 180^\\circ$ và $\\widehat{B} + '
+            'solution': 'Theo kiến thức trọng tâm của Bài 29: Tứ giác nội tiếp, **Tổng hai góc đối** được '
+                        'xác định bởi: $\\widehat{A} + \\widehat{C} = 180^\\circ$ và $\\widehat{B} + '
                         '\\widehat{D} = 180^\\circ$. (Áp dụng cho tứ giác $ABCD$ nội tiếp)'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 29: Tứ giác nội tiếp**, nội dung/biểu thức $R_{\\text{HCN}} = '
-                 '\\dfrac{\\sqrt{a^2 + b^2}}{2}$; $R_{\\text{HV}} = \\dfrac{a\\sqrt{2}}{2}$ là quy tắc hoặc '
-                 'công thức của mục nào sau đây?',
-            'options': ['Tổng hai góc đối',
-                        'Phương trình bậc nhất hai ẩn',
-                        'Hệ hai phương trình bậc nhất hai ẩn',
-                        'Hình chữ nhật ($a, b$) và hình vuông ($a$)'],
+            'q': 'Khi học **Bài 29: Tứ giác nội tiếp**, biểu thức hoặc quy tắc nào dưới đây biểu diễn đúng '
+                 '**Hình chữ nhật ($a, b$) và hình vuông ($a$)**?',
+            'options': ['$R_{\\text{HCN}} = \\dfrac{\\sqrt{a^2 - b^2}}{2}$; $R_{\\text{HV}} = '
+                        '\\dfrac{a\\sqrt{2}}{2}$',
+                        '$R_{\\text{HCN}} = \\dfrac{\\sqrt{a^2 + b^2}}{2}$; $R_{\\text{HV}} = '
+                        '\\dfrac{a\\sqrt{2}}{1}$',
+                        '$R_{\\text{HCN}} = \\dfrac{\\sqrt{a^4 + b^2}}{2}$; $R_{\\text{HV}} = '
+                        '\\dfrac{a\\sqrt{2}}{2}$',
+                        '$R_{\\text{HCN}} = \\dfrac{\\sqrt{a^2 + b^2}}{2}$; $R_{\\text{HV}} = '
+                        '\\dfrac{a\\sqrt{2}}{2}$'],
             'answer': 3,
-            'solution': 'Trong Bài 29: Tứ giác nội tiếp, biểu thức/quy tắc $R_{\\text{HCN}} = '
-                        '\\dfrac{\\sqrt{a^2 + b^2}}{2}$; $R_{\\text{HV}} = \\dfrac{a\\sqrt{2}}{2}$ chính là '
-                        'nội dung của **Hình chữ nhật ($a, b$) và hình vuông ($a$)**.'},
+            'solution': 'Trong Bài 29: Tứ giác nội tiếp, **Hình chữ nhật ($a, b$) và hình vuông ($a$)** có '
+                        'công thức/quy tắc là: $R_{\\text{HCN}} = \\dfrac{\\sqrt{a^2 + b^2}}{2}$; '
+                        '$R_{\\text{HV}} = \\dfrac{a\\sqrt{2}}{2}$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Cho tứ giác $MNPQ$ nội tiếp đường tròn $(O)$ có $\\widehat{M} = 2\\widehat{P}$. Số đo góc '
@@ -4780,17 +4774,18 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 29: Tứ giác nội tiếp** (Chương IX: Đường tròn ngoại tiếp và đường tròn nội '
-                 'tiếp), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của '
-                 'bài?',
-            'options': ['Nhận biết được phương trình bậc nhất hai ẩn $ax + by = c$ ($a \\neq 0$ hoặc $b '
-                        '\\neq 0$) và nghiệm của nó.',
+            'q': 'Để nắm vững bản chất của **Bài 29: Tứ giác nội tiếp**, nhận định nào sau đây là **chính '
+                 'xác**?',
+            'options': ['Nhận biết được tứ giác nội tiếp đường tròn và vận dụng tính chất tổng hai góc đối '
+                        'bằng $190^\\circ$.',
                         'Nhận biết được tứ giác nội tiếp đường tròn và vận dụng tính chất tổng hai góc đối '
                         'bằng $180^\\circ$.',
-                        'Nhận biết được hệ hai phương trình bậc nhất hai ẩn và nghiệm của hệ.',
-                        'Biểu diễn được tập nghiệm của phương trình bậc nhất hai ẩn trên mặt phẳng tọa độ.'],
+                        'Nhận biết được tứ giác nội tiếp đường tròn và vận dụng tính chất tổng hai góc đối '
+                        'bằng $179^\\circ$.',
+                        'Nhận biết được tứ giác nội tiếp đường tròn và vận dụng tính chất tổng hai góc đối '
+                        'bằng $182^\\circ$.'],
             'answer': 1,
-            'solution': 'Theo yêu cầu cần đạt của Bài 29: Tứ giác nội tiếp: Nhận biết được tứ giác nội tiếp '
+            'solution': 'Theo nội dung cốt lõi của Bài 29: Tứ giác nội tiếp: Nhận biết được tứ giác nội tiếp '
                         'đường tròn và vận dụng tính chất tổng hai góc đối bằng $180^\\circ$.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -4809,44 +4804,41 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 29: Tứ giác nội tiếp**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được tứ giác nội tiếp '
-                           'đường tròn và vận dụng tính chất tổng hai góc đối bằng $180^\\circ$.',
-                           'Quy tắc/công thức **Tổng hai góc đối** trong bài được xác định bởi: '
-                           '$\\widehat{A} + \\widehat{C} = 180^\\circ$ và $\\widehat{B} + \\widehat{D} = '
-                           '180^\\circ$.',
-                           'Trong mọi trường hợp, **Tổng hai góc đối** luôn được tính bằng công thức $ax + '
-                           'by = c$ ($a^2 + b^2 \\neq 0$) (thuộc Phương trình bậc nhất hai ẩn) mà không cần '
-                           'điều kiện của Bài 29: Tứ giác nội tiếp.',
-                           'Với bài toán minh họa: “Cho tứ giác $ABCD$ nội tiếp đường tròn $(O)$, biết '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 29: Tứ giác nội tiếp**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết được tứ giác nội tiếp đường '
+                           'tròn và vận dụng tính chất tổng hai góc đối bằng $180^\\circ$.',
+                           'Trong **Bài 29: Tứ giác nội tiếp**, quy tắc/công thức **Tổng hai góc đối** được '
+                           'viết là: $\\widehat{A} + \\widehat{C} = 180^\\circ$ và $\\widehat{B} + '
+                           '\\widehat{D} = 180^\\circ$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $\\widehat{A} - \\widehat{C} = 180^\\circ$ '
+                           'và $\\widehat{B} + \\widehat{D} = 180^\\circ$ thì kết quả của **Tổng hai góc '
+                           'đối** trong **Bài 29: Tứ giác nội tiếp** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Cho tứ giác $ABCD$ nội tiếp đường tròn $(O)$, biết '
                            '$\\widehat{A} = 70^\\circ$ và $\\widehat{B} = 105^\\circ$. Tính số đo các góc '
-                           '$C$ và $D$.”, lời giải đúng là: Vì tứ giác $ABCD$ nội tiếp nên tổng hai góc đối '
-                           'bằng $180^\\circ$: $\\widehat{C} = 180^\\circ - \\widehat{A} = 180^\\circ - '
-                           '70^\\circ = 110^\\circ$...'],
+                           '$C$ và $D$...”, kết quả giải đúng là: Vì tứ giác $ABCD$ nội tiếp nên tổng hai '
+                           'góc đối bằng $180^\\circ$: $\\widehat{C} = 180^\\circ - \\widehat{A} = '
+                           '180^\\circ - 70^\\circ = 110^\\circ$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 29: Tứ giác nội tiếp. b) **Đúng** theo '
-                        'công thức trọng tâm **Tổng hai góc đối** ($\\widehat{A} + \\widehat{C} = '
-                        '180^\\circ$ và $\\widehat{B} + \\widehat{D} = 180^\\circ$). c) **Sai** vì $ax + by '
-                        '= c$ ($a^2 + b^2 \\neq 0$) là công thức của nội dung khác, không phải quy tắc chung '
-                        'của **Tổng hai góc đối**. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        'công thức **Tổng hai góc đối** ($\\widehat{A} + \\widehat{C} = 180^\\circ$ và '
+                        '$\\widehat{B} + \\widehat{D} = 180^\\circ$). c) **Sai** vì công thức đúng của '
+                        '**Tổng hai góc đối** phải là $\\widehat{A} + \\widehat{C} = 180^\\circ$ và '
+                        '$\\widehat{B} + \\widehat{D} = 180^\\circ$ chứ không phải $\\widehat{A} - '
+                        '\\widehat{C} = 180^\\circ$ và $\\widehat{B} + \\widehat{D} = 180^\\circ$. d) '
+                        '**Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 29: Tứ giác nội tiếp** để giải quyết tình huống sau: Cho tứ giác '
-                 '$ABCD$ nội tiếp đường tròn $(O)$, biết $\\widehat{A} = 70^\\circ$ và $\\widehat{B} = '
-                 '105^\\circ$. Tính số đo các góc $C$ và $D$. Kết quả và hướng giải nào dưới đây là '
-                 '**đúng**?',
-            'options': ['Thay $x = 2, y = -1$ vào phương trình thứ nhất: $2 \\cdot 2 - (-1) = 4 + 1 = 5$ '
-                        '(thỏa mãn). Thay $x = 2, y = -1$ vào phương trình thứ hai: $2 + 3 \\cdot (-1) = 2 - '
-                        '3 = -1$...',
-                        'Cộng từng vế hai phương trình của hệ, ta được: $5x = 10 \\Rightarrow x = 2$. Thay '
-                        '$x = 2$ vào phương trình $2x + y = 5$, ta có: $2 \\cdot 2 + y = 5 \\Rightarrow y = '
-                        '1$...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 29: Tứ giác nội tiếp** để giải bài toán sau: Cho tứ '
+                 'giác $ABCD$ nội tiếp đường tròn $(O)$, biết $\\widehat{A} = 70^\\circ$ và $\\widehat{B} = '
+                 '105^\\circ$. Tính số đo các góc $C$ và $D$. Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Vì tứ giác $ABCD$ nội tiếp nên tổng hai góc đối bằng $180^\\circ$: $\\widehat{C} = '
+                        '180^\\circ + \\widehat{A} = 180^\\circ - 70^\\circ = 110^\\circ$...',
                         'Vì tứ giác $ABCD$ nội tiếp nên tổng hai góc đối bằng $180^\\circ$: $\\widehat{C} = '
-                        '180^\\circ - \\widehat{A} = 180^\\circ - 70^\\circ = 110^\\circ$; $\\widehat{D} = '
-                        '180^\\circ - \\widehat{B} = 180^\\circ - 105^\\circ = 75^\\circ$...',
-                        'Gọi số thứ nhất là $x$ và số thứ hai là $y$. Theo đề bài, ta có hệ phương trình: '
-                        '$\\begin{cases} x + y = 59 \\\\ 3y - 2x = 7 \\end{cases} \\Leftrightarrow '
-                        '\\begin{cases} 2x + 2y = 118 \\\\ -2x + 3y = 7 \\end{cases}$...'],
+                        '180^\\circ - \\widehat{A} = 180^\\circ - 70^\\circ = 109^\\circ$...',
+                        'Vì tứ giác $ABCD$ nội tiếp nên tổng hai góc đối bằng $180^\\circ$: $\\widehat{C} = '
+                        '180^\\circ - \\widehat{A} = 180^\\circ - 70^\\circ = 110^\\circ$...',
+                        'Vì tứ giác $ABCD$ nội tiếp nên tổng hai góc đối bằng $182^\\circ$: $\\widehat{C} = '
+                        '180^\\circ - \\widehat{A} = 180^\\circ - 70^\\circ = 110^\\circ$...'],
             'answer': 2,
             'solution': 'Lời giải chi tiết theo Bài 29: Tứ giác nội tiếp: Vì tứ giác $ABCD$ nội tiếp nên '
                         'tổng hai góc đối bằng $180^\\circ$:\n'
@@ -4870,8 +4862,8 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
   'description': 'Nhận biết đa giác đều, tính số đo góc của đa giác đều và phép quay giữ nguyên đa giác đều.',
   'requirements': ['Nhận biết được đa giác đều và tính được số đo mỗi góc của $n$-giác đều.',
                    'Nhận biết được phép quay và xác định được các phép quay giữ nguyên một đa giác đều.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Số đo mỗi góc của $n$-giác đều** '
-                   '($\\dfrac{(n - 2) \\cdot 180^\\circ}{n}$) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 30: Đa giác đều** để giải bài tập minh họa và bài toán thực '
+                   'tiễn.'],
   'definition': 'Đa giác đều là đa giác lồi có tất cả các cạnh bằng nhau và tất cả các góc bằng nhau (ví dụ: '
                 'tam giác đều, hình vuông, ngũ giác đều, lục giác đều).',
   'theory': '1. Tổng các góc của một đa giác lồi $n$ cạnh là $(n - 2) \\cdot 180^\\circ$. Do đó mỗi góc của '
@@ -4916,28 +4908,27 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 30: Đa giác đều**, công thức hoặc quy tắc nào sau đây '
-                 'biểu diễn đúng **Số đo mỗi góc của $n$-giác đều**?',
-            'options': ['$\\alpha_{\\min} = \\dfrac{360^\\circ}{n}$',
-                        '$ax + by = c$ ($a^2 + b^2 \\neq 0$)',
-                        '$\\begin{cases} a_1x + b_1y = c_1 \\\\ a_2x + b_2y = c_2 \\end{cases}$',
+            'q': 'Trong **Bài 30: Đa giác đều**, quy tắc hoặc công thức nào sau đây xác định đúng **Số đo '
+                 'mỗi góc của $n$-giác đều**?',
+            'options': ['$\\dfrac{(n + 2) \\cdot 180^\\circ}{n}$',
+                        '$\\dfrac{n}{(n - 2) \\cdot 180^\\circ}$',
+                        '$\\dfrac{(n - 4) \\cdot 180^\\circ}{n}$',
                         '$\\dfrac{(n - 2) \\cdot 180^\\circ}{n}$'],
             'answer': 3,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 30: Đa giác đều, **Số đo mỗi góc của $n$-giác '
+            'solution': 'Theo kiến thức trọng tâm của Bài 30: Đa giác đều, **Số đo mỗi góc của $n$-giác '
                         'đều** được xác định bởi: $\\dfrac{(n - 2) \\cdot 180^\\circ}{n}$. (Ví dụ: Lục giác '
                         'đều ($n = 6$) có góc $120^\\circ$)'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 30: Đa giác đều**, nội dung/biểu thức $\\alpha_{\\min} = '
-                 '\\dfrac{360^\\circ}{n}$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Góc quay nhỏ nhất giữ nguyên $n$-giác đều',
-                        'Số đo mỗi góc của $n$-giác đều',
-                        'Phương trình bậc nhất hai ẩn',
-                        'Hệ hai phương trình bậc nhất hai ẩn'],
+            'q': 'Khi học **Bài 30: Đa giác đều**, biểu thức hoặc quy tắc nào dưới đây biểu diễn đúng **Góc '
+                 'quay nhỏ nhất giữ nguyên $n$-giác đều**?',
+            'options': ['$\\alpha_{\\min} = \\dfrac{360^\\circ}{n}$',
+                        '$\\alpha_{\\min} = \\dfrac{370^\\circ}{n}$',
+                        '$\\alpha_{\\min} = \\dfrac{n}{360^\\circ}$',
+                        '$\\alpha_{\\min} = \\dfrac{362^\\circ}{n}$'],
             'answer': 0,
-            'solution': 'Trong Bài 30: Đa giác đều, biểu thức/quy tắc $\\alpha_{\\min} = '
-                        '\\dfrac{360^\\circ}{n}$ chính là nội dung của **Góc quay nhỏ nhất giữ nguyên '
-                        '$n$-giác đều**.'},
+            'solution': 'Trong Bài 30: Đa giác đều, **Góc quay nhỏ nhất giữ nguyên $n$-giác đều** có công '
+                        'thức/quy tắc là: $\\alpha_{\\min} = \\dfrac{360^\\circ}{n}$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Cho lục giác đều $ABCDEF$ nội tiếp đường tròn $(O; 5\\text{ cm})$. Độ dài cạnh $AB$ của '
@@ -4950,15 +4941,16 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 30: Đa giác đều** (Chương IX: Đường tròn ngoại tiếp và đường tròn nội tiếp), '
-                 'khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Nhận biết được phương trình bậc nhất hai ẩn $ax + by = c$ ($a \\neq 0$ hoặc $b '
-                        '\\neq 0$) và nghiệm của nó.',
-                        'Nhận biết được hệ hai phương trình bậc nhất hai ẩn và nghiệm của hệ.',
+            'q': 'Để nắm vững bản chất của **Bài 30: Đa giác đều**, nhận định nào sau đây là **chính xác**?',
+            'options': ['Nhận biết được đa giác đều và tính được số đo mỗi góc của $n$-giác đều. (với dấu '
+                        'ngược lại)',
+                        'Đảo ngược vế của quy tắc: Nhận biết được đa giác đều và tính được số đo mỗi góc của '
+                        '$n$-giác đều.',
                         'Nhận biết được đa giác đều và tính được số đo mỗi góc của $n$-giác đều.',
-                        'Biểu diễn được tập nghiệm của phương trình bậc nhất hai ẩn trên mặt phẳng tọa độ.'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nhận biết được đa giác đều và '
+                        'tính được số đo mỗi góc của $n$-giác đều.'],
             'answer': 2,
-            'solution': 'Theo yêu cầu cần đạt của Bài 30: Đa giác đều: Nhận biết được đa giác đều và tính '
+            'solution': 'Theo nội dung cốt lõi của Bài 30: Đa giác đều: Nhận biết được đa giác đều và tính '
                         'được số đo mỗi góc của $n$-giác đều.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -4976,41 +4968,37 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 30: Đa giác đều**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được đa giác đều và tính '
-                           'được số đo mỗi góc của $n$-giác đều.',
-                           'Quy tắc/công thức **Số đo mỗi góc của $n$-giác đều** trong bài được xác định '
-                           'bởi: $\\dfrac{(n - 2) \\cdot 180^\\circ}{n}$.',
-                           'Trong mọi trường hợp, **Số đo mỗi góc của $n$-giác đều** luôn được tính bằng '
-                           'công thức $ax + by = c$ ($a^2 + b^2 \\neq 0$) (thuộc Phương trình bậc nhất hai '
-                           'ẩn) mà không cần điều kiện của Bài 30: Đa giác đều.',
-                           'Với bài toán minh họa: “Tính số đo mỗi góc trong của một ngũ giác đều và góc '
-                           'quay nhỏ nhất quanh tâm $O$ biến ngũ giác đều thành chính nó.”, lời giải đúng '
-                           'là: Với ngũ giác đều ($n = 5$), số đo mỗi góc trong là $\\dfrac{(5 - 2) \\cdot '
-                           '180^\\circ}{5} = 108^\\circ$. Góc quay nhỏ nhất quanh tâm $O$ biến ng...'],
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 30: Đa giác đều**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết được đa giác đều và tính được '
+                           'số đo mỗi góc của $n$-giác đều.',
+                           'Trong **Bài 30: Đa giác đều**, quy tắc/công thức **Số đo mỗi góc của $n$-giác '
+                           'đều** được viết là: $\\dfrac{(n - 2) \\cdot 180^\\circ}{n}$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $\\dfrac{(n + 2) \\cdot 180^\\circ}{n}$ thì '
+                           'kết quả của **Số đo mỗi góc của $n$-giác đều** trong **Bài 30: Đa giác đều** vẫn '
+                           'không thay đổi.',
+                           'Xét ví dụ của bài: “Tính số đo mỗi góc trong của một ngũ giác đều và góc quay '
+                           'nhỏ nhất quanh tâm $O$ biến ngũ giác đều thành chính nó.”, kết quả giải đúng là: '
+                           'Với ngũ giác đều ($n = 5$), số đo mỗi góc trong là $\\dfrac{(5 - 2) \\cdot '
+                           '180^\\circ}{5} = 108^\\circ$. Góc quay nhỏ nhất quanh tâm $O$ bi...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 30: Đa giác đều. b) **Đúng** theo công '
-                        'thức trọng tâm **Số đo mỗi góc của $n$-giác đều** ($\\dfrac{(n - 2) \\cdot '
-                        '180^\\circ}{n}$). c) **Sai** vì $ax + by = c$ ($a^2 + b^2 \\neq 0$) là công thức '
-                        'của nội dung khác, không phải quy tắc chung của **Số đo mỗi góc của $n$-giác đều**. '
-                        'd) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        'thức **Số đo mỗi góc của $n$-giác đều** ($\\dfrac{(n - 2) \\cdot 180^\\circ}{n}$). '
+                        'c) **Sai** vì công thức đúng của **Số đo mỗi góc của $n$-giác đều** phải là '
+                        '$\\dfrac{(n - 2) \\cdot 180^\\circ}{n}$ chứ không phải $\\dfrac{(n + 2) \\cdot '
+                        '180^\\circ}{n}$. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 30: Đa giác đều** để giải quyết tình huống sau: Tính số đo mỗi '
-                 'góc trong của một ngũ giác đều và góc quay nhỏ nhất quanh tâm $O$ biến ngũ giác đều thành '
-                 'chính nó. Kết quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Thay $x = 2, y = -1$ vào phương trình thứ nhất: $2 \\cdot 2 - (-1) = 4 + 1 = 5$ '
-                        '(thỏa mãn). Thay $x = 2, y = -1$ vào phương trình thứ hai: $2 + 3 \\cdot (-1) = 2 - '
-                        '3 = -1$...',
-                        'Cộng từng vế hai phương trình của hệ, ta được: $5x = 10 \\Rightarrow x = 2$. Thay '
-                        '$x = 2$ vào phương trình $2x + y = 5$, ta có: $2 \\cdot 2 + y = 5 \\Rightarrow y = '
-                        '1$...',
-                        'Gọi số thứ nhất là $x$ và số thứ hai là $y$. Theo đề bài, ta có hệ phương trình: '
-                        '$\\begin{cases} x + y = 59 \\\\ 3y - 2x = 7 \\end{cases} \\Leftrightarrow '
-                        '\\begin{cases} 2x + 2y = 118 \\\\ -2x + 3y = 7 \\end{cases}$...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 30: Đa giác đều** để giải bài toán sau: Tính số đo '
+                 'mỗi góc trong của một ngũ giác đều và góc quay nhỏ nhất quanh tâm $O$ biến ngũ giác đều '
+                 'thành chính nó. Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Với ngũ giác đều ($n = 5$), số đo mỗi góc trong là $\\dfrac{(5 + 2) \\cdot '
+                        '180^\\circ}{5} = 108^\\circ$. Góc quay nhỏ nhất quanh tâm $O$ biến ngũ giác đều...',
+                        'Với ngũ giác đều ($n = 5$), số đo mỗi góc trong là $\\dfrac{5}{(5 - 2) \\cdot '
+                        '180^\\circ} = 108^\\circ$. Góc quay nhỏ nhất quanh tâm $O$ biến ngũ giác đều...',
+                        'Với ngũ giác đều ($n = 10$), số đo mỗi góc trong là $\\dfrac{(5 - 2) \\cdot '
+                        '180^\\circ}{5} = 108^\\circ$. Góc quay nhỏ nhất quanh tâm $O$ biến ngũ giác đều...',
                         'Với ngũ giác đều ($n = 5$), số đo mỗi góc trong là $\\dfrac{(5 - 2) \\cdot '
-                        '180^\\circ}{5} = 108^\\circ$. Góc quay nhỏ nhất quanh tâm $O$ biến ngũ giác đều '
-                        'thàn...'],
+                        '180^\\circ}{5} = 108^\\circ$. Góc quay nhỏ nhất quanh tâm $O$ biến ngũ giác đều...'],
             'answer': 3,
             'solution': 'Lời giải chi tiết theo Bài 30: Đa giác đều: Với ngũ giác đều ($n = 5$), số đo mỗi '
                         'góc trong là $\\dfrac{(5 - 2) \\cdot 180^\\circ}{5} = 108^\\circ$.\n'
@@ -5035,8 +5023,8 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
   'requirements': ['Nhận biết được các yếu tố (bán kính đáy, chiều cao, đường sinh) của hình trụ và hình '
                    'nón.',
                    'Tính được diện tích xung quanh, diện tích toàn phần và thể tích của hình trụ, hình nón.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Hình trụ ($r, h$)** ($S_{xq} = 2\\pi rh$; '
-                   '$V = \\pi r^2h$) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 31: Hình trụ và hình nón** để giải bài tập minh họa và bài '
+                   'toán thực tiễn.'],
   'definition': 'Khi quay một hình chữ nhật một vòng quanh một cạnh cố định ta được một hình trụ. Khi quay '
                 'một tam giác vuông một vòng quanh một cạnh góc vuông cố định ta được một hình nón.',
   'theory': '1. Hình trụ có bán kính đáy $r$ và chiều cao $h$: diện tích xung quanh $S_{xq} = 2\\pi rh$, '
@@ -5082,27 +5070,27 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 31: Hình trụ và hình nón**, công thức hoặc quy tắc nào '
-                 'sau đây biểu diễn đúng **Hình trụ ($r, h$)**?',
+            'q': 'Trong **Bài 31: Hình trụ và hình nón**, quy tắc hoặc công thức nào sau đây xác định đúng '
+                 '**Hình trụ ($r, h$)**?',
             'options': ['$S_{xq} = 2\\pi rh$; $V = \\pi r^2h$',
-                        '$S_{xq} = \\pi rl$; $V = \\dfrac{1}{3}\\pi r^2h$',
-                        '$ax + by = c$ ($a^2 + b^2 \\neq 0$)',
-                        '$\\begin{cases} a_1x + b_1y = c_1 \\\\ a_2x + b_2y = c_2 \\end{cases}$'],
+                        '$S_{xq} = 3\\pi rh$; $V = \\pi r^2h$',
+                        '$S_{xq} = 1\\pi rh$; $V = \\pi r^2h$',
+                        '$S_{xq} = 4\\pi rh$; $V = \\pi r^2h$'],
             'answer': 0,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 31: Hình trụ và hình nón, **Hình trụ ($r, '
-                        'h$)** được xác định bởi: $S_{xq} = 2\\pi rh$; $V = \\pi r^2h$. ($S_{tp} = 2\\pi rh '
-                        '+ 2\\pi r^2$)'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 31: Hình trụ và hình nón, **Hình trụ ($r, h$)** '
+                        'được xác định bởi: $S_{xq} = 2\\pi rh$; $V = \\pi r^2h$. ($S_{tp} = 2\\pi rh + '
+                        '2\\pi r^2$)'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 31: Hình trụ và hình nón**, nội dung/biểu thức $S_{xq} = \\pi rl$; $V = '
-                 '\\dfrac{1}{3}\\pi r^2h$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Hình trụ ($r, h$)',
-                        'Hình nón ($r, h, l$)',
-                        'Phương trình bậc nhất hai ẩn',
-                        'Hệ hai phương trình bậc nhất hai ẩn'],
+            'q': 'Khi học **Bài 31: Hình trụ và hình nón**, biểu thức hoặc quy tắc nào dưới đây biểu diễn '
+                 'đúng **Hình nón ($r, h, l$)**?',
+            'options': ['$S_{xq} = \\pi rl$; $V = \\dfrac{2}{3}\\pi r^2h$',
+                        '$S_{xq} = \\pi rl$; $V = \\dfrac{1}{3}\\pi r^2h$',
+                        '$S_{xq} = \\pi rl$; $V = \\dfrac{3}{1}\\pi r^2h$',
+                        '$S_{xq} = 2\\pi rh$; $V = \\pi r^2h$'],
             'answer': 1,
-            'solution': 'Trong Bài 31: Hình trụ và hình nón, biểu thức/quy tắc $S_{xq} = \\pi rl$; $V = '
-                        '\\dfrac{1}{3}\\pi r^2h$ chính là nội dung của **Hình nón ($r, h, l$)**.'},
+            'solution': 'Trong Bài 31: Hình trụ và hình nón, **Hình nón ($r, h, l$)** có công thức/quy tắc '
+                        'là: $S_{xq} = \\pi rl$; $V = \\dfrac{1}{3}\\pi r^2h$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Một hình trụ và một hình nón có cùng bán kính đáy $r$ và cùng chiều cao $h$. Tỉ số giữa '
@@ -5115,16 +5103,18 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 31: Hình trụ và hình nón** (Chương X: Một số hình khối trong thực tiễn), '
-                 'khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Nhận biết được phương trình bậc nhất hai ẩn $ax + by = c$ ($a \\neq 0$ hoặc $b '
-                        '\\neq 0$) và nghiệm của nó.',
-                        'Nhận biết được hệ hai phương trình bậc nhất hai ẩn và nghiệm của hệ.',
-                        'Biểu diễn được tập nghiệm của phương trình bậc nhất hai ẩn trên mặt phẳng tọa độ.',
+            'q': 'Để nắm vững bản chất của **Bài 31: Hình trụ và hình nón**, nhận định nào sau đây là '
+                 '**chính xác**?',
+            'options': ['Nhận biết được các yếu tố (bán kính đáy, chiều cao, đường sinh) của hình trụ và '
+                        'hình nón. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Nhận biết được các yếu tố (bán kính đáy, chiều cao, đường '
+                        'sinh) của hình trụ và hình nón.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nhận biết được các yếu tố (bán '
+                        'kính đáy, chiều cao, đường sinh) của hình trụ và hình nón.',
                         'Nhận biết được các yếu tố (bán kính đáy, chiều cao, đường sinh) của hình trụ và '
                         'hình nón.'],
             'answer': 3,
-            'solution': 'Theo yêu cầu cần đạt của Bài 31: Hình trụ và hình nón: Nhận biết được các yếu tố '
+            'solution': 'Theo nội dung cốt lõi của Bài 31: Hình trụ và hình nón: Nhận biết được các yếu tố '
                         '(bán kính đáy, chiều cao, đường sinh) của hình trụ và hình nón.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -5141,43 +5131,43 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 31: Hình trụ và hình '
-                 'nón**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được các yếu tố (bán '
-                           'kính đáy, chiều cao, đường sinh) của hình trụ và hình nón.',
-                           'Quy tắc/công thức **Hình trụ ($r, h$)** trong bài được xác định bởi: $S_{xq} = '
-                           '2\\pi rh$; $V = \\pi r^2h$.',
-                           'Trong mọi trường hợp, **Hình trụ ($r, h$)** luôn được tính bằng công thức $ax + '
-                           'by = c$ ($a^2 + b^2 \\neq 0$) (thuộc Phương trình bậc nhất hai ẩn) mà không cần '
-                           'điều kiện của Bài 31: Hình trụ và hình nón.',
-                           'Với bài toán minh họa: “Cho một hình nón có bán kính đáy $r = 3$ cm và chiều cao '
-                           '$h = 4$ cm. Tính độ dài đường sinh, diện tích xung quanh và thể tích của hình '
-                           'nón.”, lời giải đúng là: Độ dài đường sinh là $l = \\sqrt{r^2 + h^2} = '
-                           '\\sqrt{3^2 + 4^2} = 5$ (cm). Diện tích xung quanh là $S_{xq} = \\pi rl = \\pi '
-                           '\\cdot 3 \\cdot 5 = 15\\pi$...'],
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 31: Hình trụ và hình nón**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết được các yếu tố (bán kính đáy, '
+                           'chiều cao, đường sinh) của hình trụ và hình nón.',
+                           'Trong **Bài 31: Hình trụ và hình nón**, quy tắc/công thức **Hình trụ ($r, h$)** '
+                           'được viết là: $S_{xq} = 2\\pi rh$; $V = \\pi r^2h$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $S_{xq} = 3\\pi rh$; $V = \\pi r^2h$ thì kết '
+                           'quả của **Hình trụ ($r, h$)** trong **Bài 31: Hình trụ và hình nón** vẫn không '
+                           'thay đổi.',
+                           'Xét ví dụ của bài: “Cho một hình nón có bán kính đáy $r = 3$ cm và chiều cao $h '
+                           '= 4$ cm. Tính độ dài đường sinh, diện tích xung quanh và thể tích của hình...”, '
+                           'kết quả giải đúng là: Độ dài đường sinh là $l = \\sqrt{r^2 + h^2} = \\sqrt{3^2 + '
+                           '4^2} = 5$ (cm). Diện tích xung quanh là $S_{xq} = \\pi rl = \\pi \\cdot 3 \\cdot '
+                           '5 = 15\\pi$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 31: Hình trụ và hình nón. b) **Đúng** theo '
-                        'công thức trọng tâm **Hình trụ ($r, h$)** ($S_{xq} = 2\\pi rh$; $V = \\pi r^2h$). '
-                        'c) **Sai** vì $ax + by = c$ ($a^2 + b^2 \\neq 0$) là công thức của nội dung khác, '
-                        'không phải quy tắc chung của **Hình trụ ($r, h$)**. d) **Đúng** theo lời giải ví dụ '
-                        'minh họa trong bài học.'},
+                        'công thức **Hình trụ ($r, h$)** ($S_{xq} = 2\\pi rh$; $V = \\pi r^2h$). c) **Sai** '
+                        'vì công thức đúng của **Hình trụ ($r, h$)** phải là $S_{xq} = 2\\pi rh$; $V = \\pi '
+                        'r^2h$ chứ không phải $S_{xq} = 3\\pi rh$; $V = \\pi r^2h$. d) **Đúng** theo lời '
+                        'giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 31: Hình trụ và hình nón** để giải quyết tình huống sau: Cho một '
-                 'hình nón có bán kính đáy $r = 3$ cm và chiều cao $h = 4$ cm. Tính độ dài đường sinh, diện '
-                 'tích xung quanh và thể tích của hình nón. Kết quả và hướng giải nào dưới đây là **đúng**?',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 31: Hình trụ và hình nón** để giải bài toán sau: '
+                 'Cho một hình nón có bán kính đáy $r = 3$ cm và chiều cao $h = 4$ cm. Tính độ dài đường '
+                 'sinh, diện tích xung quanh và thể tích của hình nón. Cách giải và kết quả nào dưới đây là '
+                 '**đúng**?',
             'options': ['Độ dài đường sinh là $l = \\sqrt{r^2 + h^2} = \\sqrt{3^2 + 4^2} = 5$ (cm). Diện '
                         'tích xung quanh là $S_{xq} = \\pi rl = \\pi \\cdot 3 \\cdot 5 = 15\\pi$ '
                         '($\\text{cm}^2$...',
-                        'Thay $x = 2, y = -1$ vào phương trình thứ nhất: $2 \\cdot 2 - (-1) = 4 + 1 = 5$ '
-                        '(thỏa mãn). Thay $x = 2, y = -1$ vào phương trình thứ hai: $2 + 3 \\cdot (-1) = 2 - '
-                        '3 = -1$...',
-                        'Cộng từng vế hai phương trình của hệ, ta được: $5x = 10 \\Rightarrow x = 2$. Thay '
-                        '$x = 2$ vào phương trình $2x + y = 5$, ta có: $2 \\cdot 2 + y = 5 \\Rightarrow y = '
-                        '1$...',
-                        'Gọi số thứ nhất là $x$ và số thứ hai là $y$. Theo đề bài, ta có hệ phương trình: '
-                        '$\\begin{cases} x + y = 59 \\\\ 3y - 2x = 7 \\end{cases} \\Leftrightarrow '
-                        '\\begin{cases} 2x + 2y = 118 \\\\ -2x + 3y = 7 \\end{cases}$...'],
+                        'Độ dài đường sinh là $l = \\sqrt{r^2 - h^2} = \\sqrt{3^2 + 4^2} = 5$ (cm). Diện '
+                        'tích xung quanh là $S_{xq} = \\pi rl = \\pi \\cdot 3 \\cdot 5 = 15\\pi$ '
+                        '($\\text{cm}^2$...',
+                        'Độ dài đường sinh là $l = \\sqrt{r^2 + h^2} = \\sqrt{3^2 + 4^2} = 5$ (cm). Diện '
+                        'tích xung quanh là $S_{xq} = \\pi rl = \\pi \\cdot 3 \\cdot 5 = 15\\pi$ '
+                        '($\\text{cm}^1$...',
+                        'Độ dài đường sinh là $l = \\sqrt{r^4 + h^2} = \\sqrt{3^2 + 4^2} = 5$ (cm). Diện '
+                        'tích xung quanh là $S_{xq} = \\pi rl = \\pi \\cdot 3 \\cdot 5 = 15\\pi$ '
+                        '($\\text{cm}^2$...'],
             'answer': 0,
             'solution': 'Lời giải chi tiết theo Bài 31: Hình trụ và hình nón: Độ dài đường sinh là $l = '
                         '\\sqrt{r^2 + h^2} = \\sqrt{3^2 + 4^2} = 5$ (cm).\n'
@@ -5204,8 +5194,8 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
   'description': 'Nhận biết hình cầu, mặt cầu và tính diện tích mặt cầu, thể tích hình cầu.',
   'requirements': ['Nhận biết được hình cầu, tâm, bán kính, đường kính và mặt cắt phẳng của hình cầu.',
                    'Tính được diện tích mặt cầu và thể tích của hình cầu.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Diện tích mặt cầu** ($S = 4\\pi R^2 = \\pi '
-                   'd^2$) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 32: Hình cầu** để giải bài tập minh họa và bài toán thực '
+                   'tiễn.'],
   'definition': 'Khi quay nửa hình tròn tâm $O$ bán kính $R$ một vòng quanh đường kính cố định thì được một '
                 'hình cầu tâm $O$ bán kính $R$. Nửa đường tròn trong phép quay tạo nên mặt cầu.',
   'theory': '1. Khi cắt hình cầu bởi một mặt phẳng thì phần chung của mặt phẳng và hình cầu là một hình '
@@ -5251,26 +5241,26 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 32: Hình cầu**, công thức hoặc quy tắc nào sau đây biểu '
-                 'diễn đúng **Diện tích mặt cầu**?',
-            'options': ['$V = \\dfrac{4}{3}\\pi R^3$',
+            'q': 'Trong **Bài 32: Hình cầu**, quy tắc hoặc công thức nào sau đây xác định đúng **Diện tích '
+                 'mặt cầu**?',
+            'options': ['$S = 5\\pi R^2 = \\pi d^2$',
                         '$S = 4\\pi R^2 = \\pi d^2$',
-                        '$ax + by = c$ ($a^2 + b^2 \\neq 0$)',
-                        '$\\begin{cases} a_1x + b_1y = c_1 \\\\ a_2x + b_2y = c_2 \\end{cases}$'],
+                        '$S = 4\\pi R^2 = \\pi d^1$',
+                        '$S = 8\\pi R^2 = \\pi d^2$'],
             'answer': 1,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 32: Hình cầu, **Diện tích mặt cầu** được xác '
-                        'định bởi: $S = 4\\pi R^2 = \\pi d^2$. ($d = 2R$ là đường kính hình cầu)'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 32: Hình cầu, **Diện tích mặt cầu** được xác định '
+                        'bởi: $S = 4\\pi R^2 = \\pi d^2$. ($d = 2R$ là đường kính hình cầu)'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 32: Hình cầu**, nội dung/biểu thức $V = \\dfrac{4}{3}\\pi R^3$ là quy tắc hoặc '
-                 'công thức của mục nào sau đây?',
-            'options': ['Diện tích mặt cầu',
-                        'Phương trình bậc nhất hai ẩn',
-                        'Thể tích hình cầu',
-                        'Hệ hai phương trình bậc nhất hai ẩn'],
+            'q': 'Khi học **Bài 32: Hình cầu**, biểu thức hoặc quy tắc nào dưới đây biểu diễn đúng **Thể '
+                 'tích hình cầu**?',
+            'options': ['$V = \\dfrac{5}{3}\\pi R^3$',
+                        '$V = \\dfrac{3}{4}\\pi R^3$',
+                        '$V = \\dfrac{4}{3}\\pi R^3$',
+                        '$V = \\dfrac{8}{3}\\pi R^3$'],
             'answer': 2,
-            'solution': 'Trong Bài 32: Hình cầu, biểu thức/quy tắc $V = \\dfrac{4}{3}\\pi R^3$ chính là nội '
-                        'dung của **Thể tích hình cầu**.'},
+            'solution': 'Trong Bài 32: Hình cầu, **Thể tích hình cầu** có công thức/quy tắc là: $V = '
+                        '\\dfrac{4}{3}\\pi R^3$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Nếu diện tích mặt cầu bằng $100\\pi\\text{ cm}^2$ thì bán kính $R$ của mặt cầu đó bằng:',
@@ -5281,15 +5271,16 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 32: Hình cầu** (Chương X: Một số hình khối trong thực tiễn), khẳng định nào '
-                 'sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
+            'q': 'Để nắm vững bản chất của **Bài 32: Hình cầu**, nhận định nào sau đây là **chính xác**?',
             'options': ['Nhận biết được hình cầu, tâm, bán kính, đường kính và mặt cắt phẳng của hình cầu.',
-                        'Nhận biết được phương trình bậc nhất hai ẩn $ax + by = c$ ($a \\neq 0$ hoặc $b '
-                        '\\neq 0$) và nghiệm của nó.',
-                        'Nhận biết được hệ hai phương trình bậc nhất hai ẩn và nghiệm của hệ.',
-                        'Biểu diễn được tập nghiệm của phương trình bậc nhất hai ẩn trên mặt phẳng tọa độ.'],
+                        'Nhận biết được hình cầu, tâm, bán kính, đường kính và mặt cắt phẳng của hình cầu. '
+                        '(với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Nhận biết được hình cầu, tâm, bán kính, đường kính và mặt '
+                        'cắt phẳng của hình cầu.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nhận biết được hình cầu, tâm, '
+                        'bán kính, đường kính và mặt cắt phẳng của hình cầu.'],
             'answer': 0,
-            'solution': 'Theo yêu cầu cần đạt của Bài 32: Hình cầu: Nhận biết được hình cầu, tâm, bán kính, '
+            'solution': 'Theo nội dung cốt lõi của Bài 32: Hình cầu: Nhận biết được hình cầu, tâm, bán kính, '
                         'đường kính và mặt cắt phẳng của hình cầu.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -5306,42 +5297,40 @@ LESSONS = [{'topic': 'l9-ch01-he-phuong-trinh',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 32: Hình cầu**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được hình cầu, tâm, bán '
-                           'kính, đường kính và mặt cắt phẳng của hình cầu.',
-                           'Quy tắc/công thức **Diện tích mặt cầu** trong bài được xác định bởi: $S = 4\\pi '
-                           'R^2 = \\pi d^2$.',
-                           'Trong mọi trường hợp, **Diện tích mặt cầu** luôn được tính bằng công thức $ax + '
-                           'by = c$ ($a^2 + b^2 \\neq 0$) (thuộc Phương trình bậc nhất hai ẩn) mà không cần '
-                           'điều kiện của Bài 32: Hình cầu.',
-                           'Với bài toán minh họa: “Một quả bóng đá hình cầu có bán kính $R = 11$ cm. Tính '
-                           'diện tích bề mặt và thể tích của quả bóng theo $\\pi$.”, lời giải đúng là: Diện '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 32: Hình cầu**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết được hình cầu, tâm, bán kính, '
+                           'đường kính và mặt cắt phẳng của hình cầu.',
+                           'Trong **Bài 32: Hình cầu**, quy tắc/công thức **Diện tích mặt cầu** được viết '
+                           'là: $S = 4\\pi R^2 = \\pi d^2$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $S = 5\\pi R^2 = \\pi d^2$ thì kết quả của '
+                           '**Diện tích mặt cầu** trong **Bài 32: Hình cầu** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Một quả bóng đá hình cầu có bán kính $R = 11$ cm. Tính diện '
+                           'tích bề mặt và thể tích của quả bóng theo $\\pi$.”, kết quả giải đúng là: Diện '
                            'tích mặt cầu là $S = 4\\pi R^2 = 4\\pi \\cdot 11^2 = 484\\pi$ ($\\text{cm}^2$). '
                            'Thể tích hình cầu là $V = \\dfrac{4}{3}\\pi R^3 = \\dfrac{4}{3}\\pi \\cdot 11^3 '
                            '= \\dfrac{5324\\pi}{3}$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 32: Hình cầu. b) **Đúng** theo công thức '
-                        'trọng tâm **Diện tích mặt cầu** ($S = 4\\pi R^2 = \\pi d^2$). c) **Sai** vì $ax + '
-                        'by = c$ ($a^2 + b^2 \\neq 0$) là công thức của nội dung khác, không phải quy tắc '
-                        'chung của **Diện tích mặt cầu**. d) **Đúng** theo lời giải ví dụ minh họa trong bài '
-                        'học.'},
+                        '**Diện tích mặt cầu** ($S = 4\\pi R^2 = \\pi d^2$). c) **Sai** vì công thức đúng '
+                        'của **Diện tích mặt cầu** phải là $S = 4\\pi R^2 = \\pi d^2$ chứ không phải $S = '
+                        '5\\pi R^2 = \\pi d^2$. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 32: Hình cầu** để giải quyết tình huống sau: Một quả bóng đá hình '
-                 'cầu có bán kính $R = 11$ cm. Tính diện tích bề mặt và thể tích của quả bóng theo $\\pi$. '
-                 'Kết quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Thay $x = 2, y = -1$ vào phương trình thứ nhất: $2 \\cdot 2 - (-1) = 4 + 1 = 5$ '
-                        '(thỏa mãn). Thay $x = 2, y = -1$ vào phương trình thứ hai: $2 + 3 \\cdot (-1) = 2 - '
-                        '3 = -1$...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 32: Hình cầu** để giải bài toán sau: Một quả bóng '
+                 'đá hình cầu có bán kính $R = 11$ cm. Tính diện tích bề mặt và thể tích của quả bóng theo '
+                 '$\\pi$. Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Diện tích mặt cầu là $S = 4\\pi R^2 = 4\\pi : 11^2 = 484\\pi$ ($\\text{cm}^2$). Thể '
+                        'tích hình cầu là $V = \\dfrac{4}{3}\\pi R^3 = \\dfrac{4}{3}\\pi \\cdot 11^3 = '
+                        '\\dfrac{5324\\pi}{3}$...',
                         'Diện tích mặt cầu là $S = 4\\pi R^2 = 4\\pi \\cdot 11^2 = 484\\pi$ '
                         '($\\text{cm}^2$). Thể tích hình cầu là $V = \\dfrac{4}{3}\\pi R^3 = '
                         '\\dfrac{4}{3}\\pi \\cdot 11^3 = \\dfrac{5324\\pi}{3}$...',
-                        'Cộng từng vế hai phương trình của hệ, ta được: $5x = 10 \\Rightarrow x = 2$. Thay '
-                        '$x = 2$ vào phương trình $2x + y = 5$, ta có: $2 \\cdot 2 + y = 5 \\Rightarrow y = '
-                        '1$...',
-                        'Gọi số thứ nhất là $x$ và số thứ hai là $y$. Theo đề bài, ta có hệ phương trình: '
-                        '$\\begin{cases} x + y = 59 \\\\ 3y - 2x = 7 \\end{cases} \\Leftrightarrow '
-                        '\\begin{cases} 2x + 2y = 118 \\\\ -2x + 3y = 7 \\end{cases}$...'],
+                        'Diện tích mặt cầu là $S = 4\\pi R^2 = 4\\pi \\cdot 11^2 = 484\\pi$ '
+                        '($\\text{cm}^2$). Thể tích hình cầu là $V = \\dfrac{3}{4}\\pi R^3 = '
+                        '\\dfrac{4}{3}\\pi \\cdot 11^3 = \\dfrac{5324\\pi}{3}$...',
+                        'Diện tích mặt cầu là $S = 8\\pi R^2 = 4\\pi \\cdot 11^2 = 484\\pi$ '
+                        '($\\text{cm}^2$). Thể tích hình cầu là $V = \\dfrac{4}{3}\\pi R^3 = '
+                        '\\dfrac{4}{3}\\pi \\cdot 11^3 = \\dfrac{5324\\pi}{3}$...'],
             'answer': 1,
             'solution': 'Lời giải chi tiết theo Bài 32: Hình cầu: Diện tích mặt cầu là $S = 4\\pi R^2 = '
                         '4\\pi \\cdot 11^2 = 484\\pi$ ($\\text{cm}^2$).\n'

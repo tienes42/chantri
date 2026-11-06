@@ -1,7 +1,6 @@
 """Dữ liệu bài học SGK Toán Lớp 10 — Kết nối tri thức với cuộc sống (NXB Giáo dục Việt Nam).
-Cấu trúc 3 cấp: Lớp 10 ➔ Chương/Chủ đề (topic) ➔ Từng Bài học (title).
-Mỗi bài học gồm đầy đủ Yêu cầu cần đạt (requirements), Định nghĩa, Lý thuyết, Công thức, Ví dụ, Ứng dụng thực tế
-và đúng 10 câu hỏi luyện tập theo 3 mức độ: 4 Nhận biết + 4 Thông hiểu + 2 Vận dụng.
+Cấu trúc 3 cấp: Lớp 10 ➔ Chương/Chủ đề (topic) ➔ Từng Bài học độc lập (title).
+Mỗi bài học chỉ chứa kiến thức, công thức, ví dụ và 10 câu hỏi của riêng bài học đó.
 """
 
 GRADE = 10
@@ -72,28 +71,29 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 1: Mệnh đề**, công thức hoặc quy tắc nào sau đây biểu '
-                 'diễn đúng **Mệnh đề kéo theo**?',
-            'options': ['$P \\Leftrightarrow Q$ đúng khi $P, Q$ cùng tính đúng sai',
-                        '$\\overline{\\forall x \\in X, P(x)} \\equiv \\exists x \\in X, \\overline{P(x)}$',
+            'q': 'Trong **Bài 1: Mệnh đề**, quy tắc hoặc công thức nào sau đây xác định đúng **Mệnh đề kéo '
+                 'theo**?',
+            'options': ['$P \\Rightarrow Q$ chỉ sai khi $P$ đúng, $Q$ sai (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: $P \\Rightarrow Q$ chỉ sai khi $P$ đúng, $Q$ sai',
                         '$P \\Rightarrow Q$ chỉ sai khi $P$ đúng, $Q$ sai',
-                        '$A \\cap B = \\{x \\mid x \\in A \\text{ và } x \\in B\\}$; $A \\cup B = \\{x \\mid '
-                        'x \\in A \\text{ hoặc } x \\in B\\}$'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $P \\Rightarrow Q$ chỉ sai khi '
+                        '$P$ đúng, $Q$ sai'],
             'answer': 2,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 1: Mệnh đề, **Mệnh đề kéo theo** được xác '
-                        'định bởi: $P \\Rightarrow Q$ chỉ sai khi $P$ đúng, $Q$ sai. ($P$: điều kiện đủ; '
-                        '$Q$: điều kiện cần)'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 1: Mệnh đề, **Mệnh đề kéo theo** được xác định '
+                        'bởi: $P \\Rightarrow Q$ chỉ sai khi $P$ đúng, $Q$ sai. ($P$: điều kiện đủ; $Q$: '
+                        'điều kiện cần)'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 1: Mệnh đề**, nội dung/biểu thức $P \\Leftrightarrow Q$ đúng khi $P, Q$ cùng '
-                 'tính đúng sai là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Mệnh đề kéo theo',
-                        'Phủ định mệnh đề có lượng từ',
-                        'Giao và Hợp',
-                        'Mệnh đề tương đương'],
+            'q': 'Khi học **Bài 1: Mệnh đề**, biểu thức hoặc quy tắc nào dưới đây biểu diễn đúng **Mệnh đề '
+                 'tương đương**?',
+            'options': ['$P \\Leftrightarrow Q$ đúng khi $P, Q$ cùng tính đúng sai (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: $P \\Leftrightarrow Q$ đúng khi $P, Q$ cùng tính đúng sai',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $P \\Leftrightarrow Q$ đúng khi '
+                        '$P, Q$ cùng tính đúng sai',
+                        '$P \\Leftrightarrow Q$ đúng khi $P, Q$ cùng tính đúng sai'],
             'answer': 3,
-            'solution': 'Trong Bài 1: Mệnh đề, biểu thức/quy tắc $P \\Leftrightarrow Q$ đúng khi $P, Q$ cùng '
-                        'tính đúng sai chính là nội dung của **Mệnh đề tương đương**.'},
+            'solution': 'Trong Bài 1: Mệnh đề, **Mệnh đề tương đương** có công thức/quy tắc là: $P '
+                        '\\Leftrightarrow Q$ đúng khi $P, Q$ cùng tính đúng sai.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': "Cho mệnh đề chứa biến $P(x)$: '$x^2 - 3x + 2 = 0$'. Mệnh đề nào sau đây là mệnh đề đúng?",
@@ -104,17 +104,17 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 1: Mệnh đề** (Chương I: Mệnh đề và tập hợp), khẳng định nào sau đây phản ánh '
-                 '**đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Mô tả được tập hợp bằng cách liệt kê phần tử hoặc chỉ ra tính chất đặc trưng; nhận '
-                        'biết được tập con và hai tập hợp bằng nhau.',
+            'q': 'Để nắm vững bản chất của **Bài 1: Mệnh đề**, nhận định nào sau đây là **chính xác**?',
+            'options': ['Nhận biết được mệnh đề toán học, mệnh đề chứa biến và xác định tính đúng sai của '
+                        'một mệnh đề. (với dấu ngược lại)',
                         'Nhận biết được mệnh đề toán học, mệnh đề chứa biến và xác định tính đúng sai của '
                         'một mệnh đề.',
-                        'Sử dụng được kí hiệu các tập con của $\\mathbb{R}$ (khoảng, đoạn, nửa khoảng).',
-                        'Thực hiện được các phép toán trên tập hợp: giao ($A \\cap B$), hợp ($A \\cup B$), '
-                        'hiệu ($A \\setminus B$) và phần bù ($C_E A$).'],
+                        'Đảo ngược vế của quy tắc: Nhận biết được mệnh đề toán học, mệnh đề chứa biến và xác '
+                        'định tính đúng sai của một mệnh đề.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nhận biết được mệnh đề toán '
+                        'học, mệnh đề chứa biến và xác định tính đúng sai của một mệnh đề.'],
             'answer': 1,
-            'solution': 'Theo yêu cầu cần đạt của Bài 1: Mệnh đề: Nhận biết được mệnh đề toán học, mệnh đề '
+            'solution': 'Theo nội dung cốt lõi của Bài 1: Mệnh đề: Nhận biết được mệnh đề toán học, mệnh đề '
                         'chứa biến và xác định tính đúng sai của một mệnh đề.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -132,41 +132,42 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 1: Mệnh đề**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được mệnh đề toán học, '
-                           'mệnh đề chứa biến và xác định tính đúng sai của một mệnh đề.',
-                           'Quy tắc/công thức **Mệnh đề kéo theo** trong bài được xác định bởi: $P '
-                           '\\Rightarrow Q$ chỉ sai khi $P$ đúng, $Q$ sai.',
-                           'Trong mọi trường hợp, **Mệnh đề kéo theo** luôn được tính bằng công thức $A '
-                           '\\cap B = \\{x \\mid x \\in A \\text{ và } x \\in B\\}$; $A \\cup B = \\{x \\mid '
-                           'x \\in A \\text{ hoặc } x \\in B\\}$ (thuộc Giao và Hợp) mà không cần điều kiện '
-                           'của Bài 1: Mệnh đề.',
-                           "Với bài toán minh họa: “Lập mệnh đề phủ định của mệnh đề $P$: '$\\forall x \\in "
-                           "\\mathbb{R}, x^2 + 1 > 0$' và xét tính đúng sai của mệnh đề phủ định đó.”, lời "
-                           "giải đúng là: Mệnh đề phủ định là $\\overline{P}$: '$\\exists x \\in "
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 1: Mệnh đề**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết được mệnh đề toán học, mệnh đề '
+                           'chứa biến và xác định tính đúng sai của một mệnh đề.',
+                           'Trong **Bài 1: Mệnh đề**, quy tắc/công thức **Mệnh đề kéo theo** được viết là: '
+                           '$P \\Rightarrow Q$ chỉ sai khi $P$ đúng, $Q$ sai.',
+                           'Nếu áp dụng sai dấu/phép tính thành $P \\Rightarrow Q$ chỉ sai khi $P$ đúng, $Q$ '
+                           'sai (với dấu ngược lại) thì kết quả của **Mệnh đề kéo theo** trong **Bài 1: Mệnh '
+                           'đề** vẫn không thay đổi.',
+                           "Xét ví dụ của bài: “Lập mệnh đề phủ định của mệnh đề $P$: '$\\forall x \\in "
+                           "\\mathbb{R}, x^2 + 1 > 0$' và xét tính đúng sai của mệnh đề phủ định đó.”, kết "
+                           "quả giải đúng là: Mệnh đề phủ định là $\\overline{P}$: '$\\exists x \\in "
                            "\\mathbb{R}, x^2 + 1 \\le 0$'. Vì $x^2 \\ge 0 \\Rightarrow x^2 + 1 \\ge 1 > 0$ "
                            'với mọi $x \\in \\mathbb{R}$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 1: Mệnh đề. b) **Đúng** theo công thức '
-                        'trọng tâm **Mệnh đề kéo theo** ($P \\Rightarrow Q$ chỉ sai khi $P$ đúng, $Q$ sai). '
-                        'c) **Sai** vì $A \\cap B = \\{x \\mid x \\in A \\text{ và } x \\in B\\}$; $A \\cup '
-                        'B = \\{x \\mid x \\in A \\text{ hoặc } x \\in B\\}$ là công thức của nội dung khác, '
-                        'không phải quy tắc chung của **Mệnh đề kéo theo**. d) **Đúng** theo lời giải ví dụ '
-                        'minh họa trong bài học.'},
+                        '**Mệnh đề kéo theo** ($P \\Rightarrow Q$ chỉ sai khi $P$ đúng, $Q$ sai). c) **Sai** '
+                        'vì công thức đúng của **Mệnh đề kéo theo** phải là $P \\Rightarrow Q$ chỉ sai khi '
+                        '$P$ đúng, $Q$ sai chứ không phải $P \\Rightarrow Q$ chỉ sai khi $P$ đúng, $Q$ sai '
+                        '(với dấu ngược lại). d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 1: Mệnh đề** để giải quyết tình huống sau: Lập mệnh đề phủ định '
-                 "của mệnh đề $P$: '$\\forall x \\in \\mathbb{R}, x^2 + 1 > 0$' và xét tính đúng sai của "
-                 'mệnh đề phủ định đó. Kết quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Biểu diễn trên trục số, ta được: - $A \\cap B = (1; 3)$; - $A \\cup B = [-2; 5]$; - '
-                        '$A \\setminus B = [-2; 1]$.',
-                        'Thay $x = 1, y = 2$ vào vế trái của bất phương trình: $2(1) - 3(2) + 1 = 2 - 6 + 1 '
-                        '= -3 < 0$ (đúng). Vậy điểm $A(1; 2)$ thuộc miền nghiệm của bất phương tr...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 1: Mệnh đề** để giải bài toán sau: Lập mệnh đề phủ '
+                 "định của mệnh đề $P$: '$\\forall x \\in \\mathbb{R}, x^2 + 1 > 0$' và xét tính đúng sai "
+                 'của mệnh đề phủ định đó. Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ["Mệnh đề phủ định là $\\overline{P}$: '$\\exists x \\notin \\mathbb{R}, x^2 + 1 \\le "
+                        "0$'. Vì $x^2 \\ge 0 \\Rightarrow x^2 + 1 \\ge 1 > 0$ với mọi $x \\in "
+                        '\\mathbb{R}$...',
                         "Mệnh đề phủ định là $\\overline{P}$: '$\\exists x \\in \\mathbb{R}, x^2 + 1 \\le "
-                        "0$'. Vì $x^2 \\ge 0 \\Rightarrow x^2 + 1 \\ge 1 > 0$ với mọi $x \\in \\mathbb{R}$ "
-                        'nê...',
-                        'Tính giá trị của $F(x; y)$ tại các đỉnh của tứ giác: $F(0; 0) = 0$; $F(0; 4) = 8$; '
-                        '$F(2; 3) = 3(2) + 2(3) = 12$; $F(4; 0) = 3(4) + 0 = 12$. Vậy giá trị lớn...'],
+                        "0$'. Vì $x^2 \\ge 0 \\Rightarrow x^2 + 1 \\ge 1 > 1$ với mọi $x \\in "
+                        '\\mathbb{R}$...',
+                        "Mệnh đề phủ định là $\\overline{P}$: '$\\exists x \\in \\mathbb{R}, x^2 + 1 \\le "
+                        "0$'. Vì $x^2 \\ge 0 \\Rightarrow x^2 + 1 \\ge 1 > 0$ với mọi $x \\in "
+                        '\\mathbb{R}$...',
+                        "Mệnh đề phủ định là $\\overline{P}$: '$\\exists x \\in \\mathbb{R}, x^4 + 1 \\le "
+                        "0$'. Vì $x^2 \\ge 0 \\Rightarrow x^2 + 1 \\ge 1 > 0$ với mọi $x \\in "
+                        '\\mathbb{R}$...'],
             'answer': 2,
             'solution': 'Lời giải chi tiết theo Bài 1: Mệnh đề: Mệnh đề phủ định là $\\overline{P}$: '
                         "'$\\exists x \\in \\mathbb{R}, x^2 + 1 \\le 0$'.\n"
@@ -241,29 +242,38 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 2: Tập hợp và các phép toán trên tập hợp**, công thức '
-                 'hoặc quy tắc nào sau đây biểu diễn đúng **Giao và Hợp**?',
-            'options': ['$A \\setminus B = \\{x \\mid x \\in A \\text{ và } x \\notin B\\}$; $C_E A = E '
-                        '\\setminus A$ ($A \\subset E$)',
-                        '$n(A \\cup B) = n(A) + n(B) - n(A \\cap B)$',
-                        '$P \\Rightarrow Q$ chỉ sai khi $P$ đúng, $Q$ sai',
+            'q': 'Trong **Bài 2: Tập hợp và các phép toán trên tập hợp**, quy tắc hoặc công thức nào sau đây '
+                 'xác định đúng **Giao và Hợp**?',
+            'options': ['$A \\cap B = \\{x \\mid x \\notin A \\text{ và } x \\in B\\}$; $A \\cup B = \\{x '
+                        '\\mid x \\in A \\text{ hoặc } x \\in B\\}$',
+                        'Đảo ngược vế của quy tắc: $A \\cap B = \\{x \\mid x \\in A \\text{ và } x \\in '
+                        'B\\}$; $A \\cup B = \\{x \\mid x \\in A \\text{ hoặc } x \\in B\\}$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $A \\cap B = \\{x \\mid x \\in '
+                        'A \\text{ và } x \\in B\\}$; $A \\cup B = \\{x \\mid x \\in A \\text{ hoặc } x \\in '
+                        'B\\}$',
                         '$A \\cap B = \\{x \\mid x \\in A \\text{ và } x \\in B\\}$; $A \\cup B = \\{x \\mid '
                         'x \\in A \\text{ hoặc } x \\in B\\}$'],
             'answer': 3,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 2: Tập hợp và các phép toán trên tập hợp, '
-                        '**Giao và Hợp** được xác định bởi: $A \\cap B = \\{x \\mid x \\in A \\text{ và } x '
-                        '\\in B\\}$; $A \\cup B = \\{x \\mid x \\in A \\text{ hoặc } x \\in B\\}$. (Biểu '
-                        'diễn trực quan bằng biểu đồ Venn hoặc trục số)'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 2: Tập hợp và các phép toán trên tập hợp, **Giao '
+                        'và Hợp** được xác định bởi: $A \\cap B = \\{x \\mid x \\in A \\text{ và } x \\in '
+                        'B\\}$; $A \\cup B = \\{x \\mid x \\in A \\text{ hoặc } x \\in B\\}$. (Biểu diễn '
+                        'trực quan bằng biểu đồ Venn hoặc trục số)'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 2: Tập hợp và các phép toán trên tập hợp**, nội dung/biểu thức $A \\setminus B '
-                 '= \\{x \\mid x \\in A \\text{ và } x \\notin B\\}$; $C_E A = E \\setminus A$ ($A \\subset '
-                 'E$) là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Hiệu và Phần bù', 'Giao và Hợp', 'Công thức lực lượng', 'Mệnh đề kéo theo'],
+            'q': 'Khi học **Bài 2: Tập hợp và các phép toán trên tập hợp**, biểu thức hoặc quy tắc nào dưới '
+                 'đây biểu diễn đúng **Hiệu và Phần bù**?',
+            'options': ['$A \\setminus B = \\{x \\mid x \\in A \\text{ và } x \\notin B\\}$; $C_E A = E '
+                        '\\setminus A$ ($A \\subset E$)',
+                        '$A \\setminus B = \\{x \\mid x \\notin A \\text{ và } x \\notin B\\}$; $C_E A = E '
+                        '\\setminus A$ ($A \\subset E$)',
+                        'Đảo ngược vế của quy tắc: $A \\setminus B = \\{x \\mid x \\in A \\text{ và } x '
+                        '\\notin B\\}$; $C_E A = E \\setminus A$ ($A \\subset E$)',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $A \\setminus B = \\{x \\mid x '
+                        '\\in A \\text{ và } x \\notin B\\}$; $C_E A = E \\setminus A$ ($A \\subset E$)'],
             'answer': 0,
-            'solution': 'Trong Bài 2: Tập hợp và các phép toán trên tập hợp, biểu thức/quy tắc $A \\setminus '
-                        'B = \\{x \\mid x \\in A \\text{ và } x \\notin B\\}$; $C_E A = E \\setminus A$ ($A '
-                        '\\subset E$) chính là nội dung của **Hiệu và Phần bù**.'},
+            'solution': 'Trong Bài 2: Tập hợp và các phép toán trên tập hợp, **Hiệu và Phần bù** có công '
+                        'thức/quy tắc là: $A \\setminus B = \\{x \\mid x \\in A \\text{ và } x \\notin '
+                        'B\\}$; $C_E A = E \\setminus A$ ($A \\subset E$).'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Cho hai tập hợp $A = (-\\infty; 2]$ và $B = (0; +\\infty)$. Tập hợp $A \\setminus B$ là:',
@@ -275,17 +285,19 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 2: Tập hợp và các phép toán trên tập hợp** (Chương I: Mệnh đề và tập hợp), '
-                 'khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Nhận biết được mệnh đề toán học, mệnh đề chứa biến và xác định tính đúng sai của '
-                        'một mệnh đề.',
-                        'Thiết lập được mệnh đề phủ định $\\overline{P}$, mệnh đề kéo theo $P \\Rightarrow '
-                        'Q$, mệnh đề đảo và mệnh đề tương đương $P \\Leftrightarrow Q$.',
+            'q': 'Để nắm vững bản chất của **Bài 2: Tập hợp và các phép toán trên tập hợp**, nhận định nào '
+                 'sau đây là **chính xác**?',
+            'options': ['Mô tả được tập hợp bằng cách liệt kê phần tử hoặc chỉ ra tính chất đặc trưng; nhận '
+                        'biết được tập con và hai tập hợp bằng nhau. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Mô tả được tập hợp bằng cách liệt kê phần tử hoặc chỉ ra '
+                        'tính chất đặc trưng; nhận biết được tập con và hai tập hợp bằng nhau.',
                         'Mô tả được tập hợp bằng cách liệt kê phần tử hoặc chỉ ra tính chất đặc trưng; nhận '
                         'biết được tập con và hai tập hợp bằng nhau.',
-                        'Sử dụng đúng kí hiệu với mọi ($\\forall$) và tồn tại ($\\exists$).'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Mô tả được tập hợp bằng cách '
+                        'liệt kê phần tử hoặc chỉ ra tính chất đặc trưng; nhận biết được tập con và hai tập '
+                        'hợp bằng nhau.'],
             'answer': 2,
-            'solution': 'Theo yêu cầu cần đạt của Bài 2: Tập hợp và các phép toán trên tập hợp: Mô tả được '
+            'solution': 'Theo nội dung cốt lõi của Bài 2: Tập hợp và các phép toán trên tập hợp: Mô tả được '
                         'tập hợp bằng cách liệt kê phần tử hoặc chỉ ra tính chất đặc trưng; nhận biết được '
                         'tập con và hai tập hợp bằng nhau.'},
            {'level': 'hieu',
@@ -303,40 +315,42 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 2: Tập hợp và các phép '
-                 'toán trên tập hợp**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Mô tả được tập hợp bằng cách liệt '
-                           'kê phần tử hoặc chỉ ra tính chất đặc trưng; nhận biết được tập con và hai tập '
-                           'hợp bằng nhau.',
-                           'Quy tắc/công thức **Giao và Hợp** trong bài được xác định bởi: $A \\cap B = \\{x '
-                           '\\mid x \\in A \\text{ và } x \\in B\\}$; $A \\cup B = \\{x \\mid x \\in A '
-                           '\\text{ hoặc } x \\in B\\}$.',
-                           'Trong mọi trường hợp, **Giao và Hợp** luôn được tính bằng công thức $P '
-                           '\\Rightarrow Q$ chỉ sai khi $P$ đúng, $Q$ sai (thuộc Mệnh đề kéo theo) mà không '
-                           'cần điều kiện của Bài 2: Tập hợp và các phép toán trên tập hợp.',
-                           'Với bài toán minh họa: “Cho hai tập hợp $A = [-2; 3)$ và $B = (1; 5]$. Tìm $A '
-                           '\\cap B$, $A \\cup B$ và $A \\setminus B$.”, lời giải đúng là: Biểu diễn trên '
-                           'trục số, ta được: - $A \\cap B = (1; 3)$; - $A \\cup B = [-2; 5]$; - $A '
-                           '\\setminus B = [-2; 1]$.'],
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 2: Tập hợp và các phép toán '
+                 'trên tập hợp**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Mô tả được tập hợp bằng cách liệt kê '
+                           'phần tử hoặc chỉ ra tính chất đặc trưng; nhận biết được tập con và hai tập hợp '
+                           'bằng nhau.',
+                           'Trong **Bài 2: Tập hợp và các phép toán trên tập hợp**, quy tắc/công thức **Giao '
+                           'và Hợp** được viết là: $A \\cap B = \\{x \\mid x \\in A \\text{ và } x \\in '
+                           'B\\}$; $A \\cup B = \\{x \\mid x \\in A \\text{ hoặc } x \\in B\\}$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $A \\cap B = \\{x \\mid x \\notin A \\text{ '
+                           'và } x \\in B\\}$; $A \\cup B = \\{x \\mid x \\in A \\text{ hoặc } x \\in B\\}$ '
+                           'thì kết quả của **Giao và Hợp** trong **Bài 2: Tập hợp và các phép toán trên tập '
+                           'hợp** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Cho hai tập hợp $A = [-2; 3)$ và $B = (1; 5]$. Tìm $A \\cap '
+                           'B$, $A \\cup B$ và $A \\setminus B$.”, kết quả giải đúng là: Biểu diễn trên trục '
+                           'số, ta được: - $A \\cap B = (1; 3)$; - $A \\cup B = [-2; 5]$; - $A \\setminus B '
+                           '= [-2; 1]$.'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 2: Tập hợp và các phép toán trên tập hợp. '
-                        'b) **Đúng** theo công thức trọng tâm **Giao và Hợp** ($A \\cap B = \\{x \\mid x '
-                        '\\in A \\text{ và } x \\in B\\}$; $A \\cup B = \\{x \\mid x \\in A \\text{ hoặc } x '
-                        '\\in B\\}$). c) **Sai** vì $P \\Rightarrow Q$ chỉ sai khi $P$ đúng, $Q$ sai là công '
-                        'thức của nội dung khác, không phải quy tắc chung của **Giao và Hợp**. d) **Đúng** '
-                        'theo lời giải ví dụ minh họa trong bài học.'},
+                        'b) **Đúng** theo công thức **Giao và Hợp** ($A \\cap B = \\{x \\mid x \\in A '
+                        '\\text{ và } x \\in B\\}$; $A \\cup B = \\{x \\mid x \\in A \\text{ hoặc } x \\in '
+                        'B\\}$). c) **Sai** vì công thức đúng của **Giao và Hợp** phải là $A \\cap B = \\{x '
+                        '\\mid x \\in A \\text{ và } x \\in B\\}$; $A \\cup B = \\{x \\mid x \\in A \\text{ '
+                        'hoặc } x \\in B\\}$ chứ không phải $A \\cap B = \\{x \\mid x \\notin A \\text{ và } '
+                        'x \\in B\\}$; $A \\cup B = \\{x \\mid x \\in A \\text{ hoặc } x \\in B\\}$. d) '
+                        '**Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 2: Tập hợp và các phép toán trên tập hợp** để giải quyết tình '
-                 'huống sau: Cho hai tập hợp $A = [-2; 3)$ và $B = (1; 5]$. Tìm $A \\cap B$, $A \\cup B$ và '
-                 '$A \\setminus B$. Kết quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ["Mệnh đề phủ định là $\\overline{P}$: '$\\exists x \\in \\mathbb{R}, x^2 + 1 \\le "
-                        "0$'. Vì $x^2 \\ge 0 \\Rightarrow x^2 + 1 \\ge 1 > 0$ với mọi $x \\in \\mathbb{R}$ "
-                        'nê...',
-                        'Thay $x = 1, y = 2$ vào vế trái của bất phương trình: $2(1) - 3(2) + 1 = 2 - 6 + 1 '
-                        '= -3 < 0$ (đúng). Vậy điểm $A(1; 2)$ thuộc miền nghiệm của bất phương tr...',
-                        'Tính giá trị của $F(x; y)$ tại các đỉnh của tứ giác: $F(0; 0) = 0$; $F(0; 4) = 8$; '
-                        '$F(2; 3) = 3(2) + 2(3) = 12$; $F(4; 0) = 3(4) + 0 = 12$. Vậy giá trị lớn...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 2: Tập hợp và các phép toán trên tập hợp** để giải '
+                 'bài toán sau: Cho hai tập hợp $A = [-2; 3)$ và $B = (1; 5]$. Tìm $A \\cap B$, $A \\cup B$ '
+                 'và $A \\setminus B$. Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Biểu diễn trên trục số, ta được: - $A \\cap B = (1; 3)$; - $A \\cap B = [-2; 5]$; - '
+                        '$A \\setminus B = [-2; 1]$.',
+                        'Biểu diễn trên trục số, ta được: - $A \\cap B = (1; 3)$; - $A \\cup B = [-2; 5]$; - '
+                        '$A \\setminus B = [-2; 2]$.',
+                        'Biểu diễn trên trục số, ta được: - $A \\cap B = (2; 3)$; - $A \\cup B = [-2; 5]$; - '
+                        '$A \\setminus B = [-2; 1]$.',
                         'Biểu diễn trên trục số, ta được: - $A \\cap B = (1; 3)$; - $A \\cup B = [-2; 5]$; - '
                         '$A \\setminus B = [-2; 1]$.'],
             'answer': 3,
@@ -365,8 +379,8 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
   'requirements': ['Nhận biết được bất phương trình bậc nhất hai ẩn và nghiệm của nó.',
                    'Biểu diễn được miền nghiệm của bất phương trình bậc nhất hai ẩn trên mặt phẳng tọa độ '
                    '$Oxy$.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Đường thẳng bờ** ($d: ax + by = c$) vào '
-                   'giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 3: Bất phương trình bậc nhất hai ẩn** để giải bài tập minh '
+                   'họa và bài toán thực tiễn.'],
   'definition': 'Bất phương trình bậc nhất hai ẩn $x, y$ có dạng tổng quát là $ax + by < c$ (hoặc $ax + by > '
                 'c, ax + by \\le c, ax + by \\ge c$), trong đó $a, b, c$ là những số thực đã cho, $a$ và $b$ '
                 'không đồng thời bằng $0$.',
@@ -408,28 +422,28 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 3: Bất phương trình bậc nhất hai ẩn**, công thức hoặc '
-                 'quy tắc nào sau đây biểu diễn đúng **Đường thẳng bờ**?',
+            'q': 'Trong **Bài 3: Bất phương trình bậc nhất hai ẩn**, quy tắc hoặc công thức nào sau đây xác '
+                 'định đúng **Đường thẳng bờ**?',
             'options': ['$d: ax + by = c$',
-                        'Thay tọa độ $(x_0; y_0)$ vào bất phương trình',
-                        '$P \\Rightarrow Q$ chỉ sai khi $P$ đúng, $Q$ sai',
-                        '$P \\Leftrightarrow Q$ đúng khi $P, Q$ cùng tính đúng sai'],
+                        '$d: ax - by = c$',
+                        'Đảo ngược vế của quy tắc: $d: ax + by = c$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $d: ax + by = c$'],
             'answer': 0,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 3: Bất phương trình bậc nhất hai ẩn, **Đường '
-                        'thẳng bờ** được xác định bởi: $d: ax + by = c$. (Chia mặt phẳng thành hai nửa mặt '
-                        'phẳng)'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 3: Bất phương trình bậc nhất hai ẩn, **Đường thẳng '
+                        'bờ** được xác định bởi: $d: ax + by = c$. (Chia mặt phẳng thành hai nửa mặt phẳng)'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 3: Bất phương trình bậc nhất hai ẩn**, nội dung/biểu thức Thay tọa độ $(x_0; '
-                 'y_0)$ vào bất phương trình là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Đường thẳng bờ',
-                        'Quy tắc điểm thử $M_0(x_0; y_0) \\notin d$',
-                        'Mệnh đề kéo theo',
-                        'Mệnh đề tương đương'],
+            'q': 'Khi học **Bài 3: Bất phương trình bậc nhất hai ẩn**, biểu thức hoặc quy tắc nào dưới đây '
+                 'biểu diễn đúng **Quy tắc điểm thử $M_0(x_0; y_0) \\notin d$**?',
+            'options': ['Thay tọa độ $(x_0; y_0)$ vào bất phương trình (với dấu ngược lại)',
+                        'Thay tọa độ $(x_0; y_0)$ vào bất phương trình',
+                        'Đảo ngược vế của quy tắc: Thay tọa độ $(x_0; y_0)$ vào bất phương trình',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Thay tọa độ $(x_0; y_0)$ vào '
+                        'bất phương trình'],
             'answer': 1,
-            'solution': 'Trong Bài 3: Bất phương trình bậc nhất hai ẩn, biểu thức/quy tắc Thay tọa độ $(x_0; '
-                        'y_0)$ vào bất phương trình chính là nội dung của **Quy tắc điểm thử $M_0(x_0; y_0) '
-                        '\\notin d$**.'},
+            'solution': 'Trong Bài 3: Bất phương trình bậc nhất hai ẩn, **Quy tắc điểm thử $M_0(x_0; y_0) '
+                        '\\notin d$** có công thức/quy tắc là: Thay tọa độ $(x_0; y_0)$ vào bất phương '
+                        'trình.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Miền nghiệm của bất phương trình $3x - 2y \\le 6$ (tính cả bờ) chứa điểm nào sau đây?',
@@ -440,17 +454,17 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 3: Bất phương trình bậc nhất hai ẩn** (Chương II: Bất phương trình và hệ bất '
-                 'phương trình bậc nhất hai ẩn), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và '
-                 'bản chất kiến thức của bài?',
-            'options': ['Nhận biết được mệnh đề toán học, mệnh đề chứa biến và xác định tính đúng sai của '
-                        'một mệnh đề.',
-                        'Thiết lập được mệnh đề phủ định $\\overline{P}$, mệnh đề kéo theo $P \\Rightarrow '
-                        'Q$, mệnh đề đảo và mệnh đề tương đương $P \\Leftrightarrow Q$.',
-                        'Sử dụng đúng kí hiệu với mọi ($\\forall$) và tồn tại ($\\exists$).',
+            'q': 'Để nắm vững bản chất của **Bài 3: Bất phương trình bậc nhất hai ẩn**, nhận định nào sau '
+                 'đây là **chính xác**?',
+            'options': ['Nhận biết được bất phương trình bậc nhất hai ẩn và nghiệm của nó. (với dấu ngược '
+                        'lại)',
+                        'Đảo ngược vế của quy tắc: Nhận biết được bất phương trình bậc nhất hai ẩn và nghiệm '
+                        'của nó.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nhận biết được bất phương trình '
+                        'bậc nhất hai ẩn và nghiệm của nó.',
                         'Nhận biết được bất phương trình bậc nhất hai ẩn và nghiệm của nó.'],
             'answer': 3,
-            'solution': 'Theo yêu cầu cần đạt của Bài 3: Bất phương trình bậc nhất hai ẩn: Nhận biết được '
+            'solution': 'Theo nội dung cốt lõi của Bài 3: Bất phương trình bậc nhất hai ẩn: Nhận biết được '
                         'bất phương trình bậc nhất hai ẩn và nghiệm của nó.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -467,39 +481,36 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 3: Bất phương trình bậc '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 3: Bất phương trình bậc '
                  'nhất hai ẩn**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được bất phương trình '
-                           'bậc nhất hai ẩn và nghiệm của nó.',
-                           'Quy tắc/công thức **Đường thẳng bờ** trong bài được xác định bởi: $d: ax + by = '
-                           'c$.',
-                           'Trong mọi trường hợp, **Đường thẳng bờ** luôn được tính bằng công thức $P '
-                           '\\Rightarrow Q$ chỉ sai khi $P$ đúng, $Q$ sai (thuộc Mệnh đề kéo theo) mà không '
-                           'cần điều kiện của Bài 3: Bất phương trình bậc nhất hai ẩn.',
-                           'Với bài toán minh họa: “Kiểm tra xem điểm $A(1; 2)$ có thuộc miền nghiệm của bất '
-                           'phương trình $2x - 3y + 1 < 0$ hay không.”, lời giải đúng là: Thay $x = 1, y = '
-                           '2$ vào vế trái của bất phương trình: $2(1) - 3(2) + 1 = 2 - 6 + 1 = -3 < 0$ '
-                           '(đúng). Vậy điểm $A(1; 2)$ thuộc miền nghiệm củ...'],
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết được bất phương trình bậc nhất '
+                           'hai ẩn và nghiệm của nó.',
+                           'Trong **Bài 3: Bất phương trình bậc nhất hai ẩn**, quy tắc/công thức **Đường '
+                           'thẳng bờ** được viết là: $d: ax + by = c$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $d: ax - by = c$ thì kết quả của **Đường '
+                           'thẳng bờ** trong **Bài 3: Bất phương trình bậc nhất hai ẩn** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Kiểm tra xem điểm $A(1; 2)$ có thuộc miền nghiệm của bất '
+                           'phương trình $2x - 3y + 1 < 0$ hay không.”, kết quả giải đúng là: Thay $x = 1, y '
+                           '= 2$ vào vế trái của bất phương trình: $2(1) - 3(2) + 1 = 2 - 6 + 1 = -3 < 0$ '
+                           '(đúng). Vậy điểm $A(1; 2)$ thuộc miền nghi...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 3: Bất phương trình bậc nhất hai ẩn. b) '
-                        '**Đúng** theo công thức trọng tâm **Đường thẳng bờ** ($d: ax + by = c$). c) **Sai** '
-                        'vì $P \\Rightarrow Q$ chỉ sai khi $P$ đúng, $Q$ sai là công thức của nội dung khác, '
-                        'không phải quy tắc chung của **Đường thẳng bờ**. d) **Đúng** theo lời giải ví dụ '
-                        'minh họa trong bài học.'},
+                        '**Đúng** theo công thức **Đường thẳng bờ** ($d: ax + by = c$). c) **Sai** vì công '
+                        'thức đúng của **Đường thẳng bờ** phải là $d: ax + by = c$ chứ không phải $d: ax - '
+                        'by = c$. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 3: Bất phương trình bậc nhất hai ẩn** để giải quyết tình huống '
-                 'sau: Kiểm tra xem điểm $A(1; 2)$ có thuộc miền nghiệm của bất phương trình $2x - 3y + 1 < '
-                 '0$ hay không. Kết quả và hướng giải nào dưới đây là **đúng**?',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 3: Bất phương trình bậc nhất hai ẩn** để giải bài '
+                 'toán sau: Kiểm tra xem điểm $A(1; 2)$ có thuộc miền nghiệm của bất phương trình $2x - 3y + '
+                 '1 < 0$ hay không. Cách giải và kết quả nào dưới đây là **đúng**?',
             'options': ['Thay $x = 1, y = 2$ vào vế trái của bất phương trình: $2(1) - 3(2) + 1 = 2 - 6 + 1 '
-                        '= -3 < 0$ (đúng). Vậy điểm $A(1; 2)$ thuộc miền nghiệm của bất phương tr...',
-                        "Mệnh đề phủ định là $\\overline{P}$: '$\\exists x \\in \\mathbb{R}, x^2 + 1 \\le "
-                        "0$'. Vì $x^2 \\ge 0 \\Rightarrow x^2 + 1 \\ge 1 > 0$ với mọi $x \\in \\mathbb{R}$ "
-                        'nê...',
-                        'Biểu diễn trên trục số, ta được: - $A \\cap B = (1; 3)$; - $A \\cup B = [-2; 5]$; - '
-                        '$A \\setminus B = [-2; 1]$.',
-                        'Tính giá trị của $F(x; y)$ tại các đỉnh của tứ giác: $F(0; 0) = 0$; $F(0; 4) = 8$; '
-                        '$F(2; 3) = 3(2) + 2(3) = 12$; $F(4; 0) = 3(4) + 0 = 12$. Vậy giá trị lớn...'],
+                        '= -3 < 0$ (đúng). Vậy điểm $A(1; 2)$ thuộc miền nghiệm của bất phươ...',
+                        'Thay $x = 1, y = 2$ vào vế trái của bất phương trình: $2(1) - 3(2) - 1 = 2 - 6 + 1 '
+                        '= -3 < 0$ (đúng). Vậy điểm $A(1; 2)$ thuộc miền nghiệm của bất phươ...',
+                        'Thay $x = 1, y = 2$ vào vế trái của bất phương trình: $2(1) - 3(2) + 1 = 2 - 6 + 1 '
+                        '= -3 < 0$ (đúng). Vậy điểm $A(1; 1)$ thuộc miền nghiệm của bất phươ...',
+                        'Thay $x = 2, y = 2$ vào vế trái của bất phương trình: $2(1) - 3(2) + 1 = 2 - 6 + 1 '
+                        '= -3 < 0$ (đúng). Vậy điểm $A(1; 2)$ thuộc miền nghiệm của bất phươ...'],
             'answer': 0,
             'solution': 'Lời giải chi tiết theo Bài 3: Bất phương trình bậc nhất hai ẩn: Thay $x = 1, y = 2$ '
                         'vào vế trái của bất phương trình: $2(1) - 3(2) + 1 = 2 - 6 + 1 = -3 < 0$ (đúng).\n'
@@ -524,8 +535,8 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
   'requirements': ['Nhận biết được hệ bất phương trình bậc nhất hai ẩn và biểu diễn miền nghiệm của hệ.',
                    'Vận dụng tìm giá trị lớn nhất hoặc giá trị nhỏ nhất của biểu thức $F(x; y) = ax + by$ '
                    'trên miền nghiệm là miền đa giác (quy hoạch tuyến tính).',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Hàm mục tiêu** ($F(x; y) = ax + by$) vào '
-                   'giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 4: Hệ bất phương trình bậc nhất hai ẩn và bài toán quy '
+                   'hoạch tuyến tính** để giải bài tập minh họa và bài toán thực tiễn.'],
   'definition': 'Hệ bất phương trình bậc nhất hai ẩn là một hệ gồm hai hay nhiều bất phương trình bậc nhất '
                 'hai ẩn. Miền nghiệm của hệ là giao các miền nghiệm của tất cả các bất phương trình trong '
                 'hệ.',
@@ -574,26 +585,31 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 4: Hệ bất phương trình bậc nhất hai ẩn và bài toán quy '
-                 'hoạch tuyến tính**, công thức hoặc quy tắc nào sau đây biểu diễn đúng **Hàm mục tiêu**?',
-            'options': ['$\\max F$ và $\\min F$ đạt tại các đỉnh $A_i(x_i; y_i)$ của miền đa giác',
+            'q': 'Trong **Bài 4: Hệ bất phương trình bậc nhất hai ẩn và bài toán quy hoạch tuyến tính**, quy '
+                 'tắc hoặc công thức nào sau đây xác định đúng **Hàm mục tiêu**?',
+            'options': ['$F(x; y) = ax - by$',
                         '$F(x; y) = ax + by$',
-                        '$P \\Rightarrow Q$ chỉ sai khi $P$ đúng, $Q$ sai',
-                        '$P \\Leftrightarrow Q$ đúng khi $P, Q$ cùng tính đúng sai'],
+                        'Đảo ngược vế của quy tắc: $F(x; y) = ax + by$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $F(x; y) = ax + by$'],
             'answer': 1,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 4: Hệ bất phương trình bậc nhất hai ẩn và bài '
-                        'toán quy hoạch tuyến tính, **Hàm mục tiêu** được xác định bởi: $F(x; y) = ax + by$. '
+            'solution': 'Theo kiến thức trọng tâm của Bài 4: Hệ bất phương trình bậc nhất hai ẩn và bài toán '
+                        'quy hoạch tuyến tính, **Hàm mục tiêu** được xác định bởi: $F(x; y) = ax + by$. '
                         '(Biểu thị lợi nhuận cần tối đa hóa hoặc chi phí cần tối thiểu hóa)'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 4: Hệ bất phương trình bậc nhất hai ẩn và bài toán quy hoạch tuyến tính**, nội '
-                 'dung/biểu thức $\\max F$ và $\\min F$ đạt tại các đỉnh $A_i(x_i; y_i)$ của miền đa giác là '
-                 'quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Hàm mục tiêu', 'Mệnh đề kéo theo', 'Nguyên tắc đỉnh đa giác', 'Mệnh đề tương đương'],
+            'q': 'Khi học **Bài 4: Hệ bất phương trình bậc nhất hai ẩn và bài toán quy hoạch tuyến tính**, '
+                 'biểu thức hoặc quy tắc nào dưới đây biểu diễn đúng **Nguyên tắc đỉnh đa giác**?',
+            'options': ['$\\max F$ và $\\min F$ đạt tại các đỉnh $A_i(x_i; y_i)$ của miền đa giác (với dấu '
+                        'ngược lại)',
+                        'Đảo ngược vế của quy tắc: $\\max F$ và $\\min F$ đạt tại các đỉnh $A_i(x_i; y_i)$ '
+                        'của miền đa giác',
+                        '$\\max F$ và $\\min F$ đạt tại các đỉnh $A_i(x_i; y_i)$ của miền đa giác',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\max F$ và $\\min F$ đạt tại '
+                        'các đỉnh $A_i(x_i; y_i)$ của miền đa giác'],
             'answer': 2,
             'solution': 'Trong Bài 4: Hệ bất phương trình bậc nhất hai ẩn và bài toán quy hoạch tuyến tính, '
-                        'biểu thức/quy tắc $\\max F$ và $\\min F$ đạt tại các đỉnh $A_i(x_i; y_i)$ của miền '
-                        'đa giác chính là nội dung của **Nguyên tắc đỉnh đa giác**.'},
+                        '**Nguyên tắc đỉnh đa giác** có công thức/quy tắc là: $\\max F$ và $\\min F$ đạt tại '
+                        'các đỉnh $A_i(x_i; y_i)$ của miền đa giác.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Miền nghiệm của hệ bất phương trình $\\begin{cases} x \\ge 0 \\\\ y \\ge 0 \\\\ 2x + y '
@@ -606,19 +622,19 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 4: Hệ bất phương trình bậc nhất hai ẩn và bài toán quy hoạch tuyến tính** '
-                 '(Chương II: Bất phương trình và hệ bất phương trình bậc nhất hai ẩn), khẳng định nào sau '
-                 'đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
+            'q': 'Để nắm vững bản chất của **Bài 4: Hệ bất phương trình bậc nhất hai ẩn và bài toán quy '
+                 'hoạch tuyến tính**, nhận định nào sau đây là **chính xác**?',
             'options': ['Nhận biết được hệ bất phương trình bậc nhất hai ẩn và biểu diễn miền nghiệm của hệ.',
-                        'Nhận biết được mệnh đề toán học, mệnh đề chứa biến và xác định tính đúng sai của '
-                        'một mệnh đề.',
-                        'Thiết lập được mệnh đề phủ định $\\overline{P}$, mệnh đề kéo theo $P \\Rightarrow '
-                        'Q$, mệnh đề đảo và mệnh đề tương đương $P \\Leftrightarrow Q$.',
-                        'Sử dụng đúng kí hiệu với mọi ($\\forall$) và tồn tại ($\\exists$).'],
+                        'Nhận biết được hệ bất phương trình bậc nhất hai ẩn và biểu diễn miền nghiệm của hệ. '
+                        '(với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Nhận biết được hệ bất phương trình bậc nhất hai ẩn và '
+                        'biểu diễn miền nghiệm của hệ.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nhận biết được hệ bất phương '
+                        'trình bậc nhất hai ẩn và biểu diễn miền nghiệm của hệ.'],
             'answer': 0,
-            'solution': 'Theo yêu cầu cần đạt của Bài 4: Hệ bất phương trình bậc nhất hai ẩn và bài toán quy '
-                        'hoạch tuyến tính: Nhận biết được hệ bất phương trình bậc nhất hai ẩn và biểu diễn '
-                        'miền nghiệm của hệ.'},
+            'solution': 'Theo nội dung cốt lõi của Bài 4: Hệ bất phương trình bậc nhất hai ẩn và bài toán '
+                        'quy hoạch tuyến tính: Nhận biết được hệ bất phương trình bậc nhất hai ẩn và biểu '
+                        'diễn miền nghiệm của hệ.'},
            {'level': 'hieu',
             'type': 'tf4',
             'q': 'Cho hệ bất phương trình $\\begin{cases} x \\ge 0 \\\\ y \\ge 0 \\\\ x + y \\le 5 \\\\ x '
@@ -634,42 +650,39 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 4: Hệ bất phương trình '
-                 'bậc nhất hai ẩn và bài toán quy hoạch tuyến tính**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được hệ bất phương trình '
-                           'bậc nhất hai ẩn và biểu diễn miền nghiệm của hệ.',
-                           'Quy tắc/công thức **Hàm mục tiêu** trong bài được xác định bởi: $F(x; y) = ax + '
-                           'by$.',
-                           'Trong mọi trường hợp, **Hàm mục tiêu** luôn được tính bằng công thức $P '
-                           '\\Rightarrow Q$ chỉ sai khi $P$ đúng, $Q$ sai (thuộc Mệnh đề kéo theo) mà không '
-                           'cần điều kiện của Bài 4: Hệ bất phương trình bậc nhất hai ẩn và bài toán quy '
-                           'hoạch tuyến tính.',
-                           'Với bài toán minh họa: “Tìm giá trị lớn nhất của biểu thức $F(x; y) = 3x + 2y$ '
-                           'trên miền tứ giác lồi $OABC$ có các đỉnh $O(0; 0), A(0; 4), B(2; 3), C(4; 0)$.”, '
-                           'lời giải đúng là: Tính giá trị của $F(x; y)$ tại các đỉnh của tứ giác: $F(0; 0) '
-                           '= 0$; $F(0; 4) = 8$; $F(2; 3) = 3(2) + 2(3) = 12$; $F(4; 0) = 3(4) + 0 = '
-                           '12$....'],
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 4: Hệ bất phương trình bậc '
+                 'nhất hai ẩn và bài toán quy hoạch tuyến tính**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết được hệ bất phương trình bậc '
+                           'nhất hai ẩn và biểu diễn miền nghiệm của hệ.',
+                           'Trong **Bài 4: Hệ bất phương trình bậc nhất hai ẩn và bài toán quy hoạch tuyến '
+                           'tính**, quy tắc/công thức **Hàm mục tiêu** được viết là: $F(x; y) = ax + by$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $F(x; y) = ax - by$ thì kết quả của **Hàm '
+                           'mục tiêu** trong **Bài 4: Hệ bất phương trình bậc nhất hai ẩn và bài toán quy '
+                           'hoạch tuyến tính** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Tìm giá trị lớn nhất của biểu thức $F(x; y) = 3x + 2y$ trên '
+                           'miền tứ giác lồi $OABC$ có các đỉnh $O(0; 0), A(0; 4), B(2; 3), C(4; 0)$.”, kết '
+                           'quả giải đúng là: Tính giá trị của $F(x; y)$ tại các đỉnh của tứ giác: $F(0; 0) '
+                           '= 0$; $F(0; 4) = 8$; $F(2; 3) = 3(2) + 2(3) = 12$; $F(4; 0) = 3(4) + 0 = 12$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 4: Hệ bất phương trình bậc nhất hai ẩn và '
-                        'bài toán quy hoạch tuyến tính. b) **Đúng** theo công thức trọng tâm **Hàm mục '
-                        'tiêu** ($F(x; y) = ax + by$). c) **Sai** vì $P \\Rightarrow Q$ chỉ sai khi $P$ '
-                        'đúng, $Q$ sai là công thức của nội dung khác, không phải quy tắc chung của **Hàm '
-                        'mục tiêu**. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        'bài toán quy hoạch tuyến tính. b) **Đúng** theo công thức **Hàm mục tiêu** ($F(x; '
+                        'y) = ax + by$). c) **Sai** vì công thức đúng của **Hàm mục tiêu** phải là $F(x; y) '
+                        '= ax + by$ chứ không phải $F(x; y) = ax - by$. d) **Đúng** theo lời giải ví dụ minh '
+                        'họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 4: Hệ bất phương trình bậc nhất hai ẩn và bài toán quy hoạch '
-                 'tuyến tính** để giải quyết tình huống sau: Tìm giá trị lớn nhất của biểu thức $F(x; y) = '
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 4: Hệ bất phương trình bậc nhất hai ẩn và bài toán '
+                 'quy hoạch tuyến tính** để giải bài toán sau: Tìm giá trị lớn nhất của biểu thức $F(x; y) = '
                  '3x + 2y$ trên miền tứ giác lồi $OABC$ có các đỉnh $O(0; 0), A(0; 4), B(2; 3), C(4; 0)$. '
-                 'Kết quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ["Mệnh đề phủ định là $\\overline{P}$: '$\\exists x \\in \\mathbb{R}, x^2 + 1 \\le "
-                        "0$'. Vì $x^2 \\ge 0 \\Rightarrow x^2 + 1 \\ge 1 > 0$ với mọi $x \\in \\mathbb{R}$ "
-                        'nê...',
+                 'Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Tính giá trị của $F(x; y)$ tại các đỉnh của tứ giác: $F(0; 0) = 0$; $F(0; 4) = 8$; '
+                        '$F(2; 3) = 3(2) - 2(3) = 12$; $F(4; 0) = 3(4) + 0 = 12$. Vậy giá tr...',
                         'Tính giá trị của $F(x; y)$ tại các đỉnh của tứ giác: $F(0; 0) = 0$; $F(0; 4) = 8$; '
-                        '$F(2; 3) = 3(2) + 2(3) = 12$; $F(4; 0) = 3(4) + 0 = 12$. Vậy giá trị lớn...',
-                        'Biểu diễn trên trục số, ta được: - $A \\cap B = (1; 3)$; - $A \\cup B = [-2; 5]$; - '
-                        '$A \\setminus B = [-2; 1]$.',
-                        'Thay $x = 1, y = 2$ vào vế trái của bất phương trình: $2(1) - 3(2) + 1 = 2 - 6 + 1 '
-                        '= -3 < 0$ (đúng). Vậy điểm $A(1; 2)$ thuộc miền nghiệm của bất phương tr...'],
+                        '$F(2; 3) = 3(2) + 2(3) = 12$; $F(4; 0) = 3(4) + 0 = 12$. Vậy giá tr...',
+                        'Tính giá trị của $F(x; y)$ tại các đỉnh của tứ giác: $F(0; 0) = 0$; $F(0; 4) = 8$; '
+                        '$F(2; 3) = 3(2) + 2(3) = 12$; $F(4; 0) = 3(4) + 0 = 11$. Vậy giá tr...',
+                        'Tính giá trị của $F(x; y)$ tại các đỉnh của tứ giác: $F(2; 0) = 0$; $F(0; 4) = 8$; '
+                        '$F(2; 3) = 3(2) + 2(3) = 12$; $F(4; 0) = 3(4) + 0 = 12$. Vậy giá tr...'],
             'answer': 1,
             'solution': 'Lời giải chi tiết theo Bài 4: Hệ bất phương trình bậc nhất hai ẩn và bài toán quy '
                         'hoạch tuyến tính: Tính giá trị của $F(x; y)$ tại các đỉnh của tứ giác:\n'
@@ -697,9 +710,8 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
                    'từ $0^\\circ$ đến $180^\\circ$ thông qua nửa đường tròn đơn vị.',
                    'Vận dụng được tính chất lượng giác của hai góc bù nhau ($\\alpha$ và $180^\\circ - '
                    '\\alpha$).',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Hai góc bù nhau** ($\\sin(180^\\circ - '
-                   '\\alpha) = \\sin \\alpha$; $\\cos(180^\\circ - \\alpha) = -\\cos \\alpha$) vào giải bài '
-                   'tập.'],
+                   'Vận dụng kiến thức của **Bài 5: Giá trị lượng giác của một góc từ 0 đến 180 độ** để giải '
+                   'bài tập minh họa và bài toán thực tiễn.'],
   'definition': 'Với mỗi góc $\\alpha$ ($0^\\circ \\le \\alpha \\le 180^\\circ$), gọi $M(x_0; y_0)$ là điểm '
                 'trên nửa đường tròn đơn vị sao cho $\\widehat{xOM} = \\alpha$. Khi đó: $\\sin \\alpha = '
                 'y_0$, $\\cos \\alpha = x_0$, $\\tan \\alpha = \\dfrac{y_0}{x_0}$ ($\\alpha \\neq '
@@ -753,32 +765,37 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 5: Giá trị lượng giác của một góc từ 0 đến 180 độ**, '
-                 'công thức hoặc quy tắc nào sau đây biểu diễn đúng **Hai góc bù nhau**?',
-            'options': ['$\\sin^2 \\alpha + \\cos^2 \\alpha = 1$; $1 + \\tan^2 \\alpha = \\dfrac{1}{\\cos^2 '
-                        '\\alpha}$',
-                        '$P \\Rightarrow Q$ chỉ sai khi $P$ đúng, $Q$ sai',
+            'q': 'Trong **Bài 5: Giá trị lượng giác của một góc từ 0 đến 180 độ**, quy tắc hoặc công thức '
+                 'nào sau đây xác định đúng **Hai góc bù nhau**?',
+            'options': ['$\\sin(180^\\circ + \\alpha) = \\sin \\alpha$; $\\cos(180^\\circ - \\alpha) = '
+                        '-\\cos \\alpha$',
+                        '$\\sin(180^\\circ - \\alpha) = \\sin \\alpha$; $\\cos(179^\\circ - \\alpha) = '
+                        '-\\cos \\alpha$',
                         '$\\sin(180^\\circ - \\alpha) = \\sin \\alpha$; $\\cos(180^\\circ - \\alpha) = '
                         '-\\cos \\alpha$',
-                        '$P \\Leftrightarrow Q$ đúng khi $P, Q$ cùng tính đúng sai'],
+                        '$\\sin(182^\\circ - \\alpha) = \\sin \\alpha$; $\\cos(180^\\circ - \\alpha) = '
+                        '-\\cos \\alpha$'],
             'answer': 2,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 5: Giá trị lượng giác của một góc từ 0 đến '
-                        '180 độ, **Hai góc bù nhau** được xác định bởi: $\\sin(180^\\circ - \\alpha) = \\sin '
+            'solution': 'Theo kiến thức trọng tâm của Bài 5: Giá trị lượng giác của một góc từ 0 đến 180 độ, '
+                        '**Hai góc bù nhau** được xác định bởi: $\\sin(180^\\circ - \\alpha) = \\sin '
                         '\\alpha$; $\\cos(180^\\circ - \\alpha) = -\\cos \\alpha$. ($\\tan(180^\\circ - '
                         '\\alpha) = -\\tan \\alpha$; $\\cot(180^\\circ - \\alpha) = -\\cot \\alpha$)'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 5: Giá trị lượng giác của một góc từ 0 đến 180 độ**, nội dung/biểu thức '
-                 '$\\sin^2 \\alpha + \\cos^2 \\alpha = 1$; $1 + \\tan^2 \\alpha = \\dfrac{1}{\\cos^2 '
-                 '\\alpha}$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Hai góc bù nhau',
-                        'Mệnh đề kéo theo',
-                        'Mệnh đề tương đương',
-                        'Hệ thức lượng giác cơ bản'],
-            'answer': 3,
-            'solution': 'Trong Bài 5: Giá trị lượng giác của một góc từ 0 đến 180 độ, biểu thức/quy tắc '
+            'q': 'Khi học **Bài 5: Giá trị lượng giác của một góc từ 0 đến 180 độ**, biểu thức hoặc quy tắc '
+                 'nào dưới đây biểu diễn đúng **Hệ thức lượng giác cơ bản**?',
+            'options': ['$\\sin^2 \\alpha - \\cos^2 \\alpha = 1$; $1 + \\tan^2 \\alpha = \\dfrac{1}{\\cos^2 '
+                        '\\alpha}$',
+                        '$\\sin^2 \\alpha + \\cos^2 \\alpha = 1$; $1 + \\tan^2 \\alpha = \\dfrac{\\cos^2 '
+                        '\\alpha}{1}$',
+                        '$\\sin^4 \\alpha + \\cos^2 \\alpha = 1$; $1 + \\tan^2 \\alpha = \\dfrac{1}{\\cos^2 '
+                        '\\alpha}$',
                         '$\\sin^2 \\alpha + \\cos^2 \\alpha = 1$; $1 + \\tan^2 \\alpha = \\dfrac{1}{\\cos^2 '
-                        '\\alpha}$ chính là nội dung của **Hệ thức lượng giác cơ bản**.'},
+                        '\\alpha}$'],
+            'answer': 3,
+            'solution': 'Trong Bài 5: Giá trị lượng giác của một góc từ 0 đến 180 độ, **Hệ thức lượng giác '
+                        'cơ bản** có công thức/quy tắc là: $\\sin^2 \\alpha + \\cos^2 \\alpha = 1$; $1 + '
+                        '\\tan^2 \\alpha = \\dfrac{1}{\\cos^2 \\alpha}$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Cho góc tù $\\alpha$ ($90^\\circ < \\alpha < 180^\\circ$) có $\\cos \\alpha = '
@@ -792,18 +809,18 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 5: Giá trị lượng giác của một góc từ 0 đến 180 độ** (Chương III: Hệ thức '
-                 'lượng trong tam giác), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản '
-                 'chất kiến thức của bài?',
-            'options': ['Nhận biết được mệnh đề toán học, mệnh đề chứa biến và xác định tính đúng sai của '
-                        'một mệnh đề.',
+            'q': 'Để nắm vững bản chất của **Bài 5: Giá trị lượng giác của một góc từ 0 đến 180 độ**, nhận '
+                 'định nào sau đây là **chính xác**?',
+            'options': ['Nhận biết được giá trị lượng giác ($\\sin, \\cos, \\tan, \\cot$) của một góc '
+                        '$\\alpha$ từ $1^\\circ$ đến $180^\\circ$ thông qua nửa đường tròn đơn vị.',
                         'Nhận biết được giá trị lượng giác ($\\sin, \\cos, \\tan, \\cot$) của một góc '
                         '$\\alpha$ từ $0^\\circ$ đến $180^\\circ$ thông qua nửa đường tròn đơn vị.',
-                        'Thiết lập được mệnh đề phủ định $\\overline{P}$, mệnh đề kéo theo $P \\Rightarrow '
-                        'Q$, mệnh đề đảo và mệnh đề tương đương $P \\Leftrightarrow Q$.',
-                        'Sử dụng đúng kí hiệu với mọi ($\\forall$) và tồn tại ($\\exists$).'],
+                        'Nhận biết được giá trị lượng giác ($\\sin, \\cos, \\tan, \\cot$) của một góc '
+                        '$\\alpha$ từ $0^\\circ$ đến $179^\\circ$ thông qua nửa đường tròn đơn vị.',
+                        'Nhận biết được giá trị lượng giác ($\\sin, \\cos, \\tan, \\cot$) của một góc '
+                        '$\\alpha$ từ $2^\\circ$ đến $180^\\circ$ thông qua nửa đường tròn đơn vị.'],
             'answer': 1,
-            'solution': 'Theo yêu cầu cần đạt của Bài 5: Giá trị lượng giác của một góc từ 0 đến 180 độ: '
+            'solution': 'Theo nội dung cốt lõi của Bài 5: Giá trị lượng giác của một góc từ 0 đến 180 độ: '
                         'Nhận biết được giá trị lượng giác ($\\sin, \\cos, \\tan, \\cot$) của một góc '
                         '$\\alpha$ từ $0^\\circ$ đến $180^\\circ$ thông qua nửa đường tròn đơn vị.'},
            {'level': 'hieu',
@@ -820,45 +837,45 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 5: Giá trị lượng giác '
-                 'của một góc từ 0 đến 180 độ**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được giá trị lượng giác '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 5: Giá trị lượng giác của '
+                 'một góc từ 0 đến 180 độ**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết được giá trị lượng giác '
                            '($\\sin, \\cos, \\tan, \\cot$) của một góc $\\alpha$ từ $0^\\circ$ đến '
                            '$180^\\circ$ thông qua nửa đường tròn đơn vị.',
-                           'Quy tắc/công thức **Hai góc bù nhau** trong bài được xác định bởi: '
-                           '$\\sin(180^\\circ - \\alpha) = \\sin \\alpha$; $\\cos(180^\\circ - \\alpha) = '
-                           '-\\cos \\alpha$.',
-                           'Trong mọi trường hợp, **Hai góc bù nhau** luôn được tính bằng công thức $P '
-                           '\\Rightarrow Q$ chỉ sai khi $P$ đúng, $Q$ sai (thuộc Mệnh đề kéo theo) mà không '
-                           'cần điều kiện của Bài 5: Giá trị lượng giác của một góc từ 0 đến 180 độ.',
-                           'Với bài toán minh họa: “Cho biết $\\sin \\alpha = \\dfrac{3}{5}$ với $90^\\circ '
-                           '< \\alpha < 180^\\circ$. Tính $\\cos \\alpha$ và $\\tan \\alpha$.”, lời giải '
+                           'Trong **Bài 5: Giá trị lượng giác của một góc từ 0 đến 180 độ**, quy tắc/công '
+                           'thức **Hai góc bù nhau** được viết là: $\\sin(180^\\circ - \\alpha) = \\sin '
+                           '\\alpha$; $\\cos(180^\\circ - \\alpha) = -\\cos \\alpha$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $\\sin(180^\\circ + \\alpha) = \\sin '
+                           '\\alpha$; $\\cos(180^\\circ - \\alpha) = -\\cos \\alpha$ thì kết quả của **Hai '
+                           'góc bù nhau** trong **Bài 5: Giá trị lượng giác của một góc từ 0 đến 180 độ** '
+                           'vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Cho biết $\\sin \\alpha = \\dfrac{3}{5}$ với $90^\\circ < '
+                           '\\alpha < 180^\\circ$. Tính $\\cos \\alpha$ và $\\tan \\alpha$.”, kết quả giải '
                            'đúng là: Ta có $\\cos^2 \\alpha = 1 - \\sin^2 \\alpha = 1 - '
                            '\\left(\\dfrac{3}{5}\\right)^2 = \\dfrac{16}{25}$. Vì $90^\\circ < \\alpha < '
                            '180^\\circ$ nên $\\cos \\alpha < 0$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 5: Giá trị lượng giác của một góc từ 0 đến '
-                        '180 độ. b) **Đúng** theo công thức trọng tâm **Hai góc bù nhau** ($\\sin(180^\\circ '
-                        '- \\alpha) = \\sin \\alpha$; $\\cos(180^\\circ - \\alpha) = -\\cos \\alpha$). c) '
-                        '**Sai** vì $P \\Rightarrow Q$ chỉ sai khi $P$ đúng, $Q$ sai là công thức của nội '
-                        'dung khác, không phải quy tắc chung của **Hai góc bù nhau**. d) **Đúng** theo lời '
-                        'giải ví dụ minh họa trong bài học.'},
+                        '180 độ. b) **Đúng** theo công thức **Hai góc bù nhau** ($\\sin(180^\\circ - '
+                        '\\alpha) = \\sin \\alpha$; $\\cos(180^\\circ - \\alpha) = -\\cos \\alpha$). c) '
+                        '**Sai** vì công thức đúng của **Hai góc bù nhau** phải là $\\sin(180^\\circ - '
+                        '\\alpha) = \\sin \\alpha$; $\\cos(180^\\circ - \\alpha) = -\\cos \\alpha$ chứ không '
+                        'phải $\\sin(180^\\circ + \\alpha) = \\sin \\alpha$; $\\cos(180^\\circ - \\alpha) = '
+                        '-\\cos \\alpha$. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 5: Giá trị lượng giác của một góc từ 0 đến 180 độ** để giải quyết '
-                 'tình huống sau: Cho biết $\\sin \\alpha = \\dfrac{3}{5}$ với $90^\\circ < \\alpha < '
-                 '180^\\circ$. Tính $\\cos \\alpha$ và $\\tan \\alpha$. Kết quả và hướng giải nào dưới đây '
-                 'là **đúng**?',
-            'options': ["Mệnh đề phủ định là $\\overline{P}$: '$\\exists x \\in \\mathbb{R}, x^2 + 1 \\le "
-                        "0$'. Vì $x^2 \\ge 0 \\Rightarrow x^2 + 1 \\ge 1 > 0$ với mọi $x \\in \\mathbb{R}$ "
-                        'nê...',
-                        'Biểu diễn trên trục số, ta được: - $A \\cap B = (1; 3)$; - $A \\cup B = [-2; 5]$; - '
-                        '$A \\setminus B = [-2; 1]$.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 5: Giá trị lượng giác của một góc từ 0 đến 180 độ** '
+                 'để giải bài toán sau: Cho biết $\\sin \\alpha = \\dfrac{3}{5}$ với $90^\\circ < \\alpha < '
+                 '180^\\circ$. Tính $\\cos \\alpha$ và $\\tan \\alpha$. Cách giải và kết quả nào dưới đây là '
+                 '**đúng**?',
+            'options': ['Ta có $\\cos^2 \\alpha = 1 - \\sin^2 \\alpha = 1 - \\geft(\\dfrac{3}{5}\\right)^2 = '
+                        '\\dfrac{16}{25}$. Vì $90^\\circ < \\alpha < 180^\\circ$ nên $\\cos \\alpha < 0$...',
+                        'Ta có $\\cos^2 \\alpha = 1 - \\sin^2 \\alpha = 1 - \\left(\\dfrac{5}{3}\\right)^2 = '
+                        '\\dfrac{16}{25}$. Vì $90^\\circ < \\alpha < 180^\\circ$ nên $\\cos \\alpha < 0$...',
                         'Ta có $\\cos^2 \\alpha = 1 - \\sin^2 \\alpha = 1 - \\left(\\dfrac{3}{5}\\right)^2 = '
-                        '\\dfrac{16}{25}$. Vì $90^\\circ < \\alpha < 180^\\circ$ nên $\\cos \\alpha < 0$, '
-                        'suy...',
-                        'Thay $x = 1, y = 2$ vào vế trái của bất phương trình: $2(1) - 3(2) + 1 = 2 - 6 + 1 '
-                        '= -3 < 0$ (đúng). Vậy điểm $A(1; 2)$ thuộc miền nghiệm của bất phương tr...'],
+                        '\\dfrac{16}{25}$. Vì $90^\\circ < \\alpha < 180^\\circ$ nên $\\cos \\alpha < 0$...',
+                        'Ta có $\\cos^4 \\alpha = 1 - \\sin^2 \\alpha = 1 - \\left(\\dfrac{3}{5}\\right)^2 = '
+                        '\\dfrac{16}{25}$. Vì $90^\\circ < \\alpha < 180^\\circ$ nên $\\cos \\alpha < 0$...'],
             'answer': 2,
             'solution': 'Lời giải chi tiết theo Bài 5: Giá trị lượng giác của một góc từ 0 đến 180 độ: Ta có '
                         '$\\cos^2 \\alpha = 1 - \\sin^2 \\alpha = 1 - \\left(\\dfrac{3}{5}\\right)^2 = '
@@ -938,30 +955,35 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 6: Hệ thức lượng trong tam giác (Định lí côsin, định lí '
-                 'sin và công thức diện tích)**, công thức hoặc quy tắc nào sau đây biểu diễn đúng **Định lí '
-                 'côsin**?',
-            'options': ['$\\dfrac{a}{\\sin A} = \\dfrac{b}{\\sin B} = \\dfrac{c}{\\sin C} = 2R$',
-                        '$S = \\dfrac{1}{2}bc \\sin A = \\dfrac{abc}{4R} = pr = \\sqrt{p(p - a)(p - b)(p - '
-                        'c)}$',
-                        '$P \\Rightarrow Q$ chỉ sai khi $P$ đúng, $Q$ sai',
+            'q': 'Trong **Bài 6: Hệ thức lượng trong tam giác (Định lí côsin, định lí sin và công thức diện '
+                 'tích)**, quy tắc hoặc công thức nào sau đây xác định đúng **Định lí côsin**?',
+            'options': ['$a^2 = b^2 - c^2 - 2bc \\cos A \\Rightarrow \\cos A = \\dfrac{b^2 + c^2 - '
+                        'a^2}{2bc}$',
+                        '$a^2 = b^2 + c^2 - 2bc \\cos A \\Rightarrow \\cos A = \\dfrac{2bc}{b^2 + c^2 - '
+                        'a^2}$',
+                        '$a^4 = b^2 + c^2 - 2bc \\cos A \\Rightarrow \\cos A = \\dfrac{b^2 + c^2 - '
+                        'a^2}{2bc}$',
                         '$a^2 = b^2 + c^2 - 2bc \\cos A \\Rightarrow \\cos A = \\dfrac{b^2 + c^2 - '
                         'a^2}{2bc}$'],
             'answer': 3,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 6: Hệ thức lượng trong tam giác (Định lí '
-                        'côsin, định lí sin và công thức diện tích), **Định lí côsin** được xác định bởi: '
-                        '$a^2 = b^2 + c^2 - 2bc \\cos A \\Rightarrow \\cos A = \\dfrac{b^2 + c^2 - '
-                        'a^2}{2bc}$. (Tương tự cho $b^2$ và $c^2$)'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 6: Hệ thức lượng trong tam giác (Định lí côsin, '
+                        'định lí sin và công thức diện tích), **Định lí côsin** được xác định bởi: $a^2 = '
+                        'b^2 + c^2 - 2bc \\cos A \\Rightarrow \\cos A = \\dfrac{b^2 + c^2 - a^2}{2bc}$. '
+                        '(Tương tự cho $b^2$ và $c^2$)'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 6: Hệ thức lượng trong tam giác (Định lí côsin, định lí sin và công thức diện '
-                 'tích)**, nội dung/biểu thức $\\dfrac{a}{\\sin A} = \\dfrac{b}{\\sin B} = \\dfrac{c}{\\sin '
-                 'C} = 2R$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Định lí sin', 'Định lí côsin', 'Các công thức diện tích', 'Mệnh đề kéo theo'],
+            'q': 'Khi học **Bài 6: Hệ thức lượng trong tam giác (Định lí côsin, định lí sin và công thức '
+                 'diện tích)**, biểu thức hoặc quy tắc nào dưới đây biểu diễn đúng **Định lí sin**?',
+            'options': ['$\\dfrac{a}{\\sin A} = \\dfrac{b}{\\sin B} = \\dfrac{c}{\\sin C} = 2R$',
+                        '$\\dfrac{a}{\\sin A} = \\dfrac{b}{\\sin B} = \\dfrac{c}{\\sin C} = 2R$ (với dấu '
+                        'ngược lại)',
+                        '$\\dfrac{\\sin A}{a} = \\dfrac{b}{\\sin B} = \\dfrac{c}{\\sin C} = 2R$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\dfrac{a}{\\sin A} = '
+                        '\\dfrac{b}{\\sin B} = \\dfrac{c}{\\sin C} = 2R$'],
             'answer': 0,
             'solution': 'Trong Bài 6: Hệ thức lượng trong tam giác (Định lí côsin, định lí sin và công thức '
-                        'diện tích), biểu thức/quy tắc $\\dfrac{a}{\\sin A} = \\dfrac{b}{\\sin B} = '
-                        '\\dfrac{c}{\\sin C} = 2R$ chính là nội dung của **Định lí sin**.'},
+                        'diện tích), **Định lí sin** có công thức/quy tắc là: $\\dfrac{a}{\\sin A} = '
+                        '\\dfrac{b}{\\sin B} = \\dfrac{c}{\\sin C} = 2R$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Cho tam giác $ABC$ có $AB = 4, AC = 6$ và $\\widehat{A} = 30^\\circ$. Diện tích của tam '
@@ -974,17 +996,17 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 6: Hệ thức lượng trong tam giác (Định lí côsin, định lí sin và công thức '
-                 'diện tích)** (Chương III: Hệ thức lượng trong tam giác), khẳng định nào sau đây phản ánh '
-                 '**đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Nhận biết được mệnh đề toán học, mệnh đề chứa biến và xác định tính đúng sai của '
-                        'một mệnh đề.',
-                        'Thiết lập được mệnh đề phủ định $\\overline{P}$, mệnh đề kéo theo $P \\Rightarrow '
-                        'Q$, mệnh đề đảo và mệnh đề tương đương $P \\Leftrightarrow Q$.',
+            'q': 'Để nắm vững bản chất của **Bài 6: Hệ thức lượng trong tam giác (Định lí côsin, định lí sin '
+                 'và công thức diện tích)**, nhận định nào sau đây là **chính xác**?',
+            'options': ['Phát biểu và vận dụng được định lí côsin và định lí sin trong tam giác. (với dấu '
+                        'ngược lại)',
+                        'Đảo ngược vế của quy tắc: Phát biểu và vận dụng được định lí côsin và định lí sin '
+                        'trong tam giác.',
                         'Phát biểu và vận dụng được định lí côsin và định lí sin trong tam giác.',
-                        'Sử dụng đúng kí hiệu với mọi ($\\forall$) và tồn tại ($\\exists$).'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Phát biểu và vận dụng được định '
+                        'lí côsin và định lí sin trong tam giác.'],
             'answer': 2,
-            'solution': 'Theo yêu cầu cần đạt của Bài 6: Hệ thức lượng trong tam giác (Định lí côsin, định '
+            'solution': 'Theo nội dung cốt lõi của Bài 6: Hệ thức lượng trong tam giác (Định lí côsin, định '
                         'lí sin và công thức diện tích): Phát biểu và vận dụng được định lí côsin và định lí '
                         'sin trong tam giác.'},
            {'level': 'hieu',
@@ -1002,42 +1024,44 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 6: Hệ thức lượng trong '
-                 'tam giác (Định lí côsin, định lí sin và công thức diện tích)**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Phát biểu và vận dụng được định lí '
-                           'côsin và định lí sin trong tam giác.',
-                           'Quy tắc/công thức **Định lí côsin** trong bài được xác định bởi: $a^2 = b^2 + '
-                           'c^2 - 2bc \\cos A \\Rightarrow \\cos A = \\dfrac{b^2 + c^2 - a^2}{2bc}$.',
-                           'Trong mọi trường hợp, **Định lí côsin** luôn được tính bằng công thức $P '
-                           '\\Rightarrow Q$ chỉ sai khi $P$ đúng, $Q$ sai (thuộc Mệnh đề kéo theo) mà không '
-                           'cần điều kiện của Bài 6: Hệ thức lượng trong tam giác (Định lí côsin, định lí '
-                           'sin và công thức diện tích).',
-                           'Với bài toán minh họa: “Cho tam giác $ABC$ có $b = 5, c = 8$ và $\\widehat{A} = '
-                           '60^\\circ$. Tính độ dài cạnh $a$ và diện tích $S$ của tam giác.”, lời giải đúng '
-                           'là: Theo định lí côsin: $a^2 = b^2 + c^2 - 2bc \\cos A = 5^2 + 8^2 - 2 \\cdot 5 '
-                           '\\cdot 8 \\cdot \\cos 60^\\circ = 25 + 64 - 40 = 49 \\Rightarrow a = 7$...'],
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 6: Hệ thức lượng trong tam '
+                 'giác (Định lí côsin, định lí sin và công thức diện tích)**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Phát biểu và vận dụng được định lí côsin '
+                           'và định lí sin trong tam giác.',
+                           'Trong **Bài 6: Hệ thức lượng trong tam giác (Định lí côsin, định lí sin và công '
+                           'thức diện tích)**, quy tắc/công thức **Định lí côsin** được viết là: $a^2 = b^2 '
+                           '+ c^2 - 2bc \\cos A \\Rightarrow \\cos A = \\dfrac{b^2 + c^2 - a^2}{2bc}$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $a^2 = b^2 - c^2 - 2bc \\cos A \\Rightarrow '
+                           '\\cos A = \\dfrac{b^2 + c^2 - a^2}{2bc}$ thì kết quả của **Định lí côsin** trong '
+                           '**Bài 6: Hệ thức lượng trong tam giác (Định lí côsin, định lí sin và công thức '
+                           'diện tích)** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Cho tam giác $ABC$ có $b = 5, c = 8$ và $\\widehat{A} = '
+                           '60^\\circ$. Tính độ dài cạnh $a$ và diện tích $S$ của tam giác.”, kết quả giải '
+                           'đúng là: Theo định lí côsin: $a^2 = b^2 + c^2 - 2bc \\cos A = 5^2 + 8^2 - 2 '
+                           '\\cdot 5 \\cdot 8 \\cdot \\cos 60^\\circ = 25 + 64 - 40 = 49 \\Rightarrow a = '
+                           '7$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 6: Hệ thức lượng trong tam giác (Định lí '
-                        'côsin, định lí sin và công thức diện tích). b) **Đúng** theo công thức trọng tâm '
-                        '**Định lí côsin** ($a^2 = b^2 + c^2 - 2bc \\cos A \\Rightarrow \\cos A = '
-                        '\\dfrac{b^2 + c^2 - a^2}{2bc}$). c) **Sai** vì $P \\Rightarrow Q$ chỉ sai khi $P$ '
-                        'đúng, $Q$ sai là công thức của nội dung khác, không phải quy tắc chung của **Định '
-                        'lí côsin**. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        'côsin, định lí sin và công thức diện tích). b) **Đúng** theo công thức **Định lí '
+                        'côsin** ($a^2 = b^2 + c^2 - 2bc \\cos A \\Rightarrow \\cos A = \\dfrac{b^2 + c^2 - '
+                        'a^2}{2bc}$). c) **Sai** vì công thức đúng của **Định lí côsin** phải là $a^2 = b^2 '
+                        '+ c^2 - 2bc \\cos A \\Rightarrow \\cos A = \\dfrac{b^2 + c^2 - a^2}{2bc}$ chứ không '
+                        'phải $a^2 = b^2 - c^2 - 2bc \\cos A \\Rightarrow \\cos A = \\dfrac{b^2 + c^2 - '
+                        'a^2}{2bc}$. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 6: Hệ thức lượng trong tam giác (Định lí côsin, định lí sin và '
-                 'công thức diện tích)** để giải quyết tình huống sau: Cho tam giác $ABC$ có $b = 5, c = 8$ '
-                 'và $\\widehat{A} = 60^\\circ$. Tính độ dài cạnh $a$ và diện tích $S$ của tam giác. Kết quả '
-                 'và hướng giải nào dưới đây là **đúng**?',
-            'options': ["Mệnh đề phủ định là $\\overline{P}$: '$\\exists x \\in \\mathbb{R}, x^2 + 1 \\le "
-                        "0$'. Vì $x^2 \\ge 0 \\Rightarrow x^2 + 1 \\ge 1 > 0$ với mọi $x \\in \\mathbb{R}$ "
-                        'nê...',
-                        'Biểu diễn trên trục số, ta được: - $A \\cap B = (1; 3)$; - $A \\cup B = [-2; 5]$; - '
-                        '$A \\setminus B = [-2; 1]$.',
-                        'Thay $x = 1, y = 2$ vào vế trái của bất phương trình: $2(1) - 3(2) + 1 = 2 - 6 + 1 '
-                        '= -3 < 0$ (đúng). Vậy điểm $A(1; 2)$ thuộc miền nghiệm của bất phương tr...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 6: Hệ thức lượng trong tam giác (Định lí côsin, '
+                 'định lí sin và công thức diện tích)** để giải bài toán sau: Cho tam giác $ABC$ có $b = 5, '
+                 'c = 8$ và $\\widehat{A} = 60^\\circ$. Tính độ dài cạnh $a$ và diện tích $S$ của tam giác. '
+                 'Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Theo định lí côsin: $a^2 = b^2 - c^2 - 2bc \\cos A = 5^2 + 8^2 - 2 \\cdot 5 \\cdot '
+                        '8 \\cdot \\cos 60^\\circ = 25 + 64 - 40 = 49 \\Rightarrow a = 7$. Diện tíc...',
                         'Theo định lí côsin: $a^2 = b^2 + c^2 - 2bc \\cos A = 5^2 + 8^2 - 2 \\cdot 5 \\cdot '
-                        '8 \\cdot \\cos 60^\\circ = 25 + 64 - 40 = 49 \\Rightarrow a = 7$. Diện tích tam...'],
+                        '8 \\cdot \\cos 60^\\circ = 25 + 64 - 40 = 49 \\Rightarrow a = 6$. Diện tíc...',
+                        'Theo định lí côsin: $a^4 = b^2 + c^2 - 2bc \\cos A = 5^2 + 8^2 - 2 \\cdot 5 \\cdot '
+                        '8 \\cdot \\cos 60^\\circ = 25 + 64 - 40 = 49 \\Rightarrow a = 7$. Diện tíc...',
+                        'Theo định lí côsin: $a^2 = b^2 + c^2 - 2bc \\cos A = 5^2 + 8^2 - 2 \\cdot 5 \\cdot '
+                        '8 \\cdot \\cos 60^\\circ = 25 + 64 - 40 = 49 \\Rightarrow a = 7$. Diện tíc...'],
             'answer': 3,
             'solution': 'Lời giải chi tiết theo Bài 6: Hệ thức lượng trong tam giác (Định lí côsin, định lí '
                         'sin và công thức diện tích): Theo định lí côsin: $a^2 = b^2 + c^2 - 2bc \\cos A = '
@@ -1066,10 +1090,8 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
                    'vectơ-không $\\overrightarrow{0}$.',
                    'Nhận biết được hai vectơ cùng phương, cùng hướng, ngược hướng và điều kiện để hai vectơ '
                    'bằng nhau.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Điều kiện bằng nhau** '
-                   '($\\overrightarrow{AB} = \\overrightarrow{CD} \\Leftrightarrow \\begin{cases} '
-                   '\\overrightarrow{AB}, \\overrightarrow{CD} \\text{ cùng hướng} \\\\ AB = CD '
-                   '\\end{cases}$) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 7: Các khái niệm mở đầu về vectơ** để giải bài tập minh họa '
+                   'và bài toán thực tiễn.'],
   'definition': 'Vectơ là một đoạn thẳng có hướng. Vectơ có điểm đầu $A$, điểm cuối $B$ được kí hiệu là '
                 '$\\overrightarrow{AB}$, độ dài của nó kí hiệu là $|\\overrightarrow{AB}| = AB$.',
   'theory': '1. Đường thẳng đi qua điểm đầu và điểm cuối của một vectơ gọi là giá của vectơ đó. Hai vectơ '
@@ -1116,35 +1138,43 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 7: Các khái niệm mở đầu về vectơ**, công thức hoặc quy '
-                 'tắc nào sau đây biểu diễn đúng **Điều kiện bằng nhau**?',
+            'q': 'Trong **Bài 7: Các khái niệm mở đầu về vectơ**, quy tắc hoặc công thức nào sau đây xác '
+                 'định đúng **Điều kiện bằng nhau**?',
             'options': ['$\\overrightarrow{AB} = \\overrightarrow{CD} \\Leftrightarrow \\begin{cases} '
                         '\\overrightarrow{AB}, \\overrightarrow{CD} \\text{ cùng hướng} \\\\ AB = CD '
                         '\\end{cases}$',
-                        '$P \\Rightarrow Q$ chỉ sai khi $P$ đúng, $Q$ sai',
-                        '$P \\Leftrightarrow Q$ đúng khi $P, Q$ cùng tính đúng sai',
-                        '$\\overline{\\forall x \\in X, P(x)} \\equiv \\exists x \\in X, \\overline{P(x)}$'],
+                        '$\\overrightarrow{AB} = \\overrightarrow{CD} \\Leftrightarrow \\begin{cases} '
+                        '\\overrightarrow{AB}, \\overrightarrow{CD} \\text{ cùng hướng} \\\\ AB = CD '
+                        '\\end{cases}$ (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: $\\overrightarrow{AB} = \\overrightarrow{CD} '
+                        '\\Leftrightarrow \\begin{cases} \\overrightarrow{AB}, \\overrightarrow{CD} \\text{ '
+                        'cùng hướng} \\\\ AB = CD \\end{cases}$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\overrightarrow{AB} = '
+                        '\\overrightarrow{CD} \\Leftrightarrow \\begin{cases} \\overrightarrow{AB}, '
+                        '\\overrightarrow{CD} \\text{ cùng hướng} \\\\ AB = CD \\end{cases}$'],
             'answer': 0,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 7: Các khái niệm mở đầu về vectơ, **Điều kiện '
-                        'bằng nhau** được xác định bởi: $\\overrightarrow{AB} = \\overrightarrow{CD} '
+            'solution': 'Theo kiến thức trọng tâm của Bài 7: Các khái niệm mở đầu về vectơ, **Điều kiện bằng '
+                        'nhau** được xác định bởi: $\\overrightarrow{AB} = \\overrightarrow{CD} '
                         '\\Leftrightarrow \\begin{cases} \\overrightarrow{AB}, \\overrightarrow{CD} \\text{ '
                         'cùng hướng} \\\\ AB = CD \\end{cases}$. (Nếu $A, B, C, D$ không thẳng hàng thì '
                         '$ABDC$ là hình bình hành)'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 7: Các khái niệm mở đầu về vectơ**, nội dung/biểu thức $\\overrightarrow{AB} = '
-                 '\\overrightarrow{CD} \\Leftrightarrow \\begin{cases} \\overrightarrow{AB}, '
-                 '\\overrightarrow{CD} \\text{ cùng hướng} \\\\ AB = CD \\end{cases}$ là quy tắc hoặc công '
-                 'thức của mục nào sau đây?',
-            'options': ['Mệnh đề kéo theo',
-                        'Điều kiện bằng nhau',
-                        'Mệnh đề tương đương',
-                        'Phủ định mệnh đề có lượng từ'],
+            'q': 'Theo định nghĩa trong **Bài 7: Các khái niệm mở đầu về vectơ**, khẳng định nào dưới đây là '
+                 '**đúng**?',
+            'options': ['Vectơ là một đoạn thẳng có hướng. Vectơ có điểm đầu $A$, điểm cuối $B$ được kí hiệu '
+                        'là $\\overrightarrow{AB}$, độ dài của nó kí hiệ... (với dấu ngược lại)',
+                        'Vectơ là một đoạn thẳng có hướng. Vectơ có điểm đầu $A$, điểm cuối $B$ được kí hiệu '
+                        'là $\\overrightarrow{AB}$, độ dài của nó kí hiệ...',
+                        'Đảo ngược vế của quy tắc: Vectơ là một đoạn thẳng có hướng. Vectơ có điểm đầu $A$, '
+                        'điểm cuối $B$ được kí hiệu là $\\overrightarrow{AB}$, độ dài của nó kí hiệ...',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Vectơ là một đoạn thẳng có '
+                        'hướng. Vectơ có điểm đầu $A$, điểm cuối $B$ được kí hiệu là $\\overrightarrow{AB}$, '
+                        'độ dài của nó kí hiệ...'],
             'answer': 1,
-            'solution': 'Trong Bài 7: Các khái niệm mở đầu về vectơ, biểu thức/quy tắc $\\overrightarrow{AB} '
-                        '= \\overrightarrow{CD} \\Leftrightarrow \\begin{cases} \\overrightarrow{AB}, '
-                        '\\overrightarrow{CD} \\text{ cùng hướng} \\\\ AB = CD \\end{cases}$ chính là nội '
-                        'dung của **Điều kiện bằng nhau**.'},
+            'solution': 'Theo định nghĩa của Bài 7: Các khái niệm mở đầu về vectơ: Vectơ là một đoạn thẳng '
+                        'có hướng. Vectơ có điểm đầu $A$, điểm cuối $B$ được kí hiệu là '
+                        '$\\overrightarrow{AB}$, độ dài của nó kí hiệ...'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Cho hình bình hành $ABCD$. Khẳng định nào sau đây là đúng?',
@@ -1160,17 +1190,17 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 7: Các khái niệm mở đầu về vectơ** (Chương IV: Vectơ), khẳng định nào sau '
-                 'đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Nhận biết được mệnh đề toán học, mệnh đề chứa biến và xác định tính đúng sai của '
-                        'một mệnh đề.',
-                        'Thiết lập được mệnh đề phủ định $\\overline{P}$, mệnh đề kéo theo $P \\Rightarrow '
-                        'Q$, mệnh đề đảo và mệnh đề tương đương $P \\Leftrightarrow Q$.',
-                        'Sử dụng đúng kí hiệu với mọi ($\\forall$) và tồn tại ($\\exists$).',
+            'q': 'Để nắm vững bản chất của **Bài 7: Các khái niệm mở đầu về vectơ**, nhận định nào sau đây '
+                 'là **chính xác**?',
+            'options': ['Nhận biết được khái niệm vectơ, điểm đầu, điểm cuối, giá và độ dài của vectơ, '
+                        'vectơ-không $\\overrightarrow{1}$.',
+                        'Nhận biết được khái niệm vectơ, điểm đầu, điểm cuối, giá và độ dài của vectơ, '
+                        'vectơ-không $\\overrightarrow{2}$.',
+                        'Trường hợp sai quy tắc (sai lệch 1 đơn vị so với công thức trong bài)',
                         'Nhận biết được khái niệm vectơ, điểm đầu, điểm cuối, giá và độ dài của vectơ, '
                         'vectơ-không $\\overrightarrow{0}$.'],
             'answer': 3,
-            'solution': 'Theo yêu cầu cần đạt của Bài 7: Các khái niệm mở đầu về vectơ: Nhận biết được khái '
+            'solution': 'Theo nội dung cốt lõi của Bài 7: Các khái niệm mở đầu về vectơ: Nhận biết được khái '
                         'niệm vectơ, điểm đầu, điểm cuối, giá và độ dài của vectơ, vectơ-không '
                         '$\\overrightarrow{0}$.'},
            {'level': 'hieu',
@@ -1188,45 +1218,48 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 7: Các khái niệm mở đầu '
-                 'về vectơ**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được khái niệm vectơ, '
-                           'điểm đầu, điểm cuối, giá và độ dài của vectơ, vectơ-không $\\overrightarrow{0}$.',
-                           'Quy tắc/công thức **Điều kiện bằng nhau** trong bài được xác định bởi: '
-                           '$\\overrightarrow{AB} = \\overrightarrow{CD} \\Leftrightarrow \\begin{cases} '
-                           '\\overrightarrow{AB}, \\overrightarrow{CD} \\text{ cùng hướng} \\\\ AB = CD '
-                           '\\end{cases}$.',
-                           'Trong mọi trường hợp, **Điều kiện bằng nhau** luôn được tính bằng công thức $P '
-                           '\\Rightarrow Q$ chỉ sai khi $P$ đúng, $Q$ sai (thuộc Mệnh đề kéo theo) mà không '
-                           'cần điều kiện của Bài 7: Các khái niệm mở đầu về vectơ.',
-                           'Với bài toán minh họa: “Cho hình bình hành $ABCD$. Tìm vectơ bằng vectơ '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 7: Các khái niệm mở đầu về '
+                 'vectơ**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết được khái niệm vectơ, điểm '
+                           'đầu, điểm cuối, giá và độ dài của vectơ, vectơ-không $\\overrightarrow{0}$.',
+                           'Trong **Bài 7: Các khái niệm mở đầu về vectơ**, quy tắc/công thức **Điều kiện '
+                           'bằng nhau** được viết là: $\\overrightarrow{AB} = \\overrightarrow{CD} '
+                           '\\Leftrightarrow \\begin{cases} \\overrightarrow{AB}, \\overrightarrow{CD} '
+                           '\\text{ cùng hướng} \\\\ AB = CD \\end{cases}$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $\\overrightarrow{AB} = \\overrightarrow{CD} '
+                           '\\Leftrightarrow \\begin{cases} \\overrightarrow{AB}, \\overrightarrow{CD} '
+                           '\\text{ cùng hướng} \\\\ AB = CD \\end{cases}$ (với dấu ngược lại) thì kết quả '
+                           'của **Điều kiện bằng nhau** trong **Bài 7: Các khái niệm mở đầu về vectơ** vẫn '
+                           'không thay đổi.',
+                           'Xét ví dụ của bài: “Cho hình bình hành $ABCD$. Tìm vectơ bằng vectơ '
                            '$\\overrightarrow{AB}$ và vectơ đối hướng nhưng cùng độ dài với '
-                           '$\\overrightarrow{AD}$.”, lời giải đúng là: Trong hình bình hành $ABCD$, hai '
+                           '$\\overrightarrow{AD}$.”, kết quả giải đúng là: Trong hình bình hành $ABCD$, hai '
                            'cạnh đối song song và bằng nhau nên: - Vectơ bằng vectơ $\\overrightarrow{AB}$ '
-                           'là $\\overrightarrow{DC}$. - V...'],
+                           'là $\\overrightarrow{DC}$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 7: Các khái niệm mở đầu về vectơ. b) '
-                        '**Đúng** theo công thức trọng tâm **Điều kiện bằng nhau** ($\\overrightarrow{AB} = '
+                        '**Đúng** theo công thức **Điều kiện bằng nhau** ($\\overrightarrow{AB} = '
                         '\\overrightarrow{CD} \\Leftrightarrow \\begin{cases} \\overrightarrow{AB}, '
                         '\\overrightarrow{CD} \\text{ cùng hướng} \\\\ AB = CD \\end{cases}$). c) **Sai** vì '
-                        '$P \\Rightarrow Q$ chỉ sai khi $P$ đúng, $Q$ sai là công thức của nội dung khác, '
-                        'không phải quy tắc chung của **Điều kiện bằng nhau**. d) **Đúng** theo lời giải ví '
-                        'dụ minh họa trong bài học.'},
+                        'công thức đúng của **Điều kiện bằng nhau** phải là $\\overrightarrow{AB} = '
+                        '\\overrightarrow{CD} \\Leftrightarrow \\begin{cases} \\overrightarrow{AB}, '
+                        '\\overrightarrow{CD} \\text{ cùng hướng} \\\\ AB = CD \\end{cases}$ chứ không phải '
+                        '$\\overrightarrow{AB} = \\overrightarrow{CD} \\Leftrightarrow \\begin{cases} '
+                        '\\overrightarrow{AB}, \\overrightarrow{CD} \\text{ cùng hướng} \\\\ AB = CD '
+                        '\\end{cases}$ (với dấu ngược lại). d) **Đúng** theo lời giải ví dụ minh họa trong '
+                        'bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 7: Các khái niệm mở đầu về vectơ** để giải quyết tình huống sau: '
-                 'Cho hình bình hành $ABCD$. Tìm vectơ bằng vectơ $\\overrightarrow{AB}$ và vectơ đối hướng '
-                 'nhưng cùng độ dài với $\\overrightarrow{AD}$. Kết quả và hướng giải nào dưới đây là '
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 7: Các khái niệm mở đầu về vectơ** để giải bài toán '
+                 'sau: Cho hình bình hành $ABCD$. Tìm vectơ bằng vectơ $\\overrightarrow{AB}$ và vectơ đối '
+                 'hướng nhưng cùng độ dài với $\\overrightarrow{AD}$. Cách giải và kết quả nào dưới đây là '
                  '**đúng**?',
             'options': ['Trong hình bình hành $ABCD$, hai cạnh đối song song và bằng nhau nên: - Vectơ bằng '
-                        'vectơ $\\overrightarrow{AB}$ là $\\overrightarrow{DC}$. - Vectơ ngược hướn...',
-                        "Mệnh đề phủ định là $\\overline{P}$: '$\\exists x \\in \\mathbb{R}, x^2 + 1 \\le "
-                        "0$'. Vì $x^2 \\ge 0 \\Rightarrow x^2 + 1 \\ge 1 > 0$ với mọi $x \\in \\mathbb{R}$ "
-                        'nê...',
-                        'Biểu diễn trên trục số, ta được: - $A \\cap B = (1; 3)$; - $A \\cup B = [-2; 5]$; - '
-                        '$A \\setminus B = [-2; 1]$.',
-                        'Thay $x = 1, y = 2$ vào vế trái của bất phương trình: $2(1) - 3(2) + 1 = 2 - 6 + 1 '
-                        '= -3 < 0$ (đúng). Vậy điểm $A(1; 2)$ thuộc miền nghiệm của bất phương tr...'],
+                        'vectơ $\\overrightarrow{AB}$ là $\\overrightarrow{DC}$. - Vectơ ngược...',
+                        'Trong hình bình hành $ABCD$, hai cạnh đối song song và bằng nhau nên: + Vectơ bằng '
+                        'vectơ $\\overrightarrow{AB}$ là $\\overrightarrow{DC}$. - Vectơ ngược...',
+                        'Thực hiện theo thứ tự ngược lại và bỏ qua điều kiện xác định trong bài',
+                        'Đổi ngược dấu của phép tính chính và không kiểm tra lại kết quả'],
             'answer': 0,
             'solution': 'Lời giải chi tiết theo Bài 7: Các khái niệm mở đầu về vectơ: Trong hình bình hành '
                         '$ABCD$, hai cạnh đối song song và bằng nhau nên:\n'
@@ -1315,33 +1348,37 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 8: Tổng và hiệu của hai vectơ**, công thức hoặc quy tắc '
-                 'nào sau đây biểu diễn đúng **Quy tắc ba điểm**?',
-            'options': ['$\\overrightarrow{AB} + \\overrightarrow{AD} = \\overrightarrow{AC}$',
+            'q': 'Trong **Bài 8: Tổng và hiệu của hai vectơ**, quy tắc hoặc công thức nào sau đây xác định '
+                 'đúng **Quy tắc ba điểm**?',
+            'options': ['$\\overrightarrow{AB} - \\overrightarrow{BC} = \\overrightarrow{AC}$; '
+                        '$\\overrightarrow{OA} - \\overrightarrow{OB} = \\overrightarrow{BA}$',
                         '$\\overrightarrow{AB} + \\overrightarrow{BC} = \\overrightarrow{AC}$; '
                         '$\\overrightarrow{OA} - \\overrightarrow{OB} = \\overrightarrow{BA}$',
-                        '$\\overrightarrow{IA} + \\overrightarrow{IB} = \\overrightarrow{0}$; '
-                        '$\\overrightarrow{GA} + \\overrightarrow{GB} + \\overrightarrow{GC} = '
-                        '\\overrightarrow{0}$',
-                        '$P \\Rightarrow Q$ chỉ sai khi $P$ đúng, $Q$ sai'],
+                        'Đảo ngược vế của quy tắc: $\\overrightarrow{AB} + \\overrightarrow{BC} = '
+                        '\\overrightarrow{AC}$; $\\overrightarrow{OA} - \\overrightarrow{OB} = '
+                        '\\overrightarrow{BA}$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\overrightarrow{AB} + '
+                        '\\overrightarrow{BC} = \\overrightarrow{AC}$; $\\overrightarrow{OA} - '
+                        '\\overrightarrow{OB} = \\overrightarrow{BA}$'],
             'answer': 1,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 8: Tổng và hiệu của hai vectơ, **Quy tắc ba '
-                        'điểm** được xác định bởi: $\\overrightarrow{AB} + \\overrightarrow{BC} = '
+            'solution': 'Theo kiến thức trọng tâm của Bài 8: Tổng và hiệu của hai vectơ, **Quy tắc ba điểm** '
+                        'được xác định bởi: $\\overrightarrow{AB} + \\overrightarrow{BC} = '
                         '\\overrightarrow{AC}$; $\\overrightarrow{OA} - \\overrightarrow{OB} = '
                         '\\overrightarrow{BA}$. (Áp dụng cho 3 điểm bất kì)'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 8: Tổng và hiệu của hai vectơ**, nội dung/biểu thức $\\overrightarrow{AB} + '
-                 '\\overrightarrow{AD} = \\overrightarrow{AC}$ là quy tắc hoặc công thức của mục nào sau '
-                 'đây?',
-            'options': ['Quy tắc ba điểm',
-                        'Trung điểm $I$ và Trọng tâm $G$',
-                        'Quy tắc hình bình hành',
-                        'Mệnh đề kéo theo'],
+            'q': 'Khi học **Bài 8: Tổng và hiệu của hai vectơ**, biểu thức hoặc quy tắc nào dưới đây biểu '
+                 'diễn đúng **Quy tắc hình bình hành**?',
+            'options': ['$\\overrightarrow{AB} - \\overrightarrow{AD} = \\overrightarrow{AC}$',
+                        'Đảo ngược vế của quy tắc: $\\overrightarrow{AB} + \\overrightarrow{AD} = '
+                        '\\overrightarrow{AC}$',
+                        '$\\overrightarrow{AB} + \\overrightarrow{AD} = \\overrightarrow{AC}$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\overrightarrow{AB} + '
+                        '\\overrightarrow{AD} = \\overrightarrow{AC}$'],
             'answer': 2,
-            'solution': 'Trong Bài 8: Tổng và hiệu của hai vectơ, biểu thức/quy tắc $\\overrightarrow{AB} + '
-                        '\\overrightarrow{AD} = \\overrightarrow{AC}$ chính là nội dung của **Quy tắc hình '
-                        'bình hành**.'},
+            'solution': 'Trong Bài 8: Tổng và hiệu của hai vectơ, **Quy tắc hình bình hành** có công '
+                        'thức/quy tắc là: $\\overrightarrow{AB} + \\overrightarrow{AD} = '
+                        '\\overrightarrow{AC}$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Cho hình bình hành $ABCD$. Tổng $\\overrightarrow{AB} + \\overrightarrow{AD}$ bằng:',
@@ -1356,16 +1393,17 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 8: Tổng và hiệu của hai vectơ** (Chương IV: Vectơ), khẳng định nào sau đây '
-                 'phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
+            'q': 'Để nắm vững bản chất của **Bài 8: Tổng và hiệu của hai vectơ**, nhận định nào sau đây là '
+                 '**chính xác**?',
             'options': ['Vận dụng được quy tắc ba điểm và quy tắc hình bình hành để tìm tổng của hai vectơ.',
-                        'Nhận biết được mệnh đề toán học, mệnh đề chứa biến và xác định tính đúng sai của '
-                        'một mệnh đề.',
-                        'Thiết lập được mệnh đề phủ định $\\overline{P}$, mệnh đề kéo theo $P \\Rightarrow '
-                        'Q$, mệnh đề đảo và mệnh đề tương đương $P \\Leftrightarrow Q$.',
-                        'Sử dụng đúng kí hiệu với mọi ($\\forall$) và tồn tại ($\\exists$).'],
+                        'Vận dụng được quy tắc ba điểm và quy tắc hình bình hành để tìm tổng của hai vectơ. '
+                        '(với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Vận dụng được quy tắc ba điểm và quy tắc hình bình hành '
+                        'để tìm tổng của hai vectơ.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Vận dụng được quy tắc ba điểm '
+                        'và quy tắc hình bình hành để tìm tổng của hai vectơ.'],
             'answer': 0,
-            'solution': 'Theo yêu cầu cần đạt của Bài 8: Tổng và hiệu của hai vectơ: Vận dụng được quy tắc '
+            'solution': 'Theo nội dung cốt lõi của Bài 8: Tổng và hiệu của hai vectơ: Vận dụng được quy tắc '
                         'ba điểm và quy tắc hình bình hành để tìm tổng của hai vectơ.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -1383,40 +1421,42 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 8: Tổng và hiệu của hai '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 8: Tổng và hiệu của hai '
                  'vectơ**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Vận dụng được quy tắc ba điểm và '
-                           'quy tắc hình bình hành để tìm tổng của hai vectơ.',
-                           'Quy tắc/công thức **Quy tắc ba điểm** trong bài được xác định bởi: '
-                           '$\\overrightarrow{AB} + \\overrightarrow{BC} = \\overrightarrow{AC}$; '
-                           '$\\overrightarrow{OA} - \\overrightarrow{OB} = \\overrightarrow{BA}$.',
-                           'Trong mọi trường hợp, **Quy tắc ba điểm** luôn được tính bằng công thức $P '
-                           '\\Rightarrow Q$ chỉ sai khi $P$ đúng, $Q$ sai (thuộc Mệnh đề kéo theo) mà không '
-                           'cần điều kiện của Bài 8: Tổng và hiệu của hai vectơ.',
-                           'Với bài toán minh họa: “Cho bốn điểm bất kì $A, B, C, D$. Chứng minh rằng '
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Vận dụng được quy tắc ba điểm và quy tắc '
+                           'hình bình hành để tìm tổng của hai vectơ.',
+                           'Trong **Bài 8: Tổng và hiệu của hai vectơ**, quy tắc/công thức **Quy tắc ba '
+                           'điểm** được viết là: $\\overrightarrow{AB} + \\overrightarrow{BC} = '
+                           '\\overrightarrow{AC}$; $\\overrightarrow{OA} - \\overrightarrow{OB} = '
+                           '\\overrightarrow{BA}$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $\\overrightarrow{AB} - \\overrightarrow{BC} '
+                           '= \\overrightarrow{AC}$; $\\overrightarrow{OA} - \\overrightarrow{OB} = '
+                           '\\overrightarrow{BA}$ thì kết quả của **Quy tắc ba điểm** trong **Bài 8: Tổng và '
+                           'hiệu của hai vectơ** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Cho bốn điểm bất kì $A, B, C, D$. Chứng minh rằng '
                            '$\\overrightarrow{AB} + \\overrightarrow{CD} = \\overrightarrow{AD} + '
-                           '\\overrightarrow{CB}$.”, lời giải đúng là: Áp dụng quy tắc ba điểm, ta có...'],
+                           '\\overrightarrow{CB}$...”, kết quả giải đúng là: Áp dụng quy tắc ba điểm, ta '
+                           'có...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 8: Tổng và hiệu của hai vectơ. b) **Đúng** '
-                        'theo công thức trọng tâm **Quy tắc ba điểm** ($\\overrightarrow{AB} + '
-                        '\\overrightarrow{BC} = \\overrightarrow{AC}$; $\\overrightarrow{OA} - '
-                        '\\overrightarrow{OB} = \\overrightarrow{BA}$). c) **Sai** vì $P \\Rightarrow Q$ chỉ '
-                        'sai khi $P$ đúng, $Q$ sai là công thức của nội dung khác, không phải quy tắc chung '
-                        'của **Quy tắc ba điểm**. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        'theo công thức **Quy tắc ba điểm** ($\\overrightarrow{AB} + \\overrightarrow{BC} = '
+                        '\\overrightarrow{AC}$; $\\overrightarrow{OA} - \\overrightarrow{OB} = '
+                        '\\overrightarrow{BA}$). c) **Sai** vì công thức đúng của **Quy tắc ba điểm** phải '
+                        'là $\\overrightarrow{AB} + \\overrightarrow{BC} = \\overrightarrow{AC}$; '
+                        '$\\overrightarrow{OA} - \\overrightarrow{OB} = \\overrightarrow{BA}$ chứ không phải '
+                        '$\\overrightarrow{AB} - \\overrightarrow{BC} = \\overrightarrow{AC}$; '
+                        '$\\overrightarrow{OA} - \\overrightarrow{OB} = \\overrightarrow{BA}$. d) **Đúng** '
+                        'theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 8: Tổng và hiệu của hai vectơ** để giải quyết tình huống sau: Cho '
-                 'bốn điểm bất kì $A, B, C, D$. Chứng minh rằng $\\overrightarrow{AB} + \\overrightarrow{CD} '
-                 '= \\overrightarrow{AD} + \\overrightarrow{CB}$. Kết quả và hướng giải nào dưới đây là '
-                 '**đúng**?',
-            'options': ["Mệnh đề phủ định là $\\overline{P}$: '$\\exists x \\in \\mathbb{R}, x^2 + 1 \\le "
-                        "0$'. Vì $x^2 \\ge 0 \\Rightarrow x^2 + 1 \\ge 1 > 0$ với mọi $x \\in \\mathbb{R}$ "
-                        'nê...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 8: Tổng và hiệu của hai vectơ** để giải bài toán '
+                 'sau: Cho bốn điểm bất kì $A, B, C, D$. Chứng minh rằng $\\overrightarrow{AB} + '
+                 '\\overrightarrow{CD} = \\overrightarrow{AD} + \\overrightarrow{CB}$. Cách giải và kết quả '
+                 'nào dưới đây là **đúng**?',
+            'options': ['Chỉ xét trường hợp đặc biệt bằng $0$ và bỏ qua quy tắc chung',
                         'Áp dụng quy tắc ba điểm, ta có...',
-                        'Biểu diễn trên trục số, ta được: - $A \\cap B = (1; 3)$; - $A \\cup B = [-2; 5]$; - '
-                        '$A \\setminus B = [-2; 1]$.',
-                        'Thay $x = 1, y = 2$ vào vế trái của bất phương trình: $2(1) - 3(2) + 1 = 2 - 6 + 1 '
-                        '= -3 < 0$ (đúng). Vậy điểm $A(1; 2)$ thuộc miền nghiệm của bất phương tr...'],
+                        'Thực hiện theo thứ tự ngược lại và bỏ qua điều kiện xác định trong bài',
+                        'Đổi ngược dấu của phép tính chính và không kiểm tra lại kết quả'],
             'answer': 1,
             'solution': 'Lời giải chi tiết theo Bài 8: Tổng và hiệu của hai vectơ: Áp dụng quy tắc ba điểm, '
                         'ta có:\n'
@@ -1508,34 +1548,39 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 9: Tích của một vectơ với một số**, công thức hoặc quy '
-                 'tắc nào sau đây biểu diễn đúng **Độ dài tích số với vectơ**?',
-            'options': ['$\\overrightarrow{MA} + \\overrightarrow{MB} = 2\\overrightarrow{MI}$; '
-                        '$\\overrightarrow{MA} + \\overrightarrow{MB} + \\overrightarrow{MC} = '
-                        '3\\overrightarrow{MG}$',
-                        '$A, B, C$ thẳng hàng $\\Leftrightarrow \\overrightarrow{AB} = '
-                        'k\\overrightarrow{AC}$',
+            'q': 'Trong **Bài 9: Tích của một vectơ với một số**, quy tắc hoặc công thức nào sau đây xác '
+                 'định đúng **Độ dài tích số với vectơ**?',
+            'options': ['$|k\\overrightarrow{a}| = |k| : |\\overrightarrow{a}|$',
+                        'Đảo ngược vế của quy tắc: $|k\\overrightarrow{a}| = |k| \\cdot '
+                        '|\\overrightarrow{a}|$',
                         '$|k\\overrightarrow{a}| = |k| \\cdot |\\overrightarrow{a}|$',
-                        '$P \\Rightarrow Q$ chỉ sai khi $P$ đúng, $Q$ sai'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $|k\\overrightarrow{a}| = |k| '
+                        '\\cdot |\\overrightarrow{a}|$'],
             'answer': 2,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 9: Tích của một vectơ với một số, **Độ dài '
-                        'tích số với vectơ** được xác định bởi: $|k\\overrightarrow{a}| = |k| \\cdot '
+            'solution': 'Theo kiến thức trọng tâm của Bài 9: Tích của một vectơ với một số, **Độ dài tích số '
+                        'với vectơ** được xác định bởi: $|k\\overrightarrow{a}| = |k| \\cdot '
                         '|\\overrightarrow{a}|$. ($k > 0$: cùng hướng; $k < 0$: ngược hướng)'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 9: Tích của một vectơ với một số**, nội dung/biểu thức $\\overrightarrow{MA} + '
-                 '\\overrightarrow{MB} = 2\\overrightarrow{MI}$; $\\overrightarrow{MA} + '
-                 '\\overrightarrow{MB} + \\overrightarrow{MC} = 3\\overrightarrow{MG}$ là quy tắc hoặc công '
-                 'thức của mục nào sau đây?',
-            'options': ['Độ dài tích số với vectơ',
-                        'Điều kiện ba điểm thẳng hàng',
-                        'Mệnh đề kéo theo',
-                        'Hệ thức trung điểm $I$ và trọng tâm $G$'],
+            'q': 'Khi học **Bài 9: Tích của một vectơ với một số**, biểu thức hoặc quy tắc nào dưới đây biểu '
+                 'diễn đúng **Hệ thức trung điểm $I$ và trọng tâm $G$**?',
+            'options': ['$\\overrightarrow{MA} - \\overrightarrow{MB} = 2\\overrightarrow{MI}$; '
+                        '$\\overrightarrow{MA} + \\overrightarrow{MB} + \\overrightarrow{MC} = '
+                        '3\\overrightarrow{MG}$',
+                        '$\\overrightarrow{MA} + \\overrightarrow{MB} = 2\\overrightarrow{MI}$; '
+                        '$\\overrightarrow{MA} + \\overrightarrow{MB} + \\overrightarrow{MC} = '
+                        '2\\overrightarrow{MG}$',
+                        '$\\overrightarrow{MA} + \\overrightarrow{MB} = 4\\overrightarrow{MI}$; '
+                        '$\\overrightarrow{MA} + \\overrightarrow{MB} + \\overrightarrow{MC} = '
+                        '3\\overrightarrow{MG}$',
+                        '$\\overrightarrow{MA} + \\overrightarrow{MB} = 2\\overrightarrow{MI}$; '
+                        '$\\overrightarrow{MA} + \\overrightarrow{MB} + \\overrightarrow{MC} = '
+                        '3\\overrightarrow{MG}$'],
             'answer': 3,
-            'solution': 'Trong Bài 9: Tích của một vectơ với một số, biểu thức/quy tắc $\\overrightarrow{MA} '
-                        '+ \\overrightarrow{MB} = 2\\overrightarrow{MI}$; $\\overrightarrow{MA} + '
-                        '\\overrightarrow{MB} + \\overrightarrow{MC} = 3\\overrightarrow{MG}$ chính là nội '
-                        'dung của **Hệ thức trung điểm $I$ và trọng tâm $G$**.'},
+            'solution': 'Trong Bài 9: Tích của một vectơ với một số, **Hệ thức trung điểm $I$ và trọng tâm '
+                        '$G$** có công thức/quy tắc là: $\\overrightarrow{MA} + \\overrightarrow{MB} = '
+                        '2\\overrightarrow{MI}$; $\\overrightarrow{MA} + \\overrightarrow{MB} + '
+                        '\\overrightarrow{MC} = 3\\overrightarrow{MG}$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Cho tam giác $ABC$ có trọng tâm $G$ và $M$ là trung điểm của $BC$. Khẳng định nào sau đây '
@@ -1552,16 +1597,16 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 9: Tích của một vectơ với một số** (Chương IV: Vectơ), khẳng định nào sau '
-                 'đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Nhận biết được mệnh đề toán học, mệnh đề chứa biến và xác định tính đúng sai của '
-                        'một mệnh đề.',
+            'q': 'Để nắm vững bản chất của **Bài 9: Tích của một vectơ với một số**, nhận định nào sau đây '
+                 'là **chính xác**?',
+            'options': ['Xác định được hướng và độ dài của vectơ $k\\overrightarrow{a}$. (với dấu ngược lại)',
                         'Xác định được hướng và độ dài của vectơ $k\\overrightarrow{a}$.',
-                        'Thiết lập được mệnh đề phủ định $\\overline{P}$, mệnh đề kéo theo $P \\Rightarrow '
-                        'Q$, mệnh đề đảo và mệnh đề tương đương $P \\Leftrightarrow Q$.',
-                        'Sử dụng đúng kí hiệu với mọi ($\\forall$) và tồn tại ($\\exists$).'],
+                        'Đảo ngược vế của quy tắc: Xác định được hướng và độ dài của vectơ '
+                        '$k\\overrightarrow{a}$.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Xác định được hướng và độ dài '
+                        'của vectơ $k\\overrightarrow{a}$.'],
             'answer': 1,
-            'solution': 'Theo yêu cầu cần đạt của Bài 9: Tích của một vectơ với một số: Xác định được hướng '
+            'solution': 'Theo nội dung cốt lõi của Bài 9: Tích của một vectơ với một số: Xác định được hướng '
                         'và độ dài của vectơ $k\\overrightarrow{a}$.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -1582,40 +1627,37 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 9: Tích của một vectơ '
-                 'với một số**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Xác định được hướng và độ dài của '
-                           'vectơ $k\\overrightarrow{a}$.',
-                           'Quy tắc/công thức **Độ dài tích số với vectơ** trong bài được xác định bởi: '
-                           '$|k\\overrightarrow{a}| = |k| \\cdot |\\overrightarrow{a}|$.',
-                           'Trong mọi trường hợp, **Độ dài tích số với vectơ** luôn được tính bằng công thức '
-                           '$P \\Rightarrow Q$ chỉ sai khi $P$ đúng, $Q$ sai (thuộc Mệnh đề kéo theo) mà '
-                           'không cần điều kiện của Bài 9: Tích của một vectơ với một số.',
-                           'Với bài toán minh họa: “Cho tam giác $ABC$ có trung tuyến $AM$. Hãy biểu thị '
-                           'vectơ $\\overrightarrow{AM}$ theo hai vectơ $\\overrightarrow{AB}$ và '
-                           '$\\overrightarrow{AC}$...”, lời giải đúng là: Vì $M$ là trung điểm của đoạn '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 9: Tích của một vectơ với '
+                 'một số**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Xác định được hướng và độ dài của vectơ '
+                           '$k\\overrightarrow{a}$.',
+                           'Trong **Bài 9: Tích của một vectơ với một số**, quy tắc/công thức **Độ dài tích '
+                           'số với vectơ** được viết là: $|k\\overrightarrow{a}| = |k| \\cdot '
+                           '|\\overrightarrow{a}|$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $|k\\overrightarrow{a}| = |k| : '
+                           '|\\overrightarrow{a}|$ thì kết quả của **Độ dài tích số với vectơ** trong **Bài '
+                           '9: Tích của một vectơ với một số** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Cho tam giác $ABC$ có trung tuyến $AM$. Hãy biểu thị vectơ '
+                           '$\\overrightarrow{AM}$ theo hai vectơ $\\overrightarrow{AB}$ và '
+                           '$\\overrightarrow{AC}$...”, kết quả giải đúng là: Vì $M$ là trung điểm của đoạn '
                            'thẳng $BC$ nên với điểm $A$, ta có...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 9: Tích của một vectơ với một số. b) '
-                        '**Đúng** theo công thức trọng tâm **Độ dài tích số với vectơ** '
-                        '($|k\\overrightarrow{a}| = |k| \\cdot |\\overrightarrow{a}|$). c) **Sai** vì $P '
-                        '\\Rightarrow Q$ chỉ sai khi $P$ đúng, $Q$ sai là công thức của nội dung khác, không '
-                        'phải quy tắc chung của **Độ dài tích số với vectơ**. d) **Đúng** theo lời giải ví '
-                        'dụ minh họa trong bài học.'},
+                        '**Đúng** theo công thức **Độ dài tích số với vectơ** ($|k\\overrightarrow{a}| = |k| '
+                        '\\cdot |\\overrightarrow{a}|$). c) **Sai** vì công thức đúng của **Độ dài tích số '
+                        'với vectơ** phải là $|k\\overrightarrow{a}| = |k| \\cdot |\\overrightarrow{a}|$ chứ '
+                        'không phải $|k\\overrightarrow{a}| = |k| : |\\overrightarrow{a}|$. d) **Đúng** theo '
+                        'lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 9: Tích của một vectơ với một số** để giải quyết tình huống sau: '
-                 'Cho tam giác $ABC$ có trung tuyến $AM$. Hãy biểu thị vectơ $\\overrightarrow{AM}$ theo hai '
-                 'vectơ $\\overrightarrow{AB}$ và $\\overrightarrow{AC}$. Kết quả và hướng giải nào dưới đây '
-                 'là **đúng**?',
-            'options': ["Mệnh đề phủ định là $\\overline{P}$: '$\\exists x \\in \\mathbb{R}, x^2 + 1 \\le "
-                        "0$'. Vì $x^2 \\ge 0 \\Rightarrow x^2 + 1 \\ge 1 > 0$ với mọi $x \\in \\mathbb{R}$ "
-                        'nê...',
-                        'Biểu diễn trên trục số, ta được: - $A \\cap B = (1; 3)$; - $A \\cup B = [-2; 5]$; - '
-                        '$A \\setminus B = [-2; 1]$.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 9: Tích của một vectơ với một số** để giải bài toán '
+                 'sau: Cho tam giác $ABC$ có trung tuyến $AM$. Hãy biểu thị vectơ $\\overrightarrow{AM}$ '
+                 'theo hai vectơ $\\overrightarrow{AB}$ và $\\overrightarrow{AC}$. Cách giải và kết quả nào '
+                 'dưới đây là **đúng**?',
+            'options': ['Chỉ xét trường hợp đặc biệt bằng $0$ và bỏ qua quy tắc chung',
+                        'Thực hiện theo thứ tự ngược lại và bỏ qua điều kiện xác định trong bài',
                         'Vì $M$ là trung điểm của đoạn thẳng $BC$ nên với điểm $A$, ta có...',
-                        'Thay $x = 1, y = 2$ vào vế trái của bất phương trình: $2(1) - 3(2) + 1 = 2 - 6 + 1 '
-                        '= -3 < 0$ (đúng). Vậy điểm $A(1; 2)$ thuộc miền nghiệm của bất phương tr...'],
+                        'Đổi ngược dấu của phép tính chính và không kiểm tra lại kết quả'],
             'answer': 2,
             'solution': 'Lời giải chi tiết theo Bài 9: Tích của một vectơ với một số: Vì $M$ là trung điểm '
                         'của đoạn thẳng $BC$ nên với điểm $A$, ta có:\n'
@@ -1642,9 +1684,8 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
   'requirements': ['Xác định được tọa độ của một điểm và tọa độ của một vectơ trên mặt phẳng tọa độ $Oxy$.',
                    'Vận dụng được biểu thức tọa độ của các phép toán vectơ, tọa độ trung điểm đoạn thẳng và '
                    'tọa độ trọng tâm tam giác.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Vectơ $\\overrightarrow{AB}$ và độ dài** '
-                   '($\\overrightarrow{AB} = (x_B - x_A; y_B - y_A)$; $AB = \\sqrt{(x_B - x_A)^2 + (y_B - '
-                   'y_A)^2}$) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 10: Vectơ trong mặt phẳng tọa độ** để giải bài tập minh họa '
+                   'và bài toán thực tiễn.'],
   'definition': 'Trên mặt phẳng tọa độ $Oxy$ với hai vectơ đơn vị $\\overrightarrow{i}, \\overrightarrow{j}$ '
                 'trên hai trục $Ox, Oy$: $\\overrightarrow{u} = (x; y) \\Leftrightarrow \\overrightarrow{u} '
                 '= x\\overrightarrow{i} + y\\overrightarrow{j}$. Điểm $M(x; y) \\Leftrightarrow '
@@ -1697,33 +1738,37 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 10: Vectơ trong mặt phẳng tọa độ**, công thức hoặc quy '
-                 'tắc nào sau đây biểu diễn đúng **Vectơ $\\overrightarrow{AB}$ và độ dài**?',
-            'options': ["$\\overrightarrow{u} + \\overrightarrow{v} = (x + x'; y + y')$; "
-                        '$k\\overrightarrow{u} = (kx; ky)$',
-                        '$I\\left(\\dfrac{x_A + x_B}{2}; \\dfrac{y_A + y_B}{2}\\right)$; '
-                        '$G\\left(\\dfrac{x_A + x_B + x_C}{3}; \\dfrac{y_A + y_B + y_C}{3}\\right)$',
-                        '$P \\Rightarrow Q$ chỉ sai khi $P$ đúng, $Q$ sai',
+            'q': 'Trong **Bài 10: Vectơ trong mặt phẳng tọa độ**, quy tắc hoặc công thức nào sau đây xác '
+                 'định đúng **Vectơ $\\overrightarrow{AB}$ và độ dài**?',
+            'options': ['$\\overrightarrow{AB} = (x_B - x_A; y_B - y_A)$; $AB = \\sqrt{(x_B - x_A)^2 - (y_B '
+                        '- y_A)^2}$',
+                        '$\\overrightarrow{AB} = (x_B - x_A; y_B - y_A)$; $AB = \\sqrt{(x_B - x_A)^2 + (y_B '
+                        '- y_A)^1}$',
+                        '$\\overrightarrow{AB} = (x_B - x_A; y_B - y_A)$; $AB = \\sqrt{(x_B - x_A)^4 + (y_B '
+                        '- y_A)^2}$',
                         '$\\overrightarrow{AB} = (x_B - x_A; y_B - y_A)$; $AB = \\sqrt{(x_B - x_A)^2 + (y_B '
                         '- y_A)^2}$'],
             'answer': 3,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 10: Vectơ trong mặt phẳng tọa độ, **Vectơ '
+            'solution': 'Theo kiến thức trọng tâm của Bài 10: Vectơ trong mặt phẳng tọa độ, **Vectơ '
                         '$\\overrightarrow{AB}$ và độ dài** được xác định bởi: $\\overrightarrow{AB} = (x_B '
                         '- x_A; y_B - y_A)$; $AB = \\sqrt{(x_B - x_A)^2 + (y_B - y_A)^2}$. (Lấy tọa độ điểm '
                         'cuối trừ tọa độ điểm đầu)'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 10: Vectơ trong mặt phẳng tọa độ**, nội dung/biểu thức $\\overrightarrow{u} + '
-                 "\\overrightarrow{v} = (x + x'; y + y')$; $k\\overrightarrow{u} = (kx; ky)$ là quy tắc hoặc "
-                 'công thức của mục nào sau đây?',
-            'options': ['Các phép toán tọa độ',
-                        'Vectơ $\\overrightarrow{AB}$ và độ dài',
-                        'Trung điểm $I$ và Trọng tâm $G$',
-                        'Mệnh đề kéo theo'],
+            'q': 'Khi học **Bài 10: Vectơ trong mặt phẳng tọa độ**, biểu thức hoặc quy tắc nào dưới đây biểu '
+                 'diễn đúng **Các phép toán tọa độ**?',
+            'options': ["$\\overrightarrow{u} + \\overrightarrow{v} = (x + x'; y + y')$; "
+                        '$k\\overrightarrow{u} = (kx; ky)$',
+                        "$\\overrightarrow{u} - \\overrightarrow{v} = (x + x'; y + y')$; "
+                        '$k\\overrightarrow{u} = (kx; ky)$',
+                        "Đảo ngược vế của quy tắc: $\\overrightarrow{u} + \\overrightarrow{v} = (x + x'; y + "
+                        "y')$; $k\\overrightarrow{u} = (kx; ky)$",
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\overrightarrow{u} + '
+                        "\\overrightarrow{v} = (x + x'; y + y')$; $k\\overrightarrow{u} = (kx; ky)$"],
             'answer': 0,
-            'solution': 'Trong Bài 10: Vectơ trong mặt phẳng tọa độ, biểu thức/quy tắc $\\overrightarrow{u} '
-                        "+ \\overrightarrow{v} = (x + x'; y + y')$; $k\\overrightarrow{u} = (kx; ky)$ chính "
-                        'là nội dung của **Các phép toán tọa độ**.'},
+            'solution': 'Trong Bài 10: Vectơ trong mặt phẳng tọa độ, **Các phép toán tọa độ** có công '
+                        "thức/quy tắc là: $\\overrightarrow{u} + \\overrightarrow{v} = (x + x'; y + y')$; "
+                        '$k\\overrightarrow{u} = (kx; ky)$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Trong mặt phẳng $Oxy$, cho tam giác $ABC$ có $A(1; 2), B(4; -1), C(1; 5)$. Tọa độ trọng '
@@ -1736,18 +1781,19 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 10: Vectơ trong mặt phẳng tọa độ** (Chương IV: Vectơ), khẳng định nào sau '
-                 'đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Nhận biết được mệnh đề toán học, mệnh đề chứa biến và xác định tính đúng sai của '
-                        'một mệnh đề.',
-                        'Thiết lập được mệnh đề phủ định $\\overline{P}$, mệnh đề kéo theo $P \\Rightarrow '
-                        'Q$, mệnh đề đảo và mệnh đề tương đương $P \\Leftrightarrow Q$.',
+            'q': 'Để nắm vững bản chất của **Bài 10: Vectơ trong mặt phẳng tọa độ**, nhận định nào sau đây '
+                 'là **chính xác**?',
+            'options': ['Xác định được tọa độ của một điểm và tọa độ của một vectơ trên mặt phẳng tọa độ '
+                        '$Oxy$. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Xác định được tọa độ của một điểm và tọa độ của một vectơ '
+                        'trên mặt phẳng tọa độ $Oxy$.',
                         'Xác định được tọa độ của một điểm và tọa độ của một vectơ trên mặt phẳng tọa độ '
                         '$Oxy$.',
-                        'Sử dụng đúng kí hiệu với mọi ($\\forall$) và tồn tại ($\\exists$).'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Xác định được tọa độ của một '
+                        'điểm và tọa độ của một vectơ trên mặt phẳng tọa độ $Oxy$.'],
             'answer': 2,
-            'solution': 'Theo yêu cầu cần đạt của Bài 10: Vectơ trong mặt phẳng tọa độ: Xác định được tọa độ '
-                        'của một điểm và tọa độ của một vectơ trên mặt phẳng tọa độ $Oxy$.'},
+            'solution': 'Theo nội dung cốt lõi của Bài 10: Vectơ trong mặt phẳng tọa độ: Xác định được tọa '
+                        'độ của một điểm và tọa độ của một vectơ trên mặt phẳng tọa độ $Oxy$.'},
            {'level': 'hieu',
             'type': 'tf4',
             'q': 'Trong mặt phẳng tọa độ $Oxy$, cho hai vectơ $\\overrightarrow{a} = (2; -1)$, '
@@ -1765,41 +1811,46 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 10: Vectơ trong mặt '
-                 'phẳng tọa độ**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Xác định được tọa độ của một điểm '
-                           'và tọa độ của một vectơ trên mặt phẳng tọa độ $Oxy$.',
-                           'Quy tắc/công thức **Vectơ $\\overrightarrow{AB}$ và độ dài** trong bài được xác '
-                           'định bởi: $\\overrightarrow{AB} = (x_B - x_A; y_B - y_A)$; $AB = \\sqrt{(x_B - '
-                           'x_A)^2 + (y_B - y_A)^2}$.',
-                           'Trong mọi trường hợp, **Vectơ $\\overrightarrow{AB}$ và độ dài** luôn được tính '
-                           'bằng công thức $P \\Rightarrow Q$ chỉ sai khi $P$ đúng, $Q$ sai (thuộc Mệnh đề '
-                           'kéo theo) mà không cần điều kiện của Bài 10: Vectơ trong mặt phẳng tọa độ.',
-                           'Với bài toán minh họa: “Trong mặt phẳng tọa độ $Oxy$, cho hai điểm $A(1; -2)$ và '
-                           '$B(5; 4)$. Tìm tọa độ vectơ $\\overrightarrow{AB}$ và tọa độ trung điểm $I$ của '
-                           'đoạn...”, lời giải đúng là: Ta có $\\overrightarrow{AB} = (5 - 1; 4 - (-2)) = '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 10: Vectơ trong mặt phẳng '
+                 'tọa độ**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Xác định được tọa độ của một điểm và tọa '
+                           'độ của một vectơ trên mặt phẳng tọa độ $Oxy$.',
+                           'Trong **Bài 10: Vectơ trong mặt phẳng tọa độ**, quy tắc/công thức **Vectơ '
+                           '$\\overrightarrow{AB}$ và độ dài** được viết là: $\\overrightarrow{AB} = (x_B - '
+                           'x_A; y_B - y_A)$; $AB = \\sqrt{(x_B - x_A)^2 + (y_B - y_A)^2}$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $\\overrightarrow{AB} = (x_B - x_A; y_B - '
+                           'y_A)$; $AB = \\sqrt{(x_B - x_A)^2 - (y_B - y_A)^2}$ thì kết quả của **Vectơ '
+                           '$\\overrightarrow{AB}$ và độ dài** trong **Bài 10: Vectơ trong mặt phẳng tọa '
+                           'độ** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Trong mặt phẳng tọa độ $Oxy$, cho hai điểm $A(1; -2)$ và '
+                           '$B(5; 4)$. Tìm tọa độ vectơ $\\overrightarrow{AB}$ và tọa độ trung điểm $I$ '
+                           'của...”, kết quả giải đúng là: Ta có $\\overrightarrow{AB} = (5 - 1; 4 - (-2)) = '
                            '(4; 6)$. Tọa độ trung điểm $I$ của đoạn thẳng $AB$ là $x_I = \\dfrac{1 + 5}{2} = '
-                           '3$ và $y_I = \\dfrac{-2 + 4}{2} = 1$...'],
+                           '3$ và...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 10: Vectơ trong mặt phẳng tọa độ. b) '
-                        '**Đúng** theo công thức trọng tâm **Vectơ $\\overrightarrow{AB}$ và độ dài** '
+                        '**Đúng** theo công thức **Vectơ $\\overrightarrow{AB}$ và độ dài** '
                         '($\\overrightarrow{AB} = (x_B - x_A; y_B - y_A)$; $AB = \\sqrt{(x_B - x_A)^2 + (y_B '
-                        '- y_A)^2}$). c) **Sai** vì $P \\Rightarrow Q$ chỉ sai khi $P$ đúng, $Q$ sai là công '
-                        'thức của nội dung khác, không phải quy tắc chung của **Vectơ $\\overrightarrow{AB}$ '
-                        'và độ dài**. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        '- y_A)^2}$). c) **Sai** vì công thức đúng của **Vectơ $\\overrightarrow{AB}$ và độ '
+                        'dài** phải là $\\overrightarrow{AB} = (x_B - x_A; y_B - y_A)$; $AB = \\sqrt{(x_B - '
+                        'x_A)^2 + (y_B - y_A)^2}$ chứ không phải $\\overrightarrow{AB} = (x_B - x_A; y_B - '
+                        'y_A)$; $AB = \\sqrt{(x_B - x_A)^2 - (y_B - y_A)^2}$. d) **Đúng** theo lời giải ví '
+                        'dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 10: Vectơ trong mặt phẳng tọa độ** để giải quyết tình huống sau: '
-                 'Trong mặt phẳng tọa độ $Oxy$, cho hai điểm $A(1; -2)$ và $B(5; 4)$. Tìm tọa độ vectơ '
-                 '$\\overrightarrow{AB}$ và tọa độ trung điểm $I$ của đoạn thẳng $AB$. Kết quả và hướng giải '
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 10: Vectơ trong mặt phẳng tọa độ** để giải bài toán '
+                 'sau: Trong mặt phẳng tọa độ $Oxy$, cho hai điểm $A(1; -2)$ và $B(5; 4)$. Tìm tọa độ vectơ '
+                 '$\\overrightarrow{AB}$ và tọa độ trung điểm $I$ của đoạn thẳng $AB$. Cách giải và kết quả '
                  'nào dưới đây là **đúng**?',
-            'options': ["Mệnh đề phủ định là $\\overline{P}$: '$\\exists x \\in \\mathbb{R}, x^2 + 1 \\le "
-                        "0$'. Vì $x^2 \\ge 0 \\Rightarrow x^2 + 1 \\ge 1 > 0$ với mọi $x \\in \\mathbb{R}$ "
-                        'nê...',
-                        'Biểu diễn trên trục số, ta được: - $A \\cap B = (1; 3)$; - $A \\cup B = [-2; 5]$; - '
-                        '$A \\setminus B = [-2; 1]$.',
-                        'Thay $x = 1, y = 2$ vào vế trái của bất phương trình: $2(1) - 3(2) + 1 = 2 - 6 + 1 '
-                        '= -3 < 0$ (đúng). Vậy điểm $A(1; 2)$ thuộc miền nghiệm của bất phương tr...',
+            'options': ['Ta có $\\overrightarrow{AB} = (5 - 1; 4 - (-2)) = (4; 6)$. Tọa độ trung điểm $I$ '
+                        'của đoạn thẳng $AB$ là $x_I = \\dfrac{1 - 5}{2} = 3$ và $y_I = \\dfrac{-2 + 4}{2} = '
+                        '1$...',
+                        'Ta có $\\overrightarrow{AB} = (5 - 1; 4 - (-2)) = (4; 6)$. Tọa độ trung điểm $I$ '
+                        'của đoạn thẳng $AB$ là $x_I = \\dfrac{2}{1 + 5} = 3$ và $y_I = \\dfrac{-2 + 4}{2} = '
+                        '1$...',
+                        'Ta có $\\overrightarrow{AB} = (10 - 1; 4 - (-2)) = (4; 6)$. Tọa độ trung điểm $I$ '
+                        'của đoạn thẳng $AB$ là $x_I = \\dfrac{1 + 5}{2} = 3$ và $y_I = \\dfrac{-2 + 4}{2} = '
+                        '1$...',
                         'Ta có $\\overrightarrow{AB} = (5 - 1; 4 - (-2)) = (4; 6)$. Tọa độ trung điểm $I$ '
                         'của đoạn thẳng $AB$ là $x_I = \\dfrac{1 + 5}{2} = 3$ và $y_I = \\dfrac{-2 + 4}{2} = '
                         '1$...'],
@@ -1895,36 +1946,40 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 11: Tích vô hướng của hai vectơ**, công thức hoặc quy '
-                 'tắc nào sau đây biểu diễn đúng **Định nghĩa tích vô hướng**?',
+            'q': 'Trong **Bài 11: Tích vô hướng của hai vectơ**, quy tắc hoặc công thức nào sau đây xác định '
+                 'đúng **Định nghĩa tích vô hướng**?',
             'options': ['$\\overrightarrow{a} \\cdot \\overrightarrow{b} = |\\overrightarrow{a}| \\cdot '
                         '|\\overrightarrow{b}| \\cdot \\cos(\\overrightarrow{a}, \\overrightarrow{b})$',
-                        "$\\overrightarrow{a} \\cdot \\overrightarrow{b} = xx' + yy'$; $\\overrightarrow{a} "
-                        "\\perp \\overrightarrow{b} \\Leftrightarrow xx' + yy' = 0$",
-                        '$\\cos(\\overrightarrow{a}, \\overrightarrow{b}) = \\dfrac{\\overrightarrow{a} '
-                        '\\cdot \\overrightarrow{b}}{|\\overrightarrow{a}| \\cdot |\\overrightarrow{b}|} = '
-                        "\\dfrac{xx' + yy'}{\\sqrt{x^2 + y^2}\\sqrt{x'^2 + y'^2}}$",
-                        '$P \\Rightarrow Q$ chỉ sai khi $P$ đúng, $Q$ sai'],
+                        '$\\overrightarrow{a} : \\overrightarrow{b} = |\\overrightarrow{a}| \\cdot '
+                        '|\\overrightarrow{b}| \\cdot \\cos(\\overrightarrow{a}, \\overrightarrow{b})$',
+                        'Đảo ngược vế của quy tắc: $\\overrightarrow{a} \\cdot \\overrightarrow{b} = '
+                        '|\\overrightarrow{a}| \\cdot |\\overrightarrow{b}| \\cdot '
+                        '\\cos(\\overrightarrow{a}, \\overrightarrow{b})$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\overrightarrow{a} \\cdot '
+                        '\\overrightarrow{b} = |\\overrightarrow{a}| \\cdot |\\overrightarrow{b}| \\cdot '
+                        '\\cos(\\overrightarrow{a}, \\overrightarrow{b})$'],
             'answer': 0,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 11: Tích vô hướng của hai vectơ, **Định nghĩa '
-                        'tích vô hướng** được xác định bởi: $\\overrightarrow{a} \\cdot \\overrightarrow{b} '
-                        '= |\\overrightarrow{a}| \\cdot |\\overrightarrow{b}| \\cdot '
+            'solution': 'Theo kiến thức trọng tâm của Bài 11: Tích vô hướng của hai vectơ, **Định nghĩa tích '
+                        'vô hướng** được xác định bởi: $\\overrightarrow{a} \\cdot \\overrightarrow{b} = '
+                        '|\\overrightarrow{a}| \\cdot |\\overrightarrow{b}| \\cdot '
                         '\\cos(\\overrightarrow{a}, \\overrightarrow{b})$. (Kết quả của tích vô hướng là một '
                         'số thực)'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 11: Tích vô hướng của hai vectơ**, nội dung/biểu thức $\\overrightarrow{a} '
-                 "\\cdot \\overrightarrow{b} = xx' + yy'$; $\\overrightarrow{a} \\perp \\overrightarrow{b} "
-                 "\\Leftrightarrow xx' + yy' = 0$ là quy tắc hoặc công thức của mục nào sau đây?",
-            'options': ['Định nghĩa tích vô hướng',
-                        'Biểu thức tọa độ',
-                        'Côsin góc giữa hai vectơ',
-                        'Mệnh đề kéo theo'],
+            'q': 'Khi học **Bài 11: Tích vô hướng của hai vectơ**, biểu thức hoặc quy tắc nào dưới đây biểu '
+                 'diễn đúng **Biểu thức tọa độ**?',
+            'options': ["$\\overrightarrow{a} \\cdot \\overrightarrow{b} = xx' - yy'$; $\\overrightarrow{a} "
+                        "\\perp \\overrightarrow{b} \\Leftrightarrow xx' + yy' = 0$",
+                        "$\\overrightarrow{a} \\cdot \\overrightarrow{b} = xx' + yy'$; $\\overrightarrow{a} "
+                        "\\perp \\overrightarrow{b} \\Leftrightarrow xx' + yy' = 0$",
+                        "$\\overrightarrow{a} \\cdot \\overrightarrow{b} = xx' + yy'$; $\\overrightarrow{a} "
+                        "\\perp \\overrightarrow{b} \\Leftrightarrow xx' + yy' = 1$",
+                        "$\\overrightarrow{a} \\cdot \\overrightarrow{b} = xx' + yy'$; $\\overrightarrow{a} "
+                        "\\perp \\overrightarrow{b} \\Leftrightarrow xx' + yy' = 2$"],
             'answer': 1,
-            'solution': 'Trong Bài 11: Tích vô hướng của hai vectơ, biểu thức/quy tắc $\\overrightarrow{a} '
-                        "\\cdot \\overrightarrow{b} = xx' + yy'$; $\\overrightarrow{a} \\perp "
-                        "\\overrightarrow{b} \\Leftrightarrow xx' + yy' = 0$ chính là nội dung của **Biểu "
-                        'thức tọa độ**.'},
+            'solution': 'Trong Bài 11: Tích vô hướng của hai vectơ, **Biểu thức tọa độ** có công thức/quy '
+                        "tắc là: $\\overrightarrow{a} \\cdot \\overrightarrow{b} = xx' + yy'$; "
+                        "$\\overrightarrow{a} \\perp \\overrightarrow{b} \\Leftrightarrow xx' + yy' = 0$."},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Cho tam giác đều $ABC$ có cạnh bằng $4$. Giá trị của tích vô hướng $\\overrightarrow{AB} '
@@ -1939,17 +1994,18 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 11: Tích vô hướng của hai vectơ** (Chương IV: Vectơ), khẳng định nào sau đây '
-                 'phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Nhận biết được mệnh đề toán học, mệnh đề chứa biến và xác định tính đúng sai của '
-                        'một mệnh đề.',
-                        'Thiết lập được mệnh đề phủ định $\\overline{P}$, mệnh đề kéo theo $P \\Rightarrow '
-                        'Q$, mệnh đề đảo và mệnh đề tương đương $P \\Leftrightarrow Q$.',
-                        'Sử dụng đúng kí hiệu với mọi ($\\forall$) và tồn tại ($\\exists$).',
+            'q': 'Để nắm vững bản chất của **Bài 11: Tích vô hướng của hai vectơ**, nhận định nào sau đây là '
+                 '**chính xác**?',
+            'options': ['Xác định được góc giữa hai vectơ $(\\overrightarrow{a}, \\overrightarrow{b})$ từ '
+                        '$1^\\circ$ đến $180^\\circ$.',
+                        'Xác định được góc giữa hai vectơ $(\\overrightarrow{a}, \\overrightarrow{b})$ từ '
+                        '$0^\\circ$ đến $179^\\circ$.',
+                        'Xác định được góc giữa hai vectơ $(\\overrightarrow{a}, \\overrightarrow{b})$ từ '
+                        '$2^\\circ$ đến $180^\\circ$.',
                         'Xác định được góc giữa hai vectơ $(\\overrightarrow{a}, \\overrightarrow{b})$ từ '
                         '$0^\\circ$ đến $180^\\circ$.'],
             'answer': 3,
-            'solution': 'Theo yêu cầu cần đạt của Bài 11: Tích vô hướng của hai vectơ: Xác định được góc '
+            'solution': 'Theo nội dung cốt lõi của Bài 11: Tích vô hướng của hai vectơ: Xác định được góc '
                         'giữa hai vectơ $(\\overrightarrow{a}, \\overrightarrow{b})$ từ $0^\\circ$ đến '
                         '$180^\\circ$.'},
            {'level': 'hieu',
@@ -1973,45 +2029,53 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 11: Tích vô hướng của '
-                 'hai vectơ**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Xác định được góc giữa hai vectơ '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 11: Tích vô hướng của hai '
+                 'vectơ**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Xác định được góc giữa hai vectơ '
                            '$(\\overrightarrow{a}, \\overrightarrow{b})$ từ $0^\\circ$ đến $180^\\circ$.',
-                           'Quy tắc/công thức **Định nghĩa tích vô hướng** trong bài được xác định bởi: '
-                           '$\\overrightarrow{a} \\cdot \\overrightarrow{b} = |\\overrightarrow{a}| \\cdot '
-                           '|\\overrightarrow{b}| \\cdot \\cos(\\overrightarrow{a}, \\overrightarrow{b})$.',
-                           'Trong mọi trường hợp, **Định nghĩa tích vô hướng** luôn được tính bằng công thức '
-                           '$P \\Rightarrow Q$ chỉ sai khi $P$ đúng, $Q$ sai (thuộc Mệnh đề kéo theo) mà '
-                           'không cần điều kiện của Bài 11: Tích vô hướng của hai vectơ.',
-                           'Với bài toán minh họa: “Trong mặt phẳng tọa độ $Oxy$, cho hai vectơ '
+                           'Trong **Bài 11: Tích vô hướng của hai vectơ**, quy tắc/công thức **Định nghĩa '
+                           'tích vô hướng** được viết là: $\\overrightarrow{a} \\cdot \\overrightarrow{b} = '
+                           '|\\overrightarrow{a}| \\cdot |\\overrightarrow{b}| \\cdot '
+                           '\\cos(\\overrightarrow{a}, \\overrightarrow{b})$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $\\overrightarrow{a} : \\overrightarrow{b} = '
+                           '|\\overrightarrow{a}| \\cdot |\\overrightarrow{b}| \\cdot '
+                           '\\cos(\\overrightarrow{a}, \\overrightarrow{b})$ thì kết quả của **Định nghĩa '
+                           'tích vô hướng** trong **Bài 11: Tích vô hướng của hai vectơ** vẫn không thay '
+                           'đổi.',
+                           'Xét ví dụ của bài: “Trong mặt phẳng tọa độ $Oxy$, cho hai vectơ '
                            '$\\overrightarrow{a} = (1; 2)$ và $\\overrightarrow{b} = (4; -2)$. Tính '
-                           '$\\overrightarrow{a} \\cdot \\overrightarrow{b}$...”, lời giải đúng là: Ta có '
-                           '$\\overrightarrow{a} \\cdot \\overrightarrow{b} = 1 \\cdot 4 + 2 \\cdot (-2) = 4 '
-                           '- 4 = 0$. Vì $\\overrightarrow{a} \\cdot \\overrightarrow{b} = 0$...'],
+                           '$\\overrightarrow{a} \\cdot \\overrightarrow{b}$...”, kết quả giải đúng là: Ta '
+                           'có $\\overrightarrow{a} \\cdot \\overrightarrow{b} = 1 \\cdot 4 + 2 \\cdot (-2) '
+                           '= 4 - 4 = 0$. Vì $\\overrightarrow{a} \\cdot \\overrightarrow{b} = 0$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 11: Tích vô hướng của hai vectơ. b) '
-                        '**Đúng** theo công thức trọng tâm **Định nghĩa tích vô hướng** '
-                        '($\\overrightarrow{a} \\cdot \\overrightarrow{b} = |\\overrightarrow{a}| \\cdot '
-                        '|\\overrightarrow{b}| \\cdot \\cos(\\overrightarrow{a}, \\overrightarrow{b})$). c) '
-                        '**Sai** vì $P \\Rightarrow Q$ chỉ sai khi $P$ đúng, $Q$ sai là công thức của nội '
-                        'dung khác, không phải quy tắc chung của **Định nghĩa tích vô hướng**. d) **Đúng** '
-                        'theo lời giải ví dụ minh họa trong bài học.'},
+                        '**Đúng** theo công thức **Định nghĩa tích vô hướng** ($\\overrightarrow{a} \\cdot '
+                        '\\overrightarrow{b} = |\\overrightarrow{a}| \\cdot |\\overrightarrow{b}| \\cdot '
+                        '\\cos(\\overrightarrow{a}, \\overrightarrow{b})$). c) **Sai** vì công thức đúng của '
+                        '**Định nghĩa tích vô hướng** phải là $\\overrightarrow{a} \\cdot '
+                        '\\overrightarrow{b} = |\\overrightarrow{a}| \\cdot |\\overrightarrow{b}| \\cdot '
+                        '\\cos(\\overrightarrow{a}, \\overrightarrow{b})$ chứ không phải '
+                        '$\\overrightarrow{a} : \\overrightarrow{b} = |\\overrightarrow{a}| \\cdot '
+                        '|\\overrightarrow{b}| \\cdot \\cos(\\overrightarrow{a}, \\overrightarrow{b})$. d) '
+                        '**Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 11: Tích vô hướng của hai vectơ** để giải quyết tình huống sau: '
-                 'Trong mặt phẳng tọa độ $Oxy$, cho hai vectơ $\\overrightarrow{a} = (1; 2)$ và '
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 11: Tích vô hướng của hai vectơ** để giải bài toán '
+                 'sau: Trong mặt phẳng tọa độ $Oxy$, cho hai vectơ $\\overrightarrow{a} = (1; 2)$ và '
                  '$\\overrightarrow{b} = (4; -2)$. Tính $\\overrightarrow{a} \\cdot \\overrightarrow{b}$ và '
-                 'góc giữa hai vectơ. Kết quả và hướng giải nào dưới đây là **đúng**?',
+                 'góc giữa hai vectơ. Cách giải và kết quả nào dưới đây là **đúng**?',
             'options': ['Ta có $\\overrightarrow{a} \\cdot \\overrightarrow{b} = 1 \\cdot 4 + 2 \\cdot (-2) '
                         '= 4 - 4 = 0$. Vì $\\overrightarrow{a} \\cdot \\overrightarrow{b} = 0$ nên '
                         '$\\overrightarrow{a} \\perp \\overrightarrow{b}$...',
-                        "Mệnh đề phủ định là $\\overline{P}$: '$\\exists x \\in \\mathbb{R}, x^2 + 1 \\le "
-                        "0$'. Vì $x^2 \\ge 0 \\Rightarrow x^2 + 1 \\ge 1 > 0$ với mọi $x \\in \\mathbb{R}$ "
-                        'nê...',
-                        'Biểu diễn trên trục số, ta được: - $A \\cap B = (1; 3)$; - $A \\cup B = [-2; 5]$; - '
-                        '$A \\setminus B = [-2; 1]$.',
-                        'Thay $x = 1, y = 2$ vào vế trái của bất phương trình: $2(1) - 3(2) + 1 = 2 - 6 + 1 '
-                        '= -3 < 0$ (đúng). Vậy điểm $A(1; 2)$ thuộc miền nghiệm của bất phương tr...'],
+                        'Ta có $\\overrightarrow{a} \\cdot \\overrightarrow{b} = 1 \\cdot 4 - 2 \\cdot (-2) '
+                        '= 4 - 4 = 0$. Vì $\\overrightarrow{a} \\cdot \\overrightarrow{b} = 0$ nên '
+                        '$\\overrightarrow{a} \\perp \\overrightarrow{b}$...',
+                        'Ta có $\\overrightarrow{a} \\cdot \\overrightarrow{b} = 1 \\cdot 4 + 2 \\cdot (-2) '
+                        '= 4 - 4 = 0$. Vì $\\overrightarrow{a} \\cdot \\overrightarrow{b} = 1$ nên '
+                        '$\\overrightarrow{a} \\perp \\overrightarrow{b}$...',
+                        'Ta có $\\overrightarrow{a} \\cdot \\overrightarrow{b} = 2 \\cdot 4 + 2 \\cdot (-2) '
+                        '= 4 - 4 = 0$. Vì $\\overrightarrow{a} \\cdot \\overrightarrow{b} = 0$ nên '
+                        '$\\overrightarrow{a} \\perp \\overrightarrow{b}$...'],
             'answer': 0,
             'solution': 'Lời giải chi tiết theo Bài 11: Tích vô hướng của hai vectơ: Ta có '
                         '$\\overrightarrow{a} \\cdot \\overrightarrow{b} = 1 \\cdot 4 + 2 \\cdot (-2) = 4 - '
@@ -2038,9 +2102,8 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
                    'số tương đối $\\delta_a$.',
                    'Thực hiện được việc quy tròn số đúng và quy tròn số gần đúng căn cứ vào độ chính xác cho '
                    'trước.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Sai số tuyệt đối và độ chính xác** '
-                   '($\\Delta_a = |\\bar{a} - a| \\le d \\Leftrightarrow a - d \\le \\bar{a} \\le a + d$) '
-                   'vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 12: Số gần đúng và sai số** để giải bài tập minh họa và bài '
+                   'toán thực tiễn.'],
   'definition': 'Nếu $a$ là số gần đúng của số đúng $\\bar{a}$ thì $\\Delta_a = |\\bar{a} - a|$ được gọi là '
                 'sai số tuyệt đối của số gần đúng $a$. Nếu $\\Delta_a \\le d$ thì $d$ được gọi là độ chính '
                 'xác của số gần đúng, viết là $\\bar{a} = a \\pm d$.',
@@ -2086,29 +2149,30 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 12: Số gần đúng và sai số**, công thức hoặc quy tắc nào '
-                 'sau đây biểu diễn đúng **Sai số tuyệt đối và độ chính xác**?',
-            'options': ['$\\delta_a = \\dfrac{\\Delta_a}{|a|} \\le \\dfrac{d}{|a|}$',
+            'q': 'Trong **Bài 12: Số gần đúng và sai số**, quy tắc hoặc công thức nào sau đây xác định đúng '
+                 '**Sai số tuyệt đối và độ chính xác**?',
+            'options': ['$\\Delta_a = |\\bar{a} - a| \\ge d \\Leftrightarrow a - d \\le \\bar{a} \\le a + d$',
                         '$\\Delta_a = |\\bar{a} - a| \\le d \\Leftrightarrow a - d \\le \\bar{a} \\le a + d$',
-                        '$P \\Rightarrow Q$ chỉ sai khi $P$ đúng, $Q$ sai',
-                        '$P \\Leftrightarrow Q$ đúng khi $P, Q$ cùng tính đúng sai'],
+                        'Đảo ngược vế của quy tắc: $\\Delta_a = |\\bar{a} - a| \\le d \\Leftrightarrow a - d '
+                        '\\le \\bar{a} \\le a + d$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\Delta_a = |\\bar{a} - a| '
+                        '\\le d \\Leftrightarrow a - d \\le \\bar{a} \\le a + d$'],
             'answer': 1,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 12: Số gần đúng và sai số, **Sai số tuyệt đối '
-                        'và độ chính xác** được xác định bởi: $\\Delta_a = |\\bar{a} - a| \\le d '
+            'solution': 'Theo kiến thức trọng tâm của Bài 12: Số gần đúng và sai số, **Sai số tuyệt đối và '
+                        'độ chính xác** được xác định bởi: $\\Delta_a = |\\bar{a} - a| \\le d '
                         '\\Leftrightarrow a - d \\le \\bar{a} \\le a + d$. (Kí hiệu: $\\bar{a} = a \\pm d$)'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 12: Số gần đúng và sai số**, nội dung/biểu thức $\\delta_a = '
-                 '\\dfrac{\\Delta_a}{|a|} \\le \\dfrac{d}{|a|}$ là quy tắc hoặc công thức của mục nào sau '
-                 'đây?',
-            'options': ['Sai số tuyệt đối và độ chính xác',
-                        'Mệnh đề kéo theo',
-                        'Sai số tương đối',
-                        'Mệnh đề tương đương'],
+            'q': 'Khi học **Bài 12: Số gần đúng và sai số**, biểu thức hoặc quy tắc nào dưới đây biểu diễn '
+                 'đúng **Sai số tương đối**?',
+            'options': ['$\\delta_a = \\dfrac{\\Delta_a}{|a|} \\ge \\dfrac{d}{|a|}$',
+                        '$\\delta_a = \\dfrac{|a|}{\\Delta_a} \\le \\dfrac{d}{|a|}$',
+                        '$\\delta_a = \\dfrac{\\Delta_a}{|a|} \\le \\dfrac{d}{|a|}$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\delta_a = '
+                        '\\dfrac{\\Delta_a}{|a|} \\le \\dfrac{d}{|a|}$'],
             'answer': 2,
-            'solution': 'Trong Bài 12: Số gần đúng và sai số, biểu thức/quy tắc $\\delta_a = '
-                        '\\dfrac{\\Delta_a}{|a|} \\le \\dfrac{d}{|a|}$ chính là nội dung của **Sai số tương '
-                        'đối**.'},
+            'solution': 'Trong Bài 12: Số gần đúng và sai số, **Sai số tương đối** có công thức/quy tắc là: '
+                        '$\\delta_a = \\dfrac{\\Delta_a}{|a|} \\le \\dfrac{d}{|a|}$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Cho số gần đúng $a = 3456$ với độ chính xác $d = 30$. Số quy tròn của số $a$ là:',
@@ -2120,18 +2184,19 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 12: Số gần đúng và sai số** (Chương V: Các số đặc trưng của mẫu số liệu '
-                 'không ghép nhóm), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất '
-                 'kiến thức của bài?',
+            'q': 'Để nắm vững bản chất của **Bài 12: Số gần đúng và sai số**, nhận định nào sau đây là '
+                 '**chính xác**?',
             'options': ['Hiểu được khái niệm số gần đúng, sai số tuyệt đối $\\Delta_a$, độ chính xác $d$ và '
                         'sai số tương đối $\\delta_a$.',
-                        'Nhận biết được mệnh đề toán học, mệnh đề chứa biến và xác định tính đúng sai của '
-                        'một mệnh đề.',
-                        'Thiết lập được mệnh đề phủ định $\\overline{P}$, mệnh đề kéo theo $P \\Rightarrow '
-                        'Q$, mệnh đề đảo và mệnh đề tương đương $P \\Leftrightarrow Q$.',
-                        'Sử dụng đúng kí hiệu với mọi ($\\forall$) và tồn tại ($\\exists$).'],
+                        'Hiểu được khái niệm số gần đúng, sai số tuyệt đối $\\Delta_a$, độ chính xác $d$ và '
+                        'sai số tương đối $\\delta_a$. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Hiểu được khái niệm số gần đúng, sai số tuyệt đối '
+                        '$\\Delta_a$, độ chính xác $d$ và sai số tương đối $\\delta_a$.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Hiểu được khái niệm số gần '
+                        'đúng, sai số tuyệt đối $\\Delta_a$, độ chính xác $d$ và sai số tương đối '
+                        '$\\delta_a$.'],
             'answer': 0,
-            'solution': 'Theo yêu cầu cần đạt của Bài 12: Số gần đúng và sai số: Hiểu được khái niệm số gần '
+            'solution': 'Theo nội dung cốt lõi của Bài 12: Số gần đúng và sai số: Hiểu được khái niệm số gần '
                         'đúng, sai số tuyệt đối $\\Delta_a$, độ chính xác $d$ và sai số tương đối '
                         '$\\delta_a$.'},
            {'level': 'hieu',
@@ -2148,41 +2213,42 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 12: Số gần đúng và sai '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 12: Số gần đúng và sai '
                  'số**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Hiểu được khái niệm số gần đúng, '
-                           'sai số tuyệt đối $\\Delta_a$, độ chính xác $d$ và sai số tương đối $\\delta_a$.',
-                           'Quy tắc/công thức **Sai số tuyệt đối và độ chính xác** trong bài được xác định '
-                           'bởi: $\\Delta_a = |\\bar{a} - a| \\le d \\Leftrightarrow a - d \\le \\bar{a} '
-                           '\\le a + d$.',
-                           'Trong mọi trường hợp, **Sai số tuyệt đối và độ chính xác** luôn được tính bằng '
-                           'công thức $P \\Rightarrow Q$ chỉ sai khi $P$ đúng, $Q$ sai (thuộc Mệnh đề kéo '
-                           'theo) mà không cần điều kiện của Bài 12: Số gần đúng và sai số.',
-                           'Với bài toán minh họa: “Cho số gần đúng $a = 23,476$ với độ chính xác $d = '
-                           '0,02$. Hãy viết số quy tròn của số $a$.”, lời giải đúng là: Vì độ chính xác $d = '
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Hiểu được khái niệm số gần đúng, sai số '
+                           'tuyệt đối $\\Delta_a$, độ chính xác $d$ và sai số tương đối $\\delta_a$.',
+                           'Trong **Bài 12: Số gần đúng và sai số**, quy tắc/công thức **Sai số tuyệt đối và '
+                           'độ chính xác** được viết là: $\\Delta_a = |\\bar{a} - a| \\le d \\Leftrightarrow '
+                           'a - d \\le \\bar{a} \\le a + d$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $\\Delta_a = |\\bar{a} - a| \\ge d '
+                           '\\Leftrightarrow a - d \\le \\bar{a} \\le a + d$ thì kết quả của **Sai số tuyệt '
+                           'đối và độ chính xác** trong **Bài 12: Số gần đúng và sai số** vẫn không thay '
+                           'đổi.',
+                           'Xét ví dụ của bài: “Cho số gần đúng $a = 23,476$ với độ chính xác $d = 0,02$. '
+                           'Hãy viết số quy tròn của số $a$.”, kết quả giải đúng là: Vì độ chính xác $d = '
                            '0,02$ đến hàng phần trăm nên ta quy tròn số $a = 23,476$ đến hàng phần mười. Chữ '
-                           'số sau hàng phần mười là $7 \\ge 5$ nên...'],
+                           'số sau hàng phần mười là $7 \\ge 5$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 12: Số gần đúng và sai số. b) **Đúng** '
-                        'theo công thức trọng tâm **Sai số tuyệt đối và độ chính xác** ($\\Delta_a = '
-                        '|\\bar{a} - a| \\le d \\Leftrightarrow a - d \\le \\bar{a} \\le a + d$). c) **Sai** '
-                        'vì $P \\Rightarrow Q$ chỉ sai khi $P$ đúng, $Q$ sai là công thức của nội dung khác, '
-                        'không phải quy tắc chung của **Sai số tuyệt đối và độ chính xác**. d) **Đúng** theo '
-                        'lời giải ví dụ minh họa trong bài học.'},
+                        'theo công thức **Sai số tuyệt đối và độ chính xác** ($\\Delta_a = |\\bar{a} - a| '
+                        '\\le d \\Leftrightarrow a - d \\le \\bar{a} \\le a + d$). c) **Sai** vì công thức '
+                        'đúng của **Sai số tuyệt đối và độ chính xác** phải là $\\Delta_a = |\\bar{a} - a| '
+                        '\\le d \\Leftrightarrow a - d \\le \\bar{a} \\le a + d$ chứ không phải $\\Delta_a = '
+                        '|\\bar{a} - a| \\ge d \\Leftrightarrow a - d \\le \\bar{a} \\le a + d$. d) **Đúng** '
+                        'theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 12: Số gần đúng và sai số** để giải quyết tình huống sau: Cho số '
-                 'gần đúng $a = 23,476$ với độ chính xác $d = 0,02$. Hãy viết số quy tròn của số $a$. Kết '
-                 'quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ["Mệnh đề phủ định là $\\overline{P}$: '$\\exists x \\in \\mathbb{R}, x^2 + 1 \\le "
-                        "0$'. Vì $x^2 \\ge 0 \\Rightarrow x^2 + 1 \\ge 1 > 0$ với mọi $x \\in \\mathbb{R}$ "
-                        'nê...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 12: Số gần đúng và sai số** để giải bài toán sau: '
+                 'Cho số gần đúng $a = 23,476$ với độ chính xác $d = 0,02$. Hãy viết số quy tròn của số $a$. '
+                 'Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Vì độ chính xác $d = 0,02$ đến hàng phần trăm nên ta quy tròn số $a = 23,476$ đến '
+                        'hàng phần mười. Chữ số sau hàng phần mười là $7 \\le 5$ nên số quy tr...',
                         'Vì độ chính xác $d = 0,02$ đến hàng phần trăm nên ta quy tròn số $a = 23,476$ đến '
-                        'hàng phần mười. Chữ số sau hàng phần mười là $7 \\ge 5$ nên số quy tròn củ...',
-                        'Biểu diễn trên trục số, ta được: - $A \\cap B = (1; 3)$; - $A \\cup B = [-2; 5]$; - '
-                        '$A \\setminus B = [-2; 1]$.',
-                        'Thay $x = 1, y = 2$ vào vế trái của bất phương trình: $2(1) - 3(2) + 1 = 2 - 6 + 1 '
-                        '= -3 < 0$ (đúng). Vậy điểm $A(1; 2)$ thuộc miền nghiệm của bất phương tr...'],
+                        'hàng phần mười. Chữ số sau hàng phần mười là $7 \\ge 5$ nên số quy tr...',
+                        'Vì độ chính xác $d = 0,02$ đến hàng phần trăm nên ta quy tròn số $a = 23,476$ đến '
+                        'hàng phần mười. Chữ số sau hàng phần mười là $7 \\ge 4$ nên số quy tr...',
+                        'Vì độ chính xác $d = 2,02$ đến hàng phần trăm nên ta quy tròn số $a = 23,476$ đến '
+                        'hàng phần mười. Chữ số sau hàng phần mười là $7 \\ge 5$ nên số quy tr...'],
             'answer': 1,
             'solution': 'Lời giải chi tiết theo Bài 12: Số gần đúng và sai số: Vì độ chính xác $d = 0,02$ '
                         'đến hàng phần trăm nên ta quy tròn số $a = 23,476$ đến hàng phần mười.\n'
@@ -2207,8 +2273,8 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
                    'mốt ($M_o$) của mẫu số liệu.',
                    'Giải thích được ý nghĩa và biết chọn số đặc trưng đo xu thế trung tâm phù hợp cho từng '
                    'mẫu số liệu.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Số trung bình** ($\\bar{x} = \\dfrac{x_1 + '
-                   'x_2 + \\dots + x_n}{n} = \\dfrac{m_1x_1 + \\dots + m_kx_k}{n}$) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 13: Các số đặc trưng đo xu thế trung tâm** để giải bài tập '
+                   'minh họa và bài toán thực tiễn.'],
   'definition': 'Các số đặc trưng đo xu thế trung tâm của mẫu số liệu gồm: Số trung bình cộng ($\\bar{x}$), '
                 'Trung vị ($M_e$), Tứ phân vị ($Q_1, Q_2, Q_3$) và Mốt ($M_o$).',
   'theory': '1. Số trung bình: $\\bar{x} = \\dfrac{x_1 + x_2 + \\dots + x_n}{n}$.\n'
@@ -2253,28 +2319,34 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 13: Các số đặc trưng đo xu thế trung tâm**, công thức '
-                 'hoặc quy tắc nào sau đây biểu diễn đúng **Số trung bình**?',
-            'options': ['$Q_2 = M_e$; $Q_1$: trung vị nửa dưới; $Q_3$: trung vị nửa trên',
-                        '$P \\Rightarrow Q$ chỉ sai khi $P$ đúng, $Q$ sai',
+            'q': 'Trong **Bài 13: Các số đặc trưng đo xu thế trung tâm**, quy tắc hoặc công thức nào sau đây '
+                 'xác định đúng **Số trung bình**?',
+            'options': ['$\\bar{x} = \\dfrac{x_1 - x_2 + \\dots + x_n}{n} = \\dfrac{m_1x_1 + \\dots + '
+                        'm_kx_k}{n}$',
+                        '$\\bar{x} = \\dfrac{n}{x_1 + x_2 + \\dots + x_n} = \\dfrac{m_1x_1 + \\dots + '
+                        'm_kx_k}{n}$',
                         '$\\bar{x} = \\dfrac{x_1 + x_2 + \\dots + x_n}{n} = \\dfrac{m_1x_1 + \\dots + '
                         'm_kx_k}{n}$',
-                        '$P \\Leftrightarrow Q$ đúng khi $P, Q$ cùng tính đúng sai'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\bar{x} = \\dfrac{x_1 + x_2 + '
+                        '\\dots + x_n}{n} = \\dfrac{m_1x_1 + \\dots + m_kx_k}{n}$'],
             'answer': 2,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 13: Các số đặc trưng đo xu thế trung tâm, '
-                        '**Số trung bình** được xác định bởi: $\\bar{x} = \\dfrac{x_1 + x_2 + \\dots + '
-                        'x_n}{n} = \\dfrac{m_1x_1 + \\dots + m_kx_k}{n}$. (Nhạy cảm với các giá trị bất '
-                        'thường)'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 13: Các số đặc trưng đo xu thế trung tâm, **Số '
+                        'trung bình** được xác định bởi: $\\bar{x} = \\dfrac{x_1 + x_2 + \\dots + x_n}{n} = '
+                        '\\dfrac{m_1x_1 + \\dots + m_kx_k}{n}$. (Nhạy cảm với các giá trị bất thường)'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 13: Các số đặc trưng đo xu thế trung tâm**, nội dung/biểu thức $Q_2 = M_e$; '
-                 '$Q_1$: trung vị nửa dưới; $Q_3$: trung vị nửa trên là quy tắc hoặc công thức của mục nào '
-                 'sau đây?',
-            'options': ['Số trung bình', 'Mệnh đề kéo theo', 'Mệnh đề tương đương', 'Trung vị và Tứ phân vị'],
+            'q': 'Khi học **Bài 13: Các số đặc trưng đo xu thế trung tâm**, biểu thức hoặc quy tắc nào dưới '
+                 'đây biểu diễn đúng **Trung vị và Tứ phân vị**?',
+            'options': ['$Q_2 = M_e$; $Q_1$: trung vị nửa dưới; $Q_3$: trung vị nửa trên (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: $Q_2 = M_e$; $Q_1$: trung vị nửa dưới; $Q_3$: trung vị '
+                        'nửa trên',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $Q_2 = M_e$; $Q_1$: trung vị '
+                        'nửa dưới; $Q_3$: trung vị nửa trên',
+                        '$Q_2 = M_e$; $Q_1$: trung vị nửa dưới; $Q_3$: trung vị nửa trên'],
             'answer': 3,
-            'solution': 'Trong Bài 13: Các số đặc trưng đo xu thế trung tâm, biểu thức/quy tắc $Q_2 = M_e$; '
-                        '$Q_1$: trung vị nửa dưới; $Q_3$: trung vị nửa trên chính là nội dung của **Trung vị '
-                        'và Tứ phân vị**.'},
+            'solution': 'Trong Bài 13: Các số đặc trưng đo xu thế trung tâm, **Trung vị và Tứ phân vị** có '
+                        'công thức/quy tắc là: $Q_2 = M_e$; $Q_1$: trung vị nửa dưới; $Q_3$: trung vị nửa '
+                        'trên.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Cho mẫu số liệu gồm 6 giá trị: $1; 3; 4; 6; 8; 10$. Trung vị $M_e$ của mẫu số liệu là:',
@@ -2286,19 +2358,20 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 13: Các số đặc trưng đo xu thế trung tâm** (Chương V: Các số đặc trưng của '
-                 'mẫu số liệu không ghép nhóm), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và '
-                 'bản chất kiến thức của bài?',
-            'options': ['Nhận biết được mệnh đề toán học, mệnh đề chứa biến và xác định tính đúng sai của '
-                        'một mệnh đề.',
+            'q': 'Để nắm vững bản chất của **Bài 13: Các số đặc trưng đo xu thế trung tâm**, nhận định nào '
+                 'sau đây là **chính xác**?',
+            'options': ['Tính được số trung bình ($\\bar{x}$), trung vị ($M_e$), tứ phân vị ($Q_1, Q_2, '
+                        'Q_3$) và mốt ($M_o$) của mẫu số liệu. (với dấu ngược lại)',
                         'Tính được số trung bình ($\\bar{x}$), trung vị ($M_e$), tứ phân vị ($Q_1, Q_2, '
                         'Q_3$) và mốt ($M_o$) của mẫu số liệu.',
-                        'Thiết lập được mệnh đề phủ định $\\overline{P}$, mệnh đề kéo theo $P \\Rightarrow '
-                        'Q$, mệnh đề đảo và mệnh đề tương đương $P \\Leftrightarrow Q$.',
-                        'Sử dụng đúng kí hiệu với mọi ($\\forall$) và tồn tại ($\\exists$).'],
+                        'Đảo ngược vế của quy tắc: Tính được số trung bình ($\\bar{x}$), trung vị ($M_e$), '
+                        'tứ phân vị ($Q_1, Q_2, Q_3$) và mốt ($M_o$) của mẫu số liệu.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Tính được số trung bình '
+                        '($\\bar{x}$), trung vị ($M_e$), tứ phân vị ($Q_1, Q_2, Q_3$) và mốt ($M_o$) của mẫu '
+                        'số liệu.'],
             'answer': 1,
-            'solution': 'Theo yêu cầu cần đạt của Bài 13: Các số đặc trưng đo xu thế trung tâm: Tính được số '
-                        'trung bình ($\\bar{x}$), trung vị ($M_e$), tứ phân vị ($Q_1, Q_2, Q_3$) và mốt '
+            'solution': 'Theo nội dung cốt lõi của Bài 13: Các số đặc trưng đo xu thế trung tâm: Tính được '
+                        'số trung bình ($\\bar{x}$), trung vị ($M_e$), tứ phân vị ($Q_1, Q_2, Q_3$) và mốt '
                         '($M_o$) của mẫu số liệu.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -2315,41 +2388,42 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 13: Các số đặc trưng đo '
-                 'xu thế trung tâm**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Tính được số trung bình '
-                           '($\\bar{x}$), trung vị ($M_e$), tứ phân vị ($Q_1, Q_2, Q_3$) và mốt ($M_o$) của '
-                           'mẫu số liệu.',
-                           'Quy tắc/công thức **Số trung bình** trong bài được xác định bởi: $\\bar{x} = '
-                           '\\dfrac{x_1 + x_2 + \\dots + x_n}{n} = \\dfrac{m_1x_1 + \\dots + m_kx_k}{n}$.',
-                           'Trong mọi trường hợp, **Số trung bình** luôn được tính bằng công thức $P '
-                           '\\Rightarrow Q$ chỉ sai khi $P$ đúng, $Q$ sai (thuộc Mệnh đề kéo theo) mà không '
-                           'cần điều kiện của Bài 13: Các số đặc trưng đo xu thế trung tâm.',
-                           'Với bài toán minh họa: “Cho mẫu số liệu: $2, 5, 3, 8, 5, 10, 9$. Tìm số trung '
-                           'bình, trung vị, tứ phân vị và mốt của mẫu số liệu.”, lời giải đúng là: Sắp xếp '
-                           'mẫu theo thứ tự không giảm: $2, 3, 5, 5, 8, 9, 10$ ($n = 7$). - Số trung bình: '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 13: Các số đặc trưng đo xu '
+                 'thế trung tâm**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Tính được số trung bình ($\\bar{x}$), '
+                           'trung vị ($M_e$), tứ phân vị ($Q_1, Q_2, Q_3$) và mốt ($M_o$) của mẫu số liệu.',
+                           'Trong **Bài 13: Các số đặc trưng đo xu thế trung tâm**, quy tắc/công thức **Số '
+                           'trung bình** được viết là: $\\bar{x} = \\dfrac{x_1 + x_2 + \\dots + x_n}{n} = '
+                           '\\dfrac{m_1x_1 + \\dots + m_kx_k}{n}$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $\\bar{x} = \\dfrac{x_1 - x_2 + \\dots + '
+                           'x_n}{n} = \\dfrac{m_1x_1 + \\dots + m_kx_k}{n}$ thì kết quả của **Số trung '
+                           'bình** trong **Bài 13: Các số đặc trưng đo xu thế trung tâm** vẫn không thay '
+                           'đổi.',
+                           'Xét ví dụ của bài: “Cho mẫu số liệu: $2, 5, 3, 8, 5, 10, 9$. Tìm số trung bình, '
+                           'trung vị, tứ phân vị và mốt của mẫu số liệu.”, kết quả giải đúng là: Sắp xếp mẫu '
+                           'theo thứ tự không giảm: $2, 3, 5, 5, 8, 9, 10$ ($n = 7$). - Số trung bình: '
                            '$\\bar{x} = \\dfrac{2 + 3 + 5 + 5 + 8 + 9 + 10}{7} = 6$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 13: Các số đặc trưng đo xu thế trung tâm. '
-                        'b) **Đúng** theo công thức trọng tâm **Số trung bình** ($\\bar{x} = \\dfrac{x_1 + '
-                        'x_2 + \\dots + x_n}{n} = \\dfrac{m_1x_1 + \\dots + m_kx_k}{n}$). c) **Sai** vì $P '
-                        '\\Rightarrow Q$ chỉ sai khi $P$ đúng, $Q$ sai là công thức của nội dung khác, không '
-                        'phải quy tắc chung của **Số trung bình**. d) **Đúng** theo lời giải ví dụ minh họa '
-                        'trong bài học.'},
+                        'b) **Đúng** theo công thức **Số trung bình** ($\\bar{x} = \\dfrac{x_1 + x_2 + '
+                        '\\dots + x_n}{n} = \\dfrac{m_1x_1 + \\dots + m_kx_k}{n}$). c) **Sai** vì công thức '
+                        'đúng của **Số trung bình** phải là $\\bar{x} = \\dfrac{x_1 + x_2 + \\dots + x_n}{n} '
+                        '= \\dfrac{m_1x_1 + \\dots + m_kx_k}{n}$ chứ không phải $\\bar{x} = \\dfrac{x_1 - '
+                        'x_2 + \\dots + x_n}{n} = \\dfrac{m_1x_1 + \\dots + m_kx_k}{n}$. d) **Đúng** theo '
+                        'lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 13: Các số đặc trưng đo xu thế trung tâm** để giải quyết tình '
-                 'huống sau: Cho mẫu số liệu: $2, 5, 3, 8, 5, 10, 9$. Tìm số trung bình, trung vị, tứ phân '
-                 'vị và mốt của mẫu số liệu. Kết quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ["Mệnh đề phủ định là $\\overline{P}$: '$\\exists x \\in \\mathbb{R}, x^2 + 1 \\le "
-                        "0$'. Vì $x^2 \\ge 0 \\Rightarrow x^2 + 1 \\ge 1 > 0$ với mọi $x \\in \\mathbb{R}$ "
-                        'nê...',
-                        'Biểu diễn trên trục số, ta được: - $A \\cap B = (1; 3)$; - $A \\cup B = [-2; 5]$; - '
-                        '$A \\setminus B = [-2; 1]$.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 13: Các số đặc trưng đo xu thế trung tâm** để giải '
+                 'bài toán sau: Cho mẫu số liệu: $2, 5, 3, 8, 5, 10, 9$. Tìm số trung bình, trung vị, tứ '
+                 'phân vị và mốt của mẫu số liệu. Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Sắp xếp mẫu theo thứ tự không giảm: $2, 3, 5, 5, 8, 9, 10$ ($n = 7$). - Số trung '
+                        'bình: $\\bar{x} = \\dfrac{2 - 3 + 5 + 5 + 8 + 9 + 10}{7} = 6$. - Trung...',
                         'Sắp xếp mẫu theo thứ tự không giảm: $2, 3, 5, 5, 8, 9, 10$ ($n = 7$). - Số trung '
-                        'bình: $\\bar{x} = \\dfrac{2 + 3 + 5 + 5 + 8 + 9 + 10}{7} = 6$. - Trung vị (c...',
-                        'Thay $x = 1, y = 2$ vào vế trái của bất phương trình: $2(1) - 3(2) + 1 = 2 - 6 + 1 '
-                        '= -3 < 0$ (đúng). Vậy điểm $A(1; 2)$ thuộc miền nghiệm của bất phương tr...'],
+                        'bình: $\\bar{x} = \\dfrac{7}{2 + 3 + 5 + 5 + 8 + 9 + 10} = 6$. - Trung...',
+                        'Sắp xếp mẫu theo thứ tự không giảm: $2, 3, 5, 5, 8, 9, 10$ ($n = 7$). - Số trung '
+                        'bình: $\\bar{x} = \\dfrac{2 + 3 + 5 + 5 + 8 + 9 + 10}{7} = 6$. - Trung...',
+                        'Sắp xếp mẫu theo thứ tự không giảm: $4, 3, 5, 5, 8, 9, 10$ ($n = 7$). - Số trung '
+                        'bình: $\\bar{x} = \\dfrac{2 + 3 + 5 + 5 + 8 + 9 + 10}{7} = 6$. - Trung...'],
             'answer': 2,
             'solution': 'Lời giải chi tiết theo Bài 13: Các số đặc trưng đo xu thế trung tâm: Sắp xếp mẫu '
                         'theo thứ tự không giảm: $2, 3, 5, 5, 8, 9, 10$ ($n = 7$).\n'
@@ -2379,8 +2453,8 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
                    'và độ lệch chuẩn ($s$).',
                    'Sử dụng khoảng tứ phân vị để phát hiện giá trị bất thường (ngoại lệ) và giải thích ý '
                    'nghĩa của độ phân tán.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Khoảng biến thiên và Khoảng tứ phân vị** '
-                   '($R = x_{\\max} - x_{\\min}$; $\\Delta_Q = Q_3 - Q_1$) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 14: Các số đặc trưng đo độ phân tán** để giải bài tập minh '
+                   'họa và bài toán thực tiễn.'],
   'definition': 'Các số đặc trưng đo độ phân tán gồm: Khoảng biến thiên $R = x_{\\max} - x_{\\min}$, Khoảng '
                 'tứ phân vị $\\Delta_Q = Q_3 - Q_1$, Phương sai $s^2$ và Độ lệch chuẩn $s = \\sqrt{s^2}$.',
   'theory': '1. Phương sai mẫu: $s^2 = \\dfrac{1}{n}[(x_1 - \\bar{x})^2 + (x_2 - \\bar{x})^2 + \\dots + (x_n '
@@ -2426,30 +2500,30 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 14: Các số đặc trưng đo độ phân tán**, công thức hoặc '
-                 'quy tắc nào sau đây biểu diễn đúng **Khoảng biến thiên và Khoảng tứ phân vị**?',
-            'options': ['$s^2 = \\dfrac{1}{n}\\sum_{i=1}^n (x_i - \\bar{x})^2$; $s = \\sqrt{s^2}$',
-                        '$P \\Rightarrow Q$ chỉ sai khi $P$ đúng, $Q$ sai',
-                        '$P \\Leftrightarrow Q$ đúng khi $P, Q$ cùng tính đúng sai',
+            'q': 'Trong **Bài 14: Các số đặc trưng đo độ phân tán**, quy tắc hoặc công thức nào sau đây xác '
+                 'định đúng **Khoảng biến thiên và Khoảng tứ phân vị**?',
+            'options': ['$R = x_{\\max} + x_{\\min}$; $\\Delta_Q = Q_3 - Q_1$',
+                        'Đảo ngược vế của quy tắc: $R = x_{\\max} - x_{\\min}$; $\\Delta_Q = Q_3 - Q_1$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $R = x_{\\max} - x_{\\min}$; '
+                        '$\\Delta_Q = Q_3 - Q_1$',
                         '$R = x_{\\max} - x_{\\min}$; $\\Delta_Q = Q_3 - Q_1$'],
             'answer': 3,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 14: Các số đặc trưng đo độ phân tán, **Khoảng '
-                        'biến thiên và Khoảng tứ phân vị** được xác định bởi: $R = x_{\\max} - x_{\\min}$; '
+            'solution': 'Theo kiến thức trọng tâm của Bài 14: Các số đặc trưng đo độ phân tán, **Khoảng biến '
+                        'thiên và Khoảng tứ phân vị** được xác định bởi: $R = x_{\\max} - x_{\\min}$; '
                         '$\\Delta_Q = Q_3 - Q_1$. (Giá trị bất thường: $x < Q_1 - 1,5\\Delta_Q$ hoặc $x > '
                         'Q_3 + 1,5\\Delta_Q$)'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 14: Các số đặc trưng đo độ phân tán**, nội dung/biểu thức $s^2 = '
-                 '\\dfrac{1}{n}\\sum_{i=1}^n (x_i - \\bar{x})^2$; $s = \\sqrt{s^2}$ là quy tắc hoặc công '
-                 'thức của mục nào sau đây?',
-            'options': ['Phương sai và Độ lệch chuẩn',
-                        'Khoảng biến thiên và Khoảng tứ phân vị',
-                        'Mệnh đề kéo theo',
-                        'Mệnh đề tương đương'],
+            'q': 'Khi học **Bài 14: Các số đặc trưng đo độ phân tán**, biểu thức hoặc quy tắc nào dưới đây '
+                 'biểu diễn đúng **Phương sai và Độ lệch chuẩn**?',
+            'options': ['$s^2 = \\dfrac{1}{n}\\sum_{i=1}^n (x_i - \\bar{x})^2$; $s = \\sqrt{s^2}$',
+                        '$s^2 = \\dfrac{1}{n}\\sum_{i=1}^n (x_i + \\bar{x})^2$; $s = \\sqrt{s^2}$',
+                        '$s^2 = \\dfrac{n}{1}\\sum_{i=1}^n (x_i - \\bar{x})^2$; $s = \\sqrt{s^2}$',
+                        '$s^4 = \\dfrac{1}{n}\\sum_{i=1}^n (x_i - \\bar{x})^2$; $s = \\sqrt{s^2}$'],
             'answer': 0,
-            'solution': 'Trong Bài 14: Các số đặc trưng đo độ phân tán, biểu thức/quy tắc $s^2 = '
-                        '\\dfrac{1}{n}\\sum_{i=1}^n (x_i - \\bar{x})^2$; $s = \\sqrt{s^2}$ chính là nội dung '
-                        'của **Phương sai và Độ lệch chuẩn**.'},
+            'solution': 'Trong Bài 14: Các số đặc trưng đo độ phân tán, **Phương sai và Độ lệch chuẩn** có '
+                        'công thức/quy tắc là: $s^2 = \\dfrac{1}{n}\\sum_{i=1}^n (x_i - \\bar{x})^2$; $s = '
+                        '\\sqrt{s^2}$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Một mẫu số liệu có tứ phân vị thứ nhất $Q_1 = 15$ và tứ phân vị thứ ba $Q_3 = 23$. Khoảng '
@@ -2461,18 +2535,18 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 14: Các số đặc trưng đo độ phân tán** (Chương V: Các số đặc trưng của mẫu số '
-                 'liệu không ghép nhóm), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản '
-                 'chất kiến thức của bài?',
-            'options': ['Nhận biết được mệnh đề toán học, mệnh đề chứa biến và xác định tính đúng sai của '
-                        'một mệnh đề.',
-                        'Thiết lập được mệnh đề phủ định $\\overline{P}$, mệnh đề kéo theo $P \\Rightarrow '
-                        'Q$, mệnh đề đảo và mệnh đề tương đương $P \\Leftrightarrow Q$.',
+            'q': 'Để nắm vững bản chất của **Bài 14: Các số đặc trưng đo độ phân tán**, nhận định nào sau '
+                 'đây là **chính xác**?',
+            'options': ['Tính được khoảng biến thiên ($R$), khoảng tứ phân vị ($\\Delta_Q$), phương sai '
+                        '($s^3$) và độ lệch chuẩn ($s$).',
+                        'Tính được khoảng biến thiên ($R$), khoảng tứ phân vị ($\\Delta_Q$), phương sai '
+                        '($s^1$) và độ lệch chuẩn ($s$).',
                         'Tính được khoảng biến thiên ($R$), khoảng tứ phân vị ($\\Delta_Q$), phương sai '
                         '($s^2$) và độ lệch chuẩn ($s$).',
-                        'Sử dụng đúng kí hiệu với mọi ($\\forall$) và tồn tại ($\\exists$).'],
+                        'Tính được khoảng biến thiên ($R$), khoảng tứ phân vị ($\\Delta_Q$), phương sai '
+                        '($s^4$) và độ lệch chuẩn ($s$).'],
             'answer': 2,
-            'solution': 'Theo yêu cầu cần đạt của Bài 14: Các số đặc trưng đo độ phân tán: Tính được khoảng '
+            'solution': 'Theo nội dung cốt lõi của Bài 14: Các số đặc trưng đo độ phân tán: Tính được khoảng '
                         'biến thiên ($R$), khoảng tứ phân vị ($\\Delta_Q$), phương sai ($s^2$) và độ lệch '
                         'chuẩn ($s$).'},
            {'level': 'hieu',
@@ -2491,38 +2565,38 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 14: Các số đặc trưng đo '
-                 'độ phân tán**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Tính được khoảng biến thiên ($R$), '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 14: Các số đặc trưng đo độ '
+                 'phân tán**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Tính được khoảng biến thiên ($R$), '
                            'khoảng tứ phân vị ($\\Delta_Q$), phương sai ($s^2$) và độ lệch chuẩn ($s$).',
-                           'Quy tắc/công thức **Khoảng biến thiên và Khoảng tứ phân vị** trong bài được xác '
-                           'định bởi: $R = x_{\\max} - x_{\\min}$; $\\Delta_Q = Q_3 - Q_1$.',
-                           'Trong mọi trường hợp, **Khoảng biến thiên và Khoảng tứ phân vị** luôn được tính '
-                           'bằng công thức $P \\Rightarrow Q$ chỉ sai khi $P$ đúng, $Q$ sai (thuộc Mệnh đề '
-                           'kéo theo) mà không cần điều kiện của Bài 14: Các số đặc trưng đo độ phân tán.',
-                           'Với bài toán minh họa: “Tính khoảng biến thiên, phương sai và độ lệch chuẩn của '
-                           'mẫu số liệu: $2; 4; 6; 8; 10$.”, lời giải đúng là: - Khoảng biến thiên: $R = 10 '
+                           'Trong **Bài 14: Các số đặc trưng đo độ phân tán**, quy tắc/công thức **Khoảng '
+                           'biến thiên và Khoảng tứ phân vị** được viết là: $R = x_{\\max} - x_{\\min}$; '
+                           '$\\Delta_Q = Q_3 - Q_1$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $R = x_{\\max} + x_{\\min}$; $\\Delta_Q = '
+                           'Q_3 - Q_1$ thì kết quả của **Khoảng biến thiên và Khoảng tứ phân vị** trong '
+                           '**Bài 14: Các số đặc trưng đo độ phân tán** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Tính khoảng biến thiên, phương sai và độ lệch chuẩn của mẫu '
+                           'số liệu: $2; 4; 6; 8; 10$.”, kết quả giải đúng là: - Khoảng biến thiên: $R = 10 '
                            '- 2 = 8$. - Số trung bình: $\\bar{x} = \\dfrac{2 + 4 + 6 + 8 + 10}{5} = 6$. - '
                            'Phương sai...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 14: Các số đặc trưng đo độ phân tán. b) '
-                        '**Đúng** theo công thức trọng tâm **Khoảng biến thiên và Khoảng tứ phân vị** ($R = '
-                        'x_{\\max} - x_{\\min}$; $\\Delta_Q = Q_3 - Q_1$). c) **Sai** vì $P \\Rightarrow Q$ '
-                        'chỉ sai khi $P$ đúng, $Q$ sai là công thức của nội dung khác, không phải quy tắc '
-                        'chung của **Khoảng biến thiên và Khoảng tứ phân vị**. d) **Đúng** theo lời giải ví '
-                        'dụ minh họa trong bài học.'},
+                        '**Đúng** theo công thức **Khoảng biến thiên và Khoảng tứ phân vị** ($R = x_{\\max} '
+                        '- x_{\\min}$; $\\Delta_Q = Q_3 - Q_1$). c) **Sai** vì công thức đúng của **Khoảng '
+                        'biến thiên và Khoảng tứ phân vị** phải là $R = x_{\\max} - x_{\\min}$; $\\Delta_Q = '
+                        'Q_3 - Q_1$ chứ không phải $R = x_{\\max} + x_{\\min}$; $\\Delta_Q = Q_3 - Q_1$. d) '
+                        '**Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 14: Các số đặc trưng đo độ phân tán** để giải quyết tình huống '
-                 'sau: Tính khoảng biến thiên, phương sai và độ lệch chuẩn của mẫu số liệu: $2; 4; 6; 8; '
-                 '10$. Kết quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ["Mệnh đề phủ định là $\\overline{P}$: '$\\exists x \\in \\mathbb{R}, x^2 + 1 \\le "
-                        "0$'. Vì $x^2 \\ge 0 \\Rightarrow x^2 + 1 \\ge 1 > 0$ với mọi $x \\in \\mathbb{R}$ "
-                        'nê...',
-                        'Biểu diễn trên trục số, ta được: - $A \\cap B = (1; 3)$; - $A \\cup B = [-2; 5]$; - '
-                        '$A \\setminus B = [-2; 1]$.',
-                        'Thay $x = 1, y = 2$ vào vế trái của bất phương trình: $2(1) - 3(2) + 1 = 2 - 6 + 1 '
-                        '= -3 < 0$ (đúng). Vậy điểm $A(1; 2)$ thuộc miền nghiệm của bất phương tr...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 14: Các số đặc trưng đo độ phân tán** để giải bài '
+                 'toán sau: Tính khoảng biến thiên, phương sai và độ lệch chuẩn của mẫu số liệu: $2; 4; 6; '
+                 '8; 10$. Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['- Khoảng biến thiên: $R = 10 - 2 = 8$. - Số trung bình: $\\bar{x} = \\dfrac{2 - 4 + '
+                        '6 + 8 + 10}{5} = 6$. - Phương sai...',
+                        '- Khoảng biến thiên: $R = 10 - 2 = 8$. - Số trung bình: $\\bar{x} = \\dfrac{5}{2 + '
+                        '4 + 6 + 8 + 10} = 6$. - Phương sai...',
+                        '- Khoảng biến thiên: $R = 20 - 2 = 8$. - Số trung bình: $\\bar{x} = \\dfrac{2 + 4 + '
+                        '6 + 8 + 10}{5} = 6$. - Phương sai...',
                         '- Khoảng biến thiên: $R = 10 - 2 = 8$. - Số trung bình: $\\bar{x} = \\dfrac{2 + 4 + '
                         '6 + 8 + 10}{5} = 6$. - Phương sai...'],
             'answer': 3,
@@ -2553,8 +2627,8 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
                    'tập giá trị của hàm số.',
                    'Xét được sự biến thiên (đồng biến, nghịch biến) của hàm số trên một khoảng thông qua '
                    'công thức hoặc đồ thị.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Điều kiện có nghĩa** ($\\dfrac{1}{B(x)} '
-                   '\\Rightarrow B(x) \\neq 0$; $\\sqrt{A(x)} \\Rightarrow A(x) \\ge 0$) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 15: Hàm số** để giải bài tập minh họa và bài toán thực '
+                   'tiễn.'],
   'definition': 'Nếu với mỗi giá trị của $x$ thuộc tập hợp số $D$ có một và chỉ một giá trị tương ứng của '
                 '$y$ thuộc $\\mathbb{R}$ thì ta có một hàm số. $x$ gọi là biến số, $y$ gọi là hàm số của '
                 '$x$, $D$ gọi là tập xác định của hàm số.',
@@ -2605,31 +2679,37 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 15: Hàm số**, công thức hoặc quy tắc nào sau đây biểu '
-                 'diễn đúng **Điều kiện có nghĩa**?',
+            'q': 'Trong **Bài 15: Hàm số**, quy tắc hoặc công thức nào sau đây xác định đúng **Điều kiện có '
+                 'nghĩa**?',
             'options': ['$\\dfrac{1}{B(x)} \\Rightarrow B(x) \\neq 0$; $\\sqrt{A(x)} \\Rightarrow A(x) \\ge '
                         '0$',
-                        'Đồng biến: $x_1 < x_2 \\Rightarrow f(x_1) < f(x_2)$; Nghịch biến: $x_1 < x_2 '
-                        '\\Rightarrow f(x_1) > f(x_2)$',
-                        '$P \\Rightarrow Q$ chỉ sai khi $P$ đúng, $Q$ sai',
-                        '$P \\Leftrightarrow Q$ đúng khi $P, Q$ cùng tính đúng sai'],
+                        '$\\dfrac{1}{B(x)} \\Rightarrow B(x) \\neq 0$; $\\sqrt{A(x)} \\Rightarrow A(x) \\le '
+                        '0$',
+                        '$\\dfrac{B(x)}{1} \\Rightarrow B(x) \\neq 0$; $\\sqrt{A(x)} \\Rightarrow A(x) \\ge '
+                        '0$',
+                        '$\\dfrac{2}{B(x)} \\Rightarrow B(x) \\neq 0$; $\\sqrt{A(x)} \\Rightarrow A(x) \\ge '
+                        '0$'],
             'answer': 0,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 15: Hàm số, **Điều kiện có nghĩa** được xác '
-                        'định bởi: $\\dfrac{1}{B(x)} \\Rightarrow B(x) \\neq 0$; $\\sqrt{A(x)} \\Rightarrow '
-                        'A(x) \\ge 0$. ($\\dfrac{1}{\\sqrt{A(x)}} \\Rightarrow A(x) > 0$)'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 15: Hàm số, **Điều kiện có nghĩa** được xác định '
+                        'bởi: $\\dfrac{1}{B(x)} \\Rightarrow B(x) \\neq 0$; $\\sqrt{A(x)} \\Rightarrow A(x) '
+                        '\\ge 0$. ($\\dfrac{1}{\\sqrt{A(x)}} \\Rightarrow A(x) > 0$)'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 15: Hàm số**, nội dung/biểu thức Đồng biến: $x_1 < x_2 \\Rightarrow f(x_1) < '
-                 'f(x_2)$; Nghịch biến: $x_1 < x_2 \\Rightarrow f(x_1) > f(x_2)$ là quy tắc hoặc công thức '
-                 'của mục nào sau đây?',
-            'options': ['Điều kiện có nghĩa',
-                        'Đồng biến và Nghịch biến',
-                        'Mệnh đề kéo theo',
-                        'Mệnh đề tương đương'],
+            'q': 'Khi học **Bài 15: Hàm số**, biểu thức hoặc quy tắc nào dưới đây biểu diễn đúng **Đồng biến '
+                 'và Nghịch biến**?',
+            'options': ['Đồng biến: $x_1 < x_2 \\Rightarrow f(x_1) < f(x_2)$; Nghịch biến: $x_1 < x_2 '
+                        '\\Rightarrow f(x_1) < f(x_2)$',
+                        'Đồng biến: $x_1 < x_2 \\Rightarrow f(x_1) < f(x_2)$; Nghịch biến: $x_1 < x_2 '
+                        '\\Rightarrow f(x_1) > f(x_2)$',
+                        'Đảo ngược vế của quy tắc: Đồng biến: $x_1 < x_2 \\Rightarrow f(x_1) < f(x_2)$; '
+                        'Nghịch biến: $x_1 < x_2 \\Rightarrow f(x_1) > f(x_2)$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Đồng biến: $x_1 < x_2 '
+                        '\\Rightarrow f(x_1) < f(x_2)$; Nghịch biến: $x_1 < x_2 \\Rightarrow f(x_1) > '
+                        'f(x_2)$'],
             'answer': 1,
-            'solution': 'Trong Bài 15: Hàm số, biểu thức/quy tắc Đồng biến: $x_1 < x_2 \\Rightarrow f(x_1) < '
-                        'f(x_2)$; Nghịch biến: $x_1 < x_2 \\Rightarrow f(x_1) > f(x_2)$ chính là nội dung '
-                        'của **Đồng biến và Nghịch biến**.'},
+            'solution': 'Trong Bài 15: Hàm số, **Đồng biến và Nghịch biến** có công thức/quy tắc là: Đồng '
+                        'biến: $x_1 < x_2 \\Rightarrow f(x_1) < f(x_2)$; Nghịch biến: $x_1 < x_2 '
+                        '\\Rightarrow f(x_1) > f(x_2)$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Hàm số bậc nhất nào sau đây nghịch biến trên $\\mathbb{R}$?',
@@ -2641,17 +2721,17 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 15: Hàm số** (Chương VI: Hàm số, đồ thị và ứng dụng), khẳng định nào sau đây '
-                 'phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Nhận biết được mệnh đề toán học, mệnh đề chứa biến và xác định tính đúng sai của '
-                        'một mệnh đề.',
-                        'Thiết lập được mệnh đề phủ định $\\overline{P}$, mệnh đề kéo theo $P \\Rightarrow '
-                        'Q$, mệnh đề đảo và mệnh đề tương đương $P \\Leftrightarrow Q$.',
-                        'Sử dụng đúng kí hiệu với mọi ($\\forall$) và tồn tại ($\\exists$).',
+            'q': 'Để nắm vững bản chất của **Bài 15: Hàm số**, nhận định nào sau đây là **chính xác**?',
+            'options': ['Nhận biết được hàm số cho bằng bảng, biểu đồ hoặc công thức; tìm được tập xác định '
+                        'và tập giá trị của hàm số. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Nhận biết được hàm số cho bằng bảng, biểu đồ hoặc công '
+                        'thức; tìm được tập xác định và tập giá trị của hàm số.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nhận biết được hàm số cho bằng '
+                        'bảng, biểu đồ hoặc công thức; tìm được tập xác định và tập giá trị của hàm số.',
                         'Nhận biết được hàm số cho bằng bảng, biểu đồ hoặc công thức; tìm được tập xác định '
                         'và tập giá trị của hàm số.'],
             'answer': 3,
-            'solution': 'Theo yêu cầu cần đạt của Bài 15: Hàm số: Nhận biết được hàm số cho bằng bảng, biểu '
+            'solution': 'Theo nội dung cốt lõi của Bài 15: Hàm số: Nhận biết được hàm số cho bằng bảng, biểu '
                         'đồ hoặc công thức; tìm được tập xác định và tập giá trị của hàm số.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -2668,40 +2748,40 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 15: Hàm số**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được hàm số cho bằng '
-                           'bảng, biểu đồ hoặc công thức; tìm được tập xác định và tập giá trị của hàm số.',
-                           'Quy tắc/công thức **Điều kiện có nghĩa** trong bài được xác định bởi: '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 15: Hàm số**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết được hàm số cho bằng bảng, '
+                           'biểu đồ hoặc công thức; tìm được tập xác định và tập giá trị của hàm số.',
+                           'Trong **Bài 15: Hàm số**, quy tắc/công thức **Điều kiện có nghĩa** được viết là: '
                            '$\\dfrac{1}{B(x)} \\Rightarrow B(x) \\neq 0$; $\\sqrt{A(x)} \\Rightarrow A(x) '
                            '\\ge 0$.',
-                           'Trong mọi trường hợp, **Điều kiện có nghĩa** luôn được tính bằng công thức $P '
-                           '\\Rightarrow Q$ chỉ sai khi $P$ đúng, $Q$ sai (thuộc Mệnh đề kéo theo) mà không '
-                           'cần điều kiện của Bài 15: Hàm số.',
-                           'Với bài toán minh họa: “Tìm tập xác định của hàm số $y = \\sqrt{x - 1} + '
-                           '\\dfrac{2}{x - 3}$.”, lời giải đúng là: Biểu thức có nghĩa khi $\\begin{cases} x '
-                           '- 1 \\ge 0 \\\\ x - 3 \\neq 0 \\end{cases} \\Leftrightarrow \\begin{cases} x '
-                           '\\ge 1 \\\\ x \\neq 3 \\end{cases}$...'],
+                           'Nếu áp dụng sai dấu/phép tính thành $\\dfrac{1}{B(x)} \\Rightarrow B(x) \\neq '
+                           '0$; $\\sqrt{A(x)} \\Rightarrow A(x) \\le 0$ thì kết quả của **Điều kiện có '
+                           'nghĩa** trong **Bài 15: Hàm số** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Tìm tập xác định của hàm số $y = \\sqrt{x - 1} + '
+                           '\\dfrac{2}{x - 3}$.”, kết quả giải đúng là: Biểu thức có nghĩa khi '
+                           '$\\begin{cases} x - 1 \\ge 0 \\\\ x - 3 \\neq 0 \\end{cases} \\Leftrightarrow '
+                           '\\begin{cases} x \\ge 1 \\\\ x \\neq 3 \\end{cases}$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 15: Hàm số. b) **Đúng** theo công thức '
-                        'trọng tâm **Điều kiện có nghĩa** ($\\dfrac{1}{B(x)} \\Rightarrow B(x) \\neq 0$; '
-                        '$\\sqrt{A(x)} \\Rightarrow A(x) \\ge 0$). c) **Sai** vì $P \\Rightarrow Q$ chỉ sai '
-                        'khi $P$ đúng, $Q$ sai là công thức của nội dung khác, không phải quy tắc chung của '
-                        '**Điều kiện có nghĩa**. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        '**Điều kiện có nghĩa** ($\\dfrac{1}{B(x)} \\Rightarrow B(x) \\neq 0$; $\\sqrt{A(x)} '
+                        '\\Rightarrow A(x) \\ge 0$). c) **Sai** vì công thức đúng của **Điều kiện có nghĩa** '
+                        'phải là $\\dfrac{1}{B(x)} \\Rightarrow B(x) \\neq 0$; $\\sqrt{A(x)} \\Rightarrow '
+                        'A(x) \\ge 0$ chứ không phải $\\dfrac{1}{B(x)} \\Rightarrow B(x) \\neq 0$; '
+                        '$\\sqrt{A(x)} \\Rightarrow A(x) \\le 0$. d) **Đúng** theo lời giải ví dụ minh họa '
+                        'trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 15: Hàm số** để giải quyết tình huống sau: Tìm tập xác định của '
-                 'hàm số $y = \\sqrt{x - 1} + \\dfrac{2}{x - 3}$. Kết quả và hướng giải nào dưới đây là '
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 15: Hàm số** để giải bài toán sau: Tìm tập xác định '
+                 'của hàm số $y = \\sqrt{x - 1} + \\dfrac{2}{x - 3}$. Cách giải và kết quả nào dưới đây là '
                  '**đúng**?',
             'options': ['Biểu thức có nghĩa khi $\\begin{cases} x - 1 \\ge 0 \\\\ x - 3 \\neq 0 \\end{cases} '
-                        '\\Leftrightarrow \\begin{cases} x \\ge 1 \\\\ x \\neq 3 \\end{cases}$. Vậy tập xác '
-                        'đ...',
-                        "Mệnh đề phủ định là $\\overline{P}$: '$\\exists x \\in \\mathbb{R}, x^2 + 1 \\le "
-                        "0$'. Vì $x^2 \\ge 0 \\Rightarrow x^2 + 1 \\ge 1 > 0$ với mọi $x \\in \\mathbb{R}$ "
-                        'nê...',
-                        'Biểu diễn trên trục số, ta được: - $A \\cap B = (1; 3)$; - $A \\cup B = [-2; 5]$; - '
-                        '$A \\setminus B = [-2; 1]$.',
-                        'Thay $x = 1, y = 2$ vào vế trái của bất phương trình: $2(1) - 3(2) + 1 = 2 - 6 + 1 '
-                        '= -3 < 0$ (đúng). Vậy điểm $A(1; 2)$ thuộc miền nghiệm của bất phương tr...'],
+                        '\\Leftrightarrow \\begin{cases} x \\ge 1 \\\\ x \\neq 3 \\end{cases}$. Vậy tập...',
+                        'Biểu thức có nghĩa khi $\\begin{cases} x - 1 \\le 0 \\\\ x - 3 \\neq 0 \\end{cases} '
+                        '\\Leftrightarrow \\begin{cases} x \\ge 1 \\\\ x \\neq 3 \\end{cases}$. Vậy tập...',
+                        'Biểu thức có nghĩa khi $\\begin{cases} x - 1 \\ge 0 \\\\ x - 3 \\neq 0 \\end{cases} '
+                        '\\Leftrightarrow \\begin{cases} x \\ge 1 \\\\ x \\neq 2 \\end{cases}$. Vậy tập...',
+                        'Biểu thức có nghĩa khi $\\begin{cases} x - 2 \\ge 0 \\\\ x - 3 \\neq 0 \\end{cases} '
+                        '\\Leftrightarrow \\begin{cases} x \\ge 1 \\\\ x \\neq 3 \\end{cases}$. Vậy tập...'],
             'answer': 0,
             'solution': 'Lời giải chi tiết theo Bài 15: Hàm số: Biểu thức có nghĩa khi $\\begin{cases} x - 1 '
                         '\\ge 0 \\\\ x - 3 \\neq 0 \\end{cases} \\Leftrightarrow \\begin{cases} x \\ge 1 '
@@ -2727,8 +2807,8 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
                    '$y = ax^2 + bx + c$ ($a \\neq 0$).',
                    'Vẽ được đồ thị parabol và vận dụng hàm số bậc hai để giải các bài toán thực tế về cực '
                    'trị.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Tọa độ đỉnh $I$** ($x_I = -\\dfrac{b}{2a}$; '
-                   '$y_I = f(x_I) = -\\dfrac{\\Delta}{4a}$) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 16: Hàm số bậc hai** để giải bài tập minh họa và bài toán '
+                   'thực tiễn.'],
   'definition': 'Hàm số bậc hai là hàm số cho bởi công thức $y = ax^2 + bx + c$, trong đó $x$ là biến số, '
                 '$a, b, c$ là các hằng số và $a \\neq 0$. Tập xác định của hàm số bậc hai là $\\mathbb{R}$.',
   'theory': 'Đồ thị hàm số $y = ax^2 + bx + c$ ($a \\neq 0$) là một đường parabol:\n'
@@ -2775,30 +2855,33 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 16: Hàm số bậc hai**, công thức hoặc quy tắc nào sau đây '
-                 'biểu diễn đúng **Tọa độ đỉnh $I$**?',
-            'options': ['$a > 0 \\Rightarrow \\min_{\\mathbb{R}} y = y_I$; $a < 0 \\Rightarrow '
-                        '\\max_{\\mathbb{R}} y = y_I$',
+            'q': 'Trong **Bài 16: Hàm số bậc hai**, quy tắc hoặc công thức nào sau đây xác định đúng **Tọa '
+                 'độ đỉnh $I$**?',
+            'options': ['$x_I = -\\dfrac{b}{2a}$; $y_I = f(x_I) = -\\dfrac{\\Delta}{4a}$ (với dấu ngược lại)',
                         '$x_I = -\\dfrac{b}{2a}$; $y_I = f(x_I) = -\\dfrac{\\Delta}{4a}$',
-                        '$P \\Rightarrow Q$ chỉ sai khi $P$ đúng, $Q$ sai',
-                        '$P \\Leftrightarrow Q$ đúng khi $P, Q$ cùng tính đúng sai'],
+                        '$x_I = -\\dfrac{2a}{b}$; $y_I = f(x_I) = -\\dfrac{\\Delta}{4a}$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $x_I = -\\dfrac{b}{2a}$; $y_I = '
+                        'f(x_I) = -\\dfrac{\\Delta}{4a}$'],
             'answer': 1,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 16: Hàm số bậc hai, **Tọa độ đỉnh $I$** được '
-                        'xác định bởi: $x_I = -\\dfrac{b}{2a}$; $y_I = f(x_I) = -\\dfrac{\\Delta}{4a}$. '
-                        '(Trục đối xứng là đường thẳng $x = -\\dfrac{b}{2a}$)'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 16: Hàm số bậc hai, **Tọa độ đỉnh $I$** được xác '
+                        'định bởi: $x_I = -\\dfrac{b}{2a}$; $y_I = f(x_I) = -\\dfrac{\\Delta}{4a}$. (Trục '
+                        'đối xứng là đường thẳng $x = -\\dfrac{b}{2a}$)'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 16: Hàm số bậc hai**, nội dung/biểu thức $a > 0 \\Rightarrow '
-                 '\\min_{\\mathbb{R}} y = y_I$; $a < 0 \\Rightarrow \\max_{\\mathbb{R}} y = y_I$ là quy tắc '
-                 'hoặc công thức của mục nào sau đây?',
-            'options': ['Tọa độ đỉnh $I$',
-                        'Mệnh đề kéo theo',
-                        'Cực trị trên $\\mathbb{R}$',
-                        'Mệnh đề tương đương'],
+            'q': 'Khi học **Bài 16: Hàm số bậc hai**, biểu thức hoặc quy tắc nào dưới đây biểu diễn đúng '
+                 '**Cực trị trên $\\mathbb{R}$**?',
+            'options': ['$a < 0 \\Rightarrow \\min_{\\mathbb{R}} y = y_I$; $a < 0 \\Rightarrow '
+                        '\\max_{\\mathbb{R}} y = y_I$',
+                        '$a > 0 \\Rightarrow \\min_{\\mathbb{R}} y = y_I$; $a < 1 \\Rightarrow '
+                        '\\max_{\\mathbb{R}} y = y_I$',
+                        '$a > 0 \\Rightarrow \\min_{\\mathbb{R}} y = y_I$; $a < 0 \\Rightarrow '
+                        '\\max_{\\mathbb{R}} y = y_I$',
+                        '$a > 2 \\Rightarrow \\min_{\\mathbb{R}} y = y_I$; $a < 0 \\Rightarrow '
+                        '\\max_{\\mathbb{R}} y = y_I$'],
             'answer': 2,
-            'solution': 'Trong Bài 16: Hàm số bậc hai, biểu thức/quy tắc $a > 0 \\Rightarrow '
-                        '\\min_{\\mathbb{R}} y = y_I$; $a < 0 \\Rightarrow \\max_{\\mathbb{R}} y = y_I$ '
-                        'chính là nội dung của **Cực trị trên $\\mathbb{R}$**.'},
+            'solution': 'Trong Bài 16: Hàm số bậc hai, **Cực trị trên $\\mathbb{R}$** có công thức/quy tắc '
+                        'là: $a > 0 \\Rightarrow \\min_{\\mathbb{R}} y = y_I$; $a < 0 \\Rightarrow '
+                        '\\max_{\\mathbb{R}} y = y_I$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Hàm số $y = 2x^2 - 4x + 1$ đồng biến trên khoảng nào sau đây?',
@@ -2810,17 +2893,18 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 16: Hàm số bậc hai** (Chương VI: Hàm số, đồ thị và ứng dụng), khẳng định nào '
-                 'sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
+            'q': 'Để nắm vững bản chất của **Bài 16: Hàm số bậc hai**, nhận định nào sau đây là **chính '
+                 'xác**?',
             'options': ['Xác định được tọa độ đỉnh $I$, trục đối xứng và lập bảng biến thiên của hàm số bậc '
                         'hai $y = ax^2 + bx + c$ ($a \\neq 0$).',
-                        'Nhận biết được mệnh đề toán học, mệnh đề chứa biến và xác định tính đúng sai của '
-                        'một mệnh đề.',
-                        'Thiết lập được mệnh đề phủ định $\\overline{P}$, mệnh đề kéo theo $P \\Rightarrow '
-                        'Q$, mệnh đề đảo và mệnh đề tương đương $P \\Leftrightarrow Q$.',
-                        'Sử dụng đúng kí hiệu với mọi ($\\forall$) và tồn tại ($\\exists$).'],
+                        'Xác định được tọa độ đỉnh $I$, trục đối xứng và lập bảng biến thiên của hàm số bậc '
+                        'hai $y = ax^2 - bx + c$ ($a \\neq 0$).',
+                        'Xác định được tọa độ đỉnh $I$, trục đối xứng và lập bảng biến thiên của hàm số bậc '
+                        'hai $y = ax^2 + bx + c$ ($a \\neq 1$).',
+                        'Xác định được tọa độ đỉnh $I$, trục đối xứng và lập bảng biến thiên của hàm số bậc '
+                        'hai $y = ax^4 + bx + c$ ($a \\neq 0$).'],
             'answer': 0,
-            'solution': 'Theo yêu cầu cần đạt của Bài 16: Hàm số bậc hai: Xác định được tọa độ đỉnh $I$, '
+            'solution': 'Theo nội dung cốt lõi của Bài 16: Hàm số bậc hai: Xác định được tọa độ đỉnh $I$, '
                         'trục đối xứng và lập bảng biến thiên của hàm số bậc hai $y = ax^2 + bx + c$ ($a '
                         '\\neq 0$).'},
            {'level': 'hieu',
@@ -2838,39 +2922,39 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 16: Hàm số bậc hai**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Xác định được tọa độ đỉnh $I$, '
-                           'trục đối xứng và lập bảng biến thiên của hàm số bậc hai $y = ax^2 + bx + c$ ($a '
-                           '\\neq 0$).',
-                           'Quy tắc/công thức **Tọa độ đỉnh $I$** trong bài được xác định bởi: $x_I = '
-                           '-\\dfrac{b}{2a}$; $y_I = f(x_I) = -\\dfrac{\\Delta}{4a}$.',
-                           'Trong mọi trường hợp, **Tọa độ đỉnh $I$** luôn được tính bằng công thức $P '
-                           '\\Rightarrow Q$ chỉ sai khi $P$ đúng, $Q$ sai (thuộc Mệnh đề kéo theo) mà không '
-                           'cần điều kiện của Bài 16: Hàm số bậc hai.',
-                           'Với bài toán minh họa: “Xác định tọa độ đỉnh, trục đối xứng và các khoảng đồng '
-                           'biến, nghịch biến của hàm số $y = x^2 - 4x + 3$.”, lời giải đúng là: Ta có $a = '
-                           '1 > 0, b = -4, c = 3$. Hoành độ đỉnh $x_I = -\\dfrac{-4}{2 \\cdot 1} = 2 '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 16: Hàm số bậc hai**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Xác định được tọa độ đỉnh $I$, trục đối '
+                           'xứng và lập bảng biến thiên của hàm số bậc hai $y = ax^2 + bx + c$ ($a \\neq '
+                           '0$).',
+                           'Trong **Bài 16: Hàm số bậc hai**, quy tắc/công thức **Tọa độ đỉnh $I$** được '
+                           'viết là: $x_I = -\\dfrac{b}{2a}$; $y_I = f(x_I) = -\\dfrac{\\Delta}{4a}$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $x_I = -\\dfrac{b}{2a}$; $y_I = f(x_I) = '
+                           '-\\dfrac{\\Delta}{4a}$ (với dấu ngược lại) thì kết quả của **Tọa độ đỉnh $I$** '
+                           'trong **Bài 16: Hàm số bậc hai** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Xác định tọa độ đỉnh, trục đối xứng và các khoảng đồng biến, '
+                           'nghịch biến của hàm số $y = x^2 - 4x + 3$.”, kết quả giải đúng là: Ta có $a = 1 '
+                           '> 0, b = -4, c = 3$. Hoành độ đỉnh $x_I = -\\dfrac{-4}{2 \\cdot 1} = 2 '
                            '\\Rightarrow y_I = 2^2 - 4(2) + 3 = -1$. - Đỉnh $I(2; -1)$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 16: Hàm số bậc hai. b) **Đúng** theo công '
-                        'thức trọng tâm **Tọa độ đỉnh $I$** ($x_I = -\\dfrac{b}{2a}$; $y_I = f(x_I) = '
-                        '-\\dfrac{\\Delta}{4a}$). c) **Sai** vì $P \\Rightarrow Q$ chỉ sai khi $P$ đúng, $Q$ '
-                        'sai là công thức của nội dung khác, không phải quy tắc chung của **Tọa độ đỉnh '
-                        '$I$**. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        'thức **Tọa độ đỉnh $I$** ($x_I = -\\dfrac{b}{2a}$; $y_I = f(x_I) = '
+                        '-\\dfrac{\\Delta}{4a}$). c) **Sai** vì công thức đúng của **Tọa độ đỉnh $I$** phải '
+                        'là $x_I = -\\dfrac{b}{2a}$; $y_I = f(x_I) = -\\dfrac{\\Delta}{4a}$ chứ không phải '
+                        '$x_I = -\\dfrac{b}{2a}$; $y_I = f(x_I) = -\\dfrac{\\Delta}{4a}$ (với dấu ngược '
+                        'lại). d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 16: Hàm số bậc hai** để giải quyết tình huống sau: Xác định tọa '
-                 'độ đỉnh, trục đối xứng và các khoảng đồng biến, nghịch biến của hàm số $y = x^2 - 4x + 3$. '
-                 'Kết quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ["Mệnh đề phủ định là $\\overline{P}$: '$\\exists x \\in \\mathbb{R}, x^2 + 1 \\le "
-                        "0$'. Vì $x^2 \\ge 0 \\Rightarrow x^2 + 1 \\ge 1 > 0$ với mọi $x \\in \\mathbb{R}$ "
-                        'nê...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 16: Hàm số bậc hai** để giải bài toán sau: Xác định '
+                 'tọa độ đỉnh, trục đối xứng và các khoảng đồng biến, nghịch biến của hàm số $y = x^2 - 4x + '
+                 '3$. Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Ta có $a = 1 > 0, b = -4, c = 3$. Hoành độ đỉnh $x_I = -\\dfrac{-4}{2 \\cdot 1} = 2 '
+                        '\\Rightarrow y_I = 2^2 - 4(2) - 3 = -1$. - Đỉnh $I(2; -1)$, trục đối...',
                         'Ta có $a = 1 > 0, b = -4, c = 3$. Hoành độ đỉnh $x_I = -\\dfrac{-4}{2 \\cdot 1} = 2 '
-                        '\\Rightarrow y_I = 2^2 - 4(2) + 3 = -1$. - Đỉnh $I(2; -1)$, trục đối xứng...',
-                        'Biểu diễn trên trục số, ta được: - $A \\cap B = (1; 3)$; - $A \\cup B = [-2; 5]$; - '
-                        '$A \\setminus B = [-2; 1]$.',
-                        'Thay $x = 1, y = 2$ vào vế trái của bất phương trình: $2(1) - 3(2) + 1 = 2 - 6 + 1 '
-                        '= -3 < 0$ (đúng). Vậy điểm $A(1; 2)$ thuộc miền nghiệm của bất phương tr...'],
+                        '\\Rightarrow y_I = 2^2 - 4(2) + 3 = -1$. - Đỉnh $I(2; -1)$, trục đối...',
+                        'Ta có $a = 1 > 0, b = -4, c = 3$. Hoành độ đỉnh $x_I = -\\dfrac{2 \\cdot 1}{-4} = 2 '
+                        '\\Rightarrow y_I = 2^2 - 4(2) + 3 = -1$. - Đỉnh $I(2; -1)$, trục đối...',
+                        'Ta có $a = 2 > 0, b = -4, c = 3$. Hoành độ đỉnh $x_I = -\\dfrac{-4}{2 \\cdot 1} = 2 '
+                        '\\Rightarrow y_I = 2^2 - 4(2) + 3 = -1$. - Đỉnh $I(2; -1)$, trục đối...'],
             'answer': 1,
             'solution': 'Lời giải chi tiết theo Bài 16: Hàm số bậc hai: Ta có $a = 1 > 0, b = -4, c = 3$. '
                         'Hoành độ đỉnh $x_I = -\\dfrac{-4}{2 \\cdot 1} = 2 \\Rightarrow y_I = 2^2 - 4(2) + 3 '
@@ -2898,9 +2982,8 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
   'requirements': ['Nhận biết được tam thức bậc hai và vận dụng định lí về dấu của tam thức bậc hai.',
                    'Giải được bất phương trình bậc hai một ẩn và bài toán tìm tham số để tam thức bậc hai '
                    'luôn âm hoặc luôn dương.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Khi $\\Delta > 0$ (hai nghiệm $x_1 < '
-                   'x_2$)** (Trong khoảng $(x_1; x_2)$: trái dấu $a$; Ngoài khoảng: cùng dấu $a$) vào giải '
-                   'bài tập.'],
+                   'Vận dụng kiến thức của **Bài 17: Dấu của tam thức bậc hai** để giải bài tập minh họa và '
+                   'bài toán thực tiễn.'],
   'definition': 'Tam thức bậc hai (đối với $x$) là biểu thức có dạng $f(x) = ax^2 + bx + c$, trong đó $a, b, '
                 'c$ là những số thực cho trước và $a \\neq 0$.',
   'theory': 'Định lí về dấu của tam thức bậc hai $f(x) = ax^2 + bx + c$ ($\\Delta = b^2 - 4ac$):\n'
@@ -2951,34 +3034,41 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 17: Dấu của tam thức bậc hai**, công thức hoặc quy tắc '
-                 'nào sau đây biểu diễn đúng **Khi $\\Delta > 0$ (hai nghiệm $x_1 < x_2$)**?',
-            'options': ['$f(x) > 0, \\forall x \\in \\mathbb{R} \\Leftrightarrow \\begin{cases} a > 0 \\\\ '
-                        '\\Delta < 0 \\end{cases}$; $f(x) \\ge 0, \\forall x \\in \\mathbb{R} '
-                        '\\Leftrightarrow \\begin{cases} a > 0 \\\\ \\Delta \\le 0 \\end{cases}$',
-                        '$P \\Rightarrow Q$ chỉ sai khi $P$ đúng, $Q$ sai',
+            'q': 'Trong **Bài 17: Dấu của tam thức bậc hai**, quy tắc hoặc công thức nào sau đây xác định '
+                 'đúng **Khi $\\Delta > 0$ (hai nghiệm $x_1 < x_2$)**?',
+            'options': ['Trong khoảng $(x_1; x_2)$: trái dấu $a$; Ngoài khoảng: cùng dấu $a$ (với dấu ngược '
+                        'lại)',
+                        'Đảo ngược vế của quy tắc: Trong khoảng $(x_1; x_2)$: trái dấu $a$; Ngoài khoảng: '
+                        'cùng dấu $a$',
                         'Trong khoảng $(x_1; x_2)$: trái dấu $a$; Ngoài khoảng: cùng dấu $a$',
-                        '$P \\Leftrightarrow Q$ đúng khi $P, Q$ cùng tính đúng sai'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Trong khoảng $(x_1; x_2)$: trái '
+                        'dấu $a$; Ngoài khoảng: cùng dấu $a$'],
             'answer': 2,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 17: Dấu của tam thức bậc hai, **Khi $\\Delta '
-                        '> 0$ (hai nghiệm $x_1 < x_2$)** được xác định bởi: Trong khoảng $(x_1; x_2)$: trái '
-                        "dấu $a$; Ngoài khoảng: cùng dấu $a$. (Quy tắc: 'Trong trái, ngoài cùng')"},
+            'solution': 'Theo kiến thức trọng tâm của Bài 17: Dấu của tam thức bậc hai, **Khi $\\Delta > 0$ '
+                        '(hai nghiệm $x_1 < x_2$)** được xác định bởi: Trong khoảng $(x_1; x_2)$: trái dấu '
+                        "$a$; Ngoài khoảng: cùng dấu $a$. (Quy tắc: 'Trong trái, ngoài cùng')"},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 17: Dấu của tam thức bậc hai**, nội dung/biểu thức $f(x) > 0, \\forall x \\in '
-                 '\\mathbb{R} \\Leftrightarrow \\begin{cases} a > 0 \\\\ \\Delta < 0 \\end{cases}$; $f(x) '
-                 '\\ge 0, \\forall x \\in \\mathbb{R} \\Leftrightarrow \\begin{cases} a > 0 \\\\ \\Delta '
-                 '\\le 0 \\end{cases}$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Khi $\\Delta > 0$ (hai nghiệm $x_1 < x_2$)',
-                        'Mệnh đề kéo theo',
-                        'Mệnh đề tương đương',
-                        'Điều kiện không đổi dấu trên $\\mathbb{R}$'],
+            'q': 'Khi học **Bài 17: Dấu của tam thức bậc hai**, biểu thức hoặc quy tắc nào dưới đây biểu '
+                 'diễn đúng **Điều kiện không đổi dấu trên $\\mathbb{R}$**?',
+            'options': ['$f(x) > 0, \\forall x \\notin \\mathbb{R} \\Leftrightarrow \\begin{cases} a > 0 '
+                        '\\\\ \\Delta < 0 \\end{cases}$; $f(x) \\ge 0, \\forall x \\in \\mathbb{R} '
+                        '\\Leftrightarrow \\begin{cases} a > 0 \\\\ \\Delta \\le 0 \\end{cases}$',
+                        '$f(x) > 0, \\forall x \\in \\mathbb{R} \\Leftrightarrow \\begin{cases} a > 0 \\\\ '
+                        '\\Delta < 0 \\end{cases}$; $f(x) \\ge 0, \\forall x \\in \\mathbb{R} '
+                        '\\Leftrightarrow \\begin{cases} a > 0 \\\\ \\Delta \\le 1 \\end{cases}$',
+                        '$f(x) > 2, \\forall x \\in \\mathbb{R} \\Leftrightarrow \\begin{cases} a > 0 \\\\ '
+                        '\\Delta < 0 \\end{cases}$; $f(x) \\ge 0, \\forall x \\in \\mathbb{R} '
+                        '\\Leftrightarrow \\begin{cases} a > 0 \\\\ \\Delta \\le 0 \\end{cases}$',
+                        '$f(x) > 0, \\forall x \\in \\mathbb{R} \\Leftrightarrow \\begin{cases} a > 0 \\\\ '
+                        '\\Delta < 0 \\end{cases}$; $f(x) \\ge 0, \\forall x \\in \\mathbb{R} '
+                        '\\Leftrightarrow \\begin{cases} a > 0 \\\\ \\Delta \\le 0 \\end{cases}$'],
             'answer': 3,
-            'solution': 'Trong Bài 17: Dấu của tam thức bậc hai, biểu thức/quy tắc $f(x) > 0, \\forall x '
-                        '\\in \\mathbb{R} \\Leftrightarrow \\begin{cases} a > 0 \\\\ \\Delta < 0 '
-                        '\\end{cases}$; $f(x) \\ge 0, \\forall x \\in \\mathbb{R} \\Leftrightarrow '
-                        '\\begin{cases} a > 0 \\\\ \\Delta \\le 0 \\end{cases}$ chính là nội dung của **Điều '
-                        'kiện không đổi dấu trên $\\mathbb{R}$**.'},
+            'solution': 'Trong Bài 17: Dấu của tam thức bậc hai, **Điều kiện không đổi dấu trên '
+                        '$\\mathbb{R}$** có công thức/quy tắc là: $f(x) > 0, \\forall x \\in \\mathbb{R} '
+                        '\\Leftrightarrow \\begin{cases} a > 0 \\\\ \\Delta < 0 \\end{cases}$; $f(x) \\ge 0, '
+                        '\\forall x \\in \\mathbb{R} \\Leftrightarrow \\begin{cases} a > 0 \\\\ \\Delta \\le '
+                        '0 \\end{cases}$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Tam thức bậc hai nào sau đây luôn nhận giá trị dương với mọi $x \\in \\mathbb{R}$?',
@@ -2993,16 +3083,17 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 17: Dấu của tam thức bậc hai** (Chương VI: Hàm số, đồ thị và ứng dụng), '
-                 'khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Nhận biết được mệnh đề toán học, mệnh đề chứa biến và xác định tính đúng sai của '
-                        'một mệnh đề.',
+            'q': 'Để nắm vững bản chất của **Bài 17: Dấu của tam thức bậc hai**, nhận định nào sau đây là '
+                 '**chính xác**?',
+            'options': ['Nhận biết được tam thức bậc hai và vận dụng định lí về dấu của tam thức bậc hai. '
+                        '(với dấu ngược lại)',
                         'Nhận biết được tam thức bậc hai và vận dụng định lí về dấu của tam thức bậc hai.',
-                        'Thiết lập được mệnh đề phủ định $\\overline{P}$, mệnh đề kéo theo $P \\Rightarrow '
-                        'Q$, mệnh đề đảo và mệnh đề tương đương $P \\Leftrightarrow Q$.',
-                        'Sử dụng đúng kí hiệu với mọi ($\\forall$) và tồn tại ($\\exists$).'],
+                        'Đảo ngược vế của quy tắc: Nhận biết được tam thức bậc hai và vận dụng định lí về '
+                        'dấu của tam thức bậc hai.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nhận biết được tam thức bậc hai '
+                        'và vận dụng định lí về dấu của tam thức bậc hai.'],
             'answer': 1,
-            'solution': 'Theo yêu cầu cần đạt của Bài 17: Dấu của tam thức bậc hai: Nhận biết được tam thức '
+            'solution': 'Theo nội dung cốt lõi của Bài 17: Dấu của tam thức bậc hai: Nhận biết được tam thức '
                         'bậc hai và vận dụng định lí về dấu của tam thức bậc hai.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -3019,41 +3110,46 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 17: Dấu của tam thức '
-                 'bậc hai**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được tam thức bậc hai và '
-                           'vận dụng định lí về dấu của tam thức bậc hai.',
-                           'Quy tắc/công thức **Khi $\\Delta > 0$ (hai nghiệm $x_1 < x_2$)** trong bài được '
-                           'xác định bởi: Trong khoảng $(x_1; x_2)$: trái dấu $a$; Ngoài khoảng: cùng dấu '
-                           '$a$.',
-                           'Trong mọi trường hợp, **Khi $\\Delta > 0$ (hai nghiệm $x_1 < x_2$)** luôn được '
-                           'tính bằng công thức $P \\Rightarrow Q$ chỉ sai khi $P$ đúng, $Q$ sai (thuộc Mệnh '
-                           'đề kéo theo) mà không cần điều kiện của Bài 17: Dấu của tam thức bậc hai.',
-                           'Với bài toán minh họa: “Giải bất phương trình $x^2 - 5x + 6 \\le 0$.”, lời giải '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 17: Dấu của tam thức bậc '
+                 'hai**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết được tam thức bậc hai và vận '
+                           'dụng định lí về dấu của tam thức bậc hai.',
+                           'Trong **Bài 17: Dấu của tam thức bậc hai**, quy tắc/công thức **Khi $\\Delta > '
+                           '0$ (hai nghiệm $x_1 < x_2$)** được viết là: Trong khoảng $(x_1; x_2)$: trái dấu '
+                           '$a$; Ngoài khoảng: cùng dấu $a$.',
+                           'Nếu áp dụng sai dấu/phép tính thành Trong khoảng $(x_1; x_2)$: trái dấu $a$; '
+                           'Ngoài khoảng: cùng dấu $a$ (với dấu ngược lại) thì kết quả của **Khi $\\Delta > '
+                           '0$ (hai nghiệm $x_1 < x_2$)** trong **Bài 17: Dấu của tam thức bậc hai** vẫn '
+                           'không thay đổi.',
+                           'Xét ví dụ của bài: “Giải bất phương trình $x^2 - 5x + 6 \\le 0$.”, kết quả giải '
                            'đúng là: Tam thức $f(x) = x^2 - 5x + 6$ có $a = 1 > 0$ và hai nghiệm phân biệt '
                            "$x_1 = 2, x_2 = 3$. Theo quy tắc 'trong trái, ngoài cùng', $f(x) \\le 0 "
                            '\\Leftrightarrow 2 \\le x \\le 3$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 17: Dấu của tam thức bậc hai. b) **Đúng** '
-                        'theo công thức trọng tâm **Khi $\\Delta > 0$ (hai nghiệm $x_1 < x_2$)** (Trong '
-                        'khoảng $(x_1; x_2)$: trái dấu $a$; Ngoài khoảng: cùng dấu $a$). c) **Sai** vì $P '
-                        '\\Rightarrow Q$ chỉ sai khi $P$ đúng, $Q$ sai là công thức của nội dung khác, không '
-                        'phải quy tắc chung của **Khi $\\Delta > 0$ (hai nghiệm $x_1 < x_2$)**. d) **Đúng** '
-                        'theo lời giải ví dụ minh họa trong bài học.'},
+                        'theo công thức **Khi $\\Delta > 0$ (hai nghiệm $x_1 < x_2$)** (Trong khoảng $(x_1; '
+                        'x_2)$: trái dấu $a$; Ngoài khoảng: cùng dấu $a$). c) **Sai** vì công thức đúng của '
+                        '**Khi $\\Delta > 0$ (hai nghiệm $x_1 < x_2$)** phải là Trong khoảng $(x_1; x_2)$: '
+                        'trái dấu $a$; Ngoài khoảng: cùng dấu $a$ chứ không phải Trong khoảng $(x_1; x_2)$: '
+                        'trái dấu $a$; Ngoài khoảng: cùng dấu $a$ (với dấu ngược lại). d) **Đúng** theo lời '
+                        'giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 17: Dấu của tam thức bậc hai** để giải quyết tình huống sau: Giải '
-                 'bất phương trình $x^2 - 5x + 6 \\le 0$. Kết quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ["Mệnh đề phủ định là $\\overline{P}$: '$\\exists x \\in \\mathbb{R}, x^2 + 1 \\le "
-                        "0$'. Vì $x^2 \\ge 0 \\Rightarrow x^2 + 1 \\ge 1 > 0$ với mọi $x \\in \\mathbb{R}$ "
-                        'nê...',
-                        'Biểu diễn trên trục số, ta được: - $A \\cap B = (1; 3)$; - $A \\cup B = [-2; 5]$; - '
-                        '$A \\setminus B = [-2; 1]$.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 17: Dấu của tam thức bậc hai** để giải bài toán '
+                 'sau: Giải bất phương trình $x^2 - 5x + 6 \\le 0$. Cách giải và kết quả nào dưới đây là '
+                 '**đúng**?',
+            'options': ['Tam thức $f(x) = x^2 - 5x + 6$ có $a = 1 > 0$ và hai nghiệm phân biệt $x_1 = 2, x_2 '
+                        "= 3$. Theo quy tắc 'trong trái, ngoài cùng', $f(x) \\ge 0 \\Leftrightarrow 2 \\le x "
+                        '\\le 3$...',
+                        'Tam thức $f(x) = x^2 - 5x + 6$ có $a = 1 > 0$ và hai nghiệm phân biệt $x_1 = 2, x_2 '
+                        "= 3$. Theo quy tắc 'trong trái, ngoài cùng', $f(x) \\le 0 \\Leftrightarrow 2 \\le x "
+                        '\\le 2$...',
                         'Tam thức $f(x) = x^2 - 5x + 6$ có $a = 1 > 0$ và hai nghiệm phân biệt $x_1 = 2, x_2 '
                         "= 3$. Theo quy tắc 'trong trái, ngoài cùng', $f(x) \\le 0 \\Leftrightarrow 2 \\le x "
                         '\\le 3$...',
-                        'Thay $x = 1, y = 2$ vào vế trái của bất phương trình: $2(1) - 3(2) + 1 = 2 - 6 + 1 '
-                        '= -3 < 0$ (đúng). Vậy điểm $A(1; 2)$ thuộc miền nghiệm của bất phương tr...'],
+                        'Tam thức $f(x) = x^4 - 5x + 6$ có $a = 1 > 0$ và hai nghiệm phân biệt $x_1 = 2, x_2 '
+                        "= 3$. Theo quy tắc 'trong trái, ngoài cùng', $f(x) \\le 0 \\Leftrightarrow 2 \\le x "
+                        '\\le 3$...'],
             'answer': 2,
             'solution': 'Lời giải chi tiết theo Bài 17: Dấu của tam thức bậc hai: Tam thức $f(x) = x^2 - 5x '
                         '+ 6$ có $a = 1 > 0$ và hai nghiệm phân biệt $x_1 = 2, x_2 = 3$.\n'
@@ -3081,8 +3177,8 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
   'requirements': ['Giải được phương trình dạng $\\sqrt{ax^2 + bx + c} = \\sqrt{dx^2 + ex + f}$.',
                    'Giải được phương trình dạng $\\sqrt{ax^2 + bx + c} = dx + e$ và kiểm tra nghiệm ngoại '
                    'lai.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Dạng $\\sqrt{A(x)} = \\sqrt{B(x)}$** (Bình '
-                   'phương hai vế: $A(x) = B(x)$ (với điều kiện $A(x) \\ge 0$)) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 18: Phương trình quy về phương trình bậc hai** để giải bài '
+                   'tập minh họa và bài toán thực tiễn.'],
   'definition': 'Hai dạng phương trình chứa căn thức thường gặp quy về phương trình bậc hai là $\\sqrt{A(x)} '
                 '= \\sqrt{B(x)}$ và $\\sqrt{A(x)} = B(x)$, trong đó $A(x)$ là tam thức bậc hai.',
   'theory': '1. Để giải phương trình $\\sqrt{A(x)} = \\sqrt{B(x)}$, ta bình phương hai vế để được phương '
@@ -3131,30 +3227,32 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 18: Phương trình quy về phương trình bậc hai**, công '
-                 'thức hoặc quy tắc nào sau đây biểu diễn đúng **Dạng $\\sqrt{A(x)} = \\sqrt{B(x)}$**?',
-            'options': ['$\\sqrt{A(x)} = B(x) \\Leftrightarrow \\begin{cases} B(x) \\ge 0 \\\\ A(x) = '
-                        '[B(x)]^2 \\end{cases}$',
-                        '$P \\Rightarrow Q$ chỉ sai khi $P$ đúng, $Q$ sai',
-                        '$P \\Leftrightarrow Q$ đúng khi $P, Q$ cùng tính đúng sai',
+            'q': 'Trong **Bài 18: Phương trình quy về phương trình bậc hai**, quy tắc hoặc công thức nào sau '
+                 'đây xác định đúng **Dạng $\\sqrt{A(x)} = \\sqrt{B(x)}$**?',
+            'options': ['Bình phương hai vế: $A(x) = B(x)$ (với điều kiện $A(x) \\le 0$)',
+                        'Bình phương hai vế: $A(x) = B(x)$ (với điều kiện $A(x) \\ge 1$)',
+                        'Bình phương hai vế: $A(x) = B(x)$ (với điều kiện $A(x) \\ge 2$)',
                         'Bình phương hai vế: $A(x) = B(x)$ (với điều kiện $A(x) \\ge 0$)'],
             'answer': 3,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 18: Phương trình quy về phương trình bậc hai, '
+            'solution': 'Theo kiến thức trọng tâm của Bài 18: Phương trình quy về phương trình bậc hai, '
                         '**Dạng $\\sqrt{A(x)} = \\sqrt{B(x)}$** được xác định bởi: Bình phương hai vế: $A(x) '
                         '= B(x)$ (với điều kiện $A(x) \\ge 0$). (Thử lại nghiệm vào phương trình đã cho)'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 18: Phương trình quy về phương trình bậc hai**, nội dung/biểu thức '
-                 '$\\sqrt{A(x)} = B(x) \\Leftrightarrow \\begin{cases} B(x) \\ge 0 \\\\ A(x) = [B(x)]^2 '
-                 '\\end{cases}$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Dạng $\\sqrt{A(x)} = B(x)$',
-                        'Dạng $\\sqrt{A(x)} = \\sqrt{B(x)}$',
-                        'Mệnh đề kéo theo',
-                        'Mệnh đề tương đương'],
-            'answer': 0,
-            'solution': 'Trong Bài 18: Phương trình quy về phương trình bậc hai, biểu thức/quy tắc '
+            'q': 'Khi học **Bài 18: Phương trình quy về phương trình bậc hai**, biểu thức hoặc quy tắc nào '
+                 'dưới đây biểu diễn đúng **Dạng $\\sqrt{A(x)} = B(x)$**?',
+            'options': ['$\\sqrt{A(x)} = B(x) \\Leftrightarrow \\begin{cases} B(x) \\ge 0 \\\\ A(x) = '
+                        '[B(x)]^2 \\end{cases}$',
+                        '$\\sqrt{A(x)} = B(x) \\Leftrightarrow \\begin{cases} B(x) \\le 0 \\\\ A(x) = '
+                        '[B(x)]^2 \\end{cases}$',
                         '$\\sqrt{A(x)} = B(x) \\Leftrightarrow \\begin{cases} B(x) \\ge 0 \\\\ A(x) = '
-                        '[B(x)]^2 \\end{cases}$ chính là nội dung của **Dạng $\\sqrt{A(x)} = B(x)$**.'},
+                        '[B(x)]^1 \\end{cases}$',
+                        '$\\sqrt{A(x)} = B(x) \\Leftrightarrow \\begin{cases} B(x) \\ge 2 \\\\ A(x) = '
+                        '[B(x)]^2 \\end{cases}$'],
+            'answer': 0,
+            'solution': 'Trong Bài 18: Phương trình quy về phương trình bậc hai, **Dạng $\\sqrt{A(x)} = '
+                        'B(x)$** có công thức/quy tắc là: $\\sqrt{A(x)} = B(x) \\Leftrightarrow '
+                        '\\begin{cases} B(x) \\ge 0 \\\\ A(x) = [B(x)]^2 \\end{cases}$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Tập nghiệm của phương trình $\\sqrt{x^2 - 2x + 4} = x$ là:',
@@ -3166,17 +3264,14 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 18: Phương trình quy về phương trình bậc hai** (Chương VI: Hàm số, đồ thị và '
-                 'ứng dụng), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức '
-                 'của bài?',
-            'options': ['Nhận biết được mệnh đề toán học, mệnh đề chứa biến và xác định tính đúng sai của '
-                        'một mệnh đề.',
-                        'Thiết lập được mệnh đề phủ định $\\overline{P}$, mệnh đề kéo theo $P \\Rightarrow '
-                        'Q$, mệnh đề đảo và mệnh đề tương đương $P \\Leftrightarrow Q$.',
+            'q': 'Để nắm vững bản chất của **Bài 18: Phương trình quy về phương trình bậc hai**, nhận định '
+                 'nào sau đây là **chính xác**?',
+            'options': ['Giải được phương trình dạng $\\sqrt{ax^2 - bx + c} = \\sqrt{dx^2 + ex + f}$.',
+                        'Giải được phương trình dạng $\\sqrt{ax^2 + bx + c} = \\sqrt{dx^1 + ex + f}$.',
                         'Giải được phương trình dạng $\\sqrt{ax^2 + bx + c} = \\sqrt{dx^2 + ex + f}$.',
-                        'Sử dụng đúng kí hiệu với mọi ($\\forall$) và tồn tại ($\\exists$).'],
+                        'Giải được phương trình dạng $\\sqrt{ax^4 + bx + c} = \\sqrt{dx^2 + ex + f}$.'],
             'answer': 2,
-            'solution': 'Theo yêu cầu cần đạt của Bài 18: Phương trình quy về phương trình bậc hai: Giải '
+            'solution': 'Theo nội dung cốt lõi của Bài 18: Phương trình quy về phương trình bậc hai: Giải '
                         'được phương trình dạng $\\sqrt{ax^2 + bx + c} = \\sqrt{dx^2 + ex + f}$.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -3193,39 +3288,42 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 18: Phương trình quy về '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 18: Phương trình quy về '
                  'phương trình bậc hai**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Giải được phương trình dạng '
-                           '$\\sqrt{ax^2 + bx + c} = \\sqrt{dx^2 + ex + f}$.',
-                           'Quy tắc/công thức **Dạng $\\sqrt{A(x)} = \\sqrt{B(x)}$** trong bài được xác định '
-                           'bởi: Bình phương hai vế: $A(x) = B(x)$ (với điều kiện $A(x) \\ge 0$).',
-                           'Trong mọi trường hợp, **Dạng $\\sqrt{A(x)} = \\sqrt{B(x)}$** luôn được tính bằng '
-                           'công thức $P \\Rightarrow Q$ chỉ sai khi $P$ đúng, $Q$ sai (thuộc Mệnh đề kéo '
-                           'theo) mà không cần điều kiện của Bài 18: Phương trình quy về phương trình bậc '
-                           'hai.',
-                           'Với bài toán minh họa: “Giải phương trình $\\sqrt{2x^2 - 3x + 1} = x - 1$.”, lời '
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Giải được phương trình dạng $\\sqrt{ax^2 '
+                           '+ bx + c} = \\sqrt{dx^2 + ex + f}$.',
+                           'Trong **Bài 18: Phương trình quy về phương trình bậc hai**, quy tắc/công thức '
+                           '**Dạng $\\sqrt{A(x)} = \\sqrt{B(x)}$** được viết là: Bình phương hai vế: $A(x) = '
+                           'B(x)$ (với điều kiện $A(x) \\ge 0$).',
+                           'Nếu áp dụng sai dấu/phép tính thành Bình phương hai vế: $A(x) = B(x)$ (với điều '
+                           'kiện $A(x) \\le 0$) thì kết quả của **Dạng $\\sqrt{A(x)} = \\sqrt{B(x)}$** trong '
+                           '**Bài 18: Phương trình quy về phương trình bậc hai** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Giải phương trình $\\sqrt{2x^2 - 3x + 1} = x - 1$.”, kết quả '
                            'giải đúng là: Bình phương hai vế của phương trình ta được: $2x^2 - 3x + 1 = (x - '
                            '1)^2 \\Rightarrow 2x^2 - 3x + 1 = x^2 - 2x + 1 \\Rightarrow x^2 - x = 0 '
                            '\\Rightarrow x = 0$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 18: Phương trình quy về phương trình bậc '
-                        'hai. b) **Đúng** theo công thức trọng tâm **Dạng $\\sqrt{A(x)} = \\sqrt{B(x)}$** '
-                        '(Bình phương hai vế: $A(x) = B(x)$ (với điều kiện $A(x) \\ge 0$)). c) **Sai** vì $P '
-                        '\\Rightarrow Q$ chỉ sai khi $P$ đúng, $Q$ sai là công thức của nội dung khác, không '
-                        'phải quy tắc chung của **Dạng $\\sqrt{A(x)} = \\sqrt{B(x)}$**. d) **Đúng** theo lời '
-                        'giải ví dụ minh họa trong bài học.'},
+                        'hai. b) **Đúng** theo công thức **Dạng $\\sqrt{A(x)} = \\sqrt{B(x)}$** (Bình phương '
+                        'hai vế: $A(x) = B(x)$ (với điều kiện $A(x) \\ge 0$)). c) **Sai** vì công thức đúng '
+                        'của **Dạng $\\sqrt{A(x)} = \\sqrt{B(x)}$** phải là Bình phương hai vế: $A(x) = '
+                        'B(x)$ (với điều kiện $A(x) \\ge 0$) chứ không phải Bình phương hai vế: $A(x) = '
+                        'B(x)$ (với điều kiện $A(x) \\le 0$). d) **Đúng** theo lời giải ví dụ minh họa trong '
+                        'bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 18: Phương trình quy về phương trình bậc hai** để giải quyết tình '
-                 'huống sau: Giải phương trình $\\sqrt{2x^2 - 3x + 1} = x - 1$. Kết quả và hướng giải nào '
-                 'dưới đây là **đúng**?',
-            'options': ["Mệnh đề phủ định là $\\overline{P}$: '$\\exists x \\in \\mathbb{R}, x^2 + 1 \\le "
-                        "0$'. Vì $x^2 \\ge 0 \\Rightarrow x^2 + 1 \\ge 1 > 0$ với mọi $x \\in \\mathbb{R}$ "
-                        'nê...',
-                        'Biểu diễn trên trục số, ta được: - $A \\cap B = (1; 3)$; - $A \\cup B = [-2; 5]$; - '
-                        '$A \\setminus B = [-2; 1]$.',
-                        'Thay $x = 1, y = 2$ vào vế trái của bất phương trình: $2(1) - 3(2) + 1 = 2 - 6 + 1 '
-                        '= -3 < 0$ (đúng). Vậy điểm $A(1; 2)$ thuộc miền nghiệm của bất phương tr...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 18: Phương trình quy về phương trình bậc hai** để '
+                 'giải bài toán sau: Giải phương trình $\\sqrt{2x^2 - 3x + 1} = x - 1$. Cách giải và kết quả '
+                 'nào dưới đây là **đúng**?',
+            'options': ['Bình phương hai vế của phương trình ta được: $2x^2 - 3x - 1 = (x - 1)^2 '
+                        '\\Rightarrow 2x^2 - 3x + 1 = x^2 - 2x + 1 \\Rightarrow x^2 - x = 0 \\Rightarrow x = '
+                        '0$...',
+                        'Bình phương hai vế của phương trình ta được: $2x^2 - 3x + 1 = (x - 1)^2 '
+                        '\\Rightarrow 2x^2 - 3x + 1 = x^2 - 2x + 1 \\Rightarrow x^2 - x = 0 \\Rightarrow x = '
+                        '1$...',
+                        'Bình phương hai vế của phương trình ta được: $2x^4 - 3x + 1 = (x - 1)^2 '
+                        '\\Rightarrow 2x^2 - 3x + 1 = x^2 - 2x + 1 \\Rightarrow x^2 - x = 0 \\Rightarrow x = '
+                        '0$...',
                         'Bình phương hai vế của phương trình ta được: $2x^2 - 3x + 1 = (x - 1)^2 '
                         '\\Rightarrow 2x^2 - 3x + 1 = x^2 - 2x + 1 \\Rightarrow x^2 - x = 0 \\Rightarrow x = '
                         '0$...'],
@@ -3257,9 +3355,8 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
                    'thẳng.',
                    'Lập được phương trình tham số và phương trình tổng quát của đường thẳng khi biết một '
                    'điểm và vectơ chỉ phương (hoặc vectơ pháp tuyến), hoặc biết hai điểm.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Liên hệ giữa VTCP và VTPT** '
-                   '($\\overrightarrow{u} = (a; b) \\leftrightarrow \\overrightarrow{n} = (-b; a)$ hoặc $(b; '
-                   '-a)$) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 19: Phương trình đường thẳng** để giải bài tập minh họa và '
+                   'bài toán thực tiễn.'],
   'definition': 'Vectơ $\\overrightarrow{u} \\neq \\overrightarrow{0}$ có giá song song hoặc trùng với đường '
                 'thẳng $\\Delta$ gọi là vectơ chỉ phương (VTCP) của $\\Delta$. Vectơ $\\overrightarrow{n} '
                 '\\neq \\overrightarrow{0}$ có giá vuông góc với $\\Delta$ gọi là vectơ pháp tuyến (VTPT) '
@@ -3315,31 +3412,36 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 19: Phương trình đường thẳng**, công thức hoặc quy tắc '
-                 'nào sau đây biểu diễn đúng **Liên hệ giữa VTCP và VTPT**?',
+            'q': 'Trong **Bài 19: Phương trình đường thẳng**, quy tắc hoặc công thức nào sau đây xác định '
+                 'đúng **Liên hệ giữa VTCP và VTPT**?',
             'options': ['$\\overrightarrow{u} = (a; b) \\leftrightarrow \\overrightarrow{n} = (-b; a)$ hoặc '
                         '$(b; -a)$',
-                        '$\\begin{cases} x = x_0 + at \\\\ y = y_0 + bt \\end{cases}$ ($t \\in \\mathbb{R}$)',
-                        '$a(x - x_0) + b(y - y_0) = 0$',
-                        '$P \\Rightarrow Q$ chỉ sai khi $P$ đúng, $Q$ sai'],
+                        '$\\overrightarrow{u} = (a; b) \\geftrightarrow \\overrightarrow{n} = (-b; a)$ hoặc '
+                        '$(b; -a)$',
+                        'Đảo ngược vế của quy tắc: $\\overrightarrow{u} = (a; b) \\leftrightarrow '
+                        '\\overrightarrow{n} = (-b; a)$ hoặc $(b; -a)$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\overrightarrow{u} = (a; b) '
+                        '\\leftrightarrow \\overrightarrow{n} = (-b; a)$ hoặc $(b; -a)$'],
             'answer': 0,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 19: Phương trình đường thẳng, **Liên hệ giữa '
-                        'VTCP và VTPT** được xác định bởi: $\\overrightarrow{u} = (a; b) \\leftrightarrow '
+            'solution': 'Theo kiến thức trọng tâm của Bài 19: Phương trình đường thẳng, **Liên hệ giữa VTCP '
+                        'và VTPT** được xác định bởi: $\\overrightarrow{u} = (a; b) \\leftrightarrow '
                         '\\overrightarrow{n} = (-b; a)$ hoặc $(b; -a)$. ($\\overrightarrow{u} \\perp '
                         '\\overrightarrow{n}$)'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 19: Phương trình đường thẳng**, nội dung/biểu thức $\\begin{cases} x = x_0 + '
-                 'at \\\\ y = y_0 + bt \\end{cases}$ ($t \\in \\mathbb{R}$) là quy tắc hoặc công thức của '
-                 'mục nào sau đây?',
-            'options': ['Liên hệ giữa VTCP và VTPT',
-                        'Phương trình tham số',
-                        'Phương trình tổng quát',
-                        'Mệnh đề kéo theo'],
+            'q': 'Khi học **Bài 19: Phương trình đường thẳng**, biểu thức hoặc quy tắc nào dưới đây biểu '
+                 'diễn đúng **Phương trình tham số**?',
+            'options': ['$\\begin{cases} x = x_0 + at \\\\ y = y_0 + bt \\end{cases}$ ($t \\notin '
+                        '\\mathbb{R}$)',
+                        '$\\begin{cases} x = x_0 + at \\\\ y = y_0 + bt \\end{cases}$ ($t \\in \\mathbb{R}$)',
+                        'Đảo ngược vế của quy tắc: $\\begin{cases} x = x_0 + at \\\\ y = y_0 + bt '
+                        '\\end{cases}$ ($t \\in \\mathbb{R}$)',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\begin{cases} x = x_0 + at '
+                        '\\\\ y = y_0 + bt \\end{cases}$ ($t \\in \\mathbb{R}$)'],
             'answer': 1,
-            'solution': 'Trong Bài 19: Phương trình đường thẳng, biểu thức/quy tắc $\\begin{cases} x = x_0 + '
-                        'at \\\\ y = y_0 + bt \\end{cases}$ ($t \\in \\mathbb{R}$) chính là nội dung của '
-                        '**Phương trình tham số**.'},
+            'solution': 'Trong Bài 19: Phương trình đường thẳng, **Phương trình tham số** có công thức/quy '
+                        'tắc là: $\\begin{cases} x = x_0 + at \\\\ y = y_0 + bt \\end{cases}$ ($t \\in '
+                        '\\mathbb{R}$).'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Phương trình tổng quát của đường thẳng đi qua điểm $M(1; 2)$ và có vectơ chỉ phương '
@@ -3352,18 +3454,18 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 19: Phương trình đường thẳng** (Chương VII: Phương pháp tọa độ trong mặt '
-                 'phẳng), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của '
-                 'bài?',
-            'options': ['Nhận biết được mệnh đề toán học, mệnh đề chứa biến và xác định tính đúng sai của '
-                        'một mệnh đề.',
-                        'Thiết lập được mệnh đề phủ định $\\overline{P}$, mệnh đề kéo theo $P \\Rightarrow '
-                        'Q$, mệnh đề đảo và mệnh đề tương đương $P \\Leftrightarrow Q$.',
-                        'Sử dụng đúng kí hiệu với mọi ($\\forall$) và tồn tại ($\\exists$).',
+            'q': 'Để nắm vững bản chất của **Bài 19: Phương trình đường thẳng**, nhận định nào sau đây là '
+                 '**chính xác**?',
+            'options': ['Nhận biết và chuyển đổi được giữa vectơ chỉ phương và vectơ pháp tuyến của một '
+                        'đường thẳng. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Nhận biết và chuyển đổi được giữa vectơ chỉ phương và '
+                        'vectơ pháp tuyến của một đường thẳng.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nhận biết và chuyển đổi được '
+                        'giữa vectơ chỉ phương và vectơ pháp tuyến của một đường thẳng.',
                         'Nhận biết và chuyển đổi được giữa vectơ chỉ phương và vectơ pháp tuyến của một '
                         'đường thẳng.'],
             'answer': 3,
-            'solution': 'Theo yêu cầu cần đạt của Bài 19: Phương trình đường thẳng: Nhận biết và chuyển đổi '
+            'solution': 'Theo nội dung cốt lõi của Bài 19: Phương trình đường thẳng: Nhận biết và chuyển đổi '
                         'được giữa vectơ chỉ phương và vectơ pháp tuyến của một đường thẳng.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -3383,41 +3485,42 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 19: Phương trình đường '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 19: Phương trình đường '
                  'thẳng**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết và chuyển đổi được giữa '
-                           'vectơ chỉ phương và vectơ pháp tuyến của một đường thẳng.',
-                           'Quy tắc/công thức **Liên hệ giữa VTCP và VTPT** trong bài được xác định bởi: '
-                           '$\\overrightarrow{u} = (a; b) \\leftrightarrow \\overrightarrow{n} = (-b; a)$ '
-                           'hoặc $(b; -a)$.',
-                           'Trong mọi trường hợp, **Liên hệ giữa VTCP và VTPT** luôn được tính bằng công '
-                           'thức $P \\Rightarrow Q$ chỉ sai khi $P$ đúng, $Q$ sai (thuộc Mệnh đề kéo theo) '
-                           'mà không cần điều kiện của Bài 19: Phương trình đường thẳng.',
-                           'Với bài toán minh họa: “Lập phương trình tổng quát của đường thẳng $d$ đi qua '
-                           'điểm $A(2; -1)$ và có vectơ pháp tuyến $\\overrightarrow{n} = (3; 4)$.”, lời '
-                           'giải đúng là: Phương trình tổng quát của đường thẳng $d$ là: $3(x - 2) + 4(y + '
-                           '1) = 0 \\Leftrightarrow 3x + 4y - 2 = 0$.'],
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết và chuyển đổi được giữa vectơ '
+                           'chỉ phương và vectơ pháp tuyến của một đường thẳng.',
+                           'Trong **Bài 19: Phương trình đường thẳng**, quy tắc/công thức **Liên hệ giữa '
+                           'VTCP và VTPT** được viết là: $\\overrightarrow{u} = (a; b) \\leftrightarrow '
+                           '\\overrightarrow{n} = (-b; a)$ hoặc $(b; -a)$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $\\overrightarrow{u} = (a; b) '
+                           '\\geftrightarrow \\overrightarrow{n} = (-b; a)$ hoặc $(b; -a)$ thì kết quả của '
+                           '**Liên hệ giữa VTCP và VTPT** trong **Bài 19: Phương trình đường thẳng** vẫn '
+                           'không thay đổi.',
+                           'Xét ví dụ của bài: “Lập phương trình tổng quát của đường thẳng $d$ đi qua điểm '
+                           '$A(2; -1)$ và có vectơ pháp tuyến $\\overrightarrow{n} = (3; 4)$.”, kết quả giải '
+                           'đúng là: Phương trình tổng quát của đường thẳng $d$ là: $3(x - 2) + 4(y + 1) = 0 '
+                           '\\Leftrightarrow 3x + 4y - 2 = 0$.'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 19: Phương trình đường thẳng. b) **Đúng** '
-                        'theo công thức trọng tâm **Liên hệ giữa VTCP và VTPT** ($\\overrightarrow{u} = (a; '
-                        'b) \\leftrightarrow \\overrightarrow{n} = (-b; a)$ hoặc $(b; -a)$). c) **Sai** vì '
-                        '$P \\Rightarrow Q$ chỉ sai khi $P$ đúng, $Q$ sai là công thức của nội dung khác, '
-                        'không phải quy tắc chung của **Liên hệ giữa VTCP và VTPT**. d) **Đúng** theo lời '
-                        'giải ví dụ minh họa trong bài học.'},
+                        'theo công thức **Liên hệ giữa VTCP và VTPT** ($\\overrightarrow{u} = (a; b) '
+                        '\\leftrightarrow \\overrightarrow{n} = (-b; a)$ hoặc $(b; -a)$). c) **Sai** vì công '
+                        'thức đúng của **Liên hệ giữa VTCP và VTPT** phải là $\\overrightarrow{u} = (a; b) '
+                        '\\leftrightarrow \\overrightarrow{n} = (-b; a)$ hoặc $(b; -a)$ chứ không phải '
+                        '$\\overrightarrow{u} = (a; b) \\geftrightarrow \\overrightarrow{n} = (-b; a)$ hoặc '
+                        '$(b; -a)$. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 19: Phương trình đường thẳng** để giải quyết tình huống sau: Lập '
-                 'phương trình tổng quát của đường thẳng $d$ đi qua điểm $A(2; -1)$ và có vectơ pháp tuyến '
-                 '$\\overrightarrow{n} = (3; 4)$. Kết quả và hướng giải nào dưới đây là **đúng**?',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 19: Phương trình đường thẳng** để giải bài toán '
+                 'sau: Lập phương trình tổng quát của đường thẳng $d$ đi qua điểm $A(2; -1)$ và có vectơ '
+                 'pháp tuyến $\\overrightarrow{n} = (3; 4)$. Cách giải và kết quả nào dưới đây là **đúng**?',
             'options': ['Phương trình tổng quát của đường thẳng $d$ là: $3(x - 2) + 4(y + 1) = 0 '
                         '\\Leftrightarrow 3x + 4y - 2 = 0$.',
-                        "Mệnh đề phủ định là $\\overline{P}$: '$\\exists x \\in \\mathbb{R}, x^2 + 1 \\le "
-                        "0$'. Vì $x^2 \\ge 0 \\Rightarrow x^2 + 1 \\ge 1 > 0$ với mọi $x \\in \\mathbb{R}$ "
-                        'nê...',
-                        'Biểu diễn trên trục số, ta được: - $A \\cap B = (1; 3)$; - $A \\cup B = [-2; 5]$; - '
-                        '$A \\setminus B = [-2; 1]$.',
-                        'Thay $x = 1, y = 2$ vào vế trái của bất phương trình: $2(1) - 3(2) + 1 = 2 - 6 + 1 '
-                        '= -3 < 0$ (đúng). Vậy điểm $A(1; 2)$ thuộc miền nghiệm của bất phương tr...'],
+                        'Phương trình tổng quát của đường thẳng $d$ là: $3(x - 2) - 4(y + 1) = 0 '
+                        '\\Leftrightarrow 3x + 4y - 2 = 0$.',
+                        'Phương trình tổng quát của đường thẳng $d$ là: $3(x - 2) + 4(y + 1) = 0 '
+                        '\\Leftrightarrow 3x + 4y - 2 = 1$.',
+                        'Phương trình tổng quát của đường thẳng $d$ là: $6(x - 2) + 4(y + 1) = 0 '
+                        '\\Leftrightarrow 3x + 4y - 2 = 0$.'],
             'answer': 0,
             'solution': 'Lời giải chi tiết theo Bài 19: Phương trình đường thẳng: Phương trình tổng quát của '
                         'đường thẳng $d$ là:\n'
@@ -3443,9 +3546,8 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
   'requirements': ['Xác định được vị trí tương đối (cắt nhau, song song, trùng nhau) và tính được góc giữa '
                    'hai đường thẳng ($0^\\circ \\le \\varphi \\le 90^\\circ$).',
                    'Tính được khoảng cách từ một điểm đến một đường thẳng.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Côsin góc giữa hai đường thẳng** '
-                   '($\\cos(\\Delta_1, \\Delta_2) = \\dfrac{|a_1a_2 + b_1b_2|}{\\sqrt{a_1^2 + '
-                   'b_1^2}\\sqrt{a_2^2 + b_2^2}}$) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 20: Vị trí tương đối giữa hai đường thẳng, góc và khoảng '
+                   'cách** để giải bài tập minh họa và bài toán thực tiễn.'],
   'definition': 'Góc giữa hai đường thẳng $\\Delta_1$ và $\\Delta_2$ là góc nhỏ nhất tạo bởi hai đường thẳng '
                 'đó, luôn thỏa mãn $0^\\circ \\le (\\Delta_1, \\Delta_2) \\le 90^\\circ$.',
   'theory': '1. Vị trí tương đối của $\\Delta_1: a_1x + b_1y + c_1 = 0$ và $\\Delta_2: a_2x + b_2y + c_2 = '
@@ -3494,33 +3596,34 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 20: Vị trí tương đối giữa hai đường thẳng, góc và khoảng '
-                 'cách**, công thức hoặc quy tắc nào sau đây biểu diễn đúng **Côsin góc giữa hai đường '
-                 'thẳng**?',
-            'options': ['$d(M_0, \\Delta) = \\dfrac{|ax_0 + by_0 + c|}{\\sqrt{a^2 + b^2}}$',
+            'q': 'Trong **Bài 20: Vị trí tương đối giữa hai đường thẳng, góc và khoảng cách**, quy tắc hoặc '
+                 'công thức nào sau đây xác định đúng **Côsin góc giữa hai đường thẳng**?',
+            'options': ['$\\cos(\\Delta_1, \\Delta_2) = \\dfrac{|a_1a_2 - b_1b_2|}{\\sqrt{a_1^2 + '
+                        'b_1^2}\\sqrt{a_2^2 + b_2^2}}$',
                         '$\\cos(\\Delta_1, \\Delta_2) = \\dfrac{|a_1a_2 + b_1b_2|}{\\sqrt{a_1^2 + '
                         'b_1^2}\\sqrt{a_2^2 + b_2^2}}$',
-                        '$P \\Rightarrow Q$ chỉ sai khi $P$ đúng, $Q$ sai',
-                        '$P \\Leftrightarrow Q$ đúng khi $P, Q$ cùng tính đúng sai'],
+                        '$\\cos(\\Delta_1, \\Delta_2) = \\dfrac{|a_1a_2 + b_1b_2|}{\\sqrt{a_1^2 + '
+                        'b_1^2}\\sqrt{a_2^2 + b_2^1}}$',
+                        '$\\cos(\\Delta_1, \\Delta_2) = \\dfrac{|a_1a_2 + b_1b_2|}{\\sqrt{a_1^4 + '
+                        'b_1^2}\\sqrt{a_2^2 + b_2^2}}$'],
             'answer': 1,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 20: Vị trí tương đối giữa hai đường thẳng, '
-                        'góc và khoảng cách, **Côsin góc giữa hai đường thẳng** được xác định bởi: '
+            'solution': 'Theo kiến thức trọng tâm của Bài 20: Vị trí tương đối giữa hai đường thẳng, góc và '
+                        'khoảng cách, **Côsin góc giữa hai đường thẳng** được xác định bởi: '
                         '$\\cos(\\Delta_1, \\Delta_2) = \\dfrac{|a_1a_2 + b_1b_2|}{\\sqrt{a_1^2 + '
                         'b_1^2}\\sqrt{a_2^2 + b_2^2}}$. ($\\Delta_1 \\perp \\Delta_2 \\Leftrightarrow a_1a_2 '
                         '+ b_1b_2 = 0$)'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 20: Vị trí tương đối giữa hai đường thẳng, góc và khoảng cách**, nội dung/biểu '
-                 'thức $d(M_0, \\Delta) = \\dfrac{|ax_0 + by_0 + c|}{\\sqrt{a^2 + b^2}}$ là quy tắc hoặc '
-                 'công thức của mục nào sau đây?',
-            'options': ['Côsin góc giữa hai đường thẳng',
-                        'Mệnh đề kéo theo',
-                        'Khoảng cách từ điểm đến đường thẳng',
-                        'Mệnh đề tương đương'],
+            'q': 'Khi học **Bài 20: Vị trí tương đối giữa hai đường thẳng, góc và khoảng cách**, biểu thức '
+                 'hoặc quy tắc nào dưới đây biểu diễn đúng **Khoảng cách từ điểm đến đường thẳng**?',
+            'options': ['$d(M_0, \\Delta) = \\dfrac{|ax_0 - by_0 + c|}{\\sqrt{a^2 + b^2}}$',
+                        '$d(M_0, \\Delta) = \\dfrac{|ax_0 + by_0 + c|}{\\sqrt{a^2 + b^1}}$',
+                        '$d(M_0, \\Delta) = \\dfrac{|ax_0 + by_0 + c|}{\\sqrt{a^2 + b^2}}$',
+                        '$d(M_0, \\Delta) = \\dfrac{|ax_0 + by_0 + c|}{\\sqrt{a^4 + b^2}}$'],
             'answer': 2,
-            'solution': 'Trong Bài 20: Vị trí tương đối giữa hai đường thẳng, góc và khoảng cách, biểu '
-                        'thức/quy tắc $d(M_0, \\Delta) = \\dfrac{|ax_0 + by_0 + c|}{\\sqrt{a^2 + b^2}}$ '
-                        'chính là nội dung của **Khoảng cách từ điểm đến đường thẳng**.'},
+            'solution': 'Trong Bài 20: Vị trí tương đối giữa hai đường thẳng, góc và khoảng cách, **Khoảng '
+                        'cách từ điểm đến đường thẳng** có công thức/quy tắc là: $d(M_0, \\Delta) = '
+                        '\\dfrac{|ax_0 + by_0 + c|}{\\sqrt{a^2 + b^2}}$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Góc giữa hai đường thẳng $\\Delta_1: x - 2y + 3 = 0$ và $\\Delta_2: 3x - y - 1 = 0$ bằng:',
@@ -3533,18 +3636,18 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 20: Vị trí tương đối giữa hai đường thẳng, góc và khoảng cách** (Chương VII: '
-                 'Phương pháp tọa độ trong mặt phẳng), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần '
-                 'đạt và bản chất kiến thức của bài?',
+            'q': 'Để nắm vững bản chất của **Bài 20: Vị trí tương đối giữa hai đường thẳng, góc và khoảng '
+                 'cách**, nhận định nào sau đây là **chính xác**?',
             'options': ['Xác định được vị trí tương đối (cắt nhau, song song, trùng nhau) và tính được góc '
                         'giữa hai đường thẳng ($0^\\circ \\le \\varphi \\le 90^\\circ$).',
-                        'Nhận biết được mệnh đề toán học, mệnh đề chứa biến và xác định tính đúng sai của '
-                        'một mệnh đề.',
-                        'Thiết lập được mệnh đề phủ định $\\overline{P}$, mệnh đề kéo theo $P \\Rightarrow '
-                        'Q$, mệnh đề đảo và mệnh đề tương đương $P \\Leftrightarrow Q$.',
-                        'Sử dụng đúng kí hiệu với mọi ($\\forall$) và tồn tại ($\\exists$).'],
+                        'Xác định được vị trí tương đối (cắt nhau, song song, trùng nhau) và tính được góc '
+                        'giữa hai đường thẳng ($0^\\circ \\ge \\varphi \\le 90^\\circ$).',
+                        'Xác định được vị trí tương đối (cắt nhau, song song, trùng nhau) và tính được góc '
+                        'giữa hai đường thẳng ($0^\\circ \\le \\varphi \\le 89^\\circ$).',
+                        'Xác định được vị trí tương đối (cắt nhau, song song, trùng nhau) và tính được góc '
+                        'giữa hai đường thẳng ($2^\\circ \\le \\varphi \\le 90^\\circ$).'],
             'answer': 0,
-            'solution': 'Theo yêu cầu cần đạt của Bài 20: Vị trí tương đối giữa hai đường thẳng, góc và '
+            'solution': 'Theo nội dung cốt lõi của Bài 20: Vị trí tương đối giữa hai đường thẳng, góc và '
                         'khoảng cách: Xác định được vị trí tương đối (cắt nhau, song song, trùng nhau) và '
                         'tính được góc giữa hai đường thẳng ($0^\\circ \\le \\varphi \\le 90^\\circ$).'},
            {'level': 'hieu',
@@ -3564,44 +3667,46 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 20: Vị trí tương đối '
-                 'giữa hai đường thẳng, góc và khoảng cách**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Xác định được vị trí tương đối '
-                           '(cắt nhau, song song, trùng nhau) và tính được góc giữa hai đường thẳng '
-                           '($0^\\circ \\le \\varphi \\le 90^\\circ$).',
-                           'Quy tắc/công thức **Côsin góc giữa hai đường thẳng** trong bài được xác định '
-                           'bởi: $\\cos(\\Delta_1, \\Delta_2) = \\dfrac{|a_1a_2 + b_1b_2|}{\\sqrt{a_1^2 + '
-                           'b_1^2}\\sqrt{a_2^2 + b_2^2}}$.',
-                           'Trong mọi trường hợp, **Côsin góc giữa hai đường thẳng** luôn được tính bằng '
-                           'công thức $P \\Rightarrow Q$ chỉ sai khi $P$ đúng, $Q$ sai (thuộc Mệnh đề kéo '
-                           'theo) mà không cần điều kiện của Bài 20: Vị trí tương đối giữa hai đường thẳng, '
-                           'góc và khoảng cách.',
-                           'Với bài toán minh họa: “Tính khoảng cách từ điểm $M(1; -2)$ đến đường thẳng '
-                           '$\\Delta: 3x - 4y - 1 = 0$.”, lời giải đúng là: Áp dụng công thức khoảng cách: '
-                           '$d(M, \\Delta) = \\dfrac{|3(1) - 4(-2) - 1|}{\\sqrt{3^2 + (-4)^2}} = \\dfrac{|3 '
-                           '+ 8 - 1|}{5} = \\dfrac{10}{5} = 2$...'],
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 20: Vị trí tương đối giữa '
+                 'hai đường thẳng, góc và khoảng cách**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Xác định được vị trí tương đối (cắt '
+                           'nhau, song song, trùng nhau) và tính được góc giữa hai đường thẳng ($0^\\circ '
+                           '\\le \\varphi \\le 90^\\circ$).',
+                           'Trong **Bài 20: Vị trí tương đối giữa hai đường thẳng, góc và khoảng cách**, quy '
+                           'tắc/công thức **Côsin góc giữa hai đường thẳng** được viết là: $\\cos(\\Delta_1, '
+                           '\\Delta_2) = \\dfrac{|a_1a_2 + b_1b_2|}{\\sqrt{a_1^2 + b_1^2}\\sqrt{a_2^2 + '
+                           'b_2^2}}$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $\\cos(\\Delta_1, \\Delta_2) = '
+                           '\\dfrac{|a_1a_2 - b_1b_2|}{\\sqrt{a_1^2 + b_1^2}\\sqrt{a_2^2 + b_2^2}}$ thì kết '
+                           'quả của **Côsin góc giữa hai đường thẳng** trong **Bài 20: Vị trí tương đối giữa '
+                           'hai đường thẳng, góc và khoảng cách** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Tính khoảng cách từ điểm $M(1; -2)$ đến đường thẳng '
+                           '$\\Delta: 3x - 4y - 1 = 0$.”, kết quả giải đúng là: Áp dụng công thức khoảng '
+                           'cách: $d(M, \\Delta) = \\dfrac{|3(1) - 4(-2) - 1|}{\\sqrt{3^2 + (-4)^2}} = '
+                           '\\dfrac{|3 + 8 - 1|}{5} = \\dfrac{10}{5} = 2$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 20: Vị trí tương đối giữa hai đường thẳng, '
-                        'góc và khoảng cách. b) **Đúng** theo công thức trọng tâm **Côsin góc giữa hai đường '
-                        'thẳng** ($\\cos(\\Delta_1, \\Delta_2) = \\dfrac{|a_1a_2 + b_1b_2|}{\\sqrt{a_1^2 + '
-                        'b_1^2}\\sqrt{a_2^2 + b_2^2}}$). c) **Sai** vì $P \\Rightarrow Q$ chỉ sai khi $P$ '
-                        'đúng, $Q$ sai là công thức của nội dung khác, không phải quy tắc chung của **Côsin '
-                        'góc giữa hai đường thẳng**. d) **Đúng** theo lời giải ví dụ minh họa trong bài '
+                        'góc và khoảng cách. b) **Đúng** theo công thức **Côsin góc giữa hai đường thẳng** '
+                        '($\\cos(\\Delta_1, \\Delta_2) = \\dfrac{|a_1a_2 + b_1b_2|}{\\sqrt{a_1^2 + '
+                        'b_1^2}\\sqrt{a_2^2 + b_2^2}}$). c) **Sai** vì công thức đúng của **Côsin góc giữa '
+                        'hai đường thẳng** phải là $\\cos(\\Delta_1, \\Delta_2) = \\dfrac{|a_1a_2 + '
+                        'b_1b_2|}{\\sqrt{a_1^2 + b_1^2}\\sqrt{a_2^2 + b_2^2}}$ chứ không phải '
+                        '$\\cos(\\Delta_1, \\Delta_2) = \\dfrac{|a_1a_2 - b_1b_2|}{\\sqrt{a_1^2 + '
+                        'b_1^2}\\sqrt{a_2^2 + b_2^2}}$. d) **Đúng** theo lời giải ví dụ minh họa trong bài '
                         'học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 20: Vị trí tương đối giữa hai đường thẳng, góc và khoảng cách** '
-                 'để giải quyết tình huống sau: Tính khoảng cách từ điểm $M(1; -2)$ đến đường thẳng '
-                 '$\\Delta: 3x - 4y - 1 = 0$. Kết quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ["Mệnh đề phủ định là $\\overline{P}$: '$\\exists x \\in \\mathbb{R}, x^2 + 1 \\le "
-                        "0$'. Vì $x^2 \\ge 0 \\Rightarrow x^2 + 1 \\ge 1 > 0$ với mọi $x \\in \\mathbb{R}$ "
-                        'nê...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 20: Vị trí tương đối giữa hai đường thẳng, góc và '
+                 'khoảng cách** để giải bài toán sau: Tính khoảng cách từ điểm $M(1; -2)$ đến đường thẳng '
+                 '$\\Delta: 3x - 4y - 1 = 0$. Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Áp dụng công thức khoảng cách: $d(M, \\Delta) = \\dfrac{|3(1) - 4(-2) - '
+                        '1|}{\\sqrt{3^2 - (-4)^2}} = \\dfrac{|3 + 8 - 1|}{5} = \\dfrac{10}{5} = 2$.',
                         'Áp dụng công thức khoảng cách: $d(M, \\Delta) = \\dfrac{|3(1) - 4(-2) - '
                         '1|}{\\sqrt{3^2 + (-4)^2}} = \\dfrac{|3 + 8 - 1|}{5} = \\dfrac{10}{5} = 2$.',
-                        'Biểu diễn trên trục số, ta được: - $A \\cap B = (1; 3)$; - $A \\cup B = [-2; 5]$; - '
-                        '$A \\setminus B = [-2; 1]$.',
-                        'Thay $x = 1, y = 2$ vào vế trái của bất phương trình: $2(1) - 3(2) + 1 = 2 - 6 + 1 '
-                        '= -3 < 0$ (đúng). Vậy điểm $A(1; 2)$ thuộc miền nghiệm của bất phương tr...'],
+                        'Áp dụng công thức khoảng cách: $d(M, \\Delta) = \\dfrac{|3(1) - 4(-2) - '
+                        '1|}{\\sqrt{3^2 + (-4)^2}} = \\dfrac{5}{|3 + 8 - 1|} = \\dfrac{10}{5} = 2$.',
+                        'Áp dụng công thức khoảng cách: $d(M, \\Delta) = \\dfrac{|6(1) - 4(-2) - '
+                        '1|}{\\sqrt{3^2 + (-4)^2}} = \\dfrac{|3 + 8 - 1|}{5} = \\dfrac{10}{5} = 2$.'],
             'answer': 1,
             'solution': 'Lời giải chi tiết theo Bài 20: Vị trí tương đối giữa hai đường thẳng, góc và khoảng '
                         'cách: Áp dụng công thức khoảng cách:\n'
@@ -3627,8 +3732,8 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
                    'phương trình dạng khai triển.',
                    'Viết được phương trình đường tròn và phương trình tiếp tuyến của đường tròn tại một điểm '
                    'thuộc đường tròn.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Phương trình đường tròn tâm $I(a; b)$, bán '
-                   'kính $R$** ($(x - a)^2 + (y - b)^2 = R^2$) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 21: Đường tròn trong mặt phẳng tọa độ** để giải bài tập '
+                   'minh họa và bài toán thực tiễn.'],
   'definition': 'Phương trình đường tròn $(C)$ có tâm $I(a; b)$ và bán kính $R > 0$ là $(x - a)^2 + (y - '
                 'b)^2 = R^2$.',
   'theory': '1. Phương trình dạng khai triển $x^2 + y^2 - 2ax - 2by + c = 0$ là phương trình của một đường '
@@ -3674,28 +3779,27 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 21: Đường tròn trong mặt phẳng tọa độ**, công thức hoặc '
-                 'quy tắc nào sau đây biểu diễn đúng **Phương trình đường tròn tâm $I(a; b)$, bán kính '
-                 '$R$**?',
-            'options': ['$x^2 + y^2 - 2ax - 2by + c = 0$ ($a^2 + b^2 - c > 0$)',
-                        '$(x_0 - a)(x - x_0) + (y_0 - b)(y - y_0) = 0$',
+            'q': 'Trong **Bài 21: Đường tròn trong mặt phẳng tọa độ**, quy tắc hoặc công thức nào sau đây '
+                 'xác định đúng **Phương trình đường tròn tâm $I(a; b)$, bán kính $R$**?',
+            'options': ['$(x - a)^2 - (y - b)^2 = R^2$',
+                        '$(x - a)^2 + (y - b)^2 = R^1$',
                         '$(x - a)^2 + (y - b)^2 = R^2$',
-                        '$P \\Rightarrow Q$ chỉ sai khi $P$ đúng, $Q$ sai'],
+                        '$(x - a)^4 + (y - b)^2 = R^2$'],
             'answer': 2,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 21: Đường tròn trong mặt phẳng tọa độ, '
-                        '**Phương trình đường tròn tâm $I(a; b)$, bán kính $R$** được xác định bởi: $(x - '
-                        'a)^2 + (y - b)^2 = R^2$. (Mọi điểm $M(x; y) \\in (C) \\Leftrightarrow IM = R$)'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 21: Đường tròn trong mặt phẳng tọa độ, **Phương '
+                        'trình đường tròn tâm $I(a; b)$, bán kính $R$** được xác định bởi: $(x - a)^2 + (y - '
+                        'b)^2 = R^2$. (Mọi điểm $M(x; y) \\in (C) \\Leftrightarrow IM = R$)'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 21: Đường tròn trong mặt phẳng tọa độ**, nội dung/biểu thức $x^2 + y^2 - 2ax - '
-                 '2by + c = 0$ ($a^2 + b^2 - c > 0$) là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Phương trình đường tròn tâm $I(a; b)$, bán kính $R$',
-                        'Tiếp tuyến tại $M_0(x_0; y_0) \\in (C)$',
-                        'Mệnh đề kéo theo',
-                        'Dạng khai triển'],
+            'q': 'Khi học **Bài 21: Đường tròn trong mặt phẳng tọa độ**, biểu thức hoặc quy tắc nào dưới đây '
+                 'biểu diễn đúng **Dạng khai triển**?',
+            'options': ['$x^2 - y^2 - 2ax - 2by + c = 0$ ($a^2 + b^2 - c > 0$)',
+                        '$x^2 + y^2 - 2ax - 2by + c = 0$ ($a^2 + b^2 - c > 1$)',
+                        '$x^4 + y^2 - 2ax - 2by + c = 0$ ($a^2 + b^2 - c > 0$)',
+                        '$x^2 + y^2 - 2ax - 2by + c = 0$ ($a^2 + b^2 - c > 0$)'],
             'answer': 3,
-            'solution': 'Trong Bài 21: Đường tròn trong mặt phẳng tọa độ, biểu thức/quy tắc $x^2 + y^2 - 2ax '
-                        '- 2by + c = 0$ ($a^2 + b^2 - c > 0$) chính là nội dung của **Dạng khai triển**.'},
+            'solution': 'Trong Bài 21: Đường tròn trong mặt phẳng tọa độ, **Dạng khai triển** có công '
+                        'thức/quy tắc là: $x^2 + y^2 - 2ax - 2by + c = 0$ ($a^2 + b^2 - c > 0$).'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Phương trình nào sau đây là phương trình của một đường tròn?',
@@ -3710,20 +3814,21 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 21: Đường tròn trong mặt phẳng tọa độ** (Chương VII: Phương pháp tọa độ '
-                 'trong mặt phẳng), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất '
-                 'kiến thức của bài?',
-            'options': ['Nhận biết được mệnh đề toán học, mệnh đề chứa biến và xác định tính đúng sai của '
-                        'một mệnh đề.',
+            'q': 'Để nắm vững bản chất của **Bài 21: Đường tròn trong mặt phẳng tọa độ**, nhận định nào sau '
+                 'đây là **chính xác**?',
+            'options': ['Tìm được tọa độ tâm $I$ và bán kính $R$ của đường tròn từ phương trình chính tắc '
+                        'hoặc phương trình dạng khai triển. (với dấu ngược lại)',
                         'Tìm được tọa độ tâm $I$ và bán kính $R$ của đường tròn từ phương trình chính tắc '
                         'hoặc phương trình dạng khai triển.',
-                        'Thiết lập được mệnh đề phủ định $\\overline{P}$, mệnh đề kéo theo $P \\Rightarrow '
-                        'Q$, mệnh đề đảo và mệnh đề tương đương $P \\Leftrightarrow Q$.',
-                        'Sử dụng đúng kí hiệu với mọi ($\\forall$) và tồn tại ($\\exists$).'],
+                        'Đảo ngược vế của quy tắc: Tìm được tọa độ tâm $I$ và bán kính $R$ của đường tròn từ '
+                        'phương trình chính tắc hoặc phương trình dạng khai triển.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Tìm được tọa độ tâm $I$ và bán '
+                        'kính $R$ của đường tròn từ phương trình chính tắc hoặc phương trình dạng khai '
+                        'triển.'],
             'answer': 1,
-            'solution': 'Theo yêu cầu cần đạt của Bài 21: Đường tròn trong mặt phẳng tọa độ: Tìm được tọa độ '
-                        'tâm $I$ và bán kính $R$ của đường tròn từ phương trình chính tắc hoặc phương trình '
-                        'dạng khai triển.'},
+            'solution': 'Theo nội dung cốt lõi của Bài 21: Đường tròn trong mặt phẳng tọa độ: Tìm được tọa '
+                        'độ tâm $I$ và bán kính $R$ của đường tròn từ phương trình chính tắc hoặc phương '
+                        'trình dạng khai triển.'},
            {'level': 'hieu',
             'type': 'tf4',
             'q': 'Trong mặt phẳng tọa độ $Oxy$, cho đường tròn $(C): (x - 1)^2 + (y - 2)^2 = 25$.',
@@ -3739,43 +3844,44 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 21: Đường tròn trong '
-                 'mặt phẳng tọa độ**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Tìm được tọa độ tâm $I$ và bán '
-                           'kính $R$ của đường tròn từ phương trình chính tắc hoặc phương trình dạng khai '
-                           'triển.',
-                           'Quy tắc/công thức **Phương trình đường tròn tâm $I(a; b)$, bán kính $R$** trong '
-                           'bài được xác định bởi: $(x - a)^2 + (y - b)^2 = R^2$.',
-                           'Trong mọi trường hợp, **Phương trình đường tròn tâm $I(a; b)$, bán kính $R$** '
-                           'luôn được tính bằng công thức $P \\Rightarrow Q$ chỉ sai khi $P$ đúng, $Q$ sai '
-                           '(thuộc Mệnh đề kéo theo) mà không cần điều kiện của Bài 21: Đường tròn trong mặt '
-                           'phẳng tọa độ.',
-                           'Với bài toán minh họa: “Tìm tâm và bán kính của đường tròn $(C): x^2 + y^2 - 4x '
-                           '+ 6y - 12 = 0$.”, lời giải đúng là: Phương trình có dạng $x^2 + y^2 - 2ax - 2by '
-                           '+ c = 0$ với $a = 2, b = -3, c = -12$. Vậy đường tròn $(C)$ có tâm $I(2; -3)$ và '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 21: Đường tròn trong mặt '
+                 'phẳng tọa độ**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Tìm được tọa độ tâm $I$ và bán kính $R$ '
+                           'của đường tròn từ phương trình chính tắc hoặc phương trình dạng khai triển.',
+                           'Trong **Bài 21: Đường tròn trong mặt phẳng tọa độ**, quy tắc/công thức **Phương '
+                           'trình đường tròn tâm $I(a; b)$, bán kính $R$** được viết là: $(x - a)^2 + (y - '
+                           'b)^2 = R^2$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $(x - a)^2 - (y - b)^2 = R^2$ thì kết quả '
+                           'của **Phương trình đường tròn tâm $I(a; b)$, bán kính $R$** trong **Bài 21: '
+                           'Đường tròn trong mặt phẳng tọa độ** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Tìm tâm và bán kính của đường tròn $(C): x^2 + y^2 - 4x + 6y '
+                           '- 12 = 0$.”, kết quả giải đúng là: Phương trình có dạng $x^2 + y^2 - 2ax - 2by + '
+                           'c = 0$ với $a = 2, b = -3, c = -12$. Vậy đường tròn $(C)$ có tâm $I(2; -3)$ và '
                            'bán kính $R = \\sqrt{2^2 + (-3)^2 - (-12)} = \\sqrt{4 + 9 + 12} = 5$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 21: Đường tròn trong mặt phẳng tọa độ. b) '
-                        '**Đúng** theo công thức trọng tâm **Phương trình đường tròn tâm $I(a; b)$, bán kính '
-                        '$R$** ($(x - a)^2 + (y - b)^2 = R^2$). c) **Sai** vì $P \\Rightarrow Q$ chỉ sai khi '
-                        '$P$ đúng, $Q$ sai là công thức của nội dung khác, không phải quy tắc chung của '
-                        '**Phương trình đường tròn tâm $I(a; b)$, bán kính $R$**. d) **Đúng** theo lời giải '
-                        'ví dụ minh họa trong bài học.'},
+                        '**Đúng** theo công thức **Phương trình đường tròn tâm $I(a; b)$, bán kính $R$** '
+                        '($(x - a)^2 + (y - b)^2 = R^2$). c) **Sai** vì công thức đúng của **Phương trình '
+                        'đường tròn tâm $I(a; b)$, bán kính $R$** phải là $(x - a)^2 + (y - b)^2 = R^2$ chứ '
+                        'không phải $(x - a)^2 - (y - b)^2 = R^2$. d) **Đúng** theo lời giải ví dụ minh họa '
+                        'trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 21: Đường tròn trong mặt phẳng tọa độ** để giải quyết tình huống '
-                 'sau: Tìm tâm và bán kính của đường tròn $(C): x^2 + y^2 - 4x + 6y - 12 = 0$. Kết quả và '
-                 'hướng giải nào dưới đây là **đúng**?',
-            'options': ["Mệnh đề phủ định là $\\overline{P}$: '$\\exists x \\in \\mathbb{R}, x^2 + 1 \\le "
-                        "0$'. Vì $x^2 \\ge 0 \\Rightarrow x^2 + 1 \\ge 1 > 0$ với mọi $x \\in \\mathbb{R}$ "
-                        'nê...',
-                        'Biểu diễn trên trục số, ta được: - $A \\cap B = (1; 3)$; - $A \\cup B = [-2; 5]$; - '
-                        '$A \\setminus B = [-2; 1]$.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 21: Đường tròn trong mặt phẳng tọa độ** để giải bài '
+                 'toán sau: Tìm tâm và bán kính của đường tròn $(C): x^2 + y^2 - 4x + 6y - 12 = 0$. Cách '
+                 'giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Phương trình có dạng $x^2 - y^2 - 2ax - 2by + c = 0$ với $a = 2, b = -3, c = -12$. '
+                        'Vậy đường tròn $(C)$ có tâm $I(2; -3)$ và bán kính $R = \\sqrt{2^2 + (-3)^2 - '
+                        '(-12)} = \\sqrt{4 + 9 + 12} = 5$...',
+                        'Phương trình có dạng $x^2 + y^2 - 2ax - 2by + c = 0$ với $a = 2, b = -3, c = -12$. '
+                        'Vậy đường tròn $(C)$ có tâm $I(2; -3)$ và bán kính $R = \\sqrt{2^2 + (-3)^2 - '
+                        '(-12)} = \\sqrt{4 + 9 + 12} = 4$...',
                         'Phương trình có dạng $x^2 + y^2 - 2ax - 2by + c = 0$ với $a = 2, b = -3, c = -12$. '
                         'Vậy đường tròn $(C)$ có tâm $I(2; -3)$ và bán kính $R = \\sqrt{2^2 + (-3)^2 - '
                         '(-12)} = \\sqrt{4 + 9 + 12} = 5$...',
-                        'Thay $x = 1, y = 2$ vào vế trái của bất phương trình: $2(1) - 3(2) + 1 = 2 - 6 + 1 '
-                        '= -3 < 0$ (đúng). Vậy điểm $A(1; 2)$ thuộc miền nghiệm của bất phương tr...'],
+                        'Phương trình có dạng $x^4 + y^2 - 2ax - 2by + c = 0$ với $a = 2, b = -3, c = -12$. '
+                        'Vậy đường tròn $(C)$ có tâm $I(2; -3)$ và bán kính $R = \\sqrt{2^2 + (-3)^2 - '
+                        '(-12)} = \\sqrt{4 + 9 + 12} = 5$...'],
             'answer': 2,
             'solution': 'Lời giải chi tiết theo Bài 21: Đường tròn trong mặt phẳng tọa độ: Phương trình có '
                         'dạng $x^2 + y^2 - 2ax - 2by + c = 0$ với $a = 2, b = -3, c = -12$.\n'
@@ -3802,8 +3908,8 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
                    'tiêu cự $2c$ của Elip và Hypebol.',
                    'Nhận biết được phương trình chính tắc, tiêu điểm $F$ và đường chuẩn $\\Delta$ của '
                    'Parabol.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Elip ($a > b > 0$)** ($\\dfrac{x^2}{a^2} + '
-                   '\\dfrac{y^2}{b^2} = 1$ với $c^2 = a^2 - b^2$) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 22: Ba đường conic (Elip, Hypebol, Parabol)** để giải bài '
+                   'tập minh họa và bài toán thực tiễn.'],
   'definition': 'Ba đường conic gồm: Elip (tập hợp các điểm $M$ có $MF_1 + MF_2 = 2a$), Hypebol (tập hợp các '
                 'điểm $M$ có $|MF_1 - MF_2| = 2a$) và Parabol (tập hợp các điểm $M$ cách đều tiêu điểm $F$ '
                 'và đường chuẩn $\\Delta$).',
@@ -3852,30 +3958,29 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 22: Ba đường conic (Elip, Hypebol, Parabol)**, công thức '
-                 'hoặc quy tắc nào sau đây biểu diễn đúng **Elip ($a > b > 0$)**?',
-            'options': ['$\\dfrac{x^2}{a^2} - \\dfrac{y^2}{b^2} = 1$ với $c^2 = a^2 + b^2$',
-                        '$y^2 = 2px$',
-                        '$P \\Rightarrow Q$ chỉ sai khi $P$ đúng, $Q$ sai',
+            'q': 'Trong **Bài 22: Ba đường conic (Elip, Hypebol, Parabol)**, quy tắc hoặc công thức nào sau '
+                 'đây xác định đúng **Elip ($a > b > 0$)**?',
+            'options': ['$\\dfrac{x^2}{a^2} - \\dfrac{y^2}{b^2} = 1$ với $c^2 = a^2 - b^2$',
+                        '$\\dfrac{a^2}{x^2} + \\dfrac{y^2}{b^2} = 1$ với $c^2 = a^2 - b^2$',
+                        '$\\dfrac{x^4}{a^2} + \\dfrac{y^2}{b^2} = 1$ với $c^2 = a^2 - b^2$',
                         '$\\dfrac{x^2}{a^2} + \\dfrac{y^2}{b^2} = 1$ với $c^2 = a^2 - b^2$'],
             'answer': 3,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 22: Ba đường conic (Elip, Hypebol, Parabol), '
+            'solution': 'Theo kiến thức trọng tâm của Bài 22: Ba đường conic (Elip, Hypebol, Parabol), '
                         '**Elip ($a > b > 0$)** được xác định bởi: $\\dfrac{x^2}{a^2} + \\dfrac{y^2}{b^2} = '
                         '1$ với $c^2 = a^2 - b^2$. (Tiêu điểm $F_1(-c; 0), F_2(c; 0)$; độ dài trục lớn $2a$, '
                         'trục nhỏ $2b$)'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 22: Ba đường conic (Elip, Hypebol, Parabol)**, nội dung/biểu thức '
-                 '$\\dfrac{x^2}{a^2} - \\dfrac{y^2}{b^2} = 1$ với $c^2 = a^2 + b^2$ là quy tắc hoặc công '
-                 'thức của mục nào sau đây?',
-            'options': ['Hypebol ($a, b > 0$)',
-                        'Elip ($a > b > 0$)',
-                        'Parabol ($p > 0$)',
-                        'Mệnh đề kéo theo'],
+            'q': 'Khi học **Bài 22: Ba đường conic (Elip, Hypebol, Parabol)**, biểu thức hoặc quy tắc nào '
+                 'dưới đây biểu diễn đúng **Hypebol ($a, b > 0$)**?',
+            'options': ['$\\dfrac{x^2}{a^2} - \\dfrac{y^2}{b^2} = 1$ với $c^2 = a^2 + b^2$',
+                        '$\\dfrac{x^2}{a^2} - \\dfrac{y^2}{b^2} = 1$ với $c^2 = a^2 - b^2$',
+                        '$\\dfrac{a^2}{x^2} - \\dfrac{y^2}{b^2} = 1$ với $c^2 = a^2 + b^2$',
+                        '$\\dfrac{x^4}{a^2} - \\dfrac{y^2}{b^2} = 1$ với $c^2 = a^2 + b^2$'],
             'answer': 0,
-            'solution': 'Trong Bài 22: Ba đường conic (Elip, Hypebol, Parabol), biểu thức/quy tắc '
-                        '$\\dfrac{x^2}{a^2} - \\dfrac{y^2}{b^2} = 1$ với $c^2 = a^2 + b^2$ chính là nội dung '
-                        'của **Hypebol ($a, b > 0$)**.'},
+            'solution': 'Trong Bài 22: Ba đường conic (Elip, Hypebol, Parabol), **Hypebol ($a, b > 0$)** có '
+                        'công thức/quy tắc là: $\\dfrac{x^2}{a^2} - \\dfrac{y^2}{b^2} = 1$ với $c^2 = a^2 + '
+                        'b^2$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Cho hypebol $(H): \\dfrac{x^2}{9} - \\dfrac{y^2}{16} = 1$. Tiêu cự $2c$ của hypebol $(H)$ '
@@ -3888,20 +3993,21 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 22: Ba đường conic (Elip, Hypebol, Parabol)** (Chương VII: Phương pháp tọa '
-                 'độ trong mặt phẳng), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất '
-                 'kiến thức của bài?',
-            'options': ['Nhận biết được mệnh đề toán học, mệnh đề chứa biến và xác định tính đúng sai của '
-                        'một mệnh đề.',
-                        'Thiết lập được mệnh đề phủ định $\\overline{P}$, mệnh đề kéo theo $P \\Rightarrow '
-                        'Q$, mệnh đề đảo và mệnh đề tương đương $P \\Leftrightarrow Q$.',
+            'q': 'Để nắm vững bản chất của **Bài 22: Ba đường conic (Elip, Hypebol, Parabol)**, nhận định '
+                 'nào sau đây là **chính xác**?',
+            'options': ['Nhận biết được định nghĩa, phương trình chính tắc, các đỉnh, tiêu điểm $F_1, F_2$ '
+                        'và tiêu cự $2c$ của Elip và Hypebol. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Nhận biết được định nghĩa, phương trình chính tắc, các '
+                        'đỉnh, tiêu điểm $F_1, F_2$ và tiêu cự $2c$ của Elip và Hypebol.',
                         'Nhận biết được định nghĩa, phương trình chính tắc, các đỉnh, tiêu điểm $F_1, F_2$ '
                         'và tiêu cự $2c$ của Elip và Hypebol.',
-                        'Sử dụng đúng kí hiệu với mọi ($\\forall$) và tồn tại ($\\exists$).'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nhận biết được định nghĩa, '
+                        'phương trình chính tắc, các đỉnh, tiêu điểm $F_1, F_2$ và tiêu cự $2c$ của Elip và '
+                        'Hypebol.'],
             'answer': 2,
-            'solution': 'Theo yêu cầu cần đạt của Bài 22: Ba đường conic (Elip, Hypebol, Parabol): Nhận biết '
-                        'được định nghĩa, phương trình chính tắc, các đỉnh, tiêu điểm $F_1, F_2$ và tiêu cự '
-                        '$2c$ của Elip và Hypebol.'},
+            'solution': 'Theo nội dung cốt lõi của Bài 22: Ba đường conic (Elip, Hypebol, Parabol): Nhận '
+                        'biết được định nghĩa, phương trình chính tắc, các đỉnh, tiêu điểm $F_1, F_2$ và '
+                        'tiêu cự $2c$ của Elip và Hypebol.'},
            {'level': 'hieu',
             'type': 'tf4',
             'q': 'Trong mặt phẳng tọa độ $Oxy$, cho elip $(E): \\dfrac{x^2}{100} + \\dfrac{y^2}{64} = 1$.',
@@ -3916,44 +4022,41 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 22: Ba đường conic '
-                 '(Elip, Hypebol, Parabol)**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được định nghĩa, phương '
-                           'trình chính tắc, các đỉnh, tiêu điểm $F_1, F_2$ và tiêu cự $2c$ của Elip và '
-                           'Hypebol.',
-                           'Quy tắc/công thức **Elip ($a > b > 0$)** trong bài được xác định bởi: '
-                           '$\\dfrac{x^2}{a^2} + \\dfrac{y^2}{b^2} = 1$ với $c^2 = a^2 - b^2$.',
-                           'Trong mọi trường hợp, **Elip ($a > b > 0$)** luôn được tính bằng công thức $P '
-                           '\\Rightarrow Q$ chỉ sai khi $P$ đúng, $Q$ sai (thuộc Mệnh đề kéo theo) mà không '
-                           'cần điều kiện của Bài 22: Ba đường conic (Elip, Hypebol, Parabol).',
-                           'Với bài toán minh họa: “Cho elip $(E): \\dfrac{x^2}{25} + \\dfrac{y^2}{9} = 1$. '
-                           'Tìm độ dài trục lớn, trục nhỏ, tọa độ các tiêu điểm và tiêu cự của $(E)$.”, lời '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 22: Ba đường conic (Elip, '
+                 'Hypebol, Parabol)**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết được định nghĩa, phương trình '
+                           'chính tắc, các đỉnh, tiêu điểm $F_1, F_2$ và tiêu cự $2c$ của Elip và Hypebol.',
+                           'Trong **Bài 22: Ba đường conic (Elip, Hypebol, Parabol)**, quy tắc/công thức '
+                           '**Elip ($a > b > 0$)** được viết là: $\\dfrac{x^2}{a^2} + \\dfrac{y^2}{b^2} = 1$ '
+                           'với $c^2 = a^2 - b^2$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $\\dfrac{x^2}{a^2} - \\dfrac{y^2}{b^2} = 1$ '
+                           'với $c^2 = a^2 - b^2$ thì kết quả của **Elip ($a > b > 0$)** trong **Bài 22: Ba '
+                           'đường conic (Elip, Hypebol, Parabol)** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Cho elip $(E): \\dfrac{x^2}{25} + \\dfrac{y^2}{9} = 1$. Tìm '
+                           'độ dài trục lớn, trục nhỏ, tọa độ các tiêu điểm và tiêu cự của $(E)$.”, kết quả '
                            'giải đúng là: Ta có $a^2 = 25 \\Rightarrow a = 5$; $b^2 = 9 \\Rightarrow b = 3$; '
-                           '$c = \\sqrt{a^2 - b^2} = \\sqrt{25 - 9} = 4$. - Độ dài trục lớn $2a = 10$, '
-                           'độ...'],
+                           '$c = \\sqrt{a^2 - b^2} = \\sqrt{25 - 9} = 4$. - Độ dài trục lớn $2a = 10$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 22: Ba đường conic (Elip, Hypebol, '
-                        'Parabol). b) **Đúng** theo công thức trọng tâm **Elip ($a > b > 0$)** '
-                        '($\\dfrac{x^2}{a^2} + \\dfrac{y^2}{b^2} = 1$ với $c^2 = a^2 - b^2$). c) **Sai** vì '
-                        '$P \\Rightarrow Q$ chỉ sai khi $P$ đúng, $Q$ sai là công thức của nội dung khác, '
-                        'không phải quy tắc chung của **Elip ($a > b > 0$)**. d) **Đúng** theo lời giải ví '
-                        'dụ minh họa trong bài học.'},
+                        'Parabol). b) **Đúng** theo công thức **Elip ($a > b > 0$)** ($\\dfrac{x^2}{a^2} + '
+                        '\\dfrac{y^2}{b^2} = 1$ với $c^2 = a^2 - b^2$). c) **Sai** vì công thức đúng của '
+                        '**Elip ($a > b > 0$)** phải là $\\dfrac{x^2}{a^2} + \\dfrac{y^2}{b^2} = 1$ với $c^2 '
+                        '= a^2 - b^2$ chứ không phải $\\dfrac{x^2}{a^2} - \\dfrac{y^2}{b^2} = 1$ với $c^2 = '
+                        'a^2 - b^2$. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 22: Ba đường conic (Elip, Hypebol, Parabol)** để giải quyết tình '
-                 'huống sau: Cho elip $(E): \\dfrac{x^2}{25} + \\dfrac{y^2}{9} = 1$. Tìm độ dài trục lớn, '
-                 'trục nhỏ, tọa độ các tiêu điểm và tiêu cự của $(E)$. Kết quả và hướng giải nào dưới đây là '
-                 '**đúng**?',
-            'options': ["Mệnh đề phủ định là $\\overline{P}$: '$\\exists x \\in \\mathbb{R}, x^2 + 1 \\le "
-                        "0$'. Vì $x^2 \\ge 0 \\Rightarrow x^2 + 1 \\ge 1 > 0$ với mọi $x \\in \\mathbb{R}$ "
-                        'nê...',
-                        'Biểu diễn trên trục số, ta được: - $A \\cap B = (1; 3)$; - $A \\cup B = [-2; 5]$; - '
-                        '$A \\setminus B = [-2; 1]$.',
-                        'Thay $x = 1, y = 2$ vào vế trái của bất phương trình: $2(1) - 3(2) + 1 = 2 - 6 + 1 '
-                        '= -3 < 0$ (đúng). Vậy điểm $A(1; 2)$ thuộc miền nghiệm của bất phương tr...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 22: Ba đường conic (Elip, Hypebol, Parabol)** để '
+                 'giải bài toán sau: Cho elip $(E): \\dfrac{x^2}{25} + \\dfrac{y^2}{9} = 1$. Tìm độ dài trục '
+                 'lớn, trục nhỏ, tọa độ các tiêu điểm và tiêu cự của $(E)$. Cách giải và kết quả nào dưới '
+                 'đây là **đúng**?',
+            'options': ['Ta có $a^2 = 25 \\Rightarrow a = 5$; $b^2 = 9 \\Rightarrow b = 3$; $c = \\sqrt{a^2 '
+                        '+ b^2} = \\sqrt{25 - 9} = 4$. - Độ dài trục lớn $2a = 10$, độ dài trục...',
                         'Ta có $a^2 = 25 \\Rightarrow a = 5$; $b^2 = 9 \\Rightarrow b = 3$; $c = \\sqrt{a^2 '
-                        '- b^2} = \\sqrt{25 - 9} = 4$. - Độ dài trục lớn $2a = 10$, độ dài trục nhỏ $2b = '
-                        '6$...'],
+                        '- b^2} = \\sqrt{25 - 9} = 4$. - Độ dài trục lớn $2a = 9$, độ dài trục...',
+                        'Ta có $a^4 = 25 \\Rightarrow a = 5$; $b^2 = 9 \\Rightarrow b = 3$; $c = \\sqrt{a^2 '
+                        '- b^2} = \\sqrt{25 - 9} = 4$. - Độ dài trục lớn $2a = 10$, độ dài trục...',
+                        'Ta có $a^2 = 25 \\Rightarrow a = 5$; $b^2 = 9 \\Rightarrow b = 3$; $c = \\sqrt{a^2 '
+                        '- b^2} = \\sqrt{25 - 9} = 4$. - Độ dài trục lớn $2a = 10$, độ dài trục...'],
             'answer': 3,
             'solution': 'Lời giải chi tiết theo Bài 22: Ba đường conic (Elip, Hypebol, Parabol): Ta có $a^2 '
                         '= 25 \\Rightarrow a = 5$; $b^2 = 9 \\Rightarrow b = 3$; $c = \\sqrt{a^2 - b^2} = '
@@ -3981,8 +4084,8 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
   'requirements': ['Phân biệt và vận dụng được quy tắc cộng (công việc chia theo các phương án độc lập) và '
                    'quy tắc nhân (công việc gồm các công đoạn liên tiếp).',
                    'Sử dụng được sơ đồ hình cây trong các bài toán đếm đơn giản.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Quy tắc cộng** ($N = m + n$) vào giải bài '
-                   'tập.'],
+                   'Vận dụng kiến thức của **Bài 23: Quy tắc đếm** để giải bài tập minh họa và bài toán thực '
+                   'tiễn.'],
   'definition': 'Quy tắc cộng dùng khi một công việc được hoàn thành bởi một trong các phương án khác nhau; '
                 'Quy tắc nhân dùng khi một công việc được hoàn thành qua nhiều công đoạn liên tiếp.',
   'theory': '1. Quy tắc cộng: Giả sử một công việc có thể được thực hiện theo phương án $A$ (có $m$ cách) '
@@ -4025,23 +4128,26 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 23: Quy tắc đếm**, công thức hoặc quy tắc nào sau đây '
-                 'biểu diễn đúng **Quy tắc cộng**?',
+            'q': 'Trong **Bài 23: Quy tắc đếm**, quy tắc hoặc công thức nào sau đây xác định đúng **Quy tắc '
+                 'cộng**?',
             'options': ['$N = m + n$',
-                        '$N = m \\cdot n$',
-                        '$P \\Rightarrow Q$ chỉ sai khi $P$ đúng, $Q$ sai',
-                        '$P \\Leftrightarrow Q$ đúng khi $P, Q$ cùng tính đúng sai'],
+                        '$N = m - n$',
+                        'Đảo ngược vế của quy tắc: $N = m + n$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $N = m + n$'],
             'answer': 0,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 23: Quy tắc đếm, **Quy tắc cộng** được xác '
-                        'định bởi: $N = m + n$. (Chia trường hợp / phương án độc lập (từ khóa: HOẶC))'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 23: Quy tắc đếm, **Quy tắc cộng** được xác định '
+                        'bởi: $N = m + n$. (Chia trường hợp / phương án độc lập (từ khóa: HOẶC))'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 23: Quy tắc đếm**, nội dung/biểu thức $N = m \\cdot n$ là quy tắc hoặc công '
-                 'thức của mục nào sau đây?',
-            'options': ['Quy tắc cộng', 'Quy tắc nhân', 'Mệnh đề kéo theo', 'Mệnh đề tương đương'],
+            'q': 'Khi học **Bài 23: Quy tắc đếm**, biểu thức hoặc quy tắc nào dưới đây biểu diễn đúng **Quy '
+                 'tắc nhân**?',
+            'options': ['$N = m : n$',
+                        '$N = m \\cdot n$',
+                        'Đảo ngược vế của quy tắc: $N = m \\cdot n$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $N = m \\cdot n$'],
             'answer': 1,
-            'solution': 'Trong Bài 23: Quy tắc đếm, biểu thức/quy tắc $N = m \\cdot n$ chính là nội dung của '
-                        '**Quy tắc nhân**.'},
+            'solution': 'Trong Bài 23: Quy tắc đếm, **Quy tắc nhân** có công thức/quy tắc là: $N = m \\cdot '
+                        'n$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Từ các chữ số $1, 2, 3, 4, 5$ có thể lập được bao nhiêu số tự nhiên có $3$ chữ số đôi một '
@@ -4054,17 +4160,19 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 23: Quy tắc đếm** (Chương VIII: Đại số tổ hợp), khẳng định nào sau đây phản '
-                 'ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Nhận biết được mệnh đề toán học, mệnh đề chứa biến và xác định tính đúng sai của '
-                        'một mệnh đề.',
-                        'Thiết lập được mệnh đề phủ định $\\overline{P}$, mệnh đề kéo theo $P \\Rightarrow '
-                        'Q$, mệnh đề đảo và mệnh đề tương đương $P \\Leftrightarrow Q$.',
-                        'Sử dụng đúng kí hiệu với mọi ($\\forall$) và tồn tại ($\\exists$).',
+            'q': 'Để nắm vững bản chất của **Bài 23: Quy tắc đếm**, nhận định nào sau đây là **chính xác**?',
+            'options': ['Phân biệt và vận dụng được quy tắc cộng (công việc chia theo các phương án độc lập) '
+                        'và quy tắc nhân (công việc gồm các công đoạn liên tiếp). (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Phân biệt và vận dụng được quy tắc cộng (công việc chia '
+                        'theo các phương án độc lập) và quy tắc nhân (công việc gồm các công đoạn liên '
+                        'tiếp).',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Phân biệt và vận dụng được quy '
+                        'tắc cộng (công việc chia theo các phương án độc lập) và quy tắc nhân (công việc gồm '
+                        'các công đoạn liên tiếp).',
                         'Phân biệt và vận dụng được quy tắc cộng (công việc chia theo các phương án độc lập) '
                         'và quy tắc nhân (công việc gồm các công đoạn liên tiếp).'],
             'answer': 3,
-            'solution': 'Theo yêu cầu cần đạt của Bài 23: Quy tắc đếm: Phân biệt và vận dụng được quy tắc '
+            'solution': 'Theo nội dung cốt lõi của Bài 23: Quy tắc đếm: Phân biệt và vận dụng được quy tắc '
                         'cộng (công việc chia theo các phương án độc lập) và quy tắc nhân (công việc gồm các '
                         'công đoạn liên tiếp).'},
            {'level': 'hieu',
@@ -4086,40 +4194,42 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 23: Quy tắc đếm**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Phân biệt và vận dụng được quy tắc '
-                           'cộng (công việc chia theo các phương án độc lập) và quy tắc nhân (công việc gồm '
-                           'các công đoạn liên tiếp).',
-                           'Quy tắc/công thức **Quy tắc cộng** trong bài được xác định bởi: $N = m + n$.',
-                           'Trong mọi trường hợp, **Quy tắc cộng** luôn được tính bằng công thức $P '
-                           '\\Rightarrow Q$ chỉ sai khi $P$ đúng, $Q$ sai (thuộc Mệnh đề kéo theo) mà không '
-                           'cần điều kiện của Bài 23: Quy tắc đếm.',
-                           'Với bài toán minh họa: “Một tủ sách có 6 quyển sách Toán và 4 quyển sách Vật lí '
-                           'khác nhau. Hỏi có bao nhiêu cách: a) Chọn 1 quyển sách bất kì? b) Chọn 1 quyển '
-                           'Toán...”, lời giải đúng là: a) Theo quy tắc cộng, số cách chọn 1 quyển sách bất '
-                           'kì là $6 + 4 = 10$ (cách). b) Theo quy tắc nhân, số cách chọn 1 quyển Toán và 1 '
-                           'quyển Vậ...'],
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 23: Quy tắc đếm**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Phân biệt và vận dụng được quy tắc cộng '
+                           '(công việc chia theo các phương án độc lập) và quy tắc nhân (công việc gồm các '
+                           'công đoạn liên tiếp).',
+                           'Trong **Bài 23: Quy tắc đếm**, quy tắc/công thức **Quy tắc cộng** được viết là: '
+                           '$N = m + n$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $N = m - n$ thì kết quả của **Quy tắc cộng** '
+                           'trong **Bài 23: Quy tắc đếm** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Một tủ sách có 6 quyển sách Toán và 4 quyển sách Vật lí khác '
+                           'nhau. Hỏi có bao nhiêu cách: a) Chọn 1 quyển sách bất kì? b) Chọn 1 quyển...”, '
+                           'kết quả giải đúng là: a) Theo quy tắc cộng, số cách chọn 1 quyển sách bất kì là '
+                           '$6 + 4 = 10$ (cách). b) Theo quy tắc nhân, số cách chọn 1 quyển Toán và 1 '
+                           'quy...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 23: Quy tắc đếm. b) **Đúng** theo công '
-                        'thức trọng tâm **Quy tắc cộng** ($N = m + n$). c) **Sai** vì $P \\Rightarrow Q$ chỉ '
-                        'sai khi $P$ đúng, $Q$ sai là công thức của nội dung khác, không phải quy tắc chung '
-                        'của **Quy tắc cộng**. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        'thức **Quy tắc cộng** ($N = m + n$). c) **Sai** vì công thức đúng của **Quy tắc '
+                        'cộng** phải là $N = m + n$ chứ không phải $N = m - n$. d) **Đúng** theo lời giải ví '
+                        'dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 23: Quy tắc đếm** để giải quyết tình huống sau: Một tủ sách có 6 '
-                 'quyển sách Toán và 4 quyển sách Vật lí khác nhau. Hỏi có bao nhiêu cách: a) Chọn 1 quyển '
-                 'sách bất kì? b) Chọn 1 quyển Toán và 1 quyển Vật lí? Kết quả và hướng giải nào dưới đây là '
-                 '**đúng**?',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 23: Quy tắc đếm** để giải bài toán sau: Một tủ sách '
+                 'có 6 quyển sách Toán và 4 quyển sách Vật lí khác nhau. Hỏi có bao nhiêu cách: a) Chọn 1 '
+                 'quyển sách bất kì? b) Chọn 1 quyển Toán và 1 quyển Vật lí? Cách giải và kết quả nào dưới '
+                 'đây là **đúng**?',
             'options': ['a) Theo quy tắc cộng, số cách chọn 1 quyển sách bất kì là $6 + 4 = 10$ (cách). b) '
                         'Theo quy tắc nhân, số cách chọn 1 quyển Toán và 1 quyển Vật lí là $6 \\cdot 4 = '
                         '24$...',
-                        "Mệnh đề phủ định là $\\overline{P}$: '$\\exists x \\in \\mathbb{R}, x^2 + 1 \\le "
-                        "0$'. Vì $x^2 \\ge 0 \\Rightarrow x^2 + 1 \\ge 1 > 0$ với mọi $x \\in \\mathbb{R}$ "
-                        'nê...',
-                        'Biểu diễn trên trục số, ta được: - $A \\cap B = (1; 3)$; - $A \\cup B = [-2; 5]$; - '
-                        '$A \\setminus B = [-2; 1]$.',
-                        'Thay $x = 1, y = 2$ vào vế trái của bất phương trình: $2(1) - 3(2) + 1 = 2 - 6 + 1 '
-                        '= -3 < 0$ (đúng). Vậy điểm $A(1; 2)$ thuộc miền nghiệm của bất phương tr...'],
+                        'a) Theo quy tắc cộng, số cách chọn 1 quyển sách bất kì là $6 - 4 = 10$ (cách). b) '
+                        'Theo quy tắc nhân, số cách chọn 1 quyển Toán và 1 quyển Vật lí là $6 \\cdot 4 = '
+                        '24$...',
+                        'a) Theo quy tắc cộng, số cách chọn 1 quyển sách bất kì là $6 + 4 = 10$ (cách). b) '
+                        'Theo quy tắc nhân, số cách chọn 1 quyển Toán và 1 quyển Vật lí là $6 \\cdot 4 = '
+                        '23$...',
+                        'a) Theo quy tắc cộng, số cách chọn 2 quyển sách bất kì là $6 + 4 = 10$ (cách). b) '
+                        'Theo quy tắc nhân, số cách chọn 1 quyển Toán và 1 quyển Vật lí là $6 \\cdot 4 = '
+                        '24$...'],
             'answer': 0,
             'solution': 'Lời giải chi tiết theo Bài 23: Quy tắc đếm: a) Theo quy tắc cộng, số cách chọn 1 '
                         'quyển sách bất kì là $6 + 4 = 10$ (cách).\n'
@@ -4146,7 +4256,8 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
   'requirements': ['Tính được số các hoán vị $P_n$, số các chỉnh hợp $A_n^k$ và số các tổ hợp $C_n^k$.',
                    'Phân biệt được khi nào dùng chỉnh hợp (có thứ tự) và khi nào dùng tổ hợp (không phân '
                    'biệt thứ tự).',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Hoán vị** ($P_n = n!$) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 24: Hoán vị, chỉnh hợp và tổ hợp** để giải bài tập minh họa '
+                   'và bài toán thực tiễn.'],
   'definition': 'Cho tập hợp $A$ gồm $n$ phần tử ($n \\ge 1$): Hoán vị là cách sắp xếp thứ tự cả $n$ phần '
                 'tử; Chỉnh hợp chập $k$ của $n$ là việc lấy $k$ phần tử từ $n$ phần tử và sắp xếp theo thứ '
                 'tự; Tổ hợp chập $k$ của $n$ là một tập con gồm $k$ phần tử của $A$ (không phân biệt thứ '
@@ -4192,23 +4303,26 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 24: Hoán vị, chỉnh hợp và tổ hợp**, công thức hoặc quy '
-                 'tắc nào sau đây biểu diễn đúng **Hoán vị**?',
-            'options': ['$A_n^k = \\dfrac{n!}{(n - k)!}$ ($1 \\le k \\le n$)',
+            'q': 'Trong **Bài 24: Hoán vị, chỉnh hợp và tổ hợp**, quy tắc hoặc công thức nào sau đây xác '
+                 'định đúng **Hoán vị**?',
+            'options': ['$P_n = n!$ (với dấu ngược lại)',
                         '$P_n = n!$',
-                        '$C_n^k = \\dfrac{n!}{k!(n - k)!}$ ($0 \\le k \\le n$)',
-                        '$P \\Rightarrow Q$ chỉ sai khi $P$ đúng, $Q$ sai'],
+                        'Đảo ngược vế của quy tắc: $P_n = n!$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $P_n = n!$'],
             'answer': 1,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 24: Hoán vị, chỉnh hợp và tổ hợp, **Hoán vị** '
-                        'được xác định bởi: $P_n = n!$. (Sắp xếp cả $n$ phần tử (có thứ tự))'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 24: Hoán vị, chỉnh hợp và tổ hợp, **Hoán vị** được '
+                        'xác định bởi: $P_n = n!$. (Sắp xếp cả $n$ phần tử (có thứ tự))'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 24: Hoán vị, chỉnh hợp và tổ hợp**, nội dung/biểu thức $A_n^k = \\dfrac{n!}{(n '
-                 '- k)!}$ ($1 \\le k \\le n$) là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Hoán vị', 'Tổ hợp', 'Chỉnh hợp', 'Mệnh đề kéo theo'],
+            'q': 'Khi học **Bài 24: Hoán vị, chỉnh hợp và tổ hợp**, biểu thức hoặc quy tắc nào dưới đây biểu '
+                 'diễn đúng **Chỉnh hợp**?',
+            'options': ['$A_n^k = \\dfrac{n!}{(n - k)!}$ ($1 \\ge k \\le n$)',
+                        '$A_n^k = \\dfrac{(n - k)!}{n!}$ ($1 \\le k \\le n$)',
+                        '$A_n^k = \\dfrac{n!}{(n - k)!}$ ($1 \\le k \\le n$)',
+                        '$A_n^k = \\dfrac{n!}{(n - k)!}$ ($2 \\le k \\le n$)'],
             'answer': 2,
-            'solution': 'Trong Bài 24: Hoán vị, chỉnh hợp và tổ hợp, biểu thức/quy tắc $A_n^k = '
-                        '\\dfrac{n!}{(n - k)!}$ ($1 \\le k \\le n$) chính là nội dung của **Chỉnh hợp**.'},
+            'solution': 'Trong Bài 24: Hoán vị, chỉnh hợp và tổ hợp, **Chỉnh hợp** có công thức/quy tắc là: '
+                        '$A_n^k = \\dfrac{n!}{(n - k)!}$ ($1 \\le k \\le n$).'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Cho $10$ điểm phân biệt trong mặt phẳng, không có $3$ điểm nào thẳng hàng. Số tam giác có '
@@ -4221,16 +4335,17 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 24: Hoán vị, chỉnh hợp và tổ hợp** (Chương VIII: Đại số tổ hợp), khẳng định '
-                 'nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
+            'q': 'Để nắm vững bản chất của **Bài 24: Hoán vị, chỉnh hợp và tổ hợp**, nhận định nào sau đây '
+                 'là **chính xác**?',
             'options': ['Tính được số các hoán vị $P_n$, số các chỉnh hợp $A_n^k$ và số các tổ hợp $C_n^k$.',
-                        'Nhận biết được mệnh đề toán học, mệnh đề chứa biến và xác định tính đúng sai của '
-                        'một mệnh đề.',
-                        'Thiết lập được mệnh đề phủ định $\\overline{P}$, mệnh đề kéo theo $P \\Rightarrow '
-                        'Q$, mệnh đề đảo và mệnh đề tương đương $P \\Leftrightarrow Q$.',
-                        'Sử dụng đúng kí hiệu với mọi ($\\forall$) và tồn tại ($\\exists$).'],
+                        'Tính được số các hoán vị $P_n$, số các chỉnh hợp $A_n^k$ và số các tổ hợp $C_n^k$. '
+                        '(với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Tính được số các hoán vị $P_n$, số các chỉnh hợp $A_n^k$ '
+                        'và số các tổ hợp $C_n^k$.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Tính được số các hoán vị $P_n$, '
+                        'số các chỉnh hợp $A_n^k$ và số các tổ hợp $C_n^k$.'],
             'answer': 0,
-            'solution': 'Theo yêu cầu cần đạt của Bài 24: Hoán vị, chỉnh hợp và tổ hợp: Tính được số các '
+            'solution': 'Theo nội dung cốt lõi của Bài 24: Hoán vị, chỉnh hợp và tổ hợp: Tính được số các '
                         'hoán vị $P_n$, số các chỉnh hợp $A_n^k$ và số các tổ hợp $C_n^k$.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -4246,41 +4361,39 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 24: Hoán vị, chỉnh hợp '
-                 'và tổ hợp**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Tính được số các hoán vị $P_n$, số '
-                           'các chỉnh hợp $A_n^k$ và số các tổ hợp $C_n^k$.',
-                           'Quy tắc/công thức **Hoán vị** trong bài được xác định bởi: $P_n = n!$.',
-                           'Trong mọi trường hợp, **Hoán vị** luôn được tính bằng công thức $P \\Rightarrow '
-                           'Q$ chỉ sai khi $P$ đúng, $Q$ sai (thuộc Mệnh đề kéo theo) mà không cần điều kiện '
-                           'của Bài 24: Hoán vị, chỉnh hợp và tổ hợp.',
-                           'Với bài toán minh họa: “Một tổ có 10 học sinh. Hỏi có bao nhiêu cách: a) Chọn ra '
-                           '3 học sinh đi trực nhật? b) Chọn ra 3 học sinh làm Tổ trưởng, Tổ phó và Thư '
-                           'kí?”, lời giải đúng là: a) Chọn 3 học sinh đi trực nhật không phân biệt thứ tự '
-                           'nên số cách chọn là $C_{10}^3 = \\dfrac{10!}{3!7!} = 120$ (cách). b) Chọn 3 học '
-                           'sinh g...'],
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 24: Hoán vị, chỉnh hợp và '
+                 'tổ hợp**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Tính được số các hoán vị $P_n$, số các '
+                           'chỉnh hợp $A_n^k$ và số các tổ hợp $C_n^k$.',
+                           'Trong **Bài 24: Hoán vị, chỉnh hợp và tổ hợp**, quy tắc/công thức **Hoán vị** '
+                           'được viết là: $P_n = n!$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $P_n = n!$ (với dấu ngược lại) thì kết quả '
+                           'của **Hoán vị** trong **Bài 24: Hoán vị, chỉnh hợp và tổ hợp** vẫn không thay '
+                           'đổi.',
+                           'Xét ví dụ của bài: “Một tổ có 10 học sinh. Hỏi có bao nhiêu cách: a) Chọn ra 3 '
+                           'học sinh đi trực nhật? b) Chọn ra 3 học sinh làm Tổ trưởng, Tổ phó và Thư '
+                           'kí...”, kết quả giải đúng là: a) Chọn 3 học sinh đi trực nhật không phân biệt '
+                           'thứ tự nên số cách chọn là $C_{10}^3 = \\dfrac{10!}{3!7!} = 120$ (cách). b) Chọn '
+                           '3 học s...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 24: Hoán vị, chỉnh hợp và tổ hợp. b) '
-                        '**Đúng** theo công thức trọng tâm **Hoán vị** ($P_n = n!$). c) **Sai** vì $P '
-                        '\\Rightarrow Q$ chỉ sai khi $P$ đúng, $Q$ sai là công thức của nội dung khác, không '
-                        'phải quy tắc chung của **Hoán vị**. d) **Đúng** theo lời giải ví dụ minh họa trong '
-                        'bài học.'},
+                        '**Đúng** theo công thức **Hoán vị** ($P_n = n!$). c) **Sai** vì công thức đúng của '
+                        '**Hoán vị** phải là $P_n = n!$ chứ không phải $P_n = n!$ (với dấu ngược lại). d) '
+                        '**Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 24: Hoán vị, chỉnh hợp và tổ hợp** để giải quyết tình huống sau: '
-                 'Một tổ có 10 học sinh. Hỏi có bao nhiêu cách: a) Chọn ra 3 học sinh đi trực nhật? b) Chọn '
-                 'ra 3 học sinh làm Tổ trưởng, Tổ phó và Thư kí? Kết quả và hướng giải nào dưới đây là '
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 24: Hoán vị, chỉnh hợp và tổ hợp** để giải bài toán '
+                 'sau: Một tổ có 10 học sinh. Hỏi có bao nhiêu cách: a) Chọn ra 3 học sinh đi trực nhật? b) '
+                 'Chọn ra 3 học sinh làm Tổ trưởng, Tổ phó và Thư kí? Cách giải và kết quả nào dưới đây là '
                  '**đúng**?',
-            'options': ["Mệnh đề phủ định là $\\overline{P}$: '$\\exists x \\in \\mathbb{R}, x^2 + 1 \\le "
-                        "0$'. Vì $x^2 \\ge 0 \\Rightarrow x^2 + 1 \\ge 1 > 0$ với mọi $x \\in \\mathbb{R}$ "
-                        'nê...',
+            'options': ['a) Chọn 4 học sinh đi trực nhật không phân biệt thứ tự nên số cách chọn là '
+                        '$C_{10}^3 = \\dfrac{10!}{3!7!} = 120$ (cách). b) Chọn 3 học sinh giữ 3 chức...',
                         'a) Chọn 3 học sinh đi trực nhật không phân biệt thứ tự nên số cách chọn là '
-                        '$C_{10}^3 = \\dfrac{10!}{3!7!} = 120$ (cách). b) Chọn 3 học sinh giữ 3 chức vụ '
-                        'kh...',
-                        'Biểu diễn trên trục số, ta được: - $A \\cap B = (1; 3)$; - $A \\cup B = [-2; 5]$; - '
-                        '$A \\setminus B = [-2; 1]$.',
-                        'Thay $x = 1, y = 2$ vào vế trái của bất phương trình: $2(1) - 3(2) + 1 = 2 - 6 + 1 '
-                        '= -3 < 0$ (đúng). Vậy điểm $A(1; 2)$ thuộc miền nghiệm của bất phương tr...'],
+                        '$C_{10}^3 = \\dfrac{10!}{3!7!} = 120$ (cách). b) Chọn 3 học sinh giữ 3 chức...',
+                        'a) Chọn 3 học sinh đi trực nhật không phân biệt thứ tự nên số cách chọn là '
+                        '$C_{10}^3 = \\dfrac{3!7!}{10!} = 120$ (cách). b) Chọn 3 học sinh giữ 3 chức...',
+                        'a) Chọn 6 học sinh đi trực nhật không phân biệt thứ tự nên số cách chọn là '
+                        '$C_{10}^3 = \\dfrac{10!}{3!7!} = 120$ (cách). b) Chọn 3 học sinh giữ 3 chức...'],
             'answer': 1,
             'solution': 'Lời giải chi tiết theo Bài 24: Hoán vị, chỉnh hợp và tổ hợp: a) Chọn 3 học sinh đi '
                         'trực nhật không phân biệt thứ tự nên số cách chọn là $C_{10}^3 = \\dfrac{10!}{3!7!} '
@@ -4305,8 +4418,8 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
                  'triển.',
   'requirements': ['Viết được khai triển nhị thức Newton của $(a + b)^4$ và $(a + b)^5$.',
                    'Xác định được hệ số của $x^k$ trong khai triển của $(ax + b)^4$ hoặc $(ax + b)^5$.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Bậc 4 ($n = 4$)** ($(a + b)^4 = a^4 + 4a^3b '
-                   '+ 6a^2b^2 + 4ab^3 + b^4$) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 25: Nhị thức Newton** để giải bài tập minh họa và bài toán '
+                   'thực tiễn.'],
   'definition': 'Công thức nhị thức Newton với $n = 4$ và $n = 5$ biểu diễn lũy thừa $(a + b)^n$ thành tổng '
                 'các đơn thức đồng bậc với các hệ số tổ hợp $C_n^k$.',
   'theory': '1. Khai triển với $n = 4$:\n'
@@ -4354,24 +4467,27 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 25: Nhị thức Newton**, công thức hoặc quy tắc nào sau '
-                 'đây biểu diễn đúng **Bậc 4 ($n = 4$)**?',
-            'options': ['$(a + b)^5 = a^5 + 5a^4b + 10a^3b^2 + 10a^2b^3 + 5ab^4 + b^5$',
-                        '$C_n^0 + C_n^1 + \\dots + C_n^n = 2^n$',
+            'q': 'Trong **Bài 25: Nhị thức Newton**, quy tắc hoặc công thức nào sau đây xác định đúng **Bậc '
+                 '4 ($n = 4$)**?',
+            'options': ['$(a - b)^4 = a^4 + 4a^3b + 6a^2b^2 + 4ab^3 + b^4$',
+                        '$(a + b)^4 = a^4 + 4a^3b + 6a^2b^2 + 4ab^3 + b^3$',
                         '$(a + b)^4 = a^4 + 4a^3b + 6a^2b^2 + 4ab^3 + b^4$',
-                        '$P \\Rightarrow Q$ chỉ sai khi $P$ đúng, $Q$ sai'],
+                        '$(a + b)^8 = a^4 + 4a^3b + 6a^2b^2 + 4ab^3 + b^4$'],
             'answer': 2,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 25: Nhị thức Newton, **Bậc 4 ($n = 4$)** được '
-                        'xác định bởi: $(a + b)^4 = a^4 + 4a^3b + 6a^2b^2 + 4ab^3 + b^4$. (Các hệ số dòng 4 '
-                        'tam giác Pascal: $1, 4, 6, 4, 1$)'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 25: Nhị thức Newton, **Bậc 4 ($n = 4$)** được xác '
+                        'định bởi: $(a + b)^4 = a^4 + 4a^3b + 6a^2b^2 + 4ab^3 + b^4$. (Các hệ số dòng 4 tam '
+                        'giác Pascal: $1, 4, 6, 4, 1$)'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 25: Nhị thức Newton**, nội dung/biểu thức $(a + b)^5 = a^5 + 5a^4b + 10a^3b^2 '
-                 '+ 10a^2b^3 + 5ab^4 + b^5$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Bậc 4 ($n = 4$)', 'Tổng các hệ số tổ hợp', 'Mệnh đề kéo theo', 'Bậc 5 ($n = 5$)'],
+            'q': 'Khi học **Bài 25: Nhị thức Newton**, biểu thức hoặc quy tắc nào dưới đây biểu diễn đúng '
+                 '**Bậc 5 ($n = 5$)**?',
+            'options': ['$(a - b)^5 = a^5 + 5a^4b + 10a^3b^2 + 10a^2b^3 + 5ab^4 + b^5$',
+                        '$(a + b)^5 = a^5 + 5a^4b + 10a^3b^2 + 10a^2b^3 + 5ab^4 + b^4$',
+                        '$(a + b)^10 = a^5 + 5a^4b + 10a^3b^2 + 10a^2b^3 + 5ab^4 + b^5$',
+                        '$(a + b)^5 = a^5 + 5a^4b + 10a^3b^2 + 10a^2b^3 + 5ab^4 + b^5$'],
             'answer': 3,
-            'solution': 'Trong Bài 25: Nhị thức Newton, biểu thức/quy tắc $(a + b)^5 = a^5 + 5a^4b + '
-                        '10a^3b^2 + 10a^2b^3 + 5ab^4 + b^5$ chính là nội dung của **Bậc 5 ($n = 5$)**.'},
+            'solution': 'Trong Bài 25: Nhị thức Newton, **Bậc 5 ($n = 5$)** có công thức/quy tắc là: $(a + '
+                        'b)^5 = a^5 + 5a^4b + 10a^3b^2 + 10a^2b^3 + 5ab^4 + b^5$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Hệ số của $x^3$ trong khai triển của $(x - 2)^5$ là:',
@@ -4383,16 +4499,14 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 25: Nhị thức Newton** (Chương VIII: Đại số tổ hợp), khẳng định nào sau đây '
-                 'phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Nhận biết được mệnh đề toán học, mệnh đề chứa biến và xác định tính đúng sai của '
-                        'một mệnh đề.',
+            'q': 'Để nắm vững bản chất của **Bài 25: Nhị thức Newton**, nhận định nào sau đây là **chính '
+                 'xác**?',
+            'options': ['Viết được khai triển nhị thức Newton của $(a - b)^4$ và $(a + b)^5$.',
                         'Viết được khai triển nhị thức Newton của $(a + b)^4$ và $(a + b)^5$.',
-                        'Thiết lập được mệnh đề phủ định $\\overline{P}$, mệnh đề kéo theo $P \\Rightarrow '
-                        'Q$, mệnh đề đảo và mệnh đề tương đương $P \\Leftrightarrow Q$.',
-                        'Sử dụng đúng kí hiệu với mọi ($\\forall$) và tồn tại ($\\exists$).'],
+                        'Viết được khai triển nhị thức Newton của $(a + b)^4$ và $(a + b)^4$.',
+                        'Viết được khai triển nhị thức Newton của $(a + b)^8$ và $(a + b)^5$.'],
             'answer': 1,
-            'solution': 'Theo yêu cầu cần đạt của Bài 25: Nhị thức Newton: Viết được khai triển nhị thức '
+            'solution': 'Theo nội dung cốt lõi của Bài 25: Nhị thức Newton: Viết được khai triển nhị thức '
                         'Newton của $(a + b)^4$ và $(a + b)^5$.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -4408,38 +4522,37 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 25: Nhị thức Newton**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Viết được khai triển nhị thức '
-                           'Newton của $(a + b)^4$ và $(a + b)^5$.',
-                           'Quy tắc/công thức **Bậc 4 ($n = 4$)** trong bài được xác định bởi: $(a + b)^4 = '
-                           'a^4 + 4a^3b + 6a^2b^2 + 4ab^3 + b^4$.',
-                           'Trong mọi trường hợp, **Bậc 4 ($n = 4$)** luôn được tính bằng công thức $P '
-                           '\\Rightarrow Q$ chỉ sai khi $P$ đúng, $Q$ sai (thuộc Mệnh đề kéo theo) mà không '
-                           'cần điều kiện của Bài 25: Nhị thức Newton.',
-                           'Với bài toán minh họa: “Tìm hệ số của $x^3$ trong khai triển của biểu thức $(x + '
-                           '2)^4$.”, lời giải đúng là: Áp dụng công thức $(a + b)^4$ với $a = x, b = 2$: số '
-                           'hạng chứa $x^3$ là $C_4^1 x^3 \\cdot 2^1 = 4 \\cdot 2 \\cdot x^3 = 8x^3$. Vậy hệ '
-                           'số của $x^3$...'],
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 25: Nhị thức Newton**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Viết được khai triển nhị thức Newton của '
+                           '$(a + b)^4$ và $(a + b)^5$.',
+                           'Trong **Bài 25: Nhị thức Newton**, quy tắc/công thức **Bậc 4 ($n = 4$)** được '
+                           'viết là: $(a + b)^4 = a^4 + 4a^3b + 6a^2b^2 + 4ab^3 + b^4$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $(a - b)^4 = a^4 + 4a^3b + 6a^2b^2 + 4ab^3 + '
+                           'b^4$ thì kết quả của **Bậc 4 ($n = 4$)** trong **Bài 25: Nhị thức Newton** vẫn '
+                           'không thay đổi.',
+                           'Xét ví dụ của bài: “Tìm hệ số của $x^3$ trong khai triển của biểu thức $(x + '
+                           '2)^4$.”, kết quả giải đúng là: Áp dụng công thức $(a + b)^4$ với $a = x, b = 2$: '
+                           'số hạng chứa $x^3$ là $C_4^1 x^3 \\cdot 2^1 = 4 \\cdot 2 \\cdot x^3 = 8x^3$. Vậy '
+                           'hệ số c...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 25: Nhị thức Newton. b) **Đúng** theo công '
-                        'thức trọng tâm **Bậc 4 ($n = 4$)** ($(a + b)^4 = a^4 + 4a^3b + 6a^2b^2 + 4ab^3 + '
-                        'b^4$). c) **Sai** vì $P \\Rightarrow Q$ chỉ sai khi $P$ đúng, $Q$ sai là công thức '
-                        'của nội dung khác, không phải quy tắc chung của **Bậc 4 ($n = 4$)**. d) **Đúng** '
-                        'theo lời giải ví dụ minh họa trong bài học.'},
+                        'thức **Bậc 4 ($n = 4$)** ($(a + b)^4 = a^4 + 4a^3b + 6a^2b^2 + 4ab^3 + b^4$). c) '
+                        '**Sai** vì công thức đúng của **Bậc 4 ($n = 4$)** phải là $(a + b)^4 = a^4 + 4a^3b '
+                        '+ 6a^2b^2 + 4ab^3 + b^4$ chứ không phải $(a - b)^4 = a^4 + 4a^3b + 6a^2b^2 + 4ab^3 '
+                        '+ b^4$. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 25: Nhị thức Newton** để giải quyết tình huống sau: Tìm hệ số của '
-                 '$x^3$ trong khai triển của biểu thức $(x + 2)^4$. Kết quả và hướng giải nào dưới đây là '
-                 '**đúng**?',
-            'options': ["Mệnh đề phủ định là $\\overline{P}$: '$\\exists x \\in \\mathbb{R}, x^2 + 1 \\le "
-                        "0$'. Vì $x^2 \\ge 0 \\Rightarrow x^2 + 1 \\ge 1 > 0$ với mọi $x \\in \\mathbb{R}$ "
-                        'nê...',
-                        'Biểu diễn trên trục số, ta được: - $A \\cap B = (1; 3)$; - $A \\cup B = [-2; 5]$; - '
-                        '$A \\setminus B = [-2; 1]$.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 25: Nhị thức Newton** để giải bài toán sau: Tìm hệ '
+                 'số của $x^3$ trong khai triển của biểu thức $(x + 2)^4$. Cách giải và kết quả nào dưới đây '
+                 'là **đúng**?',
+            'options': ['Áp dụng công thức $(a - b)^4$ với $a = x, b = 2$: số hạng chứa $x^3$ là $C_4^1 x^3 '
+                        '\\cdot 2^1 = 4 \\cdot 2 \\cdot x^3 = 8x^3$. Vậy hệ số của $x^3$ trong...',
                         'Áp dụng công thức $(a + b)^4$ với $a = x, b = 2$: số hạng chứa $x^3$ là $C_4^1 x^3 '
-                        '\\cdot 2^1 = 4 \\cdot 2 \\cdot x^3 = 8x^3$. Vậy hệ số của $x^3$ trong khai...',
-                        'Thay $x = 1, y = 2$ vào vế trái của bất phương trình: $2(1) - 3(2) + 1 = 2 - 6 + 1 '
-                        '= -3 < 0$ (đúng). Vậy điểm $A(1; 2)$ thuộc miền nghiệm của bất phương tr...'],
+                        '\\cdot 2^1 = 4 \\cdot 2 \\cdot x^3 = 8x^3$. Vậy hệ số của $x^2$ trong...',
+                        'Áp dụng công thức $(a + b)^4$ với $a = x, b = 2$: số hạng chứa $x^3$ là $C_4^1 x^3 '
+                        '\\cdot 2^1 = 4 \\cdot 2 \\cdot x^3 = 8x^3$. Vậy hệ số của $x^3$ trong...',
+                        'Áp dụng công thức $(a + b)^8$ với $a = x, b = 2$: số hạng chứa $x^3$ là $C_4^1 x^3 '
+                        '\\cdot 2^1 = 4 \\cdot 2 \\cdot x^3 = 8x^3$. Vậy hệ số của $x^3$ trong...'],
             'answer': 2,
             'solution': 'Lời giải chi tiết theo Bài 25: Nhị thức Newton: Áp dụng công thức $(a + b)^4$ với '
                         '$a = x, b = 2$: số hạng chứa $x^3$ là $C_4^1 x^3 \\cdot 2^1 = 4 \\cdot 2 \\cdot x^3 '
@@ -4463,8 +4576,8 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
                    'và biến cố đối $\\overline{A}$.',
                    'Tính được xác suất của biến cố theo định nghĩa cổ điển $P(A) = '
                    '\\dfrac{n(A)}{n(\\Omega)}$ và tính chất $P(\\overline{A}) = 1 - P(A)$.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Xác suất cổ điển** ($P(A) = '
-                   '\\dfrac{n(A)}{n(\\Omega)}$) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 26: Biến cố và định nghĩa cổ điển của xác suất** để giải '
+                   'bài tập minh họa và bài toán thực tiễn.'],
   'definition': 'Mỗi tập con $A$ của không gian mẫu $\\Omega$ được gọi là một biến cố. Biến cố đối của biến '
                 "cố $A$ là biến cố 'không xảy ra $A$', kí hiệu là $\\overline{A} = \\Omega \\setminus A$. "
                 'Xác suất cổ điển: $P(A) = \\dfrac{n(A)}{n(\\Omega)}$.',
@@ -4509,27 +4622,28 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 26: Biến cố và định nghĩa cổ điển của xác suất**, công '
-                 'thức hoặc quy tắc nào sau đây biểu diễn đúng **Xác suất cổ điển**?',
-            'options': ['$P(\\overline{A}) = 1 - P(A)$',
-                        '$P \\Rightarrow Q$ chỉ sai khi $P$ đúng, $Q$ sai',
-                        '$P \\Leftrightarrow Q$ đúng khi $P, Q$ cùng tính đúng sai',
+            'q': 'Trong **Bài 26: Biến cố và định nghĩa cổ điển của xác suất**, quy tắc hoặc công thức nào '
+                 'sau đây xác định đúng **Xác suất cổ điển**?',
+            'options': ['$P(A) = \\dfrac{n(A)}{n(\\Omega)}$ (với dấu ngược lại)',
+                        '$P(A) = \\dfrac{n(\\Omega)}{n(A)}$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $P(A) = '
+                        '\\dfrac{n(A)}{n(\\Omega)}$',
                         '$P(A) = \\dfrac{n(A)}{n(\\Omega)}$'],
             'answer': 3,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 26: Biến cố và định nghĩa cổ điển của xác '
-                        'suất, **Xác suất cổ điển** được xác định bởi: $P(A) = \\dfrac{n(A)}{n(\\Omega)}$. '
-                        '(Khi các kết quả của $\\Omega$ đồng khả năng)'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 26: Biến cố và định nghĩa cổ điển của xác suất, '
+                        '**Xác suất cổ điển** được xác định bởi: $P(A) = \\dfrac{n(A)}{n(\\Omega)}$. (Khi '
+                        'các kết quả của $\\Omega$ đồng khả năng)'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 26: Biến cố và định nghĩa cổ điển của xác suất**, nội dung/biểu thức '
-                 '$P(\\overline{A}) = 1 - P(A)$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Xác suất của biến cố đối',
-                        'Xác suất cổ điển',
-                        'Mệnh đề kéo theo',
-                        'Mệnh đề tương đương'],
+            'q': 'Khi học **Bài 26: Biến cố và định nghĩa cổ điển của xác suất**, biểu thức hoặc quy tắc nào '
+                 'dưới đây biểu diễn đúng **Xác suất của biến cố đối**?',
+            'options': ['$P(\\overline{A}) = 1 - P(A)$',
+                        '$P(\\overline{A}) = 1 + P(A)$',
+                        '$P(\\overline{A}) = 2 - P(A)$',
+                        '$P(A) = \\dfrac{n(A)}{n(\\Omega)}$'],
             'answer': 0,
-            'solution': 'Trong Bài 26: Biến cố và định nghĩa cổ điển của xác suất, biểu thức/quy tắc '
-                        '$P(\\overline{A}) = 1 - P(A)$ chính là nội dung của **Xác suất của biến cố đối**.'},
+            'solution': 'Trong Bài 26: Biến cố và định nghĩa cổ điển của xác suất, **Xác suất của biến cố '
+                        'đối** có công thức/quy tắc là: $P(\\overline{A}) = 1 - P(A)$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Tung một đồng xu cân đối và đồng chất $3$ lần liên tiếp. Số phần tử của không gian mẫu '
@@ -4541,18 +4655,19 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 26: Biến cố và định nghĩa cổ điển của xác suất** (Chương IX: Tính xác suất '
-                 'theo định nghĩa cổ điển), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản '
-                 'chất kiến thức của bài?',
-            'options': ['Nhận biết được mệnh đề toán học, mệnh đề chứa biến và xác định tính đúng sai của '
-                        'một mệnh đề.',
-                        'Thiết lập được mệnh đề phủ định $\\overline{P}$, mệnh đề kéo theo $P \\Rightarrow '
-                        'Q$, mệnh đề đảo và mệnh đề tương đương $P \\Leftrightarrow Q$.',
+            'q': 'Để nắm vững bản chất của **Bài 26: Biến cố và định nghĩa cổ điển của xác suất**, nhận định '
+                 'nào sau đây là **chính xác**?',
+            'options': ['Mô tả được không gian mẫu $\\Omega$, biến cố $A$, biến cố chắc chắn, biến cố không '
+                        'thể và biến cố đối $\\overline{A}$. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Mô tả được không gian mẫu $\\Omega$, biến cố $A$, biến cố '
+                        'chắc chắn, biến cố không thể và biến cố đối $\\overline{A}$.',
                         'Mô tả được không gian mẫu $\\Omega$, biến cố $A$, biến cố chắc chắn, biến cố không '
                         'thể và biến cố đối $\\overline{A}$.',
-                        'Sử dụng đúng kí hiệu với mọi ($\\forall$) và tồn tại ($\\exists$).'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Mô tả được không gian mẫu '
+                        '$\\Omega$, biến cố $A$, biến cố chắc chắn, biến cố không thể và biến cố đối '
+                        '$\\overline{A}$.'],
             'answer': 2,
-            'solution': 'Theo yêu cầu cần đạt của Bài 26: Biến cố và định nghĩa cổ điển của xác suất: Mô tả '
+            'solution': 'Theo nội dung cốt lõi của Bài 26: Biến cố và định nghĩa cổ điển của xác suất: Mô tả '
                         'được không gian mẫu $\\Omega$, biến cố $A$, biến cố chắc chắn, biến cố không thể và '
                         'biến cố đối $\\overline{A}$.'},
            {'level': 'hieu',
@@ -4570,40 +4685,40 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 26: Biến cố và định '
-                 'nghĩa cổ điển của xác suất**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Mô tả được không gian mẫu '
-                           '$\\Omega$, biến cố $A$, biến cố chắc chắn, biến cố không thể và biến cố đối '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 26: Biến cố và định nghĩa '
+                 'cổ điển của xác suất**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Mô tả được không gian mẫu $\\Omega$, '
+                           'biến cố $A$, biến cố chắc chắn, biến cố không thể và biến cố đối '
                            '$\\overline{A}$.',
-                           'Quy tắc/công thức **Xác suất cổ điển** trong bài được xác định bởi: $P(A) = '
-                           '\\dfrac{n(A)}{n(\\Omega)}$.',
-                           'Trong mọi trường hợp, **Xác suất cổ điển** luôn được tính bằng công thức $P '
-                           '\\Rightarrow Q$ chỉ sai khi $P$ đúng, $Q$ sai (thuộc Mệnh đề kéo theo) mà không '
-                           'cần điều kiện của Bài 26: Biến cố và định nghĩa cổ điển của xác suất.',
-                           'Với bài toán minh họa: “Gieo một con xúc xắc cân đối và đồng chất 2 lần. Tính '
-                           "xác suất của biến cố $A$: 'Có ít nhất một lần xuất hiện mặt 6 chấm'.”, lời giải "
+                           'Trong **Bài 26: Biến cố và định nghĩa cổ điển của xác suất**, quy tắc/công thức '
+                           '**Xác suất cổ điển** được viết là: $P(A) = \\dfrac{n(A)}{n(\\Omega)}$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $P(A) = \\dfrac{n(A)}{n(\\Omega)}$ (với dấu '
+                           'ngược lại) thì kết quả của **Xác suất cổ điển** trong **Bài 26: Biến cố và định '
+                           'nghĩa cổ điển của xác suất** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Gieo một con xúc xắc cân đối và đồng chất 2 lần. Tính xác '
+                           "suất của biến cố $A$: 'Có ít nhất một lần xuất hiện mặt 6 chấm'.”, kết quả giải "
                            'đúng là: Không gian mẫu có $n(\\Omega) = 6 \\cdot 6 = 36$. Biến cố đối '
                            "$\\overline{A}$: 'Cả hai lần đều không xuất hiện mặt 6 chấm' có "
                            '$n(\\overline{A}) = 5 \\cdot 5 = 25$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 26: Biến cố và định nghĩa cổ điển của xác '
-                        'suất. b) **Đúng** theo công thức trọng tâm **Xác suất cổ điển** ($P(A) = '
-                        '\\dfrac{n(A)}{n(\\Omega)}$). c) **Sai** vì $P \\Rightarrow Q$ chỉ sai khi $P$ đúng, '
-                        '$Q$ sai là công thức của nội dung khác, không phải quy tắc chung của **Xác suất cổ '
-                        'điển**. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        'suất. b) **Đúng** theo công thức **Xác suất cổ điển** ($P(A) = '
+                        '\\dfrac{n(A)}{n(\\Omega)}$). c) **Sai** vì công thức đúng của **Xác suất cổ điển** '
+                        'phải là $P(A) = \\dfrac{n(A)}{n(\\Omega)}$ chứ không phải $P(A) = '
+                        '\\dfrac{n(A)}{n(\\Omega)}$ (với dấu ngược lại). d) **Đúng** theo lời giải ví dụ '
+                        'minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 26: Biến cố và định nghĩa cổ điển của xác suất** để giải quyết '
-                 'tình huống sau: Gieo một con xúc xắc cân đối và đồng chất 2 lần. Tính xác suất của biến cố '
-                 "$A$: 'Có ít nhất một lần xuất hiện mặt 6 chấm'. Kết quả và hướng giải nào dưới đây là "
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 26: Biến cố và định nghĩa cổ điển của xác suất** để '
+                 'giải bài toán sau: Gieo một con xúc xắc cân đối và đồng chất 2 lần. Tính xác suất của biến '
+                 "cố $A$: 'Có ít nhất một lần xuất hiện mặt 6 chấm'. Cách giải và kết quả nào dưới đây là "
                  '**đúng**?',
-            'options': ["Mệnh đề phủ định là $\\overline{P}$: '$\\exists x \\in \\mathbb{R}, x^2 + 1 \\le "
-                        "0$'. Vì $x^2 \\ge 0 \\Rightarrow x^2 + 1 \\ge 1 > 0$ với mọi $x \\in \\mathbb{R}$ "
-                        'nê...',
-                        'Biểu diễn trên trục số, ta được: - $A \\cap B = (1; 3)$; - $A \\cup B = [-2; 5]$; - '
-                        '$A \\setminus B = [-2; 1]$.',
-                        'Thay $x = 1, y = 2$ vào vế trái của bất phương trình: $2(1) - 3(2) + 1 = 2 - 6 + 1 '
-                        '= -3 < 0$ (đúng). Vậy điểm $A(1; 2)$ thuộc miền nghiệm của bất phương tr...',
+            'options': ["Không gian mẫu có $n(\\Omega) = 6 : 6 = 36$. Biến cố đối $\\overline{A}$: 'Cả hai "
+                        "lần đều không xuất hiện mặt 6 chấm' có $n(\\overline{A}) = 5 \\cdot 5 = 25$...",
+                        "Không gian mẫu có $n(\\Omega) = 6 \\cdot 6 = 36$. Biến cố đối $\\overline{A}$: 'Cả "
+                        "hai lần đều không xuất hiện mặt 6 chấm' có $n(\\overline{A}) = 5 \\cdot 5 = 24$...",
+                        "Không gian mẫu có $n(\\Omega) = 12 \\cdot 6 = 36$. Biến cố đối $\\overline{A}$: 'Cả "
+                        "hai lần đều không xuất hiện mặt 6 chấm' có $n(\\overline{A}) = 5 \\cdot 5 = 25$...",
                         "Không gian mẫu có $n(\\Omega) = 6 \\cdot 6 = 36$. Biến cố đối $\\overline{A}$: 'Cả "
                         "hai lần đều không xuất hiện mặt 6 chấm' có $n(\\overline{A}) = 5 \\cdot 5 = 25$..."],
             'answer': 3,
@@ -4632,8 +4747,8 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
   'requirements': ['Kết hợp quy tắc cộng, quy tắc nhân, hoán vị, chỉnh hợp, tổ hợp để tính $n(\\Omega)$ và '
                    '$n(A)$.',
                    'Sử dụng linh hoạt phương pháp đếm trực tiếp hoặc sử dụng biến cố đối để tính xác suất.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Chọn ngẫu nhiên $k$ phần tử từ $n$ phần '
-                   'tử** ($n(\\Omega) = C_n^k$) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 27: Thực hành tính xác suất theo định nghĩa cổ điển** để '
+                   'giải bài tập minh họa và bài toán thực tiễn.'],
   'definition': 'Trong các phép thử có số phần tử không gian mẫu lớn, ta sử dụng các công cụ đại số tổ hợp '
                 '($P_n, A_n^k, C_n^k$) để tính $n(\\Omega)$ và $n(A)$ thay vì liệt kê từng phần tử.',
   'theory': 'Hai phương pháp chính để tính xác suất của biến cố $A$:\n'
@@ -4677,30 +4792,27 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 27: Thực hành tính xác suất theo định nghĩa cổ điển**, '
-                 'công thức hoặc quy tắc nào sau đây biểu diễn đúng **Chọn ngẫu nhiên $k$ phần tử từ $n$ '
-                 'phần tử**?',
+            'q': 'Trong **Bài 27: Thực hành tính xác suất theo định nghĩa cổ điển**, quy tắc hoặc công thức '
+                 'nào sau đây xác định đúng **Chọn ngẫu nhiên $k$ phần tử từ $n$ phần tử**?',
             'options': ['$n(\\Omega) = C_n^k$',
-                        '$P(A) = 1 - \\dfrac{n(\\overline{A})}{n(\\Omega)}$',
-                        '$P \\Rightarrow Q$ chỉ sai khi $P$ đúng, $Q$ sai',
-                        '$P \\Leftrightarrow Q$ đúng khi $P, Q$ cùng tính đúng sai'],
+                        '$n(\\Omega) = C_n^k$ (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: $n(\\Omega) = C_n^k$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $n(\\Omega) = C_n^k$'],
             'answer': 0,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 27: Thực hành tính xác suất theo định nghĩa '
-                        'cổ điển, **Chọn ngẫu nhiên $k$ phần tử từ $n$ phần tử** được xác định bởi: '
-                        '$n(\\Omega) = C_n^k$. (Không phân biệt thứ tự lấy ra)'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 27: Thực hành tính xác suất theo định nghĩa cổ '
+                        'điển, **Chọn ngẫu nhiên $k$ phần tử từ $n$ phần tử** được xác định bởi: $n(\\Omega) '
+                        '= C_n^k$. (Không phân biệt thứ tự lấy ra)'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 27: Thực hành tính xác suất theo định nghĩa cổ điển**, nội dung/biểu thức '
-                 '$P(A) = 1 - \\dfrac{n(\\overline{A})}{n(\\Omega)}$ là quy tắc hoặc công thức của mục nào '
-                 'sau đây?',
-            'options': ['Chọn ngẫu nhiên $k$ phần tử từ $n$ phần tử',
-                        'Công thức biến cố đối',
-                        'Mệnh đề kéo theo',
-                        'Mệnh đề tương đương'],
+            'q': 'Khi học **Bài 27: Thực hành tính xác suất theo định nghĩa cổ điển**, biểu thức hoặc quy '
+                 'tắc nào dưới đây biểu diễn đúng **Công thức biến cố đối**?',
+            'options': ['$P(A) = 1 + \\dfrac{n(\\overline{A})}{n(\\Omega)}$',
+                        '$P(A) = 1 - \\dfrac{n(\\overline{A})}{n(\\Omega)}$',
+                        '$P(A) = 2 - \\dfrac{n(\\overline{A})}{n(\\Omega)}$',
+                        '$n(\\Omega) = C_n^k$'],
             'answer': 1,
-            'solution': 'Trong Bài 27: Thực hành tính xác suất theo định nghĩa cổ điển, biểu thức/quy tắc '
-                        '$P(A) = 1 - \\dfrac{n(\\overline{A})}{n(\\Omega)}$ chính là nội dung của **Công '
-                        'thức biến cố đối**.'},
+            'solution': 'Trong Bài 27: Thực hành tính xác suất theo định nghĩa cổ điển, **Công thức biến cố '
+                        'đối** có công thức/quy tắc là: $P(A) = 1 - \\dfrac{n(\\overline{A})}{n(\\Omega)}$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Một hộp có $4$ bi đỏ và $3$ bi xanh. Lấy ngẫu nhiên đồng thời $2$ viên bi. Xác suất để lấy '
@@ -4713,18 +4825,18 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 27: Thực hành tính xác suất theo định nghĩa cổ điển** (Chương IX: Tính xác '
-                 'suất theo định nghĩa cổ điển), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và '
-                 'bản chất kiến thức của bài?',
-            'options': ['Nhận biết được mệnh đề toán học, mệnh đề chứa biến và xác định tính đúng sai của '
-                        'một mệnh đề.',
-                        'Thiết lập được mệnh đề phủ định $\\overline{P}$, mệnh đề kéo theo $P \\Rightarrow '
-                        'Q$, mệnh đề đảo và mệnh đề tương đương $P \\Leftrightarrow Q$.',
-                        'Sử dụng đúng kí hiệu với mọi ($\\forall$) và tồn tại ($\\exists$).',
+            'q': 'Để nắm vững bản chất của **Bài 27: Thực hành tính xác suất theo định nghĩa cổ điển**, nhận '
+                 'định nào sau đây là **chính xác**?',
+            'options': ['Kết hợp quy tắc cộng, quy tắc nhân, hoán vị, chỉnh hợp, tổ hợp để tính $n(\\Omega)$ '
+                        'và $n(A)$. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Kết hợp quy tắc cộng, quy tắc nhân, hoán vị, chỉnh hợp, '
+                        'tổ hợp để tính $n(\\Omega)$ và $n(A)$.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Kết hợp quy tắc cộng, quy tắc '
+                        'nhân, hoán vị, chỉnh hợp, tổ hợp để tính $n(\\Omega)$ và $n(A)$.',
                         'Kết hợp quy tắc cộng, quy tắc nhân, hoán vị, chỉnh hợp, tổ hợp để tính $n(\\Omega)$ '
                         'và $n(A)$.'],
             'answer': 3,
-            'solution': 'Theo yêu cầu cần đạt của Bài 27: Thực hành tính xác suất theo định nghĩa cổ điển: '
+            'solution': 'Theo nội dung cốt lõi của Bài 27: Thực hành tính xác suất theo định nghĩa cổ điển: '
                         'Kết hợp quy tắc cộng, quy tắc nhân, hoán vị, chỉnh hợp, tổ hợp để tính $n(\\Omega)$ '
                         'và $n(A)$.'},
            {'level': 'hieu',
@@ -4744,44 +4856,45 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 27: Thực hành tính xác '
-                 'suất theo định nghĩa cổ điển**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Kết hợp quy tắc cộng, quy tắc '
-                           'nhân, hoán vị, chỉnh hợp, tổ hợp để tính $n(\\Omega)$ và $n(A)$.',
-                           'Quy tắc/công thức **Chọn ngẫu nhiên $k$ phần tử từ $n$ phần tử** trong bài được '
-                           'xác định bởi: $n(\\Omega) = C_n^k$.',
-                           'Trong mọi trường hợp, **Chọn ngẫu nhiên $k$ phần tử từ $n$ phần tử** luôn được '
-                           'tính bằng công thức $P \\Rightarrow Q$ chỉ sai khi $P$ đúng, $Q$ sai (thuộc Mệnh '
-                           'đề kéo theo) mà không cần điều kiện của Bài 27: Thực hành tính xác suất theo '
-                           'định nghĩa cổ điển.',
-                           'Với bài toán minh họa: “Một hộp có 5 quả cầu trắng và 3 quả cầu đen. Lấy ngẫu '
-                           'nhiên đồng thời 2 quả cầu. Tính xác suất để lấy được 2 quả cầu cùng màu.”, lời '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 27: Thực hành tính xác suất '
+                 'theo định nghĩa cổ điển**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Kết hợp quy tắc cộng, quy tắc nhân, hoán '
+                           'vị, chỉnh hợp, tổ hợp để tính $n(\\Omega)$ và $n(A)$.',
+                           'Trong **Bài 27: Thực hành tính xác suất theo định nghĩa cổ điển**, quy tắc/công '
+                           'thức **Chọn ngẫu nhiên $k$ phần tử từ $n$ phần tử** được viết là: $n(\\Omega) = '
+                           'C_n^k$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $n(\\Omega) = C_n^k$ (với dấu ngược lại) thì '
+                           'kết quả của **Chọn ngẫu nhiên $k$ phần tử từ $n$ phần tử** trong **Bài 27: Thực '
+                           'hành tính xác suất theo định nghĩa cổ điển** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Một hộp có 5 quả cầu trắng và 3 quả cầu đen. Lấy ngẫu nhiên '
+                           'đồng thời 2 quả cầu. Tính xác suất để lấy được 2 quả cầu cùng màu.”, kết quả '
                            'giải đúng là: Số phần tử của không gian mẫu là $n(\\Omega) = C_8^2 = 28$. Gọi '
-                           "$A$ là biến cố 'Lấy được 2 quả cầu cùng màu' (cùng trắng hoặc cùng đen). Ta "
-                           'c...'],
+                           "$A$ là biến cố 'Lấy được 2 quả cầu cùng màu' (cùng trắng hoặc cùng đen)...."],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 27: Thực hành tính xác suất theo định '
-                        'nghĩa cổ điển. b) **Đúng** theo công thức trọng tâm **Chọn ngẫu nhiên $k$ phần tử '
-                        'từ $n$ phần tử** ($n(\\Omega) = C_n^k$). c) **Sai** vì $P \\Rightarrow Q$ chỉ sai '
-                        'khi $P$ đúng, $Q$ sai là công thức của nội dung khác, không phải quy tắc chung của '
-                        '**Chọn ngẫu nhiên $k$ phần tử từ $n$ phần tử**. d) **Đúng** theo lời giải ví dụ '
-                        'minh họa trong bài học.'},
+                        'nghĩa cổ điển. b) **Đúng** theo công thức **Chọn ngẫu nhiên $k$ phần tử từ $n$ phần '
+                        'tử** ($n(\\Omega) = C_n^k$). c) **Sai** vì công thức đúng của **Chọn ngẫu nhiên $k$ '
+                        'phần tử từ $n$ phần tử** phải là $n(\\Omega) = C_n^k$ chứ không phải $n(\\Omega) = '
+                        'C_n^k$ (với dấu ngược lại). d) **Đúng** theo lời giải ví dụ minh họa trong bài '
+                        'học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 27: Thực hành tính xác suất theo định nghĩa cổ điển** để giải '
-                 'quyết tình huống sau: Một hộp có 5 quả cầu trắng và 3 quả cầu đen. Lấy ngẫu nhiên đồng '
-                 'thời 2 quả cầu. Tính xác suất để lấy được 2 quả cầu cùng màu. Kết quả và hướng giải nào '
-                 'dưới đây là **đúng**?',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 27: Thực hành tính xác suất theo định nghĩa cổ '
+                 'điển** để giải bài toán sau: Một hộp có 5 quả cầu trắng và 3 quả cầu đen. Lấy ngẫu nhiên '
+                 'đồng thời 2 quả cầu. Tính xác suất để lấy được 2 quả cầu cùng màu. Cách giải và kết quả '
+                 'nào dưới đây là **đúng**?',
             'options': ["Số phần tử của không gian mẫu là $n(\\Omega) = C_8^2 = 28$. Gọi $A$ là biến cố 'Lấy "
                         "được 2 quả cầu cùng màu' (cùng trắng hoặc cùng đen). Ta có $n(A) = C_5^2 + C_3^2 = "
                         '10 + 3 = 13$...',
-                        "Mệnh đề phủ định là $\\overline{P}$: '$\\exists x \\in \\mathbb{R}, x^2 + 1 \\le "
-                        "0$'. Vì $x^2 \\ge 0 \\Rightarrow x^2 + 1 \\ge 1 > 0$ với mọi $x \\in \\mathbb{R}$ "
-                        'nê...',
-                        'Biểu diễn trên trục số, ta được: - $A \\cap B = (1; 3)$; - $A \\cup B = [-2; 5]$; - '
-                        '$A \\setminus B = [-2; 1]$.',
-                        'Thay $x = 1, y = 2$ vào vế trái của bất phương trình: $2(1) - 3(2) + 1 = 2 - 6 + 1 '
-                        '= -3 < 0$ (đúng). Vậy điểm $A(1; 2)$ thuộc miền nghiệm của bất phương tr...'],
+                        "Số phần tử của không gian mẫu là $n(\\Omega) = C_8^2 = 28$. Gọi $A$ là biến cố 'Lấy "
+                        "được 2 quả cầu cùng màu' (cùng trắng hoặc cùng đen). Ta có $n(A) = C_5^2 - C_3^2 = "
+                        '10 + 3 = 13$...',
+                        "Số phần tử của không gian mẫu là $n(\\Omega) = C_8^2 = 28$. Gọi $A$ là biến cố 'Lấy "
+                        "được 2 quả cầu cùng màu' (cùng trắng hoặc cùng đen). Ta có $n(A) = C_5^2 + C_3^2 = "
+                        '10 + 3 = 12$...',
+                        "Số phần tử của không gian mẫu là $n(\\Omega) = C_8^4 = 28$. Gọi $A$ là biến cố 'Lấy "
+                        "được 2 quả cầu cùng màu' (cùng trắng hoặc cùng đen). Ta có $n(A) = C_5^2 + C_3^2 = "
+                        '10 + 3 = 13$...'],
             'answer': 0,
             'solution': 'Lời giải chi tiết theo Bài 27: Thực hành tính xác suất theo định nghĩa cổ điển: Số '
                         'phần tử của không gian mẫu là $n(\\Omega) = C_8^2 = 28$.\n'

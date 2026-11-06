@@ -1,7 +1,6 @@
 """Dữ liệu bài học SGK Toán Lớp 6 — Kết nối tri thức với cuộc sống (NXB Giáo dục Việt Nam).
-Cấu trúc 3 cấp: Lớp 6 ➔ Chương/Chủ đề (topic) ➔ Từng Bài học (title).
-Mỗi bài học gồm đầy đủ Yêu cầu cần đạt (requirements), Định nghĩa, Lý thuyết, Công thức, Ví dụ, Ứng dụng thực tế
-và đúng 10 câu hỏi luyện tập theo 3 mức độ: 4 Nhận biết + 4 Thông hiểu + 2 Vận dụng.
+Cấu trúc 3 cấp: Lớp 6 ➔ Chương/Chủ đề (topic) ➔ Từng Bài học độc lập (title).
+Mỗi bài học chỉ chứa kiến thức, công thức, ví dụ và 10 câu hỏi của riêng bài học đó.
 """
 
 GRADE = 6
@@ -16,8 +15,8 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
                    'tập hợp.',
                    'Cho được một tập hợp bằng cách liệt kê các phần tử hoặc chỉ ra tính chất đặc trưng cho '
                    'các phần tử.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Quan hệ phần tử – tập hợp** ($x \\in A$ '
-                   '($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$)) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 1: Tập hợp** để giải bài tập minh họa và bài toán thực '
+                   'tiễn.'],
   'definition': '- Một **tập hợp** (gọi tắt là tập) bao gồm những đối tượng nhất định; các đối tượng ấy được '
                 'gọi là những **phần tử** của tập hợp.\n'
                 '- Kí hiệu $a \\in A$ đọc là “$a$ thuộc $A$”; $b \\notin A$ đọc là “$b$ không thuộc $A$”.',
@@ -28,7 +27,7 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             '### 2. Hai cách mô tả một tập hợp\n'
             '- **Cách 1 (Liệt kê các phần tử)**: ví dụ $A = \\{0; 1; 2; 3; 4\\}$.\n'
             '- **Cách 2 (Chỉ ra tính chất đặc trưng)**: ví dụ $A = \\{x \\in \\mathbb{N} \\mid x < 5\\}$.',
-  'formulas': [{'category': 'I. Kí hiệu và cách mô tả tập hợp',
+  'formulas': [{'category': 'Kí hiệu và cách mô tả tập hợp',
                 'items': [{'name': 'Quan hệ phần tử – tập hợp',
                            'formula': '$x \\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$)'},
                           {'name': 'Hai cách mô tả',
@@ -58,30 +57,32 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 1: Tập hợp**, công thức hoặc quy tắc nào sau đây biểu '
-                 'diễn đúng **Quan hệ phần tử – tập hợp**?',
-            'options': ['Liệt kê $A = \\{0; 1; 2; 3\\}$ hoặc đặc trưng $A = \\{x \\in \\mathbb{N} \\mid x < '
-                        '4\\}$',
-                        '$\\overline{abc} = a \\times 100 + b \\times 10 + c$ ($a \\ne 0$)',
+            'q': 'Trong **Bài 1: Tập hợp**, quy tắc hoặc công thức nào sau đây xác định đúng **Quan hệ phần '
+                 'tử – tập hợp**?',
+            'options': ['$x \\notin A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$)',
+                        'Đảo ngược vế của quy tắc: $x \\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không '
+                        'thuộc $A$)',
                         '$x \\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$)',
-                        '$\\text{IV} = 4$, $\\text{VI} = 6$, $\\text{IX} = 9$, $\\text{XI} = 11$, '
-                        '$\\text{XX} = 20$'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $x \\in A$ ($x$ thuộc $A$); $y '
+                        '\\notin A$ ($y$ không thuộc $A$)'],
             'answer': 2,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 1: Tập hợp, **Quan hệ phần tử – tập hợp** '
-                        'được xác định bởi: $x \\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc '
-                        '$A$).'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 1: Tập hợp, **Quan hệ phần tử – tập hợp** được xác '
+                        'định bởi: $x \\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$).'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 1: Tập hợp**, nội dung/biểu thức Liệt kê $A = \\{0; 1; 2; 3\\}$ hoặc đặc trưng '
-                 '$A = \\{x \\in \\mathbb{N} \\mid x < 4\\}$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Quan hệ phần tử – tập hợp',
-                        'Cấu tạo số tự nhiên',
-                        'Quy tắc số La Mã',
-                        'Hai cách mô tả'],
+            'q': 'Khi học **Bài 1: Tập hợp**, biểu thức hoặc quy tắc nào dưới đây biểu diễn đúng **Hai cách '
+                 'mô tả**?',
+            'options': ['Liệt kê $A = \\{0; 1; 2; 3\\}$ hoặc đặc trưng $A = \\{x \\notin \\mathbb{N} \\mid x '
+                        '< 4\\}$',
+                        'Liệt kê $A = \\{0; 1; 2; 3\\}$ hoặc đặc trưng $A = \\{x \\in \\mathbb{N} \\mid x < '
+                        '3\\}$',
+                        'Liệt kê $A = \\{2; 1; 2; 3\\}$ hoặc đặc trưng $A = \\{x \\in \\mathbb{N} \\mid x < '
+                        '4\\}$',
+                        'Liệt kê $A = \\{0; 1; 2; 3\\}$ hoặc đặc trưng $A = \\{x \\in \\mathbb{N} \\mid x < '
+                        '4\\}$'],
             'answer': 3,
-            'solution': 'Trong Bài 1: Tập hợp, biểu thức/quy tắc Liệt kê $A = \\{0; 1; 2; 3\\}$ hoặc đặc '
-                        'trưng $A = \\{x \\in \\mathbb{N} \\mid x < 4\\}$ chính là nội dung của **Hai cách '
-                        'mô tả**.'},
+            'solution': 'Trong Bài 1: Tập hợp, **Hai cách mô tả** có công thức/quy tắc là: Liệt kê $A = '
+                        '\\{0; 1; 2; 3\\}$ hoặc đặc trưng $A = \\{x \\in \\mathbb{N} \\mid x < 4\\}$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Tập hợp $B = \\{x \\in \\mathbb{N} \\mid x < 4\\}$ viết bằng cách liệt kê các phần tử là:',
@@ -95,16 +96,17 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 1: Tập hợp** (Chương I: Tập hợp các số tự nhiên), khẳng định nào sau đây '
-                 'phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Phân biệt được tập hợp $\\mathbb{N}$ và $\\mathbb{N}^*$; xác định được giá trị từng '
-                        'chữ số của số tự nhiên trong hệ thập phân.',
+            'q': 'Để nắm vững bản chất của **Bài 1: Tập hợp**, nhận định nào sau đây là **chính xác**?',
+            'options': ['Sử dụng được thuật ngữ tập hợp, phần tử thuộc ($\\notin$) hoặc không thuộc '
+                        '($\\notin$) một tập hợp.',
                         'Sử dụng được thuật ngữ tập hợp, phần tử thuộc ($\\in$) hoặc không thuộc ($\\notin$) '
                         'một tập hợp.',
-                        'Đọc và viết được các số tự nhiên từ $1$ đến $30$ bằng chữ số La Mã.',
-                        'Biểu diễn được các số tự nhiên trên tia số và so sánh hai số tự nhiên.'],
+                        'Đảo ngược vế của quy tắc: Sử dụng được thuật ngữ tập hợp, phần tử thuộc ($\\in$) '
+                        'hoặc không thuộc ($\\notin$) một tập hợp.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Sử dụng được thuật ngữ tập hợp, '
+                        'phần tử thuộc ($\\in$) hoặc không thuộc ($\\notin$) một tập hợp.'],
             'answer': 1,
-            'solution': 'Theo yêu cầu cần đạt của Bài 1: Tập hợp: Sử dụng được thuật ngữ tập hợp, phần tử '
+            'solution': 'Theo nội dung cốt lõi của Bài 1: Tập hợp: Sử dụng được thuật ngữ tập hợp, phần tử '
                         'thuộc ($\\in$) hoặc không thuộc ($\\notin$) một tập hợp.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -120,36 +122,38 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 1: Tập hợp**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Sử dụng được thuật ngữ tập hợp, '
-                           'phần tử thuộc ($\\in$) hoặc không thuộc ($\\notin$) một tập hợp.',
-                           'Quy tắc/công thức **Quan hệ phần tử – tập hợp** trong bài được xác định bởi: $x '
-                           '\\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$).',
-                           'Trong mọi trường hợp, **Quan hệ phần tử – tập hợp** luôn được tính bằng công '
-                           'thức $\\overline{abc} = a \\times 100 + b \\times 10 + c$ ($a \\ne 0$) (thuộc '
-                           'Cấu tạo số tự nhiên) mà không cần điều kiện của Bài 1: Tập hợp.',
-                           'Với bài toán minh họa: “Viết tập hợp $M$ các chữ cái trong từ “TOÁN HỌC” và cho '
-                           'biết số phần tử của $M$.”, lời giải đúng là: Ta có $M = \\{\\text{T}, \\text{O}, '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 1: Tập hợp**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Sử dụng được thuật ngữ tập hợp, phần tử '
+                           'thuộc ($\\in$) hoặc không thuộc ($\\notin$) một tập hợp.',
+                           'Trong **Bài 1: Tập hợp**, quy tắc/công thức **Quan hệ phần tử – tập hợp** được '
+                           'viết là: $x \\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$).',
+                           'Nếu áp dụng sai dấu/phép tính thành $x \\notin A$ ($x$ thuộc $A$); $y \\notin A$ '
+                           '($y$ không thuộc $A$) thì kết quả của **Quan hệ phần tử – tập hợp** trong **Bài '
+                           '1: Tập hợp** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Viết tập hợp $M$ các chữ cái trong từ “TOÁN HỌC” và cho biết '
+                           'số phần tử của $M$.”, kết quả giải đúng là: Ta có $M = \\{\\text{T}, \\text{O}, '
                            '\\text{A}, \\text{N}, \\text{H}, \\text{C}\\}$ (chữ O xuất hiện $2$ lần nhưng '
-                           'chỉ viết $1$ lần). Tập hợp $M$ có...'],
+                           'chỉ viết $1$ lần). Tập hợp $M$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 1: Tập hợp. b) **Đúng** theo công thức '
-                        'trọng tâm **Quan hệ phần tử – tập hợp** ($x \\in A$ ($x$ thuộc $A$); $y \\notin A$ '
-                        '($y$ không thuộc $A$)). c) **Sai** vì $\\overline{abc} = a \\times 100 + b \\times '
-                        '10 + c$ ($a \\ne 0$) là công thức của nội dung khác, không phải quy tắc chung của '
-                        '**Quan hệ phần tử – tập hợp**. d) **Đúng** theo lời giải ví dụ minh họa trong bài '
-                        'học.'},
+                        '**Quan hệ phần tử – tập hợp** ($x \\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không '
+                        'thuộc $A$)). c) **Sai** vì công thức đúng của **Quan hệ phần tử – tập hợp** phải là '
+                        '$x \\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$) chứ không phải $x '
+                        '\\notin A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$). d) **Đúng** theo '
+                        'lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 1: Tập hợp** để giải quyết tình huống sau: Viết tập hợp $M$ các '
-                 'chữ cái trong từ “TOÁN HỌC” và cho biết số phần tử của $M$. Kết quả và hướng giải nào dưới '
-                 'đây là **đúng**?',
-            'options': ['Số $27$ viết là $\\text{XXVII}$, số $19$ viết là $\\text{XIX}$. Ta có '
-                        '$\\overline{ab} = a \\times 10 + b$.',
-                        'Các số tự nhiên từ $4$ đến $8$ là $4; 5; 6; 7; 8$. Vậy $A = \\{4; 5; 6; 7; 8\\}$.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 1: Tập hợp** để giải bài toán sau: Viết tập hợp $M$ '
+                 'các chữ cái trong từ “TOÁN HỌC” và cho biết số phần tử của $M$. Cách giải và kết quả nào '
+                 'dưới đây là **đúng**?',
+            'options': ['Ta có $M = \\{\\text{T}, \\text{O}, \\text{A}, \\text{N}, \\text{H}, \\text{C}\\}$ '
+                        '(chữ O xuất hiện $3$ lần nhưng chỉ viết $1$ lần). Tập hợp $M$ có $6$ phần t...',
                         'Ta có $M = \\{\\text{T}, \\text{O}, \\text{A}, \\text{N}, \\text{H}, \\text{C}\\}$ '
-                        '(chữ O xuất hiện $2$ lần nhưng chỉ viết $1$ lần). Tập hợp $M$ có $6$ phần tử.',
-                        'Nhóm các cặp số tròn trăm: $(135 + 65) + (360 + 40) = 200 + 400 = 600$.'],
+                        '(chữ O xuất hiện $2$ lần nhưng chỉ viết $1$ lần). Tập hợp $M$ có $5$ phần t...',
+                        'Ta có $M = \\{\\text{T}, \\text{O}, \\text{A}, \\text{N}, \\text{H}, \\text{C}\\}$ '
+                        '(chữ O xuất hiện $2$ lần nhưng chỉ viết $1$ lần). Tập hợp $M$ có $6$ phần t...',
+                        'Ta có $M = \\{\\text{T}, \\text{O}, \\text{A}, \\text{N}, \\text{H}, \\text{C}\\}$ '
+                        '(chữ O xuất hiện $4$ lần nhưng chỉ viết $1$ lần). Tập hợp $M$ có $6$ phần t...'],
             'answer': 2,
             'solution': 'Lời giải chi tiết theo Bài 1: Tập hợp: Ta có $M = \\{\\text{T}, \\text{O}, '
                         '\\text{A}, \\text{N}, \\text{H}, \\text{C}\\}$ (chữ O xuất hiện $2$ lần nhưng chỉ '
@@ -173,8 +177,8 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
   'requirements': ['Phân biệt được tập hợp $\\mathbb{N}$ và $\\mathbb{N}^*$; xác định được giá trị từng chữ '
                    'số của số tự nhiên trong hệ thập phân.',
                    'Đọc và viết được các số tự nhiên từ $1$ đến $30$ bằng chữ số La Mã.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Cấu tạo số tự nhiên** ($\\overline{abc} = a '
-                   '\\times 100 + b \\times 10 + c$ ($a \\ne 0$)) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 2: Cách ghi số tự nhiên** để giải bài tập minh họa và bài '
+                   'toán thực tiễn.'],
   'definition': '- Tập hợp các số tự nhiên: $\\mathbb{N} = \\{0; 1; 2; 3; \\dots\\}$; tập hợp các số tự '
                 'nhiên khác $0$: $\\mathbb{N}^* = \\{1; 2; 3; \\dots\\}$.\n'
                 '- Trong hệ thập phân: $\\overline{ab} = a \\times 10 + b$; $\\overline{abc} = a \\times 100 '
@@ -187,7 +191,7 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             '### 2. Số La Mã từ 1 đến 30\n'
             '- Mỗi chữ số $\\text{I}, \\text{X}$ không viết liền nhau quá $3$ lần. Ví dụ: $\\text{XIV} = '
             '14$, $\\text{XIX} = 19$, $\\text{XXIV} = 24$, $\\text{XXIX} = 29$.',
-  'formulas': [{'category': 'I. Cấu tạo thập phân và Số La Mã',
+  'formulas': [{'category': 'Cấu tạo thập phân và Số La Mã',
                 'items': [{'name': 'Cấu tạo số tự nhiên',
                            'formula': '$\\overline{abc} = a \\times 100 + b \\times 10 + c$ ($a \\ne 0$)'},
                           {'name': 'Quy tắc số La Mã',
@@ -218,31 +222,32 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 2: Cách ghi số tự nhiên**, công thức hoặc quy tắc nào '
-                 'sau đây biểu diễn đúng **Cấu tạo số tự nhiên**?',
-            'options': ['$\\text{IV} = 4$, $\\text{VI} = 6$, $\\text{IX} = 9$, $\\text{XI} = 11$, '
-                        '$\\text{XX} = 20$',
-                        '$x \\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$)',
-                        'Liệt kê $A = \\{0; 1; 2; 3\\}$ hoặc đặc trưng $A = \\{x \\in \\mathbb{N} \\mid x < '
-                        '4\\}$',
+            'q': 'Trong **Bài 2: Cách ghi số tự nhiên**, quy tắc hoặc công thức nào sau đây xác định đúng '
+                 '**Cấu tạo số tự nhiên**?',
+            'options': ['$\\overline{abc} = a \\times 100 - b \\times 10 + c$ ($a \\ne 0$)',
+                        '$\\overline{abc} = a \\times 100 + b \\times 10 + c$ ($a \\ne 1$)',
+                        '$\\overline{abc} = a \\times 102 + b \\times 10 + c$ ($a \\ne 0$)',
                         '$\\overline{abc} = a \\times 100 + b \\times 10 + c$ ($a \\ne 0$)'],
             'answer': 3,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 2: Cách ghi số tự nhiên, **Cấu tạo số tự '
-                        'nhiên** được xác định bởi: $\\overline{abc} = a \\times 100 + b \\times 10 + c$ ($a '
-                        '\\ne 0$).'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 2: Cách ghi số tự nhiên, **Cấu tạo số tự nhiên** '
+                        'được xác định bởi: $\\overline{abc} = a \\times 100 + b \\times 10 + c$ ($a \\ne '
+                        '0$).'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 2: Cách ghi số tự nhiên**, nội dung/biểu thức $\\text{IV} = 4$, $\\text{VI} = '
-                 '6$, $\\text{IX} = 9$, $\\text{XI} = 11$, $\\text{XX} = 20$ là quy tắc hoặc công thức của '
-                 'mục nào sau đây?',
-            'options': ['Quy tắc số La Mã',
-                        'Cấu tạo số tự nhiên',
-                        'Quan hệ phần tử – tập hợp',
-                        'Hai cách mô tả'],
+            'q': 'Khi học **Bài 2: Cách ghi số tự nhiên**, biểu thức hoặc quy tắc nào dưới đây biểu diễn '
+                 'đúng **Quy tắc số La Mã**?',
+            'options': ['$\\text{IV} = 4$, $\\text{VI} = 6$, $\\text{IX} = 9$, $\\text{XI} = 11$, '
+                        '$\\text{XX} = 20$',
+                        '$\\text{IV} = 5$, $\\text{VI} = 6$, $\\text{IX} = 9$, $\\text{XI} = 11$, '
+                        '$\\text{XX} = 20$',
+                        '$\\text{IV} = 4$, $\\text{VI} = 6$, $\\text{IX} = 9$, $\\text{XI} = 11$, '
+                        '$\\text{XX} = 19$',
+                        '$\\text{IV} = 8$, $\\text{VI} = 6$, $\\text{IX} = 9$, $\\text{XI} = 11$, '
+                        '$\\text{XX} = 20$'],
             'answer': 0,
-            'solution': 'Trong Bài 2: Cách ghi số tự nhiên, biểu thức/quy tắc $\\text{IV} = 4$, $\\text{VI} '
-                        '= 6$, $\\text{IX} = 9$, $\\text{XI} = 11$, $\\text{XX} = 20$ chính là nội dung của '
-                        '**Quy tắc số La Mã**.'},
+            'solution': 'Trong Bài 2: Cách ghi số tự nhiên, **Quy tắc số La Mã** có công thức/quy tắc là: '
+                        '$\\text{IV} = 4$, $\\text{VI} = 6$, $\\text{IX} = 9$, $\\text{XI} = 11$, '
+                        '$\\text{XX} = 20$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Trong số tự nhiên $35\\,708$, giá trị của chữ số $5$ gấp mấy lần giá trị của chữ số $5$ '
@@ -255,17 +260,19 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 2: Cách ghi số tự nhiên** (Chương I: Tập hợp các số tự nhiên), khẳng định '
-                 'nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Sử dụng được thuật ngữ tập hợp, phần tử thuộc ($\\in$) hoặc không thuộc ($\\notin$) '
-                        'một tập hợp.',
-                        'Cho được một tập hợp bằng cách liệt kê các phần tử hoặc chỉ ra tính chất đặc trưng '
-                        'cho các phần tử.',
+            'q': 'Để nắm vững bản chất của **Bài 2: Cách ghi số tự nhiên**, nhận định nào sau đây là **chính '
+                 'xác**?',
+            'options': ['Phân biệt được tập hợp $\\mathbb{N}$ và $\\mathbb{N}^*$; xác định được giá trị từng '
+                        'chữ số của số tự nhiên trong hệ thập phân. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Phân biệt được tập hợp $\\mathbb{N}$ và $\\mathbb{N}^*$; '
+                        'xác định được giá trị từng chữ số của số tự nhiên trong hệ thập phân.',
                         'Phân biệt được tập hợp $\\mathbb{N}$ và $\\mathbb{N}^*$; xác định được giá trị từng '
                         'chữ số của số tự nhiên trong hệ thập phân.',
-                        'Biểu diễn được các số tự nhiên trên tia số và so sánh hai số tự nhiên.'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Phân biệt được tập hợp '
+                        '$\\mathbb{N}$ và $\\mathbb{N}^*$; xác định được giá trị từng chữ số của số tự nhiên '
+                        'trong hệ thập phân.'],
             'answer': 2,
-            'solution': 'Theo yêu cầu cần đạt của Bài 2: Cách ghi số tự nhiên: Phân biệt được tập hợp '
+            'solution': 'Theo nội dung cốt lõi của Bài 2: Cách ghi số tự nhiên: Phân biệt được tập hợp '
                         '$\\mathbb{N}$ và $\\mathbb{N}^*$; xác định được giá trị từng chữ số của số tự nhiên '
                         'trong hệ thập phân.'},
            {'level': 'hieu',
@@ -282,36 +289,37 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 2: Cách ghi số tự '
-                 'nhiên**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Phân biệt được tập hợp '
-                           '$\\mathbb{N}$ và $\\mathbb{N}^*$; xác định được giá trị từng chữ số của số tự '
-                           'nhiên trong hệ thập phân.',
-                           'Quy tắc/công thức **Cấu tạo số tự nhiên** trong bài được xác định bởi: '
-                           '$\\overline{abc} = a \\times 100 + b \\times 10 + c$ ($a \\ne 0$).',
-                           'Trong mọi trường hợp, **Cấu tạo số tự nhiên** luôn được tính bằng công thức $x '
-                           '\\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$) (thuộc Quan hệ phần '
-                           'tử – tập hợp) mà không cần điều kiện của Bài 2: Cách ghi số tự nhiên.',
-                           'Với bài toán minh họa: “Viết số $27$ và $19$ bằng chữ số La Mã; viết số '
-                           '$\\overline{ab}$ dưới dạng tổng các hàng.”, lời giải đúng là: Số $27$ viết là '
-                           '$\\text{XXVII}$, số $19$ viết là $\\text{XIX}$. Ta có $\\overline{ab} = a '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 2: Cách ghi số tự nhiên**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Phân biệt được tập hợp $\\mathbb{N}$ và '
+                           '$\\mathbb{N}^*$; xác định được giá trị từng chữ số của số tự nhiên trong hệ thập '
+                           'phân.',
+                           'Trong **Bài 2: Cách ghi số tự nhiên**, quy tắc/công thức **Cấu tạo số tự nhiên** '
+                           'được viết là: $\\overline{abc} = a \\times 100 + b \\times 10 + c$ ($a \\ne 0$).',
+                           'Nếu áp dụng sai dấu/phép tính thành $\\overline{abc} = a \\times 100 - b \\times '
+                           '10 + c$ ($a \\ne 0$) thì kết quả của **Cấu tạo số tự nhiên** trong **Bài 2: Cách '
+                           'ghi số tự nhiên** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Viết số $27$ và $19$ bằng chữ số La Mã; viết số '
+                           '$\\overline{ab}$ dưới dạng tổng các hàng.”, kết quả giải đúng là: Số $27$ viết '
+                           'là $\\text{XXVII}$, số $19$ viết là $\\text{XIX}$. Ta có $\\overline{ab} = a '
                            '\\times 10 + b$.'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 2: Cách ghi số tự nhiên. b) **Đúng** theo '
-                        'công thức trọng tâm **Cấu tạo số tự nhiên** ($\\overline{abc} = a \\times 100 + b '
-                        '\\times 10 + c$ ($a \\ne 0$)). c) **Sai** vì $x \\in A$ ($x$ thuộc $A$); $y \\notin '
-                        'A$ ($y$ không thuộc $A$) là công thức của nội dung khác, không phải quy tắc chung '
-                        'của **Cấu tạo số tự nhiên**. d) **Đúng** theo lời giải ví dụ minh họa trong bài '
-                        'học.'},
+                        'công thức **Cấu tạo số tự nhiên** ($\\overline{abc} = a \\times 100 + b \\times 10 '
+                        '+ c$ ($a \\ne 0$)). c) **Sai** vì công thức đúng của **Cấu tạo số tự nhiên** phải '
+                        'là $\\overline{abc} = a \\times 100 + b \\times 10 + c$ ($a \\ne 0$) chứ không phải '
+                        '$\\overline{abc} = a \\times 100 - b \\times 10 + c$ ($a \\ne 0$). d) **Đúng** theo '
+                        'lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 2: Cách ghi số tự nhiên** để giải quyết tình huống sau: Viết số '
-                 '$27$ và $19$ bằng chữ số La Mã; viết số $\\overline{ab}$ dưới dạng tổng các hàng. Kết quả '
-                 'và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Ta có $M = \\{\\text{T}, \\text{O}, \\text{A}, \\text{N}, \\text{H}, \\text{C}\\}$ '
-                        '(chữ O xuất hiện $2$ lần nhưng chỉ viết $1$ lần). Tập hợp $M$ có $6$ phần tử.',
-                        'Các số tự nhiên từ $4$ đến $8$ là $4; 5; 6; 7; 8$. Vậy $A = \\{4; 5; 6; 7; 8\\}$.',
-                        'Nhóm các cặp số tròn trăm: $(135 + 65) + (360 + 40) = 200 + 400 = 600$.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 2: Cách ghi số tự nhiên** để giải bài toán sau: '
+                 'Viết số $27$ và $19$ bằng chữ số La Mã; viết số $\\overline{ab}$ dưới dạng tổng các hàng. '
+                 'Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Số $27$ viết là $\\text{XXVII}$, số $19$ viết là $\\text{XIX}$. Ta có '
+                        '$\\overline{ab} = a \\times 10 - b$.',
+                        'Số $27$ viết là $\\text{XXVII}$, số $19$ viết là $\\text{XIX}$. Ta có '
+                        '$\\overline{ab} = a \\times 9 + b$.',
+                        'Số $54$ viết là $\\text{XXVII}$, số $19$ viết là $\\text{XIX}$. Ta có '
+                        '$\\overline{ab} = a \\times 10 + b$.',
                         'Số $27$ viết là $\\text{XXVII}$, số $19$ viết là $\\text{XIX}$. Ta có '
                         '$\\overline{ab} = a \\times 10 + b$.'],
             'answer': 3,
@@ -336,8 +344,8 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
   'requirements': ['Biểu diễn được các số tự nhiên trên tia số và so sánh hai số tự nhiên.',
                    'Tìm được số liền trước, số liền sau và liệt kê các phần tử của tập hợp xác định bởi bất '
                    'đẳng thức.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Số liền trước và liền sau** (Liền trước của '
-                   '$n$ ($n \\ge 1$) là $n - 1$; liền sau của $n$ là $n + 1$) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 3: Thứ tự trong tập hợp các số tự nhiên** để giải bài tập '
+                   'minh họa và bài toán thực tiễn.'],
   'definition': '- Trong hai số tự nhiên khác nhau, luôn có một số nhỏ hơn số kia. Nếu $a < b$ thì trên tia '
                 'số nằm ngang, điểm $a$ nằm **bên trái** điểm $b$.\n'
                 '- Số $n + 1$ là **số liền sau** của $n$; số $n - 1$ (với $n \\in \\mathbb{N}^*$) là **số '
@@ -348,7 +356,7 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             '### 2. Kí hiệu $\\le$ và $\\ge$\n'
             '- $a \\le b$ nghĩa là $a < b$ hoặc $a = b$. Ví dụ: $\\{x \\in \\mathbb{N} \\mid 3 \\le x < 7\\} '
             '= \\{3; 4; 5; 6\\}$.',
-  'formulas': [{'category': 'I. Quan hệ thứ tự trong N',
+  'formulas': [{'category': 'Quan hệ thứ tự trong N',
                 'items': [{'name': 'Số liền trước và liền sau',
                            'formula': 'Liền trước của $n$ ($n \\ge 1$) là $n - 1$; liền sau của $n$ là $n + '
                                       '1$'},
@@ -380,29 +388,27 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 3: Thứ tự trong tập hợp các số tự nhiên**, công thức '
-                 'hoặc quy tắc nào sau đây biểu diễn đúng **Số liền trước và liền sau**?',
+            'q': 'Trong **Bài 3: Thứ tự trong tập hợp các số tự nhiên**, quy tắc hoặc công thức nào sau đây '
+                 'xác định đúng **Số liền trước và liền sau**?',
             'options': ['Liền trước của $n$ ($n \\ge 1$) là $n - 1$; liền sau của $n$ là $n + 1$',
-                        '$n - 1;\\ n;\\ n + 1$ (với $n \\in \\mathbb{N}^*$)',
-                        '$x \\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$)',
-                        'Liệt kê $A = \\{0; 1; 2; 3\\}$ hoặc đặc trưng $A = \\{x \\in \\mathbb{N} \\mid x < '
-                        '4\\}$'],
+                        'Liền trước của $n$ ($n \\le 1$) là $n - 1$; liền sau của $n$ là $n + 1$',
+                        'Liền trước của $n$ ($n \\ge 1$) là $n - 1$; liền sau của $n$ là $n + 2$',
+                        'Liền trước của $n$ ($n \\ge 2$) là $n - 1$; liền sau của $n$ là $n + 1$'],
             'answer': 0,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 3: Thứ tự trong tập hợp các số tự nhiên, **Số '
-                        'liền trước và liền sau** được xác định bởi: Liền trước của $n$ ($n \\ge 1$) là $n - '
-                        '1$; liền sau của $n$ là $n + 1$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 3: Thứ tự trong tập hợp các số tự nhiên, **Số liền '
+                        'trước và liền sau** được xác định bởi: Liền trước của $n$ ($n \\ge 1$) là $n - 1$; '
+                        'liền sau của $n$ là $n + 1$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 3: Thứ tự trong tập hợp các số tự nhiên**, nội dung/biểu thức $n - 1;\\ n;\\ n '
-                 '+ 1$ (với $n \\in \\mathbb{N}^*$) là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Số liền trước và liền sau',
-                        'Ba số tự nhiên liên tiếp',
-                        'Quan hệ phần tử – tập hợp',
-                        'Hai cách mô tả'],
+            'q': 'Khi học **Bài 3: Thứ tự trong tập hợp các số tự nhiên**, biểu thức hoặc quy tắc nào dưới '
+                 'đây biểu diễn đúng **Ba số tự nhiên liên tiếp**?',
+            'options': ['$n - 1;\\ n;\\ n + 1$ (với $n \\notin \\mathbb{N}^*$)',
+                        '$n - 1;\\ n;\\ n + 1$ (với $n \\in \\mathbb{N}^*$)',
+                        '$n - 1;\\ n;\\ n + 2$ (với $n \\in \\mathbb{N}^*$)',
+                        '$n - 2;\\ n;\\ n + 1$ (với $n \\in \\mathbb{N}^*$)'],
             'answer': 1,
-            'solution': 'Trong Bài 3: Thứ tự trong tập hợp các số tự nhiên, biểu thức/quy tắc $n - 1;\\ n;\\ '
-                        'n + 1$ (với $n \\in \\mathbb{N}^*$) chính là nội dung của **Ba số tự nhiên liên '
-                        'tiếp**.'},
+            'solution': 'Trong Bài 3: Thứ tự trong tập hợp các số tự nhiên, **Ba số tự nhiên liên tiếp** có '
+                        'công thức/quy tắc là: $n - 1;\\ n;\\ n + 1$ (với $n \\in \\mathbb{N}^*$).'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Cho ba số tự nhiên liên tiếp tăng dần là $m;\\ 15;\\ n$. Khi đó tổng $m + n$ bằng:',
@@ -413,18 +419,17 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 3: Thứ tự trong tập hợp các số tự nhiên** (Chương I: Tập hợp các số tự '
-                 'nhiên), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của '
-                 'bài?',
-            'options': ['Sử dụng được thuật ngữ tập hợp, phần tử thuộc ($\\in$) hoặc không thuộc ($\\notin$) '
-                        'một tập hợp.',
-                        'Cho được một tập hợp bằng cách liệt kê các phần tử hoặc chỉ ra tính chất đặc trưng '
-                        'cho các phần tử.',
-                        'Phân biệt được tập hợp $\\mathbb{N}$ và $\\mathbb{N}^*$; xác định được giá trị từng '
-                        'chữ số của số tự nhiên trong hệ thập phân.',
+            'q': 'Để nắm vững bản chất của **Bài 3: Thứ tự trong tập hợp các số tự nhiên**, nhận định nào '
+                 'sau đây là **chính xác**?',
+            'options': ['Biểu diễn được các số tự nhiên trên tia số và so sánh hai số tự nhiên. (với dấu '
+                        'ngược lại)',
+                        'Đảo ngược vế của quy tắc: Biểu diễn được các số tự nhiên trên tia số và so sánh hai '
+                        'số tự nhiên.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Biểu diễn được các số tự nhiên '
+                        'trên tia số và so sánh hai số tự nhiên.',
                         'Biểu diễn được các số tự nhiên trên tia số và so sánh hai số tự nhiên.'],
             'answer': 3,
-            'solution': 'Theo yêu cầu cần đạt của Bài 3: Thứ tự trong tập hợp các số tự nhiên: Biểu diễn '
+            'solution': 'Theo nội dung cốt lõi của Bài 3: Thứ tự trong tập hợp các số tự nhiên: Biểu diễn '
                         'được các số tự nhiên trên tia số và so sánh hai số tự nhiên.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -440,37 +445,36 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 3: Thứ tự trong tập hợp '
-                 'các số tự nhiên**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Biểu diễn được các số tự nhiên '
-                           'trên tia số và so sánh hai số tự nhiên.',
-                           'Quy tắc/công thức **Số liền trước và liền sau** trong bài được xác định bởi: '
-                           'Liền trước của $n$ ($n \\ge 1$) là $n - 1$; liền sau của $n$ là $n + 1$.',
-                           'Trong mọi trường hợp, **Số liền trước và liền sau** luôn được tính bằng công '
-                           'thức $x \\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$) (thuộc Quan '
-                           'hệ phần tử – tập hợp) mà không cần điều kiện của Bài 3: Thứ tự trong tập hợp các '
-                           'số tự nhiên.',
-                           'Với bài toán minh họa: “Viết tập hợp $A = \\{x \\in \\mathbb{N} \\mid 4 \\le x '
-                           '\\le 8\\}$ bằng cách liệt kê các phần tử.”, lời giải đúng là: Các số tự nhiên từ '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 3: Thứ tự trong tập hợp các '
+                 'số tự nhiên**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Biểu diễn được các số tự nhiên trên tia '
+                           'số và so sánh hai số tự nhiên.',
+                           'Trong **Bài 3: Thứ tự trong tập hợp các số tự nhiên**, quy tắc/công thức **Số '
+                           'liền trước và liền sau** được viết là: Liền trước của $n$ ($n \\ge 1$) là $n - '
+                           '1$; liền sau của $n$ là $n + 1$.',
+                           'Nếu áp dụng sai dấu/phép tính thành Liền trước của $n$ ($n \\le 1$) là $n - 1$; '
+                           'liền sau của $n$ là $n + 1$ thì kết quả của **Số liền trước và liền sau** trong '
+                           '**Bài 3: Thứ tự trong tập hợp các số tự nhiên** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Viết tập hợp $A = \\{x \\in \\mathbb{N} \\mid 4 \\le x \\le '
+                           '8\\}$ bằng cách liệt kê các phần tử.”, kết quả giải đúng là: Các số tự nhiên từ '
                            '$4$ đến $8$ là $4; 5; 6; 7; 8$. Vậy $A = \\{4; 5; 6; 7; 8\\}$.'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 3: Thứ tự trong tập hợp các số tự nhiên. '
-                        'b) **Đúng** theo công thức trọng tâm **Số liền trước và liền sau** (Liền trước của '
-                        '$n$ ($n \\ge 1$) là $n - 1$; liền sau của $n$ là $n + 1$). c) **Sai** vì $x \\in A$ '
-                        '($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$) là công thức của nội dung '
-                        'khác, không phải quy tắc chung của **Số liền trước và liền sau**. d) **Đúng** theo '
-                        'lời giải ví dụ minh họa trong bài học.'},
+                        'b) **Đúng** theo công thức **Số liền trước và liền sau** (Liền trước của $n$ ($n '
+                        '\\ge 1$) là $n - 1$; liền sau của $n$ là $n + 1$). c) **Sai** vì công thức đúng của '
+                        '**Số liền trước và liền sau** phải là Liền trước của $n$ ($n \\ge 1$) là $n - 1$; '
+                        'liền sau của $n$ là $n + 1$ chứ không phải Liền trước của $n$ ($n \\le 1$) là $n - '
+                        '1$; liền sau của $n$ là $n + 1$. d) **Đúng** theo lời giải ví dụ minh họa trong bài '
+                        'học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 3: Thứ tự trong tập hợp các số tự nhiên** để giải quyết tình '
-                 'huống sau: Viết tập hợp $A = \\{x \\in \\mathbb{N} \\mid 4 \\le x \\le 8\\}$ bằng cách '
-                 'liệt kê các phần tử. Kết quả và hướng giải nào dưới đây là **đúng**?',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 3: Thứ tự trong tập hợp các số tự nhiên** để giải '
+                 'bài toán sau: Viết tập hợp $A = \\{x \\in \\mathbb{N} \\mid 4 \\le x \\le 8\\}$ bằng cách '
+                 'liệt kê các phần tử. Cách giải và kết quả nào dưới đây là **đúng**?',
             'options': ['Các số tự nhiên từ $4$ đến $8$ là $4; 5; 6; 7; 8$. Vậy $A = \\{4; 5; 6; 7; 8\\}$.',
-                        'Ta có $M = \\{\\text{T}, \\text{O}, \\text{A}, \\text{N}, \\text{H}, \\text{C}\\}$ '
-                        '(chữ O xuất hiện $2$ lần nhưng chỉ viết $1$ lần). Tập hợp $M$ có $6$ phần tử.',
-                        'Số $27$ viết là $\\text{XXVII}$, số $19$ viết là $\\text{XIX}$. Ta có '
-                        '$\\overline{ab} = a \\times 10 + b$.',
-                        'Nhóm các cặp số tròn trăm: $(135 + 65) + (360 + 40) = 200 + 400 = 600$.'],
+                        'Các số tự nhiên từ $5$ đến $8$ là $4; 5; 6; 7; 8$. Vậy $A = \\{4; 5; 6; 7; 8\\}$.',
+                        'Các số tự nhiên từ $4$ đến $8$ là $4; 5; 6; 7; 8$. Vậy $A = \\{4; 5; 6; 7; 7\\}$.',
+                        'Các số tự nhiên từ $8$ đến $8$ là $4; 5; 6; 7; 8$. Vậy $A = \\{4; 5; 6; 7; 8\\}$.'],
             'answer': 0,
             'solution': 'Lời giải chi tiết theo Bài 3: Thứ tự trong tập hợp các số tự nhiên: Các số tự nhiên '
                         'từ $4$ đến $8$ là $4; 5; 6; 7; 8$. Vậy $A = \\{4; 5; 6; 7; 8\\}$.'},
@@ -492,8 +496,8 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
   'requirements': ['Vận dụng tính chất giao hoán và kết hợp của phép cộng để tính nhẩm, tính hợp lí.',
                    'Nắm được điều kiện thực hiện phép trừ trong $\\mathbb{N}$ ($a \\ge b$) và giải bài toán '
                    'tìm $x$.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Giao hoán, kết hợp** ($a + b = b + a$; $(a '
-                   '+ b) + c = a + (b + c)$) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 4: Phép cộng và phép trừ số tự nhiên** để giải bài tập minh '
+                   'họa và bài toán thực tiễn.'],
   'definition': '- Phép cộng: $a + b = c$ ($a, b$ là các **số hạng**, $c$ là **tổng**).\n'
                 '- Phép trừ: nếu có số tự nhiên $x$ sao cho $b + x = a$ thì ta có phép trừ $a - b = x$ ($a$: '
                 'số bị trừ, $b$: số trừ, $x$: hiệu). Điều kiện để thực hiện được trong $\\mathbb{N}$ là $a '
@@ -505,7 +509,7 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             '### 2. Mối quan hệ giữa phép cộng và phép trừ\n'
             '- Số hạng chưa biết $=$ Tổng $-$ Số hạng đã biết; Số bị trừ $=$ Hiệu $+$ Số trừ; Số trừ $=$ Số '
             'bị trừ $-$ Hiệu.',
-  'formulas': [{'category': 'I. Tính chất và quy tắc tìm x',
+  'formulas': [{'category': 'Tính chất và quy tắc tìm x',
                 'items': [{'name': 'Giao hoán, kết hợp',
                            'formula': '$a + b = b + a$; $(a + b) + c = a + (b + c)$'},
                           {'name': 'Tìm thành phần chưa biết',
@@ -532,29 +536,30 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 4: Phép cộng và phép trừ số tự nhiên**, công thức hoặc '
-                 'quy tắc nào sau đây biểu diễn đúng **Giao hoán, kết hợp**?',
-            'options': ['$x + b = c \\Rightarrow x = c - b$; $a - x = c \\Rightarrow x = a - c$',
+            'q': 'Trong **Bài 4: Phép cộng và phép trừ số tự nhiên**, quy tắc hoặc công thức nào sau đây xác '
+                 'định đúng **Giao hoán, kết hợp**?',
+            'options': ['$a - b = b + a$; $(a + b) + c = a + (b + c)$',
                         '$a + b = b + a$; $(a + b) + c = a + (b + c)$',
-                        '$x \\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$)',
-                        'Liệt kê $A = \\{0; 1; 2; 3\\}$ hoặc đặc trưng $A = \\{x \\in \\mathbb{N} \\mid x < '
-                        '4\\}$'],
+                        'Đảo ngược vế của quy tắc: $a + b = b + a$; $(a + b) + c = a + (b + c)$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $a + b = b + a$; $(a + b) + c = '
+                        'a + (b + c)$'],
             'answer': 1,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 4: Phép cộng và phép trừ số tự nhiên, **Giao '
-                        'hoán, kết hợp** được xác định bởi: $a + b = b + a$; $(a + b) + c = a + (b + c)$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 4: Phép cộng và phép trừ số tự nhiên, **Giao hoán, '
+                        'kết hợp** được xác định bởi: $a + b = b + a$; $(a + b) + c = a + (b + c)$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 4: Phép cộng và phép trừ số tự nhiên**, nội dung/biểu thức $x + b = c '
-                 '\\Rightarrow x = c - b$; $a - x = c \\Rightarrow x = a - c$ là quy tắc hoặc công thức của '
-                 'mục nào sau đây?',
-            'options': ['Giao hoán, kết hợp',
-                        'Quan hệ phần tử – tập hợp',
-                        'Tìm thành phần chưa biết',
-                        'Hai cách mô tả'],
+            'q': 'Khi học **Bài 4: Phép cộng và phép trừ số tự nhiên**, biểu thức hoặc quy tắc nào dưới đây '
+                 'biểu diễn đúng **Tìm thành phần chưa biết**?',
+            'options': ['$x - b = c \\Rightarrow x = c - b$; $a - x = c \\Rightarrow x = a - c$',
+                        'Đảo ngược vế của quy tắc: $x + b = c \\Rightarrow x = c - b$; $a - x = c '
+                        '\\Rightarrow x = a - c$',
+                        '$x + b = c \\Rightarrow x = c - b$; $a - x = c \\Rightarrow x = a - c$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $x + b = c \\Rightarrow x = c - '
+                        'b$; $a - x = c \\Rightarrow x = a - c$'],
             'answer': 2,
-            'solution': 'Trong Bài 4: Phép cộng và phép trừ số tự nhiên, biểu thức/quy tắc $x + b = c '
-                        '\\Rightarrow x = c - b$; $a - x = c \\Rightarrow x = a - c$ chính là nội dung của '
-                        '**Tìm thành phần chưa biết**.'},
+            'solution': 'Trong Bài 4: Phép cộng và phép trừ số tự nhiên, **Tìm thành phần chưa biết** có '
+                        'công thức/quy tắc là: $x + b = c \\Rightarrow x = c - b$; $a - x = c \\Rightarrow x '
+                        '= a - c$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Tìm số tự nhiên $x$ biết $124 - (x - 16) = 80$:',
@@ -565,17 +570,17 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 4: Phép cộng và phép trừ số tự nhiên** (Chương I: Tập hợp các số tự nhiên), '
-                 'khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
+            'q': 'Để nắm vững bản chất của **Bài 4: Phép cộng và phép trừ số tự nhiên**, nhận định nào sau '
+                 'đây là **chính xác**?',
             'options': ['Vận dụng tính chất giao hoán và kết hợp của phép cộng để tính nhẩm, tính hợp lí.',
-                        'Sử dụng được thuật ngữ tập hợp, phần tử thuộc ($\\in$) hoặc không thuộc ($\\notin$) '
-                        'một tập hợp.',
-                        'Cho được một tập hợp bằng cách liệt kê các phần tử hoặc chỉ ra tính chất đặc trưng '
-                        'cho các phần tử.',
-                        'Phân biệt được tập hợp $\\mathbb{N}$ và $\\mathbb{N}^*$; xác định được giá trị từng '
-                        'chữ số của số tự nhiên trong hệ thập phân.'],
+                        'Vận dụng tính chất giao hoán và kết hợp của phép cộng để tính nhẩm, tính hợp lí. '
+                        '(với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Vận dụng tính chất giao hoán và kết hợp của phép cộng để '
+                        'tính nhẩm, tính hợp lí.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Vận dụng tính chất giao hoán và '
+                        'kết hợp của phép cộng để tính nhẩm, tính hợp lí.'],
             'answer': 0,
-            'solution': 'Theo yêu cầu cần đạt của Bài 4: Phép cộng và phép trừ số tự nhiên: Vận dụng tính '
+            'solution': 'Theo nội dung cốt lõi của Bài 4: Phép cộng và phép trừ số tự nhiên: Vận dụng tính '
                         'chất giao hoán và kết hợp của phép cộng để tính nhẩm, tính hợp lí.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -591,36 +596,33 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 4: Phép cộng và phép '
-                 'trừ số tự nhiên**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Vận dụng tính chất giao hoán và '
-                           'kết hợp của phép cộng để tính nhẩm, tính hợp lí.',
-                           'Quy tắc/công thức **Giao hoán, kết hợp** trong bài được xác định bởi: $a + b = b '
-                           '+ a$; $(a + b) + c = a + (b + c)$.',
-                           'Trong mọi trường hợp, **Giao hoán, kết hợp** luôn được tính bằng công thức $x '
-                           '\\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$) (thuộc Quan hệ phần '
-                           'tử – tập hợp) mà không cần điều kiện của Bài 4: Phép cộng và phép trừ số tự '
-                           'nhiên.',
-                           'Với bài toán minh họa: “Tính một cách hợp lí: $135 + 360 + 65 + 40$.”, lời giải '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 4: Phép cộng và phép trừ số '
+                 'tự nhiên**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Vận dụng tính chất giao hoán và kết hợp '
+                           'của phép cộng để tính nhẩm, tính hợp lí.',
+                           'Trong **Bài 4: Phép cộng và phép trừ số tự nhiên**, quy tắc/công thức **Giao '
+                           'hoán, kết hợp** được viết là: $a + b = b + a$; $(a + b) + c = a + (b + c)$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $a - b = b + a$; $(a + b) + c = a + (b + c)$ '
+                           'thì kết quả của **Giao hoán, kết hợp** trong **Bài 4: Phép cộng và phép trừ số '
+                           'tự nhiên** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Tính một cách hợp lí: $135 + 360 + 65 + 40$.”, kết quả giải '
                            'đúng là: Nhóm các cặp số tròn trăm: $(135 + 65) + (360 + 40) = 200 + 400 = '
                            '600$.'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 4: Phép cộng và phép trừ số tự nhiên. b) '
-                        '**Đúng** theo công thức trọng tâm **Giao hoán, kết hợp** ($a + b = b + a$; $(a + b) '
-                        '+ c = a + (b + c)$). c) **Sai** vì $x \\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ '
-                        'không thuộc $A$) là công thức của nội dung khác, không phải quy tắc chung của '
-                        '**Giao hoán, kết hợp**. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        '**Đúng** theo công thức **Giao hoán, kết hợp** ($a + b = b + a$; $(a + b) + c = a + '
+                        '(b + c)$). c) **Sai** vì công thức đúng của **Giao hoán, kết hợp** phải là $a + b = '
+                        'b + a$; $(a + b) + c = a + (b + c)$ chứ không phải $a - b = b + a$; $(a + b) + c = '
+                        'a + (b + c)$. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 4: Phép cộng và phép trừ số tự nhiên** để giải quyết tình huống '
-                 'sau: Tính một cách hợp lí: $135 + 360 + 65 + 40$. Kết quả và hướng giải nào dưới đây là '
-                 '**đúng**?',
-            'options': ['Ta có $M = \\{\\text{T}, \\text{O}, \\text{A}, \\text{N}, \\text{H}, \\text{C}\\}$ '
-                        '(chữ O xuất hiện $2$ lần nhưng chỉ viết $1$ lần). Tập hợp $M$ có $6$ phần tử.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 4: Phép cộng và phép trừ số tự nhiên** để giải bài '
+                 'toán sau: Tính một cách hợp lí: $135 + 360 + 65 + 40$. Cách giải và kết quả nào dưới đây '
+                 'là **đúng**?',
+            'options': ['Nhóm các cặp số tròn trăm: $(135 - 65) + (360 + 40) = 200 + 400 = 600$.',
                         'Nhóm các cặp số tròn trăm: $(135 + 65) + (360 + 40) = 200 + 400 = 600$.',
-                        'Số $27$ viết là $\\text{XXVII}$, số $19$ viết là $\\text{XIX}$. Ta có '
-                        '$\\overline{ab} = a \\times 10 + b$.',
-                        'Các số tự nhiên từ $4$ đến $8$ là $4; 5; 6; 7; 8$. Vậy $A = \\{4; 5; 6; 7; 8\\}$.'],
+                        'Nhóm các cặp số tròn trăm: $(135 + 65) + (360 + 40) = 200 + 400 = 599$.',
+                        'Nhóm các cặp số tròn trăm: $(137 + 65) + (360 + 40) = 200 + 400 = 600$.'],
             'answer': 1,
             'solution': 'Lời giải chi tiết theo Bài 4: Phép cộng và phép trừ số tự nhiên: Nhóm các cặp số '
                         'tròn trăm: $(135 + 65) + (360 + 40) = 200 + 400 = 600$.'},
@@ -643,9 +645,8 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
                    'tính hợp lí.',
                    'Nắm vững công thức phép chia có dư $a = b \\cdot q + r$ ($0 \\le r < b$) và giải bài '
                    'toán thực tế.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Tính chất phân phối** ($a \\cdot (b + c) = '
-                   'a \\cdot b + a \\cdot c$; $a \\cdot (b - c) = a \\cdot b - a \\cdot c$) vào giải bài '
-                   'tập.'],
+                   'Vận dụng kiến thức của **Bài 5: Phép nhân và phép chia số tự nhiên** để giải bài tập '
+                   'minh họa và bài toán thực tiễn.'],
   'definition': '- Phép nhân: $a \\cdot b = c$ ($a, b$: thừa số; $c$: tích). Trong tích chứa chữ, ta có thể '
                 'bỏ dấu nhân: $a \\cdot b = ab$.\n'
                 '- Với hai số tự nhiên $a$ và $b$ ($b \\ne 0$), luôn tìm được duy nhất hai số tự nhiên $q$ '
@@ -658,7 +659,7 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             '### 2. Phép chia hết và phép chia có dư\n'
             '- Nếu $r = 0$ thì $a = b \\cdot q$ là phép chia hết ($a : b = q$). Nếu $r \\ne 0$ thì đó là '
             'phép chia có dư.',
-  'formulas': [{'category': 'I. Tính chất phép nhân và Phép chia có dư',
+  'formulas': [{'category': 'Tính chất phép nhân và Phép chia có dư',
                 'items': [{'name': 'Tính chất phân phối',
                            'formula': '$a \\cdot (b + c) = a \\cdot b + a \\cdot c$; $a \\cdot (b - c) = a '
                                       '\\cdot b - a \\cdot c$'},
@@ -686,29 +687,31 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 5: Phép nhân và phép chia số tự nhiên**, công thức hoặc '
-                 'quy tắc nào sau đây biểu diễn đúng **Tính chất phân phối**?',
-            'options': ['$a = b \\cdot q + r$ với $0 \\le r < b$ ($b \\ne 0$)',
-                        '$x \\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$)',
+            'q': 'Trong **Bài 5: Phép nhân và phép chia số tự nhiên**, quy tắc hoặc công thức nào sau đây '
+                 'xác định đúng **Tính chất phân phối**?',
+            'options': ['$a \\cdot (b - c) = a \\cdot b + a \\cdot c$; $a \\cdot (b - c) = a \\cdot b - a '
+                        '\\cdot c$',
+                        'Đảo ngược vế của quy tắc: $a \\cdot (b + c) = a \\cdot b + a \\cdot c$; $a \\cdot '
+                        '(b - c) = a \\cdot b - a \\cdot c$',
                         '$a \\cdot (b + c) = a \\cdot b + a \\cdot c$; $a \\cdot (b - c) = a \\cdot b - a '
                         '\\cdot c$',
-                        'Liệt kê $A = \\{0; 1; 2; 3\\}$ hoặc đặc trưng $A = \\{x \\in \\mathbb{N} \\mid x < '
-                        '4\\}$'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $a \\cdot (b + c) = a \\cdot b '
+                        '+ a \\cdot c$; $a \\cdot (b - c) = a \\cdot b - a \\cdot c$'],
             'answer': 2,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 5: Phép nhân và phép chia số tự nhiên, **Tính '
-                        'chất phân phối** được xác định bởi: $a \\cdot (b + c) = a \\cdot b + a \\cdot c$; '
-                        '$a \\cdot (b - c) = a \\cdot b - a \\cdot c$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 5: Phép nhân và phép chia số tự nhiên, **Tính chất '
+                        'phân phối** được xác định bởi: $a \\cdot (b + c) = a \\cdot b + a \\cdot c$; $a '
+                        '\\cdot (b - c) = a \\cdot b - a \\cdot c$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 5: Phép nhân và phép chia số tự nhiên**, nội dung/biểu thức $a = b \\cdot q + '
-                 'r$ với $0 \\le r < b$ ($b \\ne 0$) là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Tính chất phân phối',
-                        'Quan hệ phần tử – tập hợp',
-                        'Hai cách mô tả',
-                        'Phép chia có dư'],
+            'q': 'Khi học **Bài 5: Phép nhân và phép chia số tự nhiên**, biểu thức hoặc quy tắc nào dưới đây '
+                 'biểu diễn đúng **Phép chia có dư**?',
+            'options': ['$a = b \\cdot q + r$ với $0 \\ge r < b$ ($b \\ne 0$)',
+                        '$a = b \\cdot q + r$ với $0 \\le r < b$ ($b \\ne 1$)',
+                        '$a = b \\cdot q + r$ với $2 \\le r < b$ ($b \\ne 0$)',
+                        '$a = b \\cdot q + r$ với $0 \\le r < b$ ($b \\ne 0$)'],
             'answer': 3,
-            'solution': 'Trong Bài 5: Phép nhân và phép chia số tự nhiên, biểu thức/quy tắc $a = b \\cdot q '
-                        '+ r$ với $0 \\le r < b$ ($b \\ne 0$) chính là nội dung của **Phép chia có dư**.'},
+            'solution': 'Trong Bài 5: Phép nhân và phép chia số tự nhiên, **Phép chia có dư** có công '
+                        'thức/quy tắc là: $a = b \\cdot q + r$ với $0 \\le r < b$ ($b \\ne 0$).'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Một phép chia có số chia là $8$, thương là $12$ và số dư là số dư lớn nhất có thể. Số bị '
@@ -720,18 +723,18 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 5: Phép nhân và phép chia số tự nhiên** (Chương I: Tập hợp các số tự nhiên), '
-                 'khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Sử dụng được thuật ngữ tập hợp, phần tử thuộc ($\\in$) hoặc không thuộc ($\\notin$) '
-                        'một tập hợp.',
+            'q': 'Để nắm vững bản chất của **Bài 5: Phép nhân và phép chia số tự nhiên**, nhận định nào sau '
+                 'đây là **chính xác**?',
+            'options': ['Vận dụng tính chất giao hoán, kết hợp và phân phối của phép nhân đối với phép cộng '
+                        'để tính hợp lí. (với dấu ngược lại)',
                         'Vận dụng tính chất giao hoán, kết hợp và phân phối của phép nhân đối với phép cộng '
                         'để tính hợp lí.',
-                        'Cho được một tập hợp bằng cách liệt kê các phần tử hoặc chỉ ra tính chất đặc trưng '
-                        'cho các phần tử.',
-                        'Phân biệt được tập hợp $\\mathbb{N}$ và $\\mathbb{N}^*$; xác định được giá trị từng '
-                        'chữ số của số tự nhiên trong hệ thập phân.'],
+                        'Đảo ngược vế của quy tắc: Vận dụng tính chất giao hoán, kết hợp và phân phối của '
+                        'phép nhân đối với phép cộng để tính hợp lí.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Vận dụng tính chất giao hoán, '
+                        'kết hợp và phân phối của phép nhân đối với phép cộng để tính hợp lí.'],
             'answer': 1,
-            'solution': 'Theo yêu cầu cần đạt của Bài 5: Phép nhân và phép chia số tự nhiên: Vận dụng tính '
+            'solution': 'Theo nội dung cốt lõi của Bài 5: Phép nhân và phép chia số tự nhiên: Vận dụng tính '
                         'chất giao hoán, kết hợp và phân phối của phép nhân đối với phép cộng để tính hợp '
                         'lí.'},
            {'level': 'hieu',
@@ -748,39 +751,41 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 5: Phép nhân và phép '
-                 'chia số tự nhiên**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Vận dụng tính chất giao hoán, kết '
-                           'hợp và phân phối của phép nhân đối với phép cộng để tính hợp lí.',
-                           'Quy tắc/công thức **Tính chất phân phối** trong bài được xác định bởi: $a \\cdot '
-                           '(b + c) = a \\cdot b + a \\cdot c$; $a \\cdot (b - c) = a \\cdot b - a \\cdot '
-                           'c$.',
-                           'Trong mọi trường hợp, **Tính chất phân phối** luôn được tính bằng công thức $x '
-                           '\\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$) (thuộc Quan hệ phần '
-                           'tử – tập hợp) mà không cần điều kiện của Bài 5: Phép nhân và phép chia số tự '
-                           'nhiên.',
-                           'Với bài toán minh họa: “Tính nhanh: $25 \\cdot 37 \\cdot 4$ và tìm thương, số dư '
-                           'khi chia $47$ cho $5$.”, lời giải đúng là: Ta có $(25 \\cdot 4) \\cdot 37 = 100 '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 5: Phép nhân và phép chia '
+                 'số tự nhiên**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Vận dụng tính chất giao hoán, kết hợp và '
+                           'phân phối của phép nhân đối với phép cộng để tính hợp lí.',
+                           'Trong **Bài 5: Phép nhân và phép chia số tự nhiên**, quy tắc/công thức **Tính '
+                           'chất phân phối** được viết là: $a \\cdot (b + c) = a \\cdot b + a \\cdot c$; $a '
+                           '\\cdot (b - c) = a \\cdot b - a \\cdot c$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $a \\cdot (b - c) = a \\cdot b + a \\cdot '
+                           'c$; $a \\cdot (b - c) = a \\cdot b - a \\cdot c$ thì kết quả của **Tính chất '
+                           'phân phối** trong **Bài 5: Phép nhân và phép chia số tự nhiên** vẫn không thay '
+                           'đổi.',
+                           'Xét ví dụ của bài: “Tính nhanh: $25 \\cdot 37 \\cdot 4$ và tìm thương, số dư khi '
+                           'chia $47$ cho $5$.”, kết quả giải đúng là: Ta có $(25 \\cdot 4) \\cdot 37 = 100 '
                            '\\cdot 37 = 3700$. Vì $47 = 5 \\cdot 9 + 2$ nên thương là $9$ và số dư là $2$.'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 5: Phép nhân và phép chia số tự nhiên. b) '
-                        '**Đúng** theo công thức trọng tâm **Tính chất phân phối** ($a \\cdot (b + c) = a '
-                        '\\cdot b + a \\cdot c$; $a \\cdot (b - c) = a \\cdot b - a \\cdot c$). c) **Sai** '
-                        'vì $x \\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$) là công thức của '
-                        'nội dung khác, không phải quy tắc chung của **Tính chất phân phối**. d) **Đúng** '
+                        '**Đúng** theo công thức **Tính chất phân phối** ($a \\cdot (b + c) = a \\cdot b + a '
+                        '\\cdot c$; $a \\cdot (b - c) = a \\cdot b - a \\cdot c$). c) **Sai** vì công thức '
+                        'đúng của **Tính chất phân phối** phải là $a \\cdot (b + c) = a \\cdot b + a \\cdot '
+                        'c$; $a \\cdot (b - c) = a \\cdot b - a \\cdot c$ chứ không phải $a \\cdot (b - c) = '
+                        'a \\cdot b + a \\cdot c$; $a \\cdot (b - c) = a \\cdot b - a \\cdot c$. d) **Đúng** '
                         'theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 5: Phép nhân và phép chia số tự nhiên** để giải quyết tình huống '
-                 'sau: Tính nhanh: $25 \\cdot 37 \\cdot 4$ và tìm thương, số dư khi chia $47$ cho $5$. Kết '
-                 'quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Ta có $M = \\{\\text{T}, \\text{O}, \\text{A}, \\text{N}, \\text{H}, \\text{C}\\}$ '
-                        '(chữ O xuất hiện $2$ lần nhưng chỉ viết $1$ lần). Tập hợp $M$ có $6$ phần tử.',
-                        'Số $27$ viết là $\\text{XXVII}$, số $19$ viết là $\\text{XIX}$. Ta có '
-                        '$\\overline{ab} = a \\times 10 + b$.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 5: Phép nhân và phép chia số tự nhiên** để giải bài '
+                 'toán sau: Tính nhanh: $25 \\cdot 37 \\cdot 4$ và tìm thương, số dư khi chia $47$ cho $5$. '
+                 'Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Ta có $(25 \\cdot 4) \\cdot 37 = 100 \\cdot 37 = 3700$. Vì $47 = 5 \\cdot 9 - 2$ '
+                        'nên thương là $9$ và số dư là $2$.',
+                        'Ta có $(25 \\cdot 4) \\cdot 37 = 100 \\cdot 37 = 3700$. Vì $47 = 5 \\cdot 9 + 2$ '
+                        'nên thương là $9$ và số dư là $1$.',
                         'Ta có $(25 \\cdot 4) \\cdot 37 = 100 \\cdot 37 = 3700$. Vì $47 = 5 \\cdot 9 + 2$ '
                         'nên thương là $9$ và số dư là $2$.',
-                        'Các số tự nhiên từ $4$ đến $8$ là $4; 5; 6; 7; 8$. Vậy $A = \\{4; 5; 6; 7; 8\\}$.'],
+                        'Ta có $(50 \\cdot 4) \\cdot 37 = 100 \\cdot 37 = 3700$. Vì $47 = 5 \\cdot 9 + 2$ '
+                        'nên thương là $9$ và số dư là $2$.'],
             'answer': 2,
             'solution': 'Lời giải chi tiết theo Bài 5: Phép nhân và phép chia số tự nhiên: Ta có $(25 \\cdot '
                         '4) \\cdot 37 = 100 \\cdot 37 = 3700$. Vì $47 = 5 \\cdot 9 + 2$ nên thương là $9$ và '
@@ -804,8 +809,8 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
                  'luỹ thừa cùng cơ số.',
   'requirements': ['Viết và tính được giá trị của luỹ thừa với số mũ tự nhiên; nhận biết cơ số và số mũ.',
                    'Thực hiện đúng phép nhân và phép chia hai luỹ thừa cùng cơ số.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Định nghĩa và quy ước** ($a^n = a \\cdot a '
-                   '\\cdots a$ ($n$ thừa số); $a^1 = a$; $a^0 = 1$ ($a \\ne 0$)) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 6: Luỹ thừa với số mũ tự nhiên** để giải bài tập minh họa '
+                   'và bài toán thực tiễn.'],
   'definition': '- **Luỹ thừa bậc $n$ của $a$**, kí hiệu $a^n$, là tích của $n$ thừa số bằng nhau, mỗi thừa '
                 'số bằng $a$: $a^n = \\underbrace{a \\cdot a \\cdots a}_{n\\text{ thừa số}}$ ($n \\in '
                 '\\mathbb{N}^*$), trong đó $a$ là **cơ số**, $n$ là **số mũ**.\n'
@@ -817,7 +822,7 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'a^n = a^{m+n}$.\n'
             '- Khi **chia** hai luỹ thừa cùng cơ số (khác $0$), ta giữ nguyên cơ số và **trừ** các số mũ: '
             '$a^m : a^n = a^{m-n}$ ($a \\ne 0, m \\ge n$).',
-  'formulas': [{'category': 'I. Các công thức luỹ thừa',
+  'formulas': [{'category': 'Các công thức luỹ thừa',
                 'items': [{'name': 'Định nghĩa và quy ước',
                            'formula': '$a^n = a \\cdot a \\cdots a$ ($n$ thừa số); $a^1 = a$; $a^0 = 1$ ($a '
                                       '\\ne 0$)'},
@@ -846,27 +851,27 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 6: Luỹ thừa với số mũ tự nhiên**, công thức hoặc quy tắc '
-                 'nào sau đây biểu diễn đúng **Định nghĩa và quy ước**?',
-            'options': ['$a^m \\cdot a^n = a^{m+n}$',
-                        '$a^m : a^n = a^{m-n}$ ($a \\ne 0, m \\ge n$)',
-                        '$x \\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$)',
+            'q': 'Trong **Bài 6: Luỹ thừa với số mũ tự nhiên**, quy tắc hoặc công thức nào sau đây xác định '
+                 'đúng **Định nghĩa và quy ước**?',
+            'options': ['$a^n = a : a \\cdots a$ ($n$ thừa số); $a^1 = a$; $a^0 = 1$ ($a \\ne 0$)',
+                        '$a^n = a \\cdot a \\cdots a$ ($n$ thừa số); $a^1 = a$; $a^0 = 1$ ($a \\ne 1$)',
+                        '$a^n = a \\cdot a \\cdots a$ ($n$ thừa số); $a^2 = a$; $a^0 = 1$ ($a \\ne 0$)',
                         '$a^n = a \\cdot a \\cdots a$ ($n$ thừa số); $a^1 = a$; $a^0 = 1$ ($a \\ne 0$)'],
             'answer': 3,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 6: Luỹ thừa với số mũ tự nhiên, **Định nghĩa '
-                        'và quy ước** được xác định bởi: $a^n = a \\cdot a \\cdots a$ ($n$ thừa số); $a^1 = '
-                        'a$; $a^0 = 1$ ($a \\ne 0$).'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 6: Luỹ thừa với số mũ tự nhiên, **Định nghĩa và '
+                        'quy ước** được xác định bởi: $a^n = a \\cdot a \\cdots a$ ($n$ thừa số); $a^1 = a$; '
+                        '$a^0 = 1$ ($a \\ne 0$).'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 6: Luỹ thừa với số mũ tự nhiên**, nội dung/biểu thức $a^m \\cdot a^n = '
-                 'a^{m+n}$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Nhân hai luỹ thừa cùng cơ số',
-                        'Định nghĩa và quy ước',
-                        'Chia hai luỹ thừa cùng cơ số',
-                        'Quan hệ phần tử – tập hợp'],
+            'q': 'Khi học **Bài 6: Luỹ thừa với số mũ tự nhiên**, biểu thức hoặc quy tắc nào dưới đây biểu '
+                 'diễn đúng **Nhân hai luỹ thừa cùng cơ số**?',
+            'options': ['$a^m \\cdot a^n = a^{m+n}$',
+                        '$a^m : a^n = a^{m+n}$',
+                        '$a^m \\cdot a^n = a^{m \\cdot n}$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $a^m \\cdot a^n = a^{m+n}$'],
             'answer': 0,
-            'solution': 'Trong Bài 6: Luỹ thừa với số mũ tự nhiên, biểu thức/quy tắc $a^m \\cdot a^n = '
-                        'a^{m+n}$ chính là nội dung của **Nhân hai luỹ thừa cùng cơ số**.'},
+            'solution': 'Trong Bài 6: Luỹ thừa với số mũ tự nhiên, **Nhân hai luỹ thừa cùng cơ số** có công '
+                        'thức/quy tắc là: $a^m \\cdot a^n = a^{m+n}$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Tìm số tự nhiên $n$ biết $3^n = 81$:',
@@ -877,18 +882,18 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 6: Luỹ thừa với số mũ tự nhiên** (Chương I: Tập hợp các số tự nhiên), khẳng '
-                 'định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Sử dụng được thuật ngữ tập hợp, phần tử thuộc ($\\in$) hoặc không thuộc ($\\notin$) '
-                        'một tập hợp.',
-                        'Cho được một tập hợp bằng cách liệt kê các phần tử hoặc chỉ ra tính chất đặc trưng '
-                        'cho các phần tử.',
+            'q': 'Để nắm vững bản chất của **Bài 6: Luỹ thừa với số mũ tự nhiên**, nhận định nào sau đây là '
+                 '**chính xác**?',
+            'options': ['Viết và tính được giá trị của luỹ thừa với số mũ tự nhiên; nhận biết cơ số và số '
+                        'mũ. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Viết và tính được giá trị của luỹ thừa với số mũ tự '
+                        'nhiên; nhận biết cơ số và số mũ.',
                         'Viết và tính được giá trị của luỹ thừa với số mũ tự nhiên; nhận biết cơ số và số '
                         'mũ.',
-                        'Phân biệt được tập hợp $\\mathbb{N}$ và $\\mathbb{N}^*$; xác định được giá trị từng '
-                        'chữ số của số tự nhiên trong hệ thập phân.'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Viết và tính được giá trị của '
+                        'luỹ thừa với số mũ tự nhiên; nhận biết cơ số và số mũ.'],
             'answer': 2,
-            'solution': 'Theo yêu cầu cần đạt của Bài 6: Luỹ thừa với số mũ tự nhiên: Viết và tính được giá '
+            'solution': 'Theo nội dung cốt lõi của Bài 6: Luỹ thừa với số mũ tự nhiên: Viết và tính được giá '
                         'trị của luỹ thừa với số mũ tự nhiên; nhận biết cơ số và số mũ.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -901,35 +906,35 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 6: Luỹ thừa với số mũ '
-                 'tự nhiên**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Viết và tính được giá trị của luỹ '
-                           'thừa với số mũ tự nhiên; nhận biết cơ số và số mũ.',
-                           'Quy tắc/công thức **Định nghĩa và quy ước** trong bài được xác định bởi: $a^n = '
-                           'a \\cdot a \\cdots a$ ($n$ thừa số); $a^1 = a$; $a^0 = 1$ ($a \\ne 0$).',
-                           'Trong mọi trường hợp, **Định nghĩa và quy ước** luôn được tính bằng công thức $x '
-                           '\\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$) (thuộc Quan hệ phần '
-                           'tử – tập hợp) mà không cần điều kiện của Bài 6: Luỹ thừa với số mũ tự nhiên.',
-                           'Với bài toán minh họa: “Viết kết quả dưới dạng một luỹ thừa và tính giá trị: '
-                           '$2^3 \\cdot 2^4$ và $5^6 : 5^4$.”, lời giải đúng là: Ta có $2^3 \\cdot 2^4 = '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 6: Luỹ thừa với số mũ tự '
+                 'nhiên**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Viết và tính được giá trị của luỹ thừa '
+                           'với số mũ tự nhiên; nhận biết cơ số và số mũ.',
+                           'Trong **Bài 6: Luỹ thừa với số mũ tự nhiên**, quy tắc/công thức **Định nghĩa và '
+                           'quy ước** được viết là: $a^n = a \\cdot a \\cdots a$ ($n$ thừa số); $a^1 = a$; '
+                           '$a^0 = 1$ ($a \\ne 0$).',
+                           'Nếu áp dụng sai dấu/phép tính thành $a^n = a : a \\cdots a$ ($n$ thừa số); $a^1 '
+                           '= a$; $a^0 = 1$ ($a \\ne 0$) thì kết quả của **Định nghĩa và quy ước** trong '
+                           '**Bài 6: Luỹ thừa với số mũ tự nhiên** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Viết kết quả dưới dạng một luỹ thừa và tính giá trị: $2^3 '
+                           '\\cdot 2^4$ và $5^6 : 5^4$.”, kết quả giải đúng là: Ta có $2^3 \\cdot 2^4 = '
                            '2^{3+4} = 2^7 = 128$ và $5^6 : 5^4 = 5^{6-4} = 5^2 = 25$.'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 6: Luỹ thừa với số mũ tự nhiên. b) '
-                        '**Đúng** theo công thức trọng tâm **Định nghĩa và quy ước** ($a^n = a \\cdot a '
-                        '\\cdots a$ ($n$ thừa số); $a^1 = a$; $a^0 = 1$ ($a \\ne 0$)). c) **Sai** vì $x \\in '
-                        'A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$) là công thức của nội dung '
-                        'khác, không phải quy tắc chung của **Định nghĩa và quy ước**. d) **Đúng** theo lời '
-                        'giải ví dụ minh họa trong bài học.'},
+                        '**Đúng** theo công thức **Định nghĩa và quy ước** ($a^n = a \\cdot a \\cdots a$ '
+                        '($n$ thừa số); $a^1 = a$; $a^0 = 1$ ($a \\ne 0$)). c) **Sai** vì công thức đúng của '
+                        '**Định nghĩa và quy ước** phải là $a^n = a \\cdot a \\cdots a$ ($n$ thừa số); $a^1 '
+                        '= a$; $a^0 = 1$ ($a \\ne 0$) chứ không phải $a^n = a : a \\cdots a$ ($n$ thừa số); '
+                        '$a^1 = a$; $a^0 = 1$ ($a \\ne 0$). d) **Đúng** theo lời giải ví dụ minh họa trong '
+                        'bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 6: Luỹ thừa với số mũ tự nhiên** để giải quyết tình huống sau: '
-                 'Viết kết quả dưới dạng một luỹ thừa và tính giá trị: $2^3 \\cdot 2^4$ và $5^6 : 5^4$. Kết '
-                 'quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Ta có $M = \\{\\text{T}, \\text{O}, \\text{A}, \\text{N}, \\text{H}, \\text{C}\\}$ '
-                        '(chữ O xuất hiện $2$ lần nhưng chỉ viết $1$ lần). Tập hợp $M$ có $6$ phần tử.',
-                        'Số $27$ viết là $\\text{XXVII}$, số $19$ viết là $\\text{XIX}$. Ta có '
-                        '$\\overline{ab} = a \\times 10 + b$.',
-                        'Các số tự nhiên từ $4$ đến $8$ là $4; 5; 6; 7; 8$. Vậy $A = \\{4; 5; 6; 7; 8\\}$.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 6: Luỹ thừa với số mũ tự nhiên** để giải bài toán '
+                 'sau: Viết kết quả dưới dạng một luỹ thừa và tính giá trị: $2^3 \\cdot 2^4$ và $5^6 : 5^4$. '
+                 'Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Ta có $2^3 : 2^4 = 2^{3+4} = 2^7 = 128$ và $5^6 : 5^4 = 5^{6-4} = 5^2 = 25$.',
+                        'Ta có $2^3 \\cdot 2^4 = 2^{3+4} = 2^7 = 128$ và $5^6 : 5^4 = 5^{6-4} = 5^2 = 24$.',
+                        'Ta có $4^3 \\cdot 2^4 = 2^{3+4} = 2^7 = 128$ và $5^6 : 5^4 = 5^{6-4} = 5^2 = 25$.',
                         'Ta có $2^3 \\cdot 2^4 = 2^{3+4} = 2^7 = 128$ và $5^6 : 5^4 = 5^{6-4} = 5^2 = 25$.'],
             'answer': 3,
             'solution': 'Lời giải chi tiết theo Bài 6: Luỹ thừa với số mũ tự nhiên: Ta có $2^3 \\cdot 2^4 = '
@@ -954,8 +959,8 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
                    'Cộng và trừ.',
                    'Thực hiện đúng thứ tự dấu ngoặc: Ngoặc tròn $( ) \\rightarrow$ Ngoặc vuông $[ ] '
                    '\\rightarrow$ Ngoặc nhọn $\\{ \\}$.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Không có ngoặc** ($\\text{Luỹ thừa} '
-                   '\\rightarrow \\text{Nhân, chia} \\rightarrow \\text{Cộng, trừ}$) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 7: Thứ tự thực hiện các phép tính** để giải bài tập minh '
+                   'họa và bài toán thực tiễn.'],
   'definition': '- Đối với biểu thức **không có dấu ngoặc**: **Luỹ thừa $\\rightarrow$ Nhân và chia '
                 '$\\rightarrow$ Cộng và trừ** (nếu chỉ có cộng, trừ hoặc chỉ có nhân, chia thì thực hiện từ '
                 'trái sang phải).\n'
@@ -966,7 +971,7 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             '### 2. Biểu thức có dấu ngoặc\n'
             '- Ví dụ: $100 : \\{2 \\cdot [52 - (35 - 8)]\\} = 100 : \\{2 \\cdot [52 - 27]\\} = 100 : \\{2 '
             '\\cdot 25\\} = 100 : 50 = 2$.',
-  'formulas': [{'category': 'I. Thứ tự ưu tiên',
+  'formulas': [{'category': 'Thứ tự ưu tiên',
                 'items': [{'name': 'Không có ngoặc',
                            'formula': '$\\text{Luỹ thừa} \\rightarrow \\text{Nhân, chia} \\rightarrow '
                                       '\\text{Cộng, trừ}$'},
@@ -997,25 +1002,31 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 7: Thứ tự thực hiện các phép tính**, công thức hoặc quy '
-                 'tắc nào sau đây biểu diễn đúng **Không có ngoặc**?',
+            'q': 'Trong **Bài 7: Thứ tự thực hiện các phép tính**, quy tắc hoặc công thức nào sau đây xác '
+                 'định đúng **Không có ngoặc**?',
             'options': ['$\\text{Luỹ thừa} \\rightarrow \\text{Nhân, chia} \\rightarrow \\text{Cộng, trừ}$',
-                        '$(\\ ) \\rightarrow [\\ ] \\rightarrow \\{\\ \\}$',
-                        '$x \\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$)',
-                        'Liệt kê $A = \\{0; 1; 2; 3\\}$ hoặc đặc trưng $A = \\{x \\in \\mathbb{N} \\mid x < '
-                        '4\\}$'],
+                        '$\\text{Luỹ thừa} \\rightarrow \\text{Nhân, chia} \\rightarrow \\text{Cộng, trừ}$ '
+                        '(với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: $\\text{Luỹ thừa} \\rightarrow \\text{Nhân, chia} '
+                        '\\rightarrow \\text{Cộng, trừ}$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\text{Luỹ thừa} \\rightarrow '
+                        '\\text{Nhân, chia} \\rightarrow \\text{Cộng, trừ}$'],
             'answer': 0,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 7: Thứ tự thực hiện các phép tính, **Không có '
+            'solution': 'Theo kiến thức trọng tâm của Bài 7: Thứ tự thực hiện các phép tính, **Không có '
                         'ngoặc** được xác định bởi: $\\text{Luỹ thừa} \\rightarrow \\text{Nhân, chia} '
                         '\\rightarrow \\text{Cộng, trừ}$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 7: Thứ tự thực hiện các phép tính**, nội dung/biểu thức $(\\ ) \\rightarrow '
-                 '[\\ ] \\rightarrow \\{\\ \\}$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Không có ngoặc', 'Có dấu ngoặc', 'Quan hệ phần tử – tập hợp', 'Hai cách mô tả'],
+            'q': 'Khi học **Bài 7: Thứ tự thực hiện các phép tính**, biểu thức hoặc quy tắc nào dưới đây '
+                 'biểu diễn đúng **Có dấu ngoặc**?',
+            'options': ['$(\\ ) \\rightarrow [\\ ] \\rightarrow \\{\\ \\}$ (với dấu ngược lại)',
+                        '$(\\ ) \\rightarrow [\\ ] \\rightarrow \\{\\ \\}$',
+                        'Đảo ngược vế của quy tắc: $(\\ ) \\rightarrow [\\ ] \\rightarrow \\{\\ \\}$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $(\\ ) \\rightarrow [\\ ] '
+                        '\\rightarrow \\{\\ \\}$'],
             'answer': 1,
-            'solution': 'Trong Bài 7: Thứ tự thực hiện các phép tính, biểu thức/quy tắc $(\\ ) \\rightarrow '
-                        '[\\ ] \\rightarrow \\{\\ \\}$ chính là nội dung của **Có dấu ngoặc**.'},
+            'solution': 'Trong Bài 7: Thứ tự thực hiện các phép tính, **Có dấu ngoặc** có công thức/quy tắc '
+                        'là: $(\\ ) \\rightarrow [\\ ] \\rightarrow \\{\\ \\}$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Giá trị của biểu thức $36 : [18 - 3 \\cdot (2^2 + 1)]$ bằng:',
@@ -1027,18 +1038,18 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 7: Thứ tự thực hiện các phép tính** (Chương I: Tập hợp các số tự nhiên), '
-                 'khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Sử dụng được thuật ngữ tập hợp, phần tử thuộc ($\\in$) hoặc không thuộc ($\\notin$) '
-                        'một tập hợp.',
-                        'Cho được một tập hợp bằng cách liệt kê các phần tử hoặc chỉ ra tính chất đặc trưng '
-                        'cho các phần tử.',
-                        'Phân biệt được tập hợp $\\mathbb{N}$ và $\\mathbb{N}^*$; xác định được giá trị từng '
-                        'chữ số của số tự nhiên trong hệ thập phân.',
+            'q': 'Để nắm vững bản chất của **Bài 7: Thứ tự thực hiện các phép tính**, nhận định nào sau đây '
+                 'là **chính xác**?',
+            'options': ['Thực hiện đúng thứ tự phép tính: Luỹ thừa $\\rightarrow$ Nhân và chia '
+                        '$\\rightarrow$ Cộng và trừ. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Thực hiện đúng thứ tự phép tính: Luỹ thừa $\\rightarrow$ '
+                        'Nhân và chia $\\rightarrow$ Cộng và trừ.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Thực hiện đúng thứ tự phép '
+                        'tính: Luỹ thừa $\\rightarrow$ Nhân và chia $\\rightarrow$ Cộng và trừ.',
                         'Thực hiện đúng thứ tự phép tính: Luỹ thừa $\\rightarrow$ Nhân và chia '
                         '$\\rightarrow$ Cộng và trừ.'],
             'answer': 3,
-            'solution': 'Theo yêu cầu cần đạt của Bài 7: Thứ tự thực hiện các phép tính: Thực hiện đúng thứ '
+            'solution': 'Theo nội dung cốt lõi của Bài 7: Thứ tự thực hiện các phép tính: Thực hiện đúng thứ '
                         'tự phép tính: Luỹ thừa $\\rightarrow$ Nhân và chia $\\rightarrow$ Cộng và trừ.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -1054,36 +1065,38 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 7: Thứ tự thực hiện các '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 7: Thứ tự thực hiện các '
                  'phép tính**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Thực hiện đúng thứ tự phép tính: '
-                           'Luỹ thừa $\\rightarrow$ Nhân và chia $\\rightarrow$ Cộng và trừ.',
-                           'Quy tắc/công thức **Không có ngoặc** trong bài được xác định bởi: $\\text{Luỹ '
-                           'thừa} \\rightarrow \\text{Nhân, chia} \\rightarrow \\text{Cộng, trừ}$.',
-                           'Trong mọi trường hợp, **Không có ngoặc** luôn được tính bằng công thức $x \\in '
-                           'A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$) (thuộc Quan hệ phần tử – '
-                           'tập hợp) mà không cần điều kiện của Bài 7: Thứ tự thực hiện các phép tính.',
-                           'Với bài toán minh họa: “Tính giá trị của biểu thức: $180 - 4 \\cdot 5^2$.”, lời '
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Thực hiện đúng thứ tự phép tính: Luỹ '
+                           'thừa $\\rightarrow$ Nhân và chia $\\rightarrow$ Cộng và trừ.',
+                           'Trong **Bài 7: Thứ tự thực hiện các phép tính**, quy tắc/công thức **Không có '
+                           'ngoặc** được viết là: $\\text{Luỹ thừa} \\rightarrow \\text{Nhân, chia} '
+                           '\\rightarrow \\text{Cộng, trừ}$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $\\text{Luỹ thừa} \\rightarrow \\text{Nhân, '
+                           'chia} \\rightarrow \\text{Cộng, trừ}$ (với dấu ngược lại) thì kết quả của '
+                           '**Không có ngoặc** trong **Bài 7: Thứ tự thực hiện các phép tính** vẫn không '
+                           'thay đổi.',
+                           'Xét ví dụ của bài: “Tính giá trị của biểu thức: $180 - 4 \\cdot 5^2$.”, kết quả '
                            'giải đúng là: Tính luỹ thừa trước: $5^2 = 25$. Nhân: $4 \\cdot 25 = 100$. Trừ: '
                            '$180 - 100 = 80$.'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 7: Thứ tự thực hiện các phép tính. b) '
-                        '**Đúng** theo công thức trọng tâm **Không có ngoặc** ($\\text{Luỹ thừa} '
-                        '\\rightarrow \\text{Nhân, chia} \\rightarrow \\text{Cộng, trừ}$). c) **Sai** vì $x '
-                        '\\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$) là công thức của nội '
-                        'dung khác, không phải quy tắc chung của **Không có ngoặc**. d) **Đúng** theo lời '
-                        'giải ví dụ minh họa trong bài học.'},
+                        '**Đúng** theo công thức **Không có ngoặc** ($\\text{Luỹ thừa} \\rightarrow '
+                        '\\text{Nhân, chia} \\rightarrow \\text{Cộng, trừ}$). c) **Sai** vì công thức đúng '
+                        'của **Không có ngoặc** phải là $\\text{Luỹ thừa} \\rightarrow \\text{Nhân, chia} '
+                        '\\rightarrow \\text{Cộng, trừ}$ chứ không phải $\\text{Luỹ thừa} \\rightarrow '
+                        '\\text{Nhân, chia} \\rightarrow \\text{Cộng, trừ}$ (với dấu ngược lại). d) **Đúng** '
+                        'theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 7: Thứ tự thực hiện các phép tính** để giải quyết tình huống sau: '
-                 'Tính giá trị của biểu thức: $180 - 4 \\cdot 5^2$. Kết quả và hướng giải nào dưới đây là '
-                 '**đúng**?',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 7: Thứ tự thực hiện các phép tính** để giải bài '
+                 'toán sau: Tính giá trị của biểu thức: $180 - 4 \\cdot 5^2$. Cách giải và kết quả nào dưới '
+                 'đây là **đúng**?',
             'options': ['Tính luỹ thừa trước: $5^2 = 25$. Nhân: $4 \\cdot 25 = 100$. Trừ: $180 - 100 = 80$.',
-                        'Ta có $M = \\{\\text{T}, \\text{O}, \\text{A}, \\text{N}, \\text{H}, \\text{C}\\}$ '
-                        '(chữ O xuất hiện $2$ lần nhưng chỉ viết $1$ lần). Tập hợp $M$ có $6$ phần tử.',
-                        'Số $27$ viết là $\\text{XXVII}$, số $19$ viết là $\\text{XIX}$. Ta có '
-                        '$\\overline{ab} = a \\times 10 + b$.',
-                        'Các số tự nhiên từ $4$ đến $8$ là $4; 5; 6; 7; 8$. Vậy $A = \\{4; 5; 6; 7; 8\\}$.'],
+                        'Tính luỹ thừa trước: $5^2 = 25$. Nhân: $4 \\cdot 25 = 100$. Trừ: $180 + 100 = 80$.',
+                        'Tính luỹ thừa trước: $5^2 = 25$. Nhân: $4 \\cdot 25 = 100$. Trừ: $180 - 100 = 79$.',
+                        'Tính luỹ thừa trước: $10^2 = 25$. Nhân: $4 \\cdot 25 = 100$. Trừ: $180 - 100 = '
+                        '80$.'],
             'answer': 0,
             'solution': 'Lời giải chi tiết theo Bài 7: Thứ tự thực hiện các phép tính: Tính luỹ thừa trước: '
                         '$5^2 = 25$. Nhân: $4 \\cdot 25 = 100$. Trừ: $180 - 100 = 80$.'},
@@ -1106,8 +1119,8 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
                    'và các bội $\\text{B}(b)$.',
                    'Vận dụng tính chất chia hết của một tổng để xét xem một tổng (hiệu) có chia hết cho một '
                    'số hay không.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Định nghĩa** ($a \\vdots b \\Leftrightarrow '
-                   'a = b \\cdot k$ ($k \\in \\mathbb{N}, b \\ne 0$)) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 8: Quan hệ chia hết và tính chất** để giải bài tập minh họa '
+                   'và bài toán thực tiễn.'],
   'definition': '- Cho hai số tự nhiên $a$ và $b$ ($b \\ne 0$). Nếu có số tự nhiên $k$ sao cho $a = b \\cdot '
                 'k$ thì ta nói $a$ **chia hết** cho $b$ (kí hiệu $a \\vdots b$); nếu không, ta viết $a '
                 '\\not\\vdots b$.\n'
@@ -1120,7 +1133,7 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             '- Tính chất 1: Nếu $a \\vdots m$ và $b \\vdots m$ thì $(a + b) \\vdots m$ và $(a - b) \\vdots '
             'm$ (với $a \\ge b$).\n'
             '- Tính chất 2: Nếu $a \\vdots m$ và $b \\not\\vdots m$ thì $(a + b) \\not\\vdots m$.',
-  'formulas': [{'category': 'I. Quan hệ chia hết và Tính chất',
+  'formulas': [{'category': 'Quan hệ chia hết và Tính chất',
                 'items': [{'name': 'Định nghĩa',
                            'formula': '$a \\vdots b \\Leftrightarrow a = b \\cdot k$ ($k \\in \\mathbb{N}, b '
                                       '\\ne 0$)'},
@@ -1152,26 +1165,30 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 8: Quan hệ chia hết và tính chất**, công thức hoặc quy '
-                 'tắc nào sau đây biểu diễn đúng **Định nghĩa**?',
-            'options': ['$a \\vdots m$ và $b \\vdots m \\Rightarrow (a \\pm b) \\vdots m$',
+            'q': 'Trong **Bài 8: Quan hệ chia hết và tính chất**, quy tắc hoặc công thức nào sau đây xác '
+                 'định đúng **Định nghĩa**?',
+            'options': ['$a \\vdots b \\Leftrightarrow a = b \\cdot k$ ($k \\notin \\mathbb{N}, b \\ne 0$)',
                         '$a \\vdots b \\Leftrightarrow a = b \\cdot k$ ($k \\in \\mathbb{N}, b \\ne 0$)',
-                        '$a \\vdots m$ và $b \\not\\vdots m \\Rightarrow (a + b) \\not\\vdots m$',
-                        '$x \\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$)'],
+                        '$a \\vdots b \\Leftrightarrow a = b \\cdot k$ ($k \\in \\mathbb{N}, b \\ne 1$)',
+                        '$a \\vdots b \\Leftrightarrow a = b \\cdot k$ ($k \\in \\mathbb{N}, b \\ne 2$)'],
             'answer': 1,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 8: Quan hệ chia hết và tính chất, **Định '
-                        'nghĩa** được xác định bởi: $a \\vdots b \\Leftrightarrow a = b \\cdot k$ ($k \\in '
+            'solution': 'Theo kiến thức trọng tâm của Bài 8: Quan hệ chia hết và tính chất, **Định nghĩa** '
+                        'được xác định bởi: $a \\vdots b \\Leftrightarrow a = b \\cdot k$ ($k \\in '
                         '\\mathbb{N}, b \\ne 0$).'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 8: Quan hệ chia hết và tính chất**, nội dung/biểu thức $a \\vdots m$ và $b '
-                 '\\vdots m \\Rightarrow (a \\pm b) \\vdots m$ là quy tắc hoặc công thức của mục nào sau '
-                 'đây?',
-            'options': ['Định nghĩa', 'Tính chất 2', 'Tính chất 1', 'Quan hệ phần tử – tập hợp'],
+            'q': 'Khi học **Bài 8: Quan hệ chia hết và tính chất**, biểu thức hoặc quy tắc nào dưới đây biểu '
+                 'diễn đúng **Tính chất 1**?',
+            'options': ['$a \\vdots m$ và $b \\vdots m \\Rightarrow (a \\pm b) \\vdots m$ (với dấu ngược '
+                        'lại)',
+                        'Đảo ngược vế của quy tắc: $a \\vdots m$ và $b \\vdots m \\Rightarrow (a \\pm b) '
+                        '\\vdots m$',
+                        '$a \\vdots m$ và $b \\vdots m \\Rightarrow (a \\pm b) \\vdots m$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $a \\vdots m$ và $b \\vdots m '
+                        '\\Rightarrow (a \\pm b) \\vdots m$'],
             'answer': 2,
-            'solution': 'Trong Bài 8: Quan hệ chia hết và tính chất, biểu thức/quy tắc $a \\vdots m$ và $b '
-                        '\\vdots m \\Rightarrow (a \\pm b) \\vdots m$ chính là nội dung của **Tính chất '
-                        '1**.'},
+            'solution': 'Trong Bài 8: Quan hệ chia hết và tính chất, **Tính chất 1** có công thức/quy tắc '
+                        'là: $a \\vdots m$ và $b \\vdots m \\Rightarrow (a \\pm b) \\vdots m$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Cho tổng $S = 35 + 49 + x$ (với $x \\in \\mathbb{N}$). Điều kiện để $S \\vdots 7$ là:',
@@ -1183,19 +1200,19 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 8: Quan hệ chia hết và tính chất** (Chương II: Tính chia hết trong tập hợp '
-                 'các số tự nhiên), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất '
-                 'kiến thức của bài?',
+            'q': 'Để nắm vững bản chất của **Bài 8: Quan hệ chia hết và tính chất**, nhận định nào sau đây '
+                 'là **chính xác**?',
             'options': ['Nhận biết được quan hệ chia hết ($a \\vdots b$), tìm được tập hợp các ước '
                         '$\\text{Ư}(a)$ và các bội $\\text{B}(b)$.',
-                        'Sử dụng được thuật ngữ tập hợp, phần tử thuộc ($\\in$) hoặc không thuộc ($\\notin$) '
-                        'một tập hợp.',
-                        'Cho được một tập hợp bằng cách liệt kê các phần tử hoặc chỉ ra tính chất đặc trưng '
-                        'cho các phần tử.',
-                        'Phân biệt được tập hợp $\\mathbb{N}$ và $\\mathbb{N}^*$; xác định được giá trị từng '
-                        'chữ số của số tự nhiên trong hệ thập phân.'],
+                        'Nhận biết được quan hệ không chia hết ($a \\vdots b$), tìm được tập hợp các ước '
+                        '$\\text{Ư}(a)$ và các bội $\\text{B}(b)$.',
+                        'Đảo ngược vế của quy tắc: Nhận biết được quan hệ chia hết ($a \\vdots b$), tìm được '
+                        'tập hợp các ước $\\text{Ư}(a)$ và các bội $\\text{B}(b)$.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nhận biết được quan hệ chia hết '
+                        '($a \\vdots b$), tìm được tập hợp các ước $\\text{Ư}(a)$ và các bội '
+                        '$\\text{B}(b)$.'],
             'answer': 0,
-            'solution': 'Theo yêu cầu cần đạt của Bài 8: Quan hệ chia hết và tính chất: Nhận biết được quan '
+            'solution': 'Theo nội dung cốt lõi của Bài 8: Quan hệ chia hết và tính chất: Nhận biết được quan '
                         'hệ chia hết ($a \\vdots b$), tìm được tập hợp các ước $\\text{Ư}(a)$ và các bội '
                         '$\\text{B}(b)$.'},
            {'level': 'hieu',
@@ -1212,39 +1229,40 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 8: Quan hệ chia hết và '
-                 'tính chất**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được quan hệ chia hết '
-                           '($a \\vdots b$), tìm được tập hợp các ước $\\text{Ư}(a)$ và các bội '
-                           '$\\text{B}(b)$.',
-                           'Quy tắc/công thức **Định nghĩa** trong bài được xác định bởi: $a \\vdots b '
-                           '\\Leftrightarrow a = b \\cdot k$ ($k \\in \\mathbb{N}, b \\ne 0$).',
-                           'Trong mọi trường hợp, **Định nghĩa** luôn được tính bằng công thức $x \\in A$ '
-                           '($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$) (thuộc Quan hệ phần tử – '
-                           'tập hợp) mà không cần điều kiện của Bài 8: Quan hệ chia hết và tính chất.',
-                           'Với bài toán minh họa: “Tìm tập hợp $\\text{Ư}(12)$ và không thực hiện phép '
-                           'cộng, hãy xét xem tổng $24 + 36$ có chia hết cho $6$ không.”, lời giải đúng là: '
-                           'Ta có $\\text{Ư}(12) = \\{1; 2; 3; 4; 6; 12\\}$. Vì $24 \\vdots 6$ và $36 '
-                           '\\vdots 6$ nên $(24 + 36) \\vdots 6$.'],
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 8: Quan hệ chia hết và tính '
+                 'chất**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết được quan hệ chia hết ($a '
+                           '\\vdots b$), tìm được tập hợp các ước $\\text{Ư}(a)$ và các bội $\\text{B}(b)$.',
+                           'Trong **Bài 8: Quan hệ chia hết và tính chất**, quy tắc/công thức **Định nghĩa** '
+                           'được viết là: $a \\vdots b \\Leftrightarrow a = b \\cdot k$ ($k \\in '
+                           '\\mathbb{N}, b \\ne 0$).',
+                           'Nếu áp dụng sai dấu/phép tính thành $a \\vdots b \\Leftrightarrow a = b \\cdot '
+                           'k$ ($k \\notin \\mathbb{N}, b \\ne 0$) thì kết quả của **Định nghĩa** trong '
+                           '**Bài 8: Quan hệ chia hết và tính chất** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Tìm tập hợp $\\text{Ư}(12)$ và không thực hiện phép cộng, '
+                           'hãy xét xem tổng $24 + 36$ có chia hết cho $6$ không.”, kết quả giải đúng là: Ta '
+                           'có $\\text{Ư}(12) = \\{1; 2; 3; 4; 6; 12\\}$. Vì $24 \\vdots 6$ và $36 \\vdots '
+                           '6$ nên $(24 + 36) \\vdots 6$.'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 8: Quan hệ chia hết và tính chất. b) '
-                        '**Đúng** theo công thức trọng tâm **Định nghĩa** ($a \\vdots b \\Leftrightarrow a = '
-                        'b \\cdot k$ ($k \\in \\mathbb{N}, b \\ne 0$)). c) **Sai** vì $x \\in A$ ($x$ thuộc '
-                        '$A$); $y \\notin A$ ($y$ không thuộc $A$) là công thức của nội dung khác, không '
-                        'phải quy tắc chung của **Định nghĩa**. d) **Đúng** theo lời giải ví dụ minh họa '
-                        'trong bài học.'},
+                        '**Đúng** theo công thức **Định nghĩa** ($a \\vdots b \\Leftrightarrow a = b \\cdot '
+                        'k$ ($k \\in \\mathbb{N}, b \\ne 0$)). c) **Sai** vì công thức đúng của **Định '
+                        'nghĩa** phải là $a \\vdots b \\Leftrightarrow a = b \\cdot k$ ($k \\in \\mathbb{N}, '
+                        'b \\ne 0$) chứ không phải $a \\vdots b \\Leftrightarrow a = b \\cdot k$ ($k \\notin '
+                        '\\mathbb{N}, b \\ne 0$). d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 8: Quan hệ chia hết và tính chất** để giải quyết tình huống sau: '
-                 'Tìm tập hợp $\\text{Ư}(12)$ và không thực hiện phép cộng, hãy xét xem tổng $24 + 36$ có '
-                 'chia hết cho $6$ không. Kết quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Ta có $M = \\{\\text{T}, \\text{O}, \\text{A}, \\text{N}, \\text{H}, \\text{C}\\}$ '
-                        '(chữ O xuất hiện $2$ lần nhưng chỉ viết $1$ lần). Tập hợp $M$ có $6$ phần tử.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 8: Quan hệ chia hết và tính chất** để giải bài toán '
+                 'sau: Tìm tập hợp $\\text{Ư}(12)$ và không thực hiện phép cộng, hãy xét xem tổng $24 + 36$ '
+                 'có chia hết cho $6$ không. Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Ta có $\\text{Ư}(12) = \\{1; 2; 3; 4; 6; 12\\}$. Vì $24 \\vdots 6$ và $36 \\vdots '
+                        '6$ nên $(24 - 36) \\vdots 6$.',
                         'Ta có $\\text{Ư}(12) = \\{1; 2; 3; 4; 6; 12\\}$. Vì $24 \\vdots 6$ và $36 \\vdots '
                         '6$ nên $(24 + 36) \\vdots 6$.',
-                        'Số $27$ viết là $\\text{XXVII}$, số $19$ viết là $\\text{XIX}$. Ta có '
-                        '$\\overline{ab} = a \\times 10 + b$.',
-                        'Các số tự nhiên từ $4$ đến $8$ là $4; 5; 6; 7; 8$. Vậy $A = \\{4; 5; 6; 7; 8\\}$.'],
+                        'Ta có $\\text{Ư}(12) = \\{1; 2; 3; 4; 6; 12\\}$. Vì $24 \\vdots 6$ và $36 \\vdots '
+                        '6$ nên $(24 + 36) \\vdots 5$.',
+                        'Ta có $\\text{Ư}(24) = \\{1; 2; 3; 4; 6; 12\\}$. Vì $24 \\vdots 6$ và $36 \\vdots '
+                        '6$ nên $(24 + 36) \\vdots 6$.'],
             'answer': 1,
             'solution': 'Lời giải chi tiết theo Bài 8: Quan hệ chia hết và tính chất: Ta có $\\text{Ư}(12) = '
                         '\\{1; 2; 3; 4; 6; 12\\}$. Vì $24 \\vdots 6$ và $36 \\vdots 6$ nên $(24 + 36) '
@@ -1265,8 +1283,8 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
   'description': 'Dấu hiệu chia hết cho 2, cho 5, cho 9 và cho 3 trong tập hợp các số tự nhiên.',
   'requirements': ['Vận dụng dấu hiệu chia hết cho $2$ và cho $5$ dựa vào chữ số tận cùng.',
                    'Vận dụng dấu hiệu chia hết cho $9$ và cho $3$ dựa vào tổng các chữ số.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Chia hết cho 2 và 5** (Cho $2$: tận cùng '
-                   '$\\in \\{0; 2; 4; 6; 8\\}$; Cho $5$: tận cùng $\\in \\{0; 5\\}$) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 9: Dấu hiệu chia hết** để giải bài tập minh họa và bài toán '
+                   'thực tiễn.'],
   'definition': '- **Chia hết cho $2$**: các số có chữ số tận cùng là $0; 2; 4; 6; 8$.\n'
                 '- **Chia hết cho $5$**: các số có chữ số tận cùng là $0$ hoặc $5$.\n'
                 '- **Chia hết cho $9$ (hoặc cho $3$)**: các số có **tổng các chữ số** chia hết cho $9$ (hoặc '
@@ -1276,7 +1294,7 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             '### 2. Dấu hiệu theo tổng các chữ số\n'
             '- Mọi số chia hết cho $9$ thì đều chia hết cho $3$, nhưng một số chia hết cho $3$ chưa chắc đã '
             'chia hết cho $9$ (ví dụ $15 \\vdots 3$ nhưng $15 \\not\\vdots 9$).',
-  'formulas': [{'category': 'I. Tóm tắt dấu hiệu chia hết',
+  'formulas': [{'category': 'Tóm tắt dấu hiệu chia hết',
                 'items': [{'name': 'Chia hết cho 2 và 5',
                            'formula': 'Cho $2$: tận cùng $\\in \\{0; 2; 4; 6; 8\\}$; Cho $5$: tận cùng $\\in '
                                       '\\{0; 5\\}$'},
@@ -1308,32 +1326,33 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 9: Dấu hiệu chia hết**, công thức hoặc quy tắc nào sau '
-                 'đây biểu diễn đúng **Chia hết cho 2 và 5**?',
-            'options': ['$\\overline{abc} \\vdots 3 \\Leftrightarrow (a + b + c) \\vdots 3$; '
-                        '$\\overline{abc} \\vdots 9 \\Leftrightarrow (a + b + c) \\vdots 9$',
-                        '$x \\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$)',
+            'q': 'Trong **Bài 9: Dấu hiệu chia hết**, quy tắc hoặc công thức nào sau đây xác định đúng '
+                 '**Chia hết cho 2 và 5**?',
+            'options': ['Cho $2$: tận cùng $\\notin \\{0; 2; 4; 6; 8\\}$; Cho $5$: tận cùng $\\in \\{0; '
+                        '5\\}$',
+                        'Cho $2$: tận cùng $\\in \\{0; 2; 4; 6; 8\\}$; Cho $5$: tận cùng $\\in \\{0; 4\\}$',
                         'Cho $2$: tận cùng $\\in \\{0; 2; 4; 6; 8\\}$; Cho $5$: tận cùng $\\in \\{0; 5\\}$',
-                        'Liệt kê $A = \\{0; 1; 2; 3\\}$ hoặc đặc trưng $A = \\{x \\in \\mathbb{N} \\mid x < '
-                        '4\\}$'],
+                        'Cho $4$: tận cùng $\\in \\{0; 2; 4; 6; 8\\}$; Cho $5$: tận cùng $\\in \\{0; 5\\}$'],
             'answer': 2,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 9: Dấu hiệu chia hết, **Chia hết cho 2 và 5** '
-                        'được xác định bởi: Cho $2$: tận cùng $\\in \\{0; 2; 4; 6; 8\\}$; Cho $5$: tận cùng '
-                        '$\\in \\{0; 5\\}$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 9: Dấu hiệu chia hết, **Chia hết cho 2 và 5** được '
+                        'xác định bởi: Cho $2$: tận cùng $\\in \\{0; 2; 4; 6; 8\\}$; Cho $5$: tận cùng $\\in '
+                        '\\{0; 5\\}$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 9: Dấu hiệu chia hết**, nội dung/biểu thức $\\overline{abc} \\vdots 3 '
-                 '\\Leftrightarrow (a + b + c) \\vdots 3$; $\\overline{abc} \\vdots 9 \\Leftrightarrow (a + '
-                 'b + c) \\vdots 9$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Chia hết cho 2 và 5',
-                        'Quan hệ phần tử – tập hợp',
-                        'Hai cách mô tả',
-                        'Chia hết cho 3 và 9'],
+            'q': 'Khi học **Bài 9: Dấu hiệu chia hết**, biểu thức hoặc quy tắc nào dưới đây biểu diễn đúng '
+                 '**Chia hết cho 3 và 9**?',
+            'options': ['$\\overline{abc} \\vdots 3 \\Leftrightarrow (a - b + c) \\vdots 3$; '
+                        '$\\overline{abc} \\vdots 9 \\Leftrightarrow (a + b + c) \\vdots 9$',
+                        '$\\overline{abc} \\vdots 3 \\Leftrightarrow (a + b + c) \\vdots 3$; '
+                        '$\\overline{abc} \\vdots 9 \\Leftrightarrow (a + b + c) \\vdots 8$',
+                        '$\\overline{abc} \\vdots 6 \\Leftrightarrow (a + b + c) \\vdots 3$; '
+                        '$\\overline{abc} \\vdots 9 \\Leftrightarrow (a + b + c) \\vdots 9$',
+                        '$\\overline{abc} \\vdots 3 \\Leftrightarrow (a + b + c) \\vdots 3$; '
+                        '$\\overline{abc} \\vdots 9 \\Leftrightarrow (a + b + c) \\vdots 9$'],
             'answer': 3,
-            'solution': 'Trong Bài 9: Dấu hiệu chia hết, biểu thức/quy tắc $\\overline{abc} \\vdots 3 '
-                        '\\Leftrightarrow (a + b + c) \\vdots 3$; $\\overline{abc} \\vdots 9 '
-                        '\\Leftrightarrow (a + b + c) \\vdots 9$ chính là nội dung của **Chia hết cho 3 và '
-                        '9**.'},
+            'solution': 'Trong Bài 9: Dấu hiệu chia hết, **Chia hết cho 3 và 9** có công thức/quy tắc là: '
+                        '$\\overline{abc} \\vdots 3 \\Leftrightarrow (a + b + c) \\vdots 3$; '
+                        '$\\overline{abc} \\vdots 9 \\Leftrightarrow (a + b + c) \\vdots 9$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Tìm chữ số $a$ để số $\\overline{2a5}$ chia hết cho $3$ nhưng không chia hết cho $9$:',
@@ -1345,18 +1364,14 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 9: Dấu hiệu chia hết** (Chương II: Tính chia hết trong tập hợp các số tự '
-                 'nhiên), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của '
-                 'bài?',
-            'options': ['Sử dụng được thuật ngữ tập hợp, phần tử thuộc ($\\in$) hoặc không thuộc ($\\notin$) '
-                        'một tập hợp.',
+            'q': 'Để nắm vững bản chất của **Bài 9: Dấu hiệu chia hết**, nhận định nào sau đây là **chính '
+                 'xác**?',
+            'options': ['Vận dụng dấu hiệu không chia hết cho $2$ và cho $5$ dựa vào chữ số tận cùng.',
                         'Vận dụng dấu hiệu chia hết cho $2$ và cho $5$ dựa vào chữ số tận cùng.',
-                        'Cho được một tập hợp bằng cách liệt kê các phần tử hoặc chỉ ra tính chất đặc trưng '
-                        'cho các phần tử.',
-                        'Phân biệt được tập hợp $\\mathbb{N}$ và $\\mathbb{N}^*$; xác định được giá trị từng '
-                        'chữ số của số tự nhiên trong hệ thập phân.'],
+                        'Vận dụng dấu hiệu chia hết cho $2$ và cho $4$ dựa vào chữ số tận cùng.',
+                        'Vận dụng dấu hiệu chia hết cho $4$ và cho $5$ dựa vào chữ số tận cùng.'],
             'answer': 1,
-            'solution': 'Theo yêu cầu cần đạt của Bài 9: Dấu hiệu chia hết: Vận dụng dấu hiệu chia hết cho '
+            'solution': 'Theo nội dung cốt lõi của Bài 9: Dấu hiệu chia hết: Vận dụng dấu hiệu chia hết cho '
                         '$2$ và cho $5$ dựa vào chữ số tận cùng.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -1372,38 +1387,40 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 9: Dấu hiệu chia hết**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Vận dụng dấu hiệu chia hết cho $2$ '
-                           'và cho $5$ dựa vào chữ số tận cùng.',
-                           'Quy tắc/công thức **Chia hết cho 2 và 5** trong bài được xác định bởi: Cho $2$: '
-                           'tận cùng $\\in \\{0; 2; 4; 6; 8\\}$; Cho $5$: tận cùng $\\in \\{0; 5\\}$.',
-                           'Trong mọi trường hợp, **Chia hết cho 2 và 5** luôn được tính bằng công thức $x '
-                           '\\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$) (thuộc Quan hệ phần '
-                           'tử – tập hợp) mà không cần điều kiện của Bài 9: Dấu hiệu chia hết.',
-                           'Với bài toán minh họa: “Tìm chữ số $x$ để số $\\overline{45x0}$ chia hết cho cả '
-                           '$2, 5$ và $9$.”, lời giải đúng là: Số $\\overline{45x0}$ có tận cùng là $0$ nên '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 9: Dấu hiệu chia hết**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Vận dụng dấu hiệu chia hết cho $2$ và '
+                           'cho $5$ dựa vào chữ số tận cùng.',
+                           'Trong **Bài 9: Dấu hiệu chia hết**, quy tắc/công thức **Chia hết cho 2 và 5** '
+                           'được viết là: Cho $2$: tận cùng $\\in \\{0; 2; 4; 6; 8\\}$; Cho $5$: tận cùng '
+                           '$\\in \\{0; 5\\}$.',
+                           'Nếu áp dụng sai dấu/phép tính thành Cho $2$: tận cùng $\\notin \\{0; 2; 4; 6; '
+                           '8\\}$; Cho $5$: tận cùng $\\in \\{0; 5\\}$ thì kết quả của **Chia hết cho 2 và '
+                           '5** trong **Bài 9: Dấu hiệu chia hết** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Tìm chữ số $x$ để số $\\overline{45x0}$ chia hết cho cả $2, '
+                           '5$ và $9$.”, kết quả giải đúng là: Số $\\overline{45x0}$ có tận cùng là $0$ nên '
                            'luôn chia hết cho $2$ và $5$. Để $\\overline{45x0} \\vdots 9$ thì $(4 + 5 + x + '
                            '0) = 9 + x \\vdots 9$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 9: Dấu hiệu chia hết. b) **Đúng** theo '
-                        'công thức trọng tâm **Chia hết cho 2 và 5** (Cho $2$: tận cùng $\\in \\{0; 2; 4; 6; '
-                        '8\\}$; Cho $5$: tận cùng $\\in \\{0; 5\\}$). c) **Sai** vì $x \\in A$ ($x$ thuộc '
-                        '$A$); $y \\notin A$ ($y$ không thuộc $A$) là công thức của nội dung khác, không '
-                        'phải quy tắc chung của **Chia hết cho 2 và 5**. d) **Đúng** theo lời giải ví dụ '
-                        'minh họa trong bài học.'},
+                        'công thức **Chia hết cho 2 và 5** (Cho $2$: tận cùng $\\in \\{0; 2; 4; 6; 8\\}$; '
+                        'Cho $5$: tận cùng $\\in \\{0; 5\\}$). c) **Sai** vì công thức đúng của **Chia hết '
+                        'cho 2 và 5** phải là Cho $2$: tận cùng $\\in \\{0; 2; 4; 6; 8\\}$; Cho $5$: tận '
+                        'cùng $\\in \\{0; 5\\}$ chứ không phải Cho $2$: tận cùng $\\notin \\{0; 2; 4; 6; '
+                        '8\\}$; Cho $5$: tận cùng $\\in \\{0; 5\\}$. d) **Đúng** theo lời giải ví dụ minh '
+                        'họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 9: Dấu hiệu chia hết** để giải quyết tình huống sau: Tìm chữ số '
-                 '$x$ để số $\\overline{45x0}$ chia hết cho cả $2, 5$ và $9$. Kết quả và hướng giải nào dưới '
-                 'đây là **đúng**?',
-            'options': ['Ta có $M = \\{\\text{T}, \\text{O}, \\text{A}, \\text{N}, \\text{H}, \\text{C}\\}$ '
-                        '(chữ O xuất hiện $2$ lần nhưng chỉ viết $1$ lần). Tập hợp $M$ có $6$ phần tử.',
-                        'Số $27$ viết là $\\text{XXVII}$, số $19$ viết là $\\text{XIX}$. Ta có '
-                        '$\\overline{ab} = a \\times 10 + b$.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 9: Dấu hiệu chia hết** để giải bài toán sau: Tìm '
+                 'chữ số $x$ để số $\\overline{45x0}$ chia hết cho cả $2, 5$ và $9$. Cách giải và kết quả '
+                 'nào dưới đây là **đúng**?',
+            'options': ['Số $\\overline{45x0}$ có tận cùng là $0$ nên luôn chia hết cho $2$ và $5$. Để '
+                        '$\\overline{45x0} \\vdots 9$ thì $(4 - 5 + x + 0) = 9 + x \\vdots 9$, suy ra...',
                         'Số $\\overline{45x0}$ có tận cùng là $0$ nên luôn chia hết cho $2$ và $5$. Để '
-                        '$\\overline{45x0} \\vdots 9$ thì $(4 + 5 + x + 0) = 9 + x \\vdots 9$, suy ra $x '
-                        '\\in \\{0; 9\\}$...',
-                        'Các số tự nhiên từ $4$ đến $8$ là $4; 5; 6; 7; 8$. Vậy $A = \\{4; 5; 6; 7; 8\\}$.'],
+                        '$\\overline{45x0} \\vdots 9$ thì $(4 + 5 + x + 0) = 9 + x \\vdots 8$, suy ra...',
+                        'Số $\\overline{45x0}$ có tận cùng là $0$ nên luôn chia hết cho $2$ và $5$. Để '
+                        '$\\overline{45x0} \\vdots 9$ thì $(4 + 5 + x + 0) = 9 + x \\vdots 9$, suy ra...',
+                        'Số $\\overline{45x0}$ có tận cùng là $2$ nên luôn chia hết cho $2$ và $5$. Để '
+                        '$\\overline{45x0} \\vdots 9$ thì $(4 + 5 + x + 0) = 9 + x \\vdots 9$, suy ra...'],
             'answer': 2,
             'solution': 'Lời giải chi tiết theo Bài 9: Dấu hiệu chia hết: Số $\\overline{45x0}$ có tận cùng '
                         'là $0$ nên luôn chia hết cho $2$ và $5$. Để $\\overline{45x0} \\vdots 9$ thì $(4 + '
@@ -1428,8 +1445,8 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
   'requirements': ['Nhận biết được số nguyên tố và hợp số; thuộc các số nguyên tố nhỏ hơn $20$.',
                    'Phân tích được một số tự nhiên lớn hơn $1$ ra thừa số nguyên tố bằng sơ đồ cây hoặc sơ '
                    'đồ cột.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Số nguyên tố chẵn duy nhất** (Số $2$) vào '
-                   'giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 10: Số nguyên tố** để giải bài tập minh họa và bài toán '
+                   'thực tiễn.'],
   'definition': '- **Số nguyên tố** là số tự nhiên lớn hơn $1$, chỉ có hai ước là $1$ và chính nó.\n'
                 '- **Hợp số** là số tự nhiên lớn hơn $1$, có nhiều hơn hai ước. Chú ý: số $0$ và số $1$ '
                 '**không là số nguyên tố** và cũng **không là hợp số**.',
@@ -1439,7 +1456,7 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             '### 2. Phân tích một số ra thừa số nguyên tố\n'
             '- Mọi hợp số đều phân tích được duy nhất ra tích các thừa số nguyên tố (viết gọn bằng luỹ '
             'thừa). Ví dụ: $36 = 2^2 \\cdot 3^2$; $120 = 2^3 \\cdot 3 \\cdot 5$.',
-  'formulas': [{'category': 'I. Số nguyên tố và phân tích thừa số nguyên tố',
+  'formulas': [{'category': 'Số nguyên tố và phân tích thừa số nguyên tố',
                 'items': [{'name': 'Số nguyên tố chẵn duy nhất', 'formula': 'Số $2$'},
                           {'name': 'Ví dụ phân tích chuẩn',
                            'formula': '$24 = 2^3 \\cdot 3$; $36 = 2^2 \\cdot 3^2$; $60 = 2^2 \\cdot 3 \\cdot '
@@ -1465,28 +1482,23 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 10: Số nguyên tố**, công thức hoặc quy tắc nào sau đây '
-                 'biểu diễn đúng **Số nguyên tố chẵn duy nhất**?',
-            'options': ['$24 = 2^3 \\cdot 3$; $36 = 2^2 \\cdot 3^2$; $60 = 2^2 \\cdot 3 \\cdot 5$',
-                        '$x \\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$)',
-                        'Liệt kê $A = \\{0; 1; 2; 3\\}$ hoặc đặc trưng $A = \\{x \\in \\mathbb{N} \\mid x < '
-                        '4\\}$',
-                        'Số $2$'],
+            'q': 'Trong **Bài 10: Số nguyên tố**, quy tắc hoặc công thức nào sau đây xác định đúng **Số '
+                 'nguyên tố chẵn duy nhất**?',
+            'options': ['Số $3$', 'Số $1$', 'Số $4$', 'Số $2$'],
             'answer': 3,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 10: Số nguyên tố, **Số nguyên tố chẵn duy '
-                        'nhất** được xác định bởi: Số $2$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 10: Số nguyên tố, **Số nguyên tố chẵn duy nhất** '
+                        'được xác định bởi: Số $2$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 10: Số nguyên tố**, nội dung/biểu thức $24 = 2^3 \\cdot 3$; $36 = 2^2 \\cdot '
-                 '3^2$; $60 = 2^2 \\cdot 3 \\cdot 5$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Ví dụ phân tích chuẩn',
-                        'Số nguyên tố chẵn duy nhất',
-                        'Quan hệ phần tử – tập hợp',
-                        'Hai cách mô tả'],
+            'q': 'Khi học **Bài 10: Số nguyên tố**, biểu thức hoặc quy tắc nào dưới đây biểu diễn đúng **Ví '
+                 'dụ phân tích chuẩn**?',
+            'options': ['$24 = 2^3 \\cdot 3$; $36 = 2^2 \\cdot 3^2$; $60 = 2^2 \\cdot 3 \\cdot 5$',
+                        '$24 = 2^3 : 3$; $36 = 2^2 \\cdot 3^2$; $60 = 2^2 \\cdot 3 \\cdot 5$',
+                        '$24 = 2^3 \\cdot 3$; $36 = 2^2 \\cdot 3^2$; $60 = 2^2 \\cdot 3 \\cdot 4$',
+                        '$48 = 2^3 \\cdot 3$; $36 = 2^2 \\cdot 3^2$; $60 = 2^2 \\cdot 3 \\cdot 5$'],
             'answer': 0,
-            'solution': 'Trong Bài 10: Số nguyên tố, biểu thức/quy tắc $24 = 2^3 \\cdot 3$; $36 = 2^2 \\cdot '
-                        '3^2$; $60 = 2^2 \\cdot 3 \\cdot 5$ chính là nội dung của **Ví dụ phân tích '
-                        'chuẩn**.'},
+            'solution': 'Trong Bài 10: Số nguyên tố, **Ví dụ phân tích chuẩn** có công thức/quy tắc là: $24 '
+                        '= 2^3 \\cdot 3$; $36 = 2^2 \\cdot 3^2$; $60 = 2^2 \\cdot 3 \\cdot 5$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Khi phân tích số $120$ ra thừa số nguyên tố được $120 = 2^x \\cdot 3 \\cdot 5$. Giá trị '
@@ -1498,17 +1510,13 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 10: Số nguyên tố** (Chương II: Tính chia hết trong tập hợp các số tự nhiên), '
-                 'khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Sử dụng được thuật ngữ tập hợp, phần tử thuộc ($\\in$) hoặc không thuộc ($\\notin$) '
-                        'một tập hợp.',
-                        'Cho được một tập hợp bằng cách liệt kê các phần tử hoặc chỉ ra tính chất đặc trưng '
-                        'cho các phần tử.',
+            'q': 'Để nắm vững bản chất của **Bài 10: Số nguyên tố**, nhận định nào sau đây là **chính xác**?',
+            'options': ['Nhận biết được số nguyên tố và hợp số; thuộc các số nguyên tố nhỏ hơn $30$.',
+                        'Nhận biết được số nguyên tố và hợp số; thuộc các số nguyên tố nhỏ hơn $19$.',
                         'Nhận biết được số nguyên tố và hợp số; thuộc các số nguyên tố nhỏ hơn $20$.',
-                        'Phân biệt được tập hợp $\\mathbb{N}$ và $\\mathbb{N}^*$; xác định được giá trị từng '
-                        'chữ số của số tự nhiên trong hệ thập phân.'],
+                        'Nhận biết được số nguyên tố và hợp số; thuộc các số nguyên tố nhỏ hơn $40$.'],
             'answer': 2,
-            'solution': 'Theo yêu cầu cần đạt của Bài 10: Số nguyên tố: Nhận biết được số nguyên tố và hợp '
+            'solution': 'Theo nội dung cốt lõi của Bài 10: Số nguyên tố: Nhận biết được số nguyên tố và hợp '
                         'số; thuộc các số nguyên tố nhỏ hơn $20$.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -1524,33 +1532,29 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 10: Số nguyên tố**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được số nguyên tố và hợp '
-                           'số; thuộc các số nguyên tố nhỏ hơn $20$.',
-                           'Quy tắc/công thức **Số nguyên tố chẵn duy nhất** trong bài được xác định bởi: Số '
-                           '$2$.',
-                           'Trong mọi trường hợp, **Số nguyên tố chẵn duy nhất** luôn được tính bằng công '
-                           'thức $x \\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$) (thuộc Quan '
-                           'hệ phần tử – tập hợp) mà không cần điều kiện của Bài 10: Số nguyên tố.',
-                           'Với bài toán minh họa: “Phân tích số $84$ ra thừa số nguyên tố và cho biết các '
-                           'ước nguyên tố của $84$.”, lời giải đúng là: Ta có $84 = 2^2 \\cdot 3 \\cdot 7$. '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 10: Số nguyên tố**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết được số nguyên tố và hợp số; '
+                           'thuộc các số nguyên tố nhỏ hơn $20$.',
+                           'Trong **Bài 10: Số nguyên tố**, quy tắc/công thức **Số nguyên tố chẵn duy nhất** '
+                           'được viết là: Số $2$.',
+                           'Nếu áp dụng sai dấu/phép tính thành Số $3$ thì kết quả của **Số nguyên tố chẵn '
+                           'duy nhất** trong **Bài 10: Số nguyên tố** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Phân tích số $84$ ra thừa số nguyên tố và cho biết các ước '
+                           'nguyên tố của $84$.”, kết quả giải đúng là: Ta có $84 = 2^2 \\cdot 3 \\cdot 7$. '
                            'Các ước nguyên tố của $84$ là $2; 3; 7$.'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 10: Số nguyên tố. b) **Đúng** theo công '
-                        'thức trọng tâm **Số nguyên tố chẵn duy nhất** (Số $2$). c) **Sai** vì $x \\in A$ '
-                        '($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$) là công thức của nội dung '
-                        'khác, không phải quy tắc chung của **Số nguyên tố chẵn duy nhất**. d) **Đúng** theo '
+                        'thức **Số nguyên tố chẵn duy nhất** (Số $2$). c) **Sai** vì công thức đúng của **Số '
+                        'nguyên tố chẵn duy nhất** phải là Số $2$ chứ không phải Số $3$. d) **Đúng** theo '
                         'lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 10: Số nguyên tố** để giải quyết tình huống sau: Phân tích số '
-                 '$84$ ra thừa số nguyên tố và cho biết các ước nguyên tố của $84$. Kết quả và hướng giải '
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 10: Số nguyên tố** để giải bài toán sau: Phân tích '
+                 'số $84$ ra thừa số nguyên tố và cho biết các ước nguyên tố của $84$. Cách giải và kết quả '
                  'nào dưới đây là **đúng**?',
-            'options': ['Ta có $M = \\{\\text{T}, \\text{O}, \\text{A}, \\text{N}, \\text{H}, \\text{C}\\}$ '
-                        '(chữ O xuất hiện $2$ lần nhưng chỉ viết $1$ lần). Tập hợp $M$ có $6$ phần tử.',
-                        'Số $27$ viết là $\\text{XXVII}$, số $19$ viết là $\\text{XIX}$. Ta có '
-                        '$\\overline{ab} = a \\times 10 + b$.',
-                        'Các số tự nhiên từ $4$ đến $8$ là $4; 5; 6; 7; 8$. Vậy $A = \\{4; 5; 6; 7; 8\\}$.',
+            'options': ['Ta có $84 = 2^2 : 3 \\cdot 7$. Các ước nguyên tố của $84$ là $2; 3; 7$.',
+                        'Ta có $84 = 2^2 \\cdot 3 \\cdot 7$. Các ước nguyên tố của $84$ là $2; 3; 6$.',
+                        'Ta có $86 = 2^2 \\cdot 3 \\cdot 7$. Các ước nguyên tố của $84$ là $2; 3; 7$.',
                         'Ta có $84 = 2^2 \\cdot 3 \\cdot 7$. Các ước nguyên tố của $84$ là $2; 3; 7$.'],
             'answer': 3,
             'solution': 'Lời giải chi tiết theo Bài 10: Số nguyên tố: Ta có $84 = 2^2 \\cdot 3 \\cdot 7$. '
@@ -1574,8 +1578,8 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
                    'nguyên tố.',
                    'Tìm được tập hợp $\\text{ƯC}(a, b)$ thông qua các ước của $\\text{ƯCLN}(a, b)$ và giải '
                    'bài toán chia đều.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Công thức nhớ nhanh** (ƯCLN = Tích các thừa '
-                   'số nguyên tố CHUNG với số mũ NHỎ NHẤT) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 11: Ước chung. Ước chung lớn nhất** để giải bài tập minh '
+                   'họa và bài toán thực tiễn.'],
   'definition': '- **Ước chung** của hai hay nhiều số là ước của tất cả các số đó, kí hiệu $\\text{ƯC}(a, '
                 'b)$.\n'
                 '- **Ước chung lớn nhất** của hai hay nhiều số là số lớn nhất trong tập hợp các ước chung '
@@ -1587,7 +1591,7 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             '- Bước 3: Lập tích các thừa số đã chọn, mỗi thừa số lấy với **số mũ nhỏ nhất**.\n'
             '### 2. Tìm ước chung từ $\\text{ƯCLN}$\n'
             '- Tất cả các ước chung của $a$ và $b$ đều là ước của $\\text{ƯCLN}(a, b)$.',
-  'formulas': [{'category': 'I. Quy tắc ƯCLN',
+  'formulas': [{'category': 'Quy tắc ƯCLN',
                 'items': [{'name': 'Công thức nhớ nhanh',
                            'formula': 'ƯCLN = Tích các thừa số nguyên tố CHUNG với số mũ NHỎ NHẤT'},
                           {'name': 'Tập ước chung',
@@ -1616,27 +1620,30 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 11: Ước chung. Ước chung lớn nhất**, công thức hoặc quy '
-                 'tắc nào sau đây biểu diễn đúng **Công thức nhớ nhanh**?',
+            'q': 'Trong **Bài 11: Ước chung. Ước chung lớn nhất**, quy tắc hoặc công thức nào sau đây xác '
+                 'định đúng **Công thức nhớ nhanh**?',
             'options': ['ƯCLN = Tích các thừa số nguyên tố CHUNG với số mũ NHỎ NHẤT',
-                        '$\\text{ƯC}(a, b) = \\text{Ư}(\\text{ƯCLN}(a, b))$',
-                        '$\\text{ƯCLN}(a, b) = 1$',
-                        '$x \\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$)'],
+                        'ƯCLN = Tích các thừa số nguyên tố CHUNG với số mũ NHỎ NHẤT (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: ƯCLN = Tích các thừa số nguyên tố CHUNG với số mũ NHỎ '
+                        'NHẤT',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của ƯCLN = Tích các thừa số nguyên '
+                        'tố CHUNG với số mũ NHỎ NHẤT'],
             'answer': 0,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 11: Ước chung. Ước chung lớn nhất, **Công '
-                        'thức nhớ nhanh** được xác định bởi: ƯCLN = Tích các thừa số nguyên tố CHUNG với số '
-                        'mũ NHỎ NHẤT.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 11: Ước chung. Ước chung lớn nhất, **Công thức nhớ '
+                        'nhanh** được xác định bởi: ƯCLN = Tích các thừa số nguyên tố CHUNG với số mũ NHỎ '
+                        'NHẤT.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 11: Ước chung. Ước chung lớn nhất**, nội dung/biểu thức $\\text{ƯC}(a, b) = '
-                 '\\text{Ư}(\\text{ƯCLN}(a, b))$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Công thức nhớ nhanh',
-                        'Tập ước chung',
-                        'Hai số nguyên tố cùng nhau',
-                        'Quan hệ phần tử – tập hợp'],
+            'q': 'Khi học **Bài 11: Ước chung. Ước chung lớn nhất**, biểu thức hoặc quy tắc nào dưới đây '
+                 'biểu diễn đúng **Tập ước chung**?',
+            'options': ['$\\text{ƯC}(a, b) = \\text{Ư}(\\text{ƯCLN}(a, b))$ (với dấu ngược lại)',
+                        '$\\text{ƯC}(a, b) = \\text{Ư}(\\text{ƯCLN}(a, b))$',
+                        'Đảo ngược vế của quy tắc: $\\text{ƯC}(a, b) = \\text{Ư}(\\text{ƯCLN}(a, b))$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\text{ƯC}(a, b) = '
+                        '\\text{Ư}(\\text{ƯCLN}(a, b))$'],
             'answer': 1,
-            'solution': 'Trong Bài 11: Ước chung. Ước chung lớn nhất, biểu thức/quy tắc $\\text{ƯC}(a, b) = '
-                        '\\text{Ư}(\\text{ƯCLN}(a, b))$ chính là nội dung của **Tập ước chung**.'},
+            'solution': 'Trong Bài 11: Ước chung. Ước chung lớn nhất, **Tập ước chung** có công thức/quy tắc '
+                        'là: $\\text{ƯC}(a, b) = \\text{Ư}(\\text{ƯCLN}(a, b))$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Biết $\\text{ƯCLN}(a, b) = 10$. Tập hợp $\\text{ƯC}(a, b)$ có bao nhiêu phần tử?',
@@ -1647,19 +1654,18 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 11: Ước chung. Ước chung lớn nhất** (Chương II: Tính chia hết trong tập hợp '
-                 'các số tự nhiên), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất '
-                 'kiến thức của bài?',
-            'options': ['Sử dụng được thuật ngữ tập hợp, phần tử thuộc ($\\in$) hoặc không thuộc ($\\notin$) '
-                        'một tập hợp.',
-                        'Cho được một tập hợp bằng cách liệt kê các phần tử hoặc chỉ ra tính chất đặc trưng '
-                        'cho các phần tử.',
-                        'Phân biệt được tập hợp $\\mathbb{N}$ và $\\mathbb{N}^*$; xác định được giá trị từng '
-                        'chữ số của số tự nhiên trong hệ thập phân.',
+            'q': 'Để nắm vững bản chất của **Bài 11: Ước chung. Ước chung lớn nhất**, nhận định nào sau đây '
+                 'là **chính xác**?',
+            'options': ['Tìm được ước chung lớn nhất $\\text{ƯCLN}(a, b)$ bằng cách phân tích các số ra thừa '
+                        'số nguyên tố. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Tìm được ước chung lớn nhất $\\text{ƯCLN}(a, b)$ bằng '
+                        'cách phân tích các số ra thừa số nguyên tố.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Tìm được ước chung lớn nhất '
+                        '$\\text{ƯCLN}(a, b)$ bằng cách phân tích các số ra thừa số nguyên tố.',
                         'Tìm được ước chung lớn nhất $\\text{ƯCLN}(a, b)$ bằng cách phân tích các số ra thừa '
                         'số nguyên tố.'],
             'answer': 3,
-            'solution': 'Theo yêu cầu cần đạt của Bài 11: Ước chung. Ước chung lớn nhất: Tìm được ước chung '
+            'solution': 'Theo nội dung cốt lõi của Bài 11: Ước chung. Ước chung lớn nhất: Tìm được ước chung '
                         'lớn nhất $\\text{ƯCLN}(a, b)$ bằng cách phân tích các số ra thừa số nguyên tố.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -1677,39 +1683,43 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 11: Ước chung. Ước '
-                 'chung lớn nhất**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Tìm được ước chung lớn nhất '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 11: Ước chung. Ước chung '
+                 'lớn nhất**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Tìm được ước chung lớn nhất '
                            '$\\text{ƯCLN}(a, b)$ bằng cách phân tích các số ra thừa số nguyên tố.',
-                           'Quy tắc/công thức **Công thức nhớ nhanh** trong bài được xác định bởi: ƯCLN = '
-                           'Tích các thừa số nguyên tố CHUNG với số mũ NHỎ NHẤT.',
-                           'Trong mọi trường hợp, **Công thức nhớ nhanh** luôn được tính bằng công thức $x '
-                           '\\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$) (thuộc Quan hệ phần '
-                           'tử – tập hợp) mà không cần điều kiện của Bài 11: Ước chung. Ước chung lớn nhất.',
-                           'Với bài toán minh họa: “Tìm $\\text{ƯCLN}(24, 36)$ và tập hợp $\\text{ƯC}(24, '
-                           '36)$.”, lời giải đúng là: Ta có $24 = 2^3 \\cdot 3$ và $36 = 2^2 \\cdot 3^2$. '
-                           'Suy ra $\\text{ƯCLN}(24, 36) = 2^2 \\cdot 3 = 12$ và $\\text{ƯC}(24, 36) = '
+                           'Trong **Bài 11: Ước chung. Ước chung lớn nhất**, quy tắc/công thức **Công thức '
+                           'nhớ nhanh** được viết là: ƯCLN = Tích các thừa số nguyên tố CHUNG với số mũ NHỎ '
+                           'NHẤT.',
+                           'Nếu áp dụng sai dấu/phép tính thành ƯCLN = Tích các thừa số nguyên tố CHUNG với '
+                           'số mũ NHỎ NHẤT (với dấu ngược lại) thì kết quả của **Công thức nhớ nhanh** trong '
+                           '**Bài 11: Ước chung. Ước chung lớn nhất** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Tìm $\\text{ƯCLN}(24, 36)$ và tập hợp $\\text{ƯC}(24, '
+                           '36)$.”, kết quả giải đúng là: Ta có $24 = 2^3 \\cdot 3$ và $36 = 2^2 \\cdot '
+                           '3^2$. Suy ra $\\text{ƯCLN}(24, 36) = 2^2 \\cdot 3 = 12$ và $\\text{ƯC}(24, 36) = '
                            '\\text{Ư}(12) = \\{1; 2; 3; 4; 6; 12\\}$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 11: Ước chung. Ước chung lớn nhất. b) '
-                        '**Đúng** theo công thức trọng tâm **Công thức nhớ nhanh** (ƯCLN = Tích các thừa số '
-                        'nguyên tố CHUNG với số mũ NHỎ NHẤT). c) **Sai** vì $x \\in A$ ($x$ thuộc $A$); $y '
-                        '\\notin A$ ($y$ không thuộc $A$) là công thức của nội dung khác, không phải quy tắc '
-                        'chung của **Công thức nhớ nhanh**. d) **Đúng** theo lời giải ví dụ minh họa trong '
-                        'bài học.'},
+                        '**Đúng** theo công thức **Công thức nhớ nhanh** (ƯCLN = Tích các thừa số nguyên tố '
+                        'CHUNG với số mũ NHỎ NHẤT). c) **Sai** vì công thức đúng của **Công thức nhớ nhanh** '
+                        'phải là ƯCLN = Tích các thừa số nguyên tố CHUNG với số mũ NHỎ NHẤT chứ không phải '
+                        'ƯCLN = Tích các thừa số nguyên tố CHUNG với số mũ NHỎ NHẤT (với dấu ngược lại). d) '
+                        '**Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 11: Ước chung. Ước chung lớn nhất** để giải quyết tình huống sau: '
-                 'Tìm $\\text{ƯCLN}(24, 36)$ và tập hợp $\\text{ƯC}(24, 36)$. Kết quả và hướng giải nào dưới '
-                 'đây là **đúng**?',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 11: Ước chung. Ước chung lớn nhất** để giải bài '
+                 'toán sau: Tìm $\\text{ƯCLN}(24, 36)$ và tập hợp $\\text{ƯC}(24, 36)$. Cách giải và kết quả '
+                 'nào dưới đây là **đúng**?',
             'options': ['Ta có $24 = 2^3 \\cdot 3$ và $36 = 2^2 \\cdot 3^2$. Suy ra $\\text{ƯCLN}(24, 36) = '
                         '2^2 \\cdot 3 = 12$ và $\\text{ƯC}(24, 36) = \\text{Ư}(12) = \\{1; 2; 3; 4; 6; '
                         '12\\}$...',
-                        'Ta có $M = \\{\\text{T}, \\text{O}, \\text{A}, \\text{N}, \\text{H}, \\text{C}\\}$ '
-                        '(chữ O xuất hiện $2$ lần nhưng chỉ viết $1$ lần). Tập hợp $M$ có $6$ phần tử.',
-                        'Số $27$ viết là $\\text{XXVII}$, số $19$ viết là $\\text{XIX}$. Ta có '
-                        '$\\overline{ab} = a \\times 10 + b$.',
-                        'Các số tự nhiên từ $4$ đến $8$ là $4; 5; 6; 7; 8$. Vậy $A = \\{4; 5; 6; 7; 8\\}$.'],
+                        'Ta có $24 = 2^3 : 3$ và $36 = 2^2 \\cdot 3^2$. Suy ra $\\text{ƯCLN}(24, 36) = 2^2 '
+                        '\\cdot 3 = 12$ và $\\text{ƯC}(24, 36) = \\text{Ư}(12) = \\{1; 2; 3; 4; 6; 12\\}$...',
+                        'Ta có $24 = 2^3 \\cdot 3$ và $36 = 2^2 \\cdot 3^2$. Suy ra $\\text{ƯCLN}(24, 36) = '
+                        '2^2 \\cdot 3 = 12$ và $\\text{ƯC}(24, 36) = \\text{Ư}(12) = \\{1; 2; 3; 4; 6; '
+                        '11\\}$...',
+                        'Ta có $48 = 2^3 \\cdot 3$ và $36 = 2^2 \\cdot 3^2$. Suy ra $\\text{ƯCLN}(24, 36) = '
+                        '2^2 \\cdot 3 = 12$ và $\\text{ƯC}(24, 36) = \\text{Ư}(12) = \\{1; 2; 3; 4; 6; '
+                        '12\\}$...'],
             'answer': 0,
             'solution': 'Lời giải chi tiết theo Bài 11: Ước chung. Ước chung lớn nhất: Ta có $24 = 2^3 '
                         '\\cdot 3$ và $36 = 2^2 \\cdot 3^2$. Suy ra $\\text{ƯCLN}(24, 36) = 2^2 \\cdot 3 = '
@@ -1735,8 +1745,8 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
                    'tố.',
                    'Tìm được tập hợp $\\text{BC}(a, b)$ từ $\\text{BCNN}(a, b)$ và vận dụng quy đồng mẫu số, '
                    'giải toán thực tế.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Công thức nhớ nhanh** (BCNN = Tích các thừa '
-                   'số nguyên tố CHUNG và RIÊNG với số mũ LỚN NHẤT) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 12: Bội chung. Bội chung nhỏ nhất** để giải bài tập minh '
+                   'họa và bài toán thực tiễn.'],
   'definition': '- **Bội chung** của hai hay nhiều số là bội của tất cả các số đó, kí hiệu $\\text{BC}(a, '
                 'b)$.\n'
                 '- **Bội chung nhỏ nhất** của hai hay nhiều số là số nhỏ nhất **khác $0$** trong tập hợp các '
@@ -1748,7 +1758,7 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             '### 2. Tính chất đặc biệt\n'
             '- Mọi bội chung của $a$ và $b$ đều là bội của $\\text{BCNN}(a, b)$.\n'
             '- Nếu $\\text{ƯCLN}(a, b) = 1$ thì $\\text{BCNN}(a, b) = a \\cdot b$.',
-  'formulas': [{'category': 'I. Quy tắc BCNN',
+  'formulas': [{'category': 'Quy tắc BCNN',
                 'items': [{'name': 'Công thức nhớ nhanh',
                            'formula': 'BCNN = Tích các thừa số nguyên tố CHUNG và RIÊNG với số mũ LỚN NHẤT'},
                           {'name': 'Tập bội chung',
@@ -1780,27 +1790,31 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 12: Bội chung. Bội chung nhỏ nhất**, công thức hoặc quy '
-                 'tắc nào sau đây biểu diễn đúng **Công thức nhớ nhanh**?',
-            'options': ['$\\text{BC}(a, b) = \\text{B}(\\text{BCNN}(a, b))$',
+            'q': 'Trong **Bài 12: Bội chung. Bội chung nhỏ nhất**, quy tắc hoặc công thức nào sau đây xác '
+                 'định đúng **Công thức nhớ nhanh**?',
+            'options': ['BCNN = Tích các thừa số nguyên tố CHUNG và RIÊNG với số mũ LỚN NHẤT (với dấu ngược '
+                        'lại)',
                         'BCNN = Tích các thừa số nguyên tố CHUNG và RIÊNG với số mũ LỚN NHẤT',
-                        '$\\text{ƯCLN}(a, b) \\cdot \\text{BCNN}(a, b) = a \\cdot b$',
-                        '$x \\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$)'],
+                        'Đảo ngược vế của quy tắc: BCNN = Tích các thừa số nguyên tố CHUNG và RIÊNG với số '
+                        'mũ LỚN NHẤT',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của BCNN = Tích các thừa số nguyên '
+                        'tố CHUNG và RIÊNG với số mũ LỚN NHẤT'],
             'answer': 1,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 12: Bội chung. Bội chung nhỏ nhất, **Công '
-                        'thức nhớ nhanh** được xác định bởi: BCNN = Tích các thừa số nguyên tố CHUNG và '
-                        'RIÊNG với số mũ LỚN NHẤT.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 12: Bội chung. Bội chung nhỏ nhất, **Công thức nhớ '
+                        'nhanh** được xác định bởi: BCNN = Tích các thừa số nguyên tố CHUNG và RIÊNG với số '
+                        'mũ LỚN NHẤT.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 12: Bội chung. Bội chung nhỏ nhất**, nội dung/biểu thức $\\text{BC}(a, b) = '
-                 '\\text{B}(\\text{BCNN}(a, b))$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Công thức nhớ nhanh',
-                        'Hệ thức liên hệ',
-                        'Tập bội chung',
-                        'Quan hệ phần tử – tập hợp'],
+            'q': 'Khi học **Bài 12: Bội chung. Bội chung nhỏ nhất**, biểu thức hoặc quy tắc nào dưới đây '
+                 'biểu diễn đúng **Tập bội chung**?',
+            'options': ['$\\text{BC}(a, b) = \\text{B}(\\text{BCNN}(a, b))$ (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: $\\text{BC}(a, b) = \\text{B}(\\text{BCNN}(a, b))$',
+                        '$\\text{BC}(a, b) = \\text{B}(\\text{BCNN}(a, b))$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\text{BC}(a, b) = '
+                        '\\text{B}(\\text{BCNN}(a, b))$'],
             'answer': 2,
-            'solution': 'Trong Bài 12: Bội chung. Bội chung nhỏ nhất, biểu thức/quy tắc $\\text{BC}(a, b) = '
-                        '\\text{B}(\\text{BCNN}(a, b))$ chính là nội dung của **Tập bội chung**.'},
+            'solution': 'Trong Bài 12: Bội chung. Bội chung nhỏ nhất, **Tập bội chung** có công thức/quy tắc '
+                        'là: $\\text{BC}(a, b) = \\text{B}(\\text{BCNN}(a, b))$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Tìm số tự nhiên $x$ nhỏ nhất khác $0$ biết $x \\vdots 8$ và $x \\vdots 12$:',
@@ -1811,19 +1825,18 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 12: Bội chung. Bội chung nhỏ nhất** (Chương II: Tính chia hết trong tập hợp '
-                 'các số tự nhiên), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất '
-                 'kiến thức của bài?',
+            'q': 'Để nắm vững bản chất của **Bài 12: Bội chung. Bội chung nhỏ nhất**, nhận định nào sau đây '
+                 'là **chính xác**?',
             'options': ['Tìm được bội chung nhỏ nhất $\\text{BCNN}(a, b)$ bằng cách phân tích ra thừa số '
                         'nguyên tố.',
-                        'Sử dụng được thuật ngữ tập hợp, phần tử thuộc ($\\in$) hoặc không thuộc ($\\notin$) '
-                        'một tập hợp.',
-                        'Cho được một tập hợp bằng cách liệt kê các phần tử hoặc chỉ ra tính chất đặc trưng '
-                        'cho các phần tử.',
-                        'Phân biệt được tập hợp $\\mathbb{N}$ và $\\mathbb{N}^*$; xác định được giá trị từng '
-                        'chữ số của số tự nhiên trong hệ thập phân.'],
+                        'Tìm được bội chung nhỏ nhất $\\text{BCNN}(a, b)$ bằng cách phân tích ra thừa số '
+                        'nguyên tố. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Tìm được bội chung nhỏ nhất $\\text{BCNN}(a, b)$ bằng '
+                        'cách phân tích ra thừa số nguyên tố.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Tìm được bội chung nhỏ nhất '
+                        '$\\text{BCNN}(a, b)$ bằng cách phân tích ra thừa số nguyên tố.'],
             'answer': 0,
-            'solution': 'Theo yêu cầu cần đạt của Bài 12: Bội chung. Bội chung nhỏ nhất: Tìm được bội chung '
+            'solution': 'Theo nội dung cốt lõi của Bài 12: Bội chung. Bội chung nhỏ nhất: Tìm được bội chung '
                         'nhỏ nhất $\\text{BCNN}(a, b)$ bằng cách phân tích ra thừa số nguyên tố.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -1839,40 +1852,45 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 12: Bội chung. Bội '
-                 'chung nhỏ nhất**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Tìm được bội chung nhỏ nhất '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 12: Bội chung. Bội chung '
+                 'nhỏ nhất**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Tìm được bội chung nhỏ nhất '
                            '$\\text{BCNN}(a, b)$ bằng cách phân tích ra thừa số nguyên tố.',
-                           'Quy tắc/công thức **Công thức nhớ nhanh** trong bài được xác định bởi: BCNN = '
-                           'Tích các thừa số nguyên tố CHUNG và RIÊNG với số mũ LỚN NHẤT.',
-                           'Trong mọi trường hợp, **Công thức nhớ nhanh** luôn được tính bằng công thức $x '
-                           '\\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$) (thuộc Quan hệ phần '
-                           'tử – tập hợp) mà không cần điều kiện của Bài 12: Bội chung. Bội chung nhỏ nhất.',
-                           'Với bài toán minh họa: “Tìm $\\text{BCNN}(12, 18)$ và thực hiện phép cộng '
-                           '$\\dfrac{5}{12} + \\dfrac{7}{18}$.”, lời giải đúng là: Ta có $12 = 2^2 \\cdot 3$ '
-                           'và $18 = 2 \\cdot 3^2 \\Rightarrow \\text{BCNN}(12, 18) = 2^2 \\cdot 3^2 = 36$. '
-                           'Khi đó $\\dfrac{5}{12} + \\dfrac{7}{18} = \\dfrac{15}{36} + \\dfrac{14}{36} = '
-                           '\\dfrac{29}{36}$...'],
+                           'Trong **Bài 12: Bội chung. Bội chung nhỏ nhất**, quy tắc/công thức **Công thức '
+                           'nhớ nhanh** được viết là: BCNN = Tích các thừa số nguyên tố CHUNG và RIÊNG với '
+                           'số mũ LỚN NHẤT.',
+                           'Nếu áp dụng sai dấu/phép tính thành BCNN = Tích các thừa số nguyên tố CHUNG và '
+                           'RIÊNG với số mũ LỚN NHẤT (với dấu ngược lại) thì kết quả của **Công thức nhớ '
+                           'nhanh** trong **Bài 12: Bội chung. Bội chung nhỏ nhất** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Tìm $\\text{BCNN}(12, 18)$ và thực hiện phép cộng '
+                           '$\\dfrac{5}{12} + \\dfrac{7}{18}$.”, kết quả giải đúng là: Ta có $12 = 2^2 '
+                           '\\cdot 3$ và $18 = 2 \\cdot 3^2 \\Rightarrow \\text{BCNN}(12, 18) = 2^2 \\cdot '
+                           '3^2 = 36$. Khi đó $\\dfrac{5}{12} + \\dfrac{7}{18} = \\dfrac{15}{36} + '
+                           '\\dfrac{14}{36} = \\dfrac{29}{36}$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 12: Bội chung. Bội chung nhỏ nhất. b) '
-                        '**Đúng** theo công thức trọng tâm **Công thức nhớ nhanh** (BCNN = Tích các thừa số '
-                        'nguyên tố CHUNG và RIÊNG với số mũ LỚN NHẤT). c) **Sai** vì $x \\in A$ ($x$ thuộc '
-                        '$A$); $y \\notin A$ ($y$ không thuộc $A$) là công thức của nội dung khác, không '
-                        'phải quy tắc chung của **Công thức nhớ nhanh**. d) **Đúng** theo lời giải ví dụ '
-                        'minh họa trong bài học.'},
+                        '**Đúng** theo công thức **Công thức nhớ nhanh** (BCNN = Tích các thừa số nguyên tố '
+                        'CHUNG và RIÊNG với số mũ LỚN NHẤT). c) **Sai** vì công thức đúng của **Công thức '
+                        'nhớ nhanh** phải là BCNN = Tích các thừa số nguyên tố CHUNG và RIÊNG với số mũ LỚN '
+                        'NHẤT chứ không phải BCNN = Tích các thừa số nguyên tố CHUNG và RIÊNG với số mũ LỚN '
+                        'NHẤT (với dấu ngược lại). d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 12: Bội chung. Bội chung nhỏ nhất** để giải quyết tình huống sau: '
-                 'Tìm $\\text{BCNN}(12, 18)$ và thực hiện phép cộng $\\dfrac{5}{12} + \\dfrac{7}{18}$. Kết '
-                 'quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Ta có $M = \\{\\text{T}, \\text{O}, \\text{A}, \\text{N}, \\text{H}, \\text{C}\\}$ '
-                        '(chữ O xuất hiện $2$ lần nhưng chỉ viết $1$ lần). Tập hợp $M$ có $6$ phần tử.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 12: Bội chung. Bội chung nhỏ nhất** để giải bài '
+                 'toán sau: Tìm $\\text{BCNN}(12, 18)$ và thực hiện phép cộng $\\dfrac{5}{12} + '
+                 '\\dfrac{7}{18}$. Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Ta có $12 = 2^2 \\cdot 3$ và $18 = 2 \\cdot 3^2 \\Rightarrow \\text{BCNN}(12, 18) = '
+                        '2^2 \\cdot 3^2 = 36$. Khi đó $\\dfrac{5}{12} - \\dfrac{7}{18} = \\dfrac{15}{36} + '
+                        '\\dfrac{14}{36} = \\dfrac{29}{36}$...',
                         'Ta có $12 = 2^2 \\cdot 3$ và $18 = 2 \\cdot 3^2 \\Rightarrow \\text{BCNN}(12, 18) = '
                         '2^2 \\cdot 3^2 = 36$. Khi đó $\\dfrac{5}{12} + \\dfrac{7}{18} = \\dfrac{15}{36} + '
                         '\\dfrac{14}{36} = \\dfrac{29}{36}$...',
-                        'Số $27$ viết là $\\text{XXVII}$, số $19$ viết là $\\text{XIX}$. Ta có '
-                        '$\\overline{ab} = a \\times 10 + b$.',
-                        'Các số tự nhiên từ $4$ đến $8$ là $4; 5; 6; 7; 8$. Vậy $A = \\{4; 5; 6; 7; 8\\}$.'],
+                        'Ta có $12 = 2^2 \\cdot 3$ và $18 = 2 \\cdot 3^2 \\Rightarrow \\text{BCNN}(12, 18) = '
+                        '2^2 \\cdot 3^2 = 36$. Khi đó $\\dfrac{12}{5} + \\dfrac{7}{18} = \\dfrac{15}{36} + '
+                        '\\dfrac{14}{36} = \\dfrac{29}{36}$...',
+                        'Ta có $24 = 2^2 \\cdot 3$ và $18 = 2 \\cdot 3^2 \\Rightarrow \\text{BCNN}(12, 18) = '
+                        '2^2 \\cdot 3^2 = 36$. Khi đó $\\dfrac{5}{12} + \\dfrac{7}{18} = \\dfrac{15}{36} + '
+                        '\\dfrac{14}{36} = \\dfrac{29}{36}$...'],
             'answer': 1,
             'solution': 'Lời giải chi tiết theo Bài 12: Bội chung. Bội chung nhỏ nhất: Ta có $12 = 2^2 '
                         '\\cdot 3$ và $18 = 2 \\cdot 3^2 \\Rightarrow \\text{BCNN}(12, 18) = 2^2 \\cdot 3^2 '
@@ -1899,8 +1917,8 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
   'requirements': ['Nhận biết được tập hợp các số nguyên $\\mathbb{Z}$, biểu diễn số nguyên trên trục số và '
                    'tìm số đối của một số nguyên.',
                    'So sánh được hai số nguyên bất kì và sắp xếp các số nguyên theo thứ tự.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Tập hợp số nguyên** ($\\mathbb{Z} = '
-                   '\\{\\dots; -2; -1; 0; 1; 2; \\dots\\}$) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 13: Tập hợp các số nguyên** để giải bài tập minh họa và bài '
+                   'toán thực tiễn.'],
   'definition': '- Tập hợp các **số nguyên** gồm các số nguyên âm, số $0$ và các số nguyên dương: '
                 '$\\mathbb{Z} = \\{\\dots; -3; -2; -1; 0; 1; 2; 3; \\dots\\}$. Số $0$ không là số nguyên âm '
                 'và cũng không là số nguyên dương.\n'
@@ -1913,7 +1931,7 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             '- Mọi số nguyên âm đều nhỏ hơn $0$ và nhỏ hơn mọi số nguyên dương.\n'
             '- Trong hai số nguyên âm, số nào có điểm biểu diễn gần điểm $0$ hơn (có phần số tự nhiên nhỏ '
             'hơn) thì lớn hơn: $-2 > -5$.',
-  'formulas': [{'category': 'I. Tập hợp Z và So sánh',
+  'formulas': [{'category': 'Tập hợp Z và So sánh',
                 'items': [{'name': 'Tập hợp số nguyên',
                            'formula': '$\\mathbb{Z} = \\{\\dots; -2; -1; 0; 1; 2; \\dots\\}$'},
                           {'name': 'Quan hệ thứ tự',
@@ -1941,26 +1959,26 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 13: Tập hợp các số nguyên**, công thức hoặc quy tắc nào '
-                 'sau đây biểu diễn đúng **Tập hợp số nguyên**?',
-            'options': ['$\\text{Số nguyên âm} < 0 < \\text{Số nguyên dương}$',
-                        'Nếu $a, b \\in \\mathbb{N}^*$ và $a < b$ thì $-a > -b$',
+            'q': 'Trong **Bài 13: Tập hợp các số nguyên**, quy tắc hoặc công thức nào sau đây xác định đúng '
+                 '**Tập hợp số nguyên**?',
+            'options': ['$\\mathbb{Z} = \\{\\dots; -3; -1; 0; 1; 2; \\dots\\}$',
+                        '$\\mathbb{Z} = \\{\\dots; -2; -1; 0; 1; 1; \\dots\\}$',
                         '$\\mathbb{Z} = \\{\\dots; -2; -1; 0; 1; 2; \\dots\\}$',
-                        '$x \\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$)'],
+                        '$\\mathbb{Z} = \\{\\dots; -4; -1; 0; 1; 2; \\dots\\}$'],
             'answer': 2,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 13: Tập hợp các số nguyên, **Tập hợp số '
-                        'nguyên** được xác định bởi: $\\mathbb{Z} = \\{\\dots; -2; -1; 0; 1; 2; \\dots\\}$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 13: Tập hợp các số nguyên, **Tập hợp số nguyên** '
+                        'được xác định bởi: $\\mathbb{Z} = \\{\\dots; -2; -1; 0; 1; 2; \\dots\\}$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 13: Tập hợp các số nguyên**, nội dung/biểu thức $\\text{Số nguyên âm} < 0 < '
-                 '\\text{Số nguyên dương}$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Tập hợp số nguyên',
-                        'So sánh hai số nguyên âm',
-                        'Quan hệ phần tử – tập hợp',
-                        'Quan hệ thứ tự'],
+            'q': 'Khi học **Bài 13: Tập hợp các số nguyên**, biểu thức hoặc quy tắc nào dưới đây biểu diễn '
+                 'đúng **Quan hệ thứ tự**?',
+            'options': ['$\\text{Số nguyên âm} > 0 < \\text{Số nguyên dương}$',
+                        '$\\text{Số nguyên âm} < 1 < \\text{Số nguyên dương}$',
+                        '$\\text{Số nguyên âm} < 2 < \\text{Số nguyên dương}$',
+                        '$\\text{Số nguyên âm} < 0 < \\text{Số nguyên dương}$'],
             'answer': 3,
-            'solution': 'Trong Bài 13: Tập hợp các số nguyên, biểu thức/quy tắc $\\text{Số nguyên âm} < 0 < '
-                        '\\text{Số nguyên dương}$ chính là nội dung của **Quan hệ thứ tự**.'},
+            'solution': 'Trong Bài 13: Tập hợp các số nguyên, **Quan hệ thứ tự** có công thức/quy tắc là: '
+                        '$\\text{Số nguyên âm} < 0 < \\text{Số nguyên dương}$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Tập hợp $A = \\{x \\in \\mathbb{Z} \\mid -3 < x \\le 2\\}$ có bao nhiêu phần tử?',
@@ -1971,18 +1989,19 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 13: Tập hợp các số nguyên** (Chương III: Số nguyên), khẳng định nào sau đây '
-                 'phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Sử dụng được thuật ngữ tập hợp, phần tử thuộc ($\\in$) hoặc không thuộc ($\\notin$) '
-                        'một tập hợp.',
+            'q': 'Để nắm vững bản chất của **Bài 13: Tập hợp các số nguyên**, nhận định nào sau đây là '
+                 '**chính xác**?',
+            'options': ['Nhận biết được tập hợp các số nguyên $\\mathbb{Z}$, biểu diễn số nguyên trên trục '
+                        'số và tìm số đối của một số nguyên. (với dấu ngược lại)',
                         'Nhận biết được tập hợp các số nguyên $\\mathbb{Z}$, biểu diễn số nguyên trên trục '
                         'số và tìm số đối của một số nguyên.',
-                        'Cho được một tập hợp bằng cách liệt kê các phần tử hoặc chỉ ra tính chất đặc trưng '
-                        'cho các phần tử.',
-                        'Phân biệt được tập hợp $\\mathbb{N}$ và $\\mathbb{N}^*$; xác định được giá trị từng '
-                        'chữ số của số tự nhiên trong hệ thập phân.'],
+                        'Đảo ngược vế của quy tắc: Nhận biết được tập hợp các số nguyên $\\mathbb{Z}$, biểu '
+                        'diễn số nguyên trên trục số và tìm số đối của một số nguyên.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nhận biết được tập hợp các số '
+                        'nguyên $\\mathbb{Z}$, biểu diễn số nguyên trên trục số và tìm số đối của một số '
+                        'nguyên.'],
             'answer': 1,
-            'solution': 'Theo yêu cầu cần đạt của Bài 13: Tập hợp các số nguyên: Nhận biết được tập hợp các '
+            'solution': 'Theo nội dung cốt lõi của Bài 13: Tập hợp các số nguyên: Nhận biết được tập hợp các '
                         'số nguyên $\\mathbb{Z}$, biểu diễn số nguyên trên trục số và tìm số đối của một số '
                         'nguyên.'},
            {'level': 'hieu',
@@ -1999,36 +2018,34 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 13: Tập hợp các số '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 13: Tập hợp các số '
                  'nguyên**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được tập hợp các số '
-                           'nguyên $\\mathbb{Z}$, biểu diễn số nguyên trên trục số và tìm số đối của một số '
-                           'nguyên.',
-                           'Quy tắc/công thức **Tập hợp số nguyên** trong bài được xác định bởi: '
-                           '$\\mathbb{Z} = \\{\\dots; -2; -1; 0; 1; 2; \\dots\\}$.',
-                           'Trong mọi trường hợp, **Tập hợp số nguyên** luôn được tính bằng công thức $x '
-                           '\\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$) (thuộc Quan hệ phần '
-                           'tử – tập hợp) mà không cần điều kiện của Bài 13: Tập hợp các số nguyên.',
-                           'Với bài toán minh họa: “Sắp xếp các số nguyên sau theo thứ tự tăng dần: $3; -7; '
-                           '0; -2; 5$.”, lời giải đúng là: So sánh các số âm và số dương ta có: $-7 < -2 < 0 '
-                           '< 3 < 5$.'],
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết được tập hợp các số nguyên '
+                           '$\\mathbb{Z}$, biểu diễn số nguyên trên trục số và tìm số đối của một số nguyên.',
+                           'Trong **Bài 13: Tập hợp các số nguyên**, quy tắc/công thức **Tập hợp số nguyên** '
+                           'được viết là: $\\mathbb{Z} = \\{\\dots; -2; -1; 0; 1; 2; \\dots\\}$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $\\mathbb{Z} = \\{\\dots; -3; -1; 0; 1; 2; '
+                           '\\dots\\}$ thì kết quả của **Tập hợp số nguyên** trong **Bài 13: Tập hợp các số '
+                           'nguyên** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Sắp xếp các số nguyên sau theo thứ tự tăng dần: $3; -7; 0; '
+                           '-2; 5$.”, kết quả giải đúng là: So sánh các số âm và số dương ta có: $-7 < -2 < '
+                           '0 < 3 < 5$.'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 13: Tập hợp các số nguyên. b) **Đúng** '
-                        'theo công thức trọng tâm **Tập hợp số nguyên** ($\\mathbb{Z} = \\{\\dots; -2; -1; '
-                        '0; 1; 2; \\dots\\}$). c) **Sai** vì $x \\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ '
-                        'không thuộc $A$) là công thức của nội dung khác, không phải quy tắc chung của **Tập '
-                        'hợp số nguyên**. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        'theo công thức **Tập hợp số nguyên** ($\\mathbb{Z} = \\{\\dots; -2; -1; 0; 1; 2; '
+                        '\\dots\\}$). c) **Sai** vì công thức đúng của **Tập hợp số nguyên** phải là '
+                        '$\\mathbb{Z} = \\{\\dots; -2; -1; 0; 1; 2; \\dots\\}$ chứ không phải $\\mathbb{Z} = '
+                        '\\{\\dots; -3; -1; 0; 1; 2; \\dots\\}$. d) **Đúng** theo lời giải ví dụ minh họa '
+                        'trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 13: Tập hợp các số nguyên** để giải quyết tình huống sau: Sắp xếp '
-                 'các số nguyên sau theo thứ tự tăng dần: $3; -7; 0; -2; 5$. Kết quả và hướng giải nào dưới '
-                 'đây là **đúng**?',
-            'options': ['Ta có $M = \\{\\text{T}, \\text{O}, \\text{A}, \\text{N}, \\text{H}, \\text{C}\\}$ '
-                        '(chữ O xuất hiện $2$ lần nhưng chỉ viết $1$ lần). Tập hợp $M$ có $6$ phần tử.',
-                        'Số $27$ viết là $\\text{XXVII}$, số $19$ viết là $\\text{XIX}$. Ta có '
-                        '$\\overline{ab} = a \\times 10 + b$.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 13: Tập hợp các số nguyên** để giải bài toán sau: '
+                 'Sắp xếp các số nguyên sau theo thứ tự tăng dần: $3; -7; 0; -2; 5$. Cách giải và kết quả '
+                 'nào dưới đây là **đúng**?',
+            'options': ['So sánh các số âm và số dương ta có: $-7 > -2 < 0 < 3 < 5$.',
+                        'So sánh các số âm và số dương ta có: $-7 < -2 < 0 < 3 < 4$.',
                         'So sánh các số âm và số dương ta có: $-7 < -2 < 0 < 3 < 5$.',
-                        'Các số tự nhiên từ $4$ đến $8$ là $4; 5; 6; 7; 8$. Vậy $A = \\{4; 5; 6; 7; 8\\}$.'],
+                        'So sánh các số âm và số dương ta có: $-14 < -2 < 0 < 3 < 5$.'],
             'answer': 2,
             'solution': 'Lời giải chi tiết theo Bài 13: Tập hợp các số nguyên: So sánh các số âm và số dương '
                         'ta có: $-7 < -2 < 0 < 3 < 5$.'},
@@ -2050,8 +2067,8 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
                  'nguyên.',
   'requirements': ['Thực hiện đúng phép cộng hai số nguyên cùng dấu và khác dấu.',
                    'Chuyển phép trừ hai số nguyên thành phép cộng với số đối: $a - b = a + (-b)$.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Cộng hai số nguyên âm** ($(-a) + (-b) = -(a '
-                   '+ b)$ (với $a, b \\in \\mathbb{N}^*$)) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 14: Phép cộng và phép trừ số nguyên** để giải bài tập minh '
+                   'họa và bài toán thực tiễn.'],
   'definition': '- **Cộng hai số nguyên âm**: ta cộng phần số tự nhiên của chúng với nhau rồi đặt dấu “$-$” '
                 'trước kết quả.\n'
                 '- **Cộng hai số nguyên khác dấu** (không đối nhau): ta lấy phần số tự nhiên lớn hơn trừ đi '
@@ -2066,7 +2083,7 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             '### 2. Tính chất của phép cộng số nguyên\n'
             '- Phép cộng trong $\\mathbb{Z}$ có tính chất giao hoán, kết hợp, cộng với số $0$ và cộng với số '
             'đối.',
-  'formulas': [{'category': 'I. Quy tắc cộng và trừ số nguyên',
+  'formulas': [{'category': 'Quy tắc cộng và trừ số nguyên',
                 'items': [{'name': 'Cộng hai số nguyên âm',
                            'formula': '$(-a) + (-b) = -(a + b)$ (với $a, b \\in \\mathbb{N}^*$)'},
                           {'name': 'Cộng hai số đối nhau', 'formula': '$a + (-a) = 0$'},
@@ -2093,27 +2110,25 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 14: Phép cộng và phép trừ số nguyên**, công thức hoặc '
-                 'quy tắc nào sau đây biểu diễn đúng **Cộng hai số nguyên âm**?',
-            'options': ['$a + (-a) = 0$',
-                        '$a - b = a + (-b)$; $a - (-b) = a + b$',
-                        '$x \\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$)',
+            'q': 'Trong **Bài 14: Phép cộng và phép trừ số nguyên**, quy tắc hoặc công thức nào sau đây xác '
+                 'định đúng **Cộng hai số nguyên âm**?',
+            'options': ['$(-a) + (-b) = -(a + b)$ (với $a, b \\notin \\mathbb{N}^*$)',
+                        'Đảo ngược vế của quy tắc: $(-a) + (-b) = -(a + b)$ (với $a, b \\in \\mathbb{N}^*$)',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $(-a) + (-b) = -(a + b)$ (với '
+                        '$a, b \\in \\mathbb{N}^*$)',
                         '$(-a) + (-b) = -(a + b)$ (với $a, b \\in \\mathbb{N}^*$)'],
             'answer': 3,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 14: Phép cộng và phép trừ số nguyên, **Cộng '
-                        'hai số nguyên âm** được xác định bởi: $(-a) + (-b) = -(a + b)$ (với $a, b \\in '
+            'solution': 'Theo kiến thức trọng tâm của Bài 14: Phép cộng và phép trừ số nguyên, **Cộng hai số '
+                        'nguyên âm** được xác định bởi: $(-a) + (-b) = -(a + b)$ (với $a, b \\in '
                         '\\mathbb{N}^*$).'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 14: Phép cộng và phép trừ số nguyên**, nội dung/biểu thức $a + (-a) = 0$ là '
-                 'quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Cộng hai số đối nhau',
-                        'Cộng hai số nguyên âm',
-                        'Phép trừ hai số nguyên',
-                        'Quan hệ phần tử – tập hợp'],
+            'q': 'Khi học **Bài 14: Phép cộng và phép trừ số nguyên**, biểu thức hoặc quy tắc nào dưới đây '
+                 'biểu diễn đúng **Cộng hai số đối nhau**?',
+            'options': ['$a + (-a) = 0$', '$a - (-a) = 0$', '$a + (-a) = 1$', '$a + (-a) = 2$'],
             'answer': 0,
-            'solution': 'Trong Bài 14: Phép cộng và phép trừ số nguyên, biểu thức/quy tắc $a + (-a) = 0$ '
-                        'chính là nội dung của **Cộng hai số đối nhau**.'},
+            'solution': 'Trong Bài 14: Phép cộng và phép trừ số nguyên, **Cộng hai số đối nhau** có công '
+                        'thức/quy tắc là: $a + (-a) = 0$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Nhiệt độ buổi sáng ở Sa Pa là $-3^\\circ\\text{C}$, đến trưa tăng thêm '
@@ -2129,17 +2144,16 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 14: Phép cộng và phép trừ số nguyên** (Chương III: Số nguyên), khẳng định '
-                 'nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Sử dụng được thuật ngữ tập hợp, phần tử thuộc ($\\in$) hoặc không thuộc ($\\notin$) '
-                        'một tập hợp.',
-                        'Cho được một tập hợp bằng cách liệt kê các phần tử hoặc chỉ ra tính chất đặc trưng '
-                        'cho các phần tử.',
+            'q': 'Để nắm vững bản chất của **Bài 14: Phép cộng và phép trừ số nguyên**, nhận định nào sau '
+                 'đây là **chính xác**?',
+            'options': ['Thực hiện đúng phép cộng hai số nguyên cùng dấu và khác dấu. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Thực hiện đúng phép cộng hai số nguyên cùng dấu và khác '
+                        'dấu.',
                         'Thực hiện đúng phép cộng hai số nguyên cùng dấu và khác dấu.',
-                        'Phân biệt được tập hợp $\\mathbb{N}$ và $\\mathbb{N}^*$; xác định được giá trị từng '
-                        'chữ số của số tự nhiên trong hệ thập phân.'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Thực hiện đúng phép cộng hai số '
+                        'nguyên cùng dấu và khác dấu.'],
             'answer': 2,
-            'solution': 'Theo yêu cầu cần đạt của Bài 14: Phép cộng và phép trừ số nguyên: Thực hiện đúng '
+            'solution': 'Theo nội dung cốt lõi của Bài 14: Phép cộng và phép trừ số nguyên: Thực hiện đúng '
                         'phép cộng hai số nguyên cùng dấu và khác dấu.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -2152,35 +2166,33 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 14: Phép cộng và phép '
-                 'trừ số nguyên**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Thực hiện đúng phép cộng hai số '
-                           'nguyên cùng dấu và khác dấu.',
-                           'Quy tắc/công thức **Cộng hai số nguyên âm** trong bài được xác định bởi: $(-a) + '
-                           '(-b) = -(a + b)$ (với $a, b \\in \\mathbb{N}^*$).',
-                           'Trong mọi trường hợp, **Cộng hai số nguyên âm** luôn được tính bằng công thức $x '
-                           '\\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$) (thuộc Quan hệ phần '
-                           'tử – tập hợp) mà không cần điều kiện của Bài 14: Phép cộng và phép trừ số '
-                           'nguyên.',
-                           'Với bài toán minh họa: “Tính hợp lí: $(-37) + 54 + (-63) + 46$.”, lời giải đúng '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 14: Phép cộng và phép trừ '
+                 'số nguyên**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Thực hiện đúng phép cộng hai số nguyên '
+                           'cùng dấu và khác dấu.',
+                           'Trong **Bài 14: Phép cộng và phép trừ số nguyên**, quy tắc/công thức **Cộng hai '
+                           'số nguyên âm** được viết là: $(-a) + (-b) = -(a + b)$ (với $a, b \\in '
+                           '\\mathbb{N}^*$).',
+                           'Nếu áp dụng sai dấu/phép tính thành $(-a) + (-b) = -(a + b)$ (với $a, b \\notin '
+                           '\\mathbb{N}^*$) thì kết quả của **Cộng hai số nguyên âm** trong **Bài 14: Phép '
+                           'cộng và phép trừ số nguyên** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Tính hợp lí: $(-37) + 54 + (-63) + 46$.”, kết quả giải đúng '
                            'là: Nhóm $[(-37) + (-63)] + (54 + 46) = (-100) + 100 = 0$.'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 14: Phép cộng và phép trừ số nguyên. b) '
-                        '**Đúng** theo công thức trọng tâm **Cộng hai số nguyên âm** ($(-a) + (-b) = -(a + '
-                        'b)$ (với $a, b \\in \\mathbb{N}^*$)). c) **Sai** vì $x \\in A$ ($x$ thuộc $A$); $y '
-                        '\\notin A$ ($y$ không thuộc $A$) là công thức của nội dung khác, không phải quy tắc '
-                        'chung của **Cộng hai số nguyên âm**. d) **Đúng** theo lời giải ví dụ minh họa trong '
-                        'bài học.'},
+                        '**Đúng** theo công thức **Cộng hai số nguyên âm** ($(-a) + (-b) = -(a + b)$ (với '
+                        '$a, b \\in \\mathbb{N}^*$)). c) **Sai** vì công thức đúng của **Cộng hai số nguyên '
+                        'âm** phải là $(-a) + (-b) = -(a + b)$ (với $a, b \\in \\mathbb{N}^*$) chứ không '
+                        'phải $(-a) + (-b) = -(a + b)$ (với $a, b \\notin \\mathbb{N}^*$). d) **Đúng** theo '
+                        'lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 14: Phép cộng và phép trừ số nguyên** để giải quyết tình huống '
-                 'sau: Tính hợp lí: $(-37) + 54 + (-63) + 46$. Kết quả và hướng giải nào dưới đây là '
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 14: Phép cộng và phép trừ số nguyên** để giải bài '
+                 'toán sau: Tính hợp lí: $(-37) + 54 + (-63) + 46$. Cách giải và kết quả nào dưới đây là '
                  '**đúng**?',
-            'options': ['Ta có $M = \\{\\text{T}, \\text{O}, \\text{A}, \\text{N}, \\text{H}, \\text{C}\\}$ '
-                        '(chữ O xuất hiện $2$ lần nhưng chỉ viết $1$ lần). Tập hợp $M$ có $6$ phần tử.',
-                        'Số $27$ viết là $\\text{XXVII}$, số $19$ viết là $\\text{XIX}$. Ta có '
-                        '$\\overline{ab} = a \\times 10 + b$.',
-                        'Các số tự nhiên từ $4$ đến $8$ là $4; 5; 6; 7; 8$. Vậy $A = \\{4; 5; 6; 7; 8\\}$.',
+            'options': ['Nhóm $[(-37) - (-63)] + (54 + 46) = (-100) + 100 = 0$.',
+                        'Nhóm $[(-37) + (-63)] + (54 + 46) = (-100) + 100 = 1$.',
+                        'Nhóm $[(-74) + (-63)] + (54 + 46) = (-100) + 100 = 0$.',
                         'Nhóm $[(-37) + (-63)] + (54 + 46) = (-100) + 100 = 0$.'],
             'answer': 3,
             'solution': 'Lời giải chi tiết theo Bài 14: Phép cộng và phép trừ số nguyên: Nhóm $[(-37) + '
@@ -2203,8 +2215,8 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
   'description': 'Quy tắc bỏ dấu ngoặc và đặt dấu ngoặc để nhóm các số hạng khi tính tổng đại số.',
   'requirements': ['Áp dụng đúng quy tắc bỏ dấu ngoặc có dấu “$+$” hoặc dấu “$-$” đứng trước.',
                    'Biết nhóm các số hạng vào trong ngoặc để tính nhanh, tính hợp lí biểu thức số nguyên.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Trước ngoặc là dấu +** ($a + (b - c + d) = '
-                   'a + b - c + d$) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 15: Quy tắc dấu ngoặc** để giải bài tập minh họa và bài '
+                   'toán thực tiễn.'],
   'definition': '- Khi bỏ dấu ngoặc có **dấu “$+$” đứng trước**, ta **giữ nguyên dấu** của các số hạng trong '
                 'ngoặc: $+(a - b + c) = a - b + c$.\n'
                 '- Khi bỏ dấu ngoặc có **dấu “$-$” đứng trước**, ta phải **đổi dấu tất cả** các số hạng '
@@ -2215,7 +2227,7 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'ta có thể thay đổi vị trí các số hạng kèm theo dấu của chúng.\n'
             '### 2. Đặt dấu ngoặc để tính nhanh\n'
             '- Ví dụ: $25 - (15 - 40) = 25 - 15 + 40 = 10 + 40 = 50$.',
-  'formulas': [{'category': 'I. Quy tắc dấu ngoặc',
+  'formulas': [{'category': 'Quy tắc dấu ngoặc',
                 'items': [{'name': 'Trước ngoặc là dấu +', 'formula': '$a + (b - c + d) = a + b - c + d$'},
                           {'name': 'Trước ngoặc là dấu -', 'formula': '$a - (b - c + d) = a - b + c - d$'}]}],
   'example': 'Bỏ dấu ngoặc rồi tính: $(125 - 67) - (25 - 67)$.',
@@ -2240,27 +2252,28 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 15: Quy tắc dấu ngoặc**, công thức hoặc quy tắc nào sau '
-                 'đây biểu diễn đúng **Trước ngoặc là dấu +**?',
+            'q': 'Trong **Bài 15: Quy tắc dấu ngoặc**, quy tắc hoặc công thức nào sau đây xác định đúng '
+                 '**Trước ngoặc là dấu +**?',
             'options': ['$a + (b - c + d) = a + b - c + d$',
-                        '$a - (b - c + d) = a - b + c - d$',
-                        '$x \\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$)',
-                        'Liệt kê $A = \\{0; 1; 2; 3\\}$ hoặc đặc trưng $A = \\{x \\in \\mathbb{N} \\mid x < '
-                        '4\\}$'],
+                        '$a - (b - c + d) = a + b - c + d$',
+                        'Đảo ngược vế của quy tắc: $a + (b - c + d) = a + b - c + d$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $a + (b - c + d) = a + b - c + '
+                        'd$'],
             'answer': 0,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 15: Quy tắc dấu ngoặc, **Trước ngoặc là dấu '
-                        '+** được xác định bởi: $a + (b - c + d) = a + b - c + d$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 15: Quy tắc dấu ngoặc, **Trước ngoặc là dấu +** '
+                        'được xác định bởi: $a + (b - c + d) = a + b - c + d$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 15: Quy tắc dấu ngoặc**, nội dung/biểu thức $a - (b - c + d) = a - b + c - d$ '
-                 'là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Trước ngoặc là dấu +',
-                        'Trước ngoặc là dấu -',
-                        'Quan hệ phần tử – tập hợp',
-                        'Hai cách mô tả'],
+            'q': 'Khi học **Bài 15: Quy tắc dấu ngoặc**, biểu thức hoặc quy tắc nào dưới đây biểu diễn đúng '
+                 '**Trước ngoặc là dấu -**?',
+            'options': ['$a - (b - c - d) = a - b + c - d$',
+                        '$a - (b - c + d) = a - b + c - d$',
+                        'Đảo ngược vế của quy tắc: $a - (b - c + d) = a - b + c - d$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $a - (b - c + d) = a - b + c - '
+                        'd$'],
             'answer': 1,
-            'solution': 'Trong Bài 15: Quy tắc dấu ngoặc, biểu thức/quy tắc $a - (b - c + d) = a - b + c - '
-                        'd$ chính là nội dung của **Trước ngoặc là dấu -**.'},
+            'solution': 'Trong Bài 15: Quy tắc dấu ngoặc, **Trước ngoặc là dấu -** có công thức/quy tắc là: '
+                        '$a - (b - c + d) = a - b + c - d$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Giá trị của biểu thức $-(235 - 48) + (235 - 148)$ là:',
@@ -2271,17 +2284,17 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 15: Quy tắc dấu ngoặc** (Chương III: Số nguyên), khẳng định nào sau đây phản '
-                 'ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Sử dụng được thuật ngữ tập hợp, phần tử thuộc ($\\in$) hoặc không thuộc ($\\notin$) '
-                        'một tập hợp.',
-                        'Cho được một tập hợp bằng cách liệt kê các phần tử hoặc chỉ ra tính chất đặc trưng '
-                        'cho các phần tử.',
-                        'Phân biệt được tập hợp $\\mathbb{N}$ và $\\mathbb{N}^*$; xác định được giá trị từng '
-                        'chữ số của số tự nhiên trong hệ thập phân.',
+            'q': 'Để nắm vững bản chất của **Bài 15: Quy tắc dấu ngoặc**, nhận định nào sau đây là **chính '
+                 'xác**?',
+            'options': ['Áp dụng đúng quy tắc bỏ dấu ngoặc có dấu “$+$” hoặc dấu “$-$” đứng trước. (với dấu '
+                        'ngược lại)',
+                        'Đảo ngược vế của quy tắc: Áp dụng đúng quy tắc bỏ dấu ngoặc có dấu “$+$” hoặc dấu '
+                        '“$-$” đứng trước.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Áp dụng đúng quy tắc bỏ dấu '
+                        'ngoặc có dấu “$+$” hoặc dấu “$-$” đứng trước.',
                         'Áp dụng đúng quy tắc bỏ dấu ngoặc có dấu “$+$” hoặc dấu “$-$” đứng trước.'],
             'answer': 3,
-            'solution': 'Theo yêu cầu cần đạt của Bài 15: Quy tắc dấu ngoặc: Áp dụng đúng quy tắc bỏ dấu '
+            'solution': 'Theo nội dung cốt lõi của Bài 15: Quy tắc dấu ngoặc: Áp dụng đúng quy tắc bỏ dấu '
                         'ngoặc có dấu “$+$” hoặc dấu “$-$” đứng trước.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -2297,35 +2310,36 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 15: Quy tắc dấu '
-                 'ngoặc**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Áp dụng đúng quy tắc bỏ dấu ngoặc '
-                           'có dấu “$+$” hoặc dấu “$-$” đứng trước.',
-                           'Quy tắc/công thức **Trước ngoặc là dấu +** trong bài được xác định bởi: $a + (b '
-                           '- c + d) = a + b - c + d$.',
-                           'Trong mọi trường hợp, **Trước ngoặc là dấu +** luôn được tính bằng công thức $x '
-                           '\\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$) (thuộc Quan hệ phần '
-                           'tử – tập hợp) mà không cần điều kiện của Bài 15: Quy tắc dấu ngoặc.',
-                           'Với bài toán minh họa: “Bỏ dấu ngoặc rồi tính: $(125 - 67) - (25 - 67)$.”, lời '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 15: Quy tắc dấu ngoặc**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Áp dụng đúng quy tắc bỏ dấu ngoặc có dấu '
+                           '“$+$” hoặc dấu “$-$” đứng trước.',
+                           'Trong **Bài 15: Quy tắc dấu ngoặc**, quy tắc/công thức **Trước ngoặc là dấu +** '
+                           'được viết là: $a + (b - c + d) = a + b - c + d$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $a - (b - c + d) = a + b - c + d$ thì kết '
+                           'quả của **Trước ngoặc là dấu +** trong **Bài 15: Quy tắc dấu ngoặc** vẫn không '
+                           'thay đổi.',
+                           'Xét ví dụ của bài: “Bỏ dấu ngoặc rồi tính: $(125 - 67) - (25 - 67)$.”, kết quả '
                            'giải đúng là: Ta có $(125 - 67) - (25 - 67) = 125 - 67 - 25 + 67 = (125 - 25) + '
                            '(-67 + 67) = 100 + 0 = 100$.'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 15: Quy tắc dấu ngoặc. b) **Đúng** theo '
-                        'công thức trọng tâm **Trước ngoặc là dấu +** ($a + (b - c + d) = a + b - c + d$). '
-                        'c) **Sai** vì $x \\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$) là '
-                        'công thức của nội dung khác, không phải quy tắc chung của **Trước ngoặc là dấu +**. '
-                        'd) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        'công thức **Trước ngoặc là dấu +** ($a + (b - c + d) = a + b - c + d$). c) **Sai** '
+                        'vì công thức đúng của **Trước ngoặc là dấu +** phải là $a + (b - c + d) = a + b - c '
+                        '+ d$ chứ không phải $a - (b - c + d) = a + b - c + d$. d) **Đúng** theo lời giải ví '
+                        'dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 15: Quy tắc dấu ngoặc** để giải quyết tình huống sau: Bỏ dấu '
-                 'ngoặc rồi tính: $(125 - 67) - (25 - 67)$. Kết quả và hướng giải nào dưới đây là **đúng**?',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 15: Quy tắc dấu ngoặc** để giải bài toán sau: Bỏ '
+                 'dấu ngoặc rồi tính: $(125 - 67) - (25 - 67)$. Cách giải và kết quả nào dưới đây là '
+                 '**đúng**?',
             'options': ['Ta có $(125 - 67) - (25 - 67) = 125 - 67 - 25 + 67 = (125 - 25) + (-67 + 67) = 100 '
                         '+ 0 = 100$.',
-                        'Ta có $M = \\{\\text{T}, \\text{O}, \\text{A}, \\text{N}, \\text{H}, \\text{C}\\}$ '
-                        '(chữ O xuất hiện $2$ lần nhưng chỉ viết $1$ lần). Tập hợp $M$ có $6$ phần tử.',
-                        'Số $27$ viết là $\\text{XXVII}$, số $19$ viết là $\\text{XIX}$. Ta có '
-                        '$\\overline{ab} = a \\times 10 + b$.',
-                        'Các số tự nhiên từ $4$ đến $8$ là $4; 5; 6; 7; 8$. Vậy $A = \\{4; 5; 6; 7; 8\\}$.'],
+                        'Ta có $(125 - 67) - (25 - 67) = 125 - 67 - 25 - 67 = (125 - 25) + (-67 + 67) = 100 '
+                        '+ 0 = 100$.',
+                        'Ta có $(125 - 67) - (25 - 67) = 125 - 67 - 25 + 67 = (125 - 25) + (-67 + 67) = 100 '
+                        '+ 0 = 99$.',
+                        'Ta có $(127 - 67) - (25 - 67) = 125 - 67 - 25 + 67 = (125 - 25) + (-67 + 67) = 100 '
+                        '+ 0 = 100$.'],
             'answer': 0,
             'solution': 'Lời giải chi tiết theo Bài 15: Quy tắc dấu ngoặc: Ta có $(125 - 67) - (25 - 67) = '
                         '125 - 67 - 25 + 67 = (125 - 25) + (-67 + 67) = 100 + 0 = 100$.'},
@@ -2347,8 +2361,8 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
   'requirements': ['Thực hiện đúng phép nhân hai số nguyên cùng dấu (tích dương) và khác dấu (tích âm).',
                    'Vận dụng tính chất giao hoán, kết hợp và phân phối của phép nhân trong $\\mathbb{Z}$ để '
                    'tính hợp lí.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Khác dấu và Cùng dấu âm** ($(-a) \\cdot b = '
-                   '-(a \\cdot b)$; $(-a) \\cdot (-b) = a \\cdot b$ ($a, b > 0$)) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 16: Phép nhân số nguyên** để giải bài tập minh họa và bài '
+                   'toán thực tiễn.'],
   'definition': '- **Nhân hai số nguyên khác dấu**: tích của hai số nguyên khác dấu luôn là một **số nguyên '
                 'âm**.\n'
                 '- **Nhân hai số nguyên cùng dấu**: tích của hai số nguyên cùng dấu luôn là một **số nguyên '
@@ -2358,7 +2372,7 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             '- Khác dấu $\\rightarrow$ âm: $(+) \\cdot (-) = (-)$ và $(-) \\cdot (+) = (-)$.\n'
             '### 2. Luỹ thừa của số nguyên âm\n'
             '- $(-a)^n$ là số dương nếu $n$ chẵn, là số âm nếu $n$ lẻ. Ví dụ: $(-2)^3 = -8$; $(-2)^4 = 16$.',
-  'formulas': [{'category': 'I. Quy tắc nhân số nguyên',
+  'formulas': [{'category': 'Quy tắc nhân số nguyên',
                 'items': [{'name': 'Khác dấu và Cùng dấu âm',
                            'formula': '$(-a) \\cdot b = -(a \\cdot b)$; $(-a) \\cdot (-b) = a \\cdot b$ ($a, '
                                       'b > 0$)'},
@@ -2386,28 +2400,28 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 16: Phép nhân số nguyên**, công thức hoặc quy tắc nào '
-                 'sau đây biểu diễn đúng **Khác dấu và Cùng dấu âm**?',
-            'options': ['$a \\cdot (b + c) = a \\cdot b + a \\cdot c$',
+            'q': 'Trong **Bài 16: Phép nhân số nguyên**, quy tắc hoặc công thức nào sau đây xác định đúng '
+                 '**Khác dấu và Cùng dấu âm**?',
+            'options': ['$(-a) : b = -(a \\cdot b)$; $(-a) \\cdot (-b) = a \\cdot b$ ($a, b > 0$)',
                         '$(-a) \\cdot b = -(a \\cdot b)$; $(-a) \\cdot (-b) = a \\cdot b$ ($a, b > 0$)',
-                        '$x \\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$)',
-                        'Liệt kê $A = \\{0; 1; 2; 3\\}$ hoặc đặc trưng $A = \\{x \\in \\mathbb{N} \\mid x < '
-                        '4\\}$'],
+                        '$(-a) \\cdot b = -(a \\cdot b)$; $(-a) \\cdot (-b) = a \\cdot b$ ($a, b > 1$)',
+                        '$(-a) \\cdot b = -(a \\cdot b)$; $(-a) \\cdot (-b) = a \\cdot b$ ($a, b > 2$)'],
             'answer': 1,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 16: Phép nhân số nguyên, **Khác dấu và Cùng '
-                        'dấu âm** được xác định bởi: $(-a) \\cdot b = -(a \\cdot b)$; $(-a) \\cdot (-b) = a '
+            'solution': 'Theo kiến thức trọng tâm của Bài 16: Phép nhân số nguyên, **Khác dấu và Cùng dấu '
+                        'âm** được xác định bởi: $(-a) \\cdot b = -(a \\cdot b)$; $(-a) \\cdot (-b) = a '
                         '\\cdot b$ ($a, b > 0$).'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 16: Phép nhân số nguyên**, nội dung/biểu thức $a \\cdot (b + c) = a \\cdot b + '
-                 'a \\cdot c$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Khác dấu và Cùng dấu âm',
-                        'Quan hệ phần tử – tập hợp',
-                        'Tính chất phân phối',
-                        'Hai cách mô tả'],
+            'q': 'Khi học **Bài 16: Phép nhân số nguyên**, biểu thức hoặc quy tắc nào dưới đây biểu diễn '
+                 'đúng **Tính chất phân phối**?',
+            'options': ['$a \\cdot (b - c) = a \\cdot b + a \\cdot c$',
+                        'Đảo ngược vế của quy tắc: $a \\cdot (b + c) = a \\cdot b + a \\cdot c$',
+                        '$a \\cdot (b + c) = a \\cdot b + a \\cdot c$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $a \\cdot (b + c) = a \\cdot b '
+                        '+ a \\cdot c$'],
             'answer': 2,
-            'solution': 'Trong Bài 16: Phép nhân số nguyên, biểu thức/quy tắc $a \\cdot (b + c) = a \\cdot b '
-                        '+ a \\cdot c$ chính là nội dung của **Tính chất phân phối**.'},
+            'solution': 'Trong Bài 16: Phép nhân số nguyên, **Tính chất phân phối** có công thức/quy tắc là: '
+                        '$a \\cdot (b + c) = a \\cdot b + a \\cdot c$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Giá trị của biểu thức $(-12) \\cdot 63 + (-12) \\cdot 37$ bằng:',
@@ -2418,17 +2432,17 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 16: Phép nhân số nguyên** (Chương III: Số nguyên), khẳng định nào sau đây '
-                 'phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
+            'q': 'Để nắm vững bản chất của **Bài 16: Phép nhân số nguyên**, nhận định nào sau đây là **chính '
+                 'xác**?',
             'options': ['Thực hiện đúng phép nhân hai số nguyên cùng dấu (tích dương) và khác dấu (tích âm).',
-                        'Sử dụng được thuật ngữ tập hợp, phần tử thuộc ($\\in$) hoặc không thuộc ($\\notin$) '
-                        'một tập hợp.',
-                        'Cho được một tập hợp bằng cách liệt kê các phần tử hoặc chỉ ra tính chất đặc trưng '
-                        'cho các phần tử.',
-                        'Phân biệt được tập hợp $\\mathbb{N}$ và $\\mathbb{N}^*$; xác định được giá trị từng '
-                        'chữ số của số tự nhiên trong hệ thập phân.'],
+                        'Thực hiện đúng phép nhân hai số nguyên cùng dấu (tích dương) và khác dấu (tích âm). '
+                        '(với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Thực hiện đúng phép nhân hai số nguyên cùng dấu (tích '
+                        'dương) và khác dấu (tích âm).',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Thực hiện đúng phép nhân hai số '
+                        'nguyên cùng dấu (tích dương) và khác dấu (tích âm).'],
             'answer': 0,
-            'solution': 'Theo yêu cầu cần đạt của Bài 16: Phép nhân số nguyên: Thực hiện đúng phép nhân hai '
+            'solution': 'Theo nội dung cốt lõi của Bài 16: Phép nhân số nguyên: Thực hiện đúng phép nhân hai '
                         'số nguyên cùng dấu (tích dương) và khác dấu (tích âm).'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -2443,38 +2457,40 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 16: Phép nhân số '
-                 'nguyên**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Thực hiện đúng phép nhân hai số '
-                           'nguyên cùng dấu (tích dương) và khác dấu (tích âm).',
-                           'Quy tắc/công thức **Khác dấu và Cùng dấu âm** trong bài được xác định bởi: $(-a) '
-                           '\\cdot b = -(a \\cdot b)$; $(-a) \\cdot (-b) = a \\cdot b$ ($a, b > 0$).',
-                           'Trong mọi trường hợp, **Khác dấu và Cùng dấu âm** luôn được tính bằng công thức '
-                           '$x \\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$) (thuộc Quan hệ '
-                           'phần tử – tập hợp) mà không cần điều kiện của Bài 16: Phép nhân số nguyên.',
-                           'Với bài toán minh họa: “Tính: $(-6) \\cdot 5$; $(-3) \\cdot (-4)$ và tính hợp lí '
-                           '$(-8) \\cdot 72 + (-8) \\cdot 28$.”, lời giải đúng là: Ta có $(-6) \\cdot 5 = '
-                           '-30$; $(-3) \\cdot (-4) = 12$ và $(-8) \\cdot (72 + 28) = (-8) \\cdot 100 = '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 16: Phép nhân số nguyên**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Thực hiện đúng phép nhân hai số nguyên '
+                           'cùng dấu (tích dương) và khác dấu (tích âm).',
+                           'Trong **Bài 16: Phép nhân số nguyên**, quy tắc/công thức **Khác dấu và Cùng dấu '
+                           'âm** được viết là: $(-a) \\cdot b = -(a \\cdot b)$; $(-a) \\cdot (-b) = a \\cdot '
+                           'b$ ($a, b > 0$).',
+                           'Nếu áp dụng sai dấu/phép tính thành $(-a) : b = -(a \\cdot b)$; $(-a) \\cdot '
+                           '(-b) = a \\cdot b$ ($a, b > 0$) thì kết quả của **Khác dấu và Cùng dấu âm** '
+                           'trong **Bài 16: Phép nhân số nguyên** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Tính: $(-6) \\cdot 5$; $(-3) \\cdot (-4)$ và tính hợp lí '
+                           '$(-8) \\cdot 72 + (-8) \\cdot 28$.”, kết quả giải đúng là: Ta có $(-6) \\cdot 5 '
+                           '= -30$; $(-3) \\cdot (-4) = 12$ và $(-8) \\cdot (72 + 28) = (-8) \\cdot 100 = '
                            '-800$.'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 16: Phép nhân số nguyên. b) **Đúng** theo '
-                        'công thức trọng tâm **Khác dấu và Cùng dấu âm** ($(-a) \\cdot b = -(a \\cdot b)$; '
-                        '$(-a) \\cdot (-b) = a \\cdot b$ ($a, b > 0$)). c) **Sai** vì $x \\in A$ ($x$ thuộc '
-                        '$A$); $y \\notin A$ ($y$ không thuộc $A$) là công thức của nội dung khác, không '
-                        'phải quy tắc chung của **Khác dấu và Cùng dấu âm**. d) **Đúng** theo lời giải ví dụ '
-                        'minh họa trong bài học.'},
+                        'công thức **Khác dấu và Cùng dấu âm** ($(-a) \\cdot b = -(a \\cdot b)$; $(-a) '
+                        '\\cdot (-b) = a \\cdot b$ ($a, b > 0$)). c) **Sai** vì công thức đúng của **Khác '
+                        'dấu và Cùng dấu âm** phải là $(-a) \\cdot b = -(a \\cdot b)$; $(-a) \\cdot (-b) = a '
+                        '\\cdot b$ ($a, b > 0$) chứ không phải $(-a) : b = -(a \\cdot b)$; $(-a) \\cdot (-b) '
+                        '= a \\cdot b$ ($a, b > 0$). d) **Đúng** theo lời giải ví dụ minh họa trong bài '
+                        'học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 16: Phép nhân số nguyên** để giải quyết tình huống sau: Tính: '
-                 '$(-6) \\cdot 5$; $(-3) \\cdot (-4)$ và tính hợp lí $(-8) \\cdot 72 + (-8) \\cdot 28$. Kết '
-                 'quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Ta có $M = \\{\\text{T}, \\text{O}, \\text{A}, \\text{N}, \\text{H}, \\text{C}\\}$ '
-                        '(chữ O xuất hiện $2$ lần nhưng chỉ viết $1$ lần). Tập hợp $M$ có $6$ phần tử.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 16: Phép nhân số nguyên** để giải bài toán sau: '
+                 'Tính: $(-6) \\cdot 5$; $(-3) \\cdot (-4)$ và tính hợp lí $(-8) \\cdot 72 + (-8) \\cdot '
+                 '28$. Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Ta có $(-6) \\cdot 5 = -30$; $(-3) \\cdot (-4) = 12$ và $(-8) \\cdot (72 - 28) = '
+                        '(-8) \\cdot 100 = -800$.',
                         'Ta có $(-6) \\cdot 5 = -30$; $(-3) \\cdot (-4) = 12$ và $(-8) \\cdot (72 + 28) = '
                         '(-8) \\cdot 100 = -800$.',
-                        'Số $27$ viết là $\\text{XXVII}$, số $19$ viết là $\\text{XIX}$. Ta có '
-                        '$\\overline{ab} = a \\times 10 + b$.',
-                        'Các số tự nhiên từ $4$ đến $8$ là $4; 5; 6; 7; 8$. Vậy $A = \\{4; 5; 6; 7; 8\\}$.'],
+                        'Ta có $(-6) \\cdot 5 = -30$; $(-3) \\cdot (-4) = 12$ và $(-8) \\cdot (72 + 28) = '
+                        '(-8) \\cdot 100 = -799$.',
+                        'Ta có $(-12) \\cdot 5 = -30$; $(-3) \\cdot (-4) = 12$ và $(-8) \\cdot (72 + 28) = '
+                        '(-8) \\cdot 100 = -800$.'],
             'answer': 1,
             'solution': 'Lời giải chi tiết theo Bài 16: Phép nhân số nguyên: Ta có $(-6) \\cdot 5 = -30$; '
                         '$(-3) \\cdot (-4) = 12$ và $(-8) \\cdot (72 + 28) = (-8) \\cdot 100 = -800$.'},
@@ -2497,8 +2513,8 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
                  'một số nguyên.',
   'requirements': ['Thực hiện được phép chia hết hai số nguyên cùng dấu và khác dấu.',
                    'Tìm được tất cả các ước nguyên (cả âm và dương) và các bội nguyên của một số nguyên.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Quy tắc dấu của thương** ($(+) : (+) = '
-                   '(+)$; $(-) : (-) = (+)$; $(+) : (-) = (-)$; $(-) : (+) = (-)$) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 17: Phép chia hết. Ước và bội của một số nguyên** để giải '
+                   'bài tập minh họa và bài toán thực tiễn.'],
   'definition': '- Cho $a, b \\in \\mathbb{Z}$ với $b \\ne 0$. Nếu có số nguyên $q$ sao cho $a = b \\cdot q$ '
                 'thì ta có phép chia hết $a : b = q$, đồng thời $a$ là **bội** của $b$ và $b$ là **ước** của '
                 '$a$.\n'
@@ -2509,7 +2525,7 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             '### 2. Ước và bội trong $\\mathbb{Z}$\n'
             '- Nếu $d$ là một ước của $a$ thì $-d$ cũng là một ước của $a$. Ví dụ, trong $\\mathbb{Z}$ ta có '
             '$\\text{Ư}(6) = \\{-6; -3; -2; -1; 1; 2; 3; 6\\}$.',
-  'formulas': [{'category': 'I. Quy tắc dấu của phép chia và Ước trong Z',
+  'formulas': [{'category': 'Quy tắc dấu của phép chia và Ước trong Z',
                 'items': [{'name': 'Quy tắc dấu của thương',
                            'formula': '$(+) : (+) = (+)$; $(-) : (-) = (+)$; $(+) : (-) = (-)$; $(-) : (+) = '
                                       '(-)$'},
@@ -2541,30 +2557,31 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 17: Phép chia hết. Ước và bội của một số nguyên**, công '
-                 'thức hoặc quy tắc nào sau đây biểu diễn đúng **Quy tắc dấu của thương**?',
-            'options': ['Số ước nguyên của $a$ gấp đôi số ước tự nhiên của $|a|$',
-                        '$x \\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$)',
+            'q': 'Trong **Bài 17: Phép chia hết. Ước và bội của một số nguyên**, quy tắc hoặc công thức nào '
+                 'sau đây xác định đúng **Quy tắc dấu của thương**?',
+            'options': ['$(+) : (+) = (+)$; $(-) : (-) = (+)$; $(+) : (-) = (-)$; $(-) : (+) = (-)$ (với dấu '
+                        'ngược lại)',
+                        'Đảo ngược vế của quy tắc: $(+) : (+) = (+)$; $(-) : (-) = (+)$; $(+) : (-) = (-)$; '
+                        '$(-) : (+) = (-)$',
                         '$(+) : (+) = (+)$; $(-) : (-) = (+)$; $(+) : (-) = (-)$; $(-) : (+) = (-)$',
-                        'Liệt kê $A = \\{0; 1; 2; 3\\}$ hoặc đặc trưng $A = \\{x \\in \\mathbb{N} \\mid x < '
-                        '4\\}$'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $(+) : (+) = (+)$; $(-) : (-) = '
+                        '(+)$; $(+) : (-) = (-)$; $(-) : (+) = (-)$'],
             'answer': 2,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 17: Phép chia hết. Ước và bội của một số '
-                        'nguyên, **Quy tắc dấu của thương** được xác định bởi: $(+) : (+) = (+)$; $(-) : (-) '
-                        '= (+)$; $(+) : (-) = (-)$; $(-) : (+) = (-)$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 17: Phép chia hết. Ước và bội của một số nguyên, '
+                        '**Quy tắc dấu của thương** được xác định bởi: $(+) : (+) = (+)$; $(-) : (-) = (+)$; '
+                        '$(+) : (-) = (-)$; $(-) : (+) = (-)$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 17: Phép chia hết. Ước và bội của một số nguyên**, nội dung/biểu thức Số ước '
-                 'nguyên của $a$ gấp đôi số ước tự nhiên của $|a|$ là quy tắc hoặc công thức của mục nào sau '
-                 'đây?',
-            'options': ['Quy tắc dấu của thương',
-                        'Quan hệ phần tử – tập hợp',
-                        'Hai cách mô tả',
-                        'Số lượng ước trong Z'],
+            'q': 'Khi học **Bài 17: Phép chia hết. Ước và bội của một số nguyên**, biểu thức hoặc quy tắc '
+                 'nào dưới đây biểu diễn đúng **Số lượng ước trong Z**?',
+            'options': ['Số ước nguyên của $a$ gấp đôi số ước tự nhiên của $|a|$ (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Số ước nguyên của $a$ gấp đôi số ước tự nhiên của $|a|$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Số ước nguyên của $a$ gấp đôi '
+                        'số ước tự nhiên của $|a|$',
+                        'Số ước nguyên của $a$ gấp đôi số ước tự nhiên của $|a|$'],
             'answer': 3,
-            'solution': 'Trong Bài 17: Phép chia hết. Ước và bội của một số nguyên, biểu thức/quy tắc Số ước '
-                        'nguyên của $a$ gấp đôi số ước tự nhiên của $|a|$ chính là nội dung của **Số lượng '
-                        'ước trong Z**.'},
+            'solution': 'Trong Bài 17: Phép chia hết. Ước và bội của một số nguyên, **Số lượng ước trong Z** '
+                        'có công thức/quy tắc là: Số ước nguyên của $a$ gấp đôi số ước tự nhiên của $|a|$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Tìm số nguyên $x$ biết $(-5) \\cdot x = 45$:',
@@ -2575,17 +2592,16 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 17: Phép chia hết. Ước và bội của một số nguyên** (Chương III: Số nguyên), '
-                 'khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Sử dụng được thuật ngữ tập hợp, phần tử thuộc ($\\in$) hoặc không thuộc ($\\notin$) '
-                        'một tập hợp.',
+            'q': 'Để nắm vững bản chất của **Bài 17: Phép chia hết. Ước và bội của một số nguyên**, nhận '
+                 'định nào sau đây là **chính xác**?',
+            'options': ['Thực hiện được phép không chia hết hai số nguyên cùng dấu và khác dấu.',
                         'Thực hiện được phép chia hết hai số nguyên cùng dấu và khác dấu.',
-                        'Cho được một tập hợp bằng cách liệt kê các phần tử hoặc chỉ ra tính chất đặc trưng '
-                        'cho các phần tử.',
-                        'Phân biệt được tập hợp $\\mathbb{N}$ và $\\mathbb{N}^*$; xác định được giá trị từng '
-                        'chữ số của số tự nhiên trong hệ thập phân.'],
+                        'Đảo ngược vế của quy tắc: Thực hiện được phép chia hết hai số nguyên cùng dấu và '
+                        'khác dấu.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Thực hiện được phép chia hết '
+                        'hai số nguyên cùng dấu và khác dấu.'],
             'answer': 1,
-            'solution': 'Theo yêu cầu cần đạt của Bài 17: Phép chia hết. Ước và bội của một số nguyên: Thực '
+            'solution': 'Theo nội dung cốt lõi của Bài 17: Phép chia hết. Ước và bội của một số nguyên: Thực '
                         'hiện được phép chia hết hai số nguyên cùng dấu và khác dấu.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -2601,38 +2617,41 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 17: Phép chia hết. Ước '
-                 'và bội của một số nguyên**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Thực hiện được phép chia hết hai '
-                           'số nguyên cùng dấu và khác dấu.',
-                           'Quy tắc/công thức **Quy tắc dấu của thương** trong bài được xác định bởi: $(+) : '
-                           '(+) = (+)$; $(-) : (-) = (+)$; $(+) : (-) = (-)$; $(-) : (+) = (-)$.',
-                           'Trong mọi trường hợp, **Quy tắc dấu của thương** luôn được tính bằng công thức '
-                           '$x \\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$) (thuộc Quan hệ '
-                           'phần tử – tập hợp) mà không cần điều kiện của Bài 17: Phép chia hết. Ước và bội '
-                           'của một số nguyên.',
-                           'Với bài toán minh họa: “Tìm tất cả các ước trong $\\mathbb{Z}$ của $-8$.”, lời '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 17: Phép chia hết. Ước và '
+                 'bội của một số nguyên**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Thực hiện được phép chia hết hai số '
+                           'nguyên cùng dấu và khác dấu.',
+                           'Trong **Bài 17: Phép chia hết. Ước và bội của một số nguyên**, quy tắc/công thức '
+                           '**Quy tắc dấu của thương** được viết là: $(+) : (+) = (+)$; $(-) : (-) = (+)$; '
+                           '$(+) : (-) = (-)$; $(-) : (+) = (-)$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $(+) : (+) = (+)$; $(-) : (-) = (+)$; $(+) : '
+                           '(-) = (-)$; $(-) : (+) = (-)$ (với dấu ngược lại) thì kết quả của **Quy tắc dấu '
+                           'của thương** trong **Bài 17: Phép chia hết. Ước và bội của một số nguyên** vẫn '
+                           'không thay đổi.',
+                           'Xét ví dụ của bài: “Tìm tất cả các ước trong $\\mathbb{Z}$ của $-8$.”, kết quả '
                            'giải đúng là: Các ước tự nhiên của $8$ là $1; 2; 4; 8$. Vậy tập hợp các ước '
                            'nguyên của $-8$ là $\\{-8; -4; -2; -1; 1; 2; 4; 8\\}$.'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 17: Phép chia hết. Ước và bội của một số '
-                        'nguyên. b) **Đúng** theo công thức trọng tâm **Quy tắc dấu của thương** ($(+) : (+) '
-                        '= (+)$; $(-) : (-) = (+)$; $(+) : (-) = (-)$; $(-) : (+) = (-)$). c) **Sai** vì $x '
-                        '\\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$) là công thức của nội '
-                        'dung khác, không phải quy tắc chung của **Quy tắc dấu của thương**. d) **Đúng** '
-                        'theo lời giải ví dụ minh họa trong bài học.'},
+                        'nguyên. b) **Đúng** theo công thức **Quy tắc dấu của thương** ($(+) : (+) = (+)$; '
+                        '$(-) : (-) = (+)$; $(+) : (-) = (-)$; $(-) : (+) = (-)$). c) **Sai** vì công thức '
+                        'đúng của **Quy tắc dấu của thương** phải là $(+) : (+) = (+)$; $(-) : (-) = (+)$; '
+                        '$(+) : (-) = (-)$; $(-) : (+) = (-)$ chứ không phải $(+) : (+) = (+)$; $(-) : (-) = '
+                        '(+)$; $(+) : (-) = (-)$; $(-) : (+) = (-)$ (với dấu ngược lại). d) **Đúng** theo '
+                        'lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 17: Phép chia hết. Ước và bội của một số nguyên** để giải quyết '
-                 'tình huống sau: Tìm tất cả các ước trong $\\mathbb{Z}$ của $-8$. Kết quả và hướng giải nào '
-                 'dưới đây là **đúng**?',
-            'options': ['Ta có $M = \\{\\text{T}, \\text{O}, \\text{A}, \\text{N}, \\text{H}, \\text{C}\\}$ '
-                        '(chữ O xuất hiện $2$ lần nhưng chỉ viết $1$ lần). Tập hợp $M$ có $6$ phần tử.',
-                        'Số $27$ viết là $\\text{XXVII}$, số $19$ viết là $\\text{XIX}$. Ta có '
-                        '$\\overline{ab} = a \\times 10 + b$.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 17: Phép chia hết. Ước và bội của một số nguyên** '
+                 'để giải bài toán sau: Tìm tất cả các ước trong $\\mathbb{Z}$ của $-8$. Cách giải và kết '
+                 'quả nào dưới đây là **đúng**?',
+            'options': ['Các ước tự nhiên của $9$ là $1; 2; 4; 8$. Vậy tập hợp các ước nguyên của $-8$ là '
+                        '$\\{-8; -4; -2; -1; 1; 2; 4; 8\\}$.',
+                        'Các ước tự nhiên của $8$ là $1; 2; 4; 8$. Vậy tập hợp các ước nguyên của $-8$ là '
+                        '$\\{-8; -4; -2; -1; 1; 2; 4; 7\\}$.',
                         'Các ước tự nhiên của $8$ là $1; 2; 4; 8$. Vậy tập hợp các ước nguyên của $-8$ là '
                         '$\\{-8; -4; -2; -1; 1; 2; 4; 8\\}$.',
-                        'Các số tự nhiên từ $4$ đến $8$ là $4; 5; 6; 7; 8$. Vậy $A = \\{4; 5; 6; 7; 8\\}$.'],
+                        'Các ước tự nhiên của $16$ là $1; 2; 4; 8$. Vậy tập hợp các ước nguyên của $-8$ là '
+                        '$\\{-8; -4; -2; -1; 1; 2; 4; 8\\}$.'],
             'answer': 2,
             'solution': 'Lời giải chi tiết theo Bài 17: Phép chia hết. Ước và bội của một số nguyên: Các ước '
                         'tự nhiên của $8$ là $1; 2; 4; 8$. Vậy tập hợp các ước nguyên của $-8$ là $\\{-8; '
@@ -2656,8 +2675,8 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
                  'hình vuông và hình lục giác đều.',
   'requirements': ['Mô tả được đặc điểm về cạnh, góc, đường chéo của tam giác đều, hình vuông, lục giác đều.',
                    'Vẽ được tam giác đều bằng thước và compa; vẽ được hình vuông bằng thước và ê-ke.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Tam giác đều cạnh a** ($3$ cạnh bằng $a$; '
-                   'mỗi góc bằng $60^\\circ$) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 18: Hình tam giác đều. Hình vuông. Hình lục giác đều** để '
+                   'giải bài tập minh họa và bài toán thực tiễn.'],
   'definition': '- **Hình tam giác đều**: có $3$ cạnh bằng nhau và $3$ góc bằng nhau (mỗi góc bằng '
                 '$60^\\circ$).\n'
                 '- **Hình vuông**: có $4$ cạnh bằng nhau, $4$ góc bằng nhau (đều là góc vuông $90^\\circ$) '
@@ -2668,7 +2687,7 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             '- Khi nối các đỉnh đối diện của hình lục giác đều $ABCDEF$, ba đường chéo chính $AD, BE, CF$ '
             'cắt nhau tại một điểm $O$ và chia lục giác đều thành **$6$ tam giác đều** bằng nhau.\n'
             '- Độ dài đường chéo chính của lục giác đều cạnh $a$ bằng $2a$.',
-  'formulas': [{'category': 'I. Đặc điểm góc và cạnh',
+  'formulas': [{'category': 'Đặc điểm góc và cạnh',
                 'items': [{'name': 'Tam giác đều cạnh a',
                            'formula': '$3$ cạnh bằng $a$; mỗi góc bằng $60^\\circ$'},
                           {'name': 'Hình vuông cạnh a',
@@ -2700,29 +2719,28 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 18: Hình tam giác đều. Hình vuông. Hình lục giác đều**, '
-                 'công thức hoặc quy tắc nào sau đây biểu diễn đúng **Tam giác đều cạnh a**?',
-            'options': ['$4$ cạnh bằng $a$; mỗi góc bằng $90^\\circ$; hai đường chéo bằng nhau',
-                        '$6$ cạnh bằng $a$; đường chéo chính dài $2a$',
-                        '$x \\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$)',
+            'q': 'Trong **Bài 18: Hình tam giác đều. Hình vuông. Hình lục giác đều**, quy tắc hoặc công thức '
+                 'nào sau đây xác định đúng **Tam giác đều cạnh a**?',
+            'options': ['$4$ cạnh bằng $a$; mỗi góc bằng $60^\\circ$',
+                        '$3$ cạnh bằng $a$; mỗi góc bằng $59^\\circ$',
+                        '$6$ cạnh bằng $a$; mỗi góc bằng $60^\\circ$',
                         '$3$ cạnh bằng $a$; mỗi góc bằng $60^\\circ$'],
             'answer': 3,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 18: Hình tam giác đều. Hình vuông. Hình lục '
-                        'giác đều, **Tam giác đều cạnh a** được xác định bởi: $3$ cạnh bằng $a$; mỗi góc '
-                        'bằng $60^\\circ$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 18: Hình tam giác đều. Hình vuông. Hình lục giác '
+                        'đều, **Tam giác đều cạnh a** được xác định bởi: $3$ cạnh bằng $a$; mỗi góc bằng '
+                        '$60^\\circ$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 18: Hình tam giác đều. Hình vuông. Hình lục giác đều**, nội dung/biểu thức $4$ '
-                 'cạnh bằng $a$; mỗi góc bằng $90^\\circ$; hai đường chéo bằng nhau là quy tắc hoặc công '
-                 'thức của mục nào sau đây?',
-            'options': ['Hình vuông cạnh a',
-                        'Tam giác đều cạnh a',
-                        'Lục giác đều cạnh a',
-                        'Quan hệ phần tử – tập hợp'],
+            'q': 'Khi học **Bài 18: Hình tam giác đều. Hình vuông. Hình lục giác đều**, biểu thức hoặc quy '
+                 'tắc nào dưới đây biểu diễn đúng **Hình vuông cạnh a**?',
+            'options': ['$4$ cạnh bằng $a$; mỗi góc bằng $90^\\circ$; hai đường chéo bằng nhau',
+                        '$5$ cạnh bằng $a$; mỗi góc bằng $90^\\circ$; hai đường chéo bằng nhau',
+                        '$4$ cạnh bằng $a$; mỗi góc bằng $89^\\circ$; hai đường chéo bằng nhau',
+                        '$8$ cạnh bằng $a$; mỗi góc bằng $90^\\circ$; hai đường chéo bằng nhau'],
             'answer': 0,
-            'solution': 'Trong Bài 18: Hình tam giác đều. Hình vuông. Hình lục giác đều, biểu thức/quy tắc '
-                        '$4$ cạnh bằng $a$; mỗi góc bằng $90^\\circ$; hai đường chéo bằng nhau chính là nội '
-                        'dung của **Hình vuông cạnh a**.'},
+            'solution': 'Trong Bài 18: Hình tam giác đều. Hình vuông. Hình lục giác đều, **Hình vuông cạnh '
+                        'a** có công thức/quy tắc là: $4$ cạnh bằng $a$; mỗi góc bằng $90^\\circ$; hai đường '
+                        'chéo bằng nhau.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Cho hình lục giác đều $ABCDEF$ có cạnh $AB = 4\\text{ cm}$. Độ dài đường chéo chính $AD$ '
@@ -2735,19 +2753,18 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 18: Hình tam giác đều. Hình vuông. Hình lục giác đều** (Chương IV: Một số '
-                 'hình phẳng trong thực tiễn), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và '
-                 'bản chất kiến thức của bài?',
-            'options': ['Sử dụng được thuật ngữ tập hợp, phần tử thuộc ($\\in$) hoặc không thuộc ($\\notin$) '
-                        'một tập hợp.',
-                        'Cho được một tập hợp bằng cách liệt kê các phần tử hoặc chỉ ra tính chất đặc trưng '
-                        'cho các phần tử.',
+            'q': 'Để nắm vững bản chất của **Bài 18: Hình tam giác đều. Hình vuông. Hình lục giác đều**, '
+                 'nhận định nào sau đây là **chính xác**?',
+            'options': ['Mô tả được đặc điểm về cạnh, góc, đường chéo của tam giác đều, hình vuông, lục giác '
+                        'đều. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Mô tả được đặc điểm về cạnh, góc, đường chéo của tam giác '
+                        'đều, hình vuông, lục giác đều.',
                         'Mô tả được đặc điểm về cạnh, góc, đường chéo của tam giác đều, hình vuông, lục giác '
                         'đều.',
-                        'Phân biệt được tập hợp $\\mathbb{N}$ và $\\mathbb{N}^*$; xác định được giá trị từng '
-                        'chữ số của số tự nhiên trong hệ thập phân.'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Mô tả được đặc điểm về cạnh, '
+                        'góc, đường chéo của tam giác đều, hình vuông, lục giác đều.'],
             'answer': 2,
-            'solution': 'Theo yêu cầu cần đạt của Bài 18: Hình tam giác đều. Hình vuông. Hình lục giác đều: '
+            'solution': 'Theo nội dung cốt lõi của Bài 18: Hình tam giác đều. Hình vuông. Hình lục giác đều: '
                         'Mô tả được đặc điểm về cạnh, góc, đường chéo của tam giác đều, hình vuông, lục giác '
                         'đều.'},
            {'level': 'hieu',
@@ -2764,38 +2781,39 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 18: Hình tam giác đều. '
-                 'Hình vuông. Hình lục giác đều**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Mô tả được đặc điểm về cạnh, góc, '
-                           'đường chéo của tam giác đều, hình vuông, lục giác đều.',
-                           'Quy tắc/công thức **Tam giác đều cạnh a** trong bài được xác định bởi: $3$ cạnh '
-                           'bằng $a$; mỗi góc bằng $60^\\circ$.',
-                           'Trong mọi trường hợp, **Tam giác đều cạnh a** luôn được tính bằng công thức $x '
-                           '\\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$) (thuộc Quan hệ phần '
-                           'tử – tập hợp) mà không cần điều kiện của Bài 18: Hình tam giác đều. Hình vuông. '
-                           'Hình lục giác đều.',
-                           'Với bài toán minh họa: “Một hình lục giác đều có độ dài một cạnh là $5\\text{ '
-                           'cm}$. Tính chu vi và độ dài đường chéo chính của lục giác đều đó.”, lời giải '
-                           'đúng là: Chu vi lục giác đều là $6 \\cdot 5 = 30\\text{ cm}$. Độ dài đường chéo '
-                           'chính là $2 \\cdot 5 = 10\\text{ cm}$.'],
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 18: Hình tam giác đều. Hình '
+                 'vuông. Hình lục giác đều**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Mô tả được đặc điểm về cạnh, góc, đường '
+                           'chéo của tam giác đều, hình vuông, lục giác đều.',
+                           'Trong **Bài 18: Hình tam giác đều. Hình vuông. Hình lục giác đều**, quy tắc/công '
+                           'thức **Tam giác đều cạnh a** được viết là: $3$ cạnh bằng $a$; mỗi góc bằng '
+                           '$60^\\circ$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $4$ cạnh bằng $a$; mỗi góc bằng $60^\\circ$ '
+                           'thì kết quả của **Tam giác đều cạnh a** trong **Bài 18: Hình tam giác đều. Hình '
+                           'vuông. Hình lục giác đều** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Một hình lục giác đều có độ dài một cạnh là $5\\text{ cm}$. '
+                           'Tính chu vi và độ dài đường chéo chính của lục giác đều đó.”, kết quả giải đúng '
+                           'là: Chu vi lục giác đều là $6 \\cdot 5 = 30\\text{ cm}$. Độ dài đường chéo chính '
+                           'là $2 \\cdot 5 = 10\\text{ cm}$.'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 18: Hình tam giác đều. Hình vuông. Hình '
-                        'lục giác đều. b) **Đúng** theo công thức trọng tâm **Tam giác đều cạnh a** ($3$ '
-                        'cạnh bằng $a$; mỗi góc bằng $60^\\circ$). c) **Sai** vì $x \\in A$ ($x$ thuộc $A$); '
-                        '$y \\notin A$ ($y$ không thuộc $A$) là công thức của nội dung khác, không phải quy '
-                        'tắc chung của **Tam giác đều cạnh a**. d) **Đúng** theo lời giải ví dụ minh họa '
+                        'lục giác đều. b) **Đúng** theo công thức **Tam giác đều cạnh a** ($3$ cạnh bằng '
+                        '$a$; mỗi góc bằng $60^\\circ$). c) **Sai** vì công thức đúng của **Tam giác đều '
+                        'cạnh a** phải là $3$ cạnh bằng $a$; mỗi góc bằng $60^\\circ$ chứ không phải $4$ '
+                        'cạnh bằng $a$; mỗi góc bằng $60^\\circ$. d) **Đúng** theo lời giải ví dụ minh họa '
                         'trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 18: Hình tam giác đều. Hình vuông. Hình lục giác đều** để giải '
-                 'quyết tình huống sau: Một hình lục giác đều có độ dài một cạnh là $5\\text{ cm}$. Tính chu '
-                 'vi và độ dài đường chéo chính của lục giác đều đó. Kết quả và hướng giải nào dưới đây là '
-                 '**đúng**?',
-            'options': ['Ta có $M = \\{\\text{T}, \\text{O}, \\text{A}, \\text{N}, \\text{H}, \\text{C}\\}$ '
-                        '(chữ O xuất hiện $2$ lần nhưng chỉ viết $1$ lần). Tập hợp $M$ có $6$ phần tử.',
-                        'Số $27$ viết là $\\text{XXVII}$, số $19$ viết là $\\text{XIX}$. Ta có '
-                        '$\\overline{ab} = a \\times 10 + b$.',
-                        'Các số tự nhiên từ $4$ đến $8$ là $4; 5; 6; 7; 8$. Vậy $A = \\{4; 5; 6; 7; 8\\}$.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 18: Hình tam giác đều. Hình vuông. Hình lục giác '
+                 'đều** để giải bài toán sau: Một hình lục giác đều có độ dài một cạnh là $5\\text{ cm}$. '
+                 'Tính chu vi và độ dài đường chéo chính của lục giác đều đó. Cách giải và kết quả nào dưới '
+                 'đây là **đúng**?',
+            'options': ['Chu vi lục giác đều là $6 : 5 = 30\\text{ cm}$. Độ dài đường chéo chính là $2 '
+                        '\\cdot 5 = 10\\text{ cm}$.',
+                        'Chu vi lục giác đều là $6 \\cdot 5 = 30\\text{ cm}$. Độ dài đường chéo chính là $2 '
+                        '\\cdot 5 = 9\\text{ cm}$.',
+                        'Chu vi lục giác đều là $12 \\cdot 5 = 30\\text{ cm}$. Độ dài đường chéo chính là $2 '
+                        '\\cdot 5 = 10\\text{ cm}$.',
                         'Chu vi lục giác đều là $6 \\cdot 5 = 30\\text{ cm}$. Độ dài đường chéo chính là $2 '
                         '\\cdot 5 = 10\\text{ cm}$.'],
             'answer': 3,
@@ -2822,8 +2840,8 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
   'requirements': ['Nêu được tính chất về cạnh đối, góc và đường chéo của hình chữ nhật, hình thoi, hình '
                    'bình hành, hình thang cân.',
                    'Vẽ được hình chữ nhật, hình bình hành, hình thoi bằng thước kẻ, ê-ke và compa.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Hình chữ nhật và Hình thang cân** (Có hai '
-                   'đường chéo bằng nhau) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 19: Hình chữ nhật. Hình thoi. Hình bình hành. Hình thang '
+                   'cân** để giải bài tập minh họa và bài toán thực tiễn.'],
   'definition': '- **Hình chữ nhật**: có $4$ góc vuông, các cạnh đối bằng nhau, **hai đường chéo bằng nhau** '
                 'và cắt nhau tại trung điểm của mỗi đường.\n'
                 '- **Hình thoi**: có $4$ cạnh bằng nhau, các cạnh đối song song, **hai đường chéo vuông '
@@ -2837,7 +2855,7 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             '- Hai đường chéo **vuông góc**: hình thoi, hình vuông.\n'
             '- Hai đường chéo **cắt nhau tại trung điểm mỗi đường**: hình bình hành, hình chữ nhật, hình '
             'thoi, hình vuông.',
-  'formulas': [{'category': 'I. Tính chất đặc trưng của tứ giác',
+  'formulas': [{'category': 'Tính chất đặc trưng của tứ giác',
                 'items': [{'name': 'Hình chữ nhật và Hình thang cân',
                            'formula': 'Có hai đường chéo bằng nhau'},
                           {'name': 'Hình thoi và Hình vuông',
@@ -2868,31 +2886,28 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 19: Hình chữ nhật. Hình thoi. Hình bình hành. Hình thang '
-                 'cân**, công thức hoặc quy tắc nào sau đây biểu diễn đúng **Hình chữ nhật và Hình thang '
-                 'cân**?',
+            'q': 'Trong **Bài 19: Hình chữ nhật. Hình thoi. Hình bình hành. Hình thang cân**, quy tắc hoặc '
+                 'công thức nào sau đây xác định đúng **Hình chữ nhật và Hình thang cân**?',
             'options': ['Có hai đường chéo bằng nhau',
-                        'Có $4$ cạnh bằng nhau và hai đường chéo vuông góc',
-                        '$x \\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$)',
-                        'Liệt kê $A = \\{0; 1; 2; 3\\}$ hoặc đặc trưng $A = \\{x \\in \\mathbb{N} \\mid x < '
-                        '4\\}$'],
+                        'Có hai đường chéo bằng nhau (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Có hai đường chéo bằng nhau',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Có hai đường chéo bằng nhau'],
             'answer': 0,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 19: Hình chữ nhật. Hình thoi. Hình bình hành. '
-                        'Hình thang cân, **Hình chữ nhật và Hình thang cân** được xác định bởi: Có hai đường '
-                        'chéo bằng nhau.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 19: Hình chữ nhật. Hình thoi. Hình bình hành. Hình '
+                        'thang cân, **Hình chữ nhật và Hình thang cân** được xác định bởi: Có hai đường chéo '
+                        'bằng nhau.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 19: Hình chữ nhật. Hình thoi. Hình bình hành. Hình thang cân**, nội dung/biểu '
-                 'thức Có $4$ cạnh bằng nhau và hai đường chéo vuông góc là quy tắc hoặc công thức của mục '
-                 'nào sau đây?',
-            'options': ['Hình chữ nhật và Hình thang cân',
-                        'Hình thoi và Hình vuông',
-                        'Quan hệ phần tử – tập hợp',
-                        'Hai cách mô tả'],
+            'q': 'Khi học **Bài 19: Hình chữ nhật. Hình thoi. Hình bình hành. Hình thang cân**, biểu thức '
+                 'hoặc quy tắc nào dưới đây biểu diễn đúng **Hình thoi và Hình vuông**?',
+            'options': ['Có $4$ cạnh bằng nhau và hai đường chéo song song',
+                        'Có $4$ cạnh bằng nhau và hai đường chéo vuông góc',
+                        'Có $3$ cạnh bằng nhau và hai đường chéo vuông góc',
+                        'Có $8$ cạnh bằng nhau và hai đường chéo vuông góc'],
             'answer': 1,
-            'solution': 'Trong Bài 19: Hình chữ nhật. Hình thoi. Hình bình hành. Hình thang cân, biểu '
-                        'thức/quy tắc Có $4$ cạnh bằng nhau và hai đường chéo vuông góc chính là nội dung '
-                        'của **Hình thoi và Hình vuông**.'},
+            'solution': 'Trong Bài 19: Hình chữ nhật. Hình thoi. Hình bình hành. Hình thang cân, **Hình thoi '
+                        'và Hình vuông** có công thức/quy tắc là: Có $4$ cạnh bằng nhau và hai đường chéo '
+                        'vuông góc.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Cho hình chữ nhật $ABCD$ có đường chéo $AC = 10\\text{ cm}$. Gọi $O$ là giao điểm của hai '
@@ -2905,19 +2920,18 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 19: Hình chữ nhật. Hình thoi. Hình bình hành. Hình thang cân** (Chương IV: '
-                 'Một số hình phẳng trong thực tiễn), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần '
-                 'đạt và bản chất kiến thức của bài?',
-            'options': ['Sử dụng được thuật ngữ tập hợp, phần tử thuộc ($\\in$) hoặc không thuộc ($\\notin$) '
-                        'một tập hợp.',
-                        'Cho được một tập hợp bằng cách liệt kê các phần tử hoặc chỉ ra tính chất đặc trưng '
-                        'cho các phần tử.',
-                        'Phân biệt được tập hợp $\\mathbb{N}$ và $\\mathbb{N}^*$; xác định được giá trị từng '
-                        'chữ số của số tự nhiên trong hệ thập phân.',
+            'q': 'Để nắm vững bản chất của **Bài 19: Hình chữ nhật. Hình thoi. Hình bình hành. Hình thang '
+                 'cân**, nhận định nào sau đây là **chính xác**?',
+            'options': ['Nêu được tính chất về cạnh đối, góc và đường chéo của hình chữ nhật, hình thoi, '
+                        'hình bình hành, hình thang cân. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Nêu được tính chất về cạnh đối, góc và đường chéo của '
+                        'hình chữ nhật, hình thoi, hình bình hành, hình thang cân.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nêu được tính chất về cạnh đối, '
+                        'góc và đường chéo của hình chữ nhật, hình thoi, hình bình hành, hình thang cân.',
                         'Nêu được tính chất về cạnh đối, góc và đường chéo của hình chữ nhật, hình thoi, '
                         'hình bình hành, hình thang cân.'],
             'answer': 3,
-            'solution': 'Theo yêu cầu cần đạt của Bài 19: Hình chữ nhật. Hình thoi. Hình bình hành. Hình '
+            'solution': 'Theo nội dung cốt lõi của Bài 19: Hình chữ nhật. Hình thoi. Hình bình hành. Hình '
                         'thang cân: Nêu được tính chất về cạnh đối, góc và đường chéo của hình chữ nhật, '
                         'hình thoi, hình bình hành, hình thang cân.'},
            {'level': 'hieu',
@@ -2933,40 +2947,41 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 19: Hình chữ nhật. Hình '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 19: Hình chữ nhật. Hình '
                  'thoi. Hình bình hành. Hình thang cân**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nêu được tính chất về cạnh đối, '
-                           'góc và đường chéo của hình chữ nhật, hình thoi, hình bình hành, hình thang cân.',
-                           'Quy tắc/công thức **Hình chữ nhật và Hình thang cân** trong bài được xác định '
-                           'bởi: Có hai đường chéo bằng nhau.',
-                           'Trong mọi trường hợp, **Hình chữ nhật và Hình thang cân** luôn được tính bằng '
-                           'công thức $x \\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$) (thuộc '
-                           'Quan hệ phần tử – tập hợp) mà không cần điều kiện của Bài 19: Hình chữ nhật. '
-                           'Hình thoi. Hình bình hành. Hình thang cân.',
-                           'Với bài toán minh họa: “Cho hình bình hành $ABCD$ có $AB = 7\\text{ cm}$, $BC = '
-                           '5\\text{ cm}$. Tìm độ dài các cạnh $CD$ và $AD$.”, lời giải đúng là: Trong hình '
-                           'bình hành các cạnh đối bằng nhau nên $CD = AB = 7\\text{ cm}$ và $AD = BC = '
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nêu được tính chất về cạnh đối, góc và '
+                           'đường chéo của hình chữ nhật, hình thoi, hình bình hành, hình thang cân.',
+                           'Trong **Bài 19: Hình chữ nhật. Hình thoi. Hình bình hành. Hình thang cân**, quy '
+                           'tắc/công thức **Hình chữ nhật và Hình thang cân** được viết là: Có hai đường '
+                           'chéo bằng nhau.',
+                           'Nếu áp dụng sai dấu/phép tính thành Có hai đường chéo bằng nhau (với dấu ngược '
+                           'lại) thì kết quả của **Hình chữ nhật và Hình thang cân** trong **Bài 19: Hình '
+                           'chữ nhật. Hình thoi. Hình bình hành. Hình thang cân** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Cho hình bình hành $ABCD$ có $AB = 7\\text{ cm}$, $BC = '
+                           '5\\text{ cm}$. Tìm độ dài các cạnh $CD$ và $AD$.”, kết quả giải đúng là: Trong '
+                           'hình bình hành các cạnh đối bằng nhau nên $CD = AB = 7\\text{ cm}$ và $AD = BC = '
                            '5\\text{ cm}$.'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 19: Hình chữ nhật. Hình thoi. Hình bình '
-                        'hành. Hình thang cân. b) **Đúng** theo công thức trọng tâm **Hình chữ nhật và Hình '
-                        'thang cân** (Có hai đường chéo bằng nhau). c) **Sai** vì $x \\in A$ ($x$ thuộc '
-                        '$A$); $y \\notin A$ ($y$ không thuộc $A$) là công thức của nội dung khác, không '
-                        'phải quy tắc chung của **Hình chữ nhật và Hình thang cân**. d) **Đúng** theo lời '
-                        'giải ví dụ minh họa trong bài học.'},
+                        'hành. Hình thang cân. b) **Đúng** theo công thức **Hình chữ nhật và Hình thang '
+                        'cân** (Có hai đường chéo bằng nhau). c) **Sai** vì công thức đúng của **Hình chữ '
+                        'nhật và Hình thang cân** phải là Có hai đường chéo bằng nhau chứ không phải Có hai '
+                        'đường chéo bằng nhau (với dấu ngược lại). d) **Đúng** theo lời giải ví dụ minh họa '
+                        'trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 19: Hình chữ nhật. Hình thoi. Hình bình hành. Hình thang cân** để '
-                 'giải quyết tình huống sau: Cho hình bình hành $ABCD$ có $AB = 7\\text{ cm}$, $BC = '
-                 '5\\text{ cm}$. Tìm độ dài các cạnh $CD$ và $AD$. Kết quả và hướng giải nào dưới đây là '
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 19: Hình chữ nhật. Hình thoi. Hình bình hành. Hình '
+                 'thang cân** để giải bài toán sau: Cho hình bình hành $ABCD$ có $AB = 7\\text{ cm}$, $BC = '
+                 '5\\text{ cm}$. Tìm độ dài các cạnh $CD$ và $AD$. Cách giải và kết quả nào dưới đây là '
                  '**đúng**?',
             'options': ['Trong hình bình hành các cạnh đối bằng nhau nên $CD = AB = 7\\text{ cm}$ và $AD = '
                         'BC = 5\\text{ cm}$.',
-                        'Ta có $M = \\{\\text{T}, \\text{O}, \\text{A}, \\text{N}, \\text{H}, \\text{C}\\}$ '
-                        '(chữ O xuất hiện $2$ lần nhưng chỉ viết $1$ lần). Tập hợp $M$ có $6$ phần tử.',
-                        'Số $27$ viết là $\\text{XXVII}$, số $19$ viết là $\\text{XIX}$. Ta có '
-                        '$\\overline{ab} = a \\times 10 + b$.',
-                        'Các số tự nhiên từ $4$ đến $8$ là $4; 5; 6; 7; 8$. Vậy $A = \\{4; 5; 6; 7; 8\\}$.'],
+                        'Trong hình bình hành các cạnh đối bằng nhau nên $CD = AB = 8\\text{ cm}$ và $AD = '
+                        'BC = 5\\text{ cm}$.',
+                        'Trong hình bình hành các cạnh đối bằng nhau nên $CD = AB = 7\\text{ cm}$ và $AD = '
+                        'BC = 4\\text{ cm}$.',
+                        'Trong hình bình hành các cạnh đối bằng nhau nên $CD = AB = 14\\text{ cm}$ và $AD = '
+                        'BC = 5\\text{ cm}$.'],
             'answer': 0,
             'solution': 'Lời giải chi tiết theo Bài 19: Hình chữ nhật. Hình thoi. Hình bình hành. Hình thang '
                         'cân: Trong hình bình hành các cạnh đối bằng nhau nên $CD = AB = 7\\text{ cm}$ và '
@@ -2992,8 +3007,8 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
   'requirements': ['Tính được chu vi và diện tích của hình vuông, hình chữ nhật, hình bình hành, hình thoi, '
                    'hình thang.',
                    'Giải được bài toán thực tế về tính diện tích sân vườn, lối đi và chi phí xây dựng.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Hình vuông và Hình thoi cạnh a** ($C = 4a$) '
-                   'vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 20: Chu vi và diện tích của một số tứ giác đã học** để giải '
+                   'bài tập minh họa và bài toán thực tiễn.'],
   'definition': '- **Chu vi** của một tứ giác bằng tổng độ dài bốn cạnh của nó.\n'
                 '- **Diện tích hình bình hành**: $S = a \\cdot h$ (đáy nhân chiều cao). **Diện tích hình '
                 'thoi**: $S = \\dfrac{m \\cdot n}{2}$ (nửa tích hai đường chéo).\n'
@@ -3004,12 +3019,10 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             '- Hình bình hành cạnh $a, b$, chiều cao $h$ ứng với cạnh $a$: $C = 2(a + b)$, $S = a \\cdot '
             'h$.\n'
             '- Hình thoi cạnh $a$, hai đường chéo $m, n$: $C = 4a$, $S = \\dfrac{m \\cdot n}{2}$.',
-  'formulas': [{'category': 'I. Chu vi các tứ giác',
+  'formulas': [{'category': 'Công thức & Quy tắc trọng tâm: Chu vi và diện tích của một số tứ giác đã học',
                 'items': [{'name': 'Hình vuông và Hình thoi cạnh a', 'formula': '$C = 4a$'},
-                          {'name': 'Hình chữ nhật và Hình bình hành cạnh a, b',
-                           'formula': '$C = 2(a + b)$'}]},
-               {'category': 'II. Diện tích các tứ giác',
-                'items': [{'name': 'Hình vuông và Hình chữ nhật',
+                          {'name': 'Hình chữ nhật và Hình bình hành cạnh a, b', 'formula': '$C = 2(a + b)$'},
+                          {'name': 'Hình vuông và Hình chữ nhật',
                            'formula': '$S_{\\text{vuông}} = a^2$; $S_{\\text{CN}} = a \\cdot b$'},
                           {'name': 'Hình bình hành và Hình thoi',
                            'formula': '$S_{\\text{BH}} = a \\cdot h$; $S_{\\text{thoi}} = \\dfrac{m \\cdot '
@@ -3042,26 +3055,23 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 20: Chu vi và diện tích của một số tứ giác đã học**, '
-                 'công thức hoặc quy tắc nào sau đây biểu diễn đúng **Hình vuông và Hình thoi cạnh a**?',
-            'options': ['$C = 2(a + b)$',
+            'q': 'Trong **Bài 20: Chu vi và diện tích của một số tứ giác đã học**, quy tắc hoặc công thức '
+                 'nào sau đây xác định đúng **Hình vuông và Hình thoi cạnh a**?',
+            'options': ['$C = 4a$ (với dấu ngược lại)',
                         '$C = 4a$',
-                        '$S_{\\text{vuông}} = a^2$; $S_{\\text{CN}} = a \\cdot b$',
-                        '$S_{\\text{BH}} = a \\cdot h$; $S_{\\text{thoi}} = \\dfrac{m \\cdot n}{2}$'],
+                        'Đảo ngược vế của quy tắc: $C = 4a$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $C = 4a$'],
             'answer': 1,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 20: Chu vi và diện tích của một số tứ giác đã '
-                        'học, **Hình vuông và Hình thoi cạnh a** được xác định bởi: $C = 4a$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 20: Chu vi và diện tích của một số tứ giác đã học, '
+                        '**Hình vuông và Hình thoi cạnh a** được xác định bởi: $C = 4a$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 20: Chu vi và diện tích của một số tứ giác đã học**, nội dung/biểu thức $C = '
-                 '2(a + b)$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Hình vuông và Hình thoi cạnh a',
-                        'Hình vuông và Hình chữ nhật',
-                        'Hình chữ nhật và Hình bình hành cạnh a, b',
-                        'Hình bình hành và Hình thoi'],
+            'q': 'Khi học **Bài 20: Chu vi và diện tích của một số tứ giác đã học**, biểu thức hoặc quy tắc '
+                 'nào dưới đây biểu diễn đúng **Hình chữ nhật và Hình bình hành cạnh a, b**?',
+            'options': ['$C = 2(a - b)$', '$C = 1(a + b)$', '$C = 2(a + b)$', '$C = 4(a + b)$'],
             'answer': 2,
-            'solution': 'Trong Bài 20: Chu vi và diện tích của một số tứ giác đã học, biểu thức/quy tắc $C = '
-                        '2(a + b)$ chính là nội dung của **Hình chữ nhật và Hình bình hành cạnh a, b**.'},
+            'solution': 'Trong Bài 20: Chu vi và diện tích của một số tứ giác đã học, **Hình chữ nhật và '
+                        'Hình bình hành cạnh a, b** có công thức/quy tắc là: $C = 2(a + b)$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Một hình chữ nhật có chu vi $30\\text{ m}$ và chiều dài $9\\text{ m}$. Diện tích của hình '
@@ -3074,19 +3084,18 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 20: Chu vi và diện tích của một số tứ giác đã học** (Chương IV: Một số hình '
-                 'phẳng trong thực tiễn), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản '
-                 'chất kiến thức của bài?',
+            'q': 'Để nắm vững bản chất của **Bài 20: Chu vi và diện tích của một số tứ giác đã học**, nhận '
+                 'định nào sau đây là **chính xác**?',
             'options': ['Tính được chu vi và diện tích của hình vuông, hình chữ nhật, hình bình hành, hình '
                         'thoi, hình thang.',
-                        'Sử dụng được thuật ngữ tập hợp, phần tử thuộc ($\\in$) hoặc không thuộc ($\\notin$) '
-                        'một tập hợp.',
-                        'Cho được một tập hợp bằng cách liệt kê các phần tử hoặc chỉ ra tính chất đặc trưng '
-                        'cho các phần tử.',
-                        'Phân biệt được tập hợp $\\mathbb{N}$ và $\\mathbb{N}^*$; xác định được giá trị từng '
-                        'chữ số của số tự nhiên trong hệ thập phân.'],
+                        'Tính được chu vi và diện tích của hình vuông, hình chữ nhật, hình bình hành, hình '
+                        'thoi, hình thang. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Tính được chu vi và diện tích của hình vuông, hình chữ '
+                        'nhật, hình bình hành, hình thoi, hình thang.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Tính được chu vi và diện tích '
+                        'của hình vuông, hình chữ nhật, hình bình hành, hình thoi, hình thang.'],
             'answer': 0,
-            'solution': 'Theo yêu cầu cần đạt của Bài 20: Chu vi và diện tích của một số tứ giác đã học: '
+            'solution': 'Theo nội dung cốt lõi của Bài 20: Chu vi và diện tích của một số tứ giác đã học: '
                         'Tính được chu vi và diện tích của hình vuông, hình chữ nhật, hình bình hành, hình '
                         'thoi, hình thang.'},
            {'level': 'hieu',
@@ -3107,38 +3116,35 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 20: Chu vi và diện tích '
-                 'của một số tứ giác đã học**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Tính được chu vi và diện tích của '
-                           'hình vuông, hình chữ nhật, hình bình hành, hình thoi, hình thang.',
-                           'Quy tắc/công thức **Hình vuông và Hình thoi cạnh a** trong bài được xác định '
-                           'bởi: $C = 4a$.',
-                           'Trong mọi trường hợp, **Hình vuông và Hình thoi cạnh a** luôn được tính bằng '
-                           'công thức $x \\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$) (thuộc '
-                           'Quan hệ phần tử – tập hợp) mà không cần điều kiện của Bài 20: Chu vi và diện '
-                           'tích của một số tứ giác đã học.',
-                           'Với bài toán minh họa: “Một mảnh đất hình thang cân có hai đáy $30\\text{ m}$ và '
-                           '$20\\text{ m}$, chiều cao $12\\text{ m}$. Tính diện tích mảnh đất đó.”, lời giải '
-                           'đúng là: Diện tích mảnh đất là $S = \\dfrac{(30 + 20) \\cdot 12}{2} = 300\\text{ '
-                           'm}^2$.'],
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 20: Chu vi và diện tích của '
+                 'một số tứ giác đã học**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Tính được chu vi và diện tích của hình '
+                           'vuông, hình chữ nhật, hình bình hành, hình thoi, hình thang.',
+                           'Trong **Bài 20: Chu vi và diện tích của một số tứ giác đã học**, quy tắc/công '
+                           'thức **Hình vuông và Hình thoi cạnh a** được viết là: $C = 4a$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $C = 4a$ (với dấu ngược lại) thì kết quả của '
+                           '**Hình vuông và Hình thoi cạnh a** trong **Bài 20: Chu vi và diện tích của một '
+                           'số tứ giác đã học** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Một mảnh đất hình thang cân có hai đáy $30\\text{ m}$ và '
+                           '$20\\text{ m}$, chiều cao $12\\text{ m}$. Tính diện tích mảnh đất đó.”, kết quả '
+                           'giải đúng là: Diện tích mảnh đất là $S = \\dfrac{(30 + 20) \\cdot 12}{2} = '
+                           '300\\text{ m}^2$.'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 20: Chu vi và diện tích của một số tứ giác '
-                        'đã học. b) **Đúng** theo công thức trọng tâm **Hình vuông và Hình thoi cạnh a** ($C '
-                        '= 4a$). c) **Sai** vì $x \\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc '
-                        '$A$) là công thức của nội dung khác, không phải quy tắc chung của **Hình vuông và '
-                        'Hình thoi cạnh a**. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        'đã học. b) **Đúng** theo công thức **Hình vuông và Hình thoi cạnh a** ($C = 4a$). '
+                        'c) **Sai** vì công thức đúng của **Hình vuông và Hình thoi cạnh a** phải là $C = '
+                        '4a$ chứ không phải $C = 4a$ (với dấu ngược lại). d) **Đúng** theo lời giải ví dụ '
+                        'minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 20: Chu vi và diện tích của một số tứ giác đã học** để giải quyết '
-                 'tình huống sau: Một mảnh đất hình thang cân có hai đáy $30\\text{ m}$ và $20\\text{ m}$, '
-                 'chiều cao $12\\text{ m}$. Tính diện tích mảnh đất đó. Kết quả và hướng giải nào dưới đây '
-                 'là **đúng**?',
-            'options': ['Ta có $M = \\{\\text{T}, \\text{O}, \\text{A}, \\text{N}, \\text{H}, \\text{C}\\}$ '
-                        '(chữ O xuất hiện $2$ lần nhưng chỉ viết $1$ lần). Tập hợp $M$ có $6$ phần tử.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 20: Chu vi và diện tích của một số tứ giác đã học** '
+                 'để giải bài toán sau: Một mảnh đất hình thang cân có hai đáy $30\\text{ m}$ và $20\\text{ '
+                 'm}$, chiều cao $12\\text{ m}$. Tính diện tích mảnh đất đó. Cách giải và kết quả nào dưới '
+                 'đây là **đúng**?',
+            'options': ['Diện tích mảnh đất là $S = \\dfrac{(30 - 20) \\cdot 12}{2} = 300\\text{ m}^2$.',
                         'Diện tích mảnh đất là $S = \\dfrac{(30 + 20) \\cdot 12}{2} = 300\\text{ m}^2$.',
-                        'Số $27$ viết là $\\text{XXVII}$, số $19$ viết là $\\text{XIX}$. Ta có '
-                        '$\\overline{ab} = a \\times 10 + b$.',
-                        'Các số tự nhiên từ $4$ đến $8$ là $4; 5; 6; 7; 8$. Vậy $A = \\{4; 5; 6; 7; 8\\}$.'],
+                        'Diện tích mảnh đất là $S = \\dfrac{2}{(30 + 20) \\cdot 12} = 300\\text{ m}^2$.',
+                        'Diện tích mảnh đất là $S = \\dfrac{(60 + 20) \\cdot 12}{2} = 300\\text{ m}^2$.'],
             'answer': 1,
             'solution': 'Lời giải chi tiết theo Bài 20: Chu vi và diện tích của một số tứ giác đã học: Diện '
                         'tích mảnh đất là $S = \\dfrac{(30 + 20) \\cdot 12}{2} = 300\\text{ m}^2$.'},
@@ -3164,8 +3170,8 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
   'requirements': ['Nhận biết được hình phẳng có trục đối xứng thông qua thao tác gấp đôi chồng khít.',
                    'Xác định đúng số trục đối xứng của đoạn thẳng, hình tròn, tam giác đều, hình vuông, hình '
                    'chữ nhật, hình thoi, hình thang cân.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Hình thang cân / Hình chữ nhật / Hình '
-                   'thoi** (Thang cân: $1$ trục; Chữ nhật: $2$ trục; Thoi: $2$ trục) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 21: Hình có trục đối xứng** để giải bài tập minh họa và bài '
+                   'toán thực tiễn.'],
   'definition': '- Một hình được gọi là **hình có trục đối xứng** nếu có một đường thẳng $d$ chia hình thành '
                 'hai phần mà khi ta **gấp hình theo đường thẳng $d$** thì hai phần đó **chồng khít** lên '
                 'nhau.\n'
@@ -3179,7 +3185,7 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             '- Hình lục giác đều: $6$ trục đối xứng. Hình tròn: **vô số** trục đối xứng (mọi đường thẳng đi '
             'qua tâm).\n'
             '- Hình bình hành (không phải hình chữ nhật hay hình thoi) **không có** trục đối xứng.',
-  'formulas': [{'category': 'I. Bảng số trục đối xứng',
+  'formulas': [{'category': 'Bảng số trục đối xứng',
                 'items': [{'name': 'Hình thang cân / Hình chữ nhật / Hình thoi',
                            'formula': 'Thang cân: $1$ trục; Chữ nhật: $2$ trục; Thoi: $2$ trục'},
                           {'name': 'Đa giác đều và Hình tròn',
@@ -3209,31 +3215,33 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 21: Hình có trục đối xứng**, công thức hoặc quy tắc nào '
-                 'sau đây biểu diễn đúng **Hình thang cân / Hình chữ nhật / Hình thoi**?',
-            'options': ['Tam giác đều: $3$ trục; Hình vuông: $4$ trục; Lục giác đều: $6$ trục; Hình tròn: vô '
-                        'số trục',
-                        '$x \\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$)',
+            'q': 'Trong **Bài 21: Hình có trục đối xứng**, quy tắc hoặc công thức nào sau đây xác định đúng '
+                 '**Hình thang cân / Hình chữ nhật / Hình thoi**?',
+            'options': ['Thang cân: $2$ trục; Chữ nhật: $2$ trục; Thoi: $2$ trục',
+                        'Thang cân: $1$ trục; Chữ nhật: $2$ trục; Thoi: $1$ trục',
                         'Thang cân: $1$ trục; Chữ nhật: $2$ trục; Thoi: $2$ trục',
-                        'Liệt kê $A = \\{0; 1; 2; 3\\}$ hoặc đặc trưng $A = \\{x \\in \\mathbb{N} \\mid x < '
-                        '4\\}$'],
+                        'Tam giác đều: $3$ trục; Hình vuông: $4$ trục; Lục giác đều: $6$ trục; Hình tròn: vô '
+                        'số trục'],
             'answer': 2,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 21: Hình có trục đối xứng, **Hình thang cân / '
-                        'Hình chữ nhật / Hình thoi** được xác định bởi: Thang cân: $1$ trục; Chữ nhật: $2$ '
-                        'trục; Thoi: $2$ trục.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 21: Hình có trục đối xứng, **Hình thang cân / Hình '
+                        'chữ nhật / Hình thoi** được xác định bởi: Thang cân: $1$ trục; Chữ nhật: $2$ trục; '
+                        'Thoi: $2$ trục.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 21: Hình có trục đối xứng**, nội dung/biểu thức Tam giác đều: $3$ trục; Hình '
-                 'vuông: $4$ trục; Lục giác đều: $6$ trục; Hình tròn: vô số trục là quy tắc hoặc công thức '
-                 'của mục nào sau đây?',
-            'options': ['Hình thang cân / Hình chữ nhật / Hình thoi',
-                        'Quan hệ phần tử – tập hợp',
-                        'Hai cách mô tả',
-                        'Đa giác đều và Hình tròn'],
+            'q': 'Khi học **Bài 21: Hình có trục đối xứng**, biểu thức hoặc quy tắc nào dưới đây biểu diễn '
+                 'đúng **Đa giác đều và Hình tròn**?',
+            'options': ['Tam giác đều: $4$ trục; Hình vuông: $4$ trục; Lục giác đều: $6$ trục; Hình tròn: vô '
+                        'số trục',
+                        'Tam giác đều: $3$ trục; Hình vuông: $4$ trục; Lục giác đều: $5$ trục; Hình tròn: vô '
+                        'số trục',
+                        'Tam giác đều: $6$ trục; Hình vuông: $4$ trục; Lục giác đều: $6$ trục; Hình tròn: vô '
+                        'số trục',
+                        'Tam giác đều: $3$ trục; Hình vuông: $4$ trục; Lục giác đều: $6$ trục; Hình tròn: vô '
+                        'số trục'],
             'answer': 3,
-            'solution': 'Trong Bài 21: Hình có trục đối xứng, biểu thức/quy tắc Tam giác đều: $3$ trục; Hình '
-                        'vuông: $4$ trục; Lục giác đều: $6$ trục; Hình tròn: vô số trục chính là nội dung '
-                        'của **Đa giác đều và Hình tròn**.'},
+            'solution': 'Trong Bài 21: Hình có trục đối xứng, **Đa giác đều và Hình tròn** có công thức/quy '
+                        'tắc là: Tam giác đều: $3$ trục; Hình vuông: $4$ trục; Lục giác đều: $6$ trục; Hình '
+                        'tròn: vô số trục.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Một tờ giấy hình chữ nhật (không phải hình vuông) có bao nhiêu cách gấp đôi để hai nửa '
@@ -3245,18 +3253,17 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 21: Hình có trục đối xứng** (Chương V: Tính đối xứng của hình phẳng trong tự '
-                 'nhiên), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của '
-                 'bài?',
-            'options': ['Sử dụng được thuật ngữ tập hợp, phần tử thuộc ($\\in$) hoặc không thuộc ($\\notin$) '
-                        'một tập hợp.',
+            'q': 'Để nắm vững bản chất của **Bài 21: Hình có trục đối xứng**, nhận định nào sau đây là '
+                 '**chính xác**?',
+            'options': ['Nhận biết được hình phẳng có trục đối xứng thông qua thao tác gấp đôi chồng khít. '
+                        '(với dấu ngược lại)',
                         'Nhận biết được hình phẳng có trục đối xứng thông qua thao tác gấp đôi chồng khít.',
-                        'Cho được một tập hợp bằng cách liệt kê các phần tử hoặc chỉ ra tính chất đặc trưng '
-                        'cho các phần tử.',
-                        'Phân biệt được tập hợp $\\mathbb{N}$ và $\\mathbb{N}^*$; xác định được giá trị từng '
-                        'chữ số của số tự nhiên trong hệ thập phân.'],
+                        'Đảo ngược vế của quy tắc: Nhận biết được hình phẳng có trục đối xứng thông qua thao '
+                        'tác gấp đôi chồng khít.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nhận biết được hình phẳng có '
+                        'trục đối xứng thông qua thao tác gấp đôi chồng khít.'],
             'answer': 1,
-            'solution': 'Theo yêu cầu cần đạt của Bài 21: Hình có trục đối xứng: Nhận biết được hình phẳng '
+            'solution': 'Theo nội dung cốt lõi của Bài 21: Hình có trục đối xứng: Nhận biết được hình phẳng '
                         'có trục đối xứng thông qua thao tác gấp đôi chồng khít.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -3272,39 +3279,39 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 21: Hình có trục đối '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 21: Hình có trục đối '
                  'xứng**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được hình phẳng có trục '
-                           'đối xứng thông qua thao tác gấp đôi chồng khít.',
-                           'Quy tắc/công thức **Hình thang cân / Hình chữ nhật / Hình thoi** trong bài được '
-                           'xác định bởi: Thang cân: $1$ trục; Chữ nhật: $2$ trục; Thoi: $2$ trục.',
-                           'Trong mọi trường hợp, **Hình thang cân / Hình chữ nhật / Hình thoi** luôn được '
-                           'tính bằng công thức $x \\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc '
-                           '$A$) (thuộc Quan hệ phần tử – tập hợp) mà không cần điều kiện của Bài 21: Hình '
-                           'có trục đối xứng.',
-                           'Với bài toán minh họa: “Trong các chữ cái in hoa $\\text{A}, \\text{H}, '
-                           '\\text{N}, \\text{M}$, những chữ cái nào có trục đối xứng?”, lời giải đúng là: '
-                           'Các chữ cái có trục đối xứng là $\\text{A}$ ($1$ trục dọc), $\\text{H}$ ($2$ '
-                           'trục dọc và ngang), $\\text{M}$ ($1$ trục dọc). Chữ $\\text{N}$ khô...'],
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết được hình phẳng có trục đối '
+                           'xứng thông qua thao tác gấp đôi chồng khít.',
+                           'Trong **Bài 21: Hình có trục đối xứng**, quy tắc/công thức **Hình thang cân / '
+                           'Hình chữ nhật / Hình thoi** được viết là: Thang cân: $1$ trục; Chữ nhật: $2$ '
+                           'trục; Thoi: $2$ trục.',
+                           'Nếu áp dụng sai dấu/phép tính thành Thang cân: $2$ trục; Chữ nhật: $2$ trục; '
+                           'Thoi: $2$ trục thì kết quả của **Hình thang cân / Hình chữ nhật / Hình thoi** '
+                           'trong **Bài 21: Hình có trục đối xứng** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Trong các chữ cái in hoa $\\text{A}, \\text{H}, \\text{N}, '
+                           '\\text{M}$, những chữ cái nào có trục đối xứng?”, kết quả giải đúng là: Các chữ '
+                           'cái có trục đối xứng là $\\text{A}$ ($1$ trục dọc), $\\text{H}$ ($2$ trục dọc và '
+                           'ngang), $\\text{M}$ ($1$ trục dọc). Chữ $\\text{N}$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 21: Hình có trục đối xứng. b) **Đúng** '
-                        'theo công thức trọng tâm **Hình thang cân / Hình chữ nhật / Hình thoi** (Thang cân: '
-                        '$1$ trục; Chữ nhật: $2$ trục; Thoi: $2$ trục). c) **Sai** vì $x \\in A$ ($x$ thuộc '
-                        '$A$); $y \\notin A$ ($y$ không thuộc $A$) là công thức của nội dung khác, không '
-                        'phải quy tắc chung của **Hình thang cân / Hình chữ nhật / Hình thoi**. d) **Đúng** '
-                        'theo lời giải ví dụ minh họa trong bài học.'},
+                        'theo công thức **Hình thang cân / Hình chữ nhật / Hình thoi** (Thang cân: $1$ trục; '
+                        'Chữ nhật: $2$ trục; Thoi: $2$ trục). c) **Sai** vì công thức đúng của **Hình thang '
+                        'cân / Hình chữ nhật / Hình thoi** phải là Thang cân: $1$ trục; Chữ nhật: $2$ trục; '
+                        'Thoi: $2$ trục chứ không phải Thang cân: $2$ trục; Chữ nhật: $2$ trục; Thoi: $2$ '
+                        'trục. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 21: Hình có trục đối xứng** để giải quyết tình huống sau: Trong '
-                 'các chữ cái in hoa $\\text{A}, \\text{H}, \\text{N}, \\text{M}$, những chữ cái nào có trục '
-                 'đối xứng? Kết quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Ta có $M = \\{\\text{T}, \\text{O}, \\text{A}, \\text{N}, \\text{H}, \\text{C}\\}$ '
-                        '(chữ O xuất hiện $2$ lần nhưng chỉ viết $1$ lần). Tập hợp $M$ có $6$ phần tử.',
-                        'Số $27$ viết là $\\text{XXVII}$, số $19$ viết là $\\text{XIX}$. Ta có '
-                        '$\\overline{ab} = a \\times 10 + b$.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 21: Hình có trục đối xứng** để giải bài toán sau: '
+                 'Trong các chữ cái in hoa $\\text{A}, \\text{H}, \\text{N}, \\text{M}$, những chữ cái nào '
+                 'có trục đối xứng? Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Các chữ cái có trục đối xứng là $\\text{A}$ ($2$ trục dọc), $\\text{H}$ ($2$ trục '
+                        'dọc và ngang), $\\text{M}$ ($1$ trục dọc). Chữ $\\text{N}$ không có trục...',
                         'Các chữ cái có trục đối xứng là $\\text{A}$ ($1$ trục dọc), $\\text{H}$ ($2$ trục '
-                        'dọc và ngang), $\\text{M}$ ($1$ trục dọc). Chữ $\\text{N}$ không có trục đối...',
-                        'Các số tự nhiên từ $4$ đến $8$ là $4; 5; 6; 7; 8$. Vậy $A = \\{4; 5; 6; 7; 8\\}$.'],
+                        'dọc và ngang), $\\text{M}$ ($2$ trục dọc). Chữ $\\text{N}$ không có trục...',
+                        'Các chữ cái có trục đối xứng là $\\text{A}$ ($1$ trục dọc), $\\text{H}$ ($2$ trục '
+                        'dọc và ngang), $\\text{M}$ ($1$ trục dọc). Chữ $\\text{N}$ không có trục...',
+                        'Trường hợp sai quy tắc (sai lệch 1 đơn vị so với công thức trong bài)'],
             'answer': 2,
             'solution': 'Lời giải chi tiết theo Bài 21: Hình có trục đối xứng: Các chữ cái có trục đối xứng '
                         'là $\\text{A}$ ($1$ trục dọc), $\\text{H}$ ($2$ trục dọc và ngang), $\\text{M}$ '
@@ -3328,8 +3335,8 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
                  'trong tự nhiên.',
   'requirements': ['Nhận biết được hình phẳng có tâm đối xứng thông qua phép quay nửa vòng ($180^\\circ$).',
                    'Phân biệt được hình nào có tâm đối xứng, hình nào có trục đối xứng hoặc có cả hai.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Các hình CÓ tâm đối xứng** (Đoạn thẳng, '
-                   'Hình bình hành, Chữ nhật, Thoi, Vuông, Lục giác đều, Hình tròn) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 22: Hình có tâm đối xứng** để giải bài tập minh họa và bài '
+                   'toán thực tiễn.'],
   'definition': '- Một hình được gọi là **hình có tâm đối xứng** nếu có một điểm $O$ sao cho khi ta **quay '
                 'hình một nửa vòng ($180^\\circ$)** quanh điểm $O$ thì hình thu được **chồng khít** với '
                 'chính nó ở vị trí ban đầu.\n'
@@ -3340,7 +3347,7 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'của hai đường chéo**.\n'
             '- **Hình lục giác đều**: có tâm đối xứng là giao điểm của ba đường chéo chính.\n'
             '- **Hình tam giác đều** và **hình thang cân**: **không có** tâm đối xứng.',
-  'formulas': [{'category': 'I. Phân loại đối xứng tâm',
+  'formulas': [{'category': 'Phân loại đối xứng tâm',
                 'items': [{'name': 'Các hình CÓ tâm đối xứng',
                            'formula': 'Đoạn thẳng, Hình bình hành, Chữ nhật, Thoi, Vuông, Lục giác đều, Hình '
                                       'tròn'},
@@ -3372,28 +3379,31 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 22: Hình có tâm đối xứng**, công thức hoặc quy tắc nào '
-                 'sau đây biểu diễn đúng **Các hình CÓ tâm đối xứng**?',
-            'options': ['Hình tam giác đều, Hình thang cân, Ngũ giác đều',
-                        '$x \\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$)',
-                        'Liệt kê $A = \\{0; 1; 2; 3\\}$ hoặc đặc trưng $A = \\{x \\in \\mathbb{N} \\mid x < '
-                        '4\\}$',
+            'q': 'Trong **Bài 22: Hình có tâm đối xứng**, quy tắc hoặc công thức nào sau đây xác định đúng '
+                 '**Các hình CÓ tâm đối xứng**?',
+            'options': ['Đoạn thẳng, Hình bình hành, Chữ nhật, Thoi, Vuông, Lục giác đều, Hình tròn (với dấu '
+                        'ngược lại)',
+                        'Đảo ngược vế của quy tắc: Đoạn thẳng, Hình bình hành, Chữ nhật, Thoi, Vuông, Lục '
+                        'giác đều, Hình tròn',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Đoạn thẳng, Hình bình hành, Chữ '
+                        'nhật, Thoi, Vuông, Lục giác đều, Hình tròn',
                         'Đoạn thẳng, Hình bình hành, Chữ nhật, Thoi, Vuông, Lục giác đều, Hình tròn'],
             'answer': 3,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 22: Hình có tâm đối xứng, **Các hình CÓ tâm '
-                        'đối xứng** được xác định bởi: Đoạn thẳng, Hình bình hành, Chữ nhật, Thoi, Vuông, '
-                        'Lục giác đều, Hình tròn.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 22: Hình có tâm đối xứng, **Các hình CÓ tâm đối '
+                        'xứng** được xác định bởi: Đoạn thẳng, Hình bình hành, Chữ nhật, Thoi, Vuông, Lục '
+                        'giác đều, Hình tròn.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 22: Hình có tâm đối xứng**, nội dung/biểu thức Hình tam giác đều, Hình thang '
-                 'cân, Ngũ giác đều là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Các hình KHÔNG có tâm đối xứng',
-                        'Các hình CÓ tâm đối xứng',
-                        'Quan hệ phần tử – tập hợp',
-                        'Hai cách mô tả'],
+            'q': 'Khi học **Bài 22: Hình có tâm đối xứng**, biểu thức hoặc quy tắc nào dưới đây biểu diễn '
+                 'đúng **Các hình KHÔNG có tâm đối xứng**?',
+            'options': ['Hình tam giác đều, Hình thang cân, Ngũ giác đều',
+                        'Hình tam giác đều, Hình thang cân, Ngũ giác đều (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Hình tam giác đều, Hình thang cân, Ngũ giác đều',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Hình tam giác đều, Hình thang '
+                        'cân, Ngũ giác đều'],
             'answer': 0,
-            'solution': 'Trong Bài 22: Hình có tâm đối xứng, biểu thức/quy tắc Hình tam giác đều, Hình thang '
-                        'cân, Ngũ giác đều chính là nội dung của **Các hình KHÔNG có tâm đối xứng**.'},
+            'solution': 'Trong Bài 22: Hình có tâm đối xứng, **Các hình KHÔNG có tâm đối xứng** có công '
+                        'thức/quy tắc là: Hình tam giác đều, Hình thang cân, Ngũ giác đều.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Chữ cái in hoa nào sau đây có tâm đối xứng nhưng **không** có trục đối xứng?',
@@ -3405,20 +3415,19 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 22: Hình có tâm đối xứng** (Chương V: Tính đối xứng của hình phẳng trong tự '
-                 'nhiên), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của '
-                 'bài?',
-            'options': ['Sử dụng được thuật ngữ tập hợp, phần tử thuộc ($\\in$) hoặc không thuộc ($\\notin$) '
-                        'một tập hợp.',
-                        'Cho được một tập hợp bằng cách liệt kê các phần tử hoặc chỉ ra tính chất đặc trưng '
-                        'cho các phần tử.',
+            'q': 'Để nắm vững bản chất của **Bài 22: Hình có tâm đối xứng**, nhận định nào sau đây là '
+                 '**chính xác**?',
+            'options': ['Nhận biết được hình phẳng có tâm đối xứng thông qua phép quay nửa vòng '
+                        '($190^\\circ$).',
+                        'Nhận biết được hình phẳng có tâm đối xứng thông qua phép quay nửa vòng '
+                        '($179^\\circ$).',
                         'Nhận biết được hình phẳng có tâm đối xứng thông qua phép quay nửa vòng '
                         '($180^\\circ$).',
-                        'Phân biệt được tập hợp $\\mathbb{N}$ và $\\mathbb{N}^*$; xác định được giá trị từng '
-                        'chữ số của số tự nhiên trong hệ thập phân.'],
+                        'Nhận biết được hình phẳng có tâm đối xứng thông qua phép quay nửa vòng '
+                        '($182^\\circ$).'],
             'answer': 2,
-            'solution': 'Theo yêu cầu cần đạt của Bài 22: Hình có tâm đối xứng: Nhận biết được hình phẳng có '
-                        'tâm đối xứng thông qua phép quay nửa vòng ($180^\\circ$).'},
+            'solution': 'Theo nội dung cốt lõi của Bài 22: Hình có tâm đối xứng: Nhận biết được hình phẳng '
+                        'có tâm đối xứng thông qua phép quay nửa vòng ($180^\\circ$).'},
            {'level': 'hieu',
             'type': 'tf4',
             'q': 'Xét tính đối xứng của các chữ cái in hoa $\\text{H}, \\text{A}, \\text{N}$ và các hình tứ '
@@ -3434,36 +3443,38 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 22: Hình có tâm đối '
-                 'xứng**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được hình phẳng có tâm '
-                           'đối xứng thông qua phép quay nửa vòng ($180^\\circ$).',
-                           'Quy tắc/công thức **Các hình CÓ tâm đối xứng** trong bài được xác định bởi: Đoạn '
-                           'thẳng, Hình bình hành, Chữ nhật, Thoi, Vuông, Lục giác đều, Hình tròn.',
-                           'Trong mọi trường hợp, **Các hình CÓ tâm đối xứng** luôn được tính bằng công thức '
-                           '$x \\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$) (thuộc Quan hệ '
-                           'phần tử – tập hợp) mà không cần điều kiện của Bài 22: Hình có tâm đối xứng.',
-                           'Với bài toán minh họa: “Trong các chữ cái in hoa $\\text{H}, \\text{A}, '
-                           '\\text{N}, \\text{O}, \\text{Z}$, chữ cái nào có tâm đối xứng?”, lời giải đúng '
-                           'là: Các chữ cái khi quay $180^\\circ$ trùng với chính nó là $\\text{H}, '
-                           '\\text{N}, \\text{O}, \\text{Z}$ (chữ $\\text{A}$ không có tâm đối xứng).'],
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 22: Hình có tâm đối xứng**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết được hình phẳng có tâm đối '
+                           'xứng thông qua phép quay nửa vòng ($180^\\circ$).',
+                           'Trong **Bài 22: Hình có tâm đối xứng**, quy tắc/công thức **Các hình CÓ tâm đối '
+                           'xứng** được viết là: Đoạn thẳng, Hình bình hành, Chữ nhật, Thoi, Vuông, Lục giác '
+                           'đều, Hình tròn.',
+                           'Nếu áp dụng sai dấu/phép tính thành Đoạn thẳng, Hình bình hành, Chữ nhật, Thoi, '
+                           'Vuông, Lục giác đều, Hình tròn (với dấu ngược lại) thì kết quả của **Các hình CÓ '
+                           'tâm đối xứng** trong **Bài 22: Hình có tâm đối xứng** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Trong các chữ cái in hoa $\\text{H}, \\text{A}, \\text{N}, '
+                           '\\text{O}, \\text{Z}$, chữ cái nào có tâm đối xứng?”, kết quả giải đúng là: Các '
+                           'chữ cái khi quay $180^\\circ$ trùng với chính nó là $\\text{H}, \\text{N}, '
+                           '\\text{O}, \\text{Z}$ (chữ $\\text{A}$ không có tâm đối xứng).'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 22: Hình có tâm đối xứng. b) **Đúng** theo '
-                        'công thức trọng tâm **Các hình CÓ tâm đối xứng** (Đoạn thẳng, Hình bình hành, Chữ '
-                        'nhật, Thoi, Vuông, Lục giác đều, Hình tròn). c) **Sai** vì $x \\in A$ ($x$ thuộc '
-                        '$A$); $y \\notin A$ ($y$ không thuộc $A$) là công thức của nội dung khác, không '
-                        'phải quy tắc chung của **Các hình CÓ tâm đối xứng**. d) **Đúng** theo lời giải ví '
-                        'dụ minh họa trong bài học.'},
+                        'công thức **Các hình CÓ tâm đối xứng** (Đoạn thẳng, Hình bình hành, Chữ nhật, Thoi, '
+                        'Vuông, Lục giác đều, Hình tròn). c) **Sai** vì công thức đúng của **Các hình CÓ tâm '
+                        'đối xứng** phải là Đoạn thẳng, Hình bình hành, Chữ nhật, Thoi, Vuông, Lục giác đều, '
+                        'Hình tròn chứ không phải Đoạn thẳng, Hình bình hành, Chữ nhật, Thoi, Vuông, Lục '
+                        'giác đều, Hình tròn (với dấu ngược lại). d) **Đúng** theo lời giải ví dụ minh họa '
+                        'trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 22: Hình có tâm đối xứng** để giải quyết tình huống sau: Trong '
-                 'các chữ cái in hoa $\\text{H}, \\text{A}, \\text{N}, \\text{O}, \\text{Z}$, chữ cái nào có '
-                 'tâm đối xứng? Kết quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Ta có $M = \\{\\text{T}, \\text{O}, \\text{A}, \\text{N}, \\text{H}, \\text{C}\\}$ '
-                        '(chữ O xuất hiện $2$ lần nhưng chỉ viết $1$ lần). Tập hợp $M$ có $6$ phần tử.',
-                        'Số $27$ viết là $\\text{XXVII}$, số $19$ viết là $\\text{XIX}$. Ta có '
-                        '$\\overline{ab} = a \\times 10 + b$.',
-                        'Các số tự nhiên từ $4$ đến $8$ là $4; 5; 6; 7; 8$. Vậy $A = \\{4; 5; 6; 7; 8\\}$.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 22: Hình có tâm đối xứng** để giải bài toán sau: '
+                 'Trong các chữ cái in hoa $\\text{H}, \\text{A}, \\text{N}, \\text{O}, \\text{Z}$, chữ cái '
+                 'nào có tâm đối xứng? Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Các chữ cái khi quay $190^\\circ$ trùng với chính nó là $\\text{H}, \\text{N}, '
+                        '\\text{O}, \\text{Z}$ (chữ $\\text{A}$ không có tâm đối xứng).',
+                        'Các chữ cái khi quay $179^\\circ$ trùng với chính nó là $\\text{H}, \\text{N}, '
+                        '\\text{O}, \\text{Z}$ (chữ $\\text{A}$ không có tâm đối xứng).',
+                        'Các chữ cái khi quay $182^\\circ$ trùng với chính nó là $\\text{H}, \\text{N}, '
+                        '\\text{O}, \\text{Z}$ (chữ $\\text{A}$ không có tâm đối xứng).',
                         'Các chữ cái khi quay $180^\\circ$ trùng với chính nó là $\\text{H}, \\text{N}, '
                         '\\text{O}, \\text{Z}$ (chữ $\\text{A}$ không có tâm đối xứng).'],
             'answer': 3,
@@ -3492,9 +3503,8 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
                    'bằng nhau $a \\cdot d = b \\cdot c$.',
                    'Vận dụng tính chất cơ bản của phân số để rút gọn phân số và đổi phân số có mẫu âm thành '
                    'mẫu dương.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Quy tắc bằng nhau** ($\\dfrac{a}{b} = '
-                   '\\dfrac{c}{d} \\Leftrightarrow a \\cdot d = b \\cdot c$ ($b, d \\ne 0$)) vào giải bài '
-                   'tập.'],
+                   'Vận dụng kiến thức của **Bài 23: Mở rộng khái niệm phân số. Phân số bằng nhau** để giải '
+                   'bài tập minh họa và bài toán thực tiễn.'],
   'definition': '- Với $a, b \\in \\mathbb{Z}, b \\ne 0$, ta gọi $\\dfrac{a}{b}$ là một **phân số**, trong '
                 'đó $a$ là tử số (tử), $b$ là mẫu số (mẫu).\n'
                 '- **Hai phân số bằng nhau**: $\\dfrac{a}{b} = \\dfrac{c}{d}$ nếu $a \\cdot d = b \\cdot '
@@ -3507,7 +3517,7 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             '$\\dfrac{3}{-5} = \\dfrac{-3}{5}$ và $\\dfrac{-4}{-7} = \\dfrac{4}{7}$).\n'
             '### 2. Rút gọn về phân số tối giản\n'
             '- Chia cả tử và mẫu cho $\\text{ƯCLN}$ của $|a|$ và $|b|$.',
-  'formulas': [{'category': 'I. Phân số bằng nhau và Tính chất cơ bản',
+  'formulas': [{'category': 'Phân số bằng nhau và Tính chất cơ bản',
                 'items': [{'name': 'Quy tắc bằng nhau',
                            'formula': '$\\dfrac{a}{b} = \\dfrac{c}{d} \\Leftrightarrow a \\cdot d = b \\cdot '
                                       'c$ ($b, d \\ne 0$)'},
@@ -3536,31 +3546,33 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 23: Mở rộng khái niệm phân số. Phân số bằng nhau**, công '
-                 'thức hoặc quy tắc nào sau đây biểu diễn đúng **Quy tắc bằng nhau**?',
+            'q': 'Trong **Bài 23: Mở rộng khái niệm phân số. Phân số bằng nhau**, quy tắc hoặc công thức nào '
+                 'sau đây xác định đúng **Quy tắc bằng nhau**?',
             'options': ['$\\dfrac{a}{b} = \\dfrac{c}{d} \\Leftrightarrow a \\cdot d = b \\cdot c$ ($b, d '
                         '\\ne 0$)',
-                        '$\\dfrac{a}{-b} = \\dfrac{-a}{b}$; $\\dfrac{-a}{-b} = \\dfrac{a}{b}$',
-                        '$x \\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$)',
-                        'Liệt kê $A = \\{0; 1; 2; 3\\}$ hoặc đặc trưng $A = \\{x \\in \\mathbb{N} \\mid x < '
-                        '4\\}$'],
+                        '$\\dfrac{a}{b} = \\dfrac{c}{d} \\Leftrightarrow a : d = b \\cdot c$ ($b, d \\ne 0$)',
+                        '$\\dfrac{b}{a} = \\dfrac{c}{d} \\Leftrightarrow a \\cdot d = b \\cdot c$ ($b, d '
+                        '\\ne 0$)',
+                        '$\\dfrac{a}{b} = \\dfrac{c}{d} \\Leftrightarrow a \\cdot d = b \\cdot c$ ($b, d '
+                        '\\ne 2$)'],
             'answer': 0,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 23: Mở rộng khái niệm phân số. Phân số bằng '
-                        'nhau, **Quy tắc bằng nhau** được xác định bởi: $\\dfrac{a}{b} = \\dfrac{c}{d} '
+            'solution': 'Theo kiến thức trọng tâm của Bài 23: Mở rộng khái niệm phân số. Phân số bằng nhau, '
+                        '**Quy tắc bằng nhau** được xác định bởi: $\\dfrac{a}{b} = \\dfrac{c}{d} '
                         '\\Leftrightarrow a \\cdot d = b \\cdot c$ ($b, d \\ne 0$).'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 23: Mở rộng khái niệm phân số. Phân số bằng nhau**, nội dung/biểu thức '
-                 '$\\dfrac{a}{-b} = \\dfrac{-a}{b}$; $\\dfrac{-a}{-b} = \\dfrac{a}{b}$ là quy tắc hoặc công '
-                 'thức của mục nào sau đây?',
-            'options': ['Quy tắc bằng nhau',
-                        'Quy tắc đổi dấu mẫu',
-                        'Quan hệ phần tử – tập hợp',
-                        'Hai cách mô tả'],
+            'q': 'Khi học **Bài 23: Mở rộng khái niệm phân số. Phân số bằng nhau**, biểu thức hoặc quy tắc '
+                 'nào dưới đây biểu diễn đúng **Quy tắc đổi dấu mẫu**?',
+            'options': ['$\\dfrac{a}{-b} = \\dfrac{-a}{b}$; $\\dfrac{-a}{-b} = \\dfrac{a}{b}$ (với dấu ngược '
+                        'lại)',
+                        '$\\dfrac{a}{-b} = \\dfrac{-a}{b}$; $\\dfrac{-a}{-b} = \\dfrac{a}{b}$',
+                        '$\\dfrac{-b}{a} = \\dfrac{-a}{b}$; $\\dfrac{-a}{-b} = \\dfrac{a}{b}$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\dfrac{a}{-b} = '
+                        '\\dfrac{-a}{b}$; $\\dfrac{-a}{-b} = \\dfrac{a}{b}$'],
             'answer': 1,
-            'solution': 'Trong Bài 23: Mở rộng khái niệm phân số. Phân số bằng nhau, biểu thức/quy tắc '
-                        '$\\dfrac{a}{-b} = \\dfrac{-a}{b}$; $\\dfrac{-a}{-b} = \\dfrac{a}{b}$ chính là nội '
-                        'dung của **Quy tắc đổi dấu mẫu**.'},
+            'solution': 'Trong Bài 23: Mở rộng khái niệm phân số. Phân số bằng nhau, **Quy tắc đổi dấu mẫu** '
+                        'có công thức/quy tắc là: $\\dfrac{a}{-b} = \\dfrac{-a}{b}$; $\\dfrac{-a}{-b} = '
+                        '\\dfrac{a}{b}$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Tìm số nguyên $x$ biết $\\dfrac{x}{15} = \\dfrac{-4}{5}$:',
@@ -3571,20 +3583,20 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 23: Mở rộng khái niệm phân số. Phân số bằng nhau** (Chương VI: Phân số), '
-                 'khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Sử dụng được thuật ngữ tập hợp, phần tử thuộc ($\\in$) hoặc không thuộc ($\\notin$) '
-                        'một tập hợp.',
-                        'Cho được một tập hợp bằng cách liệt kê các phần tử hoặc chỉ ra tính chất đặc trưng '
-                        'cho các phần tử.',
-                        'Phân biệt được tập hợp $\\mathbb{N}$ và $\\mathbb{N}^*$; xác định được giá trị từng '
-                        'chữ số của số tự nhiên trong hệ thập phân.',
+            'q': 'Để nắm vững bản chất của **Bài 23: Mở rộng khái niệm phân số. Phân số bằng nhau**, nhận '
+                 'định nào sau đây là **chính xác**?',
+            'options': ['Nhận biết được phân số $\\dfrac{a}{b}$ với $a, b \\notin \\mathbb{Z}, b \\ne 0$ và '
+                        'quy tắc bằng nhau $a \\cdot d = b \\cdot c$.',
+                        'Nhận biết được phân số $\\dfrac{b}{a}$ với $a, b \\in \\mathbb{Z}, b \\ne 0$ và quy '
+                        'tắc bằng nhau $a \\cdot d = b \\cdot c$.',
+                        'Nhận biết được phân số $\\dfrac{a}{b}$ với $a, b \\in \\mathbb{Z}, b \\ne 2$ và quy '
+                        'tắc bằng nhau $a \\cdot d = b \\cdot c$.',
                         'Nhận biết được phân số $\\dfrac{a}{b}$ với $a, b \\in \\mathbb{Z}, b \\ne 0$ và quy '
                         'tắc bằng nhau $a \\cdot d = b \\cdot c$.'],
             'answer': 3,
-            'solution': 'Theo yêu cầu cần đạt của Bài 23: Mở rộng khái niệm phân số. Phân số bằng nhau: Nhận '
-                        'biết được phân số $\\dfrac{a}{b}$ với $a, b \\in \\mathbb{Z}, b \\ne 0$ và quy tắc '
-                        'bằng nhau $a \\cdot d = b \\cdot c$.'},
+            'solution': 'Theo nội dung cốt lõi của Bài 23: Mở rộng khái niệm phân số. Phân số bằng nhau: '
+                        'Nhận biết được phân số $\\dfrac{a}{b}$ với $a, b \\in \\mathbb{Z}, b \\ne 0$ và quy '
+                        'tắc bằng nhau $a \\cdot d = b \\cdot c$.'},
            {'level': 'hieu',
             'type': 'tf4',
             'q': 'Xét các phân số với tử và mẫu nguyên. Mỗi khẳng định sau đúng hay sai?',
@@ -3599,40 +3611,42 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 23: Mở rộng khái niệm '
-                 'phân số. Phân số bằng nhau**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được phân số '
-                           '$\\dfrac{a}{b}$ với $a, b \\in \\mathbb{Z}, b \\ne 0$ và quy tắc bằng nhau $a '
-                           '\\cdot d = b \\cdot c$.',
-                           'Quy tắc/công thức **Quy tắc bằng nhau** trong bài được xác định bởi: '
-                           '$\\dfrac{a}{b} = \\dfrac{c}{d} \\Leftrightarrow a \\cdot d = b \\cdot c$ ($b, d '
-                           '\\ne 0$).',
-                           'Trong mọi trường hợp, **Quy tắc bằng nhau** luôn được tính bằng công thức $x '
-                           '\\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$) (thuộc Quan hệ phần '
-                           'tử – tập hợp) mà không cần điều kiện của Bài 23: Mở rộng khái niệm phân số. Phân '
-                           'số bằng nhau.',
-                           'Với bài toán minh họa: “Tìm số nguyên $x$ biết $\\dfrac{x}{12} = '
-                           '\\dfrac{-3}{4}$.”, lời giải đúng là: Theo quy tắc bằng nhau của hai phân số: $x '
-                           '\\cdot 4 = 12 \\cdot (-3) = -36 \\Rightarrow x = (-36) : 4 = -9$.'],
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 23: Mở rộng khái niệm phân '
+                 'số. Phân số bằng nhau**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết được phân số $\\dfrac{a}{b}$ '
+                           'với $a, b \\in \\mathbb{Z}, b \\ne 0$ và quy tắc bằng nhau $a \\cdot d = b '
+                           '\\cdot c$.',
+                           'Trong **Bài 23: Mở rộng khái niệm phân số. Phân số bằng nhau**, quy tắc/công '
+                           'thức **Quy tắc bằng nhau** được viết là: $\\dfrac{a}{b} = \\dfrac{c}{d} '
+                           '\\Leftrightarrow a \\cdot d = b \\cdot c$ ($b, d \\ne 0$).',
+                           'Nếu áp dụng sai dấu/phép tính thành $\\dfrac{a}{b} = \\dfrac{c}{d} '
+                           '\\Leftrightarrow a : d = b \\cdot c$ ($b, d \\ne 0$) thì kết quả của **Quy tắc '
+                           'bằng nhau** trong **Bài 23: Mở rộng khái niệm phân số. Phân số bằng nhau** vẫn '
+                           'không thay đổi.',
+                           'Xét ví dụ của bài: “Tìm số nguyên $x$ biết $\\dfrac{x}{12} = \\dfrac{-3}{4}$.”, '
+                           'kết quả giải đúng là: Theo quy tắc bằng nhau của hai phân số: $x \\cdot 4 = 12 '
+                           '\\cdot (-3) = -36 \\Rightarrow x = (-36) : 4 = -9$.'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 23: Mở rộng khái niệm phân số. Phân số '
-                        'bằng nhau. b) **Đúng** theo công thức trọng tâm **Quy tắc bằng nhau** '
-                        '($\\dfrac{a}{b} = \\dfrac{c}{d} \\Leftrightarrow a \\cdot d = b \\cdot c$ ($b, d '
-                        '\\ne 0$)). c) **Sai** vì $x \\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc '
-                        '$A$) là công thức của nội dung khác, không phải quy tắc chung của **Quy tắc bằng '
-                        'nhau**. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        'bằng nhau. b) **Đúng** theo công thức **Quy tắc bằng nhau** ($\\dfrac{a}{b} = '
+                        '\\dfrac{c}{d} \\Leftrightarrow a \\cdot d = b \\cdot c$ ($b, d \\ne 0$)). c) '
+                        '**Sai** vì công thức đúng của **Quy tắc bằng nhau** phải là $\\dfrac{a}{b} = '
+                        '\\dfrac{c}{d} \\Leftrightarrow a \\cdot d = b \\cdot c$ ($b, d \\ne 0$) chứ không '
+                        'phải $\\dfrac{a}{b} = \\dfrac{c}{d} \\Leftrightarrow a : d = b \\cdot c$ ($b, d '
+                        '\\ne 0$). d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 23: Mở rộng khái niệm phân số. Phân số bằng nhau** để giải quyết '
-                 'tình huống sau: Tìm số nguyên $x$ biết $\\dfrac{x}{12} = \\dfrac{-3}{4}$. Kết quả và hướng '
-                 'giải nào dưới đây là **đúng**?',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 23: Mở rộng khái niệm phân số. Phân số bằng nhau** '
+                 'để giải bài toán sau: Tìm số nguyên $x$ biết $\\dfrac{x}{12} = \\dfrac{-3}{4}$. Cách giải '
+                 'và kết quả nào dưới đây là **đúng**?',
             'options': ['Theo quy tắc bằng nhau của hai phân số: $x \\cdot 4 = 12 \\cdot (-3) = -36 '
                         '\\Rightarrow x = (-36) : 4 = -9$.',
-                        'Ta có $M = \\{\\text{T}, \\text{O}, \\text{A}, \\text{N}, \\text{H}, \\text{C}\\}$ '
-                        '(chữ O xuất hiện $2$ lần nhưng chỉ viết $1$ lần). Tập hợp $M$ có $6$ phần tử.',
-                        'Số $27$ viết là $\\text{XXVII}$, số $19$ viết là $\\text{XIX}$. Ta có '
-                        '$\\overline{ab} = a \\times 10 + b$.',
-                        'Các số tự nhiên từ $4$ đến $8$ là $4; 5; 6; 7; 8$. Vậy $A = \\{4; 5; 6; 7; 8\\}$.'],
+                        'Theo quy tắc bằng nhau của hai phân số: $x : 4 = 12 \\cdot (-3) = -36 \\Rightarrow '
+                        'x = (-36) : 4 = -9$.',
+                        'Theo quy tắc bằng nhau của hai phân số: $x \\cdot 4 = 12 \\cdot (-3) = -36 '
+                        '\\Rightarrow x = (-36) : 4 = -8$.',
+                        'Theo quy tắc bằng nhau của hai phân số: $x \\cdot 8 = 12 \\cdot (-3) = -36 '
+                        '\\Rightarrow x = (-36) : 4 = -9$.'],
             'answer': 0,
             'solution': 'Lời giải chi tiết theo Bài 23: Mở rộng khái niệm phân số. Phân số bằng nhau: Theo '
                         'quy tắc bằng nhau của hai phân số: $x \\cdot 4 = 12 \\cdot (-3) = -36 \\Rightarrow '
@@ -3657,8 +3671,8 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
   'requirements': ['So sánh được hai phân số bất kì bằng cách viết chúng dưới dạng hai phân số có cùng một '
                    'mẫu dương.',
                    'Viết được phân số dương lớn hơn $1$ thành hỗn số dương và ngược lại.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Cùng mẫu dương m > 0** (Nếu $a < b$ thì '
-                   '$\\dfrac{a}{m} < \\dfrac{b}{m}$) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 24: So sánh phân số. Hỗn số dương** để giải bài tập minh '
+                   'họa và bài toán thực tiễn.'],
   'definition': '- Trong hai phân số có **cùng một mẫu dương**, phân số nào có tử lớn hơn thì phân số đó lớn '
                 'hơn.\n'
                 '- Muốn so sánh hai phân số không cùng mẫu, ta **viết chúng dưới dạng hai phân số có cùng '
@@ -3672,7 +3686,7 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             '### 2. Hỗn số dương\n'
             '- Ví dụ: $\\dfrac{23}{5} = 4\\dfrac{3}{5}$ và $3\\dfrac{1}{4} = \\dfrac{3 \\cdot 4 + 1}{4} = '
             '\\dfrac{13}{4}$.',
-  'formulas': [{'category': 'I. So sánh phân số và Hỗn số dương',
+  'formulas': [{'category': 'So sánh phân số và Hỗn số dương',
                 'items': [{'name': 'Cùng mẫu dương m > 0',
                            'formula': 'Nếu $a < b$ thì $\\dfrac{a}{m} < \\dfrac{b}{m}$'},
                           {'name': 'Đổi hỗn số dương',
@@ -3702,29 +3716,30 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 24: So sánh phân số. Hỗn số dương**, công thức hoặc quy '
-                 'tắc nào sau đây biểu diễn đúng **Cùng mẫu dương m > 0**?',
-            'options': ['$a\\dfrac{b}{c} = \\dfrac{a \\cdot c + b}{c}$ ($a, b, c \\in \\mathbb{N}^*, b < c$)',
+            'q': 'Trong **Bài 24: So sánh phân số. Hỗn số dương**, quy tắc hoặc công thức nào sau đây xác '
+                 'định đúng **Cùng mẫu dương m > 0**?',
+            'options': ['Nếu $a > b$ thì $\\dfrac{a}{m} < \\dfrac{b}{m}$',
                         'Nếu $a < b$ thì $\\dfrac{a}{m} < \\dfrac{b}{m}$',
-                        '$x \\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$)',
-                        'Liệt kê $A = \\{0; 1; 2; 3\\}$ hoặc đặc trưng $A = \\{x \\in \\mathbb{N} \\mid x < '
-                        '4\\}$'],
+                        'Nếu $a < b$ thì $\\dfrac{m}{a} < \\dfrac{b}{m}$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nếu $a < b$ thì $\\dfrac{a}{m} '
+                        '< \\dfrac{b}{m}$'],
             'answer': 1,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 24: So sánh phân số. Hỗn số dương, **Cùng mẫu '
+            'solution': 'Theo kiến thức trọng tâm của Bài 24: So sánh phân số. Hỗn số dương, **Cùng mẫu '
                         'dương m > 0** được xác định bởi: Nếu $a < b$ thì $\\dfrac{a}{m} < \\dfrac{b}{m}$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 24: So sánh phân số. Hỗn số dương**, nội dung/biểu thức $a\\dfrac{b}{c} = '
-                 '\\dfrac{a \\cdot c + b}{c}$ ($a, b, c \\in \\mathbb{N}^*, b < c$) là quy tắc hoặc công '
-                 'thức của mục nào sau đây?',
-            'options': ['Cùng mẫu dương m > 0',
-                        'Quan hệ phần tử – tập hợp',
-                        'Đổi hỗn số dương',
-                        'Hai cách mô tả'],
+            'q': 'Khi học **Bài 24: So sánh phân số. Hỗn số dương**, biểu thức hoặc quy tắc nào dưới đây '
+                 'biểu diễn đúng **Đổi hỗn số dương**?',
+            'options': ['$a\\dfrac{b}{c} = \\dfrac{a \\cdot c + b}{c}$ ($a, b, c \\notin \\mathbb{N}^*, b < '
+                        'c$)',
+                        '$a\\dfrac{c}{b} = \\dfrac{a \\cdot c + b}{c}$ ($a, b, c \\in \\mathbb{N}^*, b < c$)',
+                        '$a\\dfrac{b}{c} = \\dfrac{a \\cdot c + b}{c}$ ($a, b, c \\in \\mathbb{N}^*, b < c$)',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $a\\dfrac{b}{c} = \\dfrac{a '
+                        '\\cdot c + b}{c}$ ($a, b, c \\in \\mathbb{N}^*, b < c$)'],
             'answer': 2,
-            'solution': 'Trong Bài 24: So sánh phân số. Hỗn số dương, biểu thức/quy tắc $a\\dfrac{b}{c} = '
-                        '\\dfrac{a \\cdot c + b}{c}$ ($a, b, c \\in \\mathbb{N}^*, b < c$) chính là nội dung '
-                        'của **Đổi hỗn số dương**.'},
+            'solution': 'Trong Bài 24: So sánh phân số. Hỗn số dương, **Đổi hỗn số dương** có công thức/quy '
+                        'tắc là: $a\\dfrac{b}{c} = \\dfrac{a \\cdot c + b}{c}$ ($a, b, c \\in \\mathbb{N}^*, '
+                        'b < c$).'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Khẳng định nào sau đây là đúng?',
@@ -3738,18 +3753,18 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 24: So sánh phân số. Hỗn số dương** (Chương VI: Phân số), khẳng định nào sau '
-                 'đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
+            'q': 'Để nắm vững bản chất của **Bài 24: So sánh phân số. Hỗn số dương**, nhận định nào sau đây '
+                 'là **chính xác**?',
             'options': ['So sánh được hai phân số bất kì bằng cách viết chúng dưới dạng hai phân số có cùng '
                         'một mẫu dương.',
-                        'Sử dụng được thuật ngữ tập hợp, phần tử thuộc ($\\in$) hoặc không thuộc ($\\notin$) '
-                        'một tập hợp.',
-                        'Cho được một tập hợp bằng cách liệt kê các phần tử hoặc chỉ ra tính chất đặc trưng '
-                        'cho các phần tử.',
-                        'Phân biệt được tập hợp $\\mathbb{N}$ và $\\mathbb{N}^*$; xác định được giá trị từng '
-                        'chữ số của số tự nhiên trong hệ thập phân.'],
+                        'So sánh được hai phân số bất kì bằng cách viết chúng dưới dạng hai phân số có cùng '
+                        'một mẫu dương. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: So sánh được hai phân số bất kì bằng cách viết chúng dưới '
+                        'dạng hai phân số có cùng một mẫu dương.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của So sánh được hai phân số bất kì '
+                        'bằng cách viết chúng dưới dạng hai phân số có cùng một mẫu dương.'],
             'answer': 0,
-            'solution': 'Theo yêu cầu cần đạt của Bài 24: So sánh phân số. Hỗn số dương: So sánh được hai '
+            'solution': 'Theo nội dung cốt lõi của Bài 24: So sánh phân số. Hỗn số dương: So sánh được hai '
                         'phân số bất kì bằng cách viết chúng dưới dạng hai phân số có cùng một mẫu dương.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -3765,39 +3780,43 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 24: So sánh phân số. '
-                 'Hỗn số dương**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: So sánh được hai phân số bất kì '
-                           'bằng cách viết chúng dưới dạng hai phân số có cùng một mẫu dương.',
-                           'Quy tắc/công thức **Cùng mẫu dương m > 0** trong bài được xác định bởi: Nếu $a < '
-                           'b$ thì $\\dfrac{a}{m} < \\dfrac{b}{m}$.',
-                           'Trong mọi trường hợp, **Cùng mẫu dương m > 0** luôn được tính bằng công thức $x '
-                           '\\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$) (thuộc Quan hệ phần '
-                           'tử – tập hợp) mà không cần điều kiện của Bài 24: So sánh phân số. Hỗn số dương.',
-                           'Với bài toán minh họa: “So sánh hai phân số $\\dfrac{-5}{6}$ và '
-                           '$\\dfrac{7}{-8}$.”, lời giải đúng là: Đưa về mẫu dương $24$: $\\dfrac{-5}{6} = '
-                           '\\dfrac{-20}{24}$ và $\\dfrac{7}{-8} = \\dfrac{-7}{8} = \\dfrac{-21}{24}$. Vì '
-                           '$-20 > -21$ nên $\\dfrac{-5}{6} > \\dfrac{7}{-8}$...'],
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 24: So sánh phân số. Hỗn số '
+                 'dương**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: So sánh được hai phân số bất kì bằng '
+                           'cách viết chúng dưới dạng hai phân số có cùng một mẫu dương.',
+                           'Trong **Bài 24: So sánh phân số. Hỗn số dương**, quy tắc/công thức **Cùng mẫu '
+                           'dương m > 0** được viết là: Nếu $a < b$ thì $\\dfrac{a}{m} < \\dfrac{b}{m}$.',
+                           'Nếu áp dụng sai dấu/phép tính thành Nếu $a > b$ thì $\\dfrac{a}{m} < '
+                           '\\dfrac{b}{m}$ thì kết quả của **Cùng mẫu dương m > 0** trong **Bài 24: So sánh '
+                           'phân số. Hỗn số dương** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “So sánh hai phân số $\\dfrac{-5}{6}$ và $\\dfrac{7}{-8}$.”, '
+                           'kết quả giải đúng là: Đưa về mẫu dương $24$: $\\dfrac{-5}{6} = \\dfrac{-20}{24}$ '
+                           'và $\\dfrac{7}{-8} = \\dfrac{-7}{8} = \\dfrac{-21}{24}$. Vì $-20 > -21$ nên '
+                           '$\\dfrac{-5}{6} > \\dfrac{7}{-8}$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 24: So sánh phân số. Hỗn số dương. b) '
-                        '**Đúng** theo công thức trọng tâm **Cùng mẫu dương m > 0** (Nếu $a < b$ thì '
-                        '$\\dfrac{a}{m} < \\dfrac{b}{m}$). c) **Sai** vì $x \\in A$ ($x$ thuộc $A$); $y '
-                        '\\notin A$ ($y$ không thuộc $A$) là công thức của nội dung khác, không phải quy tắc '
-                        'chung của **Cùng mẫu dương m > 0**. d) **Đúng** theo lời giải ví dụ minh họa trong '
-                        'bài học.'},
+                        '**Đúng** theo công thức **Cùng mẫu dương m > 0** (Nếu $a < b$ thì $\\dfrac{a}{m} < '
+                        '\\dfrac{b}{m}$). c) **Sai** vì công thức đúng của **Cùng mẫu dương m > 0** phải là '
+                        'Nếu $a < b$ thì $\\dfrac{a}{m} < \\dfrac{b}{m}$ chứ không phải Nếu $a > b$ thì '
+                        '$\\dfrac{a}{m} < \\dfrac{b}{m}$. d) **Đúng** theo lời giải ví dụ minh họa trong bài '
+                        'học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 24: So sánh phân số. Hỗn số dương** để giải quyết tình huống sau: '
-                 'So sánh hai phân số $\\dfrac{-5}{6}$ và $\\dfrac{7}{-8}$. Kết quả và hướng giải nào dưới '
-                 'đây là **đúng**?',
-            'options': ['Ta có $M = \\{\\text{T}, \\text{O}, \\text{A}, \\text{N}, \\text{H}, \\text{C}\\}$ '
-                        '(chữ O xuất hiện $2$ lần nhưng chỉ viết $1$ lần). Tập hợp $M$ có $6$ phần tử.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 24: So sánh phân số. Hỗn số dương** để giải bài '
+                 'toán sau: So sánh hai phân số $\\dfrac{-5}{6}$ và $\\dfrac{7}{-8}$. Cách giải và kết quả '
+                 'nào dưới đây là **đúng**?',
+            'options': ['Đưa về mẫu dương $24$: $\\dfrac{-5}{6} = \\dfrac{-20}{24}$ và $\\dfrac{7}{-8} = '
+                        '\\dfrac{-7}{8} = \\dfrac{-21}{24}$. Vì $-20 < -21$ nên $\\dfrac{-5}{6} > '
+                        '\\dfrac{7}{-8}$...',
                         'Đưa về mẫu dương $24$: $\\dfrac{-5}{6} = \\dfrac{-20}{24}$ và $\\dfrac{7}{-8} = '
                         '\\dfrac{-7}{8} = \\dfrac{-21}{24}$. Vì $-20 > -21$ nên $\\dfrac{-5}{6} > '
                         '\\dfrac{7}{-8}$...',
-                        'Số $27$ viết là $\\text{XXVII}$, số $19$ viết là $\\text{XIX}$. Ta có '
-                        '$\\overline{ab} = a \\times 10 + b$.',
-                        'Các số tự nhiên từ $4$ đến $8$ là $4; 5; 6; 7; 8$. Vậy $A = \\{4; 5; 6; 7; 8\\}$.'],
+                        'Đưa về mẫu dương $24$: $\\dfrac{6}{-5} = \\dfrac{-20}{24}$ và $\\dfrac{7}{-8} = '
+                        '\\dfrac{-7}{8} = \\dfrac{-21}{24}$. Vì $-20 > -21$ nên $\\dfrac{-5}{6} > '
+                        '\\dfrac{7}{-8}$...',
+                        'Đưa về mẫu dương $48$: $\\dfrac{-5}{6} = \\dfrac{-20}{24}$ và $\\dfrac{7}{-8} = '
+                        '\\dfrac{-7}{8} = \\dfrac{-21}{24}$. Vì $-20 > -21$ nên $\\dfrac{-5}{6} > '
+                        '\\dfrac{7}{-8}$...'],
             'answer': 1,
             'solution': 'Lời giải chi tiết theo Bài 24: So sánh phân số. Hỗn số dương: Đưa về mẫu dương '
                         '$24$: $\\dfrac{-5}{6} = \\dfrac{-20}{24}$ và $\\dfrac{7}{-8} = \\dfrac{-7}{8} = '
@@ -3822,8 +3841,8 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
   'requirements': ['Thực hiện được phép cộng và phép trừ các phân số (có tử, mẫu là số nguyên).',
                    'Tìm được số đối của một phân số và vận dụng tính chất giao hoán, kết hợp, quy tắc dấu '
                    'ngoặc để tính hợp lí.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Cộng hai phân số cùng mẫu** ($\\dfrac{a}{m} '
-                   '+ \\dfrac{b}{m} = \\dfrac{a + b}{m}$) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 25: Phép cộng và phép trừ phân số** để giải bài tập minh '
+                   'họa và bài toán thực tiễn.'],
   'definition': '- **Cộng hai phân số cùng mẫu**: $\\dfrac{a}{m} + \\dfrac{b}{m} = \\dfrac{a + b}{m}$. Nếu '
                 'không cùng mẫu, ta quy đồng về cùng một mẫu dương rồi cộng.\n'
                 '- **Số đối** của phân số $\\dfrac{a}{b}$ là $-\\dfrac{a}{b} = \\dfrac{-a}{b} = '
@@ -3836,7 +3855,7 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             '### 2. Tính chất của phép cộng phân số\n'
             '- Giao hoán, kết hợp, cộng với số $0$, cộng với số đối và quy tắc dấu ngoặc hoàn toàn tương tự '
             'như đối với số nguyên.',
-  'formulas': [{'category': 'I. Cộng, trừ và Số đối của phân số',
+  'formulas': [{'category': 'Cộng, trừ và Số đối của phân số',
                 'items': [{'name': 'Cộng hai phân số cùng mẫu',
                            'formula': '$\\dfrac{a}{m} + \\dfrac{b}{m} = \\dfrac{a + b}{m}$'},
                           {'name': 'Số đối',
@@ -3867,27 +3886,33 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 25: Phép cộng và phép trừ phân số**, công thức hoặc quy '
-                 'tắc nào sau đây biểu diễn đúng **Cộng hai phân số cùng mẫu**?',
-            'options': ['$\\dfrac{a}{b} + \\left(-\\dfrac{a}{b}\\right) = 0$; $-\\dfrac{a}{b} = '
-                        '\\dfrac{-a}{b} = \\dfrac{a}{-b}$',
-                        '$\\dfrac{a}{b} - \\dfrac{c}{d} = \\dfrac{a}{b} + \\left(-\\dfrac{c}{d}\\right)$',
+            'q': 'Trong **Bài 25: Phép cộng và phép trừ phân số**, quy tắc hoặc công thức nào sau đây xác '
+                 'định đúng **Cộng hai phân số cùng mẫu**?',
+            'options': ['$\\dfrac{a}{m} - \\dfrac{b}{m} = \\dfrac{a + b}{m}$',
+                        '$\\dfrac{m}{a} + \\dfrac{b}{m} = \\dfrac{a + b}{m}$',
                         '$\\dfrac{a}{m} + \\dfrac{b}{m} = \\dfrac{a + b}{m}$',
-                        '$x \\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$)'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\dfrac{a}{m} + \\dfrac{b}{m} '
+                        '= \\dfrac{a + b}{m}$'],
             'answer': 2,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 25: Phép cộng và phép trừ phân số, **Cộng hai '
-                        'phân số cùng mẫu** được xác định bởi: $\\dfrac{a}{m} + \\dfrac{b}{m} = \\dfrac{a + '
+            'solution': 'Theo kiến thức trọng tâm của Bài 25: Phép cộng và phép trừ phân số, **Cộng hai phân '
+                        'số cùng mẫu** được xác định bởi: $\\dfrac{a}{m} + \\dfrac{b}{m} = \\dfrac{a + '
                         'b}{m}$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 25: Phép cộng và phép trừ phân số**, nội dung/biểu thức $\\dfrac{a}{b} + '
-                 '\\left(-\\dfrac{a}{b}\\right) = 0$; $-\\dfrac{a}{b} = \\dfrac{-a}{b} = \\dfrac{a}{-b}$ là '
-                 'quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Cộng hai phân số cùng mẫu', 'Phép trừ', 'Quan hệ phần tử – tập hợp', 'Số đối'],
+            'q': 'Khi học **Bài 25: Phép cộng và phép trừ phân số**, biểu thức hoặc quy tắc nào dưới đây '
+                 'biểu diễn đúng **Số đối**?',
+            'options': ['$\\dfrac{a}{b} + \\geft(-\\dfrac{a}{b}\\right) = 0$; $-\\dfrac{a}{b} = '
+                        '\\dfrac{-a}{b} = \\dfrac{a}{-b}$',
+                        '$\\dfrac{b}{a} + \\left(-\\dfrac{a}{b}\\right) = 0$; $-\\dfrac{a}{b} = '
+                        '\\dfrac{-a}{b} = \\dfrac{a}{-b}$',
+                        '$\\dfrac{a}{b} + \\left(-\\dfrac{a}{b}\\right) = 2$; $-\\dfrac{a}{b} = '
+                        '\\dfrac{-a}{b} = \\dfrac{a}{-b}$',
+                        '$\\dfrac{a}{b} + \\left(-\\dfrac{a}{b}\\right) = 0$; $-\\dfrac{a}{b} = '
+                        '\\dfrac{-a}{b} = \\dfrac{a}{-b}$'],
             'answer': 3,
-            'solution': 'Trong Bài 25: Phép cộng và phép trừ phân số, biểu thức/quy tắc $\\dfrac{a}{b} + '
-                        '\\left(-\\dfrac{a}{b}\\right) = 0$; $-\\dfrac{a}{b} = \\dfrac{-a}{b} = '
-                        '\\dfrac{a}{-b}$ chính là nội dung của **Số đối**.'},
+            'solution': 'Trong Bài 25: Phép cộng và phép trừ phân số, **Số đối** có công thức/quy tắc là: '
+                        '$\\dfrac{a}{b} + \\left(-\\dfrac{a}{b}\\right) = 0$; $-\\dfrac{a}{b} = '
+                        '\\dfrac{-a}{b} = \\dfrac{a}{-b}$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Kết quả của phép trừ $\\dfrac{1}{4} - \\dfrac{5}{6}$ là:',
@@ -3898,18 +3923,18 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 25: Phép cộng và phép trừ phân số** (Chương VI: Phân số), khẳng định nào sau '
-                 'đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Sử dụng được thuật ngữ tập hợp, phần tử thuộc ($\\in$) hoặc không thuộc ($\\notin$) '
-                        'một tập hợp.',
+            'q': 'Để nắm vững bản chất của **Bài 25: Phép cộng và phép trừ phân số**, nhận định nào sau đây '
+                 'là **chính xác**?',
+            'options': ['Thực hiện được phép cộng và phép trừ các phân số (có tử, mẫu là số nguyên). (với '
+                        'dấu ngược lại)',
                         'Thực hiện được phép cộng và phép trừ các phân số (có tử, mẫu là số nguyên).',
-                        'Cho được một tập hợp bằng cách liệt kê các phần tử hoặc chỉ ra tính chất đặc trưng '
-                        'cho các phần tử.',
-                        'Phân biệt được tập hợp $\\mathbb{N}$ và $\\mathbb{N}^*$; xác định được giá trị từng '
-                        'chữ số của số tự nhiên trong hệ thập phân.'],
+                        'Đảo ngược vế của quy tắc: Thực hiện được phép cộng và phép trừ các phân số (có tử, '
+                        'mẫu là số nguyên).',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Thực hiện được phép cộng và '
+                        'phép trừ các phân số (có tử, mẫu là số nguyên).'],
             'answer': 1,
-            'solution': 'Theo yêu cầu cần đạt của Bài 25: Phép cộng và phép trừ phân số: Thực hiện được phép '
-                        'cộng và phép trừ các phân số (có tử, mẫu là số nguyên).'},
+            'solution': 'Theo nội dung cốt lõi của Bài 25: Phép cộng và phép trừ phân số: Thực hiện được '
+                        'phép cộng và phép trừ các phân số (có tử, mẫu là số nguyên).'},
            {'level': 'hieu',
             'type': 'tf4',
             'q': 'Xét các phép tính cộng và trừ phân số. Mỗi khẳng định sau đúng hay sai?',
@@ -3925,39 +3950,40 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 25: Phép cộng và phép '
-                 'trừ phân số**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Thực hiện được phép cộng và phép '
-                           'trừ các phân số (có tử, mẫu là số nguyên).',
-                           'Quy tắc/công thức **Cộng hai phân số cùng mẫu** trong bài được xác định bởi: '
-                           '$\\dfrac{a}{m} + \\dfrac{b}{m} = \\dfrac{a + b}{m}$.',
-                           'Trong mọi trường hợp, **Cộng hai phân số cùng mẫu** luôn được tính bằng công '
-                           'thức $x \\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$) (thuộc Quan '
-                           'hệ phần tử – tập hợp) mà không cần điều kiện của Bài 25: Phép cộng và phép trừ '
-                           'phân số.',
-                           'Với bài toán minh họa: “Tính hợp lí: $\\dfrac{-3}{7} + \\dfrac{5}{13} + '
-                           '\\dfrac{-4}{7} + \\dfrac{8}{13}$.”, lời giải đúng là: Nhóm các phân số cùng mẫu: '
-                           '$\\left(\\dfrac{-3}{7} + \\dfrac{-4}{7}\\right) + \\left(\\dfrac{5}{13} + '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 25: Phép cộng và phép trừ '
+                 'phân số**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Thực hiện được phép cộng và phép trừ các '
+                           'phân số (có tử, mẫu là số nguyên).',
+                           'Trong **Bài 25: Phép cộng và phép trừ phân số**, quy tắc/công thức **Cộng hai '
+                           'phân số cùng mẫu** được viết là: $\\dfrac{a}{m} + \\dfrac{b}{m} = \\dfrac{a + '
+                           'b}{m}$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $\\dfrac{a}{m} - \\dfrac{b}{m} = \\dfrac{a + '
+                           'b}{m}$ thì kết quả của **Cộng hai phân số cùng mẫu** trong **Bài 25: Phép cộng '
+                           'và phép trừ phân số** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Tính hợp lí: $\\dfrac{-3}{7} + \\dfrac{5}{13} + '
+                           '\\dfrac{-4}{7} + \\dfrac{8}{13}$.”, kết quả giải đúng là: Nhóm các phân số cùng '
+                           'mẫu: $\\left(\\dfrac{-3}{7} + \\dfrac{-4}{7}\\right) + \\left(\\dfrac{5}{13} + '
                            '\\dfrac{8}{13}\\right) = -1 + 1 = 0$.'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 25: Phép cộng và phép trừ phân số. b) '
-                        '**Đúng** theo công thức trọng tâm **Cộng hai phân số cùng mẫu** ($\\dfrac{a}{m} + '
-                        '\\dfrac{b}{m} = \\dfrac{a + b}{m}$). c) **Sai** vì $x \\in A$ ($x$ thuộc $A$); $y '
-                        '\\notin A$ ($y$ không thuộc $A$) là công thức của nội dung khác, không phải quy tắc '
-                        'chung của **Cộng hai phân số cùng mẫu**. d) **Đúng** theo lời giải ví dụ minh họa '
-                        'trong bài học.'},
+                        '**Đúng** theo công thức **Cộng hai phân số cùng mẫu** ($\\dfrac{a}{m} + '
+                        '\\dfrac{b}{m} = \\dfrac{a + b}{m}$). c) **Sai** vì công thức đúng của **Cộng hai '
+                        'phân số cùng mẫu** phải là $\\dfrac{a}{m} + \\dfrac{b}{m} = \\dfrac{a + b}{m}$ chứ '
+                        'không phải $\\dfrac{a}{m} - \\dfrac{b}{m} = \\dfrac{a + b}{m}$. d) **Đúng** theo '
+                        'lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 25: Phép cộng và phép trừ phân số** để giải quyết tình huống sau: '
-                 'Tính hợp lí: $\\dfrac{-3}{7} + \\dfrac{5}{13} + \\dfrac{-4}{7} + \\dfrac{8}{13}$. Kết quả '
-                 'và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Ta có $M = \\{\\text{T}, \\text{O}, \\text{A}, \\text{N}, \\text{H}, \\text{C}\\}$ '
-                        '(chữ O xuất hiện $2$ lần nhưng chỉ viết $1$ lần). Tập hợp $M$ có $6$ phần tử.',
-                        'Số $27$ viết là $\\text{XXVII}$, số $19$ viết là $\\text{XIX}$. Ta có '
-                        '$\\overline{ab} = a \\times 10 + b$.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 25: Phép cộng và phép trừ phân số** để giải bài '
+                 'toán sau: Tính hợp lí: $\\dfrac{-3}{7} + \\dfrac{5}{13} + \\dfrac{-4}{7} + '
+                 '\\dfrac{8}{13}$. Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Nhóm các phân số cùng mẫu: $\\geft(\\dfrac{-3}{7} + \\dfrac{-4}{7}\\right) + '
+                        '\\left(\\dfrac{5}{13} + \\dfrac{8}{13}\\right) = -1 + 1 = 0$.',
+                        'Nhóm các phân số cùng mẫu: $\\left(\\dfrac{7}{-3} + \\dfrac{-4}{7}\\right) + '
+                        '\\left(\\dfrac{5}{13} + \\dfrac{8}{13}\\right) = -1 + 1 = 0$.',
                         'Nhóm các phân số cùng mẫu: $\\left(\\dfrac{-3}{7} + \\dfrac{-4}{7}\\right) + '
                         '\\left(\\dfrac{5}{13} + \\dfrac{8}{13}\\right) = -1 + 1 = 0$.',
-                        'Các số tự nhiên từ $4$ đến $8$ là $4; 5; 6; 7; 8$. Vậy $A = \\{4; 5; 6; 7; 8\\}$.'],
+                        'Nhóm các phân số cùng mẫu: $\\left(\\dfrac{-6}{7} + \\dfrac{-4}{7}\\right) + '
+                        '\\left(\\dfrac{5}{13} + \\dfrac{8}{13}\\right) = -1 + 1 = 0$.'],
             'answer': 2,
             'solution': 'Lời giải chi tiết theo Bài 25: Phép cộng và phép trừ phân số: Nhóm các phân số cùng '
                         'mẫu: $\\left(\\dfrac{-3}{7} + \\dfrac{-4}{7}\\right) + \\left(\\dfrac{5}{13} + '
@@ -3982,8 +4008,8 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
   'requirements': ['Thực hiện được phép nhân và phép chia phân số; tìm được số nghịch đảo của một phân số '
                    'khác $0$.',
                    'Vận dụng tính chất giao hoán, kết hợp, phân phối của phép nhân phân số để tính hợp lí.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Phép nhân phân số** ($\\dfrac{a}{b} \\cdot '
-                   '\\dfrac{c}{d} = \\dfrac{a \\cdot c}{b \\cdot d}$) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 26: Phép nhân và phép chia phân số** để giải bài tập minh '
+                   'họa và bài toán thực tiễn.'],
   'definition': '- **Phép nhân hai phân số**: $\\dfrac{a}{b} \\cdot \\dfrac{c}{d} = \\dfrac{a \\cdot c}{b '
                 '\\cdot d}$.\n'
                 '- Hai số gọi là **nghịch đảo của nhau** nếu tích của chúng bằng $1$. Phân số nghịch đảo của '
@@ -3997,7 +4023,7 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             '### 2. Tính chất của phép nhân phân số\n'
             '- Giao hoán: $A \\cdot B = B \\cdot A$; Kết hợp: $(A \\cdot B) \\cdot C = A \\cdot (B \\cdot '
             'C)$; Phân phối: $A \\cdot (B + C) = A \\cdot B + A \\cdot C$.',
-  'formulas': [{'category': 'I. Nhân, chia và Số nghịch đảo',
+  'formulas': [{'category': 'Nhân, chia và Số nghịch đảo',
                 'items': [{'name': 'Phép nhân phân số',
                            'formula': '$\\dfrac{a}{b} \\cdot \\dfrac{c}{d} = \\dfrac{a \\cdot c}{b \\cdot '
                                       'd}$'},
@@ -4031,30 +4057,33 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 26: Phép nhân và phép chia phân số**, công thức hoặc quy '
-                 'tắc nào sau đây biểu diễn đúng **Phép nhân phân số**?',
-            'options': ['Nghịch đảo của $\\dfrac{a}{b}$ ($a \\ne 0$) là $\\dfrac{b}{a}$ vì $\\dfrac{a}{b} '
-                        '\\cdot \\dfrac{b}{a} = 1$',
-                        '$\\dfrac{a}{b} : \\dfrac{c}{d} = \\dfrac{a}{b} \\cdot \\dfrac{d}{c}$ ($c \\ne 0$)',
-                        '$x \\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$)',
+            'q': 'Trong **Bài 26: Phép nhân và phép chia phân số**, quy tắc hoặc công thức nào sau đây xác '
+                 'định đúng **Phép nhân phân số**?',
+            'options': ['$\\dfrac{a}{b} : \\dfrac{c}{d} = \\dfrac{a \\cdot c}{b \\cdot d}$',
+                        '$\\dfrac{b}{a} \\cdot \\dfrac{c}{d} = \\dfrac{a \\cdot c}{b \\cdot d}$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\dfrac{a}{b} \\cdot '
+                        '\\dfrac{c}{d} = \\dfrac{a \\cdot c}{b \\cdot d}$',
                         '$\\dfrac{a}{b} \\cdot \\dfrac{c}{d} = \\dfrac{a \\cdot c}{b \\cdot d}$'],
             'answer': 3,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 26: Phép nhân và phép chia phân số, **Phép '
-                        'nhân phân số** được xác định bởi: $\\dfrac{a}{b} \\cdot \\dfrac{c}{d} = \\dfrac{a '
-                        '\\cdot c}{b \\cdot d}$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 26: Phép nhân và phép chia phân số, **Phép nhân '
+                        'phân số** được xác định bởi: $\\dfrac{a}{b} \\cdot \\dfrac{c}{d} = \\dfrac{a \\cdot '
+                        'c}{b \\cdot d}$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 26: Phép nhân và phép chia phân số**, nội dung/biểu thức Nghịch đảo của '
-                 '$\\dfrac{a}{b}$ ($a \\ne 0$) là $\\dfrac{b}{a}$ vì $\\dfrac{a}{b} \\cdot \\dfrac{b}{a} = '
-                 '1$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Số nghịch đảo',
-                        'Phép nhân phân số',
-                        'Phép chia phân số',
-                        'Quan hệ phần tử – tập hợp'],
+            'q': 'Khi học **Bài 26: Phép nhân và phép chia phân số**, biểu thức hoặc quy tắc nào dưới đây '
+                 'biểu diễn đúng **Số nghịch đảo**?',
+            'options': ['Nghịch đảo của $\\dfrac{a}{b}$ ($a \\ne 0$) là $\\dfrac{b}{a}$ vì $\\dfrac{a}{b} '
+                        '\\cdot \\dfrac{b}{a} = 1$',
+                        'Nghịch đảo của $\\dfrac{a}{b}$ ($a \\ne 0$) là $\\dfrac{b}{a}$ vì $\\dfrac{a}{b} : '
+                        '\\dfrac{b}{a} = 1$',
+                        'Nghịch đảo của $\\dfrac{b}{a}$ ($a \\ne 0$) là $\\dfrac{b}{a}$ vì $\\dfrac{a}{b} '
+                        '\\cdot \\dfrac{b}{a} = 1$',
+                        'Nghịch đảo của $\\dfrac{a}{b}$ ($a \\ne 2$) là $\\dfrac{b}{a}$ vì $\\dfrac{a}{b} '
+                        '\\cdot \\dfrac{b}{a} = 1$'],
             'answer': 0,
-            'solution': 'Trong Bài 26: Phép nhân và phép chia phân số, biểu thức/quy tắc Nghịch đảo của '
-                        '$\\dfrac{a}{b}$ ($a \\ne 0$) là $\\dfrac{b}{a}$ vì $\\dfrac{a}{b} \\cdot '
-                        '\\dfrac{b}{a} = 1$ chính là nội dung của **Số nghịch đảo**.'},
+            'solution': 'Trong Bài 26: Phép nhân và phép chia phân số, **Số nghịch đảo** có công thức/quy '
+                        'tắc là: Nghịch đảo của $\\dfrac{a}{b}$ ($a \\ne 0$) là $\\dfrac{b}{a}$ vì '
+                        '$\\dfrac{a}{b} \\cdot \\dfrac{b}{a} = 1$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Giá trị của biểu thức $\\dfrac{7}{13} \\cdot \\dfrac{5}{12} + \\dfrac{7}{13} \\cdot '
@@ -4067,18 +4096,17 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 26: Phép nhân và phép chia phân số** (Chương VI: Phân số), khẳng định nào '
-                 'sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Sử dụng được thuật ngữ tập hợp, phần tử thuộc ($\\in$) hoặc không thuộc ($\\notin$) '
-                        'một tập hợp.',
-                        'Cho được một tập hợp bằng cách liệt kê các phần tử hoặc chỉ ra tính chất đặc trưng '
-                        'cho các phần tử.',
+            'q': 'Để nắm vững bản chất của **Bài 26: Phép nhân và phép chia phân số**, nhận định nào sau đây '
+                 'là **chính xác**?',
+            'options': ['Thực hiện được phép nhân và phép chia phân số; tìm được số nghịch đảo của một phân '
+                        'số khác $1$.',
+                        'Thực hiện được phép nhân và phép chia phân số; tìm được số nghịch đảo của một phân '
+                        'số khác $2$.',
                         'Thực hiện được phép nhân và phép chia phân số; tìm được số nghịch đảo của một phân '
                         'số khác $0$.',
-                        'Phân biệt được tập hợp $\\mathbb{N}$ và $\\mathbb{N}^*$; xác định được giá trị từng '
-                        'chữ số của số tự nhiên trong hệ thập phân.'],
+                        'Trường hợp sai quy tắc (sai lệch 1 đơn vị so với công thức trong bài)'],
             'answer': 2,
-            'solution': 'Theo yêu cầu cần đạt của Bài 26: Phép nhân và phép chia phân số: Thực hiện được '
+            'solution': 'Theo nội dung cốt lõi của Bài 26: Phép nhân và phép chia phân số: Thực hiện được '
                         'phép nhân và phép chia phân số; tìm được số nghịch đảo của một phân số khác $0$.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -4094,36 +4122,41 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 26: Phép nhân và phép '
-                 'chia phân số**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Thực hiện được phép nhân và phép '
-                           'chia phân số; tìm được số nghịch đảo của một phân số khác $0$.',
-                           'Quy tắc/công thức **Phép nhân phân số** trong bài được xác định bởi: '
-                           '$\\dfrac{a}{b} \\cdot \\dfrac{c}{d} = \\dfrac{a \\cdot c}{b \\cdot d}$.',
-                           'Trong mọi trường hợp, **Phép nhân phân số** luôn được tính bằng công thức $x '
-                           '\\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$) (thuộc Quan hệ phần '
-                           'tử – tập hợp) mà không cần điều kiện của Bài 26: Phép nhân và phép chia phân số.',
-                           'Với bài toán minh họa: “Tính hợp lí: $\\dfrac{-5}{9} \\cdot \\dfrac{4}{11} + '
-                           '\\dfrac{-5}{9} \\cdot \\dfrac{7}{11}$.”, lời giải đúng là: Đặt $\\dfrac{-5}{9}$ '
-                           'làm thừa số chung: $\\dfrac{-5}{9} \\cdot \\left(\\dfrac{4}{11} + '
-                           '\\dfrac{7}{11}\\right) = \\dfrac{-5}{9} \\cdot 1 = \\dfrac{-5}{9}$...'],
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 26: Phép nhân và phép chia '
+                 'phân số**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Thực hiện được phép nhân và phép chia '
+                           'phân số; tìm được số nghịch đảo của một phân số khác $0$.',
+                           'Trong **Bài 26: Phép nhân và phép chia phân số**, quy tắc/công thức **Phép nhân '
+                           'phân số** được viết là: $\\dfrac{a}{b} \\cdot \\dfrac{c}{d} = \\dfrac{a \\cdot '
+                           'c}{b \\cdot d}$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $\\dfrac{a}{b} : \\dfrac{c}{d} = \\dfrac{a '
+                           '\\cdot c}{b \\cdot d}$ thì kết quả của **Phép nhân phân số** trong **Bài 26: '
+                           'Phép nhân và phép chia phân số** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Tính hợp lí: $\\dfrac{-5}{9} \\cdot \\dfrac{4}{11} + '
+                           '\\dfrac{-5}{9} \\cdot \\dfrac{7}{11}$.”, kết quả giải đúng là: Đặt '
+                           '$\\dfrac{-5}{9}$ làm thừa số chung: $\\dfrac{-5}{9} \\cdot \\left(\\dfrac{4}{11} '
+                           '+ \\dfrac{7}{11}\\right) = \\dfrac{-5}{9} \\cdot 1 = \\dfrac{-5}{9}$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 26: Phép nhân và phép chia phân số. b) '
-                        '**Đúng** theo công thức trọng tâm **Phép nhân phân số** ($\\dfrac{a}{b} \\cdot '
-                        '\\dfrac{c}{d} = \\dfrac{a \\cdot c}{b \\cdot d}$). c) **Sai** vì $x \\in A$ ($x$ '
-                        'thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$) là công thức của nội dung khác, '
-                        'không phải quy tắc chung của **Phép nhân phân số**. d) **Đúng** theo lời giải ví dụ '
-                        'minh họa trong bài học.'},
+                        '**Đúng** theo công thức **Phép nhân phân số** ($\\dfrac{a}{b} \\cdot \\dfrac{c}{d} '
+                        '= \\dfrac{a \\cdot c}{b \\cdot d}$). c) **Sai** vì công thức đúng của **Phép nhân '
+                        'phân số** phải là $\\dfrac{a}{b} \\cdot \\dfrac{c}{d} = \\dfrac{a \\cdot c}{b '
+                        '\\cdot d}$ chứ không phải $\\dfrac{a}{b} : \\dfrac{c}{d} = \\dfrac{a \\cdot c}{b '
+                        '\\cdot d}$. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 26: Phép nhân và phép chia phân số** để giải quyết tình huống '
-                 'sau: Tính hợp lí: $\\dfrac{-5}{9} \\cdot \\dfrac{4}{11} + \\dfrac{-5}{9} \\cdot '
-                 '\\dfrac{7}{11}$. Kết quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Ta có $M = \\{\\text{T}, \\text{O}, \\text{A}, \\text{N}, \\text{H}, \\text{C}\\}$ '
-                        '(chữ O xuất hiện $2$ lần nhưng chỉ viết $1$ lần). Tập hợp $M$ có $6$ phần tử.',
-                        'Số $27$ viết là $\\text{XXVII}$, số $19$ viết là $\\text{XIX}$. Ta có '
-                        '$\\overline{ab} = a \\times 10 + b$.',
-                        'Các số tự nhiên từ $4$ đến $8$ là $4; 5; 6; 7; 8$. Vậy $A = \\{4; 5; 6; 7; 8\\}$.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 26: Phép nhân và phép chia phân số** để giải bài '
+                 'toán sau: Tính hợp lí: $\\dfrac{-5}{9} \\cdot \\dfrac{4}{11} + \\dfrac{-5}{9} \\cdot '
+                 '\\dfrac{7}{11}$. Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Đặt $\\dfrac{-5}{9}$ làm thừa số chung: $\\dfrac{-5}{9} \\cdot '
+                        '\\geft(\\dfrac{4}{11} + \\dfrac{7}{11}\\right) = \\dfrac{-5}{9} \\cdot 1 = '
+                        '\\dfrac{-5}{9}$.',
+                        'Đặt $\\dfrac{9}{-5}$ làm thừa số chung: $\\dfrac{-5}{9} \\cdot '
+                        '\\left(\\dfrac{4}{11} + \\dfrac{7}{11}\\right) = \\dfrac{-5}{9} \\cdot 1 = '
+                        '\\dfrac{-5}{9}$.',
+                        'Đặt $\\dfrac{-10}{9}$ làm thừa số chung: $\\dfrac{-5}{9} \\cdot '
+                        '\\left(\\dfrac{4}{11} + \\dfrac{7}{11}\\right) = \\dfrac{-5}{9} \\cdot 1 = '
+                        '\\dfrac{-5}{9}$.',
                         'Đặt $\\dfrac{-5}{9}$ làm thừa số chung: $\\dfrac{-5}{9} \\cdot '
                         '\\left(\\dfrac{4}{11} + \\dfrac{7}{11}\\right) = \\dfrac{-5}{9} \\cdot 1 = '
                         '\\dfrac{-5}{9}$.'],
@@ -4154,8 +4187,8 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
                    '\\cdot \\dfrac{m}{n}$.',
                    'Tìm được một số khi biết $\\dfrac{m}{n}$ của số đó bằng $b$ bằng phép chia $b : '
                    '\\dfrac{m}{n}$.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Bài toán 1 (Tìm giá trị phân số của a)** '
-                   '($b = a \\cdot \\dfrac{m}{n}$) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 27: Hai bài toán về phân số** để giải bài tập minh họa và '
+                   'bài toán thực tiễn.'],
   'definition': '- **Bài toán 1**: Muốn tìm $\\dfrac{m}{n}$ của một số $a$ cho trước, ta tính $a \\cdot '
                 '\\dfrac{m}{n}$ ($m \\in \\mathbb{N}, n \\in \\mathbb{N}^*$).\n'
                 '- **Bài toán 2**: Muốn tìm một số biết $\\dfrac{m}{n}$ của số đó bằng $b$, ta tính $b : '
@@ -4165,7 +4198,7 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             '**phép nhân** ($a \\cdot \\dfrac{m}{n}$).\n'
             '- Khi **chưa biết số tổng thể**, chỉ biết một phần $\\dfrac{m}{n}$ của nó ứng với giá trị $b$ '
             '$\\rightarrow$ dùng **phép chia** ($b : \\dfrac{m}{n}$).',
-  'formulas': [{'category': 'I. Hai bài toán cơ bản về phân số',
+  'formulas': [{'category': 'Hai bài toán cơ bản về phân số',
                 'items': [{'name': 'Bài toán 1 (Tìm giá trị phân số của a)',
                            'formula': '$b = a \\cdot \\dfrac{m}{n}$'},
                           {'name': 'Bài toán 2 (Tìm số a biết m/n của a bằng b)',
@@ -4195,28 +4228,27 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 27: Hai bài toán về phân số**, công thức hoặc quy tắc '
-                 'nào sau đây biểu diễn đúng **Bài toán 1 (Tìm giá trị phân số của a)**?',
+            'q': 'Trong **Bài 27: Hai bài toán về phân số**, quy tắc hoặc công thức nào sau đây xác định '
+                 'đúng **Bài toán 1 (Tìm giá trị phân số của a)**?',
             'options': ['$b = a \\cdot \\dfrac{m}{n}$',
-                        '$a = b : \\dfrac{m}{n} = b \\cdot \\dfrac{n}{m}$',
-                        '$x \\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$)',
-                        'Liệt kê $A = \\{0; 1; 2; 3\\}$ hoặc đặc trưng $A = \\{x \\in \\mathbb{N} \\mid x < '
-                        '4\\}$'],
+                        '$b = a : \\dfrac{m}{n}$',
+                        '$b = a \\cdot \\dfrac{n}{m}$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $b = a \\cdot \\dfrac{m}{n}$'],
             'answer': 0,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 27: Hai bài toán về phân số, **Bài toán 1 '
-                        '(Tìm giá trị phân số của a)** được xác định bởi: $b = a \\cdot \\dfrac{m}{n}$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 27: Hai bài toán về phân số, **Bài toán 1 (Tìm giá '
+                        'trị phân số của a)** được xác định bởi: $b = a \\cdot \\dfrac{m}{n}$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 27: Hai bài toán về phân số**, nội dung/biểu thức $a = b : \\dfrac{m}{n} = b '
-                 '\\cdot \\dfrac{n}{m}$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Bài toán 1 (Tìm giá trị phân số của a)',
-                        'Bài toán 2 (Tìm số a biết m/n của a bằng b)',
-                        'Quan hệ phần tử – tập hợp',
-                        'Hai cách mô tả'],
+            'q': 'Khi học **Bài 27: Hai bài toán về phân số**, biểu thức hoặc quy tắc nào dưới đây biểu diễn '
+                 'đúng **Bài toán 2 (Tìm số a biết m/n của a bằng b)**?',
+            'options': ['$a = b : \\dfrac{m}{n} = b : \\dfrac{n}{m}$',
+                        '$a = b : \\dfrac{m}{n} = b \\cdot \\dfrac{n}{m}$',
+                        '$a = b : \\dfrac{n}{m} = b \\cdot \\dfrac{n}{m}$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $a = b : \\dfrac{m}{n} = b '
+                        '\\cdot \\dfrac{n}{m}$'],
             'answer': 1,
-            'solution': 'Trong Bài 27: Hai bài toán về phân số, biểu thức/quy tắc $a = b : \\dfrac{m}{n} = b '
-                        '\\cdot \\dfrac{n}{m}$ chính là nội dung của **Bài toán 2 (Tìm số a biết m/n của a '
-                        'bằng b)**.'},
+            'solution': 'Trong Bài 27: Hai bài toán về phân số, **Bài toán 2 (Tìm số a biết m/n của a bằng '
+                        'b)** có công thức/quy tắc là: $a = b : \\dfrac{m}{n} = b \\cdot \\dfrac{n}{m}$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Một người đi hết quãng đường trong $3$ ngày: ngày đầu đi $\\dfrac{1}{3}$ quãng đường, ngày '
@@ -4230,19 +4262,20 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 27: Hai bài toán về phân số** (Chương VI: Phân số), khẳng định nào sau đây '
-                 'phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Sử dụng được thuật ngữ tập hợp, phần tử thuộc ($\\in$) hoặc không thuộc ($\\notin$) '
-                        'một tập hợp.',
-                        'Cho được một tập hợp bằng cách liệt kê các phần tử hoặc chỉ ra tính chất đặc trưng '
-                        'cho các phần tử.',
-                        'Phân biệt được tập hợp $\\mathbb{N}$ và $\\mathbb{N}^*$; xác định được giá trị từng '
-                        'chữ số của số tự nhiên trong hệ thập phân.',
+            'q': 'Để nắm vững bản chất của **Bài 27: Hai bài toán về phân số**, nhận định nào sau đây là '
+                 '**chính xác**?',
+            'options': ['Tính được giá trị phân số $\\dfrac{m}{n}$ của một số $a$ cho trước bằng phép nhân '
+                        '$a : \\dfrac{m}{n}$.',
+                        'Tính được giá trị phân số $\\dfrac{n}{m}$ của một số $a$ cho trước bằng phép nhân '
+                        '$a \\cdot \\dfrac{m}{n}$.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Tính được giá trị phân số '
+                        '$\\dfrac{m}{n}$ của một số $a$ cho trước bằng phép nhân $a \\cdot \\dfrac{m}{n}$.',
                         'Tính được giá trị phân số $\\dfrac{m}{n}$ của một số $a$ cho trước bằng phép nhân '
                         '$a \\cdot \\dfrac{m}{n}$.'],
             'answer': 3,
-            'solution': 'Theo yêu cầu cần đạt của Bài 27: Hai bài toán về phân số: Tính được giá trị phân số '
-                        '$\\dfrac{m}{n}$ của một số $a$ cho trước bằng phép nhân $a \\cdot \\dfrac{m}{n}$.'},
+            'solution': 'Theo nội dung cốt lõi của Bài 27: Hai bài toán về phân số: Tính được giá trị phân '
+                        'số $\\dfrac{m}{n}$ của một số $a$ cho trước bằng phép nhân $a \\cdot '
+                        '\\dfrac{m}{n}$.'},
            {'level': 'hieu',
             'type': 'tf4',
             'q': 'Lớp 6A có $40$ học sinh, trong đó $\\dfrac{3}{8}$ số học sinh xếp loại giỏi, '
@@ -4258,42 +4291,41 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 27: Hai bài toán về '
-                 'phân số**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Tính được giá trị phân số '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 27: Hai bài toán về phân '
+                 'số**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Tính được giá trị phân số '
                            '$\\dfrac{m}{n}$ của một số $a$ cho trước bằng phép nhân $a \\cdot '
                            '\\dfrac{m}{n}$.',
-                           'Quy tắc/công thức **Bài toán 1 (Tìm giá trị phân số của a)** trong bài được xác '
-                           'định bởi: $b = a \\cdot \\dfrac{m}{n}$.',
-                           'Trong mọi trường hợp, **Bài toán 1 (Tìm giá trị phân số của a)** luôn được tính '
-                           'bằng công thức $x \\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$) '
-                           '(thuộc Quan hệ phần tử – tập hợp) mà không cần điều kiện của Bài 27: Hai bài '
-                           'toán về phân số.',
-                           'Với bài toán minh họa: “Lớp 6A có $40$ học sinh, trong đó $\\dfrac{3}{8}$ số học '
+                           'Trong **Bài 27: Hai bài toán về phân số**, quy tắc/công thức **Bài toán 1 (Tìm '
+                           'giá trị phân số của a)** được viết là: $b = a \\cdot \\dfrac{m}{n}$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $b = a : \\dfrac{m}{n}$ thì kết quả của '
+                           '**Bài toán 1 (Tìm giá trị phân số của a)** trong **Bài 27: Hai bài toán về phân '
+                           'số** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Lớp 6A có $40$ học sinh, trong đó $\\dfrac{3}{8}$ số học '
                            'sinh đạt loại giỏi. Tính số học sinh giỏi. Nếu lớp 6B có $12$ học sinh giỏi '
-                           'chiếm $\\dfrac{2}{5}$...”, lời giải đúng là: Số học sinh giỏi lớp 6A là $40 '
-                           '\\cdot \\dfrac{3}{8} = 15$ (em). Số học sinh lớp 6B là $12 : \\dfrac{2}{5} = 12 '
-                           '\\cdot \\dfrac{5}{2} = 30$ (em).'],
+                           'chi...”, kết quả giải đúng là: Số học sinh giỏi lớp 6A là $40 \\cdot '
+                           '\\dfrac{3}{8} = 15$ (em). Số học sinh lớp 6B là $12 : \\dfrac{2}{5} = 12 \\cdot '
+                           '\\dfrac{5}{2} = 30$ (e...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 27: Hai bài toán về phân số. b) **Đúng** '
-                        'theo công thức trọng tâm **Bài toán 1 (Tìm giá trị phân số của a)** ($b = a \\cdot '
-                        '\\dfrac{m}{n}$). c) **Sai** vì $x \\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không '
-                        'thuộc $A$) là công thức của nội dung khác, không phải quy tắc chung của **Bài toán '
-                        '1 (Tìm giá trị phân số của a)**. d) **Đúng** theo lời giải ví dụ minh họa trong bài '
-                        'học.'},
+                        'theo công thức **Bài toán 1 (Tìm giá trị phân số của a)** ($b = a \\cdot '
+                        '\\dfrac{m}{n}$). c) **Sai** vì công thức đúng của **Bài toán 1 (Tìm giá trị phân số '
+                        'của a)** phải là $b = a \\cdot \\dfrac{m}{n}$ chứ không phải $b = a : '
+                        '\\dfrac{m}{n}$. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 27: Hai bài toán về phân số** để giải quyết tình huống sau: Lớp '
-                 '6A có $40$ học sinh, trong đó $\\dfrac{3}{8}$ số học sinh đạt loại giỏi. Tính số học sinh '
-                 'giỏi. Nếu lớp 6B có $12$ học sinh giỏi chiếm $\\dfrac{2}{5}$ cả lớp thì lớp 6B có bao '
-                 'nhiêu học sinh? Kết quả và hướng giải nào dưới đây là **đúng**?',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 27: Hai bài toán về phân số** để giải bài toán sau: '
+                 'Lớp 6A có $40$ học sinh, trong đó $\\dfrac{3}{8}$ số học sinh đạt loại giỏi. Tính số học '
+                 'sinh giỏi. Nếu lớp 6B có $12$ học sinh giỏi chiếm $\\dfrac{2}{5}$ cả lớp thì lớp 6B có bao '
+                 'nhiêu học sinh? Cách giải và kết quả nào dưới đây là **đúng**?',
             'options': ['Số học sinh giỏi lớp 6A là $40 \\cdot \\dfrac{3}{8} = 15$ (em). Số học sinh lớp 6B '
                         'là $12 : \\dfrac{2}{5} = 12 \\cdot \\dfrac{5}{2} = 30$ (em).',
-                        'Ta có $M = \\{\\text{T}, \\text{O}, \\text{A}, \\text{N}, \\text{H}, \\text{C}\\}$ '
-                        '(chữ O xuất hiện $2$ lần nhưng chỉ viết $1$ lần). Tập hợp $M$ có $6$ phần tử.',
-                        'Số $27$ viết là $\\text{XXVII}$, số $19$ viết là $\\text{XIX}$. Ta có '
-                        '$\\overline{ab} = a \\times 10 + b$.',
-                        'Các số tự nhiên từ $4$ đến $8$ là $4; 5; 6; 7; 8$. Vậy $A = \\{4; 5; 6; 7; 8\\}$.'],
+                        'Số học sinh giỏi lớp 6A là $40 : \\dfrac{3}{8} = 15$ (em). Số học sinh lớp 6B là '
+                        '$12 : \\dfrac{2}{5} = 12 \\cdot \\dfrac{5}{2} = 30$ (em).',
+                        'Số học sinh giỏi lớp 6A là $40 \\cdot \\dfrac{8}{3} = 15$ (em). Số học sinh lớp 6B '
+                        'là $12 : \\dfrac{2}{5} = 12 \\cdot \\dfrac{5}{2} = 30$ (em).',
+                        'Số học sinh giỏi lớp 6A là $80 \\cdot \\dfrac{3}{8} = 15$ (em). Số học sinh lớp 6B '
+                        'là $12 : \\dfrac{2}{5} = 12 \\cdot \\dfrac{5}{2} = 30$ (em).'],
             'answer': 0,
             'solution': 'Lời giải chi tiết theo Bài 27: Hai bài toán về phân số: Số học sinh giỏi lớp 6A là '
                         '$40 \\cdot \\dfrac{3}{8} = 15$ (em). Số học sinh lớp 6B là $12 : \\dfrac{2}{5} = 12 '
@@ -4318,8 +4350,8 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
   'requirements': ['Nhận biết được số thập phân âm, tìm được số đối của một số thập phân và chuyển đổi giữa '
                    'số thập phân với phân số thập phân.',
                    'So sánh được hai số thập phân bất kì (bao gồm cả số thập phân âm).',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Số đối của số thập phân** (Số đối của $a$ '
-                   'là $-a$; $a + (-a) = 0$) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 28: Số thập phân** để giải bài tập minh họa và bài toán '
+                   'thực tiễn.'],
   'definition': '- Phân số thập phân là phân số mà mẫu là luỹ thừa của $10$ (có tử là số nguyên): '
                 '$\\dfrac{-3}{10} = -0{,}3$; $\\dfrac{-125}{100} = -1{,}25$.\n'
                 '- Các số thập phân lớn hơn $0$ gọi là **số thập phân dương**; nhỏ hơn $0$ gọi là **số thập '
@@ -4329,7 +4361,7 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             '- Số thập phân âm $< 0 <$ Số thập phân dương.\n'
             '- Nếu $a, b$ là hai số thập phân dương và $a > b$ thì $-a < -b$. Ví dụ: vì $1{,}3 > 1{,}25$ nên '
             '$-1{,}3 < -1{,}25$.',
-  'formulas': [{'category': 'I. Số thập phân và So sánh',
+  'formulas': [{'category': 'Số thập phân và So sánh',
                 'items': [{'name': 'Số đối của số thập phân',
                            'formula': 'Số đối của $a$ là $-a$; $a + (-a) = 0$'},
                           {'name': 'So sánh hai số thập phân âm',
@@ -4357,27 +4389,26 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 28: Số thập phân**, công thức hoặc quy tắc nào sau đây '
-                 'biểu diễn đúng **Số đối của số thập phân**?',
-            'options': ['Với $a, b > 0$: $a > b \\Leftrightarrow -a < -b$',
+            'q': 'Trong **Bài 28: Số thập phân**, quy tắc hoặc công thức nào sau đây xác định đúng **Số đối '
+                 'của số thập phân**?',
+            'options': ['Số đối của $a$ là $-a$; $a - (-a) = 0$',
                         'Số đối của $a$ là $-a$; $a + (-a) = 0$',
-                        '$x \\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$)',
-                        'Liệt kê $A = \\{0; 1; 2; 3\\}$ hoặc đặc trưng $A = \\{x \\in \\mathbb{N} \\mid x < '
-                        '4\\}$'],
+                        'Số đối của $a$ là $-a$; $a + (-a) = 1$',
+                        'Số đối của $a$ là $-a$; $a + (-a) = 2$'],
             'answer': 1,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 28: Số thập phân, **Số đối của số thập phân** '
-                        'được xác định bởi: Số đối của $a$ là $-a$; $a + (-a) = 0$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 28: Số thập phân, **Số đối của số thập phân** được '
+                        'xác định bởi: Số đối của $a$ là $-a$; $a + (-a) = 0$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 28: Số thập phân**, nội dung/biểu thức Với $a, b > 0$: $a > b \\Leftrightarrow '
-                 '-a < -b$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Số đối của số thập phân',
-                        'Quan hệ phần tử – tập hợp',
-                        'So sánh hai số thập phân âm',
-                        'Hai cách mô tả'],
+            'q': 'Khi học **Bài 28: Số thập phân**, biểu thức hoặc quy tắc nào dưới đây biểu diễn đúng **So '
+                 'sánh hai số thập phân âm**?',
+            'options': ['Với $a, b < 0$: $a > b \\Leftrightarrow -a < -b$',
+                        'Với $a, b > 1$: $a > b \\Leftrightarrow -a < -b$',
+                        'Với $a, b > 0$: $a > b \\Leftrightarrow -a < -b$',
+                        'Với $a, b > 2$: $a > b \\Leftrightarrow -a < -b$'],
             'answer': 2,
-            'solution': 'Trong Bài 28: Số thập phân, biểu thức/quy tắc Với $a, b > 0$: $a > b '
-                        '\\Leftrightarrow -a < -b$ chính là nội dung của **So sánh hai số thập phân âm**.'},
+            'solution': 'Trong Bài 28: Số thập phân, **So sánh hai số thập phân âm** có công thức/quy tắc '
+                        'là: Với $a, b > 0$: $a > b \\Leftrightarrow -a < -b$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Dãy số nào dưới đây được sắp xếp theo thứ tự tăng dần?',
@@ -4391,18 +4422,18 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 28: Số thập phân** (Chương VII: Số thập phân), khẳng định nào sau đây phản '
-                 'ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
+            'q': 'Để nắm vững bản chất của **Bài 28: Số thập phân**, nhận định nào sau đây là **chính xác**?',
             'options': ['Nhận biết được số thập phân âm, tìm được số đối của một số thập phân và chuyển đổi '
                         'giữa số thập phân với phân số thập phân.',
-                        'Sử dụng được thuật ngữ tập hợp, phần tử thuộc ($\\in$) hoặc không thuộc ($\\notin$) '
-                        'một tập hợp.',
-                        'Cho được một tập hợp bằng cách liệt kê các phần tử hoặc chỉ ra tính chất đặc trưng '
-                        'cho các phần tử.',
-                        'Phân biệt được tập hợp $\\mathbb{N}$ và $\\mathbb{N}^*$; xác định được giá trị từng '
-                        'chữ số của số tự nhiên trong hệ thập phân.'],
+                        'Nhận biết được số thập phân âm, tìm được số đối của một số thập phân và chuyển đổi '
+                        'giữa số thập phân với phân số thập phân. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Nhận biết được số thập phân âm, tìm được số đối của một '
+                        'số thập phân và chuyển đổi giữa số thập phân với phân số thập phân.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nhận biết được số thập phân âm, '
+                        'tìm được số đối của một số thập phân và chuyển đổi giữa số thập phân với phân số '
+                        'thập phân.'],
             'answer': 0,
-            'solution': 'Theo yêu cầu cần đạt của Bài 28: Số thập phân: Nhận biết được số thập phân âm, tìm '
+            'solution': 'Theo nội dung cốt lõi của Bài 28: Số thập phân: Nhận biết được số thập phân âm, tìm '
                         'được số đối của một số thập phân và chuyển đổi giữa số thập phân với phân số thập '
                         'phân.'},
            {'level': 'hieu',
@@ -4419,36 +4450,37 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 28: Số thập phân**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được số thập phân âm, '
-                           'tìm được số đối của một số thập phân và chuyển đổi giữa số thập phân với phân số '
-                           'thập phân.',
-                           'Quy tắc/công thức **Số đối của số thập phân** trong bài được xác định bởi: Số '
-                           'đối của $a$ là $-a$; $a + (-a) = 0$.',
-                           'Trong mọi trường hợp, **Số đối của số thập phân** luôn được tính bằng công thức '
-                           '$x \\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$) (thuộc Quan hệ '
-                           'phần tử – tập hợp) mà không cần điều kiện của Bài 28: Số thập phân.',
-                           'Với bài toán minh họa: “Sắp xếp các số sau theo thứ tự tăng dần: $0{,}5; '
-                           '-1{,}25; -1{,}3; 0; 1{,}05$.”, lời giải đúng là: Vì $1{,}3 > 1{,}25$ nên $-1{,}3 '
-                           '< -1{,}25$. Thứ tự tăng dần là: $-1{,}3; -1{,}25; 0; 0{,}5; 1{,}05$.'],
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 28: Số thập phân**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết được số thập phân âm, tìm được '
+                           'số đối của một số thập phân và chuyển đổi giữa số thập phân với phân số thập '
+                           'phân.',
+                           'Trong **Bài 28: Số thập phân**, quy tắc/công thức **Số đối của số thập phân** '
+                           'được viết là: Số đối của $a$ là $-a$; $a + (-a) = 0$.',
+                           'Nếu áp dụng sai dấu/phép tính thành Số đối của $a$ là $-a$; $a - (-a) = 0$ thì '
+                           'kết quả của **Số đối của số thập phân** trong **Bài 28: Số thập phân** vẫn không '
+                           'thay đổi.',
+                           'Xét ví dụ của bài: “Sắp xếp các số sau theo thứ tự tăng dần: $0{,}5; -1{,}25; '
+                           '-1{,}3; 0; 1{,}05$.”, kết quả giải đúng là: Vì $1{,}3 > 1{,}25$ nên $-1{,}3 < '
+                           '-1{,}25$. Thứ tự tăng dần là: $-1{,}3; -1{,}25; 0; 0{,}5; 1{,}05$.'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 28: Số thập phân. b) **Đúng** theo công '
-                        'thức trọng tâm **Số đối của số thập phân** (Số đối của $a$ là $-a$; $a + (-a) = '
-                        '0$). c) **Sai** vì $x \\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$) '
-                        'là công thức của nội dung khác, không phải quy tắc chung của **Số đối của số thập '
-                        'phân**. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        'thức **Số đối của số thập phân** (Số đối của $a$ là $-a$; $a + (-a) = 0$). c) '
+                        '**Sai** vì công thức đúng của **Số đối của số thập phân** phải là Số đối của $a$ là '
+                        '$-a$; $a + (-a) = 0$ chứ không phải Số đối của $a$ là $-a$; $a - (-a) = 0$. d) '
+                        '**Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 28: Số thập phân** để giải quyết tình huống sau: Sắp xếp các số '
-                 'sau theo thứ tự tăng dần: $0{,}5; -1{,}25; -1{,}3; 0; 1{,}05$. Kết quả và hướng giải nào '
-                 'dưới đây là **đúng**?',
-            'options': ['Ta có $M = \\{\\text{T}, \\text{O}, \\text{A}, \\text{N}, \\text{H}, \\text{C}\\}$ '
-                        '(chữ O xuất hiện $2$ lần nhưng chỉ viết $1$ lần). Tập hợp $M$ có $6$ phần tử.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 28: Số thập phân** để giải bài toán sau: Sắp xếp '
+                 'các số sau theo thứ tự tăng dần: $0{,}5; -1{,}25; -1{,}3; 0; 1{,}05$. Cách giải và kết quả '
+                 'nào dưới đây là **đúng**?',
+            'options': ['Vì $1{,}3 < 1{,}25$ nên $-1{,}3 < -1{,}25$. Thứ tự tăng dần là: $-1{,}3; -1{,}25; '
+                        '0; 0{,}5; 1{,}05$.',
                         'Vì $1{,}3 > 1{,}25$ nên $-1{,}3 < -1{,}25$. Thứ tự tăng dần là: $-1{,}3; -1{,}25; '
                         '0; 0{,}5; 1{,}05$.',
-                        'Số $27$ viết là $\\text{XXVII}$, số $19$ viết là $\\text{XIX}$. Ta có '
-                        '$\\overline{ab} = a \\times 10 + b$.',
-                        'Các số tự nhiên từ $4$ đến $8$ là $4; 5; 6; 7; 8$. Vậy $A = \\{4; 5; 6; 7; 8\\}$.'],
+                        'Vì $1{,}3 > 1{,}25$ nên $-1{,}3 < -1{,}25$. Thứ tự tăng dần là: $-1{,}3; -1{,}25; '
+                        '0; 0{,}5; 1{,}4$.',
+                        'Vì $2{,}3 > 1{,}25$ nên $-1{,}3 < -1{,}25$. Thứ tự tăng dần là: $-1{,}3; -1{,}25; '
+                        '0; 0{,}5; 1{,}05$.'],
             'answer': 1,
             'solution': 'Lời giải chi tiết theo Bài 28: Số thập phân: Vì $1{,}3 > 1{,}25$ nên $-1{,}3 < '
                         '-1{,}25$. Thứ tự tăng dần là: $-1{,}3; -1{,}25; 0; 0{,}5; 1{,}05$.'},
@@ -4470,8 +4502,8 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
   'requirements': ['Thực hiện thành thạo bốn phép tính cộng, trừ, nhân, chia với số thập phân (cả âm và '
                    'dương).',
                    'Vận dụng tính chất giao hoán, kết hợp, phân phối và quy tắc dấu ngoặc để tính hợp lí.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Cộng và Trừ** ($(-a) + (-b) = -(a + b)$; $x '
-                   '- y = x + (-y)$) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 29: Tính toán với số thập phân** để giải bài tập minh họa '
+                   'và bài toán thực tiễn.'],
   'definition': '- Quy tắc dấu khi cộng, trừ, nhân, chia các **số thập phân âm và dương** hoàn toàn giống '
                 'quy tắc dấu đối với **số nguyên**.\n'
                 '- Cụ thể: nhân hoặc chia hai số thập phân cùng dấu được kết quả dương; khác dấu được kết '
@@ -4480,7 +4512,7 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             '- Cộng, trừ: $(-3{,}5) + (-1{,}2) = -4{,}7$; $(-3{,}5) + 1{,}2 = -(3{,}5 - 1{,}2) = -2{,}3$; '
             '$2{,}4 - 5{,}9 = 2{,}4 + (-5{,}9) = -3{,}5$.\n'
             '- Nhân, chia: $(-1{,}5) \\cdot (-0{,}4) = 0{,}6$; $4{,}8 : (-1{,}2) = -(4{,}8 : 1{,}2) = -4$.',
-  'formulas': [{'category': 'I. Quy tắc dấu với số thập phân (a, b > 0)',
+  'formulas': [{'category': 'Quy tắc dấu với số thập phân (a, b > 0)',
                 'items': [{'name': 'Cộng và Trừ', 'formula': '$(-a) + (-b) = -(a + b)$; $x - y = x + (-y)$'},
                           {'name': 'Nhân và Chia',
                            'formula': '$(-a) \\cdot (-b) = a \\cdot b$; $(-a) \\cdot b = -(a \\cdot b)$; '
@@ -4506,27 +4538,31 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 29: Tính toán với số thập phân**, công thức hoặc quy tắc '
-                 'nào sau đây biểu diễn đúng **Cộng và Trừ**?',
-            'options': ['$(-a) \\cdot (-b) = a \\cdot b$; $(-a) \\cdot b = -(a \\cdot b)$; $(-a) : b = -(a : '
-                        'b)$',
-                        '$x \\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$)',
+            'q': 'Trong **Bài 29: Tính toán với số thập phân**, quy tắc hoặc công thức nào sau đây xác định '
+                 'đúng **Cộng và Trừ**?',
+            'options': ['$(-a) - (-b) = -(a + b)$; $x - y = x + (-y)$',
+                        'Đảo ngược vế của quy tắc: $(-a) + (-b) = -(a + b)$; $x - y = x + (-y)$',
                         '$(-a) + (-b) = -(a + b)$; $x - y = x + (-y)$',
-                        'Liệt kê $A = \\{0; 1; 2; 3\\}$ hoặc đặc trưng $A = \\{x \\in \\mathbb{N} \\mid x < '
-                        '4\\}$'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $(-a) + (-b) = -(a + b)$; $x - '
+                        'y = x + (-y)$'],
             'answer': 2,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 29: Tính toán với số thập phân, **Cộng và '
-                        'Trừ** được xác định bởi: $(-a) + (-b) = -(a + b)$; $x - y = x + (-y)$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 29: Tính toán với số thập phân, **Cộng và Trừ** '
+                        'được xác định bởi: $(-a) + (-b) = -(a + b)$; $x - y = x + (-y)$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 29: Tính toán với số thập phân**, nội dung/biểu thức $(-a) \\cdot (-b) = a '
-                 '\\cdot b$; $(-a) \\cdot b = -(a \\cdot b)$; $(-a) : b = -(a : b)$ là quy tắc hoặc công '
-                 'thức của mục nào sau đây?',
-            'options': ['Cộng và Trừ', 'Quan hệ phần tử – tập hợp', 'Hai cách mô tả', 'Nhân và Chia'],
+            'q': 'Khi học **Bài 29: Tính toán với số thập phân**, biểu thức hoặc quy tắc nào dưới đây biểu '
+                 'diễn đúng **Nhân và Chia**?',
+            'options': ['$(-a) : (-b) = a \\cdot b$; $(-a) \\cdot b = -(a \\cdot b)$; $(-a) : b = -(a : b)$',
+                        'Đảo ngược vế của quy tắc: $(-a) \\cdot (-b) = a \\cdot b$; $(-a) \\cdot b = -(a '
+                        '\\cdot b)$; $(-a) : b = -(a : b)$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $(-a) \\cdot (-b) = a \\cdot '
+                        'b$; $(-a) \\cdot b = -(a \\cdot b)$; $(-a) : b = -(a : b)$',
+                        '$(-a) \\cdot (-b) = a \\cdot b$; $(-a) \\cdot b = -(a \\cdot b)$; $(-a) : b = -(a : '
+                        'b)$'],
             'answer': 3,
-            'solution': 'Trong Bài 29: Tính toán với số thập phân, biểu thức/quy tắc $(-a) \\cdot (-b) = a '
-                        '\\cdot b$; $(-a) \\cdot b = -(a \\cdot b)$; $(-a) : b = -(a : b)$ chính là nội dung '
-                        'của **Nhân và Chia**.'},
+            'solution': 'Trong Bài 29: Tính toán với số thập phân, **Nhân và Chia** có công thức/quy tắc là: '
+                        '$(-a) \\cdot (-b) = a \\cdot b$; $(-a) \\cdot b = -(a \\cdot b)$; $(-a) : b = -(a : '
+                        'b)$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Tính hợp lí biểu thức $(-3{,}7) \\cdot 6{,}4 + (-3{,}7) \\cdot 3{,}6$ ta được:',
@@ -4538,18 +4574,18 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 29: Tính toán với số thập phân** (Chương VII: Số thập phân), khẳng định nào '
-                 'sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Sử dụng được thuật ngữ tập hợp, phần tử thuộc ($\\in$) hoặc không thuộc ($\\notin$) '
-                        'một tập hợp.',
+            'q': 'Để nắm vững bản chất của **Bài 29: Tính toán với số thập phân**, nhận định nào sau đây là '
+                 '**chính xác**?',
+            'options': ['Thực hiện thành thạo bốn phép tính cộng, trừ, nhân, chia với số thập phân (cả âm và '
+                        'dương). (với dấu ngược lại)',
                         'Thực hiện thành thạo bốn phép tính cộng, trừ, nhân, chia với số thập phân (cả âm và '
                         'dương).',
-                        'Cho được một tập hợp bằng cách liệt kê các phần tử hoặc chỉ ra tính chất đặc trưng '
-                        'cho các phần tử.',
-                        'Phân biệt được tập hợp $\\mathbb{N}$ và $\\mathbb{N}^*$; xác định được giá trị từng '
-                        'chữ số của số tự nhiên trong hệ thập phân.'],
+                        'Đảo ngược vế của quy tắc: Thực hiện thành thạo bốn phép tính cộng, trừ, nhân, chia '
+                        'với số thập phân (cả âm và dương).',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Thực hiện thành thạo bốn phép '
+                        'tính cộng, trừ, nhân, chia với số thập phân (cả âm và dương).'],
             'answer': 1,
-            'solution': 'Theo yêu cầu cần đạt của Bài 29: Tính toán với số thập phân: Thực hiện thành thạo '
+            'solution': 'Theo nội dung cốt lõi của Bài 29: Tính toán với số thập phân: Thực hiện thành thạo '
                         'bốn phép tính cộng, trừ, nhân, chia với số thập phân (cả âm và dương).'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -4565,36 +4601,37 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 29: Tính toán với số '
-                 'thập phân**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Thực hiện thành thạo bốn phép tính '
-                           'cộng, trừ, nhân, chia với số thập phân (cả âm và dương).',
-                           'Quy tắc/công thức **Cộng và Trừ** trong bài được xác định bởi: $(-a) + (-b) = '
-                           '-(a + b)$; $x - y = x + (-y)$.',
-                           'Trong mọi trường hợp, **Cộng và Trừ** luôn được tính bằng công thức $x \\in A$ '
-                           '($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$) (thuộc Quan hệ phần tử – '
-                           'tập hợp) mà không cần điều kiện của Bài 29: Tính toán với số thập phân.',
-                           'Với bài toán minh họa: “Tính giá trị biểu thức: $(-2{,}5) \\cdot 4 + 1{,}5$ và '
-                           '$4{,}8 : (-1{,}2)$.”, lời giải đúng là: Ta có $(-2{,}5) \\cdot 4 + 1{,}5 = -10 + '
-                           '1{,}5 = -8{,}5$ và $4{,}8 : (-1{,}2) = -4$.'],
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 29: Tính toán với số thập '
+                 'phân**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Thực hiện thành thạo bốn phép tính cộng, '
+                           'trừ, nhân, chia với số thập phân (cả âm và dương).',
+                           'Trong **Bài 29: Tính toán với số thập phân**, quy tắc/công thức **Cộng và Trừ** '
+                           'được viết là: $(-a) + (-b) = -(a + b)$; $x - y = x + (-y)$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $(-a) - (-b) = -(a + b)$; $x - y = x + (-y)$ '
+                           'thì kết quả của **Cộng và Trừ** trong **Bài 29: Tính toán với số thập phân** vẫn '
+                           'không thay đổi.',
+                           'Xét ví dụ của bài: “Tính giá trị biểu thức: $(-2{,}5) \\cdot 4 + 1{,}5$ và '
+                           '$4{,}8 : (-1{,}2)$.”, kết quả giải đúng là: Ta có $(-2{,}5) \\cdot 4 + 1{,}5 = '
+                           '-10 + 1{,}5 = -8{,}5$ và $4{,}8 : (-1{,}2) = -4$.'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 29: Tính toán với số thập phân. b) '
-                        '**Đúng** theo công thức trọng tâm **Cộng và Trừ** ($(-a) + (-b) = -(a + b)$; $x - y '
-                        '= x + (-y)$). c) **Sai** vì $x \\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không '
-                        'thuộc $A$) là công thức của nội dung khác, không phải quy tắc chung của **Cộng và '
-                        'Trừ**. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        '**Đúng** theo công thức **Cộng và Trừ** ($(-a) + (-b) = -(a + b)$; $x - y = x + '
+                        '(-y)$). c) **Sai** vì công thức đúng của **Cộng và Trừ** phải là $(-a) + (-b) = -(a '
+                        '+ b)$; $x - y = x + (-y)$ chứ không phải $(-a) - (-b) = -(a + b)$; $x - y = x + '
+                        '(-y)$. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 29: Tính toán với số thập phân** để giải quyết tình huống sau: '
-                 'Tính giá trị biểu thức: $(-2{,}5) \\cdot 4 + 1{,}5$ và $4{,}8 : (-1{,}2)$. Kết quả và '
-                 'hướng giải nào dưới đây là **đúng**?',
-            'options': ['Ta có $M = \\{\\text{T}, \\text{O}, \\text{A}, \\text{N}, \\text{H}, \\text{C}\\}$ '
-                        '(chữ O xuất hiện $2$ lần nhưng chỉ viết $1$ lần). Tập hợp $M$ có $6$ phần tử.',
-                        'Số $27$ viết là $\\text{XXVII}$, số $19$ viết là $\\text{XIX}$. Ta có '
-                        '$\\overline{ab} = a \\times 10 + b$.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 29: Tính toán với số thập phân** để giải bài toán '
+                 'sau: Tính giá trị biểu thức: $(-2{,}5) \\cdot 4 + 1{,}5$ và $4{,}8 : (-1{,}2)$. Cách giải '
+                 'và kết quả nào dưới đây là **đúng**?',
+            'options': ['Ta có $(-2{,}5) \\cdot 4 - 1{,}5 = -10 + 1{,}5 = -8{,}5$ và $4{,}8 : (-1{,}2) = '
+                        '-4$.',
+                        'Ta có $(-2{,}5) \\cdot 4 + 1{,}5 = -10 + 1{,}5 = -8{,}5$ và $4{,}8 : (-1{,}2) = '
+                        '-3$.',
                         'Ta có $(-2{,}5) \\cdot 4 + 1{,}5 = -10 + 1{,}5 = -8{,}5$ và $4{,}8 : (-1{,}2) = '
                         '-4$.',
-                        'Các số tự nhiên từ $4$ đến $8$ là $4; 5; 6; 7; 8$. Vậy $A = \\{4; 5; 6; 7; 8\\}$.'],
+                        'Ta có $(-4{,}5) \\cdot 4 + 1{,}5 = -10 + 1{,}5 = -8{,}5$ và $4{,}8 : (-1{,}2) = '
+                        '-4$.'],
             'answer': 2,
             'solution': 'Lời giải chi tiết theo Bài 29: Tính toán với số thập phân: Ta có $(-2{,}5) \\cdot 4 '
                         '+ 1{,}5 = -10 + 1{,}5 = -8{,}5$ và $4{,}8 : (-1{,}2) = -4$.'},
@@ -4617,8 +4654,8 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
   'requirements': ['Làm tròn được số thập phân và số tự nhiên đến một hàng cho trước (hàng phần mười, phần '
                    'trăm, hàng chục, hàng trăm, ...).',
                    'Biết ước lượng nhanh kết quả các phép tính để phát hiện sai sót.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Chữ số bỏ đi đầu tiên < 5** (Giữ nguyên chữ '
-                   'số hàng làm tròn) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 30: Làm tròn và ước lượng** để giải bài tập minh họa và bài '
+                   'toán thực tiễn.'],
   'definition': '- Muốn **làm tròn một số** đến một hàng nào đó, ta nhìn vào **chữ số ngay bên phải** hàng '
                 'làm tròn:\n'
                 '- Nếu chữ số đó **nhỏ hơn $5$** thì giữ nguyên chữ số ở hàng làm tròn; nếu **lớn hơn hoặc '
@@ -4632,7 +4669,7 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             '### 2. Ước lượng kết quả phép tính\n'
             '- Làm tròn các thừa số, số hạng đến chữ số hàng cao nhất rồi nhẩm: $19{,}8 \\cdot 5{,}1 '
             '\\approx 20 \\cdot 5 = 100$.',
-  'formulas': [{'category': 'I. Quy tắc làm tròn và ước lượng',
+  'formulas': [{'category': 'Quy tắc làm tròn và ước lượng',
                 'items': [{'name': 'Chữ số bỏ đi đầu tiên < 5', 'formula': 'Giữ nguyên chữ số hàng làm tròn'},
                           {'name': 'Chữ số bỏ đi đầu tiên >= 5',
                            'formula': 'Cộng thêm $1$ vào chữ số hàng làm tròn'}]}],
@@ -4659,27 +4696,26 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 30: Làm tròn và ước lượng**, công thức hoặc quy tắc nào '
-                 'sau đây biểu diễn đúng **Chữ số bỏ đi đầu tiên < 5**?',
-            'options': ['Cộng thêm $1$ vào chữ số hàng làm tròn',
-                        '$x \\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$)',
-                        'Liệt kê $A = \\{0; 1; 2; 3\\}$ hoặc đặc trưng $A = \\{x \\in \\mathbb{N} \\mid x < '
-                        '4\\}$',
+            'q': 'Trong **Bài 30: Làm tròn và ước lượng**, quy tắc hoặc công thức nào sau đây xác định đúng '
+                 '**Chữ số bỏ đi đầu tiên < 5**?',
+            'options': ['Giữ nguyên chữ số hàng làm tròn (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Giữ nguyên chữ số hàng làm tròn',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Giữ nguyên chữ số hàng làm tròn',
                         'Giữ nguyên chữ số hàng làm tròn'],
             'answer': 3,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 30: Làm tròn và ước lượng, **Chữ số bỏ đi đầu '
-                        'tiên < 5** được xác định bởi: Giữ nguyên chữ số hàng làm tròn.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 30: Làm tròn và ước lượng, **Chữ số bỏ đi đầu tiên '
+                        '< 5** được xác định bởi: Giữ nguyên chữ số hàng làm tròn.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 30: Làm tròn và ước lượng**, nội dung/biểu thức Cộng thêm $1$ vào chữ số hàng '
-                 'làm tròn là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Chữ số bỏ đi đầu tiên >= 5',
-                        'Chữ số bỏ đi đầu tiên < 5',
-                        'Quan hệ phần tử – tập hợp',
-                        'Hai cách mô tả'],
+            'q': 'Khi học **Bài 30: Làm tròn và ước lượng**, biểu thức hoặc quy tắc nào dưới đây biểu diễn '
+                 'đúng **Chữ số bỏ đi đầu tiên >= 5**?',
+            'options': ['Cộng thêm $1$ vào chữ số hàng làm tròn',
+                        'Cộng thêm $2$ vào chữ số hàng làm tròn',
+                        'Giữ nguyên chữ số hàng làm tròn',
+                        'Trường hợp sai quy tắc (sai lệch 1 đơn vị so với công thức trong bài)'],
             'answer': 0,
-            'solution': 'Trong Bài 30: Làm tròn và ước lượng, biểu thức/quy tắc Cộng thêm $1$ vào chữ số '
-                        'hàng làm tròn chính là nội dung của **Chữ số bỏ đi đầu tiên >= 5**.'},
+            'solution': 'Trong Bài 30: Làm tròn và ước lượng, **Chữ số bỏ đi đầu tiên >= 5** có công '
+                        'thức/quy tắc là: Cộng thêm $1$ vào chữ số hàng làm tròn.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Ước lượng kết quả của phép nhân $39{,}8 \\cdot 5{,}04$ bằng cách làm tròn hai thừa số đến '
@@ -4692,18 +4728,19 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 30: Làm tròn và ước lượng** (Chương VII: Số thập phân), khẳng định nào sau '
-                 'đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Sử dụng được thuật ngữ tập hợp, phần tử thuộc ($\\in$) hoặc không thuộc ($\\notin$) '
-                        'một tập hợp.',
-                        'Cho được một tập hợp bằng cách liệt kê các phần tử hoặc chỉ ra tính chất đặc trưng '
-                        'cho các phần tử.',
+            'q': 'Để nắm vững bản chất của **Bài 30: Làm tròn và ước lượng**, nhận định nào sau đây là '
+                 '**chính xác**?',
+            'options': ['Làm tròn được số thập phân và số tự nhiên đến một hàng cho trước (hàng phần mười, '
+                        'phần trăm, hàng chục, hàng trăm, ...). (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Làm tròn được số thập phân và số tự nhiên đến một hàng '
+                        'cho trước (hàng phần mười, phần trăm, hàng chục, hàng trăm, ...).',
                         'Làm tròn được số thập phân và số tự nhiên đến một hàng cho trước (hàng phần mười, '
                         'phần trăm, hàng chục, hàng trăm, ...).',
-                        'Phân biệt được tập hợp $\\mathbb{N}$ và $\\mathbb{N}^*$; xác định được giá trị từng '
-                        'chữ số của số tự nhiên trong hệ thập phân.'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Làm tròn được số thập phân và '
+                        'số tự nhiên đến một hàng cho trước (hàng phần mười, phần trăm, hàng chục, hàng '
+                        'trăm, ...).'],
             'answer': 2,
-            'solution': 'Theo yêu cầu cần đạt của Bài 30: Làm tròn và ước lượng: Làm tròn được số thập phân '
+            'solution': 'Theo nội dung cốt lõi của Bài 30: Làm tròn và ước lượng: Làm tròn được số thập phân '
                         'và số tự nhiên đến một hàng cho trước (hàng phần mười, phần trăm, hàng chục, hàng '
                         'trăm, ...).'},
            {'level': 'hieu',
@@ -4720,36 +4757,39 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 30: Làm tròn và ước '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 30: Làm tròn và ước '
                  'lượng**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Làm tròn được số thập phân và số '
-                           'tự nhiên đến một hàng cho trước (hàng phần mười, phần trăm, hàng chục, hàng '
-                           'trăm, ...).',
-                           'Quy tắc/công thức **Chữ số bỏ đi đầu tiên < 5** trong bài được xác định bởi: Giữ '
-                           'nguyên chữ số hàng làm tròn.',
-                           'Trong mọi trường hợp, **Chữ số bỏ đi đầu tiên < 5** luôn được tính bằng công '
-                           'thức $x \\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$) (thuộc Quan '
-                           'hệ phần tử – tập hợp) mà không cần điều kiện của Bài 30: Làm tròn và ước lượng.',
-                           'Với bài toán minh họa: “Làm tròn số $7{,}449$ đến hàng phần mười và ước lượng '
-                           'tích $29{,}7 \\cdot 4{,}1$.”, lời giải đúng là: Ở số $7{,}449$, chữ số ngay sau '
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Làm tròn được số thập phân và số tự '
+                           'nhiên đến một hàng cho trước (hàng phần mười, phần trăm, hàng chục, hàng trăm, '
+                           '...).',
+                           'Trong **Bài 30: Làm tròn và ước lượng**, quy tắc/công thức **Chữ số bỏ đi đầu '
+                           'tiên < 5** được viết là: Giữ nguyên chữ số hàng làm tròn.',
+                           'Nếu áp dụng sai dấu/phép tính thành Giữ nguyên chữ số hàng làm tròn (với dấu '
+                           'ngược lại) thì kết quả của **Chữ số bỏ đi đầu tiên < 5** trong **Bài 30: Làm '
+                           'tròn và ước lượng** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Làm tròn số $7{,}449$ đến hàng phần mười và ước lượng tích '
+                           '$29{,}7 \\cdot 4{,}1$.”, kết quả giải đúng là: Ở số $7{,}449$, chữ số ngay sau '
                            'hàng phần mười là $4 < 5$ nên làm tròn đến hàng phần mười được $7{,}4$. Ước '
                            'lượng: $29{,}7 \\cdot 4{,}1 \\approx 30 \\cdot 4 = 120$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 30: Làm tròn và ước lượng. b) **Đúng** '
-                        'theo công thức trọng tâm **Chữ số bỏ đi đầu tiên < 5** (Giữ nguyên chữ số hàng làm '
-                        'tròn). c) **Sai** vì $x \\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc '
-                        '$A$) là công thức của nội dung khác, không phải quy tắc chung của **Chữ số bỏ đi '
-                        'đầu tiên < 5**. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        'theo công thức **Chữ số bỏ đi đầu tiên < 5** (Giữ nguyên chữ số hàng làm tròn). c) '
+                        '**Sai** vì công thức đúng của **Chữ số bỏ đi đầu tiên < 5** phải là Giữ nguyên chữ '
+                        'số hàng làm tròn chứ không phải Giữ nguyên chữ số hàng làm tròn (với dấu ngược '
+                        'lại). d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 30: Làm tròn và ước lượng** để giải quyết tình huống sau: Làm '
-                 'tròn số $7{,}449$ đến hàng phần mười và ước lượng tích $29{,}7 \\cdot 4{,}1$. Kết quả và '
-                 'hướng giải nào dưới đây là **đúng**?',
-            'options': ['Ta có $M = \\{\\text{T}, \\text{O}, \\text{A}, \\text{N}, \\text{H}, \\text{C}\\}$ '
-                        '(chữ O xuất hiện $2$ lần nhưng chỉ viết $1$ lần). Tập hợp $M$ có $6$ phần tử.',
-                        'Số $27$ viết là $\\text{XXVII}$, số $19$ viết là $\\text{XIX}$. Ta có '
-                        '$\\overline{ab} = a \\times 10 + b$.',
-                        'Các số tự nhiên từ $4$ đến $8$ là $4; 5; 6; 7; 8$. Vậy $A = \\{4; 5; 6; 7; 8\\}$.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 30: Làm tròn và ước lượng** để giải bài toán sau: '
+                 'Làm tròn số $7{,}449$ đến hàng phần mười và ước lượng tích $29{,}7 \\cdot 4{,}1$. Cách '
+                 'giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Ở số $7{,}449$, chữ số ngay sau hàng phần mười là $4 < 5$ nên làm tròn đến hàng '
+                        'phần mười được $7{,}4$. Ước lượng: $29{,}7 : 4{,}1 \\approx 30 \\cdot 4 = 120$...',
+                        'Ở số $7{,}449$, chữ số ngay sau hàng phần mười là $4 < 5$ nên làm tròn đến hàng '
+                        'phần mười được $7{,}4$. Ước lượng: $29{,}7 \\cdot 4{,}1 \\approx 30 \\cdot 4 = '
+                        '119$...',
+                        'Ở số $14{,}449$, chữ số ngay sau hàng phần mười là $4 < 5$ nên làm tròn đến hàng '
+                        'phần mười được $7{,}4$. Ước lượng: $29{,}7 \\cdot 4{,}1 \\approx 30 \\cdot 4 = '
+                        '120$...',
                         'Ở số $7{,}449$, chữ số ngay sau hàng phần mười là $4 < 5$ nên làm tròn đến hàng '
                         'phần mười được $7{,}4$. Ước lượng: $29{,}7 \\cdot 4{,}1 \\approx 30 \\cdot 4 = '
                         '120$...'],
@@ -4776,8 +4816,8 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
                  'dụng thực tiễn.',
   'requirements': ['Tính được tỉ số và tỉ số phần trăm của hai số hoặc hai đại lượng (cùng đơn vị đo).',
                    'Giải được hai bài toán cơ bản về tỉ số phần trăm cùng các bài toán lãi suất, giảm giá.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Tỉ số phần trăm của a và b** '
-                   '($\\dfrac{a}{b} \\cdot 100\\%$) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 31: Một số bài toán về tỉ số và tỉ số phần trăm** để giải '
+                   'bài tập minh họa và bài toán thực tiễn.'],
   'definition': '- **Tỉ số** của hai số $a$ và $b$ ($b \\ne 0$) là thương $a : b$ hay $\\dfrac{a}{b}$.\n'
                 '- **Tỉ số phần trăm** của hai số $a$ và $b$ là $\\dfrac{a}{b} \\cdot 100\\%$.\n'
                 '- **Giá trị $m\\%$ của số $a$** là $a \\cdot \\dfrac{m}{100}$. **Tìm một số biết $m\\%$ của '
@@ -4787,7 +4827,7 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             '### 2. Bài toán lãi suất ngân hàng\n'
             '- Gửi số tiền gốc $A$ với lãi suất $r\\%$/năm thì sau $1$ năm: $\\text{Tiền lãi} = A \\cdot '
             '\\dfrac{r}{100}$ và $\\text{Tổng gốc + lãi} = A + \\text{Tiền lãi}$.',
-  'formulas': [{'category': 'I. Công thức tỉ số phần trăm',
+  'formulas': [{'category': 'Công thức tỉ số phần trăm',
                 'items': [{'name': 'Tỉ số phần trăm của a và b', 'formula': '$\\dfrac{a}{b} \\cdot 100\\%$'},
                           {'name': 'Bài toán 1 (Tìm m% của a)', 'formula': '$a \\cdot \\dfrac{m}{100}$'},
                           {'name': 'Bài toán 2 (Biết m% của số đó bằng b)',
@@ -4820,27 +4860,26 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 31: Một số bài toán về tỉ số và tỉ số phần trăm**, công '
-                 'thức hoặc quy tắc nào sau đây biểu diễn đúng **Tỉ số phần trăm của a và b**?',
+            'q': 'Trong **Bài 31: Một số bài toán về tỉ số và tỉ số phần trăm**, quy tắc hoặc công thức nào '
+                 'sau đây xác định đúng **Tỉ số phần trăm của a và b**?',
             'options': ['$\\dfrac{a}{b} \\cdot 100\\%$',
-                        '$a \\cdot \\dfrac{m}{100}$',
-                        '$b : \\dfrac{m}{100} = b \\cdot \\dfrac{100}{m}$',
-                        '$x \\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$)'],
+                        '$\\dfrac{a}{b} : 100\\%$',
+                        '$\\dfrac{b}{a} \\cdot 100\\%$',
+                        '$\\dfrac{a}{b} \\cdot 102\\%$'],
             'answer': 0,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 31: Một số bài toán về tỉ số và tỉ số phần '
-                        'trăm, **Tỉ số phần trăm của a và b** được xác định bởi: $\\dfrac{a}{b} \\cdot '
-                        '100\\%$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 31: Một số bài toán về tỉ số và tỉ số phần trăm, '
+                        '**Tỉ số phần trăm của a và b** được xác định bởi: $\\dfrac{a}{b} \\cdot 100\\%$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 31: Một số bài toán về tỉ số và tỉ số phần trăm**, nội dung/biểu thức $a '
-                 '\\cdot \\dfrac{m}{100}$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Tỉ số phần trăm của a và b',
-                        'Bài toán 1 (Tìm m% của a)',
-                        'Bài toán 2 (Biết m% của số đó bằng b)',
-                        'Quan hệ phần tử – tập hợp'],
+            'q': 'Khi học **Bài 31: Một số bài toán về tỉ số và tỉ số phần trăm**, biểu thức hoặc quy tắc '
+                 'nào dưới đây biểu diễn đúng **Bài toán 1 (Tìm m% của a)**?',
+            'options': ['$a : \\dfrac{m}{100}$',
+                        '$a \\cdot \\dfrac{m}{100}$',
+                        '$a \\cdot \\dfrac{100}{m}$',
+                        '$a \\cdot \\dfrac{m}{102}$'],
             'answer': 1,
-            'solution': 'Trong Bài 31: Một số bài toán về tỉ số và tỉ số phần trăm, biểu thức/quy tắc $a '
-                        '\\cdot \\dfrac{m}{100}$ chính là nội dung của **Bài toán 1 (Tìm m% của a)**.'},
+            'solution': 'Trong Bài 31: Một số bài toán về tỉ số và tỉ số phần trăm, **Bài toán 1 (Tìm m% của '
+                        'a)** có công thức/quy tắc là: $a \\cdot \\dfrac{m}{100}$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Một cửa hàng giảm giá $20\\%$ cho tất cả mặt hàng. Bạn Bình mua một đôi giày phải trả '
@@ -4853,18 +4892,17 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 31: Một số bài toán về tỉ số và tỉ số phần trăm** (Chương VII: Số thập '
-                 'phân), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của '
-                 'bài?',
-            'options': ['Sử dụng được thuật ngữ tập hợp, phần tử thuộc ($\\in$) hoặc không thuộc ($\\notin$) '
-                        'một tập hợp.',
-                        'Cho được một tập hợp bằng cách liệt kê các phần tử hoặc chỉ ra tính chất đặc trưng '
-                        'cho các phần tử.',
-                        'Phân biệt được tập hợp $\\mathbb{N}$ và $\\mathbb{N}^*$; xác định được giá trị từng '
-                        'chữ số của số tự nhiên trong hệ thập phân.',
+            'q': 'Để nắm vững bản chất của **Bài 31: Một số bài toán về tỉ số và tỉ số phần trăm**, nhận '
+                 'định nào sau đây là **chính xác**?',
+            'options': ['Tính được tỉ số và tỉ số phần trăm của hai số hoặc hai đại lượng (cùng đơn vị đo). '
+                        '(với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Tính được tỉ số và tỉ số phần trăm của hai số hoặc hai '
+                        'đại lượng (cùng đơn vị đo).',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Tính được tỉ số và tỉ số phần '
+                        'trăm của hai số hoặc hai đại lượng (cùng đơn vị đo).',
                         'Tính được tỉ số và tỉ số phần trăm của hai số hoặc hai đại lượng (cùng đơn vị đo).'],
             'answer': 3,
-            'solution': 'Theo yêu cầu cần đạt của Bài 31: Một số bài toán về tỉ số và tỉ số phần trăm: Tính '
+            'solution': 'Theo nội dung cốt lõi của Bài 31: Một số bài toán về tỉ số và tỉ số phần trăm: Tính '
                         'được tỉ số và tỉ số phần trăm của hai số hoặc hai đại lượng (cùng đơn vị đo).'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -4880,39 +4918,38 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 31: Một số bài toán về '
-                 'tỉ số và tỉ số phần trăm**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Tính được tỉ số và tỉ số phần trăm '
-                           'của hai số hoặc hai đại lượng (cùng đơn vị đo).',
-                           'Quy tắc/công thức **Tỉ số phần trăm của a và b** trong bài được xác định bởi: '
-                           '$\\dfrac{a}{b} \\cdot 100\\%$.',
-                           'Trong mọi trường hợp, **Tỉ số phần trăm của a và b** luôn được tính bằng công '
-                           'thức $x \\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$) (thuộc Quan '
-                           'hệ phần tử – tập hợp) mà không cần điều kiện của Bài 31: Một số bài toán về tỉ '
-                           'số và tỉ số phần trăm.',
-                           'Với bài toán minh họa: “Một chiếc áo giá $400\\,000$ đồng được giảm giá $15\\%$. '
-                           'Tính số tiền được giảm và giá bán mới.”, lời giải đúng là: Số tiền được giảm là '
-                           '$400\\,000 \\cdot \\dfrac{15}{100} = 60\\,000$ (đồng). Giá bán mới là $400\\,000 '
-                           '- 60\\,000 = 340\\,000$ (đồng).'],
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 31: Một số bài toán về tỉ '
+                 'số và tỉ số phần trăm**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Tính được tỉ số và tỉ số phần trăm của '
+                           'hai số hoặc hai đại lượng (cùng đơn vị đo).',
+                           'Trong **Bài 31: Một số bài toán về tỉ số và tỉ số phần trăm**, quy tắc/công thức '
+                           '**Tỉ số phần trăm của a và b** được viết là: $\\dfrac{a}{b} \\cdot 100\\%$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $\\dfrac{a}{b} : 100\\%$ thì kết quả của '
+                           '**Tỉ số phần trăm của a và b** trong **Bài 31: Một số bài toán về tỉ số và tỉ số '
+                           'phần trăm** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Một chiếc áo giá $400\\,000$ đồng được giảm giá $15\\%$. '
+                           'Tính số tiền được giảm và giá bán mới.”, kết quả giải đúng là: Số tiền được giảm '
+                           'là $400\\,000 \\cdot \\dfrac{15}{100} = 60\\,000$ (đồng). Giá bán mới là '
+                           '$400\\,000 - 60\\,000 = 340\\,000$ (đồng).'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 31: Một số bài toán về tỉ số và tỉ số phần '
-                        'trăm. b) **Đúng** theo công thức trọng tâm **Tỉ số phần trăm của a và b** '
-                        '($\\dfrac{a}{b} \\cdot 100\\%$). c) **Sai** vì $x \\in A$ ($x$ thuộc $A$); $y '
-                        '\\notin A$ ($y$ không thuộc $A$) là công thức của nội dung khác, không phải quy tắc '
-                        'chung của **Tỉ số phần trăm của a và b**. d) **Đúng** theo lời giải ví dụ minh họa '
-                        'trong bài học.'},
+                        'trăm. b) **Đúng** theo công thức **Tỉ số phần trăm của a và b** ($\\dfrac{a}{b} '
+                        '\\cdot 100\\%$). c) **Sai** vì công thức đúng của **Tỉ số phần trăm của a và b** '
+                        'phải là $\\dfrac{a}{b} \\cdot 100\\%$ chứ không phải $\\dfrac{a}{b} : 100\\%$. d) '
+                        '**Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 31: Một số bài toán về tỉ số và tỉ số phần trăm** để giải quyết '
-                 'tình huống sau: Một chiếc áo giá $400\\,000$ đồng được giảm giá $15\\%$. Tính số tiền được '
-                 'giảm và giá bán mới. Kết quả và hướng giải nào dưới đây là **đúng**?',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 31: Một số bài toán về tỉ số và tỉ số phần trăm** '
+                 'để giải bài toán sau: Một chiếc áo giá $400\\,000$ đồng được giảm giá $15\\%$. Tính số '
+                 'tiền được giảm và giá bán mới. Cách giải và kết quả nào dưới đây là **đúng**?',
             'options': ['Số tiền được giảm là $400\\,000 \\cdot \\dfrac{15}{100} = 60\\,000$ (đồng). Giá bán '
                         'mới là $400\\,000 - 60\\,000 = 340\\,000$ (đồng).',
-                        'Ta có $M = \\{\\text{T}, \\text{O}, \\text{A}, \\text{N}, \\text{H}, \\text{C}\\}$ '
-                        '(chữ O xuất hiện $2$ lần nhưng chỉ viết $1$ lần). Tập hợp $M$ có $6$ phần tử.',
-                        'Số $27$ viết là $\\text{XXVII}$, số $19$ viết là $\\text{XIX}$. Ta có '
-                        '$\\overline{ab} = a \\times 10 + b$.',
-                        'Các số tự nhiên từ $4$ đến $8$ là $4; 5; 6; 7; 8$. Vậy $A = \\{4; 5; 6; 7; 8\\}$.'],
+                        'Số tiền được giảm là $400\\,000 \\cdot \\dfrac{15}{100} = 60\\,000$ (đồng). Giá bán '
+                        'mới là $400\\,000 + 60\\,000 = 340\\,000$ (đồng).',
+                        'Số tiền được giảm là $400\\,000 \\cdot \\dfrac{100}{15} = 60\\,000$ (đồng). Giá bán '
+                        'mới là $400\\,000 - 60\\,000 = 340\\,000$ (đồng).',
+                        'Số tiền được giảm là $402\\,000 \\cdot \\dfrac{15}{100} = 60\\,000$ (đồng). Giá bán '
+                        'mới là $400\\,000 - 60\\,000 = 340\\,000$ (đồng).'],
             'answer': 0,
             'solution': 'Lời giải chi tiết theo Bài 31: Một số bài toán về tỉ số và tỉ số phần trăm: Số tiền '
                         'được giảm là $400\\,000 \\cdot \\dfrac{15}{100} = 60\\,000$ (đồng). Giá bán mới là '
@@ -4938,8 +4975,8 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
                    'đường thẳng đi qua hai điểm phân biệt.',
                    'Phân biệt được hai đường thẳng cắt nhau, hai đường thẳng song song và hai đường thẳng '
                    'trùng nhau.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Tiên đề đường thẳng qua 2 điểm** (Qua $2$ '
-                   'điểm phân biệt có duy nhất $1$ đường thẳng) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 32: Điểm và đường thẳng** để giải bài tập minh họa và bài '
+                   'toán thực tiễn.'],
   'definition': '- **Điểm** được kí hiệu bằng chữ cái in hoa ($A, B, C, \\dots$), **đường thẳng** kí hiệu '
                 'bằng chữ cái thường ($a, b, d, \\dots$) hoặc hai chữ cái in hoa ($AB$).\n'
                 '- Có **một và chỉ một** đường thẳng đi qua hai điểm phân biệt $A$ và $B$.\n'
@@ -4949,7 +4986,7 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
   'theory': '### 1. Số đường thẳng đi qua các cặp điểm\n'
             '- Cho $n$ điểm phân biệt trong đó không có $3$ điểm nào thẳng hàng. Cứ qua $2$ điểm vẽ một '
             'đường thẳng thì số đường thẳng vẽ được là $\\dfrac{n(n - 1)}{2}$.',
-  'formulas': [{'category': 'I. Quan hệ điểm – đường thẳng',
+  'formulas': [{'category': 'Quan hệ điểm – đường thẳng',
                 'items': [{'name': 'Tiên đề đường thẳng qua 2 điểm',
                            'formula': 'Qua $2$ điểm phân biệt có duy nhất $1$ đường thẳng'},
                           {'name': 'Công thức đếm đường thẳng',
@@ -4978,30 +5015,27 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 32: Điểm và đường thẳng**, công thức hoặc quy tắc nào '
-                 'sau đây biểu diễn đúng **Tiên đề đường thẳng qua 2 điểm**?',
-            'options': ['Qua $n$ điểm (không có $3$ điểm thẳng hàng) có $\\dfrac{n(n - 1)}{2}$ đường thẳng',
+            'q': 'Trong **Bài 32: Điểm và đường thẳng**, quy tắc hoặc công thức nào sau đây xác định đúng '
+                 '**Tiên đề đường thẳng qua 2 điểm**?',
+            'options': ['Qua $3$ điểm phân biệt có duy nhất $1$ đường thẳng',
                         'Qua $2$ điểm phân biệt có duy nhất $1$ đường thẳng',
-                        '$x \\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$)',
-                        'Liệt kê $A = \\{0; 1; 2; 3\\}$ hoặc đặc trưng $A = \\{x \\in \\mathbb{N} \\mid x < '
-                        '4\\}$'],
+                        'Qua $2$ điểm phân biệt có duy nhất $2$ đường thẳng',
+                        'Qua $4$ điểm phân biệt có duy nhất $1$ đường thẳng'],
             'answer': 1,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 32: Điểm và đường thẳng, **Tiên đề đường '
-                        'thẳng qua 2 điểm** được xác định bởi: Qua $2$ điểm phân biệt có duy nhất $1$ đường '
-                        'thẳng.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 32: Điểm và đường thẳng, **Tiên đề đường thẳng qua '
+                        '2 điểm** được xác định bởi: Qua $2$ điểm phân biệt có duy nhất $1$ đường thẳng.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 32: Điểm và đường thẳng**, nội dung/biểu thức Qua $n$ điểm (không có $3$ điểm '
-                 'thẳng hàng) có $\\dfrac{n(n - 1)}{2}$ đường thẳng là quy tắc hoặc công thức của mục nào '
-                 'sau đây?',
-            'options': ['Tiên đề đường thẳng qua 2 điểm',
-                        'Quan hệ phần tử – tập hợp',
-                        'Công thức đếm đường thẳng',
-                        'Hai cách mô tả'],
+            'q': 'Khi học **Bài 32: Điểm và đường thẳng**, biểu thức hoặc quy tắc nào dưới đây biểu diễn '
+                 'đúng **Công thức đếm đường thẳng**?',
+            'options': ['Qua $n$ điểm (không có $3$ điểm thẳng hàng) có $\\dfrac{n(n + 1)}{2}$ đường thẳng',
+                        'Qua $n$ điểm (không có $3$ điểm thẳng hàng) có $\\dfrac{2}{n(n - 1)}$ đường thẳng',
+                        'Qua $n$ điểm (không có $3$ điểm thẳng hàng) có $\\dfrac{n(n - 1)}{2}$ đường thẳng',
+                        'Qua $n$ điểm (không có $6$ điểm thẳng hàng) có $\\dfrac{n(n - 1)}{2}$ đường thẳng'],
             'answer': 2,
-            'solution': 'Trong Bài 32: Điểm và đường thẳng, biểu thức/quy tắc Qua $n$ điểm (không có $3$ '
-                        'điểm thẳng hàng) có $\\dfrac{n(n - 1)}{2}$ đường thẳng chính là nội dung của **Công '
-                        'thức đếm đường thẳng**.'},
+            'solution': 'Trong Bài 32: Điểm và đường thẳng, **Công thức đếm đường thẳng** có công thức/quy '
+                        'tắc là: Qua $n$ điểm (không có $3$ điểm thẳng hàng) có $\\dfrac{n(n - 1)}{2}$ đường '
+                        'thẳng.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Cho $4$ điểm phân biệt trong đó không có $3$ điểm nào thẳng hàng. Số đường thẳng đi qua '
@@ -5013,18 +5047,19 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 32: Điểm và đường thẳng** (Chương VIII: Những hình hình học cơ bản), khẳng '
-                 'định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
+            'q': 'Để nắm vững bản chất của **Bài 32: Điểm và đường thẳng**, nhận định nào sau đây là **chính '
+                 'xác**?',
             'options': ['Sử dụng đúng kí hiệu $A \\in d$, $B \\notin d$; nhận biết ba điểm thẳng hàng và '
                         'tiên đề đường thẳng đi qua hai điểm phân biệt.',
-                        'Sử dụng được thuật ngữ tập hợp, phần tử thuộc ($\\in$) hoặc không thuộc ($\\notin$) '
-                        'một tập hợp.',
-                        'Cho được một tập hợp bằng cách liệt kê các phần tử hoặc chỉ ra tính chất đặc trưng '
-                        'cho các phần tử.',
-                        'Phân biệt được tập hợp $\\mathbb{N}$ và $\\mathbb{N}^*$; xác định được giá trị từng '
-                        'chữ số của số tự nhiên trong hệ thập phân.'],
+                        'Sử dụng đúng kí hiệu $A \\notin d$, $B \\notin d$; nhận biết ba điểm thẳng hàng và '
+                        'tiên đề đường thẳng đi qua hai điểm phân biệt.',
+                        'Đảo ngược vế của quy tắc: Sử dụng đúng kí hiệu $A \\in d$, $B \\notin d$; nhận biết '
+                        'ba điểm thẳng hàng và tiên đề đường thẳng đi qua hai điểm phân biệt.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Sử dụng đúng kí hiệu $A \\in '
+                        'd$, $B \\notin d$; nhận biết ba điểm thẳng hàng và tiên đề đường thẳng đi qua hai '
+                        'điểm phân biệt.'],
             'answer': 0,
-            'solution': 'Theo yêu cầu cần đạt của Bài 32: Điểm và đường thẳng: Sử dụng đúng kí hiệu $A \\in '
+            'solution': 'Theo nội dung cốt lõi của Bài 32: Điểm và đường thẳng: Sử dụng đúng kí hiệu $A \\in '
                         'd$, $B \\notin d$; nhận biết ba điểm thẳng hàng và tiên đề đường thẳng đi qua hai '
                         'điểm phân biệt.'},
            {'level': 'hieu',
@@ -5041,41 +5076,40 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 32: Điểm và đường '
-                 'thẳng**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Sử dụng đúng kí hiệu $A \\in d$, '
-                           '$B \\notin d$; nhận biết ba điểm thẳng hàng và tiên đề đường thẳng đi qua hai '
-                           'điểm phân biệt.',
-                           'Quy tắc/công thức **Tiên đề đường thẳng qua 2 điểm** trong bài được xác định '
-                           'bởi: Qua $2$ điểm phân biệt có duy nhất $1$ đường thẳng.',
-                           'Trong mọi trường hợp, **Tiên đề đường thẳng qua 2 điểm** luôn được tính bằng '
-                           'công thức $x \\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$) (thuộc '
-                           'Quan hệ phần tử – tập hợp) mà không cần điều kiện của Bài 32: Điểm và đường '
-                           'thẳng.',
-                           'Với bài toán minh họa: “Cho $4$ điểm phân biệt $A, B, C, D$ trong đó không có ba '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 32: Điểm và đường thẳng**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Sử dụng đúng kí hiệu $A \\in d$, $B '
+                           '\\notin d$; nhận biết ba điểm thẳng hàng và tiên đề đường thẳng đi qua hai điểm '
+                           'phân biệt.',
+                           'Trong **Bài 32: Điểm và đường thẳng**, quy tắc/công thức **Tiên đề đường thẳng '
+                           'qua 2 điểm** được viết là: Qua $2$ điểm phân biệt có duy nhất $1$ đường thẳng.',
+                           'Nếu áp dụng sai dấu/phép tính thành Qua $3$ điểm phân biệt có duy nhất $1$ đường '
+                           'thẳng thì kết quả của **Tiên đề đường thẳng qua 2 điểm** trong **Bài 32: Điểm và '
+                           'đường thẳng** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Cho $4$ điểm phân biệt $A, B, C, D$ trong đó không có ba '
                            'điểm nào thẳng hàng. Vẽ các đường thẳng đi qua các cặp điểm. Hỏi vẽ được bao '
-                           'nhiêu...”, lời giải đúng là: Áp dụng công thức $\\dfrac{4 \\cdot (4 - 1)}{2} = '
+                           'n...”, kết quả giải đúng là: Áp dụng công thức $\\dfrac{4 \\cdot (4 - 1)}{2} = '
                            '6$ đường thẳng (đó là $AB, AC, AD, BC, BD, CD$).'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 32: Điểm và đường thẳng. b) **Đúng** theo '
-                        'công thức trọng tâm **Tiên đề đường thẳng qua 2 điểm** (Qua $2$ điểm phân biệt có '
-                        'duy nhất $1$ đường thẳng). c) **Sai** vì $x \\in A$ ($x$ thuộc $A$); $y \\notin A$ '
-                        '($y$ không thuộc $A$) là công thức của nội dung khác, không phải quy tắc chung của '
-                        '**Tiên đề đường thẳng qua 2 điểm**. d) **Đúng** theo lời giải ví dụ minh họa trong '
-                        'bài học.'},
+                        'công thức **Tiên đề đường thẳng qua 2 điểm** (Qua $2$ điểm phân biệt có duy nhất '
+                        '$1$ đường thẳng). c) **Sai** vì công thức đúng của **Tiên đề đường thẳng qua 2 '
+                        'điểm** phải là Qua $2$ điểm phân biệt có duy nhất $1$ đường thẳng chứ không phải '
+                        'Qua $3$ điểm phân biệt có duy nhất $1$ đường thẳng. d) **Đúng** theo lời giải ví dụ '
+                        'minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 32: Điểm và đường thẳng** để giải quyết tình huống sau: Cho $4$ '
-                 'điểm phân biệt $A, B, C, D$ trong đó không có ba điểm nào thẳng hàng. Vẽ các đường thẳng '
-                 'đi qua các cặp điểm. Hỏi vẽ được bao nhiêu đường thẳng? Kết quả và hướng giải nào dưới đây '
-                 'là **đúng**?',
-            'options': ['Ta có $M = \\{\\text{T}, \\text{O}, \\text{A}, \\text{N}, \\text{H}, \\text{C}\\}$ '
-                        '(chữ O xuất hiện $2$ lần nhưng chỉ viết $1$ lần). Tập hợp $M$ có $6$ phần tử.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 32: Điểm và đường thẳng** để giải bài toán sau: Cho '
+                 '$4$ điểm phân biệt $A, B, C, D$ trong đó không có ba điểm nào thẳng hàng. Vẽ các đường '
+                 'thẳng đi qua các cặp điểm. Hỏi vẽ được bao nhiêu đường thẳng? Cách giải và kết quả nào '
+                 'dưới đây là **đúng**?',
+            'options': ['Áp dụng công thức $\\dfrac{4 \\cdot (4 + 1)}{2} = 6$ đường thẳng (đó là $AB, AC, '
+                        'AD, BC, BD, CD$).',
                         'Áp dụng công thức $\\dfrac{4 \\cdot (4 - 1)}{2} = 6$ đường thẳng (đó là $AB, AC, '
                         'AD, BC, BD, CD$).',
-                        'Số $27$ viết là $\\text{XXVII}$, số $19$ viết là $\\text{XIX}$. Ta có '
-                        '$\\overline{ab} = a \\times 10 + b$.',
-                        'Các số tự nhiên từ $4$ đến $8$ là $4; 5; 6; 7; 8$. Vậy $A = \\{4; 5; 6; 7; 8\\}$.'],
+                        'Áp dụng công thức $\\dfrac{2}{4 \\cdot (4 - 1)} = 6$ đường thẳng (đó là $AB, AC, '
+                        'AD, BC, BD, CD$).',
+                        'Áp dụng công thức $\\dfrac{8 \\cdot (4 - 1)}{2} = 6$ đường thẳng (đó là $AB, AC, '
+                        'AD, BC, BD, CD$).'],
             'answer': 1,
             'solution': 'Lời giải chi tiết theo Bài 32: Điểm và đường thẳng: Áp dụng công thức $\\dfrac{4 '
                         '\\cdot (4 - 1)}{2} = 6$ đường thẳng (đó là $AB, AC, AD, BC, BD, CD$).'},
@@ -5098,8 +5132,8 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
   'requirements': ['Nhận biết được trong ba điểm thẳng hàng có một và chỉ một điểm nằm giữa hai điểm còn '
                    'lại.',
                    'Nhận biết được tia gốc $O$, hai tia đối nhau và hai tia trùng nhau.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Hai tia đối nhau** (Chung gốc $O$ và tạo '
-                   'thành một đường thẳng) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 33: Điểm nằm giữa hai điểm. Tia** để giải bài tập minh họa '
+                   'và bài toán thực tiễn.'],
   'definition': '- Trong ba điểm thẳng hàng, có **một và chỉ một** điểm nằm giữa hai điểm còn lại.\n'
                 '- Hình gồm điểm $O$ và một phần đường thẳng bị chia ra bởi điểm $O$ được gọi là một **tia** '
                 'gốc $O$.\n'
@@ -5111,7 +5145,7 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             '### 2. Hai tia đối nhau và hai tia trùng nhau\n'
             '- Mỗi điểm trên đường thẳng là gốc chung của hai tia đối nhau.\n'
             '- Nếu điểm $A$ thuộc tia $Ox$ ($A \\ne O$) thì tia $OA$ và tia $Ox$ là **hai tia trùng nhau**.',
-  'formulas': [{'category': 'I. Tia và điểm nằm giữa',
+  'formulas': [{'category': 'Tia và điểm nằm giữa',
                 'items': [{'name': 'Hai tia đối nhau',
                            'formula': 'Chung gốc $O$ và tạo thành một đường thẳng'},
                           {'name': 'Hai tia trùng nhau',
@@ -5138,28 +5172,29 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 33: Điểm nằm giữa hai điểm. Tia**, công thức hoặc quy '
-                 'tắc nào sau đây biểu diễn đúng **Hai tia đối nhau**?',
-            'options': ['Nếu $A \\in Ox$ ($A \\ne O$) thì tia $OA$ trùng với tia $Ox$',
-                        '$x \\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$)',
+            'q': 'Trong **Bài 33: Điểm nằm giữa hai điểm. Tia**, quy tắc hoặc công thức nào sau đây xác định '
+                 'đúng **Hai tia đối nhau**?',
+            'options': ['Chung gốc $O$ và tạo thành một đường thẳng (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Chung gốc $O$ và tạo thành một đường thẳng',
                         'Chung gốc $O$ và tạo thành một đường thẳng',
-                        'Liệt kê $A = \\{0; 1; 2; 3\\}$ hoặc đặc trưng $A = \\{x \\in \\mathbb{N} \\mid x < '
-                        '4\\}$'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Chung gốc $O$ và tạo thành một '
+                        'đường thẳng'],
             'answer': 2,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 33: Điểm nằm giữa hai điểm. Tia, **Hai tia '
-                        'đối nhau** được xác định bởi: Chung gốc $O$ và tạo thành một đường thẳng.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 33: Điểm nằm giữa hai điểm. Tia, **Hai tia đối '
+                        'nhau** được xác định bởi: Chung gốc $O$ và tạo thành một đường thẳng.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 33: Điểm nằm giữa hai điểm. Tia**, nội dung/biểu thức Nếu $A \\in Ox$ ($A \\ne '
-                 'O$) thì tia $OA$ trùng với tia $Ox$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Hai tia đối nhau',
-                        'Quan hệ phần tử – tập hợp',
-                        'Hai cách mô tả',
-                        'Hai tia trùng nhau'],
+            'q': 'Khi học **Bài 33: Điểm nằm giữa hai điểm. Tia**, biểu thức hoặc quy tắc nào dưới đây biểu '
+                 'diễn đúng **Hai tia trùng nhau**?',
+            'options': ['Nếu $A \\notin Ox$ ($A \\ne O$) thì tia $OA$ trùng với tia $Ox$',
+                        'Đảo ngược vế của quy tắc: Nếu $A \\in Ox$ ($A \\ne O$) thì tia $OA$ trùng với tia '
+                        '$Ox$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nếu $A \\in Ox$ ($A \\ne O$) '
+                        'thì tia $OA$ trùng với tia $Ox$',
+                        'Nếu $A \\in Ox$ ($A \\ne O$) thì tia $OA$ trùng với tia $Ox$'],
             'answer': 3,
-            'solution': 'Trong Bài 33: Điểm nằm giữa hai điểm. Tia, biểu thức/quy tắc Nếu $A \\in Ox$ ($A '
-                        '\\ne O$) thì tia $OA$ trùng với tia $Ox$ chính là nội dung của **Hai tia trùng '
-                        'nhau**.'},
+            'solution': 'Trong Bài 33: Điểm nằm giữa hai điểm. Tia, **Hai tia trùng nhau** có công thức/quy '
+                        'tắc là: Nếu $A \\in Ox$ ($A \\ne O$) thì tia $OA$ trùng với tia $Ox$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Cho điểm $M$ nằm giữa hai điểm $A$ và $B$. Hai tia nào sau đây là hai tia đối nhau?',
@@ -5174,18 +5209,18 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 33: Điểm nằm giữa hai điểm. Tia** (Chương VIII: Những hình hình học cơ bản), '
-                 'khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Sử dụng được thuật ngữ tập hợp, phần tử thuộc ($\\in$) hoặc không thuộc ($\\notin$) '
-                        'một tập hợp.',
+            'q': 'Để nắm vững bản chất của **Bài 33: Điểm nằm giữa hai điểm. Tia**, nhận định nào sau đây là '
+                 '**chính xác**?',
+            'options': ['Nhận biết được trong ba điểm thẳng hàng có một và chỉ một điểm nằm giữa hai điểm '
+                        'còn lại. (với dấu ngược lại)',
                         'Nhận biết được trong ba điểm thẳng hàng có một và chỉ một điểm nằm giữa hai điểm '
                         'còn lại.',
-                        'Cho được một tập hợp bằng cách liệt kê các phần tử hoặc chỉ ra tính chất đặc trưng '
-                        'cho các phần tử.',
-                        'Phân biệt được tập hợp $\\mathbb{N}$ và $\\mathbb{N}^*$; xác định được giá trị từng '
-                        'chữ số của số tự nhiên trong hệ thập phân.'],
+                        'Đảo ngược vế của quy tắc: Nhận biết được trong ba điểm thẳng hàng có một và chỉ một '
+                        'điểm nằm giữa hai điểm còn lại.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nhận biết được trong ba điểm '
+                        'thẳng hàng có một và chỉ một điểm nằm giữa hai điểm còn lại.'],
             'answer': 1,
-            'solution': 'Theo yêu cầu cần đạt của Bài 33: Điểm nằm giữa hai điểm. Tia: Nhận biết được trong '
+            'solution': 'Theo nội dung cốt lõi của Bài 33: Điểm nằm giữa hai điểm. Tia: Nhận biết được trong '
                         'ba điểm thẳng hàng có một và chỉ một điểm nằm giữa hai điểm còn lại.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -5202,38 +5237,36 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 33: Điểm nằm giữa hai '
-                 'điểm. Tia**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được trong ba điểm thẳng '
-                           'hàng có một và chỉ một điểm nằm giữa hai điểm còn lại.',
-                           'Quy tắc/công thức **Hai tia đối nhau** trong bài được xác định bởi: Chung gốc '
-                           '$O$ và tạo thành một đường thẳng.',
-                           'Trong mọi trường hợp, **Hai tia đối nhau** luôn được tính bằng công thức $x \\in '
-                           'A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$) (thuộc Quan hệ phần tử – '
-                           'tập hợp) mà không cần điều kiện của Bài 33: Điểm nằm giữa hai điểm. Tia.',
-                           'Với bài toán minh họa: “Trên đường thẳng $xy$ lấy điểm $O$. Điểm $A$ thuộc tia '
-                           '$Ox$, điểm $B$ thuộc tia $Oy$ ($A, B$ khác $O$). Trong ba điểm $A, O, B$ điểm '
-                           'nào nằm...”, lời giải đúng là: Vì $Ox$ và $Oy$ là hai tia đối nhau gốc $O$ nên '
-                           'điểm $O$ nằm giữa hai điểm $A$ và $B$.'],
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 33: Điểm nằm giữa hai điểm. '
+                 'Tia**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết được trong ba điểm thẳng hàng '
+                           'có một và chỉ một điểm nằm giữa hai điểm còn lại.',
+                           'Trong **Bài 33: Điểm nằm giữa hai điểm. Tia**, quy tắc/công thức **Hai tia đối '
+                           'nhau** được viết là: Chung gốc $O$ và tạo thành một đường thẳng.',
+                           'Nếu áp dụng sai dấu/phép tính thành Chung gốc $O$ và tạo thành một đường thẳng '
+                           '(với dấu ngược lại) thì kết quả của **Hai tia đối nhau** trong **Bài 33: Điểm '
+                           'nằm giữa hai điểm. Tia** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Trên đường thẳng $xy$ lấy điểm $O$. Điểm $A$ thuộc tia $Ox$, '
+                           'điểm $B$ thuộc tia $Oy$ ($A, B$ khác $O$). Trong ba điểm $A, O, B$ điểm nà...”, '
+                           'kết quả giải đúng là: Vì $Ox$ và $Oy$ là hai tia đối nhau gốc $O$ nên điểm $O$ '
+                           'nằm giữa hai điểm $A$ và $B$.'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 33: Điểm nằm giữa hai điểm. Tia. b) '
-                        '**Đúng** theo công thức trọng tâm **Hai tia đối nhau** (Chung gốc $O$ và tạo thành '
-                        'một đường thẳng). c) **Sai** vì $x \\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ '
-                        'không thuộc $A$) là công thức của nội dung khác, không phải quy tắc chung của **Hai '
-                        'tia đối nhau**. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        '**Đúng** theo công thức **Hai tia đối nhau** (Chung gốc $O$ và tạo thành một đường '
+                        'thẳng). c) **Sai** vì công thức đúng của **Hai tia đối nhau** phải là Chung gốc $O$ '
+                        'và tạo thành một đường thẳng chứ không phải Chung gốc $O$ và tạo thành một đường '
+                        'thẳng (với dấu ngược lại). d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 33: Điểm nằm giữa hai điểm. Tia** để giải quyết tình huống sau: '
-                 'Trên đường thẳng $xy$ lấy điểm $O$. Điểm $A$ thuộc tia $Ox$, điểm $B$ thuộc tia $Oy$ ($A, '
-                 'B$ khác $O$). Trong ba điểm $A, O, B$ điểm nào nằm giữa hai điểm còn lại? Kết quả và hướng '
-                 'giải nào dưới đây là **đúng**?',
-            'options': ['Ta có $M = \\{\\text{T}, \\text{O}, \\text{A}, \\text{N}, \\text{H}, \\text{C}\\}$ '
-                        '(chữ O xuất hiện $2$ lần nhưng chỉ viết $1$ lần). Tập hợp $M$ có $6$ phần tử.',
-                        'Số $27$ viết là $\\text{XXVII}$, số $19$ viết là $\\text{XIX}$. Ta có '
-                        '$\\overline{ab} = a \\times 10 + b$.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 33: Điểm nằm giữa hai điểm. Tia** để giải bài toán '
+                 'sau: Trên đường thẳng $xy$ lấy điểm $O$. Điểm $A$ thuộc tia $Ox$, điểm $B$ thuộc tia $Oy$ '
+                 '($A, B$ khác $O$). Trong ba điểm $A, O, B$ điểm nào nằm giữa hai điểm còn lại? Cách giải '
+                 'và kết quả nào dưới đây là **đúng**?',
+            'options': ['Chỉ xét trường hợp đặc biệt bằng $0$ và bỏ qua quy tắc chung',
+                        'Thực hiện theo thứ tự ngược lại và bỏ qua điều kiện xác định trong bài',
                         'Vì $Ox$ và $Oy$ là hai tia đối nhau gốc $O$ nên điểm $O$ nằm giữa hai điểm $A$ và '
                         '$B$.',
-                        'Các số tự nhiên từ $4$ đến $8$ là $4; 5; 6; 7; 8$. Vậy $A = \\{4; 5; 6; 7; 8\\}$.'],
+                        'Đổi ngược dấu của phép tính chính và không kiểm tra lại kết quả'],
             'answer': 2,
             'solution': 'Lời giải chi tiết theo Bài 33: Điểm nằm giữa hai điểm. Tia: Vì $Ox$ và $Oy$ là hai '
                         'tia đối nhau gốc $O$ nên điểm $O$ nằm giữa hai điểm $A$ và $B$.'},
@@ -5257,8 +5290,8 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
   'requirements': ['Nhận biết được đoạn thẳng $AB$, đo và so sánh độ dài các đoạn thẳng.',
                    'Vận dụng hệ thức $AM + MB = AB$ khi điểm $M$ nằm giữa hai điểm $A$ và $B$ để tính độ dài '
                    'đoạn thẳng.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Điểm M nằm giữa A và B** ($AM + MB = AB '
-                   '\\Rightarrow MB = AB - AM$) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 34: Đoạn thẳng. Độ dài đoạn thẳng** để giải bài tập minh '
+                   'họa và bài toán thực tiễn.'],
   'definition': '- **Đoạn thẳng $AB$** (hay đoạn thẳng $BA$) là hình gồm điểm $A$, điểm $B$ và tất cả các '
                 'điểm nằm giữa $A$ và $B$. Hai điểm $A, B$ gọi là **hai đầu mút**.\n'
                 '- Mỗi đoạn thẳng có một **độ dài** là một số dương.\n'
@@ -5269,7 +5302,7 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             '### 2. Đếm số đoạn thẳng\n'
             '- Với $n$ điểm phân biệt, cứ $2$ điểm tạo thành $1$ đoạn thẳng nên có $\\dfrac{n(n - 1)}{2}$ '
             'đoạn thẳng.',
-  'formulas': [{'category': 'I. Cộng độ dài đoạn thẳng',
+  'formulas': [{'category': 'Cộng độ dài đoạn thẳng',
                 'items': [{'name': 'Điểm M nằm giữa A và B',
                            'formula': '$AM + MB = AB \\Rightarrow MB = AB - AM$'},
                           {'name': 'Hai điểm trên tia Ox',
@@ -5300,28 +5333,28 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 34: Đoạn thẳng. Độ dài đoạn thẳng**, công thức hoặc quy '
-                 'tắc nào sau đây biểu diễn đúng **Điểm M nằm giữa A và B**?',
-            'options': ['Nếu $OA < OB$ thì $A$ nằm giữa $O, B$ và $AB = OB - OA$',
-                        '$x \\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$)',
-                        'Liệt kê $A = \\{0; 1; 2; 3\\}$ hoặc đặc trưng $A = \\{x \\in \\mathbb{N} \\mid x < '
-                        '4\\}$',
+            'q': 'Trong **Bài 34: Đoạn thẳng. Độ dài đoạn thẳng**, quy tắc hoặc công thức nào sau đây xác '
+                 'định đúng **Điểm M nằm giữa A và B**?',
+            'options': ['$AM - MB = AB \\Rightarrow MB = AB - AM$',
+                        'Đảo ngược vế của quy tắc: $AM + MB = AB \\Rightarrow MB = AB - AM$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $AM + MB = AB \\Rightarrow MB = '
+                        'AB - AM$',
                         '$AM + MB = AB \\Rightarrow MB = AB - AM$'],
             'answer': 3,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 34: Đoạn thẳng. Độ dài đoạn thẳng, **Điểm M '
-                        'nằm giữa A và B** được xác định bởi: $AM + MB = AB \\Rightarrow MB = AB - AM$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 34: Đoạn thẳng. Độ dài đoạn thẳng, **Điểm M nằm '
+                        'giữa A và B** được xác định bởi: $AM + MB = AB \\Rightarrow MB = AB - AM$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 34: Đoạn thẳng. Độ dài đoạn thẳng**, nội dung/biểu thức Nếu $OA < OB$ thì $A$ '
-                 'nằm giữa $O, B$ và $AB = OB - OA$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Hai điểm trên tia Ox',
-                        'Điểm M nằm giữa A và B',
-                        'Quan hệ phần tử – tập hợp',
-                        'Hai cách mô tả'],
+            'q': 'Khi học **Bài 34: Đoạn thẳng. Độ dài đoạn thẳng**, biểu thức hoặc quy tắc nào dưới đây '
+                 'biểu diễn đúng **Hai điểm trên tia Ox**?',
+            'options': ['Nếu $OA < OB$ thì $A$ nằm giữa $O, B$ và $AB = OB - OA$',
+                        'Nếu $OA < OB$ thì $A$ nằm giữa $O, B$ và $AB = OB + OA$',
+                        'Đảo ngược vế của quy tắc: Nếu $OA < OB$ thì $A$ nằm giữa $O, B$ và $AB = OB - OA$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nếu $OA < OB$ thì $A$ nằm giữa '
+                        '$O, B$ và $AB = OB - OA$'],
             'answer': 0,
-            'solution': 'Trong Bài 34: Đoạn thẳng. Độ dài đoạn thẳng, biểu thức/quy tắc Nếu $OA < OB$ thì '
-                        '$A$ nằm giữa $O, B$ và $AB = OB - OA$ chính là nội dung của **Hai điểm trên tia '
-                        'Ox**.'},
+            'solution': 'Trong Bài 34: Đoạn thẳng. Độ dài đoạn thẳng, **Hai điểm trên tia Ox** có công '
+                        'thức/quy tắc là: Nếu $OA < OB$ thì $A$ nằm giữa $O, B$ và $AB = OB - OA$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Cho ba điểm $A, B, C$ thẳng hàng, biết $AB = 5\\text{ cm}, BC = 3\\text{ cm}, AC = '
@@ -5333,19 +5366,18 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 34: Đoạn thẳng. Độ dài đoạn thẳng** (Chương VIII: Những hình hình học cơ '
-                 'bản), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của '
-                 'bài?',
-            'options': ['Sử dụng được thuật ngữ tập hợp, phần tử thuộc ($\\in$) hoặc không thuộc ($\\notin$) '
-                        'một tập hợp.',
-                        'Cho được một tập hợp bằng cách liệt kê các phần tử hoặc chỉ ra tính chất đặc trưng '
-                        'cho các phần tử.',
+            'q': 'Để nắm vững bản chất của **Bài 34: Đoạn thẳng. Độ dài đoạn thẳng**, nhận định nào sau đây '
+                 'là **chính xác**?',
+            'options': ['Nhận biết được đoạn thẳng $AB$, đo và so sánh độ dài các đoạn thẳng. (với dấu ngược '
+                        'lại)',
+                        'Đảo ngược vế của quy tắc: Nhận biết được đoạn thẳng $AB$, đo và so sánh độ dài các '
+                        'đoạn thẳng.',
                         'Nhận biết được đoạn thẳng $AB$, đo và so sánh độ dài các đoạn thẳng.',
-                        'Phân biệt được tập hợp $\\mathbb{N}$ và $\\mathbb{N}^*$; xác định được giá trị từng '
-                        'chữ số của số tự nhiên trong hệ thập phân.'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nhận biết được đoạn thẳng $AB$, '
+                        'đo và so sánh độ dài các đoạn thẳng.'],
             'answer': 2,
-            'solution': 'Theo yêu cầu cần đạt của Bài 34: Đoạn thẳng. Độ dài đoạn thẳng: Nhận biết được đoạn '
-                        'thẳng $AB$, đo và so sánh độ dài các đoạn thẳng.'},
+            'solution': 'Theo nội dung cốt lõi của Bài 34: Đoạn thẳng. Độ dài đoạn thẳng: Nhận biết được '
+                        'đoạn thẳng $AB$, đo và so sánh độ dài các đoạn thẳng.'},
            {'level': 'hieu',
             'type': 'tf4',
             'q': 'Trên tia $Ox$ lấy hai điểm $A, B$ sao cho $OA = 3\\text{ cm}, OB = 7\\text{ cm}$. Mỗi '
@@ -5361,37 +5393,36 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 34: Đoạn thẳng. Độ dài '
-                 'đoạn thẳng**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được đoạn thẳng $AB$, đo '
-                           'và so sánh độ dài các đoạn thẳng.',
-                           'Quy tắc/công thức **Điểm M nằm giữa A và B** trong bài được xác định bởi: $AM + '
-                           'MB = AB \\Rightarrow MB = AB - AM$.',
-                           'Trong mọi trường hợp, **Điểm M nằm giữa A và B** luôn được tính bằng công thức '
-                           '$x \\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$) (thuộc Quan hệ '
-                           'phần tử – tập hợp) mà không cần điều kiện của Bài 34: Đoạn thẳng. Độ dài đoạn '
-                           'thẳng.',
-                           'Với bài toán minh họa: “Trên tia $Ox$ lấy hai điểm $A, B$ sao cho $OA = 3\\text{ '
-                           'cm}, OB = 7\\text{ cm}$. Tính độ dài đoạn thẳng $AB$.”, lời giải đúng là: Trên '
-                           'tia $Ox$, vì $OA < OB$ ($3\\text{ cm} < 7\\text{ cm}$) nên điểm $A$ nằm giữa hai '
-                           'điểm $O$ và $B$. Suy ra $AB = OB - OA = 7 - 3 = 4\\text{ cm}$...'],
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 34: Đoạn thẳng. Độ dài đoạn '
+                 'thẳng**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết được đoạn thẳng $AB$, đo và so '
+                           'sánh độ dài các đoạn thẳng.',
+                           'Trong **Bài 34: Đoạn thẳng. Độ dài đoạn thẳng**, quy tắc/công thức **Điểm M nằm '
+                           'giữa A và B** được viết là: $AM + MB = AB \\Rightarrow MB = AB - AM$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $AM - MB = AB \\Rightarrow MB = AB - AM$ thì '
+                           'kết quả của **Điểm M nằm giữa A và B** trong **Bài 34: Đoạn thẳng. Độ dài đoạn '
+                           'thẳng** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Trên tia $Ox$ lấy hai điểm $A, B$ sao cho $OA = 3\\text{ '
+                           'cm}, OB = 7\\text{ cm}$. Tính độ dài đoạn thẳng $AB$.”, kết quả giải đúng là: '
+                           'Trên tia $Ox$, vì $OA < OB$ ($3\\text{ cm} < 7\\text{ cm}$) nên điểm $A$ nằm '
+                           'giữa hai điểm $O$ và $B$. Suy ra $AB = OB - OA = 7 - 3 = 4\\text{ cm}$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 34: Đoạn thẳng. Độ dài đoạn thẳng. b) '
-                        '**Đúng** theo công thức trọng tâm **Điểm M nằm giữa A và B** ($AM + MB = AB '
-                        '\\Rightarrow MB = AB - AM$). c) **Sai** vì $x \\in A$ ($x$ thuộc $A$); $y \\notin '
-                        'A$ ($y$ không thuộc $A$) là công thức của nội dung khác, không phải quy tắc chung '
-                        'của **Điểm M nằm giữa A và B**. d) **Đúng** theo lời giải ví dụ minh họa trong bài '
-                        'học.'},
+                        '**Đúng** theo công thức **Điểm M nằm giữa A và B** ($AM + MB = AB \\Rightarrow MB = '
+                        'AB - AM$). c) **Sai** vì công thức đúng của **Điểm M nằm giữa A và B** phải là $AM '
+                        '+ MB = AB \\Rightarrow MB = AB - AM$ chứ không phải $AM - MB = AB \\Rightarrow MB = '
+                        'AB - AM$. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 34: Đoạn thẳng. Độ dài đoạn thẳng** để giải quyết tình huống sau: '
-                 'Trên tia $Ox$ lấy hai điểm $A, B$ sao cho $OA = 3\\text{ cm}, OB = 7\\text{ cm}$. Tính độ '
-                 'dài đoạn thẳng $AB$. Kết quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Ta có $M = \\{\\text{T}, \\text{O}, \\text{A}, \\text{N}, \\text{H}, \\text{C}\\}$ '
-                        '(chữ O xuất hiện $2$ lần nhưng chỉ viết $1$ lần). Tập hợp $M$ có $6$ phần tử.',
-                        'Số $27$ viết là $\\text{XXVII}$, số $19$ viết là $\\text{XIX}$. Ta có '
-                        '$\\overline{ab} = a \\times 10 + b$.',
-                        'Các số tự nhiên từ $4$ đến $8$ là $4; 5; 6; 7; 8$. Vậy $A = \\{4; 5; 6; 7; 8\\}$.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 34: Đoạn thẳng. Độ dài đoạn thẳng** để giải bài '
+                 'toán sau: Trên tia $Ox$ lấy hai điểm $A, B$ sao cho $OA = 3\\text{ cm}, OB = 7\\text{ '
+                 'cm}$. Tính độ dài đoạn thẳng $AB$. Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Trên tia $Ox$, vì $OA < OB$ ($3\\text{ cm} < 7\\text{ cm}$) nên điểm $A$ nằm giữa '
+                        'hai điểm $O$ và $B$. Suy ra $AB = OB + OA = 7 - 3 = 4\\text{ cm}$.',
+                        'Trên tia $Ox$, vì $OA < OB$ ($3\\text{ cm} < 7\\text{ cm}$) nên điểm $A$ nằm giữa '
+                        'hai điểm $O$ và $B$. Suy ra $AB = OB - OA = 7 - 3 = 3\\text{ cm}$.',
+                        'Trên tia $Ox$, vì $OA < OB$ ($6\\text{ cm} < 7\\text{ cm}$) nên điểm $A$ nằm giữa '
+                        'hai điểm $O$ và $B$. Suy ra $AB = OB - OA = 7 - 3 = 4\\text{ cm}$.',
                         'Trên tia $Ox$, vì $OA < OB$ ($3\\text{ cm} < 7\\text{ cm}$) nên điểm $A$ nằm giữa '
                         'hai điểm $O$ và $B$. Suy ra $AB = OB - OA = 7 - 3 = 4\\text{ cm}$.'],
             'answer': 3,
@@ -5419,8 +5450,8 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
                    '$MA = MB$.',
                    'Vận dụng tính chất $MA = MB = \\dfrac{AB}{2}$ để giải các bài toán tính độ dài đoạn '
                    'thẳng.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Công thức độ dài** ($M$ là trung điểm của '
-                   '$AB \\Rightarrow MA = MB = \\dfrac{AB}{2}$ hay $AB = 2 \\cdot MA$) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 35: Trung điểm của đoạn thẳng** để giải bài tập minh họa và '
+                   'bài toán thực tiễn.'],
   'definition': '- **Trung điểm** $M$ của đoạn thẳng $AB$ là điểm **nằm giữa** hai điểm $A, B$ và **cách '
                 'đều** hai điểm đó ($MA = MB$).\n'
                 '- Nếu $M$ là trung điểm của đoạn thẳng $AB$ thì $MA = MB = \\dfrac{AB}{2}$.',
@@ -5429,7 +5460,7 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             '}B \\\\ MA = MB \\end{cases} \\Leftrightarrow AM + MB = AB\\text{ và }MA = MB$.\n'
             '- Chú ý: nếu chỉ có $MA = MB$ mà chưa biết $M$ thuộc đoạn thẳng $AB$ thì **chưa kết luận** được '
             '$M$ là trung điểm của $AB$ (vì $A, M, B$ có thể tạo thành tam giác cân).',
-  'formulas': [{'category': 'I. Trung điểm của đoạn thẳng',
+  'formulas': [{'category': 'Trung điểm của đoạn thẳng',
                 'items': [{'name': 'Công thức độ dài',
                            'formula': '$M$ là trung điểm của $AB \\Rightarrow MA = MB = \\dfrac{AB}{2}$ hay '
                                       '$AB = 2 \\cdot MA$'},
@@ -5460,32 +5491,35 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 35: Trung điểm của đoạn thẳng**, công thức hoặc quy tắc '
-                 'nào sau đây biểu diễn đúng **Công thức độ dài**?',
+            'q': 'Trong **Bài 35: Trung điểm của đoạn thẳng**, quy tắc hoặc công thức nào sau đây xác định '
+                 'đúng **Công thức độ dài**?',
             'options': ['$M$ là trung điểm của $AB \\Rightarrow MA = MB = \\dfrac{AB}{2}$ hay $AB = 2 \\cdot '
                         'MA$',
-                        'Nếu $C \\in AB$, $M$ là trung điểm $AC$, $N$ là trung điểm $CB$ thì $MN = '
-                        '\\dfrac{AB}{2}$',
-                        '$x \\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$)',
-                        'Liệt kê $A = \\{0; 1; 2; 3\\}$ hoặc đặc trưng $A = \\{x \\in \\mathbb{N} \\mid x < '
-                        '4\\}$'],
+                        '$M$ là trung điểm của $AB \\Rightarrow MA = MB = \\dfrac{AB}{2}$ hay $AB = 2 : MA$',
+                        '$M$ là trung điểm của $AB \\Rightarrow MA = MB = \\dfrac{2}{AB}$ hay $AB = 2 \\cdot '
+                        'MA$',
+                        '$M$ là trung điểm của $AB \\Rightarrow MA = MB = \\dfrac{AB}{4}$ hay $AB = 2 \\cdot '
+                        'MA$'],
             'answer': 0,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 35: Trung điểm của đoạn thẳng, **Công thức độ '
+            'solution': 'Theo kiến thức trọng tâm của Bài 35: Trung điểm của đoạn thẳng, **Công thức độ '
                         'dài** được xác định bởi: $M$ là trung điểm của $AB \\Rightarrow MA = MB = '
                         '\\dfrac{AB}{2}$ hay $AB = 2 \\cdot MA$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 35: Trung điểm của đoạn thẳng**, nội dung/biểu thức Nếu $C \\in AB$, $M$ là '
-                 'trung điểm $AC$, $N$ là trung điểm $CB$ thì $MN = \\dfrac{AB}{2}$ là quy tắc hoặc công '
-                 'thức của mục nào sau đây?',
-            'options': ['Công thức độ dài',
-                        'Khoảng cách giữa hai trung điểm',
-                        'Quan hệ phần tử – tập hợp',
-                        'Hai cách mô tả'],
+            'q': 'Khi học **Bài 35: Trung điểm của đoạn thẳng**, biểu thức hoặc quy tắc nào dưới đây biểu '
+                 'diễn đúng **Khoảng cách giữa hai trung điểm**?',
+            'options': ['Nếu $C \\notin AB$, $M$ là trung điểm $AC$, $N$ là trung điểm $CB$ thì $MN = '
+                        '\\dfrac{AB}{2}$',
+                        'Nếu $C \\in AB$, $M$ là trung điểm $AC$, $N$ là trung điểm $CB$ thì $MN = '
+                        '\\dfrac{AB}{2}$',
+                        'Nếu $C \\in AB$, $M$ là trung điểm $AC$, $N$ là trung điểm $CB$ thì $MN = '
+                        '\\dfrac{2}{AB}$',
+                        'Nếu $C \\in AB$, $M$ là trung điểm $AC$, $N$ là trung điểm $CB$ thì $MN = '
+                        '\\dfrac{AB}{4}$'],
             'answer': 1,
-            'solution': 'Trong Bài 35: Trung điểm của đoạn thẳng, biểu thức/quy tắc Nếu $C \\in AB$, $M$ là '
-                        'trung điểm $AC$, $N$ là trung điểm $CB$ thì $MN = \\dfrac{AB}{2}$ chính là nội dung '
-                        'của **Khoảng cách giữa hai trung điểm**.'},
+            'solution': 'Trong Bài 35: Trung điểm của đoạn thẳng, **Khoảng cách giữa hai trung điểm** có '
+                        'công thức/quy tắc là: Nếu $C \\in AB$, $M$ là trung điểm $AC$, $N$ là trung điểm '
+                        '$CB$ thì $MN = \\dfrac{AB}{2}$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Cho đoạn thẳng $AB = 12\\text{ cm}$. Gọi $C$ là trung điểm của $AB$, $D$ là trung điểm của '
@@ -5498,18 +5532,18 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 35: Trung điểm của đoạn thẳng** (Chương VIII: Những hình hình học cơ bản), '
-                 'khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Sử dụng được thuật ngữ tập hợp, phần tử thuộc ($\\in$) hoặc không thuộc ($\\notin$) '
-                        'một tập hợp.',
-                        'Cho được một tập hợp bằng cách liệt kê các phần tử hoặc chỉ ra tính chất đặc trưng '
-                        'cho các phần tử.',
-                        'Phân biệt được tập hợp $\\mathbb{N}$ và $\\mathbb{N}^*$; xác định được giá trị từng '
-                        'chữ số của số tự nhiên trong hệ thập phân.',
+            'q': 'Để nắm vững bản chất của **Bài 35: Trung điểm của đoạn thẳng**, nhận định nào sau đây là '
+                 '**chính xác**?',
+            'options': ['Nắm vững hai điều kiện để $M$ là trung điểm của đoạn thẳng $AB$: $M$ nằm giữa $A, '
+                        'B$ và $MA = MB$. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Nắm vững hai điều kiện để $M$ là trung điểm của đoạn '
+                        'thẳng $AB$: $M$ nằm giữa $A, B$ và $MA = MB$.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nắm vững hai điều kiện để $M$ '
+                        'là trung điểm của đoạn thẳng $AB$: $M$ nằm giữa $A, B$ và $MA = MB$.',
                         'Nắm vững hai điều kiện để $M$ là trung điểm của đoạn thẳng $AB$: $M$ nằm giữa $A, '
                         'B$ và $MA = MB$.'],
             'answer': 3,
-            'solution': 'Theo yêu cầu cần đạt của Bài 35: Trung điểm của đoạn thẳng: Nắm vững hai điều kiện '
+            'solution': 'Theo nội dung cốt lõi của Bài 35: Trung điểm của đoạn thẳng: Nắm vững hai điều kiện '
                         'để $M$ là trung điểm của đoạn thẳng $AB$: $M$ nằm giữa $A, B$ và $MA = MB$.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -5524,38 +5558,41 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 35: Trung điểm của đoạn '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 35: Trung điểm của đoạn '
                  'thẳng**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nắm vững hai điều kiện để $M$ là '
-                           'trung điểm của đoạn thẳng $AB$: $M$ nằm giữa $A, B$ và $MA = MB$.',
-                           'Quy tắc/công thức **Công thức độ dài** trong bài được xác định bởi: $M$ là trung '
-                           'điểm của $AB \\Rightarrow MA = MB = \\dfrac{AB}{2}$ hay $AB = 2 \\cdot MA$.',
-                           'Trong mọi trường hợp, **Công thức độ dài** luôn được tính bằng công thức $x \\in '
-                           'A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$) (thuộc Quan hệ phần tử – '
-                           'tập hợp) mà không cần điều kiện của Bài 35: Trung điểm của đoạn thẳng.',
-                           'Với bài toán minh họa: “Cho đoạn thẳng $AB = 12\\text{ cm}$. Gọi $C$ là trung '
-                           'điểm của $AB$, $D$ là trung điểm của $AC$. Tính độ dài đoạn thẳng $DB$.”, lời '
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nắm vững hai điều kiện để $M$ là trung '
+                           'điểm của đoạn thẳng $AB$: $M$ nằm giữa $A, B$ và $MA = MB$.',
+                           'Trong **Bài 35: Trung điểm của đoạn thẳng**, quy tắc/công thức **Công thức độ '
+                           'dài** được viết là: $M$ là trung điểm của $AB \\Rightarrow MA = MB = '
+                           '\\dfrac{AB}{2}$ hay $AB = 2 \\cdot MA$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $M$ là trung điểm của $AB \\Rightarrow MA = '
+                           'MB = \\dfrac{AB}{2}$ hay $AB = 2 : MA$ thì kết quả của **Công thức độ dài** '
+                           'trong **Bài 35: Trung điểm của đoạn thẳng** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Cho đoạn thẳng $AB = 12\\text{ cm}$. Gọi $C$ là trung điểm '
+                           'của $AB$, $D$ là trung điểm của $AC$. Tính độ dài đoạn thẳng $DB$.”, kết quả '
                            'giải đúng là: Ta có $AC = CB = 12 : 2 = 6\\text{ cm}$; $DC = AC : 2 = 3\\text{ '
-                           'cm}$. Vì $C$ nằm giữa $D$ và $B$ nên $DB = DC + CB = 3 + 6 = 9\\text{ cm}$.'],
+                           'cm}$. Vì $C$ nằm giữa $D$ và $B$ nên $DB = DC + CB = 3 + 6 = 9\\text{ cm}$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 35: Trung điểm của đoạn thẳng. b) **Đúng** '
-                        'theo công thức trọng tâm **Công thức độ dài** ($M$ là trung điểm của $AB '
-                        '\\Rightarrow MA = MB = \\dfrac{AB}{2}$ hay $AB = 2 \\cdot MA$). c) **Sai** vì $x '
-                        '\\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$) là công thức của nội '
-                        'dung khác, không phải quy tắc chung của **Công thức độ dài**. d) **Đúng** theo lời '
-                        'giải ví dụ minh họa trong bài học.'},
+                        'theo công thức **Công thức độ dài** ($M$ là trung điểm của $AB \\Rightarrow MA = MB '
+                        '= \\dfrac{AB}{2}$ hay $AB = 2 \\cdot MA$). c) **Sai** vì công thức đúng của **Công '
+                        'thức độ dài** phải là $M$ là trung điểm của $AB \\Rightarrow MA = MB = '
+                        '\\dfrac{AB}{2}$ hay $AB = 2 \\cdot MA$ chứ không phải $M$ là trung điểm của $AB '
+                        '\\Rightarrow MA = MB = \\dfrac{AB}{2}$ hay $AB = 2 : MA$. d) **Đúng** theo lời giải '
+                        'ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 35: Trung điểm của đoạn thẳng** để giải quyết tình huống sau: Cho '
-                 'đoạn thẳng $AB = 12\\text{ cm}$. Gọi $C$ là trung điểm của $AB$, $D$ là trung điểm của '
-                 '$AC$. Tính độ dài đoạn thẳng $DB$. Kết quả và hướng giải nào dưới đây là **đúng**?',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 35: Trung điểm của đoạn thẳng** để giải bài toán '
+                 'sau: Cho đoạn thẳng $AB = 12\\text{ cm}$. Gọi $C$ là trung điểm của $AB$, $D$ là trung '
+                 'điểm của $AC$. Tính độ dài đoạn thẳng $DB$. Cách giải và kết quả nào dưới đây là **đúng**?',
             'options': ['Ta có $AC = CB = 12 : 2 = 6\\text{ cm}$; $DC = AC : 2 = 3\\text{ cm}$. Vì $C$ nằm '
                         'giữa $D$ và $B$ nên $DB = DC + CB = 3 + 6 = 9\\text{ cm}$.',
-                        'Ta có $M = \\{\\text{T}, \\text{O}, \\text{A}, \\text{N}, \\text{H}, \\text{C}\\}$ '
-                        '(chữ O xuất hiện $2$ lần nhưng chỉ viết $1$ lần). Tập hợp $M$ có $6$ phần tử.',
-                        'Số $27$ viết là $\\text{XXVII}$, số $19$ viết là $\\text{XIX}$. Ta có '
-                        '$\\overline{ab} = a \\times 10 + b$.',
-                        'Các số tự nhiên từ $4$ đến $8$ là $4; 5; 6; 7; 8$. Vậy $A = \\{4; 5; 6; 7; 8\\}$.'],
+                        'Ta có $AC = CB = 12 : 2 = 6\\text{ cm}$; $DC = AC : 2 = 3\\text{ cm}$. Vì $C$ nằm '
+                        'giữa $D$ và $B$ nên $DB = DC - CB = 3 + 6 = 9\\text{ cm}$.',
+                        'Ta có $AC = CB = 12 : 2 = 6\\text{ cm}$; $DC = AC : 2 = 3\\text{ cm}$. Vì $C$ nằm '
+                        'giữa $D$ và $B$ nên $DB = DC + CB = 3 + 6 = 8\\text{ cm}$.',
+                        'Ta có $AC = CB = 24 : 2 = 6\\text{ cm}$; $DC = AC : 2 = 3\\text{ cm}$. Vì $C$ nằm '
+                        'giữa $D$ và $B$ nên $DB = DC + CB = 3 + 6 = 9\\text{ cm}$.'],
             'answer': 0,
             'solution': 'Lời giải chi tiết theo Bài 35: Trung điểm của đoạn thẳng: Ta có $AC = CB = 12 : 2 = '
                         '6\\text{ cm}$; $DC = AC : 2 = 3\\text{ cm}$. Vì $C$ nằm giữa $D$ và $B$ nên $DB = '
@@ -5579,8 +5616,7 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
   'requirements': ['Nhận biết được góc, xác định đúng đỉnh và hai cạnh của góc; đọc và viết đúng kí hiệu góc '
                    '$\\widehat{xOy}$.',
                    'Nhận biết được góc bẹt và điểm nằm trong một góc.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Góc đỉnh O, cạnh Ox và Oy** (Kí hiệu '
-                   '$\\widehat{xOy}$ hoặc $\\widehat{AOB}$ (với $A \\in Ox, B \\in Oy$)) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 36: Góc** để giải bài tập minh họa và bài toán thực tiễn.'],
   'definition': '- **Góc** là hình gồm **hai tia chung gốc**. Gốc chung của hai tia gọi là **đỉnh** của góc, '
                 'hai tia là **hai cạnh** của góc.\n'
                 '- Góc tạo bởi hai tia $Ox, Oy$ được kí hiệu là $\\widehat{xOy}$ (hoặc $\\widehat{yOx}$, '
@@ -5593,7 +5629,7 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             '- Cho góc $\\widehat{xOy}$ khác góc bẹt. Nếu tia $Oz$ nằm giữa hai tia $Ox, Oy$ thì mọi điểm '
             '$M$ thuộc tia $Oz$ ($M \\ne O$) là **điểm trong** của góc $\\widehat{xOy}$.\n'
             '- Nếu từ gốc $O$ vẽ $n$ tia phân biệt thì số góc tạo thành là $\\dfrac{n(n - 1)}{2}$.',
-  'formulas': [{'category': 'I. Kí hiệu và đếm số góc',
+  'formulas': [{'category': 'Kí hiệu và đếm số góc',
                 'items': [{'name': 'Góc đỉnh O, cạnh Ox và Oy',
                            'formula': 'Kí hiệu $\\widehat{xOy}$ hoặc $\\widehat{AOB}$ (với $A \\in Ox, B '
                                       '\\in Oy$)'},
@@ -5624,28 +5660,29 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 36: Góc**, công thức hoặc quy tắc nào sau đây biểu diễn '
-                 'đúng **Góc đỉnh O, cạnh Ox và Oy**?',
-            'options': ['Số góc $= \\dfrac{n(n - 1)}{2}$',
+            'q': 'Trong **Bài 36: Góc**, quy tắc hoặc công thức nào sau đây xác định đúng **Góc đỉnh O, cạnh '
+                 'Ox và Oy**?',
+            'options': ['Kí hiệu $\\widehat{xOy}$ hoặc $\\widehat{AOB}$ (với $A \\notin Ox, B \\in Oy$)',
                         'Kí hiệu $\\widehat{xOy}$ hoặc $\\widehat{AOB}$ (với $A \\in Ox, B \\in Oy$)',
-                        '$x \\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$)',
-                        'Liệt kê $A = \\{0; 1; 2; 3\\}$ hoặc đặc trưng $A = \\{x \\in \\mathbb{N} \\mid x < '
-                        '4\\}$'],
+                        'Đảo ngược vế của quy tắc: Kí hiệu $\\widehat{xOy}$ hoặc $\\widehat{AOB}$ (với $A '
+                        '\\in Ox, B \\in Oy$)',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Kí hiệu $\\widehat{xOy}$ hoặc '
+                        '$\\widehat{AOB}$ (với $A \\in Ox, B \\in Oy$)'],
             'answer': 1,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 36: Góc, **Góc đỉnh O, cạnh Ox và Oy** được '
-                        'xác định bởi: Kí hiệu $\\widehat{xOy}$ hoặc $\\widehat{AOB}$ (với $A \\in Ox, B '
-                        '\\in Oy$).'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 36: Góc, **Góc đỉnh O, cạnh Ox và Oy** được xác '
+                        'định bởi: Kí hiệu $\\widehat{xOy}$ hoặc $\\widehat{AOB}$ (với $A \\in Ox, B \\in '
+                        'Oy$).'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 36: Góc**, nội dung/biểu thức Số góc $= \\dfrac{n(n - 1)}{2}$ là quy tắc hoặc '
-                 'công thức của mục nào sau đây?',
-            'options': ['Góc đỉnh O, cạnh Ox và Oy',
-                        'Quan hệ phần tử – tập hợp',
-                        'Số góc tạo bởi n tia chung gốc',
-                        'Hai cách mô tả'],
+            'q': 'Khi học **Bài 36: Góc**, biểu thức hoặc quy tắc nào dưới đây biểu diễn đúng **Số góc tạo '
+                 'bởi n tia chung gốc**?',
+            'options': ['Số góc $= \\dfrac{n(n + 1)}{2}$',
+                        'Số góc $= \\dfrac{2}{n(n - 1)}$',
+                        'Số góc $= \\dfrac{n(n - 1)}{2}$',
+                        'Số góc $= \\dfrac{n(n - 2)}{2}$'],
             'answer': 2,
-            'solution': 'Trong Bài 36: Góc, biểu thức/quy tắc Số góc $= \\dfrac{n(n - 1)}{2}$ chính là nội '
-                        'dung của **Số góc tạo bởi n tia chung gốc**.'},
+            'solution': 'Trong Bài 36: Góc, **Số góc tạo bởi n tia chung gốc** có công thức/quy tắc là: Số '
+                        'góc $= \\dfrac{n(n - 1)}{2}$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Từ gốc $O$ kẻ $5$ tia phân biệt $Oa, Ob, Oc, Od, Oe$. Số góc được tạo thành là:',
@@ -5656,19 +5693,18 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 36: Góc** (Chương VIII: Những hình hình học cơ bản), khẳng định nào sau đây '
-                 'phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
+            'q': 'Để nắm vững bản chất của **Bài 36: Góc**, nhận định nào sau đây là **chính xác**?',
             'options': ['Nhận biết được góc, xác định đúng đỉnh và hai cạnh của góc; đọc và viết đúng kí '
                         'hiệu góc $\\widehat{xOy}$.',
-                        'Sử dụng được thuật ngữ tập hợp, phần tử thuộc ($\\in$) hoặc không thuộc ($\\notin$) '
-                        'một tập hợp.',
-                        'Cho được một tập hợp bằng cách liệt kê các phần tử hoặc chỉ ra tính chất đặc trưng '
-                        'cho các phần tử.',
-                        'Phân biệt được tập hợp $\\mathbb{N}$ và $\\mathbb{N}^*$; xác định được giá trị từng '
-                        'chữ số của số tự nhiên trong hệ thập phân.'],
+                        'Nhận biết được góc, xác định đúng đỉnh và hai cạnh của góc; đọc và viết đúng kí '
+                        'hiệu góc $\\widehat{xOy}$. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Nhận biết được góc, xác định đúng đỉnh và hai cạnh của '
+                        'góc; đọc và viết đúng kí hiệu góc $\\widehat{xOy}$.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nhận biết được góc, xác định '
+                        'đúng đỉnh và hai cạnh của góc; đọc và viết đúng kí hiệu góc $\\widehat{xOy}$.'],
             'answer': 0,
-            'solution': 'Theo yêu cầu cần đạt của Bài 36: Góc: Nhận biết được góc, xác định đúng đỉnh và hai '
-                        'cạnh của góc; đọc và viết đúng kí hiệu góc $\\widehat{xOy}$.'},
+            'solution': 'Theo nội dung cốt lõi của Bài 36: Góc: Nhận biết được góc, xác định đúng đỉnh và '
+                        'hai cạnh của góc; đọc và viết đúng kí hiệu góc $\\widehat{xOy}$.'},
            {'level': 'hieu',
             'type': 'tf4',
             'q': 'Cho góc $\\widehat{xOy}$ khác góc bẹt, điểm $A \\in Ox$ và $B \\in Oy$ ($A, B$ khác $O$), '
@@ -5684,36 +5720,37 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 36: Góc**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được góc, xác định đúng '
-                           'đỉnh và hai cạnh của góc; đọc và viết đúng kí hiệu góc $\\widehat{xOy}$.',
-                           'Quy tắc/công thức **Góc đỉnh O, cạnh Ox và Oy** trong bài được xác định bởi: Kí '
-                           'hiệu $\\widehat{xOy}$ hoặc $\\widehat{AOB}$ (với $A \\in Ox, B \\in Oy$).',
-                           'Trong mọi trường hợp, **Góc đỉnh O, cạnh Ox và Oy** luôn được tính bằng công '
-                           'thức $x \\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$) (thuộc Quan '
-                           'hệ phần tử – tập hợp) mà không cần điều kiện của Bài 36: Góc.',
-                           'Với bài toán minh họa: “Cho $4$ tia chung gốc $Oa, Ob, Oc, Od$. Hỏi có tất cả '
-                           'bao nhiêu góc được tạo thành?”, lời giải đúng là: Mỗi cặp tia chung gốc tạo '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 36: Góc**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết được góc, xác định đúng đỉnh '
+                           'và hai cạnh của góc; đọc và viết đúng kí hiệu góc $\\widehat{xOy}$.',
+                           'Trong **Bài 36: Góc**, quy tắc/công thức **Góc đỉnh O, cạnh Ox và Oy** được viết '
+                           'là: Kí hiệu $\\widehat{xOy}$ hoặc $\\widehat{AOB}$ (với $A \\in Ox, B \\in Oy$).',
+                           'Nếu áp dụng sai dấu/phép tính thành Kí hiệu $\\widehat{xOy}$ hoặc '
+                           '$\\widehat{AOB}$ (với $A \\notin Ox, B \\in Oy$) thì kết quả của **Góc đỉnh O, '
+                           'cạnh Ox và Oy** trong **Bài 36: Góc** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Cho $4$ tia chung gốc $Oa, Ob, Oc, Od$. Hỏi có tất cả bao '
+                           'nhiêu góc được tạo thành?”, kết quả giải đúng là: Mỗi cặp tia chung gốc tạo '
                            'thành một góc nên số góc là $\\dfrac{4 \\cdot (4 - 1)}{2} = 6$ (góc).'],
             'answer': [True, True, False, True],
-            'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 36: Góc. b) **Đúng** theo công thức trọng '
-                        'tâm **Góc đỉnh O, cạnh Ox và Oy** (Kí hiệu $\\widehat{xOy}$ hoặc $\\widehat{AOB}$ '
-                        '(với $A \\in Ox, B \\in Oy$)). c) **Sai** vì $x \\in A$ ($x$ thuộc $A$); $y \\notin '
-                        'A$ ($y$ không thuộc $A$) là công thức của nội dung khác, không phải quy tắc chung '
-                        'của **Góc đỉnh O, cạnh Ox và Oy**. d) **Đúng** theo lời giải ví dụ minh họa trong '
-                        'bài học.'},
+            'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 36: Góc. b) **Đúng** theo công thức **Góc '
+                        'đỉnh O, cạnh Ox và Oy** (Kí hiệu $\\widehat{xOy}$ hoặc $\\widehat{AOB}$ (với $A '
+                        '\\in Ox, B \\in Oy$)). c) **Sai** vì công thức đúng của **Góc đỉnh O, cạnh Ox và '
+                        'Oy** phải là Kí hiệu $\\widehat{xOy}$ hoặc $\\widehat{AOB}$ (với $A \\in Ox, B \\in '
+                        'Oy$) chứ không phải Kí hiệu $\\widehat{xOy}$ hoặc $\\widehat{AOB}$ (với $A \\notin '
+                        'Ox, B \\in Oy$). d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 36: Góc** để giải quyết tình huống sau: Cho $4$ tia chung gốc '
-                 '$Oa, Ob, Oc, Od$. Hỏi có tất cả bao nhiêu góc được tạo thành? Kết quả và hướng giải nào '
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 36: Góc** để giải bài toán sau: Cho $4$ tia chung '
+                 'gốc $Oa, Ob, Oc, Od$. Hỏi có tất cả bao nhiêu góc được tạo thành? Cách giải và kết quả nào '
                  'dưới đây là **đúng**?',
-            'options': ['Ta có $M = \\{\\text{T}, \\text{O}, \\text{A}, \\text{N}, \\text{H}, \\text{C}\\}$ '
-                        '(chữ O xuất hiện $2$ lần nhưng chỉ viết $1$ lần). Tập hợp $M$ có $6$ phần tử.',
+            'options': ['Mỗi cặp tia chung gốc tạo thành một góc nên số góc là $\\dfrac{4 \\cdot (4 + 1)}{2} '
+                        '= 6$ (góc).',
                         'Mỗi cặp tia chung gốc tạo thành một góc nên số góc là $\\dfrac{4 \\cdot (4 - 1)}{2} '
                         '= 6$ (góc).',
-                        'Số $27$ viết là $\\text{XXVII}$, số $19$ viết là $\\text{XIX}$. Ta có '
-                        '$\\overline{ab} = a \\times 10 + b$.',
-                        'Các số tự nhiên từ $4$ đến $8$ là $4; 5; 6; 7; 8$. Vậy $A = \\{4; 5; 6; 7; 8\\}$.'],
+                        'Mỗi cặp tia chung gốc tạo thành một góc nên số góc là $\\dfrac{2}{4 \\cdot (4 - 1)} '
+                        '= 6$ (góc).',
+                        'Mỗi cặp tia chung gốc tạo thành một góc nên số góc là $\\dfrac{8 \\cdot (4 - 1)}{2} '
+                        '= 6$ (góc).'],
             'answer': 1,
             'solution': 'Lời giải chi tiết theo Bài 36: Góc: Mỗi cặp tia chung gốc tạo thành một góc nên số '
                         'góc là $\\dfrac{4 \\cdot (4 - 1)}{2} = 6$ (góc).'},
@@ -5737,8 +5774,8 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
   'requirements': ['Biết dùng thước đo góc để xác định số đo của một góc và so sánh hai góc dựa vào số đo.',
                    'Phân biệt được góc nhọn ($0^\\circ < \\alpha < 90^\\circ$), góc vuông ($90^\\circ$), góc '
                    'tù ($90^\\circ < \\alpha < 180^\\circ$) và góc bẹt ($180^\\circ$).',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Góc nhọn và Góc vuông** (Nhọn: $0^\\circ < '
-                   '\\alpha < 90^\\circ$; Vuông: $\\alpha = 90^\\circ$) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 37: Số đo góc** để giải bài tập minh họa và bài toán thực '
+                   'tiễn.'],
   'definition': '- Mỗi góc có một **số đo** (đơn vị là **độ**, kí hiệu $^\\circ$). Số đo của một góc không '
                 'vượt quá $180^\\circ$.\n'
                 '- **Góc vuông**: có số đo bằng $90^\\circ$. **Góc nhọn**: lớn hơn $0^\\circ$ và nhỏ hơn '
@@ -5751,7 +5788,7 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             '### 2. Góc giữa hai kim đồng hồ tại giờ đúng\n'
             '- Mặt đồng hồ chia thành $12$ khoảng đều nhau, ứng với $360^\\circ : 12 = 30^\\circ$ cho mỗi '
             'khoảng giữa hai số liên tiếp.',
-  'formulas': [{'category': 'I. Phân loại góc theo số đo alpha',
+  'formulas': [{'category': 'Phân loại góc theo số đo alpha',
                 'items': [{'name': 'Góc nhọn và Góc vuông',
                            'formula': 'Nhọn: $0^\\circ < \\alpha < 90^\\circ$; Vuông: $\\alpha = 90^\\circ$'},
                           {'name': 'Góc tù và Góc bẹt',
@@ -5780,27 +5817,26 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 37: Số đo góc**, công thức hoặc quy tắc nào sau đây biểu '
-                 'diễn đúng **Góc nhọn và Góc vuông**?',
-            'options': ['Tù: $90^\\circ < \\alpha < 180^\\circ$; Bẹt: $\\alpha = 180^\\circ$',
-                        'Mỗi khoảng giữa $2$ số liên tiếp trên đồng hồ ứng với $30^\\circ$',
+            'q': 'Trong **Bài 37: Số đo góc**, quy tắc hoặc công thức nào sau đây xác định đúng **Góc nhọn '
+                 'và Góc vuông**?',
+            'options': ['Nhọn: $0^\\circ > \\alpha < 90^\\circ$; Vuông: $\\alpha = 90^\\circ$',
+                        'Nhọn: $0^\\circ < \\alpha < 90^\\circ$; Vuông: $\\alpha = 89^\\circ$',
                         'Nhọn: $0^\\circ < \\alpha < 90^\\circ$; Vuông: $\\alpha = 90^\\circ$',
-                        '$x \\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$)'],
+                        'Nhọn: $2^\\circ < \\alpha < 90^\\circ$; Vuông: $\\alpha = 90^\\circ$'],
             'answer': 2,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 37: Số đo góc, **Góc nhọn và Góc vuông** được '
-                        'xác định bởi: Nhọn: $0^\\circ < \\alpha < 90^\\circ$; Vuông: $\\alpha = '
-                        '90^\\circ$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 37: Số đo góc, **Góc nhọn và Góc vuông** được xác '
+                        'định bởi: Nhọn: $0^\\circ < \\alpha < 90^\\circ$; Vuông: $\\alpha = 90^\\circ$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 37: Số đo góc**, nội dung/biểu thức Tù: $90^\\circ < \\alpha < 180^\\circ$; '
-                 'Bẹt: $\\alpha = 180^\\circ$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Góc nhọn và Góc vuông',
-                        'Mặt đồng hồ',
-                        'Quan hệ phần tử – tập hợp',
-                        'Góc tù và Góc bẹt'],
+            'q': 'Khi học **Bài 37: Số đo góc**, biểu thức hoặc quy tắc nào dưới đây biểu diễn đúng **Góc tù '
+                 'và Góc bẹt**?',
+            'options': ['Tù: $90^\\circ > \\alpha < 180^\\circ$; Bẹt: $\\alpha = 180^\\circ$',
+                        'Tù: $90^\\circ < \\alpha < 180^\\circ$; Bẹt: $\\alpha = 179^\\circ$',
+                        'Tù: $92^\\circ < \\alpha < 180^\\circ$; Bẹt: $\\alpha = 180^\\circ$',
+                        'Tù: $90^\\circ < \\alpha < 180^\\circ$; Bẹt: $\\alpha = 180^\\circ$'],
             'answer': 3,
-            'solution': 'Trong Bài 37: Số đo góc, biểu thức/quy tắc Tù: $90^\\circ < \\alpha < 180^\\circ$; '
-                        'Bẹt: $\\alpha = 180^\\circ$ chính là nội dung của **Góc tù và Góc bẹt**.'},
+            'solution': 'Trong Bài 37: Số đo góc, **Góc tù và Góc bẹt** có công thức/quy tắc là: Tù: '
+                        '$90^\\circ < \\alpha < 180^\\circ$; Bẹt: $\\alpha = 180^\\circ$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Cho $\\widehat{A} = 75^\\circ, \\widehat{B} = 90^\\circ, \\widehat{C} = 110^\\circ$. Khẳng '
@@ -5816,18 +5852,17 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 37: Số đo góc** (Chương VIII: Những hình hình học cơ bản), khẳng định nào '
-                 'sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Sử dụng được thuật ngữ tập hợp, phần tử thuộc ($\\in$) hoặc không thuộc ($\\notin$) '
-                        'một tập hợp.',
+            'q': 'Để nắm vững bản chất của **Bài 37: Số đo góc**, nhận định nào sau đây là **chính xác**?',
+            'options': ['Biết dùng thước đo góc để xác định số đo của một góc và so sánh hai góc dựa vào số '
+                        'đo. (với dấu ngược lại)',
                         'Biết dùng thước đo góc để xác định số đo của một góc và so sánh hai góc dựa vào số '
                         'đo.',
-                        'Cho được một tập hợp bằng cách liệt kê các phần tử hoặc chỉ ra tính chất đặc trưng '
-                        'cho các phần tử.',
-                        'Phân biệt được tập hợp $\\mathbb{N}$ và $\\mathbb{N}^*$; xác định được giá trị từng '
-                        'chữ số của số tự nhiên trong hệ thập phân.'],
+                        'Đảo ngược vế của quy tắc: Biết dùng thước đo góc để xác định số đo của một góc và '
+                        'so sánh hai góc dựa vào số đo.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Biết dùng thước đo góc để xác '
+                        'định số đo của một góc và so sánh hai góc dựa vào số đo.'],
             'answer': 1,
-            'solution': 'Theo yêu cầu cần đạt của Bài 37: Số đo góc: Biết dùng thước đo góc để xác định số '
+            'solution': 'Theo nội dung cốt lõi của Bài 37: Số đo góc: Biết dùng thước đo góc để xác định số '
                         'đo của một góc và so sánh hai góc dựa vào số đo.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -5842,36 +5877,37 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 37: Số đo góc**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Biết dùng thước đo góc để xác định '
-                           'số đo của một góc và so sánh hai góc dựa vào số đo.',
-                           'Quy tắc/công thức **Góc nhọn và Góc vuông** trong bài được xác định bởi: Nhọn: '
-                           '$0^\\circ < \\alpha < 90^\\circ$; Vuông: $\\alpha = 90^\\circ$.',
-                           'Trong mọi trường hợp, **Góc nhọn và Góc vuông** luôn được tính bằng công thức $x '
-                           '\\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$) (thuộc Quan hệ phần '
-                           'tử – tập hợp) mà không cần điều kiện của Bài 37: Số đo góc.',
-                           'Với bài toán minh họa: “Xác định loại của các góc có số đo $45^\\circ; '
-                           '90^\\circ; 135^\\circ; 180^\\circ$.”, lời giải đúng là: Góc $45^\\circ$ là góc '
-                           'nhọn; $90^\\circ$ là góc vuông; $135^\\circ$ là góc tù; $180^\\circ$ là góc '
-                           'bẹt.'],
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 37: Số đo góc**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Biết dùng thước đo góc để xác định số đo '
+                           'của một góc và so sánh hai góc dựa vào số đo.',
+                           'Trong **Bài 37: Số đo góc**, quy tắc/công thức **Góc nhọn và Góc vuông** được '
+                           'viết là: Nhọn: $0^\\circ < \\alpha < 90^\\circ$; Vuông: $\\alpha = 90^\\circ$.',
+                           'Nếu áp dụng sai dấu/phép tính thành Nhọn: $0^\\circ > \\alpha < 90^\\circ$; '
+                           'Vuông: $\\alpha = 90^\\circ$ thì kết quả của **Góc nhọn và Góc vuông** trong '
+                           '**Bài 37: Số đo góc** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Xác định loại của các góc có số đo $45^\\circ; 90^\\circ; '
+                           '135^\\circ; 180^\\circ$.”, kết quả giải đúng là: Góc $45^\\circ$ là góc nhọn; '
+                           '$90^\\circ$ là góc vuông; $135^\\circ$ là góc tù; $180^\\circ$ là góc bẹt.'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 37: Số đo góc. b) **Đúng** theo công thức '
-                        'trọng tâm **Góc nhọn và Góc vuông** (Nhọn: $0^\\circ < \\alpha < 90^\\circ$; Vuông: '
-                        '$\\alpha = 90^\\circ$). c) **Sai** vì $x \\in A$ ($x$ thuộc $A$); $y \\notin A$ '
-                        '($y$ không thuộc $A$) là công thức của nội dung khác, không phải quy tắc chung của '
-                        '**Góc nhọn và Góc vuông**. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        '**Góc nhọn và Góc vuông** (Nhọn: $0^\\circ < \\alpha < 90^\\circ$; Vuông: $\\alpha '
+                        '= 90^\\circ$). c) **Sai** vì công thức đúng của **Góc nhọn và Góc vuông** phải là '
+                        'Nhọn: $0^\\circ < \\alpha < 90^\\circ$; Vuông: $\\alpha = 90^\\circ$ chứ không phải '
+                        'Nhọn: $0^\\circ > \\alpha < 90^\\circ$; Vuông: $\\alpha = 90^\\circ$. d) **Đúng** '
+                        'theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 37: Số đo góc** để giải quyết tình huống sau: Xác định loại của '
-                 'các góc có số đo $45^\\circ; 90^\\circ; 135^\\circ; 180^\\circ$. Kết quả và hướng giải nào '
-                 'dưới đây là **đúng**?',
-            'options': ['Ta có $M = \\{\\text{T}, \\text{O}, \\text{A}, \\text{N}, \\text{H}, \\text{C}\\}$ '
-                        '(chữ O xuất hiện $2$ lần nhưng chỉ viết $1$ lần). Tập hợp $M$ có $6$ phần tử.',
-                        'Số $27$ viết là $\\text{XXVII}$, số $19$ viết là $\\text{XIX}$. Ta có '
-                        '$\\overline{ab} = a \\times 10 + b$.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 37: Số đo góc** để giải bài toán sau: Xác định loại '
+                 'của các góc có số đo $45^\\circ; 90^\\circ; 135^\\circ; 180^\\circ$. Cách giải và kết quả '
+                 'nào dưới đây là **đúng**?',
+            'options': ['Góc $55^\\circ$ là góc nhọn; $90^\\circ$ là góc vuông; $135^\\circ$ là góc tù; '
+                        '$180^\\circ$ là góc bẹt.',
+                        'Góc $45^\\circ$ là góc nhọn; $90^\\circ$ là góc vuông; $135^\\circ$ là góc tù; '
+                        '$179^\\circ$ là góc bẹt.',
                         'Góc $45^\\circ$ là góc nhọn; $90^\\circ$ là góc vuông; $135^\\circ$ là góc tù; '
                         '$180^\\circ$ là góc bẹt.',
-                        'Các số tự nhiên từ $4$ đến $8$ là $4; 5; 6; 7; 8$. Vậy $A = \\{4; 5; 6; 7; 8\\}$.'],
+                        'Góc $90^\\circ$ là góc nhọn; $90^\\circ$ là góc vuông; $135^\\circ$ là góc tù; '
+                        '$180^\\circ$ là góc bẹt.'],
             'answer': 2,
             'solution': 'Lời giải chi tiết theo Bài 37: Số đo góc: Góc $45^\\circ$ là góc nhọn; $90^\\circ$ '
                         'là góc vuông; $135^\\circ$ là góc tù; $180^\\circ$ là góc bẹt.'},
@@ -5894,8 +5930,8 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
                  'và tính hợp lí của dữ liệu.',
   'requirements': ['Phân biệt được dữ liệu là số (số liệu) và dữ liệu không phải là số.',
                    'Nhận biết được các phương pháp thu thập dữ liệu và phát hiện được dữ liệu không hợp lí.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Hai loại dữ liệu** (Dữ liệu là số (số liệu) '
-                   'và Dữ liệu không phải là số) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 38: Dữ liệu và thu thập dữ liệu** để giải bài tập minh họa '
+                   'và bài toán thực tiễn.'],
   'definition': '- Thông tin thu thập được gọi là **dữ liệu**. Dữ liệu được chia thành hai loại: **dữ liệu '
                 'là số** (gọi là **số liệu**) và **dữ liệu không phải là số**.\n'
                 '- Các cách thu thập dữ liệu: quan sát, làm thí nghiệm, lập phiếu hỏi (phỏng vấn) hoặc thu '
@@ -5909,7 +5945,7 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             '### 2. Kiểm tra tính hợp lí\n'
             '- Ví dụ: sĩ số lớp là $-35$ hoặc chiều cao học sinh lớp 6 là $15\\text{ m}$ hoặc tỉ lệ phần '
             'trăm vượt quá $100\\%$ là dữ liệu **không hợp lí**.',
-  'formulas': [{'category': 'I. Phân loại và kiểm tra dữ liệu',
+  'formulas': [{'category': 'Phân loại và kiểm tra dữ liệu',
                 'items': [{'name': 'Hai loại dữ liệu',
                            'formula': 'Dữ liệu là số (số liệu) và Dữ liệu không phải là số'},
                           {'name': 'Tiêu chí hợp lí',
@@ -5943,26 +5979,27 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 38: Dữ liệu và thu thập dữ liệu**, công thức hoặc quy '
-                 'tắc nào sau đây biểu diễn đúng **Hai loại dữ liệu**?',
-            'options': ['Đúng kiểu dữ liệu, nằm trong miền giá trị thực tế, tổng phần trăm $= 100\\%$',
-                        '$x \\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$)',
-                        'Liệt kê $A = \\{0; 1; 2; 3\\}$ hoặc đặc trưng $A = \\{x \\in \\mathbb{N} \\mid x < '
-                        '4\\}$',
+            'q': 'Trong **Bài 38: Dữ liệu và thu thập dữ liệu**, quy tắc hoặc công thức nào sau đây xác định '
+                 'đúng **Hai loại dữ liệu**?',
+            'options': ['Dữ liệu là số (số liệu) và Dữ liệu không phải là số (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Dữ liệu là số (số liệu) và Dữ liệu không phải là số',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Dữ liệu là số (số liệu) và Dữ '
+                        'liệu không phải là số',
                         'Dữ liệu là số (số liệu) và Dữ liệu không phải là số'],
             'answer': 3,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 38: Dữ liệu và thu thập dữ liệu, **Hai loại '
-                        'dữ liệu** được xác định bởi: Dữ liệu là số (số liệu) và Dữ liệu không phải là số.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 38: Dữ liệu và thu thập dữ liệu, **Hai loại dữ '
+                        'liệu** được xác định bởi: Dữ liệu là số (số liệu) và Dữ liệu không phải là số.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 38: Dữ liệu và thu thập dữ liệu**, nội dung/biểu thức Đúng kiểu dữ liệu, nằm '
-                 'trong miền giá trị thực tế, tổng phần trăm $= 100\\%$ là quy tắc hoặc công thức của mục '
-                 'nào sau đây?',
-            'options': ['Tiêu chí hợp lí', 'Hai loại dữ liệu', 'Quan hệ phần tử – tập hợp', 'Hai cách mô tả'],
+            'q': 'Khi học **Bài 38: Dữ liệu và thu thập dữ liệu**, biểu thức hoặc quy tắc nào dưới đây biểu '
+                 'diễn đúng **Tiêu chí hợp lí**?',
+            'options': ['Đúng kiểu dữ liệu, nằm trong miền giá trị thực tế, tổng phần trăm $= 100\\%$',
+                        'Đúng kiểu dữ liệu, nằm trong miền giá trị thực tế, tổng phần trăm $= 110\\%$',
+                        'Đúng kiểu dữ liệu, nằm trong miền giá trị thực tế, tổng phần trăm $= 99\\%$',
+                        'Đúng kiểu dữ liệu, nằm trong miền giá trị thực tế, tổng phần trăm $= 102\\%$'],
             'answer': 0,
-            'solution': 'Trong Bài 38: Dữ liệu và thu thập dữ liệu, biểu thức/quy tắc Đúng kiểu dữ liệu, nằm '
-                        'trong miền giá trị thực tế, tổng phần trăm $= 100\\%$ chính là nội dung của **Tiêu '
-                        'chí hợp lí**.'},
+            'solution': 'Trong Bài 38: Dữ liệu và thu thập dữ liệu, **Tiêu chí hợp lí** có công thức/quy tắc '
+                        'là: Đúng kiểu dữ liệu, nằm trong miền giá trị thực tế, tổng phần trăm $= 100\\%$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Để biết môn thể thao được các bạn trong lớp 6A yêu thích nhất, cách thu thập dữ liệu phù '
@@ -5978,18 +6015,17 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 38: Dữ liệu và thu thập dữ liệu** (Chương IX: Dữ liệu và xác suất thực '
-                 'nghiệm), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức '
-                 'của bài?',
-            'options': ['Sử dụng được thuật ngữ tập hợp, phần tử thuộc ($\\in$) hoặc không thuộc ($\\notin$) '
-                        'một tập hợp.',
-                        'Cho được một tập hợp bằng cách liệt kê các phần tử hoặc chỉ ra tính chất đặc trưng '
-                        'cho các phần tử.',
+            'q': 'Để nắm vững bản chất của **Bài 38: Dữ liệu và thu thập dữ liệu**, nhận định nào sau đây là '
+                 '**chính xác**?',
+            'options': ['Phân biệt được dữ liệu là số (số liệu) và dữ liệu không phải là số. (với dấu ngược '
+                        'lại)',
+                        'Đảo ngược vế của quy tắc: Phân biệt được dữ liệu là số (số liệu) và dữ liệu không '
+                        'phải là số.',
                         'Phân biệt được dữ liệu là số (số liệu) và dữ liệu không phải là số.',
-                        'Phân biệt được tập hợp $\\mathbb{N}$ và $\\mathbb{N}^*$; xác định được giá trị từng '
-                        'chữ số của số tự nhiên trong hệ thập phân.'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Phân biệt được dữ liệu là số '
+                        '(số liệu) và dữ liệu không phải là số.'],
             'answer': 2,
-            'solution': 'Theo yêu cầu cần đạt của Bài 38: Dữ liệu và thu thập dữ liệu: Phân biệt được dữ '
+            'solution': 'Theo nội dung cốt lõi của Bài 38: Dữ liệu và thu thập dữ liệu: Phân biệt được dữ '
                         'liệu là số (số liệu) và dữ liệu không phải là số.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -6004,35 +6040,34 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 38: Dữ liệu và thu thập '
-                 'dữ liệu**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Phân biệt được dữ liệu là số (số '
-                           'liệu) và dữ liệu không phải là số.',
-                           'Quy tắc/công thức **Hai loại dữ liệu** trong bài được xác định bởi: Dữ liệu là '
-                           'số (số liệu) và Dữ liệu không phải là số.',
-                           'Trong mọi trường hợp, **Hai loại dữ liệu** luôn được tính bằng công thức $x \\in '
-                           'A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$) (thuộc Quan hệ phần tử – '
-                           'tập hợp) mà không cần điều kiện của Bài 38: Dữ liệu và thu thập dữ liệu.',
-                           'Với bài toán minh họa: “Trong danh sách các loài động vật sống dưới nước: Cá '
-                           'heo, Cá chép, Chim đại bàng, Tôm hùm. Dữ liệu nào không hợp lí?”, lời giải đúng '
-                           'là: “Chim đại bàng” là dữ liệu không hợp lí vì đại bàng không phải là động vật '
-                           'sống dưới nước.'],
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 38: Dữ liệu và thu thập dữ '
+                 'liệu**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Phân biệt được dữ liệu là số (số liệu) '
+                           'và dữ liệu không phải là số.',
+                           'Trong **Bài 38: Dữ liệu và thu thập dữ liệu**, quy tắc/công thức **Hai loại dữ '
+                           'liệu** được viết là: Dữ liệu là số (số liệu) và Dữ liệu không phải là số.',
+                           'Nếu áp dụng sai dấu/phép tính thành Dữ liệu là số (số liệu) và Dữ liệu không '
+                           'phải là số (với dấu ngược lại) thì kết quả của **Hai loại dữ liệu** trong **Bài '
+                           '38: Dữ liệu và thu thập dữ liệu** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Trong danh sách các loài động vật sống dưới nước: Cá heo, Cá '
+                           'chép, Chim đại bàng, Tôm hùm. Dữ liệu nào không hợp lí?”, kết quả giải đúng là: '
+                           '“Chim đại bàng” là dữ liệu không hợp lí vì đại bàng không phải là động vật sống '
+                           'dưới nước.'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 38: Dữ liệu và thu thập dữ liệu. b) '
-                        '**Đúng** theo công thức trọng tâm **Hai loại dữ liệu** (Dữ liệu là số (số liệu) và '
-                        'Dữ liệu không phải là số). c) **Sai** vì $x \\in A$ ($x$ thuộc $A$); $y \\notin A$ '
-                        '($y$ không thuộc $A$) là công thức của nội dung khác, không phải quy tắc chung của '
-                        '**Hai loại dữ liệu**. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        '**Đúng** theo công thức **Hai loại dữ liệu** (Dữ liệu là số (số liệu) và Dữ liệu '
+                        'không phải là số). c) **Sai** vì công thức đúng của **Hai loại dữ liệu** phải là Dữ '
+                        'liệu là số (số liệu) và Dữ liệu không phải là số chứ không phải Dữ liệu là số (số '
+                        'liệu) và Dữ liệu không phải là số (với dấu ngược lại). d) **Đúng** theo lời giải ví '
+                        'dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 38: Dữ liệu và thu thập dữ liệu** để giải quyết tình huống sau: '
-                 'Trong danh sách các loài động vật sống dưới nước: Cá heo, Cá chép, Chim đại bàng, Tôm hùm. '
-                 'Dữ liệu nào không hợp lí? Kết quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Ta có $M = \\{\\text{T}, \\text{O}, \\text{A}, \\text{N}, \\text{H}, \\text{C}\\}$ '
-                        '(chữ O xuất hiện $2$ lần nhưng chỉ viết $1$ lần). Tập hợp $M$ có $6$ phần tử.',
-                        'Số $27$ viết là $\\text{XXVII}$, số $19$ viết là $\\text{XIX}$. Ta có '
-                        '$\\overline{ab} = a \\times 10 + b$.',
-                        'Các số tự nhiên từ $4$ đến $8$ là $4; 5; 6; 7; 8$. Vậy $A = \\{4; 5; 6; 7; 8\\}$.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 38: Dữ liệu và thu thập dữ liệu** để giải bài toán '
+                 'sau: Trong danh sách các loài động vật sống dưới nước: Cá heo, Cá chép, Chim đại bàng, Tôm '
+                 'hùm. Dữ liệu nào không hợp lí? Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Chỉ xét trường hợp đặc biệt bằng $0$ và bỏ qua quy tắc chung',
+                        'Thực hiện theo thứ tự ngược lại và bỏ qua điều kiện xác định trong bài',
+                        'Đổi ngược dấu của phép tính chính và không kiểm tra lại kết quả',
                         '“Chim đại bàng” là dữ liệu không hợp lí vì đại bàng không phải là động vật sống '
                         'dưới nước.'],
             'answer': 3,
@@ -6059,9 +6094,8 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
   'requirements': ['Đọc và lập được bảng thống kê từ dữ liệu thu thập được.',
                    'Đọc và tính được số liệu thực tế trên biểu đồ tranh thông qua quy ước giá trị của mỗi '
                    'biểu tượng.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Số lượng của mỗi đối tượng** ($\\text{Số '
-                   'lượng} = (\\text{Số biểu tượng}) \\cdot (\\text{Giá trị 1 biểu tượng})$) vào giải bài '
-                   'tập.'],
+                   'Vận dụng kiến thức của **Bài 39: Bảng thống kê và biểu đồ tranh** để giải bài tập minh '
+                   'họa và bài toán thực tiễn.'],
   'definition': '- **Bảng thống kê** là cách trình bày dữ liệu chi tiết theo hàng và cột để thuận tiện cho '
                 'việc so sánh và tính toán.\n'
                 '- **Biểu đồ tranh** sử dụng các hình ảnh, biểu tượng để biểu diễn số liệu. Mỗi biểu tượng '
@@ -6072,7 +6106,7 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             '- Bước 2: Đếm số biểu tượng của mỗi dòng rồi nhân với giá trị của $1$ biểu tượng.\n'
             '- Ví dụ: nếu $1$ ngôi sao ứng với $10$ học sinh thì $3$ ngôi sao rưỡi ứng với $3 \\cdot 10 + 5 '
             '= 35$ học sinh.',
-  'formulas': [{'category': 'I. Tính toán trên biểu đồ tranh',
+  'formulas': [{'category': 'Tính toán trên biểu đồ tranh',
                 'items': [{'name': 'Số lượng của mỗi đối tượng',
                            'formula': '$\\text{Số lượng} = (\\text{Số biểu tượng}) \\cdot (\\text{Giá trị 1 '
                                       'biểu tượng})$'},
@@ -6107,30 +6141,28 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 39: Bảng thống kê và biểu đồ tranh**, công thức hoặc quy '
-                 'tắc nào sau đây biểu diễn đúng **Số lượng của mỗi đối tượng**?',
+            'q': 'Trong **Bài 39: Bảng thống kê và biểu đồ tranh**, quy tắc hoặc công thức nào sau đây xác '
+                 'định đúng **Số lượng của mỗi đối tượng**?',
             'options': ['$\\text{Số lượng} = (\\text{Số biểu tượng}) \\cdot (\\text{Giá trị 1 biểu tượng})$',
-                        '$\\text{Số biểu tượng} = \\text{Số lượng} : (\\text{Giá trị 1 biểu tượng})$',
-                        '$x \\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$)',
-                        'Liệt kê $A = \\{0; 1; 2; 3\\}$ hoặc đặc trưng $A = \\{x \\in \\mathbb{N} \\mid x < '
-                        '4\\}$'],
+                        '$\\text{Số lượng} = (\\text{Số biểu tượng}) : (\\text{Giá trị 1 biểu tượng})$',
+                        '$\\text{Số lượng} = (\\text{Số biểu tượng}) \\cdot (\\text{Giá trị 2 biểu tượng})$',
+                        '$\\text{Số biểu tượng} = \\text{Số lượng} : (\\text{Giá trị 1 biểu tượng})$'],
             'answer': 0,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 39: Bảng thống kê và biểu đồ tranh, **Số '
-                        'lượng của mỗi đối tượng** được xác định bởi: $\\text{Số lượng} = (\\text{Số biểu '
-                        'tượng}) \\cdot (\\text{Giá trị 1 biểu tượng})$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 39: Bảng thống kê và biểu đồ tranh, **Số lượng của '
+                        'mỗi đối tượng** được xác định bởi: $\\text{Số lượng} = (\\text{Số biểu tượng}) '
+                        '\\cdot (\\text{Giá trị 1 biểu tượng})$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 39: Bảng thống kê và biểu đồ tranh**, nội dung/biểu thức $\\text{Số biểu '
-                 'tượng} = \\text{Số lượng} : (\\text{Giá trị 1 biểu tượng})$ là quy tắc hoặc công thức của '
-                 'mục nào sau đây?',
-            'options': ['Số lượng của mỗi đối tượng',
-                        'Số biểu tượng cần vẽ',
-                        'Quan hệ phần tử – tập hợp',
-                        'Hai cách mô tả'],
+            'q': 'Khi học **Bài 39: Bảng thống kê và biểu đồ tranh**, biểu thức hoặc quy tắc nào dưới đây '
+                 'biểu diễn đúng **Số biểu tượng cần vẽ**?',
+            'options': ['$\\text{Số biểu tượng} = \\text{Số lượng} : (\\text{Giá trị 2 biểu tượng})$',
+                        '$\\text{Số biểu tượng} = \\text{Số lượng} : (\\text{Giá trị 1 biểu tượng})$',
+                        '$\\text{Số lượng} = (\\text{Số biểu tượng}) \\cdot (\\text{Giá trị 1 biểu tượng})$',
+                        'Trường hợp sai quy tắc (sai lệch 1 đơn vị so với công thức trong bài)'],
             'answer': 1,
-            'solution': 'Trong Bài 39: Bảng thống kê và biểu đồ tranh, biểu thức/quy tắc $\\text{Số biểu '
-                        'tượng} = \\text{Số lượng} : (\\text{Giá trị 1 biểu tượng})$ chính là nội dung của '
-                        '**Số biểu tượng cần vẽ**.'},
+            'solution': 'Trong Bài 39: Bảng thống kê và biểu đồ tranh, **Số biểu tượng cần vẽ** có công '
+                        'thức/quy tắc là: $\\text{Số biểu tượng} = \\text{Số lượng} : (\\text{Giá trị 1 biểu '
+                        'tượng})$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Biểu đồ tranh ghi số cây trồng của hai lớp (mỗi hình cái cây $= 8$ cây): lớp 6A có $5$ '
@@ -6142,18 +6174,15 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 39: Bảng thống kê và biểu đồ tranh** (Chương IX: Dữ liệu và xác suất thực '
-                 'nghiệm), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức '
-                 'của bài?',
-            'options': ['Sử dụng được thuật ngữ tập hợp, phần tử thuộc ($\\in$) hoặc không thuộc ($\\notin$) '
-                        'một tập hợp.',
-                        'Cho được một tập hợp bằng cách liệt kê các phần tử hoặc chỉ ra tính chất đặc trưng '
-                        'cho các phần tử.',
-                        'Phân biệt được tập hợp $\\mathbb{N}$ và $\\mathbb{N}^*$; xác định được giá trị từng '
-                        'chữ số của số tự nhiên trong hệ thập phân.',
+            'q': 'Để nắm vững bản chất của **Bài 39: Bảng thống kê và biểu đồ tranh**, nhận định nào sau đây '
+                 'là **chính xác**?',
+            'options': ['Đọc và lập được bảng thống kê từ dữ liệu thu thập được. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Đọc và lập được bảng thống kê từ dữ liệu thu thập được.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Đọc và lập được bảng thống kê '
+                        'từ dữ liệu thu thập được.',
                         'Đọc và lập được bảng thống kê từ dữ liệu thu thập được.'],
             'answer': 3,
-            'solution': 'Theo yêu cầu cần đạt của Bài 39: Bảng thống kê và biểu đồ tranh: Đọc và lập được '
+            'solution': 'Theo nội dung cốt lõi của Bài 39: Bảng thống kê và biểu đồ tranh: Đọc và lập được '
                         'bảng thống kê từ dữ liệu thu thập được.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -6171,40 +6200,38 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 39: Bảng thống kê và '
-                 'biểu đồ tranh**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Đọc và lập được bảng thống kê từ '
-                           'dữ liệu thu thập được.',
-                           'Quy tắc/công thức **Số lượng của mỗi đối tượng** trong bài được xác định bởi: '
-                           '$\\text{Số lượng} = (\\text{Số biểu tượng}) \\cdot (\\text{Giá trị 1 biểu '
-                           'tượng})$.',
-                           'Trong mọi trường hợp, **Số lượng của mỗi đối tượng** luôn được tính bằng công '
-                           'thức $x \\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$) (thuộc Quan '
-                           'hệ phần tử – tập hợp) mà không cần điều kiện của Bài 39: Bảng thống kê và biểu '
-                           'đồ tranh.',
-                           'Với bài toán minh họa: “Trong biểu đồ tranh về số sách bán được, mỗi hình quyển '
-                           'sách ứng với $20$ quyển. Ngày Chủ nhật có $4$ hình quyển sách. Hỏi ngày Chủ nhật '
-                           'bán...”, lời giải đúng là: Số sách bán được trong ngày Chủ nhật là $4 \\cdot 20 '
-                           '= 80$ (quyển sách).'],
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 39: Bảng thống kê và biểu '
+                 'đồ tranh**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Đọc và lập được bảng thống kê từ dữ liệu '
+                           'thu thập được.',
+                           'Trong **Bài 39: Bảng thống kê và biểu đồ tranh**, quy tắc/công thức **Số lượng '
+                           'của mỗi đối tượng** được viết là: $\\text{Số lượng} = (\\text{Số biểu tượng}) '
+                           '\\cdot (\\text{Giá trị 1 biểu tượng})$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $\\text{Số lượng} = (\\text{Số biểu tượng}) '
+                           ': (\\text{Giá trị 1 biểu tượng})$ thì kết quả của **Số lượng của mỗi đối tượng** '
+                           'trong **Bài 39: Bảng thống kê và biểu đồ tranh** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Trong biểu đồ tranh về số sách bán được, mỗi hình quyển sách '
+                           'ứng với $20$ quyển. Ngày Chủ nhật có $4$ hình quyển sách. Hỏi ngày Chủ nhậ...”, '
+                           'kết quả giải đúng là: Số sách bán được trong ngày Chủ nhật là $4 \\cdot 20 = 80$ '
+                           '(quyển sách).'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 39: Bảng thống kê và biểu đồ tranh. b) '
-                        '**Đúng** theo công thức trọng tâm **Số lượng của mỗi đối tượng** ($\\text{Số lượng} '
-                        '= (\\text{Số biểu tượng}) \\cdot (\\text{Giá trị 1 biểu tượng})$). c) **Sai** vì $x '
-                        '\\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$) là công thức của nội '
-                        'dung khác, không phải quy tắc chung của **Số lượng của mỗi đối tượng**. d) **Đúng** '
+                        '**Đúng** theo công thức **Số lượng của mỗi đối tượng** ($\\text{Số lượng} = '
+                        '(\\text{Số biểu tượng}) \\cdot (\\text{Giá trị 1 biểu tượng})$). c) **Sai** vì công '
+                        'thức đúng của **Số lượng của mỗi đối tượng** phải là $\\text{Số lượng} = (\\text{Số '
+                        'biểu tượng}) \\cdot (\\text{Giá trị 1 biểu tượng})$ chứ không phải $\\text{Số '
+                        'lượng} = (\\text{Số biểu tượng}) : (\\text{Giá trị 1 biểu tượng})$. d) **Đúng** '
                         'theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 39: Bảng thống kê và biểu đồ tranh** để giải quyết tình huống '
-                 'sau: Trong biểu đồ tranh về số sách bán được, mỗi hình quyển sách ứng với $20$ quyển. Ngày '
-                 'Chủ nhật có $4$ hình quyển sách. Hỏi ngày Chủ nhật bán được bao nhiêu quyển sách? Kết quả '
-                 'và hướng giải nào dưới đây là **đúng**?',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 39: Bảng thống kê và biểu đồ tranh** để giải bài '
+                 'toán sau: Trong biểu đồ tranh về số sách bán được, mỗi hình quyển sách ứng với $20$ quyển. '
+                 'Ngày Chủ nhật có $4$ hình quyển sách. Hỏi ngày Chủ nhật bán được bao nhiêu quyển sách? '
+                 'Cách giải và kết quả nào dưới đây là **đúng**?',
             'options': ['Số sách bán được trong ngày Chủ nhật là $4 \\cdot 20 = 80$ (quyển sách).',
-                        'Ta có $M = \\{\\text{T}, \\text{O}, \\text{A}, \\text{N}, \\text{H}, \\text{C}\\}$ '
-                        '(chữ O xuất hiện $2$ lần nhưng chỉ viết $1$ lần). Tập hợp $M$ có $6$ phần tử.',
-                        'Số $27$ viết là $\\text{XXVII}$, số $19$ viết là $\\text{XIX}$. Ta có '
-                        '$\\overline{ab} = a \\times 10 + b$.',
-                        'Các số tự nhiên từ $4$ đến $8$ là $4; 5; 6; 7; 8$. Vậy $A = \\{4; 5; 6; 7; 8\\}$.'],
+                        'Số sách bán được trong ngày Chủ nhật là $4 : 20 = 80$ (quyển sách).',
+                        'Số sách bán được trong ngày Chủ nhật là $4 \\cdot 20 = 79$ (quyển sách).',
+                        'Số sách bán được trong ngày Chủ nhật là $8 \\cdot 20 = 80$ (quyển sách).'],
             'answer': 0,
             'solution': 'Lời giải chi tiết theo Bài 39: Bảng thống kê và biểu đồ tranh: Số sách bán được '
                         'trong ngày Chủ nhật là $4 \\cdot 20 = 80$ (quyển sách).'},
@@ -6230,8 +6257,8 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
                    'lệ).',
                    'Biết cách vẽ biểu đồ cột gồm trục ngang, trục đứng, các cột hình chữ nhật có cùng chiều '
                    'rộng và tiêu đề.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Tổng số liệu** ($N = x_1 + x_2 + \\dots + '
-                   'x_k$) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 40: Biểu đồ cột** để giải bài tập minh họa và bài toán thực '
+                   'tiễn.'],
   'definition': '- Trong **biểu đồ cột**, trục ngang thường ghi danh sách các đối tượng thống kê, trục đứng '
                 'ghi số liệu theo khoảng chia đều.\n'
                 '- Mỗi đối tượng được biểu diễn bởi một hình chữ nhật (cột) có cùng chiều rộng và có **chiều '
@@ -6240,7 +6267,7 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             '- Cột cao nhất ứng với đối tượng có số lượng lớn nhất; cột thấp nhất ứng với đối tượng có số '
             'lượng nhỏ nhất.\n'
             '- Tính tổng số lượng các nhóm và tỉ số của một nhóm so với tổng thể.',
-  'formulas': [{'category': 'I. Phân tích biểu đồ cột',
+  'formulas': [{'category': 'Phân tích biểu đồ cột',
                 'items': [{'name': 'Tổng số liệu', 'formula': '$N = x_1 + x_2 + \\dots + x_k$'},
                           {'name': 'Tỉ số của nhóm i so với tổng',
                            'formula': '$\\dfrac{x_i}{N}$ (hoặc $\\dfrac{x_i}{N} \\cdot 100\\%$)'}]}],
@@ -6270,28 +6297,26 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 40: Biểu đồ cột**, công thức hoặc quy tắc nào sau đây '
-                 'biểu diễn đúng **Tổng số liệu**?',
-            'options': ['$\\dfrac{x_i}{N}$ (hoặc $\\dfrac{x_i}{N} \\cdot 100\\%$)',
+            'q': 'Trong **Bài 40: Biểu đồ cột**, quy tắc hoặc công thức nào sau đây xác định đúng **Tổng số '
+                 'liệu**?',
+            'options': ['$N = x_1 - x_2 + \\dots + x_k$',
                         '$N = x_1 + x_2 + \\dots + x_k$',
-                        '$x \\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$)',
-                        'Liệt kê $A = \\{0; 1; 2; 3\\}$ hoặc đặc trưng $A = \\{x \\in \\mathbb{N} \\mid x < '
-                        '4\\}$'],
+                        'Đảo ngược vế của quy tắc: $N = x_1 + x_2 + \\dots + x_k$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $N = x_1 + x_2 + \\dots + x_k$'],
             'answer': 1,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 40: Biểu đồ cột, **Tổng số liệu** được xác '
-                        'định bởi: $N = x_1 + x_2 + \\dots + x_k$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 40: Biểu đồ cột, **Tổng số liệu** được xác định '
+                        'bởi: $N = x_1 + x_2 + \\dots + x_k$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 40: Biểu đồ cột**, nội dung/biểu thức $\\dfrac{x_i}{N}$ (hoặc $\\dfrac{x_i}{N} '
-                 '\\cdot 100\\%$) là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Tổng số liệu',
-                        'Quan hệ phần tử – tập hợp',
-                        'Tỉ số của nhóm i so với tổng',
-                        'Hai cách mô tả'],
+            'q': 'Khi học **Bài 40: Biểu đồ cột**, biểu thức hoặc quy tắc nào dưới đây biểu diễn đúng **Tỉ '
+                 'số của nhóm i so với tổng**?',
+            'options': ['$\\dfrac{x_i}{N}$ (hoặc $\\dfrac{x_i}{N} : 100\\%$)',
+                        '$\\dfrac{N}{x_i}$ (hoặc $\\dfrac{x_i}{N} \\cdot 100\\%$)',
+                        '$\\dfrac{x_i}{N}$ (hoặc $\\dfrac{x_i}{N} \\cdot 100\\%$)',
+                        '$\\dfrac{x_i}{N}$ (hoặc $\\dfrac{x_i}{N} \\cdot 102\\%$)'],
             'answer': 2,
-            'solution': 'Trong Bài 40: Biểu đồ cột, biểu thức/quy tắc $\\dfrac{x_i}{N}$ (hoặc '
-                        '$\\dfrac{x_i}{N} \\cdot 100\\%$) chính là nội dung của **Tỉ số của nhóm i so với '
-                        'tổng**.'},
+            'solution': 'Trong Bài 40: Biểu đồ cột, **Tỉ số của nhóm i so với tổng** có công thức/quy tắc '
+                        'là: $\\dfrac{x_i}{N}$ (hoặc $\\dfrac{x_i}{N} \\cdot 100\\%$).'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Theo số liệu $4$ đội bóng A ($8$ bàn), B ($12$ bàn), C ($5$ bàn), D ($10$ bàn), tổng số '
@@ -6303,19 +6328,18 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 40: Biểu đồ cột** (Chương IX: Dữ liệu và xác suất thực nghiệm), khẳng định '
-                 'nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
+            'q': 'Để nắm vững bản chất của **Bài 40: Biểu đồ cột**, nhận định nào sau đây là **chính xác**?',
             'options': ['Đọc và phân tích được số liệu từ biểu đồ cột (giá trị lớn nhất, nhỏ nhất, tổng, '
                         'hiệu, tỉ lệ).',
-                        'Sử dụng được thuật ngữ tập hợp, phần tử thuộc ($\\in$) hoặc không thuộc ($\\notin$) '
-                        'một tập hợp.',
-                        'Cho được một tập hợp bằng cách liệt kê các phần tử hoặc chỉ ra tính chất đặc trưng '
-                        'cho các phần tử.',
-                        'Phân biệt được tập hợp $\\mathbb{N}$ và $\\mathbb{N}^*$; xác định được giá trị từng '
-                        'chữ số của số tự nhiên trong hệ thập phân.'],
+                        'Đọc và phân tích được số liệu từ biểu đồ cột (giá trị lớn nhất, nhỏ nhất, tổng, '
+                        'hiệu, tỉ lệ). (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Đọc và phân tích được số liệu từ biểu đồ cột (giá trị lớn '
+                        'nhất, nhỏ nhất, tổng, hiệu, tỉ lệ).',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Đọc và phân tích được số liệu '
+                        'từ biểu đồ cột (giá trị lớn nhất, nhỏ nhất, tổng, hiệu, tỉ lệ).'],
             'answer': 0,
-            'solution': 'Theo yêu cầu cần đạt của Bài 40: Biểu đồ cột: Đọc và phân tích được số liệu từ biểu '
-                        'đồ cột (giá trị lớn nhất, nhỏ nhất, tổng, hiệu, tỉ lệ).'},
+            'solution': 'Theo nội dung cốt lõi của Bài 40: Biểu đồ cột: Đọc và phân tích được số liệu từ '
+                        'biểu đồ cột (giá trị lớn nhất, nhỏ nhất, tổng, hiệu, tỉ lệ).'},
            {'level': 'hieu',
             'type': 'tf4',
             'q': 'Biểu đồ cột cho biết số học sinh lớp 6A thích các môn: Toán $12$, Ngữ văn $8$, Tiếng Anh '
@@ -6331,36 +6355,33 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 40: Biểu đồ cột**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Đọc và phân tích được số liệu từ '
-                           'biểu đồ cột (giá trị lớn nhất, nhỏ nhất, tổng, hiệu, tỉ lệ).',
-                           'Quy tắc/công thức **Tổng số liệu** trong bài được xác định bởi: $N = x_1 + x_2 + '
-                           '\\dots + x_k$.',
-                           'Trong mọi trường hợp, **Tổng số liệu** luôn được tính bằng công thức $x \\in A$ '
-                           '($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$) (thuộc Quan hệ phần tử – '
-                           'tập hợp) mà không cần điều kiện của Bài 40: Biểu đồ cột.',
-                           'Với bài toán minh họa: “Biểu đồ cột cho biết số học sinh lớp 6A thích các môn: '
-                           'Toán $12$, Ngữ văn $8$, Tiếng Anh $10$, Tin học $15$ (mỗi bạn chọn $1$ môn). Hỏi '
-                           'lớp...”, lời giải đúng là: Tổng số học sinh tham gia khảo sát là $12 + 8 + 10 + '
-                           '15 = 45$ (học sinh).'],
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 40: Biểu đồ cột**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Đọc và phân tích được số liệu từ biểu đồ '
+                           'cột (giá trị lớn nhất, nhỏ nhất, tổng, hiệu, tỉ lệ).',
+                           'Trong **Bài 40: Biểu đồ cột**, quy tắc/công thức **Tổng số liệu** được viết là: '
+                           '$N = x_1 + x_2 + \\dots + x_k$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $N = x_1 - x_2 + \\dots + x_k$ thì kết quả '
+                           'của **Tổng số liệu** trong **Bài 40: Biểu đồ cột** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Biểu đồ cột cho biết số học sinh lớp 6A thích các môn: Toán '
+                           '$12$, Ngữ văn $8$, Tiếng Anh $10$, Tin học $15$ (mỗi bạn chọn $1$ môn). Hỏi...”, '
+                           'kết quả giải đúng là: Tổng số học sinh tham gia khảo sát là $12 + 8 + 10 + 15 = '
+                           '45$ (học sinh).'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 40: Biểu đồ cột. b) **Đúng** theo công '
-                        'thức trọng tâm **Tổng số liệu** ($N = x_1 + x_2 + \\dots + x_k$). c) **Sai** vì $x '
-                        '\\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$) là công thức của nội '
-                        'dung khác, không phải quy tắc chung của **Tổng số liệu**. d) **Đúng** theo lời giải '
-                        'ví dụ minh họa trong bài học.'},
+                        'thức **Tổng số liệu** ($N = x_1 + x_2 + \\dots + x_k$). c) **Sai** vì công thức '
+                        'đúng của **Tổng số liệu** phải là $N = x_1 + x_2 + \\dots + x_k$ chứ không phải $N '
+                        '= x_1 - x_2 + \\dots + x_k$. d) **Đúng** theo lời giải ví dụ minh họa trong bài '
+                        'học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 40: Biểu đồ cột** để giải quyết tình huống sau: Biểu đồ cột cho '
-                 'biết số học sinh lớp 6A thích các môn: Toán $12$, Ngữ văn $8$, Tiếng Anh $10$, Tin học '
-                 '$15$ (mỗi bạn chọn $1$ môn). Hỏi lớp 6A có bao nhiêu học sinh tham gia khảo sát? Kết quả '
-                 'và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Ta có $M = \\{\\text{T}, \\text{O}, \\text{A}, \\text{N}, \\text{H}, \\text{C}\\}$ '
-                        '(chữ O xuất hiện $2$ lần nhưng chỉ viết $1$ lần). Tập hợp $M$ có $6$ phần tử.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 40: Biểu đồ cột** để giải bài toán sau: Biểu đồ cột '
+                 'cho biết số học sinh lớp 6A thích các môn: Toán $12$, Ngữ văn $8$, Tiếng Anh $10$, Tin học '
+                 '$15$ (mỗi bạn chọn $1$ môn). Hỏi lớp 6A có bao nhiêu học sinh tham gia khảo sát? Cách giải '
+                 'và kết quả nào dưới đây là **đúng**?',
+            'options': ['Tổng số học sinh tham gia khảo sát là $12 - 8 + 10 + 15 = 45$ (học sinh).',
                         'Tổng số học sinh tham gia khảo sát là $12 + 8 + 10 + 15 = 45$ (học sinh).',
-                        'Số $27$ viết là $\\text{XXVII}$, số $19$ viết là $\\text{XIX}$. Ta có '
-                        '$\\overline{ab} = a \\times 10 + b$.',
-                        'Các số tự nhiên từ $4$ đến $8$ là $4; 5; 6; 7; 8$. Vậy $A = \\{4; 5; 6; 7; 8\\}$.'],
+                        'Tổng số học sinh tham gia khảo sát là $12 + 8 + 10 + 15 = 44$ (học sinh).',
+                        'Tổng số học sinh tham gia khảo sát là $24 + 8 + 10 + 15 = 45$ (học sinh).'],
             'answer': 1,
             'solution': 'Lời giải chi tiết theo Bài 40: Biểu đồ cột: Tổng số học sinh tham gia khảo sát là '
                         '$12 + 8 + 10 + 15 = 45$ (học sinh).'},
@@ -6385,8 +6406,8 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
   'requirements': ['Hiểu được mục đích sử dụng biểu đồ cột kép là để trực quan hóa việc so sánh hai bộ dữ '
                    'liệu cùng loại.',
                    'Đọc, so sánh và tính được tổng, hiệu giữa hai cột ghép liền nhau của mỗi đối tượng.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Tổng của đối tượng i** ($T_i = a_i + b_i$ '
-                   '($a_i, b_i$: số liệu hai cột thành phần)) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 41: Biểu đồ cột kép** để giải bài tập minh họa và bài toán '
+                   'thực tiễn.'],
   'definition': '- Để **so sánh hai bộ dữ liệu cùng loại** một cách trực quan, người ta ghép hai biểu đồ cột '
                 'thành một **biểu đồ cột kép**.\n'
                 '- Tại mỗi đối tượng trên trục ngang có **hai cột đặt sát cạnh nhau** với hai màu (hoặc kí '
@@ -6396,7 +6417,7 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'đó.\n'
             '- Độ chênh lệch chiều cao giữa hai cột ghép tại một đối tượng cho biết hiệu giữa hai bộ số liệu '
             'tại đối tượng đó.',
-  'formulas': [{'category': 'I. Phân tích tại mỗi đối tượng trên biểu đồ cột kép',
+  'formulas': [{'category': 'Phân tích tại mỗi đối tượng trên biểu đồ cột kép',
                 'items': [{'name': 'Tổng của đối tượng i',
                            'formula': '$T_i = a_i + b_i$ ($a_i, b_i$: số liệu hai cột thành phần)'},
                           {'name': 'Độ chênh lệch tại đối tượng i', 'formula': '$D_i = |a_i - b_i|$'}]}],
@@ -6430,27 +6451,28 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 41: Biểu đồ cột kép**, công thức hoặc quy tắc nào sau '
-                 'đây biểu diễn đúng **Tổng của đối tượng i**?',
-            'options': ['$D_i = |a_i - b_i|$',
-                        '$x \\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$)',
+            'q': 'Trong **Bài 41: Biểu đồ cột kép**, quy tắc hoặc công thức nào sau đây xác định đúng **Tổng '
+                 'của đối tượng i**?',
+            'options': ['$T_i = a_i - b_i$ ($a_i, b_i$: số liệu hai cột thành phần)',
+                        'Đảo ngược vế của quy tắc: $T_i = a_i + b_i$ ($a_i, b_i$: số liệu hai cột thành '
+                        'phần)',
                         '$T_i = a_i + b_i$ ($a_i, b_i$: số liệu hai cột thành phần)',
-                        'Liệt kê $A = \\{0; 1; 2; 3\\}$ hoặc đặc trưng $A = \\{x \\in \\mathbb{N} \\mid x < '
-                        '4\\}$'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $T_i = a_i + b_i$ ($a_i, b_i$: '
+                        'số liệu hai cột thành phần)'],
             'answer': 2,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 41: Biểu đồ cột kép, **Tổng của đối tượng i** '
-                        'được xác định bởi: $T_i = a_i + b_i$ ($a_i, b_i$: số liệu hai cột thành phần).'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 41: Biểu đồ cột kép, **Tổng của đối tượng i** được '
+                        'xác định bởi: $T_i = a_i + b_i$ ($a_i, b_i$: số liệu hai cột thành phần).'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 41: Biểu đồ cột kép**, nội dung/biểu thức $D_i = |a_i - b_i|$ là quy tắc hoặc '
-                 'công thức của mục nào sau đây?',
-            'options': ['Tổng của đối tượng i',
-                        'Quan hệ phần tử – tập hợp',
-                        'Hai cách mô tả',
-                        'Độ chênh lệch tại đối tượng i'],
+            'q': 'Khi học **Bài 41: Biểu đồ cột kép**, biểu thức hoặc quy tắc nào dưới đây biểu diễn đúng '
+                 '**Độ chênh lệch tại đối tượng i**?',
+            'options': ['$D_i = |a_i + b_i|$',
+                        'Đảo ngược vế của quy tắc: $D_i = |a_i - b_i|$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $D_i = |a_i - b_i|$',
+                        '$D_i = |a_i - b_i|$'],
             'answer': 3,
-            'solution': 'Trong Bài 41: Biểu đồ cột kép, biểu thức/quy tắc $D_i = |a_i - b_i|$ chính là nội '
-                        'dung của **Độ chênh lệch tại đối tượng i**.'},
+            'solution': 'Trong Bài 41: Biểu đồ cột kép, **Độ chênh lệch tại đối tượng i** có công thức/quy '
+                        'tắc là: $D_i = |a_i - b_i|$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Biểu đồ cột kép cho biết số huy chương của hai trường A và B: năm 2024 là $(12; 15)$, năm '
@@ -6462,18 +6484,18 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 41: Biểu đồ cột kép** (Chương IX: Dữ liệu và xác suất thực nghiệm), khẳng '
-                 'định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Sử dụng được thuật ngữ tập hợp, phần tử thuộc ($\\in$) hoặc không thuộc ($\\notin$) '
-                        'một tập hợp.',
+            'q': 'Để nắm vững bản chất của **Bài 41: Biểu đồ cột kép**, nhận định nào sau đây là **chính '
+                 'xác**?',
+            'options': ['Hiểu được mục đích sử dụng biểu đồ cột kép là để trực quan hóa việc so sánh hai bộ '
+                        'dữ liệu cùng loại. (với dấu ngược lại)',
                         'Hiểu được mục đích sử dụng biểu đồ cột kép là để trực quan hóa việc so sánh hai bộ '
                         'dữ liệu cùng loại.',
-                        'Cho được một tập hợp bằng cách liệt kê các phần tử hoặc chỉ ra tính chất đặc trưng '
-                        'cho các phần tử.',
-                        'Phân biệt được tập hợp $\\mathbb{N}$ và $\\mathbb{N}^*$; xác định được giá trị từng '
-                        'chữ số của số tự nhiên trong hệ thập phân.'],
+                        'Đảo ngược vế của quy tắc: Hiểu được mục đích sử dụng biểu đồ cột kép là để trực '
+                        'quan hóa việc so sánh hai bộ dữ liệu cùng loại.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Hiểu được mục đích sử dụng biểu '
+                        'đồ cột kép là để trực quan hóa việc so sánh hai bộ dữ liệu cùng loại.'],
             'answer': 1,
-            'solution': 'Theo yêu cầu cần đạt của Bài 41: Biểu đồ cột kép: Hiểu được mục đích sử dụng biểu '
+            'solution': 'Theo nội dung cốt lõi của Bài 41: Biểu đồ cột kép: Hiểu được mục đích sử dụng biểu '
                         'đồ cột kép là để trực quan hóa việc so sánh hai bộ dữ liệu cùng loại.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -6490,37 +6512,39 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 41: Biểu đồ cột kép**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Hiểu được mục đích sử dụng biểu đồ '
-                           'cột kép là để trực quan hóa việc so sánh hai bộ dữ liệu cùng loại.',
-                           'Quy tắc/công thức **Tổng của đối tượng i** trong bài được xác định bởi: $T_i = '
-                           'a_i + b_i$ ($a_i, b_i$: số liệu hai cột thành phần).',
-                           'Trong mọi trường hợp, **Tổng của đối tượng i** luôn được tính bằng công thức $x '
-                           '\\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$) (thuộc Quan hệ phần '
-                           'tử – tập hợp) mà không cần điều kiện của Bài 41: Biểu đồ cột kép.',
-                           'Với bài toán minh họa: “Biểu đồ cột kép thống kê số học sinh nam và nữ của lớp '
-                           '6A là $(18\\text{ nam}, 22\\text{ nữ})$ và lớp 6B là $(20\\text{ nam}, 19\\text{ '
-                           'nữ})$. L...”, lời giải đúng là: Sĩ số lớp 6A là $18 + 22 = 40$ (em); sĩ số lớp '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 41: Biểu đồ cột kép**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Hiểu được mục đích sử dụng biểu đồ cột '
+                           'kép là để trực quan hóa việc so sánh hai bộ dữ liệu cùng loại.',
+                           'Trong **Bài 41: Biểu đồ cột kép**, quy tắc/công thức **Tổng của đối tượng i** '
+                           'được viết là: $T_i = a_i + b_i$ ($a_i, b_i$: số liệu hai cột thành phần).',
+                           'Nếu áp dụng sai dấu/phép tính thành $T_i = a_i - b_i$ ($a_i, b_i$: số liệu hai '
+                           'cột thành phần) thì kết quả của **Tổng của đối tượng i** trong **Bài 41: Biểu đồ '
+                           'cột kép** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Biểu đồ cột kép thống kê số học sinh nam và nữ của lớp 6A là '
+                           '$(18\\text{ nam}, 22\\text{ nữ})$ và lớp 6B là $(20\\text{ nam}, 19\\text{ '
+                           'nữ})$...”, kết quả giải đúng là: Sĩ số lớp 6A là $18 + 22 = 40$ (em); sĩ số lớp '
                            '6B là $20 + 19 = 39$ (em). Vậy lớp 6A đông hơn.'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 41: Biểu đồ cột kép. b) **Đúng** theo công '
-                        'thức trọng tâm **Tổng của đối tượng i** ($T_i = a_i + b_i$ ($a_i, b_i$: số liệu hai '
-                        'cột thành phần)). c) **Sai** vì $x \\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ '
-                        'không thuộc $A$) là công thức của nội dung khác, không phải quy tắc chung của '
-                        '**Tổng của đối tượng i**. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        'thức **Tổng của đối tượng i** ($T_i = a_i + b_i$ ($a_i, b_i$: số liệu hai cột thành '
+                        'phần)). c) **Sai** vì công thức đúng của **Tổng của đối tượng i** phải là $T_i = '
+                        'a_i + b_i$ ($a_i, b_i$: số liệu hai cột thành phần) chứ không phải $T_i = a_i - '
+                        'b_i$ ($a_i, b_i$: số liệu hai cột thành phần). d) **Đúng** theo lời giải ví dụ minh '
+                        'họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 41: Biểu đồ cột kép** để giải quyết tình huống sau: Biểu đồ cột '
-                 'kép thống kê số học sinh nam và nữ của lớp 6A là $(18\\text{ nam}, 22\\text{ nữ})$ và lớp '
-                 '6B là $(20\\text{ nam}, 19\\text{ nữ})$. Lớp nào có tổng số học sinh đông hơn? Kết quả và '
-                 'hướng giải nào dưới đây là **đúng**?',
-            'options': ['Ta có $M = \\{\\text{T}, \\text{O}, \\text{A}, \\text{N}, \\text{H}, \\text{C}\\}$ '
-                        '(chữ O xuất hiện $2$ lần nhưng chỉ viết $1$ lần). Tập hợp $M$ có $6$ phần tử.',
-                        'Số $27$ viết là $\\text{XXVII}$, số $19$ viết là $\\text{XIX}$. Ta có '
-                        '$\\overline{ab} = a \\times 10 + b$.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 41: Biểu đồ cột kép** để giải bài toán sau: Biểu đồ '
+                 'cột kép thống kê số học sinh nam và nữ của lớp 6A là $(18\\text{ nam}, 22\\text{ nữ})$ và '
+                 'lớp 6B là $(20\\text{ nam}, 19\\text{ nữ})$. Lớp nào có tổng số học sinh đông hơn? Cách '
+                 'giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Sĩ số lớp 6A là $18 - 22 = 40$ (em); sĩ số lớp 6B là $20 + 19 = 39$ (em). Vậy lớp '
+                        '6A đông hơn.',
+                        'Sĩ số lớp 6A là $18 + 22 = 40$ (em); sĩ số lớp 6B là $20 + 19 = 38$ (em). Vậy lớp '
+                        '6A đông hơn.',
                         'Sĩ số lớp 6A là $18 + 22 = 40$ (em); sĩ số lớp 6B là $20 + 19 = 39$ (em). Vậy lớp '
                         '6A đông hơn.',
-                        'Các số tự nhiên từ $4$ đến $8$ là $4; 5; 6; 7; 8$. Vậy $A = \\{4; 5; 6; 7; 8\\}$.'],
+                        'Sĩ số lớp 6A là $36 + 22 = 40$ (em); sĩ số lớp 6B là $20 + 19 = 39$ (em). Vậy lớp '
+                        '6A đông hơn.'],
             'answer': 2,
             'solution': 'Lời giải chi tiết theo Bài 41: Biểu đồ cột kép: Sĩ số lớp 6A là $18 + 22 = 40$ '
                         '(em); sĩ số lớp 6B là $20 + 19 = 39$ (em). Vậy lớp 6A đông hơn.'},
@@ -6547,8 +6571,8 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
                    '(tung đồng xu, gieo xúc xắc, rút thẻ).',
                    'Xác định được một sự kiện có xảy ra hay không và liệt kê các kết quả thuận lợi cho sự '
                    'kiện đó.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Tung 1 đồng xu** (Tập hợp kết quả '
-                   '$\\{\\text{S}, \\text{N}\\}$ ($2$ kết quả)) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 42: Kết quả có thể và sự kiện trong trò chơi, thí nghiệm** '
+                   'để giải bài tập minh họa và bài toán thực tiễn.'],
   'definition': '- Khi thực hiện một trò chơi hay thí nghiệm, các kết quả có thể xảy ra được gọi là **kết '
                 'quả có thể**.\n'
                 '- Một **sự kiện** trong trò chơi, thí nghiệm có thể xảy ra hoặc không xảy ra tuỳ thuộc vào '
@@ -6561,7 +6585,7 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             '### 2. Các kết quả làm cho sự kiện xảy ra (kết quả thuận lợi)\n'
             '- Ví dụ: khi gieo xúc xắc, sự kiện “Số chấm xuất hiện là số nguyên tố” xảy ra khi kết quả là '
             '$2; 3$ hoặc $5$ chấm.',
-  'formulas': [{'category': 'I. Không gian kết quả cơ bản',
+  'formulas': [{'category': 'Không gian kết quả cơ bản',
                 'items': [{'name': 'Tung 1 đồng xu',
                            'formula': 'Tập hợp kết quả $\\{\\text{S}, \\text{N}\\}$ ($2$ kết quả)'},
                           {'name': 'Gieo 1 con xúc xắc',
@@ -6595,30 +6619,28 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 42: Kết quả có thể và sự kiện trong trò chơi, thí '
-                 'nghiệm**, công thức hoặc quy tắc nào sau đây biểu diễn đúng **Tung 1 đồng xu**?',
-            'options': ['Tập hợp kết quả $\\{1; 2; 3; 4; 5; 6\\}$ ($6$ kết quả)',
-                        '$x \\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$)',
-                        'Liệt kê $A = \\{0; 1; 2; 3\\}$ hoặc đặc trưng $A = \\{x \\in \\mathbb{N} \\mid x < '
-                        '4\\}$',
+            'q': 'Trong **Bài 42: Kết quả có thể và sự kiện trong trò chơi, thí nghiệm**, quy tắc hoặc công '
+                 'thức nào sau đây xác định đúng **Tung 1 đồng xu**?',
+            'options': ['Tập hợp kết quả $\\{\\text{S}, \\text{N}\\}$ ($3$ kết quả)',
+                        'Tập hợp kết quả $\\{\\text{S}, \\text{N}\\}$ ($1$ kết quả)',
+                        'Tập hợp kết quả $\\{\\text{S}, \\text{N}\\}$ ($4$ kết quả)',
                         'Tập hợp kết quả $\\{\\text{S}, \\text{N}\\}$ ($2$ kết quả)'],
             'answer': 3,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 42: Kết quả có thể và sự kiện trong trò chơi, '
-                        'thí nghiệm, **Tung 1 đồng xu** được xác định bởi: Tập hợp kết quả $\\{\\text{S}, '
+            'solution': 'Theo kiến thức trọng tâm của Bài 42: Kết quả có thể và sự kiện trong trò chơi, thí '
+                        'nghiệm, **Tung 1 đồng xu** được xác định bởi: Tập hợp kết quả $\\{\\text{S}, '
                         '\\text{N}\\}$ ($2$ kết quả).'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 42: Kết quả có thể và sự kiện trong trò chơi, thí nghiệm**, nội dung/biểu thức '
-                 'Tập hợp kết quả $\\{1; 2; 3; 4; 5; 6\\}$ ($6$ kết quả) là quy tắc hoặc công thức của mục '
-                 'nào sau đây?',
-            'options': ['Gieo 1 con xúc xắc',
-                        'Tung 1 đồng xu',
-                        'Quan hệ phần tử – tập hợp',
-                        'Hai cách mô tả'],
+            'q': 'Khi học **Bài 42: Kết quả có thể và sự kiện trong trò chơi, thí nghiệm**, biểu thức hoặc '
+                 'quy tắc nào dưới đây biểu diễn đúng **Gieo 1 con xúc xắc**?',
+            'options': ['Tập hợp kết quả $\\{1; 2; 3; 4; 5; 6\\}$ ($6$ kết quả)',
+                        'Tập hợp kết quả $\\{2; 2; 3; 4; 5; 6\\}$ ($6$ kết quả)',
+                        'Tập hợp kết quả $\\{1; 2; 3; 4; 5; 6\\}$ ($5$ kết quả)',
+                        'Tập hợp kết quả $\\{\\text{S}, \\text{N}\\}$ ($2$ kết quả)'],
             'answer': 0,
-            'solution': 'Trong Bài 42: Kết quả có thể và sự kiện trong trò chơi, thí nghiệm, biểu thức/quy '
-                        'tắc Tập hợp kết quả $\\{1; 2; 3; 4; 5; 6\\}$ ($6$ kết quả) chính là nội dung của '
-                        '**Gieo 1 con xúc xắc**.'},
+            'solution': 'Trong Bài 42: Kết quả có thể và sự kiện trong trò chơi, thí nghiệm, **Gieo 1 con '
+                        'xúc xắc** có công thức/quy tắc là: Tập hợp kết quả $\\{1; 2; 3; 4; 5; 6\\}$ ($6$ '
+                        'kết quả).'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Trong hộp có $1$ quả bóng xanh, $1$ quả bóng đỏ và $1$ quả bóng vàng. Lấy ngẫu nhiên đồng '
@@ -6631,19 +6653,19 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 42: Kết quả có thể và sự kiện trong trò chơi, thí nghiệm** (Chương IX: Dữ '
-                 'liệu và xác suất thực nghiệm), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và '
-                 'bản chất kiến thức của bài?',
-            'options': ['Sử dụng được thuật ngữ tập hợp, phần tử thuộc ($\\in$) hoặc không thuộc ($\\notin$) '
-                        'một tập hợp.',
-                        'Cho được một tập hợp bằng cách liệt kê các phần tử hoặc chỉ ra tính chất đặc trưng '
-                        'cho các phần tử.',
+            'q': 'Để nắm vững bản chất của **Bài 42: Kết quả có thể và sự kiện trong trò chơi, thí nghiệm**, '
+                 'nhận định nào sau đây là **chính xác**?',
+            'options': ['Liệt kê được tập hợp tất cả các kết quả có thể trong các trò chơi, thí nghiệm đơn '
+                        'giản (tung đồng xu, gieo xúc xắc, rút thẻ). (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Liệt kê được tập hợp tất cả các kết quả có thể trong các '
+                        'trò chơi, thí nghiệm đơn giản (tung đồng xu, gieo xúc xắc, rút thẻ).',
                         'Liệt kê được tập hợp tất cả các kết quả có thể trong các trò chơi, thí nghiệm đơn '
                         'giản (tung đồng xu, gieo xúc xắc, rút thẻ).',
-                        'Phân biệt được tập hợp $\\mathbb{N}$ và $\\mathbb{N}^*$; xác định được giá trị từng '
-                        'chữ số của số tự nhiên trong hệ thập phân.'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Liệt kê được tập hợp tất cả các '
+                        'kết quả có thể trong các trò chơi, thí nghiệm đơn giản (tung đồng xu, gieo xúc xắc, '
+                        'rút thẻ).'],
             'answer': 2,
-            'solution': 'Theo yêu cầu cần đạt của Bài 42: Kết quả có thể và sự kiện trong trò chơi, thí '
+            'solution': 'Theo nội dung cốt lõi của Bài 42: Kết quả có thể và sự kiện trong trò chơi, thí '
                         'nghiệm: Liệt kê được tập hợp tất cả các kết quả có thể trong các trò chơi, thí '
                         'nghiệm đơn giản (tung đồng xu, gieo xúc xắc, rút thẻ).'},
            {'level': 'hieu',
@@ -6660,39 +6682,39 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 42: Kết quả có thể và '
-                 'sự kiện trong trò chơi, thí nghiệm**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Liệt kê được tập hợp tất cả các '
-                           'kết quả có thể trong các trò chơi, thí nghiệm đơn giản (tung đồng xu, gieo xúc '
-                           'xắc, rút thẻ).',
-                           'Quy tắc/công thức **Tung 1 đồng xu** trong bài được xác định bởi: Tập hợp kết '
-                           'quả $\\{\\text{S}, \\text{N}\\}$ ($2$ kết quả).',
-                           'Trong mọi trường hợp, **Tung 1 đồng xu** luôn được tính bằng công thức $x \\in '
-                           'A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$) (thuộc Quan hệ phần tử – '
-                           'tập hợp) mà không cần điều kiện của Bài 42: Kết quả có thể và sự kiện trong trò '
-                           'chơi, thí nghiệm.',
-                           'Với bài toán minh họa: “Một hộp có $10$ chiếc thẻ ghi các số từ $1$ đến $10$. '
-                           'Rút ngẫu nhiên $1$ thẻ. Liệt kê các kết quả làm cho sự kiện “Số trên thẻ là bội '
-                           'của $3$...”, lời giải đúng là: Các số từ $1$ đến $10$ là bội của $3$ gồm $3; 6; '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 42: Kết quả có thể và sự '
+                 'kiện trong trò chơi, thí nghiệm**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Liệt kê được tập hợp tất cả các kết quả '
+                           'có thể trong các trò chơi, thí nghiệm đơn giản (tung đồng xu, gieo xúc xắc, rút '
+                           'thẻ).',
+                           'Trong **Bài 42: Kết quả có thể và sự kiện trong trò chơi, thí nghiệm**, quy '
+                           'tắc/công thức **Tung 1 đồng xu** được viết là: Tập hợp kết quả $\\{\\text{S}, '
+                           '\\text{N}\\}$ ($2$ kết quả).',
+                           'Nếu áp dụng sai dấu/phép tính thành Tập hợp kết quả $\\{\\text{S}, \\text{N}\\}$ '
+                           '($3$ kết quả) thì kết quả của **Tung 1 đồng xu** trong **Bài 42: Kết quả có thể '
+                           'và sự kiện trong trò chơi, thí nghiệm** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Một hộp có $10$ chiếc thẻ ghi các số từ $1$ đến $10$. Rút '
+                           'ngẫu nhiên $1$ thẻ. Liệt kê các kết quả làm cho sự kiện “Số trên thẻ là bội '
+                           'c...”, kết quả giải đúng là: Các số từ $1$ đến $10$ là bội của $3$ gồm $3; 6; '
                            '9$. Vậy có $3$ kết quả thuận lợi là rút được thẻ ghi số $3; 6$ hoặc $9$.'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 42: Kết quả có thể và sự kiện trong trò '
-                        'chơi, thí nghiệm. b) **Đúng** theo công thức trọng tâm **Tung 1 đồng xu** (Tập hợp '
-                        'kết quả $\\{\\text{S}, \\text{N}\\}$ ($2$ kết quả)). c) **Sai** vì $x \\in A$ ($x$ '
-                        'thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$) là công thức của nội dung khác, '
-                        'không phải quy tắc chung của **Tung 1 đồng xu**. d) **Đúng** theo lời giải ví dụ '
-                        'minh họa trong bài học.'},
+                        'chơi, thí nghiệm. b) **Đúng** theo công thức **Tung 1 đồng xu** (Tập hợp kết quả '
+                        '$\\{\\text{S}, \\text{N}\\}$ ($2$ kết quả)). c) **Sai** vì công thức đúng của '
+                        '**Tung 1 đồng xu** phải là Tập hợp kết quả $\\{\\text{S}, \\text{N}\\}$ ($2$ kết '
+                        'quả) chứ không phải Tập hợp kết quả $\\{\\text{S}, \\text{N}\\}$ ($3$ kết quả). d) '
+                        '**Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 42: Kết quả có thể và sự kiện trong trò chơi, thí nghiệm** để '
-                 'giải quyết tình huống sau: Một hộp có $10$ chiếc thẻ ghi các số từ $1$ đến $10$. Rút ngẫu '
-                 'nhiên $1$ thẻ. Liệt kê các kết quả làm cho sự kiện “Số trên thẻ là bội của $3$” xảy ra. '
-                 'Kết quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Ta có $M = \\{\\text{T}, \\text{O}, \\text{A}, \\text{N}, \\text{H}, \\text{C}\\}$ '
-                        '(chữ O xuất hiện $2$ lần nhưng chỉ viết $1$ lần). Tập hợp $M$ có $6$ phần tử.',
-                        'Số $27$ viết là $\\text{XXVII}$, số $19$ viết là $\\text{XIX}$. Ta có '
-                        '$\\overline{ab} = a \\times 10 + b$.',
-                        'Các số tự nhiên từ $4$ đến $8$ là $4; 5; 6; 7; 8$. Vậy $A = \\{4; 5; 6; 7; 8\\}$.',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 42: Kết quả có thể và sự kiện trong trò chơi, thí '
+                 'nghiệm** để giải bài toán sau: Một hộp có $10$ chiếc thẻ ghi các số từ $1$ đến $10$. Rút '
+                 'ngẫu nhiên $1$ thẻ. Liệt kê các kết quả làm cho sự kiện “Số trên thẻ là bội của $3$” xảy '
+                 'ra. Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Các số từ $2$ đến $10$ là bội của $3$ gồm $3; 6; 9$. Vậy có $3$ kết quả thuận lợi '
+                        'là rút được thẻ ghi số $3; 6$ hoặc $9$.',
+                        'Các số từ $1$ đến $10$ là bội của $3$ gồm $3; 6; 9$. Vậy có $3$ kết quả thuận lợi '
+                        'là rút được thẻ ghi số $3; 6$ hoặc $8$.',
+                        'Trường hợp sai quy tắc (sai lệch 1 đơn vị so với công thức trong bài)',
                         'Các số từ $1$ đến $10$ là bội của $3$ gồm $3; 6; 9$. Vậy có $3$ kết quả thuận lợi '
                         'là rút được thẻ ghi số $3; 6$ hoặc $9$.'],
             'answer': 3,
@@ -6722,8 +6744,8 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
                    'nghiệm $n$ lần.',
                    'Tính được xác suất thực nghiệm của sự kiện đối lập (“không xảy ra $A$”) và đổi sang tỉ '
                    'số phần trăm.',
-                   'Ghi nhớ và vận dụng đúng quy tắc/công thức **Xác suất thực nghiệm của sự kiện A** ($P(A) '
-                   '= \\dfrac{k}{n}$ ($k$: số lần $A$ xảy ra; $n$: tổng số lần thử)) vào giải bài tập.'],
+                   'Vận dụng kiến thức của **Bài 43: Xác suất thực nghiệm** để giải bài tập minh họa và bài '
+                   'toán thực tiễn.'],
   'definition': '- Giả sử trong $n$ lần thực hiện liên tiếp một trò chơi hay thí nghiệm, sự kiện $A$ xảy ra '
                 '$k$ lần. Khi đó tỉ số $\\dfrac{k}{n}$ được gọi là **xác suất thực nghiệm** của sự kiện $A$ '
                 'trong $n$ lần thử đã thực hiện.',
@@ -6734,7 +6756,7 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             '### 2. Sự kiện không xảy ra $A$\n'
             '- Số lần sự kiện $A$ không xảy ra là $n - k$, do đó xác suất thực nghiệm để $A$ không xảy ra là '
             '$\\dfrac{n - k}{n} = 1 - \\dfrac{k}{n}$.',
-  'formulas': [{'category': 'I. Xác suất thực nghiệm',
+  'formulas': [{'category': 'Xác suất thực nghiệm',
                 'items': [{'name': 'Xác suất thực nghiệm của sự kiện A',
                            'formula': '$P(A) = \\dfrac{k}{n}$ ($k$: số lần $A$ xảy ra; $n$: tổng số lần '
                                       'thử)'},
@@ -6767,28 +6789,29 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 43: Xác suất thực nghiệm**, công thức hoặc quy tắc nào '
-                 'sau đây biểu diễn đúng **Xác suất thực nghiệm của sự kiện A**?',
+            'q': 'Trong **Bài 43: Xác suất thực nghiệm**, quy tắc hoặc công thức nào sau đây xác định đúng '
+                 '**Xác suất thực nghiệm của sự kiện A**?',
             'options': ['$P(A) = \\dfrac{k}{n}$ ($k$: số lần $A$ xảy ra; $n$: tổng số lần thử)',
-                        '$\\dfrac{n - k}{n} = 1 - \\dfrac{k}{n}$',
-                        '$x \\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$)',
-                        'Liệt kê $A = \\{0; 1; 2; 3\\}$ hoặc đặc trưng $A = \\{x \\in \\mathbb{N} \\mid x < '
-                        '4\\}$'],
+                        '$P(A) = \\dfrac{k}{n}$ ($k$: số lần $A$ xảy ra; $n$: tổng số lần thử) (với dấu '
+                        'ngược lại)',
+                        '$P(A) = \\dfrac{n}{k}$ ($k$: số lần $A$ xảy ra; $n$: tổng số lần thử)',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $P(A) = \\dfrac{k}{n}$ ($k$: số '
+                        'lần $A$ xảy ra; $n$: tổng số lần thử)'],
             'answer': 0,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 43: Xác suất thực nghiệm, **Xác suất thực '
-                        'nghiệm của sự kiện A** được xác định bởi: $P(A) = \\dfrac{k}{n}$ ($k$: số lần $A$ '
-                        'xảy ra; $n$: tổng số lần thử).'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 43: Xác suất thực nghiệm, **Xác suất thực nghiệm '
+                        'của sự kiện A** được xác định bởi: $P(A) = \\dfrac{k}{n}$ ($k$: số lần $A$ xảy ra; '
+                        '$n$: tổng số lần thử).'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 43: Xác suất thực nghiệm**, nội dung/biểu thức $\\dfrac{n - k}{n} = 1 - '
-                 '\\dfrac{k}{n}$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Xác suất thực nghiệm của sự kiện A',
-                        'Sự kiện không xảy ra A',
-                        'Quan hệ phần tử – tập hợp',
-                        'Hai cách mô tả'],
+            'q': 'Khi học **Bài 43: Xác suất thực nghiệm**, biểu thức hoặc quy tắc nào dưới đây biểu diễn '
+                 'đúng **Sự kiện không xảy ra A**?',
+            'options': ['$\\dfrac{n + k}{n} = 1 - \\dfrac{k}{n}$',
+                        '$\\dfrac{n - k}{n} = 1 - \\dfrac{k}{n}$',
+                        '$\\dfrac{n}{n - k} = 1 - \\dfrac{k}{n}$',
+                        '$\\dfrac{n - k}{n} = 2 - \\dfrac{k}{n}$'],
             'answer': 1,
-            'solution': 'Trong Bài 43: Xác suất thực nghiệm, biểu thức/quy tắc $\\dfrac{n - k}{n} = 1 - '
-                        '\\dfrac{k}{n}$ chính là nội dung của **Sự kiện không xảy ra A**.'},
+            'solution': 'Trong Bài 43: Xác suất thực nghiệm, **Sự kiện không xảy ra A** có công thức/quy tắc '
+                        'là: $\\dfrac{n - k}{n} = 1 - \\dfrac{k}{n}$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Gieo một con xúc xắc $50$ lần, thấy mặt có số chấm chẵn xuất hiện $26$ lần. Xác suất thực '
@@ -6801,18 +6824,18 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 43: Xác suất thực nghiệm** (Chương IX: Dữ liệu và xác suất thực nghiệm), '
-                 'khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Sử dụng được thuật ngữ tập hợp, phần tử thuộc ($\\in$) hoặc không thuộc ($\\notin$) '
-                        'một tập hợp.',
-                        'Cho được một tập hợp bằng cách liệt kê các phần tử hoặc chỉ ra tính chất đặc trưng '
-                        'cho các phần tử.',
-                        'Phân biệt được tập hợp $\\mathbb{N}$ và $\\mathbb{N}^*$; xác định được giá trị từng '
-                        'chữ số của số tự nhiên trong hệ thập phân.',
+            'q': 'Để nắm vững bản chất của **Bài 43: Xác suất thực nghiệm**, nhận định nào sau đây là '
+                 '**chính xác**?',
+            'options': ['Tính được xác suất thực nghiệm $\\dfrac{k}{n}$ của một sự kiện $A$ khi thực hiện '
+                        'thí nghiệm $n$ lần. (với dấu ngược lại)',
+                        'Tính được xác suất thực nghiệm $\\dfrac{n}{k}$ của một sự kiện $A$ khi thực hiện '
+                        'thí nghiệm $n$ lần.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Tính được xác suất thực nghiệm '
+                        '$\\dfrac{k}{n}$ của một sự kiện $A$ khi thực hiện thí nghiệm $n$ lần.',
                         'Tính được xác suất thực nghiệm $\\dfrac{k}{n}$ của một sự kiện $A$ khi thực hiện '
                         'thí nghiệm $n$ lần.'],
             'answer': 3,
-            'solution': 'Theo yêu cầu cần đạt của Bài 43: Xác suất thực nghiệm: Tính được xác suất thực '
+            'solution': 'Theo nội dung cốt lõi của Bài 43: Xác suất thực nghiệm: Tính được xác suất thực '
                         'nghiệm $\\dfrac{k}{n}$ của một sự kiện $A$ khi thực hiện thí nghiệm $n$ lần.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -6829,41 +6852,45 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 43: Xác suất thực '
-                 'nghiệm**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Tính được xác suất thực nghiệm '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 43: Xác suất thực nghiệm**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Tính được xác suất thực nghiệm '
                            '$\\dfrac{k}{n}$ của một sự kiện $A$ khi thực hiện thí nghiệm $n$ lần.',
-                           'Quy tắc/công thức **Xác suất thực nghiệm của sự kiện A** trong bài được xác định '
-                           'bởi: $P(A) = \\dfrac{k}{n}$ ($k$: số lần $A$ xảy ra; $n$: tổng số lần thử).',
-                           'Trong mọi trường hợp, **Xác suất thực nghiệm của sự kiện A** luôn được tính bằng '
-                           'công thức $x \\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$) (thuộc '
-                           'Quan hệ phần tử – tập hợp) mà không cần điều kiện của Bài 43: Xác suất thực '
-                           'nghiệm.',
-                           'Với bài toán minh họa: “Bình tung một đồng xu $40$ lần và thấy có $18$ lần xuất '
-                           'hiện mặt ngửa. Tính xác suất thực nghiệm xuất hiện mặt ngửa và mặt sấp.”, lời '
+                           'Trong **Bài 43: Xác suất thực nghiệm**, quy tắc/công thức **Xác suất thực nghiệm '
+                           'của sự kiện A** được viết là: $P(A) = \\dfrac{k}{n}$ ($k$: số lần $A$ xảy ra; '
+                           '$n$: tổng số lần thử).',
+                           'Nếu áp dụng sai dấu/phép tính thành $P(A) = \\dfrac{k}{n}$ ($k$: số lần $A$ xảy '
+                           'ra; $n$: tổng số lần thử) (với dấu ngược lại) thì kết quả của **Xác suất thực '
+                           'nghiệm của sự kiện A** trong **Bài 43: Xác suất thực nghiệm** vẫn không thay '
+                           'đổi.',
+                           'Xét ví dụ của bài: “Bình tung một đồng xu $40$ lần và thấy có $18$ lần xuất hiện '
+                           'mặt ngửa. Tính xác suất thực nghiệm xuất hiện mặt ngửa và mặt sấp.”, kết quả '
                            'giải đúng là: Xác suất thực nghiệm xuất hiện mặt ngửa là $\\dfrac{18}{40} = '
-                           '\\dfrac{9}{20} = 45\\%$. Mặt sấp xuất hiện $40 - 18 = 22$ lần nên xác suất thực '
-                           'n...'],
+                           '\\dfrac{9}{20} = 45\\%$. Mặt sấp xuất hiện $40 - 18 = 22$ lần nên xác suất t...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 43: Xác suất thực nghiệm. b) **Đúng** theo '
-                        'công thức trọng tâm **Xác suất thực nghiệm của sự kiện A** ($P(A) = \\dfrac{k}{n}$ '
-                        '($k$: số lần $A$ xảy ra; $n$: tổng số lần thử)). c) **Sai** vì $x \\in A$ ($x$ '
-                        'thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$) là công thức của nội dung khác, '
-                        'không phải quy tắc chung của **Xác suất thực nghiệm của sự kiện A**. d) **Đúng** '
-                        'theo lời giải ví dụ minh họa trong bài học.'},
+                        'công thức **Xác suất thực nghiệm của sự kiện A** ($P(A) = \\dfrac{k}{n}$ ($k$: số '
+                        'lần $A$ xảy ra; $n$: tổng số lần thử)). c) **Sai** vì công thức đúng của **Xác suất '
+                        'thực nghiệm của sự kiện A** phải là $P(A) = \\dfrac{k}{n}$ ($k$: số lần $A$ xảy ra; '
+                        '$n$: tổng số lần thử) chứ không phải $P(A) = \\dfrac{k}{n}$ ($k$: số lần $A$ xảy '
+                        'ra; $n$: tổng số lần thử) (với dấu ngược lại). d) **Đúng** theo lời giải ví dụ minh '
+                        'họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 43: Xác suất thực nghiệm** để giải quyết tình huống sau: Bình '
-                 'tung một đồng xu $40$ lần và thấy có $18$ lần xuất hiện mặt ngửa. Tính xác suất thực '
-                 'nghiệm xuất hiện mặt ngửa và mặt sấp. Kết quả và hướng giải nào dưới đây là **đúng**?',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 43: Xác suất thực nghiệm** để giải bài toán sau: '
+                 'Bình tung một đồng xu $40$ lần và thấy có $18$ lần xuất hiện mặt ngửa. Tính xác suất thực '
+                 'nghiệm xuất hiện mặt ngửa và mặt sấp. Cách giải và kết quả nào dưới đây là **đúng**?',
             'options': ['Xác suất thực nghiệm xuất hiện mặt ngửa là $\\dfrac{18}{40} = \\dfrac{9}{20} = '
                         '45\\%$. Mặt sấp xuất hiện $40 - 18 = 22$ lần nên xác suất thực nghiệm là '
                         '$\\dfrac{22}{40} = \\dfrac{11}{20} = 55\\%$...',
-                        'Ta có $M = \\{\\text{T}, \\text{O}, \\text{A}, \\text{N}, \\text{H}, \\text{C}\\}$ '
-                        '(chữ O xuất hiện $2$ lần nhưng chỉ viết $1$ lần). Tập hợp $M$ có $6$ phần tử.',
-                        'Số $27$ viết là $\\text{XXVII}$, số $19$ viết là $\\text{XIX}$. Ta có '
-                        '$\\overline{ab} = a \\times 10 + b$.',
-                        'Các số tự nhiên từ $4$ đến $8$ là $4; 5; 6; 7; 8$. Vậy $A = \\{4; 5; 6; 7; 8\\}$.'],
+                        'Xác suất thực nghiệm xuất hiện mặt ngửa là $\\dfrac{18}{40} = \\dfrac{9}{20} = '
+                        '45\\%$. Mặt sấp xuất hiện $40 + 18 = 22$ lần nên xác suất thực nghiệm là '
+                        '$\\dfrac{22}{40} = \\dfrac{11}{20} = 55\\%$...',
+                        'Xác suất thực nghiệm xuất hiện mặt ngửa là $\\dfrac{40}{18} = \\dfrac{9}{20} = '
+                        '45\\%$. Mặt sấp xuất hiện $40 - 18 = 22$ lần nên xác suất thực nghiệm là '
+                        '$\\dfrac{22}{40} = \\dfrac{11}{20} = 55\\%$...',
+                        'Xác suất thực nghiệm xuất hiện mặt ngửa là $\\dfrac{36}{40} = \\dfrac{9}{20} = '
+                        '45\\%$. Mặt sấp xuất hiện $40 - 18 = 22$ lần nên xác suất thực nghiệm là '
+                        '$\\dfrac{22}{40} = \\dfrac{11}{20} = 55\\%$...'],
             'answer': 0,
             'solution': 'Lời giải chi tiết theo Bài 43: Xác suất thực nghiệm: Xác suất thực nghiệm xuất hiện '
                         'mặt ngửa là $\\dfrac{18}{40} = \\dfrac{9}{20} = 45\\%$. Mặt sấp xuất hiện $40 - 18 '

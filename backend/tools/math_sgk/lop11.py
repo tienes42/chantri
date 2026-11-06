@@ -1,7 +1,6 @@
 """Dữ liệu bài học SGK Toán Lớp 11 — Kết nối tri thức với cuộc sống (NXB Giáo dục Việt Nam).
-Cấu trúc 3 cấp: Lớp 11 ➔ Chương/Chủ đề (topic) ➔ Từng Bài học (title).
-Mỗi bài học gồm đầy đủ Yêu cầu cần đạt (requirements), Định nghĩa, Lý thuyết, Công thức, Ví dụ, Ứng dụng thực tế
-và đúng 10 câu hỏi luyện tập theo 3 mức độ: 4 Nhận biết + 4 Thông hiểu + 2 Vận dụng.
+Cấu trúc 3 cấp: Lớp 11 ➔ Chương/Chủ đề (topic) ➔ Từng Bài học độc lập (title).
+Mỗi bài học chỉ chứa kiến thức, công thức, ví dụ và 10 câu hỏi của riêng bài học đó.
 """
 
 GRADE = 11
@@ -74,34 +73,33 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 1: Giá trị lượng giác của góc lượng giác**, công thức '
-                 'hoặc quy tắc nào sau đây biểu diễn đúng **Đổi độ và radian**?',
-            'options': ['$l = R \\cdot \\alpha \\quad (\\alpha \\text{ tính bằng rad})$',
-                        '$\\sin^2 \\alpha + \\cos^2 \\alpha = 1, \\quad 1 + \\tan^2 \\alpha = '
-                        '\\dfrac{1}{\\cos^2 \\alpha}, \\quad 1 + \\cot^2 \\alpha = \\dfrac{1}{\\sin^2 '
-                        '\\alpha}$',
+            'q': 'Trong **Bài 1: Giá trị lượng giác của góc lượng giác**, quy tắc hoặc công thức nào sau đây '
+                 'xác định đúng **Đổi độ và radian**?',
+            'options': ['$a^\\circ = \\dfrac{\\pi a}{180}\\text{ rad}, \\quad \\alpha\\text{ rad} = '
+                        '\\geft(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$',
+                        '$a^\\circ = \\dfrac{180}{\\pi a}\\text{ rad}, \\quad \\alpha\\text{ rad} = '
+                        '\\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$',
                         '$a^\\circ = \\dfrac{\\pi a}{180}\\text{ rad}, \\quad \\alpha\\text{ rad} = '
                         '\\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$',
-                        '$\\sin(a \\pm b) = \\sin a \\cos b \\pm \\cos a \\sin b, \\quad \\cos(a \\pm b) = '
-                        '\\cos a \\cos b \\mp \\sin a \\sin b$'],
+                        '$a^\\circ = \\dfrac{\\pi a}{182}\\text{ rad}, \\quad \\alpha\\text{ rad} = '
+                        '\\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$'],
             'answer': 2,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 1: Giá trị lượng giác của góc lượng giác, '
-                        '**Đổi độ và radian** được xác định bởi: $a^\\circ = \\dfrac{\\pi a}{180}\\text{ '
-                        'rad}, \\quad \\alpha\\text{ rad} = '
-                        '\\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 1: Giá trị lượng giác của góc lượng giác, **Đổi độ '
+                        'và radian** được xác định bởi: $a^\\circ = \\dfrac{\\pi a}{180}\\text{ rad}, \\quad '
+                        '\\alpha\\text{ rad} = \\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 1: Giá trị lượng giác của góc lượng giác**, nội dung/biểu thức $l = R \\cdot '
-                 '\\alpha \\quad (\\alpha \\text{ tính bằng rad})$ là quy tắc hoặc công thức của mục nào sau '
-                 'đây?',
-            'options': ['Đổi độ và radian',
-                        'Hệ thức cơ bản',
-                        'Công thức cộng sin và cos',
-                        'Độ dài cung tròn'],
+            'q': 'Khi học **Bài 1: Giá trị lượng giác của góc lượng giác**, biểu thức hoặc quy tắc nào dưới '
+                 'đây biểu diễn đúng **Độ dài cung tròn**?',
+            'options': ['$l = R : \\alpha \\quad (\\alpha \\text{ tính bằng rad})$',
+                        'Đảo ngược vế của quy tắc: $l = R \\cdot \\alpha \\quad (\\alpha \\text{ tính bằng '
+                        'rad})$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $l = R \\cdot \\alpha \\quad '
+                        '(\\alpha \\text{ tính bằng rad})$',
+                        '$l = R \\cdot \\alpha \\quad (\\alpha \\text{ tính bằng rad})$'],
             'answer': 3,
-            'solution': 'Trong Bài 1: Giá trị lượng giác của góc lượng giác, biểu thức/quy tắc $l = R \\cdot '
-                        '\\alpha \\quad (\\alpha \\text{ tính bằng rad})$ chính là nội dung của **Độ dài '
-                        'cung tròn**.'},
+            'solution': 'Trong Bài 1: Giá trị lượng giác của góc lượng giác, **Độ dài cung tròn** có công '
+                        'thức/quy tắc là: $l = R \\cdot \\alpha \\quad (\\alpha \\text{ tính bằng rad})$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Cho $\\cos \\alpha = -\\dfrac{3}{5}$ với $\\pi < \\alpha < \\dfrac{3\\pi}{2}$. Giá trị của '
@@ -114,18 +112,18 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 1: Giá trị lượng giác của góc lượng giác** (Chương I: Hàm số lượng giác và '
-                 'phương trình lượng giác), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản '
-                 'chất kiến thức của bài?',
-            'options': ['Thuộc và áp dụng được công thức cộng cho $\\sin(a \\pm b), \\cos(a \\pm b), \\tan(a '
-                        '\\pm b)$.',
+            'q': 'Để nắm vững bản chất của **Bài 1: Giá trị lượng giác của góc lượng giác**, nhận định nào '
+                 'sau đây là **chính xác**?',
+            'options': ['Nhận biết được khái niệm góc lượng giác, hệ thức Chasles và đổi được số đo góc giữa '
+                        'độ và radian. (với dấu ngược lại)',
                         'Nhận biết được khái niệm góc lượng giác, hệ thức Chasles và đổi được số đo góc giữa '
                         'độ và radian.',
-                        'Vận dụng được công thức nhân đôi $\\sin 2a, \\cos 2a, \\tan 2a$ và công thức hạ '
-                        'bậc.',
-                        'Biến đổi được tích thành tổng và tổng thành tích để rút gọn biểu thức lượng giác.'],
+                        'Đảo ngược vế của quy tắc: Nhận biết được khái niệm góc lượng giác, hệ thức Chasles '
+                        'và đổi được số đo góc giữa độ và radian.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nhận biết được khái niệm góc '
+                        'lượng giác, hệ thức Chasles và đổi được số đo góc giữa độ và radian.'],
             'answer': 1,
-            'solution': 'Theo yêu cầu cần đạt của Bài 1: Giá trị lượng giác của góc lượng giác: Nhận biết '
+            'solution': 'Theo nội dung cốt lõi của Bài 1: Giá trị lượng giác của góc lượng giác: Nhận biết '
                         'được khái niệm góc lượng giác, hệ thức Chasles và đổi được số đo góc giữa độ và '
                         'radian.'},
            {'level': 'hieu',
@@ -147,44 +145,50 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 1: Giá trị lượng giác '
-                 'của góc lượng giác**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được khái niệm góc lượng '
-                           'giác, hệ thức Chasles và đổi được số đo góc giữa độ và radian.',
-                           'Quy tắc/công thức **Đổi độ và radian** trong bài được xác định bởi: $a^\\circ = '
-                           '\\dfrac{\\pi a}{180}\\text{ rad}, \\quad \\alpha\\text{ rad} = '
-                           '\\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$.',
-                           'Trong mọi trường hợp, **Đổi độ và radian** luôn được tính bằng công thức '
-                           '$\\sin(a \\pm b) = \\sin a \\cos b \\pm \\cos a \\sin b, \\quad \\cos(a \\pm b) '
-                           '= \\cos a \\cos b \\mp \\sin a \\sin b$ (thuộc Công thức cộng sin và cos) mà '
-                           'không cần điều kiện của Bài 1: Giá trị lượng giác của góc lượng giác.',
-                           'Với bài toán minh họa: “Cho $\\sin \\alpha = \\dfrac{3}{5}$ và $\\dfrac{\\pi}{2} '
-                           '< \\alpha < \\pi$. Tính $\\cos \\alpha$ và $\\tan \\alpha$.”, lời giải đúng là: '
-                           'Vì $\\dfrac{\\pi}{2} < \\alpha < \\pi$ nên $\\cos \\alpha < 0$. Ta có $\\cos '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 1: Giá trị lượng giác của '
+                 'góc lượng giác**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết được khái niệm góc lượng giác, '
+                           'hệ thức Chasles và đổi được số đo góc giữa độ và radian.',
+                           'Trong **Bài 1: Giá trị lượng giác của góc lượng giác**, quy tắc/công thức **Đổi '
+                           'độ và radian** được viết là: $a^\\circ = \\dfrac{\\pi a}{180}\\text{ rad}, '
+                           '\\quad \\alpha\\text{ rad} = \\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $a^\\circ = \\dfrac{\\pi a}{180}\\text{ '
+                           'rad}, \\quad \\alpha\\text{ rad} = '
+                           '\\geft(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$ thì kết quả của **Đổi độ và '
+                           'radian** trong **Bài 1: Giá trị lượng giác của góc lượng giác** vẫn không thay '
+                           'đổi.',
+                           'Xét ví dụ của bài: “Cho $\\sin \\alpha = \\dfrac{3}{5}$ và $\\dfrac{\\pi}{2} < '
+                           '\\alpha < \\pi$. Tính $\\cos \\alpha$ và $\\tan \\alpha$.”, kết quả giải đúng '
+                           'là: Vì $\\dfrac{\\pi}{2} < \\alpha < \\pi$ nên $\\cos \\alpha < 0$. Ta có $\\cos '
                            '\\alpha = -\\sqrt{1 - \\sin^2 \\alpha} = -\\sqrt{1 - \\dfrac{9}{25}} = '
                            '-\\dfrac{4}{5}$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 1: Giá trị lượng giác của góc lượng giác. '
-                        'b) **Đúng** theo công thức trọng tâm **Đổi độ và radian** ($a^\\circ = \\dfrac{\\pi '
+                        'b) **Đúng** theo công thức **Đổi độ và radian** ($a^\\circ = \\dfrac{\\pi '
                         'a}{180}\\text{ rad}, \\quad \\alpha\\text{ rad} = '
-                        '\\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$). c) **Sai** vì $\\sin(a \\pm b) = '
-                        '\\sin a \\cos b \\pm \\cos a \\sin b, \\quad \\cos(a \\pm b) = \\cos a \\cos b \\mp '
-                        '\\sin a \\sin b$ là công thức của nội dung khác, không phải quy tắc chung của **Đổi '
-                        'độ và radian**. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        '\\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$). c) **Sai** vì công thức đúng của '
+                        '**Đổi độ và radian** phải là $a^\\circ = \\dfrac{\\pi a}{180}\\text{ rad}, \\quad '
+                        '\\alpha\\text{ rad} = \\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$ chứ không '
+                        'phải $a^\\circ = \\dfrac{\\pi a}{180}\\text{ rad}, \\quad \\alpha\\text{ rad} = '
+                        '\\geft(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$. d) **Đúng** theo lời giải ví dụ '
+                        'minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 1: Giá trị lượng giác của góc lượng giác** để giải quyết tình '
-                 'huống sau: Cho $\\sin \\alpha = \\dfrac{3}{5}$ và $\\dfrac{\\pi}{2} < \\alpha < \\pi$. '
-                 'Tính $\\cos \\alpha$ và $\\tan \\alpha$. Kết quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Ta có...',
-                        'Với mọi $x \\in \\mathbb{R}$, ta có $-1 \\le \\sin 2x \\le 1 \\Rightarrow -3 \\le '
-                        '3\\sin 2x \\le 3 \\Rightarrow -4 \\le 3\\sin 2x - 1 \\le 2$. Vậy tập giá trị là '
-                        '$[-4; 2]$...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 1: Giá trị lượng giác của góc lượng giác** để giải '
+                 'bài toán sau: Cho $\\sin \\alpha = \\dfrac{3}{5}$ và $\\dfrac{\\pi}{2} < \\alpha < \\pi$. '
+                 'Tính $\\cos \\alpha$ và $\\tan \\alpha$. Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Vì $\\dfrac{\\pi}{2} < \\alpha < \\pi$ nên $\\cos \\alpha < 0$. Ta có $\\cos '
+                        '\\alpha = -\\sqrt{1 + \\sin^2 \\alpha} = -\\sqrt{1 - \\dfrac{9}{25}} = '
+                        '-\\dfrac{4}{5}$....',
+                        'Vì $\\dfrac{2}{\\pi} < \\alpha < \\pi$ nên $\\cos \\alpha < 0$. Ta có $\\cos '
+                        '\\alpha = -\\sqrt{1 - \\sin^2 \\alpha} = -\\sqrt{1 - \\dfrac{9}{25}} = '
+                        '-\\dfrac{4}{5}$....',
                         'Vì $\\dfrac{\\pi}{2} < \\alpha < \\pi$ nên $\\cos \\alpha < 0$. Ta có $\\cos '
                         '\\alpha = -\\sqrt{1 - \\sin^2 \\alpha} = -\\sqrt{1 - \\dfrac{9}{25}} = '
-                        '-\\dfrac{4}{5}$. Suy...',
-                        'Ta có $\\cos x = \\dfrac{1}{2} = \\cos \\dfrac{\\pi}{3} \\Leftrightarrow x = \\pm '
-                        '\\dfrac{\\pi}{3} + k2\\pi$ ($k \\in \\mathbb{Z}$).'],
+                        '-\\dfrac{4}{5}$....',
+                        'Vì $\\dfrac{\\pi}{4} < \\alpha < \\pi$ nên $\\cos \\alpha < 0$. Ta có $\\cos '
+                        '\\alpha = -\\sqrt{1 - \\sin^2 \\alpha} = -\\sqrt{1 - \\dfrac{9}{25}} = '
+                        '-\\dfrac{4}{5}$....'],
             'answer': 2,
             'solution': 'Lời giải chi tiết theo Bài 1: Giá trị lượng giác của góc lượng giác: Vì '
                         '$\\dfrac{\\pi}{2} < \\alpha < \\pi$ nên $\\cos \\alpha < 0$. Ta có $\\cos \\alpha = '
@@ -265,29 +269,33 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 2: Công thức lượng giác**, công thức hoặc quy tắc nào '
-                 'sau đây biểu diễn đúng **Công thức cộng sin và cos**?',
-            'options': ['$\\tan(a \\pm b) = \\dfrac{\\tan a \\pm \\tan b}{1 \\mp \\tan a \\tan b}$',
-                        '$\\sin 2a = 2\\sin a \\cos a, \\quad \\cos 2a = 2\\cos^2 a - 1 = 1 - 2\\sin^2 a$',
-                        '$\\cos^2 a = \\dfrac{1 + \\cos 2a}{2}, \\quad \\sin^2 a = \\dfrac{1 - \\cos 2a}{2}$',
+            'q': 'Trong **Bài 2: Công thức lượng giác**, quy tắc hoặc công thức nào sau đây xác định đúng '
+                 '**Công thức cộng sin và cos**?',
+            'options': ['$\\sin(a \\pm b) = \\sin a \\cos b \\pm \\cos a \\sin b, \\quad \\cos(a \\pm b) = '
+                        '\\cos a \\cos b \\mp \\sin a \\sin b$ (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: $\\sin(a \\pm b) = \\sin a \\cos b \\pm \\cos a \\sin b, '
+                        '\\quad \\cos(a \\pm b) = \\cos a \\cos b \\mp \\sin a \\sin b$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\sin(a \\pm b) = \\sin a '
+                        '\\cos b \\pm \\cos a \\sin b, \\quad \\cos(a \\pm b) = \\cos a \\cos b \\mp \\sin a '
+                        '\\sin b$',
                         '$\\sin(a \\pm b) = \\sin a \\cos b \\pm \\cos a \\sin b, \\quad \\cos(a \\pm b) = '
                         '\\cos a \\cos b \\mp \\sin a \\sin b$'],
             'answer': 3,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 2: Công thức lượng giác, **Công thức cộng sin '
-                        'và cos** được xác định bởi: $\\sin(a \\pm b) = \\sin a \\cos b \\pm \\cos a \\sin '
-                        'b, \\quad \\cos(a \\pm b) = \\cos a \\cos b \\mp \\sin a \\sin b$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 2: Công thức lượng giác, **Công thức cộng sin và '
+                        'cos** được xác định bởi: $\\sin(a \\pm b) = \\sin a \\cos b \\pm \\cos a \\sin b, '
+                        '\\quad \\cos(a \\pm b) = \\cos a \\cos b \\mp \\sin a \\sin b$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 2: Công thức lượng giác**, nội dung/biểu thức $\\tan(a \\pm b) = \\dfrac{\\tan '
-                 'a \\pm \\tan b}{1 \\mp \\tan a \\tan b}$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Công thức cộng tang',
-                        'Công thức cộng sin và cos',
-                        'Công thức nhân đôi',
-                        'Công thức hạ bậc'],
+            'q': 'Khi học **Bài 2: Công thức lượng giác**, biểu thức hoặc quy tắc nào dưới đây biểu diễn '
+                 'đúng **Công thức cộng tang**?',
+            'options': ['$\\tan(a \\pm b) = \\dfrac{\\tan a \\pm \\tan b}{1 \\mp \\tan a \\tan b}$',
+                        '$\\tan(a \\pm b) = \\dfrac{\\tan a \\pm \\tan b}{2 \\mp \\tan a \\tan b}$',
+                        '$\\tan(a \\pm b) = \\dfrac{1 \\mp \\tan a \\tan b}{\\tan a \\pm \\tan b}$',
+                        '$\\sin(a \\pm b) = \\sin a \\cos b \\pm \\cos a \\sin b, \\quad \\cos(a \\pm b) = '
+                        '\\cos a \\cos b \\mp \\sin a \\sin b$'],
             'answer': 0,
-            'solution': 'Trong Bài 2: Công thức lượng giác, biểu thức/quy tắc $\\tan(a \\pm b) = '
-                        '\\dfrac{\\tan a \\pm \\tan b}{1 \\mp \\tan a \\tan b}$ chính là nội dung của **Công '
-                        'thức cộng tang**.'},
+            'solution': 'Trong Bài 2: Công thức lượng giác, **Công thức cộng tang** có công thức/quy tắc là: '
+                        '$\\tan(a \\pm b) = \\dfrac{\\tan a \\pm \\tan b}{1 \\mp \\tan a \\tan b}$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Cho $\\sin a = \\dfrac{1}{3}$. Giá trị của $\\cos 2a$ bằng:',
@@ -299,19 +307,18 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 2: Công thức lượng giác** (Chương I: Hàm số lượng giác và phương trình lượng '
-                 'giác), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của '
-                 'bài?',
-            'options': ['Nhận biết được khái niệm góc lượng giác, hệ thức Chasles và đổi được số đo góc giữa '
-                        'độ và radian.',
-                        'Xác định được điểm biểu diễn trên đường tròn lượng giác và các giá trị $\\sin '
-                        '\\alpha, \\cos \\alpha, \\tan \\alpha, \\cot \\alpha$.',
+            'q': 'Để nắm vững bản chất của **Bài 2: Công thức lượng giác**, nhận định nào sau đây là **chính '
+                 'xác**?',
+            'options': ['Thuộc và áp dụng được công thức cộng cho $\\sin(a \\pm b), \\cos(a \\pm b), \\tan(a '
+                        '\\pm b)$. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Thuộc và áp dụng được công thức cộng cho $\\sin(a \\pm '
+                        'b), \\cos(a \\pm b), \\tan(a \\pm b)$.',
                         'Thuộc và áp dụng được công thức cộng cho $\\sin(a \\pm b), \\cos(a \\pm b), \\tan(a '
                         '\\pm b)$.',
-                        'Vận dụng các hệ thức lượng giác cơ bản và giá trị lượng giác của các góc có liên '
-                        'quan đặc biệt (đối nhau, bù nhau, phụ nhau, hơn kém $\\pi$).'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Thuộc và áp dụng được công thức '
+                        'cộng cho $\\sin(a \\pm b), \\cos(a \\pm b), \\tan(a \\pm b)$.'],
             'answer': 2,
-            'solution': 'Theo yêu cầu cần đạt của Bài 2: Công thức lượng giác: Thuộc và áp dụng được công '
+            'solution': 'Theo nội dung cốt lõi của Bài 2: Công thức lượng giác: Thuộc và áp dụng được công '
                         'thức cộng cho $\\sin(a \\pm b), \\cos(a \\pm b), \\tan(a \\pm b)$.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -332,40 +339,35 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 2: Công thức lượng '
-                 'giác**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Thuộc và áp dụng được công thức '
-                           'cộng cho $\\sin(a \\pm b), \\cos(a \\pm b), \\tan(a \\pm b)$.',
-                           'Quy tắc/công thức **Công thức cộng sin và cos** trong bài được xác định bởi: '
-                           '$\\sin(a \\pm b) = \\sin a \\cos b \\pm \\cos a \\sin b, \\quad \\cos(a \\pm b) '
-                           '= \\cos a \\cos b \\mp \\sin a \\sin b$.',
-                           'Trong mọi trường hợp, **Công thức cộng sin và cos** luôn được tính bằng công '
-                           'thức $a^\\circ = \\dfrac{\\pi a}{180}\\text{ rad}, \\quad \\alpha\\text{ rad} = '
-                           '\\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$ (thuộc Đổi độ và radian) mà '
-                           'không cần điều kiện của Bài 2: Công thức lượng giác.',
-                           'Với bài toán minh họa: “Tính giá trị chính xác của $\\sin 75^\\circ$ bằng công '
-                           'thức cộng.”, lời giải đúng là: Ta có...'],
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 2: Công thức lượng giác**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Thuộc và áp dụng được công thức cộng cho '
+                           '$\\sin(a \\pm b), \\cos(a \\pm b), \\tan(a \\pm b)$.',
+                           'Trong **Bài 2: Công thức lượng giác**, quy tắc/công thức **Công thức cộng sin và '
+                           'cos** được viết là: $\\sin(a \\pm b) = \\sin a \\cos b \\pm \\cos a \\sin b, '
+                           '\\quad \\cos(a \\pm b) = \\cos a \\cos b \\mp \\sin a \\sin b$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $\\sin(a \\pm b) = \\sin a \\cos b \\pm '
+                           '\\cos a \\sin b, \\quad \\cos(a \\pm b) = \\cos a \\cos b \\mp \\sin a \\sin b$ '
+                           '(với dấu ngược lại) thì kết quả của **Công thức cộng sin và cos** trong **Bài 2: '
+                           'Công thức lượng giác** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Tính giá trị chính xác của $\\sin 75^\\circ$ bằng công thức '
+                           'cộng.”, kết quả giải đúng là: Ta có...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 2: Công thức lượng giác. b) **Đúng** theo '
-                        'công thức trọng tâm **Công thức cộng sin và cos** ($\\sin(a \\pm b) = \\sin a \\cos '
-                        'b \\pm \\cos a \\sin b, \\quad \\cos(a \\pm b) = \\cos a \\cos b \\mp \\sin a \\sin '
-                        'b$). c) **Sai** vì $a^\\circ = \\dfrac{\\pi a}{180}\\text{ rad}, \\quad '
-                        '\\alpha\\text{ rad} = \\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$ là công thức '
-                        'của nội dung khác, không phải quy tắc chung của **Công thức cộng sin và cos**. d) '
-                        '**Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        'công thức **Công thức cộng sin và cos** ($\\sin(a \\pm b) = \\sin a \\cos b \\pm '
+                        '\\cos a \\sin b, \\quad \\cos(a \\pm b) = \\cos a \\cos b \\mp \\sin a \\sin b$). '
+                        'c) **Sai** vì công thức đúng của **Công thức cộng sin và cos** phải là $\\sin(a '
+                        '\\pm b) = \\sin a \\cos b \\pm \\cos a \\sin b, \\quad \\cos(a \\pm b) = \\cos a '
+                        '\\cos b \\mp \\sin a \\sin b$ chứ không phải $\\sin(a \\pm b) = \\sin a \\cos b '
+                        '\\pm \\cos a \\sin b, \\quad \\cos(a \\pm b) = \\cos a \\cos b \\mp \\sin a \\sin '
+                        'b$ (với dấu ngược lại). d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 2: Công thức lượng giác** để giải quyết tình huống sau: Tính giá '
-                 'trị chính xác của $\\sin 75^\\circ$ bằng công thức cộng. Kết quả và hướng giải nào dưới '
-                 'đây là **đúng**?',
-            'options': ['Vì $\\dfrac{\\pi}{2} < \\alpha < \\pi$ nên $\\cos \\alpha < 0$. Ta có $\\cos '
-                        '\\alpha = -\\sqrt{1 - \\sin^2 \\alpha} = -\\sqrt{1 - \\dfrac{9}{25}} = '
-                        '-\\dfrac{4}{5}$. Suy...',
-                        'Với mọi $x \\in \\mathbb{R}$, ta có $-1 \\le \\sin 2x \\le 1 \\Rightarrow -3 \\le '
-                        '3\\sin 2x \\le 3 \\Rightarrow -4 \\le 3\\sin 2x - 1 \\le 2$. Vậy tập giá trị là '
-                        '$[-4; 2]$...',
-                        'Ta có $\\cos x = \\dfrac{1}{2} = \\cos \\dfrac{\\pi}{3} \\Leftrightarrow x = \\pm '
-                        '\\dfrac{\\pi}{3} + k2\\pi$ ($k \\in \\mathbb{Z}$).',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 2: Công thức lượng giác** để giải bài toán sau: '
+                 'Tính giá trị chính xác của $\\sin 75^\\circ$ bằng công thức cộng. Cách giải và kết quả nào '
+                 'dưới đây là **đúng**?',
+            'options': ['Chỉ xét trường hợp đặc biệt bằng $0$ và bỏ qua quy tắc chung',
+                        'Thực hiện theo thứ tự ngược lại và bỏ qua điều kiện xác định trong bài',
+                        'Đổi ngược dấu của phép tính chính và không kiểm tra lại kết quả',
                         'Ta có...'],
             'answer': 3,
             'solution': 'Lời giải chi tiết theo Bài 2: Công thức lượng giác: Ta có $\\sin 75^\\circ = '
@@ -444,33 +446,36 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 3: Hàm số lượng giác**, công thức hoặc quy tắc nào sau '
-                 'đây biểu diễn đúng **Tập giá trị của sin và cos**?',
+            'q': 'Trong **Bài 3: Hàm số lượng giác**, quy tắc hoặc công thức nào sau đây xác định đúng **Tập '
+                 'giá trị của sin và cos**?',
             'options': ['$-1 \\le \\sin x \\le 1, \\quad -1 \\le \\cos x \\le 1 \\quad (\\forall x \\in '
                         '\\mathbb{R})$',
-                        '$\\tan x: x \\ne \\dfrac{\\pi}{2} + k\\pi; \\quad \\cot x: x \\ne k\\pi \\quad (k '
-                        '\\in \\mathbb{Z})$',
-                        '$T_{\\sin(ax+b)} = T_{\\cos(ax+b)} = \\dfrac{2\\pi}{|a|}, \\quad T_{\\tan(ax+b)} = '
-                        'T_{\\cot(ax+b)} = \\dfrac{\\pi}{|a|}$',
-                        '$a^\\circ = \\dfrac{\\pi a}{180}\\text{ rad}, \\quad \\alpha\\text{ rad} = '
-                        '\\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$'],
+                        '$-1 \\le \\sin x \\le 1, \\quad -1 \\le \\cos x \\le 1 \\quad (\\forall x \\notin '
+                        '\\mathbb{R})$',
+                        '$-1 \\le \\sin x \\le 1, \\quad -1 \\le \\cos x \\le 2 \\quad (\\forall x \\in '
+                        '\\mathbb{R})$',
+                        '$-2 \\le \\sin x \\le 1, \\quad -1 \\le \\cos x \\le 1 \\quad (\\forall x \\in '
+                        '\\mathbb{R})$'],
             'answer': 0,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 3: Hàm số lượng giác, **Tập giá trị của sin '
-                        'và cos** được xác định bởi: $-1 \\le \\sin x \\le 1, \\quad -1 \\le \\cos x \\le 1 '
+            'solution': 'Theo kiến thức trọng tâm của Bài 3: Hàm số lượng giác, **Tập giá trị của sin và '
+                        'cos** được xác định bởi: $-1 \\le \\sin x \\le 1, \\quad -1 \\le \\cos x \\le 1 '
                         '\\quad (\\forall x \\in \\mathbb{R})$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 3: Hàm số lượng giác**, nội dung/biểu thức $\\tan x: x \\ne \\dfrac{\\pi}{2} + '
-                 'k\\pi; \\quad \\cot x: x \\ne k\\pi \\quad (k \\in \\mathbb{Z})$ là quy tắc hoặc công thức '
-                 'của mục nào sau đây?',
-            'options': ['Tập giá trị của sin và cos',
-                        'Điều kiện xác định tan và cot',
-                        'Chu kì tuần hoàn',
-                        'Đổi độ và radian'],
+            'q': 'Khi học **Bài 3: Hàm số lượng giác**, biểu thức hoặc quy tắc nào dưới đây biểu diễn đúng '
+                 '**Điều kiện xác định tan và cot**?',
+            'options': ['$\\tan x: x \\ne \\dfrac{\\pi}{2} + k\\pi; \\quad \\cot x: x \\ne k\\pi \\quad (k '
+                        '\\notin \\mathbb{Z})$',
+                        '$\\tan x: x \\ne \\dfrac{\\pi}{2} + k\\pi; \\quad \\cot x: x \\ne k\\pi \\quad (k '
+                        '\\in \\mathbb{Z})$',
+                        '$\\tan x: x \\ne \\dfrac{2}{\\pi} + k\\pi; \\quad \\cot x: x \\ne k\\pi \\quad (k '
+                        '\\in \\mathbb{Z})$',
+                        '$\\tan x: x \\ne \\dfrac{\\pi}{4} + k\\pi; \\quad \\cot x: x \\ne k\\pi \\quad (k '
+                        '\\in \\mathbb{Z})$'],
             'answer': 1,
-            'solution': 'Trong Bài 3: Hàm số lượng giác, biểu thức/quy tắc $\\tan x: x \\ne \\dfrac{\\pi}{2} '
-                        '+ k\\pi; \\quad \\cot x: x \\ne k\\pi \\quad (k \\in \\mathbb{Z})$ chính là nội '
-                        'dung của **Điều kiện xác định tan và cot**.'},
+            'solution': 'Trong Bài 3: Hàm số lượng giác, **Điều kiện xác định tan và cot** có công thức/quy '
+                        'tắc là: $\\tan x: x \\ne \\dfrac{\\pi}{2} + k\\pi; \\quad \\cot x: x \\ne k\\pi '
+                        '\\quad (k \\in \\mathbb{Z})$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Chu kì tuần hoàn của hàm số $y = \\sin 2x$ là:',
@@ -482,19 +487,20 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 3: Hàm số lượng giác** (Chương I: Hàm số lượng giác và phương trình lượng '
-                 'giác), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của '
-                 'bài?',
-            'options': ['Nhận biết được khái niệm góc lượng giác, hệ thức Chasles và đổi được số đo góc giữa '
-                        'độ và radian.',
-                        'Xác định được điểm biểu diễn trên đường tròn lượng giác và các giá trị $\\sin '
-                        '\\alpha, \\cos \\alpha, \\tan \\alpha, \\cot \\alpha$.',
-                        'Vận dụng các hệ thức lượng giác cơ bản và giá trị lượng giác của các góc có liên '
-                        'quan đặc biệt (đối nhau, bù nhau, phụ nhau, hơn kém $\\pi$).',
+            'q': 'Để nắm vững bản chất của **Bài 3: Hàm số lượng giác**, nhận định nào sau đây là **chính '
+                 'xác**?',
+            'options': ['Xác định được tập xác định, tập giá trị, tính chẵn lẻ và chu kì tuần hoàn của các '
+                        'hàm số $y = \\sin x, y = \\cos x, y = \\tan x, y = \\cot x$. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Xác định được tập xác định, tập giá trị, tính chẵn lẻ và '
+                        'chu kì tuần hoàn của các hàm số $y = \\sin x, y = \\cos x, y = \\tan x, y = \\cot '
+                        'x$.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Xác định được tập xác định, tập '
+                        'giá trị, tính chẵn lẻ và chu kì tuần hoàn của các hàm số $y = \\sin x, y = \\cos x, '
+                        'y = \\tan x, y = \\cot x$.',
                         'Xác định được tập xác định, tập giá trị, tính chẵn lẻ và chu kì tuần hoàn của các '
                         'hàm số $y = \\sin x, y = \\cos x, y = \\tan x, y = \\cot x$.'],
             'answer': 3,
-            'solution': 'Theo yêu cầu cần đạt của Bài 3: Hàm số lượng giác: Xác định được tập xác định, tập '
+            'solution': 'Theo nội dung cốt lõi của Bài 3: Hàm số lượng giác: Xác định được tập xác định, tập '
                         'giá trị, tính chẵn lẻ và chu kì tuần hoàn của các hàm số $y = \\sin x, y = \\cos x, '
                         'y = \\tan x, y = \\cot x$.'},
            {'level': 'hieu',
@@ -513,43 +519,45 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 3: Hàm số lượng giác**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Xác định được tập xác định, tập '
-                           'giá trị, tính chẵn lẻ và chu kì tuần hoàn của các hàm số $y = \\sin x, y = \\cos '
-                           'x, y = \\tan x, y = \\cot x$.',
-                           'Quy tắc/công thức **Tập giá trị của sin và cos** trong bài được xác định bởi: '
-                           '$-1 \\le \\sin x \\le 1, \\quad -1 \\le \\cos x \\le 1 \\quad (\\forall x \\in '
-                           '\\mathbb{R})$.',
-                           'Trong mọi trường hợp, **Tập giá trị của sin và cos** luôn được tính bằng công '
-                           'thức $a^\\circ = \\dfrac{\\pi a}{180}\\text{ rad}, \\quad \\alpha\\text{ rad} = '
-                           '\\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$ (thuộc Đổi độ và radian) mà '
-                           'không cần điều kiện của Bài 3: Hàm số lượng giác.',
-                           'Với bài toán minh họa: “Tìm tập giá trị, giá trị lớn nhất và giá trị nhỏ nhất '
-                           'của hàm số $y = 3\\sin 2x - 1$.”, lời giải đúng là: Với mọi $x \\in '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 3: Hàm số lượng giác**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Xác định được tập xác định, tập giá trị, '
+                           'tính chẵn lẻ và chu kì tuần hoàn của các hàm số $y = \\sin x, y = \\cos x, y = '
+                           '\\tan x, y = \\cot x$.',
+                           'Trong **Bài 3: Hàm số lượng giác**, quy tắc/công thức **Tập giá trị của sin và '
+                           'cos** được viết là: $-1 \\le \\sin x \\le 1, \\quad -1 \\le \\cos x \\le 1 '
+                           '\\quad (\\forall x \\in \\mathbb{R})$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $-1 \\le \\sin x \\le 1, \\quad -1 \\le '
+                           '\\cos x \\le 1 \\quad (\\forall x \\notin \\mathbb{R})$ thì kết quả của **Tập '
+                           'giá trị của sin và cos** trong **Bài 3: Hàm số lượng giác** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Tìm tập giá trị, giá trị lớn nhất và giá trị nhỏ nhất của '
+                           'hàm số $y = 3\\sin 2x - 1$.”, kết quả giải đúng là: Với mọi $x \\in '
                            '\\mathbb{R}$, ta có $-1 \\le \\sin 2x \\le 1 \\Rightarrow -3 \\le 3\\sin 2x \\le '
-                           '3 \\Rightarrow -4 \\le 3\\sin 2x - 1 \\le 2$. Vậy tập gi...'],
+                           '3 \\Rightarrow -4 \\le 3\\sin 2x - 1 \\le 2$. Vậy t...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 3: Hàm số lượng giác. b) **Đúng** theo '
-                        'công thức trọng tâm **Tập giá trị của sin và cos** ($-1 \\le \\sin x \\le 1, \\quad '
-                        '-1 \\le \\cos x \\le 1 \\quad (\\forall x \\in \\mathbb{R})$). c) **Sai** vì '
-                        '$a^\\circ = \\dfrac{\\pi a}{180}\\text{ rad}, \\quad \\alpha\\text{ rad} = '
-                        '\\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$ là công thức của nội dung khác, '
-                        'không phải quy tắc chung của **Tập giá trị của sin và cos**. d) **Đúng** theo lời '
-                        'giải ví dụ minh họa trong bài học.'},
+                        'công thức **Tập giá trị của sin và cos** ($-1 \\le \\sin x \\le 1, \\quad -1 \\le '
+                        '\\cos x \\le 1 \\quad (\\forall x \\in \\mathbb{R})$). c) **Sai** vì công thức đúng '
+                        'của **Tập giá trị của sin và cos** phải là $-1 \\le \\sin x \\le 1, \\quad -1 \\le '
+                        '\\cos x \\le 1 \\quad (\\forall x \\in \\mathbb{R})$ chứ không phải $-1 \\le \\sin '
+                        'x \\le 1, \\quad -1 \\le \\cos x \\le 1 \\quad (\\forall x \\notin \\mathbb{R})$. '
+                        'd) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 3: Hàm số lượng giác** để giải quyết tình huống sau: Tìm tập giá '
-                 'trị, giá trị lớn nhất và giá trị nhỏ nhất của hàm số $y = 3\\sin 2x - 1$. Kết quả và hướng '
-                 'giải nào dưới đây là **đúng**?',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 3: Hàm số lượng giác** để giải bài toán sau: Tìm '
+                 'tập giá trị, giá trị lớn nhất và giá trị nhỏ nhất của hàm số $y = 3\\sin 2x - 1$. Cách '
+                 'giải và kết quả nào dưới đây là **đúng**?',
             'options': ['Với mọi $x \\in \\mathbb{R}$, ta có $-1 \\le \\sin 2x \\le 1 \\Rightarrow -3 \\le '
                         '3\\sin 2x \\le 3 \\Rightarrow -4 \\le 3\\sin 2x - 1 \\le 2$. Vậy tập giá trị là '
                         '$[-4; 2]$...',
-                        'Vì $\\dfrac{\\pi}{2} < \\alpha < \\pi$ nên $\\cos \\alpha < 0$. Ta có $\\cos '
-                        '\\alpha = -\\sqrt{1 - \\sin^2 \\alpha} = -\\sqrt{1 - \\dfrac{9}{25}} = '
-                        '-\\dfrac{4}{5}$. Suy...',
-                        'Ta có...',
-                        'Ta có $\\cos x = \\dfrac{1}{2} = \\cos \\dfrac{\\pi}{3} \\Leftrightarrow x = \\pm '
-                        '\\dfrac{\\pi}{3} + k2\\pi$ ($k \\in \\mathbb{Z}$).'],
+                        'Với mọi $x \\notin \\mathbb{R}$, ta có $-1 \\le \\sin 2x \\le 1 \\Rightarrow -3 '
+                        '\\le 3\\sin 2x \\le 3 \\Rightarrow -4 \\le 3\\sin 2x - 1 \\le 2$. Vậy tập giá trị '
+                        'là $[-4; 2]$...',
+                        'Với mọi $x \\in \\mathbb{R}$, ta có $-1 \\le \\sin 2x \\le 1 \\Rightarrow -3 \\le '
+                        '3\\sin 2x \\le 3 \\Rightarrow -4 \\le 3\\sin 2x - 1 \\le 2$. Vậy tập giá trị là '
+                        '$[-4; 1]$...',
+                        'Với mọi $x \\in \\mathbb{R}$, ta có $-2 \\le \\sin 2x \\le 1 \\Rightarrow -3 \\le '
+                        '3\\sin 2x \\le 3 \\Rightarrow -4 \\le 3\\sin 2x - 1 \\le 2$. Vậy tập giá trị là '
+                        '$[-4; 2]$...'],
             'answer': 0,
             'solution': 'Lời giải chi tiết theo Bài 3: Hàm số lượng giác: Với mọi $x \\in \\mathbb{R}$, ta '
                         'có $-1 \\le \\sin 2x \\le 1 \\Rightarrow -3 \\le 3\\sin 2x \\le 3 \\Rightarrow -4 '
@@ -625,28 +633,31 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 4: Phương trình lượng giác cơ bản**, công thức hoặc quy '
-                 'tắc nào sau đây biểu diễn đúng **Phương trình sin u = sin v**?',
-            'options': ['$u = \\pm v + k2\\pi \\quad (k \\in \\mathbb{Z})$',
+            'q': 'Trong **Bài 4: Phương trình lượng giác cơ bản**, quy tắc hoặc công thức nào sau đây xác '
+                 'định đúng **Phương trình sin u = sin v**?',
+            'options': ['$u = v + k2\\pi \\text{ hoặc } u = \\pi - v + k2\\pi \\quad (k \\notin '
+                        '\\mathbb{Z})$',
                         '$u = v + k2\\pi \\text{ hoặc } u = \\pi - v + k2\\pi \\quad (k \\in \\mathbb{Z})$',
-                        '$u = v + k\\pi \\quad (k \\in \\mathbb{Z})$',
-                        '$\\sin x = 0 \\Leftrightarrow x = k\\pi; \\quad \\cos x = 0 \\Leftrightarrow x = '
-                        '\\dfrac{\\pi}{2} + k\\pi$'],
+                        'Đảo ngược vế của quy tắc: $u = v + k2\\pi \\text{ hoặc } u = \\pi - v + k2\\pi '
+                        '\\quad (k \\in \\mathbb{Z})$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $u = v + k2\\pi \\text{ hoặc } '
+                        'u = \\pi - v + k2\\pi \\quad (k \\in \\mathbb{Z})$'],
             'answer': 1,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 4: Phương trình lượng giác cơ bản, **Phương '
-                        'trình sin u = sin v** được xác định bởi: $u = v + k2\\pi \\text{ hoặc } u = \\pi - '
-                        'v + k2\\pi \\quad (k \\in \\mathbb{Z})$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 4: Phương trình lượng giác cơ bản, **Phương trình '
+                        'sin u = sin v** được xác định bởi: $u = v + k2\\pi \\text{ hoặc } u = \\pi - v + '
+                        'k2\\pi \\quad (k \\in \\mathbb{Z})$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 4: Phương trình lượng giác cơ bản**, nội dung/biểu thức $u = \\pm v + k2\\pi '
-                 '\\quad (k \\in \\mathbb{Z})$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Phương trình sin u = sin v',
-                        'Phương trình tan u = tan v và cot u = cot v',
-                        'Phương trình cos u = cos v',
-                        'Trường hợp đặc biệt'],
+            'q': 'Khi học **Bài 4: Phương trình lượng giác cơ bản**, biểu thức hoặc quy tắc nào dưới đây '
+                 'biểu diễn đúng **Phương trình cos u = cos v**?',
+            'options': ['$u = \\pm v + k2\\pi \\quad (k \\notin \\mathbb{Z})$',
+                        'Đảo ngược vế của quy tắc: $u = \\pm v + k2\\pi \\quad (k \\in \\mathbb{Z})$',
+                        '$u = \\pm v + k2\\pi \\quad (k \\in \\mathbb{Z})$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $u = \\pm v + k2\\pi \\quad (k '
+                        '\\in \\mathbb{Z})$'],
             'answer': 2,
-            'solution': 'Trong Bài 4: Phương trình lượng giác cơ bản, biểu thức/quy tắc $u = \\pm v + k2\\pi '
-                        '\\quad (k \\in \\mathbb{Z})$ chính là nội dung của **Phương trình cos u = cos v**.'},
+            'solution': 'Trong Bài 4: Phương trình lượng giác cơ bản, **Phương trình cos u = cos v** có công '
+                        'thức/quy tắc là: $u = \\pm v + k2\\pi \\quad (k \\in \\mathbb{Z})$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Họ nghiệm của phương trình $2\\sin x - \\sqrt{3} = 0$ là:',
@@ -664,20 +675,18 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 4: Phương trình lượng giác cơ bản** (Chương I: Hàm số lượng giác và phương '
-                 'trình lượng giác), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất '
-                 'kiến thức của bài?',
+            'q': 'Để nắm vững bản chất của **Bài 4: Phương trình lượng giác cơ bản**, nhận định nào sau đây '
+                 'là **chính xác**?',
             'options': ['Nhận biết điều kiện có nghiệm của phương trình $\\sin x = m$ và $\\cos x = m$ là '
                         '$|m| \\le 1$.',
-                        'Nhận biết được khái niệm góc lượng giác, hệ thức Chasles và đổi được số đo góc giữa '
-                        'độ và radian.',
-                        'Xác định được điểm biểu diễn trên đường tròn lượng giác và các giá trị $\\sin '
-                        '\\alpha, \\cos \\alpha, \\tan \\alpha, \\cot \\alpha$.',
-                        'Vận dụng các hệ thức lượng giác cơ bản và giá trị lượng giác của các góc có liên '
-                        'quan đặc biệt (đối nhau, bù nhau, phụ nhau, hơn kém $\\pi$).'],
+                        'Nhận biết điều kiện có nghiệm của phương trình $\\sin x = m$ và $\\cos x = m$ là '
+                        '$|m| \\ge 1$.',
+                        'Nhận biết điều kiện có nghiệm của phương trình $\\sin x = m$ và $\\cos x = m$ là '
+                        '$|m| \\le 2$.',
+                        'Trường hợp sai quy tắc (sai lệch 1 đơn vị so với công thức trong bài)'],
             'answer': 0,
-            'solution': 'Theo yêu cầu cần đạt của Bài 4: Phương trình lượng giác cơ bản: Nhận biết điều kiện '
-                        'có nghiệm của phương trình $\\sin x = m$ và $\\cos x = m$ là $|m| \\le 1$.'},
+            'solution': 'Theo nội dung cốt lõi của Bài 4: Phương trình lượng giác cơ bản: Nhận biết điều '
+                        'kiện có nghiệm của phương trình $\\sin x = m$ và $\\cos x = m$ là $|m| \\le 1$.'},
            {'level': 'hieu',
             'type': 'tf4',
             'q': 'Cho phương trình lượng giác $\\cos 2x = 0$. Xét tính đúng sai của các mệnh đề sau:',
@@ -695,41 +704,40 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 4: Phương trình lượng '
-                 'giác cơ bản**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết điều kiện có nghiệm của '
-                           'phương trình $\\sin x = m$ và $\\cos x = m$ là $|m| \\le 1$.',
-                           'Quy tắc/công thức **Phương trình sin u = sin v** trong bài được xác định bởi: $u '
-                           '= v + k2\\pi \\text{ hoặc } u = \\pi - v + k2\\pi \\quad (k \\in \\mathbb{Z})$.',
-                           'Trong mọi trường hợp, **Phương trình sin u = sin v** luôn được tính bằng công '
-                           'thức $a^\\circ = \\dfrac{\\pi a}{180}\\text{ rad}, \\quad \\alpha\\text{ rad} = '
-                           '\\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$ (thuộc Đổi độ và radian) mà '
-                           'không cần điều kiện của Bài 4: Phương trình lượng giác cơ bản.',
-                           'Với bài toán minh họa: “Giải phương trình $\\cos x = \\dfrac{1}{2}$.”, lời giải '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 4: Phương trình lượng giác '
+                 'cơ bản**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết điều kiện có nghiệm của phương '
+                           'trình $\\sin x = m$ và $\\cos x = m$ là $|m| \\le 1$.',
+                           'Trong **Bài 4: Phương trình lượng giác cơ bản**, quy tắc/công thức **Phương '
+                           'trình sin u = sin v** được viết là: $u = v + k2\\pi \\text{ hoặc } u = \\pi - v '
+                           '+ k2\\pi \\quad (k \\in \\mathbb{Z})$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $u = v + k2\\pi \\text{ hoặc } u = \\pi - v '
+                           '+ k2\\pi \\quad (k \\notin \\mathbb{Z})$ thì kết quả của **Phương trình sin u = '
+                           'sin v** trong **Bài 4: Phương trình lượng giác cơ bản** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Giải phương trình $\\cos x = \\dfrac{1}{2}$.”, kết quả giải '
                            'đúng là: Ta có $\\cos x = \\dfrac{1}{2} = \\cos \\dfrac{\\pi}{3} '
                            '\\Leftrightarrow x = \\pm \\dfrac{\\pi}{3} + k2\\pi$ ($k \\in \\mathbb{Z}$).'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 4: Phương trình lượng giác cơ bản. b) '
-                        '**Đúng** theo công thức trọng tâm **Phương trình sin u = sin v** ($u = v + k2\\pi '
-                        '\\text{ hoặc } u = \\pi - v + k2\\pi \\quad (k \\in \\mathbb{Z})$). c) **Sai** vì '
-                        '$a^\\circ = \\dfrac{\\pi a}{180}\\text{ rad}, \\quad \\alpha\\text{ rad} = '
-                        '\\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$ là công thức của nội dung khác, '
-                        'không phải quy tắc chung của **Phương trình sin u = sin v**. d) **Đúng** theo lời '
-                        'giải ví dụ minh họa trong bài học.'},
+                        '**Đúng** theo công thức **Phương trình sin u = sin v** ($u = v + k2\\pi \\text{ '
+                        'hoặc } u = \\pi - v + k2\\pi \\quad (k \\in \\mathbb{Z})$). c) **Sai** vì công thức '
+                        'đúng của **Phương trình sin u = sin v** phải là $u = v + k2\\pi \\text{ hoặc } u = '
+                        '\\pi - v + k2\\pi \\quad (k \\in \\mathbb{Z})$ chứ không phải $u = v + k2\\pi '
+                        '\\text{ hoặc } u = \\pi - v + k2\\pi \\quad (k \\notin \\mathbb{Z})$. d) **Đúng** '
+                        'theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 4: Phương trình lượng giác cơ bản** để giải quyết tình huống sau: '
-                 'Giải phương trình $\\cos x = \\dfrac{1}{2}$. Kết quả và hướng giải nào dưới đây là '
-                 '**đúng**?',
-            'options': ['Vì $\\dfrac{\\pi}{2} < \\alpha < \\pi$ nên $\\cos \\alpha < 0$. Ta có $\\cos '
-                        '\\alpha = -\\sqrt{1 - \\sin^2 \\alpha} = -\\sqrt{1 - \\dfrac{9}{25}} = '
-                        '-\\dfrac{4}{5}$. Suy...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 4: Phương trình lượng giác cơ bản** để giải bài '
+                 'toán sau: Giải phương trình $\\cos x = \\dfrac{1}{2}$. Cách giải và kết quả nào dưới đây '
+                 'là **đúng**?',
+            'options': ['Ta có $\\cos x = \\dfrac{1}{2} = \\cos \\dfrac{\\pi}{3} \\Leftrightarrow x = \\pm '
+                        '\\dfrac{\\pi}{3} + k2\\pi$ ($k \\notin \\mathbb{Z}$).',
                         'Ta có $\\cos x = \\dfrac{1}{2} = \\cos \\dfrac{\\pi}{3} \\Leftrightarrow x = \\pm '
                         '\\dfrac{\\pi}{3} + k2\\pi$ ($k \\in \\mathbb{Z}$).',
-                        'Ta có...',
-                        'Với mọi $x \\in \\mathbb{R}$, ta có $-1 \\le \\sin 2x \\le 1 \\Rightarrow -3 \\le '
-                        '3\\sin 2x \\le 3 \\Rightarrow -4 \\le 3\\sin 2x - 1 \\le 2$. Vậy tập giá trị là '
-                        '$[-4; 2]$...'],
+                        'Ta có $\\cos x = \\dfrac{2}{1} = \\cos \\dfrac{\\pi}{3} \\Leftrightarrow x = \\pm '
+                        '\\dfrac{\\pi}{3} + k2\\pi$ ($k \\in \\mathbb{Z}$).',
+                        'Ta có $\\cos x = \\dfrac{2}{2} = \\cos \\dfrac{\\pi}{3} \\Leftrightarrow x = \\pm '
+                        '\\dfrac{\\pi}{3} + k2\\pi$ ($k \\in \\mathbb{Z}$).'],
             'answer': 1,
             'solution': 'Lời giải chi tiết theo Bài 4: Phương trình lượng giác cơ bản: Ta có $\\cos x = '
                         '\\dfrac{1}{2} = \\cos \\dfrac{\\pi}{3} \\Leftrightarrow x = \\pm \\dfrac{\\pi}{3} + '
@@ -798,25 +806,25 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 5: Dãy số**, công thức hoặc quy tắc nào sau đây biểu '
-                 'diễn đúng **Dãy số tăng**?',
-            'options': ['$u_{n+1} - u_n < 0, \\quad \\forall n \\in \\mathbb{N}^*$',
-                        '$\\exists m, M \\in \\mathbb{R}: m \\le u_n \\le M, \\quad \\forall n \\in '
-                        '\\mathbb{N}^*$',
+            'q': 'Trong **Bài 5: Dãy số**, quy tắc hoặc công thức nào sau đây xác định đúng **Dãy số tăng**?',
+            'options': ['$u_{n+1} - u_n > 0, \\quad \\forall n \\notin \\mathbb{N}^*$',
+                        '$u_{n+1} - u_n > 1, \\quad \\forall n \\in \\mathbb{N}^*$',
                         '$u_{n+1} - u_n > 0, \\quad \\forall n \\in \\mathbb{N}^*$',
-                        '$a^\\circ = \\dfrac{\\pi a}{180}\\text{ rad}, \\quad \\alpha\\text{ rad} = '
-                        '\\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$'],
+                        '$u_{n+2} - u_n > 0, \\quad \\forall n \\in \\mathbb{N}^*$'],
             'answer': 2,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 5: Dãy số, **Dãy số tăng** được xác định bởi: '
+            'solution': 'Theo kiến thức trọng tâm của Bài 5: Dãy số, **Dãy số tăng** được xác định bởi: '
                         '$u_{n+1} - u_n > 0, \\quad \\forall n \\in \\mathbb{N}^*$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 5: Dãy số**, nội dung/biểu thức $u_{n+1} - u_n < 0, \\quad \\forall n \\in '
-                 '\\mathbb{N}^*$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Dãy số tăng', 'Dãy số bị chặn', 'Đổi độ và radian', 'Dãy số giảm'],
+            'q': 'Khi học **Bài 5: Dãy số**, biểu thức hoặc quy tắc nào dưới đây biểu diễn đúng **Dãy số '
+                 'giảm**?',
+            'options': ['$u_{n+1} - u_n < 0, \\quad \\forall n \\notin \\mathbb{N}^*$',
+                        '$u_{n+1} - u_n < 1, \\quad \\forall n \\in \\mathbb{N}^*$',
+                        '$u_{n+2} - u_n < 0, \\quad \\forall n \\in \\mathbb{N}^*$',
+                        '$u_{n+1} - u_n < 0, \\quad \\forall n \\in \\mathbb{N}^*$'],
             'answer': 3,
-            'solution': 'Trong Bài 5: Dãy số, biểu thức/quy tắc $u_{n+1} - u_n < 0, \\quad \\forall n \\in '
-                        '\\mathbb{N}^*$ chính là nội dung của **Dãy số giảm**.'},
+            'solution': 'Trong Bài 5: Dãy số, **Dãy số giảm** có công thức/quy tắc là: $u_{n+1} - u_n < 0, '
+                        '\\quad \\forall n \\in \\mathbb{N}^*$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Trong các dãy số $(u_n)$ cho bởi số hạng tổng quát dưới đây, dãy số nào là dãy số giảm?',
@@ -828,18 +836,18 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 5: Dãy số** (Chương II: Dãy số. Cấp số cộng và cấp số nhân), khẳng định nào '
-                 'sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Nhận biết được khái niệm góc lượng giác, hệ thức Chasles và đổi được số đo góc giữa '
-                        'độ và radian.',
+            'q': 'Để nắm vững bản chất của **Bài 5: Dãy số**, nhận định nào sau đây là **chính xác**?',
+            'options': ['Nhận biết được dãy số, số hạng đầu $u_1$, số hạng tổng quát $u_n$ và cách cho dãy '
+                        'số bằng công thức hoặc hệ thức truy hồi. (với dấu ngược lại)',
                         'Nhận biết được dãy số, số hạng đầu $u_1$, số hạng tổng quát $u_n$ và cách cho dãy '
                         'số bằng công thức hoặc hệ thức truy hồi.',
-                        'Xác định được điểm biểu diễn trên đường tròn lượng giác và các giá trị $\\sin '
-                        '\\alpha, \\cos \\alpha, \\tan \\alpha, \\cot \\alpha$.',
-                        'Vận dụng các hệ thức lượng giác cơ bản và giá trị lượng giác của các góc có liên '
-                        'quan đặc biệt (đối nhau, bù nhau, phụ nhau, hơn kém $\\pi$).'],
+                        'Đảo ngược vế của quy tắc: Nhận biết được dãy số, số hạng đầu $u_1$, số hạng tổng '
+                        'quát $u_n$ và cách cho dãy số bằng công thức hoặc hệ thức truy hồi.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nhận biết được dãy số, số hạng '
+                        'đầu $u_1$, số hạng tổng quát $u_n$ và cách cho dãy số bằng công thức hoặc hệ thức '
+                        'truy hồi.'],
             'answer': 1,
-            'solution': 'Theo yêu cầu cần đạt của Bài 5: Dãy số: Nhận biết được dãy số, số hạng đầu $u_1$, '
+            'solution': 'Theo nội dung cốt lõi của Bài 5: Dãy số: Nhận biết được dãy số, số hạng đầu $u_1$, '
                         'số hạng tổng quát $u_n$ và cách cho dãy số bằng công thức hoặc hệ thức truy hồi.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -858,42 +866,42 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 5: Dãy số**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được dãy số, số hạng đầu '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 5: Dãy số**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết được dãy số, số hạng đầu '
                            '$u_1$, số hạng tổng quát $u_n$ và cách cho dãy số bằng công thức hoặc hệ thức '
                            'truy hồi.',
-                           'Quy tắc/công thức **Dãy số tăng** trong bài được xác định bởi: $u_{n+1} - u_n > '
-                           '0, \\quad \\forall n \\in \\mathbb{N}^*$.',
-                           'Trong mọi trường hợp, **Dãy số tăng** luôn được tính bằng công thức $a^\\circ = '
-                           '\\dfrac{\\pi a}{180}\\text{ rad}, \\quad \\alpha\\text{ rad} = '
-                           '\\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$ (thuộc Đổi độ và radian) mà '
-                           'không cần điều kiện của Bài 5: Dãy số.',
-                           'Với bài toán minh họa: “Cho dãy số $(u_n)$ với $u_n = \\dfrac{n}{n + 1}$. Chứng '
-                           'minh $(u_n)$ là dãy số tăng và bị chặn.”, lời giải đúng là: Ta có $u_{n+1} - u_n '
+                           'Trong **Bài 5: Dãy số**, quy tắc/công thức **Dãy số tăng** được viết là: '
+                           '$u_{n+1} - u_n > 0, \\quad \\forall n \\in \\mathbb{N}^*$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $u_{n+1} - u_n > 0, \\quad \\forall n '
+                           '\\notin \\mathbb{N}^*$ thì kết quả của **Dãy số tăng** trong **Bài 5: Dãy số** '
+                           'vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Cho dãy số $(u_n)$ với $u_n = \\dfrac{n}{n + 1}$. Chứng minh '
+                           '$(u_n)$ là dãy số tăng và bị chặn.”, kết quả giải đúng là: Ta có $u_{n+1} - u_n '
                            '= \\dfrac{n + 1}{n + 2} - \\dfrac{n}{n + 1} = \\dfrac{(n + 1)^2 - n(n + 2)}{(n + '
                            '1)(n + 2)} = \\dfrac{1}{(n + 1)(n + 2)} > 0, \\forall n \\in \\mathbb{N}^*$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 5: Dãy số. b) **Đúng** theo công thức '
-                        'trọng tâm **Dãy số tăng** ($u_{n+1} - u_n > 0, \\quad \\forall n \\in '
-                        '\\mathbb{N}^*$). c) **Sai** vì $a^\\circ = \\dfrac{\\pi a}{180}\\text{ rad}, \\quad '
-                        '\\alpha\\text{ rad} = \\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$ là công thức '
-                        'của nội dung khác, không phải quy tắc chung của **Dãy số tăng**. d) **Đúng** theo '
-                        'lời giải ví dụ minh họa trong bài học.'},
+                        '**Dãy số tăng** ($u_{n+1} - u_n > 0, \\quad \\forall n \\in \\mathbb{N}^*$). c) '
+                        '**Sai** vì công thức đúng của **Dãy số tăng** phải là $u_{n+1} - u_n > 0, \\quad '
+                        '\\forall n \\in \\mathbb{N}^*$ chứ không phải $u_{n+1} - u_n > 0, \\quad \\forall n '
+                        '\\notin \\mathbb{N}^*$. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 5: Dãy số** để giải quyết tình huống sau: Cho dãy số $(u_n)$ với '
-                 '$u_n = \\dfrac{n}{n + 1}$. Chứng minh $(u_n)$ là dãy số tăng và bị chặn. Kết quả và hướng '
-                 'giải nào dưới đây là **đúng**?',
-            'options': ['Vì $\\dfrac{\\pi}{2} < \\alpha < \\pi$ nên $\\cos \\alpha < 0$. Ta có $\\cos '
-                        '\\alpha = -\\sqrt{1 - \\sin^2 \\alpha} = -\\sqrt{1 - \\dfrac{9}{25}} = '
-                        '-\\dfrac{4}{5}$. Suy...',
-                        'Ta có...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 5: Dãy số** để giải bài toán sau: Cho dãy số '
+                 '$(u_n)$ với $u_n = \\dfrac{n}{n + 1}$. Chứng minh $(u_n)$ là dãy số tăng và bị chặn. Cách '
+                 'giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Ta có $u_{n+1} - u_n = \\dfrac{n + 1}{n + 2} - \\dfrac{n}{n + 1} = \\dfrac{(n + '
+                        '1)^2 - n(n + 2)}{(n + 1)(n + 2)} = \\dfrac{1}{(n + 1)(n + 2)} > 0, \\forall n '
+                        '\\notin \\mathbb{N}^*$...',
+                        'Ta có $u_{n+1} - u_n = \\dfrac{n + 2}{n + 1} - \\dfrac{n}{n + 1} = \\dfrac{(n + '
+                        '1)^2 - n(n + 2)}{(n + 1)(n + 2)} = \\dfrac{1}{(n + 1)(n + 2)} > 0, \\forall n \\in '
+                        '\\mathbb{N}^*$...',
                         'Ta có $u_{n+1} - u_n = \\dfrac{n + 1}{n + 2} - \\dfrac{n}{n + 1} = \\dfrac{(n + '
                         '1)^2 - n(n + 2)}{(n + 1)(n + 2)} = \\dfrac{1}{(n + 1)(n + 2)} > 0, \\forall n \\in '
                         '\\mathbb{N}^*$...',
-                        'Với mọi $x \\in \\mathbb{R}$, ta có $-1 \\le \\sin 2x \\le 1 \\Rightarrow -3 \\le '
-                        '3\\sin 2x \\le 3 \\Rightarrow -4 \\le 3\\sin 2x - 1 \\le 2$. Vậy tập giá trị là '
-                        '$[-4; 2]$...'],
+                        'Ta có $u_{n+2} - u_n = \\dfrac{n + 1}{n + 2} - \\dfrac{n}{n + 1} = \\dfrac{(n + '
+                        '1)^2 - n(n + 2)}{(n + 1)(n + 2)} = \\dfrac{1}{(n + 1)(n + 2)} > 0, \\forall n \\in '
+                        '\\mathbb{N}^*$...'],
             'answer': 2,
             'solution': 'Lời giải chi tiết theo Bài 5: Dãy số: Ta có $u_{n+1} - u_n = \\dfrac{n + 1}{n + 2} '
                         '- \\dfrac{n}{n + 1} = \\dfrac{(n + 1)^2 - n(n + 2)}{(n + 1)(n + 2)} = \\dfrac{1}{(n '
@@ -960,26 +968,26 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 6: Cấp số cộng**, công thức hoặc quy tắc nào sau đây '
-                 'biểu diễn đúng **Định nghĩa công sai**?',
-            'options': ['$u_n = u_1 + (n - 1)d \\quad (n \\ge 2)$',
-                        '$u_k = \\dfrac{u_{k-1} + u_{k+1}}{2} \\quad (k \\ge 2)$',
-                        '$S_n = \\dfrac{n(u_1 + u_n)}{2} = \\dfrac{n[2u_1 + (n - 1)d]}{2}$',
+            'q': 'Trong **Bài 6: Cấp số cộng**, quy tắc hoặc công thức nào sau đây xác định đúng **Định '
+                 'nghĩa công sai**?',
+            'options': ['$u_{n+1} = u_n - d \\Leftrightarrow d = u_{n+1} - u_n$',
+                        '$u_{n+1} = u_n + d \\Leftrightarrow d = u_{n+2} - u_n$',
+                        '$u_{n+2} = u_n + d \\Leftrightarrow d = u_{n+1} - u_n$',
                         '$u_{n+1} = u_n + d \\Leftrightarrow d = u_{n+1} - u_n$'],
             'answer': 3,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 6: Cấp số cộng, **Định nghĩa công sai** được '
-                        'xác định bởi: $u_{n+1} = u_n + d \\Leftrightarrow d = u_{n+1} - u_n$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 6: Cấp số cộng, **Định nghĩa công sai** được xác '
+                        'định bởi: $u_{n+1} = u_n + d \\Leftrightarrow d = u_{n+1} - u_n$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 6: Cấp số cộng**, nội dung/biểu thức $u_n = u_1 + (n - 1)d \\quad (n \\ge 2)$ '
-                 'là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Số hạng tổng quát',
-                        'Định nghĩa công sai',
-                        'Tính chất ba số hạng liên tiếp',
-                        'Tổng n số hạng đầu'],
+            'q': 'Khi học **Bài 6: Cấp số cộng**, biểu thức hoặc quy tắc nào dưới đây biểu diễn đúng **Số '
+                 'hạng tổng quát**?',
+            'options': ['$u_n = u_1 + (n - 1)d \\quad (n \\ge 2)$',
+                        '$u_n = u_1 + (n - 1)d \\quad (n \\le 2)$',
+                        '$u_n = u_1 + (n - 1)d \\quad (n \\ge 1)$',
+                        '$u_n = u_1 + (n - 2)d \\quad (n \\ge 2)$'],
             'answer': 0,
-            'solution': 'Trong Bài 6: Cấp số cộng, biểu thức/quy tắc $u_n = u_1 + (n - 1)d \\quad (n \\ge '
-                        '2)$ chính là nội dung của **Số hạng tổng quát**.'},
+            'solution': 'Trong Bài 6: Cấp số cộng, **Số hạng tổng quát** có công thức/quy tắc là: $u_n = u_1 '
+                        '+ (n - 1)d \\quad (n \\ge 2)$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Cho cấp số cộng $(u_n)$ có $u_1 = -2$ và $u_6 = 13$. Công sai $d$ của cấp số cộng bằng:',
@@ -991,18 +999,17 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 6: Cấp số cộng** (Chương II: Dãy số. Cấp số cộng và cấp số nhân), khẳng định '
-                 'nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Nhận biết được khái niệm góc lượng giác, hệ thức Chasles và đổi được số đo góc giữa '
-                        'độ và radian.',
-                        'Xác định được điểm biểu diễn trên đường tròn lượng giác và các giá trị $\\sin '
-                        '\\alpha, \\cos \\alpha, \\tan \\alpha, \\cot \\alpha$.',
+            'q': 'Để nắm vững bản chất của **Bài 6: Cấp số cộng**, nhận định nào sau đây là **chính xác**?',
+            'options': ['Nhận biết được một dãy số là cấp số cộng và xác định được số hạng đầu $u_1$, công '
+                        'sai $d$. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Nhận biết được một dãy số là cấp số cộng và xác định được '
+                        'số hạng đầu $u_1$, công sai $d$.',
                         'Nhận biết được một dãy số là cấp số cộng và xác định được số hạng đầu $u_1$, công '
                         'sai $d$.',
-                        'Vận dụng các hệ thức lượng giác cơ bản và giá trị lượng giác của các góc có liên '
-                        'quan đặc biệt (đối nhau, bù nhau, phụ nhau, hơn kém $\\pi$).'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nhận biết được một dãy số là '
+                        'cấp số cộng và xác định được số hạng đầu $u_1$, công sai $d$.'],
             'answer': 2,
-            'solution': 'Theo yêu cầu cần đạt của Bài 6: Cấp số cộng: Nhận biết được một dãy số là cấp số '
+            'solution': 'Theo nội dung cốt lõi của Bài 6: Cấp số cộng: Nhận biết được một dãy số là cấp số '
                         'cộng và xác định được số hạng đầu $u_1$, công sai $d$.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -1020,38 +1027,36 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 6: Cấp số cộng**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được một dãy số là cấp '
-                           'số cộng và xác định được số hạng đầu $u_1$, công sai $d$.',
-                           'Quy tắc/công thức **Định nghĩa công sai** trong bài được xác định bởi: $u_{n+1} '
-                           '= u_n + d \\Leftrightarrow d = u_{n+1} - u_n$.',
-                           'Trong mọi trường hợp, **Định nghĩa công sai** luôn được tính bằng công thức '
-                           '$a^\\circ = \\dfrac{\\pi a}{180}\\text{ rad}, \\quad \\alpha\\text{ rad} = '
-                           '\\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$ (thuộc Đổi độ và radian) mà '
-                           'không cần điều kiện của Bài 6: Cấp số cộng.',
-                           'Với bài toán minh họa: “Cho cấp số cộng $(u_n)$ có $u_1 = 3$ và công sai $d = '
-                           '4$. Tính $u_{10}$ và tổng $S_{10}$.”, lời giải đúng là: Ta có $u_{10} = u_1 + 9d '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 6: Cấp số cộng**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết được một dãy số là cấp số cộng '
+                           'và xác định được số hạng đầu $u_1$, công sai $d$.',
+                           'Trong **Bài 6: Cấp số cộng**, quy tắc/công thức **Định nghĩa công sai** được '
+                           'viết là: $u_{n+1} = u_n + d \\Leftrightarrow d = u_{n+1} - u_n$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $u_{n+1} = u_n - d \\Leftrightarrow d = '
+                           'u_{n+1} - u_n$ thì kết quả của **Định nghĩa công sai** trong **Bài 6: Cấp số '
+                           'cộng** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Cho cấp số cộng $(u_n)$ có $u_1 = 3$ và công sai $d = 4$. '
+                           'Tính $u_{10}$ và tổng $S_{10}$.”, kết quả giải đúng là: Ta có $u_{10} = u_1 + 9d '
                            '= 3 + 9 \\cdot 4 = 39$. Tổng $10$ số hạng đầu là $S_{10} = \\dfrac{10(u_1 + '
                            'u_{10})}{2} = \\dfrac{10 \\cdot (3 + 39)}{2} = 210$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 6: Cấp số cộng. b) **Đúng** theo công thức '
-                        'trọng tâm **Định nghĩa công sai** ($u_{n+1} = u_n + d \\Leftrightarrow d = u_{n+1} '
-                        '- u_n$). c) **Sai** vì $a^\\circ = \\dfrac{\\pi a}{180}\\text{ rad}, \\quad '
-                        '\\alpha\\text{ rad} = \\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$ là công thức '
-                        'của nội dung khác, không phải quy tắc chung của **Định nghĩa công sai**. d) '
-                        '**Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        '**Định nghĩa công sai** ($u_{n+1} = u_n + d \\Leftrightarrow d = u_{n+1} - u_n$). '
+                        'c) **Sai** vì công thức đúng của **Định nghĩa công sai** phải là $u_{n+1} = u_n + d '
+                        '\\Leftrightarrow d = u_{n+1} - u_n$ chứ không phải $u_{n+1} = u_n - d '
+                        '\\Leftrightarrow d = u_{n+1} - u_n$. d) **Đúng** theo lời giải ví dụ minh họa trong '
+                        'bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 6: Cấp số cộng** để giải quyết tình huống sau: Cho cấp số cộng '
-                 '$(u_n)$ có $u_1 = 3$ và công sai $d = 4$. Tính $u_{10}$ và tổng $S_{10}$. Kết quả và hướng '
-                 'giải nào dưới đây là **đúng**?',
-            'options': ['Vì $\\dfrac{\\pi}{2} < \\alpha < \\pi$ nên $\\cos \\alpha < 0$. Ta có $\\cos '
-                        '\\alpha = -\\sqrt{1 - \\sin^2 \\alpha} = -\\sqrt{1 - \\dfrac{9}{25}} = '
-                        '-\\dfrac{4}{5}$. Suy...',
-                        'Ta có...',
-                        'Với mọi $x \\in \\mathbb{R}$, ta có $-1 \\le \\sin 2x \\le 1 \\Rightarrow -3 \\le '
-                        '3\\sin 2x \\le 3 \\Rightarrow -4 \\le 3\\sin 2x - 1 \\le 2$. Vậy tập giá trị là '
-                        '$[-4; 2]$...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 6: Cấp số cộng** để giải bài toán sau: Cho cấp số '
+                 'cộng $(u_n)$ có $u_1 = 3$ và công sai $d = 4$. Tính $u_{10}$ và tổng $S_{10}$. Cách giải '
+                 'và kết quả nào dưới đây là **đúng**?',
+            'options': ['Ta có $u_{10} = u_1 - 9d = 3 + 9 \\cdot 4 = 39$. Tổng $10$ số hạng đầu là $S_{10} = '
+                        '\\dfrac{10(u_1 + u_{10})}{2} = \\dfrac{10 \\cdot (3 + 39)}{2} = 210$.',
+                        'Ta có $u_{10} = u_1 + 9d = 3 + 9 \\cdot 4 = 39$. Tổng $10$ số hạng đầu là $S_{10} = '
+                        '\\dfrac{10(u_1 + u_{10})}{2} = \\dfrac{2}{10 \\cdot (3 + 39)} = 210$.',
+                        'Ta có $u_{20} = u_1 + 9d = 3 + 9 \\cdot 4 = 39$. Tổng $10$ số hạng đầu là $S_{10} = '
+                        '\\dfrac{10(u_1 + u_{10})}{2} = \\dfrac{10 \\cdot (3 + 39)}{2} = 210$.',
                         'Ta có $u_{10} = u_1 + 9d = 3 + 9 \\cdot 4 = 39$. Tổng $10$ số hạng đầu là $S_{10} = '
                         '\\dfrac{10(u_1 + u_{10})}{2} = \\dfrac{10 \\cdot (3 + 39)}{2} = 210$.'],
             'answer': 3,
@@ -1122,26 +1127,26 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 7: Cấp số nhân**, công thức hoặc quy tắc nào sau đây '
-                 'biểu diễn đúng **Định nghĩa công bội**?',
+            'q': 'Trong **Bài 7: Cấp số nhân**, quy tắc hoặc công thức nào sau đây xác định đúng **Định '
+                 'nghĩa công bội**?',
             'options': ['$u_{n+1} = u_n \\cdot q$',
-                        '$u_n = u_1 \\cdot q^{n-1} \\quad (n \\ge 2)$',
-                        '$u_k^2 = u_{k-1} \\cdot u_{k+1} \\quad (k \\ge 2)$',
-                        '$S_n = \\dfrac{u_1(1 - q^n)}{1 - q} = \\dfrac{u_1(q^n - 1)}{q - 1}$'],
+                        '$u_{n+1} = u_n : q$',
+                        '$u_{n+2} = u_n \\cdot q$',
+                        '$u_n = u_1 \\cdot q^{n-1} \\quad (n \\ge 2)$'],
             'answer': 0,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 7: Cấp số nhân, **Định nghĩa công bội** được '
-                        'xác định bởi: $u_{n+1} = u_n \\cdot q$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 7: Cấp số nhân, **Định nghĩa công bội** được xác '
+                        'định bởi: $u_{n+1} = u_n \\cdot q$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 7: Cấp số nhân**, nội dung/biểu thức $u_n = u_1 \\cdot q^{n-1} \\quad (n \\ge '
-                 '2)$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Định nghĩa công bội',
-                        'Số hạng tổng quát',
-                        'Tính chất ba số hạng liên tiếp',
-                        'Tổng n số hạng đầu (q ≠ 1)'],
+            'q': 'Khi học **Bài 7: Cấp số nhân**, biểu thức hoặc quy tắc nào dưới đây biểu diễn đúng **Số '
+                 'hạng tổng quát**?',
+            'options': ['$u_n = u_1 \\cdot q^{n-1} \\quad (n \\le 2)$',
+                        '$u_n = u_1 \\cdot q^{n-1} \\quad (n \\ge 2)$',
+                        '$u_n = u_1 \\cdot q^{n-1} \\quad (n \\ge 1)$',
+                        '$u_n = u_1 \\cdot q^{n-2} \\quad (n \\ge 2)$'],
             'answer': 1,
-            'solution': 'Trong Bài 7: Cấp số nhân, biểu thức/quy tắc $u_n = u_1 \\cdot q^{n-1} \\quad (n '
-                        '\\ge 2)$ chính là nội dung của **Số hạng tổng quát**.'},
+            'solution': 'Trong Bài 7: Cấp số nhân, **Số hạng tổng quát** có công thức/quy tắc là: $u_n = u_1 '
+                        '\\cdot q^{n-1} \\quad (n \\ge 2)$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Cho cấp số nhân $(u_n)$ có $u_1 = 1$ và $q = 2$. Tổng của $6$ số hạng đầu tiên $S_6$ bằng:',
@@ -1153,18 +1158,17 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 7: Cấp số nhân** (Chương II: Dãy số. Cấp số cộng và cấp số nhân), khẳng định '
-                 'nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Nhận biết được khái niệm góc lượng giác, hệ thức Chasles và đổi được số đo góc giữa '
-                        'độ và radian.',
-                        'Xác định được điểm biểu diễn trên đường tròn lượng giác và các giá trị $\\sin '
-                        '\\alpha, \\cos \\alpha, \\tan \\alpha, \\cot \\alpha$.',
-                        'Vận dụng các hệ thức lượng giác cơ bản và giá trị lượng giác của các góc có liên '
-                        'quan đặc biệt (đối nhau, bù nhau, phụ nhau, hơn kém $\\pi$).',
+            'q': 'Để nắm vững bản chất của **Bài 7: Cấp số nhân**, nhận định nào sau đây là **chính xác**?',
+            'options': ['Nhận biết được một dãy số là cấp số nhân và xác định được số hạng đầu $u_1$, công '
+                        'bội $q$. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Nhận biết được một dãy số là cấp số nhân và xác định được '
+                        'số hạng đầu $u_1$, công bội $q$.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nhận biết được một dãy số là '
+                        'cấp số nhân và xác định được số hạng đầu $u_1$, công bội $q$.',
                         'Nhận biết được một dãy số là cấp số nhân và xác định được số hạng đầu $u_1$, công '
                         'bội $q$.'],
             'answer': 3,
-            'solution': 'Theo yêu cầu cần đạt của Bài 7: Cấp số nhân: Nhận biết được một dãy số là cấp số '
+            'solution': 'Theo nội dung cốt lõi của Bài 7: Cấp số nhân: Nhận biết được một dãy số là cấp số '
                         'nhân và xác định được số hạng đầu $u_1$, công bội $q$.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -1182,40 +1186,35 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 7: Cấp số nhân**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được một dãy số là cấp '
-                           'số nhân và xác định được số hạng đầu $u_1$, công bội $q$.',
-                           'Quy tắc/công thức **Định nghĩa công bội** trong bài được xác định bởi: $u_{n+1} '
-                           '= u_n \\cdot q$.',
-                           'Trong mọi trường hợp, **Định nghĩa công bội** luôn được tính bằng công thức '
-                           '$a^\\circ = \\dfrac{\\pi a}{180}\\text{ rad}, \\quad \\alpha\\text{ rad} = '
-                           '\\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$ (thuộc Đổi độ và radian) mà '
-                           'không cần điều kiện của Bài 7: Cấp số nhân.',
-                           'Với bài toán minh họa: “Cho cấp số nhân $(u_n)$ có $u_1 = 2$ và công bội $q = '
-                           '3$. Tính $u_5$ và tổng $S_5$.”, lời giải đúng là: Ta có $u_5 = u_1 \\cdot q^4 = '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 7: Cấp số nhân**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết được một dãy số là cấp số nhân '
+                           'và xác định được số hạng đầu $u_1$, công bội $q$.',
+                           'Trong **Bài 7: Cấp số nhân**, quy tắc/công thức **Định nghĩa công bội** được '
+                           'viết là: $u_{n+1} = u_n \\cdot q$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $u_{n+1} = u_n : q$ thì kết quả của **Định '
+                           'nghĩa công bội** trong **Bài 7: Cấp số nhân** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Cho cấp số nhân $(u_n)$ có $u_1 = 2$ và công bội $q = 3$. '
+                           'Tính $u_5$ và tổng $S_5$.”, kết quả giải đúng là: Ta có $u_5 = u_1 \\cdot q^4 = '
                            '2 \\cdot 3^4 = 162$. Tổng $5$ số hạng đầu là $S_5 = \\dfrac{2(3^5 - 1)}{3 - 1} = '
                            '3^5 - 1 = 242$.'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 7: Cấp số nhân. b) **Đúng** theo công thức '
-                        'trọng tâm **Định nghĩa công bội** ($u_{n+1} = u_n \\cdot q$). c) **Sai** vì '
-                        '$a^\\circ = \\dfrac{\\pi a}{180}\\text{ rad}, \\quad \\alpha\\text{ rad} = '
-                        '\\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$ là công thức của nội dung khác, '
-                        'không phải quy tắc chung của **Định nghĩa công bội**. d) **Đúng** theo lời giải ví '
-                        'dụ minh họa trong bài học.'},
+                        '**Định nghĩa công bội** ($u_{n+1} = u_n \\cdot q$). c) **Sai** vì công thức đúng '
+                        'của **Định nghĩa công bội** phải là $u_{n+1} = u_n \\cdot q$ chứ không phải '
+                        '$u_{n+1} = u_n : q$. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 7: Cấp số nhân** để giải quyết tình huống sau: Cho cấp số nhân '
-                 '$(u_n)$ có $u_1 = 2$ và công bội $q = 3$. Tính $u_5$ và tổng $S_5$. Kết quả và hướng giải '
-                 'nào dưới đây là **đúng**?',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 7: Cấp số nhân** để giải bài toán sau: Cho cấp số '
+                 'nhân $(u_n)$ có $u_1 = 2$ và công bội $q = 3$. Tính $u_5$ và tổng $S_5$. Cách giải và kết '
+                 'quả nào dưới đây là **đúng**?',
             'options': ['Ta có $u_5 = u_1 \\cdot q^4 = 2 \\cdot 3^4 = 162$. Tổng $5$ số hạng đầu là $S_5 = '
                         '\\dfrac{2(3^5 - 1)}{3 - 1} = 3^5 - 1 = 242$.',
-                        'Vì $\\dfrac{\\pi}{2} < \\alpha < \\pi$ nên $\\cos \\alpha < 0$. Ta có $\\cos '
-                        '\\alpha = -\\sqrt{1 - \\sin^2 \\alpha} = -\\sqrt{1 - \\dfrac{9}{25}} = '
-                        '-\\dfrac{4}{5}$. Suy...',
-                        'Ta có...',
-                        'Với mọi $x \\in \\mathbb{R}$, ta có $-1 \\le \\sin 2x \\le 1 \\Rightarrow -3 \\le '
-                        '3\\sin 2x \\le 3 \\Rightarrow -4 \\le 3\\sin 2x - 1 \\le 2$. Vậy tập giá trị là '
-                        '$[-4; 2]$...'],
+                        'Ta có $u_5 = u_1 \\cdot q^4 = 2 \\cdot 3^4 = 162$. Tổng $5$ số hạng đầu là $S_5 = '
+                        '\\dfrac{2(3^5 + 1)}{3 - 1} = 3^5 - 1 = 242$.',
+                        'Ta có $u_5 = u_1 \\cdot q^4 = 2 \\cdot 3^4 = 162$. Tổng $5$ số hạng đầu là $S_5 = '
+                        '\\dfrac{3 - 1}{2(3^5 - 1)} = 3^5 - 1 = 242$.',
+                        'Ta có $u_5 = u_1 \\cdot q^8 = 2 \\cdot 3^4 = 162$. Tổng $5$ số hạng đầu là $S_5 = '
+                        '\\dfrac{2(3^5 - 1)}{3 - 1} = 3^5 - 1 = 242$.'],
             'answer': 0,
             'solution': 'Lời giải chi tiết theo Bài 7: Cấp số nhân: Ta có $u_5 = u_1 \\cdot q^4 = 2 \\cdot '
                         '3^4 = 162$. Tổng $5$ số hạng đầu là $S_5 = \\dfrac{2(3^5 - 1)}{3 - 1} = 3^5 - 1 = '
@@ -1275,24 +1274,26 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 8: Mẫu số liệu ghép nhóm**, công thức hoặc quy tắc nào '
-                 'sau đây biểu diễn đúng **Độ dài nhóm**?',
-            'options': ['$x_i = \\dfrac{a + b}{2}$',
+            'q': 'Trong **Bài 8: Mẫu số liệu ghép nhóm**, quy tắc hoặc công thức nào sau đây xác định đúng '
+                 '**Độ dài nhóm**?',
+            'options': ['$d = b + a$',
                         '$d = b - a$',
-                        '$n = n_1 + n_2 + \\dots + n_k$',
-                        '$a^\\circ = \\dfrac{\\pi a}{180}\\text{ rad}, \\quad \\alpha\\text{ rad} = '
-                        '\\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$'],
+                        'Đảo ngược vế của quy tắc: $d = b - a$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $d = b - a$'],
             'answer': 1,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 8: Mẫu số liệu ghép nhóm, **Độ dài nhóm** '
-                        'được xác định bởi: $d = b - a$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 8: Mẫu số liệu ghép nhóm, **Độ dài nhóm** được xác '
+                        'định bởi: $d = b - a$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 8: Mẫu số liệu ghép nhóm**, nội dung/biểu thức $x_i = \\dfrac{a + b}{2}$ là '
-                 'quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Độ dài nhóm', 'Cỡ mẫu', 'Giá trị đại diện của nhóm', 'Đổi độ và radian'],
+            'q': 'Khi học **Bài 8: Mẫu số liệu ghép nhóm**, biểu thức hoặc quy tắc nào dưới đây biểu diễn '
+                 'đúng **Giá trị đại diện của nhóm**?',
+            'options': ['$x_i = \\dfrac{a - b}{2}$',
+                        '$x_i = \\dfrac{2}{a + b}$',
+                        '$x_i = \\dfrac{a + b}{2}$',
+                        '$x_i = \\dfrac{a + b}{4}$'],
             'answer': 2,
-            'solution': 'Trong Bài 8: Mẫu số liệu ghép nhóm, biểu thức/quy tắc $x_i = \\dfrac{a + b}{2}$ '
-                        'chính là nội dung của **Giá trị đại diện của nhóm**.'},
+            'solution': 'Trong Bài 8: Mẫu số liệu ghép nhóm, **Giá trị đại diện của nhóm** có công thức/quy '
+                        'tắc là: $x_i = \\dfrac{a + b}{2}$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Một giá trị số liệu $x = 20$ sẽ được xếp vào nhóm nào trong các nhóm $[10; 15), [15; 20), '
@@ -1305,20 +1306,19 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 8: Mẫu số liệu ghép nhóm** (Chương III: Các số đặc trưng đo xu thế trung tâm '
-                 'của mẫu số liệu ghép nhóm), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và '
-                 'bản chất kiến thức của bài?',
+            'q': 'Để nắm vững bản chất của **Bài 8: Mẫu số liệu ghép nhóm**, nhận định nào sau đây là '
+                 '**chính xác**?',
             'options': ['Hiểu được mục đích ghép nhóm số liệu để thuận tiện cho việc tổ chức, đọc và phân '
                         'tích mẫu số liệu lớn.',
-                        'Nhận biết được khái niệm góc lượng giác, hệ thức Chasles và đổi được số đo góc giữa '
-                        'độ và radian.',
-                        'Xác định được điểm biểu diễn trên đường tròn lượng giác và các giá trị $\\sin '
-                        '\\alpha, \\cos \\alpha, \\tan \\alpha, \\cot \\alpha$.',
-                        'Vận dụng các hệ thức lượng giác cơ bản và giá trị lượng giác của các góc có liên '
-                        'quan đặc biệt (đối nhau, bù nhau, phụ nhau, hơn kém $\\pi$).'],
+                        'Hiểu được mục đích ghép nhóm số liệu để thuận tiện cho việc tổ chức, đọc và phân '
+                        'tích mẫu số liệu lớn. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Hiểu được mục đích ghép nhóm số liệu để thuận tiện cho '
+                        'việc tổ chức, đọc và phân tích mẫu số liệu lớn.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Hiểu được mục đích ghép nhóm số '
+                        'liệu để thuận tiện cho việc tổ chức, đọc và phân tích mẫu số liệu lớn.'],
             'answer': 0,
-            'solution': 'Theo yêu cầu cần đạt của Bài 8: Mẫu số liệu ghép nhóm: Hiểu được mục đích ghép nhóm '
-                        'số liệu để thuận tiện cho việc tổ chức, đọc và phân tích mẫu số liệu lớn.'},
+            'solution': 'Theo nội dung cốt lõi của Bài 8: Mẫu số liệu ghép nhóm: Hiểu được mục đích ghép '
+                        'nhóm số liệu để thuận tiện cho việc tổ chức, đọc và phân tích mẫu số liệu lớn.'},
            {'level': 'hieu',
             'type': 'tf4',
             'q': 'Khảo sát thời gian hoàn thành bài tập (phút) của một lớp học thu được bảng ghép nhóm: $[5; '
@@ -1336,40 +1336,35 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 8: Mẫu số liệu ghép '
-                 'nhóm**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Hiểu được mục đích ghép nhóm số '
-                           'liệu để thuận tiện cho việc tổ chức, đọc và phân tích mẫu số liệu lớn.',
-                           'Quy tắc/công thức **Độ dài nhóm** trong bài được xác định bởi: $d = b - a$.',
-                           'Trong mọi trường hợp, **Độ dài nhóm** luôn được tính bằng công thức $a^\\circ = '
-                           '\\dfrac{\\pi a}{180}\\text{ rad}, \\quad \\alpha\\text{ rad} = '
-                           '\\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$ (thuộc Đổi độ và radian) mà '
-                           'không cần điều kiện của Bài 8: Mẫu số liệu ghép nhóm.',
-                           'Với bài toán minh họa: “Cho nhóm số liệu $[150; 160)$ trong bảng chiều cao học '
-                           'sinh. Tìm độ dài nhóm và giá trị đại diện của nhóm đó.”, lời giải đúng là: Độ '
-                           'dài của nhóm $[150; 160)$ là $d = 160 - 150 = 10$. Giá trị đại diện của nhóm là '
-                           '$x_i = \\dfrac{150 + 160}{2} = 155$.'],
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 8: Mẫu số liệu ghép nhóm**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Hiểu được mục đích ghép nhóm số liệu để '
+                           'thuận tiện cho việc tổ chức, đọc và phân tích mẫu số liệu lớn.',
+                           'Trong **Bài 8: Mẫu số liệu ghép nhóm**, quy tắc/công thức **Độ dài nhóm** được '
+                           'viết là: $d = b - a$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $d = b + a$ thì kết quả của **Độ dài nhóm** '
+                           'trong **Bài 8: Mẫu số liệu ghép nhóm** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Cho nhóm số liệu $[150; 160)$ trong bảng chiều cao học sinh. '
+                           'Tìm độ dài nhóm và giá trị đại diện của nhóm đó.”, kết quả giải đúng là: Độ dài '
+                           'của nhóm $[150; 160)$ là $d = 160 - 150 = 10$. Giá trị đại diện của nhóm là $x_i '
+                           '= \\dfrac{150 + 160}{2} = 155$.'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 8: Mẫu số liệu ghép nhóm. b) **Đúng** theo '
-                        'công thức trọng tâm **Độ dài nhóm** ($d = b - a$). c) **Sai** vì $a^\\circ = '
-                        '\\dfrac{\\pi a}{180}\\text{ rad}, \\quad \\alpha\\text{ rad} = '
-                        '\\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$ là công thức của nội dung khác, '
-                        'không phải quy tắc chung của **Độ dài nhóm**. d) **Đúng** theo lời giải ví dụ minh '
-                        'họa trong bài học.'},
+                        'công thức **Độ dài nhóm** ($d = b - a$). c) **Sai** vì công thức đúng của **Độ dài '
+                        'nhóm** phải là $d = b - a$ chứ không phải $d = b + a$. d) **Đúng** theo lời giải ví '
+                        'dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 8: Mẫu số liệu ghép nhóm** để giải quyết tình huống sau: Cho nhóm '
-                 'số liệu $[150; 160)$ trong bảng chiều cao học sinh. Tìm độ dài nhóm và giá trị đại diện '
-                 'của nhóm đó. Kết quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Vì $\\dfrac{\\pi}{2} < \\alpha < \\pi$ nên $\\cos \\alpha < 0$. Ta có $\\cos '
-                        '\\alpha = -\\sqrt{1 - \\sin^2 \\alpha} = -\\sqrt{1 - \\dfrac{9}{25}} = '
-                        '-\\dfrac{4}{5}$. Suy...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 8: Mẫu số liệu ghép nhóm** để giải bài toán sau: '
+                 'Cho nhóm số liệu $[150; 160)$ trong bảng chiều cao học sinh. Tìm độ dài nhóm và giá trị '
+                 'đại diện của nhóm đó. Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Độ dài của nhóm $[150; 160)$ là $d = 160 - 150 = 10$. Giá trị đại diện của nhóm là '
+                        '$x_i = \\dfrac{150 - 160}{2} = 155$.',
                         'Độ dài của nhóm $[150; 160)$ là $d = 160 - 150 = 10$. Giá trị đại diện của nhóm là '
                         '$x_i = \\dfrac{150 + 160}{2} = 155$.',
-                        'Ta có...',
-                        'Với mọi $x \\in \\mathbb{R}$, ta có $-1 \\le \\sin 2x \\le 1 \\Rightarrow -3 \\le '
-                        '3\\sin 2x \\le 3 \\Rightarrow -4 \\le 3\\sin 2x - 1 \\le 2$. Vậy tập giá trị là '
-                        '$[-4; 2]$...'],
+                        'Độ dài của nhóm $[150; 160)$ là $d = 160 - 150 = 10$. Giá trị đại diện của nhóm là '
+                        '$x_i = \\dfrac{2}{150 + 160} = 155$.',
+                        'Độ dài của nhóm $[152; 160)$ là $d = 160 - 150 = 10$. Giá trị đại diện của nhóm là '
+                        '$x_i = \\dfrac{150 + 160}{2} = 155$.'],
             'answer': 1,
             'solution': 'Lời giải chi tiết theo Bài 8: Mẫu số liệu ghép nhóm: Độ dài của nhóm $[150; 160)$ '
                         'là $d = 160 - 150 = 10$. Giá trị đại diện của nhóm là $x_i = \\dfrac{150 + 160}{2} '
@@ -1451,30 +1446,29 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 9: Các số đặc trưng đo xu thế trung tâm**, công thức '
-                 'hoặc quy tắc nào sau đây biểu diễn đúng **Số trung bình**?',
-            'options': ['$M_e = Q_2 = u_m + \\dfrac{\\dfrac{n}{2} - C}{n_m} \\cdot (u_{m+1} - u_m)$',
-                        '$Q_r = u_m + \\dfrac{\\dfrac{r \\cdot n}{4} - C}{n_m} \\cdot (u_{m+1} - u_m)$',
+            'q': 'Trong **Bài 9: Các số đặc trưng đo xu thế trung tâm**, quy tắc hoặc công thức nào sau đây '
+                 'xác định đúng **Số trung bình**?',
+            'options': ['$\\bar{x} = \\dfrac{n_1 x_1 - n_2 x_2 + \\dots + n_k x_k}{n}$',
+                        '$\\bar{x} = \\dfrac{n}{n_1 x_1 + n_2 x_2 + \\dots + n_k x_k}$',
                         '$\\bar{x} = \\dfrac{n_1 x_1 + n_2 x_2 + \\dots + n_k x_k}{n}$',
-                        '$M_o = u_m + \\dfrac{n_m - n_{m-1}}{(n_m - n_{m-1}) + (n_m - n_{m+1})} \\cdot '
-                        '(u_{m+1} - u_m)$'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\bar{x} = \\dfrac{n_1 x_1 + '
+                        'n_2 x_2 + \\dots + n_k x_k}{n}$'],
             'answer': 2,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 9: Các số đặc trưng đo xu thế trung tâm, **Số '
+            'solution': 'Theo kiến thức trọng tâm của Bài 9: Các số đặc trưng đo xu thế trung tâm, **Số '
                         'trung bình** được xác định bởi: $\\bar{x} = \\dfrac{n_1 x_1 + n_2 x_2 + \\dots + '
                         'n_k x_k}{n}$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 9: Các số đặc trưng đo xu thế trung tâm**, nội dung/biểu thức $M_e = Q_2 = u_m '
-                 '+ \\dfrac{\\dfrac{n}{2} - C}{n_m} \\cdot (u_{m+1} - u_m)$ là quy tắc hoặc công thức của '
-                 'mục nào sau đây?',
-            'options': ['Số trung bình',
-                        'Tứ phân vị thứ r (r = 1, 2, 3)',
-                        'Mốt',
-                        'Trung vị (Tứ phân vị thứ hai)'],
+            'q': 'Khi học **Bài 9: Các số đặc trưng đo xu thế trung tâm**, biểu thức hoặc quy tắc nào dưới '
+                 'đây biểu diễn đúng **Trung vị (Tứ phân vị thứ hai)**?',
+            'options': ['$M_e = Q_2 = u_m - \\dfrac{\\dfrac{n}{2} - C}{n_m} \\cdot (u_{m+1} - u_m)$',
+                        '$M_e = Q_2 = u_m + \\dfrac{\\dfrac{2}{n} - C}{n_m} \\cdot (u_{m+1} - u_m)$',
+                        '$M_e = Q_2 = u_m + \\dfrac{\\dfrac{n}{4} - C}{n_m} \\cdot (u_{m+1} - u_m)$',
+                        '$M_e = Q_2 = u_m + \\dfrac{\\dfrac{n}{2} - C}{n_m} \\cdot (u_{m+1} - u_m)$'],
             'answer': 3,
-            'solution': 'Trong Bài 9: Các số đặc trưng đo xu thế trung tâm, biểu thức/quy tắc $M_e = Q_2 = '
-                        'u_m + \\dfrac{\\dfrac{n}{2} - C}{n_m} \\cdot (u_{m+1} - u_m)$ chính là nội dung của '
-                        '**Trung vị (Tứ phân vị thứ hai)**.'},
+            'solution': 'Trong Bài 9: Các số đặc trưng đo xu thế trung tâm, **Trung vị (Tứ phân vị thứ '
+                        'hai)** có công thức/quy tắc là: $M_e = Q_2 = u_m + \\dfrac{\\dfrac{n}{2} - C}{n_m} '
+                        '\\cdot (u_{m+1} - u_m)$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Một mẫu số liệu ghép nhóm gồm 3 nhóm: $[0; 10)$ có tần số $2$; $[10; 20)$ có tần số $5$; '
@@ -1487,19 +1481,18 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 9: Các số đặc trưng đo xu thế trung tâm** (Chương III: Các số đặc trưng đo '
-                 'xu thế trung tâm của mẫu số liệu ghép nhóm), khẳng định nào sau đây phản ánh **đúng** yêu '
-                 'cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Nhận biết được khái niệm góc lượng giác, hệ thức Chasles và đổi được số đo góc giữa '
-                        'độ và radian.',
+            'q': 'Để nắm vững bản chất của **Bài 9: Các số đặc trưng đo xu thế trung tâm**, nhận định nào '
+                 'sau đây là **chính xác**?',
+            'options': ['Tính được số trung bình cộng $\\bar{x}$ của mẫu số liệu ghép nhóm thông qua giá trị '
+                        'đại diện các nhóm. (với dấu ngược lại)',
                         'Tính được số trung bình cộng $\\bar{x}$ của mẫu số liệu ghép nhóm thông qua giá trị '
                         'đại diện các nhóm.',
-                        'Xác định được điểm biểu diễn trên đường tròn lượng giác và các giá trị $\\sin '
-                        '\\alpha, \\cos \\alpha, \\tan \\alpha, \\cot \\alpha$.',
-                        'Vận dụng các hệ thức lượng giác cơ bản và giá trị lượng giác của các góc có liên '
-                        'quan đặc biệt (đối nhau, bù nhau, phụ nhau, hơn kém $\\pi$).'],
+                        'Đảo ngược vế của quy tắc: Tính được số trung bình cộng $\\bar{x}$ của mẫu số liệu '
+                        'ghép nhóm thông qua giá trị đại diện các nhóm.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Tính được số trung bình cộng '
+                        '$\\bar{x}$ của mẫu số liệu ghép nhóm thông qua giá trị đại diện các nhóm.'],
             'answer': 1,
-            'solution': 'Theo yêu cầu cần đạt của Bài 9: Các số đặc trưng đo xu thế trung tâm: Tính được số '
+            'solution': 'Theo nội dung cốt lõi của Bài 9: Các số đặc trưng đo xu thế trung tâm: Tính được số '
                         'trung bình cộng $\\bar{x}$ của mẫu số liệu ghép nhóm thông qua giá trị đại diện các '
                         'nhóm.'},
            {'level': 'hieu',
@@ -1520,45 +1513,46 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 9: Các số đặc trưng đo '
-                 'xu thế trung tâm**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Tính được số trung bình cộng '
-                           '$\\bar{x}$ của mẫu số liệu ghép nhóm thông qua giá trị đại diện các nhóm.',
-                           'Quy tắc/công thức **Số trung bình** trong bài được xác định bởi: $\\bar{x} = '
-                           '\\dfrac{n_1 x_1 + n_2 x_2 + \\dots + n_k x_k}{n}$.',
-                           'Trong mọi trường hợp, **Số trung bình** luôn được tính bằng công thức $a^\\circ '
-                           '= \\dfrac{\\pi a}{180}\\text{ rad}, \\quad \\alpha\\text{ rad} = '
-                           '\\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$ (thuộc Đổi độ và radian) mà '
-                           'không cần điều kiện của Bài 9: Các số đặc trưng đo xu thế trung tâm.',
-                           'Với bài toán minh họa: “Điểm kiểm tra của 20 học sinh được ghép thành 3 nhóm: '
-                           '$[4; 6)$ có 4 em; $[6; 8)$ có 10 em; $[8; 10]$ có 6 em. Tính điểm trung bình '
-                           '$\\bar{x}$...”, lời giải đúng là: Giá trị đại diện là $5; 7; 9$. Điểm trung bình '
-                           '$\\bar{x} = \\dfrac{4 \\cdot 5 + 10 \\cdot 7 + 6 \\cdot 9}{20} = '
-                           '\\dfrac{144}{20} = 7,2$. Cỡ mẫu $n = 20 \\Rightarrow \\dfrac{n}{2} = 10$...'],
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 9: Các số đặc trưng đo xu '
+                 'thế trung tâm**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Tính được số trung bình cộng $\\bar{x}$ '
+                           'của mẫu số liệu ghép nhóm thông qua giá trị đại diện các nhóm.',
+                           'Trong **Bài 9: Các số đặc trưng đo xu thế trung tâm**, quy tắc/công thức **Số '
+                           'trung bình** được viết là: $\\bar{x} = \\dfrac{n_1 x_1 + n_2 x_2 + \\dots + n_k '
+                           'x_k}{n}$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $\\bar{x} = \\dfrac{n_1 x_1 - n_2 x_2 + '
+                           '\\dots + n_k x_k}{n}$ thì kết quả của **Số trung bình** trong **Bài 9: Các số '
+                           'đặc trưng đo xu thế trung tâm** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Điểm kiểm tra của 20 học sinh được ghép thành 3 nhóm: $[4; '
+                           '6)$ có 4 em; $[6; 8)$ có 10 em; $[8; 10]$ có 6 em. Tính điểm trung bình '
+                           '$\\bar{x}$...”, kết quả giải đúng là: Giá trị đại diện là $5; 7; 9$. Điểm trung '
+                           'bình $\\bar{x} = \\dfrac{4 \\cdot 5 + 10 \\cdot 7 + 6 \\cdot 9}{20} = '
+                           '\\dfrac{144}{20} = 7,2$. Cỡ m...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 9: Các số đặc trưng đo xu thế trung tâm. '
-                        'b) **Đúng** theo công thức trọng tâm **Số trung bình** ($\\bar{x} = \\dfrac{n_1 x_1 '
-                        '+ n_2 x_2 + \\dots + n_k x_k}{n}$). c) **Sai** vì $a^\\circ = \\dfrac{\\pi '
-                        'a}{180}\\text{ rad}, \\quad \\alpha\\text{ rad} = '
-                        '\\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$ là công thức của nội dung khác, '
-                        'không phải quy tắc chung của **Số trung bình**. d) **Đúng** theo lời giải ví dụ '
-                        'minh họa trong bài học.'},
+                        'b) **Đúng** theo công thức **Số trung bình** ($\\bar{x} = \\dfrac{n_1 x_1 + n_2 x_2 '
+                        '+ \\dots + n_k x_k}{n}$). c) **Sai** vì công thức đúng của **Số trung bình** phải '
+                        'là $\\bar{x} = \\dfrac{n_1 x_1 + n_2 x_2 + \\dots + n_k x_k}{n}$ chứ không phải '
+                        '$\\bar{x} = \\dfrac{n_1 x_1 - n_2 x_2 + \\dots + n_k x_k}{n}$. d) **Đúng** theo lời '
+                        'giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 9: Các số đặc trưng đo xu thế trung tâm** để giải quyết tình '
-                 'huống sau: Điểm kiểm tra của 20 học sinh được ghép thành 3 nhóm: $[4; 6)$ có 4 em; $[6; '
-                 '8)$ có 10 em; $[8; 10]$ có 6 em. Tính điểm trung bình $\\bar{x}$ và trung vị $M_e$. Kết '
-                 'quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Vì $\\dfrac{\\pi}{2} < \\alpha < \\pi$ nên $\\cos \\alpha < 0$. Ta có $\\cos '
-                        '\\alpha = -\\sqrt{1 - \\sin^2 \\alpha} = -\\sqrt{1 - \\dfrac{9}{25}} = '
-                        '-\\dfrac{4}{5}$. Suy...',
-                        'Ta có...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 9: Các số đặc trưng đo xu thế trung tâm** để giải '
+                 'bài toán sau: Điểm kiểm tra của 20 học sinh được ghép thành 3 nhóm: $[4; 6)$ có 4 em; $[6; '
+                 '8)$ có 10 em; $[8; 10]$ có 6 em. Tính điểm trung bình $\\bar{x}$ và trung vị $M_e$. Cách '
+                 'giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Giá trị đại diện là $5; 7; 9$. Điểm trung bình $\\bar{x} = \\dfrac{4 \\cdot 5 - 10 '
+                        '\\cdot 7 + 6 \\cdot 9}{20} = \\dfrac{144}{20} = 7,2$. Cỡ mẫu $n = 20 \\Rightarrow '
+                        '\\dfrac{n}{2} = 10$...',
+                        'Giá trị đại diện là $5; 7; 9$. Điểm trung bình $\\bar{x} = \\dfrac{20}{4 \\cdot 5 + '
+                        '10 \\cdot 7 + 6 \\cdot 9} = \\dfrac{144}{20} = 7,2$. Cỡ mẫu $n = 20 \\Rightarrow '
+                        '\\dfrac{n}{2} = 10$...',
                         'Giá trị đại diện là $5; 7; 9$. Điểm trung bình $\\bar{x} = \\dfrac{4 \\cdot 5 + 10 '
                         '\\cdot 7 + 6 \\cdot 9}{20} = \\dfrac{144}{20} = 7,2$. Cỡ mẫu $n = 20 \\Rightarrow '
                         '\\dfrac{n}{2} = 10$...',
-                        'Với mọi $x \\in \\mathbb{R}$, ta có $-1 \\le \\sin 2x \\le 1 \\Rightarrow -3 \\le '
-                        '3\\sin 2x \\le 3 \\Rightarrow -4 \\le 3\\sin 2x - 1 \\le 2$. Vậy tập giá trị là '
-                        '$[-4; 2]$...'],
+                        'Giá trị đại diện là $10; 7; 9$. Điểm trung bình $\\bar{x} = \\dfrac{4 \\cdot 5 + 10 '
+                        '\\cdot 7 + 6 \\cdot 9}{20} = \\dfrac{144}{20} = 7,2$. Cỡ mẫu $n = 20 \\Rightarrow '
+                        '\\dfrac{n}{2} = 10$...'],
             'answer': 2,
             'solution': 'Lời giải chi tiết theo Bài 9: Các số đặc trưng đo xu thế trung tâm: Giá trị đại '
                         'diện là $5; 7; 9$. Điểm trung bình $\\bar{x} = \\dfrac{4 \\cdot 5 + 10 \\cdot 7 + 6 '
@@ -1632,34 +1626,36 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 10: Đường thẳng và mặt phẳng trong không gian**, công '
-                 'thức hoặc quy tắc nào sau đây biểu diễn đúng **Điểm thuộc đường thẳng và mặt phẳng**?',
-            'options': ['$\\begin{cases} A \\in (\\alpha) \\cap (\\beta) \\\\ B \\in (\\alpha) \\cap '
-                        '(\\beta) \\end{cases} \\Rightarrow (\\alpha) \\cap (\\beta) = AB$',
-                        '$\\text{Tứ diện } ABCD \\text{ có } 4 \\text{ đỉnh, } 6 \\text{ cạnh, } 4 \\text{ '
-                        'mặt tam giác}$',
-                        '$a^\\circ = \\dfrac{\\pi a}{180}\\text{ rad}, \\quad \\alpha\\text{ rad} = '
-                        '\\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$',
+            'q': 'Trong **Bài 10: Đường thẳng và mặt phẳng trong không gian**, quy tắc hoặc công thức nào '
+                 'sau đây xác định đúng **Điểm thuộc đường thẳng và mặt phẳng**?',
+            'options': ['$A \\notin d, \\quad A \\in (P), \\quad d \\subset (P)$',
+                        'Đảo ngược vế của quy tắc: $A \\in d, \\quad A \\in (P), \\quad d \\subset (P)$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $A \\in d, \\quad A \\in (P), '
+                        '\\quad d \\subset (P)$',
                         '$A \\in d, \\quad A \\in (P), \\quad d \\subset (P)$'],
             'answer': 3,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 10: Đường thẳng và mặt phẳng trong không '
-                        'gian, **Điểm thuộc đường thẳng và mặt phẳng** được xác định bởi: $A \\in d, \\quad '
-                        'A \\in (P), \\quad d \\subset (P)$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 10: Đường thẳng và mặt phẳng trong không gian, '
+                        '**Điểm thuộc đường thẳng và mặt phẳng** được xác định bởi: $A \\in d, \\quad A \\in '
+                        '(P), \\quad d \\subset (P)$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 10: Đường thẳng và mặt phẳng trong không gian**, nội dung/biểu thức '
-                 '$\\begin{cases} A \\in (\\alpha) \\cap (\\beta) \\\\ B \\in (\\alpha) \\cap (\\beta) '
-                 '\\end{cases} \\Rightarrow (\\alpha) \\cap (\\beta) = AB$ là quy tắc hoặc công thức của mục '
-                 'nào sau đây?',
-            'options': ['Tìm giao tuyến hai mặt phẳng',
-                        'Điểm thuộc đường thẳng và mặt phẳng',
-                        'Số mặt và cạnh của tứ diện',
-                        'Đổi độ và radian'],
+            'q': 'Khi học **Bài 10: Đường thẳng và mặt phẳng trong không gian**, biểu thức hoặc quy tắc nào '
+                 'dưới đây biểu diễn đúng **Tìm giao tuyến hai mặt phẳng**?',
+            'options': ['$\\begin{cases} A \\in (\\alpha) \\cap (\\beta) \\\\ B \\in (\\alpha) \\cap '
+                        '(\\beta) \\end{cases} \\Rightarrow (\\alpha) \\cap (\\beta) = AB$',
+                        '$\\begin{cases} A \\notin (\\alpha) \\cap (\\beta) \\\\ B \\in (\\alpha) \\cap '
+                        '(\\beta) \\end{cases} \\Rightarrow (\\alpha) \\cap (\\beta) = AB$',
+                        'Đảo ngược vế của quy tắc: $\\begin{cases} A \\in (\\alpha) \\cap (\\beta) \\\\ B '
+                        '\\in (\\alpha) \\cap (\\beta) \\end{cases} \\Rightarrow (\\alpha) \\cap (\\beta) = '
+                        'AB$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\begin{cases} A \\in '
+                        '(\\alpha) \\cap (\\beta) \\\\ B \\in (\\alpha) \\cap (\\beta) \\end{cases} '
+                        '\\Rightarrow (\\alpha) \\cap (\\beta) = AB$'],
             'answer': 0,
-            'solution': 'Trong Bài 10: Đường thẳng và mặt phẳng trong không gian, biểu thức/quy tắc '
-                        '$\\begin{cases} A \\in (\\alpha) \\cap (\\beta) \\\\ B \\in (\\alpha) \\cap '
-                        '(\\beta) \\end{cases} \\Rightarrow (\\alpha) \\cap (\\beta) = AB$ chính là nội dung '
-                        'của **Tìm giao tuyến hai mặt phẳng**.'},
+            'solution': 'Trong Bài 10: Đường thẳng và mặt phẳng trong không gian, **Tìm giao tuyến hai mặt '
+                        'phẳng** có công thức/quy tắc là: $\\begin{cases} A \\in (\\alpha) \\cap (\\beta) '
+                        '\\\\ B \\in (\\alpha) \\cap (\\beta) \\end{cases} \\Rightarrow (\\alpha) \\cap '
+                        '(\\beta) = AB$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Cho hình chóp $S.ABCD$ có đáy $ABCD$ là tứ giác có hai đường chéo $AC$ và $BD$ cắt nhau '
@@ -1672,19 +1668,18 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 10: Đường thẳng và mặt phẳng trong không gian** (Chương IV: Quan hệ song '
-                 'song trong không gian), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản '
-                 'chất kiến thức của bài?',
-            'options': ['Nhận biết được khái niệm góc lượng giác, hệ thức Chasles và đổi được số đo góc giữa '
-                        'độ và radian.',
-                        'Xác định được điểm biểu diễn trên đường tròn lượng giác và các giá trị $\\sin '
-                        '\\alpha, \\cos \\alpha, \\tan \\alpha, \\cot \\alpha$.',
+            'q': 'Để nắm vững bản chất của **Bài 10: Đường thẳng và mặt phẳng trong không gian**, nhận định '
+                 'nào sau đây là **chính xác**?',
+            'options': ['Nắm vững các tính chất thừa nhận của hình học không gian và $5$ cách xác định một '
+                        'mặt phẳng.',
+                        'Nắm vững các tính chất thừa nhận của hình học không gian và $3$ cách xác định một '
+                        'mặt phẳng.',
                         'Nắm vững các tính chất thừa nhận của hình học không gian và $4$ cách xác định một '
                         'mặt phẳng.',
-                        'Vận dụng các hệ thức lượng giác cơ bản và giá trị lượng giác của các góc có liên '
-                        'quan đặc biệt (đối nhau, bù nhau, phụ nhau, hơn kém $\\pi$).'],
+                        'Nắm vững các tính chất thừa nhận của hình học không gian và $8$ cách xác định một '
+                        'mặt phẳng.'],
             'answer': 2,
-            'solution': 'Theo yêu cầu cần đạt của Bài 10: Đường thẳng và mặt phẳng trong không gian: Nắm '
+            'solution': 'Theo nội dung cốt lõi của Bài 10: Đường thẳng và mặt phẳng trong không gian: Nắm '
                         'vững các tính chất thừa nhận của hình học không gian và $4$ cách xác định một mặt '
                         'phẳng.'},
            {'level': 'hieu',
@@ -1706,43 +1701,38 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 10: Đường thẳng và mặt '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 10: Đường thẳng và mặt '
                  'phẳng trong không gian**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nắm vững các tính chất thừa nhận '
-                           'của hình học không gian và $4$ cách xác định một mặt phẳng.',
-                           'Quy tắc/công thức **Điểm thuộc đường thẳng và mặt phẳng** trong bài được xác '
-                           'định bởi: $A \\in d, \\quad A \\in (P), \\quad d \\subset (P)$.',
-                           'Trong mọi trường hợp, **Điểm thuộc đường thẳng và mặt phẳng** luôn được tính '
-                           'bằng công thức $a^\\circ = \\dfrac{\\pi a}{180}\\text{ rad}, \\quad '
-                           '\\alpha\\text{ rad} = \\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$ (thuộc '
-                           'Đổi độ và radian) mà không cần điều kiện của Bài 10: Đường thẳng và mặt phẳng '
-                           'trong không gian.',
-                           'Với bài toán minh họa: “Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình bình hành '
-                           'tâm $O$. Tìm giao tuyến của hai mặt phẳng $(SAC)$ và $(SBD)$.”, lời giải đúng '
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nắm vững các tính chất thừa nhận của '
+                           'hình học không gian và $4$ cách xác định một mặt phẳng.',
+                           'Trong **Bài 10: Đường thẳng và mặt phẳng trong không gian**, quy tắc/công thức '
+                           '**Điểm thuộc đường thẳng và mặt phẳng** được viết là: $A \\in d, \\quad A \\in '
+                           '(P), \\quad d \\subset (P)$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $A \\notin d, \\quad A \\in (P), \\quad d '
+                           '\\subset (P)$ thì kết quả của **Điểm thuộc đường thẳng và mặt phẳng** trong '
+                           '**Bài 10: Đường thẳng và mặt phẳng trong không gian** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình bình hành tâm '
+                           '$O$. Tìm giao tuyến của hai mặt phẳng $(SAC)$ và $(SBD)$.”, kết quả giải đúng '
                            'là: Ta có $S$ là điểm chung thứ nhất của $(SAC)$ và $(SBD)$. Trong mặt phẳng '
-                           '$(ABCD)$, gọi $O = AC \\cap BD$ thì $O \\in AC \\subset (SAC)$ và $O \\in BD '
-                           '\\subset (SBD)$...'],
+                           '$(ABCD)$, gọi $O = AC \\cap BD$ thì $O \\in AC \\subset (SAC)$ và...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 10: Đường thẳng và mặt phẳng trong không '
-                        'gian. b) **Đúng** theo công thức trọng tâm **Điểm thuộc đường thẳng và mặt phẳng** '
-                        '($A \\in d, \\quad A \\in (P), \\quad d \\subset (P)$). c) **Sai** vì $a^\\circ = '
-                        '\\dfrac{\\pi a}{180}\\text{ rad}, \\quad \\alpha\\text{ rad} = '
-                        '\\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$ là công thức của nội dung khác, '
-                        'không phải quy tắc chung của **Điểm thuộc đường thẳng và mặt phẳng**. d) **Đúng** '
-                        'theo lời giải ví dụ minh họa trong bài học.'},
+                        'gian. b) **Đúng** theo công thức **Điểm thuộc đường thẳng và mặt phẳng** ($A \\in '
+                        'd, \\quad A \\in (P), \\quad d \\subset (P)$). c) **Sai** vì công thức đúng của '
+                        '**Điểm thuộc đường thẳng và mặt phẳng** phải là $A \\in d, \\quad A \\in (P), '
+                        '\\quad d \\subset (P)$ chứ không phải $A \\notin d, \\quad A \\in (P), \\quad d '
+                        '\\subset (P)$. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 10: Đường thẳng và mặt phẳng trong không gian** để giải quyết '
-                 'tình huống sau: Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình bình hành tâm $O$. Tìm giao '
-                 'tuyến của hai mặt phẳng $(SAC)$ và $(SBD)$. Kết quả và hướng giải nào dưới đây là '
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 10: Đường thẳng và mặt phẳng trong không gian** để '
+                 'giải bài toán sau: Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình bình hành tâm $O$. Tìm '
+                 'giao tuyến của hai mặt phẳng $(SAC)$ và $(SBD)$. Cách giải và kết quả nào dưới đây là '
                  '**đúng**?',
-            'options': ['Vì $\\dfrac{\\pi}{2} < \\alpha < \\pi$ nên $\\cos \\alpha < 0$. Ta có $\\cos '
-                        '\\alpha = -\\sqrt{1 - \\sin^2 \\alpha} = -\\sqrt{1 - \\dfrac{9}{25}} = '
-                        '-\\dfrac{4}{5}$. Suy...',
-                        'Ta có...',
-                        'Với mọi $x \\in \\mathbb{R}$, ta có $-1 \\le \\sin 2x \\le 1 \\Rightarrow -3 \\le '
-                        '3\\sin 2x \\le 3 \\Rightarrow -4 \\le 3\\sin 2x - 1 \\le 2$. Vậy tập giá trị là '
-                        '$[-4; 2]$...',
+            'options': ['Ta có $S$ là điểm chung thứ nhất của $(SAC)$ và $(SBD)$. Trong mặt phẳng $(ABCD)$, '
+                        'gọi $O = AC \\cap BD$ thì $O \\notin AC \\subset (SAC)$ và $O \\in BD \\subset '
+                        '(SBD)$...',
+                        'Thực hiện theo thứ tự ngược lại và bỏ qua điều kiện xác định trong bài',
+                        'Đổi ngược dấu của phép tính chính và không kiểm tra lại kết quả',
                         'Ta có $S$ là điểm chung thứ nhất của $(SAC)$ và $(SBD)$. Trong mặt phẳng $(ABCD)$, '
                         'gọi $O = AC \\cap BD$ thì $O \\in AC \\subset (SAC)$ và $O \\in BD \\subset '
                         '(SBD)$...'],
@@ -1818,34 +1808,39 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 11: Hai đường thẳng song song**, công thức hoặc quy tắc '
-                 'nào sau đây biểu diễn đúng **Tính chất bắc cầu**?',
+            'q': 'Trong **Bài 11: Hai đường thẳng song song**, quy tắc hoặc công thức nào sau đây xác định '
+                 'đúng **Tính chất bắc cầu**?',
             'options': ['$a \\parallel c \\text{ và } b \\parallel c \\quad (a \\ne b) \\Rightarrow a '
                         '\\parallel b$',
-                        '$\\begin{cases} a \\subset (\\alpha), b \\subset (\\beta) \\\\ a \\parallel b \\\\ '
-                        '(\\alpha) \\cap (\\beta) = d \\end{cases} \\Rightarrow d \\parallel a \\parallel b$',
-                        '$a^\\circ = \\dfrac{\\pi a}{180}\\text{ rad}, \\quad \\alpha\\text{ rad} = '
-                        '\\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$',
-                        '$l = R \\cdot \\alpha \\quad (\\alpha \\text{ tính bằng rad})$'],
+                        '$a \\parallel c \\text{ và } b \\parallel c \\quad (a \\ne b) \\Rightarrow a '
+                        '\\parallel b$ (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: $a \\parallel c \\text{ và } b \\parallel c \\quad (a '
+                        '\\ne b) \\Rightarrow a \\parallel b$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $a \\parallel c \\text{ và } b '
+                        '\\parallel c \\quad (a \\ne b) \\Rightarrow a \\parallel b$'],
             'answer': 0,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 11: Hai đường thẳng song song, **Tính chất '
-                        'bắc cầu** được xác định bởi: $a \\parallel c \\text{ và } b \\parallel c \\quad (a '
-                        '\\ne b) \\Rightarrow a \\parallel b$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 11: Hai đường thẳng song song, **Tính chất bắc '
+                        'cầu** được xác định bởi: $a \\parallel c \\text{ và } b \\parallel c \\quad (a \\ne '
+                        'b) \\Rightarrow a \\parallel b$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 11: Hai đường thẳng song song**, nội dung/biểu thức $\\begin{cases} a \\subset '
-                 '(\\alpha), b \\subset (\\beta) \\\\ a \\parallel b \\\\ (\\alpha) \\cap (\\beta) = d '
-                 '\\end{cases} \\Rightarrow d \\parallel a \\parallel b$ là quy tắc hoặc công thức của mục '
-                 'nào sau đây?',
-            'options': ['Tính chất bắc cầu',
-                        'Hệ quả giao tuyến song song',
-                        'Đổi độ và radian',
-                        'Độ dài cung tròn'],
+            'q': 'Khi học **Bài 11: Hai đường thẳng song song**, biểu thức hoặc quy tắc nào dưới đây biểu '
+                 'diễn đúng **Hệ quả giao tuyến song song**?',
+            'options': ['$\\begin{cases} a \\subset (\\alpha), b \\subset (\\beta) \\\\ a \\parallel b \\\\ '
+                        '(\\alpha) \\cup (\\beta) = d \\end{cases} \\Rightarrow d \\parallel a \\parallel b$',
+                        '$\\begin{cases} a \\subset (\\alpha), b \\subset (\\beta) \\\\ a \\parallel b \\\\ '
+                        '(\\alpha) \\cap (\\beta) = d \\end{cases} \\Rightarrow d \\parallel a \\parallel b$',
+                        'Đảo ngược vế của quy tắc: $\\begin{cases} a \\subset (\\alpha), b \\subset (\\beta) '
+                        '\\\\ a \\parallel b \\\\ (\\alpha) \\cap (\\beta) = d \\end{cases} \\Rightarrow d '
+                        '\\parallel a \\parallel b$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\begin{cases} a \\subset '
+                        '(\\alpha), b \\subset (\\beta) \\\\ a \\parallel b \\\\ (\\alpha) \\cap (\\beta) = '
+                        'd \\end{cases} \\Rightarrow d \\parallel a \\parallel b$'],
             'answer': 1,
-            'solution': 'Trong Bài 11: Hai đường thẳng song song, biểu thức/quy tắc $\\begin{cases} a '
-                        '\\subset (\\alpha), b \\subset (\\beta) \\\\ a \\parallel b \\\\ (\\alpha) \\cap '
-                        '(\\beta) = d \\end{cases} \\Rightarrow d \\parallel a \\parallel b$ chính là nội '
-                        'dung của **Hệ quả giao tuyến song song**.'},
+            'solution': 'Trong Bài 11: Hai đường thẳng song song, **Hệ quả giao tuyến song song** có công '
+                        'thức/quy tắc là: $\\begin{cases} a \\subset (\\alpha), b \\subset (\\beta) \\\\ a '
+                        '\\parallel b \\\\ (\\alpha) \\cap (\\beta) = d \\end{cases} \\Rightarrow d '
+                        '\\parallel a \\parallel b$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình bình hành. Giao tuyến của hai mặt phẳng '
@@ -1861,19 +1856,19 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 11: Hai đường thẳng song song** (Chương IV: Quan hệ song song trong không '
-                 'gian), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của '
-                 'bài?',
-            'options': ['Nhận biết được khái niệm góc lượng giác, hệ thức Chasles và đổi được số đo góc giữa '
-                        'độ và radian.',
-                        'Xác định được điểm biểu diễn trên đường tròn lượng giác và các giá trị $\\sin '
-                        '\\alpha, \\cos \\alpha, \\tan \\alpha, \\cot \\alpha$.',
-                        'Vận dụng các hệ thức lượng giác cơ bản và giá trị lượng giác của các góc có liên '
-                        'quan đặc biệt (đối nhau, bù nhau, phụ nhau, hơn kém $\\pi$).',
+            'q': 'Để nắm vững bản chất của **Bài 11: Hai đường thẳng song song**, nhận định nào sau đây là '
+                 '**chính xác**?',
+            'options': ['Phân biệt được hai đường thẳng cắt nhau (đồng phẳng và không có điểm chung) với hai '
+                        'đường thẳng chéo nhau (không đồng phẳng).',
+                        'Đảo ngược vế của quy tắc: Phân biệt được hai đường thẳng song song (đồng phẳng và '
+                        'không có điểm chung) với hai đường thẳng chéo nhau (không đồng phẳng).',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Phân biệt được hai đường thẳng '
+                        'song song (đồng phẳng và không có điểm chung) với hai đường thẳng chéo nhau (không '
+                        'đồng phẳng).',
                         'Phân biệt được hai đường thẳng song song (đồng phẳng và không có điểm chung) với '
                         'hai đường thẳng chéo nhau (không đồng phẳng).'],
             'answer': 3,
-            'solution': 'Theo yêu cầu cần đạt của Bài 11: Hai đường thẳng song song: Phân biệt được hai '
+            'solution': 'Theo nội dung cốt lõi của Bài 11: Hai đường thẳng song song: Phân biệt được hai '
                         'đường thẳng song song (đồng phẳng và không có điểm chung) với hai đường thẳng chéo '
                         'nhau (không đồng phẳng).'},
            {'level': 'hieu',
@@ -1893,44 +1888,41 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 11: Hai đường thẳng '
-                 'song song**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Phân biệt được hai đường thẳng '
-                           'song song (đồng phẳng và không có điểm chung) với hai đường thẳng chéo nhau '
-                           '(không đồng phẳng).',
-                           'Quy tắc/công thức **Tính chất bắc cầu** trong bài được xác định bởi: $a '
-                           '\\parallel c \\text{ và } b \\parallel c \\quad (a \\ne b) \\Rightarrow a '
-                           '\\parallel b$.',
-                           'Trong mọi trường hợp, **Tính chất bắc cầu** luôn được tính bằng công thức '
-                           '$a^\\circ = \\dfrac{\\pi a}{180}\\text{ rad}, \\quad \\alpha\\text{ rad} = '
-                           '\\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$ (thuộc Đổi độ và radian) mà '
-                           'không cần điều kiện của Bài 11: Hai đường thẳng song song.',
-                           'Với bài toán minh họa: “Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình bình hành. '
-                           'Tìm giao tuyến của hai mặt phẳng $(SAB)$ và $(SCD)$.”, lời giải đúng là: Hai mặt '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 11: Hai đường thẳng song '
+                 'song**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Phân biệt được hai đường thẳng song song '
+                           '(đồng phẳng và không có điểm chung) với hai đường thẳng chéo nhau (không đồng '
+                           'phẳng).',
+                           'Trong **Bài 11: Hai đường thẳng song song**, quy tắc/công thức **Tính chất bắc '
+                           'cầu** được viết là: $a \\parallel c \\text{ và } b \\parallel c \\quad (a \\ne '
+                           'b) \\Rightarrow a \\parallel b$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $a \\parallel c \\text{ và } b \\parallel c '
+                           '\\quad (a \\ne b) \\Rightarrow a \\parallel b$ (với dấu ngược lại) thì kết quả '
+                           'của **Tính chất bắc cầu** trong **Bài 11: Hai đường thẳng song song** vẫn không '
+                           'thay đổi.',
+                           'Xét ví dụ của bài: “Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình bình hành. Tìm '
+                           'giao tuyến của hai mặt phẳng $(SAB)$ và $(SCD)$.”, kết quả giải đúng là: Hai mặt '
                            'phẳng $(SAB)$ và $(SCD)$ có điểm chung $S$ và lần lượt chứa hai đường thẳng song '
                            'song $AB \\parallel CD$. Vậy giao tuyến của $(SAB)$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 11: Hai đường thẳng song song. b) **Đúng** '
-                        'theo công thức trọng tâm **Tính chất bắc cầu** ($a \\parallel c \\text{ và } b '
-                        '\\parallel c \\quad (a \\ne b) \\Rightarrow a \\parallel b$). c) **Sai** vì '
-                        '$a^\\circ = \\dfrac{\\pi a}{180}\\text{ rad}, \\quad \\alpha\\text{ rad} = '
-                        '\\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$ là công thức của nội dung khác, '
-                        'không phải quy tắc chung của **Tính chất bắc cầu**. d) **Đúng** theo lời giải ví dụ '
-                        'minh họa trong bài học.'},
+                        'theo công thức **Tính chất bắc cầu** ($a \\parallel c \\text{ và } b \\parallel c '
+                        '\\quad (a \\ne b) \\Rightarrow a \\parallel b$). c) **Sai** vì công thức đúng của '
+                        '**Tính chất bắc cầu** phải là $a \\parallel c \\text{ và } b \\parallel c \\quad (a '
+                        '\\ne b) \\Rightarrow a \\parallel b$ chứ không phải $a \\parallel c \\text{ và } b '
+                        '\\parallel c \\quad (a \\ne b) \\Rightarrow a \\parallel b$ (với dấu ngược lại). d) '
+                        '**Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 11: Hai đường thẳng song song** để giải quyết tình huống sau: Cho '
-                 'hình chóp $S.ABCD$ có đáy $ABCD$ là hình bình hành. Tìm giao tuyến của hai mặt phẳng '
-                 '$(SAB)$ và $(SCD)$. Kết quả và hướng giải nào dưới đây là **đúng**?',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 11: Hai đường thẳng song song** để giải bài toán '
+                 'sau: Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình bình hành. Tìm giao tuyến của hai mặt '
+                 'phẳng $(SAB)$ và $(SCD)$. Cách giải và kết quả nào dưới đây là **đúng**?',
             'options': ['Hai mặt phẳng $(SAB)$ và $(SCD)$ có điểm chung $S$ và lần lượt chứa hai đường thẳng '
-                        'song song $AB \\parallel CD$. Vậy giao tuyến của $(SAB)$ và $(SCD)$ là đ...',
-                        'Vì $\\dfrac{\\pi}{2} < \\alpha < \\pi$ nên $\\cos \\alpha < 0$. Ta có $\\cos '
-                        '\\alpha = -\\sqrt{1 - \\sin^2 \\alpha} = -\\sqrt{1 - \\dfrac{9}{25}} = '
-                        '-\\dfrac{4}{5}$. Suy...',
-                        'Ta có...',
-                        'Với mọi $x \\in \\mathbb{R}$, ta có $-1 \\le \\sin 2x \\le 1 \\Rightarrow -3 \\le '
-                        '3\\sin 2x \\le 3 \\Rightarrow -4 \\le 3\\sin 2x - 1 \\le 2$. Vậy tập giá trị là '
-                        '$[-4; 2]$...'],
+                        'song song $AB \\parallel CD$. Vậy giao tuyến của $(SAB)$ và $(SCD)$...',
+                        'Hai mặt phẳng $(SAB)$ và $(SCD)$ có điểm chung $S$ và lần lượt chứa hai đường thẳng '
+                        'cắt nhau $AB \\parallel CD$. Vậy giao tuyến của $(SAB)$ và $(SCD)$...',
+                        'Thực hiện theo thứ tự ngược lại và bỏ qua điều kiện xác định trong bài',
+                        'Đổi ngược dấu của phép tính chính và không kiểm tra lại kết quả'],
             'answer': 0,
             'solution': 'Lời giải chi tiết theo Bài 11: Hai đường thẳng song song: Hai mặt phẳng $(SAB)$ và '
                         '$(SCD)$ có điểm chung $S$ và lần lượt chứa hai đường thẳng song song $AB \\parallel '
@@ -2009,31 +2001,41 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 12: Đường thẳng và mặt phẳng song song**, công thức hoặc '
-                 'quy tắc nào sau đây biểu diễn đúng **Dấu hiệu nhận biết**?',
-            'options': ['$\\begin{cases} d \\parallel (\\alpha) \\\\ d \\subset (\\beta) \\\\ (\\alpha) '
-                        "\\cap (\\beta) = d' \\end{cases} \\Rightarrow d' \\parallel d$",
+            'q': 'Trong **Bài 12: Đường thẳng và mặt phẳng song song**, quy tắc hoặc công thức nào sau đây '
+                 'xác định đúng **Dấu hiệu nhận biết**?',
+            'options': ["$\\begin{cases} d \\not\\supset (\\alpha) \\\\ d \\parallel d' \\\\ d' \\subset "
+                        '(\\alpha) \\end{cases} \\Rightarrow d \\parallel (\\alpha)$',
                         "$\\begin{cases} d \\not\\subset (\\alpha) \\\\ d \\parallel d' \\\\ d' \\subset "
                         '(\\alpha) \\end{cases} \\Rightarrow d \\parallel (\\alpha)$',
-                        '$a^\\circ = \\dfrac{\\pi a}{180}\\text{ rad}, \\quad \\alpha\\text{ rad} = '
-                        '\\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$',
-                        '$l = R \\cdot \\alpha \\quad (\\alpha \\text{ tính bằng rad})$'],
+                        'Đảo ngược vế của quy tắc: $\\begin{cases} d \\not\\subset (\\alpha) \\\\ d '
+                        "\\parallel d' \\\\ d' \\subset (\\alpha) \\end{cases} \\Rightarrow d \\parallel "
+                        '(\\alpha)$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\begin{cases} d \\not\\subset '
+                        "(\\alpha) \\\\ d \\parallel d' \\\\ d' \\subset (\\alpha) \\end{cases} \\Rightarrow "
+                        'd \\parallel (\\alpha)$'],
             'answer': 1,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 12: Đường thẳng và mặt phẳng song song, **Dấu '
-                        'hiệu nhận biết** được xác định bởi: $\\begin{cases} d \\not\\subset (\\alpha) \\\\ '
-                        "d \\parallel d' \\\\ d' \\subset (\\alpha) \\end{cases} \\Rightarrow d \\parallel "
+            'solution': 'Theo kiến thức trọng tâm của Bài 12: Đường thẳng và mặt phẳng song song, **Dấu hiệu '
+                        'nhận biết** được xác định bởi: $\\begin{cases} d \\not\\subset (\\alpha) \\\\ d '
+                        "\\parallel d' \\\\ d' \\subset (\\alpha) \\end{cases} \\Rightarrow d \\parallel "
                         '(\\alpha)$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 12: Đường thẳng và mặt phẳng song song**, nội dung/biểu thức $\\begin{cases} d '
-                 "\\parallel (\\alpha) \\\\ d \\subset (\\beta) \\\\ (\\alpha) \\cap (\\beta) = d' "
-                 "\\end{cases} \\Rightarrow d' \\parallel d$ là quy tắc hoặc công thức của mục nào sau đây?",
-            'options': ['Dấu hiệu nhận biết', 'Đổi độ và radian', 'Tính chất giao tuyến', 'Độ dài cung tròn'],
+            'q': 'Khi học **Bài 12: Đường thẳng và mặt phẳng song song**, biểu thức hoặc quy tắc nào dưới '
+                 'đây biểu diễn đúng **Tính chất giao tuyến**?',
+            'options': ['$\\begin{cases} d \\parallel (\\alpha) \\\\ d \\subset (\\beta) \\\\ (\\alpha) '
+                        "\\cup (\\beta) = d' \\end{cases} \\Rightarrow d' \\parallel d$",
+                        'Đảo ngược vế của quy tắc: $\\begin{cases} d \\parallel (\\alpha) \\\\ d \\subset '
+                        "(\\beta) \\\\ (\\alpha) \\cap (\\beta) = d' \\end{cases} \\Rightarrow d' \\parallel "
+                        'd$',
+                        '$\\begin{cases} d \\parallel (\\alpha) \\\\ d \\subset (\\beta) \\\\ (\\alpha) '
+                        "\\cap (\\beta) = d' \\end{cases} \\Rightarrow d' \\parallel d$",
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\begin{cases} d \\parallel '
+                        "(\\alpha) \\\\ d \\subset (\\beta) \\\\ (\\alpha) \\cap (\\beta) = d' \\end{cases} "
+                        "\\Rightarrow d' \\parallel d$"],
             'answer': 2,
-            'solution': 'Trong Bài 12: Đường thẳng và mặt phẳng song song, biểu thức/quy tắc $\\begin{cases} '
-                        "d \\parallel (\\alpha) \\\\ d \\subset (\\beta) \\\\ (\\alpha) \\cap (\\beta) = d' "
-                        "\\end{cases} \\Rightarrow d' \\parallel d$ chính là nội dung của **Tính chất giao "
-                        'tuyến**.'},
+            'solution': 'Trong Bài 12: Đường thẳng và mặt phẳng song song, **Tính chất giao tuyến** có công '
+                        'thức/quy tắc là: $\\begin{cases} d \\parallel (\\alpha) \\\\ d \\subset (\\beta) '
+                        "\\\\ (\\alpha) \\cap (\\beta) = d' \\end{cases} \\Rightarrow d' \\parallel d$."},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình bình hành. Đường thẳng $AB$ song song với mặt '
@@ -2046,21 +2048,20 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 12: Đường thẳng và mặt phẳng song song** (Chương IV: Quan hệ song song trong '
-                 'không gian), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến '
-                 'thức của bài?',
+            'q': 'Để nắm vững bản chất của **Bài 12: Đường thẳng và mặt phẳng song song**, nhận định nào sau '
+                 'đây là **chính xác**?',
             'options': ['Nhận biết được $3$ vị trí tương đối giữa đường thẳng $d$ và mặt phẳng $(\\alpha)$: '
                         'nằm trong, cắt nhau và song song.',
-                        'Nhận biết được khái niệm góc lượng giác, hệ thức Chasles và đổi được số đo góc giữa '
-                        'độ và radian.',
-                        'Xác định được điểm biểu diễn trên đường tròn lượng giác và các giá trị $\\sin '
-                        '\\alpha, \\cos \\alpha, \\tan \\alpha, \\cot \\alpha$.',
-                        'Vận dụng các hệ thức lượng giác cơ bản và giá trị lượng giác của các góc có liên '
-                        'quan đặc biệt (đối nhau, bù nhau, phụ nhau, hơn kém $\\pi$).'],
+                        'Nhận biết được $3$ vị trí tương đối giữa đường thẳng $d$ và mặt phẳng $(\\alpha)$: '
+                        'nằm trong, cắt nhau và cắt nhau.',
+                        'Nhận biết được $2$ vị trí tương đối giữa đường thẳng $d$ và mặt phẳng $(\\alpha)$: '
+                        'nằm trong, cắt nhau và song song.',
+                        'Nhận biết được $6$ vị trí tương đối giữa đường thẳng $d$ và mặt phẳng $(\\alpha)$: '
+                        'nằm trong, cắt nhau và song song.'],
             'answer': 0,
-            'solution': 'Theo yêu cầu cần đạt của Bài 12: Đường thẳng và mặt phẳng song song: Nhận biết được '
-                        '$3$ vị trí tương đối giữa đường thẳng $d$ và mặt phẳng $(\\alpha)$: nằm trong, cắt '
-                        'nhau và song song.'},
+            'solution': 'Theo nội dung cốt lõi của Bài 12: Đường thẳng và mặt phẳng song song: Nhận biết '
+                        'được $3$ vị trí tương đối giữa đường thẳng $d$ và mặt phẳng $(\\alpha)$: nằm trong, '
+                        'cắt nhau và song song.'},
            {'level': 'hieu',
             'type': 'tf4',
             'q': 'Cho tứ diện $ABCD$. Gọi $G_1, G_2$ lần lượt là trọng tâm của tam giác $ABC$ và tam giác '
@@ -2077,45 +2078,43 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 12: Đường thẳng và mặt '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 12: Đường thẳng và mặt '
                  'phẳng song song**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được $3$ vị trí tương '
-                           'đối giữa đường thẳng $d$ và mặt phẳng $(\\alpha)$: nằm trong, cắt nhau và song '
-                           'song.',
-                           'Quy tắc/công thức **Dấu hiệu nhận biết** trong bài được xác định bởi: '
-                           "$\\begin{cases} d \\not\\subset (\\alpha) \\\\ d \\parallel d' \\\\ d' \\subset "
-                           '(\\alpha) \\end{cases} \\Rightarrow d \\parallel (\\alpha)$.',
-                           'Trong mọi trường hợp, **Dấu hiệu nhận biết** luôn được tính bằng công thức '
-                           '$a^\\circ = \\dfrac{\\pi a}{180}\\text{ rad}, \\quad \\alpha\\text{ rad} = '
-                           '\\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$ (thuộc Đổi độ và radian) mà '
-                           'không cần điều kiện của Bài 12: Đường thẳng và mặt phẳng song song.',
-                           'Với bài toán minh họa: “Cho tứ diện $ABCD$. Gọi $M, N$ lần lượt là trung điểm '
-                           'của $AB$ và $AC$. Chứng minh $MN \\parallel (BCD)$.”, lời giải đúng là: Trong '
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết được $3$ vị trí tương đối giữa '
+                           'đường thẳng $d$ và mặt phẳng $(\\alpha)$: nằm trong, cắt nhau và song song.',
+                           'Trong **Bài 12: Đường thẳng và mặt phẳng song song**, quy tắc/công thức **Dấu '
+                           'hiệu nhận biết** được viết là: $\\begin{cases} d \\not\\subset (\\alpha) \\\\ d '
+                           "\\parallel d' \\\\ d' \\subset (\\alpha) \\end{cases} \\Rightarrow d \\parallel "
+                           '(\\alpha)$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $\\begin{cases} d \\not\\supset (\\alpha) '
+                           "\\\\ d \\parallel d' \\\\ d' \\subset (\\alpha) \\end{cases} \\Rightarrow d "
+                           '\\parallel (\\alpha)$ thì kết quả của **Dấu hiệu nhận biết** trong **Bài 12: '
+                           'Đường thẳng và mặt phẳng song song** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Cho tứ diện $ABCD$. Gọi $M, N$ lần lượt là trung điểm của '
+                           '$AB$ và $AC$. Chứng minh $MN \\parallel (BCD)$.”, kết quả giải đúng là: Trong '
                            'tam giác $ABC$, $M, N$ là trung điểm của $AB, AC$ nên $MN \\parallel BC$. Mà $MN '
-                           '\\not\\subset (BCD)$ và $BC \\subset (BCD)$, suy ra $MN \\parallel (BCD)$...'],
+                           '\\not\\subset (BCD)$ và $BC \\subset (BCD)$, suy ra...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 12: Đường thẳng và mặt phẳng song song. b) '
-                        '**Đúng** theo công thức trọng tâm **Dấu hiệu nhận biết** ($\\begin{cases} d '
-                        "\\not\\subset (\\alpha) \\\\ d \\parallel d' \\\\ d' \\subset (\\alpha) "
-                        '\\end{cases} \\Rightarrow d \\parallel (\\alpha)$). c) **Sai** vì $a^\\circ = '
-                        '\\dfrac{\\pi a}{180}\\text{ rad}, \\quad \\alpha\\text{ rad} = '
-                        '\\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$ là công thức của nội dung khác, '
-                        'không phải quy tắc chung của **Dấu hiệu nhận biết**. d) **Đúng** theo lời giải ví '
-                        'dụ minh họa trong bài học.'},
+                        '**Đúng** theo công thức **Dấu hiệu nhận biết** ($\\begin{cases} d \\not\\subset '
+                        "(\\alpha) \\\\ d \\parallel d' \\\\ d' \\subset (\\alpha) \\end{cases} \\Rightarrow "
+                        'd \\parallel (\\alpha)$). c) **Sai** vì công thức đúng của **Dấu hiệu nhận biết** '
+                        "phải là $\\begin{cases} d \\not\\subset (\\alpha) \\\\ d \\parallel d' \\\\ d' "
+                        '\\subset (\\alpha) \\end{cases} \\Rightarrow d \\parallel (\\alpha)$ chứ không phải '
+                        "$\\begin{cases} d \\not\\supset (\\alpha) \\\\ d \\parallel d' \\\\ d' \\subset "
+                        '(\\alpha) \\end{cases} \\Rightarrow d \\parallel (\\alpha)$. d) **Đúng** theo lời '
+                        'giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 12: Đường thẳng và mặt phẳng song song** để giải quyết tình huống '
-                 'sau: Cho tứ diện $ABCD$. Gọi $M, N$ lần lượt là trung điểm của $AB$ và $AC$. Chứng minh '
-                 '$MN \\parallel (BCD)$. Kết quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Vì $\\dfrac{\\pi}{2} < \\alpha < \\pi$ nên $\\cos \\alpha < 0$. Ta có $\\cos '
-                        '\\alpha = -\\sqrt{1 - \\sin^2 \\alpha} = -\\sqrt{1 - \\dfrac{9}{25}} = '
-                        '-\\dfrac{4}{5}$. Suy...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 12: Đường thẳng và mặt phẳng song song** để giải '
+                 'bài toán sau: Cho tứ diện $ABCD$. Gọi $M, N$ lần lượt là trung điểm của $AB$ và $AC$. '
+                 'Chứng minh $MN \\parallel (BCD)$. Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Trong tam giác $ABC$, $M, N$ là trung điểm của $AB, AC$ nên $MN \\parallel BC$. Mà '
+                        '$MN \\not\\supset (BCD)$ và $BC \\subset (BCD)$, suy ra $MN \\parallel (BCD)$...',
                         'Trong tam giác $ABC$, $M, N$ là trung điểm của $AB, AC$ nên $MN \\parallel BC$. Mà '
                         '$MN \\not\\subset (BCD)$ và $BC \\subset (BCD)$, suy ra $MN \\parallel (BCD)$...',
-                        'Ta có...',
-                        'Với mọi $x \\in \\mathbb{R}$, ta có $-1 \\le \\sin 2x \\le 1 \\Rightarrow -3 \\le '
-                        '3\\sin 2x \\le 3 \\Rightarrow -4 \\le 3\\sin 2x - 1 \\le 2$. Vậy tập giá trị là '
-                        '$[-4; 2]$...'],
+                        'Thực hiện theo thứ tự ngược lại và bỏ qua điều kiện xác định trong bài',
+                        'Đổi ngược dấu của phép tính chính và không kiểm tra lại kết quả'],
             'answer': 1,
             'solution': 'Lời giải chi tiết theo Bài 12: Đường thẳng và mặt phẳng song song: Trong tam giác '
                         '$ABC$, $M, N$ là trung điểm của $AB, AC$ nên $MN \\parallel BC$. Mà $MN '
@@ -2193,36 +2192,44 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 13: Hai mặt phẳng song song**, công thức hoặc quy tắc '
-                 'nào sau đây biểu diễn đúng **Dấu hiệu nhận biết**?',
-            'options': ['$\\begin{cases} (\\alpha) \\parallel (\\beta) \\\\ (\\gamma) \\cap (\\alpha) = a, '
-                        '(\\gamma) \\cap (\\beta) = b \\end{cases} \\Rightarrow a \\parallel b$',
-                        '$\\text{Ba mặt phẳng song song chắn trên } d_1, d_2 \\text{ các đoạn tương ứng tỉ '
-                        'lệ}$',
+            'q': 'Trong **Bài 13: Hai mặt phẳng song song**, quy tắc hoặc công thức nào sau đây xác định '
+                 'đúng **Dấu hiệu nhận biết**?',
+            'options': ['$\\begin{cases} a, b \\subset (\\alpha), a \\cup b = \\{I\\} \\\\ a \\parallel '
+                        '(\\beta), b \\parallel (\\beta) \\end{cases} \\Rightarrow (\\alpha) \\parallel '
+                        '(\\beta)$',
+                        'Đảo ngược vế của quy tắc: $\\begin{cases} a, b \\subset (\\alpha), a \\cap b = '
+                        '\\{I\\} \\\\ a \\parallel (\\beta), b \\parallel (\\beta) \\end{cases} \\Rightarrow '
+                        '(\\alpha) \\parallel (\\beta)$',
                         '$\\begin{cases} a, b \\subset (\\alpha), a \\cap b = \\{I\\} \\\\ a \\parallel '
                         '(\\beta), b \\parallel (\\beta) \\end{cases} \\Rightarrow (\\alpha) \\parallel '
                         '(\\beta)$',
-                        '$a^\\circ = \\dfrac{\\pi a}{180}\\text{ rad}, \\quad \\alpha\\text{ rad} = '
-                        '\\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\begin{cases} a, b \\subset '
+                        '(\\alpha), a \\cap b = \\{I\\} \\\\ a \\parallel (\\beta), b \\parallel (\\beta) '
+                        '\\end{cases} \\Rightarrow (\\alpha) \\parallel (\\beta)$'],
             'answer': 2,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 13: Hai mặt phẳng song song, **Dấu hiệu nhận '
+            'solution': 'Theo kiến thức trọng tâm của Bài 13: Hai mặt phẳng song song, **Dấu hiệu nhận '
                         'biết** được xác định bởi: $\\begin{cases} a, b \\subset (\\alpha), a \\cap b = '
                         '\\{I\\} \\\\ a \\parallel (\\beta), b \\parallel (\\beta) \\end{cases} \\Rightarrow '
                         '(\\alpha) \\parallel (\\beta)$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 13: Hai mặt phẳng song song**, nội dung/biểu thức $\\begin{cases} (\\alpha) '
-                 '\\parallel (\\beta) \\\\ (\\gamma) \\cap (\\alpha) = a, (\\gamma) \\cap (\\beta) = b '
-                 '\\end{cases} \\Rightarrow a \\parallel b$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Dấu hiệu nhận biết',
-                        'Định lí Thalès trong không gian',
-                        'Đổi độ và radian',
-                        'Tính chất giao tuyến'],
-            'answer': 3,
-            'solution': 'Trong Bài 13: Hai mặt phẳng song song, biểu thức/quy tắc $\\begin{cases} (\\alpha) '
+            'q': 'Khi học **Bài 13: Hai mặt phẳng song song**, biểu thức hoặc quy tắc nào dưới đây biểu diễn '
+                 'đúng **Tính chất giao tuyến**?',
+            'options': ['$\\begin{cases} (\\alpha) \\parallel (\\beta) \\\\ (\\gamma) \\cup (\\alpha) = a, '
+                        '(\\gamma) \\cap (\\beta) = b \\end{cases} \\Rightarrow a \\parallel b$',
+                        'Đảo ngược vế của quy tắc: $\\begin{cases} (\\alpha) \\parallel (\\beta) \\\\ '
+                        '(\\gamma) \\cap (\\alpha) = a, (\\gamma) \\cap (\\beta) = b \\end{cases} '
+                        '\\Rightarrow a \\parallel b$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\begin{cases} (\\alpha) '
                         '\\parallel (\\beta) \\\\ (\\gamma) \\cap (\\alpha) = a, (\\gamma) \\cap (\\beta) = '
-                        'b \\end{cases} \\Rightarrow a \\parallel b$ chính là nội dung của **Tính chất giao '
-                        'tuyến**.'},
+                        'b \\end{cases} \\Rightarrow a \\parallel b$',
+                        '$\\begin{cases} (\\alpha) \\parallel (\\beta) \\\\ (\\gamma) \\cap (\\alpha) = a, '
+                        '(\\gamma) \\cap (\\beta) = b \\end{cases} \\Rightarrow a \\parallel b$'],
+            'answer': 3,
+            'solution': 'Trong Bài 13: Hai mặt phẳng song song, **Tính chất giao tuyến** có công thức/quy '
+                        'tắc là: $\\begin{cases} (\\alpha) \\parallel (\\beta) \\\\ (\\gamma) \\cap '
+                        '(\\alpha) = a, (\\gamma) \\cap (\\beta) = b \\end{cases} \\Rightarrow a \\parallel '
+                        'b$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Cho hai mặt phẳng song song $(\\alpha)$ và $(\\beta)$. Mặt phẳng $(\\gamma)$ cắt '
@@ -2239,18 +2246,16 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 13: Hai mặt phẳng song song** (Chương IV: Quan hệ song song trong không '
-                 'gian), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của '
-                 'bài?',
-            'options': ['Nhận biết được khái niệm góc lượng giác, hệ thức Chasles và đổi được số đo góc giữa '
-                        'độ và radian.',
+            'q': 'Để nắm vững bản chất của **Bài 13: Hai mặt phẳng song song**, nhận định nào sau đây là '
+                 '**chính xác**?',
+            'options': ['Phát biểu và vận dụng được định lí dấu hiệu nhận biết hai mặt phẳng cắt nhau.',
                         'Phát biểu và vận dụng được định lí dấu hiệu nhận biết hai mặt phẳng song song.',
-                        'Xác định được điểm biểu diễn trên đường tròn lượng giác và các giá trị $\\sin '
-                        '\\alpha, \\cos \\alpha, \\tan \\alpha, \\cot \\alpha$.',
-                        'Vận dụng các hệ thức lượng giác cơ bản và giá trị lượng giác của các góc có liên '
-                        'quan đặc biệt (đối nhau, bù nhau, phụ nhau, hơn kém $\\pi$).'],
+                        'Đảo ngược vế của quy tắc: Phát biểu và vận dụng được định lí dấu hiệu nhận biết hai '
+                        'mặt phẳng song song.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Phát biểu và vận dụng được định '
+                        'lí dấu hiệu nhận biết hai mặt phẳng song song.'],
             'answer': 1,
-            'solution': 'Theo yêu cầu cần đạt của Bài 13: Hai mặt phẳng song song: Phát biểu và vận dụng '
+            'solution': 'Theo nội dung cốt lõi của Bài 13: Hai mặt phẳng song song: Phát biểu và vận dụng '
                         'được định lí dấu hiệu nhận biết hai mặt phẳng song song.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -2267,47 +2272,45 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 13: Hai mặt phẳng song '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 13: Hai mặt phẳng song '
                  'song**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Phát biểu và vận dụng được định lí '
-                           'dấu hiệu nhận biết hai mặt phẳng song song.',
-                           'Quy tắc/công thức **Dấu hiệu nhận biết** trong bài được xác định bởi: '
-                           '$\\begin{cases} a, b \\subset (\\alpha), a \\cap b = \\{I\\} \\\\ a \\parallel '
-                           '(\\beta), b \\parallel (\\beta) \\end{cases} \\Rightarrow (\\alpha) \\parallel '
-                           '(\\beta)$.',
-                           'Trong mọi trường hợp, **Dấu hiệu nhận biết** luôn được tính bằng công thức '
-                           '$a^\\circ = \\dfrac{\\pi a}{180}\\text{ rad}, \\quad \\alpha\\text{ rad} = '
-                           '\\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$ (thuộc Đổi độ và radian) mà '
-                           'không cần điều kiện của Bài 13: Hai mặt phẳng song song.',
-                           "Với bài toán minh họa: “Cho hình hộp $ABCD.A'B'C'D'$. Chứng minh hai mặt phẳng "
-                           "$(BDA')$ và $(B'D'C)$ song song với nhau.”, lời giải đúng là: Tứ giác $BDD'B'$ "
-                           "là hình bình hành nên $BD \\parallel B'D' \\Rightarrow BD \\parallel (B'D'C)$. "
-                           "Tứ giác $A'B'CD$ là hình bình hành nên $A'D \\parallel B'C \\Rightarrow A'D "
-                           "\\parallel (B'D'C)$..."],
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Phát biểu và vận dụng được định lí dấu '
+                           'hiệu nhận biết hai mặt phẳng song song.',
+                           'Trong **Bài 13: Hai mặt phẳng song song**, quy tắc/công thức **Dấu hiệu nhận '
+                           'biết** được viết là: $\\begin{cases} a, b \\subset (\\alpha), a \\cap b = '
+                           '\\{I\\} \\\\ a \\parallel (\\beta), b \\parallel (\\beta) \\end{cases} '
+                           '\\Rightarrow (\\alpha) \\parallel (\\beta)$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $\\begin{cases} a, b \\subset (\\alpha), a '
+                           '\\cup b = \\{I\\} \\\\ a \\parallel (\\beta), b \\parallel (\\beta) \\end{cases} '
+                           '\\Rightarrow (\\alpha) \\parallel (\\beta)$ thì kết quả của **Dấu hiệu nhận '
+                           'biết** trong **Bài 13: Hai mặt phẳng song song** vẫn không thay đổi.',
+                           "Xét ví dụ của bài: “Cho hình hộp $ABCD.A'B'C'D'$. Chứng minh hai mặt phẳng "
+                           "$(BDA')$ và $(B'D'C)$ song song với nhau.”, kết quả giải đúng là: Tứ giác "
+                           "$BDD'B'$ là hình bình hành nên $BD \\parallel B'D' \\Rightarrow BD \\parallel "
+                           "(B'D'C)$. Tứ giác $A'B'CD$ là hình bình hành nên $A'D \\parallel B'C "
+                           "\\Rightarrow A'D \\parallel (B'D'C)$..."],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 13: Hai mặt phẳng song song. b) **Đúng** '
-                        'theo công thức trọng tâm **Dấu hiệu nhận biết** ($\\begin{cases} a, b \\subset '
-                        '(\\alpha), a \\cap b = \\{I\\} \\\\ a \\parallel (\\beta), b \\parallel (\\beta) '
-                        '\\end{cases} \\Rightarrow (\\alpha) \\parallel (\\beta)$). c) **Sai** vì $a^\\circ '
-                        '= \\dfrac{\\pi a}{180}\\text{ rad}, \\quad \\alpha\\text{ rad} = '
-                        '\\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$ là công thức của nội dung khác, '
-                        'không phải quy tắc chung của **Dấu hiệu nhận biết**. d) **Đúng** theo lời giải ví '
-                        'dụ minh họa trong bài học.'},
+                        'theo công thức **Dấu hiệu nhận biết** ($\\begin{cases} a, b \\subset (\\alpha), a '
+                        '\\cap b = \\{I\\} \\\\ a \\parallel (\\beta), b \\parallel (\\beta) \\end{cases} '
+                        '\\Rightarrow (\\alpha) \\parallel (\\beta)$). c) **Sai** vì công thức đúng của '
+                        '**Dấu hiệu nhận biết** phải là $\\begin{cases} a, b \\subset (\\alpha), a \\cap b = '
+                        '\\{I\\} \\\\ a \\parallel (\\beta), b \\parallel (\\beta) \\end{cases} \\Rightarrow '
+                        '(\\alpha) \\parallel (\\beta)$ chứ không phải $\\begin{cases} a, b \\subset '
+                        '(\\alpha), a \\cup b = \\{I\\} \\\\ a \\parallel (\\beta), b \\parallel (\\beta) '
+                        '\\end{cases} \\Rightarrow (\\alpha) \\parallel (\\beta)$. d) **Đúng** theo lời giải '
+                        'ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 13: Hai mặt phẳng song song** để giải quyết tình huống sau: Cho '
-                 "hình hộp $ABCD.A'B'C'D'$. Chứng minh hai mặt phẳng $(BDA')$ và $(B'D'C)$ song song với "
-                 'nhau. Kết quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Vì $\\dfrac{\\pi}{2} < \\alpha < \\pi$ nên $\\cos \\alpha < 0$. Ta có $\\cos '
-                        '\\alpha = -\\sqrt{1 - \\sin^2 \\alpha} = -\\sqrt{1 - \\dfrac{9}{25}} = '
-                        '-\\dfrac{4}{5}$. Suy...',
-                        'Ta có...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 13: Hai mặt phẳng song song** để giải bài toán sau: '
+                 "Cho hình hộp $ABCD.A'B'C'D'$. Chứng minh hai mặt phẳng $(BDA')$ và $(B'D'C)$ song song với "
+                 'nhau. Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Chỉ xét trường hợp đặc biệt bằng $0$ và bỏ qua quy tắc chung',
+                        'Thực hiện theo thứ tự ngược lại và bỏ qua điều kiện xác định trong bài',
                         "Tứ giác $BDD'B'$ là hình bình hành nên $BD \\parallel B'D' \\Rightarrow BD "
                         "\\parallel (B'D'C)$. Tứ giác $A'B'CD$ là hình bình hành nên $A'D \\parallel B'C "
                         "\\Rightarrow A'D \\parallel (B'D'C)$...",
-                        'Với mọi $x \\in \\mathbb{R}$, ta có $-1 \\le \\sin 2x \\le 1 \\Rightarrow -3 \\le '
-                        '3\\sin 2x \\le 3 \\Rightarrow -4 \\le 3\\sin 2x - 1 \\le 2$. Vậy tập giá trị là '
-                        '$[-4; 2]$...'],
+                        'Đổi ngược dấu của phép tính chính và không kiểm tra lại kết quả'],
             'answer': 2,
             'solution': "Lời giải chi tiết theo Bài 13: Hai mặt phẳng song song: Tứ giác $BDD'B'$ là hình "
                         "bình hành nên $BD \\parallel B'D' \\Rightarrow BD \\parallel (B'D'C)$. Tứ giác "
@@ -2389,32 +2392,36 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 14: Phép chiếu song song**, công thức hoặc quy tắc nào '
-                 'sau đây biểu diễn đúng **Bảo toàn tỉ số đoạn thẳng song song**?',
-            'options': ["$I \\text{ là trung điểm của } AB \\Rightarrow I' \\text{ là trung điểm của } A'B'$",
-                        '$\\text{Hình bình hành, hình chữ nhật, hình thoi, hình vuông} \\mapsto \\text{Hình '
-                        'bình hành}$',
-                        '$a^\\circ = \\dfrac{\\pi a}{180}\\text{ rad}, \\quad \\alpha\\text{ rad} = '
-                        '\\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$',
+            'q': 'Trong **Bài 14: Phép chiếu song song**, quy tắc hoặc công thức nào sau đây xác định đúng '
+                 '**Bảo toàn tỉ số đoạn thẳng song song**?',
+            'options': ['$AB \\parallel CD \\quad (\\text{không cắt nhau với }\\Delta) \\Rightarrow '
+                        "\\dfrac{A'B'}{C'D'} = \\dfrac{AB}{CD}$",
+                        '$AB \\parallel CD \\quad (\\text{không song song với }\\Delta) \\Rightarrow '
+                        "\\dfrac{C'D'}{A'B'} = \\dfrac{AB}{CD}$",
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $AB \\parallel CD \\quad '
+                        "(\\text{không song song với }\\Delta) \\Rightarrow \\dfrac{A'B'}{C'D'} = "
+                        '\\dfrac{AB}{CD}$',
                         '$AB \\parallel CD \\quad (\\text{không song song với }\\Delta) \\Rightarrow '
                         "\\dfrac{A'B'}{C'D'} = \\dfrac{AB}{CD}$"],
             'answer': 3,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 14: Phép chiếu song song, **Bảo toàn tỉ số '
-                        'đoạn thẳng song song** được xác định bởi: $AB \\parallel CD \\quad (\\text{không '
-                        "song song với }\\Delta) \\Rightarrow \\dfrac{A'B'}{C'D'} = \\dfrac{AB}{CD}$."},
+            'solution': 'Theo kiến thức trọng tâm của Bài 14: Phép chiếu song song, **Bảo toàn tỉ số đoạn '
+                        'thẳng song song** được xác định bởi: $AB \\parallel CD \\quad (\\text{không song '
+                        "song với }\\Delta) \\Rightarrow \\dfrac{A'B'}{C'D'} = \\dfrac{AB}{CD}$."},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 14: Phép chiếu song song**, nội dung/biểu thức $I \\text{ là trung điểm của } '
-                 "AB \\Rightarrow I' \\text{ là trung điểm của } A'B'$ là quy tắc hoặc công thức của mục nào "
-                 'sau đây?',
-            'options': ['Bảo toàn trung điểm',
-                        'Bảo toàn tỉ số đoạn thẳng song song',
-                        'Hình biểu diễn của hình bình hành',
-                        'Đổi độ và radian'],
+            'q': 'Khi học **Bài 14: Phép chiếu song song**, biểu thức hoặc quy tắc nào dưới đây biểu diễn '
+                 'đúng **Bảo toàn trung điểm**?',
+            'options': ["$I \\text{ là trung điểm của } AB \\Rightarrow I' \\text{ là trung điểm của } A'B'$",
+                        "$I \\text{ là trung điểm của } AB \\Rightarrow I' \\text{ là trung điểm của } A'B'$ "
+                        '(với dấu ngược lại)',
+                        "Đảo ngược vế của quy tắc: $I \\text{ là trung điểm của } AB \\Rightarrow I' \\text{ "
+                        "là trung điểm của } A'B'$",
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $I \\text{ là trung điểm của } '
+                        "AB \\Rightarrow I' \\text{ là trung điểm của } A'B'$"],
             'answer': 0,
-            'solution': 'Trong Bài 14: Phép chiếu song song, biểu thức/quy tắc $I \\text{ là trung điểm của '
-                        "} AB \\Rightarrow I' \\text{ là trung điểm của } A'B'$ chính là nội dung của **Bảo "
-                        'toàn trung điểm**.'},
+            'solution': 'Trong Bài 14: Phép chiếu song song, **Bảo toàn trung điểm** có công thức/quy tắc '
+                        "là: $I \\text{ là trung điểm của } AB \\Rightarrow I' \\text{ là trung điểm của } "
+                        "A'B'$."},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Cho đoạn thẳng $AB$ có điểm $M$ thuộc đoạn $AB$ sao cho $AM = 2MB$. Qua phép chiếu song '
@@ -2428,18 +2435,18 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 14: Phép chiếu song song** (Chương IV: Quan hệ song song trong không gian), '
-                 'khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Nhận biết được khái niệm góc lượng giác, hệ thức Chasles và đổi được số đo góc giữa '
-                        'độ và radian.',
-                        'Xác định được điểm biểu diễn trên đường tròn lượng giác và các giá trị $\\sin '
-                        '\\alpha, \\cos \\alpha, \\tan \\alpha, \\cot \\alpha$.',
+            'q': 'Để nắm vững bản chất của **Bài 14: Phép chiếu song song**, nhận định nào sau đây là '
+                 '**chính xác**?',
+            'options': ['Nhận biết được mặt phẳng chiếu, phương chiếu và ảnh của một điểm, một hình qua phép '
+                        'chiếu cắt nhau.',
+                        'Đảo ngược vế của quy tắc: Nhận biết được mặt phẳng chiếu, phương chiếu và ảnh của '
+                        'một điểm, một hình qua phép chiếu song song.',
                         'Nhận biết được mặt phẳng chiếu, phương chiếu và ảnh của một điểm, một hình qua phép '
                         'chiếu song song.',
-                        'Vận dụng các hệ thức lượng giác cơ bản và giá trị lượng giác của các góc có liên '
-                        'quan đặc biệt (đối nhau, bù nhau, phụ nhau, hơn kém $\\pi$).'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nhận biết được mặt phẳng chiếu, '
+                        'phương chiếu và ảnh của một điểm, một hình qua phép chiếu song song.'],
             'answer': 2,
-            'solution': 'Theo yêu cầu cần đạt của Bài 14: Phép chiếu song song: Nhận biết được mặt phẳng '
+            'solution': 'Theo nội dung cốt lõi của Bài 14: Phép chiếu song song: Nhận biết được mặt phẳng '
                         'chiếu, phương chiếu và ảnh của một điểm, một hình qua phép chiếu song song.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -2461,45 +2468,42 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 14: Phép chiếu song '
-                 'song**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được mặt phẳng chiếu, '
-                           'phương chiếu và ảnh của một điểm, một hình qua phép chiếu song song.',
-                           'Quy tắc/công thức **Bảo toàn tỉ số đoạn thẳng song song** trong bài được xác '
-                           'định bởi: $AB \\parallel CD \\quad (\\text{không song song với }\\Delta) '
-                           "\\Rightarrow \\dfrac{A'B'}{C'D'} = \\dfrac{AB}{CD}$.",
-                           'Trong mọi trường hợp, **Bảo toàn tỉ số đoạn thẳng song song** luôn được tính '
-                           'bằng công thức $a^\\circ = \\dfrac{\\pi a}{180}\\text{ rad}, \\quad '
-                           '\\alpha\\text{ rad} = \\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$ (thuộc '
-                           'Đổi độ và radian) mà không cần điều kiện của Bài 14: Phép chiếu song song.',
-                           'Với bài toán minh họa: “Qua phép chiếu song song, hình biểu diễn của một tam '
-                           'giác đều và một hình chữ nhật (nằm trong mặt phẳng không song song với phương '
-                           'chiếu) là...”, lời giải đúng là: Do phép chiếu song song không bảo toàn độ dài '
-                           'và góc nhưng bảo toàn tính thẳng hàng và tính song song nên: hình biểu diễn của '
-                           'tam giác đều l...'],
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 14: Phép chiếu song song**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết được mặt phẳng chiếu, phương '
+                           'chiếu và ảnh của một điểm, một hình qua phép chiếu song song.',
+                           'Trong **Bài 14: Phép chiếu song song**, quy tắc/công thức **Bảo toàn tỉ số đoạn '
+                           'thẳng song song** được viết là: $AB \\parallel CD \\quad (\\text{không song song '
+                           "với }\\Delta) \\Rightarrow \\dfrac{A'B'}{C'D'} = \\dfrac{AB}{CD}$.",
+                           'Nếu áp dụng sai dấu/phép tính thành $AB \\parallel CD \\quad (\\text{không cắt '
+                           "nhau với }\\Delta) \\Rightarrow \\dfrac{A'B'}{C'D'} = \\dfrac{AB}{CD}$ thì kết "
+                           'quả của **Bảo toàn tỉ số đoạn thẳng song song** trong **Bài 14: Phép chiếu song '
+                           'song** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Qua phép chiếu song song, hình biểu diễn của một tam giác '
+                           'đều và một hình chữ nhật (nằm trong mặt phẳng không song song với phương '
+                           'chiế...”, kết quả giải đúng là: Do phép chiếu song song không bảo toàn độ dài và '
+                           'góc nhưng bảo toàn tính thẳng hàng và tính song song nên: hình biểu diễn của tam '
+                           'giác...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 14: Phép chiếu song song. b) **Đúng** theo '
-                        'công thức trọng tâm **Bảo toàn tỉ số đoạn thẳng song song** ($AB \\parallel CD '
-                        "\\quad (\\text{không song song với }\\Delta) \\Rightarrow \\dfrac{A'B'}{C'D'} = "
-                        '\\dfrac{AB}{CD}$). c) **Sai** vì $a^\\circ = \\dfrac{\\pi a}{180}\\text{ rad}, '
-                        '\\quad \\alpha\\text{ rad} = \\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$ là '
-                        'công thức của nội dung khác, không phải quy tắc chung của **Bảo toàn tỉ số đoạn '
-                        'thẳng song song**. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        'công thức **Bảo toàn tỉ số đoạn thẳng song song** ($AB \\parallel CD \\quad '
+                        "(\\text{không song song với }\\Delta) \\Rightarrow \\dfrac{A'B'}{C'D'} = "
+                        '\\dfrac{AB}{CD}$). c) **Sai** vì công thức đúng của **Bảo toàn tỉ số đoạn thẳng '
+                        'song song** phải là $AB \\parallel CD \\quad (\\text{không song song với }\\Delta) '
+                        "\\Rightarrow \\dfrac{A'B'}{C'D'} = \\dfrac{AB}{CD}$ chứ không phải $AB \\parallel "
+                        "CD \\quad (\\text{không cắt nhau với }\\Delta) \\Rightarrow \\dfrac{A'B'}{C'D'} = "
+                        '\\dfrac{AB}{CD}$. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 14: Phép chiếu song song** để giải quyết tình huống sau: Qua phép '
-                 'chiếu song song, hình biểu diễn của một tam giác đều và một hình chữ nhật (nằm trong mặt '
-                 'phẳng không song song với phương chiếu) là những hình gì? Kết quả và hướng giải nào dưới '
-                 'đây là **đúng**?',
-            'options': ['Vì $\\dfrac{\\pi}{2} < \\alpha < \\pi$ nên $\\cos \\alpha < 0$. Ta có $\\cos '
-                        '\\alpha = -\\sqrt{1 - \\sin^2 \\alpha} = -\\sqrt{1 - \\dfrac{9}{25}} = '
-                        '-\\dfrac{4}{5}$. Suy...',
-                        'Ta có...',
-                        'Với mọi $x \\in \\mathbb{R}$, ta có $-1 \\le \\sin 2x \\le 1 \\Rightarrow -3 \\le '
-                        '3\\sin 2x \\le 3 \\Rightarrow -4 \\le 3\\sin 2x - 1 \\le 2$. Vậy tập giá trị là '
-                        '$[-4; 2]$...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 14: Phép chiếu song song** để giải bài toán sau: '
+                 'Qua phép chiếu song song, hình biểu diễn của một tam giác đều và một hình chữ nhật (nằm '
+                 'trong mặt phẳng không song song với phương chiếu) là những hình gì? Cách giải và kết quả '
+                 'nào dưới đây là **đúng**?',
+            'options': ['Do phép chiếu cắt nhau không bảo toàn độ dài và góc nhưng bảo toàn tính thẳng hàng '
+                        'và tính song song nên: hình biểu diễn của tam giác đều là một tam...',
+                        'Thực hiện theo thứ tự ngược lại và bỏ qua điều kiện xác định trong bài',
+                        'Đổi ngược dấu của phép tính chính và không kiểm tra lại kết quả',
                         'Do phép chiếu song song không bảo toàn độ dài và góc nhưng bảo toàn tính thẳng hàng '
-                        'và tính song song nên: hình biểu diễn của tam giác đều là một tam giác...'],
+                        'và tính song song nên: hình biểu diễn của tam giác đều là một tam...'],
             'answer': 3,
             'solution': 'Lời giải chi tiết theo Bài 14: Phép chiếu song song: Do phép chiếu song song không '
                         'bảo toàn độ dài và góc nhưng bảo toàn tính thẳng hàng và tính song song nên: hình '
@@ -2580,32 +2584,31 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 15: Giới hạn của dãy số**, công thức hoặc quy tắc nào '
-                 'sau đây biểu diễn đúng **Giới hạn cơ bản bằng 0**?',
+            'q': 'Trong **Bài 15: Giới hạn của dãy số**, quy tắc hoặc công thức nào sau đây xác định đúng '
+                 '**Giới hạn cơ bản bằng 0**?',
             'options': ['$\\lim_{n \\to +\\infty} \\dfrac{1}{n^k} = 0 \\quad (k \\in \\mathbb{N}^*), \\quad '
                         '\\lim_{n \\to +\\infty} q^n = 0 \\quad (|q| < 1)$',
-                        '$S = u_1 + u_1q + u_1q^2 + \\dots = \\dfrac{u_1}{1 - q} \\quad (|q| < 1)$',
-                        '$\\lim_{n \\to +\\infty} n^k = +\\infty \\quad (k \\in \\mathbb{N}^*), \\quad '
-                        '\\lim_{n \\to +\\infty} q^n = +\\infty \\quad (q > 1)$',
-                        '$a^\\circ = \\dfrac{\\pi a}{180}\\text{ rad}, \\quad \\alpha\\text{ rad} = '
-                        '\\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$'],
+                        '$\\lim_{n \\to +\\notinfty} \\dfrac{1}{n^k} = 0 \\quad (k \\in \\mathbb{N}^*), '
+                        '\\quad \\lim_{n \\to +\\infty} q^n = 0 \\quad (|q| < 1)$',
+                        '$\\lim_{n \\to +\\infty} \\dfrac{n^k}{1} = 0 \\quad (k \\in \\mathbb{N}^*), \\quad '
+                        '\\lim_{n \\to +\\infty} q^n = 0 \\quad (|q| < 1)$',
+                        '$\\lim_{n \\to +\\infty} \\dfrac{2}{n^k} = 0 \\quad (k \\in \\mathbb{N}^*), \\quad '
+                        '\\lim_{n \\to +\\infty} q^n = 0 \\quad (|q| < 1)$'],
             'answer': 0,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 15: Giới hạn của dãy số, **Giới hạn cơ bản '
-                        'bằng 0** được xác định bởi: $\\lim_{n \\to +\\infty} \\dfrac{1}{n^k} = 0 \\quad (k '
-                        '\\in \\mathbb{N}^*), \\quad \\lim_{n \\to +\\infty} q^n = 0 \\quad (|q| < 1)$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 15: Giới hạn của dãy số, **Giới hạn cơ bản bằng '
+                        '0** được xác định bởi: $\\lim_{n \\to +\\infty} \\dfrac{1}{n^k} = 0 \\quad (k \\in '
+                        '\\mathbb{N}^*), \\quad \\lim_{n \\to +\\infty} q^n = 0 \\quad (|q| < 1)$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 15: Giới hạn của dãy số**, nội dung/biểu thức $S = u_1 + u_1q + u_1q^2 + '
-                 '\\dots = \\dfrac{u_1}{1 - q} \\quad (|q| < 1)$ là quy tắc hoặc công thức của mục nào sau '
-                 'đây?',
-            'options': ['Giới hạn cơ bản bằng 0',
-                        'Tổng cấp số nhân lùi vô hạn',
-                        'Giới hạn vô cực',
-                        'Đổi độ và radian'],
+            'q': 'Khi học **Bài 15: Giới hạn của dãy số**, biểu thức hoặc quy tắc nào dưới đây biểu diễn '
+                 'đúng **Tổng cấp số nhân lùi vô hạn**?',
+            'options': ['$S = u_1 - u_1q + u_1q^2 + \\dots = \\dfrac{u_1}{1 - q} \\quad (|q| < 1)$',
+                        '$S = u_1 + u_1q + u_1q^2 + \\dots = \\dfrac{u_1}{1 - q} \\quad (|q| < 1)$',
+                        '$S = u_1 + u_1q + u_1q^2 + \\dots = \\dfrac{1 - q}{u_1} \\quad (|q| < 1)$',
+                        '$S = u_1 + u_1q + u_1q^4 + \\dots = \\dfrac{u_1}{1 - q} \\quad (|q| < 1)$'],
             'answer': 1,
-            'solution': 'Trong Bài 15: Giới hạn của dãy số, biểu thức/quy tắc $S = u_1 + u_1q + u_1q^2 + '
-                        '\\dots = \\dfrac{u_1}{1 - q} \\quad (|q| < 1)$ chính là nội dung của **Tổng cấp số '
-                        'nhân lùi vô hạn**.'},
+            'solution': 'Trong Bài 15: Giới hạn của dãy số, **Tổng cấp số nhân lùi vô hạn** có công thức/quy '
+                        'tắc là: $S = u_1 + u_1q + u_1q^2 + \\dots = \\dfrac{u_1}{1 - q} \\quad (|q| < 1)$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Tổng của cấp số nhân lùi vô hạn $S = 1 - \\dfrac{1}{3} + \\dfrac{1}{9} - \\dfrac{1}{27} + '
@@ -2618,19 +2621,22 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 15: Giới hạn của dãy số** (Chương V: Giới hạn. Hàm số liên tục), khẳng định '
-                 'nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Nhận biết được khái niệm góc lượng giác, hệ thức Chasles và đổi được số đo góc giữa '
-                        'độ và radian.',
-                        'Xác định được điểm biểu diễn trên đường tròn lượng giác và các giá trị $\\sin '
-                        '\\alpha, \\cos \\alpha, \\tan \\alpha, \\cot \\alpha$.',
-                        'Vận dụng các hệ thức lượng giác cơ bản và giá trị lượng giác của các góc có liên '
-                        'quan đặc biệt (đối nhau, bù nhau, phụ nhau, hơn kém $\\pi$).',
+            'q': 'Để nắm vững bản chất của **Bài 15: Giới hạn của dãy số**, nhận định nào sau đây là **chính '
+                 'xác**?',
+            'options': ['Nhận biết được giới hạn bằng $0$ của các dãy số cơ bản $\\lim_{n \\to +\\notinfty} '
+                        '\\dfrac{1}{n^k} = 0$ ($k \\in \\mathbb{N}^*$) và $\\lim_{n \\to +\\infty} q^n = 0$ '
+                        '($|q| < 1$).',
+                        'Nhận biết được giới hạn bằng $0$ của các dãy số cơ bản $\\lim_{n \\to +\\infty} '
+                        '\\dfrac{n^k}{1} = 0$ ($k \\in \\mathbb{N}^*$) và $\\lim_{n \\to +\\infty} q^n = 0$ '
+                        '($|q| < 1$).',
+                        'Nhận biết được giới hạn bằng $2$ của các dãy số cơ bản $\\lim_{n \\to +\\infty} '
+                        '\\dfrac{1}{n^k} = 0$ ($k \\in \\mathbb{N}^*$) và $\\lim_{n \\to +\\infty} q^n = 0$ '
+                        '($|q| < 1$).',
                         'Nhận biết được giới hạn bằng $0$ của các dãy số cơ bản $\\lim_{n \\to +\\infty} '
                         '\\dfrac{1}{n^k} = 0$ ($k \\in \\mathbb{N}^*$) và $\\lim_{n \\to +\\infty} q^n = 0$ '
                         '($|q| < 1$).'],
             'answer': 3,
-            'solution': 'Theo yêu cầu cần đạt của Bài 15: Giới hạn của dãy số: Nhận biết được giới hạn bằng '
+            'solution': 'Theo nội dung cốt lõi của Bài 15: Giới hạn của dãy số: Nhận biết được giới hạn bằng '
                         '$0$ của các dãy số cơ bản $\\lim_{n \\to +\\infty} \\dfrac{1}{n^k} = 0$ ($k \\in '
                         '\\mathbb{N}^*$) và $\\lim_{n \\to +\\infty} q^n = 0$ ($|q| < 1$).'},
            {'level': 'hieu',
@@ -2649,46 +2655,45 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 15: Giới hạn của dãy '
-                 'số**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được giới hạn bằng $0$ '
-                           'của các dãy số cơ bản $\\lim_{n \\to +\\infty} \\dfrac{1}{n^k} = 0$ ($k \\in '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 15: Giới hạn của dãy số**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết được giới hạn bằng $0$ của các '
+                           'dãy số cơ bản $\\lim_{n \\to +\\infty} \\dfrac{1}{n^k} = 0$ ($k \\in '
                            '\\mathbb{N}^*$) và $\\lim_{n \\to +\\infty} q^n = 0$ ($|q| < 1$).',
-                           'Quy tắc/công thức **Giới hạn cơ bản bằng 0** trong bài được xác định bởi: '
-                           '$\\lim_{n \\to +\\infty} \\dfrac{1}{n^k} = 0 \\quad (k \\in \\mathbb{N}^*), '
-                           '\\quad \\lim_{n \\to +\\infty} q^n = 0 \\quad (|q| < 1)$.',
-                           'Trong mọi trường hợp, **Giới hạn cơ bản bằng 0** luôn được tính bằng công thức '
-                           '$a^\\circ = \\dfrac{\\pi a}{180}\\text{ rad}, \\quad \\alpha\\text{ rad} = '
-                           '\\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$ (thuộc Đổi độ và radian) mà '
-                           'không cần điều kiện của Bài 15: Giới hạn của dãy số.',
-                           'Với bài toán minh họa: “Tính giới hạn $\\lim_{n \\to +\\infty} \\dfrac{3n^2 - 2n '
-                           '+ 1}{n^2 + 4}$ và tổng $S = 1 + \\dfrac{1}{2} + \\dfrac{1}{4} + \\dfrac{1}{8} + '
-                           '\\dots$”, lời giải đúng là: Chia cả tử và mẫu cho $n^2$: $\\lim_{n \\to '
+                           'Trong **Bài 15: Giới hạn của dãy số**, quy tắc/công thức **Giới hạn cơ bản bằng '
+                           '0** được viết là: $\\lim_{n \\to +\\infty} \\dfrac{1}{n^k} = 0 \\quad (k \\in '
+                           '\\mathbb{N}^*), \\quad \\lim_{n \\to +\\infty} q^n = 0 \\quad (|q| < 1)$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $\\lim_{n \\to +\\notinfty} \\dfrac{1}{n^k} '
+                           '= 0 \\quad (k \\in \\mathbb{N}^*), \\quad \\lim_{n \\to +\\infty} q^n = 0 \\quad '
+                           '(|q| < 1)$ thì kết quả của **Giới hạn cơ bản bằng 0** trong **Bài 15: Giới hạn '
+                           'của dãy số** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Tính giới hạn $\\lim_{n \\to +\\infty} \\dfrac{3n^2 - 2n + '
+                           '1}{n^2 + 4}$ và tổng $S = 1 + \\dfrac{1}{2} + \\dfrac{1}{4} + \\dfrac{1}{8} + '
+                           '\\dots$...”, kết quả giải đúng là: Chia cả tử và mẫu cho $n^2$: $\\lim_{n \\to '
                            '+\\infty} \\dfrac{3 - \\dfrac{2}{n} + \\dfrac{1}{n^2}}{1 + \\dfrac{4}{n^2}} = '
                            '\\dfrac{3 - 0 + 0}{1 + 0} = 3$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 15: Giới hạn của dãy số. b) **Đúng** theo '
-                        'công thức trọng tâm **Giới hạn cơ bản bằng 0** ($\\lim_{n \\to +\\infty} '
+                        'công thức **Giới hạn cơ bản bằng 0** ($\\lim_{n \\to +\\infty} \\dfrac{1}{n^k} = 0 '
+                        '\\quad (k \\in \\mathbb{N}^*), \\quad \\lim_{n \\to +\\infty} q^n = 0 \\quad (|q| < '
+                        '1)$). c) **Sai** vì công thức đúng của **Giới hạn cơ bản bằng 0** phải là $\\lim_{n '
+                        '\\to +\\infty} \\dfrac{1}{n^k} = 0 \\quad (k \\in \\mathbb{N}^*), \\quad \\lim_{n '
+                        '\\to +\\infty} q^n = 0 \\quad (|q| < 1)$ chứ không phải $\\lim_{n \\to +\\notinfty} '
                         '\\dfrac{1}{n^k} = 0 \\quad (k \\in \\mathbb{N}^*), \\quad \\lim_{n \\to +\\infty} '
-                        'q^n = 0 \\quad (|q| < 1)$). c) **Sai** vì $a^\\circ = \\dfrac{\\pi a}{180}\\text{ '
-                        'rad}, \\quad \\alpha\\text{ rad} = \\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$ '
-                        'là công thức của nội dung khác, không phải quy tắc chung của **Giới hạn cơ bản bằng '
-                        '0**. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        'q^n = 0 \\quad (|q| < 1)$. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 15: Giới hạn của dãy số** để giải quyết tình huống sau: Tính giới '
-                 'hạn $\\lim_{n \\to +\\infty} \\dfrac{3n^2 - 2n + 1}{n^2 + 4}$ và tổng $S = 1 + '
-                 '\\dfrac{1}{2} + \\dfrac{1}{4} + \\dfrac{1}{8} + \\dots$ Kết quả và hướng giải nào dưới đây '
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 15: Giới hạn của dãy số** để giải bài toán sau: '
+                 'Tính giới hạn $\\lim_{n \\to +\\infty} \\dfrac{3n^2 - 2n + 1}{n^2 + 4}$ và tổng $S = 1 + '
+                 '\\dfrac{1}{2} + \\dfrac{1}{4} + \\dfrac{1}{8} + \\dots$ Cách giải và kết quả nào dưới đây '
                  'là **đúng**?',
             'options': ['Chia cả tử và mẫu cho $n^2$: $\\lim_{n \\to +\\infty} \\dfrac{3 - \\dfrac{2}{n} + '
-                        '\\dfrac{1}{n^2}}{1 + \\dfrac{4}{n^2}} = \\dfrac{3 - 0 + 0}{1 + 0} = 3$. Tổng $S$...',
-                        'Vì $\\dfrac{\\pi}{2} < \\alpha < \\pi$ nên $\\cos \\alpha < 0$. Ta có $\\cos '
-                        '\\alpha = -\\sqrt{1 - \\sin^2 \\alpha} = -\\sqrt{1 - \\dfrac{9}{25}} = '
-                        '-\\dfrac{4}{5}$. Suy...',
-                        'Ta có...',
-                        'Với mọi $x \\in \\mathbb{R}$, ta có $-1 \\le \\sin 2x \\le 1 \\Rightarrow -3 \\le '
-                        '3\\sin 2x \\le 3 \\Rightarrow -4 \\le 3\\sin 2x - 1 \\le 2$. Vậy tập giá trị là '
-                        '$[-4; 2]$...'],
+                        '\\dfrac{1}{n^2}}{1 + \\dfrac{4}{n^2}} = \\dfrac{3 - 0 + 0}{1 + 0} = 3$. Tổng...',
+                        'Chia cả tử và mẫu cho $n^2$: $\\lim_{n \\to +\\notinfty} \\dfrac{3 - \\dfrac{2}{n} '
+                        '+ \\dfrac{1}{n^2}}{1 + \\dfrac{4}{n^2}} = \\dfrac{3 - 0 + 0}{1 + 0} = 3$. Tổng...',
+                        'Chia cả tử và mẫu cho $n^2$: $\\lim_{n \\to +\\infty} \\dfrac{3 - \\dfrac{n}{2} + '
+                        '\\dfrac{1}{n^2}}{1 + \\dfrac{4}{n^2}} = \\dfrac{3 - 0 + 0}{1 + 0} = 3$. Tổng...',
+                        'Chia cả tử và mẫu cho $n^4$: $\\lim_{n \\to +\\infty} \\dfrac{3 - \\dfrac{2}{n} + '
+                        '\\dfrac{1}{n^2}}{1 + \\dfrac{4}{n^2}} = \\dfrac{3 - 0 + 0}{1 + 0} = 3$. Tổng...'],
             'answer': 0,
             'solution': 'Lời giải chi tiết theo Bài 15: Giới hạn của dãy số: Chia cả tử và mẫu cho $n^2$: '
                         '$\\lim_{n \\to +\\infty} \\dfrac{3 - \\dfrac{2}{n} + \\dfrac{1}{n^2}}{1 + '
@@ -2769,32 +2774,36 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 16: Giới hạn của hàm số**, công thức hoặc quy tắc nào '
-                 'sau đây biểu diễn đúng **Điều kiện tồn tại giới hạn tại một điểm**?',
-            'options': ['$x^2 - x_0^2 = (x - x_0)(x + x_0), \\quad \\sqrt{A} - \\sqrt{B} = \\dfrac{A - '
-                        'B}{\\sqrt{A} + \\sqrt{B}}$',
+            'q': 'Trong **Bài 16: Giới hạn của hàm số**, quy tắc hoặc công thức nào sau đây xác định đúng '
+                 '**Điều kiện tồn tại giới hạn tại một điểm**?',
+            'options': ['$\\lim_{x \\to x_0} f(x) = L \\Leftrightarrow \\lim_{x \\to x_0^+} f(x) = \\lim_{x '
+                        '\\to x_0^-} f(x) = L$ (với dấu ngược lại)',
                         '$\\lim_{x \\to x_0} f(x) = L \\Leftrightarrow \\lim_{x \\to x_0^+} f(x) = \\lim_{x '
                         '\\to x_0^-} f(x) = L$',
-                        '$\\lim_{x \\to \\pm\\infty} \\dfrac{c}{x^k} = 0 \\quad (k \\in \\mathbb{N}^*)$',
-                        '$a^\\circ = \\dfrac{\\pi a}{180}\\text{ rad}, \\quad \\alpha\\text{ rad} = '
-                        '\\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$'],
+                        'Đảo ngược vế của quy tắc: $\\lim_{x \\to x_0} f(x) = L \\Leftrightarrow \\lim_{x '
+                        '\\to x_0^+} f(x) = \\lim_{x \\to x_0^-} f(x) = L$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\lim_{x \\to x_0} f(x) = L '
+                        '\\Leftrightarrow \\lim_{x \\to x_0^+} f(x) = \\lim_{x \\to x_0^-} f(x) = L$'],
             'answer': 1,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 16: Giới hạn của hàm số, **Điều kiện tồn tại '
-                        'giới hạn tại một điểm** được xác định bởi: $\\lim_{x \\to x_0} f(x) = L '
-                        '\\Leftrightarrow \\lim_{x \\to x_0^+} f(x) = \\lim_{x \\to x_0^-} f(x) = L$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 16: Giới hạn của hàm số, **Điều kiện tồn tại giới '
+                        'hạn tại một điểm** được xác định bởi: $\\lim_{x \\to x_0} f(x) = L \\Leftrightarrow '
+                        '\\lim_{x \\to x_0^+} f(x) = \\lim_{x \\to x_0^-} f(x) = L$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 16: Giới hạn của hàm số**, nội dung/biểu thức $x^2 - x_0^2 = (x - x_0)(x + '
-                 'x_0), \\quad \\sqrt{A} - \\sqrt{B} = \\dfrac{A - B}{\\sqrt{A} + \\sqrt{B}}$ là quy tắc '
-                 'hoặc công thức của mục nào sau đây?',
-            'options': ['Điều kiện tồn tại giới hạn tại một điểm',
-                        'Giới hạn cơ bản tại vô cực',
-                        'Hằng đẳng thức khử dạng 0/0',
-                        'Đổi độ và radian'],
+            'q': 'Khi học **Bài 16: Giới hạn của hàm số**, biểu thức hoặc quy tắc nào dưới đây biểu diễn '
+                 'đúng **Hằng đẳng thức khử dạng 0/0**?',
+            'options': ['$x^2 - x_0^2 = (x - x_0)(x - x_0), \\quad \\sqrt{A} - \\sqrt{B} = \\dfrac{A - '
+                        'B}{\\sqrt{A} + \\sqrt{B}}$',
+                        '$x^2 - x_0^1 = (x - x_0)(x + x_0), \\quad \\sqrt{A} - \\sqrt{B} = \\dfrac{A - '
+                        'B}{\\sqrt{A} + \\sqrt{B}}$',
+                        '$x^2 - x_0^2 = (x - x_0)(x + x_0), \\quad \\sqrt{A} - \\sqrt{B} = \\dfrac{A - '
+                        'B}{\\sqrt{A} + \\sqrt{B}}$',
+                        '$x^4 - x_0^2 = (x - x_0)(x + x_0), \\quad \\sqrt{A} - \\sqrt{B} = \\dfrac{A - '
+                        'B}{\\sqrt{A} + \\sqrt{B}}$'],
             'answer': 2,
-            'solution': 'Trong Bài 16: Giới hạn của hàm số, biểu thức/quy tắc $x^2 - x_0^2 = (x - x_0)(x + '
-                        'x_0), \\quad \\sqrt{A} - \\sqrt{B} = \\dfrac{A - B}{\\sqrt{A} + \\sqrt{B}}$ chính '
-                        'là nội dung của **Hằng đẳng thức khử dạng 0/0**.'},
+            'solution': 'Trong Bài 16: Giới hạn của hàm số, **Hằng đẳng thức khử dạng 0/0** có công thức/quy '
+                        'tắc là: $x^2 - x_0^2 = (x - x_0)(x + x_0), \\quad \\sqrt{A} - \\sqrt{B} = \\dfrac{A '
+                        '- B}{\\sqrt{A} + \\sqrt{B}}$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Giá trị của $\\lim_{x \\to 3} \\dfrac{x^2 - 9}{x - 3}$ bằng:',
@@ -2806,19 +2815,22 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 16: Giới hạn của hàm số** (Chương V: Giới hạn. Hàm số liên tục), khẳng định '
-                 'nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
+            'q': 'Để nắm vững bản chất của **Bài 16: Giới hạn của hàm số**, nhận định nào sau đây là **chính '
+                 'xác**?',
             'options': ['Hiểu được khái niệm giới hạn của hàm số tại một điểm $\\lim_{x \\to x_0} f(x)$, '
                         'giới hạn một bên $\\lim_{x \\to x_0^+} f(x), \\lim_{x \\to x_0^-} f(x)$ và giới hạn '
                         'tại vô cực.',
-                        'Nhận biết được khái niệm góc lượng giác, hệ thức Chasles và đổi được số đo góc giữa '
-                        'độ và radian.',
-                        'Xác định được điểm biểu diễn trên đường tròn lượng giác và các giá trị $\\sin '
-                        '\\alpha, \\cos \\alpha, \\tan \\alpha, \\cot \\alpha$.',
-                        'Vận dụng các hệ thức lượng giác cơ bản và giá trị lượng giác của các góc có liên '
-                        'quan đặc biệt (đối nhau, bù nhau, phụ nhau, hơn kém $\\pi$).'],
+                        'Hiểu được khái niệm giới hạn của hàm số tại một điểm $\\lim_{x \\to x_0} f(x)$, '
+                        'giới hạn một bên $\\lim_{x \\to x_0^+} f(x), \\lim_{x \\to x_0^-} f(x)$ và giới hạn '
+                        'tại vô cực. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Hiểu được khái niệm giới hạn của hàm số tại một điểm '
+                        '$\\lim_{x \\to x_0} f(x)$, giới hạn một bên $\\lim_{x \\to x_0^+} f(x), \\lim_{x '
+                        '\\to x_0^-} f(x)$ và giới hạn tại vô cực.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Hiểu được khái niệm giới hạn '
+                        'của hàm số tại một điểm $\\lim_{x \\to x_0} f(x)$, giới hạn một bên $\\lim_{x \\to '
+                        'x_0^+} f(x), \\lim_{x \\to x_0^-} f(x)$ và giới hạn tại vô cực.'],
             'answer': 0,
-            'solution': 'Theo yêu cầu cần đạt của Bài 16: Giới hạn của hàm số: Hiểu được khái niệm giới hạn '
+            'solution': 'Theo nội dung cốt lõi của Bài 16: Giới hạn của hàm số: Hiểu được khái niệm giới hạn '
                         'của hàm số tại một điểm $\\lim_{x \\to x_0} f(x)$, giới hạn một bên $\\lim_{x \\to '
                         'x_0^+} f(x), \\lim_{x \\to x_0^-} f(x)$ và giới hạn tại vô cực.'},
            {'level': 'hieu',
@@ -2837,45 +2849,47 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 16: Giới hạn của hàm '
-                 'số**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Hiểu được khái niệm giới hạn của '
-                           'hàm số tại một điểm $\\lim_{x \\to x_0} f(x)$, giới hạn một bên $\\lim_{x \\to '
-                           'x_0^+} f(x), \\lim_{x \\to x_0^-} f(x)$ và giới hạn tại vô cực.',
-                           'Quy tắc/công thức **Điều kiện tồn tại giới hạn tại một điểm** trong bài được xác '
-                           'định bởi: $\\lim_{x \\to x_0} f(x) = L \\Leftrightarrow \\lim_{x \\to x_0^+} '
-                           'f(x) = \\lim_{x \\to x_0^-} f(x) = L$.',
-                           'Trong mọi trường hợp, **Điều kiện tồn tại giới hạn tại một điểm** luôn được tính '
-                           'bằng công thức $a^\\circ = \\dfrac{\\pi a}{180}\\text{ rad}, \\quad '
-                           '\\alpha\\text{ rad} = \\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$ (thuộc '
-                           'Đổi độ và radian) mà không cần điều kiện của Bài 16: Giới hạn của hàm số.',
-                           'Với bài toán minh họa: “Tính giới hạn $\\lim_{x \\to 2} \\dfrac{x^2 - 4}{x - '
-                           '2}$.”, lời giải đúng là: Với $x \\ne 2$, ta có $\\dfrac{x^2 - 4}{x - 2} = '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 16: Giới hạn của hàm số**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Hiểu được khái niệm giới hạn của hàm số '
+                           'tại một điểm $\\lim_{x \\to x_0} f(x)$, giới hạn một bên $\\lim_{x \\to x_0^+} '
+                           'f(x), \\lim_{x \\to x_0^-} f(x)$ và giới hạn tại vô cực.',
+                           'Trong **Bài 16: Giới hạn của hàm số**, quy tắc/công thức **Điều kiện tồn tại '
+                           'giới hạn tại một điểm** được viết là: $\\lim_{x \\to x_0} f(x) = L '
+                           '\\Leftrightarrow \\lim_{x \\to x_0^+} f(x) = \\lim_{x \\to x_0^-} f(x) = L$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $\\lim_{x \\to x_0} f(x) = L '
+                           '\\Leftrightarrow \\lim_{x \\to x_0^+} f(x) = \\lim_{x \\to x_0^-} f(x) = L$ (với '
+                           'dấu ngược lại) thì kết quả của **Điều kiện tồn tại giới hạn tại một điểm** trong '
+                           '**Bài 16: Giới hạn của hàm số** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Tính giới hạn $\\lim_{x \\to 2} \\dfrac{x^2 - 4}{x - 2}$.”, '
+                           'kết quả giải đúng là: Với $x \\ne 2$, ta có $\\dfrac{x^2 - 4}{x - 2} = '
                            '\\dfrac{(x - 2)(x + 2)}{x - 2} = x + 2$. Suy ra $\\lim_{x \\to 2} \\dfrac{x^2 - '
                            '4}{x - 2} = \\lim_{x \\to 2} (x + 2) = 2 + 2 = 4$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 16: Giới hạn của hàm số. b) **Đúng** theo '
-                        'công thức trọng tâm **Điều kiện tồn tại giới hạn tại một điểm** ($\\lim_{x \\to '
-                        'x_0} f(x) = L \\Leftrightarrow \\lim_{x \\to x_0^+} f(x) = \\lim_{x \\to x_0^-} '
-                        'f(x) = L$). c) **Sai** vì $a^\\circ = \\dfrac{\\pi a}{180}\\text{ rad}, \\quad '
-                        '\\alpha\\text{ rad} = \\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$ là công thức '
-                        'của nội dung khác, không phải quy tắc chung của **Điều kiện tồn tại giới hạn tại '
-                        'một điểm**. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        'công thức **Điều kiện tồn tại giới hạn tại một điểm** ($\\lim_{x \\to x_0} f(x) = L '
+                        '\\Leftrightarrow \\lim_{x \\to x_0^+} f(x) = \\lim_{x \\to x_0^-} f(x) = L$). c) '
+                        '**Sai** vì công thức đúng của **Điều kiện tồn tại giới hạn tại một điểm** phải là '
+                        '$\\lim_{x \\to x_0} f(x) = L \\Leftrightarrow \\lim_{x \\to x_0^+} f(x) = \\lim_{x '
+                        '\\to x_0^-} f(x) = L$ chứ không phải $\\lim_{x \\to x_0} f(x) = L \\Leftrightarrow '
+                        '\\lim_{x \\to x_0^+} f(x) = \\lim_{x \\to x_0^-} f(x) = L$ (với dấu ngược lại). d) '
+                        '**Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 16: Giới hạn của hàm số** để giải quyết tình huống sau: Tính giới '
-                 'hạn $\\lim_{x \\to 2} \\dfrac{x^2 - 4}{x - 2}$. Kết quả và hướng giải nào dưới đây là '
-                 '**đúng**?',
-            'options': ['Vì $\\dfrac{\\pi}{2} < \\alpha < \\pi$ nên $\\cos \\alpha < 0$. Ta có $\\cos '
-                        '\\alpha = -\\sqrt{1 - \\sin^2 \\alpha} = -\\sqrt{1 - \\dfrac{9}{25}} = '
-                        '-\\dfrac{4}{5}$. Suy...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 16: Giới hạn của hàm số** để giải bài toán sau: '
+                 'Tính giới hạn $\\lim_{x \\to 2} \\dfrac{x^2 - 4}{x - 2}$. Cách giải và kết quả nào dưới '
+                 'đây là **đúng**?',
+            'options': ['Với $x \\ne 2$, ta có $\\dfrac{x^2 - 4}{x - 2} = \\dfrac{(x - 2)(x - 2)}{x - 2} = x '
+                        '+ 2$. Suy ra $\\lim_{x \\to 2} \\dfrac{x^2 - 4}{x - 2} = \\lim_{x \\to 2} (x + 2) = '
+                        '2 + 2 = 4$...',
                         'Với $x \\ne 2$, ta có $\\dfrac{x^2 - 4}{x - 2} = \\dfrac{(x - 2)(x + 2)}{x - 2} = x '
                         '+ 2$. Suy ra $\\lim_{x \\to 2} \\dfrac{x^2 - 4}{x - 2} = \\lim_{x \\to 2} (x + 2) = '
                         '2 + 2 = 4$...',
-                        'Ta có...',
-                        'Với mọi $x \\in \\mathbb{R}$, ta có $-1 \\le \\sin 2x \\le 1 \\Rightarrow -3 \\le '
-                        '3\\sin 2x \\le 3 \\Rightarrow -4 \\le 3\\sin 2x - 1 \\le 2$. Vậy tập giá trị là '
-                        '$[-4; 2]$...'],
+                        'Với $x \\ne 2$, ta có $\\dfrac{x - 2}{x^2 - 4} = \\dfrac{(x - 2)(x + 2)}{x - 2} = x '
+                        '+ 2$. Suy ra $\\lim_{x \\to 2} \\dfrac{x^2 - 4}{x - 2} = \\lim_{x \\to 2} (x + 2) = '
+                        '2 + 2 = 4$...',
+                        'Với $x \\ne 4$, ta có $\\dfrac{x^2 - 4}{x - 2} = \\dfrac{(x - 2)(x + 2)}{x - 2} = x '
+                        '+ 2$. Suy ra $\\lim_{x \\to 2} \\dfrac{x^2 - 4}{x - 2} = \\lim_{x \\to 2} (x + 2) = '
+                        '2 + 2 = 4$...'],
             'answer': 1,
             'solution': 'Lời giải chi tiết theo Bài 16: Giới hạn của hàm số: Với $x \\ne 2$, ta có '
                         '$\\dfrac{x^2 - 4}{x - 2} = \\dfrac{(x - 2)(x + 2)}{x - 2} = x + 2$. Suy ra '
@@ -2949,30 +2963,33 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 17: Hàm số liên tục**, công thức hoặc quy tắc nào sau '
-                 'đây biểu diễn đúng **Liên tục tại một điểm**?',
-            'options': ['$f(x) \\text{ liên tục trên } [a; b] \\text{ và } f(a) \\cdot f(b) < 0$',
-                        '$a^\\circ = \\dfrac{\\pi a}{180}\\text{ rad}, \\quad \\alpha\\text{ rad} = '
-                        '\\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$',
+            'q': 'Trong **Bài 17: Hàm số liên tục**, quy tắc hoặc công thức nào sau đây xác định đúng **Liên '
+                 'tục tại một điểm**?',
+            'options': ['$\\lim_{x \\to x_0} f(x) = f(x_0) \\Leftrightarrow \\lim_{x \\to x_0^+} f(x) = '
+                        '\\lim_{x \\to x_0^-} f(x) = f(x_0)$ (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: $\\lim_{x \\to x_0} f(x) = f(x_0) \\Leftrightarrow '
+                        '\\lim_{x \\to x_0^+} f(x) = \\lim_{x \\to x_0^-} f(x) = f(x_0)$',
                         '$\\lim_{x \\to x_0} f(x) = f(x_0) \\Leftrightarrow \\lim_{x \\to x_0^+} f(x) = '
                         '\\lim_{x \\to x_0^-} f(x) = f(x_0)$',
-                        '$l = R \\cdot \\alpha \\quad (\\alpha \\text{ tính bằng rad})$'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\lim_{x \\to x_0} f(x) = '
+                        'f(x_0) \\Leftrightarrow \\lim_{x \\to x_0^+} f(x) = \\lim_{x \\to x_0^-} f(x) = '
+                        'f(x_0)$'],
             'answer': 2,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 17: Hàm số liên tục, **Liên tục tại một '
-                        'điểm** được xác định bởi: $\\lim_{x \\to x_0} f(x) = f(x_0) \\Leftrightarrow '
-                        '\\lim_{x \\to x_0^+} f(x) = \\lim_{x \\to x_0^-} f(x) = f(x_0)$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 17: Hàm số liên tục, **Liên tục tại một điểm** '
+                        'được xác định bởi: $\\lim_{x \\to x_0} f(x) = f(x_0) \\Leftrightarrow \\lim_{x \\to '
+                        'x_0^+} f(x) = \\lim_{x \\to x_0^-} f(x) = f(x_0)$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 17: Hàm số liên tục**, nội dung/biểu thức $f(x) \\text{ liên tục trên } [a; b] '
-                 '\\text{ và } f(a) \\cdot f(b) < 0$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Liên tục tại một điểm',
-                        'Đổi độ và radian',
-                        'Độ dài cung tròn',
-                        'Điều kiện phương trình f(x) = 0 có nghiệm trên (a; b)'],
+            'q': 'Khi học **Bài 17: Hàm số liên tục**, biểu thức hoặc quy tắc nào dưới đây biểu diễn đúng '
+                 '**Điều kiện phương trình f(x) = 0 có nghiệm trên (a; b)**?',
+            'options': ['$f(x) \\text{ liên tục trên } [a; b] \\text{ và } f(a) : f(b) < 0$',
+                        '$f(x) \\text{ liên tục trên } [a; b] \\text{ và } f(a) \\cdot f(b) < 1$',
+                        '$f(x) \\text{ liên tục trên } [a; b] \\text{ và } f(a) \\cdot f(b) < 2$',
+                        '$f(x) \\text{ liên tục trên } [a; b] \\text{ và } f(a) \\cdot f(b) < 0$'],
             'answer': 3,
-            'solution': 'Trong Bài 17: Hàm số liên tục, biểu thức/quy tắc $f(x) \\text{ liên tục trên } [a; '
-                        'b] \\text{ và } f(a) \\cdot f(b) < 0$ chính là nội dung của **Điều kiện phương '
-                        'trình f(x) = 0 có nghiệm trên (a; b)**.'},
+            'solution': 'Trong Bài 17: Hàm số liên tục, **Điều kiện phương trình f(x) = 0 có nghiệm trên (a; '
+                        'b)** có công thức/quy tắc là: $f(x) \\text{ liên tục trên } [a; b] \\text{ và } '
+                        'f(a) \\cdot f(b) < 0$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Nếu hàm số $y = f(x)$ liên tục trên đoạn $[a; b]$ và $f(a) \\cdot f(b) < 0$ thì phương '
@@ -2988,19 +3005,19 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 17: Hàm số liên tục** (Chương V: Giới hạn. Hàm số liên tục), khẳng định nào '
-                 'sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Nhận biết được khái niệm góc lượng giác, hệ thức Chasles và đổi được số đo góc giữa '
-                        'độ và radian.',
+            'q': 'Để nắm vững bản chất của **Bài 17: Hàm số liên tục**, nhận định nào sau đây là **chính '
+                 'xác**?',
+            'options': ['Xét được tính liên tục của hàm số tại một điểm theo điều kiện $\\lim_{x \\to x_0} '
+                        'f(x) = f(x_0)$. (với dấu ngược lại)',
                         'Xét được tính liên tục của hàm số tại một điểm theo điều kiện $\\lim_{x \\to x_0} '
                         'f(x) = f(x_0)$.',
-                        'Xác định được điểm biểu diễn trên đường tròn lượng giác và các giá trị $\\sin '
-                        '\\alpha, \\cos \\alpha, \\tan \\alpha, \\cot \\alpha$.',
-                        'Vận dụng các hệ thức lượng giác cơ bản và giá trị lượng giác của các góc có liên '
-                        'quan đặc biệt (đối nhau, bù nhau, phụ nhau, hơn kém $\\pi$).'],
+                        'Đảo ngược vế của quy tắc: Xét được tính liên tục của hàm số tại một điểm theo điều '
+                        'kiện $\\lim_{x \\to x_0} f(x) = f(x_0)$.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Xét được tính liên tục của hàm '
+                        'số tại một điểm theo điều kiện $\\lim_{x \\to x_0} f(x) = f(x_0)$.'],
             'answer': 1,
-            'solution': 'Theo yêu cầu cần đạt của Bài 17: Hàm số liên tục: Xét được tính liên tục của hàm số '
-                        'tại một điểm theo điều kiện $\\lim_{x \\to x_0} f(x) = f(x_0)$.'},
+            'solution': 'Theo nội dung cốt lõi của Bài 17: Hàm số liên tục: Xét được tính liên tục của hàm '
+                        'số tại một điểm theo điều kiện $\\lim_{x \\to x_0} f(x) = f(x_0)$.'},
            {'level': 'hieu',
             'type': 'tf4',
             'q': 'Cho hàm số $f(x) = \\begin{cases} 2x + 1 & \\text{khi } x \\ge 1 \\\\ x^2 + a & \\text{khi '
@@ -3017,45 +3034,48 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 17: Hàm số liên tục**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Xét được tính liên tục của hàm số '
-                           'tại một điểm theo điều kiện $\\lim_{x \\to x_0} f(x) = f(x_0)$.',
-                           'Quy tắc/công thức **Liên tục tại một điểm** trong bài được xác định bởi: '
-                           '$\\lim_{x \\to x_0} f(x) = f(x_0) \\Leftrightarrow \\lim_{x \\to x_0^+} f(x) = '
-                           '\\lim_{x \\to x_0^-} f(x) = f(x_0)$.',
-                           'Trong mọi trường hợp, **Liên tục tại một điểm** luôn được tính bằng công thức '
-                           '$a^\\circ = \\dfrac{\\pi a}{180}\\text{ rad}, \\quad \\alpha\\text{ rad} = '
-                           '\\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$ (thuộc Đổi độ và radian) mà '
-                           'không cần điều kiện của Bài 17: Hàm số liên tục.',
-                           'Với bài toán minh họa: “Tìm giá trị của tham số $m$ để hàm số $f(x) = '
-                           '\\begin{cases} \\dfrac{x^2 - 1}{x - 1} & \\text{khi } x \\ne 1 \\\\ m & '
-                           '\\text{khi } x = 1 \\end{cases}$...”, lời giải đúng là: Ta có $f(1) = m$ và '
-                           '$\\lim_{x \\to 1} f(x) = \\lim_{x \\to 1} \\dfrac{x^2 - 1}{x - 1} = \\lim_{x '
-                           '\\to 1} (x + 1) = 2$. Để hàm số liên tục tại $x = 1$...'],
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 17: Hàm số liên tục**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Xét được tính liên tục của hàm số tại '
+                           'một điểm theo điều kiện $\\lim_{x \\to x_0} f(x) = f(x_0)$.',
+                           'Trong **Bài 17: Hàm số liên tục**, quy tắc/công thức **Liên tục tại một điểm** '
+                           'được viết là: $\\lim_{x \\to x_0} f(x) = f(x_0) \\Leftrightarrow \\lim_{x \\to '
+                           'x_0^+} f(x) = \\lim_{x \\to x_0^-} f(x) = f(x_0)$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $\\lim_{x \\to x_0} f(x) = f(x_0) '
+                           '\\Leftrightarrow \\lim_{x \\to x_0^+} f(x) = \\lim_{x \\to x_0^-} f(x) = f(x_0)$ '
+                           '(với dấu ngược lại) thì kết quả của **Liên tục tại một điểm** trong **Bài 17: '
+                           'Hàm số liên tục** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Tìm giá trị của tham số $m$ để hàm số $f(x) = \\begin{cases} '
+                           '\\dfrac{x^2 - 1}{x - 1} & \\text{khi } x \\ne 1 \\\\ m & \\text{khi } x = 1 '
+                           '\\end{cases}$...”, kết quả giải đúng là: Ta có $f(1) = m$ và $\\lim_{x \\to 1} '
+                           'f(x) = \\lim_{x \\to 1} \\dfrac{x^2 - 1}{x - 1} = \\lim_{x \\to 1} (x + 1) = 2$. '
+                           'Để hàm số liên tục tại...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 17: Hàm số liên tục. b) **Đúng** theo công '
-                        'thức trọng tâm **Liên tục tại một điểm** ($\\lim_{x \\to x_0} f(x) = f(x_0) '
-                        '\\Leftrightarrow \\lim_{x \\to x_0^+} f(x) = \\lim_{x \\to x_0^-} f(x) = f(x_0)$). '
-                        'c) **Sai** vì $a^\\circ = \\dfrac{\\pi a}{180}\\text{ rad}, \\quad \\alpha\\text{ '
-                        'rad} = \\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$ là công thức của nội dung '
-                        'khác, không phải quy tắc chung của **Liên tục tại một điểm**. d) **Đúng** theo lời '
-                        'giải ví dụ minh họa trong bài học.'},
+                        'thức **Liên tục tại một điểm** ($\\lim_{x \\to x_0} f(x) = f(x_0) \\Leftrightarrow '
+                        '\\lim_{x \\to x_0^+} f(x) = \\lim_{x \\to x_0^-} f(x) = f(x_0)$). c) **Sai** vì '
+                        'công thức đúng của **Liên tục tại một điểm** phải là $\\lim_{x \\to x_0} f(x) = '
+                        'f(x_0) \\Leftrightarrow \\lim_{x \\to x_0^+} f(x) = \\lim_{x \\to x_0^-} f(x) = '
+                        'f(x_0)$ chứ không phải $\\lim_{x \\to x_0} f(x) = f(x_0) \\Leftrightarrow \\lim_{x '
+                        '\\to x_0^+} f(x) = \\lim_{x \\to x_0^-} f(x) = f(x_0)$ (với dấu ngược lại). d) '
+                        '**Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 17: Hàm số liên tục** để giải quyết tình huống sau: Tìm giá trị '
-                 'của tham số $m$ để hàm số $f(x) = \\begin{cases} \\dfrac{x^2 - 1}{x - 1} & \\text{khi } x '
-                 '\\ne 1 \\\\ m & \\text{khi } x = 1 \\end{cases}$ liên tục tại $x = 1$. Kết quả và hướng '
-                 'giải nào dưới đây là **đúng**?',
-            'options': ['Vì $\\dfrac{\\pi}{2} < \\alpha < \\pi$ nên $\\cos \\alpha < 0$. Ta có $\\cos '
-                        '\\alpha = -\\sqrt{1 - \\sin^2 \\alpha} = -\\sqrt{1 - \\dfrac{9}{25}} = '
-                        '-\\dfrac{4}{5}$. Suy...',
-                        'Ta có...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 17: Hàm số liên tục** để giải bài toán sau: Tìm giá '
+                 'trị của tham số $m$ để hàm số $f(x) = \\begin{cases} \\dfrac{x^2 - 1}{x - 1} & \\text{khi '
+                 '} x \\ne 1 \\\\ m & \\text{khi } x = 1 \\end{cases}$ liên tục tại $x = 1$. Cách giải và '
+                 'kết quả nào dưới đây là **đúng**?',
+            'options': ['Ta có $f(1) = m$ và $\\lim_{x \\to 1} f(x) = \\lim_{x \\to 1} \\dfrac{x^2 - 1}{x - '
+                        '1} = \\lim_{x \\to 1} (x - 1) = 2$. Để hàm số liên tục tại $x = 1$ thì $\\lim_{x '
+                        '\\to 1} f(x) = f(1) \\Leftrightarrow m = 2$...',
+                        'Ta có $f(1) = m$ và $\\lim_{x \\to 1} f(x) = \\lim_{x \\to 1} \\dfrac{x - 1}{x^2 - '
+                        '1} = \\lim_{x \\to 1} (x + 1) = 2$. Để hàm số liên tục tại $x = 1$ thì $\\lim_{x '
+                        '\\to 1} f(x) = f(1) \\Leftrightarrow m = 2$...',
                         'Ta có $f(1) = m$ và $\\lim_{x \\to 1} f(x) = \\lim_{x \\to 1} \\dfrac{x^2 - 1}{x - '
                         '1} = \\lim_{x \\to 1} (x + 1) = 2$. Để hàm số liên tục tại $x = 1$ thì $\\lim_{x '
                         '\\to 1} f(x) = f(1) \\Leftrightarrow m = 2$...',
-                        'Với mọi $x \\in \\mathbb{R}$, ta có $-1 \\le \\sin 2x \\le 1 \\Rightarrow -3 \\le '
-                        '3\\sin 2x \\le 3 \\Rightarrow -4 \\le 3\\sin 2x - 1 \\le 2$. Vậy tập giá trị là '
-                        '$[-4; 2]$...'],
+                        'Ta có $f(2) = m$ và $\\lim_{x \\to 1} f(x) = \\lim_{x \\to 1} \\dfrac{x^2 - 1}{x - '
+                        '1} = \\lim_{x \\to 1} (x + 1) = 2$. Để hàm số liên tục tại $x = 1$ thì $\\lim_{x '
+                        '\\to 1} f(x) = f(1) \\Leftrightarrow m = 2$...'],
             'answer': 2,
             'solution': 'Lời giải chi tiết theo Bài 17: Hàm số liên tục: Ta có $f(1) = m$ và $\\lim_{x \\to '
                         '1} f(x) = \\lim_{x \\to 1} \\dfrac{x^2 - 1}{x - 1} = \\lim_{x \\to 1} (x + 1) = 2$. '
@@ -3130,33 +3150,37 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 18: Lũy thừa với số mũ thực**, công thức hoặc quy tắc '
-                 'nào sau đây biểu diễn đúng **Liên hệ căn bậc n và mũ hữu tỉ**?',
+            'q': 'Trong **Bài 18: Lũy thừa với số mũ thực**, quy tắc hoặc công thức nào sau đây xác định '
+                 'đúng **Liên hệ căn bậc n và mũ hữu tỉ**?',
+            'options': ['$a^{\\frac{m}{n}} = \\sqrt[n]{a^m} \\quad (a > 0, m \\notin \\mathbb{Z}, n \\ge 2)$',
+                        '$a^{\\frac{m}{n}} = \\sqrt[n]{a^m} \\quad (a > 0, m \\in \\mathbb{Z}, n \\ge 1)$',
+                        '$a^{\\frac{m}{n}} = \\sqrt[n]{a^m} \\quad (a > 2, m \\in \\mathbb{Z}, n \\ge 2)$',
+                        '$a^{\\frac{m}{n}} = \\sqrt[n]{a^m} \\quad (a > 0, m \\in \\mathbb{Z}, n \\ge 2)$'],
+            'answer': 3,
+            'solution': 'Theo kiến thức trọng tâm của Bài 18: Lũy thừa với số mũ thực, **Liên hệ căn bậc n '
+                        'và mũ hữu tỉ** được xác định bởi: $a^{\\frac{m}{n}} = \\sqrt[n]{a^m} \\quad (a > 0, '
+                        'm \\in \\mathbb{Z}, n \\ge 2)$.'},
+           {'level': 'biet',
+            'type': 'mcq',
+            'q': 'Khi học **Bài 18: Lũy thừa với số mũ thực**, biểu thức hoặc quy tắc nào dưới đây biểu diễn '
+                 'đúng **Quy tắc nhân, chia, lũy thừa tầng**?',
             'options': ['$a^\\alpha \\cdot a^\\beta = a^{\\alpha + \\beta}, \\quad '
                         '\\dfrac{a^\\alpha}{a^\\beta} = a^{\\alpha - \\beta}, \\quad (a^\\alpha)^\\beta = '
                         'a^{\\alpha\\beta}$',
-                        '$A = P(1 + r)^N$',
-                        '$a^\\circ = \\dfrac{\\pi a}{180}\\text{ rad}, \\quad \\alpha\\text{ rad} = '
-                        '\\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$',
-                        '$a^{\\frac{m}{n}} = \\sqrt[n]{a^m} \\quad (a > 0, m \\in \\mathbb{Z}, n \\ge 2)$'],
-            'answer': 3,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 18: Lũy thừa với số mũ thực, **Liên hệ căn '
-                        'bậc n và mũ hữu tỉ** được xác định bởi: $a^{\\frac{m}{n}} = \\sqrt[n]{a^m} \\quad '
-                        '(a > 0, m \\in \\mathbb{Z}, n \\ge 2)$.'},
-           {'level': 'biet',
-            'type': 'mcq',
-            'q': 'Trong **Bài 18: Lũy thừa với số mũ thực**, nội dung/biểu thức $a^\\alpha \\cdot a^\\beta = '
-                 'a^{\\alpha + \\beta}, \\quad \\dfrac{a^\\alpha}{a^\\beta} = a^{\\alpha - \\beta}, \\quad '
-                 '(a^\\alpha)^\\beta = a^{\\alpha\\beta}$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Quy tắc nhân, chia, lũy thừa tầng',
-                        'Liên hệ căn bậc n và mũ hữu tỉ',
-                        'Công thức lãi kép',
-                        'Đổi độ và radian'],
+                        '$a^\\alpha \\cdot a^\\beta = a^{\\alpha - \\beta}, \\quad '
+                        '\\dfrac{a^\\alpha}{a^\\beta} = a^{\\alpha - \\beta}, \\quad (a^\\alpha)^\\beta = '
+                        'a^{\\alpha\\beta}$',
+                        '$a^\\alpha \\cdot a^\\beta = a^{\\alpha + \\beta}, \\quad '
+                        '\\dfrac{a^\\beta}{a^\\alpha} = a^{\\alpha - \\beta}, \\quad (a^\\alpha)^\\beta = '
+                        'a^{\\alpha\\beta}$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $a^\\alpha \\cdot a^\\beta = '
+                        'a^{\\alpha + \\beta}, \\quad \\dfrac{a^\\alpha}{a^\\beta} = a^{\\alpha - \\beta}, '
+                        '\\quad (a^\\alpha)^\\beta = a^{\\alpha\\beta}$'],
             'answer': 0,
-            'solution': 'Trong Bài 18: Lũy thừa với số mũ thực, biểu thức/quy tắc $a^\\alpha \\cdot a^\\beta '
-                        '= a^{\\alpha + \\beta}, \\quad \\dfrac{a^\\alpha}{a^\\beta} = a^{\\alpha - \\beta}, '
-                        '\\quad (a^\\alpha)^\\beta = a^{\\alpha\\beta}$ chính là nội dung của **Quy tắc '
-                        'nhân, chia, lũy thừa tầng**.'},
+            'solution': 'Trong Bài 18: Lũy thừa với số mũ thực, **Quy tắc nhân, chia, lũy thừa tầng** có '
+                        'công thức/quy tắc là: $a^\\alpha \\cdot a^\\beta = a^{\\alpha + \\beta}, \\quad '
+                        '\\dfrac{a^\\alpha}{a^\\beta} = a^{\\alpha - \\beta}, \\quad (a^\\alpha)^\\beta = '
+                        'a^{\\alpha\\beta}$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Giá trị của biểu thức $P = 8^{\\frac{2}{3}} + 9^{\\frac{1}{2}}$ bằng:',
@@ -3168,18 +3192,19 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 18: Lũy thừa với số mũ thực** (Chương VI: Hàm số mũ và hàm số lôgarit), '
-                 'khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Nhận biết được khái niệm góc lượng giác, hệ thức Chasles và đổi được số đo góc giữa '
-                        'độ và radian.',
-                        'Xác định được điểm biểu diễn trên đường tròn lượng giác và các giá trị $\\sin '
-                        '\\alpha, \\cos \\alpha, \\tan \\alpha, \\cot \\alpha$.',
+            'q': 'Để nắm vững bản chất của **Bài 18: Lũy thừa với số mũ thực**, nhận định nào sau đây là '
+                 '**chính xác**?',
+            'options': ['Hiểu được khái niệm căn bậc $n$, lũy thừa với số mũ nguyên, số mũ hữu tỉ '
+                        '$a^{\\frac{m}{n}} = \\sqrt[n]{a^m}$ và số mũ thực. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Hiểu được khái niệm căn bậc $n$, lũy thừa với số mũ '
+                        'nguyên, số mũ hữu tỉ $a^{\\frac{m}{n}} = \\sqrt[n]{a^m}$ và số mũ thực.',
                         'Hiểu được khái niệm căn bậc $n$, lũy thừa với số mũ nguyên, số mũ hữu tỉ '
                         '$a^{\\frac{m}{n}} = \\sqrt[n]{a^m}$ và số mũ thực.',
-                        'Vận dụng các hệ thức lượng giác cơ bản và giá trị lượng giác của các góc có liên '
-                        'quan đặc biệt (đối nhau, bù nhau, phụ nhau, hơn kém $\\pi$).'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Hiểu được khái niệm căn bậc '
+                        '$n$, lũy thừa với số mũ nguyên, số mũ hữu tỉ $a^{\\frac{m}{n}} = \\sqrt[n]{a^m}$ và '
+                        'số mũ thực.'],
             'answer': 2,
-            'solution': 'Theo yêu cầu cần đạt của Bài 18: Lũy thừa với số mũ thực: Hiểu được khái niệm căn '
+            'solution': 'Theo nội dung cốt lõi của Bài 18: Lũy thừa với số mũ thực: Hiểu được khái niệm căn '
                         'bậc $n$, lũy thừa với số mũ nguyên, số mũ hữu tỉ $a^{\\frac{m}{n}} = '
                         '\\sqrt[n]{a^m}$ và số mũ thực.'},
            {'level': 'hieu',
@@ -3198,42 +3223,40 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 18: Lũy thừa với số mũ '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 18: Lũy thừa với số mũ '
                  'thực**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Hiểu được khái niệm căn bậc $n$, '
-                           'lũy thừa với số mũ nguyên, số mũ hữu tỉ $a^{\\frac{m}{n}} = \\sqrt[n]{a^m}$ và '
-                           'số mũ thực.',
-                           'Quy tắc/công thức **Liên hệ căn bậc n và mũ hữu tỉ** trong bài được xác định '
-                           'bởi: $a^{\\frac{m}{n}} = \\sqrt[n]{a^m} \\quad (a > 0, m \\in \\mathbb{Z}, n '
-                           '\\ge 2)$.',
-                           'Trong mọi trường hợp, **Liên hệ căn bậc n và mũ hữu tỉ** luôn được tính bằng '
-                           'công thức $a^\\circ = \\dfrac{\\pi a}{180}\\text{ rad}, \\quad \\alpha\\text{ '
-                           'rad} = \\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$ (thuộc Đổi độ và radian) '
-                           'mà không cần điều kiện của Bài 18: Lũy thừa với số mũ thực.',
-                           'Với bài toán minh họa: “Rút gọn biểu thức $P = a^{\\frac{4}{3}} \\cdot '
-                           '\\sqrt[3]{a^2}$ với $a > 0$.”, lời giải đúng là: Ta có $\\sqrt[3]{a^2} = '
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Hiểu được khái niệm căn bậc $n$, lũy '
+                           'thừa với số mũ nguyên, số mũ hữu tỉ $a^{\\frac{m}{n}} = \\sqrt[n]{a^m}$ và số mũ '
+                           'thực.',
+                           'Trong **Bài 18: Lũy thừa với số mũ thực**, quy tắc/công thức **Liên hệ căn bậc n '
+                           'và mũ hữu tỉ** được viết là: $a^{\\frac{m}{n}} = \\sqrt[n]{a^m} \\quad (a > 0, m '
+                           '\\in \\mathbb{Z}, n \\ge 2)$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $a^{\\frac{m}{n}} = \\sqrt[n]{a^m} \\quad (a '
+                           '> 0, m \\notin \\mathbb{Z}, n \\ge 2)$ thì kết quả của **Liên hệ căn bậc n và mũ '
+                           'hữu tỉ** trong **Bài 18: Lũy thừa với số mũ thực** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Rút gọn biểu thức $P = a^{\\frac{4}{3}} \\cdot '
+                           '\\sqrt[3]{a^2}$ với $a > 0$.”, kết quả giải đúng là: Ta có $\\sqrt[3]{a^2} = '
                            'a^{\\frac{2}{3}}$. Do đó $P = a^{\\frac{4}{3}} \\cdot a^{\\frac{2}{3}} = '
                            'a^{\\frac{4}{3} + \\frac{2}{3}} = a^2$.'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 18: Lũy thừa với số mũ thực. b) **Đúng** '
-                        'theo công thức trọng tâm **Liên hệ căn bậc n và mũ hữu tỉ** ($a^{\\frac{m}{n}} = '
-                        '\\sqrt[n]{a^m} \\quad (a > 0, m \\in \\mathbb{Z}, n \\ge 2)$). c) **Sai** vì '
-                        '$a^\\circ = \\dfrac{\\pi a}{180}\\text{ rad}, \\quad \\alpha\\text{ rad} = '
-                        '\\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$ là công thức của nội dung khác, '
-                        'không phải quy tắc chung của **Liên hệ căn bậc n và mũ hữu tỉ**. d) **Đúng** theo '
-                        'lời giải ví dụ minh họa trong bài học.'},
+                        'theo công thức **Liên hệ căn bậc n và mũ hữu tỉ** ($a^{\\frac{m}{n}} = '
+                        '\\sqrt[n]{a^m} \\quad (a > 0, m \\in \\mathbb{Z}, n \\ge 2)$). c) **Sai** vì công '
+                        'thức đúng của **Liên hệ căn bậc n và mũ hữu tỉ** phải là $a^{\\frac{m}{n}} = '
+                        '\\sqrt[n]{a^m} \\quad (a > 0, m \\in \\mathbb{Z}, n \\ge 2)$ chứ không phải '
+                        '$a^{\\frac{m}{n}} = \\sqrt[n]{a^m} \\quad (a > 0, m \\notin \\mathbb{Z}, n \\ge '
+                        '2)$. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 18: Lũy thừa với số mũ thực** để giải quyết tình huống sau: Rút '
-                 'gọn biểu thức $P = a^{\\frac{4}{3}} \\cdot \\sqrt[3]{a^2}$ với $a > 0$. Kết quả và hướng '
-                 'giải nào dưới đây là **đúng**?',
-            'options': ['Vì $\\dfrac{\\pi}{2} < \\alpha < \\pi$ nên $\\cos \\alpha < 0$. Ta có $\\cos '
-                        '\\alpha = -\\sqrt{1 - \\sin^2 \\alpha} = -\\sqrt{1 - \\dfrac{9}{25}} = '
-                        '-\\dfrac{4}{5}$. Suy...',
-                        'Ta có...',
-                        'Với mọi $x \\in \\mathbb{R}$, ta có $-1 \\le \\sin 2x \\le 1 \\Rightarrow -3 \\le '
-                        '3\\sin 2x \\le 3 \\Rightarrow -4 \\le 3\\sin 2x - 1 \\le 2$. Vậy tập giá trị là '
-                        '$[-4; 2]$...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 18: Lũy thừa với số mũ thực** để giải bài toán sau: '
+                 'Rút gọn biểu thức $P = a^{\\frac{4}{3}} \\cdot \\sqrt[3]{a^2}$ với $a > 0$. Cách giải và '
+                 'kết quả nào dưới đây là **đúng**?',
+            'options': ['Ta có $\\sqrt[3]{a^2} = a^{\\frac{2}{3}}$. Do đó $P = a^{\\frac{4}{3}} \\cdot '
+                        'a^{\\frac{2}{3}} = a^{\\frac{4}{3} - \\frac{2}{3}} = a^2$.',
+                        'Ta có $\\sqrt[3]{a^2} = a^{\\frac{2}{3}}$. Do đó $P = a^{\\frac{4}{3}} \\cdot '
+                        'a^{\\frac{2}{3}} = a^{\\frac{4}{3} + \\frac{2}{3}} = a^1$.',
+                        'Ta có $\\sqrt[6]{a^2} = a^{\\frac{2}{3}}$. Do đó $P = a^{\\frac{4}{3}} \\cdot '
+                        'a^{\\frac{2}{3}} = a^{\\frac{4}{3} + \\frac{2}{3}} = a^2$.',
                         'Ta có $\\sqrt[3]{a^2} = a^{\\frac{2}{3}}$. Do đó $P = a^{\\frac{4}{3}} \\cdot '
                         'a^{\\frac{2}{3}} = a^{\\frac{4}{3} + \\frac{2}{3}} = a^2$.'],
             'answer': 3,
@@ -3311,34 +3334,38 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 19: Lôgarit**, công thức hoặc quy tắc nào sau đây biểu '
-                 'diễn đúng **Định nghĩa và tính chất cơ bản**?',
+            'q': 'Trong **Bài 19: Lôgarit**, quy tắc hoặc công thức nào sau đây xác định đúng **Định nghĩa '
+                 'và tính chất cơ bản**?',
             'options': ['$\\log_a b = \\alpha \\Leftrightarrow a^\\alpha = b; \\quad \\log_a 1 = 0, \\quad '
                         '\\log_a a = 1$',
+                        '$\\log_a b = \\alpha \\Leftrightarrow a^\\alpha = b; \\quad \\log_a 2 = 0, \\quad '
+                        '\\log_a a = 1$',
+                        '$\\log_a b = \\alpha \\Leftrightarrow a^\\alpha = b; \\quad \\log_a 1 = 0, \\quad '
+                        '\\log_a a = 2$',
                         '$\\log_a(MN) = \\log_a M + \\log_a N, \\quad \\log_a\\left(\\dfrac{M}{N}\\right) = '
-                        '\\log_a M - \\log_a N, \\quad \\log_a(M^\\alpha) = \\alpha\\log_a M$',
-                        '$\\log_a b = \\dfrac{\\log_c b}{\\log_c a}, \\quad \\log_{a^\\alpha} b = '
-                        '\\dfrac{1}{\\alpha}\\log_a b$',
-                        '$a^\\circ = \\dfrac{\\pi a}{180}\\text{ rad}, \\quad \\alpha\\text{ rad} = '
-                        '\\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$'],
+                        '\\log_a M - \\log_a N, \\quad \\log_a(M^\\alpha) = \\alpha\\log_a M$'],
             'answer': 0,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 19: Lôgarit, **Định nghĩa và tính chất cơ '
-                        'bản** được xác định bởi: $\\log_a b = \\alpha \\Leftrightarrow a^\\alpha = b; '
-                        '\\quad \\log_a 1 = 0, \\quad \\log_a a = 1$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 19: Lôgarit, **Định nghĩa và tính chất cơ bản** '
+                        'được xác định bởi: $\\log_a b = \\alpha \\Leftrightarrow a^\\alpha = b; \\quad '
+                        '\\log_a 1 = 0, \\quad \\log_a a = 1$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 19: Lôgarit**, nội dung/biểu thức $\\log_a(MN) = \\log_a M + \\log_a N, \\quad '
-                 '\\log_a\\left(\\dfrac{M}{N}\\right) = \\log_a M - \\log_a N, \\quad \\log_a(M^\\alpha) = '
-                 '\\alpha\\log_a M$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Định nghĩa và tính chất cơ bản',
-                        'Lôgarit của tích, thương, lũy thừa',
-                        'Công thức đổi cơ số',
-                        'Đổi độ và radian'],
+            'q': 'Khi học **Bài 19: Lôgarit**, biểu thức hoặc quy tắc nào dưới đây biểu diễn đúng **Lôgarit '
+                 'của tích, thương, lũy thừa**?',
+            'options': ['$\\log_a(MN) = \\log_a M + \\log_a N, \\quad \\log_a\\geft(\\dfrac{M}{N}\\right) = '
+                        '\\log_a M - \\log_a N, \\quad \\log_a(M^\\alpha) = \\alpha\\log_a M$',
+                        '$\\log_a(MN) = \\log_a M + \\log_a N, \\quad \\log_a\\left(\\dfrac{M}{N}\\right) = '
+                        '\\log_a M - \\log_a N, \\quad \\log_a(M^\\alpha) = \\alpha\\log_a M$',
+                        '$\\log_a(MN) = \\log_a M + \\log_a N, \\quad \\log_a\\left(\\dfrac{N}{M}\\right) = '
+                        '\\log_a M - \\log_a N, \\quad \\log_a(M^\\alpha) = \\alpha\\log_a M$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\log_a(MN) = \\log_a M + '
+                        '\\log_a N, \\quad \\log_a\\left(\\dfrac{M}{N}\\right) = \\log_a M - \\log_a N, '
+                        '\\quad \\log_a(M^\\alpha) = \\alpha\\log_a M$'],
             'answer': 1,
-            'solution': 'Trong Bài 19: Lôgarit, biểu thức/quy tắc $\\log_a(MN) = \\log_a M + \\log_a N, '
-                        '\\quad \\log_a\\left(\\dfrac{M}{N}\\right) = \\log_a M - \\log_a N, \\quad '
-                        '\\log_a(M^\\alpha) = \\alpha\\log_a M$ chính là nội dung của **Lôgarit của tích, '
-                        'thương, lũy thừa**.'},
+            'solution': 'Trong Bài 19: Lôgarit, **Lôgarit của tích, thương, lũy thừa** có công thức/quy tắc '
+                        'là: $\\log_a(MN) = \\log_a M + \\log_a N, \\quad '
+                        '\\log_a\\left(\\dfrac{M}{N}\\right) = \\log_a M - \\log_a N, \\quad '
+                        '\\log_a(M^\\alpha) = \\alpha\\log_a M$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Giá trị của biểu thức $P = \\log_2 8 + \\log_3 \\dfrac{1}{9}$ bằng:',
@@ -3350,18 +3377,17 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 19: Lôgarit** (Chương VI: Hàm số mũ và hàm số lôgarit), khẳng định nào sau '
-                 'đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Nhận biết được khái niệm góc lượng giác, hệ thức Chasles và đổi được số đo góc giữa '
-                        'độ và radian.',
-                        'Xác định được điểm biểu diễn trên đường tròn lượng giác và các giá trị $\\sin '
-                        '\\alpha, \\cos \\alpha, \\tan \\alpha, \\cot \\alpha$.',
-                        'Vận dụng các hệ thức lượng giác cơ bản và giá trị lượng giác của các góc có liên '
-                        'quan đặc biệt (đối nhau, bù nhau, phụ nhau, hơn kém $\\pi$).',
+            'q': 'Để nắm vững bản chất của **Bài 19: Lôgarit**, nhận định nào sau đây là **chính xác**?',
+            'options': ['Hiểu được định nghĩa lôgarit: với $0 < a \\ne 1, b < 0$ thì $\\alpha = \\log_a b '
+                        '\\Leftrightarrow a^\\alpha = b$.',
+                        'Hiểu được định nghĩa lôgarit: với $0 < a \\ne 1, b > 1$ thì $\\alpha = \\log_a b '
+                        '\\Leftrightarrow a^\\alpha = b$.',
+                        'Hiểu được định nghĩa lôgarit: với $2 < a \\ne 1, b > 0$ thì $\\alpha = \\log_a b '
+                        '\\Leftrightarrow a^\\alpha = b$.',
                         'Hiểu được định nghĩa lôgarit: với $0 < a \\ne 1, b > 0$ thì $\\alpha = \\log_a b '
                         '\\Leftrightarrow a^\\alpha = b$.'],
             'answer': 3,
-            'solution': 'Theo yêu cầu cần đạt của Bài 19: Lôgarit: Hiểu được định nghĩa lôgarit: với $0 < a '
+            'solution': 'Theo nội dung cốt lõi của Bài 19: Lôgarit: Hiểu được định nghĩa lôgarit: với $0 < a '
                         '\\ne 1, b > 0$ thì $\\alpha = \\log_a b \\Leftrightarrow a^\\alpha = b$.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -3379,41 +3405,39 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 19: Lôgarit**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Hiểu được định nghĩa lôgarit: với '
-                           '$0 < a \\ne 1, b > 0$ thì $\\alpha = \\log_a b \\Leftrightarrow a^\\alpha = b$.',
-                           'Quy tắc/công thức **Định nghĩa và tính chất cơ bản** trong bài được xác định '
-                           'bởi: $\\log_a b = \\alpha \\Leftrightarrow a^\\alpha = b; \\quad \\log_a 1 = 0, '
-                           '\\quad \\log_a a = 1$.',
-                           'Trong mọi trường hợp, **Định nghĩa và tính chất cơ bản** luôn được tính bằng '
-                           'công thức $a^\\circ = \\dfrac{\\pi a}{180}\\text{ rad}, \\quad \\alpha\\text{ '
-                           'rad} = \\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$ (thuộc Đổi độ và radian) '
-                           'mà không cần điều kiện của Bài 19: Lôgarit.',
-                           'Với bài toán minh họa: “Cho $\\log_2 3 = a$. Tính $\\log_4 18$ theo $a$.”, lời '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 19: Lôgarit**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Hiểu được định nghĩa lôgarit: với $0 < a '
+                           '\\ne 1, b > 0$ thì $\\alpha = \\log_a b \\Leftrightarrow a^\\alpha = b$.',
+                           'Trong **Bài 19: Lôgarit**, quy tắc/công thức **Định nghĩa và tính chất cơ bản** '
+                           'được viết là: $\\log_a b = \\alpha \\Leftrightarrow a^\\alpha = b; \\quad '
+                           '\\log_a 1 = 0, \\quad \\log_a a = 1$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $\\log_a b = \\alpha \\Leftrightarrow '
+                           'a^\\alpha = b; \\quad \\log_a 2 = 0, \\quad \\log_a a = 1$ thì kết quả của '
+                           '**Định nghĩa và tính chất cơ bản** trong **Bài 19: Lôgarit** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Cho $\\log_2 3 = a$. Tính $\\log_4 18$ theo $a$.”, kết quả '
                            'giải đúng là: Ta có $\\log_4 18 = \\log_{2^2}(2 \\cdot 3^2) = '
                            '\\dfrac{1}{2}(\\log_2 2 + 2\\log_2 3) = \\dfrac{1}{2}(1 + 2a) = \\dfrac{1}{2} + '
                            'a$.'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 19: Lôgarit. b) **Đúng** theo công thức '
-                        'trọng tâm **Định nghĩa và tính chất cơ bản** ($\\log_a b = \\alpha \\Leftrightarrow '
-                        'a^\\alpha = b; \\quad \\log_a 1 = 0, \\quad \\log_a a = 1$). c) **Sai** vì '
-                        '$a^\\circ = \\dfrac{\\pi a}{180}\\text{ rad}, \\quad \\alpha\\text{ rad} = '
-                        '\\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$ là công thức của nội dung khác, '
-                        'không phải quy tắc chung của **Định nghĩa và tính chất cơ bản**. d) **Đúng** theo '
-                        'lời giải ví dụ minh họa trong bài học.'},
+                        '**Định nghĩa và tính chất cơ bản** ($\\log_a b = \\alpha \\Leftrightarrow a^\\alpha '
+                        '= b; \\quad \\log_a 1 = 0, \\quad \\log_a a = 1$). c) **Sai** vì công thức đúng của '
+                        '**Định nghĩa và tính chất cơ bản** phải là $\\log_a b = \\alpha \\Leftrightarrow '
+                        'a^\\alpha = b; \\quad \\log_a 1 = 0, \\quad \\log_a a = 1$ chứ không phải $\\log_a '
+                        'b = \\alpha \\Leftrightarrow a^\\alpha = b; \\quad \\log_a 2 = 0, \\quad \\log_a a '
+                        '= 1$. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 19: Lôgarit** để giải quyết tình huống sau: Cho $\\log_2 3 = a$. '
-                 'Tính $\\log_4 18$ theo $a$. Kết quả và hướng giải nào dưới đây là **đúng**?',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 19: Lôgarit** để giải bài toán sau: Cho $\\log_2 3 '
+                 '= a$. Tính $\\log_4 18$ theo $a$. Cách giải và kết quả nào dưới đây là **đúng**?',
             'options': ['Ta có $\\log_4 18 = \\log_{2^2}(2 \\cdot 3^2) = \\dfrac{1}{2}(\\log_2 2 + 2\\log_2 '
                         '3) = \\dfrac{1}{2}(1 + 2a) = \\dfrac{1}{2} + a$.',
-                        'Vì $\\dfrac{\\pi}{2} < \\alpha < \\pi$ nên $\\cos \\alpha < 0$. Ta có $\\cos '
-                        '\\alpha = -\\sqrt{1 - \\sin^2 \\alpha} = -\\sqrt{1 - \\dfrac{9}{25}} = '
-                        '-\\dfrac{4}{5}$. Suy...',
-                        'Ta có...',
-                        'Với mọi $x \\in \\mathbb{R}$, ta có $-1 \\le \\sin 2x \\le 1 \\Rightarrow -3 \\le '
-                        '3\\sin 2x \\le 3 \\Rightarrow -4 \\le 3\\sin 2x - 1 \\le 2$. Vậy tập giá trị là '
-                        '$[-4; 2]$...'],
+                        'Ta có $\\log_4 18 = \\log_{2^2}(2 \\cdot 3^2) = \\dfrac{1}{2}(\\log_2 2 - 2\\log_2 '
+                        '3) = \\dfrac{1}{2}(1 + 2a) = \\dfrac{1}{2} + a$.',
+                        'Ta có $\\log_4 18 = \\log_{2^2}(2 \\cdot 3^2) = \\dfrac{2}{1}(\\log_2 2 + 2\\log_2 '
+                        '3) = \\dfrac{1}{2}(1 + 2a) = \\dfrac{1}{2} + a$.',
+                        'Ta có $\\log_4 36 = \\log_{2^2}(2 \\cdot 3^2) = \\dfrac{1}{2}(\\log_2 2 + 2\\log_2 '
+                        '3) = \\dfrac{1}{2}(1 + 2a) = \\dfrac{1}{2} + a$.'],
             'answer': 0,
             'solution': 'Lời giải chi tiết theo Bài 19: Lôgarit: Ta có $\\log_4 18 = \\log_{2^2}(2 \\cdot '
                         '3^2) = \\dfrac{1}{2}(\\log_2 2 + 2\\log_2 3) = \\dfrac{1}{2}(1 + 2a) = '
@@ -3486,31 +3510,28 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 20: Hàm số mũ và hàm số lôgarit**, công thức hoặc quy '
-                 'tắc nào sau đây biểu diễn đúng **Hàm số mũ y = a^x**?',
-            'options': ['$D = (0; +\\infty), \\quad T = \\mathbb{R}, \\quad \\text{đi qua } (1; 0)$',
+            'q': 'Trong **Bài 20: Hàm số mũ và hàm số lôgarit**, quy tắc hoặc công thức nào sau đây xác định '
+                 'đúng **Hàm số mũ y = a^x**?',
+            'options': ['$D = \\mathbb{R}, \\quad T = (0; +\\notinfty), \\quad \\text{đi qua } (0; 1)$',
                         '$D = \\mathbb{R}, \\quad T = (0; +\\infty), \\quad \\text{đi qua } (0; 1)$',
-                        '$a > 1 \\Rightarrow \\text{đồng biến}; \\quad 0 < a < 1 \\Rightarrow \\text{nghịch '
-                        'biến}$',
-                        '$a^\\circ = \\dfrac{\\pi a}{180}\\text{ rad}, \\quad \\alpha\\text{ rad} = '
-                        '\\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$'],
+                        '$D = \\mathbb{R}, \\quad T = (0; +\\infty), \\quad \\text{đi qua } (0; 2)$',
+                        '$D = \\mathbb{R}, \\quad T = (2; +\\infty), \\quad \\text{đi qua } (0; 1)$'],
             'answer': 1,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 20: Hàm số mũ và hàm số lôgarit, **Hàm số mũ '
-                        'y = a^x** được xác định bởi: $D = \\mathbb{R}, \\quad T = (0; +\\infty), \\quad '
+            'solution': 'Theo kiến thức trọng tâm của Bài 20: Hàm số mũ và hàm số lôgarit, **Hàm số mũ y = '
+                        'a^x** được xác định bởi: $D = \\mathbb{R}, \\quad T = (0; +\\infty), \\quad '
                         '\\text{đi qua } (0; 1)$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 20: Hàm số mũ và hàm số lôgarit**, nội dung/biểu thức $D = (0; +\\infty), '
-                 '\\quad T = \\mathbb{R}, \\quad \\text{đi qua } (1; 0)$ là quy tắc hoặc công thức của mục '
-                 'nào sau đây?',
-            'options': ['Hàm số mũ y = a^x',
-                        'Chiều biến thiên',
-                        'Hàm số lôgarit y = log_a x',
-                        'Đổi độ và radian'],
+            'q': 'Khi học **Bài 20: Hàm số mũ và hàm số lôgarit**, biểu thức hoặc quy tắc nào dưới đây biểu '
+                 'diễn đúng **Hàm số lôgarit y = log_a x**?',
+            'options': ['$D = (0; +\\notinfty), \\quad T = \\mathbb{R}, \\quad \\text{đi qua } (1; 0)$',
+                        '$D = (0; +\\infty), \\quad T = \\mathbb{R}, \\quad \\text{đi qua } (1; 1)$',
+                        '$D = (0; +\\infty), \\quad T = \\mathbb{R}, \\quad \\text{đi qua } (1; 0)$',
+                        '$D = (2; +\\infty), \\quad T = \\mathbb{R}, \\quad \\text{đi qua } (1; 0)$'],
             'answer': 2,
-            'solution': 'Trong Bài 20: Hàm số mũ và hàm số lôgarit, biểu thức/quy tắc $D = (0; +\\infty), '
-                        '\\quad T = \\mathbb{R}, \\quad \\text{đi qua } (1; 0)$ chính là nội dung của **Hàm '
-                        'số lôgarit y = log_a x**.'},
+            'solution': 'Trong Bài 20: Hàm số mũ và hàm số lôgarit, **Hàm số lôgarit y = log_a x** có công '
+                        'thức/quy tắc là: $D = (0; +\\infty), \\quad T = \\mathbb{R}, \\quad \\text{đi qua } '
+                        '(1; 0)$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Tập xác định của hàm số $y = \\ln(x - 3)$ là:',
@@ -3524,20 +3545,20 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 20: Hàm số mũ và hàm số lôgarit** (Chương VI: Hàm số mũ và hàm số lôgarit), '
-                 'khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
+            'q': 'Để nắm vững bản chất của **Bài 20: Hàm số mũ và hàm số lôgarit**, nhận định nào sau đây là '
+                 '**chính xác**?',
             'options': ['Xác định được tập xác định, tập giá trị và điểm đặc biệt của hàm số mũ $y = a^x$ và '
                         'hàm số lôgarit $y = \\log_a x$ ($0 < a \\ne 1$).',
-                        'Nhận biết được khái niệm góc lượng giác, hệ thức Chasles và đổi được số đo góc giữa '
-                        'độ và radian.',
-                        'Xác định được điểm biểu diễn trên đường tròn lượng giác và các giá trị $\\sin '
-                        '\\alpha, \\cos \\alpha, \\tan \\alpha, \\cot \\alpha$.',
-                        'Vận dụng các hệ thức lượng giác cơ bản và giá trị lượng giác của các góc có liên '
-                        'quan đặc biệt (đối nhau, bù nhau, phụ nhau, hơn kém $\\pi$).'],
+                        'Xác định được tập xác định, tập giá trị và điểm đặc biệt của hàm số mũ $y = a^x$ và '
+                        'hàm số lôgarit $y = \\log_a x$ ($0 > a \\ne 1$).',
+                        'Xác định được tập xác định, tập giá trị và điểm đặc biệt của hàm số mũ $y = a^x$ và '
+                        'hàm số lôgarit $y = \\log_a x$ ($0 < a \\ne 2$).',
+                        'Xác định được tập xác định, tập giá trị và điểm đặc biệt của hàm số mũ $y = a^x$ và '
+                        'hàm số lôgarit $y = \\log_a x$ ($2 < a \\ne 1$).'],
             'answer': 0,
-            'solution': 'Theo yêu cầu cần đạt của Bài 20: Hàm số mũ và hàm số lôgarit: Xác định được tập xác '
-                        'định, tập giá trị và điểm đặc biệt của hàm số mũ $y = a^x$ và hàm số lôgarit $y = '
-                        '\\log_a x$ ($0 < a \\ne 1$).'},
+            'solution': 'Theo nội dung cốt lõi của Bài 20: Hàm số mũ và hàm số lôgarit: Xác định được tập '
+                        'xác định, tập giá trị và điểm đặc biệt của hàm số mũ $y = a^x$ và hàm số lôgarit $y '
+                        '= \\log_a x$ ($0 < a \\ne 1$).'},
            {'level': 'hieu',
             'type': 'tf4',
             'q': 'Cho hàm số mũ $f(x) = 3^x$ và hàm số lôgarit $g(x) = \\log_3 x$. Xét tính đúng sai của các '
@@ -3555,43 +3576,42 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 20: Hàm số mũ và hàm số '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 20: Hàm số mũ và hàm số '
                  'lôgarit**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Xác định được tập xác định, tập '
-                           'giá trị và điểm đặc biệt của hàm số mũ $y = a^x$ và hàm số lôgarit $y = \\log_a '
-                           'x$ ($0 < a \\ne 1$).',
-                           'Quy tắc/công thức **Hàm số mũ y = a^x** trong bài được xác định bởi: $D = '
-                           '\\mathbb{R}, \\quad T = (0; +\\infty), \\quad \\text{đi qua } (0; 1)$.',
-                           'Trong mọi trường hợp, **Hàm số mũ y = a^x** luôn được tính bằng công thức '
-                           '$a^\\circ = \\dfrac{\\pi a}{180}\\text{ rad}, \\quad \\alpha\\text{ rad} = '
-                           '\\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$ (thuộc Đổi độ và radian) mà '
-                           'không cần điều kiện của Bài 20: Hàm số mũ và hàm số lôgarit.',
-                           'Với bài toán minh họa: “Tìm tập xác định của hàm số $y = \\log_3 (2x - 4)$.”, '
-                           'lời giải đúng là: Hàm số xác định khi và chỉ khi biểu thức trong lôgarit dương: '
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Xác định được tập xác định, tập giá trị '
+                           'và điểm đặc biệt của hàm số mũ $y = a^x$ và hàm số lôgarit $y = \\log_a x$ ($0 < '
+                           'a \\ne 1$).',
+                           'Trong **Bài 20: Hàm số mũ và hàm số lôgarit**, quy tắc/công thức **Hàm số mũ y = '
+                           'a^x** được viết là: $D = \\mathbb{R}, \\quad T = (0; +\\infty), \\quad \\text{đi '
+                           'qua } (0; 1)$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $D = \\mathbb{R}, \\quad T = (0; '
+                           '+\\notinfty), \\quad \\text{đi qua } (0; 1)$ thì kết quả của **Hàm số mũ y = '
+                           'a^x** trong **Bài 20: Hàm số mũ và hàm số lôgarit** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Tìm tập xác định của hàm số $y = \\log_3 (2x - 4)$.”, kết '
+                           'quả giải đúng là: Hàm số xác định khi và chỉ khi biểu thức trong lôgarit dương: '
                            '$2x - 4 > 0 \\Leftrightarrow x > 2$. Vậy tập xác định của hàm số là $D = (2; '
                            '+\\infty)$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 20: Hàm số mũ và hàm số lôgarit. b) '
-                        '**Đúng** theo công thức trọng tâm **Hàm số mũ y = a^x** ($D = \\mathbb{R}, \\quad T '
-                        '= (0; +\\infty), \\quad \\text{đi qua } (0; 1)$). c) **Sai** vì $a^\\circ = '
-                        '\\dfrac{\\pi a}{180}\\text{ rad}, \\quad \\alpha\\text{ rad} = '
-                        '\\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$ là công thức của nội dung khác, '
-                        'không phải quy tắc chung của **Hàm số mũ y = a^x**. d) **Đúng** theo lời giải ví dụ '
-                        'minh họa trong bài học.'},
+                        '**Đúng** theo công thức **Hàm số mũ y = a^x** ($D = \\mathbb{R}, \\quad T = (0; '
+                        '+\\infty), \\quad \\text{đi qua } (0; 1)$). c) **Sai** vì công thức đúng của **Hàm '
+                        'số mũ y = a^x** phải là $D = \\mathbb{R}, \\quad T = (0; +\\infty), \\quad '
+                        '\\text{đi qua } (0; 1)$ chứ không phải $D = \\mathbb{R}, \\quad T = (0; '
+                        '+\\notinfty), \\quad \\text{đi qua } (0; 1)$. d) **Đúng** theo lời giải ví dụ minh '
+                        'họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 20: Hàm số mũ và hàm số lôgarit** để giải quyết tình huống sau: '
-                 'Tìm tập xác định của hàm số $y = \\log_3 (2x - 4)$. Kết quả và hướng giải nào dưới đây là '
-                 '**đúng**?',
-            'options': ['Vì $\\dfrac{\\pi}{2} < \\alpha < \\pi$ nên $\\cos \\alpha < 0$. Ta có $\\cos '
-                        '\\alpha = -\\sqrt{1 - \\sin^2 \\alpha} = -\\sqrt{1 - \\dfrac{9}{25}} = '
-                        '-\\dfrac{4}{5}$. Suy...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 20: Hàm số mũ và hàm số lôgarit** để giải bài toán '
+                 'sau: Tìm tập xác định của hàm số $y = \\log_3 (2x - 4)$. Cách giải và kết quả nào dưới đây '
+                 'là **đúng**?',
+            'options': ['Hàm số xác định khi và chỉ khi biểu thức trong lôgarit dương: $2x - 4 > 0 '
+                        '\\Leftrightarrow x > 2$. Vậy tập xác định của hàm số là $D = (2; +\\notinfty)$.',
                         'Hàm số xác định khi và chỉ khi biểu thức trong lôgarit dương: $2x - 4 > 0 '
                         '\\Leftrightarrow x > 2$. Vậy tập xác định của hàm số là $D = (2; +\\infty)$.',
-                        'Ta có...',
-                        'Với mọi $x \\in \\mathbb{R}$, ta có $-1 \\le \\sin 2x \\le 1 \\Rightarrow -3 \\le '
-                        '3\\sin 2x \\le 3 \\Rightarrow -4 \\le 3\\sin 2x - 1 \\le 2$. Vậy tập giá trị là '
-                        '$[-4; 2]$...'],
+                        'Hàm số xác định khi và chỉ khi biểu thức trong lôgarit dương: $2x - 4 > 0 '
+                        '\\Leftrightarrow x > 2$. Vậy tập xác định của hàm số là $D = (1; +\\infty)$.',
+                        'Hàm số xác định khi và chỉ khi biểu thức trong lôgarit dương: $2x - 8 > 0 '
+                        '\\Leftrightarrow x > 2$. Vậy tập xác định của hàm số là $D = (2; +\\infty)$.'],
             'answer': 1,
             'solution': 'Lời giải chi tiết theo Bài 20: Hàm số mũ và hàm số lôgarit: Hàm số xác định khi và '
                         'chỉ khi biểu thức trong lôgarit dương: $2x - 4 > 0 \\Leftrightarrow x > 2$. Vậy tập '
@@ -3659,34 +3679,36 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 21: Phương trình, bất phương trình mũ và lôgarit**, công '
-                 'thức hoặc quy tắc nào sau đây biểu diễn đúng **Phương trình cơ bản**?',
-            'options': ['$a^{f(x)} > a^{g(x)} \\Leftrightarrow f(x) > g(x); \\quad \\log_a f(x) > \\log_a '
-                        'g(x) \\Leftrightarrow f(x) > g(x) > 0$',
-                        '$a^{f(x)} > a^{g(x)} \\Leftrightarrow f(x) < g(x); \\quad \\log_a f(x) > \\log_a '
-                        'g(x) \\Leftrightarrow 0 < f(x) < g(x)$',
+            'q': 'Trong **Bài 21: Phương trình, bất phương trình mũ và lôgarit**, quy tắc hoặc công thức nào '
+                 'sau đây xác định đúng **Phương trình cơ bản**?',
+            'options': ['$a^x = b \\quad (b < 0) \\Leftrightarrow x = \\log_a b; \\quad \\log_a x = b '
+                        '\\Leftrightarrow x = a^b$',
+                        '$a^x = b \\quad (b > 1) \\Leftrightarrow x = \\log_a b; \\quad \\log_a x = b '
+                        '\\Leftrightarrow x = a^b$',
                         '$a^x = b \\quad (b > 0) \\Leftrightarrow x = \\log_a b; \\quad \\log_a x = b '
                         '\\Leftrightarrow x = a^b$',
-                        '$a^\\circ = \\dfrac{\\pi a}{180}\\text{ rad}, \\quad \\alpha\\text{ rad} = '
-                        '\\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$'],
+                        '$a^x = b \\quad (b > 2) \\Leftrightarrow x = \\log_a b; \\quad \\log_a x = b '
+                        '\\Leftrightarrow x = a^b$'],
             'answer': 2,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 21: Phương trình, bất phương trình mũ và '
-                        'lôgarit, **Phương trình cơ bản** được xác định bởi: $a^x = b \\quad (b > 0) '
-                        '\\Leftrightarrow x = \\log_a b; \\quad \\log_a x = b \\Leftrightarrow x = a^b$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 21: Phương trình, bất phương trình mũ và lôgarit, '
+                        '**Phương trình cơ bản** được xác định bởi: $a^x = b \\quad (b > 0) \\Leftrightarrow '
+                        'x = \\log_a b; \\quad \\log_a x = b \\Leftrightarrow x = a^b$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 21: Phương trình, bất phương trình mũ và lôgarit**, nội dung/biểu thức '
-                 '$a^{f(x)} > a^{g(x)} \\Leftrightarrow f(x) > g(x); \\quad \\log_a f(x) > \\log_a g(x) '
-                 '\\Leftrightarrow f(x) > g(x) > 0$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Phương trình cơ bản',
-                        'Bất phương trình khi 0 < a < 1 (đổi chiều)',
-                        'Đổi độ và radian',
-                        'Bất phương trình khi a > 1 (giữ chiều)'],
-            'answer': 3,
-            'solution': 'Trong Bài 21: Phương trình, bất phương trình mũ và lôgarit, biểu thức/quy tắc '
+            'q': 'Khi học **Bài 21: Phương trình, bất phương trình mũ và lôgarit**, biểu thức hoặc quy tắc '
+                 'nào dưới đây biểu diễn đúng **Bất phương trình khi a > 1 (giữ chiều)**?',
+            'options': ['$a^{f(x)} < a^{g(x)} \\Leftrightarrow f(x) > g(x); \\quad \\log_a f(x) > \\log_a '
+                        'g(x) \\Leftrightarrow f(x) > g(x) > 0$',
                         '$a^{f(x)} > a^{g(x)} \\Leftrightarrow f(x) > g(x); \\quad \\log_a f(x) > \\log_a '
-                        'g(x) \\Leftrightarrow f(x) > g(x) > 0$ chính là nội dung của **Bất phương trình khi '
-                        'a > 1 (giữ chiều)**.'},
+                        'g(x) \\Leftrightarrow f(x) > g(x) > 1$',
+                        '$a^{f(x)} > a^{g(x)} \\Leftrightarrow f(x) > g(x); \\quad \\log_a f(x) > \\log_a '
+                        'g(x) \\Leftrightarrow f(x) > g(x) > 2$',
+                        '$a^{f(x)} > a^{g(x)} \\Leftrightarrow f(x) > g(x); \\quad \\log_a f(x) > \\log_a '
+                        'g(x) \\Leftrightarrow f(x) > g(x) > 0$'],
+            'answer': 3,
+            'solution': 'Trong Bài 21: Phương trình, bất phương trình mũ và lôgarit, **Bất phương trình khi '
+                        'a > 1 (giữ chiều)** có công thức/quy tắc là: $a^{f(x)} > a^{g(x)} \\Leftrightarrow '
+                        'f(x) > g(x); \\quad \\log_a f(x) > \\log_a g(x) \\Leftrightarrow f(x) > g(x) > 0$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Tập nghiệm của bất phương trình $\\left(\\dfrac{1}{3}\\right)^x > \\dfrac{1}{9}$ là:',
@@ -3698,21 +3720,21 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 21: Phương trình, bất phương trình mũ và lôgarit** (Chương VI: Hàm số mũ và '
-                 'hàm số lôgarit), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến '
-                 'thức của bài?',
-            'options': ['Nhận biết được khái niệm góc lượng giác, hệ thức Chasles và đổi được số đo góc giữa '
-                        'độ và radian.',
+            'q': 'Để nắm vững bản chất của **Bài 21: Phương trình, bất phương trình mũ và lôgarit**, nhận '
+                 'định nào sau đây là **chính xác**?',
+            'options': ['Giải được phương trình mũ cơ bản $a^x = b$ và phương trình lôgarit cơ bản $\\log_a '
+                        'x = b$ (kết hợp điều kiện xác định). (với dấu ngược lại)',
                         'Giải được phương trình mũ cơ bản $a^x = b$ và phương trình lôgarit cơ bản $\\log_a '
                         'x = b$ (kết hợp điều kiện xác định).',
-                        'Xác định được điểm biểu diễn trên đường tròn lượng giác và các giá trị $\\sin '
-                        '\\alpha, \\cos \\alpha, \\tan \\alpha, \\cot \\alpha$.',
-                        'Vận dụng các hệ thức lượng giác cơ bản và giá trị lượng giác của các góc có liên '
-                        'quan đặc biệt (đối nhau, bù nhau, phụ nhau, hơn kém $\\pi$).'],
+                        'Đảo ngược vế của quy tắc: Giải được phương trình mũ cơ bản $a^x = b$ và phương '
+                        'trình lôgarit cơ bản $\\log_a x = b$ (kết hợp điều kiện xác định).',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Giải được phương trình mũ cơ '
+                        'bản $a^x = b$ và phương trình lôgarit cơ bản $\\log_a x = b$ (kết hợp điều kiện xác '
+                        'định).'],
             'answer': 1,
-            'solution': 'Theo yêu cầu cần đạt của Bài 21: Phương trình, bất phương trình mũ và lôgarit: Giải '
-                        'được phương trình mũ cơ bản $a^x = b$ và phương trình lôgarit cơ bản $\\log_a x = '
-                        'b$ (kết hợp điều kiện xác định).'},
+            'solution': 'Theo nội dung cốt lõi của Bài 21: Phương trình, bất phương trình mũ và lôgarit: '
+                        'Giải được phương trình mũ cơ bản $a^x = b$ và phương trình lôgarit cơ bản $\\log_a '
+                        'x = b$ (kết hợp điều kiện xác định).'},
            {'level': 'hieu',
             'type': 'tf4',
             'q': 'Cho bất phương trình lôgarit $\\log_2 (2x - 4) < 3$. Xét tính đúng sai của các mệnh đề '
@@ -3730,45 +3752,47 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 21: Phương trình, bất '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 21: Phương trình, bất '
                  'phương trình mũ và lôgarit**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Giải được phương trình mũ cơ bản '
-                           '$a^x = b$ và phương trình lôgarit cơ bản $\\log_a x = b$ (kết hợp điều kiện xác '
-                           'định).',
-                           'Quy tắc/công thức **Phương trình cơ bản** trong bài được xác định bởi: $a^x = b '
-                           '\\quad (b > 0) \\Leftrightarrow x = \\log_a b; \\quad \\log_a x = b '
-                           '\\Leftrightarrow x = a^b$.',
-                           'Trong mọi trường hợp, **Phương trình cơ bản** luôn được tính bằng công thức '
-                           '$a^\\circ = \\dfrac{\\pi a}{180}\\text{ rad}, \\quad \\alpha\\text{ rad} = '
-                           '\\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$ (thuộc Đổi độ và radian) mà '
-                           'không cần điều kiện của Bài 21: Phương trình, bất phương trình mũ và lôgarit.',
-                           'Với bài toán minh họa: “Giải bất phương trình $\\log_{\\frac{1}{2}} (x - 1) \\ge '
-                           '-2$.”, lời giải đúng là: Điều kiện: $x - 1 > 0 \\Leftrightarrow x > 1$. Vì cơ số '
-                           '$a = \\dfrac{1}{2} \\in (0; 1)$ nên bất phương trình tương đương với $x - 1 \\le '
-                           '\\left(\\dfrac{1}{2}\\right)^{-2} = 4 \\Leftrightarrow x \\le 5$...'],
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Giải được phương trình mũ cơ bản $a^x = '
+                           'b$ và phương trình lôgarit cơ bản $\\log_a x = b$ (kết hợp điều kiện xác định).',
+                           'Trong **Bài 21: Phương trình, bất phương trình mũ và lôgarit**, quy tắc/công '
+                           'thức **Phương trình cơ bản** được viết là: $a^x = b \\quad (b > 0) '
+                           '\\Leftrightarrow x = \\log_a b; \\quad \\log_a x = b \\Leftrightarrow x = a^b$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $a^x = b \\quad (b < 0) \\Leftrightarrow x = '
+                           '\\log_a b; \\quad \\log_a x = b \\Leftrightarrow x = a^b$ thì kết quả của '
+                           '**Phương trình cơ bản** trong **Bài 21: Phương trình, bất phương trình mũ và '
+                           'lôgarit** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Giải bất phương trình $\\log_{\\frac{1}{2}} (x - 1) \\ge '
+                           '-2$.”, kết quả giải đúng là: Điều kiện: $x - 1 > 0 \\Leftrightarrow x > 1$. Vì '
+                           'cơ số $a = \\dfrac{1}{2} \\in (0; 1)$ nên bất phương trình tương đương với $x - '
+                           '1 \\le \\left(\\dfrac{1}{2}\\right)^{-2} = 4 \\Leftrightarrow x \\le 5$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 21: Phương trình, bất phương trình mũ và '
-                        'lôgarit. b) **Đúng** theo công thức trọng tâm **Phương trình cơ bản** ($a^x = b '
-                        '\\quad (b > 0) \\Leftrightarrow x = \\log_a b; \\quad \\log_a x = b '
-                        '\\Leftrightarrow x = a^b$). c) **Sai** vì $a^\\circ = \\dfrac{\\pi a}{180}\\text{ '
-                        'rad}, \\quad \\alpha\\text{ rad} = \\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$ '
-                        'là công thức của nội dung khác, không phải quy tắc chung của **Phương trình cơ '
-                        'bản**. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        'lôgarit. b) **Đúng** theo công thức **Phương trình cơ bản** ($a^x = b \\quad (b > '
+                        '0) \\Leftrightarrow x = \\log_a b; \\quad \\log_a x = b \\Leftrightarrow x = a^b$). '
+                        'c) **Sai** vì công thức đúng của **Phương trình cơ bản** phải là $a^x = b \\quad (b '
+                        '> 0) \\Leftrightarrow x = \\log_a b; \\quad \\log_a x = b \\Leftrightarrow x = a^b$ '
+                        'chứ không phải $a^x = b \\quad (b < 0) \\Leftrightarrow x = \\log_a b; \\quad '
+                        '\\log_a x = b \\Leftrightarrow x = a^b$. d) **Đúng** theo lời giải ví dụ minh họa '
+                        'trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 21: Phương trình, bất phương trình mũ và lôgarit** để giải quyết '
-                 'tình huống sau: Giải bất phương trình $\\log_{\\frac{1}{2}} (x - 1) \\ge -2$. Kết quả và '
-                 'hướng giải nào dưới đây là **đúng**?',
-            'options': ['Vì $\\dfrac{\\pi}{2} < \\alpha < \\pi$ nên $\\cos \\alpha < 0$. Ta có $\\cos '
-                        '\\alpha = -\\sqrt{1 - \\sin^2 \\alpha} = -\\sqrt{1 - \\dfrac{9}{25}} = '
-                        '-\\dfrac{4}{5}$. Suy...',
-                        'Ta có...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 21: Phương trình, bất phương trình mũ và lôgarit** '
+                 'để giải bài toán sau: Giải bất phương trình $\\log_{\\frac{1}{2}} (x - 1) \\ge -2$. Cách '
+                 'giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Điều kiện: $x - 1 > 0 \\Leftrightarrow x > 1$. Vì cơ số $a = \\dfrac{1}{2} \\notin '
+                        '(0; 1)$ nên bất phương trình tương đương với $x - 1 \\le '
+                        '\\left(\\dfrac{1}{2}\\right)^{-2} = 4 \\Leftrightarrow x \\le 5$...',
+                        'Điều kiện: $x - 1 > 0 \\Leftrightarrow x > 1$. Vì cơ số $a = \\dfrac{2}{1} \\in (0; '
+                        '1)$ nên bất phương trình tương đương với $x - 1 \\le '
+                        '\\left(\\dfrac{1}{2}\\right)^{-2} = 4 \\Leftrightarrow x \\le 5$...',
                         'Điều kiện: $x - 1 > 0 \\Leftrightarrow x > 1$. Vì cơ số $a = \\dfrac{1}{2} \\in (0; '
                         '1)$ nên bất phương trình tương đương với $x - 1 \\le '
                         '\\left(\\dfrac{1}{2}\\right)^{-2} = 4 \\Leftrightarrow x \\le 5$...',
-                        'Với mọi $x \\in \\mathbb{R}$, ta có $-1 \\le \\sin 2x \\le 1 \\Rightarrow -3 \\le '
-                        '3\\sin 2x \\le 3 \\Rightarrow -4 \\le 3\\sin 2x - 1 \\le 2$. Vậy tập giá trị là '
-                        '$[-4; 2]$...'],
+                        'Điều kiện: $x - 2 > 0 \\Leftrightarrow x > 1$. Vì cơ số $a = \\dfrac{1}{2} \\in (0; '
+                        '1)$ nên bất phương trình tương đương với $x - 1 \\le '
+                        '\\left(\\dfrac{1}{2}\\right)^{-2} = 4 \\Leftrightarrow x \\le 5$...'],
             'answer': 2,
             'solution': 'Lời giải chi tiết theo Bài 21: Phương trình, bất phương trình mũ và lôgarit: Điều '
                         'kiện: $x - 1 > 0 \\Leftrightarrow x > 1$. Vì cơ số $a = \\dfrac{1}{2} \\in (0; 1)$ '
@@ -3846,30 +3870,27 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 22: Hai đường thẳng vuông góc**, công thức hoặc quy tắc '
-                 'nào sau đây biểu diễn đúng **Khoảng giá trị góc giữa hai đường thẳng**?',
-            'options': ['$a \\perp b \\Leftrightarrow (a, b) = 90^\\circ$',
-                        '$\\begin{cases} a \\parallel b \\\\ c \\perp a \\end{cases} \\Rightarrow c \\perp '
-                        'b$',
-                        '$a^\\circ = \\dfrac{\\pi a}{180}\\text{ rad}, \\quad \\alpha\\text{ rad} = '
-                        '\\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$',
+            'q': 'Trong **Bài 22: Hai đường thẳng vuông góc**, quy tắc hoặc công thức nào sau đây xác định '
+                 'đúng **Khoảng giá trị góc giữa hai đường thẳng**?',
+            'options': ['$0^\\circ \\ge (a, b) \\le 90^\\circ$',
+                        '$0^\\circ \\le (a, b) \\le 89^\\circ$',
+                        '$2^\\circ \\le (a, b) \\le 90^\\circ$',
                         '$0^\\circ \\le (a, b) \\le 90^\\circ$'],
             'answer': 3,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 22: Hai đường thẳng vuông góc, **Khoảng giá '
-                        'trị góc giữa hai đường thẳng** được xác định bởi: $0^\\circ \\le (a, b) \\le '
+            'solution': 'Theo kiến thức trọng tâm của Bài 22: Hai đường thẳng vuông góc, **Khoảng giá trị '
+                        'góc giữa hai đường thẳng** được xác định bởi: $0^\\circ \\le (a, b) \\le '
                         '90^\\circ$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 22: Hai đường thẳng vuông góc**, nội dung/biểu thức $a \\perp b '
-                 '\\Leftrightarrow (a, b) = 90^\\circ$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Hai đường thẳng vuông góc',
-                        'Khoảng giá trị góc giữa hai đường thẳng',
-                        'Quan hệ giữa song song và vuông góc',
-                        'Đổi độ và radian'],
+            'q': 'Khi học **Bài 22: Hai đường thẳng vuông góc**, biểu thức hoặc quy tắc nào dưới đây biểu '
+                 'diễn đúng **Hai đường thẳng vuông góc**?',
+            'options': ['$a \\perp b \\Leftrightarrow (a, b) = 90^\\circ$',
+                        '$a \\perp b \\Leftrightarrow (a, b) = 100^\\circ$',
+                        '$a \\perp b \\Leftrightarrow (a, b) = 89^\\circ$',
+                        '$a \\perp b \\Leftrightarrow (a, b) = 92^\\circ$'],
             'answer': 0,
-            'solution': 'Trong Bài 22: Hai đường thẳng vuông góc, biểu thức/quy tắc $a \\perp b '
-                        '\\Leftrightarrow (a, b) = 90^\\circ$ chính là nội dung của **Hai đường thẳng vuông '
-                        'góc**.'},
+            'solution': 'Trong Bài 22: Hai đường thẳng vuông góc, **Hai đường thẳng vuông góc** có công '
+                        'thức/quy tắc là: $a \\perp b \\Leftrightarrow (a, b) = 90^\\circ$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': "Cho hình lập phương $ABCD.A'B'C'D'$. Góc giữa hai đường thẳng $AB'$ và $BC'$ bằng:",
@@ -3882,19 +3903,18 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 22: Hai đường thẳng vuông góc** (Chương VII: Quan hệ vuông góc trong không '
-                 'gian), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của '
-                 'bài?',
-            'options': ['Nhận biết được khái niệm góc lượng giác, hệ thức Chasles và đổi được số đo góc giữa '
-                        'độ và radian.',
-                        'Xác định được điểm biểu diễn trên đường tròn lượng giác và các giá trị $\\sin '
-                        '\\alpha, \\cos \\alpha, \\tan \\alpha, \\cot \\alpha$.',
+            'q': 'Để nắm vững bản chất của **Bài 22: Hai đường thẳng vuông góc**, nhận định nào sau đây là '
+                 '**chính xác**?',
+            'options': ['Xác định được góc giữa hai đường thẳng $a$ và $b$ trong không gian với số đo thuộc '
+                        'đoạn $[1^\\circ; 90^\\circ]$.',
+                        'Xác định được góc giữa hai đường thẳng $a$ và $b$ trong không gian với số đo thuộc '
+                        'đoạn $[0^\\circ; 89^\\circ]$.',
                         'Xác định được góc giữa hai đường thẳng $a$ và $b$ trong không gian với số đo thuộc '
                         'đoạn $[0^\\circ; 90^\\circ]$.',
-                        'Vận dụng các hệ thức lượng giác cơ bản và giá trị lượng giác của các góc có liên '
-                        'quan đặc biệt (đối nhau, bù nhau, phụ nhau, hơn kém $\\pi$).'],
+                        'Xác định được góc giữa hai đường thẳng $a$ và $b$ trong không gian với số đo thuộc '
+                        'đoạn $[2^\\circ; 90^\\circ]$.'],
             'answer': 2,
-            'solution': 'Theo yêu cầu cần đạt của Bài 22: Hai đường thẳng vuông góc: Xác định được góc giữa '
+            'solution': 'Theo nội dung cốt lõi của Bài 22: Hai đường thẳng vuông góc: Xác định được góc giữa '
                         'hai đường thẳng $a$ và $b$ trong không gian với số đo thuộc đoạn $[0^\\circ; '
                         '90^\\circ]$.'},
            {'level': 'hieu',
@@ -3913,39 +3933,40 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 22: Hai đường thẳng '
-                 'vuông góc**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Xác định được góc giữa hai đường '
-                           'thẳng $a$ và $b$ trong không gian với số đo thuộc đoạn $[0^\\circ; 90^\\circ]$.',
-                           'Quy tắc/công thức **Khoảng giá trị góc giữa hai đường thẳng** trong bài được xác '
-                           'định bởi: $0^\\circ \\le (a, b) \\le 90^\\circ$.',
-                           'Trong mọi trường hợp, **Khoảng giá trị góc giữa hai đường thẳng** luôn được tính '
-                           'bằng công thức $a^\\circ = \\dfrac{\\pi a}{180}\\text{ rad}, \\quad '
-                           '\\alpha\\text{ rad} = \\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$ (thuộc '
-                           'Đổi độ và radian) mà không cần điều kiện của Bài 22: Hai đường thẳng vuông góc.',
-                           "Với bài toán minh họa: “Cho hình lập phương $ABCD.A'B'C'D'$. Tính góc giữa hai "
-                           "đường thẳng $AB$ và $B'C'$; góc giữa $AB$ và $A'C'$.”, lời giải đúng là: Vì "
-                           "$B'C' \\parallel BC$ và $AB \\perp BC$ nên $(AB, B'C') = (AB, BC) = 90^\\circ$. "
-                           "Vì $A'C' \\parallel AC$ và $\\triangle ABC$ vuông cân tại $B$..."],
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 22: Hai đường thẳng vuông '
+                 'góc**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Xác định được góc giữa hai đường thẳng '
+                           '$a$ và $b$ trong không gian với số đo thuộc đoạn $[0^\\circ; 90^\\circ]$.',
+                           'Trong **Bài 22: Hai đường thẳng vuông góc**, quy tắc/công thức **Khoảng giá trị '
+                           'góc giữa hai đường thẳng** được viết là: $0^\\circ \\le (a, b) \\le 90^\\circ$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $0^\\circ \\ge (a, b) \\le 90^\\circ$ thì '
+                           'kết quả của **Khoảng giá trị góc giữa hai đường thẳng** trong **Bài 22: Hai '
+                           'đường thẳng vuông góc** vẫn không thay đổi.',
+                           "Xét ví dụ của bài: “Cho hình lập phương $ABCD.A'B'C'D'$. Tính góc giữa hai đường "
+                           "thẳng $AB$ và $B'C'$; góc giữa $AB$ và $A'C'$.”, kết quả giải đúng là: Vì $B'C' "
+                           "\\parallel BC$ và $AB \\perp BC$ nên $(AB, B'C') = (AB, BC) = 90^\\circ$. Vì "
+                           "$A'C' \\parallel AC$ và $\\triangle ABC$ vuông cân tại..."],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 22: Hai đường thẳng vuông góc. b) **Đúng** '
-                        'theo công thức trọng tâm **Khoảng giá trị góc giữa hai đường thẳng** ($0^\\circ '
-                        '\\le (a, b) \\le 90^\\circ$). c) **Sai** vì $a^\\circ = \\dfrac{\\pi a}{180}\\text{ '
-                        'rad}, \\quad \\alpha\\text{ rad} = \\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$ '
-                        'là công thức của nội dung khác, không phải quy tắc chung của **Khoảng giá trị góc '
-                        'giữa hai đường thẳng**. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        'theo công thức **Khoảng giá trị góc giữa hai đường thẳng** ($0^\\circ \\le (a, b) '
+                        '\\le 90^\\circ$). c) **Sai** vì công thức đúng của **Khoảng giá trị góc giữa hai '
+                        'đường thẳng** phải là $0^\\circ \\le (a, b) \\le 90^\\circ$ chứ không phải '
+                        '$0^\\circ \\ge (a, b) \\le 90^\\circ$. d) **Đúng** theo lời giải ví dụ minh họa '
+                        'trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 22: Hai đường thẳng vuông góc** để giải quyết tình huống sau: Cho '
-                 "hình lập phương $ABCD.A'B'C'D'$. Tính góc giữa hai đường thẳng $AB$ và $B'C'$; góc giữa "
-                 "$AB$ và $A'C'$. Kết quả và hướng giải nào dưới đây là **đúng**?",
-            'options': ['Vì $\\dfrac{\\pi}{2} < \\alpha < \\pi$ nên $\\cos \\alpha < 0$. Ta có $\\cos '
-                        '\\alpha = -\\sqrt{1 - \\sin^2 \\alpha} = -\\sqrt{1 - \\dfrac{9}{25}} = '
-                        '-\\dfrac{4}{5}$. Suy...',
-                        'Ta có...',
-                        'Với mọi $x \\in \\mathbb{R}$, ta có $-1 \\le \\sin 2x \\le 1 \\Rightarrow -3 \\le '
-                        '3\\sin 2x \\le 3 \\Rightarrow -4 \\le 3\\sin 2x - 1 \\le 2$. Vậy tập giá trị là '
-                        '$[-4; 2]$...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 22: Hai đường thẳng vuông góc** để giải bài toán '
+                 "sau: Cho hình lập phương $ABCD.A'B'C'D'$. Tính góc giữa hai đường thẳng $AB$ và $B'C'$; "
+                 "góc giữa $AB$ và $A'C'$. Cách giải và kết quả nào dưới đây là **đúng**?",
+            'options': ["Vì $B'C' \\parallel BC$ và $AB \\perp BC$ nên $(AB, B'C') = (AB, BC) = 100^\\circ$. "
+                        "Vì $A'C' \\parallel AC$ và $\\triangle ABC$ vuông cân tại $B$ nên $(AB, A'C') = "
+                        '(AB, AC) = \\widehat{BAC} = 45^\\circ$...',
+                        "Vì $B'C' \\parallel BC$ và $AB \\perp BC$ nên $(AB, B'C') = (AB, BC) = 90^\\circ$. "
+                        "Vì $A'C' \\parallel AC$ và $\\triangle ABC$ vuông cân tại $B$ nên $(AB, A'C') = "
+                        '(AB, AC) = \\widehat{BAC} = 44^\\circ$...',
+                        "Vì $B'C' \\parallel BC$ và $AB \\perp BC$ nên $(AB, B'C') = (AB, BC) = 92^\\circ$. "
+                        "Vì $A'C' \\parallel AC$ và $\\triangle ABC$ vuông cân tại $B$ nên $(AB, A'C') = "
+                        '(AB, AC) = \\widehat{BAC} = 45^\\circ$...',
                         "Vì $B'C' \\parallel BC$ và $AB \\perp BC$ nên $(AB, B'C') = (AB, BC) = 90^\\circ$. "
                         "Vì $A'C' \\parallel AC$ và $\\triangle ABC$ vuông cân tại $B$ nên $(AB, A'C') = "
                         '(AB, AC) = \\widehat{BAC} = 45^\\circ$...'],
@@ -4031,34 +4052,37 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 23: Đường thẳng vuông góc với mặt phẳng**, công thức '
-                 'hoặc quy tắc nào sau đây biểu diễn đúng **Định nghĩa**?',
+            'q': 'Trong **Bài 23: Đường thẳng vuông góc với mặt phẳng**, quy tắc hoặc công thức nào sau đây '
+                 'xác định đúng **Định nghĩa**?',
             'options': ['$d \\perp (\\alpha) \\Leftrightarrow d \\perp a, \\quad \\forall a \\subset '
                         '(\\alpha)$',
-                        '$\\begin{cases} a, b \\subset (\\alpha), a \\cap b = \\{I\\} \\\\ d \\perp a, d '
-                        '\\perp b \\end{cases} \\Rightarrow d \\perp (\\alpha)$',
-                        '$\\begin{cases} a \\perp (\\alpha) \\\\ b \\perp (\\alpha) \\end{cases} \\quad (a '
-                        '\\ne b) \\Rightarrow a \\parallel b$',
-                        '$a^\\circ = \\dfrac{\\pi a}{180}\\text{ rad}, \\quad \\alpha\\text{ rad} = '
-                        '\\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$'],
+                        '$d \\perp (\\alpha) \\Leftrightarrow d \\perp a, \\quad \\forall a \\supset '
+                        '(\\alpha)$',
+                        'Đảo ngược vế của quy tắc: $d \\perp (\\alpha) \\Leftrightarrow d \\perp a, \\quad '
+                        '\\forall a \\subset (\\alpha)$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $d \\perp (\\alpha) '
+                        '\\Leftrightarrow d \\perp a, \\quad \\forall a \\subset (\\alpha)$'],
             'answer': 0,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 23: Đường thẳng vuông góc với mặt phẳng, '
-                        '**Định nghĩa** được xác định bởi: $d \\perp (\\alpha) \\Leftrightarrow d \\perp a, '
-                        '\\quad \\forall a \\subset (\\alpha)$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 23: Đường thẳng vuông góc với mặt phẳng, **Định '
+                        'nghĩa** được xác định bởi: $d \\perp (\\alpha) \\Leftrightarrow d \\perp a, \\quad '
+                        '\\forall a \\subset (\\alpha)$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 23: Đường thẳng vuông góc với mặt phẳng**, nội dung/biểu thức $\\begin{cases} '
-                 'a, b \\subset (\\alpha), a \\cap b = \\{I\\} \\\\ d \\perp a, d \\perp b \\end{cases} '
-                 '\\Rightarrow d \\perp (\\alpha)$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Định nghĩa',
-                        'Dấu hiệu nhận biết',
-                        'Liên hệ song song và vuông góc',
-                        'Đổi độ và radian'],
-            'answer': 1,
-            'solution': 'Trong Bài 23: Đường thẳng vuông góc với mặt phẳng, biểu thức/quy tắc '
+            'q': 'Khi học **Bài 23: Đường thẳng vuông góc với mặt phẳng**, biểu thức hoặc quy tắc nào dưới '
+                 'đây biểu diễn đúng **Dấu hiệu nhận biết**?',
+            'options': ['$\\begin{cases} a, b \\subset (\\alpha), a \\cup b = \\{I\\} \\\\ d \\perp a, d '
+                        '\\perp b \\end{cases} \\Rightarrow d \\perp (\\alpha)$',
                         '$\\begin{cases} a, b \\subset (\\alpha), a \\cap b = \\{I\\} \\\\ d \\perp a, d '
-                        '\\perp b \\end{cases} \\Rightarrow d \\perp (\\alpha)$ chính là nội dung của **Dấu '
-                        'hiệu nhận biết**.'},
+                        '\\perp b \\end{cases} \\Rightarrow d \\perp (\\alpha)$',
+                        'Đảo ngược vế của quy tắc: $\\begin{cases} a, b \\subset (\\alpha), a \\cap b = '
+                        '\\{I\\} \\\\ d \\perp a, d \\perp b \\end{cases} \\Rightarrow d \\perp (\\alpha)$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\begin{cases} a, b \\subset '
+                        '(\\alpha), a \\cap b = \\{I\\} \\\\ d \\perp a, d \\perp b \\end{cases} '
+                        '\\Rightarrow d \\perp (\\alpha)$'],
+            'answer': 1,
+            'solution': 'Trong Bài 23: Đường thẳng vuông góc với mặt phẳng, **Dấu hiệu nhận biết** có công '
+                        'thức/quy tắc là: $\\begin{cases} a, b \\subset (\\alpha), a \\cap b = \\{I\\} \\\\ '
+                        'd \\perp a, d \\perp b \\end{cases} \\Rightarrow d \\perp (\\alpha)$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình vuông và $SA \\perp (ABCD)$. Đường thẳng $BD$ '
@@ -4071,19 +4095,19 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 23: Đường thẳng vuông góc với mặt phẳng** (Chương VII: Quan hệ vuông góc '
-                 'trong không gian), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất '
-                 'kiến thức của bài?',
-            'options': ['Nhận biết được khái niệm góc lượng giác, hệ thức Chasles và đổi được số đo góc giữa '
-                        'độ và radian.',
-                        'Xác định được điểm biểu diễn trên đường tròn lượng giác và các giá trị $\\sin '
-                        '\\alpha, \\cos \\alpha, \\tan \\alpha, \\cot \\alpha$.',
-                        'Vận dụng các hệ thức lượng giác cơ bản và giá trị lượng giác của các góc có liên '
-                        'quan đặc biệt (đối nhau, bù nhau, phụ nhau, hơn kém $\\pi$).',
+            'q': 'Để nắm vững bản chất của **Bài 23: Đường thẳng vuông góc với mặt phẳng**, nhận định nào '
+                 'sau đây là **chính xác**?',
+            'options': ['Hiểu được định nghĩa đường thẳng $d$ song song với mặt phẳng $(\\alpha)$ thì $d$ '
+                        'vuông góc với mọi đường thẳng nằm trong $(\\alpha)$.',
+                        'Đảo ngược vế của quy tắc: Hiểu được định nghĩa đường thẳng $d$ vuông góc với mặt '
+                        'phẳng $(\\alpha)$ thì $d$ vuông góc với mọi đường thẳng nằm trong $(\\alpha)$.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Hiểu được định nghĩa đường '
+                        'thẳng $d$ vuông góc với mặt phẳng $(\\alpha)$ thì $d$ vuông góc với mọi đường thẳng '
+                        'nằm trong $(\\alpha)$.',
                         'Hiểu được định nghĩa đường thẳng $d$ vuông góc với mặt phẳng $(\\alpha)$ thì $d$ '
                         'vuông góc với mọi đường thẳng nằm trong $(\\alpha)$.'],
             'answer': 3,
-            'solution': 'Theo yêu cầu cần đạt của Bài 23: Đường thẳng vuông góc với mặt phẳng: Hiểu được '
+            'solution': 'Theo nội dung cốt lõi của Bài 23: Đường thẳng vuông góc với mặt phẳng: Hiểu được '
                         'định nghĩa đường thẳng $d$ vuông góc với mặt phẳng $(\\alpha)$ thì $d$ vuông góc '
                         'với mọi đường thẳng nằm trong $(\\alpha)$.'},
            {'level': 'hieu',
@@ -4103,43 +4127,40 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 23: Đường thẳng vuông '
-                 'góc với mặt phẳng**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Hiểu được định nghĩa đường thẳng '
-                           '$d$ vuông góc với mặt phẳng $(\\alpha)$ thì $d$ vuông góc với mọi đường thẳng '
-                           'nằm trong $(\\alpha)$.',
-                           'Quy tắc/công thức **Định nghĩa** trong bài được xác định bởi: $d \\perp '
-                           '(\\alpha) \\Leftrightarrow d \\perp a, \\quad \\forall a \\subset (\\alpha)$.',
-                           'Trong mọi trường hợp, **Định nghĩa** luôn được tính bằng công thức $a^\\circ = '
-                           '\\dfrac{\\pi a}{180}\\text{ rad}, \\quad \\alpha\\text{ rad} = '
-                           '\\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$ (thuộc Đổi độ và radian) mà '
-                           'không cần điều kiện của Bài 23: Đường thẳng vuông góc với mặt phẳng.',
-                           'Với bài toán minh họa: “Cho hình chóp $S.ABC$ có $SA \\perp (ABC)$ và tam giác '
-                           '$ABC$ vuông tại $B$. Chứng minh $BC \\perp (SAB)$.”, lời giải đúng là: Vì $SA '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 23: Đường thẳng vuông góc '
+                 'với mặt phẳng**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Hiểu được định nghĩa đường thẳng $d$ '
+                           'vuông góc với mặt phẳng $(\\alpha)$ thì $d$ vuông góc với mọi đường thẳng nằm '
+                           'trong $(\\alpha)$.',
+                           'Trong **Bài 23: Đường thẳng vuông góc với mặt phẳng**, quy tắc/công thức **Định '
+                           'nghĩa** được viết là: $d \\perp (\\alpha) \\Leftrightarrow d \\perp a, \\quad '
+                           '\\forall a \\subset (\\alpha)$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $d \\perp (\\alpha) \\Leftrightarrow d '
+                           '\\perp a, \\quad \\forall a \\supset (\\alpha)$ thì kết quả của **Định nghĩa** '
+                           'trong **Bài 23: Đường thẳng vuông góc với mặt phẳng** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Cho hình chóp $S.ABC$ có $SA \\perp (ABC)$ và tam giác $ABC$ '
+                           'vuông tại $B$. Chứng minh $BC \\perp (SAB)$.”, kết quả giải đúng là: Vì $SA '
                            '\\perp (ABC)$ và $BC \\subset (ABC)$ nên $BC \\perp SA$. Mặt khác tam giác $ABC$ '
-                           'vuông tại $B$ nên $BC \\perp AB$. Trong $(SAB)$, hai đườ...'],
+                           'vuông tại $B$ nên $BC \\perp AB$. Trong $(SAB)$, ha...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 23: Đường thẳng vuông góc với mặt phẳng. '
-                        'b) **Đúng** theo công thức trọng tâm **Định nghĩa** ($d \\perp (\\alpha) '
-                        '\\Leftrightarrow d \\perp a, \\quad \\forall a \\subset (\\alpha)$). c) **Sai** vì '
-                        '$a^\\circ = \\dfrac{\\pi a}{180}\\text{ rad}, \\quad \\alpha\\text{ rad} = '
-                        '\\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$ là công thức của nội dung khác, '
-                        'không phải quy tắc chung của **Định nghĩa**. d) **Đúng** theo lời giải ví dụ minh '
-                        'họa trong bài học.'},
+                        'b) **Đúng** theo công thức **Định nghĩa** ($d \\perp (\\alpha) \\Leftrightarrow d '
+                        '\\perp a, \\quad \\forall a \\subset (\\alpha)$). c) **Sai** vì công thức đúng của '
+                        '**Định nghĩa** phải là $d \\perp (\\alpha) \\Leftrightarrow d \\perp a, \\quad '
+                        '\\forall a \\subset (\\alpha)$ chứ không phải $d \\perp (\\alpha) \\Leftrightarrow '
+                        'd \\perp a, \\quad \\forall a \\supset (\\alpha)$. d) **Đúng** theo lời giải ví dụ '
+                        'minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 23: Đường thẳng vuông góc với mặt phẳng** để giải quyết tình '
-                 'huống sau: Cho hình chóp $S.ABC$ có $SA \\perp (ABC)$ và tam giác $ABC$ vuông tại $B$. '
-                 'Chứng minh $BC \\perp (SAB)$. Kết quả và hướng giải nào dưới đây là **đúng**?',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 23: Đường thẳng vuông góc với mặt phẳng** để giải '
+                 'bài toán sau: Cho hình chóp $S.ABC$ có $SA \\perp (ABC)$ và tam giác $ABC$ vuông tại $B$. '
+                 'Chứng minh $BC \\perp (SAB)$. Cách giải và kết quả nào dưới đây là **đúng**?',
             'options': ['Vì $SA \\perp (ABC)$ và $BC \\subset (ABC)$ nên $BC \\perp SA$. Mặt khác tam giác '
-                        '$ABC$ vuông tại $B$ nên $BC \\perp AB$. Trong $(SAB)$, hai đường thẳng $SA$ v...',
-                        'Vì $\\dfrac{\\pi}{2} < \\alpha < \\pi$ nên $\\cos \\alpha < 0$. Ta có $\\cos '
-                        '\\alpha = -\\sqrt{1 - \\sin^2 \\alpha} = -\\sqrt{1 - \\dfrac{9}{25}} = '
-                        '-\\dfrac{4}{5}$. Suy...',
-                        'Ta có...',
-                        'Với mọi $x \\in \\mathbb{R}$, ta có $-1 \\le \\sin 2x \\le 1 \\Rightarrow -3 \\le '
-                        '3\\sin 2x \\le 3 \\Rightarrow -4 \\le 3\\sin 2x - 1 \\le 2$. Vậy tập giá trị là '
-                        '$[-4; 2]$...'],
+                        '$ABC$ vuông tại $B$ nên $BC \\perp AB$. Trong $(SAB)$, hai đường thẳng $SA$...',
+                        'Vì $SA \\perp (ABC)$ và $BC \\supset (ABC)$ nên $BC \\perp SA$. Mặt khác tam giác '
+                        '$ABC$ vuông tại $B$ nên $BC \\perp AB$. Trong $(SAB)$, hai đường thẳng $SA$...',
+                        'Thực hiện theo thứ tự ngược lại và bỏ qua điều kiện xác định trong bài',
+                        'Đổi ngược dấu của phép tính chính và không kiểm tra lại kết quả'],
             'answer': 0,
             'solution': 'Lời giải chi tiết theo Bài 23: Đường thẳng vuông góc với mặt phẳng: Vì $SA \\perp '
                         '(ABC)$ và $BC \\subset (ABC)$ nên $BC \\perp SA$. Mặt khác tam giác $ABC$ vuông tại '
@@ -4222,35 +4243,34 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 24: Phép chiếu vuông góc. Góc giữa đường thẳng và mặt '
-                 'phẳng**, công thức hoặc quy tắc nào sau đây biểu diễn đúng **Khoảng giá trị của góc**?',
-            'options': ['$SH \\perp (\\alpha) \\text{ tại } H, SA \\cap (\\alpha) = \\{A\\} \\Rightarrow '
-                        '(SA, (\\alpha)) = \\widehat{SAH}, \\quad \\sin\\widehat{SAH} = \\dfrac{SH}{SA}$',
+            'q': 'Trong **Bài 24: Phép chiếu vuông góc. Góc giữa đường thẳng và mặt phẳng**, quy tắc hoặc '
+                 'công thức nào sau đây xác định đúng **Khoảng giá trị của góc**?',
+            'options': ['$0^\\circ \\ge (d, (\\alpha)) \\le 90^\\circ$',
                         '$0^\\circ \\le (d, (\\alpha)) \\le 90^\\circ$',
-                        "$a \\subset (\\alpha), b' \\text{ là hình chiếu của } b \\text{ trên } (\\alpha) "
-                        "\\Rightarrow (a \\perp b \\Leftrightarrow a \\perp b')$",
-                        '$a^\\circ = \\dfrac{\\pi a}{180}\\text{ rad}, \\quad \\alpha\\text{ rad} = '
-                        '\\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$'],
+                        '$0^\\circ \\le (d, (\\alpha)) \\le 89^\\circ$',
+                        '$2^\\circ \\le (d, (\\alpha)) \\le 90^\\circ$'],
             'answer': 1,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 24: Phép chiếu vuông góc. Góc giữa đường '
-                        'thẳng và mặt phẳng, **Khoảng giá trị của góc** được xác định bởi: $0^\\circ \\le '
-                        '(d, (\\alpha)) \\le 90^\\circ$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 24: Phép chiếu vuông góc. Góc giữa đường thẳng và '
+                        'mặt phẳng, **Khoảng giá trị của góc** được xác định bởi: $0^\\circ \\le (d, '
+                        '(\\alpha)) \\le 90^\\circ$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 24: Phép chiếu vuông góc. Góc giữa đường thẳng và mặt phẳng**, nội dung/biểu '
-                 'thức $SH \\perp (\\alpha) \\text{ tại } H, SA \\cap (\\alpha) = \\{A\\} \\Rightarrow (SA, '
-                 '(\\alpha)) = \\widehat{SAH}, \\quad \\sin\\widehat{SAH} = \\dfrac{SH}{SA}$ là quy tắc hoặc '
-                 'công thức của mục nào sau đây?',
-            'options': ['Khoảng giá trị của góc',
-                        'Định lí ba đường vuông góc',
-                        'Công thức tính trong tam giác vuông SAH',
-                        'Đổi độ và radian'],
+            'q': 'Khi học **Bài 24: Phép chiếu vuông góc. Góc giữa đường thẳng và mặt phẳng**, biểu thức '
+                 'hoặc quy tắc nào dưới đây biểu diễn đúng **Công thức tính trong tam giác vuông SAH**?',
+            'options': ['$SH \\perp (\\alpha) \\text{ tại } H, SA \\cup (\\alpha) = \\{A\\} \\Rightarrow '
+                        '(SA, (\\alpha)) = \\widehat{SAH}, \\quad \\sin\\widehat{SAH} = \\dfrac{SH}{SA}$',
+                        '$SH \\perp (\\alpha) \\text{ tại } H, SA \\cap (\\alpha) = \\{A\\} \\Rightarrow '
+                        '(SA, (\\alpha)) = \\widehat{SAH}, \\quad \\sin\\widehat{SAH} = \\dfrac{SA}{SH}$',
+                        '$SH \\perp (\\alpha) \\text{ tại } H, SA \\cap (\\alpha) = \\{A\\} \\Rightarrow '
+                        '(SA, (\\alpha)) = \\widehat{SAH}, \\quad \\sin\\widehat{SAH} = \\dfrac{SH}{SA}$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $SH \\perp (\\alpha) \\text{ '
+                        'tại } H, SA \\cap (\\alpha) = \\{A\\} \\Rightarrow (SA, (\\alpha)) = '
+                        '\\widehat{SAH}, \\quad \\sin\\widehat{SAH} = \\dfrac{SH}{SA}$'],
             'answer': 2,
-            'solution': 'Trong Bài 24: Phép chiếu vuông góc. Góc giữa đường thẳng và mặt phẳng, biểu '
-                        'thức/quy tắc $SH \\perp (\\alpha) \\text{ tại } H, SA \\cap (\\alpha) = \\{A\\} '
-                        '\\Rightarrow (SA, (\\alpha)) = \\widehat{SAH}, \\quad \\sin\\widehat{SAH} = '
-                        '\\dfrac{SH}{SA}$ chính là nội dung của **Công thức tính trong tam giác vuông '
-                        'SAH**.'},
+            'solution': 'Trong Bài 24: Phép chiếu vuông góc. Góc giữa đường thẳng và mặt phẳng, **Công thức '
+                        'tính trong tam giác vuông SAH** có công thức/quy tắc là: $SH \\perp (\\alpha) '
+                        '\\text{ tại } H, SA \\cap (\\alpha) = \\{A\\} \\Rightarrow (SA, (\\alpha)) = '
+                        '\\widehat{SAH}, \\quad \\sin\\widehat{SAH} = \\dfrac{SH}{SA}$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Cho hình chóp $S.ABC$ có $SA \\perp (ABC)$, $SA = a\\sqrt{3}$ và $AB = a$. Góc giữa đường '
@@ -4264,18 +4284,16 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 24: Phép chiếu vuông góc. Góc giữa đường thẳng và mặt phẳng** (Chương VII: '
-                 'Quan hệ vuông góc trong không gian), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần '
-                 'đạt và bản chất kiến thức của bài?',
+            'q': 'Để nắm vững bản chất của **Bài 24: Phép chiếu vuông góc. Góc giữa đường thẳng và mặt '
+                 'phẳng**, nhận định nào sau đây là **chính xác**?',
             'options': ['Xác định được hình chiếu vuông góc của một điểm, một đường thẳng lên một mặt phẳng.',
-                        'Nhận biết được khái niệm góc lượng giác, hệ thức Chasles và đổi được số đo góc giữa '
-                        'độ và radian.',
-                        'Xác định được điểm biểu diễn trên đường tròn lượng giác và các giá trị $\\sin '
-                        '\\alpha, \\cos \\alpha, \\tan \\alpha, \\cot \\alpha$.',
-                        'Vận dụng các hệ thức lượng giác cơ bản và giá trị lượng giác của các góc có liên '
-                        'quan đặc biệt (đối nhau, bù nhau, phụ nhau, hơn kém $\\pi$).'],
+                        'Xác định được hình chiếu song song của một điểm, một đường thẳng lên một mặt phẳng.',
+                        'Đảo ngược vế của quy tắc: Xác định được hình chiếu vuông góc của một điểm, một '
+                        'đường thẳng lên một mặt phẳng.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Xác định được hình chiếu vuông '
+                        'góc của một điểm, một đường thẳng lên một mặt phẳng.'],
             'answer': 0,
-            'solution': 'Theo yêu cầu cần đạt của Bài 24: Phép chiếu vuông góc. Góc giữa đường thẳng và mặt '
+            'solution': 'Theo nội dung cốt lõi của Bài 24: Phép chiếu vuông góc. Góc giữa đường thẳng và mặt '
                         'phẳng: Xác định được hình chiếu vuông góc của một điểm, một đường thẳng lên một mặt '
                         'phẳng.'},
            {'level': 'hieu',
@@ -4298,46 +4316,42 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 24: Phép chiếu vuông '
-                 'góc. Góc giữa đường thẳng và mặt phẳng**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Xác định được hình chiếu vuông góc '
-                           'của một điểm, một đường thẳng lên một mặt phẳng.',
-                           'Quy tắc/công thức **Khoảng giá trị của góc** trong bài được xác định bởi: '
-                           '$0^\\circ \\le (d, (\\alpha)) \\le 90^\\circ$.',
-                           'Trong mọi trường hợp, **Khoảng giá trị của góc** luôn được tính bằng công thức '
-                           '$a^\\circ = \\dfrac{\\pi a}{180}\\text{ rad}, \\quad \\alpha\\text{ rad} = '
-                           '\\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$ (thuộc Đổi độ và radian) mà '
-                           'không cần điều kiện của Bài 24: Phép chiếu vuông góc. Góc giữa đường thẳng và '
-                           'mặt phẳng.',
-                           'Với bài toán minh họa: “Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình vuông cạnh '
-                           '$a$, $SA \\perp (ABCD)$ và $SA = a\\sqrt{6}$. Tính góc giữa đường thẳng $SC$ và '
-                           'mặt ph...”, lời giải đúng là: Vì $SA \\perp (ABCD)$ tại $A$ nên $AC$ là hình '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 24: Phép chiếu vuông góc. '
+                 'Góc giữa đường thẳng và mặt phẳng**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Xác định được hình chiếu vuông góc của '
+                           'một điểm, một đường thẳng lên một mặt phẳng.',
+                           'Trong **Bài 24: Phép chiếu vuông góc. Góc giữa đường thẳng và mặt phẳng**, quy '
+                           'tắc/công thức **Khoảng giá trị của góc** được viết là: $0^\\circ \\le (d, '
+                           '(\\alpha)) \\le 90^\\circ$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $0^\\circ \\ge (d, (\\alpha)) \\le '
+                           '90^\\circ$ thì kết quả của **Khoảng giá trị của góc** trong **Bài 24: Phép chiếu '
+                           'vuông góc. Góc giữa đường thẳng và mặt phẳng** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình vuông cạnh $a$, '
+                           '$SA \\perp (ABCD)$ và $SA = a\\sqrt{6}$. Tính góc giữa đường thẳng $SC$ và '
+                           'm...”, kết quả giải đúng là: Vì $SA \\perp (ABCD)$ tại $A$ nên $AC$ là hình '
                            'chiếu vuông góc của $SC$ trên $(ABCD)$. Suy ra góc giữa $SC$ và $(ABCD)$ là '
-                           '$\\widehat{SCA}$. T...'],
+                           '$\\widehat{SCA}$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 24: Phép chiếu vuông góc. Góc giữa đường '
-                        'thẳng và mặt phẳng. b) **Đúng** theo công thức trọng tâm **Khoảng giá trị của góc** '
-                        '($0^\\circ \\le (d, (\\alpha)) \\le 90^\\circ$). c) **Sai** vì $a^\\circ = '
-                        '\\dfrac{\\pi a}{180}\\text{ rad}, \\quad \\alpha\\text{ rad} = '
-                        '\\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$ là công thức của nội dung khác, '
-                        'không phải quy tắc chung của **Khoảng giá trị của góc**. d) **Đúng** theo lời giải '
-                        'ví dụ minh họa trong bài học.'},
+                        'thẳng và mặt phẳng. b) **Đúng** theo công thức **Khoảng giá trị của góc** '
+                        '($0^\\circ \\le (d, (\\alpha)) \\le 90^\\circ$). c) **Sai** vì công thức đúng của '
+                        '**Khoảng giá trị của góc** phải là $0^\\circ \\le (d, (\\alpha)) \\le 90^\\circ$ '
+                        'chứ không phải $0^\\circ \\ge (d, (\\alpha)) \\le 90^\\circ$. d) **Đúng** theo lời '
+                        'giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 24: Phép chiếu vuông góc. Góc giữa đường thẳng và mặt phẳng** để '
-                 'giải quyết tình huống sau: Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình vuông cạnh $a$, '
-                 '$SA \\perp (ABCD)$ và $SA = a\\sqrt{6}$. Tính góc giữa đường thẳng $SC$ và mặt phẳng '
-                 '$(ABCD)$. Kết quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Vì $\\dfrac{\\pi}{2} < \\alpha < \\pi$ nên $\\cos \\alpha < 0$. Ta có $\\cos '
-                        '\\alpha = -\\sqrt{1 - \\sin^2 \\alpha} = -\\sqrt{1 - \\dfrac{9}{25}} = '
-                        '-\\dfrac{4}{5}$. Suy...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 24: Phép chiếu vuông góc. Góc giữa đường thẳng và '
+                 'mặt phẳng** để giải bài toán sau: Cho hình chóp $S.ABCD$ có đáy $ABCD$ là hình vuông cạnh '
+                 '$a$, $SA \\perp (ABCD)$ và $SA = a\\sqrt{6}$. Tính góc giữa đường thẳng $SC$ và mặt phẳng '
+                 '$(ABCD)$. Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Vì $SA \\perp (ABCD)$ tại $A$ nên $AC$ là hình chiếu song song của $SC$ trên '
+                        '$(ABCD)$. Suy ra góc giữa $SC$ và $(ABCD)$ là $\\widehat{SCA}$. Trong $\\triangle '
+                        'SAC$...',
                         'Vì $SA \\perp (ABCD)$ tại $A$ nên $AC$ là hình chiếu vuông góc của $SC$ trên '
                         '$(ABCD)$. Suy ra góc giữa $SC$ và $(ABCD)$ là $\\widehat{SCA}$. Trong $\\triangle '
                         'SAC$...',
-                        'Ta có...',
-                        'Với mọi $x \\in \\mathbb{R}$, ta có $-1 \\le \\sin 2x \\le 1 \\Rightarrow -3 \\le '
-                        '3\\sin 2x \\le 3 \\Rightarrow -4 \\le 3\\sin 2x - 1 \\le 2$. Vậy tập giá trị là '
-                        '$[-4; 2]$...'],
+                        'Thực hiện theo thứ tự ngược lại và bỏ qua điều kiện xác định trong bài',
+                        'Đổi ngược dấu của phép tính chính và không kiểm tra lại kết quả'],
             'answer': 1,
             'solution': 'Lời giải chi tiết theo Bài 24: Phép chiếu vuông góc. Góc giữa đường thẳng và mặt '
                         'phẳng: Vì $SA \\perp (ABCD)$ tại $A$ nên $AC$ là hình chiếu vuông góc của $SC$ trên '
@@ -4423,36 +4437,41 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 25: Hai mặt phẳng vuông góc và góc nhị diện**, công thức '
-                 'hoặc quy tắc nào sau đây biểu diễn đúng **Dấu hiệu hai mặt phẳng vuông góc**?',
-            'options': ['$\\begin{cases} (\\alpha) \\perp (\\gamma), (\\beta) \\perp (\\gamma) \\\\ '
-                        '(\\alpha) \\cap (\\beta) = d \\end{cases} \\Rightarrow d \\perp (\\gamma)$',
-                        '$Ox \\subset (P), Oy \\subset (Q), Ox \\perp d, Oy \\perp d \\Rightarrow '
-                        '\\widehat{xOy} \\text{ là góc phẳng nhị diện}$',
+            'q': 'Trong **Bài 25: Hai mặt phẳng vuông góc và góc nhị diện**, quy tắc hoặc công thức nào sau '
+                 'đây xác định đúng **Dấu hiệu hai mặt phẳng vuông góc**?',
+            'options': ['$\\begin{cases} d \\supset (\\alpha) \\\\ d \\perp (\\beta) \\end{cases} '
+                        '\\Rightarrow (\\alpha) \\perp (\\beta)$',
+                        'Đảo ngược vế của quy tắc: $\\begin{cases} d \\subset (\\alpha) \\\\ d \\perp '
+                        '(\\beta) \\end{cases} \\Rightarrow (\\alpha) \\perp (\\beta)$',
                         '$\\begin{cases} d \\subset (\\alpha) \\\\ d \\perp (\\beta) \\end{cases} '
                         '\\Rightarrow (\\alpha) \\perp (\\beta)$',
-                        '$a^\\circ = \\dfrac{\\pi a}{180}\\text{ rad}, \\quad \\alpha\\text{ rad} = '
-                        '\\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\begin{cases} d \\subset '
+                        '(\\alpha) \\\\ d \\perp (\\beta) \\end{cases} \\Rightarrow (\\alpha) \\perp '
+                        '(\\beta)$'],
             'answer': 2,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 25: Hai mặt phẳng vuông góc và góc nhị diện, '
-                        '**Dấu hiệu hai mặt phẳng vuông góc** được xác định bởi: $\\begin{cases} d \\subset '
+            'solution': 'Theo kiến thức trọng tâm của Bài 25: Hai mặt phẳng vuông góc và góc nhị diện, **Dấu '
+                        'hiệu hai mặt phẳng vuông góc** được xác định bởi: $\\begin{cases} d \\subset '
                         '(\\alpha) \\\\ d \\perp (\\beta) \\end{cases} \\Rightarrow (\\alpha) \\perp '
                         '(\\beta)$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 25: Hai mặt phẳng vuông góc và góc nhị diện**, nội dung/biểu thức '
-                 '$\\begin{cases} (\\alpha) \\perp (\\gamma), (\\beta) \\perp (\\gamma) \\\\ (\\alpha) \\cap '
-                 '(\\beta) = d \\end{cases} \\Rightarrow d \\perp (\\gamma)$ là quy tắc hoặc công thức của '
-                 'mục nào sau đây?',
-            'options': ['Dấu hiệu hai mặt phẳng vuông góc',
-                        'Góc phẳng nhị diện [P, d, Q]',
-                        'Đổi độ và radian',
-                        'Định lí giao tuyến vuông góc'],
-            'answer': 3,
-            'solution': 'Trong Bài 25: Hai mặt phẳng vuông góc và góc nhị diện, biểu thức/quy tắc '
+            'q': 'Khi học **Bài 25: Hai mặt phẳng vuông góc và góc nhị diện**, biểu thức hoặc quy tắc nào '
+                 'dưới đây biểu diễn đúng **Định lí giao tuyến vuông góc**?',
+            'options': ['$\\begin{cases} (\\alpha) \\perp (\\gamma), (\\beta) \\perp (\\gamma) \\\\ '
+                        '(\\alpha) \\cup (\\beta) = d \\end{cases} \\Rightarrow d \\perp (\\gamma)$',
+                        'Đảo ngược vế của quy tắc: $\\begin{cases} (\\alpha) \\perp (\\gamma), (\\beta) '
+                        '\\perp (\\gamma) \\\\ (\\alpha) \\cap (\\beta) = d \\end{cases} \\Rightarrow d '
+                        '\\perp (\\gamma)$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\begin{cases} (\\alpha) '
+                        '\\perp (\\gamma), (\\beta) \\perp (\\gamma) \\\\ (\\alpha) \\cap (\\beta) = d '
+                        '\\end{cases} \\Rightarrow d \\perp (\\gamma)$',
                         '$\\begin{cases} (\\alpha) \\perp (\\gamma), (\\beta) \\perp (\\gamma) \\\\ '
-                        '(\\alpha) \\cap (\\beta) = d \\end{cases} \\Rightarrow d \\perp (\\gamma)$ chính là '
-                        'nội dung của **Định lí giao tuyến vuông góc**.'},
+                        '(\\alpha) \\cap (\\beta) = d \\end{cases} \\Rightarrow d \\perp (\\gamma)$'],
+            'answer': 3,
+            'solution': 'Trong Bài 25: Hai mặt phẳng vuông góc và góc nhị diện, **Định lí giao tuyến vuông '
+                        'góc** có công thức/quy tắc là: $\\begin{cases} (\\alpha) \\perp (\\gamma), (\\beta) '
+                        '\\perp (\\gamma) \\\\ (\\alpha) \\cap (\\beta) = d \\end{cases} \\Rightarrow d '
+                        '\\perp (\\gamma)$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Cho hai mặt phẳng $(\\alpha)$ và $(\\beta)$ cắt nhau theo giao tuyến $d$ và cùng vuông góc '
@@ -4468,20 +4487,19 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 25: Hai mặt phẳng vuông góc và góc nhị diện** (Chương VII: Quan hệ vuông góc '
-                 'trong không gian), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất '
-                 'kiến thức của bài?',
-            'options': ['Nhận biết được khái niệm góc lượng giác, hệ thức Chasles và đổi được số đo góc giữa '
-                        'độ và radian.',
+            'q': 'Để nắm vững bản chất của **Bài 25: Hai mặt phẳng vuông góc và góc nhị diện**, nhận định '
+                 'nào sau đây là **chính xác**?',
+            'options': ['Nhận biết được góc nhị diện $[P, d, Q]$ và xác định được góc phẳng nhị diện tương '
+                        'ứng. (với dấu ngược lại)',
                         'Nhận biết được góc nhị diện $[P, d, Q]$ và xác định được góc phẳng nhị diện tương '
                         'ứng.',
-                        'Xác định được điểm biểu diễn trên đường tròn lượng giác và các giá trị $\\sin '
-                        '\\alpha, \\cos \\alpha, \\tan \\alpha, \\cot \\alpha$.',
-                        'Vận dụng các hệ thức lượng giác cơ bản và giá trị lượng giác của các góc có liên '
-                        'quan đặc biệt (đối nhau, bù nhau, phụ nhau, hơn kém $\\pi$).'],
+                        'Đảo ngược vế của quy tắc: Nhận biết được góc nhị diện $[P, d, Q]$ và xác định được '
+                        'góc phẳng nhị diện tương ứng.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nhận biết được góc nhị diện '
+                        '$[P, d, Q]$ và xác định được góc phẳng nhị diện tương ứng.'],
             'answer': 1,
-            'solution': 'Theo yêu cầu cần đạt của Bài 25: Hai mặt phẳng vuông góc và góc nhị diện: Nhận biết '
-                        'được góc nhị diện $[P, d, Q]$ và xác định được góc phẳng nhị diện tương ứng.'},
+            'solution': 'Theo nội dung cốt lõi của Bài 25: Hai mặt phẳng vuông góc và góc nhị diện: Nhận '
+                        'biết được góc nhị diện $[P, d, Q]$ và xác định được góc phẳng nhị diện tương ứng.'},
            {'level': 'hieu',
             'type': 'tf4',
             'q': 'Cho hình chóp tứ giác đều $S.ABCD$ có tâm đáy là $O$ và $M$ là trung điểm của cạnh $BC$. '
@@ -4499,46 +4517,47 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 25: Hai mặt phẳng vuông '
-                 'góc và góc nhị diện**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được góc nhị diện $[P, '
-                           'd, Q]$ và xác định được góc phẳng nhị diện tương ứng.',
-                           'Quy tắc/công thức **Dấu hiệu hai mặt phẳng vuông góc** trong bài được xác định '
-                           'bởi: $\\begin{cases} d \\subset (\\alpha) \\\\ d \\perp (\\beta) \\end{cases} '
-                           '\\Rightarrow (\\alpha) \\perp (\\beta)$.',
-                           'Trong mọi trường hợp, **Dấu hiệu hai mặt phẳng vuông góc** luôn được tính bằng '
-                           'công thức $a^\\circ = \\dfrac{\\pi a}{180}\\text{ rad}, \\quad \\alpha\\text{ '
-                           'rad} = \\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$ (thuộc Đổi độ và radian) '
-                           'mà không cần điều kiện của Bài 25: Hai mặt phẳng vuông góc và góc nhị diện.',
-                           'Với bài toán minh họa: “Cho hình chóp $S.ABC$ có đáy $ABC$ là tam giác đều cạnh '
-                           '$a$, $SA \\perp (ABC)$ và $SA = \\dfrac{a\\sqrt{3}}{2}$. Tính số đo góc nhị diện '
-                           '$[S, BC, A]$...”, lời giải đúng là: Gọi $M$ là trung điểm của $BC$. Vì '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 25: Hai mặt phẳng vuông góc '
+                 'và góc nhị diện**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết được góc nhị diện $[P, d, Q]$ '
+                           'và xác định được góc phẳng nhị diện tương ứng.',
+                           'Trong **Bài 25: Hai mặt phẳng vuông góc và góc nhị diện**, quy tắc/công thức '
+                           '**Dấu hiệu hai mặt phẳng vuông góc** được viết là: $\\begin{cases} d \\subset '
+                           '(\\alpha) \\\\ d \\perp (\\beta) \\end{cases} \\Rightarrow (\\alpha) \\perp '
+                           '(\\beta)$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $\\begin{cases} d \\supset (\\alpha) \\\\ d '
+                           '\\perp (\\beta) \\end{cases} \\Rightarrow (\\alpha) \\perp (\\beta)$ thì kết quả '
+                           'của **Dấu hiệu hai mặt phẳng vuông góc** trong **Bài 25: Hai mặt phẳng vuông góc '
+                           'và góc nhị diện** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Cho hình chóp $S.ABC$ có đáy $ABC$ là tam giác đều cạnh $a$, '
+                           '$SA \\perp (ABC)$ và $SA = \\dfrac{a\\sqrt{3}}{2}$. Tính số đo góc nhị diện $[S, '
+                           'BC, A]$...”, kết quả giải đúng là: Gọi $M$ là trung điểm của $BC$. Vì '
                            '$\\triangle ABC$ đều nên $AM \\perp BC$ và $AM = \\dfrac{a\\sqrt{3}}{2}$. Do $SA '
                            '\\perp (ABC) \\Rightarrow SA \\perp BC$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 25: Hai mặt phẳng vuông góc và góc nhị '
-                        'diện. b) **Đúng** theo công thức trọng tâm **Dấu hiệu hai mặt phẳng vuông góc** '
+                        'diện. b) **Đúng** theo công thức **Dấu hiệu hai mặt phẳng vuông góc** '
                         '($\\begin{cases} d \\subset (\\alpha) \\\\ d \\perp (\\beta) \\end{cases} '
-                        '\\Rightarrow (\\alpha) \\perp (\\beta)$). c) **Sai** vì $a^\\circ = \\dfrac{\\pi '
-                        'a}{180}\\text{ rad}, \\quad \\alpha\\text{ rad} = '
-                        '\\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$ là công thức của nội dung khác, '
-                        'không phải quy tắc chung của **Dấu hiệu hai mặt phẳng vuông góc**. d) **Đúng** theo '
-                        'lời giải ví dụ minh họa trong bài học.'},
+                        '\\Rightarrow (\\alpha) \\perp (\\beta)$). c) **Sai** vì công thức đúng của **Dấu '
+                        'hiệu hai mặt phẳng vuông góc** phải là $\\begin{cases} d \\subset (\\alpha) \\\\ d '
+                        '\\perp (\\beta) \\end{cases} \\Rightarrow (\\alpha) \\perp (\\beta)$ chứ không phải '
+                        '$\\begin{cases} d \\supset (\\alpha) \\\\ d \\perp (\\beta) \\end{cases} '
+                        '\\Rightarrow (\\alpha) \\perp (\\beta)$. d) **Đúng** theo lời giải ví dụ minh họa '
+                        'trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 25: Hai mặt phẳng vuông góc và góc nhị diện** để giải quyết tình '
-                 'huống sau: Cho hình chóp $S.ABC$ có đáy $ABC$ là tam giác đều cạnh $a$, $SA \\perp (ABC)$ '
-                 'và $SA = \\dfrac{a\\sqrt{3}}{2}$. Tính số đo góc nhị diện $[S, BC, A]$. Kết quả và hướng '
-                 'giải nào dưới đây là **đúng**?',
-            'options': ['Vì $\\dfrac{\\pi}{2} < \\alpha < \\pi$ nên $\\cos \\alpha < 0$. Ta có $\\cos '
-                        '\\alpha = -\\sqrt{1 - \\sin^2 \\alpha} = -\\sqrt{1 - \\dfrac{9}{25}} = '
-                        '-\\dfrac{4}{5}$. Suy...',
-                        'Ta có...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 25: Hai mặt phẳng vuông góc và góc nhị diện** để '
+                 'giải bài toán sau: Cho hình chóp $S.ABC$ có đáy $ABC$ là tam giác đều cạnh $a$, $SA \\perp '
+                 '(ABC)$ và $SA = \\dfrac{a\\sqrt{3}}{2}$. Tính số đo góc nhị diện $[S, BC, A]$. Cách giải '
+                 'và kết quả nào dưới đây là **đúng**?',
+            'options': ['Gọi $M$ là trung điểm của $BC$. Vì $\\triangle ABC$ đều nên $AM \\perp BC$ và $AM = '
+                        '\\dfrac{a\\sqrt{4}}{2}$. Do $SA \\perp (ABC) \\Rightarrow SA \\perp BC$...',
                         'Gọi $M$ là trung điểm của $BC$. Vì $\\triangle ABC$ đều nên $AM \\perp BC$ và $AM = '
-                        '\\dfrac{a\\sqrt{3}}{2}$. Do $SA \\perp (ABC) \\Rightarrow SA \\perp BC$, suy r...',
-                        'Với mọi $x \\in \\mathbb{R}$, ta có $-1 \\le \\sin 2x \\le 1 \\Rightarrow -3 \\le '
-                        '3\\sin 2x \\le 3 \\Rightarrow -4 \\le 3\\sin 2x - 1 \\le 2$. Vậy tập giá trị là '
-                        '$[-4; 2]$...'],
+                        '\\dfrac{a\\sqrt{3}}{1}$. Do $SA \\perp (ABC) \\Rightarrow SA \\perp BC$...',
+                        'Gọi $M$ là trung điểm của $BC$. Vì $\\triangle ABC$ đều nên $AM \\perp BC$ và $AM = '
+                        '\\dfrac{a\\sqrt{3}}{2}$. Do $SA \\perp (ABC) \\Rightarrow SA \\perp BC$...',
+                        'Gọi $M$ là trung điểm của $BC$. Vì $\\triangle ABC$ đều nên $AM \\perp BC$ và $AM = '
+                        '\\dfrac{a\\sqrt{6}}{2}$. Do $SA \\perp (ABC) \\Rightarrow SA \\perp BC$...'],
             'answer': 2,
             'solution': 'Lời giải chi tiết theo Bài 25: Hai mặt phẳng vuông góc và góc nhị diện: Gọi $M$ là '
                         'trung điểm của $BC$. Vì $\\triangle ABC$ đều nên $AM \\perp BC$ và $AM = '
@@ -4619,31 +4638,32 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 26: Khoảng cách trong không gian**, công thức hoặc quy '
-                 'tắc nào sau đây biểu diễn đúng **Hệ thức đường cao tam giác vuông SAH**?',
-            'options': ['$AB \\cap (P) = \\{I\\} \\Rightarrow \\dfrac{d(A, (P))}{d(B, (P))} = '
-                        '\\dfrac{IA}{IB}$',
-                        '$a \\parallel (P), b \\subset (P), M \\in a \\Rightarrow d(a, b) = d(M, (P))$',
-                        '$a^\\circ = \\dfrac{\\pi a}{180}\\text{ rad}, \\quad \\alpha\\text{ rad} = '
-                        '\\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$',
+            'q': 'Trong **Bài 26: Khoảng cách trong không gian**, quy tắc hoặc công thức nào sau đây xác '
+                 'định đúng **Hệ thức đường cao tam giác vuông SAH**?',
+            'options': ['$\\dfrac{1}{AH^2} = \\dfrac{1}{SA^2} - \\dfrac{1}{AM^2}$',
+                        '$\\dfrac{AH^2}{1} = \\dfrac{1}{SA^2} + \\dfrac{1}{AM^2}$',
+                        '$\\dfrac{2}{AH^2} = \\dfrac{1}{SA^2} + \\dfrac{1}{AM^2}$',
                         '$\\dfrac{1}{AH^2} = \\dfrac{1}{SA^2} + \\dfrac{1}{AM^2}$'],
             'answer': 3,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 26: Khoảng cách trong không gian, **Hệ thức '
-                        'đường cao tam giác vuông SAH** được xác định bởi: $\\dfrac{1}{AH^2} = '
-                        '\\dfrac{1}{SA^2} + \\dfrac{1}{AM^2}$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 26: Khoảng cách trong không gian, **Hệ thức đường '
+                        'cao tam giác vuông SAH** được xác định bởi: $\\dfrac{1}{AH^2} = \\dfrac{1}{SA^2} + '
+                        '\\dfrac{1}{AM^2}$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 26: Khoảng cách trong không gian**, nội dung/biểu thức $AB \\cap (P) = \\{I\\} '
-                 '\\Rightarrow \\dfrac{d(A, (P))}{d(B, (P))} = \\dfrac{IA}{IB}$ là quy tắc hoặc công thức '
-                 'của mục nào sau đây?',
-            'options': ['Đổi điểm tính khoảng cách',
-                        'Hệ thức đường cao tam giác vuông SAH',
-                        'Khoảng cách hai đường chéo nhau',
-                        'Đổi độ và radian'],
+            'q': 'Khi học **Bài 26: Khoảng cách trong không gian**, biểu thức hoặc quy tắc nào dưới đây biểu '
+                 'diễn đúng **Đổi điểm tính khoảng cách**?',
+            'options': ['$AB \\cap (P) = \\{I\\} \\Rightarrow \\dfrac{d(A, (P))}{d(B, (P))} = '
+                        '\\dfrac{IA}{IB}$',
+                        '$AB \\cup (P) = \\{I\\} \\Rightarrow \\dfrac{d(A, (P))}{d(B, (P))} = '
+                        '\\dfrac{IA}{IB}$',
+                        '$AB \\cap (P) = \\{I\\} \\Rightarrow \\dfrac{d(B, (P))}{d(A, (P))} = '
+                        '\\dfrac{IA}{IB}$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $AB \\cap (P) = \\{I\\} '
+                        '\\Rightarrow \\dfrac{d(A, (P))}{d(B, (P))} = \\dfrac{IA}{IB}$'],
             'answer': 0,
-            'solution': 'Trong Bài 26: Khoảng cách trong không gian, biểu thức/quy tắc $AB \\cap (P) = '
-                        '\\{I\\} \\Rightarrow \\dfrac{d(A, (P))}{d(B, (P))} = \\dfrac{IA}{IB}$ chính là nội '
-                        'dung của **Đổi điểm tính khoảng cách**.'},
+            'solution': 'Trong Bài 26: Khoảng cách trong không gian, **Đổi điểm tính khoảng cách** có công '
+                        'thức/quy tắc là: $AB \\cap (P) = \\{I\\} \\Rightarrow \\dfrac{d(A, (P))}{d(B, (P))} '
+                        '= \\dfrac{IA}{IB}$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': "Cho hình lập phương $ABCD.A'B'C'D'$ có cạnh bằng $a$. Khoảng cách giữa hai đường thẳng "
@@ -4656,19 +4676,19 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 26: Khoảng cách trong không gian** (Chương VII: Quan hệ vuông góc trong '
-                 'không gian), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến '
-                 'thức của bài?',
-            'options': ['Nhận biết được khái niệm góc lượng giác, hệ thức Chasles và đổi được số đo góc giữa '
-                        'độ và radian.',
-                        'Xác định được điểm biểu diễn trên đường tròn lượng giác và các giá trị $\\sin '
-                        '\\alpha, \\cos \\alpha, \\tan \\alpha, \\cot \\alpha$.',
+            'q': 'Để nắm vững bản chất của **Bài 26: Khoảng cách trong không gian**, nhận định nào sau đây '
+                 'là **chính xác**?',
+            'options': ['Xác định và tính được khoảng cách từ điểm $M$ đến mặt phẳng $(P)$ thông qua hình '
+                        'chiếu song song $H$ của $M$ trên $(P)$.',
+                        'Đảo ngược vế của quy tắc: Xác định và tính được khoảng cách từ điểm $M$ đến mặt '
+                        'phẳng $(P)$ thông qua hình chiếu vuông góc $H$ của $M$ trên $(P)$.',
                         'Xác định và tính được khoảng cách từ điểm $M$ đến mặt phẳng $(P)$ thông qua hình '
                         'chiếu vuông góc $H$ của $M$ trên $(P)$.',
-                        'Vận dụng các hệ thức lượng giác cơ bản và giá trị lượng giác của các góc có liên '
-                        'quan đặc biệt (đối nhau, bù nhau, phụ nhau, hơn kém $\\pi$).'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Xác định và tính được khoảng '
+                        'cách từ điểm $M$ đến mặt phẳng $(P)$ thông qua hình chiếu vuông góc $H$ của $M$ '
+                        'trên $(P)$.'],
             'answer': 2,
-            'solution': 'Theo yêu cầu cần đạt của Bài 26: Khoảng cách trong không gian: Xác định và tính '
+            'solution': 'Theo nội dung cốt lõi của Bài 26: Khoảng cách trong không gian: Xác định và tính '
                         'được khoảng cách từ điểm $M$ đến mặt phẳng $(P)$ thông qua hình chiếu vuông góc $H$ '
                         'của $M$ trên $(P)$.'},
            {'level': 'hieu',
@@ -4688,45 +4708,40 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 26: Khoảng cách trong '
-                 'không gian**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Xác định và tính được khoảng cách '
-                           'từ điểm $M$ đến mặt phẳng $(P)$ thông qua hình chiếu vuông góc $H$ của $M$ trên '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 26: Khoảng cách trong không '
+                 'gian**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Xác định và tính được khoảng cách từ '
+                           'điểm $M$ đến mặt phẳng $(P)$ thông qua hình chiếu vuông góc $H$ của $M$ trên '
                            '$(P)$.',
-                           'Quy tắc/công thức **Hệ thức đường cao tam giác vuông SAH** trong bài được xác '
-                           'định bởi: $\\dfrac{1}{AH^2} = \\dfrac{1}{SA^2} + \\dfrac{1}{AM^2}$.',
-                           'Trong mọi trường hợp, **Hệ thức đường cao tam giác vuông SAH** luôn được tính '
-                           'bằng công thức $a^\\circ = \\dfrac{\\pi a}{180}\\text{ rad}, \\quad '
-                           '\\alpha\\text{ rad} = \\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$ (thuộc '
-                           'Đổi độ và radian) mà không cần điều kiện của Bài 26: Khoảng cách trong không '
-                           'gian.',
-                           'Với bài toán minh họa: “Cho hình chóp $S.ABC$ có $SA \\perp (ABC)$, $SA = 3a$, '
-                           'tam giác $ABC$ vuông tại $A$ với $AB = 4a$. Tính khoảng cách từ điểm $A$ đến mặt '
-                           'phẳng...”, lời giải đúng là: Vì $BC \\perp AB$ và $BC \\perp SA$ nên $BC \\perp '
-                           '(SAB) \\Rightarrow (SBC) \\perp (SAB)$ theo giao tuyến $SB$. Trong $\\triangle '
-                           'SAB$ vuông tại $A$...'],
+                           'Trong **Bài 26: Khoảng cách trong không gian**, quy tắc/công thức **Hệ thức '
+                           'đường cao tam giác vuông SAH** được viết là: $\\dfrac{1}{AH^2} = '
+                           '\\dfrac{1}{SA^2} + \\dfrac{1}{AM^2}$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $\\dfrac{1}{AH^2} = \\dfrac{1}{SA^2} - '
+                           '\\dfrac{1}{AM^2}$ thì kết quả của **Hệ thức đường cao tam giác vuông SAH** trong '
+                           '**Bài 26: Khoảng cách trong không gian** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Cho hình chóp $S.ABC$ có $SA \\perp (ABC)$, $SA = 3a$, tam '
+                           'giác $ABC$ vuông tại $A$ với $AB = 4a$. Tính khoảng cách từ điểm $A$ đến '
+                           'mặt...”, kết quả giải đúng là: Vì $BC \\perp AB$ và $BC \\perp SA$ nên $BC '
+                           '\\perp (SAB) \\Rightarrow (SBC) \\perp (SAB)$ theo giao tuyến $SB$. Trong '
+                           '$\\triangle SAB$ vuông...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 26: Khoảng cách trong không gian. b) '
-                        '**Đúng** theo công thức trọng tâm **Hệ thức đường cao tam giác vuông SAH** '
-                        '($\\dfrac{1}{AH^2} = \\dfrac{1}{SA^2} + \\dfrac{1}{AM^2}$). c) **Sai** vì $a^\\circ '
-                        '= \\dfrac{\\pi a}{180}\\text{ rad}, \\quad \\alpha\\text{ rad} = '
-                        '\\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$ là công thức của nội dung khác, '
-                        'không phải quy tắc chung của **Hệ thức đường cao tam giác vuông SAH**. d) **Đúng** '
-                        'theo lời giải ví dụ minh họa trong bài học.'},
+                        '**Đúng** theo công thức **Hệ thức đường cao tam giác vuông SAH** ($\\dfrac{1}{AH^2} '
+                        '= \\dfrac{1}{SA^2} + \\dfrac{1}{AM^2}$). c) **Sai** vì công thức đúng của **Hệ thức '
+                        'đường cao tam giác vuông SAH** phải là $\\dfrac{1}{AH^2} = \\dfrac{1}{SA^2} + '
+                        '\\dfrac{1}{AM^2}$ chứ không phải $\\dfrac{1}{AH^2} = \\dfrac{1}{SA^2} - '
+                        '\\dfrac{1}{AM^2}$. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 26: Khoảng cách trong không gian** để giải quyết tình huống sau: '
-                 'Cho hình chóp $S.ABC$ có $SA \\perp (ABC)$, $SA = 3a$, tam giác $ABC$ vuông tại $A$ với '
-                 '$AB = 4a$. Tính khoảng cách từ điểm $A$ đến mặt phẳng $(SBC)$ trong trường hợp $AC \\perp '
-                 '(SAB)$... Ta xét bài toán chuẩn: Cho $SA \\perp (ABC)$, $\\triangle ABC$ vuông tại $B$, '
-                 '$SA = 3a, AB = 4a$. Tính $d(A, (SBC))$. Kết quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Vì $\\dfrac{\\pi}{2} < \\alpha < \\pi$ nên $\\cos \\alpha < 0$. Ta có $\\cos '
-                        '\\alpha = -\\sqrt{1 - \\sin^2 \\alpha} = -\\sqrt{1 - \\dfrac{9}{25}} = '
-                        '-\\dfrac{4}{5}$. Suy...',
-                        'Ta có...',
-                        'Với mọi $x \\in \\mathbb{R}$, ta có $-1 \\le \\sin 2x \\le 1 \\Rightarrow -3 \\le '
-                        '3\\sin 2x \\le 3 \\Rightarrow -4 \\le 3\\sin 2x - 1 \\le 2$. Vậy tập giá trị là '
-                        '$[-4; 2]$...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 26: Khoảng cách trong không gian** để giải bài toán '
+                 'sau: Cho hình chóp $S.ABC$ có $SA \\perp (ABC)$, $SA = 3a$, tam giác $ABC$ vuông tại $A$ '
+                 'với $AB = 4a$. Tính khoảng cách từ điểm $A$ đến mặt phẳng $(SBC)$ trong trường hợp $AC '
+                 '\\perp (SAB)$... Ta xét bài toán chuẩn: Cho $SA \\perp (ABC)$, $\\triangle ABC$ vuông tại '
+                 '$B$, $SA = 3a, AB = 4a$. Tính $d(A, (SBC))$. Cách giải và kết quả nào dưới đây là '
+                 '**đúng**?',
+            'options': ['Chỉ xét trường hợp đặc biệt bằng $0$ và bỏ qua quy tắc chung',
+                        'Thực hiện theo thứ tự ngược lại và bỏ qua điều kiện xác định trong bài',
+                        'Đổi ngược dấu của phép tính chính và không kiểm tra lại kết quả',
                         'Vì $BC \\perp AB$ và $BC \\perp SA$ nên $BC \\perp (SAB) \\Rightarrow (SBC) \\perp '
                         '(SAB)$ theo giao tuyến $SB$. Trong $\\triangle SAB$ vuông tại $A$, kẻ $AH \\perp '
                         'SB$...'],
@@ -4805,27 +4820,26 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 27: Thể tích khối chóp, khối lăng trụ và khối chóp cụt '
-                 'đều**, công thức hoặc quy tắc nào sau đây biểu diễn đúng **Thể tích khối chóp**?',
+            'q': 'Trong **Bài 27: Thể tích khối chóp, khối lăng trụ và khối chóp cụt đều**, quy tắc hoặc '
+                 'công thức nào sau đây xác định đúng **Thể tích khối chóp**?',
             'options': ['$V = \\dfrac{1}{3} S \\cdot h$',
-                        '$V = S \\cdot h$',
-                        '$V_{\\text{hộp}} = a \\cdot b \\cdot c, \\quad V_{\\text{lập phương}} = a^3$',
-                        "$V = \\dfrac{1}{3} h \\left(S + \\sqrt{S \\cdot S'} + S'\\right)$"],
+                        '$V = \\dfrac{1}{3} S : h$',
+                        '$V = \\dfrac{3}{1} S \\cdot h$',
+                        '$V = \\dfrac{2}{3} S \\cdot h$'],
             'answer': 0,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 27: Thể tích khối chóp, khối lăng trụ và khối '
-                        'chóp cụt đều, **Thể tích khối chóp** được xác định bởi: $V = \\dfrac{1}{3} S \\cdot '
-                        'h$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 27: Thể tích khối chóp, khối lăng trụ và khối chóp '
+                        'cụt đều, **Thể tích khối chóp** được xác định bởi: $V = \\dfrac{1}{3} S \\cdot h$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 27: Thể tích khối chóp, khối lăng trụ và khối chóp cụt đều**, nội dung/biểu '
-                 'thức $V = S \\cdot h$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Thể tích khối chóp',
-                        'Thể tích khối lăng trụ',
-                        'Thể tích khối hộp chữ nhật và lập phương',
-                        'Thể tích khối chóp cụt đều'],
+            'q': 'Khi học **Bài 27: Thể tích khối chóp, khối lăng trụ và khối chóp cụt đều**, biểu thức hoặc '
+                 'quy tắc nào dưới đây biểu diễn đúng **Thể tích khối lăng trụ**?',
+            'options': ['$V = S : h$',
+                        '$V = S \\cdot h$',
+                        'Đảo ngược vế của quy tắc: $V = S \\cdot h$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $V = S \\cdot h$'],
             'answer': 1,
-            'solution': 'Trong Bài 27: Thể tích khối chóp, khối lăng trụ và khối chóp cụt đều, biểu thức/quy '
-                        'tắc $V = S \\cdot h$ chính là nội dung của **Thể tích khối lăng trụ**.'},
+            'solution': 'Trong Bài 27: Thể tích khối chóp, khối lăng trụ và khối chóp cụt đều, **Thể tích '
+                        'khối lăng trụ** có công thức/quy tắc là: $V = S \\cdot h$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Cho khối chóp $S.ABC$ có $SA \\perp (ABC)$, tam giác $ABC$ vuông tại $A$ với $AB = 3a, AC '
@@ -4838,21 +4852,19 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 27: Thể tích khối chóp, khối lăng trụ và khối chóp cụt đều** (Chương VII: '
-                 'Quan hệ vuông góc trong không gian), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần '
-                 'đạt và bản chất kiến thức của bài?',
-            'options': ['Nhận biết được khái niệm góc lượng giác, hệ thức Chasles và đổi được số đo góc giữa '
-                        'độ và radian.',
-                        'Xác định được điểm biểu diễn trên đường tròn lượng giác và các giá trị $\\sin '
-                        '\\alpha, \\cos \\alpha, \\tan \\alpha, \\cot \\alpha$.',
-                        'Vận dụng các hệ thức lượng giác cơ bản và giá trị lượng giác của các góc có liên '
-                        'quan đặc biệt (đối nhau, bù nhau, phụ nhau, hơn kém $\\pi$).',
+            'q': 'Để nắm vững bản chất của **Bài 27: Thể tích khối chóp, khối lăng trụ và khối chóp cụt '
+                 'đều**, nhận định nào sau đây là **chính xác**?',
+            'options': ['Thuộc và áp dụng được công thức tính thể tích khối chóp $V = \\dfrac{2}{3}Sh$ và '
+                        'thể tích khối lăng trụ $V = Sh$.',
+                        'Thuộc và áp dụng được công thức tính thể tích khối chóp $V = \\dfrac{3}{1}Sh$ và '
+                        'thể tích khối lăng trụ $V = Sh$.',
+                        'Trường hợp sai quy tắc (sai lệch 1 đơn vị so với công thức trong bài)',
                         'Thuộc và áp dụng được công thức tính thể tích khối chóp $V = \\dfrac{1}{3}Sh$ và '
                         'thể tích khối lăng trụ $V = Sh$.'],
             'answer': 3,
-            'solution': 'Theo yêu cầu cần đạt của Bài 27: Thể tích khối chóp, khối lăng trụ và khối chóp cụt '
-                        'đều: Thuộc và áp dụng được công thức tính thể tích khối chóp $V = \\dfrac{1}{3}Sh$ '
-                        'và thể tích khối lăng trụ $V = Sh$.'},
+            'solution': 'Theo nội dung cốt lõi của Bài 27: Thể tích khối chóp, khối lăng trụ và khối chóp '
+                        'cụt đều: Thuộc và áp dụng được công thức tính thể tích khối chóp $V = '
+                        '\\dfrac{1}{3}Sh$ và thể tích khối lăng trụ $V = Sh$.'},
            {'level': 'hieu',
             'type': 'tf4',
             'q': "Cho hình lăng trụ đứng $ABC.A'B'C'$ có đáy $ABC$ là tam giác đều cạnh $2a$ và cạnh bên "
@@ -4871,43 +4883,39 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 27: Thể tích khối chóp, '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 27: Thể tích khối chóp, '
                  'khối lăng trụ và khối chóp cụt đều**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Thuộc và áp dụng được công thức '
-                           'tính thể tích khối chóp $V = \\dfrac{1}{3}Sh$ và thể tích khối lăng trụ $V = '
-                           'Sh$.',
-                           'Quy tắc/công thức **Thể tích khối chóp** trong bài được xác định bởi: $V = '
-                           '\\dfrac{1}{3} S \\cdot h$.',
-                           'Trong mọi trường hợp, **Thể tích khối chóp** luôn được tính bằng công thức '
-                           '$a^\\circ = \\dfrac{\\pi a}{180}\\text{ rad}, \\quad \\alpha\\text{ rad} = '
-                           '\\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$ (thuộc Đổi độ và radian) mà '
-                           'không cần điều kiện của Bài 27: Thể tích khối chóp, khối lăng trụ và khối chóp '
-                           'cụt đều.',
-                           'Với bài toán minh họa: “Tính thể tích khối chóp tứ giác đều $S.ABCD$ có cạnh đáy '
-                           'bằng $a$ và chiều cao $SO = 2a$.”, lời giải đúng là: Diện tích đáy hình vuông là '
-                           '$S = a^2$. Thể tích khối chóp là $V = \\dfrac{1}{3} S \\cdot SO = \\dfrac{1}{3} '
-                           'a^2 \\cdot 2a = \\dfrac{2a^3}{3}$.'],
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Thuộc và áp dụng được công thức tính thể '
+                           'tích khối chóp $V = \\dfrac{1}{3}Sh$ và thể tích khối lăng trụ $V = Sh$.',
+                           'Trong **Bài 27: Thể tích khối chóp, khối lăng trụ và khối chóp cụt đều**, quy '
+                           'tắc/công thức **Thể tích khối chóp** được viết là: $V = \\dfrac{1}{3} S \\cdot '
+                           'h$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $V = \\dfrac{1}{3} S : h$ thì kết quả của '
+                           '**Thể tích khối chóp** trong **Bài 27: Thể tích khối chóp, khối lăng trụ và khối '
+                           'chóp cụt đều** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Tính thể tích khối chóp tứ giác đều $S.ABCD$ có cạnh đáy '
+                           'bằng $a$ và chiều cao $SO = 2a$.”, kết quả giải đúng là: Diện tích đáy hình '
+                           'vuông là $S = a^2$. Thể tích khối chóp là $V = \\dfrac{1}{3} S \\cdot SO = '
+                           '\\dfrac{1}{3} a^2 \\cdot 2a = \\dfrac{2a^3}{3}$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 27: Thể tích khối chóp, khối lăng trụ và '
-                        'khối chóp cụt đều. b) **Đúng** theo công thức trọng tâm **Thể tích khối chóp** ($V '
-                        '= \\dfrac{1}{3} S \\cdot h$). c) **Sai** vì $a^\\circ = \\dfrac{\\pi a}{180}\\text{ '
-                        'rad}, \\quad \\alpha\\text{ rad} = \\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$ '
-                        'là công thức của nội dung khác, không phải quy tắc chung của **Thể tích khối '
-                        'chóp**. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        'khối chóp cụt đều. b) **Đúng** theo công thức **Thể tích khối chóp** ($V = '
+                        '\\dfrac{1}{3} S \\cdot h$). c) **Sai** vì công thức đúng của **Thể tích khối chóp** '
+                        'phải là $V = \\dfrac{1}{3} S \\cdot h$ chứ không phải $V = \\dfrac{1}{3} S : h$. d) '
+                        '**Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 27: Thể tích khối chóp, khối lăng trụ và khối chóp cụt đều** để '
-                 'giải quyết tình huống sau: Tính thể tích khối chóp tứ giác đều $S.ABCD$ có cạnh đáy bằng '
-                 '$a$ và chiều cao $SO = 2a$. Kết quả và hướng giải nào dưới đây là **đúng**?',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 27: Thể tích khối chóp, khối lăng trụ và khối chóp '
+                 'cụt đều** để giải bài toán sau: Tính thể tích khối chóp tứ giác đều $S.ABCD$ có cạnh đáy '
+                 'bằng $a$ và chiều cao $SO = 2a$. Cách giải và kết quả nào dưới đây là **đúng**?',
             'options': ['Diện tích đáy hình vuông là $S = a^2$. Thể tích khối chóp là $V = \\dfrac{1}{3} S '
                         '\\cdot SO = \\dfrac{1}{3} a^2 \\cdot 2a = \\dfrac{2a^3}{3}$.',
-                        'Vì $\\dfrac{\\pi}{2} < \\alpha < \\pi$ nên $\\cos \\alpha < 0$. Ta có $\\cos '
-                        '\\alpha = -\\sqrt{1 - \\sin^2 \\alpha} = -\\sqrt{1 - \\dfrac{9}{25}} = '
-                        '-\\dfrac{4}{5}$. Suy...',
-                        'Ta có...',
-                        'Với mọi $x \\in \\mathbb{R}$, ta có $-1 \\le \\sin 2x \\le 1 \\Rightarrow -3 \\le '
-                        '3\\sin 2x \\le 3 \\Rightarrow -4 \\le 3\\sin 2x - 1 \\le 2$. Vậy tập giá trị là '
-                        '$[-4; 2]$...'],
+                        'Diện tích đáy hình vuông là $S = a^2$. Thể tích khối chóp là $V = \\dfrac{1}{3} S : '
+                        'SO = \\dfrac{1}{3} a^2 \\cdot 2a = \\dfrac{2a^3}{3}$.',
+                        'Diện tích đáy hình vuông là $S = a^2$. Thể tích khối chóp là $V = \\dfrac{3}{1} S '
+                        '\\cdot SO = \\dfrac{1}{3} a^2 \\cdot 2a = \\dfrac{2a^3}{3}$.',
+                        'Diện tích đáy hình vuông là $S = a^4$. Thể tích khối chóp là $V = \\dfrac{1}{3} S '
+                        '\\cdot SO = \\dfrac{1}{3} a^2 \\cdot 2a = \\dfrac{2a^3}{3}$.'],
             'answer': 0,
             'solution': 'Lời giải chi tiết theo Bài 27: Thể tích khối chóp, khối lăng trụ và khối chóp cụt '
                         'đều: Diện tích đáy hình vuông là $S = a^2$. Thể tích khối chóp là $V = '
@@ -4982,26 +4990,26 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 28: Biến cố hợp, biến cố giao, biến cố độc lập**, công '
-                 'thức hoặc quy tắc nào sau đây biểu diễn đúng **Biến cố hợp (ít nhất 1 biến cố xảy ra)**?',
-            'options': ['$AB = A \\cap B$',
+            'q': 'Trong **Bài 28: Biến cố hợp, biến cố giao, biến cố độc lập**, quy tắc hoặc công thức nào '
+                 'sau đây xác định đúng **Biến cố hợp (ít nhất 1 biến cố xảy ra)**?',
+            'options': ['$A \\cap B$',
                         '$A \\cup B$',
-                        '$A \\cap B = \\varnothing$',
-                        '$\\overline{A \\cup B} = \\overline{A} \\cap \\overline{B}$'],
+                        'Đảo ngược vế của quy tắc: $A \\cup B$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $A \\cup B$'],
             'answer': 1,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 28: Biến cố hợp, biến cố giao, biến cố độc '
-                        'lập, **Biến cố hợp (ít nhất 1 biến cố xảy ra)** được xác định bởi: $A \\cup B$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 28: Biến cố hợp, biến cố giao, biến cố độc lập, '
+                        '**Biến cố hợp (ít nhất 1 biến cố xảy ra)** được xác định bởi: $A \\cup B$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 28: Biến cố hợp, biến cố giao, biến cố độc lập**, nội dung/biểu thức $AB = A '
-                 '\\cap B$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Biến cố hợp (ít nhất 1 biến cố xảy ra)',
-                        'Hai biến cố xung khắc',
-                        'Biến cố giao (cả 2 biến cố cùng xảy ra)',
-                        'Biến cố đối của A ∪ B'],
+            'q': 'Khi học **Bài 28: Biến cố hợp, biến cố giao, biến cố độc lập**, biểu thức hoặc quy tắc nào '
+                 'dưới đây biểu diễn đúng **Biến cố giao (cả 2 biến cố cùng xảy ra)**?',
+            'options': ['$AB = A \\cup B$',
+                        'Đảo ngược vế của quy tắc: $AB = A \\cap B$',
+                        '$AB = A \\cap B$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $AB = A \\cap B$'],
             'answer': 2,
-            'solution': 'Trong Bài 28: Biến cố hợp, biến cố giao, biến cố độc lập, biểu thức/quy tắc $AB = A '
-                        '\\cap B$ chính là nội dung của **Biến cố giao (cả 2 biến cố cùng xảy ra)**.'},
+            'solution': 'Trong Bài 28: Biến cố hợp, biến cố giao, biến cố độc lập, **Biến cố giao (cả 2 biến '
+                        'cố cùng xảy ra)** có công thức/quy tắc là: $AB = A \\cap B$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Hai xạ thủ độc lập nhau cùng bắn vào một bia. Gọi $A$ là biến cố xạ thủ thứ nhất bắn trúng '
@@ -5018,19 +5026,18 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 28: Biến cố hợp, biến cố giao, biến cố độc lập** (Chương VIII: Các quy tắc '
-                 'tính xác suất), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến '
-                 'thức của bài?',
+            'q': 'Để nắm vững bản chất của **Bài 28: Biến cố hợp, biến cố giao, biến cố độc lập**, nhận định '
+                 'nào sau đây là **chính xác**?',
             'options': ['Mô tả và xác định được biến cố hợp $A \\cup B$ và biến cố giao $A \\cap B$ (viết '
                         'tắt là $AB$).',
-                        'Nhận biết được khái niệm góc lượng giác, hệ thức Chasles và đổi được số đo góc giữa '
-                        'độ và radian.',
-                        'Xác định được điểm biểu diễn trên đường tròn lượng giác và các giá trị $\\sin '
-                        '\\alpha, \\cos \\alpha, \\tan \\alpha, \\cot \\alpha$.',
-                        'Vận dụng các hệ thức lượng giác cơ bản và giá trị lượng giác của các góc có liên '
-                        'quan đặc biệt (đối nhau, bù nhau, phụ nhau, hơn kém $\\pi$).'],
+                        'Mô tả và xác định được biến cố hợp $A \\cap B$ và biến cố giao $A \\cap B$ (viết '
+                        'tắt là $AB$).',
+                        'Đảo ngược vế của quy tắc: Mô tả và xác định được biến cố hợp $A \\cup B$ và biến cố '
+                        'giao $A \\cap B$ (viết tắt là $AB$).',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Mô tả và xác định được biến cố '
+                        'hợp $A \\cup B$ và biến cố giao $A \\cap B$ (viết tắt là $AB$).'],
             'answer': 0,
-            'solution': 'Theo yêu cầu cần đạt của Bài 28: Biến cố hợp, biến cố giao, biến cố độc lập: Mô tả '
+            'solution': 'Theo nội dung cốt lõi của Bài 28: Biến cố hợp, biến cố giao, biến cố độc lập: Mô tả '
                         'và xác định được biến cố hợp $A \\cup B$ và biến cố giao $A \\cap B$ (viết tắt là '
                         '$AB$).'},
            {'level': 'hieu',
@@ -5050,44 +5057,40 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 28: Biến cố hợp, biến '
-                 'cố giao, biến cố độc lập**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Mô tả và xác định được biến cố hợp '
-                           '$A \\cup B$ và biến cố giao $A \\cap B$ (viết tắt là $AB$).',
-                           'Quy tắc/công thức **Biến cố hợp (ít nhất 1 biến cố xảy ra)** trong bài được xác '
-                           'định bởi: $A \\cup B$.',
-                           'Trong mọi trường hợp, **Biến cố hợp (ít nhất 1 biến cố xảy ra)** luôn được tính '
-                           'bằng công thức $a^\\circ = \\dfrac{\\pi a}{180}\\text{ rad}, \\quad '
-                           '\\alpha\\text{ rad} = \\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$ (thuộc '
-                           'Đổi độ và radian) mà không cần điều kiện của Bài 28: Biến cố hợp, biến cố giao, '
-                           'biến cố độc lập.',
-                           "Với bài toán minh họa: “Gieo một con xúc xắc cân đối. Gọi $A$ là biến cố ''Số "
-                           "chấm là số chẵn'' và $B$ là biến cố ''Số chấm lớn hơn $4$''. Tìm tập hợp kết quả "
-                           'thuận...”, lời giải đúng là: Ta có $A = \\{2; 4; 6\\}$ và $B = \\{5; 6\\}$. Khi '
-                           'đó biến cố hợp là $A \\cup B = \\{2; 4; 5; 6\\}$ và biến cố giao là $AB = A '
-                           '\\cap B = \\{6\\}$.'],
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 28: Biến cố hợp, biến cố '
+                 'giao, biến cố độc lập**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Mô tả và xác định được biến cố hợp $A '
+                           '\\cup B$ và biến cố giao $A \\cap B$ (viết tắt là $AB$).',
+                           'Trong **Bài 28: Biến cố hợp, biến cố giao, biến cố độc lập**, quy tắc/công thức '
+                           '**Biến cố hợp (ít nhất 1 biến cố xảy ra)** được viết là: $A \\cup B$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $A \\cap B$ thì kết quả của **Biến cố hợp '
+                           '(ít nhất 1 biến cố xảy ra)** trong **Bài 28: Biến cố hợp, biến cố giao, biến cố '
+                           'độc lập** vẫn không thay đổi.',
+                           "Xét ví dụ của bài: “Gieo một con xúc xắc cân đối. Gọi $A$ là biến cố ''Số chấm "
+                           "là số chẵn'' và $B$ là biến cố ''Số chấm lớn hơn $4$''. Tìm tập hợp kết quả...”, "
+                           'kết quả giải đúng là: Ta có $A = \\{2; 4; 6\\}$ và $B = \\{5; 6\\}$. Khi đó biến '
+                           'cố hợp là $A \\cup B = \\{2; 4; 5; 6\\}$ và biến cố giao là $AB = A \\cap B = '
+                           '\\{6\\}$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 28: Biến cố hợp, biến cố giao, biến cố độc '
-                        'lập. b) **Đúng** theo công thức trọng tâm **Biến cố hợp (ít nhất 1 biến cố xảy '
-                        'ra)** ($A \\cup B$). c) **Sai** vì $a^\\circ = \\dfrac{\\pi a}{180}\\text{ rad}, '
-                        '\\quad \\alpha\\text{ rad} = \\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$ là '
-                        'công thức của nội dung khác, không phải quy tắc chung của **Biến cố hợp (ít nhất 1 '
-                        'biến cố xảy ra)**. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        'lập. b) **Đúng** theo công thức **Biến cố hợp (ít nhất 1 biến cố xảy ra)** ($A '
+                        '\\cup B$). c) **Sai** vì công thức đúng của **Biến cố hợp (ít nhất 1 biến cố xảy '
+                        'ra)** phải là $A \\cup B$ chứ không phải $A \\cap B$. d) **Đúng** theo lời giải ví '
+                        'dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 28: Biến cố hợp, biến cố giao, biến cố độc lập** để giải quyết '
-                 "tình huống sau: Gieo một con xúc xắc cân đối. Gọi $A$ là biến cố ''Số chấm là số chẵn'' và "
-                 "$B$ là biến cố ''Số chấm lớn hơn $4$''. Tìm tập hợp kết quả thuận lợi cho $A \\cup B$ và "
-                 '$AB$. Kết quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Vì $\\dfrac{\\pi}{2} < \\alpha < \\pi$ nên $\\cos \\alpha < 0$. Ta có $\\cos '
-                        '\\alpha = -\\sqrt{1 - \\sin^2 \\alpha} = -\\sqrt{1 - \\dfrac{9}{25}} = '
-                        '-\\dfrac{4}{5}$. Suy...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 28: Biến cố hợp, biến cố giao, biến cố độc lập** để '
+                 "giải bài toán sau: Gieo một con xúc xắc cân đối. Gọi $A$ là biến cố ''Số chấm là số chẵn'' "
+                 "và $B$ là biến cố ''Số chấm lớn hơn $4$''. Tìm tập hợp kết quả thuận lợi cho $A \\cup B$ "
+                 'và $AB$. Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Ta có $A = \\{2; 4; 6\\}$ và $B = \\{5; 6\\}$. Khi đó biến cố hợp là $A \\cap B = '
+                        '\\{2; 4; 5; 6\\}$ và biến cố giao là $AB = A \\cap B = \\{6\\}$.',
                         'Ta có $A = \\{2; 4; 6\\}$ và $B = \\{5; 6\\}$. Khi đó biến cố hợp là $A \\cup B = '
                         '\\{2; 4; 5; 6\\}$ và biến cố giao là $AB = A \\cap B = \\{6\\}$.',
-                        'Ta có...',
-                        'Với mọi $x \\in \\mathbb{R}$, ta có $-1 \\le \\sin 2x \\le 1 \\Rightarrow -3 \\le '
-                        '3\\sin 2x \\le 3 \\Rightarrow -4 \\le 3\\sin 2x - 1 \\le 2$. Vậy tập giá trị là '
-                        '$[-4; 2]$...'],
+                        'Ta có $A = \\{2; 4; 6\\}$ và $B = \\{5; 6\\}$. Khi đó biến cố hợp là $A \\cup B = '
+                        '\\{2; 4; 5; 6\\}$ và biến cố giao là $AB = A \\cap B = \\{5\\}$.',
+                        'Ta có $A = \\{4; 4; 6\\}$ và $B = \\{5; 6\\}$. Khi đó biến cố hợp là $A \\cup B = '
+                        '\\{2; 4; 5; 6\\}$ và biến cố giao là $AB = A \\cap B = \\{6\\}$.'],
             'answer': 1,
             'solution': 'Lời giải chi tiết theo Bài 28: Biến cố hợp, biến cố giao, biến cố độc lập: Ta có $A '
                         '= \\{2; 4; 6\\}$ và $B = \\{5; 6\\}$. Khi đó biến cố hợp là $A \\cup B = \\{2; 4; '
@@ -5156,28 +5159,30 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 29: Công thức cộng xác suất**, công thức hoặc quy tắc '
-                 'nào sau đây biểu diễn đúng **Cho hai biến cố xung khắc**?',
-            'options': ['$P(A \\cup B) = P(A) + P(B) - P(AB)$',
-                        '$P(\\overline{A}) = 1 - P(A)$',
+            'q': 'Trong **Bài 29: Công thức cộng xác suất**, quy tắc hoặc công thức nào sau đây xác định '
+                 'đúng **Cho hai biến cố xung khắc**?',
+            'options': ['$A \\cap B = \\varnothing \\Rightarrow P(A \\cap B) = P(A) + P(B)$',
+                        'Đảo ngược vế của quy tắc: $A \\cap B = \\varnothing \\Rightarrow P(A \\cup B) = '
+                        'P(A) + P(B)$',
                         '$A \\cap B = \\varnothing \\Rightarrow P(A \\cup B) = P(A) + P(B)$',
-                        '$a^\\circ = \\dfrac{\\pi a}{180}\\text{ rad}, \\quad \\alpha\\text{ rad} = '
-                        '\\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $A \\cap B = \\varnothing '
+                        '\\Rightarrow P(A \\cup B) = P(A) + P(B)$'],
             'answer': 2,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 29: Công thức cộng xác suất, **Cho hai biến '
-                        'cố xung khắc** được xác định bởi: $A \\cap B = \\varnothing \\Rightarrow P(A \\cup '
-                        'B) = P(A) + P(B)$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 29: Công thức cộng xác suất, **Cho hai biến cố '
+                        'xung khắc** được xác định bởi: $A \\cap B = \\varnothing \\Rightarrow P(A \\cup B) '
+                        '= P(A) + P(B)$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 29: Công thức cộng xác suất**, nội dung/biểu thức $P(A \\cup B) = P(A) + P(B) '
-                 '- P(AB)$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Cho hai biến cố xung khắc',
-                        'Quy tắc biến cố đối',
-                        'Đổi độ và radian',
-                        'Cho hai biến cố bất kì'],
+            'q': 'Khi học **Bài 29: Công thức cộng xác suất**, biểu thức hoặc quy tắc nào dưới đây biểu diễn '
+                 'đúng **Cho hai biến cố bất kì**?',
+            'options': ['$P(A \\cap B) = P(A) + P(B) - P(AB)$',
+                        'Đảo ngược vế của quy tắc: $P(A \\cup B) = P(A) + P(B) - P(AB)$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $P(A \\cup B) = P(A) + P(B) - '
+                        'P(AB)$',
+                        '$P(A \\cup B) = P(A) + P(B) - P(AB)$'],
             'answer': 3,
-            'solution': 'Trong Bài 29: Công thức cộng xác suất, biểu thức/quy tắc $P(A \\cup B) = P(A) + '
-                        'P(B) - P(AB)$ chính là nội dung của **Cho hai biến cố bất kì**.'},
+            'solution': 'Trong Bài 29: Công thức cộng xác suất, **Cho hai biến cố bất kì** có công thức/quy '
+                        'tắc là: $P(A \\cup B) = P(A) + P(B) - P(AB)$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Một lớp có $50$ học sinh, trong đó có $30$ em giỏi Tiếng Anh, $25$ em giỏi Tin học và $15$ '
@@ -5191,18 +5196,18 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 29: Công thức cộng xác suất** (Chương VIII: Các quy tắc tính xác suất), '
-                 'khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Nhận biết được khái niệm góc lượng giác, hệ thức Chasles và đổi được số đo góc giữa '
-                        'độ và radian.',
+            'q': 'Để nắm vững bản chất của **Bài 29: Công thức cộng xác suất**, nhận định nào sau đây là '
+                 '**chính xác**?',
+            'options': ['Vận dụng được công thức cộng xác suất cho hai biến cố xung khắc: $P(A \\cap B) = '
+                        'P(A) + P(B)$.',
                         'Vận dụng được công thức cộng xác suất cho hai biến cố xung khắc: $P(A \\cup B) = '
                         'P(A) + P(B)$.',
-                        'Xác định được điểm biểu diễn trên đường tròn lượng giác và các giá trị $\\sin '
-                        '\\alpha, \\cos \\alpha, \\tan \\alpha, \\cot \\alpha$.',
-                        'Vận dụng các hệ thức lượng giác cơ bản và giá trị lượng giác của các góc có liên '
-                        'quan đặc biệt (đối nhau, bù nhau, phụ nhau, hơn kém $\\pi$).'],
+                        'Đảo ngược vế của quy tắc: Vận dụng được công thức cộng xác suất cho hai biến cố '
+                        'xung khắc: $P(A \\cup B) = P(A) + P(B)$.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Vận dụng được công thức cộng '
+                        'xác suất cho hai biến cố xung khắc: $P(A \\cup B) = P(A) + P(B)$.'],
             'answer': 1,
-            'solution': 'Theo yêu cầu cần đạt của Bài 29: Công thức cộng xác suất: Vận dụng được công thức '
+            'solution': 'Theo nội dung cốt lõi của Bài 29: Công thức cộng xác suất: Vận dụng được công thức '
                         'cộng xác suất cho hai biến cố xung khắc: $P(A \\cup B) = P(A) + P(B)$.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -5220,41 +5225,39 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 29: Công thức cộng xác '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 29: Công thức cộng xác '
                  'suất**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Vận dụng được công thức cộng xác '
-                           'suất cho hai biến cố xung khắc: $P(A \\cup B) = P(A) + P(B)$.',
-                           'Quy tắc/công thức **Cho hai biến cố xung khắc** trong bài được xác định bởi: $A '
-                           '\\cap B = \\varnothing \\Rightarrow P(A \\cup B) = P(A) + P(B)$.',
-                           'Trong mọi trường hợp, **Cho hai biến cố xung khắc** luôn được tính bằng công '
-                           'thức $a^\\circ = \\dfrac{\\pi a}{180}\\text{ rad}, \\quad \\alpha\\text{ rad} = '
-                           '\\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$ (thuộc Đổi độ và radian) mà '
-                           'không cần điều kiện của Bài 29: Công thức cộng xác suất.',
-                           'Với bài toán minh họa: “Cho hai biến cố $A$ và $B$ có $P(A) = 0,4$, $P(B) = 0,5$ '
-                           'và $P(AB) = 0,2$. Tính $P(A \\cup B)$.”, lời giải đúng là: Áp dụng công thức '
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Vận dụng được công thức cộng xác suất '
+                           'cho hai biến cố xung khắc: $P(A \\cup B) = P(A) + P(B)$.',
+                           'Trong **Bài 29: Công thức cộng xác suất**, quy tắc/công thức **Cho hai biến cố '
+                           'xung khắc** được viết là: $A \\cap B = \\varnothing \\Rightarrow P(A \\cup B) = '
+                           'P(A) + P(B)$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $A \\cap B = \\varnothing \\Rightarrow P(A '
+                           '\\cap B) = P(A) + P(B)$ thì kết quả của **Cho hai biến cố xung khắc** trong '
+                           '**Bài 29: Công thức cộng xác suất** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Cho hai biến cố $A$ và $B$ có $P(A) = 0,4$, $P(B) = 0,5$ và '
+                           '$P(AB) = 0,2$. Tính $P(A \\cup B)$.”, kết quả giải đúng là: Áp dụng công thức '
                            'cộng xác suất: $P(A \\cup B) = P(A) + P(B) - P(AB) = 0,4 + 0,5 - 0,2 = 0,7$.'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 29: Công thức cộng xác suất. b) **Đúng** '
-                        'theo công thức trọng tâm **Cho hai biến cố xung khắc** ($A \\cap B = \\varnothing '
-                        '\\Rightarrow P(A \\cup B) = P(A) + P(B)$). c) **Sai** vì $a^\\circ = \\dfrac{\\pi '
-                        'a}{180}\\text{ rad}, \\quad \\alpha\\text{ rad} = '
-                        '\\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$ là công thức của nội dung khác, '
-                        'không phải quy tắc chung của **Cho hai biến cố xung khắc**. d) **Đúng** theo lời '
-                        'giải ví dụ minh họa trong bài học.'},
+                        'theo công thức **Cho hai biến cố xung khắc** ($A \\cap B = \\varnothing '
+                        '\\Rightarrow P(A \\cup B) = P(A) + P(B)$). c) **Sai** vì công thức đúng của **Cho '
+                        'hai biến cố xung khắc** phải là $A \\cap B = \\varnothing \\Rightarrow P(A \\cup B) '
+                        '= P(A) + P(B)$ chứ không phải $A \\cap B = \\varnothing \\Rightarrow P(A \\cap B) = '
+                        'P(A) + P(B)$. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 29: Công thức cộng xác suất** để giải quyết tình huống sau: Cho '
-                 'hai biến cố $A$ và $B$ có $P(A) = 0,4$, $P(B) = 0,5$ và $P(AB) = 0,2$. Tính $P(A \\cup '
-                 'B)$. Kết quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Vì $\\dfrac{\\pi}{2} < \\alpha < \\pi$ nên $\\cos \\alpha < 0$. Ta có $\\cos '
-                        '\\alpha = -\\sqrt{1 - \\sin^2 \\alpha} = -\\sqrt{1 - \\dfrac{9}{25}} = '
-                        '-\\dfrac{4}{5}$. Suy...',
-                        'Ta có...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 29: Công thức cộng xác suất** để giải bài toán sau: '
+                 'Cho hai biến cố $A$ và $B$ có $P(A) = 0,4$, $P(B) = 0,5$ và $P(AB) = 0,2$. Tính $P(A \\cup '
+                 'B)$. Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Áp dụng công thức cộng xác suất: $P(A \\cap B) = P(A) + P(B) - P(AB) = 0,4 + 0,5 - '
+                        '0,2 = 0,7$.',
+                        'Áp dụng công thức cộng xác suất: $P(A \\cup B) = P(A) + P(B) - P(AB) = 0,4 + 0,5 - '
+                        '0,2 = 0,6$.',
                         'Áp dụng công thức cộng xác suất: $P(A \\cup B) = P(A) + P(B) - P(AB) = 0,4 + 0,5 - '
                         '0,2 = 0,7$.',
-                        'Với mọi $x \\in \\mathbb{R}$, ta có $-1 \\le \\sin 2x \\le 1 \\Rightarrow -3 \\le '
-                        '3\\sin 2x \\le 3 \\Rightarrow -4 \\le 3\\sin 2x - 1 \\le 2$. Vậy tập giá trị là '
-                        '$[-4; 2]$...'],
+                        'Áp dụng công thức cộng xác suất: $P(A \\cup B) = P(A) + P(B) - P(AB) = 2,4 + 0,5 - '
+                        '0,2 = 0,7$.'],
             'answer': 2,
             'solution': 'Lời giải chi tiết theo Bài 29: Công thức cộng xác suất: Áp dụng công thức cộng xác '
                         'suất: $P(A \\cup B) = P(A) + P(B) - P(AB) = 0,4 + 0,5 - 0,2 = 0,7$.'},
@@ -5325,31 +5328,33 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 30: Công thức nhân xác suất cho hai biến cố độc lập**, '
-                 'công thức hoặc quy tắc nào sau đây biểu diễn đúng **Hai biến cố độc lập**?',
-            'options': ['$P(A\\overline{B}) = P(A) \\cdot P(\\overline{B}), \\quad '
-                        'P(\\overline{A}\\overline{B}) = P(\\overline{A}) \\cdot P(\\overline{B})$',
-                        '$P(A \\cup B) = 1 - P(\\overline{A}) \\cdot P(\\overline{B})$',
-                        '$a^\\circ = \\dfrac{\\pi a}{180}\\text{ rad}, \\quad \\alpha\\text{ rad} = '
-                        '\\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$',
+            'q': 'Trong **Bài 30: Công thức nhân xác suất cho hai biến cố độc lập**, quy tắc hoặc công thức '
+                 'nào sau đây xác định đúng **Hai biến cố độc lập**?',
+            'options': ['$P(AB) = P(A) : P(B)$',
+                        'Đảo ngược vế của quy tắc: $P(AB) = P(A) \\cdot P(B)$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $P(AB) = P(A) \\cdot P(B)$',
                         '$P(AB) = P(A) \\cdot P(B)$'],
             'answer': 3,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 30: Công thức nhân xác suất cho hai biến cố '
-                        'độc lập, **Hai biến cố độc lập** được xác định bởi: $P(AB) = P(A) \\cdot P(B)$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 30: Công thức nhân xác suất cho hai biến cố độc '
+                        'lập, **Hai biến cố độc lập** được xác định bởi: $P(AB) = P(A) \\cdot P(B)$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 30: Công thức nhân xác suất cho hai biến cố độc lập**, nội dung/biểu thức '
-                 '$P(A\\overline{B}) = P(A) \\cdot P(\\overline{B}), \\quad P(\\overline{A}\\overline{B}) = '
-                 'P(\\overline{A}) \\cdot P(\\overline{B})$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Cặp biến cố độc lập suy ra',
-                        'Hai biến cố độc lập',
-                        'Xác suất có ít nhất một biến cố xảy ra',
-                        'Đổi độ và radian'],
+            'q': 'Khi học **Bài 30: Công thức nhân xác suất cho hai biến cố độc lập**, biểu thức hoặc quy '
+                 'tắc nào dưới đây biểu diễn đúng **Cặp biến cố độc lập suy ra**?',
+            'options': ['$P(A\\overline{B}) = P(A) \\cdot P(\\overline{B}), \\quad '
+                        'P(\\overline{A}\\overline{B}) = P(\\overline{A}) \\cdot P(\\overline{B})$',
+                        '$P(A\\overline{B}) = P(A) : P(\\overline{B}), \\quad P(\\overline{A}\\overline{B}) '
+                        '= P(\\overline{A}) \\cdot P(\\overline{B})$',
+                        'Đảo ngược vế của quy tắc: $P(A\\overline{B}) = P(A) \\cdot P(\\overline{B}), \\quad '
+                        'P(\\overline{A}\\overline{B}) = P(\\overline{A}) \\cdot P(\\overline{B})$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $P(A\\overline{B}) = P(A) '
+                        '\\cdot P(\\overline{B}), \\quad P(\\overline{A}\\overline{B}) = P(\\overline{A}) '
+                        '\\cdot P(\\overline{B})$'],
             'answer': 0,
-            'solution': 'Trong Bài 30: Công thức nhân xác suất cho hai biến cố độc lập, biểu thức/quy tắc '
-                        '$P(A\\overline{B}) = P(A) \\cdot P(\\overline{B}), \\quad '
-                        'P(\\overline{A}\\overline{B}) = P(\\overline{A}) \\cdot P(\\overline{B})$ chính là '
-                        'nội dung của **Cặp biến cố độc lập suy ra**.'},
+            'solution': 'Trong Bài 30: Công thức nhân xác suất cho hai biến cố độc lập, **Cặp biến cố độc '
+                        'lập suy ra** có công thức/quy tắc là: $P(A\\overline{B}) = P(A) \\cdot '
+                        'P(\\overline{B}), \\quad P(\\overline{A}\\overline{B}) = P(\\overline{A}) \\cdot '
+                        'P(\\overline{B})$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Cho hai biến cố độc lập $A$ và $B$ với $P(A) = 0,6$ và $P(B) = 0,5$. Xác suất để biến cố '
@@ -5362,19 +5367,18 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 30: Công thức nhân xác suất cho hai biến cố độc lập** (Chương VIII: Các quy '
-                 'tắc tính xác suất), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất '
-                 'kiến thức của bài?',
-            'options': ['Nhận biết được khái niệm góc lượng giác, hệ thức Chasles và đổi được số đo góc giữa '
-                        'độ và radian.',
-                        'Xác định được điểm biểu diễn trên đường tròn lượng giác và các giá trị $\\sin '
-                        '\\alpha, \\cos \\alpha, \\tan \\alpha, \\cot \\alpha$.',
+            'q': 'Để nắm vững bản chất của **Bài 30: Công thức nhân xác suất cho hai biến cố độc lập**, nhận '
+                 'định nào sau đây là **chính xác**?',
+            'options': ['Phát biểu và áp dụng được công thức nhân xác suất cho hai biến cố độc lập: $P(AB) = '
+                        'P(A) : P(B)$.',
+                        'Đảo ngược vế của quy tắc: Phát biểu và áp dụng được công thức nhân xác suất cho hai '
+                        'biến cố độc lập: $P(AB) = P(A) \\cdot P(B)$.',
                         'Phát biểu và áp dụng được công thức nhân xác suất cho hai biến cố độc lập: $P(AB) = '
                         'P(A) \\cdot P(B)$.',
-                        'Vận dụng các hệ thức lượng giác cơ bản và giá trị lượng giác của các góc có liên '
-                        'quan đặc biệt (đối nhau, bù nhau, phụ nhau, hơn kém $\\pi$).'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Phát biểu và áp dụng được công '
+                        'thức nhân xác suất cho hai biến cố độc lập: $P(AB) = P(A) \\cdot P(B)$.'],
             'answer': 2,
-            'solution': 'Theo yêu cầu cần đạt của Bài 30: Công thức nhân xác suất cho hai biến cố độc lập: '
+            'solution': 'Theo nội dung cốt lõi của Bài 30: Công thức nhân xác suất cho hai biến cố độc lập: '
                         'Phát biểu và áp dụng được công thức nhân xác suất cho hai biến cố độc lập: $P(AB) = '
                         'P(A) \\cdot P(B)$.'},
            {'level': 'hieu',
@@ -5393,44 +5397,44 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 30: Công thức nhân xác '
-                 'suất cho hai biến cố độc lập**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Phát biểu và áp dụng được công '
-                           'thức nhân xác suất cho hai biến cố độc lập: $P(AB) = P(A) \\cdot P(B)$.',
-                           'Quy tắc/công thức **Hai biến cố độc lập** trong bài được xác định bởi: $P(AB) = '
-                           'P(A) \\cdot P(B)$.',
-                           'Trong mọi trường hợp, **Hai biến cố độc lập** luôn được tính bằng công thức '
-                           '$a^\\circ = \\dfrac{\\pi a}{180}\\text{ rad}, \\quad \\alpha\\text{ rad} = '
-                           '\\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$ (thuộc Đổi độ và radian) mà '
-                           'không cần điều kiện của Bài 30: Công thức nhân xác suất cho hai biến cố độc lập.',
-                           'Với bài toán minh họa: “Hai vận động viên A và B độc lập nhau cùng bắn mỗi người '
-                           'một viên đạn vào bia. Xác suất bắn trúng của A là $0,8$ và của B là $0,7$. Tính '
-                           'xác...”, lời giải đúng là: Xác suất cả hai người cùng bắn trượt là '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 30: Công thức nhân xác suất '
+                 'cho hai biến cố độc lập**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Phát biểu và áp dụng được công thức nhân '
+                           'xác suất cho hai biến cố độc lập: $P(AB) = P(A) \\cdot P(B)$.',
+                           'Trong **Bài 30: Công thức nhân xác suất cho hai biến cố độc lập**, quy tắc/công '
+                           'thức **Hai biến cố độc lập** được viết là: $P(AB) = P(A) \\cdot P(B)$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $P(AB) = P(A) : P(B)$ thì kết quả của **Hai '
+                           'biến cố độc lập** trong **Bài 30: Công thức nhân xác suất cho hai biến cố độc '
+                           'lập** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Hai vận động viên A và B độc lập nhau cùng bắn mỗi người một '
+                           'viên đạn vào bia. Xác suất bắn trúng của A là $0,8$ và của B là $0,7$. Tín...”, '
+                           'kết quả giải đúng là: Xác suất cả hai người cùng bắn trượt là '
                            '$P(\\overline{A}\\overline{B}) = P(\\overline{A}) \\cdot P(\\overline{B}) = (1 - '
                            '0,8)(1 - 0,7) = 0,2 \\cdot 0,3 = 0,06$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 30: Công thức nhân xác suất cho hai biến '
-                        'cố độc lập. b) **Đúng** theo công thức trọng tâm **Hai biến cố độc lập** ($P(AB) = '
-                        'P(A) \\cdot P(B)$). c) **Sai** vì $a^\\circ = \\dfrac{\\pi a}{180}\\text{ rad}, '
-                        '\\quad \\alpha\\text{ rad} = \\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$ là '
-                        'công thức của nội dung khác, không phải quy tắc chung của **Hai biến cố độc lập**. '
-                        'd) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        'cố độc lập. b) **Đúng** theo công thức **Hai biến cố độc lập** ($P(AB) = P(A) '
+                        '\\cdot P(B)$). c) **Sai** vì công thức đúng của **Hai biến cố độc lập** phải là '
+                        '$P(AB) = P(A) \\cdot P(B)$ chứ không phải $P(AB) = P(A) : P(B)$. d) **Đúng** theo '
+                        'lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 30: Công thức nhân xác suất cho hai biến cố độc lập** để giải '
-                 'quyết tình huống sau: Hai vận động viên A và B độc lập nhau cùng bắn mỗi người một viên '
-                 'đạn vào bia. Xác suất bắn trúng của A là $0,8$ và của B là $0,7$. Tính xác suất để có ít '
-                 'nhất một người bắn trúng bia. Kết quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ['Vì $\\dfrac{\\pi}{2} < \\alpha < \\pi$ nên $\\cos \\alpha < 0$. Ta có $\\cos '
-                        '\\alpha = -\\sqrt{1 - \\sin^2 \\alpha} = -\\sqrt{1 - \\dfrac{9}{25}} = '
-                        '-\\dfrac{4}{5}$. Suy...',
-                        'Ta có...',
-                        'Với mọi $x \\in \\mathbb{R}$, ta có $-1 \\le \\sin 2x \\le 1 \\Rightarrow -3 \\le '
-                        '3\\sin 2x \\le 3 \\Rightarrow -4 \\le 3\\sin 2x - 1 \\le 2$. Vậy tập giá trị là '
-                        '$[-4; 2]$...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 30: Công thức nhân xác suất cho hai biến cố độc '
+                 'lập** để giải bài toán sau: Hai vận động viên A và B độc lập nhau cùng bắn mỗi người một '
+                 'viên đạn vào bia. Xác suất bắn trúng của A là $0,8$ và của B là $0,7$. Tính xác suất để có '
+                 'ít nhất một người bắn trúng bia. Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Xác suất cả hai người cùng bắn trượt là $P(\\overline{A}\\overline{B}) = '
+                        'P(\\overline{A}) \\cdot P(\\overline{B}) = (1 + 0,8)(1 - 0,7) = 0,2 \\cdot 0,3 = '
+                        '0,06$...',
                         'Xác suất cả hai người cùng bắn trượt là $P(\\overline{A}\\overline{B}) = '
                         'P(\\overline{A}) \\cdot P(\\overline{B}) = (1 - 0,8)(1 - 0,7) = 0,2 \\cdot 0,3 = '
-                        '0,06$....'],
+                        '0,5$...',
+                        'Xác suất cả hai người cùng bắn trượt là $P(\\overline{A}\\overline{B}) = '
+                        'P(\\overline{A}) \\cdot P(\\overline{B}) = (2 - 0,8)(1 - 0,7) = 0,2 \\cdot 0,3 = '
+                        '0,06$...',
+                        'Xác suất cả hai người cùng bắn trượt là $P(\\overline{A}\\overline{B}) = '
+                        'P(\\overline{A}) \\cdot P(\\overline{B}) = (1 - 0,8)(1 - 0,7) = 0,2 \\cdot 0,3 = '
+                        '0,06$...'],
             'answer': 3,
             'solution': 'Lời giải chi tiết theo Bài 30: Công thức nhân xác suất cho hai biến cố độc lập: Xác '
                         'suất cả hai người cùng bắn trượt là $P(\\overline{A}\\overline{B}) = '
@@ -5508,30 +5512,33 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 31: Định nghĩa và ý nghĩa của đạo hàm**, công thức hoặc '
-                 'quy tắc nào sau đây biểu diễn đúng **Định nghĩa đạo hàm tại một điểm**?',
+            'q': 'Trong **Bài 31: Định nghĩa và ý nghĩa của đạo hàm**, quy tắc hoặc công thức nào sau đây '
+                 'xác định đúng **Định nghĩa đạo hàm tại một điểm**?',
             'options': ["$f'(x_0) = \\lim_{x \\to x_0} \\dfrac{f(x) - f(x_0)}{x - x_0} = \\lim_{\\Delta x "
                         '\\to 0} \\dfrac{f(x_0 + \\Delta x) - f(x_0)}{\\Delta x}$',
-                        "$y = f'(x_0)(x - x_0) + f(x_0)$",
-                        "$v(t_0) = s'(t_0), \\quad I(t_0) = Q'(t_0)$",
-                        '$a^\\circ = \\dfrac{\\pi a}{180}\\text{ rad}, \\quad \\alpha\\text{ rad} = '
-                        '\\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$'],
+                        "$f'(x_0) = \\lim_{x \\to x_0} \\dfrac{f(x) - f(x_0)}{x - x_0} = \\lim_{\\Delta x "
+                        '\\to 0} \\dfrac{f(x_0 - \\Delta x) - f(x_0)}{\\Delta x}$',
+                        "$f'(x_0) = \\lim_{x \\to x_0} \\dfrac{x - x_0}{f(x) - f(x_0)} = \\lim_{\\Delta x "
+                        '\\to 0} \\dfrac{f(x_0 + \\Delta x) - f(x_0)}{\\Delta x}$',
+                        "$f'(x_0) = \\lim_{x \\to x_0} \\dfrac{f(x) - f(x_0)}{x - x_0} = \\lim_{\\Delta x "
+                        '\\to 2} \\dfrac{f(x_0 + \\Delta x) - f(x_0)}{\\Delta x}$'],
             'answer': 0,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 31: Định nghĩa và ý nghĩa của đạo hàm, **Định '
+            'solution': 'Theo kiến thức trọng tâm của Bài 31: Định nghĩa và ý nghĩa của đạo hàm, **Định '
                         "nghĩa đạo hàm tại một điểm** được xác định bởi: $f'(x_0) = \\lim_{x \\to x_0} "
                         '\\dfrac{f(x) - f(x_0)}{x - x_0} = \\lim_{\\Delta x \\to 0} \\dfrac{f(x_0 + \\Delta '
                         'x) - f(x_0)}{\\Delta x}$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': "Trong **Bài 31: Định nghĩa và ý nghĩa của đạo hàm**, nội dung/biểu thức $y = f'(x_0)(x - "
-                 'x_0) + f(x_0)$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Định nghĩa đạo hàm tại một điểm',
-                        'Phương trình tiếp tuyến tại M(x_0; y_0)',
-                        'Vận tốc và cường độ dòng điện tức thời',
-                        'Đổi độ và radian'],
+            'q': 'Khi học **Bài 31: Định nghĩa và ý nghĩa của đạo hàm**, biểu thức hoặc quy tắc nào dưới đây '
+                 'biểu diễn đúng **Phương trình tiếp tuyến tại M(x_0; y_0)**?',
+            'options': ["$y = f'(x_0)(x - x_0) - f(x_0)$",
+                        "$y = f'(x_0)(x - x_0) + f(x_0)$",
+                        "Đảo ngược vế của quy tắc: $y = f'(x_0)(x - x_0) + f(x_0)$",
+                        "Trường hợp trái ngược: không thỏa mãn điều kiện của $y = f'(x_0)(x - x_0) + "
+                        'f(x_0)$'],
             'answer': 1,
-            'solution': "Trong Bài 31: Định nghĩa và ý nghĩa của đạo hàm, biểu thức/quy tắc $y = f'(x_0)(x - "
-                        'x_0) + f(x_0)$ chính là nội dung của **Phương trình tiếp tuyến tại M(x_0; y_0)**.'},
+            'solution': 'Trong Bài 31: Định nghĩa và ý nghĩa của đạo hàm, **Phương trình tiếp tuyến tại '
+                        "M(x_0; y_0)** có công thức/quy tắc là: $y = f'(x_0)(x - x_0) + f(x_0)$."},
            {'level': 'hieu',
             'type': 'mcq',
             'q': "Cho hàm số $y = f(x)$ có đồ thị $(C)$ thỏa mãn $f(1) = 2$ và $f'(1) = -3$. Phương trình "
@@ -5543,18 +5550,18 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 31: Định nghĩa và ý nghĩa của đạo hàm** (Chương IX: Đạo hàm), khẳng định nào '
-                 'sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Nhận biết được khái niệm góc lượng giác, hệ thức Chasles và đổi được số đo góc giữa '
-                        'độ và radian.',
-                        'Xác định được điểm biểu diễn trên đường tròn lượng giác và các giá trị $\\sin '
-                        '\\alpha, \\cos \\alpha, \\tan \\alpha, \\cot \\alpha$.',
-                        'Vận dụng các hệ thức lượng giác cơ bản và giá trị lượng giác của các góc có liên '
-                        'quan đặc biệt (đối nhau, bù nhau, phụ nhau, hơn kém $\\pi$).',
+            'q': 'Để nắm vững bản chất của **Bài 31: Định nghĩa và ý nghĩa của đạo hàm**, nhận định nào sau '
+                 'đây là **chính xác**?',
+            'options': ["Hiểu được định nghĩa đạo hàm tại điểm $x_0$: $f'(x_0) = \\lim_{x \\to x_0} "
+                        '\\dfrac{f(x) + f(x_0)}{x - x_0}$.',
+                        "Hiểu được định nghĩa đạo hàm tại điểm $x_0$: $f'(x_0) = \\lim_{x \\to x_0} "
+                        '\\dfrac{x - x_0}{f(x) - f(x_0)}$.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Hiểu được định nghĩa đạo hàm '
+                        "tại điểm $x_0$: $f'(x_0) = \\lim_{x \\to x_0} \\dfrac{f(x) - f(x_0)}{x - x_0}$.",
                         "Hiểu được định nghĩa đạo hàm tại điểm $x_0$: $f'(x_0) = \\lim_{x \\to x_0} "
                         '\\dfrac{f(x) - f(x_0)}{x - x_0}$.'],
             'answer': 3,
-            'solution': 'Theo yêu cầu cần đạt của Bài 31: Định nghĩa và ý nghĩa của đạo hàm: Hiểu được định '
+            'solution': 'Theo nội dung cốt lõi của Bài 31: Định nghĩa và ý nghĩa của đạo hàm: Hiểu được định '
                         "nghĩa đạo hàm tại điểm $x_0$: $f'(x_0) = \\lim_{x \\to x_0} \\dfrac{f(x) - "
                         'f(x_0)}{x - x_0}$.'},
            {'level': 'hieu',
@@ -5576,44 +5583,45 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 31: Định nghĩa và ý '
-                 'nghĩa của đạo hàm**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Hiểu được định nghĩa đạo hàm tại '
-                           "điểm $x_0$: $f'(x_0) = \\lim_{x \\to x_0} \\dfrac{f(x) - f(x_0)}{x - x_0}$.",
-                           'Quy tắc/công thức **Định nghĩa đạo hàm tại một điểm** trong bài được xác định '
-                           "bởi: $f'(x_0) = \\lim_{x \\to x_0} \\dfrac{f(x) - f(x_0)}{x - x_0} = "
-                           '\\lim_{\\Delta x \\to 0} \\dfrac{f(x_0 + \\Delta x) - f(x_0)}{\\Delta x}$.',
-                           'Trong mọi trường hợp, **Định nghĩa đạo hàm tại một điểm** luôn được tính bằng '
-                           'công thức $a^\\circ = \\dfrac{\\pi a}{180}\\text{ rad}, \\quad \\alpha\\text{ '
-                           'rad} = \\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$ (thuộc Đổi độ và radian) '
-                           'mà không cần điều kiện của Bài 31: Định nghĩa và ý nghĩa của đạo hàm.',
-                           "Với bài toán minh họa: “Cho hàm số $f(x) = x^2$. Biết $f'(2) = 4$, hãy viết "
-                           'phương trình tiếp tuyến của parabol $y = x^2$ tại điểm $M(2; 4)$.”, lời giải '
-                           "đúng là: Hệ số góc của tiếp tuyến tại $M(2; 4)$ là $k = f'(2) = 4$. Phương trình "
-                           'tiếp tuyến là $y = 4(x - 2) + 4 \\Leftrightarrow y = 4x - 4$.'],
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 31: Định nghĩa và ý nghĩa '
+                 'của đạo hàm**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Hiểu được định nghĩa đạo hàm tại điểm '
+                           "$x_0$: $f'(x_0) = \\lim_{x \\to x_0} \\dfrac{f(x) - f(x_0)}{x - x_0}$.",
+                           'Trong **Bài 31: Định nghĩa và ý nghĩa của đạo hàm**, quy tắc/công thức **Định '
+                           "nghĩa đạo hàm tại một điểm** được viết là: $f'(x_0) = \\lim_{x \\to x_0} "
+                           '\\dfrac{f(x) - f(x_0)}{x - x_0} = \\lim_{\\Delta x \\to 0} \\dfrac{f(x_0 + '
+                           '\\Delta x) - f(x_0)}{\\Delta x}$.',
+                           "Nếu áp dụng sai dấu/phép tính thành $f'(x_0) = \\lim_{x \\to x_0} \\dfrac{f(x) - "
+                           'f(x_0)}{x - x_0} = \\lim_{\\Delta x \\to 0} \\dfrac{f(x_0 - \\Delta x) - '
+                           'f(x_0)}{\\Delta x}$ thì kết quả của **Định nghĩa đạo hàm tại một điểm** trong '
+                           '**Bài 31: Định nghĩa và ý nghĩa của đạo hàm** vẫn không thay đổi.',
+                           "Xét ví dụ của bài: “Cho hàm số $f(x) = x^2$. Biết $f'(2) = 4$, hãy viết phương "
+                           'trình tiếp tuyến của parabol $y = x^2$ tại điểm $M(2; 4)$.”, kết quả giải đúng '
+                           "là: Hệ số góc của tiếp tuyến tại $M(2; 4)$ là $k = f'(2) = 4$. Phương trình tiếp "
+                           'tuyến là $y = 4(x - 2) + 4 \\Leftrightarrow y = 4x - 4$.'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 31: Định nghĩa và ý nghĩa của đạo hàm. b) '
-                        "**Đúng** theo công thức trọng tâm **Định nghĩa đạo hàm tại một điểm** ($f'(x_0) = "
-                        '\\lim_{x \\to x_0} \\dfrac{f(x) - f(x_0)}{x - x_0} = \\lim_{\\Delta x \\to 0} '
-                        '\\dfrac{f(x_0 + \\Delta x) - f(x_0)}{\\Delta x}$). c) **Sai** vì $a^\\circ = '
-                        '\\dfrac{\\pi a}{180}\\text{ rad}, \\quad \\alpha\\text{ rad} = '
-                        '\\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$ là công thức của nội dung khác, '
-                        'không phải quy tắc chung của **Định nghĩa đạo hàm tại một điểm**. d) **Đúng** theo '
-                        'lời giải ví dụ minh họa trong bài học.'},
+                        "**Đúng** theo công thức **Định nghĩa đạo hàm tại một điểm** ($f'(x_0) = \\lim_{x "
+                        '\\to x_0} \\dfrac{f(x) - f(x_0)}{x - x_0} = \\lim_{\\Delta x \\to 0} \\dfrac{f(x_0 '
+                        '+ \\Delta x) - f(x_0)}{\\Delta x}$). c) **Sai** vì công thức đúng của **Định nghĩa '
+                        "đạo hàm tại một điểm** phải là $f'(x_0) = \\lim_{x \\to x_0} \\dfrac{f(x) - "
+                        'f(x_0)}{x - x_0} = \\lim_{\\Delta x \\to 0} \\dfrac{f(x_0 + \\Delta x) - '
+                        "f(x_0)}{\\Delta x}$ chứ không phải $f'(x_0) = \\lim_{x \\to x_0} \\dfrac{f(x) - "
+                        'f(x_0)}{x - x_0} = \\lim_{\\Delta x \\to 0} \\dfrac{f(x_0 - \\Delta x) - '
+                        'f(x_0)}{\\Delta x}$. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 31: Định nghĩa và ý nghĩa của đạo hàm** để giải quyết tình huống '
-                 "sau: Cho hàm số $f(x) = x^2$. Biết $f'(2) = 4$, hãy viết phương trình tiếp tuyến của "
-                 'parabol $y = x^2$ tại điểm $M(2; 4)$. Kết quả và hướng giải nào dưới đây là **đúng**?',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 31: Định nghĩa và ý nghĩa của đạo hàm** để giải bài '
+                 "toán sau: Cho hàm số $f(x) = x^2$. Biết $f'(2) = 4$, hãy viết phương trình tiếp tuyến của "
+                 'parabol $y = x^2$ tại điểm $M(2; 4)$. Cách giải và kết quả nào dưới đây là **đúng**?',
             'options': ["Hệ số góc của tiếp tuyến tại $M(2; 4)$ là $k = f'(2) = 4$. Phương trình tiếp tuyến "
                         'là $y = 4(x - 2) + 4 \\Leftrightarrow y = 4x - 4$.',
-                        'Vì $\\dfrac{\\pi}{2} < \\alpha < \\pi$ nên $\\cos \\alpha < 0$. Ta có $\\cos '
-                        '\\alpha = -\\sqrt{1 - \\sin^2 \\alpha} = -\\sqrt{1 - \\dfrac{9}{25}} = '
-                        '-\\dfrac{4}{5}$. Suy...',
-                        'Ta có...',
-                        'Với mọi $x \\in \\mathbb{R}$, ta có $-1 \\le \\sin 2x \\le 1 \\Rightarrow -3 \\le '
-                        '3\\sin 2x \\le 3 \\Rightarrow -4 \\le 3\\sin 2x - 1 \\le 2$. Vậy tập giá trị là '
-                        '$[-4; 2]$...'],
+                        "Hệ số góc của tiếp tuyến tại $M(2; 4)$ là $k = f'(2) = 4$. Phương trình tiếp tuyến "
+                        'là $y = 4(x - 2) - 4 \\Leftrightarrow y = 4x - 4$.',
+                        "Hệ số góc của tiếp tuyến tại $M(2; 4)$ là $k = f'(2) = 4$. Phương trình tiếp tuyến "
+                        'là $y = 4(x - 2) + 4 \\Leftrightarrow y = 4x - 3$.',
+                        "Hệ số góc của tiếp tuyến tại $M(4; 4)$ là $k = f'(2) = 4$. Phương trình tiếp tuyến "
+                        'là $y = 4(x - 2) + 4 \\Leftrightarrow y = 4x - 4$.'],
             'answer': 0,
             'solution': 'Lời giải chi tiết theo Bài 31: Định nghĩa và ý nghĩa của đạo hàm: Hệ số góc của '
                         "tiếp tuyến tại $M(2; 4)$ là $k = f'(2) = 4$. Phương trình tiếp tuyến là $y = 4(x - "
@@ -5686,32 +5694,33 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 32: Các quy tắc tính đạo hàm**, công thức hoặc quy tắc '
-                 'nào sau đây biểu diễn đúng **Quy tắc tích và thương**?',
-            'options': ["$(x^n)' = nx^{n-1}, \\quad (\\sqrt{x})' = \\dfrac{1}{2\\sqrt{x}}, \\quad "
-                        "(\\sqrt{u})' = \\dfrac{u'}{2\\sqrt{u}}$",
+            'q': 'Trong **Bài 32: Các quy tắc tính đạo hàm**, quy tắc hoặc công thức nào sau đây xác định '
+                 'đúng **Quy tắc tích và thương**?',
+            'options': ["$(uv)' = u'v + uv', \\quad \\geft(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^2}$",
                         "$(uv)' = u'v + uv', \\quad \\left(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^2}$",
-                        "$(\\sin x)' = \\cos x, \\quad (\\cos x)' = -\\sin x, \\quad (\\tan x)' = "
-                        '\\dfrac{1}{\\cos^2 x}$',
-                        "$(e^x)' = e^x, \\quad (a^x)' = a^x \\ln a, \\quad (\\ln x)' = \\dfrac{1}{x}, \\quad "
-                        "(\\log_a x)' = \\dfrac{1}{x \\ln a}$"],
+                        "$(uv)' = u'v + uv', \\quad \\left(\\dfrac{v}{u}\\right)' = \\dfrac{u'v - uv'}{v^2}$",
+                        "$(uv)' = u'v + uv', \\quad \\left(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - "
+                        "uv'}{v^4}$"],
             'answer': 1,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 32: Các quy tắc tính đạo hàm, **Quy tắc tích '
-                        "và thương** được xác định bởi: $(uv)' = u'v + uv', \\quad "
+            'solution': 'Theo kiến thức trọng tâm của Bài 32: Các quy tắc tính đạo hàm, **Quy tắc tích và '
+                        "thương** được xác định bởi: $(uv)' = u'v + uv', \\quad "
                         "\\left(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^2}$."},
            {'level': 'biet',
             'type': 'mcq',
-            'q': "Trong **Bài 32: Các quy tắc tính đạo hàm**, nội dung/biểu thức $(x^n)' = nx^{n-1}, \\quad "
-                 "(\\sqrt{x})' = \\dfrac{1}{2\\sqrt{x}}, \\quad (\\sqrt{u})' = \\dfrac{u'}{2\\sqrt{u}}$ là "
-                 'quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Quy tắc tích và thương',
-                        'Đạo hàm lượng giác',
-                        'Đạo hàm lũy thừa và căn thức',
-                        'Đạo hàm mũ và lôgarit'],
+            'q': 'Khi học **Bài 32: Các quy tắc tính đạo hàm**, biểu thức hoặc quy tắc nào dưới đây biểu '
+                 'diễn đúng **Đạo hàm lũy thừa và căn thức**?',
+            'options': ["$(x^n)' = nx^{n-2}, \\quad (\\sqrt{x})' = \\dfrac{1}{2\\sqrt{x}}, \\quad "
+                        "(\\sqrt{u})' = \\dfrac{u'}{2\\sqrt{u}}$",
+                        "$(x^n)' = nx^{n-1}, \\quad (\\sqrt{x})' = \\dfrac{1}{2\\sqrt{x}}, \\quad "
+                        "(\\sqrt{u})' = \\dfrac{u'}{1\\sqrt{u}}$",
+                        "$(x^n)' = nx^{n-1}, \\quad (\\sqrt{x})' = \\dfrac{1}{2\\sqrt{x}}, \\quad "
+                        "(\\sqrt{u})' = \\dfrac{u'}{2\\sqrt{u}}$",
+                        "$(uv)' = u'v + uv', \\quad \\left(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - "
+                        "uv'}{v^2}$"],
             'answer': 2,
-            'solution': "Trong Bài 32: Các quy tắc tính đạo hàm, biểu thức/quy tắc $(x^n)' = nx^{n-1}, "
-                        "\\quad (\\sqrt{x})' = \\dfrac{1}{2\\sqrt{x}}, \\quad (\\sqrt{u})' = "
-                        "\\dfrac{u'}{2\\sqrt{u}}$ chính là nội dung của **Đạo hàm lũy thừa và căn thức**."},
+            'solution': 'Trong Bài 32: Các quy tắc tính đạo hàm, **Đạo hàm lũy thừa và căn thức** có công '
+                        "thức/quy tắc là: $(x^n)' = nx^{n-1}, \\quad (\\sqrt{x})' = \\dfrac{1}{2\\sqrt{x}}, "
+                        "\\quad (\\sqrt{u})' = \\dfrac{u'}{2\\sqrt{u}}$."},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Đạo hàm của hàm số $y = \\dfrac{2x + 1}{x - 1}$ ($x \\ne 1$) là:',
@@ -5726,18 +5735,18 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 32: Các quy tắc tính đạo hàm** (Chương IX: Đạo hàm), khẳng định nào sau đây '
-                 'phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
+            'q': 'Để nắm vững bản chất của **Bài 32: Các quy tắc tính đạo hàm**, nhận định nào sau đây là '
+                 '**chính xác**?',
             'options': ['Thuộc lòng bảng đạo hàm của hàm lũy thừa, căn thức, hàm lượng giác, hàm số mũ và '
                         'hàm số lôgarit.',
-                        'Nhận biết được khái niệm góc lượng giác, hệ thức Chasles và đổi được số đo góc giữa '
-                        'độ và radian.',
-                        'Xác định được điểm biểu diễn trên đường tròn lượng giác và các giá trị $\\sin '
-                        '\\alpha, \\cos \\alpha, \\tan \\alpha, \\cot \\alpha$.',
-                        'Vận dụng các hệ thức lượng giác cơ bản và giá trị lượng giác của các góc có liên '
-                        'quan đặc biệt (đối nhau, bù nhau, phụ nhau, hơn kém $\\pi$).'],
+                        'Thuộc lòng bảng đạo hàm của hàm lũy thừa, căn thức, hàm lượng giác, hàm số mũ và '
+                        'hàm số lôgarit. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Thuộc lòng bảng đạo hàm của hàm lũy thừa, căn thức, hàm '
+                        'lượng giác, hàm số mũ và hàm số lôgarit.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Thuộc lòng bảng đạo hàm của hàm '
+                        'lũy thừa, căn thức, hàm lượng giác, hàm số mũ và hàm số lôgarit.'],
             'answer': 0,
-            'solution': 'Theo yêu cầu cần đạt của Bài 32: Các quy tắc tính đạo hàm: Thuộc lòng bảng đạo hàm '
+            'solution': 'Theo nội dung cốt lõi của Bài 32: Các quy tắc tính đạo hàm: Thuộc lòng bảng đạo hàm '
                         'của hàm lũy thừa, căn thức, hàm lượng giác, hàm số mũ và hàm số lôgarit.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -5755,42 +5764,42 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 32: Các quy tắc tính '
-                 'đạo hàm**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Thuộc lòng bảng đạo hàm của hàm '
-                           'lũy thừa, căn thức, hàm lượng giác, hàm số mũ và hàm số lôgarit.',
-                           "Quy tắc/công thức **Quy tắc tích và thương** trong bài được xác định bởi: $(uv)' "
-                           "= u'v + uv', \\quad \\left(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^2}$.",
-                           'Trong mọi trường hợp, **Quy tắc tích và thương** luôn được tính bằng công thức '
-                           '$a^\\circ = \\dfrac{\\pi a}{180}\\text{ rad}, \\quad \\alpha\\text{ rad} = '
-                           '\\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$ (thuộc Đổi độ và radian) mà '
-                           'không cần điều kiện của Bài 32: Các quy tắc tính đạo hàm.',
-                           'Với bài toán minh họa: “Tính đạo hàm của các hàm số: a) $y = x^3 - 4x^2 + 5x - '
-                           "2$; b) $y = \\ln(x^2 + 1)$.”, lời giải đúng là: a) $y' = 3x^2 - 8x + 5$. b) Áp "
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 32: Các quy tắc tính đạo '
+                 'hàm**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Thuộc lòng bảng đạo hàm của hàm lũy '
+                           'thừa, căn thức, hàm lượng giác, hàm số mũ và hàm số lôgarit.',
+                           'Trong **Bài 32: Các quy tắc tính đạo hàm**, quy tắc/công thức **Quy tắc tích và '
+                           "thương** được viết là: $(uv)' = u'v + uv', \\quad \\left(\\dfrac{u}{v}\\right)' "
+                           "= \\dfrac{u'v - uv'}{v^2}$.",
+                           "Nếu áp dụng sai dấu/phép tính thành $(uv)' = u'v + uv', \\quad "
+                           "\\geft(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^2}$ thì kết quả của **Quy "
+                           'tắc tích và thương** trong **Bài 32: Các quy tắc tính đạo hàm** vẫn không thay '
+                           'đổi.',
+                           'Xét ví dụ của bài: “Tính đạo hàm của các hàm số: a) $y = x^3 - 4x^2 + 5x - 2$; '
+                           "b) $y = \\ln(x^2 + 1)$.”, kết quả giải đúng là: a) $y' = 3x^2 - 8x + 5$. b) Áp "
                            "dụng đạo hàm hàm hợp $(\\ln u)' = \\dfrac{u'}{u}$, ta có $y' = \\dfrac{(x^2 + "
                            "1)'}{x^2 + 1} = \\dfrac{2x}{x^2 + 1}$..."],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 32: Các quy tắc tính đạo hàm. b) **Đúng** '
-                        "theo công thức trọng tâm **Quy tắc tích và thương** ($(uv)' = u'v + uv', \\quad "
-                        "\\left(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^2}$). c) **Sai** vì $a^\\circ "
-                        '= \\dfrac{\\pi a}{180}\\text{ rad}, \\quad \\alpha\\text{ rad} = '
-                        '\\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$ là công thức của nội dung khác, '
-                        'không phải quy tắc chung của **Quy tắc tích và thương**. d) **Đúng** theo lời giải '
-                        'ví dụ minh họa trong bài học.'},
+                        "theo công thức **Quy tắc tích và thương** ($(uv)' = u'v + uv', \\quad "
+                        "\\left(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^2}$). c) **Sai** vì công thức "
+                        "đúng của **Quy tắc tích và thương** phải là $(uv)' = u'v + uv', \\quad "
+                        "\\left(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^2}$ chứ không phải $(uv)' = "
+                        "u'v + uv', \\quad \\geft(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^2}$. d) "
+                        '**Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 32: Các quy tắc tính đạo hàm** để giải quyết tình huống sau: Tính '
-                 'đạo hàm của các hàm số: a) $y = x^3 - 4x^2 + 5x - 2$; b) $y = \\ln(x^2 + 1)$. Kết quả và '
-                 'hướng giải nào dưới đây là **đúng**?',
-            'options': ['Vì $\\dfrac{\\pi}{2} < \\alpha < \\pi$ nên $\\cos \\alpha < 0$. Ta có $\\cos '
-                        '\\alpha = -\\sqrt{1 - \\sin^2 \\alpha} = -\\sqrt{1 - \\dfrac{9}{25}} = '
-                        '-\\dfrac{4}{5}$. Suy...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 32: Các quy tắc tính đạo hàm** để giải bài toán '
+                 'sau: Tính đạo hàm của các hàm số: a) $y = x^3 - 4x^2 + 5x - 2$; b) $y = \\ln(x^2 + 1)$. '
+                 'Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ["a) $y' = 3x^2 - 8x - 5$. b) Áp dụng đạo hàm hàm hợp $(\\ln u)' = \\dfrac{u'}{u}$, "
+                        "ta có $y' = \\dfrac{(x^2 + 1)'}{x^2 + 1} = \\dfrac{2x}{x^2 + 1}$.",
                         "a) $y' = 3x^2 - 8x + 5$. b) Áp dụng đạo hàm hàm hợp $(\\ln u)' = \\dfrac{u'}{u}$, "
                         "ta có $y' = \\dfrac{(x^2 + 1)'}{x^2 + 1} = \\dfrac{2x}{x^2 + 1}$.",
-                        'Ta có...',
-                        'Với mọi $x \\in \\mathbb{R}$, ta có $-1 \\le \\sin 2x \\le 1 \\Rightarrow -3 \\le '
-                        '3\\sin 2x \\le 3 \\Rightarrow -4 \\le 3\\sin 2x - 1 \\le 2$. Vậy tập giá trị là '
-                        '$[-4; 2]$...'],
+                        "a) $y' = 3x^2 - 8x + 5$. b) Áp dụng đạo hàm hàm hợp $(\\ln u)' = \\dfrac{u}{u'}$, "
+                        "ta có $y' = \\dfrac{(x^2 + 1)'}{x^2 + 1} = \\dfrac{2x}{x^2 + 1}$.",
+                        "a) $y' = 3x^4 - 8x + 5$. b) Áp dụng đạo hàm hàm hợp $(\\ln u)' = \\dfrac{u'}{u}$, "
+                        "ta có $y' = \\dfrac{(x^2 + 1)'}{x^2 + 1} = \\dfrac{2x}{x^2 + 1}$."],
             'answer': 1,
             'solution': "Lời giải chi tiết theo Bài 32: Các quy tắc tính đạo hàm: a) $y' = 3x^2 - 8x + 5$. "
                         "b) Áp dụng đạo hàm hàm hợp $(\\ln u)' = \\dfrac{u'}{u}$, ta có $y' = \\dfrac{(x^2 + "
@@ -5854,27 +5863,26 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 33: Đạo hàm cấp hai**, công thức hoặc quy tắc nào sau '
-                 'đây biểu diễn đúng **Định nghĩa đạo hàm cấp hai**?',
-            'options': ["$a(t) = v'(t) = s''(t)$",
-                        "$x(t) = A\\cos(\\omega t + \\varphi) \\Rightarrow a(t) = x''(t) = -\\omega^2 x(t)$",
+            'q': 'Trong **Bài 33: Đạo hàm cấp hai**, quy tắc hoặc công thức nào sau đây xác định đúng **Định '
+                 'nghĩa đạo hàm cấp hai**?',
+            'options': ["$f''(x) = [f'(x)]'$ (với dấu ngược lại)",
+                        "Đảo ngược vế của quy tắc: $f''(x) = [f'(x)]'$",
                         "$f''(x) = [f'(x)]'$",
-                        '$a^\\circ = \\dfrac{\\pi a}{180}\\text{ rad}, \\quad \\alpha\\text{ rad} = '
-                        '\\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$'],
+                        "Trường hợp trái ngược: không thỏa mãn điều kiện của $f''(x) = [f'(x)]'$"],
             'answer': 2,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 33: Đạo hàm cấp hai, **Định nghĩa đạo hàm cấp '
+            'solution': 'Theo kiến thức trọng tâm của Bài 33: Đạo hàm cấp hai, **Định nghĩa đạo hàm cấp '
                         "hai** được xác định bởi: $f''(x) = [f'(x)]'$."},
            {'level': 'biet',
             'type': 'mcq',
-            'q': "Trong **Bài 33: Đạo hàm cấp hai**, nội dung/biểu thức $a(t) = v'(t) = s''(t)$ là quy tắc "
-                 'hoặc công thức của mục nào sau đây?',
-            'options': ['Định nghĩa đạo hàm cấp hai',
-                        'Phương trình dao động điều hòa',
-                        'Đổi độ và radian',
-                        'Gia tốc tức thời của chuyển động'],
+            'q': 'Khi học **Bài 33: Đạo hàm cấp hai**, biểu thức hoặc quy tắc nào dưới đây biểu diễn đúng '
+                 '**Gia tốc tức thời của chuyển động**?',
+            'options': ["$a(t) = v'(t) = s''(t)$ (với dấu ngược lại)",
+                        "Đảo ngược vế của quy tắc: $a(t) = v'(t) = s''(t)$",
+                        "Trường hợp trái ngược: không thỏa mãn điều kiện của $a(t) = v'(t) = s''(t)$",
+                        "$a(t) = v'(t) = s''(t)$"],
             'answer': 3,
-            'solution': "Trong Bài 33: Đạo hàm cấp hai, biểu thức/quy tắc $a(t) = v'(t) = s''(t)$ chính là "
-                        'nội dung của **Gia tốc tức thời của chuyển động**.'},
+            'solution': 'Trong Bài 33: Đạo hàm cấp hai, **Gia tốc tức thời của chuyển động** có công '
+                        "thức/quy tắc là: $a(t) = v'(t) = s''(t)$."},
            {'level': 'hieu',
             'type': 'mcq',
             'q': "Cho hàm số $y = \\sin x$. Đạo hàm cấp hai $y''$ của hàm số là:",
@@ -5885,18 +5893,18 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 33: Đạo hàm cấp hai** (Chương IX: Đạo hàm), khẳng định nào sau đây phản ánh '
-                 '**đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Nhận biết được khái niệm góc lượng giác, hệ thức Chasles và đổi được số đo góc giữa '
-                        'độ và radian.',
+            'q': 'Để nắm vững bản chất của **Bài 33: Đạo hàm cấp hai**, nhận định nào sau đây là **chính '
+                 'xác**?',
+            'options': ["Hiểu được định nghĩa đạo hàm cấp hai $f''(x) = [f'(x)]'$ là đạo hàm của đạo hàm cấp "
+                        'một. (với dấu ngược lại)',
                         "Hiểu được định nghĩa đạo hàm cấp hai $f''(x) = [f'(x)]'$ là đạo hàm của đạo hàm cấp "
                         'một.',
-                        'Xác định được điểm biểu diễn trên đường tròn lượng giác và các giá trị $\\sin '
-                        '\\alpha, \\cos \\alpha, \\tan \\alpha, \\cot \\alpha$.',
-                        'Vận dụng các hệ thức lượng giác cơ bản và giá trị lượng giác của các góc có liên '
-                        'quan đặc biệt (đối nhau, bù nhau, phụ nhau, hơn kém $\\pi$).'],
+                        "Đảo ngược vế của quy tắc: Hiểu được định nghĩa đạo hàm cấp hai $f''(x) = [f'(x)]'$ "
+                        'là đạo hàm của đạo hàm cấp một.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Hiểu được định nghĩa đạo hàm '
+                        "cấp hai $f''(x) = [f'(x)]'$ là đạo hàm của đạo hàm cấp một."],
             'answer': 1,
-            'solution': 'Theo yêu cầu cần đạt của Bài 33: Đạo hàm cấp hai: Hiểu được định nghĩa đạo hàm cấp '
+            'solution': 'Theo nội dung cốt lõi của Bài 33: Đạo hàm cấp hai: Hiểu được định nghĩa đạo hàm cấp '
                         "hai $f''(x) = [f'(x)]'$ là đạo hàm của đạo hàm cấp một."},
            {'level': 'hieu',
             'type': 'tf4',
@@ -5917,40 +5925,37 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 33: Đạo hàm cấp hai**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Hiểu được định nghĩa đạo hàm cấp '
-                           "hai $f''(x) = [f'(x)]'$ là đạo hàm của đạo hàm cấp một.",
-                           'Quy tắc/công thức **Định nghĩa đạo hàm cấp hai** trong bài được xác định bởi: '
-                           "$f''(x) = [f'(x)]'$.",
-                           'Trong mọi trường hợp, **Định nghĩa đạo hàm cấp hai** luôn được tính bằng công '
-                           'thức $a^\\circ = \\dfrac{\\pi a}{180}\\text{ rad}, \\quad \\alpha\\text{ rad} = '
-                           '\\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$ (thuộc Đổi độ và radian) mà '
-                           'không cần điều kiện của Bài 33: Đạo hàm cấp hai.',
-                           'Với bài toán minh họa: “Tìm đạo hàm cấp hai của hàm số $y = x^4 - 3x^2 + \\sin '
-                           "2x$.”, lời giải đúng là: Ta có đạo hàm cấp một: $y' = 4x^3 - 6x + 2\\cos 2x$. "
-                           "Lấy đạo hàm một lần nữa ta được đạo hàm cấp hai: $y'' = (y')' = 12x^2 - 6 - "
-                           '4\\sin 2x$.'],
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 33: Đạo hàm cấp hai**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Hiểu được định nghĩa đạo hàm cấp hai '
+                           "$f''(x) = [f'(x)]'$ là đạo hàm của đạo hàm cấp một.",
+                           'Trong **Bài 33: Đạo hàm cấp hai**, quy tắc/công thức **Định nghĩa đạo hàm cấp '
+                           "hai** được viết là: $f''(x) = [f'(x)]'$.",
+                           "Nếu áp dụng sai dấu/phép tính thành $f''(x) = [f'(x)]'$ (với dấu ngược lại) thì "
+                           'kết quả của **Định nghĩa đạo hàm cấp hai** trong **Bài 33: Đạo hàm cấp hai** vẫn '
+                           'không thay đổi.',
+                           'Xét ví dụ của bài: “Tìm đạo hàm cấp hai của hàm số $y = x^4 - 3x^2 + \\sin '
+                           "2x$.”, kết quả giải đúng là: Ta có đạo hàm cấp một: $y' = 4x^3 - 6x + 2\\cos "
+                           "2x$. Lấy đạo hàm một lần nữa ta được đạo hàm cấp hai: $y'' = (y')' = 12x^2 - 6 - "
+                           '4\\sin 2x$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 33: Đạo hàm cấp hai. b) **Đúng** theo công '
-                        "thức trọng tâm **Định nghĩa đạo hàm cấp hai** ($f''(x) = [f'(x)]'$). c) **Sai** vì "
-                        '$a^\\circ = \\dfrac{\\pi a}{180}\\text{ rad}, \\quad \\alpha\\text{ rad} = '
-                        '\\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$ là công thức của nội dung khác, '
-                        'không phải quy tắc chung của **Định nghĩa đạo hàm cấp hai**. d) **Đúng** theo lời '
-                        'giải ví dụ minh họa trong bài học.'},
+                        "thức **Định nghĩa đạo hàm cấp hai** ($f''(x) = [f'(x)]'$). c) **Sai** vì công thức "
+                        "đúng của **Định nghĩa đạo hàm cấp hai** phải là $f''(x) = [f'(x)]'$ chứ không phải "
+                        "$f''(x) = [f'(x)]'$ (với dấu ngược lại). d) **Đúng** theo lời giải ví dụ minh họa "
+                        'trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 33: Đạo hàm cấp hai** để giải quyết tình huống sau: Tìm đạo hàm '
-                 'cấp hai của hàm số $y = x^4 - 3x^2 + \\sin 2x$. Kết quả và hướng giải nào dưới đây là '
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 33: Đạo hàm cấp hai** để giải bài toán sau: Tìm đạo '
+                 'hàm cấp hai của hàm số $y = x^4 - 3x^2 + \\sin 2x$. Cách giải và kết quả nào dưới đây là '
                  '**đúng**?',
-            'options': ['Vì $\\dfrac{\\pi}{2} < \\alpha < \\pi$ nên $\\cos \\alpha < 0$. Ta có $\\cos '
-                        '\\alpha = -\\sqrt{1 - \\sin^2 \\alpha} = -\\sqrt{1 - \\dfrac{9}{25}} = '
-                        '-\\dfrac{4}{5}$. Suy...',
-                        'Ta có...',
+            'options': ["Ta có đạo hàm cấp một: $y' = 4x^3 - 6x - 2\\cos 2x$. Lấy đạo hàm một lần nữa ta "
+                        "được đạo hàm cấp hai: $y'' = (y')' = 12x^2 - 6 - 4\\sin 2x$.",
+                        "Ta có đạo hàm cấp một: $y' = 4x^3 - 6x + 2\\cos 2x$. Lấy đạo hàm một lần nữa ta "
+                        "được đạo hàm cấp hai: $y'' = (y')' = 12x^2 - 6 - 3\\sin 2x$.",
                         "Ta có đạo hàm cấp một: $y' = 4x^3 - 6x + 2\\cos 2x$. Lấy đạo hàm một lần nữa ta "
                         "được đạo hàm cấp hai: $y'' = (y')' = 12x^2 - 6 - 4\\sin 2x$.",
-                        'Với mọi $x \\in \\mathbb{R}$, ta có $-1 \\le \\sin 2x \\le 1 \\Rightarrow -3 \\le '
-                        '3\\sin 2x \\le 3 \\Rightarrow -4 \\le 3\\sin 2x - 1 \\le 2$. Vậy tập giá trị là '
-                        '$[-4; 2]$...'],
+                        "Ta có đạo hàm cấp một: $y' = 4x^6 - 6x + 2\\cos 2x$. Lấy đạo hàm một lần nữa ta "
+                        "được đạo hàm cấp hai: $y'' = (y')' = 12x^2 - 6 - 4\\sin 2x$."],
             'answer': 2,
             'solution': "Lời giải chi tiết theo Bài 33: Đạo hàm cấp hai: Ta có đạo hàm cấp một: $y' = 4x^3 - "
                         "6x + 2\\cos 2x$. Lấy đạo hàm một lần nữa ta được đạo hàm cấp hai: $y'' = (y')' = "

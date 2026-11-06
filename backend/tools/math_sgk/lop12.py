@@ -1,7 +1,6 @@
 """Dữ liệu bài học SGK Toán Lớp 12 — Kết nối tri thức với cuộc sống (NXB Giáo dục Việt Nam).
-Cấu trúc 3 cấp: Lớp 12 ➔ Chương/Chủ đề (topic) ➔ Từng Bài học (title).
-Mỗi bài học gồm đầy đủ Yêu cầu cần đạt (requirements), Định nghĩa, Lý thuyết, Công thức, Ví dụ, Ứng dụng thực tế
-và đúng 10 câu hỏi luyện tập theo 3 mức độ: 4 Nhận biết + 4 Thông hiểu + 2 Vận dụng.
+Cấu trúc 3 cấp: Lớp 12 ➔ Chương/Chủ đề (topic) ➔ Từng Bài học độc lập (title).
+Mỗi bài học chỉ chứa kiến thức, công thức, ví dụ và 10 câu hỏi của riêng bài học đó.
 """
 
 GRADE = 12
@@ -72,30 +71,28 @@ LESSONS = [{'topic': 'l12-ch01-ung-dung-dao-ham',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 1: Tính đơn điệu và cực trị của hàm số**, công thức hoặc '
-                 'quy tắc nào sau đây biểu diễn đúng **Đồng biến trên khoảng**?',
-            'options': ["$f'(x) \\le 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm)",
-                        "$f(x)$ đạt cực trị tại $x_0$ và có đạo hàm tại $x_0 \\Rightarrow f'(x_0) = 0$",
+            'q': 'Trong **Bài 1: Tính đơn điệu và cực trị của hàm số**, quy tắc hoặc công thức nào sau đây '
+                 'xác định đúng **Đồng biến trên khoảng**?',
+            'options': ["$f'(x) \\ge 0, \\forall x \\notin K$ (dấu $=$ tại hữu hạn điểm)",
+                        "$f'(x) \\ge 1, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm)",
                         "$f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm)",
-                        "$f'(x_0) = 0, f''(x_0) < 0 \\Rightarrow x_{CĐ}; \\quad f'(x_0) = 0, f''(x_0) > 0 "
-                        '\\Rightarrow x_{CT}$'],
+                        "$f'(x) \\ge 2, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm)"],
             'answer': 2,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 1: Tính đơn điệu và cực trị của hàm số, '
-                        "**Đồng biến trên khoảng** được xác định bởi: $f'(x) \\ge 0, \\forall x \\in K$ (dấu "
-                        '$=$ tại hữu hạn điểm).'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 1: Tính đơn điệu và cực trị của hàm số, **Đồng '
+                        "biến trên khoảng** được xác định bởi: $f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ "
+                        'tại hữu hạn điểm).'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': "Trong **Bài 1: Tính đơn điệu và cực trị của hàm số**, nội dung/biểu thức $f'(x) \\le 0, "
-                 '\\forall x \\in K$ (dấu $=$ tại hữu hạn điểm) là quy tắc hoặc công thức của mục nào sau '
-                 'đây?',
-            'options': ['Đồng biến trên khoảng',
-                        'Điều kiện cần của cực trị',
-                        'Cực trị bằng đạo hàm cấp hai',
-                        'Nghịch biến trên khoảng'],
+            'q': 'Khi học **Bài 1: Tính đơn điệu và cực trị của hàm số**, biểu thức hoặc quy tắc nào dưới '
+                 'đây biểu diễn đúng **Nghịch biến trên khoảng**?',
+            'options': ["$f'(x) \\le 0, \\forall x \\notin K$ (dấu $=$ tại hữu hạn điểm)",
+                        "$f'(x) \\le 1, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm)",
+                        "$f'(x) \\le 2, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm)",
+                        "$f'(x) \\le 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm)"],
             'answer': 3,
-            'solution': "Trong Bài 1: Tính đơn điệu và cực trị của hàm số, biểu thức/quy tắc $f'(x) \\le 0, "
-                        '\\forall x \\in K$ (dấu $=$ tại hữu hạn điểm) chính là nội dung của **Nghịch biến '
-                        'trên khoảng**.'},
+            'solution': 'Trong Bài 1: Tính đơn điệu và cực trị của hàm số, **Nghịch biến trên khoảng** có '
+                        "công thức/quy tắc là: $f'(x) \\le 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn "
+                        'điểm).'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Giá trị cực đại của hàm số $y = -x^4 + 2x^2 + 3$ bằng bao nhiêu?',
@@ -108,20 +105,20 @@ LESSONS = [{'topic': 'l12-ch01-ung-dung-dao-ham',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 1: Tính đơn điệu và cực trị của hàm số** (Chương I: Ứng dụng đạo hàm để khảo '
-                 'sát và vẽ đồ thị hàm số), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản '
-                 'chất kiến thức của bài?',
-            'options': ['Nhận biết được khái niệm giá trị lớn nhất $\\max_D f(x)$ và giá trị nhỏ nhất '
-                        '$\\min_D f(x)$ của hàm số trên tập $D$.',
+            'q': 'Để nắm vững bản chất của **Bài 1: Tính đơn điệu và cực trị của hàm số**, nhận định nào sau '
+                 'đây là **chính xác**?',
+            'options': ['Nhận biết được tính nghịch biến, nghịch biến của hàm số trên một khoảng dựa vào dấu '
+                        "của đạo hàm cấp một $f'(x)$.",
                         'Nhận biết được tính đồng biến, nghịch biến của hàm số trên một khoảng dựa vào dấu '
                         "của đạo hàm cấp một $f'(x)$.",
-                        'Tìm được giá trị lớn nhất và giá trị nhỏ nhất của hàm số liên tục trên một đoạn '
-                        '$[a; b]$ hoặc một khoảng.',
-                        'Vận dụng vào các bài toán tối ưu hóa hình học và thực tế.'],
+                        'Đảo ngược vế của quy tắc: Nhận biết được tính đồng biến, nghịch biến của hàm số '
+                        "trên một khoảng dựa vào dấu của đạo hàm cấp một $f'(x)$.",
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nhận biết được tính đồng biến, '
+                        "nghịch biến của hàm số trên một khoảng dựa vào dấu của đạo hàm cấp một $f'(x)$."],
             'answer': 1,
-            'solution': 'Theo yêu cầu cần đạt của Bài 1: Tính đơn điệu và cực trị của hàm số: Nhận biết được '
-                        'tính đồng biến, nghịch biến của hàm số trên một khoảng dựa vào dấu của đạo hàm cấp '
-                        "một $f'(x)$."},
+            'solution': 'Theo nội dung cốt lõi của Bài 1: Tính đơn điệu và cực trị của hàm số: Nhận biết '
+                        'được tính đồng biến, nghịch biến của hàm số trên một khoảng dựa vào dấu của đạo hàm '
+                        "cấp một $f'(x)$."},
            {'level': 'hieu',
             'type': 'tf4',
             'q': 'Cho hàm số $y = f(x) = x^3 - 3x^2 - 9x + 5$ xác định trên $\\mathbb{R}$. Xét tính đúng sai '
@@ -139,42 +136,40 @@ LESSONS = [{'topic': 'l12-ch01-ung-dung-dao-ham',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 1: Tính đơn điệu và cực '
-                 'trị của hàm số**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được tính đồng biến, '
-                           "nghịch biến của hàm số trên một khoảng dựa vào dấu của đạo hàm cấp một $f'(x)$.",
-                           "Quy tắc/công thức **Đồng biến trên khoảng** trong bài được xác định bởi: $f'(x) "
-                           '\\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm).',
-                           'Trong mọi trường hợp, **Đồng biến trên khoảng** luôn được tính bằng công thức '
-                           '$\\max_{[a; b]} f(x) = \\max \\{f(a), f(b), f(x_i)\\}$ với $x_i \\in (a; b), '
-                           "f'(x_i) = 0$ (thuộc Giá trị lớn nhất trên đoạn) mà không cần điều kiện của Bài "
-                           '1: Tính đơn điệu và cực trị của hàm số.',
-                           'Với bài toán minh họa: “Tìm các khoảng đơn điệu và cực trị của hàm số $y = x^3 - '
-                           "3x^2 + 2$.”, lời giải đúng là: Tập xác định $D = \\mathbb{R}$. Ta có $y' = 3x^2 "
-                           "- 6x = 3x(x - 2)$. Cho $y' = 0 \\Leftrightarrow x = 0$ hoặc $x = 2$. Bảng xét "
-                           "dấu $y'$: trên..."],
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 1: Tính đơn điệu và cực trị '
+                 'của hàm số**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết được tính đồng biến, nghịch '
+                           "biến của hàm số trên một khoảng dựa vào dấu của đạo hàm cấp một $f'(x)$.",
+                           'Trong **Bài 1: Tính đơn điệu và cực trị của hàm số**, quy tắc/công thức **Đồng '
+                           "biến trên khoảng** được viết là: $f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ tại "
+                           'hữu hạn điểm).',
+                           "Nếu áp dụng sai dấu/phép tính thành $f'(x) \\ge 0, \\forall x \\notin K$ (dấu "
+                           '$=$ tại hữu hạn điểm) thì kết quả của **Đồng biến trên khoảng** trong **Bài 1: '
+                           'Tính đơn điệu và cực trị của hàm số** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Tìm các khoảng đơn điệu và cực trị của hàm số $y = x^3 - '
+                           "3x^2 + 2$.”, kết quả giải đúng là: Tập xác định $D = \\mathbb{R}$. Ta có $y' = "
+                           "3x^2 - 6x = 3x(x - 2)$. Cho $y' = 0 \\Leftrightarrow x = 0$ hoặc $x = 2$. Bảng "
+                           "xét dấu $y'$..."],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 1: Tính đơn điệu và cực trị của hàm số. b) '
-                        "**Đúng** theo công thức trọng tâm **Đồng biến trên khoảng** ($f'(x) \\ge 0, "
-                        '\\forall x \\in K$ (dấu $=$ tại hữu hạn điểm)). c) **Sai** vì $\\max_{[a; b]} f(x) '
-                        "= \\max \\{f(a), f(b), f(x_i)\\}$ với $x_i \\in (a; b), f'(x_i) = 0$ là công thức "
-                        'của nội dung khác, không phải quy tắc chung của **Đồng biến trên khoảng**. d) '
+                        "**Đúng** theo công thức **Đồng biến trên khoảng** ($f'(x) \\ge 0, \\forall x \\in "
+                        'K$ (dấu $=$ tại hữu hạn điểm)). c) **Sai** vì công thức đúng của **Đồng biến trên '
+                        "khoảng** phải là $f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm) chứ "
+                        "không phải $f'(x) \\ge 0, \\forall x \\notin K$ (dấu $=$ tại hữu hạn điểm). d) "
                         '**Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 1: Tính đơn điệu và cực trị của hàm số** để giải quyết tình huống '
-                 'sau: Tìm các khoảng đơn điệu và cực trị của hàm số $y = x^3 - 3x^2 + 2$. Kết quả và hướng '
-                 'giải nào dưới đây là **đúng**?',
-            'options': ["Hàm số liên tục trên $[0; 2]$. Ta có $f'(x) = 3x^2 - 3 = 0 \\Leftrightarrow x = 1 "
-                        '\\in (0; 2)$ hoặc $x = -1 \\notin (0; 2)$. Tính giá trị: $f(0) = 2$; $f(1) = 0$...',
-                        'Tập xác định $D = \\mathbb{R} \\setminus \\{1\\}$. Chia đa thức ta có $y = 2x + 1 + '
-                        '\\dfrac{2}{x - 1}$. Vì $\\lim_{x \\to 1^+} y = +\\infty$ và $\\lim_{x \\to 1^-} y = '
-                        '-\\infty$...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 1: Tính đơn điệu và cực trị của hàm số** để giải '
+                 'bài toán sau: Tìm các khoảng đơn điệu và cực trị của hàm số $y = x^3 - 3x^2 + 2$. Cách '
+                 'giải và kết quả nào dưới đây là **đúng**?',
+            'options': ["Tập xác định $D = \\mathbb{R}$. Ta có $y' = 3x^2 - 6x = 3x(x - 2)$. Cho $y' = 0 "
+                        "\\Leftrightarrow x = 0$ hoặc $x = 2$. Bảng xét dấu $y'$: trên $(-\\notinfty; 0)$...",
+                        "Tập xác định $D = \\mathbb{R}$. Ta có $y' = 3x^2 - 6x = 3x(x - 2)$. Cho $y' = 0 "
+                        "\\Leftrightarrow x = 0$ hoặc $x = 2$. Bảng xét dấu $y'$: trên $(-\\infty; 1)$...",
                         "Tập xác định $D = \\mathbb{R}$. Ta có $y' = 3x^2 - 6x = 3x(x - 2)$. Cho $y' = 0 "
                         "\\Leftrightarrow x = 0$ hoặc $x = 2$. Bảng xét dấu $y'$: trên $(-\\infty; 0)$...",
-                        "Ta có $y' = 3x^2 - 6x$ và $y'' = 6x - 6$. Cho $y'' = 0 \\Leftrightarrow 6x - 6 = 0 "
-                        '\\Leftrightarrow x = 1$. Với $x = 1 \\Rightarrow y = 1^3 - 3 \\cdot 1^2 + 1 = '
-                        '-1$...'],
+                        "Tập xác định $D = \\mathbb{R}$. Ta có $y' = 3x^4 - 6x = 3x(x - 2)$. Cho $y' = 0 "
+                        "\\Leftrightarrow x = 0$ hoặc $x = 2$. Bảng xét dấu $y'$: trên $(-\\infty; 0)$..."],
             'answer': 2,
             'solution': 'Lời giải chi tiết theo Bài 1: Tính đơn điệu và cực trị của hàm số: Tập xác định $D '
                         "= \\mathbb{R}$. Ta có $y' = 3x^2 - 6x = 3x(x - 2)$. Cho $y' = 0 \\Leftrightarrow x "
@@ -253,32 +248,36 @@ LESSONS = [{'topic': 'l12-ch01-ung-dung-dao-ham',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 2: Giá trị lớn nhất và giá trị nhỏ nhất của hàm số**, '
-                 'công thức hoặc quy tắc nào sau đây biểu diễn đúng **Giá trị lớn nhất trên đoạn**?',
-            'options': ['$\\min_{[a; b]} f(x) = \\min \\{f(a), f(b), f(x_i)\\}$ với $x_i \\in (a; b), '
+            'q': 'Trong **Bài 2: Giá trị lớn nhất và giá trị nhỏ nhất của hàm số**, quy tắc hoặc công thức '
+                 'nào sau đây xác định đúng **Giá trị lớn nhất trên đoạn**?',
+            'options': ['$\\max_{[a; b]} f(x) = \\max \\{f(a), f(b), f(x_i)\\}$ với $x_i \\notin (a; b), '
                         "f'(x_i) = 0$",
-                        '$y = \\dfrac{ax + b}{cx + d}$ đơn điệu trên $[x_1; x_2]$ nên đạt $\\max, \\min$ tại '
-                        'hai đầu mút',
-                        "$f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm)",
+                        '$\\max_{[a; b]} f(x) = \\max \\{f(a), f(b), f(x_i)\\}$ với $x_i \\in (a; b), '
+                        "f'(x_i) = 1$",
+                        '$\\max_{[a; b]} f(x) = \\max \\{f(a), f(b), f(x_i)\\}$ với $x_i \\in (a; b), '
+                        "f'(x_i) = 2$",
                         '$\\max_{[a; b]} f(x) = \\max \\{f(a), f(b), f(x_i)\\}$ với $x_i \\in (a; b), '
                         "f'(x_i) = 0$"],
             'answer': 3,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 2: Giá trị lớn nhất và giá trị nhỏ nhất của '
-                        'hàm số, **Giá trị lớn nhất trên đoạn** được xác định bởi: $\\max_{[a; b]} f(x) = '
-                        "\\max \\{f(a), f(b), f(x_i)\\}$ với $x_i \\in (a; b), f'(x_i) = 0$."},
+            'solution': 'Theo kiến thức trọng tâm của Bài 2: Giá trị lớn nhất và giá trị nhỏ nhất của hàm '
+                        'số, **Giá trị lớn nhất trên đoạn** được xác định bởi: $\\max_{[a; b]} f(x) = \\max '
+                        "\\{f(a), f(b), f(x_i)\\}$ với $x_i \\in (a; b), f'(x_i) = 0$."},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 2: Giá trị lớn nhất và giá trị nhỏ nhất của hàm số**, nội dung/biểu thức '
-                 "$\\min_{[a; b]} f(x) = \\min \\{f(a), f(b), f(x_i)\\}$ với $x_i \\in (a; b), f'(x_i) = 0$ "
-                 'là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Giá trị nhỏ nhất trên đoạn',
-                        'Giá trị lớn nhất trên đoạn',
-                        'Hàm phân thức bậc nhất trên đoạn',
-                        'Đồng biến trên khoảng'],
-            'answer': 0,
-            'solution': 'Trong Bài 2: Giá trị lớn nhất và giá trị nhỏ nhất của hàm số, biểu thức/quy tắc '
+            'q': 'Khi học **Bài 2: Giá trị lớn nhất và giá trị nhỏ nhất của hàm số**, biểu thức hoặc quy tắc '
+                 'nào dưới đây biểu diễn đúng **Giá trị nhỏ nhất trên đoạn**?',
+            'options': ['$\\min_{[a; b]} f(x) = \\min \\{f(a), f(b), f(x_i)\\}$ với $x_i \\in (a; b), '
+                        "f'(x_i) = 0$",
+                        '$\\min_{[a; b]} f(x) = \\min \\{f(a), f(b), f(x_i)\\}$ với $x_i \\notin (a; b), '
+                        "f'(x_i) = 0$",
                         '$\\min_{[a; b]} f(x) = \\min \\{f(a), f(b), f(x_i)\\}$ với $x_i \\in (a; b), '
-                        "f'(x_i) = 0$ chính là nội dung của **Giá trị nhỏ nhất trên đoạn**."},
+                        "f'(x_i) = 1$",
+                        '$\\min_{[a; b]} f(x) = \\min \\{f(a), f(b), f(x_i)\\}$ với $x_i \\in (a; b), '
+                        "f'(x_i) = 2$"],
+            'answer': 0,
+            'solution': 'Trong Bài 2: Giá trị lớn nhất và giá trị nhỏ nhất của hàm số, **Giá trị nhỏ nhất '
+                        'trên đoạn** có công thức/quy tắc là: $\\min_{[a; b]} f(x) = \\min \\{f(a), f(b), '
+                        "f(x_i)\\}$ với $x_i \\in (a; b), f'(x_i) = 0$."},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Cho hàm số $f(x) = x + \\dfrac{4}{x}$ xét trên khoảng $(0; +\\infty)$. Giá trị nhỏ nhất '
@@ -292,18 +291,19 @@ LESSONS = [{'topic': 'l12-ch01-ung-dung-dao-ham',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 2: Giá trị lớn nhất và giá trị nhỏ nhất của hàm số** (Chương I: Ứng dụng đạo '
-                 'hàm để khảo sát và vẽ đồ thị hàm số), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần '
-                 'đạt và bản chất kiến thức của bài?',
-            'options': ['Nhận biết được tính đồng biến, nghịch biến của hàm số trên một khoảng dựa vào dấu '
-                        "của đạo hàm cấp một $f'(x)$.",
-                        'Xác định được điểm cực đại, điểm cực tiểu, giá trị cực đại, giá trị cực tiểu của '
-                        "hàm số thông qua bảng biến thiên hoặc đạo hàm cấp hai $f''(x)$.",
+            'q': 'Để nắm vững bản chất của **Bài 2: Giá trị lớn nhất và giá trị nhỏ nhất của hàm số**, nhận '
+                 'định nào sau đây là **chính xác**?',
+            'options': ['Nhận biết được khái niệm giá trị lớn nhất $\\max_D f(x)$ và giá trị nhỏ nhất '
+                        '$\\min_D f(x)$ của hàm số trên tập $D$. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Nhận biết được khái niệm giá trị lớn nhất $\\max_D f(x)$ '
+                        'và giá trị nhỏ nhất $\\min_D f(x)$ của hàm số trên tập $D$.',
                         'Nhận biết được khái niệm giá trị lớn nhất $\\max_D f(x)$ và giá trị nhỏ nhất '
                         '$\\min_D f(x)$ của hàm số trên tập $D$.',
-                        'Vận dụng điều kiện đơn điệu và cực trị để giải các bài toán chứa tham số $m$.'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nhận biết được khái niệm giá '
+                        'trị lớn nhất $\\max_D f(x)$ và giá trị nhỏ nhất $\\min_D f(x)$ của hàm số trên tập '
+                        '$D$.'],
             'answer': 2,
-            'solution': 'Theo yêu cầu cần đạt của Bài 2: Giá trị lớn nhất và giá trị nhỏ nhất của hàm số: '
+            'solution': 'Theo nội dung cốt lõi của Bài 2: Giá trị lớn nhất và giá trị nhỏ nhất của hàm số: '
                         'Nhận biết được khái niệm giá trị lớn nhất $\\max_D f(x)$ và giá trị nhỏ nhất '
                         '$\\min_D f(x)$ của hàm số trên tập $D$.'},
            {'level': 'hieu',
@@ -323,42 +323,41 @@ LESSONS = [{'topic': 'l12-ch01-ung-dung-dao-ham',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 2: Giá trị lớn nhất và '
-                 'giá trị nhỏ nhất của hàm số**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được khái niệm giá trị '
-                           'lớn nhất $\\max_D f(x)$ và giá trị nhỏ nhất $\\min_D f(x)$ của hàm số trên tập '
-                           '$D$.',
-                           'Quy tắc/công thức **Giá trị lớn nhất trên đoạn** trong bài được xác định bởi: '
-                           '$\\max_{[a; b]} f(x) = \\max \\{f(a), f(b), f(x_i)\\}$ với $x_i \\in (a; b), '
-                           "f'(x_i) = 0$.",
-                           'Trong mọi trường hợp, **Giá trị lớn nhất trên đoạn** luôn được tính bằng công '
-                           "thức $f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm) (thuộc Đồng "
-                           'biến trên khoảng) mà không cần điều kiện của Bài 2: Giá trị lớn nhất và giá trị '
-                           'nhỏ nhất của hàm số.',
-                           'Với bài toán minh họa: “Tìm giá trị lớn nhất và giá trị nhỏ nhất của hàm số '
-                           '$f(x) = x^3 - 3x + 2$ trên đoạn $[0; 2]$.”, lời giải đúng là: Hàm số liên tục '
-                           "trên $[0; 2]$. Ta có $f'(x) = 3x^2 - 3 = 0 \\Leftrightarrow x = 1 \\in (0; 2)$ "
-                           'hoặc $x = -1 \\notin (0; 2)$. Tính giá trị: $f(0) = 2$...'],
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 2: Giá trị lớn nhất và giá '
+                 'trị nhỏ nhất của hàm số**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết được khái niệm giá trị lớn '
+                           'nhất $\\max_D f(x)$ và giá trị nhỏ nhất $\\min_D f(x)$ của hàm số trên tập $D$.',
+                           'Trong **Bài 2: Giá trị lớn nhất và giá trị nhỏ nhất của hàm số**, quy tắc/công '
+                           'thức **Giá trị lớn nhất trên đoạn** được viết là: $\\max_{[a; b]} f(x) = \\max '
+                           "\\{f(a), f(b), f(x_i)\\}$ với $x_i \\in (a; b), f'(x_i) = 0$.",
+                           'Nếu áp dụng sai dấu/phép tính thành $\\max_{[a; b]} f(x) = \\max \\{f(a), f(b), '
+                           "f(x_i)\\}$ với $x_i \\notin (a; b), f'(x_i) = 0$ thì kết quả của **Giá trị lớn "
+                           'nhất trên đoạn** trong **Bài 2: Giá trị lớn nhất và giá trị nhỏ nhất của hàm '
+                           'số** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Tìm giá trị lớn nhất và giá trị nhỏ nhất của hàm số $f(x) = '
+                           'x^3 - 3x + 2$ trên đoạn $[0; 2]$.”, kết quả giải đúng là: Hàm số liên tục trên '
+                           "$[0; 2]$. Ta có $f'(x) = 3x^2 - 3 = 0 \\Leftrightarrow x = 1 \\in (0; 2)$ hoặc "
+                           '$x = -1 \\notin (0; 2)$. Tính giá trị...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 2: Giá trị lớn nhất và giá trị nhỏ nhất '
-                        'của hàm số. b) **Đúng** theo công thức trọng tâm **Giá trị lớn nhất trên đoạn** '
-                        '($\\max_{[a; b]} f(x) = \\max \\{f(a), f(b), f(x_i)\\}$ với $x_i \\in (a; b), '
-                        "f'(x_i) = 0$). c) **Sai** vì $f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn "
-                        'điểm) là công thức của nội dung khác, không phải quy tắc chung của **Giá trị lớn '
-                        'nhất trên đoạn**. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        'của hàm số. b) **Đúng** theo công thức **Giá trị lớn nhất trên đoạn** ($\\max_{[a; '
+                        "b]} f(x) = \\max \\{f(a), f(b), f(x_i)\\}$ với $x_i \\in (a; b), f'(x_i) = 0$). c) "
+                        '**Sai** vì công thức đúng của **Giá trị lớn nhất trên đoạn** phải là $\\max_{[a; '
+                        "b]} f(x) = \\max \\{f(a), f(b), f(x_i)\\}$ với $x_i \\in (a; b), f'(x_i) = 0$ chứ "
+                        'không phải $\\max_{[a; b]} f(x) = \\max \\{f(a), f(b), f(x_i)\\}$ với $x_i \\notin '
+                        "(a; b), f'(x_i) = 0$. d) **Đúng** theo lời giải ví dụ minh họa trong bài học."},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 2: Giá trị lớn nhất và giá trị nhỏ nhất của hàm số** để giải '
-                 'quyết tình huống sau: Tìm giá trị lớn nhất và giá trị nhỏ nhất của hàm số $f(x) = x^3 - 3x '
-                 '+ 2$ trên đoạn $[0; 2]$. Kết quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ["Tập xác định $D = \\mathbb{R}$. Ta có $y' = 3x^2 - 6x = 3x(x - 2)$. Cho $y' = 0 "
-                        "\\Leftrightarrow x = 0$ hoặc $x = 2$. Bảng xét dấu $y'$: trên $(-\\infty; 0)$...",
-                        'Tập xác định $D = \\mathbb{R} \\setminus \\{1\\}$. Chia đa thức ta có $y = 2x + 1 + '
-                        '\\dfrac{2}{x - 1}$. Vì $\\lim_{x \\to 1^+} y = +\\infty$ và $\\lim_{x \\to 1^-} y = '
-                        '-\\infty$...',
-                        "Ta có $y' = 3x^2 - 6x$ và $y'' = 6x - 6$. Cho $y'' = 0 \\Leftrightarrow 6x - 6 = 0 "
-                        '\\Leftrightarrow x = 1$. Với $x = 1 \\Rightarrow y = 1^3 - 3 \\cdot 1^2 + 1 = '
-                        '-1$...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 2: Giá trị lớn nhất và giá trị nhỏ nhất của hàm '
+                 'số** để giải bài toán sau: Tìm giá trị lớn nhất và giá trị nhỏ nhất của hàm số $f(x) = x^3 '
+                 '- 3x + 2$ trên đoạn $[0; 2]$. Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ["Hàm số liên tục trên $[0; 2]$. Ta có $f'(x) = 3x^2 - 3 = 0 \\Leftrightarrow x = 1 "
+                        '\\notin (0; 2)$ hoặc $x = -1 \\notin (0; 2)$. Tính giá trị: $f(0) = 2$; $f(1) = '
+                        '0$...',
+                        "Hàm số liên tục trên $[0; 2]$. Ta có $f'(x) = 3x^2 - 3 = 0 \\Leftrightarrow x = 1 "
+                        '\\in (0; 2)$ hoặc $x = -1 \\notin (0; 2)$. Tính giá trị: $f(0) = 2$; $f(1) = 1$...',
+                        "Hàm số liên tục trên $[2; 2]$. Ta có $f'(x) = 3x^2 - 3 = 0 \\Leftrightarrow x = 1 "
+                        '\\in (0; 2)$ hoặc $x = -1 \\notin (0; 2)$. Tính giá trị: $f(0) = 2$; $f(1) = 0$...',
                         "Hàm số liên tục trên $[0; 2]$. Ta có $f'(x) = 3x^2 - 3 = 0 \\Leftrightarrow x = 1 "
                         '\\in (0; 2)$ hoặc $x = -1 \\notin (0; 2)$. Tính giá trị: $f(0) = 2$; $f(1) = 0$...'],
             'answer': 3,
@@ -437,27 +436,32 @@ LESSONS = [{'topic': 'l12-ch01-ung-dung-dao-ham',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 3: Đường tiệm cận của đồ thị hàm số**, công thức hoặc '
-                 'quy tắc nào sau đây biểu diễn đúng **Tiệm cận ngang**?',
+            'q': 'Trong **Bài 3: Đường tiệm cận của đồ thị hàm số**, quy tắc hoặc công thức nào sau đây xác '
+                 'định đúng **Tiệm cận ngang**?',
             'options': ['$\\lim_{x \\to \\pm\\infty} f(x) = y_0 \\Rightarrow \\text{TCN: } y = y_0$',
-                        '$\\lim_{x \\to x_0^\\pm} f(x) = \\pm\\infty \\Rightarrow \\text{TCĐ: } x = x_0$',
-                        '$a = \\lim_{x \\to \\pm\\infty} \\dfrac{f(x)}{x}, \\quad b = \\lim_{x \\to '
-                        '\\pm\\infty} [f(x) - ax]$',
-                        "$f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm)"],
+                        '$\\lim_{x \\to \\pm\\notinfty} f(x) = y_0 \\Rightarrow \\text{TCN: } y = y_0$',
+                        'Đảo ngược vế của quy tắc: $\\lim_{x \\to \\pm\\infty} f(x) = y_0 \\Rightarrow '
+                        '\\text{TCN: } y = y_0$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\lim_{x \\to \\pm\\infty} '
+                        'f(x) = y_0 \\Rightarrow \\text{TCN: } y = y_0$'],
             'answer': 0,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 3: Đường tiệm cận của đồ thị hàm số, **Tiệm '
-                        'cận ngang** được xác định bởi: $\\lim_{x \\to \\pm\\infty} f(x) = y_0 \\Rightarrow '
+            'solution': 'Theo kiến thức trọng tâm của Bài 3: Đường tiệm cận của đồ thị hàm số, **Tiệm cận '
+                        'ngang** được xác định bởi: $\\lim_{x \\to \\pm\\infty} f(x) = y_0 \\Rightarrow '
                         '\\text{TCN: } y = y_0$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 3: Đường tiệm cận của đồ thị hàm số**, nội dung/biểu thức $\\lim_{x \\to '
-                 'x_0^\\pm} f(x) = \\pm\\infty \\Rightarrow \\text{TCĐ: } x = x_0$ là quy tắc hoặc công thức '
-                 'của mục nào sau đây?',
-            'options': ['Tiệm cận ngang', 'Tiệm cận đứng', 'Hệ số tiệm cận xiên', 'Đồng biến trên khoảng'],
+            'q': 'Khi học **Bài 3: Đường tiệm cận của đồ thị hàm số**, biểu thức hoặc quy tắc nào dưới đây '
+                 'biểu diễn đúng **Tiệm cận đứng**?',
+            'options': ['$\\lim_{x \\to x_0^\\pm} f(x) = \\pm\\notinfty \\Rightarrow \\text{TCĐ: } x = x_0$',
+                        '$\\lim_{x \\to x_0^\\pm} f(x) = \\pm\\infty \\Rightarrow \\text{TCĐ: } x = x_0$',
+                        'Đảo ngược vế của quy tắc: $\\lim_{x \\to x_0^\\pm} f(x) = \\pm\\infty \\Rightarrow '
+                        '\\text{TCĐ: } x = x_0$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\lim_{x \\to x_0^\\pm} f(x) = '
+                        '\\pm\\infty \\Rightarrow \\text{TCĐ: } x = x_0$'],
             'answer': 1,
-            'solution': 'Trong Bài 3: Đường tiệm cận của đồ thị hàm số, biểu thức/quy tắc $\\lim_{x \\to '
-                        'x_0^\\pm} f(x) = \\pm\\infty \\Rightarrow \\text{TCĐ: } x = x_0$ chính là nội dung '
-                        'của **Tiệm cận đứng**.'},
+            'solution': 'Trong Bài 3: Đường tiệm cận của đồ thị hàm số, **Tiệm cận đứng** có công thức/quy '
+                        'tắc là: $\\lim_{x \\to x_0^\\pm} f(x) = \\pm\\infty \\Rightarrow \\text{TCĐ: } x = '
+                        'x_0$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Đường tiệm cận xiên của đồ thị hàm số $y = x - 2 + \\dfrac{3}{x + 1}$ có phương trình là:',
@@ -469,18 +473,18 @@ LESSONS = [{'topic': 'l12-ch01-ung-dung-dao-ham',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 3: Đường tiệm cận của đồ thị hàm số** (Chương I: Ứng dụng đạo hàm để khảo '
-                 'sát và vẽ đồ thị hàm số), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản '
-                 'chất kiến thức của bài?',
-            'options': ['Nhận biết được tính đồng biến, nghịch biến của hàm số trên một khoảng dựa vào dấu '
-                        "của đạo hàm cấp một $f'(x)$.",
-                        'Xác định được điểm cực đại, điểm cực tiểu, giá trị cực đại, giá trị cực tiểu của '
-                        "hàm số thông qua bảng biến thiên hoặc đạo hàm cấp hai $f''(x)$.",
-                        'Vận dụng điều kiện đơn điệu và cực trị để giải các bài toán chứa tham số $m$.',
+            'q': 'Để nắm vững bản chất của **Bài 3: Đường tiệm cận của đồ thị hàm số**, nhận định nào sau '
+                 'đây là **chính xác**?',
+            'options': ['Nhận biết được đường tiệm cận ngang, tiệm cận đứng và tiệm cận xiên của đồ thị hàm '
+                        'số. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Nhận biết được đường tiệm cận ngang, tiệm cận đứng và '
+                        'tiệm cận xiên của đồ thị hàm số.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nhận biết được đường tiệm cận '
+                        'ngang, tiệm cận đứng và tiệm cận xiên của đồ thị hàm số.',
                         'Nhận biết được đường tiệm cận ngang, tiệm cận đứng và tiệm cận xiên của đồ thị hàm '
                         'số.'],
             'answer': 3,
-            'solution': 'Theo yêu cầu cần đạt của Bài 3: Đường tiệm cận của đồ thị hàm số: Nhận biết được '
+            'solution': 'Theo nội dung cốt lõi của Bài 3: Đường tiệm cận của đồ thị hàm số: Nhận biết được '
                         'đường tiệm cận ngang, tiệm cận đứng và tiệm cận xiên của đồ thị hàm số.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -499,41 +503,44 @@ LESSONS = [{'topic': 'l12-ch01-ung-dung-dao-ham',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 3: Đường tiệm cận của '
-                 'đồ thị hàm số**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được đường tiệm cận '
-                           'ngang, tiệm cận đứng và tiệm cận xiên của đồ thị hàm số.',
-                           'Quy tắc/công thức **Tiệm cận ngang** trong bài được xác định bởi: $\\lim_{x \\to '
-                           '\\pm\\infty} f(x) = y_0 \\Rightarrow \\text{TCN: } y = y_0$.',
-                           "Trong mọi trường hợp, **Tiệm cận ngang** luôn được tính bằng công thức $f'(x) "
-                           '\\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm) (thuộc Đồng biến trên '
-                           'khoảng) mà không cần điều kiện của Bài 3: Đường tiệm cận của đồ thị hàm số.',
-                           'Với bài toán minh họa: “Tìm các đường tiệm cận của đồ thị hàm số $y = '
-                           '\\dfrac{2x^2 - x + 1}{x - 1}$.”, lời giải đúng là: Tập xác định $D = \\mathbb{R} '
-                           '\\setminus \\{1\\}$. Chia đa thức ta có $y = 2x + 1 + \\dfrac{2}{x - 1}$. Vì '
-                           '$\\lim_{x \\to 1^+} y = +\\infty$ và $\\lim_{x \\to 1^-} y = -\\infty$...'],
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 3: Đường tiệm cận của đồ '
+                 'thị hàm số**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết được đường tiệm cận ngang, '
+                           'tiệm cận đứng và tiệm cận xiên của đồ thị hàm số.',
+                           'Trong **Bài 3: Đường tiệm cận của đồ thị hàm số**, quy tắc/công thức **Tiệm cận '
+                           'ngang** được viết là: $\\lim_{x \\to \\pm\\infty} f(x) = y_0 \\Rightarrow '
+                           '\\text{TCN: } y = y_0$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $\\lim_{x \\to \\pm\\notinfty} f(x) = y_0 '
+                           '\\Rightarrow \\text{TCN: } y = y_0$ thì kết quả của **Tiệm cận ngang** trong '
+                           '**Bài 3: Đường tiệm cận của đồ thị hàm số** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Tìm các đường tiệm cận của đồ thị hàm số $y = \\dfrac{2x^2 - '
+                           'x + 1}{x - 1}$.”, kết quả giải đúng là: Tập xác định $D = \\mathbb{R} \\setminus '
+                           '\\{1\\}$. Chia đa thức ta có $y = 2x + 1 + \\dfrac{2}{x - 1}$. Vì $\\lim_{x \\to '
+                           '1^+} y = +\\infty$ và...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 3: Đường tiệm cận của đồ thị hàm số. b) '
-                        '**Đúng** theo công thức trọng tâm **Tiệm cận ngang** ($\\lim_{x \\to \\pm\\infty} '
-                        "f(x) = y_0 \\Rightarrow \\text{TCN: } y = y_0$). c) **Sai** vì $f'(x) \\ge 0, "
-                        '\\forall x \\in K$ (dấu $=$ tại hữu hạn điểm) là công thức của nội dung khác, không '
-                        'phải quy tắc chung của **Tiệm cận ngang**. d) **Đúng** theo lời giải ví dụ minh họa '
-                        'trong bài học.'},
+                        '**Đúng** theo công thức **Tiệm cận ngang** ($\\lim_{x \\to \\pm\\infty} f(x) = y_0 '
+                        '\\Rightarrow \\text{TCN: } y = y_0$). c) **Sai** vì công thức đúng của **Tiệm cận '
+                        'ngang** phải là $\\lim_{x \\to \\pm\\infty} f(x) = y_0 \\Rightarrow \\text{TCN: } y '
+                        '= y_0$ chứ không phải $\\lim_{x \\to \\pm\\notinfty} f(x) = y_0 \\Rightarrow '
+                        '\\text{TCN: } y = y_0$. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 3: Đường tiệm cận của đồ thị hàm số** để giải quyết tình huống '
-                 'sau: Tìm các đường tiệm cận của đồ thị hàm số $y = \\dfrac{2x^2 - x + 1}{x - 1}$. Kết quả '
-                 'và hướng giải nào dưới đây là **đúng**?',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 3: Đường tiệm cận của đồ thị hàm số** để giải bài '
+                 'toán sau: Tìm các đường tiệm cận của đồ thị hàm số $y = \\dfrac{2x^2 - x + 1}{x - 1}$. '
+                 'Cách giải và kết quả nào dưới đây là **đúng**?',
             'options': ['Tập xác định $D = \\mathbb{R} \\setminus \\{1\\}$. Chia đa thức ta có $y = 2x + 1 + '
                         '\\dfrac{2}{x - 1}$. Vì $\\lim_{x \\to 1^+} y = +\\infty$ và $\\lim_{x \\to 1^-} y = '
                         '-\\infty$...',
-                        "Tập xác định $D = \\mathbb{R}$. Ta có $y' = 3x^2 - 6x = 3x(x - 2)$. Cho $y' = 0 "
-                        "\\Leftrightarrow x = 0$ hoặc $x = 2$. Bảng xét dấu $y'$: trên $(-\\infty; 0)$...",
-                        "Hàm số liên tục trên $[0; 2]$. Ta có $f'(x) = 3x^2 - 3 = 0 \\Leftrightarrow x = 1 "
-                        '\\in (0; 2)$ hoặc $x = -1 \\notin (0; 2)$. Tính giá trị: $f(0) = 2$; $f(1) = 0$...',
-                        "Ta có $y' = 3x^2 - 6x$ và $y'' = 6x - 6$. Cho $y'' = 0 \\Leftrightarrow 6x - 6 = 0 "
-                        '\\Leftrightarrow x = 1$. Với $x = 1 \\Rightarrow y = 1^3 - 3 \\cdot 1^2 + 1 = '
-                        '-1$...'],
+                        'Tập xác định $D = \\mathbb{R} \\setminus \\{1\\}$. Chia đa thức ta có $y = 2x + 1 + '
+                        '\\dfrac{2}{x - 1}$. Vì $\\lim_{x \\to 1^+} y = +\\notinfty$ và $\\lim_{x \\to 1^-} '
+                        'y = -\\infty$...',
+                        'Tập xác định $D = \\mathbb{R} \\setminus \\{1\\}$. Chia đa thức ta có $y = 2x + 1 + '
+                        '\\dfrac{x - 1}{2}$. Vì $\\lim_{x \\to 1^+} y = +\\infty$ và $\\lim_{x \\to 1^-} y = '
+                        '-\\infty$...',
+                        'Tập xác định $D = \\mathbb{R} \\setminus \\{2\\}$. Chia đa thức ta có $y = 2x + 1 + '
+                        '\\dfrac{2}{x - 1}$. Vì $\\lim_{x \\to 1^+} y = +\\infty$ và $\\lim_{x \\to 1^-} y = '
+                        '-\\infty$...'],
             'answer': 0,
             'solution': 'Lời giải chi tiết theo Bài 3: Đường tiệm cận của đồ thị hàm số: Tập xác định $D = '
                         '\\mathbb{R} \\setminus \\{1\\}$. Chia đa thức ta có $y = 2x + 1 + \\dfrac{2}{x - '
@@ -610,30 +617,29 @@ LESSONS = [{'topic': 'l12-ch01-ung-dung-dao-ham',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 4: Khảo sát sự biến thiên và vẽ đồ thị của hàm số**, '
-                 'công thức hoặc quy tắc nào sau đây biểu diễn đúng **Tâm đối xứng hàm bậc ba**?',
-            'options': ['$I\\left(-\\dfrac{d}{c}; \\dfrac{a}{c}\\right)$ (giao điểm của TCĐ và TCN)',
+            'q': 'Trong **Bài 4: Khảo sát sự biến thiên và vẽ đồ thị của hàm số**, quy tắc hoặc công thức '
+                 'nào sau đây xác định đúng **Tâm đối xứng hàm bậc ba**?',
+            'options': ["$y'' = 6ax - 2b = 0 \\Leftrightarrow x_I = -\\dfrac{b}{3a}$",
                         "$y'' = 6ax + 2b = 0 \\Leftrightarrow x_I = -\\dfrac{b}{3a}$",
-                        '$\\lim_{x \\to +\\infty} y = +\\infty \\Leftrightarrow a > 0; \\quad \\lim_{x \\to '
-                        '+\\infty} y = -\\infty \\Leftrightarrow a < 0$',
-                        "$f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm)"],
+                        "$y'' = 6ax + 2b = 0 \\Leftrightarrow x_I = -\\dfrac{3a}{b}$",
+                        "$y'' = 6ax + 2b = 2 \\Leftrightarrow x_I = -\\dfrac{b}{3a}$"],
             'answer': 1,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 4: Khảo sát sự biến thiên và vẽ đồ thị của '
-                        "hàm số, **Tâm đối xứng hàm bậc ba** được xác định bởi: $y'' = 6ax + 2b = 0 "
-                        '\\Leftrightarrow x_I = -\\dfrac{b}{3a}$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 4: Khảo sát sự biến thiên và vẽ đồ thị của hàm số, '
+                        "**Tâm đối xứng hàm bậc ba** được xác định bởi: $y'' = 6ax + 2b = 0 \\Leftrightarrow "
+                        'x_I = -\\dfrac{b}{3a}$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 4: Khảo sát sự biến thiên và vẽ đồ thị của hàm số**, nội dung/biểu thức '
-                 '$I\\left(-\\dfrac{d}{c}; \\dfrac{a}{c}\\right)$ (giao điểm của TCĐ và TCN) là quy tắc hoặc '
-                 'công thức của mục nào sau đây?',
-            'options': ['Tâm đối xứng hàm bậc ba',
-                        'Nhánh cuối đồ thị bậc ba',
-                        'Tâm đối xứng hàm nhất biến',
-                        'Đồng biến trên khoảng'],
+            'q': 'Khi học **Bài 4: Khảo sát sự biến thiên và vẽ đồ thị của hàm số**, biểu thức hoặc quy tắc '
+                 'nào dưới đây biểu diễn đúng **Tâm đối xứng hàm nhất biến**?',
+            'options': ['$I\\geft(-\\dfrac{d}{c}; \\dfrac{a}{c}\\right)$ (giao điểm của TCĐ và TCN)',
+                        '$I\\left(-\\dfrac{c}{d}; \\dfrac{a}{c}\\right)$ (giao điểm của TCĐ và TCN)',
+                        '$I\\left(-\\dfrac{d}{c}; \\dfrac{a}{c}\\right)$ (giao điểm của TCĐ và TCN)',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $I\\left(-\\dfrac{d}{c}; '
+                        '\\dfrac{a}{c}\\right)$ (giao điểm của TCĐ và TCN)'],
             'answer': 2,
-            'solution': 'Trong Bài 4: Khảo sát sự biến thiên và vẽ đồ thị của hàm số, biểu thức/quy tắc '
-                        '$I\\left(-\\dfrac{d}{c}; \\dfrac{a}{c}\\right)$ (giao điểm của TCĐ và TCN) chính là '
-                        'nội dung của **Tâm đối xứng hàm nhất biến**.'},
+            'solution': 'Trong Bài 4: Khảo sát sự biến thiên và vẽ đồ thị của hàm số, **Tâm đối xứng hàm '
+                        'nhất biến** có công thức/quy tắc là: $I\\left(-\\dfrac{d}{c}; '
+                        '\\dfrac{a}{c}\\right)$ (giao điểm của TCĐ và TCN).'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Số giao điểm của đồ thị hàm số $y = x^3 - 3x + 2$ và trục hoành $Ox$ là bao nhiêu?',
@@ -645,18 +651,18 @@ LESSONS = [{'topic': 'l12-ch01-ung-dung-dao-ham',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 4: Khảo sát sự biến thiên và vẽ đồ thị của hàm số** (Chương I: Ứng dụng đạo '
-                 'hàm để khảo sát và vẽ đồ thị hàm số), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần '
-                 'đạt và bản chất kiến thức của bài?',
+            'q': 'Để nắm vững bản chất của **Bài 4: Khảo sát sự biến thiên và vẽ đồ thị của hàm số**, nhận '
+                 'định nào sau đây là **chính xác**?',
             'options': ['Nắm vững sơ đồ tổng quát khảo sát sự biến thiên và vẽ đồ thị hàm số.',
-                        'Nhận biết được tính đồng biến, nghịch biến của hàm số trên một khoảng dựa vào dấu '
-                        "của đạo hàm cấp một $f'(x)$.",
-                        'Xác định được điểm cực đại, điểm cực tiểu, giá trị cực đại, giá trị cực tiểu của '
-                        "hàm số thông qua bảng biến thiên hoặc đạo hàm cấp hai $f''(x)$.",
-                        'Vận dụng điều kiện đơn điệu và cực trị để giải các bài toán chứa tham số $m$.'],
+                        'Nắm vững sơ đồ tổng quát khảo sát sự biến thiên và vẽ đồ thị hàm số. (với dấu ngược '
+                        'lại)',
+                        'Đảo ngược vế của quy tắc: Nắm vững sơ đồ tổng quát khảo sát sự biến thiên và vẽ đồ '
+                        'thị hàm số.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nắm vững sơ đồ tổng quát khảo '
+                        'sát sự biến thiên và vẽ đồ thị hàm số.'],
             'answer': 0,
-            'solution': 'Theo yêu cầu cần đạt của Bài 4: Khảo sát sự biến thiên và vẽ đồ thị của hàm số: Nắm '
-                        'vững sơ đồ tổng quát khảo sát sự biến thiên và vẽ đồ thị hàm số.'},
+            'solution': 'Theo nội dung cốt lõi của Bài 4: Khảo sát sự biến thiên và vẽ đồ thị của hàm số: '
+                        'Nắm vững sơ đồ tổng quát khảo sát sự biến thiên và vẽ đồ thị hàm số.'},
            {'level': 'hieu',
             'type': 'tf4',
             'q': 'Cho hàm số $y = \\dfrac{x - 2}{x + 1}$ có đồ thị $(C)$. Xét tính đúng sai của các mệnh đề '
@@ -673,42 +679,44 @@ LESSONS = [{'topic': 'l12-ch01-ung-dung-dao-ham',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 4: Khảo sát sự biến '
-                 'thiên và vẽ đồ thị của hàm số**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nắm vững sơ đồ tổng quát khảo sát '
-                           'sự biến thiên và vẽ đồ thị hàm số.',
-                           "Quy tắc/công thức **Tâm đối xứng hàm bậc ba** trong bài được xác định bởi: $y'' "
-                           '= 6ax + 2b = 0 \\Leftrightarrow x_I = -\\dfrac{b}{3a}$.',
-                           'Trong mọi trường hợp, **Tâm đối xứng hàm bậc ba** luôn được tính bằng công thức '
-                           "$f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm) (thuộc Đồng biến "
-                           'trên khoảng) mà không cần điều kiện của Bài 4: Khảo sát sự biến thiên và vẽ đồ '
-                           'thị của hàm số.',
-                           'Với bài toán minh họa: “Tìm tọa độ tâm đối xứng của đồ thị hàm số $y = x^3 - '
-                           "3x^2 + 1$.”, lời giải đúng là: Ta có $y' = 3x^2 - 6x$ và $y'' = 6x - 6$. Cho "
-                           "$y'' = 0 \\Leftrightarrow 6x - 6 = 0 \\Leftrightarrow x = 1$. Với $x = 1 "
-                           '\\Rightarrow y = 1^3 - 3 \\cdot 1^2 + 1 = -1$...'],
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 4: Khảo sát sự biến thiên '
+                 'và vẽ đồ thị của hàm số**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nắm vững sơ đồ tổng quát khảo sát sự '
+                           'biến thiên và vẽ đồ thị hàm số.',
+                           'Trong **Bài 4: Khảo sát sự biến thiên và vẽ đồ thị của hàm số**, quy tắc/công '
+                           "thức **Tâm đối xứng hàm bậc ba** được viết là: $y'' = 6ax + 2b = 0 "
+                           '\\Leftrightarrow x_I = -\\dfrac{b}{3a}$.',
+                           "Nếu áp dụng sai dấu/phép tính thành $y'' = 6ax - 2b = 0 \\Leftrightarrow x_I = "
+                           '-\\dfrac{b}{3a}$ thì kết quả của **Tâm đối xứng hàm bậc ba** trong **Bài 4: Khảo '
+                           'sát sự biến thiên và vẽ đồ thị của hàm số** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Tìm tọa độ tâm đối xứng của đồ thị hàm số $y = x^3 - 3x^2 + '
+                           "1$.”, kết quả giải đúng là: Ta có $y' = 3x^2 - 6x$ và $y'' = 6x - 6$. Cho $y'' = "
+                           '0 \\Leftrightarrow 6x - 6 = 0 \\Leftrightarrow x = 1$. Với $x = 1 \\Rightarrow y '
+                           '= 1^3 - 3 \\cdot 1^2 + 1 = -1$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 4: Khảo sát sự biến thiên và vẽ đồ thị của '
-                        "hàm số. b) **Đúng** theo công thức trọng tâm **Tâm đối xứng hàm bậc ba** ($y'' = "
-                        "6ax + 2b = 0 \\Leftrightarrow x_I = -\\dfrac{b}{3a}$). c) **Sai** vì $f'(x) \\ge 0, "
-                        '\\forall x \\in K$ (dấu $=$ tại hữu hạn điểm) là công thức của nội dung khác, không '
-                        'phải quy tắc chung của **Tâm đối xứng hàm bậc ba**. d) **Đúng** theo lời giải ví dụ '
-                        'minh họa trong bài học.'},
+                        "hàm số. b) **Đúng** theo công thức **Tâm đối xứng hàm bậc ba** ($y'' = 6ax + 2b = 0 "
+                        '\\Leftrightarrow x_I = -\\dfrac{b}{3a}$). c) **Sai** vì công thức đúng của **Tâm '
+                        "đối xứng hàm bậc ba** phải là $y'' = 6ax + 2b = 0 \\Leftrightarrow x_I = "
+                        "-\\dfrac{b}{3a}$ chứ không phải $y'' = 6ax - 2b = 0 \\Leftrightarrow x_I = "
+                        '-\\dfrac{b}{3a}$. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 4: Khảo sát sự biến thiên và vẽ đồ thị của hàm số** để giải quyết '
-                 'tình huống sau: Tìm tọa độ tâm đối xứng của đồ thị hàm số $y = x^3 - 3x^2 + 1$. Kết quả và '
-                 'hướng giải nào dưới đây là **đúng**?',
-            'options': ["Tập xác định $D = \\mathbb{R}$. Ta có $y' = 3x^2 - 6x = 3x(x - 2)$. Cho $y' = 0 "
-                        "\\Leftrightarrow x = 0$ hoặc $x = 2$. Bảng xét dấu $y'$: trên $(-\\infty; 0)$...",
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 4: Khảo sát sự biến thiên và vẽ đồ thị của hàm số** '
+                 'để giải bài toán sau: Tìm tọa độ tâm đối xứng của đồ thị hàm số $y = x^3 - 3x^2 + 1$. Cách '
+                 'giải và kết quả nào dưới đây là **đúng**?',
+            'options': ["Ta có $y' = 3x^2 - 6x$ và $y'' = 6x - 6$. Cho $y'' = 0 \\Leftrightarrow 6x - 6 = 0 "
+                        '\\Leftrightarrow x = 1$. Với $x = 1 \\Rightarrow y = 1^3 - 3 \\cdot 1^2 - 1 = '
+                        '-1$...',
                         "Ta có $y' = 3x^2 - 6x$ và $y'' = 6x - 6$. Cho $y'' = 0 \\Leftrightarrow 6x - 6 = 0 "
                         '\\Leftrightarrow x = 1$. Với $x = 1 \\Rightarrow y = 1^3 - 3 \\cdot 1^2 + 1 = '
                         '-1$...',
-                        "Hàm số liên tục trên $[0; 2]$. Ta có $f'(x) = 3x^2 - 3 = 0 \\Leftrightarrow x = 1 "
-                        '\\in (0; 2)$ hoặc $x = -1 \\notin (0; 2)$. Tính giá trị: $f(0) = 2$; $f(1) = 0$...',
-                        'Tập xác định $D = \\mathbb{R} \\setminus \\{1\\}$. Chia đa thức ta có $y = 2x + 1 + '
-                        '\\dfrac{2}{x - 1}$. Vì $\\lim_{x \\to 1^+} y = +\\infty$ và $\\lim_{x \\to 1^-} y = '
-                        '-\\infty$...'],
+                        "Ta có $y' = 3x^2 - 6x$ và $y'' = 6x - 6$. Cho $y'' = 0 \\Leftrightarrow 6x - 6 = 0 "
+                        '\\Leftrightarrow x = 1$. Với $x = 1 \\Rightarrow y = 1^3 - 3 \\cdot 1^2 + 1 = '
+                        '-2$...',
+                        "Ta có $y' = 3x^4 - 6x$ và $y'' = 6x - 6$. Cho $y'' = 0 \\Leftrightarrow 6x - 6 = 0 "
+                        '\\Leftrightarrow x = 1$. Với $x = 1 \\Rightarrow y = 1^3 - 3 \\cdot 1^2 + 1 = '
+                        '-1$...'],
             'answer': 1,
             'solution': 'Lời giải chi tiết theo Bài 4: Khảo sát sự biến thiên và vẽ đồ thị của hàm số: Ta có '
                         "$y' = 3x^2 - 6x$ và $y'' = 6x - 6$. Cho $y'' = 0 \\Leftrightarrow 6x - 6 = 0 "
@@ -782,28 +790,28 @@ LESSONS = [{'topic': 'l12-ch01-ung-dung-dao-ham',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 5: Ứng dụng đạo hàm để giải quyết một số vấn đề liên '
-                 'quan đến thực tiễn**, công thức hoặc quy tắc nào sau đây biểu diễn đúng **Vận tốc và gia '
-                 'tốc tức thời**?',
-            'options': ['$P(x) = R(x) - C(x)$',
-                        "$MC = C'(x), \\quad MR = R'(x)$",
+            'q': 'Trong **Bài 5: Ứng dụng đạo hàm để giải quyết một số vấn đề liên quan đến thực tiễn**, quy '
+                 'tắc hoặc công thức nào sau đây xác định đúng **Vận tốc và gia tốc tức thời**?',
+            'options': ["$v(t) = s'(t), \\quad a(t) = v'(t) = s''(t)$ (với dấu ngược lại)",
+                        "Đảo ngược vế của quy tắc: $v(t) = s'(t), \\quad a(t) = v'(t) = s''(t)$",
                         "$v(t) = s'(t), \\quad a(t) = v'(t) = s''(t)$",
-                        "$f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm)"],
+                        "Trường hợp trái ngược: không thỏa mãn điều kiện của $v(t) = s'(t), \\quad a(t) = "
+                        "v'(t) = s''(t)$"],
             'answer': 2,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 5: Ứng dụng đạo hàm để giải quyết một số vấn '
-                        'đề liên quan đến thực tiễn, **Vận tốc và gia tốc tức thời** được xác định bởi: '
-                        "$v(t) = s'(t), \\quad a(t) = v'(t) = s''(t)$."},
+            'solution': 'Theo kiến thức trọng tâm của Bài 5: Ứng dụng đạo hàm để giải quyết một số vấn đề '
+                        'liên quan đến thực tiễn, **Vận tốc và gia tốc tức thời** được xác định bởi: $v(t) = '
+                        "s'(t), \\quad a(t) = v'(t) = s''(t)$."},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 5: Ứng dụng đạo hàm để giải quyết một số vấn đề liên quan đến thực tiễn**, nội '
-                 'dung/biểu thức $P(x) = R(x) - C(x)$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Vận tốc và gia tốc tức thời',
-                        'Chi phí biên và doanh thu biên',
-                        'Đồng biến trên khoảng',
-                        'Hàm lợi nhuận'],
+            'q': 'Khi học **Bài 5: Ứng dụng đạo hàm để giải quyết một số vấn đề liên quan đến thực tiễn**, '
+                 'biểu thức hoặc quy tắc nào dưới đây biểu diễn đúng **Hàm lợi nhuận**?',
+            'options': ['$P(x) = R(x) + C(x)$',
+                        'Đảo ngược vế của quy tắc: $P(x) = R(x) - C(x)$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $P(x) = R(x) - C(x)$',
+                        '$P(x) = R(x) - C(x)$'],
             'answer': 3,
             'solution': 'Trong Bài 5: Ứng dụng đạo hàm để giải quyết một số vấn đề liên quan đến thực tiễn, '
-                        'biểu thức/quy tắc $P(x) = R(x) - C(x)$ chính là nội dung của **Hàm lợi nhuận**.'},
+                        '**Hàm lợi nhuận** có công thức/quy tắc là: $P(x) = R(x) - C(x)$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Một vật được ném thẳng đứng lên cao với độ cao $h(t) = -5t^2 + 20t + 1$ ($h$ tính bằng '
@@ -816,18 +824,18 @@ LESSONS = [{'topic': 'l12-ch01-ung-dung-dao-ham',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 5: Ứng dụng đạo hàm để giải quyết một số vấn đề liên quan đến thực tiễn** '
-                 '(Chương I: Ứng dụng đạo hàm để khảo sát và vẽ đồ thị hàm số), khẳng định nào sau đây phản '
-                 'ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Nhận biết được tính đồng biến, nghịch biến của hàm số trên một khoảng dựa vào dấu '
-                        "của đạo hàm cấp một $f'(x)$.",
+            'q': 'Để nắm vững bản chất của **Bài 5: Ứng dụng đạo hàm để giải quyết một số vấn đề liên quan '
+                 'đến thực tiễn**, nhận định nào sau đây là **chính xác**?',
+            'options': ["Hiểu được đạo hàm $f'(t)$ biểu thị tốc độ thay đổi tức thời của đại lượng $y = "
+                        'f(t)$ theo biến $t$. (với dấu ngược lại)',
                         "Hiểu được đạo hàm $f'(t)$ biểu thị tốc độ thay đổi tức thời của đại lượng $y = "
                         'f(t)$ theo biến $t$.',
-                        'Xác định được điểm cực đại, điểm cực tiểu, giá trị cực đại, giá trị cực tiểu của '
-                        "hàm số thông qua bảng biến thiên hoặc đạo hàm cấp hai $f''(x)$.",
-                        'Vận dụng điều kiện đơn điệu và cực trị để giải các bài toán chứa tham số $m$.'],
+                        "Đảo ngược vế của quy tắc: Hiểu được đạo hàm $f'(t)$ biểu thị tốc độ thay đổi tức "
+                        'thời của đại lượng $y = f(t)$ theo biến $t$.',
+                        "Trường hợp trái ngược: không thỏa mãn điều kiện của Hiểu được đạo hàm $f'(t)$ biểu "
+                        'thị tốc độ thay đổi tức thời của đại lượng $y = f(t)$ theo biến $t$.'],
             'answer': 1,
-            'solution': 'Theo yêu cầu cần đạt của Bài 5: Ứng dụng đạo hàm để giải quyết một số vấn đề liên '
+            'solution': 'Theo nội dung cốt lõi của Bài 5: Ứng dụng đạo hàm để giải quyết một số vấn đề liên '
                         "quan đến thực tiễn: Hiểu được đạo hàm $f'(t)$ biểu thị tốc độ thay đổi tức thời của "
                         'đại lượng $y = f(t)$ theo biến $t$.'},
            {'level': 'hieu',
@@ -848,44 +856,44 @@ LESSONS = [{'topic': 'l12-ch01-ung-dung-dao-ham',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 5: Ứng dụng đạo hàm để '
-                 'giải quyết một số vấn đề liên quan đến thực tiễn**:',
-            'statements': ["Một trong các yêu cầu cần đạt của bài học là: Hiểu được đạo hàm $f'(t)$ biểu thị "
-                           'tốc độ thay đổi tức thời của đại lượng $y = f(t)$ theo biến $t$.',
-                           'Quy tắc/công thức **Vận tốc và gia tốc tức thời** trong bài được xác định bởi: '
-                           "$v(t) = s'(t), \\quad a(t) = v'(t) = s''(t)$.",
-                           'Trong mọi trường hợp, **Vận tốc và gia tốc tức thời** luôn được tính bằng công '
-                           "thức $f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm) (thuộc Đồng "
-                           'biến trên khoảng) mà không cần điều kiện của Bài 5: Ứng dụng đạo hàm để giải '
-                           'quyết một số vấn đề liên quan đến thực tiễn.',
-                           'Với bài toán minh họa: “Một tấm bìa hình vuông cạnh $12\\text{ cm}$. Người ta '
-                           'cắt bỏ ở bốn góc bốn hình vuông bằng nhau cạnh $x\\text{ cm}$ rồi gấp lại thành '
-                           'một hình...”, lời giải đúng là: Điều kiện $0 < x < 6$. Đáy hộp là hình vuông '
-                           'cạnh $12 - 2x$, chiều cao hộp là $x$. Thể tích hộp là $V(x) = x(12 - 2x)^2 = '
-                           '4x(6 - x)^2 = 4(x^3 - 12x^2 + 36x)$...'],
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 5: Ứng dụng đạo hàm để giải '
+                 'quyết một số vấn đề liên quan đến thực tiễn**:',
+            'statements': ["Nội dung trọng tâm của bài học yêu cầu: Hiểu được đạo hàm $f'(t)$ biểu thị tốc "
+                           'độ thay đổi tức thời của đại lượng $y = f(t)$ theo biến $t$.',
+                           'Trong **Bài 5: Ứng dụng đạo hàm để giải quyết một số vấn đề liên quan đến thực '
+                           'tiễn**, quy tắc/công thức **Vận tốc và gia tốc tức thời** được viết là: $v(t) = '
+                           "s'(t), \\quad a(t) = v'(t) = s''(t)$.",
+                           "Nếu áp dụng sai dấu/phép tính thành $v(t) = s'(t), \\quad a(t) = v'(t) = s''(t)$ "
+                           '(với dấu ngược lại) thì kết quả của **Vận tốc và gia tốc tức thời** trong **Bài '
+                           '5: Ứng dụng đạo hàm để giải quyết một số vấn đề liên quan đến thực tiễn** vẫn '
+                           'không thay đổi.',
+                           'Xét ví dụ của bài: “Một tấm bìa hình vuông cạnh $12\\text{ cm}$. Người ta cắt bỏ '
+                           'ở bốn góc bốn hình vuông bằng nhau cạnh $x\\text{ cm}$ rồi gấp lại thành '
+                           'một...”, kết quả giải đúng là: Điều kiện $0 < x < 6$. Đáy hộp là hình vuông cạnh '
+                           '$12 - 2x$, chiều cao hộp là $x$. Thể tích hộp là $V(x) = x(12 - 2x)^2 = 4x(6 - '
+                           'x)^2 = 4(x^3 - 12x^2 + 36x)$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 5: Ứng dụng đạo hàm để giải quyết một số '
-                        'vấn đề liên quan đến thực tiễn. b) **Đúng** theo công thức trọng tâm **Vận tốc và '
-                        "gia tốc tức thời** ($v(t) = s'(t), \\quad a(t) = v'(t) = s''(t)$). c) **Sai** vì "
-                        "$f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm) là công thức của nội "
-                        'dung khác, không phải quy tắc chung của **Vận tốc và gia tốc tức thời**. d) '
-                        '**Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        'vấn đề liên quan đến thực tiễn. b) **Đúng** theo công thức **Vận tốc và gia tốc tức '
+                        "thời** ($v(t) = s'(t), \\quad a(t) = v'(t) = s''(t)$). c) **Sai** vì công thức đúng "
+                        "của **Vận tốc và gia tốc tức thời** phải là $v(t) = s'(t), \\quad a(t) = v'(t) = "
+                        "s''(t)$ chứ không phải $v(t) = s'(t), \\quad a(t) = v'(t) = s''(t)$ (với dấu ngược "
+                        'lại). d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 5: Ứng dụng đạo hàm để giải quyết một số vấn đề liên quan đến '
-                 'thực tiễn** để giải quyết tình huống sau: Một tấm bìa hình vuông cạnh $12\\text{ cm}$. '
-                 'Người ta cắt bỏ ở bốn góc bốn hình vuông bằng nhau cạnh $x\\text{ cm}$ rồi gấp lại thành '
-                 'một hình hộp chữ nhật không nắp. Tìm $x$ để thể tích hộp lớn nhất. Kết quả và hướng giải '
-                 'nào dưới đây là **đúng**?',
-            'options': ["Tập xác định $D = \\mathbb{R}$. Ta có $y' = 3x^2 - 6x = 3x(x - 2)$. Cho $y' = 0 "
-                        "\\Leftrightarrow x = 0$ hoặc $x = 2$. Bảng xét dấu $y'$: trên $(-\\infty; 0)$...",
-                        "Hàm số liên tục trên $[0; 2]$. Ta có $f'(x) = 3x^2 - 3 = 0 \\Leftrightarrow x = 1 "
-                        '\\in (0; 2)$ hoặc $x = -1 \\notin (0; 2)$. Tính giá trị: $f(0) = 2$; $f(1) = 0$...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 5: Ứng dụng đạo hàm để giải quyết một số vấn đề '
+                 'liên quan đến thực tiễn** để giải bài toán sau: Một tấm bìa hình vuông cạnh $12\\text{ '
+                 'cm}$. Người ta cắt bỏ ở bốn góc bốn hình vuông bằng nhau cạnh $x\\text{ cm}$ rồi gấp lại '
+                 'thành một hình hộp chữ nhật không nắp. Tìm $x$ để thể tích hộp lớn nhất. Cách giải và kết '
+                 'quả nào dưới đây là **đúng**?',
+            'options': ['Điều kiện $0 < x < 6$. Đáy hộp là hình vuông cạnh $12 - 2x$, chiều cao hộp là $x$. '
+                        'Thể tích hộp là $V(x) = x(12 - 2x)^2 = 4x(6 - x)^2 = 4(x^3 - 12x^2 - 36x)$...',
+                        'Điều kiện $0 < x < 6$. Đáy hộp là hình vuông cạnh $12 - 2x$, chiều cao hộp là $x$. '
+                        'Thể tích hộp là $V(x) = x(12 - 2x)^2 = 4x(6 - x)^2 = 4(x^3 - 12x^1 + 36x)$...',
                         'Điều kiện $0 < x < 6$. Đáy hộp là hình vuông cạnh $12 - 2x$, chiều cao hộp là $x$. '
                         'Thể tích hộp là $V(x) = x(12 - 2x)^2 = 4x(6 - x)^2 = 4(x^3 - 12x^2 + 36x)$...',
-                        'Tập xác định $D = \\mathbb{R} \\setminus \\{1\\}$. Chia đa thức ta có $y = 2x + 1 + '
-                        '\\dfrac{2}{x - 1}$. Vì $\\lim_{x \\to 1^+} y = +\\infty$ và $\\lim_{x \\to 1^-} y = '
-                        '-\\infty$...'],
+                        'Điều kiện $2 < x < 6$. Đáy hộp là hình vuông cạnh $12 - 2x$, chiều cao hộp là $x$. '
+                        'Thể tích hộp là $V(x) = x(12 - 2x)^2 = 4x(6 - x)^2 = 4(x^3 - 12x^2 + 36x)$...'],
             'answer': 2,
             'solution': 'Lời giải chi tiết theo Bài 5: Ứng dụng đạo hàm để giải quyết một số vấn đề liên '
                         'quan đến thực tiễn: Điều kiện $0 < x < 6$. Đáy hộp là hình vuông cạnh $12 - 2x$, '
@@ -977,29 +985,36 @@ LESSONS = [{'topic': 'l12-ch01-ung-dung-dao-ham',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 6: Vectơ trong không gian**, công thức hoặc quy tắc nào '
-                 'sau đây biểu diễn đúng **Quy tắc hình hộp**?',
-            'options': ['$\\overrightarrow{MA} + \\overrightarrow{MB} + \\overrightarrow{MC} = '
-                        '3\\overrightarrow{MG}$',
-                        '$\\vec{a} \\cdot \\vec{b} = |\\vec{a}| \\cdot |\\vec{b}| \\cdot \\cos(\\vec{a}, '
-                        '\\vec{b})$',
-                        "$f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm)",
+            'q': 'Trong **Bài 6: Vectơ trong không gian**, quy tắc hoặc công thức nào sau đây xác định đúng '
+                 '**Quy tắc hình hộp**?',
+            'options': ["$\\overrightarrow{AB} - \\overrightarrow{AD} + \\overrightarrow{AA'} = "
+                        "\\overrightarrow{AC'}$",
+                        'Đảo ngược vế của quy tắc: $\\overrightarrow{AB} + \\overrightarrow{AD} + '
+                        "\\overrightarrow{AA'} = \\overrightarrow{AC'}$",
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\overrightarrow{AB} + '
+                        "\\overrightarrow{AD} + \\overrightarrow{AA'} = \\overrightarrow{AC'}$",
                         "$\\overrightarrow{AB} + \\overrightarrow{AD} + \\overrightarrow{AA'} = "
                         "\\overrightarrow{AC'}$"],
             'answer': 3,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 6: Vectơ trong không gian, **Quy tắc hình '
-                        'hộp** được xác định bởi: $\\overrightarrow{AB} + \\overrightarrow{AD} + '
+            'solution': 'Theo kiến thức trọng tâm của Bài 6: Vectơ trong không gian, **Quy tắc hình hộp** '
+                        'được xác định bởi: $\\overrightarrow{AB} + \\overrightarrow{AD} + '
                         "\\overrightarrow{AA'} = \\overrightarrow{AC'}$."},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 6: Vectơ trong không gian**, nội dung/biểu thức $\\overrightarrow{MA} + '
-                 '\\overrightarrow{MB} + \\overrightarrow{MC} = 3\\overrightarrow{MG}$ là quy tắc hoặc công '
-                 'thức của mục nào sau đây?',
-            'options': ['Trọng tâm tam giác', 'Quy tắc hình hộp', 'Tích vô hướng', 'Đồng biến trên khoảng'],
+            'q': 'Khi học **Bài 6: Vectơ trong không gian**, biểu thức hoặc quy tắc nào dưới đây biểu diễn '
+                 'đúng **Trọng tâm tam giác**?',
+            'options': ['$\\overrightarrow{MA} + \\overrightarrow{MB} + \\overrightarrow{MC} = '
+                        '3\\overrightarrow{MG}$',
+                        '$\\overrightarrow{MA} - \\overrightarrow{MB} + \\overrightarrow{MC} = '
+                        '3\\overrightarrow{MG}$',
+                        '$\\overrightarrow{MA} + \\overrightarrow{MB} + \\overrightarrow{MC} = '
+                        '2\\overrightarrow{MG}$',
+                        '$\\overrightarrow{MA} + \\overrightarrow{MB} + \\overrightarrow{MC} = '
+                        '6\\overrightarrow{MG}$'],
             'answer': 0,
-            'solution': 'Trong Bài 6: Vectơ trong không gian, biểu thức/quy tắc $\\overrightarrow{MA} + '
-                        '\\overrightarrow{MB} + \\overrightarrow{MC} = 3\\overrightarrow{MG}$ chính là nội '
-                        'dung của **Trọng tâm tam giác**.'},
+            'solution': 'Trong Bài 6: Vectơ trong không gian, **Trọng tâm tam giác** có công thức/quy tắc '
+                        'là: $\\overrightarrow{MA} + \\overrightarrow{MB} + \\overrightarrow{MC} = '
+                        '3\\overrightarrow{MG}$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Cho tứ diện $ABCD$ có $G$ là trọng tâm tam giác $BCD$. Đẳng thức nào dưới đây đúng?',
@@ -1019,18 +1034,18 @@ LESSONS = [{'topic': 'l12-ch01-ung-dung-dao-ham',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 6: Vectơ trong không gian** (Chương II: Vectơ và hệ trục tọa độ trong không '
-                 'gian), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của '
-                 'bài?',
-            'options': ['Nhận biết được tính đồng biến, nghịch biến của hàm số trên một khoảng dựa vào dấu '
-                        "của đạo hàm cấp một $f'(x)$.",
-                        'Xác định được điểm cực đại, điểm cực tiểu, giá trị cực đại, giá trị cực tiểu của '
-                        "hàm số thông qua bảng biến thiên hoặc đạo hàm cấp hai $f''(x)$.",
+            'q': 'Để nắm vững bản chất của **Bài 6: Vectơ trong không gian**, nhận định nào sau đây là '
+                 '**chính xác**?',
+            'options': ['Nhận biết được vectơ trong không gian, hai vectơ cùng phương, cùng hướng, bằng '
+                        'nhau. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Nhận biết được vectơ trong không gian, hai vectơ cùng '
+                        'phương, cùng hướng, bằng nhau.',
                         'Nhận biết được vectơ trong không gian, hai vectơ cùng phương, cùng hướng, bằng '
                         'nhau.',
-                        'Vận dụng điều kiện đơn điệu và cực trị để giải các bài toán chứa tham số $m$.'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nhận biết được vectơ trong '
+                        'không gian, hai vectơ cùng phương, cùng hướng, bằng nhau.'],
             'answer': 2,
-            'solution': 'Theo yêu cầu cần đạt của Bài 6: Vectơ trong không gian: Nhận biết được vectơ trong '
+            'solution': 'Theo nội dung cốt lõi của Bài 6: Vectơ trong không gian: Nhận biết được vectơ trong '
                         'không gian, hai vectơ cùng phương, cùng hướng, bằng nhau.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -1054,42 +1069,41 @@ LESSONS = [{'topic': 'l12-ch01-ung-dung-dao-ham',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 6: Vectơ trong không '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 6: Vectơ trong không '
                  'gian**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được vectơ trong không '
-                           'gian, hai vectơ cùng phương, cùng hướng, bằng nhau.',
-                           'Quy tắc/công thức **Quy tắc hình hộp** trong bài được xác định bởi: '
-                           "$\\overrightarrow{AB} + \\overrightarrow{AD} + \\overrightarrow{AA'} = "
-                           "\\overrightarrow{AC'}$.",
-                           "Trong mọi trường hợp, **Quy tắc hình hộp** luôn được tính bằng công thức $f'(x) "
-                           '\\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm) (thuộc Đồng biến trên '
-                           'khoảng) mà không cần điều kiện của Bài 6: Vectơ trong không gian.',
-                           "Với bài toán minh họa: “Cho hình lập phương $ABCD.A'B'C'D'$ có cạnh bằng $a$. "
-                           "Tính tích vô hướng $\\overrightarrow{AB} \\cdot \\overrightarrow{A'C'}$.”, lời "
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết được vectơ trong không gian, '
+                           'hai vectơ cùng phương, cùng hướng, bằng nhau.',
+                           'Trong **Bài 6: Vectơ trong không gian**, quy tắc/công thức **Quy tắc hình hộp** '
+                           'được viết là: $\\overrightarrow{AB} + \\overrightarrow{AD} + '
+                           "\\overrightarrow{AA'} = \\overrightarrow{AC'}$.",
+                           'Nếu áp dụng sai dấu/phép tính thành $\\overrightarrow{AB} - \\overrightarrow{AD} '
+                           "+ \\overrightarrow{AA'} = \\overrightarrow{AC'}$ thì kết quả của **Quy tắc hình "
+                           'hộp** trong **Bài 6: Vectơ trong không gian** vẫn không thay đổi.',
+                           "Xét ví dụ của bài: “Cho hình lập phương $ABCD.A'B'C'D'$ có cạnh bằng $a$. Tính "
+                           "tích vô hướng $\\overrightarrow{AB} \\cdot \\overrightarrow{A'C'}$.”, kết quả "
                            "giải đúng là: Vì $\\overrightarrow{A'C'} = \\overrightarrow{AC}$ nên "
                            "$\\overrightarrow{AB} \\cdot \\overrightarrow{A'C'} = \\overrightarrow{AB} "
                            '\\cdot \\overrightarrow{AC}$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 6: Vectơ trong không gian. b) **Đúng** '
-                        'theo công thức trọng tâm **Quy tắc hình hộp** ($\\overrightarrow{AB} + '
-                        "\\overrightarrow{AD} + \\overrightarrow{AA'} = \\overrightarrow{AC'}$). c) **Sai** "
-                        "vì $f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm) là công thức của "
-                        'nội dung khác, không phải quy tắc chung của **Quy tắc hình hộp**. d) **Đúng** theo '
-                        'lời giải ví dụ minh họa trong bài học.'},
+                        'theo công thức **Quy tắc hình hộp** ($\\overrightarrow{AB} + \\overrightarrow{AD} + '
+                        "\\overrightarrow{AA'} = \\overrightarrow{AC'}$). c) **Sai** vì công thức đúng của "
+                        '**Quy tắc hình hộp** phải là $\\overrightarrow{AB} + \\overrightarrow{AD} + '
+                        "\\overrightarrow{AA'} = \\overrightarrow{AC'}$ chứ không phải $\\overrightarrow{AB} "
+                        "- \\overrightarrow{AD} + \\overrightarrow{AA'} = \\overrightarrow{AC'}$. d) "
+                        '**Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 6: Vectơ trong không gian** để giải quyết tình huống sau: Cho '
-                 "hình lập phương $ABCD.A'B'C'D'$ có cạnh bằng $a$. Tính tích vô hướng $\\overrightarrow{AB} "
-                 "\\cdot \\overrightarrow{A'C'}$. Kết quả và hướng giải nào dưới đây là **đúng**?",
-            'options': ["Tập xác định $D = \\mathbb{R}$. Ta có $y' = 3x^2 - 6x = 3x(x - 2)$. Cho $y' = 0 "
-                        "\\Leftrightarrow x = 0$ hoặc $x = 2$. Bảng xét dấu $y'$: trên $(-\\infty; 0)$...",
-                        "Hàm số liên tục trên $[0; 2]$. Ta có $f'(x) = 3x^2 - 3 = 0 \\Leftrightarrow x = 1 "
-                        '\\in (0; 2)$ hoặc $x = -1 \\notin (0; 2)$. Tính giá trị: $f(0) = 2$; $f(1) = 0$...',
-                        'Tập xác định $D = \\mathbb{R} \\setminus \\{1\\}$. Chia đa thức ta có $y = 2x + 1 + '
-                        '\\dfrac{2}{x - 1}$. Vì $\\lim_{x \\to 1^+} y = +\\infty$ và $\\lim_{x \\to 1^-} y = '
-                        '-\\infty$...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 6: Vectơ trong không gian** để giải bài toán sau: '
+                 "Cho hình lập phương $ABCD.A'B'C'D'$ có cạnh bằng $a$. Tính tích vô hướng "
+                 "$\\overrightarrow{AB} \\cdot \\overrightarrow{A'C'}$. Cách giải và kết quả nào dưới đây là "
+                 '**đúng**?',
+            'options': ["Vì $\\overrightarrow{A'C'} = \\overrightarrow{AC}$ nên $\\overrightarrow{AB} : "
+                        "\\overrightarrow{A'C'} = \\overrightarrow{AB} \\cdot \\overrightarrow{AC}$...",
+                        'Thực hiện theo thứ tự ngược lại và bỏ qua điều kiện xác định trong bài',
+                        'Đổi ngược dấu của phép tính chính và không kiểm tra lại kết quả',
                         "Vì $\\overrightarrow{A'C'} = \\overrightarrow{AC}$ nên $\\overrightarrow{AB} \\cdot "
-                        "\\overrightarrow{A'C'} = \\overrightarrow{AB} \\cdot \\overrightarrow{AC}$. Tro..."],
+                        "\\overrightarrow{A'C'} = \\overrightarrow{AB} \\cdot \\overrightarrow{AC}$..."],
             'answer': 3,
             'solution': "Lời giải chi tiết theo Bài 6: Vectơ trong không gian: Vì $\\overrightarrow{A'C'} = "
                         "\\overrightarrow{AC}$ nên $\\overrightarrow{AB} \\cdot \\overrightarrow{A'C'} = "
@@ -1168,29 +1182,33 @@ LESSONS = [{'topic': 'l12-ch01-ung-dung-dao-ham',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 7: Hệ trục tọa độ trong không gian**, công thức hoặc quy '
-                 'tắc nào sau đây biểu diễn đúng **Biểu diễn qua vectơ đơn vị**?',
+            'q': 'Trong **Bài 7: Hệ trục tọa độ trong không gian**, quy tắc hoặc công thức nào sau đây xác '
+                 'định đúng **Biểu diễn qua vectơ đơn vị**?',
             'options': ['$\\vec{u} = x\\vec{i} + y\\vec{j} + z\\vec{k} \\Leftrightarrow \\vec{u} = (x; y; '
                         'z)$',
-                        '$\\overrightarrow{AB} = (x_B - x_A; y_B - y_A; z_B - z_A)$',
-                        "$M(x; y; z) \\mapsto M'(x; y; 0)$",
-                        "$f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm)"],
+                        '$\\vec{u} = x\\vec{i} - y\\vec{j} + z\\vec{k} \\Leftrightarrow \\vec{u} = (x; y; '
+                        'z)$',
+                        'Đảo ngược vế của quy tắc: $\\vec{u} = x\\vec{i} + y\\vec{j} + z\\vec{k} '
+                        '\\Leftrightarrow \\vec{u} = (x; y; z)$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\vec{u} = x\\vec{i} + '
+                        'y\\vec{j} + z\\vec{k} \\Leftrightarrow \\vec{u} = (x; y; z)$'],
             'answer': 0,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 7: Hệ trục tọa độ trong không gian, **Biểu '
-                        'diễn qua vectơ đơn vị** được xác định bởi: $\\vec{u} = x\\vec{i} + y\\vec{j} + '
-                        'z\\vec{k} \\Leftrightarrow \\vec{u} = (x; y; z)$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 7: Hệ trục tọa độ trong không gian, **Biểu diễn '
+                        'qua vectơ đơn vị** được xác định bởi: $\\vec{u} = x\\vec{i} + y\\vec{j} + z\\vec{k} '
+                        '\\Leftrightarrow \\vec{u} = (x; y; z)$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 7: Hệ trục tọa độ trong không gian**, nội dung/biểu thức $\\overrightarrow{AB} '
-                 '= (x_B - x_A; y_B - y_A; z_B - z_A)$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Biểu diễn qua vectơ đơn vị',
-                        'Tọa độ vectơ theo hai đầu mút',
-                        'Hình chiếu lên mặt phẳng (Oxy)',
-                        'Đồng biến trên khoảng'],
+            'q': 'Khi học **Bài 7: Hệ trục tọa độ trong không gian**, biểu thức hoặc quy tắc nào dưới đây '
+                 'biểu diễn đúng **Tọa độ vectơ theo hai đầu mút**?',
+            'options': ['$\\overrightarrow{AB} = (x_B + x_A; y_B - y_A; z_B - z_A)$',
+                        '$\\overrightarrow{AB} = (x_B - x_A; y_B - y_A; z_B - z_A)$',
+                        'Đảo ngược vế của quy tắc: $\\overrightarrow{AB} = (x_B - x_A; y_B - y_A; z_B - '
+                        'z_A)$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\overrightarrow{AB} = (x_B - '
+                        'x_A; y_B - y_A; z_B - z_A)$'],
             'answer': 1,
-            'solution': 'Trong Bài 7: Hệ trục tọa độ trong không gian, biểu thức/quy tắc '
-                        '$\\overrightarrow{AB} = (x_B - x_A; y_B - y_A; z_B - z_A)$ chính là nội dung của '
-                        '**Tọa độ vectơ theo hai đầu mút**.'},
+            'solution': 'Trong Bài 7: Hệ trục tọa độ trong không gian, **Tọa độ vectơ theo hai đầu mút** có '
+                        'công thức/quy tắc là: $\\overrightarrow{AB} = (x_B - x_A; y_B - y_A; z_B - z_A)$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Trong không gian $Oxyz$, cho hai điểm $A(2; 1; -3)$ và $B(5; -1; 1)$. Tọa độ của vectơ '
@@ -1202,18 +1220,18 @@ LESSONS = [{'topic': 'l12-ch01-ung-dung-dao-ham',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 7: Hệ trục tọa độ trong không gian** (Chương II: Vectơ và hệ trục tọa độ '
-                 'trong không gian), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất '
-                 'kiến thức của bài?',
-            'options': ['Nhận biết được tính đồng biến, nghịch biến của hàm số trên một khoảng dựa vào dấu '
-                        "của đạo hàm cấp một $f'(x)$.",
-                        'Xác định được điểm cực đại, điểm cực tiểu, giá trị cực đại, giá trị cực tiểu của '
-                        "hàm số thông qua bảng biến thiên hoặc đạo hàm cấp hai $f''(x)$.",
-                        'Vận dụng điều kiện đơn điệu và cực trị để giải các bài toán chứa tham số $m$.',
+            'q': 'Để nắm vững bản chất của **Bài 7: Hệ trục tọa độ trong không gian**, nhận định nào sau đây '
+                 'là **chính xác**?',
+            'options': ['Nhận biết được hệ trục tọa độ $Oxyz$ với ba vectơ đơn vị $\\vec{i}, \\vec{j}, '
+                        '\\vec{k}$ đôi một song song.',
+                        'Đảo ngược vế của quy tắc: Nhận biết được hệ trục tọa độ $Oxyz$ với ba vectơ đơn vị '
+                        '$\\vec{i}, \\vec{j}, \\vec{k}$ đôi một vuông góc.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nhận biết được hệ trục tọa độ '
+                        '$Oxyz$ với ba vectơ đơn vị $\\vec{i}, \\vec{j}, \\vec{k}$ đôi một vuông góc.',
                         'Nhận biết được hệ trục tọa độ $Oxyz$ với ba vectơ đơn vị $\\vec{i}, \\vec{j}, '
                         '\\vec{k}$ đôi một vuông góc.'],
             'answer': 3,
-            'solution': 'Theo yêu cầu cần đạt của Bài 7: Hệ trục tọa độ trong không gian: Nhận biết được hệ '
+            'solution': 'Theo nội dung cốt lõi của Bài 7: Hệ trục tọa độ trong không gian: Nhận biết được hệ '
                         'trục tọa độ $Oxyz$ với ba vectơ đơn vị $\\vec{i}, \\vec{j}, \\vec{k}$ đôi một vuông '
                         'góc.'},
            {'level': 'hieu',
@@ -1231,44 +1249,44 @@ LESSONS = [{'topic': 'l12-ch01-ung-dung-dao-ham',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 7: Hệ trục tọa độ trong '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 7: Hệ trục tọa độ trong '
                  'không gian**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được hệ trục tọa độ '
-                           '$Oxyz$ với ba vectơ đơn vị $\\vec{i}, \\vec{j}, \\vec{k}$ đôi một vuông góc.',
-                           'Quy tắc/công thức **Biểu diễn qua vectơ đơn vị** trong bài được xác định bởi: '
-                           '$\\vec{u} = x\\vec{i} + y\\vec{j} + z\\vec{k} \\Leftrightarrow \\vec{u} = (x; y; '
-                           'z)$.',
-                           'Trong mọi trường hợp, **Biểu diễn qua vectơ đơn vị** luôn được tính bằng công '
-                           "thức $f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm) (thuộc Đồng "
-                           'biến trên khoảng) mà không cần điều kiện của Bài 7: Hệ trục tọa độ trong không '
-                           'gian.',
-                           'Với bài toán minh họa: “Trong không gian $Oxyz$, cho hai điểm $A(1; -2; 3)$ và '
-                           '$B(4; 1; -1)$. Tìm tọa độ vectơ $\\overrightarrow{AB}$ và hình chiếu của $A$ lên '
-                           'mặt p...”, lời giải đúng là: Ta có $\\overrightarrow{AB} = (4 - 1; 1 - (-2); -1 '
-                           '- 3) = (3; 3; -4)$. Hình chiếu vuông góc của $A(1; -2; 3)$ lên mặt phẳng $(Oxz)$ '
-                           'có tung đ...'],
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết được hệ trục tọa độ $Oxyz$ với '
+                           'ba vectơ đơn vị $\\vec{i}, \\vec{j}, \\vec{k}$ đôi một vuông góc.',
+                           'Trong **Bài 7: Hệ trục tọa độ trong không gian**, quy tắc/công thức **Biểu diễn '
+                           'qua vectơ đơn vị** được viết là: $\\vec{u} = x\\vec{i} + y\\vec{j} + z\\vec{k} '
+                           '\\Leftrightarrow \\vec{u} = (x; y; z)$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $\\vec{u} = x\\vec{i} - y\\vec{j} + '
+                           'z\\vec{k} \\Leftrightarrow \\vec{u} = (x; y; z)$ thì kết quả của **Biểu diễn qua '
+                           'vectơ đơn vị** trong **Bài 7: Hệ trục tọa độ trong không gian** vẫn không thay '
+                           'đổi.',
+                           'Xét ví dụ của bài: “Trong không gian $Oxyz$, cho hai điểm $A(1; -2; 3)$ và $B(4; '
+                           '1; -1)$. Tìm tọa độ vectơ $\\overrightarrow{AB}$ và hình chiếu của $A$ lên...”, '
+                           'kết quả giải đúng là: Ta có $\\overrightarrow{AB} = (4 - 1; 1 - (-2); -1 - 3) = '
+                           '(3; 3; -4)$. Hình chiếu vuông góc của $A(1; -2; 3)$ lên mặt phẳng $(Oxz)$ có '
+                           't...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 7: Hệ trục tọa độ trong không gian. b) '
-                        '**Đúng** theo công thức trọng tâm **Biểu diễn qua vectơ đơn vị** ($\\vec{u} = '
-                        'x\\vec{i} + y\\vec{j} + z\\vec{k} \\Leftrightarrow \\vec{u} = (x; y; z)$). c) '
-                        "**Sai** vì $f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm) là công "
-                        'thức của nội dung khác, không phải quy tắc chung của **Biểu diễn qua vectơ đơn '
-                        'vị**. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        '**Đúng** theo công thức **Biểu diễn qua vectơ đơn vị** ($\\vec{u} = x\\vec{i} + '
+                        'y\\vec{j} + z\\vec{k} \\Leftrightarrow \\vec{u} = (x; y; z)$). c) **Sai** vì công '
+                        'thức đúng của **Biểu diễn qua vectơ đơn vị** phải là $\\vec{u} = x\\vec{i} + '
+                        'y\\vec{j} + z\\vec{k} \\Leftrightarrow \\vec{u} = (x; y; z)$ chứ không phải '
+                        '$\\vec{u} = x\\vec{i} - y\\vec{j} + z\\vec{k} \\Leftrightarrow \\vec{u} = (x; y; '
+                        'z)$. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 7: Hệ trục tọa độ trong không gian** để giải quyết tình huống '
-                 'sau: Trong không gian $Oxyz$, cho hai điểm $A(1; -2; 3)$ và $B(4; 1; -1)$. Tìm tọa độ '
-                 'vectơ $\\overrightarrow{AB}$ và hình chiếu của $A$ lên mặt phẳng $(Oxz)$. Kết quả và hướng '
-                 'giải nào dưới đây là **đúng**?',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 7: Hệ trục tọa độ trong không gian** để giải bài '
+                 'toán sau: Trong không gian $Oxyz$, cho hai điểm $A(1; -2; 3)$ và $B(4; 1; -1)$. Tìm tọa độ '
+                 'vectơ $\\overrightarrow{AB}$ và hình chiếu của $A$ lên mặt phẳng $(Oxz)$. Cách giải và kết '
+                 'quả nào dưới đây là **đúng**?',
             'options': ['Ta có $\\overrightarrow{AB} = (4 - 1; 1 - (-2); -1 - 3) = (3; 3; -4)$. Hình chiếu '
-                        'vuông góc của $A(1; -2; 3)$ lên mặt phẳng $(Oxz)$ có tung độ bằng $0$, tức...',
-                        "Tập xác định $D = \\mathbb{R}$. Ta có $y' = 3x^2 - 6x = 3x(x - 2)$. Cho $y' = 0 "
-                        "\\Leftrightarrow x = 0$ hoặc $x = 2$. Bảng xét dấu $y'$: trên $(-\\infty; 0)$...",
-                        "Hàm số liên tục trên $[0; 2]$. Ta có $f'(x) = 3x^2 - 3 = 0 \\Leftrightarrow x = 1 "
-                        '\\in (0; 2)$ hoặc $x = -1 \\notin (0; 2)$. Tính giá trị: $f(0) = 2$; $f(1) = 0$...',
-                        'Tập xác định $D = \\mathbb{R} \\setminus \\{1\\}$. Chia đa thức ta có $y = 2x + 1 + '
-                        '\\dfrac{2}{x - 1}$. Vì $\\lim_{x \\to 1^+} y = +\\infty$ và $\\lim_{x \\to 1^-} y = '
-                        '-\\infty$...'],
+                        'vuông góc của $A(1; -2; 3)$ lên mặt phẳng $(Oxz)$ có tung độ bằng $0$...',
+                        'Ta có $\\overrightarrow{AB} = (4 + 1; 1 - (-2); -1 - 3) = (3; 3; -4)$. Hình chiếu '
+                        'vuông góc của $A(1; -2; 3)$ lên mặt phẳng $(Oxz)$ có tung độ bằng $0$...',
+                        'Ta có $\\overrightarrow{AB} = (4 - 1; 1 - (-2); -1 - 3) = (3; 3; -4)$. Hình chiếu '
+                        'vuông góc của $A(1; -2; 3)$ lên mặt phẳng $(Oxz)$ có tung độ bằng $1$...',
+                        'Ta có $\\overrightarrow{AB} = (8 - 1; 1 - (-2); -1 - 3) = (3; 3; -4)$. Hình chiếu '
+                        'vuông góc của $A(1; -2; 3)$ lên mặt phẳng $(Oxz)$ có tung độ bằng $0$...'],
             'answer': 0,
             'solution': 'Lời giải chi tiết theo Bài 7: Hệ trục tọa độ trong không gian: Ta có '
                         '$\\overrightarrow{AB} = (4 - 1; 1 - (-2); -1 - 3) = (3; 3; -4)$. Hình chiếu vuông '
@@ -1346,32 +1364,33 @@ LESSONS = [{'topic': 'l12-ch01-ung-dung-dao-ham',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 8: Biểu thức tọa độ của các phép toán vectơ**, công thức '
-                 'hoặc quy tắc nào sau đây biểu diễn đúng **Tích vô hướng**?',
-            'options': ['$\\cos(\\vec{a}, \\vec{b}) = \\dfrac{x_1x_2 + y_1y_2 + z_1z_2}{\\sqrt{x_1^2 + y_1^2 '
-                        '+ z_1^2} \\cdot \\sqrt{x_2^2 + y_2^2 + z_2^2}}$',
+            'q': 'Trong **Bài 8: Biểu thức tọa độ của các phép toán vectơ**, quy tắc hoặc công thức nào sau '
+                 'đây xác định đúng **Tích vô hướng**?',
+            'options': ['$\\vec{a} \\cdot \\vec{b} = x_1x_2 - y_1y_2 + z_1z_2$',
                         '$\\vec{a} \\cdot \\vec{b} = x_1x_2 + y_1y_2 + z_1z_2$',
-                        '$AB = \\sqrt{(x_B - x_A)^2 + (y_B - y_A)^2 + (z_B - z_A)^2}$',
-                        "$f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm)"],
+                        'Đảo ngược vế của quy tắc: $\\vec{a} \\cdot \\vec{b} = x_1x_2 + y_1y_2 + z_1z_2$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\vec{a} \\cdot \\vec{b} = '
+                        'x_1x_2 + y_1y_2 + z_1z_2$'],
             'answer': 1,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 8: Biểu thức tọa độ của các phép toán vectơ, '
+            'solution': 'Theo kiến thức trọng tâm của Bài 8: Biểu thức tọa độ của các phép toán vectơ, '
                         '**Tích vô hướng** được xác định bởi: $\\vec{a} \\cdot \\vec{b} = x_1x_2 + y_1y_2 + '
                         'z_1z_2$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 8: Biểu thức tọa độ của các phép toán vectơ**, nội dung/biểu thức '
-                 '$\\cos(\\vec{a}, \\vec{b}) = \\dfrac{x_1x_2 + y_1y_2 + z_1z_2}{\\sqrt{x_1^2 + y_1^2 + '
-                 'z_1^2} \\cdot \\sqrt{x_2^2 + y_2^2 + z_2^2}}$ là quy tắc hoặc công thức của mục nào sau '
-                 'đây?',
-            'options': ['Tích vô hướng',
-                        'Khoảng cách giữa hai điểm',
-                        'Côsin góc giữa hai vectơ',
-                        'Đồng biến trên khoảng'],
-            'answer': 2,
-            'solution': 'Trong Bài 8: Biểu thức tọa độ của các phép toán vectơ, biểu thức/quy tắc '
+            'q': 'Khi học **Bài 8: Biểu thức tọa độ của các phép toán vectơ**, biểu thức hoặc quy tắc nào '
+                 'dưới đây biểu diễn đúng **Côsin góc giữa hai vectơ**?',
+            'options': ['$\\cos(\\vec{a}, \\vec{b}) = \\dfrac{x_1x_2 - y_1y_2 + z_1z_2}{\\sqrt{x_1^2 + y_1^2 '
+                        '+ z_1^2} \\cdot \\sqrt{x_2^2 + y_2^2 + z_2^2}}$',
                         '$\\cos(\\vec{a}, \\vec{b}) = \\dfrac{x_1x_2 + y_1y_2 + z_1z_2}{\\sqrt{x_1^2 + y_1^2 '
-                        '+ z_1^2} \\cdot \\sqrt{x_2^2 + y_2^2 + z_2^2}}$ chính là nội dung của **Côsin góc '
-                        'giữa hai vectơ**.'},
+                        '+ z_1^2} \\cdot \\sqrt{x_2^2 + y_2^2 + z_2^1}}$',
+                        '$\\cos(\\vec{a}, \\vec{b}) = \\dfrac{x_1x_2 + y_1y_2 + z_1z_2}{\\sqrt{x_1^2 + y_1^2 '
+                        '+ z_1^2} \\cdot \\sqrt{x_2^2 + y_2^2 + z_2^2}}$',
+                        '$\\cos(\\vec{a}, \\vec{b}) = \\dfrac{x_1x_2 + y_1y_2 + z_1z_2}{\\sqrt{x_1^4 + y_1^2 '
+                        '+ z_1^2} \\cdot \\sqrt{x_2^2 + y_2^2 + z_2^2}}$'],
+            'answer': 2,
+            'solution': 'Trong Bài 8: Biểu thức tọa độ của các phép toán vectơ, **Côsin góc giữa hai vectơ** '
+                        'có công thức/quy tắc là: $\\cos(\\vec{a}, \\vec{b}) = \\dfrac{x_1x_2 + y_1y_2 + '
+                        'z_1z_2}{\\sqrt{x_1^2 + y_1^2 + z_1^2} \\cdot \\sqrt{x_2^2 + y_2^2 + z_2^2}}$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Trong không gian $Oxyz$, khoảng cách giữa hai điểm $M(1; -1; 2)$ và $N(3; 1; -1)$ bằng:',
@@ -1383,20 +1402,20 @@ LESSONS = [{'topic': 'l12-ch01-ung-dung-dao-ham',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 8: Biểu thức tọa độ của các phép toán vectơ** (Chương II: Vectơ và hệ trục '
-                 'tọa độ trong không gian), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản '
-                 'chất kiến thức của bài?',
+            'q': 'Để nắm vững bản chất của **Bài 8: Biểu thức tọa độ của các phép toán vectơ**, nhận định '
+                 'nào sau đây là **chính xác**?',
             'options': ['Thực hiện được các phép toán cộng, trừ vectơ, nhân một số với vectơ và tích vô '
                         'hướng bằng tọa độ.',
-                        'Nhận biết được tính đồng biến, nghịch biến của hàm số trên một khoảng dựa vào dấu '
-                        "của đạo hàm cấp một $f'(x)$.",
-                        'Xác định được điểm cực đại, điểm cực tiểu, giá trị cực đại, giá trị cực tiểu của '
-                        "hàm số thông qua bảng biến thiên hoặc đạo hàm cấp hai $f''(x)$.",
-                        'Vận dụng điều kiện đơn điệu và cực trị để giải các bài toán chứa tham số $m$.'],
+                        'Thực hiện được các phép toán cộng, trừ vectơ, nhân một số với vectơ và tích vô '
+                        'hướng bằng tọa độ. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Thực hiện được các phép toán cộng, trừ vectơ, nhân một số '
+                        'với vectơ và tích vô hướng bằng tọa độ.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Thực hiện được các phép toán '
+                        'cộng, trừ vectơ, nhân một số với vectơ và tích vô hướng bằng tọa độ.'],
             'answer': 0,
-            'solution': 'Theo yêu cầu cần đạt của Bài 8: Biểu thức tọa độ của các phép toán vectơ: Thực hiện '
-                        'được các phép toán cộng, trừ vectơ, nhân một số với vectơ và tích vô hướng bằng tọa '
-                        'độ.'},
+            'solution': 'Theo nội dung cốt lõi của Bài 8: Biểu thức tọa độ của các phép toán vectơ: Thực '
+                        'hiện được các phép toán cộng, trừ vectơ, nhân một số với vectơ và tích vô hướng '
+                        'bằng tọa độ.'},
            {'level': 'hieu',
             'type': 'tf4',
             'q': 'Trong không gian $Oxyz$, cho tam giác $ABC$ có $A(1; 0; 2)$, $B(2; 3; 1)$ và $C(0; 3; 3)$. '
@@ -1416,44 +1435,46 @@ LESSONS = [{'topic': 'l12-ch01-ung-dung-dao-ham',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 8: Biểu thức tọa độ của '
-                 'các phép toán vectơ**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Thực hiện được các phép toán cộng, '
-                           'trừ vectơ, nhân một số với vectơ và tích vô hướng bằng tọa độ.',
-                           'Quy tắc/công thức **Tích vô hướng** trong bài được xác định bởi: $\\vec{a} '
-                           '\\cdot \\vec{b} = x_1x_2 + y_1y_2 + z_1z_2$.',
-                           "Trong mọi trường hợp, **Tích vô hướng** luôn được tính bằng công thức $f'(x) "
-                           '\\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm) (thuộc Đồng biến trên '
-                           'khoảng) mà không cần điều kiện của Bài 8: Biểu thức tọa độ của các phép toán '
-                           'vectơ.',
-                           'Với bài toán minh họa: “Trong không gian $Oxyz$, cho $\\vec{a} = (1; 2; -2)$ và '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 8: Biểu thức tọa độ của các '
+                 'phép toán vectơ**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Thực hiện được các phép toán cộng, trừ '
+                           'vectơ, nhân một số với vectơ và tích vô hướng bằng tọa độ.',
+                           'Trong **Bài 8: Biểu thức tọa độ của các phép toán vectơ**, quy tắc/công thức '
+                           '**Tích vô hướng** được viết là: $\\vec{a} \\cdot \\vec{b} = x_1x_2 + y_1y_2 + '
+                           'z_1z_2$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $\\vec{a} \\cdot \\vec{b} = x_1x_2 - y_1y_2 '
+                           '+ z_1z_2$ thì kết quả của **Tích vô hướng** trong **Bài 8: Biểu thức tọa độ của '
+                           'các phép toán vectơ** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Trong không gian $Oxyz$, cho $\\vec{a} = (1; 2; -2)$ và '
                            '$\\vec{b} = (2; -1; 2)$. Tính $\\vec{a} \\cdot \\vec{b}$ và $\\cos(\\vec{a}, '
-                           '\\vec{b})$.”, lời giải đúng là: Ta có $\\vec{a} \\cdot \\vec{b} = 1 \\cdot 2 + 2 '
-                           '\\cdot (-1) + (-2) \\cdot 2 = -4$. Độ dài $|\\vec{a}| = \\sqrt{1^2 + 2^2 + '
+                           '\\vec{b})$...”, kết quả giải đúng là: Ta có $\\vec{a} \\cdot \\vec{b} = 1 \\cdot '
+                           '2 + 2 \\cdot (-1) + (-2) \\cdot 2 = -4$. Độ dài $|\\vec{a}| = \\sqrt{1^2 + 2^2 + '
                            '(-2)^2} = 3$ và $|\\vec{b}| = \\sqrt{2^2 + (-1)^2 + 2^2} = 3$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 8: Biểu thức tọa độ của các phép toán '
-                        'vectơ. b) **Đúng** theo công thức trọng tâm **Tích vô hướng** ($\\vec{a} \\cdot '
-                        "\\vec{b} = x_1x_2 + y_1y_2 + z_1z_2$). c) **Sai** vì $f'(x) \\ge 0, \\forall x \\in "
-                        'K$ (dấu $=$ tại hữu hạn điểm) là công thức của nội dung khác, không phải quy tắc '
-                        'chung của **Tích vô hướng**. d) **Đúng** theo lời giải ví dụ minh họa trong bài '
-                        'học.'},
+                        'vectơ. b) **Đúng** theo công thức **Tích vô hướng** ($\\vec{a} \\cdot \\vec{b} = '
+                        'x_1x_2 + y_1y_2 + z_1z_2$). c) **Sai** vì công thức đúng của **Tích vô hướng** phải '
+                        'là $\\vec{a} \\cdot \\vec{b} = x_1x_2 + y_1y_2 + z_1z_2$ chứ không phải $\\vec{a} '
+                        '\\cdot \\vec{b} = x_1x_2 - y_1y_2 + z_1z_2$. d) **Đúng** theo lời giải ví dụ minh '
+                        'họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 8: Biểu thức tọa độ của các phép toán vectơ** để giải quyết tình '
-                 'huống sau: Trong không gian $Oxyz$, cho $\\vec{a} = (1; 2; -2)$ và $\\vec{b} = (2; -1; '
-                 '2)$. Tính $\\vec{a} \\cdot \\vec{b}$ và $\\cos(\\vec{a}, \\vec{b})$. Kết quả và hướng giải '
-                 'nào dưới đây là **đúng**?',
-            'options': ["Tập xác định $D = \\mathbb{R}$. Ta có $y' = 3x^2 - 6x = 3x(x - 2)$. Cho $y' = 0 "
-                        "\\Leftrightarrow x = 0$ hoặc $x = 2$. Bảng xét dấu $y'$: trên $(-\\infty; 0)$...",
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 8: Biểu thức tọa độ của các phép toán vectơ** để '
+                 'giải bài toán sau: Trong không gian $Oxyz$, cho $\\vec{a} = (1; 2; -2)$ và $\\vec{b} = (2; '
+                 '-1; 2)$. Tính $\\vec{a} \\cdot \\vec{b}$ và $\\cos(\\vec{a}, \\vec{b})$. Cách giải và kết '
+                 'quả nào dưới đây là **đúng**?',
+            'options': ['Ta có $\\vec{a} \\cdot \\vec{b} = 1 \\cdot 2 - 2 \\cdot (-1) + (-2) \\cdot 2 = -4$. '
+                        'Độ dài $|\\vec{a}| = \\sqrt{1^2 + 2^2 + (-2)^2} = 3$ và $|\\vec{b}| = \\sqrt{2^2 + '
+                        '(-1)^2 + 2^2} = 3$...',
                         'Ta có $\\vec{a} \\cdot \\vec{b} = 1 \\cdot 2 + 2 \\cdot (-1) + (-2) \\cdot 2 = -4$. '
                         'Độ dài $|\\vec{a}| = \\sqrt{1^2 + 2^2 + (-2)^2} = 3$ và $|\\vec{b}| = \\sqrt{2^2 + '
                         '(-1)^2 + 2^2} = 3$...',
-                        "Hàm số liên tục trên $[0; 2]$. Ta có $f'(x) = 3x^2 - 3 = 0 \\Leftrightarrow x = 1 "
-                        '\\in (0; 2)$ hoặc $x = -1 \\notin (0; 2)$. Tính giá trị: $f(0) = 2$; $f(1) = 0$...',
-                        'Tập xác định $D = \\mathbb{R} \\setminus \\{1\\}$. Chia đa thức ta có $y = 2x + 1 + '
-                        '\\dfrac{2}{x - 1}$. Vì $\\lim_{x \\to 1^+} y = +\\infty$ và $\\lim_{x \\to 1^-} y = '
-                        '-\\infty$...'],
+                        'Ta có $\\vec{a} \\cdot \\vec{b} = 1 \\cdot 2 + 2 \\cdot (-1) + (-2) \\cdot 2 = -4$. '
+                        'Độ dài $|\\vec{a}| = \\sqrt{1^2 + 2^2 + (-2)^2} = 3$ và $|\\vec{b}| = \\sqrt{2^2 + '
+                        '(-1)^2 + 2^2} = 2$...',
+                        'Ta có $\\vec{a} \\cdot \\vec{b} = 2 \\cdot 2 + 2 \\cdot (-1) + (-2) \\cdot 2 = -4$. '
+                        'Độ dài $|\\vec{a}| = \\sqrt{1^2 + 2^2 + (-2)^2} = 3$ và $|\\vec{b}| = \\sqrt{2^2 + '
+                        '(-1)^2 + 2^2} = 3$...'],
             'answer': 1,
             'solution': 'Lời giải chi tiết theo Bài 8: Biểu thức tọa độ của các phép toán vectơ: Ta có '
                         '$\\vec{a} \\cdot \\vec{b} = 1 \\cdot 2 + 2 \\cdot (-1) + (-2) \\cdot 2 = -4$. Độ '
@@ -1527,29 +1548,27 @@ LESSONS = [{'topic': 'l12-ch01-ung-dung-dao-ham',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 9: Khoảng biến thiên và khoảng tứ phân vị của mẫu số '
-                 'liệu ghép nhóm**, công thức hoặc quy tắc nào sau đây biểu diễn đúng **Khoảng biến thiên**?',
-            'options': ['$Q_r = u_m + \\dfrac{\\dfrac{r \\cdot n}{4} - C}{n_m} \\cdot (u_{m+1} - u_m)$',
-                        '$\\Delta_Q = Q_3 - Q_1$',
+            'q': 'Trong **Bài 9: Khoảng biến thiên và khoảng tứ phân vị của mẫu số liệu ghép nhóm**, quy tắc '
+                 'hoặc công thức nào sau đây xác định đúng **Khoảng biến thiên**?',
+            'options': ['$R = a_{k+1} + a_1$',
+                        '$R = a_{k+2} - a_1$',
                         '$R = a_{k+1} - a_1$',
-                        "$f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm)"],
+                        '$Q_r = u_m + \\dfrac{\\dfrac{r \\cdot n}{4} - C}{n_m} \\cdot (u_{m+1} - u_m)$'],
             'answer': 2,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 9: Khoảng biến thiên và khoảng tứ phân vị của '
-                        'mẫu số liệu ghép nhóm, **Khoảng biến thiên** được xác định bởi: $R = a_{k+1} - '
-                        'a_1$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 9: Khoảng biến thiên và khoảng tứ phân vị của mẫu '
+                        'số liệu ghép nhóm, **Khoảng biến thiên** được xác định bởi: $R = a_{k+1} - a_1$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 9: Khoảng biến thiên và khoảng tứ phân vị của mẫu số liệu ghép nhóm**, nội '
-                 'dung/biểu thức $Q_r = u_m + \\dfrac{\\dfrac{r \\cdot n}{4} - C}{n_m} \\cdot (u_{m+1} - '
-                 'u_m)$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Khoảng biến thiên',
-                        'Khoảng tứ phân vị',
-                        'Đồng biến trên khoảng',
-                        'Tứ phân vị thứ r (r = 1, 2, 3)'],
+            'q': 'Khi học **Bài 9: Khoảng biến thiên và khoảng tứ phân vị của mẫu số liệu ghép nhóm**, biểu '
+                 'thức hoặc quy tắc nào dưới đây biểu diễn đúng **Tứ phân vị thứ r (r = 1, 2, 3)**?',
+            'options': ['$Q_r = u_m - \\dfrac{\\dfrac{r \\cdot n}{4} - C}{n_m} \\cdot (u_{m+1} - u_m)$',
+                        '$Q_r = u_m + \\dfrac{\\dfrac{4}{r \\cdot n} - C}{n_m} \\cdot (u_{m+1} - u_m)$',
+                        '$Q_r = u_m + \\dfrac{\\dfrac{r \\cdot n}{8} - C}{n_m} \\cdot (u_{m+1} - u_m)$',
+                        '$Q_r = u_m + \\dfrac{\\dfrac{r \\cdot n}{4} - C}{n_m} \\cdot (u_{m+1} - u_m)$'],
             'answer': 3,
-            'solution': 'Trong Bài 9: Khoảng biến thiên và khoảng tứ phân vị của mẫu số liệu ghép nhóm, biểu '
-                        'thức/quy tắc $Q_r = u_m + \\dfrac{\\dfrac{r \\cdot n}{4} - C}{n_m} \\cdot (u_{m+1} '
-                        '- u_m)$ chính là nội dung của **Tứ phân vị thứ r (r = 1, 2, 3)**.'},
+            'solution': 'Trong Bài 9: Khoảng biến thiên và khoảng tứ phân vị của mẫu số liệu ghép nhóm, **Tứ '
+                        'phân vị thứ r (r = 1, 2, 3)** có công thức/quy tắc là: $Q_r = u_m + '
+                        '\\dfrac{\\dfrac{r \\cdot n}{4} - C}{n_m} \\cdot (u_{m+1} - u_m)$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Số đặc trưng nào dưới đây đo mức độ phân tán của mẫu số liệu ghép nhóm mà không bị ảnh '
@@ -1565,18 +1584,18 @@ LESSONS = [{'topic': 'l12-ch01-ung-dung-dao-ham',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 9: Khoảng biến thiên và khoảng tứ phân vị của mẫu số liệu ghép nhóm** '
-                 '(Chương III: Các số đặc trưng đo mức độ phân tán của mẫu số liệu ghép nhóm), khẳng định '
-                 'nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Nhận biết được tính đồng biến, nghịch biến của hàm số trên một khoảng dựa vào dấu '
-                        "của đạo hàm cấp một $f'(x)$.",
+            'q': 'Để nắm vững bản chất của **Bài 9: Khoảng biến thiên và khoảng tứ phân vị của mẫu số liệu '
+                 'ghép nhóm**, nhận định nào sau đây là **chính xác**?',
+            'options': ['Tính được khoảng biến thiên $R$ của mẫu số liệu ghép nhóm từ hai đầu mút của bảng '
+                        'tần số. (với dấu ngược lại)',
                         'Tính được khoảng biến thiên $R$ của mẫu số liệu ghép nhóm từ hai đầu mút của bảng '
                         'tần số.',
-                        'Xác định được điểm cực đại, điểm cực tiểu, giá trị cực đại, giá trị cực tiểu của '
-                        "hàm số thông qua bảng biến thiên hoặc đạo hàm cấp hai $f''(x)$.",
-                        'Vận dụng điều kiện đơn điệu và cực trị để giải các bài toán chứa tham số $m$.'],
+                        'Đảo ngược vế của quy tắc: Tính được khoảng biến thiên $R$ của mẫu số liệu ghép nhóm '
+                        'từ hai đầu mút của bảng tần số.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Tính được khoảng biến thiên $R$ '
+                        'của mẫu số liệu ghép nhóm từ hai đầu mút của bảng tần số.'],
             'answer': 1,
-            'solution': 'Theo yêu cầu cần đạt của Bài 9: Khoảng biến thiên và khoảng tứ phân vị của mẫu số '
+            'solution': 'Theo nội dung cốt lõi của Bài 9: Khoảng biến thiên và khoảng tứ phân vị của mẫu số '
                         'liệu ghép nhóm: Tính được khoảng biến thiên $R$ của mẫu số liệu ghép nhóm từ hai '
                         'đầu mút của bảng tần số.'},
            {'level': 'hieu',
@@ -1598,44 +1617,42 @@ LESSONS = [{'topic': 'l12-ch01-ung-dung-dao-ham',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 9: Khoảng biến thiên và '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 9: Khoảng biến thiên và '
                  'khoảng tứ phân vị của mẫu số liệu ghép nhóm**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Tính được khoảng biến thiên $R$ '
-                           'của mẫu số liệu ghép nhóm từ hai đầu mút của bảng tần số.',
-                           'Quy tắc/công thức **Khoảng biến thiên** trong bài được xác định bởi: $R = '
-                           'a_{k+1} - a_1$.',
-                           "Trong mọi trường hợp, **Khoảng biến thiên** luôn được tính bằng công thức $f'(x) "
-                           '\\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm) (thuộc Đồng biến trên '
-                           'khoảng) mà không cần điều kiện của Bài 9: Khoảng biến thiên và khoảng tứ phân vị '
-                           'của mẫu số liệu ghép nhóm.',
-                           'Với bài toán minh họa: “Chiều cao (đơn vị: cm) của 40 học sinh được ghép thành 4 '
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Tính được khoảng biến thiên $R$ của mẫu '
+                           'số liệu ghép nhóm từ hai đầu mút của bảng tần số.',
+                           'Trong **Bài 9: Khoảng biến thiên và khoảng tứ phân vị của mẫu số liệu ghép '
+                           'nhóm**, quy tắc/công thức **Khoảng biến thiên** được viết là: $R = a_{k+1} - '
+                           'a_1$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $R = a_{k+1} + a_1$ thì kết quả của **Khoảng '
+                           'biến thiên** trong **Bài 9: Khoảng biến thiên và khoảng tứ phân vị của mẫu số '
+                           'liệu ghép nhóm** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Chiều cao (đơn vị: cm) của 40 học sinh được ghép thành 4 '
                            'nhóm: $[150; 155)$ có 6 em; $[155; 160)$ có 14 em; $[160; 165)$ có 12 em; $[165; '
-                           '170)$...”, lời giải đúng là: Khoảng biến thiên là $R = 170 - 150 = 20\\text{ '
+                           '170)$...”, kết quả giải đúng là: Khoảng biến thiên là $R = 170 - 150 = 20\\text{ '
                            '(cm)}$. Cỡ mẫu $n = 40 \\Rightarrow \\dfrac{n}{4} = 10$. Nhóm chứa $Q_1$ là nhóm '
                            'thứ hai $[155; 160)$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 9: Khoảng biến thiên và khoảng tứ phân vị '
-                        'của mẫu số liệu ghép nhóm. b) **Đúng** theo công thức trọng tâm **Khoảng biến '
-                        "thiên** ($R = a_{k+1} - a_1$). c) **Sai** vì $f'(x) \\ge 0, \\forall x \\in K$ (dấu "
-                        '$=$ tại hữu hạn điểm) là công thức của nội dung khác, không phải quy tắc chung của '
-                        '**Khoảng biến thiên**. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        'của mẫu số liệu ghép nhóm. b) **Đúng** theo công thức **Khoảng biến thiên** ($R = '
+                        'a_{k+1} - a_1$). c) **Sai** vì công thức đúng của **Khoảng biến thiên** phải là $R '
+                        '= a_{k+1} - a_1$ chứ không phải $R = a_{k+1} + a_1$. d) **Đúng** theo lời giải ví '
+                        'dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 9: Khoảng biến thiên và khoảng tứ phân vị của mẫu số liệu ghép '
-                 'nhóm** để giải quyết tình huống sau: Chiều cao (đơn vị: cm) của 40 học sinh được ghép '
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 9: Khoảng biến thiên và khoảng tứ phân vị của mẫu '
+                 'số liệu ghép nhóm** để giải bài toán sau: Chiều cao (đơn vị: cm) của 40 học sinh được ghép '
                  'thành 4 nhóm: $[150; 155)$ có 6 em; $[155; 160)$ có 14 em; $[160; 165)$ có 12 em; $[165; '
-                 '170)$ có 8 em. Tính khoảng biến thiên $R$ và tứ phân vị thứ nhất $Q_1$. Kết quả và hướng '
-                 'giải nào dưới đây là **đúng**?',
-            'options': ["Tập xác định $D = \\mathbb{R}$. Ta có $y' = 3x^2 - 6x = 3x(x - 2)$. Cho $y' = 0 "
-                        "\\Leftrightarrow x = 0$ hoặc $x = 2$. Bảng xét dấu $y'$: trên $(-\\infty; 0)$...",
-                        "Hàm số liên tục trên $[0; 2]$. Ta có $f'(x) = 3x^2 - 3 = 0 \\Leftrightarrow x = 1 "
-                        '\\in (0; 2)$ hoặc $x = -1 \\notin (0; 2)$. Tính giá trị: $f(0) = 2$; $f(1) = 0$...',
+                 '170)$ có 8 em. Tính khoảng biến thiên $R$ và tứ phân vị thứ nhất $Q_1$. Cách giải và kết '
+                 'quả nào dưới đây là **đúng**?',
+            'options': ['Khoảng biến thiên là $R = 170 + 150 = 20\\text{ (cm)}$. Cỡ mẫu $n = 40 \\Rightarrow '
+                        '\\dfrac{n}{4} = 10$. Nhóm chứa $Q_1$ là nhóm thứ hai $[155; 160)$ vì...',
                         'Khoảng biến thiên là $R = 170 - 150 = 20\\text{ (cm)}$. Cỡ mẫu $n = 40 \\Rightarrow '
-                        '\\dfrac{n}{4} = 10$. Nhóm chứa $Q_1$ là nhóm thứ hai $[155; 160)$ vì $6 < 10 \\le 6 '
-                        '+ 14$...',
-                        'Tập xác định $D = \\mathbb{R} \\setminus \\{1\\}$. Chia đa thức ta có $y = 2x + 1 + '
-                        '\\dfrac{2}{x - 1}$. Vì $\\lim_{x \\to 1^+} y = +\\infty$ và $\\lim_{x \\to 1^-} y = '
-                        '-\\infty$...'],
+                        '\\dfrac{4}{n} = 10$. Nhóm chứa $Q_1$ là nhóm thứ hai $[155; 160)$ vì...',
+                        'Khoảng biến thiên là $R = 170 - 150 = 20\\text{ (cm)}$. Cỡ mẫu $n = 40 \\Rightarrow '
+                        '\\dfrac{n}{4} = 10$. Nhóm chứa $Q_1$ là nhóm thứ hai $[155; 160)$ vì...',
+                        'Khoảng biến thiên là $R = 172 - 150 = 20\\text{ (cm)}$. Cỡ mẫu $n = 40 \\Rightarrow '
+                        '\\dfrac{n}{4} = 10$. Nhóm chứa $Q_1$ là nhóm thứ hai $[155; 160)$ vì...'],
             'answer': 2,
             'solution': 'Lời giải chi tiết theo Bài 9: Khoảng biến thiên và khoảng tứ phân vị của mẫu số '
                         'liệu ghép nhóm: Khoảng biến thiên là $R = 170 - 150 = 20\\text{ (cm)}$. Cỡ mẫu $n = '
@@ -1712,31 +1729,33 @@ LESSONS = [{'topic': 'l12-ch01-ung-dung-dao-ham',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 10: Phương sai và độ lệch chuẩn của mẫu số liệu ghép '
-                 'nhóm**, công thức hoặc quy tắc nào sau đây biểu diễn đúng **Số trung bình mẫu ghép nhóm**?',
-            'options': ['$s^2 = \\dfrac{1}{n}\\sum_{i=1}^k n_i(x_i - \\bar{x})^2 = '
-                        '\\dfrac{1}{n}\\sum_{i=1}^k n_i x_i^2 - \\bar{x}^2$',
-                        '$s = \\sqrt{s^2}$',
-                        "$f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm)",
+            'q': 'Trong **Bài 10: Phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm**, quy tắc hoặc công '
+                 'thức nào sau đây xác định đúng **Số trung bình mẫu ghép nhóm**?',
+            'options': ['$\\bar{x} = \\dfrac{n_1 x_1 - n_2 x_2 + \\dots + n_k x_k}{n}$',
+                        '$\\bar{x} = \\dfrac{n}{n_1 x_1 + n_2 x_2 + \\dots + n_k x_k}$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\bar{x} = \\dfrac{n_1 x_1 + '
+                        'n_2 x_2 + \\dots + n_k x_k}{n}$',
                         '$\\bar{x} = \\dfrac{n_1 x_1 + n_2 x_2 + \\dots + n_k x_k}{n}$'],
             'answer': 3,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 10: Phương sai và độ lệch chuẩn của mẫu số '
-                        'liệu ghép nhóm, **Số trung bình mẫu ghép nhóm** được xác định bởi: $\\bar{x} = '
+            'solution': 'Theo kiến thức trọng tâm của Bài 10: Phương sai và độ lệch chuẩn của mẫu số liệu '
+                        'ghép nhóm, **Số trung bình mẫu ghép nhóm** được xác định bởi: $\\bar{x} = '
                         '\\dfrac{n_1 x_1 + n_2 x_2 + \\dots + n_k x_k}{n}$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 10: Phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm**, nội dung/biểu '
-                 'thức $s^2 = \\dfrac{1}{n}\\sum_{i=1}^k n_i(x_i - \\bar{x})^2 = \\dfrac{1}{n}\\sum_{i=1}^k '
-                 'n_i x_i^2 - \\bar{x}^2$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Phương sai mẫu ghép nhóm',
-                        'Số trung bình mẫu ghép nhóm',
-                        'Độ lệch chuẩn',
-                        'Đồng biến trên khoảng'],
+            'q': 'Khi học **Bài 10: Phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm**, biểu thức hoặc '
+                 'quy tắc nào dưới đây biểu diễn đúng **Phương sai mẫu ghép nhóm**?',
+            'options': ['$s^2 = \\dfrac{1}{n}\\sum_{i=1}^k n_i(x_i - \\bar{x})^2 = '
+                        '\\dfrac{1}{n}\\sum_{i=1}^k n_i x_i^2 - \\bar{x}^2$',
+                        '$s^2 = \\dfrac{1}{n}\\sum_{i=1}^k n_i(x_i + \\bar{x})^2 = '
+                        '\\dfrac{1}{n}\\sum_{i=1}^k n_i x_i^2 - \\bar{x}^2$',
+                        '$s^2 = \\dfrac{n}{1}\\sum_{i=1}^k n_i(x_i - \\bar{x})^2 = '
+                        '\\dfrac{1}{n}\\sum_{i=1}^k n_i x_i^2 - \\bar{x}^2$',
+                        '$s^4 = \\dfrac{1}{n}\\sum_{i=1}^k n_i(x_i - \\bar{x})^2 = '
+                        '\\dfrac{1}{n}\\sum_{i=1}^k n_i x_i^2 - \\bar{x}^2$'],
             'answer': 0,
-            'solution': 'Trong Bài 10: Phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm, biểu thức/quy '
-                        'tắc $s^2 = \\dfrac{1}{n}\\sum_{i=1}^k n_i(x_i - \\bar{x})^2 = '
-                        '\\dfrac{1}{n}\\sum_{i=1}^k n_i x_i^2 - \\bar{x}^2$ chính là nội dung của **Phương '
-                        'sai mẫu ghép nhóm**.'},
+            'solution': 'Trong Bài 10: Phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm, **Phương sai '
+                        'mẫu ghép nhóm** có công thức/quy tắc là: $s^2 = \\dfrac{1}{n}\\sum_{i=1}^k n_i(x_i '
+                        '- \\bar{x})^2 = \\dfrac{1}{n}\\sum_{i=1}^k n_i x_i^2 - \\bar{x}^2$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Hai xạ thủ A và B cùng bắn thử 30 viên đạn và có điểm trung bình bằng nhau. Độ lệch chuẩn '
@@ -1752,18 +1771,18 @@ LESSONS = [{'topic': 'l12-ch01-ung-dung-dao-ham',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 10: Phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm** (Chương III: Các '
-                 'số đặc trưng đo mức độ phân tán của mẫu số liệu ghép nhóm), khẳng định nào sau đây phản '
-                 'ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Nhận biết được tính đồng biến, nghịch biến của hàm số trên một khoảng dựa vào dấu '
-                        "của đạo hàm cấp một $f'(x)$.",
-                        'Xác định được điểm cực đại, điểm cực tiểu, giá trị cực đại, giá trị cực tiểu của '
-                        "hàm số thông qua bảng biến thiên hoặc đạo hàm cấp hai $f''(x)$.",
+            'q': 'Để nắm vững bản chất của **Bài 10: Phương sai và độ lệch chuẩn của mẫu số liệu ghép '
+                 'nhóm**, nhận định nào sau đây là **chính xác**?',
+            'options': ['Xác định được giá trị đại diện $x_i$ của mỗi nhóm và số trung bình $\\bar{x}$ của '
+                        'mẫu số liệu ghép nhóm. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Xác định được giá trị đại diện $x_i$ của mỗi nhóm và số '
+                        'trung bình $\\bar{x}$ của mẫu số liệu ghép nhóm.',
                         'Xác định được giá trị đại diện $x_i$ của mỗi nhóm và số trung bình $\\bar{x}$ của '
                         'mẫu số liệu ghép nhóm.',
-                        'Vận dụng điều kiện đơn điệu và cực trị để giải các bài toán chứa tham số $m$.'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Xác định được giá trị đại diện '
+                        '$x_i$ của mỗi nhóm và số trung bình $\\bar{x}$ của mẫu số liệu ghép nhóm.'],
             'answer': 2,
-            'solution': 'Theo yêu cầu cần đạt của Bài 10: Phương sai và độ lệch chuẩn của mẫu số liệu ghép '
+            'solution': 'Theo nội dung cốt lõi của Bài 10: Phương sai và độ lệch chuẩn của mẫu số liệu ghép '
                         'nhóm: Xác định được giá trị đại diện $x_i$ của mỗi nhóm và số trung bình $\\bar{x}$ '
                         'của mẫu số liệu ghép nhóm.'},
            {'level': 'hieu',
@@ -1783,43 +1802,44 @@ LESSONS = [{'topic': 'l12-ch01-ung-dung-dao-ham',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 10: Phương sai và độ '
-                 'lệch chuẩn của mẫu số liệu ghép nhóm**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Xác định được giá trị đại diện '
-                           '$x_i$ của mỗi nhóm và số trung bình $\\bar{x}$ của mẫu số liệu ghép nhóm.',
-                           'Quy tắc/công thức **Số trung bình mẫu ghép nhóm** trong bài được xác định bởi: '
-                           '$\\bar{x} = \\dfrac{n_1 x_1 + n_2 x_2 + \\dots + n_k x_k}{n}$.',
-                           'Trong mọi trường hợp, **Số trung bình mẫu ghép nhóm** luôn được tính bằng công '
-                           "thức $f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm) (thuộc Đồng "
-                           'biến trên khoảng) mà không cần điều kiện của Bài 10: Phương sai và độ lệch chuẩn '
-                           'của mẫu số liệu ghép nhóm.',
-                           'Với bài toán minh họa: “Khảo sát cân nặng (kg) của 10 quả bưởi thu được: nhóm '
-                           '$[0,8; 1,0)$ có 4 quả; nhóm $[1,0; 1,2)$ có 6 quả. Tính số trung bình $\\bar{x}$ '
-                           'và phư...”, lời giải đúng là: Giá trị đại diện của hai nhóm lần lượt là $x_1 = '
-                           '0,9$ và $x_2 = 1,1$. Số trung bình $\\bar{x} = \\dfrac{4 \\cdot 0,9 + 6 \\cdot '
-                           '1,1}{10} = 1,02\\text{ (kg)}$...'],
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 10: Phương sai và độ lệch '
+                 'chuẩn của mẫu số liệu ghép nhóm**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Xác định được giá trị đại diện $x_i$ của '
+                           'mỗi nhóm và số trung bình $\\bar{x}$ của mẫu số liệu ghép nhóm.',
+                           'Trong **Bài 10: Phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm**, quy '
+                           'tắc/công thức **Số trung bình mẫu ghép nhóm** được viết là: $\\bar{x} = '
+                           '\\dfrac{n_1 x_1 + n_2 x_2 + \\dots + n_k x_k}{n}$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $\\bar{x} = \\dfrac{n_1 x_1 - n_2 x_2 + '
+                           '\\dots + n_k x_k}{n}$ thì kết quả của **Số trung bình mẫu ghép nhóm** trong '
+                           '**Bài 10: Phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm** vẫn không thay '
+                           'đổi.',
+                           'Xét ví dụ của bài: “Khảo sát cân nặng (kg) của 10 quả bưởi thu được: nhóm $[0,8; '
+                           '1,0)$ có 4 quả; nhóm $[1,0; 1,2)$ có 6 quả. Tính số trung bình $\\bar{x}$ v...”, '
+                           'kết quả giải đúng là: Giá trị đại diện của hai nhóm lần lượt là $x_1 = 0,9$ và '
+                           '$x_2 = 1,1$. Số trung bình $\\bar{x} = \\dfrac{4 \\cdot 0,9 + 6 \\cdot 1,1}{10} '
+                           '= 1,02\\text{ (kg)}$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 10: Phương sai và độ lệch chuẩn của mẫu số '
-                        'liệu ghép nhóm. b) **Đúng** theo công thức trọng tâm **Số trung bình mẫu ghép '
-                        'nhóm** ($\\bar{x} = \\dfrac{n_1 x_1 + n_2 x_2 + \\dots + n_k x_k}{n}$). c) **Sai** '
-                        "vì $f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm) là công thức của "
-                        'nội dung khác, không phải quy tắc chung của **Số trung bình mẫu ghép nhóm**. d) '
-                        '**Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        'liệu ghép nhóm. b) **Đúng** theo công thức **Số trung bình mẫu ghép nhóm** '
+                        '($\\bar{x} = \\dfrac{n_1 x_1 + n_2 x_2 + \\dots + n_k x_k}{n}$). c) **Sai** vì công '
+                        'thức đúng của **Số trung bình mẫu ghép nhóm** phải là $\\bar{x} = \\dfrac{n_1 x_1 + '
+                        'n_2 x_2 + \\dots + n_k x_k}{n}$ chứ không phải $\\bar{x} = \\dfrac{n_1 x_1 - n_2 '
+                        'x_2 + \\dots + n_k x_k}{n}$. d) **Đúng** theo lời giải ví dụ minh họa trong bài '
+                        'học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 10: Phương sai và độ lệch chuẩn của mẫu số liệu ghép nhóm** để '
-                 'giải quyết tình huống sau: Khảo sát cân nặng (kg) của 10 quả bưởi thu được: nhóm $[0,8; '
-                 '1,0)$ có 4 quả; nhóm $[1,0; 1,2)$ có 6 quả. Tính số trung bình $\\bar{x}$ và phương sai '
-                 '$s^2$. Kết quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ["Tập xác định $D = \\mathbb{R}$. Ta có $y' = 3x^2 - 6x = 3x(x - 2)$. Cho $y' = 0 "
-                        "\\Leftrightarrow x = 0$ hoặc $x = 2$. Bảng xét dấu $y'$: trên $(-\\infty; 0)$...",
-                        "Hàm số liên tục trên $[0; 2]$. Ta có $f'(x) = 3x^2 - 3 = 0 \\Leftrightarrow x = 1 "
-                        '\\in (0; 2)$ hoặc $x = -1 \\notin (0; 2)$. Tính giá trị: $f(0) = 2$; $f(1) = 0$...',
-                        'Tập xác định $D = \\mathbb{R} \\setminus \\{1\\}$. Chia đa thức ta có $y = 2x + 1 + '
-                        '\\dfrac{2}{x - 1}$. Vì $\\lim_{x \\to 1^+} y = +\\infty$ và $\\lim_{x \\to 1^-} y = '
-                        '-\\infty$...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 10: Phương sai và độ lệch chuẩn của mẫu số liệu '
+                 'ghép nhóm** để giải bài toán sau: Khảo sát cân nặng (kg) của 10 quả bưởi thu được: nhóm '
+                 '$[0,8; 1,0)$ có 4 quả; nhóm $[1,0; 1,2)$ có 6 quả. Tính số trung bình $\\bar{x}$ và phương '
+                 'sai $s^2$. Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Giá trị đại diện của hai nhóm lần lượt là $x_1 = 0,9$ và $x_2 = 1,1$. Số trung bình '
+                        '$\\bar{x} = \\dfrac{4 \\cdot 0,9 - 6 \\cdot 1,1}{10} = 1,02\\text{ (kg)}$...',
                         'Giá trị đại diện của hai nhóm lần lượt là $x_1 = 0,9$ và $x_2 = 1,1$. Số trung bình '
-                        '$\\bar{x} = \\dfrac{4 \\cdot 0,9 + 6 \\cdot 1,1}{10} = 1,02\\text{ (kg)}$. P...'],
+                        '$\\bar{x} = \\dfrac{10}{4 \\cdot 0,9 + 6 \\cdot 1,1} = 1,02\\text{ (kg)}$...',
+                        'Giá trị đại diện của hai nhóm lần lượt là $x_1 = 2,9$ và $x_2 = 1,1$. Số trung bình '
+                        '$\\bar{x} = \\dfrac{4 \\cdot 0,9 + 6 \\cdot 1,1}{10} = 1,02\\text{ (kg)}$...',
+                        'Giá trị đại diện của hai nhóm lần lượt là $x_1 = 0,9$ và $x_2 = 1,1$. Số trung bình '
+                        '$\\bar{x} = \\dfrac{4 \\cdot 0,9 + 6 \\cdot 1,1}{10} = 1,02\\text{ (kg)}$...'],
             'answer': 3,
             'solution': 'Lời giải chi tiết theo Bài 10: Phương sai và độ lệch chuẩn của mẫu số liệu ghép '
                         'nhóm: Giá trị đại diện của hai nhóm lần lượt là $x_1 = 0,9$ và $x_2 = 1,1$. Số '
@@ -1897,33 +1917,37 @@ LESSONS = [{'topic': 'l12-ch01-ung-dung-dao-ham',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 11: Nguyên hàm**, công thức hoặc quy tắc nào sau đây '
-                 'biểu diễn đúng **Nguyên hàm hàm lũy thừa**?',
+            'q': 'Trong **Bài 11: Nguyên hàm**, quy tắc hoặc công thức nào sau đây xác định đúng **Nguyên '
+                 'hàm hàm lũy thừa**?',
             'options': ['$\\int x^\\alpha\\,\\mathrm{d}x = \\dfrac{x^{\\alpha + 1}}{\\alpha + 1} + C \\quad '
                         '(\\alpha \\ne -1), \\quad \\int \\dfrac{1}{x}\\,\\mathrm{d}x = \\ln|x| + C$',
-                        '$\\int \\cos x\\,\\mathrm{d}x = \\sin x + C, \\quad \\int \\sin x\\,\\mathrm{d}x = '
-                        '-\\cos x + C$',
-                        '$\\int e^x\\,\\mathrm{d}x = e^x + C, \\quad \\int a^x\\,\\mathrm{d}x = '
-                        '\\dfrac{a^x}{\\ln a} + C$',
-                        "$f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm)"],
+                        '$\\notint x^\\alpha\\,\\mathrm{d}x = \\dfrac{x^{\\alpha + 1}}{\\alpha + 1} + C '
+                        '\\quad (\\alpha \\ne -1), \\quad \\int \\dfrac{1}{x}\\,\\mathrm{d}x = \\ln|x| + C$',
+                        '$\\int x^\\alpha\\,\\mathrm{d}x = \\dfrac{x^{\\alpha + 1}}{\\alpha + 1} + C \\quad '
+                        '(\\alpha \\ne -1), \\quad \\int \\dfrac{x}{1}\\,\\mathrm{d}x = \\ln|x| + C$',
+                        '$\\int x^\\alpha\\,\\mathrm{d}x = \\dfrac{x^{\\alpha + 2}}{\\alpha + 1} + C \\quad '
+                        '(\\alpha \\ne -1), \\quad \\int \\dfrac{1}{x}\\,\\mathrm{d}x = \\ln|x| + C$'],
             'answer': 0,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 11: Nguyên hàm, **Nguyên hàm hàm lũy thừa** '
-                        'được xác định bởi: $\\int x^\\alpha\\,\\mathrm{d}x = \\dfrac{x^{\\alpha + '
-                        '1}}{\\alpha + 1} + C \\quad (\\alpha \\ne -1), \\quad \\int '
-                        '\\dfrac{1}{x}\\,\\mathrm{d}x = \\ln|x| + C$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 11: Nguyên hàm, **Nguyên hàm hàm lũy thừa** được '
+                        'xác định bởi: $\\int x^\\alpha\\,\\mathrm{d}x = \\dfrac{x^{\\alpha + 1}}{\\alpha + '
+                        '1} + C \\quad (\\alpha \\ne -1), \\quad \\int \\dfrac{1}{x}\\,\\mathrm{d}x = '
+                        '\\ln|x| + C$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 11: Nguyên hàm**, nội dung/biểu thức $\\int \\cos x\\,\\mathrm{d}x = \\sin x + '
-                 'C, \\quad \\int \\sin x\\,\\mathrm{d}x = -\\cos x + C$ là quy tắc hoặc công thức của mục '
-                 'nào sau đây?',
-            'options': ['Nguyên hàm hàm lũy thừa',
-                        'Nguyên hàm hàm lượng giác',
-                        'Nguyên hàm hàm số mũ',
-                        'Đồng biến trên khoảng'],
+            'q': 'Khi học **Bài 11: Nguyên hàm**, biểu thức hoặc quy tắc nào dưới đây biểu diễn đúng '
+                 '**Nguyên hàm hàm lượng giác**?',
+            'options': ['$\\notint \\cos x\\,\\mathrm{d}x = \\sin x + C, \\quad \\int \\sin x\\,\\mathrm{d}x '
+                        '= -\\cos x + C$',
+                        '$\\int \\cos x\\,\\mathrm{d}x = \\sin x + C, \\quad \\int \\sin x\\,\\mathrm{d}x = '
+                        '-\\cos x + C$',
+                        'Đảo ngược vế của quy tắc: $\\int \\cos x\\,\\mathrm{d}x = \\sin x + C, \\quad \\int '
+                        '\\sin x\\,\\mathrm{d}x = -\\cos x + C$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\int \\cos x\\,\\mathrm{d}x = '
+                        '\\sin x + C, \\quad \\int \\sin x\\,\\mathrm{d}x = -\\cos x + C$'],
             'answer': 1,
-            'solution': 'Trong Bài 11: Nguyên hàm, biểu thức/quy tắc $\\int \\cos x\\,\\mathrm{d}x = \\sin x '
-                        '+ C, \\quad \\int \\sin x\\,\\mathrm{d}x = -\\cos x + C$ chính là nội dung của '
-                        '**Nguyên hàm hàm lượng giác**.'},
+            'solution': 'Trong Bài 11: Nguyên hàm, **Nguyên hàm hàm lượng giác** có công thức/quy tắc là: '
+                        '$\\int \\cos x\\,\\mathrm{d}x = \\sin x + C, \\quad \\int \\sin x\\,\\mathrm{d}x = '
+                        '-\\cos x + C$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Cho hàm số $f(x) = e^x + 2x$. Nguyên hàm $F(x)$ của hàm số $f(x)$ thỏa mãn $F(0) = 3$ là:',
@@ -1938,17 +1962,18 @@ LESSONS = [{'topic': 'l12-ch01-ung-dung-dao-ham',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 11: Nguyên hàm** (Chương IV: Nguyên hàm và tích phân), khẳng định nào sau '
-                 'đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Nhận biết được tính đồng biến, nghịch biến của hàm số trên một khoảng dựa vào dấu '
-                        "của đạo hàm cấp một $f'(x)$.",
-                        'Xác định được điểm cực đại, điểm cực tiểu, giá trị cực đại, giá trị cực tiểu của '
-                        "hàm số thông qua bảng biến thiên hoặc đạo hàm cấp hai $f''(x)$.",
-                        'Vận dụng điều kiện đơn điệu và cực trị để giải các bài toán chứa tham số $m$.',
+            'q': 'Để nắm vững bản chất của **Bài 11: Nguyên hàm**, nhận định nào sau đây là **chính xác**?',
+            'options': ['Nhận biết được định nghĩa nguyên hàm: $F(x)$ là nguyên hàm của $f(x)$ trên $K$ nếu '
+                        "$F'(x) = f(x)$ với mọi $x \\notin K$.",
+                        'Đảo ngược vế của quy tắc: Nhận biết được định nghĩa nguyên hàm: $F(x)$ là nguyên '
+                        "hàm của $f(x)$ trên $K$ nếu $F'(x) = f(x)$ với mọi $x \\in K$.",
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Nhận biết được định nghĩa '
+                        "nguyên hàm: $F(x)$ là nguyên hàm của $f(x)$ trên $K$ nếu $F'(x) = f(x)$ với mọi $x "
+                        '\\in K$.',
                         'Nhận biết được định nghĩa nguyên hàm: $F(x)$ là nguyên hàm của $f(x)$ trên $K$ nếu '
                         "$F'(x) = f(x)$ với mọi $x \\in K$."],
             'answer': 3,
-            'solution': 'Theo yêu cầu cần đạt của Bài 11: Nguyên hàm: Nhận biết được định nghĩa nguyên hàm: '
+            'solution': 'Theo nội dung cốt lõi của Bài 11: Nguyên hàm: Nhận biết được định nghĩa nguyên hàm: '
                         "$F(x)$ là nguyên hàm của $f(x)$ trên $K$ nếu $F'(x) = f(x)$ với mọi $x \\in K$."},
            {'level': 'hieu',
             'type': 'tf4',
@@ -1967,43 +1992,46 @@ LESSONS = [{'topic': 'l12-ch01-ung-dung-dao-ham',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 11: Nguyên hàm**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết được định nghĩa nguyên '
-                           "hàm: $F(x)$ là nguyên hàm của $f(x)$ trên $K$ nếu $F'(x) = f(x)$ với mọi $x \\in "
-                           'K$.',
-                           'Quy tắc/công thức **Nguyên hàm hàm lũy thừa** trong bài được xác định bởi: '
-                           '$\\int x^\\alpha\\,\\mathrm{d}x = \\dfrac{x^{\\alpha + 1}}{\\alpha + 1} + C '
-                           '\\quad (\\alpha \\ne -1), \\quad \\int \\dfrac{1}{x}\\,\\mathrm{d}x = \\ln|x| + '
-                           'C$.',
-                           'Trong mọi trường hợp, **Nguyên hàm hàm lũy thừa** luôn được tính bằng công thức '
-                           "$f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm) (thuộc Đồng biến "
-                           'trên khoảng) mà không cần điều kiện của Bài 11: Nguyên hàm.',
-                           'Với bài toán minh họa: “Tìm nguyên hàm $F(x)$ của hàm số $f(x) = 3x^2 - 2x + 1$ '
-                           'biết $F(1) = 4$.”, lời giải đúng là: Ta có $F(x) = \\int (3x^2 - 2x + '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 11: Nguyên hàm**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết được định nghĩa nguyên hàm: '
+                           "$F(x)$ là nguyên hàm của $f(x)$ trên $K$ nếu $F'(x) = f(x)$ với mọi $x \\in K$.",
+                           'Trong **Bài 11: Nguyên hàm**, quy tắc/công thức **Nguyên hàm hàm lũy thừa** được '
+                           'viết là: $\\int x^\\alpha\\,\\mathrm{d}x = \\dfrac{x^{\\alpha + 1}}{\\alpha + 1} '
+                           '+ C \\quad (\\alpha \\ne -1), \\quad \\int \\dfrac{1}{x}\\,\\mathrm{d}x = '
+                           '\\ln|x| + C$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $\\notint x^\\alpha\\,\\mathrm{d}x = '
+                           '\\dfrac{x^{\\alpha + 1}}{\\alpha + 1} + C \\quad (\\alpha \\ne -1), \\quad \\int '
+                           '\\dfrac{1}{x}\\,\\mathrm{d}x = \\ln|x| + C$ thì kết quả của **Nguyên hàm hàm lũy '
+                           'thừa** trong **Bài 11: Nguyên hàm** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Tìm nguyên hàm $F(x)$ của hàm số $f(x) = 3x^2 - 2x + 1$ biết '
+                           '$F(1) = 4$.”, kết quả giải đúng là: Ta có $F(x) = \\int (3x^2 - 2x + '
                            '1)\\,\\mathrm{d}x = x^3 - x^2 + x + C$. Theo giả thiết $F(1) = 4 '
                            '\\Leftrightarrow 1^3 - 1^2 + 1 + C = 4 \\Leftrightarrow C = 3$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 11: Nguyên hàm. b) **Đúng** theo công thức '
-                        'trọng tâm **Nguyên hàm hàm lũy thừa** ($\\int x^\\alpha\\,\\mathrm{d}x = '
+                        '**Nguyên hàm hàm lũy thừa** ($\\int x^\\alpha\\,\\mathrm{d}x = \\dfrac{x^{\\alpha + '
+                        '1}}{\\alpha + 1} + C \\quad (\\alpha \\ne -1), \\quad \\int '
+                        '\\dfrac{1}{x}\\,\\mathrm{d}x = \\ln|x| + C$). c) **Sai** vì công thức đúng của '
+                        '**Nguyên hàm hàm lũy thừa** phải là $\\int x^\\alpha\\,\\mathrm{d}x = '
                         '\\dfrac{x^{\\alpha + 1}}{\\alpha + 1} + C \\quad (\\alpha \\ne -1), \\quad \\int '
-                        "\\dfrac{1}{x}\\,\\mathrm{d}x = \\ln|x| + C$). c) **Sai** vì $f'(x) \\ge 0, \\forall "
-                        'x \\in K$ (dấu $=$ tại hữu hạn điểm) là công thức của nội dung khác, không phải quy '
-                        'tắc chung của **Nguyên hàm hàm lũy thừa**. d) **Đúng** theo lời giải ví dụ minh họa '
-                        'trong bài học.'},
+                        '\\dfrac{1}{x}\\,\\mathrm{d}x = \\ln|x| + C$ chứ không phải $\\notint '
+                        'x^\\alpha\\,\\mathrm{d}x = \\dfrac{x^{\\alpha + 1}}{\\alpha + 1} + C \\quad '
+                        '(\\alpha \\ne -1), \\quad \\int \\dfrac{1}{x}\\,\\mathrm{d}x = \\ln|x| + C$. d) '
+                        '**Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 11: Nguyên hàm** để giải quyết tình huống sau: Tìm nguyên hàm '
-                 '$F(x)$ của hàm số $f(x) = 3x^2 - 2x + 1$ biết $F(1) = 4$. Kết quả và hướng giải nào dưới '
-                 'đây là **đúng**?',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 11: Nguyên hàm** để giải bài toán sau: Tìm nguyên '
+                 'hàm $F(x)$ của hàm số $f(x) = 3x^2 - 2x + 1$ biết $F(1) = 4$. Cách giải và kết quả nào '
+                 'dưới đây là **đúng**?',
             'options': ['Ta có $F(x) = \\int (3x^2 - 2x + 1)\\,\\mathrm{d}x = x^3 - x^2 + x + C$. Theo giả '
                         'thiết $F(1) = 4 \\Leftrightarrow 1^3 - 1^2 + 1 + C = 4 \\Leftrightarrow C = 3$...',
-                        "Tập xác định $D = \\mathbb{R}$. Ta có $y' = 3x^2 - 6x = 3x(x - 2)$. Cho $y' = 0 "
-                        "\\Leftrightarrow x = 0$ hoặc $x = 2$. Bảng xét dấu $y'$: trên $(-\\infty; 0)$...",
-                        "Hàm số liên tục trên $[0; 2]$. Ta có $f'(x) = 3x^2 - 3 = 0 \\Leftrightarrow x = 1 "
-                        '\\in (0; 2)$ hoặc $x = -1 \\notin (0; 2)$. Tính giá trị: $f(0) = 2$; $f(1) = 0$...',
-                        'Tập xác định $D = \\mathbb{R} \\setminus \\{1\\}$. Chia đa thức ta có $y = 2x + 1 + '
-                        '\\dfrac{2}{x - 1}$. Vì $\\lim_{x \\to 1^+} y = +\\infty$ và $\\lim_{x \\to 1^-} y = '
-                        '-\\infty$...'],
+                        'Ta có $F(x) = \\notint (3x^2 - 2x + 1)\\,\\mathrm{d}x = x^3 - x^2 + x + C$. Theo '
+                        'giả thiết $F(1) = 4 \\Leftrightarrow 1^3 - 1^2 + 1 + C = 4 \\Leftrightarrow C = '
+                        '3$...',
+                        'Ta có $F(x) = \\int (3x^2 - 2x + 1)\\,\\mathrm{d}x = x^3 - x^2 + x + C$. Theo giả '
+                        'thiết $F(1) = 4 \\Leftrightarrow 1^3 - 1^2 + 1 + C = 4 \\Leftrightarrow C = 2$...',
+                        'Ta có $F(x) = \\int (3x^4 - 2x + 1)\\,\\mathrm{d}x = x^3 - x^2 + x + C$. Theo giả '
+                        'thiết $F(1) = 4 \\Leftrightarrow 1^3 - 1^2 + 1 + C = 4 \\Leftrightarrow C = 3$...'],
             'answer': 0,
             'solution': 'Lời giải chi tiết theo Bài 11: Nguyên hàm: Ta có $F(x) = \\int (3x^2 - 2x + '
                         '1)\\,\\mathrm{d}x = x^3 - x^2 + x + C$. Theo giả thiết $F(1) = 4 \\Leftrightarrow '
@@ -2078,30 +2106,34 @@ LESSONS = [{'topic': 'l12-ch01-ung-dung-dao-ham',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 12: Tích phân**, công thức hoặc quy tắc nào sau đây biểu '
-                 'diễn đúng **Công thức Newton-Leibniz**?',
-            'options': ['$\\int_a^b [k f(x) + l g(x)]\\,\\mathrm{d}x = k\\int_a^b f(x)\\,\\mathrm{d}x + '
-                        'l\\int_a^b g(x)\\,\\mathrm{d}x$',
+            'q': 'Trong **Bài 12: Tích phân**, quy tắc hoặc công thức nào sau đây xác định đúng **Công thức '
+                 'Newton-Leibniz**?',
+            'options': ['$\\notint_a^b f(x)\\,\\mathrm{d}x = F(x)\\Big|_a^b = F(b) - F(a)$',
                         '$\\int_a^b f(x)\\,\\mathrm{d}x = F(x)\\Big|_a^b = F(b) - F(a)$',
-                        '$\\int_a^c f(x)\\,\\mathrm{d}x + \\int_c^b f(x)\\,\\mathrm{d}x = \\int_a^b '
-                        'f(x)\\,\\mathrm{d}x$',
-                        "$f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm)"],
+                        'Đảo ngược vế của quy tắc: $\\int_a^b f(x)\\,\\mathrm{d}x = F(x)\\Big|_a^b = F(b) - '
+                        'F(a)$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\int_a^b f(x)\\,\\mathrm{d}x '
+                        '= F(x)\\Big|_a^b = F(b) - F(a)$'],
             'answer': 1,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 12: Tích phân, **Công thức Newton-Leibniz** '
-                        'được xác định bởi: $\\int_a^b f(x)\\,\\mathrm{d}x = F(x)\\Big|_a^b = F(b) - F(a)$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 12: Tích phân, **Công thức Newton-Leibniz** được '
+                        'xác định bởi: $\\int_a^b f(x)\\,\\mathrm{d}x = F(x)\\Big|_a^b = F(b) - F(a)$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 12: Tích phân**, nội dung/biểu thức $\\int_a^b [k f(x) + l '
-                 'g(x)]\\,\\mathrm{d}x = k\\int_a^b f(x)\\,\\mathrm{d}x + l\\int_a^b g(x)\\,\\mathrm{d}x$ là '
-                 'quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Công thức Newton-Leibniz',
-                        'Tính chất chèn cận',
-                        'Tính chất tuyến tính',
-                        'Đồng biến trên khoảng'],
-            'answer': 2,
-            'solution': 'Trong Bài 12: Tích phân, biểu thức/quy tắc $\\int_a^b [k f(x) + l '
+            'q': 'Khi học **Bài 12: Tích phân**, biểu thức hoặc quy tắc nào dưới đây biểu diễn đúng **Tính '
+                 'chất tuyến tính**?',
+            'options': ['$\\notint_a^b [k f(x) + l g(x)]\\,\\mathrm{d}x = k\\int_a^b f(x)\\,\\mathrm{d}x + '
+                        'l\\int_a^b g(x)\\,\\mathrm{d}x$',
+                        'Đảo ngược vế của quy tắc: $\\int_a^b [k f(x) + l g(x)]\\,\\mathrm{d}x = k\\int_a^b '
+                        'f(x)\\,\\mathrm{d}x + l\\int_a^b g(x)\\,\\mathrm{d}x$',
+                        '$\\int_a^b [k f(x) + l g(x)]\\,\\mathrm{d}x = k\\int_a^b f(x)\\,\\mathrm{d}x + '
+                        'l\\int_a^b g(x)\\,\\mathrm{d}x$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\int_a^b [k f(x) + l '
                         'g(x)]\\,\\mathrm{d}x = k\\int_a^b f(x)\\,\\mathrm{d}x + l\\int_a^b '
-                        'g(x)\\,\\mathrm{d}x$ chính là nội dung của **Tính chất tuyến tính**.'},
+                        'g(x)\\,\\mathrm{d}x$'],
+            'answer': 2,
+            'solution': 'Trong Bài 12: Tích phân, **Tính chất tuyến tính** có công thức/quy tắc là: '
+                        '$\\int_a^b [k f(x) + l g(x)]\\,\\mathrm{d}x = k\\int_a^b f(x)\\,\\mathrm{d}x + '
+                        'l\\int_a^b g(x)\\,\\mathrm{d}x$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Biết $\\int_1^3 f(x)\\,\\mathrm{d}x = 4$ và $\\int_1^3 g(x)\\,\\mathrm{d}x = -2$. Giá trị '
@@ -2114,18 +2146,18 @@ LESSONS = [{'topic': 'l12-ch01-ung-dung-dao-ham',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 12: Tích phân** (Chương IV: Nguyên hàm và tích phân), khẳng định nào sau đây '
-                 'phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
+            'q': 'Để nắm vững bản chất của **Bài 12: Tích phân**, nhận định nào sau đây là **chính xác**?',
             'options': ['Hiểu được định nghĩa tích phân xác định và ý nghĩa hình học của tích phân qua diện '
                         'tích hình thang cong.',
-                        'Nhận biết được tính đồng biến, nghịch biến của hàm số trên một khoảng dựa vào dấu '
-                        "của đạo hàm cấp một $f'(x)$.",
-                        'Xác định được điểm cực đại, điểm cực tiểu, giá trị cực đại, giá trị cực tiểu của '
-                        "hàm số thông qua bảng biến thiên hoặc đạo hàm cấp hai $f''(x)$.",
-                        'Vận dụng điều kiện đơn điệu và cực trị để giải các bài toán chứa tham số $m$.'],
+                        'Hiểu được định nghĩa tích phân xác định và ý nghĩa hình học của tích phân qua diện '
+                        'tích hình thang cong. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Hiểu được định nghĩa tích phân xác định và ý nghĩa hình '
+                        'học của tích phân qua diện tích hình thang cong.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Hiểu được định nghĩa tích phân '
+                        'xác định và ý nghĩa hình học của tích phân qua diện tích hình thang cong.'],
             'answer': 0,
-            'solution': 'Theo yêu cầu cần đạt của Bài 12: Tích phân: Hiểu được định nghĩa tích phân xác định '
-                        'và ý nghĩa hình học của tích phân qua diện tích hình thang cong.'},
+            'solution': 'Theo nội dung cốt lõi của Bài 12: Tích phân: Hiểu được định nghĩa tích phân xác '
+                        'định và ý nghĩa hình học của tích phân qua diện tích hình thang cong.'},
            {'level': 'hieu',
             'type': 'tf4',
             'q': 'Cho hai hàm số $f(x), g(x)$ liên tục trên đoạn $[0; 5]$ thỏa mãn $\\int_0^2 '
@@ -2144,36 +2176,33 @@ LESSONS = [{'topic': 'l12-ch01-ung-dung-dao-ham',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 12: Tích phân**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Hiểu được định nghĩa tích phân xác '
-                           'định và ý nghĩa hình học của tích phân qua diện tích hình thang cong.',
-                           'Quy tắc/công thức **Công thức Newton-Leibniz** trong bài được xác định bởi: '
-                           '$\\int_a^b f(x)\\,\\mathrm{d}x = F(x)\\Big|_a^b = F(b) - F(a)$.',
-                           'Trong mọi trường hợp, **Công thức Newton-Leibniz** luôn được tính bằng công thức '
-                           "$f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm) (thuộc Đồng biến "
-                           'trên khoảng) mà không cần điều kiện của Bài 12: Tích phân.',
-                           'Với bài toán minh họa: “Tính tích phân $I = \\int_0^2 (3x^2 - 2x + '
-                           '1)\\,\\mathrm{d}x$.”, lời giải đúng là: Ta có $I = (x^3 - x^2 + x)\\Big|_0^2 = '
-                           '(2^3 - 2^2 + 2) - 0 = 8 - 4 + 2 = 6$.'],
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 12: Tích phân**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Hiểu được định nghĩa tích phân xác định '
+                           'và ý nghĩa hình học của tích phân qua diện tích hình thang cong.',
+                           'Trong **Bài 12: Tích phân**, quy tắc/công thức **Công thức Newton-Leibniz** được '
+                           'viết là: $\\int_a^b f(x)\\,\\mathrm{d}x = F(x)\\Big|_a^b = F(b) - F(a)$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $\\notint_a^b f(x)\\,\\mathrm{d}x = '
+                           'F(x)\\Big|_a^b = F(b) - F(a)$ thì kết quả của **Công thức Newton-Leibniz** trong '
+                           '**Bài 12: Tích phân** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Tính tích phân $I = \\int_0^2 (3x^2 - 2x + '
+                           '1)\\,\\mathrm{d}x$.”, kết quả giải đúng là: Ta có $I = (x^3 - x^2 + x)\\Big|_0^2 '
+                           '= (2^3 - 2^2 + 2) - 0 = 8 - 4 + 2 = 6$.'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 12: Tích phân. b) **Đúng** theo công thức '
-                        'trọng tâm **Công thức Newton-Leibniz** ($\\int_a^b f(x)\\,\\mathrm{d}x = '
-                        "F(x)\\Big|_a^b = F(b) - F(a)$). c) **Sai** vì $f'(x) \\ge 0, \\forall x \\in K$ "
-                        '(dấu $=$ tại hữu hạn điểm) là công thức của nội dung khác, không phải quy tắc chung '
-                        'của **Công thức Newton-Leibniz**. d) **Đúng** theo lời giải ví dụ minh họa trong '
-                        'bài học.'},
+                        '**Công thức Newton-Leibniz** ($\\int_a^b f(x)\\,\\mathrm{d}x = F(x)\\Big|_a^b = '
+                        'F(b) - F(a)$). c) **Sai** vì công thức đúng của **Công thức Newton-Leibniz** phải '
+                        'là $\\int_a^b f(x)\\,\\mathrm{d}x = F(x)\\Big|_a^b = F(b) - F(a)$ chứ không phải '
+                        '$\\notint_a^b f(x)\\,\\mathrm{d}x = F(x)\\Big|_a^b = F(b) - F(a)$. d) **Đúng** theo '
+                        'lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 12: Tích phân** để giải quyết tình huống sau: Tính tích phân $I = '
-                 '\\int_0^2 (3x^2 - 2x + 1)\\,\\mathrm{d}x$. Kết quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ["Tập xác định $D = \\mathbb{R}$. Ta có $y' = 3x^2 - 6x = 3x(x - 2)$. Cho $y' = 0 "
-                        "\\Leftrightarrow x = 0$ hoặc $x = 2$. Bảng xét dấu $y'$: trên $(-\\infty; 0)$...",
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 12: Tích phân** để giải bài toán sau: Tính tích '
+                 'phân $I = \\int_0^2 (3x^2 - 2x + 1)\\,\\mathrm{d}x$. Cách giải và kết quả nào dưới đây là '
+                 '**đúng**?',
+            'options': ['Ta có $I = (x^3 - x^2 - x)\\Big|_0^2 = (2^3 - 2^2 + 2) - 0 = 8 - 4 + 2 = 6$.',
                         'Ta có $I = (x^3 - x^2 + x)\\Big|_0^2 = (2^3 - 2^2 + 2) - 0 = 8 - 4 + 2 = 6$.',
-                        "Hàm số liên tục trên $[0; 2]$. Ta có $f'(x) = 3x^2 - 3 = 0 \\Leftrightarrow x = 1 "
-                        '\\in (0; 2)$ hoặc $x = -1 \\notin (0; 2)$. Tính giá trị: $f(0) = 2$; $f(1) = 0$...',
-                        'Tập xác định $D = \\mathbb{R} \\setminus \\{1\\}$. Chia đa thức ta có $y = 2x + 1 + '
-                        '\\dfrac{2}{x - 1}$. Vì $\\lim_{x \\to 1^+} y = +\\infty$ và $\\lim_{x \\to 1^-} y = '
-                        '-\\infty$...'],
+                        'Ta có $I = (x^3 - x^2 + x)\\Big|_0^2 = (2^3 - 2^2 + 2) - 0 = 8 - 4 + 2 = 5$.',
+                        'Ta có $I = (x^6 - x^2 + x)\\Big|_0^2 = (2^3 - 2^2 + 2) - 0 = 8 - 4 + 2 = 6$.'],
             'answer': 1,
             'solution': 'Lời giải chi tiết theo Bài 12: Tích phân: Ta có $I = (x^3 - x^2 + x)\\Big|_0^2 = '
                         '(2^3 - 2^2 + 2) - 0 = 8 - 4 + 2 = 6$.'},
@@ -2248,30 +2277,32 @@ LESSONS = [{'topic': 'l12-ch01-ung-dung-dao-ham',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 13: Ứng dụng hình học của tích phân (Diện tích hình '
-                 'phẳng và thể tích vật thể)**, công thức hoặc quy tắc nào sau đây biểu diễn đúng **Diện '
-                 'tích hình phẳng giới hạn bởi 2 đường**?',
-            'options': ['$V = \\int_a^b S(x)\\,\\mathrm{d}x$',
-                        '$V = \\pi \\int_a^b [f(x)]^2\\,\\mathrm{d}x$',
+            'q': 'Trong **Bài 13: Ứng dụng hình học của tích phân (Diện tích hình phẳng và thể tích vật '
+                 'thể)**, quy tắc hoặc công thức nào sau đây xác định đúng **Diện tích hình phẳng giới hạn '
+                 'bởi 2 đường**?',
+            'options': ['$S = \\notint_a^b |f(x) - g(x)|\\,\\mathrm{d}x$',
+                        'Đảo ngược vế của quy tắc: $S = \\int_a^b |f(x) - g(x)|\\,\\mathrm{d}x$',
                         '$S = \\int_a^b |f(x) - g(x)|\\,\\mathrm{d}x$',
-                        "$f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm)"],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $S = \\int_a^b |f(x) - '
+                        'g(x)|\\,\\mathrm{d}x$'],
             'answer': 2,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 13: Ứng dụng hình học của tích phân (Diện '
-                        'tích hình phẳng và thể tích vật thể), **Diện tích hình phẳng giới hạn bởi 2 đường** '
-                        'được xác định bởi: $S = \\int_a^b |f(x) - g(x)|\\,\\mathrm{d}x$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 13: Ứng dụng hình học của tích phân (Diện tích '
+                        'hình phẳng và thể tích vật thể), **Diện tích hình phẳng giới hạn bởi 2 đường** được '
+                        'xác định bởi: $S = \\int_a^b |f(x) - g(x)|\\,\\mathrm{d}x$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 13: Ứng dụng hình học của tích phân (Diện tích hình phẳng và thể tích vật '
-                 'thể)**, nội dung/biểu thức $V = \\int_a^b S(x)\\,\\mathrm{d}x$ là quy tắc hoặc công thức '
-                 'của mục nào sau đây?',
-            'options': ['Diện tích hình phẳng giới hạn bởi 2 đường',
-                        'Thể tích khối tròn xoay quanh trục Ox',
-                        'Đồng biến trên khoảng',
-                        'Thể tích vật thể theo thiết diện'],
+            'q': 'Khi học **Bài 13: Ứng dụng hình học của tích phân (Diện tích hình phẳng và thể tích vật '
+                 'thể)**, biểu thức hoặc quy tắc nào dưới đây biểu diễn đúng **Thể tích vật thể theo thiết '
+                 'diện**?',
+            'options': ['$V = \\notint_a^b S(x)\\,\\mathrm{d}x$',
+                        'Đảo ngược vế của quy tắc: $V = \\int_a^b S(x)\\,\\mathrm{d}x$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $V = \\int_a^b '
+                        'S(x)\\,\\mathrm{d}x$',
+                        '$V = \\int_a^b S(x)\\,\\mathrm{d}x$'],
             'answer': 3,
             'solution': 'Trong Bài 13: Ứng dụng hình học của tích phân (Diện tích hình phẳng và thể tích vật '
-                        'thể), biểu thức/quy tắc $V = \\int_a^b S(x)\\,\\mathrm{d}x$ chính là nội dung của '
-                        '**Thể tích vật thể theo thiết diện**.'},
+                        'thể), **Thể tích vật thể theo thiết diện** có công thức/quy tắc là: $V = \\int_a^b '
+                        'S(x)\\,\\mathrm{d}x$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Diện tích hình phẳng giới hạn bởi hai đường $y = x^2 - 1$ và $y = 3$ bằng bao nhiêu?',
@@ -2284,18 +2315,19 @@ LESSONS = [{'topic': 'l12-ch01-ung-dung-dao-ham',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 13: Ứng dụng hình học của tích phân (Diện tích hình phẳng và thể tích vật '
-                 'thể)** (Chương IV: Nguyên hàm và tích phân), khẳng định nào sau đây phản ánh **đúng** yêu '
-                 'cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Nhận biết được tính đồng biến, nghịch biến của hàm số trên một khoảng dựa vào dấu '
-                        "của đạo hàm cấp một $f'(x)$.",
+            'q': 'Để nắm vững bản chất của **Bài 13: Ứng dụng hình học của tích phân (Diện tích hình phẳng '
+                 'và thể tích vật thể)**, nhận định nào sau đây là **chính xác**?',
+            'options': ['Viết và tính được công thức diện tích hình phẳng giới hạn bởi đồ thị hàm số $y = '
+                        'f(x), y = g(x)$ và hai đường thẳng $x = a, x = b$. (với dấu ngược lại)',
                         'Viết và tính được công thức diện tích hình phẳng giới hạn bởi đồ thị hàm số $y = '
                         'f(x), y = g(x)$ và hai đường thẳng $x = a, x = b$.',
-                        'Xác định được điểm cực đại, điểm cực tiểu, giá trị cực đại, giá trị cực tiểu của '
-                        "hàm số thông qua bảng biến thiên hoặc đạo hàm cấp hai $f''(x)$.",
-                        'Vận dụng điều kiện đơn điệu và cực trị để giải các bài toán chứa tham số $m$.'],
+                        'Đảo ngược vế của quy tắc: Viết và tính được công thức diện tích hình phẳng giới hạn '
+                        'bởi đồ thị hàm số $y = f(x), y = g(x)$ và hai đường thẳng $x = a, x = b$.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Viết và tính được công thức '
+                        'diện tích hình phẳng giới hạn bởi đồ thị hàm số $y = f(x), y = g(x)$ và hai đường '
+                        'thẳng $x = a, x = b$.'],
             'answer': 1,
-            'solution': 'Theo yêu cầu cần đạt của Bài 13: Ứng dụng hình học của tích phân (Diện tích hình '
+            'solution': 'Theo nội dung cốt lõi của Bài 13: Ứng dụng hình học của tích phân (Diện tích hình '
                         'phẳng và thể tích vật thể): Viết và tính được công thức diện tích hình phẳng giới '
                         'hạn bởi đồ thị hàm số $y = f(x), y = g(x)$ và hai đường thẳng $x = a, x = b$.'},
            {'level': 'hieu',
@@ -2318,42 +2350,41 @@ LESSONS = [{'topic': 'l12-ch01-ung-dung-dao-ham',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 13: Ứng dụng hình học '
-                 'của tích phân (Diện tích hình phẳng và thể tích vật thể)**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Viết và tính được công thức diện '
-                           'tích hình phẳng giới hạn bởi đồ thị hàm số $y = f(x), y = g(x)$ và hai đường '
-                           'thẳng $x = a, x = b$.',
-                           'Quy tắc/công thức **Diện tích hình phẳng giới hạn bởi 2 đường** trong bài được '
-                           'xác định bởi: $S = \\int_a^b |f(x) - g(x)|\\,\\mathrm{d}x$.',
-                           'Trong mọi trường hợp, **Diện tích hình phẳng giới hạn bởi 2 đường** luôn được '
-                           "tính bằng công thức $f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm) "
-                           '(thuộc Đồng biến trên khoảng) mà không cần điều kiện của Bài 13: Ứng dụng hình '
-                           'học của tích phân (Diện tích hình phẳng và thể tích vật thể).',
-                           'Với bài toán minh họa: “Tính diện tích hình phẳng giới hạn bởi parabol $y = x^2$ '
-                           'và đường thẳng $y = 2x$.”, lời giải đúng là: Phương trình hoành độ giao điểm: '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 13: Ứng dụng hình học của '
+                 'tích phân (Diện tích hình phẳng và thể tích vật thể)**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Viết và tính được công thức diện tích '
+                           'hình phẳng giới hạn bởi đồ thị hàm số $y = f(x), y = g(x)$ và hai đường thẳng $x '
+                           '= a, x = b$.',
+                           'Trong **Bài 13: Ứng dụng hình học của tích phân (Diện tích hình phẳng và thể '
+                           'tích vật thể)**, quy tắc/công thức **Diện tích hình phẳng giới hạn bởi 2 đường** '
+                           'được viết là: $S = \\int_a^b |f(x) - g(x)|\\,\\mathrm{d}x$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $S = \\notint_a^b |f(x) - '
+                           'g(x)|\\,\\mathrm{d}x$ thì kết quả của **Diện tích hình phẳng giới hạn bởi 2 '
+                           'đường** trong **Bài 13: Ứng dụng hình học của tích phân (Diện tích hình phẳng và '
+                           'thể tích vật thể)** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Tính diện tích hình phẳng giới hạn bởi parabol $y = x^2$ và '
+                           'đường thẳng $y = 2x$.”, kết quả giải đúng là: Phương trình hoành độ giao điểm: '
                            '$x^2 = 2x \\Leftrightarrow x = 0$ hoặc $x = 2$. Diện tích hình phẳng là...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 13: Ứng dụng hình học của tích phân (Diện '
-                        'tích hình phẳng và thể tích vật thể). b) **Đúng** theo công thức trọng tâm **Diện '
-                        'tích hình phẳng giới hạn bởi 2 đường** ($S = \\int_a^b |f(x) - '
-                        "g(x)|\\,\\mathrm{d}x$). c) **Sai** vì $f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ "
-                        'tại hữu hạn điểm) là công thức của nội dung khác, không phải quy tắc chung của '
-                        '**Diện tích hình phẳng giới hạn bởi 2 đường**. d) **Đúng** theo lời giải ví dụ minh '
-                        'họa trong bài học.'},
+                        'tích hình phẳng và thể tích vật thể). b) **Đúng** theo công thức **Diện tích hình '
+                        'phẳng giới hạn bởi 2 đường** ($S = \\int_a^b |f(x) - g(x)|\\,\\mathrm{d}x$). c) '
+                        '**Sai** vì công thức đúng của **Diện tích hình phẳng giới hạn bởi 2 đường** phải là '
+                        '$S = \\int_a^b |f(x) - g(x)|\\,\\mathrm{d}x$ chứ không phải $S = \\notint_a^b |f(x) '
+                        '- g(x)|\\,\\mathrm{d}x$. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 13: Ứng dụng hình học của tích phân (Diện tích hình phẳng và thể '
-                 'tích vật thể)** để giải quyết tình huống sau: Tính diện tích hình phẳng giới hạn bởi '
-                 'parabol $y = x^2$ và đường thẳng $y = 2x$. Kết quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ["Tập xác định $D = \\mathbb{R}$. Ta có $y' = 3x^2 - 6x = 3x(x - 2)$. Cho $y' = 0 "
-                        "\\Leftrightarrow x = 0$ hoặc $x = 2$. Bảng xét dấu $y'$: trên $(-\\infty; 0)$...",
-                        "Hàm số liên tục trên $[0; 2]$. Ta có $f'(x) = 3x^2 - 3 = 0 \\Leftrightarrow x = 1 "
-                        '\\in (0; 2)$ hoặc $x = -1 \\notin (0; 2)$. Tính giá trị: $f(0) = 2$; $f(1) = 0$...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 13: Ứng dụng hình học của tích phân (Diện tích hình '
+                 'phẳng và thể tích vật thể)** để giải bài toán sau: Tính diện tích hình phẳng giới hạn bởi '
+                 'parabol $y = x^2$ và đường thẳng $y = 2x$. Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Phương trình hoành độ giao điểm: $x^3 = 2x \\Leftrightarrow x = 0$ hoặc $x = 2$. '
+                        'Diện tích hình phẳng là...',
+                        'Phương trình hoành độ giao điểm: $x^2 = 2x \\Leftrightarrow x = 0$ hoặc $x = 1$. '
+                        'Diện tích hình phẳng là...',
                         'Phương trình hoành độ giao điểm: $x^2 = 2x \\Leftrightarrow x = 0$ hoặc $x = 2$. '
                         'Diện tích hình phẳng là...',
-                        'Tập xác định $D = \\mathbb{R} \\setminus \\{1\\}$. Chia đa thức ta có $y = 2x + 1 + '
-                        '\\dfrac{2}{x - 1}$. Vì $\\lim_{x \\to 1^+} y = +\\infty$ và $\\lim_{x \\to 1^-} y = '
-                        '-\\infty$...'],
+                        'Phương trình hoành độ giao điểm: $x^4 = 2x \\Leftrightarrow x = 0$ hoặc $x = 2$. '
+                        'Diện tích hình phẳng là...'],
             'answer': 2,
             'solution': 'Lời giải chi tiết theo Bài 13: Ứng dụng hình học của tích phân (Diện tích hình '
                         'phẳng và thể tích vật thể): Phương trình hoành độ giao điểm: $x^2 = 2x '
@@ -2436,29 +2467,27 @@ LESSONS = [{'topic': 'l12-ch01-ung-dung-dao-ham',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 14: Phương trình mặt phẳng**, công thức hoặc quy tắc nào '
-                 'sau đây biểu diễn đúng **Phương trình tổng quát**?',
-            'options': ['$\\dfrac{x}{a} + \\dfrac{y}{b} + \\dfrac{z}{c} = 1 \\quad (abc \\ne 0)$',
-                        '$d(M_0, (\\alpha)) = \\dfrac{|Ax_0 + By_0 + Cz_0 + D|}{\\sqrt{A^2 + B^2 + C^2}}$',
-                        "$f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm)",
+            'q': 'Trong **Bài 14: Phương trình mặt phẳng**, quy tắc hoặc công thức nào sau đây xác định đúng '
+                 '**Phương trình tổng quát**?',
+            'options': ['$Ax - By + Cz + D = 0 \\quad (A^2 + B^2 + C^2 > 0)$',
+                        '$Ax + By + Cz + D = 0 \\quad (A^2 + B^2 + C^2 > 1)$',
+                        '$Ax + By + Cz + D = 2 \\quad (A^2 + B^2 + C^2 > 0)$',
                         '$Ax + By + Cz + D = 0 \\quad (A^2 + B^2 + C^2 > 0)$'],
             'answer': 3,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 14: Phương trình mặt phẳng, **Phương trình '
-                        'tổng quát** được xác định bởi: $Ax + By + Cz + D = 0 \\quad (A^2 + B^2 + C^2 > '
-                        '0)$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 14: Phương trình mặt phẳng, **Phương trình tổng '
+                        'quát** được xác định bởi: $Ax + By + Cz + D = 0 \\quad (A^2 + B^2 + C^2 > 0)$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 14: Phương trình mặt phẳng**, nội dung/biểu thức $\\dfrac{x}{a} + '
-                 '\\dfrac{y}{b} + \\dfrac{z}{c} = 1 \\quad (abc \\ne 0)$ là quy tắc hoặc công thức của mục '
-                 'nào sau đây?',
-            'options': ['Phương trình mặt phẳng đoạn chắn',
-                        'Phương trình tổng quát',
-                        'Khoảng cách từ điểm đến mặt phẳng',
-                        'Đồng biến trên khoảng'],
+            'q': 'Khi học **Bài 14: Phương trình mặt phẳng**, biểu thức hoặc quy tắc nào dưới đây biểu diễn '
+                 'đúng **Phương trình mặt phẳng đoạn chắn**?',
+            'options': ['$\\dfrac{x}{a} + \\dfrac{y}{b} + \\dfrac{z}{c} = 1 \\quad (abc \\ne 0)$',
+                        '$\\dfrac{x}{a} - \\dfrac{y}{b} + \\dfrac{z}{c} = 1 \\quad (abc \\ne 0)$',
+                        '$\\dfrac{a}{x} + \\dfrac{y}{b} + \\dfrac{z}{c} = 1 \\quad (abc \\ne 0)$',
+                        '$\\dfrac{x}{a} + \\dfrac{y}{b} + \\dfrac{z}{c} = 2 \\quad (abc \\ne 0)$'],
             'answer': 0,
-            'solution': 'Trong Bài 14: Phương trình mặt phẳng, biểu thức/quy tắc $\\dfrac{x}{a} + '
-                        '\\dfrac{y}{b} + \\dfrac{z}{c} = 1 \\quad (abc \\ne 0)$ chính là nội dung của '
-                        '**Phương trình mặt phẳng đoạn chắn**.'},
+            'solution': 'Trong Bài 14: Phương trình mặt phẳng, **Phương trình mặt phẳng đoạn chắn** có công '
+                        'thức/quy tắc là: $\\dfrac{x}{a} + \\dfrac{y}{b} + \\dfrac{z}{c} = 1 \\quad (abc '
+                        '\\ne 0)$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Trong không gian $Oxyz$, khoảng cách từ điểm $M(1; 2; -1)$ đến mặt phẳng $(P): x + 2y - 2z '
@@ -2471,18 +2500,19 @@ LESSONS = [{'topic': 'l12-ch01-ung-dung-dao-ham',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 14: Phương trình mặt phẳng** (Chương V: Phương pháp tọa độ trong không '
-                 'gian), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của '
-                 'bài?',
-            'options': ['Nhận biết được tính đồng biến, nghịch biến của hàm số trên một khoảng dựa vào dấu '
-                        "của đạo hàm cấp một $f'(x)$.",
-                        'Xác định được điểm cực đại, điểm cực tiểu, giá trị cực đại, giá trị cực tiểu của '
-                        "hàm số thông qua bảng biến thiên hoặc đạo hàm cấp hai $f''(x)$.",
+            'q': 'Để nắm vững bản chất của **Bài 14: Phương trình mặt phẳng**, nhận định nào sau đây là '
+                 '**chính xác**?',
+            'options': ['Xác định được vectơ pháp tuyến $\\vec{n}$ của mặt phẳng và tính tích có hướng '
+                        '$[\\vec{u}, \\vec{v}]$ của cặp vectơ chỉ phương. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Xác định được vectơ pháp tuyến $\\vec{n}$ của mặt phẳng '
+                        'và tính tích có hướng $[\\vec{u}, \\vec{v}]$ của cặp vectơ chỉ phương.',
                         'Xác định được vectơ pháp tuyến $\\vec{n}$ của mặt phẳng và tính tích có hướng '
                         '$[\\vec{u}, \\vec{v}]$ của cặp vectơ chỉ phương.',
-                        'Vận dụng điều kiện đơn điệu và cực trị để giải các bài toán chứa tham số $m$.'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Xác định được vectơ pháp tuyến '
+                        '$\\vec{n}$ của mặt phẳng và tính tích có hướng $[\\vec{u}, \\vec{v}]$ của cặp vectơ '
+                        'chỉ phương.'],
             'answer': 2,
-            'solution': 'Theo yêu cầu cần đạt của Bài 14: Phương trình mặt phẳng: Xác định được vectơ pháp '
+            'solution': 'Theo nội dung cốt lõi của Bài 14: Phương trình mặt phẳng: Xác định được vectơ pháp '
                         'tuyến $\\vec{n}$ của mặt phẳng và tính tích có hướng $[\\vec{u}, \\vec{v}]$ của cặp '
                         'vectơ chỉ phương.'},
            {'level': 'hieu',
@@ -2503,39 +2533,38 @@ LESSONS = [{'topic': 'l12-ch01-ung-dung-dao-ham',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 14: Phương trình mặt '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 14: Phương trình mặt '
                  'phẳng**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Xác định được vectơ pháp tuyến '
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Xác định được vectơ pháp tuyến '
                            '$\\vec{n}$ của mặt phẳng và tính tích có hướng $[\\vec{u}, \\vec{v}]$ của cặp '
                            'vectơ chỉ phương.',
-                           'Quy tắc/công thức **Phương trình tổng quát** trong bài được xác định bởi: $Ax + '
-                           'By + Cz + D = 0 \\quad (A^2 + B^2 + C^2 > 0)$.',
-                           'Trong mọi trường hợp, **Phương trình tổng quát** luôn được tính bằng công thức '
-                           "$f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm) (thuộc Đồng biến "
-                           'trên khoảng) mà không cần điều kiện của Bài 14: Phương trình mặt phẳng.',
-                           'Với bài toán minh họa: “Viết phương trình mặt phẳng $(P)$ đi qua điểm $A(1; -2; '
-                           '3)$ và có vectơ pháp tuyến $\\vec{n} = (2; 1; -1)$.”, lời giải đúng là: Phương '
+                           'Trong **Bài 14: Phương trình mặt phẳng**, quy tắc/công thức **Phương trình tổng '
+                           'quát** được viết là: $Ax + By + Cz + D = 0 \\quad (A^2 + B^2 + C^2 > 0)$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $Ax - By + Cz + D = 0 \\quad (A^2 + B^2 + '
+                           'C^2 > 0)$ thì kết quả của **Phương trình tổng quát** trong **Bài 14: Phương '
+                           'trình mặt phẳng** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Viết phương trình mặt phẳng $(P)$ đi qua điểm $A(1; -2; 3)$ '
+                           'và có vectơ pháp tuyến $\\vec{n} = (2; 1; -1)$.”, kết quả giải đúng là: Phương '
                            'trình mặt phẳng $(P)$ là $2(x - 1) + 1(y + 2) - 1(z - 3) = 0 \\Leftrightarrow 2x '
                            '+ y - z + 3 = 0$.'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 14: Phương trình mặt phẳng. b) **Đúng** '
-                        'theo công thức trọng tâm **Phương trình tổng quát** ($Ax + By + Cz + D = 0 \\quad '
-                        "(A^2 + B^2 + C^2 > 0)$). c) **Sai** vì $f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ "
-                        'tại hữu hạn điểm) là công thức của nội dung khác, không phải quy tắc chung của '
-                        '**Phương trình tổng quát**. d) **Đúng** theo lời giải ví dụ minh họa trong bài '
-                        'học.'},
+                        'theo công thức **Phương trình tổng quát** ($Ax + By + Cz + D = 0 \\quad (A^2 + B^2 '
+                        '+ C^2 > 0)$). c) **Sai** vì công thức đúng của **Phương trình tổng quát** phải là '
+                        '$Ax + By + Cz + D = 0 \\quad (A^2 + B^2 + C^2 > 0)$ chứ không phải $Ax - By + Cz + '
+                        'D = 0 \\quad (A^2 + B^2 + C^2 > 0)$. d) **Đúng** theo lời giải ví dụ minh họa trong '
+                        'bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 14: Phương trình mặt phẳng** để giải quyết tình huống sau: Viết '
-                 'phương trình mặt phẳng $(P)$ đi qua điểm $A(1; -2; 3)$ và có vectơ pháp tuyến $\\vec{n} = '
-                 '(2; 1; -1)$. Kết quả và hướng giải nào dưới đây là **đúng**?',
-            'options': ["Tập xác định $D = \\mathbb{R}$. Ta có $y' = 3x^2 - 6x = 3x(x - 2)$. Cho $y' = 0 "
-                        "\\Leftrightarrow x = 0$ hoặc $x = 2$. Bảng xét dấu $y'$: trên $(-\\infty; 0)$...",
-                        "Hàm số liên tục trên $[0; 2]$. Ta có $f'(x) = 3x^2 - 3 = 0 \\Leftrightarrow x = 1 "
-                        '\\in (0; 2)$ hoặc $x = -1 \\notin (0; 2)$. Tính giá trị: $f(0) = 2$; $f(1) = 0$...',
-                        'Tập xác định $D = \\mathbb{R} \\setminus \\{1\\}$. Chia đa thức ta có $y = 2x + 1 + '
-                        '\\dfrac{2}{x - 1}$. Vì $\\lim_{x \\to 1^+} y = +\\infty$ và $\\lim_{x \\to 1^-} y = '
-                        '-\\infty$...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 14: Phương trình mặt phẳng** để giải bài toán sau: '
+                 'Viết phương trình mặt phẳng $(P)$ đi qua điểm $A(1; -2; 3)$ và có vectơ pháp tuyến '
+                 '$\\vec{n} = (2; 1; -1)$. Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Phương trình mặt phẳng $(P)$ là $2(x - 1) - 1(y + 2) - 1(z - 3) = 0 '
+                        '\\Leftrightarrow 2x + y - z + 3 = 0$.',
+                        'Phương trình mặt phẳng $(P)$ là $2(x - 1) + 1(y + 2) - 1(z - 3) = 0 '
+                        '\\Leftrightarrow 2x + y - z + 3 = 1$.',
+                        'Phương trình mặt phẳng $(P)$ là $4(x - 1) + 1(y + 2) - 1(z - 3) = 0 '
+                        '\\Leftrightarrow 2x + y - z + 3 = 0$.',
                         'Phương trình mặt phẳng $(P)$ là $2(x - 1) + 1(y + 2) - 1(z - 3) = 0 '
                         '\\Leftrightarrow 2x + y - z + 3 = 0$.'],
             'answer': 3,
@@ -2616,32 +2645,36 @@ LESSONS = [{'topic': 'l12-ch01-ung-dung-dao-ham',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 15: Phương trình đường thẳng trong không gian**, công '
-                 'thức hoặc quy tắc nào sau đây biểu diễn đúng **Phương trình tham số**?',
+            'q': 'Trong **Bài 15: Phương trình đường thẳng trong không gian**, quy tắc hoặc công thức nào '
+                 'sau đây xác định đúng **Phương trình tham số**?',
             'options': ['$\\begin{cases} x = x_0 + at \\\\ y = y_0 + bt \\\\ z = z_0 + ct \\end{cases} '
                         '\\quad (t \\in \\mathbb{R})$',
-                        '$\\dfrac{x - x_0}{a} = \\dfrac{y - y_0}{b} = \\dfrac{z - z_0}{c} \\quad (abc \\ne '
-                        '0)$',
-                        '$\\Delta_1 \\perp \\Delta_2 \\Leftrightarrow \\vec{u}_1 \\cdot \\vec{u}_2 = a_1a_2 '
-                        '+ b_1b_2 + c_1c_2 = 0$',
-                        "$f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm)"],
+                        '$\\begin{cases} x = x_0 + at \\\\ y = y_0 + bt \\\\ z = z_0 + ct \\end{cases} '
+                        '\\quad (t \\notin \\mathbb{R})$',
+                        'Đảo ngược vế của quy tắc: $\\begin{cases} x = x_0 + at \\\\ y = y_0 + bt \\\\ z = '
+                        'z_0 + ct \\end{cases} \\quad (t \\in \\mathbb{R})$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\begin{cases} x = x_0 + at '
+                        '\\\\ y = y_0 + bt \\\\ z = z_0 + ct \\end{cases} \\quad (t \\in \\mathbb{R})$'],
             'answer': 0,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 15: Phương trình đường thẳng trong không '
-                        'gian, **Phương trình tham số** được xác định bởi: $\\begin{cases} x = x_0 + at \\\\ '
-                        'y = y_0 + bt \\\\ z = z_0 + ct \\end{cases} \\quad (t \\in \\mathbb{R})$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 15: Phương trình đường thẳng trong không gian, '
+                        '**Phương trình tham số** được xác định bởi: $\\begin{cases} x = x_0 + at \\\\ y = '
+                        'y_0 + bt \\\\ z = z_0 + ct \\end{cases} \\quad (t \\in \\mathbb{R})$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 15: Phương trình đường thẳng trong không gian**, nội dung/biểu thức $\\dfrac{x '
-                 '- x_0}{a} = \\dfrac{y - y_0}{b} = \\dfrac{z - z_0}{c} \\quad (abc \\ne 0)$ là quy tắc hoặc '
-                 'công thức của mục nào sau đây?',
-            'options': ['Phương trình tham số',
-                        'Phương trình chính tắc',
-                        'Điều kiện hai đường thẳng vuông góc',
-                        'Đồng biến trên khoảng'],
-            'answer': 1,
-            'solution': 'Trong Bài 15: Phương trình đường thẳng trong không gian, biểu thức/quy tắc '
+            'q': 'Khi học **Bài 15: Phương trình đường thẳng trong không gian**, biểu thức hoặc quy tắc nào '
+                 'dưới đây biểu diễn đúng **Phương trình chính tắc**?',
+            'options': ['$\\dfrac{x + x_0}{a} = \\dfrac{y - y_0}{b} = \\dfrac{z - z_0}{c} \\quad (abc \\ne '
+                        '0)$',
                         '$\\dfrac{x - x_0}{a} = \\dfrac{y - y_0}{b} = \\dfrac{z - z_0}{c} \\quad (abc \\ne '
-                        '0)$ chính là nội dung của **Phương trình chính tắc**.'},
+                        '0)$',
+                        '$\\dfrac{a}{x - x_0} = \\dfrac{y - y_0}{b} = \\dfrac{z - z_0}{c} \\quad (abc \\ne '
+                        '0)$',
+                        '$\\dfrac{x - x_0}{a} = \\dfrac{y - y_0}{b} = \\dfrac{z - z_0}{c} \\quad (abc \\ne '
+                        '2)$'],
+            'answer': 1,
+            'solution': 'Trong Bài 15: Phương trình đường thẳng trong không gian, **Phương trình chính tắc** '
+                        'có công thức/quy tắc là: $\\dfrac{x - x_0}{a} = \\dfrac{y - y_0}{b} = \\dfrac{z - '
+                        'z_0}{c} \\quad (abc \\ne 0)$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Trong không gian $Oxyz$, đường thẳng đi qua điểm $A(2; 0; -1)$ và vuông góc với mặt phẳng '
@@ -2657,17 +2690,17 @@ LESSONS = [{'topic': 'l12-ch01-ung-dung-dao-ham',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 15: Phương trình đường thẳng trong không gian** (Chương V: Phương pháp tọa '
-                 'độ trong không gian), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất '
-                 'kiến thức của bài?',
-            'options': ['Nhận biết được tính đồng biến, nghịch biến của hàm số trên một khoảng dựa vào dấu '
-                        "của đạo hàm cấp một $f'(x)$.",
-                        'Xác định được điểm cực đại, điểm cực tiểu, giá trị cực đại, giá trị cực tiểu của '
-                        "hàm số thông qua bảng biến thiên hoặc đạo hàm cấp hai $f''(x)$.",
-                        'Vận dụng điều kiện đơn điệu và cực trị để giải các bài toán chứa tham số $m$.',
+            'q': 'Để nắm vững bản chất của **Bài 15: Phương trình đường thẳng trong không gian**, nhận định '
+                 'nào sau đây là **chính xác**?',
+            'options': ['Xác định được vectơ chỉ phương $\\vec{u}$ của đường thẳng trong không gian. (với '
+                        'dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Xác định được vectơ chỉ phương $\\vec{u}$ của đường thẳng '
+                        'trong không gian.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Xác định được vectơ chỉ phương '
+                        '$\\vec{u}$ của đường thẳng trong không gian.',
                         'Xác định được vectơ chỉ phương $\\vec{u}$ của đường thẳng trong không gian.'],
             'answer': 3,
-            'solution': 'Theo yêu cầu cần đạt của Bài 15: Phương trình đường thẳng trong không gian: Xác '
+            'solution': 'Theo nội dung cốt lõi của Bài 15: Phương trình đường thẳng trong không gian: Xác '
                         'định được vectơ chỉ phương $\\vec{u}$ của đường thẳng trong không gian.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -2687,44 +2720,47 @@ LESSONS = [{'topic': 'l12-ch01-ung-dung-dao-ham',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 15: Phương trình đường '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 15: Phương trình đường '
                  'thẳng trong không gian**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Xác định được vectơ chỉ phương '
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Xác định được vectơ chỉ phương '
                            '$\\vec{u}$ của đường thẳng trong không gian.',
-                           'Quy tắc/công thức **Phương trình tham số** trong bài được xác định bởi: '
-                           '$\\begin{cases} x = x_0 + at \\\\ y = y_0 + bt \\\\ z = z_0 + ct \\end{cases} '
-                           '\\quad (t \\in \\mathbb{R})$.',
-                           'Trong mọi trường hợp, **Phương trình tham số** luôn được tính bằng công thức '
-                           "$f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm) (thuộc Đồng biến "
-                           'trên khoảng) mà không cần điều kiện của Bài 15: Phương trình đường thẳng trong '
-                           'không gian.',
-                           'Với bài toán minh họa: “Viết phương trình chính tắc của đường thẳng $d$ đi qua '
-                           'hai điểm $A(1; 2; -1)$ và $B(3; -1; 4)$.”, lời giải đúng là: Đường thẳng $d$ đi '
+                           'Trong **Bài 15: Phương trình đường thẳng trong không gian**, quy tắc/công thức '
+                           '**Phương trình tham số** được viết là: $\\begin{cases} x = x_0 + at \\\\ y = y_0 '
+                           '+ bt \\\\ z = z_0 + ct \\end{cases} \\quad (t \\in \\mathbb{R})$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $\\begin{cases} x = x_0 + at \\\\ y = y_0 + '
+                           'bt \\\\ z = z_0 + ct \\end{cases} \\quad (t \\notin \\mathbb{R})$ thì kết quả '
+                           'của **Phương trình tham số** trong **Bài 15: Phương trình đường thẳng trong '
+                           'không gian** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Viết phương trình chính tắc của đường thẳng $d$ đi qua hai '
+                           'điểm $A(1; 2; -1)$ và $B(3; -1; 4)$.”, kết quả giải đúng là: Đường thẳng $d$ đi '
                            'qua $A(1; 2; -1)$ và nhận $\\overrightarrow{AB} = (2; -3; 5)$ làm vectơ chỉ '
-                           'phương. Phương trình chính tắc của $d$ là $\\dfrac{x - 1}{2} = \\dfrac{y - '
-                           '2}{-3} = \\dfrac{z + 1}{5}$...'],
+                           'phương. Phương trình chính tắc của $d$ là...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 15: Phương trình đường thẳng trong không '
-                        'gian. b) **Đúng** theo công thức trọng tâm **Phương trình tham số** '
-                        '($\\begin{cases} x = x_0 + at \\\\ y = y_0 + bt \\\\ z = z_0 + ct \\end{cases} '
-                        "\\quad (t \\in \\mathbb{R})$). c) **Sai** vì $f'(x) \\ge 0, \\forall x \\in K$ (dấu "
-                        '$=$ tại hữu hạn điểm) là công thức của nội dung khác, không phải quy tắc chung của '
-                        '**Phương trình tham số**. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        'gian. b) **Đúng** theo công thức **Phương trình tham số** ($\\begin{cases} x = x_0 '
+                        '+ at \\\\ y = y_0 + bt \\\\ z = z_0 + ct \\end{cases} \\quad (t \\in '
+                        '\\mathbb{R})$). c) **Sai** vì công thức đúng của **Phương trình tham số** phải là '
+                        '$\\begin{cases} x = x_0 + at \\\\ y = y_0 + bt \\\\ z = z_0 + ct \\end{cases} '
+                        '\\quad (t \\in \\mathbb{R})$ chứ không phải $\\begin{cases} x = x_0 + at \\\\ y = '
+                        'y_0 + bt \\\\ z = z_0 + ct \\end{cases} \\quad (t \\notin \\mathbb{R})$. d) '
+                        '**Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 15: Phương trình đường thẳng trong không gian** để giải quyết '
-                 'tình huống sau: Viết phương trình chính tắc của đường thẳng $d$ đi qua hai điểm $A(1; 2; '
-                 '-1)$ và $B(3; -1; 4)$. Kết quả và hướng giải nào dưới đây là **đúng**?',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 15: Phương trình đường thẳng trong không gian** để '
+                 'giải bài toán sau: Viết phương trình chính tắc của đường thẳng $d$ đi qua hai điểm $A(1; '
+                 '2; -1)$ và $B(3; -1; 4)$. Cách giải và kết quả nào dưới đây là **đúng**?',
             'options': ['Đường thẳng $d$ đi qua $A(1; 2; -1)$ và nhận $\\overrightarrow{AB} = (2; -3; 5)$ '
                         'làm vectơ chỉ phương. Phương trình chính tắc của $d$ là $\\dfrac{x - 1}{2} = '
                         '\\dfrac{y - 2}{-3} = \\dfrac{z + 1}{5}$...',
-                        "Tập xác định $D = \\mathbb{R}$. Ta có $y' = 3x^2 - 6x = 3x(x - 2)$. Cho $y' = 0 "
-                        "\\Leftrightarrow x = 0$ hoặc $x = 2$. Bảng xét dấu $y'$: trên $(-\\infty; 0)$...",
-                        "Hàm số liên tục trên $[0; 2]$. Ta có $f'(x) = 3x^2 - 3 = 0 \\Leftrightarrow x = 1 "
-                        '\\in (0; 2)$ hoặc $x = -1 \\notin (0; 2)$. Tính giá trị: $f(0) = 2$; $f(1) = 0$...',
-                        'Tập xác định $D = \\mathbb{R} \\setminus \\{1\\}$. Chia đa thức ta có $y = 2x + 1 + '
-                        '\\dfrac{2}{x - 1}$. Vì $\\lim_{x \\to 1^+} y = +\\infty$ và $\\lim_{x \\to 1^-} y = '
-                        '-\\infty$...'],
+                        'Đường thẳng $d$ đi qua $A(1; 2; -1)$ và nhận $\\overrightarrow{AB} = (2; -3; 5)$ '
+                        'làm vectơ chỉ phương. Phương trình chính tắc của $d$ là $\\dfrac{x - 1}{2} = '
+                        '\\dfrac{y - 2}{-3} = \\dfrac{z - 1}{5}$...',
+                        'Đường thẳng $d$ đi qua $A(1; 2; -1)$ và nhận $\\overrightarrow{AB} = (2; -3; 5)$ '
+                        'làm vectơ chỉ phương. Phương trình chính tắc của $d$ là $\\dfrac{2}{x - 1} = '
+                        '\\dfrac{y - 2}{-3} = \\dfrac{z + 1}{5}$...',
+                        'Đường thẳng $d$ đi qua $A(2; 2; -1)$ và nhận $\\overrightarrow{AB} = (2; -3; 5)$ '
+                        'làm vectơ chỉ phương. Phương trình chính tắc của $d$ là $\\dfrac{x - 1}{2} = '
+                        '\\dfrac{y - 2}{-3} = \\dfrac{z + 1}{5}$...'],
             'answer': 0,
             'solution': 'Lời giải chi tiết theo Bài 15: Phương trình đường thẳng trong không gian: Đường '
                         'thẳng $d$ đi qua $A(1; 2; -1)$ và nhận $\\overrightarrow{AB} = (2; -3; 5)$ làm '
@@ -2812,32 +2848,36 @@ LESSONS = [{'topic': 'l12-ch01-ung-dung-dao-ham',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 16: Công thức tính góc trong không gian**, công thức '
-                 'hoặc quy tắc nào sau đây biểu diễn đúng **Góc giữa hai đường thẳng**?',
-            'options': ['$\\sin(\\Delta, (P)) = \\dfrac{|\\vec{u} \\cdot \\vec{n}|}{|\\vec{u}| \\cdot '
-                        '|\\vec{n}|}$',
+            'q': 'Trong **Bài 16: Công thức tính góc trong không gian**, quy tắc hoặc công thức nào sau đây '
+                 'xác định đúng **Góc giữa hai đường thẳng**?',
+            'options': ['$\\cos(\\Delta_1, \\Delta_2) = \\dfrac{|\\vec{u}_1 : \\vec{u}_2|}{|\\vec{u}_1| '
+                        '\\cdot |\\vec{u}_2|}$',
                         '$\\cos(\\Delta_1, \\Delta_2) = \\dfrac{|\\vec{u}_1 \\cdot \\vec{u}_2|}{|\\vec{u}_1| '
                         '\\cdot |\\vec{u}_2|}$',
-                        '$\\cos((P_1), (P_2)) = \\dfrac{|\\vec{n}_1 \\cdot \\vec{n}_2|}{|\\vec{n}_1| \\cdot '
-                        '|\\vec{n}_2|}$',
-                        "$f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm)"],
+                        'Đảo ngược vế của quy tắc: $\\cos(\\Delta_1, \\Delta_2) = \\dfrac{|\\vec{u}_1 \\cdot '
+                        '\\vec{u}_2|}{|\\vec{u}_1| \\cdot |\\vec{u}_2|}$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\cos(\\Delta_1, \\Delta_2) = '
+                        '\\dfrac{|\\vec{u}_1 \\cdot \\vec{u}_2|}{|\\vec{u}_1| \\cdot |\\vec{u}_2|}$'],
             'answer': 1,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 16: Công thức tính góc trong không gian, '
-                        '**Góc giữa hai đường thẳng** được xác định bởi: $\\cos(\\Delta_1, \\Delta_2) = '
+            'solution': 'Theo kiến thức trọng tâm của Bài 16: Công thức tính góc trong không gian, **Góc '
+                        'giữa hai đường thẳng** được xác định bởi: $\\cos(\\Delta_1, \\Delta_2) = '
                         '\\dfrac{|\\vec{u}_1 \\cdot \\vec{u}_2|}{|\\vec{u}_1| \\cdot |\\vec{u}_2|}$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 16: Công thức tính góc trong không gian**, nội dung/biểu thức $\\sin(\\Delta, '
-                 '(P)) = \\dfrac{|\\vec{u} \\cdot \\vec{n}|}{|\\vec{u}| \\cdot |\\vec{n}|}$ là quy tắc hoặc '
-                 'công thức của mục nào sau đây?',
-            'options': ['Góc giữa hai đường thẳng',
-                        'Góc giữa hai mặt phẳng',
-                        'Góc giữa đường thẳng và mặt phẳng',
-                        'Đồng biến trên khoảng'],
-            'answer': 2,
-            'solution': 'Trong Bài 16: Công thức tính góc trong không gian, biểu thức/quy tắc '
+            'q': 'Khi học **Bài 16: Công thức tính góc trong không gian**, biểu thức hoặc quy tắc nào dưới '
+                 'đây biểu diễn đúng **Góc giữa đường thẳng và mặt phẳng**?',
+            'options': ['$\\sin(\\Delta, (P)) = \\dfrac{|\\vec{u} : \\vec{n}|}{|\\vec{u}| \\cdot '
+                        '|\\vec{n}|}$',
+                        'Đảo ngược vế của quy tắc: $\\sin(\\Delta, (P)) = \\dfrac{|\\vec{u} \\cdot '
+                        '\\vec{n}|}{|\\vec{u}| \\cdot |\\vec{n}|}$',
                         '$\\sin(\\Delta, (P)) = \\dfrac{|\\vec{u} \\cdot \\vec{n}|}{|\\vec{u}| \\cdot '
-                        '|\\vec{n}|}$ chính là nội dung của **Góc giữa đường thẳng và mặt phẳng**.'},
+                        '|\\vec{n}|}$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\sin(\\Delta, (P)) = '
+                        '\\dfrac{|\\vec{u} \\cdot \\vec{n}|}{|\\vec{u}| \\cdot |\\vec{n}|}$'],
+            'answer': 2,
+            'solution': 'Trong Bài 16: Công thức tính góc trong không gian, **Góc giữa đường thẳng và mặt '
+                        'phẳng** có công thức/quy tắc là: $\\sin(\\Delta, (P)) = \\dfrac{|\\vec{u} \\cdot '
+                        '\\vec{n}|}{|\\vec{u}| \\cdot |\\vec{n}|}$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Trong không gian $Oxyz$, góc giữa hai đường thẳng $d_1: \\dfrac{x}{1} = \\dfrac{y}{1} = '
@@ -2851,17 +2891,17 @@ LESSONS = [{'topic': 'l12-ch01-ung-dung-dao-ham',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 16: Công thức tính góc trong không gian** (Chương V: Phương pháp tọa độ '
-                 'trong không gian), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất '
-                 'kiến thức của bài?',
+            'q': 'Để nắm vững bản chất của **Bài 16: Công thức tính góc trong không gian**, nhận định nào '
+                 'sau đây là **chính xác**?',
             'options': ['Tính được côsin góc giữa hai đường thẳng thông qua hai vectơ chỉ phương.',
-                        'Nhận biết được tính đồng biến, nghịch biến của hàm số trên một khoảng dựa vào dấu '
-                        "của đạo hàm cấp một $f'(x)$.",
-                        'Xác định được điểm cực đại, điểm cực tiểu, giá trị cực đại, giá trị cực tiểu của '
-                        "hàm số thông qua bảng biến thiên hoặc đạo hàm cấp hai $f''(x)$.",
-                        'Vận dụng điều kiện đơn điệu và cực trị để giải các bài toán chứa tham số $m$.'],
+                        'Tính được côsin góc giữa hai đường thẳng thông qua hai vectơ chỉ phương. (với dấu '
+                        'ngược lại)',
+                        'Đảo ngược vế của quy tắc: Tính được côsin góc giữa hai đường thẳng thông qua hai '
+                        'vectơ chỉ phương.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Tính được côsin góc giữa hai '
+                        'đường thẳng thông qua hai vectơ chỉ phương.'],
             'answer': 0,
-            'solution': 'Theo yêu cầu cần đạt của Bài 16: Công thức tính góc trong không gian: Tính được '
+            'solution': 'Theo nội dung cốt lõi của Bài 16: Công thức tính góc trong không gian: Tính được '
                         'côsin góc giữa hai đường thẳng thông qua hai vectơ chỉ phương.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -2880,44 +2920,43 @@ LESSONS = [{'topic': 'l12-ch01-ung-dung-dao-ham',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 16: Công thức tính góc '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 16: Công thức tính góc '
                  'trong không gian**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Tính được côsin góc giữa hai đường '
-                           'thẳng thông qua hai vectơ chỉ phương.',
-                           'Quy tắc/công thức **Góc giữa hai đường thẳng** trong bài được xác định bởi: '
-                           '$\\cos(\\Delta_1, \\Delta_2) = \\dfrac{|\\vec{u}_1 \\cdot '
-                           '\\vec{u}_2|}{|\\vec{u}_1| \\cdot |\\vec{u}_2|}$.',
-                           'Trong mọi trường hợp, **Góc giữa hai đường thẳng** luôn được tính bằng công thức '
-                           "$f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm) (thuộc Đồng biến "
-                           'trên khoảng) mà không cần điều kiện của Bài 16: Công thức tính góc trong không '
-                           'gian.',
-                           'Với bài toán minh họa: “Trong không gian $Oxyz$, tính góc giữa đường thẳng $d: '
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Tính được côsin góc giữa hai đường thẳng '
+                           'thông qua hai vectơ chỉ phương.',
+                           'Trong **Bài 16: Công thức tính góc trong không gian**, quy tắc/công thức **Góc '
+                           'giữa hai đường thẳng** được viết là: $\\cos(\\Delta_1, \\Delta_2) = '
+                           '\\dfrac{|\\vec{u}_1 \\cdot \\vec{u}_2|}{|\\vec{u}_1| \\cdot |\\vec{u}_2|}$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $\\cos(\\Delta_1, \\Delta_2) = '
+                           '\\dfrac{|\\vec{u}_1 : \\vec{u}_2|}{|\\vec{u}_1| \\cdot |\\vec{u}_2|}$ thì kết '
+                           'quả của **Góc giữa hai đường thẳng** trong **Bài 16: Công thức tính góc trong '
+                           'không gian** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Trong không gian $Oxyz$, tính góc giữa đường thẳng $d: '
                            '\\dfrac{x}{1} = \\dfrac{y}{-1} = \\dfrac{z}{2}$ và mặt phẳng $(P): x - y + 2z - '
-                           '5 = 0$.”, lời giải đúng là: Đường thẳng $d$ có VTCP $\\vec{u} = (1; -1; 2)$ và '
-                           'mặt phẳng $(P)$ có VTPT $\\vec{n} = (1; -1; 2)$. Ta có...'],
+                           '5 = 0$...”, kết quả giải đúng là: Đường thẳng $d$ có VTCP $\\vec{u} = (1; -1; '
+                           '2)$ và mặt phẳng $(P)$ có VTPT $\\vec{n} = (1; -1; 2)$. Ta có...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 16: Công thức tính góc trong không gian. '
-                        'b) **Đúng** theo công thức trọng tâm **Góc giữa hai đường thẳng** '
-                        '($\\cos(\\Delta_1, \\Delta_2) = \\dfrac{|\\vec{u}_1 \\cdot '
-                        "\\vec{u}_2|}{|\\vec{u}_1| \\cdot |\\vec{u}_2|}$). c) **Sai** vì $f'(x) \\ge 0, "
-                        '\\forall x \\in K$ (dấu $=$ tại hữu hạn điểm) là công thức của nội dung khác, không '
-                        'phải quy tắc chung của **Góc giữa hai đường thẳng**. d) **Đúng** theo lời giải ví '
-                        'dụ minh họa trong bài học.'},
+                        'b) **Đúng** theo công thức **Góc giữa hai đường thẳng** ($\\cos(\\Delta_1, '
+                        '\\Delta_2) = \\dfrac{|\\vec{u}_1 \\cdot \\vec{u}_2|}{|\\vec{u}_1| \\cdot '
+                        '|\\vec{u}_2|}$). c) **Sai** vì công thức đúng của **Góc giữa hai đường thẳng** phải '
+                        'là $\\cos(\\Delta_1, \\Delta_2) = \\dfrac{|\\vec{u}_1 \\cdot '
+                        '\\vec{u}_2|}{|\\vec{u}_1| \\cdot |\\vec{u}_2|}$ chứ không phải $\\cos(\\Delta_1, '
+                        '\\Delta_2) = \\dfrac{|\\vec{u}_1 : \\vec{u}_2|}{|\\vec{u}_1| \\cdot |\\vec{u}_2|}$. '
+                        'd) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 16: Công thức tính góc trong không gian** để giải quyết tình '
-                 'huống sau: Trong không gian $Oxyz$, tính góc giữa đường thẳng $d: \\dfrac{x}{1} = '
-                 '\\dfrac{y}{-1} = \\dfrac{z}{2}$ và mặt phẳng $(P): x - y + 2z - 5 = 0$. Kết quả và hướng '
-                 'giải nào dưới đây là **đúng**?',
-            'options': ["Tập xác định $D = \\mathbb{R}$. Ta có $y' = 3x^2 - 6x = 3x(x - 2)$. Cho $y' = 0 "
-                        "\\Leftrightarrow x = 0$ hoặc $x = 2$. Bảng xét dấu $y'$: trên $(-\\infty; 0)$...",
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 16: Công thức tính góc trong không gian** để giải '
+                 'bài toán sau: Trong không gian $Oxyz$, tính góc giữa đường thẳng $d: \\dfrac{x}{1} = '
+                 '\\dfrac{y}{-1} = \\dfrac{z}{2}$ và mặt phẳng $(P): x - y + 2z - 5 = 0$. Cách giải và kết '
+                 'quả nào dưới đây là **đúng**?',
+            'options': ['Đường thẳng $d$ có VTCP $\\vec{u} = (2; -1; 2)$ và mặt phẳng $(P)$ có VTPT '
+                        '$\\vec{n} = (1; -1; 2)$. Ta có...',
                         'Đường thẳng $d$ có VTCP $\\vec{u} = (1; -1; 2)$ và mặt phẳng $(P)$ có VTPT '
                         '$\\vec{n} = (1; -1; 2)$. Ta có...',
-                        "Hàm số liên tục trên $[0; 2]$. Ta có $f'(x) = 3x^2 - 3 = 0 \\Leftrightarrow x = 1 "
-                        '\\in (0; 2)$ hoặc $x = -1 \\notin (0; 2)$. Tính giá trị: $f(0) = 2$; $f(1) = 0$...',
-                        'Tập xác định $D = \\mathbb{R} \\setminus \\{1\\}$. Chia đa thức ta có $y = 2x + 1 + '
-                        '\\dfrac{2}{x - 1}$. Vì $\\lim_{x \\to 1^+} y = +\\infty$ và $\\lim_{x \\to 1^-} y = '
-                        '-\\infty$...'],
+                        'Đường thẳng $d$ có VTCP $\\vec{u} = (1; -1; 2)$ và mặt phẳng $(P)$ có VTPT '
+                        '$\\vec{n} = (1; -1; 1)$. Ta có...',
+                        'Trường hợp sai quy tắc (sai lệch 1 đơn vị so với công thức trong bài)'],
             'answer': 1,
             'solution': 'Lời giải chi tiết theo Bài 16: Công thức tính góc trong không gian: Đường thẳng $d$ '
                         'có VTCP $\\vec{u} = (1; -1; 2)$ và mặt phẳng $(P)$ có VTPT $\\vec{n} = (1; -1; 2)$. '
@@ -2996,28 +3035,27 @@ LESSONS = [{'topic': 'l12-ch01-ung-dung-dao-ham',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 17: Phương trình mặt cầu**, công thức hoặc quy tắc nào '
-                 'sau đây biểu diễn đúng **Phương trình chính tắc**?',
-            'options': ['$R = \\sqrt{a^2 + b^2 + c^2 - d} \\quad (\\text{với } a^2 + b^2 + c^2 - d > 0)$',
-                        '$R^2 = d^2(I, (P)) + r^2$',
+            'q': 'Trong **Bài 17: Phương trình mặt cầu**, quy tắc hoặc công thức nào sau đây xác định đúng '
+                 '**Phương trình chính tắc**?',
+            'options': ['$(x - a)^2 - (y - b)^2 + (z - c)^2 = R^2$',
+                        '$(x - a)^2 + (y - b)^2 + (z - c)^2 = R^1$',
                         '$(x - a)^2 + (y - b)^2 + (z - c)^2 = R^2$',
-                        "$f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm)"],
+                        '$(x - a)^4 + (y - b)^2 + (z - c)^2 = R^2$'],
             'answer': 2,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 17: Phương trình mặt cầu, **Phương trình '
-                        'chính tắc** được xác định bởi: $(x - a)^2 + (y - b)^2 + (z - c)^2 = R^2$.'},
+            'solution': 'Theo kiến thức trọng tâm của Bài 17: Phương trình mặt cầu, **Phương trình chính '
+                        'tắc** được xác định bởi: $(x - a)^2 + (y - b)^2 + (z - c)^2 = R^2$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 17: Phương trình mặt cầu**, nội dung/biểu thức $R = \\sqrt{a^2 + b^2 + c^2 - '
-                 'd} \\quad (\\text{với } a^2 + b^2 + c^2 - d > 0)$ là quy tắc hoặc công thức của mục nào '
-                 'sau đây?',
-            'options': ['Phương trình chính tắc',
-                        'Hệ thức mặt phẳng cắt mặt cầu',
-                        'Đồng biến trên khoảng',
-                        'Bán kính từ dạng khai triển'],
+            'q': 'Khi học **Bài 17: Phương trình mặt cầu**, biểu thức hoặc quy tắc nào dưới đây biểu diễn '
+                 'đúng **Bán kính từ dạng khai triển**?',
+            'options': ['$R = \\sqrt{a^2 - b^2 + c^2 - d} \\quad (\\text{với } a^2 + b^2 + c^2 - d > 0)$',
+                        '$R = \\sqrt{a^2 + b^2 + c^2 - d} \\quad (\\text{với } a^2 + b^2 + c^2 - d > 1)$',
+                        '$R = \\sqrt{a^4 + b^2 + c^2 - d} \\quad (\\text{với } a^2 + b^2 + c^2 - d > 0)$',
+                        '$R = \\sqrt{a^2 + b^2 + c^2 - d} \\quad (\\text{với } a^2 + b^2 + c^2 - d > 0)$'],
             'answer': 3,
-            'solution': 'Trong Bài 17: Phương trình mặt cầu, biểu thức/quy tắc $R = \\sqrt{a^2 + b^2 + c^2 - '
-                        'd} \\quad (\\text{với } a^2 + b^2 + c^2 - d > 0)$ chính là nội dung của **Bán kính '
-                        'từ dạng khai triển**.'},
+            'solution': 'Trong Bài 17: Phương trình mặt cầu, **Bán kính từ dạng khai triển** có công '
+                        'thức/quy tắc là: $R = \\sqrt{a^2 + b^2 + c^2 - d} \\quad (\\text{với } a^2 + b^2 + '
+                        'c^2 - d > 0)$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Trong không gian $Oxyz$, mặt cầu đường kính $AB$ với $A(1; 2; -1)$ và $B(3; 0; 3)$ có '
@@ -3033,17 +3071,18 @@ LESSONS = [{'topic': 'l12-ch01-ung-dung-dao-ham',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 17: Phương trình mặt cầu** (Chương V: Phương pháp tọa độ trong không gian), '
-                 'khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Nhận biết được tính đồng biến, nghịch biến của hàm số trên một khoảng dựa vào dấu '
-                        "của đạo hàm cấp một $f'(x)$.",
+            'q': 'Để nắm vững bản chất của **Bài 17: Phương trình mặt cầu**, nhận định nào sau đây là '
+                 '**chính xác**?',
+            'options': ['Nhận biết và viết được phương trình mặt cầu tâm $I(a; b; c)$ bán kính $R$ dưới dạng '
+                        '$(x - a)^2 - (y - b)^2 + (z - c)^2 = R^2$.',
                         'Nhận biết và viết được phương trình mặt cầu tâm $I(a; b; c)$ bán kính $R$ dưới dạng '
                         '$(x - a)^2 + (y - b)^2 + (z - c)^2 = R^2$.',
-                        'Xác định được điểm cực đại, điểm cực tiểu, giá trị cực đại, giá trị cực tiểu của '
-                        "hàm số thông qua bảng biến thiên hoặc đạo hàm cấp hai $f''(x)$.",
-                        'Vận dụng điều kiện đơn điệu và cực trị để giải các bài toán chứa tham số $m$.'],
+                        'Nhận biết và viết được phương trình mặt cầu tâm $I(a; b; c)$ bán kính $R$ dưới dạng '
+                        '$(x - a)^2 + (y - b)^2 + (z - c)^2 = R^1$.',
+                        'Nhận biết và viết được phương trình mặt cầu tâm $I(a; b; c)$ bán kính $R$ dưới dạng '
+                        '$(x - a)^4 + (y - b)^2 + (z - c)^2 = R^2$.'],
             'answer': 1,
-            'solution': 'Theo yêu cầu cần đạt của Bài 17: Phương trình mặt cầu: Nhận biết và viết được '
+            'solution': 'Theo nội dung cốt lõi của Bài 17: Phương trình mặt cầu: Nhận biết và viết được '
                         'phương trình mặt cầu tâm $I(a; b; c)$ bán kính $R$ dưới dạng $(x - a)^2 + (y - b)^2 '
                         '+ (z - c)^2 = R^2$.'},
            {'level': 'hieu',
@@ -3062,40 +3101,38 @@ LESSONS = [{'topic': 'l12-ch01-ung-dung-dao-ham',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 17: Phương trình mặt '
-                 'cầu**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Nhận biết và viết được phương '
-                           'trình mặt cầu tâm $I(a; b; c)$ bán kính $R$ dưới dạng $(x - a)^2 + (y - b)^2 + '
-                           '(z - c)^2 = R^2$.',
-                           'Quy tắc/công thức **Phương trình chính tắc** trong bài được xác định bởi: $(x - '
-                           'a)^2 + (y - b)^2 + (z - c)^2 = R^2$.',
-                           'Trong mọi trường hợp, **Phương trình chính tắc** luôn được tính bằng công thức '
-                           "$f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm) (thuộc Đồng biến "
-                           'trên khoảng) mà không cần điều kiện của Bài 17: Phương trình mặt cầu.',
-                           'Với bài toán minh họa: “Tìm tâm $I$ và bán kính $R$ của mặt cầu $(S): x^2 + y^2 '
-                           '+ z^2 - 4x + 2y - 6z + 5 = 0$.”, lời giải đúng là: Ta có $a = 2, b = -1, c = 3, '
-                           'd = 5$. Vậy mặt cầu $(S)$ có tâm $I(2; -1; 3)$ và bán kính $R = \\sqrt{2^2 + '
-                           '(-1)^2 + 3^2 - 5} = \\sqrt{9} = 3$.'],
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 17: Phương trình mặt cầu**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Nhận biết và viết được phương trình mặt '
+                           'cầu tâm $I(a; b; c)$ bán kính $R$ dưới dạng $(x - a)^2 + (y - b)^2 + (z - c)^2 = '
+                           'R^2$.',
+                           'Trong **Bài 17: Phương trình mặt cầu**, quy tắc/công thức **Phương trình chính '
+                           'tắc** được viết là: $(x - a)^2 + (y - b)^2 + (z - c)^2 = R^2$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $(x - a)^2 - (y - b)^2 + (z - c)^2 = R^2$ '
+                           'thì kết quả của **Phương trình chính tắc** trong **Bài 17: Phương trình mặt '
+                           'cầu** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Tìm tâm $I$ và bán kính $R$ của mặt cầu $(S): x^2 + y^2 + '
+                           'z^2 - 4x + 2y - 6z + 5 = 0$.”, kết quả giải đúng là: Ta có $a = 2, b = -1, c = '
+                           '3, d = 5$. Vậy mặt cầu $(S)$ có tâm $I(2; -1; 3)$ và bán kính $R = \\sqrt{2^2 + '
+                           '(-1)^2 + 3^2 - 5} = \\sqrt{9} = 3$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 17: Phương trình mặt cầu. b) **Đúng** theo '
-                        'công thức trọng tâm **Phương trình chính tắc** ($(x - a)^2 + (y - b)^2 + (z - c)^2 '
-                        "= R^2$). c) **Sai** vì $f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm) "
-                        'là công thức của nội dung khác, không phải quy tắc chung của **Phương trình chính '
-                        'tắc**. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        'công thức **Phương trình chính tắc** ($(x - a)^2 + (y - b)^2 + (z - c)^2 = R^2$). '
+                        'c) **Sai** vì công thức đúng của **Phương trình chính tắc** phải là $(x - a)^2 + (y '
+                        '- b)^2 + (z - c)^2 = R^2$ chứ không phải $(x - a)^2 - (y - b)^2 + (z - c)^2 = R^2$. '
+                        'd) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 17: Phương trình mặt cầu** để giải quyết tình huống sau: Tìm tâm '
-                 '$I$ và bán kính $R$ của mặt cầu $(S): x^2 + y^2 + z^2 - 4x + 2y - 6z + 5 = 0$. Kết quả và '
-                 'hướng giải nào dưới đây là **đúng**?',
-            'options': ["Tập xác định $D = \\mathbb{R}$. Ta có $y' = 3x^2 - 6x = 3x(x - 2)$. Cho $y' = 0 "
-                        "\\Leftrightarrow x = 0$ hoặc $x = 2$. Bảng xét dấu $y'$: trên $(-\\infty; 0)$...",
-                        "Hàm số liên tục trên $[0; 2]$. Ta có $f'(x) = 3x^2 - 3 = 0 \\Leftrightarrow x = 1 "
-                        '\\in (0; 2)$ hoặc $x = -1 \\notin (0; 2)$. Tính giá trị: $f(0) = 2$; $f(1) = 0$...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 17: Phương trình mặt cầu** để giải bài toán sau: '
+                 'Tìm tâm $I$ và bán kính $R$ của mặt cầu $(S): x^2 + y^2 + z^2 - 4x + 2y - 6z + 5 = 0$. '
+                 'Cách giải và kết quả nào dưới đây là **đúng**?',
+            'options': ['Ta có $a = 2, b = -1, c = 3, d = 5$. Vậy mặt cầu $(S)$ có tâm $I(2; -1; 3)$ và bán '
+                        'kính $R = \\sqrt{2^2 - (-1)^2 + 3^2 - 5} = \\sqrt{9} = 3$.',
+                        'Ta có $a = 2, b = -1, c = 3, d = 5$. Vậy mặt cầu $(S)$ có tâm $I(2; -1; 3)$ và bán '
+                        'kính $R = \\sqrt{2^2 + (-1)^2 + 3^2 - 5} = \\sqrt{9} = 2$.',
                         'Ta có $a = 2, b = -1, c = 3, d = 5$. Vậy mặt cầu $(S)$ có tâm $I(2; -1; 3)$ và bán '
                         'kính $R = \\sqrt{2^2 + (-1)^2 + 3^2 - 5} = \\sqrt{9} = 3$.',
-                        'Tập xác định $D = \\mathbb{R} \\setminus \\{1\\}$. Chia đa thức ta có $y = 2x + 1 + '
-                        '\\dfrac{2}{x - 1}$. Vì $\\lim_{x \\to 1^+} y = +\\infty$ và $\\lim_{x \\to 1^-} y = '
-                        '-\\infty$...'],
+                        'Ta có $a = 4, b = -1, c = 3, d = 5$. Vậy mặt cầu $(S)$ có tâm $I(2; -1; 3)$ và bán '
+                        'kính $R = \\sqrt{2^2 + (-1)^2 + 3^2 - 5} = \\sqrt{9} = 3$.'],
             'answer': 2,
             'solution': 'Lời giải chi tiết theo Bài 17: Phương trình mặt cầu: Ta có $a = 2, b = -1, c = 3, d '
                         '= 5$. Vậy mặt cầu $(S)$ có tâm $I(2; -1; 3)$ và bán kính $R = \\sqrt{2^2 + (-1)^2 + '
@@ -3172,27 +3209,28 @@ LESSONS = [{'topic': 'l12-ch01-ung-dung-dao-ham',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 18: Xác suất có điều kiện**, công thức hoặc quy tắc nào '
-                 'sau đây biểu diễn đúng **Định nghĩa xác suất có điều kiện**?',
-            'options': ['$P(AB) = P(A) \\cdot P(B | A) = P(B) \\cdot P(A | B)$',
-                        '$P(\\overline{A} | B) = 1 - P(A | B)$',
-                        "$f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm)",
+            'q': 'Trong **Bài 18: Xác suất có điều kiện**, quy tắc hoặc công thức nào sau đây xác định đúng '
+                 '**Định nghĩa xác suất có điều kiện**?',
+            'options': ['$P(A | B) = \\dfrac{P(AB)}{P(B)} = \\dfrac{n(AB)}{n(B)} \\quad (P(B) < 0)$',
+                        '$P(A | B) = \\dfrac{P(B)}{P(AB)} = \\dfrac{n(AB)}{n(B)} \\quad (P(B) > 0)$',
+                        '$P(A | B) = \\dfrac{P(AB)}{P(B)} = \\dfrac{n(AB)}{n(B)} \\quad (P(B) > 2)$',
                         '$P(A | B) = \\dfrac{P(AB)}{P(B)} = \\dfrac{n(AB)}{n(B)} \\quad (P(B) > 0)$'],
             'answer': 3,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 18: Xác suất có điều kiện, **Định nghĩa xác '
-                        'suất có điều kiện** được xác định bởi: $P(A | B) = \\dfrac{P(AB)}{P(B)} = '
+            'solution': 'Theo kiến thức trọng tâm của Bài 18: Xác suất có điều kiện, **Định nghĩa xác suất '
+                        'có điều kiện** được xác định bởi: $P(A | B) = \\dfrac{P(AB)}{P(B)} = '
                         '\\dfrac{n(AB)}{n(B)} \\quad (P(B) > 0)$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 18: Xác suất có điều kiện**, nội dung/biểu thức $P(AB) = P(A) \\cdot P(B | A) '
-                 '= P(B) \\cdot P(A | B)$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Công thức nhân xác suất',
-                        'Định nghĩa xác suất có điều kiện',
-                        'Biến cố đối có điều kiện',
-                        'Đồng biến trên khoảng'],
+            'q': 'Khi học **Bài 18: Xác suất có điều kiện**, biểu thức hoặc quy tắc nào dưới đây biểu diễn '
+                 'đúng **Công thức nhân xác suất**?',
+            'options': ['$P(AB) = P(A) \\cdot P(B | A) = P(B) \\cdot P(A | B)$',
+                        '$P(AB) = P(A) : P(B | A) = P(B) \\cdot P(A | B)$',
+                        'Đảo ngược vế của quy tắc: $P(AB) = P(A) \\cdot P(B | A) = P(B) \\cdot P(A | B)$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $P(AB) = P(A) \\cdot P(B | A) = '
+                        'P(B) \\cdot P(A | B)$'],
             'answer': 0,
-            'solution': 'Trong Bài 18: Xác suất có điều kiện, biểu thức/quy tắc $P(AB) = P(A) \\cdot P(B | '
-                        'A) = P(B) \\cdot P(A | B)$ chính là nội dung của **Công thức nhân xác suất**.'},
+            'solution': 'Trong Bài 18: Xác suất có điều kiện, **Công thức nhân xác suất** có công thức/quy '
+                        'tắc là: $P(AB) = P(A) \\cdot P(B | A) = P(B) \\cdot P(A | B)$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Một hộp có $6$ bi trắng và $4$ bi đen. Lấy ngẫu nhiên lần lượt $2$ viên bi không hoàn lại. '
@@ -3206,17 +3244,18 @@ LESSONS = [{'topic': 'l12-ch01-ung-dung-dao-ham',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 18: Xác suất có điều kiện** (Chương VI: Xác suất có điều kiện), khẳng định '
-                 'nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến thức của bài?',
-            'options': ['Nhận biết được tính đồng biến, nghịch biến của hàm số trên một khoảng dựa vào dấu '
-                        "của đạo hàm cấp một $f'(x)$.",
-                        'Xác định được điểm cực đại, điểm cực tiểu, giá trị cực đại, giá trị cực tiểu của '
-                        "hàm số thông qua bảng biến thiên hoặc đạo hàm cấp hai $f''(x)$.",
+            'q': 'Để nắm vững bản chất của **Bài 18: Xác suất có điều kiện**, nhận định nào sau đây là '
+                 '**chính xác**?',
+            'options': ['Hiểu được khái niệm xác suất của biến cố $A$ với điều kiện biến cố $B$ đã xảy ra, '
+                        'kí hiệu $P(A | B)$. (với dấu ngược lại)',
+                        'Đảo ngược vế của quy tắc: Hiểu được khái niệm xác suất của biến cố $A$ với điều '
+                        'kiện biến cố $B$ đã xảy ra, kí hiệu $P(A | B)$.',
                         'Hiểu được khái niệm xác suất của biến cố $A$ với điều kiện biến cố $B$ đã xảy ra, '
                         'kí hiệu $P(A | B)$.',
-                        'Vận dụng điều kiện đơn điệu và cực trị để giải các bài toán chứa tham số $m$.'],
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Hiểu được khái niệm xác suất '
+                        'của biến cố $A$ với điều kiện biến cố $B$ đã xảy ra, kí hiệu $P(A | B)$.'],
             'answer': 2,
-            'solution': 'Theo yêu cầu cần đạt của Bài 18: Xác suất có điều kiện: Hiểu được khái niệm xác '
+            'solution': 'Theo nội dung cốt lõi của Bài 18: Xác suất có điều kiện: Hiểu được khái niệm xác '
                         'suất của biến cố $A$ với điều kiện biến cố $B$ đã xảy ra, kí hiệu $P(A | B)$.'},
            {'level': 'hieu',
             'type': 'tf4',
@@ -3235,41 +3274,45 @@ LESSONS = [{'topic': 'l12-ch01-ung-dung-dao-ham',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 18: Xác suất có điều '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 18: Xác suất có điều '
                  'kiện**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Hiểu được khái niệm xác suất của '
-                           'biến cố $A$ với điều kiện biến cố $B$ đã xảy ra, kí hiệu $P(A | B)$.',
-                           'Quy tắc/công thức **Định nghĩa xác suất có điều kiện** trong bài được xác định '
-                           'bởi: $P(A | B) = \\dfrac{P(AB)}{P(B)} = \\dfrac{n(AB)}{n(B)} \\quad (P(B) > 0)$.',
-                           'Trong mọi trường hợp, **Định nghĩa xác suất có điều kiện** luôn được tính bằng '
-                           "công thức $f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm) (thuộc "
-                           'Đồng biến trên khoảng) mà không cần điều kiện của Bài 18: Xác suất có điều kiện.',
-                           'Với bài toán minh họa: “Một lớp có $40$ học sinh, trong đó có $25$ học sinh '
-                           'thích môn Toán, $20$ học sinh thích môn Lý và $15$ học sinh thích cả hai môn. '
-                           'Chọn ngẫu...”, lời giải đúng là: Gọi $A$ là biến cố học sinh thích Lý, $B$ là '
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Hiểu được khái niệm xác suất của biến cố '
+                           '$A$ với điều kiện biến cố $B$ đã xảy ra, kí hiệu $P(A | B)$.',
+                           'Trong **Bài 18: Xác suất có điều kiện**, quy tắc/công thức **Định nghĩa xác suất '
+                           'có điều kiện** được viết là: $P(A | B) = \\dfrac{P(AB)}{P(B)} = '
+                           '\\dfrac{n(AB)}{n(B)} \\quad (P(B) > 0)$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $P(A | B) = \\dfrac{P(AB)}{P(B)} = '
+                           '\\dfrac{n(AB)}{n(B)} \\quad (P(B) < 0)$ thì kết quả của **Định nghĩa xác suất có '
+                           'điều kiện** trong **Bài 18: Xác suất có điều kiện** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Một lớp có $40$ học sinh, trong đó có $25$ học sinh thích '
+                           'môn Toán, $20$ học sinh thích môn Lý và $15$ học sinh thích cả hai môn. '
+                           'Chọn...”, kết quả giải đúng là: Gọi $A$ là biến cố học sinh thích Lý, $B$ là '
                            'biến cố học sinh thích Toán. Ta có $n(B) = 25$ và $n(AB) = 15$. Xác suất cần tìm '
-                           'là $P(A | B) = \\dfrac{n(AB)}{n(B)} = \\dfrac{15}{25} = \\dfrac{3}{5} = 0,6$...'],
+                           'là...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 18: Xác suất có điều kiện. b) **Đúng** '
-                        'theo công thức trọng tâm **Định nghĩa xác suất có điều kiện** ($P(A | B) = '
-                        '\\dfrac{P(AB)}{P(B)} = \\dfrac{n(AB)}{n(B)} \\quad (P(B) > 0)$). c) **Sai** vì '
-                        "$f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm) là công thức của nội "
-                        'dung khác, không phải quy tắc chung của **Định nghĩa xác suất có điều kiện**. d) '
-                        '**Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        'theo công thức **Định nghĩa xác suất có điều kiện** ($P(A | B) = '
+                        '\\dfrac{P(AB)}{P(B)} = \\dfrac{n(AB)}{n(B)} \\quad (P(B) > 0)$). c) **Sai** vì công '
+                        'thức đúng của **Định nghĩa xác suất có điều kiện** phải là $P(A | B) = '
+                        '\\dfrac{P(AB)}{P(B)} = \\dfrac{n(AB)}{n(B)} \\quad (P(B) > 0)$ chứ không phải $P(A '
+                        '| B) = \\dfrac{P(AB)}{P(B)} = \\dfrac{n(AB)}{n(B)} \\quad (P(B) < 0)$. d) **Đúng** '
+                        'theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 18: Xác suất có điều kiện** để giải quyết tình huống sau: Một lớp '
-                 'có $40$ học sinh, trong đó có $25$ học sinh thích môn Toán, $20$ học sinh thích môn Lý và '
-                 '$15$ học sinh thích cả hai môn. Chọn ngẫu nhiên một học sinh, biết học sinh đó thích môn '
-                 'Toán, tính xác suất để học sinh đó cũng thích môn Lý. Kết quả và hướng giải nào dưới đây '
-                 'là **đúng**?',
-            'options': ["Tập xác định $D = \\mathbb{R}$. Ta có $y' = 3x^2 - 6x = 3x(x - 2)$. Cho $y' = 0 "
-                        "\\Leftrightarrow x = 0$ hoặc $x = 2$. Bảng xét dấu $y'$: trên $(-\\infty; 0)$...",
-                        "Hàm số liên tục trên $[0; 2]$. Ta có $f'(x) = 3x^2 - 3 = 0 \\Leftrightarrow x = 1 "
-                        '\\in (0; 2)$ hoặc $x = -1 \\notin (0; 2)$. Tính giá trị: $f(0) = 2$; $f(1) = 0$...',
-                        'Tập xác định $D = \\mathbb{R} \\setminus \\{1\\}$. Chia đa thức ta có $y = 2x + 1 + '
-                        '\\dfrac{2}{x - 1}$. Vì $\\lim_{x \\to 1^+} y = +\\infty$ và $\\lim_{x \\to 1^-} y = '
-                        '-\\infty$...',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 18: Xác suất có điều kiện** để giải bài toán sau: '
+                 'Một lớp có $40$ học sinh, trong đó có $25$ học sinh thích môn Toán, $20$ học sinh thích '
+                 'môn Lý và $15$ học sinh thích cả hai môn. Chọn ngẫu nhiên một học sinh, biết học sinh đó '
+                 'thích môn Toán, tính xác suất để học sinh đó cũng thích môn Lý. Cách giải và kết quả nào '
+                 'dưới đây là **đúng**?',
+            'options': ['Gọi $A$ là biến cố học sinh thích Lý, $B$ là biến cố học sinh thích Toán. Ta có '
+                        '$n(B) = 35$ và $n(AB) = 15$. Xác suất cần tìm là $P(A | B) = \\dfrac{n(AB)}{n(B)} = '
+                        '\\dfrac{15}{25} = \\dfrac{3}{5} = 0,6$...',
+                        'Gọi $A$ là biến cố học sinh thích Lý, $B$ là biến cố học sinh thích Toán. Ta có '
+                        '$n(B) = 25$ và $n(AB) = 15$. Xác suất cần tìm là $P(A | B) = \\dfrac{n(B)}{n(AB)} = '
+                        '\\dfrac{15}{25} = \\dfrac{3}{5} = 0,6$...',
+                        'Gọi $A$ là biến cố học sinh thích Lý, $B$ là biến cố học sinh thích Toán. Ta có '
+                        '$n(B) = 50$ và $n(AB) = 15$. Xác suất cần tìm là $P(A | B) = \\dfrac{n(AB)}{n(B)} = '
+                        '\\dfrac{15}{25} = \\dfrac{3}{5} = 0,6$...',
                         'Gọi $A$ là biến cố học sinh thích Lý, $B$ là biến cố học sinh thích Toán. Ta có '
                         '$n(B) = 25$ và $n(AB) = 15$. Xác suất cần tìm là $P(A | B) = \\dfrac{n(AB)}{n(B)} = '
                         '\\dfrac{15}{25} = \\dfrac{3}{5} = 0,6$...'],
@@ -3358,30 +3401,34 @@ LESSONS = [{'topic': 'l12-ch01-ung-dung-dao-ham',
             'note': None},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Theo nội dung trọng tâm của **Bài 19: Công thức xác suất toàn phần và công thức Bayes**, '
-                 'công thức hoặc quy tắc nào sau đây biểu diễn đúng **Công thức xác suất toàn phần**?',
+            'q': 'Trong **Bài 19: Công thức xác suất toàn phần và công thức Bayes**, quy tắc hoặc công thức '
+                 'nào sau đây xác định đúng **Công thức xác suất toàn phần**?',
             'options': ['$P(A) = P(B) \\cdot P(A | B) + P(\\overline{B}) \\cdot P(A | \\overline{B})$',
-                        '$P(B | A) = \\dfrac{P(B) \\cdot P(A | B)}{P(B) \\cdot P(A | B) + P(\\overline{B}) '
-                        '\\cdot P(A | \\overline{B})}$',
-                        '$P(A) = \\sum_{i=1}^n P(B_i) \\cdot P(A | B_i)$',
-                        "$f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm)"],
+                        '$P(A) = P(B) \\cdot P(A | B) - P(\\overline{B}) \\cdot P(A | \\overline{B})$',
+                        'Đảo ngược vế của quy tắc: $P(A) = P(B) \\cdot P(A | B) + P(\\overline{B}) \\cdot '
+                        'P(A | \\overline{B})$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $P(A) = P(B) \\cdot P(A | B) + '
+                        'P(\\overline{B}) \\cdot P(A | \\overline{B})$'],
             'answer': 0,
-            'solution': 'Theo bảng công thức trọng tâm của Bài 19: Công thức xác suất toàn phần và công thức '
+            'solution': 'Theo kiến thức trọng tâm của Bài 19: Công thức xác suất toàn phần và công thức '
                         'Bayes, **Công thức xác suất toàn phần** được xác định bởi: $P(A) = P(B) \\cdot P(A '
                         '| B) + P(\\overline{B}) \\cdot P(A | \\overline{B})$.'},
            {'level': 'biet',
             'type': 'mcq',
-            'q': 'Trong **Bài 19: Công thức xác suất toàn phần và công thức Bayes**, nội dung/biểu thức $P(B '
-                 '| A) = \\dfrac{P(B) \\cdot P(A | B)}{P(B) \\cdot P(A | B) + P(\\overline{B}) \\cdot P(A | '
-                 '\\overline{B})}$ là quy tắc hoặc công thức của mục nào sau đây?',
-            'options': ['Công thức xác suất toàn phần',
-                        'Công thức Bayes',
-                        'Tổng quát cho n nhóm xung khắc',
-                        'Đồng biến trên khoảng'],
-            'answer': 1,
-            'solution': 'Trong Bài 19: Công thức xác suất toàn phần và công thức Bayes, biểu thức/quy tắc '
+            'q': 'Khi học **Bài 19: Công thức xác suất toàn phần và công thức Bayes**, biểu thức hoặc quy '
+                 'tắc nào dưới đây biểu diễn đúng **Công thức Bayes**?',
+            'options': ['$P(B | A) = \\dfrac{P(B) \\cdot P(A | B)}{P(B) \\cdot P(A | B) - P(\\overline{B}) '
+                        '\\cdot P(A | \\overline{B})}$',
                         '$P(B | A) = \\dfrac{P(B) \\cdot P(A | B)}{P(B) \\cdot P(A | B) + P(\\overline{B}) '
-                        '\\cdot P(A | \\overline{B})}$ chính là nội dung của **Công thức Bayes**.'},
+                        '\\cdot P(A | \\overline{B})}$',
+                        'Đảo ngược vế của quy tắc: $P(B | A) = \\dfrac{P(B) \\cdot P(A | B)}{P(B) \\cdot P(A '
+                        '| B) + P(\\overline{B}) \\cdot P(A | \\overline{B})}$',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của $P(B | A) = \\dfrac{P(B) \\cdot '
+                        'P(A | B)}{P(B) \\cdot P(A | B) + P(\\overline{B}) \\cdot P(A | \\overline{B})}$'],
+            'answer': 1,
+            'solution': 'Trong Bài 19: Công thức xác suất toàn phần và công thức Bayes, **Công thức Bayes** '
+                        'có công thức/quy tắc là: $P(B | A) = \\dfrac{P(B) \\cdot P(A | B)}{P(B) \\cdot P(A '
+                        '| B) + P(\\overline{B}) \\cdot P(A | \\overline{B})}$.'},
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Cho $P(B) = 0,4$; $P(A | B) = 0,5$ và $P(A | \\overline{B}) = 0,2$. Giá trị của $P(A)$ '
@@ -3394,18 +3441,19 @@ LESSONS = [{'topic': 'l12-ch01-ung-dung-dao-ham',
             'note': None},
            {'level': 'hieu',
             'type': 'mcq',
-            'q': 'Khi học **Bài 19: Công thức xác suất toàn phần và công thức Bayes** (Chương VI: Xác suất '
-                 'có điều kiện), khẳng định nào sau đây phản ánh **đúng** yêu cầu cần đạt và bản chất kiến '
-                 'thức của bài?',
-            'options': ['Nhận biết được tính đồng biến, nghịch biến của hàm số trên một khoảng dựa vào dấu '
-                        "của đạo hàm cấp một $f'(x)$.",
-                        'Xác định được điểm cực đại, điểm cực tiểu, giá trị cực đại, giá trị cực tiểu của '
-                        "hàm số thông qua bảng biến thiên hoặc đạo hàm cấp hai $f''(x)$.",
-                        'Vận dụng điều kiện đơn điệu và cực trị để giải các bài toán chứa tham số $m$.',
+            'q': 'Để nắm vững bản chất của **Bài 19: Công thức xác suất toàn phần và công thức Bayes**, nhận '
+                 'định nào sau đây là **chính xác**?',
+            'options': ['Phát biểu và áp dụng được công thức xác suất toàn phần $P(A) = P(B)P(A | B) - '
+                        'P(\\overline{B})P(A | \\overline{B})$.',
+                        'Đảo ngược vế của quy tắc: Phát biểu và áp dụng được công thức xác suất toàn phần '
+                        '$P(A) = P(B)P(A | B) + P(\\overline{B})P(A | \\overline{B})$.',
+                        'Trường hợp trái ngược: không thỏa mãn điều kiện của Phát biểu và áp dụng được công '
+                        'thức xác suất toàn phần $P(A) = P(B)P(A | B) + P(\\overline{B})P(A | '
+                        '\\overline{B})$.',
                         'Phát biểu và áp dụng được công thức xác suất toàn phần $P(A) = P(B)P(A | B) + '
                         'P(\\overline{B})P(A | \\overline{B})$.'],
             'answer': 3,
-            'solution': 'Theo yêu cầu cần đạt của Bài 19: Công thức xác suất toàn phần và công thức Bayes: '
+            'solution': 'Theo nội dung cốt lõi của Bài 19: Công thức xác suất toàn phần và công thức Bayes: '
                         'Phát biểu và áp dụng được công thức xác suất toàn phần $P(A) = P(B)P(A | B) + '
                         'P(\\overline{B})P(A | \\overline{B})$.'},
            {'level': 'hieu',
@@ -3426,46 +3474,50 @@ LESSONS = [{'topic': 'l12-ch01-ung-dung-dao-ham',
             'note': None},
            {'level': 'hieu',
             'type': 'tf4',
-            'q': 'Xét tính đúng sai của các mệnh đề sau khi tổng hợp kiến thức **Bài 19: Công thức xác suất '
-                 'toàn phần và công thức Bayes**:',
-            'statements': ['Một trong các yêu cầu cần đạt của bài học là: Phát biểu và áp dụng được công '
-                           'thức xác suất toàn phần $P(A) = P(B)P(A | B) + P(\\overline{B})P(A | '
-                           '\\overline{B})$.',
-                           'Quy tắc/công thức **Công thức xác suất toàn phần** trong bài được xác định bởi: '
-                           '$P(A) = P(B) \\cdot P(A | B) + P(\\overline{B}) \\cdot P(A | \\overline{B})$.',
-                           'Trong mọi trường hợp, **Công thức xác suất toàn phần** luôn được tính bằng công '
-                           "thức $f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm) (thuộc Đồng "
-                           'biến trên khoảng) mà không cần điều kiện của Bài 19: Công thức xác suất toàn '
-                           'phần và công thức Bayes.',
-                           'Với bài toán minh họa: “Một nhà máy có hai phân xưởng I và II lần lượt sản xuất '
+            'q': 'Xét tính đúng sai của mỗi mệnh đề sau về kiến thức trong **Bài 19: Công thức xác suất toàn '
+                 'phần và công thức Bayes**:',
+            'statements': ['Nội dung trọng tâm của bài học yêu cầu: Phát biểu và áp dụng được công thức xác '
+                           'suất toàn phần $P(A) = P(B)P(A | B) + P(\\overline{B})P(A | \\overline{B})$.',
+                           'Trong **Bài 19: Công thức xác suất toàn phần và công thức Bayes**, quy tắc/công '
+                           'thức **Công thức xác suất toàn phần** được viết là: $P(A) = P(B) \\cdot P(A | B) '
+                           '+ P(\\overline{B}) \\cdot P(A | \\overline{B})$.',
+                           'Nếu áp dụng sai dấu/phép tính thành $P(A) = P(B) \\cdot P(A | B) - '
+                           'P(\\overline{B}) \\cdot P(A | \\overline{B})$ thì kết quả của **Công thức xác '
+                           'suất toàn phần** trong **Bài 19: Công thức xác suất toàn phần và công thức '
+                           'Bayes** vẫn không thay đổi.',
+                           'Xét ví dụ của bài: “Một nhà máy có hai phân xưởng I và II lần lượt sản xuất '
                            '$60\\%$ và $40\\%$ tổng sản lượng. Tỉ lệ phế phẩm của phân xưởng I là $2\\%$, '
-                           'của phân...”, lời giải đúng là: Gọi $B$ là biến cố sản phẩm do phân xưởng I sản '
+                           'của...”, kết quả giải đúng là: Gọi $B$ là biến cố sản phẩm do phân xưởng I sản '
                            'xuất ($P(B) = 0,6; P(\\overline{B}) = 0,4$) và $A$ là biến cố sản phẩm là phế '
                            'phẩm ($P(A | B) = 0,02; P(A | \\overline{B}) = 0,03$...'],
             'answer': [True, True, False, True],
             'solution': 'a) **Đúng** theo yêu cầu cần đạt của Bài 19: Công thức xác suất toàn phần và công '
-                        'thức Bayes. b) **Đúng** theo công thức trọng tâm **Công thức xác suất toàn phần** '
-                        '($P(A) = P(B) \\cdot P(A | B) + P(\\overline{B}) \\cdot P(A | \\overline{B})$). c) '
-                        "**Sai** vì $f'(x) \\ge 0, \\forall x \\in K$ (dấu $=$ tại hữu hạn điểm) là công "
-                        'thức của nội dung khác, không phải quy tắc chung của **Công thức xác suất toàn '
-                        'phần**. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
+                        'thức Bayes. b) **Đúng** theo công thức **Công thức xác suất toàn phần** ($P(A) = '
+                        'P(B) \\cdot P(A | B) + P(\\overline{B}) \\cdot P(A | \\overline{B})$). c) **Sai** '
+                        'vì công thức đúng của **Công thức xác suất toàn phần** phải là $P(A) = P(B) \\cdot '
+                        'P(A | B) + P(\\overline{B}) \\cdot P(A | \\overline{B})$ chứ không phải $P(A) = '
+                        'P(B) \\cdot P(A | B) - P(\\overline{B}) \\cdot P(A | \\overline{B})$. d) **Đúng** '
+                        'theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
-            'q': 'Vận dụng kiến thức **Bài 19: Công thức xác suất toàn phần và công thức Bayes** để giải '
-                 'quyết tình huống sau: Một nhà máy có hai phân xưởng I và II lần lượt sản xuất $60\\%$ và '
-                 '$40\\%$ tổng sản lượng. Tỉ lệ phế phẩm của phân xưởng I là $2\\%$, của phân xưởng II là '
-                 '$3\\%$. Chọn ngẫu nhiên một sản phẩm của nhà máy thì thấy nó là phế phẩm. Tính xác suất '
-                 'phế phẩm đó do phân xưởng I sản xuất. Kết quả và hướng giải nào dưới đây là **đúng**?',
+            'q': 'Vận dụng trực tiếp kiến thức của **Bài 19: Công thức xác suất toàn phần và công thức '
+                 'Bayes** để giải bài toán sau: Một nhà máy có hai phân xưởng I và II lần lượt sản xuất '
+                 '$60\\%$ và $40\\%$ tổng sản lượng. Tỉ lệ phế phẩm của phân xưởng I là $2\\%$, của phân '
+                 'xưởng II là $3\\%$. Chọn ngẫu nhiên một sản phẩm của nhà máy thì thấy nó là phế phẩm. Tính '
+                 'xác suất phế phẩm đó do phân xưởng I sản xuất. Cách giải và kết quả nào dưới đây là '
+                 '**đúng**?',
             'options': ['Gọi $B$ là biến cố sản phẩm do phân xưởng I sản xuất ($P(B) = 0,6; P(\\overline{B}) '
                         '= 0,4$) và $A$ là biến cố sản phẩm là phế phẩm ($P(A | B) = 0,02; P(A | '
                         '\\overline{B}) = 0,03$...',
-                        "Tập xác định $D = \\mathbb{R}$. Ta có $y' = 3x^2 - 6x = 3x(x - 2)$. Cho $y' = 0 "
-                        "\\Leftrightarrow x = 0$ hoặc $x = 2$. Bảng xét dấu $y'$: trên $(-\\infty; 0)$...",
-                        "Hàm số liên tục trên $[0; 2]$. Ta có $f'(x) = 3x^2 - 3 = 0 \\Leftrightarrow x = 1 "
-                        '\\in (0; 2)$ hoặc $x = -1 \\notin (0; 2)$. Tính giá trị: $f(0) = 2$; $f(1) = 0$...',
-                        'Tập xác định $D = \\mathbb{R} \\setminus \\{1\\}$. Chia đa thức ta có $y = 2x + 1 + '
-                        '\\dfrac{2}{x - 1}$. Vì $\\lim_{x \\to 1^+} y = +\\infty$ và $\\lim_{x \\to 1^-} y = '
-                        '-\\infty$...'],
+                        'Gọi $B$ là biến cố sản phẩm do phân xưởng I sản xuất ($P(B) = 1,6; P(\\overline{B}) '
+                        '= 0,4$) và $A$ là biến cố sản phẩm là phế phẩm ($P(A | B) = 0,02; P(A | '
+                        '\\overline{B}) = 0,03$...',
+                        'Gọi $B$ là biến cố sản phẩm do phân xưởng I sản xuất ($P(B) = 0,6; P(\\overline{B}) '
+                        '= 0,4$) và $A$ là biến cố sản phẩm là phế phẩm ($P(A | B) = 0,02; P(A | '
+                        '\\overline{B}) = 0,2$...',
+                        'Gọi $B$ là biến cố sản phẩm do phân xưởng I sản xuất ($P(B) = 2,6; P(\\overline{B}) '
+                        '= 0,4$) và $A$ là biến cố sản phẩm là phế phẩm ($P(A | B) = 0,02; P(A | '
+                        '\\overline{B}) = 0,03$...'],
             'answer': 0,
             'solution': 'Lời giải chi tiết theo Bài 19: Công thức xác suất toàn phần và công thức Bayes: Gọi '
                         '$B$ là biến cố sản phẩm do phân xưởng I sản xuất ($P(B) = 0,6; P(\\overline{B}) = '
