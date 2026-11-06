@@ -1,12 +1,13 @@
-/* HỌC ĐỂ LÀM GÌ — story-params.js (Nâng cấp theo CT GDPT 2018)
-   1. Bổ sung vào cốt truyện mở đầu (#introStory):
+/* HỌC ĐỂ LÀM GÌ — story-params.js (Nâng cấp theo CT GDPT 2018 + Hỗ trợ chọn Đề ?set=0|1|2)
+   1. Tự động chuyển sang đúng Đề (Đề A: set=0, Đề B: set=1, Đề C: set=2) khi mở từ thẻ Đa Game của bài học gộp.
+   2. Bổ sung vào cốt truyện mở đầu (#introStory):
       - 📘 Lý thuyết & Công thức trọng tâm (theo bài học mới)
       - 🎯 Chốt nhiệm vụ (Đọc xong cốt truyện cần làm gì?)
-   2. Bổ sung vào hội thoại mỗi chặng (GM.stageLines / stageLines):
+   3. Bổ sung vào hội thoại mỗi chặng (GM.stageLines / stageLines):
       - 📊 Thông số để tính toán: toàn bộ số liệu, bảng sổ ghi trên cảnh, hằng số (r, T, m, U, I, R, f…), giới hạn an toàn.
       - 📐 Công thức & cách tính (theo bài học mới): công thức áp dụng và hướng thay số cụ thể của chặng.
       - 🎯 Chốt lại nhiệm vụ (Cần làm gì): chỉ rõ cần chỉnh thanh trượt / núm xoay / linh kiện nào và bấm nút nào để chạy.
-   3. Mở khóa miễn phí Gợi ý 1 (Cách lập luận & công thức) và hiển thị nút "📋 Thông số & Nhiệm vụ" ngay trong màn chơi. */
+   4. Mở khóa miễn phí Gợi ý 1 (Cách lập luận & công thức) và hiển thị nút "📋 Thông số & Nhiệm vụ" ngay trong màn chơi. */
 (function () {
   "use strict";
   if (window.__hdlgStoryParams) return;
@@ -221,7 +222,6 @@
       if (!Array.isArray(L) || !L.length) return L;
       if (L.some(function (x) { return x && x.__p; })) return L;
 
-      /* Mở khóa miễn phí Gợi ý 1 (Cách lập luận & thông số) cho người chơi */
       var S = G("S");
       if (S && Array.isArray(S.hints) && typeof S.stage === "number") {
         if (!S.hints[S.stage] || S.hints[S.stage] < 1) S.hints[S.stage] = 1;
@@ -263,7 +263,7 @@
 
   window.__hdlgEnrichStageLines = enrichStageLines;
 
-  /* Làm giàu cốt truyện mở đầu (#introStory) để chốt rõ lý thuyết bài học mới & việc cần làm */
+  /* Làm giàu cốt truyện mở đầu (#introStory) */
   function enrichIntroStoryHtml(rawHtml) {
     try {
       var html = String(rawHtml || "");
@@ -314,7 +314,7 @@
 
   window.__hdlgEnrichIntroStory = enrichIntroStoryHtml;
 
-  /* Bảng nổi "📋 Thông số & Nhiệm vụ" trong lúc thiết lập (setup) */
+  /* Bảng nổi "📋 Thông số & Nhiệm vụ" */
   var panelOpen = false;
   function ensureQuickGuideUI() {
     if ($("hdlgQuickGuideWrap")) return;
@@ -374,6 +374,20 @@
     } catch (e) {}
   }
 
+  /* Tự động chọn Đề A/B/C khi URL có ?set=0|1|2 */
+  function applyUrlSetSelection() {
+    try {
+      var qSet = new URLSearchParams(location.search).get("set");
+      if (qSet === null || qSet === "") return;
+      var si = parseInt(qSet, 10);
+      if (isNaN(si) || si < 0) return;
+      var sw = G("switchSet");
+      if (typeof sw === "function") {
+        sw(si);
+      }
+    } catch (e) {}
+  }
+
   function patch() {
     var GM = G("GM");
     var patched = false;
@@ -407,6 +421,7 @@
     }
 
     if (patched) {
+      applyUrlSetSelection();
       var introEl = $("introStory");
       if (introEl && introEl.innerHTML && introEl.innerHTML.indexOf("hdlg-intro-summary") < 0) {
         introEl.innerHTML = enrichIntroStoryHtml(introEl.innerHTML);
