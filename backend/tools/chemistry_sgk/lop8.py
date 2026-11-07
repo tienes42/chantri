@@ -1,1519 +1,623 @@
-from __future__ import annotations
-from typing import Any
-from ._helpers import lesson, mcq, tf4, short
+"""Hóa học Lớp 8 (KHTN 8 - Kết nối tri thức với cuộc sống): 2 Chương - 13 Bài học độc lập."""
+from ._helpers import F, G, bai, mcq, short, tf4
 
-LESSONS_GRADE_8: list[dict[str, Any]] = [
-    lesson(
-        grade=8,
-        order=1,
-        code="H8-C01",
-        title="Chương 1: Công thức hóa học và tính theo công thức hóa học",
-        topic="cong-thuc-hoa-hoc",
-        summary=(
-            r"Nắm vững ý nghĩa công thức hóa học của đơn chất và hợp chất, quy tắc hóa trị "
-            r"$a \cdot x = b \cdot y$, cách tính phần trăm khối lượng nguyên tố trong hợp chất "
-            r"$\text{\%}m_{\text{A}} = \dfrac{x \cdot M_{\text{A}}}{M_{\text{hợp chất}}} \cdot 100\text{\%}$ "
-            r"và xác định công thức hóa học khi biết thành phần phần trăm khối lượng và khối lượng phân tử."
+GRADE = 8
+
+CH1 = ("l8-ch01-phan-ung-hoa-hoc", "Chương I: Phản ứng hóa học", "Chương I · Hóa học 8 (KHTN 8): Biến đổi hóa học, phản ứng tỏa nhiệt – thu nhiệt, mol, tỉ khối khí, nồng độ dung dịch, bảo toàn khối lượng, tính theo PTHH và tốc độ phản ứng.")
+CH2 = ("l8-ch02-hop-chat-thong-dung", "Chương II: Một số hợp chất thông dụng", "Chương II · Hóa học 8 (KHTN 8): Acid, Base, thang pH, Oxide, Muối và Phân bón hóa học.")
+
+LESSONS = [
+    bai(
+        topic=CH1[0], chapter_title=CH1[1], chapter_desc=CH1[2],
+        title="Bài 1: Sử dụng một số hóa chất, thiết bị cơ bản trong phòng thí nghiệm",
+        icon="🧪",
+        description="Quy tắc an toàn khi lấy và sử dụng hóa chất, dụng cụ thí nghiệm hóa học (ống nghiệm, bình cầu, phễu, đèn cồn) và thiết bị điện.",
+        requirements=[
+            "Nhận biết được các dụng cụ thí nghiệm hóa học cơ bản (ống nghiệm, cốc thủy tinh, bình tam giác, phễu, ống hút nhỏ giọt, đèn cồn) và cách sử dụng đúng quy trình.",
+            "Thực hiện đúng quy tắc lấy hóa chất rắn (dùng thìa thủy tinh/kim loại hoặc kẹp) và hóa chất lỏng (dùng ống hút nhỏ giọt hoặc rót qua đũa thủy tinh; nhãn lọ quay vào lòng bàn tay).",
+            "Tuân thủ quy tắc an toàn: không dùng tay trực tiếp cầm hóa chất, không nếm hoặc ngửi trực tiếp, không đổ hóa chất thừa ngược lại lọ gốc và tắt đèn cồn bằng nắp đậy.",
+        ],
+        definition="Khi làm việc trong phòng thí nghiệm Hóa học, việc nắm vững chức năng của từng dụng cụ (ống nghiệm, ống hút nhỏ giọt, đèn cồn...) và tuân thủ nghiêm ngặt quy tắc sử dụng hóa chất giúp thí nghiệm chính xác và an toàn tuyệt đối.",
+        theory=(
+            "### 1. Một số dụng cụ thí nghiệm Hóa học cơ bản\n"
+            "- **Ống nghiệm**: thực hiện các phản ứng hóa học với lượng nhỏ hóa chất (chỉ lấy hóa chất không quá $\\dfrac{1}{3}$ thể tích ống nghiệm; khi đun nóng ống nghiệm phải kẹp ở vị trí cách miệng ống khoảng $\\dfrac{1}{3}$ từ trên xuống và hướng miệng ống về phía không có người).\n"
+            "- **Ống hút nhỏ giọt (pipette)**: lấy một lượng nhỏ chất lỏng theo từng giọt (luôn giữ thẳng đứng, không dốc ngược để chất lỏng chảy vào bóp cao su).\n"
+            "- **Đèn cồn**: dùng để đun nóng; lượng cồn trong đèn từ $\\dfrac{1}{3}$ đến $\\dfrac{2}{3}$ bầu đèn; **tắt đèn cồn bằng cách chụp nắp đèn cồn** lên ngọn lửa (tuyệt đối **không thổi tắt** bằng miệng và không châm đèn cồn này từ đèn cồn khác đang cháy).\n\n"
+            "### 2. Quy tắc sử dụng hóa chất an toàn\n"
+            "- **Tuyệt đối không dùng tay trần** tiếp xúc trực tiếp với hóa chất, không ăn uống hay nếm hóa chất.\n"
+            "- Khi cần nhận biết mùi chất khí: dùng bàn tay **phẩy nhẹ** từ miệng ống nghiệm về phía mũi, không hít trực tiếp.\n"
+            "- Hóa chất dùng xong còn thừa **không được đổ ngược trở lại bình chứa ban đầu** để tránh làm bẩn cả lọ hóa chất gốc.\n"
+            "- Khi pha loãng sulfuric acid ($\\text{H}_2\\text{SO}_4$) đặc: bắt buộc **rót từ từ acid đặc vào nước** và khuấy đều, tuyệt đối **không đổ nước vào acid đặc**!"
         ),
-        objectives=[
-            r"Trình bày được ý nghĩa công thức hóa học của đơn chất và hợp chất: nguyên tố tạo nên chất, số nguyên tử của mỗi nguyên tố và khối lượng phân tử ($\text{amu}$).",
-            r"Vận dụng được quy tắc hóa trị $a \cdot x = b \cdot y$ cho hợp chất $\text{A}_x\text{B}_y$ để lập công thức hóa học của hợp chất.",
-            r"Tính được thành phần phần trăm theo khối lượng của từng nguyên tố trong một hợp chất khi biết công thức hóa học của hợp chất đó.",
-            r"Xác định được công thức hóa học của hợp chất khi biết thành phần phần trăm khối lượng các nguyên tố và khối lượng phân tử.",
-        ],
         formulas=[
-            {
-                "name": "Quy tắc hóa trị đối với hợp chất hai nguyên tố",
-                "formula": r"$a \cdot x = b \cdot y \quad (\text{trong hợp chất }\overset{a}{\text{A}}_x\overset{b}{\text{B}}_y)$",
-                "note": r"$x, y$ là chỉ số nguyên tử (tối giản); $a, b$ là hóa trị tương ứng của $\text{A}, \text{B}$",
-            },
-            {
-                "name": "Khối lượng phân tử của hợp chất",
-                "formula": r"$M_{\text{A}_x\text{B}_y\text{C}_z} = x \cdot M_{\text{A}} + y \cdot M_{\text{B}} + z \cdot M_{\text{C}}\text{ (amu hoặc g/mol)}$",
-                "note": r"$M_{\text{A}}, M_{\text{B}}, M_{\text{C}}$ là khối lượng nguyên tử của các nguyên tố",
-            },
-            {
-                "name": "Phần trăm khối lượng nguyên tố trong hợp chất",
-                "formula": r"$\text{\%}m_{\text{A}} = \dfrac{x \cdot M_{\text{A}}}{M_{\text{A}_x\text{B}_y}} \cdot 100\text{\%}; \quad \text{\%}m_{\text{B}} = 100\text{\%} - \text{\%}m_{\text{A}}$",
-                "note": r"Tổng phần trăm khối lượng tất cả các nguyên tố trong hợp chất bằng $100\text{\%}$",
-            },
-            {
-                "name": "Xác định chỉ số nguyên tử từ phần trăm khối lượng và khối lượng phân tử",
-                "formula": r"$x = \dfrac{\text{\%}m_{\text{A}} \cdot M_{\text{hợp chất}}}{100\text{\%} \cdot M_{\text{A}}}; \quad x : y = \dfrac{\text{\%}m_{\text{A}}}{M_{\text{A}}} : \dfrac{\text{\%}m_{\text{B}}}{M_{\text{B}}}$",
-                "note": r"Áp dụng để tìm công thức hóa học $\text{A}_x\text{B}_y$",
-            },
+            G(
+                "Quy tắc vàng an toàn Hóa chất và Đèn cồn",
+                F("Quy tắc đun ống nghiệm và tắt đèn cồn", "$V_{\\text{hóa chất trong ống nghiệm}} \\le \\dfrac{1}{3}V_{\\text{ống}}; \\qquad \\text{Tắt đèn cồn} = \\text{Đậy nắp chụp (cách li } \\text{O}_2)$", "Khi đun ống nghiệm trên đèn cồn, phải hơ đều cả ống nghiệm rồi mới đun tập trung ở đáy ống, miệng ống nghiêng hướng về phía không có người."),
+                F("Quy tắc pha loãng Acid đặc an toàn", "$\\text{Rót từ từ ACID ĐẶC vào NƯỚC và khuấy đều (Tuyệt đối KHÔNG đổ nước vào acid đặc)}$", "Nếu đổ nước vào $\\text{H}_2\\text{SO}_4$ đặc, nước nhẹ nổi lên trên và sôi đột ngột làm bắn các giọt acid đặc gây bỏng nặng."),
+            )
         ],
-        theory_sections=[
-            {
-                "title": "1. Công thức hóa học của đơn chất và hợp chất",
-                "content": (
-                    r"Công thức hóa học dùng để biểu diễn chất, gồm một kí hiệu hóa học (đơn chất) hoặc hai, ba kí hiệu "
-                    r"hóa học trở lên (hợp chất) kèm theo chỉ số ở chân mỗi kí hiệu. Đối với đơn chất kim loại ($\text{Fe}, \text{Cu}, \text{Al}$), "
-                    r"khí hiếm ($\text{He}, \text{Ne}, \text{Ar}$) và một số phi kim rắn ($\text{C}, \text{S}, \text{P}$), công thức chung là $\text{A}$; "
-                    r"đối với nhiều phi kim khí ở điều kiện chuẩn ($\text{H}_2, \text{O}_2, \text{N}_2, \text{Cl}_2$), công thức là $\text{A}_2$ "
-                    r"(hoặc $\text{O}_3$ với ozone). Đối với hợp chất, công thức chung có dạng $\text{A}_x\text{B}_y$ hoặc $\text{A}_x\text{B}_y\text{C}_z$, "
-                    r"cho biết nguyên tố tạo nên chất, số nguyên tử của mỗi nguyên tố trong một phân tử và khối lượng phân tử của chất."
-                ),
-            },
-            {
-                "title": "2. Hóa trị và quy tắc hóa trị",
-                "content": (
-                    r"Hóa trị là con số biểu thị khả năng liên kết của nguyên tử nguyên tố này với nguyên tử nguyên tố khác, "
-                    r"được xác định bằng cách chọn hóa trị của $\text{H}$ làm đơn vị ($\text{I}$) và hóa trị của $\text{O}$ là hai đơn vị ($\text{II}$). "
-                    r"Trong công thức hóa học của hợp chất hai nguyên tố $\overset{a}{\text{A}}_x\overset{b}{\text{B}}_y$, tích của chỉ số và hóa trị "
-                    r"của nguyên tố này bằng tích của chỉ số và hóa trị của nguyên tố kia: $a \cdot x = b \cdot y$, suy ra tỉ lệ $\dfrac{x}{y} = \dfrac{b}{a}$ "
-                    r"(tối giản). Quy tắc này cũng áp dụng cho nhóm nguyên tử như $\text{OH}$ (hóa trị $\text{I}$), $\text{NO}_3$ (hóa trị $\text{I}$), "
-                    r"$\text{SO}_4$ (hóa trị $\text{II}$), $\text{CO}_3$ (hóa trị $\text{II}$), $\text{PO}_4$ (hóa trị $\text{III}$)."
-                ),
-            },
-            {
-                "title": "3. Tính theo công thức hóa học",
-                "content": (
-                    r"Bài toán 1 — Tính phần trăm khối lượng các nguyên tố khi biết công thức hóa học $\text{A}_x\text{B}_y$: "
-                    r"Bước 1: Tính khối lượng phân tử $M_{\text{A}_x\text{B}_y} = x \cdot M_{\text{A}} + y \cdot M_{\text{B}}$. "
-                    r"Bước 2: Tính $\text{\%}m_{\text{A}} = \dfrac{x \cdot M_{\text{A}}}{M_{\text{A}_x\text{B}_y}} \cdot 100\text{\%}$ và $\text{\%}m_{\text{B}} = 100\text{\%} - \text{\%}m_{\text{A}}$. "
-                    r"Bài toán 2 — Xác định công thức hóa học khi biết thành phần phần trăm khối lượng và khối lượng phân tử $M$: "
-                    r"Đặt công thức tổng quát $\text{A}_x\text{B}_y$, tính khối lượng mỗi nguyên tố trong $1\text{ mol}$ phân tử "
-                    r"$m_{\text{A}} = \dfrac{\text{\%}m_{\text{A}} \cdot M}{100\text{\%}}$, từ đó suy ra chỉ số $x = \dfrac{m_{\text{A}}}{M_{\text{A}}}$ và $y = \dfrac{m_{\text{B}}}{M_{\text{B}}}$."
-                ),
-            },
+        example="Giải thích vì sao khi muốn dập tắt ngọn lửa đèn cồn sau khi làm xong thí nghiệm, ta phải dùng nắp đèn cồn đậy chụp lên ngọn lửa mà tuyệt đối không được dùng miệng thổi tắt?",
+        example_answer="Khi chụp nắp đèn cồn lên ngọn lửa, ta **cách li cồn đang cháy với khí oxygen** ngoài không khí nên ngọn lửa tắt ngay và an toàn. Nếu dùng miệng thổi, luồng gió có thể đẩy ngọn lửa tạt ngược vào bầu chứa cồn bên dưới gây bùng cháy hoặc nổ đèn cồn rất nguy hiểm.",
+        real_life="Các bình đựng hóa chất trong phòng thí nghiệm và trong gia đình (như nước tẩy rửa bồn cầu, cồn y tế, xút thông cống) luôn phải dán nhãn rõ ràng và để xa tầm tay trẻ em.",
+        quiz=[
+            mcq("biet", "Cách làm nào sau đây là **đúng và an toàn** để tắt đèn cồn sau khi kết thúc thí nghiệm?", ["Dùng nắp đèn cồn đậy chụp trực tiếp lên ngọn lửa", "Dùng miệng thổi thật mạnh vào ngọn lửa", "Đổ một cốc nước vào bầu đèn cồn đang cháy", "Nghiêng đèn cồn cho cồn chảy ra bàn"], 0, "Đậy nắp đèn cồn giúp ngăn ngọn lửa tiếp xúc với khí oxygen, làm lửa tắt êm và an toàn."),
+            mcq("biet", "Khi lấy hóa chất rắn dạng bột hoặc hạt nhỏ từ lọ hóa chất ra ống nghiệm, ta phải sử dụng dụng cụ nào?", ["Dùng thìa lấy hóa chất (thìa thủy tinh, sứ hoặc kim loại sạch) hoặc kẹp gắp", "Dùng hai ngón tay trần bốc trực tiếp", "Dùng ống hút nhỏ giọt", "Dốc ngược cả lọ hóa chất đổ tràn ra tay"], 0, "Tuyệt đối không dùng tay trần tiếp xúc với hóa chất; hóa chất rắn phải lấy bằng thìa chuyên dụng hoặc kẹp gắp."),
+            mcq("hieu", "Sau khi làm thí nghiệm xong, nếu còn thừa một ít hóa chất đã lấy ra ngoài, ta nên xử lí như thế nào?", ["Thu gom vào bình chứa chất thải quy định theo hướng dẫn của giáo viên, tuyệt đối không đổ ngược trở lại lọ hóa chất gốc", "Đổ ngược trở lại vào lọ hóa chất ban đầu để tiết kiệm", "Đổ thẳng xuống sàn lớp học", "Mang về nhà cất trong tủ lạnh"], 0, "Đổ hóa chất thừa ngược lại lọ gốc sẽ làm nhiễm bẩn và hỏng toàn bộ lọ hóa chất tinh khiết ban đầu."),
+            tf4("hieu", "Xét tính đúng/sai của các phát biểu sau về an toàn trong phòng thí nghiệm Hóa học:", [
+                "Khi muốn nhận biết mùi của một chất khí trong ống nghiệm, ta dùng bàn tay phẩy nhẹ khí về phía mũi chứ không đưa mũi hít trực tiếp.",
+                "Khi đun nóng chất lỏng trong ống nghiệm, chỉ nên lấy lượng chất lỏng không quá $\\dfrac{1}{3}$ thể tích ống nghiệm và hướng miệng ống về phía không có người.",
+                "Ta có thể dùng ngọn lửa của một đèn cồn đang cháy để châm trực tiếp sang một đèn cồn khác.",
+                "Khi pha loãng $\\text{H}_2\\text{SO}_4$ đặc, ta phải rót từ từ acid đặc vào nước và dùng đũa thủy tinh khuấy đều.",
+            ], [True, True, False, True], "Ý c) sai vì nghiêng đèn cồn để mồi lửa từ đèn cồn khác sẽ làm cồn tràn ra ngoài bén lửa gây cháy bỏng."),
+            short("vandung", "Khi làm thí nghiệm trong ống nghiệm (đặc biệt là khi cần đun nóng chất lỏng), thể tích chất lỏng lấy vào ống nghiệm tối đa chỉ nên chiếm một phần mấy ($\\dfrac{1}{n}$, nhập mẫu số $n$) thể tích của ống nghiệm để tránh sôi trào bắn ra ngoài?", ["3"], "Thể tích hóa chất trong ống nghiệm chỉ nên lấy tối đa khoảng $\\dfrac{1}{3}$ thể tích ống nghiệm."),
         ],
-        worked_examples=[
-            {
-                "title": "Ví dụ 1",
-                "problem": (
-                    r"Copper(II) sulfate có công thức hóa học là $\text{CuSO}_4$. Biết $M_{\text{Cu}} = 64\text{ g/mol}$, "
-                    r"$M_{\text{S}} = 32\text{ g/mol}$, $M_{\text{O}} = 16\text{ g/mol}$. Hãy tính khối lượng phân tử và thành phần "
-                    r"phần trăm theo khối lượng của từng nguyên tố trong $\text{CuSO}_4$."
-                ),
-                "solution": (
-                    r"Khối lượng phân tử của $\text{CuSO}_4$ là $M_{\text{CuSO}_4} = 64 + 32 + 4 \cdot 16 = 160\text{ g/mol}$. "
-                    r"Thành phần phần trăm theo khối lượng của các nguyên tố là: "
-                    r"$\text{\%}m_{\text{Cu}} = \dfrac{64}{160} \cdot 100\text{\%} = 40\text{\%}$; "
-                    r"$\text{\%}m_{\text{S}} = \dfrac{32}{160} \cdot 100\text{\%} = 20\text{\%}$; "
-                    r"$\text{\%}m_{\text{O}} = 100\text{\%} - 40\text{\%} - 20\text{\%} = 40\text{\%}$."
-                ),
-            },
-            {
-                "title": "Ví dụ 2",
-                "problem": (
-                    r"Một oxide của iron có thành phần phần trăm theo khối lượng của iron là $70\text{\%}$, còn lại là oxygen. "
-                    r"Biết khối lượng phân tử của oxide đó là $160\text{ amu}$ ($M_{\text{Fe}} = 56\text{ amu}$, $M_{\text{O}} = 16\text{ amu}$). "
-                    r"Hãy xác định công thức hóa học của oxide."
-                ),
-                "solution": (
-                    r"Đặt công thức hóa học của oxide là $\text{Fe}_x\text{O}_y$. Ta có $\text{\%}m_{\text{O}} = 100\text{\%} - 70\text{\%} = 30\text{\%}$. "
-                    r"Số nguyên tử $\text{Fe}$ là $x = \dfrac{70 \cdot 160}{100 \cdot 56} = 2$; số nguyên tử $\text{O}$ là "
-                    r"$y = \dfrac{30 \cdot 160}{100 \cdot 16} = 3$. Vậy công thức hóa học của oxide là $\text{Fe}_2\text{O}_3$ (iron(III) oxide)."
-                ),
-            },
-        ],
-        key_takeaways=[
-            r"Công thức hóa học cho biết thành phần nguyên tố, số nguyên tử của mỗi nguyên tố trong một phân tử và khối lượng phân tử của chất.",
-            r"Quy tắc hóa trị $a \cdot x = b \cdot y$ là cơ sở để tính hóa trị chưa biết hoặc lập nhanh công thức hóa học với tỉ lệ tối giản $\dfrac{x}{y} = \dfrac{b}{a}$.",
-            r"Phần trăm khối lượng của nguyên tố $\text{A}$ trong $\text{A}_x\text{B}_y$ luôn tính bằng $\text{\%}m_{\text{A}} = \dfrac{x \cdot M_{\text{A}}}{M_{\text{A}_x\text{B}_y}} \cdot 100\text{\%}$.",
-        ],
-        questions=[
-            mcq(
-                question=r"Công thức hóa học của đơn chất khí oxygen ở điều kiện chuẩn ($25^\circ\text{C}$, $1\text{ bar}$) là:",
-                options=[r"$\text{O}$", r"$\text{O}_2$", r"$\text{O}_3$", r"$\text{2O}$"],
-                answer="B",
-                level="biet",
-                solution=r"Ở điều kiện chuẩn, đơn chất khí oxygen tồn tại dưới dạng phân tử gồm hai nguyên tử liên kết với nhau nên có công thức hóa học là $\text{O}_2$.",
-            ),
-            mcq(
-                question=r"Trong hợp chất sulfur trioxide có công thức hóa học $\text{SO}_3$, biết $\text{O}$ có hóa trị $\text{II}$ thì hóa trị của nguyên tố sulfur ($\text{S}$) là:",
-                options=[r"$\text{II}$", r"$\text{III}$", r"$\text{IV}$", r"$\text{VI}$"],
-                answer="D",
-                level="biet",
-                solution=r"Theo quy tắc hóa trị đối với $\overset{a}{\text{S}}_1\overset{\text{II}}{\text{O}}_3$, ta có $a \cdot 1 = \text{II} \cdot 3 \Rightarrow a = \text{VI}$.",
-            ),
-            mcq(
-                question=r"Công thức hóa học của aluminium sulfate (biết $\text{Al}$ hóa trị $\text{III}$ và nhóm $\text{SO}_4$ hóa trị $\text{II}$) là:",
-                options=[
-                    r"$\text{AlSO}_4$",
-                    r"$\text{Al}_2\text{SO}_4$",
-                    r"$\text{Al}_2(\text{SO}_4)_3$",
-                    r"$\text{Al}_3(\text{SO}_4)_2$",
-                ],
-                answer="C",
-                level="biet",
-                solution=r"Áp dụng quy tắc hóa trị cho $\overset{\text{III}}{\text{Al}}_x(\overset{\text{II}}{\text{SO}_4})_y$, ta có $\dfrac{x}{y} = \dfrac{2}{3}$, vậy công thức hóa học là $\text{Al}_2(\text{SO}_4)_3$.",
-            ),
-            mcq(
-                question=r"Khối lượng phân tử của calcium carbonate ($\text{CaCO}_3$, biết $M_{\text{Ca}} = 40\text{ amu}$, $M_{\text{C}} = 12\text{ amu}$, $M_{\text{O}} = 16\text{ amu}$) bằng:",
-                options=[
-                    r"$68\text{ amu}$",
-                    r"$84\text{ amu}$",
-                    r"$100\text{ amu}$",
-                    r"$116\text{ amu}$",
-                ],
-                answer="C",
-                level="biet",
-                solution=r"Ta có $M_{\text{CaCO}_3} = 40 + 12 + 3 \cdot 16 = 100\text{ amu}$.",
-            ),
-            mcq(
-                question=r"Thành phần phần trăm theo khối lượng của nguyên tố nitrogen ($\text{N}$) trong phân đạm ammonium nitrate ($\text{NH}_4\text{NO}_3$, biết $M_{\text{N}} = 14\text{ g/mol}$, $M_{\text{H}} = 1\text{ g/mol}$, $M_{\text{O}} = 16\text{ g/mol}$) là:",
-                options=[r"$17{,}5\text{\%}$", r"$28{,}0\text{\%}$", r"$35{,}0\text{\%}$", r"$46{,}67\text{\%}$"],
-                answer="C",
-                level="hieu",
-                solution=r"Khối lượng phân tử $M_{\text{NH}_4\text{NO}_3} = 2 \cdot 14 + 4 \cdot 1 + 3 \cdot 16 = 80\text{ g/mol}$. Phần trăm khối lượng của $\text{N}$ là $\text{\%}m_{\text{N}} = \dfrac{2 \cdot 14}{80} \cdot 100\text{\%} = 35{,}0\text{\%}$.",
-            ),
-            mcq(
-                question=r"Một hợp chất khí $\text{X}$ gồm hai nguyên tố carbon và hydrogen có $\text{\%}m_{\text{C}} = 75\text{\%}$, khối lượng phân tử bằng $16\text{ amu}$ ($M_{\text{C}} = 12\text{ amu}$, $M_{\text{H}} = 1\text{ amu}$). Công thức hóa học của $\text{X}$ là:",
-                options=[r"$\text{CH}_4$", r"$\text{C}_2\text{H}_4$", r"$\text{C}_2\text{H}_6$", r"$\text{C}_2\text{H}_2$"],
-                answer="A",
-                level="hieu",
-                solution=r"Đặt công thức là $\text{C}_x\text{H}_y$. Ta có $\text{\%}m_{\text{H}} = 100\text{\%} - 75\text{\%} = 25\text{\%}$. Suy ra $x = \dfrac{75 \cdot 16}{100 \cdot 12} = 1$ và $y = \dfrac{25 \cdot 16}{100 \cdot 1} = 4$. Vậy công thức là $\text{CH}_4$ (methane).",
-            ),
-            tf4(
-                stem=r"Cho hợp chất iron(III) sulfate có công thức hóa học là $\text{Fe}_2(\text{SO}_4)_3$ (biết $M_{\text{Fe}} = 56\text{ amu}$, $M_{\text{S}} = 32\text{ amu}$, $M_{\text{O}} = 16\text{ amu}$). Xét tính đúng sai của các phát biểu sau:",
-                statements=[
-                    r"a) Hợp chất $\text{Fe}_2(\text{SO}_4)_3$ được tạo nên từ $3$ nguyên tố hóa học là $\text{Fe}$, $\text{S}$ và $\text{O}$.",
-                    r"b) Trong một phân tử $\text{Fe}_2(\text{SO}_4)_3$ có tất cả $12$ nguyên tử các nguyên tố.",
-                    r"c) Khối lượng phân tử của $\text{Fe}_2(\text{SO}_4)_3$ bằng $400\text{ amu}$.",
-                    r"d) Phần trăm khối lượng của nguyên tố $\text{Fe}$ trong $\text{Fe}_2(\text{SO}_4)_3$ bằng $42\text{\%}$.",
-                ],
-                answer="Đ/S/Đ/S",
-                level="hieu",
-                solution=(
-                    r"a) Đúng vì hợp chất tạo bởi ba nguyên tố iron ($\text{Fe}$), sulfur ($\text{S}$) và oxygen ($\text{O}$). "
-                    r"b) Sai vì tổng số nguyên tử trong một phân tử là $2 + 3 \cdot (1 + 4) = 17$ nguyên tử. "
-                    r"c) Đúng vì $M_{\text{Fe}_2(\text{SO}_4)_3} = 2 \cdot 56 + 3 \cdot (32 + 4 \cdot 16) = 112 + 288 = 400\text{ amu}$. "
-                    r"d) Sai vì $\text{\%}m_{\text{Fe}} = \dfrac{112}{400} \cdot 100\text{\%} = 28\text{\%}$."
-                ),
-            ),
-            tf4(
-                stem=r"Một hợp chất hữu cơ $\text{Y}$ là thành phần chính của giấm ăn, có công thức phân tử $\text{C}_2\text{H}_4\text{O}_2$ (biết $M_{\text{C}} = 12\text{ g/mol}$, $M_{\text{H}} = 1\text{ g/mol}$, $M_{\text{O}} = 16\text{ g/mol}$). Xét tính đúng sai của các phát biểu sau:",
-                statements=[
-                    r"a) Khối lượng phân tử của hợp chất $\text{Y}$ là $60\text{ amu}$.",
-                    r"b) Tỉ lệ số nguyên tử $\text{C} : \text{H} : \text{O}$ tối giản trong phân tử $\text{Y}$ là $1 : 4 : 1$.",
-                    r"c) Phần trăm khối lượng của nguyên tố carbon trong $\text{Y}$ là $40\text{\%}$.",
-                    r"d) Phần trăm khối lượng của nguyên tố oxygen trong $\text{Y}$ nhỏ hơn phần trăm khối lượng của nguyên tố carbon.",
-                ],
-                answer="Đ/S/Đ/S",
-                level="hieu",
-                solution=(
-                    r"a) Đúng vì $M_{\text{C}_2\text{H}_4\text{O}_2} = 2 \cdot 12 + 4 \cdot 1 + 2 \cdot 16 = 60\text{ amu}$. "
-                    r"b) Sai vì tỉ lệ số nguyên tử $\text{C} : \text{H} : \text{O} = 2 : 4 : 2 = 1 : 2 : 1$. "
-                    r"c) Đúng vì $\text{\%}m_{\text{C}} = \dfrac{24}{60} \cdot 100\text{\%} = 40\text{\%}$. "
-                    r"d) Sai vì $\text{\%}m_{\text{O}} = \dfrac{32}{60} \cdot 100\text{\%} \approx 53{,}33\text{\%} > 40\text{\%}$."
-                ),
-            ),
-            mcq(
-                question=r"Một loại quặng hematite chứa $80\text{\%}$ khối lượng là iron(III) oxide ($\text{Fe}_2\text{O}_3$), phần còn lại là tạp chất trơ không chứa iron. Khối lượng nguyên tố iron ($\text{Fe}$) có trong $1{,}5\text{ tấn}$ quặng trên (biết $M_{\text{Fe}} = 56\text{ g/mol}$, $M_{\text{O}} = 16\text{ g/mol}$) là:",
-                options=[
-                    r"$0{,}56\text{ tấn}$",
-                    r"$0{,}84\text{ tấn}$",
-                    r"$1{,}05\text{ tấn}$",
-                    r"$1{,}20\text{ tấn}$",
-                ],
-                answer="B",
-                level="vandung",
-                solution=r"Khối lượng $\text{Fe}_2\text{O}_3$ trong quặng là $m_{\text{Fe}_2\text{O}_3} = 1{,}5 \cdot 80\text{\%} = 1{,}2\text{ tấn}$. Phần trăm khối lượng $\text{Fe}$ trong $\text{Fe}_2\text{O}_3$ là $\text{\%}m_{\text{Fe}} = \dfrac{2 \cdot 56}{160} \cdot 100\text{\%} = 70\text{\%}$. Vậy khối lượng $\text{Fe}$ là $m_{\text{Fe}} = 1{,}2 \cdot 70\text{\%} = 0{,}84\text{ tấn}$.",
-            ),
-            short(
-                question=r"Tính thành phần phần trăm theo khối lượng (theo đơn vị $\text{\%}$, làm tròn đến chữ số hàng phần mười) của nguyên tố nitrogen ($\text{N}$) trong phân đạm urea có công thức hóa học $(\text{NH}_2)_2\text{CO}$ (biết $M_{\text{C}} = 12\text{ g/mol}$, $M_{\text{N}} = 14\text{ g/mol}$, $M_{\text{O}} = 16\text{ g/mol}$, $M_{\text{H}} = 1\text{ g/mol}$).",
-                answer=["46,7", "46.7", "46,67", "46.67"],
-                level="vandung",
-                solution=r"Khối lượng phân tử của urea $(\text{NH}_2)_2\text{CO}$ là $M = 2 \cdot (14 + 2 \cdot 1) + 12 + 16 = 60\text{ g/mol}$. Phần trăm khối lượng của $\text{N}$ là $\text{\%}m_{\text{N}} = \dfrac{2 \cdot 14}{60} \cdot 100\text{\%} = \dfrac{28}{60} \cdot 100\text{\%} \approx 46{,}7\text{\%}$.",
-            ),
-        ],
-        description="Ý nghĩa công thức hóa học của đơn chất và hợp chất, quy tắc hóa trị, tính phần trăm khối lượng nguyên tố và xác định công thức hóa học theo chương trình KHTN 8 Kết nối tri thức.",
     ),
-    lesson(
-        grade=8,
-        order=2,
-        code="H8-C02",
-        title="Chương 2: Mol, khối lượng mol, thể tích mol chất khí và tỉ khối",
-        topic="mol-va-khoi-luong-mol",
-        summary=(
-            r"Nắm vững khái niệm mol và hằng số Avogadro $N_{\text{A}} = 6{,}022 \cdot 10^{23}\text{ mol}^{-1}$, "
-            r"khối lượng mol $M = \dfrac{m}{n}$, thể tích mol chất khí ở điều kiện chuẩn ($25^\circ\text{C}$, $1\text{ bar}$) "
-            r"$V = 24{,}79 \cdot n\text{ (L)}$ và tỉ khối của chất khí $d_{\text{A/B}} = \dfrac{M_{\text{A}}}{M_{\text{B}}}$, $d_{\text{A/kk}} = \dfrac{M_{\text{A}}}{29}$."
+    bai(
+        topic=CH1[0], chapter_title=CH1[1], chapter_desc=CH1[2],
+        title="Bài 2: Biến đổi vật lí và biến đổi hóa học",
+        icon="🔄",
+        description="Phân biệt biến đổi vật lí (không tạo ra chất mới) và biến đổi hóa học (có sự tạo thành chất mới) qua các hiện tượng tự nhiên và thí nghiệm.",
+        requirements=[
+            "Phân biệt được **biến đổi vật lí** (chỉ thay đổi trạng thái, hình dạng, kích thước, hòa tan... mà **không tạo ra chất mới**) và **biến đổi hóa học** (có sự biến đổi chất ban đầu thành **chất mới**).",
+            "Chỉ ra được dấu hiệu本質 nhất để khẳng định có biến đổi hóa học xảy ra là có sự xuất hiện của chất mới (khác chất ban đầu về tính chất).",
+            "Phân tích được một quá trình thực tế (như đốt nến) gồm những giai đoạn nào là biến đổi vật lí và giai đoạn nào là biến đổi hóa học.",
+        ],
+        definition="Biến đổi vật lí là hiện tượng chất có sự biến đổi về trạng thái (thể), hình dạng, kích thước... nhưng vẫn giữ nguyên là chất ban đầu (không tạo ra chất mới). Biến đổi hóa học là hiện tượng chất có sự biến đổi tạo ra chất mới.",
+        theory=(
+            "### 1. Biến đổi vật lí\n"
+            "- Bao gồm các quá trình: chuyển thể (nóng chảy, đông đặc, bay hơi, sôi, ngưng tụ), hòa tan (pha nước muối, nước đường), nghiền nhỏ, cắt gọt, uốn cong vật.\n"
+            "- **Đặc điểm cốt lõi**: **Không có chất mới nào được sinh ra**, phân tử của chất không bị biến đổi thành phân tử chất khác.\n\n"
+            "### 2. Biến đổi hóa học\n"
+            "- Là quá trình trong đó từ chất này biến đổi thành **chất khác (chất mới)**.\n"
+            "- **Ví dụ điển hình**:\n"
+            "  - Đốt bột sắt ($\\text{Fe}$) với bột lưu huỳnh ($\\text{S}$): tạo ra chất rắn mới là iron(II) sulfide ($\\text{FeS}$) màu xám đen, không còn bị nam châm hút.\n"
+            "  - Đinh sắt để lâu ngoài không khí ẩm bị gỉ tạo thành gỉ sắt ($\\text{Fe}_2\\text{O}_3\\cdot n\\text{H}_2\\text{O}$) giòn, xốp màu nâu đỏ.\n"
+            "  - Cơm để lâu bị thiu, sữa tươi lên men thành sữa chua, đốt cháy khí gas hoặc cồn tạo ra khí $\\text{CO}_2$ và hơi nước $\\text{H}_2\\text{O}$."
         ),
-        objectives=[
-            r"Nêu được khái niệm mol, hằng số Avogadro $N_{\text{A}} = 6{,}022 \cdot 10^{23}\text{ mol}^{-1}$ và tính được số hạt vi mô $N = n \cdot N_{\text{A}}$.",
-            r"Nêu được khái niệm khối lượng mol ($M$) và vận dụng công thức $n = \dfrac{m}{M}$ để chuyển đổi giữa số mol và khối lượng chất.",
-            r"Trình bày được khái niệm thể tích mol chất khí ở điều kiện chuẩn ($25^\circ\text{C}$ và $1\text{ bar}$) và vận dụng được công thức $V = 24{,}79 \cdot n\text{ (L)}$.",
-            r"Vận dụng được công thức tỉ khối chất khí $d_{\text{A/B}} = \dfrac{M_{\text{A}}}{M_{\text{B}}}$ và $d_{\text{A/kk}} = \dfrac{M_{\text{A}}}{29}$ để so sánh khí nặng hay nhẹ hơn khí khác và hơn không khí.",
-        ],
         formulas=[
-            {
-                "name": "Quan hệ giữa số mol và số hạt vi mô (nguyên tử, phân tử)",
-                "formula": r"$N = n \cdot N_{\text{A}} \Rightarrow n = \dfrac{N}{N_{\text{A}}} \quad (N_{\text{A}} = 6{,}022 \cdot 10^{23}\text{ mol}^{-1})$",
-                "note": r"$n$: lượng chất ($\text{mol}$); $N$: số nguyên tử hoặc phân tử",
-            },
-            {
-                "name": "Quan hệ giữa khối lượng chất, số mol và khối lượng mol",
-                "formula": r"$M = \dfrac{m}{n} \Rightarrow m = n \cdot M; \quad n = \dfrac{m}{M}$",
-                "note": r"$m$: khối lượng chất ($\text{g}$); $M$: khối lượng mol ($\text{g/mol}$)",
-            },
-            {
-                "name": r"Thể tích mol chất khí ở điều kiện chuẩn ($25^\circ\text{C}$, $1\text{ bar}$)",
-                "formula": r"$V = 24{,}79 \cdot n \Rightarrow n = \dfrac{V}{24{,}79}$",
-                "note": r"$V$: thể tích chất khí ở đkc ($\text{L}$); $1\text{ mol}$ khí bất kì ở đkc chiếm $24{,}79\text{ L}$",
-            },
-            {
-                "name": "Tỉ khối của chất khí",
-                "formula": r"$d_{\text{A/B}} = \dfrac{M_{\text{A}}}{M_{\text{B}}}; \quad d_{\text{A/kk}} = \dfrac{M_{\text{A}}}{29}$",
-                "note": r"Khối lượng mol trung bình của không khí lấy bằng $29\text{ g/mol}$",
-            },
+            G(
+                "Tiêu chí phân biệt Biến đổi vật lí và Biến đổi hóa học",
+                F("Dấu hiệu phân biệt cốt lõi", "$\\text{Biến đổi VẬT LÍ}: \\text{Không tạo chất mới (chuyển thể, hòa tan, đập nhỏ)}; \\qquad \\text{Biến đổi HÓA HỌC}: \\text{Có tạo thành CHẤT MỚI}$", "Biến đổi hóa học chính là quá trình xảy ra **phản ứng hóa học**."),
+                F("Phân tích các giai đoạn khi đốt một cây nến paraffin", "$\\text{Nến rắn} \\xrightarrow[(1)\\text{ Vật lí}]{\\text{nóng chảy}} \\text{Nến lỏng} \\xrightarrow[(2)\\text{ Vật lí}]{\\text{hóa hơi}} \\text{Hơi nến} \\xrightarrow[(3)\\text{ Hóa học (+ }\\text{O}_2\\text{)}]{\\text{cháy}} \\text{CO}_2 + \\text{H}_2\\text{O}$", "Chỉ có giai đoạn (3) hơi nến cháy tạo ra khí $\\text{CO}_2$ và hơi nước $\\text{H}_2\\text{O}$ là biến đổi hóa học!"),
+            )
         ],
-        theory_sections=[
-            {
-                "title": "1. Mol và khối lượng mol",
-                "content": (
-                    r"Mol là lượng chất có chứa $N_{\text{A}} = 6{,}022 \cdot 10^{23}$ hạt vi mô (nguyên tử, phân tử, hoặc ion) của chất đó; "
-                    r"con số $6{,}022 \cdot 10^{23}\text{ mol}^{-1}$ được gọi là hằng số Avogadro ($N_{\text{A}}$). "
-                    r"Khối lượng mol (kí hiệu là $M$, đơn vị thường dùng là $\text{g/mol}$) của một chất là khối lượng tính bằng gam của $N_{\text{A}}$ "
-                    r"nguyên tử hoặc phân tử chất đó. Khối lượng mol nguyên tử hay phân tử của một chất (theo $\text{g/mol}$) có cùng trị số với "
-                    r"khối lượng nguyên tử hay phân tử của chất đó tính theo đơn vị $\text{amu}$."
-                ),
-            },
-            {
-                "title": "2. Thể tích mol chất khí ở điều kiện chuẩn",
-                "content": (
-                    r"Thể tích mol của chất khí là thể tích chiếm bởi $N_{\text{A}}$ phân tử ($1\text{ mol}$) của chất khí đó. "
-                    r"Ở cùng điều kiện về nhiệt độ và áp suất, $1\text{ mol}$ của bất kì chất khí nào đều chiếm những thể tích bằng nhau. "
-                    r"Ở điều kiện chuẩn (nhiệt độ $25^\circ\text{C}$ và áp suất $1\text{ bar}$), $1\text{ mol}$ chất khí bất kì đều chiếm thể tích "
-                    r"bằng $24{,}79\text{ L}$. Do đó thể tích của $n\text{ mol}$ khí ở điều kiện chuẩn được tính bằng $V = 24{,}79 \cdot n\text{ (L)}$."
-                ),
-            },
-            {
-                "title": "3. Tỉ khối của chất khí và ứng dụng thu khí",
-                "content": (
-                    r"Để biết khí $\text{A}$ nặng hay nhẹ hơn khí $\text{B}$ bao nhiêu lần, ta dựa vào tỉ khối $d_{\text{A/B}} = \dfrac{M_{\text{A}}}{M_{\text{B}}}$. "
-                    r"Để biết khí $\text{A}$ nặng hay nhẹ hơn không khí bao nhiêu lần, ta tính $d_{\text{A/kk}} = \dfrac{M_{\text{A}}}{29}$ (vì $1\text{ mol}$ không khí "
-                    r"có khoảng $0{,}8\text{ mol }\text{N}_2$ và $0{,}2\text{ mol }\text{O}_2$ nên $M_{\text{kk}} \approx 28 \cdot 0{,}8 + 32 \cdot 0{,}2 \approx 29\text{ g/mol}$). "
-                    r"Khi thu khí bằng phương pháp đẩy không khí: nếu $d_{\text{A/kk}} > 1$ (như $\text{CO}_2, \text{SO}_2, \text{Cl}_2, \text{O}_2$) thì đặt đứng bình (ngửa bình); "
-                    r"nếu $d_{\text{A/kk}} < 1$ (như $\text{H}_2, \text{CH}_4, \text{NH}_3$) thì đặt úp bình."
-                ),
-            },
+        example="Trộn đều hỗn hợp bột sắt ($\\text{Fe}$) và bột lưu huỳnh ($\\text{S}$) theo tỉ lệ khối lượng $7 : 4$ rồi chia làm hai phần:\n- Phần 1: Đưa thanh nam châm lại gần thì thấy nam châm hút bột sắt tách ra khỏi bột lưu huỳnh.\n- Phần 2: Cho vào ống nghiệm đun nóng mạnh, hỗn hợp nóng đỏ lên và chuyển thành hợp chất iron(II) sulfide ($\\text{FeS}$) màu xám đen, không còn bị nam châm hút nữa.\nHãy cho biết ở phần nào đã xảy ra biến đổi vật lí và ở phần nào đã xảy ra biến đổi hóa học?",
+        example_answer="- Ở **Phần 1**: việc trộn lẫn và dùng nam châm tách sắt chỉ là **biến đổi vật lí** vì sắt và lưu huỳnh vẫn giữ nguyên tính chất, chưa tạo ra chất mới.\n- Ở **Phần 2**: khi đun nóng đã xảy ra **biến đổi hóa học** vì tạo ra chất mới là $\\text{FeS}$ không còn tính từ của sắt.",
+        real_life="Quá trình quang hợp của cây xanh (biến $\\text{CO}_2$ và $\\text{H}_2\\text{O}$ thành tinh bột và khí $\\text{O}_2$) và quá trình tiêu hóa thức ăn trong dạ dày con người đều là những biến đổi hóa học quan trọng duy trì sự sống.",
+        quiz=[
+            mcq("biet", "Dấu hiệu bản chất quan trọng nhất để phân biệt **biến đổi hóa học** với **biến đổi vật lí** là gì?", ["Biến đổi hóa học có sự tạo thành chất mới, còn biến đổi vật lí không tạo thành chất mới", "Biến đổi vật lí luôn cần đun nóng, còn biến đổi hóa học thì không", "Biến đổi hóa học chỉ xảy ra với chất khí", "Biến đổi vật lí làm tăng khối lượng của chất"], 0, "Dấu hiệu quyết định của biến đổi hóa học là có sự xuất hiện chất mới khác với chất ban đầu."),
+            mcq("biet", "Hiện tượng nào sau đây là một **biến đổi hóa học**?", ["Đinh sắt để lâu ngoài không khí ẩm bị gỉ tạo thành lớp gỉ sắt màu nâu đỏ", "Nước lỏng trong ngăn đá tủ lạnh đông đặc thành nước đá", "Hòa tan muối ăn vào nước được dung dịch nước muối", "Dây tóc bóng đèn bằng vonfram nóng sáng lên khi có dòng điện chạy qua"], 0, "Sắt tác dụng với oxygen và hơi nước tạo thành chất mới là gỉ sắt nên là biến đổi hóa học; 3 hiện tượng còn lại không tạo ra chất mới nên là biến đổi vật lí."),
+            mcq("hieu", "Khi đốt một cây nến bằng sáp paraffin: (1) sáp nến ở gần bấc chảy lỏng ra; (2) sáp lỏng thấm vào bấc rồi hóa hơi; (3) hơi sáp cháy trong không khí tạo thành khí carbon dioxide ($\\text{CO}_2$) và hơi nước ($\\text{H}_2\\text{O}$). Giai đoạn nào là biến đổi hóa học?", ["Chỉ có giai đoạn (3)", "Chỉ có giai đoạn (1)", "Giai đoạn (1) và (2)", "Cả ba giai đoạn (1), (2) và (3)"], 0, "Giai đoạn (1) nóng chảy và (2) hóa hơi chỉ là sự chuyển thể (biến đổi vật lí); chỉ giai đoạn (3) hơi nến cháy tạo ra chất mới ($\\text{CO}_2, \\text{H}_2\\text{O}$) mới là biến đổi hóa học."),
+            tf4("hieu", "Xét tính đúng/sai của các phát biểu sau về biến đổi vật lí và biến đổi hóa học:", [
+                "Quá trình lên men sữa tươi thành sữa chua (chuyển đường lactose thành lactic acid) là một biến đổi hóa học.",
+                "Nghiền nhỏ viên đường phèn thành bột đường mịn là một biến đổi hóa học.",
+                "Hiện tượng mặt trời mọc làm sương sớm trên lá cây bay hơi tan biến là biến đổi vật lí.",
+                "Đốt cháy khí gas (butane $\\text{C}_4\\text{H}_{10}$) trên bếp tạo ra khí $\\text{CO}_2$ và hơi nước là biến đổi hóa học.",
+            ], [True, False, True, True], "Ý b) sai vì nghiền nhỏ đường phèn chỉ làm thay đổi kích thước hạt đường, chất vẫn là đường saccharose nên đó là biến đổi vật lí."),
+            short("vandung", "Cho 5 hiện tượng sau: (1) Hòa tan đường vào nước; (2) Đốt cháy than đá tạo khí $\\text{CO}_2$; (3) Nước sôi hóa hơi; (4) Sắt bị gỉ trong không khí ẩm; (5) Cơm để lâu ngày bị ôi thiu. Có bao nhiêu hiện tượng trong danh sách trên là **biến đổi hóa học**?", ["3"], "Các hiện tượng (2) Đốt than, (4) Sắt bị gỉ và (5) Cơm bị thiu có tạo ra chất mới nên có $3$ hiện tượng là biến đổi hóa học (còn 1 và 3 là biến đổi vật lí)."),
         ],
-        worked_examples=[
-            {
-                "title": "Ví dụ 1",
-                "problem": (
-                    r"Tính số phân tử, khối lượng và thể tích ở điều kiện chuẩn ($25^\circ\text{C}$, $1\text{ bar}$) của $0{,}2\text{ mol}$ "
-                    r"khí carbon dioxide ($\text{CO}_2$, biết $M_{\text{C}} = 12\text{ g/mol}$, $M_{\text{O}} = 16\text{ g/mol}$)."
-                ),
-                "solution": (
-                    r"Số phân tử $\text{CO}_2$ là $N = n \cdot N_{\text{A}} = 0{,}2 \cdot 6{,}022 \cdot 10^{23} = 1{,}2044 \cdot 10^{23}\text{ phân tử}$. "
-                    r"Khối lượng mol của $\text{CO}_2$ là $M_{\text{CO}_2} = 12 + 2 \cdot 16 = 44\text{ g/mol}$, nên khối lượng là "
-                    r"$m = n \cdot M = 0{,}2 \cdot 44 = 8{,}8\text{ g}$. Thể tích khí $\text{CO}_2$ ở đkc là $V = 24{,}79 \cdot n = 24{,}79 \cdot 0{,}2 = 4{,}958\text{ L}$."
-                ),
-            },
-            {
-                "title": "Ví dụ 2",
-                "problem": (
-                    r"Một chất khí $\text{X}$ có tỉ khối đối với khí hydrogen ($\text{H}_2$) bằng $22$. Hãy tính khối lượng mol của khí $\text{X}$ "
-                    r"và cho biết khí $\text{X}$ nặng hay nhẹ hơn không khí bao nhiêu lần."
-                ),
-                "solution": (
-                    r"Từ công thức $d_{\text{X/H}_2} = \dfrac{M_{\text{X}}}{M_{\text{H}_2}} = \dfrac{M_{\text{X}}}{2} = 22$, suy ra "
-                    r"$M_{\text{X}} = 22 \cdot 2 = 44\text{ g/mol}$. Tỉ khối của $\text{X}$ đối với không khí là $d_{\text{X/kk}} = \dfrac{44}{29} \approx 1{,}52$, "
-                    r"vậy khí $\text{X}$ nặng hơn không khí khoảng $1{,}52$ lần."
-                ),
-            },
-        ],
-        key_takeaways=[
-            r"Hằng số Avogadro $N_{\text{A}} = 6{,}022 \cdot 10^{23}\text{ mol}^{-1}$ biểu thị số hạt vi mô trong đúng $1\text{ mol}$ chất.",
-            r"Ở điều kiện chuẩn ($25^\circ\text{C}$, $1\text{ bar}$), $1\text{ mol}$ chất khí bất kì luôn chiếm thể tích $24{,}79\text{ L}$ ($V = 24{,}79 \cdot n$).",
-            r"Tỉ khối chất khí $d_{\text{A/B}} = \dfrac{M_{\text{A}}}{M_{\text{B}}}$ và $d_{\text{A/kk}} = \dfrac{M_{\text{A}}}{29}$ giúp xác định khối lượng mol chất khí và cách đặt bình khi thu khí.",
-        ],
-        questions=[
-            mcq(
-                question=r"Ở điều kiện chuẩn (nhiệt độ $25^\circ\text{C}$ và áp suất $1\text{ bar}$), $1\text{ mol}$ của bất kì chất khí nào đều chiếm thể tích bằng:",
-                options=[r"$22{,}4\text{ L}$", r"$24{,}0\text{ L}$", r"$24{,}79\text{ L}$", r"$25{,}0\text{ L}$"],
-                answer="C",
-                level="biet",
-                solution=r"Theo chuẩn Chương trình GDPT 2018, ở điều kiện chuẩn ($25^\circ\text{C}$ và $1\text{ bar}$), $1\text{ mol}$ khí bất kì chiếm thể tích là $24{,}79\text{ L}$.",
-            ),
-            mcq(
-                question=r"Giá trị của hằng số Avogadro ($N_{\text{A}}$) là:",
-                options=[
-                    r"$6{,}022 \cdot 10^{22}\text{ mol}^{-1}$",
-                    r"$6{,}022 \cdot 10^{23}\text{ mol}^{-1}$",
-                    r"$24{,}79 \cdot 10^{23}\text{ mol}^{-1}$",
-                    r"$1{,}602 \cdot 10^{-19}\text{ mol}^{-1}$",
-                ],
-                answer="B",
-                level="biet",
-                solution=r"Hằng số Avogadro có giá trị $N_{\text{A}} = 6{,}022 \cdot 10^{23}\text{ mol}^{-1}$.",
-            ),
-            mcq(
-                question=r"Công thức tính tỉ khối của chất khí $\text{A}$ đối với không khí là:",
-                options=[
-                    r"$d_{\text{A/kk}} = \dfrac{M_{\text{A}}}{29}$",
-                    r"$d_{\text{A/kk}} = \dfrac{29}{M_{\text{A}}}$",
-                    r"$d_{\text{A/kk}} = \dfrac{M_{\text{A}}}{24{,}79}$",
-                    r"$d_{\text{A/kk}} = 29 \cdot M_{\text{A}}$",
-                ],
-                answer="A",
-                level="biet",
-                solution=r"Tỉ khối của khí $\text{A}$ so với không khí được tính theo công thức $d_{\text{A/kk}} = \dfrac{M_{\text{A}}}{29}$.",
-            ),
-            mcq(
-                question=r"Số mol của $18\text{ g}$ nước ($\text{H}_2\text{O}$, biết $M_{\text{H}} = 1\text{ g/mol}$, $M_{\text{O}} = 16\text{ g/mol}$) là:",
-                options=[r"$0{,}5\text{ mol}$", r"$1{,}0\text{ mol}$", r"$1{,}5\text{ mol}$", r"$2{,}0\text{ mol}$"],
-                answer="B",
-                level="biet",
-                solution=r"Ta có $M_{\text{H}_2\text{O}} = 2 \cdot 1 + 16 = 18\text{ g/mol}$. Số mol nước là $n = \dfrac{m}{M} = \dfrac{18}{18} = 1{,}0\text{ mol}$.",
-            ),
-            mcq(
-                question=r"Thể tích ở điều kiện chuẩn ($25^\circ\text{C}$, $1\text{ bar}$) của $16\text{ g}$ khí oxygen ($\text{O}_2$, biết $M_{\text{O}} = 16\text{ g/mol}$) là:",
-                options=[
-                    r"$11{,}20\text{ L}$",
-                    r"$12{,}395\text{ L}$",
-                    r"$24{,}79\text{ L}$",
-                    r"$49{,}58\text{ L}$",
-                ],
-                answer="B",
-                level="hieu",
-                solution=r"Khối lượng mol của khí oxygen là $M_{\text{O}_2} = 32\text{ g/mol}$. Số mol $\text{O}_2$ là $n = \dfrac{16}{32} = 0{,}5\text{ mol}$. Thể tích ở đkc là $V = 24{,}79 \cdot 0{,}5 = 12{,}395\text{ L}$.",
-            ),
-            mcq(
-                question=r"Trong số các chất khí sau: $\text{H}_2$ ($M = 2\text{ g/mol}$), $\text{CH}_4$ ($M = 16\text{ g/mol}$), $\text{NH}_3$ ($M = 17\text{ g/mol}$) và $\text{SO}_2$ ($M = 64\text{ g/mol}$), chất khí nặng hơn không khí là:",
-                options=[r"$\text{H}_2$", r"$\text{CH}_4$", r"$\text{NH}_3$", r"$\text{SO}_2$"],
-                answer="D",
-                level="hieu",
-                solution=r"Khí nặng hơn không khí phải có $M > 29\text{ g/mol}$. Trong các khí đã cho, chỉ có $\text{SO}_2$ có $M = 64\text{ g/mol} > 29\text{ g/mol}$.",
-            ),
-            tf4(
-                stem=r"Một bình kín chứa $7{,}437\text{ L}$ khí nitrogen ($\text{N}_2$) ở điều kiện chuẩn ($25^\circ\text{C}$, $1\text{ bar}$). Biết $M_{\text{N}} = 14\text{ g/mol}$ và $N_{\text{A}} = 6{,}022 \cdot 10^{23}\text{ mol}^{-1}$. Xét tính đúng sai của các phát biểu sau:",
-                statements=[
-                    r"a) Số mol khí $\text{N}_2$ trong bình là $0{,}3\text{ mol}$.",
-                    r"b) Khối lượng mol phân tử của khí $\text{N}_2$ bằng $14\text{ g/mol}$.",
-                    r"c) Khối lượng khí $\text{N}_2$ chứa trong bình bằng $8{,}4\text{ g}$.",
-                    r"d) Số nguyên tử nitrogen có trong bình là $1{,}8066 \cdot 10^{23}\text{ nguyên tử}$.",
-                ],
-                answer="Đ/S/Đ/S",
-                level="hieu",
-                solution=(
-                    r"a) Đúng vì $n_{\text{N}_2} = \dfrac{V}{24{,}79} = \dfrac{7{,}437}{24{,}79} = 0{,}3\text{ mol}$. "
-                    r"b) Sai vì phân tử khí nitrogen gồm $2$ nguyên tử $\text{N}$ nên $M_{\text{N}_2} = 2 \cdot 14 = 28\text{ g/mol}$. "
-                    r"c) Đúng vì $m_{\text{N}_2} = n \cdot M = 0{,}3 \cdot 28 = 8{,}4\text{ g}$. "
-                    r"d) Sai vì số phân tử $\text{N}_2$ là $0{,}3 \cdot 6{,}022 \cdot 10^{23} = 1{,}8066 \cdot 10^{23}$, còn số nguyên tử $\text{N}$ phải gấp đôi là $3{,}6132 \cdot 10^{23}\text{ nguyên tử}$."
-                ),
-            ),
-            tf4(
-                stem=r"Cho hai chất khí ở điều kiện chuẩn ($25^\circ\text{C}$, $1\text{ bar}$) là khí methane ($\text{CH}_4$, $M = 16\text{ g/mol}$) và khí carbon dioxide ($\text{CO}_2$, $M = 44\text{ g/mol}$). Xét tính đúng sai của các phát biểu sau:",
-                statements=[
-                    r"a) Khí $\text{CH}_4$ nhẹ hơn không khí nên khi thu khí $\text{CH}_4$ bằng phương pháp đẩy không khí phải đặt úp bình thu.",
-                    r"b) Tỉ khối của khí $\text{CO}_2$ so với khí $\text{CH}_4$ bằng $2{,}5$.",
-                    r"c) Ở cùng điều kiện chuẩn, $1\text{ mol}$ khí $\text{CH}_4$ và $1\text{ mol}$ khí $\text{CO}_2$ có cùng thể tích là $24{,}79\text{ L}$.",
-                    r"d) Cùng một khối lượng $16\text{ g}$, khí $\text{CO}_2$ có số phân tử nhiều hơn số phân tử của khí $\text{CH}_4$.",
-                ],
-                answer="Đ/S/Đ/S",
-                level="hieu",
-                solution=(
-                    r"a) Đúng vì $d_{\text{CH}_4\text{/kk}} = \dfrac{16}{29} < 1$ nên khí $\text{CH}_4$ nhẹ hơn không khí, phải đặt úp bình thu. "
-                    r"b) Sai vì $d_{\text{CO}_2\text{/CH}_4} = \dfrac{44}{16} = 2{,}75$. "
-                    r"c) Đúng vì ở đkc ($25^\circ\text{C}$, $1\text{ bar}$), $1\text{ mol}$ của mọi chất khí đều có thể tích $24{,}79\text{ L}$. "
-                    r"d) Sai vì với cùng khối lượng $16\text{ g}$, $n_{\text{CO}_2} = \dfrac{16}{44}\text{ mol} < n_{\text{CH}_4} = \dfrac{16}{16} = 1\text{ mol}$ nên số phân tử $\text{CO}_2$ ít hơn."
-                ),
-            ),
-            mcq(
-                question=r"Một hỗn hợp khí $\text{X}$ ở điều kiện chuẩn ($25^\circ\text{C}$, $1\text{ bar}$) gồm $0{,}2\text{ mol}$ khí $\text{O}_2$ ($M = 32\text{ g/mol}$) và $0{,}3\text{ mol}$ khí $\text{CO}_2$ ($M = 44\text{ g/mol}$). Tỉ khối của hỗn hợp khí $\text{X}$ đối với khí $\text{H}_2$ ($M = 2\text{ g/mol}$) là:",
-                options=[r"$18{,}0$", r"$19{,}6$", r"$20{,}4$", r"$39{,}2$"],
-                answer="B",
-                level="vandung",
-                solution=r"Tổng số mol hỗn hợp là $n_{\text{X}} = 0{,}2 + 0{,}3 = 0{,}5\text{ mol}$. Tổng khối lượng hỗn hợp là $m_{\text{X}} = 0{,}2 \cdot 32 + 0{,}3 \cdot 44 = 6{,}4 + 13{,}2 = 19{,}6\text{ g}$. Khối lượng mol trung bình của hỗn hợp là $\overline{M}_{\text{X}} = \dfrac{19{,}6}{0{,}5} = 39{,}2\text{ g/mol}$. Vậy tỉ khối đối với $\text{H}_2$ là $d_{\text{X/H}_2} = \dfrac{39{,}2}{2} = 19{,}6$.",
-            ),
-            short(
-                question=r"Tính thể tích (theo đơn vị $\text{L}$) ở điều kiện chuẩn ($25^\circ\text{C}$, $1\text{ bar}$) của $6{,}4\text{ g}$ khí sulfur dioxide ($\text{SO}_2$, biết $M_{\text{S}} = 32\text{ g/mol}$, $M_{\text{O}} = 16\text{ g/mol}$).",
-                answer=["2,479", "2.479"],
-                level="vandung",
-                solution=r"Khối lượng mol của $\text{SO}_2$ là $M_{\text{SO}_2} = 32 + 2 \cdot 16 = 64\text{ g/mol}$. Số mol $\text{SO}_2$ là $n = \dfrac{6{,}4}{64} = 0{,}1\text{ mol}$. Thể tích khí $\text{SO}_2$ ở đkc là $V = 24{,}79 \cdot 0{,}1 = 2{,}479\text{ L}$.",
-            ),
-        ],
-        description="Khái niệm mol, hằng số Avogadro, khối lượng mol, thể tích mol chất khí ở điều kiện chuẩn và tỉ khối của chất khí theo chương trình KHTN 8 Kết nối tri thức.",
     ),
-    lesson(
-        grade=8,
-        order=3,
-        code="H8-C03",
-        title="Chương 3: Phương trình hóa học, tính theo phương trình và hiệu suất phản ứng",
-        topic="phuong-trinh-hoa-hoc",
-        summary=(
-            r"Nắm vững định luật bảo toàn khối lượng $m_{\text{tham gia}} = m_{\text{sản phẩm}}$, các bước lập và cân bằng phương trình hóa học, "
-            r"bài toán tính lượng chất theo phương trình hóa học (kể cả bài toán lượng dư) và công thức hiệu suất phản ứng "
-            r"$H = \dfrac{n_{\text{thực tế}}}{n_{\text{lý thuyết}}} \cdot 100\text{\%}$."
+    bai(
+        topic=CH1[0], chapter_title=CH1[1], chapter_desc=CH1[2],
+        title="Bài 3: Phản ứng hóa học và năng lượng của phản ứng",
+        icon="🔥",
+        description="Khái niệm phản ứng hóa học, chất phản ứng – sản phẩm, diễn biến vi mô (liên kết thay đổi, số nguyên tử bảo toàn), dấu hiệu nhận biết và phản ứng tỏa nhiệt – thu nhiệt.",
+        requirements=[
+            "Nêu được khái niệm phản ứng hóa học, phân biệt chất phản ứng (chất tham gia) và sản phẩm (chất tạo thành).",
+            "Giải thích được bản chất vi mô của phản ứng hóa học: chỉ có **liên kết giữa các nguyên tử thay đổi** làm phân tử này biến đổi thành phân tử khác, còn **số nguyên tử mỗi nguyên tố giữ nguyên không đổi**.",
+            "Nhận biết được các dấu hiệu có phản ứng xảy ra (đổi màu, tạo khí sủi bọt, tạo kết tủa, tỏa nhiệt/phát sáng) và phân biệt phản ứng tỏa nhiệt với phản ứng thu nhiệt.",
+        ],
+        definition="Phản ứng hóa học là quá trình biến đổi từ chất này (chất phản ứng) thành chất khác (sản phẩm). Trong phản ứng hóa học, chỉ có liên kết giữa các nguyên tử thay đổi làm phân tử này biến đổi thành phân tử khác, còn số nguyên tử của mỗi nguyên tố trước và sau phản ứng luôn giữ nguyên.",
+        theory=(
+            "### 1. Bản chất vi mô và Dấu hiệu nhận biết phản ứng hóa học\n"
+            "- **Phương trình chữ**: $\\text{Chất phản ứng (Chất tham gia)} \\longrightarrow \\text{Sản phẩm}$.\n"
+            "  - Trong quá trình phản ứng: lượng chất phản ứng **giảm dần**, lượng chất sản phẩm **tăng dần**.\n"
+            "- **Diễn biến vi mô**:\n"
+            "  - Trước phản ứng: các nguyên tử liên kết với nhau trong phân tử chất phản ứng.\n"
+            "  - Trong phản ứng: các liên kết cũ bị phá vỡ và hình thành các liên kết mới.\n"
+            "  - Sau phản ứng: tạo thành các phân tử mới (sản phẩm), nhưng **loại nguyên tử và tổng số nguyên tử của mỗi nguyên tố hoàn toàn không đổi**!\n"
+            "- **Dấu hiệu nhận biết có phản ứng xảy ra**: (1) Thay đổi màu sắc; (2) Xuất hiện bọt khí ($\\uparrow$); (3) Xuất hiện chất rắn không tan – kết tủa ($\\downarrow$); (4) Tỏa nhiệt và phát sáng.\n\n"
+            "### 2. Phản ứng tỏa nhiệt và Phản ứng thu nhiệt\n"
+            "- **Phản ứng tỏa nhiệt**: phản ứng giải phóng năng lượng dưới dạng nhiệt ra môi trường xung quanh (làm nhiệt độ môi trường xung quanh **tăng lên**). Ví dụ: mọi phản ứng đốt cháy nhiên liệu (than, xăng, gas, cồn), phản ứng tôi vôi ($\\text{CaO} + \\text{H}_2\\text{O}$), phản ứng tạo gỉ sắt, hô hấp.\n"
+            "- **Phản ứng thu nhiệt**: phản ứng hấp thụ năng lượng dưới dạng nhiệt từ môi trường xung quanh trong suốt quá trình phản ứng (làm nhiệt độ môi trường xung quanh **giảm đi** hoặc phải đun nóng liên tục mới xảy ra). Ví dụ: nung đá vôi ($\\text{CaCO}_3 \\xrightarrow{t^\\circ} \\text{CaO} + \\text{CO}_2$), hòa tan viên C sủi vào nước, quang hợp."
         ),
-        objectives=[
-            r"Phát biểu và vận dụng được Định luật bảo toàn khối lượng để tính khối lượng chất chưa biết trong phản ứng hóa học.",
-            r"Thực hiện được các bước lập phương trình hóa học và xác định được tỉ lệ số nguyên tử, số phân tử hay tỉ lệ số mol giữa các chất trong phương trình.",
-            r"Tính được lượng chất tham gia hoặc lượng sản phẩm (theo số mol, khối lượng hoặc thể tích khí ở đkc) dựa vào phương trình hóa học.",
-            r"Nêu được khái niệm hiệu suất phản ứng và vận dụng được công thức $H = \dfrac{n_{\text{thực tế}}}{n_{\text{lý thuyết}}} \cdot 100\text{\%}$ để giải bài toán thực tế.",
-        ],
         formulas=[
-            {
-                "name": "Định luật bảo toàn khối lượng",
-                "formula": r"$\text{A} + \text{B} \longrightarrow \text{C} + \text{D} \implies m_{\text{A}} + m_{\text{B}} = m_{\text{C}} + m_{\text{D}}$",
-                "note": r"Tổng khối lượng các chất phản ứng bằng tổng khối lượng các chất sản phẩm",
-            },
-            {
-                "name": "Tỉ lệ số mol theo phương trình hóa học",
-                "formula": r"$a\text{A} + b\text{B} \longrightarrow c\text{C} + d\text{D} \implies \dfrac{n_{\text{A}}}{a} = \dfrac{n_{\text{B}}}{b} = \dfrac{n_{\text{C}}}{c} = \dfrac{n_{\text{D}}}{d}$",
-                "note": r"Nếu cho số mol cả $\text{A}$ và $\text{B}$, so sánh $\dfrac{n_{\text{A}}}{a}$ và $\dfrac{n_{\text{B}}}{b}$ để tìm chất hết, chất dư",
-            },
-            {
-                "name": "Hiệu suất phản ứng tính theo sản phẩm hoặc chất tham gia",
-                "formula": r"$H = \dfrac{n_{\text{thực tế}}}{n_{\text{lý thuyết}}} \cdot 100\text{\%} = \dfrac{m_{\text{thực tế}}}{m_{\text{lý thuyết}}} \cdot 100\text{\%}$",
-                "note": r"Thực tế luôn có $0\text{\%} < H \le 100\text{\%}$",
-            },
-            {
-                "name": "Quy tắc tính lượng sản phẩm và chất tham gia khi có hiệu suất $H$",
-                "formula": r"$m_{\text{sp thực tế}} = m_{\text{sp lý thuyết}} \cdot \dfrac{H}{100\text{\%}}; \quad m_{\text{tg cần dùng}} = m_{\text{tg lý thuyết}} \cdot \dfrac{100\text{\%}}{H}$",
-                "note": r"Nhân $\dfrac{H}{100\text{\%}}$ khi tìm sản phẩm; chia $\dfrac{H}{100\text{\%}}$ khi tìm lượng nguyên liệu ban đầu",
-            },
+            G(
+                "Bản chất vi mô của Phản ứng hóa học và Năng lượng phản ứng",
+                F("Quy luật bảo toàn nguyên tử và biến đổi phân tử", "$\\text{Trong PƯHH}: \\begin{cases} \\text{Liên kết giữa các nguyên tử: THAY ĐỔI} \\implies \\text{Phân tử thay đổi} \\\\ \\text{Số lượng nguyên tử của mỗi nguyên tố: GIỮ NGUYÊN KHÔNG ĐỔI} \\end{cases}$", "Đây chính là cơ sở vi mô của Định luật bảo toàn khối lượng và cân bằng phương trình hóa học."),
+                F("Phân biệt Phản ứng tỏa nhiệt và Phản ứng thu nhiệt", "$\\text{PƯ Tỏa nhiệt}: \\text{Giải phóng nhiệt } (T_{\\text{môi trường}} \\uparrow); \\qquad \\text{PƯ Thu nhiệt}: \\text{Hấp thụ nhiệt } (T_{\\text{môi trường}} \\downarrow \\text{ hoặc cần nung liên tục})$", "Phản ứng đốt cháy nhiên liệu luôn là phản ứng tỏa nhiệt; phản ứng nhiệt phân đá vôi luôn là phản ứng thu nhiệt."),
+            )
         ],
-        theory_sections=[
-            {
-                "title": "1. Định luật bảo toàn khối lượng và phương trình hóa học",
-                "content": (
-                    r"Trong một phản ứng hóa học, chỉ có liên kết giữa các nguyên tử thay đổi làm phân tử này biến đổi thành phân tử khác, "
-                    r"còn số nguyên tử của mỗi nguyên tố trước và sau phản ứng giữ nguyên, vì vậy tổng khối lượng các chất tham gia phản ứng "
-                    r"luôn bằng tổng khối lượng các sản phẩm tạo thành. Để lập phương trình hóa học: (1) Viết sơ đồ phản ứng gồm công thức "
-                    r"hóa học của các chất tham gia và sản phẩm; (2) Cân bằng số nguyên tử của mỗi nguyên tố ở hai vế bằng cách đặt hệ số "
-                    r"nguyên dương tối giản trước công thức hóa học (không thay đổi chỉ số trong công thức); (3) Viết thành phương trình hóa học."
-                ),
-            },
-            {
-                "title": "2. Tính theo phương trình hóa học và bài toán lượng dư",
-                "content": (
-                    r"Các bước tính theo phương trình hóa học: Bước 1: Đổi dữ kiện đề bài ra số mol ($n = \dfrac{m}{M}$ hoặc $n = \dfrac{V}{24{,}79}$ ở đkc). "
-                    r"Bước 2: Viết và cân bằng phương trình hóa học. Bước 3: Dựa vào tỉ lệ hệ số trong phương trình để tìm số mol chất cần tính "
-                    r"(nếu đề bài cho số mol của hai chất tham gia trong phản ứng $a\text{A} + b\text{B} \longrightarrow c\text{C}$, ta lập tỉ số "
-                    r"$\dfrac{n_{\text{A}}}{a}$ và $\dfrac{n_{\text{B}}}{b}$; tỉ số nào nhỏ hơn thì chất đó phản ứng hết và mọi tính toán phải tính theo chất hết). "
-                    r"Bước 4: Chuyển đổi số mol tìm được sang khối lượng ($m = n \cdot M$) hoặc thể tích khí ở đkc ($V = 24{,}79 \cdot n$)."
-                ),
-            },
-            {
-                "title": "3. Hiệu suất phản ứng hóa học",
-                "content": (
-                    r"Trong thực tế sản xuất và thí nghiệm, do phản ứng không xảy ra hoàn toàn hoặc bị hao hụt trong quá trình thu hồi, lượng sản phẩm "
-                    r"thu được thực tế ($n_{\text{thực tế}}$ hoặc $m_{\text{thực tế}}$) thường nhỏ hơn lượng tính theo phương trình hóa học ($n_{\text{lý thuyết}}$ "
-                    r"hoặc $m_{\text{lý thuyết}}$). Hiệu suất phản ứng $H = \dfrac{n_{\text{thực tế}}}{n_{\text{lý thuyết}}} \cdot 100\text{\%}$ cho biết mức độ "
-                    r"hiệu quả của quá trình chuyển hóa các chất."
-                ),
-            },
+        example="Xét phản ứng tổng hợp nước từ khí hydrogen và khí oxygen: $\\text{Hydrogen} + \\text{Oxygen} \\xrightarrow{t^\\circ} \\text{Nước}$ ($2\\text{H}_2 + \\text{O}_2 \\xrightarrow{t^\\circ} 2\\text{H}_2\\text{O}$). Hãy cho biết: (a) Trước phản ứng những nguyên tử nào liên kết với nhau, sau phản ứng những nguyên tử nào liên kết với nhau? (b) Số nguyên tử $\\text{H}$ và số nguyên tử $\\text{O}$ trước và sau phản ứng có thay đổi không?",
+        example_answer="- (a) **Trước phản ứng**: $2$ nguyên tử $\\text{H}$ liên kết với nhau trong phân tử $\\text{H}_2$, $2$ nguyên tử $\\text{O}$ liên kết với nhau trong phân tử $\\text{O}_2$. **Sau phản ứng**: mỗi nguyên tử $\\text{O}$ liên kết với $2$ nguyên tử $\\text{H}$ tạo thành phân tử nước $\\text{H}_2\\text{O}$.\n- (b) Số nguyên tử $\\text{H}$ ($4$ nguyên tử) và số nguyên tử $\\text{O}$ ($2$ nguyên tử) trước và sau phản ứng **giữ nguyên không đổi**.",
+        real_life="Túi chườm nóng tự sôi dùng trong mùa đông tận dụng phản ứng tỏa nhiệt, trong khi túi chườm lạnh cấp cứu chấn thương thể thao tận dụng quá trình thu nhiệt mạnh khi hòa tan muối ammonium nitrate trong nước.",
+        quiz=[
+            mcq("biet", "Trong một phản ứng hóa học, yếu tố nào thay đổi làm cho phân tử này biến đổi thành phân tử khác?", ["Liên kết giữa các nguyên tử thay đổi (còn số nguyên tử của mỗi nguyên tố giữ nguyên)", "Số lượng nguyên tử của mỗi nguyên tố tăng gấp đôi", "Hạt nhân nguyên tử của nguyên tố này biến thành hạt nhân nguyên tố khác", "Các nguyên tử bị biến mất hoàn toàn"], 0, "Trong phản ứng hóa học, chỉ có liên kết giữa các nguyên tử thay đổi, còn số nguyên tử mỗi nguyên tố được bảo toàn."),
+            mcq("biet", "Phản ứng hóa học giải phóng năng lượng dưới dạng nhiệt ra môi trường xung quanh (làm nóng môi trường xung quanh) được gọi là phản ứng gì?", ["Phản ứng tỏa nhiệt", "Phản ứng thu nhiệt", "Biến đổi vật lí", "Sự ngưng tụ"], 0, "Phản ứng giải phóng nhiệt năng ra môi trường là phản ứng tỏa nhiệt."),
+            mcq("hieu", "Trong các quá trình hóa học sau đây, quá trình nào là **phản ứng thu nhiệt**?", ["Nung đá vôi ($\\text{CaCO}_3$) ở nhiệt độ cao để tạo ra vôi sống ($\\text{CaO}$) và khí $\\text{CO}_2$ (ngừng cung cấp nhiệt thì phản ứng dừng lại)", "Đốt cháy khí gas trên bếp để nấu ăn", "Đốt cháy than đá trong lò nhiệt điện", "Đốt cháy cồn trong đèn cồn"], 0, "Phản ứng nung đá vôi cần hấp thụ nhiệt liên tục từ lò nung, nếu ngừng đun thì phản ứng dừng ngay nên là phản ứng thu nhiệt; còn các phản ứng đốt cháy nhiên liệu đều tỏa nhiệt."),
+            tf4("hieu", "Xét tính đúng/sai của các phát biểu sau về phản ứng hóa học:", [
+                "Trong quá trình phản ứng hóa học diễn ra, lượng chất phản ứng giảm dần và lượng chất sản phẩm tăng dần.",
+                "Sự xuất hiện chất kết tủa (chất rắn không tan), sủi bọt khí hoặc đổi màu sắc là những dấu hiệu giúp nhận biết có phản ứng hóa học xảy ra.",
+                "Mọi phản ứng đốt cháy nhiên liệu (than, củi, xăng, dầu, khí gas) đều là phản ứng thu nhiệt.",
+                "Khi thả viên sủi vitamin C vào cốc nước thấy sủi bọt khí và sờ thành cốc thấy mát lạnh hơn ban đầu, chứng tỏ đã xảy ra phản ứng thu nhiệt.",
+            ], [True, True, False, True], "Ý c) sai vì mọi phản ứng đốt cháy nhiên liệu đều giải phóng nhiệt lượng lớn ra môi trường nên là **phản ứng tỏa nhiệt**."),
+            short("vandung", "Khi cho $4$ nguyên tử hydrogen ($2$ phân tử $\\text{H}_2$) phản ứng vừa đủ với $2$ nguyên tử oxygen ($1$ phân tử $\\text{O}_2$) để tạo thành các phân tử nước ($\\text{H}_2\\text{O}$), tổng số nguyên tử hydrogen có trong các phân tử nước sau phản ứng bằng bao nhiêu nguyên tử?", ["4"], "Trong phản ứng hóa học, số nguyên tử mỗi nguyên tố được bảo toàn nên sau phản ứng vẫn có đúng $4$ nguyên tử hydrogen (nằm trong $2$ phân tử $\\text{H}_2\\text{O}$).", unit="nguyên tử"),
         ],
-        worked_examples=[
-            {
-                "title": "Ví dụ 1",
-                "problem": (
-                    r"Cho $5{,}6\text{ g}$ iron ($\text{Fe}$, $M = 56\text{ g/mol}$) tác dụng vừa đủ với dung dịch hydrochloric acid ($\text{HCl}$) "
-                    r"theo phản ứng: $\text{Fe} + 2\text{HCl} \longrightarrow \text{FeCl}_2 + \text{H}_2\uparrow$. Tính thể tích khí $\text{H}_2$ "
-                    r"thu được ở điều kiện chuẩn ($25^\circ\text{C}$, $1\text{ bar}$) và khối lượng muối $\text{FeCl}_2$ ($M_{\text{Cl}} = 35{,}5\text{ g/mol}$) tạo thành."
-                ),
-                "solution": (
-                    r"Số mol $\text{Fe}$ phản ứng là $n_{\text{Fe}} = \dfrac{5{,}6}{56} = 0{,}1\text{ mol}$. Theo phương trình hóa học "
-                    r"$\text{Fe} + 2\text{HCl} \longrightarrow \text{FeCl}_2 + \text{H}_2\uparrow$, ta có $n_{\text{H}_2} = n_{\text{FeCl}_2} = n_{\text{Fe}} = 0{,}1\text{ mol}$. "
-                    r"Thể tích khí $\text{H}_2$ ở đkc là $V_{\text{H}_2} = 24{,}79 \cdot 0{,}1 = 2{,}479\text{ L}$. Khối lượng muối $\text{FeCl}_2$ ($M = 56 + 71 = 127\text{ g/mol}$) "
-                    r"là $m_{\text{FeCl}_2} = 0{,}1 \cdot 127 = 12{,}7\text{ g}$."
-                ),
-            },
-            {
-                "title": "Ví dụ 2",
-                "problem": (
-                    r"Nung nóng $20\text{ g}$ đá vôi chứa $\text{CaCO}_3$ nguyên chất ($M = 100\text{ g/mol}$) thu được $8{,}96\text{ g}$ calcium oxide ($\text{CaO}$, "
-                    r"$M = 56\text{ g/mol}$) theo phương trình $\text{CaCO}_3 \xrightarrow{t^\circ} \text{CaO} + \text{CO}_2\uparrow$. Tính hiệu suất của phản ứng nung vôi."
-                ),
-                "solution": (
-                    r"Số mol $\text{CaCO}_3$ ban đầu là $n_{\text{CaCO}_3} = \dfrac{20}{100} = 0{,}2\text{ mol}$. Theo phương trình hóa học, số mol $\text{CaO}$ "
-                    r"thu được theo lý thuyết là $n_{\text{CaO (lý thuyết)}} = 0{,}2\text{ mol}$, tương ứng khối lượng $m_{\text{CaO (lý thuyết)}} = 0{,}2 \cdot 56 = 11{,}2\text{ g}$. "
-                    r"Vậy hiệu suất phản ứng là $H = \dfrac{8{,}96}{11{,}2} \cdot 100\text{\%} = 80\text{\%}$."
-                ),
-            },
-        ],
-        key_takeaways=[
-            r"Trong mọi phản ứng hóa học, số nguyên tử của mỗi nguyên tố được bảo toàn nên tổng khối lượng các chất tham gia bằng tổng khối lượng sản phẩm.",
-            r"Hệ số các chất trong phương trình hóa học đã cân bằng chính là tỉ lệ số mol phản ứng của các chất đó.",
-            r"Hiệu suất phản ứng được tính theo công thức $H = \dfrac{n_{\text{thực tế}}}{n_{\text{lý thuyết}}} \cdot 100\text{\%}$ (tính theo lượng chất thiếu nếu có chất dư).",
-        ],
-        questions=[
-            mcq(
-                question=r"Sau khi cân bằng phương trình hóa học $x\text{Al} + y\text{O}_2 \xrightarrow{t^\circ} z\text{Al}_2\text{O}_3$ với các hệ số nguyên tối giản, bộ hệ số $(x, y, z)$ lần lượt là:",
-                options=[
-                    r"$(2, 3, 1)$",
-                    r"$(4, 3, 2)$",
-                    r"$(2, 1, 2)$",
-                    r"$(3, 4, 2)$",
-                ],
-                answer="B",
-                level="biet",
-                solution=r"Để cân bằng số nguyên tử $\text{O}$ (BCNN của $2$ và $3$ là $6$), ta đặt hệ số $3$ trước $\text{O}_2$ và $2$ trước $\text{Al}_2\text{O}_3$, từ đó đặt $4$ trước $\text{Al}$: $4\text{Al} + 3\text{O}_2 \xrightarrow{t^\circ} 2\text{Al}_2\text{O}_3$.",
-            ),
-            mcq(
-                question=r"Trong một phản ứng hóa học, đại lượng luôn được bảo toàn trước và sau phản ứng là:",
-                options=[
-                    r"Tổng số phân tử của các chất",
-                    r"Tổng thể tích của các chất khí",
-                    r"Số nguyên tử của mỗi nguyên tố và tổng khối lượng các chất",
-                    r"Số liên kết hóa học trong phân tử",
-                ],
-                answer="C",
-                level="biet",
-                solution=r"Trong phản ứng hóa học, chỉ có liên kết giữa các nguyên tử thay đổi, còn số nguyên tử của mỗi nguyên tố giữ nguyên nên tổng khối lượng các chất được bảo toàn.",
-            ),
-            mcq(
-                question=r"Cho phương trình hóa học: $\text{N}_2 + 3\text{H}_2 \xrightleftharpoons{t^\circ, p, xt} 2\text{NH}_3$. Tỉ lệ số mol $n_{\text{N}_2} : n_{\text{H}_2} : n_{\text{NH}_3}$ tham gia và tạo thành trong phản ứng là:",
-                options=[
-                    r"$1 : 2 : 3$",
-                    r"$1 : 3 : 2$",
-                    r"$2 : 3 : 1$",
-                    r"$3 : 1 : 2$",
-                ],
-                answer="B",
-                level="biet",
-                solution=r"Tỉ lệ số mol phản ứng của các chất đúng bằng tỉ lệ hệ số cân bằng trong phương trình: $1 : 3 : 2$.",
-            ),
-            mcq(
-                question=r"Công thức tính hiệu suất phản ứng ($H$) theo số mol sản phẩm thực tế thu được ($n_{\text{thực tế}}$) và số mol sản phẩm tính theo phương trình ($n_{\text{lý thuyết}}$) là:",
-                options=[
-                    r"$H = \dfrac{n_{\text{thực tế}}}{n_{\text{lý thuyết}}} \cdot 100\text{\%}$",
-                    r"$H = \dfrac{n_{\text{lý thuyết}}}{n_{\text{thực tế}}} \cdot 100\text{\%}$",
-                    r"$H = (n_{\text{lý thuyết}} - n_{\text{thực tế}}) \cdot 100\text{\%}$",
-                    r"$H = \dfrac{n_{\text{thực tế}}}{n_{\text{thực tế}} + n_{\text{lý thuyết}}} \cdot 100\text{\%}$",
-                ],
-                answer="A",
-                level="biet",
-                solution=r"Theo định nghĩa, hiệu suất phản ứng là $H = \dfrac{n_{\text{thực tế}}}{n_{\text{lý thuyết}}} \cdot 100\text{\%}$.",
-            ),
-            mcq(
-                question=r"Đốt cháy hoàn toàn $2{,}4\text{ g}$ kim loại magnesium ($\text{Mg}$) trong khí oxygen ($\text{O}_2$) thu được $4{,}0\text{ g}$ magnesium oxide ($\text{MgO}$). Theo định luật bảo toàn khối lượng, khối lượng khí $\text{O}_2$ đã phản ứng là:",
-                options=[r"$0{,}8\text{ g}$", r"$1{,}6\text{ g}$", r"$2{,}4\text{ g}$", r"$6{,}4\text{ g}$"],
-                answer="B",
-                level="hieu",
-                solution=r"Áp dụng định luật bảo toàn khối lượng cho phản ứng $2\text{Mg} + \text{O}_2 \xrightarrow{t^\circ} 2\text{MgO}$: $m_{\text{Mg}} + m_{\text{O}_2} = m_{\text{MgO}} \Rightarrow m_{\text{O}_2} = 4{,}0 - 2{,}4 = 1{,}6\text{ g}$.",
-            ),
-            mcq(
-                question=r"Đốt cháy hoàn toàn $6{,}5\text{ g}$ zinc ($\text{Zn}$, $M = 65\text{ g/mol}$) trong bình chứa khí oxygen ($\text{O}_2$) dư theo phản ứng $2\text{Zn} + \text{O}_2 \xrightarrow{t^\circ} 2\text{ZnO}$. Khối lượng $\text{ZnO}$ ($M = 81\text{ g/mol}$) thu được là:",
-                options=[r"$4{,}05\text{ g}$", r"$8{,}10\text{ g}$", r"$12{,}15\text{ g}$", r"$16{,}20\text{ g}$"],
-                answer="B",
-                level="hieu",
-                solution=r"Ta có $n_{\text{Zn}} = \dfrac{6{,}5}{65} = 0{,}1\text{ mol}$. Theo phương trình hóa học, $n_{\text{ZnO}} = n_{\text{Zn}} = 0{,}1\text{ mol}$, suy ra $m_{\text{ZnO}} = 0{,}1 \cdot 81 = 8{,}10\text{ g}$.",
-            ),
-            tf4(
-                stem=r"Cho $0{,}3\text{ mol}$ khí hydrogen ($\text{H}_2$) tác dụng với $0{,}2\text{ mol}$ khí oxygen ($\text{O}_2$) trong bình kín có tia lửa điện theo phản ứng $2\text{H}_2 + \text{O}_2 \xrightarrow{t^\circ} 2\text{H}_2\text{O}$ (giả sử phản ứng xảy ra hoàn toàn, biết $M_{\text{H}} = 1\text{ g/mol}$, $M_{\text{O}} = 16\text{ g/mol}$). Xét tính đúng sai của các phát biểu sau:",
-                statements=[
-                    r"a) Tỉ lệ số mol phản ứng theo phương trình hóa học là $n_{\text{H}_2} : n_{\text{O}_2} = 2 : 1$.",
-                    r"b) Sau khi phản ứng kết thúc, khí $\text{O}_2$ phản ứng hết và khí $\text{H}_2$ còn dư.",
-                    r"c) Số mol nước ($\text{H}_2\text{O}$) tạo thành sau phản ứng là $0{,}3\text{ mol}$.",
-                    r"d) Khối lượng nước thu được sau phản ứng bằng $7{,}2\text{ g}$.",
-                ],
-                answer="Đ/S/Đ/S",
-                level="hieu",
-                solution=(
-                    r"a) Đúng vì theo hệ số cân bằng phương trình $2\text{H}_2 + \text{O}_2 \xrightarrow{t^\circ} 2\text{H}_2\text{O}$, tỉ lệ $n_{\text{H}_2} : n_{\text{O}_2} = 2 : 1$. "
-                    r"b) Sai vì lập tỉ số $\dfrac{n_{\text{H}_2}}{2} = \dfrac{0{,}3}{2} = 0{,}15 < \dfrac{n_{\text{O}_2}}{1} = 0{,}2$, nên $\text{H}_2$ phản ứng hết và $\text{O}_2$ còn dư $0{,}2 - 0{,}15 = 0{,}05\text{ mol}$. "
-                    r"c) Đúng vì tính theo chất hết $\text{H}_2$, ta có $n_{\text{H}_2\text{O}} = n_{\text{H}_2} = 0{,}3\text{ mol}$. "
-                    r"d) Sai vì $m_{\text{H}_2\text{O}} = 0{,}3 \cdot 18 = 5{,}4\text{ g}$."
-                ),
-            ),
-            tf4(
-                stem=r"Trong công nghiệp, ammonia ($\text{NH}_3$) được tổng hợp theo phương trình $\text{N}_2 + 3\text{H}_2 \xrightleftharpoons{t^\circ, p, xt} 2\text{NH}_3$. Khi cho $1\text{ mol}$ $\text{N}_2$ tác dụng với $3\text{ mol}$ $\text{H}_2$, thực tế thu được $1{,}5\text{ mol}$ $\text{NH}_3$ (biết ở đkc $25^\circ\text{C}$, $1\text{ bar}$, $1\text{ mol}$ khí chiếm $24{,}79\text{ L}$). Xét tính đúng sai của các phát biểu sau:",
-                statements=[
-                    r"a) Nếu hiệu suất phản ứng đạt $100\text{\%}$ thì số mol $\text{NH}_3$ thu được theo lý thuyết là $2\text{ mol}$.",
-                    r"b) Số mol khí $\text{N}_2$ đã thực tế tham gia phản ứng là $1{,}5\text{ mol}$.",
-                    r"c) Hiệu suất của phản ứng tổng hợp $\text{NH}_3$ trên bằng $75\text{\%}$.",
-                    r"d) Thể tích khí $\text{NH}_3$ thực tế thu được ở điều kiện chuẩn là $49{,}58\text{ L}$.",
-                ],
-                answer="Đ/S/Đ/S",
-                level="hieu",
-                solution=(
-                    r"a) Đúng vì $\dfrac{1}{1} = \dfrac{3}{3} = 1$, nên số mol $\text{NH}_3$ lý thuyết là $2 \cdot 1 = 2\text{ mol}$. "
-                    r"b) Sai vì thực tế thu được $1{,}5\text{ mol}$ $\text{NH}_3$ nên số mol $\text{N}_2$ thực tế đã phản ứng là $\dfrac{1{,}5}{2} = 0{,}75\text{ mol}$. "
-                    r"c) Đúng vì hiệu suất $H = \dfrac{n_{\text{thực tế}}}{n_{\text{lý thuyết}}} \cdot 100\text{\%} = \dfrac{1{,}5}{2} \cdot 100\text{\%} = 75\text{\%}$. "
-                    r"d) Sai vì thể tích $\text{NH}_3$ thực tế ở đkc là $V = 1{,}5 \cdot 24{,}79 = 37{,}185\text{ L}$."
-                ),
-            ),
-            mcq(
-                question=r"Nung $50\text{ g}$ calcium carbonate ($\text{CaCO}_3$, $M = 100\text{ g/mol}$) với hiệu suất phản ứng đạt $80\text{\%}$ theo phương trình $\text{CaCO}_3 \xrightarrow{t^\circ} \text{CaO} + \text{CO}_2\uparrow$. Thể tích khí $\text{CO}_2$ thu được ở điều kiện chuẩn ($25^\circ\text{C}$, $1\text{ bar}$) là:",
-                options=[
-                    r"$8{,}960\text{ L}$",
-                    r"$9{,}916\text{ L}$",
-                    r"$12{,}395\text{ L}$",
-                    r"$15{,}494\text{ L}$",
-                ],
-                answer="B",
-                level="vandung",
-                solution=r"Ta có $n_{\text{CaCO}_3} = \dfrac{50}{100} = 0{,}5\text{ mol}$. Theo phương trình, $n_{\text{CO}_2\text{ (lý thuyết)}} = 0{,}5\text{ mol}$. Do hiệu suất $H = 80\text{\%}$ nên $n_{\text{CO}_2\text{ (thực tế)}} = 0{,}5 \cdot 80\text{\%} = 0{,}4\text{ mol}$. Thể tích khí $\text{CO}_2$ ở đkc là $V = 24{,}79 \cdot 0{,}4 = 9{,}916\text{ L}$.",
-            ),
-            short(
-                question=r"Khử hoàn toàn $16\text{ g}$ copper(II) oxide ($\text{CuO}$, $M = 80\text{ g/mol}$) bằng khí hydrogen ($\text{H}_2$) dư ở nhiệt độ cao theo phản ứng $\text{CuO} + \text{H}_2 \xrightarrow{t^\circ} \text{Cu} + \text{H}_2\text{O}$, thực tế thu được $10{,}88\text{ g}$ kim loại copper ($\text{Cu}$, $M = 64\text{ g/mol}$). Tính hiệu suất của phản ứng (theo đơn vị $\text{\%}$).",
-                answer=["85", "85%", "85,0", "85.0"],
-                level="vandung",
-                solution=r"Số mol $\text{CuO}$ ban đầu là $n_{\text{CuO}} = \dfrac{16}{80} = 0{,}2\text{ mol}$. Theo phương trình hóa học, khối lượng $\text{Cu}$ thu được theo lý thuyết là $m_{\text{Cu (lý thuyết)}} = 0{,}2 \cdot 64 = 12{,}8\text{ g}$. Hiệu suất phản ứng là $H = \dfrac{10{,}88}{12{,}8} \cdot 100\text{\%} = 85\text{\%}$.",
-            ),
-        ],
-        description="Định luật bảo toàn khối lượng, các bước lập phương trình hóa học, tính theo phương trình hóa học và hiệu suất phản ứng theo chương trình KHTN 8 Kết nối tri thức.",
     ),
-    lesson(
-        grade=8,
-        order=4,
-        code="H8-C04",
-        title="Chương 4: Độ tan, nồng độ phần trăm và nồng độ mol của dung dịch",
-        topic="dung-dich-nong-do",
-        summary=(
-            r"Nắm vững khái niệm dung môi, chất tan, dung dịch bão hòa, độ tan $S = \dfrac{m_{\text{ct}}}{m_{\text{H}_2\text{O}}} \cdot 100$, "
-            r"nồng độ phần trăm $C\text{\%} = \dfrac{m_{\text{ct}}}{m_{\text{dd}}} \cdot 100\text{\%}$, nồng độ mol $C_{\text{M}} = \dfrac{n}{V_{\text{dd}}}$, "
-            r"công thức liên hệ $C_{\text{M}} = \dfrac{10 \cdot D \cdot C\text{\%}}{M}$ và cách tính toán pha chế dung dịch."
+    bai(
+        topic=CH1[0], chapter_title=CH1[1], chapter_desc=CH1[2],
+        title="Bài 4: Mol và tỉ khối của chất khí",
+        icon="🎈",
+        description="Khái niệm mol, hằng số Avogadro N_A = 6,022.10²³, khối lượng mol M = m/n, thể tích mol chất khí ở điều kiện chuẩn (25 °C, 1 bar: V = 24,79.n) và tỉ khối chất khí d_A/B = M_A/M_B.",
+        requirements=[
+            "Định nghĩa được mol là lượng chất có chứa $N_A = 6{,}022 \\cdot 10^{23}$ hạt vi mô (nguyên tử, phân tử) của chất đó, và khối lượng mol ($M$, đơn vị $\\text{g/mol}$) có trị số bằng khối lượng nguyên tử hoặc phân tử ($\\text{amu}$).",
+            "Vận dụng thành thạo bộ công thức chuyển đổi số mol: $n = \\dfrac{N}{6{,}022 \\cdot 10^{23}}$, $n = \\dfrac{m}{M} \\iff m = n \\cdot M$ và thể tích khí ở **điều kiện chuẩn ($25^\\circ\\text{C}, 1\\text{ bar}$)**: $V = 24{,}79 \\cdot n \\iff n = \\dfrac{V}{24{,}79}$.",
+            "Tính được tỉ khối của khí $A$ đối với khí $B$ ($d_{A/B} = \\dfrac{M_A}{M_B}$) và đối với không khí ($d_{A/\\text{kk}} = \\dfrac{M_A}{29}$).",
+        ],
+        definition="Mol là lượng chất có chứa $N_A = 6{,}022 \\cdot 10^{23}$ hạt vi mô (nguyên tử hoặc phân tử) của chất đó. Ở điều kiện chuẩn ($25^\\circ\\text{C}$ và $1\\text{ bar}$), $1\\text{ mol}$ của bất kì chất khí nào cũng chiếm thể tích bằng $24{,}79\\text{ lít}$ ($V = 24{,}79 \\cdot n$).",
+        theory=(
+            "### 1. Mol, Khối lượng mol ($M$) và Thể tích mol của chất khí ở điều kiện chuẩn\n"
+            "- **Số Avogadro**: $N_A \\approx 6{,}022 \\cdot 10^{23}\\text{ mol}^{-1}$. Số mol chất từ số hạt $N$: $n = \\dfrac{N}{N_A}$.\n"
+            "- **Khối lượng mol ($M$, đơn vị $\\text{g/mol}$)**: khối lượng tính bằng gam của $1\\text{ mol}$ chất (có số trị bằng đúng khối lượng nguyên tử/phân tử tính theo $\\text{amu}$, ví dụ $M_{\\text{H}_2\\text{O}} = 18\\text{ g/mol}$):\n"
+            "  $$n = \\dfrac{m}{M} \\iff m = n \\cdot M \\iff M = \\dfrac{m}{n}$$\n"
+            "- **Thể tích mol của chất khí ở điều kiện chuẩn ($25^\\circ\\text{C}, 1\\text{ bar}$)**:\n"
+            "  $$V = 24{,}79 \\cdot n \\iff n = \\dfrac{V}{24{,}79} \\quad (\\text{với } V \\text{ tính bằng lít})$$\n\n"
+            "### 2. Tỉ khối của chất khí\n"
+            "- Để biết khí $A$ nặng hay nhẹ hơn khí $B$ bao nhiêu lần (ở cùng nhiệt độ và áp suất), ta tính **tỉ khối của khí $A$ đối với khí $B$**:\n"
+            "  $$d_{A/B} = \\dfrac{M_A}{M_B}$$\n"
+            "- **Tỉ khối của khí $A$ đối với không khí** (coi khối lượng mol trung bình của không khí là $M_{\\text{kk}} \\approx 29\\text{ g/mol}$):\n"
+            "  $$d_{A/\\text{kk}} = \\dfrac{M_A}{29}$$\n"
+            "  - Nếu $M_A > 29$ ($d_{A/\\text{kk}} > 1$, như $\\text{O}_2, \\text{CO}_2, \\text{Cl}_2, \\text{SO}_2$): khí $A$ **nặng hơn không khí** (thu bằng cách **đặt đứng/ngửa bình**).\n"
+            "  - Nếu $M_A < 29$ ($d_{A/\\text{kk}} < 1$, như $\\text{H}_2, \\text{He}, \\text{CH}_4, \\text{NH}_3$): khí $A$ **nhẹ hơn không khí** (thu bằng cách **úp ngược bình**)."
         ),
-        objectives=[
-            r"Phân biệt được dung môi, chất tan, dung dịch chưa bão hòa và dung dịch bão hòa; tính được độ tan của một chất trong nước theo công thức $S = \dfrac{m_{\text{ct}}}{m_{\text{H}_2\text{O}}} \cdot 100$.",
-            r"Tính được nồng độ phần trăm ($C\text{\%}$) và nồng độ mol ($C_{\text{M}}$) của dung dịch theo công thức.",
-            r"Vận dụng được công thức liên hệ $C_{\text{M}} = \dfrac{10 \cdot D \cdot C\text{\%}}{M}$ và bảo toàn lượng chất tan khi pha loãng hoặc trộn dung dịch.",
-            r"Trình bày được các bước tính toán và thực hành pha chế một dung dịch theo nồng độ cho trước.",
-        ],
         formulas=[
-            {
-                "name": "Độ tan của một chất trong nước (ở nhiệt độ xác định)",
-                "formula": r"$S = \dfrac{m_{\text{ct}}}{m_{\text{H}_2\text{O}}} \cdot 100 \quad (\text{g/100 g }\text{H}_2\text{O})$",
-                "note": r"$m_{\text{ct}}$: khối lượng chất tan tối đa ($\text{g}$) tạo dung dịch bão hòa trong $m_{\text{H}_2\text{O}}\text{ (g)}$ nước",
-            },
-            {
-                "name": "Nồng độ phần trăm của dung dịch",
-                "formula": r"$C\text{\%} = \dfrac{m_{\text{ct}}}{m_{\text{dd}}} \cdot 100\text{\%}; \quad m_{\text{dd}} = m_{\text{ct}} + m_{\text{dm}} = V_{\text{dd (mL)}} \cdot D$",
-                "note": r"$m_{\text{ct}}$: khối lượng chất tan ($\text{g}$); $m_{\text{dd}}$: khối lượng dung dịch ($\text{g}$)",
-            },
-            {
-                "name": "Nồng độ mol của dung dịch",
-                "formula": r"$C_{\text{M}} = \dfrac{n}{V_{\text{dd}}} \Rightarrow n = C_{\text{M}} \cdot V_{\text{dd}}$",
-                "note": r"$n$: số mol chất tan ($\text{mol}$); $V_{\text{dd}}$: thể tích dung dịch ($\text{L}$); đơn vị của $C_{\text{M}}$ là $\text{mol/L}$ hay $\text{M}$",
-            },
-            {
-                "name": r"Hệ thức liên hệ giữa $C_{\text{M}}$ và $C\text{\%}$",
-                "formula": r"$C_{\text{M}} = \dfrac{10 \cdot D \cdot C\text{\%}}{M}$",
-                "note": r"$D$: khối lượng riêng của dung dịch ($\text{g/mL}$); $M$: khối lượng mol chất tan ($\text{g/mol}$)",
-            },
+            G(
+                "Bộ công thức tính Số mol (n), Thể tích đkc (24,79 L) và Tỉ khối chất khí",
+                F("Chuyển đổi giữa Số mol (n), Khối lượng (m) và Thể tích khí ở đkc (25 °C, 1 bar)", "$n = \\dfrac{m}{M} \\iff m = n \\cdot M; \\qquad V_{\\text{đkc}} = 24{,}79 \\cdot n \\iff n = \\dfrac{V_{\\text{đkc}}}{24{,}79}$", "Lưu ý chuẩn GDPT 2018: ở điều kiện chuẩn ($25^\\circ\\text{C}, 1\\text{ bar}$), $1\\text{ mol}$ khí có thể tích là **$24{,}79\\text{ lít}$**."),
+                F("Công thức tính tỉ khối của chất khí", "$d_{A/B} = \\dfrac{M_A}{M_B} \\implies M_A = d_{A/B} \\cdot M_B; \\qquad d_{A/\\text{kk}} = \\dfrac{M_A}{29}$", "Khí có $M > 29$ nặng hơn không khí; khí có $M < 29$ nhẹ hơn không khí."),
+            )
         ],
-        theory_sections=[
-            {
-                "title": "1. Dung dịch và độ tan của một chất trong nước",
-                "content": (
-                    r"Dung dịch là hỗn hợp đồng nhất của chất tan và dung môi. Ở một nhiệt độ xác định, dung dịch chưa bão hòa là dung dịch "
-                    r"có thể hòa tan thêm chất tan, còn dung dịch bão hòa là dung dịch không thể hòa tan thêm chất tan đó nữa. "
-                    r"Độ tan ($S$) của một chất trong nước là số gam chất đó hòa tan trong $100\text{ g}$ nước để tạo thành dung dịch bão hòa ở một nhiệt độ "
-                    r"xác định. Phần lớn các chất rắn có độ tan tăng khi nhiệt độ tăng; ngược lại, các chất khí có độ tan giảm khi nhiệt độ tăng và áp suất giảm."
-                ),
-            },
-            {
-                "title": "2. Nồng độ phần trăm và nồng độ mol",
-                "content": (
-                    r"Nồng độ phần trăm ($C\text{\%}$) cho biết số gam chất tan có trong $100\text{ g}$ dung dịch: $C\text{\%} = \dfrac{m_{\text{ct}}}{m_{\text{dd}}} \cdot 100\text{\%}$. "
-                    r"Trong dung dịch bão hòa có độ tan $S$, nồng độ phần trăm được tính bằng $C\text{\%}_{\text{bh}} = \dfrac{S}{100 + S} \cdot 100\text{\%}$. "
-                    r"Nồng độ mol ($C_{\text{M}}$) cho biết số mol chất tan có trong $1\text{ L}$ ($1000\text{ mL}$) dung dịch: $C_{\text{M}} = \dfrac{n}{V_{\text{dd}}}$ "
-                    r"(lưu ý phải đổi thể tích dung dịch sang đơn vị $\text{L}$ trước khi tính)."
-                ),
-            },
-            {
-                "title": "3. Pha chế và pha loãng dung dịch",
-                "content": (
-                    r"Khi pha chế dung dịch từ chất rắn tinh khiết và nước: Bước 1: Tính lượng chất tan ($m_{\text{ct}}$ hoặc $n$) và lượng nước cần dùng. "
-                    r"Bước 2: Cân chính xác khối lượng chất tan cho vào cốc thủy tinh, đong nước (hoặc thêm nước đến vạch định mức thể tích $V_{\text{dd}}$) và khuấy đều. "
-                    r"Khi pha loãng dung dịch bằng nước, lượng chất tan trước và sau khi pha loãng không đổi: $m_{\text{ct (1)}} = m_{\text{ct (2)}}$ và "
-                    r"$n_1 = n_2 \Leftrightarrow C_{\text{M1}} \cdot V_1 = C_{\text{M2}} \cdot V_2$."
-                ),
-            },
+        example="Ở điều kiện chuẩn ($25^\\circ\\text{C}$ và $1\\text{ bar}$), một bình chứa $V = 4{,}958\\text{ lít}$ khí carbon dioxide ($\\text{CO}_2$, biết $\\text{C}=12, \\text{O}=16$). Hãy tính số mol $n$, khối lượng $m$ của lượng khí $\\text{CO}_2$ trên và cho biết khí $\\text{CO}_2$ nặng hơn không khí bao nhiêu lần.",
+        example_answer="Số mol khí $\\text{CO}_2$ ở điều kiện chuẩn là $n = \\dfrac{V}{24{,}79} = \\dfrac{4{,}958}{24{,}79} = 0{,}2\\text{ mol}$. Khối lượng mol của $\\text{CO}_2$ là $M_{\\text{CO}_2} = 12 + 2 \\cdot 16 = 44\\text{ g/mol}$. Khối lượng của $0{,}2\\text{ mol}\\text{ CO}_2$ là $m = n \\cdot M = 0{,}2 \\cdot 44 = 8{,}8\\text{ g}$. Tỉ khối của $\\text{CO}_2$ so với không khí là $d_{\\text{CO}_2/\\text{kk}} = \\dfrac{44}{29} \\approx 1{,}52$ (nặng hơn không khí khoảng $1{,}52$ lần).",
+        real_life="Vì khí $\\text{CO}_2$ nặng hơn không khí ($d = \\dfrac{44}{29} \\approx 1{,}52$) nên trong các hang sâu hoặc giếng sâu không thông thoáng thường tích tụ nhiều khí $\\text{CO}_2$ ở dưới đáy gây nguy cơ ngạt thở; ngược lại khí $\\text{He}$ ($M = 4$) và $\\text{H}_2$ ($M = 2$) rất nhẹ so với không khí nên bơm vào bóng bay giúp bóng bay lên cao.",
+        quiz=[
+            mcq("biet", "Ở điều kiện chuẩn ($25^\\circ\\text{C}$ và $1\\text{ bar}$), $1\\text{ mol}$ của bất kì chất khí nào cũng chiếm một thể tích bằng bao nhiêu lít?", ["$24{,}79\\text{ lít}$", "$100\\text{ lít}$", "$1{,}00\\text{ lít}$", "$29{,}00\\text{ lít}$"], 0, "Theo chuẩn chương trình GDPT 2018, ở điều kiện chuẩn ($25^\\circ\\text{C}, 1\\text{ bar}$), thể tích mol của chất khí là $24{,}79\\text{ L/mol}$."),
+            mcq("biet", "Công thức tính tỉ khối của khí $A$ đối với không khí ($d_{A/\\text{kk}}$) là gì?", ["$d_{A/\\text{kk}} = \\dfrac{M_A}{29}$", "$d_{A/\\text{kk}} = \\dfrac{29}{M_A}$", "$d_{A/\\text{kk}} = \\dfrac{M_A}{24{,}79}$", "$d_{A/\\text{kk}} = 29 \\cdot M_A$"], 0, "Khối lượng mol trung bình của không khí là $29\\text{ g/mol}$, nên tỉ khối của khí $A$ đối với không khí là $d_{A/\\text{kk}} = \\dfrac{M_A}{29}$."),
+            mcq("hieu", "Cho các chất khí sau: $\\text{H}_2$ ($M = 2$), $\\text{CH}_4$ ($M = 16$), $\\text{NH}_3$ ($M = 17$) và $\\text{CO}_2$ ($M = 44$). Chất khí nào **nặng hơn không khí** ($M_{\\text{kk}} = 29$)?", ["Khí $\\text{CO}_2$", "Khí $\\text{H}_2$", "Khí $\\text{CH}_4$", "Khí $\\text{NH}_3$"], 0, "Vì $M_{\\text{CO}_2} = 44 > 29$ nên khí $\\text{CO}_2$ nặng hơn không khí; các khí $\\text{H}_2, \\text{CH}_4, \\text{NH}_3$ đều có $M < 29$ nên nhẹ hơn không khí."),
+            tf4("hieu", "Xét tính đúng/sai của các phát biểu sau về mol và tỉ khối chất khí:", [
+                "Một mol của bất kì chất nào cũng chứa $N_A = 6{,}022 \\cdot 10^{23}$ hạt vi mô (nguyên tử hoặc phân tử) của chất đó.",
+                "Công thức tính khối lượng chất $m$ từ số mol $n$ và khối lượng mol $M$ là $m = n \\cdot M$.",
+                "Ở điều kiện chuẩn ($25^\\circ\\text{C}, 1\\text{ bar}$), $1\\text{ mol}$ khí $\\text{H}_2$ có thể tích nhỏ hơn $1\\text{ mol}$ khí $\\text{O}_2$.",
+                "Khí sulfur dioxide ($\\text{SO}_2, M = 64\\text{ g/mol}$) nặng gấp $2$ lần khí oxygen ($\\text{O}_2, M = 32\\text{ g/mol}$).",
+            ], [True, True, False, True], "Ý c) sai vì ở cùng điều kiện nhiệt độ và áp suất, $1\\text{ mol}$ của mọi chất khí đều chiếm thể tích bằng nhau ($24{,}79\\text{ lít}$ ở đkc)."),
+            short("vandung", "Ở điều kiện chuẩn ($25^\\circ\\text{C}, 1\\text{ bar}$), thể tích của $n = 0{,}5\\text{ mol}$ khí oxygen ($\\text{O}_2$) bằng bao nhiêu lít (lấy $1\\text{ mol}$ khí ở đkc bằng $24{,}79\\text{ lít}$)?", ["12,395", "12.395"], "Áp dụng công thức $V = 24{,}79 \\cdot n = 24{,}79 \\cdot 0{,}5 = 12{,}395\\text{ lít}$.", unit="lít"),
         ],
-        worked_examples=[
-            {
-                "title": "Ví dụ 1",
-                "problem": (
-                    r"Ở $25^\circ\text{C}$, hòa tan tối đa $72\text{ g}$ muối ăn ($\text{NaCl}$) vào $200\text{ g}$ nước thì thu được dung dịch bão hòa. "
-                    r"Hãy tính độ tan $S$ của $\text{NaCl}$ ở $25^\circ\text{C}$ và nồng độ phần trăm của dung dịch bão hòa này."
-                ),
-                "solution": (
-                    r"Độ tan của $\text{NaCl}$ ở $25^\circ\text{C}$ là $S = \dfrac{m_{\text{ct}}}{m_{\text{H}_2\text{O}}} \cdot 100 = \dfrac{72}{200} \cdot 100 = 36\text{ g/100 g }\text{H}_2\text{O}$. "
-                    r"Khối lượng dung dịch bão hòa là $m_{\text{dd}} = 72 + 200 = 272\text{ g}$. Nồng độ phần trăm của dung dịch bão hòa là "
-                    r"$C\text{\%} = \dfrac{72}{272} \cdot 100\text{\%} \approx 26{,}47\text{\%}$."
-                ),
-            },
-            {
-                "title": "Ví dụ 2",
-                "problem": (
-                    r"Hòa tan $16\text{ g}$ sodium hydroxide ($\text{NaOH}$, $M = 40\text{ g/mol}$) vào nước để thu được $250\text{ mL}$ dung dịch. "
-                    r"Tính nồng độ mol ($C_{\text{M}}$) của dung dịch $\text{NaOH}$ thu được."
-                ),
-                "solution": (
-                    r"Số mol $\text{NaOH}$ là $n = \dfrac{16}{40} = 0{,}4\text{ mol}$. Đổi thể tích dung dịch $V_{\text{dd}} = 250\text{ mL} = 0{,}25\text{ L}$. "
-                    r"Nồng độ mol của dung dịch là $C_{\text{M}} = \dfrac{n}{V_{\text{dd}}} = \dfrac{0{,}4}{0{,}25} = 1{,}6\text{ M}$."
-                ),
-            },
-        ],
-        key_takeaways=[
-            r"Độ tan $S$ tính trên $100\text{ g}$ nước ($S = \dfrac{m_{\text{ct}}}{m_{\text{H}_2\text{O}}} \cdot 100$), còn nồng độ phần trăm $C\text{\%}$ tính trên $100\text{ g}$ dung dịch ($m_{\text{dd}} = m_{\text{ct}} + m_{\text{H}_2\text{O}}$).",
-            r"Khi tính nồng độ mol $C_{\text{M}} = \dfrac{n}{V_{\text{dd}}}$, thể tích dung dịch $V_{\text{dd}}$ bắt buộc phải tính theo đơn vị lít ($\text{L}$).",
-            r"Khi pha loãng dung dịch bằng nước, số mol và khối lượng chất tan luôn bảo toàn ($C_{\text{M1}} \cdot V_1 = C_{\text{M2}} \cdot V_2$).",
-        ],
-        questions=[
-            mcq(
-                question=r"Công thức tính nồng độ phần trăm ($C\text{\%}$) của một dung dịch là:",
-                options=[
-                    r"$C\text{\%} = \dfrac{m_{\text{ct}}}{m_{\text{H}_2\text{O}}} \cdot 100\text{\%}$",
-                    r"$C\text{\%} = \dfrac{m_{\text{ct}}}{m_{\text{dd}}} \cdot 100\text{\%}$",
-                    r"$C\text{\%} = \dfrac{m_{\text{dd}}}{m_{\text{ct}}} \cdot 100\text{\%}$",
-                    r"$C\text{\%} = \dfrac{n}{V_{\text{dd}}} \cdot 100\text{\%}$",
-                ],
-                answer="B",
-                level="biet",
-                solution=r"Nồng độ phần trăm được tính bằng tỉ số khối lượng chất tan trên khối lượng dung dịch nhân với $100\text{\%}$: $C\text{\%} = \dfrac{m_{\text{ct}}}{m_{\text{dd}}} \cdot 100\text{\%}$.",
-            ),
-            mcq(
-                question=r"Đơn vị thường dùng của nồng độ mol ($C_{\text{M}}$) là:",
-                options=[r"$\text{g/L}$", r"$\text{mol/L}$ (hoặc $\text{M}$)", r"$\text{g/mL}$", r"$\text{\%}$"],
-                answer="B",
-                level="biet",
-                solution=r"Nồng độ mol $C_{\text{M}} = \dfrac{n}{V_{\text{dd}}}$ có đơn vị là $\text{mol/L}$, thường kí hiệu là $\text{M}$.",
-            ),
-            mcq(
-                question=r"Khi hòa tan đường saccharose vào cốc nước lọc, chất đóng vai trò là dung môi là:",
-                options=[
-                    r"Đường saccharose",
-                    r"Nước",
-                    r"Nước đường thu được",
-                    r"Cả đường và nước",
-                ],
-                answer="B",
-                level="biet",
-                solution=r"Trong dung dịch nước đường, nước là dung môi (chất có lượng lớn hơn và làm môi trường hòa tan), còn đường là chất tan.",
-            ),
-            mcq(
-                question=r"Trong $500\text{ mL}$ dung dịch $\text{HCl}$ $2\text{ M}$ có chứa số mol $\text{HCl}$ là:",
-                options=[r"$0{,}25\text{ mol}$", r"$0{,}50\text{ mol}$", r"$1{,}00\text{ mol}$", r"$2{,}50\text{ mol}$"],
-                answer="C",
-                level="biet",
-                solution=r"Đổi $V_{\text{dd}} = 500\text{ mL} = 0{,}5\text{ L}$. Số mol $\text{HCl}$ là $n = C_{\text{M}} \cdot V_{\text{dd}} = 2 \cdot 0{,}5 = 1{,}00\text{ mol}$.",
-            ),
-            mcq(
-                question=r"Hòa tan $20\text{ g}$ muối $\text{KNO}_3$ vào $180\text{ g}$ nước thì thu được dung dịch có nồng độ phần trăm ($C\text{\%}$) bằng:",
-                options=[r"$10{,}0\text{\%}$", r"$11{,}1\text{\%}$", r"$12{,}5\text{\%}$", r"$20{,}0\text{\%}$"],
-                answer="A",
-                level="hieu",
-                solution=r"Khối lượng dung dịch là $m_{\text{dd}} = m_{\text{ct}} + m_{\text{H}_2\text{O}} = 20 + 180 = 200\text{ g}$. Nồng độ phần trăm là $C\text{\%} = \dfrac{20}{200} \cdot 100\text{\%} = 10{,}0\text{\%}$.",
-            ),
-            mcq(
-                question=r"Để pha chế $300\text{ g}$ dung dịch $\text{CuSO}_4$ $15\text{\%}$, khối lượng $\text{CuSO}_4$ khan và khối lượng nước cần lấy lần lượt là:",
-                options=[
-                    r"$15\text{ g}$ $\text{CuSO}_4$ và $285\text{ g}$ nước",
-                    r"$45\text{ g}$ $\text{CuSO}_4$ và $255\text{ g}$ nước",
-                    r"$45\text{ g}$ $\text{CuSO}_4$ và $300\text{ g}$ nước",
-                    r"$30\text{ g}$ $\text{CuSO}_4$ và $270\text{ g}$ nước",
-                ],
-                answer="B",
-                level="hieu",
-                solution=r"Khối lượng chất tan cần lấy là $m_{\text{CuSO}_4} = \dfrac{300 \cdot 15\text{\%}}{100\text{\%}} = 45\text{ g}$. Khối lượng nước cần lấy là $m_{\text{H}_2\text{O}} = 300 - 45 = 255\text{ g}$.",
-            ),
-            tf4(
-                stem=r"Ở $20^\circ\text{C}$, khi hòa tan tối đa $63{,}2\text{ g}$ muối potassium nitrate ($\text{KNO}_3$) vào $200\text{ g}$ nước thì thu được dung dịch bão hòa $\text{X}$. Xét tính đúng sai của các phát biểu sau:",
-                statements=[
-                    r"a) Độ tan của muối $\text{KNO}_3$ trong nước ở $20^\circ\text{C}$ là $31{,}6\text{ g/100 g }\text{H}_2\text{O}$.",
-                    r"b) Khối lượng của dung dịch bão hòa $\text{X}$ thu được bằng $200\text{ g}$.",
-                    r"c) Nồng độ phần trăm của dung dịch bão hòa $\text{X}$ ở $20^\circ\text{C}$ xấp xỉ bằng $24{,}01\text{\%}$.",
-                    r"d) Nếu giữ nguyên nhiệt độ ở $20^\circ\text{C}$ và cho thêm $10\text{ g}$ $\text{KNO}_3$ vào dung dịch $\text{X}$ thì toàn bộ lượng muối thêm vào vẫn tan hết.",
-                ],
-                answer="Đ/S/Đ/S",
-                level="hieu",
-                solution=(
-                    r"a) Đúng vì $S = \dfrac{63{,}2}{200} \cdot 100 = 31{,}6\text{ g/100 g }\text{H}_2\text{O}$. "
-                    r"b) Sai vì khối lượng dung dịch là $m_{\text{dd}} = 63{,}2 + 200 = 263{,}2\text{ g}$. "
-                    r"c) Đúng vì $C\text{\%} = \dfrac{63{,}2}{263{,}2} \cdot 100\text{\%} \approx 24{,}01\text{\%}$. "
-                    r"d) Sai vì dung dịch $\text{X}$ đã bão hòa ở $20^\circ\text{C}$ nên không thể hòa tan thêm $\text{KNO}_3$ ở cùng nhiệt độ đó."
-                ),
-            ),
-            tf4(
-                stem=r"Một học sinh lấy $200\text{ mL}$ dung dịch $\text{NaOH}$ $2\text{ M}$ (biết $M_{\text{NaOH}} = 40\text{ g/mol}$) rồi thêm nước cất vào và khuấy đều cho đến khi thu được $500\text{ mL}$ dung dịch mới $\text{Y}$. Xét tính đúng sai của các phát biểu sau:",
-                statements=[
-                    r"a) Số mol $\text{NaOH}$ có trong $200\text{ mL}$ dung dịch ban đầu là $0{,}4\text{ mol}$.",
-                    r"b) Khối lượng chất tan $\text{NaOH}$ có trong dung dịch $\text{Y}$ sau khi pha loãng bằng $8\text{ g}$.",
-                    r"c) Nồng độ mol của dung dịch $\text{Y}$ sau khi pha loãng là $0{,}8\text{ M}$.",
-                    r"d) Khi pha loãng bằng nước cất, số mol $\text{NaOH}$ trong dung dịch tăng lên gấp $2{,}5$ lần.",
-                ],
-                answer="Đ/S/Đ/S",
-                level="hieu",
-                solution=(
-                    r"a) Đúng vì $n_{\text{NaOH}} = C_{\text{M}} \cdot V = 2 \cdot 0{,}2 = 0{,}4\text{ mol}$. "
-                    r"b) Sai vì lượng chất tan không đổi và bằng $m_{\text{NaOH}} = 0{,}4 \cdot 40 = 16\text{ g}$. "
-                    r"c) Đúng vì nồng độ mol mới là $C_{\text{M (Y)}} = \dfrac{0{,}4}{0{,}5} = 0{,}8\text{ M}$. "
-                    r"d) Sai vì khi chỉ thêm nước cất, số mol chất tan giữ nguyên là $0{,}4\text{ mol}$."
-                ),
-            ),
-            mcq(
-                question=r"Một dung dịch sulfuric acid ($\text{H}_2\text{SO}_4$, $M = 98\text{ g/mol}$) có nồng độ phần trăm $C\text{\%} = 19{,}6\text{\%}$ và khối lượng riêng $D = 1{,}14\text{ g/mL}$. Nồng độ mol ($C_{\text{M}}$) của dung dịch $\text{H}_2\text{SO}_4$ này là:",
-                options=[r"$1{,}14\text{ M}$", r"$2{,}00\text{ M}$", r"$2{,}28\text{ M}$", r"$4{,}56\text{ M}$"],
-                answer="C",
-                level="vandung",
-                solution=r"Áp dụng công thức liên hệ $C_{\text{M}} = \dfrac{10 \cdot D \cdot C\text{\%}}{M} = \dfrac{10 \cdot 1{,}14 \cdot 19{,}6}{98} = 2{,}28\text{ M}$.",
-            ),
-            short(
-                question=r"Trộn $200\text{ g}$ dung dịch $\text{NaCl}$ $10\text{\%}$ với $300\text{ g}$ dung dịch $\text{NaCl}$ $25\text{\%}$. Tính nồng độ phần trăm (theo đơn vị $\text{\%}$) của dung dịch $\text{NaCl}$ thu được sau khi trộn.",
-                answer=["19", "19%", "19,0", "19.0"],
-                level="vandung",
-                solution=r"Tổng khối lượng chất tan $\text{NaCl}$ là $m_{\text{ct}} = 200 \cdot 10\text{\%} + 300 \cdot 25\text{\%} = 20 + 75 = 95\text{ g}$. Tổng khối lượng dung dịch sau khi trộn là $m_{\text{dd}} = 200 + 300 = 500\text{ g}$. Nồng độ phần trăm của dung dịch mới là $C\text{\%} = \dfrac{95}{500} \cdot 100\text{\%} = 19\text{\%}$.",
-            ),
-        ],
-        description="Khái niệm dung dịch, độ tan, nồng độ phần trăm, nồng độ mol và phương pháp pha chế dung dịch theo chương trình KHTN 8 Kết nối tri thức.",
     ),
-    lesson(
-        grade=8,
-        order=5,
-        code="H8-C05",
-        title="Chương 5: Acid, Base, thang pH và Muối",
-        topic="axit-bazo-muoi",
-        summary=(
-            r"Nắm vững khái niệm, phân loại, danh pháp IUPAC và tính chất hóa học của acid ($\text{HCl}, \text{H}_2\text{SO}_4$), "
-            r"base ($\text{NaOH}, \text{Ca(OH)}_2$), thang $\text{pH}$ từ $1$ đến $14$, cùng tính chất hóa học và điều kiện phản ứng trao đổi của muối."
+    bai(
+        topic=CH1[0], chapter_title=CH1[1], chapter_desc=CH1[2],
+        title="Bài 5: Dung dịch và nồng độ dung dịch",
+        icon="🧪",
+        description="Dung dịch bão hòa và chưa bão hòa, độ tan S, công thức nồng độ phần trăm C% = (m_ct/m_dd).100% và nồng độ mol C_M = n/V.",
+        requirements=[
+            "Phân biệt được dung dịch chưa bão hòa (vẫn có thể hòa tan thêm chất tan) và dung dịch bão hòa (không thể hòa tan thêm chất tan ở nhiệt độ đó); tính được độ tan $S = \\dfrac{m_{\\text{ct}}}{m_{\\text{nước}}} \\cdot 100$ ($\\text{g/100 g nước}$).",
+            "Viết và vận dụng được công thức tính **nồng độ phần trăm**: $C\\% = \\dfrac{m_{\\text{ct}}}{m_{\\text{dd}}} \\cdot 100\\%$ (với $m_{\\text{dd}} = m_{\\text{ct}} + m_{\\text{dm}}$).",
+            "Viết và vận dụng được công thức tính **nồng độ mol**: $C_M = \\dfrac{n}{V}$ (đơn vị $\\text{mol/L}$ hoặc $\\text{M}$, với $V$ đổi ra đơn vị **lít**).",
+        ],
+        definition="Nồng độ phần trăm ($C\\%$) cho biết số gam chất tan có trong $100\\text{ gam}$ dung dịch: $C\\% = \\dfrac{m_{\\text{ct}}}{m_{\\text{dd}}} \\cdot 100\\%$. Nồng độ mol ($C_M$) cho biết số mol chất tan có trong $1\\text{ lít}$ dung dịch: $C_M = \\dfrac{n}{V}$ (đơn vị $\\text{mol/L}$ hay $\\text{M}$).",
+        theory=(
+            "### 1. Độ tan ($S$) của một chất trong nước\n"
+            "- **Độ tan ($S$)**: số gam chất đó hòa tan tối đa trong $100\\text{ gam}$ nước để tạo thành dung dịch bão hòa ở một nhiệt độ xác định:\n"
+            "  $$S = \\dfrac{m_{\\text{ct}}}{m_{\\text{H}_2\\text{O}}} \\cdot 100 \\quad (\\text{g/100 g H}_2\\text{O})$$\n"
+            "- Độ tan của hầu hết chất rắn **tăng khi nhiệt độ tăng**; ngược lại độ tan của các chất khí **tăng khi nhiệt độ giảm và áp suất tăng**.\n\n"
+            "### 2. Nồng độ phần trăm ($C\\%$) và Nồng độ mol ($C_M$)\n"
+            "1. **Nồng độ phần trăm ($C\\%$)**:\n"
+            "   $$C\\% = \\dfrac{m_{\\text{ct}}}{m_{\\text{dd}}} \\cdot 100\\% \\iff m_{\\text{ct}} = \\dfrac{C\\% \\cdot m_{\\text{dd}}}{100\\%}; \\qquad m_{\\text{dd}} = m_{\\text{ct}} + m_{\\text{dm}} = V_{\\text{dd}}(\\text{mL}) \\cdot D(\\text{g/mL})$$\n"
+            "2. **Nồng độ mol ($C_M$)**:\n"
+            "   $$C_M = \\dfrac{n}{V} \\iff n = C_M \\cdot V$$\n"
+            "   *(Lưu ý bắt buộc: Thể tích dung dịch $V$ trong công thức $C_M = \\dfrac{n}{V}$ phải đổi ra đơn vị **lít ($\\text{L}$)**, với $1\\text{ L} = 1000\\text{ mL}$!)*\n"
+            "3. **Pha loãng dung dịch bằng nước**: số mol và khối lượng chất tan không đổi ($n_1 = n_2 \\iff C_{M1}V_1 = C_{M2}V_2$; $m_{\\text{ct}1} = m_{\\text{ct}2} \\iff m_{\\text{dd}1}C_1\\% = m_{\\text{dd}2}C_2\\%$)."
         ),
-        objectives=[
-            r"Nêu được khái niệm acid (tạo ra ion $\text{H}^+$ trong nước) và base (tạo ra ion $\text{OH}^-$ trong nước); trình bày được tính chất hóa học của $\text{HCl}, \text{H}_2\text{SO}_4\text{ loãng}$ và $\text{NaOH}, \text{Ca(OH)}_2$.",
-            r"Sử dụng được thang $\text{pH}$ để đánh giá độ acid - base của dung dịch ($\text{pH} < 7$: môi trường acid, $\text{pH} = 7$: trung tính, $\text{pH} > 7$: môi trường base) và liên hệ với đất trồng, dịch vị dạ dày.",
-            r"Nêu được khái niệm, cách gọi tên IUPAC của muối và tính tan của một số muối phổ biến.",
-            r"Trình bày được tính chất hóa học của muối và điều kiện xảy ra phản ứng trao đổi trong dung dịch (tạo kết tủa, chất khí hoặc nước).",
-        ],
         formulas=[
-            {
-                "name": "Sự phân li của acid và base trong nước",
-                "formula": r"$\text{H}_n\text{A} \longrightarrow n\text{H}^+ + \text{A}^{n-}; \quad \text{M(OH)}_m \longrightarrow \text{M}^{m+} + m\text{OH}^-$",
-                "note": r"Acid tạo ra ion $\text{H}^+$; base tan (kiềm) tạo ra ion $\text{OH}^-$",
-            },
-            {
-                "name": "Phản ứng trung hòa giữa acid và base",
-                "formula": r"$\text{Acid} + \text{Base} \longrightarrow \text{Muối} + \text{H}_2\text{O} \quad (\text{bản chất: }\text{H}^+ + \text{OH}^- \longrightarrow \text{H}_2\text{O})$",
-                "note": r"Ví dụ: $\text{HCl} + \text{NaOH} \longrightarrow \text{NaCl} + \text{H}_2\text{O}$",
-            },
-            {
-                "name": "Thang đo độ pH của dung dịch",
-                "formula": r"$\text{pH} < 7\text{ (môi trường acid)}; \quad \text{pH} = 7\text{ (trung tính)}; \quad \text{pH} > 7\text{ (môi trường base)}$",
-                "note": r"$\text{pH}$ càng nhỏ thì độ acid càng mạnh; $\text{pH}$ càng lớn thì độ base càng mạnh",
-            },
-            {
-                "name": "Điều kiện phản ứng trao đổi của muối trong dung dịch",
-                "formula": r"$\text{AB} + \text{CD} \longrightarrow \text{AD}\downarrow + \text{CB} \quad \text{hoặc tạo chất khí }\uparrow \text{ / }\text{H}_2\text{O}$",
-                "note": r"Các kết tủa quan trọng: $\text{AgCl}\downarrow, \text{BaSO}_4\downarrow, \text{CaCO}_3\downarrow, \text{Cu(OH)}_2\downarrow, \text{Fe(OH)}_3\downarrow$",
-            },
+            G(
+                "Độ tan (S), Nồng độ phần trăm (C%) và Nồng độ mol (C_M)",
+                F("Độ tan và Nồng độ phần trăm", "$S = \\dfrac{m_{\\text{ct}}}{m_{\\text{nước}}} \\cdot 100; \\qquad C\\% = \\dfrac{m_{\\text{ct}}}{m_{\\text{dd}}} \\cdot 100\\% \\implies m_{\\text{ct}} = \\dfrac{C\\% \\cdot m_{\\text{dd}}}{100\\%}$", "Liên hệ giữa độ tan $S$ và nồng độ phần trăm của dung dịch bão hòa: $C\\%_{\\text{bão hòa}} = \\dfrac{S}{100 + S} \\cdot 100\\%$."),
+                F("Nồng độ mol của dung dịch", "$C_M = \\dfrac{n}{V(\\text{L})} \\implies n = C_M \\cdot V(\\text{L}); \\qquad 1\\text{ mL} = 10^{-3}\\text{ L}$", "Đơn vị của $C_M$ là $\\text{mol/L}$ hoặc viết tắt là $\\text{M}$ (ví dụ dung dịch $\\text{HCl } 2\\text{ M}$)."),
+            )
         ],
-        theory_sections=[
-            {
-                "title": "1. Acid và tính chất hóa học của acid",
-                "content": (
-                    r"Acid là những hợp chất trong phân tử có nguyên tử hydrogen ($\text{H}$) liên kết với gốc acid, khi tan trong nước tạo ra ion $\text{H}^+$ "
-                    r"(ví dụ: hydrochloric acid $\text{HCl}$, sulfuric acid $\text{H}_2\text{SO}_4$, nitric acid $\text{HNO}_3$, acetic acid $\text{CH}_3\text{COOH}$). "
-                    r"Dung dịch acid làm quỳ tím chuyển sang màu đỏ (không làm đổi màu phenolphthalein), tác dụng với kim loại đứng trước $\text{H}$ "
-                    r"($\text{Mg}, \text{Al}, \text{Zn}, \text{Fe}$...) tạo muối và giải phóng khí $\text{H}_2$, tác dụng với base và oxide base tạo muối và nước, "
-                    r"tác dụng với nhiều muối (như $\text{CaCO}_3$) giải phóng khí $\text{CO}_2$."
-                ),
-            },
-            {
-                "title": "2. Base và thang pH",
-                "content": (
-                    r"Base là những hợp chất trong phân tử có nguyên tử kim loại liên kết với một hay nhiều nhóm hydroxide ($-\text{OH}$), khi tan trong nước "
-                    r"tạo ra ion $\text{OH}^-$. Base được chia thành base kiềm (tan trong nước như $\text{NaOH}, \text{KOH}, \text{Ca(OH)}_2, \text{Ba(OH)}_2$) "
-                    r"và base không tan (như $\text{Cu(OH)}_2$ màu xanh lam, $\text{Fe(OH)}_3$ màu nâu đỏ, $\text{Mg(OH)}_2$ màu trắng). Dung dịch kiềm làm quỳ tím "
-                    r"hóa xanh và làm dung dịch phenolphthalein không màu chuyển sang màu hồng; tác dụng với acid, oxide acid và dung dịch muối. "
-                    r"Thang $\text{pH}$ thường có giá trị từ $1$ đến $14$: môi trường acid có $\text{pH} < 7$, trung tính có $\text{pH} = 7$, môi trường kiềm có $\text{pH} > 7$."
-                ),
-            },
-            {
-                "title": "3. Muối và phản ứng trao đổi trong dung dịch",
-                "content": (
-                    r"Muối là hợp chất được hình thành khi thay thế ion $\text{H}^+$ của acid bằng ion kim loại hoặc ion ammonium ($\text{NH}_4^+$). "
-                    r"Tên gọi IUPAC của muối: Tên kim loại (kèm hóa trị nếu kim loại có nhiều hóa trị) + tên gốc acid ($\text{-Cl}$: chloride, "
-                    r"$\text{=SO}_4$: sulfate, $\text{-NO}_3$: nitrate, $\text{=CO}_3$: carbonate, $\equiv\text{PO}_4$: phosphate). "
-                    r"Dung dịch muối có thể tác dụng với kim loại, acid, dung dịch base hoặc dung dịch muối khác. Phản ứng trao đổi trong dung dịch "
-                    r"chỉ xảy ra khi sản phẩm tạo thành có chất kết tủa ($\downarrow$), chất khí ($\uparrow$) hoặc nước ($\text{H}_2\text{O}$)."
-                ),
-            },
+        example="Hòa tan hoàn toàn $20\\text{ g}$ muối copper(II) sulfate ($\\text{CuSO}_4$, có $M = 160\\text{ g/mol}$) vào $180\\text{ g}$ nước thu được dung dịch có thể tích $V = 200\\text{ mL} = 0{,}2\\text{ L}$. Hãy tính nồng độ phần trăm ($C\\%$) và nồng độ mol ($C_M$) của dung dịch $\\text{CuSO}_4$ thu được.",
+        example_answer="- Khối lượng dung dịch là $m_{\\text{dd}} = m_{\\text{ct}} + m_{\\text{dm}} = 20 + 180 = 200\\text{ g}$. **Nồng độ phần trăm** là $C\\% = \\dfrac{m_{\\text{ct}}}{m_{\\text{dd}}} \\cdot 100\\% = \\dfrac{20}{200} \\cdot 100\\% = 10\\%$.\n- Số mol $\\text{CuSO}_4$ là $n = \\dfrac{m_{\\text{ct}}}{M} = \\dfrac{20}{160} = 0{,}125\\text{ mol}$. Đổi $V = 200\\text{ mL} = 0{,}2\\text{ L}$. **Nồng độ mol** là $C_M = \\dfrac{n}{V} = \\dfrac{0{,}125}{0{,}2} = 0{,}625\\text{ M}$.",
+        real_life="Nước muối sinh lí dùng nhỏ mắt và tiêm truyền có nồng độ phần trăm chính xác $C\\% = 0{,}9\\%$ (tức trong $100\\text{ g}$ dung dịch có đúng $0{,}9\\text{ g}$ $\\text{NaCl}$ và $99{,}1\\text{ g}$ nước cất); giấm ăn trong bếp là dung dịch acetic acid có nồng độ khoảng $2\\% - 5\\%$.",
+        quiz=[
+            mcq("biet", "Công thức tính **nồng độ phần trăm** ($C\\%$) của một dung dịch theo khối lượng chất tan ($m_{\\text{ct}}$) và khối lượng dung dịch ($m_{\\text{dd}}$) là gì?", ["$C\\% = \\dfrac{m_{\\text{ct}}}{m_{\\text{dd}}} \\cdot 100\\%$", "$C\\% = \\dfrac{m_{\\text{dd}}}{m_{\\text{ct}}} \\cdot 100\\%$", "$C\\% = \\dfrac{m_{\\text{ct}}}{m_{\\text{nước}}} \\cdot 100\\%$", "$C\\% = \\dfrac{n}{V}$"], 0, "Nồng độ phần trăm bằng tỉ số phần trăm giữa khối lượng chất tan và khối lượng dung dịch: $C\\% = \\dfrac{m_{\\text{ct}}}{m_{\\text{dd}}} \\cdot 100\\%$."),
+            mcq("biet", "Công thức tính **nồng độ mol** ($C_M$, đơn vị $\\text{mol/L}$ hoặc $\\text{M}$) của một dung dịch có $n$ mol chất tan trong $V$ lít dung dịch là gì?", ["$C_M = \\dfrac{n}{V}$", "$C_M = n \\cdot V$", "$C_M = \\dfrac{V}{n}$", "$C_M = \\dfrac{m_{\\text{ct}}}{m_{\\text{dd}}} \\cdot 100\\%$"], 0, "Nồng độ mol bằng số mol chất tan chia cho thể tích dung dịch (tính bằng lít): $C_M = \\dfrac{n}{V}$."),
+            mcq("hieu", "Trong $400\\text{ mL}$ ($0{,}4\\text{ lít}$) dung dịch sodium hydroxide ($\\text{NaOH}$) có hòa tan $0{,}2\\text{ mol}$ $\\text{NaOH}$. Nồng độ mol ($C_M$) của dung dịch này bằng bao nhiêu?", ["$0{,}5\\text{ M}$", "$2{,}0\\text{ M}$", "$0{,}08\\text{ M}$", "$0{,}0005\\text{ M}$"], 0, "Đổi $V = 400\\text{ mL} = 0{,}4\\text{ L}$. Ta có $C_M = \\dfrac{n}{V} = \\dfrac{0{,}2}{0{,}4} = 0{,}5\\text{ M}$."),
+            tf4("hieu", "Xét tính đúng/sai của các phát biểu sau về độ tan và nồng độ dung dịch:", [
+                "Dung dịch bão hòa là dung dịch không thể hòa tan thêm chất tan ở nhiệt độ đang xét.",
+                "Độ tan của hầu hết các chất rắn trong nước tăng khi nhiệt độ tăng, còn độ tan của chất khí tăng khi nhiệt độ giảm và áp suất tăng.",
+                "Khi hòa tan $10\\text{ g}$ đường vào $100\\text{ g}$ nước thì nồng độ phần trăm của dung dịch thu được là $10\\%$.",
+                "Muốn pha chế $500\\text{ g}$ dung dịch nước muối $\\text{NaCl } 0{,}9\\%$, ta cần cân $4{,}5\\text{ g}$ $\\text{NaCl}$ và $495{,}5\\text{ g}$ nước cất.",
+            ], [True, True, False, True], "Ý c) sai vì khối lượng dung dịch là $m_{\\text{dd}} = 10 + 100 = 110\\text{ g}$, nên $C\\% = \\dfrac{10}{110} \\cdot 100\\% \\approx 9{,}09\\% \\ne 10\\%$."),
+            short("vandung", "Hòa tan hoàn toàn $15\\text{ g}$ đường vào $85\\text{ g}$ nước. Nồng độ phần trăm ($C\\%$) của dung dịch nước đường thu được bằng bao nhiêu phần trăm ($\\%$)?", ["15"], "Khối lượng dung dịch là $m_{\\text{dd}} = 15 + 85 = 100\\text{ g}$. Nồng độ phần trăm là $C\\% = \\dfrac{15}{100} \\cdot 100\\% = 15\\%$.", unit="%"),
         ],
-        worked_examples=[
-            {
-                "title": "Ví dụ 1",
-                "problem": (
-                    r"Cho $100\text{ mL}$ dung dịch $\text{BaCl}_2$ $0{,}2\text{ M}$ tác dụng hoàn toàn với dung dịch $\text{Na}_2\text{SO}_4$ dư. "
-                    r"Viết phương trình hóa học, nêu hiện tượng và tính khối lượng kết tủa thu được (biết $M_{\text{Ba}} = 137\text{ g/mol}$, "
-                    r"$M_{\text{S}} = 32\text{ g/mol}$, $M_{\text{O}} = 16\text{ g/mol}$)."
-                ),
-                "solution": (
-                    r"Phương trình hóa học: $\text{BaCl}_2 + \text{Na}_2\text{SO}_4 \longrightarrow \text{BaSO}_4\downarrow + 2\text{NaCl}$. "
-                    r"Hiện tượng: xuất hiện kết tủa trắng barium sulfate ($\text{BaSO}_4$) không tan trong nước và các acid. "
-                    r"Ta có $n_{\text{BaCl}_2} = 0{,}1 \cdot 0{,}2 = 0{,}02\text{ mol}$, suy ra $n_{\text{BaSO}_4} = 0{,}02\text{ mol}$. "
-                    r"Khối lượng kết tủa thu được là $m_{\text{BaSO}_4} = 0{,}02 \cdot (137 + 32 + 64) = 0{,}02 \cdot 233 = 4{,}66\text{ g}$."
-                ),
-            },
-            {
-                "title": "Ví dụ 2",
-                "problem": (
-                    r"Để trung hòa hết $200\text{ mL}$ dung dịch $\text{H}_2\text{SO}_4$ $0{,}5\text{ M}$ cần dùng vừa đủ $V\text{ (mL)}$ dung dịch "
-                    r"$\text{NaOH}$ $1\text{ M}$. Hãy tính giá trị của $V$."
-                ),
-                "solution": (
-                    r"Số mol $\text{H}_2\text{SO}_4$ là $n_{\text{H}_2\text{SO}_4} = 0{,}2 \cdot 0{,}5 = 0{,}1\text{ mol}$. Phương trình phản ứng trung hòa: "
-                    r"$2\text{NaOH} + \text{H}_2\text{SO}_4 \longrightarrow \text{Na}_2\text{SO}_4 + 2\text{H}_2\text{O}$. Theo phương trình, "
-                    r"$n_{\text{NaOH}} = 2 \cdot n_{\text{H}_2\text{SO}_4} = 0{,}2\text{ mol}$. Thể tích dung dịch $\text{NaOH}$ cần dùng là "
-                    r"$V_{\text{dd NaOH}} = \dfrac{0{,}2}{1} = 0{,}2\text{ L} = 200\text{ mL}$."
-                ),
-            },
-        ],
-        key_takeaways=[
-            r"Acid phân li ra ion $\text{H}^+$ làm quỳ tím hóa đỏ ($\text{pH} < 7$); dung dịch base (kiềm) phân li ra ion $\text{OH}^-$ làm quỳ tím hóa xanh và phenolphthalein hóa hồng ($\text{pH} > 7$).",
-            r"Kim loại hoạt động đứng trước $\text{H}$ ($\text{Mg}, \text{Al}, \text{Zn}, \text{Fe}$) tác dụng với dung dịch $\text{HCl}, \text{H}_2\text{SO}_4\text{ loãng}$ giải phóng khí $\text{H}_2$, còn $\text{Cu}, \text{Ag}$ không phản ứng.",
-            r"Phản ứng trao đổi giữa các dung dịch muối, acid, base chỉ xảy ra khi có tạo thành chất kết tủa ($\downarrow$), chất khí ($\uparrow$) hoặc nước ($\text{H}_2\text{O}$).",
-        ],
-        questions=[
-            mcq(
-                question=r"Khi hòa tan vào nước, các hợp chất acid đều phân li tạo ra cation nào sau đây?",
-                options=[r"$\text{OH}^-$", r"$\text{H}^+$", r"$\text{Na}^+$", r"$\text{Cl}^-$"],
-                answer="B",
-                level="biet",
-                solution=r"Theo định nghĩa, acid là hợp chất khi tan trong nước tạo ra ion $\text{H}^+$.",
-            ),
-            mcq(
-                question=r"Nhỏ vài giọt dung dịch phenolphthalein không màu vào ống nghiệm đựng dung dịch sodium hydroxide ($\text{NaOH}$) thì dung dịch chuyển sang màu:",
-                options=[r"Đỏ", r"Xanh lam", r"Hồng", r"Vàng"],
-                answer="C",
-                level="biet",
-                solution=r"Dung dịch kiềm ($\text{NaOH}$) có môi trường base nên làm phenolphthalein không màu chuyển sang màu hồng.",
-            ),
-            mcq(
-                question=r"Một mẫu đất trồng bị chua do nhiễm phèn có giá trị $\text{pH}$ thuộc khoảng nào sau đây?",
-                options=[r"$\text{pH} < 7$", r"$\text{pH} = 7$", r"$\text{pH} > 7$", r"$\text{pH} = 14$"],
-                answer="A",
-                level="biet",
-                solution=r"Đất chua có môi trường acid nên có giá trị $\text{pH} < 7$. Người ta thường bón vôi bột ($\text{CaO}$ hoặc $\text{Ca(OH)}_2$) để khử chua.",
-            ),
-            mcq(
-                question=r"Theo danh pháp IUPAC, muối có công thức hóa học $\text{CuSO}_4$ được gọi tên là:",
-                options=[
-                    r"Copper sulfate",
-                    r"Copper(I) sulfate",
-                    r"Copper(II) sulfate",
-                    r"Copper(II) sulfite",
-                ],
-                answer="C",
-                level="biet",
-                solution=r"Nguyên tố $\text{Cu}$ trong $\text{CuSO}_4$ có hóa trị $\text{II}$ và gốc $=\text{SO}_4$ là sulfate, nên tên gọi chuẩn IUPAC là copper(II) sulfate.",
-            ),
-            mcq(
-                question=r"Kim loại nào sau đây không tác dụng với dung dịch sulfuric acid loãng ($\text{H}_2\text{SO}_4\text{ loãng}$)?",
-                options=[r"$\text{Zn}$", r"$\text{Fe}$", r"$\text{Mg}$", r"$\text{Cu}$"],
-                answer="D",
-                level="hieu",
-                solution=r"Kim loại $\text{Cu}$ đứng sau $\text{H}$ trong dãy hoạt động hóa học nên không phản ứng với dung dịch $\text{HCl}$ và $\text{H}_2\text{SO}_4\text{ loãng}$.",
-            ),
-            mcq(
-                question=r"Cặp chất nào sau đây xảy ra phản ứng trao đổi khi trộn lẫn hai dung dịch với nhau?",
-                options=[
-                    r"$\text{NaCl}$ và $\text{KNO}_3$",
-                    r"$\text{BaCl}_2$ và $\text{H}_2\text{SO}_4$",
-                    r"$\text{CuSO}_4$ và $\text{HCl}$",
-                    r"$\text{Na}_2\text{SO}_4$ và $\text{KOH}$",
-                ],
-                answer="B",
-                level="hieu",
-                solution=r"Dung dịch $\text{BaCl}_2$ tác dụng với dung dịch $\text{H}_2\text{SO}_4$ tạo kết tủa trắng $\text{BaSO}_4\downarrow$: $\text{BaCl}_2 + \text{H}_2\text{SO}_4 \longrightarrow \text{BaSO}_4\downarrow + 2\text{HCl}$.",
-            ),
-            tf4(
-                stem=r"Cho bốn dung dịch không màu đựng trong bốn ống nghiệm riêng biệt: dung dịch $\text{HCl}$ ($\text{pH} = 1$), nước cất ($\text{pH} = 7$), dung dịch $\text{NaCl}$ ($\text{pH} = 7$) và dung dịch $\text{NaOH}$ ($\text{pH} = 13$). Xét tính đúng sai của các phát biểu sau:",
-                statements=[
-                    r"a) Dung dịch $\text{HCl}$ làm giấy quỳ tím chuyển sang màu đỏ.",
-                    r"b) Cả nước cất và dung dịch $\text{NaCl}$ đều làm dung dịch phenolphthalein chuyển sang màu hồng.",
-                    r"c) Dung dịch $\text{NaOH}$ có môi trường kiềm và làm giấy quỳ tím chuyển sang màu xanh.",
-                    r"d) Khi trộn lẫn $10\text{ mL}$ dung dịch $\text{HCl}$ $0{,}1\text{ M}$ với $10\text{ mL}$ dung dịch $\text{NaOH}$ $0{,}1\text{ M}$ thì dung dịch thu được có $\text{pH} < 7$.",
-                ],
-                answer="Đ/S/Đ/S",
-                level="hieu",
-                solution=(
-                    r"a) Đúng vì dung dịch $\text{HCl}$ là môi trường acid ($\text{pH} = 1 < 7$) làm quỳ tím hóa đỏ. "
-                    r"b) Sai vì nước cất và dung dịch $\text{NaCl}$ có môi trường trung tính ($\text{pH} = 7$), không làm đổi màu phenolphthalein. "
-                    r"c) Đúng vì dung dịch $\text{NaOH}$ là kiềm mạnh ($\text{pH} = 13 > 7$) làm quỳ tím hóa xanh. "
-                    r"d) Sai vì $n_{\text{HCl}} = n_{\text{NaOH}} = 0{,}001\text{ mol}$, phản ứng trung hòa vừa đủ tạo dung dịch $\text{NaCl}$ trung tính có $\text{pH} = 7$."
-                ),
-            ),
-            tf4(
-                stem=r"Thực hiện các thí nghiệm hóa học với dung dịch muối trong phòng thí nghiệm. Xét tính đúng sai của các phát biểu sau:",
-                statements=[
-                    r"a) Nhỏ dung dịch $\text{NaOH}$ vào ống nghiệm chứa dung dịch $\text{CuSO}_4$ thấy xuất hiện kết tủa màu xanh lam $\text{Cu(OH)}_2$.",
-                    r"b) Nhỏ dung dịch $\text{AgNO}_3$ vào dung dịch $\text{NaCl}$ không thấy xảy ra hiện tượng gì.",
-                    r"c) Nhỏ dung dịch $\text{HCl}$ vào ống nghiệm đựng đá vôi ($\text{CaCO}_3$) thấy sủi bọt khí không màu $\text{CO}_2$.",
-                    r"d) Muối $\text{BaSO}_4$ và muối $\text{CaCO}_3$ đều tan rất tốt trong nước ở điều kiện chuẩn.",
-                ],
-                answer="Đ/S/Đ/S",
-                level="hieu",
-                solution=(
-                    r"a) Đúng vì $\text{CuSO}_4 + 2\text{NaOH} \longrightarrow \text{Cu(OH)}_2\downarrow\text{ (xanh lam)} + \text{Na}_2\text{SO}_4$. "
-                    r"b) Sai vì $\text{AgNO}_3 + \text{NaCl} \longrightarrow \text{AgCl}\downarrow\text{ (trắng)} + \text{NaNO}_3$, xuất hiện kết tủa trắng. "
-                    r"c) Đúng vì $\text{CaCO}_3 + 2\text{HCl} \longrightarrow \text{CaCl}_2 + \text{CO}_2\uparrow + \text{H}_2\text{O}$. "
-                    r"d) Sai vì cả $\text{BaSO}_4$ và $\text{CaCO}_3$ đều là các muối không tan (kết tủa trắng) trong nước."
-                ),
-            ),
-            mcq(
-                question=r"Cho $10\text{ g}$ calcium carbonate ($\text{CaCO}_3$, $M = 100\text{ g/mol}$) tác dụng hết với dung dịch hydrochloric acid ($\text{HCl}$) dư theo phương trình $\text{CaCO}_3 + 2\text{HCl} \longrightarrow \text{CaCl}_2 + \text{CO}_2\uparrow + \text{H}_2\text{O}$. Thể tích khí $\text{CO}_2$ thoát ra ở điều kiện chuẩn ($25^\circ\text{C}$, $1\text{ bar}$) là:",
-                options=[r"$1{,}2395\text{ L}$", r"$2{,}240\text{ L}$", r"$2{,}479\text{ L}$", r"$4{,}958\text{ L}$"],
-                answer="C",
-                level="vandung",
-                solution=r"Số mol $\text{CaCO}_3$ là $n_{\text{CaCO}_3} = \dfrac{10}{100} = 0{,}1\text{ mol}$. Theo phương trình hóa học, $n_{\text{CO}_2} = n_{\text{CaCO}_3} = 0{,}1\text{ mol}$. Thể tích khí $\text{CO}_2$ ở đkc là $V = 24{,}79 \cdot 0{,}1 = 2{,}479\text{ L}$.",
-            ),
-            short(
-                question=r"Cho $200\text{ mL}$ dung dịch $\text{CuSO}_4$ $0{,}5\text{ M}$ tác dụng hoàn toàn với dung dịch $\text{NaOH}$ dư theo phương trình $\text{CuSO}_4 + 2\text{NaOH} \longrightarrow \text{Cu(OH)}_2\downarrow + \text{Na}_2\text{SO}_4$. Tính khối lượng kết tủa $\text{Cu(OH)}_2$ (theo đơn vị $\text{g}$, biết $M_{\text{Cu}} = 64\text{ g/mol}$, $M_{\text{O}} = 16\text{ g/mol}$, $M_{\text{H}} = 1\text{ g/mol}$) thu được.",
-                answer=["9,8", "9.8"],
-                level="vandung",
-                solution=r"Số mol $\text{CuSO}_4$ là $n_{\text{CuSO}_4} = 0{,}2 \cdot 0{,}5 = 0{,}1\text{ mol}$. Theo phương trình hóa học, $n_{\text{Cu(OH)}_2} = n_{\text{CuSO}_4} = 0{,}1\text{ mol}$. Khối lượng mol của $\text{Cu(OH)}_2$ là $M = 64 + 2 \cdot 17 = 98\text{ g/mol}$. Vậy khối lượng kết tủa là $m = 0{,}1 \cdot 98 = 9{,}8\text{ g}$.",
-            ),
-        ],
-        description="Khái niệm, danh pháp IUPAC và tính chất hóa học của acid, base, muối và thang pH theo chương trình KHTN 8 Kết nối tri thức.",
     ),
-    lesson(
-        grade=8,
-        order=6,
-        code="H8-C06",
-        title="Chương 6: Oxide và Phân bón hóa học",
-        topic="oxide-phan-bon",
-        summary=(
-            r"Phân loại 4 nhóm oxide gồm oxide acid ($\text{CO}_2, \text{SO}_2, \text{P}_2\text{O}_5$), oxide base ($\text{CaO}, \text{Fe}_2\text{O}_3, \text{CuO}$), "
-            r"oxide lưỡng tính ($\text{Al}_2\text{O}_3, \text{ZnO}$) và oxide trung tính ($\text{CO}, \text{NO}$); nắm vững tính chất hóa học của oxide "
-            r"và các loại phân bón hóa học chủ yếu (phân đạm cung cấp $\text{N}$, phân lân cung cấp $\text{P}$, phân kali cung cấp $\text{K}$, phân $\text{NPK}$)."
+    bai(
+        topic=CH1[0], chapter_title=CH1[1], chapter_desc=CH1[2],
+        title="Bài 6: Định luật bảo toàn khối lượng và phương trình hóa học",
+        icon="⚖️",
+        description="Phát biểu và công thức Định luật bảo toàn khối lượng (Lomonosov – Lavoisier), nguyên tắc và các bước lập phương trình hóa học.",
+        requirements=[
+            "Phát biểu và viết được công thức của **Định luật bảo toàn khối lượng**: trong một phản ứng hóa học, tổng khối lượng của các chất sản phẩm bằng tổng khối lượng của các chất tham gia phản ứng.",
+            "Giải thích được cơ sở của định luật bảo toàn khối lượng dựa vào sự bảo toàn số lượng nguyên tử mỗi nguyên tố.",
+            "Thực hiện thành thạo 3 bước lập và cân bằng phương trình hóa học, xác định tỉ lệ số nguyên tử/số phân tử (cũng là tỉ lệ số mol) giữa các chất trong phương trình.",
+        ],
+        definition="Định luật bảo toàn khối lượng: Trong một phản ứng hóa học, tổng khối lượng của các chất sản phẩm bằng tổng khối lượng của các chất tham gia phản ứng ($\\sum m_{\\text{tham gia}} = \\sum m_{\\text{sản phẩm}}$). Phương trình hóa học biểu diễn ngắn gọn phản ứng hóa học bằng công thức hóa học của các chất phản ứng và sản phẩm với các hệ số cân bằng thích hợp.",
+        theory=(
+            "### 1. Định luật bảo toàn khối lượng (Lomonosov – Lavoisier)\n"
+            "- **Giải thích**: Trong phản ứng hóa học, số nguyên tử của mỗi nguyên tố trước và sau phản ứng không đổi và khối lượng mỗi nguyên tử không đổi, nên tổng khối lượng các chất được bảo toàn.\n"
+            "- **Biểu thức** cho phản ứng $A + B \\longrightarrow C + D$:\n"
+            "  $$m_A + m_B = m_C + m_D$$\n"
+            "  *(Lưu ý: chỉ tính khối lượng phần chất **thực sự đã tham gia phản ứng**, không tính phần chất còn dư; nếu có chất khí thoát ra hoặc kết tủa thì vẫn phải cộng cả khối lượng khí/kết tủa vào vế sản phẩm!)*\n\n"
+            "### 2. Lập Phương trình hóa học (PTHH) và Ý nghĩa\n"
+            "- **Ba bước lập PTHH**:\n"
+            "  1. Viết sơ đồ phản ứng bằng công thức hóa học đúng của các chất phản ứng và sản phẩm.\n"
+            "  2. **Cân bằng số nguyên tử** của mỗi nguyên tố ở hai vế bằng cách điền các **hệ số nguyên dương tối giản** trước công thức hóa học (*tuyệt đối không được tự ý sửa các chỉ số nhỏ ở chân công thức!*).\n"
+            "  3. Viết thành phương trình hóa học hoàn chỉnh (thay nét đứt bằng mũi tên liền $\\longrightarrow$).\n"
+            "- **Ý nghĩa của PTHH**: Cho biết **tỉ lệ số nguyên tử, số phân tử** (và cũng chính là **tỉ lệ số mol**) giữa các chất trong phản ứng."
         ),
-        objectives=[
-            r"Nêu được khái niệm oxide và phân loại được 4 loại oxide theo tính chất hóa học: oxide acid, oxide base, oxide lưỡng tính và oxide trung tính.",
-            r"Viết được phương trình hóa học minh họa tính chất của oxide base (tác dụng với acid) và oxide acid (tác dụng với dung dịch base).",
-            r"Phân biệt được vai trò của các nguyên tố dinh dưỡng đa lượng $\text{N}, \text{P}, \text{K}$ trong phân đạm, phân lân, phân kali, phân hỗn hợp $\text{NPK}$ và phân hữu cơ.",
-            r"Trình bày được nguyên tắc sử dụng phân bón an toàn, hiệu quả và bảo vệ môi trường đất, nước.",
-        ],
         formulas=[
-            {
-                "name": "Phản ứng của oxide base với dung dịch acid",
-                "formula": r"$\text{Oxide base} + \text{Acid} \longrightarrow \text{Muối} + \text{H}_2\text{O}$",
-                "note": r"Ví dụ: $\text{CuO} + 2\text{HCl} \longrightarrow \text{CuCl}_2 + \text{H}_2\text{O}$",
-            },
-            {
-                "name": "Phản ứng của oxide acid với dung dịch kiềm",
-                "formula": r"$\text{Oxide acid} + \text{Base (kiềm)} \longrightarrow \text{Muối} + \text{H}_2\text{O}$",
-                "note": r"Ví dụ: $\text{CO}_2 + \text{Ca(OH)}_2 \longrightarrow \text{CaCO}_3\downarrow + \text{H}_2\text{O}$",
-            },
-            {
-                "name": r"Tính chất của oxide lưỡng tính ($\text{Al}_2\text{O}_3, \text{ZnO}$)",
-                "formula": r"$\text{Al}_2\text{O}_3 + 6\text{HCl} \longrightarrow 2\text{AlCl}_3 + 3\text{H}_2\text{O}; \quad \text{Al}_2\text{O}_3 + 2\text{NaOH} \longrightarrow 2\text{NaAlO}_2 + \text{H}_2\text{O}$",
-                "note": r"Oxide lưỡng tính tác dụng được với cả dung dịch acid mạnh và dung dịch kiềm mạnh",
-            },
-            {
-                "name": "Các thành phần dinh dưỡng chính trong phân bón hóa học",
-                "formula": r"$\text{Đạm (N)}: (\text{NH}_2)_2\text{CO}, \text{NH}_4\text{NO}_3; \quad \text{Lân (P)}: \text{Ca(H}_2\text{PO}_4)_2; \quad \text{Kali (K)}: \text{KCl}, \text{K}_2\text{SO}_4$",
-                "note": r"Phân $\text{NPK}$ chứa đồng thời cả ba nguyên tố dinh dưỡng $\text{N}, \text{P}, \text{K}$",
-            },
+            G(
+                "Định luật bảo toàn khối lượng và Quy tắc cân bằng PTHH",
+                F("Biểu thức Định luật bảo toàn khối lượng cho A + B ➔ C + D", "$m_A + m_B = m_C + m_D \\implies m_A = (m_C + m_D) - m_B$", "Biết khối lượng của $(n - 1)$ chất trong phản ứng gồm $n$ chất, ta luôn tính được khối lượng chất còn lại."),
+                F("Ý nghĩa hệ số cân bằng của PTHH aA + bB ➔ cC + dD", "$\\text{Tỉ lệ số hạt (hoặc số mol)}: \\quad n_A : n_B : n_C : n_D = a : b : c : d$", "Ví dụ: $4\\text{Al} + 3\\text{O}_2 \\xrightarrow{t^\\circ} 2\\text{Al}_2\\text{O}_3 \\implies n_{\\text{Al}} : n_{\\text{O}_2} : n_{\\text{Al}_2\\text{O}_3} = 4 : 3 : 2$."),
+            )
         ],
-        theory_sections=[
-            {
-                "title": "1. Khái niệm và phân loại oxide",
-                "content": (
-                    r"Oxide là hợp chất của hai nguyên tố, trong đó có một nguyên tố là oxygen ($\text{O}$). Dựa vào tính chất hóa học, oxide được chia thành 4 loại: "
-                    r"(1) Oxide base là những oxide tác dụng với dung dịch acid tạo thành muối và nước, thường là oxide của kim loại như $\text{CaO}, \text{Na}_2\text{O}, \text{CuO}, \text{Fe}_2\text{O}_3, \text{MgO}$. "
-                    r"(2) Oxide acid là những oxide tác dụng với dung dịch base tạo thành muối và nước, thường là oxide của phi kim như $\text{CO}_2, \text{SO}_2, \text{SO}_3, \text{P}_2\text{O}_5, \text{N}_2\text{O}_5$. "
-                    r"(3) Oxide lưỡng tính là những oxide tác dụng được với cả dung dịch acid và dung dịch base tạo thành muối và nước như $\text{Al}_2\text{O}_3, \text{ZnO}$. "
-                    r"(4) Oxide trung tính (oxide không tạo muối) là những oxide không tác dụng với acid, base hay nước như $\text{CO}, \text{NO}$."
-                ),
-            },
-            {
-                "title": "2. Tính chất hóa học của oxide",
-                "content": (
-                    r"Một số oxide base của kim loại kiềm và kiềm thổ ($\text{Na}_2\text{O}, \text{K}_2\text{O}, \text{CaO}, \text{BaO}$) tác dụng trực tiếp với nước tạo dung dịch kiềm: "
-                    r"$\text{CaO} + \text{H}_2\text{O} \longrightarrow \text{Ca(OH)}_2$. Hầu hết oxide base tác dụng với dung dịch acid tạo muối và nước "
-                    r"(ví dụ $\text{Fe}_2\text{O}_3 + 6\text{HCl} \longrightarrow 2\text{FeCl}_3 + 3\text{H}_2\text{O}$). "
-                    r"Nhiều oxide acid ($\text{CO}_2, \text{SO}_2, \text{SO}_3, \text{P}_2\text{O}_5$) tác dụng với nước tạo dung dịch acid tương ứng "
-                    r"($\text{SO}_3 + \text{H}_2\text{O} \longrightarrow \text{H}_2\text{SO}_4$) và tác dụng với dung dịch kiềm tạo muối và nước."
-                ),
-            },
-            {
-                "title": "3. Phân bón hóa học và vai trò đối với cây trồng",
-                "content": (
-                    r"Phân bón hóa học cung cấp các nguyên tố dinh dưỡng thiết yếu cho cây trồng: "
-                    r"(1) Phân đạm cung cấp nguyên tố nitrogen ($\text{N}$) dưới dạng ion $\text{NH}_4^+$ hoặc $\text{NO}_3^-$, kích thích cây sinh trưởng mạnh, ra nhiều lá "
-                    r"(gồm urea $(\text{NH}_2)_2\text{CO}$, đạm hai lá $\text{NH}_4\text{NO}_3$, đạm một lá $(\text{NH}_4)_2\text{SO}_4$). "
-                    r"(2) Phân lân cung cấp nguyên tố phosphorus ($\text{P}$), kích thích sự phát triển của bộ rễ, quá trình đẻ nhánh và nảy chồi "
-                    r"(gồm superphosphate $\text{Ca(H}_2\text{PO}_4)_2$, phân lân nung chảy). "
-                    r"(3) Phân kali cung cấp nguyên tố potassium ($\text{K}$), giúp cây tổng hợp chất đường, bột, chất xơ và tăng khả năng chống chịu rét, hạn, sâu bệnh ($\text{KCl}, \text{K}_2\text{SO}_4$). "
-                    r"(4) Phân hỗn hợp $\text{NPK}$ chứa cả ba nguyên tố $\text{N}, \text{P}, \text{K}$. Khi bón phân cần tuân thủ quy tắc '4 đúng' (đúng loại, đúng liều, đúng lúc, đúng cách)."
-                ),
-            },
+        example="Nung nóng hoàn toàn $m\\text{ gam}$ đá vôi ($\\text{CaCO}_3$) thu được $11{,}2\\text{ g}$ vôi sống ($\\text{CaO}$) và $8{,}8\\text{ g}$ khí carbon dioxide ($\\text{CO}_2$) thoát ra. Hãy: (a) Viết phương trình hóa học của phản ứng; (b) Áp dụng định luật bảo toàn khối lượng để tính khối lượng $m$ của đá vôi đã đem nung.",
+        example_answer="- (a) Phương trình hóa học (đã tự cân bằng $1:1:1$): $\\text{CaCO}_3 \\xrightarrow{t^\\circ} \\text{CaO} + \\text{CO}_2\\uparrow$.\n- (b) Theo định luật bảo toàn khối lượng: $m_{\\text{CaCO}_3} = m_{\\text{CaO}} + m_{\\text{CO}_2} = 11{,}2 + 8{,}8 = 20\\text{ g}$.",
+        real_life="Trong lò nung vôi công nghiệp, khi nung đá vôi thấy khối lượng chất rắn thu được (vôi sống $\\text{CaO}$) nhẹ hơn đá vôi ban đầu không phải vì định luật bảo toàn khối lượng sai, mà vì một phần khối lượng đã chuyển thành khí $\\text{CO}_2$ bay ra không khí.",
+        quiz=[
+            mcq("biet", "Cho phản ứng hóa học có dạng: $A + B \\longrightarrow C + D$. Biểu thức nào sau đây thể hiện đúng **Định luật bảo toàn khối lượng**?", ["$m_A + m_B = m_C + m_D$", "$m_A - m_B = m_C - m_D$", "$m_A \\cdot m_B = m_C \\cdot m_D$", "$m_A + m_C = m_B + m_D$"], 0, "Tổng khối lượng các chất tham gia phản ứng bằng tổng khối lượng các chất sản phẩm: $m_A + m_B = m_C + m_D$."),
+            mcq("biet", "Sau khi cân bằng phương trình hóa học: $x\\text{Fe} + y\\text{O}_2 \\xrightarrow{t^\\circ} z\\text{Fe}_3\\text{O}_4$ với bộ hệ số nguyên dương tối giản, các hệ số $(x, y, z)$ lần lượt là:", ["$3, 2, 1$", "$1, 1, 1$", "$2, 3, 1$", "$3, 4, 1$"], 0, "Trong $\\text{Fe}_3\\text{O}_4$ có $3\\text{Fe}$ và $4\\text{O}$, nên đặt $x = 3$ trước $\\text{Fe}$, $y = 2$ trước $\\text{O}_2$ và $z = 1$ trước $\\text{Fe}_3\\text{O}_4$: $3\\text{Fe} + 2\\text{O}_2 \\xrightarrow{t^\\circ} \\text{Fe}_3\\text{O}_4$."),
+            mcq("hieu", "Khi đốt cháy một mẩu dây kim loại magnesium ($\\text{Mg}$) trong không khí, người ta đem cân sản phẩm rắn thu được là bột trắng magnesium oxide ($\\text{MgO}$) thì thấy nặng hơn mẩu dây $\\text{Mg}$ ban đầu. Giải thích nào sau đây là đúng?", ["Vì theo định luật bảo toàn khối lượng, $m_{\\text{MgO}} = m_{\\text{Mg}} + m_{\\text{O}_2}$, khối lượng tăng thêm chính là khối lượng khí oxygen đã tham gia phản ứng", "Vì định luật bảo toàn khối lượng không đúng khi đốt kim loại", "Vì các nguyên tử $\\text{Mg}$ tự sinh thêm ra từ hư không", "Vì ánh sáng của ngọn lửa biến thành khối lượng"], 0, "Phản ứng $2\\text{Mg} + \\text{O}_2 \\xrightarrow{t^\\circ} 2\\text{MgO}$ có khí $\\text{O}_2$ từ không khí kết hợp vào $\\text{Mg}$, nên $m_{\\text{MgO}} = m_{\\text{Mg}} + m_{\\text{O}_2} > m_{\\text{Mg}}$."),
+            tf4("hieu", "Xét tính đúng/sai của các phát biểu sau về định luật bảo toàn khối lượng và phương trình hóa học:", [
+                "Khi cân bằng phương trình hóa học, ta chỉ được phép điền hệ số ở phía trước công thức hóa học chứ tuyệt đối không được thay đổi các chỉ số ở chân công thức.",
+                "Trong phương trình $2\\text{H}_2 + \\text{O}_2 \\xrightarrow{t^\\circ} 2\\text{H}_2\\text{O}$, tỉ lệ số phân tử $\\text{H}_2 : \\text{O}_2 : \\text{H}_2\\text{O}$ là $2 : 1 : 2$.",
+                "Nếu tổng số phân tử ở hai vế thay đổi thì tổng khối lượng các chất cũng thay đổi.",
+                "Cho $5{,}6\\text{ g}$ sắt ($\\text{Fe}$) tác dụng vừa đủ với $3{,}2\\text{ g}$ lưu huỳnh ($\\text{S}$) khi đun nóng thì thu được $8{,}8\\text{ g}$ $\\text{FeS}$.",
+            ], [True, True, False, True], "Ý c) sai vì số phân tử có thể thay đổi nhưng số nguyên tử mỗi nguyên tố luôn bảo toàn, nên tổng khối lượng luôn bảo toàn."),
+            short("vandung", "Đốt cháy hoàn toàn $4{,}8\\text{ g}$ kim loại magnesium ($\\text{Mg}$) trong khí oxygen ($\\text{O}_2$) thu được $8{,}0\\text{ g}$ magnesium oxide ($\\text{MgO}$). Khối lượng khí oxygen đã tham gia phản ứng bằng bao nhiêu gam ($\\text{g}$)?", ["3,2", "3.2"], "Theo định luật bảo toàn khối lượng: $m_{\\text{O}_2} = m_{\\text{MgO}} - m_{\\text{Mg}} = 8{,}0 - 4{,}8 = 3{,}2\\text{ g}$.", unit="g"),
         ],
-        worked_examples=[
-            {
-                "title": "Ví dụ 1",
-                "problem": (
-                    r"Hòa tan hoàn toàn $8\text{ g}$ copper(II) oxide ($\text{CuO}$, $M = 80\text{ g/mol}$) vào $200\text{ mL}$ dung dịch hydrochloric acid ($\text{HCl}$) "
-                    r"vừa đủ. Tính nồng độ mol của dung dịch $\text{HCl}$ đã dùng và khối lượng muối $\text{CuCl}_2$ ($M = 135\text{ g/mol}$) thu được."
-                ),
-                "solution": (
-                    r"Số mol $\text{CuO}$ là $n_{\text{CuO}} = \dfrac{8}{80} = 0{,}1\text{ mol}$. Phương trình hóa học: "
-                    r"$\text{CuO} + 2\text{HCl} \longrightarrow \text{CuCl}_2 + \text{H}_2\text{O}$. Theo phương trình, "
-                    r"$n_{\text{HCl}} = 2 \cdot n_{\text{CuO}} = 0{,}2\text{ mol}$ và $n_{\text{CuCl}_2} = 0{,}1\text{ mol}$. "
-                    r"Nồng độ mol của dung dịch $\text{HCl}$ là $C_{\text{M}} = \dfrac{0{,}2}{0{,}2} = 1{,}0\text{ M}$. Khối lượng muối $\text{CuCl}_2$ là $m = 0{,}1 \cdot 135 = 13{,}5\text{ g}$."
-                ),
-            },
-            {
-                "title": "Ví dụ 2",
-                "problem": (
-                    r"Dẫn $2{,}479\text{ L}$ khí carbon dioxide ($\text{CO}_2$) ở điều kiện chuẩn ($25^\circ\text{C}$, $1\text{ bar}$) vào dung dịch nước vôi trong "
-                    r"$\text{Ca(OH)}_2$ dư. Tính khối lượng kết tủa $\text{CaCO}_3$ ($M = 100\text{ g/mol}$) tạo thành."
-                ),
-                "solution": (
-                    r"Số mol $\text{CO}_2$ ở đkc là $n_{\text{CO}_2} = \dfrac{2{,}479}{24{,}79} = 0{,}1\text{ mol}$. Phương trình hóa học khi $\text{Ca(OH)}_2$ dư: "
-                    r"$\text{CO}_2 + \text{Ca(OH)}_2 \longrightarrow \text{CaCO}_3\downarrow + \text{H}_2\text{O}$. Suy ra $n_{\text{CaCO}_3} = n_{\text{CO}_2} = 0{,}1\text{ mol}$, "
-                    r"khối lượng kết tủa là $m_{\text{CaCO}_3} = 0{,}1 \cdot 100 = 10\text{ g}$."
-                ),
-            },
-        ],
-        key_takeaways=[
-            r"4 loại oxide cần phân biệt rõ: oxide base ($\text{CaO}, \text{CuO}, \text{Fe}_2\text{O}_3$), oxide acid ($\text{CO}_2, \text{SO}_2, \text{P}_2\text{O}_5$), oxide lưỡng tính ($\text{Al}_2\text{O}_3, \text{ZnO}$) và oxide trung tính ($\text{CO}, \text{NO}$).",
-            r"Phân đạm cung cấp $\text{N}$ (phát triển thân, lá), phân lân cung cấp $\text{P}$ (phát triển rễ, chồi), phân kali cung cấp $\text{K}$ (tăng sức chống chịu và tạo đường/bột).",
-            r"Lạm dụng phân bón hóa học gây thoái hóa đất và phú dưỡng nguồn nước, do đó cần kết hợp phân hữu cơ và bón theo quy tắc '4 đúng'.",
-        ],
-        questions=[
-            mcq(
-                question=r"Chất nào sau đây thuộc loại oxide lưỡng tính?",
-                options=[r"$\text{CuO}$", r"$\text{Al}_2\text{O}_3$", r"$\text{CO}_2$", r"$\text{CO}$"],
-                answer="B",
-                level="biet",
-                solution=r"$\text{Al}_2\text{O}_3$ (cùng với $\text{ZnO}$) là oxide lưỡng tính vì tác dụng được với cả dung dịch acid mạnh và dung dịch kiềm mạnh.",
-            ),
-            mcq(
-                question=r"Dãy gồm các chất đều thuộc loại oxide trung tính (oxide không tạo muối) là:",
-                options=[
-                    r"$\text{CO}, \text{NO}$",
-                    r"$\text{CO}_2, \text{SO}_2$",
-                    r"$\text{CaO}, \text{MgO}$",
-                    r"$\text{Al}_2\text{O}_3, \text{ZnO}$",
-                ],
-                answer="A",
-                level="biet",
-                solution=r"$\text{CO}$ (carbon monoxide) và $\text{NO}$ (nitrogen monoxide) là hai oxide trung tính điển hình, không tác dụng với acid hay base.",
-            ),
-            mcq(
-                question=r"Phân bón hóa học nào sau đây thuộc nhóm phân đạm (cung cấp nguyên tố dinh dưỡng nitrogen $\text{N}$ cho cây trồng)?",
-                options=[
-                    r"$\text{KCl}$",
-                    r"$\text{Ca(H}_2\text{PO}_4)_2$",
-                    r"$(\text{NH}_2)_2\text{CO}$",
-                    r"$\text{K}_2\text{SO}_4$",
-                ],
-                answer="C",
-                level="biet",
-                solution=r"Urea có công thức $(\text{NH}_2)_2\text{CO}$ chứa nguyên tố dinh dưỡng $\text{N}$ nên thuộc nhóm phân đạm.",
-            ),
-            mcq(
-                question=r"Loại phân bón hóa học cung cấp nguyên tố phosphorus ($\text{P}$) giúp kích thích sự phát triển bộ rễ của cây trồng là:",
-                options=[r"Phân đạm", r"Phân lân", r"Phân kali", r"Phân vi lượng"],
-                answer="B",
-                level="biet",
-                solution=r"Phân lân cung cấp nguyên tố phosphorus ($\text{P}$) cho cây, thúc đẩy bộ rễ phát triển khỏe và quá trình đẻ nhánh, nảy chồi.",
-            ),
-            mcq(
-                question=r"Để làm khô khí carbon monoxide ($\text{CO}$) có lẫn hơi nước và tạp chất khí sulfur dioxide ($\text{SO}_2$), người ta có thể dẫn hỗn hợp khí qua bình đựng lượng dư chất nào sau đây?",
-                options=[
-                    r"Dung dịch $\text{HCl}$ đặc",
-                    r"Vôi sống $\text{CaO}$ (hoặc $\text{NaOH}$ rắn)",
-                    r"Dung dịch $\text{H}_2\text{SO}_4$ loãng",
-                    r"Bột $\text{CuO}$ ở nhiệt độ thường",
-                ],
-                answer="B",
-                level="hieu",
-                solution=r"$\text{CaO}$ (hoặc $\text{NaOH}$ rắn) hấp thụ cả hơi nước và oxide acid $\text{SO}_2$, trong khi $\text{CO}$ là oxide trung tính không phản ứng nên thoát ra tinh khiết.",
-            ),
-            mcq(
-                question=r"Khi hòa tan bột iron(III) oxide ($\text{Fe}_2\text{O}_3$) màu nâu đỏ vào dung dịch sulfuric acid loãng ($\text{H}_2\text{SO}_4$) dư, muối tạo thành trong dung dịch có công thức hóa học là:",
-                options=[
-                    r"$\text{FeSO}_4$",
-                    r"$\text{Fe}_2(\text{SO}_4)_3$",
-                    r"$\text{FeSO}_3$",
-                    r"$\text{Fe}_3(\text{SO}_4)_2$",
-                ],
-                answer="B",
-                level="hieu",
-                solution=r"Trong $\text{Fe}_2\text{O}_3$, nguyên tố $\text{Fe}$ có hóa trị $\text{III}$ nên khi tác dụng với $\text{H}_2\text{SO}_4\text{ loãng}$ tạo muối iron(III) sulfate: $\text{Fe}_2\text{O}_3 + 3\text{H}_2\text{SO}_4 \longrightarrow \text{Fe}_2(\text{SO}_4)_3 + 3\text{H}_2\text{O}$.",
-            ),
-            tf4(
-                stem=r"Cho bốn oxide sau: $\text{CaO}$, $\text{SO}_2$, $\text{Al}_2\text{O}_3$ và $\text{CO}$. Xét tính đúng sai của các phát biểu sau:",
-                statements=[
-                    r"a) $\text{CaO}$ là một oxide base, tác dụng được với nước tạo thành dung dịch calcium hydroxide $\text{Ca(OH)}_2$.",
-                    r"b) Khí $\text{SO}_2$ là một oxide base nên không tác dụng được với dung dịch $\text{NaOH}$.",
-                    r"c) $\text{Al}_2\text{O}_3$ là oxide lưỡng tính nên vừa tác dụng được với dung dịch $\text{HCl}$, vừa tác dụng được với dung dịch $\text{NaOH}$.",
-                    r"d) Khí $\text{CO}$ tác dụng mạnh với dung dịch $\text{Ca(OH)}_2$ ở nhiệt độ thường tạo kết tủa trắng $\text{CaCO}_3$.",
-                ],
-                answer="Đ/S/Đ/S",
-                level="hieu",
-                solution=(
-                    r"a) Đúng vì $\text{CaO} + \text{H}_2\text{O} \longrightarrow \text{Ca(OH)}_2$. "
-                    r"b) Sai vì $\text{SO}_2$ là một oxide acid, tác dụng với dung dịch $\text{NaOH}$ tạo muối $\text{Na}_2\text{SO}_3$ (hoặc $\text{NaHSO}_3$). "
-                    r"c) Đúng vì $\text{Al}_2\text{O}_3$ là oxide lưỡng tính điển hình. "
-                    r"d) Sai vì $\text{CO}$ là oxide trung tính, không tác dụng với dung dịch $\text{Ca(OH)}_2$ (chỉ có $\text{CO}_2$ mới tạo kết tủa $\text{CaCO}_3$)."
-                ),
-            ),
-            tf4(
-                stem=r"Trong sản xuất nông nghiệp, người nông dân sử dụng các loại phân bón hóa học như ammonium sulfate $(\text{NH}_4)_2\text{SO}_4$, calcium dihydrogenphosphate $\text{Ca(H}_2\text{PO}_4)_2$, potassium chloride $\text{KCl}$ và vôi bột $\text{CaO}$. Xét tính đúng sai của các phát biểu sau:",
-                statements=[
-                    r"a) Phân bón $(\text{NH}_4)_2\text{SO}_4$ thuộc nhóm phân đạm, cung cấp nguyên tố nitrogen ($\text{N}$) cho cây trồng.",
-                    r"b) Phân bón $\text{KCl}$ thuộc nhóm phân lân, cung cấp nguyên tố phosphorus ($\text{P}$) cho cây.",
-                    r"c) Không nên trộn chung phân đạm ammonium như $(\text{NH}_4)_2\text{SO}_4$ với vôi bột $\text{CaO}$ vì sẽ làm thất thoát đạm dưới dạng khí $\text{NH}_3$.",
-                    r"d) Bón càng nhiều phân hóa học vượt quá nhu cầu của cây thì đất càng tơi xốp và nguồn nước càng sạch.",
-                ],
-                answer="Đ/S/Đ/S",
-                level="hieu",
-                solution=(
-                    r"a) Đúng vì $(\text{NH}_4)_2\text{SO}_4$ chứa nguyên tố $\text{N}$ dưới dạng ion $\text{NH}_4^+$. "
-                    r"b) Sai vì $\text{KCl}$ thuộc nhóm phân kali, cung cấp nguyên tố potassium ($\text{K}$). "
-                    r"c) Đúng vì $\text{CaO}$ gặp nước tạo $\text{Ca(OH)}_2$ có tính kiềm, phản ứng với $\text{NH}_4^+$ giải phóng khí $\text{NH}_3\uparrow$ gây mất đạm. "
-                    r"d) Sai vì bón thừa phân hóa học làm đất chai cứng, chua hóa và gây ô nhiễm, phú dưỡng nguồn nước."
-                ),
-            ),
-            mcq(
-                question=r"Hòa tan hoàn toàn $16\text{ g}$ iron(III) oxide ($\text{Fe}_2\text{O}_3$, $M = 160\text{ g/mol}$) cần dùng vừa đủ $V\text{ (mL)}$ dung dịch $\text{H}_2\text{SO}_4$ $1{,}5\text{ M}$. Giá trị của $V$ là:",
-                options=[r"$100\text{ mL}$", r"$150\text{ mL}$", r"$200\text{ mL}$", r"$300\text{ mL}$"],
-                answer="C",
-                level="vandung",
-                solution=r"Ta có $n_{\text{Fe}_2\text{O}_3} = \dfrac{16}{160} = 0{,}1\text{ mol}$. Theo phương trình $\text{Fe}_2\text{O}_3 + 3\text{H}_2\text{SO}_4 \longrightarrow \text{Fe}_2(\text{SO}_4)_3 + 3\text{H}_2\text{O}$, số mol acid cần dùng là $n_{\text{H}_2\text{SO}_4} = 3 \cdot 0{,}1 = 0{,}3\text{ mol}$. Thể tích dung dịch là $V = \dfrac{0{,}3}{1{,}5} = 0{,}2\text{ L} = 200\text{ mL}$.",
-            ),
-            short(
-                question=r"Hấp thụ hoàn toàn $4{,}958\text{ L}$ khí carbon dioxide ($\text{CO}_2$) ở điều kiện chuẩn ($25^\circ\text{C}$, $1\text{ bar}$) vào dung dịch $\text{Ca(OH)}_2$ dư theo phản ứng $\text{CO}_2 + \text{Ca(OH)}_2 \longrightarrow \text{CaCO}_3\downarrow + \text{H}_2\text{O}$. Tính khối lượng kết tủa $\text{CaCO}_3$ (theo đơn vị $\text{g}$, biết $M_{\text{CaCO}_3} = 100\text{ g/mol}$) thu được.",
-                answer=["20", "20,0", "20.0"],
-                level="vandung",
-                solution=r"Số mol $\text{CO}_2$ ở đkc là $n_{\text{CO}_2} = \dfrac{4{,}958}{24{,}79} = 0{,}2\text{ mol}$. Theo phương trình hóa học, $n_{\text{CaCO}_3} = n_{\text{CO}_2} = 0{,}2\text{ mol}$. Khối lượng kết tủa $\text{CaCO}_3$ thu được là $m = 0{,}2 \cdot 100 = 20\text{ g}$.",
-            ),
-        ],
-        description="Phân loại và tính chất hóa học của 4 nhóm oxide, vai trò và cách sử dụng các loại phân bón hóa học N, P, K theo chương trình KHTN 8 Kết nối tri thức.",
     ),
-    lesson(
-        grade=8,
-        order=7,
-        code="H8-C07",
-        title="Chương 7: Tốc độ phản ứng, chất xúc tác và phản ứng tỏa nhiệt - thu nhiệt",
-        topic="oxi-hoa-khu",
-        summary=(
-            r"Nắm vững khái niệm tốc độ phản ứng, 5 yếu tố ảnh hưởng đến tốc độ phản ứng (nồng độ, nhiệt độ, áp suất đối với chất khí, "
-            r"diện tích bề mặt tiếp xúc đối với chất rắn, chất xúc tác), phân biệt phản ứng tỏa nhiệt - thu nhiệt và ứng dụng thực tiễn."
+    bai(
+        topic=CH1[0], chapter_title=CH1[1], chapter_desc=CH1[2],
+        title="Bài 7: Tính theo phương trình hóa học và hiệu suất phản ứng",
+        icon="🧮",
+        description="Quy trình 4 bước giải bài toán tính theo phương trình hóa học (số mol, khối lượng, thể tích khí đkc) và công thức tính hiệu suất phản ứng H%.",
+        requirements=[
+            "Thực hiện thành thạo 4 bước tính theo phương trình hóa học: (1) Viết và cân bằng PTHH; (2) Đổi dữ kiện đề bài ra số mol ($n$); (3) Dựa vào tỉ lệ hệ số PTHH để tìm số mol các chất cần tính; (4) Tính khối lượng ($m = nM$), thể tích khí ở đkc ($V = 24{,}79n$) hoặc nồng độ.",
+            "Định nghĩa được hiệu suất phản ứng ($H\\%$) và giải thích vì sao trong thực tế hầu hết các phản ứng có hiệu suất nhỏ hơn $100\\%$.",
+            "Vận dụng được công thức tính hiệu suất: $H\\% = \\dfrac{n_{\\text{thực tế}}}{n_{\\text{lí thuyết}}} \\cdot 100\\% = \\dfrac{m_{\\text{thực tế}}}{m_{\\text{lí thuyết}}} \\cdot 100\\%$.",
+        ],
+        definition="Dựa vào phương trình hóa học đã cân bằng, khi biết số mol của một chất bất kì tham gia hoặc tạo thành, ta tính được số mol, khối lượng và thể tích của tất cả các chất còn lại. Hiệu suất phản ứng ($H\\%$) là tỉ số phần trăm giữa lượng sản phẩm thu được theo thực tế và lượng sản phẩm thu được theo lí thuyết: $H\\% = \\dfrac{m_{\\text{tt}}}{m_{\\text{lt}}} \\cdot 100\\% = \\dfrac{n_{\\text{tt}}}{n_{\\text{lt}}} \\cdot 100\\%$.",
+        theory=(
+            "### 1. Quy trình 4 bước giải bài toán tính theo Phương trình hóa học\n"
+            "1. **Bước 1**: Viết và cân bằng đúng phương trình hóa học: $aA + bB \\longrightarrow cC + dD$.\n"
+            "2. **Bước 2**: Đổi lượng chất đã biết từ đề bài ra **số mol ($n$)**: $n = \\dfrac{m}{M} = \\dfrac{V_{\\text{đkc}}}{24{,}79} = C_M \\cdot V_{\\text{dd}}$.\n"
+            "3. **Bước 3**: Dựa vào tỉ lệ hệ số trên PTHH để suy ra số mol các chất cần tìm:\n"
+            "   $$\\dfrac{n_A}{a} = \\dfrac{n_B}{b} = \\dfrac{n_C}{c} = \\dfrac{n_D}{d}$$\n"
+            "   *(Nếu đề bài cho biết số mol của cả 2 chất tham gia $n_A, n_B$, ta so sánh $\\dfrac{n_A}{a}$ và $\\dfrac{n_B}{b}$: tỉ số nào nhỏ hơn thì chất đó phản ứng hết và tính theo chất phản ứng hết)*.\n"
+            "4. **Bước 4**: Chuyển đổi số mol vừa tìm được sang khối lượng ($m = nM$) hoặc thể tích khí ở đkc ($V = 24{,}79n$) theo yêu cầu đề bài.\n\n"
+            "### 2. Hiệu suất của phản ứng hóa học ($H\\%$)\n"
+            "- Trong thực tế, do phản ứng xảy ra không hoàn toàn hoặc thất thoát trong quá trình thu hồi nên lượng sản phẩm thực tế ($m_{\\text{tt}}, n_{\\text{tt}}$) thường nhỏ hơn lượng tính theo lí thuyết PTHH ($m_{\\text{lt}}, n_{\\text{lt}}$):\n"
+            "  $$H\\% = \\dfrac{m_{\\text{sp thực tế}}}{m_{\\text{sp lí thuyết}}} \\cdot 100\\% = \\dfrac{n_{\\text{sp thực tế}}}{n_{\\text{sp lí thuyết}}} \\cdot 100\\% = \\dfrac{m_{\\text{tham gia đã phản ứng}}}{m_{\\text{tham gia ban đầu}}} \\cdot 100\\%$$"
         ),
-        objectives=[
-            r"Nêu được khái niệm tốc độ phản ứng hóa học (đại lượng đặc trưng cho sự nhanh hay chậm của một phản ứng hóa học).",
-            r"Trình bày được ảnh hưởng của 5 yếu tố: nồng độ, nhiệt độ, áp suất, diện tích bề mặt tiếp xúc và chất xúc tác đến tốc độ phản ứng.",
-            r"Nêu được khái niệm chất xúc tác và chất ức chế; giải thích được một số biện pháp điều chỉnh tốc độ phản ứng trong đời sống và sản xuất.",
-            r"Phân biệt được phản ứng tỏa nhiệt (giải phóng năng lượng nhiệt ra môi trường) và phản ứng thu nhiệt (hấp thụ năng lượng nhiệt từ môi trường).",
-        ],
         formulas=[
-            {
-                "name": "Quan hệ giữa 4 yếu tố vật lý - hóa học và tốc độ phản ứng $v$",
-                "formula": r"$C \uparrow \implies v \uparrow; \quad T \uparrow \implies v \uparrow; \quad p_{\text{khí}} \uparrow \implies v \uparrow; \quad S_{\text{bề mặt}} \uparrow \implies v \uparrow$",
-                "note": r"Khi tăng nồng độ, nhiệt độ, áp suất khí hoặc diện tích bề mặt tiếp xúc, tần số va chạm hiệu quả tăng nên tốc độ phản ứng tăng",
-            },
-            {
-                "name": "Vai trò của chất xúc tác trong phản ứng hóa học",
-                "formula": r"$2\text{H}_2\text{O}_2 \xrightarrow{\text{MnO}_2} 2\text{H}_2\text{O} + \text{O}_2\uparrow$",
-                "note": r"Chất xúc tác ($\text{MnO}_2$, enzyme) làm tăng tốc độ phản ứng nhưng giữ nguyên khối lượng và bản chất hóa học sau phản ứng",
-            },
-            {
-                "name": "Phản ứng tỏa nhiệt và phản ứng thu nhiệt",
-                "formula": r"$\text{Phản ứng tỏa nhiệt: }T_{\text{môi trường}} \uparrow; \quad \text{Phản ứng thu nhiệt: }T_{\text{môi trường}} \downarrow$",
-                "note": r"Đốt cháy nhiên liệu ($\text{C}, \text{CH}_4, \text{C}_2\text{H}_5\text{OH}$) là phản ứng tỏa nhiệt; nung đá vôi $\text{CaCO}_3$ là phản ứng thu nhiệt",
-            },
-            {
-                "name": "Tốc độ trung bình của phản ứng (biểu thức định lượng bổ trợ)",
-                "formula": r"$\overline{v} = \dfrac{\Delta n}{V \cdot \Delta t} = \dfrac{\Delta C}{\Delta t}$",
-                "note": r"$\Delta C$: độ biến thiên nồng độ mol của một chất trong khoảng thời gian $\Delta t$",
-            },
+            G(
+                "Tỉ lệ số mol trên PTHH và Công thức Hiệu suất phản ứng (H%)",
+                F("Quy tắc nhân chéo chia ngang trên PTHH aA + bB ➔ cC + dD", "$\\dfrac{n_A}{a} = \\dfrac{n_B}{b} = \\dfrac{n_C}{c} = \\dfrac{n_D}{d} \\implies n_C = n_A \\cdot \\dfrac{c}{a}$", "Sau khi có số mol $n_C$, tính khối lượng $m_C = n_C \\cdot M_C$ hoặc thể tích khí đkc $V_C = 24{,}79 \\cdot n_C$."),
+                F("Công thức tính Hiệu suất phản ứng (H%)", "$H\\% = \\dfrac{m_{\\text{tt}}}{m_{\\text{lt}}} \\cdot 100\\% = \\dfrac{n_{\\text{tt}}}{n_{\\text{lt}}} \\cdot 100\\% \\implies m_{\\text{sp thực tế}} = m_{\\text{sp lí thuyết}} \\cdot \\dfrac{H\\%}{100\\%}$", "Mẹo nhớ nhanh: **Phải nhân – Trái chia** (tính lượng sản phẩm bên phải mũi tên thì nhân với $H\\%$; tính lượng nguyên liệu ban đầu bên trái mũi tên cần dùng thì chia cho $H\\%$)."),
+            )
         ],
-        theory_sections=[
-            {
-                "title": "1. Khái niệm tốc độ phản ứng",
-                "content": (
-                    r"Các phản ứng hóa học xảy ra nhanh chậm rất khác nhau: phản ứng đốt cháy khí gas hay kết tủa $\text{BaSO}_4$ xảy ra tức thời, "
-                    r"trong khi sự gỉ sắt trong không khí ẩm hay quá trình lên men rượu xảy ra chậm trong nhiều ngày, nhiều tháng. "
-                    r"Để đánh giá mức độ xảy ra nhanh hay chậm của một phản ứng hóa học, người ta dùng đại lượng tốc độ phản ứng, "
-                    r"được xác định bằng độ biến thiên lượng chất (nồng độ, số mol, khối lượng hoặc thể tích khí) của một chất phản ứng hoặc sản phẩm "
-                    r"trong một đơn vị thời gian."
-                ),
-            },
-            {
-                "title": "2. Năm yếu tố ảnh hưởng đến tốc độ phản ứng",
-                "content": (
-                    r"Có 5 yếu tố chính làm thay đổi tốc độ phản ứng: "
-                    r"(1) Nồng độ: Tăng nồng độ chất phản ứng làm tăng số va chạm giữa các hạt, nên tốc độ phản ứng tăng (ví dụ: than cháy trong bình $\text{O}_2$ nguyên chất nhanh hơn trong không khí). "
-                    r"(2) Nhiệt độ: Tăng nhiệt độ làm các hạt chuyển động nhanh hơn và va chạm mạnh hơn, nên tốc độ phản ứng tăng (ngược lại, bảo quản thực phẩm trong tủ lạnh để giảm tốc độ phân hủy). "
-                    r"(3) Áp suất (với phản ứng có chất khí): Tăng áp suất làm nồng độ chất khí tăng nên tốc độ phản ứng tăng. "
-                    r"(4) Diện tích bề mặt tiếp xúc (với chất rắn): Đập nhỏ, nghiền mịn hoặc chẻ nhỏ chất rắn làm tăng diện tích bề mặt tiếp xúc nên tốc độ phản ứng tăng. "
-                    r"(5) Chất xúc tác: Chất làm tăng tốc độ phản ứng nhưng không bị tiêu hao sau khi phản ứng kết thúc (ví dụ $\text{MnO}_2$ xúc tác phân hủy $\text{H}_2\text{O}_2$)."
-                ),
-            },
-            {
-                "title": "3. Phản ứng tỏa nhiệt và phản ứng thu nhiệt",
-                "content": (
-                    r"Phản ứng tỏa nhiệt là phản ứng hóa học có giải phóng năng lượng dưới dạng nhiệt ra môi trường xung quanh làm nhiệt độ môi trường tăng lên "
-                    r"(ví dụ: phản ứng đốt cháy than, xăng dầu, khí methane $\text{CH}_4$, phản ứng tôi vôi $\text{CaO} + \text{H}_2\text{O} \longrightarrow \text{Ca(OH)}_2$). "
-                    r"Phản ứng thu nhiệt là phản ứng hóa học cần hấp thụ năng lượng dưới dạng nhiệt từ môi trường xung quanh trong suốt quá trình phản ứng "
-                    r"(ví dụ: phản ứng nung đá vôi $\text{CaCO}_3 \xrightarrow{t^\circ} \text{CaO} + \text{CO}_2\uparrow$, hòa tan viên C sủi vào nước)."
-                ),
-            },
+        example="Cho $6{,}5\\text{ g}$ kim loại kẽm ($\\text{Zn} = 65$) tác dụng hết với dung dịch hydrochloric acid ($\\text{HCl}$) dư theo phương trình: $\\text{Zn} + 2\\text{HCl} \\longrightarrow \\text{ZnCl}_2 + \\text{H}_2\\uparrow$. Hãy tính số mol $\\text{HCl}$ đã phản ứng và thể tích khí $\\text{H}_2$ thu được ở điều kiện chuẩn ($25^\\circ\\text{C}, 1\\text{ bar}$).",
+        example_answer="Số mol $\\text{Zn}$ là $n_{\\text{Zn}} = \\dfrac{6{,}5}{65} = 0{,}1\\text{ mol}$. Theo tỉ lệ hệ số phương trình hóa học ($1 : 2 : 1 : 1$), ta có: số mol $\\text{HCl}$ phản ứng là $n_{\\text{HCl}} = 2 \\cdot n_{\\text{Zn}} = 0{,}2\\text{ mol}$; số mol khí $\\text{H}_2$ sinh ra là $n_{\\text{H}_2} = n_{\\text{Zn}} = 0{,}1\\text{ mol}$. Thể tích khí $\\text{H}_2$ ở đkc là $V_{\\text{H}_2} = 24{,}79 \\cdot 0{,}1 = 2{,}479\\text{ lít}$.",
+        real_life="Trong các nhà máy sản xuất ammonia ($\\text{NH}_3$), sulfuric acid ($\\text{H}_2\\text{SO}_4$) và xi măng, các kĩ sư hóa học luôn phải tính toán hiệu suất phản ứng $H\\%$ ở từng công đoạn để xác định chính xác khối lượng quặng nguyên liệu cần nhập vào.",
+        quiz=[
+            mcq("biet", "Cho phương trình hóa học đã cân bằng: $\\text{N}_2 + 3\\text{H}_2 \\xrightarrow{t^\\circ, p, xt} 2\\text{NH}_3$. Nếu có $1\\text{ mol}$ khí $\\text{N}_2$ phản ứng hoàn toàn thì số mol khí $\\text{H}_2$ đã phản ứng và số mol khí $\\text{NH}_3$ tạo thành theo lí thuyết lần lượt là:", ["$3\\text{ mol } \\text{H}_2$ và $2\\text{ mol } \\text{NH}_3$", "$1\\text{ mol } \\text{H}_2$ và $1\\text{ mol } \\text{NH}_3$", "$2\\text{ mol } \\text{H}_2$ và $3\\text{ mol } \\text{NH}_3$", "$3\\text{ mol } \\text{H}_2$ và $1\\text{ mol } \\text{NH}_3$"], 0, "Theo hệ số cân bằng của PTHH, tỉ lệ số mol là $n_{\\text{N}_2} : n_{\\text{H}_2} : n_{\\text{NH}_3} = 1 : 3 : 2$."),
+            mcq("biet", "Gọi $m_{\\text{lt}}$ là khối lượng sản phẩm tính theo phương trình hóa học (lí thuyết) và $m_{\\text{tt}}$ là khối lượng sản phẩm thực tế thu được. Công thức tính **hiệu suất phản ứng** ($H\\%$) là gì?", ["$H\\% = \\dfrac{m_{\\text{tt}}}{m_{\\text{lt}}} \\cdot 100\\%$", "$H\\% = \\dfrac{m_{\\text{lt}}}{m_{\\text{tt}}} \\cdot 100\\%$", "$H\\% = (m_{\\text{lt}} - m_{\\text{tt}}) \\cdot 100\\%$", "$H\\% = (m_{\\text{lt}} + m_{\\text{tt}}) \\cdot 100\\%$"], 0, "Hiệu suất phản ứng bằng tỉ số phần trăm giữa lượng sản phẩm thực tế thu được và lượng sản phẩm tính theo lí thuyết: $H\\% = \\dfrac{m_{\\text{tt}}}{m_{\\text{lt}}} \\cdot 100\\%$."),
+            mcq("hieu", "Đốt cháy hoàn toàn $0{,}2\\text{ mol}$ carbon ($\\text{C}$) trong khí oxygen dư theo phương trình $\\text{C} + \\text{O}_2 \\xrightarrow{t^\\circ} \\text{CO}_2$. Khối lượng khí $\\text{CO}_2$ ($M = 44\\text{ g/mol}$) thu được là bao nhiêu?", ["$8{,}8\\text{ g}$", "$4{,}4\\text{ g}$", "$44\\text{ g}$", "$2{,}2\\text{ g}$"], 0, "Theo PTHH: $n_{\\text{CO}_2} = n_{\\text{C}} = 0{,}2\\text{ mol} \\implies m_{\\text{CO}_2} = 0{,}2 \\cdot 44 = 8{,}8\\text{ g}$."),
+            tf4("hieu", "Xét tính đúng/sai của các phát biểu sau về tính theo phương trình hóa học và hiệu suất:", [
+                "Tỉ lệ các hệ số cân bằng trong phương trình hóa học chính là tỉ lệ số mol giữa các chất tham gia và tạo thành trong phản ứng.",
+                "Trong thực tế, do phản ứng không hoàn toàn hoặc hao hụt khi thu hồi nên hiệu suất phản ứng thường nhỏ hơn $100\\%$.",
+                "Nếu hiệu suất phản ứng đạt $100\\%$ thì phản ứng được coi là xảy ra hoàn toàn.",
+                "Theo lí thuyết nung $100\\text{ g}$ $\\text{CaCO}_3$ thu được $56\\text{ g}$ $\\text{CaO}$, nhưng nếu hiệu suất phản ứng là $80\\%$ thì thực tế thu được $70\\text{ g}$ $\\text{CaO}$.",
+            ], [True, True, True, False], "Ý d) sai vì với hiệu suất $H = 80\\%$, khối lượng $\\text{CaO}$ thực tế thu được là $m_{\\text{tt}} = 56 \\cdot 80\\% = 44{,}8\\text{ g}$."),
+            short("vandung", "Theo lí thuyết tính từ phương trình hóa học, khi nung một lượng đá vôi sẽ thu được $m_{\\text{lt}} = 50\\text{ kg}$ vôi sống ($\\text{CaO}$). Nhưng trên thực tế do đá vôi chưa phân hủy hết nên chỉ thu được $m_{\\text{tt}} = 40\\text{ kg}$ vôi sống. Hiệu suất $H$ của phản ứng nung vôi bằng bao nhiêu phần trăm ($\\%$)?", ["80"], "Áp dụng công thức $H\\% = \\dfrac{m_{\\text{tt}}}{m_{\\text{lt}}} \\cdot 100\\% = \\dfrac{40}{50} \\cdot 100\\% = 80\\%$.", unit="%"),
         ],
-        worked_examples=[
-            {
-                "title": "Ví dụ 1",
-                "problem": (
-                    r"Cho hai mẫu đá vôi ($\text{CaCO}_3$) có cùng khối lượng $5\text{ g}$: mẫu 1 ở dạng viên lớn, mẫu 2 được đập nhỏ thành dạng bột mịn. "
-                    r"Cùng cho hai mẫu vào hai cốc chứa $100\text{ mL}$ dung dịch $\text{HCl}$ $1\text{ M}$ ở $25^\circ\text{C}$. Hãy cho biết ở cốc nào khí $\text{CO}_2$ "
-                    r"thoát ra nhanh hơn và giải thích."
-                ),
-                "solution": (
-                    r"Ở cốc chứa mẫu 2 ($\text{CaCO}_3$ dạng bột mịn), bọt khí $\text{CO}_2$ thoát ra nhanh và mạnh hơn hẳn so với mẫu 1. "
-                    r"Nguyên nhân là với cùng khối lượng $5\text{ g}$, $\text{CaCO}_3$ dạng bột mịn có diện tích bề mặt tiếp xúc với dung dịch $\text{HCl}$ "
-                    r"lớn hơn nhiều so với dạng viên lớn, làm tăng số va chạm hiệu quả nên tốc độ phản ứng lớn hơn."
-                ),
-            },
-            {
-                "title": "Ví dụ 2",
-                "problem": (
-                    r"Trong thí nghiệm phân hủy $100\text{ mL}$ dung dịch $\text{H}_2\text{O}_2$ có mặt xúc tác $\text{MnO}_2$, sau $20\text{ giây}$ thu được "
-                    r"$0{,}4958\text{ L}$ khí $\text{O}_2$ ở điều kiện chuẩn ($25^\circ\text{C}$, $1\text{ bar}$). Tính số mol $\text{H}_2\text{O}_2$ đã bị phân hủy "
-                    r"và tốc độ trung bình tính theo số mol $\text{H}_2\text{O}_2$ phản ứng trong mỗi giây."
-                ),
-                "solution": (
-                    r"Số mol khí $\text{O}_2$ thu được ở đkc là $n_{\text{O}_2} = \dfrac{0{,}4958}{24{,}79} = 0{,}02\text{ mol}$. Theo phương trình "
-                    r"$2\text{H}_2\text{O}_2 \xrightarrow{\text{MnO}_2} 2\text{H}_2\text{O} + \text{O}_2\uparrow$, số mol $\text{H}_2\text{O}_2$ đã phân hủy là "
-                    r"$n_{\text{H}_2\text{O}_2} = 2 \cdot 0{,}02 = 0{,}04\text{ mol}$. Tốc độ phân hủy trung bình là $\dfrac{0{,}04}{20} = 0{,}002\text{ mol/s}$."
-                ),
-            },
+    ),
+    bai(
+        topic=CH1[0], chapter_title=CH1[1], chapter_desc=CH1[2],
+        title="Bài 8: Tốc độ phản ứng và chất xúc tác",
+        icon="⏱️",
+        description="Khái niệm tốc độ phản ứng hóa học và 5 yếu tố ảnh hưởng đến tốc độ phản ứng (nồng độ, nhiệt độ, áp suất, diện tích bề mặt tiếp xúc và chất xúc tác).",
+        requirements=[
+            "Nêu được khái niệm tốc độ phản ứng là đại lượng chỉ mức độ nhanh hay chậm của một phản ứng hóa học.",
+            "Trình bày và giải thích được ảnh hưởng của các yếu tố đến tốc độ phản ứng: nồng độ chất phản ứng, nhiệt độ, diện tích bề mặt tiếp xúc của chất rắn (và áp suất đối với chất khí).",
+            "Nêu được vai trò của **chất xúc tác** (làm tăng tốc độ phản ứng nhưng vẫn giữ nguyên về lượng và bản chất hóa học sau khi phản ứng kết thúc; các xúc tác sinh học gọi là enzyme).",
         ],
-        key_takeaways=[
-            r"5 yếu tố làm tăng tốc độ phản ứng: tăng nồng độ, tăng nhiệt độ, tăng áp suất (đối với chất khí), tăng diện tích bề mặt tiếp xúc (đối với chất rắn) và dùng chất xúc tác thích hợp.",
-            r"Chất xúc tác chỉ làm tăng tốc độ phản ứng mà vẫn giữ nguyên khối lượng cũng như tính chất hóa học sau khi phản ứng kết thúc.",
-            r"Phản ứng tỏa nhiệt giải phóng nhiệt làm nóng môi trường xung quanh; phản ứng thu nhiệt hấp thụ nhiệt từ môi trường.",
+        definition="Tốc độ phản ứng là đại lượng đặc trưng cho sự diễn ra nhanh hay chậm của một phản ứng hóa học. Các yếu tố làm tăng tốc độ phản ứng gồm: tăng nồng độ chất phản ứng, tăng nhiệt độ, tăng áp suất (với chất khí), tăng diện tích bề mặt tiếp xúc (với chất rắn) và sử dụng chất xúc tác.",
+        theory=(
+            "### 1. Khái niệm Tốc độ phản ứng\n"
+            "- Trong thực tế, có những phản ứng xảy ra **rất nhanh** (đốt thuốc nổ, pháo hoa, phản ứng tạo kết tủa trong dung dịch) và có những phản ứng xảy ra **rất chậm** (sắt bị gỉ trong không khí, quá trình lên men rượu, phong hóa đá).\n"
+            "- Để đánh giá mức độ nhanh hay chậm của phản ứng, người ta dùng khái niệm **tốc độ phản ứng** (đo bằng độ biến thiên nồng độ của một chất trong một đơn vị thời gian).\n\n"
+            "### 2. Năm yếu tố ảnh hưởng đến tốc độ phản ứng\n"
+            "1. **Nồng độ**: Khi **tăng nồng độ** chất phản ứng (trong dung dịch hoặc khí), mật độ hạt tăng làm tần số va chạm hiệu quả tăng $\\implies$ **tốc độ phản ứng tăng** (ví dụ: than cháy trong bình khí oxygen nguyên chất sáng mãnh liệt hơn hẳn trong không khí).\n"
+            "2. **Nhiệt độ**: Khi **tăng nhiệt độ**, các hạt chuyển động nhanh hơn và va chạm mạnh hơn $\\implies$ **tốc độ phản ứng tăng** (ngược lại bảo quản thực phẩm trong tủ lạnh làm giảm nhiệt độ để làm chậm phản ứng phân hủy).\n"
+            "3. **Diện tích bề mặt tiếp xúc (với chất rắn)**: Đập nhỏ, nghiền mịn chất rắn làm **tăng diện tích bề mặt tiếp xúc** $\\implies$ **tốc độ phản ứng tăng** (đá vôi dạng bột tan trong dung dịch $\\text{HCl}$ nhanh hơn nhiều so với đá vôi dạng viên to).\n"
+            "4. **Áp suất (với phản ứng có chất khí)**: Tăng áp suất chất khí tương đương với tăng nồng độ khí $\\implies$ tốc độ phản ứng tăng.\n"
+            "5. **Chất xúc tác**: Chất làm **tăng tốc độ phản ứng** nhưng **không bị tiêu hao** (còn nguyên khối lượng và tính chất hóa học) sau khi phản ứng kết thúc (ví dụ: bột $\\text{MnO}_2$ xúc tác phân hủy $\\text{H}_2\\text{O}_2$ thành $\\text{H}_2\\text{O}$ và $\\text{O}_2$; **enzyme** là chất xúc tác sinh học)."
+        ),
+        formulas=[
+            G(
+                "Các quy luật làm thay đổi Tốc độ phản ứng và Chất xúc tác",
+                F("Quy tắc làm TĂNG tốc độ phản ứng hóa học", "$\\text{Tăng } (C_{\\text{nồng độ}},\\ T_{\\text{nhiệt độ}},\\ p_{\\text{áp suất khí}},\\ S_{\\text{diện tích bề mặt rắn}}) + \\text{Thêm Chất xúc tác} \\implies v_{\\text{phản ứng}} \\text{ TĂNG}$", "Ngược lại, muốn kìm hãm phản ứng có hại (như ôi thiu thức ăn) thì phải **hạ nhiệt độ** (để tủ lạnh) hoặc dùng chất ức chế."),
+                F("Đặc trưng của Chất xúc tác (ví dụ MnO₂ trong phân hủy H₂O₂)", "$2\\text{H}_2\\text{O}_2 \\xrightarrow{\\text{xt } \\text{MnO}_2} 2\\text{H}_2\\text{O} + \\text{O}_2\\uparrow; \\qquad m_{\\text{xúc tác sau PƯ}} = m_{\\text{xúc tác ban đầu}}$", "Chất xúc tác tham gia vào các giai đoạn trung gian làm tăng tốc độ phản ứng nhưng được hoàn trả nguyên vẹn sau phản ứng."),
+            )
         ],
-        questions=[
-            mcq(
-                question=r"Yếu tố nào sau đây không làm thay đổi tốc độ của phản ứng chỉ có chất rắn và dung dịch lỏng tham gia (không có chất khí)?",
-                options=[
-                    r"Nhiệt độ của hỗn hợp phản ứng",
-                    r"Nồng độ của dung dịch chất phản ứng",
-                    r"Áp suất bên ngoài tác dụng lên bình phản ứng",
-                    r"Diện tích bề mặt tiếp xúc của chất rắn",
-                ],
-                answer="C",
-                level="biet",
-                solution=r"Áp suất chỉ ảnh hưởng đến tốc độ của các phản ứng có chất khí tham gia; với phản ứng không có chất khí, áp suất hầu như không ảnh hưởng.",
-            ),
-            mcq(
-                question=r"Việc chẻ nhỏ củi trước khi đưa vào bếp đun nấu nhằm làm tăng tốc độ phản ứng cháy thông qua yếu tố nào?",
-                options=[
-                    r"Tăng diện tích bề mặt tiếp xúc",
-                    r"Tăng áp suất khí quyển",
-                    r"Bổ sung chất xúc tác",
-                    r"Giảm nhiệt độ phản ứng",
-                ],
-                answer="A",
-                level="biet",
-                solution=r"Chẻ nhỏ củi giúp làm tăng diện tích bề mặt tiếp xúc giữa củi (chất rắn) với khí oxygen trong không khí, giúp củi cháy nhanh hơn.",
-            ),
-            mcq(
-                question=r"Trong phản ứng phân hủy hydrogen peroxide $2\text{H}_2\text{O}_2 \xrightarrow{\text{MnO}_2} 2\text{H}_2\text{O} + \text{O}_2\uparrow$, bột $\text{MnO}_2$ đóng vai trò là:",
-                options=[
-                    r"Chất tham gia phản ứng bị tiêu hao hết",
-                    r"Chất sản phẩm của phản ứng",
-                    r"Chất xúc tác làm tăng tốc độ phản ứng",
-                    r"Chất ức chế làm chậm phản ứng",
-                ],
-                answer="C",
-                level="biet",
-                solution=r"$\text{MnO}_2$ làm tăng mạnh tốc độ phân hủy $\text{H}_2\text{O}_2$ nhưng khối lượng và bản chất hóa học của $\text{MnO}_2$ không đổi sau phản ứng, nên $\text{MnO}_2$ là chất xúc tác.",
-            ),
-            mcq(
-                question=r"Phản ứng hóa học nào sau đây là phản ứng thu nhiệt?",
-                options=[
-                    r"Đốt cháy khí methane ($\text{CH}_4$) trong bếp gas",
-                    r"Đốt cháy cồn ($\text{C}_2\text{H}_5\text{OH}$) trong đèn cồn",
-                    r"Nung đá vôi ($\text{CaCO}_3$) ở nhiệt độ cao tạo vôi sống ($\text{CaO}$) và $\text{CO}_2$",
-                    r"Cho vôi sống ($\text{CaO}$) tác dụng với nước (tôi vôi)",
-                ],
-                answer="C",
-                level="biet",
-                solution=r"Phản ứng nhiệt phân đá vôi $\text{CaCO}_3 \xrightarrow{t^\circ} \text{CaO} + \text{CO}_2\uparrow$ cần cung cấp nhiệt liên tục nên là phản ứng thu nhiệt.",
-            ),
-            mcq(
-                question=r"Cho cùng một lượng kẽm ($\text{Zn}$) dạng hạt vào bốn ống nghiệm chứa dung dịch $\text{HCl}$ ở cùng điều kiện. Khí $\text{H}_2$ thoát ra nhanh nhất ở ống nghiệm chứa:",
-                options=[
-                    r"Dung dịch $\text{HCl}$ $0{,}5\text{ M}$ ở $25^\circ\text{C}$",
-                    r"Dung dịch $\text{HCl}$ $2{,}0\text{ M}$ ở $25^\circ\text{C}$",
-                    r"Dung dịch $\text{HCl}$ $0{,}5\text{ M}$ ở $50^\circ\text{C}$",
-                    r"Dung dịch $\text{HCl}$ $2{,}0\text{ M}$ ở $50^\circ\text{C}$",
-                ],
-                answer="D",
-                level="hieu",
-                solution=r"Ống nghiệm chứa dung dịch $\text{HCl}$ có cả nồng độ lớn nhất ($2{,}0\text{ M}$) và nhiệt độ cao nhất ($50^\circ\text{C}$) sẽ cho tốc độ phản ứng lớn nhất.",
-            ),
-            mcq(
-                question=r"Vì sao người ta bảo quản thực phẩm tươi sống (thịt, cá, rau quả) trong tủ lạnh?",
-                options=[
-                    r"Để làm tăng tốc độ các phản ứng sinh hóa trong thực phẩm",
-                    r"Để hạ thấp nhiệt độ, làm giảm tốc độ phân hủy thực phẩm của vi sinh vật và enzyme",
-                    r"Để làm tăng diện tích tiếp xúc của thực phẩm với không khí",
-                    r"Để biến các phản ứng tỏa nhiệt thành phản ứng thu nhiệt",
-                ],
-                answer="B",
-                level="hieu",
-                solution=r"Trong tủ lạnh nhiệt độ thấp làm giảm mạnh tốc độ các phản ứng oxi hóa và phân hủy do enzyme của vi sinh vật, giúp thực phẩm lâu hỏng.",
-            ),
-            tf4(
-                stem=r"Trong phòng thí nghiệm, một học sinh thêm $0{,}5\text{ g}$ bột đen $\text{MnO}_2$ vào ống nghiệm chứa dung dịch $\text{H}_2\text{O}_2$ thấy bọt khí $\text{O}_2$ thoát ra rất mạnh theo phản ứng $2\text{H}_2\text{O}_2 \xrightarrow{\text{MnO}_2} 2\text{H}_2\text{O} + \text{O}_2\uparrow$. Xét tính đúng sai của các phát biểu sau:",
-                statements=[
-                    r"a) Bột $\text{MnO}_2$ là chất xúc tác giúp làm tăng tốc độ phân hủy của $\text{H}_2\text{O}_2$.",
-                    r"b) Sau khi $\text{H}_2\text{O}_2$ phân hủy hết, khối lượng bột $\text{MnO}_2$ giảm đi một nửa.",
-                    r"c) Nếu thay dung dịch $\text{H}_2\text{O}_2$ $3\text{\%}$ bằng dung dịch $\text{H}_2\text{O}_2$ $10\text{\%}$ ở cùng nhiệt độ thì tốc độ thoát khí $\text{O}_2$ ban đầu sẽ nhanh hơn.",
-                    r"d) Nếu không có $\text{MnO}_2$, dung dịch $\text{H}_2\text{O}_2$ hoàn toàn không thể bị phân hủy ở bất kì nhiệt độ nào.",
-                ],
-                answer="Đ/S/Đ/S",
-                level="hieu",
-                solution=(
-                    r"a) Đúng vì $\text{MnO}_2$ đóng vai trò chất xúc tác làm tăng tốc độ phân hủy $\text{H}_2\text{O}_2$. "
-                    r"b) Sai vì chất xúc tác không bị tiêu hao sau phản ứng nên khối lượng $\text{MnO}_2$ thu hồi được vẫn là $0{,}5\text{ g}$. "
-                    r"c) Đúng vì tăng nồng độ chất phản ứng $\text{H}_2\text{O}_2$ từ $3\text{\%}$ lên $10\text{\%}$ làm tăng tốc độ phản ứng. "
-                    r"d) Sai vì khi không có xúc tác, $\text{H}_2\text{O}_2$ vẫn tự phân hủy chậm (và phân hủy nhanh hơn khi đun nóng hoặc chiếu sáng)."
-                ),
-            ),
-            tf4(
-                stem=r"Xét các biện pháp điều khiển tốc độ phản ứng và sự biến thiên nhiệt trong thực tiễn đời sống và sản xuất. Xét tính đúng sai của các phát biểu sau:",
-                statements=[
-                    r"a) Khi nướng bánh hoặc ủ rượu, men vi sinh chứa các enzyme đóng vai trò là chất xúc tác sinh học.",
-                    r"b) Đập nhỏ quặng pyrite ($\text{FeS}_2$) trước khi đưa vào lò đốt để sản xuất $\text{SO}_2$ nhằm mục đích làm giảm tốc độ phản ứng.",
-                    r"c) Phản ứng đốt cháy nhiên liệu xăng, dầu, khí hóa lỏng ($\text{LPG}$) trong động cơ và bếp đun là các phản ứng tỏa nhiệt.",
-                    r"d) Nấu thức ăn trong nồi áp suất lâu chín hơn so với nồi thường vì áp suất và nhiệt độ nước sôi trong nồi áp suất thấp hơn.",
-                ],
-                answer="Đ/S/Đ/S",
-                level="hieu",
-                solution=(
-                    r"a) Đúng vì enzyme trong men là chất xúc tác sinh học thúc đẩy nhanh quá trình lên men ở nhiệt độ thường. "
-                    r"b) Sai vì đập nhỏ quặng làm tăng diện tích bề mặt tiếp xúc nhằm tăng tốc độ phản ứng đốt quặng. "
-                    r"c) Đúng vì quá trình đốt cháy nhiên liệu luôn giải phóng lượng nhiệt lớn ra môi trường. "
-                    r"d) Sai vì trong nồi áp suất, áp suất và nhiệt độ sôi của nước cao hơn ($> 100^\circ\text{C}$) nên tốc độ phản ứng làm chín thức ăn nhanh hơn."
-                ),
-            ),
-            mcq(
-                question=r"Thực hiện phản ứng $\text{Mg} + 2\text{HCl} \longrightarrow \text{MgCl}_2 + \text{H}_2\uparrow$ trong bình chứa $200\text{ mL}$ dung dịch $\text{HCl}$ (coi thể tích dung dịch không đổi). Sau $50\text{ giây}$, nồng độ của dung dịch $\text{HCl}$ giảm từ $1{,}2\text{ M}$ xuống còn $0{,}4\text{ M}$. Tốc độ trung bình của phản ứng tính theo độ giảm nồng độ $\text{HCl}$ trong khoảng thời gian trên là:",
-                options=[
-                    r"$0{,}008\text{ M/s}$",
-                    r"$0{,}016\text{ M/s}$",
-                    r"$0{,}024\text{ M/s}$",
-                    r"$0{,}032\text{ M/s}$",
-                ],
-                answer="B",
-                level="vandung",
-                solution=r"Độ giảm nồng độ $\text{HCl}$ là $\Delta C = 1{,}2 - 0{,}4 = 0{,}8\text{ M}$. Tốc độ trung bình tính theo $\text{HCl}$ là $\overline{v} = \dfrac{\Delta C}{\Delta t} = \dfrac{0{,}8}{50} = 0{,}016\text{ M/s}$.",
-            ),
-            short(
-                question=r"Cho lượng dư bột kẽm ($\text{Zn}$) tác dụng với dung dịch $\text{H}_2\text{SO}_4\text{ loãng}$. Sau $10\text{ giây}$ đầu tiên, thu được $0{,}7437\text{ L}$ khí $\text{H}_2$ ở điều kiện chuẩn ($25^\circ\text{C}$, $1\text{ bar}$). Tính tốc độ trung bình của phản ứng tính theo số mol khí $\text{H}_2$ tạo thành trong mỗi giây (đơn vị $\text{mol/s}$).",
-                answer=["0,003", "0.003"],
-                level="vandung",
-                solution=r"Số mol khí $\text{H}_2$ thu được ở đkc sau $10\text{ giây}$ là $n_{\text{H}_2} = \dfrac{0{,}7437}{24{,}79} = 0{,}03\text{ mol}$. Tốc độ trung bình tính theo số mol $\text{H}_2$ mỗi giây là $\dfrac{0{,}03}{10} = 0{,}003\text{ mol/s}$.",
-            ),
+        example="Cho cùng $2\\text{ g}$ đá vôi ($\\text{CaCO}_3$) vào hai ống nghiệm chứa cùng một thể tích dung dịch hydrochloric acid ($\\text{HCl}$): ở ống nghiệm (1) dùng đá vôi dạng bột mịn và dung dịch $\\text{HCl } 2\\text{ M}$; ở ống nghiệm (2) dùng đá vôi dạng một viên nguyên khối và dung dịch $\\text{HCl } 0{,}5\\text{ M}$. Hãy cho biết ở ống nghiệm nào bọt khí $\\text{CO}_2$ thoát ra nhanh và mạnh hơn? Giải thích dựa trên các yếu tố ảnh hưởng đến tốc độ phản ứng.",
+        example_answer="Ở **ống nghiệm (1)** bọt khí $\\text{CO}_2$ thoát ra nhanh và mạnh hơn hẳn vì cả hai yếu tố đều thuận lợi hơn: (1) Đá vôi dạng bột mịn có **diện tích bề mặt tiếp xúc lớn hơn** viên đá khối; (2) Dung dịch $\\text{HCl } 2\\text{ M}$ có **nồng độ lớn hơn** dung dịch $\\text{HCl } 0{,}5\\text{ M}$.",
+        real_life="Nồi áp suất giúp hầm xương nhanh nhừ nhờ tăng áp suất và tăng nhiệt độ sôi của nước lên trên $100^\\circ\\text{C}$; men rượu (chứa enzyme sinh học) đóng vai trò chất xúc tác giúp chuyển hóa nhanh tinh bột và đường thành rượu etylic.",
+        quiz=[
+            mcq("biet", "Chất làm tăng tốc độ của một phản ứng hóa học nhưng vẫn giữ nguyên về khối lượng và bản chất hóa học sau khi phản ứng kết thúc được gọi là gì?", ["Chất xúc tác", "Chất phản ứng chính", "Chất sản phẩm", "Dung môi hòa tan"], 0, "Chất xúc tác làm tăng tốc độ phản ứng nhưng không bị tiêu hao sau khi phản ứng kết thúc."),
+            mcq("biet", "Khi cho cùng một lượng kẽm hạt ($\\text{Zn}$) vào hai cốc đựng dung dịch hydrochloric acid ($\\text{HCl}$) có nồng độ lần lượt là $0{,}5\\text{ M}$ (cốc 1) và $2{,}0\\text{ M}$ (cốc 2) ở cùng nhiệt độ, hiện tượng nào xảy ra?", ["Tốc độ thoát khí $\\text{H}_2$ ở cốc 2 nhanh hơn ở cốc 1 do nồng độ acid lớn hơn", "Tốc độ thoát khí ở cốc 1 nhanh hơn ở cốc 2", "Tốc độ thoát khí ở hai cốc hoàn toàn như nhau", "Cả hai cốc đều không có phản ứng"], 0, "Khi nồng độ chất phản ứng tăng ($2{,}0\\text{ M} > 0{,}5\\text{ M}$) thì tốc độ phản ứng tăng."),
+            mcq("hieu", "Vì sao khi muối dưa cải hoặc làm sữa chua vào mùa hè (trời ấm) thì dưa cải và sữa chua nhanh chua hơn vào mùa đông (trời lạnh)?", ["Vì nhiệt độ mùa hè cao hơn làm tăng tốc độ phản ứng lên men lactic của vi khuẩn", "Vì mùa hè nồng độ muối bằng không", "Vì mùa đông không có khí oxygen", "Vì nhiệt độ tăng làm giảm tốc độ phản ứng"], 0, "Nhiệt độ tăng làm tăng tốc độ của các phản ứng hóa học và sinh hóa (lên men chua)."),
+            tf4("hieu", "Xét tính đúng/sai của các phát biểu sau về tốc độ phản ứng và chất xúc tác:", [
+                "Đập nhỏ đá vôi trước khi đưa vào lò nung vôi giúp làm tăng diện tích bề mặt tiếp xúc, từ đó tăng tốc độ phản ứng phân hủy.",
+                "Bảo quản thực phẩm trong ngăn mát hoặc ngăn đông tủ lạnh là ứng dụng yếu tố giảm nhiệt độ để làm chậm tốc độ phản ứng phân hủy thức ăn.",
+                "Sau khi phản ứng phân hủy $\\text{H}_2\\text{O}_2$ có xúc tác $\\text{MnO}_2$ kết thúc hoàn toàn, lượng bột $\\text{MnO}_2$ bị mất đi một nửa khối lượng.",
+                "Các enzyme (như amylase trong nước bọt, pepsin trong dạ dày) là các chất xúc tác sinh học giúp tiêu hóa nhanh thức ăn ở nhiệt độ cơ thể $37^\\circ\\text{C}$.",
+            ], [True, True, False, True], "Ý c) sai vì $\\text{MnO}_2$ là chất xúc tác nên khối lượng của nó sau phản ứng vẫn giữ nguyên không đổi."),
+            short("vandung", "Người ta thêm $0{,}5\\text{ g}$ bột $\\text{MnO}_2$ làm chất xúc tác vào ống nghiệm chứa dung dịch $\\text{H}_2\\text{O}_2$ để phân hủy tạo khí $\\text{O}_2$. Sau khi phản ứng kết thúc hoàn toàn, nếu lọc tách và làm khô phần bột $\\text{MnO}_2$ thì thu lại được bao nhiêu gam ($\\text{g}$) $\\text{MnO}_2$?", ["0,5", "0.5"], "Vì chất xúc tác không bị tiêu hao trong phản ứng nên khối lượng $\\text{MnO}_2$ thu lại sau phản ứng vẫn đúng bằng $0{,}5\\text{ g}$.", unit="g"),
         ],
-        description="Khái niệm tốc độ phản ứng, 5 yếu tố ảnh hưởng đến tốc độ phản ứng, chất xúc tác và phản ứng tỏa nhiệt - thu nhiệt theo chương trình KHTN 8 Kết nối tri thức.",
+    ),
+    bai(
+        topic=CH2[0], chapter_title=CH2[1], chapter_desc=CH2[2],
+        title="Bài 9: Acid",
+        icon="🍋",
+        description="Khái niệm Acid (phân li ra ion H⁺ trong nước), công thức các acid thông dụng (HCl, H₂SO₄, HNO₃, CH₃COOH) và tính chất hóa học của acid (đổi màu quỳ tím thành đỏ, tác dụng với kim loại).",
+        requirements=[
+            "Định nghĩa được **Acid** là những hợp chất trong phân tử có nguyên tử hydrogen ($\\text{H}$) liên kết với gốc acid; khi tan trong nước, acid tạo ra **ion $\\text{H}^+$**.",
+            "Viết đúng công thức hóa học và đọc tên chuẩn IUPAC của các acid quan trọng: hydrochloric acid ($\\text{HCl}$), sulfuric acid ($\\text{H}_2\\text{SO}_4$), nitric acid ($\\text{HNO}_3$), carbonic acid ($\\text{H}_2\\text{CO}_3$), phosphoric acid ($\\text{H}_3\\text{PO}_4$), acetic acid ($\\text{CH}_3\\text{COOH}$).",
+            "Trình bày và viết được phương trình hóa học minh họa tính chất của dung dịch acid: làm đổi màu **giấy quỳ tím thành đỏ** và tác dụng với các kim loại hoạt động đứng trước $\\text{H}$ ($\\text{Mg}, \\text{Al}, \\text{Zn}, \\text{Fe}$) giải phóng khí $\\text{H}_2$.",
+        ],
+        definition="Acid là những hợp chất trong phân tử có nguyên tử hydrogen ($\\text{H}$) liên kết với gốc acid. Khi tan trong nước, các acid phân li tạo ra các ion dương $\\text{H}^+$ (chính ion $\\text{H}^+$ quyết định các tính chất hóa học đặc trưng của dung dịch acid).",
+        theory=(
+            "### 1. Khái niệm, Công thức và Tên gọi của một số Acid\n"
+            "- Công thức chung của acid vô cơ: $\\text{H}_n A$ (trong đó $n$ là số nguyên tử $\\text{H}$ có khả năng phân li ra $\\text{H}^+$, cũng bằng hóa trị của gốc acid $A$):\n"
+            "  - $\\text{HCl} \\longrightarrow \\text{H}^+ + \\text{Cl}^-$: **Hydrochloric acid** (gốc $-\\text{Cl}$: chloride, hóa trị $\\text{I}$).\n"
+            "  - $\\text{H}_2\\text{SO}_4 \\longrightarrow 2\\text{H}^+ + \\text{SO}_4^{2-}$: **Sulfuric acid** (gốc $=\\text{SO}_4$: sulfate, hóa trị $\\text{II}$).\n"
+            "  - $\\text{HNO}_3 \\longrightarrow \\text{H}^+ + \\text{NO}_3^-$: **Nitric acid** (gốc $-\\text{NO}_3$: nitrate, hóa trị $\\text{I}$).\n"
+            "  - $\\text{H}_3\\text{PO}_4$: **Phosphoric acid** (gốc $\\equiv\\text{PO}_4$: phosphate, hóa trị $\\text{III}$).\n"
+            "  - $\\text{CH}_3\\text{COOH} \\rightleftharpoons \\text{H}^+ + \\text{CH}_3\\text{COO}^-$: **Acetic acid** (có trong giấm ăn, gốc $\\text{CH}_3\\text{COO}-$: acetate, hóa trị $\\text{I}$).\n\n"
+            "### 2. Tính chất hóa học cơ bản của Dung dịch Acid\n"
+            "1. **Tác dụng với chất chỉ thị màu**: Dung dịch acid làm **đổi màu giấy quỳ tím thành màu đỏ (hoặc hồng)**; không làm đổi màu dung dịch phenolphthalein.\n"
+            "2. **Tác dụng với kim loại hoạt động** (đứng trước $\\text{H}$ như $\\text{Mg}, \\text{Al}, \\text{Zn}, \\text{Fe}$; **không** tác dụng với $\\text{Cu}, \\text{Ag}, \\text{Au}$ đối với $\\text{HCl}$ và $\\text{H}_2\\text{SO}_4$ loãng):\n"
+            "   $$\\text{Kim loại (Mg, Al, Zn, Fe)} + \\text{Acid (HCl, H}_2\\text{SO}_4\\text{ loãng)} \\longrightarrow \\text{Muối} + \\text{H}_2\\uparrow$$\n"
+            "   *(Lưu ý cực kì quan trọng: Khi sắt $\\text{Fe}$ tác dụng với dung dịch $\\text{HCl}$ hoặc $\\text{H}_2\\text{SO}_4$ loãng chỉ tạo ra muối **iron(II)** là $\\text{FeCl}_2$ hoặc $\\text{FeSO}_4$, không tạo muối $\\text{Fe(III)}$!)*"
+        ),
+        formulas=[
+            G(
+                "Sự phân li ion H⁺ và Phương trình phản ứng của Acid với Kim loại",
+                F("Sự phân li tạo ion H⁺ và Chỉ thị màu", "$\\text{H}_n A \\xrightarrow{\\text{H}_2\\text{O}} n\\text{H}^+ + A^{n-}; \\qquad \\text{Dung dịch Acid} + \\text{Quỳ tím} \\longrightarrow \\text{Màu ĐỎ}$", "Dung dịch acid không làm đổi màu phenolphthalein."),
+                F("Các phương trình kim loại tác dụng với HCl và H₂SO₄ loãng", "$\\text{Mg} + 2\\text{HCl} \\to \\text{MgCl}_2 + \\text{H}_2\\uparrow; \\quad \\text{Fe} + \\text{H}_2\\text{SO}_4\\text{(loãng)} \\to \\text{FeSO}_4 + \\text{H}_2\\uparrow; \\quad 2\\text{Al} + 6\\text{HCl} \\to 2\\text{AlCl}_3 + 3\\text{H}_2\\uparrow$", "Kim loại Copper ($\\text{Cu}$) và Silver ($\\text{Ag}$) **không** phản ứng với dung dịch $\\text{HCl}$ và $\\text{H}_2\\text{SO}_4$ loãng."),
+            )
+        ],
+        example="Cho $5{,}6\\text{ g}$ bột sắt ($\\text{Fe} = 56$) vào dung dịch hydrochloric acid ($\\text{HCl}$) lấy dư. Hãy nêu hiện tượng quan sát được, viết phương trình hóa học và tính thể tích khí hydrogen ($\\text{H}_2$) thoát ra ở điều kiện chuẩn ($25^\\circ\\text{C}, 1\\text{ bar}$).",
+        example_answer="- **Hiện tượng**: Bột sắt tan dần, có bọt khí không màu ($\\text{H}_2$) sủi lên và tạo thành dung dịch muối iron(II) chloride ($\\text{FeCl}_2$) màu lục nhạt.\n- **Phương trình hóa học**: $\\text{Fe} + 2\\text{HCl} \\longrightarrow \\text{FeCl}_2 + \\text{H}_2\\uparrow$.\n- **Tính toán**: Ta có $n_{\\text{Fe}} = \\dfrac{5{,}6}{56} = 0{,}1\\text{ mol}$. Theo PTHH: $n_{\\text{H}_2} = n_{\\text{Fe}} = 0{,}1\\text{ mol} \\implies V_{\\text{H}_2(\\text{đkc})} = 24{,}79 \\cdot 0{,}1 = 2{,}479\\text{ lít}$.",
+        real_life="Dịch vị dạ dày con người có chứa hydrochloric acid ($\\text{HCl}$) loãng giúp tiêu hóa thức ăn và diệt khuẩn; giấm ăn chứa acetic acid ($\\text{CH}_3\\text{COOH}$); bình ắc quy chì chứa dung dịch sulfuric acid ($\\text{H}_2\\text{SO}_4$).",
+        quiz=[
+            mcq("biet", "Khi tan trong nước, mọi hợp chất **Acid** đều phân li tạo ra loại ion dương đặc trưng nào?", ["Ion $\\text{H}^+$", "Ion $\\text{OH}^-$", "Ion $\\text{Na}^+$", "Ion $\\text{Cl}^-$"], 0, "Acid là những hợp chất khi tan trong nước tạo ra ion $\\text{H}^+$."),
+            mcq("biet", "Nhỏ vài giọt dung dịch hydrochloric acid ($\\text{HCl}$) hoặc nước cốt chanh lên mẩu **giấy quỳ tím** thì giấy quỳ tím chuyển sang màu gì?", ["Chuyển sang màu đỏ (hoặc hồng)", "Chuyển sang màu xanh", "Chuyển sang màu đen", "Giữ nguyên màu tím"], 0, "Dung dịch acid làm đổi màu giấy quỳ tím thành màu đỏ (acid yếu như nước chanh làm hóa đỏ nhạt/hồng)."),
+            mcq("hieu", "Kim loại nào sau đây **không** phản ứng với dung dịch hydrochloric acid ($\\text{HCl}$) và dung dịch sulfuric acid ($\\text{H}_2\\text{SO}_4$) loãng?", ["Copper ($\\text{Cu}$ – đồng)", "Magnesium ($\\text{Mg}$)", "Zinc ($\\text{Zn}$ – kẽm)", "Iron ($\\text{Fe}$ – sắt)"], 0, "Kim loại đồng ($\\text{Cu}$) đứng sau $\\text{H}$ trong dãy hoạt động hóa học nên không tác dụng với dung dịch $\\text{HCl}$ và $\\text{H}_2\\text{SO}_4$ loãng."),
+            tf4("hieu", "Xét tính đúng/sai của các phát biểu sau về Acid:", [
+                "Khi cho sắt ($\\text{Fe}$) tác dụng với dung dịch $\\text{HCl}$, sản phẩm tạo thành là muối $\\text{FeCl}_2$ và khí $\\text{H}_2$.",
+                "Dung dịch sulfuric acid có công thức hóa học là $\\text{H}_2\\text{SO}_4$, trong đó gốc sulfate ($=\\text{SO}_4$) có hóa trị $\\text{II}$.",
+                "Khi nhỏ dung dịch acid vào dung dịch phenolphthalein không màu thì dung dịch chuyển sang màu hồng đậm.",
+                "Mưa acid hình thành chủ yếu do các khí thải công nghiệp $\\text{SO}_2$ và $\\text{NO}_x$ hòa tan vào nước mưa tạo thành $\\text{H}_2\\text{SO}_4$ và $\\text{HNO}_3$.",
+            ], [True, True, False, True], "Ý c) sai vì dung dịch acid không làm đổi màu phenolphthalein (chỉ có dung dịch base/kiềm mới làm phenolphthalein hóa hồng)."),
+            short("vandung", "Cho $0{,}2\\text{ mol}$ kim loại magnesium ($\\text{Mg}$) tác dụng hoàn toàn với dung dịch $\\text{H}_2\\text{SO}_4$ loãng dư theo phương trình: $\\text{Mg} + \\text{H}_2\\text{SO}_4 \\longrightarrow \\text{MgSO}_4 + \\text{H}_2\\uparrow$. Số mol khí $\\text{H}_2$ thu được bằng bao nhiêu $\\text{mol}$?", ["0,2", "0.2"], "Theo phương trình hóa học (tỉ lệ $1 : 1$), số mol khí $\\text{H}_2$ thu được là $n_{\\text{H}_2} = n_{\\text{Mg}} = 0{,}2\\text{ mol}$.", unit="mol"),
+        ],
+    ),
+    bai(
+        topic=CH2[0], chapter_title=CH2[1], chapter_desc=CH2[2],
+        title="Bài 10: Base và thang pH",
+        icon="🧼",
+        description="Khái niệm Base (M(OH)_n phân li ra ion OH⁻), phân biệt base kiềm (tan) và base không tan, tính chất hóa học của base (quỳ tím hóa xanh, phenolphthalein hóa hồng, phản ứng trung hòa) và thang pH (1–14).",
+        requirements=[
+            "Định nghĩa được **Base** là những hợp chất trong phân tử có nguyên tử kim loại liên kết với nhóm hydroxide ($-\\text{OH}$); khi tan trong nước, base tạo ra **ion $\\text{OH}^-$**.",
+            "Phân biệt được **base tan (kiềm)**: $\\text{NaOH}, \\text{KOH}, \\text{Ca(OH)}_2, \\text{Ba(OH)}_2$ với **base không tan** trong nước: $\\text{Mg(OH)}_2, \\text{Cu(OH)}_2$ (xanh lam), $\\text{Fe(OH)}_3$ (nâu đỏ), $\\text{Al(OH)}_3$ (trắng keo); viết được phương trình phản ứng trung hòa $\\text{Acid} + \\text{Base} \\to \\text{Muối} + \\text{H}_2\\text{O}$.",
+            "Sử dụng được **thang $\\text{pH}$** để đánh giá độ acid – base của dung dịch: $\\text{pH} < 7$ (môi trường acid), $\\text{pH} = 7$ (môi trường trung tính), $\\text{pH} > 7$ (môi trường base/kiềm).",
+        ],
+        definition="Base là những hợp chất trong phân tử có nguyên tử kim loại liên kết với một hay nhiều nhóm hydroxide ($-\\text{OH}$); khi tan trong nước, base tạo ra ion $\\text{OH}^-$. Thang pH (thường từ $1$ đến $14$) dùng để biểu thị độ acid hoặc độ base của dung dịch: $\\text{pH} < 7$ là môi trường acid, $\\text{pH} = 7$ là môi trường trung tính, $\\text{pH} > 7$ là môi trường base.",
+        theory=(
+            "### 1. Khái niệm, Phân loại và Tính chất hóa học của Base\n"
+            "- **Công thức chung**: $M(\\text{OH})_n$ (với $n$ là hóa trị của kim loại $M$, vì nhóm $-\\text{OH}$ có hóa trị $\\text{I}$). Tên gọi: $\\text{Tên kim loại (kèm hóa trị nếu nhiều hóa trị)} + \\text{hydroxide}$.\n"
+            "- **Phân loại Base theo tính tan trong nước**:\n"
+            "  1. **Base tan trong nước (gọi là Kiềm)**: $\\text{NaOH}$ (sodium hydroxide – xút ăn da), $\\text{KOH}$ (potassium hydroxide), $\\text{Ba(OH)}_2$ (barium hydroxide) và $\\text{Ca(OH)}_2$ (calcium hydroxide – vôi tôi, ít tan tạo dung dịch nước vôi trong).\n"
+            "  2. **Base không tan trong nước (chất kết tủa)**: $\\text{Cu(OH)}_2\\downarrow$ (màu xanh lam), $\\text{Fe(OH)}_3\\downarrow$ (màu nâu đỏ), $\\text{Fe(OH)}_2\\downarrow$ (trắng xanh), $\\text{Mg(OH)}_2\\downarrow$ (trắng), $\\text{Al(OH)}_3\\downarrow$ (keo trắng).\n"
+            "- **Tính chất hóa học**:\n"
+            "  - **Đổi màu chất chỉ thị**: Dung dịch base (kiềm) làm **giấy quỳ tím chuyển sang màu xanh** và làm **dung dịch phenolphthalein không màu chuyển sang màu hồng**.\n"
+            "  - **Tác dụng với dung dịch Acid (Phản ứng trung hòa)**: $\\text{Base} + \\text{Acid} \\longrightarrow \\text{Muối} + \\text{H}_2\\text{O}$ (cả base tan và base không tan đều phản ứng với acid!).\n\n"
+            "### 2. Thang pH\n"
+            "- Giá trị $\\text{pH}$ thường nhận từ $1$ đến $14$:\n"
+            "  - **$\\text{pH} = 7$**: môi trường **trung tính** (nước cất, dung dịch $\\text{NaCl}$).\n"
+            "  - **$\\text{pH} < 7$**: môi trường **acid** ($\\text{pH}$ càng nhỏ thì độ acid càng mạnh).\n"
+            "  - **$\\text{pH} > 7$**: môi trường **base / kiềm** ($\\text{pH}$ càng lớn thì độ kiềm càng mạnh)."
+        ),
+        formulas=[
+            G(
+                "Phản ứng của Base, Chất chỉ thị màu và Thang pH",
+                F("Đổi màu chất chỉ thị của Dung dịch Kiềm và Phản ứng trung hòa", "$\\text{Dung dịch Kiềm} \\implies \\begin{cases} \\text{Quỳ tím} \\to \\text{XANH} \\\\ \\text{Phenolphthalein} \\to \\text{HỒNG} \\end{cases}; \\qquad \\text{Base} + \\text{Acid} \\longrightarrow \\text{Muối} + \\text{H}_2\\text{O}$", "Ví dụ: $\\text{NaOH} + \\text{HCl} \\to \\text{NaCl} + \\text{H}_2\\text{O}$; $\\text{Cu(OH)}_2 + 2\\text{HCl} \\to \\text{CuCl}_2 + 2\\text{H}_2\\text{O}$."),
+                F("Quy ước Thang pH (1 ➔ 14)", "$\\text{pH} < 7: \\text{Môi trường ACID } (\\text{pH} \\downarrow \\Rightarrow \\text{acid tăng}); \\quad \\text{pH} = 7: \\text{TRUNG TÍNH}; \\quad \\text{pH} > 7: \\text{Môi trường BASE } (\\text{pH} \\uparrow \\Rightarrow \\text{kiềm tăng})$", "Khi đất trồng bị chua ($\\text{pH} < 5$), người nông dân bón vôi bột ($\\text{CaO}$ hoặc $\\text{Ca(OH)}_2$) để khử chua (tăng $\\text{pH}$ của đất)."),
+            )
+        ],
+        example="Cho hai dung dịch không màu đựng trong hai lọ mất nhãn là dung dịch hydrochloric acid ($\\text{HCl}$) và dung dịch sodium hydroxide ($\\text{NaOH}$). Hãy trình bày cách nhận biết hai lọ bằng giấy quỳ tím hoặc dung dịch phenolphthalein, và viết phương trình hóa học khi trộn hai dung dịch này với nhau.",
+        example_answer="- **Dùng giấy quỳ tím**: Nhỏ mẫu thử lên giấy quỳ tím; mẫu làm quỳ tím hóa **đỏ** là dung dịch $\\text{HCl}$ (acid), mẫu làm quỳ tím hóa **xanh** là dung dịch $\\text{NaOH}$ (base kiềm). *(Nếu dùng phenolphthalein thì mẫu hóa hồng là $\\text{NaOH}$, mẫu không đổi màu là $\\text{HCl}$)*. \n- **Phương trình phản ứng trung hòa**: $\\text{NaOH} + \\text{HCl} \\longrightarrow \\text{NaCl} + \\text{H}_2\\text{O}$.",
+        real_life="Thuốc kháng acid dạ dày (Antacid) chứa base không tan $\\text{Mg(OH)}_2$ và $\\text{Al(OH)}_3$ giúp trung hòa lượng acid $\\text{HCl}$ dư thừa trong dạ dày (đưa $\\text{pH}$ dạ dày về mức ổn định) để giảm đau rát thượng vị.",
+        quiz=[
+            mcq("biet", "Khi tan trong nước, các hợp chất **Base (Kiềm)** phân li tạo ra loại ion âm đặc trưng nào?", ["Ion hydroxide ($\\text{OH}^-$)", "Ion $\\text{H}^+$", "Ion $\\text{Cl}^-$", "Ion $\\text{SO}_4^{2-}$"], 0, "Base là những hợp chất khi tan trong nước tạo ra ion $\\text{OH}^-$."),
+            mcq("biet", "Nhỏ vài giọt dung dịch sodium hydroxide ($\\text{NaOH}$) vào ống nghiệm đựng dung dịch **phenolphthalein** không màu thì dung dịch chuyển sang màu gì?", ["Chuyển sang màu hồng", "Chuyển sang màu xanh lam", "Giữ nguyên không màu", "Chuyển sang màu vàng"], 0, "Dung dịch kiềm ($\\text{NaOH}, \\text{KOH}, \\text{Ca(OH)}_2, \\text{Ba(OH)}_2$) làm dung dịch phenolphthalein không màu chuyển sang màu hồng (và làm quỳ tím hóa xanh)."),
+            mcq("hieu", "Một mẫu nước mưa đo được $\\text{pH} = 5{,}2$ và một mẫu nước xà phòng đo được $\\text{pH} = 9{,}5$. Nhận xét nào sau đây về môi trường của hai mẫu này là **đúng**?", ["Mẫu nước mưa có môi trường acid ($\\text{pH} < 7$), còn mẫu nước xà phòng có môi trường base/kiềm ($\\text{pH} > 7$)", "Mẫu nước mưa có môi trường base, còn nước xà phòng có môi trường acid", "Cả hai mẫu đều có môi trường trung tính", "Cả hai mẫu đều có môi trường acid mạnh"], 0, "Theo thang pH: $\\text{pH} = 5{,}2 < 7$ là môi trường acid; $\\text{pH} = 9{,}5 > 7$ là môi trường base (kiềm)."),
+            tf4("hieu", "Xét tính đúng/sai của các phát biểu sau về Base và thang pH:", [
+                "Các base tan tốt trong nước như $\\text{NaOH}, \\text{KOH}, \\text{Ba(OH)}_2$ được gọi là các kiềm.",
+                "Copper(II) hydroxide $\\text{Cu(OH)}_2$ là một base không tan trong nước có màu xanh lam, nhưng tan được trong dung dịch acid $\\text{HCl}$ tạo muối và nước.",
+                "Trong vùng $\\text{pH} < 7$, giá trị $\\text{pH}$ càng lớn thì độ acid của dung dịch càng mạnh.",
+                "Người nông dân rắc vôi bột ($\\text{CaO}$ hoặc $\\text{Ca(OH)}_2$) lên ruộng bị chua là ứng dụng phản ứng trung hòa giữa base và acid trong đất.",
+            ], [True, True, False, True], "Ý c) sai vì trong vùng $\\text{pH} < 7$, giá trị $\\text{pH}$ **càng nhỏ** (càng gần $1$) thì độ acid của dung dịch càng mạnh."),
+            short("vandung", "Ở nhiệt độ thường ($25^\\circ\\text{C}$), nước cất tinh khiết (môi trường trung tính) có giá trị $\\text{pH}$ bằng bao nhiêu?", ["7"], "Môi trường trung tính (nước tinh khiết ở $25^\\circ\\text{C}$) có giá trị $\\text{pH} = 7$."),
+        ],
+    ),
+    bai(
+        topic=CH2[0], chapter_title=CH2[1], chapter_desc=CH2[2],
+        title="Bài 11: Oxide",
+        icon="🪨",
+        description="Khái niệm Oxide, phân loại 4 nhóm oxide (oxide base, oxide acid, oxide lưỡng tính, oxide trung tính) và tính chất hóa học của oxide base, oxide acid.",
+        requirements=[
+            "Định nghĩa được **Oxide** là hợp chất của hai nguyên tố, trong đó có một nguyên tố là oxygen ($\\text{O}$).",
+            "Phân loại được các oxide thành 4 nhóm theo tính chất hóa học: **oxide base** ($\\text{CuO}, \\text{Fe}_2\\text{O}_3, \\text{CaO}, \\text{Na}_2\\text{O}$), **oxide acid** ($\\text{CO}_2, \\text{SO}_2, \\text{SO}_3, \\text{P}_2\\text{O}_5$), **oxide lưỡng tính** ($\\text{Al}_2\\text{O}_3, \\text{ZnO}$) và **oxide trung tính** ($\\text{CO}, \\text{NO}$).",
+            "Viết được phương trình hóa học của oxide base tác dụng với dung dịch acid ($\\text{Oxide base} + \\text{Acid} \\to \\text{Muối} + \\text{H}_2\\text{O}$) và oxide acid tác dụng với dung dịch kiềm ($\\text{Oxide acid} + \\text{Dung dịch Base} \\to \\text{Muối} + \\text{H}_2\\text{O}$).",
+        ],
+        definition="Oxide là hợp chất của hai nguyên tố, trong đó có một nguyên tố là oxygen ($\\text{O}$). Dựa vào tính chất hóa học, oxide được chia thành 4 loại: oxide base, oxide acid, oxide lưỡng tính và oxide trung tính.",
+        theory=(
+            "### 1. Khái niệm và Phân loại 4 nhóm Oxide\n"
+            "1. **Oxide base**: là những oxide tác dụng được với dung dịch acid tạo thành muối và nước (thường là oxide của kim loại như $\\text{Na}_2\\text{O}, \\text{K}_2\\text{O}, \\text{CaO}, \\text{BaO}, \\text{MgO}, \\text{CuO}, \\text{FeO}, \\text{Fe}_2\\text{O}_3$).\n"
+            "2. **Oxide acid**: là những oxide tác dụng được với dung dịch base (kiềm) tạo thành muối và nước (thường là oxide của phi kim như $\\text{CO}_2, \\text{SO}_2, \\text{SO}_3, \\text{P}_2\\text{O}_5, \\text{N}_2\\text{O}_5, \\text{SiO}_2$).\n"
+            "3. **Oxide lưỡng tính**: là những oxide vừa tác dụng được với dung dịch acid vừa tác dụng được với dung dịch base (kiềm) đều tạo thành muối và nước: tiêu biểu nhất là **$\\text{Al}_2\\text{O}_3$** (aluminium oxide) và **$\\text{ZnO}$** (zinc oxide).\n"
+            "4. **Oxide trung tính (oxide không tạo muối)**: không tác dụng với acid, không tác dụng với base và không tác dụng với nước: tiêu biểu là **$\\text{CO}$** (carbon monoxide) và **$\\text{NO}$** (nitrogen monoxide).\n\n"
+            "### 2. Tính chất hóa học trọng tâm của Oxide base và Oxide acid\n"
+            "- **Oxide base $+$ Dung dịch Acid $\\longrightarrow$ Muối $+$ Nước**:\n"
+            "  $$\\text{CuO} + 2\\text{HCl} \\longrightarrow \\text{CuCl}_2 + \\text{H}_2\\text{O}; \\qquad \\text{Fe}_2\\text{O}_3 + 3\\text{H}_2\\text{SO}_4 \\longrightarrow \\text{Fe}_2(\\text{SO}_4)_3 + 3\\text{H}_2\\text{O}$$\n"
+            "- **Oxide acid $+$ Dung dịch Base (kiềm) $\\longrightarrow$ Muối $+$ Nước**:\n"
+            "  $$\\text{CO}_2 + \\text{Ca(OH)}_2 \\longrightarrow \\text{CaCO}_3\\downarrow + \\text{H}_2\\text{O}; \\qquad \\text{SO}_2 + 2\\text{NaOH} \\longrightarrow \\text{Na}_2\\text{SO}_3 + \\text{H}_2\\text{O}$$"
+        ),
+        formulas=[
+            G(
+                "Phân loại 4 nhóm Oxide và Phương trình hóa học đặc trưng",
+                F("Bốn nhóm Oxide theo tính chất hóa học", "$\\begin{cases} \\text{Oxide base}: \\text{CaO, CuO, Fe}_2\\text{O}_3, \\text{Na}_2\\text{O} \\\\ \\text{Oxide acid}: \\text{CO}_2, \\text{SO}_2, \\text{SO}_3, \\text{P}_2\\text{O}_5 \\\\ \\text{Oxide lưỡng tính}: \\text{Al}_2\\text{O}_3, \\text{ZnO} \\\\ \\text{Oxide trung tính}: \\text{CO, NO} \\end{cases}$", "Chú ý $\\text{CO}$ và $\\text{NO}$ là oxide trung tính (không phản ứng với dung dịch acid hay kiềm)!"),
+                F("Hai phương trình phản ứng tạo muối và nước của Oxide", "$\\text{Oxide base} + \\text{Acid} \\to \\text{Muối} + \\text{H}_2\\text{O}; \\qquad \\text{Oxide acid} + \\text{Kiềm} \\to \\text{Muối} + \\text{H}_2\\text{O}$", "Phản ứng nhận biết khí $\\text{CO}_2$ bằng nước vôi trong: $\\text{CO}_2 + \\text{Ca(OH)}_2 \\to \\text{CaCO}_3\\downarrow_{\\text{(trắng)}} + \\text{H}_2\\text{O}$."),
+            )
+        ],
+        example="Cho bột copper(II) oxide ($\\text{CuO}$, màu đen) vào ống nghiệm chứa dung dịch hydrochloric acid ($\\text{HCl}$) rồi lắc nhẹ. Hãy nêu hiện tượng quan sát được, cho biết $\\text{CuO}$ thuộc loại oxide nào và viết phương trình hóa học của phản ứng.",
+        example_answer="- **Hiện tượng**: Bột $\\text{CuO}$ màu đen tan dần hết, dung dịch từ không màu chuyển sang màu xanh lam đặc trưng của muối copper(II) chloride ($\\text{CuCl}_2$).\n- **Phân loại**: $\\text{CuO}$ tác dụng với acid tạo muối và nước nên là một **oxide base**.\n- **Phương trình hóa học**: $\\text{CuO} + 2\\text{HCl} \\longrightarrow \\text{CuCl}_2 + \\text{H}_2\\text{O}$.",
+        real_life="Trước khi hàn hoặc sơn các chi tiết bằng sắt thép bị gỉ, người thợ cơ khí thường ngâm tẩy bề mặt kim loại bằng dung dịch acid loãng để hòa tan lớp gỉ sắt ($\\text{Fe}_2\\text{O}_3$ – một oxide base); còn vôi sống ($\\text{CaO}$) được dùng làm gói hút ẩm trong túi bánh gạo.",
+        quiz=[
+            mcq("biet", "Hợp chất nào sau đây là một **oxide**?", ["$\\text{CaO}$ (calcium oxide)", "$\\text{Ca(OH)}_2$", "$\\text{CaCO}_3$", "$\\text{H}_2\\text{SO}_4$"], 0, "Oxide là hợp chất chỉ gồm $2$ nguyên tố, trong đó có $1$ nguyên tố là oxygen ($\\text{O}$). $\\text{CaO}$ gồm $2$ nguyên tố $\\text{Ca}$ và $\\text{O}$ nên là oxide."),
+            mcq("biet", "Cặp chất nào sau đây thuộc loại **oxide lưỡng tính** (vừa tác dụng được với dung dịch acid vừa tác dụng được với dung dịch kiềm)?", ["$\\text{Al}_2\\text{O}_3$ và $\\text{ZnO}$", "$\\text{CO}$ và $\\text{NO}$", "$\\text{CO}_2$ và $\\text{SO}_2$", "$\\text{CuO}$ và $\\text{Fe}_2\\text{O}_3$"], 0, "$\\text{Al}_2\\text{O}_3$ và $\\text{ZnO}$ là hai oxide lưỡng tính tiêu biểu; còn $\\text{CO}, \\text{NO}$ là oxide trung tính."),
+            mcq("hieu", "Khi dẫn từ từ khí carbon dioxide ($\\text{CO}_2$ – một oxide acid) vào cốc đựng dung dịch nước vôi trong ($\\text{Ca(OH)}_2$) dư thì xuất hiện hiện tượng gì?", ["Nước vôi trong bị vẩn đục màu trắng do tạo thành kết tủa $\\text{CaCO}_3$", "Dung dịch chuyển sang màu xanh lam", "Có khí màu vàng lục bay ra", "Không có hiện tượng gì"], 0, "Khí $\\text{CO}_2$ phản ứng với $\\text{Ca(OH)}_2$ theo phương trình $\\text{CO}_2 + \\text{Ca(OH)}_2 \\longrightarrow \\text{CaCO}_3\\downarrow + \\text{H}_2\\text{O}$ tạo kết tủa trắng làm đục nước vôi trong."),
+            tf4("hieu", "Xét tính đúng/sai của các phát biểu sau về Oxide:", [
+                "Các chất $\\text{CuO}, \\text{Fe}_2\\text{O}_3, \\text{CaO}, \\text{MgO}$ đều là các oxide base.",
+                "Các chất $\\text{CO}_2, \\text{SO}_2, \\text{SO}_3, \\text{P}_2\\text{O}_5$ đều là các oxide acid.",
+                "Khí carbon monoxide ($\\text{CO}$) là một oxide acid nên tác dụng mạnh với dung dịch $\\text{NaOH}$ ở điều kiện thường.",
+                "Khi hòa tan iron(III) oxide ($\\text{Fe}_2\\text{O}_3$) vào dung dịch $\\text{HCl}$ vừa đủ thì thu được muối $\\text{FeCl}_3$ và nước.",
+            ], [True, True, False, True], "Ý c) sai vì $\\text{CO}$ (carbon monoxide) là một **oxide trung tính** (oxide không tạo muối) nên không phản ứng với dung dịch $\\text{NaOH}$ hay dung dịch acid."),
+            short("vandung", "Dẫn $0{,}15\\text{ mol}$ khí $\\text{CO}_2$ vào bình đựng dung dịch nước vôi trong ($\\text{Ca(OH)}_2$) lấy dư theo phương trình: $\\text{CO}_2 + \\text{Ca(OH)}_2 \\longrightarrow \\text{CaCO}_3\\downarrow + \\text{H}_2\\text{O}$. Khối lượng kết tủa $\\text{CaCO}_3$ ($M = 100\\text{ g/mol}$) thu được bằng bao nhiêu gam ($\\text{g}$)?", ["15"], "Theo PTHH: $n_{\\text{CaCO}_3} = n_{\\text{CO}_2} = 0{,}15\\text{ mol} \\implies m_{\\text{CaCO}_3} = 0{,}15 \\cdot 100 = 15\\text{ g}$.", unit="g"),
+        ],
+    ),
+    bai(
+        topic=CH2[0], chapter_title=CH2[1], chapter_desc=CH2[2],
+        title="Bài 12: Muối",
+        icon="🧂",
+        description="Khái niệm, danh pháp và tính tan của Muối, tính chất hóa học của muối và điều kiện xảy ra phản ứng trao đổi trong dung dịch (tạo kết tủa, chất khí hoặc nước).",
+        requirements=[
+            "Định nghĩa được **Muối** là những hợp chất được tạo ra khi thay thế ion $\\text{H}^+$ của acid bằng ion kim loại hoặc ion ammonium ($\\text{NH}_4^+$); gọi đúng tên muối theo danh pháp IUPAC.",
+            "Nắm được quy tắc tính tan cơ bản của các muối (mọi muối $\\text{Na}^+, \\text{K}^+, \\text{NH}_4^+, \\text{NO}_3^-$ đều tan; $\\text{AgCl}\\downarrow$ trắng, $\\text{BaSO}_4\\downarrow$ trắng, $\\text{CaCO}_3\\downarrow$ trắng, $\\text{BaCO}_3\\downarrow$ trắng không tan).",
+            "Trình bày được 4 tính chất hóa học của dung dịch muối (tác dụng với kim loại, với acid, với dung dịch base, với dung dịch muối khác) và **điều kiện để phản ứng trao đổi xảy ra** là sản phẩm phải có **chất kết tủa ($\\downarrow$), chất khí ($\\uparrow$) hoặc nước ($\\text{H}_2\\text{O}$)**.",
+        ],
+        definition="Muối là những hợp chất được hình thành từ sự thay thế ion $\\text{H}^+$ của acid bằng ion kim loại (hoặc ion ammonium $\\text{NH}_4^+$). Phản ứng trao đổi giữa các dung dịch acid, base, muối chỉ xảy ra khi các chất tạo thành có chất kết tủa ($\\downarrow$), chất khí dễ bay hơi ($\\uparrow$) hoặc chất điện li rất yếu như nước ($\\text{H}_2\\text{O}$).",
+        theory=(
+            "### 1. Khái niệm, Tên gọi và Tính tan của một số Muối\n"
+            "- **Cấu tạo phân tử muối**: gồm một hay nhiều **cation kim loại** (hoặc $\\text{NH}_4^+$) liên kết với một hay nhiều **anion gốc acid** ($\\text{Cl}^-\\text{: chloride}$, $\\text{NO}_3^-\\text{: nitrate}$, $\\text{SO}_4^{2-}\\text{: sulfate}$, $\\text{CO}_3^{2-}\\text{: carbonate}$, $\\text{PO}_4^{3-}\\text{: phosphate}$).\n"
+            "- **Quy tắc tính tan cần nhớ**:\n"
+            "  - Tất cả các muối của **$\\text{Na}^+, \\text{K}^+, \\text{NH}_4^+$** và tất cả các muối **nitrate ($-\\text{NO}_3$)** đều **TAN TỐT** trong nước.\n"
+            "  - Hầu hết muối chloride ($-\\text{Cl}$) đều tan, **trừ $\\text{AgCl}\\downarrow$ (kết tủa trắng)**.\n"
+            "  - Hầu hết muối sulfate ($=\\text{SO}_4$) đều tan, **trừ $\\text{BaSO}_4\\downarrow$ (kết tủa trắng)**, $\\text{PbSO}_4\\downarrow$ (và $\\text{CaSO}_4, \\text{Ag}_2\\text{SO}_4$ ít tan).\n"
+            "  - Hầu hết muối carbonate ($=\\text{CO}_3$) và phosphate ($\\equiv\\text{PO}_4$) đều **KHÔNG TAN** ($\\text{CaCO}_3\\downarrow, \\text{BaCO}_3\\downarrow, \\text{MgCO}_3\\downarrow$), trừ muối của $\\text{Na}^+, \\text{K}^+, \\text{NH}_4^+$.\n\n"
+            "### 2. Bốn tính chất hóa học của Dung dịch Muối & Điều kiện phản ứng trao đổi\n"
+            "1. **Muối $+$ Kim loại mạnh hơn $\\longrightarrow$ Muối mới $+$ Kim loại mới**: $\\text{Fe} + \\text{CuSO}_4 \\longrightarrow \\text{FeSO}_4 + \\text{Cu}\\downarrow$.\n"
+            "2. **Muối $+$ Acid $\\longrightarrow$ Muối mới $+$ Acid mới**: $\\text{CaCO}_3 + 2\\text{HCl} \\longrightarrow \\text{CaCl}_2 + \\text{CO}_2\\uparrow + \\text{H}_2\\text{O}$; $\\text{BaCl}_2 + \\text{H}_2\\text{SO}_4 \\longrightarrow \\text{BaSO}_4\\downarrow + 2\\text{HCl}$.\n"
+            "3. **Dung dịch Muối $+$ Dung dịch Base (kiềm) $\\longrightarrow$ Muối mới $+$ Base mới**: $\\text{CuSO}_4 + 2\\text{NaOH} \\longrightarrow \\text{Cu(OH)}_2\\downarrow_{\\text{(xanh)}} + \\text{Na}_2\\text{SO}_4$.\n"
+            "4. **Dung dịch Muối $+$ Dung dịch Muối $\\longrightarrow$ 2 Muối mới**: $\\text{AgNO}_3 + \\text{NaCl} \\longrightarrow \\text{AgCl}\\downarrow_{\\text{(trắng)}} + \\text{NaNO}_3$.\n"
+            "- **Điều kiện xảy ra phản ứng trao đổi trong dung dịch**: Sản phẩm sinh ra phải có ít nhất một chất là **chất kết tủa ($\\downarrow$)**, **chất khí ($\\uparrow$)** hoặc **nước ($\\text{H}_2\\text{O}$)**."
+        ),
+        formulas=[
+            G(
+                "Tính chất hóa học của Muối và Điều kiện phản ứng trao đổi",
+                F("Điều kiện cần và đủ để phản ứng trao đổi trong dung dịch xảy ra", "$AB + CD \\longrightarrow AD + CB \\quad \\text{xảy ra khi sản phẩm có: } \\text{Kết tủa } (\\downarrow) \\text{ hoặc Khí } (\\uparrow) \\text{ hoặc } \\text{H}_2\\text{O}$", "Các kết tủa trắng kinh điển không tan trong acid mạnh: $\\text{AgCl}\\downarrow$ và $\\text{BaSO}_4\\downarrow$."),
+                F("Các phương trình phản ứng đặc trưng của Muối", "$\\text{Fe} + \\text{CuSO}_4 \\to \\text{FeSO}_4 + \\text{Cu}\\downarrow; \\quad \\text{BaCl}_2 + \\text{Na}_2\\text{SO}_4 \\to \\text{BaSO}_4\\downarrow + 2\\text{NaCl}; \\quad \\text{Na}_2\\text{CO}_3 + 2\\text{HCl} \\to 2\\text{NaCl} + \\text{CO}_2\\uparrow + \\text{H}_2\\text{O}$", "Hai chất tham gia phản ứng giữa Muối + Kiềm hoặc Muối + Muối đều phải là dung dịch tan."),
+            )
+        ],
+        example="Nhỏ dung dịch barium chloride ($\\text{BaCl}_2$) vào ống nghiệm đựng dung dịch sodium sulfate ($\\text{Na}_2\\text{SO}_4$). Hãy nêu hiện tượng xảy ra, giải thích vì sao phản ứng trao đổi này xảy ra được và viết phương trình hóa học.",
+        example_answer="- **Hiện tượng**: Xuất hiện ngay **kết tủa màu trắng** không tan trong nước và các acid.\n- **Giải thích**: Phản ứng trao đổi xảy ra được vì tạo thành chất kết tủa là barium sulfate ($\\text{BaSO}_4\\downarrow$).\n- **Phương trình hóa học**: $\\text{BaCl}_2 + \\text{Na}_2\\text{SO}_4 \\longrightarrow \\text{BaSO}_4\\downarrow + 2\\text{NaCl}$.",
+        real_life="Thuốc muối dạ dày (baking soda – $\\text{NaHCO}_3$) phản ứng với lượng acid $\\text{HCl}$ dư thừa trong dạ dày; thạch cao ($\\text{CaSO}_4$) dùng bó bột chấn thương và đúc tượng; nước muối $\\text{NaCl}$ dùng bảo quản thực phẩm.",
+        quiz=[
+            mcq("biet", "Điều kiện để một **phản ứng trao đổi** giữa các dung dịch muối, acid, base xảy ra được là gì?", ["Các chất sản phẩm tạo thành phải có chất kết tủa ($\\downarrow$), chất khí ($\\uparrow$) hoặc nước ($\\text{H}_2\\text{O}$)", "Tất cả các chất sản phẩm đều phải tan hoàn toàn và phân li mạnh", "Phải nung ở nhiệt độ trên $2000^\\circ\\text{C}$", "Không cần bất kì điều kiện nào"], 0, "Phản ứng trao đổi trong dung dịch chỉ xảy ra khi tạo thành chất kết tủa, chất khí bay hơi hoặc chất điện li yếu như $\\text{H}_2\\text{O}$."),
+            mcq("biet", "Khi nhỏ dung dịch silver nitrate ($\\text{AgNO}_3$) vào ống nghiệm đựng dung dịch muối ăn sodium chloride ($\\text{NaCl}$), hiện tượng quan sát được là gì?", ["Xuất hiện kết tủa màu trắng của silver chloride ($\\text{AgCl}\\downarrow$)", "Sủi bọt khí không màu", "Dung dịch chuyển sang màu xanh lam", "Không có hiện tượng gì xảy ra"], 0, "Phản ứng $\\text{AgNO}_3 + \\text{NaCl} \\longrightarrow \\text{AgCl}\\downarrow + \\text{NaNO}_3$ tạo kết tủa trắng $\\text{AgCl}$."),
+            mcq("hieu", "Cặp dung dịch nào sau đây **không** xảy ra phản ứng hóa học khi trộn lẫn vào nhau?", ["Dung dịch $\\text{NaCl}$ và dung dịch $\\text{KNO}_3$", "Dung dịch $\\text{BaCl}_2$ và dung dịch $\\text{H}_2\\text{SO}_4$", "Dung dịch $\\text{CuSO}_4$ và dung dịch $\\text{NaOH}$", "Dung dịch $\\text{Na}_2\\text{CO}_3$ và dung dịch $\\text{HCl}$"], 0, "Khi trộn $\\text{NaCl}$ và $\\text{KNO}_3$, các sản phẩm giả định ($\\text{NaNO}_3$ và $\\text{KCl}$) đều là muối tan mạnh, không có kết tủa hay chất khí nên phản ứng không xảy ra."),
+            tf4("hieu", "Xét tính đúng/sai của các phát biểu sau về Muối:", [
+                "Tất cả các muối của sodium ($\\text{Na}^+$), potassium ($\\text{K}^+$), ammonium ($\\text{NH}_4^+$) và các muối nitrate ($-\\text{NO}_3$) đều tan tốt trong nước.",
+                "Ngâm một đinh sắt sạch ($\\text{Fe}$) vào dung dịch $\\text{CuSO}_4$ màu xanh lam thì thấy có lớp kim loại đồng ($\\text{Cu}$) màu đỏ bám ngoài đinh sắt.",
+                "Khi nhỏ dung dịch $\\text{NaOH}$ vào dung dịch $\\text{FeCl}_3$ thì thu được kết tủa $\\text{Fe(OH)}_3$ có màu nâu đỏ.",
+                "Muối barium sulfate ($\\text{BaSO}_4$) và calcium carbonate ($\\text{CaCO}_3$) đều tan rất nhiều trong nước lạnh.",
+            ], [True, True, True, False], "Ý d) sai vì $\\text{BaSO}_4$ và $\\text{CaCO}_3$ đều là các muối kết tủa trắng không tan trong nước."),
+            short("vandung", "Cho dung dịch chứa $0{,}1\\text{ mol}$ $\\text{BaCl}_2$ tác dụng với dung dịch $\\text{Na}_2\\text{SO}_4$ lấy dư theo phương trình: $\\text{BaCl}_2 + \\text{Na}_2\\text{SO}_4 \\longrightarrow \\text{BaSO}_4\\downarrow + 2\\text{NaCl}$. Khối lượng kết tủa $\\text{BaSO}_4$ ($M = 233\\text{ g/mol}$) thu được bằng bao nhiêu gam ($\\text{g}$)?", ["23,3", "23.3"], "Theo PTHH: $n_{\\text{BaSO}_4} = n_{\\text{BaCl}_2} = 0{,}1\\text{ mol} \\implies m_{\\text{BaSO}_4} = 0{,}1 \\cdot 233 = 23{,}3\\text{ g}$.", unit="g"),
+        ],
+    ),
+    bai(
+        topic=CH2[0], chapter_title=CH2[1], chapter_desc=CH2[2],
+        title="Bài 13: Phân bón hóa học",
+        icon="🌱",
+        description="Các nguyên tố dinh dưỡng đa lượng (N, P, K), phân loại và vai trò của phân đạm, phân lân, phân kali, phân NPK và nguyên tắc bón phân '4 đúng' bảo vệ môi trường.",
+        requirements=[
+            "Nêu được vai trò của 3 nguyên tố dinh dưỡng đa lượng thiết yếu đối với cây trồng: **Đạm (Nitrogen – $\\text{N}$)**, **Lân (Phosphorus – $\\text{P}$)** và **Kali (Potassium – $\\text{K}$)**.",
+            "Nhận biết được công thức hóa học của các loại phân bón thông dụng: phân đạm (urea $(\\text{NH}_2)_2\\text{CO}$, $\\text{NH}_4\\text{NO}_3$, $(\\text{NH}_4)_2\\text{SO}_4$), phân lân ($\\text{Ca(H}_2\\text{PO}_4)_2$), phân kali ($\\text{KCl}, \\text{K}_2\\text{SO}_4$) và phân hỗn hợp NPK.",
+            "Trình bày được tác động của việc lạm dụng phân bón hóa học đối với đất, nước và nguyên tắc sử dụng phân bón an toàn, hiệu quả.",
+        ],
+        definition="Phân bón hóa học là những hóa chất có chứa các nguyên tố dinh dưỡng dùng để bón cho cây trồng nhằm nâng cao năng suất nông sản. Ba nhóm phân bón đa lượng quan trọng nhất là phân đạm (cung cấp $\\text{N}$), phân lân (cung cấp $\\text{P}$) và phân kali (cung cấp $\\text{K}$).",
+        theory=(
+            "### 1. Phân loại và Vai trò của Phân đạm – Phân lân – Phân kali – Phân NPK\n"
+            "1. **Phân đạm (cung cấp nguyên tố Nitrogen – $\\text{N}$)**:\n"
+            "   - **Vai trò**: kích thích cây trồng phát triển mạnh thân, cành, lá xanh tốt, ra nhiều hạt, củ, quả (tăng hàm lượng protein thực vật).\n"
+            "   - **Các loại phổ biến**: Đạm urea ($(\\text{NH}_2)_2\\text{CO}$, giàu đạm nhất với $\\approx 46\\%\\text{ N}$), đạm ammonium nitrate ($\\text{NH}_4\\text{NO}_3$), đạm ammonium sulfate ($(\\text{NH}_4)_2\\text{SO}_4$).\n"
+            "2. **Phân lân (cung cấp nguyên tố Phosphorus – $\\text{P}$)**:\n"
+            "   - **Vai trò**: kích thích sự phát triển của **bộ rễ**, quá trình đẻ nhánh, nảy chồi, thúc đẩy cây ra hoa, đậu quả sớm và tăng khả năng chống chịu hạn, rét.\n"
+            "   - **Các loại phổ biến**: Superphosphate (chứa $\\text{Ca(H}_2\\text{PO}_4)_2$ tan trong nước), phân lân nung chảy (dùng cho đất chua).\n"
+            "3. **Phân kali (cung cấp nguyên tố Potassium – $\\text{K}$)**:\n"
+            "   - **Vai trò**: thúc đẩy quá trình tạo đường, tinh bột, chất xơ và dầu, giúp cây cứng cáp **chống đổ ngã**, chịu rét, chịu hạn và kháng sâu bệnh.\n"
+            "   - **Các loại phổ biến**: Potassium chloride ($\\text{KCl}$), potassium sulfate ($\\text{K}_2\\text{SO}_4$); tro bếp chứa $\\text{K}_2\\text{CO}_3$ cũng là một loại phân kali.\n"
+            "4. **Phân hỗn hợp NPK**: chứa đồng thời cả 3 nguyên tố dinh dưỡng $\\text{N}, \\text{P}, \\text{K}$ theo tỉ lệ ghi trên bao bì.\n\n"
+            "### 2. Sử dụng phân bón theo nguyên tắc '4 đúng' và Bảo vệ môi trường\n"
+            "- Bón thừa phân hóa học làm đất bị chai cứng, chua hóa, tồn dư nitrate ($\\text{NO}_3^-$) trong rau quả gây hại sức khỏe và rửa trôi xuống ao hồ gây **hiện tượng phú dưỡng** (tảo nở hoa làm cá chết ngạt).\n"
+            "- Cần áp dụng quy tắc **4 đúng**: *Đúng loại – Đúng liều – Đúng lúc – Đúng cách*, kết hợp với **phân bón hữu cơ, vi sinh**."
+        ),
+        formulas=[
+            G(
+                "Công thức các loại Phân bón hóa học và Vai trò N – P – K",
+                F("Công thức hóa học của 3 nhóm phân bón đơn", "$\\text{Phân Đạm (N)}: (\\text{NH}_2)_2\\text{CO},\\ \\text{NH}_4\\text{NO}_3,\\ (\\text{NH}_4)_2\\text{SO}_4; \\quad \\text{Phân Lân (P)}: \\text{Ca(H}_2\\text{PO}_4)_2; \\quad \\text{Phân Kali (K)}: \\text{KCl},\\ \\text{K}_2\\text{SO}_4$", "Đạm urea $(\\text{NH}_2)_2\\text{CO}$ có $M = 60\\text{ g/mol}$, hàm lượng $\\%m_{\\text{N}} = \\dfrac{28}{60} \\cdot 100\\% \\approx 46{,}67\\%$."),
+                F("Vai trò cốt lõi của 3 nguyên tố đa lượng N – P – K", "$\\text{N (Đạm)}: \\text{Phát triển thân, lá xanh tốt}; \\quad \\text{P (Lân)}: \\text{Phát triển bộ rễ, ra hoa}; \\quad \\text{K (Kali)}: \\text{Tạo đường/bột, cứng cây chống đổ ngã}$", "Không trộn phân đạm ammonium ($\\text{NH}_4^+$) với vôi hoặc tro bếp (có tính kiềm) vì sẽ giải phóng mất khí $\\text{NH}_3\\uparrow$ làm mất đạm!"),
+            )
+        ],
+        example="Một bao phân bón đạm urea nguyên chất có công thức hóa học là $(\\text{NH}_2)_2\\text{CO}$ và có khối lượng tịnh $50\\text{ kg}$. Biết $\\text{N} = 14, \\text{H} = 1, \\text{C} = 12, \\text{O} = 16$. Hãy tính khối lượng mol của phân urea và tính khối lượng nguyên tố dinh dưỡng Nitrogen ($\\text{N}$) có trong bao phân $50\\text{ kg}$ đó.",
+        example_answer="Trong $1$ phân tử $(\\text{NH}_2)_2\\text{CO}$ có $2\\text{N}, 4\\text{H}, 1\\text{C}, 1\\text{O}$. Khối lượng mol của urea là $M = 2 \\cdot 14 + 4 \\cdot 1 + 12 + 16 = 60\\text{ g/mol}$. Phần trăm khối lượng của $\\text{N}$ trong urea là $\\%m_{\\text{N}} = \\dfrac{28}{60} \\cdot 100\\% \\approx 46{,}67\\%$. Khối lượng nguyên tố $\\text{N}$ có trong bao phân $50\\text{ kg}$ là $m_{\\text{N}} = 50 \\cdot \\dfrac{28}{60} \\approx 23{,}33\\text{ kg}$.",
+        real_life="Trên các bao phân bón NPK (ví dụ NPK 16-16-8 hoặc NPK 20-20-15) luôn in rõ 3 con số cho người nông dân biết tỉ lệ dinh dưỡng của Đạm – Lân – Kali để chọn loại phân phù hợp với từng giai đoạn sinh trưởng của lúa và cây ăn quả.",
+        quiz=[
+            mcq("biet", "Phân bón **đạm** (như urea $(\\text{NH}_2)_2\\text{CO}$, $\\text{NH}_4\\text{NO}_3$) cung cấp nguyên tố dinh dưỡng chính nào cho cây trồng?", ["Nguyên tố Nitrogen ($\\text{N}$)", "Nguyên tố Phosphorus ($\\text{P}$)", "Nguyên tố Potassium ($\\text{K}$)", "Nguyên tố Calcium ($\\text{Ca}$)"], 0, "Phân đạm cung cấp nguyên tố dinh dưỡng Nitrogen ($\\text{N}$) giúp cây phát triển mạnh thân, cành, lá."),
+            mcq("biet", "Loại phân bón nào sau đây có vai trò kích thích sự phát triển của **bộ rễ** cây trồng, giúp cây đẻ nhánh, nảy chồi và ra hoa quả sớm?", ["Phân lân (cung cấp nguyên tố $\\text{P}$, như $\\text{Ca(H}_2\\text{PO}_4)_2$)", "Phân đạm", "Phân kali", "Muối ăn $\\text{NaCl}$"], 0, "Phân lân (cung cấp $\\text{P}$) rất cần cho thời kì sinh trưởng ban đầu để bộ rễ phát triển khỏe và thúc đẩy ra hoa, đậu quả."),
+            mcq("hieu", "Cho các công thức hóa học sau: $\\text{KCl}, \\text{NH}_4\\text{NO}_3, \\text{Ca(H}_2\\text{PO}_4)_2$. Các chất này lần lượt thuộc loại phân bón nào?", ["Phân kali, phân đạm và phân lân", "Phân đạm, phân lân và phân kali", "Phân lân, phân kali và phân đạm", "Cả ba đều là phân đạm"], 0, "$\\text{KCl}$ chứa $\\text{K}$ là phân kali; $\\text{NH}_4\\text{NO}_3$ chứa $\\text{N}$ là phân đạm; $\\text{Ca(H}_2\\text{PO}_4)_2$ chứa $\\text{P}$ là phân lân."),
+            tf4("hieu", "Xét tính đúng/sai của các phát biểu sau về phân bón hóa học:", [
+                "Ba nguyên tố dinh dưỡng đa lượng quan trọng nhất đối với cây trồng là $\\text{N}$ (đạm), $\\text{P}$ (lân) và $\\text{K}$ (kali).",
+                "Phân hỗn hợp NPK là loại phân bón chứa đồng thời cả ba nguyên tố dinh dưỡng $\\text{N}, \\text{P}$ và $\\text{K}$.",
+                "Càng bón nhiều phân đạm hóa học vượt mức khuyến cáo càng giúp rau củ sạch hơn và đất đai tơi xốp màu mỡ hơn.",
+                "Tro thực vật (tro bếp) có chứa muối potassium carbonate ($\\text{K}_2\\text{CO}_3$) nên cũng được dùng làm phân bón cung cấp nguyên tố kali ($\\text{K}$).",
+            ], [True, True, False, True], "Ý c) sai vì lạm dụng phân đạm hóa học làm đất chai cứng, ô nhiễm nguồn nước (hiện tượng phú dưỡng) và làm tồn dư nitrate trong rau gây hại sức khỏe."),
+            short("vandung", "Phân bón NPK là loại phân hỗn hợp cung cấp đồng thời bao nhiêu nguyên tố dinh dưỡng đa lượng thiết yếu ($\\text{N}, \\text{P}, \\text{K}$) cho cây trồng?", ["3"], "Phân NPK cung cấp đồng thời $3$ nguyên tố dinh dưỡng đa lượng là Nitrogen ($\\text{N}$), Phosphorus ($\\text{P}$) và Potassium ($\\text{K}$)."),
+        ],
     ),
 ]
-
-
-LESSONS = LESSONS_GRADE_8

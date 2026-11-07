@@ -1,1625 +1,483 @@
-from __future__ import annotations
-from typing import Any
-from ._helpers import lesson, mcq, tf4, short
+"""Hóa học Lớp 7 (KHTN 7 - Kết nối tri thức với cuộc sống): 3 Chương - 10 Bài học độc lập."""
+from ._helpers import F, G, bai, mcq, short, tf4
 
-LESSONS_GRADE_7: list[dict[str, Any]] = [
-    lesson(
-        grade=7,
-        order=1,
-        code="H7-C01",
-        title="Chương 1: Nguyên tử và cấu tạo nguyên tử",
-        topic="nguyen-tu",
-        summary=(
-            r"Nguyên tử là hạt vô cùng nhỏ và trung hòa về điện, cấu tạo nên mọi chất. "
-            r"Theo mô hình nguyên tử Rutherford – Bohr, nguyên tử gồm hạt nhân ở tâm (chứa hạt proton $p$ mang điện tích $+1$ và hạt neutron $n$ không mang điện) "
-            r"và vỏ nguyên tử gồm các hạt electron ($e$ mang điện tích $-1$) chuyển động trên các lớp xác định xung quanh hạt nhân. "
-            r"Vì nguyên tử trung hòa điện nên luôn có $Z = p = e$; khối lượng nguyên tử tập trung hầu hết ở hạt nhân và được tính theo đơn vị $\text{amu}$ với $A \approx p + n$."
+GRADE = 7
+
+CH1 = ("l7-ch01-nguyen-tu-bang-tuan-hoan", "Chương I: Nguyên tử và Sơ lược về bảng tuần hoàn các nguyên tố hóa học", "Chương I · Hóa học 7 (KHTN 7): Cấu tạo nguyên tử, nguyên tố hóa học và cấu trúc bảng tuần hoàn.")
+CH2 = ("l7-ch02-phan-tu-don-chat-hop-chat", "Chương II: Phân tử – Đơn chất và Hợp chất", "Chương II · Hóa học 7 (KHTN 7): Phân tử, đơn chất, hợp chất và cách tính khối lượng phân tử theo amu.")
+CH3 = ("l7-ch03-lien-ket-hoa-tri-cthh", "Chương III: Liên kết hóa học, Hóa trị và Công thức hóa học", "Chương III · Hóa học 7 (KHTN 7): Liên kết ion, liên kết cộng hóa trị, quy tắc hóa trị và lập công thức hóa học.")
+
+LESSONS = [
+    bai(
+        topic=CH1[0], chapter_title=CH1[1], chapter_desc=CH1[2],
+        title="Bài 1: Nguyên tử",
+        icon="⚛️",
+        description="Mô hình nguyên tử Rutherford – Bohr, thành phần hạt nhân (proton, neutron) và vỏ electron, sự trung hòa điện và khối lượng nguyên tử (amu).",
+        requirements=[
+            "Trình bày được mô hình nguyên tử của Rutherford – Bohr: nguyên tử gồm hạt nhân mang điện tích dương ở tâm và các electron mang điện tích âm chuyển động xung quanh theo từng lớp.",
+            "Nêu được điện tích và khối lượng (theo đơn vị $\\text{amu}$) của $3$ loại hạt cơ bản: proton ($p: +1, \\approx 1\\text{ amu}$), neutron ($n: 0, \\approx 1\\text{ amu}$), electron ($e: -1, \\approx 0{,}00055\\text{ amu} \\ll 1\\text{ amu}$).",
+            "Vận dụng được tính trung hòa về điện của nguyên tử (số hạt $p = \\text{số hạt } e = Z$) và tính khối lượng nguyên tử xấp xỉ bằng khối lượng hạt nhân ($m_{\\text{nt}} \\approx p + n$ theo $\\text{amu}$).",
+        ],
+        definition="Nguyên tử là hạt vô cùng nhỏ và trung hòa về điện, cấu tạo nên các chất. Nguyên tử gồm hạt nhân mang điện tích dương ở tâm (chứa các hạt proton và neutron) và lớp vỏ tạo bởi một hay nhiều electron mang điện tích âm chuyển động xung quanh hạt nhân.",
+        theory=(
+            "### 1. Cấu tạo nguyên tử và Mô hình Rutherford – Bohr\n"
+            "- **Thành phần nguyên tử**:\n"
+            "  1. **Hạt nhân (ở tâm)**: gồm hạt **proton ($p$)** mang điện tích dương ($+1$ đơn vị điện tích nguyên tố) và hạt **neutron ($n$)** không mang điện ($0$). *(Riêng nguyên tử hydrogen thông thường $^1_1\\text{H}$ hạt nhân chỉ có $1$ proton, không có neutron)*.\n"
+            "  2. **Lớp vỏ nguyên tử**: gồm các hạt **electron ($e$)** mang điện tích âm ($-1$).\n"
+            "- **Sự trung hòa điện của nguyên tử**: Trong mọi nguyên tử, **số hạt proton luôn bằng số hạt electron** ($p = e = Z$): nếu hạt nhân có điện tích $+Z$ thì có đúng $Z$ proton và $Z$ electron.\n"
+            "- **Mô hình Rutherford – Bohr**: Các electron chuyển động xung quanh hạt nhân theo những quỹ đạo tròn (các lớp electron) từ trong ra ngoài: **lớp thứ nhất (trong cùng)** chứa tối đa **$2$ electron**; **lớp thứ hai** chứa tối đa **$8$ electron**.\n\n"
+            "### 2. Khối lượng của nguyên tử (Đơn vị amu)\n"
+            "- Khối lượng của $1$ proton $\\approx 1\\text{ amu}$, của $1$ neutron $\\approx 1\\text{ amu}$; còn khối lượng của $1$ electron cực kì nhỏ ($\\approx 0{,}00055\\text{ amu}$, chỉ bằng $\\dfrac{1}{1840}$ khối lượng proton).\n"
+            "- Do đó **khối lượng của nguyên tử tập trung hầu hết ở hạt nhân**: $m_{\\text{nguyên tử}} \\approx m_{\\text{hạt nhân}} \\approx (p + n)\\text{ amu}$."
         ),
-        objectives=[
-            r"Trình bày được mô hình nguyên tử của Rutherford – Bohr (hạt nhân ở tâm và các electron chuyển động trên các lớp vỏ đồng tâm quanh hạt nhân).",
-            r"Nêu được thành phần cấu tạo nguyên tử gồm 3 loại hạt cơ bản: proton ($p$, điện tích $+1$, khối lượng $\approx 1\text{ amu}$), neutron ($n$, điện tích $0$, khối lượng $\approx 1\text{ amu}$) và electron ($e$, điện tích $-1$, khối lượng $\approx 0{,}00055\text{ amu}$).",
-            r"Giải thích được vì sao nguyên tử trung hòa về điện ($p = e = Z$) và vì sao khối lượng nguyên tử tập trung hầu hết ở hạt nhân ($A \approx p + n\text{ amu}$).",
-            r"Xác định được sự phân bố electron trên các lớp vỏ (lớp 1 tối đa $2e$, lớp 2 tối đa $8e$) và giải được bài toán tìm số hạt $p, n, e$ của nguyên tử.",
-        ],
         formulas=[
-            {
-                "name": "Điều kiện trung hòa điện của nguyên tử",
-                "formula": r"$Z = p = e$",
-                "note": r"$Z$ là số đơn vị điện tích hạt nhân, $p$ là số hạt proton (điện tích $+1$), $e$ là số hạt electron (điện tích $-1$).",
-            },
-            {
-                "name": "Khối lượng nguyên tử theo đơn vị amu và tổng số hạt",
-                "formula": r"$A \approx p + n \text{ (amu)}; \quad S = p + n + e = 2p + n$",
-                "note": r"Do khối lượng $1\text{ hạt }e \approx 0{,}00055\text{ amu} \ll 1\text{ amu}$ nên khối lượng nguyên tử xấp xỉ bằng tổng khối lượng proton và neutron trong hạt nhân.",
-            },
-            {
-                "name": "Ký hiệu nguyên tử và quy tắc xếp electron vào lớp vỏ",
-                "formula": r"${}_Z^A\text{X}; \quad \text{Lớp 1 tối đa } 2e, \text{ Lớp 2 tối đa } 8e$",
-                "note": r"Ví dụ nguyên tử sodium ${}_{11}^{23}\text{Na}$ có $p = e = 11$, $n = 23 - 11 = 12$, phân bố electron theo $3$ lớp là $2, 8, 1$.",
-            },
+            G(
+                "Các hệ thức cấu tạo và khối lượng nguyên tử",
+                F("Điều kiện trung hòa điện và Tổng số hạt của nguyên tử", "$p = e = Z; \\qquad \\text{Tổng số hạt } S = p + n + e = 2p + n$", "Số đơn vị điện tích hạt nhân $Z$ bằng số hạt proton $p$ và bằng số hạt electron $e$."),
+                F("Khối lượng nguyên tử theo đơn vị amu và Tối đa electron mỗi lớp", "$m_{\\text{nt}} \\approx (p + n)\\text{ amu}; \\qquad \\text{Lớp 1 tối đa } 2e,\\ \\text{Lớp 2 tối đa } 8e$", "Ví dụ: Nguyên tử oxygen ($Z = 8$) có $8e$ phân bố vào 2 lớp: lớp 1 có $2e$, lớp 2 (ngoài cùng) có $6e$."),
+            )
         ],
-        theory_sections=[
-            {
-                "title": "1. Mô hình nguyên tử Rutherford – Bohr và các hạt cấu tạo",
-                "content": (
-                    r"- **Nguyên tử** là hạt vô cùng nhỏ, trung hòa về điện, cấu tạo nên các chất." "\n"
-                    r"- Theo **mô hình Rutherford – Bohr**, nguyên tử gồm hai phần chính:" "\n"
-                    r"  1. **Hạt nhân nguyên tử** nằm ở tâm, mang điện tích dương, được tạo bởi hai loại hạt là **proton** (ký hiệu $p$, mang điện tích $+1$, khối lượng xấp xỉ $1\text{ amu}$) và **neutron** (ký hiệu $n$, không mang điện, khối lượng xấp xỉ $1\text{ amu}$). Lưu ý: nguyên tử nhẹ nhất là hydrogen (${}_1^1\text{H}$) hạt nhân chỉ có $1$ hạt proton và không có neutron ($n = 0$)." "\n"
-                    r"  2. **Vỏ nguyên tử** gồm một hay nhiều **electron** (ký hiệu $e$, mang điện tích $-1$, khối lượng rất nhỏ chỉ khoảng $0{,}00055\text{ amu}$) chuyển động rất nhanh xung quanh hạt nhân và sắp xếp thành từng lớp."
-                ),
-            },
-            {
-                "title": "2. Điện tích hạt nhân và lớp vỏ electron",
-                "content": (
-                    r"- **Điện tích hạt nhân**: Nếu hạt nhân có $Z$ hạt proton thì điện tích của hạt nhân là $+Z$, và số đơn vị điện tích hạt nhân bằng $Z$." "\n"
-                    r"- Vì nguyên tử luôn **trung hòa về điện**, tổng điện tích dương của proton bằng độ lớn tổng điện tích âm của electron, nghĩa là trong mọi nguyên tử:" "\n"
-                    r"$$\text{Số đơn vị điện tích hạt nhân } (Z) = \text{Số hạt proton } (p) = \text{Số hạt electron } (e)$$" "\n"
-                    r"- **Sự sắp xếp electron trên các lớp vỏ**: Các electron sắp xếp vào các lớp theo thứ tự từ gần hạt nhân ra ngoài:" "\n"
-                    r"  + **Lớp thứ nhất** (trong cùng, sát hạt nhân nhất) chứa tối đa **$2\text{ electron}$**." "\n"
-                    r"  + **Lớp thứ hai** chứa tối đa **$8\text{ electron}$**." "\n"
-                    r"  + **Lớp thứ ba** (đối với $20$ nguyên tố đầu tiên có $Z \le 20$) chứa tối đa **$8\text{ electron}$** ở lớp ngoài cùng."
-                ),
-            },
-            {
-                "title": "3. Khối lượng nguyên tử",
-                "content": (
-                    r"- Vì khối lượng của nguyên tử vô cùng nhỏ nếu tính bằng gam ($\text{g}$) hay kilôgam ($\text{kg}$), khoa học sử dụng **đơn vị khối lượng nguyên tử**, ký hiệu là **$\text{amu}$** ($1\text{ amu}$ bằng $\dfrac{1}{12}$ khối lượng của một nguyên tử carbon ${}_6^{12}\text{C}$, xấp xỉ $1{,}6605 \cdot 10^{-24}\text{ g}$)." "\n"
-                    r"- Do khối lượng của electron rất nhỏ ($m_e \approx 0{,}00055\text{ amu}$) không đáng kể so với khối lượng của proton ($m_p \approx 1\text{ amu}$) và neutron ($m_n \approx 1\text{ amu}$), nên **khối lượng nguyên tử tập trung hầu hết ở hạt nhân** và được tính gần đúng bằng tổng số hạt proton và số hạt neutron theo đơn vị $\text{amu}$:" "\n"
-                    r"$$m_{\text{nguyên tử}} \approx p + n \text{ (amu)}$$"
-                ),
-            },
+        example="Nguyên tử nhôm (Aluminium – $\\text{Al}$) có điện tích hạt nhân là $+13$ và trong hạt nhân có $14$ hạt neutron. Hãy xác định số hạt proton, số hạt electron, số electron ở lớp ngoài cùng (theo mô hình Bohr) và khối lượng nguyên tử nhôm theo đơn vị $\\text{amu}$.",
+        example_answer="Vì điện tích hạt nhân là $+13$ và nguyên tử trung hòa về điện nên số hạt proton bằng số hạt electron: $p = e = 13$ hạt. Phân bố $13$ electron vào các lớp từ trong ra ngoài: lớp 1 có $2e$, lớp 2 có $8e$, còn lại lớp 3 (ngoài cùng) có $13 - 2 - 8 = 3$ electron. Khối lượng nguyên tử nhôm là $m_{\\text{Al}} \\approx p + n = 13 + 14 = 27\\text{ amu}$.",
+        real_life="Nhờ hiểu rõ cấu tạo nguyên tử và sự chuyển dịch của các electron lớp ngoài cùng, các nhà khoa học giải thích được vì sao kim loại dẫn điện tốt và vì sao các nguyên tử liên kết với nhau tạo ra hàng triệu chất.",
+        quiz=[
+            mcq("biet", "Trong nguyên tử, loại hạt nào mang **điện tích âm** và chuyển động xung quanh hạt nhân?", ["Hạt electron ($e$)", "Hạt proton ($p$)", "Hạt neutron ($n$)", "Hạt nhân nguyên tử"], 0, "Electron ($e$) mang điện tích âm ($-1$) tạo nên lớp vỏ nguyên tử; còn proton ($+1$) và neutron ($0$) nằm trong hạt nhân."),
+            mcq("biet", "Vì sao nguyên tử luôn **trung hòa về điện**?", ["Vì trong nguyên tử, số hạt proton (mang điện $+1$) luôn bằng số hạt electron (mang điện $-1$)", "Vì trong nguyên tử chỉ toàn các hạt neutron không mang điện", "Vì số hạt proton luôn bằng số hạt neutron", "Vì các electron đứng yên trong hạt nhân"], 0, "Mỗi proton mang điện $+1$, mỗi electron mang điện $-1$; vì số proton bằng số electron ($p = e$) nên tổng điện tích của nguyên tử bằng $0$."),
+            mcq("hieu", "Vì sao khối lượng của nguyên tử được coi là gần bằng khối lượng của hạt nhân nguyên tử ($m_{\\text{nt}} \\approx p + n$ theo $\\text{amu}$)?", ["Vì khối lượng của các electron ở lớp vỏ quá nhỏ ($\\approx 0{,}00055\\text{ amu}$), không đáng kể so với khối lượng của proton và neutron ($\\approx 1\\text{ amu}$)", "Vì nguyên tử không có lớp vỏ electron", "Vì hạt neutron không có khối lượng", "Vì khối lượng electron lớn gấp $1000$ lần proton"], 0, "Khối lượng 1 electron chỉ bằng khoảng $0{,}00055\\text{ amu}$, rất nhỏ so với $1\\text{ amu}$ của proton và neutron nên khối lượng nguyên tử tập trung ở hạt nhân."),
+            tf4("hieu", "Xét tính đúng/sai của các phát biểu sau về cấu tạo nguyên tử:", [
+                "Hạt nhân nguyên tử được cấu tạo bởi các hạt proton và neutron (trừ nguyên tử $^1_1\\text{H}$ không có neutron).",
+                "Theo mô hình Rutherford – Bohr, lớp electron thứ nhất (sát hạt nhân nhất) chứa tối đa $2$ electron và lớp thứ hai chứa tối đa $8$ electron.",
+                "Một nguyên tử carbon có $6$ proton và $6$ neutron thì có $12$ electron ở lớp vỏ.",
+                "Một nguyên tử sodium ($\\text{Na}$) có $11$ proton và $12$ neutron thì có khối lượng nguyên tử xấp xỉ bằng $23\\text{ amu}$.",
+            ], [True, True, False, True], "Ý c) sai vì nguyên tử carbon có $6$ proton nên chỉ có $e = p = 6$ electron ở lớp vỏ (còn $6 + 6 = 12\\text{ amu}$ là khối lượng nguyên tử)."),
+            short("vandung", "Một nguyên tử nitrogen ($\\text{N}$) có $7$ hạt proton và $7$ hạt neutron trong hạt nhân. Tổng số hạt cơ bản ($p + n + e$) trong nguyên tử nitrogen này bằng bao nhiêu hạt?", ["21"], "Vì nguyên tử trung hòa điện nên $e = p = 7$. Tổng số hạt trong nguyên tử là $S = p + n + e = 7 + 7 + 7 = 21$ hạt.", unit="hạt"),
         ],
-        worked_examples=[
-            {
-                "title": "Ví dụ 1: Xác định cấu tạo nguyên tử và phân bố lớp electron",
-                "problem": (
-                    r"Nguyên tử aluminium ($\text{Al}$) có số đơn vị điện tích hạt nhân là $Z = 13$ và số hạt neutron trong hạt nhân là $n = 14$. "
-                    r"Hãy xác định số hạt proton ($p$), số hạt electron ($e$), khối lượng nguyên tử theo $\text{amu}$, số lớp electron và số electron ở lớp ngoài cùng của nguyên tử $\text{Al}$."
-                ),
-                "solution": (
-                    r"- Trong nguyên tử trung hòa điện: $p = e = Z = 13$ (có $13$ proton và $13$ electron)." "\n"
-                    r"- Khối lượng nguyên tử aluminium theo đơn vị $\text{amu}$ là: $A \approx p + n = 13 + 14 = 27\text{ amu}$." "\n"
-                    r"- Phân bố $13\text{ electron}$ vào các lớp từ trong ra ngoài: lớp 1 có $2e$, lớp 2 có $8e$, còn lại lớp 3 (lớp ngoài cùng) có $13 - 2 - 8 = 3e$. "
-                    r"Vậy nguyên tử $\text{Al}$ có **$3$ lớp electron** và có **$3\text{ electron}$ ở lớp ngoài cùng**."
-                ),
-            },
-            {
-                "title": "Ví dụ 2: Bài toán tổng số hạt cơ bản trong nguyên tử",
-                "problem": (
-                    r"Tổng số hạt cơ bản (proton, neutron, electron) trong một nguyên tử nguyên tố $\text{X}$ là $34$, trong đó số hạt mang điện nhiều hơn số hạt không mang điện là $10$ hạt. "
-                    r"Tìm số hạt $p, n, e$ và khối lượng nguyên tử của $\text{X}$ theo đơn vị $\text{amu}$."
-                ),
-                "solution": (
-                    r"- Trong nguyên tử $\text{X}$, các hạt mang điện là proton ($p$) và electron ($e$) với $p = e \Rightarrow$ tổng số hạt mang điện là $p + e = 2p$; hạt không mang điện là neutron ($n$)." "\n"
-                    r"- Theo đề bài ta có hệ thức:" "\n"
-                    r"$$\begin{cases} 2p + n = 34 \\ 2p - n = 10 \end{cases} \Rightarrow 4p = 44 \Rightarrow p = e = 11; \quad n = 34 - 22 = 12$$" "\n"
-                    r"- Khối lượng nguyên tử của $\text{X}$ là $A \approx p + n = 11 + 12 = 23\text{ amu}$ ($\text{X}$ là nguyên tử sodium ${}_{11}^{23}\text{Na}$)."
-                ),
-            },
-        ],
-        key_takeaways=[
-            r"Hạt nhân nguyên tử gồm proton ($p$, điện tích $+1$) và neutron ($n$, không mang điện); vỏ nguyên tử gồm các electron ($e$, điện tích $-1$).",
-            r"Nguyên tử trung hòa về điện nên luôn có $Z = p = e$; khối lượng nguyên tử tập trung ở hạt nhân với $A \approx p + n\text{ (amu)}$.",
-            r"Các electron xếp vào các lớp từ gần hạt nhân ra ngoài: lớp 1 tối đa $2e$, lớp 2 tối đa $8e$.",
-        ],
-        questions=[
-            mcq(
-                r"Trong nguyên tử, loại hạt cơ bản nào mang điện tích âm ($-1$) và chuyển động xung quanh hạt nhân?",
-                [
-                    r"Hạt electron ($e$).",
-                    r"Hạt proton ($p$).",
-                    r"Hạt neutron ($n$).",
-                    r"Hạt nhân nguyên tử.",
-                ],
-                "A",
-                "biet",
-                r"Hạt electron ($e$) mang điện tích âm ($-1$) tạo nên lớp vỏ nguyên tử và chuyển động xung quanh hạt nhân. Hạt proton ($p$) mang điện tích $+1$, còn hạt neutron ($n$) không mang điện.",
-            ),
-            mcq(
-                r"Thành phần cấu tạo của hạt nhân ở hầu hết các nguyên tử (trừ đồng vị ${}_1^1\text{H}$) gồm có:",
-                [
-                    r"Chỉ có duy nhất các hạt electron ($e$).",
-                    r"Hạt proton ($p$) và hạt neutron ($n$).",
-                    r"Hạt proton ($p$) và hạt electron ($e$).",
-                    r"Hạt neutron ($n$) và hạt electron ($e$).",
-                ],
-                "B",
-                "biet",
-                r"Hạt nhân nguyên tử nằm ở tâm nguyên tử, được cấu tạo bởi các hạt proton ($p$, mang điện $+1$) và các hạt neutron ($n$, không mang điện).",
-            ),
-            mcq(
-                r"Vì sao nói khối lượng của hạt nhân được coi là khối lượng của cả nguyên tử?",
-                [
-                    r"Vì hạt electron ($e$) có khối lượng lớn gấp $1836$ lần hạt proton ($p$).",
-                    r"Vì hạt neutron ($n$) nằm ở lớp vỏ ngoài cùng của nguyên tử.",
-                    r"Vì khối lượng của các hạt electron ($e$) ở lớp vỏ vô cùng nhỏ (chỉ khoảng $0{,}00055\text{ amu}$), không đáng kể so với khối lượng của proton và neutron.",
-                    r"Vì trong nguyên tử không có hạt electron ($e$) nào ở lớp vỏ.",
-                ],
-                "C",
-                "biet",
-                r"Mỗi hạt proton ($p$) hoặc neutron ($n$) trong hạt nhân có khối lượng xấp xỉ $1\text{ amu}$, trong khi mỗi hạt electron ($e$) chỉ nặng khoảng $0{,}00055\text{ amu}$ (nhỏ hơn gần $2000$ lần), nên khối lượng nguyên tử tập trung hầu hết ở hạt nhân.",
-            ),
-            mcq(
-                r"Theo mô hình nguyên tử Rutherford – Bohr, lớp electron thứ nhất (lớp trong cùng sát hạt nhân nhất) và lớp electron thứ hai chứa tối đa lần lượt bao nhiêu electron?",
-                [
-                    r"Lớp thứ nhất tối đa $8\text{ electron}$, lớp thứ hai tối đa $2\text{ electron}$.",
-                    r"Lớp thứ nhất tối đa $4\text{ electron}$, lớp thứ hai tối đa $4\text{ electron}$.",
-                    r"Lớp thứ nhất tối đa $2\text{ electron}$, lớp thứ hai tối đa $18\text{ electron}$.",
-                    r"Lớp thứ nhất tối đa $2\text{ electron}$, lớp thứ hai tối đa $8\text{ electron}$.",
-                ],
-                "D",
-                "biet",
-                r"Theo quy tắc phân bố electron trong mô hình Rutherford – Bohr: lớp thứ nhất (lớp $K$) chứa tối đa $2\text{ electron}$, lớp thứ hai (lớp $L$) chứa tối đa $8\text{ electron}$.",
-            ),
-            mcq(
-                r"Nguyên tử oxygen ($\text{O}$) có điện tích hạt nhân là $+8$. Khi xếp các electron vào lớp vỏ theo mô hình Rutherford – Bohr, số lớp electron và số electron ở lớp ngoài cùng của nguyên tử oxygen lần lượt là:",
-                [
-                    r"$2$ lớp electron và $6\text{ electron}$ ở lớp ngoài cùng.",
-                    r"$2$ lớp electron và $8\text{ electron}$ ở lớp ngoài cùng.",
-                    r"$3$ lớp electron và $2\text{ electron}$ ở lớp ngoài cùng.",
-                    r"$1$ lớp electron và $8\text{ electron}$ ở lớp ngoài cùng.",
-                ],
-                "A",
-                "hieu",
-                r"Nguyên tử oxygen ($\text{O}$) có $Z = p = e = 8\text{ electron}$. Lớp thứ nhất chứa tối đa $2\text{ electron}$, còn lại $8 - 2 = 6\text{ electron}$ xếp vào lớp thứ hai (lớp ngoài cùng). Vậy nguyên tử $\text{O}$ có $2$ lớp electron và $6\text{ electron}$ lớp ngoài cùng.",
-            ),
-            mcq(
-                r"Nguyên tử calcium ($\text{Ca}$) có $20$ proton và $20$ neutron trong hạt nhân. Khối lượng nguyên tử $\text{Ca}$ (theo $\text{amu}$) và tổng số hạt cơ bản ($p + n + e$) trong một nguyên tử $\text{Ca}$ lần lượt là:",
-                [
-                    r"$60\text{ amu}$ và $40$ hạt.",
-                    r"$40\text{ amu}$ và $60$ hạt.",
-                    r"$40\text{ amu}$ và $40$ hạt.",
-                    r"$20\text{ amu}$ và $60$ hạt.",
-                ],
-                "B",
-                "hieu",
-                r"Ta có $p = e = 20$ và $n = 20$. Khối lượng nguyên tử $\text{Ca}$ là $A \approx p + n = 20 + 20 = 40\text{ amu}$. Tổng số hạt cơ bản ($p + n + e$) trong nguyên tử $\text{Ca}$ là $20 + 20 + 20 = 60$ hạt.",
-            ),
-            tf4(
-                r"Cho nguyên tử phosphorus ($\text{P}$) có số đơn vị điện tích hạt nhân là $Z = 15$ và số hạt neutron trong hạt nhân là $n = 16$. Xét tính đúng/sai của các phát biểu sau về nguyên tử phosphorus:",
-                [
-                    r"Trong một nguyên tử phosphorus ($\text{P}$) có đúng $15$ hạt proton và $15$ hạt electron.",
-                    r"Tổng số hạt mang điện trong một nguyên tử phosphorus ($\text{P}$) là $15$ hạt.",
-                    r"Khối lượng nguyên tử của phosphorus ($\text{P}$) tính theo đơn vị khối lượng nguyên tử là $31\text{ amu}$.",
-                    r"Các electron của nguyên tử phosphorus ($\text{P}$) được phân bố trên $3$ lớp electron (với số electron từng lớp từ trong ra ngoài là $2, 8, 5$).",
-                ],
-                "Đ/S/Đ/Đ",
-                "hieu",
-                (
-                    r"- **Ý a) Đúng**: Nguyên tử trung hòa điện nên $p = e = Z = 15$." "\n"
-                    r"- **Ý b) Sai**: Các hạt mang điện trong nguyên tử gồm cả proton ($+1$) và electron ($-1$), nên tổng số hạt mang điện là $p + e = 15 + 15 = 30$ hạt (không phải $15$ hạt)." "\n"
-                    r"- **Ý c) Đúng**: Khối lượng nguyên tử $A \approx p + n = 15 + 16 = 31\text{ amu}$." "\n"
-                    r"- **Ý d) Đúng**: Với $15\text{ electron}$, lớp 1 có $2e$, lớp 2 có $8e$, lớp 3 có $15 - 2 - 8 = 5e$ $\rightarrow$ có $3$ lớp electron ($2, 8, 5$)."
-                ),
-            ),
-            tf4(
-                r"Xét cấu tạo của ba nguyên tử: Hydrogen (${}_1^1\text{H}$), Carbon (${}_6^{12}\text{C}$) và Magnesium (${}_{12}^{24}\text{Mg}$). Các nhận định sau đây là đúng hay sai?",
-                [
-                    r"Hạt nhân của nguyên tử hydrogen (${}_1^1\text{H}$) chỉ có $1$ hạt proton và không có hạt neutron nào ($n = 0$).",
-                    r"Trong nguyên tử carbon (${}_6^{12}\text{C}$), số hạt proton bằng số hạt neutron và bằng số hạt electron (đều bằng $6$).",
-                    r"Nguyên tử magnesium (${}_{12}^{24}\text{Mg}$) có khối lượng nguyên tử gấp đôi khối lượng nguyên tử carbon (${}_6^{12}\text{C}$).",
-                    r"Ở lớp electron ngoài cùng, nguyên tử carbon (${}_6^{12}\text{C}$) có $6\text{ electron}$ và nguyên tử magnesium (${}_{12}^{24}\text{Mg}$) có $4\text{ electron}$.",
-                ],
-                "Đ/Đ/Đ/S",
-                "hieu",
-                (
-                    r"- **Ý a) Đúng**: Với ${}_1^1\text{H}$, ta có $p = 1$, $A = p + n = 1 \Rightarrow n = 1 - 1 = 0$." "\n"
-                    r"- **Ý b) Đúng**: Với ${}_6^{12}\text{C}$, ta có $p = e = 6$ và $n = 12 - 6 = 6$." "\n"
-                    r"- **Ý c) Đúng**: Khối lượng nguyên tử của ${}_{12}^{24}\text{Mg}$ là $24\text{ amu}$, gấp $2$ lần khối lượng nguyên tử của ${}_6^{12}\text{C}$ ($12\text{ amu}$)." "\n"
-                    r"- **Ý d) Sai**: Nguyên tử ${}_6^{12}\text{C}$ ($6e$: phân bố $2, 4$) có **$4\text{ electron}$** lớp ngoài cùng; nguyên tử ${}_{12}^{24}\text{Mg}$ ($12e$: phân bố $2, 8, 2$) có **$2\text{ electron}$** lớp ngoài cùng."
-                ),
-            ),
-            mcq(
-                r"Một nguyên tử của nguyên tố $\text{X}$ có tổng số hạt cơ bản ($p, n, e$) là $40$ hạt, trong đó tổng số hạt mang điện nhiều hơn số hạt không mang điện là $12$ hạt. Điện tích hạt nhân và khối lượng nguyên tử của $\text{X}$ lần lượt là:",
-                [
-                    r"$+14$ và $28\text{ amu}$ (nguyên tử silicon $\text{Si}$).",
-                    r"$+11$ và $23\text{ amu}$ (nguyên tử sodium $\text{Na}$).",
-                    r"$+13$ và $27\text{ amu}$ (nguyên tử aluminium $\text{Al}$).",
-                    r"$+12$ và $24\text{ amu}$ (nguyên tử magnesium $\text{Mg}$).",
-                ],
-                "C",
-                "vandung",
-                r"Gọi số hạt proton, neutron, electron của $\text{X}$ là $p, n, e$ (với $p = e$). Tổng số hạt là $2p + n = 40$; số hạt mang điện nhiều hơn không mang điện là $2p - n = 12$. Cộng hai phương trình được $4p = 52 \Rightarrow p = e = 13$ và $n = 40 - 26 = 14$. Vậy điện tích hạt nhân là $+13$ và khối lượng nguyên tử là $A \approx p + n = 13 + 14 = 27\text{ amu}$.",
-            ),
-            short(
-                r"Tổng số hạt cơ bản (proton, neutron và electron) trong một nguyên tử nguyên tố $\text{R}$ là $52$ hạt, trong đó số hạt không mang điện (neutron) là $18$ hạt. Hãy tính khối lượng nguyên tử của $\text{R}$ theo đơn vị $\text{amu}$ (làm tròn đến hàng đơn vị).",
-                ["35", "35,0", "35.0"],
-                "vandung",
-                (
-                    r"Ta có tổng số hạt cơ bản trong nguyên tử $\text{R}$ là $S = p + n + e = 2p + n = 52$." "\n"
-                    r"Vì số hạt không mang điện là $n = 18$, ta tìm được số hạt proton:" "\n"
-                    r"$$2p = 52 - 18 = 34 \Rightarrow p = e = 17$$" "\n"
-                    r"Khối lượng nguyên tử của $\text{R}$ (chlorine ${}_{17}^{35}\text{Cl}$) theo đơn vị $\text{amu}$ là:" "\n"
-                    r"$$A \approx p + n = 17 + 18 = 35\text{ amu}$$"
-                ),
-            ),
-        ],
-        description="Mô hình nguyên tử Rutherford - Bohr, hạt nhân gồm proton và neutron, vỏ electron, điện tích hạt nhân và khối lượng nguyên tử.",
     ),
-    lesson(
-        grade=7,
-        order=2,
-        code="H7-C02",
-        title="Chương 2: Nguyên tố hóa học và sơ lược bảng tuần hoàn",
-        topic="nguyen-to-hoa-hoc",
-        summary=(
-            r"Nguyên tố hóa học là tập hợp những nguyên tử cùng loại, có cùng số hạt proton ($Z$) trong hạt nhân. "
-            r"Mỗi nguyên tố hóa học được biểu diễn bằng một ký hiệu hóa học quốc tế và tên gọi theo chuẩn IUPAC (như hydrogen $\text{H}$, oxygen $\text{O}$, sodium $\text{Na}$, iron $\text{Fe}$, copper $\text{Cu}$). "
-            r"Trong bảng tuần hoàn các nguyên tố hóa học, các nguyên tố được sắp xếp theo chiều tăng dần của điện tích hạt nhân nguyên tử vào các ô nguyên tố, các chu kỳ (hàng ngang) và các nhóm (cột dọc), giúp phân loại rõ nguyên tố kim loại, phi kim và khí hiếm."
+    bai(
+        topic=CH1[0], chapter_title=CH1[1], chapter_desc=CH1[2],
+        title="Bài 2: Nguyên tố hóa học",
+        icon="🏷️",
+        description="Định nghĩa nguyên tố hóa học (tập hợp các nguyên tử có cùng số proton), kí hiệu hóa học và tên gọi chuẩn IUPAC của 20 nguyên tố đầu tiên.",
+        requirements=[
+            "Định nghĩa được nguyên tố hóa học là tập hợp những nguyên tử cùng loại, có **cùng số proton trong hạt nhân**.",
+            "Nêu được các nguyên tử của cùng một nguyên tố hóa học đều có tính chất hóa học giống nhau.",
+            "Viết đúng kí hiệu hóa học (gồm 1 hoặc 2 chữ cái, chữ cái đầu viết in hoa) và đọc tên chuẩn IUPAC của 20 nguyên tố đầu tiên ($\\text{H}, \\text{He}, \\text{Li}, \\text{Be}, \\text{B}, \\text{C}, \\text{N}, \\text{O}, \\text{F}, \\text{Ne}, \\text{Na}, \\text{Mg}, \\text{Al}, \\text{Si}, \\text{P}, \\text{S}, \\text{Cl}, \\text{Ar}, \\text{K}, \\text{Ca}$) cùng một số nguyên tố phổ biến ($\\text{Fe}, \\text{Cu}, \\text{Zn}, \\text{Ag}$).",
+        ],
+        definition="Nguyên tố hóa học là tập hợp những nguyên tử cùng loại, có cùng số hạt proton trong hạt nhân. Số proton trong hạt nhân chính là số hiệu nguyên tử ($Z$), là đặc trưng cơ bản quyết định một nguyên tử thuộc nguyên tố hóa học nào.",
+        theory=(
+            "### 1. Khái niệm Nguyên tố hóa học\n"
+            "- Các nguyên tử có **cùng số hạt proton ($p = Z$)** trong hạt nhân đều thuộc về **cùng một nguyên tố hóa học** (dù số hạt neutron của chúng có thể khác nhau).\n"
+            "- Các nguyên tử thuộc cùng một nguyên tố hóa học có cùng số electron nên có **tính chất hóa học giống nhau**.\n"
+            "- Hiện nay các nhà khoa học đã biết $118$ nguyên tố hóa học ($98$ nguyên tố có trong tự nhiên và các nguyên tố nhân tạo). Trong vỏ Trái Đất, nguyên tố phổ biến nhất theo khối lượng là **Oxygen ($\\text{O}, \\approx 46{,}6\\%$)**, tiếp theo là Silicon ($\\text{Si}$), Aluminium ($\\text{Al}$), Iron ($\\text{Fe}$)...\n\n"
+            "### 2. Kí hiệu hóa học và Tên gọi theo danh pháp IUPAC\n"
+            "- **Quy tắc viết kí hiệu hóa học**: biểu diễn bằng $1$ hoặc $2$ chữ cái lấy từ tên Latinh của nguyên tố; **chữ cái đầu tiên luôn viết IN HOA**, chữ cái thứ hai (nếu có) luôn viết **chữ thường**.\n"
+            "- **Các nguyên tố tiêu biểu cần nhớ (Tên IUPAC – Kí hiệu – Khối lượng nguyên tử amu)**:\n"
+            "  - $\\text{H}$ (Hydrogen: $1$), $\\text{He}$ (Helium: $4$), $\\text{C}$ (Carbon: $12$), $\\text{N}$ (Nitrogen: $14$), $\\text{O}$ (Oxygen: $16$).\n"
+            "  - $\\text{Na}$ (Sodium: $23$), $\\text{Mg}$ (Magnesium: $24$), $\\text{Al}$ (Aluminium: $27$), $\\text{Si}$ (Silicon: $28$), $\\text{P}$ (Phosphorus: $31$), $\\text{S}$ (Sulfur: $32$), $\\text{Cl}$ (Chlorine: $35{,}5$).\n"
+            "  - $\\text{K}$ (Potassium: $39$), $\\text{Ca}$ (Calcium: $40$), $\\text{Fe}$ (Iron: $56$), $\\text{Cu}$ (Copper: $64$), $\\text{Zn}$ (Zinc: $65$), $\\text{Ag}$ (Silver: $108$), $\\text{Ba}$ (Barium: $137$)."
         ),
-        objectives=[
-            r"Nêu được khái niệm nguyên tố hóa học và giải thích vì sao số hạt proton ($Z$) là đặc trưng quyết định một nguyên tố hóa học.",
-            r"Viết đúng ký hiệu hóa học và đọc tên quốc tế IUPAC của 20 nguyên tố đầu tiên ($Z = 1 \rightarrow 20$) và các kim loại thông dụng ($\text{Fe}$, $\text{Cu}$, $\text{Zn}$, $\text{Ag}$, $\text{Au}$).",
-            r"Trình bày được nguyên tắc sắp xếp bảng tuần hoàn và cấu tạo bảng tuần hoàn gồm ô nguyên tố, chu kỳ ($7$ chu kỳ) và nhóm ($8$ nhóm A, $8$ nhóm B).",
-            r"Xác định được mối liên hệ giữa vị trí nguyên tố (số thứ tự ô, chu kỳ, nhóm A) với cấu tạo nguyên tử và phân biệt được nguyên tố kim loại, phi kim, khí hiếm.",
-        ],
         formulas=[
-            {
-                "name": "Quan hệ giữa vị trí trong bảng tuần hoàn và cấu tạo nguyên tử (Nhóm A)",
-                "formula": r"$\text{Số thứ tự ô} = Z = p = e; \quad \text{Số thứ tự chu kỳ} = \text{Số lớp } e; \quad \text{Số thứ tự nhóm A} = \text{Số } e \text{ lớp ngoài cùng}$",
-                "note": r"Ví dụ: $\text{Mg}$ ($Z = 12$, phân bố $2, 8, 2$) nằm ở ô số $12$, chu kỳ $3$ ($3$ lớp $e$), nhóm $\text{IIA}$ ($2e$ lớp ngoài cùng).",
-            },
-            {
-                "name": "20 nguyên tố hóa học đầu tiên theo chiều tăng dần điện tích hạt nhân Z",
-                "formula": r"$Z=1\text{..}10: \text{H, He, Li, Be, B, C, N, O, F, Ne} \quad \mid \quad Z=11\text{..}20: \text{Na, Mg, Al, Si, P, S, Cl, Ar, K, Ca}$",
-                "note": r"Ký hiệu hóa học gồm 1 hoặc 2 chữ cái, trong đó chữ cái đầu luôn viết IN HOA, chữ cái thứ hai (nếu có) viết thường.",
-            },
-            {
-                "name": "Phân loại nguyên tố theo số electron lớp ngoài cùng (chu kỳ nhỏ)",
-                "formula": r"$\text{Kim loại: } 1, 2, 3e \text{ (trừ H, He, B)} \quad \mid \quad \text{Phi kim: } 5, 6, 7e \text{ (và H, B, C, Si)} \quad \mid \quad \text{Khí hiếm: } 8e \text{ (He có } 2e\text{)}$",
-                "note": r"Các nguyên tố khí hiếm nhóm $\text{VIIIA}$ ($\text{He}, \text{Ne}, \text{Ar}...$) có lớp vỏ ngoài cùng bền vững nên rất trơ về mặt hóa học.",
-            },
+            G(
+                "Quy tắc xác định Nguyên tố hóa học và Kí hiệu hóa học",
+                F("Tiêu chuẩn duy nhất xác định cùng một nguyên tố hóa học", "$\\text{Cùng nguyên tố hóa học} \\iff \\text{Cùng số hạt proton } p \\text{ trong hạt nhân } (p_1 = p_2 = Z)$", "Ví dụ: Ba nguyên tử có cùng $p = 8$ (nhưng có $n = 8, 9, 10$) đều thuộc cùng 1 nguyên tố là Oxygen ($\\text{O}$)."),
+                F("Ý nghĩa của kí hiệu hóa học (ví dụ Na, Ca, Fe)", "$1\\text{ kí hiệu } X \\implies \\text{Biểu diễn nguyên tố } X \\text{ và } 1 \\text{ nguyên tử của nguyên tố đó}$", "Muốn biểu diễn $k$ nguyên tử riêng rẽ, ta viết hệ số $k$ phía trước kí hiệu: ví dụ $3\\text{Fe}$ là $3$ nguyên tử iron (sắt)."),
+            )
         ],
-        theory_sections=[
-            {
-                "title": "1. Nguyên tố hóa học và ký hiệu hóa học chuẩn IUPAC",
-                "content": (
-                    r"- **Nguyên tố hóa học** là tập hợp những nguyên tử cùng loại, có **cùng số proton ($p$)** trong hạt nhân. Do đó, số proton (số đơn vị điện tích hạt nhân $Z$) là số hiệu nguyên tử đặc trưng cho một nguyên tố hóa học (mọi nguyên tử thuộc cùng một nguyên tố hóa học đều có tính chất hóa học giống nhau)." "\n"
-                    r"- **Ký hiệu hóa học**: Biểu diễn bằng 1 hoặc 2 chữ cái (chữ cái đầu viết in hoa, chữ cái sau viết thường). Mỗi ký hiệu vừa chỉ nguyên tố đó, vừa chỉ **một nguyên tử** của nguyên tố đó." "\n"
-                    r"- **Tên gọi chuẩn IUPAC của các nguyên tố quan trọng**:" "\n"
-                    r"  + $Z = 1 \rightarrow 10$: $\text{H}$ (Hydrogen), $\text{He}$ (Helium), $\text{Li}$ (Lithium), $\text{Be}$ (Beryllium), $\text{B}$ (Boron), $\text{C}$ (Carbon), $\text{N}$ (Nitrogen), $\text{O}$ (Oxygen), $\text{F}$ (Fluorine), $\text{Ne}$ (Neon)." "\n"
-                    r"  + $Z = 11 \rightarrow 20$: $\text{Na}$ (Sodium - natri), $\text{Mg}$ (Magnesium), $\text{Al}$ (Aluminium - nhôm), $\text{Si}$ (Silicon), $\text{P}$ (Phosphorus), $\text{S}$ (Sulfur - lưu huỳnh), $\text{Cl}$ (Chlorine), $\text{Ar}$ (Argon), $\text{K}$ (Potassium - kali), $\text{Ca}$ (Calcium)." "\n"
-                    r"  + Một số kim loại thông dụng khác: $\text{Fe}$ (Iron - sắt, $Z = 26$), $\text{Cu}$ (Copper - đồng, $Z = 29$), $\text{Zn}$ (Zinc - kẽm, $Z = 30$), $\text{Ag}$ (Silver - bạc, $Z = 47$)."
-                ),
-            },
-            {
-                "title": "2. Nguyên tắc sắp xếp và cấu tạo bảng tuần hoàn",
-                "content": (
-                    r"- **Nguyên tắc sắp xếp**: Các nguyên tố trong bảng tuần hoàn được sắp xếp theo chiều **tăng dần của điện tích hạt nhân nguyên tử ($Z$)**; các nguyên tố có cùng số lớp electron trong nguyên tử được xếp thành một hàng ngang (chu kỳ); các nguyên tố có tính chất hóa học tương tự nhau (cùng số electron hóa trị/lớp ngoài cùng đối với nhóm A) được xếp thành một cột dọc (nhóm)." "\n"
-                    r"- **Ô nguyên tố**: Mỗi nguyên tố chiếm 1 ô. Số thứ tự của ô nguyên tố bằng đúng **số hiệu nguyên tử $Z = p = e$**. Trong ô nguyên tố cho biết: số hiệu nguyên tử $Z$, ký hiệu hóa học, tên nguyên tố và khối lượng nguyên tử." "\n"
-                    r"- **Chu kỳ**: Là dãy các nguyên tố mà nguyên tử của chúng có **cùng số lớp electron**, được xếp theo chiều điện tích hạt nhân tăng dần từ trái sang phải. Bảng tuần hoàn có $7$ chu kỳ (chu kỳ $1, 2, 3$ là chu kỳ nhỏ; chu kỳ $4, 5, 6, 7$ là chu kỳ lớn). **Số thứ tự của chu kỳ bằng số lớp electron**." "\n"
-                    r"- **Nhóm**: Là cột dọc gồm các nguyên tố có cấu hình electron ngoài cùng tương tự nhau nên có tính chất hóa học gần giống nhau. Đối với các nguyên tố **nhóm A** (từ $\text{IA}$ đến $\text{VIIIA}$): **Số thứ tự của nhóm A bằng số electron ở lớp ngoài cùng** (riêng $\text{He}$ có $2e$ lớp ngoài cùng nhưng xếp vào nhóm khí hiếm $\text{VIIIA}$)."
-                ),
-            },
-            {
-                "title": "3. Phân loại nguyên tố: Kim loại, phi kim và khí hiếm",
-                "content": (
-                    r"- **Các nguyên tố kim loại** (chiếm hơn $80\%$ tổng số nguyên tố trong bảng tuần hoàn, như $\text{Na}$, $\text{K}$, $\text{Mg}$, $\text{Ca}$, $\text{Al}$, $\text{Fe}$, $\text{Cu}$): Nằm ở phía bên trái (nhóm $\text{IA}$ trừ $\text{H}$, nhóm $\text{IIA}$, $\text{IIIA}$ trừ $\text{B}$) và khu vực giữa/dưới bảng tuần hoàn (các nhóm B); thường có $1, 2, 3\text{ electron}$ ở lớp ngoài cùng, dẫn điện và dẫn nhiệt tốt." "\n"
-                    r"- **Các nguyên tố phi kim** (như $\text{H}$, $\text{C}$, $\text{N}$, $\text{O}$, $\text{F}$, $\text{P}$, $\text{S}$, $\text{Cl}$): Nằm ở phía trên bên phải bảng tuần hoàn (nhóm $\text{IVA}, \text{VA}, \text{VIA}, \text{VIIA}$, riêng $\text{H}$ nằm ở nhóm $\text{IA}$); thường có $5, 6, 7\text{ electron}$ lớp ngoài cùng (hoặc $4e$ với $\text{C}, \text{Si}$)." "\n"
-                    r"- **Các nguyên tố khí hiếm** ($\text{He}$, $\text{Ne}$, $\text{Ar}$, $\text{Kr}$, $\text{Xe}$, $\text{Rn}$): Nằm ở cột cuối cùng bên phải (nhóm $\text{VIIIA}$), có lớp vỏ ngoài cùng bền vững ($8\text{ electron}$, riêng $\text{He}$ có $2\text{ electron}$), tồn tại trong tự nhiên dưới dạng các nguyên tử độc lập và rất khó tham gia phản ứng hóa học."
-                ),
-            },
+        example="Cho 4 nguyên tử có thành phần hạt nhân như sau: Nguyên tử $A$ ($6p, 6n$), nguyên tử $B$ ($7p, 7n$), nguyên tử $C$ ($6p, 8n$) và nguyên tử $D$ ($8p, 8n$). Hỏi những nguyên tử nào thuộc cùng một nguyên tố hóa học? Đó là nguyên tố nào?",
+        example_answer="Hai nguyên tử **$A$ và $C$** có **cùng số hạt proton trong hạt nhân ($p = 6$)** nên thuộc **cùng một nguyên tố hóa học** (đó là nguyên tố Carbon, kí hiệu $\\text{C}$). Như vậy 4 nguyên tử trên thuộc về $3$ nguyên tố hóa học khác nhau ($Z = 6, 7, 8$).",
+        real_life="Trên nhãn hộp sữa và thực phẩm bổ sung luôn in kí hiệu các nguyên tố khoáng thiết yếu như $\\text{Ca}$ (Calcium giúp xương và răng chắc khỏe), $\\text{Fe}$ (Iron tạo máu), $\\text{Zn}$ (Zinc tăng miễn dịch) và $\\text{I}$ (Iodine phòng bướu cổ).",
+        quiz=[
+            mcq("biet", "Các nguyên tử thuộc **cùng một nguyên tố hóa học** là những nguyên tử có cùng đại lượng nào sau đây?", ["Có cùng số hạt proton trong hạt nhân", "Có cùng số hạt neutron trong hạt nhân", "Có cùng tổng số hạt $p + n$", "Có cùng kích thước bình chứa"], 0, "Nguyên tố hóa học là tập hợp những nguyên tử cùng loại có cùng số hạt proton trong hạt nhân."),
+            mcq("biet", "Theo danh pháp quốc tế IUPAC trong SGK Kết nối tri thức, các nguyên tố có tên gọi **Sodium, Potassium, Copper, Iron** lần lượt có kí hiệu hóa học là gì?", ["$\\text{Na}, \\text{K}, \\text{Cu}, \\text{Fe}$", "$\\text{S}, \\text{P}, \\text{Co}, \\text{I}$", "$\\text{Na}, \\text{Ca}, \\text{Cu}, \\text{Zn}$", "$\\text{Mg}, \\text{K}, \\text{C}, \\text{Fe}$"], 0, "Sodium là $\\text{Na}$ (Natri), Potassium là $\\text{K}$ (Kali), Copper là $\\text{Cu}$ (Đồng) và Iron là $\\text{Fe}$ (Sắt)."),
+            mcq("hieu", "Cách viết kí hiệu hóa học của nguyên tố Aluminium (Nhôm) và Chlorine (Clo) nào sau đây là **đúng** quy ước quốc tế?", ["$\\text{Al}$ và $\\text{Cl}$ (chữ cái đầu viết in hoa, chữ cái thứ hai viết thường)", "$\\text{AL}$ và $\\text{CL}$", "$\\text{al}$ và $\\text{cl}$", "$\\text{aL}$ và $\\text{cL}$"], 0, "Trong kí hiệu hóa học gồm 2 chữ cái, chữ cái đầu tiên bắt buộc viết in hoa và chữ cái thứ hai bắt buộc viết thường: $\\text{Al}, \\text{Cl}$."),
+            tf4("hieu", "Xét tính đúng/sai của các phát biểu sau về nguyên tố hóa học:", [
+                "Các nguyên tử thuộc cùng một nguyên tố hóa học đều có tính chất hóa học giống nhau.",
+                "Cách viết $5\\text{Ca}$ dùng để chỉ $5$ nguyên tử calcium riêng rẽ.",
+                "Hai nguyên tử có cùng số hạt neutron là $7$ (ví dụ nguyên tử $X$ có $6p, 7n$ và nguyên tử $Y$ có $7p, 7n$) thì thuộc cùng một nguyên tố hóa học.",
+                "Nguyên tố chiếm tỉ lệ khối lượng lớn nhất trong vỏ Trái Đất là Oxygen ($\\text{O}$).",
+            ], [True, True, False, True], "Ý c) sai vì $X$ có $6$ proton (là $\\text{C}$) còn $Y$ có $7$ proton (là $\\text{N}$); khác số proton nên chúng thuộc hai nguyên tố hóa học khác nhau."),
+            short("vandung", "Cho 4 nguyên tử có cấu tạo hạt nhân lần lượt là: $X_1(8p, 8n)$, $X_2(8p, 9n)$, $X_3(8p, 10n)$ và $X_4(9p, 10n)$. Trong 4 nguyên tử trên, có bao nhiêu nguyên tử thuộc về nguyên tố Oxygen ($Z = 8$)?", ["3"], "Các nguyên tử $X_1, X_2, X_3$ đều có cùng số proton $p = 8$ nên có $3$ nguyên tử thuộc nguyên tố Oxygen."),
         ],
-        worked_examples=[
-            {
-                "title": "Ví dụ 1: Từ vị trí trong bảng tuần hoàn suy ra cấu tạo nguyên tử",
-                "problem": (
-                    r"Nguyên tố chlorine ($\text{Cl}$) nằm ở ô số $17$, chu kỳ $3$, nhóm $\text{VIIA}$ trong bảng tuần hoàn. "
-                    r"Hãy xác định số hạt proton, số hạt electron, số lớp electron, số electron lớp ngoài cùng và cho biết $\text{Cl}$ là kim loại, phi kim hay khí hiếm."
-                ),
-                "solution": (
-                    r"- Vì $\text{Cl}$ ở ô số $17 \Rightarrow Z = p = e = 17$ (nguyên tử có $17$ proton và $17$ electron)." "\n"
-                    r"- Vì $\text{Cl}$ ở chu kỳ $3 \Rightarrow$ nguyên tử có **$3$ lớp electron**." "\n"
-                    r"- Vì $\text{Cl}$ ở nhóm $\text{VIIA} \Rightarrow$ nguyên tử có **$7\text{ electron}$ ở lớp ngoài cùng** (sự phân bố electron trên $3$ lớp là $2, 8, 7$)." "\n"
-                    r"- Có $7\text{ electron}$ lớp ngoài cùng và nằm ở nhóm $\text{VIIA}$ (góc trên bên phải bảng tuần hoàn) nên chlorine ($\text{Cl}$) là một **nguyên tố phi kim** điển hình."
-                ),
-            },
-            {
-                "title": "Ví dụ 2: Từ cấu tạo nguyên tử xác định vị trí trong bảng tuần hoàn",
-                "problem": (
-                    r"Nguyên tử của nguyên tố $\text{X}$ có $3$ lớp electron và có $2\text{ electron}$ ở lớp ngoài cùng. "
-                    r"Hãy xác định vị trí (ô, chu kỳ, nhóm) của $\text{X}$ trong bảng tuần hoàn và gọi tên nguyên tố $\text{X}$ theo danh pháp IUPAC."
-                ),
-                "solution": (
-                    r"- Nguyên tử $\text{X}$ có $3$ lớp electron nên lớp 1 và lớp 2 đã bão hòa với lần lượt $2e$ và $8e$; lớp 3 (ngoài cùng) có $2e$." "\n"
-                    r"- Tổng số electron của nguyên tử $\text{X}$ là: $e = p = Z = 2 + 8 + 2 = 12$." "\n"
-                    r"- Vậy $\text{X}$ nằm ở **ô số $12$, chu kỳ $3$, nhóm $\text{IIA}$**, chính là nguyên tố kim loại **magnesium** ($\text{Mg}$)."
-                ),
-            },
-        ],
-        key_takeaways=[
-            r"Các nguyên tử thuộc cùng một nguyên tố hóa học đều có cùng số hạt proton ($p = Z$) trong hạt nhân.",
-            r"Trong bảng tuần hoàn: Số thứ tự ô $= Z = p = e$; Số thứ tự chu kỳ $=$ số lớp electron; Số thứ tự nhóm A $=$ số electron lớp ngoài cùng (trừ $\text{He}$).",
-            r"Kim loại nằm ở bên trái và giữa bảng (nhóm $\text{IA}, \text{IIA}, \text{IIIA}, \text{B}$); phi kim ở góc trên bên phải (nhóm $\text{VA}, \text{VIA}, \text{VIIA}$ và $\text{H}, \text{C}, \text{Si}$); khí hiếm ở cột cuối cùng nhóm $\text{VIIIA}$.",
-        ],
-        questions=[
-            mcq(
-                r"Tập hợp những nguyên tử cùng loại, có cùng số hạt nào sau đây trong hạt nhân thì thuộc cùng một **nguyên tố hóa học**?",
-                [
-                    r"Cùng số hạt neutron ($n$).",
-                    r"Cùng tổng số hạt proton và neutron ($p + n$).",
-                    r"Cùng số lớp electron ở vỏ nguyên tử.",
-                    r"Cùng số hạt proton ($p$).",
-                ],
-                "D",
-                "biet",
-                r"Nguyên tố hóa học là tập hợp những nguyên tử cùng loại, có cùng số hạt proton ($p$) trong hạt nhân.",
-            ),
-            mcq(
-                r"Theo danh pháp quốc tế IUPAC, các nguyên tố có ký hiệu hóa học $\text{Na}$, $\text{K}$, $\text{Cu}$, $\text{Fe}$ có tên gọi lần lượt là:",
-                [
-                    r"Sodium, potassium, copper, iron.",
-                    r"Sulfur, phosphorus, calcium, fluorine.",
-                    r"Nitrogen, potassium, carbon, iron.",
-                    r"Sodium, calcium, copper, silver.",
-                ],
-                "A",
-                "biet",
-                r"Theo chuẩn IUPAC: $\text{Na}$ là sodium (natri), $\text{K}$ là potassium (kali), $\text{Cu}$ là copper (đồng) và $\text{Fe}$ là iron (sắt).",
-            ),
-            mcq(
-                r"Trong bảng tuần hoàn các nguyên tố hóa học, các nguyên tố được sắp xếp theo nguyên tắc cơ bản nào sau đây?",
-                [
-                    r"Theo chiều tăng dần của số hạt neutron ($n$) trong hạt nhân.",
-                    r"Theo chiều tăng dần của điện tích hạt nhân nguyên tử ($Z$).",
-                    r"Theo chiều giảm dần của số lớp electron.",
-                    r"Theo thứ tự bảng chữ cái tên gọi quốc tế IUPAC.",
-                ],
-                "B",
-                "biet",
-                r"Nguyên tắc cơ bản đầu tiên để sắp xếp các nguyên tố trong bảng tuần hoàn là theo chiều tăng dần của điện tích hạt nhân nguyên tử ($Z$).",
-            ),
-            mcq(
-                r"Dãy nào sau đây chỉ gồm các nguyên tố thuộc nhóm **khí hiếm** (nhóm $\text{VIIIA}$)?",
-                [
-                    r"Sodium ($\text{Na}$), magnesium ($\text{Mg}$), aluminium ($\text{Al}$).",
-                    r"Fluorine ($\text{F}$), chlorine ($\text{Cl}$), sulfur ($\text{S}$).",
-                    r"Helium ($\text{He}$), neon ($\text{Ne}$), argon ($\text{Ar}$).",
-                    r"Hydrogen ($\text{H}$), oxygen ($\text{O}$), nitrogen ($\text{N}$).",
-                ],
-                "C",
-                "biet",
-                r"Helium ($\text{He}$), neon ($\text{Ne}$) và argon ($\text{Ar}$) là các nguyên tố khí hiếm nằm ở cột cuối cùng bên phải bảng tuần hoàn (nhóm $\text{VIIIA}$).",
-            ),
-            mcq(
-                r"Nguyên tố sulfur ($\text{S}$) có số hiệu nguyên tử $Z = 16$. Vị trí của sulfur trong bảng tuần hoàn các nguyên tố hóa học là:",
-                [
-                    r"Ô số $16$, chu kỳ $2$, nhóm $\text{VIA}$.",
-                    r"Ô số $16$, chu kỳ $3$, nhóm $\text{IIA}$.",
-                    r"Ô số $32$, chu kỳ $3$, nhóm $\text{VIA}$.",
-                    r"Ô số $16$, chu kỳ $3$, nhóm $\text{VIA}$.",
-                ],
-                "D",
-                "hieu",
-                r"Với $Z = 16$, nguyên tử sulfur ($\text{S}$) có $16\text{ electron}$ phân bố trên $3$ lớp theo thứ tự $2, 8, 6$. Do đó $\text{S}$ ở ô số $16$ ($Z = 16$), chu kỳ $3$ ($3$ lớp electron) và nhóm $\text{VIA}$ ($6\text{ electron}$ lớp ngoài cùng).",
-            ),
-            mcq(
-                r"Cho các ký hiệu hóa học được một học sinh viết như sau: $\text{NA}$ (sodium), $\text{mg}$ (magnesium), $\text{Al}$ (aluminium), $\text{cO}$ (cobalt), $\text{Ca}$ (calcium), $\text{Cl}$ (chlorine). Số ký hiệu hóa học đã được viết **đúng quy tắc** là:",
-                [
-                    r"$3$ ký hiệu: $\text{Al}$, $\text{Ca}$, $\text{Cl}$.",
-                    r"$4$ ký hiệu: $\text{NA}$, $\text{Al}$, $\text{Ca}$, $\text{Cl}$.",
-                    r"$2$ ký hiệu: $\text{Al}$, $\text{Ca}$.",
-                    r"$6$ ký hiệu đều đúng.",
-                ],
-                "A",
-                "hieu",
-                r"Quy tắc viết ký hiệu hóa học: chữ cái đầu tiên phải viết IN HOA, chữ cái thứ hai (nếu có) phải viết thường. Do đó chỉ có $\text{Al}$, $\text{Ca}$, $\text{Cl}$ viết đúng; còn $\text{NA}$ (đúng là $\text{Na}$), $\text{mg}$ (đúng là $\text{Mg}$), $\text{cO}$ (đúng là $\text{Co}$) đều viết sai.",
-            ),
-            tf4(
-                r"Cho thông tin ô nguyên tố của potassium ($\text{K}$) trong bảng tuần hoàn: Số hiệu nguyên tử là $19$, khối lượng nguyên tử là $39\text{ amu}$, nằm ở chu kỳ $4$, nhóm $\text{IA}$. Xét tính đúng/sai của các phát biểu sau:",
-                [
-                    r"Trong hạt nhân nguyên tử potassium ($\text{K}$) có $19$ hạt proton và lớp vỏ có $19$ hạt electron.",
-                    r"Nguyên tử potassium ($\text{K}$) có $4$ lớp electron và có $1\text{ electron}$ ở lớp ngoài cùng.",
-                    r"Số hạt neutron ($n$) trong hạt nhân nguyên tử potassium ($\text{K}$) này là $19$ hạt.",
-                    r"Potassium ($\text{K}$) là một nguyên tố kim loại hoạt động hóa học mạnh nằm ở nhóm $\text{IA}$ (nhóm kim loại kiềm).",
-                ],
-                "Đ/Đ/S/Đ",
-                "hieu",
-                (
-                    r"- **Ý a) Đúng**: Số hiệu nguyên tử $Z = 19 \Rightarrow p = e = 19$." "\n"
-                    r"- **Ý b) Đúng**: Chu kỳ $4 \Rightarrow$ có $4$ lớp electron; nhóm $\text{IA} \Rightarrow$ có $1\text{ electron}$ lớp ngoài cùng (phân bố $2, 8, 8, 1$)." "\n"
-                    r"- **Ý c) Sai**: Số hạt neutron là $n \approx A - p = 39 - 19 = 20$ hạt (không phải $19$ hạt)." "\n"
-                    r"- **Ý d) Đúng**: Các nguyên tố nhóm $\text{IA}$ (trừ $\text{H}$) như $\text{Li}, \text{Na}, \text{K}$ đều là các nguyên tố kim loại kiềm điển hình."
-                ),
-            ),
-            tf4(
-                r"Khi khảo sát vị trí và tính chất của các nguyên tố thuộc chu kỳ $2$ và chu kỳ $3$ trong bảng tuần hoàn (như $\text{H}, \text{He}, \text{C}, \text{N}, \text{O}, \text{Ne}, \text{Na}, \text{Mg}, \text{Al}$), xét tính đúng/sai của các nhận định sau:",
-                [
-                    r"Nguyên tố hydrogen ($\text{H}$, $Z = 1$) tuy được xếp ở cột nhóm $\text{IA}$ nhưng là một nguyên tố phi kim chứ không phải kim loại.",
-                    r"Nguyên tố helium ($\text{He}$, $Z = 2$) có $2\text{ electron}$ lớp ngoài cùng nên được xếp vào nhóm $\text{IIA}$ cùng với magnesium ($\text{Mg}$).",
-                    r"Ba nguyên tố carbon ($\text{C}$, $Z = 6$), nitrogen ($\text{N}$, $Z = 7$) và oxygen ($\text{O}$, $Z = 8$) cùng thuộc chu kỳ $2$ vì nguyên tử của chúng đều có đúng $2$ lớp electron.",
-                    r"Hai nguyên tố sodium ($\text{Na}$, ô $11$) và magnesium ($\text{Mg}$, ô $12$) đứng kế tiếp nhau ở đầu chu kỳ $3$ đều là các nguyên tố kim loại.",
-                ],
-                "Đ/S/Đ/Đ",
-                "hieu",
-                (
-                    r"- **Ý a) Đúng**: Hydrogen ($\text{H}$) có $1e$ lớp ngoài cùng nên xếp ở nhóm $\text{IA}$, nhưng là nguyên tố phi kim." "\n"
-                    r"- **Ý b) Sai**: Tuy $\text{He}$ chỉ có $2\text{ electron}$ ở lớp thứ nhất (lớp duy nhất đã bão hòa tối đa $2e$), nhưng $\text{He}$ là nguyên tố **khí hiếm** nên được xếp vào **nhóm $\text{VIIIA}$**, không phải nhóm $\text{IIA}$." "\n"
-                    r"- **Ý c) Đúng**: $\text{C}$ ($2, 4$), $\text{N}$ ($2, 5$) và $\text{O}$ ($2, 6$) đều có $2$ lớp electron nên cùng thuộc chu kỳ $2$." "\n"
-                    r"- **Ý d) Đúng**: $\text{Na}$ (nhóm $\text{IA}$) và $\text{Mg}$ (nhóm $\text{IIA}$) đều là các nguyên tố kim loại điển hình của chu kỳ $3$."
-                ),
-            ),
-            mcq(
-                r"Hai nguyên tố $\text{X}$ và $\text{Y}$ đứng kế tiếp nhau trong cùng một chu kỳ của bảng tuần hoàn và có tổng số đơn vị điện tích hạt nhân ($Z_{\text{X}} + Z_{\text{Y}}$) bằng $25$. Biết $Z_{\text{X}} < Z_{\text{Y}}$, hai nguyên tố $\text{X}$ và $\text{Y}$ lần lượt là:",
-                [
-                    r"Nitrogen ($\text{N}$, $Z = 7$) và argon ($\text{Ar}$, $Z = 18$).",
-                    r"Magnesium ($\text{Mg}$, $Z = 12$) và aluminium ($\text{Al}$, $Z = 13$).",
-                    r"Sodium ($\text{Na}$, $Z = 11$) và silicon ($\text{Si}$, $Z = 14$).",
-                    r"Carbon ($\text{C}$, $Z = 6$) và potassium ($\text{K}$, $Z = 19$).",
-                ],
-                "B",
-                "vandung",
-                r"Hai nguyên tố đứng kế tiếp nhau trong một chu kỳ thì hơn kém nhau $1$ đơn vị điện tích hạt nhân: $Z_{\text{Y}} - Z_{\text{X}} = 1$. Kết hợp với $Z_{\text{X}} + Z_{\text{Y}} = 25$, ta giải được $Z_{\text{X}} = \dfrac{25 - 1}{2} = 12$ (magnesium, $\text{Mg}$) và $Z_{\text{Y}} = 13$ (aluminium, $\text{Al}$).",
-            ),
-            short(
-                r"Nguyên tố silicon ($\text{Si}$ — nguyên tố chính trong cát thạch anh và vi mạch bán dẫn) nằm ở chu kỳ $3$, nhóm $\text{IVA}$ trong bảng tuần hoàn các nguyên tố hóa học. Hãy xác định số thứ tự của ô nguyên tố (cũng chính là số hạt proton $Z$) của silicon ($\text{Si}$).",
-                ["14"],
-                "vandung",
-                (
-                    r"Vì silicon ($\text{Si}$) nằm ở chu kỳ $3$ nên nguyên tử có $3$ lớp electron (lớp thứ nhất đã chứa tối đa $2e$, lớp thứ hai đã chứa tối đa $8e$)." "\n"
-                    r"Vì $\text{Si}$ thuộc nhóm $\text{IVA}$ nên lớp ngoài cùng (lớp thứ ba) có $4\text{ electron}$." "\n"
-                    r"Vậy số thứ tự ô nguyên tố (số hạt proton $Z$) của $\text{Si}$ là:" "\n"
-                    r"$$Z = p = e = 2 + 8 + 4 = 14$$"
-                ),
-            ),
-        ],
-        description="Khái niệm nguyên tố hóa học, ký hiệu hóa học và tên gọi quốc tế IUPAC, cấu tạo bảng tuần hoàn và phân loại kim loại, phi kim, khí hiếm.",
     ),
-    lesson(
-        grade=7,
-        order=3,
-        code="H7-C03",
-        title="Chương 3: Phân tử và khối lượng phân tử",
-        topic="phan-tu",
-        summary=(
-            r"Phân tử là hạt đại diện cho chất, gồm một số nguyên tử liên kết với nhau và thể hiện đầy đủ tính chất hóa học của chất. "
-            r"Phân tử có thể được tạo bởi các nguyên tử của cùng một nguyên tố hóa học (như $\text{H}_2$, $\text{O}_2$, $\text{N}_2$, $\text{Cl}_2$, $\text{O}_3$) hoặc từ các nguyên tử của nhiều nguyên tố khác nhau (như $\text{H}_2\text{O}$, $\text{CO}_2$, $\text{NH}_3$, $\text{CH}_4$). "
-            r"Khối lượng phân tử (tính theo đơn vị $\text{amu}$) của một chất bằng tổng khối lượng của tất cả các nguyên tử có trong một phân tử chất đó."
+    bai(
+        topic=CH1[0], chapter_title=CH1[1], chapter_desc=CH1[2],
+        title="Bài 3: Cấu trúc bảng tuần hoàn các nguyên tố hóa học",
+        icon="📅",
+        description="Nguyên tắc sắp xếp các nguyên tố trong bảng tuần hoàn (theo chiều tăng điện tích hạt nhân Z) và cấu tạo bảng tuần hoàn (ô nguyên tố, chu kì, nhóm).",
+        requirements=[
+            "Nêu được nguyên tắc sắp xếp các nguyên tố trong bảng tuần hoàn: theo chiều tăng dần của điện tích hạt nhân nguyên tử (số hiệu nguyên tử $Z$).",
+            "Đọc được các thông tin trong một **ô nguyên tố** (số hiệu nguyên tử $Z$, kí hiệu hóa học, tên nguyên tố, khối lượng nguyên tử).",
+            "Vận dụng được mối liên hệ giữa cấu tạo nguyên tử và vị trí trong bảng tuần hoàn (đối với 20 nguyên tố đầu): $\\text{Số thứ tự ô} = Z = p = e$; $\\text{Số thứ tự chu kì} = \\text{Số lớp electron}$; $\\text{Số thứ tự nhóm A} = \\text{Số electron lớp ngoài cùng}$.",
+        ],
+        definition="Bảng tuần hoàn các nguyên tố hóa học (do Dmitri Mendeleev phát minh năm 1869) sắp xếp các nguyên tố theo chiều tăng dần của điện tích hạt nhân nguyên tử. Cấu trúc bảng tuần hoàn gồm các ô nguyên tố, các hàng ngang gọi là chu kì ($7$ chu kì) và các cột dọc gọi là nhóm ($8$ nhóm A và $8$ nhóm B).",
+        theory=(
+            "### 1. Nguyên tắc sắp xếp của Bảng tuần hoàn\n"
+            "1. Các nguyên tố được sắp xếp theo **chiều tăng dần của điện tích hạt nhân nguyên tử ($Z$)**.\n"
+            "2. Các nguyên tố có **cùng số lớp electron** trong nguyên tử được xếp vào cùng một hàng ngang gọi là **chu kì**.\n"
+            "3. Các nguyên tố có **số electron lớp ngoài cùng giống nhau** (nên có tính chất hóa học tương tự nhau) được xếp vào cùng một cột dọc gọi là **nhóm**.\n\n"
+            "### 2. Ô nguyên tố – Chu kì – Nhóm\n"
+            "- **Ô nguyên tố**: Số thứ tự của ô nguyên tố bằng **số hiệu nguyên tử $Z$** ($= \\text{số } p = \\text{số } e$). Ngoài ra trong ô còn ghi kí hiệu hóa học, tên nguyên tố và khối lượng nguyên tử trung bình.\n"
+            "- **Chu kì (hàng ngang)**: Bảng tuần hoàn hiện có **$7$ chu kì** (chu kì $1, 2, 3$ là các *chu kì nhỏ*; chu kì $4, 5, 6, 7$ là các *chu kì lớn*).\n"
+            "  $$\\text{Số thứ tự của chu kì} = \\text{Số lớp electron của nguyên tử}$$\n"
+            "- **Nhóm (cột dọc)**: Gồm $8$ nhóm A (từ $\\text{IA}$ đến $\\text{VIIIA}$) và $8$ nhóm B (từ $\\text{IB}$ đến $\\text{VIIIB}$). Đối với các nguyên tố nhóm A:\n"
+            "  $$\\text{Số thứ tự của nhóm A (chữ số La Mã)} = \\text{Số electron ở lớp ngoài cùng}$$"
         ),
-        objectives=[
-            r"Nêu được khái niệm phân tử là hạt đại diện cho chất, gồm một số nguyên tử liên kết với nhau và thể hiện đầy đủ tính chất hóa học của chất.",
-            r"Phân biệt được hạt hợp thành của các chất phân tử ($\text{H}_2\text{O}$, $\text{O}_2$, $\text{CO}_2$, $\text{NH}_3$) với hạt hợp thành của các khí hiếm ($\text{He}$, $\text{Ne}$, $\text{Ar}$ tồn tại dưới dạng nguyên tử riêng rẽ).",
-            r"Xác định được số nguyên tử của mỗi nguyên tố và tổng số nguyên tử có trong một phân tử dựa vào công thức hóa học.",
-            r"Tính được khối lượng phân tử ($M$) theo đơn vị $\text{amu}$ của các phân tử đơn chất và hợp chất phổ biến.",
-        ],
         formulas=[
-            {
-                "name": "Công thức tính khối lượng phân tử tổng quát",
-                "formula": r"$M_{\text{A}_x\text{B}_y\text{C}_z} = x \cdot M_{\text{A}} + y \cdot M_{\text{B}} + z \cdot M_{\text{C}} \text{ (amu)}$",
-                "note": r"Trong đó $M_{\text{A}}, M_{\text{B}}, M_{\text{C}}$ là khối lượng nguyên tử ($\text{amu}$) và $x, y, z$ là chỉ số nguyên tử tương ứng trong phân tử.",
-            },
-            {
-                "name": "Khối lượng nguyên tử (amu) của các nguyên tố thường gặp",
-                "formula": r"$\text{H} = 1; \text{ C} = 12; \text{ N} = 14; \text{ O} = 16; \text{ Na} = 23; \text{ Mg} = 24; \text{ Al} = 27; \text{ S} = 32; \text{ Cl} = 35{,}5; \text{ Ca} = 40; \text{ Fe} = 56; \text{ Cu} = 64$",
-                "note": r"Khi có nhóm nguyên tử trong ngoặc đơn như $\text{Ca(OH)}_2$ hoặc $\text{Al}_2(\text{SO}_4)_3$, chỉ số ngoài ngoặc nhân cho toàn bộ các nguyên tử trong ngoặc.",
-            },
-            {
-                "name": "Tổng số nguyên tử trong một phân tử",
-                "formula": r"$N_{\text{nguyên tử}}(\text{A}_x\text{B}_y\text{C}_z) = x + y + z$",
-                "note": r"Ví dụ phân tử sulfuric acid ($\text{H}_2\text{SO}_4$) có $2 + 1 + 4 = 7$ nguyên tử.",
-            },
+            G(
+                "Liên hệ giữa Cấu tạo nguyên tử và Vị trí trong Bảng tuần hoàn",
+                F("Quy tắc 3 dấu bằng vàng cho nguyên tố nhóm A", "$\\begin{cases} \\text{Số thứ tự ô nguyên tố} = Z = p = e \\\\ \\text{Số thứ tự Chu kì (hàng ngang)} = \\text{Số lớp electron} \\\\ \\text{Số thứ tự Nhóm A (cột dọc)} = \\text{Số electron lớp ngoài cùng} \\end{cases}$", "Ngoại lệ duy nhất: Nguyên tử Helium ($\\text{He}, Z = 2$) chỉ có $1$ lớp chứa $2e$ đã bão hòa nên được xếp vào nhóm khí hiếm $\\text{VIIIA}$."),
+                F("Số nguyên tố trong các chu kì nhỏ", "$\\text{Chu kì 1}: 2\\text{ nguyên tố } (\\text{H}, \\text{He}); \\quad \\text{Chu kì 2}: 8\\text{ nguyên tố } (Z = 3..10); \\quad \\text{Chu kì 3}: 8\\text{ nguyên tố } (Z = 11..18)$", "Bảng tuần hoàn có tổng cộng $7$ chu kì."),
+            )
         ],
-        theory_sections=[
-            {
-                "title": "1. Hạt hợp thành của chất và khái niệm phân tử",
-                "content": (
-                    r"- Mỗi chất đều được tạo nên từ vô số các hạt đại diện vô cùng nhỏ bé giống hệt nhau. Đối với hầu hết các chất (như nước $\text{H}_2\text{O}$, khí oxygen $\text{O}_2$, khí carbon dioxide $\text{CO}_2$, đường saccharose $\text{C}_{12}\text{H}_{22}\text{O}_{11}$), hạt đại diện đó là **phân tử**." "\n"
-                    r"- **Định nghĩa**: **Phân tử** là hạt đại diện cho chất, gồm một số nguyên tử liên kết với nhau và thể hiện đầy đủ tính chất hóa học của chất." "\n"
-                    r"- **Các dạng phân tử thường gặp**:" "\n"
-                    r"  + Phân tử tạo bởi các nguyên tử của **cùng một nguyên tố hóa học**: phân tử khí hydrogen ($\text{H}_2$ gồm $2$ nguyên tử $\text{H}$), khí oxygen ($\text{O}_2$ gồm $2$ nguyên tử $\text{O}$), khí ozone ($\text{O}_3$ gồm $3$ nguyên tử $\text{O}$), khí nitrogen ($\text{N}_2$ gồm $2$ nguyên tử $\text{N}$), khí chlorine ($\text{Cl}_2$ gồm $2$ nguyên tử $\text{Cl}$)." "\n"
-                    r"  + Phân tử tạo bởi các nguyên tử của **nhiều nguyên tố hóa học khác nhau**: phân tử nước ($\text{H}_2\text{O}$ gồm $2$ nguyên tử $\text{H}$ và $1$ nguyên tử $\text{O}$), phân tử ammonia ($\text{NH}_3$ gồm $1$ nguyên tử $\text{N}$ và $3$ nguyên tử $\text{H}$), phân tử methane ($\text{CH}_4$ gồm $1$ nguyên tử $\text{C}$ và $4$ nguyên tử $\text{H}$), phân tử carbon dioxide ($\text{CO}_2$ gồm $1$ nguyên tử $\text{C}$ và $2$ nguyên tử $\text{O}$)." "\n"
-                    r"- **Trường hợp đặc biệt**: Đối với các **khí hiếm** (như helium $\text{He}$, neon $\text{Ne}$, argon $\text{Ar}$), hạt đại diện cho chất chỉ là các **nguyên tử riêng rẽ** (không liên kết thành phân tử nhiều nguyên tử)."
-                ),
-            },
-            {
-                "title": "2. Khối lượng phân tử và cách tính",
-                "content": (
-                    r"- **Khối lượng phân tử** của một chất bằng tổng khối lượng của các nguyên tử có trong phân tử chất đó. Đơn vị của khối lượng phân tử là **$\text{amu}$**." "\n"
-                    r"- **Quy tắc tính khối lượng phân tử** của chất có công thức $\text{A}_x\text{B}_y$:" "\n"
-                    r"$$M_{\text{A}_x\text{B}_y} = x \cdot M_{\text{A}} + y \cdot M_{\text{B}} \text{ (amu)}$$" "\n"
-                    r"- **Ví dụ minh họa nhanh** (với $\text{H} = 1, \text{C} = 12, \text{N} = 14, \text{O} = 16, \text{S} = 32, \text{Ca} = 40$):" "\n"
-                    r"  + Phân tử khí oxygen ($\text{O}_2$): $M_{\text{O}_2} = 2 \cdot 16 = 32\text{ amu}$." "\n"
-                    r"  + Phân tử nước ($\text{H}_2\text{O}$): $M_{\text{H}_2\text{O}} = 2 \cdot 1 + 1 \cdot 16 = 18\text{ amu}$." "\n"
-                    r"  + Phân tử ammonia ($\text{NH}_3$): $M_{\text{NH}_3} = 1 \cdot 14 + 3 \cdot 1 = 17\text{ amu}$." "\n"
-                    r"  + Phân tử carbon dioxide ($\text{CO}_2$): $M_{\text{CO}_2} = 1 \cdot 12 + 2 \cdot 16 = 44\text{ amu}$." "\n"
-                    r"  + Phân tử calcium carbonate ($\text{CaCO}_3$): $M_{\text{CaCO}_3} = 40 + 12 + 3 \cdot 16 = 100\text{ amu}$."
-                ),
-            },
+        example="Nguyên tử của nguyên tố Magnesium ($\\text{Mg}$) có điện tích hạt nhân là $+12$, có $12$ electron được phân bố trên $3$ lớp electron (lớp thứ nhất có $2e$, lớp thứ hai có $8e$, lớp thứ ba ngoài cùng có $2e$). Hãy xác định vị trí (ô thứ mấy, chu kì mấy, nhóm nào) của nguyên tố $\\text{Mg}$ trong bảng tuần hoàn.",
+        example_answer="- Vì $Z = p = e = 12$ nên $\\text{Mg}$ nằm ở **ô nguyên tố số $12$**.\n- Vì nguyên tử có $3$ lớp electron nên $\\text{Mg}$ thuộc **chu kì $3$**.\n- Vì lớp ngoài cùng có $2$ electron nên $\\text{Mg}$ thuộc **nhóm $\\text{IIA}$**.",
+        real_life="Bảng tuần hoàn được ví như 'tấm bản đồ vĩ đại của Hóa học': chỉ cần nhìn vị trí ô, chu kì và nhóm của một nguyên tố bất kì, ta biết ngay cấu tạo nguyên tử và dự đoán được tính chất của nó.",
+        quiz=[
+            mcq("biet", "Trong bảng tuần hoàn hiện đại, các nguyên tố hóa học được sắp xếp theo nguyên tắc cơ bản nào?", ["Theo chiều tăng dần của điện tích hạt nhân nguyên tử (số hiệu nguyên tử $Z$)", "Theo thứ tự bảng chữ cái A, B, C của tên nguyên tố", "Theo thời gian nguyên tố được tìm ra sớm hay muộn", "Theo độ cứng của đơn chất tăng dần"], 0, "Các nguyên tố trong bảng tuần hoàn được sắp xếp theo chiều tăng dần của điện tích hạt nhân nguyên tử."),
+            mcq("biet", "Các nguyên tố hóa học nằm trong cùng một **chu kì** (cùng một hàng ngang) trong bảng tuần hoàn có đặc điểm chung nào về cấu tạo nguyên tử?", ["Có cùng số lớp electron trong nguyên tử", "Có cùng số electron ở lớp ngoài cùng", "Có cùng số hạt proton trong hạt nhân", "Có cùng số hạt neutron trong hạt nhân"], 0, "Chu kì là dãy các nguyên tố mà nguyên tử của chúng có cùng số lớp electron (số thứ tự chu kì bằng số lớp electron)."),
+            mcq("hieu", "Nguyên tố Sulfur ($\\text{S}$) nằm ở **ô số $16$, chu kì $3$, nhóm $\\text{VIA}$** trong bảng tuần hoàn. Phát biểu nào sau đây về cấu tạo nguyên tử $\\text{S}$ là **đúng**?", ["Nguyên tử $\\text{S}$ có $16$ proton, $3$ lớp electron và có $6$ electron ở lớp ngoài cùng", "Nguyên tử $\\text{S}$ có $16$ proton, $6$ lớp electron và $3$ electron ở lớp ngoài cùng", "Nguyên tử $\\text{S}$ có $3$ proton và $6$ electron", "Nguyên tử $\\text{S}$ có $6$ proton và $16$ lớp electron"], 0, "Ô số $16 \\implies p = e = 16$; chu kì $3 \\implies 3$ lớp electron; nhóm $\\text{VIA} \\implies 6$ electron ở lớp ngoài cùng ($2, 8, 6$)."),
+            tf4("hieu", "Xét tính đúng/sai của các phát biểu sau về cấu trúc bảng tuần hoàn:", [
+                "Bảng tuần hoàn hiện nay gồm có $7$ chu kì (trong đó chu kì $1, 2, 3$ là các chu kì nhỏ).",
+                "Số thứ tự của ô nguyên tố luôn bằng số hiệu nguyên tử $Z$ (bằng số proton và bằng số electron trong nguyên tử).",
+                "Các nguyên tố trong cùng một nhóm A (cột dọc) có số electron lớp ngoài cùng bằng nhau nên có tính chất hóa học tương tự nhau.",
+                "Chu kì $1$ của bảng tuần hoàn chứa tới $8$ nguyên tố hóa học.",
+            ], [True, True, True, False], "Ý d) sai vì chu kì $1$ chỉ gồm đúng $2$ nguyên tố là Hydrogen ($\\text{H}, Z = 1$) và Helium ($\\text{He}, Z = 2$)."),
+            short("vandung", "Nguyên tử của nguyên tố Chlorine ($\\text{Cl}$) có $17$ electron phân bố trên $3$ lớp (lớp 1 có $2e$, lớp 2 có $8e$, lớp 3 ngoài cùng có $7e$). Nguyên tố Chlorine nằm ở chu kì thứ mấy trong bảng tuần hoàn?", ["3"], "Vì nguyên tử $\\text{Cl}$ có $3$ lớp electron nên thuộc chu kì $3$."),
         ],
-        worked_examples=[
-            {
-                "title": "Ví dụ 1: Tính khối lượng phân tử của hợp chất có nhóm nguyên tử",
-                "problem": (
-                    r"Biết khối lượng nguyên tử: $\text{H} = 1\text{ amu}$, $\text{O} = 16\text{ amu}$, $\text{S} = 32\text{ amu}$, $\text{Ca} = 40\text{ amu}$, $\text{Cu} = 64\text{ amu}$. "
-                    r"Hãy tính khối lượng phân tử của: a) Sulfuric acid ($\text{H}_2\text{SO}_4$); b) Calcium hydroxide ($\text{Ca(OH)}_2$); c) Copper(II) sulfate ($\text{CuSO}_4$)."
-                ),
-                "solution": (
-                    r"- **a)** Khối lượng phân tử của $\text{H}_2\text{SO}_4$ là:" "\n"
-                    r"$$M_{\text{H}_2\text{SO}_4} = 2 \cdot 1 + 1 \cdot 32 + 4 \cdot 16 = 98\text{ amu}$$" "\n"
-                    r"- **b)** Khối lượng phân tử của $\text{Ca(OH)}_2$ là:" "\n"
-                    r"$$M_{\text{Ca(OH)}_2} = 40 + 2 \cdot (16 + 1) = 40 + 34 = 74\text{ amu}$$" "\n"
-                    r"- **c)** Khối lượng phân tử của $\text{CuSO}_4$ là:" "\n"
-                    r"$$M_{\text{CuSO}_4} = 64 + 32 + 4 \cdot 16 = 160\text{ amu}$$"
-                ),
-            },
-            {
-                "title": "Ví dụ 2: Xác định nguyên tố chưa biết dựa vào khối lượng phân tử",
-                "problem": (
-                    r"Một phân tử oxide có công thức dạng $\text{XO}_2$ (gồm $1$ nguyên tử nguyên tố $\text{X}$ liên kết với $2$ nguyên tử oxygen $\text{O}$). "
-                    r"Biết khối lượng phân tử của $\text{XO}_2$ nặng gấp $2$ lần khối lượng phân tử của khí oxygen ($\text{O}_2$). Tìm khối lượng nguyên tử và tên nguyên tố $\text{X}$."
-                ),
-                "solution": (
-                    r"- Khối lượng phân tử của khí oxygen ($\text{O}_2$) là: $M_{\text{O}_2} = 2 \cdot 16 = 32\text{ amu}$." "\n"
-                    r"- Khối lượng phân tử của $\text{XO}_2$ là: $M_{\text{XO}_2} = 2 \cdot 32 = 64\text{ amu}$." "\n"
-                    r"- Mặt khác: $M_{\text{XO}_2} = M_{\text{X}} + 2 \cdot 16 = 64 \Rightarrow M_{\text{X}} = 64 - 32 = 32\text{ amu}$." "\n"
-                    r"- Vậy $\text{X}$ là nguyên tố **sulfur** ($\text{S} = 32\text{ amu}$) và phân tử đó là sulfur dioxide ($\text{SO}_2$)."
-                ),
-            },
-        ],
-        key_takeaways=[
-            r"Phân tử là hạt đại diện cho chất, gồm một số nguyên tử liên kết với nhau và mang đầy đủ tính chất hóa học của chất.",
-            r"Khối lượng phân tử ($M$) tính theo đơn vị $\text{amu}$ bằng tổng khối lượng các nguyên tử tạo nên một phân tử đó.",
-            r"Khi công thức có dấu ngoặc như $\text{M}(\text{AB})_n$, khối lượng của nhóm $(\text{AB})$ được nhân với chỉ số $n$.",
-        ],
-        questions=[
-            mcq(
-                r"Phát biểu nào sau đây định nghĩa đúng nhất về **phân tử**?",
-                [
-                    r"Phân tử chỉ gồm các hạt electron chuyển động quanh hạt nhân.",
-                    r"Phân tử của mọi chất đều chỉ chứa đúng $2$ nguyên tử liên kết với nhau.",
-                    r"Phân tử là hạt đại diện cho chất, gồm một số nguyên tử liên kết với nhau và thể hiện đầy đủ tính chất hóa học của chất.",
-                    r"Phân tử là hạt mang điện tích dương nằm ở tâm của nguyên tử.",
-                ],
-                "C",
-                "biet",
-                r"Theo định nghĩa SGK KHTN 7 (Kết nối tri thức): Phân tử là hạt đại diện cho chất, gồm một số nguyên tử liên kết với nhau và thể hiện đầy đủ tính chất hóa học của chất.",
-            ),
-            mcq(
-                r"Cho biết khối lượng nguyên tử: $\text{C} = 12\text{ amu}$, $\text{O} = 16\text{ amu}$. Khối lượng phân tử của khí carbon dioxide ($\text{CO}_2$) là:",
-                [
-                    r"$28\text{ amu}$.",
-                    r"$32\text{ amu}$.",
-                    r"$40\text{ amu}$.",
-                    r"$44\text{ amu}$.",
-                ],
-                "D",
-                "biet",
-                r"Một phân tử $\text{CO}_2$ gồm $1$ nguyên tử $\text{C}$ và $2$ nguyên tử $\text{O}$ nên có khối lượng phân tử là: $M_{\text{CO}_2} = 1 \cdot 12 + 2 \cdot 16 = 44\text{ amu}$.",
-            ),
-            mcq(
-                r"Trong một phân tử methane ($\text{CH}_4$ — thành phần chính của khí thiên nhiên và biogas), tổng số nguyên tử tạo nên phân tử là:",
-                [
-                    r"$5$ nguyên tử (gồm $1$ nguyên tử $\text{C}$ và $4$ nguyên tử $\text{H}$).",
-                    r"$4$ nguyên tử (chỉ gồm $4$ nguyên tử $\text{H}$).",
-                    r"$2$ nguyên tử (gồm $1$ nguyên tử $\text{C}$ và $1$ nguyên tử $\text{H}$).",
-                    r"$8$ nguyên tử (gồm $4$ nguyên tử $\text{C}$ và $4$ nguyên tử $\text{H}$).",
-                ],
-                "A",
-                "biet",
-                r"Phân tử $\text{CH}_4$ gồm $1$ nguyên tử carbon ($\text{C}$) liên kết với $4$ nguyên tử hydrogen ($\text{H}$), tổng cộng có $1 + 4 = 5$ nguyên tử.",
-            ),
-            mcq(
-                r"Chất nào sau đây có các hạt đại diện tồn tại dưới dạng **các nguyên tử riêng rẽ** (không liên kết thành phân tử hai hay nhiều nguyên tử ở điều kiện thường)?",
-                [
-                    r"Nước tinh khiết ($\text{H}_2\text{O}$).",
-                    r"Khí hiếm neon ($\text{Ne}$) dùng trong đèn quảng cáo.",
-                    r"Khí oxygen ($\text{O}_2$) trong không khí.",
-                    r"Khí nitrogen ($\text{N}_2$) trong không khí.",
-                ],
-                "B",
-                "biet",
-                r"Các nguyên tố khí hiếm như helium ($\text{He}$), neon ($\text{Ne}$), argon ($\text{Ar}$) có lớp vỏ electron bền vững nên hạt đại diện là các nguyên tử độc lập riêng rẽ.",
-            ),
-            mcq(
-                r"Biết khối lượng nguyên tử: $\text{H} = 1\text{ amu}$, $\text{C} = 12\text{ amu}$, $\text{N} = 14\text{ amu}$, $\text{O} = 16\text{ amu}$, $\text{S} = 32\text{ amu}$. Cặp phân tử nào sau đây có **cùng khối lượng phân tử**?",
-                [
-                    r"Khí oxygen ($\text{O}_2$) và khí carbon dioxide ($\text{CO}_2$).",
-                    r"Nước ($\text{H}_2\text{O}$) và hydrogen sulfide ($\text{H}_2\text{S}$).",
-                    r"Khí nitrogen ($\text{N}_2$) và khí carbon monoxide ($\text{CO}$).",
-                    r"Khí methane ($\text{CH}_4$) và khí ammonia ($\text{NH}_3$).",
-                ],
-                "C",
-                "hieu",
-                r"Ta tính khối lượng phân tử: $M_{\text{N}_2} = 2 \cdot 14 = 28\text{ amu}$ và $M_{\text{CO}} = 12 + 16 = 28\text{ amu}$. Vậy hai phân tử $\text{N}_2$ và $\text{CO}$ có cùng khối lượng phân tử là $28\text{ amu}$. (Ở các phương án khác: $\text{CH}_4 = 16 \neq \text{NH}_3 = 17$; $\text{O}_2 = 32 \neq \text{CO}_2 = 44$; $\text{H}_2\text{O} = 18 \neq \text{H}_2\text{S} = 34$).",
-            ),
-            mcq(
-                r"Cho biết khối lượng nguyên tử: $\text{N} = 14\text{ amu}$, $\text{H} = 1\text{ amu}$, $\text{S} = 32\text{ amu}$, $\text{O} = 16\text{ amu}$. Khối lượng phân tử của muối ammonium sulfate (phân đạm một lá, có công thức $\text{(NH}_4)_2\text{SO}_4$) là:",
-                [
-                    r"$114\text{ amu}$.",
-                    r"$98\text{ amu}$.",
-                    r"$150\text{ amu}$.",
-                    r"$132\text{ amu}$.",
-                ],
-                "D",
-                "hieu",
-                r"Trong $\text{(NH}_4)_2\text{SO}_4$, nhóm $(\text{NH}_4)$ có khối lượng là $14 + 4 \cdot 1 = 18\text{ amu}$ và được lấy $2$ lần. Vậy khối lượng phân tử là: $M = 2 \cdot 18 + 32 + 4 \cdot 16 = 36 + 32 + 64 = 132\text{ amu}$.",
-            ),
-            tf4(
-                r"Cho bốn chất phổ biến sau: khí hydrogen ($\text{H}_2$), khí ozone ($\text{O}_3$), nước ($\text{H}_2\text{O}$) và đá vôi calcium carbonate ($\text{CaCO}_3$). Biết khối lượng nguyên tử: $\text{H} = 1\text{ amu}$, $\text{C} = 12\text{ amu}$, $\text{O} = 16\text{ amu}$, $\text{Ca} = 40\text{ amu}$. Xét tính đúng/sai của các phát biểu sau:",
-                [
-                    r"Phân tử khí hydrogen ($\text{H}_2$) và phân tử khí ozone ($\text{O}_3$) đều được tạo nên từ các nguyên tử của cùng một nguyên tố hóa học.",
-                    r"Khối lượng phân tử của khí ozone ($\text{O}_3$) là $32\text{ amu}$.",
-                    r"Một phân tử nước ($\text{H}_2\text{O}$) có khối lượng phân tử bằng $18\text{ amu}$, nặng gấp $9$ lần một phân tử khí hydrogen ($\text{H}_2$).",
-                    r"Trong một phân tử calcium carbonate ($\text{CaCO}_3$) có tất cả $5$ nguyên tử và khối lượng phân tử bằng $100\text{ amu}$.",
-                ],
-                "Đ/S/Đ/Đ",
-                "hieu",
-                (
-                    r"- **Ý a) Đúng**: $\text{H}_2$ chỉ tạo bởi nguyên tố $\text{H}$; $\text{O}_3$ chỉ tạo bởi nguyên tố $\text{O}$." "\n"
-                    r"- **Ý b) Sai**: Phân tử ozone ($\text{O}_3$) gồm $3$ nguyên tử oxygen nên có khối lượng phân tử là $3 \cdot 16 = 48\text{ amu}$ (không phải $32\text{ amu}$)." "\n"
-                    r"- **Ý c) Đúng**: $M_{\text{H}_2\text{O}} = 18\text{ amu}$ và $M_{\text{H}_2} = 2 \cdot 1 = 2\text{ amu}$, ta có $\dfrac{18}{2} = 9$ lần." "\n"
-                    r"- **Ý d) Đúng**: $\text{CaCO}_3$ gồm $1\text{ Ca} + 1\text{ C} + 3\text{ O} = 5$ nguyên tử, và $M_{\text{CaCO}_3} = 40 + 12 + 3 \cdot 16 = 100\text{ amu}$."
-                ),
-            ),
-            tf4(
-                r"Glucose là loại đường cung cấp năng lượng trực tiếp cho cơ thể người (có nhiều trong quả nho chín), một phân tử glucose có công thức hóa học là $\text{C}_6\text{H}_{12}\text{O}_6$. Biết khối lượng nguyên tử: $\text{H} = 1\text{ amu}$, $\text{C} = 12\text{ amu}$, $\text{O} = 16\text{ amu}$. Xét tính đúng/sai của các phát biểu sau:",
-                [
-                    r"Phân tử glucose ($\text{C}_6\text{H}_{12}\text{O}_6$) được cấu tạo từ $3$ nguyên tố hóa học là carbon ($\text{C}$), hydrogen ($\text{H}$) và oxygen ($\text{O}$).",
-                    r"Tổng số nguyên tử có trong một phân tử glucose ($\text{C}_6\text{H}_{12}\text{O}_6$) là $24$ nguyên tử.",
-                    r"Trong một phân tử glucose, số nguyên tử hydrogen ($\text{H}$) bằng tổng số nguyên tử carbon ($\text{C}$) và nguyên tử oxygen ($\text{O}$).",
-                    r"Khối lượng phân tử của glucose ($\text{C}_6\text{H}_{12}\text{O}_6$) bằng $160\text{ amu}$.",
-                ],
-                "Đ/Đ/Đ/S",
-                "hieu",
-                (
-                    r"- **Ý a) Đúng**: Phân tử $\text{C}_6\text{H}_{12}\text{O}_6$ gồm $3$ nguyên tố hóa học là $\text{C}$, $\text{H}$ và $\text{O}$." "\n"
-                    r"- **Ý b) Đúng**: Tổng số nguyên tử trong $1$ phân tử glucose là $6 + 12 + 6 = 24$ nguyên tử." "\n"
-                    r"- **Ý c) Đúng**: Số nguyên tử $\text{H}$ là $12$, bằng tổng số nguyên tử $\text{C}$ ($6$) và $\text{O}$ ($6$): $6 + 6 = 12$." "\n"
-                    r"- **Ý d) Sai**: Khối lượng phân tử của glucose là $M = 6 \cdot 12 + 12 \cdot 1 + 6 \cdot 16 = 72 + 12 + 96 = 180\text{ amu}$ (không phải $160\text{ amu}$)."
-                ),
-            ),
-            mcq(
-                r"Một hợp chất có công thức hóa học dạng $\text{M}_2(\text{SO}_4)_3$ có khối lượng phân tử bằng $342\text{ amu}$. Biết khối lượng nguyên tử của sulfur là $\text{S} = 32\text{ amu}$ và của oxygen là $\text{O} = 16\text{ amu}$. Khối lượng nguyên tử và tên nguyên tố kim loại $\text{M}$ là:",
-                [
-                    r"$27\text{ amu}$ — Aluminium ($\text{Al}$).",
-                    r"$56\text{ amu}$ — Iron ($\text{Fe}$).",
-                    r"$24\text{ amu}$ — Magnesium ($\text{Mg}$).",
-                    r"$64\text{ amu}$ — Copper ($\text{Cu}$).",
-                ],
-                "A",
-                "vandung",
-                r"Khối lượng của một nhóm sulfate $(\text{SO}_4)$ là $32 + 4 \cdot 16 = 96\text{ amu}$. Trong phân tử $\text{M}_2(\text{SO}_4)_3$, ta có: $2 \cdot M_{\text{M}} + 3 \cdot 96 = 342 \Rightarrow 2 \cdot M_{\text{M}} = 342 - 288 = 54 \Rightarrow M_{\text{M}} = 27\text{ amu}$. Vậy $\text{M}$ là nguyên tố aluminium ($\text{Al}$).",
-            ),
-            short(
-                r"Đường mía (saccharose) có công thức phân tử là $\text{C}_{12}\text{H}_{22}\text{O}_{11}$. Biết khối lượng nguyên tử của các nguyên tố lần lượt là $\text{C} = 12\text{ amu}$, $\text{H} = 1\text{ amu}$ và $\text{O} = 16\text{ amu}$. Hãy tính khối lượng phân tử của đường saccharose ($\text{C}_{12}\text{H}_{22}\text{O}_{11}$) theo đơn vị $\text{amu}$.",
-                ["342", "342,0", "342.0"],
-                "vandung",
-                (
-                    r"Khối lượng phân tử của đường saccharose ($\text{C}_{12}\text{H}_{22}\text{O}_{11}$) là:" "\n"
-                    r"$$M_{\text{C}_{12}\text{H}_{22}\text{O}_{11}} = 12 \cdot 12 + 22 \cdot 1 + 11 \cdot 16 = 144 + 22 + 176 = 342\text{ amu}$$"
-                ),
-            ),
-        ],
-        description="Khái niệm phân tử là hạt đại diện cho chất gồm một số nguyên tử liên kết với nhau và cách tính khối lượng phân tử theo đơn vị amu.",
     ),
-    lesson(
-        grade=7,
-        order=4,
-        code="H7-C04",
-        title="Chương 4: Đơn chất và hợp chất",
-        topic="don-chat-hop-chat",
-        summary=(
-            r"Mọi chất tinh khiết trong tự nhiên đều được phân loại thành đơn chất hoặc hợp chất dựa trên số nguyên tố hóa học tạo nên chất đó. "
-            r"Đơn chất được tạo nên từ một nguyên tố hóa học (bao gồm đơn chất kim loại như $\text{Fe}$, $\text{Cu}$, $\text{Al}$, đơn chất phi kim như $\text{H}_2$, $\text{O}_2$, $\text{N}_2$, $\text{C}$, $\text{S}$ và khí hiếm như $\text{He}$, $\text{Ne}$, $\text{Ar}$). "
-            r"Hợp chất được tạo nên từ hai nguyên tố hóa học trở lên (bao gồm hợp chất vô cơ như $\text{H}_2\text{O}$, $\text{NaCl}$, $\text{CaCO}_3$ và hợp chất hữu cơ như $\text{CH}_4$, $\text{C}_6\text{H}_{12}\text{O}_6$), trong đó thành phần phần trăm khối lượng của mỗi nguyên tố luôn xác định."
+    bai(
+        topic=CH1[0], chapter_title=CH1[1], chapter_desc=CH1[2],
+        title="Bài 4: Nguyên tố kim loại, phi kim và khí hiếm trong bảng tuần hoàn",
+        icon="💎",
+        description="Vị trí và đặc điểm của các nhóm nguyên tố kim loại (IA, IIA, IIIA, nhóm B), nguyên tố phi kim (VA, VIA, VIIA) và nguyên tố khí hiếm (VIIIA).",
+        requirements=[
+            "Xác định được vị trí của các nguyên tố kim loại (chiếm hơn $80\\%$ số nguyên tố, nằm ở phía bên trái và phía dưới bảng tuần hoàn: nhóm $\\text{IA}, \\text{IIA}, \\text{IIIA}$ và các nhóm $\\text{B}$).",
+            "Xác định được vị trí của các nguyên tố phi kim (nằm ở phía trên bên phải bảng tuần hoàn: phần lớn nhóm $\\text{VA}, \\text{VIA}, \\text{VIIA}$ và $\\text{H}$ ở nhóm $\\text{IA}$).",
+            "Nêu được đặc điểm của các nguyên tố khí hiếm ở cột cuối cùng (nhóm $\\text{VIIIA}$: $\\text{He}, \\text{Ne}, \\text{Ar}$... có lớp vỏ ngoài cùng bền vững $8e$, riêng $\\text{He}$ có $2e$, hầu như không tham gia phản ứng hóa học).",
+        ],
+        definition="Trong bảng tuần hoàn, hơn $80\\%$ các nguyên tố là kim loại (nằm ở bên trái và phía dưới bảng); các nguyên tố phi kim nằm ở phía trên bên phải bảng (và $\\text{H}$ ở ô số 1); cột cuối cùng bên phải (nhóm $\\text{VIIIA}$) là các nguyên tố khí hiếm có lớp electron ngoài cùng đã bão hòa bền vững.",
+        theory=(
+            "### 1. Các nguyên tố Kim loại\n"
+            "- Chiếm hơn $80\\%$ tổng số nguyên tố (hơn $90$ nguyên tố), nguyên tử thường có $1, 2$ hoặc $3$ electron ở lớp ngoài cùng.\n"
+            "- **Vị trí**:\n"
+            "  - **Nhóm $\\text{IA}$ (Kim loại kiềm, trừ $\\text{H}$)**: $\\text{Li}$ (Lithium), $\\text{Na}$ (Sodium), $\\text{K}$ (Potassium)... ($1e$ lớp ngoài cùng).\n"
+            "  - **Nhóm $\\text{IIA}$ (Kim loại kiềm thổ)**: $\\text{Be}, \\text{Mg}$ (Magnesium), $\\text{Ca}$ (Calcium), $\\text{Ba}$ (Barium)... ($2e$ lớp ngoài cùng).\n"
+            "  - **Nhóm $\\text{IIIA}$** (trừ $\\text{B}$): $\\text{Al}$ (Aluminium – $3e$ lớp ngoài cùng)...\n"
+            "  - **Toàn bộ các nhóm $\\text{B}$ (Kim loại chuyển tiếp)**: $\\text{Fe}$ (Iron), $\\text{Cu}$ (Copper), $\\text{Zn}$ (Zinc), $\\text{Ag}$ (Silver), $\\text{Au}$ (Gold), $\\text{Hg}$ (Mercury – kim loại duy nhất ở thể lỏng ở điều kiện thường).\n\n"
+            "### 2. Các nguyên tố Phi kim và Nguyên tố Khí hiếm\n"
+            "- **Nguyên tố phi kim** (khoảng gần $20$ nguyên tố, nguyên tử thường có $5, 6, 7$ electron ở lớp ngoài cùng):\n"
+            "  - Nằm ở góc phía trên bên phải bảng tuần hoàn: thuộc một phần nhóm $\\text{IIIA}$ ($\\text{B}$), $\\text{IVA}$ ($\\text{C}, \\text{Si}$), $\\text{VA}$ ($\\text{N}, \\text{P}$), $\\text{VIA}$ ($\\text{O}, \\text{S}$) và **nhóm $\\text{VIIA}$ (nhóm Halogen: $\\text{F}, \\text{Cl}, \\text{Br}, \\text{I}$)**, cùng với nguyên tố **Hydrogen ($\\text{H}$)** ở ô số 1 nhóm $\\text{IA}$.\n"
+            "- **Nguyên tố khí hiếm (Nhóm $\\text{VIIIA}$ – cột 18 cuối cùng bên phải)**:\n"
+            "  - Gồm $\\text{He}$ (Helium), $\\text{Ne}$ (Neon), $\\text{Ar}$ (Argon), $\\text{Kr}$ (Krypton), $\\text{Xe}$ (Xenon), $\\text{Rn}$ (Radon).\n"
+            "  - Có lớp electron ngoài cùng bền vững tối đa (**$8$ electron**, riêng $\\text{He}$ có **$2$ electron**), nên ở điều kiện thường tồn tại dưới dạng nguyên tử đơn độc và **rất trơ về mặt hóa học**."
         ),
-        objectives=[
-            r"Phân biệt được đơn chất (tạo nên từ $1$ nguyên tố hóa học) và hợp chất (tạo nên từ $2$ nguyên tố hóa học trở lên) dựa vào thành phần nguyên tố.",
-            r"Phân loại được các đơn chất thành đơn chất kim loại, đơn chất phi kim, khí hiếm và nêu được đặc điểm cấu tạo, tính chất vật lý đặc trưng của chúng.",
-            r"Phân biệt được hợp chất vô cơ ($\text{H}_2\text{O}$, $\text{CO}_2$, $\text{NaCl}$, $\text{CaCO}_3$) và hợp chất hữu cơ ($\text{CH}_4$, $\text{C}_2\text{H}_5\text{OH}$, $\text{C}_6\text{H}_{12}\text{O}_6$) trong đời sống.",
-            r"Tính được thành phần phần trăm về khối lượng của từng nguyên tố hóa học trong hợp chất khi biết công thức hóa học.",
-        ],
         formulas=[
-            {
-                "name": "Thành phần phần trăm khối lượng nguyên tố trong hợp chất",
-                "formula": r"$\%m_{\text{A}} = \dfrac{x \cdot M_{\text{A}}}{M_{\text{A}_x\text{B}_y}} \cdot 100\%; \quad \%m_{\text{B}} = 100\% - \%m_{\text{A}}$",
-                "note": r"Trong hợp chất $\text{A}_x\text{B}_y$, tổng phần trăm khối lượng của tất cả các nguyên tố luôn bằng $100\%$.",
-            },
-            {
-                "name": "Tìm chỉ số nguyên tử khi biết khối lượng phân tử và phần trăm nguyên tố",
-                "formula": r"$x = \dfrac{\%m_{\text{A}} \cdot M_{\text{hợp chất}}}{100\% \cdot M_{\text{A}}}$",
-                "note": r"Áp dụng để xác định công thức hóa học của hợp chất từ số liệu phân tích nguyên tố.",
-            },
-            {
-                "name": "Phân biệt nhanh đơn chất và hợp chất",
-                "formula": r"$\text{Đơn chất: } 1\text{ nguyên tố } (\text{O}_2, \text{O}_3, \text{Fe}, \text{S}) \quad \mid \quad \text{Hợp chất: } \ge 2\text{ nguyên tố } (\text{H}_2\text{O}, \text{CO}_2, \text{NaCl})$",
-                "note": r"Lưu ý: Hỗn hợp (như không khí, nước biển) gồm nhiều chất trộn lẫn, không phải là một hợp chất.",
-            },
+            G(
+                "Phân vùng Kim loại – Phi kim – Khí hiếm trong Bảng tuần hoàn",
+                F("Dấu hiệu nhận biết theo số electron lớp ngoài cùng", "$1, 2, 3e \\text{ ngoài cùng} \\implies \\text{Kim loại (trừ H, He, B)}; \\quad 5, 6, 7e \\implies \\text{Phi kim}; \\quad 8e \\ (\\text{He: } 2e) \\implies \\text{Khí hiếm (VIIIA)}$", "Kim loại chiếm trên $80\\%$ tổng số nguyên tố trong bảng tuần hoàn."),
+                F("Các nhóm nguyên tố tiêu biểu", "$\\text{Nhóm IA (trừ H)}: \\text{KL kiềm } (\\text{Li, Na, K}); \\quad \\text{Nhóm IIA}: \\text{KL kiềm thổ } (\\text{Mg, Ca}); \\quad \\text{Nhóm VIIA}: \\text{Halogen } (\\text{F, Cl, Br, I}); \\quad \\text{Nhóm VIIIA}: \\text{Khí hiếm } (\\text{He, Ne, Ar})$", "Thủy ngân (Mercury – $\\text{Hg}$) là kim loại duy nhất ở thể lỏng ở nhiệt độ phòng; Bromine ($\\text{Br}_2$) là phi kim duy nhất ở thể lỏng."),
+            )
         ],
-        theory_sections=[
-            {
-                "title": "1. Đơn chất",
-                "content": (
-                    r"- **Khái niệm**: **Đơn chất** là những chất được tạo nên từ **một nguyên tố hóa học**." "\n"
-                    r"- **Phân loại đơn chất**:" "\n"
-                    r"  1. **Đơn chất kim loại**: Như iron ($\text{Fe}$), copper ($\text{Cu}$), aluminium ($\text{Al}$), sodium ($\text{Na}$), magnesium ($\text{Mg}$), silver ($\text{Ag}$), mercury ($\text{Hg}$ - kim loại duy nhất ở thể lỏng ở nhiệt độ thường). Các nguyên tử sắp xếp khít nhau, có tính dẫn điện, dẫn nhiệt tốt, có ánh kim và tính dẻo. Công thức hóa học của đơn chất kim loại trùng với ký hiệu nguyên tố ($\text{Fe}, \text{Cu}, \text{Al}$)." "\n"
-                    r"  2. **Đơn chất phi kim**: Như khí hydrogen ($\text{H}_2$), khí oxygen ($\text{O}_2$), khí ozone ($\text{O}_3$), khí nitrogen ($\text{N}_2$), khí chlorine ($\text{Cl}_2$), bromine lỏng ($\text{Br}_2$), hoặc chất rắn như carbon ($\text{C}$ - than chì, kim cương), sulfur ($\text{S}$), phosphorus ($\text{P}$). Thường không dẫn điện, không dẫn nhiệt (trừ than chì $\text{C}$ dẫn điện tốt)." "\n"
-                    r"  3. **Đơn chất khí hiếm**: Như helium ($\text{He}$), neon ($\text{Ne}$), argon ($\text{Ar}$), tồn tại ở thể khí dưới dạng nguyên tử đơn lẻ rất bền vững."
-                ),
-            },
-            {
-                "title": "2. Hợp chất",
-                "content": (
-                    r"- **Khái niệm**: **Hợp chất** là những chất được tạo nên từ **hai hay nhiều nguyên tố hóa học** liên kết với nhau theo tỉ lệ xác định." "\n"
-                    r"- **Phân loại hợp chất**:" "\n"
-                    r"  1. **Hợp chất vô cơ**: Nước ($\text{H}_2\text{O}$), muối ăn sodium chloride ($\text{NaCl}$), khí carbon dioxide ($\text{CO}_2$), đá vôi calcium carbonate ($\text{CaCO}_3$), sulfuric acid ($\text{H}_2\text{SO}_4$), sodium hydroxide ($\text{NaOH}$)." "\n"
-                    r"  2. **Hợp chất hữu cơ** (hợp chất của carbon, trừ $\text{CO}, \text{CO}_2$, muối carbonate...): Khí methane ($\text{CH}_4$), cồn ethanol ($\text{C}_2\text{H}_5\text{OH}$), đường glucose ($\text{C}_6\text{H}_{12}\text{O}_6$), đường saccharose ($\text{C}_{12}\text{H}_{22}\text{O}_{11}$), acetic acid ($\text{CH}_3\text{COOH}$)."
-                ),
-            },
-            {
-                "title": "3. Tính thành phần phần trăm khối lượng của nguyên tố trong hợp chất",
-                "content": (
-                    r"- Với hợp chất có công thức hóa học $\text{A}_x\text{B}_y\text{C}_z$, các bước tính thành phần phần trăm khối lượng của từng nguyên tố:" "\n"
-                    r"  + **Bước 1**: Tính khối lượng phân tử của hợp chất: $M = x \cdot M_{\text{A}} + y \cdot M_{\text{B}} + z \cdot M_{\text{C}}\text{ (amu)}$." "\n"
-                    r"  + **Bước 2**: Tính phần trăm khối lượng mỗi nguyên tố:" "\n"
-                    r"$$\%m_{\text{A}} = \dfrac{x \cdot M_{\text{A}}}{M} \cdot 100\%; \quad \%m_{\text{B}} = \dfrac{y \cdot M_{\text{B}}}{M} \cdot 100\%; \quad \%m_{\text{C}} = 100\% - (\%m_{\text{A}} + \%m_{\text{B}})$$"
-                ),
-            },
+        example="Dựa vào cấu tạo vỏ nguyên tử và vị trí trong bảng tuần hoàn, hãy phân loại các nguyên tố sau thành 3 nhóm (Kim loại, Phi kim, Khí hiếm): Sodium ($\\text{Na}$, nhóm $\\text{IA}$), Oxygen ($\\text{O}$, nhóm $\\text{VIA}$), Neon ($\\text{Ne}$, nhóm $\\text{VIIIA}$), Iron ($\\text{Fe}$, nhóm $\\text{VIIIB}$), Chlorine ($\\text{Cl}$, nhóm $\\text{VIIA}$) và Argon ($\\text{Ar}$, nhóm $\\text{VIIIA}$).",
+        example_answer="- **Nguyên tố kim loại**: Sodium ($\\text{Na}$) và Iron ($\\text{Fe}$).\n- **Nguyên tố phi kim**: Oxygen ($\\text{O}$) và Chlorine ($\\text{Cl}$).\n- **Nguyên tố khí hiếm**: Neon ($\\text{Ne}$) và Argon ($\\text{Ar}$).",
+        real_life="Khí hiếm Helium ($\\text{He}$) rất nhẹ và không cháy nổ nên được bơm vào khinh khí cầu, bóng bay an toàn (thay cho khí $\\text{H}_2$ dễ nổ); khí hiếm Argon ($\\text{Ar}$) và Neon ($\\text{Ne}$) được bơm vào bóng đèn sợi đốt và đèn quảng cáo.",
+        quiz=[
+            mcq("biet", "Trong bảng tuần hoàn các nguyên tố hóa học, các nguyên tố **khí hiếm** (như $\\text{He}, \\text{Ne}, \\text{Ar}$) nằm ở nhóm nào?", ["Nhóm $\\text{VIIIA}$ (cột cuối cùng bên phải bảng tuần hoàn)", "Nhóm $\\text{IA}$ (cột đầu tiên bên trái)", "Nhóm $\\text{VIIA}$", "Các nhóm $\\text{B}$ ở giữa bảng"], 0, "Các nguyên tố khí hiếm nằm ở cột cuối cùng bên phải của bảng tuần hoàn, tức nhóm $\\text{VIIIA}$ (nhóm 18)."),
+            mcq("biet", "Loại nguyên tố nào chiếm tỉ lệ lớn nhất (trên $80\\%$ tổng số nguyên tố) trong bảng tuần hoàn các nguyên tố hóa học?", ["Các nguyên tố kim loại", "Các nguyên tố phi kim", "Các nguyên tố khí hiếm", "Các nguyên tố phóng xạ nhân tạo"], 0, "Hơn $80\\%$ các nguyên tố trong bảng tuần hoàn là nguyên tố kim loại (gồm hầu hết nhóm $\\text{IA}, \\text{IIA}, \\text{IIIA}$ và toàn bộ các nhóm $\\text{B}$)."),
+            mcq("hieu", "Vì sao ở điều kiện thường, các nguyên tố khí hiếm (như Helium $\\text{He}$, Neon $\\text{Ne}$, Argon $\\text{Ar}$) lại tồn tại dưới dạng nguyên tử độc lập và hầu như không tham gia phản ứng hóa học?", ["Vì lớp electron ngoài cùng của nguyên tử khí hiếm đã đạt số lượng tối đa bền vững ($8$ electron, riêng $\\text{He}$ là $2$ electron)", "Vì hạt nhân của khí hiếm không có hạt proton", "Vì nguyên tử khí hiếm không có lớp vỏ electron", "Vì khí hiếm là các kim loại rất nặng"], 0, "Lớp electron ngoài cùng của khí hiếm đã bão hòa bền vững ($8e$, riêng $\\text{He}$ là $2e$) nên chúng rất trơ về mặt hóa học."),
+            tf4("hieu", "Xét tính đúng/sai của các phát biểu sau về kim loại, phi kim và khí hiếm trong bảng tuần hoàn:", [
+                "Nguyên tố Hydrogen ($\\text{H}$, ô số 1) tuy xếp ở đầu nhóm $\\text{IA}$ nhưng là một nguyên tố phi kim.",
+                "Tất cả các nguyên tố thuộc nhóm $\\text{B}$ (như $\\text{Fe}, \\text{Cu}, \\text{Zn}, \\text{Ag}, \\text{Au}$) đều là các nguyên tố kim loại.",
+                "Các nguyên tố Oxygen ($\\text{O}$), Nitrogen ($\\text{N}$) và Chlorine ($\\text{Cl}$) là các nguyên tố kim loại điển hình.",
+                "Kim loại Thủy ngân (Mercury – $\\text{Hg}$) là kim loại duy nhất tồn tại ở thể lỏng ở nhiệt độ phòng.",
+            ], [True, True, False, True], "Ý c) sai vì Oxygen ($\\text{O}$), Nitrogen ($\\text{N}$) và Chlorine ($\\text{Cl}$) là các nguyên tố phi kim điển hình nằm ở góc trên bên phải bảng tuần hoàn."),
+            short("vandung", "Trừ nguyên tử Helium ($\\text{He}$) có $2$ electron ở lớp ngoài cùng, nguyên tử của tất cả các nguyên tố khí hiếm còn lại ($\\text{Ne}, \\text{Ar}, \\text{Kr}, \\text{Xe}, \\text{Rn}$) trong nhóm $\\text{VIIIA}$ đều có bao nhiêu electron ở lớp ngoài cùng?", ["8"], "Các nguyên tử khí hiếm thuộc nhóm $\\text{VIIIA}$ (trừ $\\text{He}$) đều có $8$ electron ở lớp ngoài cùng."),
         ],
-        worked_examples=[
-            {
-                "title": "Ví dụ 1: Phân biệt đơn chất, hợp chất và hỗn hợp",
-                "problem": (
-                    r"Cho các chất và vật liệu sau: (1) khí ozone ($\text{O}_3$), (2) khí ammonia ($\text{NH}_3$), (3) dây kim loại copper ($\text{Cu}$) nguyên chất, "
-                    r"(4) nước muối sinh lý, (5) muối ăn sodium chloride ($\text{NaCl}$) tinh khiết. Hãy chỉ ra đâu là đơn chất, đâu là hợp chất và đâu là hỗn hợp."
-                ),
-                "solution": (
-                    r"- **Đơn chất** (chỉ tạo nên từ $1$ nguyên tố hóa học): (1) khí ozone ($\text{O}_3$ — tạo từ $1$ nguyên tố oxygen $\text{O}$), (3) kim loại copper ($\text{Cu}$ — tạo từ $1$ nguyên tố $\text{Cu}$)." "\n"
-                    r"- **Hợp chất** (chất tinh khiết tạo nên từ $2$ nguyên tố trở lên): (2) khí ammonia ($\text{NH}_3$ — tạo từ $\text{N}$ và $\text{H}$), (5) sodium chloride ($\text{NaCl}$ — tạo từ $\text{Na}$ và $\text{Cl}$)." "\n"
-                    r"- **Hỗn hợp** (gồm hai chất trộn lẫn là $\text{NaCl}$ và $\text{H}_2\text{O}$): (4) nước muối sinh lý."
-                ),
-            },
-            {
-                "title": "Ví dụ 2: Tính phần trăm khối lượng nguyên tố nitrogen trong phân đạm urea",
-                "problem": (
-                    r"Phân đạm urea có công thức hóa học là $\text{(NH}_2)_2\text{CO}$. Biết khối lượng nguyên tử: $\text{H} = 1\text{ amu}$, $\text{C} = 12\text{ amu}$, $\text{N} = 14\text{ amu}$, $\text{O} = 16\text{ amu}$. "
-                    r"Hãy tính khối lượng phân tử của urea và thành phần phần trăm theo khối lượng của nguyên tố nitrogen ($\text{N}$) trong urea (làm tròn đến chữ số thập phân thứ hai)."
-                ),
-                "solution": (
-                    r"- Một phân tử $\text{(NH}_2)_2\text{CO}$ có $2$ nguyên tử $\text{N}$, $4$ nguyên tử $\text{H}$, $1$ nguyên tử $\text{C}$ và $1$ nguyên tử $\text{O}$." "\n"
-                    r"- Khối lượng phân tử của urea là:" "\n"
-                    r"$$M_{\text{(NH}_2)_2\text{CO}} = 2 \cdot 14 + 4 \cdot 1 + 12 + 16 = 60\text{ amu}$$" "\n"
-                    r"- Phần trăm khối lượng của nguyên tố nitrogen ($\text{N}$) trong phân đạm urea là:" "\n"
-                    r"$$\%m_{\text{N}} = \dfrac{2 \cdot 14}{60} \cdot 100\% = \dfrac{28}{60} \cdot 100\% \approx 46{,}67\%$$"
-                ),
-            },
-        ],
-        key_takeaways=[
-            r"Đơn chất được tạo nên từ $1$ nguyên tố hóa học (dù phân tử có $1, 2$ hay $3$ nguyên tử như $\text{Fe}$, $\text{O}_2$, $\text{O}_3$).",
-            r"Hợp chất được tạo nên từ $2$ nguyên tố hóa học trở lên liên kết với nhau ($\text{H}_2\text{O}$, $\text{CO}_2$, $\text{NaCl}$, $\text{CH}_4$).",
-            r"Thành phần phần trăm khối lượng của nguyên tố $\text{A}$ trong hợp chất $\text{A}_x\text{B}_y$ được tính bằng $\%m_{\text{A}} = \dfrac{x \cdot M_{\text{A}}}{M_{\text{A}_x\text{B}_y}} \cdot 100\%$.",
-        ],
-        questions=[
-            mcq(
-                r"Dãy chất nào dưới đây chỉ gồm toàn các **đơn chất**?",
-                [
-                    r"Muối ăn ($\text{NaCl}$), khí methane ($\text{CH}_4$), đá vôi ($\text{CaCO}_3$).",
-                    r"Khí oxygen ($\text{O}_2$), kim loại iron ($\text{Fe}$), khí nitrogen ($\text{N}_2$), sulfur ($\text{S}$).",
-                    r"Khí hydrogen ($\text{H}_2$), nước ($\text{H}_2\text{O}$), kim loại copper ($\text{Cu}$), carbon ($\text{C}$).",
-                    r"Khí ozone ($\text{O}_3$), khí carbon dioxide ($\text{CO}_2$), khí chlorine ($\text{Cl}_2$).",
-                ],
-                "B",
-                "biet",
-                r"Các chất $\text{O}_2$, $\text{Fe}$, $\text{N}_2$, $\text{S}$ đều được tạo nên từ duy nhất $1$ nguyên tố hóa học tương ứng nên đều là đơn chất. Các chất $\text{H}_2\text{O}$, $\text{CO}_2$, $\text{NaCl}$, $\text{CH}_4$, $\text{CaCO}_3$ được tạo từ $2$ hay $3$ nguyên tố nên là hợp chất.",
-            ),
-            mcq(
-                r"Dãy chất nào dưới đây chỉ gồm toàn các **hợp chất**?",
-                [
-                    r"Đường glucose ($\text{C}_6\text{H}_{12}\text{O}_6$), kim loại aluminium ($\text{Al}$), khí methane ($\text{CH}_4$).",
-                    r"Khí helium ($\text{He}$), khí neon ($\text{Ne}$), khí argon ($\text{Ar}$).",
-                    r"Nước ($\text{H}_2\text{O}$), khí ammonia ($\text{NH}_3$), muối ăn ($\text{NaCl}$), đá vôi ($\text{CaCO}_3$).",
-                    r"Khí carbon dioxide ($\text{CO}_2$), khí chlorine ($\text{Cl}_2$), sulfuric acid ($\text{H}_2\text{SO}_4$).",
-                ],
-                "C",
-                "biet",
-                r"Các chất $\text{H}_2\text{O}$, $\text{NH}_3$, $\text{NaCl}$ và $\text{CaCO}_3$ đều được tạo nên từ $2$ hoặc $3$ nguyên tố hóa học khác nhau nên đều là hợp chất.",
-            ),
-            mcq(
-                r"Kim cương và than chì (graphite dùng làm ruột bút chì và điện cực) là hai dạng thù hình khác nhau được tạo nên từ duy nhất nguyên tố carbon ($\text{C}$). Vậy kim cương và than chì thuộc loại:",
-                [
-                    r"Hợp chất hữu cơ.",
-                    r"Đơn chất kim loại.",
-                    r"Hợp chất vô cơ.",
-                    r"Đơn chất phi kim.",
-                ],
-                "D",
-                "biet",
-                r"Kim cương và than chì đều chỉ được tạo nên từ một nguyên tố hóa học duy nhất là carbon ($\text{C}$ — nguyên tố phi kim), nên cả hai đều là đơn chất phi kim.",
-            ),
-            mcq(
-                r"Cho biết khối lượng nguyên tử: $\text{C} = 12\text{ amu}$, $\text{H} = 1\text{ amu}$. Thành phần phần trăm theo khối lượng của nguyên tố carbon ($\text{C}$) trong hợp chất methane ($\text{CH}_4$) là:",
-                [
-                    r"$75\%$.",
-                    r"$25\%$.",
-                    r"$80\%$.",
-                    r"$20\%$.",
-                ],
-                "A",
-                "biet",
-                r"Khối lượng phân tử của $\text{CH}_4$ là $M_{\text{CH}_4} = 12 + 4 \cdot 1 = 16\text{ amu}$. Phần trăm khối lượng của $\text{C}$ trong $\text{CH}_4$ là: $\%m_{\text{C}} = \dfrac{12}{16} \cdot 100\% = 75\%$.",
-            ),
-            mcq(
-                r"Một bạn học sinh cho rằng: 'Khí ozone ($\text{O}_3$) là một hợp chất vì phân tử của nó có tới $3$ nguyên tử liên kết với nhau, còn khí carbon monoxide ($\text{CO}$) là đơn chất vì chỉ có $2$ nguyên tử'. Nhận xét nào sau đây sửa lại đúng hoàn toàn?",
-                [
-                    r"Khí ozone ($\text{O}_3$) là hỗn hợp, còn khí carbon monoxide ($\text{CO}$) là đơn chất.",
-                    r"Khí ozone ($\text{O}_3$) là đơn chất vì chỉ tạo từ $1$ nguyên tố oxygen ($\text{O}$); còn $\text{CO}$ là hợp chất vì tạo từ $2$ nguyên tố là carbon ($\text{C}$) và oxygen ($\text{O}$).",
-                    r"Cả khí ozone ($\text{O}_3$) và khí carbon monoxide ($\text{CO}$) đều là đơn chất.",
-                    r"Cả khí ozone ($\text{O}_3$) và khí carbon monoxide ($\text{CO}$) đều là hợp chất.",
-                ],
-                "B",
-                "hieu",
-                r"Việc phân loại đơn chất hay hợp chất dựa vào **số nguyên tố hóa học** tạo nên chất, không phụ thuộc tổng số nguyên tử trong phân tử. $\text{O}_3$ chỉ gồm $1$ nguyên tố $\text{O}$ nên là đơn chất; $\text{CO}$ gồm $2$ nguyên tố $\text{C}$ và $\text{O}$ nên là hợp chất.",
-            ),
-            mcq(
-                r"Biết khối lượng nguyên tử: $\text{Fe} = 56\text{ amu}$, $\text{O} = 16\text{ amu}$. Trong hai loại quặng sắt chứa hợp chất iron(III) oxide ($\text{Fe}_2\text{O}_3$, $M = 160\text{ amu}$) và iron(II,III) oxide ($\text{Fe}_3\text{O}_4$, $M = 232\text{ amu}$), hợp chất nào có hàm lượng phần trăm khối lượng iron ($\text{Fe}$) cao hơn?",
-                [
-                    r"Hai hợp chất $\text{Fe}_2\text{O}_3$ và $\text{Fe}_3\text{O}_4$ có phần trăm khối lượng $\text{Fe}$ bằng nhau.",
-                    r"$\text{Fe}_2\text{O}_3$ có hàm lượng $\text{Fe}$ bằng $50\%$, lớn hơn $\text{Fe}_3\text{O}_4$ ($42{,}86\%$).",
-                    r"$\text{Fe}_3\text{O}_4$ có hàm lượng $\text{Fe}$ cao hơn ($\%m_{\text{Fe}} \approx 72{,}41\% > 70{,}00\%$).",
-                    r"$\text{Fe}_2\text{O}_3$ có hàm lượng $\text{Fe}$ cao hơn ($\%m_{\text{Fe}} = 75{,}00\% > 72{,}41\%$).",
-                ],
-                "C",
-                "hieu",
-                r"Trong $\text{Fe}_2\text{O}_3$: $\%m_{\text{Fe}} = \dfrac{2 \cdot 56}{160} \cdot 100\% = 70{,}00\%$. Trong $\text{Fe}_3\text{O}_4$: $\%m_{\text{Fe}} = \dfrac{3 \cdot 56}{232} \cdot 100\% \approx 72{,}41\%$. Vậy $\text{Fe}_3\text{O}_4$ giàu sắt hơn $\text{Fe}_2\text{O}_3$.",
-            ),
-            tf4(
-                r"Xét tính chất, cấu tạo và phân loại của các chất tinh khiết sau: kim loại aluminium ($\text{Al}$), khí chlorine ($\text{Cl}_2$), nước ($\text{H}_2\text{O}$) và đường glucose ($\text{C}_6\text{H}_{12}\text{O}_6$). Các nhận định dưới đây là đúng hay sai?",
-                [
-                    r"Kim loại aluminium ($\text{Al}$) là đơn chất kim loại có tính dẻo, dẫn điện và dẫn nhiệt tốt; còn khí chlorine ($\text{Cl}_2$) là đơn chất phi kim ở thể khí màu vàng lục, mùi hắc và độc.",
-                    r"Nước ($\text{H}_2\text{O}$) là hợp chất vô cơ, còn đường glucose ($\text{C}_6\text{H}_{12}\text{O}_6$) là hợp chất hữu cơ.",
-                    r"Vì nước ($\text{H}_2\text{O}$) được tạo nên từ hai nguyên tố hydrogen ($\text{H}$) và oxygen ($\text{O}$), nên nước giữ nguyên tính chất dễ cháy của khí $\text{H}_2$ và tính duy trì sự cháy của khí $\text{O}_2$.",
-                    r"Trong hợp chất nước ($\text{H}_2\text{O}$, với $\text{H} = 1\text{ amu}$, $\text{O} = 16\text{ amu}$), khối lượng của nguyên tố oxygen ($\text{O}$) gấp $8$ lần khối lượng của nguyên tố hydrogen ($\text{H}$).",
-                ],
-                "Đ/Đ/S/Đ",
-                "hieu",
-                (
-                    r"- **Ý a) Đúng**: $\text{Al}$ là đơn chất kim loại, $\text{Cl}_2$ là đơn chất phi kim." "\n"
-                    r"- **Ý b) Đúng**: $\text{H}_2\text{O}$ là hợp chất vô cơ phổ biến nhất; $\text{C}_6\text{H}_{12}\text{O}_6$ là hợp chất hữu cơ (carbohydrate)." "\n"
-                    r"- **Ý c) Sai**: Khi các nguyên tố liên kết tạo thành hợp chất $\text{H}_2\text{O}$, phân tử hợp chất có tính chất hoàn toàn mới khác hẳn các đơn chất thành phần (nước là chất lỏng dùng để dập tắt đám cháy chứ không cháy như $\text{H}_2$)." "\n"
-                    r"- **Ý d) Đúng**: Trong $1$ phân tử $\text{H}_2\text{O}$, tỉ lệ khối lượng $\dfrac{m_{\text{O}}}{m_{\text{H}}} = \dfrac{1 \cdot 16}{2 \cdot 1} = \dfrac{16}{2} = 8$ lần."
-                ),
-            ),
-            tf4(
-                r"Đá vôi tự nhiên có thành phần chính là hợp chất calcium carbonate ($\text{CaCO}_3$). Biết khối lượng nguyên tử: $\text{Ca} = 40\text{ amu}$, $\text{C} = 12\text{ amu}$, $\text{O} = 16\text{ amu}$. Xét tính đúng/sai của các phát biểu sau:",
-                [
-                    r"Hợp chất calcium carbonate ($\text{CaCO}_3$) được tạo nên từ $3$ nguyên tố hóa học là calcium ($\text{Ca}$), carbon ($\text{C}$) và oxygen ($\text{O}$).",
-                    r"Khối lượng phân tử của $\text{CaCO}_3$ là $100\text{ amu}$, trong đó phần trăm khối lượng của nguyên tố calcium ($\text{Ca}$) là $40\%$.",
-                    r"Phần trăm khối lượng của nguyên tố oxygen ($\text{O}$) trong $\text{CaCO}_3$ bằng $16\%$.",
-                    r"Trong $250\text{ g}$ calcium carbonate ($\text{CaCO}_3$) tinh khiết có chứa đúng $100\text{ g}$ nguyên tố calcium ($\text{Ca}$) và $30\text{ g}$ nguyên tố carbon ($\text{C}$).",
-                ],
-                "Đ/Đ/S/Đ",
-                "hieu",
-                (
-                    r"- **Ý a) Đúng**: $\text{CaCO}_3$ được tạo từ $3$ nguyên tố: $\text{Ca}$, $\text{C}$ và $\text{O}$." "\n"
-                    r"- **Ý b) Đúng**: $M_{\text{CaCO}_3} = 40 + 12 + 3 \cdot 16 = 100\text{ amu}$, suy ra $\%m_{\text{Ca}} = \dfrac{40}{100} \cdot 100\% = 40\%$." "\n"
-                    r"- **Ý c) Sai**: Trong $\text{CaCO}_3$ có $3$ nguyên tử $\text{O}$ nên $\%m_{\text{O}} = \dfrac{3 \cdot 16}{100} \cdot 100\% = 48\%$ (không phải $16\%$)." "\n"
-                    r"- **Ý d) Đúng**: Vì $\%m_{\text{Ca}} = 40\%$ và $\%m_{\text{C}} = 12\%$, nên trong $250\text{ g}$ $\text{CaCO}_3$ có $m_{\text{Ca}} = 250 \cdot 0{,}40 = 100\text{ g}$ và $m_{\text{C}} = 250 \cdot 0{,}12 = 30\text{ g}$."
-                ),
-            ),
-            mcq(
-                r"Một hợp chất khí $\text{A}$ được tạo bởi hai nguyên tố là sulfur ($\text{S} = 32\text{ amu}$) và oxygen ($\text{O} = 16\text{ amu}$), có khối lượng phân tử bằng $80\text{ amu}$, trong đó nguyên tố sulfur chiếm $40\%$ về khối lượng. Công thức hóa học của phân tử hợp chất $\text{A}$ là:",
-                [
-                    r"$\text{SO}_2$.",
-                    r"$\text{S}_2\text{O}_3$.",
-                    r"$\text{SO}_4$.",
-                    r"$\text{SO}_3$.",
-                ],
-                "D",
-                "vandung",
-                r"Gọi công thức của $\text{A}$ là $\text{S}_x\text{O}_y$. Khối lượng nguyên tố $\text{S}$ trong $1$ phân tử $\text{A}$ là: $32x = \dfrac{40 \cdot 80}{100} = 32\text{ amu} \Rightarrow x = 1$. Khối lượng nguyên tố $\text{O}$ trong $1$ phân tử $\text{A}$ là: $16y = 80 - 32 = 48\text{ amu} \Rightarrow y = \dfrac{48}{16} = 3$. Vậy công thức phân tử của $\text{A}$ là $\text{SO}_3$ (sulfur trioxide).",
-            ),
-            short(
-                r"Copper(II) sulfate khan có công thức hóa học là $\text{CuSO}_4$ (được dùng làm chất sát khuẩn, diệt nấm trong nông nghiệp và xử lý nước bể bơi). Biết khối lượng nguyên tử của các nguyên tố là $\text{Cu} = 64\text{ amu}$, $\text{S} = 32\text{ amu}$ và $\text{O} = 16\text{ amu}$. Hãy tính thành phần phần trăm về khối lượng của nguyên tố copper ($\text{Cu}$) trong hợp chất $\text{CuSO}_4$ theo đơn vị phần trăm ($\%$).",
-                ["40", "40,0", "40.0"],
-                "vandung",
-                (
-                    r"Khối lượng phân tử của hợp chất copper(II) sulfate ($\text{CuSO}_4$) là:" "\n"
-                    r"$$M_{\text{CuSO}_4} = 64 + 32 + 4 \cdot 16 = 160\text{ amu}$$" "\n"
-                    r"Thành phần phần trăm về khối lượng của nguyên tố copper ($\text{Cu}$) trong $\text{CuSO}_4$ là:" "\n"
-                    r"$$\%m_{\text{Cu}} = \dfrac{64}{160} \cdot 100\% = 40\%$$"
-                ),
-            ),
-        ],
-        description="Phân biệt đơn chất kim loại, phi kim, khí hiếm với hợp chất vô cơ, hữu cơ và tính thành phần phần trăm khối lượng nguyên tố trong hợp chất.",
     ),
-    lesson(
-        grade=7,
-        order=5,
-        code="H7-C05",
-        title="Chương 5: Giới thiệu về liên kết hóa học, hóa trị và công thức hóa học",
-        topic="hoa-tri-lien-ket",
-        summary=(
-            r"Khi tham gia liên kết hóa học, nguyên tử của các nguyên tố có xu hướng đạt tới lớp vỏ electron bền vững của khí hiếm ($8\text{ electron}$ lớp ngoài cùng, hoặc $2\text{ electron}$ như helium $\text{He}$) bằng cách nhường - nhận electron tạo liên kết ion (như trong $\text{NaCl}$, $\text{MgO}$, $\text{CaCl}_2$) "
-            r"hoặc dùng chung các cặp electron tạo liên kết cộng hóa trị (như trong $\text{H}_2$, $\text{O}_2$, $\text{N}_2$, $\text{H}_2\text{O}$, $\text{CO}_2$, $\text{NH}_3$). "
-            r"Khả năng liên kết của nguyên tử được biểu thị bằng hóa trị (số La Mã $\text{I}, \text{II}, \text{III}...$), tuân theo quy tắc hóa trị $a \cdot x = b \cdot y$ giúp lập đúng công thức hóa học của mọi hợp chất."
+    bai(
+        topic=CH2[0], chapter_title=CH2[1], chapter_desc=CH2[2],
+        title="Bài 5: Phân tử – Đơn chất – Hợp chất",
+        icon="🧬",
+        description="Khái niệm hạt phân tử, phân biệt đơn chất (tạo nên từ 1 nguyên tố hóa học) và hợp chất (tạo nên từ 2 nguyên tố hóa học trở lên).",
+        requirements=[
+            "Định nghĩa được phân tử là hạt đại diện cho chất, gồm một số nguyên tử liên kết với nhau và thể hiện đầy đủ tính chất hóa học của chất.",
+            "Phân biệt được **đơn chất** (chất được tạo nên từ **một** nguyên tố hóa học, như $\\text{O}_2, \\text{H}_2, \\text{N}_2, \\text{Cl}_2, \\text{Cu}, \\text{Fe}, \\text{C}$) và **hợp chất** (chất được tạo nên từ **hai hay nhiều** nguyên tố hóa học trở lên, như $\\text{H}_2\\text{O}, \\text{CO}_2, \\text{NaCl}, \\text{CH}_4$).",
+            "Nhận biết được mô hình phân tử của một số đơn chất và hợp chất thông dụng.",
+        ],
+        definition="Phân tử là hạt đại diện cho chất, gồm một số nguyên tử liên kết với nhau và thể hiện đầy đủ tính chất hóa học của chất. Đơn chất là những chất được tạo nên từ một nguyên tố hóa học. Hợp chất là những chất được tạo nên từ hai hay nhiều nguyên tố hóa học.",
+        theory=(
+            "### 1. Phân tử – Hạt đại diện cho chất\n"
+            "- **Phân tử** là hạt đại diện cho chất, gồm một số nguyên tử liên kết với nhau và mang đầy đủ tính chất hóa học của chất đó:\n"
+            "  - Phân tử gồm các nguyên tử của **cùng một nguyên tố** liên kết với nhau: $\\text{H}_2, \\text{O}_2, \\text{N}_2, \\text{Cl}_2, \\text{O}_3$ (ozone).\n"
+            "  - Phân tử gồm các nguyên tử của **nhiều nguyên tố khác nhau** liên kết với nhau: nước ($\\text{H}_2\\text{O}$ gồm $2\\text{H} + 1\\text{O}$), carbon dioxide ($\\text{CO}_2$), ammonia ($\\text{NH}_3$), methane ($\\text{CH}_4$).\n"
+            "  - *(Đối với khí hiếm như $\\text{He}, \\text{Ne}, \\text{Ar}$ hoặc kim loại như $\\text{Cu}, \\text{Fe}$, hạt đại diện cho chất là các nguyên tử)*.\n\n"
+            "### 2. Phân biệt Đơn chất và Hợp chất\n"
+            "- **Đơn chất**: chất được tạo nên từ **một nguyên tố hóa học** duy nhất:\n"
+            "  - *Đơn chất kim loại*: $\\text{Fe}, \\text{Cu}, \\text{Al}, \\text{Na}, \\text{Mg}$ (dẫn điện, dẫn nhiệt, có ánh kim).\n"
+            "  - *Đơn chất phi kim*: $\\text{H}_2, \\text{O}_2, \\text{N}_2, \\text{Cl}_2, \\text{C}$ (than chì, kim cương), $\\text{S}, \\text{P}$.\n"
+            "  - *Đơn chất khí hiếm*: $\\text{He}, \\text{Ne}, \\text{Ar}$.\n"
+            "- **Hợp chất**: chất được tạo nên từ **hai nguyên tố hóa học trở lên**:\n"
+            "  - *Hợp chất vô cơ*: $\\text{H}_2\\text{O}, \\text{CO}_2, \\text{NaCl}, \\text{CaCO}_3, \\text{HCl}, \\text{H}_2\\text{SO}_4$.\n"
+            "  - *Hợp chất hữu cơ*: methane ($\\text{CH}_4$), glucose ($\\text{C}_6\\text{H}_{12}\\text{O}_6$), ethylic alcohol ($\\text{C}_2\\text{H}_5\\text{OH}$)."
         ),
-        objectives=[
-            r"Giải thích được xu hướng tạo lớp vỏ bền vững giống khí hiếm của các nguyên tử khi hình thành liên kết hóa học.",
-            r"Trình bày được sự tạo thành liên kết ion (lực hút tĩnh điện giữa ion dương như $\text{Na}^+$, $\text{Mg}^{2+}$ và ion âm như $\text{Cl}^-$, $\text{O}^{2-}$) và sự tạo thành liên kết cộng hóa trị (dùng chung electron trong $\text{H}_2$, $\text{O}_2$, $\text{N}_2$, $\text{H}_2\text{O}$, $\text{CO}_2$, $\text{NH}_3$).",
-            r"Phân biệt được tính chất vật lý cơ bản của hợp chất ion (rắn, nhiệt độ nóng chảy/sôi cao, dẫn điện khi tan trong nước) và chất cộng hóa trị.",
-            r"Vận dụng được quy tắc hóa trị ($a \cdot x = b \cdot y$) để xác định hóa trị của nguyên tố hoặc lập công thức hóa học của hợp chất.",
-        ],
         formulas=[
-            {
-                "name": "Sự tạo thành ion và liên kết ion",
-                "formula": r"$\text{Na} \rightarrow \text{Na}^+ + 1e, \quad \text{Cl} + 1e \rightarrow \text{Cl}^- \implies \text{Na}^+ + \text{Cl}^- \rightarrow \text{NaCl}$",
-                "note": r"Tương tự với magnesium oxide: $\text{Mg} \rightarrow \text{Mg}^{2+} + 2e$, $\text{O} + 2e \rightarrow \text{O}^{2-} \implies \text{MgO}$.",
-            },
-            {
-                "name": "Quy tắc hóa trị trong hợp chất hai thành phần",
-                "formula": r"$\text{Với hợp chất } \overset{a}{\text{A}}_x\overset{b}{\text{B}}_y: \quad a \cdot x = b \cdot y \iff \dfrac{x}{y} = \dfrac{b}{a} = \dfrac{b'}{a'}$",
-                "note": r"$a, b$ là hóa trị (biểu diễn bằng chữ số La Mã $\text{I}, \text{II}, \text{III}, \text{IV}, \text{V}, \text{VI}, \text{VII}$); $x, y$ là chỉ số nguyên tử tối giản.",
-            },
-            {
-                "name": "Hóa trị của một số nguyên tố và nhóm nguyên tử thông dụng",
-                "formula": r"$\text{I}: \text{H, Na, K, Ag, Cl (trong muối), -OH, -NO}_3 \mid \text{II}: \text{O, Mg, Ca, Zn, Cu, Ba, =SO}_4, \text{=CO}_3 \mid \text{III}: \text{Al,}\equiv\text{PO}_4$",
-                "note": r"Trong các hợp chất cộng hóa trị, hóa trị của một nguyên tố bằng số cặp electron dùng chung mà nguyên tử đó tạo ra với các nguyên tử khác.",
-            },
+            G(
+                "Tiêu chuẩn phân biệt Đơn chất và Hợp chất",
+                F("Quy tắc phân loại Đơn chất và Hợp chất", "$\\text{Chất tinh khiết} = \\begin{cases} \\text{ĐƠN CHẤT (chỉ tạo từ } 1 \\text{ nguyên tố: } \\text{O}_2, \\text{H}_2, \\text{N}_2, \\text{Cl}_2, \\text{O}_3, \\text{Fe}, \\text{Cu}, \\text{C}) \\\\ \\text{HỢP CHẤT (tạo từ } \\ge 2 \\text{ nguyên tố: } \\text{H}_2\\text{O}, \\text{CO}_2, \\text{NH}_3, \\text{NaCl}, \\text{CaCO}_3) \\end{cases}$", "Mẹo nhận biết nhanh từ công thức hóa học: chỉ có **1 kí hiệu nguyên tố** là Đơn chất; có **từ 2 kí hiệu nguyên tố trở lên** là Hợp chất!"),
+                F("Lưu ý tránh nhầm lẫn giữa CO (Carbon monoxide) và Co (Cobalt)", "$\\text{CO (chữ O in hoa)}: \\text{Hợp chất của C và O}; \\qquad \\text{Co (chữ o thường)}: \\text{Đơn chất kim loại Cobalt}$", "Khí ozone ($\\text{O}_3$) dù có $3$ nguyên tử trong phân tử nhưng đều thuộc nguyên tố $\\text{O}$ nên vẫn là **đơn chất**!"),
+            )
         ],
-        theory_sections=[
-            {
-                "title": "1. Vỏ nguyên tử khí hiếm và sự tạo thành liên kết ion",
-                "content": (
-                    r"- **Đặc điểm vỏ khí hiếm**: Nguyên tử của các nguyên tố khí hiếm có lớp electron ngoài cùng đã bão hòa bền vững: $\text{He}$ có $2e$; $\text{Ne}$ ($2, 8$) và $\text{Ar}$ ($2, 8, 8$) đều có **$8\text{ electron}$ lớp ngoài cùng**. Để đạt được lớp vỏ bền vững giống khí hiếm gần nhất, nguyên tử của các nguyên tố khác có xu hướng **nhường, nhận** hoặc **góp chung electron**." "\n"
-                    r"- **Sự tạo thành liên kết ion**:" "\n"
-                    r"  + Nguyên tử **kim loại** (có $1, 2, 3e$ lớp ngoài cùng) dễ **nhường electron** lớp ngoài cùng để tạo thành **ion dương** (cation): ví dụ $\text{Na}$ ($2, 8, 1$) nhường $1e$ tạo ion $\text{Na}^+$ ($2, 8$ giống $\text{Ne}$); $\text{Mg}$ ($2, 8, 2$) nhường $2e$ tạo ion $\text{Mg}^{2+}$ ($2, 8$)." "\n"
-                    r"  + Nguyên tử **phi kim** (có $5, 6, 7e$ lớp ngoài cùng) dễ **nhận thêm electron** để tạo thành **ion âm** (anion): ví dụ $\text{Cl}$ ($2, 8, 7$) nhận $1e$ tạo ion $\text{Cl}^-$ ($2, 8, 8$ giống $\text{Ar}$); $\text{O}$ ($2, 6$) nhận $2e$ tạo ion $\text{O}^{2-}$ ($2, 8$)." "\n"
-                    r"  + Các ion mang điện tích trái dấu hút nhau bằng lực hút tĩnh điện tạo nên **liên kết ion** (ví dụ: $\text{NaCl}$, $\text{MgO}$, $\text{CaCl}_2$, $\text{K}_2\text{O}$). Hợp chất ion thường là chất rắn tinh thể ở điều kiện thường, khó bay hơi, có nhiệt độ nóng chảy và nhiệt độ sôi cao, khi tan trong nước tạo dung dịch dẫn được điện."
-                ),
-            },
-            {
-                "title": "2. Sự tạo thành liên kết cộng hóa trị",
-                "content": (
-                    r"- **Liên kết cộng hóa trị** là liên kết được tạo nên giữa hai nguyên tử bằng **một hay nhiều cặp electron dùng chung** (thường xảy ra giữa các nguyên tử phi kim với nhau)." "\n"
-                    r"- **Ví dụ trong các phân tử điển hình**:" "\n"
-                    r"  + Phân tử hydrogen ($\text{H}_2$): Mỗi nguyên tử $\text{H}$ (có $1e$) góp chung $1e$ tạo thành **$1$ cặp electron dùng chung** để cả hai đều đạt vỏ bền vững $2e$ giống khí hiếm $\text{He}$." "\n"
-                    r"  + Phân tử oxygen ($\text{O}_2$): Mỗi nguyên tử $\text{O}$ ($6e$ lớp ngoài cùng) góp $2e$ tạo thành **$2$ cặp electron dùng chung** để mỗi nguyên tử đạt $8e$ giống $\text{Ne}$." "\n"
-                    r"  + Phân tử nitrogen ($\text{N}_2$): Mỗi nguyên tử $\text{N}$ ($5e$ lớp ngoài cùng) góp $3e$ tạo thành **$3$ cặp electron dùng chung**." "\n"
-                    r"  + Phân tử nước ($\text{H}_2\text{O}$): Nguyên tử $\text{O}$ góp chung với mỗi nguyên tử $\text{H}$ một cặp electron (có $2$ cặp electron dùng chung trong phân tử $\text{H}_2\text{O}$)." "\n"
-                    r"  + Phân tử ammonia ($\text{NH}_3$): Nguyên tử $\text{N}$ có $3$ cặp electron dùng chung với $3$ nguyên tử $\text{H}$. Phân tử carbon dioxide ($\text{CO}_2$): Nguyên tử $\text{C}$ có $2$ cặp electron dùng chung với mỗi nguyên tử $\text{O}$ (tổng cộng $4$ cặp electron dùng chung)." "\n"
-                    r"- Các chất cộng hóa trị có thể ở thể khí ($\text{H}_2, \text{O}_2, \text{CO}_2, \text{NH}_3$), thể lỏng ($\text{H}_2\text{O}, \text{C}_2\text{H}_5\text{OH}$) hoặc thể rắn (đường saccharose, lưu huỳnh $\text{S}$), thường có nhiệt độ nóng chảy và nhiệt độ sôi thấp hơn hợp chất ion."
-                ),
-            },
-            {
-                "title": "3. Hóa trị và quy tắc hóa trị – Lập công thức hóa học",
-                "content": (
-                    r"- **Hóa trị** là con số biểu thị khả năng liên kết của nguyên tử nguyên tố này với nguyên tử nguyên tố khác, được ghi bằng số La Mã ($\text{I}, \text{II}, \text{III}, \text{IV}, \text{V}, \text{VI}, \text{VII}$). Quy ước trong hợp chất cộng hóa trị, nguyên tố $\text{H}$ luôn có hóa trị $\text{I}$ và nguyên tố $\text{O}$ thường có hóa trị $\text{II}$." "\n"
-                    r"- **Quy tắc hóa trị**: Trong công thức hóa học của hợp chất hai nguyên tố $\overset{a}{\text{A}}_x\overset{b}{\text{B}}_y$ (hoặc có nhóm nguyên tử), tích của chỉ số và hóa trị của nguyên tố này bằng tích của chỉ số và hóa trị của nguyên tố kia:" "\n"
-                    r"$$a \cdot x = b \cdot y \implies \dfrac{x}{y} = \dfrac{b}{a}$$" "\n"
-                    r"- **Cách lập công thức hóa học khi biết hóa trị**: Chọn $x, y$ là tỉ lệ tối giản của $\dfrac{b}{a}$. Ví dụ: Lập công thức hợp chất của aluminium ($\text{Al}$ hóa trị $\text{III}$) và nhóm sulfate ($(\text{SO}_4)$ hóa trị $\text{II}$): $\dfrac{x}{y} = \dfrac{\text{II}}{\text{III}} = \dfrac{2}{3} \Rightarrow$ công thức là $\text{Al}_2(\text{SO}_4)_3$."
-                ),
-            },
+        example="Cho các chất có công thức hóa học sau: khí hydrogen ($\\text{H}_2$), nước ($\\text{H}_2\\text{O}$), kim loại đồng ($\\text{Cu}$), khí ozone ($\\text{O}_3$), muối ăn ($\\text{NaCl}$) và đá vôi ($\\text{CaCO}_3$). Hãy phân loại các chất trên thành hai nhóm: Đơn chất và Hợp chất.",
+        example_answer="- **Đơn chất** (tạo nên từ $1$ nguyên tố hóa học): khí hydrogen ($\\text{H}_2$), kim loại đồng ($\\text{Cu}$) và khí ozone ($\\text{O}_3$).\n- **Hợp chất** (tạo nên từ $2$ nguyên tố hóa học trở lên): nước ($\\text{H}_2\\text{O}$ gồm $\\text{H}, \\text{O}$), muối ăn ($\\text{NaCl}$ gồm $\\text{Na}, \\text{Cl}$) và đá vôi ($\\text{CaCO}_3$ gồm $\\text{Ca}, \\text{C}, \\text{O}$).",
+        real_life="Than chì làm ruột bút chì và kim cương làm đồ trang sức tuy có vẻ ngoài và độ cứng khác hẳn nhau nhưng đều là các **đơn chất** được tạo nên từ một nguyên tố duy nhất là Carbon ($\\text{C}$).",
+        quiz=[
+            mcq("biet", "Đơn chất là những chất được tạo nên từ bao nhiêu nguyên tố hóa học?", ["Từ $1$ nguyên tố hóa học duy nhất", "Từ $2$ nguyên tố hóa học trở lên", "Từ ít nhất $3$ nguyên tố hóa học", "Từ hỗn hợp nhiều chất trộn lẫn"], 0, "Đơn chất là những chất được tạo nên từ một nguyên tố hóa học."),
+            mcq("biet", "Dãy các chất nào sau đây đều là **hợp chất**?", ["$\\text{H}_2\\text{O}, \\text{CO}_2, \\text{NaCl}, \\text{NH}_3$", "$\\text{O}_2, \\text{H}_2, \\text{N}_2, \\text{Cl}_2$", "$\\text{Fe}, \\text{Cu}, \\text{Al}, \\text{Zn}$", "$\\text{O}_3, \\text{H}_2\\text{O}, \\text{He}$"], 0, "Các chất $\\text{H}_2\\text{O}, \\text{CO}_2, \\text{NaCl}, \\text{NH}_3$ đều được tạo nên từ $2$ nguyên tố hóa học khác nhau nên đều là hợp chất."),
+            mcq("hieu", "Khí ozone có công thức phân tử là $\\text{O}_3$ (mỗi phân tử gồm $3$ nguyên tử oxygen liên kết với nhau). Khí ozone thuộc loại chất nào?", ["Đơn chất phi kim (vì chỉ được tạo nên từ một nguyên tố duy nhất là Oxygen)", "Hợp chất vì có tới $3$ nguyên tử", "Đơn chất kim loại", "Hỗn hợp khí"], 0, "Dù phân tử $\\text{O}_3$ có $3$ nguyên tử nhưng cả $3$ nguyên tử đều thuộc cùng một nguyên tố Oxygen ($\\text{O}$), nên ozone là đơn chất."),
+            tf4("hieu", "Xét tính đúng/sai của các phát biểu sau về phân tử, đơn chất và hợp chất:", [
+                "Phân tử là hạt đại diện cho chất, gồm một số nguyên tử liên kết với nhau và thể hiện đầy đủ tính chất hóa học của chất.",
+                "Phân tử khí nitrogen ($\\text{N}_2$), khí oxygen ($\\text{O}_2$) và khí chlorine ($\\text{Cl}_2$) đều là các phân tử đơn chất gồm $2$ nguyên tử.",
+                "Kim cương và than chì đều được tạo nên từ nguyên tố Carbon ($\\text{C}$) nên chúng là các hợp chất.",
+                "Mỗi phân tử methane ($\\text{CH}_4$) gồm $1$ nguyên tử carbon liên kết với $4$ nguyên tử hydrogen (tổng cộng $5$ nguyên tử).",
+            ], [True, True, False, True], "Ý c) sai vì kim cương và than chì chỉ tạo nên từ một nguyên tố duy nhất là Carbon ($\\text{C}$) nên cả hai đều là **đơn chất**."),
+            short("vandung", "Cho 6 chất có công thức hóa học sau: (1) $\\text{Cl}_2$, (2) $\\text{HCl}$, (3) $\\text{Al}$, (4) $\\text{H}_2\\text{SO}_4$, (5) $\\text{O}_2$, (6) $\\text{CaCO}_3$. Có bao nhiêu chất trong danh sách trên là **hợp chất**?", ["3"], "Các chất (2) $\\text{HCl}$, (4) $\\text{H}_2\\text{SO}_4$ và (6) $\\text{CaCO}_3$ được tạo từ $2$ nguyên tố trở lên nên có $3$ hợp chất (còn $\\text{Cl}_2, \\text{Al}, \\text{O}_2$ là đơn chất)."),
         ],
-        worked_examples=[
-            {
-                "title": "Ví dụ 1: Giải thích sự tạo thành liên kết ion trong magnesium oxide (MgO)",
-                "problem": (
-                    r"Cho biết số hiệu nguyên tử của magnesium là $Z_{\text{Mg}} = 12$ và của oxygen là $Z_{\text{O}} = 8$. "
-                    r"Hãy mô tả quá trình nhường - nhận electron để hình thành liên kết ion trong phân tử magnesium oxide ($\text{MgO}$)."
-                ),
-                "solution": (
-                    r"- Nguyên tử $\text{Mg}$ ($Z = 12$, phân bố electron $2, 8, 2$) có $2e$ ở lớp ngoài cùng, dễ **nhường $2\text{ electron}$** cho nguyên tử $\text{O}$ để trở thành ion dương $\text{Mg}^{2+}$ có vỏ bền vững $(2, 8)$ giống khí hiếm neon ($\text{Ne}$)." "\n"
-                    r"- Nguyên tử $\text{O}$ ($Z = 8$, phân bố electron $2, 6$) có $6e$ ở lớp ngoài cùng, **nhận $2\text{ electron}$** từ $\text{Mg}$ để trở thành ion âm $\text{O}^{2-}$ có vỏ bền vững $(2, 8)$ giống khí hiếm neon ($\text{Ne}$)." "\n"
-                    r"- Hai ion mang điện tích trái dấu $\text{Mg}^{2+}$ và $\text{O}^{2-}$ hút nhau bằng lực hút tĩnh điện tạo thành hợp chất ion $\text{MgO}$."
-                ),
-            },
-            {
-                "title": "Ví dụ 2: Vận dụng quy tắc hóa trị xác định hóa trị và lập công thức hóa học",
-                "problem": (
-                    r"a) Tính hóa trị của nguyên tố iron ($\text{Fe}$) trong hợp chất $\text{Fe}_2\text{O}_3$ và của nguyên tố sulfur ($\text{S}$) trong hợp chất $\text{SO}_3$ (biết $\text{O}$ có hóa trị $\text{II}$)." "\n"
-                    r"b) Lập công thức hóa học của hợp chất tạo bởi calcium ($\text{Ca}$ hóa trị $\text{II}$) và nhóm phosphate ($\text{PO}_4$ hóa trị $\text{III}$)."
-                ),
-                "solution": (
-                    r"- **a)** Trong $\overset{a}{\text{Fe}}_2\overset{\text{II}}{\text{O}}_3$: Áp dụng quy tắc hóa trị $a \cdot 2 = \text{II} \cdot 3 = 6 \Rightarrow a = \text{III}$ (iron có hóa trị $\text{III}$). "
-                    r"Trong $\overset{b}{\text{S}}\overset{\text{II}}{\text{O}}_3$: $b \cdot 1 = \text{II} \cdot 3 = 6 \Rightarrow b = \text{VI}$ (sulfur có hóa trị $\text{VI}$)." "\n"
-                    r"- **b)** Gọi công thức là $\overset{\text{II}}{\text{Ca}}_x(\overset{\text{III}}{\text{PO}_4})_y$. Theo quy tắc hóa trị: $\text{II} \cdot x = \text{III} \cdot y \Rightarrow \dfrac{x}{y} = \dfrac{3}{2} \Rightarrow x = 3, y = 2$. Vậy công thức hóa học là $\text{Ca}_3(\text{PO}_4)_2$."
-                ),
-            },
-        ],
-        key_takeaways=[
-            r"Liên kết ion hình thành do lực hút tĩnh điện giữa các ion trái dấu (thường giữa kim loại điển hình và phi kim điển hình như $\text{NaCl}, \text{MgO}, \text{CaCl}_2$).",
-            r"Liên kết cộng hóa trị hình thành do sự dùng chung một hay nhiều cặp electron giữa hai nguyên tử (thường giữa các phi kim như $\text{H}_2, \text{O}_2, \text{N}_2, \text{H}_2\text{O}, \text{CO}_2, \text{NH}_3$).",
-            r"Quy tắc hóa trị trong hợp chất $\overset{a}{\text{A}}_x\overset{b}{\text{B}}_y$: $a \cdot x = b \cdot y \iff \dfrac{x}{y} = \dfrac{b}{a}$.",
-        ],
-        questions=[
-            mcq(
-                r"Trong các chất dưới đây, chất nào được tạo thành bởi **liên kết ion**?",
-                [
-                    r"Sodium chloride ($\text{NaCl}$).",
-                    r"Nước tinh khiết ($\text{H}_2\text{O}$).",
-                    r"Khí carbon dioxide ($\text{CO}_2$).",
-                    r"Khí nitrogen ($\text{N}_2$).",
-                ],
-                "A",
-                "biet",
-                r"Sodium chloride ($\text{NaCl}$) được hình thành từ lực hút tĩnh điện giữa ion dương kim loại $\text{Na}^+$ và ion âm phi kim $\text{Cl}^-$ nên có liên kết ion. Các chất $\text{H}_2\text{O}$, $\text{CO}_2$ và $\text{N}_2$ được tạo bởi liên kết cộng hóa trị.",
-            ),
-            mcq(
-                r"Khi nguyên tử kim loại magnesium ($\text{Mg}$, có $2\text{ electron}$ lớp ngoài cùng) nhường đi $2\text{ electron}$ để đạt vỏ bền vững của khí hiếm neon ($\text{Ne}$), nó trở thành phần tử mang điện nào sau đây?",
-                [
-                    r"Nguyên tử neon ($\text{Ne}$) trung hòa điện.",
-                    r"Ion dương $\text{Mg}^{2+}$.",
-                    r"Ion âm $\text{Mg}^{2-}$.",
-                    r"Ion dương $\text{Mg}^+$.",
-                ],
-                "B",
-                "biet",
-                r"Nguyên tử trung hòa điện khi nhường đi $2\text{ electron}$ (mang điện tích $-2$) sẽ dư $2$ điện tích dương của proton và trở thành ion dương $\text{Mg}^{2+}$.",
-            ),
-            mcq(
-                r"Liên kết hóa học giữa các nguyên tử trong phân tử nước ($\text{H}_2\text{O}$), khí ammonia ($\text{NH}_3$) và khí oxygen ($\text{O}_2$) thuộc loại liên kết nào?",
-                [
-                    r"Liên kết kim loại.",
-                    r"Không có liên kết hóa học nào giữa các nguyên tử.",
-                    r"Liên kết cộng hóa trị (do dùng chung các cặp electron).",
-                    r"Liên kết ion (do sự nhường và nhận hoàn toàn electron).",
-                ],
-                "C",
-                "biet",
-                r"Trong các phân tử $\text{H}_2\text{O}$, $\text{NH}_3$ và $\text{O}_2$, các nguyên tử phi kim ($\text{H}, \text{O}, \text{N}$) liên kết với nhau bằng cách góp chung các cặp electron nên đều là liên kết cộng hóa trị.",
-            ),
-            mcq(
-                r"Biết nguyên tố oxygen ($\text{O}$) có hóa trị $\text{II}$. Hóa trị của nguyên tố nitrogen ($\text{N}$) trong hợp chất dinitrogen pentoxide ($\text{N}_2\text{O}_5$) là:",
-                [
-                    r"Hóa trị $\text{II}$.",
-                    r"Hóa trị $\text{III}$.",
-                    r"Hóa trị $\text{IV}$.",
-                    r"Hóa trị $\text{V}$.",
-                ],
-                "D",
-                "biet",
-                r"Gọi hóa trị của $\text{N}$ trong $\overset{a}{\text{N}}_2\overset{\text{II}}{\text{O}}_5$ là $a$. Theo quy tắc hóa trị: $a \cdot 2 = \text{II} \cdot 5 = 10 \Rightarrow a = \text{V}$.",
-            ),
-            mcq(
-                r"Trong một phân tử khí carbon dioxide ($\text{CO}_2$), biết nguyên tử carbon ($\text{C}$ có $4e$ lớp ngoài cùng) liên kết với $2$ nguyên tử oxygen (mỗi nguyên tử $\text{O}$ có $6e$ lớp ngoài cùng) để mọi nguyên tử đều đạt $8e$ lớp ngoài cùng. Tổng số cặp electron dùng chung trong toàn bộ một phân tử $\text{CO}_2$ là:",
-                [
-                    r"$4$ cặp electron dùng chung ($2$ cặp giữa $\text{C}$ với mỗi nguyên tử $\text{O}$).",
-                    r"$2$ cặp electron dùng chung ($1$ cặp giữa $\text{C}$ với mỗi nguyên tử $\text{O}$).",
-                    r"$1$ cặp electron dùng chung.",
-                    r"$6$ cặp electron dùng chung.",
-                ],
-                "A",
-                "hieu",
-                r"Mỗi nguyên tử $\text{O}$ ($6e$ lớp ngoài cùng) cần thêm $2e$ nên góp chung $2e$ với nguyên tử $\text{C}$ tạo thành $2$ cặp electron dùng chung. Có $2$ nguyên tử $\text{O}$ liên kết với $1$ nguyên tử $\text{C}$ ($\text{O}=\text{C}=\text{O}$), nên tổng số cặp electron dùng chung trong phân tử $\text{CO}_2$ là $2 + 2 = 4$ cặp.",
-            ),
-            mcq(
-                r"Công thức hóa học đúng của hợp chất tạo bởi kim loại aluminium ($\text{Al}$ có hóa trị $\text{III}$) và nhóm sulfate ($(\text{SO}_4)$ có hóa trị $\text{II}$) là:",
-                [
-                    r"$\text{Al}(\text{SO}_4)_3$.",
-                    r"$\text{Al}_2(\text{SO}_4)_3$.",
-                    r"$\text{Al}_3(\text{SO}_4)_2$.",
-                    r"$\text{AlSO}_4$.",
-                ],
-                "B",
-                "hieu",
-                r"Gọi công thức hóa học là $\overset{\text{III}}{\text{Al}}_x(\overset{\text{II}}{\text{SO}_4})_y$. Theo quy tắc hóa trị: $\text{III} \cdot x = \text{II} \cdot y \Rightarrow \dfrac{x}{y} = \dfrac{2}{3} \Rightarrow x = 2, y = 3$. Vậy công thức đúng là $\text{Al}_2(\text{SO}_4)_3$.",
-            ),
-            tf4(
-                r"Khi so sánh sự hình thành liên kết và tính chất của muối ăn sodium chloride ($\text{NaCl}$) với đường saccharose ($\text{C}_{12}\text{H}_{22}\text{O}_{11}$) và khí carbon dioxide ($\text{CO}_2$), xét tính đúng/sai của các phát biểu sau:",
-                [
-                    r"Khi hình thành phân tử $\text{NaCl}$ từ nguyên tử $\text{Na}$ ($Z = 11$) và nguyên tử $\text{Cl}$ ($Z = 17$), nguyên tử $\text{Na}$ đã nhường $1\text{ electron}$ cho nguyên tử $\text{Cl}$ để tạo thành hai ion $\text{Na}^+$ và $\text{Cl}^-$.",
-                    r"Hợp chất ion $\text{NaCl}$ có nhiệt độ nóng chảy rất cao ($801^\circ\text{C}$), còn hợp chất cộng hóa trị đường saccharose nóng chảy và phân hủy ở nhiệt độ thấp hơn nhiều (khoảng $185^\circ\text{C}$).",
-                    r"Cả dung dịch muối ăn ($\text{NaCl}$) trong nước và dung dịch đường saccharose trong nước đều dẫn điện rất tốt.",
-                    r"Trong phân tử khí ammonia ($\text{NH}_3$), hóa trị của nguyên tố nitrogen ($\text{N}$) là $\text{III}$ và bằng đúng số cặp electron dùng chung của nguyên tử $\text{N}$ với $3$ nguyên tử $\text{H}$.",
-                ],
-                "Đ/Đ/S/Đ",
-                "hieu",
-                (
-                    r"- **Ý a) Đúng**: $\text{Na}$ ($2, 8, 1$) nhường $1e$ tạo $\text{Na}^+$ ($2, 8$); $\text{Cl}$ ($2, 8, 7$) nhận $1e$ tạo $\text{Cl}^-$ ($2, 8, 8$)." "\n"
-                    r"- **Ý b) Đúng**: Hợp chất ion bền nhiệt và có nhiệt độ nóng chảy cao hơn hẳn hợp chất cộng hóa trị." "\n"
-                    r"- **Ý c) Sai**: Dung dịch muối ăn ($\text{NaCl}$) chứa các ion tự do $\text{Na}^+$ và $\text{Cl}^-$ nên dẫn điện tốt; còn đường saccharose là hợp chất cộng hóa trị không phân li thành ion nên dung dịch nước đường **không dẫn điện**." "\n"
-                    r"- **Ý d) Đúng**: Trong $\text{NH}_3$, nguyên tử $\text{N}$ có $3$ cặp electron dùng chung với $3$ nguyên tử $\text{H}$ (hóa trị $\text{I}$) nên $\text{N}$ có hóa trị $\text{III}$."
-                ),
-            ),
-            tf4(
-                r"Xét việc áp dụng quy tắc hóa trị ($a \cdot x = b \cdot y$) để kiểm tra và lập công thức hóa học của các hợp chất vô cơ. Biết hóa trị: $\text{Na}(\text{I})$, $\text{Ca}(\text{II})$, $\text{Al}(\text{III})$, $\text{C}(\text{IV})$, $\text{P}(\text{V})$, $\text{O}(\text{II})$, nhóm $-\text{OH}(\text{I})$, nhóm $-\text{NO}_3(\text{I})$, nhóm $=\text{CO}_3(\text{II})$. Các nhận định sau là đúng hay sai?",
-                [
-                    r"Công thức hóa học của hợp chất tạo bởi phosphorus ($\text{P}$ hóa trị $\text{V}$) và oxygen ($\text{O}$ hóa trị $\text{II}$) là $\text{P}_2\text{O}_5$.",
-                    r"Công thức hóa học của calcium hydroxide (tạo bởi $\text{Ca}$ hóa trị $\text{II}$ và nhóm $-\text{OH}$ hóa trị $\text{I}$) được viết đúng là $\text{CaOH}_2$.",
-                    r"Trong hai hợp chất $\text{FeCl}_2$ và $\text{FeCl}_3$ (với $\text{Cl}$ có hóa trị $\text{I}$), nguyên tố iron ($\text{Fe}$) thể hiện hai hóa trị khác nhau lần lượt là $\text{II}$ và $\text{III}$.",
-                    r"Hợp chất tạo bởi sodium ($\text{Na}$ hóa trị $\text{I}$) và nhóm carbonate ($=\text{CO}_3$ hóa trị $\text{II}$) có công thức hóa học là $\text{Na}_2\text{CO}_3$.",
-                ],
-                "Đ/S/Đ/Đ",
-                "hieu",
-                (
-                    r"- **Ý a) Đúng**: Với $\overset{\text{V}}{\text{P}}_x\overset{\text{II}}{\text{O}}_y$, ta có $\dfrac{x}{y} = \dfrac{2}{5} \Rightarrow \text{P}_2\text{O}_5$." "\n"
-                    r"- **Ý b) Sai**: Khi có từ $2$ nhóm nguyên tử trở lên phải đặt nhóm nguyên tử trong dấu ngoặc đơn, nên công thức đúng phải là **$\text{Ca(OH)}_2$** (viết $\text{CaOH}_2$ là sai)." "\n"
-                    r"- **Ý c) Đúng**: Với $\text{Cl}(\text{I})$, trong $\text{FeCl}_2$ thì $\text{Fe}$ có hóa trị $\text{II}$; trong $\text{FeCl}_3$ thì $\text{Fe}$ có hóa trị $\text{III}$." "\n"
-                    r"- **Ý d) Đúng**: Với $\overset{\text{I}}{\text{Na}}_x(\overset{\text{II}}{\text{CO}_3})_y$, ta có $\text{I} \cdot x = \text{II} \cdot y \Rightarrow x = 2, y = 1 \Rightarrow \text{Na}_2\text{CO}_3$."
-                ),
-            ),
-            mcq(
-                r"Nguyên tố kim loại $\text{M}$ tạo với oxygen ($\text{O}$ hóa trị $\text{II}$) hợp chất oxide có công thức $\text{M}_2\text{O}_3$. Khi nguyên tố $\text{M}$ (giữ nguyên hóa trị đó) liên kết với nhóm nitrate ($-\text{NO}_3$ có hóa trị $\text{I}$) thì tạo thành hợp chất muối có công thức hóa học và khối lượng phân tử (biết $\text{M}$ là aluminium $\text{Al} = 27\text{ amu}$, $\text{N} = 14\text{ amu}$, $\text{O} = 16\text{ amu}$) là:",
-                [
-                    r"$\text{Al(NO}_3)_2$ và $151\text{ amu}$.",
-                    r"$\text{Al}_3\text{NO}_3$ và $143\text{ amu}$.",
-                    r"$\text{Al(NO}_3)_3$ và $213\text{ amu}$.",
-                    r"$\text{Al}_2(\text{NO}_3)_3$ và $240\text{ amu}$.",
-                ],
-                "C",
-                "vandung",
-                r"Từ công thức oxide $\overset{a}{\text{M}}_2\overset{\text{II}}{\text{O}}_3$, theo quy tắc hóa trị ta có $a \cdot 2 = \text{II} \cdot 3 \Rightarrow a = \text{III}$. Khi $\text{Al}(\text{III})$ liên kết với nhóm $-\text{NO}_3(\text{I})$, công thức muối là $\text{Al(NO}_3)_3$. Khối lượng phân tử là: $M = 27 + 3 \cdot (14 + 3 \cdot 16) = 27 + 3 \cdot 62 = 213\text{ amu}$.",
-            ),
-            short(
-                r"Hợp chất tạo bởi nguyên tố iron ($\text{Fe}$ có hóa trị $\text{III}$) và nhóm sulfate ($=\text{SO}_4$ có hóa trị $\text{II}$) là muối iron(III) sulfate. Biết khối lượng nguyên tử của các nguyên tố là $\text{Fe} = 56\text{ amu}$, $\text{S} = 32\text{ amu}$ và $\text{O} = 16\text{ amu}$. Hãy lập công thức hóa học của muối iron(III) sulfate và tính khối lượng phân tử của hợp chất này theo đơn vị $\text{amu}$.",
-                ["400", "400,0", "400.0"],
-                "vandung",
-                (
-                    r"Gọi công thức của iron(III) sulfate là $\overset{\text{III}}{\text{Fe}}_x(\overset{\text{II}}{\text{SO}_4})_y$." "\n"
-                    r"Theo quy tắc hóa trị: $\text{III} \cdot x = \text{II} \cdot y \Rightarrow \dfrac{x}{y} = \dfrac{2}{3} \Rightarrow x = 2, y = 3$. Công thức hóa học là $\text{Fe}_2(\text{SO}_4)_3$." "\n"
-                    r"Khối lượng phân tử của $\text{Fe}_2(\text{SO}_4)_3$ là:" "\n"
-                    r"$$M_{\text{Fe}_2(\text{SO}_4)_3} = 2 \cdot 56 + 3 \cdot (32 + 4 \cdot 16) = 112 + 3 \cdot 96 = 400\text{ amu}$$"
-                ),
-            ),
-        ],
-        description="Vỏ nguyên tử khí hiếm bền vững, sự tạo thành liên kết ion và liên kết cộng hóa trị, hóa trị, quy tắc hóa trị và lập công thức hóa học.",
     ),
-    lesson(
-        grade=7,
-        order=6,
-        code="H7-C06",
-        title="Chương 6: Phản ứng hóa học và năng lượng trong phản ứng",
-        topic="phan-ung-hoa-hoc",
-        summary=(
-            r"Phản ứng hóa học là quá trình biến đổi từ chất này (chất phản ứng) thành chất khác (sản phẩm). "
-            r"Về mặt bản chất vi mô, trong một phản ứng hóa học chỉ có liên kết giữa các nguyên tử thay đổi làm cho phân tử này biến đổi thành phân tử khác, còn số nguyên tử của mỗi nguyên tố hóa học trước và sau phản ứng luôn giữ nguyên. "
-            r"Mọi phản ứng hóa học đều kèm theo sự biến đổi năng lượng dưới dạng phản ứng tỏa nhiệt (giải phóng nhiệt ra môi trường) hoặc phản ứng thu nhiệt (hấp thụ nhiệt từ môi trường)."
+    bai(
+        topic=CH2[0], chapter_title=CH2[1], chapter_desc=CH2[2],
+        title="Bài 6: Khối lượng phân tử",
+        icon="⚖️",
+        description="Cách tính khối lượng phân tử (amu) của đơn chất và hợp chất bằng tổng khối lượng của các nguyên tử có trong phân tử.",
+        requirements=[
+            "Định nghĩa được khối lượng phân tử của một chất bằng tổng khối lượng của các nguyên tử có trong phân tử chất đó (đơn vị là $\\text{amu}$).",
+            "Nhớ được khối lượng nguyên tử thông dụng ($\\text{H}=1, \\text{C}=12, \\text{N}=14, \\text{O}=16, \\text{Na}=23, \\text{Mg}=24, \\text{Al}=27, \\text{S}=32, \\text{Cl}=35{,}5, \\text{K}=39, \\text{Ca}=40, \\text{Fe}=56, \\text{Cu}=64$).",
+            "Tính thành thạo khối lượng phân tử của các đơn chất ($\\text{H}_2, \\text{O}_2, \\text{N}_2, \\text{Cl}_2$) và các hợp chất có hoặc không có dấu ngoặc đơn (như $\\text{H}_2\\text{O}, \\text{CaCO}_3, \\text{Ca(OH)}_2, \\text{Al}_2(\\text{SO}_4)_3$).",
+        ],
+        definition="Khối lượng phân tử của một chất bằng tổng khối lượng của các nguyên tử có trong một phân tử chất đó. Đơn vị của khối lượng phân tử là đơn vị khối lượng nguyên tử ($\\text{amu}$).",
+        theory=(
+            "### 1. Công thức tính Khối lượng phân tử\n"
+            "- Xét phân tử (hoặc đơn vị công thức) có dạng $A_x B_y C_z$:\n"
+            "  $$\\text{KLPT}(A_x B_y C_z) = x \\cdot M_A + y \\cdot M_B + z \\cdot M_C \\quad (\\text{đơn vị: amu})$$\n"
+            "- Đối với hợp chất chứa nhóm nguyên tử đặt trong dấu ngoặc đơn $A_x(BC_y)_z$: chỉ số $z$ ở ngoài dấu ngoặc nhân với toàn bộ khối lượng của nhóm $(BC_y)$:\n"
+            "  $$\\text{KLPT}[A_x(BC_y)_z] = x \\cdot M_A + z \\cdot (M_B + y \\cdot M_C)$$\n\n"
+            "### 2. Bảng khối lượng nguyên tử ($\\text{amu}$) của các nguyên tố thường gặp\n"
+            "- $\\text{H} = 1; \\quad \\text{C} = 12; \\quad \\text{N} = 14; \\quad \\text{O} = 16; \\quad \\text{F} = 19; \\quad \\text{Na} = 23; \\quad \\text{Mg} = 24; \\quad \\text{Al} = 27$.\n"
+            "- $\\text{Si} = 28; \\quad \\text{P} = 31; \\quad \\text{S} = 32; \\quad \\text{Cl} = 35{,}5; \\quad \\text{K} = 39; \\quad \\text{Ca} = 40; \\quad \\text{Fe} = 56; \\quad \\text{Cu} = 64; \\quad \\text{Zn} = 65; \\quad \\text{Ag} = 108; \\quad \\text{Ba} = 137$.\n"
+            "- **Một số nhóm nguyên tử quen thuộc**: nhóm $-\\text{OH}$ ($17\\text{ amu}$), nhóm $-\\text{NO}_3$ ($62\\text{ amu}$), nhóm $=\\text{CO}_3$ ($60\\text{ amu}$), nhóm $=\\text{SO}_4$ ($96\\text{ amu}$), nhóm $-\\text{NH}_4$ ($18\\text{ amu}$), nhóm $\\equiv\\text{PO}_4$ ($95\\text{ amu}$)."
         ),
-        objectives=[
-            r"Nêu được khái niệm phản ứng hóa học, phân biệt được chất phản ứng (chất tham gia) và chất sản phẩm (chất tạo thành).",
-            r"Trình bày được diễn biến vi mô của phản ứng hóa học: liên kết giữa các nguyên tử thay đổi làm phân tử biến đổi, còn số lượng nguyên tử của mỗi nguyên tố được bảo toàn.",
-            r"Nhận biết được phản ứng hóa học xảy ra dựa vào các dấu hiệu: xuất hiện chất khí ($\uparrow$), xuất hiện kết tủa ($\downarrow$), đổi màu sắc, tỏa nhiệt hoặc thu nhiệt.",
-            r"Phân biệt được phản ứng tỏa nhiệt và phản ứng thu nhiệt, đồng thời lấy được ví dụ ứng dụng thực tiễn của các phản ứng tỏa nhiệt/thu nhiệt trong đời sống.",
-        ],
         formulas=[
-            {
-                "name": "Sơ đồ tổng quát của một phản ứng hóa học",
-                "formula": r"$\text{Các chất phản ứng (Chất tham gia)} \xrightarrow{\text{điều kiện}} \text{Các sản phẩm (Chất tạo thành)}$",
-                "note": r"Trong quá trình phản ứng, lượng chất phản ứng giảm dần, còn lượng chất sản phẩm tăng dần.",
-            },
-            {
-                "name": "Bản chất vi mô của phản ứng tổng hợp nước",
-                "formula": r"$2\text{H}_2 + \text{O}_2 \xrightarrow{t^\circ} 2\text{H}_2\text{O}$",
-                "note": r"Trước phản ứng: $\text{H}$ liên kết với $\text{H}$, $\text{O}$ liên kết với $\text{O}$ ($4\text{ nguyên tử H} + 2\text{ nguyên tử O}$). Sau phản ứng: $1\text{ O}$ liên kết với $2\text{ H}$ tạo $2\text{ phân tử H}_2\text{O}$ (vẫn là $4\text{ nguyên tử H} + 2\text{ nguyên tử O}$).",
-            },
-            {
-                "name": "Phân biệt phản ứng tỏa nhiệt và phản ứng thu nhiệt",
-                "formula": r"$\text{Tỏa nhiệt: Giải phóng nhiệt } (T_{\text{môi trường}} \uparrow) \quad \mid \quad \text{Thu nhiệt: Hấp thụ nhiệt } (T_{\text{môi trường}} \downarrow)$",
-                "note": r"Ví dụ tỏa nhiệt: đốt nhiên liệu ($\text{C}, \text{CH}_4, \text{C}_2\text{H}_5\text{OH}$), tôi vôi ($\text{CaO} + \text{H}_2\text{O}$). Ví dụ thu nhiệt: nung đá vôi ($\text{CaCO}_3$), hòa tan viên C sủi.",
-            },
+            G(
+                "Công thức tính Khối lượng phân tử (amu)",
+                F("Khối lượng phân tử của chất A_x B_y", "$\\text{KLPT}(A_x B_y) = x \\cdot M_A + y \\cdot M_B\\text{ (amu)}$", "Ví dụ: $\\text{KLPT}(\\text{H}_2\\text{O}) = 2 \\cdot 1 + 16 = 18\\text{ amu}$; $\\text{KLPT}(\\text{CO}_2) = 12 + 2 \\cdot 16 = 44\\text{ amu}$."),
+                F("Khối lượng phân tử khi có dấu ngoặc A_x(BC_y)_z", "$\\text{KLPT}[A_x(BC_y)_z] = x \\cdot M_A + z \\cdot (M_B + y \\cdot M_C)\\text{ (amu)}$", "Ví dụ: $\\text{KLPT}[\\text{Ca(OH)}_2] = 40 + 2 \\cdot (16 + 1) = 74\\text{ amu}$."),
+            )
         ],
-        theory_sections=[
-            {
-                "title": "1. Khái niệm và diễn biến của phản ứng hóa học",
-                "content": (
-                    r"- **Khái niệm**: **Phản ứng hóa học** là quá trình biến đổi từ chất này thành chất khác." "\n"
-                    r"  + Chất ban đầu bị biến đổi trong phản ứng gọi là **chất phản ứng** (hay **chất tham gia**)." "\n"
-                    r"  + Chất mới sinh ra gọi là **sản phẩm** (hay **chất tạo thành**)." "\n"
-                    r"- **Diễn biến vi mô của phản ứng hóa học**:" "\n"
-                    r"  + Trước phản ứng: Các nguyên tử liên kết với nhau trong các phân tử chất phản ứng." "\n"
-                    r"  + Trong quá trình phản ứng: Các liên kết cũ bị phá vỡ và hình thành các liên kết mới theo trật tự khác." "\n"
-                    r"  + **Kết luận cốt lõi**: Trong phản ứng hóa học, **chỉ có liên kết giữa các nguyên tử thay đổi** làm cho phân tử này biến đổi thành phân tử khác; còn **số nguyên tử của mỗi nguyên tố trước và sau phản ứng luôn giữ nguyên**." "\n"
-                    r"  + *Lưu ý*: Nếu có đơn chất kim loại (như $\text{Zn}, \text{Fe}, \text{Mg}$) tham gia phản ứng thì sau phản ứng nguyên tử kim loại liên kết với hạt khác (như ion âm $\text{Cl}^-, \text{SO}_4^{2-}$)."
-                ),
-            },
-            {
-                "title": "2. Điều kiện và dấu hiệu nhận biết có phản ứng hóa học xảy ra",
-                "content": (
-                    r"- **Điều kiện để phản ứng xảy ra**: Các chất phản ứng phải **tiếp xúc** với nhau (diện tích tiếp xúc càng lớn phản ứng càng nhanh); nhiều phản ứng cần **đun nóng** đến nhiệt độ nhất định ($t^\circ$), và một số phản ứng cần có mặt **chất xúc tác** (ví dụ: phân hủy hydrogen peroxide $2\text{H}_2\text{O}_2 \xrightarrow{\text{MnO}_2} 2\text{H}_2\text{O} + \text{O}_2\uparrow$ có mặt xúc tác $\text{MnO}_2$)." "\n"
-                    r"- **Dấu hiệu nhận biết có chất mới tạo thành**:" "\n"
-                    r"  + Xuất hiện **chất khí** (sủi bọt khí $\uparrow$): Cho kẽm ($\text{Zn}$) vào dung dịch hydrochloric acid ($\text{HCl}$) thấy sủi bọt khí hydrogen ($\text{H}_2\uparrow$)." "\n"
-                    r"  + Xuất hiện **chất kết tủa** ($\downarrow$): Cho dung dịch barium chloride ($\text{BaCl}_2$) vào dung dịch sodium sulfate ($\text{Na}_2\text{SO}_4$) tạo kết tủa trắng barium sulfate ($\text{BaSO}_4\downarrow$)." "\n"
-                    r"  + Có sự **thay đổi màu sắc**, mùi hoặc sự **tỏa nhiệt, phát sáng**."
-                ),
-            },
-            {
-                "title": "3. Phản ứng tỏa nhiệt và phản ứng thu nhiệt",
-                "content": (
-                    r"- **Phản ứng tỏa nhiệt**: Là phản ứng hóa học **giải phóng năng lượng (dạng nhiệt)** ra môi trường xung quanh, làm nhiệt độ của hỗn hợp phản ứng và môi trường xung quanh **tăng lên**." "\n"
-                    r"  + *Ví dụ*: Phản ứng đốt cháy nhiên liệu (than $\text{C}$, khí methane $\text{CH}_4$, cồn ethanol $\text{C}_2\text{H}_5\text{OH}$, xăng dầu); phản ứng tôi vôi sống ($\text{CaO} + \text{H}_2\text{O} \rightarrow \text{Ca(OH)}_2$ làm nước sôi bốc hơi); phản ứng hô hấp oxy hóa glucose ($\text{C}_6\text{H}_{12}\text{O}_6$) trong cơ thể giúp giữ ấm thân nhiệt ở $37^\circ\text{C}$." "\n"
-                    r"- **Phản ứng thu nhiệt**: Là phản ứng hóa học **hấp thụ năng lượng (dạng nhiệt)** từ môi trường xung quanh trong suốt quá trình phản ứng (làm nhiệt độ xung quanh **giảm xuống** hoặc cần phải cung cấp nhiệt liên tục, nếu ngừng đun thì phản ứng dừng lại)." "\n"
-                    r"  + *Ví dụ*: Phản ứng nung đá vôi ($\text{CaCO}_3 \xrightarrow{t^\circ} \text{CaO} + \text{CO}_2\uparrow$); phản ứng quang hợp của cây xanh; phản ứng giữa baking soda ($\text{NaHCO}_3$) và citric acid trong viên sủi vitamin C khi thả vào cốc nước làm cốc nước mát lạnh đi."
-                ),
-            },
+        example="Cho biết khối lượng nguyên tử: $\\text{H} = 1, \\text{C} = 12, \\text{O} = 16, \\text{S} = 32, \\text{Ca} = 40$. Hãy tính khối lượng phân tử của: (a) Sulfuric acid ($\\text{H}_2\\text{SO}_4$); (b) Calcium carbonate ($\\text{CaCO}_3$).",
+        example_answer="- (a) Khối lượng phân tử của $\\text{H}_2\\text{SO}_4$ là: $2 \\cdot 1 + 1 \\cdot 32 + 4 \\cdot 16 = 2 + 32 + 64 = 98\\text{ amu}$.\n- (b) Khối lượng phân tử của $\\text{CaCO}_3$ là: $1 \\cdot 40 + 1 \\cdot 12 + 3 \\cdot 16 = 40 + 12 + 48 = 100\\text{ amu}$.",
+        real_life="Tính đúng khối lượng phân tử là bước nền tảng bắt buộc để pha chế hóa chất, tính toán phần trăm dinh dưỡng trong phân bón và tính lượng chất trong mọi phản ứng hóa học.",
+        quiz=[
+            mcq("biet", "Đơn vị dùng để đo **khối lượng phân tử** của một chất là gì?", ["$\\text{amu}$ (đơn vị khối lượng nguyên tử)", "Mét ($\\text{m}$)", "Lít ($\\text{L}$)", "Newton ($\\text{N}$)"], 0, "Khối lượng phân tử bằng tổng khối lượng các nguyên tử trong phân tử nên có đơn vị là $\\text{amu}$."),
+            mcq("biet", "Biết khối lượng nguyên tử của $\\text{H} = 1\\text{ amu}$ và $\\text{O} = 16\\text{ amu}$. Khối lượng phân tử của nước ($\\text{H}_2\\text{O}$) và của khí oxygen ($\\text{O}_2$) lần lượt là bao nhiêu?", ["$18\\text{ amu}$ và $32\\text{ amu}$", "$17\\text{ amu}$ và $16\\text{ amu}$", "$32\\text{ amu}$ và $18\\text{ amu}$", "$34\\text{ amu}$ và $32\\text{ amu}$"], 0, "Ta có $\\text{KLPT}(\\text{H}_2\\text{O}) = 2 \\cdot 1 + 16 = 18\\text{ amu}$ và $\\text{KLPT}(\\text{O}_2) = 2 \\cdot 16 = 32\\text{ amu}$."),
+            mcq("hieu", "Biết $\\text{Ca} = 40, \\text{O} = 16, \\text{H} = 1$. Khối lượng phân tử của calcium hydroxide có công thức $\\text{Ca(OH)}_2$ bằng bao nhiêu $\\text{amu}$?", ["$74\\text{ amu}$", "$57\\text{ amu}$", "$58\\text{ amu}$", "$114\\text{ amu}$"], 0, "Ta có $\\text{KLPT}[\\text{Ca(OH)}_2] = 40 + 2 \\cdot (16 + 1) = 40 + 34 = 74\\text{ amu}$."),
+            tf4("hieu", "Cho $\\text{H} = 1, \\text{C} = 12, \\text{N} = 14, \\text{O} = 16, \\text{Na} = 23, \\text{Cl} = 35{,}5$. Xét tính đúng/sai của các phát biểu sau:", [
+                "Khối lượng phân tử của khí ammonia ($\\text{NH}_3$) là $14 + 3 \\cdot 1 = 17\\text{ amu}$.",
+                "Khối lượng phân tử của khí carbon dioxide ($\\text{CO}_2$) là $12 + 2 \\cdot 16 = 44\\text{ amu}$.",
+                "Khối lượng phân tử của khí nitrogen ($\\text{N}_2$) là $14\\text{ amu}$.",
+                "Khối lượng phân tử của muối ăn sodium chloride ($\\text{NaCl}$) là $23 + 35{,}5 = 58{,}5\\text{ amu}$.",
+            ], [True, True, False, True], "Ý c) sai vì phân tử khí nitrogen là $\\text{N}_2$ gồm $2$ nguyên tử $\\text{N}$, nên khối lượng phân tử là $2 \\cdot 14 = 28\\text{ amu}$."),
+            short("vandung", "Biết $\\text{C} = 12, \\text{H} = 1, \\text{O} = 16$. Khối lượng phân tử của đường glucose có công thức phân tử $\\text{C}_6\\text{H}_{12}\\text{O}_6$ bằng bao nhiêu $\\text{amu}$?", ["180"], "Ta có $\\text{KLPT}(\\text{C}_6\\text{H}_{12}\\text{O}_6) = 6 \\cdot 12 + 12 \\cdot 1 + 6 \\cdot 16 = 72 + 12 + 96 = 180\\text{ amu}$.", unit="amu"),
         ],
-        worked_examples=[
-            {
-                "title": "Ví dụ 1: Phân tích diễn biến vi mô của phản ứng đốt cháy khí methane",
-                "problem": (
-                    r"Xét phản ứng đốt cháy khí methane ($\text{CH}_4$) trong khí oxygen ($\text{O}_2$) theo sơ đồ: $\text{CH}_4 + 2\text{O}_2 \xrightarrow{t^\circ} \text{CO}_2 + 2\text{H}_2\text{O}$. "
-                    r"Hãy so sánh sự liên kết giữa các nguyên tử và số lượng nguyên tử mỗi nguyên tố ($\text{C}, \text{H}, \text{O}$) trước và sau khi phản ứng xảy ra."
-                ),
-                "solution": (
-                    r"- **Trước phản ứng**: $1$ nguyên tử $\text{C}$ liên kết với $4$ nguyên tử $\text{H}$ (trong $1$ phân tử $\text{CH}_4$); các nguyên tử $\text{O}$ liên kết từng đôi một (trong $2$ phân tử $\text{O}_2$). Tổng số nguyên tử là: $1\text{ C}, 4\text{ H}, 4\text{ O}$." "\n"
-                    r"- **Sau phản ứng**: Liên kết thay đổi, $1$ nguyên tử $\text{C}$ liên kết với $2$ nguyên tử $\text{O}$ tạo $1$ phân tử $\text{CO}_2$; $2$ nguyên tử $\text{O}$ còn lại mỗi nguyên tử liên kết với $2$ nguyên tử $\text{H}$ tạo $2$ phân tử $\text{H}_2\text{O}$. Tổng số nguyên tử vẫn là: $1\text{ C}, 4\text{ H}, 4\text{ O}$ (được bảo toàn hoàn toàn)."
-                ),
-            },
-            {
-                "title": "Ví dụ 2: Phân biệt phản ứng tỏa nhiệt và phản ứng thu nhiệt qua nhiệt kế",
-                "problem": (
-                    r"Trong phòng thí nghiệm ở $25^\circ\text{C}$, học sinh thực hiện hai thí nghiệm trong hai cốc thủy tinh có cắm sẵn nhiệt kế:" "\n"
-                    r"- Cốc 1: Cho vôi sống ($\text{CaO}$) tác dụng với nước ($\text{H}_2\text{O}$), nhiệt kế chỉ giá trị tăng từ $25^\circ\text{C}$ lên $75^\circ\text{C}$." "\n"
-                    r"- Cốc 2: Cho viên sủi vitamin C (chứa $\text{NaHCO}_3$ và citric acid) vào nước, nhiệt kế chỉ giá trị giảm từ $25^\circ\text{C}$ xuống $21^\circ\text{C}$." "\n"
-                    r"Hãy cho biết phản ứng trong mỗi cốc là phản ứng tỏa nhiệt hay thu nhiệt."
-                ),
-                "solution": (
-                    r"- **Cốc 1**: Nhiệt độ của hệ tăng mạnh từ $25^\circ\text{C}$ lên $75^\circ\text{C}$ chứng tỏ phản ứng giải phóng nhiệt năng ra môi trường $\rightarrow$ đây là **phản ứng tỏa nhiệt**." "\n"
-                    r"- **Cốc 2**: Nhiệt độ của hệ giảm từ $25^\circ\text{C}$ xuống $21^\circ\text{C}$ chứng tỏ phản ứng đã hấp thụ nhiệt năng từ nước trong cốc $\rightarrow$ đây là **phản ứng thu nhiệt**."
-                ),
-            },
-        ],
-        key_takeaways=[
-            r"Trong một phản ứng hóa học, chỉ có liên kết giữa các nguyên tử thay đổi làm phân tử này biến đổi thành phân tử khác, còn số lượng nguyên tử mỗi nguyên tố giữ nguyên.",
-            r"Trong quá trình phản ứng, lượng chất phản ứng giảm dần, còn lượng chất sản phẩm tăng dần.",
-            r"Phản ứng tỏa nhiệt giải phóng nhiệt làm tăng nhiệt độ môi trường; phản ứng thu nhiệt hấp thụ nhiệt làm giảm nhiệt độ môi trường (hoặc cần đun nóng liên tục).",
-        ],
-        questions=[
-            mcq(
-                r"Trong một phản ứng hóa học, đại lượng hay yếu tố nào sau đây **luôn thay đổi** để làm cho phân tử này biến đổi thành phân tử khác?",
-                [
-                    r"Số lượng nguyên tử của mỗi nguyên tố hóa học.",
-                    r"Điện tích hạt nhân ($Z$) của mỗi nguyên tử.",
-                    r"Tổng số hạt proton ($p$) của các nguyên tử.",
-                    r"Liên kết giữa các nguyên tử.",
-                ],
-                "D",
-                "biet",
-                r"Bản chất của phản ứng hóa học là sự thay đổi liên kết giữa các nguyên tử, làm phân tử này biến đổi thành phân tử khác; còn số nguyên tử của mỗi nguyên tố và cấu tạo hạt nhân nguyên tử hoàn toàn giữ nguyên.",
-            ),
-            mcq(
-                r"Xét phản ứng hóa học: $\text{Iron } (\text{Fe}) + \text{Sulfur } (\text{S}) \xrightarrow{t^\circ} \text{Iron(II) sulfide } (\text{FeS})$. Trong phản ứng trên, đâu là các chất phản ứng và đâu là sản phẩm?",
-                [
-                    r"Chất phản ứng là $\text{Fe}$ và $\text{S}$; sản phẩm là $\text{FeS}$.",
-                    r"Chất phản ứng là $\text{FeS}$; sản phẩm là $\text{Fe}$ và $\text{S}$.",
-                    r"Chất phản ứng là $\text{Fe}$; sản phẩm là $\text{S}$ và $\text{FeS}$.",
-                    r"Cả $\text{Fe}$, $\text{S}$ và $\text{FeS}$ đều là sản phẩm.",
-                ],
-                "A",
-                "biet",
-                r"Các chất ban đầu bị biến đổi (đứng trước mũi tên) là $\text{Fe}$ và $\text{S}$ gọi là chất phản ứng; chất mới tạo thành (đứng sau mũi tên) là $\text{FeS}$ gọi là sản phẩm.",
-            ),
-            mcq(
-                r"Phản ứng hóa học nào sau đây là một **phản ứng tỏa nhiệt**?",
-                [
-                    r"Phản ứng hòa tan viên sủi vitamin C vào cốc nước làm cốc nước lạnh đi.",
-                    r"Phản ứng đốt cháy cồn ethanol ($\text{C}_2\text{H}_5\text{OH}$) hoặc khí gas ($\text{CH}_4$, $\text{C}_3\text{H}_8$) trong không khí.",
-                    r"Phản ứng nung đá vôi ($\text{CaCO}_3 \xrightarrow{t^\circ} \text{CaO} + \text{CO}_2\uparrow$) cần cung cấp nhiệt liên tục.",
-                    r"Phản ứng nhiệt phân thuốc tím ($\text{KMnO}_4$) trong phòng thí nghiệm.",
-                ],
-                "B",
-                "biet",
-                r"Phản ứng đốt cháy nhiên liệu (cồn ethanol, khí gas, than, củi) giải phóng một lượng lớn nhiệt năng ra môi trường xung quanh nên là phản ứng tỏa nhiệt. Ba phản ứng còn lại đều là phản ứng thu nhiệt.",
-            ),
-            mcq(
-                r"Khi cho một viên kẽm ($\text{Zn}$) vào ống nghiệm đựng dung dịch hydrochloric acid ($\text{HCl}$), dấu hiệu dễ quan sát nhất cho thấy đã có phản ứng hóa học xảy ra là:",
-                [
-                    r"Dung dịch trong ống nghiệm chuyển sang màu tím sẫm.",
-                    r"Viên kẽm nở to gấp đôi và phát ra tia sáng màu đỏ.",
-                    r"Viên kẽm tan dần và có các bọt khí hydrogen ($\text{H}_2\uparrow$) không màu sủi lên mạnh từ bề mặt viên kẽm.",
-                    r"Xuất hiện chất kết tủa màu xanh lam lắng xuống đáy ống nghiệm.",
-                ],
-                "C",
-                "biet",
-                r"Kẽm ($\text{Zn}$) tác dụng với dung dịch $\text{HCl}$ theo phản ứng $\text{Zn} + 2\text{HCl} \rightarrow \text{ZnCl}_2 + \text{H}_2\uparrow$, dấu hiệu đặc trưng là viên kẽm tan dần và sủi bọt khí không màu ($\text{H}_2\uparrow$).",
-            ),
-            mcq(
-                r"Trong phản ứng tổng hợp khí ammonia từ khí nitrogen và khí hydrogen theo sơ đồ: $\text{N}_2 + 3\text{H}_2 \xrightarrow{t^\circ, p, \text{xt}} 2\text{NH}_3$. Khi có $1$ phân tử $\text{N}_2$ phản ứng vừa đủ với $3$ phân tử $\text{H}_2$, nhận xét nào sau đây về số nguyên tử trước và sau phản ứng là **đúng**?",
-                [
-                    r"Sau phản ứng số nguyên tử $\text{N}$ tăng lên gấp đôi và số nguyên tử $\text{H}$ giảm đi một nửa.",
-                    r"Trước phản ứng có $4$ nguyên tử, sau phản ứng chỉ còn $2$ nguyên tử.",
-                    r"Trong phản ứng, các nguyên tử $\text{H}$ đã biến đổi thành nguyên tử $\text{N}$.",
-                    r"Trước và sau phản ứng đều có đúng $2$ nguyên tử $\text{N}$ và $6$ nguyên tử $\text{H}$, chỉ có liên kết thay đổi tạo thành $2$ phân tử $\text{NH}_3$.",
-                ],
-                "D",
-                "hieu",
-                r"Trước phản ứng: $1$ phân tử $\text{N}_2$ ($2$ nguyên tử $\text{N}$) và $3$ phân tử $\text{H}_2$ ($3 \cdot 2 = 6$ nguyên tử $\text{H}$). Sau phản ứng: tạo $2$ phân tử $\text{NH}_3$ gồm $2 \cdot 1 = 2$ nguyên tử $\text{N}$ và $2 \cdot 3 = 6$ nguyên tử $\text{H}$. Số nguyên tử mỗi nguyên tố được bảo toàn tuyệt đối.",
-            ),
-            mcq(
-                r"Tại sao khi nung đá vôi ($\text{CaCO}_3 \xrightarrow{t^\circ} \text{CaO} + \text{CO}_2\uparrow$) người ta phải đốt lò cung cấp nhiệt liên tục từ đầu đến cuối, còn khi đốt cháy than đá ($\text{C} + \text{O}_2 \xrightarrow{t^\circ} \text{CO}_2$) thì chỉ cần khơi mào lửa lúc đầu rồi than tự cháy tiếp?",
-                [
-                    r"Vì phản ứng nung đá vôi là phản ứng thu nhiệt (ngừng cung cấp nhiệt thì phản ứng dừng lại), còn phản ứng đốt than là phản ứng tỏa nhiệt (nhiệt tỏa ra tự duy trì phản ứng).",
-                    r"Vì đá vôi ($\text{CaCO}_3$) là chất khí, còn than đá ($\text{C}$) là chất lỏng.",
-                    r"Vì phản ứng nung đá vôi là phản ứng tỏa nhiệt quá mạnh nên cần làm nguội.",
-                    r"Vì phản ứng đốt than đá là phản ứng thu nhiệt từ không khí.",
-                ],
-                "A",
-                "hieu",
-                r"Phản ứng phân hủy $\text{CaCO}_3$ là phản ứng thu nhiệt nên cần cung cấp nhiệt liên tục ở khoảng $1000^\circ\text{C}$. Ngược lại, phản ứng cháy của than $\text{C}$ với $\text{O}_2$ chỉ cần đun nóng ban đầu để đạt nhiệt độ bắt cháy, sau đó phản ứng tỏa ra lượng nhiệt lớn tự duy trì sự cháy.",
-            ),
-            tf4(
-                r"Xét thí nghiệm cho dung dịch barium chloride ($\text{BaCl}_2$) không màu vào ống nghiệm đựng dung dịch sodium sulfate ($\text{Na}_2\text{SO}_4$) không màu ở nhiệt độ phòng: ngay lập tức xuất hiện chất rắn màu trắng không tan là barium sulfate ($\text{BaSO}_4\downarrow$) làm đục ống nghiệm, đồng thời tạo ra muối sodium chloride ($\text{NaCl}$) tan trong nước. Xét tính đúng/sai của các phát biểu sau:",
-                [
-                    r"Trong phản ứng trên, các chất phản ứng là $\text{BaCl}_2$ và $\text{Na}_2\text{SO}_4$; các chất sản phẩm là $\text{BaSO}_4$ và $\text{NaCl}$.",
-                    r"Dấu hiệu giúp nhận biết phản ứng hóa học đã xảy ra là sự xuất hiện chất kết tủa màu trắng ($\text{BaSO}_4\downarrow$).",
-                    r"Theo thời gian diễn ra phản ứng, lượng $\text{BaCl}_2$ và $\text{Na}_2\text{SO}_4$ tăng dần, còn lượng $\text{BaSO}_4$ giảm dần.",
-                    r"Tổng số nguyên tử của mỗi nguyên tố ($\text{Ba}, \text{Cl}, \text{Na}, \text{S}, \text{O}$) trước và sau phản ứng hoàn toàn bằng nhau.",
-                ],
-                "Đ/Đ/S/Đ",
-                "hieu",
-                (
-                    r"- **Ý a) Đúng**: Hai chất ban đầu là $\text{BaCl}_2$ và $\text{Na}_2\text{SO}_4$; hai chất mới tạo thành là $\text{BaSO}_4\downarrow$ và $\text{NaCl}$." "\n"
-                    r"- **Ý b) Đúng**: Sự tạo thành chất rắn không tan màu trắng ($\text{BaSO}_4\downarrow$) từ hai dung dịch trong suốt là dấu hiệu rõ nét của phản ứng." "\n"
-                    r"- **Ý c) Sai**: Trong quá trình phản ứng, lượng các chất phản ứng ($\text{BaCl}_2, \text{Na}_2\text{SO}_4$) **giảm dần**, còn lượng sản phẩm ($\text{BaSO}_4, \text{NaCl}$) **tăng dần**." "\n"
-                    r"- **Ý d) Đúng**: Mọi phản ứng hóa học đều bảo toàn số lượng nguyên tử của mỗi nguyên tố."
-                ),
-            ),
-            tf4(
-                r"Xét sự biến đổi năng lượng (tỏa nhiệt và thu nhiệt) trong các quá trình hóa học thực tiễn sau. Các nhận định dưới đây là đúng hay sai?",
-                [
-                    r"Trong các túi chườm nóng tự sôi dùng trong y tế hoặc khẩu phần ăn tự sôi, người ta ứng dụng các phản ứng tỏa nhiệt mạnh (như phản ứng của $\text{CaO}$ hoặc hỗn hợp bột $\text{Mg} - \text{Fe}$ với nước).",
-                    r"Quá trình hô hấp tế bào trong cơ thể người (oxy hóa glucose $\text{C}_6\text{H}_{12}\text{O}_6$ bằng khí $\text{O}_2$ tạo $\text{CO}_2$ và $\text{H}_2\text{O}$) là một phản ứng thu nhiệt làm cơ thể lạnh đi.",
-                    r"Trong các túi chườm lạnh tức thời dùng sơ cứu chấn thương thể thao, việc hòa tan ammonium nitrate ($\text{NH}_4\text{NO}_3$) với nước hấp thụ nhiệt mạnh làm nhiệt độ túi giảm nhanh xuống gần $0^\circ\text{C}$.",
-                    r"Khi đốt cháy $1\text{ kg}$ khí hóa lỏng LPG tỏa ra nhiệt lượng khoảng $46\text{ MJ}$, nhiệt lượng này được chuyển hóa một phần thành nhiệt năng làm chín thức ăn.",
-                ],
-                "Đ/S/Đ/Đ",
-                "hieu",
-                (
-                    r"- **Ý a) Đúng**: Túi chườm nóng và hộp cơm tự sôi dựa trên phản ứng hóa học tỏa nhiệt mạnh để làm nóng mà không cần lửa." "\n"
-                    r"- **Ý b) Sai**: Phản ứng oxy hóa glucose ($\text{C}_6\text{H}_{12}\text{O}_6 + 6\text{O}_2 \rightarrow 6\text{CO}_2 + 6\text{H}_2\text{O}$) trong cơ thể là **phản ứng tỏa nhiệt**, cung cấp năng lượng cho cơ bắp hoạt động và duy trì thân nhiệt $37^\circ\text{C}$." "\n"
-                    r"- **Ý c) Đúng**: Quá trình này thu nhiệt mạnh từ môi trường làm túi chườm lạnh đi nhanh chóng để giảm sưng đau." "\n"
-                    r"- **Ý d) Đúng**: Sự cháy của khí LPG là phản ứng tỏa nhiệt cung cấp năng lượng nhiệt cho việc đun nấu."
-                ),
-            ),
-            mcq(
-                r"Khi đốt cháy hoàn toàn một số phân tử khí ethane ($\text{C}_2\text{H}_6$) trong khí oxygen ($\text{O}_2$), sau phản ứng thu được đúng $4$ phân tử khí carbon dioxide ($\text{CO}_2$) và $6$ phân tử nước ($\text{H}_2\text{O}$). Dựa vào sự bảo toàn số nguyên tử của mỗi nguyên tố trong phản ứng hóa học, số phân tử $\text{C}_2\text{H}_6$ và số phân tử $\text{O}_2$ đã tham gia phản ứng lần lượt là:",
-                [
-                    r"$1$ phân tử $\text{C}_2\text{H}_6$ và $4$ phân tử $\text{O}_2$.",
-                    r"$2$ phân tử $\text{C}_2\text{H}_6$ và $7$ phân tử $\text{O}_2$.",
-                    r"$2$ phân tử $\text{C}_2\text{H}_6$ và $5$ phân tử $\text{O}_2$.",
-                    r"$4$ phân tử $\text{C}_2\text{H}_6$ và $7$ phân tử $\text{O}_2$.",
-                ],
-                "B",
-                "vandung",
-                r"Sau phản ứng, trong $4\text{ phân tử CO}_2$ và $6\text{ phân tử H}_2\text{O}$ có: $4\text{ nguyên tử C}$, $6 \cdot 2 = 12\text{ nguyên tử H}$, và $4 \cdot 2 + 6 \cdot 1 = 14\text{ nguyên tử O}$. Vì số nguyên tử mỗi nguyên tố giữ nguyên: số phân tử $\text{C}_2\text{H}_6$ cần là $\dfrac{4}{2} = 2$ phân tử (chứa đúng $4\text{ C}$ và $12\text{ H}$); số phân tử $\text{O}_2$ cần là $\dfrac{14}{2} = 7$ phân tử.",
-            ),
-            short(
-                r"Để đun sôi một ấm nước cần cung cấp một nhiệt lượng hữu ích là $660\text{ kJ}$. Biết khi đốt cháy hoàn toàn $1\text{ g}$ khí methane ($\text{CH}_4$) tỏa ra nhiệt lượng là $55\text{ kJ}$, nhưng hiệu suất hấp thụ nhiệt của ấm nước chỉ đạt $60\%$ (phần nhiệt còn lại tỏa ra môi trường không khí). Hãy tính khối lượng khí methane ($\text{CH}_4$) cần đốt cháy theo đơn vị gam ($\text{g}$).",
-                ["20", "20,0", "20.0"],
-                "vandung",
-                (
-                    r"Vì hiệu suất hấp thụ nhiệt của ấm nước là $60\%$, nên tổng nhiệt lượng toàn phần mà phản ứng đốt cháy $\text{CH}_4$ cần tỏa ra là:" "\n"
-                    r"$$Q_{\text{tỏa}} = \dfrac{660}{60\%} = \dfrac{660 \cdot 100}{60} = 1100\text{ kJ}$$" "\n"
-                    r"Khối lượng khí methane ($\text{CH}_4$) cần đốt cháy là:" "\n"
-                    r"$$m_{\text{CH}_4} = \dfrac{1100}{55} = 20\text{ g}$$"
-                ),
-            ),
-        ],
-        description="Khái niệm phản ứng hóa học, chất phản ứng, sản phẩm, diễn biến vi mô của phản ứng và phân biệt phản ứng tỏa nhiệt với phản ứng thu nhiệt.",
     ),
-    lesson(
-        grade=7,
-        order=7,
-        code="H7-C07",
-        title="Chương 7: Định luật bảo toàn khối lượng và phương trình chữ",
-        topic="bao-toan-khoi-luong",
-        summary=(
-            r"Phương trình chữ biểu diễn ngắn gọn tên các chất tham gia và sản phẩm của một phản ứng hóa học. "
-            r"Theo Định luật bảo toàn khối lượng do hai nhà bác học Lomonosov và Lavoisier độc lập tìm ra: 'Trong một phản ứng hóa học, tổng khối lượng của các chất sản phẩm bằng tổng khối lượng của các chất tham gia phản ứng'. "
-            r"Định luật này có cơ sở từ sự bảo toàn số lượng nguyên tử của mỗi nguyên tố trước và sau phản ứng, giúp ta dễ dàng tính được khối lượng của một chất bất kỳ khi biết khối lượng của các chất còn lại."
+    bai(
+        topic=CH3[0], chapter_title=CH3[1], chapter_desc=CH3[2],
+        title="Bài 7: Sự tạo thành ion và liên kết ion",
+        icon="🧲",
+        description="Quy tắc lớp vỏ bền vững của khí hiếm, sự nhường electron của nguyên tử kim loại tạo ion dương, sự nhận electron của phi kim tạo ion âm và bản chất liên kết ion.",
+        requirements=[
+            "Giải thích được xu hướng của các nguyên tử kim loại (nhường $1, 2, 3$ electron lớp ngoài cùng để tạo thành **ion dương / cation** $M^{n+}$) và nguyên tử phi kim (nhận $1, 2, 3$ electron để tạo thành **ion âm / anion** $X^{m-}$) nhằm đạt lớp vỏ bền vững của khí hiếm ($8e$ hoặc $2e$).",
+            "Định nghĩa được liên kết ion là liên kết được hình thành bởi lực hút tĩnh điện giữa các ion mang điện tích trái dấu (thường giữa kim loại điển hình và phi kim điển hình).",
+            "Nêu được các đặc điểm tính chất chung của hợp chất ion (như $\\text{NaCl}, \\text{MgO}, \\text{CaCl}_2$): ở điều kiện thường là chất rắn kết tinh, có nhiệt độ nóng chảy và nhiệt độ sôi cao, khi tan trong nước tạo dung dịch dẫn điện.",
+        ],
+        definition="Khi nguyên tử kim loại nhường electron sẽ trở thành ion dương (cation), còn nguyên tử phi kim nhận electron sẽ trở thành ion âm (anion) để đạt lớp vỏ electron bền vững như khí hiếm. Liên kết ion là liên kết được hình thành bởi lực hút tĩnh điện giữa các ion mang điện tích trái dấu.",
+        theory=(
+            "### 1. Sự tạo thành Ion dương và Ion âm\n"
+            "- Để đạt lớp vỏ ngoài cùng bền vững ($8e$ như $\\text{Ne}, \\text{Ar}$ hoặc $2e$ như $\\text{He}$):\n"
+            "  - **Nguyên tử Kim loại** (có $1, 2, 3e$ lớp ngoài cùng) dễ **nhường electron** tạo thành **ion dương**:\n"
+            "    - $\\text{Na}$ ($Z=11: 2, 8, 1$) nhường $1e \\longrightarrow \\text{Na}^+$ ($10e: 2, 8$ giống $\\text{Ne}$).\n"
+            "    - $\\text{Mg}$ ($Z=12: 2, 8, 2$) nhường $2e \\longrightarrow \\text{Mg}^{2+}$ ($10e: 2, 8$ giống $\\text{Ne}$).\n"
+            "    - $\\text{Al}$ ($Z=13: 2, 8, 3$) nhường $3e \\longrightarrow \\text{Al}^{3+}$.\n"
+            "  - **Nguyên tử Phi kim** (có $5, 6, 7e$ lớp ngoài cùng) dễ **nhận thêm electron** tạo thành **ion âm**:\n"
+            "    - $\\text{Cl}$ ($Z=17: 2, 8, 7$) nhận $1e \\longrightarrow \\text{Cl}^-$ ($18e: 2, 8, 8$ giống $\\text{Ar}$).\n"
+            "    - $\\text{O}$ ($Z=8: 2, 6$) nhận $2e \\longrightarrow \\text{O}^{2-}$ ($10e: 2, 8$ giống $\\text{Ne}$).\n\n"
+            "### 2. Sự tạo thành Liên kết ion và Tính chất hợp chất ion\n"
+            "- Hai ion mang điện tích trái dấu (như $\\text{Na}^+$ và $\\text{Cl}^-$, hoặc $\\text{Mg}^{2+}$ và $\\text{O}^{2-}$) hút nhau bằng lực hút tĩnh điện tạo thành **liên kết ion** (phân tử $\\text{NaCl}, \\text{MgO}, \\text{CaCl}_2$).\n"
+            "- **Tính chất của hợp chất ion**: là chất rắn ở nhiệt độ thường, khá cứng nhưng giòn, có **nhiệt độ nóng chảy và nhiệt độ sôi rất cao** (ví dụ $\\text{NaCl}$ nóng chảy ở $801^\\circ\\text{C}$, $\\text{MgO}$ nóng chảy ở $2852^\\circ\\text{C}$), nhiều chất tan tốt trong nước tạo thành dung dịch dẫn được điện."
         ),
-        objectives=[
-            r"Viết được phương trình chữ của các phản ứng hóa học thông dụng ($\text{Tên các chất phản ứng} \xrightarrow{\text{điều kiện}} \text{Tên các sản phẩm}$).",
-            r"Phát biểu được nội dung Định luật bảo toàn khối lượng của Lomonosov – Lavoisier và giải thích được định luật dựa trên sự bảo toàn số lượng nguyên tử trong phản ứng hóa học.",
-            r"Viết được biểu thức bảo toàn khối lượng cho một phản ứng cụ thể ($m_{\text{A}} + m_{\text{B}} = m_{\text{C}} + m_{\text{D}}$) và giải thích được sự thay đổi khối lượng chất rắn khi nung hoặc đốt trong bình hở.",
-            r"Vận dụng thành thạo Định luật bảo toàn khối lượng để tính khối lượng chất tham gia hoặc sản phẩm trong các bài toán thực tế.",
-        ],
         formulas=[
-            {
-                "name": "Biểu thức Định luật bảo toàn khối lượng",
-                "formula": r"$\sum m_{\text{chất tham gia}} = \sum m_{\text{sản phẩm}} \iff m_{\text{A}} + m_{\text{B}} = m_{\text{C}} + m_{\text{D}}$",
-                "note": r"Đối với phản ứng $\text{A} + \text{B} \rightarrow \text{C} + \text{D}$, chỉ tính khối lượng phần chất thực sự đã tham gia phản ứng.",
-            },
-            {
-                "name": "Quy tắc viết phương trình chữ của phản ứng hóa học",
-                "formula": r"$\text{Tên chất phản ứng 1} + \text{Tên chất phản ứng 2} \xrightarrow{\text{điều kiện}} \text{Tên sản phẩm 1} + \text{Tên sản phẩm 2}$",
-                "note": r"Dấu $+$ ở vế trái đọc là 'tác dụng với'; mũi tên $\rightarrow$ đọc là 'tạo thành'; dấu $+$ ở vế phải đọc là 'và'.",
-            },
-            {
-                "name": "Bảo toàn khối lượng khi chất rắn tham gia phản ứng có chất khí",
-                "formula": r"$m_{\text{kim loại}} + m_{\text{O}_2\text{ phản ứng}} = m_{\text{oxide}}; \quad m_{\text{CaCO}_3\text{ phân hủy}} = m_{\text{CaO}} + m_{\text{CO}_2\uparrow}$",
-                "note": r"Đốt kim loại trong không khí thì khối lượng chất rắn tăng thêm bằng $m_{\text{O}_2}$; nung đá vôi thì khối lượng chất rắn giảm đi bằng $m_{\text{CO}_2\uparrow}$ thoát ra.",
-            },
+            G(
+                "Quá trình tạo thành Ion và Liên kết ion",
+                F("Sự tạo thành ion dương (Kim loại) và ion âm (Phi kim)", "$\\text{Kim loại } M \\xrightarrow{-ne} M^{n+} \\text{ (ion dương)}; \\qquad \\text{Phi kim } X \\xrightarrow{+me} X^{m-} \\text{ (ion âm)}$", "Số electron trong ion dương $M^{n+}$ là $e_{\\text{ion}} = Z - n$; số electron trong ion âm $X^{m-}$ là $e_{\\text{ion}} = Z + m$."),
+                F("Sơ đồ hình thành liên kết ion trong NaCl và MgO", "$\\text{Na}^+ + \\text{Cl}^- \\longrightarrow \\text{NaCl}; \\qquad \\text{Mg}^{2+} + \\text{O}^{2-} \\longrightarrow \\text{MgO}; \\qquad \\text{Ca}^{2+} + 2\\text{Cl}^- \\longrightarrow \\text{CaCl}_2$", "Dấu hiệu nhận biết nhanh: Hợp chất tạo bởi **Kim loại điển hình + Phi kim điển hình** có liên kết ion."),
+            )
         ],
-        theory_sections=[
-            {
-                "title": "1. Phương trình chữ của phản ứng hóa học",
-                "content": (
-                    r"- Để biểu diễn một phản ứng hóa học một cách trực quan bằng tên các chất, ta viết **phương trình chữ**:" "\n"
-                    r"$$\text{Tên các chất phản ứng} \xrightarrow{\text{điều kiện}} \text{Tên các chất sản phẩm}$$" "\n"
-                    r"- **Ví dụ 1**: Đốt cháy than (carbon, $\text{C}$) trong khí oxygen ($\text{O}_2$) tạo thành khí carbon dioxide ($\text{CO}_2$):" "\n"
-                    r"$$\text{Carbon} + \text{Oxygen} \xrightarrow{t^\circ} \text{Carbon dioxide}$$" "\n"
-                    r"  *(Đọc là: Carbon tác dụng với oxygen ở nhiệt độ cao tạo thành carbon dioxide)*." "\n"
-                    r"- **Ví dụ 2**: Cho kẽm (zinc, $\text{Zn}$) tác dụng với dung dịch hydrochloric acid ($\text{HCl}$) tạo thành muối zinc chloride ($\text{ZnCl}_2$) và khí hydrogen ($\text{H}_2$):" "\n"
-                    r"$$\text{Zinc} + \text{Hydrochloric acid} \rightarrow \text{Zinc chloride} + \text{Hydrogen}$$"
-                ),
-            },
-            {
-                "title": "2. Nội dung và giải thích Định luật bảo toàn khối lượng",
-                "content": (
-                    r"- **Thí nghiệm kiểm chứng**: Cho dung dịch barium chloride ($\text{BaCl}_2$) tác dụng với dung dịch sodium sulfate ($\text{Na}_2\text{SO}_4$) trên cân điện tử tạo kết tủa trắng barium sulfate ($\text{BaSO}_4\downarrow$) và dung dịch sodium chloride ($\text{NaCl}$). Số chỉ của cân trước và sau phản ứng giữ nguyên không đổi." "\n"
-                    r"- **Nội dung định luật (Lomonosov – Lavoisier)**: *'Trong một phản ứng hóa học, tổng khối lượng của các chất sản phẩm bằng tổng khối lượng của các chất tham gia phản ứng'*." "\n"
-                    r"- **Giải thích bản chất vi mô**: Trong phản ứng hóa học, chỉ có liên kết giữa các nguyên tử thay đổi, còn **số lượng nguyên tử của mỗi nguyên tố trước và sau phản ứng giữ nguyên**, mà khối lượng của mỗi nguyên tử là không đổi nên tổng khối lượng các chất được bảo toàn tuyệt đối." "\n"
-                    r"- **Biểu thức toán học**: Giả sử có phản ứng $\text{A} + \text{B} \rightarrow \text{C} + \text{D}$, ta luôn có:" "\n"
-                    r"$$m_{\text{A}} + m_{\text{B}} = m_{\text{C}} + m_{\text{D}}$$" "\n"
-                    r"  Nếu biết khối lượng của $3$ trong $4$ chất, ta tính ngay được khối lượng chất còn lại (ví dụ: $m_{\text{D}} = m_{\text{A}} + m_{\text{B}} - m_{\text{C}}$)."
-                ),
-            },
-            {
-                "title": "3. Giải thích các hiện tượng tăng - giảm khối lượng chất rắn trong bình hở",
-                "content": (
-                    r"- **Trường hợp 1 (Khối lượng chất rắn tăng lên khi nung trong không khí)**: Khi đốt dây magnesium ($\text{Mg}$) hoặc đinh iron ($\text{Fe}$) trên đĩa cân ngoài không khí, chất rắn thu được là oxide ($\text{MgO}$, $\text{Fe}_3\text{O}_4$) có khối lượng lớn hơn kim loại ban đầu vì kim loại đã kết hợp thêm với một lượng **khí oxygen ($\text{O}_2$)** từ không khí: $m_{\text{MgO}} = m_{\text{Mg}} + m_{\text{O}_2}$." "\n"
-                    r"- **Trường hợp 2 (Khối lượng chất rắn giảm đi khi nung trong bình hở)**: Khi nung đá vôi ($\text{CaCO}_3 \xrightarrow{t^\circ} \text{CaO} + \text{CO}_2\uparrow$) trên đĩa cân hở, chất rắn còn lại là vôi sống ($\text{CaO}$) nhẹ hơn đá vôi ban đầu vì **khí carbon dioxide ($\text{CO}_2\uparrow$)** sinh ra đã bay vào không khí: $m_{\text{CaO}} = m_{\text{CaCO}_3} - m_{\text{CO}_2\uparrow}$."
-                ),
-            },
+        example="Trong phản ứng giữa kim loại Magnesium ($\\text{Mg}, Z = 12$, lớp ngoài cùng có $2e$) và phi kim Oxygen ($\\text{O}, Z = 8$, lớp ngoài cùng có $6e$) tạo thành hợp chất magnesium oxide ($\\text{MgO}$): hãy cho biết nguyên tử nào nhường electron, nguyên tử nào nhận electron, mỗi nguyên tử nhường/nhận bao nhiêu electron và tạo ra các ion nào?",
+        example_answer="Nguyên tử kim loại $\\text{Mg}$ **nhường đi $2$ electron** lớp ngoài cùng để trở thành **ion dương $\\text{Mg}^{2+}$** (có $12 - 2 = 10$ electron giống khí hiếm $\\text{Ne}$). Nguyên tử phi kim $\\text{O}$ **nhận thêm $2$ electron** từ $\\text{Mg}$ để trở thành **ion âm $\\text{O}^{2-}$** (có $8 + 2 = 10$ electron giống $\\text{Ne}$). Sau đó hai ion $\\text{Mg}^{2+}$ và $\\text{O}^{2-}$ hút nhau tạo thành liên kết ion trong $\\text{MgO}$.",
+        real_life="Muối ăn ($\\text{NaCl}$) là hợp chất ion tiêu biểu; khi hòa tan trong nước hoặc trong dịch cơ thể, $\\text{NaCl}$ phân li thành các ion $\\text{Na}^+$ và $\\text{Cl}^-$ đóng vai trò chất điện giải dẫn truyền xung thần kinh và cân bằng nước trong cơ thể.",
+        quiz=[
+            mcq("biet", "Khi tham gia hình thành liên kết ion, nguyên tử **kim loại** có xu hướng nhường hay nhận electron và tạo thành loại ion nào?", ["Nhường electron lớp ngoài cùng để tạo thành ion dương", "Nhận thêm electron để tạo thành ion âm", "Nhường hạt proton trong hạt nhân", "Không nhường cũng không nhận electron"], 0, "Nguyên tử kim loại có $1, 2, 3$ electron lớp ngoài cùng nên có xu hướng nhường electron để tạo thành ion dương."),
+            mcq("biet", "Liên kết ion được hình thành bởi bản chất lực nào và thường xảy ra giữa những loại nguyên tố nào?", ["Hình thành bởi lực hút tĩnh điện giữa các ion mang điện tích trái dấu (thường giữa kim loại điển hình và phi kim điển hình)", "Hình thành bởi sự dùng chung electron giữa hai nguyên tử phi kim giống hệt nhau", "Hình thành giữa hai nguyên tử khí hiếm", "Hình thành bởi lực đẩy giữa hai hạt nhân"], 0, "Liên kết ion là liên kết được tạo thành bởi lực hút tĩnh điện giữa ion dương (kim loại) và ion âm (phi kim)."),
+            mcq("hieu", "Nguyên tử Sodium ($\\text{Na}$) có $11$ proton và $11$ electron ($2, 8, 1$). Khi nguyên tử $\\text{Na}$ nhường đi $1$ electron ở lớp ngoài cùng để tạo thành ion dương $\\text{Na}^+$ thì trong ion $\\text{Na}^+$ có bao nhiêu hạt proton và bao nhiêu hạt electron?", ["Có $11$ proton và $10$ electron", "Có $10$ proton và $10$ electron", "Có $11$ proton và $12$ electron", "Có $12$ proton và $11$ electron"], 0, "Khi tạo thành ion, hạt nhân nguyên tử không thay đổi nên vẫn có $11$ proton; lớp vỏ mất đi $1$ electron nên còn $11 - 1 = 10$ electron."),
+            tf4("hieu", "Xét tính đúng/sai của các phát biểu sau về ion và liên kết ion:", [
+                "Nguyên tử Oxygen ($Z = 8$, có $6e$ lớp ngoài cùng) có xu hướng nhận thêm $2$ electron để tạo thành ion âm $\\text{O}^{2-}$ có lớp vỏ bền vững giống khí hiếm Neon.",
+                "Phân tử sodium chloride ($\\text{NaCl}$), magnesium oxide ($\\text{MgO}$) và calcium chloride ($\\text{CaCl}_2$) đều là các hợp chất ion.",
+                "Ở điều kiện thường, các hợp chất ion đều là chất khí có nhiệt độ sôi rất thấp.",
+                "Dung dịch muối ăn ($\\text{NaCl}$) trong nước dẫn được điện là do có chứa các ion $\\text{Na}^+$ và $\\text{Cl}^-$ chuyển động tự do.",
+            ], [True, True, False, True], "Ý c) sai vì ở điều kiện thường, tất cả các hợp chất ion đều là chất rắn tinh thể có nhiệt độ nóng chảy và nhiệt độ sôi rất cao."),
+            short("vandung", "Nguyên tử Chlorine ($\\text{Cl}$) có $17$ hạt electron ở lớp vỏ ($2, 8, 7$). Khi nguyên tử $\\text{Cl}$ nhận thêm $1$ electron để tạo thành ion âm $\\text{Cl}^-$ thì tổng số hạt electron của ion $\\text{Cl}^-$ bằng bao nhiêu hạt?", ["18"], "Số hạt electron của ion $\\text{Cl}^-$ là $17 + 1 = 18$ hạt (bằng số electron của khí hiếm Argon).", unit="hạt"),
         ],
-        worked_examples=[
-            {
-                "title": "Ví dụ 1: Tính khối lượng khí oxygen tham gia đốt cháy magnesium",
-                "problem": (
-                    r"Đốt cháy hoàn toàn $4{,}8\text{ g}$ kim loại magnesium ($\text{Mg}$) trong không khí thu được $8{,}0\text{ g}$ chất rắn màu trắng là hợp chất magnesium oxide ($\text{MgO}$)." "\n"
-                    r"a) Viết phương trình chữ của phản ứng." "\n"
-                    r"b) Viết công thức về khối lượng và tính khối lượng khí oxygen ($\text{O}_2$) đã phản ứng."
-                ),
-                "solution": (
-                    r"- **a) Phương trình chữ**:" "\n"
-                    r"$$\text{Magnesium} + \text{Oxygen} \xrightarrow{t^\circ} \text{Magnesium oxide}$$" "\n"
-                    r"- **b) Áp dụng Định luật bảo toàn khối lượng**:" "\n"
-                    r"$$m_{\text{Mg}} + m_{\text{O}_2} = m_{\text{MgO}} \implies m_{\text{O}_2} = m_{\text{MgO}} - m_{\text{Mg}} = 8{,}0 - 4{,}8 = 3{,}2\text{ g}$$"
-                ),
-            },
-            {
-                "title": "Ví dụ 2: Bài toán nung đá vôi có lẫn tạp chất trơ",
-                "problem": (
-                    r"Nung nóng một mẫu đá vôi chứa $100\text{ kg}$ calcium carbonate ($\text{CaCO}_3$) nguyên chất. Sau khi $\text{CaCO}_3$ phân hủy hoàn toàn thu được $56\text{ kg}$ vôi sống (calcium oxide, $\text{CaO}$) và một lượng khí carbon dioxide ($\text{CO}_2\uparrow$) thoát ra. "
-                    r"Tính khối lượng khí $\text{CO}_2$ đã thoát ra."
-                ),
-                "solution": (
-                    r"- Phương trình chữ của phản ứng:" "\n"
-                    r"$$\text{Calcium carbonate} \xrightarrow{t^\circ} \text{Calcium oxide} + \text{Carbon dioxide}$$" "\n"
-                    r"- Theo Định luật bảo toàn khối lượng:" "\n"
-                    r"$$m_{\text{CaCO}_3} = m_{\text{CaO}} + m_{\text{CO}_2} \implies m_{\text{CO}_2} = 100 - 56 = 44\text{ kg}$$"
-                ),
-            },
+    ),
+    bai(
+        topic=CH3[0], chapter_title=CH3[1], chapter_desc=CH3[2],
+        title="Bài 8: Liên kết cộng hóa trị",
+        icon="🤝",
+        description="Bản chất liên kết cộng hóa trị bằng sự dùng chung các cặp electron giữa các nguyên tử phi kim (H₂, O₂, N₂, Cl₂, H₂O, CO₂, NH₃, HCl) và tính chất chất cộng hóa trị.",
+        requirements=[
+            "Định nghĩa được liên kết cộng hóa trị là liên kết được tạo nên giữa hai nguyên tử bằng **một hay nhiều cặp electron dùng chung** (thường xảy ra giữa các nguyên tử phi kim với nhau).",
+            "Mô tả được số cặp electron dùng chung trong các phân tử tiêu biểu: $1$ cặp dùng chung ($\\text{H}_2, \\text{Cl}_2, \\text{HCl}$), $2$ cặp dùng chung ($\\text{O}_2$), $3$ cặp dùng chung ($\\text{N}_2$), và trong $\\text{H}_2\\text{O}, \\text{NH}_3, \\text{CO}_2, \\text{CH}_4$.",
+            "So sánh được tính chất của chất cộng hóa trị (có ở cả 3 thể rắn, lỏng, khí; nhiệt độ nóng chảy và nhiệt độ sôi thường thấp hơn chất ion; phần lớn không dẫn điện).",
         ],
-        key_takeaways=[
-            r"Định luật bảo toàn khối lượng: Trong một phản ứng hóa học, tổng khối lượng của các chất sản phẩm bằng tổng khối lượng của các chất tham gia phản ứng.",
-            r"Cơ sở của định luật là trong phản ứng hóa học, số lượng nguyên tử của mỗi nguyên tố trước và sau phản ứng không đổi.",
-            r"Khi áp dụng công thức bảo toàn khối lượng, phải tính đầy đủ cả khối lượng các chất khí tham gia (như $\text{O}_2$) hoặc thoát ra khỏi hệ (như $\text{CO}_2\uparrow$, $\text{H}_2\uparrow$) và chỉ tính phần chất thực sự phản ứng.",
+        definition="Liên kết cộng hóa trị là liên kết được hình thành giữa hai nguyên tử bằng một hay nhiều cặp electron dùng chung (thường là liên kết giữa các nguyên tử phi kim với nhau). Mỗi cặp electron dùng chung được tính cho cả hai nguyên tử để mỗi nguyên tử đều đạt lớp vỏ bền vững của khí hiếm.",
+        theory=(
+            "### 1. Sự hình thành Liên kết cộng hóa trị trong Đơn chất và Hợp chất\n"
+            "- Khi hai nguyên tử **phi kim** kết hợp với nhau, không nguyên tử nào nhường hẳn electron mà chúng **góp chung electron** tạo thành các **cặp electron dùng chung**:\n"
+            "  - **Phân tử Hydrogen ($\\text{H}_2$)**: mỗi nguyên tử $\\text{H}$ (có $1e$) góp $1e$ tạo thành **$1$ cặp electron dùng chung** ($\\text{H}-\\text{H}$) để mỗi $\\text{H}$ có $2e$ giống khí hiếm $\\text{He}$.\n"
+            "  - **Phân tử Oxygen ($\\text{O}_2$)**: mỗi nguyên tử $\\text{O}$ (có $6e$ lớp ngoài cùng, thiếu $2e$) góp $2e$ tạo thành **$2$ cặp electron dùng chung** ($\\text{O}=\\text{O}$) để mỗi $\\text{O}$ có đủ $8e$ giống $\\text{Ne}$.\n"
+            "  - **Phân tử Nitrogen ($\\text{N}_2$)**: mỗi nguyên tử $\\text{N}$ (có $5e$ ngoài cùng, thiếu $3e$) góp $3e$ tạo thành **$3$ cặp electron dùng chung** ($\\text{N}\\equiv\\text{N}$).\n"
+            "  - **Phân tử Nước ($\\text{H}_2\\text{O}$)**: nguyên tử $\\text{O}$ góp chung với mỗi nguyên tử $\\text{H}$ $1$ cặp electron (tổng cộng có $2$ cặp electron dùng chung trong phân tử $\\text{H}_2\\text{O}$).\n"
+            "  - **Phân tử Carbon dioxide ($\\text{CO}_2$)**: nguyên tử $\\text{C}$ ($4e$ ngoài cùng) góp chung $2$ cặp electron với mỗi nguyên tử $\\text{O}$ ($\\text{O}=\\text{C}=\\text{O}$, tổng cộng $4$ cặp dùng chung).\n\n"
+            "### 2. Tính chất của các chất có liên kết cộng hóa trị\n"
+            "- Ở điều kiện thường có thể ở cả **3 thể**: thể khí ($\\text{H}_2, \\text{O}_2, \\text{CO}_2, \\text{NH}_3, \\text{CH}_4$), thể lỏng ($\\text{H}_2\\text{O}$, cồn $\\text{C}_2\\text{H}_5\\text{OH}$) và thể rắn (đường saccharose, glucose, sulfur, iodine).\n"
+            "- Thường có **nhiệt độ nóng chảy và nhiệt độ sôi thấp** hơn nhiều so với hợp chất ion, và các chất cộng hóa trị nguyên chất (như nước cất, dung dịch đường, cồn) **không dẫn điện**."
+        ),
+        formulas=[
+            G(
+                "Số cặp electron dùng chung và Phân biệt Liên kết cộng hóa trị – Liên kết ion",
+                F("Số cặp electron dùng chung giữa 2 nguyên tử trong đơn chất phi kim", "$\\text{H}-\\text{H},\\ \\text{Cl}-\\text{Cl}: 1\\text{ cặp } (2e); \\qquad \\text{O}=\\text{O}: 2\\text{ cặp } (4e); \\qquad \\text{N}\\equiv\\text{N}: 3\\text{ cặp } (6e)$", "Số electron một nguyên tử phi kim góp chung bằng số electron mà nó còn thiếu để đạt $8e$ (hoặc $2e$ đối với $\\text{H}$): $8 - e_{\\text{ngoài cùng}}$."),
+                F("Quy tắc phân biệt nhanh Chất cộng hóa trị và Chất ion", "$\\text{Phi kim} + \\text{Phi kim (vd: } \\text{H}_2, \\text{O}_2, \\text{H}_2\\text{O}, \\text{CO}_2, \\text{NH}_3, \\text{CH}_4) \\implies \\text{Liên kết CỘNG HÓA TRỊ}$", "Còn $\\text{Kim loại điển hình} + \\text{Phi kim điển hình (vd: } \\text{NaCl}, \\text{KCl}, \\text{MgO}, \\text{CaO}) \\implies \\text{Liên kết ION}$."),
+            )
         ],
-        questions=[
-            mcq(
-                r"Nội dung của **Định luật bảo toàn khối lượng** do hai nhà khoa học Lomonosov và Lavoisier phát biểu là:",
-                [
-                    r"Trong một phản ứng hóa học, tổng số phân tử của các chất sản phẩm luôn bằng tổng số phân tử của các chất tham gia.",
-                    r"Khi đun nóng một chất rắn ngoài không khí, khối lượng chất rắn sau phản ứng luôn bằng khối lượng chất rắn ban đầu.",
-                    r"Trong một phản ứng hóa học, tổng khối lượng của các chất sản phẩm bằng tổng khối lượng của các chất tham gia phản ứng.",
-                    r"Trong một phản ứng hóa học, tổng thể tích của các chất sản phẩm luôn bằng tổng thể tích của các chất tham gia.",
-                ],
-                "C",
-                "biet",
-                r"Theo Định luật bảo toàn khối lượng: Trong một phản ứng hóa học, tổng khối lượng của các chất sản phẩm bằng tổng khối lượng của các chất tham gia phản ứng.",
-            ),
-            mcq(
-                r"Vì sao trong một phản ứng hóa học, tổng khối lượng của các chất được bảo toàn?",
-                [
-                    r"Vì số lượng phân tử trước và sau mọi phản ứng hóa học luôn bằng nhau.",
-                    r"Vì thể tích bình chứa không thay đổi trong suốt quá trình phản ứng.",
-                    r"Vì các nguyên tử mới được sinh ra có khối lượng bằng đúng các nguyên tử cũ bị mất đi.",
-                    r"Vì trong phản ứng hóa học chỉ có liên kết giữa các nguyên tử thay đổi, còn số lượng nguyên tử của mỗi nguyên tố giữ nguyên.",
-                ],
-                "D",
-                "biet",
-                r"Trong phản ứng hóa học, số lượng nguyên tử của mỗi nguyên tố trước và sau phản ứng giữ nguyên và khối lượng mỗi nguyên tử không đổi, vì vậy tổng khối lượng các chất trước và sau phản ứng bằng nhau.",
-            ),
-            mcq(
-                r"Cho phản ứng hóa học: $\text{Barium chloride } (\text{BaCl}_2) + \text{Sodium sulfate } (\text{Na}_2\text{SO}_4) \rightarrow \text{Barium sulfate } (\text{BaSO}_4\downarrow) + \text{Sodium chloride } (\text{NaCl})$. Biểu thức đúng theo Định luật bảo toàn khối lượng là:",
-                [
-                    r"$m_{\text{BaCl}_2} + m_{\text{Na}_2\text{SO}_4} = m_{\text{BaSO}_4} + m_{\text{NaCl}}$.",
-                    r"$m_{\text{BaCl}_2} + m_{\text{BaSO}_4} = m_{\text{Na}_2\text{SO}_4} + m_{\text{NaCl}}$.",
-                    r"$m_{\text{BaCl}_2} - m_{\text{Na}_2\text{SO}_4} = m_{\text{BaSO}_4} - m_{\text{NaCl}}$.",
-                    r"$m_{\text{BaCl}_2} = m_{\text{Na}_2\text{SO}_4} + m_{\text{BaSO}_4} + m_{\text{NaCl}}$.",
-                ],
-                "A",
-                "biet",
-                r"Tổng khối lượng hai chất tham gia ($\text{BaCl}_2$ và $\text{Na}_2\text{SO}_4$) bằng tổng khối lượng hai chất sản phẩm ($\text{BaSO}_4$ và $\text{NaCl}$): $m_{\text{BaCl}_2} + m_{\text{Na}_2\text{SO}_4} = m_{\text{BaSO}_4} + m_{\text{NaCl}}$.",
-            ),
-            mcq(
-                r"Khi cho kim loại iron ($\text{Fe}$) tác dụng với dung dịch hydrochloric acid ($\text{HCl}$) tạo ra muối iron(II) chloride ($\text{FeCl}_2$) và khí hydrogen ($\text{H}_2\uparrow$), phương trình chữ đúng của phản ứng là:",
-                [
-                    r"$\text{Iron} + \text{Chlorine} \rightarrow \text{Iron(II) chloride}$.",
-                    r"$\text{Iron} + \text{Hydrochloric acid} \rightarrow \text{Iron(II) chloride} + \text{Hydrogen}$.",
-                    r"$\text{Iron} + \text{Hydrogen} \rightarrow \text{Iron(II) chloride} + \text{Hydrochloric acid}$.",
-                    r"$\text{Iron(II) chloride} + \text{Hydrogen} \rightarrow \text{Iron} + \text{Hydrochloric acid}$.",
-                ],
-                "B",
-                "biet",
-                r"Các chất tham gia phản ứng ghi ở bên trái mũi tên ($\text{Iron} + \text{Hydrochloric acid}$), các chất sản phẩm ghi ở bên phải mũi tên ($\text{Iron(II) chloride} + \text{Hydrogen}$).",
-            ),
-            mcq(
-                r"Đốt cháy hoàn toàn $9\text{ g}$ kim loại aluminium ($\text{Al}$) trong khí oxygen ($\text{O}_2$) thu được $17\text{ g}$ hợp chất aluminium oxide ($\text{Al}_2\text{O}_3$). Khối lượng khí oxygen ($\text{O}_2$) đã tham gia phản ứng là:",
-                [
-                    r"$9\text{ g}$.",
-                    r"$17\text{ g}$.",
-                    r"$8\text{ g}$.",
-                    r"$26\text{ g}$.",
-                ],
-                "C",
-                "hieu",
-                r"Theo Định luật bảo toàn khối lượng cho phản ứng $\text{Aluminium} + \text{Oxygen} \xrightarrow{t^\circ} \text{Aluminium oxide}$: $m_{\text{Al}} + m_{\text{O}_2} = m_{\text{Al}_2\text{O}_3} \Rightarrow m_{\text{O}_2} = 17 - 9 = 8\text{ g}$.",
-            ),
-            mcq(
-                r"Đặt một chén sứ chứa bột kim loại copper ($\text{Cu}$) màu đỏ lên đĩa cân điện tử ở trạng thái mở ngoài không khí rồi nung nóng mạnh để $\text{Cu}$ tác dụng với khí oxygen ($\text{O}_2$) tạo thành chất rắn màu đen là copper(II) oxide ($\text{CuO}$). Sau khi để nguội, số chỉ của cân điện tử thay đổi như thế nào so với trước khi nung?",
-                [
-                    r"Số chỉ của cân giảm đi vì khi đun nóng kim loại copper ($\text{Cu}$) nhẹ hơn.",
-                    r"Số chỉ của cân giữ nguyên không đổi vì Định luật bảo toàn khối lượng.",
-                    r"Số chỉ của cân giảm về $0$ vì $\text{CuO}$ là chất khí bay đi mất.",
-                    r"Số chỉ của cân tăng lên vì chất rắn trong chén đã kết hợp thêm với khối lượng khí oxygen ($\text{O}_2$) từ không khí.",
-                ],
-                "D",
-                "hieu",
-                r"Theo Định luật bảo toàn khối lượng: $m_{\text{CuO}} = m_{\text{Cu}} + m_{\text{O}_2\text{ phản ứng}}$. Vì ban đầu cân chỉ đo khối lượng của $\text{Cu}$ trong chén sứ (chưa tính khí $\text{O}_2$ ngoài không khí), còn sau khi nung khí $\text{O}_2$ đã hóa hợp tạo thành chất rắn $\text{CuO}$ nằm trong chén, nên khối lượng chất rắn trên cân tăng thêm đúng bằng $m_{\text{O}_2\text{ phản ứng}}$.",
-            ),
-            tf4(
-                r"Một học sinh cho $6{,}5\text{ g}$ hạt kim loại zinc ($\text{Zn}$) vào một cốc thủy tinh chứa sẵn $100\text{ g}$ dung dịch hydrochloric acid ($\text{HCl}$) loãng đặt trên đĩa cân (cốc không đậy nắp). Phản ứng xảy ra hoàn toàn theo phương trình chữ: $\text{Zinc} + \text{Hydrochloric acid} \rightarrow \text{Zinc chloride} + \text{Hydrogen}\uparrow$, biết toàn bộ lượng khí hydrogen ($\text{H}_2\uparrow$) thoát ra khỏi cốc có khối lượng là $0{,}2\text{ g}$. Xét tính đúng/sai của các phát biểu sau:",
-                [
-                    r"Tổng khối lượng của hạt zinc ($\text{Zn}$) và dung dịch acid ($\text{HCl}$) trong cốc ngay lúc vừa cho vào (trước khi khí thoát ra) là $106{,}5\text{ g}$.",
-                    r"Sau khi phản ứng kết thúc và khí hydrogen ($\text{H}_2\uparrow$) đã bay hết ra ngoài không khí, khối lượng dung dịch còn lại trong cốc trên đĩa cân vẫn là $106{,}5\text{ g}$.",
-                    r"Khối lượng dung dịch còn lại trong cốc sau khi phản ứng kết thúc bằng $106{,}3\text{ g}$.",
-                    r"Nếu thực hiện thí nghiệm trên trong một bình kín hoàn toàn (khí $\text{H}_2$ không thoát ra ngoài) thì tổng khối lượng của cả bình trước và sau phản ứng đều bằng nhau.",
-                ],
-                "Đ/S/Đ/Đ",
-                "hieu",
-                (
-                    r"- **Ý a) Đúng**: Tổng khối lượng ban đầu trong cốc là $6{,}5 + 100 = 106{,}5\text{ g}$." "\n"
-                    r"- **Ý b) Sai**: Vì cốc mở nắp nên $0{,}2\text{ g}$ khí $\text{H}_2\uparrow$ đã thoát ra khỏi cốc vào không khí, làm số chỉ trên cân giảm đi $0{,}2\text{ g}$." "\n"
-                    r"- **Ý c) Đúng**: Theo bảo toàn khối lượng: $m_{\text{dd sau}} = 6{,}5 + 100 - m_{\text{H}_2\uparrow} = 106{,}5 - 0{,}2 = 106{,}3\text{ g}$." "\n"
-                    r"- **Ý d) Đúng**: Trong bình kín, khí $\text{H}_2$ vẫn nằm trong bình nên tổng khối lượng của hệ trước và sau phản ứng bằng nhau tuyệt đối ($106{,}5\text{ g}$)."
-                ),
-            ),
-            tf4(
-                r"Xét phản ứng đốt cháy hoàn toàn khí methane ($\text{CH}_4$) trong khí oxygen ($\text{O}_2$) tạo thành khí carbon dioxide ($\text{CO}_2$) và hơi nước ($\text{H}_2\text{O}$). Biết rằng cứ đốt cháy hết $16\text{ g}$ $\text{CH}_4$ thì cần dùng vừa đủ $64\text{ g}$ $\text{O}_2$ và thu được $44\text{ g}$ $\text{CO}_2$ cùng một lượng hơi nước ($\text{H}_2\text{O}$). Xét tính đúng/sai của các nhận định sau:",
-                [
-                    r"Phương trình chữ của phản ứng là: $\text{Methane} + \text{Oxygen} \xrightarrow{t^\circ} \text{Carbon dioxide} + \text{Water}$.",
-                    r"Tổng khối lượng của hai chất sản phẩm ($\text{CO}_2$ và $\text{H}_2\text{O}$) thu được khi đốt hết $16\text{ g}$ $\text{CH}_4$ là $80\text{ g}$.",
-                    r"Khối lượng hơi nước ($\text{H}_2\text{O}$) tạo thành trong phản ứng trên là $36\text{ g}$.",
-                    r"Nếu đem đốt $8\text{ g}$ khí $\text{CH}_4$ trong một bình kín chỉ chứa $20\text{ g}$ khí $\text{O}_2$ thì cả hai chất $\text{CH}_4$ và $\text{O}_2$ đều phản ứng hết không còn dư.",
-                ],
-                "Đ/Đ/Đ/S",
-                "hieu",
-                (
-                    r"- **Ý a) Đúng**: Chất tham gia là methane và oxygen; sản phẩm là carbon dioxide và water (hơi nước)." "\n"
-                    r"- **Ý b) Đúng**: Theo Định luật bảo toàn khối lượng: $m_{\text{CO}_2} + m_{\text{H}_2\text{O}} = m_{\text{CH}_4} + m_{\text{O}_2} = 16 + 64 = 80\text{ g}$." "\n"
-                    r"- **Ý c) Đúng**: Ta có $m_{\text{H}_2\text{O}} = 80 - m_{\text{CO}_2} = 80 - 44 = 36\text{ g}$." "\n"
-                    r"- **Ý d) Sai**: Theo tỉ lệ phản ứng, cứ $16\text{ g}$ $\text{CH}_4$ cần $64\text{ g}$ $\text{O}_2$ (tức $1\text{ g}$ $\text{CH}_4$ cần $4\text{ g}$ $\text{O}_2$). Vậy $8\text{ g}$ $\text{CH}_4$ cần tới $32\text{ g}$ $\text{O}_2$; do bình chỉ có $20\text{ g}$ $\text{O}_2$ nên $\text{O}_2$ hết trước và $\text{CH}_4$ còn dư $8 - \dfrac{20}{4} = 3\text{ g}$."
-                ),
-            ),
-            mcq(
-                r"Một viên than tổ ong nặng $1200\text{ g}$ chứa $90\%$ khối lượng là carbon ($\text{C}$) nguyên chất, phần còn lại ($10\%$) là tạp chất đất sét trơ không cháy. Khi đốt cháy hoàn toàn viên than này trong không khí, phần carbon ($\text{C}$) tác dụng hết với $2880\text{ g}$ khí oxygen ($\text{O}_2$) tạo thành khí carbon dioxide ($\text{CO}_2\uparrow$) thoát ra ngoài, còn toàn bộ tạp chất đất sét ở lại trong bã xỉ than. Khối lượng khí $\text{CO}_2$ đã thoát vào không khí là:",
-                [
-                    r"$3960\text{ g}$.",
-                    r"$4080\text{ g}$.",
-                    r"$1080\text{ g}$.",
-                    r"$3840\text{ g}$.",
-                ],
-                "A",
-                "vandung",
-                r"Khối lượng carbon ($\text{C}$) nguyên chất thực sự tham gia phản ứng cháy là: $m_{\text{C}} = 1200 \cdot \dfrac{90}{100} = 1080\text{ g}$ (phần tạp chất $120\text{ g}$ không tham gia phản ứng). Theo Định luật bảo toàn khối lượng cho phản ứng $\text{C} + \text{O}_2 \xrightarrow{t^\circ} \text{CO}_2$: $m_{\text{CO}_2} = m_{\text{C}} + m_{\text{O}_2} = 1080 + 2880 = 3960\text{ g}$.",
-            ),
-            short(
-                r"Trong một lò nung vôi công nghiệp, người ta đem nung một lượng đá vôi thì có $150\text{ kg}$ calcium carbonate ($\text{CaCO}_3$) bị phân hủy hoàn toàn tạo thành $84\text{ kg}$ vôi sống (calcium oxide, $\text{CaO}$) và khí carbon dioxide ($\text{CO}_2\uparrow$) thoát ra theo phương trình chữ: $\text{Calcium carbonate} \xrightarrow{t^\circ} \text{Calcium oxide} + \text{Carbon dioxide}$. Hãy áp dụng Định luật bảo toàn khối lượng để tính khối lượng khí carbon dioxide ($\text{CO}_2$) đã thoát ra theo đơn vị kilôgam ($\text{kg}$).",
-                ["66", "66,0", "66.0"],
-                "vandung",
-                (
-                    r"Áp dụng Định luật bảo toàn khối lượng cho phản ứng phân hủy $\text{CaCO}_3$:" "\n"
-                    r"$$m_{\text{CaCO}_3} = m_{\text{CaO}} + m_{\text{CO}_2}$$" "\n"
-                    r"Khối lượng khí carbon dioxide ($\text{CO}_2$) đã thoát ra là:" "\n"
-                    r"$$m_{\text{CO}_2} = m_{\text{CaCO}_3} - m_{\text{CaO}} = 150 - 84 = 66\text{ kg}$$"
-                ),
-            ),
+        example="Nguyên tử Nitrogen ($\\text{N}$) có $7$ electron ($2$ ở lớp trong và $5$ ở lớp ngoài cùng). Khi hai nguyên tử $\\text{N}$ liên kết với nhau tạo thành phân tử khí nitrogen ($\\text{N}_2$), mỗi nguyên tử $\\text{N}$ cần thêm bao nhiêu electron để đạt $8e$ bền vững và giữa hai nguyên tử $\\text{N}$ có bao nhiêu cặp electron dùng chung?",
+        example_answer="Mỗi nguyên tử $\\text{N}$ có $5$ electron lớp ngoài cùng nên cần thêm $8 - 5 = 3$ electron để đạt lớp vỏ $8e$ bền vững như khí hiếm $\\text{Ne}$. Do đó mỗi nguyên tử $\\text{N}$ góp ra $3$ electron để tạo thành **$3$ cặp electron dùng chung** (tức $6$ electron dùng chung, kí hiệu $\\text{N}\\equiv\\text{N}$).",
+        real_life="Đường kính trắng (saccharose – chất cộng hóa trị) và muối ăn ($\\text{NaCl}$ – chất ion) đều là các hạt tinh thể màu trắng tan trong nước, nhưng khi đun trên chảo nóng đường nhanh chóng nóng chảy ở $186^\\circ\\text{C}$ trong khi muối ăn không hề nóng chảy (vì nóng chảy ở tận $801^\\circ\\text{C}$); ngoài ra dung dịch nước đường không dẫn điện còn dung dịch nước muối dẫn điện tốt.",
+        quiz=[
+            mcq("biet", "Bản chất của **liên kết cộng hóa trị** giữa hai nguyên tử là gì?", ["Được tạo nên giữa hai nguyên tử bằng một hay nhiều cặp electron dùng chung", "Được tạo nên bởi lực hút tĩnh điện giữa ion dương kim loại và ion âm phi kim", "Do một nguyên tử lấy mất hoàn toàn hạt nhân của nguyên tử kia", "Do các hạt neutron bay từ nguyên tử này sang nguyên tử khác"], 0, "Liên kết cộng hóa trị được hình thành bằng một hay nhiều cặp electron dùng chung giữa hai nguyên tử."),
+            mcq("biet", "Dãy các chất nào sau đây chỉ gồm các chất có **liên kết cộng hóa trị**?", ["$\\text{H}_2, \\text{O}_2, \\text{H}_2\\text{O}, \\text{CO}_2, \\text{NH}_3, \\text{CH}_4$", "$\\text{NaCl}, \\text{MgO}, \\text{CaCl}_2, \\text{K}_2\\text{O}$", "$\\text{NaCl}, \\text{H}_2\\text{O}, \\text{MgO}$", "$\\text{CaO}, \\text{Na}_2\\text{O}, \\text{KCl}$"], 0, "Các phân tử $\\text{H}_2, \\text{O}_2, \\text{H}_2\\text{O}, \\text{CO}_2, \\text{NH}_3, \\text{CH}_4$ đều được tạo bởi các nguyên tử phi kim liên kết với nhau bằng cặp electron dùng chung."),
+            mcq("hieu", "Trong phân tử khí oxygen ($\\text{O}_2$), biết mỗi nguyên tử $\\text{O}$ có $6$ electron ở lớp ngoài cùng. Số cặp electron dùng chung giữa hai nguyên tử oxygen trong phân tử $\\text{O}_2$ là bao nhiêu?", ["$2$ cặp electron dùng chung (gồm $4$ electron)", "$1$ cặp electron dùng chung (gồm $2$ electron)", "$3$ cặp electron dùng chung (gồm $6$ electron)", "$6$ cặp electron dùng chung"], 0, "Mỗi nguyên tử $\\text{O}$ thiếu $8 - 6 = 2$ electron nên mỗi nguyên tử góp $2$ electron tạo thành $2$ cặp electron dùng chung ($\\text{O}=\\text{O}$)."),
+            tf4("hieu", "Xét tính đúng/sai của các phát biểu sau về liên kết cộng hóa trị:", [
+                "Trong phân tử nước ($\\text{H}_2\\text{O}$), nguyên tử $\\text{O}$ có $2$ cặp electron dùng chung với $2$ nguyên tử $\\text{H}$.",
+                "Trong phân tử khí hydrogen ($\\text{H}_2$) và phân tử hydrogen chloride ($\\text{HCl}$) đều có $1$ cặp electron dùng chung.",
+                "Ở điều kiện thường, các chất có liên kết cộng hóa trị có thể tồn tại ở cả ba thể rắn, lỏng và khí.",
+                "Dung dịch đường glucose tinh khiết pha trong nước cất dẫn điện mạnh hơn dung dịch muối ăn $\\text{NaCl}$.",
+            ], [True, True, True, False], "Ý d) sai vì đường glucose là hợp chất cộng hóa trị không phân li ra ion trong nước nên dung dịch đường không dẫn điện."),
+            short("vandung", "Trong phân tử ammonia ($\\text{NH}_3$), một nguyên tử nitrogen ($\\text{N}$) liên kết với $3$ nguyên tử hydrogen ($\\text{H}$), trong đó mỗi nguyên tử $\\text{H}$ góp chung $1$ electron với nguyên tử $\\text{N}$. Tổng số **cặp electron dùng chung** trong một phân tử $\\text{NH}_3$ bằng bao nhiêu cặp?", ["3"], "Mỗi liên kết $\\text{N}-\\text{H}$ có $1$ cặp electron dùng chung, có $3$ nguyên tử $\\text{H}$ liên kết với $\\text{N}$ nên tổng cộng có $3$ cặp electron dùng chung.", unit="cặp"),
         ],
-        description="Phương trình chữ của phản ứng hóa học, nội dung và giải thích Định luật bảo toàn khối lượng của Lomonosov - Lavoisier và bài toán tính khối lượng trong phản ứng.",
+    ),
+    bai(
+        topic=CH3[0], chapter_title=CH3[1], chapter_desc=CH3[2],
+        title="Bài 9: Hóa trị và công thức hóa học",
+        icon="📝",
+        description="Khái niệm hóa trị (biểu thị bằng số La Mã I, II, III...), quy tắc hóa trị x.a = y.b và cách lập công thức hóa học khi biết hóa trị.",
+        requirements=[
+            "Nêu được hóa trị là con số biểu thị khả năng liên kết của nguyên tử nguyên tố này với nguyên tử nguyên tố khác (ghi bằng chữ số La Mã $\\text{I, II, III, IV}$...), lấy hóa trị của $\\text{H}$ làm $1$ đơn vị ($\\text{I}$) và hóa trị của $\\text{O}$ là $2$ đơn vị ($\\text{II}$).",
+            "Phát biểu và vận dụng được **quy tắc hóa trị** cho hợp chất hai nguyên tố $A^a_x B^b_y$: tích của chỉ số và hóa trị của nguyên tố này bằng tích của chỉ số và hóa trị của nguyên tố kia ($x \\cdot a = y \\cdot b \\iff \\dfrac{x}{y} = \\dfrac{b}{a}$).",
+            "Tính được hóa trị của một nguyên tố trong công thức cho trước và lập được công thức hóa học của hợp chất khi biết hóa trị của hai nguyên tố hoặc nhóm nguyên tử.",
+        ],
+        definition="Hóa trị là con số biểu thị khả năng liên kết của nguyên tử nguyên tố này với nguyên tử nguyên tố khác (trong hợp chất cộng hóa trị, hóa trị bằng số cặp electron dùng chung; trong hợp chất ion, hóa trị bằng điện tích của ion). Quy tắc hóa trị đối với hợp chất $A^a_x B^b_y$: $x \\cdot a = y \\cdot b$.",
+        theory=(
+            "### 1. Hóa trị của nguyên tố và nhóm nguyên tử\n"
+            "- Quy ước: Trong các hợp chất, **Hydrogen ($\\text{H}$) luôn có hóa trị $\\text{I}$** và **Oxygen ($\\text{O}$) thường có hóa trị $\\text{II}$**.\n"
+            "- **Bảng hóa trị thường gặp cần thuộc lòng**:\n"
+            "  - **Hóa trị $\\text{I}$**: $\\text{H}, \\text{Na}, \\text{K}, \\text{Ag}, \\text{Cl}$ (trong muối chloride); nhóm $-\\text{OH}$ (hydroxide), nhóm $-\\text{NO}_3$ (nitrate), nhóm $-\\text{NH}_4$ (ammonium).\n"
+            "  - **Hóa trị $\\text{II}$**: $\\text{O}, \\text{Mg}, \\text{Ca}, \\text{Ba}, \\text{Zn}, \\text{Cu}$ ($\\text{I, II}$); nhóm $=\\text{SO}_4$ (sulfate), nhóm $=\\text{CO}_3$ (carbonate), nhóm $=\\text{SO}_3$ (sulfite).\n"
+            "  - **Hóa trị $\\text{III}$**: $\\text{Al}$; nhóm $\\equiv\\text{PO}_4$ (phosphate).\n"
+            "  - **Nguyên tố có nhiều hóa trị**: $\\text{Fe}$ ($\\text{II, III}$); $\\text{C}$ ($\\text{II, IV}$); $\\text{S}$ ($\\text{II, IV, VI}$); $\\text{N}$ ($\\text{I, II, III, IV, V}$); $\\text{P}$ ($\\text{III, V}$).\n\n"
+            "### 2. Quy tắc hóa trị và Hai dạng bài toán cơ bản\n"
+            "- Với công thức hóa học chung $A^a_x B^b_y$ (trong đó $x, y$ là các chỉ số nguyên dương tối giản; $a, b$ là hóa trị của $A, B$):\n"
+            "  $$x \\cdot a = y \\cdot b \\iff \\dfrac{x}{y} = \\dfrac{b}{a} = \\dfrac{b'}{a'} \\quad (\\text{với } \\dfrac{b'}{a'} \\text{ là phân số tối giản})$$\n"
+            "- **Dạng 1 (Tìm hóa trị $a$ khi biết công thức $A_x B_y$ và hóa trị $b$)**: $a = \\dfrac{y \\cdot b}{x}$.\n"
+            "- **Dạng 2 (Lập công thức hóa học khi biết hóa trị $a$ và $b$)**: lấy chéo tỉ lệ tối giản $x = b'$ và $y = a'$ (nếu chỉ số bằng $1$ thì không ghi số $1$; nếu chỉ số của nhóm nguyên tử $\\ge 2$ thì phải đặt nhóm nguyên tử trong dấu ngoặc đơn, ví dụ $\\text{Al}_2(\\text{SO}_4)_3$)."
+        ),
+        formulas=[
+            G(
+                "Quy tắc hóa trị và Lập công thức hóa học",
+                F("Biểu thức Quy tắc hóa trị cho hợp chất A^a_x B^b_y", "$x \\cdot a = y \\cdot b \\implies a = \\dfrac{y \\cdot b}{x}; \\qquad \\dfrac{x}{y} = \\dfrac{b}{a} = \\dfrac{b'}{a'}$", "Quy tắc chéo nhanh: Hóa trị tối giản của nguyên tố này là chỉ số của nguyên tố kia ($A^a_x B^b_y \\implies x = b',\\ y = a'$)."),
+                F("Hóa trị chuẩn của các nhóm nguyên tử thông dụng", "$\\text{Hóa trị I}: (-\\text{OH}),\\ (-\\text{NO}_3),\\ (-\\text{NH}_4); \\qquad \\text{Hóa trị II}: (=\\text{SO}_4),\\ (=\\text{CO}_3); \\qquad \\text{Hóa trị III}: (\\equiv\\text{PO}_4)$", "Ví dụ: $\\text{Al}(\\text{III})$ kết hợp với nhóm $(\\text{SO}_4)(\\text{II})$ tạo ra công thức $\\text{Al}_2(\\text{SO}_4)_3$."),
+            )
+        ],
+        example="Áp dụng quy tắc hóa trị, hãy: (a) Xác định hóa trị của nguyên tố Iron ($\\text{Fe}$) trong hợp chất $\\text{Fe}_2\\text{O}_3$ (biết $\\text{O}$ có hóa trị $\\text{II}$); (b) Lập công thức hóa học của hợp chất tạo bởi Calcium ($\\text{Ca}$ có hóa trị $\\text{II}$) và nhóm phosphate ($\\text{PO}_4$ có hóa trị $\\text{III}$).",
+        example_answer="- (a) Gọi $a$ là hóa trị của $\\text{Fe}$ trong $\\text{Fe}_2\\text{O}_3$. Theo quy tắc hóa trị: $2 \\cdot a = 3 \\cdot \\text{II} \\implies a = \\dfrac{6}{2} = \\text{III}$. Vậy $\\text{Fe}$ có hóa trị $\\text{III}$.\n- (b) Đặt công thức là $\\text{Ca}_x(\\text{PO}_4)_y$. Theo quy tắc hóa trị: $x \\cdot \\text{II} = y \\cdot \\text{III} \\implies \\dfrac{x}{y} = \\dfrac{3}{2} \\implies x = 3, y = 2$. Vậy công thức hóa học là **$\\text{Ca}_3(\\text{PO}_4)_2$**.",
+        real_life="Quy tắc hóa trị giúp ta viết đúng công thức hóa học của mọi hợp chất vô cơ quen thuộc như vôi tôi $\\text{Ca(OH)}_2$, phèn chua, thạch cao, thuốc muối dạ dày mà không cần học vẹt từng chất.",
+        quiz=[
+            mcq("biet", "Đối với hợp chất có công thức hóa học chung là $A^a_x B^b_y$ (với $a, b$ lần lượt là hóa trị của $A, B$ và $x, y$ là chỉ số nguyên tử), biểu thức của **quy tắc hóa trị** là gì?", ["$x \\cdot a = y \\cdot b$", "$x \\cdot b = y \\cdot a$", "$x + a = y + b$", "$\\dfrac{x}{a} = \\dfrac{y}{b}$"], 0, "Theo quy tắc hóa trị, tích chỉ số và hóa trị của nguyên tố này bằng tích chỉ số và hóa trị của nguyên tố kia: $x \\cdot a = y \\cdot b$."),
+            mcq("biet", "Trong hợp chất sulfur trioxide có công thức $\\text{SO}_3$ (biết $\\text{O}$ có hóa trị $\\text{II}$), nguyên tố Sulfur ($\\text{S}$) có hóa trị bằng bao nhiêu?", ["Hóa trị $\\text{VI}$ ($6$)", "Hóa trị $\\text{IV}$ ($4$)", "Hóa trị $\\text{II}$ ($2$)", "Hóa trị $\\text{III}$ ($3$)"], 0, "Trong $\\text{SO}_3$, gọi $a$ là hóa trị của $\\text{S}$: $1 \\cdot a = 3 \\cdot \\text{II} \\implies a = \\text{VI}$."),
+            mcq("hieu", "Công thức hóa học của hợp chất tạo bởi nguyên tố Aluminium ($\\text{Al}$, hóa trị $\\text{III}$) và nhóm sulfate ($=\\text{SO}_4$, hóa trị $\\text{II}$) là công thức nào sau đây?", ["$\\text{Al}_2(\\text{SO}_4)_3$", "$\\text{Al}_3(\\text{SO}_4)_2$", "$\\text{AlSO}_4$", "$\\text{Al}_2\\text{SO}_4$"], 0, "Đặt công thức là $\\text{Al}_x(\\text{SO}_4)_y$: $\\dfrac{x}{y} = \\dfrac{\\text{II}}{\\text{III}} = \\dfrac{2}{3} \\implies x = 2, y = 3 \\implies \\text{Al}_2(\\text{SO}_4)_3$."),
+            tf4("hieu", "Xét tính đúng/sai của các phát biểu sau về hóa trị và công thức hóa học:", [
+                "Trong các hợp chất cộng hóa trị, nguyên tố Hydrogen ($\\text{H}$) được chọn làm đơn vị có hóa trị $\\text{I}$ và nguyên tố Oxygen ($\\text{O}$) có hóa trị $\\text{II}$.",
+                "Trong hợp chất $\\text{FeO}$ nguyên tố $\\text{Fe}$ có hóa trị $\\text{II}$, còn trong hợp chất $\\text{Fe}_2\\text{O}_3$ nguyên tố $\\text{Fe}$ có hóa trị $\\text{III}$.",
+                "Công thức hóa học của hợp chất tạo bởi $\\text{Mg}$ (hóa trị $\\text{II}$) và nhóm $-\\text{OH}$ (hóa trị $\\text{I}$) được viết là $\\text{MgOH}_2$ (không cần dấu ngoặc).",
+                "Công thức hóa học của hợp chất tạo bởi $\\text{C}$ (hóa trị $\\text{IV}$) và $\\text{O}$ (hóa trị $\\text{II}$) là $\\text{CO}_2$.",
+            ], [True, True, False, True], "Ý c) sai vì khi có từ $2$ nhóm nguyên tử $(-\\text{OH})$ trở lên thì bắt buộc phải đặt nhóm nguyên tử trong dấu ngoặc đơn: $\\text{Mg(OH)}_2$."),
+            short("vandung", "Cho hợp chất diphosphorus pentoxide có công thức hóa học là $\\text{P}_2\\text{O}_5$ (biết $\\text{O}$ có hóa trị $\\text{II}$). Hóa trị của nguyên tố Phosphorus ($\\text{P}$) trong hợp chất này bằng bao nhiêu (nhập bằng chữ số tự nhiên từ 1 đến 7)?", ["5"], "Áp dụng quy tắc hóa trị cho $\\text{P}_2\\text{O}_5$: $2 \\cdot a = 5 \\cdot 2 = 10 \\implies a = 5$ (hóa trị $\\text{V}$)."),
+        ],
+    ),
+    bai(
+        topic=CH3[0], chapter_title=CH3[1], chapter_desc=CH3[2],
+        title="Bài 10: Tính phần trăm khối lượng các nguyên tố và lập công thức hóa học",
+        icon="📊",
+        description="Ý nghĩa của công thức hóa học, công thức tính phần trăm khối lượng nguyên tố trong hợp chất và cách lập công thức hóa học khi biết phần trăm khối lượng và khối lượng phân tử.",
+        requirements=[
+            "Nêu được ý nghĩa của công thức hóa học (cho biết nguyên tố nào tạo ra chất, số nguyên tử của mỗi nguyên tố trong 1 phân tử và khối lượng phân tử của chất).",
+            "Tính được phần trăm khối lượng của mỗi nguyên tố trong hợp chất $A_x B_y$: $\\%m_A = \\dfrac{x \\cdot M_A}{\\text{KLPT}(A_x B_y)} \\cdot 100\\%$.",
+            "Xác định được công thức hóa học của hợp chất khi biết phần trăm khối lượng các nguyên tố và khối lượng phân tử: $x = \\dfrac{\\%m_A \\cdot \\text{KLPT}}{100\\% \\cdot M_A}$.",
+        ],
+        definition="Trong hợp chất có công thức hóa học $A_x B_y$, phần trăm khối lượng của nguyên tố $A$ bằng tỉ số phần trăm giữa khối lượng của nguyên tố $A$ trong một phân tử và khối lượng phân tử của hợp chất: $\\%m_A = \\dfrac{x \\cdot M_A}{x \\cdot M_A + y \\cdot M_B} \\cdot 100\\%$.",
+        theory=(
+            "### 1. Ý nghĩa của Công thức hóa học\n"
+            "Mỗi công thức hóa học $A_x B_y$ cho ta biết 3 thông tin:\n"
+            "1. **Các nguyên tố** tạo nên chất đó.\n"
+            "2. **Số nguyên tử của mỗi nguyên tố** có trong một phân tử của chất (và tỉ lệ số nguyên tử $x : y$).\n"
+            "3. **Khối lượng phân tử** của chất.\n\n"
+            "### 2. Hai bài toán trọng tâm về Công thức hóa học\n"
+            "- **Bài toán 1 — Tính $\\%$ khối lượng mỗi nguyên tố từ công thức $A_x B_y C_z$**:\n"
+            "  $$\\text{KLPT} = x M_A + y M_B + z M_C$$\n"
+            "  $$\\%m_A = \\dfrac{x \\cdot M_A}{\\text{KLPT}} \\cdot 100\\%; \\qquad \\%m_B = \\dfrac{y \\cdot M_B}{\\text{KLPT}} \\cdot 100\\%; \\qquad \\%m_C = 100\\% - (\\%m_A + \\%m_B)$$\n"
+            "- **Bài toán 2 — Lập công thức hóa học $A_x B_y$ khi biết $\\%m_A, \\%m_B$ và $\\text{KLPT}$**:\n"
+            "  - **Cách 1 (Khi đã biết $\\text{KLPT} = M$)**:\n"
+            "    $$x = \\dfrac{\\%m_A \\cdot M}{100\\% \\cdot M_A}; \\qquad y = \\dfrac{\\%m_B \\cdot M}{100\\% \\cdot M_B}$$\n"
+            "  - **Cách 2 (Tỉ lệ thức chung mọi trường hợp)**:\n"
+            "    $$x : y = \\dfrac{\\%m_A}{M_A} : \\dfrac{\\%m_B}{M_B}$$"
+        ),
+        formulas=[
+            G(
+                "Công thức tính % khối lượng nguyên tố và Lập công thức hóa học",
+                F("Phần trăm khối lượng nguyên tố trong hợp chất A_x B_y", "$\\%m_A = \\dfrac{x \\cdot M_A}{\\text{KLPT}(A_x B_y)} \\cdot 100\\%; \\qquad \\%m_A + \\%m_B = 100\\%$", "Tổng phần trăm khối lượng của tất cả các nguyên tố trong một hợp chất luôn bằng $100\\%$."),
+                F("Tìm chỉ số nguyên tử (x, y) khi biết % khối lượng và KLPT", "$x = \\dfrac{\\%m_A \\cdot \\text{KLPT}}{100 \\cdot M_A}; \\qquad x : y = \\dfrac{\\%m_A}{M_A} : \\dfrac{\\%m_B}{M_B}$", "Các chỉ số $x, y$ trong công thức hóa học phải là những số nguyên dương."),
+            )
+        ],
+        example="Phân bón đạm ammonium nitrate có công thức hóa học là $\\text{NH}_4\\text{NO}_3$ (gồm $2$ nguyên tử $\\text{N}$, $4$ nguyên tử $\\text{H}$ và $3$ nguyên tử $\\text{O}$). Biết $\\text{N} = 14, \\text{H} = 1, \\text{O} = 16$. Hãy tính khối lượng phân tử của $\\text{NH}_4\\text{NO}_3$ và phần trăm khối lượng của nguyên tố dinh dưỡng Nitrogen ($\\text{N}$) trong loại phân đạm này.",
+        example_answer="Trong $1$ phân tử $\\text{NH}_4\\text{NO}_3$ có tổng cộng $2$ nguyên tử $\\text{N}$, $4$ nguyên tử $\\text{H}$ và $3$ nguyên tử $\\text{O}$. Khối lượng phân tử là $\\text{KLPT} = 2 \\cdot 14 + 4 \\cdot 1 + 3 \\cdot 16 = 28 + 4 + 48 = 80\\text{ amu}$. Phần trăm khối lượng của nguyên tố $\\text{N}$ trong $\\text{NH}_4\\text{NO}_3$ là $\\%m_{\\text{N}} = \\dfrac{2 \\cdot 14}{80} \\cdot 100\\% = \\dfrac{28}{80} \\cdot 100\\% = 35\\%$.",
+        real_life="Khi mua phân đạm bón cho cây trồng, người nông dân so sánh phần trăm khối lượng nguyên tố $\\text{N}$ trong đạm urea ($(\\text{NH}_2)_2\\text{CO}$ có $\\%m_{\\text{N}} = 46{,}67\\%$) và đạm hai lá ($\\text{NH}_4\\text{NO}_3$ có $\\%m_{\\text{N}} = 35\\%$) để tính đúng lượng phân cần bón.",
+        quiz=[
+            mcq("biet", "Trong hợp chất có công thức hóa học $A_x B_y$ (với khối lượng nguyên tử là $M_A, M_B$ và khối lượng phân tử là $M = x M_A + y M_B$), công thức tính phần trăm khối lượng của nguyên tố $A$ là gì?", ["$\\%m_A = \\dfrac{x \\cdot M_A}{M} \\cdot 100\\%$", "$\\%m_A = \\dfrac{M_A}{M} \\cdot 100\\%$", "$\\%m_A = \\dfrac{x}{x + y} \\cdot 100\\%$", "$\\%m_A = \\dfrac{M}{x \\cdot M_A} \\cdot 100\\%$"], 0, "Phần trăm khối lượng của nguyên tố $A$ bằng khối lượng của $x$ nguyên tử $A$ chia cho khối lượng phân tử $M$ nhân với $100\\%$."),
+            mcq("biet", "Biết $\\text{Cu} = 64\\text{ amu}$ và $\\text{O} = 16\\text{ amu}$. Trong hợp chất copper(II) oxide có công thức $\\text{CuO}$ ($\\text{KLPT} = 80\\text{ amu}$), phần trăm khối lượng của nguyên tố Copper ($\\text{Cu}$) và Oxygen ($\\text{O}$) lần lượt là:", ["$\\%m_{\\text{Cu}} = 80\\%$ và $\\%m_{\\text{O}} = 20\\%$", "$\\%m_{\\text{Cu}} = 50\\%$ và $\\%m_{\\text{O}} = 50\\%$", "$\\%m_{\\text{Cu}} = 64\\%$ và $\\%m_{\\text{O}} = 16\\%$", "$\\%m_{\\text{Cu}} = 20\\%$ và $\\%m_{\\text{O}} = 80\\%$"], 0, "Ta có $\\%m_{\\text{Cu}} = \\dfrac{64}{64 + 16} \\cdot 100\\% = \\dfrac{64}{80} \\cdot 100\\% = 80\\%$ và $\\%m_{\\text{O}} = 100\\% - 80\\% = 20\\%$."),
+            mcq("hieu", "Một hợp chất khí tạo bởi nguyên tố Sulfur ($\\text{S} = 32$) và Oxygen ($\\text{O} = 16$) có khối lượng phân tử là $64\\text{ amu}$, trong đó nguyên tố $\\text{S}$ chiếm $50\\%$ về khối lượng. Công thức hóa học của hợp chất khí này là gì?", ["$\\text{SO}_2$", "$\\text{SO}_3$", "$\\text{SO}$", "$\\text{S}_2\\text{O}_3$"], 0, "Số nguyên tử $\\text{S}$ là $x = \\dfrac{50 \\cdot 64}{100 \\cdot 32} = 1$; số nguyên tử $\\text{O}$ là $y = \\dfrac{50 \\cdot 64}{100 \\cdot 16} = 2$. Vậy công thức là $\\text{SO}_2$."),
+            tf4("hieu", "Cho $\\text{H} = 1, \\text{C} = 12, \\text{O} = 16, \\text{Ca} = 40, \\text{Fe} = 56$. Xét tính đúng/sai của các phát biểu sau:", [
+                "Trong hợp chất đá vôi $\\text{CaCO}_3$ ($\\text{KLPT} = 100\\text{ amu}$), phần trăm khối lượng của $\\text{Ca}$ là $40\\%$, của $\\text{C}$ là $12\\%$ và của $\\text{O}$ là $48\\%$.",
+                "Trong phân tử methane $\\text{CH}_4$ ($\\text{KLPT} = 16\\text{ amu}$), nguyên tố Carbon chiếm $75\\%$ về khối lượng và Hydrogen chiếm $25\\%$ về khối lượng.",
+                "Trong phân tử nước $\\text{H}_2\\text{O}$, vì có $2$ nguyên tử $\\text{H}$ và $1$ nguyên tử $\\text{O}$ nên phần trăm khối lượng của $\\text{H}$ lớn gấp đôi phần trăm khối lượng của $\\text{O}$.",
+                "Trong quặng hematite chứa $\\text{Fe}_2\\text{O}_3$ ($\\text{KLPT} = 160\\text{ amu}$), phần trăm khối lượng của sắt ($\\text{Fe}$) là $\\dfrac{2 \\cdot 56}{160} \\cdot 100\\% = 70\\%$.",
+            ], [True, True, False, True], "Ý c) sai vì trong $\\text{H}_2\\text{O}$ ($18\\text{ amu}$), khối lượng $2\\text{H}$ là $2\\text{ amu}$ ($\\approx 11{,}1\\%$) nhỏ hơn nhiều so với khối lượng $1\\text{O}$ là $16\\text{ amu}$ ($\\approx 88{,}9\\%$)."),
+            short("vandung", "Biết $\\text{C} = 12\\text{ amu}$ và $\\text{H} = 1\\text{ amu}$. Trong hợp chất khí methane có công thức $\\text{CH}_4$ ($\\text{KLPT} = 16\\text{ amu}$), phần trăm khối lượng của nguyên tố Carbon ($\\text{C}$) bằng bao nhiêu phần trăm ($\\%$)?", ["75"], "Áp dụng công thức $\\%m_{\\text{C}} = \\dfrac{12}{12 + 4 \\cdot 1} \\cdot 100\\% = \\dfrac{12}{16} \\cdot 100\\% = 75\\%$.", unit="%"),
+        ],
     ),
 ]
-
-
-LESSONS = LESSONS_GRADE_7

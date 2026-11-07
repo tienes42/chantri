@@ -51,18 +51,17 @@
       </div>
     </div>
 
-   <!-- Trong math-grade.html, physics-grade.html, chemistry-knowledge.html -->
-<div class="player" id="playerCard" title="Tài khoản của tôi" style="cursor: pointer;">
-    <div class="player-avatar" id="playerAvatar">👨‍🎓</div>
-    <div class="player-info">
+    <div class="player" id="playerCard" title="Tài khoản của tôi" style="cursor: pointer;">
+      <div class="player-avatar" id="playerAvatar">👨‍🎓</div>
+      <div class="player-info">
         <strong id="playerName">Tên người chơi</strong>
         <div class="xp-line" style="display:flex; align-items:center; gap:6px;">
-            <div class="xp-bar"><div class="xp-progress" id="playerXpBar"></div></div>
-            <small id="playerXpText" style="font-size:10px; color:#99f6e4;">0/100</small>
+          <div class="xp-bar"><div class="xp-progress" id="playerXpBar"></div></div>
+          <small id="playerXpText" style="font-size:10px; color:#99f6e4;">0/100</small>
         </div>
+      </div>
+      <span class="level" id="playerLevel">Lv.1</span>
     </div>
-    <span class="level" id="playerLevel">Lv.1</span>
-</div>
   </header>
 
   <!-- =========================
@@ -70,11 +69,14 @@
   ========================== -->
   <main class="grade-main">
 
+    <!-- Thanh chuyển nhanh Lớp 6 – 12 -->
+    <nav class="grade-QuickTabs" id="gradeTabs" aria-label="Chọn lớp học Hóa học"></nav>
+
     <section class="grade-hero">
       <div class="hero-content">
-        <span class="hero-label">🧪 HÀNH TRÌNH KHÁM PHÁ</span>
+        <span class="hero-label" id="gradeBadge">🧪 SGK KẾT NỐI TRI THỨC • HÓA HỌC</span>
         <h2 id="gradeTitle">HÓA HỌC LỚP 6</h2>
-        <p id="gradeDescription">Khám phá chất, vật liệu, hỗn hợp, dung dịch và những biến đổi hóa học quanh ta.</p>
+        <p id="gradeDescription">Khám phá chất, vật liệu, hỗn hợp, dung dịch và những biến đổi hóa học quanh ta qua từng chương và từng bài học độc lập.</p>
 
         <div class="progress-box">
           <div class="progress-top">
@@ -101,7 +103,7 @@
     <section class="stats" aria-label="Thống kê">
       <div class="stat-card">
         <div class="stat-icon" data-sprite="stat1"><span>🧪</span></div>
-        <div><strong id="topicCount">0</strong><span>chủ đề</span></div>
+        <div><strong id="topicCount">0</strong><span>chương học</span></div>
       </div>
       <div class="stat-card">
         <div class="stat-icon" data-sprite="stat2"><span>📚</span></div>
@@ -109,25 +111,25 @@
       </div>
       <div class="stat-card">
         <div class="stat-icon" data-sprite="stat3"><span>🎯</span></div>
-        <div><strong id="challengeCount">0</strong><span>thử thách</span></div>
+        <div><strong id="challengeCount">0</strong><span>hoàn thành</span></div>
       </div>
       <div class="stat-card">
         <div class="stat-icon" data-sprite="stat4"><span>⭐</span></div>
-        <div><strong id="xpCount">0</strong><span>XP đã nhận</span></div>
+        <div><strong id="xpCount">0</strong><span>XP tối đa</span></div>
       </div>
     </section>
 
     <section class="topics-section">
       <div class="section-heading">
         <div>
-          <span>BƯỚC 02 • PHÒNG THÍ NGHIỆM CHỦ ĐỀ</span>
-          <h2>Khám phá chủ đề</h2>
+          <span>BƯỚC 02 • CHỌN CHƯƠNG ➔ CHỌN BÀI HỌC</span>
+          <h2>Danh sách chương &amp; chủ đề</h2>
         </div>
-        <p>Chọn một chủ đề Hóa học để xem bài học và bắt đầu khám phá.</p>
+        <p>Bấm vào một chương để mở danh sách từng bài học cụ thể trong chương đó.</p>
       </div>
 
       <div class="topics-grid" id="topicsGrid">
-        <div class="loading-state">Đang tải bài học...</div>
+        <div class="loading-state">Đang tải chương học...</div>
       </div>
     </section>
 
@@ -137,7 +139,7 @@
         <h2>Học để hiểu những gì xảy ra quanh ta.</h2>
         <p>
           Từ pha dung dịch, lựa chọn vật liệu đến an toàn hóa chất,
-          kiến thức Hóa học giúp bạn giải thích và xử lý những tình huống thực tế.
+          kiến thức Hóa học từng bài giúp bạn giải thích và xử lý những tình huống thực tế.
         </p>
         <button class="challenge-button" id="challengeButton" type="button">
           Thử thách thực tế <span>→</span>
@@ -159,7 +161,7 @@
         <span class="action-sprite" data-sprite="calc">🧮</span>
         <div>
           <strong>Công cụ Hóa học</strong>
-          <small>Phòng Lab, công thức & tính toán</small>
+          <small>Phòng Lab, công thức &amp; tính toán</small>
         </div>
         <b>→</b>
       </button>
@@ -175,13 +177,21 @@
     </section>
   </main>
 
+  <!-- =========================
+       MODAL CHỌN BÀI HỌC TRONG CHƯƠNG (CẤU TRÚC 3 CẤP)
+  ========================== -->
   <div class="popup-overlay" id="topicPopup" aria-hidden="true">
-    <div class="popup" role="dialog" aria-modal="true" aria-labelledby="popupTitle">
+    <div class="popup popup-chapter-lessons" role="dialog" aria-modal="true" aria-labelledby="popupTitle">
       <button class="popup-close" id="popupClose" type="button" aria-label="Đóng">×</button>
-      <div class="popup-icon" id="popupIcon">🧪</div>
-      <div class="popup-label" id="popupLabel">HÓA HỌC</div>
-      <h2 id="popupTitle">Chủ đề</h2>
-      <p id="popupDescription">Mô tả chủ đề.</p>
+
+      <div class="popup-chapter-head">
+        <div class="popup-icon" id="popupIcon">🧪</div>
+        <div class="popup-head-text">
+          <div class="popup-label" id="popupLabel">HÓA HỌC • CHƯƠNG 01</div>
+          <h2 id="popupTitle">Tên chương</h2>
+          <p id="popupDescription">Mô tả chương học.</p>
+        </div>
+      </div>
 
       <div class="popup-info">
         <div>
@@ -189,17 +199,29 @@
           <span>bài học</span>
         </div>
         <div>
+          <strong id="popupDoneCount">0/0</strong>
+          <span>hoàn thành</span>
+        </div>
+        <div>
           <strong id="popupXP">0</strong>
-          <span>XP</span>
+          <span>XP tối đa</span>
         </div>
       </div>
 
+      <div class="popup-lessons-header">
+        <span>DANH SÁCH BÀI HỌC TRONG CHƯƠNG</span>
+        <small>Bấm vào từng bài để học riêng kiến thức &amp; làm 10 câu hỏi của bài đó</small>
+      </div>
+
+      <div class="popup-lessons-list" id="popupLessonsList" role="list"></div>
+
       <button class="popup-start" id="popupStart" type="button">
-        Bắt đầu học <span>→</span>
+        Bắt đầu bài đầu tiên <span>→</span>
       </button>
     </div>
   </div>
 
   <script src="chemistry-knowledge.js"></script>
+  <script src="/guide-bot.js" defer></script>
 </body>
 </html>
