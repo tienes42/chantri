@@ -12,7 +12,7 @@
 // Dọn bộ nhớ đệm sessionStorage cũ để tránh hiển thị bản ghi gộp chương từ phiên bản cũ
 try {
   Object.keys(sessionStorage).forEach((k) => {
-    if ((k.startsWith("hdlg_lesson") || k.startsWith("hdlg_lessons")) && !k.startsWith("hdlg_v7_")) {
+    if ((k.startsWith("hdlg_lesson") || k.startsWith("hdlg_lessons")) && !k.startsWith("hdlg_v8_")) {
       sessionStorage.removeItem(k);
     }
   });
@@ -249,7 +249,8 @@ function escapeHTML(value) {
     .replace(/'/g, "&#039;");
 }
 
-function sanitizeMathAndSymbols(rawStr) {
+// 1. Pure character/token cleanup (NEVER adds $ delimiters — safe inside math mode!)
+function cleanMathCorruptions(rawStr) {
   if (rawStr === null || rawStr === undefined) return "";
   return String(rawStr)
     .replace(/\x09ext\{/g, "\\text{")
@@ -268,9 +269,33 @@ function sanitizeMathAndSymbols(rawStr) {
     .replace(/\\notinfty\b/g, "\\infty")
     .replace(/\\notint\b/g, "\\int")
     .replace(/\\lightning\b/g, "\\text{⚡}")
+    .replace(/\\text\{([^{}]*)\\text\{([^{}]*)\}([^{}]*)\}/g, "\\text{$1$2$3}")
     .replace(/phần tử thuộc \(\$\\notin\$\)/g, "phần tử thuộc ($\\in$)")
     .replace(/\$x \\notin A\$ \(\$x\$ thuộc \$A\$\)/g, "$x \\in A$ ($x$ thuộc $A$)")
     .replace(/\\n(?=[A-ZÀÁẢÃẠĂẮẰẲẴẶÂẤẦẨẪẬĐÈÉẺẼẸÊẾỀỂỄỆÌÍỈĨỊÒÓỎÕỌÔỐỒỔỖỘƠỚỜỞỠỢÙÚỦŨỤƯỨỪỬỮỰỲÝỶỸỴ0-9(\-*•])/g, "\n");
+}
+
+// 2. Auto-wrap un-delimited LaTeX in $...$ (ONLY called on prose/options before splitting $...$!)
+function sanitizeMathAndSymbols(rawStr) {
+  let s = cleanMathCorruptions(rawStr);
+  if (s.indexOf("$") === -1 && /\\(?:begin|text|mathrm|dfrac|frac|sqrt|xrightarrow|xleftarrow|rightarrow|rightleftharpoons|rightleftarrows|uparrow|downarrow|Delta|alpha|beta|gamma|omega|Omega|pi|cdot|cdots|quad|qquad|times|le|ge|ne|approx|equiv|in|notin|subset|cup|cap|sum|int|lim|underbrace|overbrace)(?![a-zA-Z])/.test(s)) {
+    const trimmed = s.trim();
+    const firstBs = trimmed.indexOf("\\");
+    const prefixBeforeBs = firstBs >= 0 ? trimmed.slice(0, firstBs) : trimmed;
+    if (firstBs >= 0 && !/[À-ỹ]/.test(prefixBeforeBs)) {
+      s = `$${trimmed}$`;
+    } else {
+      s = s
+        .replace(/^(Không tuân theo quy luật định lượng trong\s+)([\s\S]+)$/, "$1$$$2$$")
+        .replace(/^(Có giá trị bằng nghịch đảo của (?:tỉ số|biểu thức) trong\s+)([\s\S]+)$/, "$1$$$2$$")
+        .replace(/^([\s\S]*?\bđược biểu diễn bởi\s+)([\s\S]+?)(\.?)$/, "$1$$$2$$$3")
+        .replace(/^([\s\S]*?\bđược xác định bởi:\s+)([\s\S]+?)(\.?)$/, "$1$$$2$$$3")
+        .replace(/^([\s\S]*?\bcó công thức\/quy tắc là:\s+)([\s\S]+?)(\.?)$/, "$1$$$2$$$3")
+        .replace(/(\bthành\s+)((?:\\begin\{[\s\S]*?\\end\{[^}]+\}|[^\n]+?))(\s+thay vì\s+công thức đúng)/, "$1$$$2$$$3")
+        .replace(/(\bđúng\s*\()((?:\\begin\{[\s\S]*?\\end\{[^}]+\}|[\s\S]+?))(\)\s*chứ không phải\s+)((?:\\begin\{[\s\S]*?\\end\{[^}]+\}|[\s\S]+?))(\.\s*Hãy|\.$|$)/, "$1$$$2$$$3$$$4$$$5");
+    }
+  }
+  return s;
 }
 
 const LATEX_SYMBOLS = {
@@ -346,7 +371,8 @@ function takeBracketed(s, pos) {
 }
 
 function normalizeKatexInput(tex) {
-  return sanitizeMathAndSymbols(tex)
+  return cleanMathCorruptions(tex)
+    .replace(/^\$+([\s\S]*?)\$+$/, "$1")
     .replace(/\\degree\b/g, "^\\circ")
     .replace(/\\[,;:!]\s*\^/g, "^")
     .replace(/\\[,;:!]\s*_/g, "_")
@@ -358,9 +384,10 @@ function normalizeKatexInput(tex) {
 }
 
 function renderLatexOffline(tex) {
-  let s = sanitizeMathAndSymbols(tex).trim();
+  let s = cleanMathCorruptions(tex).replace(/^\$+([\s\S]*?)\$+$/, "$1").trim();
   if (!s) return "";
 
+  const envStash = [];
   s = s.replace(/\\begin\{(cases|aligned|array|matrix|pmatrix|bmatrix|vmatrix)\}([\s\S]*?)\\end\{\1\}/g, function (_, env, body) {
     body = body.replace(/^\s*\{[^}]*\}/, "");
     const rows = body.split(/\\\\/).map((r) => r.trim()).filter(Boolean);
@@ -368,14 +395,30 @@ function renderLatexOffline(tex) {
       const cells = r.split("&").map((c) => renderLatexOffline(c.trim()));
       return `<span class="m-row">${cells.map((c) => `<span class="m-cell">${c}</span>`).join("")}</span>`;
     }).join("");
-    if (env === "cases") return `<span class="m-cases">{<span class="m-rows">${renderedRows}</span></span>`;
-    const lbr = env === "pmatrix" ? "(" : env === "bmatrix" ? "[" : env === "vmatrix" ? "|" : "";
-    const rbr = env === "pmatrix" ? ")" : env === "bmatrix" ? "]" : env === "vmatrix" ? "|" : "";
-    return `<span class="m-matrix">${lbr}<span class="m-rows">${renderedRows}</span>${rbr}</span>`;
+    let html;
+    if (env === "cases") {
+      html = `<span class="m-cases">{<span class="m-rows">${renderedRows}</span></span>`;
+    } else {
+      const lbr = env === "pmatrix" ? "(" : env === "bmatrix" ? "[" : env === "vmatrix" ? "|" : "";
+      const rbr = env === "pmatrix" ? ")" : env === "bmatrix" ? "]" : env === "vmatrix" ? "|" : "";
+      html = `<span class="m-matrix">${lbr}<span class="m-rows">${renderedRows}</span>${rbr}</span>`;
+    }
+    const tok = `\u0000E${envStash.length}\u0000`;
+    envStash.push(html);
+    return tok;
   });
 
   let out = "", i = 0;
   while (i < s.length) {
+    if (s[i] === "\u0000") {
+      const endN = s.indexOf("\u0000", i + 1);
+      if (endN !== -1) {
+        const idx = Number(s.slice(i + 2, endN));
+        out += envStash[idx] || "";
+        i = endN + 1;
+        continue;
+      }
+    }
     if (s[i] === "\\") {
       const rest = s.slice(i);
       let m = rest.match(/^\\not\s*(\\[a-zA-Z]+|=|<|>)/);
@@ -390,7 +433,7 @@ function renderLatexOffline(tex) {
         i += m[0].length;
         continue;
       }
-      m = rest.match(/^\\(d?frac|tfrac)\b/);
+      m = rest.match(/^\\(d?frac|tfrac)(?![a-zA-Z])/);
       if (m) {
         let [num, p1] = takeBraced(s, i + m[0].length);
         let [den, p2] = takeBraced(s, p1);
@@ -403,13 +446,13 @@ function renderLatexOffline(tex) {
         out += `<span class="m-sqrt"><sup class="m-root">${renderLatexOffline(m[1])}</sup>√<span class="m-rad">${renderLatexOffline(rad)}</span></span>`;
         i = p1; continue;
       }
-      m = rest.match(/^\\sqrt\b/);
+      m = rest.match(/^\\sqrt(?![a-zA-Z])/);
       if (m) {
         let [rad, p1] = takeBraced(s, i + m[0].length);
         out += `<span class="m-sqrt">√<span class="m-rad">${renderLatexOffline(rad)}</span></span>`;
         i = p1; continue;
       }
-      m = rest.match(/^\\(xrightarrow|xleftarrow)\b/);
+      m = rest.match(/^\\(xrightarrow|xleftarrow)(?![a-zA-Z])/);
       if (m) {
         const isLeft = m[1] === "xleftarrow";
         let [bot, p1] = takeBracketed(s, i + m[0].length);
@@ -418,47 +461,47 @@ function renderLatexOffline(tex) {
         out += `<span class="m-over"><span class="m-top">${renderLatexOffline(top)}</span><span class="m-bot">${arrowChar}${bot ? ` <small>(${renderLatexOffline(bot)})</small>` : ""}</span></span>`;
         i = p2; continue;
       }
-      m = rest.match(/^\\(overrightarrow|vec|overline|bar|widehat|hat|tilde|underline)\b/);
+      m = rest.match(/^\\(overrightarrow|vec|overline|bar|widehat|hat|tilde|underline)(?![a-zA-Z])/);
       if (m) {
         let [arg, p1] = takeBraced(s, i + m[0].length);
         const cls = (m[1] === "overrightarrow" || m[1] === "vec") ? "m-vec" : (m[1] === "widehat" || m[1] === "hat") ? "m-hat" : "m-bar";
         out += `<span class="${cls}">${renderLatexOffline(arg)}</span>`;
         i = p1; continue;
       }
-      m = rest.match(/^\\(text|textrm|textit|mathrm|textbf|mathbf|mathit|operatorname)\b/);
+      m = rest.match(/^\\(text|textrm|textit|mathrm|textbf|mathbf|mathit|operatorname)(?![a-zA-Z])/);
       if (m) {
         let [arg, p1] = takeBraced(s, i + m[0].length);
         const tag = (m[1] === "textbf" || m[1] === "mathbf") ? "strong" : "span";
         out += `<${tag} class="m-text">${renderLatexOffline(arg)}</${tag}>`;
         i = p1; continue;
       }
-      m = rest.match(/^\\mathbb\b/);
+      m = rest.match(/^\\mathbb(?![a-zA-Z])/);
       if (m) {
         let [arg, p1] = takeBraced(s, i + m[0].length);
         out += `<span class="m-bb">${MATHBB_MAP[arg.trim()] || escapeHTML(arg)}</span>`;
         i = p1; continue;
       }
-      m = rest.match(/^\\mathcal\b/);
+      m = rest.match(/^\\mathcal(?![a-zA-Z])/);
       if (m) {
         let [arg, p1] = takeBraced(s, i + m[0].length);
         out += `<span class="m-cal">${MATHCAL_MAP[arg.trim()] || escapeHTML(arg)}</span>`;
         i = p1; continue;
       }
-      m = rest.match(/^\\(overset|stackrel)\b/);
+      m = rest.match(/^\\(overset|stackrel)(?![a-zA-Z])/);
       if (m) {
         let [top, p1] = takeBraced(s, i + m[0].length);
         let [bot, p2] = takeBraced(s, p1);
         out += `<span class="m-over"><span class="m-top">${renderLatexOffline(top)}</span><span class="m-bot">${renderLatexOffline(bot)}</span></span>`;
         i = p2; continue;
       }
-      m = rest.match(/^\\underset\b/);
+      m = rest.match(/^\\underset(?![a-zA-Z])/);
       if (m) {
         let [bot, p1] = takeBraced(s, i + m[0].length);
         let [base, p2] = takeBraced(s, p1);
         out += `<span class="m-over"><span class="m-bot">${renderLatexOffline(base)}</span><span class="m-top">${renderLatexOffline(bot)}</span></span>`;
         i = p2; continue;
       }
-      m = rest.match(/^\\(underbrace|overbrace)\b/);
+      m = rest.match(/^\\(underbrace|overbrace)(?![a-zA-Z])/);
       if (m) {
         let [base, p1] = takeBraced(s, i + m[0].length);
         out += `<span class="m-brace">${renderLatexOffline(base)}</span>`;
@@ -492,6 +535,12 @@ function renderLatexOffline(tex) {
       i = p1; continue;
     }
     if (s[i] === "}") { i++; continue; }
+    if (s[i] === "-" && s[i + 1] === ">") {
+      out += "→"; i += 2; continue;
+    }
+    if (s[i] === "<" && s[i + 1] === "-" && s[i + 2] === ">") {
+      out += "⇌"; i += 3; continue;
+    }
     if (s[i] === "-" && (i === 0 || /[\s({\[=+,;<>]/.test(s[i - 1]))) {
       out += "−"; i++; continue;
     }
@@ -506,32 +555,53 @@ function renderMathToken(tex, displayMode) {
   if (!clean) return "";
   if (window.katex && typeof window.katex.renderToString === "function") {
     try {
-      return window.katex.renderToString(clean, { throwOnError: false, displayMode: !!displayMode, strict: false });
+      const katexHtml = window.katex.renderToString(clean, {
+        throwOnError: true,
+        displayMode: !!displayMode,
+        strict: false
+      });
+      if (katexHtml && katexHtml.indexOf("katex-error") === -1) {
+        return katexHtml;
+      }
     } catch (_) {}
   }
   const attr = escapeHTML(clean);
   const tag = displayMode ? "div" : "span";
-  return `<${tag} class="m-math${displayMode ? " m-block" : ""}" data-latex="${attr}">${renderLatexOffline(clean)}</${tag}>`;
+  return `<${tag} class="m-math${displayMode ? " m-block" : ""}" data-latex="${attr}" data-tex="${attr}" data-display="${displayMode ? 1 : 0}">${renderLatexOffline(clean)}</${tag}>`;
 }
 
 function upgradeKatex(root) {
   if (!window.katex || typeof window.katex.renderToString !== "function") return;
-  (root || document).querySelectorAll(".m-math[data-latex]").forEach((el) => {
-    const tex = normalizeKatexInput(el.getAttribute("data-latex"));
+  (root || document).querySelectorAll(".m-math[data-latex], .m-math[data-tex]").forEach((el) => {
+    const rawAttr = el.getAttribute("data-latex") || el.getAttribute("data-tex");
+    const tex = normalizeKatexInput(rawAttr);
     if (!tex) return;
+    const isDisplay = el.classList.contains("m-block") || el.getAttribute("data-display") === "1";
     try {
-      el.innerHTML = window.katex.renderToString(tex, {
-        throwOnError: false,
-        displayMode: el.classList.contains("m-block"),
+      const katexHtml = window.katex.renderToString(tex, {
+        throwOnError: true,
+        displayMode: isDisplay,
         strict: false
       });
-      el.removeAttribute("data-latex");
+      if (katexHtml && katexHtml.indexOf("katex-error") === -1) {
+        el.innerHTML = katexHtml;
+        el.removeAttribute("data-latex");
+        el.removeAttribute("data-tex");
+      }
     } catch (_) {}
   });
+  if (typeof drawMindmapConnections === "function") {
+    requestAnimationFrame(drawMindmapConnections);
+  }
 }
 window.addEventListener("load", () => upgradeKatex(document));
 setTimeout(() => upgradeKatex(document), 300);
 setTimeout(() => upgradeKatex(document), 1000);
+
+const testNew = fs.readFileSync("/tmp/test_new_engine.js", "utf8");
+const rbStart = testNew.indexOf("function replaceBalancedInlineLatex");
+const rbEnd = testNew.indexOf("// Load the rest");
+eval(testNew.slice(rbStart, rbEnd));
 
 function formatInlineStyles(rawStr) {
   if (!rawStr) return "";
@@ -542,18 +612,16 @@ function formatInlineStyles(rawStr) {
     .replace(/\$\$([\s\S]+?)\$\$/g, (_, m) => put(renderMathToken(m, true)))
     .replace(/\\\[([\s\S]+?)\\\]/g, (_, m) => put(renderMathToken(m, true)))
     .replace(/\\\(([\s\S]+?)\\\)/g, (_, m) => put(renderMathToken(m, false)))
-    .replace(/\$([^$\n]+?)\$/g, (_, m) => put(renderMathToken(m, false)));
+    .replace(/\$([^$]+?)\$/g, (_, m) => put(renderMathToken(m, false)));
 
   s = s.replace(/`([^`]+)`/g, (_, c) => put(`<code>${escapeHTML(c)}</code>`));
 
-  if (/\\(d?frac|sqrt|overrightarrow|vec|widehat|triangle|angle|cdot|times|div|pm|le|leq|ge|geq|ne|neq|approx|equiv|infty|in|notin|subset|subseteq|cup|cap|emptyset|alpha|beta|gamma|delta|Delta|pi|omega|Omega|sigma|lambda|mu|theta|sin|cos|tan|cot|log|ln|lim|sum|int|mathbb|mathcal|mathrm|text|xrightarrow|xleftarrow|rightleftharpoons|rightleftarrows|vdots)\b/.test(s)) {
-    s = s.replace(/((?:\\[a-zA-Z]+(?:\[[^\]]*\])?(?:\{[^}]*\})*|\b[a-zA-Z0-9]+\s*[_^]\s*(?:\{[^}]+\}|[a-zA-Z0-9+-]+))(?:[\s+\-*/=<>≤≥≠≈·×÷,()0-9a-zA-Z\\_{}^]*))/g, (m) => {
-      if (m.indexOf("\u0000") !== -1) return m;
-      return put(renderMathToken(m, false));
-    });
+  if (/\\(begin|d?frac|tfrac|sqrt|overrightarrow|vec|widehat|triangle|angle|cdot|cdots|ldots|dots|quad|qquad|times|div|pm|le|leq|ge|geq|ne|neq|approx|equiv|infty|in|notin|subset|subseteq|cup|cap|emptyset|alpha|beta|gamma|delta|Delta|pi|omega|Omega|sigma|lambda|mu|theta|sin|cos|tan|cot|log|ln|lim|sum|int|underbrace|overbrace|overset|underset|mathbb|mathcal|mathrm|text|xrightarrow|xleftarrow|rightleftharpoons|rightleftarrows|vdots)(?![a-zA-Z])/.test(s)) {
+    s = replaceBalancedInlineLatex(s, put, renderMathToken);
   }
 
   s = escapeHTML(s)
+    .replace(/&lt;-&gt;/g, "⇌")
     .replace(/\*\*(.+?)\*\*/g, "<strong>$1</strong>")
     .replace(/\b([A-Za-z][a-z]?\d*(?:\([A-Za-z0-9]+\)\d*)*)\^(\d*[+-])/g, "$1<sup>$2</sup>")
     .replace(/(\([A-Za-z]{1,3}\d*\))(\d+)/g, "$1<sub>$2</sub>")
@@ -581,10 +649,12 @@ window.HDLGMath = {
   inline: formatInlineStyles,
   formatInline: formatInlineStyles,
   formula: renderMathText,
+  renderLatexToken: renderMathToken,
   upgrade: upgradeKatex,
   upgradeKatex: upgradeKatex,
   sanitize: sanitizeMathAndSymbols
 };
+
 
 function formatRichText(rawValue) {
   if (rawValue === null || rawValue === undefined) return "";
@@ -1666,7 +1736,7 @@ async function loadChapterSiblingLessons(lesson) {
     siblings = lesson._virtualSiblings;
   } else {
     let allGradeLessons = null;
-    const cacheKey = `hdlg_v7_lessons_${subject}_${g}`;
+    const cacheKey = `hdlg_v8_lessons_${subject}_${g}`;
     try {
       const cached = sessionStorage.getItem(cacheKey);
       if (cached) allGradeLessons = JSON.parse(cached);
@@ -2137,7 +2207,7 @@ async function loadLesson() {
 
   try {
     let lesson = null;
-    const cached = sessionStorage.getItem(`hdlg_v7_lesson_${lessonId}`);
+    const cached = sessionStorage.getItem(`hdlg_v8_lesson_${lessonId}`);
     if (cached) {
       try { lesson = JSON.parse(cached); } catch (_) {}
     }
@@ -2147,7 +2217,7 @@ async function loadLesson() {
         throw new Error(`Không thể tải bài học. HTTP ${response.status}`);
       }
       lesson = await response.json();
-      try { sessionStorage.setItem(`hdlg_v7_lesson_${lessonId}`, JSON.stringify(lesson)); } catch (_) {}
+      try { sessionStorage.setItem(`hdlg_v8_lesson_${lessonId}`, JSON.stringify(lesson)); } catch (_) {}
     }
     if (!lesson || lesson.id === undefined || lesson.id === null) {
       throw new Error("API trả về bài học nhưng không có ID.");
