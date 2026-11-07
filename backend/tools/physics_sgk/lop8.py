@@ -1,1054 +1,675 @@
-"""VẬT LÍ 8 (KHOA HỌC TỰ NHIÊN 8) — Kết nối tri thức với cuộc sống (NXB Giáo dục Việt Nam).
-
-Bao phủ đầy đủ các chương Vật lí trong SGK Khoa học tự nhiên 8 Kết nối tri thức với cuộc sống:
-- Chương III. Khối lượng riêng và áp suất (Bài 13 – Bài 17)
-- Chương IV. Tác dụng làm quay của lực (Bài 18 – Bài 19) & Chuyên đề Công – Công suất cơ học
-- Chương V. Điện (Bài 20 – Bài 25)
-- Chương VI. Nhiệt (Bài 26 – Bài 29)
-
-7 chủ đề tương thích hệ thống game:
-1. khoi-luong-rieng (game_type="simulation")
-2. ap-suat (game_type="simulation")
-3. luc-day-archimedes (game_type="simulation")
-4. moment-luc-don-bay (game_type="game_moment_luc_don_bay")
-5. cong-suat (game_type="game_congsuat")
-6. nhiet-nang (game_type="game_nhietnang")
-7. dien (game_type="game_dien")
-
-Mỗi chủ đề gồm: Yêu cầu cần đạt (CT GDPT 2018), định nghĩa, lý thuyết chi tiết theo từng bài SGK,
-nhóm công thức KaTeX, ví dụ minh họa, ứng dụng thực tiễn, thông tin trò chơi và 10 câu hỏi
-(4 câu Biết MCQ, 2 câu Hiểu MCQ, 2 câu Hiểu Đúng/Sai 4 mệnh đề a–d, 1 câu Vận dụng MCQ, 1 câu Vận dụng Trả lời ngắn).
-"""
-from ._helpers import F, G, mcq, short, tf4
+"""Vật lý Lớp 8 (KHTN 8 - Kết nối tri thức với cuộc sống): 4 Chương - 14 Bài học độc lập."""
+from ._helpers import F, G, bai, mcq, short, tf4
 
 GRADE = 8
 
+CH1_TOPIC = "l8-ch01-khoi-luong-rieng-ap-suat"
+CH1_TITLE = "Chương I: Khối lượng riêng và Áp suất"
+CH1_DESC = "Chương I · Vật lý 8 (KHTN 8): Khối lượng riêng, thực hành đo khối lượng riêng, lực đẩy Archimedes và áp suất."
+
+CH2_TOPIC = "l8-ch02-tac-dung-lam-quay"
+CH2_TITLE = "Chương II: Tác dụng làm quay của lực"
+CH2_DESC = "Chương II · Vật lý 8 (KHTN 8): Tác dụng làm quay của lực, moment lực, đòn bẩy và ứng dụng thực tiễn."
+
+CH3_TOPIC = "l8-ch03-dien-hoc"
+CH3_TITLE = "Chương III: Điện"
+CH3_DESC = "Chương III · Vật lý 8 (KHTN 8): Sự nhiễm điện do cọ xát, dòng điện – nguồn điện, mạch điện và đo cường độ dòng điện, hiệu điện thế."
+
+CH4_TOPIC = "l8-ch04-nhiet-hoc"
+CH4_TITLE = "Chương IV: Nhiệt"
+CH4_DESC = "Chương IV · Vật lý 8 (KHTN 8): Năng lượng nhiệt và nội năng, sự truyền nhiệt và sự nở vì nhiệt của các chất."
+
 LESSONS = [
-    # ===================== CHỦ ĐỀ 1: KHỐI LƯỢNG RIÊNG =====================
-    {
-        "topic": "khoi-luong-rieng",
-        "title": "Khối lượng riêng và Thực hành xác định khối lượng riêng",
-        "icon": "🧱",
-        "description": "Chương III · SGK Khoa học tự nhiên 8 Kết nối tri thức với cuộc sống (Bài 13 – Bài 14): Khái niệm khối lượng riêng, đơn vị đo, trọng lượng riêng và phương pháp thực hành xác định khối lượng riêng của vật rắn, chất lỏng.",
-        "requirements": [
-            r"Nêu được định nghĩa khối lượng riêng, xác định được khối lượng riêng qua khối lượng và thể tích tương ứng theo công thức $D = \dfrac{m}{V}$.",
-            r"Liệt kê được một số đơn vị khối lượng riêng thường dùng ($\text{kg/m}^3$, $\text{g/cm}^3$, $\text{g/mL}$) và thực hiện được việc đổi đơn vị đo.",
-            r"Nêu được khái niệm trọng lượng riêng và vận dụng được hệ thức liên hệ $d = \dfrac{P}{V} = 10D$.",
-            r"Thực hiện được thí nghiệm để xác định được khối lượng riêng của một khối hộp chữ nhật, của một vật có hình dạng bất kì không thấm nước và của một lượng chất lỏng.",
+    bai(
+        topic=CH1_TOPIC,
+        chapter_title=CH1_TITLE,
+        title="Bài 1: Khối lượng riêng",
+        icon="🧊",
+        description="Khái niệm khối lượng riêng, trọng lượng riêng, công thức D = m/V và quy đổi đơn vị kg/m³ sang g/cm³.",
+        requirements=[
+            "Nêu được định nghĩa khối lượng riêng của một chất là khối lượng của một đơn vị thể tích chất đó: $D = \\dfrac{m}{V}$.",
+            "Quy đổi được đơn vị đo khối lượng riêng giữa $\\text{kg/m}^3$ và $\\text{g/cm}^3$ ($1\\text{ g/cm}^3 = 1000\\text{ kg/m}^3$).",
+            "Vận dụng được công thức $D = \\dfrac{m}{V}$ và công thức trọng lượng riêng $d = \\dfrac{P}{V} = 10D$ để giải bài tập.",
         ],
-        "definition": r"""- **Khối lượng riêng** của một chất được xác định bằng khối lượng của một đơn vị thể tích chất đó: $D = \dfrac{m}{V}$. Khối lượng riêng là đại lượng đặc trưng cho từng chất, giúp nhận biết chất tạo nên vật và giải thích sự nổi hay chìm của vật.
-- **Trọng lượng riêng** của một chất được xác định bằng trọng lượng của một đơn vị thể tích chất đó: $d = \dfrac{P}{V} \approx 10D$ (tại mặt đất với $P \approx 10m$).""",
-        "theory": r"""### Bài 13. Khối lượng riêng
-- **Khái niệm và công thức**: Khi biết khối lượng $m$ của một vật làm bằng chất đồng nhất có thể tích $V$, khối lượng riêng của chất đó được tính bằng $D = \dfrac{m}{V}$ (một số tài liệu kí hiệu là $\rho$). Từ đó suy ra khối lượng $m = D \cdot V$ và thể tích $V = \dfrac{m}{D}$.
-- **Đơn vị đo**: Đơn vị chuẩn trong hệ SI của khối lượng riêng là ki-lô-gam trên mét khối ($\text{kg/m}^3$). Ngoài ra người ta còn dùng gam trên xăng-ti-mét khối ($\text{g/cm}^3$) hoặc gam trên mi-li-lít ($\text{g/mL}$) với quy đổi: $1\text{ g/cm}^3 = 1\text{ g/mL} = 1000\text{ kg/m}^3$.
-- **Khối lượng riêng của một số chất ở điều kiện thường**: Nước nguyên chất có $D_{\text{nước}} = 1000\text{ kg/m}^3 = 1\text{ g/cm}^3$; nước đá có $D_{\text{đá}} \approx 920\text{ kg/m}^3$; dầu ăn có $D_{\text{dầu}} \approx 800\text{ kg/m}^3$; nhôm có $D_{\text{Al}} = 2700\text{ kg/m}^3$; sắt có $D_{\text{Fe}} = 7800\text{ kg/m}^3$; đồng có $D_{\text{Cu}} = 8900\text{ kg/m}^3$; vàng có $D_{\text{Au}} = 19300\text{ kg/m}^3$.
-- **Trọng lượng riêng**: Đại lượng $d = \dfrac{P}{V}$ (đơn vị $\text{N/m}^3$) gọi là trọng lượng riêng của chất. Do trọng lượng liên hệ với khối lượng theo $P = 10m$ nên $d = 10D$.
-### Bài 14. Thực hành xác định khối lượng riêng
-- **Xác định khối lượng riêng của khối hộp chữ nhật**: Dùng cân điện tử đo khối lượng $m$; dùng thước thẳng đo ba kích thước chiều dài $a$, chiều rộng $b$, chiều cao $c$ để tính thể tích $V = a \cdot b \cdot c$; sau đó tính $D = \dfrac{m}{V}$.
-- **Xác định khối lượng riêng của một lượng chất lỏng**: Cân cốc khô có khối lượng $m_1$; đổ chất lỏng vào cốc rồi cân tổng khối lượng $m_2$, suy ra khối lượng chất lỏng $m = m_2 - m_1$. Đổ chất lỏng vào bình chia độ để đọc thể tích $V$, rồi tính $D = \dfrac{m}{V}$.
-- **Xác định khối lượng riêng của vật rắn không thấm nước có hình dạng bất kì (viên sỏi)**: Dùng cân điện tử đo khối lượng $m$ của viên sỏi khô. Rót nước vào bình chia độ tới vạch thể tích $V_1$, buộc chỉ thả chìm hoàn toàn viên sỏi vào bình chia độ thì mực nước dâng tới vạch $V_2$, suy ra thể tích viên sỏi $V = V_2 - V_1$ và tính $D = \dfrac{m}{V_2 - V_1}$.""",
-        "formulas": [
+        definition="Khối lượng riêng của một chất cho biết khối lượng của một đơn vị thể tích chất đó, được xác định bằng thương số giữa khối lượng $m$ và thể tích $V$ của vật: $D = \\dfrac{m}{V}$.",
+        theory=(
+            "### 1. Khối lượng riêng và đơn vị đo\n"
+            "- Công thức: $D = \\dfrac{m}{V} \\implies m = D \\cdot V; \\quad V = \\dfrac{m}{D}$.\n"
+            "- Đơn vị hợp pháp trong hệ SI là **kilôgam trên mét khối** ($\\text{kg/m}^3$). Ngoài ra còn dùng $\\text{g/cm}^3$ hoặc $\\text{g/mL}$:\n"
+            "  $$1\\text{ g/cm}^3 = 1\\text{ g/mL} = 1000\\text{ kg/m}^3$$\n\n"
+            "### 2. Trọng lượng riêng\n"
+            "- Trọng lượng của một mét khối một chất gọi là **trọng lượng riêng** $d$ của chất đó: $d = \\dfrac{P}{V}$ (đơn vị $\\text{N/m}^3$).\n"
+            "- Vì $P = 10m$ nên ta luôn có mối liên hệ: $d = 10D$ (với $D$ tính bằng $\\text{kg/m}^3$)."
+        ),
+        formulas=[
             G(
-                "I. Công thức khối lượng riêng và trọng lượng riêng",
-                F("Khối lượng riêng", r"$D = \dfrac{m}{V} \Rightarrow m = D \cdot V;\quad V = \dfrac{m}{D}$", r"$D$ ($\text{kg/m}^3$), $m$ ($\text{kg}$), $V$ ($\text{m}^3$)"),
-                F("Trọng lượng riêng", r"$d = \dfrac{P}{V} = 10D$", r"$d$ ($\text{N/m}^3$), $P$ ($\text{N}$), $V$ ($\text{m}^3$)"),
-                F("Khối lượng riêng trung bình của hỗn hợp (không hao hụt thể tích)", r"$D_{\text{tb}} = \dfrac{m_1 + m_2}{V_1 + V_2}$", r"Không lấy trung bình cộng $\dfrac{D_1 + D_2}{2}$ khi $V_1 \neq V_2$"),
-            ),
+                "Khối lượng riêng và Trọng lượng riêng",
+                F("Công thức tính khối lượng riêng", "$D = \\dfrac{m}{V} \\implies m = D \\cdot V; \\quad V = \\dfrac{m}{D}$", "Quy đổi: $1\\text{ g/cm}^3 = 1000\\text{ kg/m}^3$; $1\\text{ L} = 1\\text{ dm}^3 = 10^{-3}\\text{ m}^3$."),
+                F("Công thức tính trọng lượng riêng", "$d = \\dfrac{P}{V} = 10D$", "Trong đó $d$ có đơn vị $\\text{N/m}^3$, $D$ có đơn vị $\\text{kg/m}^3$."),
+            )
+        ],
+        example="Một khối nhôm đặc có thể tích $V = 200\\text{ cm}^3$ và khối lượng $m = 540\\text{ g}$. Hãy tính khối lượng riêng của nhôm theo đơn vị $\\text{g/cm}^3$ và $\\text{kg/m}^3$.",
+        example_answer="Khối lượng riêng của nhôm là $D = \\dfrac{m}{V} = \\dfrac{540}{200} = 2{,}7\\text{ g/cm}^3$. Đổi ra $\\text{kg/m}^3$: $D = 2{,}7 \\cdot 1000 = 2700\\text{ kg/m}^3$.",
+        real_life="Biết khối lượng riêng của vàng nguyên chất là $19{,}3\\text{ g/cm}^3$, thợ kim hoàn có thể kiểm tra một món đồ trang sức có phải vàng đặc nguyên chất hay đã pha tạp kim loại nhẹ hơn.",
+        quiz=[
+            mcq("biet", "Công thức tính khối lượng riêng $D$ của một vật có khối lượng $m$ và thể tích $V$ là gì?", ["$D = \\dfrac{m}{V}$", "$D = m \\cdot V$", "$D = \\dfrac{V}{m}$", "$D = m + V$"], 0, "Khối lượng riêng bằng khối lượng chia cho thể tích: $D = \\dfrac{m}{V}$."),
+            mcq("biet", "Đổi đơn vị: $1\\text{ g/cm}^3$ bằng bao nhiêu $\\text{kg/m}^3$?", ["$1000\\text{ kg/m}^3$", "$100\\text{ kg/m}^3$", "$10\\text{ kg/m}^3$", "$0{,}001\\text{ kg/m}^3$"], 0, "Ta có $1\\text{ g/cm}^3 = \\dfrac{10^{-3}\\text{ kg}}{10^{-6}\\text{ m}^3} = 1000\\text{ kg/m}^3$."),
+            mcq("hieu", "Biết khối lượng riêng của sắt là $D = 7800\\text{ kg/m}^3$. Trọng lượng riêng $d$ của sắt là bao nhiêu?", ["$78\\,000\\text{ N/m}^3$", "$780\\text{ N/m}^3$", "$7800\\text{ N/m}^3$", "$7{,}8\\text{ N/m}^3$"], 0, "Ta có $d = 10D = 10 \\cdot 7800 = 78\\,000\\text{ N/m}^3$."),
+            tf4("hieu", "Xét tính đúng/sai của các phát biểu sau về khối lượng riêng:", [
+                "Nước nguyên chất có khối lượng riêng $D = 1000\\text{ kg/m}^3 = 1\\text{ g/cm}^3$.",
+                "Hai vật làm bằng cùng một chất đặc thì vật có thể tích gấp đôi sẽ có khối lượng riêng gấp đôi.",
+                "Dầu ăn nổi trên mặt nước vì khối lượng riêng của dầu ăn ($\\approx 800\\text{ kg/m}^3$) nhỏ hơn khối lượng riêng của nước.",
+                "Một khối sắt đặc có thể tích $0{,}01\\text{ m}^3$ và khối lượng riêng $7800\\text{ kg/m}^3$ thì nặng $78\\text{ kg}$.",
+            ], [True, False, True, True], "Ý b) sai vì khối lượng riêng là đặc trưng của chất làm vật, không phụ thuộc kích thước to hay nhỏ của vật đặc đó."),
+            short("vandung", "Một thỏi đồng đặc có thể tích $V = 50\\text{ cm}^3$ và khối lượng $m = 445\\text{ g}$. Khối lượng riêng của đồng bằng bao nhiêu $\\text{g/cm}^3$?", ["8,9", "8.9"], "Áp dụng công thức $D = \\dfrac{m}{V} = \\dfrac{445}{50} = 8{,}9\\text{ g/cm}^3$.", unit="g/cm³"),
+        ],
+        chapter_desc=CH1_DESC,
+    ),
+    bai(
+        topic=CH1_TOPIC,
+        chapter_title=CH1_TITLE,
+        title="Bài 2: Thực hành xác định khối lượng riêng",
+        icon="🧪",
+        description="Phương pháp thực hành đo khối lượng riêng của khối hộp chữ nhật, vật rắn không thấm nước và chất lỏng.",
+        requirements=[
+            "Trình bày được cách xác định khối lượng riêng của một khối hộp chữ nhật bằng cân và thước thẳng ($V = a \\cdot b \\cdot c$).",
+            "Trình bày được cách đo thể tích vật rắn hình dạng bất kì không thấm nước bằng bình chia độ ($V = V_2 - V_1$).",
+            "Tính được khối lượng riêng của chất lỏng bằng cân điện tử và bình chia độ ($m_{\\text{lỏng}} = m_{\\text{cả bình}} - m_{\\text{bình rỗng}}$).",
+        ],
+        definition="Để thực hành xác định khối lượng riêng $D = \\dfrac{m}{V}$ của một vật rắn hoặc chất lỏng, ta dùng cân để đo khối lượng $m$ và dùng thước hoặc bình chia độ để đo thể tích $V$.",
+        theory=(
+            "### 1. Xác định khối lượng riêng của vật rắn\n"
+            "- **Khối hộp chữ nhật**: Dùng cân đo khối lượng $m$; dùng thước đo 3 kích thước dài $a$, rộng $b$, cao $c$, tính thể tích $V = a \\cdot b \\cdot c$ rồi tính $D = \\dfrac{m}{V}$.\n"
+            "- **Vật rắn nhỏ không thấm nước có hình dạng bất kì (viên sỏi, quả nặng)**:\n"
+            "  1. Dùng cân điện tử đo khối lượng $m$ của vật.\n"
+            "  2. Đổ nước vào bình chia độ, ghi thể tích $V_1$.\n"
+            "  3. Thả chìm hoàn toàn vật vào bình chia độ, ghi mực nước mới $V_2$. Thể tích vật là $V = V_2 - V_1$.\n"
+            "  4. Tính khối lượng riêng: $D = \\dfrac{m}{V_2 - V_1}$.\n\n"
+            "### 2. Xác định khối lượng riêng của một lượng chất lỏng\n"
+            "- Cân cốc rỗng được $m_1$, đổ thể tích $V$ chất lỏng vào cốc rồi cân được $m_2$. Khối lượng chất lỏng là $m = m_2 - m_1$, suy ra $D = \\dfrac{m_2 - m_1}{V}$."
+        ),
+        formulas=[
             G(
-                "II. Quy đổi đơn vị và công thức thực hành",
-                F("Đổi đơn vị khối lượng riêng", r"$1\text{ g/cm}^3 = 1\text{ g/mL} = 1000\text{ kg/m}^3$", r"$1\text{ kg/m}^3 = 10^{-3}\text{ g/cm}^3$"),
-                F("Đổi đơn vị thể tích", r"$1\text{ m}^3 = 1000\text{ dm}^3 = 1000\text{ L} = 10^6\text{ cm}^3 = 10^6\text{ mL}$", r"$1\text{ dm}^3 = 1\text{ L} = 1000\text{ cm}^3$"),
-                F("Thể tích vật rắn bằng bình chia độ", r"$V = V_2 - V_1$", r"$V_1$: mực nước ban đầu; $V_2$: mực nước khi thả chìm vật"),
-            ),
+                "Công thức thực hành đo khối lượng riêng",
+                F("Khối lượng riêng của vật rắn đo bằng bình chia độ", "$V = V_2 - V_1 \\implies D = \\dfrac{m}{V_2 - V_1}$", "Trong đó $V_1$ là thể tích nước ban đầu, $V_2$ là thể tích nước khi thả chìm vật ($1\\text{ mL} = 1\\text{ cm}^3$)."),
+                F("Khối lượng riêng của chất lỏng", "$m = m_2 - m_1 \\implies D = \\dfrac{m_2 - m_1}{V}$", "Trong đó $m_1$ là khối lượng bình rỗng, $m_2$ là khối lượng bình chứa thể tích $V$ chất lỏng."),
+            )
         ],
-        "example": r"Trong giờ thực hành, một học sinh dùng cân điện tử đo được khối lượng của một hòn sỏi khô là $m = 130\text{ g}$. Khi thả chìm hoàn toàn hòn sỏi vào bình chia độ đang chứa $V_1 = 50\text{ cm}^3$ nước thì mực nước dâng lên đến vạch $V_2 = 100\text{ cm}^3$. Hãy tính thể tích, khối lượng riêng (theo $\text{g/cm}^3$ và $\text{kg/m}^3$) và trọng lượng riêng của hòn sỏi.",
-        "example_answer": r"""- Thể tích của hòn sỏi bằng thể tích phần nước dâng lên trong bình chia độ:
-$$V = V_2 - V_1 = 100 - 50 = 50\text{ cm}^3$$
-- Khối lượng riêng của hòn sỏi là:
-$$D = \dfrac{m}{V} = \dfrac{130}{50} = 2{,}6\text{ g/cm}^3 = 2600\text{ kg/m}^3$$
-- Trọng lượng riêng của hòn sỏi là:
-$$d = 10D = 10 \cdot 2600 = 26000\text{ N/m}^3$$""",
-        "real_life": r"""- **Công nghiệp hàng không và chế tạo máy**: Sử dụng hợp kim nhôm và titan có khối lượng riêng nhỏ ($D_{\text{Al}} = 2700\text{ kg/m}^3$) nhưng độ bền cao để giảm khối lượng máy bay, tiết kiệm nhiên liệu.
-- **Xây dựng và kiểm định chất lượng**: Tính toán khối lượng dầm bê tông, cột thép từ thể tích thiết kế; kiểm tra độ nguyên chất của vàng, bạc hoặc phát hiện lỗ rỗng bên trong vật đúc kim loại.""",
-        "game_title": "Thử thách thực tế: Khối lượng riêng",
-        "game_description": "Đo khối lượng và thể tích các mẫu vật trong phòng thí nghiệm ảo để xác định khối lượng riêng và kiểm tra vật đặc hay rỗng.",
-        "game_type": "simulation",
-        "quiz": [
-            mcq(
-                "biet",
-                r"Công thức nào sau đây dùng để tính khối lượng riêng của một vật có khối lượng $m$ và thể tích $V$?",
-                [r"$D = m \cdot V$", r"$D = \dfrac{m}{V}$", r"$D = \dfrac{V}{m}$", r"$D = m + V$"],
-                1,
-                r"Khối lượng riêng của một chất được xác định bằng khối lượng của một đơn vị thể tích chất đó: $D = \dfrac{m}{V}$.",
-            ),
-            mcq(
-                "biet",
-                r"Đơn vị chuẩn của khối lượng riêng trong hệ đo lường quốc tế SI là gì?",
-                [r"$\text{N/m}^3$", r"$\text{kg/m}^2$", r"$\text{kg/m}^3$", r"$\text{g/cm}^2$"],
-                2,
-                r"Trong hệ SI, khối lượng đo bằng $\text{kg}$ và thể tích đo bằng $\text{m}^3$ nên đơn vị chuẩn của khối lượng riêng là $\text{kg/m}^3$.",
-            ),
-            mcq(
-                "biet",
-                r"Biết khối lượng riêng của nhôm là $2700\text{ kg/m}^3$. Giá trị này khi đổi sang đơn vị $\text{g/cm}^3$ bằng bao nhiêu?",
-                [r"$0{,}27\text{ g/cm}^3$", r"$2{,}7\text{ g/cm}^3$", r"$27\text{ g/cm}^3$", r"$270\text{ g/cm}^3$"],
-                1,
-                r"Vì $1\text{ g/cm}^3 = 1000\text{ kg/m}^3$ nên $2700\text{ kg/m}^3 = \dfrac{2700}{1000} = 2{,}7\text{ g/cm}^3$.",
-            ),
-            mcq(
-                "biet",
-                r"Hệ thức nào dưới đây biểu diễn đúng mối liên hệ giữa trọng lượng riêng $d$ ($\text{N/m}^3$) và khối lượng riêng $D$ ($\text{kg/m}^3$) của cùng một chất?",
-                [r"$d = 10D$", r"$D = 10d$", r"$d = \dfrac{D}{100}$", r"$d = D^2$"],
-                0,
-                r"Ta có $d = \dfrac{P}{V} = \dfrac{10m}{V} = 10D$.",
-            ),
-            mcq(
-                "hieu",
-                r"Biết khối lượng riêng của sắt là $7800\text{ kg/m}^3$. Một thanh sắt đặc có thể tích $V = 2\text{ dm}^3$ sẽ có khối lượng bằng bao nhiêu?",
-                [r"$3{,}9\text{ kg}$", r"$7{,}8\text{ kg}$", r"$15{,}6\text{ kg}$", r"$156\text{ kg}$"],
-                2,
-                r"Đổi $V = 2\text{ dm}^3 = 0{,}002\text{ m}^3$. Khối lượng của thanh sắt là $m = D \cdot V = 7800 \cdot 0{,}002 = 15{,}6\text{ kg}$.",
-            ),
-            mcq(
-                "hieu",
-                r"Khi thả chìm hoàn toàn một viên đá có khối lượng $m = 104\text{ g}$ vào bình chia độ chứa $60\text{ cm}^3$ nước thì mực nước dâng lên tới vạch $100\text{ cm}^3$. Khối lượng riêng của viên đá là:",
-                [r"$1{,}04\text{ g/cm}^3$", r"$1{,}73\text{ g/cm}^3$", r"$2{,}6\text{ g/cm}^3$", r"$4{,}0\text{ g/cm}^3$"],
-                2,
-                r"Thể tích viên đá là $V = V_2 - V_1 = 100 - 60 = 40\text{ cm}^3$. Khối lượng riêng của viên đá là $D = \dfrac{m}{V} = \dfrac{104}{40} = 2{,}6\text{ g/cm}^3$.",
-            ),
-            tf4(
-                "hieu",
-                r"Một khối gỗ hình hộp chữ nhật đặc có các kích thước $10\text{ cm} \times 5\text{ cm} \times 4\text{ cm}$ và có khối lượng $m = 160\text{ g}$. Xét tính đúng sai của các phát biểu sau:",
-                [
-                    r"a) Thể tích của khối gỗ hình hộp chữ nhật đó bằng $200\text{ cm}^3$.",
-                    r"b) Khối lượng riêng của loại gỗ này bằng $0{,}8\text{ g/cm}^3$.",
-                    r"c) Đổi sang đơn vị chuẩn SI, khối lượng riêng của gỗ là $80\text{ kg/m}^3$.",
-                    r"d) Nếu cưa đôi khối gỗ này thành hai phần bằng nhau thì khối lượng riêng của mỗi phần giảm đi một nửa.",
-                ],
-                [True, True, False, False],
-                r"a) Đúng vì $V = 10 \cdot 5 \cdot 4 = 200\text{ cm}^3$. b) Đúng vì $D = \dfrac{m}{V} = \dfrac{160}{200} = 0{,}8\text{ g/cm}^3$. c) Sai vì $0{,}8\text{ g/cm}^3 = 0{,}8 \cdot 1000 = 800\text{ kg/m}^3$. d) Sai vì khối lượng riêng là thuộc tính bản chất của chất tạo nên vật, khi chia đôi thì cả $m$ và $V$ cùng giảm $2$ lần nên $D$ không đổi.",
-            ),
-            tf4(
-                "hieu",
-                r"Trong phòng thí nghiệm, học sinh tiến hành xác định khối lượng riêng của dầu ăn và của một viên bi thép. Xét tính đúng sai của các phát biểu sau:",
-                [
-                    r"a) Để xác định khối lượng riêng của dầu ăn, ta chỉ cần dùng cân điện tử và bình chia độ.",
-                    r"b) Khối lượng dầu ăn trong cốc bằng khối lượng tổng cộng của cốc chứa dầu trừ đi khối lượng của cốc khô rỗng.",
-                    r"c) Dầu ăn có khối lượng riêng khoảng $800\text{ kg/m}^3$, nhỏ hơn khối lượng riêng của nước ($1000\text{ kg/m}^3$) nên dầu ăn nổi trên mặt nước.",
-                    r"d) Khi đo thể tích viên bi thép bằng bình chia độ, chỉ cần thả viên bi ngập một nửa trong nước là đọc được chính xác thể tích viên bi.",
-                ],
-                [True, True, True, False],
-                r"a) Đúng vì cân đo khối lượng $m$ và bình chia độ đo thể tích $V$. b) Đúng vì $m_{\text{dầu}} = m_2 - m_1$. c) Đúng vì $D_{\text{dầu}} < D_{\text{nước}}$. d) Sai vì viên bi phải ngập chìm hoàn toàn trong nước thì phần nước dâng lên mới bằng toàn bộ thể tích viên bi.",
-            ),
-            mcq(
-                "vandung",
-                r"Một bức tượng bằng đồng có khối lượng $m = 1{,}78\text{ kg}$, khi nhúng chìm hoàn toàn vào bình tràn chứa đầy nước thì lượng nước tràn ra có thể tích $V = 250\text{ cm}^3$. Biết khối lượng riêng của đồng nguyên chất là $D = 8{,}9\text{ g/cm}^3$. Thể tích phần rỗng bên trong bức tượng là:",
-                [r"$0\text{ cm}^3$ (tượng đặc)", r"$25\text{ cm}^3$", r"$50\text{ cm}^3$", r"$72\text{ cm}^3$"],
-                2,
-                r"Đổi $m = 1{,}78\text{ kg} = 1780\text{ g}$. Thể tích phần đồng đặc thực sự là $V_{\text{đồng}} = \dfrac{m}{D} = \dfrac{1780}{8{,}9} = 200\text{ cm}^3$. Vì thể tích toàn bộ bức tượng là $250\text{ cm}^3$ nên thể tích phần rỗng bên trong là $V_{\text{rỗng}} = 250 - 200 = 50\text{ cm}^3$.",
-            ),
-            short(
-                "vandung",
-                r"Một hợp kim gồm $m_1 = 540\text{ g}$ nhôm (có khối lượng riêng $D_1 = 2{,}7\text{ g/cm}^3$) và $m_2 = 890\text{ g}$ đồng (có khối lượng riêng $D_2 = 8{,}9\text{ g/cm}^3$). Giả sử thể tích của hợp kim bằng tổng thể tích các kim loại thành phần. Tính khối lượng riêng của hợp kim đó theo đơn vị $\text{kg/m}^3$ (làm tròn đến hàng đơn vị).",
-                ["4767"],
-                r"Thể tích nhôm là $V_1 = \dfrac{m_1}{D_1} = \dfrac{540}{2{,}7} = 200\text{ cm}^3$. Thể tích đồng là $V_2 = \dfrac{m_2}{D_2} = \dfrac{890}{8{,}9} = 100\text{ cm}^3$. Khối lượng riêng của hợp kim là $D = \dfrac{m_1 + m_2}{V_1 + V_2} = \dfrac{540 + 890}{200 + 100} = \dfrac{1430}{300} \approx 4{,}767\text{ g/cm}^3 = 4767\text{ kg/m}^3$.",
-            ),
+        example="Trong bài thực hành đo khối lượng riêng của một hòn sỏi: cân điện tử chỉ khối lượng hòn sỏi là $m = 65\\text{ g}$. Khi thả chìm hoàn toàn hòn sỏi vào bình chia độ đang chứa $V_1 = 50\\text{ cm}^3$ nước thì mực nước dâng lên tới vạch $V_2 = 75\\text{ cm}^3$. Tính khối lượng riêng của hòn sỏi.",
+        example_answer="Thể tích của hòn sỏi là $V = V_2 - V_1 = 75 - 50 = 25\\text{ cm}^3$. Khối lượng riêng của hòn sỏi là $D = \\dfrac{m}{V} = \\dfrac{65}{25} = 2{,}6\\text{ g/cm}^3 = 2600\\text{ kg/m}^3$.",
+        real_life="Truyền thuyết kể rằng nhà bác học Archimedes đã tìm ra cách đo thể tích chiếc vương miện có hình dáng phức tạp của nhà vua bằng phần nước dâng lên khi nhúng chìm vương miện vào nước.",
+        quiz=[
+            mcq("biet", "Để đo thể tích của một viên sỏi nhỏ không thấm nước có hình dạng bất kì trong phòng thực hành, dụng cụ nào sau đây được sử dụng?", ["Bình chia độ chứa nước", "Thước thẳng milimét", "Lực kế lò xo", "Nhiệt kế rượu"], 0, "Viên sỏi có hình dạng bất kì không thể tính bằng công thức hình học đơn giản nên dùng bình chia độ chứa nước ($V = V_2 - V_1$)."),
+            mcq("biet", "Khi thả chìm hoàn toàn một vật rắn không thấm nước vào bình chia độ có mực nước ban đầu $V_1$, mực nước dâng lên đến vạch $V_2$. Thể tích $V$ của vật rắn là:", ["$V = V_2 - V_1$", "$V = V_2 + V_1$", "$V = \\dfrac{V_2 + V_1}{2}$", "$V = V_1 \\cdot V_2$"], 0, "Phần nước dâng lên trong bình chia độ chính bằng thể tích của vật rắn bị chìm: $V = V_2 - V_1$."),
+            mcq("hieu", "Khi thực hành đo khối lượng riêng của một viên sỏi, vì sao ta nên cân khối lượng $m$ của viên sỏi khô **trước** khi thả viên sỏi vào bình chia độ chứa nước?", ["Vì nếu nhúng nước trước rồi mới cân thì nước bám vào bề mặt viên sỏi làm khối lượng đo được bị lớn hơn thực tế", "Vì viên sỏi sau khi nhúng nước sẽ tan hết", "Vì cân điện tử không hoạt động sau khi dùng bình chia độ", "Vì thể tích viên sỏi tăng gấp đôi sau khi cân"], 0, "Cân lúc viên sỏi còn khô giúp tránh sai số do các giọt nước bám dính trên bề mặt viên sỏi."),
+            tf4("hieu", "Xét tính đúng/sai của các nhận định sau về thực hành đo khối lượng riêng:", [
+                "Đối với khối gỗ hình hộp chữ nhật có các cạnh $a, b, c$, ta có thể đo thể tích bằng thước theo công thức $V = a \\cdot b \\cdot c$.",
+                "Đơn vị $1\\text{ mL}$ ghi trên vạch bình chia độ đúng bằng $1\\text{ cm}^3$.",
+                "Khi thả vật vào bình chia độ, nếu nước bị tràn ra ngoài miệng bình thì hiệu $V_2 - V_1$ trên vạch bình vẫn đúng bằng thể tích vật.",
+                "Để giảm sai số phép đo, người ta tiến hành đo khối lượng và thể tích $3$ lần rồi lấy giá trị trung bình.",
+            ], [True, True, False, True], "Ý c) sai vì khi nước tràn ra ngoài bình chia độ thì $V_2 - V_1$ nhỏ hơn thể tích thật của vật (lúc đó phải dùng bình tràn)."),
+            short("vandung", "Một bình chia độ rỗng có khối lượng $m_1 = 40\\text{ g}$. Khi rót thêm $V = 50\\text{ cm}^3$ dầu ăn vào bình và đặt lên cân điện tử thì cân chỉ $m_2 = 80\\text{ g}$. Khối lượng riêng của dầu ăn bằng bao nhiêu $\\text{g/cm}^3$?", ["0,8", "0.8"], "Khối lượng dầu ăn là $m = m_2 - m_1 = 80 - 40 = 40\\text{ g}$. Khối lượng riêng của dầu ăn là $D = \\dfrac{40}{50} = 0{,}8\\text{ g/cm}^3$.", unit="g/cm³"),
         ],
-    },
-    # ===================== CHỦ ĐỀ 2: ÁP SUẤT =====================
-    {
-        "topic": "ap-suat",
-        "title": "Áp suất trên một bề mặt, Áp suất chất lỏng và Áp suất khí quyển",
-        "icon": "🚜",
-        "description": "Chương III · SGK Khoa học tự nhiên 8 Kết nối tri thức với cuộc sống (Bài 15 – Bài 16): Áp lực, công thức tính áp suất trên một bề mặt, nguyên tắc tăng giảm áp suất, áp suất chất lỏng, bình thông nhau và áp suất khí quyển.",
-        "requirements": [
-            r"Dùng dụng cụ thực hành, khẳng định được áp suất sinh ra khi có áp lực tác dụng lên một diện tích bề mặt: $p = \dfrac{F}{S}$.",
-            r"Liệt kê được một số đơn vị đo áp suất thông dụng ($\text{Pa}$, $\text{N/m}^2$, $\text{kPa}$, $\text{atm}$, $\text{mmHg}$) và thảo luận được công dụng của việc tăng, giảm áp suất qua một số hiện tượng thực tế.",
-            r"Nêu được chất lỏng gây ra áp suất theo mọi phương lên đáy bình, thành bình và các vật ở trong lòng nó; vận dụng được công thức $p = d \cdot h$.",
-            r"Thực hiện được thí nghiệm chứng tỏ tồn tại áp suất khí quyển và áp suất này tác dụng theo mọi phương; mô tả được một số hiện tượng và ứng dụng của áp suất khí quyển, giác mút, bình xịt, tàu đệm khí.",
+        chapter_desc=CH1_DESC,
+    ),
+    bai(
+        topic=CH1_TOPIC,
+        chapter_title=CH1_TITLE,
+        title="Bài 3: Tác dụng của chất lỏng lên vật đặt trong nó. Lực đẩy Archimedes",
+        icon="🚢",
+        description="Phương, chiều, công thức độ lớn lực đẩy Archimedes F_A = d.V và điều kiện định tính – định lượng để vật nổi, lơ lửng, chìm.",
+        requirements=[
+            "Mô tả được một vật nhúng trong chất lỏng chịu tác dụng của lực đẩy Archimedes có phương thẳng đứng, chiều từ dưới lên trên.",
+            "Viết và vận dụng được công thức tính độ lớn lực đẩy Archimedes: $F_A = d \\cdot V$ (bằng trọng lượng phần chất lỏng bị vật chiếm chỗ).",
+            "Giải thích được điều kiện để một vật chìm xuống ($F_A < P$ hay $d_{\\text{vật}} > d_{\\text{lỏng}}$), lơ lửng ($F_A = P$) và nổi lên ($F_A > P$).",
         ],
-        "definition": r"""- **Áp lực** là lực ép có phương vuông góc với mặt bị ép.
-- **Áp suất** ($p$) được tính bằng độ lớn của áp lực ($F$) trên một đơn vị diện tích bị ép ($S$): $p = \dfrac{F}{S}$.
-- **Áp suất chất lỏng** tại độ sâu $h$ so với mặt thoáng là $p = d \cdot h = D \cdot g \cdot h$, tác dụng theo mọi phương.
-- **Áp suất khí quyển** là áp suất do lớp không khí bao quanh Trái Đất gây ra theo mọi phương lên mọi vật trên mặt đất.""",
-        "theory": r"""### Bài 15. Áp suất trên một bề mặt
-- **Áp lực**: Tác dụng của áp lực lên mặt bị ép phụ thuộc vào hai yếu tố: độ lớn của áp lực $F$ và diện tích bị ép $S$. Khi vật đặt nằm yên trên mặt phẳng nằm ngang thì áp lực của vật lên mặt sàn có độ lớn bằng trọng lượng của vật: $F = P = 10m$.
-- **Công thức và đơn vị áp suất**: $p = \dfrac{F}{S}$. Đơn vị áp suất trong hệ SI là па-xcan ($\text{Pa}$), với $1\text{ Pa} = 1\text{ N/m}^2$; bội số thường dùng là $1\text{ kPa} = 1000\text{ Pa}$ và $1\text{ MPa} = 10^6\text{ Pa}$.
-- **Tăng, giảm áp suất trong thực tiễn**:
-  + Để **tăng áp suất** ($p$ lớn): tăng áp lực $F$ hoặc giảm diện tích bị ép $S$ (ví dụ: mài sắc lưỡi dao, làm nhọn đầu đinh, đầu cọc).
-  + Để **giảm áp suất** ($p$ nhỏ): giảm áp lực $F$ hoặc tăng diện tích bị ép $S$ (ví dụ: xe tăng dùng bánh xích bản rộng, móng nhà xây to bản, kê ván gỗ dưới bánh xe ô tô khi đi qua đất lún).
-### Bài 16. Áp suất chất lỏng. Áp suất khí quyển
-- **Áp suất chất lỏng**: Chất lỏng không chỉ gây áp suất lên đáy bình mà còn gây áp suất lên thành bình và theo mọi phương lên các vật ở trong lòng chất lỏng. Tại một điểm ở độ sâu $h$ tính từ mặt thoáng chất lỏng có trọng lượng riêng $d$, áp suất chất lỏng là $p = d \cdot h$. Trong cùng một chất lỏng đứng yên, áp suất tại những điểm trên cùng một mặt phẳng nằm ngang (cùng độ sâu $h$) luôn có độ lớn bằng nhau.
-- **Truyền áp suất trong chất lỏng và máy nén thủy lực**: Độ tăng áp suất lên một chất lỏng chứa trong bình kín được truyền nguyên vẹn tới mọi điểm của chất lỏng và thành bình (nguyên lí Pascal). Trong máy nén thủy lực có hai pít-tông diện tích $S_1$ và $S_2$: $\dfrac{F_2}{F_1} = \dfrac{S_2}{S_1}$.
-- **Áp suất khí quyển**: Vì không khí cũng có trọng lượng nên khí quyển gây ra áp suất theo mọi phương. Ở ngang mực nước biển, áp suất khí quyển chuẩn xấp xỉ $p_0 \approx 760\text{ mmHg} \approx 101325\text{ Pa} = 1\text{ atm}$. Càng lên cao, không khí càng loãng nên áp suất khí quyển càng giảm (khi thay đổi độ cao đột ngột, sự chênh lệch áp suất hai bên màng nhĩ gây ra cảm giác ù tai).""",
-        "formulas": [
+        definition="Mọi vật nhúng vào chất lỏng đều bị chất lỏng đẩy thẳng đứng từ dưới lên với một lực có độ lớn bằng trọng lượng của phần chất lỏng mà vật chiếm chỗ. Lực này gọi là lực đẩy Archimedes: $F_A = d \\cdot V$.",
+        theory=(
+            "### 1. Lực đẩy Archimedes\n"
+            "- **Phương và chiều**: phương thẳng đứng, chiều **từ dưới lên trên** (ngược chiều với trọng lực $\\vec{P}$).\n"
+            "- **Công thức tính độ lớn**:\n"
+            "  $$F_A = d \\cdot V$$\n"
+            "  trong đó $d$ là trọng lượng riêng của chất lỏng ($\\text{N/m}^3$), $V$ là thể tích **phần chất lỏng bị vật chiếm chỗ** ($\\text{m}^3$).\n"
+            "- Khi treo vật vào lực kế: ngoài không khí lực kế chỉ $P$, khi nhúng chìm vật trong chất lỏng lực kế chỉ $P' = P - F_A \\implies F_A = P - P'$.\n\n"
+            "### 2. Điều kiện vật nổi, vật chìm\n"
+            "- Thả một vật đặc có trọng lượng $P$ (trọng lượng riêng $d_v$) vào chất lỏng có trọng lượng riêng $d_l$:\n"
+            "  - **Vật chìm xuống đáy** khi $F_A < P \\iff d_v > d_l$.\n"
+            "  - **Vật lơ lửng trong chất lỏng** khi $F_A = P \\iff d_v = d_l$.\n"
+            "  - **Vật nổi lên mặt thoáng** khi $F_A > P \\iff d_v < d_l$ (khi đã nằm cân bằng trên mặt thoáng thì $F_A' = d_l V_{\\text{chìm}} = P$)."
+        ),
+        formulas=[
             G(
-                "I. Áp suất trên một bề mặt rắn",
-                F("Công thức tính áp suất", r"$p = \dfrac{F}{S} \Rightarrow F = p \cdot S;\quad S = \dfrac{F}{p}$", r"$F$: áp lực ($\text{N}$), $S$: diện tích bị ép ($\text{m}^2$), $p$: áp suất ($\text{Pa}$)"),
-                F("Đổi đơn vị diện tích và áp suất", r"$1\text{ Pa} = 1\text{ N/m}^2;\quad 1\text{ kPa} = 1000\text{ Pa};\quad 1\text{ cm}^2 = 10^{-4}\text{ m}^2$", r"Luôn đổi $S$ ra $\text{m}^2$ trước khi tính $p$"),
-            ),
+                "Công thức lực đẩy Archimedes và điều kiện nổi",
+                F("Độ lớn lực đẩy Archimedes", "$F_A = d \\cdot V = 10 \\cdot D \\cdot V$", "Trong đó $d$ là trọng lượng riêng chất lỏng ($\\text{N/m}^3$), $V$ là thể tích phần vật chìm trong chất lỏng ($\\text{m}^3$)."),
+                F("Xác định lực đẩy Archimedes bằng lực kế", "$F_A = P - P'$", "Trong đó $P$ là số chỉ lực kế khi treo vật ngoài không khí, $P'$ là số chỉ lực kế khi nhúng vật trong chất lỏng."),
+            )
+        ],
+        example="Một vật rắn có thể tích $V = 0{,}002\\text{ m}^3$ được nhúng chìm hoàn toàn trong nước có trọng lượng riêng $d = 10\\,000\\text{ N/m}^3$. Hãy tính độ lớn lực đẩy Archimedes tác dụng lên vật.",
+        example_answer="Áp dụng công thức lực đẩy Archimedes: $F_A = d \\cdot V = 10\\,000 \\cdot 0{,}002 = 20\\text{ N}$.",
+        real_life="Tàu thủy làm bằng thép (có $d_{\\text{thép}} > d_{\\text{nước}}$) vẫn nổi được trên mặt biển vì thân tàu được thiết kế rỗng có thể tích phần chìm $V$ rất lớn làm tăng lực đẩy Archimedes $F_A = P_{\\text{tàu}}$.",
+        quiz=[
+            mcq("biet", "Lực đẩy Archimedes tác dụng lên một vật nhúng trong chất lỏng có phương và chiều như thế nào?", ["Phương thẳng đứng, chiều từ dưới lên trên", "Phương thẳng đứng, chiều từ trên xuống dưới", "Phương nằm ngang, chiều từ trái sang phải", "Mọi phương đều như nhau"], 0, "Lực đẩy Archimedes luôn có phương thẳng đứng và chiều hướng từ dưới lên trên."),
+            mcq("biet", "Công thức tính độ lớn lực đẩy Archimedes $F_A$ là gì (với $d$ là trọng lượng riêng của chất lỏng, $V$ là thể tích phần chất lỏng bị vật chiếm chỗ)?", ["$F_A = d \\cdot V$", "$F_A = \\dfrac{d}{V}$", "$F_A = \\dfrac{V}{d}$", "$F_A = d + V$"], 0, "Theo định luật Archimedes, $F_A = d \\cdot V$."),
+            mcq("hieu", "Treo một quả nặng vào lực kế ngoài không khí thì lực kế chỉ $P = 12\\text{ N}$. Khi nhúng chìm quả nặng vào trong nước thì lực kế chỉ $P' = 7\\text{ N}$. Độ lớn lực đẩy Archimedes của nước tác dụng lên quả nặng là bao nhiêu?", ["$5\\text{ N}$", "$19\\text{ N}$", "$7\\text{ N}$", "$12\\text{ N}$"], 0, "Độ lớn lực đẩy Archimedes là $F_A = P - P' = 12 - 7 = 5\\text{ N}$."),
+            tf4("hieu", "Xét tính đúng/sai của các phát biểu sau về lực đẩy Archimedes:", [
+                "Một thỏi nhôm và một thỏi chì có cùng thể tích $V$ khi nhúng chìm hoàn toàn vào cùng một chậu nước thì chịu lực đẩy Archimedes bằng nhau.",
+                "Một vật đặc sẽ nổi lên khi trọng lượng riêng của vật nhỏ hơn trọng lượng riêng của chất lỏng ($d_{\\text{vật}} < d_{\\text{lỏng}}$).",
+                "Lực đẩy Archimedes phụ thuộc vào độ sâu của vật đã chìm hoàn toàn trong chất lỏng.",
+                "Khinh khí cầu bay lên cao được trong không khí cũng nhờ lực đẩy Archimedes của không khí tác dụng lên nó.",
+            ], [True, True, False, True], "Ý c) sai vì khi vật đã chìm hoàn toàn trong chất lỏng đồng chất thì thể tích chiếm chỗ $V$ không đổi nên $F_A = d \\cdot V$ không phụ thuộc độ sâu."),
+            short("vandung", "Một vật có thể tích $V = 500\\text{ cm}^3 = 0{,}0005\\text{ m}^3$ được nhúng chìm hoàn toàn trong nước có trọng lượng riêng $d = 10\\,000\\text{ N/m}^3$. Lực đẩy Archimedes tác dụng lên vật có độ lớn bằng bao nhiêu Newton ($\\text{N}$)?", ["5"], "Ta có $F_A = d \\cdot V = 10\\,000 \\cdot 0{,}0005 = 5\\text{ N}$.", unit="N"),
+        ],
+        chapter_desc=CH1_DESC,
+    ),
+    bai(
+        topic=CH1_TOPIC,
+        chapter_title=CH1_TITLE,
+        title="Bài 4: Áp suất trên một bề mặt",
+        icon="📌",
+        description="Khái niệm áp lực, công thức tính áp suất p = F/S, đơn vị Pascal (Pa) và nguyên tắc làm tăng, giảm áp suất.",
+        requirements=[
+            "Nêu được áp lực là lực ép có phương vuông góc với mặt bị ép.",
+            "Viết và vận dụng được công thức tính áp suất $p = \\dfrac{F}{S}$ và đơn vị Pascal ($1\\text{ Pa} = 1\\text{ N/m}^2$).",
+            "Giải thích được các cách làm tăng áp suất (tăng $F$, giảm diện tích bị ép $S$) hoặc giảm áp suất (giảm $F$, tăng diện tích bị ép $S$) trong đời sống.",
+        ],
+        definition="Áp lực là lực ép có phương vuông góc với mặt bị ép. Áp suất được tính bằng độ lớn của áp lực trên một đơn vị diện tích bị ép: $p = \\dfrac{F}{S}$ (đơn vị $\\text{Pa} = \\text{N/m}^2$).",
+        theory=(
+            "### 1. Áp lực và áp suất\n"
+            "- **Áp lực ($F$)**: lực ép có phương vuông góc với bề mặt bị ép. Khi một vật đặt yên trên mặt phẳng nằm ngang thì áp lực của vật lên mặt sàn bằng chính trọng lượng của vật ($F = P$).\n"
+            "- **Áp suất ($p$)**: đặc trưng cho tác dụng mạnh hay yếu của áp lực trên một đơn vị diện tích bị ép:\n"
+            "  $$p = \\dfrac{F}{S}$$\n"
+            "- **Đơn vị đo áp suất**: **Pascal** (kí hiệu $\\text{Pa}$), với $1\\text{ Pa} = 1\\text{ N/m}^2$ và $1\\text{ kPa} = 1000\\text{ Pa}$.\n\n"
+            "### 2. Tăng và giảm áp suất trong thực tiễn\n"
+            "- **Làm tăng áp suất** ($p$ tăng): tăng áp lực $F$ hoặc **giảm diện tích bị ép $S$** (mài sắc lưỡi dao, vuốt nhọn mũi đinh, mũi kim tiêm).\n"
+            "- **Làm giảm áp suất** ($p$ giảm): giảm áp lực $F$ hoặc **tăng diện tích bị ép $S$** (xe tăng dùng bánh xích bản rộng, kê ván gỗ dưới bánh ô tô khi qua bùn lầy, làm móng nhà rộng)."
+        ),
+        formulas=[
             G(
-                "II. Áp suất chất lỏng, máy nén thủy lực và áp suất khí quyển",
-                F("Áp suất cột chất lỏng ở độ sâu $h$", r"$p = d \cdot h = 10D \cdot h$", r"$d$: trọng lượng riêng chất lỏng ($\text{N/m}^3$), $h$: độ sâu tính từ mặt thoáng ($\text{m}$)"),
-                F("Áp suất tuyệt đối tại độ sâu $h$", r"$p_{\text{tổng}} = p_0 + d \cdot h$", r"$p_0$: áp suất khí quyển trên mặt thoáng ($\text{Pa}$)"),
-                F("Hệ thức máy nén thủy lực", r"$\dfrac{F_2}{F_1} = \dfrac{S_2}{S_1}$", r"Diện tích pít-tông lớn gấp bao nhiêu lần thì lực nâng gấp bấy nhiêu lần"),
-            ),
+                "Công thức tính áp suất trên một bề mặt",
+                F("Công thức tính áp suất", "$p = \\dfrac{F}{S} \\implies F = p \\cdot S; \\quad S = \\dfrac{F}{p}$", "Trong đó $F$ là áp lực ($\\text{N}$), $S$ là diện tích bị ép ($\\text{m}^2$), $p$ là áp suất ($\\text{Pa} = \\text{N/m}^2$)."),
+                F("Quy đổi đơn vị diện tích và áp suất", "$1\\text{ cm}^2 = 10^{-4}\\text{ m}^2; \\qquad 1\\text{ kPa} = 1000\\text{ Pa}$", "Lưu ý luôn đổi diện tích bị ép ra $\\text{m}^2$ trước khi tính áp suất ra $\\text{Pa}$."),
+            )
         ],
-        "example": r"Một người có khối lượng $m = 60\text{ kg}$ đứng thẳng bằng cả hai bàn chân trên mặt sàn nằm ngang. Biết diện tích tiếp xúc của mỗi bàn chân với mặt sàn là $S_1 = 150\text{ cm}^2$. Tính áp lực và áp suất của người đó tác dụng lên mặt sàn khi đứng bằng cả hai chân và khi co một chân.",
-        "example_answer": r"""- Áp lực của người đó lên mặt sàn bằng trọng lượng cơ thể:
-$$F = P = 10m = 10 \cdot 60 = 600\text{ N}$$
-- Diện tích tiếp xúc của $1$ bàn chân là $S_1 = 150\text{ cm}^2 = 0{,}015\text{ m}^2$; của cả $2$ bàn chân là $S_2 = 2S_1 = 0{,}03\text{ m}^2$.
-- Áp suất khi đứng bằng cả hai chân:
-$$p_2 = \dfrac{F}{S_2} = \dfrac{600}{0{,}03} = 20000\text{ Pa} = 20\text{ kPa}$$
-- Áp suất khi đứng co một chân:
-$$p_1 = \dfrac{F}{S_1} = \dfrac{600}{0{,}015} = 40000\text{ Pa} = 40\text{ kPa}$$""",
-        "real_life": r"""- **Kĩ thuật xây dựng và thủy lợi**: Đê chắn sóng và đập thủy điện luôn được xây có phần chân đê rộng hơn nhiều so với mặt đê vì càng xuống sâu áp suất nước $p = d \cdot h$ càng lớn.
-- **Cơ khí và đời sống**: Kích thủy lực nâng ô tô, phanh thủy lực, giác mút treo tường, ống hút nước, lỗ nhỏ trên nắp ấm trà giúp không khí tràn vào để rót nước dễ dàng.""",
-        "game_title": "Thử thách thực tế: Áp suất và Thủy lực",
-        "game_description": "Thay đổi diện tích chân đế, độ sâu tàu lặn và tỉ số diện tích pít-tông máy nén thủy lực để kiểm chứng các quy luật áp suất.",
-        "game_type": "game_chat_luu",
-        "quiz": [
-            mcq(
-                "biet",
-                r"Đơn vị đo áp suất पा-xcan ($\text{Pa}$) bằng đơn vị nào sau đây?",
-                [r"$1\text{ N}\cdot\text{m}$", r"$1\text{ N/m}^2$", r"$1\text{ N/m}^3$", r"$1\text{ kg/m}^3$"],
-                1,
-                r"Từ công thức $p = \dfrac{F}{S}$, đơn vị của áp suất là $\text{N/m}^2$ và $1\text{ Pa} = 1\text{ N/m}^2$.",
-            ),
-            mcq(
-                "biet",
-                r"Muốn làm tăng áp suất tác dụng lên một bề mặt thì ta có thể thực hiện cách nào sau đây?",
-                [
-                    r"Giảm áp lực và tăng diện tích bị ép",
-                    r"Giữ nguyên áp lực và tăng diện tích bị ép",
-                    r"Giữ nguyên áp lực và giảm diện tích bị ép",
-                    r"Giảm áp lực và giữ nguyên diện tích bị ép",
-                ],
-                2,
-                r"Theo công thức $p = \dfrac{F}{S}$, khi giữ nguyên áp lực $F$ và giảm diện tích bị ép $S$ thì áp suất $p$ sẽ tăng.",
-            ),
-            mcq(
-                "biet",
-                r"Công thức tính áp suất của chất lỏng tại một điểm ở độ sâu $h$ so với mặt thoáng chất lỏng (có trọng lượng riêng $d$) là:",
-                [r"$p = \dfrac{d}{h}$", r"$p = d \cdot h$", r"$p = \dfrac{h}{d}$", r"$p = d + h$"],
-                1,
-                r"Áp suất chất lỏng ở độ sâu $h$ tính từ mặt thoáng được xác định bởi công thức $p = d \cdot h$.",
-            ),
-            mcq(
-                "biet",
-                r"Hiện tượng nào sau đây là do áp suất khí quyển gây ra?",
-                [
-                    r"Quả táo rụng từ trên cây xuống mặt đất",
-                    r"Hộp sữa giấy bị bẹp lại về nhiều phía khi ta hút hết sữa và không khí bên trong hộp",
-                    r"Viên bi sắt lăn chậm dần trên sàn nhà do ma sát",
-                    r"Thanh sắt nở dài ra khi bị nung nóng",
-                ],
-                1,
-                r"Khi hút bớt không khí trong hộp sữa, áp suất bên trong nhỏ hơn áp suất khí quyển bên ngoài nên áp suất khí quyển ép bẹp vỏ hộp từ mọi phía.",
-            ),
-            mcq(
-                "hieu",
-                r"Một vật có trọng lượng $P = 180\text{ N}$ đặt trên mặt bàn nằm ngang, diện tích tiếp xúc giữa vật và mặt bàn là $S = 300\text{ cm}^2$. Áp suất của vật tác dụng lên mặt bàn là:",
-                [r"$0{,}6\text{ Pa}$", r"$600\text{ Pa}$", r"$6000\text{ Pa}$", r"$54000\text{ Pa}$"],
-                2,
-                r"Đổi $S = 300\text{ cm}^2 = 0{,}03\text{ m}^2$. Áp suất tác dụng lên mặt bàn là $p = \dfrac{F}{S} = \dfrac{180}{0{,}03} = 6000\text{ Pa}$.",
-            ),
-            mcq(
-                "hieu",
-                r"Một thợ lặn đang làm việc ở độ sâu $h = 20\text{ m}$ dưới mặt nước biển. Biết trọng lượng riêng của nước biển là $d = 10300\text{ N/m}^3$. Áp suất do riêng cột nước biển gây ra tại vị trí của thợ lặn là:",
-                [r"$20600\text{ Pa}$", r"$206000\text{ Pa}$", r"$515\text{ Pa}$", r"$103000\text{ Pa}$"],
-                1,
-                r"Áp suất do nước biển gây ra ở độ sâu $h = 20\text{ m}$ là $p = d \cdot h = 10300 \cdot 20 = 206000\text{ Pa}$.",
-            ),
-            tf4(
-                "hieu",
-                r"Một bình hình trụ cao $80\text{ cm}$ đựng đầy nước có trọng lượng riêng $d = 10000\text{ N/m}^3$. Xét một điểm $M$ nằm trong nước cách đáy bình $20\text{ cm}$. Xét tính đúng sai của các phát biểu sau:",
-                [
-                    r"a) Nước trong bình chỉ gây ra áp suất lên đáy bình chứ không gây áp suất lên thành bình.",
-                    r"b) Độ sâu của điểm $M$ tính từ mặt thoáng chất lỏng là $h_M = 60\text{ cm} = 0{,}6\text{ m}$.",
-                    r"c) Áp suất do nước gây ra tại điểm $M$ bằng $2000\text{ Pa}$.",
-                    r"d) Áp suất do nước gây ra tại đáy bình bằng $8000\text{ Pa}$.",
-                ],
-                [False, True, False, True],
-                r"a) Sai vì chất lỏng gây áp suất theo mọi phương lên cả đáy bình và thành bình. b) Đúng vì $h_M = 80 - 20 = 60\text{ cm} = 0{,}6\text{ m}$. c) Sai vì $p_M = d \cdot h_M = 10000 \cdot 0{,}6 = 6000\text{ Pa}$ (không lấy khoảng cách tới đáy bình). d) Đúng vì tại đáy bình $h = 0{,}8\text{ m} \Rightarrow p = 10000 \cdot 0{,}8 = 8000\text{ Pa}$.",
-            ),
-            tf4(
-                "hieu",
-                r"Xét các ứng dụng thực tế liên quan đến áp suất. Xét tính đúng sai của các phát biểu sau:",
-                [
-                    r"a) Lưỡi dao được mài mỏng và sắc để giảm diện tích tiếp xúc, giúp tăng áp suất khi thái thực phẩm.",
-                    r"b) Xe tăng chiến đấu có khối lượng rất lớn phải dùng bánh xích bản rộng để làm tăng áp suất lên mặt đất.",
-                    r"c) Khi đi máy bay lên cao hoặc đi cáp treo lên núi cao, áp suất khí quyển bên ngoài giảm đột ngột làm màng nhĩ bị đẩy ra phía ngoài gây ù tai.",
-                    r"d) Trong máy nén thủy lực, nếu diện tích pít-tông lớn gấp $25$ lần diện tích pít-tông nhỏ thì lực nâng ở pít-tông lớn gấp $25$ lần lực ép ở pít-tông nhỏ.",
-                ],
-                [True, False, True, True],
-                r"a) Đúng vì giảm $S$ thì tăng $p$. b) Sai vì bánh xích bản rộng làm tăng diện tích bị ép $S$ để giảm áp suất $p$, giúp xe không bị lún. c) Đúng vì càng lên cao áp suất khí quyển càng giảm. d) Đúng theo hệ thức $\dfrac{F_2}{F_1} = \dfrac{S_2}{S_1} = 25$.",
-            ),
-            mcq(
-                "vandung",
-                r"Một viên gạch hình hộp chữ nhật có các kích thước $20\text{ cm} \times 10\text{ cm} \times 5\text{ cm}$ và có trọng lượng $P = 20\text{ N}$ được đặt trên mặt sàn nằm ngang. Áp suất lớn nhất mà viên gạch có thể gây ra trên mặt sàn là:",
-                [r"$1000\text{ Pa}$", r"$2000\text{ Pa}$", r"$4000\text{ Pa}$", r"$500\text{ Pa}$"],
-                2,
-                r"Áp suất đạt giá trị lớn nhất khi diện tích mặt bị ép nhỏ nhất: $S_{\min} = 10\text{ cm} \times 5\text{ cm} = 50\text{ cm}^2 = 0{,}005\text{ m}^2$. Khi đó $p_{\max} = \dfrac{P}{S_{\min}} = \dfrac{20}{0{,}005} = 4000\text{ Pa}$.",
-            ),
-            short(
-                "vandung",
-                r"Một máy nâng thủy lực trong trạm bảo dưỡng có diện tích pít-tông nhỏ là $S_1 = 12\text{ cm}^2$ và diện tích pít-tông lớn là $S_2 = 300\text{ cm}^2$. Để nâng một chiếc ô tô có trọng lượng $F_2 = 15000\text{ N}$ thì cần tác dụng lên pít-tông nhỏ một lực $F_1$ tối thiểu bằng bao nhiêu $\text{N}$?",
-                ["600"],
-                r"Áp dụng công thức máy nén thủy lực: $\dfrac{F_1}{F_2} = \dfrac{S_1}{S_2} \Rightarrow F_1 = F_2 \cdot \dfrac{S_1}{S_2} = 15000 \cdot \dfrac{12}{300} = 600\text{ N}$.",
-            ),
+        example="Một người có trọng lượng $P = 600\\text{ N}$ đứng bằng cả hai bàn chân trên mặt sàn nằm ngang. Biết diện tích tiếp xúc của mỗi bàn chân với mặt sàn là $S_1 = 0{,}015\\text{ m}^2$. Hãy tính áp suất của người đó tác dụng lên mặt sàn.",
+        example_answer="Tổng diện tích bị ép của hai bàn chân là $S = 2 \\cdot 0{,}015 = 0{,}03\\text{ m}^2$. Áp lực lên mặt sàn bằng trọng lượng của người: $F = P = 600\\text{ N}$. Áp suất tác dụng lên sàn là $p = \\dfrac{F}{S} = \\dfrac{600}{0{,}03} = 20\\,000\\text{ Pa} = 20\\text{ kPa}$.",
+        real_life="Xe tăng nặng hàng chục tấn nhưng chạy được trên đất mềm nhờ lắp bản xích sắt có diện tích tiếp xúc $S$ rất lớn để làm giảm áp suất, còn lưỡi dao kéo được mài thật mỏng (diện tích $S$ rất nhỏ) để tạo áp suất lớn dễ cắt thái.",
+        quiz=[
+            mcq("biet", "Công thức tính áp suất $p$ trên một bề mặt chịu áp lực $F$ có diện tích bị ép $S$ là gì?", ["$p = \\dfrac{F}{S}$", "$p = F \\cdot S$", "$p = \\dfrac{S}{F}$", "$p = F + S$"], 0, "Áp suất bằng độ lớn áp lực chia cho diện tích bị ép: $p = \\dfrac{F}{S}$."),
+            mcq("biet", "Đơn vị đo áp suất Pascal ($\\text{Pa}$) tương ứng với biểu thức đơn vị nào sau đây?", ["$1\\text{ Pa} = 1\\text{ N/m}^2$", "$1\\text{ Pa} = 1\\text{ N}\\cdot\\text{m}^2$", "$1\\text{ Pa} = 1\\text{ kg/m}^3$", "$1\\text{ Pa} = 1\\text{ N/m}^3$"], 0, "Vì $p = \\dfrac{F}{S}$ nên $1\\text{ Pa} = 1\\text{ N/m}^2$."),
+            mcq("hieu", "Vì sao mũi đinh, mũi kim khâu và mũi kim tiêm đều được chế tạo rất nhọn?", ["Để giảm diện tích bị ép $S$, từ đó làm tăng mạnh áp suất giúp dễ đâm xuyên qua vật", "Để tăng diện tích bị ép $S$, giúp giảm áp suất", "Để làm giảm áp lực $F$ của tay", "Để tăng khối lượng của chiếc đinh"], 0, "Với cùng một áp lực $F$, mũi đinh càng nhọn thì diện tích bị ép $S$ càng nhỏ nên áp suất $p = \\dfrac{F}{S}$ càng lớn."),
+            tf4("hieu", "Xét tính đúng/sai của các phát biểu sau về áp lực và áp suất:", [
+                "Áp lực là lực ép có phương vuông góc với mặt bị ép.",
+                "Khi một người đang đứng bằng hai chân mà co một chân lên thì áp suất tác dụng lên mặt sàn tăng gấp đôi.",
+                "Bánh xe tăng dùng dây xích bản rộng có tác dụng làm tăng áp suất lên mặt đất mềm.",
+                "Một thùng hàng nặng $400\\text{ N}$ có diện tích đáy tiếp xúc sàn là $0{,}2\\text{ m}^2$ gây ra áp suất $2000\\text{ Pa}$.",
+            ], [True, True, False, True], "Ý c) sai vì dây xích bản rộng làm tăng diện tích tiếp xúc $S$ nhằm giảm áp suất để xe tăng không bị lún."),
+            short("vandung", "Một thùng gỗ có trọng lượng $F = 900\\text{ N}$ đặt trên mặt sàn nằm ngang với diện tích tiếp xúc là $S = 0{,}3\\text{ m}^2$. Áp suất của thùng gỗ tác dụng lên mặt sàn bằng bao nhiêu $\\text{Pa}$?", ["3000"], "Áp dụng công thức $p = \\dfrac{F}{S} = \\dfrac{900}{0{,}3} = 3000\\text{ Pa}$.", unit="Pa"),
         ],
-    },
-    # ===================== CHỦ ĐỀ 3: LỰC ĐẨY ARCHIMEDES =====================
-    {
-        "topic": "luc-day-archimedes",
-        "title": "Lực đẩy Archimedes và Sự nổi của vật",
-        "icon": "🚢",
-        "description": "Chương III · SGK Khoa học tự nhiên 8 Kết nối tri thức với cuộc sống (Bài 17): Phương, chiều và độ lớn của lực đẩy Archimedes, điều kiện định tính và định lượng để vật chìm, lơ lửng hoặc nổi trong chất lỏng.",
-        "requirements": [
-            r"Thực hiện thí nghiệm khảo sát tác dụng của chất lỏng lên vật đặt trong chất lỏng, rút ra được: điều kiện định tính về vật nổi, vật chìm; định luật Archimedes.",
-            r"Nêu được phương, chiều và vận dụng được công thức tính độ lớn của lực đẩy Archimedes: $F_{\text{A}} = d \cdot V$.",
-            r"Giải thích được điều kiện nổi, lơ lửng, chìm dựa trên so sánh trọng lượng riêng (hoặc khối lượng riêng) của vật và chất lỏng.",
-            r"Vận dụng được kiến thức về lực đẩy Archimedes để giải thích nguyên lí hoạt động của tàu thủy, tàu ngầm, khinh khí cầu và giải bài toán thực tế.",
+        chapter_desc=CH1_DESC,
+    ),
+    bai(
+        topic=CH1_TOPIC,
+        chapter_title=CH1_TITLE,
+        title="Bài 5: Áp suất chất lỏng và áp suất khí quyển",
+        icon="🌊",
+        description="Áp suất chất lỏng p = d.h, nguyên lý bình thông nhau, máy nén thủy lực và sự tồn tại của áp suất khí quyển.",
+        requirements=[
+            "Mô tả được chất lỏng gây ra áp suất theo mọi phương lên đáy bình, thành bình và các vật ở trong lòng nó.",
+            "Vận dụng được công thức tính áp suất chất lỏng $p = d \\cdot h$ và nguyên tắc máy nén thủy lực $\\dfrac{F_1}{F_2} = \\dfrac{S_1}{S_2}$.",
+            "Giải thích được sự tồn tại của áp suất khí quyển và các hiện tượng thực tế như giác mút, ống hút, lỗ thông khí trên nắp ấm trà.",
         ],
-        "definition": r"""- **Định luật Archimedes**: Một vật nhúng vào chất lỏng bị chất lỏng đẩy thẳng đứng từ dưới lên với một lực có độ lớn bằng trọng lượng của phần chất lỏng mà vật chiếm chỗ. Lực này gọi là **lực đẩy Archimedes** ($F_{\text{A}}$).
-- **Công thức**: $F_{\text{A}} = d \cdot V$ (trong đó $d$ là trọng lượng riêng của chất lỏng tính bằng $\text{N/m}^3$, $V$ là thể tích phần chất lỏng bị vật chiếm chỗ tính bằng $\text{m}^3$).""",
-        "theory": r"""### Bài 17. Lực đẩy Archimedes
-- **Tác dụng của chất lỏng lên vật nhúng trong nó**: Mọi vật nhúng trong chất lỏng (hoặc chất khí) đều chịu tác dụng của một lực đẩy có **phương thẳng đứng**, **chiều từ dưới lên trên** gọi là lực đẩy Archimedes.
-- **Độ lớn của lực đẩy Archimedes**: Khi treo vật vào lực kế ngoài không khí, lực kế chỉ trọng lượng $P$ của vật; khi nhúng vật vào chất lỏng, lực kế chỉ giá trị $F < P$. Độ giảm số chỉ của lực kế chính là độ lớn lực đẩy Archimedes: $F_{\text{A}} = P - F$. Theo định luật Archimedes: $F_{\text{A}} = d_{\text{lỏng}} \cdot V_{\text{chìm}}$.
-- **Điều kiện định tính và định lượng về sự nổi của vật**: Khi thả một vật đặc có trọng lượng $P = d_{\text{vật}} \cdot V$ vào trong lòng chất lỏng có trọng lượng riêng $d_{\text{lỏng}}$:
-  + Vật **chìm xuống** đáy bình khi $P > F_{\text{A}}$ hay $d_{\text{vật}} > d_{\text{lỏng}}$ ($D_{\text{vật}} > D_{\text{lỏng}}$).
-  + Vật **lơ lửng** trong lòng chất lỏng khi $P = F_{\text{A}}$ hay $d_{\text{vật}} = d_{\text{lỏng}}$ ($D_{\text{vật}} = D_{\text{lỏng}}$).
-  + Vật **nổi lên** mặt thoáng khi $P < F_{\text{A}}$ hay $d_{\text{vật}} < d_{\text{lỏng}}$ ($D_{\text{vật}} < D_{\text{lỏng}}$).
-- **Trạng thái cân bằng khi vật nổi trên mặt thoáng**: Khi vật đã nổi lên và đứng yên cân bằng trên mặt thoáng chất lỏng (một phần thể tích $V_{\text{chìm}}$ ngập dưới mặt thoáng), lực đẩy Archimedes lúc đó cân bằng với trọng lượng của vật: $F_{\text{A}} = P \iff d_{\text{lỏng}} \cdot V_{\text{chìm}} = d_{\text{vật}} \cdot V_{\text{vật}}$.""",
-        "formulas": [
+        definition="Chất lỏng gây ra áp suất theo mọi phương lên đáy bình, thành bình và các vật ở trong lòng nó. Tại độ sâu $h$ tính từ mặt thoáng chất lỏng, áp suất do cột chất lỏng gây ra là $p = d \\cdot h$.",
+        theory=(
+            "### 1. Áp suất chất lỏng và bình thông nhau\n"
+            "- Công thức áp suất chất lỏng: $p = d \\cdot h$, trong đó $d$ là trọng lượng riêng chất lỏng ($\\text{N/m}^3$), $h$ là **độ sâu tính từ mặt thoáng chất lỏng đến điểm xét** ($\\text{m}$).\n"
+            "- **Bình thông nhau**: Trong bình thông nhau chứa cùng một chất lỏng đứng yên, các mặt thoáng của chất lỏng ở các nhánh khác nhau đều ở cùng một độ cao.\n"
+            "- **Máy nén thủy lực**: Áp suất tác dụng lên chất lỏng trong bình kín được truyền nguyên vẹn đi mọi hướng (nguyên lí Pascal), do đó $\\dfrac{F_1}{F_2} = \\dfrac{S_1}{S_2}$.\n\n"
+            "### 2. Áp suất khí quyển\n"
+            "- Trái Đất được bao bọc bởi lớp khí quyển dày hàng ngàn kilômét; vì không khí có trọng lượng nên gây ra **áp suất khí quyển** theo mọi phương (ở ngang mực nước biển $p_0 \\approx 101\\,300\\text{ Pa} \\approx 760\\text{ mmHg}$).\n"
+            "- Càng lên cao, không khí càng loãng nên áp suất khí quyển càng giảm."
+        ),
+        formulas=[
             G(
-                "I. Độ lớn lực đẩy Archimedes",
-                F("Công thức định luật Archimedes", r"$F_{\text{A}} = d_{\text{lỏng}} \cdot V_{\text{chìm}} = 10D_{\text{lỏng}} \cdot V_{\text{chìm}}$", r"$d_{\text{lỏng}}$ ($\text{N/m}^3$), $V_{\text{chìm}}$ ($\text{m}^3$): thể tích phần vật ngập trong chất lỏng"),
-                F(r"Xác định $F_{\text{A}}$ bằng lực kế", r"$F_{\text{A}} = P - F_{\text{biểu kiến}}$", r"$P$: số chỉ lực kế ngoài không khí; $F_{\text{biểu kiến}}$: số chỉ lực kế khi nhúng vật vào chất lỏng"),
-            ),
+                "Áp suất chất lỏng và Máy nén thủy lực",
+                F("Công thức áp suất chất lỏng ở độ sâu h", "$p = d \\cdot h = 10 \\cdot D \\cdot h$", "Lưu ý $h$ luôn tính từ mặt thoáng chất lỏng xuống điểm đang xét (không phải khoảng cách từ điểm đó xuống đáy bình)."),
+                F("Hệ thức máy nén thủy lực (Nguyên lí Pascal)", "$\\dfrac{F_1}{F_2} = \\dfrac{S_1}{S_2} \\implies F_2 = F_1 \\cdot \\dfrac{S_2}{S_1}$", "Nếu diện tích pít-tông lớn $S_2$ gấp $k$ lần diện tích pít-tông nhỏ $S_1$ thì lực nâng $F_2$ lớn gấp $k$ lần lực ép $F_1$."),
+            )
+        ],
+        example="Một người thợ lặn đang lặn ở độ sâu $h = 15\\text{ m}$ dưới mặt nước biển. Biết trọng lượng riêng của nước biển là $d = 10\\,300\\text{ N/m}^3$. Hãy tính áp suất của cột nước biển tác dụng lên người thợ lặn ở độ sâu đó.",
+        example_answer="Áp suất do cột nước biển gây ra ở độ sâu $h = 15\\text{ m}$ là $p = d \\cdot h = 10\\,300 \\cdot 15 = 154\\,500\\text{ Pa} = 154{,}5\\text{ kPa}$.",
+        real_life="Đê chắn nước và đập thủy điện luôn có phần chân đập xây rộng và dày hơn phần đỉnh đập vì càng xuống sâu dưới nước, áp suất chất lỏng $p = d \\cdot h$ càng lớn.",
+        quiz=[
+            mcq("biet", "Công thức tính áp suất chất lỏng $p$ tại một điểm ở độ sâu $h$ so với mặt thoáng chất lỏng có trọng lượng riêng $d$ là gì?", ["$p = d \\cdot h$", "$p = \\dfrac{d}{h}$", "$p = \\dfrac{h}{d}$", "$p = d + h$"], 0, "Áp suất chất lỏng tại độ sâu $h$ được tính bằng công thức $p = d \\cdot h$."),
+            mcq("biet", "Trong một bình thông nhau chứa cùng một chất lỏng đứng yên, mực chất lỏng ở các nhánh có đặc điểm gì?", ["Luôn ở cùng một độ cao dù tiết diện các nhánh khác nhau", "Nhánh nào to hơn thì mực chất lỏng thấp hơn", "Nhánh nào nhỏ hơn thì mực chất lỏng thấp hơn", "Phụ thuộc vào hình dạng cong hay thẳng của nhánh"], 0, "Trong bình thông nhau chứa cùng một chất lỏng đứng yên, các mặt thoáng luôn ở cùng một độ cao."),
+            mcq("hieu", "Vì sao trên nắp ấm pha trà thường có một lỗ nhỏ thông với không khí bên ngoài?", ["Để áp suất khí quyển đẩy vào mặt nước trong ấm, giúp rót nước trà ra khỏi vòi dễ dàng", "Để hơi nước không bay ra ngoài được", "Để làm giảm khối lượng của chiếc nắp ấm", "Để tăng nhiệt độ sôi của nước trong ấm"], 0, "Nhờ lỗ nhỏ trên nắp ấm, áp suất khí quyển nén lên mặt nước bên trong cân bằng với áp suất khí quyển ở đầu vòi, giúp nước chảy ra đều đặn."),
+            tf4("hieu", "Xét tính đúng/sai của các phát biểu sau về áp suất chất lỏng và áp suất khí quyển:", [
+                "Càng lặn sâu xuống đáy biển, áp suất của nước biển tác dụng lên cơ thể người thợ lặn càng lớn.",
+                "Một thùng cao $1{,}2\\text{ m}$ chứa đầy nước ($d = 10\\,000\\text{ N/m}^3$) gây ra áp suất ở đáy thùng là $12\\,000\\text{ Pa}$.",
+                "Càng lên đỉnh núi cao, áp suất khí quyển càng tăng mạnh.",
+                "Kích thủy lực dùng để nâng ô tô hoạt động dựa trên sự truyền nguyên vẹn áp suất trong chất lỏng.",
+            ], [True, True, False, True], "Ý c) sai vì càng lên cao không khí càng loãng và bề dày lớp khí quyển phía trên giảm nên áp suất khí quyển giảm."),
+            short("vandung", "Một bể bơi chứa nước ngọt ($d = 10\\,000\\text{ N/m}^3$) có độ sâu của nước là $h = 2\\text{ m}$. Áp suất do nước gây ra tại đáy bể bơi bằng bao nhiêu $\\text{Pa}$?", ["20000"], "Áp dụng công thức $p = d \\cdot h = 10\\,000 \\cdot 2 = 20\\,000\\text{ Pa}$.", unit="Pa"),
+        ],
+        chapter_desc=CH1_DESC,
+    ),
+    bai(
+        topic=CH2_TOPIC,
+        chapter_title=CH2_TITLE,
+        title="Bài 6: Tác dụng làm quay của lực. Moment lực",
+        icon="🔧",
+        description="Điều kiện để lực làm quay vật quanh một trục, khái niệm cánh tay đòn và công thức moment lực M = F.d.",
+        requirements=[
+            "Nêu được khi giá của lực không cắt trục quay và không song song với trục quay thì lực có tác dụng làm vật quay quanh trục đó.",
+            "Xác định được cánh tay đòn $d$ của lực là khoảng cách vuông góc từ trục quay đến giá của lực.",
+            "Viết và vận dụng được công thức tính moment lực $M = F \\cdot d$ (đơn vị $\\text{N}\\cdot\\text{m}$).",
+        ],
+        definition="Moment lực đối với một trục quay là đại lượng đặc trưng cho tác dụng làm quay của lực và được đo bằng tích của độ lớn lực $F$ với cánh tay đòn $d$ của nó: $M = F \\cdot d$ (đơn vị $\\text{N}\\cdot\\text{m}$).",
+        theory=(
+            "### 1. Tác dụng làm quay của lực\n"
+            "- Một lực tác dụng lên vật có trục quay cố định $O$ sẽ làm quay vật nếu **giá của lực không đi qua trục quay** ($d > 0$) và không song song với trục quay.\n"
+            "- **Cánh tay đòn ($d$)**: khoảng cách vuông góc từ trục quay $O$ đến giá của lực $\\vec{F}$ (đơn vị $\\text{m}$).\n\n"
+            "### 2. Công thức tính Moment lực\n"
+            "- Độ lớn moment lực:\n"
+            "  $$M = F \\cdot d$$\n"
+            "- Đơn vị của moment lực trong hệ SI là **Newton nhân mét** ($\\text{N}\\cdot\\text{m}$).\n"
+            "- Lực $F$ càng lớn hoặc cánh tay đòn $d$ càng dài thì moment lực $M$ càng lớn (tác dụng làm quay càng mạnh)."
+        ),
+        formulas=[
             G(
-                "II. Điều kiện nổi, chìm và cân bằng trên mặt thoáng",
-                F("So sánh theo khối lượng riêng", r"$D_{\text{vật}} > D_{\text{lỏng}}\text{: chìm};\quad D_{\text{vật}} = D_{\text{lỏng}}\text{: lơ lửng};\quad D_{\text{vật}} < D_{\text{lỏng}}\text{: nổi}$", r""),
-                F("Khi vật nổi đứng yên trên mặt thoáng", r"$F_{\text{A}} = P \iff d_{\text{lỏng}} \cdot V_{\text{chìm}} = d_{\text{vật}} \cdot V_{\text{vật}} \Rightarrow \dfrac{V_{\text{chìm}}}{V_{\text{vật}}} = \dfrac{D_{\text{vật}}}{D_{\text{lỏng}}}$", r"Tỉ lệ phần thể tích chìm bằng tỉ số khối lượng riêng"),
-            ),
+                "Công thức tính Moment lực",
+                F("Biểu thức tính moment lực", "$M = F \\cdot d$", "Trong đó $F$ là độ lớn của lực ($\\text{N}$), $d$ là cánh tay đòn ($\\text{m}$), $M$ có đơn vị $\\text{N}\\cdot\\text{m}$."),
+                F("Khi giá của lực đi qua trục quay", "$d = 0 \\implies M = 0$", "Lực có giá cắt trục quay thì không gây ra tác dụng làm quay vật."),
+            )
         ],
-        "example": r"Một vật bằng kim loại đặc khi treo vào lực kế ở ngoài không khí thì lực kế chỉ $P = 7{,}8\text{ N}$. Khi nhúng vật chìm hoàn toàn vào trong nước (có trọng lượng riêng $d_0 = 10000\text{ N/m}^3$) thì lực kế chỉ $F = 6{,}8\text{ N}$. Tính độ lớn lực đẩy Archimedes tác dụng lên vật, thể tích của vật và khối lượng riêng của kim loại làm vật.",
-        "example_answer": r"""- Độ lớn lực đẩy Archimedes tác dụng lên vật là:
-$$F_{\text{A}} = P - F = 7{,}8 - 6{,}8 = 1{,}0\text{ N}$$
-- Thể tích của vật (do vật chìm hoàn toàn nên $V = V_{\text{chìm}}$):
-$$V = \dfrac{F_{\text{A}}}{d_0} = \dfrac{1{,}0}{10000} = 10^{-4}\text{ m}^3 = 100\text{ cm}^3$$
-- Trọng lượng riêng và khối lượng riêng của kim loại làm vật là:
-$$d = \dfrac{P}{V} = \dfrac{7{,}8}{10^{-4}} = 78000\text{ N/m}^3 \Rightarrow D = \dfrac{d}{10} = 7800\text{ kg/m}^3\text{ (sắt/thép)}$$""",
-        "real_life": r"""- **Đóng tàu thủy**: Thép có khối lượng riêng lớn hơn nước rất nhiều ($7800\text{ kg/m}^3 > 1000\text{ kg/m}^3$), nhưng tàu biển được chế tạo có khoang rỗng lớn nên khối lượng riêng trung bình của con tàu nhỏ hơn nước, giúp tàu nổi và chở được hàng chục nghìn tấn hàng.
-- **Tàu ngầm và khinh khí cầu**: Tàu ngầm điều chỉnh việc lặn xuống hay nổi lên bằng cách bơm nước biển vào hoặc đẩy nước ra khỏi các khoang chứa nước bằng khí nén.""",
-        "game_title": "Thử thách thực tế: Lực đẩy Archimedes",
-        "game_description": "Chất hàng hóa lên tàu và điều chỉnh khoang dằn tàu ngầm để khảo sát lực đẩy Archimedes cùng điều kiện nổi - chìm.",
-        "game_type": "simulation",
-        "quiz": [
-            mcq(
-                "biet",
-                r"Lực đẩy Archimedes tác dụng lên một vật nhúng trong chất lỏng có phương và chiều như thế nào?",
-                [
-                    r"Phương thẳng đứng, chiều từ trên xuống dưới",
-                    r"Phương thẳng đứng, chiều từ dưới lên trên",
-                    r"Phương nằm ngang, chiều từ trái sang phải",
-                    r"Phương vuông góc với mặt bên của vật theo mọi hướng",
-                ],
-                1,
-                r"Lực đẩy Archimedes luôn có phương thẳng đứng và chiều hướng từ dưới lên trên.",
-            ),
-            mcq(
-                "biet",
-                r"Trong công thức tính độ lớn lực đẩy Archimedes $F_{\text{A}} = d \cdot V$, đại lượng $d$ và $V$ lần lượt là:",
-                [
-                    r"Trọng lượng riêng của vật và thể tích của toàn bộ vật",
-                    r"Trọng lượng riêng của chất lỏng và thể tích phần chất lỏng bị vật chiếm chỗ",
-                    r"Khối lượng riêng của chất lỏng và thể tích toàn bộ chất lỏng trong bình",
-                    r"Trọng lượng riêng của chất lỏng và diện tích mặt đáy của vật",
-                ],
-                1,
-                r"Theo định luật Archimedes, $d$ là trọng lượng riêng của chất lỏng ($\text{N/m}^3$) và $V$ là thể tích phần chất lỏng bị vật chiếm chỗ ($\text{m}^3$).",
-            ),
-            mcq(
-                "biet",
-                r"Thả một vật đặc có trọng lượng riêng $d_{\text{vật}}$ vào trong một chất lỏng có trọng lượng riêng $d_{\text{lỏng}}$. Vật sẽ nổi lên mặt thoáng khi:",
-                [
-                    r"$d_{\text{vật}} > d_{\text{lỏng}}$",
-                    r"$d_{\text{vật}} = d_{\text{lỏng}}$",
-                    r"$d_{\text{vật}} < d_{\text{lỏng}}$",
-                    r"$d_{\text{vật}} = 2d_{\text{lỏng}}$",
-                ],
-                2,
-                r"Khi $d_{\text{vật}} < d_{\text{lỏng}}$ thì trọng lượng của vật nhỏ hơn lực đẩy Archimedes cực đại khi ngập hoàn toàn nên vật nổi lên.",
-            ),
-            mcq(
-                "biet",
-                r"Treo một vật vào lực kế ngoài không khí thì lực kế chỉ $12\text{ N}$. Khi nhúng vật chìm trong nước thì lực kế chỉ $8{,}5\text{ N}$. Độ lớn lực đẩy Archimedes tác dụng lên vật là:",
-                [r"$20{,}5\text{ N}$", r"$8{,}5\text{ N}$", r"$3{,}5\text{ N}$", r"$12\text{ N}$"],
-                2,
-                r"Độ lớn lực đẩy Archimedes bằng độ giảm số chỉ của lực kế: $F_{\text{A}} = P - F = 12 - 8{,}5 = 3{,}5\text{ N}$.",
-            ),
-            mcq(
-                "hieu",
-                r"Một quả cầu bằng sắt có thể tích $V = 400\text{ cm}^3$ được nhúng chìm hoàn toàn trong nước có trọng lượng riêng $d = 10000\text{ N/m}^3$. Lực đẩy Archimedes tác dụng lên quả cầu có độ lớn là:",
-                [r"$4000\text{ N}$", r"$40\text{ N}$", r"$4\text{ N}$", r"$0{,}4\text{ N}$"],
-                2,
-                r"Đổi $V = 400\text{ cm}^3 = 4 \cdot 10^{-4}\text{ m}^3$. Lực đẩy Archimedes là $F_{\text{A}} = d \cdot V = 10000 \cdot 4 \cdot 10^{-4} = 4\text{ N}$.",
-            ),
-            mcq(
-                "hieu",
-                r"Hai quả cầu đặc có cùng thể tích $V$, quả cầu thứ nhất bằng nhôm ($D_1 = 2700\text{ kg/m}^3$) và quả cầu thứ hai bằng đồng ($D_2 = 8900\text{ kg/m}^3$), cùng được nhúng chìm hoàn toàn vào một bể nước. So sánh lực đẩy Archimedes $F_{\text{A1}}$ và $F_{\text{A2}}$ tác dụng lên hai quả cầu:",
-                [r"$F_{\text{A1}} < F_{\text{A2}}$", r"$F_{\text{A1}} > F_{\text{A2}}$", r"$F_{\text{A1}} = F_{\text{A2}}$", r"$F_{\text{A2}} = 3F_{\text{A1}}$"],
-                2,
-                r"Vì hai quả cầu có cùng thể tích $V$ và đều chìm hoàn toàn trong cùng một chất lỏng (nước) nên $F_{\text{A1}} = F_{\text{A2}} = d_{\text{nước}} \cdot V$.",
-            ),
-            tf4(
-                "hieu",
-                r"Một khối gỗ đặc có thể tích $V = 1000\text{ cm}^3$ và khối lượng riêng $D_{\text{gỗ}} = 600\text{ kg/m}^3$ được thả vào một bể nước có khối lượng riêng $D_{\text{nước}} = 1000\text{ kg/m}^3$. Xét tính đúng sai của các phát biểu sau:",
-                [
-                    r"a) Trọng lượng của khối gỗ ngoài không khí là $P = 6\text{ N}$.",
-                    r"b) Khi thả vào bể nước, khối gỗ sẽ chìm hẳn xuống đáy bể vì có thể tích lớn.",
-                    r"c) Khi khối gỗ nổi và đứng yên cân bằng trên mặt nước, độ lớn lực đẩy Archimedes tác dụng lên khối gỗ bằng đúng $6\text{ N}$.",
-                    r"d) Thể tích phần khối gỗ chìm dưới mặt nước khi cân bằng là $600\text{ cm}^3$.",
-                ],
-                [True, False, True, True],
-                r"a) Đúng vì $m = D_{\text{gỗ}} \cdot V = 600 \cdot 10^{-3} = 0{,}6\text{ kg} \Rightarrow P = 10m = 6\text{ N}$. b) Sai vì $D_{\text{gỗ}} < D_{\text{nước}}$ nên khối gỗ nổi. c) Đúng vì khi nổi cân bằng thì $F_{\text{A}} = P = 6\text{ N}$. d) Đúng vì $V_{\text{chìm}} = \dfrac{F_{\text{A}}}{d_{\text{nước}}} = \dfrac{6}{10000} = 6 \cdot 10^{-4}\text{ m}^3 = 600\text{ cm}^3$.",
-            ),
-            tf4(
-                "hieu",
-                r"Một con tàu vận tải đi từ sông (nước ngọt có $d_1 = 10000\text{ N/m}^3$) ra biển (nước mặn có $d_2 = 10300\text{ N/m}^3$), giả sử tổng khối lượng của tàu không thay đổi. Xét tính đúng sai của các phát biểu sau:",
-                [
-                    r"a) Trọng lượng $P$ của con tàu khi ở trên biển lớn hơn khi ở trên sông.",
-                    r"b) Vì tàu đều nổi cân bằng trên mặt nước nên lực đẩy Archimedes tác dụng lên tàu khi ở trên sông và khi ở trên biển có độ lớn bằng nhau ($F_{\text{A1}} = F_{\text{A2}} = P$).",
-                    r"c) Thể tích phần vỏ tàu chìm trong nước biển nhỏ hơn thể tích phần vỏ tàu chìm trong nước sông.",
-                    r"d) Khi đi từ sông ra biển, mớn nước của tàu hạ thấp xuống (thân tàu nhô cao lên thêm một chút).",
-                ],
-                [False, True, True, True],
-                r"a) Sai vì khối lượng tàu không đổi nên trọng lượng $P$ không đổi. b) Đúng vì ở cả hai nơi tàu đều nổi cân bằng nên $F_{\text{A1}} = F_{\text{A2}} = P$. c) Đúng vì $d_1 V_{\text{chìm 1}} = d_2 V_{\text{chìm 2}}$, mà $d_2 > d_1$ nên $V_{\text{chìm 2}} < V_{\text{chìm 1}}$. d) Đúng vì thể tích phần chìm giảm nên thân tàu nhô cao lên.",
-            ),
-            mcq(
-                "vandung",
-                r"Một vật đặc có khối lượng $m = 540\text{ g}$ và khối lượng riêng $D = 2{,}7\text{ g/cm}^3$ được treo vào lực kế rồi nhúng chìm hoàn toàn vào một bình đựng dầu có trọng lượng riêng $d_{\text{dầu}} = 8000\text{ N/m}^3$. Số chỉ của lực kế khi đó là:",
-                [r"$5{,}4\text{ N}$", r"$1{,}6\text{ N}$", r"$3{,}8\text{ N}$", r"$3{,}4\text{ N}$"],
-                2,
-                r"Trọng lượng của vật ngoài không khí là $P = 10m = 10 \cdot 0{,}54 = 5{,}4\text{ N}$. Thể tích của vật là $V = \dfrac{m}{D} = \dfrac{540}{2{,}7} = 200\text{ cm}^3 = 2 \cdot 10^{-4}\text{ m}^3$. Lực đẩy Archimedes của dầu là $F_{\text{A}} = d_{\text{dầu}} \cdot V = 8000 \cdot 2 \cdot 10^{-4} = 1{,}6\text{ N}$. Số chỉ lực kế là $F = P - F_{\text{A}} = 5{,}4 - 1{,}6 = 3{,}8\text{ N}$.",
-            ),
-            short(
-                "vandung",
-                r"Một tảng băng trôi trên mặt biển có thể tích phần nhô lên khỏi mặt nước biển là $V_{\text{nổi}} = 100\text{ m}^3$. Biết khối lượng riêng của băng là $D_{\text{băng}} = 920\text{ kg/m}^3$ và của nước biển là $D_{\text{biển}} = 1020\text{ kg/m}^3$. Tính tổng thể tích $V$ của cả tảng băng theo đơn vị $\text{m}^3$.",
-                ["1020"],
-                r"Gọi tổng thể tích tảng băng là $V$ ($\text{m}^3$), thể tích phần chìm dưới nước biển là $V_{\text{chìm}} = V - 100$. Khi băng nổi cân bằng: $F_{\text{A}} = P \iff D_{\text{biển}} \cdot (V - 100) = D_{\text{băng}} \cdot V \iff 1020(V - 100) = 920V \iff 100V = 102000 \Rightarrow V = 1020\text{ m}^3$.",
-            ),
+        example="Một người thợ dùng cờ-lê để vặn một đai ốc với lực $F = 40\\text{ N}$ vuông góc với thân cờ-lê tại điểm cách tâm đai ốc (trục quay) một khoảng $d = 25\\text{ cm} = 0{,}25\\text{ m}$. Hãy tính moment lực do người thợ tạo ra.",
+        example_answer="Đổi $d = 25\\text{ cm} = 0{,}25\\text{ m}$. Moment lực tác dụng lên đai ốc là $M = F \\cdot d = 40 \\cdot 0{,}25 = 10\\text{ N}\\cdot\\text{m}$.",
+        real_life="Tay nắm cửa luôn được lắp ở mép ngoài cánh cửa (xa bản lề nhất) để tăng cánh tay đòn $d$, giúp mở cửa nhẹ nhàng với một lực nhỏ.",
+        quiz=[
+            mcq("biet", "Công thức tính moment lực $M$ của một lực $F$ có cánh tay đòn $d$ đối với trục quay là gì?", ["$M = F \\cdot d$", "$M = \\dfrac{F}{d}$", "$M = \\dfrac{d}{F}$", "$M = F + d$"], 0, "Moment lực bằng tích độ lớn của lực với cánh tay đòn của nó: $M = F \\cdot d$."),
+            mcq("biet", "Đơn vị của moment lực trong hệ SI là gì?", ["$\\text{N}\\cdot\\text{m}$", "$\\text{N/m}$", "$\\text{N/m}^2$", "$\\text{kg}\\cdot\\text{m}$"], 0, "Vì $F$ tính bằng $\\text{N}$ và $d$ tính bằng $\\text{m}$ nên moment lực $M = F \\cdot d$ có đơn vị $\\text{N}\\cdot\\text{m}$."),
+            mcq("hieu", "Vì sao để tháo một chiếc bu-lông bị rỉ sét chặt, người thợ máy thường nối thêm một đoạn ống thép dài vào cán cờ-lê?", ["Để làm tăng cánh tay đòn $d$, từ đó làm tăng moment lực $M$ giúp vặn bu-lông dễ hơn", "Để làm giảm cánh tay đòn $d$", "Để làm giảm moment lực $M$", "Để giá của lực đi qua tâm bu-lông"], 0, "Nối dài cán cờ-lê giúp tăng cánh tay đòn $d$, nên với cùng một lực tay $F$ sẽ tạo ra moment lực $M = F \\cdot d$ lớn hơn nhiều."),
+            tf4("hieu", "Xét tính đúng/sai của các phát biểu sau về moment lực:", [
+                "Cánh tay đòn của lực là khoảng cách vuông góc từ trục quay đến giá của lực.",
+                "Nếu lực tác dụng có giá đi thẳng qua bản lề (trục quay) của cánh cửa thì cánh cửa sẽ không quay.",
+                "Tác dụng làm quay của lực chỉ phụ thuộc vào độ lớn của lực mà không phụ thuộc vị trí đặt lực.",
+                "Một lực $20\\text{ N}$ có cánh tay đòn $0{,}5\\text{ m}$ tạo ra moment lực bằng $10\\text{ N}\\cdot\\text{m}$.",
+            ], [True, True, False, True], "Ý c) sai vì tác dụng làm quay phụ thuộc vào cả độ lớn lực $F$ lẫn cánh tay đòn $d$."),
+            short("vandung", "Tác dụng một lực $F = 50\\text{ N}$ vuông góc với cánh cửa tại tay nắm cách trục bản lề một khoảng $d = 0{,}8\\text{ m}$. Moment của lực đó bằng bao nhiêu $\\text{N}\\cdot\\text{m}$?", ["40"], "Áp dụng công thức $M = F \\cdot d = 50 \\cdot 0{,}8 = 40\\text{ N}\\cdot\\text{m}$.", unit="N.m"),
         ],
-    },
-    # ===================== CHỦ ĐỀ 4: MOMENT LỰC VÀ ĐÒN BẨY =====================
-    {
-        "topic": "moment-luc-don-bay",
-        "title": "Tác dụng làm quay của lực, Moment lực và Đòn bẩy",
-        "icon": "🔧",
-        "description": "Chương IV · SGK Khoa học tự nhiên 8 Kết nối tri thức với cuộc sống (Bài 18 – Bài 19): Tác dụng làm quay của lực quanh một trục, khái niệm cánh tay đòn, công thức tính moment lực và nguyên tắc hoạt động của các loại đòn bẩy.",
-        "requirements": [
-            r"Thực hiện thí nghiệm để mô tả được tác dụng làm quay của lực lên một vật có trục quay cố định hoặc có điểm tựa.",
-            r"Nêu được tác dụng làm quay của lực lên một vật quanh một điểm hoặc một trục được đặc trưng bằng moment lực; tính được moment lực theo công thức $M = F \cdot d$.",
-            r"Dùng dụng cụ đơn giản, minh họa được đòn bẩy có thể làm thay đổi hướng tác dụng của lực và làm giảm lực nâng vật khi quy tắc cân bằng $F_1 \cdot d_1 = F_2 \cdot d_2$ thỏa mãn.",
-            r"Lấy được ví dụ và phân loại được một số đòn bẩy trong thực tiễn (đòn bẩy loại 1, loại 2, loại 3) cũng như hệ đòn bẩy trên cơ thể người để sử dụng an toàn, hiệu quả.",
+        chapter_desc=CH2_DESC,
+    ),
+    bai(
+        topic=CH2_TOPIC,
+        chapter_title=CH2_TITLE,
+        title="Bài 7: Đòn bẩy và ứng dụng",
+        icon="⚖️",
+        description="Cấu tạo đòn bẩy (điểm tựa O, hai lực F₁ và F₂), điều kiện cân bằng đòn bẩy F₁.d₁ = F₂.d₂ và các loại đòn bẩy.",
+        requirements=[
+            "Chỉ ra được các yếu tố của một đòn bẩy: điểm tựa (trục quay) $O$, điểm tác dụng của lực nâng vật $F_1$ và lực tác dụng của người $F_2$.",
+            "Vận dụng được điều kiện cân bằng của đòn bẩy: $F_1 \\cdot d_1 = F_2 \\cdot d_2$ (hay $\\dfrac{F_1}{F_2} = \\dfrac{d_2}{d_1}$).",
+            "Phân loại và lấy được ví dụ về các loại đòn bẩy trong kỹ thuật, đời sống và trên cơ thể người.",
         ],
-        "definition": r"""- **Moment lực** ($M$) đối với một trục quay là đại lượng đặc trưng cho tác dụng làm quay của lực và được đo bằng tích của độ lớn lực ($F$) với cánh tay đòn ($d$) của nó: $M = F \cdot d$ (đơn vị $\text{N}\cdot\text{m}$).
-- **Cánh tay đòn** ($d$) của lực là khoảng cách vuông góc từ trục quay (hoặc điểm tựa $O$) đến giá của lực.
-- **Điều kiện cân bằng của đòn bẩy**: $F_1 \cdot d_1 = F_2 \cdot d_2$.""",
-        "theory": r"""### Bài 18. Tác dụng làm quay của lực. Moment lực
-- **Tác dụng làm quay của lực**: Khi lực tác dụng vào một vật có trục quay cố định mà giá của lực không cắt và không song song với trục quay thì lực đó có tác dụng làm vật quay quanh trục. Nếu giá của lực đi qua trục quay ($d = 0$) thì lực không có tác dụng làm quay vật.
-- **Moment lực**: Tác dụng làm quay của lực phụ thuộc vào độ lớn của lực $F$ và khoảng cách vuông góc $d$ từ trục quay đến giá của lực (cánh tay đòn). Công thức tính moment lực là $M = F \cdot d$, trong đó $F$ đo bằng niu-tơn ($\text{N}$), $d$ đo bằng mét ($\text{m}$) và $M$ có đơn vị là niu-tơn mét ($\text{N}\cdot\text{m}$). Lực càng lớn và cánh tay đòn càng dài thì tác dụng làm quay càng mạnh.
-### Bài 19. Đòn bẩy và ứng dụng
-- **Cấu tạo và quy tắc cân bằng của đòn bẩy**: Đòn bẩy là một thanh cứng có thể quay quanh một điểm tựa cố định $O$. Khi đòn bẩy cân bằng dưới tác dụng của hai lực $F_1$ và $F_2$ có cánh tay đòn tương ứng $d_1$ và $d_2$, moment của hai lực đối với điểm tựa $O$ phải bằng nhau: $F_1 \cdot d_1 = F_2 \cdot d_2 \iff \dfrac{F_1}{F_2} = \dfrac{d_2}{d_1}$. Muốn dùng lực $F_2$ nhỏ hơn trọng lượng $F_1$ của vật thì cánh tay đòn $d_2$ phải lớn hơn $d_1$.
-- **Ba loại đòn bẩy trong thực tiễn**:
-  + **Đòn bẩy loại 1**: Điểm tựa $O$ nằm ở khoảng giữa điểm đặt của vật ($F_1$) và điểm đặt lực tác dụng ($F_2$). Đòn bẩy này làm đổi hướng của lực và cho lợi về lực nếu $d_2 > d_1$ (ví dụ: bập bênh, cái kéo, kìm cắt sắt, xà beng bẩy đá, mái chèo thuyền).
-  + **Đòn bẩy loại 2 (có điểm tựa ở một đầu, vật ở giữa)**: Điểm tựa $O$ ở một đầu, vật chịu lực đặt ở giữa $O$ và lực tác dụng $F_2$. Vì luôn có $d_2 > d_1$ nên đòn bẩy này **luôn cho lợi về lực** (ví dụ: xe rùa đẩy vật liệu, dụng cụ mở nắp chai, kẹp tách hạt cứng, khớp bàn chân khi kiễng gót).
-  + **Đòn bẩy loại 3 (có điểm tựa ở một đầu, lực tác dụng ở giữa)**: Điểm tựa $O$ ở một đầu, lực tác dụng $F_2$ đặt ở giữa $O$ và vật. Vì $d_2 < d_1$ nên không lợi về lực nhưng **lợi về đường đi và tốc độ thao tác** (ví dụ: đôi đũa, nhíp, kẹp gắp thức ăn, cần câu cá, cánh tay người khi nâng tạ với khuỷu tay là điểm tựa).""",
-        "formulas": [
+        definition="Đòn bẩy là một thanh cứng có thể quay quanh một điểm cố định gọi là điểm tựa $O$. Đòn bẩy cân bằng khi moment của hai lực làm quay đòn bẩy theo hai chiều ngược nhau bằng nhau: $F_1 \\cdot d_1 = F_2 \\cdot d_2$.",
+        theory=(
+            "### 1. Quy tắc cân bằng của đòn bẩy\n"
+            "- Gọi $F_1$ là lực của vật tác dụng lên đòn bẩy (cánh tay đòn $d_1$) và $F_2$ là lực người tác dụng lên đòn bẩy (cánh tay đòn $d_2$).\n"
+            "- Khi đòn bẩy cân bằng:\n"
+            "  $$M_1 = M_2 \\iff F_1 \\cdot d_1 = F_2 \\cdot d_2 \\iff \\dfrac{F_1}{F_2} = \\dfrac{d_2}{d_1}$$\n"
+            "- Nếu cánh tay đòn của lực người lớn hơn cánh tay đòn của vật ($d_2 > d_1$) thì lực người cần tác dụng nhỏ hơn trọng lượng vật ($F_2 < F_1$), tức là **được lợi về lực**.\n\n"
+            "### 2. Các loại đòn bẩy trong đời sống\n"
+            "- **Loại 1 (Điểm tựa $O$ ở giữa $F_1$ và $F_2$)**: bập bênh, cái kéo, kìm cắt sắt, xà beng bẩy đá, cân đòn.\n"
+            "- **Loại 2 (Điểm tựa $O$ ở một đầu, vật ở giữa, lực tác dụng ở đầu kia, luôn $d_2 > d_1$)**: xe rùa đẩy gạch, kẹp tách hạt dẻ, dụng cụ mở nắp chai.\n"
+            "- **Loại 3 (Điểm tựa $O$ ở một đầu, lực tác dụng ở giữa, vật ở đầu kia, $d_2 < d_1$ nhưng lợi về đường đi/tốc độ)**: đũa ăn cơm, nhíp gắp, cần câu cá, cánh tay người nâng tạ."
+        ),
+        formulas=[
             G(
-                "I. Moment lực và điều kiện cân bằng đòn bẩy",
-                F("Công thức tính moment lực", r"$M = F \cdot d$", r"$F$: độ lớn lực ($\text{N}$), $d$: cánh tay đòn ($\text{m}$), $M$: moment lực ($\text{N}\cdot\text{m}$)"),
-                F("Quy tắc cân bằng của đòn bẩy", r"$M_1 = M_2 \iff F_1 \cdot d_1 = F_2 \cdot d_2 \iff \dfrac{F_1}{F_2} = \dfrac{d_2}{d_1}$", r"Lực tác dụng tỉ lệ nghịch với cánh tay đòn"),
-            ),
+                "Điều kiện cân bằng của đòn bẩy",
+                F("Phương trình cân bằng đòn bẩy", "$F_1 \\cdot d_1 = F_2 \\cdot d_2 \\implies F_2 = F_1 \\cdot \\dfrac{d_1}{d_2}$", "Muốn dùng lực nhỏ $F_2$ để nâng vật nặng $F_1$, ta phải đặt điểm tựa $O$ gần vật hơn ($d_1 < d_2$)."),
+                F("Hệ số lợi về lực của đòn bẩy", "$k = \\dfrac{F_1}{F_2} = \\dfrac{d_2}{d_1}$", "Cánh tay đòn $d_2$ dài gấp mấy lần $d_1$ thì ta được lợi bấy nhiêu lần về lực."),
+            )
+        ],
+        example="Dùng một chiếc xà beng làm đòn bẩy để bẩy một tảng đá có trọng lượng $F_1 = 1200\\text{ N}$. Biết khoảng cách từ điểm tựa $O$ đến điểm tì vào tảng đá là $d_1 = 0{,}2\\text{ m}$ và khoảng cách từ điểm tựa $O$ đến tay người ấn là $d_2 = 1{,}2\\text{ m}$. Tính lực tối thiểu $F_2$ mà tay người cần tác dụng để nâng tảng đá.",
+        example_answer="Theo điều kiện cân bằng của đòn bẩy: $F_1 \\cdot d_1 = F_2 \\cdot d_2 \\implies F_2 = \\dfrac{F_1 \\cdot d_1}{d_2} = \\dfrac{1200 \\cdot 0{,}2}{1{,}2} = 200\\text{ N}$.",
+        real_life="Trên cơ thể người, khớp khuỷu tay đóng vai trò là điểm tựa $O$, cơ nhị đầu co lại tạo lực kéo và bàn tay cầm quả tạ tạo thành một đòn bẩy sinh học.",
+        quiz=[
+            mcq("biet", "Hệ thức biểu thị điều kiện cân bằng của đòn bẩy chịu tác dụng của hai lực $F_1$ (cánh tay đòn $d_1$) và $F_2$ (cánh tay đòn $d_2$) là gì?", ["$F_1 \\cdot d_1 = F_2 \\cdot d_2$", "$\\dfrac{F_1}{d_1} = \\dfrac{F_2}{d_2}$", "$F_1 + d_1 = F_2 + d_2$", "$F_1 \\cdot F_2 = d_1 \\cdot d_2$"], 0, "Đòn bẩy cân bằng khi $M_1 = M_2 \\iff F_1 \\cdot d_1 = F_2 \\cdot d_2$."),
+            mcq("biet", "Để dùng đòn bẩy nâng một vật nặng có trọng lượng $F_1$ bằng một lực $F_2$ nhỏ hơn trọng lượng của vật ($F_2 < F_1$), ta phải bố trí điểm tựa $O$ như thế nào?", ["Đặt điểm tựa $O$ gần điểm đặt của vật hơn gần tay người ($d_1 < d_2$)", "Đặt điểm tựa $O$ cách đều vật và tay người ($d_1 = d_2$)", "Đặt điểm tựa $O$ gần tay người hơn gần vật ($d_2 < d_1$)", "Đặt điểm tựa $O$ trùng với vị trí tay người ($d_2 = 0$)"], 0, "Vì $F_2 = F_1 \\cdot \\dfrac{d_1}{d_2}$, nên muốn $F_2 < F_1$ thì phải có $d_1 < d_2$."),
+            mcq("hieu", "Hai bạn nhỏ chơi bập bênh: bạn An nặng $400\\text{ N}$ ngồi cách trục quay ở giữa một đoạn $d_1 = 1{,}5\\text{ m}$. Bạn Bình nặng $300\\text{ N}$ phải ngồi ở phía bên kia cách trục quay bao nhiêu mét để bập bênh nằm ngang cân bằng?", ["$2{,}0\\text{ m}$", "$1{,}5\\text{ m}$", "$1{,}0\\text{ m}$", "$2{,}5\\text{ m}$"], 0, "Ta có $F_1 d_1 = F_2 d_2 \\implies d_2 = \\dfrac{400 \\cdot 1{,}5}{300} = 2{,}0\\text{ m}$."),
+            tf4("hieu", "Xét tính đúng/sai của các phát biểu sau về đòn bẩy:", [
+                "Chiếc kéo cắt giấy và chiếc bập bênh là đòn bẩy có điểm tựa nằm ở khoảng giữa hai lực.",
+                "Xe rùa đẩy vật liệu xây dựng là đòn bẩy có điểm tựa ở trục bánh xe, luôn cho lợi về lực.",
+                "Dùng đũa gắp thức ăn hoặc dùng nhíp gắp vật nhỏ luôn cho ta lợi về lực ($F_2 < F_1$).",
+                "Nếu cánh tay đòn của lực người dài gấp $4$ lần cánh tay đòn của vật nặng thì lực người cần tác dụng chỉ bằng $\\dfrac{1}{4}$ trọng lượng vật.",
+            ], [True, True, False, True], "Ý c) sai vì đũa và nhíp có điểm tựa ở đầu trên, tay cầm ở giữa ($d_2 < d_1$) nên không lợi về lực nhưng lợi về đường đi và sự khéo léo."),
+            short("vandung", "Một đòn bẩy dùng để nâng vật nặng $F_1 = 600\\text{ N}$ có khoảng cách từ vật đến điểm tựa là $d_1 = 0{,}3\\text{ m}$. Nếu tay người tác dụng lực ở đầu kia cách điểm tựa $d_2 = 1{,}5\\text{ m}$ thì lực $F_2$ tối thiểu để nâng vật bằng bao nhiêu Newton ($\\text{N}$)?", ["120"], "Áp dụng công thức $F_2 = \\dfrac{F_1 \\cdot d_1}{d_2} = \\dfrac{600 \\cdot 0{,}3}{1{,}5} = 120\\text{ N}$.", unit="N"),
+        ],
+        chapter_desc=CH2_DESC,
+    ),
+    bai(
+        topic=CH3_TOPIC,
+        chapter_title=CH3_TITLE,
+        title="Bài 8: Sự nhiễm điện do cọ xát",
+        icon="🎈",
+        description="Hiện tượng vật nhiễm điện do cọ xát, hai loại điện tích dương (+) và âm (-), tương tác điện và sự dịch chuyển electron.",
+        requirements=[
+            "Mô tả được một vật sau khi bị cọ xát có khả năng hút các vật nhẹ (vụn giấy, sợi bông) hoặc tạo tia lửa điện là vật đã bị nhiễm điện.",
+            "Nêu được có hai loại điện tích là điện tích dương ($+$) và điện tích âm ($-$); các điện tích cùng loại thì đẩy nhau, khác loại thì hút nhau.",
+            "Giải thích được sơ lược sự nhiễm điện do cọ xát dựa vào sự dịch chuyển của các electron giữa hai vật.",
+        ],
+        definition="Nhiều vật sau khi bị cọ xát có khả năng hút các vật nhẹ khác được gọi là các vật nhiễm điện (hay vật mang điện tích). Có hai loại điện tích là điện tích dương ($+$) và điện tích âm ($-$): hai vật nhiễm điện cùng loại thì đẩy nhau, khác loại thì hút nhau.",
+        theory=(
+            "### 1. Hai loại điện tích và tương tác điện\n"
+            "- Quy ước:\n"
+            "  - Điện tích của **thanh thủy tinh cọ xát vào lụa** là **điện tích dương ($+$)**.\n"
+            "  - Điện tích của **thanh nhựa sẫm màu (hoặc thước nhựa) cọ xát vào vải khô** là **điện tích âm ($-$)**.\n"
+            "- **Tương tác giữa các vật mang điện**: Hai điện tích **cùng dấu** ($+$ với $+$, hoặc $-$ với $-$) thì **đẩy nhau**; hai điện tích **trái dấu** ($+$ với $-$) thì **hút nhau**.\n\n"
+            "### 2. Giải thích bằng cấu tạo nguyên tử\n"
+            "- Bình thường nguyên tử trung hòa về điện (tổng điện tích dương của hạt nhân bằng tổng điện tích âm của các electron).\n"
+            "- Khi cọ xát, chỉ có các **electron** dịch chuyển từ vật này sang vật khác:\n"
+            "  - Vật **nhận thêm electron** sẽ nhiễm điện **âm ($-$)**.\n"
+            "  - Vật **mất bớt electron** sẽ nhiễm điện **dương ($+$)**."
+        ),
+        formulas=[
             G(
-                "II. Phân loại đòn bẩy theo vị trí điểm tựa $O$",
-                F("Đòn bẩy loại 1 ($O$ ở giữa $F_1$ và $F_2$)", r"$d_2 > d_1 \Rightarrow F_2 < F_1$", r"Ví dụ: bập bênh, cái kéo, kìm, xà beng"),
-                F("Đòn bẩy loại 2 (vật $F_1$ ở giữa $O$ và $F_2$)", r"$d_2 > d_1 \Rightarrow F_2 < F_1\text{ (luôn lợi về lực)}$", r"Ví dụ: xe rùa, cái mở nắp chai, kẹp hạt dẻ"),
-                F("Đòn bẩy loại 3 (lực $F_2$ ở giữa $O$ và vật $F_1$)", r"$d_2 < d_1 \Rightarrow F_2 > F_1\text{ (lợi về đường đi)}$", r"Ví dụ: đôi đũa, kẹp gắp đá, cơ cẳng tay người"),
-            ),
+                "Quy tắc nhiễm điện và tương tác điện tích",
+                F("Quy tắc nhiễm điện do dịch chuyển electron", "$\\text{Nhận thêm } e^- \\implies \\text{Nhiễm điện âm } (-); \\qquad \\text{Mất bớt } e^- \\implies \\text{Nhiễm điện dương } (+)$", "Hạt nhân mang điện dương nằm sâu bên trong nguyên tử nên không dịch chuyển khi cọ xát."),
+                F("Quy tắc tương tác giữa hai điện tích", "$q_1, q_2 \\text{ cùng dấu } \\implies \\text{Đẩy nhau}; \\qquad q_1, q_2 \\text{ trái dấu } \\implies \\text{Hút nhau}$", "Một vật nhiễm điện (dù dương hay âm) cũng đều hút được các vật nhẹ chưa nhiễm điện (như vụn giấy)."),
+            )
         ],
-        "example": r"Một người dùng xà beng dài $1{,}5\text{ m}$ làm đòn bẩy để bẩy một tảng đá nặng $F_1 = 1200\text{ N}$. Biết điểm tựa $O$ cách đầu xà beng tì vào tảng đá một đoạn $d_1 = 0{,}25\text{ m}$ và người đó tác dụng lực vuông góc tại đầu còn lại của xà beng (cách điểm tựa $d_2 = 1{,}5 - 0{,}25 = 1{,}25\text{ m}$). Tính moment của trọng lực tảng đá đối với $O$ và độ lớn lực tối thiểu $F_2$ mà người đó cần tác dụng.",
-        "example_answer": r"""- Moment của lực $F_1$ do tảng đá đè lên đầu xà beng đối với điểm tựa $O$ là:
-$$M_1 = F_1 \cdot d_1 = 1200 \cdot 0{,}25 = 300\text{ N}\cdot\text{m}$$
-- Để nâng được tảng đá, moment lực $M_2$ của người phải cân bằng với $M_1$:
-$$F_2 \cdot d_2 = M_1 \Rightarrow F_2 = \dfrac{M_1}{d_2} = \dfrac{300}{1{,}25} = 240\text{ N}$$
-(Nhờ đòn bẩy có $d_2 = 5d_1$, người đó được lợi $5$ lần về lực).""",
-        "real_life": r"""- **Dụng cụ cơ khí và gia đình**: Tay nắm cửa luôn lắp ở mép xa bản lề để tăng cánh tay đòn $d$; dùng cờ-lê cán dài hoặc nối thêm ống thép vào tay vặn để tạo moment lực lớn khi tháo bu-lông rỉ sét.
-- **Sinh học cơ thể người**: Hầu hết các khớp xương trên cơ thể người (khớp cổ, khớp khuỷu tay, khớp bàn chân) hoạt động như các hệ đòn bẩy tinh vi.""",
-        "game_title": "Thử thách thực tế: Moment lực và Đòn bẩy",
-        "game_description": "Điều chỉnh vị trí điểm tựa, chiều dài cánh tay đòn và các quả nặng để thiết lập trạng thái cân bằng moment lực.",
-        "game_type": "game_moment_luc_don_bay",
-        "quiz": [
-            mcq(
-                "biet",
-                r"Đại lượng vật lí đặc trưng cho tác dụng làm quay của một lực quanh một trục hay điểm tựa cố định được gọi là gì?",
-                [r"Áp suất của lực", r"Moment lực", r"Cường độ lực", r"Trọng lượng riêng"],
-                1,
-                r"Tác dụng làm quay của lực quanh một điểm hoặc một trục quay được đặc trưng bằng moment lực ($M = F \cdot d$).",
-            ),
-            mcq(
-                "biet",
-                r"Đơn vị đo của moment lực trong hệ đo lường quốc tế SI là:",
-                [r"$\text{N/m}$", r"$\text{N/m}^2$", r"$\text{N}\cdot\text{m}$", r"$\text{J/s}$"],
-                2,
-                r"Từ công thức $M = F \cdot d$ với $F$ tính bằng $\text{N}$ và $d$ tính bằng $\text{m}$, đơn vị của moment lực là niu-tơn mét ($\text{N}\cdot\text{m}$).",
-            ),
-            mcq(
-                "biet",
-                r"Trường hợp nào sau đây lực tác dụng lên cánh cửa KHÔNG làm cánh cửa quay quanh bản lề?",
-                [
-                    r"Đẩy vuông góc vào tay nắm cửa ở xa bản lề",
-                    r"Kéo vuông góc vào chính giữa cánh cửa",
-                    r"Tác dụng lực có giá đi xuyên qua trục bản lề của cánh cửa",
-                    r"Đẩy vuông góc vào mép ngoài của cánh cửa",
-                ],
-                2,
-                r"Khi giá của lực cắt (hoặc đi qua) trục quay bản lề thì cánh tay đòn $d = 0$, nên moment lực $M = 0$ và lực không làm quay cửa.",
-            ),
-            mcq(
-                "biet",
-                r"Dụng cụ nào dưới đây là ứng dụng của đòn bẩy có điểm tựa nằm ở một đầu và vật chịu lực nằm ở giữa (luôn cho lợi về lực)?",
-                [r"Chiếc bập bênh ngoài công viên", r"Xe rùa đẩy gạch xây dựng", r"Đôi đũa gắp thức ăn", r"Chiếc cân đòn (cân Roberval)"],
-                1,
-                r"Xe rùa có trục bánh xe ở mũi xe là điểm tựa $O$, thùng hàng ở giữa và tay người nâng ở càng xe phía sau nên luôn có $d_2 > d_1$, cho lợi về lực.",
-            ),
-            mcq(
-                "hieu",
-                r"Một người dùng cờ-lê để vặn một đai ốc với lực $F = 50\text{ N}$ có phương vuông góc với thân cờ-lê tại điểm cách tâm đai ốc một khoảng $d = 20\text{ cm}$. Moment của lực đó đối với tâm đai ốc bằng:",
-                [r"$1000\text{ N}\cdot\text{m}$", r"$10\text{ N}\cdot\text{m}$", r"$2{,}5\text{ N}\cdot\text{m}$", r"$100\text{ N}\cdot\text{m}$"],
-                1,
-                r"Đổi $d = 20\text{ cm} = 0{,}2\text{ m}$. Moment lực là $M = F \cdot d = 50 \cdot 0{,}2 = 10\text{ N}\cdot\text{m}$.",
-            ),
-            mcq(
-                "hieu",
-                r"Hai bạn An (trọng lượng $P_1 = 450\text{ N}$) và Bình (trọng lượng $P_2 = 300\text{ N}$) ngồi ở hai bên của một chiếc bập bênh. Biết An ngồi cách trục quay ở giữa một đoạn $d_1 = 1{,}2\text{ m}$. Để bập bênh cân bằng nằm ngang thì Bình phải ngồi cách trục quay một đoạn $d_2$ bằng:",
-                [r"$0{,}8\text{ m}$", r"$1{,}5\text{ m}$", r"$1{,}8\text{ m}$", r"$2{,}0\text{ m}$"],
-                2,
-                r"Áp dụng điều kiện cân bằng đòn bẩy: $P_1 \cdot d_1 = P_2 \cdot d_2 \Rightarrow d_2 = \dfrac{450 \cdot 1{,}2}{300} = 1{,}8\text{ m}$.",
-            ),
-            tf4(
-                "hieu",
-                r"Xét một thanh đòn bẩy cứng nhẹ $AB$ có điểm tựa cố định tại $O$ nằm trong khoảng $AB$ với $OA = 30\text{ cm}$ và $OB = 90\text{ cm}$. Tại đầu $A$ treo một vật nặng có trọng lượng $F_1 = 120\text{ N}$. Xét tính đúng sai của các phát biểu sau:",
-                [
-                    r"a) Đòn bẩy này thuộc loại đòn bẩy có điểm tựa ở giữa (đòn bẩy loại 1).",
-                    r"b) Cánh tay đòn của lực tại $B$ lớn gấp $3$ lần cánh tay đòn của lực tại $A$.",
-                    r"c) Để giữ cho thanh đòn bẩy cân bằng nằm ngang, cần tác dụng thẳng đứng xuống dưới tại đầu $B$ một lực $F_2 = 360\text{ N}$.",
-                    r"d) Nếu dịch chuyển điểm tựa $O$ ra xa đầu $A$ hơn (tăng $OA$, giảm $OB$) thì lực $F_2$ cần thiết ở đầu $B$ sẽ phải tăng lên.",
-                ],
-                [True, True, False, True],
-                r"a) Đúng vì $O$ nằm giữa $A$ và $B$. b) Đúng vì $\dfrac{OB}{OA} = \dfrac{90}{30} = 3$. c) Sai vì $F_2 = F_1 \cdot \dfrac{OA}{OB} = 120 \cdot \dfrac{30}{90} = 40\text{ N}$. d) Đúng vì khi $OA$ tăng và $OB$ giảm thì tỉ số $\dfrac{OA}{OB}$ tăng nên $F_2 = F_1 \cdot \dfrac{OA}{OB}$ tăng.",
-            ),
-            tf4(
-                "hieu",
-                r"Xét các hệ đòn bẩy trên cơ thể người và các dụng cụ quen thuộc. Xét tính đúng sai của các phát biểu sau:",
-                [
-                    r"a) Khi dùng cẳng tay nâng một quả tạ trong lòng bàn tay, khớp khuỷu tay đóng vai trò là điểm tựa của đòn bẩy.",
-                    r"b) Khi dùng kìm cắt dây thép cứng, người ta thường đặt sợi dây thép vào sát trục quay của kìm để giảm cánh tay đòn của lực cản.",
-                    r"c) Đôi đũa khi gắp thức ăn giúp ta lợi về lực vì điểm đặt ngón tay gần điểm tựa hơn miếng thức ăn.",
-                    r"d) Tay nắm cửa được lắp càng gần bản lề thì việc mở cửa càng nhẹ nhàng.",
-                ],
-                [True, True, False, False],
-                r"a) Đúng vì cẳng tay quay quanh khớp khuỷu tay. b) Đúng vì giảm $d_1$ giúp lực cắt ở mũi kìm lớn hơn nhiều lần lực bóp của tay. c) Sai vì đôi đũa có $d_{\text{tay}} < d_{\text{vật}}$ nên thiệt về lực nhưng lợi về đường đi và sự linh hoạt. d) Sai vì lắp gần bản lề làm cánh tay đòn $d$ nhỏ nên cần lực rất lớn mới mở được cửa.",
-            ),
-            mcq(
-                "vandung",
-                r"Một người gánh hai thúng hàng trên một chiếc đòn gánh dài $1{,}5\text{ m}$ (bỏ qua khối lượng đòn gánh). Thúng gạo ở đầu $A$ nặng $P_1 = 300\text{ N}$, thúng ngô ở đầu $B$ nặng $P_2 = 200\text{ N}$. Để đòn gánh cân bằng nằm ngang, vai người đó (điểm tựa $O$) phải đặt cách đầu $A$ (thúng gạo) một khoảng bằng:",
-                [r"$0{,}6\text{ m}$", r"$0{,}9\text{ m}$", r"$0{,}75\text{ m}$", r"$0{,}5\text{ m}$"],
-                0,
-                r"Gọi khoảng cách từ vai $O$ đến đầu $A$ là $d_1 = x$ ($\text{m}$), suy ra khoảng cách đến đầu $B$ là $d_2 = 1{,}5 - x$ ($\text{m}$). Điều kiện cân bằng: $P_1 \cdot d_1 = P_2 \cdot d_2 \iff 300x = 200(1{,}5 - x) \iff 500x = 300 \Rightarrow x = 0{,}6\text{ m}$.",
-            ),
-            short(
-                "vandung",
-                r"Một thanh chắn đường sắt đồng chất dài $AB = 4\text{ m}$ có trục quay cố định tại $O$ cách đầu $A$ một đoạn $OA = 0{,}5\text{ m}$. Để giữ thanh cân bằng nằm ngang, người ta gắn vào đầu $A$ một đối trọng có trọng lượng $F_1 = 700\text{ N}$. Biết trọng lực $P$ của bản thân thanh chắn đặt tại chính giữa thanh (trung điểm $G$ của $AB$). Tính trọng lượng $P$ của thanh chắn theo đơn vị $\text{N}$.",
-                ["233", "233,3", "233.3"],
-                r"Trung điểm $G$ của thanh cách đầu $A$ một đoạn $AG = \dfrac{4}{2} = 2\text{ m}$, nên khoảng cách từ trục quay $O$ đến giá của trọng lực $P$ tại $G$ là $d_2 = OG = AG - OA = 2 - 0{,}5 = 1{,}5\text{ m}$. Áp dụng quy tắc cân bằng moment lực quanh $O$: $F_1 \cdot OA = P \cdot OG \iff 700 \cdot 0{,}5 = P \cdot 1{,}5 \Rightarrow P = \dfrac{350}{1{,}5} \approx 233{,}3\text{ N}$.",
-            ),
+        example="Khi cọ xát một chiếc lược nhựa vào mảnh vải len khô, có một lượng electron dịch chuyển từ mảnh vải len sang chiếc lược nhựa. Hỏi sau khi cọ xát, chiếc lược nhựa và mảnh vải len mang điện tích loại gì?",
+        example_answer="Chiếc lược nhựa nhận thêm electron nên nhiễm điện **âm ($-$)**; mảnh vải len bị mất bớt electron nên nhiễm điện **dương ($+$)**.",
+        real_life="Vào những ngày mùa đông hanh khô, khi cởi áo len ta thường nghe thấy tiếng lách tách nhỏ và thấy áo hút tóc do sự nhiễm điện khi cọ xát; xe chở xăng dầu luôn có một dây xích sắt thả chạm đất để truyền điện tích phát sinh do ma sát xuống đất, tránh tia lửa điện gây cháy nổ.",
+        quiz=[
+            mcq("biet", "Trong tự nhiên có mấy loại điện tích và đó là những loại nào?", ["$2$ loại: điện tích dương ($+$) và điện tích âm ($-$)", "$2$ loại: cực Bắc ($\\text{N}$) và cực Nam ($\\text{S}$)", "$3$ loại: dương, âm và trung tính", "$1$ loại duy nhất là điện tích âm"], 0, "Có $2$ loại điện tích là điện tích dương ($+$) và điện tích âm ($-$)."),
+            mcq("biet", "Một vật trung hòa về điện sau khi cọ xát trở thành vật nhiễm điện **dương ($+$)** là do nguyên nhân nào?", ["Do vật đó bị mất bớt một số electron", "Do vật đó nhận thêm một số electron", "Do vật đó nhận thêm hạt nhân từ vật khác", "Do các electron trong vật biến thành hạt nhân"], 0, "Electron mang điện tích âm; khi vật mất bớt electron thì phần điện tích dương của hạt nhân trội hơn nên vật nhiễm điện dương."),
+            mcq("hieu", "Treo hai quả cầu nhẹ $A$ và $B$ đã nhiễm điện bằng hai sợi chỉ tơ mảnh gần nhau thì thấy chúng đẩy nhau. Biết quả cầu $A$ nhiễm điện âm ($-$), hỏi quả cầu $B$ nhiễm điện gì?", ["Quả cầu $B$ cũng nhiễm điện âm ($-$)", "Quả cầu $B$ nhiễm điện dương ($+$)", "Quả cầu $B$ không mang điện", "Quả cầu $B$ vừa mang điện dương vừa mang điện âm"], 0, "Hai vật nhiễm điện đẩy nhau khi chúng mang điện tích cùng loại, do đó $B$ cũng nhiễm điện âm ($-$)."),
+            tf4("hieu", "Xét tính đúng/sai của các phát biểu sau về sự nhiễm điện do cọ xát:", [
+                "Theo quy ước, thanh thủy tinh sau khi cọ xát vào lụa thì nhiễm điện dương ($+$).",
+                "Hai vật nhiễm điện trái dấu đặt gần nhau thì hút nhau.",
+                "Khi cọ xát hai vật trung hòa với nhau, hạt nhân mang điện dương di chuyển từ vật này sang vật kia.",
+                "Cánh quạt điện quay lâu ngày bám nhiều bụi bẩn ở mép cánh vì cánh quạt cọ xát với không khí bị nhiễm điện và hút các hạt bụi nhẹ.",
+            ], [True, True, False, True], "Ý c) sai vì chỉ có các electron mới dịch chuyển từ vật này sang vật kia khi cọ xát."),
+            short("vandung", "Có tất cả bao nhiêu loại điện tích trong tự nhiên (dương và âm)?", ["2"], "Có $2$ loại điện tích là điện tích dương ($+$) và điện tích âm ($-$)."),
         ],
-    },
-    # ===================== CHỦ ĐỀ 5: CƠ NĂNG, CÔNG VÀ CÔNG SUẤT CƠ HỌC =====================
-    {
-        "topic": "cong-suat",
-        "title": "Cơ năng, Công và Công suất cơ học",
-        "icon": "⚙️",
-        "description": "Chuyên đề Cơ học KHTN 8 – 9 Kết nối tri thức với cuộc sống: Khái niệm cơ năng (động năng, thế năng), điều kiện xuất hiện công cơ học, công thức tính công và công suất, định luật về công và hiệu suất máy cơ đơn giản.",
-        "requirements": [
-            r"Phân tích được sự chuyển hóa giữa động năng và thế năng của vật trong một số hiện tượng cơ học.",
-            r"Nêu được điều kiện để có công cơ học và tính được công cơ học theo công thức $A = F \cdot s$ khi lực cùng hướng với chuyển dời.",
-            r"Nêu được ý nghĩa vật lí của công suất (tốc độ thực hiện công), liệt kê được các đơn vị đo công suất ($\text{W}$, $\text{kW}$, $\text{MW}$, $\text{HP}$) và vận dụng được công thức $\mathcal{P} = \dfrac{A}{t} = F \cdot v$.",
-            r"Vận dụng được định luật về công và tính được hiệu suất của các máy cơ đơn giản (mặt phẳng nghiêng, đòn bẩy, ròng rọc) trong thực tế.",
+        chapter_desc=CH3_DESC,
+    ),
+    bai(
+        topic=CH3_TOPIC,
+        chapter_title=CH3_TITLE,
+        title="Bài 9: Dòng điện và nguồn điện",
+        icon="🔋",
+        description="Định nghĩa dòng điện, bản chất dòng điện trong kim loại, chiều dòng điện quy ước, nguồn điện, vật dẫn điện và vật cách điện.",
+        requirements=[
+            "Nêu được dòng điện là dòng chuyển dời có hướng của các hạt mang điện; trong kim loại đó là dòng các electron tự do dịch chuyển có hướng.",
+            "Trình bày đúng quy ước chiều dòng điện: đi từ cực dương ($+$) qua dây dẫn và các thiết bị điện tới cực âm ($-$) của nguồn điện.",
+            "Phân biệt được nguồn điện (pin, ắc quy), vật dẫn điện (kim loại, dung dịch muối/axit) và vật cách điện (nhựa, cao su, sứ, thủy tinh).",
         ],
-        "definition": r"""- **Công cơ học** ($A$) của một lực không đổi $F$ làm vật dịch chuyển một quãng đường $s$ theo đúng hướng của lực được xác định bởi: $A = F \cdot s$ (đơn vị: jun, kí hiệu $\text{J}$, với $1\text{ J} = 1\text{ N}\cdot\text{m}$).
-- **Công suất** ($\mathcal{P}$) là đại lượng đặc trưng cho tốc độ thực hiện công, được xác định bằng công thực hiện được trong một đơn vị thời gian: $\mathcal{P} = \dfrac{A}{t} = F \cdot v$ (đơn vị: oát, kí hiệu $\text{W}$, với $1\text{ W} = 1\text{ J/s}$).""",
-        "theory": r"""### Bài 1. Cơ năng (Động năng và Thế năng)
-- **Thế năng trọng trường và thế năng đàn hồi**: Vật ở độ cao $h$ so với mặt đất (hoặc mốc chọn trước) có thế năng trọng trường $W_{\text{t}} = P \cdot h = 10m \cdot h$; vật bị biến dạng đàn hồi (như lò xo bị nén hoặc giãn, cánh cung giương lên) dự trữ thế năng đàn hồi.
-- **Động năng**: Năng lượng vật có được do chuyển động gọi là động năng ($W_{\text{đ}} = \dfrac{1}{2}mv^2$). Khối lượng vật càng lớn và tốc độ chuyển động càng nhanh thì động năng càng lớn. Tổng động năng và thế năng của vật gọi là **cơ năng**: $W = W_{\text{đ}} + W_{\text{t}}$.
-### Bài 2. Công cơ học và Định luật về công
-- **Điều kiện xuất hiện công cơ học**: Chỉ có công cơ học khi có lực tác dụng vào vật và làm cho vật dịch chuyển (nếu $s = 0$ hoặc lực vuông góc với phương dịch chuyển thì công bằng $0$). Khi lực $F$ cùng hướng dịch chuyển: $A = F \cdot s$. Khi nâng đều vật có trọng lượng $P$ lên độ cao $h$: $A = P \cdot h$.
-- **Định luật về công**: Không một máy cơ đơn giản nào (mặt phẳng nghiêng, đòn bẩy, ròng rọc động) cho ta lợi về công. Được lợi bao nhiêu lần về lực thì thiệt bấy nhiêu lần về đường đi và ngược lại: $A_1 = A_2 \iff F_1 \cdot s_1 = F_2 \cdot s_2$.
-- **Hiệu suất máy cơ**: Trong thực tế luôn có ma sát nên công toàn phần $A_{\text{tp}}$ luôn lớn hơn công có ích $A_{\text{ích}}$ ($A_{\text{tp}} = A_{\text{ích}} + A_{\text{hp}}$). Hiệu suất là $H = \dfrac{A_{\text{ích}}}{A_{\text{tp}}} \cdot 100\%$.
-### Bài 3. Công suất cơ học
-- **Khái niệm và công thức**: Để biết máy nào hay người nào làm việc khỏe hơn (thực hiện công nhanh hơn), người ta tính công thực hiện trong $1\text{ s}$ gọi là công suất: $\mathcal{P} = \dfrac{A}{t}$. Nếu vật chuyển động đều với tốc độ $v = \dfrac{s}{t}$ dưới tác dụng của lực kéo $F$ cùng hướng thì $\mathcal{P} = \dfrac{F \cdot s}{t} = F \cdot v$.
-- **Đơn vị đo**: $1\text{ W} = 1\text{ J/s}$; $1\text{ kW} = 1000\text{ W}$; $1\text{ MW} = 10^6\text{ W}$; $1\text{ HP}\text{ (mã lực)} \approx 746\text{ W}$.""",
-        "formulas": [
+        definition="Dòng điện là dòng chuyển dời có hướng của các hạt mang điện. Chiều dòng điện được quy ước là chiều từ cực dương ($+$) qua dây dẫn và các dụng cụ điện tới cực âm ($-$) của nguồn điện.",
+        theory=(
+            "### 1. Dòng điện và chiều dòng điện quy ước\n"
+            "- **Dòng điện**: dòng chuyển dời có hướng của các hạt mang điện.\n"
+            "- **Trong dây dẫn kim loại**: các hạt mang điện dịch chuyển là các **electron tự do** (mang điện âm, đi từ cực âm sang cực dương của nguồn).\n"
+            "- **Chiều dòng điện quy ước**: từ **cực dương ($+$)** qua dây dẫn và thiết bị điện tới **cực âm ($-$)** của nguồn điện (ngược với chiều dịch chuyển của electron tự do trong kim loại).\n\n"
+            "### 2. Nguồn điện, vật dẫn điện và vật cách điện\n"
+            "- **Nguồn điện**: thiết bị tạo ra và duy trì dòng điện lâu dài trong mạch kín; mỗi nguồn điện یک chiều (pin, ắc quy) đều có 2 cực: cực dương ($+$) và cực âm ($-$).\n"
+            "- **Vật dẫn điện**: vật cho dòng điện đi qua (đồng, nhôm, sắt, bạc, than chì, dung dịch muối, axit...).\n"
+            "- **Vật cách điện**: vật không cho dòng điện đi qua (nhựa, cao su, sứ, thủy tinh, gỗ khô, nước cất tinh khiết)."
+        ),
+        formulas=[
             G(
-                "I. Công cơ học và công suất cơ học",
-                F("Công cơ học khi lực cùng hướng chuyển dời", r"$A = F \cdot s;\quad A_{\text{nâng}} = P \cdot h = 10m \cdot h$", r"$A$ ($\text{J}$), $F$ ($\text{N}$), $s$ ($\text{m}$); $1\text{ kJ} = 1000\text{ J}$"),
-                F("Công suất cơ học", r"$\mathcal{P} = \dfrac{A}{t} = F \cdot v$", r"$\mathcal{P}$ ($\text{W}$), $t$ ($\text{s}$), $v$ ($\text{m/s}$); $1\text{ kW} = 1000\text{ W}$"),
-            ),
+                "Quy ước chiều dòng điện và phân loại vật liệu điện",
+                F("Chiều dòng điện quy ước trong mạch kín", "$\\text{Cực dương } (+) \\longrightarrow \\text{Dây dẫn \\& Thiết bị} \\longrightarrow \\text{Cực âm } (-)$", "Ngược chiều với chiều dịch chuyển có hướng của các electron tự do ($(-) \\to (+)$) trong kim loại."),
+                F("Điều kiện để có dòng điện chạy qua thiết bị", "$\\text{Nguồn điện} + \\text{Mạch điện dẫn điện khép kín (Công tắc đóng)}$", "Nếu công tắc mở (mạch hở) thì dòng điện không chạy qua mạch."),
+            )
+        ],
+        example="Trong một mạch điện kín gồm một viên pin nối với một bóng đèn nhỏ bằng dây đồng, hãy so sánh chiều của dòng điện theo quy ước và chiều dịch chuyển có hướng của các electron tự do trong dây đồng.",
+        example_answer="Chiều dòng điện theo quy ước đi từ cực dương ($+$) của viên pin qua dây đồng và bóng đèn về cực âm ($-$) của pin; còn các electron tự do trong dây đồng bị cực âm đẩy và cực dương hút nên dịch chuyển ngược lại từ cực âm ($-$) qua bóng đèn về cực dương ($+$).",
+        real_life="Dây điện trong gia đình luôn có lõi làm bằng đồng (vật dẫn điện rất tốt) và lớp vỏ bọc bên ngoài làm bằng nhựa dẻo PVC (vật cách điện an toàn).",
+        quiz=[
+            mcq("biet", "Theo quy ước, chiều của dòng điện trong một mạch điện kín được xác định như thế nào?", ["Chiều từ cực dương ($+$) qua dây dẫn và các thiết bị điện tới cực âm ($-$) của nguồn điện", "Chiều từ cực âm ($-$) qua dây dẫn tới cực dương ($+$) của nguồn điện", "Chiều trùng với chiều chuyển động của các electron tự do trong kim loại", "Dòng điện không có chiều xác định"], 0, "Chiều dòng điện được quy ước là chiều từ cực dương ($+$) qua dây dẫn và dụng cụ điện tới cực âm ($-$) của nguồn điện."),
+            mcq("biet", "Nhóm các vật liệu nào sau đây đều là **vật dẫn điện** ở điều kiện thường?", ["Đồng, nhôm, bạc, ruột bút chì (than chì)", "Nhựa, cao su, sứ, thủy tinh", "Gỗ khô, giấy khô, vải khô", "Không khí khô, nước cất nguyên chất, cao su"], 0, "Các kim loại (đồng, nhôm, bạc) và than chì có nhiều electron tự do nên dẫn điện tốt."),
+            mcq("hieu", "Vì sao cán của tua-vít thử điện, kìm điện và vỏ phích cắm điện luôn được bọc bằng nhựa cứng hoặc cao su?", ["Vì nhựa và cao su là vật cách điện, ngăn dòng điện truyền sang tay người gây điện giật", "Vì nhựa và cao su dẫn điện tốt hơn đồng", "Để làm tăng cường độ dòng điện trong mạch", "Để biến dòng điện một chiều thành xoay chiều"], 0, "Nhựa và cao su là các chất cách điện giúp đảm bảo an toàn điện cho người sử dụng."),
+            tf4("hieu", "Xét tính đúng/sai của các phát biểu sau về dòng điện và nguồn điện:", [
+                "Dòng điện trong kim loại là dòng các electron tự do dịch chuyển có hướng.",
+                "Chiều dịch chuyển có hướng của các electron tự do trong dây đồng ngược với chiều quy ước của dòng điện.",
+                "Mỗi nguồn điện một chiều như pin hay ắc quy đều có hai cực là cực dương ($+$) và cực âm ($-$).",
+                "Nước muối loãng và nước chanh là các chất cách điện hoàn toàn.",
+            ], [True, True, True, False], "Ý d) sai vì dung dịch muối và dung dịch axit (nước chanh) có chứa các ion tự do nên là chất dẫn điện."),
+            short("vandung", "Cho 4 vật sau: (1) Lõi dây đồng, (2) Thanh nhôm, (3) Vỏ bọc nhựa PVC, (4) Găng tay cao su khô. Có bao nhiêu vật trong 4 vật trên là **vật dẫn điện**?", ["2"], "Lõi dây đồng (1) và thanh nhôm (2) là $2$ vật dẫn điện; còn nhựa PVC và cao su khô là vật cách điện."),
+        ],
+        chapter_desc=CH3_DESC,
+    ),
+    bai(
+        topic=CH3_TOPIC,
+        chapter_title=CH3_TITLE,
+        title="Bài 10: Mạch điện đơn giản và các tác dụng của dòng điện",
+        icon="💡",
+        description="Kí hiệu các bộ phận trên sơ đồ mạch điện, mạch kín – mạch hở và 5 tác dụng của dòng điện.",
+        requirements=[
+            "Nhận biết được kí hiệu sơ đồ của nguồn điện (pin), công tắc đóng/mở, bóng đèn, điện trở, chuông điện, điốt phát quang (LED) và dây nối.",
+            "Vẽ được sơ đồ mạch điện đơn giản và biểu diễn chiều dòng điện bằng mũi tên trên sơ đồ khi công tắc đóng.",
+            "Nêu và lấy được ví dụ về các tác dụng của dòng điện: tác dụng nhiệt, tác dụng phát sáng, tác dụng hóa học, tác dụng từ và tác dụng sinh lí.",
+        ],
+        definition="Sơ đồ mạch điện là hình vẽ sử dụng các kí hiệu quy ước để mô tả cách mắc các bộ phận của mạch điện. Khi có dòng điện chạy qua, dòng điện có thể gây ra tác dụng nhiệt, phát sáng, hóa học, từ và sinh lí.",
+        theory=(
+            "### 1. Sơ đồ mạch điện đơn giản\n"
+            "- Một mạch điện cơ bản gồm: **nguồn điện** (cực dài là $+$, cực ngắn và dày là $-$), **công tắc (khóa $K$)**, **thiết bị tiêu thụ điện** (bóng đèn, chuông, quạt) và **dây dẫn**.\n"
+            "- **Cầu chì** hoặc **cầu dao tự động (aptomat)** được mắc vào mạch điện để tự động ngắt mạch bảo vệ khi dòng điện tăng quá mức (đoản mạch, quá tải).\n\n"
+            "### 2. Các tác dụng của dòng điện\n"
+            "1. **Tác dụng nhiệt**: làm nóng vật dẫn (bàn là điện, nồi cơm điện, ấm siêu tốc, cầu chì).\n"
+            "2. **Tác dụng phát sáng**: làm đèn LED, đèn bút thử điện, đèn huỳnh quang phát sáng.\n"
+            "3. **Tác dụng hóa học**: phân tích dung dịch điện phân (dùng để mạ điện như mạ vàng, mạ kẽm, tinh luyện đồng).\n"
+            "4. **Tác dụng từ**: làm quay kim nam châm, tạo nam châm điện (chuông điện, quạt điện, động cơ điện).\n"
+            "5. **Tác dụng sinh lí**: đi qua cơ thể người và động vật làm co giật cơ (ứng dụng trong máy sốc tim y học, châm cứu điện; nhưng nguy hiểm gây điện giật nếu bất cẩn)."
+        ),
+        formulas=[
             G(
-                "II. Định luật về công và hiệu suất máy cơ đơn giản",
-                F("Mặt phẳng nghiêng lí tưởng (bỏ qua ma sát)", r"$F \cdot l = P \cdot h \Rightarrow F = P \cdot \dfrac{h}{l}$", r"$l$: chiều dài mặt phẳng nghiêng, $h$: chiều cao nâng vật"),
-                F("Ròng rọc động lí tưởng", r"$F = \dfrac{P}{2};\quad s = 2h$", r"Lợi $2$ lần về lực thì thiệt $2$ lần về đường đi"),
-                F("Hiệu suất của máy cơ thực tế", r"$H = \dfrac{A_{\text{ích}}}{A_{\text{tp}}} \cdot 100\% = \dfrac{P \cdot h}{F \cdot l} \cdot 100\%$", r"$A_{\text{tp}} = A_{\text{ích}} + A_{\text{ma sát}}$"),
-            ),
+                "Nguyên tắc mạch điện và 5 tác dụng của dòng điện",
+                F("Trạng thái khóa K và dòng điện trong mạch", "$K \\text{ đóng (mạch kín)} \\implies I > 0; \\qquad K \\text{ mở (mạch hở)} \\implies I = 0$", "Trên sơ đồ mạch kín, mũi tên chỉ chiều dòng điện luôn vẽ đi ra từ cực dương ($+$) và đi vào cực âm ($-$)."),
+                F("5 tác dụng đặc trưng của dòng điện", "$\\text{Dòng điện} \\longrightarrow \\{\\text{Nhiệt, Phát sáng, Hóa học, Từ, Sinh lí}\\}$", "Mỗi thiết bị điện được chế tạo dựa trên một hoặc hai tác dụng chính có ích của dòng điện."),
+            )
         ],
-        "example": r"Một cần cẩu nâng đều một kiện hàng có khối lượng $m = 1{,}5\text{ tấn}$ lên độ cao $h = 8\text{ m}$ trong thời gian $t = 20\text{ s}$. Tính công có ích mà cần cẩu đã thực hiện và công suất nâng hàng của cần cẩu (lấy $P = 10m$).",
-        "example_answer": r"""- Đổi khối lượng $m = 1{,}5\text{ tấn} = 1500\text{ kg}$, suy ra trọng lượng kiện hàng là:
-$$P = 10m = 10 \cdot 1500 = 15000\text{ N}$$
-- Công cơ học cần cẩu thực hiện để nâng đều kiện hàng lên cao $8\text{ m}$ là:
-$$A = P \cdot h = 15000 \cdot 8 = 120000\text{ J} = 120\text{ kJ}$$
-- Công suất nâng hàng của cần cẩu là:
-$$\mathcal{P} = \dfrac{A}{t} = \dfrac{120000}{20} = 6000\text{ W} = 6\text{ kW}$$""",
-        "real_life": r"""- **Giao thông và cơ giới hóa**: Đánh giá sức kéo và tốc độ của đầu máy xe lửa, ô tô, máy bơm nước, thang máy chung cư thông qua chỉ số công suất ($\text{kW}$ hoặc mã lực $\text{HP}$).
-- **Lao động và xây dựng**: Dùng cầu dẫn (mặt phẳng nghiêng) để đưa xe máy vào nhà hoặc dùng hệ thống pa-lăng ròng rọc để kéo vật liệu nặng lên tầng cao.""",
-        "game_title": "Thử thách thực tế: Công và Công suất",
-        "game_description": "Lựa chọn công suất động cơ, hệ ròng rọc và mặt phẳng nghiêng để nâng kiện hàng lên độ cao yêu cầu với hiệu suất tối ưu.",
-        "game_type": "game_congsuat",
-        "quiz": [
-            mcq(
-                "biet",
-                r"Trong trường hợp nào dưới đây có công cơ học của lực được nhắc tới?",
-                [
-                    r"Một lực sĩ đang đứng yên giữ quả tạ ở trên cao",
-                    r"Trọng lực tác dụng lên hòn bi đang lăn trên mặt bàn phẳng nằm ngang",
-                    r"Lực kéo của đầu tàu hỏa làm đoàn tàu chuyển động trên đường ray",
-                    r"Một học sinh dùng tay đẩy mạnh vào bức tường bê tông nhưng tường không dịch chuyển",
-                ],
-                2,
-                r"Chỉ có công cơ học khi có lực tác dụng vào vật và làm vật dịch chuyển theo phương không vuông góc với lực.",
-            ),
-            mcq(
-                "biet",
-                r"Đơn vị đo công suất trong hệ đo lường quốc tế SI là oát ($\text{W}$). Một oát ($1\text{ W}$) bằng:",
-                [r"$1\text{ J}\cdot\text{s}$", r"$1\text{ J/s}$", r"$1\text{ N}\cdot\text{m}$", r"$1\text{ N/s}$"],
-                1,
-                r"Từ công thức $\mathcal{P} = \dfrac{A}{t}$, với $A$ đo bằng $\text{J}$ và $t$ đo bằng $\text{s}$, ta có $1\text{ W} = 1\text{ J/s}$.",
-            ),
-            mcq(
-                "biet",
-                r"Phát biểu nào sau đây là ĐÚNG về định luật về công đối với các máy cơ đơn giản?",
-                [
-                    r"Ròng rọc động vừa cho lợi $2$ lần về lực vừa cho lợi $2$ lần về đường đi",
-                    r"Mặt phẳng nghiêng giúp ta thực hiện công ít hơn so với nâng trực tiếp",
-                    r"Không một máy cơ đơn giản nào cho ta lợi về công; được lợi bao nhiêu lần về lực thì thiệt bấy nhiêu lần về đường đi",
-                    r"Đòn bẩy luôn cho lợi về công cơ học",
-                ],
-                2,
-                r"Theo định luật về công, không một máy cơ đơn giản nào cho lợi về công: được lợi bao nhiêu lần về lực thì thiệt bấy nhiêu lần về đường đi và ngược lại.",
-            ),
-            mcq(
-                "biet",
-                r"Nếu một vật chuyển động thẳng đều với tốc độ $v$ dưới tác dụng của lực kéo $F$ cùng hướng chuyển động thì công suất của lực kéo được tính bằng công thức nào?",
-                [r"$\mathcal{P} = \dfrac{F}{v}$", r"$\mathcal{P} = F \cdot v$", r"$\mathcal{P} = \dfrac{v}{F}$", r"$\mathcal{P} = F \cdot v^2$"],
-                1,
-                r"Ta có $\mathcal{P} = \dfrac{A}{t} = \dfrac{F \cdot s}{t} = F \cdot v$.",
-            ),
-            mcq(
-                "hieu",
-                r"Một người dùng một ròng rọc động (bỏ qua ma sát và khối lượng ròng rọc) để nâng đều một thùng vữa có trọng lượng $P = 400\text{ N}$ lên cao $h = 3\text{ m}$. Lực kéo dây $F$ và quãng đường đầu dây phải kéo đi $s$ lần lượt là:",
-                [
-                    r"$F = 200\text{ N}$ và $s = 6\text{ m}$",
-                    r"$F = 200\text{ N}$ và $s = 3\text{ m}$",
-                    r"$F = 400\text{ N}$ và $s = 6\text{ m}$",
-                    r"$F = 800\text{ N}$ và $s = 1{,}5\text{ m}$",
-                ],
-                0,
-                r"Dùng ròng rọc động cho ta lợi $2$ lần về lực ($F = \dfrac{P}{2} = \dfrac{400}{2} = 200\text{ N}$) và thiệt $2$ lần về đường đi ($s = 2h = 2 \cdot 3 = 6\text{ m}$).",
-            ),
-            mcq(
-                "hieu",
-                r"Một máy bơm nước thực hiện một công $A = 360\text{ kJ}$ trong thời gian $t = 2\text{ phút}$. Công suất của máy bơm đó là:",
-                [r"$180\text{ W}$", r"$3000\text{ W}$", r"$180\text{ kW}$", r"$720\text{ W}$"],
-                1,
-                r"Đổi $A = 360\text{ kJ} = 360000\text{ J}$ và $t = 2\text{ phút} = 120\text{ s}$. Công suất của máy bơm là $\mathcal{P} = \dfrac{A}{t} = \dfrac{360000}{120} = 3000\text{ W}$.",
-            ),
-            tf4(
-                "hieu",
-                r"Người ta dùng một mặt phẳng nghiêng dài $l = 5\text{ m}$ để kéo đều một thùng hàng có trọng lượng $P = 600\text{ N}$ lên sàn xe tải cao $h = 1{,}2\text{ m}$. Biết lực kéo thực tế dọc theo mặt phẳng nghiêng là $F = 180\text{ N}$. Xét tính đúng sai của các phát biểu sau:",
-                [
-                    r"a) Công có ích để đưa thùng hàng lên độ cao $1{,}2\text{ m}$ là $A_{\text{ích}} = 720\text{ J}$.",
-                    r"b) Công toàn phần của lực kéo trên mặt phẳng nghiêng là $A_{\text{tp}} = 900\text{ J}$.",
-                    r"c) Nếu không có ma sát trên mặt phẳng nghiêng thì lực kéo chỉ cần bằng $144\text{ N}$.",
-                    r"d) Hiệu suất của mặt phẳng nghiêng trong trường hợp này là $75\%$.",
-                ],
-                [True, True, True, False],
-                r"a) Đúng vì $A_{\text{ích}} = P \cdot h = 600 \cdot 1{,}2 = 720\text{ J}$. b) Đúng vì $A_{\text{tp}} = F \cdot l = 180 \cdot 5 = 900\text{ J}$. c) Đúng vì nếu không có ma sát thì $F_0 = \dfrac{A_{\text{ích}}}{l} = \dfrac{720}{5} = 144\text{ N}$. d) Sai vì hiệu suất là $H = \dfrac{A_{\text{ích}}}{A_{\text{tp}}} \cdot 100\% = \dfrac{720}{900} \cdot 100\% = 80\%$.",
-            ),
-            tf4(
-                "hieu",
-                r"Một quả bóng có khối lượng $m = 0{,}4\text{ kg}$ được thả rơi từ độ cao $h = 5\text{ m}$ xuống mặt đất. Xét tính đúng sai của các phát biểu sau:",
-                [
-                    r"a) Khi bắt đầu thả ở độ cao $5\text{ m}$, quả bóng có thế năng trọng trường cực đại và động năng bằng $0$.",
-                    r"b) Trong quá trình quả bóng rơi xuống, thế năng trọng trường tăng dần còn động năng giảm dần.",
-                    r"c) Công của trọng lực thực hiện khi quả bóng rơi từ độ cao $5\text{ m}$ tới mặt đất là $A = 20\text{ J}$ (lấy $P = 10m$).",
-                    r"d) Nếu quả bóng rơi mất thời gian $t = 1\text{ s}$ thì công suất trung bình của trọng lực trong thời gian rơi là $20\text{ W}$.",
-                ],
-                [True, False, True, True],
-                r"a) Đúng vì lúc vừa buông tay $v = 0$ nên $W_{\text{đ}} = 0$ và độ cao $h$ lớn nhất nên $W_{\text{t}}$ cực đại. b) Sai vì khi rơi xuống độ cao giảm còn tốc độ tăng nên thế năng chuyển hóa thành động năng ($W_{\text{t}}$ giảm, $W_{\text{đ}}$ tăng). c) Đúng vì $P = 10 \cdot 0{,}4 = 4\text{ N} \Rightarrow A = P \cdot h = 4 \cdot 5 = 20\text{ J}$. d) Đúng vì $\mathcal{P} = \dfrac{A}{t} = \dfrac{20}{1} = 20\text{ W}$.",
-            ),
-            mcq(
-                "vandung",
-                r"Một động cơ ô tô có công suất không đổi $\mathcal{P} = 45\text{ kW}$ đang kéo xe chuyển động thẳng đều trên đường nằm ngang với tốc độ $v = 54\text{ km/h}$. Độ lớn của lực kéo do động cơ tạo ra là:",
-                [r"$833{,}3\text{ N}$", r"$2430\text{ N}$", r"$3000\text{ N}$", r"$1500\text{ N}$"],
-                2,
-                r"Đổi $\mathcal{P} = 45\text{ kW} = 45000\text{ W}$ và tốc độ $v = 54\text{ km/h} = \dfrac{54}{3{,}6} = 15\text{ m/s}$. Lực kéo của động cơ là $F = \dfrac{\mathcal{P}}{v} = \dfrac{45000}{15} = 3000\text{ N}$.",
-            ),
-            short(
-                "vandung",
-                r"Một máy kéo dùng dây cáp kéo một kiện gỗ trượt đều trên mặt phẳng nghiêng dài $l = 10\text{ m}$ để lên cao $h = 3\text{ m}$ trong thời gian $t = 25\text{ s}$. Biết kiện gỗ có trọng lượng $P = 2000\text{ N}$ và hiệu suất của mặt phẳng nghiêng là $H = 80\%$. Tính công suất $\mathcal{P}$ của máy kéo theo đơn vị $\text{W}$.",
-                ["300"],
-                r"Công có ích để nâng kiện gỗ là $A_{\text{ích}} = P \cdot h = 2000 \cdot 3 = 6000\text{ J}$. Công toàn phần máy kéo thực hiện là $A_{\text{tp}} = \dfrac{A_{\text{ích}}}{H} = \dfrac{6000}{0{,}8} = 7500\text{ J}$. Công suất của máy kéo là $\mathcal{P} = \dfrac{A_{\text{tp}}}{t} = \dfrac{7500}{25} = 300\text{ W}$.",
-            ),
+        example="Người ta dùng dòng điện chạy qua dung dịch muối đồng sunfat ($\\text{CuSO}_4$) để phủ một lớp đồng mỏng màu đỏ lên bề mặt một chiếc chìa khóa bằng sắt nối với cực âm. Hiện tượng này dựa trên tác dụng nào của dòng điện?",
+        example_answer="Quá trình mạ đồng lên chiếc chìa khóa sắt dựa trên **tác dụng hóa học** của dòng điện khi đi qua dung dịch muối kim loại.",
+        real_life="Cầu chì và aptomat trong tủ điện gia đình tự động ngắt mạch khi có sự cố chập điện, giúp phòng chống cháy nổ do tác dụng nhiệt quá mức của dòng điện.",
+        quiz=[
+            mcq("biet", "Các dụng cụ nào sau đây hoạt động chủ yếu dựa trên **tác dụng nhiệt** của dòng điện?", ["Bàn là điện, nồi cơm điện và ấm đun nước siêu tốc", "Đèn LED báo nguồn và bút thử điện", "Bình điện phân để mạ vàng trang sức", "La bàn từ"], 0, "Bàn là, nồi cơm điện và ấm đun nước biến đổi điện năng thành nhiệt năng dựa trên tác dụng nhiệt của dòng điện."),
+            mcq("biet", "Trên sơ đồ mạch điện, kí hiệu của nguồn điện 1 pin gồm hai đoạn thẳng song song dài ngắn khác nhau. Đoạn thẳng dài hơn biểu diễn cực nào của pin?", ["Cực dương ($+$)", "Cực âm ($-$)", "Công tắc đóng", "Bóng đèn sợi đốt"], 0, "Theo quy ước sơ đồ mạch điện, vạch thẳng dài và mảnh là cực dương ($+$), vạch ngắn và đậm là cực âm ($-$)."),
+            mcq("hieu", "Ứng dụng mạ vàng, mạ bạc lên vỏ đồng hồ hoặc mạ kẽm chống gỉ cho các tấm tôn dựa trên tác dụng nào của dòng điện?", ["Tác dụng hóa học", "Tác dụng sinh lí", "Tác dụng phát sáng", "Tác dụng cơ học"], 0, "Mạ điện là ứng dụng điển hình của tác dụng hóa học của dòng điện khi chạy qua dung dịch chất điện phân."),
+            tf4("hieu", "Xét tính đúng/sai của các phát biểu sau về mạch điện và tác dụng của dòng điện:", [
+                "Khi công tắc (khóa $K$) mở, mạch điện bị hở nên bóng đèn không sáng.",
+                "Đèn điốt phát quang (đèn LED) chỉ cho dòng điện đi qua theo một chiều nhất định và hoạt động dựa trên tác dụng phát sáng.",
+                "Máy khử rung tim (sốc điện cấp cứu) trong y học là ứng dụng của tác dụng sinh lí của dòng điện.",
+                "Cầu chì được mắc trong mạch điện chỉ để làm bóng đèn sáng mạnh gấp đôi.",
+            ], [True, True, True, False], "Ý d) sai vì cầu chì dùng để bảo vệ mạch điện, tự động nóng chảy và ngắt mạch khi dòng điện tăng quá mức an toàn."),
+            short("vandung", "Trong chương trình Vật lý 8, dòng điện có mấy tác dụng cơ bản được xét (nhiệt, phát sáng, hóa học, từ, sinh lí)?", ["5"], "Dòng điện có $5$ tác dụng cơ bản: tác dụng nhiệt, phát sáng, hóa học, từ và sinh lí."),
         ],
-    },
-    # ===================== CHỦ ĐỀ 6: NHIỆT NĂNG =====================
-    {
-        "topic": "nhiet-nang",
-        "title": "Năng lượng nhiệt, Nội năng, Sự truyền nhiệt và Sự nở vì nhiệt",
-        "icon": "🔥",
-        "description": "Chương VI · SGK Khoa học tự nhiên 8 Kết nối tri thức với cuộc sống (Bài 26 – Bài 29): Năng lượng nhiệt, nội năng, thực hành đo năng lượng nhiệt bằng Joulemeter, ba hình thức truyền nhiệt (dẫn nhiệt, đối lưu, bức xạ nhiệt) và sự nở vì nhiệt của các chất.",
-        "requirements": [
-            r"Nêu được khái niệm năng lượng nhiệt, khái niệm nội năng và giải thích được khi nhiệt độ của vật càng cao thì các phân tử cấu tạo nên vật chuyển động càng nhanh và nội năng của vật càng lớn.",
-            r"Thực hiện được thí nghiệm đo năng lượng nhiệt mà vật nhận được khi đun nước bằng dụng cụ thực hành (oát kế hoặc Joulemeter).",
-            r"Lấy được ví dụ và phân biệt được ba hình thức truyền nhiệt: dẫn nhiệt, đối lưu, bức xạ nhiệt; giải thích được một số hiện tượng truyền nhiệt và cách nhiệt trong thực tế.",
-            r"Thực hiện thí nghiệm để chứng tỏ được các chất khác nhau nở vì nhiệt khác nhau (chất khí nở vì nhiệt nhiều hơn chất lỏng, chất lỏng nở vì nhiệt nhiều hơn chất rắn) và nêu được công dụng, tác hại của sự nở vì nhiệt.",
+        chapter_desc=CH3_DESC,
+    ),
+    bai(
+        topic=CH3_TOPIC,
+        chapter_title=CH3_TITLE,
+        title="Bài 11: Cường độ dòng điện và hiệu điện thế",
+        icon="🎛️",
+        description="Cường độ dòng điện I (A, mA) đo bằng ampe kế mắc nối tiếp; hiệu điện thế U (V, mV, kV) đo bằng vôn kế mắc song song.",
+        requirements=[
+            "Nêu được cường độ dòng điện ($I$) cho biết mức độ mạnh, yếu của dòng điện, có đơn vị là Ampe ($\\text{A}$) và đo bằng ampe kế mắc nối tiếp.",
+            "Nêu được hiệu điện thế ($U$) có đơn vị là Vôn ($\\text{V}$) và đo bằng vôn kế mắc song song với dụng cụ cần đo.",
+            "Quy đổi thành thạo giữa các đơn vị $\\text{A} \\leftrightarrow \\text{mA}$ và $\\text{kV} \\leftrightarrow \\text{V} \\leftrightarrow \\text{mV}$.",
         ],
-        "definition": r"""- **Năng lượng nhiệt** là năng lượng mà vật có được nhờ chuyển động nhiệt của các phân tử. Phần năng lượng nhiệt mà vật nhận thêm hay mất đi trong quá trình truyền nhiệt gọi là **nhiệt lượng** ($Q$, đơn vị $\text{J}$).
-- **Nội năng** của một vật là tổng động năng và thế năng của các phân tử, nguyên tử cấu tạo nên vật.
-- **Ba hình thức truyền nhiệt**: dẫn nhiệt (chủ yếu ở chất rắn), đối lưu (ở chất lỏng và chất khí) và bức xạ nhiệt (truyền bằng các tia nhiệt đi thẳng, truyền được cả trong chân không).""",
-        "theory": r"""### Bài 26. Năng lượng nhiệt và nội năng
-- **Chuyển động nhiệt và nội năng**: Các phân tử, nguyên tử cấu tạo nên vật chuyển động hỗn độn không ngừng nên có động năng; đồng thời giữa chúng có lực tương tác phân tử nên có thế năng. Tổng động năng và thế năng của các hạt phân tử, nguyên tử cấu tạo nên vật gọi là **nội năng** của vật.
-- **Mối liên hệ với nhiệt độ**: Khi một vật được làm nóng, nhiệt độ của vật tăng lên, các phân tử chuyển động hỗn độn nhanh hơn nên động năng phân tử và nội năng của vật tăng lên. Hai cách làm thay đổi nội năng của vật là **thực hiện công** (như cọ xát đồng xu trên mặt bàn) và **truyền nhiệt** (như nhúng thìa vào cốc nước nóng).
-### Bài 27. Thực hành đo năng lượng nhiệt bằng Joulemeter
-- **Nguyên tắc đo**: Đun nóng một lượng nước trong bình nhiệt lượng kế bằng dây điện trở nối với nguồn điện qua Joulemeter (dụng cụ đo năng lượng điện tiêu thụ chuyển hóa thành nhiệt năng truyền cho nước).
-- **Kết quả thực nghiệm**: Nhiệt lượng $Q$ mà một lượng chất thu vào để nóng lên tỉ lệ thuận với khối lượng $m$ của vật, độ tăng nhiệt độ $\Delta t = t_2 - t_1$ và phụ thuộc vào bản chất của chất làm vật (thể hiện qua nhiệt dung riêng $c$): $Q = m \cdot c \cdot \Delta t$.
-### Bài 28. Sự truyền nhiệt
-- **Dẫn nhiệt**: Sự truyền năng lượng nhiệt từ phần này sang phần khác của một vật hoặc từ vật này sang vật khác khi tiếp xúc trực tiếp. Đây là hình thức truyền nhiệt chủ yếu của **chất rắn**. Kim loại (bạc, đồng, nhôm) dẫn nhiệt rất tốt; chất lỏng, chất khí và các vật liệu xốp như gỗ, len, bông, thủy tinh, nhựa dẫn nhiệt rất kém (dùng để cách nhiệt).
-- **Đối lưu**: Sự truyền nhiệt bằng các dòng chất lỏng hoặc chất khí dịch chuyển (phần chất lỏng hoặc chất khí nóng hơn nở ra, khối lượng riêng giảm nên đi lên trên; phần lạnh hơn nặng hơn chìm xuống dưới tạo thành dòng đối lưu). Đây là hình thức truyền nhiệt chủ yếu của **chất lỏng và chất khí**; đối lưu không xảy ra trong chất rắn và chân không.
-- **Bức xạ nhiệt**: Sự truyền nhiệt bằng các tia nhiệt đi thẳng. Bức xạ nhiệt xảy ra được cả trong **chân không** (như năng lượng nhiệt từ Mặt Trời truyền tới Trái Đất). Vật có bề mặt sẫm màu và xù xì hấp thụ cũng như phát xạ tia nhiệt tốt hơn vật có bề mặt sáng màu và nhẵn bóng.
-### Bài 29. Sự nở vì nhiệt
-- **Đặc điểm sự nở vì nhiệt của các chất**: Hầu hết các chất rắn, lỏng, khí đều **nở ra khi nóng lên** và **co lại khi lạnh đi**. Các chất rắn khác nhau, chất lỏng khác nhau thì nở vì nhiệt khác nhau (ví dụ: nhôm nở vì nhiệt nhiều hơn đồng, đồng nhiều hơn sắt; rượu nở vì nhiệt nhiều hơn dầu, dầu nhiều hơn nước). Ngược lại, **các chất khí khác nhau nở vì nhiệt giống nhau**.
-- **So sánh mức độ nở vì nhiệt**: Chất khí nở vì nhiệt nhiều hơn chất lỏng, chất lỏng nở vì nhiệt nhiều hơn chất rắn. Khi sự co giãn vì nhiệt của vật rắn bị ngăn cản, nó sẽ gây ra những lực rất lớn (làm cong đường ray, nứt dầm cầu bê tông).
-- **Ứng dụng**: Chế tạo băng kép (gồm hai thanh kim loại có bản chất khác nhau như đồng và thép tán chặt vào nhau; khi bị đốt nóng băng kép luôn cong về phía kim loại nở vì nhiệt ít hơn là thép) dùng làm rơ-le tự động đóng ngắt mạch điện trong bàn là, ấm đun nước; để khe hở ở chỗ tiếp nối thanh ray tàu hỏa và gối đỡ hai đầu cầu.""",
-        "formulas": [
+        definition="Cường độ dòng điện (kí hiệu $I$, đơn vị Ampe – $\\text{A}$) là đại lượng đặc trưng cho độ mạnh, yếu của dòng điện và được đo bằng ampe kế. Hiệu điện thế (kí hiệu $U$, đơn vị Vôn – $\\text{V}$) được tạo ra giữa hai cực của nguồn điện và được đo bằng vôn kế.",
+        theory=(
+            "### 1. Cường độ dòng điện và Ampe kế\n"
+            "- Kí hiệu cường độ dòng điện: $I$. Đơn vị trong hệ SI: **Ampe** ($\\text{A}$). Bội và ước: $1\\text{ A} = 1000\\text{ mA}$; $1\\text{ mA} = 0{,}001\\text{ A}$.\n"
+            "- **Ampe kế** (kí hiệu chữ $\\text{A}$ trong vòng tròn) dùng để đo cường độ dòng điện.\n"
+            "- **Cách mắc Ampe kế**: mắc **nối tiếp** với bộ phận cần đo sao cho chốt dương ($+$) của ampe kế nối về phía cực dương ($+$) của nguồn điện (tuyệt đối không mắc trực tiếp hai chốt của ampe kế vào hai cực nguồn điện).\n\n"
+            "### 2. Hiệu điện thế và Vôn kế\n"
+            "- Kí hiệu hiệu điện thế: $U$. Đơn vị trong hệ SI: **Vôn** ($\\text{V}$). Đổi đơn vị: $1\\text{ kV} = 1000\\text{ V}$; $1\\text{ V} = 1000\\text{ mV}$.\n"
+            "- **Vôn kế** (kí hiệu chữ $\\text{V}$ trong vòng tròn) dùng để đo hiệu điện thế.\n"
+            "- **Cách mắc Vôn kế**: mắc **song song** vào hai đầu thiết bị điện hoặc hai cực của nguồn điện (chốt $+$ nối về phía cực $+$ của nguồn).\n"
+            "- Số vôn ghi trên dụng cụ điện là **hiệu điện thế định mức** để dụng cụ hoạt động bình thường."
+        ),
+        formulas=[
             G(
-                "I. Nhiệt lượng và cân bằng nhiệt",
-                F("Nhiệt lượng thu vào hoặc tỏa ra", r"$Q = m \cdot c \cdot \Delta t = m \cdot c \cdot |t_2 - t_1|$", r"$Q$ ($\text{J}$), $m$ ($\text{kg}$), $c$: nhiệt dung riêng ($\text{J/(kg}\cdot\text{K)}$), $\Delta t$ (${}^\circ\text{C}$ hoặc $\text{K}$)"),
-                F("Phương trình cân bằng nhiệt (bỏ qua hao phí)", r"$Q_{\text{tỏa}} = Q_{\text{thu}} \iff m_1 c_1 (t_1 - t) = m_2 c_2 (t - t_2)$", r"$t$: nhiệt độ khi có cân bằng nhiệt ($t_2 < t < t_1$)"),
-            ),
+                "Đơn vị và quy tắc mắc Ampe kế – Vôn kế",
+                F("Quy đổi đơn vị Cường độ dòng điện I", "$1\\text{ A} = 1000\\text{ mA}; \\qquad 1\\text{ mA} = 10^{-3}\\text{ A}$", "Ampe kế luôn mắc **nối tiếp** vào đoạn mạch cần đo."),
+                F("Quy đổi đơn vị Hiệu điện thế U", "$1\\text{ kV} = 1000\\text{ V}; \\qquad 1\\text{ V} = 1000\\text{ mV}$", "Vôn kế luôn mắc **song song** với hai đầu dụng cụ cần đo."),
+            )
+        ],
+        example="Một bóng đèn pin khi sáng bình thường có dòng điện chạy qua là $I = 0{,}35\\text{ A}$ ở hiệu điện thế $U = 3\\text{ V}$. Hãy đổi cường độ dòng điện này ra đơn vị miliampe ($\\text{mA}$) và hiệu điện thế này ra đơn vị milivôn ($\\text{mV}$).",
+        example_answer="Ta có $I = 0{,}35\\text{ A} = 0{,}35 \\cdot 1000 = 350\\text{ mA}$ và $U = 3\\text{ V} = 3 \\cdot 1000 = 3000\\text{ mV}$.",
+        real_life="Ổ cắm điện lưới sinh hoạt ở Việt Nam có hiệu điện thế $220\\text{ V}$, trong khi một viên pin con thỏ có hiệu điện thế $1{,}5\\text{ V}$ và ắc quy xe máy có hiệu điện thế $12\\text{ V}$.",
+        quiz=[
+            mcq("biet", "Để đo cường độ dòng điện chạy qua một bóng đèn, ta dùng dụng cụ nào và mắc như thế nào vào mạch điện?", ["Dùng ampe kế mắc nối tiếp với bóng đèn", "Dùng vôn kế mắc song song với bóng đèn", "Dùng ampe kế mắc song song với bóng đèn", "Dùng vôn kế mắc nối tiếp với bóng đèn"], 0, "Cường độ dòng điện được đo bằng ampe kế mắc nối tiếp với dụng cụ cần đo."),
+            mcq("biet", "Đơn vị đo hiệu điện thế trong hệ SI là gì?", ["Vôn ($\\text{V}$)", "Ampe ($\\text{A}$)", "Newton ($\\text{N}$)", "Pascal ($\\text{Pa}$)"], 0, "Đơn vị đo hiệu điện thế là Vôn (kí hiệu $\\text{V}$)."),
+            mcq("hieu", "Đổi đơn vị: Cường độ dòng điện $I = 250\\text{ mA}$ tương ứng với bao nhiêu Ampe ($\\text{A}$)?", ["$0{,}25\\text{ A}$", "$2{,}5\\text{ A}$", "$25\\text{ A}$", "$250\\,000\\text{ A}$"], 0, "Vì $1\\text{ A} = 1000\\text{ mA}$ nên $250\\text{ mA} = \\dfrac{250}{1000} = 0{,}25\\text{ A}$."),
+            tf4("hieu", "Xét tính đúng/sai của các phát biểu sau về cường độ dòng điện và hiệu điện thế:", [
+                "Vôn kế được mắc song song với hai đầu bóng đèn để đo hiệu điện thế giữa hai đầu bóng đèn.",
+                "Chốt dương ($+$) của ampe kế và vôn kế đều phải được nối về phía cực dương ($+$) của nguồn điện.",
+                "Ta có thể mắc trực tiếp hai chốt của ampe kế vào hai cực của nguồn điện mà không cần qua bóng đèn.",
+                "Đổi đơn vị: $0{,}5\\text{ kV} = 500\\text{ V}$.",
+            ], [True, True, False, True], "Ý c) sai vì mắc trực tiếp hai chốt của ampe kế vào hai cực nguồn điện sẽ gây đoản mạch làm hỏng ampe kế và nguồn điện."),
+            short("vandung", "Một ampe kế đo dòng điện chạy qua bóng đèn chỉ $I = 0{,}6\\text{ A}$. Giá trị cường độ dòng điện này bằng bao nhiêu miliampe ($\\text{mA}$)?", ["600"], "Đổi $I = 0{,}6\\text{ A} = 0{,}6 \\cdot 1000 = 600\\text{ mA}$.", unit="mA"),
+        ],
+        chapter_desc=CH3_DESC,
+    ),
+    bai(
+        topic=CH4_TOPIC,
+        chapter_title=CH4_TITLE,
+        title="Bài 12: Năng lượng nhiệt và nội năng",
+        icon="🔥",
+        description="Chuyển động nhiệt của các phân tử, khái niệm năng lượng nhiệt (nhiệt năng), nội năng và mối liên hệ với nhiệt độ.",
+        requirements=[
+            "Nêu được các phân tử, nguyên tử cấu tạo nên vật luôn chuyển động không ngừng; nhiệt độ của vật càng cao thì các phân tử chuyển động càng nhanh.",
+            "Định nghĩa được nội năng của một vật là tổng động năng và thế năng của các phân tử cấu tạo nên vật.",
+            "Giải thích được khi một vật được làm nóng lên thì nhiệt độ và nội năng của vật đều tăng.",
+        ],
+        definition="Nội năng của một vật là tổng động năng và thế năng tương tác của các phân tử, nguyên tử cấu tạo nên vật. Năng lượng nhiệt (nhiệt năng) là phần năng lượng vật nhận thêm hay mất bớt trong quá trình truyền nhiệt.",
+        theory=(
+            "### 1. Chuyển động nhiệt của phân tử và Nội năng\n"
+            "- Các phân tử cấu tạo nên vật chuyển động hỗn loạn không ngừng nên chúng có **động năng**; đồng thời giữa các phân tử có lực tương tác và khoảng cách nên chúng có **thế năng**.\n"
+            "- **Nội năng ($U$)** của vật bằng tổng động năng và thế năng của toàn bộ các phân tử cấu tạo nên vật:\n"
+            "  $$U = \\sum W_{\\text{đ phân tử}} + \\sum W_{\\text{t phân tử}}$$\n\n"
+            "### 2. Liên hệ giữa Nội năng, Nhiệt năng và Nhiệt độ\n"
+            "- Khi **nhiệt độ của vật tăng**, các phân tử chuyển động hỗn loạn **nhanh hơn**, động năng phân tử tăng nên **nội năng của vật tăng**.\n"
+            "- Có hai cách làm tăng nội năng của vật: **thực hiện công** (cọ xát đồng xu xuống mặt bàn) hoặc **truyền nhiệt** (nhúng thìa vào cốc nước nóng)."
+        ),
+        formulas=[
             G(
-                "II. Ba hình thức truyền nhiệt và sự nở vì nhiệt",
-                F("Hình thức truyền nhiệt chủ yếu theo môi trường", r"$\text{Rắn: Dẫn nhiệt};\quad \text{Lỏng, Khí: Đối lưu};\quad \text{Chân không: Bức xạ nhiệt}$", r""),
-                F("So sánh độ nở vì nhiệt của ba thể", r"$\text{Chất khí} > \text{Chất lỏng} > \text{Chất rắn}$", r"Các chất khí khác nhau nở vì nhiệt giống nhau"),
-                F("Quy tắc uốn cong của băng kép (Đồng – Thép)", r"$t \text{ tăng} \Rightarrow \text{cong về phía Thép};\quad t \text{ giảm} \Rightarrow \text{cong về phía Đồng}$", r"Vì đồng nở và co vì nhiệt nhiều hơn thép"),
-            ),
+                "Nội năng và sự biến đổi nội năng theo nhiệt độ",
+                F("Biểu thức khái niệm Nội năng", "$U = W_{\\text{đ phân tử}} + W_{\\text{t phân tử}}$", "Mọi vật ở bất kì nhiệt độ nào (kể cả nước đá ở $0^\\circ\\text{C}$) đều luôn có nội năng vì các phân tử luôn chuyển động."),
+                F("Quan hệ giữa nhiệt độ và nội năng của một vật", "$T \\text{ tăng} \\implies v_{\\text{phân tử}} \\text{ tăng} \\implies \\text{Nội năng } U \\text{ tăng}$", "Nhiệt lượng $Q$ là số đo phần năng lượng nhiệt được truyền từ vật nóng hơn sang vật lạnh hơn."),
+            )
         ],
-        "example": r"Dùng ấm điện đun nóng $m = 1{,}5\text{ kg}$ nước từ nhiệt độ ban đầu $t_1 = 20^\circ\text{C}$ đến khi nước sôi ở $t_2 = 100^\circ\text{C}$. Biết nhiệt dung riêng của nước là $c = 4200\text{ J/(kg}\cdot\text{K)}$. Tính nhiệt lượng mà nước đã thu vào.",
-        "example_answer": r"""- Độ tăng nhiệt độ của nước là:
-$$\Delta t = t_2 - t_1 = 100 - 20 = 80^\circ\text{C}$$
-- Nhiệt lượng mà $1{,}5\text{ kg}$ nước đã thu vào để sôi là:
-$$Q = m \cdot c \cdot \Delta t = 1{,}5 \cdot 4200 \cdot 80 = 504000\text{ J} = 504\text{ kJ}$$""",
-        "real_life": r"""- **Bình giữ nhiệt (phích nước)**: Gồm hai lớp thủy tinh có lớp chân không ở giữa để ngăn **dẫn nhiệt** và **đối lưu**; mặt trong tráng bạc phản xạ các tia nhiệt để ngăn **bức xạ nhiệt**; nút đậy bằng nhựa hoặc gỗ xốp ngăn đối lưu.
-- **Lắp đặt thiết bị và công trình**: Lắp điều hòa làm lạnh ở trên cao và đặt lò sưởi ở dưới thấp để tận dụng dòng đối lưu không khí; tạo khe hở nhiệt trên đường ray, cầu thép và ống dẫn hơi nóng.""",
-        "game_title": "Thử thách thực tế: Nhiệt năng và Truyền nhiệt",
-        "game_description": "Thử nghiệm các lớp vật liệu cách nhiệt, quan sát dòng đối lưu và sự uốn cong của băng kép khi thay đổi nhiệt độ.",
-        "game_type": "game_nhietnang",
-        "quiz": [
-            mcq(
-                "biet",
-                r"Khi nhiệt độ của một vật tăng lên thì các phân tử cấu tạo nên vật và nội năng của vật thay đổi như thế nào?",
-                [
-                    r"Các phân tử chuyển động chậm đi và nội năng của vật giảm",
-                    r"Các phân tử chuyển động nhanh hơn và nội năng của vật tăng lên",
-                    r"Các phân tử đứng yên và nội năng của vật không đổi",
-                    r"Kích thước của mỗi phân tử phình to ra làm nội năng giảm",
-                ],
-                1,
-                r"Nhiệt độ của vật càng cao thì các phân tử chuyển động nhiệt càng nhanh, làm động năng phân tử và nội năng của vật tăng lên.",
-            ),
-            mcq(
-                "biet",
-                r"Trong chân không (như khoảng không vũ trụ giữa Mặt Trời và Trái Đất), năng lượng nhiệt được truyền đi bằng hình thức nào?",
-                [r"Dẫn nhiệt", r"Đối lưu", r"Bức xạ nhiệt", r"Cả dẫn nhiệt và đối lưu"],
-                2,
-                r"Dẫn nhiệt và đối lưu đều cần môi trường vật chất (hạt phân tử); chỉ có bức xạ nhiệt mới truyền được qua chân không.",
-            ),
-            mcq(
-                "biet",
-                r"Trong các chất: nhôm, nước, rượu và không khí, chất nào nở vì nhiệt nhiều nhất khi cùng tăng thêm một độ tăng nhiệt độ $\Delta t$ như nhau?",
-                [r"Nhôm", r"Nước", r"Rượu", r"Không khí"],
-                3,
-                r"Chất khí nở vì nhiệt nhiều hơn chất lỏng, chất lỏng nở vì nhiệt nhiều hơn chất rắn; do đó không khí nở vì nhiệt nhiều nhất.",
-            ),
-            mcq(
-                "biet",
-                r"Một băng kép gồm một thanh đồng và một thanh thép được tán chặt vào nhau. Biết đồng nở vì nhiệt nhiều hơn thép. Khi bị đốt nóng, băng kép sẽ:",
-                [
-                    r"Cong về phía thanh đồng",
-                    r"Cong về phía thanh thép",
-                    r"Giữ nguyên hình dạng thẳng",
-                    r"Xoắn tròn lại quanh trục dọc",
-                ],
-                1,
-                r"Khi bị đốt nóng, đồng giãn dài ra nhiều hơn thép nên thanh đồng nằm ở phía vòng cung ngoài và đẩy băng kép cong về phía thanh thép.",
-            ),
-            mcq(
-                "hieu",
-                r"Tại sao khi đun nước bằng ấm, ta luôn đun từ phía dưới đáy ấm mà không đun từ phía trên miệng ấm?",
-                [
-                    r"Vì nước dẫn nhiệt tốt hơn kim loại làm đáy ấm",
-                    r"Để tạo thành dòng đối lưu: lớp nước ở dưới nóng lên nở ra, nhẹ đi nên nổi lên trên và lớp nước lạnh ở trên chìm xuống dưới giúp cả ấm nước nóng đều",
-                    r"Để tăng bức xạ nhiệt qua khoảng chân không trong nước",
-                    r"Vì đáy ấm làm bằng chất cách nhiệt",
-                ],
-                1,
-                r"Chất lỏng truyền nhiệt chủ yếu bằng đối lưu; đun từ dưới đáy giúp tạo dòng đối lưu tự nhiên làm nóng toàn bộ lượng nước.",
-            ),
-            mcq(
-                "hieu",
-                r"Tại sao vào mùa hè nắng nóng, người ta thường thích mặc áo sáng màu hơn là mặc áo màu đen hoặc màu sẫm?",
-                [
-                    r"Vì vải sáng màu dẫn nhiệt tốt hơn vải tối màu",
-                    r"Vì các vật có bề mặt sáng màu ít hấp thụ các tia nhiệt (bức xạ nhiệt) từ Mặt Trời hơn vật sẫm màu nên đỡ nóng hơn",
-                    r"Vì vải tối màu ngăn cản hoàn toàn hiện tượng đối lưu",
-                    r"Vì áo sáng màu có khối lượng riêng lớn hơn áo tối màu",
-                ],
-                1,
-                r"Vật có bề mặt sáng màu phản xạ tốt các tia nhiệt và hấp thụ bức xạ nhiệt kém hơn vật sẫm màu nên giúp cơ thể mát hơn dưới nắng.",
-            ),
-            tf4(
-                "hieu",
-                r"Xét cấu tạo của một chiếc bình giữ nhiệt (phích nước) dùng để đựng nước nóng. Xét tính đúng sai của các phát biểu sau:",
-                [
-                    r"a) Lớp chân không ở giữa hai thành bình thủy tinh có tác dụng ngăn cản sự dẫn nhiệt và sự đối lưu nhiệt ra môi trường ngoài.",
-                    r"b) Hai mặt đối diện của thành bình thủy tinh được tráng bạc nhẵn bóng nhằm làm tăng sự bức xạ nhiệt ra bên ngoài.",
-                    r"c) Nút bình được làm bằng nhựa rỗng hoặc gỗ xốp để hạn chế sự truyền nhiệt bằng đối lưu và dẫn nhiệt ở miệng bình.",
-                    r"d) Nếu bình giữ nhiệt bị gãy đầu vòi hút chân không ở đáy làm không khí tràn vào giữa hai lớp thủy tinh thì bình vẫn giữ nhiệt tốt như ban đầu.",
-                ],
-                [True, False, True, False],
-                r"a) Đúng vì chân không không dẫn nhiệt và không đối lưu. b) Sai vì lớp tráng bạc dùng để phản xạ các tia nhiệt trở lại vào trong nước, ngăn cản hao phí do bức xạ nhiệt. c) Đúng. d) Sai vì khi không khí lọt vào sẽ xảy ra dẫn nhiệt và đối lưu qua lớp không khí làm nước nhanh nguội.",
-            ),
-            tf4(
-                "hieu",
-                r"Xét các hiện tượng về sự nở vì nhiệt của các chất trong đời sống và kĩ thuật. Xét tính đúng sai của các phát biểu sau:",
-                [
-                    r"a) Các chất rắn khác nhau nở vì nhiệt khác nhau, còn các chất khí khác nhau (như oxygen, nitrogen, hydrogen) nở vì nhiệt giống nhau.",
-                    r"b) Khi rót nước thật sôi vào cốc thủy tinh dày thì cốc dễ bị nứt vỡ hơn cốc thủy tinh mỏng vì lớp thủy tinh bên trong nóng lên nở ra trước trong khi lớp bên ngoài chưa kịp nóng lên.",
-                    r"c) Khi đóng các chai nước ngọt có ga trong nhà máy, người ta luôn rót thật đầy tràn tới sát nắp chai để tránh vỡ chai khi trời nóng.",
-                    r"d) Chỗ tiếp nối hai đầu thanh ray đường sắt phải để một khe hở nhỏ để khi trời nắng nóng thanh ray nở dài ra không bị cong vênh.",
-                ],
-                [True, True, False, True],
-                r"a) Đúng. b) Đúng vì thủy tinh dẫn nhiệt kém nên cốc dày giãn nở không đều gây lực nội làm vỡ cốc. c) Sai vì người ta phải chừa một khoảng không khí ở cổ chai để khi nhiệt độ tăng chất lỏng nở ra không làm bung nắp hoặc nổ chai. d) Đúng.",
-            ),
-            mcq(
-                "vandung",
-                r"Dùng một Joulemeter đo năng lượng nhiệt cung cấp cho một cốc chứa $m = 200\text{ g}$ nước. Khi nhiệt độ của nước tăng từ $t_1 = 25^\circ\text{C}$ lên $t_2 = 45^\circ\text{C}$ (bỏ qua hao phí nhiệt ra môi trường, lấy nhiệt dung riêng của nước là $c = 4200\text{ J/(kg}\cdot\text{K)}$) thì số chỉ năng lượng tăng thêm trên Joulemeter là:",
-                [r"$1680\text{ J}$", r"$16800\text{ J}$", r"$37800\text{ J}$", r"$8400\text{ J}$"],
-                1,
-                r"Đổi $m = 200\text{ g} = 0{,}2\text{ kg}$ và $\Delta t = 45 - 25 = 20^\circ\text{C}$. Nhiệt lượng truyền cho nước là $Q = m \cdot c \cdot \Delta t = 0{,}2 \cdot 4200 \cdot 20 = 16800\text{ J}$.",
-            ),
-            short(
-                "vandung",
-                r"Thả một thỏi đồng có khối lượng $m_1 = 0{,}5\text{ kg}$ đang ở nhiệt độ $t_1 = 120^\circ\text{C}$ vào một bình cách nhiệt chứa $m_2 = 0{,}5\text{ kg}$ nước ở nhiệt độ $t_2 = 20^\circ\text{C}$. Biết nhiệt dung riêng của đồng là $c_1 = 380\text{ J/(kg}\cdot\text{K)}$ và của nước là $c_2 = 4200\text{ J/(kg}\cdot\text{K)}$. Bỏ qua sự trao đổi nhiệt với bình và môi trường. Tính nhiệt độ cân bằng $t$ của hệ theo đơn vị ${}^\circ\text{C}$ (làm tròn đến hàng phần mười).",
-                ["28,3", "28.3"],
-                r"Áp dụng phương trình cân bằng nhiệt $Q_{\text{tỏa}} = Q_{\text{thu}}$: $m_1 c_1 (t_1 - t) = m_2 c_2 (t - t_2) \iff 0{,}5 \cdot 380 \cdot (120 - t) = 0{,}5 \cdot 4200 \cdot (t - 20) \iff 38(120 - t) = 420(t - 20) \iff 4560 - 38t = 420t - 8400 \iff 458t = 12960 \Rightarrow t \approx 28{,}3^\circ\text{C}$.",
-            ),
+        example="Khi thả một chiếc thìa bằng bạc ở nhiệt độ phòng ($25^\\circ\\text{C}$) vào một cốc nước sôi ($95^\\circ\\text{C}$), nhiệt độ và nội năng của chiếc thìa bạc và của nước trong cốc thay đổi như thế nào?",
+        example_answer="Nhiệt truyền từ nước sôi sang thìa bạc nên chiếc thìa bạc nóng lên: **nhiệt độ và nội năng của thìa bạc tăng lên**; ngược lại nước trong cốc nguội bớt nên **nhiệt độ và nội năng của nước giảm đi**.",
+        real_life="Khi bơm xe đạp bằng bơm tay hoặc khi cưa một thanh sắt, thân ống bơm và lưỡi cưa nóng ran lên vì nội năng của chúng đã tăng lên do ma sát và nén khí.",
+        quiz=[
+            mcq("biet", "Nội năng của một vật là gì?", ["Tổng động năng và thế năng của các phân tử, nguyên tử cấu tạo nên vật", "Chỉ riêng động năng của cả vật khi vật đang chạy trên đường", "Chỉ riêng thế năng hấp dẫn của vật so với mặt đất", "Nhiệt độ của môi trường bên ngoài vật"], 0, "Nội năng của vật là tổng động năng và thế năng tương tác của các phân tử cấu tạo nên vật."),
+            mcq("biet", "Khi nhiệt độ của một vật tăng lên thì chuyển động của các phân tử cấu tạo nên vật và nội năng của vật thay đổi như thế nào?", ["Các phân tử chuyển động nhanh hơn và nội năng của vật tăng lên", "Các phân tử chuyển động chậm lại và nội năng của vật giảm đi", "Các phân tử đứng yên hoàn toàn và nội năng bằng $0$", "Chuyển động phân tử và nội năng không thay đổi"], 0, "Nhiệt độ càng cao thì các phân tử chuyển động nhiệt càng nhanh, làm động năng phân tử và nội năng của vật tăng."),
+            mcq("hieu", "Một cục nước đá đang ở nhiệt độ $0^\\circ\\text{C}$ có nội năng hay không? Vì sao?", ["Có nội năng, vì các phân tử nước trong cục nước đá vẫn luôn chuyển động không ngừng và tương tác với nhau", "Không có nội năng, vì nhiệt độ của nó bằng $0^\\circ\\text{C}$", "Chỉ có nội năng khi nước đá đã tan hết thành nước lỏng", "Chỉ có nội năng khi nước đá đang rơi từ trên cao xuống"], 0, "Ở mọi nhiệt độ (kể cả $0^\\circ\\text{C}$ hay dưới $0^\\circ\\text{C}$), các phân tử cấu tạo nên vật vẫn dao động không ngừng nên vật luôn có nội năng."),
+            tf4("hieu", "Xét tính đúng/sai của các phát biểu sau về năng lượng nhiệt và nội năng:", [
+                "Khi cọ xát một đồng xu kim loại lên mặt bàn nhám, đồng xu nóng lên và nội năng của nó tăng.",
+                "Năng lượng nhiệt tự truyền từ vật có nhiệt độ cao hơn sang vật có nhiệt độ thấp hơn.",
+                "Hai cốc chứa cùng một lượng nước như nhau, cốc nước ở $80^\\circ\\text{C}$ có nội năng lớn hơn cốc nước ở $30^\\circ\\text{C}$.",
+                "Chỉ những vật có nhiệt độ trên $100^\\circ\\text{C}$ mới có nội năng.",
+            ], [True, True, True, False], "Ý d) sai vì mọi vật ở mọi nhiệt độ đều có nội năng."),
+            short("vandung", "Nội năng của một vật là tổng của mấy dạng năng lượng của các phân tử cấu tạo nên vật (động năng phân tử và thế năng phân tử)?", ["2"], "Nội năng của vật gồm tổng của $2$ thành phần: động năng của các phân tử và thế năng tương tác giữa các phân tử."),
         ],
-    },
-    # ===================== CHỦ ĐỀ 7: ĐIỆN =====================
-    {
-        "topic": "dien",
-        "title": "Sự nhiễm điện, Dòng điện, Nguồn điện, Mạch điện, Các tác dụng và Đo cường độ dòng điện, hiệu điện thế",
-        "icon": "⚡",
-        "description": "Chương V · SGK Khoa học tự nhiên 8 Kết nối tri thức với cuộc sống (Bài 20 – Bài 25): Hiện tượng nhiễm điện do cọ xát, dòng điện và nguồn điện, sơ đồ mạch điện đơn giản, các tác dụng của dòng điện, cường độ dòng điện và hiệu điện thế.",
-        "requirements": [
-            r"Giải thích được sơ lược nguyên nhân một vật cách điện nhiễm điện do cọ xát và tương tác giữa hai vật mang điện tích cùng loại hoặc khác loại.",
-            r"Định nghĩa được dòng điện là dòng chuyển dời có hướng của các hạt mang điện; phân biệt được vật dẫn điện và vật cách điện; vẽ được sơ đồ mạch điện đơn giản gồm nguồn điện, công tắc, bóng đèn, chuông điện, điện trở, cầu chì.",
-            r"Thực hiện thí nghiệm minh họa được các tác dụng cơ bản của dòng điện: nhiệt, phát sáng, hóa học, sinh lí.",
-            r"Nêu được đơn vị đo cường độ dòng điện ($\text{A}$, $\text{mA}$) và đơn vị đo hiệu điện thế ($\text{V}$, $\text{mV}$, $\text{kV}$); thực hành đo được cường độ dòng điện bằng ampe kế và hiệu điện thế bằng vôn kế.",
+        chapter_desc=CH4_DESC,
+    ),
+    bai(
+        topic=CH4_TOPIC,
+        chapter_title=CH4_TITLE,
+        title="Bài 13: Sự truyền nhiệt",
+        icon="🍲",
+        description="Ba hình thức truyền nhiệt (dẫn nhiệt, đối lưu, bức xạ nhiệt), vật dẫn nhiệt tốt – vật cách nhiệt tốt và ứng dụng.",
+        requirements=[
+            "Phân biệt được 3 hình thức truyền nhiệt: dẫn nhiệt (chủ yếu ở chất rắn), đối lưu (chủ yếu ở chất lỏng và chất khí) và bức xạ nhiệt (truyền bằng các tia nhiệt đi thẳng, truyền được cả trong chân không).",
+            "So sánh được tính dẫn nhiệt của các chất: kim loại dẫn nhiệt rất tốt; chất lỏng, chất khí, gỗ, nhựa, len, xốp dẫn nhiệt kém (cách nhiệt tốt).",
+            "Giải thích được nguyên lý cấu tạo của phích (bình giữ nhiệt), cách lắp điều hòa trên cao và lò sưởi ở dưới thấp.",
         ],
-        "definition": r"""- **Sự nhiễm điện**: Có hai loại điện tích là điện tích dương ($+$) và điện tích âm ($-$). Các điện tích cùng dấu thì đẩy nhau, trái dấu thì hút nhau.
-- **Dòng điện**: Là dòng chuyển dời có hướng của các hạt mang điện (trong kim loại là dòng các electron tự do dịch chuyển có hướng).
-- **Cường độ dòng điện** ($I$, đơn vị $\text{A}$) đặc trưng cho tác dụng mạnh hay yếu của dòng điện; **Hiệu điện thế** ($U$, đơn vị $\text{V}$) đặc trưng cho khả năng tạo ra dòng điện của nguồn điện.""",
-        "theory": r"""### Bài 20. Hiện tượng nhiễm điện do cọ xát
-- **Tính chất của vật nhiễm điện**: Nhiều vật sau khi bị cọ xát có khả năng hút các vật nhẹ (như mẩu giấy vụn, sợi bông) hoặc làm sáng bút thử điện, gọi là các vật nhiễm điện (vật mang điện tích).
-- **Hai loại điện tích và sự dịch chuyển electron**: Có hai loại điện tích là điện tích dương ($+$) và điện tích âm ($-$); hai vật nhiễm điện cùng loại thì đẩy nhau, khác loại thì hút nhau. Bình thường nguyên tử trung hòa về điện; khi cọ xát hai vật, các electron có thể dịch chuyển từ vật này sang vật kia: vật **nhận thêm electron** sẽ nhiễm điện **âm** ($-$), còn vật **mất bớt electron** sẽ nhiễm điện **dương** ($+$).
-### Bài 21. Dòng điện, nguồn điện
-- **Dòng điện và nguồn điện**: Dòng điện là dòng chuyển dời có hướng của các hạt mang điện. Nguồn điện (pin, ắc quy, máy phát điện) có khả năng cung cấp và duy trì dòng điện lâu dài trong mạch. Mỗi nguồn điện một chiều đều có hai cực: cực dương ($+$) và cực âm ($-$).
-- **Vật dẫn điện và vật cách điện**: Vật dẫn điện là vật cho dòng điện chạy qua vì có chứa nhiều hạt mang điện tự do (như các kim loại đồng, nhôm, bạc, than chì, dung dịch muối, acid). Vật cách điện là vật không cho dòng điện chạy qua (như nhựa, cao su, sứ, thủy tinh, gỗ khô, nước nguyên chất).
-### Bài 22. Mạch điện đơn giản
-- **Sơ đồ mạch điện và chiều dòng điện quy ước**: Mạch điện đơn giản gồm nguồn điện, dây dẫn, công tắc (khóa $K$), thiết bị tiêu thụ điện (bóng đèn, chuông điện, biến trở) và thiết bị bảo vệ (cầu chì, rơ-le, cầu dao tự động). Dòng điện chỉ chạy trong mạch điện kín.
-- **Quy ước về chiều dòng điện**: Chiều dòng điện theo quy ước là chiều từ cực dương ($+$) của nguồn điện qua dây dẫn và các thiết bị điện tới cực âm ($-$) của nguồn điện (ngược chiều dịch chuyển có hướng của các electron tự do trong dây dẫn kim loại).
-### Bài 23. Tác dụng của dòng điện
-- **Các tác dụng cơ bản của dòng điện**:
-  + **Tác dụng nhiệt**: Làm nóng vật dẫn có dòng điện chạy qua (ứng dụng trong bàn là, nồi cơm điện, ấm siêu tốc, lò sưởi điện, cầu chì bảo vệ mạch).
-  + **Tác dụng phát sáng**: Làm sáng đèn LED (điốt phát quang chỉ cho dòng điện đi qua theo một chiều nhất định), đèn bút thử điện, đèn huỳnh quang.
-  + **Tác dụng hóa học**: Khi dòng điện đi qua dung dịch muối đồng ($\text{CuSO}_4$), nó tách đồng nguyên chất bám vào thỏi than nối với cực âm (ứng dụng trong mạ điện: mạ vàng, mạ bạc, mạ kẽm, tinh luyện kim loại).
-  + **Tác dụng sinh lí**: Dòng điện đi qua cơ thể người và động vật làm cơ co giật, tim ngừng đập, ngạt thở và tê liệt thần kinh (ứng dụng an toàn trong y học như máy sốc điện tim, điện châm).
-### Bài 24. Cường độ dòng điện và hiệu điện thế
-- **Cường độ dòng điện ($I$)**: Đại lượng đặc trưng cho độ mạnh yếu của dòng điện, đơn vị chuẩn là ampe ($\text{A}$), ước số là mi-li-ampe ($\text{mA}$) với $1\text{ A} = 1000\text{ mA}$. Dụng cụ đo là **ampe kế** (kí hiệu chữ $\text{A}$ trong vòng tròn).
-- **Hiệu điện thế ($U$)**: Giữa hai cực của nguồn điện luôn có một hiệu điện thế, đơn vị chuẩn là vôn ($\text{V}$), với $1\text{ V} = 1000\text{ mV}$ và $1\text{ kV} = 1000\text{ V}$. Dụng cụ đo là **vôn kế** (kí hiệu chữ $\text{V}$ trong vòng tròn).
-### Bài 25. Thực hành đo cường độ dòng điện và hiệu điện thế
-- **Cách mắc ampe kế**: Phải mắc **nối tiếp** với thiết bị cần đo sao cho chốt dương ($+$) của ampe kế nối về phía cực dương ($+$) của nguồn điện (không bao giờ mắc trực tiếp hai chốt của ampe kế vào hai cực nguồn điện vì sẽ làm hỏng ampe kế và nguồn).
-- **Cách mắc vôn kế**: Phải mắc **song song** với hai đầu thiết bị (hoặc hai cực nguồn điện) cần đo, chốt dương ($+$) nối về phía cực dương ($+$) của nguồn điện.""",
-        "formulas": [
+        definition="Sự truyền nhiệt có thể thực hiện theo ba hình thức: dẫn nhiệt (truyền trực tiếp qua va chạm phân tử, chủ yếu trong chất rắn), đối lưu (truyền bằng các dòng chất lỏng hoặc chất khí nóng nổi lên, lạnh chìm xuống) và bức xạ nhiệt (truyền bằng các tia nhiệt đi thẳng, truyền được trong chân không).",
+        theory=(
+            "### 1. Ba hình thức truyền nhiệt\n"
+            "1. **Dẫn nhiệt**: Hình thức truyền nhiệt chủ yếu của **chất rắn**. Kim loại (bạc, đồng, nhôm, sắt) dẫn nhiệt rất tốt; gỗ, nhựa, thủy tinh, len, không khí dẫn nhiệt kém (cách nhiệt tốt).\n"
+            "2. **Đối lưu**: Hình thức truyền nhiệt chủ yếu của **chất lỏng và chất khí** thành dòng (lớp chất lỏng/khí ở dưới nóng lên nở ra, nhẹ đi nên nổi lên trên; lớp lạnh hơn ở trên nặng hơn chìm xuống dưới).\n"
+            "3. **Bức xạ nhiệt**: Sự truyền nhiệt bằng các **tia nhiệt đi thẳng** (tia hồng ngoại). Bức xạ nhiệt truyền được ngay cả trong **chân không** (ví dụ: nhiệt từ Mặt Trời truyền tới Trái Đất).\n\n"
+            "### 2. Hấp thụ bức xạ nhiệt và ứng dụng\n"
+            "- Vật có bề mặt **màu sẫm (đen) và nhám** hấp thụ tia nhiệt tốt hơn vật có bề mặt **màu sáng (trắng) và nhẵn bóng**.\n"
+            "- **Phích nước (bình giữ nhiệt)** có hai lớp thủy tinh ở giữa hút chân không (ngăn dẫn nhiệt và đối lưu), mặt trong tráng bạc (phản xạ lại các tia bức xạ nhiệt) và có nút đậy kín."
+        ),
+        formulas=[
             G(
-                "I. Quy đổi đơn vị cường độ dòng điện và hiệu điện thế",
-                F("Đơn vị cường độ dòng điện ($I$)", r"$1\text{ A} = 1000\text{ mA};\quad 1\text{ mA} = 10^{-3}\text{ A} = 0{,}001\text{ A}$", r"Đo bằng ampe kế mắc nối tiếp"),
-                F("Đơn vị hiệu điện thế ($U$)", r"$1\text{ kV} = 1000\text{ V};\quad 1\text{ V} = 1000\text{ mV} = 10^3\text{ mV}$", r"Đo bằng vôn kế mắc song song"),
-            ),
+                "Đặc điểm 3 hình thức truyền nhiệt",
+                F("Môi trường truyền nhiệt chủ yếu", "$\\text{Rắn: Dẫn nhiệt}; \\qquad \\text{Lỏng \\& Khí: Đối lưu}; \\qquad \\text{Chân không: Bức xạ nhiệt}$", "Trong chân không, dẫn nhiệt và đối lưu hoàn toàn không xảy ra, chỉ có bức xạ nhiệt truyền qua được."),
+                F("So sánh khả năng dẫn nhiệt của các chất", "$\\text{Kim loại (Rắn)} > \\text{Chất lỏng} > \\text{Chất khí}$", "Không khí dẫn nhiệt rất kém, nên áo bông, chăn len xốp chứa nhiều lớp không khí giúp giữ ấm cơ thể."),
+            )
+        ],
+        example="Vì sao khi đun nước bằng ấm trên bếp, người ta luôn đun từ đáy ấm ở phía dưới, trong khi dàn lạnh của máy điều hòa nhiệt độ trong phòng lại luôn được lắp ở trên cao gần sát trần nhà?",
+        example_answer="Cả hai đều ứng dụng hiện tượng **đối lưu**: khi đun ở đáy ấm, lớp nước nóng ở dưới nhẹ hơn nổi lên trên và lớp nước lạnh ở trên chìm xuống làm cả ấm nước nóng đều. Ngược lại, không khí lạnh từ điều hòa nặng hơn không khí nóng nên tự chìm từ trên cao xuống dưới làm mát toàn bộ căn phòng.",
+        real_life="Xoong nồi nấu ăn có phần thân làm bằng nhôm hoặc inox để dẫn nhiệt tốt giúp thức ăn nhanh chín, còn phần tay cầm bọc nhựa cứng hoặc gỗ để cách nhiệt không làm bỏng tay.",
+        quiz=[
+            mcq("biet", "Năng lượng nhiệt từ Mặt Trời truyền qua khoảng không vũ trụ (chân không) tới Trái Đất bằng hình thức truyền nhiệt nào?", ["Bức xạ nhiệt", "Dẫn nhiệt", "Đối lưu", "Truyền âm"], 0, "Khoảng không vũ trụ là chân không nên nhiệt từ Mặt Trời truyền tới Trái Đất bằng bức xạ nhiệt."),
+            mcq("biet", "Hình thức truyền nhiệt chủ yếu trong chất lỏng và chất khí là gì?", ["Đối lưu", "Dẫn nhiệt", "Bức xạ nhiệt", "Nhiễm điện"], 0, "Trong chất lỏng và chất khí, nhiệt được truyền chủ yếu bằng các dòng đối lưu."),
+            mcq("hieu", "Vì sao vào mùa hè nắng nóng, chúng ta nên mặc quần áo sáng màu thay vì quần áo màu đen sẫm?", ["Vì quần áo sáng màu phản xạ tốt các tia bức xạ nhiệt và hấp thụ ít nhiệt từ ánh nắng Mặt Trời hơn quần áo màu đen", "Vì quần áo sáng màu ngăn cản hoàn toàn đối lưu không khí", "Vì quần áo màu đen dẫn điện tốt hơn", "Vì quần áo sáng màu nặng hơn quần áo màu đen"], 0, "Bề mặt sáng màu phản xạ tia nhiệt tốt và hấp thụ bức xạ nhiệt kém nên giúp cơ thể đỡ nóng bức hơn."),
+            tf4("hieu", "Xét tính đúng/sai của các phát biểu sau về sự truyền nhiệt:", [
+                "Kim loại là chất dẫn nhiệt tốt nhất trong các chất rắn, còn gỗ, nhựa và không khí dẫn nhiệt rất kém.",
+                "Trong chân không, cả dẫn nhiệt và đối lưu đều không thể xảy ra.",
+                "Khi đun nước trong ấm, nước nóng lên chủ yếu là nhờ hình thức dẫn nhiệt từ trên mặt nước xuống đáy ấm.",
+                "Lớp chân không giữa hai thành bình thủy tinh của phích nước có tác dụng ngăn cản sự dẫn nhiệt và đối lưu.",
+            ], [True, True, False, True], "Ý c) sai vì nước trong ấm nóng đều lên chủ yếu nhờ dòng đối lưu từ đáy ấm đi lên."),
+            short("vandung", "Có bao nhiêu hình thức truyền nhiệt cơ bản (dẫn nhiệt, đối lưu, bức xạ nhiệt)?", ["3"], "Có $3$ hình thức truyền nhiệt cơ bản: dẫn nhiệt, đối lưu và bức xạ nhiệt."),
+        ],
+        chapter_desc=CH4_DESC,
+    ),
+    bai(
+        topic=CH4_TOPIC,
+        chapter_title=CH4_TITLE,
+        title="Bài 14: Sự nở vì nhiệt của các chất",
+        icon="🛤️",
+        description="Sự nở vì nhiệt của chất rắn, chất lỏng, chất khí; so sánh độ nở vì nhiệt và ứng dụng băng kép, khe hở đường ray.",
+        requirements=[
+            "Nêu được các chất rắn, chất lỏng và chất khí đều nở ra (thể tích tăng) khi nóng lên và co lại (thể tích giảm) khi lạnh đi.",
+            "So sánh được độ nở vì nhiệt: các chất rắn và chất lỏng khác nhau nở vì nhiệt khác nhau, các chất khí khác nhau nở vì nhiệt giống nhau; chất khí nở vì nhiệt nhiều hơn chất lỏng, chất lỏng nở vì nhiệt nhiều hơn chất rắn.",
+            "Giải thích được nguyên lý của băng kép (cong về phía kim loại dãn nở vì nhiệt ít hơn khi bị đốt nóng) và tác dụng của khe hở giữa hai đầu thanh ray tàu hỏa.",
+        ],
+        definition="Hầu hết các chất rắn, chất lỏng và chất khí đều nở ra khi nóng lên và co lại khi lạnh đi. Chất khí nở vì nhiệt nhiều hơn chất lỏng, chất lỏng nở vì nhiệt nhiều hơn chất rắn.",
+        theory=(
+            "### 1. Đặc điểm sự nở vì nhiệt của Rắn – Lỏng – Khí\n"
+            "- Khi nóng lên: kích thước và thể tích $V$ của vật **tăng**, khối lượng $m$ không đổi nên khối lượng riêng $D = \\dfrac{m}{V}$ **giảm**.\n"
+            "- Khi lạnh đi: kích thước và thể tích $V$ của vật **giảm** (riêng nước có sự nở đặc biệt từ $0^\\circ\\text{C}$ đến $4^\\circ\\text{C}$, ở $4^\\circ\\text{C}$ nước có khối lượng riêng lớn nhất).\n"
+            "- **So sánh**:\n"
+            "  - Các chất **rắn** khác nhau nở vì nhiệt **khác nhau** (ví dụ: nhôm nở nhiều hơn đồng, đồng nở nhiều hơn sắt).\n"
+            "  - Các chất **lỏng** khác nhau nở vì nhiệt **khác nhau** (rượu nở nhiều hơn dầu, dầu nở nhiều hơn nước).\n"
+            "  - Các chất **khí** khác nhau nở vì nhiệt **giống nhau**.\n"
+            "  - Thứ tự độ nở vì nhiệt: **Khí $>$ Lỏng $>$ Rắn**.\n\n"
+            "### 2. Lực xuất hiện khi co dãn vì nhiệt và Ứng dụng\n"
+            "- Sự co dãn vì nhiệt khi bị ngăn cản sẽ gây ra những **lực rất lớn** (làm cong đường ray tàu hỏa, nứt dầm cầu).\n"
+            "- **Băng kép**: gồm hai thanh kim loại có bản chất khác nhau (ví dụ đồng và thép) tán chặt vào nhau dọc theo chiều dài. Khi bị đốt nóng, băng kép luôn **cong về phía thanh kim loại nở vì nhiệt ít hơn** (phía thanh thép), được dùng làm rơ-le tự động đóng ngắt mạch điện trong bàn là, nồi cơm điện, ấm siêu tốc."
+        ),
+        formulas=[
             G(
-                "II. Quy tắc dòng điện và thiết bị mạch điện",
-                F("Sự nhiễm điện do trao đổi electron", r"$\text{Nhận thêm } e^- \Rightarrow \text{nhiễm điện âm } (-);\quad \text{Mất bớt } e^- \Rightarrow \text{nhiễm điện dương } (+)$", r""),
-                F("Chiều dòng điện quy ước trong kim loại", r"$\text{Chiều dòng điện quy ước } (+\to -) \text{ ngược với chiều dịch chuyển của } e^- (-\to +)$", r""),
-                F("Tác dụng của cầu chì và mạ điện", r"$\text{Cầu chì: Tác dụng nhiệt};\quad \text{Mạ điện: Tác dụng hóa học (vật cần mạ nối cực âm)}$", r""),
-            ),
+                "Quy luật nở vì nhiệt của các chất",
+                F("So sánh mức độ nở vì nhiệt giữa 3 thể", "$\\Delta V_{\\text{khí}} > \\Delta V_{\\text{lỏng}} > \\Delta V_{\\text{rắn}}$", "Với cùng thể tích ban đầu và cùng độ tăng nhiệt độ $\\Delta t$."),
+                F("Biến đổi thể tích và khối lượng riêng khi đun nóng", "$t \\text{ tăng} \\implies V \\text{ tăng},\\ m = \\text{const} \\implies D = \\dfrac{m}{V} \\text{ giảm}$", "Khi đun nóng một vật, khối lượng $m$ không đổi nhưng thể tích $V$ tăng nên khối lượng riêng $D$ giảm."),
+            )
         ],
-        "example": r"Trong thí nghiệm thực hành, một học sinh đo cường độ dòng điện chạy qua bóng đèn được $I = 350\text{ mA}$ và hiệu điện thế giữa hai đầu bóng đèn là $U = 4{,}5\text{ V}$. Hãy đổi giá trị cường độ dòng điện sang đơn vị ampe ($\text{A}$), hiệu điện thế sang đơn vị mi-li-vôn ($\text{mV}$) và nêu rõ cách mắc ampe kế, vôn kế trong mạch.",
-        "example_answer": r"""- Đổi đơn vị cường độ dòng điện và hiệu điện thế:
-$$I = 350\text{ mA} = \dfrac{350}{1000} = 0{,}35\text{ A}$$
-$$U = 4{,}5\text{ V} = 4{,}5 \cdot 1000 = 4500\text{ mV}$$
-- Cách mắc dụng cụ đo:
-  + **Ampe kế** được mắc **nối tiếp** với bóng đèn.
-  + **Vôn kế** được mắc **song song** vào hai đầu bóng đèn.
-  + Chốt dương ($+$) của cả ampe kế và vôn kế đều phải nối về phía cực dương ($+$) của nguồn điện.""",
-        "real_life": r"""- **Phòng chống tĩnh điện**: Xe bồn chở xăng dầu luôn có một sợi dây xích sắt thả chạm mặt đường để dẫn các điện tích sinh ra do ma sát truyền xuống đất, tránh phóng tia lửa điện gây cháy nổ.
-- **Kĩ thuật điện gia dụng và công nghiệp**: Đèn LED tiết kiệm điện, công nghệ mạ vàng trang sức, mạ crom chống gỉ cho chi tiết máy, cầu chì và aptomat bảo vệ mạng điện gia đình.""",
-        "game_title": "Thử thách thực tế: Điện và Mạch điện",
-        "game_description": "Lắp ráp sơ đồ mạch điện đơn giản, mắc đúng ampe kế và vôn kế để đo thông số và chẩn đoán sự cố trong mạch.",
-        "game_type": "game_dien",
-        "quiz": [
-            mcq(
-                "biet",
-                r"Khi cọ xát một thanh nhựa sẫm màu vào mảnh vải khô, thanh nhựa nhiễm điện âm. Nguyên nhân là vì:",
-                [
-                    r"Các hạt nhân mang điện dương di chuyển từ thanh nhựa sang mảnh vải",
-                    r"Các electron dịch chuyển từ mảnh vải sang thanh nhựa làm thanh nhựa thừa electron",
-                    r"Các electron dịch chuyển từ thanh nhựa sang mảnh vải",
-                    r"Các hạt proton di chuyển từ mảnh vải sang thanh nhựa",
-                ],
-                1,
-                r"Chỉ có các electron mới dịch chuyển từ vật này sang vật khác khi cọ xát; thanh nhựa nhận thêm electron từ mảnh vải nên nhiễm điện âm.",
-            ),
-            mcq(
-                "biet",
-                r"Trong các nhóm vật liệu dưới đây, nhóm nào chỉ gồm các vật dẫn điện ở điều kiện thường?",
-                [
-                    r"Đồng, nhôm, dung dịch muối ăn, ruột bút chì (than chì)",
-                    r"Bạc, nhựa dẻo, thủy tinh, nước cất nguyên chất",
-                    r"Cao su, gỗ khô, sứ cách điện, dây sắt",
-                    r"Giấy khô, không khí khô, dây đồng, vàng",
-                ],
-                0,
-                r"Đồng, nhôm, than chì và dung dịch muối ăn đều có nhiều hạt mang điện tự do nên dẫn điện tốt.",
-            ),
-            mcq(
-                "biet",
-                r"Theo quy ước, chiều của dòng điện trong một mạch điện kín là:",
-                [
-                    r"Chiều từ cực âm qua dây dẫn và các dụng cụ điện tới cực dương của nguồn điện",
-                    r"Chiều dịch chuyển có hướng của các electron tự do trong dây dẫn kim loại",
-                    r"Chiều từ cực dương qua dây dẫn và các thiết bị điện tới cực âm của nguồn điện",
-                    r"Chiều ngẫu nhiên thay đổi liên tục trong pin một chiều",
-                ],
-                2,
-                r"Chiều dòng điện quy ước là chiều đi từ cực dương ($+$) của nguồn điện qua dây dẫn và các thiết bị tiêu thụ điện tới cực âm ($-$) của nguồn điện.",
-            ),
-            mcq(
-                "biet",
-                r"Khi sử dụng ampe kế để đo cường độ dòng điện chạy qua một bóng đèn, ta phải mắc ampe kế như thế nào?",
-                [
-                    r"Mắc song song với hai đầu bóng đèn",
-                    r"Mắc nối tiếp với bóng đèn sao cho chốt dương ($+$) nối về phía cực dương của nguồn điện",
-                    r"Mắc trực tiếp hai chốt của ampe kế vào hai cực của nguồn điện mà không qua đèn",
-                    r"Mắc nối tiếp với bóng đèn và chốt dương ($+$) nối về phía cực âm của nguồn điện",
-                ],
-                1,
-                r"Ampe kế luôn phải mắc nối tiếp với thiết bị cần đo và chốt dương ($+$) nối về phía cực dương của nguồn điện.",
-            ),
-            mcq(
-                "hieu",
-                r"Một ampe kế có giới hạn đo là $3\text{ A}$, trên mặt chia độ từ vạch $0$ đến vạch $3\text{ A}$ được chia thành $30$ khoảng nhỏ bằng nhau. Độ chia nhỏ nhất (ĐCNN) của ampe kế này là:",
-                [r"$1\text{ A}$", r"$0{,}1\text{ A}$", r"$0{,}01\text{ A}$", r"$0{,}3\text{ A}$"],
-                1,
-                r"Độ chia nhỏ nhất của ampe kế là $\text{ĐCNN} = \dfrac{3 - 0}{30} = 0{,}1\text{ A} = 100\text{ mA}$.",
-            ),
-            mcq(
-                "hieu",
-                r"Để mạ một lớp bạc mỏng lên một chiếc vỏ đồng hồ bằng kim loại nhờ tác dụng hóa học của dòng điện (nhúng trong dung dịch muối bạc), người ta phải nối chiếc vỏ đồng hồ với cực nào của nguồn điện một chiều?",
-                [
-                    r"Nối với cực dương ($+$) của nguồn điện",
-                    r"Nối với cực âm ($-$) của nguồn điện",
-                    r"Nối đồng thời vào cả hai cực của nguồn điện",
-                    r"Không cần nối với nguồn điện, chỉ cần ngâm trong dung dịch",
-                ],
-                1,
-                r"Trong mạ điện, các ion kim loại mang điện dương trong dung dịch sẽ di chuyển về phía cực âm và bám vào vật cần mạ, nên vật cần mạ phải nối với cực âm ($-$).",
-            ),
-            tf4(
-                "hieu",
-                r"Xét các tác dụng của dòng điện và các thiết bị bảo vệ trong mạch điện. Xét tính đúng sai của các phát biểu sau:",
-                [
-                    r"a) Cầu chì bảo vệ mạch điện hoạt động dựa trên tác dụng nhiệt của dòng điện: khi dòng điện tăng quá mức cho phép, dây chì nóng chảy và tự ngắt mạch.",
-                    r"b) Đèn điốt phát quang (đèn LED) cho dòng điện đi qua theo cả hai chiều và đều phát sáng như nhau.",
-                    r"c) Trong dây dẫn bằng kim loại, các electron tự do dịch chuyển có hướng từ cực âm của nguồn điện qua dây dẫn tới cực dương của nguồn điện.",
-                    r"d) Khi đổi giá trị cường độ dòng điện $I = 0{,}45\text{ A}$ sang đơn vị mi-li-ampe, ta được $I = 45\text{ mA}$.",
-                ],
-                [True, False, True, False],
-                r"a) Đúng. b) Sai vì đèn LED chỉ cho dòng điện đi qua theo một chiều nhất định (từ bản cực dương sang bản cực âm). c) Đúng vì electron mang điện âm bị cực âm đẩy và cực dương hút. d) Sai vì $0{,}45\text{ A} = 0{,}45 \cdot 1000 = 450\text{ mA}$.",
-            ),
-            tf4(
-                "hieu",
-                r"Một học sinh lắp mạch điện gồm một nguồn điện (hai pin nối tiếp có hiệu điện thế $3\text{ V}$), một công tắc đóng, một bóng đèn đang sáng bình thường, một ampe kế đo dòng điện qua đèn và một vôn kế đo hiệu điện thế hai đầu đèn. Xét tính đúng sai của các phát biểu sau:",
-                [
-                    r"a) Vôn kế được mắc song song với hai đầu bóng đèn.",
-                    r"b) Nếu ngắt công tắc (khóa $K$ mở) thì mạch điện bị hở và số chỉ của ampe kế bằng $0\text{ A}$.",
-                    r"c) Nếu tháo bóng đèn ra khỏi đui đèn thì vôn kế mắc ở hai đầu đui đèn cũng lập tức bị cháy hỏng.",
-                    r"d) Nếu mắc nhầm ampe kế song song trực tiếp vào hai đầu bóng đèn thì dòng điện lớn sẽ đi qua ampe kế gây đoản mạch và làm đèn tắt.",
-                ],
-                [True, True, False, True],
-                r"a) Đúng. b) Đúng vì mạch hở không có dòng điện chạy qua. c) Sai vì vôn kế có điện trở rất lớn, khi tháo bóng đèn ra thì vôn kế chỉ đo hiệu điện thế của nguồn ($3\text{ V}$) và hoàn toàn an toàn. d) Đúng vì ampe kế có điện trở rất nhỏ nên mắc song song sẽ làm đoản mạch hai đầu đèn.",
-            ),
-            mcq(
-                "vandung",
-                r"Cho ba quả cầu nhẹ $A, B, C$ được treo bằng các sợi chỉ tơ mảnh cách điện. Biết quả cầu $A$ đã được tích điện dương ($+$). Khi đưa lại gần nhau, ta thấy quả cầu $A$ đẩy quả cầu $B$, còn quả cầu $B$ lại hút quả cầu $C$ (biết cả ba quả cầu đều mang điện tích). Điện tích của quả cầu $B$ và $C$ lần lượt là:",
-                [
-                    r"$B$ mang điện dương ($+$), $C$ mang điện dương ($+$)",
-                    r"$B$ mang điện dương ($+$), $C$ mang điện âm ($-$)",
-                    r"$B$ mang điện âm ($-$), $C$ mang điện dương ($+$)",
-                    r"$B$ mang điện âm ($-$), $C$ mang điện âm ($-$)",
-                ],
-                1,
-                r"Vì $A$ tích điện dương ($+$) mà $A$ đẩy $B$ nên $B$ cùng dấu với $A$, tức là $B$ mang điện dương ($+$). Vì $B$ hút $C$ và $C$ có mang điện nên $C$ trái dấu với $B$, tức là $C$ mang điện âm ($-$).",
-            ),
-            short(
-                "vandung",
-                r"Trên mặt một vôn kế có giới hạn đo là $6\text{ V}$, khoảng từ vạch $0$ đến vạch $6\text{ V}$ được chia đều thành $30$ khoảng nhỏ bằng nhau. Khi mắc vôn kế vào hai đầu một bóng đèn đang sáng, kim vôn kế chỉ đúng vạch thứ $22$ tính từ vạch số $0$. Hiệu điện thế giữa hai đầu bóng đèn bằng bao nhiêu $\text{mV}$?",
-                ["4400"],
-                r"Độ chia nhỏ nhất của vôn kế là $\text{ĐCNN} = \dfrac{6}{30} = 0{,}2\text{ V}$. Khi kim chỉ vạch thứ $22$, hiệu điện thế đọc được là $U = 22 \cdot 0{,}2 = 4{,}4\text{ V} = 4400\text{ mV}$.",
-            ),
+        example="Một băng kép gồm một thanh đồng và một thanh thép được tán chặt vào nhau. Biết đồng nở vì nhiệt nhiều hơn thép. Khi hơ nóng băng kép này trên ngọn lửa đèn cồn thì băng kép sẽ cong về phía thanh đồng hay thanh thép?",
+        example_answer="Khi bị hơ nóng, cả hai thanh đều dài ra nhưng thanh đồng nở vì nhiệt nhiều hơn nên dài hơn thanh thép và nằm ở phía lưng vòng cung; do đó **băng kép bị uốn cong về phía thanh thép** (kim loại nở vì nhiệt ít hơn).",
+        real_life="Giữa hai đầu thanh ray đường sắt hoặc giữa các nhịp cầu bê tông cốt thép luôn để một khe hở nhỏ (gối đỡ con lăn) để khi trời nắng nóng thanh ray và dầm cầu nở dài ra không bị kích cong vênh.",
+        quiz=[
+            mcq("biet", "Khi so sánh sự nở vì nhiệt của chất rắn, chất lỏng và chất khí (cùng thể tích ban đầu và cùng độ tăng nhiệt độ), nhận xét nào sau đây là đúng?", ["Chất khí nở vì nhiệt nhiều hơn chất lỏng, chất lỏng nở vì nhiệt nhiều hơn chất rắn", "Chất rắn nở vì nhiệt nhiều hơn chất lỏng, chất lỏng nở vì nhiệt nhiều hơn chất khí", "Ba chất rắn, lỏng, khí nở vì nhiệt bằng nhau", "Chất lỏng nở vì nhiệt nhiều hơn chất khí"], 0, "Chất khí nở vì nhiệt nhiều nhất, tiếp đến là chất lỏng và ít nhất là chất rắn."),
+            mcq("biet", "Khi nung nóng một quả cầu bằng kim loại đặc thì đại lượng nào của quả cầu **tăng lên** và đại lượng nào **giảm đi**?", ["Thể tích tăng lên và khối lượng riêng giảm đi", "Khối lượng tăng lên và thể tích giảm đi", "Khối lượng riêng tăng lên và thể tích giảm đi", "Cả khối lượng và thể tích đều giảm đi"], 0, "Khi nóng lên, quả cầu nở ra làm thể tích $V$ tăng, trong khi khối lượng $m$ không đổi nên khối lượng riêng $D = \\dfrac{m}{V}$ giảm đi."),
+            mcq("hieu", "Vì sao khi đun nước, ta không nên đổ nước thật đầy tràn đến tận miệng ấm?", ["Vì khi đun nóng, nước nở vì nhiệt nhiều hơn ấm nhôm nên nước sẽ tràn ra ngoài làm tắt bếp hoặc gây bỏng", "Vì ấm nhôm nở vì nhiệt nhiều hơn nước", "Vì đổ đầy ấm làm nước không thể sôi được", "Vì nước khi nóng lên sẽ co lại"], 0, "Chất lỏng (nước) nở vì nhiệt nhiều hơn chất rắn (ấm nhôm), nên nếu đổ đầy tràn thì khi nóng lên nước sẽ trào ra khỏi ấm."),
+            tf4("hieu", "Xét tính đúng/sai của các phát biểu sau về sự nở vì nhiệt:", [
+                "Các chất khí khác nhau (như khí ôxi, khí nitơ, không khí) nở vì nhiệt giống nhau.",
+                "Các chất rắn khác nhau (như nhôm, đồng, sắt) nở vì nhiệt khác nhau.",
+                "Khi bị đốt nóng, băng kép gồm đồng và thép luôn cong về phía thanh đồng (chất nở vì nhiệt nhiều hơn).",
+                "Chỗ tiếp nối hai đầu thanh ray đường sắt có để một khe hở nhỏ để tránh đường ray bị uốn cong khi trời nắng nóng.",
+            ], [True, True, False, True], "Ý c) sai vì khi bị đốt nóng, thanh đồng dãn dài hơn sẽ bao phía ngoài và đẩy băng kép cong về phía thanh thép (chất nở vì nhiệt ít hơn)."),
+            short("vandung", "Xét $3$ bình có cùng dung tích $1\\text{ lít}$ chứa đầy: (1) Rượu, (2) Không khí, (3) Khối sắt. Khi cùng tăng nhiệt độ thêm $30^\\circ\\text{C}$, chất trong bình số mấy (nhập 1, 2 hoặc 3) nở vì nhiệt nhiều nhất?", ["2"], "Chất khí (không khí ở bình số $2$) nở vì nhiệt nhiều hơn chất lỏng và chất rắn."),
         ],
-    },
+        chapter_desc=CH4_DESC,
+    ),
 ]

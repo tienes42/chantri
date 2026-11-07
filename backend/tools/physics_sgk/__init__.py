@@ -1,1 +1,1 @@
-"""Bộ dữ liệu Vật lý lớp 6–12 theo SGK Kết nối tri thức với cuộc sống (chuẩn KaTeX)."""
+"""Dữ liệu Vật lý SGK Kết nối tri thức với cuộc sống (Lớp 6–12, cấu trúc 3 cấp: Lớp -> Chương/Chủ đề -> Từng Bài học độc lập)."""

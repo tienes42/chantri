@@ -127,7 +127,7 @@ classCards.forEach(function (card) {
     selectedGrade = card.dataset.grade;
     // Prefetch dữ liệu bài học ngay khi bấm chọn lớp để trang sau mở tức thì (0ms)
     try {
-      const cacheKey = `hdlg_lessons_physics_${selectedGrade}`;
+      const cacheKey = `hdlg_v6_lessons_physics_${selectedGrade}`;
       if (!sessionStorage.getItem(cacheKey)) {
         const apiBase = (["127.0.0.1", "localhost"].includes(location.hostname) && location.port !== "8000") ? "http://127.0.0.1:8000/api" : "/api";
         fetch(`${apiBase}/content/subjects/physics/lessons?grade=${encodeURIComponent(selectedGrade)}`)

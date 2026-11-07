@@ -1,159 +1,88 @@
 /* =========================================================
-   HỌC ĐỂ LÀM GÌ — PHYSICS GRADE (2.5D QUANTUM OBSERVATORY)
-   Trang chọn chủ đề Vật lý lớp 6 → 12
+   PHYSICS-GRADE.JS — GIAO DIỆN 3 CẤP: LỚP ➔ CHƯƠNG/CHỦ ĐỀ ➔ BÀI HỌC
+   Hỗ trợ Vật lý Lớp 6 – 12 (SGK Kết nối tri thức với cuộc sống)
 ========================================================= */
+
+// Dọn bộ nhớ đệm sessionStorage cũ để tránh lưu bài gộp cả chương từ phiên bản trước
+try {
+  Object.keys(sessionStorage).forEach((k) => {
+    if ((k.startsWith("hdlg_lesson") || k.startsWith("hdlg_lessons")) && !k.startsWith("hdlg_v6_")) {
+      sessionStorage.removeItem(k);
+    }
+  });
+} catch (_) {}
+
+const params = new URLSearchParams(window.location.search);
+let grade = params.get("grade") || localStorage.getItem("selectedPhysicsGrade") || "6";
+if (!["6", "7", "8", "9", "10", "11", "12"].includes(String(grade))) {
+  grade = "6";
+}
+localStorage.setItem("selectedPhysicsGrade", String(grade));
+const initialTopicSlug = params.get("topic") || "";
+
+const gradeTitle = document.getElementById("gradeTitle");
+const gradeDescription = document.getElementById("gradeDescription");
+const gradeBadge = document.getElementById("gradeBadge");
+const topicsGrid = document.getElementById("topicsGrid");
+const topicCount = document.getElementById("topicCount");
+const lessonCount = document.getElementById("lessonCount");
+const challengeCount = document.getElementById("challengeCount");
+const xpCount = document.getElementById("xpCount");
+const progressPercent = document.getElementById("progressPercent");
+const progressFill = document.getElementById("progressFill");
+const progressText = document.getElementById("progressText");
+const gradeTabs = document.getElementById("gradeTabs");
+
+const topicPopup = document.getElementById("topicPopup");
+const popupClose = document.getElementById("popupClose");
+const popupIcon = document.getElementById("popupIcon");
+const popupLabel = document.getElementById("popupLabel");
+const popupTitle = document.getElementById("popupTitle");
+const popupDescription = document.getElementById("popupDescription");
+const popupLessons = document.getElementById("popupLessons");
+const popupDoneCount = document.getElementById("popupDoneCount");
+const popupXP = document.getElementById("popupXP");
+const popupStart = document.getElementById("popupStart");
+const popupLessonsList = document.getElementById("popupLessonsList");
 
 const API_BASE =
   ["127.0.0.1", "localhost"].includes(location.hostname) && location.port !== "8000"
     ? "http://127.0.0.1:8000/api"
     : "/api";
 
-const params = new URLSearchParams(window.location.search);
-const grade = params.get("grade") || "10";
+const gradeDescriptions = {
+  6: "Đo chiều dài, khối lượng, thời gian, nhiệt độ; lực và tác dụng của lực, trọng lực, ma sát; năng lượng và Trái Đất – Bầu trời (KHTN 6 – Kết nối tri thức).",
+  7: "Tốc độ chuyển động, đồ thị quãng đường – thời gian; sóng âm; sự truyền thẳng và phản xạ ánh sáng, gương phẳng; nam châm và từ trường (KHTN 7 – Kết nối tri thức).",
+  8: "Khối lượng riêng, áp suất và lực đẩy Archimedes; moment lực và đòn bẩy; điện tích và mạch điện; năng lượng nhiệt và sự truyền nhiệt (KHTN 8 – Kết nối tri thức).",
+  9: "Công, công suất, động năng – thế năng; khúc xạ ánh sáng, lăng kính và thấu kính; định luật Ohm, đoạn mạch nối tiếp – song song; cảm ứng điện từ và dòng điện xoay chiều (KHTN 9 – Kết nối tri thức).",
+  10: "Sai số phép đo; động học chuyển động biến đổi đều và rơi tự do; ba định luật Newton; công, năng lượng, bảo toàn cơ năng; động lượng, chuyển động tròn và biến dạng vật rắn (Vật lí 10 – Kết nối tri thức).",
+  11: "Dao động điều hòa và năng lượng dao động; sóng cơ, sóng điện từ, giao thoa và sóng dừng; định luật Coulomb, điện trường và tụ điện; dòng điện không đổi và định luật Ohm toàn mạch (Vật lí 11 – Kết nối tri thức).",
+  12: "Vật lí nhiệt, nội năng và sự chuyển thể; phương trình trạng thái khí lí tưởng; từ trường, cảm ứng điện từ và dòng điện xoay chiều; cấu trúc hạt nhân, phóng xạ và năng lượng hạt nhân (Vật lí 12 – Kết nối tri thức)."
+};
 
-const $ = (id) => document.getElementById(id);
-
-const gradeTitle = $("gradeTitle");
-const gradeDescription = $("gradeDescription");
-const topicsGrid = $("topicsGrid");
-const topicCount = $("topicCount");
-const lessonCount = $("lessonCount");
-const challengeCount = $("challengeCount");
-const progressPercent = $("progressPercent");
-const progressFill = $("progressFill");
-const progressText = $("progressText");
-const xpCount = $("xpCount");
-const xpProgress = $("xpProgress");
-
-const topicPopup = $("topicPopup");
-const popupClose = $("popupClose");
-const popupIcon = $("popupIcon");
-const popupLabel = $("popupLabel");
-const popupTitle = $("popupTitle");
-const popupDescription = $("popupDescription");
-const popupLessons = $("popupLessons");
-const popupXP = $("popupXP");
-const popupStart = $("popupStart");
+const topicDefaultIcons = [
+  "⚡", "🧲", "🔭", "🌊", "🔬", "🔋", "🌡️", "🚀", "🌈", "⚛️", "🧭", "📡"
+];
 
 let lessons = [];
 let topics = [];
 let selectedTopic = null;
-const slicedSprites = [];
-
-const gradeDescriptions = {
-  6: "Đo lường, khối lượng, lực, chuyển động và nhiệt độ — nền tảng để hiểu thế giới vật chất.",
-  7: "Khám phá tốc độ, âm thanh, ánh sáng, nam châm và các hiện tượng quang học.",
-  8: "Tìm hiểu khối lượng riêng, áp suất, lực đẩy Archimedes, công, nhiệt và điện.",
-  9: "Vận dụng điện học, quang học và điện từ học để giải thích nhiều hiện tượng thực tế.",
-  10: "Khám phá chuyển động, gia tốc, các định luật Newton, động lượng và năng lượng.",
-  11: "Đi sâu vào dao động, sóng, điện trường, dòng điện, từ trường và cảm ứng điện từ.",
-  12: "Tiếp cận điện trường, dòng điện xoay chiều, mạch RLC, lượng tử và vật lý hạt nhân."
-};
-
-const topicIcons = {
-  "do-dai": "📏",
-  "khoi-luong": "⚖️",
-  "luc": "💪",
-  "toc-do": "🏃",
-  "nhiet-do": "🌡️",
-  "luc-ma-sat": "🛞",
-  "toc-do-chuyen-dong": "🚗",
-  "am-thanh": "🔊",
-  "anh-sang": "💡",
-  "guong-phang": "🪞",
-  "nam-cham": "🧲",
-  "anh-sang-mau": "🌈",
-  "khoi-luong-rieng": "🧊",
-  "ap-suat": "🎈",
-  "luc-day-archimedes": "🚢",
-  "cong-suat": "⚙️",
-  "nhiet-nang": "🔥",
-  "dien": "🔌",
-  "dien-tro": "〽️",
-  "doan-mach-noi-tiep": "🔗",
-  "doan-mach-song-song": "🔀",
-  "cong-va-cong-suat-dien": "⚡",
-  "dien-tu": "🧲",
-  "quang-hoc": "🔭",
-  "chuyen-dong-thang": "🚀",
-  "gia-toc": "📈",
-  "dinh-luat-newton": "⚖️",
-  "dong-luong": "💥",
-  "nang-luong": "🔋",
-  "dong-luc-hoc-chat-long": "🌊",
-  "dao-dong": "〰️",
-  "song-co": "🌊",
-  "dien-truong": "⚡",
-  "dong-dien": "🔌",
-  "tu-truong": "🧲",
-  "cam-ung-dien-tu": "🌀",
-  "dien-truong-cuong-do": "⚡",
-  "dien-the": "🔋",
-  "mach-xoay-chieu": "〽️",
-  "mach-rlc": "🔌",
-  "hat-nhan": "☢️",
-  "quang-dien": "☀️",
-  "thuyet-tuong-doi": "🌌"
-};
-
-const topicDescriptions = {
-  "do-dai": "Đo độ dài bằng dụng cụ thích hợp và biết cách đọc, ghi kết quả đo.",
-  "khoi-luong": "Hiểu khối lượng và cách sử dụng cân để đo khối lượng.",
-  "luc": "Nhận biết lực, tác dụng của lực và biểu diễn lực.",
-  "toc-do": "Mô tả mức độ nhanh chậm của chuyển động bằng tốc độ.",
-  "nhiet-do": "Đo và so sánh nhiệt độ, hiểu sự thay đổi nhiệt độ.",
-  "luc-ma-sat": "Hiểu lực ma sát và vai trò của nó trong đời sống.",
-  "toc-do-chuyen-dong": "Tính và phân tích tốc độ của các chuyển động.",
-  "am-thanh": "Khám phá nguồn âm, độ cao, độ to và sự truyền âm.",
-  "anh-sang": "Tìm hiểu sự truyền ánh sáng và các hiện tượng ánh sáng.",
-  "guong-phang": "Khám phá ảnh của vật qua gương phẳng.",
-  "nam-cham": "Tìm hiểu nam châm và tác dụng của từ trường.",
-  "anh-sang-mau": "Giải thích màu sắc và sự phân tách ánh sáng.",
-  "khoi-luong-rieng": "Tính khối lượng riêng và ứng dụng để nhận biết vật liệu.",
-  "ap-suat": "Hiểu áp suất và cách áp suất thay đổi trong các tình huống thực tế.",
-  "luc-day-archimedes": "Khám phá lực đẩy của chất lỏng và điều kiện vật nổi, chìm.",
-  "cong-suat": "Tính công và công suất trong các quá trình cơ học.",
-  "nhiet-nang": "Hiểu nhiệt năng và các cách truyền nhiệt.",
-  "dien": "Làm quen với dòng điện, nguồn điện và mạch điện.",
-  "dien-tro": "Tìm hiểu điện trở và định luật Ohm.",
-  "doan-mach-noi-tiep": "Phân tích cường độ dòng điện và hiệu điện thế trong mạch nối tiếp.",
-  "doan-mach-song-song": "Phân tích mạch điện mắc song song và các đại lượng đặc trưng.",
-  "cong-va-cong-suat-dien": "Tính điện năng, công suất điện và ứng dụng trong gia đình.",
-  "dien-tu": "Khám phá mối liên hệ giữa dòng điện và từ trường.",
-  "quang-hoc": "Vận dụng kiến thức ánh sáng, thấu kính và tạo ảnh.",
-  "chuyen-dong-thang": "Mô tả vị trí, quãng đường, vận tốc trong chuyển động thẳng.",
-  "gia-toc": "Phân tích sự thay đổi vận tốc theo thời gian.",
-  "dinh-luat-newton": "Dùng ba định luật Newton để giải thích và dự đoán chuyển động.",
-  "dong-luong": "Hiểu động lượng và định luật bảo toàn động lượng.",
-  "nang-luong": "Tìm hiểu công, động năng, thế năng và bảo toàn năng lượng.",
-  "dong-luc-hoc-chat-long": "Khám phá áp suất và chuyển động của chất lưu.",
-  "dao-dong": "Mô tả dao động điều hòa bằng các đại lượng đặc trưng.",
-  "song-co": "Tìm hiểu sự truyền sóng và các hiện tượng giao thoa, phản xạ.",
-  "dien-truong": "Khám phá điện trường và lực điện tác dụng lên điện tích.",
-  "dong-dien": "Hiểu bản chất dòng điện không đổi và các định luật mạch điện.",
-  "tu-truong": "Tìm hiểu từ trường và lực từ tác dụng lên dòng điện.",
-  "cam-ung-dien-tu": "Khám phá hiện tượng cảm ứng điện từ và suất điện động cảm ứng.",
-  "dien-truong-cuong-do": "Tính cường độ điện trường và phân tích điện trường.",
-  "dien-the": "Hiểu điện thế, hiệu điện thế và mối liên hệ với công của lực điện.",
-  "mach-xoay-chieu": "Phân tích dòng điện xoay chiều và các đại lượng hiệu dụng.",
-  "mach-rlc": "Tìm hiểu mạch RLC và hiện tượng cộng hưởng.",
-  "hat-nhan": "Khám phá cấu tạo hạt nhân, phóng xạ và năng lượng hạt nhân.",
-  "quang-dien": "Tìm hiểu lượng tử ánh sáng và hiện tượng quang điện.",
-  "thuyet-tuong-doi": "Làm quen với một số ý tưởng nền tảng của vật lý hiện đại."
-};
+let slicedSprites = [];
 
 function escapeHTML(value) {
-  return String(value ?? "")
-    .replaceAll("&", "&amp;")
-    .replaceAll("<", "&lt;")
-    .replaceAll(">", "&gt;")
-    .replaceAll('"', "&quot;")
-    .replaceAll("'", "&#039;");
+  if (value === null || value === undefined) return "";
+  return String(value)
+    .replace(/&/g, "&amp;")
+    .replace(/</g, "&lt;")
+    .replace(/>/g, "&gt;")
+    .replace(/"/g, "&quot;")
+    .replace(/'/g, "&#039;");
 }
 
-/* =========================================================
-   TỰ ĐỘNG CẮT & TÁCH NỀN 16 ICON VẬT LÝ 2.5D (assets/physics-icons.webp)
-========================================================= */
+function getChapterUnitLabel() {
+  return "CHƯƠNG";
+}
+
 function loadImg(src) {
   return new Promise((resolve, reject) => {
     const img = new Image();
@@ -163,7 +92,7 @@ function loadImg(src) {
   });
 }
 
-async function initPhysicsGradeSprites() {
+async function initPhysics25DSprites() {
   try {
     const img = await loadImg("assets/physics-icons.webp");
     const cellW = img.naturalWidth / 4;
@@ -192,116 +121,344 @@ async function initPhysicsGradeSprites() {
       });
     };
     applySprite('[data-sprite="core"]', 0);
-    applySprite('[data-sprite="stat1"]', 14);
-    applySprite('[data-sprite="stat2"]', 1);
-    applySprite('[data-sprite="stat3"]', 9);
-    applySprite('[data-sprite="stat4"]', 7);
+    applySprite('[data-sprite="stat1"]', 1);
+    applySprite('[data-sprite="stat2"]', 2);
+    applySprite('[data-sprite="stat3"]', 7);
+    applySprite('[data-sprite="stat4"]', 9);
     applySprite('[data-sprite="calc"]', 8);
     applySprite('[data-sprite="progress"]', 10);
-    applySprite('[data-sprite="scenario"]', 5);
+    applySprite('[data-sprite="scenario"]', 3);
     applySprite('[data-prop="p1"]', 12);
     applySprite('[data-prop="p2"]', 13);
     applySprite('[data-prop="p3"]', 14);
     applySprite('[data-prop="p4"]', 15);
     if (topics.length) renderTopics();
   } catch (e) {
-    console.info("Dùng icon mặc định:", e);
+    console.info("Dùng icon Vật lý mặc định:", e);
   }
 }
 
 /* =========================================================
-   PROGRESS & TOPICS
+   TÁCH BÀI HỌC TỰ ĐỘNG NẾU DB ĐANG LƯU GỘP 1 CHƯƠNG = 1 BẢN GHI
+   (Đồng bộ chỉ số 0-based `sub=0, 1, 2...` với lesson.js)
 ========================================================= */
-/* Tiến độ THẬT: lấy từ sao đã nhận khi học bài (HDLG.lessonStats trong auth.js) */
-function lessonTopicSlug(lesson) {
-  return lesson.topic || `topic-${lesson.id}`;
-}
-
-function getStats(list) {
-  list = list || lessons;
-  if (window.HDLG && typeof HDLG.lessonStats === "function") return HDLG.lessonStats(list);
-  return { done: 0, total: list.length, stars: 0, maxStars: list.length * 10, percent: 0 };
-}
-
-function getProgress() {
-  return getStats(lessons).percent;
-}
-
-function updateProgress() {
-  const stats = getStats(lessons);
-  const progress = stats.percent;
-
-  if (progressPercent) progressPercent.textContent = `${progress}%`;
-  if (progressFill) progressFill.style.width = `${progress}%`;
-  if (progressText) {
-    progressText.textContent = `${stats.done} / ${stats.total} bài học hoàn thành`;
+function extractSubLessonsFromCombinedChapter(chapterLesson) {
+  const theoryText = String(chapterLesson.theory || "").replace(/\r\n/g, "\n");
+  const regex = /^###\s+((?:Bài|Chủ đề|Phần|Mục)\s+[^\n]+)$/gm;
+  const matches = [];
+  let m;
+  while ((m = regex.exec(theoryText)) !== null) {
+    matches.push({
+      heading: m[1].trim(),
+      startIdx: m.index,
+      bodyStart: m.index + m[0].length
+    });
   }
-  if (xpCount) xpCount.textContent = String(stats.stars);
-  if (xpProgress) xpProgress.style.width = `${stats.maxStars ? Math.round(100 * stats.stars / stats.maxStars) : 0}%`;
+
+  const subItems = [];
+  if (matches.length >= 2) {
+    matches.forEach((item, idx) => {
+      const endIdx = idx + 1 < matches.length ? matches[idx + 1].startIdx : theoryText.length;
+      const body = theoryText.slice(item.bodyStart, endIdx).trim();
+      const bodyLines = body.split("\n").map(l => l.trim()).filter(Boolean);
+      if (!bodyLines.length && /luyện tập chung|bài tập cuối chương/i.test(item.heading)) {
+        return;
+      }
+      const firstLine = bodyLines.length
+        ? bodyLines[0].replace(/^[-*•+]\s+/, "").replace(/\*\*/g, "").replace(/\$/g, "")
+        : (chapterLesson.description || "");
+      subItems.push({
+        id: chapterLesson.id,
+        subIndex: subItems.length,
+        isVirtualSub: true,
+        topic: chapterLesson.topic,
+        title: item.heading.replace(/^(Bài\s+\d+)\.\s*/, "$1: "),
+        description: firstLine.slice(0, 145),
+        icon: chapterLesson.icon || "⚡",
+        parentLesson: chapterLesson
+      });
+    });
+  }
+
+  if (subItems.length > 1) return subItems;
+  return [{
+    id: chapterLesson.id,
+    subIndex: null,
+    isVirtualSub: false,
+    topic: chapterLesson.topic,
+    title: chapterLesson.title,
+    description: chapterLesson.description || "",
+    icon: chapterLesson.icon || "⚡",
+    parentLesson: chapterLesson
+  }];
+}
+
+/* =========================================================
+   LOAD LESSONS FROM API
+========================================================= */
+async function loadLessons() {
+  try {
+    const cacheKey = `hdlg_v6_lessons_physics_${grade}`;
+    let data = null;
+    try {
+      const cached = sessionStorage.getItem(cacheKey);
+      if (cached) data = JSON.parse(cached);
+    } catch (_) {}
+
+    if (!Array.isArray(data) || !data.length) {
+      const url = `${API_BASE}/content/subjects/physics/lessons?grade=${encodeURIComponent(grade)}`;
+      const response = await fetch(url);
+      if (!response.ok) throw new Error(`HTTP ${response.status}`);
+      data = await response.json();
+      try {
+        sessionStorage.setItem(cacheKey, JSON.stringify(data));
+      } catch (_) {}
+    }
+
+    lessons = Array.isArray(data) ? data : [];
+    try {
+      lessons.forEach(l => {
+        if (l && l.id != null) sessionStorage.setItem(`hdlg_v6_lesson_${l.id}`, JSON.stringify(l));
+      });
+    } catch (_) {}
+
+    buildTopics();
+    renderPage();
+
+    if (initialTopicSlug) {
+      const foundIdx = topics.findIndex(t => t.slug === initialTopicSlug);
+      if (foundIdx >= 0) {
+        openTopic(topics[foundIdx], foundIdx);
+      }
+    }
+  } catch (error) {
+    console.error("LỖI LOAD LESSONS:", error);
+    if (topicsGrid) {
+      topicsGrid.innerHTML = `
+        <div class="error-state">
+          <h3>Không thể tải dữ liệu bài học Vật lý</h3>
+          <p>${escapeHTML(error.message)}</p>
+        </div>
+      `;
+    }
+  }
+}
+
+/* =========================================================
+   GOM CÁC BÀI HỌC THEO CHƯƠNG / CHỦ ĐỀ (CẤU TRÚC 3 CẤP)
+========================================================= */
+function resolveChapterTitleFromLessons(groupLessons, idx) {
+  for (const l of groupLessons) {
+    const ct = String(l.context_title || "").trim();
+    if (/^(Chương|Chủ đề|Chuyên đề|Phần|Ôn tập)\b/i.test(ct)) {
+      return ct;
+    }
+  }
+  if (groupLessons.length === 1) {
+    return groupLessons[0].title || `${getChapterUnitLabel()} ${idx + 1}`;
+  }
+  const firstTitle = String(groupLessons[0].title || "").trim();
+  if (/^(Chương|Chủ đề)\b/i.test(firstTitle)) return firstTitle;
+  return `${getChapterUnitLabel()} ${idx + 1}: ${firstTitle.replace(/^Bài\s+\d+[:.]\s*/i, "")}`;
+}
+
+function resolveChapterDescription(groupLessons, lessonItems) {
+  for (const l of groupLessons) {
+    const ct = String(l.context_title || "").trim();
+    const ctx = String(l.context || "").trim();
+    if (/^(Chương|Chủ đề)\b/i.test(ct) && ctx && ctx.length <= 220) {
+      return ctx.replace(/\$/g, "");
+    }
+  }
+  if (groupLessons.length === 1 && groupLessons[0].description) {
+    return groupLessons[0].description;
+  }
+  const sampleNames = lessonItems
+    .slice(0, 4)
+    .map(it => it.title.replace(/^Bài\s+\d+[:.]?\s*/i, ""))
+    .join(" · ");
+  return `Gồm ${lessonItems.length} bài học: ${sampleNames}${lessonItems.length > 4 ? "..." : ""}`;
 }
 
 function buildTopics() {
-  const map = new Map();
+  const topicMap = new Map();
 
-  lessons.forEach(function (lesson) {
-    const slug = lesson.topic || `topic-${lesson.id}`;
-    if (!map.has(slug)) {
-      map.set(slug, {
-        slug: slug,
-        name: lesson.title || slug,
-        description:
-          lesson.description ||
-          topicDescriptions[slug] ||
-          "Khám phá kiến thức Vật lý và cách vận dụng vào thực tế.",
-        icon: lesson.icon || topicIcons[slug] || "⚡",
-        lessons: 0
-      });
+  lessons.forEach((lesson) => {
+    const key = lesson.topic || `topic-${lesson.id}`;
+    if (!topicMap.has(key)) {
+      topicMap.set(key, []);
     }
-    map.get(slug).lessons++;
+    topicMap.get(key).push(lesson);
   });
 
-  topics = [...map.values()];
+  topics = [];
+  let idx = 0;
+
+  topicMap.forEach((groupLessons, key) => {
+    groupLessons.sort((a, b) => (a.order || a.id || 0) - (b.order || b.id || 0));
+
+    let lessonItems = [];
+    if (groupLessons.length === 1) {
+      lessonItems = extractSubLessonsFromCombinedChapter(groupLessons[0]);
+    } else {
+      lessonItems = groupLessons.map((l) => ({
+        id: l.id,
+        subIndex: null,
+        isVirtualSub: false,
+        topic: key,
+        title: l.title || "Bài học",
+        description: l.description || "",
+        icon: l.icon || topicDefaultIcons[idx % topicDefaultIcons.length],
+        parentLesson: l
+      }));
+    }
+
+    const chapterName = resolveChapterTitleFromLessons(groupLessons, idx);
+    const chapterDesc = resolveChapterDescription(groupLessons, lessonItems);
+
+    topics.push({
+      slug: key,
+      name: chapterName,
+      description: chapterDesc,
+      icon: groupLessons[0].icon || topicDefaultIcons[idx % topicDefaultIcons.length],
+      lessons: lessonItems.length,
+      rawLessons: groupLessons,
+      lessonItems: lessonItems
+    });
+    idx++;
+  });
+}
+
+/* =========================================================
+   PROGRESS HELPERS
+========================================================= */
+function getSingleLessonStatus(lessonId) {
+  if (window.HDLG && typeof HDLG.lessonStatus === "function" && lessonId != null) {
+    return HDLG.lessonStatus(lessonId);
+  }
+  return { read: false, quiz: false, stars: 0 };
+}
+
+function getTopicStats(index) {
+  const tp = topics[index];
+  if (!tp || !tp.rawLessons || !tp.rawLessons.length) {
+    return { done: 0, total: 0, stars: 0, maxStars: 0, percent: 0 };
+  }
+  let done = 0;
+  let stars = 0;
+  const maxStars = tp.rawLessons.length * 10;
+
+  tp.rawLessons.forEach((l) => {
+    const st = getSingleLessonStatus(l.id);
+    if ((st.read && st.quiz) || st.stars >= 10) done++;
+    stars += Math.min(10, st.stars || 0);
+  });
+
+  const percent = maxStars > 0 ? Math.round((stars / maxStars) * 100) : 0;
+  if (tp.rawLessons.length === 1 && tp.lessonItems.length > 1) {
+    const st = getSingleLessonStatus(tp.rawLessons[0].id);
+    const virtualDone = st.read && st.quiz ? tp.lessonItems.length : st.read || st.quiz ? Math.ceil(tp.lessonItems.length / 2) : 0;
+    return {
+      done: virtualDone,
+      total: tp.lessonItems.length,
+      stars: st.stars || 0,
+      maxStars: tp.lessonItems.length * 10,
+      percent: percent
+    };
+  }
+
+  return {
+    done: done,
+    total: tp.lessonItems.length,
+    stars: stars,
+    maxStars: maxStars,
+    percent: percent
+  };
+}
+
+function getOverallProgress() {
+  if (!topics.length) return { percent: 0, totalDone: 0, totalLessons: 0, totalStars: 0 };
+  let totalDone = 0;
+  let totalLessons = 0;
+  let totalStars = 0;
+  let totalMaxStars = 0;
+
+  topics.forEach((_, idx) => {
+    const st = getTopicStats(idx);
+    totalDone += st.done;
+    totalLessons += st.total;
+    totalStars += st.stars;
+    totalMaxStars += st.maxStars;
+  });
+
+  const percent = totalMaxStars > 0 ? Math.round((totalStars / totalMaxStars) * 100) : 0;
+  return { percent, totalDone, totalLessons, totalStars };
+}
+
+/* =========================================================
+   RENDER GRADE TABS (6..12) & PAGE
+========================================================= */
+function renderGradeTabs() {
+  if (!gradeTabs) return;
+  let html = "";
+  for (let g = 6; g <= 12; g++) {
+    const active = String(g) === String(grade) ? " active" : "";
+    html += `<a href="physics-grade.html?grade=${g}" class="grade-tab${active}">Lớp ${g}</a>`;
+  }
+  gradeTabs.innerHTML = html;
 }
 
 function renderPage() {
-  const gradeNumber = Number(grade);
+  document.title = `Vật lý Lớp ${grade} - HỌC ĐỂ LÀM GÌ`;
+  renderGradeTabs();
+
   if (gradeTitle) gradeTitle.textContent = `VẬT LÝ LỚP ${grade}`;
   if (gradeDescription) {
     gradeDescription.textContent =
-      gradeDescriptions[gradeNumber] ||
-      "Khám phá các quy luật vật lý và ứng dụng trong đời sống.";
+      gradeDescriptions[grade] ||
+      "Khám phá các quy luật của chuyển động, lực, năng lượng và thế giới tự nhiên qua từng bài học.";
+  }
+  if (gradeBadge) {
+    gradeBadge.textContent = `⚡ SGK KẾT NỐI TRI THỨC • LỚP ${grade}`;
   }
 
+  const ov = getOverallProgress();
   if (topicCount) topicCount.textContent = topics.length;
-  if (lessonCount) lessonCount.textContent = lessons.length;
-  if (challengeCount) challengeCount.textContent = lessons.filter(l => l && (l.game_type || l.game_title)).length || topics.length; // số game Thử thách thực tế thật
+  if (lessonCount) lessonCount.textContent = ov.totalLessons;
+  if (challengeCount) challengeCount.textContent = `${ov.totalDone}/${ov.totalLessons}`;
+  if (xpCount) xpCount.textContent = ov.totalLessons * 10;
 
-  updateProgress();
+  if (progressPercent) progressPercent.textContent = `${ov.percent}%`;
+  if (progressFill) progressFill.style.width = `${ov.percent}%`;
+  if (progressText) {
+    progressText.textContent =
+      `${ov.totalDone} / ${ov.totalLessons} bài học hoàn thành` +
+      (ov.totalStars ? ` · ⭐ ${ov.totalStars}/${ov.totalLessons * 10}` : "");
+  }
+
   renderTopics();
-}
-
-function getTopicProgress(index) {
-  const topic = topics[index];
-  if (!topic) return 0;
-  return getStats(lessons.filter(lesson => lessonTopicSlug(lesson) === topic.slug)).percent;
 }
 
 function renderTopics() {
   if (!topicsGrid) return;
+  topicsGrid.innerHTML = "";
 
   if (!topics.length) {
     topicsGrid.innerHTML = `
-      <div class="loading-state">
-        <strong>Chưa có dữ liệu bài học cho lớp ${escapeHTML(grade)}.</strong>
+      <div class="empty-state">
+        <h3>Chưa có chương học Vật lý cho Lớp ${escapeHTML(grade)}</h3>
+        <p>Hãy chạy script <code>python tools/import_physics_sgk.py --grades ${escapeHTML(grade)}</code> để nạp dữ liệu.</p>
       </div>
     `;
     return;
   }
 
-  topicsGrid.innerHTML = "";
+  const unitLabel = getChapterUnitLabel();
 
-  topics.forEach(function (topic, index) {
-    const progress = getTopicProgress(index);
+  topics.forEach((topic, index) => {
+    const tStats = getTopicStats(index);
+    const topicProgress = tStats.percent;
+
     const card = document.createElement("button");
     card.type = "button";
     card.className = "topic-card";
@@ -315,23 +472,32 @@ function renderTopics() {
       : "";
     const iconContent = spriteUrl ? "" : escapeHTML(topic.icon);
 
+    const previewItems = topic.lessonItems.slice(0, 3);
+    const extraCount = Math.max(0, topic.lessonItems.length - previewItems.length);
+    const previewHtml = previewItems
+      .map(it => `<span class="topic-lesson-chip">${escapeHTML(it.title)}</span>`)
+      .join("") + (extraCount > 0 ? `<span class="topic-lesson-chip is-more">+${extraCount} bài nữa</span>` : "");
+
     card.innerHTML = `
       <div class="topic-top">
         <div class="topic-icon" ${iconStyle}>${iconContent}</div>
-        <span class="topic-number">CHỦ ĐỀ ${String(index + 1).padStart(2, "0")}</span>
+        <span class="topic-number">${unitLabel} ${String(index + 1).padStart(2, "0")}</span>
       </div>
       <h3>${escapeHTML(topic.name)}</h3>
       <p>${escapeHTML(topic.description)}</p>
+      <div class="topic-lessons-preview">
+        ${previewHtml}
+      </div>
       <div class="topic-progress">
         <div class="topic-progress-top">
-          <span>${topic.lessons} bài học</span>
-          <span>${progress}%</span>
+          <span>📑 ${topic.lessons} bài học (${tStats.done}/${tStats.total} hoàn thành)</span>
+          <span>${topicProgress}%</span>
         </div>
         <div class="topic-progress-bar">
-          <div class="topic-progress-fill" style="width:${progress}%"></div>
+          <div class="topic-progress-fill" style="width:${topicProgress}%"></div>
         </div>
       </div>
-      <span class="topic-arrow">→</span>
+      <span class="topic-arrow" title="Mở danh sách bài học">Chọn bài →</span>
     `;
 
     card.addEventListener("click", function () {
@@ -343,14 +509,25 @@ function renderTopics() {
 }
 
 /* =========================================================
-   POPUP & LOAD LESSONS
+   CHAPTER -> LESSONS SELECTOR MODAL
 ========================================================= */
+function buildLessonUrl(item, topicSlug) {
+  let url =
+    "lesson.html?id=" +
+    encodeURIComponent(item.id) +
+    "&subject=physics&grade=" +
+    encodeURIComponent(grade) +
+    "&topic=" +
+    encodeURIComponent(topicSlug);
+  if (item.isVirtualSub && typeof item.subIndex === "number") {
+    url += "&sub=" + encodeURIComponent(item.subIndex);
+  }
+  return url;
+}
+
 function openTopic(topic, topicIdx = 0) {
   if (!topic) return;
   selectedTopic = topic;
-
-  const index = topics.findIndex(item => item.slug === topic.slug);
-  const progress = getTopicProgress(index);
 
   if (popupIcon) {
     const spriteUrl = slicedSprites.length
@@ -365,109 +542,91 @@ function openTopic(topic, topicIdx = 0) {
     }
   }
 
-  if (popupLabel) popupLabel.textContent = `VẬT LÝ LỚP ${grade}`;
+  const unitLabel = getChapterUnitLabel();
+  const tStats = getTopicStats(topicIdx);
+
+  if (popupLabel) {
+    popupLabel.textContent = `VẬT LÝ LỚP ${grade} • ${unitLabel} ${String(topicIdx + 1).padStart(2, "0")}`;
+  }
   if (popupTitle) popupTitle.textContent = topic.name;
   if (popupDescription) popupDescription.textContent = topic.description;
   if (popupLessons) popupLessons.textContent = topic.lessons;
+  if (popupDoneCount) popupDoneCount.textContent = `${tStats.done}/${tStats.total}`;
   if (popupXP) popupXP.textContent = topic.lessons * 10;
 
-  if (popupStart) {
-    if (progress >= 100) {
-      popupStart.innerHTML = "Ôn tập lại <span>→</span>";
-    } else if (progress > 0) {
-      popupStart.innerHTML = "Tiếp tục học <span>→</span>";
+  if (popupLessonsList) {
+    popupLessonsList.innerHTML = "";
+    topic.lessonItems.forEach((item, idx) => {
+      const st = getSingleLessonStatus(item.id);
+      const isDone = !!(st.read && st.quiz) || st.stars >= 10;
+      const inProg = !isDone && (st.read || st.quiz || st.stars > 0);
+
+      let badgeHtml = `<span class="cl-status">⭐ 0/10</span>`;
+      if (isDone) {
+        badgeHtml = `<span class="cl-status is-done">✓ Đã học • ${st.stars || 10}/10 ⭐</span>`;
+      } else if (inProg) {
+        badgeHtml = `<span class="cl-status is-progress">⏳ Đang học • ${st.stars}/10 ⭐</span>`;
+      }
+
+      const rowBtn = document.createElement("button");
+      rowBtn.type = "button";
+      rowBtn.className = "chapter-lesson-item" + (isDone ? " is-done" : inProg ? " is-progress" : "");
+      rowBtn.setAttribute("role", "listitem");
+      rowBtn.innerHTML = `
+        <div class="cl-num">${String(idx + 1).padStart(2, "0")}</div>
+        <div class="cl-body">
+          <div class="cl-title-row">
+            <strong class="cl-title">${escapeHTML(item.title)}</strong>
+            ${badgeHtml}
+          </div>
+          ${item.description ? `<p class="cl-desc">${escapeHTML(item.description)}</p>` : ""}
+        </div>
+        <span class="cl-go">Vào học →</span>
+      `;
+
+      rowBtn.addEventListener("click", () => {
+        window.location.href = buildLessonUrl(item, topic.slug);
+      });
+
+      popupLessonsList.appendChild(rowBtn);
+    });
+  }
+
+  const nextUnfinished =
+    topic.lessonItems.find(it => {
+      const st = getSingleLessonStatus(it.id);
+      return !((st.read && st.quiz) || st.stars >= 10);
+    }) || topic.lessonItems[0];
+
+  if (popupStart && nextUnfinished) {
+    if (tStats.percent >= 100) {
+      popupStart.innerHTML = `Ôn lại từ đầu: ${escapeHTML(topic.lessonItems[0].title)} <span>→</span>`;
+    } else if (tStats.done > 0) {
+      popupStart.innerHTML = `Học tiếp: ${escapeHTML(nextUnfinished.title)} <span>→</span>`;
     } else {
-      popupStart.innerHTML = "Bắt đầu học <span>→</span>";
+      popupStart.innerHTML = `Bắt đầu: ${escapeHTML(nextUnfinished.title)} <span>→</span>`;
     }
+    popupStart.onclick = function () {
+      window.location.href = buildLessonUrl(nextUnfinished, topic.slug);
+    };
   }
 
   if (topicPopup) {
     topicPopup.classList.add("show");
-    topicPopup.setAttribute("aria-hidden", "false");
     document.body.classList.add("popup-open");
   }
 }
 
-function closePopup() {
-  if (topicPopup) {
-    topicPopup.classList.remove("show");
-    topicPopup.setAttribute("aria-hidden", "true");
-  }
+function closeTopicPopup() {
+  if (topicPopup) topicPopup.classList.remove("show");
   document.body.classList.remove("popup-open");
   selectedTopic = null;
 }
 
-async function loadLessons() {
-  // Cập nhật ngay tiêu đề & mô tả theo lớp trên URL trước khi gọi API
-  const gradeNumber = Number(grade);
-  document.title = `Vật lý lớp ${grade} - HỌC ĐỂ LÀM GÌ`;
-  if (gradeTitle) gradeTitle.textContent = `VẬT LÝ LỚP ${grade}`;
-  if (gradeDescription) {
-    gradeDescription.textContent =
-      gradeDescriptions[gradeNumber] ||
-      "Khám phá các quy luật vật lý và ứng dụng trong đời sống.";
-  }
-  if (topicsGrid) {
-    topicsGrid.innerHTML = `
-      <div class="loading-state">
-        Đang tải bài học Vật lý lớp ${escapeHTML(grade)}...
-      </div>
-    `;
-  }
-
-  const url = `${API_BASE}/content/subjects/physics/lessons?grade=${encodeURIComponent(grade)}`;
-
-  try {
-    const cacheKey = `hdlg_lessons_physics_${grade}`;
-    let data = null;
-    const cached = sessionStorage.getItem(cacheKey);
-    if (cached) {
-      try { data = JSON.parse(cached); } catch (_) {}
-    }
-    if (!Array.isArray(data) || !data.length) {
-      const response = await fetch(url);
-      if (!response.ok) throw new Error(`HTTP ${response.status}`);
-      data = await response.json();
-      if (!Array.isArray(data)) {
-        throw new Error("API không trả về danh sách bài học.");
-      }
-      try {
-        sessionStorage.setItem(cacheKey, JSON.stringify(data));
-        data.forEach(l => {
-          if (l && l.id != null) sessionStorage.setItem(`hdlg_lesson_${l.id}`, JSON.stringify(l));
-        });
-      } catch (_) {}
-    }
-    lessons = data;
-    buildTopics();
-    renderPage();
-  } catch (error) {
-    console.error("LỖI LOAD LESSONS:", error);
-    if (topicsGrid) {
-      topicsGrid.innerHTML = `
-        <div class="error-state">
-          <h3>Không thể tải bài học</h3>
-          <p>${escapeHTML(error.message)}</p>
-          <button type="button" id="retryLessons" class="retry-btn">Thử lại</button>
-        </div>
-      `;
-      const retryButton = $("retryLessons");
-      if (retryButton) retryButton.addEventListener("click", loadLessons);
-    }
-  }
-}
-
-const backButton = $("backButton");
-if (backButton) {
-  backButton.addEventListener("click", function () {
-    window.location.href = "physics.html";
-  });
-}
-
-if (popupClose) popupClose.addEventListener("click", closePopup);
+if (popupClose) popupClose.addEventListener("click", closeTopicPopup);
 if (topicPopup) {
   topicPopup.addEventListener("click", function (event) {
-    if (event.target === topicPopup) closePopup();
+    if (event.target === topicPopup) closeTopicPopup();
   });
 }
 
@@ -477,223 +636,125 @@ document.addEventListener("keydown", function (event) {
     topicPopup &&
     topicPopup.classList.contains("show")
   ) {
-    closePopup();
+    closeTopicPopup();
   }
 });
 
-if (popupStart) {
-  popupStart.addEventListener("click", function () {
-    if (!selectedTopic || !selectedTopic.slug) return;
-
-    const topicLessons = lessons.filter(
-      lesson => lesson.topic === selectedTopic.slug
-    );
-    if (topicLessons.length === 0) {
-      alert("Không tìm thấy bài học.");
-      return;
-    }
-
-    const firstLesson = topicLessons[0];
-    const lessonURL =
-      "lesson.html?id=" +
-      encodeURIComponent(firstLesson.id) +
-      "&subject=physics&grade=" +
-      encodeURIComponent(grade) +
-      "&topic=" +
-      encodeURIComponent(selectedTopic.slug);
-
-    window.location.href = lessonURL;
+/* =========================================================
+   NAVIGATION & TOOLS
+========================================================= */
+const backButton = document.getElementById("backButton");
+if (backButton) {
+  backButton.addEventListener("click", function () {
+    window.location.href = "physics.html";
   });
 }
 
-/* =========================================================
-   TIẾN TRÌNH & THỬ THÁCH THỰC TẾ (grade-progress.js dùng chung)
-========================================================= */
+const challengeButton = document.getElementById("challengeButton");
+if (challengeButton) {
+  challengeButton.addEventListener("click", function () {
+    window.location.href =
+      "/challenge.html?subject=physics&grade=" +
+      encodeURIComponent(grade) +
+      "&from=" +
+      encodeURIComponent(location.pathname + location.search);
+  });
+}
+
+const calculatorButton = document.getElementById("calculatorButton");
+if (calculatorButton) {
+  calculatorButton.addEventListener("click", function () {
+    window.location.href = `physics-tools.html?grade=${encodeURIComponent(grade)}`;
+  });
+}
+
 function withGradeProgress(fn) {
   if (window.HDLGProgress) return fn(window.HDLGProgress);
   let s = document.getElementById("gradeProgressScript");
   if (!s) {
     s = document.createElement("script");
     s.id = "gradeProgressScript";
-    s.src = "/grade-progress.js?v=1";
+    s.src = "/grade-progress.js";
     document.head.appendChild(s);
   }
-  s.addEventListener("load", () => fn(window.HDLGProgress));
-  s.addEventListener("error", () => alert("Không tải được bảng tiến trình. Hãy kiểm tra kết nối mạng."));
-}
-function openGradeProgress() {
-  withGradeProgress(P => P.open({ subject: "physics", grade, getLessons: () => lessons, apiBase: API_BASE }));
-}
-function gradeChallengeURL() {
-  return "/challenge.html?subject=" + "physics" + "&grade=" + encodeURIComponent(grade) +
-    "&from=" + encodeURIComponent(location.pathname + location.search);
-}
-
-const challengeButton = $("challengeButton");
-if (challengeButton) {
-  challengeButton.addEventListener("click", function () {
-    window.location.href = gradeChallengeURL();
+  s.addEventListener("load", function () {
+    if (window.HDLGProgress) fn(window.HDLGProgress);
   });
 }
 
-const calculatorButton = $("calculatorButton");
-if (calculatorButton) {
-  calculatorButton.addEventListener("click", function () {
-    window.location.href = "physics-lab.html";
-  });
-}
-
-const progressButton = $("progressButton");
+const progressButton = document.getElementById("progressButton");
 if (progressButton) {
   progressButton.addEventListener("click", function () {
-    openGradeProgress();
+    withGradeProgress(function (P) {
+      P.open({ subject: "physics", grade: grade, getLessons: function () { return lessons; }, apiBase: API_BASE });
+    });
   });
 }
 
-/* =========================================================
-   PARALLAX & CANVAS HẠT LƯỢNG TỬ 60FPS
-========================================================= */
-const parallaxBg = $("parallaxBg");
-const parallaxRelics = $("parallaxRelics");
+window.addEventListener("hdlg:update", function () {
+  if (topics.length) renderPage();
+});
 
-window.addEventListener("mousemove", function (e) {
+/* =========================================================
+   2.5D PARALLAX & AMBIENT PARTICLES
+========================================================= */
+const parallaxBg = document.getElementById("parallaxBg");
+const parallaxRelics = document.getElementById("parallaxRelics");
+window.addEventListener("mousemove", (e) => {
   const nx = e.clientX / window.innerWidth - 0.5;
   const ny = e.clientY / window.innerHeight - 0.5;
   if (parallaxBg) {
-    parallaxBg.style.transform = `translate(${nx * 16}px, ${ny * 10}px) scale(1.04)`;
+    parallaxBg.style.transform = `translate(${nx * 14}px,${ny * 10}px) scale(1.04)`;
   }
   if (parallaxRelics) {
-    parallaxRelics.style.transform = `translate(${nx * -24}px, ${ny * -16}px)`;
+    parallaxRelics.style.transform = `translate(${nx * -24}px,${ny * -16}px)`;
   }
 });
 
-const canvas = $("gradeCanvas");
-const ctx = canvas ? canvas.getContext("2d") : null;
-let cw = 0, ch = 0;
-
-function resizeCanvas() {
-  if (!canvas) return;
-  cw = canvas.width = window.innerWidth;
-  ch = canvas.height = window.innerHeight;
-}
-window.addEventListener("resize", resizeCanvas);
-resizeCanvas();
-
-const particles = Array.from({ length: 30 }, () => ({
-  x: Math.random() * window.innerWidth,
-  y: Math.random() * window.innerHeight,
-  vx: (Math.random() - 0.5) * 0.6,
-  vy: (Math.random() - 0.5) * 0.6,
-  r: Math.random() * 2.4 + 1.2,
-  color: Math.random() > 0.4 ? "#38bdf8" : "#fde047"
-}));
-
-function renderQuantumCanvas() {
-  if (!ctx) return;
-  ctx.clearRect(0, 0, cw, ch);
-
-  for (let i = 0; i < particles.length; i++) {
-    const p = particles[i];
-    p.x += p.vx;
-    p.y += p.vy;
-    if (p.x < 0 || p.x > cw) p.vx *= -1;
-    if (p.y < 0 || p.y > ch) p.vy *= -1;
-
-    ctx.save();
-    ctx.fillStyle = p.color;
-    ctx.shadowColor = p.color;
-    ctx.shadowBlur = 10;
-    ctx.beginPath();
-    ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
-    ctx.fill();
-    ctx.restore();
-
-    for (let j = i + 1; j < particles.length; j++) {
-      const q = particles[j];
-      const dist = Math.hypot(p.x - q.x, p.y - q.y);
-      if (dist < 135) {
-        ctx.strokeStyle = `rgba(56, 189, 248, ${(1 - dist / 135) * 0.22})`;
-        ctx.lineWidth = 1;
-        ctx.beginPath();
-        ctx.moveTo(p.x, p.y);
-        ctx.lineTo(q.x, q.y);
-        ctx.stroke();
-      }
+const canvas = document.getElementById("gradeCanvas");
+if (canvas) {
+  const ctx = canvas.getContext("2d");
+  let particles = [];
+  function resizeCanvas() {
+    canvas.width = window.innerWidth;
+    canvas.height = window.innerHeight;
+  }
+  function createParticles() {
+    particles = [];
+    for (let i = 0; i < 34; i++) {
+      particles.push({
+        x: Math.random() * canvas.width,
+        y: Math.random() * canvas.height,
+        r: Math.random() * 2 + 0.6,
+        vx: (Math.random() - 0.5) * 0.28,
+        vy: (Math.random() - 0.5) * 0.28
+      });
     }
   }
-  requestAnimationFrame(renderQuantumCanvas);
+  function animateParticles() {
+    ctx.clearRect(0, 0, canvas.width, canvas.height);
+    particles.forEach((p) => {
+      p.x += p.vx;
+      p.y += p.vy;
+      if (p.x < 0) p.x = canvas.width;
+      if (p.x > canvas.width) p.x = 0;
+      if (p.y < 0) p.y = canvas.height;
+      if (p.y > canvas.height) p.y = 0;
+      ctx.beginPath();
+      ctx.arc(p.x, p.y, p.r, 0, Math.PI * 2);
+      ctx.fillStyle = "rgba(56, 189, 248, 0.35)";
+      ctx.fill();
+    });
+    requestAnimationFrame(animateParticles);
+  }
+  resizeCanvas();
+  createParticles();
+  animateParticles();
+  window.addEventListener("resize", () => {
+    resizeCanvas();
+    createParticles();
+  });
 }
-renderQuantumCanvas();
 
-document.addEventListener("DOMContentLoaded", function () {
-  initPhysicsGradeSprites();
-  loadLessons();
-});
-
-// ===== Đồng bộ khung Tài khoản người chơi & Sự kiện Click giống trang Index =====
-(function accountHudGrade() {
-    const card = document.getElementById('playerCard') || document.querySelector('.player');
-    if (card) {
-        card.style.cursor = 'pointer';
-        card.title = 'Tài khoản của tôi';
-        card.addEventListener('click', () => {
-            if (window.HDLG && typeof HDLG.showAccount === 'function') {
-                HDLG.showAccount();
-            }
-        });
-    }
-
-    function renderPlayer(d) {
-        if (!d) return;
-        const nameEl = document.getElementById('playerName') || document.querySelector('.player-info strong');
-        const lvlEl = document.getElementById('playerLevel') || document.querySelector('.player .level');
-        const barEl = document.getElementById('playerXpBar') || document.getElementById('xpProgress');
-        const txtEl = document.getElementById('playerXpText');
-        const av = document.getElementById('playerAvatar') || document.querySelector('.player-avatar');
-
-        const level = d.level || (Math.floor((d.xp || 0) / 100) + 1);
-        const inLevel = d.inLevel !== undefined ? d.inLevel : ((d.xp || 0) % 100);
-
-        if (nameEl) nameEl.textContent = d.name || 'Tên người chơi';
-        if (lvlEl) lvlEl.textContent = 'Lv.' + level;
-        if (barEl) barEl.style.width = inLevel + '%';
-        if (txtEl) txtEl.textContent = inLevel + '/100';
-
-        if (av) {
-            if (d.photo) {
-                const cur = av.querySelector('img');
-                if (cur && cur.getAttribute('src') === d.photo) return;
-                av.innerHTML = '';
-                const img = document.createElement('img');
-                img.src = d.photo;
-                img.referrerPolicy = 'no-referrer';
-                img.alt = '';
-                img.style.cssText = 'width:100%;height:100%;border-radius:50%;object-fit:cover';
-                av.appendChild(img);
-            } else if (d.name) {
-                av.textContent = d.name.charAt(0).toUpperCase();
-            }
-        }
-    }
-
-    window.addEventListener('hdlg:update', e => renderPlayer(e.detail));
-    if (window.HDLG && typeof HDLG.getState === 'function') renderPlayer(HDLG.getState());
-    if (window.HDLG && HDLG.ready) {
-        HDLG.ready.then(() => {
-            if (typeof HDLG.getState === 'function') renderPlayer(HDLG.getState());
-            else if (HDLG.user) renderPlayer(HDLG.user);
-        });
-    }
-})();
-
-/* Cập nhật lại tiến độ khi sao thay đổi / quay lại trang bằng nút Back */
-function refreshRealProgress() {
-  if (!lessons.length) return;
-  updateProgress();
-  renderTopics();
-}
-window.addEventListener("hdlg:update", refreshRealProgress);
-window.addEventListener("pageshow", refreshRealProgress);
-if (window.HDLG && HDLG.ready && typeof HDLG.ready.then === "function") {
-  HDLG.ready.then(refreshRealProgress);
-}
+initPhysics25DSprites();
+loadLessons();

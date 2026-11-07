@@ -1,1302 +1,1050 @@
-r"""VẬT LÍ 12 — Kết nối tri thức với cuộc sống (SGK Vật lí 12 & Chuyên đề học tập Vật lí 12).
-
-Bao phủ toàn bộ 25 bài học thuộc 4 chương SGK Vật lí 12 và 3 chuyên đề học tập Vật lí 12
-bộ sách "Kết nối tri thức với cuộc sống" (NXB Giáo dục Việt Nam) theo Chương trình GDPT 2018:
-- Chương I. Vật lí nhiệt (Bài 1 – Bài 7, topic="vat-ly-nhiet").
-- Chương II. Khí lí tưởng (Bài 8 – Bài 13, topic="vat-ly-nhiet-khi-ly-tuong").
-- Chương III – Phần 1. Từ trường và Lực từ (Bài 14 – Bài 16, topic="tu-truong").
-- Chương III – Phần 2. Máy phát điện xoay chiều, Dòng điện xoay chiều và Sóng điện từ (Bài 17 – Bài 20, topic="mach-xoay-chieu").
-- Chương IV. Vật lí hạt nhân và Phóng xạ (Bài 21 – Bài 25, topic="hat-nhan").
-- Chuyên đề Vật lí 12. Dòng điện xoay chiều RLC, Lượng tử ánh sáng và Thuyết tương đối (Chuyên đề 1 – 3, topic="quang-dien").
-
-Mỗi đơn vị kiến thức gồm: Yêu cầu cần đạt (CT GDPT 2018), định nghĩa cốt lõi, lý thuyết theo từng bài SGK,
-hệ thống công thức chuẩn KaTeX ($ ... $), ví dụ minh hoạ, ứng dụng thực tiễn, cấu hình game thực nghiệm
-và bộ 10 câu hỏi đánh giá năng lực: Biết 4 TN | Hiểu 2 TN + 2 Đúng-Sai (4 ý a–d) | Vận dụng 1 TN + 1 Trả lời ngắn.
-"""
-from ._helpers import F, G, mcq, short, tf4
+"""Vật lý Lớp 12 (SGK Vật lí 12 - Kết nối tri thức với cuộc sống): 4 Chương - 22 Bài học độc lập."""
+from ._helpers import F, G, bai, mcq, short, tf4
 
 GRADE = 12
 
+CH1 = ("l12-ch01-vat-li-nhiet", "Chương I: Vật lí nhiệt", "Chương I · SGK Vật lí 12: Cấu trúc chất, sự chuyển thể, nội năng, định luật 1 NĐLH, thang nhiệt độ, nhiệt dung riêng, nhiệt nóng chảy riêng và nhiệt hóa hơi riêng.")
+CH2 = ("l12-ch02-khi-li-tuong", "Chương II: Khí lí tưởng", "Chương II · SGK Vật lí 12: Mô hình động học phân tử chất khí, định luật Boyle, định luật Charles, phương trình trạng thái khí lí tưởng và áp suất phân tử.")
+CH3 = ("l12-ch03-tu-truong", "Chương III: Từ trường", "Chương III · SGK Vật lí 12: Từ trường, cảm ứng từ, lực từ F = B.I.ℓ.sinα, từ thông, cảm ứng điện từ, dòng điện xoay chiều và máy biến áp.")
+CH4 = ("l12-ch04-vat-li-hat-nhan", "Chương IV: Vật lí hạt nhân", "Chương IV · SGK Vật lí 12: Cấu trúc hạt nhân, độ hụt khối, năng lượng liên kết, phản ứng phân hạch – nhiệt hạch, phóng xạ và an toàn phóng xạ.")
+
 LESSONS = [
-    # =========================================================================
-    # CHƯƠNG I. VẬT LÍ NHIỆT (Bài 1 – Bài 7 SGK Vật lí 12 KNTT)
-    # =========================================================================
-    {
-        "topic": "vat-ly-nhiet",
-        "title": "Chương I. Vật lí nhiệt",
-        "icon": "🌡️",
-        "description": (
-            "Chương I · SGK Vật lí 12 Kết nối tri thức với cuộc sống (Bài 1 – Bài 7): "
-            "Cấu trúc của chất và sự chuyển thể; Nội năng và Định luật 1 của nhiệt động lực học; "
-            "Nhiệt độ, thang nhiệt độ Celsius – Kelvin và nhiệt kế; Nhiệt dung riêng; "
-            "Nhiệt nóng chảy riêng; Nhiệt hoá hơi riêng; Bài tập về vật lí nhiệt."
-        ),
-        "requirements": [
-            r"Sử dụng mô hình động học phân tử, nêu được sơ lược cấu trúc của chất rắn, chất lỏng, chất khí.",
-            r"Giải thích được sơ lược một số hiện tượng vật lí liên quan đến sự chuyển thể: sự nóng chảy, sự đông đặc, sự hoá hơi (bay hơi và sôi), sự ngưng tụ, sự thăng hoa.",
-            r"Thực hiện thí nghiệm, nêu được mối liên hệ giữa nội năng $U$ của vật với năng lượng của các phân tử tạo nên vật và phát biểu được Định luật $1$ của nhiệt động lực học $\Delta U = Q + A$.",
-            r"Vận dụng được Định luật $1$ của nhiệt động lực học $\Delta U = Q + A$ (kèm quy ước dấu của nhiệt lượng $Q$ và công $A$) trong một số trường hợp thực tiễn.",
-            r"Thực hiện thí nghiệm đơn giản, thảo luận để nêu được sự chênh lệch nhiệt độ giữa hai vật tiếp xúc nhau cho biết chiều truyền năng lượng nhiệt giữa chúng; khi hai vật tiếp xúc đạt trạng thái cân bằng nhiệt thì có cùng nhiệt độ.",
-            r"Nêu được mỗi độ chia ($1^\circ\text{C}$) trong thang Celsius bằng $\dfrac{1}{100}$ khoảng cách giữa nhiệt độ tan chảy của nước tinh khiết đóng băng ($0^\circ\text{C}$) và nhiệt độ sôi của nước tinh khiết ($100^\circ\text{C}$) ở áp suất tiêu chuẩn; mỗi độ chia ($1\text{ K}$) trong thang Kelvin bằng $\dfrac{1}{273{,}16}$ khoảng cách giữa nhiệt độ không tuyệt đối ($0\text{ K}$) và nhiệt độ điểm ba của nước ($273{,}16\text{ K}$).",
-            r"Chuyển đổi được nhiệt độ đo theo thang Celsius sang nhiệt độ đo theo thang Kelvin và ngược lại theo công thức $T\text{ (K)} = t\text{ (}^\circ\text{C)} + 273{,}15$ (hoặc $T \approx t + 273$).",
-            r"Nêu được định nghĩa nhiệt dung riêng $c$ ($\text{J/(kg}\cdot\text{K)}$), nhiệt nóng chảy riêng $\lambda$ ($\text{J/kg}$), nhiệt hoá hơi riêng $L$ ($\text{J/kg}$) và đơn vị đo của chúng trong hệ SI.",
-            r"Thảo luận để thiết kế phương án hoặc lựa chọn phương án và thực hiện phương án đo được nhiệt dung riêng $c$, nhiệt nóng chảy riêng $\lambda$ của nước đá và nhiệt hoá hơi riêng $L$ của nước bằng dụng cụ thực hành.",
-            r"Vận dụng được các công thức $Q = mc\Delta T$, $Q = m\lambda$, $Q = mL$ và phương trình cân bằng nhiệt $Q_{\text{toả}} = Q_{\text{thu}}$ để giải các bài toán thực tiễn.",
+    bai(
+        topic=CH1[0], chapter_title=CH1[1], chapter_desc=CH1[2],
+        title="Bài 1: Cấu trúc của chất. Sự chuyển thể",
+        icon="🧊",
+        description="Mô hình động học phân tử về cấu tạo chất, đặc điểm cấu trúc của thể rắn – lỏng – khí, sự nóng chảy và sự hóa hơi (bay hơi, sôi).",
+        requirements=[
+            "Trình bày được 3 nội dung cơ bản của mô hình động học phân tử về cấu tạo chất và so sánh khoảng cách, lực tương tác, chuyển động phân tử ở 3 thể rắn, lỏng, khí.",
+            "Phân biệt được chất rắn kết tinh (có cấu trúc tinh thể và nhiệt độ nóng chảy xác định) với chất rắn vô định hình (không có nhiệt độ nóng chảy xác định).",
+            "Giải thích được quá trình nóng chảy, đông đặc, bay hơi và sôi bằng mô hình động học phân tử (trong suốt quá trình nóng chảy của chất rắn kết tinh và quá trình sôi, nhiệt độ của chất không đổi).",
         ],
-        "definition": (
-            r"- **Mô hình động học phân tử và cấu trúc chất**: Các chất được cấu tạo từ các hạt riêng biệt (phân tử, nguyên tử, ion) chuyển động nhiệt hỗn loạn không ngừng; nhiệt độ càng cao thì các hạt chuyển động càng nhanh. Giữa các hạt luôn tồn tại đồng thời lực hút và lực đẩy phân tử. Ở **thể rắn**, các hạt dao động quanh vị trí cân bằng cố định (mạng tinh thể xác định); ở **thể lỏng**, các hạt dao động quanh vị trí cân bằng có thể di chuyển; ở **thể khí**, khoảng cách giữa các hạt rất lớn nên lực tương tác không đáng kể và các hạt chuyển động hỗn loạn về mọi phía." "\n"
-            r"- **Nội năng ($U$) và Định luật $1$ của nhiệt động lực học**: Nội năng $U$ của một vật là tổng động năng chuyển động nhiệt của các phân tử và thế năng tương tác giữa chúng, phụ thuộc vào nhiệt độ $T$ và thể tích $V$ của vật. Định luật $1$ của nhiệt động lực học: $\Delta U = Q + A$, trong đó $Q > 0$ nếu vật nhận nhiệt lượng, $Q < 0$ nếu vật truyền nhiệt lượng; $A > 0$ nếu vật nhận công, $A < 0$ nếu vật thực hiện công." "\n"
-            r"- **Thang nhiệt độ Celsius và Kelvin**: Hai vật tiếp xúc đạt **cân bằng nhiệt** khi không còn sự truyền nhiệt tự phát và có cùng nhiệt độ. Mối liên hệ giữa thang nhiệt độ tuyệt đối Kelvin ($T$) và thang Celsius ($t$): $T\text{ (K)} = t\text{ (}^\circ\text{C)} + 273{,}15$ (thông thường lấy $T\text{ (K)} = t\text{ (}^\circ\text{C)} + 273$). Độ biến thiên nhiệt độ trên hai thang là như nhau: $\Delta T\text{ (K)} = \Delta t\text{ (}^\circ\text{C)}$." "\n"
-            r"- **Nhiệt dung riêng ($c$), nhiệt nóng chảy riêng ($\lambda$), nhiệt hoá hơi riêng ($L$)**: Nhiệt dung riêng $c$ (đơn vị $\text{J/(kg}\cdot\text{K)}$) là nhiệt lượng cần truyền cho $1\text{ kg}$ chất đó để nhiệt độ tăng thêm $1\text{ K}$. Nhiệt nóng chảy riêng $\lambda$ (đơn vị $\text{J/kg}$) là nhiệt lượng cần truyền cho $1\text{ kg}$ chất rắn kết tinh nóng chảy hoàn toàn ở nhiệt độ nóng chảy. Nhiệt hoá hơi riêng $L$ (đơn vị $\text{J/kg}$) là nhiệt lượng cần truyền cho $1\text{ kg}$ chất lỏng hoá hơi hoàn toàn ở nhiệt độ xác định."
+        definition="Theo mô hình động học phân tử: các chất được cấu tạo từ các hạt riêng biệt gọi là phân tử; các phân tử chuyển động không ngừng (nhiệt độ càng cao thì chuyển động càng nhanh); giữa các phân tử có lực hút và lực đẩy gọi chung là lực tương tác phân tử.",
+        theory=(
+            "### 1. Cấu trúc của chất ở thể Rắn – Lỏng – Khí\n"
+            "- **Thể rắn**: các phân tử ở rất gần nhau, lực tương tác rất mạnh giữ các phân tử chỉ dao động quanh vị trí cân bằng xác định $\\implies$ có **hình dạng và thể tích riêng xác định**.\n"
+            "  - *Chất rắn kết tinh* (muối ăn, thạch anh, kim cương, nước đá, kim loại): có cấu trúc tinh thể và có **nhiệt độ nóng chảy xác định**.\n"
+            "  - *Chất rắn vô định hình* (thủy tinh, nhựa đường, sáp nến): không có cấu trúc tinh thể và **không có nhiệt độ nóng chảy xác định**.\n"
+            "- **Thể lỏng**: khoảng cách phân tử lớn hơn thể rắn, lực tương tác trung bình, phân tử dao động quanh vị trí cân bằng có thể di chuyển $\\implies$ có **thể tích riêng xác định** nhưng hình dạng phụ thuộc bình chứa.\n"
+            "- **Thể khí**: khoảng cách phân tử rất lớn so với kích thước phân tử, lực tương tác rất yếu, phân tử chuyển động hỗn loạn về mọi phía $\\implies$ **không có hình dạng và thể tích riêng** (dễ nén).\n\n"
+            "### 2. Sự chuyển thể (Nóng chảy – Đông đặc & Hóa hơi – Ngưng tụ)\n"
+            "- **Sự nóng chảy**: chuyển từ thể rắn sang thể lỏng (thu nhiệt). Trong suốt thời gian chất rắn kết tinh đang nóng chảy, **nhiệt độ của nó giữ nguyên không đổi** dù vẫn tiếp tục cấp nhiệt.\n"
+            "- **Sự hóa hơi**: chuyển từ thể lỏng sang thể khí, gồm 2 hình thức:\n"
+            "  - **Bay hơi**: xảy ra ở **mặt thoáng** của chất lỏng ở **mọi nhiệt độ** (tốc độ bay hơi tăng khi nhiệt độ cao, diện tích mặt thoáng lớn, có gió và độ ẩm không khí thấp).\n"
+            "  - **Sôi**: xảy ra đồng thời ở **cả trong lòng và trên mặt thoáng** chất lỏng ở một **nhiệt độ sôi xác định** (tại áp suất chuẩn $1\\text{ atm}$, nước sôi ở $100^\\circ\\text{C}$ và trong suốt khi đang sôi nhiệt độ nước không đổi)."
         ),
-        "theory": (
-            r"### Bài 1. Cấu trúc của chất. Sự chuyển thể" "\n"
-            r"- **Ba thể của chất**: Chất rắn có hình dạng và thể tích riêng xác định (chất rắn kết tinh có cấu trúc tinh thể và nhiệt độ nóng chảy xác định; chất rắn vô định hình không có cấu trúc tinh thể và không có nhiệt độ nóng chảy xác định). Chất lỏng có thể tích riêng xác định nhưng có hình dạng của phần bình chứa. Chất khí không có hình dạng và thể tích riêng, luôn chiếm toàn bộ thể tích bình chứa và dễ nén." "\n"
-            r"- **Sự nóng chảy và sự đông đặc**: Trong suốt quá trình nóng chảy (hoặc đông đặc) của chất rắn kết tinh ở áp suất chuẩn, nhiệt độ của vật giữ **không đổi** dù vật vẫn tiếp tục thu nhiệt để phá vỡ liên kết mạng tinh thể (hoặc toả nhiệt khi tái lập mạng tinh thể)." "\n"
-            r"- **Sự hoá hơi và sự ngưng tụ**: Hoá hơi xảy ra dưới hai hình thức: **bay hơi** (xảy ra ở mặt thoáng tại mọi nhiệt độ, tốc độ bay hơi tăng khi tăng nhiệt độ, tăng diện tích mặt thoáng, có gió và giảm độ ẩm) và **sôi** (xảy ra đồng thời ở cả trong lòng và trên mặt thoáng chất lỏng ở nhiệt độ sôi xác định). Trong suốt thời gian sôi, nhiệt độ của chất lỏng không đổi." "\n"
-            r"### Bài 2. Nội năng. Định luật 1 của nhiệt động lực học" "\n"
-            r"- **Hai cách làm thay đổi nội năng**: **Thực hiện công** (ví dụ cọ xát miếng kim loại, nén khí trong xilanh) và **truyền nhiệt** (cho vật tiếp xúc với nguồn nhiệt mà không có sự dịch chuyển vĩ mô do lực)." "\n"
-            r"- **Định luật $1$ của nhiệt động lực học**: Độ biến thiên nội năng của hệ bằng tổng công và nhiệt lượng mà hệ nhận được: $\Delta U = Q + A$." "\n"
-            r"- **Quy ước dấu**: $Q > 0$ (hệ nhận nhiệt), $Q < 0$ (hệ toả nhiệt); $A > 0$ (hệ nhận công), $A < 0$ (hệ sinh công); $\Delta U > 0$ (nội năng tăng), $\Delta U < 0$ (nội năng giảm)." "\n"
-            r"### Bài 3. Nhiệt độ. Thang nhiệt độ – nhiệt kế" "\n"
-            r"- **Sự truyền nhiệt và cân bằng nhiệt**: Năng lượng nhiệt tự truyền từ vật có nhiệt độ cao hơn sang vật có nhiệt độ thấp hơn. Khi hai vật đạt trạng thái cân bằng nhiệt thì nhiệt độ của chúng bằng nhau." "\n"
-            r"- **Thang Celsius ($t$), Kelvin ($T$) và Fahrenheit ($T_{\text{F}}$)**: Điểm đóng băng và điểm sôi của nước tinh khiết ở áp suất $1\text{ atm}$ tương ứng là $0^\circ\text{C}$ ($273{,}15\text{ K}$) và $100^\circ\text{C}$ ($373{,}15\text{ K}$). Không độ tuyệt đối $0\text{ K}$ ($-273{,}15^\circ\text{C}$) là giới hạn nhiệt độ thấp nhất mà tại đó động năng chuyển động nhiệt của các phân tử đạt giá trị tối thiểu. Điểm ba của nước (nước tinh khiết đồng thời tồn tại ở cả ba thể rắn, lỏng, hơi) có nhiệt độ chính xác bằng $273{,}16\text{ K}$ ($0{,}01^\circ\text{C}$). Công thức đổi thang Fahrenheit: $T_{\text{F}}\text{ (}^\circ\text{F)} = 1{,}8t\text{ (}^\circ\text{C)} + 32$." "\n"
-            r"- **Nguyên lí nhiệt kế**: Dựa trên sự phụ thuộc của một đại lượng vật lí vào nhiệt độ như sự nở vì nhiệt của cột chất lỏng (thuỷ ngân, rượu), sự biến thiên điện trở kim loại hoặc bán dẫn (nhiệt kế điện trở), hoặc bức xạ hồng ngoại (nhiệt kế hồng ngoại)." "\n"
-            r"### Bài 4. Nhiệt dung riêng" "\n"
-            r"- **Công thức tính nhiệt lượng làm thay đổi nhiệt độ**: $Q = mc\Delta T = mc(t_2 - t_1)$, trong đó $m$ ($\text{kg}$) là khối lượng, $c$ ($\text{J/(kg}\cdot\text{K)}$) là nhiệt dung riêng, $\Delta T$ ($\text{K}$ hoặc ${}^\circ\text{C}$) là độ tăng nhiệt độ. Tích $C = mc$ (đơn vị $\text{J/K}$) gọi là **nhiệt dung** của vật." "\n"
-            r"- **Thí nghiệm đo nhiệt dung riêng của nước**: Đun nước có khối lượng $m$ trong bình nhiệt lượng kế bằng dây điện trở công suất $\mathcal{P}$ trong thời gian $\tau$; bỏ qua hao phí nhiệt ra môi trường thì $c = \dfrac{\mathcal{P}\tau}{m\Delta T}$." "\n"
-            r"### Bài 5. Nhiệt nóng chảy riêng" "\n"
-            r"- **Công thức tính nhiệt lượng nóng chảy**: Ở nhiệt độ nóng chảy $t_{\text{nc}}$, nhiệt lượng cần cung cấp để làm nóng chảy hoàn toàn khối chất rắn kết tinh có khối lượng $m$ là $Q = m\lambda$, với $\lambda$ ($\text{J/kg}$) là nhiệt nóng chảy riêng (của nước đá ở $0^\circ\text{C}$ là $\lambda \approx 3{,}34 \times 10^5\text{ J/kg}$)." "\n"
-            r"### Bài 6. Nhiệt hoá hơi riêng" "\n"
-            r"- **Công thức tính nhiệt lượng hoá hơi**: Ở nhiệt độ hoá hơi xác định, nhiệt lượng cần cung cấp để khối chất lỏng khối lượng $m$ hoá hơi hoàn toàn là $Q = mL$, với $L$ ($\text{J/kg}$) là nhiệt hoá hơi riêng (của nước ở $100^\circ\text{C}$ là $L \approx 2{,}26 \times 10^6\text{ J/kg}$)." "\n"
-            r"### Bài 7. Bài tập về vật lí nhiệt" "\n"
-            r"- **Phương trình cân bằng nhiệt**: Trong một hệ cô lập về nhiệt gồm các vật chỉ truyền nhiệt cho nhau, tổng nhiệt lượng do các vật có nhiệt độ cao hơn toả ra bằng tổng nhiệt lượng do các vật có nhiệt độ thấp hơn thu vào: $\sum Q_{\text{toả}} = \sum Q_{\text{thu}}$, hay $\sum Q_i = 0$." "\n"
-            r"- **Bài toán nhiều giai đoạn (vừa tăng nhiệt độ vừa chuyển thể)**: Khi đun nước đá từ $t_1 < 0^\circ\text{C}$ thành hơi nước ở $100^\circ\text{C}$, tổng nhiệt lượng cần cung cấp là $Q = m c_{\text{đá}}(0 - t_1) + m\lambda + m c_{\text{nước}}(100 - 0) + mL$."
-        ),
-        "formulas": [
+        formulas=[
             G(
-                "I. Định luật 1 Nhiệt động lực học và Thang nhiệt độ",
-                F("Định luật 1 Nhiệt động lực học", r"$\Delta U = Q + A$", r"Nhận nhiệt $Q > 0$, truyền nhiệt $Q < 0$; nhận công $A > 0$, sinh công $A < 0$."),
-                F("Chuyển đổi Celsius – Kelvin", r"$T\text{ (K)} = t\text{ (}^\circ\text{C)} + 273{,}15$", r"Độ chênh lệch nhiệt độ: $\Delta T\text{ (K)} = \Delta t\text{ (}^\circ\text{C)}$."),
-                F("Chuyển đổi Celsius – Fahrenheit", r"$T_{\text{F}}\text{ (}^\circ\text{F)} = 1{,}8t\text{ (}^\circ\text{C)} + 32$", r"Độ chênh lệch: $\Delta T_{\text{F}} = 1{,}8\Delta t$."),
-            ),
+                "So sánh 3 thể của chất và Đặc điểm chuyển thể",
+                F("So sánh lực tương tác và khoảng cách phân tử", "$F_{\\text{rắn}} > F_{\\text{lỏng}} \\gg F_{\\text{khí}}; \\qquad d_{\\text{rắn}} < d_{\\text{lỏng}} \\ll d_{\\text{khí}}$", "Ở thể khí, khoảng cách giữa các phân tử rất lớn nên chất khí rất dễ bị nén."),
+                F("Quy luật nhiệt độ trong khi nóng chảy (kết tinh) và khi sôi", "$\\text{Đang nóng chảy (chất kết tinh): } t = t_{\\text{nc}} = \\text{const}; \\qquad \\text{Đang sôi: } t = t_{\\text{sôi}} = \\text{const}$", "Nhiệt lượng cung cấp trong giai đoạn này dùng để phá vỡ liên kết giữa các phân tử (tăng thế năng phân tử)."),
+            )
+        ],
+        example="Khi đun nóng một cục nước đá từ $-10^\\circ\\text{C}$ ở áp suất chuẩn: tại $0^\\circ\\text{C}$ nước đá bắt đầu tan (nóng chảy) thành nước lỏng. Trong suốt thời gian cục nước đá đang tan (vừa có đá vừa có nước), nhiệt độ của hỗn hợp nước đá là bao nhiêu và năng lượng nhiệt cung cấp lúc này dùng để làm gì?",
+        example_answer="Trong suốt quá trình nước đá (chất rắn kết tinh) đang nóng chảy, nhiệt độ của hệ **giữ nguyên không đổi ở $0^\\circ\\text{C}$**. Nhiệt lượng cung cấp trong giai đoạn này không làm tăng động năng phân tử mà dùng để **phá vỡ mạng tinh thể nước đá** (làm tăng thế năng tương tác phân tử).",
+        real_life="Khi cơ thể ra mồ hôi vào ngày nóng hoặc khi lau người bằng khăn ấm lúc sốt, nước bay hơi từ bề mặt da sẽ thu nhiệt từ cơ thể làm da mát đi và giúp hạ sốt.",
+        quiz=[
+            mcq("biet", "Ở thể nào thì các phân tử chỉ dao động xung quanh các vị trí cân bằng cố định làm cho vật có cả hình dạng và thể tích riêng xác định?", ["Thể rắn", "Thể lỏng", "Thể khí", "Chân không"], 0, "Ở thể rắn, lực tương tác phân tử rất mạnh giữ các phân tử dao động quanh vị trí cân bằng xác định nên vật rắn có hình dạng và thể tích riêng."),
+            mcq("biet", "Trong suốt thời gian một chất rắn **kết tinh** đang nóng chảy (hoặc một chất lỏng đang sôi ở áp suất không đổi), nhiệt độ của chất đó thay đổi như thế nào?", ["Nhiệt độ giữ nguyên không đổi", "Nhiệt độ tăng vọt lên gấp đôi", "Nhiệt độ giảm liên tục", "Nhiệt độ lúc tăng lúc giảm ngẫu nhiên"], 0, "Chất rắn kết tinh có nhiệt độ nóng chảy xác định và chất lỏng có nhiệt độ sôi xác định; trong suốt quá trình chuyển thể đó nhiệt độ không đổi."),
+            mcq("hieu", "Điểm khác biệt cơ bản giữa **sự sôi** và **sự bay hơi** của chất lỏng là gì?", ["Sự bay hơi chỉ xảy ra trên mặt thoáng ở mọi nhiệt độ, còn sự sôi xảy ra cả trên mặt thoáng và trong lòng chất lỏng ở nhiệt độ sôi xác định", "Sự bay hơi chỉ xảy ra ở $100^\\circ\\text{C}$, còn sự sôi xảy ra ở mọi nhiệt độ", "Sự sôi làm giảm nhiệt độ chất lỏng xuống dưới $0^\\circ\\text{C}$", "Sự bay hơi là sự chuyển từ thể khí sang thể rắn"], 0, "Bay hơi xảy ra ở mặt thoáng tại bất kì nhiệt độ nào, còn sôi xảy ra cả trong lòng chất lỏng (tạo các bọt khí nổi lên vỡ ở mặt thoáng) tại nhiệt độ sôi xác định."),
+            tf4("hieu", "Xét tính đúng/sai của các phát biểu sau về cấu trúc chất và sự chuyển thể:", [
+                "Chất rắn vô định hình (như thủy tinh, nhựa đường, sáp nến) không có cấu trúc tinh thể và không có nhiệt độ nóng chảy xác định.",
+                "Tốc độ bay hơi của nước tăng lên khi nhiệt độ tăng, diện tích mặt thoáng lớn và có gió thổi.",
+                "Khoảng cách giữa các phân tử ở thể khí rất nhỏ so với kích thước mỗi phân tử nên chất khí không thể nén được.",
+                "Ở áp suất tiêu chuẩn $1\\text{ atm}$, nước tinh khiết nóng chảy ở $0^\\circ\\text{C}$ và sôi ở $100^\\circ\\text{C}$.",
+            ], [True, True, False, True], "Ý c) sai vì ở thể khí khoảng cách giữa các phân tử rất lớn so với kích thước phân tử nên chất khí rất dễ bị nén."),
+            short("vandung", "Ở áp suất tiêu chuẩn $1\\text{ atm}$, trong suốt quá trình nước tinh khiết đang sôi thì nhiệt độ của nước giữ không đổi ở bao nhiêu độ Celsius ($^\\circ\\text{C}$)?", ["100"], "Ở áp suất chuẩn $1\\text{ atm}$, nước tinh khiết sôi ở nhiệt độ không đổi là $100^\\circ\\text{C}$.", unit="°C"),
+        ],
+    ),
+    bai(
+        topic=CH1[0], chapter_title=CH1[1], chapter_desc=CH1[2],
+        title="Bài 2: Nội năng. Định luật 1 của nhiệt động lực học",
+        icon="🔥",
+        description="Nội năng U phụ thuộc nhiệt độ và thể tích, hai cách làm biến đổi nội năng (thực hiện công và truyền nhiệt), công thức ΔU = A + Q và quy ước dấu.",
+        requirements=[
+            "Nêu được nội năng $U$ của một vật là tổng động năng và thế năng tương tác của các phân tử cấu tạo nên vật; nội năng phụ thuộc vào nhiệt độ $T$ và thể tích $V$ của vật.",
+            "Phân biệt được hai cách làm biến đổi nội năng: thực hiện công ($A$) và truyền nhiệt ($Q$).",
+            "Viết và vận dụng được biểu thức Định luật 1 của nhiệt động lực học $\\Delta U = A + Q$ kèm quy ước dấu của $A, Q, \\Delta U$.",
+        ],
+        definition="Định luật 1 của nhiệt động lực học: Độ biến thiên nội năng $\\Delta U$ của một hệ bằng tổng công $A$ và nhiệt lượng $Q$ mà hệ nhận được trong quá trình đó: $\\Delta U = A + Q$.",
+        theory=(
+            "### 1. Nội năng và hai cách làm biến đổi nội năng\n"
+            "- **Nội năng ($U$)**: tổng động năng (do chuyển động nhiệt) và thế năng (do tương tác phân tử) của các phân tử cấu tạo nên vật, đơn vị là Joule ($\\text{J}$). Nội năng của vật phụ thuộc vào **nhiệt độ $T$** và **thể tích $V$**.\n"
+            "- **Hai cách làm biến đổi nội năng**:\n"
+            "  1. **Thực hiện công ($A$)**: có sự chuyển hóa từ dạng năng lượng khác (như cơ năng) sang nội năng (ví dụ: cọ xát hai bàn tay, nén khí trong xi-lanh).\n"
+            "  2. **Truyền nhiệt ($Q$)**: không có sự thực hiện công mà chỉ có sự truyền nội năng từ vật nóng hơn sang vật lạnh hơn.\n\n"
+            "### 2. Định luật 1 của nhiệt động lực học và Quy ước dấu\n"
+            "- Công thức:\n"
+            "  $$\\Delta U = A + Q$$\n"
+            "- **Quy ước dấu chuẩn SGK**:\n"
+            "  - $Q > 0$: Hệ **nhận nhiệt lượng** từ bên ngoài; $Q < 0$: Hệ **truyền (tỏa) nhiệt lượng** ra bên ngoài.\n"
+            "  - $A > 0$: Hệ **nhận công** từ bên ngoài (ví dụ khối khí bị nén); $A < 0$: Hệ **thực hiện công** lên bên ngoài (ví dụ khối khí dãn nở đẩy pít-tông).\n"
+            "  - $\\Delta U > 0$: Nội năng của hệ tăng; $\\Delta U < 0$: Nội năng của hệ giảm."
+        ),
+        formulas=[
             G(
-                "II. Nhiệt dung riêng, Nhiệt nóng chảy riêng và Nhiệt hoá hơi riêng",
-                F("Nhiệt lượng thay đổi nhiệt độ", r"$Q = mc\Delta T = mc(t_2 - t_1)$", r"$c$ đo bằng $\text{J/(kg}\cdot\text{K)}$; $m$ đo bằng $\text{kg}$."),
-                F("Nhiệt lượng nóng chảy (đông đặc)", r"$Q = m\lambda$", r"$\lambda$ đo bằng $\text{J/kg}$; xảy ra tại nhiệt độ nóng chảy $t_{\text{nc}}$."),
-                F("Nhiệt lượng hoá hơi (ngưng tụ)", r"$Q = mL$", r"$L$ đo bằng $\text{J/kg}$; tính cho phần khối lượng $m$ đã hoá hơi."),
-                F("Đo thực nghiệm bằng dòng điện", r"$Q = \mathcal{P}\tau = UI\tau \Rightarrow c = \dfrac{\mathcal{P}\tau}{m\Delta T}$", r"Áp dụng khi bỏ qua hao phí nhiệt; nếu hiệu suất là $H$ thì $Q_{\text{ích}} = H\mathcal{P}\tau$."),
-            ),
+                "Định luật 1 Nhiệt động lực học và Quy ước dấu",
+                F("Biểu thức Định luật 1 của nhiệt động lực học", "$\\Delta U = A + Q$", "Trong đó $\\Delta U = U_2 - U_1$ là độ biến thiên nội năng ($\\text{J}$), $A$ là công ($\\text{J}$), $Q$ là nhiệt lượng ($\\text{J}$)."),
+                F("Quy ước dấu của Q và A", "$\\text{Hệ nhận: } Q > 0,\\ A > 0; \\qquad \\text{Hệ truyền/thực hiện ra ngoài: } Q < 0,\\ A < 0$", "Mẹo nhớ nhanh: Cái gì đi VÀO hệ thì mang dấu DƯƠNG ($+$), cái gì đi RA khỏi hệ thì mang dấu ÂM ($-$)."),
+            )
+        ],
+        example="Người ta truyền cho một khối khí trong xi-lanh một nhiệt lượng $150\\text{ J}$. Khối khí nở ra và thực hiện một công $90\\text{ J}$ đẩy pít-tông dịch chuyển. Hãy xác định dấu của $Q, A$ và tính độ biến thiên nội năng $\\Delta U$ của khối khí.",
+        example_answer="Vì khối khí nhận nhiệt lượng nên $Q = +150\\text{ J}$; khối khí nở ra thực hiện công lên pít-tông nên $A = -90\\text{ J}$. Theo định luật 1 của nhiệt động lực học, độ biến thiên nội năng của khối khí là $\\Delta U = A + Q = -90 + 150 = +60\\text{ J}$ (nội năng của khối khí tăng thêm $60\\text{ J}$).",
+        real_life="Động cơ đốt trong của ô tô, xe máy và động cơ nhiệt trong nhà máy nhiệt điện hoạt động dựa trên nguyên lí cung cấp nhiệt lượng $Q$ cho khí nóng dãn nở sinh công cơ học $A$ làm quay trục máy.",
+        quiz=[
+            mcq("biet", "Biểu thức của Định luật 1 nhiệt động lực học liên hệ giữa độ biến thiên nội năng $\\Delta U$, công $A$ và nhiệt lượng $Q$ mà hệ nhận được là gì?", ["$\\Delta U = A + Q$", "$\\Delta U = A \\cdot Q$", "$\\Delta U = \\dfrac{Q}{A}$", "$A + Q + \\Delta U = 0$"], 0, "Theo định luật 1 của nhiệt động lực học: $\\Delta U = A + Q$."),
+            mcq("biet", "Trong biểu thức $\\Delta U = A + Q$, quy ước dấu nào sau đây tương ứng với quá trình hệ **nhận nhiệt lượng** nhưng **thực hiện công** ra bên ngoài?", ["$Q > 0$ và $A < 0$", "$Q > 0$ và $A > 0$", "$Q < 0$ và $A > 0$", "$Q < 0$ và $A < 0$"], 0, "Theo quy ước dấu: hệ nhận nhiệt thì $Q > 0$, hệ thực hiện công ra ngoài thì $A < 0$."),
+            mcq("hieu", "Khi dùng tay nén nhanh pít-tông để ép khối khí trong một xi-lanh cách nhiệt hoàn toàn ($Q = 0$) thì nội năng của khối khí thay đổi như thế nào?", ["Nội năng tăng lên ($\\Delta U = A > 0$) vì khối khí nhận công", "Nội năng giảm đi ($\\Delta U < 0$)", "Nội năng không thay đổi ($\\Delta U = 0$)", "Nội năng giảm về bằng $0$"], 0, "Xi-lanh cách nhiệt nên $Q = 0$; nén khí nghĩa là khí nhận công ($A > 0$), do đó $\\Delta U = A + 0 > 0$ (nội năng và nhiệt độ khí tăng lên)."),
+            tf4("hieu", "Xét tính đúng/sai của các phát biểu sau về nội năng và định luật 1 nhiệt động lực học:", [
+                "Nội năng của một vật phụ thuộc vào nhiệt độ và thể tích của vật đó.",
+                "Có thể làm thay đổi nội năng của vật bằng hai cách: thực hiện công và truyền nhiệt.",
+                "Nếu hệ truyền nhiệt lượng $50\\text{ J}$ ra môi trường thì trong công thức $\\Delta U = A + Q$ ta thay $Q = +50\\text{ J}$.",
+                "Nếu thực hiện công $100\\text{ J}$ để nén khí mà khí tỏa ra ngoài nhiệt lượng $30\\text{ J}$ thì nội năng của khí tăng thêm $70\\text{ J}$.",
+            ], [True, True, False, True], "Ý c) sai vì khi hệ tỏa (truyền) nhiệt lượng ra môi trường ngoài thì $Q$ mang dấu âm ($Q = -50\\text{ J}$)."),
+            short("vandung", "Một lượng khí trong xi-lanh nhận được nhiệt lượng $200\\text{ J}$ và dãn nở thực hiện một công $80\\text{ J}$ đẩy pít-tông đi lên. Độ biến thiên nội năng $\\Delta U$ của lượng khí bằng bao nhiêu Joule ($\\text{J}$)?", ["120"], "Khí nhận nhiệt ($Q = +200\\text{ J}$) và thực hiện công ($A = -80\\text{ J}$), nên $\\Delta U = A + Q = -80 + 200 = 120\\text{ J}$.", unit="J"),
+        ],
+    ),
+    bai(
+        topic=CH1[0], chapter_title=CH1[1], chapter_desc=CH1[2],
+        title="Bài 3: Nhiệt độ. Thang nhiệt độ – nhiệt kế",
+        icon="🌡️",
+        description="Sự cân bằng nhiệt, độ không tuyệt đối (0 K = -273,15 °C), điểm ba của nước và công thức chuyển đổi thang Kelvin T(K) = t(°C) + 273.",
+        requirements=[
+            "Nêu được chiều truyền nhiệt tự nhiên từ vật có nhiệt độ cao hơn sang vật có nhiệt độ thấp hơn và điều kiện dừng truyền nhiệt khi đạt trạng thái cân bằng nhiệt (hai vật có cùng nhiệt độ).",
+            "Nêu được ý nghĩa của độ không tuyệt đối ($0\\text{ K} = -273{,}15^\\circ\\text{C}$) và điểm ba của nước ($273{,}16\\text{ K} = 0{,}01^\\circ\\text{C}$) trong thang nhiệt độ tuyệt đối Kelvin.",
+            "Vận dụng được hệ thức $T(\\text{K}) = t(^\\circ\\text{C}) + 273$ (hoặc $273{,}15$) và nhận xét $\\Delta T(\\text{K}) = \\Delta t(^\\circ\\text{C})$.",
+        ],
+        definition="Khi hai vật có nhiệt độ chênh lệch tiếp xúc nhau thì năng lượng nhiệt tự truyền từ vật có nhiệt độ cao hơn sang vật có nhiệt độ thấp hơn cho đến khi nhiệt độ hai vật bằng nhau (trạng thái cân bằng nhiệt). Trong hệ SI, đơn vị nhiệt độ là Kelvin ($\\text{K}$), liên hệ với độ Celsius bởi: $T(\\text{K}) = t(^\\circ\\text{C}) + 273$ (chính xác là $273{,}15$).",
+        theory=(
+            "### 1. Sự truyền nhiệt và Cân bằng nhiệt (Định luật 0 Nhiệt động lực học)\n"
+            "- Nhiệt năng luôn tự truyền từ vật có **nhiệt độ cao hơn** sang vật có **nhiệt độ thấp hơn**.\n"
+            "- Khi hai vật đạt **trạng thái cân bằng nhiệt**, nhiệt độ của hai vật bằng nhau ($t_1 = t_2 = t_{\\text{cb}}$) và quá trình truyền nhiệt dừng lại.\n\n"
+            "### 2. Thang nhiệt độ Kelvin (Thang nhiệt độ tuyệt đối) và Thang Celsius\n"
+            "- **Độ không tuyệt đối ($0\\text{ K} = -273{,}15^\\circ\\text{C}$)**: nhiệt độ thấp nhất mà tại đó động năng chuyển động nhiệt của các phân tử tiến tới bằng không và thế năng của chúng đạt tối thiểu (không có vật nào có nhiệt độ thấp hơn $0\\text{ K}$).\n"
+            "- **Điểm ba của nước ($273{,}16\\text{ K} = 0{,}01^\\circ\\text{C}$ ở $611{,}7\\text{ Pa}$)**: trạng thái mà nước tinh khiết tồn tại đồng thời ở cả 3 thể rắn (nước đá), lỏng (nước) và khí (hơi nước) ở cân bằng nhiệt.\n"
+            "- **Công thức chuyển đổi**:\n"
+            "  $$T(\\text{K}) = t(^\\circ\\text{C}) + 273{,}15 \\approx t(^\\circ\\text{C}) + 273$$\n"
+            "- **Độ biến thiên nhiệt độ**: Mỗi độ chia $1\\text{ K}$ bằng đúng $1^\\circ\\text{C}$ nên độ chênh lệch (độ tăng/giảm) nhiệt độ trên hai thang luôn bằng nhau:\n"
+            "  $$\\Delta T(\\text{K}) = T_2 - T_1 = t_2 - t_1 = \\Delta t(^\\circ\\text{C})$$"
+        ),
+        formulas=[
             G(
-                "III. Phương trình cân bằng nhiệt",
-                F("Hệ cô lập về nhiệt", r"$Q_{\text{toả}} = Q_{\text{thu}}$", r"$Q_{\text{toả}} = m_1 c_1 (t_1 - t_{\text{cb}})$; $Q_{\text{thu}} = m_2 c_2 (t_{\text{cb}} - t_2)$."),
-                F("Nhiệt độ cân bằng (hai vật không chuyển thể)", r"$t_{\text{cb}} = \dfrac{m_1 c_1 t_1 + m_2 c_2 t_2}{m_1 c_1 + m_2 c_2}$", r"Với $t_1 > t_{\text{cb}} > t_2$."),
-            ),
+                "Chuyển đổi giữa thang Kelvin (K), Celsius (°C) và Fahrenheit (°F)",
+                F("Liên hệ giữa nhiệt độ Kelvin và nhiệt độ Celsius", "$T(\\text{K}) = t(^\\circ\\text{C}) + 273; \\qquad \\Delta T(\\text{K}) = \\Delta t(^\\circ\\text{C})$", "Chú ý: Nhiệt độ tuyệt đối $T = t + 273$, nhưng **độ tăng nhiệt độ** $\\Delta T = \\Delta t$ (không cộng $273$ vào $\\Delta t$!)."),
+                F("Liên hệ giữa thang Fahrenheit và Celsius", "$t(^\\circ\\text{F}) = 1{,}8 \\cdot t(^\\circ\\text{C}) + 32; \\qquad \\Delta t(^\\circ\\text{F}) = 1{,}8 \\cdot \\Delta t(^\\circ\\text{C})$", "Độ không tuyệt đối: $0\\text{ K} = -273{,}15^\\circ\\text{C}$."),
+            )
         ],
-        "example": (
-            r"Một ấm điện có công suất $\mathcal{P} = 1500\text{ W}$ và hiệu suất đun là $H = 84\%$ dùng để đun một khối nước đá "
-            r"có khối lượng $m = 0{,}5\text{ kg}$ ở nhiệt độ ban đầu $t_0 = -10^\circ\text{C}$ cho đến khi nước sôi và có $20\%$ khối lượng nước đã hoá hơi ở $100^\circ\text{C}$. "
-            r"Biết nhiệt dung riêng của nước đá là $c_1 = 2100\text{ J/(kg}\cdot\text{K)}$, của nước là $c_2 = 4200\text{ J/(kg}\cdot\text{K)}$, "
-            r"nhiệt nóng chảy riêng của nước đá là $\lambda = 3{,}34 \times 10^5\text{ J/kg}$ và nhiệt hoá hơi riêng của nước ở $100^\circ\text{C}$ là $L = 2{,}26 \times 10^6\text{ J/kg}$. "
-            r"Tính tổng nhiệt lượng có ích cần cung cấp và thời gian đun $\tau$."
-        ),
-        "example_answer": (
-            r"- **Giai đoạn 1** (tăng nhiệt độ nước đá từ $-10^\circ\text{C}$ đến $0^\circ\text{C}$): $Q_1 = m c_1 \Delta t_1 = 0{,}5 \cdot 2100 \cdot 10 = 10\,500\text{ J}$." "\n"
-            r"- **Giai đoạn 2** (nóng chảy hoàn toàn ở $0^\circ\text{C}$): $Q_2 = m\lambda = 0{,}5 \cdot 3{,}34 \times 10^5 = 167\,000\text{ J}$." "\n"
-            r"- **Giai đoạn 3** (đun nước từ $0^\circ\text{C}$ đến $100^\circ\text{C}$): $Q_3 = m c_2 \Delta t_2 = 0{,}5 \cdot 4200 \cdot 100 = 210\,000\text{ J}$." "\n"
-            r"- **Giai đoạn 4** (hoá hơi $20\%$ khối lượng nước, tức $\Delta m = 0{,}2 \cdot 0{,}5 = 0{,}1\text{ kg}$ ở $100^\circ\text{C}$): $Q_4 = \Delta m \cdot L = 0{,}1 \cdot 2{,}26 \times 10^6 = 226\,000\text{ J}$." "\n"
-            r"- **Tổng nhiệt lượng có ích**: $Q_{\text{ích}} = Q_1 + Q_2 + Q_3 + Q_4 = 10\,500 + 167\,000 + 210\,000 + 226\,000 = \mathbf{613\,500\text{ J}} = \mathbf{613{,}5\text{ kJ}}$." "\n"
-            r"- **Thời gian đun**: Từ $Q_{\text{ích}} = H\mathcal{P}\tau \Rightarrow \tau = \dfrac{Q_{\text{ích}}}{H\mathcal{P}} = \dfrac{613\,500}{0{,}84 \cdot 1500} = \dfrac{613\,500}{1260} \approx \mathbf{486{,}9\text{ s}}$ (khoảng $8\text{ phút } 7\text{ giây}$)."
-        ),
-        "real_life": (
-            r"- **Hệ thống làm mát động cơ và điều hoà nhiệt độ**: Nước có nhiệt dung riêng lớn ($c \approx 4200\text{ J/(kg}\cdot\text{K)}$) nên được dùng làm chất tải nhiệt trong két làm mát ô tô và hệ thống sưởi ấm; máy điều hoà và tủ lạnh hoạt động dựa trên quá trình bay hơi thu nhiệt và ngưng tụ toả nhiệt của môi chất lạnh." "\n"
-            r"- **Công nghệ luyện kim và đúc đồng, gang, thép**: Tính toán chính xác nhiệt lượng cần cung cấp theo nhiệt dung riêng $c$ và nhiệt nóng chảy riêng $\lambda$ của kim loại để vận hành lò nung cảm ứng tiết kiệm năng lượng." "\n"
-            r"- **Sản xuất muối và chưng cất nước tinh khiết**: Ứng dụng sự bay hơi tự nhiên trên ruộng muối và quá trình sôi – ngưng tụ để chưng cất nước cất y tế, tinh dầu thực vật."
-        ),
-        "game_title": "Phòng thí nghiệm Vật lí Nhiệt và Chuyển thể",
-        "game_description": "Thực hành đo nhiệt dung riêng, khảo sát đồ thị nhiệt độ theo thời gian khi đun nóng chảy nước đá tới khi nước sôi và kiểm chứng Định luật 1 nhiệt động lực học.",
-        "game_type": "game_vat_ly_nhiet_khi_ly_tuong",
-        "quiz": [
-            mcq(
-                "biet",
-                r"Theo mô hình động học phân tử, ở thể nào các phân tử dao động xung quanh các vị trí cân bằng cố định và có trật tự xác định?",
-                [
-                    r"Thể rắn kết tinh",
-                    r"Thể lỏng",
-                    r"Thể khí",
-                    r"Thể plasma",
-                ],
-                0,
-                r"Ở **thể rắn kết tinh**, lực tương tác phân tử rất mạnh giữ các hạt dao động quanh các vị trí cân bằng cố định tạo thành mạng tinh thể.",
-            ),
-            mcq(
-                "biet",
-                r"Hệ thức của Định luật $1$ của nhiệt động lực học là $\Delta U = Q + A$. Trong quá trình chất khí nhận nhiệt lượng và thực hiện công thì dấu của $Q$ và $A$ là:",
-                [
-                    r"$Q > 0$ và $A < 0$",
-                    r"$Q > 0$ và $A > 0$",
-                    r"$Q < 0$ và $A > 0$",
-                    r"$Q < 0$ và $A < 0$",
-                ],
-                0,
-                r"Theo quy ước dấu của Định luật $1$ nhiệt động lực học: hệ nhận nhiệt lượng nên $Q > 0$; hệ thực hiện công (sinh công) nên $A < 0$.",
-            ),
-            mcq(
-                "biet",
-                r"Đơn vị đo của nhiệt dung riêng $c$, nhiệt nóng chảy riêng $\lambda$ và nhiệt hoá hơi riêng $L$ trong hệ SI lần lượt là:",
-                [
-                    r"$\text{J/(kg}\cdot\text{K)}$, $\text{J/kg}$ và $\text{J/kg}$",
-                    r"$\text{J/kg}$, $\text{J/(kg}\cdot\text{K)}$ và $\text{J/K}$",
-                    r"$\text{J/K}$, $\text{J/kg}$ và $\text{W/kg}$",
-                    r"$\text{cal/g}$, $\text{J/mol}$ và $\text{J/(kg}\cdot\text{K)}$",
-                ],
-                0,
-                r"Từ $c = \dfrac{Q}{m\Delta T}$ suy ra đơn vị của $c$ là $\text{J/(kg}\cdot\text{K)}$; từ $\lambda = \dfrac{Q}{m}$ và $L = \dfrac{Q}{m}$ suy ra đơn vị của $\lambda$ và $L$ đều là $\text{J/kg}$.",
-            ),
-            mcq(
-                "biet",
-                r"Nhiệt độ của một vật trên thang Celsius là $t = 37^\circ\text{C}$. Nhiệt độ tương ứng trên thang Kelvin (lấy $T\text{ (K)} = t\text{ (}^\circ\text{C)} + 273{,}15$) là:",
-                [
-                    r"$310{,}15\text{ K}$",
-                    r"$236{,}15\text{ K}$",
-                    r"$300{,}15\text{ K}$",
-                    r"$337{,}15\text{ K}$",
-                ],
-                0,
-                r"Áp dụng công thức $T = t + 273{,}15 = 37 + 273{,}15 = \mathbf{310{,}15\text{ K}}$.",
-            ),
-            mcq(
-                "hieu",
-                r"Trong một quá trình nén khí, người ta thực hiện công $A = 450\text{ J}$ lên khối khí, đồng thời khối khí truyền ra môi trường xung quanh nhiệt lượng $150\text{ J}$. Độ biến thiên nội năng $\Delta U$ của khối khí là:",
-                [
-                    r"$\Delta U = 300\text{ J}$",
-                    r"$\Delta U = 600\text{ J}$",
-                    r"$\Delta U = -300\text{ J}$",
-                    r"$\Delta U = -600\text{ J}$",
-                ],
-                0,
-                r"Khí nhận công nên $A = +450\text{ J}$; khí truyền nhiệt ra ngoài nên $Q = -150\text{ J}$. Theo Định luật $1$ NĐLH: $\Delta U = Q + A = -150 + 450 = \mathbf{300\text{ J}}$ (nội năng tăng $300\text{ J}$).",
-            ),
-            mcq(
-                "hieu",
-                r"Cần cung cấp nhiệt lượng bằng bao nhiêu để làm nóng chảy hoàn toàn một cục nước đá khối lượng $m = 200\text{ g}$ đang ở nhiệt độ $0^\circ\text{C}$? Biết nhiệt nóng chảy riêng của nước đá là $\lambda = 3{,}34 \times 10^5\text{ J/kg}$.",
-                [
-                    r"$66{,}8\text{ kJ}$",
-                    r"$668\text{ kJ}$",
-                    r"$33{,}4\text{ kJ}$",
-                    r"$16{,}7\text{ kJ}$",
-                ],
-                0,
-                r"Đổi $m = 200\text{ g} = 0{,}2\text{ kg}$. Nhiệt lượng cần cung cấp: $Q = m\lambda = 0{,}2 \cdot 3{,}34 \times 10^5 = 66\,800\text{ J} = \mathbf{66{,}8\text{ kJ}}$.",
-            ),
-            tf4(
-                "hieu",
-                r"Xét tính đúng hay sai của các phát biểu sau về sự chuyển thể, nội năng và các thang nhiệt độ:",
-                [
-                    r"a) Trong suốt quá trình nóng chảy của chất rắn kết tinh ở áp suất tiêu chuẩn, vật tiếp tục thu nhiệt nhưng nhiệt độ của vật không thay đổi.",
-                    r"b) Khi nhiệt độ của một vật tăng thêm $25^\circ\text{C}$ thì trên thang Kelvin nhiệt độ của vật đó tăng thêm $298{,}15\text{ K}$.",
-                    r"c) Nội năng của một vật phụ thuộc vào nhiệt độ và thể tích của vật, không phải là nhiệt lượng mà vật có được.",
-                    r"d) Sự sôi là sự hoá hơi chỉ xảy ra trên bề mặt thoáng của chất lỏng ở một nhiệt độ bất kì.",
-                ],
-                [True, False, True, False],
-                r"- **a) Đúng**: Nhiệt lượng cung cấp trong suốt quá trình nóng chảy dùng để phá vỡ mạng tinh thể nên nhiệt độ không đổi." "\n"
-                r"- **b) Sai**: Độ biến thiên nhiệt độ trên hai thang bằng nhau: $\Delta T\text{ (K)} = \Delta t\text{ (}^\circ\text{C)} = 25\text{ K}$." "\n"
-                r"- **c) Đúng**: Nội năng $U$ là hàm trạng thái phụ thuộc vào $T$ và $V$; còn nhiệt lượng $Q$ chỉ là số đo độ biến thiên nội năng trong quá trình truyền nhiệt." "\n"
-                r"- **d) Sai**: Sự sôi xảy ra đồng thời cả trong lòng và trên mặt thoáng của chất lỏng ở nhiệt độ sôi xác định (còn bay hơi mới xảy ra ở mặt thoáng tại mọi nhiệt độ).",
-            ),
-            tf4(
-                "hieu",
-                r"Một học sinh dùng ấm đun siêu tốc công suất $\mathcal{P} = 1800\text{ W}$ để đun $m = 1{,}5\text{ kg}$ nước từ $t_1 = 20^\circ\text{C}$ đến khi sôi ở $t_2 = 100^\circ\text{C}$. Cho nhiệt dung riêng của nước $c = 4200\text{ J/(kg}\cdot\text{K)}$ và nhiệt hoá hơi riêng của nước ở $100^\circ\text{C}$ là $L = 2{,}26 \times 10^6\text{ J/kg}$. Xét các nhận định sau:",
-                [
-                    r"a) Nhiệt lượng có ích mà nước thu vào để tăng nhiệt độ từ $20^\circ\text{C}$ đến $100^\circ\text{C}$ là $Q_1 = 504\text{ kJ}$.",
-                    r"b) Nếu bỏ qua mọi hao phí nhiệt thì thời gian đun nước từ $20^\circ\text{C}$ tới khi bắt đầu sôi ở $100^\circ\text{C}$ là $280\text{ s}$.",
-                    r"c) Nếu hiệu suất của ấm đun là $H = 80\%$ thì thời gian thực tế để đun sôi lượng nước trên là $224\text{ s}$.",
-                    r"d) Sau khi nước đã đạt $100^\circ\text{C}$, để làm hoá hơi thêm $100\text{ g}$ nước thì nước cần thu thêm nhiệt lượng $Q_2 = 226\text{ kJ}$.",
-                ],
-                [True, True, False, True],
-                r"- **a) Đúng**: $Q_1 = mc(t_2 - t_1) = 1{,}5 \cdot 4200 \cdot (100 - 20) = 504\,000\text{ J} = 504\text{ kJ}$." "\n"
-                r"- **b) Đúng**: Khi hiệu suất $100\%$, thời gian đun là $\tau_0 = \dfrac{Q_1}{\mathcal{P}} = \dfrac{504\,000}{1800} = 280\text{ s}$." "\n"
-                r"- **c) Sai**: Khi hiệu suất $H = 80\%$, thời gian thực tế phải dài hơn: $\tau = \dfrac{Q_1}{H\mathcal{P}} = \dfrac{504\,000}{0{,}8 \cdot 1800} = 350\text{ s}$ (không phải $224\text{ s}$)." "\n"
-                r"- **d) Đúng**: Với $\Delta m = 100\text{ g} = 0{,}1\text{ kg}$, nhiệt lượng hoá hơi là $Q_2 = \Delta m \cdot L = 0{,}1 \cdot 2{,}26 \times 10^6 = 226\,000\text{ J} = 226\text{ kJ}$.",
-            ),
-            mcq(
-                "vandung",
-                r"Thả một quả cầu bằng đồng có khối lượng $m_1 = 0{,}6\text{ kg}$ được nung nóng tới $t_1 = 120^\circ\text{C}$ vào một bình cách nhiệt chứa $m_2 = 0{,}5\text{ kg}$ nước ở nhiệt độ $t_2 = 20^\circ\text{C}$. Bỏ qua sự trao đổi nhiệt với bình và môi trường. Biết nhiệt dung riêng của đồng là $c_1 = 380\text{ J/(kg}\cdot\text{K)}$ và của nước là $c_2 = 4200\text{ J/(kg}\cdot\text{K)}$. Nhiệt độ khi có sự cân bằng nhiệt gần nhất với giá trị nào sau đây?",
-                [
-                    r"$29{,}8^\circ\text{C}$",
-                    r"$35{,}4^\circ\text{C}$",
-                    r"$24{,}6^\circ\text{C}$",
-                    r"$70{,}0^\circ\text{C}$",
-                ],
-                0,
-                r"Phương trình cân bằng nhiệt: $m_1 c_1 (t_1 - t) = m_2 c_2 (t - t_2) \Rightarrow t = \dfrac{m_1 c_1 t_1 + m_2 c_2 t_2}{m_1 c_1 + m_2 c_2} = \dfrac{0{,}6 \cdot 380 \cdot 120 + 0{,}5 \cdot 4200 \cdot 20}{0{,}6 \cdot 380 + 0{,}5 \cdot 4200} = \dfrac{27\,360 + 42\,000}{228 + 2100} = \dfrac{69\,360}{2328} \approx \mathbf{29{,}8^\circ\text{C}}$.",
-            ),
-            short(
-                "vandung",
-                r"Người ta bỏ một cục nước đá khối lượng $m_1 = 100\text{ g}$ ở $t_1 = 0^\circ\text{C}$ vào một bình cách nhiệt chứa $m_2 = 400\text{ g}$ nước ở $t_2 = 35^\circ\text{C}$. Cho nhiệt nóng chảy riêng của nước đá $\lambda = 3{,}36 \times 10^5\text{ J/kg}$ và nhiệt dung riêng của nước $c = 4200\text{ J/(kg}\cdot\text{K)}$. Bỏ qua nhiệt dung của bình. Tính nhiệt độ cân bằng cuối cùng của hỗn hợp theo đơn vị ${}^\circ\text{C}$.",
-                ["12"],
-                r"Đổi $m_1 = 0{,}1\text{ kg}$, $m_2 = 0{,}4\text{ kg}$. Nhiệt lượng cần để nước đá tan hết ở $0^\circ\text{C}$ là $Q_{\text{nc}} = m_1\lambda = 0{,}1 \cdot 3{,}36 \times 10^5 = 33\,600\text{ J}$. "
-                r"Nhiệt lượng tối đa mà $0{,}4\text{ kg}$ nước ở $35^\circ\text{C}$ toả ra khi hạ về $0^\circ\text{C}$ là $Q_{\max} = m_2 c t_2 = 0{,}4 \cdot 4200 \cdot 35 = 58\,800\text{ J} > Q_{\text{nc}}$, nên nước đá tan hết. "
-                r"Phương trình cân bằng nhiệt: $m_1\lambda + m_1 c(t - 0) = m_2 c(35 - t) \Rightarrow 33\,600 + 0{,}1 \cdot 4200 \cdot t = 58\,800 - 0{,}4 \cdot 4200 \cdot t \Rightarrow 2100t = 25\,200 \Rightarrow t = \mathbf{12}^\circ\text{C}$.",
-                unit=r"${}^\circ\text{C}$",
-            ),
+        example="Đun nóng một lượng nước từ nhiệt độ $t_1 = 27^\\circ\\text{C}$ lên đến nhiệt độ $t_2 = 87^\\circ\\text{C}$. Hãy tính các nhiệt độ $T_1, T_2$ theo thang Kelvin và độ tăng nhiệt độ $\\Delta T$ theo đơn vị Kelvin ($\\text{K}$).",
+        example_answer="Theo thang Kelvin: $T_1 = 27 + 273 = 300\\text{ K}$ và $T_2 = 87 + 273 = 360\\text{ K}$. Độ tăng nhiệt độ theo thang Kelvin bằng đúng độ tăng nhiệt độ theo thang Celsius: $\\Delta T = T_2 - T_1 = 360 - 300 = 60\\text{ K}$ (bằng $\\Delta t = 87 - 27 = 60^\\circ\\text{C}$).",
+        real_life="Trong mọi công thức của định luật chất khí lí tưởng và bức xạ nhiệt trong Vật lí và Hóa học, nhiệt độ bắt buộc phải được tính theo thang nhiệt độ tuyệt đối Kelvin ($\\text{K}$).",
+        quiz=[
+            mcq("biet", "Đơn vị đo nhiệt độ cơ bản trong hệ thống đo lường quốc tế SI là gì?", ["Kelvin ($\\text{K}$)", "Độ Celsius ($^\\circ\\text{C}$)", "Độ Fahrenheit ($^\\circ\\text{F}$)", "Joule ($\\text{J}$)"], 0, "Trong hệ SI, đơn vị cơ bản của nhiệt độ nhiệt động lực học là Kelvin ($\\text{K}$)."),
+            mcq("biet", "Khi cho hai vật có nhiệt độ khác nhau tiếp xúc nhau, quá trình truyền nhiệt giữa chúng sẽ dừng lại khi nào?", ["Khi hai vật có cùng nhiệt độ (đạt trạng thái cân bằng nhiệt)", "Khi hai vật có cùng khối lượng", "Khi hai vật có cùng thể tích", "Khi một trong hai vật có nhiệt độ bằng $0\\text{ K}$"], 0, "Sự truyền nhiệt tự phát chỉ xảy ra khi có sự chênh lệch nhiệt độ và dừng lại khi hai vật đạt cùng một nhiệt độ (cân bằng nhiệt)."),
+            mcq("hieu", "Khi nhiệt độ của một thanh sắt tăng thêm $\\Delta t = 40^\\circ\\text{C}$ thì trong thang nhiệt độ Kelvin, nhiệt độ của thanh sắt đó đã tăng thêm bao nhiêu Kelvin ($\\text{K}$)?", ["$40\\text{ K}$", "$313\\text{ K}$", "$233\\text{ K}$", "$273\\text{ K}$"], 0, "Vì khoảng cách $1\\text{ K}$ bằng đúng khoảng cách $1^\\circ\\text{C}$ nên độ biến thiên nhiệt độ trên hai thang bằng nhau: $\\Delta T(\\text{K}) = \\Delta t(^\\circ\\text{C}) = 40\\text{ K}$."),
+            tf4("hieu", "Xét tính đúng/sai của các phát biểu sau về thang nhiệt độ:", [
+                "Độ không tuyệt đối ($0\\text{ K}$) tương ứng với nhiệt độ $-273{,}15^\\circ\\text{C}$ trong thang Celsius.",
+                "Không thể có bất kì vật chất nào đạt nhiệt độ thấp hơn độ không tuyệt đối $0\\text{ K}$.",
+                "Điểm ba của nước là trạng thái mà nước tinh khiết vừa đóng băng, vừa ở thể lỏng và vừa hóa hơi cân bằng nhau ở $0{,}01^\\circ\\text{C}$ ($273{,}16\\text{ K}$).",
+                "Ở nhiệt độ $100^\\circ\\text{C}$ tương ứng với $173\\text{ K}$ trong thang Kelvin.",
+            ], [True, True, True, False], "Ý d) sai vì $100^\\circ\\text{C}$ tương ứng với $T = 100 + 273 = 373\\text{ K}$."),
+            short("vandung", "Một bình khí ở nhiệt độ $t = 47^\\circ\\text{C}$. Lấy $T(\\text{K}) = t(^\\circ\\text{C}) + 273$, nhiệt độ tuyệt đối $T$ của bình khí này bằng bao nhiêu Kelvin ($\\text{K}$)?", ["320"], "Áp dụng công thức $T = 47 + 273 = 320\\text{ K}$.", unit="K"),
         ],
-    },
-
-    # =========================================================================
-    # CHƯƠNG II. KHÍ LÍ TƯỞNG (Bài 8 – Bài 13 SGK Vật lí 12 KNTT)
-    # =========================================================================
-    {
-        "topic": "vat-ly-nhiet-khi-ly-tuong",
-        "title": "Chương II. Khí lí tưởng",
-        "icon": "🎈",
-        "description": (
-            "Chương II · SGK Vật lí 12 Kết nối tri thức với cuộc sống (Bài 8 – Bài 13): "
-            "Mô hình động học phân tử chất khí; Định luật Boyle (quá trình đẳng nhiệt); "
-            "Định luật Charles (quá trình đẳng áp); Phương trình trạng thái của khí lí tưởng và phương trình Clapeyron; "
-            "Áp suất khí theo mô hình động học phân tử và quan hệ giữa động năng phân tử với nhiệt độ; Bài tập về khí lí tưởng."
-        ),
-        "requirements": [
-            r"Phân tích kết quả thí nghiệm chuyển động Brown để rút ra được các phân tử chất khí chuyển động hỗn loạn, không ngừng và nhiệt độ càng cao thì tốc độ chuyển động của các phân tử khí càng lớn.",
-            r"Nêu được các giả thuyết của thuyết động học phân tử chất khí và định nghĩa mô hình khí lí tưởng.",
-            r"Thực hiện thí nghiệm khảo sát định luật Boyle: nêu được mối hệ tỉ lệ nghịch giữa áp suất $p$ và thể tích $V$ của một khối lượng khí xác định khi giữ nhiệt độ không đổi ($pV = \text{hằng số}$, hay $p_1 V_1 = p_2 V_2$).",
-            r"Thực hiện thí nghiệm minh hoạ định luật Charles: khi giữ áp suất của một khối lượng khí xác định không đổi thì thể tích $V$ của khí tỉ lệ thuận với nhiệt độ tuyệt đối $T$ của nó ($\dfrac{V}{T} = \text{hằng số}$, hay $\dfrac{V_1}{T_1} = \dfrac{V_2}{T_2}$).",
-            r"Sử dụng định luật Boyle và định luật Charles rút ra được phương trình trạng thái của một lượng khí lí tưởng xác định $\dfrac{pV}{T} = \text{hằng số}$ và phương trình Clapeyron $pV = nRT$.",
-            r"Vận dụng được phương trình trạng thái của khí lí tưởng $\dfrac{p_1 V_1}{T_1} = \dfrac{p_2 V_2}{T_2}$ và phương trình Clapeyron $pV = nRT$ để giải quyết các bài toán thực tế.",
-            r"Giải thích được chuyển động của các phân tử khí ảnh hưởng như thế nào đến áp suất tác dụng lên thành bình và từ đó rút ra được hệ thức $p = \dfrac{1}{3}\mu m\overline{v^2} = \dfrac{2}{3}\mu \overline{W_{\text{đ}}}$ với $\mu = \dfrac{N}{V}$ là mật độ phân tử.",
-            r"Nêu được biểu thức hằng số Boltzmann $k = \dfrac{R}{N_{\text{A}}}$, rút ra được động năng tịnh tiến trung bình của phân tử khí tỉ lệ thuận với nhiệt độ tuyệt đối $T$ theo hệ thức $\overline{W_{\text{đ}}} = \dfrac{3}{2}kT$ và vận dụng được hệ thức này.",
+    ),
+    bai(
+        topic=CH1[0], chapter_title=CH1[1], chapter_desc=CH1[2],
+        title="Bài 4: Nhiệt dung riêng",
+        icon="🫖",
+        description="Định nghĩa và đơn vị nhiệt dung riêng c [J/(kg.K)], công thức nhiệt lượng Q = m.c.Δt và phương trình cân bằng nhiệt Q_tỏa = Q_thu.",
+        requirements=[
+            "Định nghĩa được nhiệt dung riêng $c$ của một chất là nhiệt lượng cần truyền cho $1\\text{ kg}$ chất đó để làm cho nhiệt độ của nó tăng thêm $1\\text{ K}$ (hoặc $1^\\circ\\text{C}$), có đơn vị $\\text{J/(kg}\\cdot\\text{K)}$.",
+            "Viết và vận dụng được công thức tính nhiệt lượng vật thu vào hay tỏa ra khi thay đổi nhiệt độ (không chuyển thể): $Q = m \\cdot c \\cdot \\Delta t = m \\cdot c \\cdot |t_2 - t_1|$.",
+            "Vận dụng được phương trình cân bằng nhiệt $Q_{\\text{tỏa}} = Q_{\\text{thu}}$ và giải thích bố trí thí nghiệm đo nhiệt dung riêng của nước ($c = \\dfrac{\\mathcal{P} \\cdot \\tau}{m \\cdot \\Delta T}$).",
         ],
-        "definition": (
-            r"- **Mô hình khí lí tưởng**: Là chất khí tuân theo đúng các giả thuyết: các phân tử khí được coi là các chất điểm (bỏ qua thể tích riêng so với thể tích bình chứa), chỉ tương tác với nhau và với thành bình khi va chạm hoàn toàn đàn hồi. Ba thông số trạng thái của một lượng khí xác định là **áp suất** $p$ ($\text{Pa}$, $\text{atm}$, $\text{mmHg}$), **thể tích** $V$ ($\text{m}^3$, $\text{L}$) và **nhiệt độ tuyệt đối** $T$ ($\text{K}$)." "\n"
-            r"- **Định luật Boyle (quá trình đẳng nhiệt, $T = \text{hằng số}$)**: Với một khối lượng khí xác định ở nhiệt độ không đổi, áp suất $p$ tỉ lệ nghịch với thể tích $V$: $pV = \text{hằng số}$, hay $p_1 V_1 = p_2 V_2$. Đường đẳng nhiệt trong hệ toạ độ $(p, V)$ là một nhánh đường hyperbol." "\n"
-            r"- **Định luật Charles (quá trình đẳng áp, $p = \text{hằng số}$)**: Với một khối lượng khí xác định ở áp suất không đổi, thể tích $V$ tỉ lệ thuận với nhiệt độ tuyệt đối $T$: $\dfrac{V}{T} = \text{hằng số}$, hay $\dfrac{V_1}{T_1} = \dfrac{V_2}{T_2}$." "\n"
-            r"- **Phương trình trạng thái khí lí tưởng và phương trình Clapeyron**: Với một lượng khí xác định: $\dfrac{p_1 V_1}{T_1} = \dfrac{p_2 V_2}{T_2} = \text{hằng số}$. Với $n = \dfrac{m}{M} = \dfrac{N}{N_{\text{A}}}$ mol khí lí tưởng: $pV = nRT$, trong đó $R \approx 8{,}31\text{ J/(mol}\cdot\text{K)}$." "\n"
-            r"- **Áp suất phân tử và Động năng tịnh tiến trung bình**: $p = \dfrac{1}{3}\mu m\overline{v^2} = \dfrac{2}{3}\mu\overline{W_{\text{đ}}}$ và $\overline{W_{\text{đ}}} = \dfrac{1}{2}m\overline{v^2} = \dfrac{3}{2}kT$, với hằng số Boltzmann $k = \dfrac{R}{N_{\text{A}}} \approx 1{,}38 \times 10^{-23}\text{ J/K}$."
+        definition="Nhiệt dung riêng ($c$) của một chất là nhiệt lượng cần truyền cho $1\\text{ kg}$ chất đó để làm cho nhiệt độ của nó tăng thêm $1\\text{ K}$ (hay $1^\\circ\\text{C}$). Nhiệt lượng mà một lượng chất có khối lượng $m$ thu vào hoặc tỏa ra khi độ biến thiên nhiệt độ là $\\Delta t$ được tính bằng công thức: $Q = m \\cdot c \\cdot \\Delta t$.",
+        theory=(
+            "### 1. Nhiệt dung riêng và Công thức tính nhiệt lượng\n"
+            "- Kí hiệu nhiệt dung riêng: $c$, đơn vị trong hệ SI là $\\text{J/(kg}\\cdot\\text{K)}$ hoặc $\\text{J/(kg}\\cdot\\text{độ)}$ (ví dụ: nước có nhiệt dung riêng rất lớn $c_{\\text{nước}} \\approx 4200\\text{ J/(kg}\\cdot\\text{K)}$, nhôm $c_{\\text{Al}} = 880\\text{ J/(kg}\\cdot\\text{K)}$, đồng $c_{\\text{Cu}} = 380\\text{ J/(kg}\\cdot\\text{K)}$).\n"
+            "- **Công thức tính nhiệt lượng**:\n"
+            "  $$Q = m \\cdot c \\cdot \\Delta T = m \\cdot c \\cdot (t_2 - t_1) \\implies c = \\dfrac{Q}{m \\cdot \\Delta T}$$\n\n"
+            "### 2. Phương trình cân bằng nhiệt và Thực hành đo nhiệt dung riêng\n"
+            "- Khi các vật trao đổi nhiệt trong một hệ cô lập (nhiệt lượng kế cách nhiệt), tổng nhiệt lượng do các vật nóng hơn tỏa ra bằng tổng nhiệt lượng do các vật lạnh hơn thu vào:\n"
+            "  $$Q_{\\text{tỏa}} = Q_{\\text{thu}} \\iff m_1 c_1 (t_1 - t_{\\text{cb}}) = m_2 c_2 (t_{\\text{cb}} - t_2)$$\n"
+            "- **Thực hành đo $c$ của nước**: Dùng dây điện trở công suất $\\mathcal{P}$ đun khối lượng $m$ nước trong bình nhiệt lượng kế trong thời gian $\\tau$ làm nhiệt độ tăng $\\Delta T$: $Q = \\mathcal{P} \\cdot \\tau = m \\cdot c \\cdot \\Delta T \\implies c = \\dfrac{\\mathcal{P} \\cdot \\tau}{m \\cdot \\Delta T}$."
         ),
-        "theory": (
-            r"### Bài 8. Mô hình động học phân tử chất khí" "\n"
-            r"- **Chuyển động Brown**: Là chuyển động hỗn loạn, không ngừng, có quỹ đạo là những đường gấp khúc bất kì của các hạt rất nhỏ (hạt phấn hoa, hạt khói) lơ lửng trong chất lỏng hoặc chất khí, do các phân tử môi trường chuyển động nhiệt va chạm không cân bằng từ mọi phía." "\n"
-            r"- **Ba nội dung của thuyết động học phân tử chất khí**: (1) Chất khí được cấu tạo từ các phân tử có kích thước rất nhỏ so với khoảng cách giữa chúng; (2) Các phân tử khí chuyển động hỗn loạn không ngừng, nhiệt độ càng cao thì tốc độ trung bình càng lớn; (3) Khi chuyển động hỗn loạn, các phân tử khí va chạm vào nhau và va chạm vào thành bình gây ra áp suất chất khí lên thành bình." "\n"
-            r"### Bài 9. Định luật Boyle" "\n"
-            r"- **Quá trình đẳng nhiệt**: Là quá trình biến đổi trạng thái trong đó nhiệt độ tuyệt đối $T$ được giữ không đổi." "\n"
-            r"- **Định luật Boyle**: $p_1 V_1 = p_2 V_2$. Trong hệ toạ độ $(p, V)$, đường đẳng nhiệt ứng với nhiệt độ cao hơn ($T_2 > T_1$) nằm phía trên đường đẳng nhiệt ứng với nhiệt độ thấp hơn. Trong hệ toạ độ $(p, T)$ hoặc $(V, T)$, đường đẳng nhiệt là đoạn thẳng vuông góc với trục $OT$." "\n"
-            r"### Bài 10. Định luật Charles" "\n"
-            r"- **Quá trình đẳng áp**: Là quá trình biến đổi trạng thái trong đó áp suất $p$ được giữ không đổi." "\n"
-            r"- **Định luật Charles**: $\dfrac{V_1}{T_1} = \dfrac{V_2}{T_2}$. Trong hệ toạ độ $(V, T)$, đường đẳng áp là đường thẳng có đường kéo dài đi qua gốc toạ độ tuyệt đối $O(0\text{ K}, 0)$; ứng với áp suất lớn hơn ($p_2 > p_1$) thì hệ số góc $\dfrac{nR}{p}$ nhỏ hơn nên đường đẳng áp nằm gần trục $OT$ hơn." "\n"
-            r"### Bài 11. Phương trình trạng thái của khí lí tưởng" "\n"
-            r"- **Phương trình trạng thái**: Kết hợp định luật Boyle và định luật Charles qua trạng thái trung gian, ta thu được $\dfrac{p_1 V_1}{T_1} = \dfrac{p_2 V_2}{T_2}$. Hệ quả cho quá trình **đẳng tích** ($V = \text{hằng số}$): $\dfrac{p_1}{T_1} = \dfrac{p_2}{T_2}$." "\n"
-            r"- **Phương trình Clapeyron**: $pV = nRT = \dfrac{m}{M}RT$, suy ra khối lượng riêng của khí $\rho = \dfrac{m}{V} = \dfrac{pM}{RT}$. Nếu lấy $p$ tính theo $\text{Pa}$ ($\text{N/m}^2$), $V$ tính theo $\text{m}^3$, $T$ tính theo $\text{K}$ thì $R \approx 8{,}31\text{ J/(mol}\cdot\text{K)}$; nếu lấy $p$ tính theo $\text{atm}$ và $V$ tính theo $\text{L}$ thì $R \approx 0{,}082\text{ atm}\cdot\text{L/(mol}\cdot\text{K)}$." "\n"
-            r"### Bài 12. Áp suất khí theo mô hình động học phân tử. Quan hệ giữa động năng phân tử và nhiệt độ" "\n"
-            r"- **Công thức áp suất khí theo mô hình động học phân tử**: $p = \dfrac{1}{3}\mu m\overline{v^2} = \dfrac{2}{3}\mu\overline{W_{\text{đ}}}$, trong đó $\mu = \dfrac{N}{V}$ ($\text{m}^{-3}$) là mật độ phân tử, $m$ ($\text{kg}$) là khối lượng một phân tử khí, $\overline{v^2}$ là trung bình của bình phương tốc độ phân tử và $\overline{W_{\text{đ}}} = \dfrac{1}{2}m\overline{v^2}$ là động năng tịnh tiến trung bình của một phân tử." "\n"
-            r"- **Liên hệ giữa động năng phân tử và nhiệt độ tuyệt đối**: Kết hợp $pV = nRT = N k T$ (với $k = \dfrac{R}{N_{\text{A}}} \approx 1{,}38 \times 10^{-23}\text{ J/K}$) và $pV = \dfrac{2}{3}N\overline{W_{\text{đ}}}$, ta suy ra $\overline{W_{\text{đ}}} = \dfrac{3}{2}kT$ và $p = \mu k T$. Căn bậc hai của $\overline{v^2}$ là tốc độ căn quân phương $v_{\text{rms}} = \sqrt{\overline{v^2}} = \sqrt{\dfrac{3kT}{m}} = \sqrt{\dfrac{3RT}{M}}$." "\n"
-            r"### Bài 13. Bài tập về khí lí tưởng" "\n"
-            r"- **Phương pháp giải bài toán khí lí tưởng**: (1) Xác định lượng khí có không đổi hay có sự nạp thêm hoặc thoát bớt khí; (2) Liệt kê các thông số trạng thái $(p_1, V_1, T_1)$ và $(p_2, V_2, T_2)$ với $T$ bắt buộc đổi sang đơn vị Kelvin ($\text{K}$); (3) Áp dụng định luật đẳng quá trình hoặc phương trình trạng thái $\dfrac{p_1 V_1}{T_1} = \dfrac{p_2 V_2}{T_2}$ hoặc phương trình Clapeyron $pV = nRT$."
-        ),
-        "formulas": [
+        formulas=[
             G(
-                "I. Các đẳng quá trình của một lượng khí xác định",
-                F(r"Định luật Boyle (đẳng nhiệt $T = \text{hằng số}$)", r"$p_1 V_1 = p_2 V_2$", r"Áp suất $p$ tỉ lệ nghịch với thể tích $V$."),
-                F(r"Định luật Charles (đẳng áp $p = \text{hằng số}$)", r"$\dfrac{V_1}{T_1} = \dfrac{V_2}{T_2}$", r"Thể tích $V$ tỉ lệ thuận với nhiệt độ tuyệt đối $T\text{ (K)}$."),
-                F(r"Quá trình đẳng tích ($V = \text{hằng số}$)", r"$\dfrac{p_1}{T_1} = \dfrac{p_2}{T_2}$", r"Áp suất $p$ tỉ lệ thuận với nhiệt độ tuyệt đối $T\text{ (K)}$."),
-            ),
+                "Công thức Nhiệt dung riêng và Phương trình cân bằng nhiệt",
+                F("Nhiệt lượng thu vào hay tỏa ra khi biến thiên nhiệt độ", "$Q = m \\cdot c \\cdot \\Delta t = m \\cdot c \\cdot |t_2 - t_1| \\implies c = \\dfrac{Q}{m \\cdot \\Delta t}$", "Trong đó $m$ tính bằng $\\text{kg}$ ($1\\text{ L nước} \\approx 1\\text{ kg}$), $c$ tính bằng $\\text{J/(kg}\\cdot\\text{K)}$, $\\Delta t$ tính bằng $\\text{K}$ hoặc $^\\circ\\text{C}$, $Q$ tính bằng $\\text{J}$."),
+                F("Phương trình cân bằng nhiệt và Công thức thực hành", "$Q_{\\text{tỏa}} = Q_{\\text{thu}}; \\qquad c = \\dfrac{\\mathcal{P} \\cdot \\tau}{m \\cdot \\Delta T} = \\dfrac{U \\cdot I \\cdot \\tau}{m \\cdot \\Delta T}$", "Trong đó $\\mathcal{P}$ là công suất dây đun ($\\text{W}$), $\\tau$ là thời gian đun ($\\text{s}$)."),
+            )
+        ],
+        example="Một ấm nhôm có khối lượng $m_1 = 0{,}5\\text{ kg}$ chứa $2\\text{ lít}$ nước ($m_2 = 2\\text{ kg}$) ở nhiệt độ ban đầu $t_1 = 20^\\circ\\text{C}$. Biết nhiệt dung riêng của nhôm là $c_1 = 880\\text{ J/(kg}\\cdot\\text{K)}$ và của nước là $c_2 = 4200\\text{ J/(kg}\\cdot\\text{K)}$. Hãy tính nhiệt lượng $Q$ cần cung cấp để đun sôi ấm nước đó ở $t_2 = 100^\\circ\\text{C}$.",
+        example_answer="Độ tăng nhiệt độ của cả ấm nhôm và nước là $\\Delta t = 100 - 20 = 80^\\circ\\text{C}$. Nhiệt lượng cần cung cấp là $Q = Q_1 + Q_2 = (m_1 c_1 + m_2 c_2)\\Delta t = (0{,}5 \\cdot 880 + 2 \\cdot 4200) \\cdot 80 = (440 + 8400) \\cdot 80 = 8840 \\cdot 80 = 707\\,200\\text{ J} = 707{,}2\\text{ kJ}$.",
+        real_life="Vì nước có nhiệt dung riêng rất lớn ($4200\\text{ J/(kg}\\cdot\\text{K)}$, gấp $5$ lần đất cát) nên nước được dùng làm chất tải nhiệt làm mát trong két nước động cơ ô tô, và các vùng ven biển có khí hậu ôn hòa hơn vùng sâu trong lục địa.",
+        quiz=[
+            mcq("biet", "Đơn vị đo của nhiệt dung riêng $c$ trong hệ thống đo lường quốc tế SI là gì?", ["$\\text{J/(kg}\\cdot\\text{K)}$", "$\\text{J/kg}$", "$\\text{J/K}$", "$\\text{W/m}^2$"], 0, "Vì $c = \\dfrac{Q}{m \\cdot \\Delta T}$ nên đơn vị của nhiệt dung riêng là $\\text{J/(kg}\\cdot\\text{K)}$."),
+            mcq("biet", "Biết nhiệt dung riêng của đồng là $380\\text{ J/(kg}\\cdot\\text{K)}$. Con số này có ý nghĩa vật lí là gì?", ["Cần truyền nhiệt lượng $380\\text{ J}$ cho $1\\text{ kg}$ đồng để làm nhiệt độ của nó tăng thêm $1\\text{ K}$ (hoặc $1^\\circ\\text{C}$)", "Cần truyền $380\\text{ J}$ để làm nóng chảy hoàn toàn $1\\text{ kg}$ đồng", "Cần truyền $380\\text{ J}$ để làm hóa hơi $1\\text{ kg}$ đồng", "$1\\text{ kg}$ đồng luôn có nội năng bằng $380\\text{ J}$"], 0, "Nhiệt dung riêng cho biết nhiệt lượng cần thiết để $1\\text{ kg}$ chất đó tăng thêm $1\\text{ K}$ ($1^\\circ\\text{C}$)."),
+            mcq("hieu", "Cùng cung cấp một nhiệt lượng $Q$ như nhau cho $1\\text{ kg}$ nước ($c_1 = 4200\\text{ J/(kg}\\cdot\\text{K)}$) và $1\\text{ kg}$ nhôm ($c_2 = 880\\text{ J/(kg}\\cdot\\text{K)}$) thì độ tăng nhiệt độ của chất nào lớn hơn?", ["Độ tăng nhiệt độ của nhôm lớn hơn của nước (vì nhôm có nhiệt dung riêng nhỏ hơn)", "Độ tăng nhiệt độ của nước lớn hơn của nhôm", "Hai chất tăng nhiệt độ bằng nhau", "Cả hai chất đều không tăng nhiệt độ"], 0, "Từ $\\Delta t = \\dfrac{Q}{m c}$, với cùng $Q$ và $m$, chất nào có nhiệt dung riêng $c$ nhỏ hơn (nhôm) sẽ có độ tăng nhiệt độ $\\Delta t$ lớn hơn."),
+            tf4("hieu", "Xét tính đúng/sai của các phát biểu sau về nhiệt dung riêng và cân bằng nhiệt:", [
+                "Nhiệt dung riêng là đại lượng đặc trưng cho bản chất của từng chất.",
+                "Nước có nhiệt dung riêng rất lớn nên thường được dùng làm chất làm mát trong động cơ nhiệt.",
+                "Khi thả một miếng sắt ở $90^\\circ\\text{C}$ vào một cốc nước ở $25^\\circ\\text{C}$, nhiệt độ cân bằng của hệ có thể bằng $100^\\circ\\text{C}$.",
+                "Trong thí nghiệm đo nhiệt dung riêng bằng bình nhiệt lượng kế, que khuấy giúp nhiệt độ của nước trong bình đồng đều hơn.",
+            ], [True, True, False, True], "Ý c) sai vì nhiệt độ cân bằng $t_{\\text{cb}}$ luôn phải nằm trong khoảng giữa nhiệt độ thấp và nhiệt độ cao ban đầu ($25^\\circ\\text{C} < t_{\\text{cb}} < 90^\\circ\\text{C}$)."),
+            short("vandung", "Tính nhiệt lượng $Q$ (theo đơn vị $\\text{kJ}$) cần cung cấp để đun nóng $m = 2\\text{ kg}$ nước từ $25^\\circ\\text{C}$ lên $75^\\circ\\text{C}$, biết nhiệt dung riêng của nước là $c = 4200\\text{ J/(kg}\\cdot\\text{K)}$.", ["420"], "Ta có $\\Delta t = 75 - 25 = 50\\text{ K}$. Nhiệt lượng cần truyền là $Q = m c \\Delta t = 2 \\cdot 4200 \\cdot 50 = 420\\,000\\text{ J} = 420\\text{ kJ}$.", unit="kJ"),
+        ],
+    ),
+    bai(
+        topic=CH1[0], chapter_title=CH1[1], chapter_desc=CH1[2],
+        title="Bài 5: Nhiệt nóng chảy riêng",
+        icon="❄️",
+        description="Khái niệm và đơn vị nhiệt nóng chảy riêng λ (J/kg), công thức tính nhiệt lượng nóng chảy Q = λ.m và bài toán kết hợp tăng nhiệt độ – nóng chảy.",
+        requirements=[
+            "Định nghĩa được nhiệt nóng chảy riêng $\\lambda$ của một chất rắn kết tinh là nhiệt lượng cần truyền cho $1\\text{ kg}$ chất đó để nó chuyển hoàn toàn từ thể rắn sang thể lỏng ở nhiệt độ nóng chảy (đơn vị $\\text{J/kg}$).",
+            "Viết và vận dụng được công thức tính nhiệt lượng cần truyền cho vật rắn kết tinh khối lượng $m$ đang ở nhiệt độ nóng chảy: $Q = \\lambda \\cdot m$.",
+            "Giải được bài toán tổng hợp tính nhiệt lượng làm vật rắn tăng nhiệt độ đến điểm nóng chảy rồi nóng chảy hoàn toàn: $Q = m c_{\\text{rắn}}(t_{\\text{nc}} - t_1) + \\lambda m$.",
+        ],
+        definition="Nhiệt nóng chảy riêng ($\\lambda$) của một chất rắn kết tinh là nhiệt lượng cần truyền cho một đơn vị khối lượng ($1\\text{ kg}$) chất đó ở nhiệt độ nóng chảy để nó chuyển hoàn toàn từ thể rắn sang thể lỏng mà không thay đổi nhiệt độ: $\\lambda = \\dfrac{Q}{m} \\iff Q = \\lambda \\cdot m$ (đơn vị $\\text{J/kg}$).",
+        theory=(
+            "### 1. Nhiệt nóng chảy riêng và Công thức tính nhiệt lượng nóng chảy\n"
+            "- Kí hiệu: $\\lambda$, đơn vị trong hệ SI là **Joule trên kilôgam** ($\\text{J/kg}$). Ví dụ của nước đá ở $0^\\circ\\text{C}$: $\\lambda \\approx 3{,}34 \\cdot 10^5\\text{ J/kg}$.\n"
+            "- Khi vật rắn kết tinh có khối lượng $m$ đã ở đúng nhiệt độ nóng chảy $t_{\\text{nc}}$, nhiệt lượng cần cung cấp để làm nóng chảy hoàn toàn vật là:\n"
+            "  $$Q = \\lambda \\cdot m$$\n"
+            "- Ngược lại, trong quá trình **đông đặc** ở nhiệt độ đông đặc $t_{\\text{nc}}$, một khối chất lỏng khối lượng $m$ cũng **tỏa ra** nhiệt lượng đúng bằng $Q = \\lambda \\cdot m$.\n\n"
+            "### 2. Bài toán đun nóng chảy từ nhiệt độ ban đầu $t_1 < t_{\\text{nc}}$\n"
+            "- Gồm 2 giai đoạn:\n"
+            "  1. Tăng nhiệt độ của vật rắn từ $t_1$ lên nhiệt độ nóng chảy $t_{\\text{nc}}$: $Q_1 = m \\cdot c_{\\text{rắn}} \\cdot (t_{\\text{nc}} - t_1)$.\n"
+            "  2. Làm vật rắn nóng chảy hoàn toàn ở nhiệt độ không đổi $t_{\\text{nc}}$: $Q_2 = \\lambda \\cdot m$.\n"
+            "  - Tổng nhiệt lượng: $Q = Q_1 + Q_2 = m c_{\\text{rắn}}(t_{\\text{nc}} - t_1) + \\lambda m$."
+        ),
+        formulas=[
             G(
-                "II. Phương trình trạng thái và Phương trình Clapeyron",
-                F("Phương trình trạng thái khí lí tưởng", r"$\dfrac{p_1 V_1}{T_1} = \dfrac{p_2 V_2}{T_2} = \text{hằng số}$", r"Áp dụng cho một khối lượng khí không đổi."),
-                F("Phương trình Clapeyron", r"$pV = nRT = \dfrac{m}{M}RT$", r"$R \approx 8{,}31\text{ J/(mol}\cdot\text{K)}$ khi $p$ ($\text{Pa}$), $V$ ($\text{m}^3$), $T$ ($\text{K}$)."),
-                F("Đổi đơn vị áp suất và thể tích", r"$1\text{ atm} = 101\,325\text{ Pa} \approx 760\text{ mmHg}$", r"$1\text{ bar} = 10^5\text{ Pa}$; $1\text{ L} = 1\text{ dm}^3 = 10^{-3}\text{ m}^3$."),
-            ),
+                "Công thức Nhiệt nóng chảy riêng",
+                F("Nhiệt lượng nóng chảy ở nhiệt độ nóng chảy", "$Q = \\lambda \\cdot m \\iff \\lambda = \\dfrac{Q}{m}$", "Trong đó $m$ là khối lượng phần chất rắn đã nóng chảy ($\\text{kg}$), $\\lambda$ là nhiệt nóng chảy riêng ($\\text{J/kg}$), $Q$ tính bằng $\\text{J}$."),
+                F("Tổng nhiệt lượng đun vật rắn từ t₁ < t_nc đến khi nóng chảy hết", "$Q = m \\cdot c_{\\text{rắn}} \\cdot (t_{\\text{nc}} - t_1) + \\lambda \\cdot m$", "Nếu tiếp tục đun phần chất lỏng sau khi tan hết lên nhiệt độ $t_2 > t_{\\text{nc}}$ thì cộng thêm $Q_3 = m \\cdot c_{\\text{lỏng}} \\cdot (t_2 - t_{\\text{nc}})$."),
+            )
+        ],
+        example="Tính nhiệt lượng $Q$ cần cung cấp để làm nóng chảy hoàn toàn một tảng nước đá có khối lượng $m = 2\\text{ kg}$ đang ở nhiệt độ $0^\\circ\\text{C}$. Biết nhiệt nóng chảy riêng của nước đá ở $0^\\circ\\text{C}$ là $\\lambda = 3{,}34 \\cdot 10^5\\text{ J/kg}$.",
+        example_answer="Vì tảng nước đá đã ở sẵn nhiệt độ nóng chảy $0^\\circ\\text{C}$ nên nhiệt lượng cần cung cấp để nó tan hoàn toàn thành nước ở $0^\\circ\\text{C}$ là $Q = \\lambda \\cdot m = 3{,}34 \\cdot 10^5 \\cdot 2 = 6{,}68 \\cdot 10^5\\text{ J} = 668\\text{ kJ}$.",
+        real_life="Trong công nghiệp luyện kim và đúc đồng, đúc gang, kĩ sư phải dựa vào nhiệt độ nóng chảy và nhiệt nóng chảy riêng $\\lambda$ của từng kim loại để tính lượng nhiên liệu hoặc điện năng cần thiết cho lò nung.",
+        quiz=[
+            mcq("biet", "Công thức tính nhiệt lượng $Q$ cần cung cấp để làm nóng chảy hoàn toàn một khối chất rắn kết tinh có khối lượng $m$ và nhiệt nóng chảy riêng $\\lambda$ ngay tại nhiệt độ nóng chảy của nó là gì?", ["$Q = \\lambda \\cdot m$", "$Q = \\dfrac{\\lambda}{m}$", "$Q = \\dfrac{m}{\\lambda}$", "$Q = \\lambda \\cdot m \\cdot \\Delta t$"], 0, "Tại nhiệt độ nóng chảy, nhiệt lượng làm nóng chảy hoàn toàn khối lượng $m$ là $Q = \\lambda \\cdot m$."),
+            mcq("biet", "Đơn vị đo của nhiệt nóng chảy riêng $\\lambda$ trong hệ SI là gì?", ["$\\text{J/kg}$", "$\\text{J/(kg}\\cdot\\text{K)}$", "$\\text{J}\\cdot\\text{kg}$", "$\\text{W/kg}$"], 0, "Vì $\\lambda = \\dfrac{Q}{m}$ nên đơn vị của nhiệt nóng chảy riêng là Joule trên kilôgam ($\\text{J/kg}$)."),
+            mcq("hieu", "Vì sao để giữ cho thực phẩm tươi lâu trong thùng bảo quản, người ta dùng các tảng nước đá ở $0^\\circ\\text{C}$ hiệu quả hơn nhiều so với dùng cùng một khối lượng nước lạnh ở $0^\\circ\\text{C}$?", ["Vì khi $1\\text{ kg}$ nước đá ở $0^\\circ\\text{C}$ nóng chảy thành nước ở $0^\\circ\\text{C}$, nó thu thêm một nhiệt lượng rất lớn $\\lambda = 3{,}34 \\cdot 10^5\\text{ J}$ từ thực phẩm", "Vì nước đá ở $0^\\circ\\text{C}$ có nhiệt độ thấp hơn nước lỏng ở $0^\\circ\\text{C}$", "Vì nước đá không bao giờ tan", "Vì nước đá tỏa nhiệt lượng ra thùng"], 0, "Quá trình nóng chảy của nước đá ở $0^\\circ\\text{C}$ thu một nhiệt lượng ẩn rất lớn ($334\\text{ kJ}$ cho mỗi $\\text{kg}$ đá) giúp giữ nhiệt độ thùng ở $0^\\circ\\text{C}$ trong thời gian dài."),
+            tf4("hieu", "Xét tính đúng/sai của các phát biểu sau về nhiệt nóng chảy riêng:", [
+                "Nhiệt nóng chảy riêng của một chất phụ thuộc vào bản chất của chất rắn kết tinh đó.",
+                "Trong suốt quá trình nước đá đang nóng chảy ở $0^\\circ\\text{C}$, nhiệt lượng cung cấp làm tăng thế năng tương tác giữa các phân tử còn động năng trung bình của phân tử không đổi.",
+                "Khi $1\\text{ kg}$ nước ở $0^\\circ\\text{C}$ đông đặc hoàn toàn thành nước đá ở $0^\\circ\\text{C}$, nó cũng thu vào nhiệt lượng $\\lambda = 3{,}34 \\cdot 10^5\\text{ J}$.",
+                "Để làm nóng chảy một thỏi kim loại đang ở nhiệt độ phòng $25^\\circ\\text{C}$, ta phải cung cấp nhiệt lượng gồm cả phần làm tăng nhiệt độ lên điểm nóng chảy và phần nhiệt nóng chảy $\\lambda m$.",
+            ], [True, True, False, True], "Ý c) sai vì quá trình nóng chảy thu nhiệt còn quá trình ngược lại (đông đặc) là quá trình **tỏa nhiệt** ra môi trường."),
+            short("vandung", "Biết nhiệt nóng chảy riêng của nước đá là $\\lambda = 330\\text{ kJ/kg}$. Nhiệt lượng $Q$ cần cung cấp để làm nóng chảy hoàn toàn $m = 0{,}5\\text{ kg}$ nước đá đang ở $0^\\circ\\text{C}$ bằng bao nhiêu $\\text{kJ}$?", ["165"], "Áp dụng công thức $Q = \\lambda \\cdot m = 330 \\cdot 0{,}5 = 165\\text{ kJ}$.", unit="kJ"),
+        ],
+    ),
+    bai(
+        topic=CH1[0], chapter_title=CH1[1], chapter_desc=CH1[2],
+        title="Bài 6: Nhiệt hóa hơi riêng",
+        icon="♨️",
+        description="Khái niệm và đơn vị nhiệt hóa hơi riêng L (J/kg), công thức tính nhiệt lượng hóa hơi Q = L.m và bài toán đun sôi hóa hơi nước.",
+        requirements=[
+            "Định nghĩa được nhiệt hóa hơi riêng $L$ của một chất lỏng là nhiệt lượng cần truyền cho $1\\text{ kg}$ chất lỏng đó để nó hóa hơi hoàn toàn ở một nhiệt độ xác định (đơn vị $\\text{J/kg}$).",
+            "Viết và vận dụng được công thức tính nhiệt lượng hóa hơi $Q = L \\cdot m$ (với $m$ là khối lượng phần chất lỏng đã chuyển thành hơi).",
+            "Giải được bài toán tổng hợp đun nước từ nhiệt độ $t_1$ lên $100^\\circ\\text{C}$ rồi hóa hơi: $Q = m_{\\text{nước}} c (100 - t_1) + L \\cdot m_{\\text{hơi}}$.",
+        ],
+        definition="Nhiệt hóa hơi riêng ($L$) của một chất lỏng là nhiệt lượng cần truyền cho một đơn vị khối lượng ($1\\text{ kg}$) chất lỏng đó để nó chuyển hoàn toàn sang thể khí (hơi) ở một nhiệt độ xác định: $L = \\dfrac{Q}{m} \\iff Q = L \\cdot m$ (đơn vị $\\text{J/kg}$).",
+        theory=(
+            "### 1. Nhiệt hóa hơi riêng và Công thức tính nhiệt lượng hóa hơi\n"
+            "- Kí hiệu: $L$, đơn vị trong hệ SI là **Joule trên kilôgam** ($\\text{J/kg}$). Ví dụ của nước ở $100^\\circ\\text{C}$: $L \\approx 2{,}26 \\cdot 10^6\\text{ J/kg}$ (rất lớn, gấp gần $7$ lần nhiệt nóng chảy riêng của nước đá!).\n"
+            "- Nhiệt lượng cần truyền để một lượng chất lỏng có khối lượng $m$ hóa hơi hoàn toàn ở nhiệt độ không đổi:\n"
+            "  $$Q = L \\cdot m$$\n"
+            "- Ngược lại, khi một lượng hơi có khối lượng $m$ **ngưng tụ** thành chất lỏng ở cùng nhiệt độ đó, nó cũng **tỏa ra** nhiệt lượng cực lớn đúng bằng $Q = L \\cdot m$ (đó là lí do bỏng hơi nước ở $100^\\circ\\text{C}$ nguy hiểm hơn bỏng nước sôi ở $100^\\circ\\text{C}$).\n\n"
+            "### 2. Bài toán đun nước từ $t_1 < 100^\\circ\\text{C}$ đến khi hóa hơi\n"
+            "- Đun khối lượng $m$ nước từ $t_1$ đến sôi ở $100^\\circ\\text{C}$ rồi làm hóa hơi một phần khối lượng $m_h \\le m$:\n"
+            "  $$Q = m \\cdot c \\cdot (100 - t_1) + L \\cdot m_h$$\n"
+            "- **Thực hành đo $L$ của nước**: Đun nước đang sôi bằng ấm điện công suất $\\mathcal{P}$ đặt trên cân điện tử; trong thời gian $\\Delta t$, khối lượng nước giảm đi $\\Delta m$ (đã bay hơi): $L = \\dfrac{\\mathcal{P} \\cdot \\Delta t}{\\Delta m}$."
+        ),
+        formulas=[
             G(
-                "III. Áp suất vi mô và Động năng tịnh tiến phân tử",
-                F("Áp suất khí theo mô hình phân tử", r"$p = \dfrac{1}{3}\mu m\overline{v^2} = \dfrac{2}{3}\mu\overline{W_{\text{đ}}} = \mu k T$", r"$\mu = \dfrac{N}{V}$ là mật độ phân tử ($\text{hạt/m}^3$)."),
-                F("Động năng tịnh tiến trung bình", r"$\overline{W_{\text{đ}}} = \dfrac{3}{2}kT$", r"$k = \dfrac{R}{N_{\text{A}}} \approx 1{,}38 \times 10^{-23}\text{ J/K}$."),
-                F("Tốc độ căn quân phương", r"$v_{\text{rms}} = \sqrt{\overline{v^2}} = \sqrt{\dfrac{3kT}{m}} = \sqrt{\dfrac{3RT}{M}}$", r"$M$ trong công thức này đổi ra đơn vị $\text{kg/mol}$."),
-            ),
+                "Công thức Nhiệt hóa hơi riêng",
+                F("Nhiệt lượng hóa hơi ở nhiệt độ sôi", "$Q = L \\cdot m \\iff L = \\dfrac{Q}{m}$", "Trong đó $m$ là khối lượng phần chất lỏng đã biến thành hơi ($\\text{kg}$), $L$ là nhiệt hóa hơi riêng ($\\text{J/kg}$), $Q$ tính bằng $\\text{J}$."),
+                F("Tổng nhiệt lượng đun sôi và hóa hơi + Công thức thực hành", "$Q = m c (100 - t_1) + L \\cdot m_{\\text{hơi}}; \\qquad L = \\dfrac{\\mathcal{P} \\cdot \\Delta t}{\\Delta m}$", "Trong bài thực hành, phải mở nắp bình đun khi nước sôi để hơi nước thoát ra ngoài giúp cân điện tử đo đúng khối lượng hơi thoát đi $\\Delta m$."),
+            )
         ],
-        "example": (
-            r"Một bình kín có dung tích $V = 16{,}62\text{ L}$ chứa khí helium ($\text{He}$, có khối lượng mol $M = 4\text{ g/mol}$) ở áp suất $p_1 = 3 \times 10^5\text{ Pa}$ và nhiệt độ $t_1 = 27^\circ\text{C}$. "
-            r"Lấy $R = 8{,}31\text{ J/(mol}\cdot\text{K)}$ và $k = 1{,}38 \times 10^{-23}\text{ J/K}$. "
-            r"a) Tính số mol $n$ và khối lượng $m$ của khí helium trong bình. "
-            r"b) Khi đun nóng bình tới nhiệt độ $t_2 = 127^\circ\text{C}$ (bỏ qua sự nở vì nhiệt của bình), hãy tính áp suất $p_2$ và động năng tịnh tiến trung bình $\overline{W_{\text{đ}}}$ của mỗi phân tử khí helium ở trạng thái này."
-        ),
-        "example_answer": (
-            r"- **Câu a**: Đổi $V = 16{,}62\text{ L} = 16{,}62 \times 10^{-3}\text{ m}^3$; $T_1 = 27 + 273 = 300\text{ K}$." "\n"
-            r"  Áp dụng phương trình Clapeyron: $n = \dfrac{p_1 V}{RT_1} = \dfrac{3 \times 10^5 \cdot 16{,}62 \times 10^{-3}}{8{,}31 \cdot 300} = \mathbf{2\text{ mol}}$." "\n"
-            r"  Khối lượng khí helium trong bình: $m = nM = 2 \cdot 4 = \mathbf{8\text{ g}}$." "\n"
-            r"- **Câu b**: Đổi $T_2 = 127 + 273 = 400\text{ K}$. Vì bình kín có thể tích không đổi ($V = \text{hằng số}$) nên:" "\n"
-            r"  $p_2 = p_1 \dfrac{T_2}{T_1} = 3 \times 10^5 \cdot \dfrac{400}{300} = \mathbf{4 \times 10^5\text{ Pa}}$." "\n"
-            r"  Động năng tịnh tiến trung bình của mỗi phân tử khí ở $T_2 = 400\text{ K}$ là:" "\n"
-            r"  $\overline{W_{\text{đ}}} = \dfrac{3}{2}kT_2 = 1{,}5 \cdot 1{,}38 \times 10^{-23} \cdot 400 = \mathbf{8{,}28 \times 10^{-21}\text{ J}}$."
-        ),
-        "real_life": (
-            r"- **Bình dưỡng khí lặn biển và bình oxy y tế**: Nén khí ở áp suất cao (theo định luật Boyle) để tích trữ một lượng lớn khí trong thể tích bình nhỏ gọn." "\n"
-            r"- **Lốp xe ô tô và an toàn giao thông mùa hè**: Khi xe chạy đường dài dưới trời nắng nóng, nhiệt độ khí trong lốp tăng làm áp suất tăng theo hệ thức $\dfrac{p}{T} = \text{hằng số}$, do đó cảm biến áp suất lốp (TPMS) giúp cảnh báo nguy cơ nổ lốp." "\n"
-            r"- **Khinh khí cầu và bóng thám không khí tượng**: Khi đốt nóng không khí trong vòm khinh khí cầu ở áp suất khí quyển (định luật Charles), khí nở ra và giảm khối lượng riêng $\rho = \dfrac{pM}{RT}$ giúp lực đẩy Archimedes nâng khinh khí cầu bay lên."
-        ),
-        "game_title": "Mô phỏng Động học Phân tử và Trạng thái Khí lí tưởng",
-        "game_description": "Thay đổi thể tích pít-tông, nhiệt độ nguồn nhiệt và số hạt phân tử để quan sát chuyển động va chạm vi mô và vẽ đồ thị đẳng nhiệt Boyle, đẳng áp Charles.",
-        "game_type": "game_vat_ly_nhiet_khi_ly_tuong",
-        "quiz": [
-            mcq(
-                "biet",
-                r"Hệ thức nào sau đây biểu diễn đúng định luật Boyle đối với một khối lượng khí lí tưởng xác định ở nhiệt độ không đổi?",
-                [
-                    r"$p_1 V_1 = p_2 V_2$",
-                    r"$\dfrac{p_1}{V_1} = \dfrac{p_2}{V_2}$",
-                    r"$\dfrac{V_1}{T_1} = \dfrac{V_2}{T_2}$",
-                    r"$\dfrac{p_1}{T_1} = \dfrac{p_2}{T_2}$",
-                ],
-                0,
-                r"Theo định luật Boyle, trong quá trình đẳng nhiệt ($T = \text{hằng số}$), áp suất tỉ lệ nghịch với thể tích: $p_1 V_1 = p_2 V_2$.",
-            ),
-            mcq(
-                "biet",
-                r"Trong hệ toạ độ $(V, T)$ với $T$ là nhiệt độ tuyệt đối, đường đẳng áp của một lượng khí lí tưởng xác định có dạng là:",
-                [
-                    r"Đường thẳng mà đường kéo dài đi qua gốc toạ độ $O$",
-                    r"Một nhánh của đường hyperbol",
-                    r"Đường thẳng song song với trục nhiệt độ $OT$",
-                    r"Đường parabol có đỉnh tại gốc toạ độ $O$",
-                ],
-                0,
-                r"Theo định luật Charles, khi $p = \text{hằng số}$ thì $V = \left(\dfrac{nR}{p}\right)T$, nên đồ thị $(V, T)$ là đường thẳng có đường kéo dài đi qua gốc toạ độ tuyệt đối $O$.",
-            ),
-            mcq(
-                "biet",
-                r"Động năng tịnh tiến trung bình $\overline{W_{\text{đ}}}$ của các phân tử khí lí tưởng ở nhiệt độ tuyệt đối $T$ được xác định bởi công thức nào sau đây (với $k$ là hằng số Boltzmann)?",
-                [
-                    r"$\overline{W_{\text{đ}}} = \dfrac{3}{2}kT$",
-                    r"$\overline{W_{\text{đ}}} = \dfrac{2}{3}kT$",
-                    r"$\overline{W_{\text{đ}}} = \dfrac{1}{3}kT$",
-                    r"$\overline{W_{\text{đ}}} = 3kT$",
-                ],
-                0,
-                r"Động năng tịnh tiến trung bình của phân tử khí lí tưởng tỉ lệ thuận với nhiệt độ tuyệt đối: $\overline{W_{\text{đ}}} = \dfrac{3}{2}kT$.",
-            ),
-            mcq(
-                "biet",
-                r"Công thức tính áp suất $p$ của chất khí tác dụng lên thành bình theo mô hình động học phân tử (với $\mu$ là mật độ phân tử, $m$ là khối lượng một phân tử, $\overline{v^2}$ là trung bình của bình phương tốc độ) là:",
-                [
-                    r"$p = \dfrac{1}{3}\mu m\overline{v^2}$",
-                    r"$p = \dfrac{2}{3}\mu m\overline{v^2}$",
-                    r"$p = \dfrac{3}{2}\mu m\overline{v^2}$",
-                    r"$p = \mu m\overline{v^2}$",
-                ],
-                0,
-                r"Áp suất khí theo mô hình động học phân tử được tính bằng $p = \dfrac{1}{3}\mu m\overline{v^2} = \dfrac{2}{3}\mu\overline{W_{\text{đ}}}$.",
-            ),
-            mcq(
-                "hieu",
-                r"Một lượng khí lí tưởng xác định có thể tích $V_1 = 6\text{ L}$ ở áp suất $p_1 = 1{,}5\text{ atm}$. Nếu nén đẳng nhiệt lượng khí này để thể tích giảm xuống còn $V_2 = 4\text{ L}$ thì áp suất $p_2$ của khí là:",
-                [
-                    r"$2{,}25\text{ atm}$",
-                    r"$1{,}00\text{ atm}$",
-                    r"$3{,}00\text{ atm}$",
-                    r"$2{,}50\text{ atm}$",
-                ],
-                0,
-                r"Áp dụng định luật Boyle cho quá trình đẳng nhiệt: $p_1 V_1 = p_2 V_2 \Rightarrow p_2 = \dfrac{p_1 V_1}{V_2} = \dfrac{1{,}5 \cdot 6}{4} = \mathbf{2{,}25\text{ atm}}$.",
-            ),
-            mcq(
-                "hieu",
-                r"Một khối khí lí tưởng thực hiện quá trình giãn nở đẳng áp từ nhiệt độ $t_1 = 27^\circ\text{C}$ đến nhiệt độ $t_2 = 127^\circ\text{C}$. Nếu thể tích ban đầu là $V_1 = 3\text{ L}$ thì thể tích $V_2$ ở cuối quá trình là:",
-                [
-                    r"$4\text{ L}$",
-                    r"$14{,}1\text{ L}$",
-                    r"$2{,}25\text{ L}$",
-                    r"$6\text{ L}$",
-                ],
-                0,
-                r"Đổi sang nhiệt độ tuyệt đối: $T_1 = 27 + 273 = 300\text{ K}$, $T_2 = 127 + 273 = 400\text{ K}$. Theo định luật Charles: $V_2 = V_1 \dfrac{T_2}{T_1} = 3 \cdot \dfrac{400}{300} = \mathbf{4\text{ L}}$.",
-            ),
-            tf4(
-                "hieu",
-                r"Cho các phát biểu sau về mô hình động học phân tử chất khí và các định luật chất khí:",
-                [
-                    r"a) Chuyển động Brown của các hạt phấn hoa trong nước là bằng chứng thực nghiệm chứng tỏ các phân tử môi trường chuyển động hỗn loạn không ngừng.",
-                    r"b) Khi nhiệt độ tuyệt đối $T$ của một khối khí lí tưởng tăng gấp $4$ lần thì tốc độ căn quân phương $v_{\text{rms}} = \sqrt{\overline{v^2}}$ của các phân tử khí tăng gấp $4$ lần.",
-                    r"c) Ở cùng một nhiệt độ tuyệt đối $T$, động năng tịnh tiến trung bình của phân tử khí hydrogen ($\text{H}_2$) bằng động năng tịnh tiến trung bình của phân tử khí oxygen ($\text{O}_2$).",
-                    r"d) Trong quá trình biến đổi đẳng tích của một lượng khí lí tưởng xác định, nếu nhiệt độ Celsius $t$ tăng gấp đôi từ $20^\circ\text{C}$ lên $40^\circ\text{C}$ thì áp suất khí tăng gấp đôi.",
-                ],
-                [True, False, True, False],
-                r"- **a) Đúng**: Các phân tử môi trường chuyển động nhiệt va chạm không cân bằng vào hạt phấn hoa gây ra chuyển động Brown." "\n"
-                r"- **b) Sai**: Vì $v_{\text{rms}} = \sqrt{\dfrac{3RT}{M}} \propto \sqrt{T}$, nên khi $T$ tăng gấp $4$ lần thì $v_{\text{rms}}$ chỉ tăng gấp $\sqrt{4} = 2$ lần." "\n"
-                r"- **c) Đúng**: $\overline{W_{\text{đ}}} = \dfrac{3}{2}kT$ chỉ phụ thuộc vào nhiệt độ tuyệt đối $T$, không phụ thuộc vào bản chất hay khối lượng phân tử khí." "\n"
-                r"- **d) Sai**: Áp suất tỉ lệ thuận với nhiệt độ tuyệt đối $T\text{ (K)}$, không tỉ lệ thuận với nhiệt độ Celsius $t\text{ (}^\circ\text{C)}$: $\dfrac{p_2}{p_1} = \dfrac{40 + 273}{20 + 273} = \dfrac{313}{293} \approx 1{,}068 \neq 2$.",
-            ),
-            tf4(
-                "hieu",
-                r"Một xilanh kín có pít-tông di chuyển không ma sát chứa $n = 0{,}5\text{ mol}$ khí lí tưởng ở trạng thái $(1)$ có áp suất $p_1 = 10^5\text{ Pa}$ và nhiệt độ $T_1 = 300\text{ K}$. Lấy $R = 8{,}31\text{ J/(mol}\cdot\text{K)}$ và $N_{\text{A}} = 6{,}02 \times 10^{23}\text{ mol}^{-1}$. Xét tính đúng hay sai của các mệnh đề sau:",
-                [
-                    r"a) Số phân tử khí chứa trong xilanh là $N = 3{,}01 \times 10^{23}$ phân tử.",
-                    r"b) Thể tích của khối khí ở trạng thái $(1)$ là $V_1 = 12{,}465\text{ L}$.",
-                    r"c) Nếu nén đẳng nhiệt khối khí đến thể tích $V_2 = \dfrac{V_1}{3}$ thì áp suất của khí ở trạng thái $(2)$ là $p_2 = 3 \times 10^5\text{ Pa}$.",
-                    r"d) Từ trạng thái $(2)$, nếu nung nóng đẳng tích khối khí đến nhiệt độ $T_3 = 450\text{ K}$ thì áp suất ở trạng thái $(3)$ là $p_3 = 2 \times 10^5\text{ Pa}$.",
-                ],
-                [True, True, True, False],
-                r"- **a) Đúng**: $N = n N_{\text{A}} = 0{,}5 \cdot 6{,}02 \times 10^{23} = 3{,}01 \times 10^{23}$ phân tử." "\n"
-                r"- **b) Đúng**: $V_1 = \dfrac{nRT_1}{p_1} = \dfrac{0{,}5 \cdot 8{,}31 \cdot 300}{10^5} = 0{,}012465\text{ m}^3 = 12{,}465\text{ L}$." "\n"
-                r"- **c) Đúng**: Nén đẳng nhiệt từ $(1)$ sang $(2)$ với $V_2 = \dfrac{V_1}{3} \Rightarrow p_2 = 3p_1 = 3 \times 10^5\text{ Pa}$." "\n"
-                r"- **d) Sai**: Nung nóng đẳng tích từ $(2)$ sang $(3)$: $p_3 = p_2 \dfrac{T_3}{T_2} = 3 \times 10^5 \cdot \dfrac{450}{300} = 4{,}5 \times 10^5\text{ Pa}$ (không phải $2 \times 10^5\text{ Pa}$).",
-            ),
-            mcq(
-                "vandung",
-                r"Một bọt khí nổi từ đáy một hồ nước sâu $h = 15\text{ m}$ lên sát mặt nước. Biết nhiệt độ ở đáy hồ là $t_1 = 7^\circ\text{C}$, nhiệt độ ở sát mặt nước là $t_2 = 27^\circ\text{C}$, áp suất khí quyển là $p_0 = 10^5\text{ Pa}$, khối lượng riêng của nước hồ là $\rho = 1000\text{ kg/m}^3$ và $g = 10\text{ m/s}^2$. Khi lên tới sát mặt nước, thể tích của bọt khí tăng lên bao nhiêu lần so với ở đáy hồ?",
-                [
-                    r"$2{,}68\text{ lần}$",
-                    r"$2{,}50\text{ lần}$",
-                    r"$1{,}50\text{ lần}$",
-                    r"$3{,}21\text{ lần}$",
-                ],
-                0,
-                r"Ở đáy hồ: $p_1 = p_0 + \rho g h = 10^5 + 1000 \cdot 10 \cdot 15 = 2{,}5 \times 10^5\text{ Pa}$; $T_1 = 7 + 273 = 280\text{ K}$. "
-                r"Ở sát mặt nước: $p_2 = p_0 = 10^5\text{ Pa}$; $T_2 = 27 + 273 = 300\text{ K}$. "
-                r"Theo phương trình trạng thái khí lí tưởng: $\dfrac{V_2}{V_1} = \dfrac{p_1 T_2}{p_2 T_1} = \dfrac{2{,}5 \times 10^5 \cdot 300}{10^5 \cdot 280} = \dfrac{75}{28} \approx \mathbf{2{,}68\text{ lần}}$.",
-            ),
-            short(
-                "vandung",
-                r"Một bình chứa khí oxygen ($\text{O}_2$, có khối lượng mol $M = 32\text{ g/mol}$) có dung tích $V = 8{,}31\text{ L}$ ở áp suất $p = 6 \times 10^5\text{ Pa}$ và nhiệt độ $t = 27^\circ\text{C}$. Lấy $R = 8{,}31\text{ J/(mol}\cdot\text{K)}$. Khối lượng khí oxygen trong bình bằng bao nhiêu gam?",
-                ["64"],
-                r"Đổi $V = 8{,}31\text{ L} = 8{,}31 \times 10^{-3}\text{ m}^3$; $T = 27 + 273 = 300\text{ K}$. "
-                r"Số mol khí oxygen trong bình: $n = \dfrac{pV}{RT} = \dfrac{6 \times 10^5 \cdot 8{,}31 \times 10^{-3}}{8{,}31 \cdot 300} = 2\text{ mol}$. "
-                r"Khối lượng khí oxygen: $m = nM = 2 \cdot 32 = \mathbf{64}\text{ g}$.",
-                unit=r"$\text{g}$",
-            ),
+        example="Tính nhiệt lượng $Q$ cần cung cấp để đun $m = 1\\text{ kg}$ nước từ nhiệt độ $t_1 = 20^\\circ\\text{C}$ đến khi sôi ở $100^\\circ\\text{C}$ và làm cho $0{,}2\\text{ kg}$ nước trong số đó hóa hơi hoàn toàn ở $100^\\circ\\text{C}$. Biết nhiệt dung riêng của nước là $c = 4200\\text{ J/(kg}\\cdot\\text{K)}$ và nhiệt hóa hơi riêng của nước ở $100^\\circ\\text{C}$ là $L = 2{,}26 \\cdot 10^6\\text{ J/kg}$.",
+        example_answer="Nhiệt lượng cần để đun $1\\text{ kg}$ nước từ $20^\\circ\\text{C}$ lên $100^\\circ\\text{C}$ là $Q_1 = m c (100 - 20) = 1 \\cdot 4200 \\cdot 80 = 336\\,000\\text{ J} = 336\\text{ kJ}$. Nhiệt lượng cần để làm hóa hơi $m_h = 0{,}2\\text{ kg}$ nước ở $100^\\circ\\text{C}$ là $Q_2 = L \\cdot m_h = 2{,}26 \\cdot 10^6 \\cdot 0{,}2 = 452\\,000\\text{ J} = 452\\text{ kJ}$. Tổng nhiệt lượng cần cung cấp là $Q = Q_1 + Q_2 = 336 + 452 = 788\\text{ kJ}$.",
+        real_life="Các máy điều hòa nhiệt độ và tủ lạnh hoạt động dựa trên chu trình cho môi chất lạnh (gas lạnh) bay hơi thu nhiệt ở dàn lạnh trong phòng rồi nén ngưng tụ tỏa nhiệt ra dàn nóng bên ngoài.",
+        quiz=[
+            mcq("biet", "Nhiệt lượng $Q$ cần cung cấp để làm hóa hơi hoàn toàn một lượng chất lỏng có khối lượng $m$ ở nhiệt độ sôi (với $L$ là nhiệt hóa hơi riêng ở nhiệt độ đó) được tính bằng công thức nào?", ["$Q = L \\cdot m$", "$Q = \\dfrac{L}{m}$", "$Q = \\dfrac{m}{L}$", "$Q = L \\cdot m \\cdot \\Delta t$"], 0, "Nhiệt lượng làm hóa hơi hoàn toàn khối lượng $m$ ở nhiệt độ xác định là $Q = L \\cdot m$."),
+            mcq("biet", "Đơn vị của nhiệt hóa hơi riêng $L$ trong hệ SI là gì?", ["$\\text{J/kg}$", "$\\text{J/(kg}\\cdot\\text{K)}$", "$\\text{J/K}$", "$\\text{W}\\cdot\\text{kg}$"], 0, "Vì $L = \\dfrac{Q}{m}$ nên đơn vị của nhiệt hóa hơi riêng là $\\text{J/kg}$."),
+            mcq("hieu", "Vì sao bị bỏng do hơi nước đang sôi ở $100^\\circ\\text{C}$ lại gây tổn thương nặng hơn rất nhiều so với bị bỏng do cùng một khối lượng nước lỏng ở $100^\\circ\\text{C}$?", ["Vì khi hơi nước ở $100^\\circ\\text{C}$ ngưng tụ trên da thành nước ở $100^\\circ\\text{C}$, nó tỏa thêm một nhiệt lượng cực lớn $Q = L \\cdot m$ (với $L \\approx 2{,}26 \\cdot 10^6\\text{ J/kg}$)", "Vì hơi nước ở $100^\\circ\\text{C}$ có nhiệt độ cao hơn nước sôi ở $100^\\circ\\text{C}$", "Vì hơi nước có khối lượng riêng lớn hơn nước lỏng", "Vì hơi nước không truyền nhiệt cho da"], 0, "Mỗi kilôgam hơi nước ở $100^\\circ\\text{C}$ khi ngưng tụ thành nước ở $100^\\circ\\text{C}$ tỏa ra thêm $2{,}26 \\cdot 10^6\\text{ J}$ nhiệt lượng trước khi nguội xuống nhiệt độ của da."),
+            tf4("hieu", "Xét tính đúng/sai của các phát biểu sau về nhiệt hóa hơi riêng:", [
+                "Nhiệt hóa hơi riêng của một chất lỏng phụ thuộc vào bản chất của chất lỏng và nhiệt độ mà tại đó chất lỏng bay hơi.",
+                "Trong thí nghiệm đo nhiệt hóa hơi riêng của nước đang sôi bằng cân điện tử, ta phải mở nắp bình đun để hơi nước bay thoát ra ngoài.",
+                "Trong suốt thời gian nước đang sôi và hóa hơi ở áp suất chuẩn, nhiệt độ của nước tăng đều từ $100^\\circ\\text{C}$ lên $200^\\circ\\text{C}$.",
+                "Nếu ấm đun công suất $\\mathcal{P} = 1000\\text{ W}$ làm bay hơi $\\Delta m = 0{,}05\\text{ kg}$ nước đang sôi trong $\\Delta t = 113\\text{ s}$ thì nhiệt hóa hơi riêng đo được là $L = \\dfrac{1000 \\cdot 113}{0{,}05} = 2{,}26 \\cdot 10^6\\text{ J/kg}$.",
+            ], [True, True, False, True], "Ý c) sai vì trong suốt quá trình nước đang sôi ở áp suất không đổi, nhiệt độ của nước giữ nguyên ở $100^\\circ\\text{C}$."),
+            short("vandung", "Biết nhiệt hóa hơi riêng của nước ở $100^\\circ\\text{C}$ là $L = 2260\\text{ kJ/kg}$. Nhiệt lượng $Q$ cần cung cấp để làm hóa hơi hoàn toàn $m = 0{,}5\\text{ kg}$ nước đang sôi ở $100^\\circ\\text{C}$ bằng bao nhiêu $\\text{kJ}$?", ["1130"], "Áp dụng công thức $Q = L \\cdot m = 2260 \\cdot 0{,}5 = 1130\\text{ kJ}$.", unit="kJ"),
         ],
-    },
-
-    # =========================================================================
-    # CHƯƠNG III – PHẦN 1. TỪ TRƯỜNG VÀ LỰC TỪ (Bài 14 – Bài 16 SGK Vật lí 12 KNTT)
-    # =========================================================================
-    {
-        "topic": "tu-truong",
-        "title": "Chương III (Phần 1). Từ trường và Lực từ",
-        "icon": "🧲",
-        "description": (
-            "Chương III (Phần 1) · SGK Vật lí 12 Kết nối tri thức với cuộc sống (Bài 14 – Bài 16): "
-            "Từ trường, đường sức từ và từ trường đều; Lực từ tác dụng lên đoạn dây dẫn mang dòng điện và cảm ứng từ; "
-            "Từ thông, hiện tượng cảm ứng điện từ, định luật Lenz và định luật Faraday."
-        ),
-        "requirements": [
-            r"Thực hiện thí nghiệm (hoặc quan sát thí nghiệm Oersted, từ phổ mạt sắt) tạo ra được các đường sức từ quanh nam châm và dây dẫn mang dòng điện; mô tả được khái niệm từ trường và tính chất của đường sức từ.",
-            r"Xác định được chiều của đường sức từ của dòng điện chạy trong dây dẫn thẳng dài, dây dẫn uốn thành vòng tròn và ống dây có dòng điện chạy qua bằng quy tắc nắm tay phải.",
-            r"Thực hiện thí nghiệm để mô tả được hướng của lực từ tác dụng lên đoạn dây dẫn mang dòng điện đặt trong từ trường (quy tắc bàn tay trái).",
-            r"Định nghĩa được cảm ứng từ $\vec{B}$ và đơn vị tesla ($\text{T}$); nêu được phương pháp đo cảm ứng từ bằng cân dòng điện.",
-            r"Vận dụng được biểu thức tính độ lớn lực từ tác dụng lên đoạn dây dẫn mang dòng điện $F = BIL\sin\theta$ và lực Lorentz $f = |q|vB\sin\theta$.",
-            r"Định nghĩa được từ thông $\Phi = NBS\cos\alpha$ và đơn vị weber ($\text{Wb}$).",
-            r"Tiến hành các thí nghiệm đơn giản minh hoạ được hiện tượng cảm ứng điện từ; phát biểu và vận dụng được định luật Lenz về chiều dòng điện cảm ứng và định luật Faraday về độ lớn suất điện động cảm ứng $e_{\text{c}} = -\dfrac{\Delta \Phi}{\Delta t}$.",
+    ),
+    bai(
+        topic=CH2[0], chapter_title=CH2[1], chapter_desc=CH2[2],
+        title="Bài 7: Mô hình động học phân tử chất khí",
+        icon="💨",
+        description="Chuyển động Brown, 3 nội dung của mô hình động học phân tử chất khí, khí lí tưởng và công thức số mol n = m/M = N/N_A.",
+        requirements=[
+            "Mô tả được chuyển động Brown (chuyển động hỗn loạn, không ngừng theo quỹ đạo gấp khúc của các hạt nhỏ lơ lửng trong chất lỏng hay chất khí) là bằng chứng thực nghiệm của chuyển động phân tử.",
+            "Trình bày được 3 giả thuyết của mô hình khí lí tưởng (coi phân tử khí là các chất điểm, chỉ tương tác khi va chạm đàn hồi với nhau và với thành bình) và giải thích cơ chế gây ra áp suất chất khí lên thành bình.",
+            "Vận dụng được công thức tính lượng chất (số mol) $n = \\dfrac{m}{M} = \\dfrac{N}{N_A}$ với hằng số Avogadro $N_A \\approx 6{,}02 \\cdot 10^{23}\\text{ mol}^{-1}$.",
         ],
-        "definition": (
-            r"- **Từ trường và Đường sức từ**: **Từ trường** là dạng vật chất tồn tại trong không gian xung quanh nam châm, dòng điện hoặc điện tích chuyển động, biểu hiện cụ thể bằng lực từ tác dụng lên nam châm hay dòng điện khác đặt trong nó. **Đường sức từ** là những đường vẽ trong không gian có từ trường sao cho tiếp tuyến tại mỗi điểm trùng với phương của vectơ cảm ứng từ $\vec{B}$ tại điểm đó; chiều của đường sức từ tuân theo quy tắc **vào Nam ra Bắc** (hoặc quy tắc nắm tay phải). Các đường sức từ là những đường cong khép kín và không cắt nhau." "\n"
-            r"- **Lực từ và Cảm ứng từ ($\vec{B}$)**: Đoạn dây dẫn thẳng chiều dài $L$ mang dòng điện $I$ đặt trong từ trường đều $\vec{B}$ hợp góc $\theta$ với dây dẫn chịu tác dụng của lực từ $\vec{F}$ có phương vuông góc với mặt phẳng chứa dây dẫn và $\vec{B}$, chiều tuân theo **quy tắc bàn tay trái**, độ lớn $F = BIL\sin\theta$. Độ lớn cảm ứng từ: $B = \dfrac{F}{IL\sin\theta}$, đơn vị trong hệ SI là **tesla** ($\text{T}$), với $1\text{ T} = 1\text{ N/(A}\cdot\text{m)}$." "\n"
-            r"- **Từ thông ($\Phi$) và Cảm ứng điện từ**: Từ thông qua khung dây phẳng gồm $N$ vòng dây có diện tích mỗi vòng là $S$ đặt trong từ trường đều $\vec{B}$: $\Phi = NBS\cos\alpha$ (đơn vị **weber**, ký hiệu $\text{Wb}$, $1\text{ Wb} = 1\text{ T}\cdot\text{m}^2$), với $\alpha = (\vec{n}, \vec{B})$ là góc hợp bởi vectơ pháp tuyến $\vec{n}$ của mặt phẳng khung và $\vec{B}$." "\n"
-            r"- **Định luật Lenz và Định luật Faraday**: Khi từ thông $\Phi$ qua một mạch kín biến thiên thì trong mạch xuất hiện dòng điện cảm ứng có chiều sao cho từ trường cảm ứng $\vec{B}_{\text{c}}$ có tác dụng chống lại sự biến thiên của từ thông ban đầu qua mạch (**Định luật Lenz**). Suất điện động cảm ứng trong mạch kín tỉ lệ với tốc độ biến thiên của từ thông qua mạch (**Định luật Faraday**): $e_{\text{c}} = -\dfrac{\Delta \Phi}{\Delta t}$ (độ lớn $|e_{\text{c}}| = \left|\dfrac{\Delta \Phi}{\Delta t}\right|$)."
+        definition="Trong mô hình khí lí tưởng, các phân tử khí được coi là các chất điểm chuyển động hỗn loạn không ngừng, chỉ tương tác với nhau khi va chạm trực tiếp và va chạm đàn hồi với thành bình tạo nên áp suất chất khí. Số mol chất khí được tính bởi: $n = \\dfrac{m}{M} = \\dfrac{N}{N_A}$ (với $N_A = 6{,}02 \\cdot 10^{23}\\text{ mol}^{-1}$).",
+        theory=(
+            "### 1. Chuyển động Brown và Mô hình động học phân tử chất khí\n"
+            "- **Chuyển động Brown (1827)**: các hạt phấn hoa (hoặc hạt khói) chuyển động hỗn loạn không ngừng theo quỹ đạo những đường gấp khúc bất kì do sự va chạm không cân bằng từ mọi phía của các phân tử nước (hoặc không khí).\n"
+            "- **Ba nội dung của mô hình động học phân tử chất khí**:\n"
+            "  1. Chất khí được cấu tạo từ các phân tử có kích thước rất nhỏ so với khoảng cách giữa chúng.\n"
+            "  2. Các phân tử khí chuyển động hỗn loạn, không ngừng; nhiệt độ càng cao thì tốc độ chuyển động nhiệt càng lớn.\n"
+            "  3. Khi chuyển động hỗn loạn, các phân tử khí va chạm vào nhau và **va chạm vào thành bình** gây ra **áp suất chất khí lên thành bình**.\n\n"
+            "### 2. Khí lí tưởng và Lượng chất (Số mol)\n"
+            "- **Khí lí tưởng**: chất khí mà các phân tử được coi là các **chất điểm** (bỏ qua thể tích riêng của phân tử) và **chỉ tương tác với nhau khi va chạm** (bỏ qua lực tương tác phân tử khi không va chạm).\n"
+            "- **Số mol ($n$)** và **Số phân tử ($N$)**:\n"
+            "  $$n = \\dfrac{m}{M} = \\dfrac{N}{N_A} \\implies N = n \\cdot N_A = \\dfrac{m}{M} N_A$$\n"
+            "  với $M$ là khối lượng mol ($\text{g/mol}$ hoặc $\\text{kg/mol}$) và $N_A \\approx 6{,}02 \\cdot 10^{23}\\text{ mol}^{-1}$ là hằng số Avogadro."
         ),
-        "theory": (
-            r"### Bài 14. Từ trường" "\n"
-            r"- **Tương tác từ**: Là tương tác giữa nam châm với nam châm, giữa nam châm với dòng điện (thí nghiệm Oersted) và giữa hai dòng điện với nhau." "\n"
-            r"- **Tính chất của đường sức từ**: (1) Tại mỗi điểm trong từ trường chỉ vẽ được một đường sức từ đi qua; (2) Các đường sức từ là những đường cong khép kín; (3) Nơi nào từ trường mạnh hơn thì các đường sức từ được vẽ dày hơn, nơi nào từ trường yếu hơn thì vẽ thưa hơn. **Từ trường đều** là từ trường có vectơ cảm ứng từ $\vec{B}$ tại mọi điểm đều bằng nhau (các đường sức từ song song và cách đều nhau, như trong lòng ống dây hình trụ dài hay giữa hai cực nam châm hình chữ U)." "\n"
-            r"- **Quy tắc nắm tay phải**: Đối với dòng điện thẳng dài: ngón cái choãi ra chỉ chiều dòng điện $I$, bốn ngón tay khum lại chỉ chiều đường sức từ (là các đường tròn đồng tâm vuông góc với dây). Đối với vòng dây tròn và ống dây hình trụ: bốn ngón tay khum theo chiều dòng điện $I$ chạy qua các vòng dây, ngón cái choãi ra chỉ chiều đường sức từ đi xuyên qua lòng ống dây." "\n"
-            r"### Bài 15. Lực từ tác dụng lên dây dẫn mang dòng điện. Cảm ứng từ" "\n"
-            r"- **Quy tắc bàn tay trái (xác định lực từ $\vec{F}$)**: Đặt bàn tay trái duỗi thẳng sao cho các đường sức từ ($\vec{B}$) hướng vào lòng bàn tay, chiều từ cổ tay đến bốn ngón tay trùng với chiều dòng điện $I$, khi đó ngón tay cái choãi ra $90^\circ$ chỉ chiều của lực từ $\vec{F}$ tác dụng lên đoạn dây dẫn." "\n"
-            r"- **Độ lớn lực từ và định nghĩa cảm ứng từ**: $F = BIL\sin\theta$, trong đó $\theta$ là góc hợp bởi chiều dòng điện và vectơ $\vec{B}$. Khi $\theta = 0^\circ$ hoặc $\theta = 180^\circ$ (dây dẫn song song với $\vec{B}$) thì $F = 0$; khi $\theta = 90^\circ$ (dây dẫn vuông góc với $\vec{B}$) thì lực từ đạt cực đại $F_{\max} = BIL$." "\n"
-            r"- **Thí nghiệm cân dòng điện**: Dùng để đo độ lớn cảm ứng từ $B$ trong lòng nam châm thông qua việc cân bằng lực từ $F = BIL$ tác dụng lên đoạn dây dẫn nằm ngang với trọng lực của các quả cân (hoặc số chỉ lực kế điện tử)." "\n"
-            r"- **Mở rộng – Cảm ứng từ của một số dòng điện đặc biệt và lực Lorentz**: Dây dẫn thẳng dài: $B = 2 \times 10^{-7}\dfrac{I}{r}$; tâm khung dây tròn $N$ vòng: $B = 2\pi \times 10^{-7}\dfrac{NI}{R}$; trong lòng ống dây hình trụ: $B = 4\pi \times 10^{-7}\dfrac{NI}{\ell} = 4\pi \times 10^{-7}nI$. Hạt điện tích $q$ chuyển động với vận tốc $\vec{v}$ trong từ trường chịu lực Lorentz $f = |q|vB\sin\theta$." "\n"
-            r"### Bài 16. Từ thông. Hiện tượng cảm ứng điện từ" "\n"
-            r"- **Từ thông**: $\Phi = NBS\cos\alpha$. Lưu ý phân biệt góc $\alpha = (\vec{n}, \vec{B})$ với góc $\beta$ hợp bởi $\vec{B}$ và mặt phẳng khung dây ($\alpha + \beta = 90^\circ \Rightarrow \cos\alpha = \sin\beta$)." "\n"
-            r"- **Định luật Lenz**: Nếu từ thông $\Phi$ qua mạch kín **tăng** ($\Delta \Phi > 0$) thì từ trường cảm ứng $\vec{B}_{\text{c}}$ **ngược chiều** với từ trường ban đầu $\vec{B}$ ($\vec{B}_{\text{c}} \uparrow\downarrow \vec{B}$); nếu từ thông $\Phi$ **giảm** ($\Delta \Phi < 0$) thì $\vec{B}_{\text{c}}$ **cùng chiều** với $\vec{B}$ ($\vec{B}_{\text{c}} \uparrow\uparrow \vec{B}$)." "\n"
-            r"- **Định luật Faraday và dòng điện cảm ứng**: Độ lớn suất điện động cảm ứng $|e_{\text{c}}| = \left|\dfrac{\Delta \Phi}{\Delta t}\right|$. Nếu mạch kín có tổng điện trở $R$ thì cường độ dòng điện cảm ứng là $I_{\text{c}} = \dfrac{|e_{\text{c}}|}{R}$. Đối với đoạn dây dẫn chiều dài $\ell$ chuyển động cắt các đường sức từ với vận tốc $v$: $|e_{\text{c}}| = B\ell v\sin\theta$."
-        ),
-        "formulas": [
+        formulas=[
             G(
-                "I. Lực từ và Cảm ứng từ",
-                F("Độ lớn lực từ Ampere", r"$F = BIL\sin\theta$", r"$\theta = (\vec{I}, \vec{B})$; khi $\vec{I} \perp \vec{B}$ thì $F_{\max} = BIL$."),
-                F("Độ lớn cảm ứng từ", r"$B = \dfrac{F}{IL\sin\theta}$", r"Đơn vị: tesla ($\text{T}$), $1\text{ T} = 1\text{ N/(A}\cdot\text{m)} = 10^4\text{ G}$."),
-                F("Từ trường dòng điện thẳng, tròn, ống dây", r"$B_{\text{thẳng}} = 2 \times 10^{-7}\dfrac{I}{r}; \quad B_{\text{tròn}} = 2\pi \times 10^{-7}\dfrac{NI}{R}; \quad B_{\text{ống}} = 4\pi \times 10^{-7}\dfrac{NI}{\ell}$", r"Áp dụng trong chân không hoặc không khí."),
-                F("Lực Lorentz lên hạt mang điện", r"$f = |q|vB\sin\theta; \quad R = \dfrac{mv}{|q|B}\text{ (khi }\vec{v} \perp \vec{B}\text{)}$", r"Bán kính quỹ đạo tròn trong từ trường đều."),
-            ),
+                "Công thức Số mol và Số phân tử khí",
+                F("Số mol chất khí theo khối lượng m và số phân tử N", "$n = \\dfrac{m}{M} = \\dfrac{N}{N_A} \\implies N = n \\cdot N_A = \\dfrac{m}{M} N_A$", "Trong đó $N_A \\approx 6{,}02 \\cdot 10^{23}\\text{ mol}^{-1}$ là số Avogadro; $m$ và $M$ phải để cùng đơn vị (cùng là $\\text{g}$ và $\\text{g/mol}$, hoặc cùng là $\\text{kg}$ và $\\text{kg/mol}$)."),
+                F("Khối lượng của 1 phân tử khí và Mật độ phân tử", "$m_0 = \\dfrac{M}{N_A}; \\qquad \\mu = \\dfrac{N}{V} = \\dfrac{n \\cdot N_A}{V}$", "Trong đó $m_0$ là khối lượng của $1$ phân tử khí, $\\mu$ là mật độ phân tử (số phân tử trong $1\\text{ m}^3$)."),
+            )
+        ],
+        example="Một bình kín chứa $m = 64\\text{ g}$ khí ôxi ($\\text{O}_2$, có khối lượng mol $M = 32\\text{ g/mol}$). Lấy số Avogadro $N_A = 6{,}02 \\cdot 10^{23}\\text{ mol}^{-1}$. Hãy tính số mol $n$ và tổng số phân tử khí ôxi $N$ có trong bình.",
+        example_answer="Số mol khí ôxi trong bình là $n = \\dfrac{m}{M} = \\dfrac{64}{32} = 2\\text{ mol}$. Tổng số phân tử khí ôxi trong bình là $N = n \\cdot N_A = 2 \\cdot 6{,}02 \\cdot 10^{23} = 1{,}204 \\cdot 10^{24}$ phân tử.",
+        real_life="Ở áp suất khí quyển thông thường và nhiệt độ phòng, không khí, khí ôxi, khí nitơ, khí heli đều tuân theo rất sát các định luật của mô hình khí lí tưởng.",
+        quiz=[
+            mcq("biet", "Trong mô hình **khí lí tưởng**, các phân tử khí được coi như thế nào?", ["Được coi là các chất điểm chuyển động hỗn loạn không ngừng và chỉ tương tác với nhau khi va chạm", "Là những quả cầu lớn xếp khít sát vào nhau", "Luôn đứng yên tại các nút mạng tinh thể", "Luôn hút nhau rất mạnh ngay cả khi ở rất xa nhau"], 0, "Trong mô hình khí lí tưởng, kích thước phân tử rất nhỏ được coi là chất điểm và bỏ qua lực tương tác khi chưa va chạm."),
+            mcq("biet", "Nguyên nhân gây ra áp suất của chất khí lên thành bình chứa là gì?", ["Do hàng tỉ phân tử khí chuyển động nhiệt hỗn loạn va chạm liên tục vào thành bình từ mọi phía", "Do các phân tử khí đứng yên đè lên đáy bình", "Do lực hút của thành bình lên các hạt nhân", "Do chất khí tự nở thành chất rắn"], 0, "Khi chuyển động hỗn loạn, mỗi phân tử khí va chạm với thành bình tác dụng một lực nhỏ; tổng hợp vô số va chạm tạo nên áp suất liên tục lên thành bình."),
+            mcq("hieu", "Công thức tính số phân tử $N$ có trong một khối lượng $m$ của chất khí có khối lượng mol $M$ (với $N_A$ là hằng số Avogadro) là gì?", ["$N = \\dfrac{m}{M} \\cdot N_A$", "$N = \\dfrac{M}{m} \\cdot N_A$", "$N = \\dfrac{m \\cdot M}{N_A}$", "$N = \\dfrac{N_A}{m \\cdot M}$"], 0, "Vì số mol $n = \\dfrac{m}{M} = \\dfrac{N}{N_A}$, nên $N = n \\cdot N_A = \\dfrac{m}{M} N_A$."),
+            tf4("hieu", "Xét tính đúng/sai của các phát biểu sau về mô hình động học phân tử chất khí:", [
+                "Quỹ đạo chuyển động Brown của các hạt khói lơ lửng trong không khí là những đường gấp khúc không theo một quy luật nào.",
+                "Khi nhiệt độ của chất khí càng cao thì chuyển động Brown diễn ra càng nhanh và mạnh.",
+                "Một mol của bất kì chất khí nào ở cùng điều kiện cũng chứa một số phân tử khác nhau tùy theo khối lượng mol.",
+                "Một bình chứa $14\\text{ g}$ khí nitơ ($\\text{N}_2, M = 28\\text{ g/mol}$) tương ứng với số mol là $n = 0{,}5\\text{ mol}$.",
+            ], [True, True, False, True], "Ý c) sai vì $1\\text{ mol}$ của mọi chất đều chứa cùng một số phân tử bằng hằng số Avogadro $N_A \\approx 6{,}02 \\cdot 10^{23}$ hạt."),
+            short("vandung", "Một bình chứa $m = 12\\text{ g}$ khí heli ($\\text{He}$, có khối lượng mol $M = 4\\text{ g/mol}$). Số mol $n$ khí heli trong bình bằng bao nhiêu $\\text{mol}$?", ["3"], "Áp dụng công thức $n = \\dfrac{m}{M} = \\dfrac{12}{4} = 3\\text{ mol}$.", unit="mol"),
+        ],
+    ),
+    bai(
+        topic=CH2[0], chapter_title=CH2[1], chapter_desc=CH2[2],
+        title="Bài 8: Định luật Boyle",
+        icon="💉",
+        description="Quá trình đẳng nhiệt (T = const), phát biểu và biểu thức Định luật Boyle p.V = const hay p₁V₁ = p₂V₂, đường đẳng nhiệt trong các hệ tọa độ.",
+        requirements=[
+            "Nêu được quá trình đẳng nhiệt là quá trình biến đổi trạng thái của một lượng khí xác định khi nhiệt độ được giữ không đổi ($T = \\text{const}$).",
+            "Phát biểu và vận dụng được biểu thức của Định luật Boyle: ở nhiệt độ không đổi, áp suất của một khối lượng khí xác định tỉ lệ nghịch với thể tích của nó ($p V = \\text{const} \\iff p_1 V_1 = p_2 V_2$).",
+            "Nhận biết được đường đẳng nhiệt trong hệ tọa độ $(p, V)$ là một nhánh hypebol (đường ở trên ứng với nhiệt độ cao hơn: $T_2 > T_1$) và trong hệ $(p, T)$ hoặc $(V, T)$ là đoạn thẳng vuông góc với trục $OT$.",
+        ],
+        definition="Định luật Boyle: Với một khối lượng khí xác định khi giữ nhiệt độ không đổi (quá trình đẳng nhiệt), áp suất $p$ tỉ lệ nghịch với thể tích $V$ của nó: $p \\cdot V = \\text{const} \\iff p_1 V_1 = p_2 V_2$.",
+        theory=(
+            "### 1. Quá trình đẳng nhiệt và Định luật Boyle\n"
+            "- **Ba thông số trạng thái** của một lượng khí xác định: áp suất $p$, thể tích $V$ và nhiệt độ tuyệt đối $T$.\n"
+            "- **Quá trình đẳng nhiệt**: quá trình biến đổi trạng thái trong đó nhiệt độ được giữ không đổi ($T = \\text{const}$).\n"
+            "- **Định luật Boyle (Robert Boyle)**:\n"
+            "  $$p \\sim \\dfrac{1}{V} \\iff p \\cdot V = \\text{hằng số} \\iff p_1 V_1 = p_2 V_2$$\n"
+            "- *Giải thích bằng thuyết động học phân tử*: Khi $T$ không đổi, tốc độ trung bình của phân tử không đổi; nếu nén thể tích $V$ giảm đi $k$ lần thì mật độ phân tử $\\mu = \\dfrac{N}{V}$ tăng lên $k$ lần, số va chạm lên thành bình tăng $k$ lần nên áp suất $p$ tăng $k$ lần.\n\n"
+            "### 2. Đường đẳng nhiệt\n"
+            "- Trong hệ tọa độ $(p, V)$: đường đẳng nhiệt là một **nhánh đường hypebol**. Cùng một lượng khí, đường đẳng nhiệt nằm ở phía trên (xa gốc tọa độ hơn) ứng với nhiệt độ cao hơn ($T_2 > T_1$).\n"
+            "- Trong hệ tọa độ $(p, T)$ hoặc $(V, T)$: đường đẳng nhiệt là một **đoạn thẳng vuông góc với trục nhiệt độ tuyệt đối $OT$**."
+        ),
+        formulas=[
             G(
-                "II. Từ thông và Hiện tượng cảm ứng điện từ",
-                F("Từ thông qua khung dây $N$ vòng", r"$\Phi = NBS\cos\alpha = NBS\sin\beta$", r"$\alpha = (\vec{n}, \vec{B})$, $\beta = (\vec{B}, \text{mp khung})$; đơn vị: $\text{Wb}$."),
-                F("Định luật Faraday về cảm ứng điện từ", r"$e_{\text{c}} = -\dfrac{\Delta \Phi}{\Delta t} \Rightarrow |e_{\text{c}}| = \left|\dfrac{\Delta \Phi}{\Delta t}\right|$", r"Dấu trừ biểu thị định luật Lenz."),
-                F("Cường độ dòng điện cảm ứng và Điện lượng dịch chuyển", r"$I_{\text{c}} = \dfrac{|e_{\text{c}}|}{R}; \quad \Delta q = I_{\text{c}}\Delta t = \dfrac{|\Delta \Phi|}{R}$", r"$R$ là tổng điện trở của mạch kín."),
-                F("Suất điện động cảm ứng trong thanh chuyển động", r"$|e_{\text{c}}| = B\ell v\sin\theta$", r"Chiều xác định bằng quy tắc bàn tay phải."),
-            ),
+                "Biểu thức Định luật Boyle (Quá trình đẳng nhiệt T = const)",
+                F("Hệ thức Định luật Boyle cho hai trạng thái (1) và (2)", "$p_1 \\cdot V_1 = p_2 \\cdot V_2 = \\text{const} \\implies p_2 = p_1 \\cdot \\dfrac{V_1}{V_2}$", "Hai đại lượng $p_1, p_2$ chỉ cần cùng đơn vị ($\\text{Pa}, \\text{kPa}, \\text{atm}, \\text{bar}$) và $V_1, V_2$ cùng đơn vị ($\\text{L}, \\text{cm}^3, \\text{m}^3$)."),
+                F("Bài toán bơm khí đẳng nhiệt (n lần bơm ống thể tích V₀ vào bình V)", "$p_0 (V + n V_0) = p_2 V \\quad (\\text{nếu ban đầu trong bình đã có khí ở } p_0)$", "Nếu ban đầu bình rỗng hoàn toàn thì $p_0 \\cdot (n V_0) = p_2 \\cdot V$."),
+            )
         ],
-        "example": (
-            r"Một khung dây dẫn phẳng hình vuông gồm $N = 100\text{ vòng}$ dây, mỗi cạnh dài $a = 10\text{ cm}$, có tổng điện trở $R = 2\text{ }\Omega$. "
-            r"Khung dây được đặt trong một từ trường đều có vectơ cảm ứng từ $\vec{B}$ hợp với mặt phẳng khung dây một góc $\beta = 30^\circ$. "
-            r"Trong khoảng thời gian $\Delta t = 0{,}05\text{ s}$, độ lớn cảm ứng từ giảm đều từ $B_1 = 0{,}4\text{ T}$ về $B_2 = 0\text{ T}$. "
-            r"Tính độ biến thiên từ thông qua khung dây, độ lớn suất điện động cảm ứng $|e_{\text{c}}|$ và cường độ dòng điện cảm ứng $I_{\text{c}}$ trong khung."
-        ),
-        "example_answer": (
-            r"- **Diện tích mỗi vòng dây**: $S = a^2 = (0{,}1\text{ m})^2 = 0{,}01\text{ m}^2$." "\n"
-            r"- **Góc hợp bởi vectơ pháp tuyến $\vec{n}$ và $\vec{B}$**: Vì $\vec{B}$ hợp với mặt phẳng khung dây góc $\beta = 30^\circ$ nên $\alpha = 90^\circ - \beta = 60^\circ \Rightarrow \cos\alpha = \cos 60^\circ = 0{,}5$." "\n"
-            r"- **Từ thông ban đầu và lúc sau**: $\Phi_1 = N B_1 S \cos\alpha = 100 \cdot 0{,}4 \cdot 0{,}01 \cdot 0{,}5 = 0{,}2\text{ Wb}$; $\Phi_2 = 0\text{ Wb}$. Độ biến thiên từ thông: $\Delta \Phi = \Phi_2 - \Phi_1 = -0{,}2\text{ Wb}$." "\n"
-            r"- **Độ lớn suất điện động cảm ứng**: $|e_{\text{c}}| = \left|\dfrac{\Delta \Phi}{\Delta t}\right| = \dfrac{0{,}2}{0{,}05} = \mathbf{4\text{ V}}$." "\n"
-            r"- **Cường độ dòng điện cảm ứng trong khung**: $I_{\text{c}} = \dfrac{|e_{\text{c}}|}{R} = \dfrac{4}{2} = \mathbf{2\text{ A}}$."
-        ),
-        "real_life": (
-            r"- **Động cơ điện một chiều và loa điện động**: Dòng điện chạy qua cuộn dây đặt trong từ trường của nam châm vĩnh cửu chịu lực từ $F = BIL$ làm quay rôto động cơ hoặc làm dao động màng loa phát ra âm thanh." "\n"
-            r"- **Cân dòng điện trong phòng thí nghiệm**: Ứng dụng lực từ cân bằng với trọng lực để đo chính xác độ lớn cảm ứng từ $B$ của nam châm." "\n"
-            r"- **Đầu đọc thẻ từ, cảm biến tốc độ bánh xe ABS và micro điện động**: Dựa trên hiện tượng cảm ứng điện từ xuất hiện suất điện động $e_{\text{c}} = -\dfrac{\Delta \Phi}{\Delta t}$ khi từ thông biến thiên."
-        ),
-        "game_title": "Thí nghiệm Lực từ, Cân dòng điện và Cảm ứng điện từ Faraday",
-        "game_description": "Khảo sát quy tắc bàn tay trái, đo cảm ứng từ bằng cân dòng điện và dịch chuyển nam châm qua cuộn dây để kiểm nghiệm định luật Lenz – Faraday.",
-        "game_type": "game_tu_truong",
-        "quiz": [
-            mcq(
-                "biet",
-                r"Đoạn dây dẫn thẳng có chiều dài $L$ mang dòng điện cường độ $I$ đặt trong từ trường đều có cảm ứng từ $\vec{B}$ hợp với dây dẫn một góc $\theta$. Độ lớn của lực từ $F$ tác dụng lên đoạn dây dẫn được tính bằng công thức nào?",
-                [
-                    r"$F = BIL\sin\theta$",
-                    r"$F = BIL\cos\theta$",
-                    r"$F = BIL\tan\theta$",
-                    r"$F = \dfrac{BI}{L}\sin\theta$",
-                ],
-                0,
-                r"Độ lớn lực từ tác dụng lên đoạn dây dẫn mang dòng điện đặt trong từ trường đều là $F = BIL\sin\theta$.",
-            ),
-            mcq(
-                "biet",
-                r"Đơn vị của từ thông $\Phi$ và đơn vị của cảm ứng từ $B$ trong hệ SI lần lượt là:",
-                [
-                    r"Weber ($\text{Wb}$) và tesla ($\text{T}$)",
-                    r"Tesla ($\text{T}$) và weber ($\text{Wb}$)",
-                    r"Henry ($\text{H}$) và tesla ($\text{T}$)",
-                    r"Weber ($\text{Wb}$) và volt ($\text{V}$)",
-                ],
-                0,
-                r"Trong hệ SI, từ thông $\Phi$ có đơn vị là weber ($\text{Wb}$) và cảm ứng từ $B$ có đơn vị là tesla ($\text{T}$), với $1\text{ Wb} = 1\text{ T}\cdot\text{m}^2$.",
-            ),
-            mcq(
-                "biet",
-                r"Theo định luật Lenz, dòng điện cảm ứng xuất hiện trong một mạch kín có chiều sao cho từ trường cảm ứng do nó sinh ra:",
-                [
-                    r"Có tác dụng chống lại sự biến thiên của từ thông ban đầu qua mạch kín",
-                    r"Luôn cùng chiều với từ trường ban đầu qua mạch kín",
-                    r"Luôn ngược chiều với từ trường ban đầu qua mạch kín",
-                    r"Luôn vuông góc với các đường sức của từ trường ban đầu",
-                ],
-                0,
-                r"Định luật Lenz khẳng định: dòng điện cảm ứng xuất hiện trong mạch kín có chiều sao cho từ trường cảm ứng có tác dụng chống lại sự biến thiên của từ thông ban đầu qua mạch.",
-            ),
-            mcq(
-                "biet",
-                r"Biểu thức của định luật Faraday về suất điện động cảm ứng $e_{\text{c}}$ xuất hiện trong một mạch kín có từ thông biến thiên lượng $\Delta \Phi$ trong khoảng thời gian $\Delta t$ là:",
-                [
-                    r"$e_{\text{c}} = -\dfrac{\Delta \Phi}{\Delta t}$",
-                    r"$e_{\text{c}} = -\Delta \Phi \cdot \Delta t$",
-                    r"$e_{\text{c}} = -\dfrac{\Delta t}{\Delta \Phi}$",
-                    r"$e_{\text{c}} = \dfrac{1}{2}\Delta \Phi (\Delta t)^2$",
-                ],
-                0,
-                r"Theo định luật Faraday, suất điện động cảm ứng trong mạch kín tỉ lệ với tốc độ biến thiên của từ thông: $e_{\text{c}} = -\dfrac{\Delta \Phi}{\Delta t}$.",
-            ),
-            mcq(
-                "hieu",
-                r"Một đoạn dây dẫn thẳng dài $L = 40\text{ cm}$ có dòng điện cường độ $I = 5\text{ A}$ chạy qua được đặt trong một từ trường đều có độ lớn cảm ứng từ $B = 0{,}25\text{ T}$ sao cho dây dẫn hợp với vectơ cảm ứng từ $\vec{B}$ một góc $\theta = 30^\circ$. Độ lớn lực từ tác dụng lên đoạn dây dẫn là:",
-                [
-                    r"$0{,}25\text{ N}$",
-                    r"$0{,}50\text{ N}$",
-                    r"$0{,}43\text{ N}$",
-                    r"$2{,}50\text{ N}$",
-                ],
-                0,
-                r"Đổi $L = 40\text{ cm} = 0{,}4\text{ m}$. Áp dụng công thức: $F = BIL\sin\theta = 0{,}25 \cdot 5 \cdot 0{,}4 \cdot \sin 30^\circ = 0{,}5 \cdot 0{,}5 = \mathbf{0{,}25\text{ N}}$.",
-            ),
-            mcq(
-                "hieu",
-                r"Một khung dây phẳng gồm $N = 200\text{ vòng}$ dây, diện tích mỗi vòng là $S = 25\text{ cm}^2$, đặt trong từ trường đều có cảm ứng từ $B = 0{,}4\text{ T}$ sao cho mặt phẳng khung dây vuông góc với các đường sức từ. Từ thông qua khung dây là:",
-                [
-                    r"$0{,}2\text{ Wb}$",
-                    r"$0\text{ Wb}$",
-                    r"$2000\text{ Wb}$",
-                    r"$0{,}001\text{ Wb}$",
-                ],
-                0,
-                r"Đổi $S = 25\text{ cm}^2 = 25 \times 10^{-4}\text{ m}^2$. Vì mặt phẳng khung dây vuông góc với đường sức từ nên vectơ pháp tuyến $\vec{n}$ song song với $\vec{B}$ ($\alpha = 0^\circ \Rightarrow \cos\alpha = 1$). Do đó $\Phi = NBS\cos 0^\circ = 200 \cdot 0{,}4 \cdot 25 \times 10^{-4} \cdot 1 = \mathbf{0{,}2\text{ Wb}}$.",
-            ),
-            tf4(
-                "hieu",
-                r"Xét tính đúng hay sai của các phát biểu sau về từ trường, đường sức từ và lực từ:",
-                [
-                    r"a) Các đường sức từ là những đường cong khép kín; đối với nam châm, ở bên ngoài nam châm các đường sức từ đi ra từ cực Bắc và đi vào cực Nam.",
-                    r"b) Khi đoạn dây dẫn mang dòng điện đặt song song với các đường sức từ ($\theta = 0^\circ$ hoặc $\theta = 180^\circ$) thì lực từ tác dụng lên đoạn dây dẫn đạt giá trị cực đại.",
-                    r"c) Từ trường trong lòng một ống dây hình trụ dài có dòng điện không đổi chạy qua là từ trường đều, có các đường sức từ là những đường thẳng song song và cách đều nhau.",
-                    r"d) Lực từ tác dụng lên đoạn dây dẫn mang dòng điện luôn có phương vuông góc với cả đoạn dây dẫn và vectơ cảm ứng từ $\vec{B}$.",
-                ],
-                [True, False, True, True],
-                r"- **a) Đúng**: Đường sức từ luôn là đường cong khép kín, tuân theo quy tắc vào Nam (S) ra Bắc (N)." "\n"
-                r"- **b) Sai**: Khi $\theta = 0^\circ$ hoặc $180^\circ$ thì $\sin\theta = 0 \Rightarrow F = BIL\sin\theta = 0$ (dây dẫn không chịu lực từ)." "\n"
-                r"- **c) Đúng**: Trong lòng ống dây hình trụ dài, từ trường là từ trường đều." "\n"
-                r"- **d) Đúng**: Vectơ lực từ $\vec{F}$ luôn vuông góc với mặt phẳng chứa dòng điện và vectơ cảm ứng từ $\vec{B}$.",
-            ),
-            tf4(
-                "hieu",
-                r"Một vòng dây dẫn kín phẳng có diện tích $S = 100\text{ cm}^2$ và điện trở $R = 0{,}5\text{ }\Omega$ được đặt cố định trong từ trường đều sao cho vectơ cảm ứng từ $\vec{B}$ vuông góc với mặt phẳng vòng dây. Trong khoảng thời gian $\Delta t = 0{,}04\text{ s}$, cảm ứng từ tăng đều từ $B_1 = 0{,}1\text{ T}$ lên $B_2 = 0{,}5\text{ T}$. Xét các khẳng định sau:",
-                [
-                    r"a) Độ biến thiên từ thông qua vòng dây trong khoảng thời gian trên là $\Delta \Phi = 4 \times 10^{-3}\text{ Wb}$.",
-                    r"b) Vì từ thông qua vòng dây tăng nên từ trường cảm ứng $\vec{B}_{\text{c}}$ do dòng điện cảm ứng sinh ra cùng chiều với từ trường ban đầu $\vec{B}$.",
-                    r"c) Độ lớn suất điện động cảm ứng xuất hiện trong vòng dây là $|e_{\text{c}}| = 0{,}1\text{ V}$.",
-                    r"d) Cường độ dòng điện cảm ứng chạy trong vòng dây là $I_{\text{c}} = 0{,}2\text{ A}$.",
-                ],
-                [True, False, True, True],
-                r"- **a) Đúng**: Đổi $S = 100\text{ cm}^2 = 0{,}01\text{ m}^2$, $\alpha = 0^\circ$. Ta có $\Delta \Phi = (B_2 - B_1)S = (0{,}5 - 0{,}1) \cdot 0{,}01 = 4 \times 10^{-3}\text{ Wb}$." "\n"
-                r"- **b) Sai**: Theo định luật Lenz, khi từ thông $\Phi$ tăng thì từ trường cảm ứng $\vec{B}_{\text{c}}$ phải **ngược chiều** với từ trường ban đầu $\vec{B}$ để chống lại sự tăng từ thông." "\n"
-                r"- **c) Đúng**: $|e_{\text{c}}| = \dfrac{|\Delta \Phi|}{\Delta t} = \dfrac{4 \times 10^{-3}}{0{,}04} = 0{,}1\text{ V}$." "\n"
-                r"- **d) Đúng**: $I_{\text{c}} = \dfrac{|e_{\text{c}}|}{R} = \dfrac{0{,}1}{0{,}5} = 0{,}2\text{ A}$.",
-            ),
-            mcq(
-                "vandung",
-                r"Một đoạn dây dẫn bằng đồng có khối lượng $m = 12\text{ g}$ và chiều dài $L = 30\text{ cm}$ được treo nằm ngang bằng hai sợi dây mảnh không giãn trong một từ trường đều có vectơ cảm ứng từ $\vec{B}$ nằm ngang và vuông góc với đoạn dây dẫn, độ lớn $B = 0{,}2\text{ T}$. Lấy $g = 10\text{ m/s}^2$. Để lực căng của hai sợi dây treo bằng $0$ thì dòng điện chạy qua đoạn dây đồng phải có cường độ bằng bao nhiêu?",
-                [
-                    r"$2{,}0\text{ A}$",
-                    r"$1{,}5\text{ A}$",
-                    r"$0{,}5\text{ A}$",
-                    r"$4{,}0\text{ A}$",
-                ],
-                0,
-                r"Đổi $m = 12\text{ g} = 0{,}012\text{ kg}$, $L = 30\text{ cm} = 0{,}3\text{ m}$. Để lực căng dây treo bằng $0$, lực từ $\vec{F}$ phải hướng thẳng đứng lên trên và cân bằng với trọng lực $\vec{P}$: $BIL = mg \Rightarrow I = \dfrac{mg}{BL} = \dfrac{0{,}012 \cdot 10}{0{,}2 \cdot 0{,}3} = \dfrac{0{,}12}{0{,}06} = \mathbf{2{,}0\text{ A}}$.",
-            ),
-            short(
-                "vandung",
-                r"Một cuộn dây phẳng gồm $N = 500\text{ vòng}$ dây, diện tích mỗi vòng là $S = 40\text{ cm}^2$, đặt trong từ trường đều có $\vec{B}$ hợp với mặt phẳng khung dây góc $\beta = 30^\circ$. Khi cho cảm ứng từ giảm đều từ $B = 0{,}6\text{ T}$ về $0\text{ T}$ trong thời gian $\Delta t = 0{,}02\text{ s}$ thì suất điện động cảm ứng xuất hiện trong cuộn dây có độ lớn bằng bao nhiêu vôn ($\text{V}$)?",
-                ["30"],
-                r"Đổi $S = 40\text{ cm}^2 = 4 \times 10^{-3}\text{ m}^2$. Góc hợp bởi pháp tuyến $\vec{n}$ và $\vec{B}$ là $\alpha = 90^\circ - 30^\circ = 60^\circ \Rightarrow \cos\alpha = 0{,}5$. "
-                r"Từ thông ban đầu: $\Phi_1 = NBS\cos 60^\circ = 500 \cdot 0{,}6 \cdot 4 \times 10^{-3} \cdot 0{,}5 = 0{,}6\text{ Wb}$. "
-                r"Độ lớn suất điện động cảm ứng: $|e_{\text{c}}| = \dfrac{|\Delta \Phi|}{\Delta t} = \dfrac{0{,}6}{0{,}02} = \mathbf{30}\text{ V}$.",
-                unit=r"$\text{V}$",
-            ),
+        example="Một xi-lanh kín chứa $V_1 = 6\\text{ lít}$ khí ở áp suất $p_1 = 1{,}5\\text{ atm}$. Người ta đẩy pít-tông nén chậm khối khí để nhiệt độ không đổi cho đến khi thể tích khí giảm xuống còn $V_2 = 2\\text{ lít}$. Hãy tính áp suất $p_2$ của khối khí lúc này.",
+        example_answer="Vì quá trình nén chậm giữ nhiệt độ không đổi (đẳng nhiệt), áp dụng định luật Boyle: $p_1 V_1 = p_2 V_2 \\implies p_2 = \\dfrac{p_1 V_1}{V_2} = \\dfrac{1{,}5 \\cdot 6}{2} = 4{,}5\\text{ atm}$.",
+        real_life="Hoạt động hít vào – thở ra của phổi người tuân theo định luật Boyle: khi cơ hoành hạ xuống làm thể tích lồng ngực $V$ tăng lên, áp suất khí trong phổi $p$ giảm nhỏ hơn áp suất khí quyển nên không khí tự tràn từ mũi vào phổi.",
+        quiz=[
+            mcq("biet", "Hệ thức nào sau đây biểu diễn đúng **Định luật Boyle** cho quá trình đẳng nhiệt của một lượng khí xác định từ trạng thái $(p_1, V_1)$ sang trạng thái $(p_2, V_2)$?", ["$p_1 V_1 = p_2 V_2$", "$\\dfrac{p_1}{V_1} = \\dfrac{p_2}{V_2}$", "$p_1 + V_1 = p_2 + V_2$", "$\\dfrac{p_1}{p_2} = \\dfrac{V_1}{V_2}$"], 0, "Trong quá trình đẳng nhiệt, tích của áp suất và thể tích là hằng số: $p_1 V_1 = p_2 V_2$."),
+            mcq("biet", "Trong hệ tọa độ $(p, V)$ (trục hoành là thể tích $V$, trục tung là áp suất $p$), đường đẳng nhiệt của một lượng khí lí tưởng có dạng đường gì?", ["Một nhánh đường hypebol", "Một đường thẳng đi qua gốc tọa độ", "Một đường tròn", "Một đường thẳng song song với trục hoành"], 0, "Vì $p = \\dfrac{\\text{const}}{V}$ là hàm phân thức bậc nhất nên đồ thị trong hệ $(p, V)$ là một nhánh hypebol."),
+            mcq("hieu", "Nén đẳng nhiệt một khối lượng khí xác định sao cho thể tích của nó giảm đi $4$ lần thì áp suất của khối khí đó thay đổi như thế nào?", ["Áp suất tăng lên $4$ lần", "Áp suất giảm đi $4$ lần", "Áp suất tăng lên $16$ lần", "Áp suất không thay đổi"], 0, "Theo định luật Boyle ($p V = \\text{const}$), khi thể tích $V$ giảm $4$ lần thì áp suất $p$ tăng lên $4$ lần."),
+            tf4("hieu", "Xét tính đúng/sai của các phát biểu sau về quá trình đẳng nhiệt và định luật Boyle:", [
+                "Định luật Boyle chỉ áp dụng cho một khối lượng khí xác định (không rò rỉ hoặc bơm thêm khí) khi nhiệt độ không đổi.",
+                "Trong hệ tọa độ $(p, T)$, đường đẳng nhiệt là một đoạn thẳng vuông góc với trục nhiệt độ tuyệt đối $OT$.",
+                "Khi dãn nở đẳng nhiệt một khối khí, mật độ phân tử khí trong bình tăng lên.",
+                "Một bọt khí nổi từ đáy hồ (nơi áp suất bằng $3\\text{ atm}$) lên sát mặt nước (áp suất $1\\text{ atm}$, coi nhiệt độ nước không đổi theo độ sâu) thì thể tích bọt khí tăng gấp $3$ lần.",
+            ], [True, True, False, True], "Ý c) sai vì khi dãn nở đẳng nhiệt thì thể tích $V$ tăng nên mật độ phân tử $\\mu = \\dfrac{N}{V}$ giảm đi."),
+            short("vandung", "Một lượng khí có thể tích $V_1 = 8\\text{ lít}$ ở áp suất $p_1 = 2\\text{ bar}$. Khi dãn đẳng nhiệt đến áp suất $p_2 = 1\\text{ bar}$ thì thể tích $V_2$ của lượng khí đó bằng bao nhiêu lít?", ["16"], "Áp dụng định luật Boyle: $p_1 V_1 = p_2 V_2 \\implies V_2 = \\dfrac{p_1 V_1}{p_2} = \\dfrac{2 \\cdot 8}{1} = 16\\text{ lít}$.", unit="lít"),
         ],
-    },
-
-    # =========================================================================
-    # CHƯƠNG III – PHẦN 2. MÁY PHÁT ĐIỆN XOAY CHIỀU, DÒNG ĐIỆN XOAY CHIỀU VÀ SÓNG ĐIỆN TỪ (Bài 17 – Bài 20 SGK Vật lí 12 KNTT)
-    # =========================================================================
-    {
-        "topic": "mach-xoay-chieu",
-        "title": "Chương III (Phần 2). Máy phát điện xoay chiều, Dòng điện xoay chiều và Sóng điện từ",
-        "icon": "⚡",
-        "description": (
-            "Chương III (Phần 2) · SGK Vật lí 12 Kết nối tri thức với cuộc sống (Bài 17 – Bài 20): "
-            "Máy phát điện xoay chiều, suất điện động xoay chiều và các giá trị hiệu dụng; "
-            "Ứng dụng hiện tượng cảm ứng điện từ (dòng điện Foucault, bếp từ, phanh điện từ, đàn guitar điện, sạc không dây); "
-            "Điện từ trường và mô hình sóng điện từ; Bài tập về từ trường."
-        ),
-        "requirements": [
-            r"Nêu được nguyên tắc tạo ra dòng điện xoay chiều dựa trên hiện tượng cảm ứng điện từ và mô tả được cấu tạo cơ bản của máy phát điện xoay chiều (phần cảm và phần ứng).",
-            r"Viết được biểu thức từ thông $\Phi = \Phi_0\cos(\omega t + \varphi_0)$ và suất điện động cảm ứng xoay chiều $e = E_0\cos\left(\omega t + \varphi_0 - \dfrac{\pi}{2}\right)$ với $E_0 = NBS\omega$.",
-            r"Nêu được chu kì $T$, tần số $f$, giá trị cực đại ($I_0, U_0, E_0$) và định nghĩa giá trị hiệu dụng ($I = \dfrac{I_0}{\sqrt{2}}$, $U = \dfrac{U_0}{\sqrt{2}}$, $E = \dfrac{E_0}{\sqrt{2}}$) dựa trên tác dụng nhiệt của dòng điện.",
-            r"Thảo luận để nêu được các quy tắc an toàn khi sử dụng dòng điện xoay chiều trong gia đình và sản xuất.",
-            r"Giải thích được một số ứng dụng của hiện tượng cảm ứng điện từ trong cuộc sống và kĩ thuật: dòng điện Foucault (dòng điện xoáy), phanh điện từ, bếp từ, lò nung cảm ứng, đàn guitar điện, máy biến áp và sạc không dây.",
-            r"Nêu được mối liên hệ mật thiết giữa điện trường biến thiên và từ trường biến thiên để tạo thành điện từ trường thống nhất theo thuyết điện từ Maxwell.",
-            r"Mô tả được mô hình sóng điện từ là sóng ngang (các vectơ $\vec{E}, \vec{B}, \vec{v}$ đôi một vuông góc tạo thành tam diện thuận, $\vec{E}$ và $\vec{B}$ luôn dao động cùng pha) và vận dụng được công thức bước sóng $\lambda = \dfrac{c}{f} = cT$.",
+    ),
+    bai(
+        topic=CH2[0], chapter_title=CH2[1], chapter_desc=CH2[2],
+        title="Bài 9: Định luật Charles",
+        icon="🎈",
+        description="Quá trình đẳng áp (p = const), phát biểu và biểu thức Định luật Charles V/T = const hay V₁/T₁ = V₂/T₂, đường đẳng áp trong hệ tọa độ (V, T).",
+        requirements=[
+            "Nêu được quá trình đẳng áp là quá trình biến đổi trạng thái của một lượng khí xác định khi áp suất được giữ không đổi ($p = \\text{const}$).",
+            "Phát biểu và vận dụng được biểu thức của Định luật Charles: khi áp suất của một khối lượng khí xác định được giữ không đổi thì thể tích của khí tỉ lệ thuận với nhiệt độ tuyệt đối của nó ($\\dfrac{V}{T} = \\text{const} \\iff \\dfrac{V_1}{T_1} = \\dfrac{V_2}{T_2}$).",
+            "Nhận biết được đường đẳng áp trong hệ tọa độ $(V, T)$ là đường thẳng có đường kéo dài đi qua gốc tọa độ tuyệt đối $0\\text{ K}$ (độ dốc nhỏ hơn ứng với áp suất lớn hơn).",
         ],
-        "definition": (
-            r"- **Nguyên tắc tạo dòng điện xoay chiều**: Khi khung dây dẫn phẳng gồm $N$ vòng, diện tích $S$ quay đều với tốc độ góc $\omega$ quanh một trục cố định đặt trong từ trường đều $\vec{B}$ ($\vec{B} \perp \text{trục quay}$), từ thông qua khung biến thiên điều hoà: $\Phi = NBS\cos(\omega t + \varphi_0) = \Phi_0\cos(\omega t + \varphi_0)$. Trong khung xuất hiện suất điện động xoay chiều: $e = -\Phi'(t) = NBS\omega\sin(\omega t + \varphi_0) = E_0\cos\left(\omega t + \varphi_0 - \dfrac{\pi}{2}\right)$, với $E_0 = NBS\omega = \Phi_0\omega$." "\n"
-            r"- **Dòng điện xoay chiều và Giá trị hiệu dụng**: Dòng điện xoay chiều là dòng điện có cường độ biến thiên điều hoà theo thời gian: $i = I_0\cos(\omega t + \varphi_i)$, điện áp xoay chiều $u = U_0\cos(\omega t + \varphi_u)$. **Giá trị hiệu dụng** của cường độ dòng điện xoay chiều bằng cường độ của một dòng điện không đổi mà khi chạy qua cùng một điện trở $R$ trong cùng một thời gian đủ dài (nguyên lần chu kì) thì toả ra nhiệt lượng bằng nhau: $I = \dfrac{I_0}{\sqrt{2}}$, $U = \dfrac{U_0}{\sqrt{2}}$, $E = \dfrac{E_0}{\sqrt{2}}$. Số chỉ của ampe kế và vôn kế xoay chiều là giá trị hiệu dụng." "\n"
-            r"- **Ứng dụng cảm ứng điện từ (Dòng điện Foucault)**: Dòng điện cảm ứng sinh ra trong khối vật dẫn đặt trong từ trường biến thiên (hoặc chuyển động trong từ trường) gọi là **dòng điện Foucault** (dòng điện xoáy), được ứng dụng trong bếp từ, lò tôi kim loại, phanh điện từ; để giảm hao phí nhiệt do dòng Foucault trong lõi máy biến áp và động cơ, người ta ghép lõi từ bằng các lá thép kĩ thuật điện mỏng sơn cách điện." "\n"
-            r"- **Điện từ trường và Mô hình sóng điện từ**: Điện trường biến thiên theo thời gian sinh ra từ trường xoáy; ngược lại, từ trường biến thiên theo thời gian sinh ra điện trường xoáy. Hai trường biến thiên này gắn kết tạo thành **điện từ trường** lan truyền trong không gian dưới dạng **sóng điện từ** với tốc độ trong chân không $c \approx 3 \times 10^8\text{ m/s}$, bước sóng $\lambda = \dfrac{c}{f} = cT$."
+        definition="Định luật Charles: Khi áp suất của một khối lượng khí xác định được giữ không đổi (quá trình đẳng áp), thì thể tích $V$ của khí tỉ lệ thuận với nhiệt độ tuyệt đối $T$ của nó: $\\dfrac{V}{T} = \\text{const} \\iff \\dfrac{V_1}{T_1} = \\dfrac{V_2}{T_2}$.",
+        theory=(
+            "### 1. Quá trình đẳng áp và Định luật Charles\n"
+            "- **Quá trình đẳng áp**: quá trình biến đổi trạng thái của một lượng khí xác định khi áp suất được giữ không đổi ($p = \\text{const}$, ví dụ khối khí trong xi-lanh có pít-tông chuyển động tự do không ma sát).\n"
+            "- **Định luật Charles (Jacques Charles)**:\n"
+            "  $$\\dfrac{V}{T} = \\text{hằng số} \\iff \\dfrac{V_1}{T_1} = \\dfrac{V_2}{T_2}$$\n"
+            "  *(Lưu ý bắt buộc: Nhiệt độ $T_1, T_2$ trong công thức phải đổi sang thang Kelvin: $T(\\text{K}) = t(^\\circ\\text{C}) + 273$!)*\n"
+            "- Liên hệ với thể tích $V_0$ ở $0^\\circ\\text{C}$ ($T_0 = 273\\text{ K}$): $V = V_0\\left(1 + \\dfrac{t}{273}\\right)$.\n\n"
+            "### 2. Đường đẳng áp\n"
+            "- Trong hệ tọa độ $(V, T)$: đường đẳng áp là **đường thẳng mà đường kéo dài đi qua gốc tọa độ tuyệt đối $O(0\\text{ K}; 0)$**. Với hai đường đẳng áp của cùng một lượng khí, đường nằm dưới (gần trục $OT$ hơn) có áp suất lớn hơn ($p_2 > p_1$).\n"
+            "- Trong hệ tọa độ $(p, V)$ hoặc $(p, T)$: đường đẳng áp là **đoạn thẳng vuông góc với trục áp suất $Op$**."
         ),
-        "theory": (
-            r"### Bài 17. Máy phát điện xoay chiều" "\n"
-            r"- **Cấu tạo máy phát điện xoay chiều**: Gồm hai bộ phận chính là **phần cảm** (nam châm vĩnh cửu hoặc nam châm điện tạo ra từ trường, thường là rôto trong các máy công suất lớn) và **phần ứng** (các cuộn dây dẫn trong đó xuất hiện suất điện động cảm ứng, thường là stato). Nếu rôto có $p$ cặp cực quay với tốc độ $n$ ($\text{vòng/s}$) thì tần số dòng điện xoay chiều là $f = pn$ (hoặc $f = \dfrac{pn}{60}$ nếu $n$ tính bằng $\text{vòng/phút}$)." "\n"
-            r"- **Quan hệ pha giữa từ thông và suất điện động**: Suất điện động cảm ứng $e$ luôn trễ pha $\dfrac{\pi}{2}$ so với từ thông $\Phi$ qua khung dây; do đó tại thời điểm từ thông có độ lớn cực đại ($|\Phi| = \Phi_0$) thì $e = 0$, và khi $\Phi = 0$ thì $|e| = E_0$." "\n"
-            r"- **Giá trị hiệu dụng và Công suất toả nhiệt**: Công suất toả nhiệt trung bình trên điện trở $R$ là $\mathcal{P} = I^2 R = \dfrac{I_0^2}{2}R = \dfrac{U^2}{R}$. Ở mạng điện dân dụng Việt Nam, điện áp xoay chiều có giá trị hiệu dụng $U = 220\text{ V}$ (cực đại $U_0 = 220\sqrt{2} \approx 311\text{ V}$) và tần số $f = 50\text{ Hz}$ (chu kì $T = 0{,}02\text{ s}$, dòng điện đổi chiều $2f = 100\text{ lần}$ trong mỗi giây)." "\n"
-            r"### Bài 18. Ứng dụng hiện tượng cảm ứng điện từ" "\n"
-            r"- **Phanh điện từ (hãm điện từ)**: Đĩa kim loại quay qua vùng từ trường mạnh của nam châm điện làm xuất hiện dòng điện Foucault trong đĩa; theo định luật Lenz, lực từ tác dụng lên dòng Foucault sinh ra mômen cản chuyển động quay mà không gây mài mòn cơ học." "\n"
-            r"- **Bếp từ**: Cuộn dây dưới mặt bếp có dòng điện xoay chiều tần số cao ($20\text{ kHz} - 30\text{ kHz}$) chạy qua tạo ra từ trường biến thiên xuyên qua đáy nồi nhiễm từ, sinh ra dòng điện Foucault làm nóng trực tiếp đáy nồi với hiệu suất cao." "\n"
-            r"- **Đàn guitar điện**: Dây đàn bằng thép nằm trên cuộn dây cảm ứng (pickup) gắn nam châm vĩnh cửu; khi gảy đàn, đoạn dây đàn nhiễm từ dao động làm biến thiên từ thông qua cuộn dây, tạo ra tín hiệu điện xoay chiều có cùng tần số với âm thanh đưa tới bộ khuếch đại." "\n"
-            r"### Bài 19. Điện từ trường. Mô hình sóng điện từ" "\n"
-            r"- **Thuyết điện từ Maxwell**: Xung quanh một từ trường biến thiên xuất hiện một điện trường xoáy (có đường sức là những đường cong khép kín); xung quanh một điện trường biến thiên xuất hiện một từ trường xoáy." "\n"
-            r"- **Đặc điểm của sóng điện từ**: (1) Truyền được trong mọi môi trường vật chất (rắn, lỏng, khí) và cả trong **chân không** với tốc độ $c \approx 3 \times 10^8\text{ m/s}$ (trong môi trường chiết suất $n$, tốc độ là $v = \dfrac{c}{n}$); (2) Là **sóng ngang**: tại mọi điểm trên phương truyền sóng, $\vec{E} \perp \vec{B}$ và cả hai đều vuông góc với phương truyền sóng $\vec{v}$ sao cho $(\vec{E}, \vec{B}, \vec{v})$ lập thành một tam diện thuận; (3) Tại mỗi điểm, cường độ điện trường $E$ và cảm ứng từ $B$ luôn **biến thiên cùng pha** ($\dfrac{E}{E_0} = \dfrac{B}{B_0}$); (4) Sóng điện từ mang năng lượng và tuân theo các quy luật truyền thẳng, phản xạ, khúc xạ, giao thoa, nhiễu xạ." "\n"
-            r"### Bài 20. Bài tập về từ trường" "\n"
-            r"- **Tổng hợp các dạng toán Chương III**: Kết hợp bài toán lực từ – cân bằng thanh dẫn, bài toán từ thông – suất điện động máy phát điện xoay chiều $E_0 = NBS\omega$, bài toán giá trị hiệu dụng và bài toán bước sóng điện từ $\lambda = \dfrac{c}{f}$."
-        ),
-        "formulas": [
+        formulas=[
             G(
-                "I. Máy phát điện xoay chiều và Suất điện động cảm ứng",
-                F("Từ thông qua khung dây quay đều", r"$\Phi = \Phi_0\cos(\omega t + \varphi_0)$ với $\Phi_0 = NBS$", r"$\omega = 2\pi f = \dfrac{2\pi}{T}$ ($\text{rad/s}$)."),
-                F("Suất điện động xoay chiều", r"$e = E_0\cos\left(\omega t + \varphi_0 - \dfrac{\pi}{2}\right)$ với $E_0 = NBS\omega = \Phi_0\omega$", r"$e$ trễ pha $\dfrac{\pi}{2}$ so với $\Phi$; hệ thức độc lập: $\left(\dfrac{\Phi}{\Phi_0}\right)^2 + \left(\dfrac{e}{E_0}\right)^2 = 1$."),
-                F("Tần số máy phát có $p$ cặp cực", r"$f = pn\text{ (với }n\text{ vòng/s)} = \dfrac{pn}{60}\text{ (với }n\text{ vòng/phút)}$", r"Số lần dòng điện đổi chiều trong $1\text{ s}$ (nếu tại $t=0$ thì $i=0$) là $2f$."),
-            ),
-            G(
-                "II. Đại lượng đặc trưng của Dòng điện xoay chiều",
-                F("Giá trị hiệu dụng", r"$I = \dfrac{I_0}{\sqrt{2}}; \quad U = \dfrac{U_0}{\sqrt{2}}; \quad E = \dfrac{E_0}{\sqrt{2}}$", r"Xác định dựa trên tác dụng nhiệt của dòng điện."),
-                F("Công suất và Nhiệt lượng toả ra trên điện trở $R$", r"$\mathcal{P} = I^2 R = \dfrac{I_0^2}{2}R = UI\cos\varphi; \quad Q = I^2 R t$", r"Với đoạn mạch chỉ chứa điện trở thuần $R$ thì $\cos\varphi = 1$."),
-            ),
-            G(
-                "III. Điện từ trường và Sóng điện từ",
-                F("Bước sóng điện từ trong chân không", r"$\lambda = cT = \dfrac{c}{f}$", r"Tốc độ ánh sáng trong chân không $c = 3 \times 10^8\text{ m/s}$."),
-                F(r"Quan hệ cùng pha giữa $\vec{E}$ và $\vec{B}$", r"$\dfrac{E}{E_0} = \dfrac{B}{B_0} = \cos(\omega t - kx + \varphi)$", r"Ba vectơ $(\vec{E}, \vec{B}, \vec{v})$ đôi một vuông góc theo quy tắc đinh ốc thuận."),
-            ),
+                "Biểu thức Định luật Charles (Quá trình đẳng áp p = const)",
+                F("Hệ thức Định luật Charles", "$\\dfrac{V}{T} = \\text{const} \\iff \\dfrac{V_1}{T_1} = \\dfrac{V_2}{T_2} \\implies V_2 = V_1 \\cdot \\dfrac{T_2}{T_1}$", "Bắt buộc phải đổi nhiệt độ ra Kelvin ($T = t + 273$) trước khi thay vào tỉ lệ thức!"),
+                F("Công thức nở đẳng áp theo độ Celsius", "$V = V_0 (1 + \\alpha_V t) \\quad \\text{với } \\alpha_V = \\dfrac{1}{273}\\text{ K}^{-1}$", "Trong đó $V_0$ là thể tích của khối khí ở $0^\\circ\\text{C}$ ($273\\text{ K}$)."),
+            )
         ],
-        "example": (
-            r"Một khung dây dẫn phẳng gồm $N = 250\text{ vòng}$ dây, diện tích mỗi vòng là $S = 200\text{ cm}^2$, quay đều với tốc độ $n = 3000\text{ vòng/phút}$ "
-            r"quanh một trục cố định nằm trong mặt phẳng khung dây và vuông góc với các đường sức của một từ trường đều có cảm ứng từ $B = \dfrac{0{,}2}{\pi}\text{ T}$. "
-            r"Chọn gốc thời gian $t = 0$ lúc vectơ pháp tuyến $\vec{n}$ của khung dây cùng hướng với vectơ cảm ứng từ $\vec{B}$. "
-            r"a) Tìm tần số $f$, từ thông cực đại $\Phi_0$ và suất điện động cực đại $E_0$, hiệu dụng $E$. "
-            r"b) Viết biểu thức từ thông $\Phi(t)$ và suất điện động cảm ứng $e(t)$ trong khung dây."
-        ),
-        "example_answer": (
-            r"- **Câu a**: Đổi $S = 200\text{ cm}^2 = 0{,}02\text{ m}^2$; tốc độ quay $f = \dfrac{n}{60} = \dfrac{3000}{60} = \mathbf{50\text{ Hz}} \Rightarrow \omega = 2\pi f = 100\pi\text{ rad/s}$." "\n"
-            r"  Từ thông cực đại qua khung: $\Phi_0 = NBS = 250 \cdot \dfrac{0{,}2}{\pi} \cdot 0{,}02 = \mathbf{\dfrac{1}{\pi}\text{ Wb}} \approx 0{,}318\text{ Wb}$." "\n"
-            r"  Suất điện động cực đại: $E_0 = \Phi_0\omega = \dfrac{1}{\pi} \cdot 100\pi = \mathbf{100\text{ V}}$. Suất điện động hiệu dụng: $E = \dfrac{E_0}{\sqrt{2}} = \mathbf{50\sqrt{2}\text{ V}} \approx 70{,}7\text{ V}$." "\n"
-            r"- **Câu b**: Tại $t = 0$, $\vec{n} \uparrow\uparrow \vec{B}$ nên $\varphi_0 = 0$. Do đó:" "\n"
-            r"  $\Phi(t) = \dfrac{1}{\pi}\cos(100\pi t)\text{ (Wb)}$ và $e(t) = 100\cos\left(100\pi t - \dfrac{\pi}{2}\right)\text{ (V)}$."
-        ),
-        "real_life": (
-            r"- **Nhà máy thuỷ điện, nhiệt điện và điện gió**: Các tuabin quay rôto máy phát điện xoay chiều công suất lớn tạo ra dòng điện xoay chiều tần số $50\text{ Hz}$ hoà vào lưới điện quốc gia." "\n"
-            r"- **Bếp từ gia đình, sạc không dây điện thoại và thẻ từ NFC**: Ứng dụng trực tiếp dòng điện Foucault và hiện tượng cảm ứng điện từ để truyền năng lượng hoặc dữ liệu không tiếp xúc." "\n"
-            r"- **Truyền thông vô tuyến, mạng $5\text{G}$, Wi-Fi và hệ thống định vị vệ tinh GPS**: Sử dụng sóng điện từ có bước sóng từ vùng vi ba đến sóng vô tuyến để truyền tải thông tin với tốc độ ánh sáng $c = 3 \times 10^8\text{ m/s}$."
-        ),
-        "game_title": "Mô phỏng Máy phát điện Xoay chiều và Sóng điện từ 3D",
-        "game_description": "Điều chỉnh tốc độ quay của khung dây trong từ trường để quan sát đồ thị từ thông – suất điện động xoay chiều và khảo sát sự lan truyền của hai vectơ E, B trong sóng điện từ.",
-        "game_type": "game_mach_xoay_chieu",
-        "quiz": [
-            mcq(
-                "biet",
-                r"Một dòng điện xoay chiều có biểu thức cường độ tức thời $i = I_0\cos(\omega t + \varphi)$ (với $I_0 > 0$). Giá trị hiệu dụng $I$ của cường độ dòng điện này bằng:",
-                [
-                    r"$I = \dfrac{I_0}{\sqrt{2}}$",
-                    r"$I = I_0\sqrt{2}$",
-                    r"$I = \dfrac{I_0}{2}$",
-                    r"$I = 2I_0$",
-                ],
-                0,
-                r"Giá trị hiệu dụng của cường độ dòng điện xoay chiều hình sin bằng giá trị cực đại chia cho $\sqrt{2}$: $I = \dfrac{I_0}{\sqrt{2}}$.",
-            ),
-            mcq(
-                "biet",
-                r"Khi một khung dây phẳng gồm $N$ vòng dây, mỗi vòng có diện tích $S$, quay đều với tốc độ góc $\omega$ quanh trục vuông góc với các đường sức của một từ trường đều có cảm ứng từ $B$ thì suất điện động cực đại $E_0$ xuất hiện trong khung là:",
-                [
-                    r"$E_0 = NBS\omega$",
-                    r"$E_0 = \dfrac{NBS}{\omega}$",
-                    r"$E_0 = NBS\omega^2$",
-                    r"$E_0 = \dfrac{NB\omega}{S}$",
-                ],
-                0,
-                r"Từ $\Phi = NBS\cos(\omega t + \varphi_0)$ suy ra $e = -\Phi'(t) = NBS\omega\sin(\omega t + \varphi_0)$, nên biên độ suất điện động là $E_0 = NBS\omega$.",
-            ),
-            mcq(
-                "biet",
-                r"Trong quá trình lan truyền của sóng điện từ trong chân không, tại một điểm bất kì trên phương truyền sóng, vectơ cường độ điện trường $\vec{E}$ và vectơ cảm ứng từ $\vec{B}$ luôn:",
-                [
-                    r"Có phương vuông góc với nhau và dao động cùng pha",
-                    r"Có phương trùng nhau và dao động ngược pha",
-                    r"Có phương vuông góc với nhau và dao động lệch pha $\dfrac{\pi}{2}$",
-                    r"Có phương song song với phương truyền sóng và dao động cùng pha",
-                ],
-                0,
-                r"Sóng điện từ là sóng ngang: $\vec{E} \perp \vec{B} \perp \vec{v}$ theo tam diện thuận, nhưng về mặt thời gian thì $E$ và $B$ tại cùng một điểm luôn biến thiên **cùng pha**.",
-            ),
-            mcq(
-                "biet",
-                r"Thiết bị nào sau đây hoạt động dựa trên tác dụng nhiệt của dòng điện Foucault (dòng điện xoáy) sinh ra trong đáy nồi kim loại nhiễm từ?",
-                [
-                    r"Bếp từ",
-                    r"Bếp hồng ngoại (bếp điện trở)",
-                    r"Lò vi sóng",
-                    r"Ấm đun nước siêu tốc dùng dây mayso",
-                ],
-                0,
-                r"**Bếp từ** tạo ra từ trường biến thiên tần số cao xuyên qua đáy nồi nhiễm từ, sinh ra dòng điện Foucault làm nóng trực tiếp đáy nồi.",
-            ),
-            mcq(
-                "hieu",
-                r"Mạng điện xoay chiều dân dụng ở Việt Nam có biểu thức điện áp $u = 220\sqrt{2}\cos(100\pi t)\text{ (V)}$. Điện áp hiệu dụng $U$ và tần số $f$ của mạng điện này lần lượt là:",
-                [
-                    r"$U = 220\text{ V}$ và $f = 50\text{ Hz}$",
-                    r"$U = 220\sqrt{2}\text{ V}$ và $f = 50\text{ Hz}$",
-                    r"$U = 220\text{ V}$ và $f = 100\text{ Hz}$",
-                    r"$U = 110\sqrt{2}\text{ V}$ và $f = 100\pi\text{ Hz}$",
-                ],
-                0,
-                r"Từ $u = U_0\cos(\omega t)$ với $U_0 = 220\sqrt{2}\text{ V}$ và $\omega = 100\pi\text{ rad/s}$, ta có $U = \dfrac{U_0}{\sqrt{2}} = 220\text{ V}$ và $f = \dfrac{\omega}{2\pi} = \dfrac{100\pi}{2\pi} = 50\text{ Hz}$.",
-            ),
-            mcq(
-                "hieu",
-                r"Một đài phát thanh FM phát ra sóng điện từ có tần số $f = 100\text{ MHz}$ truyền trong không khí với tốc độ $c = 3 \times 10^8\text{ m/s}$. Bước sóng $\lambda$ của sóng điện từ này là:",
-                [
-                    r"$3{,}0\text{ m}$",
-                    r"$30\text{ m}$",
-                    r"$0{,}33\text{ m}$",
-                    r"$300\text{ m}$",
-                ],
-                0,
-                r"Đổi $f = 100\text{ MHz} = 10^8\text{ Hz}$. Bước sóng của sóng điện từ: $\lambda = \dfrac{c}{f} = \dfrac{3 \times 10^8}{10^8} = \mathbf{3{,}0\text{ m}}$.",
-            ),
-            tf4(
-                "hieu",
-                r"Xét một khung dây dẫn phẳng quay đều trong từ trường đều tạo ra từ thông $\Phi = \Phi_0\cos(\omega t)$ và suất điện động cảm ứng $e = E_0\cos\left(\omega t - \dfrac{\pi}{2}\right)$. Mỗi nhận định sau đúng hay sai?",
-                [
-                    r"a) Suất điện động cảm ứng $e$ trong khung dây biến thiên điều hoà cùng tần số nhưng trễ pha $\dfrac{\pi}{2}$ so với từ thông $\Phi$.",
-                    r"b) Tại thời điểm từ thông qua khung dây có độ lớn cực đại ($|\Phi| = \Phi_0$) thì độ lớn suất điện động cảm ứng trong khung cũng đạt cực đại ($|e| = E_0$).",
-                    r"c) Nếu giữ nguyên từ trường nhưng tăng tốc độ quay của khung dây lên gấp đôi thì cả tần số $f$ và biên độ suất điện động $E_0$ đều tăng gấp đôi.",
-                    r"d) Khi nối hai đầu khung dây với một vôn kế xoay chiều lí tưởng thì số chỉ của vôn kế là $E_0$.",
-                ],
-                [True, False, True, False],
-                r"- **a) Đúng**: Từ biểu thức thấy ngay $e$ cùng tần số góc $\omega$ và trễ pha $\dfrac{\pi}{2}$ so với $\Phi$." "\n"
-                r"- **b) Sai**: Vì $e$ và $\Phi$ vuông pha nên khi $|\Phi| = \Phi_0$ thì $e = 0$ (tốc độ biến thiên từ thông tại đỉnh bằng $0$)." "\n"
-                r"- **c) Đúng**: Vì $f = \dfrac{\omega}{2\pi} \propto \omega$ và $E_0 = NBS\omega \propto \omega$, nên khi $\omega$ tăng gấp đôi thì cả $f$ và $E_0$ đều tăng gấp đôi." "\n"
-                r"- **d) Sai**: Vôn kế xoay chiều đo **giá trị hiệu dụng** $E = \dfrac{E_0}{\sqrt{2}}$, không phải giá trị cực đại $E_0$.",
-            ),
-            tf4(
-                "hieu",
-                r"Xét tính đúng hay sai của các phát biểu sau về sóng điện từ và ứng dụng hiện tượng cảm ứng điện từ:",
-                [
-                    r"a) Khác với sóng cơ học, sóng điện từ truyền được trong chân không với tốc độ $c \approx 3 \times 10^8\text{ m/s}$.",
-                    r"b) Khi sóng điện từ lan truyền theo phương thẳng đứng từ dưới lên trên, nếu tại một điểm và một thời điểm vectơ $\vec{E}$ hướng về phía Bắc thì vectơ $\vec{B}$ hướng về phía Đông (theo quy tắc tam diện thuận).",
-                    r"c) Để tăng hiệu quả của dòng điện Foucault trong lõi máy biến áp, người ta chế tạo lõi máy biến áp bằng một khối thép đặc nguyên khối.",
-                    r"d) Tại một điểm trong không gian có sóng điện từ truyền qua với cảm ứng từ cực đại $B_0 = 0{,}12\text{ T}$ và cường độ điện trường cực đại $E_0 = 600\text{ V/m}$, ở thời điểm $E = 300\text{ V/m}$ thì cảm ứng từ có độ lớn $B = 0{,}06\text{ T}$.",
-                ],
-                [True, True, False, True],
-                r"- **a) Đúng**: Sóng điện từ là sự lan truyền của điện từ trường nên truyền được cả trong chân không." "\n"
-                r"- **b) Đúng**: Theo quy tắc đinh ốc thuận $(\vec{E}, \vec{B}, \vec{v})$, khi quay từ hướng Bắc ($\vec{E}$) sang hướng Đông ($\vec{B}$) thì chiều tiến của đinh ốc hướng thẳng đứng từ dưới lên trên ($\vec{v}$)." "\n"
-                r"- **c) Sai**: Trong lõi máy biến áp, dòng điện Foucault gây toả nhiệt hao phí nên người ta phải **giảm** dòng Foucault bằng cách ghép lõi từ các lá thép kĩ thuật điện mỏng sơn cách điện với nhau." "\n"
-                r"- **d) Đúng**: Vì $E$ và $B$ biến thiên cùng pha nên $\dfrac{B}{B_0} = \dfrac{E}{E_0} = \dfrac{300}{600} = 0{,}5 \Rightarrow B = 0{,}5 \cdot 0{,}12 = 0{,}06\text{ T}$.",
-            ),
-            mcq(
-                "vandung",
-                r"Cho dòng điện xoay chiều có biểu thức $i = 4\sqrt{2}\cos(100\pi t)\text{ (A)}$ chạy qua một điện trở thuần $R = 25\text{ }\Omega$. Nhiệt lượng toả ra trên điện trở này trong thời gian $t = 2\text{ phút}$ là:",
-                [
-                    r"$48\text{ kJ}$",
-                    r"$96\text{ kJ}$",
-                    r"$24\text{ kJ}$",
-                    r"$800\text{ J}$",
-                ],
-                0,
-                r"Cường độ dòng điện hiệu dụng là $I = \dfrac{I_0}{\sqrt{2}} = \dfrac{4\sqrt{2}}{\sqrt{2}} = 4\text{ A}$. Đổi $t = 2\text{ phút} = 120\text{ s}$. Nhiệt lượng toả ra trên điện trở: $Q = I^2 R t = 4^2 \cdot 25 \cdot 120 = 48\,000\text{ J} = \mathbf{48\text{ kJ}}$.",
-            ),
-            short(
-                "vandung",
-                r"Một máy phát điện xoay chiều một pha có phần cảm là rôto gồm $p = 4$ cặp cực từ. Để tạo ra suất điện động xoay chiều có tần số $f = 50\text{ Hz}$ thì rôto phải quay với tốc độ bằng bao nhiêu $\text{vòng/phút}$?",
-                ["750"],
-                r"Áp dụng công thức tần số của máy phát điện xoay chiều với $n$ tính bằng $\text{vòng/phút}$: $f = \dfrac{pn}{60} \Rightarrow n = \dfrac{60f}{p} = \dfrac{60 \cdot 50}{4} = \mathbf{750}\text{ vòng/phút}$.",
-                unit=r"$\text{vòng/phút}$",
-            ),
+        example="Một khối khí xác định có thể tích $V_1 = 3\\text{ lít}$ ở nhiệt độ $t_1 = 27^\\circ\\text{C}$. Khi đun nóng đẳng áp khối khí đó lên đến nhiệt độ $t_2 = 127^\\circ\\text{C}$ thì thể tích $V_2$ của khối khí bằng bao nhiêu lít?",
+        example_answer="Đổi nhiệt độ ra thang Kelvin: $T_1 = 27 + 273 = 300\\text{ K}$ và $T_2 = 127 + 273 = 400\\text{ K}$. Áp dụng định luật Charles cho quá trình đẳng áp: $\\dfrac{V_1}{T_1} = \\dfrac{V_2}{T_2} \\implies V_2 = V_1 \\cdot \\dfrac{T_2}{T_1} = 3 \\cdot \\dfrac{400}{300} = 4\\text{ lít}$.",
+        real_life="Đèn trời hoặc khinh khí cầu đốt nóng không khí bên trong vòm cầu ở áp suất khí quyển không đổi ($p = p_0$), làm không khí dãn nở theo định luật Charles khiến khối lượng riêng của khí nóng giảm nhỏ hơn không khí lạnh xung quanh và bay lên.",
+        quiz=[
+            mcq("biet", "Biểu thức nào sau đây biểu diễn đúng **Định luật Charles** cho quá trình đẳng áp của một khối lượng khí xác định?", ["$\\dfrac{V_1}{T_1} = \\dfrac{V_2}{T_2}$ (với $T$ là nhiệt độ tuyệt đối Kelvin)", "$V_1 T_1 = V_2 T_2$", "$\\dfrac{V_1}{t_1} = \\dfrac{V_2}{t_2}$ (với $t$ tính bằng $^\\circ\\text{C}$)", "$p_1 V_1 = p_2 V_2$"], 0, "Trong quá trình đẳng áp, thể tích tỉ lệ thuận với nhiệt độ tuyệt đối $T(\\text{K})$: $\\dfrac{V_1}{T_1} = \\dfrac{V_2}{T_2}$."),
+            mcq("biet", "Trong hệ tọa độ $(V, T)$ (trục hoành là nhiệt độ tuyệt đối $T$, trục tung là thể tích $V$), đường đẳng áp của một lượng khí xác định có dạng gì?", ["Một đường thẳng mà đường kéo dài đi qua gốc tọa độ $O(0\\text{ K}; 0)$", "Một nhánh đường hypebol", "Một đường thẳng vuông góc với trục $OT$", "Một đường parabol"], 0, "Vì $V = \\text{const} \\cdot T$ nên đường đẳng áp trong hệ $(V, T)$ là đường thẳng có đường kéo dài đi qua gốc tọa độ $0\\text{ K}$."),
+            mcq("hieu", "Khi nung nóng đẳng áp một khối lượng khí xác định sao cho nhiệt độ tuyệt đối $T(\\text{K})$ của nó tăng lên gấp $2$ lần thì thể tích $V$ của khối khí thay đổi như thế nào?", ["Thể tích tăng lên gấp $2$ lần", "Thể tích giảm đi $2$ lần", "Thể tích tăng lên gấp $4$ lần", "Thể tích không đổi"], 0, "Theo định luật Charles ($\\dfrac{V}{T} = \\text{const}$), khi nhiệt độ tuyệt đối $T$ tăng gấp $2$ lần thì thể tích $V$ cũng tăng gấp $2$ lần."),
+            tf4("hieu", "Xét tính đúng/sai của các phát biểu sau về quá trình đẳng áp và định luật Charles:", [
+                "Khi đun nóng đẳng áp một lượng khí từ $20^\\circ\\text{C}$ lên $40^\\circ\\text{C}$ thì thể tích của nó tăng lên gấp đôi.",
+                "Mọi chất khí lí tưởng đều có cùng hệ số nở đẳng áp $\\alpha = \\dfrac{1}{273}\\text{ K}^{-1}$.",
+                "Trong quá trình dãn nở đẳng áp ($V$ tăng, $T$ tăng), khối khí vừa nhận nhiệt lượng vừa thực hiện công đẩy pít-tông.",
+                "Ở $27^\\circ\\text{C}$ ($300\\text{ K}$) một lượng khí có thể tích $6\\text{ lít}$; khi làm lạnh đẳng áp xuống $-23^\\circ\\text{C}$ ($250\\text{ K}$) thì thể tích khí còn $5\\text{ lít}$.",
+            ], [False, True, True, True], "Ý a) sai vì thể tích tỉ lệ thuận với nhiệt độ tuyệt đối $T(\\text{K})$ chứ không tỉ lệ thuận với $t(^\\circ\\text{C})$: $\\dfrac{V_2}{V_1} = \\dfrac{40+273}{20+273} = \\dfrac{313}{293} \\ne 2$."),
+            short("vandung", "Một lượng khí xác định ở nhiệt độ $t_1 = 27^\\circ\\text{C}$ ($T_1 = 300\\text{ K}$) có thể tích $V_1 = 6\\text{ lít}$. Khi đun nóng đẳng áp lên nhiệt độ $t_2 = 177^\\circ\\text{C}$ ($T_2 = 450\\text{ K}$) thì thể tích $V_2$ của lượng khí bằng bao nhiêu lít?", ["9"], "Áp dụng định luật Charles: $V_2 = V_1 \\cdot \\dfrac{T_2}{T_1} = 6 \\cdot \\dfrac{450}{300} = 9\\text{ lít}$.", unit="lít"),
         ],
-    },
-
-    # =========================================================================
-    # CHƯƠNG IV. VẬT LÍ HẠT NHÂN VÀ PHÓNG XẠ (Bài 21 – Bài 25 SGK Vật lí 12 KNTT)
-    # =========================================================================
-    {
-        "topic": "hat-nhan",
-        "title": "Chương IV. Vật lí hạt nhân và Phóng xạ",
-        "icon": "☢️",
-        "description": (
-            "Chương IV · SGK Vật lí 12 Kết nối tri thức với cuộc sống (Bài 21 – Bài 25): "
-            "Cấu trúc hạt nhân (thí nghiệm tán xạ hạt alpha, nucleon, đồng vị, bán kính hạt nhân); "
-            "Phản ứng hạt nhân, hệ thức Einstein, độ hụt khối và năng lượng liên kết; "
-            "Hiện tượng phóng xạ, chu kì bán rã và độ phóng xạ; Công nghiệp hạt nhân và bài tập vật lí hạt nhân."
-        ),
-        "requirements": [
-            r"Rút ra được sự tồn tại và kích thước rất nhỏ của hạt nhân từ kết quả thí nghiệm tán xạ hạt alpha ($\alpha$) của Rutherford; biểu diễn được kí hiệu hạt nhân ${}_Z^A\text{X}$ và nêu được khái niệm đồng vị.",
-            r"Nêu được bản chất của lực hạt nhân là lực tương tác mạnh giữa các nucleon trong phạm vi kích thước hạt nhân ($\sim 10^{-15}\text{ m}$); sử dụng được đơn vị khối lượng nguyên tử $\text{amu}$ ($1\text{ amu} \approx 931{,}5\text{ MeV}/c^2$).",
-            r"Nêu được mối liên hệ giữa năng lượng và khối lượng theo hệ thức Einstein $E = mc^2$; định nghĩa và tính được độ hụt khối $\Delta m = [Zm_p + (A - Z)m_n] - m_{\text{X}}$, năng lượng liên kết $W_{\text{lk}} = \Delta m \cdot c^2$ và năng lượng liên kết riêng $W_{\text{lkr}} = \dfrac{W_{\text{lk}}}{A}$ để so sánh mức độ bền vững của các hạt nhân.",
-            r"Nêu được khái niệm phản ứng hạt nhân (tự phát và kích thích), các định luật bảo toàn trong phản ứng hạt nhân (bảo toàn số nucleon $A$, bảo toàn điện tích $Z$, bảo toàn năng lượng toàn phần và bảo toàn động lượng), phản ứng phân hạch và phản ứng tổng hợp hạt nhân (nhiệt hạch).",
-            r"Nêu được bản chất tự phát, ngẫu nhiên của sự phóng xạ và đặc điểm của ba loại tia phóng xạ $\alpha$ (${}_{2}^{4}\text{He}$), $\beta$ ($\beta^-$ là ${}_{ -1}^{0}\text{e}$, $\beta^+$ là ${}_{ +1}^{0}\text{e}$) và $\gamma$ (photon năng lượng cao).",
-            r"Định nghĩa được chu kì bán rã $T$, hằng số phóng xạ $\lambda = \dfrac{\ln 2}{T}$, độ phóng xạ $H = \lambda N$ (đơn vị becquerel $\text{Bq}$) và vận dụng được các công thức định luật phóng xạ $N(t) = N_0 \cdot 2^{-\frac{t}{T}} = N_0 e^{-\lambda t}$, $H(t) = H_0 \cdot 2^{-\frac{t}{T}}$.",
-            r"Mô tả được nguyên tắc hoạt động của nhà máy điện hạt nhân, các ứng dụng của đồng vị phóng xạ trong y học, nông nghiệp, khảo cổ học (${}_{6}^{14}\text{C}$) và các quy tắc an toàn phóng xạ.",
+    ),
+    bai(
+        topic=CH2[0], chapter_title=CH2[1], chapter_desc=CH2[2],
+        title="Bài 10: Phương trình trạng thái của khí lí tưởng",
+        icon="⚗️",
+        description="Phương trình trạng thái khí lí tưởng pV/T = const, quá trình đẳng tích p/T = const và phương trình Clapeyron pV = nRT.",
+        requirements=[
+            "Kết hợp định luật Boyle và định luật Charles để thiết lập và vận dụng phương trình trạng thái của một lượng khí lí tưởng xác định: $\\dfrac{pV}{T} = \\text{const} \\iff \\dfrac{p_1 V_1}{T_1} = \\dfrac{p_2 V_2}{T_2}$.",
+            "Suy ra được hệ thức cho quá trình đẳng tích ($V = \\text{const}$): $\\dfrac{p}{T} = \\text{const} \\iff \\dfrac{p_1}{T_1} = \\dfrac{p_2}{T_2}$.",
+            "Viết và vận dụng được phương trình Clapeyron (Clapeyron–Mendeleev): $pV = nRT = \\dfrac{m}{M}RT$ với hằng số khí lí tưởng $R \\approx 8{,}31\\text{ J/(mol}\\cdot\\text{K)}$ hoặc $R \\approx 0{,}082\\text{ atm}\\cdot\\text{L/(mol}\\cdot\\text{K)}$.",
         ],
-        "definition": (
-            r"- **Cấu trúc hạt nhân (${}_Z^A\text{X}$)**: Hạt nhân nguyên tử có điện tích $+Ze$, cấu tạo từ $A$ **nucleon** gồm $Z$ **proton** ($m_p \approx 1{,}00728\text{ amu}$) và $N = A - Z$ **neutron** ($m_n \approx 1{,}00866\text{ amu}$). Bán kính hạt nhân: $R = R_0 A^{\frac{1}{3}}$ với $R_0 \approx 1{,}2 \times 10^{-15}\text{ m}$. **Đồng vị** là các hạt nhân có cùng số proton $Z$ nhưng khác nhau số neutron $N$ (khác số khối $A$)." "\n"
-            r"- **Độ hụt khối và Năng lượng liên kết**: Khối lượng của một hạt nhân luôn nhỏ hơn tổng khối lượng của các nucleon tạo thành nó một lượng gọi là **độ hụt khối**: $\Delta m = [Zm_p + (A - Z)m_n] - m_{\text{X}}$. **Năng lượng liên kết** $W_{\text{lk}} = \Delta m \cdot c^2$ là năng lượng tối thiểu cần cung cấp để tách hạt nhân thành các nucleon riêng rẽ. **Năng lượng liên kết riêng** $W_{\text{lkr}} = \dfrac{W_{\text{lk}}}{A}$ đặc trưng cho mức độ bền vững của hạt nhân (các hạt nhân trung bình có $50 \le A \le 80$ như ${}_{26}^{56}\text{Fe}$ có $W_{\text{lkr}} \approx 8{,}8\text{ MeV/nucleon}$ lớn nhất nên bền vững nhất)." "\n"
-            r"- **Phản ứng hạt nhân**: Trong phản ứng ${}_{Z_1}^{A_1}\text{X}_1 + {}_{Z_2}^{A_2}\text{X}_2 \rightarrow {}_{Z_3}^{A_3}\text{X}_3 + {}_{Z_4}^{A_4}\text{X}_4$, luôn bảo toàn số nucleon ($A_1 + A_2 = A_3 + A_4$) và bảo toàn số nguyên tử hay điện tích ($Z_1 + Z_2 = Z_3 + Z_4$). Năng lượng phản ứng hạt nhân: $\Delta E = (m_{\text{trước}} - m_{\text{sau}})c^2$; nếu $\Delta E > 0$ thì phản ứng toả năng lượng, nếu $\Delta E < 0$ thì phản ứng thu năng lượng." "\n"
-            r"- **Định luật phóng xạ và Độ phóng xạ**: Số hạt nhân (và khối lượng) chất phóng xạ còn lại sau thời gian $t$: $N(t) = N_0 \cdot 2^{-\frac{t}{T}} = N_0 e^{-\lambda t}$ và $m(t) = m_0 \cdot 2^{-\frac{t}{T}}$, với hằng số phóng xạ $\lambda = \dfrac{\ln 2}{T}$. **Độ phóng xạ** $H(t) = \lambda N(t) = H_0 \cdot 2^{-\frac{t}{T}}$ (đơn vị trong hệ SI là **becquerel**, ký hiệu $\text{Bq}$, $1\text{ Bq} = 1\text{ phân rã/s}$; $1\text{ Ci} = 3{,}7 \times 10^{10}\text{ Bq}$)."
+        definition="Đối với một khối lượng khí lí tưởng xác định, tỉ số giữa tích của áp suất $p$ và thể tích $V$ với nhiệt độ tuyệt đối $T$ là một hằng số: $\\dfrac{pV}{T} = \\text{const} \\iff \\dfrac{p_1 V_1}{T_1} = \\dfrac{p_2 V_2}{T_2}$. Với $n$ mol khí lí tưởng, ta có phương trình Clapeyron: $pV = nRT$.",
+        theory=(
+            "### 1. Phương trình trạng thái của một lượng khí xác định và Quá trình đẳng tích\n"
+            "- **Phương trình trạng thái**:\n"
+            "  $$\\dfrac{p_1 V_1}{T_1} = \\dfrac{p_2 V_2}{T_2} \\iff \\dfrac{pV}{T} = \\text{const}$$\n"
+            "  - Khi $T_1 = T_2$ (đẳng nhiệt): trở về định luật Boyle $p_1 V_1 = p_2 V_2$.\n"
+            "  - Khi $p_1 = p_2$ (đẳng áp): trở về định luật Charles $\\dfrac{V_1}{T_1} = \\dfrac{V_2}{T_2}$.\n"
+            "  - Khi **$V_1 = V_2$ (quá trình đẳng tích – bình kín có thể tích không đổi)**: áp suất tỉ lệ thuận với nhiệt độ tuyệt đối:\n"
+            "    $$\\dfrac{p_1}{T_1} = \\dfrac{p_2}{T_2} \\iff \\dfrac{p}{T} = \\text{const}$$\n"
+            "    *(Trong quá trình đẳng tích, vì $\\Delta V = 0$ nên khối khí không sinh công $A = 0 \\implies \\Delta U = Q$).* \n\n"
+            "### 2. Phương trình Clapeyron (Clapeyron – Mendeleev)\n"
+            "- Xét $n$ mol khí lí tưởng:\n"
+            "  $$p \\cdot V = n \\cdot R \\cdot T = \\dfrac{m}{M} R T$$\n"
+            "- **Hai hệ đơn vị thường dùng của hằng số khí $R$**:\n"
+            "  1. **Hệ chuẩn SI**: $p$ ($\\text{Pa} = \\text{N/m}^2$), $V$ ($\\text{m}^3$), $T$ ($\\text{K}$) $\\implies R \\approx 8{,}31\\text{ J/(mol}\\cdot\\text{K)}$.\n"
+            "  2. **Hệ atm – lít**: $p$ ($\\text{atm}$), $V$ ($\\text{lít}$), $T$ ($\\text{K}$) $\\implies R \\approx 0{,}082\\text{ atm}\\cdot\\text{L/(mol}\\cdot\\text{K)}$ (ở ĐKTC $0^\\circ\\text{C} = 273\\text{ K}, 1\\text{ atm}$, $1\\text{ mol}$ khí có thể tích $22{,}4\\text{ lít}$)."
         ),
-        "theory": (
-            r"### Bài 21. Cấu trúc hạt nhân" "\n"
-            r"- **Thí nghiệm tán xạ hạt alpha ($\alpha$) của Rutherford**: Chùm hạt $\alpha$ (${}_{2}^{4}\text{He}$) bắn vào lá vàng cực mỏng thì hầu hết đi thẳng, chỉ một tỉ lệ rất nhỏ bị lệch góc lớn hoặc bật ngược trở lại. Điều này chứng tỏ nguyên tử có cấu tạo rỗng, toàn bộ điện tích dương và gần như toàn bộ khối lượng nguyên tử tập trung tại **hạt nhân** có kích thước rất nhỏ ($\sim 10^{-15}\text{ m} - 10^{-14}\text{ m}$) so với kích thước nguyên tử ($\sim 10^{-10}\text{ m}$)." "\n"
-            r"- **Đơn vị khối lượng nguyên tử ($\text{amu}$)**: $1\text{ amu}$ bằng $\dfrac{1}{12}$ khối lượng nguyên tử đồng vị carbon ${}_{6}^{12}\text{C}$: $1\text{ amu} \approx 1{,}66054 \times 10^{-27}\text{ kg} \approx 931{,}5\text{ MeV}/c^2$." "\n"
-            r"### Bài 22. Phản ứng hạt nhân và năng lượng liên kết" "\n"
-            r"- **Lực hạt nhân**: Là lực hút tương tác mạnh giữa các nucleon (proton – proton, neutron – neutron, proton – neutron), không phụ thuộc vào điện tích và chỉ phát huy tác dụng trong phạm vi bán kính khoảng $10^{-15}\text{ m}$." "\n"
-            r"- **Phản ứng phân hạch**: Là phản ứng trong đó một hạt nhân nặng (như ${}_{92}^{235}\text{U}$ hoặc ${}_{94}^{239}\text{Pu}$) hấp thụ một neutron chậm rồi vỡ thành hai hạt nhân trung bình kèm theo $2$ đến $3$ neutron mới và toả ra năng lượng lớn (khoảng $200\text{ MeV}$ cho mỗi phân hạch). Nếu số neutron trung bình sau mỗi phân hạch tiếp tục gây phân hạch mới là $k = 1$, ta có phản ứng dây chuyền tự duy trì có điều khiển (trong lò phản ứng hạt nhân)." "\n"
-            r"- **Phản ứng tổng hợp hạt nhân (nhiệt hạch)**: Là quá trình hai hạt nhân rất nhẹ (như ${}_{1}^{2}\text{H}$ và ${}_{1}^{3}\text{H}$) kết hợp thành một hạt nhân nặng hơn (${}_{2}^{4}\text{He}$) ở nhiệt độ cực cao (hàng chục đến hàng trăm triệu độ Kelvin), toả ra năng lượng tính trên một đơn vị khối lượng nhiên liệu lớn hơn nhiều so với phân hạch." "\n"
-            r"### Bài 23. Hiện tượng phóng xạ" "\n"
-            r"- **Ba loại tia phóng xạ**: (1) **Phóng xạ $\alpha$**: ${}_Z^A\text{X} \rightarrow {}_{Z-2}^{A-4}\text{Y} + {}_{2}^{4}\text{He}$ (khả năng ion hoá mạnh nhưng đâm xuyên yếu, bị chặn bởi một tờ giấy); (2) **Phóng xạ $\beta^-$**: ${}_Z^A\text{X} \rightarrow {}_{Z+1}^{A}\text{Y} + {}_{-1}^{0}\text{e} + \tilde{\nu}$ và **phóng xạ $\beta^+$**: ${}_Z^A\text{X} \rightarrow {}_{Z-1}^{A}\text{Y} + {}_{+1}^{0}\text{e} + \nu$ (bị lệch trong điện trường và từ trường, đâm xuyên mạnh hơn tia $\alpha$); (3) **Phóng xạ $\gamma$**: Là sóng điện từ bước sóng rất ngắn ($\lambda < 10^{-11}\text{ m}$), không mang điện, không làm thay đổi $A$ và $Z$, khả năng đâm xuyên rất mạnh (cần tấm chì dày hoặc bê tông dày để chắn)." "\n"
-            r"- **Chu kì bán rã ($T$) và Độ phóng xạ ($H$)**: Sau mỗi chu kì bán rã $T$, một nửa số hạt nhân hiện có bị phân rã. Số hạt nhân đã bị phân rã (bằng số hạt nhân con tạo thành) sau thời gian $t$ là $\Delta N = N_0 - N(t) = N_0\left(1 - 2^{-\frac{t}{T}}\right)$." "\n"
-            r"### Bài 24. Công nghiệp hạt nhân" "\n"
-            r"- **Nhà máy điện hạt nhân**: Nhiệt năng toả ra từ phản ứng phân hạch dây chuyền có điều khiển ($k = 1$, dùng các thanh điều khiển chứa boron hoặc cadmium để hấp thụ neutron thừa) được chất tải nhiệt đưa tới sinh hơi làm quay tuabin máy phát điện." "\n"
-            r"- **Ứng dụng trong y học, nông nghiệp, công nghiệp và khảo cổ**: Xạ trị ung thư bằng đồng vị ${}_{27}^{60}\text{Co}$ hoặc dược chất phóng xạ ${}_{53}^{131}\text{I}$; chiếu xạ bảo quản thực phẩm và tạo giống cây trồng đột biến; kiểm tra khuyết tật mối hàn kim loại; định tuổi cổ vật hữu cơ bằng đồng vị ${}_{6}^{14}\text{C}$ ($T \approx 5730\text{ năm}$)." "\n"
-            r"- **Ba nguyên tắc cơ bản về an toàn phóng xạ**: (1) **Giảm thời gian** tiếp xúc với nguồn phóng xạ; (2) **Tăng khoảng cách** tới nguồn phóng xạ; (3) **Che chắn** bằng các vật liệu hấp thụ thích hợp (chì, bê tông)." "\n"
-            r"### Bài 25. Bài tập về vật lí hạt nhân" "\n"
-            r"- **Các dạng bài tập trọng tâm**: Tính độ hụt khối $\Delta m$, năng lượng liên kết $W_{\text{lk}}$ và năng lượng liên kết riêng $W_{\text{lkr}}$; cân bằng phương trình phản ứng hạt nhân và tính năng lượng thu vào hoặc toả ra $\Delta E$; bài toán định luật phóng xạ tìm $N(t)$, $m(t)$, độ phóng xạ $H(t)$ và tỉ số $\dfrac{N_{\text{Y}}}{N_{\text{X}}} = 2^{\frac{t}{T}} - 1$."
-        ),
-        "formulas": [
+        formulas=[
             G(
-                "I. Cấu trúc hạt nhân, Độ hụt khối và Năng lượng liên kết",
-                F("Số khối và Bán kính hạt nhân", r"$A = Z + N; \quad R = R_0 A^{\frac{1}{3}}\text{ (với }R_0 \approx 1{,}2 \times 10^{-15}\text{ m)}$", r"Thể tích hạt nhân tỉ lệ thuận với số khối $A$."),
-                F(r"Độ hụt khối của hạt nhân ${}_Z^A\text{X}$", r"$\Delta m = [Zm_p + (A - Z)m_n] - m_{\text{X}}$", r"$1\text{ amu} \approx 931{,}5\text{ MeV}/c^2$."),
-                F("Năng lượng liên kết và Năng lượng liên kết riêng", r"$W_{\text{lk}} = \Delta m \cdot c^2; \quad W_{\text{lkr}} = \dfrac{W_{\text{lk}}}{A}$", r"$W_{\text{lkr}}$ càng lớn thì hạt nhân càng bền vững."),
-            ),
-            G(
-                "II. Các định luật bảo toàn và Năng lượng phản ứng hạt nhân",
-                F("Bảo toàn số nucleon và Bảo toàn điện tích", r"$A_1 + A_2 = A_3 + A_4; \quad Z_1 + Z_2 = Z_3 + Z_4$", r"Áp dụng cho mọi phản ứng hạt nhân và phân rã phóng xạ."),
-                F("Năng lượng phản ứng hạt nhân", r"$\Delta E = (m_{\text{trước}} - m_{\text{sau}})c^2 = W_{\text{lk sau}} - W_{\text{lk trước}} = W_{\text{đ sau}} - W_{\text{đ trước}}$", r"$\Delta E > 0$: phản ứng toả năng lượng; $\Delta E < 0$: phản ứng thu năng lượng."),
-            ),
-            G(
-                "III. Định luật Phóng xạ và Độ phóng xạ",
-                F("Số hạt nhân và Khối lượng còn lại", r"$N(t) = N_0 \cdot 2^{-\frac{t}{T}} = N_0 e^{-\lambda t}; \quad m(t) = m_0 \cdot 2^{-\frac{t}{T}}$", r"Hằng số phóng xạ: $\lambda = \dfrac{\ln 2}{T} \approx \dfrac{0{,}693}{T}$."),
-                F("Số hạt nhân bị phân rã và Tỉ số hạt con trên hạt mẹ", r"$\Delta N = N_0\left(1 - 2^{-\frac{t}{T}}\right); \quad \dfrac{N_{\text{con}}}{N_{\text{mẹ}}} = \dfrac{\Delta N}{N(t)} = 2^{\frac{t}{T}} - 1$", r"Khối lượng hạt nhân con sinh ra: $m_{\text{con}} = \dfrac{A_{\text{con}}}{A_{\text{mẹ}}} m_0\left(1 - 2^{-\frac{t}{T}}\right)$."),
-                F("Độ phóng xạ", r"$H(t) = \lambda N(t) = \dfrac{\ln 2}{T}N(t) = H_0 \cdot 2^{-\frac{t}{T}}$", r"Đơn vị: $\text{Bq}$ (khi $T$ tính bằng giây $\text{s}$)."),
-            ),
+                "Phương trình trạng thái khí lí tưởng, Đẳng tích và Phương trình Clapeyron",
+                F("Phương trình trạng thái và Quá trình đẳng tích (V = const)", "$\\dfrac{p_1 V_1}{T_1} = \\dfrac{p_2 V_2}{T_2}; \\qquad \\text{Đẳng tích } (V_1 = V_2): \\dfrac{p_1}{T_1} = \\dfrac{p_2}{T_2}$", "Nhiệt độ $T_1, T_2$ luôn phải tính bằng Kelvin ($T = t + 273$)."),
+                F("Phương trình Clapeyron và Khối lượng riêng của khí", "$p V = n R T = \\dfrac{m}{M} R T \\implies D = \\dfrac{m}{V} = \\dfrac{p M}{R T}$", "Trong hệ SI: $p(\\text{Pa}), V(\\text{m}^3), R = 8{,}31\\text{ J/(mol}\\cdot\\text{K)}$. Trong hệ atm-lít: $p(\\text{atm}), V(\\text{L}), R = 0{,}082$."),
+            )
         ],
-        "example": (
-            r"Cho hạt nhân helium ${}_{2}^{4}\text{He}$ có khối lượng $m_{\text{He}} = 4{,}0015\text{ amu}$. Biết khối lượng của proton là $m_p = 1{,}0073\text{ amu}$, "
-            r"khối lượng của neutron là $m_n = 1{,}0087\text{ amu}$ và $1\text{ amu} = 931{,}5\text{ MeV}/c^2$. "
-            r"a) Tính độ hụt khối $\Delta m$, năng lượng liên kết $W_{\text{lk}}$ và năng lượng liên kết riêng $W_{\text{lkr}}$ của hạt nhân ${}_{2}^{4}\text{He}$. "
-            r"b) Một mẫu chất phóng xạ polonium ${}_{84}^{210}\text{Po}$ (phóng xạ $\alpha$ tạo thành hạt nhân chì ${}_{82}^{206}\text{Pb}$) có chu kì bán rã $T = 138\text{ ngày}$ và khối lượng ban đầu $m_0 = 42\text{ g}$. "
-            r"Tính khối lượng ${}_{84}^{210}\text{Po}$ còn lại và khối lượng chì ${}_{82}^{206}\text{Pb}$ được tạo thành sau thời gian $t = 276\text{ ngày}$."
-        ),
-        "example_answer": (
-            r"- **Câu a**: Hạt nhân ${}_{2}^{4}\text{He}$ có $Z = 2$ proton và $N = 4 - 2 = 2$ neutron." "\n"
-            r"  Độ hụt khối: $\Delta m = (2m_p + 2m_n) - m_{\text{He}} = 2(1{,}0073 + 1{,}0087) - 4{,}0015 = 4{,}0320 - 4{,}0015 = \mathbf{0{,}0305\text{ amu}}$." "\n"
-            r"  Năng lượng liên kết: $W_{\text{lk}} = \Delta m \cdot c^2 = 0{,}0305 \cdot 931{,}5 \approx \mathbf{28{,}41\text{ MeV}}$." "\n"
-            r"  Năng lượng liên kết riêng: $W_{\text{lkr}} = \dfrac{W_{\text{lk}}}{A} = \dfrac{28{,}41}{4} \approx \mathbf{7{,}10\text{ MeV/nucleon}}$." "\n"
-            r"- **Câu b**: Ta có $\dfrac{t}{T} = \dfrac{276}{138} = 2$ chu kì bán rã." "\n"
-            r"  Khối lượng ${}_{84}^{210}\text{Po}$ còn lại: $m = m_0 \cdot 2^{-\frac{t}{T}} = 42 \cdot 2^{-2} = \mathbf{10{,}5\text{ g}}$." "\n"
-            r"  Số mol ${}_{84}^{210}\text{Po}$ đã bị phân rã là $\Delta n = \dfrac{m_0 - m}{210} = \dfrac{42 - 10{,}5}{210} = 0{,}15\text{ mol}$. Khối lượng chì ${}_{82}^{206}\text{Pb}$ tạo thành là $m_{\text{Pb}} = \Delta n \cdot 206 = 0{,}15 \cdot 206 = \mathbf{30{,}9\text{ g}}$."
-        ),
-        "real_life": (
-            r"- **Y học hạt nhân và điều trị ung thư**: Sử dụng đồng vị phóng xạ ${}_{53}^{131}\text{I}$ ($T = 8\text{ ngày}$) trong chẩn đoán và điều trị bệnh tuyến giáp, tia $\gamma$ từ nguồn ${}_{27}^{60}\text{Co}$ hoặc dao gamma trong xạ trị khối u." "\n"
-            r"- **Nhà máy điện hạt nhân và năng lượng sạch**: Một kilôgam ${}_{92}^{235}\text{U}$ phân hạch hoàn toàn toả ra năng lượng tương đương việc đốt cháy khoảng $2500\text{ tấn}$ than đá mà không phát thải khí nhà kính $\text{CO}_2$." "\n"
-            r"- **Định tuổi khảo cổ học và địa chất**: Đo độ phóng xạ của đồng vị carbon ${}_{6}^{14}\text{C}$ trong mẫu gỗ, xương cổ để xác định niên đại di chỉ khảo cổ lên tới hàng chục nghìn năm."
-        ),
-        "game_title": "Mô phỏng Phản ứng Hạt nhân, Phân hạch và Chu kì Bán rã",
-        "game_description": "Thực hiện thí nghiệm tán xạ Rutherford, lắp ráp nucleon tính năng lượng liên kết, điều khiển lò phản ứng phân hạch U-235 và khảo sát đường cong phân rã phóng xạ.",
-        "game_type": "game_hat_nhan",
-        "quiz": [
-            mcq(
-                "biet",
-                r"Số neutron $N$ có trong một hạt nhân uranium ${}_{92}^{235}\text{U}$ là:",
-                [
-                    r"$143$",
-                    r"$92$",
-                    r"$235$",
-                    r"$327$",
-                ],
-                0,
-                r"Hạt nhân ${}_{92}^{235}\text{U}$ có số khối $A = 235$ và số proton $Z = 92$, suy ra số neutron là $N = A - Z = 235 - 92 = \mathbf{143}$.",
-            ),
-            mcq(
-                "biet",
-                r"Đại lượng nào sau đây đặc trưng trực tiếp cho mức độ bền vững của một hạt nhân nguyên tử?",
-                [
-                    r"Năng lượng liên kết riêng $W_{\text{lkr}} = \dfrac{W_{\text{lk}}}{A}$",
-                    r"Độ hụt khối $\Delta m$ của hạt nhân",
-                    r"Năng lượng liên kết toàn phần $W_{\text{lk}}$",
-                    r"Số khối $A$ của hạt nhân",
-                ],
-                0,
-                r"**Năng lượng liên kết riêng** $W_{\text{lkr}} = \dfrac{W_{\text{lk}}}{A}$ (năng lượng liên kết tính trên một nucleon) càng lớn thì hạt nhân càng bền vững.",
-            ),
-            mcq(
-                "biet",
-                r"Trong ba loại tia phóng xạ $\alpha$, $\beta$ và $\gamma$, tia phóng xạ nào có bản chất là sóng điện từ có bước sóng rất ngắn và không bị lệch khi đi qua điện trường hay từ trường?",
-                [
-                    r"Tia $\gamma$",
-                    r"Tia $\alpha$",
-                    r"Tia $\beta^-$",
-                    r"Tia $\beta^+$",
-                ],
-                0,
-                r"**Tia $\gamma$** là dòng photon có năng lượng rất cao (sóng điện từ bước sóng $\lambda < 10^{-11}\text{ m}$), không mang điện tích nên không bị lệch trong điện trường và từ trường.",
-            ),
-            mcq(
-                "biet",
-                r"Gọi $N_0$ là số hạt nhân ban đầu của một mẫu chất phóng xạ có chu kì bán rã $T$. Số hạt nhân $N(t)$ của chất phóng xạ đó còn lại sau khoảng thời gian $t$ được xác định bởi công thức nào?",
-                [
-                    r"$N(t) = N_0 \cdot 2^{-\frac{t}{T}}$",
-                    r"$N(t) = N_0 \cdot 2^{\frac{t}{T}}$",
-                    r"$N(t) = N_0\left(1 - 2^{-\frac{t}{T}}\right)$",
-                    r"$N(t) = \dfrac{N_0 \cdot T}{2t}$",
-                ],
-                0,
-                r"Theo định luật phóng xạ, số hạt nhân chất phóng xạ còn lại giảm theo hàm mũ: $N(t) = N_0 \cdot 2^{-\frac{t}{T}} = N_0 e^{-\lambda t}$.",
-            ),
-            mcq(
-                "hieu",
-                r"Cho phản ứng hạt nhân: ${}_{0}^{1}\text{n} + {}_{92}^{235}\text{U} \rightarrow {}_{56}^{144}\text{Ba} + {}_{36}^{89}\text{Kr} + k\,{}_{0}^{1}\text{n}$. Giá trị của hệ số $k$ (số neutron giải phóng) trong phản ứng phân hạch trên là:",
-                [
-                    r"$k = 3$",
-                    r"$k = 2$",
-                    r"$k = 1$",
-                    r"$k = 4$",
-                ],
-                0,
-                r"Áp dụng định luật bảo toàn số nucleon (số khối $A$): $1 + 235 = 144 + 89 + k \cdot 1 \Rightarrow 236 = 233 + k \Rightarrow \mathbf{k = 3}$.",
-            ),
-            mcq(
-                "hieu",
-                r"Một mẫu chất phóng xạ iodine ${}_{53}^{131}\text{I}$ dùng trong y tế có chu kì bán rã $T = 8\text{ ngày}$ và độ phóng xạ ban đầu là $H_0 = 640\text{ MBq}$. Độ phóng xạ $H$ của mẫu chất này sau $24\text{ ngày}$ là:",
-                [
-                    r"$80\text{ MBq}$",
-                    r"$160\text{ MBq}$",
-                    r"$320\text{ MBq}$",
-                    r"$40\text{ MBq}$",
-                ],
-                0,
-                r"Ta có $\dfrac{t}{T} = \dfrac{24}{8} = 3$ chu kì bán rã. Độ phóng xạ sau $24\text{ ngày}$ là: $H = H_0 \cdot 2^{-\frac{t}{T}} = 640 \cdot 2^{-3} = \dfrac{640}{8} = \mathbf{80\text{ MBq}}$.",
-            ),
-            tf4(
-                "hieu",
-                r"Xét tính đúng hay sai của các phát biểu sau về cấu trúc hạt nhân, lực hạt nhân và hiện tượng phóng xạ:",
-                [
-                    r"a) Lực hạt nhân là lực tương tác mạnh liên kết các nucleon trong hạt nhân, có bán kính tác dụng rất ngắn vào cỡ $10^{-15}\text{ m}$ và không phụ thuộc vào điện tích của nucleon.",
-                    r"b) Trong mọi phản ứng hạt nhân, tổng khối lượng nghỉ của các hạt trước phản ứng luôn bằng tổng khối lượng nghỉ của các hạt sau phản ứng.",
-                    r"c) Khi hạt nhân ${}_Z^A\text{X}$ phóng xạ $\alpha$ (${}_{2}^{4}\text{He}$) thì hạt nhân con tạo thành có số khối giảm đi $4$ và số hiệu nguyên tử giảm đi $2$.",
-                    r"d) Nếu tăng nhiệt độ và áp suất tác dụng lên một mẫu chất phóng xạ thì chu kì bán rã $T$ của chất phóng xạ đó sẽ giảm xuống.",
-                ],
-                [True, False, True, False],
-                r"- **a) Đúng**: Lực hạt nhân là tương tác mạnh, bán kính tác dụng cỡ kích thước hạt nhân ($\sim 10^{-15}\text{ m}$) và độc lập với điện tích." "\n"
-                r"- **b) Sai**: Trong phản ứng hạt nhân không có định luật bảo toàn khối lượng nghỉ (mà bảo toàn số nucleon $A$ và bảo toàn năng lượng toàn phần); độ chênh lệch khối lượng nghỉ chuyển hoá thành năng lượng thu vào hoặc toả ra $\Delta E = \Delta m \cdot c^2$." "\n"
-                r"- **c) Đúng**: Phương trình phóng xạ $\alpha$ là ${}_Z^A\text{X} \rightarrow {}_{Z-2}^{A-4}\text{Y} + {}_{2}^{4}\text{He}$." "\n"
-                r"- **d) Sai**: Quá trình phóng xạ có bản chất hạt nhân, hoàn toàn không phụ thuộc vào các tác động lí – hoá bên ngoài như nhiệt độ hay áp suất.",
-            ),
-            tf4(
-                "hieu",
-                r"Xét phản ứng tổng hợp hạt nhân (nhiệt hạch): ${}_{1}^{2}\text{H} + {}_{1}^{3}\text{H} \rightarrow {}_{2}^{4}\text{He} + {}_{0}^{1}\text{n}$. Biết khối lượng của các hạt nhân là $m_{\text{D}} = 2{,}0141\text{ amu}$, $m_{\text{T}} = 3{,}0160\text{ amu}$, $m_{\text{He}} = 4{,}0026\text{ amu}$, $m_n = 1{,}0087\text{ amu}$ và lấy $1\text{ amu} = 931{,}5\text{ MeV}/c^2$. Mỗi nhận định sau đúng hay sai?",
-                [
-                    r"a) Hai hạt nhân ${}_{1}^{2}\text{H}$ (deuterium) và ${}_{1}^{3}\text{H}$ (tritium) là hai đồng vị của nguyên tố hydrogen.",
-                    r"b) Tổng khối lượng của các hạt trước phản ứng lớn hơn tổng khối lượng của các hạt sau phản ứng một lượng $\Delta m = 0{,}0188\text{ amu}$.",
-                    r"c) Phản ứng trên là phản ứng thu năng lượng với nhiệt lượng thu vào cho mỗi phản ứng là $17{,}51\text{ MeV}$.",
-                    r"d) Để thực hiện phản ứng tổng hợp hạt nhân này, hỗn hợp nhiên liệu cần được nung nóng đến nhiệt độ cực cao (hàng chục triệu đến hàng trăm triệu độ Kelvin) để các hạt nhân thắng được lực đẩy tĩnh điện Coulomb.",
-                ],
-                [True, True, False, True],
-                r"- **a) Đúng**: ${}_{1}^{2}\text{H}$ và ${}_{1}^{3}\text{H}$ có cùng $Z = 1$ proton nhưng khác số khối $A$ nên là hai đồng vị của hydrogen." "\n"
-                r"- **b) Đúng**: $m_{\text{trước}} = 2{,}0141 + 3{,}0160 = 5{,}0301\text{ amu}$; $m_{\text{sau}} = 4{,}0026 + 1{,}0087 = 5{,}0113\text{ amu}$. Suy ra $\Delta m = m_{\text{trước}} - m_{\text{sau}} = 5{,}0301 - 5{,}0113 = 0{,}0188\text{ amu}$." "\n"
-                r"- **c) Sai**: Vì $m_{\text{trước}} > m_{\text{sau}}$ nên phản ứng **toả** năng lượng $\Delta E = 0{,}0188 \cdot 931{,}5 \approx 17{,}51\text{ MeV}$ (không phải thu năng lượng)." "\n"
-                r"- **d) Đúng**: Phản ứng tổng hợp hạt nhân đòi hỏi nhiệt độ cực cao (phản ứng nhiệt hạch) để các hạt nhân mang điện dương lại gần nhau trong phạm vi tác dụng của lực hạt nhân.",
-            ),
-            mcq(
-                "vandung",
-                r"Hạt nhân sắt ${}_{26}^{56}\text{Fe}$ có khối lượng $m_{\text{Fe}} = 55{,}9207\text{ amu}$. Cho khối lượng của proton là $m_p = 1{,}0073\text{ amu}$, của neutron là $m_n = 1{,}0087\text{ amu}$ và $1\text{ amu} = 931{,}5\text{ MeV}/c^2$. Năng lượng liên kết riêng $W_{\text{lkr}}$ của hạt nhân ${}_{26}^{56}\text{Fe}$ gần nhất với giá trị nào sau đây?",
-                [
-                    r"$8{,}79\text{ MeV/nucleon}$",
-                    r"$7{,}45\text{ MeV/nucleon}$",
-                    r"$8{,}12\text{ MeV/nucleon}$",
-                    r"$9{,}42\text{ MeV/nucleon}$",
-                ],
-                0,
-                r"Hạt nhân ${}_{26}^{56}\text{Fe}$ có $Z = 26$ proton và $N = 56 - 26 = 30$ neutron. Độ hụt khối: $\Delta m = 26 \cdot 1{,}0073 + 30 \cdot 1{,}0087 - 55{,}9207 = 26{,}1898 + 30{,}2610 - 55{,}9207 = 0{,}5301\text{ amu}$. Năng lượng liên kết: $W_{\text{lk}} = 0{,}5301 \cdot 931{,}5 \approx 493{,}79\text{ MeV}$. Năng lượng liên kết riêng: $W_{\text{lkr}} = \dfrac{493{,}79}{56} \approx \mathbf{8{,}82\text{ MeV/nucleon}}$ (gần nhất với $8{,}79\text{ MeV/nucleon}$).",
-            ),
-            short(
-                "vandung",
-                r"Ban đầu có một mẫu chất phóng xạ nguyên chất ${}_Z^A\text{X}$ có chu kì bán rã $T = 15\text{ giờ}$, phân rã tạo thành hạt nhân con bền $\text{Y}$. Sau khoảng thời gian $t$ bằng bao nhiêu giờ thì tỉ số giữa số hạt nhân con $\text{Y}$ tạo thành và số hạt nhân mẹ $\text{X}$ còn lại trong mẫu bằng $7$?",
-                ["45"],
-                r"Số hạt nhân con tạo thành bằng số hạt nhân mẹ đã phân rã: $N_{\text{Y}} = \Delta N = N_0\left(1 - 2^{-\frac{t}{T}}\right)$. "
-                r"Theo đề bài: $\dfrac{N_{\text{Y}}}{N_{\text{X}}} = 2^{\frac{t}{T}} - 1 = 7 \Rightarrow 2^{\frac{t}{T}} = 8 = 2^3 \Rightarrow \dfrac{t}{T} = 3 \Rightarrow t = 3T = 3 \cdot 15 = \mathbf{45}\text{ giờ}$.",
-                unit=r"$\text{giờ}$",
-            ),
+        example="Trong xi-lanh của một động cơ có chứa một lượng khí ở nhiệt độ $t_1 = 27^\\circ\\text{C}$, thể tích $V_1 = 10\\text{ lít}$ và áp suất $p_1 = 1\\text{ atm}$. Sau khi pít-tông nén, thể tích của khí giảm còn $V_2 = 2\\text{ lít}$ và nhiệt độ tăng lên đến $t_2 = 327^\\circ\\text{C}$. Hãy tính áp suất $p_2$ của khí trong xi-lanh lúc đó.",
+        example_answer="Đổi nhiệt độ sang Kelvin: $T_1 = 27 + 273 = 300\\text{ K}$ và $T_2 = 327 + 273 = 600\\text{ K}$. Áp dụng phương trình trạng thái của khí lí tưởng: $\\dfrac{p_1 V_1}{T_1} = \\dfrac{p_2 V_2}{T_2} \\implies p_2 = p_1 \\cdot \\dfrac{V_1}{V_2} \\cdot \\dfrac{T_2}{T_1} = 1 \\cdot \\dfrac{10}{2} \\cdot \\dfrac{600}{300} = 10\\text{ atm}$.",
+        real_life="Nồi áp suất nấu thức ăn chín nhừ rất nhanh và các bình xịt (bình gas mini, bình cứu hỏa) không được để ngoài nắng gắt vì trong bình kín thể tích không đổi ($V = \\text{const}$), khi nhiệt độ $T$ tăng thì áp suất $p$ tăng tỉ lệ thuận có thể gây nổ nếu không có van an toàn.",
+        quiz=[
+            mcq("biet", "Phương trình nào sau đây là **phương trình trạng thái của một lượng khí lí tưởng xác định** chuyển từ trạng thái $(p_1, V_1, T_1)$ sang trạng thái $(p_2, V_2, T_2)$?", ["$\\dfrac{p_1 V_1}{T_1} = \\dfrac{p_2 V_2}{T_2}$", "$p_1 V_1 T_1 = p_2 V_2 T_2$", "$\\dfrac{p_1 T_1}{V_1} = \\dfrac{p_2 T_2}{V_2}$", "$\\dfrac{V_1 T_1}{p_1} = \\dfrac{V_2 T_2}{p_2}$"], 0, "Phương trình trạng thái của một lượng khí lí tưởng xác định là $\\dfrac{p_1 V_1}{T_1} = \\dfrac{p_2 V_2}{T_2}$."),
+            mcq("biet", "Phương trình Clapeyron liên hệ giữa áp suất $p$, thể tích $V$, nhiệt độ tuyệt đối $T$ và số mol $n$ của một khối khí lí tưởng là gì?", ["$p V = n R T$", "$\\dfrac{p V}{n} = \\dfrac{R}{T}$", "$p T = n R V$", "$p R = n V T$"], 0, "Phương trình Clapeyron đối với $n$ mol khí lí tưởng là $p V = n R T$."),
+            mcq("hieu", "Đun nóng một lượng khí chứa trong một bình thép kín có thể tích hoàn toàn không đổi ($V = \\text{const}$). Nếu nhiệt độ tuyệt đối $T$ của khí tăng từ $300\\text{ K}$ lên $450\\text{ K}$ thì áp suất $p$ của khí trong bình thay đổi như thế nào?", ["Áp suất tăng gấp $1{,}5$ lần", "Áp suất giảm đi $1{,}5$ lần", "Áp suất không thay đổi", "Áp suất tăng gấp $3$ lần"], 0, "Trong quá trình đẳng tích ($V_1 = V_2$), ta có $\\dfrac{p_2}{p_1} = \\dfrac{T_2}{T_1} = \\dfrac{450}{300} = 1{,}5$ lần."),
+            tf4("hieu", "Xét tính đúng/sai của các phát biểu sau về phương trình trạng thái khí lí tưởng:", [
+                "Trong hệ tọa độ $(p, T)$, đường biểu diễn quá trình đẳng tích là một đường thẳng có đường kéo dài đi qua gốc tọa độ $0\\text{ K}$.",
+                "Trong quá trình biến đổi đẳng tích ($V = \\text{const}$), khối khí không thực hiện công ($A = 0$) nên toàn bộ nhiệt lượng truyền cho khí làm thay đổi nội năng của nó ($\\Delta U = Q$).",
+                "Trong công thức $p V = n R T$ với $R = 8{,}31\\text{ J/(mol}\\cdot\\text{K)}$, thể tích $V$ phải tính theo đơn vị lít ($\\text{L}$).",
+                "Nếu vừa nén cho thể tích khí giảm đi $2$ lần vừa làm tăng nhiệt độ tuyệt đối lên $2$ lần thì áp suất của khí tăng lên $4$ lần.",
+            ], [True, True, False, True], "Ý c) sai vì khi dùng $R = 8{,}31\\text{ J/(mol}\\cdot\\text{K)}$ trong hệ SI thì áp suất $p$ phải tính bằng $\\text{Pa}$ và thể tích $V$ phải đổi ra mét khối ($\\text{m}^3$, với $1\\text{ L} = 10^{-3}\\text{ m}^3$)."),
+            short("vandung", "Một bóng đèn dây tóc chứa khí trơ ở nhiệt độ $t_1 = 27^\\circ\\text{C}$ ($T_1 = 300\\text{ K}$) dưới áp suất $p_1 = 0{,}6\\text{ atm}$. Khi đèn cháy sáng, thể tích bóng đèn coi như không đổi và nhiệt độ khí trong đèn tăng lên đến $t_2 = 227^\\circ\\text{C}$ ($T_2 = 500\\text{ K}$). Áp suất $p_2$ của khí trong đèn lúc đó bằng bao nhiêu $\\text{atm}$?", ["1"], "Quá trình đẳng tích ($V = \\text{const}$): $p_2 = p_1 \\cdot \\dfrac{T_2}{T_1} = 0{,}6 \\cdot \\dfrac{500}{300} = 1\\text{ atm}$.", unit="atm"),
         ],
-    },
-
-    # =========================================================================
-    # CHUYÊN ĐỀ VẬT LÍ 12. DÒNG ĐIỆN XOAY CHIỀU RLC, LƯỢNG TỬ ÁNH SÁNG VÀ THUYẾT TƯƠNG ĐỐI
-    # =========================================================================
-    {
-        "topic": "quang-dien",
-        "title": "Chuyên đề Vật lí 12. Dòng điện xoay chiều RLC, Lượng tử ánh sáng và Thuyết tương đối",
-        "icon": "🔬",
-        "description": (
-            "Chuyên đề học tập Vật lí 12 · Bộ sách Kết nối tri thức với cuộc sống (Bài 1 – Bài 12): "
-            "Chuyên đề 1. Đặc trưng của dòng điện xoay chiều, đoạn mạch RLC mắc nối tiếp, máy biến áp và chỉnh lưu dòng điện xoay chiều; "
-            "Chuyên đề 2. Tia X, ứng dụng vật lí trong chẩn đoán y học (X-quang, CT, siêu âm, MRI), hiện tượng quang điện và năng lượng photon; "
-            "Chuyên đề 3. Lưỡng tính sóng hạt, quang phổ vạch nguyên tử, vùng năng lượng chất rắn và Hệ thức Einstein."
-        ),
-        "requirements": [
-            r"Nêu được biểu thức cảm kháng $Z_L = \omega L$, dung kháng $Z_C = \dfrac{1}{\omega C}$, tổng trở $Z = \sqrt{R^2 + (Z_L - Z_C)^2}$, định luật Ohm $I = \dfrac{U}{Z}$ và độ lệch pha $\tan\varphi = \dfrac{Z_L - Z_C}{R}$ của đoạn mạch xoay chiều $RLC$ mắc nối tiếp.",
-            r"Mô tả và vận dụng được điều kiện cộng hưởng điện trong mạch $RLC$ nối tiếp ($Z_L = Z_C \Leftrightarrow \omega_0 = \dfrac{1}{\sqrt{LC}}$), công thức công suất tiêu thụ $\mathcal{P} = UI\cos\varphi = I^2 R$ và hệ số công suất $\cos\varphi = \dfrac{R}{Z}$.",
-            r"Nêu được nguyên tắc hoạt động của máy biến áp ($\dfrac{U_1}{U_2} = \dfrac{N_1}{N_2}$), vai trò của máy biến áp trong việc giảm hao phí điện năng $\Delta \mathcal{P} = \dfrac{\mathcal{P}^2 R}{U^2\cos^2\varphi}$ khi truyền tải đi xa và nguyên lí chỉnh lưu dòng điện xoay chiều bằng diode bán dẫn.",
-            r"Trình bày được bản chất, cách tạo ra tia X (tia Röntgen), sự suy giảm cường độ tia X ($I = I_0 e^{-\mu x}$) và nguyên lí cơ bản của các kĩ thuật chẩn đoán hình ảnh y học: chụp X-quang, chụp cắt lớp vi tính (CT), siêu âm và chụp cộng hưởng từ (MRI).",
-            r"Nêu được thuyết lượng tử ánh sáng, công thức năng lượng photon $\varepsilon = hf = \dfrac{hc}{\lambda}$, định nghĩa giới hạn quang điện $\lambda_0 = \dfrac{hc}{A}$ và điều kiện xảy ra hiện tượng quang điện ngoài $\lambda \le \lambda_0$.",
-            r"Vận dụng được hệ thức Einstein về hiện tượng quang điện $hf = A + W_{\text{đ0max}} = A + \dfrac{1}{2}mv_{0\max}^2 = A + eU_{\text{h}}$ để giải các bài toán thực nghiệm.",
-            r"Nêu được lưỡng tính sóng – hạt của ánh sáng và hạt vi mô (bước sóng de Broglie $\lambda = \dfrac{h}{p} = \dfrac{h}{mv}$), giải thích được sự tạo thành quang phổ vạch của nguyên tử hydrogen theo tiên đề Bohr ($E_n - E_m = hf_{nm}$) và sơ lược vùng năng lượng của tinh thể chất rắn (vùng hoá trị, vùng cấm, vùng dẫn).",
-            r"Vận dụng được hệ thức năng lượng – khối lượng của thuyết tương đối hẹp Einstein $E = mc^2$, năng lượng nghỉ $E_0 = m_0 c^2$ và động năng tương đối tính $W_{\text{đ}} = E - E_0 = (m - m_0)c^2$.",
+    ),
+    bai(
+        topic=CH2[0], chapter_title=CH2[1], chapter_desc=CH2[2],
+        title="Bài 11: Áp suất khí theo mô hình động học phân tử. Quan hệ giữa động năng phân tử và nhiệt độ",
+        icon="⚛️",
+        description="Công thức áp suất chất khí theo mô hình động học phân tử p = (1/3)μm.v² = (2/3)μ.E_đ, hằng số Boltzmann k = R/N_A và động năng tịnh tiến trung bình E_đ = (3/2)kT.",
+        requirements=[
+            "Viết và giải thích được công thức áp suất chất khí theo mô hình động học phân tử: $p = \\dfrac{1}{3}\\mu m \\overline{v^2} = \\dfrac{2}{3}\\mu \\overline{E_{\\text{đ}}}$ (với $\\mu = \\dfrac{N}{V}$ là mật độ phân tử).",
+            "Viết và vận dụng được công thức động năng tịnh tiến trung bình của một phân tử khí lí tưởng: $\\overline{E_{\\text{đ}}} = \\dfrac{3}{2}k T$, với hằng số Boltzmann $k = \\dfrac{R}{N_A} \\approx 1{,}38 \\cdot 10^{-23}\\text{ J/K}$.",
+            "Nêu được động năng tịnh tiến trung bình của phân tử khí tỉ lệ thuận với nhiệt độ tuyệt đối $T$ (nhiệt độ tuyệt đối là thước đo động năng trung bình của phân tử) và tính căn bậc hai của trung bình bình phương tốc độ $v_{\\text{rms}} = \\sqrt{\\overline{v^2}} = \\sqrt{\\dfrac{3kT}{m_0}} = \\sqrt{\\dfrac{3RT}{M}}$.",
         ],
-        "definition": (
-            r"- **Đoạn mạch điện xoay chiều $RLC$ mắc nối tiếp và Máy biến áp (Chuyên đề 1)**: Đặt điện áp $u = U\sqrt{2}\cos(\omega t + \varphi_u)$ vào hai đầu đoạn mạch gồm điện trở $R$, cuộn cảm thuần $L$ (cảm kháng $Z_L = \omega L$) và tụ điện $C$ (dung kháng $Z_C = \dfrac{1}{\omega C}$) mắc nối tiếp thì dòng điện trong mạch có cường độ hiệu dụng $I = \dfrac{U}{Z}$ với tổng trở $Z = \sqrt{R^2 + (Z_L - Z_C)^2}$, độ lệch pha $\varphi = \varphi_u - \varphi_i$ xác định bởi $\tan\varphi = \dfrac{Z_L - Z_C}{R}$. Khi $Z_L = Z_C$ ($\omega_0 = \dfrac{1}{\sqrt{LC}}$) xảy ra **cộng hưởng điện**: $Z_{\min} = R$, $I_{\max} = \dfrac{U}{R}$, $\varphi = 0$, $\mathcal{P}_{\max} = \dfrac{U^2}{R}$. Máy biến áp lí tưởng: $\dfrac{U_1}{U_2} = \dfrac{N_1}{N_2} = \dfrac{I_2}{I_1}$." "\n"
-            r"- **Tia X, Hiện tượng quang điện và Năng lượng photon $\varepsilon = hf$ (Chuyên đề 2 và Chuyên đề 3)**: Chùm ánh sáng (và mọi bức xạ điện từ như tia X, tia $\gamma$) là chùm các hạt lượng tử gọi là **photon**; mỗi photon của bức xạ đơn sắc tần số $f$ (bước sóng $\lambda$ trong chân không) mang năng lượng xác định $\varepsilon = hf = \dfrac{hc}{\lambda}$ (với hằng số Planck $h = 6{,}626 \times 10^{-34}\text{ J}\cdot\text{s}$, $c = 3 \times 10^8\text{ m/s}$). Trong hiện tượng quang điện ngoài, khi chiếu bức xạ có $\lambda \le \lambda_0 = \dfrac{hc}{A}$ vào kim loại có công thoát $A$, electron hấp thụ trọn vẹn một photon theo **hệ thức Einstein**: $hf = A + W_{\text{đ0max}} = A + \dfrac{1}{2}mv_{0\max}^2 = A + eU_{\text{h}}$." "\n"
-            r"- **Lưỡng tính sóng – hạt, Quang phổ nguyên tử và Hệ thức Einstein $E = mc^2$ (Chuyên đề 3)**: Mọi vi hạt có động lượng $p = mv$ đều gắn liền với một sóng de Broglie có bước sóng $\lambda = \dfrac{h}{p} = \dfrac{h}{mv}$. Nguyên tử chỉ bức xạ hay hấp thụ photon khi chuyển giữa hai trạng thái dừng có năng lượng $E_n$ và $E_m$: $\varepsilon = hf_{nm} = |E_n - E_m|$. Theo thuyết tương đối hẹp Einstein, một vật có khối lượng nghỉ $m_0$ chuyển động với tốc độ $v$ có khối lượng tương đối tính $m = \dfrac{m_0}{\sqrt{1 - \frac{v^2}{c^2}}}$ và năng lượng toàn phần $E = mc^2 = E_0 + W_{\text{đ}}$."
+        definition="Theo mô hình động học phân tử chất khí, áp suất khí tác dụng lên thành bình là $p = \\dfrac{1}{3}\\mu m \\overline{v^2} = \\dfrac{2}{3}\\mu \\overline{E_{\\text{đ}}}$. Động năng tịnh tiến trung bình của một phân tử khí tỉ lệ thuận với nhiệt độ tuyệt đối $T$ của khí: $\\overline{E_{\\text{đ}}} = \\dfrac{3}{2}kT$, trong đó $k = \\dfrac{R}{N_A} \\approx 1{,}38 \\cdot 10^{-23}\\text{ J/K}$ là hằng số Boltzmann.",
+        theory=(
+            "### 1. Áp suất chất khí theo mô hình động học phân tử\n"
+            "- Gọi $\\mu = \\dfrac{N}{V}$ là mật độ phân tử (số phân tử trong một đơn vị thể tích, đơn vị $\\text{m}^{-3}$), $m$ là khối lượng của $1$ phân tử khí, $\\overline{v^2}$ là trung bình của bình phương tốc độ các phân tử.\n"
+            "- Công thức cơ bản của thuyết động học phân tử chất khí:\n"
+            "  $$p = \\dfrac{1}{3}\\mu m \\overline{v^2} = \\dfrac{2}{3}\\mu \\overline{E_{\\text{đ}}}$$\n"
+            "  trong đó $\\overline{E_{\\text{đ}}} = \\dfrac{1}{2}m\\overline{v^2}$ là **động năng tịnh tiến trung bình** của một phân tử khí.\n\n"
+            "### 2. Quan hệ giữa động năng phân tử và nhiệt độ tuyệt đối $T$\n"
+            "- Kết hợp với phương trình Clapeyron $pV = nRT = \\dfrac{N}{N_A}RT \\implies p = \\mu \\dfrac{R}{N_A}T = \\mu k T$, đặt **hằng số Boltzmann**:\n"
+            "  $$k = \\dfrac{R}{N_A} = \\dfrac{8{,}31}{6{,}02 \\cdot 10^{23}} \\approx 1{,}38 \\cdot 10^{-23}\\text{ J/K}$$\n"
+            "- Ta thu được hệ thức liên hệ giữa động năng tịnh tiến trung bình của phân tử và nhiệt độ tuyệt đối $T$:\n"
+            "  $$\\overline{E_{\\text{đ}}} = \\dfrac{3}{2}kT$$\n"
+            "- **Hệ quả quan trọng**:\n"
+            "  1. Động năng tịnh tiến trung bình của phân tử khí **chỉ phụ thuộc vào nhiệt độ tuyệt đối $T$** (không phụ thuộc vào bản chất khí là $\\text{H}_2, \\text{He}$ hay $\\text{O}_2$!).\n"
+            "  2. Căn bậc hai của trung bình bình phương tốc độ phân tử (tốc độ căn quân phương): $v_{\\text{rms}} = \\sqrt{\\overline{v^2}} = \\sqrt{\\dfrac{3kT}{m}} = \\sqrt{\\dfrac{3RT}{M}}$.\n"
+            "  3. Nội năng của $n$ mol khí lí tưởng đơn nguyên tử (như $\\text{He}, \\text{Ne}, \\text{Ar}$): $U = N \\cdot \\overline{E_{\\text{đ}}} = \\dfrac{3}{2}nRT$ (chỉ phụ thuộc vào nhiệt độ $T$)."
         ),
-        "theory": (
-            r"### Chuyên đề 1. Đặc trưng của dòng điện xoay chiều, Mạch RLC nối tiếp và Máy biến áp (Bài 1 – Bài 4 Chuyên đề Vật lí 12 KNTT)" "\n"
-            r"- **Bài 1 và Bài 2. Đoạn mạch xoay chiều $RLC$ mắc nối tiếp**: Trên $R$, $u_R$ cùng pha với $i$; trên cuộn cảm thuần $L$, $u_L$ sớm pha $\dfrac{\pi}{2}$ so với $i$; trên tụ điện $C$, $u_C$ trễ pha $\dfrac{\pi}{2}$ so với $i$. Điện áp hiệu dụng: $U = \sqrt{U_R^2 + (U_L - U_C)^2}$. Công suất tiêu thụ của mạch: $\mathcal{P} = UI\cos\varphi = I^2 R$, với hệ số công suất $\cos\varphi = \dfrac{R}{Z} = \dfrac{U_R}{U}$." "\n"
-            r"- **Bài 3. Máy biến áp và Truyền tải điện năng**: Máy biến áp hoạt động dựa trên hiện tượng cảm ứng điện từ, dùng để đổi điện áp xoay chiều mà không làm thay đổi tần số: $\dfrac{U_1}{U_2} = \dfrac{N_1}{N_2}$ ($N_2 > N_1$ là máy tăng áp, $N_2 < N_1$ là máy hạ áp). Khi truyền tải công suất $\mathcal{P}$ đi xa trên đường dây có điện trở $R$, công suất hao phí do toả nhiệt là $\Delta \mathcal{P} = \dfrac{\mathcal{P}^2 R}{U^2\cos^2\varphi}$; tăng điện áp truyền tải $U$ lên $k$ lần giúp giảm công suất hao phí $k^2$ lần." "\n"
-            r"- **Bài 4. Chỉnh lưu dòng điện xoay chiều**: Sử dụng tính dẫn điện một chiều của diode bán dẫn để biến đổi dòng điện xoay chiều thành dòng điện một chiều thông qua mạch chỉnh lưu nửa chu kì (dùng $1$ diode) hoặc mạch chỉnh lưu cả chu kì (dùng cầu chỉnh lưu $4$ diode kết hợp tụ lọc)." "\n"
-            r"### Chuyên đề 2. Tia X, Hiện tượng quang điện và Năng lượng photon $\varepsilon = hf$ (Bài 5 – Bài 12 Chuyên đề Vật lí 12 KNTT)" "\n"
-            r"- **Bài 5 – Bài 8. Tia X và Chẩn đoán hình ảnh y học**: Tia X là sóng điện từ có bước sóng từ $10^{-11}\text{ m}$ đến $10^{-8}\text{ m}$, được tạo ra khi chùm electron có động năng lớn ($eU_{\text{AK}}$) đập vào đối katốt (anode) bằng kim loại có nguyên tử lượng lớn và nhiệt độ nóng chảy cao (như tungsten hay vonfram). Bước sóng ngắn nhất của tia X phát ra xác định bởi $hf_{\max} = \dfrac{hc}{\lambda_{\min}} = eU_{\text{AK}}$. Trong y học, chụp X-quang và chụp cắt lớp CT dựa trên sự hấp thụ tia X khác nhau của xương và mô mềm; siêu âm dùng sóng cơ tần số $f > 20\text{ kHz}$; chụp cộng hưởng từ (MRI) dựa trên hiện tượng cộng hưởng từ hạt nhân hydrogen (${}_{1}^{1}\text{H}$) trong cơ thể mà không dùng bức xạ ion hoá." "\n"
-            r"- **Bài 9. Hiệu ứng quang điện và Năng lượng của photon**: Hiện tượng ánh sáng làm bật các electron ra khỏi bề mặt kim loại gọi là hiện tượng quang điện ngoài. Điều kiện xảy ra là bước sóng ánh sáng kích thích phải nhỏ hơn hoặc bằng giới hạn quang điện của kim loại: $\lambda \le \lambda_0 = \dfrac{hc}{A}$ (với $1\text{ eV} = 1{,}6 \times 10^{-19}\text{ J}$). Động năng ban đầu cực đại của quang electron liên hệ với hiệu điện thế hãm $U_{\text{h}}$ theo công thức $W_{\text{đ0max}} = \dfrac{1}{2}mv_{0\max}^2 = eU_{\text{h}} = hf - A$." "\n"
-            r"- **Bài 10 – Bài 12. Lưỡng tính sóng hạt, Quang phổ vạch và Vùng năng lượng chất rắn**: Bước sóng de Broglie của vi hạt $\lambda = \dfrac{h}{mv}$. Trong nguyên tử hydrogen, các mức năng lượng dừng $E_n = -\dfrac{13{,}6}{n^2}\text{ (eV)}$ ($n \in \mathbb{N}^*$); khi electron chuyển từ mức $E_n$ về mức $E_m$ thấp hơn thì phát ra vạch quang phổ có bước sóng $\dfrac{hc}{\lambda_{nm}} = E_n - E_m$. Trong tinh thể chất rắn, dựa vào độ rộng vùng cấm $E_g$ giữa vùng hoá trị và vùng dẫn, ta phân biệt được chất dẫn điện (vùng dẫn và vùng hoá trị chồng lấn), chất bán dẫn ($E_g$ nhỏ, cỡ $0{,}1\text{ eV} - 4\text{ eV}$) và chất điện môi ($E_g > 4\text{ eV}$)." "\n"
-            r"### Chuyên đề 3. Hệ thức Einstein $E = mc^2$ và Vật lí hiện đại" "\n"
-            r"- **Hai tiên đề của Thuyết tương đối hẹp Einstein**: (1) **Tiên đề về nguyên lí tương đối**: Mọi định luật vật lí đều có cùng một dạng như nhau trong mọi hệ quy chiếu quán tính; (2) **Tiên đề về sự bất biến của tốc độ ánh sáng**: Tốc độ ánh sáng trong chân không luôn có cùng độ lớn $c \approx 3 \times 10^8\text{ m/s}$ trong mọi hệ quy chiếu quán tính, không phụ thuộc vào phương truyền hay tốc độ của nguồn sáng và máy thu." "\n"
-            r"- **Hệ thức năng lượng – khối lượng Einstein**: Một vật có khối lượng nghỉ $m_0$ khi đứng yên có năng lượng nghỉ $E_0 = m_0 c^2$; khi chuyển động với tốc độ $v$, năng lượng toàn phần của vật là $E = mc^2 = \dfrac{m_0 c^2}{\sqrt{1 - \frac{v^2}{c^2}}}$, và động năng tương đối tính của vật là $W_{\text{đ}} = E - E_0 = (m - m_0)c^2$."
-        ),
-        "formulas": [
+        formulas=[
             G(
-                "I. Mạch điện xoay chiều RLC nối tiếp và Máy biến áp (Chuyên đề 1)",
-                F("Cảm kháng, Dung kháng và Tổng trở", r"$Z_L = \omega L; \quad Z_C = \dfrac{1}{\omega C}; \quad Z = \sqrt{R^2 + (Z_L - Z_C)^2}$", r"Định luật Ohm: $I = \dfrac{U}{Z} = \dfrac{U_R}{R} = \dfrac{U_L}{Z_L} = \dfrac{U_C}{Z_C}$."),
-                F("Độ lệch pha, Công suất và Hệ số công suất", r"$\tan\varphi = \dfrac{Z_L - Z_C}{R}; \quad \cos\varphi = \dfrac{R}{Z}; \quad \mathcal{P} = UI\cos\varphi = I^2 R$", r"Cộng hưởng điện khi $Z_L = Z_C \Leftrightarrow \omega_0 = \dfrac{1}{\sqrt{LC}}$."),
-                F("Máy biến áp lí tưởng và Hao phí truyền tải", r"$\dfrac{U_1}{U_2} = \dfrac{N_1}{N_2} = \dfrac{I_2}{I_1}; \quad \Delta \mathcal{P} = \dfrac{\mathcal{P}^2 R}{U^2\cos^2\varphi}$", r"Tăng điện áp $U$ lên $k$ lần thì công suất hao phí $\Delta \mathcal{P}$ giảm $k^2$ lần."),
-            ),
-            G(
-                "II. Tia X, Lượng tử ánh sáng và Hiện tượng quang điện (Chuyên đề 2)",
-                F("Năng lượng photon và Giới hạn quang điện", r"$\varepsilon = hf = \dfrac{hc}{\lambda}; \quad \lambda_0 = \dfrac{hc}{A}$", r"$h = 6{,}626 \times 10^{-34}\text{ J}\cdot\text{s}$; $1\text{ eV} = 1{,}6 \times 10^{-19}\text{ J}$."),
-                F("Hệ thức Einstein về hiện tượng quang điện", r"$hf = A + W_{\text{đ0max}} = A + \dfrac{1}{2}mv_{0\max}^2 = A + eU_{\text{h}}$", r"Điều kiện xảy ra quang điện ngoài: $\lambda \le \lambda_0$ (hay $f \ge f_0$)."),
-                F("Bước sóng ngắn nhất của Tia X", r"$hf_{\max} = \dfrac{hc}{\lambda_{\min}} = eU_{\text{AK}} \Rightarrow \lambda_{\min} = \dfrac{hc}{eU_{\text{AK}}}$", r"$U_{\text{AK}}$ là hiệu điện thế tăng tốc giữa anode và cathode."),
-            ),
-            G(
-                "III. Lưỡng tính sóng hạt, Tiên đề Bohr và Hệ thức Einstein (Chuyên đề 3)",
-                F("Bước sóng de Broglie và Tiên đề Bohr", r"$\lambda_{\text{dB}} = \dfrac{h}{p} = \dfrac{h}{mv}; \quad hf_{nm} = \dfrac{hc}{\lambda_{nm}} = E_n - E_m$", r"Với nguyên tử hydrogen: $E_n = -\dfrac{13{,}6}{n^2}\text{ (eV)}$."),
-                F("Hệ thức năng lượng – khối lượng Einstein", r"$E = mc^2 = \dfrac{m_0 c^2}{\sqrt{1 - \frac{v^2}{c^2}}}; \quad W_{\text{đ}} = E - E_0 = (m - m_0)c^2$", r"Năng lượng nghỉ: $E_0 = m_0 c^2$."),
-            ),
+                "Công thức Áp suất phân tử và Động năng trung bình phân tử",
+                F("Áp suất khí theo mật độ phân tử μ và động năng trung bình", "$p = \\dfrac{1}{3}\\mu m \\overline{v^2} = \\dfrac{2}{3}\\mu \\overline{E_{\\text{đ}}} = \\mu k T \\quad \\left(\\mu = \\dfrac{N}{V}\\right)$", "Áp suất khí tỉ lệ thuận với mật độ phân tử $\\mu$ và động năng trung bình của phân tử $\\overline{E_{\\text{đ}}}$."),
+                F("Động năng tịnh tiến trung bình của phân tử và Hằng số Boltzmann", "$\\overline{E_{\\text{đ}}} = \\dfrac{3}{2}kT; \\qquad k = \\dfrac{R}{N_A} \\approx 1{,}38 \\cdot 10^{-23}\\text{ J/K}; \\qquad \\sqrt{\\overline{v^2}} = \\sqrt{\\dfrac{3RT}{M}}$", "Ở cùng một nhiệt độ $T$, mọi loại phân tử khí đều có cùng động năng tịnh tiến trung bình $\\overline{E_{\\text{đ}}} = \\dfrac{3}{2}kT$."),
+            )
         ],
-        "example": (
-            r"Công thoát của electron khỏi bề mặt kim loại sodium ($\text{Na}$) là $A = 2{,}48\text{ eV}$. "
-            r"Lấy $h = 6{,}625 \times 10^{-34}\text{ J}\cdot\text{s}$, $c = 3 \times 10^8\text{ m/s}$, $e = 1{,}6 \times 10^{-19}\text{ C}$ và $1\text{ eV} = 1{,}6 \times 10^{-19}\text{ J}$. "
-            r"a) Tính giới hạn quang điện $\lambda_0$ của sodium theo đơn vị $\mu\text{m}$. "
-            r"b) Khi chiếu vào tấm sodium chùm bức xạ tử ngoại có bước sóng $\lambda = 0{,}30\text{ }\mu\text{m}$, hãy tính năng lượng photon $\varepsilon$ (theo $\text{eV}$), động năng ban đầu cực đại $W_{\text{đ0max}}$ của quang electron và hiệu điện thế hãm $U_{\text{h}}$."
-        ),
-        "example_answer": (
-            r"- **Câu a**: Đổi công thoát $A = 2{,}48 \cdot 1{,}6 \times 10^{-19} = 3{,}968 \times 10^{-19}\text{ J}$." "\n"
-            r"  Giới hạn quang điện của sodium: $\lambda_0 = \dfrac{hc}{A} = \dfrac{6{,}625 \times 10^{-34} \cdot 3 \times 10^8}{3{,}968 \times 10^{-19}} \approx 5{,}01 \times 10^{-7}\text{ m} = \mathbf{0{,}501\text{ }\mu\text{m}}$." "\n"
-            r"- **Câu b**: Với $\lambda = 0{,}30\text{ }\mu\text{m} = 3 \times 10^{-7}\text{ m} < \lambda_0$, hiện tượng quang điện xảy ra." "\n"
-            r"  Năng lượng của mỗi photon kích thích: $\varepsilon = \dfrac{hc}{\lambda} = \dfrac{6{,}625 \times 10^{-34} \cdot 3 \times 10^8}{3 \times 10^{-7}} = 6{,}625 \times 10^{-19}\text{ J} \approx \mathbf{4{,}14\text{ eV}}$." "\n"
-            r"  Theo hệ thức Einstein: $W_{\text{đ0max}} = \varepsilon - A = 4{,}14 - 2{,}48 = \mathbf{1{,}66\text{ eV}} \approx \mathbf{2{,}66 \times 10^{-19}\text{ J}}$." "\n"
-            r"  Hiệu điện thế hãm cần thiết để triệt tiêu dòng quang điện: $U_{\text{h}} = \dfrac{W_{\text{đ0max}}}{e} = \mathbf{1{,}66\text{ V}}$."
-        ),
-        "real_life": (
-            r"- **Tế bào quang điện (Pin mặt trời), cảm biến ánh sáng tự động và cáp quang**: Chuyển đổi trực tiếp quang năng của các photon thành điện năng dựa trên hiện tượng quang điện." "\n"
-            r"- **Trạm biến áp cao thế $500\text{ kV}$ Bắc – Nam và bộ sạc điện thoại (Adapter)**: Sử dụng máy biến áp nâng điện áp để giảm hao phí truyền tải và dùng mạch cầu diode chỉnh lưu dòng điện xoay chiều $220\text{ V}$ thành dòng điện một chiều sạc pin." "\n"
-            r"- **Chẩn đoán y khoa hiện đại (X-quang kỹ thuật số, CT Scanner, MRI) và hiệu chỉnh đồng hồ vệ tinh GPS**: Vận dụng tia X, cộng hưởng từ hạt nhân và thuyết tương đối Einstein trong y học và định vị toàn cầu chính xác tới từng nanô-giây."
-        ),
-        "game_title": "Phòng thí nghiệm Mạch RLC, Quang điện Tế bào và Vật lí Lượng tử",
-        "game_description": "Khảo sát hiện tượng cộng hưởng điện trong mạch RLC nối tiếp, chiếu bức xạ đơn sắc vào tế bào quang điện để đo hiệu điện thế hãm và mô phỏng dịch chuyển mức năng lượng nguyên tử Bohr.",
-        "game_type": "game_quang_dien",
-        "quiz": [
-            mcq(
-                "biet",
-                r"Gọi $h$ là hằng số Planck, $c$ là tốc độ ánh sáng trong chân không. Một bức xạ đơn sắc có tần số $f$ và bước sóng $\lambda$ trong chân không thì mỗi photon của bức xạ đó mang năng lượng $\varepsilon$ bằng:",
-                [
-                    r"$\varepsilon = hf = \dfrac{hc}{\lambda}$",
-                    r"$\varepsilon = \dfrac{h}{f} = h\lambda$",
-                    r"$\varepsilon = \dfrac{hf}{c} = \dfrac{h}{\lambda}$",
-                    r"$\varepsilon = hc\lambda$",
-                ],
-                0,
-                r"Theo thuyết lượng tử ánh sáng, năng lượng của một photon là $\varepsilon = hf = \dfrac{hc}{\lambda}$.",
-            ),
-            mcq(
-                "biet",
-                r"Đặt điện áp xoay chiều có tần số góc $\omega$ vào hai đầu đoạn mạch gồm điện trở thuần $R$, cuộn cảm thuần có độ tự cảm $L$ và tụ điện có điện dung $C$ mắc nối tiếp. Tổng trở $Z$ của đoạn mạch được tính bằng công thức nào?",
-                [
-                    r"$Z = \sqrt{R^2 + \left(\omega L - \dfrac{1}{\omega C}\right)^2}$",
-                    r"$Z = \sqrt{R^2 + \left(\omega L + \dfrac{1}{\omega C}\right)^2}$",
-                    r"$Z = R + \omega L - \dfrac{1}{\omega C}$",
-                    r"$Z = \sqrt{R^2 + \left(\omega C - \dfrac{1}{\omega L}\right)^2}$",
-                ],
-                0,
-                r"Với cảm kháng $Z_L = \omega L$ và dung kháng $Z_C = \dfrac{1}{\omega C}$, tổng trở của đoạn mạch $RLC$ mắc nối tiếp là $Z = \sqrt{R^2 + (Z_L - Z_C)^2} = \sqrt{R^2 + \left(\omega L - \dfrac{1}{\omega C}\right)^2}$.",
-            ),
-            mcq(
-                "biet",
-                r"Theo thuyết tương đối của Einstein, một vật có khối lượng $m$ thì có năng lượng toàn phần $E$ liên hệ với tốc độ ánh sáng trong chân không $c$ theo hệ thức nào?",
-                [
-                    r"$E = mc^2$",
-                    r"$E = \dfrac{1}{2}mc^2$",
-                    r"$E = mc$",
-                    r"$E = \dfrac{m}{c^2}$",
-                ],
-                0,
-                r"Hệ thức liên hệ giữa năng lượng toàn phần và khối lượng theo thuyết tương đối Einstein là $E = mc^2$.",
-            ),
-            mcq(
-                "biet",
-                r"Một máy biến áp lí tưởng có số vòng dây của cuộn sơ cấp là $N_1$, số vòng dây của cuộn thứ cấp là $N_2$. Khi đặt vào hai đầu cuộn sơ cấp điện áp xoay chiều hiệu dụng $U_1$ thì điện áp hiệu dụng $U_2$ ở hai đầu cuộn thứ cấp để hở thoả mãn hệ thức:",
-                [
-                    r"$\dfrac{U_1}{U_2} = \dfrac{N_1}{N_2}$",
-                    r"$\dfrac{U_1}{U_2} = \dfrac{N_2}{N_1}$",
-                    r"$\dfrac{U_1}{U_2} = \left(\dfrac{N_1}{N_2}\right)^2$",
-                    r"$\dfrac{U_1}{U_2} = \sqrt{\dfrac{N_1}{N_2}}$",
-                ],
-                0,
-                r"Trong máy biến áp lí tưởng, tỉ số điện áp hiệu dụng ở hai cuộn dây bằng tỉ số vòng dây tương ứng: $\dfrac{U_1}{U_2} = \dfrac{N_1}{N_2}$.",
-            ),
-            mcq(
-                "hieu",
-                r"Đặt điện áp xoay chiều $u = 100\sqrt{2}\cos(100\pi t)\text{ (V)}$ vào hai đầu đoạn mạch $RLC$ mắc nối tiếp có điện trở $R = 40\text{ }\Omega$, cảm kháng $Z_L = 70\text{ }\Omega$ và dung kháng $Z_C = 40\text{ }\Omega$. Cường độ dòng điện hiệu dụng $I$ và hệ số công suất $\cos\varphi$ của đoạn mạch lần lượt là:",
-                [
-                    r"$I = 2{,}0\text{ A}$ và $\cos\varphi = 0{,}8$",
-                    r"$I = 2{,}5\text{ A}$ và $\cos\varphi = 1{,}0$",
-                    r"$I = 2\sqrt{2}\text{ A}$ và $\cos\varphi = 0{,}6$",
-                    r"$I = 1{,}0\text{ A}$ và $\cos\varphi = 0{,}8$",
-                ],
-                0,
-                r"Tổng trở của mạch: $Z = \sqrt{R^2 + (Z_L - Z_C)^2} = \sqrt{40^2 + (70 - 40)^2} = 50\text{ }\Omega$. Điện áp hiệu dụng $U = 100\text{ V} \Rightarrow I = \dfrac{U}{Z} = \dfrac{100}{50} = \mathbf{2{,}0\text{ A}}$ và $\cos\varphi = \dfrac{R}{Z} = \dfrac{40}{50} = \mathbf{0{,}8}$.",
-            ),
-            mcq(
-                "hieu",
-                r"Một kim loại có giới hạn quang điện là $\lambda_0 = 0{,}36\text{ }\mu\text{m}$. Khi chiếu lần lượt bốn bức xạ đơn sắc có bước sóng $\lambda_1 = 0{,}65\text{ }\mu\text{m}$, $\lambda_2 = 0{,}50\text{ }\mu\text{m}$, $\lambda_3 = 0{,}42\text{ }\mu\text{m}$ và $\lambda_4 = 0{,}28\text{ }\mu\text{m}$ vào bề mặt kim loại này thì bức xạ nào gây ra được hiện tượng quang điện ngoài?",
-                [
-                    r"Chỉ bức xạ $\lambda_4 = 0{,}28\text{ }\mu\text{m}$",
-                    r"Cả ba bức xạ $\lambda_1, \lambda_2$ và $\lambda_3$",
-                    r"Hai bức xạ $\lambda_3 = 0{,}42\text{ }\mu\text{m}$ và $\lambda_4 = 0{,}28\text{ }\mu\text{m}$",
-                    r"Cả bốn bức xạ $\lambda_1, \lambda_2, \lambda_3$ và $\lambda_4$",
-                ],
-                0,
-                r"Điều kiện xảy ra hiện tượng quang điện ngoài là $\lambda \le \lambda_0 = 0{,}36\text{ }\mu\text{m}$. Trong bốn bức xạ đã cho, chỉ có $\lambda_4 = 0{,}28\text{ }\mu\text{m} \le 0{,}36\text{ }\mu\text{m}$ thoả mãn.",
-            ),
-            tf4(
-                "hieu",
-                r"Đặt điện áp xoay chiều có giá trị hiệu dụng $U = 120\text{ V}$ và tần số góc $\omega$ thay đổi được vào hai đầu đoạn mạch $RLC$ mắc nối tiếp có $R = 60\text{ }\Omega$. Khi điều chỉnh $\omega = \omega_0 = \dfrac{1}{\sqrt{LC}}$ thì trong mạch xảy ra hiện tượng cộng hưởng điện. Xét tính đúng hay sai của các khẳng định sau:",
-                [
-                    r"a) Khi xảy ra cộng hưởng điện, cảm kháng $Z_L$ bằng dung kháng $Z_C$ và tổng trở của đoạn mạch đạt giá trị nhỏ nhất $Z_{\min} = R = 60\text{ }\Omega$.",
-                    r"b) Khi xảy ra cộng hưởng điện, cường độ dòng điện trong mạch cùng pha với điện áp hai đầu đoạn mạch ($\varphi = 0$) và hệ số công suất đạt cực đại $\cos\varphi = 1$.",
-                    r"c) Cường độ dòng điện hiệu dụng cực đại trong mạch khi cộng hưởng là $I_{\max} = 2\text{ A}$ và công suất tiêu thụ cực đại là $\mathcal{P}_{\max} = 240\text{ W}$.",
-                    r"d) Khi xảy ra cộng hưởng điện, điện áp hiệu dụng giữa hai đầu cuộn cảm $U_L$ và điện áp hiệu dụng giữa hai đầu tụ điện $U_C$ đều bằng $0\text{ V}$.",
-                ],
-                [True, True, True, False],
-                r"- **a) Đúng**: Khi $\omega = \omega_0 = \dfrac{1}{\sqrt{LC}}$ thì $Z_L = Z_C \Rightarrow Z_{\min} = R = 60\text{ }\Omega$." "\n"
-                r"- **b) Đúng**: Khi $Z_L = Z_C$ thì $\tan\varphi = 0 \Rightarrow \varphi = 0$ ($i$ cùng pha với $u$) và $\cos\varphi = 1$." "\n"
-                r"- **c) Đúng**: $I_{\max} = \dfrac{U}{R} = \dfrac{120}{60} = 2\text{ A}$ và $\mathcal{P}_{\max} = I_{\max}^2 R = 2^2 \cdot 60 = 240\text{ W}$." "\n"
-                r"- **d) Sai**: Khi cộng hưởng thì $U_L = I_{\max} Z_L = U_C = I_{\max} Z_C \neq 0$ (hai điện áp tức thời $u_L$ và $u_C$ ngược pha triệt tiêu nhau nên $U_{LC} = |U_L - U_C| = 0$, nhưng bản thân $U_L$ và $U_C$ đều khác $0$).",
-            ),
-            tf4(
-                "hieu",
-                r"Xét tính đúng hay sai của các phát biểu sau về tia X, lưỡng tính sóng – hạt, quang phổ nguyên tử và hệ thức Einstein:",
-                [
-                    r"a) Tia X có khả năng đâm xuyên mạnh qua các mô mềm nhưng bị xương hấp thụ mạnh hơn, nhờ đó được ứng dụng để chụp X-quang và chụp cắt lớp vi tính (CT) trong chẩn đoán y học.",
-                    r"b) Khi tăng cường độ chùm sáng kích thích (giữ nguyên bước sóng $\lambda \le \lambda_0$) chiếu vào kim loại thì động năng ban đầu cực đại $W_{\text{đ0max}}$ của các quang electron bật ra cũng tăng tỉ lệ thuận.",
-                    r"c) Theo tiên đề Bohr, khi electron trong nguyên tử hydrogen chuyển từ quỹ đạo dừng có năng lượng $E_3 = -1{,}51\text{ eV}$ về quỹ đạo dừng có năng lượng $E_2 = -3{,}40\text{ eV}$ thì nguyên tử phát ra một photon có năng lượng $\varepsilon = 1{,}89\text{ eV}$.",
-                    r"d) Một hạt có khối lượng nghỉ $m_0$ chuyển động với tốc độ $v = 0{,}6c$ thì có khối lượng tương đối tính $m = 1{,}25m_0$ và động năng tương đối tính $W_{\text{đ}} = 0{,}25m_0 c^2$.",
-                ],
-                [True, False, True, True],
-                r"- **a) Đúng**: Sự suy giảm tia X phụ thuộc mạnh vào khối lượng riêng và nguyên tử số của vật chất nên tạo độ tương phản rõ nét giữa xương và mô mềm." "\n"
-                r"- **b) Sai**: Theo hệ thức Einstein $W_{\text{đ0max}} = \dfrac{hc}{\lambda} - A$, động năng ban đầu cực đại chỉ phụ thuộc vào bước sóng $\lambda$ (tần số $f$) của ánh sáng kích thích và bản chất kim loại ($A$), hoàn toàn không phụ thuộc vào cường độ chùm sáng." "\n"
-                r"- **c) Đúng**: $\varepsilon = E_3 - E_2 = -1{,}51 - (-3{,}40) = 1{,}89\text{ eV}$." "\n"
-                r"- **d) Đúng**: Khi $v = 0{,}6c$ thì $\sqrt{1 - \dfrac{v^2}{c^2}} = \sqrt{1 - 0{,}36} = 0{,}8 \Rightarrow m = \dfrac{m_0}{0{,}8} = 1{,}25m_0$ và $W_{\text{đ}} = (m - m_0)c^2 = 0{,}25m_0 c^2$.",
-            ),
-            mcq(
-                "vandung",
-                r"Trong một ống phát tia X, hiệu điện thế tăng tốc giữa anode và cathode là $U_{\text{AK}} = 25\text{ kV}$. Bỏ qua động năng ban đầu của electron khi bứt ra khỏi cathode. Cho $h = 6{,}625 \times 10^{-34}\text{ J}\cdot\text{s}$, $c = 3 \times 10^8\text{ m/s}$ và $e = 1{,}6 \times 10^{-19}\text{ C}$. Bước sóng ngắn nhất $\lambda_{\min}$ của tia X mà ống có thể phát ra là:",
-                [
-                    r"$4{,}97 \times 10^{-11}\text{ m}$",
-                    r"$2{,}48 \times 10^{-11}\text{ m}$",
-                    r"$4{,}97 \times 10^{-10}\text{ m}$",
-                    r"$1{,}99 \times 10^{-11}\text{ m}$",
-                ],
-                0,
-                r"Đổi $U_{\text{AK}} = 25\text{ kV} = 2{,}5 \times 10^4\text{ V}$. Khi toàn bộ động năng của electron chuyển hoá thành năng lượng của photon tia X: $\dfrac{hc}{\lambda_{\min}} = eU_{\text{AK}} \Rightarrow \lambda_{\min} = \dfrac{hc}{eU_{\text{AK}}} = \dfrac{6{,}625 \times 10^{-34} \cdot 3 \times 10^8}{1{,}6 \times 10^{-19} \cdot 2{,}5 \times 10^4} = \dfrac{1{,}9875 \times 10^{-25}}{4 \times 10^{-15}} \approx \mathbf{4{,}97 \times 10^{-11}\text{ m}}$.",
-            ),
-            short(
-                "vandung",
-                r"Khi chiếu một bức xạ đơn sắc có năng lượng mỗi photon là $\varepsilon = 4{,}5\text{ eV}$ vào bề mặt một tấm kim loại có công thoát $A = 2{,}1\text{ eV}$ thì động năng ban đầu cực đại $W_{\text{đ0max}}$ của các quang electron bật ra khỏi kim loại bằng bao nhiêu electron-volt ($\text{eV}$)? (Viết kết quả dưới dạng số thập phân với dấu phẩy hoặc dấu chấm).",
-                ["2,4", "2.4"],
-                r"Áp dụng hệ thức Einstein về hiện tượng quang điện: $W_{\text{đ0max}} = \varepsilon - A = 4{,}5 - 2{,}1 = \mathbf{2{,}4}\text{ eV}$.",
-                unit=r"$\text{eV}$",
-            ),
+        example="Tính động năng tịnh tiến trung bình $\\overline{E_{\\text{đ}}}$ của một phân tử khí lí tưởng ở nhiệt độ $t = 27^\\circ\\text{C}$. Biết hằng số Boltzmann là $k = 1{,}38 \\cdot 10^{-23}\\text{ J/K}$. Nếu tăng nhiệt độ của khối khí lên đến $t' = 327^\\circ\\text{C}$ thì động năng trung bình của phân tử tăng lên gấp mấy lần?",
+        example_answer="Ở $t = 27^\\circ\\text{C}$, nhiệt độ tuyệt đối là $T = 27 + 273 = 300\\text{ K}$. Động năng tịnh tiến trung bình của một phân tử là $\\overline{E_{\\text{đ}}} = \\dfrac{3}{2}kT = 1{,}5 \\cdot 1{,}38 \\cdot 10^{-23} \\cdot 300 = 6{,}21 \\cdot 10^{-21}\\text{ J}$. Ở $t' = 327^\\circ\\text{C}$ thì $T' = 600\\text{ K} = 2T$, nên động năng trung bình của phân tử tăng lên gấp $2$ lần.",
+        real_life="Tại tầng cao của khí quyển Trái Đất, ở cùng một nhiệt độ $T$, các phân tử hiđrô ($\\text{H}_2$) và heli ($\\text{He}$) có khối lượng mol $M$ rất nhỏ nên có tốc độ $\\sqrt{\\overline{v^2}} = \\sqrt{\\dfrac{3RT}{M}}$ rất lớn, dễ dàng thoát khỏi lực hấp dẫn của Trái Đất bay vào vũ trụ.",
+        quiz=[
+            mcq("biet", "Công thức tính động năng tịnh tiến trung bình $\\overline{E_{\\text{đ}}}$ của một phân tử khí lí tưởng theo hằng số Boltzmann $k$ và nhiệt độ tuyệt đối $T$ là gì?", ["$\\overline{E_{\\text{đ}}} = \\dfrac{3}{2}kT$", "$\\overline{E_{\\text{đ}}} = \\dfrac{1}{2}kT$", "$\\overline{E_{\\text{đ}}} = \\dfrac{2}{3}kT$", "$\\overline{E_{\\text{đ}}} = 3kT^2$"], 0, "Động năng tịnh tiến trung bình của phân tử khí lí tưởng tỉ lệ thuận với nhiệt độ tuyệt đối $T$: $\\overline{E_{\\text{đ}}} = \\dfrac{3}{2}kT$."),
+            mcq("biet", "Công thức tính áp suất chất khí $p$ theo mật độ phân tử $\\mu = \\dfrac{N}{V}$ và động năng tịnh tiến trung bình $\\overline{E_{\\text{đ}}}$ của phân tử là gì?", ["$p = \\dfrac{2}{3}\\mu \\overline{E_{\\text{đ}}}$ (hay $p = \\dfrac{1}{3}\\mu m \\overline{v^2}$)", "$p = \\dfrac{3}{2}\\mu \\overline{E_{\\text{đ}}}$", "$p = \\mu \\overline{E_{\\text{đ}}}$", "$p = \\dfrac{1}{2}\\mu \\overline{E_{\\text{đ}}}$"], 0, "Theo mô hình động học phân tử chất khí: $p = \\dfrac{1}{3}\\mu m \\overline{v^2} = \\dfrac{2}{3}\\mu \\overline{E_{\\text{đ}}}$."),
+            mcq("hieu", "Hai bình kín chứa hai chất khí khác nhau là khí hiđrô ($\\text{H}_2, M_1 = 2\\text{ g/mol}$) và khí ôxi ($\\text{O}_2, M_2 = 32\\text{ g/mol}$) ở **cùng một nhiệt độ** $T$. Khi so sánh động năng tịnh tiến trung bình của phân tử hiđrô ($\\overline{E_{\\text{đ}1}}$) và phân tử ôxi ($\\overline{E_{\\text{đ}2}}$), kết luận nào sau đây là đúng?", ["$\\overline{E_{\\text{đ}1}} = \\overline{E_{\\text{đ}2}}$ (vì cùng nhiệt độ $T$ nên $\\overline{E_{\\text{đ}}} = \\dfrac{3}{2}kT$ như nhau)", "$\\overline{E_{\\text{đ}1}} = 16 \\overline{E_{\\text{đ}2}}$", "$\\overline{E_{\\text{đ}2}} = 16 \\overline{E_{\\text{đ}1}}$", "$\\overline{E_{\\text{đ}1}} = 4 \\overline{E_{\\text{đ}2}}$"], 0, "Động năng tịnh tiến trung bình của phân tử $\\overline{E_{\\text{đ}}} = \\dfrac{3}{2}kT$ chỉ phụ thuộc vào nhiệt độ tuyệt đối $T$, không phụ thuộc khối lượng phân tử."),
+            tf4("hieu", "Xét tính đúng/sai của các phát biểu sau về áp suất và động năng phân tử chất khí:", [
+                "Hằng số Boltzmann $k$ liên hệ với hằng số khí lí tưởng $R$ và số Avogadro $N_A$ qua hệ thức $k = \\dfrac{R}{N_A} \\approx 1{,}38 \\cdot 10^{-23}\\text{ J/K}$.",
+                "Khi nhiệt độ tuyệt đối $T$ của một khối khí lí tưởng tăng lên $4$ lần thì căn bậc hai của trung bình bình phương tốc độ phân tử ($\\sqrt{\\overline{v^2}}$) tăng lên $2$ lần.",
+                "Nội năng của một lượng khí lí tưởng xác định phụ thuộc vào cả thể tích $V$ và nhiệt độ $T$.",
+                "Áp suất của chất khí trong bình tỉ lệ thuận với mật độ phân tử $\\mu$ và nhiệt độ tuyệt đối $T$ ($p = \\mu k T$).",
+            ], [True, True, False, True], "Ý c) sai vì đối với khí lí tưởng, ta bỏ qua thế năng tương tác phân tử nên nội năng chỉ bằng tổng động năng phân tử và **chỉ phụ thuộc vào nhiệt độ $T$** (không phụ thuộc thể tích $V$)."),
+            short("vandung", "Một bình kín chứa khí có mật độ phân tử $\\mu = 3 \\cdot 10^{25}\\text{ m}^{-3}$. Biết động năng tịnh tiến trung bình của mỗi phân tử khí là $\\overline{E_{\\text{đ}}} = 5 \\cdot 10^{-21}\\text{ J}$. Áp suất $p$ của khí trong bình bằng bao nhiêu $\\text{kPa}$ (biết $1\\text{ kPa} = 1000\\text{ Pa}$)?", ["100"], "Áp dụng công thức $p = \\dfrac{2}{3}\\mu \\overline{E_{\\text{đ}}} = \\dfrac{2}{3} \\cdot 3 \\cdot 10^{25} \\cdot 5 \\cdot 10^{-21} = 10^5\\text{ Pa} = 100\\text{ kPa}$.", unit="kPa"),
         ],
-    },
+    ),
+    bai(
+        topic=CH3[0], chapter_title=CH3[1], chapter_desc=CH3[2],
+        title="Bài 12: Từ trường và đường sức từ",
+        icon="🧲",
+        description="Tương tác từ, tính chất của đường sức từ, từ trường đều và quy tắc nắm tay phải xác định chiều đường sức từ của dòng điện thẳng, dòng điện tròn và ống dây.",
+        requirements=[
+            "Nêu được tương tác từ là tương tác giữa nam châm với nam châm, giữa dòng điện với nam châm và giữa dòng điện với dòng điện thông qua từ trường.",
+            "Trình bày được các tính chất của đường sức từ (là những đường cong khép kín, không cắt nhau, nơi từ trường mạnh thì đường sức dày, ngoài nam châm đi ra từ cực Bắc $\\text{N}$ vào cực Nam $\\text{S}$).",
+            "Vận dụng được quy tắc nắm bàn tay phải để xác định chiều đường sức từ của dòng điện trong dây dẫn thẳng dài, khung dây tròn và ống dây hình trụ.",
+        ],
+        definition="Từ trường là trường vật chất tồn tại xung quanh nam châm và xung quanh dòng điện (hay điện tích chuyển động), biểu hiện cụ thể là tác dụng lực từ lên một nam châm hay một dòng điện khác đặt trong nó. Đường sức từ là những đường vẽ ở trong không gian có từ trường sao cho tiếp tuyến tại mỗi điểm trùng với phương của vectơ cảm ứng từ $\\vec{B}$ tại điểm đó.",
+        theory=(
+            "### 1. Tính chất của đường sức từ và Từ trường đều\n"
+            "- Qua mỗi điểm trong không gian chỉ vẽ được **duy nhất một đường sức từ** (các đường sức từ **không bao giờ cắt nhau**).\n"
+            "- Khác với đường sức điện tĩnh (hở), các đường sức từ là **những đường cong khép kín** (bên ngoài nam châm đi ra từ cực Bắc $\\text{N}$ và đi vào cực Nam $\\text{S}$; bên trong nam châm đi từ $\\text{S}$ sang $\\text{N}$).\n"
+            "- Nơi nào từ trường mạnh thì các đường sức từ **mau (dày)**, nơi nào từ trường yếu thì đường sức từ **thưa**.\n"
+            "- **Từ trường đều**: từ trường mà đặc tính tại mọi điểm đều như nhau; các đường sức từ là những **đường thẳng song song, cùng chiều và cách đều nhau** (ví dụ: trong lòng ống dây hình trụ dài có dòng điện và giữa hai cực của nam châm hình chữ U).\n\n"
+            "### 2. Quy tắc nắm bàn tay phải cho dòng điện\n"
+            "- **Dây dẫn thẳng dài**: Giơ ngón cái của bàn tay phải hướng theo chiều dòng điện $I$, khum bốn ngón kia xung quanh dây dẫn thì chiều từ cổ tay đến bốn ngón tay chỉ chiều của các đường sức từ (là các đường tròn đồng tâm nằm trong mặt phẳng vuông góc với dây).\n"
+            "- **Khung dây tròn và Ống dây hình trụ**: Khum bàn tay phải theo các vòng dây của ống dây sao cho chiều từ cổ tay đến các ngón tay trùng với chiều dòng điện trong các vòng dây; khi đó ngón cái choãi ra chỉ **chiều của đường sức từ ở trong lòng ống dây** (đi ra từ cực Bắc $\\text{N}$ của ống dây)."
+        ),
+        formulas=[
+            G(
+                "Quy tắc xác định chiều đường sức từ",
+                F("Quy tắc đối với nam châm và mặt dòng điện tròn", "$\\text{Ngoài nam châm: Ra Bắc (N) – Vào Nam (S)}; \\qquad \\text{Mặt dòng điện: Vào Nam (cùng chiều KĐH) – Ra Bắc (ngược chiều KĐH)}$", "Trong lòng ống dây dẫn có dòng điện, các đường sức từ là những đường thẳng song song đi từ cực Nam sang cực Bắc rồi đi ra ngoài tại cực Bắc."),
+                F("Tương tác giữa hai dây dẫn thẳng song song mang dòng điện", "$I_1 \\uparrow\\uparrow I_2 \\implies \\text{Hút nhau}; \\qquad I_1 \\uparrow\\downarrow I_2 \\implies \\text{Đẩy nhau}$", "Hai dòng điện thẳng song song cùng chiều thì hút nhau, ngược chiều thì đẩy nhau."),
+            )
+        ],
+        example="Một ống dây hình trụ dài đặt nằm ngang có dòng điện một chiều chạy qua các vòng dây. Khi nhìn vào đầu bên trái $A$ của ống dây, ta thấy dòng điện chạy theo chiều kim đồng hồ. Hãy xác định tên cực từ ở đầu $A$, đầu $B$ (bên phải) và chiều của đường sức từ bên trong lòng ống dây.",
+        example_answer="Áp dụng quy tắc nắm bàn tay phải (hoặc quy tắc 'Vào Nam ra Bắc': nhìn vào mặt đầu ống dây thấy dòng điện chạy cùng chiều kim đồng hồ thì mặt đó là cực Nam $\\text{S}$): Đầu $A$ là **cực Nam ($\\text{S}$)**, đầu $B$ là **cực Bắc ($\\text{N}$)**. Ở bên trong lòng ống dây, các đường sức từ hướng từ đầu $A$ ($\\text{S}$) sang đầu $B$ ($\\text{N}$) và đi ra ngoài từ đầu $B$.",
+        real_life="Máy chụp cộng hưởng từ (MRI) trong các bệnh viện sử dụng một ống dây siêu dẫn khổng lồ tạo ra từ trường đều cực mạnh và ổn định ở trong lòng ống để ghi ảnh chi tiết các cơ quan nội tạng của cơ thể.",
+        quiz=[
+            mcq("biet", "Các đường sức từ của một dòng điện chạy trong dây dẫn thẳng rất dài có hình dạng gì?", ["Là những đường tròn đồng tâm nằm trong mặt phẳng vuông góc với dây dẫn và có tâm nằm trên dây dẫn", "Là những đường thẳng song song với dây dẫn", "Là những đường thẳng xuất phát từ dây dẫn tỏa ra mọi phía", "Là những đường parabol"], 0, "Đường sức từ của dòng điện thẳng dài là các đường tròn đồng tâm nằm trong mặt phẳng vuông góc với dây dẫn, chiều xác định theo quy tắc nắm tay phải."),
+            mcq("biet", "Đặc điểm nào sau đây là **đúng** đối với mọi đường sức từ?", ["Các đường sức từ là những đường cong khép kín (hoặc vô hạn ở hai đầu) và không bao giờ cắt nhau", "Các đường sức từ bắt đầu từ điện tích dương và kết thúc ở điện tích âm", "Qua một điểm trong từ trường có thể vẽ được hai đường sức từ cắt nhau", "Nơi nào từ trường mạnh thì các đường sức từ được vẽ rất thưa"], 0, "Qua mỗi điểm chỉ có một đường sức từ và mọi đường sức từ đều là đường cong khép kín."),
+            mcq("hieu", "Hai dây dẫn thẳng dài đặt song song gần nhau trong không khí. Khi cho hai dòng điện không đổi $I_1$ và $I_2$ chạy qua hai dây theo **cùng một chiều** thì hai dây dẫn sẽ tương tác với nhau như thế nào?", ["Hai dây dẫn hút nhau", "Hai dây dẫn đẩy nhau", "Hai dây dẫn không tương tác với nhau", "Hai dây dẫn quay vuông góc với nhau"], 0, "Hai dòng điện thẳng song song cùng chiều thì hút nhau, ngược chiều thì đẩy nhau."),
+            tf4("hieu", "Xét tính đúng/sai của các phát biểu sau về từ trường và đường sức từ:", [
+                "Từ trường trong lòng một ống dây hình trụ dài có dòng điện không đổi chạy qua là từ trường đều.",
+                "Chiều của đường sức từ tại một điểm trùng với chiều mà cực Bắc của kim nam châm nhỏ tự do chỉ khi nằm cân bằng tại điểm đó.",
+                "Xung quanh một điện tích đứng yên luôn tồn tại đồng thời cả điện trường và từ trường.",
+                "Quy tắc nắm bàn tay phải dùng để xác định chiều đường sức từ của dòng điện thẳng và ống dây có dòng điện.",
+            ], [True, True, False, True], "Ý c) sai vì xung quanh một điện tích **đứng yên** chỉ có điện trường tĩnh, không có từ trường (chỉ khi điện tích chuyển động mới sinh ra từ trường)."),
+            short("vandung", "Qua mỗi điểm bất kì trong không gian có từ trường, ta có thể vẽ được tối đa bao nhiêu đường sức từ đi qua điểm đó?", ["1"], "Tại mỗi điểm trong từ trường chỉ có một hướng duy nhất của $\\vec{B}$ nên chỉ vẽ được duy nhất $1$ đường sức từ đi qua điểm đó."),
+        ],
+    ),
+    bai(
+        topic=CH3[0], chapter_title=CH3[1], chapter_desc=CH3[2],
+        title="Bài 13: Cảm ứng từ và lực từ tác dụng lên đoạn dây dẫn mang dòng điện",
+        icon="✋",
+        description="Vectơ cảm ứng từ B (đơn vị Tesla - T), quy tắc bàn tay trái xác định hướng của lực từ và công thức độ lớn lực từ F = B.I.ℓ.sinα.",
+        requirements=[
+            "Định nghĩa được cảm ứng từ $B = \\dfrac{F}{I\\ell}$ (khi dây vuông góc đường sức) đặc trưng cho từ trường về mặt tác dụng lực, có đơn vị là Tesla ($\\text{T}$).",
+            "Vận dụng được **quy tắc bàn tay trái** để xác định chiều của lực từ $\\vec{F}$ tác dụng lên đoạn dây dẫn thẳng mang dòng điện đặt trong từ trường.",
+            "Viết và vận dụng được công thức tổng quát tính độ lớn lực từ: $F = B \\cdot I \\cdot \\ell \\cdot \\sin\\alpha$ (với $\\alpha = (\\widehat{\\vec{B}, \\vec{I}})$).",
+        ],
+        definition="Vectơ cảm ứng từ $\\vec{B}$ tại một điểm đặc trưng cho từ trường về phương diện tác dụng lực từ tại điểm đó (đơn vị trong hệ SI là Tesla – $\\text{T}$). Lực từ $\\vec{F}$ tác dụng lên đoạn dây dẫn thẳng dài $\\ell$ mang dòng điện $I$ đặt trong từ trường đều $\\vec{B}$ có phương vuông góc với mặt phẳng chứa dây dẫn và $\\vec{B}$, có chiều tuân theo quy tắc bàn tay trái và có độ lớn: $F = B \\cdot I \\cdot \\ell \\cdot \\sin\\alpha$.",
+        theory=(
+            "### 1. Lực từ tác dụng lên đoạn dây dẫn mang dòng điện\n"
+            "- **Điểm đặt**: tại trung điểm của đoạn dây dẫn nằm trong từ trường.\n"
+            "- **Phương**: vuông góc với mặt phẳng tạo bởi đoạn dây dẫn mang dòng điện và vectơ cảm ứng từ $\\vec{B}$ ($\\vec{F} \\perp \\vec{I}$ và $\\vec{F} \\perp \\vec{B}$).\n"
+            "- **Chiều — Quy tắc bàn tay trái**: Đặt bàn tay trái duỗi thẳng sao cho các đường sức từ ($\\vec{B}$) hướng vào lòng bàn tay, chiều từ cổ tay đến bốn ngón tay trùng với chiều dòng điện $I$; khi đó ngón tay cái choãi ra $90^\\circ$ chỉ chiều của lực từ $\\vec{F}$.\n\n"
+            "### 2. Công thức độ lớn lực từ và Cảm ứng từ $B$\n"
+            "- **Công thức tổng quát (Định luật Ampere)**:\n"
+            "  $$F = B \\cdot I \\cdot \\ell \\cdot \\sin\\alpha$$\n"
+            "  trong đó $\\alpha$ là góc hợp bởi hướng dòng điện $\\vec{I}$ và hướng của vectơ cảm ứng từ $\\vec{B}$:\n"
+            "  - Khi dây dẫn **vuông góc** với đường sức từ ($\\alpha = 90^\\circ, \\sin 90^\\circ = 1$): lực từ đạt cực đại $F_{\\max} = B \\cdot I \\cdot \\ell \\implies B = \\dfrac{F_{\\max}}{I \\cdot \\ell}$.\n"
+            "  - Khi dây dẫn **song song** với đường sức từ ($\\alpha = 0^\\circ$ hoặc $180^\\circ$): lực từ bằng không ($F = 0$).\n"
+            "- **Đơn vị cảm ứng từ**: **Tesla** (kí hiệu $\\text{T}$), với $1\\text{ T} = 1\\text{ N/(A}\\cdot\\text{m)}$."
+        ),
+        formulas=[
+            G(
+                "Công thức Lực từ và Cảm ứng từ",
+                F("Độ lớn lực từ tác dụng lên đoạn dây dẫn thẳng", "$F = B \\cdot I \\cdot \\ell \\cdot \\sin\\alpha$", "Trong đó $B$ tính bằng Tesla ($\\text{T}$), $I$ tính bằng Ampe ($\\text{A}$), $\\ell$ là chiều dài phần dây nằm trong từ trường ($\\text{m}$), $\\alpha = (\\widehat{\\vec{B}, \\vec{I}})$."),
+                F("Cảm ứng từ B từ thí nghiệm cân từ (khi α = 90°)", "$B = \\dfrac{F}{I \\cdot \\ell} \\quad (1\\text{ T} = 1\\text{ N}\\cdot\\text{A}^{-1}\\cdot\\text{m}^{-1};\\ 1\\text{ mT} = 10^{-3}\\text{ T})$", "Khi dòng điện song song với các đường sức từ ($\\alpha = 0^\\circ$ hoặc $180^\\circ$) thì $F = 0$."),
+            )
+        ],
+        example="Một đoạn dây dẫn thẳng dài $\\ell = 20\\text{ cm} = 0{,}2\\text{ m}$ có dòng điện cường độ $I = 5\\text{ A}$ chạy qua được đặt trong một từ trường đều có độ lớn cảm ứng từ $B = 0{,}4\\text{ T}$. Hãy tính độ lớn lực từ $F$ tác dụng lên đoạn dây trong hai trường hợp: (a) Dây dẫn đặt vuông góc với các đường sức từ ($\\alpha = 90^\\circ$); (b) Dây dẫn hợp với các đường sức từ một góc $\\alpha = 30^\\circ$.",
+        example_answer="Đổi $\\ell = 0{,}2\\text{ m}$. (a) Khi $\\alpha = 90^\\circ$: $F = B I \\ell \\sin 90^\\circ = 0{,}4 \\cdot 5 \\cdot 0{,}2 \\cdot 1 = 0{,}4\\text{ N}$. (b) Khi $\\alpha = 30^\\circ$: $F = B I \\ell \\sin 30^\\circ = 0{,}4 \\cdot 5 \\cdot 0{,}2 \\cdot 0{,}5 = 0{,}2\\text{ N}$.",
+        real_life="Động cơ điện một chiều (trong quạt tích điện, xe điện, đồ chơi) và màng loa điện động phát ra âm thanh đều hoạt động dựa trên lực từ $\\vec{F}$ tác dụng lên cuộn dây dẫn mang dòng điện đặt trong từ trường của nam châm.",
+        quiz=[
+            mcq("biet", "Công thức tính độ lớn lực từ $F$ tác dụng lên một đoạn dây dẫn thẳng dài $\\ell$ mang dòng điện $I$ đặt trong từ trường đều $\\vec{B}$ hợp với dây một góc $\\alpha$ là gì?", ["$F = B \\cdot I \\cdot \\ell \\cdot \\sin\\alpha$", "$F = B \\cdot I \\cdot \\ell \\cdot \\cos\\alpha$", "$F = \\dfrac{B \\cdot I}{\\ell \\cdot \\sin\\alpha}$", "$F = B^2 I \\ell \\sin\\alpha$"], 0, "Độ lớn lực từ tác dụng lên đoạn dây dẫn thẳng mang dòng điện là $F = B I \\ell \\sin\\alpha$."),
+            mcq("biet", "Đơn vị của cảm ứng từ $B$ trong hệ thống đo lường quốc tế SI là gì?", ["Tesla ($\\text{T}$)", "Weber ($\\text{Wb}$)", "Henry ($\\text{H}$)", "Vôn trên mét ($\\text{V/m}$)"], 0, "Đơn vị của cảm ứng từ $B$ trong hệ SI là Tesla (kí hiệu $\\text{T}$)."),
+            mcq("hieu", "Khi đặt một đoạn dây dẫn thẳng có dòng điện $I$ chạy qua **song song** với các đường sức từ của một từ trường đều ($\\alpha = 0^\\circ$ hoặc $\\alpha = 180^\\circ$) thì độ lớn lực từ tác dụng lên đoạn dây đó bằng bao nhiêu?", ["$F = 0$", "$F = B I \\ell$", "$F = \\dfrac{1}{2} B I \\ell$", "$F = 2 B I \\ell$"], 0, "Khi dây dẫn song song với đường sức từ thì $\\alpha = 0^\\circ$ (hoặc $180^\\circ$), $\\sin\\alpha = 0$ nên $F = B I \\ell \\sin\\alpha = 0$."),
+            tf4("hieu", "Xét tính đúng/sai của các phát biểu sau về cảm ứng từ và lực từ:", [
+                "Vectơ lực từ $\\vec{F}$ luôn vuông góc với cả đoạn dây dẫn mang dòng điện và vectơ cảm ứng từ $\\vec{B}$.",
+                "Quy tắc bàn tay trái dùng để xác định chiều của lực từ tác dụng lên đoạn dây dẫn mang dòng điện trong từ trường.",
+                "Nếu đồng thời đổi chiều dòng điện và đổi chiều đường sức từ (đảo hai cực nam châm) thì chiều của lực từ $\\vec{F}$ bị đổi ngược lại.",
+                "Đơn vị $1\\text{ T}$ tương đương với $1\\text{ N/(A}\\cdot\\text{m)}$.",
+            ], [True, True, False, True], "Ý c) sai vì đổi chiều dòng điện làm $\\vec{F}$ đổi chiều 1 lần, đổi chiều từ trường $\\vec{B}$ làm $\\vec{F}$ đổi chiều thêm lần nữa, nên kết quả là chiều của lực từ $\\vec{F}$ **giữ nguyên như cũ**."),
+            short("vandung", "Một đoạn dây dẫn thẳng dài $\\ell = 0{,}5\\text{ m}$ mang dòng điện $I = 4\\text{ A}$ đặt vuông góc với các đường sức từ ($\\alpha = 90^\\circ$) của một từ trường đều có cảm ứng từ $B = 0{,}5\\text{ T}$. Độ lớn lực từ $F$ tác dụng lên đoạn dây bằng bao nhiêu Newton ($\\text{N}$)?", ["1"], "Áp dụng công thức $F = B I \\ell \\sin 90^\\circ = 0{,}5 \\cdot 4 \\cdot 0{,}5 \\cdot 1 = 1\\text{ N}$.", unit="N"),
+        ],
+    ),
+    bai(
+        topic=CH3[0], chapter_title=CH3[1], chapter_desc=CH3[2],
+        title="Bài 14: Từ thông. Hiện tượng cảm ứng điện từ",
+        icon="🔄",
+        description="Khái niệm và công thức từ thông Φ = N.B.S.cosα (đơn vị Weber - Wb), định luật Lenz về chiều dòng điện cảm ứng và định luật Faraday e_c = -ΔΦ/Δt.",
+        requirements=[
+            "Viết và vận dụng được công thức tính từ thông qua khung dây có $N$ vòng dây, diện tích $S$ đặt trong từ trường đều $\\vec{B}$: $\\Phi = N B S \\cos\\alpha$ (đơn vị Weber – $\\text{Wb}$), với $\\alpha = (\\widehat{\\vec{n}, \\vec{B}})$.",
+            "Phát biểu và vận dụng được Định luật Lenz về chiều dòng điện cảm ứng (tạo ra từ trường cảm ứng $\\vec{B}_c$ chống lại nguyên nhân sinh ra nó: từ thông tăng thì $\\vec{B}_c \\uparrow\\downarrow \\vec{B}$, từ thông giảm thì $\\vec{B}_c \\uparrow\\uparrow \\vec{B}$).",
+            "Viết và vận dụng được công thức Định luật Faraday về suất điện động cảm ứng: $e_c = -\\dfrac{\\Delta\\Phi}{\\Delta t}$ và $|e_c| = \\left|\\dfrac{\\Delta\\Phi}{\\Delta t}\\right|$, cường độ dòng cảm ứng $i_c = \\dfrac{|e_c|}{R}$.",
+        ],
+        definition="Từ thông qua một khung dây phẳng có $N$ vòng dây, diện tích mỗi vòng là $S$ đặt trong từ trường đều $\\vec{B}$ được xác định bởi công thức $\\Phi = N B S \\cos\\alpha$ (đơn vị Weber – $\\text{Wb}$), với $\\alpha$ là góc hợp bởi vectơ pháp tuyến $\\vec{n}$ của mặt phẳng khung dây và $\\vec{B}$. Khi từ thông qua mạch kín biến thiên thì xuất hiện suất điện động cảm ứng theo định luật Faraday: $e_c = -\\dfrac{\\Delta\\Phi}{\\Delta t}$.",
+        theory=(
+            "### 1. Từ thông ($\\Phi$)\n"
+            "- Biểu thức:\n"
+            "  $$\\Phi = N \\cdot B \\cdot S \\cdot \\cos\\alpha$$\n"
+            "  trong đó $\\alpha = (\\widehat{\\vec{n}, \\vec{B}})$ là góc hợp bởi **vectơ pháp tuyến $\\vec{n}$** (vuông góc với mặt khung) và vectơ cảm ứng từ $\\vec{B}$.\n"
+            "  *(Lưu ý cực kì quan trọng: nếu đề bài cho mặt phẳng khung dây hợp với $\\vec{B}$ một góc $\\beta$ thì góc trong công thức là $\\alpha = 90^\\circ - \\beta \\implies \\cos\\alpha = \\sin\\beta$!)*. \n"
+            "- Đơn vị từ thông trong hệ SI là **Weber** (kí hiệu $\\text{Wb}$), với $1\\text{ Wb} = 1\\text{ T}\\cdot\\text{m}^2$.\n\n"
+            "### 2. Định luật Lenz và Định luật Faraday về cảm ứng điện từ\n"
+            "- **Định luật Lenz (chiều dòng điện cảm ứng)**: Dòng điện cảm ứng xuất hiện trong mạch kín có chiều sao cho từ trường cảm ứng ($\\vec{B}_c$) mà nó sinh ra có tác dụng **chống lại sự biến thiên của từ thông ban đầu** qua mạch kín:\n"
+            "  - Nếu từ thông $\\Phi$ đang **tăng**: $\\vec{B}_c$ **ngược chiều** với $\\vec{B}$ ban đầu ($\\vec{B}_c \\uparrow\\downarrow \\vec{B}$).\n"
+            "  - Nếu từ thông $\\Phi$ đang **giảm**: $\\vec{B}_c$ **cùng chiều** với $\\vec{B}$ ban đầu ($\\vec{B}_c \\uparrow\\uparrow \\vec{B}$).\n"
+            "- **Định luật Faraday (độ lớn suất điện động cảm ứng)**:\n"
+            "  $$e_c = -\\dfrac{\\Delta\\Phi}{\\Delta t} \\implies |e_c| = \\left|\\dfrac{\\Delta\\Phi}{\\Delta t}\\right| = \\left|\\dfrac{\\Phi_2 - \\Phi_1}{\\Delta t}\\right|; \\qquad i_c = \\dfrac{|e_c|}{R}$$\n"
+            "- **Dòng điện Foucault (dòng điện xoáy)**: dòng điện cảm ứng sinh ra trong khối vật dẫn kim loại khi chuyển động trong từ trường hoặc đặt trong từ trường biến thiên (ứng dụng trong bếp từ, phanh điện từ, lò tôi kim loại; gây hao phí tỏa nhiệt trong lõi máy biến áp nên phải ghép lõi từ các lá thép kĩ thuật điện mỏng sơn cách điện)."
+        ),
+        formulas=[
+            G(
+                "Từ thông, Định luật Lenz và Định luật Faraday",
+                F("Công thức tính từ thông qua khung dây N vòng", "$\\Phi = N \\cdot B \\cdot S \\cdot \\cos\\alpha \\quad (\\text{với } \\alpha = (\\widehat{\\vec{n}, \\vec{B}});\\ 1\\text{ Wb} = 1\\text{ T}\\cdot\\text{m}^2)$", "Khi mặt khung vuông góc với đường sức từ thì $\\vec{n} \\parallel \\vec{B} \\ (\\alpha = 0^\\circ) \\implies \\Phi_{\\max} = NBS$."),
+                F("Suất điện động cảm ứng (Định luật Faraday)", "$e_c = -\\dfrac{\\Delta\\Phi}{\\Delta t}; \\qquad |e_c| = \\left|\\dfrac{\\Phi_2 - \\Phi_1}{\\Delta t}\\right|; \\qquad i_c = \\dfrac{|e_c|}{R}$", "Tốc độ biến thiên từ thông $\\left|\\dfrac{\\Delta\\Phi}{\\Delta t}\\right|$ càng lớn thì độ lớn suất điện động cảm ứng $|e_c|$ càng lớn."),
+            )
+        ],
+        example="Một cuộn dây phẳng gồm $N = 100$ vòng dây, diện tích mỗi vòng là $S = 20\\text{ cm}^2 = 2 \\cdot 10^{-3}\\text{ m}^2$ đặt trong từ trường đều có vectơ cảm ứng từ $\\vec{B}$ vuông góc với mặt phẳng khung dây ($\\alpha = 0^\\circ$). Trong khoảng thời gian $\\Delta t = 0{,}05\\text{ s}$, độ lớn cảm ứng từ tăng đều từ $B_1 = 0{,}1\\text{ T}$ lên $B_2 = 0{,}6\\text{ T}$. Hãy tính độ biến thiên từ thông $\\Delta\\Phi$ và độ lớn suất điện động cảm ứng $|e_c|$ xuất hiện trong cuộn dây.",
+        example_answer="Vì mặt khung vuông góc với $\\vec{B}$ nên $\\alpha = 0^\\circ, \\cos 0^\\circ = 1$. Độ biến thiên từ thông qua cuộn dây là $\\Delta\\Phi = N S (B_2 - B_1)\\cos 0^\\circ = 100 \\cdot 2 \\cdot 10^{-3} \\cdot (0{,}6 - 0{,}1) = 0{,}1\\text{ Wb}$. Theo định luật Faraday, độ lớn suất điện động cảm ứng là $|e_c| = \\left|\\dfrac{\\Delta\\Phi}{\\Delta t}\\right| = \\dfrac{0{,}1}{0{,}05} = 2\\text{ V}$.",
+        real_life="Bếp từ đun nấu hiện đại tạo ra từ trường biến thiên tần số cao xuyên qua đáy nồi bằng kim loại nhiễm từ, sinh ra dòng điện cảm ứng Foucault cực mạnh làm đáy nồi tự nóng lên trực tiếp mà mặt bếp vẫn mát.",
+        quiz=[
+            mcq("biet", "Đơn vị của từ thông $\\Phi$ trong hệ thống đo lường quốc tế SI là gì?", ["Weber ($\\text{Wb}$)", "Tesla ($\\text{T}$)", "Vôn ($\\text{V}$)", "Ampe ($\\text{A}$)"], 0, "Đơn vị đo từ thông trong hệ SI là Weber (kí hiệu $\\text{Wb}$, với $1\\text{ Wb} = 1\\text{ T}\\cdot\\text{m}^2$)."),
+            mcq("biet", "Theo Định luật Faraday về cảm ứng điện từ, độ lớn của suất điện động cảm ứng $|e_c|$ xuất hiện trong mạch kín tỉ lệ thuận với đại lượng nào?", ["Tốc độ biến thiên của từ thông qua mạch kín $\\left|\\dfrac{\\Delta\\Phi}{\\Delta t}\\right|$", "Giá trị tức thời của từ thông $\\Phi$", "Điện trở $R$ của mạch kín", "Thời gian $\\Delta t$ mà từ thông không đổi"], 0, "Theo định luật Faraday, $|e_c| = \\left|\\dfrac{\\Delta\\Phi}{\\Delta t}\\right|$ tỉ lệ thuận với tốc độ biến thiên của từ thông."),
+            mcq("hieu", "Theo Định luật Lenz, khi từ thông $\\Phi$ gửi qua một khung dây dẫn kín đang **tăng lên** thì từ trường cảm ứng $\\vec{B}_c$ do dòng điện cảm ứng sinh ra có chiều như thế nào so với từ trường ban đầu $\\vec{B}$?", ["Ngược chiều với từ trường ban đầu ($\\vec{B}_c \\uparrow\\downarrow \\vec{B}$) để chống lại sự tăng của từ thông", "Cùng chiều với từ trường ban đầu ($\\vec{B}_c \\uparrow\\uparrow \\vec{B}$)", "Vuông góc với từ trường ban đầu", "Bằng không"], 0, "Theo định luật Lenz, khi từ thông tăng thì từ trường cảm ứng $\\vec{B}_c$ ngược chiều với $\\vec{B}$ để chống lại sự tăng; khi từ thông giảm thì $\\vec{B}_c$ cùng chiều với $\\vec{B}$."),
+            tf4("hieu", "Xét tính đúng/sai của các phát biểu sau về từ thông và cảm ứng điện từ:", [
+                "Khi mặt phẳng khung dây vuông góc với các đường sức từ thì vectơ pháp tuyến $\\vec{n}$ song song với $\\vec{B}$ ($\\alpha = 0^\\circ$) và từ thông đạt giá trị cực đại $\\Phi = NBS$.",
+                "Khi mặt phẳng khung dây song song với các đường sức từ thì $\\alpha = 90^\\circ$ và từ thông qua khung dây bằng $0$.",
+                "Để giảm hao phí do dòng điện Foucault trong lõi sắt máy biến áp, người ta đúc lõi sắt thành một khối sắt đặc nguyên khối.",
+                "Dấu trừ ($-$) trong biểu thức $e_c = -\\dfrac{\\Delta\\Phi}{\\Delta t}$ thể hiện định luật Lenz và sự bảo toàn năng lượng.",
+            ], [True, True, False, True], "Ý c) sai vì để giảm dòng Foucault trong lõi máy biến áp, người ta phải ghép lõi từ nhiều lá thép kĩ thuật điện mỏng có phủ sơn cách điện với nhau chứ không đúc khối đặc."),
+            short("vandung", "Từ thông qua một khung dây dẫn kín biến thiên một lượng $\\Delta\\Phi = 0{,}6\\text{ Wb}$ trong khoảng thời gian $\\Delta t = 0{,}2\\text{ s}$. Độ lớn suất điện động cảm ứng $|e_c|$ xuất hiện trong khung dây bằng bao nhiêu Vôn ($\\text{V}$)?", ["3"], "Áp dụng định luật Faraday: $|e_c| = \\left|\\dfrac{\\Delta\\Phi}{\\Delta t}\\right| = \\dfrac{0{,}6}{0{,}2} = 3\\text{ V}$.", unit="V"),
+        ],
+    ),
+    bai(
+        topic=CH3[0], chapter_title=CH3[1], chapter_desc=CH3[2],
+        title="Bài 15: Đại cương về dòng điện xoay chiều",
+        icon="〰️",
+        description="Từ thông và suất điện động xoay chiều E₀ = N.B.S.ω, biểu thức u và i xoay chiều, giá trị hiệu dụng I = I₀/√2, U = U₀/√2 và công suất P = U.I.cosφ.",
+        requirements=[
+            "Thiết lập được biểu thức từ thông $\\Phi = NBS\\cos(\\omega t + \\varphi_0)$ và suất điện động cảm ứng xoay chiều $e = E_0\\sin(\\omega t + \\varphi_0)$ với giá trị cực đại $E_0 = N B S \\omega$.",
+            "Phân biệt được giá trị tức thời ($i, u, e$), giá trị cực đại ($I_0, U_0, E_0$) và tính được **giá trị hiệu dụng**: $I = \\dfrac{I_0}{\\sqrt{2}}, U = \\dfrac{U_0}{\\sqrt{2}}, E = \\dfrac{E_0}{\\sqrt{2}}$.",
+            "Viết và vận dụng được công thức tính công suất tiêu thụ của mạch điện xoay chiều $\\mathcal{P} = U I \\cos\\varphi$ (với $\\varphi = \\varphi_u - \\varphi_i$ là độ lệch pha giữa $u$ và $i$).",
+        ],
+        definition="Dòng điện xoay chiều là dòng điện có cường độ và chiều biến thiên điều hòa theo thời gian theo quy luật hàm côsin (hay sin): $i = I_0\\cos(\\omega t + \\varphi_i)$. Giá trị hiệu dụng của dòng điện xoay chiều bằng giá trị cực đại chia cho $\\sqrt{2}$: $I = \\dfrac{I_0}{\\sqrt{2}}, U = \\dfrac{U_0}{\\sqrt{2}}, E = \\dfrac{E_0}{\\sqrt{2}}$.",
+        theory=(
+            "### 1. Suất điện động xoay chiều và Biểu thức $u, i$\n"
+            "- Khi khung dây phẳng gồm $N$ vòng, diện tích $S$ quay đều với tốc độ góc $\\omega = 2\\pi f$ trong từ trường đều $\\vec{B}$:\n"
+            "  - Từ thông qua khung: $\\Phi = N B S \\cos(\\omega t + \\varphi_0) = \\Phi_0 \\cos(\\omega t + \\varphi_0)$ (với $\\Phi_0 = NBS$).\n"
+            "  - Suất điện động cảm ứng trong khung: $e = -\\Phi'(t) = \\omega N B S \\sin(\\omega t + \\varphi_0) = E_0 \\cos\\left(\\omega t + \\varphi_0 - \\dfrac{\\pi}{2}\\right)$, trong đó **suất điện động cực đại** là:\n"
+            "    $$E_0 = \\omega \\Phi_0 = N \\cdot B \\cdot S \\cdot \\omega$$\n"
+            "  *(Lưu ý: Suất điện động $e$ luôn trễ pha $\\dfrac{\\pi}{2}$ so với từ thông $\\Phi$ — hai đại lượng vuông pha nhau)*.\n\n"
+            "### 2. Giá trị hiệu dụng và Công suất điện xoay chiều\n"
+            "- **Giá trị hiệu dụng ($I$)**: được xây dựng dựa trên **tác dụng nhiệt** của dòng điện (dòng xoay chiều có cường độ cực đại $I_0$ tỏa nhiệt lượng trên điện trở $R$ trong 1 chu kì bằng với dòng điện không đổi có cường độ $I = \\dfrac{I_0}{\\sqrt{2}}$):\n"
+            "  $$I = \\dfrac{I_0}{\\sqrt{2}}; \\qquad U = \\dfrac{U_0}{\\sqrt{2}}; \\qquad E = \\dfrac{E_0}{\\sqrt{2}}$$\n"
+            "- Số chỉ của các ampe kế, vôn kế xoay chiều và các số ghi định mức trên thiết bị điện (như $220\\text{ V}$) đều là **giá trị hiệu dụng** (vậy mạng điện $220\\text{ V}$ có điện áp cực đại $U_0 = 220\\sqrt{2} \\approx 311\\text{ V}$).\n"
+            "- **Công suất tiêu thụ điện xoay chiều**: $\\mathcal{P} = U \\cdot I \\cdot \\cos\\varphi$, với $\\varphi = \\varphi_u - \\varphi_i$ và $\\cos\\varphi$ là hệ số công suất."
+        ),
+        formulas=[
+            G(
+                "Suất điện động cực đại, Giá trị hiệu dụng và Công suất xoay chiều",
+                F("Suất điện động cực đại của khung dây quay trong từ trường", "$E_0 = \\omega \\Phi_0 = N \\cdot B \\cdot S \\cdot \\omega = 2\\pi f N B S$", "Suất điện động $e$ luôn vuông pha (trễ pha $\\dfrac{\\pi}{2}$) so với từ thông $\\Phi$: $\\left(\\dfrac{\\Phi}{\\Phi_0}\\right)^2 + \\left(\\dfrac{e}{E_0}\\right)^2 = 1$."),
+                F("Các giá trị hiệu dụng và Công suất tiêu thụ", "$I = \\dfrac{I_0}{\\sqrt{2}}; \\quad U = \\dfrac{U_0}{\\sqrt{2}}; \\quad E = \\dfrac{E_0}{\\sqrt{2}}; \\qquad \\mathcal{P} = U I \\cos\\varphi \\ (\\varphi = \\varphi_u - \\varphi_i)$", "Nếu mạch chỉ có điện trở thuần $R$ thì $u$ và $i$ cùng pha ($\\varphi = 0, \\cos\\varphi = 1 \\implies \\mathcal{P} = UI = I^2 R$)."),
+            )
+        ],
+        example="Dòng điện xoay chiều chạy qua một đoạn mạch có biểu thức $i = 4\\sqrt{2}\\cos(100\\pi t)\\text{ (A)}$ (với $t$ tính bằng $\\text{s}$), đặt dưới điện áp xoay chiều $u = 220\\sqrt{2}\\cos(100\\pi t)\\text{ (V)}$. Hãy xác định tần số $f$, cường độ dòng điện hiệu dụng $I$, điện áp hiệu dụng $U$ và công suất tiêu thụ $\\mathcal{P}$ của đoạn mạch.",
+        example_answer="Từ biểu thức ta có $\\omega = 100\\pi\\text{ rad/s} \\implies f = \\dfrac{\\omega}{2\\pi} = 50\\text{ Hz}$. Cường độ dòng điện hiệu dụng là $I = \\dfrac{I_0}{\\sqrt{2}} = \\dfrac{4\\sqrt{2}}{\\sqrt{2}} = 4\\text{ A}$. Điện áp hiệu dụng là $U = \\dfrac{U_0}{\\sqrt{2}} = \\dfrac{220\\sqrt{2}}{\\sqrt{2}} = 220\\text{ V}$. Vì $u$ và $i$ cùng pha ($\\varphi = 0 \\implies \\cos\\varphi = 1$) nên công suất tiêu thụ là $\\mathcal{P} = U I \\cos 0 = 220 \\cdot 4 \\cdot 1 = 880\\text{ W}$.",
+        real_life="Lưới điện dân dụng tại Việt Nam cung cấp điện áp xoay chiều có giá trị hiệu dụng $U = 220\\text{ V}$ (giá trị cực đại $U_0 = 220\\sqrt{2} \\approx 311\\text{ V}$) và tần số $f = 50\\text{ Hz}$.",
+        quiz=[
+            mcq("biet", "Cho dòng điện xoay chiều có cường độ cực đại là $I_0$. Cường độ dòng điện **hiệu dụng** $I$ được tính bằng công thức nào?", ["$I = \\dfrac{I_0}{\\sqrt{2}}$", "$I = I_0 \\sqrt{2}$", "$I = \\dfrac{I_0}{2}$", "$I = 2I_0$"], 0, "Giá trị hiệu dụng của dòng điện hình sin bằng giá trị cực đại chia cho $\\sqrt{2}$: $I = \\dfrac{I_0}{\\sqrt{2}}$."),
+            mcq("biet", "Một khung dây phẳng gồm $N$ vòng dây, mỗi vòng có diện tích $S$, quay đều với tốc độ góc $\\omega$ quanh trục vuông góc với các đường sức của một từ trường đều có cảm ứng từ $B$. Suất điện động cực đại $E_0$ xuất hiện trong khung dây là:", ["$E_0 = N \\cdot B \\cdot S \\cdot \\omega$", "$E_0 = \\dfrac{N B S}{\\omega}$", "$E_0 = N B S \\omega^2$", "$E_0 = \\dfrac{N B \\omega}{S}$"], 0, "Suất điện động cực đại trong khung dây quay đều là $E_0 = \\omega \\Phi_0 = N B S \\omega$."),
+            mcq("hieu", "Giá trị hiệu dụng của dòng điện xoay chiều được định nghĩa dựa trên tác dụng nào của dòng điện?", ["Tác dụng nhiệt (nhiệt lượng tỏa ra trên điện trở $R$ trong một chu kì)", "Tác dụng hóa học (mạ điện)", "Tác dụng từ lên la bàn", "Tác dụng quang học"], 0, "Cường độ hiệu dụng của dòng điện xoay chiều bằng cường độ của một dòng điện không đổi mà khi chạy qua cùng một điện trở $R$ thì tỏa ra nhiệt lượng bằng nhau trong cùng thời gian."),
+            tf4("hieu", "Xét tính đúng/sai của các phát biểu sau về dòng điện xoay chiều:", [
+                "Số chỉ của vôn kế và ampe kế xoay chiều cho biết giá trị hiệu dụng của điện áp và cường độ dòng điện.",
+                "Mạng điện sinh hoạt $220\\text{ V} - 50\\text{ Hz}$ có điện áp hiệu dụng là $220\\text{ V}$ và điện áp cực đại là $220\\sqrt{2}\\text{ V} \\approx 311\\text{ V}$.",
+                "Trong một khung dây quay đều trong từ trường, suất điện động cảm ứng $e$ luôn biến thiên cùng pha với từ thông $\\Phi$.",
+                "Đối với dòng điện $i = 2\\sqrt{2}\\cos(100\\pi t)\\text{ (A)}$, mỗi giây dòng điện đổi chiều $100$ lần.",
+            ], [True, True, False, True], "Ý c) sai vì $e = -\\Phi'(t)$ nên suất điện động cảm ứng $e$ luôn vuông pha (trễ pha $\\dfrac{\\pi}{2}$) so với từ thông $\\Phi$."),
+            short("vandung", "Một điện áp xoay chiều có biểu thức $u = 120\\sqrt{2}\\cos(100\\pi t)\\text{ (V)}$. Giá trị điện áp hiệu dụng $U$ của điện áp này bằng bao nhiêu Vôn ($\\text{V}$)?", ["120"], "Ta có $U_0 = 120\\sqrt{2}\\text{ V}$, suy ra giá trị hiệu dụng là $U = \\dfrac{U_0}{\\sqrt{2}} = 120\\text{ V}$.", unit="V"),
+        ],
+    ),
+    bai(
+        topic=CH3[0], chapter_title=CH3[1], chapter_desc=CH3[2],
+        title="Bài 16: Máy biến áp và truyền tải điện năng. Sóng điện từ",
+        icon="🗼",
+        description="Hệ thức máy biến áp lí tưởng U₁/U₂ = N₁/N₂ = I₂/I₁, bài toán hao phí truyền tải điện năng ΔP = P²R/(U²cos²φ) và tính chất sóng điện từ (E ⊥ B ⊥ v cùng pha).",
+        requirements=[
+            "Vận dụng được hệ thức của máy biến áp lí tưởng: $\\dfrac{U_1}{U_2} = \\dfrac{N_1}{N_2} = \\dfrac{I_2}{I_1}$ (tăng áp bao nhiêu lần thì giảm cường độ dòng điện bấy nhiêu lần).",
+            "Tính được công suất hao phí trên đường dây truyền tải điện năng $\\Delta\\mathcal{P} = I^2 R = \\dfrac{\\mathcal{P}^2 R}{U^2 \\cos^2\\varphi}$.",
+            "Trình bày được sự hình thành sóng điện từ từ điện từ trường biến thiên và quy tắc tam diện thuận ($\\vec{E}, \\vec{B}, \\vec{v}$ đôi một vuông góc và $\\vec{E}, \\vec{B}$ dao động cùng pha).",
+        ],
+        definition="Đối với một máy biến áp lí tưởng ($\\mathcal{P}_1 = \\mathcal{P}_2$), tỉ số hiệu điện thế hiệu dụng ở hai đầu cuộn sơ cấp và thứ cấp bằng tỉ số vòng dây và bằng nghịch đảo tỉ số cường độ dòng điện: $\\dfrac{U_1}{U_2} = \\dfrac{N_1}{N_2} = \\dfrac{I_2}{I_1}$. Trong sóng điện từ, tại mỗi điểm hai vectơ $\\vec{E}$ và $\\vec{B}$ luôn vuông góc với nhau, vuông góc với phương truyền sóng $\\vec{v}$ và dao động cùng pha.",
+        theory=(
+            "### 1. Máy biến áp lí tưởng và Truyền tải điện năng đi xa\n"
+            "- **Máy biến áp**: hoạt động dựa trên **hiện tượng cảm ứng điện từ**:\n"
+            "  $$\\dfrac{U_1}{U_2} = \\dfrac{E_1}{E_2} = \\dfrac{N_1}{N_2} = \\dfrac{I_2}{I_1}$$\n"
+            "  *(Lưu ý: Máy biến áp làm thay đổi $U$ và $I$ nhưng **giữ nguyên tần số $f$** của dòng điện xoay chiều!)*\n"
+            "- **Công suất hao phí trên đường dây truyền tải có điện trở $R$**:\n"
+            "  $$\\Delta\\mathcal{P} = I^2 R = \\dfrac{\\mathcal{P}^2 \\cdot R}{U^2 \\cos^2\\varphi}$$\n"
+            "  Nếu nâng điện áp truyền tải $U$ lên $k$ lần thì công suất hao phí $\\Delta\\mathcal{P}$ giảm đi $k^2$ lần.\n\n"
+            "### 2. Điện từ trường và Sóng điện từ (Thuyết Maxwell)\n"
+            "- Từ trường biến thiên theo thời gian sinh ra **điện trường xoáy** (có đường sức là đường cong kín); ngược lại điện trường biến thiên theo thời gian sinh ra **từ trường**.\n"
+            "- Trong quá trình truyền sóng điện từ, tại mọi điểm:\n"
+            "  1. Ba vectơ $(\\vec{E}, \\vec{B}, \\vec{v})$ đôi một vuông góc với nhau tạo thành một **tam diện thuận** (theo quy tắc đinh ốc hoặc bàn tay phải: quay từ $\\vec{E}$ sang $\\vec{B}$ thì chiều tiến là $\\vec{v}$).\n"
+            "  2. Hai thành phần **điện trường $\\vec{E}$ và từ trường $\\vec{B}$ tại cùng một điểm luôn dao động CÙNG PHA** với nhau ($\\dfrac{E}{E_0} = \\dfrac{B}{B_0}$)."
+        ),
+        formulas=[
+            G(
+                "Công thức Máy biến áp, Truyền tải điện và Sóng điện từ",
+                F("Hệ thức Máy biến áp lí tưởng và Công suất hao phí", "$\\dfrac{U_1}{U_2} = \\dfrac{N_1}{N_2} = \\dfrac{I_2}{I_1}; \\qquad \\Delta\\mathcal{P} = \\dfrac{\\mathcal{P}^2 \\cdot R}{U^2 \\cos^2\\varphi}$", "Máy tăng áp ($N_2 > N_1$) làm tăng hiệu điện thế ($U_2 > U_1$) nhưng làm giảm cường độ dòng điện ($I_2 < I_1$)."),
+                F("Tương quan phương và pha của E và B trong sóng điện từ", "$\\vec{E} \\perp \\vec{B} \\perp \\vec{v} \\text{ (tam diện thuận)}; \\qquad \\vec{E} \\text{ và } \\vec{B} \\text{ dao động CÙNG PHA } \\left(\\dfrac{E}{E_0} = \\dfrac{B}{B_0}\\right)$", "Khi tại 1 điểm $E$ đạt cực đại $E_0$ thì cảm ứng từ $B$ tại điểm đó cũng đồng thời đạt cực đại $B_0$."),
+            )
+        ],
+        example="Một máy biến áp lí tưởng có số vòng dây cuộn sơ cấp là $N_1 = 500$ vòng và cuộn thứ cấp là $N_2 = 2500$ vòng. Đặt vào cuộn sơ cấp điện áp hiệu dụng $U_1 = 200\\text{ V}$, cường độ dòng điện hiệu dụng chạy trong cuộn sơ cấp là $I_1 = 10\\text{ A}$. Hãy tính điện áp hiệu dụng $U_2$ và cường độ dòng điện hiệu dụng $I_2$ ở mạch thứ cấp.",
+        example_answer="Áp dụng hệ thức máy biến áp lí tưởng $\\dfrac{U_1}{U_2} = \\dfrac{N_1}{N_2} = \\dfrac{I_2}{I_1}$: Điện áp hiệu dụng ở cuộn thứ cấp là $U_2 = U_1 \\cdot \\dfrac{N_2}{N_1} = 200 \\cdot \\dfrac{2500}{500} = 1000\\text{ V}$. Cường độ dòng điện hiệu dụng ở cuộn thứ cấp là $I_2 = I_1 \\cdot \\dfrac{N_1}{N_2} = 10 \\cdot \\dfrac{500}{2500} = 2\\text{ A}$.",
+        real_life="Các bộ sạc điện thoại và máy tính xách tay dùng mạch biến áp hạ áp từ $220\\text{ V}$ xuống $5\\text{ V} - 20\\text{ V}$; còn các trạm phát sóng viễn thông 5G và vệ tinh phát đi sóng điện từ gồm $\\vec{E} \\perp \\vec{B}$ truyền với tốc độ ánh sáng.",
+        quiz=[
+            mcq("biet", "Đối với một máy biến áp lí tưởng (bỏ qua mọi hao phí), hệ thức liên hệ giữa hiệu điện thế hiệu dụng ($U_1, U_2$), số vòng dây ($N_1, N_2$) và cường độ dòng điện hiệu dụng ($I_1, I_2$) của cuộn sơ cấp và thứ cấp là gì?", ["$\\dfrac{U_1}{U_2} = \\dfrac{N_1}{N_2} = \\dfrac{I_2}{I_1}$", "$\\dfrac{U_1}{U_2} = \\dfrac{N_1}{N_2} = \\dfrac{I_1}{I_2}$", "$\\dfrac{U_1}{U_2} = \\dfrac{N_2}{N_1} = \\dfrac{I_2}{I_1}$", "$U_1 N_1 = U_2 N_2$"], 0, "Trong máy biến áp lí tưởng, $\\mathcal{P}_1 = \\mathcal{P}_2 \\iff U_1 I_1 = U_2 I_2$, nên $\\dfrac{U_1}{U_2} = \\dfrac{N_1}{N_2} = \\dfrac{I_2}{I_1}$."),
+            mcq("biet", "Tại mỗi điểm trong không gian có sóng điện từ truyền qua, dao động của điện trường $\\vec{E}$ và dao động của từ trường $\\vec{B}$ có mối quan hệ về phương và về pha như thế nào?", ["Vuông góc với nhau về phương ($\\vec{E} \\perp \\vec{B}$) nhưng luôn **cùng pha** với nhau về thời gian", "Cùng phương với nhau và ngược pha nhau", "Vuông góc với nhau về phương và lệch pha nhau một góc $\\dfrac{\\pi}{2}$", "Cùng phương và cùng pha với phương truyền sóng $\\vec{v}$"], 0, "Trong sóng điện từ, $\\vec{E}$ và $\\vec{B}$ có phương vuông góc với nhau và vuông góc với $\\vec{v}$, nhưng biến thiên điều hòa **cùng pha** với nhau."),
+            mcq("hieu", "Trong truyền tải điện năng đi xa với công suất truyền đi $\\mathcal{P}$ và đường dây không đổi, nếu dùng máy biến áp nâng điện áp hiệu dụng ở đầu đường dây lên gấp $5$ lần thì công suất hao phí do tỏa nhiệt trên đường dây thay đổi như thế nào?", ["Giảm đi $25$ lần", "Giảm đi $5$ lần", "Tăng lên $5$ lần", "Tăng lên $25$ lần"], 0, "Vì $\\Delta\\mathcal{P} = \\dfrac{\\mathcal{P}^2 R}{U^2 \\cos^2\\varphi}$ tỉ lệ nghịch với $U^2$, nên khi tăng $U$ lên $5$ lần thì $\\Delta\\mathcal{P}$ giảm đi $5^2 = 25$ lần."),
+            tf4("hieu", "Xét tính đúng/sai của các phát biểu sau về máy biến áp và sóng điện từ:", [
+                "Máy biến áp làm thay đổi điện áp hiệu dụng và cường độ dòng điện hiệu dụng nhưng giữ nguyên tần số của dòng điện xoay chiều.",
+                "Một từ trường biến thiên theo thời gian sinh ra trong không gian xung quanh một điện trường xoáy có các đường sức là đường cong khép kín.",
+                "Tại một điểm có sóng điện từ truyền qua, khi cường độ điện trường đạt cực đại ($E = E_0$) thì cảm ứng từ tại điểm đó bằng không ($B = 0$).",
+                "Ba vectơ $\\vec{E}, \\vec{B}$ và $\\vec{v}$ tại mỗi điểm của sóng điện từ lập thành một tam diện thuận.",
+            ], [True, True, False, True], "Ý c) sai vì $\\vec{E}$ và $\\vec{B}$ trong sóng điện từ dao động **cùng pha** nên khi $E = E_0$ thì $B$ cũng đồng thời đạt cực đại $B = B_0$."),
+            short("vandung", "Một máy biến áp lí tưởng có số vòng cuộn sơ cấp $N_1 = 400$ vòng, số vòng cuộn thứ cấp $N_2 = 1200$ vòng. Khi đặt vào cuộn sơ cấp điện áp xoay chiều hiệu dụng $U_1 = 100\\text{ V}$ thì điện áp hiệu dụng ở hai đầu cuộn thứ cấp để hở $U_2$ bằng bao nhiêu Vôn ($\\text{V}$)?", ["300"], "Áp dụng công thức $U_2 = U_1 \\cdot \\dfrac{N_2}{N_1} = 100 \\cdot \\dfrac{1200}{400} = 300\\text{ V}$.", unit="V"),
+        ],
+    ),
+    bai(
+        topic=CH4[0], chapter_title=CH4[1], chapter_desc=CH4[2],
+        title="Bài 17: Cấu trúc hạt nhân",
+        icon="⚛️",
+        description="Thí nghiệm tán xạ hạt alpha của Rutherford, cấu tạo hạt nhân (^A_Z X gồm Z proton và N = A - Z neutron), đồng vị, đơn vị khối lượng nguyên tử amu và bán kính hạt nhân.",
+        requirements=[
+            "Mô tả được thí nghiệm tán xạ hạt alpha ($\\alpha$) của Ernest Rutherford chứng tỏ nguyên tử có cấu tạo rỗng và tâm nguyên tử là hạt nhân mang điện dương kích thước rất nhỏ ($10^{-15} - 10^{-14}\\text{ m}$).",
+            "Biểu diễn được kí hiệu hạt nhân $^A_Z X$, xác định số proton ($Z$), số khối (số nucleon $A$) và số neutron ($N = A - Z$), khái niệm đồng vị.",
+            "Vận dụng được đơn vị khối lượng nguyên tử ($1\\text{ amu} \\approx 1{,}66055 \\cdot 10^{-27}\\text{ kg} \\approx 931{,}5\\text{ MeV}/c^2$) và công thức bán kính hạt nhân $R = 1{,}2 \\cdot 10^{-15} A^{1/3}\\text{ (m)}$.",
+        ],
+        definition="Hạt nhân nguyên tử được cấu tạo từ hai loại hạt nucleon là proton (mang điện tích $+e$) và neutron (không mang điện). Hạt nhân của nguyên tố $X$ được kí hiệu là $^A_Z X$, trong đó $Z$ là số proton (nguyên tử số), $A$ là tổng số nucleon (số khối) và $N = A - Z$ là số hạt neutron.",
+        theory=(
+            "### 1. Thí nghiệm tán xạ hạt alpha và Cấu tạo hạt nhân\n"
+            "- **Thí nghiệm Rutherford (1911)**: Chiếu chùm hạt $\\alpha$ ($^4_2\\text{He}^{2+}$) vào lá vàng rất mỏng: hầu hết các hạt $\\alpha$ truyền thẳng xuyên qua lá vàng, chỉ một tỉ lệ rất nhỏ bị lệch góc lớn hoặc bật ngược trở lại $\\implies$ **Nguyên tử có cấu trúc rỗng**, toàn bộ điện tích dương và gần như toàn bộ khối lượng nguyên tử tập trung ở **hạt nhân** có kích thước cực nhỏ ở tâm.\n"
+            "- **Thành phần hạt nhân $^A_Z X$**:\n"
+            "  - **Số proton**: $Z$ hạt (mỗi hạt có $q_p = +e = +1{,}6 \\cdot 10^{-19}\\text{ C}$, $m_p \\approx 1{,}00728\\text{ amu}$).\n"
+            "  - **Số neutron**: $N = A - Z$ hạt (không mang điện $q_n = 0$, $m_n \\approx 1{,}00866\\text{ amu}$).\n"
+            "  - **Số khối (số nucleon)**: $A = Z + N$.\n\n"
+            "### 2. Đồng vị, Đơn vị amu và Bán kính hạt nhân\n"
+            "- **Đồng vị**: các hạt nhân có **cùng số proton $Z$** nhưng **khác nhau số neutron $N$** (nên khác số khối $A$). Ví dụ 3 đồng vị của hiđrô: $^1_1\\text{H}$ (proti), $^2_1\\text{H}$ hay $^2_1\\text{D}$ (đơteri), $^3_1\\text{H}$ hay $^3_1\\text{T}$ (triti).\n"
+            "- **Đơn vị khối lượng nguyên tử ($\\text{amu}$ hay $\\text{u}$)**: bằng $\\dfrac{1}{12}$ khối lượng của một nguyên tử đồng vị carbon $^{12}_6\\text{C}$:\n"
+            "  $$1\\text{ amu} \\approx 1{,}66055 \\cdot 10^{-27}\\text{ kg} \\approx 931{,}5\\text{ MeV}/c^2$$\n"
+            "- **Bán kính hạt nhân**: $R = r_0 \\cdot A^{1/3}$ với $r_0 = 1{,}2 \\cdot 10^{-15}\\text{ m} = 1{,}2\\text{ fm}$ (thể tích hạt nhân tỉ lệ thuận với số khối $A$, mật độ khối lượng của mọi hạt nhân đều xấp xỉ như nhau và cực lớn $\\approx 2{,}3 \\cdot 10^{17}\\text{ kg/m}^3$)."
+        ),
+        formulas=[
+            G(
+                "Cấu trúc hạt nhân ^A_Z X, Đơn vị amu và Bán kính hạt nhân",
+                F("Số hạt proton, neutron và nucleon trong hạt nhân ^A_Z X", "$N_{\\text{proton}} = Z; \\qquad N_{\\text{nucleon}} = A; \\qquad N_{\\text{neutron}} = N = A - Z$", "Điện tích của hạt nhân $^A_Z X$ là $q = +Z e$."),
+                F("Đơn vị khối lượng amu và Công thức bán kính hạt nhân", "$1\\text{ amu} \\approx 1{,}66055 \\cdot 10^{-27}\\text{ kg} \\approx 931{,}5\\text{ MeV}/c^2; \\qquad R = 1{,}2 \\cdot 10^{-15} \\cdot A^{1/3}\\text{ (m)}$", "Nếu xét $n = \\dfrac{m}{A}$ mol hạt nhân thì số proton trong khối lượng $m$ là $N_p = n N_A Z$ và số neutron là $N_n = n N_A (A - Z)$."),
+            )
+        ],
+        example="Cho hạt nhân uranium $^{235}_{92}\\text{U}$ và hạt nhân nhôm $^{27}_{13}\\text{Al}$. Hãy xác định số proton, số neutron và tổng số nucleon của hạt nhân $^{235}_{92}\\text{U}$, đồng thời tính bán kính $R$ của hạt nhân nhôm $^{27}_{13}\\text{Al}$ theo đơn vị femtômét ($1\\text{ fm} = 10^{-15}\\text{ m}$).",
+        example_answer="Trong hạt nhân $^{235}_{92}\\text{U}$ có: số proton là $Z = 92$, tổng số nucleon là $A = 235$, và số neutron là $N = A - Z = 235 - 92 = 143$ hạt. Đối với hạt nhân $^{27}_{13}\\text{Al}$ có $A = 27$, bán kính hạt nhân là $R = 1{,}2 \\cdot A^{1/3} = 1{,}2 \\cdot 27^{1/3} = 1{,}2 \\cdot 3 = 3{,}6\\text{ fm} = 3{,}6 \\cdot 10^{-15}\\text{ m}$.",
+        real_life="Nước nặng ($\\text{D}_2\\text{O}$) chứa đồng vị đơteri ($^2_1\\text{D}$) được sử dụng làm chất làm chậm neutron trong các lò phản ứng hạt nhân điện nguyên tử.",
+        quiz=[
+            mcq("biet", "Trong một hạt nhân nguyên tử được kí hiệu là $^A_Z X$, số hạt **neutron** ($N$) được tính bằng công thức nào?", ["$N = A - Z$", "$N = A + Z$", "$N = Z$", "$N = A$"], 0, "Trong kí hiệu $^A_Z X$, $A$ là tổng số nucleon ($Z$ proton và $N$ neutron) nên số neutron là $N = A - Z$."),
+            mcq("biet", "Các **đồng vị** của cùng một nguyên tố hóa học là những hạt nhân có đặc điểm gì?", ["Có cùng số proton $Z$ nhưng khác nhau số neutron $N$ (nên khác số khối $A$)", "Có cùng số khối $A$ nhưng khác số proton $Z$", "Có cùng số neutron $N$ nhưng khác số proton $Z$", "Có số electron lớn hơn số proton"], 0, "Đồng vị (cùng vị trí trong bảng tuần hoàn) là các hạt nhân có cùng số proton $Z$ nhưng khác số neutron $N$."),
+            mcq("hieu", "Hạt nhân carbon $^{14}_6\\text{C}$ có bao nhiêu hạt proton, bao nhiêu hạt neutron và bao nhiêu nucleon?", ["$6$ proton, $8$ neutron và $14$ nucleon", "$6$ proton, $14$ neutron và $20$ nucleon", "$8$ proton, $6$ neutron và $14$ nucleon", "$14$ proton, $6$ neutron và $8$ nucleon"], 0, "Với $^{14}_6\\text{C}$, ta có $Z = 6$ proton, $A = 14$ nucleon và $N = 14 - 6 = 8$ neutron."),
+            tf4("hieu", "Xét tính đúng/sai của các phát biểu sau về cấu trúc hạt nhân:", [
+                "Thí nghiệm tán xạ hạt alpha của Rutherford chứng tỏ nguyên tử có cấu tạo rỗng, phần lớn khối lượng và toàn bộ điện tích dương tập trung ở hạt nhân.",
+                "Hạt proton và hạt neutron được gọi chung là các nucleon.",
+                "Hạt nhân đồng vị triti ($^3_1\\text{T}$) có $3$ hạt proton và $1$ hạt neutron.",
+                "Bán kính hạt nhân tỉ lệ thuận với căn bậc ba của số khối $A$ theo công thức $R = 1{,}2 \\cdot 10^{-15} A^{1/3}\\text{ (m)}$.",
+            ], [True, True, False, True], "Ý c) sai vì hạt nhân triti $^3_1\\text{T}$ có $Z = 1$ proton và $N = 3 - 1 = 2$ neutron."),
+            short("vandung", "Hạt nhân sắt $^{56}_{26}\\text{Fe}$ có bao nhiêu hạt neutron?", ["30"], "Số hạt neutron trong hạt nhân $^{56}_{26}\\text{Fe}$ là $N = A - Z = 56 - 26 = 30$ hạt.", unit="hạt"),
+        ],
+    ),
+    bai(
+        topic=CH4[0], chapter_title=CH4[1], chapter_desc=CH4[2],
+        title="Bài 18: Hệ thức Einstein và năng lượng liên kết của hạt nhân",
+        icon="💥",
+        description="Lực hạt nhân, hệ thức năng lượng – khối lượng Einstein E = m.c², độ hụt khối Δm, năng lượng liên kết W_lk = Δm.c² và năng lượng liên kết riêng W_lkr = W_lk/A.",
+        requirements=[
+            "Nêu được bản chất và đặc điểm của lực hạt nhân (lực tương tác mạnh giữ các nucleon liên kết chặt trong hạt nhân, có bán kính tác dụng cực ngắn cỡ $10^{-15}\\text{ m}$ và không phụ thuộc điện tích).",
+            "Viết và vận dụng được hệ thức Einstein $E = m c^2$, công thức độ hụt khối $\\Delta m = Z m_p + (A - Z)m_n - m_X$ và năng lượng liên kết $W_{\\text{lk}} = \\Delta m \\cdot c^2$ (với $1\\text{ amu}\\cdot c^2 \\approx 931{,}5\\text{ MeV}$).",
+            "Nêu được năng lượng liên kết riêng $W_{\\text{lkr}} = \\dfrac{W_{\\text{lk}}}{A}$ đặc trưng cho **mức độ bền vững của hạt nhân** (các hạt nhân có số khối trung bình $50 < A < 80$ như $^{56}\\text{Fe}$ bền vững nhất).",
+        ],
+        definition="Khối lượng của một hạt nhân luôn nhỏ hơn tổng khối lượng của các nucleon tạo thành nó một lượng gọi là độ hụt khối: $\\Delta m = Z m_p + (A - Z)m_n - m_X$. Năng lượng liên kết của hạt nhân là năng lượng tối thiểu dùng để tách toàn bộ hạt nhân thành các nucleon riêng lẻ: $W_{\\text{lk}} = \\Delta m \\cdot c^2$. Năng lượng liên kết riêng $W_{\\text{lkr}} = \\dfrac{W_{\\text{lk}}}{A}$ đặc trưng cho mức độ bền vững của hạt nhân.",
+        theory=(
+            "### 1. Lực hạt nhân và Hệ thức Einstein $E = m c^2$\n"
+            "- **Lực hạt nhân**: lực hút cực mạnh giữa các nucleon ($p-p, p-n, n-n$) thắng lực đẩy tĩnh điện Coulomb giữa các proton; thuộc loại **tương tác mạnh**, không có bản chất điện hay hấp dẫn, và chỉ phát huy tác dụng trong phạm vi kích thước hạt nhân ($\\approx 10^{-15}\\text{ m}$).\n"
+            "- **Hệ thức năng lượng – khối lượng Einstein**: Một vật có khối lượng $m$ thì có năng lượng toàn phần:\n"
+            "  $$E = m \\cdot c^2$$\n\n"
+            "### 2. Độ hụt khối, Năng lượng liên kết và Năng lượng liên kết riêng\n"
+            "- **Độ hụt khối ($\\Delta m$)**: Khối lượng hạt nhân $m_X$ luôn nhỏ hơn tổng khối lượng các nucleon riêng rẽ:\n"
+            "  $$\\Delta m = [Z \\cdot m_p + (A - Z) \\cdot m_n] - m_X > 0$$\n"
+            "- **Năng lượng liên kết ($W_{\\text{lk}}$)**:\n"
+            "  $$W_{\\text{lk}} = \\Delta m \\cdot c^2$$\n"
+            "  *(Nếu $\\Delta m$ tính bằng $\\text{amu}$ thì $W_{\\text{lk}}(\\text{MeV}) = \\Delta m(\\text{amu}) \\cdot 931{,}5$)*.\n"
+            "- **Năng lượng liên kết riêng ($W_{\\text{lkr}}$ hoặc $\\varepsilon$)**: năng lượng liên kết tính bình quân cho 1 nucleon:\n"
+            "  $$W_{\\text{lkr}} = \\dfrac{W_{\\text{lk}}}{A} = \\dfrac{\\Delta m \\cdot c^2}{A} \\quad (\\text{đơn vị: } \\text{MeV/nucleon})$$\n"
+            "  - **Ý nghĩa**: Hạt nhân có **năng lượng liên kết riêng $W_{\\text{lkr}}$ càng lớn thì càng bền vững** (chứ không phải so sánh $W_{\\text{lk}}$!). Các hạt nhân trung bình ($50 < A < 80$, tiêu biểu là sắt $^{56}_{26}\\text{Fe}$ với $W_{\\text{lkr}} \\approx 8{,}8\\text{ MeV/nucleon}$) là bền vững nhất."
+        ),
+        formulas=[
+            G(
+                "Độ hụt khối, Năng lượng liên kết và Năng lượng liên kết riêng",
+                F("Độ hụt khối và Năng lượng liên kết của hạt nhân ^A_Z X", "$\\Delta m = Z m_p + (A - Z)m_n - m_X; \\qquad W_{\\text{lk}} = \\Delta m \\cdot c^2 = \\Delta m(\\text{amu}) \\cdot 931{,}5\\text{ (MeV)}$", "Trong đó $1\\text{ amu}\\cdot c^2 \\approx 931{,}5\\text{ MeV}$."),
+                F("Năng lượng liên kết riêng (thước đo độ bền vững của hạt nhân)", "$W_{\\text{lkr}} = \\dfrac{W_{\\text{lk}}}{A} = \\dfrac{\\Delta m \\cdot c^2}{A}\\text{ (MeV/nucleon)}$", "Hạt nhân nào có $W_{\\text{lkr}}$ lớn hơn thì bền vững hơn."),
+            )
+        ],
+        example="Cho hạt nhân heli $^4_2\\text{He}$ có khối lượng $m_{\\text{He}} = 4{,}0015\\text{ amu}$. Biết khối lượng của proton là $m_p = 1{,}0073\\text{ amu}$, của neutron là $m_n = 1{,}0087\\text{ amu}$ và $1\\text{ amu}\\cdot c^2 = 931{,}5\\text{ MeV}$. Hãy tính độ hụt khối $\\Delta m$, năng lượng liên kết $W_{\\text{lk}}$ và năng lượng liên kết riêng $W_{\\text{lkr}}$ của hạt nhân $^4_2\\text{He}$.",
+        example_answer="Hạt nhân $^4_2\\text{He}$ có $Z = 2$ proton và $N = 4 - 2 = 2$ neutron. Độ hụt khối là $\\Delta m = 2m_p + 2m_n - m_{\\text{He}} = 2 \\cdot 1{,}0073 + 2 \\cdot 1{,}0087 - 4{,}0015 = 4{,}0320 - 4{,}0015 = 0{,}0305\\text{ amu}$. Năng lượng liên kết là $W_{\\text{lk}} = \\Delta m \\cdot 931{,}5 = 0{,}0305 \\cdot 931{,}5 \\approx 28{,}41\\text{ MeV}$. Năng lượng liên kết riêng là $W_{\\text{lkr}} = \\dfrac{W_{\\text{lk}}}{A} = \\dfrac{28{,}41}{4} \\approx 7{,}1\\text{ MeV/nucleon}$.",
+        real_life="Hệ thức nổi tiếng $E = mc^2$ của Albert Einstein cho thấy chỉ cần một độ hụt khối rất nhỏ trong phản ứng hạt nhân cũng giải phóng ra nguồn năng lượng khổng lồ gấp hàng triệu lần phản ứng đốt cháy hóa học.",
+        quiz=[
+            mcq("biet", "Công thức tính **độ hụt khối** $\\Delta m$ của hạt nhân $^A_Z X$ (có khối lượng $m_X$, khối lượng proton là $m_p$ và khối lượng neutron là $m_n$) là gì?", ["$\\Delta m = Z m_p + (A - Z)m_n - m_X$", "$\\Delta m = m_X - [Z m_p + (A - Z)m_n]$", "$\\Delta m = Z m_p + A m_n - m_X$", "$\\Delta m = A m_p + Z m_n + m_X$"], 0, "Tổng khối lượng các nucleon riêng rẽ là $Z m_p + (A - Z)m_n$ luôn lớn hơn khối lượng hạt nhân $m_X$, nên $\\Delta m = Z m_p + (A - Z)m_n - m_X$."),
+            mcq("biet", "Đại lượng vật lí nào đặc trưng trực tiếp cho **mức độ bền vững** của một hạt nhân?", ["Năng lượng liên kết riêng $W_{\\text{lkr}} = \\dfrac{W_{\\text{lk}}}{A}$", "Năng lượng liên kết toàn phần $W_{\\text{lk}}$", "Số khối $A$ của hạt nhân", "Số hạt proton $Z$ của hạt nhân"], 0, "Mức độ bền vững của hạt nhân được quyết định bởi năng lượng liên kết riêng $W_{\\text{lkr}} = \\dfrac{W_{\\text{lk}}}{A}$ (tính cho 1 nucleon)."),
+            mcq("hieu", "Cho ba hạt nhân $X, Y, Z$ có năng lượng liên kết riêng lần lượt là $W_{\\text{lkr}(X)} = 7{,}1\\text{ MeV/nucleon}$, $W_{\\text{lkr}(Y)} = 8{,}8\\text{ MeV/nucleon}$ và $W_{\\text{lkr}(Z)} = 7{,}6\\text{ MeV/nucleon}$. Thứ tự sắp xếp các hạt nhân theo mức độ **bền vững giảm dần** là:", ["$Y, Z, X$", "$X, Z, Y$", "$Z, Y, X$", "$Y, X, Z$"], 0, "Hạt nhân có năng lượng liên kết riêng càng lớn thì càng bền vững; vì $8{,}8 > 7{,}6 > 7{,}1$ nên thứ tự bền vững giảm dần là $Y, Z, X$."),
+            tf4("hieu", "Xét tính đúng/sai của các phát biểu sau về lực hạt nhân và năng lượng liên kết:", [
+                "Lực hạt nhân là lực tương tác mạnh giữa các nucleon, chỉ có tác dụng trong phạm vi kích thước hạt nhân ($\\approx 10^{-15}\\text{ m}$).",
+                "Khối lượng của một hạt nhân sau khi tạo thành luôn nhỏ hơn tổng khối lượng của các nucleon riêng rẽ tạo nên nó.",
+                "Lực hạt nhân có bản chất là lực tĩnh điện Coulomb nên chỉ tác dụng giữa các hạt mang điện.",
+                "Các hạt nhân có số khối trung bình (cỡ từ $50$ đến $80$ như $^{56}_{26}\\text{Fe}$) có năng lượng liên kết riêng lớn nhất nên bền vững nhất.",
+            ], [True, True, False, True], "Ý c) sai vì lực hạt nhân không phụ thuộc vào điện tích (tác dụng như nhau giữa $p-p, p-n$ và $n-n$) và không có bản chất tĩnh điện."),
+            short("vandung", "Một hạt nhân có số khối $A = 16$ và có năng lượng liên kết toàn phần là $W_{\\text{lk}} = 128\\text{ MeV}$. Năng lượng liên kết riêng $W_{\\text{lkr}}$ của hạt nhân này bằng bao nhiêu $\\text{MeV/nucleon}$?", ["8"], "Áp dụng công thức $W_{\\text{lkr}} = \\dfrac{W_{\\text{lk}}}{A} = \\dfrac{128}{16} = 8\\text{ MeV/nucleon}$.", unit="MeV/nucleon"),
+        ],
+    ),
+    bai(
+        topic=CH4[0], chapter_title=CH4[1], chapter_desc=CH4[2],
+        title="Bài 19: Phản ứng hạt nhân và năng lượng phản ứng hạt nhân",
+        icon="⚗️",
+        description="Khái niệm phản ứng hạt nhân (tự phát và kích thích), 4 định luật bảo toàn trong phản ứng hạt nhân và công thức năng lượng phản ứng ΔE = (m_trước - m_sau)c².",
+        requirements=[
+            "Nêu được khái niệm phản ứng hạt nhân và áp dụng được 4 định luật bảo toàn trong phản ứng hạt nhân: bảo toàn số nucleon (số khối $A$), bảo toàn điện tích ($Z$), bảo toàn động lượng và bảo toàn năng lượng toàn phần.",
+            "Nhận biết được trong phản ứng hạt nhân **không có** định luật bảo toàn khối lượng nghỉ.",
+            "Tính được năng lượng của phản ứng hạt nhân $\\Delta E = (m_{\\text{trước}} - m_{\\text{sau}})c^2 = (W_{\\text{lk sau}} - W_{\\text{lk trước}})$ và phân biệt phản ứng tỏa năng lượng ($\\Delta E > 0$) với phản ứng thu năng lượng ($\\Delta E < 0$).",
+        ],
+        definition="Phản ứng hạt nhân là mọi quá trình dẫn đến sự biến đổi của các hạt nhân. Trong phản ứng hạt nhân $A + B \\to C + D$, số khối và điện tích luôn được bảo toàn ($A_1 + A_2 = A_3 + A_4$ và $Z_1 + Z_2 = Z_3 + Z_4$). Năng lượng của phản ứng hạt nhân được xác định bởi: $\\Delta E = (m_{\\text{trước}} - m_{\\text{sau}})c^2$.",
+        theory=(
+            "### 1. Bốn định luật bảo toàn trong phản ứng hạt nhân\n"
+            "Xét phản ứng hạt nhân: $^{A_1}_{Z_1}X_1 + {}^{A_2}_{Z_2}X_2 \\longrightarrow {}^{A_3}_{Z_3}X_3 + {}^{A_4}_{Z_4}X_4$.\n"
+            "1. **Bảo toàn số nucleon (số khối $A$)**: $A_1 + A_2 = A_3 + A_4$.\n"
+            "2. **Bảo toàn điện tích (nguyên tử số $Z$)**: $Z_1 + Z_2 = Z_3 + Z_4$.\n"
+            "3. **Bảo toàn động lượng**: $\\vec{p}_1 + \\vec{p}_2 = \\vec{p}_3 + \\vec{p}_4$.\n"
+            "4. **Bảo toàn năng lượng toàn phần** (gồm năng lượng nghỉ $mc^2$ và động năng $W_{\\text{đ}}$).\n"
+            "- *Chú ý*: Trong phản ứng hạt nhân **KHÔNG CÓ** định luật bảo toàn khối lượng nghỉ ($m_{\\text{trước}} \\ne m_{\\text{sau}}$) và không bảo toàn số proton hay số neutron riêng rẽ (vì $p$ có thể biến đổi thành $n$ hoặc ngược lại).\n\n"
+            "### 2. Năng lượng của phản ứng hạt nhân ($\\Delta E$)\n"
+            "- Gọi $m_{\\text{trước}} = m_1 + m_2$ và $m_{\\text{sau}} = m_3 + m_4$:\n"
+            "  $$\\Delta E = (m_{\\text{trước}} - m_{\\text{sau}})c^2 = (\\Delta m_{\\text{sau}} - \\Delta m_{\\text{trước}})c^2 = W_{\\text{lk sau}} - W_{\\text{lk trước}} = W_{\\text{đ sau}} - W_{\\text{đ trước}}$$\n"
+            "  - Nếu **$m_{\\text{trước}} > m_{\\text{sau}}$ ($\\Delta E > 0$)**: phản ứng **tỏa năng lượng** (các hạt nhân sinh ra bền vững hơn các hạt nhân ban đầu).\n"
+            "  - Nếu **$m_{\\text{trước}} < m_{\\text{sau}}$ ($\\Delta E < 0$)**: phản ứng **thu năng lượng** (không tự xảy ra, phải cung cấp động năng ban đầu)."
+        ),
+        formulas=[
+            G(
+                "Các định luật bảo toàn và Năng lượng phản ứng hạt nhân",
+                F("Bảo toàn số khối A và bảo toàn điện tích Z", "$A_1 + A_2 = A_3 + A_4; \\qquad Z_1 + Z_2 = Z_3 + Z_4$", "Một số hạt sơ cấp thường gặp: proton $^1_1 p$ (hay $^1_1\\text{H}$), neutron $^1_0 n$, hạt $\\alpha$ ($^4_2\\text{He}$), electron $\\beta^-$ ($^0_{-1}e$), positron $\\beta^+$ ($^0_{+1}e$)."),
+                F("Năng lượng của phản ứng hạt nhân", "$\\Delta E = (m_{\\text{trước}} - m_{\\text{sau}})c^2 = W_{\\text{lk sau}} - W_{\\text{lk trước}} = W_{\\text{đ sau}} - W_{\\text{đ trước}}$", "Nếu $\\Delta E > 0$ ($m_{\\text{trước}} > m_{\\text{sau}}$): phản ứng tỏa năng lượng; nếu $\\Delta E < 0$: phản ứng thu năng lượng."),
+            )
+        ],
+        example="Cho phản ứng hạt nhân: $^2_1\\text{D} + {}^3_1\\text{T} \\longrightarrow {}^4_2\\text{He} + {}^A_Z X$. Hãy xác định $A, Z$ và tên hạt $X$. Biết tổng khối lượng các hạt trước phản ứng lớn hơn tổng khối lượng các hạt sau phản ứng một lượng $m_{\\text{trước}} - m_{\\text{sau}} = 0{,}0189\\text{ amu}$ và $1\\text{ amu}\\cdot c^2 = 931{,}5\\text{ MeV}$, hãy tính năng lượng tỏa ra của một phản ứng này.",
+        example_answer="Áp dụng bảo toàn số khối: $2 + 3 = 4 + A \\implies A = 1$; bảo toàn điện tích: $1 + 1 = 2 + Z \\implies Z = 0$. Vậy hạt $X$ là hạt **neutron ($^1_0 n$)**. Năng lượng tỏa ra của một phản ứng là $\\Delta E = (m_{\\text{trước}} - m_{\\text{sau}})c^2 = 0{,}0189 \\cdot 931{,}5 \\approx 17{,}6\\text{ MeV}$.",
+        real_life="Bắn phá hạt nhân bằng các chùm hạt trong máy gia tốc giúp các nhà vật lí tạo ra các đồng vị nhân tạo dùng trong chẩn đoán và điều trị ung thư.",
+        quiz=[
+            mcq("biet", "Trong mọi phản ứng hạt nhân, đại lượng nào sau đây **không** được bảo toàn?", ["Khối lượng nghỉ của hệ ($m_{\\text{trước}} \\ne m_{\\text{sau}}$)", "Tổng số nucleon (số khối $A$)", "Điện tích ($Z$)", "Động lượng và năng lượng toàn phần"], 0, "Trong phản ứng hạt nhân, có sự chuyển hóa giữa năng lượng nghỉ và động năng nên tổng khối lượng nghỉ không bảo toàn."),
+            mcq("biet", "Một phản ứng hạt nhân là phản ứng **tỏa năng lượng** ($\\Delta E > 0$) khi tổng khối lượng nghỉ của các hạt trước phản ứng ($m_{\\text{trước}}$) và sau phản ứng ($m_{\\text{sau}}$) thỏa mãn điều kiện nào?", ["$m_{\\text{trước}} > m_{\\text{sau}}$ (và tổng năng lượng liên kết sau phản ứng lớn hơn trước phản ứng)", "$m_{\\text{trước}} < m_{\\text{sau}}$", "$m_{\\text{trước}} = m_{\\text{sau}}$", "$m_{\\text{trước}} = 0$"], 0, "Vì $\\Delta E = (m_{\\text{trước}} - m_{\\text{sau}})c^2$, nên phản ứng tỏa năng lượng khi $m_{\\text{trước}} > m_{\\text{sau}}$."),
+            mcq("hieu", "Cho phản ứng hạt nhân: $^{27}_{13}\\text{Al} + {}^4_2\\text{He} \\longrightarrow {}^{30}_{15}\\text{P} + {}^A_Z X$. Hạt $X$ trong phản ứng trên là hạt nào?", ["Hạt neutron ($^1_0 n$)", "Hạt proton ($^1_1 p$)", "Hạt electron ($^0_{-1}e$)", "Hạt alpha ($^4_2\\text{He}$)"], 0, "Bảo toàn số khối: $A = 27 + 4 - 30 = 1$; bảo toàn điện tích: $Z = 13 + 2 - 15 = 0$. Vậy $X$ là neutron ($^1_0 n$)."),
+            tf4("hieu", "Xét tính đúng/sai của các phát biểu sau về phản ứng hạt nhân:", [
+                "Trong mọi phản ứng hạt nhân, tổng số khối $A$ và tổng điện tích $Z$ luôn được bảo toàn.",
+                "Trong phản ứng hạt nhân tỏa năng lượng, các hạt nhân sản phẩm sinh ra bền vững hơn các hạt nhân ban đầu.",
+                "Phản ứng hạt nhân chỉ biến đổi lớp vỏ electron bên ngoài nguyên tử chứ không làm biến đổi hạt nhân.",
+                "Nếu $m_{\\text{trước}} - m_{\\text{sau}} = 0{,}02\\text{ amu}$ thì phản ứng tỏa ra năng lượng $\\Delta E = 0{,}02 \\cdot 931{,}5 = 18{,}63\\text{ MeV}$.",
+            ], [True, True, False, True], "Ý c) sai vì phản ứng hóa học mới biến đổi lớp vỏ electron, còn phản ứng hạt nhân làm biến đổi chính các hạt nhân nguyên tử."),
+            short("vandung", "Cho phản ứng hạt nhân: $^9_4\\text{Be} + {}^4_2\\text{He} \\longrightarrow {}^A_6\\text{C} + {}^1_0 n$. Giá trị số khối $A$ của hạt nhân carbon tạo thành bằng bao nhiêu?", ["12"], "Theo định luật bảo toàn số khối: $9 + 4 = A + 1 \\implies A = 12$ ($^{12}_6\\text{C}$)."),
+        ],
+    ),
+    bai(
+        topic=CH4[0], chapter_title=CH4[1], chapter_desc=CH4[2],
+        title="Bài 20: Phản ứng phân hạch và phản ứng nhiệt hạch",
+        icon="☀️",
+        description="Cơ chế phản ứng phân hạch của U-235, phản ứng phân hạch dây chuyền và hệ số nhân neutron k, phản ứng nhiệt hạch (tổng hợp hạt nhân nhẹ) trên Mặt Trời.",
+        requirements=[
+            "Nêu được phản ứng phân hạch là phản ứng trong đó một hạt nhân nặng (như $^{235}_{92}\\text{U}, {}^{239}_{94}\\text{Pu}$) hấp thụ một neutron chậm rồi vỡ thành hai hạt nhân trung bình, kèm theo giải phóng $2 - 3$ neutron mới và tỏa năng lượng lớn ($\\approx 200\\text{ MeV}$).",
+            "Biện luận được điều kiện phản ứng phân hạch dây chuyền theo hệ số nhân neutron $k$ ($k < 1$: tắt nhanh; $k = 1$: tự duy trì có điều khiển trong nhà máy điện hạt nhân; $k > 1$: bùng nổ không điều khiển).",
+            "Nêu được phản ứng nhiệt hạch là phản ứng tổng hợp hai hạt nhân rất nhẹ (như $^1_1\\text{H}, {}^2_1\\text{D}, {}^3_1\\text{T}$) thành hạt nhân nặng hơn ở nhiệt độ cực cao (hàng chục đến hàng trăm triệu độ) và là nguồn năng lượng của Mặt Trời, các ngôi sao.",
+        ],
+        definition="Phản ứng phân hạch là phản ứng trong đó một hạt nhân nặng vỡ thành hai mảnh hạt nhân nhẹ hơn (số khối trung bình). Phản ứng nhiệt hạch là phản ứng tổng hợp hai hạt nhân rất nhẹ thành một hạt nhân nặng hơn ở điều kiện nhiệt độ hàng chục triệu độ. Cả hai loại phản ứng đều là phản ứng hạt nhân tỏa năng lượng lớn.",
+        theory=(
+            "### 1. Phản ứng phân hạch và Phản ứng dây chuyền\n"
+            "- **Cơ chế phân hạch kích thích của $^{235}_{92}\\text{U}$**: Hạt nhân $^{235}_{92}\\text{U}$ hấp thụ một **neutron chậm (neutron nhiệt)** chuyển thành trạng thái kích thích không bền $^{236}_{92}\\text{U}^*$, rồi vỡ thành hai hạt nhân có số khối trung bình kèm theo $k$ neutron mới ($k = 2$ hoặc $3$) và tỏa khoảng $\\Delta E \\approx 200\\text{ MeV}$ mỗi phân hạch:\n"
+            "  $$^1_0 n + {}^{235}_{92}\\text{U} \\longrightarrow {}^{236}_{92}\\text{U}^* \\longrightarrow {}^{A_1}_{Z_1}X + {}^{A_2}_{Z_2}Y + k \\cdot {}^1_0 n$$\n"
+            "- **Hệ số nhân neutron ($k$)** và điều kiện khối lượng tới hạn:\n"
+            "  - $k < 1$: phản ứng dây chuyền tắt nhanh.\n"
+            "  - **$k = 1$**: phản ứng dây chuyền tự duy trì với công suất không đổi (**trong lò phản ứng của nhà máy điện hạt nhân**, điều khiển bằng các thanh điều khiển chứa Bo hoặc Cadimi hấp thụ neutron thừa).\n"
+            "  - $k > 1$ (khi khối lượng nhiên liệu vượt quá khối lượng tới hạn): phản ứng dây chuyền bùng nổ mãnh liệt (bom nguyên tử).\n\n"
+            "### 2. Phản ứng nhiệt hạch (Tổng hợp hạt nhân)\n"
+            "- Là sự kết hợp hai hạt nhân rất nhẹ ($A \\le 4$, như $^2_1\\text{D} + {}^3_1\\text{T} \\to {}^4_2\\text{He} + {}^1_0 n + 17{,}6\\text{ MeV}$) thành hạt nhân nặng hơn.\n"
+            "- **Điều kiện thực hiện**: Để thắng lực đẩy tĩnh điện Coulomb giữa hai hạt nhân mang điện dương, hỗn hợp nhiên liệu phải ở trạng thái plasma có **mật độ hạt lớn** và **nhiệt độ cực cao** (từ $50\\text{ triệu}$ đến $100\\text{ triệu độ K}$).\n"
+            "- **Ưu điểm của năng lượng nhiệt hạch**: tính trên cùng một đơn vị khối lượng nhiên liệu, phản ứng nhiệt hạch tỏa năng lượng lớn hơn phân hạch, nguồn nhiên liệu đơteri trong nước biển gần như vô tận và sản phẩm ($^4_2\\text{He}$) sạch, không gây ô nhiễm phóng xạ như chất thải phân hạch.\n"
+            "- Nguồn năng lượng của **Mặt Trời và các ngôi sao** chính là các phản ứng nhiệt hạch tổng hợp hiđrô thành heli."
+        ),
+        formulas=[
+            G(
+                "Phản ứng Phân hạch và Phản ứng Nhiệt hạch",
+                F("Phương trình tổng quát phân hạch U-235 và Hệ số nhân neutron k", "$^1_0 n + {}^{235}_{92}\\text{U} \\to {}^{A_1}_{Z_1}X + {}^{A_2}_{Z_2}Y + k\\,{}^1_0 n \\ (\\Delta E \\approx 200\\text{ MeV}); \\qquad \\text{Lò điện hạt nhân: } k = 1$", "Trong lò phản ứng hạt nhân, dùng thanh điều khiển chứa Bo ($\\text{B}$) hoặc Cadimi ($\\text{Cd}$) để hấp thụ neutron thừa giữ đúng $k = 1$."),
+                F("Phương trình phản ứng nhiệt hạch D - T", "$^2_1\\text{D} + {}^3_1\\text{T} \\longrightarrow {}^4_2\\text{He} + {}^1_0 n + 17{,}6\\text{ MeV}$", "Cả phản ứng phân hạch và phản ứng nhiệt hạch đều là phản ứng hạt nhân **tỏa năng lượng**."),
+            )
+        ],
+        example="Trong một phản ứng phân hạch của hạt nhân $^{235}_{92}\\text{U}$ khi hấp thụ một neutron chậm: $^1_0 n + {}^{235}_{92}\\text{U} \\longrightarrow {}^{95}_{42}\\text{Mo} + {}^{139}_{57}\\text{La} + k\\,{}^1_0 n + 7\\,{}^0_{-1}e$. Hãy áp dụng định luật bảo toàn số khối để tìm số hạt neutron $k$ sinh ra sau phản ứng này.",
+        example_answer="Tổng số khối trước phản ứng là $A_{\\text{trước}} = 1 + 235 = 236$. Tổng số khối sau phản ứng là $A_{\\text{sau}} = 95 + 139 + k \\cdot 1 + 7 \\cdot 0 = 234 + k$. Từ $A_{\\text{trước}} = A_{\\text{sau}} \\implies 236 = 234 + k \\implies k = 2$ neutron.",
+        real_life="Năng lượng ánh sáng và nhiệt từ Mặt Trời sưởi ấm Trái Đất suốt hàng tỉ năm qua được tạo ra từ phản ứng nhiệt hạch tổng hợp các hạt nhân hiđrô thành hạt nhân heli ở lõi Mặt Trời.",
+        quiz=[
+            mcq("biet", "Để lò phản ứng của một **nhà máy điện hạt nhân** hoạt động ổn định với công suất không đổi và an toàn, hệ số nhân neutron $k$ trong phản ứng phân hạch dây chuyền phải được điều khiển bằng bao nhiêu?", ["$k = 1$", "$k > 1$", "$k = 0$", "$k = 10$"], 0, "Trong lò phản ứng hạt nhân, các thanh điều khiển hấp thụ bớt neutron thừa để duy trì hệ số nhân neutron đúng bằng $k = 1$."),
+            mcq("biet", "Nguồn năng lượng khổng lồ tỏa ra liên tục từ Mặt Trời và các ngôi sao trong vũ trụ có bản chất là loại phản ứng nào?", ["Phản ứng nhiệt hạch (tổng hợp các hạt nhân hiđrô nhẹ thành hạt nhân heli)", "Phản ứng phân hạch hạt nhân uranium", "Phản ứng đốt cháy than đá và khí ôxi", "Hiện tượng phóng xạ tự nhiên của chì"], 0, "Trong lòng Mặt Trời và các ngôi sao diễn ra phản ứng nhiệt hạch tổng hợp hiđrô thành heli."),
+            mcq("hieu", "Vì sao phản ứng tổng hợp hạt nhân nhẹ lại được gọi là **phản ứng nhiệt hạch** (cần nhiệt độ lên tới hàng chục triệu độ)?", ["Vì cần nhiệt độ cực cao để các hạt nhân nhẹ có động năng nhiệt đủ lớn thắng được lực đẩy tĩnh điện Coulomb và tiến lại gần nhau trong phạm vi tác dụng của lực hạt nhân", "Vì phản ứng này thu nhiệt làm lạnh môi trường xuống $0\\text{ K}$", "Vì phản ứng này chỉ xảy ra với các hạt nhân rất nặng như $^{235}\\text{U}$", "Vì các hạt neutron mang điện tích dương đẩy nhau"], 0, "Hai hạt nhân nhẹ đều mang điện tích dương nên đẩy nhau bằng lực Coulomb; cần nhiệt độ hàng chục triệu độ để chúng chuyển động cực nhanh vượt qua rào thế Coulomb tiến tới khoảng cách $\\approx 10^{-15}\\text{ m}$."),
+            tf4("hieu", "Xét tính đúng/sai của các phát biểu sau về phản ứng phân hạch và phản ứng nhiệt hạch:", [
+                "Cả phản ứng phân hạch và phản ứng nhiệt hạch đều là các phản ứng hạt nhân tỏa năng lượng.",
+                "Trong phản ứng phân hạch của $^{235}_{92}\\text{U}$, một hạt nhân nặng hấp thụ một neutron chậm rồi vỡ thành hai hạt nhân trung bình và giải phóng thêm $2$ đến $3$ neutron.",
+                "Tính theo cùng một khối lượng nhiên liệu (ví dụ $1\\text{ gam}$), phản ứng nhiệt hạch tỏa ra năng lượng nhỏ hơn rất nhiều so với phản ứng phân hạch.",
+                "Trong lò phản ứng hạt nhân, các thanh điều khiển có chứa Bo hoặc Cadimi dùng để hấp thụ các neutron thừa nhằm khống chế hệ số nhân neutron $k = 1$.",
+            ], [True, True, False, True], "Ý c) sai vì tính trên cùng một đơn vị khối lượng nhiên liệu (ví dụ $1\\text{ g}$), phản ứng nhiệt hạch tỏa ra năng lượng lớn gấp khoảng $3$ đến $4$ lần phản ứng phân hạch."),
+            short("vandung", "Biết mỗi phân hạch của một hạt nhân $^{235}_{92}\\text{U}$ tỏa ra năng lượng trung bình là $200\\text{ MeV}$. Khi $10$ hạt nhân $^{235}_{92}\\text{U}$ phân hạch hoàn toàn thì tổng năng lượng tỏa ra bằng bao nhiêu $\\text{MeV}$?", ["2000"], "Tổng năng lượng tỏa ra là $E = 10 \\cdot 200 = 2000\\text{ MeV}$.", unit="MeV"),
+        ],
+    ),
+    bai(
+        topic=CH4[0], chapter_title=CH4[1], chapter_desc=CH4[2],
+        title="Bài 21: Hiện tượng phóng xạ",
+        icon="☢️",
+        description="Bản chất tự phát của hiện tượng phóng xạ, các tia phóng xạ α, β⁻, β⁺, γ, chu kì bán rã T, hằng số phóng xạ λ = ln2/T và định luật phóng xạ N(t) = N₀.2^(-t/T).",
+        requirements=[
+            "Nêu được hiện tượng phóng xạ là quá trình phân rã tự phát của một hạt nhân không bền vững, hoàn toàn ngẫu nhiên và không phụ thuộc vào các tác động lí – hóa bên ngoài (nhiệt độ, áp suất).",
+            "Nêu được bản chất, phương trình phân rã và khả năng ion hóa, đâm xuyên của các tia phóng xạ $\\alpha$ ($^4_2\\text{He}$), $\\beta^-$ ($^0_{-1}e$), $\\beta^+$ ($^0_{+1}e$) và $\\gamma$ (photon năng lượng cao).",
+            "Viết và vận dụng được công thức hằng số phóng xạ $\\lambda = \\dfrac{\\ln 2}{T}$ và định luật phóng xạ: $N(t) = N_0 \\cdot 2^{-\\frac{t}{T}} = N_0 e^{-\\lambda t}$, $m(t) = m_0 \\cdot 2^{-\\frac{t}{T}}$.",
+        ],
+        definition="Hiện tượng phóng xạ là hiện tượng một hạt nhân không bền vững tự phát phân rã, phát ra các tia phóng xạ và biến đổi thành hạt nhân khác. Chu kì bán rã ($T$) là khoảng thời gian để một nửa số hạt nhân của một mẫu chất phóng xạ phân rã. Số hạt nhân và khối lượng chất phóng xạ còn lại sau thời gian $t$ giảm theo hàm mũ: $N(t) = N_0 \\cdot 2^{-t/T} = N_0 e^{-\\lambda t}$ và $m(t) = m_0 \\cdot 2^{-t/T}$.",
+        theory=(
+            "### 1. Bản chất của hiện tượng phóng xạ và các tia phóng xạ\n"
+            "- **Đặc điểm**: Hoàn toàn do nguyên nhân bên trong hạt nhân, mang tính tự phát, ngẫu nhiên và **không chịu ảnh hưởng bởi nhiệt độ, áp suất hay trạng thái hợp chất hóa học**.\n"
+            "- **Các loại tia phóng xạ**:\n"
+            "  1. **Phóng xạ $\\alpha$**: dòng hạt nhân $^4_2\\text{He}$ ($^A_Z X \\to {}^{A-4}_{Z-2}Y + {}^4_2\\text{He}$). Khả năng **ion hóa mạnh nhất**, nhưng khả năng **đâm xuyên yếu nhất** (chỉ đi được vài $\\text{cm}$ trong không khí, bị tờ giấy mỏng chặn lại).\n"
+            "  2. **Phóng xạ $\\beta^-$**: dòng electron $^0_{-1}e$ ($^A_Z X \\to {}^A_{Z+1}Y + {}^0_{-1}e + \\tilde{\\nu}$); và **phóng xạ $\\beta^+$**: dòng positron $^0_{+1}e$ ($^A_Z X \\to {}^A_{Z-1}Y + {}^0_{+1}e + \\nu$). Đâm xuyên mạnh hơn tia $\\alpha$ (bị tấm nhôm dày vài $\\text{mm}$ chặn lại).\n"
+            "  3. **Phóng xạ $\\gamma$ (tia gamma)**: sóng điện từ (chùm photon) có bước sóng cực ngắn ($\\lambda < 10^{-11}\\text{ m}$), đi kèm theo phân rã $\\alpha, \\beta$, **không mang điện** (không bị lệch trong điện trường và từ trường), không làm thay đổi $A$ và $Z$, có **khả năng đâm xuyên mạnh nhất** (phải dùng khối chì dày hoặc bê tông dày để chắn).\n\n"
+            "### 2. Chu kì bán rã, Hằng số phóng xạ và Định luật phóng xạ\n"
+            "- **Hằng số phóng xạ ($\\lambda$)**: đặc trưng cho từng chất phóng xạ, liên hệ với chu kì bán rã $T$ (theo giây $\\text{s}$):\n"
+            "  $$\\lambda = \\dfrac{\\ln 2}{T} \\approx \\dfrac{0{,}693}{T} \\quad (\\text{đơn vị: } \\text{s}^{-1})$$\n"
+            "- **Định luật phóng xạ**:\n"
+            "  - Số hạt nhân (hoặc khối lượng) **còn lại** sau thời gian $t$: $N(t) = N_0 \\cdot 2^{-\\frac{t}{T}} = N_0 e^{-\\lambda t}$; $m(t) = m_0 \\cdot 2^{-\\frac{t}{T}}$.\n"
+            "  - Số hạt nhân (hoặc khối lượng) **đã bị phân rã** sau thời gian $t$: $\\Delta N = N_0 - N(t) = N_0\\left(1 - 2^{-\\frac{t}{T}}\\right)$; $\\Delta m = m_0\\left(1 - 2^{-\\frac{t}{T}}\\right)$."
+        ),
+        formulas=[
+            G(
+                "Hằng số phóng xạ và Định luật phóng xạ",
+                F("Hằng số phóng xạ và Số hạt / Khối lượng còn lại", "$\\lambda = \\dfrac{\\ln 2}{T}; \\qquad N(t) = N_0 \\cdot 2^{-\\frac{t}{T}} = N_0 e^{-\\lambda t}; \\qquad m(t) = m_0 \\cdot 2^{-\\frac{t}{T}}$", "Khi tính $2^{-t/T}$, chỉ cần $t$ và $T$ để cùng một đơn vị thời gian (cùng là ngày, năm, giờ hoặc giây)."),
+                F("Số hạt nhân và Khối lượng đã bị phân rã", "$\\Delta N = N_0 - N(t) = N_0\\left(1 - 2^{-\\frac{t}{T}}\\right); \\qquad \\Delta m = m_0\\left(1 - 2^{-\\frac{t}{T}}\\right)$", "Tỉ số giữa số hạt nhân con tạo thành và số hạt nhân mẹ còn lại tại thời điểm $t$: $\\dfrac{N_{\\text{con}}}{N_{\\text{mẹ}}} = \\dfrac{\\Delta N}{N(t)} = 2^{\\frac{t}{T}} - 1$."),
+            )
+        ],
+        example="Đồng vị phóng xạ iốt $^{131}_{53}\\text{I}$ dùng trong y học có chu kì bán rã là $T = 8\\text{ ngày}$. Ban đầu một mẫu chất có khối lượng $m_0 = 64\\text{ g}$ chất phóng xạ $^{131}_{53}\\text{I}$ nguyên chất. Hãy tính khối lượng $m$ của $^{131}_{53}\\text{I}$ còn lại và khối lượng $\\Delta m$ đã bị phân rã sau thời gian $t = 24\\text{ ngày}$.",
+        example_answer="Ta có $\\dfrac{t}{T} = \\dfrac{24}{8} = 3$ chu kì bán rã. Khối lượng $^{131}_{53}\\text{I}$ còn lại sau $24\\text{ ngày}$ là $m(t) = m_0 \\cdot 2^{-t/T} = 64 \\cdot 2^{-3} = \\dfrac{64}{8} = 8\\text{ g}$. Khối lượng $^{131}_{53}\\text{I}$ đã bị phân rã là $\\Delta m = m_0 - m(t) = 64 - 8 = 56\\text{ g}$.",
+        real_life="Phương pháp xác định niên đại cổ vật bằng đồng vị phóng xạ carbon $^{14}_6\\text{C}$ (có chu kì bán rã $T \\approx 5730\\text{ năm}$) cho phép các nhà khảo cổ tính chính xác tuổi của các mẫu gỗ, xương hóa thạch cổ đại.",
+        quiz=[
+            mcq("biet", "Tia phóng xạ nào sau đây là bản chất sóng điện từ có bước sóng cực ngắn, **không mang điện** (không bị lệch trong điện trường và từ trường) và có khả năng đâm xuyên mạnh nhất?", ["Tia gamma ($\\gamma$)", "Tia alpha ($\\alpha$)", "Tia bêta trừ ($\\beta^-$)", "Tia bêta cộng ($\\beta^+$)"], 0, "Tia gamma ($\\gamma$) là chùm photon năng lượng rất cao, không mang điện nên không bị lệch trong điện trường và từ trường."),
+            mcq("biet", "Gọi $N_0$ là số hạt nhân ban đầu của một mẫu chất phóng xạ có chu kì bán rã $T$. Số hạt nhân còn lại $N(t)$ của mẫu chất đó sau khoảng thời gian $t$ được xác định bởi công thức nào?", ["$N(t) = N_0 \\cdot 2^{-\\frac{t}{T}}$", "$N(t) = N_0 \\cdot 2^{\\frac{t}{T}}$", "$N(t) = \\dfrac{N_0 \\cdot T}{t}$", "$N(t) = N_0\\left(1 - \\dfrac{t}{T}\\right)$"], 0, "Theo định luật phóng xạ, số hạt nhân còn lại sau thời gian $t$ là $N(t) = N_0 \\cdot 2^{-\\frac{t}{T}} = N_0 e^{-\\lambda t}$."),
+            mcq("hieu", "Khi hạt nhân $^{238}_{92}\\text{U}$ phóng xạ phát ra một hạt $\\alpha$ ($^4_2\\text{He}$) để biến đổi thành hạt nhân con $^A_Z\\text{Th}$ thì giá trị của số khối $A$ và nguyên tử số $Z$ của hạt nhân con lần lượt là:", ["$A = 234$ và $Z = 90$", "$A = 238$ và $Z = 91$", "$A = 234$ và $Z = 92$", "$A = 242$ và $Z = 94$"], 0, "Trong phóng xạ $\\alpha$ ($^4_2\\text{He}$), số khối giảm $4$ đơn vị ($A = 238 - 4 = 234$) và điện tích giảm $2$ đơn vị ($Z = 92 - 2 = 90$)."),
+            tf4("hieu", "Xét tính đúng/sai của các phát biểu sau về hiện tượng phóng xạ:", [
+                "Tia alpha ($\\alpha$) thực chất là dòng các hạt nhân heli ($^4_2\\text{He}$).",
+                "Nếu nung nóng một mẫu chất phóng xạ lên $2000^\\circ\\text{C}$ thì chu kì bán rã $T$ của nó giảm đi một nửa.",
+                "Hằng số phóng xạ $\\lambda$ liên hệ với chu kì bán rã $T$ theo công thức $\\lambda = \\dfrac{\\ln 2}{T}$.",
+                "Sau thời gian $t = 2T$ (hai chu kì bán rã), số hạt nhân phóng xạ còn lại bằng $25\\%$ số hạt nhân ban đầu (và đã phân rã $75\\%$).",
+            ], [True, False, True, True], "Ý b) sai vì quá trình phóng xạ xảy ra bên trong hạt nhân, hoàn toàn không phụ thuộc vào nhiệt độ, áp suất hay tác động bên ngoài."),
+            short("vandung", "Một mẫu chất phóng xạ có khối lượng ban đầu $m_0 = 40\\text{ g}$ và chu kì bán rã $T = 5\\text{ giờ}$. Sau thời gian $t = 10\\text{ giờ}$, khối lượng chất phóng xạ đó **còn lại** bằng bao nhiêu gam ($\\text{g}$)?", ["10"], "Ta có $\\dfrac{t}{T} = \\dfrac{10}{5} = 2$. Khối lượng còn lại là $m = m_0 \\cdot 2^{-2} = \\dfrac{40}{4} = 10\\text{ g}$.", unit="g"),
+        ],
+    ),
+    bai(
+        topic=CH4[0], chapter_title=CH4[1], chapter_desc=CH4[2],
+        title="Bài 22: Độ phóng xạ và an toàn phóng xạ. Công nghiệp hạt nhân",
+        icon="🛡️",
+        description="Định nghĩa và công thức độ phóng xạ H = λ.N = H₀.2^(-t/T) (đơn vị Becquerel - Bq), ứng dụng đồng vị phóng xạ và 3 nguyên tắc vàng về an toàn phóng xạ.",
+        requirements=[
+            "Định nghĩa được độ phóng xạ $H$ là đại lượng đặc trưng cho tính phóng xạ mạnh hay yếu của một lượng chất phóng xạ, đo bằng số phân rã trong $1\\text{ giây}$: $H = -\\dfrac{\\Delta N}{\\Delta t} = \\lambda \\cdot N$ (đơn vị Becquerel – $\\text{Bq}$).",
+            "Vận dụng được công thức giảm độ phóng xạ theo thời gian $H(t) = H_0 \\cdot 2^{-\\frac{t}{T}} = H_0 e^{-\\lambda t} = \\lambda \\cdot N(t)$.",
+            "Nêu được các ứng dụng của công nghiệp hạt nhân (điện hạt nhân, xạ trị y học, chiếu xạ bảo quản thực phẩm, tạo giống đột biến, định tuổi cổ vật) và **3 nguyên tắc cơ bản về an toàn phóng xạ**: giảm thời gian tiếp xúc, tăng khoảng cách tới nguồn và che chắn thích hợp.",
+        ],
+        definition="Độ phóng xạ ($H$) là đại lượng đặc trưng cho tính phóng xạ mạnh hay yếu của một lượng chất phóng xạ, được xác định bằng số hạt nhân phân rã trong một giây: $H = \\lambda \\cdot N = H_0 \\cdot 2^{-t/T} = H_0 e^{-\\lambda t}$ (đơn vị trong hệ SI là Becquerel – $\\text{Bq}$, với $1\\text{ Bq} = 1\\text{ phân rã/giây}$).",
+        theory=(
+            "### 1. Độ phóng xạ ($H$)\n"
+            "- Biểu thức liên hệ giữa độ phóng xạ $H$, hằng số phóng xạ $\\lambda$ và số hạt nhân $N$ tại thời điểm $t$:\n"
+            "  $$H(t) = \\lambda \\cdot N(t) = \\dfrac{\\ln 2}{T} \\cdot N(t) = H_0 \\cdot 2^{-\\frac{t}{T}} = H_0 e^{-\\lambda t}$$\n"
+            "  trong đó $H_0 = \\lambda \\cdot N_0$ là độ phóng xạ ban đầu lúc $t = 0$.\n"
+            "  *(Lưu ý: Khi dùng công thức $H = \\lambda N = \\dfrac{\\ln 2}{T}N$ để tính $H$ ra đơn vị $\\text{Bq}$, bắt buộc phải đổi chu kì bán rã $T$ ra đơn vị **giây ($\\text{s}$)**!)*\n"
+            "- **Đơn vị**:\n"
+            "  - Trong hệ SI: **Becquerel** (kí hiệu $\\text{Bq}$): $1\\text{ Bq} = 1\\text{ phân rã/s} = 1\\text{ s}^{-1}$.\n"
+            "  - Đơn vị thực hành truyền thống: **Curie** (kí hiệu $\\text{Ci}$): $1\\text{ Ci} = 3{,}7 \\cdot 10^{10}\\text{ Bq}$.\n\n"
+            "### 2. Ứng dụng công nghiệp hạt nhân và 3 nguyên tắc vàng về An toàn phóng xạ\n"
+            "- **Ứng dụng**: Nhà máy điện hạt nhân (không phát thải khí nhà kính $\\text{CO}_2$); Y học hạt nhân (dùng $^{131}\\text{I}$ chẩn đoán/điều trị bướu tuyến giáp, tia $\\gamma$ của $^{60}\\text{Co}$ xạ trị ung thư); Nông nghiệp & Thực phẩm (tạo giống cây trồng đột biến năng suất cao, chiếu xạ thanh trùng bảo quản nông sản xuất khẩu); Khảo cổ học ($^{14}\\text{C}$).\n"
+            "- **Ba nguyên tắc cơ bản đảm bảo an toàn phóng xạ**:\n"
+            "  1. **Giảm thời gian tiếp xúc**: ở gần nguồn phóng xạ trong thời gian càng ngắn càng tốt.\n"
+            "  2. **Tăng khoảng cách**: giữ khoảng cách càng xa nguồn phóng xạ càng an toàn (cường độ bức xạ giảm nhanh theo bình phương khoảng cách).\n"
+            "  3. **Che chắn thích hợp**: sử dụng màn chắn chuyên dụng (áo giáp chì, tường bê tông dày, kính pha chì) giữa cơ thể và nguồn phóng xạ."
+        ),
+        formulas=[
+            G(
+                "Công thức Độ phóng xạ và Định tuổi cổ vật",
+                F("Độ phóng xạ tại thời điểm t", "$H(t) = \\lambda \\cdot N(t) = \\dfrac{\\ln 2}{T(\\text{s})} \\cdot N(t); \\qquad H(t) = H_0 \\cdot 2^{-\\frac{t}{T}} = H_0 e^{-\\lambda t}$", "Đơn vị: $1\\text{ Bq} = 1\\text{ s}^{-1}$; $1\\text{ kBq} = 10^3\\text{ Bq}$; $1\\text{ MBq} = 10^6\\text{ Bq}$; $1\\text{ Ci} = 3{,}7 \\cdot 10^{10}\\text{ Bq}$."),
+                F("Tính tuổi cổ vật theo độ phóng xạ C-14", "$\\dfrac{H}{H_0} = 2^{-\\frac{t}{T}} \\implies t = T \\cdot \\log_2\\left(\\dfrac{H_0}{H}\\right) = \\dfrac{T}{\\ln 2} \\cdot \\ln\\left(\\dfrac{H_0}{H}\\right)$", "Ba quy tắc vàng an toàn phóng xạ: **Thời gian (ngắn nhất) – Khoảng cách (xa nhất) – Che chắn (chì/bê tông)**."),
+            )
+        ],
+        example="Một dược chất phóng xạ dùng trong y học có độ phóng xạ ban đầu là $H_0 = 800\\text{ MBq}$ và chu kì bán rã là $T = 6\\text{ giờ}$. Hãy tính độ phóng xạ $H$ của mẫu dược chất này sau khoảng thời gian $t = 18\\text{ giờ}$.",
+        example_answer="Số chu kì bán rã đã trôi qua là $\\dfrac{t}{T} = \\dfrac{18}{6} = 3$. Độ phóng xạ của mẫu dược chất còn lại sau $18\\text{ giờ}$ là $H = H_0 \\cdot 2^{-t/T} = 800 \\cdot 2^{-3} = \\dfrac{800}{8} = 100\\text{ MBq}$.",
+        real_life="Tại các khoa Y học hạt nhân và X-quang của bệnh viện, bên ngoài cửa phòng máy luôn gắn biển cảnh báo phóng xạ hình cánh quạt ba lá màu đen trên nền tam giác vàng và nhân viên y tế luôn mặc tạp dề chì bảo hộ để chắn bức xạ.",
+        quiz=[
+            mcq("biet", "Đơn vị đo của **độ phóng xạ** $H$ trong hệ thống đo lường quốc tế SI là gì?", ["Becquerel ($\\text{Bq}$, với $1\\text{ Bq} = 1\\text{ phân rã/giây}$)", "Tesla ($\\text{T}$)", "Sievert ($\\text{Sv}$)", "amu"], 0, "Trong hệ SI, đơn vị của độ phóng xạ $H$ là Becquerel ($\\text{Bq}$)."),
+            mcq("biet", "Ba nguyên tắc cơ bản nhất để đảm bảo **an toàn phóng xạ** khi làm việc với nguồn phóng xạ là gì?", ["Giảm thời gian tiếp xúc, giữ khoảng cách xa nguồn và sử dụng màn chắn (chì, bê tông) thích hợp", "Tăng thời gian tiếp xúc, đứng thật gần nguồn và không dùng đồ bảo hộ", "Đun nóng nguồn phóng xạ để khử tính phóng xạ", "Ngâm nguồn phóng xạ vào nước muối loãng"], 0, "Ba nguyên tắc vàng về an toàn phóng xạ là: Thời gian tiếp xúc ngắn nhất – Khoảng cách xa nhất – Che chắn thích hợp."),
+            mcq("hieu", "Một mẫu gỗ cổ đại tìm thấy trong di chỉ khảo cổ có độ phóng xạ của đồng vị $^{14}_6\\text{C}$ bằng $\\dfrac{1}{2}$ độ phóng xạ của một mẫu gỗ tươi cùng loại vừa mới đốn hạ ($H = 0{,}5 H_0$). Biết chu kì bán rã của $^{14}_6\\text{C}$ là $T = 5730\\text{ năm}$, tuổi của mẫu gỗ cổ đó là bao nhiêu?", ["$5730\\text{ năm}$", "$11\\,460\\text{ năm}$", "$2865\\text{ năm}$", "$17\\,190\\text{ năm}$"], 0, "Vì $H = \\dfrac{1}{2}H_0 = H_0 \\cdot 2^{-1}$ nên thời gian đã trôi qua đúng bằng $1$ chu kì bán rã: $t = T = 5730\\text{ năm}$."),
+            tf4("hieu", "Xét tính đúng/sai của các phát biểu sau về độ phóng xạ và công nghiệp hạt nhân:", [
+                "Độ phóng xạ $H$ của một mẫu chất phóng xạ tỉ lệ thuận với số hạt nhân phóng xạ $N$ hiện có trong mẫu ($H = \\lambda N$).",
+                "Theo thời gian, độ phóng xạ của một mẫu chất giảm dần theo cùng quy luật hàm mũ với số hạt nhân: $H(t) = H_0 \\cdot 2^{-t/T}$.",
+                "Thực phẩm, trái cây sau khi được chiếu xạ bằng tia gamma để diệt vi khuẩn và nấm mốc sẽ biến thành chất phóng xạ nguy hiểm.",
+                "Nhà máy điện hạt nhân sản xuất điện năng ổn định quy mô lớn mà hầu như không phát thải khí nhà kính $\\text{CO}_2$ trong quá trình vận hành.",
+            ], [True, True, False, True], "Ý c) sai vì chiếu xạ thực phẩm bằng tia $\\gamma$ với liều lượng kiểm soát chỉ tiêu diệt vi sinh vật gây thối hỏng chứ hoàn toàn không làm thực phẩm bị nhiễm phóng xạ."),
+            short("vandung", "Một nguồn phóng xạ có độ phóng xạ ban đầu $H_0 = 600\\text{ kBq}$ và chu kì bán rã là $T = 10\\text{ ngày}$. Sau thời gian $t = 20\\text{ ngày}$, độ phóng xạ $H$ của nguồn đó bằng bao nhiêu $\\text{kBq}$?", ["150"], "Ta có $\\dfrac{t}{T} = \\dfrac{20}{10} = 2$. Độ phóng xạ còn lại là $H = H_0 \\cdot 2^{-2} = \\dfrac{600}{4} = 150\\text{ kBq}$.", unit="kBq"),
+        ],
+    ),
 ]
