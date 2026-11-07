@@ -1,3 +1,18 @@
+// Dọn bộ nhớ đệm sessionStorage cũ & mở khóa cuộn trang trên điện thoại
+try {
+  Object.keys(sessionStorage).forEach((k) => {
+    if ((k.startsWith("hdlg_lesson") || k.startsWith("hdlg_lessons")) && !k.startsWith("hdlg_v6_")) {
+      sessionStorage.removeItem(k);
+    }
+  });
+} catch (_) {}
+document.body.classList.remove("popup-open");
+window.addEventListener("pageshow", function () {
+  document.body.classList.remove("popup-open");
+  const p = document.getElementById("mathPopup");
+  if (p) p.classList.remove("show");
+});
+
 /* =========================================================
    MATH PAGE — THÁNH ĐƯỜNG HÌNH HỌC & CUNG ĐIỆN TỶ LỆ VÀNG
 ========================================================= */
@@ -125,9 +140,10 @@ function closeMathPopup() {
 classCards.forEach(function (card) {
   card.addEventListener("click", function () {
     selectedGrade = card.dataset.grade;
+    try { localStorage.setItem("selectedMathGrade", String(selectedGrade)); } catch (_) {}
     // Prefetch dữ liệu bài học ngay khi bấm chọn lớp để trang sau mở tức thì (0ms)
     try {
-      const cacheKey = `hdlg_lessons_math_${selectedGrade}`;
+      const cacheKey = `hdlg_v6_lessons_math_${selectedGrade}`;
       if (!sessionStorage.getItem(cacheKey)) {
         const apiBase = (["127.0.0.1", "localhost"].includes(location.hostname) && location.port !== "8000") ? "http://127.0.0.1:8000/api" : "/api";
         fetch(`${apiBase}/content/subjects/math/lessons?grade=${encodeURIComponent(selectedGrade)}`)
@@ -136,7 +152,7 @@ classCards.forEach(function (card) {
             if (Array.isArray(data) && data.length) {
               sessionStorage.setItem(cacheKey, JSON.stringify(data));
               data.forEach(l => {
-                if (l && l.id != null) sessionStorage.setItem(`hdlg_lesson_${l.id}`, JSON.stringify(l));
+                if (l && l.id != null) sessionStorage.setItem(`hdlg_v6_lesson_${l.id}`, JSON.stringify(l));
               });
             }
           }).catch(() => {});
@@ -155,7 +171,8 @@ classCards.forEach(function (card) {
       buttonLabel: "Khám phá",
       action: function () {
         if (selectedGrade !== null) {
-          window.location.href = "math-grade.html?grade=" + selectedGrade;
+          document.body.classList.remove("popup-open");
+          window.location.href = "math-grade.html?grade=" + encodeURIComponent(selectedGrade);
         }
       }
     });

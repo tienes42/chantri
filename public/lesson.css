@@ -2157,3 +2157,101 @@ body[data-theme="dark"] .qz-level-title.lv-vandung, body[data-theme="dark"] .qz-
     padding-bottom: 0;
   }
 }
+
+
+/* =========================================================
+   17. FIX CUỘN DỌC TRÊN ĐIỆN THOẠI & TỐI ƯU GIAO DIỆN MOBILE CHO BÀI HỌC
+========================================================= */
+html {
+  min-height: 100%;
+  height: auto !important;
+  overflow-x: hidden;
+  overflow-y: auto !important;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  min-height: 100vh;
+  min-height: 100dvh;
+  height: auto !important;
+  overflow-x: hidden;
+  overflow-x: clip;
+  overflow-y: visible !important;
+  touch-action: pan-y pinch-zoom;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: auto;
+}
+
+.mindmap-viewport {
+  touch-action: pan-y pinch-zoom;
+}
+
+@media (max-width: 980px) {
+  .lesson-sidebar {
+    position: static !important;
+    max-height: none !important;
+    overflow: visible !important;
+    padding-right: 0 !important;
+    padding-bottom: 0 !important;
+  }
+
+  .lesson-sidebar .chapter-lessons-list {
+    max-height: 175px !important;
+    overflow-y: auto !important;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-y;
+    overscroll-behavior: contain;
+  }
+
+  .lesson-sidebar .toc-list {
+    display: flex !important;
+    flex-direction: row !important;
+    flex-wrap: nowrap !important;
+    overflow-x: auto !important;
+    overflow-y: hidden !important;
+    -webkit-overflow-scrolling: touch;
+    touch-action: pan-x pan-y;
+    scrollbar-width: none;
+    gap: 8px;
+    padding-bottom: 4px;
+  }
+
+  .lesson-sidebar .toc-list::-webkit-scrollbar {
+    display: none;
+  }
+
+  .lesson-sidebar .toc-link {
+    flex: 0 0 auto;
+    white-space: nowrap;
+    padding: 7px 12px;
+    font-size: 12.5px;
+  }
+}
+
+@media (max-width: 650px) {
+  .header-inner {
+    padding: 10px 12px;
+    gap: 8px;
+  }
+
+  .brand {
+    font-size: 13.5px;
+  }
+
+  .reader-controls {
+    width: 100%;
+    justify-content: space-between;
+  }
+
+  .theme-btn {
+    padding: 5px 8px;
+    font-size: 11.5px;
+  }
+
+  .formula-expression {
+    font-size: 17px;
+    padding: 12px 14px;
+    -webkit-overflow-scrolling: touch;
+  }
+}

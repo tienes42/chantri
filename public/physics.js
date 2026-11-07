@@ -1,3 +1,9 @@
+document.body.classList.remove("popup-open");
+window.addEventListener("pageshow", function () {
+  document.body.classList.remove("popup-open");
+  const p = document.getElementById("mathPopup");
+  if (p) p.classList.remove("show");
+});
 /* =========================================================
    PHYSICS PAGE — ĐÀI THIÊN VĂN LƯỢNG TỬ & THỰC NGHIỆM
    Vật lý → Chọn lớp → Danh sách bài học
@@ -125,6 +131,7 @@ function closePhysicsPopup() {
 classCards.forEach(function (card) {
   card.addEventListener("click", function () {
     selectedGrade = card.dataset.grade;
+    try { localStorage.setItem("selectedPhysicsGrade", String(selectedGrade)); } catch (_) {}
     // Prefetch dữ liệu bài học ngay khi bấm chọn lớp để trang sau mở tức thì (0ms)
     try {
       const cacheKey = `hdlg_v6_lessons_physics_${selectedGrade}`;

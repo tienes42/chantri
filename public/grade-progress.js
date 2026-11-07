@@ -191,6 +191,7 @@
     if (!ov) return; ov.remove(); ov = null;
     document.removeEventListener("keydown", onKey);
     document.body.style.overflow = "";
+    document.body.classList.remove("popup-open");
   }
   function ring(m, color) {
     var r = 52, c = 2 * Math.PI * r, off = c * (1 - m / 100);
@@ -284,7 +285,7 @@
   }
   function loadAll() {
     allLoading = true;
-    var key = "hdlg_lessons_" + opts.subject + "_all";
+    var key = "hdlg_v6_lessons_" + opts.subject + "_all";
     try { var c = jparse(sessionStorage.getItem(key), null); if (Array.isArray(c) && c.length) { allLessons = c; allLoading = false; return; } } catch (e) {}
     fetch((opts.apiBase || "/api") + "/content/subjects/" + opts.subject + "/lessons")
       .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })

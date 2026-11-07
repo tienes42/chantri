@@ -3,10 +3,10 @@
 
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Toán học - HỌC ĐỂ LÀM GÌ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
+  <title>Toán học lớp - HỌC ĐỂ LÀM GÌ</title>
 
-  <link rel="stylesheet" href="math-grade.css">
+  <link rel="stylesheet" href="math-grade.css?v=20261108">
   <script src="/firebase-config.js"></script>
   <script src="/auth.js"></script>
 </head>
@@ -46,18 +46,34 @@
        HEADER
   ========================== -->
   <header class="grade-header">
-    <button class="back-button" id="backButton" type="button" aria-label="Quay lại">
-      ←
-    </button>
+    <button class="back-button" id="backButton" type="button" aria-label="Quay lại">←</button>
 
     <div class="brand">
-      <div class="brand-icon" data-sprite="core">
-        <span>📐</span>
-      </div>
+      <div class="brand-icon" data-sprite="core"><span>📐</span></div>
       <div>
-        <h1>TOÁN HỌC</h1>
-        <p>HỌC ĐỂ LÀM GÌ</p>
+        <h1>HỌC ĐỂ LÀM GÌ</h1>
+        <p>KHÁM PHÁ TOÁN HỌC</p>
       </div>
+    </div>
+
+    <!-- Bộ chọn Đổi lớp nhanh ngay trên thanh Header -->
+    <div class="header-grade-switcher" aria-label="Đổi lớp học nhanh">
+      <label for="headerGradeSelect" class="header-grade-label">🎓 Đổi lớp:</label>
+      <select id="headerGradeSelect" class="header-grade-select" aria-label="Chọn lớp Toán học">
+        <option value="1">Lớp 1</option>
+        <option value="2">Lớp 2</option>
+        <option value="3">Lớp 3</option>
+        <option value="4">Lớp 4</option>
+        <option value="5">Lớp 5</option>
+        <option value="6">Lớp 6</option>
+        <option value="7">Lớp 7</option>
+        <option value="8">Lớp 8</option>
+        <option value="9">Lớp 9</option>
+        <option value="10" selected>Lớp 10</option>
+        <option value="11">Lớp 11</option>
+        <option value="12">Lớp 12</option>
+      </select>
+      <a href="math.html" class="header-all-grades-btn" title="Về trang chọn tất cả các lớp Toán">Chọn lớp</a>
     </div>
 
     <div class="player" id="playerCard" title="Tài khoản của tôi" style="cursor: pointer;">
@@ -78,18 +94,34 @@
   ========================== -->
   <main class="grade-main">
 
+    <!-- Thanh chuyển nhanh Lớp 1 – 12 (Render sẵn trong HTML & tự động đồng bộ bằng JS) -->
+    <nav class="grade-QuickTabs" id="gradeTabs" aria-label="Chọn lớp học Toán">
+      <a href="math-grade.html?grade=1" class="grade-tab" data-g="1">Lớp 1</a>
+      <a href="math-grade.html?grade=2" class="grade-tab" data-g="2">Lớp 2</a>
+      <a href="math-grade.html?grade=3" class="grade-tab" data-g="3">Lớp 3</a>
+      <a href="math-grade.html?grade=4" class="grade-tab" data-g="4">Lớp 4</a>
+      <a href="math-grade.html?grade=5" class="grade-tab" data-g="5">Lớp 5</a>
+      <a href="math-grade.html?grade=6" class="grade-tab" data-g="6">Lớp 6</a>
+      <a href="math-grade.html?grade=7" class="grade-tab" data-g="7">Lớp 7</a>
+      <a href="math-grade.html?grade=8" class="grade-tab" data-g="8">Lớp 8</a>
+      <a href="math-grade.html?grade=9" class="grade-tab" data-g="9">Lớp 9</a>
+      <a href="math-grade.html?grade=10" class="grade-tab active" data-g="10">Lớp 10</a>
+      <a href="math-grade.html?grade=11" class="grade-tab" data-g="11">Lớp 11</a>
+      <a href="math-grade.html?grade=12" class="grade-tab" data-g="12">Lớp 12</a>
+    </nav>
+
     <!-- HERO -->
     <section class="grade-hero">
       <div class="hero-content">
-        <span class="hero-label">✦ HÀNH TRÌNH TRI THỨC</span>
+        <span class="hero-label" id="gradeBadge">📐 SGK KẾT NỐI TRI THỨC • TOÁN HỌC</span>
         <h2 id="gradeTitle">TOÁN LỚP 10</h2>
         <p id="gradeDescription">
-          Khám phá những kiến thức toán học theo từng chương và từng bài học cụ thể.
+          Khám phá những kiến thức toán học theo từng chương và từng bài học độc lập.
         </p>
 
         <div class="progress-box">
           <div class="progress-top">
-            <span>Tiến độ học tập</span>
+            <span>Tiến trình học tập</span>
             <strong id="progressPercent">0%</strong>
           </div>
           <div class="large-progress">
@@ -105,9 +137,9 @@
         <div class="math-orb" data-sprite="core">
           <span>∑</span>
         </div>
-        <span class="floating-number number-1">2x + 3</span>
-        <span class="floating-number number-2">πr²</span>
-        <span class="floating-number number-3">√x</span>
+        <span class="floating-number number-1" id="orbFormula1">2x + 3</span>
+        <span class="floating-number number-2" id="orbFormula2">πr²</span>
+        <span class="floating-number number-3" id="orbFormula3">√x</span>
       </div>
     </section>
 
@@ -117,7 +149,7 @@
         <div class="stat-icon" data-sprite="stat1"><span>📚</span></div>
         <div>
           <strong id="topicCount">0</strong>
-          <span id="topicStatLabel">Chương học</span>
+          <span id="topicStatLabel">chương học</span>
         </div>
       </div>
 
@@ -125,23 +157,23 @@
         <div class="stat-icon" data-sprite="stat2"><span>📝</span></div>
         <div>
           <strong id="lessonCount">0</strong>
-          <span>Bài học</span>
+          <span>bài học</span>
         </div>
       </div>
 
       <div class="stat-card">
-        <div class="stat-icon" data-sprite="stat3"><span>⭐</span></div>
-        <div>
-          <strong id="xpCount">0</strong>
-          <span>Sao đạt được</span>
-        </div>
-      </div>
-
-      <div class="stat-card">
-        <div class="stat-icon" data-sprite="stat4"><span>🎯</span></div>
+        <div class="stat-icon" data-sprite="stat3"><span>🎯</span></div>
         <div>
           <strong id="challengeCount">0</strong>
-          <span>Thử thách</span>
+          <span>hoàn thành</span>
+        </div>
+      </div>
+
+      <div class="stat-card">
+        <div class="stat-icon" data-sprite="stat4"><span>⭐</span></div>
+        <div>
+          <strong id="xpCount">0</strong>
+          <span>XP tối đa</span>
         </div>
       </div>
     </section>
@@ -150,8 +182,8 @@
     <section class="topics-section">
       <div class="section-heading">
         <div>
-          <span id="stepHeadingBadge">BƯỚC 02 • CHỌN CHƯƠNG KIẾN THỨC</span>
-          <h2 id="stepHeadingTitle">Chọn chương học</h2>
+          <span id="stepHeadingBadge">BƯỚC 02 • CHỌN CHƯƠNG ➔ CHỌN BÀI HỌC</span>
+          <h2 id="stepHeadingTitle">Danh sách chương &amp; chủ đề</h2>
         </div>
         <p id="stepHeadingDesc">Bấm vào một chương để mở danh sách từng bài học cụ thể trong chương đó.</p>
       </div>
@@ -164,22 +196,22 @@
     <!-- REAL LIFE -->
     <section class="real-life">
       <div class="real-life-content">
-        <span class="real-label">✦ HỌC ĐỂ LÀM GÌ?</span>
-        <h2>Toán học không chỉ<br>nằm trên giấy.</h2>
+        <span class="real-label">✦ TOÁN HỌC TRONG ĐỜI SỐNG</span>
+        <h2>Toán học không chỉ nằm trên giấy.</h2>
         <p>
-          Hãy sử dụng những kiến thức bạn vừa học để giải quyết các tình huống thực tế.
+          Sau khi nắm vững kiến thức của từng bài học, hãy vận dụng công thức và tư duy logic để giải quyết những tình huống thực tế.
         </p>
         <button class="challenge-button" id="challengeButton" type="button">
-          🎯 Thử thách thực tế <span>→</span>
+          Thử thách thực tế <span>→</span>
         </button>
       </div>
 
       <div class="real-life-visual">
         <div class="scenario-card">
           <div class="scenario-icon" data-sprite="scenario"><span>🏪</span></div>
-          <strong>Quản lý cửa hàng</strong>
-          <p>Tính doanh thu, lợi nhuận và tối ưu chi phí.</p>
-          <div class="scenario-equation">Lợi nhuận = Doanh thu − Chi phí</div>
+          <strong id="scenarioTitle">Quản lý cửa hàng</strong>
+          <p id="scenarioText">Tính doanh thu, lợi nhuận và tối ưu chi phí thực tế.</p>
+          <div class="scenario-equation" id="scenarioEquation">Lợi nhuận = Doanh thu − Chi phí</div>
         </div>
       </div>
     </section>
@@ -189,8 +221,8 @@
       <button class="bottom-action" id="calculatorButton" type="button">
         <span class="action-sprite" data-sprite="calc">🧮</span>
         <div>
-          <strong>Máy tính</strong>
-          <small>Công cụ toán học & giải phương trình</small>
+          <strong>Công cụ Toán học</strong>
+          <small>Máy tính khoa học &amp; giải phương trình</small>
         </div>
         <b>→</b>
       </button>
@@ -199,7 +231,7 @@
         <span class="action-sprite" data-sprite="progress">📊</span>
         <div>
           <strong>Tiến trình</strong>
-          <small>Xem năng lực & thống kê theo từng chương, từng bài</small>
+          <small>Xem năng lực &amp; thống kê theo từng chương, từng bài</small>
         </div>
         <b>→</b>
       </button>
@@ -208,7 +240,7 @@
   </main>
 
   <!-- =========================
-       CHAPTER -> LESSONS POPUP MODAL
+       MODAL CHỌN BÀI HỌC TRONG CHƯƠNG (CẤU TRÚC 3 CẤP)
   ========================== -->
   <div class="popup-overlay" id="topicPopup" aria-hidden="true">
     <div class="popup popup-chapter-lessons" role="dialog" aria-modal="true" aria-labelledby="popupTitle">
@@ -217,7 +249,7 @@
       <div class="popup-chapter-head">
         <div class="popup-icon" id="popupIcon">📚</div>
         <div class="popup-head-text">
-          <span class="popup-label" id="popupLabel">CHƯƠNG 01</span>
+          <div class="popup-label" id="popupLabel">TOÁN HỌC • CHƯƠNG 01</div>
           <h2 id="popupTitle">Tên chương học</h2>
           <p id="popupDescription">Chọn bài học bên dưới để bắt đầu khám phá kiến thức và luyện tập.</p>
         </div>
@@ -226,32 +258,32 @@
       <div class="popup-info">
         <div>
           <strong id="popupLessons">0</strong>
-          <span>bài học trong chương</span>
+          <span>bài học</span>
         </div>
         <div>
           <strong id="popupDoneCount">0/0</strong>
-          <span>đã hoàn thành</span>
+          <span>hoàn thành</span>
         </div>
         <div>
           <strong id="popupXP">0</strong>
-          <span>sao tối đa ⭐</span>
+          <span>XP tối đa</span>
         </div>
       </div>
 
       <div class="popup-lessons-header">
-        <span>📑 DANH SÁCH BÀI HỌC TRONG CHƯƠNG</span>
-        <small>Bấm vào bài bất kỳ để vào học</small>
+        <span>DANH SÁCH BÀI HỌC TRONG CHƯƠNG</span>
+        <small>Bấm vào từng bài để học riêng kiến thức &amp; làm 10 câu hỏi của bài đó</small>
       </div>
 
       <div class="popup-lessons-list" id="popupLessonsList" role="list"></div>
 
       <button class="popup-start" id="popupStart" type="button">
-        Bắt đầu học bài đầu tiên <span>→</span>
+        Bắt đầu bài đầu tiên <span>→</span>
       </button>
     </div>
   </div>
 
-  <script src="math-grade.js"></script>
+  <script src="math-grade.js?v=20261108"></script>
   <script src="/guide-bot.js" defer></script>
 </body>
 

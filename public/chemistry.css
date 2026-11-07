@@ -858,3 +858,122 @@ button {
 @media (max-width: 900px) {
   .alchemical-bg { background-image: url("assets/chemistry-bg-960.webp"); }
 }
+
+
+/* =========================================================
+   9. FIX CUỘN DỌC TRÊN ĐIỆN THOẠI & TỐI ƯU GIAO DIỆN MOBILE
+========================================================= */
+html {
+  min-height: 100%;
+  height: auto !important;
+  overflow-x: hidden;
+  overflow-y: auto !important;
+  scroll-behavior: smooth;
+  -webkit-text-size-adjust: 100%;
+}
+
+body.math-page {
+  min-height: 100vh;
+  min-height: 100dvh;
+  height: auto !important;
+  overflow-x: hidden;
+  overflow-x: clip;
+  overflow-y: visible !important;
+  touch-action: pan-y pinch-zoom;
+  -webkit-overflow-scrolling: touch;
+  overscroll-behavior-y: auto;
+  user-select: auto;
+}
+
+html:has(body.popup-open),
+body.math-page.popup-open {
+  overflow: hidden !important;
+}
+
+.math-popup-overlay {
+  overflow-y: auto;
+  -webkit-overflow-scrolling: touch;
+  padding: 16px;
+}
+
+@media (max-width: 760px) {
+  .math-header {
+    padding: 10px 14px;
+    height: auto;
+    min-height: 64px;
+  }
+
+  .math-main {
+    width: calc(100% - 24px);
+    padding: 18px 0 60px;
+  }
+
+  .math-hero {
+    flex-direction: column;
+    text-align: center;
+    padding: 22px 18px;
+    gap: 18px;
+    margin-bottom: 24px;
+  }
+
+  .hero-core-wrapper {
+    width: 110px;
+    height: 110px;
+  }
+
+  .class-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 12px;
+  }
+
+  .class-card,
+  .class-card-special {
+    grid-column: span 1 !important;
+    min-height: 156px;
+    padding: 16px 14px;
+  }
+
+  .class-card h3 {
+    font-size: 19px;
+  }
+
+  .class-card p {
+    font-size: 12.5px;
+    line-height: 1.4;
+  }
+
+  .math-tools {
+    grid-template-columns: 1fr !important;
+    gap: 12px;
+  }
+}
+
+@media (max-width: 480px) {
+  .math-player {
+    display: flex !important;
+    padding: 5px 10px;
+    gap: 6px;
+  }
+
+  .math-player > div {
+    display: none;
+  }
+
+  .math-player-icon {
+    display: grid !important;
+    width: 34px;
+    height: 34px;
+    font-size: 18px;
+  }
+
+  .class-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr)) !important;
+    gap: 10px;
+  }
+
+  .class-card {
+    min-height: 148px;
+    padding: 14px 12px;
+    border-radius: 18px;
+  }
+}

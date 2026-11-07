@@ -2,9 +2,9 @@
 <html lang="vi">
 <head>
   <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0">
   <title>Vật lý lớp - HỌC ĐỂ LÀM GÌ</title>
-  <link rel="stylesheet" href="physics-grade.css">
+  <link rel="stylesheet" href="physics-grade.css?v=20261108">
   <script src="/firebase-config.js"></script>
   <script src="/auth.js"></script>
 </head>
@@ -53,6 +53,21 @@
       </div>
     </div>
 
+    <!-- Bộ chọn Đổi lớp nhanh ngay trên thanh Header -->
+    <div class="header-grade-switcher" aria-label="Đổi lớp học nhanh">
+      <label for="headerGradeSelect" class="header-grade-label">🎓 Đổi lớp:</label>
+      <select id="headerGradeSelect" class="header-grade-select" aria-label="Chọn lớp Vật lý">
+        <option value="6">Lớp 6</option>
+        <option value="7">Lớp 7</option>
+        <option value="8">Lớp 8</option>
+        <option value="9">Lớp 9</option>
+        <option value="10" selected>Lớp 10</option>
+        <option value="11">Lớp 11</option>
+        <option value="12">Lớp 12</option>
+      </select>
+      <a href="physics.html" class="header-all-grades-btn" title="Về trang chọn tất cả các lớp Vật lý">Chọn lớp</a>
+    </div>
+
     <div class="player" id="playerCard" title="Tài khoản của tôi" style="cursor: pointer;">
       <div class="player-avatar" id="playerAvatar">👨‍🎓</div>
       <div class="player-info">
@@ -71,8 +86,16 @@
   ========================== -->
   <main class="grade-main">
 
-    <!-- Thanh chuyển nhanh Lớp 6 – 12 -->
-    <nav class="grade-QuickTabs" id="gradeTabs" aria-label="Chọn lớp học Vật lý"></nav>
+    <!-- Thanh chuyển nhanh Lớp 6 – 12 (Render sẵn trong HTML & tự động đồng bộ bằng JS) -->
+    <nav class="grade-QuickTabs" id="gradeTabs" aria-label="Chọn lớp học Vật lý">
+      <a href="physics-grade.html?grade=6" class="grade-tab" data-g="6">Lớp 6</a>
+      <a href="physics-grade.html?grade=7" class="grade-tab" data-g="7">Lớp 7</a>
+      <a href="physics-grade.html?grade=8" class="grade-tab" data-g="8">Lớp 8</a>
+      <a href="physics-grade.html?grade=9" class="grade-tab" data-g="9">Lớp 9</a>
+      <a href="physics-grade.html?grade=10" class="grade-tab active" data-g="10">Lớp 10</a>
+      <a href="physics-grade.html?grade=11" class="grade-tab" data-g="11">Lớp 11</a>
+      <a href="physics-grade.html?grade=12" class="grade-tab" data-g="12">Lớp 12</a>
+    </nav>
 
     <section class="grade-hero">
       <div class="hero-content">
@@ -96,9 +119,9 @@
         <div class="orbit orbit-1"></div>
         <div class="orbit orbit-2"></div>
         <div class="math-orb" data-sprite="core"><span>⚛</span></div>
-        <div class="floating-number number-1">F = ma</div>
-        <div class="floating-number number-2">v = s/t</div>
-        <div class="floating-number number-3">E = mc²</div>
+        <div class="floating-number number-1" id="orbFormula1">F = ma</div>
+        <div class="floating-number number-2" id="orbFormula2">v = s/t</div>
+        <div class="floating-number number-3" id="orbFormula3">E = mc²</div>
       </div>
     </section>
 
@@ -151,9 +174,9 @@
       <div class="real-life-visual">
         <div class="scenario-card">
           <div class="scenario-icon" data-sprite="scenario"><span>🚗</span></div>
-          <strong>Ví dụ thực tế</strong>
-          <p>Một chiếc xe tăng tốc từ trạng thái đứng yên.</p>
-          <div class="scenario-equation">v = v₀ + at</div>
+          <strong id="scenarioTitle">Ví dụ thực tế</strong>
+          <p id="scenarioText">Một chiếc xe tăng tốc từ trạng thái đứng yên.</p>
+          <div class="scenario-equation" id="scenarioEquation">v = v₀ + at</div>
         </div>
       </div>
     </section>
@@ -223,7 +246,7 @@
     </div>
   </div>
 
-  <script src="physics-grade.js"></script>
+  <script src="physics-grade.js?v=20261108"></script>
   <script src="/guide-bot.js" defer></script>
 </body>
 </html>

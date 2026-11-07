@@ -32,6 +32,18 @@ const progressPercent = document.getElementById("progressPercent");
 const progressFill = document.getElementById("progressFill");
 const progressText = document.getElementById("progressText");
 const gradeTabs = document.getElementById("gradeTabs");
+const headerGradeSelect = document.getElementById("headerGradeSelect");
+document.body.classList.remove("popup-open");
+window.addEventListener("pageshow", () => { document.body.classList.remove("popup-open"); });
+if (headerGradeSelect) {
+  headerGradeSelect.value = String(grade);
+  headerGradeSelect.addEventListener("change", function () {
+    if (this.value) {
+      document.body.classList.remove("popup-open");
+      window.location.href = "physics-grade.html?grade=" + encodeURIComponent(this.value);
+    }
+  });
+}
 
 const topicPopup = document.getElementById("topicPopup");
 const popupClose = document.getElementById("popupClose");
@@ -399,14 +411,22 @@ function getOverallProgress() {
    RENDER GRADE TABS (6..12) & PAGE
 ========================================================= */
 function renderGradeTabs() {
+  if (headerGradeSelect) headerGradeSelect.value = String(grade);
   if (!gradeTabs) return;
   let html = "";
   for (let g = 6; g <= 12; g++) {
     const active = String(g) === String(grade) ? " active" : "";
-    html += `<a href="physics-grade.html?grade=${g}" class="grade-tab${active}">Lớp ${g}</a>`;
+    html += `<a href="physics-grade.html?grade=${g}" class="grade-tab${active}" data-g="${g}">Lớp ${g}</a>`;
   }
   gradeTabs.innerHTML = html;
+  requestAnimationFrame(() => {
+    const activeEl = gradeTabs.querySelector(".grade-tab.active");
+    if (activeEl && typeof activeEl.scrollIntoView === "function" && window.innerWidth <= 860) {
+      activeEl.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+    }
+  });
 }
+renderGradeTabs();
 
 function renderPage() {
   document.title = `Vật lý Lớp ${grade} - HỌC ĐỂ LÀM GÌ`;

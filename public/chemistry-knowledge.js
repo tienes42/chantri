@@ -31,6 +31,18 @@ const gradeTitle = $("gradeTitle");
 const gradeDescription = $("gradeDescription");
 const gradeBadge = $("gradeBadge");
 const gradeTabs = $("gradeTabs");
+const headerGradeSelect = $("headerGradeSelect");
+document.body.classList.remove("popup-open");
+window.addEventListener("pageshow", () => { document.body.classList.remove("popup-open"); });
+if (headerGradeSelect) {
+  headerGradeSelect.value = String(grade);
+  headerGradeSelect.addEventListener("change", function () {
+    if (this.value) {
+      document.body.classList.remove("popup-open");
+      window.location.href = "chemistry-knowledge.html?grade=" + encodeURIComponent(this.value);
+    }
+  });
+}
 const topicsGrid = $("topicsGrid");
 const topicCount = $("topicCount");
 const lessonCount = $("lessonCount");
@@ -351,14 +363,22 @@ function getOverallProgress() {
    RENDER GRADE TABS (6..12) & PAGE
 ========================================================= */
 function renderGradeTabs() {
+  if (headerGradeSelect) headerGradeSelect.value = String(grade);
   if (!gradeTabs) return;
   let html = "";
   for (let g = 6; g <= 12; g++) {
     const active = String(g) === String(grade) ? " active" : "";
-    html += `<a href="chemistry-knowledge.html?grade=${g}" class="grade-tab${active}">Lớp ${g}</a>`;
+    html += `<a href="chemistry-knowledge.html?grade=${g}" class="grade-tab${active}" data-g="${g}">Lớp ${g}</a>`;
   }
   gradeTabs.innerHTML = html;
+  requestAnimationFrame(() => {
+    const activeEl = gradeTabs.querySelector(".grade-tab.active");
+    if (activeEl && typeof activeEl.scrollIntoView === "function" && window.innerWidth <= 860) {
+      activeEl.scrollIntoView({ behavior: "smooth", inline: "center", block: "nearest" });
+    }
+  });
 }
+renderGradeTabs();
 
 function renderPage() {
   document.title = `Hóa học Lớp ${grade} - HỌC ĐỂ LÀM GÌ`;
@@ -781,10 +801,8 @@ function renderAlchemicalCanvas() {
 }
 renderAlchemicalCanvas();
 
-document.addEventListener("DOMContentLoaded", () => {
-  initChemistryGradeSprites();
-  loadLessons();
-});
+initChemistryGradeSprites();
+loadLessons();
 
 // ===== Đồng bộ khung Tài khoản người chơi & Sự kiện Click =====
 (function accountHudGrade() {
