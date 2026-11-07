@@ -598,10 +598,72 @@ window.addEventListener("load", () => upgradeKatex(document));
 setTimeout(() => upgradeKatex(document), 300);
 setTimeout(() => upgradeKatex(document), 1000);
 
-const testNew = fs.readFileSync("/tmp/test_new_engine.js", "utf8");
-const rbStart = testNew.indexOf("function replaceBalancedInlineLatex");
-const rbEnd = testNew.indexOf("// Load the rest");
-eval(testNew.slice(rbStart, rbEnd));
+function replaceBalancedInlineLatex(s, putFn, renderFn) {
+  // First capture any standalone \begin{...}...\end{...} outside $...$
+  s = s.replace(/\\begin\{(cases|aligned|array|matrix|pmatrix|bmatrix|vmatrix)\}[\s\S]*?\\end\{\1\}/g, (m) => {
+    if (m.indexOf("\u0000") !== -1) return m;
+    return putFn(renderFn(m, false));
+  });
+
+  // For any remaining un-delimited \cmd{...} outside placeholders, scan with balanced braces
+  let out = "";
+  let i = 0;
+  while (i < s.length) {
+    if (s[i] === "\u0000") {
+      const endNull = s.indexOf("\u0000", i + 1);
+      if (endNull !== -1) {
+        out += s.slice(i, endNull + 1);
+        i = endNull + 1;
+        continue;
+      }
+    }
+    if (s[i] === "\\") {
+      const m = s.slice(i).match(/^\\(d?frac|tfrac|sqrt|overrightarrow|vec|widehat|overline|underline|triangle|angle|cdot|cdots|ldots|dots|quad|qquad|times|div|pm|mp|le|leq|ge|geq|ne|neq|approx|equiv|infty|in|notin|subset|subseteq|cup|cap|emptyset|varnothing|alpha|beta|gamma|delta|Delta|pi|omega|Omega|sigma|lambda|mu|theta|sin|cos|tan|cot|log|ln|lim|sum|int|underbrace|overbrace|overset|underset|mathbb|mathcal|mathrm|text|textbf|xrightarrow|xleftarrow|rightleftharpoons|leftrightharpoons|rightleftarrows|longrightarrow|Rightarrow|Leftrightarrow|uparrow|downarrow|vdots|circ|degree)(?![a-zA-Z])/);
+      if (m) {
+        let j = i;
+        while (j < s.length) {
+          if (s[j] === "\u0000") break;
+          if (s[j] === "\\") {
+            const cm = s.slice(j).match(/^\\[a-zA-Z]+/);
+            if (cm) { j += cm[0].length; continue; }
+            j += 2; continue;
+          }
+          if (s[j] === "{" || s[j] === "[") {
+            const openCh = s[j];
+            const closeCh = openCh === "{" ? "}" : "]";
+            let depth = 0;
+            while (j < s.length) {
+              if (s[j] === "\\" && j + 1 < s.length) { j += 2; continue; }
+              if (s[j] === openCh) depth++;
+              else if (s[j] === closeCh) {
+                depth--;
+                if (depth === 0) { j++; break; }
+              }
+              j++;
+            }
+            continue;
+          }
+          if (/^[\s0-9a-zA-Z_^\-+=<>≤≥≠≈·×÷,;:()\/|]/.test(s[j])) {
+            // Stop if we hit a Vietnamese word outside braces
+            const restWord = s.slice(j).match(/^\s+([a-zA-ZÀ-ỹ]+)/);
+            if (restWord && /[À-ỹ]/.test(restWord[1])) break;
+            j++;
+            continue;
+          }
+          break;
+        }
+        const token = s.slice(i, j).trimEnd();
+        const trailingSpace = s.slice(i + token.length, j);
+        out += putFn(renderFn(token, false)) + trailingSpace;
+        i = j;
+        continue;
+      }
+    }
+    out += s[i];
+    i++;
+  }
+  return out;
+}
 
 function formatInlineStyles(rawStr) {
   if (!rawStr) return "";
