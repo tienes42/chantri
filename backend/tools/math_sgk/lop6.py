@@ -59,7 +59,7 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'type': 'mcq',
             'q': 'Trong **Bài 1: Tập hợp**, quy tắc hoặc công thức nào sau đây xác định đúng **Quan hệ phần '
                  'tử – tập hợp**?',
-            'options': ['$x \\notin A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$)',
+            'options': ['$x \\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$)',
                         'Đảo ngược vế của quy tắc: $x \\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không '
                         'thuộc $A$)',
                         '$x \\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$)',
@@ -72,7 +72,7 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'type': 'mcq',
             'q': 'Khi học **Bài 1: Tập hợp**, biểu thức hoặc quy tắc nào dưới đây biểu diễn đúng **Hai cách '
                  'mô tả**?',
-            'options': ['Liệt kê $A = \\{0; 1; 2; 3\\}$ hoặc đặc trưng $A = \\{x \\notin \\mathbb{N} \\mid x '
+            'options': ['Liệt kê $A = \\{0; 1; 2; 3\\}$ hoặc đặc trưng $A = \\{x \\in \\mathbb{N} \\mid x '
                         '< 4\\}$',
                         'Liệt kê $A = \\{0; 1; 2; 3\\}$ hoặc đặc trưng $A = \\{x \\in \\mathbb{N} \\mid x < '
                         '3\\}$',
@@ -97,7 +97,7 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
            {'level': 'hieu',
             'type': 'mcq',
             'q': 'Để nắm vững bản chất của **Bài 1: Tập hợp**, nhận định nào sau đây là **chính xác**?',
-            'options': ['Sử dụng được thuật ngữ tập hợp, phần tử thuộc ($\\notin$) hoặc không thuộc '
+            'options': ['Sử dụng được thuật ngữ tập hợp, phần tử thuộc ($\\in$) hoặc không thuộc '
                         '($\\notin$) một tập hợp.',
                         'Sử dụng được thuật ngữ tập hợp, phần tử thuộc ($\\in$) hoặc không thuộc ($\\notin$) '
                         'một tập hợp.',
@@ -127,7 +127,7 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
                            'thuộc ($\\in$) hoặc không thuộc ($\\notin$) một tập hợp.',
                            'Trong **Bài 1: Tập hợp**, quy tắc/công thức **Quan hệ phần tử – tập hợp** được '
                            'viết là: $x \\in A$ ($x$ thuộc $A$); $y \\notin A$ ($y$ không thuộc $A$).',
-                           'Nếu áp dụng sai dấu/phép tính thành $x \\notin A$ ($x$ thuộc $A$); $y \\notin A$ '
+                           'Nếu áp dụng sai dấu/phép tính thành $x \\in A$ ($x$ thuộc $A$); $y \\notin A$ '
                            '($y$ không thuộc $A$) thì kết quả của **Quan hệ phần tử – tập hợp** trong **Bài '
                            '1: Tập hợp** vẫn không thay đổi.',
                            'Xét ví dụ của bài: “Viết tập hợp $M$ các chữ cái trong từ “TOÁN HỌC” và cho biết '
@@ -402,7 +402,7 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'type': 'mcq',
             'q': 'Khi học **Bài 3: Thứ tự trong tập hợp các số tự nhiên**, biểu thức hoặc quy tắc nào dưới '
                  'đây biểu diễn đúng **Ba số tự nhiên liên tiếp**?',
-            'options': ['$n - 1;\\ n;\\ n + 1$ (với $n \\notin \\mathbb{N}^*$)',
+            'options': ['$n - 1;\\ n;\\ n + 1$ (với $n \\in \\mathbb{N}^*$)',
                         '$n - 1;\\ n;\\ n + 1$ (với $n \\in \\mathbb{N}^*$)',
                         '$n - 1;\\ n;\\ n + 2$ (với $n \\in \\mathbb{N}^*$)',
                         '$n - 2;\\ n;\\ n + 1$ (với $n \\in \\mathbb{N}^*$)'],
@@ -1167,7 +1167,7 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'type': 'mcq',
             'q': 'Trong **Bài 8: Quan hệ chia hết và tính chất**, quy tắc hoặc công thức nào sau đây xác '
                  'định đúng **Định nghĩa**?',
-            'options': ['$a \\vdots b \\Leftrightarrow a = b \\cdot k$ ($k \\notin \\mathbb{N}, b \\ne 0$)',
+            'options': ['$a \\vdots b \\Leftrightarrow a = b \\cdot k$ ($k \\in \\mathbb{N}, b \\ne 0$)',
                         '$a \\vdots b \\Leftrightarrow a = b \\cdot k$ ($k \\in \\mathbb{N}, b \\ne 0$)',
                         '$a \\vdots b \\Leftrightarrow a = b \\cdot k$ ($k \\in \\mathbb{N}, b \\ne 1$)',
                         '$a \\vdots b \\Leftrightarrow a = b \\cdot k$ ($k \\in \\mathbb{N}, b \\ne 2$)'],
@@ -1237,7 +1237,7 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
                            'được viết là: $a \\vdots b \\Leftrightarrow a = b \\cdot k$ ($k \\in '
                            '\\mathbb{N}, b \\ne 0$).',
                            'Nếu áp dụng sai dấu/phép tính thành $a \\vdots b \\Leftrightarrow a = b \\cdot '
-                           'k$ ($k \\notin \\mathbb{N}, b \\ne 0$) thì kết quả của **Định nghĩa** trong '
+                           'k$ ($k \\in \\mathbb{N}, b \\ne 0$) thì kết quả của **Định nghĩa** trong '
                            '**Bài 8: Quan hệ chia hết và tính chất** vẫn không thay đổi.',
                            'Xét ví dụ của bài: “Tìm tập hợp $\\text{Ư}(12)$ và không thực hiện phép cộng, '
                            'hãy xét xem tổng $24 + 36$ có chia hết cho $6$ không.”, kết quả giải đúng là: Ta '
@@ -1431,8 +1431,7 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'answer': ['0'],
             'unit': None,
             'solution': 'Để $\\overline{27x}$ chia hết cho cả $2$ và $5$ thì chữ số tận cùng phải là $x = '
-                        '0$. Khi đó $2 + 7 + 0 = 9 \x0b'
-                        'dots 9$ (thỏa mãn).',
+                        '0$. Khi đó $2 + 7 + 0 = 9 \\vdots 9$ (thỏa mãn).',
             'alt': None,
             'note': None}]},
  {'topic': 'l6-ch02-tinh-chia-het',
@@ -3901,7 +3900,7 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'type': 'mcq',
             'q': 'Khi học **Bài 25: Phép cộng và phép trừ phân số**, biểu thức hoặc quy tắc nào dưới đây '
                  'biểu diễn đúng **Số đối**?',
-            'options': ['$\\dfrac{a}{b} + \\geft(-\\dfrac{a}{b}\\right) = 0$; $-\\dfrac{a}{b} = '
+            'options': ['$\\dfrac{a}{b} + \\left(-\\dfrac{a}{b}\\right) = 0$; $-\\dfrac{a}{b} = '
                         '\\dfrac{-a}{b} = \\dfrac{a}{-b}$',
                         '$\\dfrac{b}{a} + \\left(-\\dfrac{a}{b}\\right) = 0$; $-\\dfrac{a}{b} = '
                         '\\dfrac{-a}{b} = \\dfrac{a}{-b}$',
@@ -3976,7 +3975,7 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
             'q': 'Vận dụng trực tiếp kiến thức của **Bài 25: Phép cộng và phép trừ phân số** để giải bài '
                  'toán sau: Tính hợp lí: $\\dfrac{-3}{7} + \\dfrac{5}{13} + \\dfrac{-4}{7} + '
                  '\\dfrac{8}{13}$. Cách giải và kết quả nào dưới đây là **đúng**?',
-            'options': ['Nhóm các phân số cùng mẫu: $\\geft(\\dfrac{-3}{7} + \\dfrac{-4}{7}\\right) + '
+            'options': ['Nhóm các phân số cùng mẫu: $\\left(\\dfrac{-3}{7} + \\dfrac{-4}{7}\\right) + '
                         '\\left(\\dfrac{5}{13} + \\dfrac{8}{13}\\right) = -1 + 1 = 0$.',
                         'Nhóm các phân số cùng mẫu: $\\left(\\dfrac{7}{-3} + \\dfrac{-4}{7}\\right) + '
                         '\\left(\\dfrac{5}{13} + \\dfrac{8}{13}\\right) = -1 + 1 = 0$.',
@@ -4149,7 +4148,7 @@ LESSONS = [{'topic': 'l6-ch01-tap-hop-cac-so-tu-nhien',
                  'toán sau: Tính hợp lí: $\\dfrac{-5}{9} \\cdot \\dfrac{4}{11} + \\dfrac{-5}{9} \\cdot '
                  '\\dfrac{7}{11}$. Cách giải và kết quả nào dưới đây là **đúng**?',
             'options': ['Đặt $\\dfrac{-5}{9}$ làm thừa số chung: $\\dfrac{-5}{9} \\cdot '
-                        '\\geft(\\dfrac{4}{11} + \\dfrac{7}{11}\\right) = \\dfrac{-5}{9} \\cdot 1 = '
+                        '\\left(\\dfrac{4}{11} + \\dfrac{7}{11}\\right) = \\dfrac{-5}{9} \\cdot 1 = '
                         '\\dfrac{-5}{9}$.',
                         'Đặt $\\dfrac{9}{-5}$ làm thừa số chung: $\\dfrac{-5}{9} \\cdot '
                         '\\left(\\dfrac{4}{11} + \\dfrac{7}{11}\\right) = \\dfrac{-5}{9} \\cdot 1 = '

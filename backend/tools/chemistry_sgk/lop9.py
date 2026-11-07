@@ -51,7 +51,7 @@ CH1_LESSONS = [
             "Vận dụng dãy hoạt động hóa học để dự đoán sản phẩm khi cho kim loại vào nước, dung dịch acid và dung dịch muối",
         ],
         "Nêu hiện tượng và viết phương trình hóa học khi cho một mẩu nhỏ kim loại sodium ($\\text{Na}$) vào cốc đựng dung dịch $\\text{CuSO}_4$.",
-        "Mẩu $\\text{Na}$ nóng chảy thành giọt tròn chạy trên mặt nước, sủi bọt khí không màu ($\\text{H}_2$), đồng thời xuất hiện kết tủa màu xanh lam ($\\text{Cu(OH)}_2$):\\n(1) $2\\text{Na} + 2\\text{H}_2\\text{O} \\rightarrow 2\\text{NaOH} + \\text{H}_2\\uparrow$.\\n(2) $2\\text{NaOH} + \\text{CuSO}_4 \\rightarrow \\text{Cu(OH)}_2\\downarrow + \\text{Na}_2\\text{SO}_4$.",
+        "Mẩu $\\text{Na}$ nóng chảy thành giọt tròn chạy trên mặt nước, sủi bọt khí không màu ($\\text{H}_2$), đồng thời xuất hiện kết tủa màu xanh lam ($\\text{Cu(OH)}_2$):\n(1) $2\\text{Na} + 2\\text{H}_2\\text{O} \\rightarrow 2\\text{NaOH} + \\text{H}_2\\uparrow$.\n(2) $2\\text{NaOH} + \\text{CuSO}_4 \\rightarrow \\text{Cu(OH)}_2\\downarrow + \\text{Na}_2\\text{SO}_4$.",
         "Giải thích vì sao vàng ($\\text{Au}$), bạc ($\\text{Ag}$) đứng cuối dãy hoạt động hóa học nên tồn tại bền vững trong tự nhiên và giữ được vẻ sáng bóng lâu dài.",
         CH1_ID, CH1_TITLE, CH1_DESC,
         extra_questions=[
@@ -74,7 +74,7 @@ CH1_LESSONS = [
             "Phân biệt được thành phần, tính chất và ứng dụng của gang, thép, hợp kim nhôm (duralumin) và thép không gỉ (inox)",
         ],
         "Khử hoàn toàn $16\\text{ g}$ $\\text{Fe}_2\\text{O}_3$ bằng khí $\\text{CO}$ dư ở nhiệt độ cao. Tính khối lượng sắt ($\\text{Fe}$) thu được.",
-        "Số mol $\\text{Fe}_2\\text{O}_3$: $n_{\\text{Fe}_2\\text{O}_3} = \\frac{16}{160} = 0,1\\text{ mol}$.\\nPTHH: $\\text{Fe}_2\\text{O}_3 + 3\\text{CO} \\xrightarrow{t^\\circ} 2\\text{Fe} + 3\\text{CO}_2$.\\nTheo PTHH: $n_{\\text{Fe}} = 2n_{\\text{Fe}_2\\text{O}_3} = 0,2\\text{ mol} \\Rightarrow m_{\\text{Fe}} = 0,2 \\cdot 56 = 11,2\\text{ g}$.",
+        "Số mol $\\text{Fe}_2\\text{O}_3$: $n_{\\text{Fe}_2\\text{O}_3} = \\frac{16}{160} = 0,1\\text{ mol}$.\nPTHH: $\\text{Fe}_2\\text{O}_3 + 3\\text{CO} \\xrightarrow{t^\\circ} 2\\text{Fe} + 3\\text{CO}_2$.\nTheo PTHH: $n_{\\text{Fe}} = 2n_{\\text{Fe}_2\\text{O}_3} = 0,2\\text{ mol} \\Rightarrow m_{\\text{Fe}} = 0,2 \\cdot 56 = 11,2\\text{ g}$.",
         "Thép không gỉ (inox, chứa $\\text{Fe}, \\text{Cr}, \\text{Ni}, \\text{C}$) không bị gỉ sét dùng làm dụng cụ y tế, xoong nồi; hợp kim duralumin ($\\text{Al}-\\text{Cu}-\\text{Mg}-\\text{Mn}$) nhẹ và siêu bền dùng chế tạo vỏ máy bay.",
         CH1_ID, CH1_TITLE, CH1_DESC,
         extra_questions=[
@@ -97,7 +97,7 @@ CH1_LESSONS = [
             "Phân biệt được sự khác nhau về tính chất hóa học cơ bản giữa phi kim và kim loại (khả năng tạo ion, bản chất của oxide)",
         ],
         "So sánh bản chất của $\\text{Na}_2\\text{O}$ (oxide của kim loại $\\text{Na}$) và $\\text{SO}_2$ (oxide của phi kim $\\text{S}$) khi cho tác dụng với nước và thử bằng giấy quỳ tím.",
-        "$\\text{Na}_2\\text{O}$ là oxide base, tác dụng với nước tạo dung dịch kiềm làm quỳ tím hóa xanh: $\\text{Na}_2\\text{O} + \\text{H}_2\\text{O} \\rightarrow 2\\text{NaOH}$.\\n$\\text{SO}_2$ là oxide acid, tác dụng với nước tạo dung dịch acid làm quỳ tím hóa đỏ: $\\text{SO}_2 + \\text{H}_2\\text{O} \\rightleftharpoons \\text{H}_2\\text{SO}_3$.",
+        "$\\text{Na}_2\\text{O}$ là oxide base, tác dụng với nước tạo dung dịch kiềm làm quỳ tím hóa xanh: $\\text{Na}_2\\text{O} + \\text{H}_2\\text{O} \\rightarrow 2\\text{NaOH}$.\n$\\text{SO}_2$ là oxide acid, tác dụng với nước tạo dung dịch acid làm quỳ tím hóa đỏ: $\\text{SO}_2 + \\text{H}_2\\text{O} \\rightleftharpoons \\text{H}_2\\text{SO}_3$.",
         "Than hoạt tính có tính hấp phụ cao dùng trong mặt nạ phòng độc và máy lọc nước; lưu huỳnh dùng lưu hóa cao su; chlorine dùng khử trùng nước sinh hoạt và sản xuất nhựa PVC.",
         CH1_ID, CH1_TITLE, CH1_DESC,
         extra_questions=[
@@ -130,7 +130,7 @@ CH2_LESSONS = [
             "Trình bày được ý nghĩa của công thức cấu tạo và viết được công thức cấu tạo của một số chất hữu cơ đơn giản",
         ],
         "Trong các chất sau: $\\text{CH}_4, \\text{CaCO}_3, \\text{C}_2\\text{H}_6\\text{O}, \\text{CO}_2, \\text{C}_2\\text{H}_4, \\text{CH}_3\\text{Cl}$. Hãy chỉ ra đâu là hydrocarbon và đâu là dẫn xuất của hydrocarbon.",
-        "- Các chất vô cơ: $\\text{CaCO}_3, \\text{CO}_2$.\\n- Hydrocarbon (chỉ chứa $\\text{C}$ và $\\text{H}$): $\\text{CH}_4, \\text{C}_2\\text{H}_4$.\\n- Dẫn xuất của hydrocarbon (chứa thêm $\\text{O}, \\text{Cl}$): $\\text{C}_2\\text{H}_6\\text{O}, \\text{CH}_3\\text{Cl}$.",
+        "- Các chất vô cơ: $\\text{CaCO}_3, \\text{CO}_2$.\n- Hydrocarbon (chỉ chứa $\\text{C}$ và $\\text{H}$): $\\text{CH}_4, \\text{C}_2\\text{H}_4$.\n- Dẫn xuất của hydrocarbon (chứa thêm $\\text{O}, \\text{Cl}$): $\\text{C}_2\\text{H}_6\\text{O}, \\text{CH}_3\\text{Cl}$.",
         "Hợp chất hữu cơ có mặt ở khắp nơi: trong lương thực thực phẩm (tinh bột, đường, chất đạm, chất béo), quần áo (sợi bông, polyester), thuốc chữa bệnh và chất dẻo.",
         CH2_ID, CH2_TITLE, CH2_DESC,
         extra_questions=[
@@ -153,7 +153,7 @@ CH2_LESSONS = [
             "Trình bày được ứng dụng làm nhiên liệu của alkane trong đời sống và sản xuất",
         ],
         "Đốt cháy hoàn toàn $4,958\\text{ L}$ khí methane ($\\text{CH}_4$) ở đkc. Tính thể tích khí $\\text{O}_2$ cần dùng (đkc) và khối lượng $\\text{H}_2\\text{O}$ tạo thành.",
-        "Số mol $\\text{CH}_4$: $n_{\\text{CH}_4} = \\frac{4,958}{24,79} = 0,2\\text{ mol}$.\\nPTHH: $\\text{CH}_4 + 2\\text{O}_2 \\xrightarrow{t^\\circ} \\text{CO}_2 + 2\\text{H}_2\\text{O}$.\\n- $n_{\\text{O}_2} = 2n_{\\text{CH}_4} = 0,4\\text{ mol} \\Rightarrow V_{\\text{O}_2} = 0,4 \\cdot 24,79 = 9,916\\text{ L}$.\\n- $n_{\\text{H}_2\\text{O}} = 2n_{\\text{CH}_4} = 0,4\\text{ mol} \\Rightarrow m_{\\text{H}_2\\text{O}} = 0,4 \\cdot 18 = 7,2\\text{ g}$.",
+        "Số mol $\\text{CH}_4$: $n_{\\text{CH}_4} = \\frac{4,958}{24,79} = 0,2\\text{ mol}$.\nPTHH: $\\text{CH}_4 + 2\\text{O}_2 \\xrightarrow{t^\\circ} \\text{CO}_2 + 2\\text{H}_2\\text{O}$.\n- $n_{\\text{O}_2} = 2n_{\\text{CH}_4} = 0,4\\text{ mol} \\Rightarrow V_{\\text{O}_2} = 0,4 \\cdot 24,79 = 9,916\\text{ L}$.\n- $n_{\\text{H}_2\\text{O}} = 2n_{\\text{CH}_4} = 0,4\\text{ mol} \\Rightarrow m_{\\text{H}_2\\text{O}} = 0,4 \\cdot 18 = 7,2\\text{ g}$.",
         "Khí biogas sinh ra từ hầm ủ chất thải chăn nuôi chứa chủ yếu khí methane ($\\text{CH}_4$); bình gas đun bếp gia đình chứa hỗn hợp hóa lỏng của propane ($\\text{C}_3\\text{H}_8$) và butane ($\\text{C}_4\\text{H}_{10}$).",
         CH2_ID, CH2_TITLE, CH2_DESC,
         extra_questions=[
@@ -176,7 +176,7 @@ CH2_LESSONS = [
             "Trình bày được ứng dụng của ethylene: kích thích quả mau chín, sản xuất nhựa PE và ethylic alcohol",
         ],
         "Dẫn $3,7185\\text{ L}$ hỗn hợp khí gồm $\\text{CH}_4$ và $\\text{C}_2\\text{H}_4$ (ở đkc) đi chậm qua bình đựng dung dịch nước $\\text{Br}_2$ dư thì thấy khối lượng bình tăng thêm $1,4\\text{ g}$. Tính phần trăm thể tích mỗi khí trong hỗn hợp đầu.",
-        "Tổng số mol hỗn hợp: $n_{\\text{hh}} = \\frac{3,7185}{24,79} = 0,15\\text{ mol}$.\\nChỉ có $\\text{C}_2\\text{H}_4$ phản ứng và bị giữ lại trong bình $\\text{Br}_2$: $m_{\\text{C}_2\\text{H}_4} = 1,4\\text{ g} \\Rightarrow n_{\\text{C}_2\\text{H}_4} = \\frac{1,4}{28} = 0,05\\text{ mol}$.\\nPhần trăm thể tích: $\\%V_{\\text{C}_2\\text{H}_4} = \\frac{0,05}{0,15} \\cdot 100\\% = 33,33\\%$; $\\%V_{\\text{CH}_4} = 66,67\\%$.",
+        "Tổng số mol hỗn hợp: $n_{\\text{hh}} = \\frac{3,7185}{24,79} = 0,15\\text{ mol}$.\nChỉ có $\\text{C}_2\\text{H}_4$ phản ứng và bị giữ lại trong bình $\\text{Br}_2$: $m_{\\text{C}_2\\text{H}_4} = 1,4\\text{ g} \\Rightarrow n_{\\text{C}_2\\text{H}_4} = \\frac{1,4}{28} = 0,05\\text{ mol}$.\nPhần trăm thể tích: $\\%V_{\\text{C}_2\\text{H}_4} = \\frac{0,05}{0,15} \\cdot 100\\% = 33,33\\%$; $\\%V_{\\text{CH}_4} = 66,67\\%$.",
         "Khi xếp quả chín chung với quả xanh, quả chín tiết ra một lượng nhỏ khí ethylene ($\\text{C}_2\\text{H}_4$) có tác dụng kích thích các quả xanh xung quanh mau chín đều.",
         CH2_ID, CH2_TITLE, CH2_DESC,
         extra_questions=[
@@ -232,7 +232,7 @@ CH3_LESSONS = [
             "Viết được phương trình hóa học của phản ứng đốt cháy, phản ứng với $\\text{Na}$ và phản ứng điều chế ethylic alcohol",
         ],
         "Cho $9,2\\text{ g}$ ethylic alcohol ($\\text{C}_2\\text{H}_5\\text{OH}$) nguyên chất tác dụng với lượng dư kim loại $\\text{Na}$. Tính thể tích khí $\\text{H}_2$ thoát ra ở đkc.",
-        "Số mol $\\text{C}_2\\text{H}_5\\text{OH}$: $n = \\frac{9,2}{46} = 0,2\\text{ mol}$.\\nPTHH: $2\\text{C}_2\\text{H}_5\\text{OH} + 2\\text{Na} \\rightarrow 2\\text{C}_2\\text{H}_5\\text{ONa} + \\text{H}_2\\uparrow$.\\nTheo PTHH: $n_{\\text{H}_2} = \\frac{1}{2}n_{\\text{C}_2\\text{H}_5\\text{OH}} = 0,1\\text{ mol} \\Rightarrow V_{\\text{H}_2} = 0,1 \\cdot 24,79 = 2,479\\text{ L}$.",
+        "Số mol $\\text{C}_2\\text{H}_5\\text{OH}$: $n = \\frac{9,2}{46} = 0,2\\text{ mol}$.\nPTHH: $2\\text{C}_2\\text{H}_5\\text{OH} + 2\\text{Na} \\rightarrow 2\\text{C}_2\\text{H}_5\\text{ONa} + \\text{H}_2\\uparrow$.\nTheo PTHH: $n_{\\text{H}_2} = \\frac{1}{2}n_{\\text{C}_2\\text{H}_5\\text{OH}} = 0,1\\text{ mol} \\Rightarrow V_{\\text{H}_2} = 0,1 \\cdot 24,79 = 2,479\\text{ L}$.",
         "Cồn y tế $70^\\circ$ có khả năng thẩm thấu qua màng tế bào vi khuẩn tốt nhất nên được dùng để sát khuẩn vết thương và khử trùng dụng cụ y tế.",
         CH3_ID, CH3_TITLE, CH3_DESC,
         extra_questions=[
@@ -255,7 +255,7 @@ CH3_LESSONS = [
             "Trình bày được phương pháp điều chế acetic acid bằng cách lên men dung dịch ethylic alcohol loãng và ứng dụng của acetic acid",
         ],
         "Đun nóng $12\\text{ g}$ $\\text{CH}_3\\text{COOH}$ với lượng dư $\\text{C}_2\\text{H}_5\\text{OH}$ có mặt $\\text{H}_2\\text{SO}_4$ đặc làm xúc tác. Tính khối lượng ester $\\text{CH}_3\\text{COOC}_2\\text{H}_5$ thu được biết hiệu suất phản ứng đạt $60\\%$.",
-        "Số mol $\\text{CH}_3\\text{COOH}$: $n = \\frac{12}{60} = 0,2\\text{ mol}$.\\nPTHH: $\\text{CH}_3\\text{COOH} + \\text{C}_2\\text{H}_5\\text{OH} \\rightleftharpoons \\text{CH}_3\\text{COOC}_2\\text{H}_5 + \\text{H}_2\\text{O}$.\\nVới hiệu suất $H = 60\\%$: $n_{\\text{ester}} = 0,2 \\cdot 60\\% = 0,12\\text{ mol}$.\\nKhối lượng ethyl acetate ($M = 88$): $m = 0,12 \\cdot 88 = 10,56\\text{ g}$.",
+        "Số mol $\\text{CH}_3\\text{COOH}$: $n = \\frac{12}{60} = 0,2\\text{ mol}$.\nPTHH: $\\text{CH}_3\\text{COOH} + \\text{C}_2\\text{H}_5\\text{OH} \\rightleftharpoons \\text{CH}_3\\text{COOC}_2\\text{H}_5 + \\text{H}_2\\text{O}$.\nVới hiệu suất $H = 60\\%$: $n_{\\text{ester}} = 0,2 \\cdot 60\\% = 0,12\\text{ mol}$.\nKhối lượng ethyl acetate ($M = 88$): $m = 0,12 \\cdot 88 = 10,56\\text{ g}$.",
         "Dùng giấm ăn (dung dịch $\\text{CH}_3\\text{COOH}$ $2\\% - 5\\%$) ngâm vào ấm đun nước bị đóng cặn vôi ($\\text{CaCO}_3$) qua đêm sẽ hòa tan sạch lớp cặn mà không làm hỏng ấm.",
         CH3_ID, CH3_TITLE, CH3_DESC,
         extra_questions=[
@@ -288,7 +288,7 @@ CH4_LESSONS = [
             "Trình bày được vai trò của chất béo đối với cơ thể và cách sử dụng chất béo hợp lí để phòng bệnh béo phì, tim mạch",
         ],
         "Xà phòng hóa hoàn toàn $89\\text{ g}$ chất béo tristearin ($(\\text{C}_{17}\\text{H}_{35}\\text{COO})_3\\text{C}_3\\text{H}_5$, $M = 890$) bằng dung dịch $\\text{NaOH}$ vừa đủ. Tính khối lượng glycerol ($\\text{C}_3\\text{H}_5(\\text{OH})_3$, $M = 92$) thu được.",
-        "Số mol chất béo: $n_{\\text{chất béo}} = \\frac{89}{890} = 0,1\\text{ mol}$.\\nTheo PTHH xà phòng hóa: $n_{\\text{glycerol}} = n_{\\text{chất béo}} = 0,1\\text{ mol}$.\\nKhối lượng glycerol thu được: $m = 0,1 \\cdot 92 = 9,2\\text{ g}$.",
+        "Số mol chất béo: $n_{\\text{chất béo}} = \\frac{89}{890} = 0,1\\text{ mol}$.\nTheo PTHH xà phòng hóa: $n_{\\text{glycerol}} = n_{\\text{chất béo}} = 0,1\\text{ mol}$.\nKhối lượng glycerol thu được: $m = 0,1 \\cdot 92 = 9,2\\text{ g}$.",
         "Dầu thực vật chứa nhiều gốc acid béo không no nên ở thể lỏng, tốt cho tim mạch hơn mỡ động vật (chứa nhiều gốc acid béo no ở thể rắn); dầu mỡ rán đi rán lại nhiều lần ở nhiệt độ cao dễ bị oxi hóa sinh ra chất độc hại.",
         CH4_ID, CH4_TITLE, CH4_DESC,
         extra_questions=[
@@ -311,7 +311,7 @@ CH4_LESSONS = [
             "Phân biệt được dung dịch glucose và dung dịch saccharose bằng phương pháp hóa học",
         ],
         "Đun nóng dung dịch chứa $18\\text{ g}$ glucose ($\\text{C}_6\\text{H}_{12}\\text{O}_6$) với lượng dư dung dịch $\\text{AgNO}_3$ trong $\\text{NH}_3$. Tính khối lượng bạc ($\\text{Ag} = 108$) kết tủa thu được.",
-        "Số mol glucose: $n_{\\text{C}_6\\text{H}_{12}\\text{O}_6} = \\frac{18}{180} = 0,1\\text{ mol}$.\\nTheo PTHH tráng bạc: $n_{\\text{Ag}} = 2n_{\\text{glucose}} = 2 \\cdot 0,1 = 0,2\\text{ mol}$.\\nKhối lượng bạc thu được: $m_{\\text{Ag}} = 0,2 \\cdot 108 = 21,6\\text{ g}$.",
+        "Số mol glucose: $n_{\\text{C}_6\\text{H}_{12}\\text{O}_6} = \\frac{18}{180} = 0,1\\text{ mol}$.\nTheo PTHH tráng bạc: $n_{\\text{Ag}} = 2n_{\\text{glucose}} = 2 \\cdot 0,1 = 0,2\\text{ mol}$.\nKhối lượng bạc thu được: $m_{\\text{Ag}} = 0,2 \\cdot 108 = 21,6\\text{ g}$.",
         "Khi cơ thể bị suy nhược hoặc hạ đường huyết, bệnh nhân được truyền dịch đường glucose $5\\%$ để cung cấp năng lượng trực tiếp và nhanh chóng cho các tế bào.",
         CH4_ID, CH4_TITLE, CH4_DESC,
         extra_questions=[
@@ -334,7 +334,7 @@ CH4_LESSONS = [
             "Nêu được sự tạo thành tinh bột, cellulose trong cây xanh nhờ quang hợp và ứng dụng của chúng trong đời sống, công nghiệp",
         ],
         "Thủy phân hoàn toàn $32,4\\text{ g}$ tinh bột trong môi trường acid đun nóng. Tính khối lượng glucose thu được biết hiệu suất phản ứng đạt $100\\%$.",
-        "Tính theo $1$ mắt xích $\\text{C}_6\\text{H}_{10}\\text{O}_5$ ($M = 162$): $n_{\\text{C}_6\\text{H}_{10}\\text{O}_5} = \\frac{32,4}{162} = 0,2\\text{ mol}$.\\nPTHH: $(\\text{C}_6\\text{H}_{10}\\text{O}_5)_n + n\\text{H}_2\\text{O} \\xrightarrow{\\text{H}^+, t^\\circ} n\\text{C}_6\\text{H}_{12}\\text{O}_6$.\\nSố mol glucose: $n_{\\text{glucose}} = 0,2\\text{ mol} \\Rightarrow m_{\\text{glucose}} = 0,2 \\cdot 180 = 36\\text{ g}$.",
+        "Tính theo $1$ mắt xích $\\text{C}_6\\text{H}_{10}\\text{O}_5$ ($M = 162$): $n_{\\text{C}_6\\text{H}_{10}\\text{O}_5} = \\frac{32,4}{162} = 0,2\\text{ mol}$.\nPTHH: $(\\text{C}_6\\text{H}_{10}\\text{O}_5)_n + n\\text{H}_2\\text{O} \\xrightarrow{\\text{H}^+, t^\\circ} n\\text{C}_6\\text{H}_{12}\\text{O}_6$.\nSố mol glucose: $n_{\\text{glucose}} = 0,2\\text{ mol} \\Rightarrow m_{\\text{glucose}} = 0,2 \\cdot 180 = 36\\text{ g}$.",
         "Khi nhai kĩ cơm trắng (chứa tinh bột), enzyme amylase trong nước bọt thủy phân một phần tinh bột thành đường maltose và glucose nên ta cảm thấy có vị ngọt.",
         CH4_ID, CH4_TITLE, CH4_DESC,
         extra_questions=[
@@ -357,7 +357,7 @@ CH4_LESSONS = [
             "Vận dụng dấu hiệu đốt cháy để phân biệt tơ tự nhiên có bản chất protein (tơ tằm, len lông cừu) với sợi bông (cellulose)",
         ],
         "Trình bày cách phân biệt một mảnh vải dệt bằng tơ tằm tự nhiên và một mảnh vải dệt bằng sợi bông (cotton).",
-        "Lấy mỗi mảnh vải một sợi nhỏ đem đốt trên ngọn lửa đèn cồn:\\n- Sợi vải cháy có mùi khét như mùi tóc cháy và tạo tàn đen bóp vụn là vải tơ tằm (bản chất là protein).\\n- Sợi vải cháy nhanh, không có mùi khét và để lại tro trắng mịn là vải sợi bông (bản chất là cellulose).",
+        "Lấy mỗi mảnh vải một sợi nhỏ đem đốt trên ngọn lửa đèn cồn:\n- Sợi vải cháy có mùi khét như mùi tóc cháy và tạo tàn đen bóp vụn là vải tơ tằm (bản chất là protein).\n- Sợi vải cháy nhanh, không có mùi khét và để lại tro trắng mịn là vải sợi bông (bản chất là cellulose).",
         "Khi nấu canh cua, protein tan trong nước cua bị đông tụ bởi nhiệt độ cao tạo thành từng mảng gạch cua nổi lên trên mặt nồi nước.",
         CH4_ID, CH4_TITLE, CH4_DESC,
         extra_questions=[
@@ -380,7 +380,7 @@ CH4_LESSONS = [
             "Nêu được tác hại của rác thải nhựa đối với môi trường và các biện pháp hạn chế ô nhiễm nhựa",
         ],
         "Một phân tử polyethylene (PE) có công thức $(-\\text{CH}_2-\\text{CH}_2-)_n$ và có khối lượng phân tử là $56\\,000\\text{ amu}$. Tính hệ số polymer hóa $n$ của phân tử PE đó.",
-        "Khối lượng của $1$ mắt xích $-\\text{CH}_2-\\text{CH}_2-$ là $M_{\\text{mắt xích}} = 28\\text{ amu}$.\\nHệ số polymer hóa: $n = \\frac{M_{\\text{PE}}}{M_{\\text{mắt xích}}} = \\frac{56\\,000}{28} = 2000$ mắt xích.",
+        "Khối lượng của $1$ mắt xích $-\\text{CH}_2-\\text{CH}_2-$ là $M_{\\text{mắt xích}} = 28\\text{ amu}$.\nHệ số polymer hóa: $n = \\frac{M_{\\text{PE}}}{M_{\\text{mắt xích}}} = \\frac{56\\,000}{28} = 2000$ mắt xích.",
         "Ống dẫn nước trong gia đình thường làm bằng nhựa PVC (poly(vinyl chloride)); hộp đựng thực phẩm dùng trong lò vi sóng thường làm bằng nhựa PP (polypropylene) chịu nhiệt an toàn.",
         CH4_ID, CH4_TITLE, CH4_DESC,
         extra_questions=[
@@ -403,7 +403,7 @@ CH4_LESSONS = [
             "Giải thích được lợi ích kinh tế và yêu cầu bảo vệ môi trường trong việc khai thác, chế biến tài nguyên khoáng sản",
         ],
         "Nung hoàn toàn $200\\text{ kg}$ đá vôi chứa $80\\%$ $\\text{CaCO}_3$ về khối lượng (phần còn lại là tạp chất trơ). Tính khối lượng vôi sống ($\\text{CaO}$) thu được.",
-        "Khối lượng $\\text{CaCO}_3$ nguyên chất: $m_{\\text{CaCO}_3} = 200 \\cdot 80\\% = 160\\text{ kg} \\Rightarrow n_{\\text{CaCO}_3} = \\frac{160}{100} = 1,6\\text{ kmol}$.\\nPTHH: $\\text{CaCO}_3 \\xrightarrow{t^\\circ} \\text{CaO} + \\text{CO}_2\\uparrow$.\\nTheo PTHH: $n_{\\text{CaO}} = 1,6\\text{ kmol} \\Rightarrow m_{\\text{CaO}} = 1,6 \\cdot 56 = 89,6\\text{ kg}$.",
+        "Khối lượng $\\text{CaCO}_3$ nguyên chất: $m_{\\text{CaCO}_3} = 200 \\cdot 80\\% = 160\\text{ kg} \\Rightarrow n_{\\text{CaCO}_3} = \\frac{160}{100} = 1,6\\text{ kmol}$.\nPTHH: $\\text{CaCO}_3 \\xrightarrow{t^\\circ} \\text{CaO} + \\text{CO}_2\\uparrow$.\nTheo PTHH: $n_{\\text{CaO}} = 1,6\\text{ kmol} \\Rightarrow m_{\\text{CaO}} = 1,6 \\cdot 56 = 89,6\\text{ kg}$.",
         "Tỉnh Quảng Ninh, Ninh Bình, Hà Nam, Kiên Giang ở Việt Nam có trữ lượng đá vôi lớn phục vụ ngành công nghiệp sản xuất xi măng; cát trắng ở Khánh Hòa, Quảng Nam giàu $\\text{SiO}_2$ dùng sản xuất thủy tinh cao cấp.",
         CH4_ID, CH4_TITLE, CH4_DESC,
         extra_questions=[

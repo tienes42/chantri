@@ -28,7 +28,7 @@ CH1_LESSONS = [
             "Giải được bài toán xác định số hạt $p, n, e$ dựa vào tổng số hạt $S = 2Z + N$",
         ],
         "Tổng số hạt cơ bản ($p, n, e$) trong một nguyên tử nguyên tố $X$ là $40$, trong đó tổng số hạt mang điện nhiều hơn số hạt không mang điện là $12$. Tìm số proton $Z$ và số neutron $N$ của $X$.",
-        "Ta có hệ phương trình:\\n$\\begin{cases} 2Z + N = 40 \\\\ 2Z - N = 12 \\end{cases} \\Rightarrow \\begin{cases} 4Z = 52 \\\\ N = 2Z - 12 \\end{cases} \\Rightarrow \\begin{cases} Z = 13 \\\\ N = 14 \\end{cases}$.\\nVậy nguyên tử $X$ có $13$ proton ($13$ electron) và $14$ neutron (Aluminium - $\\text{Al}$).",
+        "Ta có hệ phương trình:\n$\\begin{cases} 2Z + N = 40 \\\\ 2Z - N = 12 \\end{cases} \\Rightarrow \\begin{cases} 4Z = 52 \\\\ N = 2Z - 12 \\end{cases} \\Rightarrow \\begin{cases} Z = 13 \\\\ N = 14 \\end{cases}$.\nVậy nguyên tử $X$ có $13$ proton ($13$ electron) và $14$ neutron (Aluminium - $\\text{Al}$).",
         "Thí nghiệm bắn phá lá vàng mỏng bằng chùm hạt alpha của Rutherford chứng minh nguyên tử có cấu tạo rỗng, phần lớn khối lượng tập trung ở hạt nhân có kích thước rất nhỏ ở tâm.",
         CH1_ID, CH1_TITLE, CH1_DESC,
         extra_questions=[
@@ -51,7 +51,7 @@ CH1_LESSONS = [
             "Tính được nguyên tử khối trung bình của nguyên tố có nhiều đồng vị dựa trên phổ khối lượng (MS)",
         ],
         "Trong tự nhiên, chlorine có $2$ đồng vị bền là $^{35}_{17}\\text{Cl}$ chiếm $75,76\\%$ và $^{37}_{17}\\text{Cl}$ chiếm $24,24\\%$ tổng số nguyên tử. Tính nguyên tử khối trung bình của chlorine.",
-        "Áp dụng công thức tính nguyên tử khối trung bình:\\n$\\overline{A}_{\\text{Cl}} = \\frac{35 \\cdot 75,76 + 37 \\cdot 24,24}{100} = 35,4848 \\approx 35,5$.",
+        "Áp dụng công thức tính nguyên tử khối trung bình:\n$\\overline{A}_{\\text{Cl}} = \\frac{35 \\cdot 75,76 + 37 \\cdot 24,24}{100} = 35,4848 \\approx 35,5$.",
         "Đồng vị phóng xạ $^{14}_6\\text{C}$ được dùng trong khảo cổ học để xác định niên đại của các cổ vật có nguồn gốc sinh vật; đồng vị $^{60}_{27}\\text{Co}$ và $^{131}_{53}\\text{I}$ được dùng trong y học để xạ trị ung thư.",
         CH1_ID, CH1_TITLE, CH1_DESC,
         extra_questions=[
@@ -74,7 +74,7 @@ CH1_LESSONS = [
             "Dự đoán được tính chất cơ bản (kim loại, phi kim, khí hiếm) dựa vào số electron lớp ngoài cùng",
         ],
         "Viết cấu hình electron đầy đủ của nguyên tử sắt ($\\text{Fe}, Z = 26$) và cho biết số electron lớp ngoài cùng của $\\text{Fe}$.",
-        "Thứ tự điền mức năng lượng của $\\text{Fe}$ ($Z = 26$): $1s^2 2s^2 2p^6 3s^2 3p^6 4s^2 3d^6$.\\nSắp xếp lại theo thứ tự lớp, cấu hình electron của $\\text{Fe}$ là: $1s^2 2s^2 2p^6 3s^2 3p^6 3d^6 4s^2$ (hoặc $[\\text{Ar}]3d^6 4s^2$).\\nNguyên tử $\\text{Fe}$ có $2$ electron ở lớp ngoài cùng (lớp thứ $4$), là kim loại.",
+        "Thứ tự điền mức năng lượng của $\\text{Fe}$ ($Z = 26$): $1s^2 2s^2 2p^6 3s^2 3p^6 4s^2 3d^6$.\nSắp xếp lại theo thứ tự lớp, cấu hình electron của $\\text{Fe}$ là: $1s^2 2s^2 2p^6 3s^2 3p^6 3d^6 4s^2$ (hoặc $[\\text{Ar}]3d^6 4s^2$).\nNguyên tử $\\text{Fe}$ có $2$ electron ở lớp ngoài cùng (lớp thứ $4$), là kim loại.",
         "Các nguyên tố khí hiếm ($\\text{He}, \\text{Ne}, \\text{Ar}$) có lớp vỏ ngoài cùng bão hòa ($2$ hoặc $8$ electron) rất bền vững nên hầu như không tham gia phản ứng hóa học ở điều kiện thường, được bơm vào bóng đèn sợi đốt và đèn quảng cáo.",
         CH1_ID, CH1_TITLE, CH1_DESC,
         extra_questions=[
@@ -106,7 +106,7 @@ CH2_LESSONS = [
             "Từ cấu hình electron suy ra được vị trí của nguyên tố trong bảng tuần hoàn và ngược lại",
         ],
         "Nguyên tử nguyên tố $X$ có số hiệu nguyên tử $Z = 15$. Hãy viết cấu hình electron và xác định vị trí (ô, chu kì, nhóm) của $X$ trong bảng tuần hoàn.",
-        "Cấu hình electron của $X$ ($Z = 15$): $1s^2 2s^2 2p^6 3s^2 3p^3$.\\n- $X$ có $Z = 15 \\Rightarrow$ thuộc ô số $15$.\\n- $X$ có $3$ lớp electron $\\Rightarrow$ thuộc chu kì $3$.\\n- $X$ là nguyên tố $p$ có $5$ electron lớp ngoài cùng $\\Rightarrow$ thuộc nhóm $\\text{VA}$ (Phosphorus).",
+        "Cấu hình electron của $X$ ($Z = 15$): $1s^2 2s^2 2p^6 3s^2 3p^3$.\n- $X$ có $Z = 15 \\Rightarrow$ thuộc ô số $15$.\n- $X$ có $3$ lớp electron $\\Rightarrow$ thuộc chu kì $3$.\n- $X$ là nguyên tố $p$ có $5$ electron lớp ngoài cùng $\\Rightarrow$ thuộc nhóm $\\text{VA}$ (Phosphorus).",
         "Năm 1869, nhà bác học người Nga D. I. Mendeleev đã công bố bảng tuần hoàn đầu tiên và dự đoán chính xác tính chất của nhiều nguyên tố chưa tìm ra thời đó (như $\\text{Ga}, \\text{Ge}, \\text{Sc}$).",
         CH2_ID, CH2_TITLE, CH2_DESC,
         extra_questions=[
@@ -128,7 +128,7 @@ CH2_LESSONS = [
             "Vận dụng quy luật biến đổi để sắp xếp thứ tự bán kính nguyên tử, độ âm điện hoặc tính kim loại/phi kim của dãy nguyên tố",
         ],
         "Sắp xếp các nguyên tố sau theo chiều tính kim loại tăng dần: $_{11}\\text{Na}, _{12}\\text{Mg}, _{13}\\text{Al}, _{19}\\text{K}$.",
-        "- Ba nguyên tố $_{11}\\text{Na}, _{12}\\text{Mg}, _{13}\\text{Al}$ cùng thuộc chu kì $3$: theo chiều $Z$ tăng, tính kim loại giảm dần nên $\\text{Al} < \\text{Mg} < \\text{Na}$.\\n- Hai nguyên tố $_{11}\\text{Na}$ và $_{19}\\text{K}$ cùng thuộc nhóm $\\text{IA}$: đi từ trên xuống dưới tính kim loại tăng dần nên $\\text{Na} < \\text{K}$.\\nVậy thứ tự tính kim loại tăng dần là: $\\text{Al} < \\text{Mg} < \\text{Na} < \\text{K}$.",
+        "- Ba nguyên tố $_{11}\\text{Na}, _{12}\\text{Mg}, _{13}\\text{Al}$ cùng thuộc chu kì $3$: theo chiều $Z$ tăng, tính kim loại giảm dần nên $\\text{Al} < \\text{Mg} < \\text{Na}$.\n- Hai nguyên tố $_{11}\\text{Na}$ và $_{19}\\text{K}$ cùng thuộc nhóm $\\text{IA}$: đi từ trên xuống dưới tính kim loại tăng dần nên $\\text{Na} < \\text{K}$.\nVậy thứ tự tính kim loại tăng dần là: $\\text{Al} < \\text{Mg} < \\text{Na} < \\text{K}$.",
         "Độ âm điện của Fluorine ($\\chi_{\\text{F}} = 3,98$) là lớn nhất trong bảng tuần hoàn nên trong mọi hợp chất, nguyên tử $\\text{F}$ luôn hút electron về phía mình và chỉ có số oxi hóa $-1$.",
         CH2_ID, CH2_TITLE, CH2_DESC,
         extra_questions=[
@@ -150,7 +150,7 @@ CH2_LESSONS = [
             "Phát biểu được nội dung và ý nghĩa của Định luật tuần hoàn các nguyên tố hóa học",
         ],
         "Nguyên tố $R$ thuộc nhóm $\\text{VIA}$. Trong hợp chất khí với hydrogen, $R$ chiếm $94,12\\%$ về khối lượng. Tìm nguyên tố $R$ và viết công thức oxide cao nhất của $R$.",
-        "$R$ thuộc nhóm $\\text{VIA}$ ($n = 6$) nên công thức hợp chất khí với hydrogen là $\\text{RH}_{8-6} = \\text{RH}_2$.\\nTa có: $\\%m_R = \\frac{M_R}{M_R + 2} \\cdot 100\\% = 94,12\\% \\Rightarrow M_R = 32$ ($\\text{g/mol}$).\\nVậy $R$ là Lưu huỳnh ($\\text{S}$). Công thức oxide cao nhất của $\\text{S}$ là $\\text{SO}_3$.",
+        "$R$ thuộc nhóm $\\text{VIA}$ ($n = 6$) nên công thức hợp chất khí với hydrogen là $\\text{RH}_{8-6} = \\text{RH}_2$.\nTa có: $\\%m_R = \\frac{M_R}{M_R + 2} \\cdot 100\\% = 94,12\\% \\Rightarrow M_R = 32$ ($\\text{g/mol}$).\nVậy $R$ là Lưu huỳnh ($\\text{S}$). Công thức oxide cao nhất của $\\text{S}$ là $\\text{SO}_3$.",
         "Nhờ định luật tuần hoàn, các nhà hóa học có thể thiết kế các chất bán dẫn mới từ các nguyên tố nhóm $\\text{IVA}$ ($\\text{Si}, \\text{Ge}$) và các vật liệu xúc tác từ kim loại chuyển tiếp.",
         CH2_ID, CH2_TITLE, CH2_DESC,
         extra_questions=[
@@ -182,7 +182,7 @@ CH3_LESSONS = [
             "Nhận biết được một số trường hợp phân tử không tuân theo quy tắc octet",
         ],
         "Vận dụng quy tắc octet, hãy giải thích xu hướng của nguyên tử oxygen ($\\text{O}, Z = 8$) và nguyên tử sodium ($\\text{Na}, Z = 11$) khi tham gia liên kết hóa học.",
-        "- $\\text{Na}$ ($Z = 11$): cấu hình $1s^2 2s^2 2p^6 3s^1$, có $1\\text{ e}$ lớp ngoài cùng nên có xu hướng nhường $1\\text{ e}$ để đạt cấu hình bền $2s^2 2p^6$ ($8\\text{ e}$) của khí hiếm $\\text{Ne}$.\\n- $\\text{O}$ ($Z = 8$): cấu hình $1s^2 2s^2 2p^4$, có $6\\text{ e}$ lớp ngoài cùng nên có xu hướng nhận $2\\text{ e}$ (hoặc góp chung $2\\text{ e}$) để đạt cấu hình bền $8\\text{ e}$ của $\\text{Ne}$.",
+        "- $\\text{Na}$ ($Z = 11$): cấu hình $1s^2 2s^2 2p^6 3s^1$, có $1\\text{ e}$ lớp ngoài cùng nên có xu hướng nhường $1\\text{ e}$ để đạt cấu hình bền $2s^2 2p^6$ ($8\\text{ e}$) của khí hiếm $\\text{Ne}$.\n- $\\text{O}$ ($Z = 8$): cấu hình $1s^2 2s^2 2p^4$, có $6\\text{ e}$ lớp ngoài cùng nên có xu hướng nhận $2\\text{ e}$ (hoặc góp chung $2\\text{ e}$) để đạt cấu hình bền $8\\text{ e}$ của $\\text{Ne}$.",
         "Quy tắc octet giải thích vì sao muối ăn có công thức là $\\text{NaCl}$, nước là $\\text{H}_2\\text{O}$ và khí nitrogen là $\\text{N}_2$ chứ không phải một tỉ lệ bất kì nào khác.",
         CH3_ID, CH3_TITLE, CH3_DESC,
         extra_questions=[
@@ -205,7 +205,7 @@ CH3_LESSONS = [
             "Giải thích được vì sao hợp chất ion thường là chất rắn, có nhiệt độ nóng chảy cao và dẫn điện khi nóng chảy hoặc hòa tan trong nước",
         ],
         "Nguyên tử calcium ($\\text{Ca}, Z = 20$) tác dụng với nguyên tử chlorine ($\\text{Cl}, Z = 17$) tạo thành hợp chất $\\text{CaCl}_2$. Viết quá trình tạo thành các ion và phương trình hình thành $\\text{CaCl}_2$.",
-        "- $\\text{Ca}$ ($Z = 20$) nhường $2\\text{ e}$: $\\text{Ca} \\rightarrow \\text{Ca}^{2+} + 2\\text{e}$.\\n- Mỗi nguyên tử $\\text{Cl}$ ($Z = 17$) nhận $1\\text{ e}$: $2\\text{Cl} + 2\\text{e} \\rightarrow 2\\text{Cl}^-$.\\n- Các ion trái dấu hút nhau bằng lực hút tĩnh điện: $\\text{Ca}^{2+} + 2\\text{Cl}^- \\rightarrow \\text{CaCl}_2$.",
+        "- $\\text{Ca}$ ($Z = 20$) nhường $2\\text{ e}$: $\\text{Ca} \\rightarrow \\text{Ca}^{2+} + 2\\text{e}$.\n- Mỗi nguyên tử $\\text{Cl}$ ($Z = 17$) nhận $1\\text{ e}$: $2\\text{Cl} + 2\\text{e} \\rightarrow 2\\text{Cl}^-$.\n- Các ion trái dấu hút nhau bằng lực hút tĩnh điện: $\\text{Ca}^{2+} + 2\\text{Cl}^- \\rightarrow \\text{CaCl}_2$.",
         "Muối ăn ($\\text{NaCl}$) ở trạng thái rắn các ion $\\text{Na}^+$ và $\\text{Cl}^-$ bị giữ chặt ở các nút mạng tinh thể nên không dẫn điện, nhưng khi hòa tan vào nước các ion di chuyển tự do nên dung dịch nước muối dẫn điện tốt.",
         CH3_ID, CH3_TITLE, CH3_DESC,
         extra_questions=[
@@ -227,7 +227,7 @@ CH3_LESSONS = [
             "Phân biệt được liên kết $\\sigma$ (xen phủ trục) và liên kết $\\pi$ (xen phủ bên), xác định được số liên kết $\\sigma, \\pi$ trong phân tử",
         ],
         "Cho độ âm điện của $\\text{H} = 2,20$; $\\text{Cl} = 3,16$; $\\text{Na} = 0,93$. Hãy xác định loại liên kết hóa học trong các phân tử $\\text{Cl}_2, \\text{HCl}, \\text{NaCl}$.",
-        "- Trong $\\text{Cl}_2$: $\\Delta \\chi = 3,16 - 3,16 = 0 < 0,4 \\Rightarrow$ Liên kết cộng hóa trị không phân cực.\\n- Trong $\\text{HCl}$: $\\Delta \\chi = 3,16 - 2,20 = 0,96$ ($0,4 \\le 0,96 < 1,7$) $\\Rightarrow$ Liên kết cộng hóa trị phân cực.\\n- Trong $\\text{NaCl}$: $\\Delta \\chi = 3,16 - 0,93 = 2,23 \\ge 1,7 \\Rightarrow$ Liên kết ion.",
+        "- Trong $\\text{Cl}_2$: $\\Delta \\chi = 3,16 - 3,16 = 0 < 0,4 \\Rightarrow$ Liên kết cộng hóa trị không phân cực.\n- Trong $\\text{HCl}$: $\\Delta \\chi = 3,16 - 2,20 = 0,96$ ($0,4 \\le 0,96 < 1,7$) $\\Rightarrow$ Liên kết cộng hóa trị phân cực.\n- Trong $\\text{NaCl}$: $\\Delta \\chi = 3,16 - 0,93 = 2,23 \\ge 1,7 \\Rightarrow$ Liên kết ion.",
         "Phân tử nitrogen ($\\text{N}\\equiv\\text{N}$) có liên kết ba rất bền vững ($E_b = 945\\text{ kJ/mol}$ gồm $1\\sigma + 2\\pi$) nên khí $\\text{N}_2$ rất trơ ở nhiệt độ thường, được dùng bơm vào túi thực phẩm để bảo quản chống oxi hóa.",
         CH3_ID, CH3_TITLE, CH3_DESC,
         extra_questions=[
@@ -282,7 +282,7 @@ CH4_LESSONS = [
             "Nhận diện được phản ứng oxi hóa - khử dựa vào dấu hiệu thay đổi số oxi hóa của nguyên tố",
         ],
         "Xác định số oxi hóa của nguyên tố nitrogen ($\\text{N}$) trong các phân tử và ion sau: $\\text{NH}_3, \\text{N}_2, \\text{NO}_2, \\text{HNO}_3, \\text{NH}_4^+$.",
-        "Đặt số oxi hóa của $\\text{N}$ là $x$ (biết $\\text{H}$ là $+1$, $\\text{O}$ là $-2$):\\n- $\\text{NH}_3$: $x + 3(+1) = 0 \\Rightarrow x = -3$.\\n- $\\text{N}_2$ (đơn chất): $x = 0$.\\n- $\\text{NO}_2$: $x + 2(-2) = 0 \\Rightarrow x = +4$.\\n- $\\text{HNO}_3$: $(+1) + x + 3(-2) = 0 \\Rightarrow x = +5$.\\n- $\\text{NH}_4^+$: $x + 4(+1) = +1 \\Rightarrow x = -3$.",
+        "Đặt số oxi hóa của $\\text{N}$ là $x$ (biết $\\text{H}$ là $+1$, $\\text{O}$ là $-2$):\n- $\\text{NH}_3$: $x + 3(+1) = 0 \\Rightarrow x = -3$.\n- $\\text{N}_2$ (đơn chất): $x = 0$.\n- $\\text{NO}_2$: $x + 2(-2) = 0 \\Rightarrow x = +4$.\n- $\\text{HNO}_3$: $(+1) + x + 3(-2) = 0 \\Rightarrow x = +5$.\n- $\\text{NH}_4^+$: $x + 4(+1) = +1 \\Rightarrow x = -3$.",
         "Quá trình hô hấp tế bào, sự cháy của nhiên liệu, sự gỉ sét của kim loại và sự phóng điện của pin/ắc quy đều là các phản ứng oxi hóa - khử diễn ra hàng ngày.",
         CH4_ID, CH4_TITLE, CH4_DESC,
         extra_questions=[
@@ -304,7 +304,7 @@ CH4_LESSONS = [
             "Vận dụng định luật bảo toàn electron để giải bài toán tính khối lượng kim loại hoặc thể tích khí sản phẩm khử",
         ],
         "Hòa tan hoàn toàn $9,6\\text{ g}$ đồng ($\\text{Cu} = 64$) trong dung dịch $\\text{HNO}_3$ loãng dư, thu được khí $\\text{NO}$ là sản phẩm khử duy nhất. Tính thể tích khí $\\text{NO}$ thu được ở đkc.",
-        "Số mol $\\text{Cu}$: $n_{\\text{Cu}} = \\frac{9,6}{64} = 0,15\\text{ mol}$.\\nQuá trình nhường - nhận electron:\\n- $\\text{Cu}^0 \\rightarrow \\text{Cu}^{+2} + 2\\text{e}$\\n- $\\text{N}^{+5} + 3\\text{e} \\rightarrow \\text{N}^{+2}$ (trong $\\text{NO}$)\\nBảo toàn electron: $2n_{\\text{Cu}} = 3n_{\\text{NO}} \\Rightarrow n_{\\text{NO}} = \\frac{2 \\cdot 0,15}{3} = 0,1\\text{ mol}$.\\nThể tích khí $\\text{NO}$ (đkc): $V_{\\text{NO}} = 0,1 \\cdot 24,79 = 2,479\\text{ L}$.",
+        "Số mol $\\text{Cu}$: $n_{\\text{Cu}} = \\frac{9,6}{64} = 0,15\\text{ mol}$.\nQuá trình nhường - nhận electron:\n- $\\text{Cu}^0 \\rightarrow \\text{Cu}^{+2} + 2\\text{e}$\n- $\\text{N}^{+5} + 3\\text{e} \\rightarrow \\text{N}^{+2}$ (trong $\\text{NO}$)\nBảo toàn electron: $2n_{\\text{Cu}} = 3n_{\\text{NO}} \\Rightarrow n_{\\text{NO}} = \\frac{2 \\cdot 0,15}{3} = 0,1\\text{ mol}$.\nThể tích khí $\\text{NO}$ (đkc): $V_{\\text{NO}} = 0,1 \\cdot 24,79 = 2,479\\text{ L}$.",
         "Máy đo nồng độ cồn của cảnh sát giao thông dựa trên phản ứng oxi hóa - khử giữa hơi ethylic alcohol ($\\text{C}_2\\text{H}_5\\text{OH}$) trong hơi thở với $\\text{K}_2\\text{Cr}_2\\text{O}_7$ (màu da cam chuyển sang $\\text{Cr}^{3+}$ màu xanh lục).",
         CH4_ID, CH4_TITLE, CH4_DESC,
         extra_questions=[
@@ -336,7 +336,7 @@ CH5_LESSONS = [
             "Đọc và giải thích được ý nghĩa của phương trình nhiệt hóa học",
         ],
         "Cho phương trình nhiệt hóa học: $\\text{CH}_4(g) + 2\\text{O}_2(g) \\xrightarrow{t^\\circ} \\text{CO}_2(g) + 2\\text{H}_2\\text{O}(l)$ có $\\Delta_r H^\\circ_{298} = -890,3\\text{ kJ}$. Cho biết đây là phản ứng tỏa nhiệt hay thu nhiệt, và tính nhiệt lượng tỏa ra khi đốt cháy hoàn toàn $3,2\\text{ g}$ $\\text{CH}_4$ ở điều kiện chuẩn.",
-        "- Vì $\\Delta_r H^\\circ_{298} = -890,3\\text{ kJ} < 0$ nên đây là phản ứng tỏa nhiệt.\\n- Số mol $\\text{CH}_4$: $n_{\\text{CH}_4} = \\frac{3,2}{16} = 0,2\\text{ mol}$.\\n- Đốt cháy $1\\text{ mol}$ $\\text{CH}_4$ tỏa ra $890,3\\text{ kJ}$, vậy đốt cháy $0,2\\text{ mol}$ $\\text{CH}_4$ tỏa ra nhiệt lượng: $Q = 0,2 \\cdot 890,3 = 178,06\\text{ kJ}$.",
+        "- Vì $\\Delta_r H^\\circ_{298} = -890,3\\text{ kJ} < 0$ nên đây là phản ứng tỏa nhiệt.\n- Số mol $\\text{CH}_4$: $n_{\\text{CH}_4} = \\frac{3,2}{16} = 0,2\\text{ mol}$.\n- Đốt cháy $1\\text{ mol}$ $\\text{CH}_4$ tỏa ra $890,3\\text{ kJ}$, vậy đốt cháy $0,2\\text{ mol}$ $\\text{CH}_4$ tỏa ra nhiệt lượng: $Q = 0,2 \\cdot 890,3 = 178,06\\text{ kJ}$.",
         "Phản ứng tôi vôi ($\\text{CaO} + \\text{H}_2\\text{O} \\rightarrow \\text{Ca(OH)}_2$) làm nước sôi lên là phản ứng tỏa nhiệt ($\Delta_r H < 0$); còn hòa tan viên sủi vitamin C vào cốc nước thấy cốc nước mát lạnh là quá trình thu nhiệt ($\Delta_r H > 0$).",
         CH5_ID, CH5_TITLE, CH5_DESC,
         extra_questions=[
@@ -358,7 +358,7 @@ CH5_LESSONS = [
             "So sánh được hiệu quả tỏa nhiệt của các loại nhiên liệu dựa trên giá trị $\\Delta_r H^\\circ_{298}$ tính được",
         ],
         "Cho phản ứng: $\\text{H}_2(g) + \\text{Cl}_2(g) \\rightarrow 2\\text{HCl}(g)$. Biết năng lượng liên kết ở điều kiện chuẩn: $E_b(\\text{H}-\\text{H}) = 436\\text{ kJ/mol}$, $E_b(\\text{Cl}-\\text{Cl}) = 243\\text{ kJ/mol}$, $E_b(\\text{H}-\\text{Cl}) = 432\\text{ kJ/mol}$. Tính $\\Delta_r H^\\circ_{298}$ của phản ứng.",
-        "Áp dụng công thức tính theo năng lượng liên kết (Chất đầu trừ Sản phẩm):\\n$\\Delta_r H^\\circ_{298} = E_b(\\text{H}-\\text{H}) + E_b(\\text{Cl}-\\text{Cl}) - 2 \\cdot E_b(\\text{H}-\\text{Cl})$\\n$\\Delta_r H^\\circ_{298} = 436 + 243 - 2 \\cdot 432 = 679 - 864 = -185\\text{ kJ}$.",
+        "Áp dụng công thức tính theo năng lượng liên kết (Chất đầu trừ Sản phẩm):\n$\\Delta_r H^\\circ_{298} = E_b(\\text{H}-\\text{H}) + E_b(\\text{Cl}-\\text{Cl}) - 2 \\cdot E_b(\\text{H}-\\text{Cl})$\n$\\Delta_r H^\\circ_{298} = 436 + 243 - 2 \\cdot 432 = 679 - 864 = -185\\text{ kJ}$.",
         "Tính toán biến thiên enthalpy giúp các kĩ sư hóa học thiết kế hệ thống làm mát cho các lò phản ứng tỏa nhiệt mạnh (như tổng hợp $\\text{NH}_3$, sản xuất $\\text{H}_2\\text{SO}_4$) để tránh nguy cơ nổ nhiệt.",
         CH5_ID, CH5_TITLE, CH5_DESC,
         extra_questions=[
@@ -390,7 +390,7 @@ CH6_LESSONS = [
             "Viết được biểu thức tốc độ phản ứng theo định luật tác dụng khối lượng cho phản ứng đơn giản và nêu được ý nghĩa của hằng số tốc độ $k$",
         ],
         "Cho phản ứng: $\\text{Br}_2 + \\text{HCOOH} \\rightarrow 2\\text{HBr} + \\text{CO}_2$. Ở thời điểm đầu ($t_1 = 0$), nồng độ $\\text{Br}_2$ là $0,012\\text{ M}$. Sau $50\\text{ s}$, nồng độ $\\text{Br}_2$ còn lại là $0,010\\text{ M}$. Tính tốc độ trung bình của phản ứng trong $50\\text{ s}$ đó.",
-        "Áp dụng công thức tính tốc độ trung bình theo $\\text{Br}_2$ (hệ số $a = 1$):\\n$\\overline{v} = -\\frac{C_2 - C_1}{t_2 - t_1} = -\\frac{0,010 - 0,012}{50 - 0} = \\frac{0,002}{50} = 4 \\cdot 10^{-5}\\text{ mol/(L}\\cdot\\text{s)}$.",
+        "Áp dụng công thức tính tốc độ trung bình theo $\\text{Br}_2$ (hệ số $a = 1$):\n$\\overline{v} = -\\frac{C_2 - C_1}{t_2 - t_1} = -\\frac{0,010 - 0,012}{50 - 0} = \\frac{0,002}{50} = 4 \\cdot 10^{-5}\\text{ mol/(L}\\cdot\\text{s)}$.",
         "Phản ứng nổ thuốc súng xảy ra với tốc độ cực nhanh (trong phần nghìn giây), trong khi phản ứng tạo gỉ sắt hay sự phong hóa đá vôi trong tự nhiên diễn ra rất chậm qua nhiều tháng, nhiều năm.",
         CH6_ID, CH6_TITLE, CH6_DESC,
         extra_questions=[
@@ -412,7 +412,7 @@ CH6_LESSONS = [
             "Giải thích được các ứng dụng điều khiển tốc độ phản ứng trong đời sống và sản xuất (nồi áp suất, tủ lạnh, chẻ nhỏ củi, quạt than)",
         ],
         "Một phản ứng có hệ số nhiệt độ Van't Hoff $\\gamma = 3$. Hỏi khi tăng nhiệt độ của phản ứng từ $20^\\circ\\text{C}$ lên $50^\\circ\\text{C}$ thì tốc độ phản ứng tăng lên bao nhiêu lần?",
-        "Độ tăng nhiệt độ: $\\Delta t = t_2 - t_1 = 50 - 20 = 30^\\circ\\text{C}$.\\nÁp dụng công thức Van't Hoff:\\n$\\frac{v_2}{v_1} = \\gamma^{\\frac{t_2 - t_1}{10}} = 3^{\\frac{30}{10}} = 3^3 = 27$ lần.",
+        "Độ tăng nhiệt độ: $\\Delta t = t_2 - t_1 = 50 - 20 = 30^\\circ\\text{C}$.\nÁp dụng công thức Van't Hoff:\n$\\frac{v_2}{v_1} = \\gamma^{\\frac{t_2 - t_1}{10}} = 3^{\\frac{30}{10}} = 3^3 = 27$ lần.",
         "Bảo quản thực phẩm trong tủ lạnh là giảm nhiệt độ để làm chậm tốc độ phản ứng oxi hóa và phân hủy thức ăn; hầm xương bằng nồi áp suất giúp tăng áp suất và nhiệt độ sôi của nước nên thực phẩm nhanh chín mềm.",
         CH6_ID, CH6_TITLE, CH6_DESC,
         extra_questions=[
@@ -467,7 +467,7 @@ CH7_LESSONS = [
             "Trình bày được phương pháp điều chế khí $\\text{Cl}_2$ trong phòng thí nghiệm và trong công nghiệp",
         ],
         "Đốt cháy hoàn toàn $5,6\\text{ g}$ bột sắt ($\\text{Fe} = 56$) trong bình chứa khí $\\text{Cl}_2$ dư. Tính khối lượng muối sắt thu được.",
-        "Số mol $\\text{Fe}$: $n_{\\text{Fe}} = \\frac{5,6}{56} = 0,1\\text{ mol}$.\\nVì $\\text{Cl}_2$ có tính oxi hóa mạnh nên oxi hóa $\\text{Fe}$ lên số oxi hóa $+3$:\\n$2\\text{Fe} + 3\\text{Cl}_2 \\xrightarrow{t^\\circ} 2\\text{FeCl}_3$.\\nSố mol $\\text{FeCl}_3$ ($M = 162,5$): $n_{\\text{FeCl}_3} = n_{\\text{Fe}} = 0,1\\text{ mol} \\Rightarrow m_{\\text{FeCl}_3} = 0,1 \\cdot 162,5 = 16,25\\text{ g}$.",
+        "Số mol $\\text{Fe}$: $n_{\\text{Fe}} = \\frac{5,6}{56} = 0,1\\text{ mol}$.\nVì $\\text{Cl}_2$ có tính oxi hóa mạnh nên oxi hóa $\\text{Fe}$ lên số oxi hóa $+3$:\n$2\\text{Fe} + 3\\text{Cl}_2 \\xrightarrow{t^\\circ} 2\\text{FeCl}_3$.\nSố mol $\\text{FeCl}_3$ ($M = 162,5$): $n_{\\text{FeCl}_3} = n_{\\text{Fe}} = 0,1\\text{ mol} \\Rightarrow m_{\\text{FeCl}_3} = 0,1 \\cdot 162,5 = 16,25\\text{ g}$.",
         "Nước biển chứa một lượng đáng kể muối $\\text{NaBr}$; người ta sục khí $\\text{Cl}_2$ vào nước biển đã cô đặc để oxi hóa $\\text{Br}^-$ thành đơn chất $\\text{Br}_2$ phục vụ công nghiệp hóa chất và dược phẩm.",
         CH7_ID, CH7_TITLE, CH7_DESC,
         extra_questions=[
@@ -489,7 +489,7 @@ CH7_LESSONS = [
             "Trình bày được cách nhận biết các ion $\\text{F}^-, \\text{Cl}^-, \\text{Br}^-, \\text{I}^-$ trong dung dịch bằng thuốc thử $\\text{AgNO}_3$",
         ],
         "Cho $100\\text{ mL}$ dung dịch $\\text{NaCl}$ $0,2\\text{ M}$ tác dụng với lượng dư dung dịch $\\text{AgNO}_3$. Nêu hiện tượng và tính khối lượng kết tủa thu được.",
-        "- Hiện tượng: Xuất hiện kết tủa màu trắng của $\\text{AgCl}$.\\n- Số mol $\\text{NaCl}$: $n_{\\text{NaCl}} = 0,1 \\cdot 0,2 = 0,02\\text{ mol}$.\\n- PTHH: $\\text{NaCl} + \\text{AgNO}_3 \\rightarrow \\text{AgCl}\\downarrow + \\text{NaNO}_3$.\\n- Khối lượng kết tủa $\\text{AgCl}$ ($M = 143,5$): $m_{\\text{AgCl}} = 0,02 \\cdot 143,5 = 2,87\\text{ g}$.",
+        "- Hiện tượng: Xuất hiện kết tủa màu trắng của $\\text{AgCl}$.\n- Số mol $\\text{NaCl}$: $n_{\\text{NaCl}} = 0,1 \\cdot 0,2 = 0,02\\text{ mol}$.\n- PTHH: $\\text{NaCl} + \\text{AgNO}_3 \\rightarrow \\text{AgCl}\\downarrow + \\text{NaNO}_3$.\n- Khối lượng kết tủa $\\text{AgCl}$ ($M = 143,5$): $m_{\\text{AgCl}} = 0,02 \\cdot 143,5 = 2,87\\text{ g}$.",
         "Dung dịch $\\text{HF}$ hòa tan được $\\text{SiO}_2$ nên không thể đựng trong bình thủy tinh mà phải đựng trong bình nhựa, và được ứng dụng để khắc chữ, hoa văn lên bề mặt kính thủy tinh; muối ăn được trộn thêm một lượng nhỏ $\\text{KI}$ hoặc $\\text{KIO}_3$ (muối i-ốt) để phòng bệnh bướu cổ.",
         CH7_ID, CH7_TITLE, CH7_DESC,
         extra_questions=[
@@ -511,7 +511,7 @@ CH7_LESSONS = [
             "Nêu được vai trò của nguyên tố iodine đối với tuyến giáp và cách sử dụng, bảo quản muối i-ốt đúng cách",
         ],
         "Cần dùng bao nhiêu gam $\\text{NaCl}$ tinh khiết để pha chế được $500\\text{ g}$ dung dịch nước muối sinh lí có nồng độ $0,9\\%$?",
-        "Áp dụng công thức nồng độ phần trăm:\\n$m_{\\text{NaCl}} = \\frac{m_{\\text{dd}} \\cdot C\\%}{100\\%} = \\frac{500 \\cdot 0,9\\%}{100\\%} = 4,5\\text{ g}$.",
+        "Áp dụng công thức nồng độ phần trăm:\n$m_{\\text{NaCl}} = \\frac{m_{\\text{dd}} \\cdot C\\%}{100\\%} = \\frac{500 \\cdot 0,9\\%}{100\\%} = 4,5\\text{ g}$.",
         "Muối i-ốt là muối ăn có trộn thêm một lượng nhỏ $\\text{KI}$ hoặc $\\text{KIO}_3$; khi nấu ăn chỉ nên nêm muối i-ốt sau khi đã tắt bếp vì ở nhiệt độ cao hợp chất chứa iodine dễ bị phân hủy và bay hơi.",
         CH7_ID, CH7_TITLE, CH7_DESC,
         extra_questions=[
@@ -533,7 +533,7 @@ CH7_LESSONS = [
             "Vận dụng định luật bảo toàn khối lượng, bảo toàn nguyên tố và tăng giảm khối lượng để giải bài toán hỗn hợp kim loại hoặc muối halide",
         ],
         "Hòa tan hoàn toàn $11,9\\text{ g}$ hỗn hợp hai kim loại $\\text{Al}$ và $\\text{Zn}$ bằng dung dịch $\\text{HCl}$ dư, sau phản ứng thu được $9,916\\text{ L}$ khí $\\text{H}_2$ (ở đkc) và dung dịch chứa $m$ gam muối khan. Tính giá trị của $m$.",
-        "Số mol khí $\\text{H}_2$: $n_{\\text{H}_2} = \\frac{9,916}{24,79} = 0,4\\text{ mol}$.\\nBảo toàn nguyên tố $\\text{H}$: $n_{\\text{HCl}} = 2n_{\\text{H}_2} = 0,8\\text{ mol} \\Rightarrow n_{\\text{Cl}^-\\text{ (trong muối)}} = 0,8\\text{ mol}$.\\nKhối lượng muối khan thu được:\\n$m_{\\text{muối}} = m_{\\text{KL}} + m_{\\text{Cl}^-} = 11,9 + 0,8 \\cdot 35,5 = 11,9 + 28,4 = 40,3\\text{ g}$.",
+        "Số mol khí $\\text{H}_2$: $n_{\\text{H}_2} = \\frac{9,916}{24,79} = 0,4\\text{ mol}$.\nBảo toàn nguyên tố $\\text{H}$: $n_{\\text{HCl}} = 2n_{\\text{H}_2} = 0,8\\text{ mol} \\Rightarrow n_{\\text{Cl}^-\\text{ (trong muối)}} = 0,8\\text{ mol}$.\nKhối lượng muối khan thu được:\n$m_{\\text{muối}} = m_{\\text{KL}} + m_{\\text{Cl}^-} = 11,9 + 0,8 \\cdot 35,5 = 11,9 + 28,4 = 40,3\\text{ g}$.",
         "Các hợp chất của nhóm halogen đóng vai trò thiết yếu từ xử lí nước sạch đô thị ($\\text{Cl}_2$), sản xuất chất dẻo chống dính Teflon ($\\text{F}$), phim ảnh ($\\text{AgBr}$) đến cồn sát trùng povidone-iodine ($\\text{I}_2$).",
         CH7_ID, CH7_TITLE, CH7_DESC,
         extra_questions=[

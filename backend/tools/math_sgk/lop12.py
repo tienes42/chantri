@@ -163,7 +163,7 @@ LESSONS = [{'topic': 'l12-ch01-ung-dung-dao-ham',
                  'bài toán sau: Tìm các khoảng đơn điệu và cực trị của hàm số $y = x^3 - 3x^2 + 2$. Cách '
                  'giải và kết quả nào dưới đây là **đúng**?',
             'options': ["Tập xác định $D = \\mathbb{R}$. Ta có $y' = 3x^2 - 6x = 3x(x - 2)$. Cho $y' = 0 "
-                        "\\Leftrightarrow x = 0$ hoặc $x = 2$. Bảng xét dấu $y'$: trên $(-\\notinfty; 0)$...",
+                        "\\Leftrightarrow x = 0$ hoặc $x = 2$. Bảng xét dấu $y'$: trên $(-\\infty; 0)$...",
                         "Tập xác định $D = \\mathbb{R}$. Ta có $y' = 3x^2 - 6x = 3x(x - 2)$. Cho $y' = 0 "
                         "\\Leftrightarrow x = 0$ hoặc $x = 2$. Bảng xét dấu $y'$: trên $(-\\infty; 1)$...",
                         "Tập xác định $D = \\mathbb{R}$. Ta có $y' = 3x^2 - 6x = 3x(x - 2)$. Cho $y' = 0 "
@@ -439,7 +439,7 @@ LESSONS = [{'topic': 'l12-ch01-ung-dung-dao-ham',
             'q': 'Trong **Bài 3: Đường tiệm cận của đồ thị hàm số**, quy tắc hoặc công thức nào sau đây xác '
                  'định đúng **Tiệm cận ngang**?',
             'options': ['$\\lim_{x \\to \\pm\\infty} f(x) = y_0 \\Rightarrow \\text{TCN: } y = y_0$',
-                        '$\\lim_{x \\to \\pm\\notinfty} f(x) = y_0 \\Rightarrow \\text{TCN: } y = y_0$',
+                        '$\\lim_{x \\to \\pm\\infty} f(x) = y_0 \\Rightarrow \\text{TCN: } y = y_0$',
                         'Đảo ngược vế của quy tắc: $\\lim_{x \\to \\pm\\infty} f(x) = y_0 \\Rightarrow '
                         '\\text{TCN: } y = y_0$',
                         'Trường hợp trái ngược: không thỏa mãn điều kiện của $\\lim_{x \\to \\pm\\infty} '
@@ -452,7 +452,7 @@ LESSONS = [{'topic': 'l12-ch01-ung-dung-dao-ham',
             'type': 'mcq',
             'q': 'Khi học **Bài 3: Đường tiệm cận của đồ thị hàm số**, biểu thức hoặc quy tắc nào dưới đây '
                  'biểu diễn đúng **Tiệm cận đứng**?',
-            'options': ['$\\lim_{x \\to x_0^\\pm} f(x) = \\pm\\notinfty \\Rightarrow \\text{TCĐ: } x = x_0$',
+            'options': ['$\\lim_{x \\to x_0^\\pm} f(x) = \\pm\\infty \\Rightarrow \\text{TCĐ: } x = x_0$',
                         '$\\lim_{x \\to x_0^\\pm} f(x) = \\pm\\infty \\Rightarrow \\text{TCĐ: } x = x_0$',
                         'Đảo ngược vế của quy tắc: $\\lim_{x \\to x_0^\\pm} f(x) = \\pm\\infty \\Rightarrow '
                         '\\text{TCĐ: } x = x_0$',
@@ -510,7 +510,7 @@ LESSONS = [{'topic': 'l12-ch01-ung-dung-dao-ham',
                            'Trong **Bài 3: Đường tiệm cận của đồ thị hàm số**, quy tắc/công thức **Tiệm cận '
                            'ngang** được viết là: $\\lim_{x \\to \\pm\\infty} f(x) = y_0 \\Rightarrow '
                            '\\text{TCN: } y = y_0$.',
-                           'Nếu áp dụng sai dấu/phép tính thành $\\lim_{x \\to \\pm\\notinfty} f(x) = y_0 '
+                           'Nếu áp dụng sai dấu/phép tính thành $\\lim_{x \\to \\pm\\infty} f(x) = y_0 '
                            '\\Rightarrow \\text{TCN: } y = y_0$ thì kết quả của **Tiệm cận ngang** trong '
                            '**Bài 3: Đường tiệm cận của đồ thị hàm số** vẫn không thay đổi.',
                            'Xét ví dụ của bài: “Tìm các đường tiệm cận của đồ thị hàm số $y = \\dfrac{2x^2 - '
@@ -522,7 +522,7 @@ LESSONS = [{'topic': 'l12-ch01-ung-dung-dao-ham',
                         '**Đúng** theo công thức **Tiệm cận ngang** ($\\lim_{x \\to \\pm\\infty} f(x) = y_0 '
                         '\\Rightarrow \\text{TCN: } y = y_0$). c) **Sai** vì công thức đúng của **Tiệm cận '
                         'ngang** phải là $\\lim_{x \\to \\pm\\infty} f(x) = y_0 \\Rightarrow \\text{TCN: } y '
-                        '= y_0$ chứ không phải $\\lim_{x \\to \\pm\\notinfty} f(x) = y_0 \\Rightarrow '
+                        '= y_0$ chứ không phải $\\lim_{x \\to \\pm\\infty} f(x) = y_0 \\Rightarrow '
                         '\\text{TCN: } y = y_0$. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
@@ -533,7 +533,7 @@ LESSONS = [{'topic': 'l12-ch01-ung-dung-dao-ham',
                         '\\dfrac{2}{x - 1}$. Vì $\\lim_{x \\to 1^+} y = +\\infty$ và $\\lim_{x \\to 1^-} y = '
                         '-\\infty$...',
                         'Tập xác định $D = \\mathbb{R} \\setminus \\{1\\}$. Chia đa thức ta có $y = 2x + 1 + '
-                        '\\dfrac{2}{x - 1}$. Vì $\\lim_{x \\to 1^+} y = +\\notinfty$ và $\\lim_{x \\to 1^-} '
+                        '\\dfrac{2}{x - 1}$. Vì $\\lim_{x \\to 1^+} y = +\\infty$ và $\\lim_{x \\to 1^-} '
                         'y = -\\infty$...',
                         'Tập xác định $D = \\mathbb{R} \\setminus \\{1\\}$. Chia đa thức ta có $y = 2x + 1 + '
                         '\\dfrac{x - 1}{2}$. Vì $\\lim_{x \\to 1^+} y = +\\infty$ và $\\lim_{x \\to 1^-} y = '
@@ -631,7 +631,7 @@ LESSONS = [{'topic': 'l12-ch01-ung-dung-dao-ham',
             'type': 'mcq',
             'q': 'Khi học **Bài 4: Khảo sát sự biến thiên và vẽ đồ thị của hàm số**, biểu thức hoặc quy tắc '
                  'nào dưới đây biểu diễn đúng **Tâm đối xứng hàm nhất biến**?',
-            'options': ['$I\\geft(-\\dfrac{d}{c}; \\dfrac{a}{c}\\right)$ (giao điểm của TCĐ và TCN)',
+            'options': ['$I\\left(-\\dfrac{d}{c}; \\dfrac{a}{c}\\right)$ (giao điểm của TCĐ và TCN)',
                         '$I\\left(-\\dfrac{c}{d}; \\dfrac{a}{c}\\right)$ (giao điểm của TCĐ và TCN)',
                         '$I\\left(-\\dfrac{d}{c}; \\dfrac{a}{c}\\right)$ (giao điểm của TCĐ và TCN)',
                         'Trường hợp trái ngược: không thỏa mãn điều kiện của $I\\left(-\\dfrac{d}{c}; '
@@ -1921,7 +1921,7 @@ LESSONS = [{'topic': 'l12-ch01-ung-dung-dao-ham',
                  'hàm hàm lũy thừa**?',
             'options': ['$\\int x^\\alpha\\,\\mathrm{d}x = \\dfrac{x^{\\alpha + 1}}{\\alpha + 1} + C \\quad '
                         '(\\alpha \\ne -1), \\quad \\int \\dfrac{1}{x}\\,\\mathrm{d}x = \\ln|x| + C$',
-                        '$\\notint x^\\alpha\\,\\mathrm{d}x = \\dfrac{x^{\\alpha + 1}}{\\alpha + 1} + C '
+                        '$\\int x^\\alpha\\,\\mathrm{d}x = \\dfrac{x^{\\alpha + 1}}{\\alpha + 1} + C '
                         '\\quad (\\alpha \\ne -1), \\quad \\int \\dfrac{1}{x}\\,\\mathrm{d}x = \\ln|x| + C$',
                         '$\\int x^\\alpha\\,\\mathrm{d}x = \\dfrac{x^{\\alpha + 1}}{\\alpha + 1} + C \\quad '
                         '(\\alpha \\ne -1), \\quad \\int \\dfrac{x}{1}\\,\\mathrm{d}x = \\ln|x| + C$',
@@ -1936,7 +1936,7 @@ LESSONS = [{'topic': 'l12-ch01-ung-dung-dao-ham',
             'type': 'mcq',
             'q': 'Khi học **Bài 11: Nguyên hàm**, biểu thức hoặc quy tắc nào dưới đây biểu diễn đúng '
                  '**Nguyên hàm hàm lượng giác**?',
-            'options': ['$\\notint \\cos x\\,\\mathrm{d}x = \\sin x + C, \\quad \\int \\sin x\\,\\mathrm{d}x '
+            'options': ['$\\int \\cos x\\,\\mathrm{d}x = \\sin x + C, \\quad \\int \\sin x\\,\\mathrm{d}x '
                         '= -\\cos x + C$',
                         '$\\int \\cos x\\,\\mathrm{d}x = \\sin x + C, \\quad \\int \\sin x\\,\\mathrm{d}x = '
                         '-\\cos x + C$',
@@ -1999,7 +1999,7 @@ LESSONS = [{'topic': 'l12-ch01-ung-dung-dao-ham',
                            'viết là: $\\int x^\\alpha\\,\\mathrm{d}x = \\dfrac{x^{\\alpha + 1}}{\\alpha + 1} '
                            '+ C \\quad (\\alpha \\ne -1), \\quad \\int \\dfrac{1}{x}\\,\\mathrm{d}x = '
                            '\\ln|x| + C$.',
-                           'Nếu áp dụng sai dấu/phép tính thành $\\notint x^\\alpha\\,\\mathrm{d}x = '
+                           'Nếu áp dụng sai dấu/phép tính thành $\\int x^\\alpha\\,\\mathrm{d}x = '
                            '\\dfrac{x^{\\alpha + 1}}{\\alpha + 1} + C \\quad (\\alpha \\ne -1), \\quad \\int '
                            '\\dfrac{1}{x}\\,\\mathrm{d}x = \\ln|x| + C$ thì kết quả của **Nguyên hàm hàm lũy '
                            'thừa** trong **Bài 11: Nguyên hàm** vẫn không thay đổi.',
@@ -2014,7 +2014,7 @@ LESSONS = [{'topic': 'l12-ch01-ung-dung-dao-ham',
                         '\\dfrac{1}{x}\\,\\mathrm{d}x = \\ln|x| + C$). c) **Sai** vì công thức đúng của '
                         '**Nguyên hàm hàm lũy thừa** phải là $\\int x^\\alpha\\,\\mathrm{d}x = '
                         '\\dfrac{x^{\\alpha + 1}}{\\alpha + 1} + C \\quad (\\alpha \\ne -1), \\quad \\int '
-                        '\\dfrac{1}{x}\\,\\mathrm{d}x = \\ln|x| + C$ chứ không phải $\\notint '
+                        '\\dfrac{1}{x}\\,\\mathrm{d}x = \\ln|x| + C$ chứ không phải $\\int '
                         'x^\\alpha\\,\\mathrm{d}x = \\dfrac{x^{\\alpha + 1}}{\\alpha + 1} + C \\quad '
                         '(\\alpha \\ne -1), \\quad \\int \\dfrac{1}{x}\\,\\mathrm{d}x = \\ln|x| + C$. d) '
                         '**Đúng** theo lời giải ví dụ minh họa trong bài học.'},
@@ -2025,7 +2025,7 @@ LESSONS = [{'topic': 'l12-ch01-ung-dung-dao-ham',
                  'dưới đây là **đúng**?',
             'options': ['Ta có $F(x) = \\int (3x^2 - 2x + 1)\\,\\mathrm{d}x = x^3 - x^2 + x + C$. Theo giả '
                         'thiết $F(1) = 4 \\Leftrightarrow 1^3 - 1^2 + 1 + C = 4 \\Leftrightarrow C = 3$...',
-                        'Ta có $F(x) = \\notint (3x^2 - 2x + 1)\\,\\mathrm{d}x = x^3 - x^2 + x + C$. Theo '
+                        'Ta có $F(x) = \\int (3x^2 - 2x + 1)\\,\\mathrm{d}x = x^3 - x^2 + x + C$. Theo '
                         'giả thiết $F(1) = 4 \\Leftrightarrow 1^3 - 1^2 + 1 + C = 4 \\Leftrightarrow C = '
                         '3$...',
                         'Ta có $F(x) = \\int (3x^2 - 2x + 1)\\,\\mathrm{d}x = x^3 - x^2 + x + C$. Theo giả '
@@ -2108,7 +2108,7 @@ LESSONS = [{'topic': 'l12-ch01-ung-dung-dao-ham',
             'type': 'mcq',
             'q': 'Trong **Bài 12: Tích phân**, quy tắc hoặc công thức nào sau đây xác định đúng **Công thức '
                  'Newton-Leibniz**?',
-            'options': ['$\\notint_a^b f(x)\\,\\mathrm{d}x = F(x)\\Big|_a^b = F(b) - F(a)$',
+            'options': ['$\\int_a^b f(x)\\,\\mathrm{d}x = F(x)\\Big|_a^b = F(b) - F(a)$',
                         '$\\int_a^b f(x)\\,\\mathrm{d}x = F(x)\\Big|_a^b = F(b) - F(a)$',
                         'Đảo ngược vế của quy tắc: $\\int_a^b f(x)\\,\\mathrm{d}x = F(x)\\Big|_a^b = F(b) - '
                         'F(a)$',
@@ -2121,7 +2121,7 @@ LESSONS = [{'topic': 'l12-ch01-ung-dung-dao-ham',
             'type': 'mcq',
             'q': 'Khi học **Bài 12: Tích phân**, biểu thức hoặc quy tắc nào dưới đây biểu diễn đúng **Tính '
                  'chất tuyến tính**?',
-            'options': ['$\\notint_a^b [k f(x) + l g(x)]\\,\\mathrm{d}x = k\\int_a^b f(x)\\,\\mathrm{d}x + '
+            'options': ['$\\int_a^b [k f(x) + l g(x)]\\,\\mathrm{d}x = k\\int_a^b f(x)\\,\\mathrm{d}x + '
                         'l\\int_a^b g(x)\\,\\mathrm{d}x$',
                         'Đảo ngược vế của quy tắc: $\\int_a^b [k f(x) + l g(x)]\\,\\mathrm{d}x = k\\int_a^b '
                         'f(x)\\,\\mathrm{d}x + l\\int_a^b g(x)\\,\\mathrm{d}x$',
@@ -2181,7 +2181,7 @@ LESSONS = [{'topic': 'l12-ch01-ung-dung-dao-ham',
                            'và ý nghĩa hình học của tích phân qua diện tích hình thang cong.',
                            'Trong **Bài 12: Tích phân**, quy tắc/công thức **Công thức Newton-Leibniz** được '
                            'viết là: $\\int_a^b f(x)\\,\\mathrm{d}x = F(x)\\Big|_a^b = F(b) - F(a)$.',
-                           'Nếu áp dụng sai dấu/phép tính thành $\\notint_a^b f(x)\\,\\mathrm{d}x = '
+                           'Nếu áp dụng sai dấu/phép tính thành $\\int_a^b f(x)\\,\\mathrm{d}x = '
                            'F(x)\\Big|_a^b = F(b) - F(a)$ thì kết quả của **Công thức Newton-Leibniz** trong '
                            '**Bài 12: Tích phân** vẫn không thay đổi.',
                            'Xét ví dụ của bài: “Tính tích phân $I = \\int_0^2 (3x^2 - 2x + '
@@ -2192,7 +2192,7 @@ LESSONS = [{'topic': 'l12-ch01-ung-dung-dao-ham',
                         '**Công thức Newton-Leibniz** ($\\int_a^b f(x)\\,\\mathrm{d}x = F(x)\\Big|_a^b = '
                         'F(b) - F(a)$). c) **Sai** vì công thức đúng của **Công thức Newton-Leibniz** phải '
                         'là $\\int_a^b f(x)\\,\\mathrm{d}x = F(x)\\Big|_a^b = F(b) - F(a)$ chứ không phải '
-                        '$\\notint_a^b f(x)\\,\\mathrm{d}x = F(x)\\Big|_a^b = F(b) - F(a)$. d) **Đúng** theo '
+                        '$\\int_a^b f(x)\\,\\mathrm{d}x = F(x)\\Big|_a^b = F(b) - F(a)$. d) **Đúng** theo '
                         'lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
@@ -2280,7 +2280,7 @@ LESSONS = [{'topic': 'l12-ch01-ung-dung-dao-ham',
             'q': 'Trong **Bài 13: Ứng dụng hình học của tích phân (Diện tích hình phẳng và thể tích vật '
                  'thể)**, quy tắc hoặc công thức nào sau đây xác định đúng **Diện tích hình phẳng giới hạn '
                  'bởi 2 đường**?',
-            'options': ['$S = \\notint_a^b |f(x) - g(x)|\\,\\mathrm{d}x$',
+            'options': ['$S = \\int_a^b |f(x) - g(x)|\\,\\mathrm{d}x$',
                         'Đảo ngược vế của quy tắc: $S = \\int_a^b |f(x) - g(x)|\\,\\mathrm{d}x$',
                         '$S = \\int_a^b |f(x) - g(x)|\\,\\mathrm{d}x$',
                         'Trường hợp trái ngược: không thỏa mãn điều kiện của $S = \\int_a^b |f(x) - '
@@ -2294,7 +2294,7 @@ LESSONS = [{'topic': 'l12-ch01-ung-dung-dao-ham',
             'q': 'Khi học **Bài 13: Ứng dụng hình học của tích phân (Diện tích hình phẳng và thể tích vật '
                  'thể)**, biểu thức hoặc quy tắc nào dưới đây biểu diễn đúng **Thể tích vật thể theo thiết '
                  'diện**?',
-            'options': ['$V = \\notint_a^b S(x)\\,\\mathrm{d}x$',
+            'options': ['$V = \\int_a^b S(x)\\,\\mathrm{d}x$',
                         'Đảo ngược vế của quy tắc: $V = \\int_a^b S(x)\\,\\mathrm{d}x$',
                         'Trường hợp trái ngược: không thỏa mãn điều kiện của $V = \\int_a^b '
                         'S(x)\\,\\mathrm{d}x$',
@@ -2358,7 +2358,7 @@ LESSONS = [{'topic': 'l12-ch01-ung-dung-dao-ham',
                            'Trong **Bài 13: Ứng dụng hình học của tích phân (Diện tích hình phẳng và thể '
                            'tích vật thể)**, quy tắc/công thức **Diện tích hình phẳng giới hạn bởi 2 đường** '
                            'được viết là: $S = \\int_a^b |f(x) - g(x)|\\,\\mathrm{d}x$.',
-                           'Nếu áp dụng sai dấu/phép tính thành $S = \\notint_a^b |f(x) - '
+                           'Nếu áp dụng sai dấu/phép tính thành $S = \\int_a^b |f(x) - '
                            'g(x)|\\,\\mathrm{d}x$ thì kết quả của **Diện tích hình phẳng giới hạn bởi 2 '
                            'đường** trong **Bài 13: Ứng dụng hình học của tích phân (Diện tích hình phẳng và '
                            'thể tích vật thể)** vẫn không thay đổi.',
@@ -2370,7 +2370,7 @@ LESSONS = [{'topic': 'l12-ch01-ung-dung-dao-ham',
                         'tích hình phẳng và thể tích vật thể). b) **Đúng** theo công thức **Diện tích hình '
                         'phẳng giới hạn bởi 2 đường** ($S = \\int_a^b |f(x) - g(x)|\\,\\mathrm{d}x$). c) '
                         '**Sai** vì công thức đúng của **Diện tích hình phẳng giới hạn bởi 2 đường** phải là '
-                        '$S = \\int_a^b |f(x) - g(x)|\\,\\mathrm{d}x$ chứ không phải $S = \\notint_a^b |f(x) '
+                        '$S = \\int_a^b |f(x) - g(x)|\\,\\mathrm{d}x$ chứ không phải $S = \\int_a^b |f(x) '
                         '- g(x)|\\,\\mathrm{d}x$. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',

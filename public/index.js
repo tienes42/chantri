@@ -1,8 +1,3 @@
-// ================= PHIÊN BẢN ẢNH (CACHE-BUSTING) =================
-// Mỗi lần thay ảnh đảo trong assets/, tăng số này lên 3, 4, 5...
-// và nhớ tăng ?v= của index.js trong index.html để mọi người nhận bản mới.
-const ASSET_V = '2';
-
 const dialog = document.getElementById('dialog');
 const dialogTitle = document.getElementById('dialogTitle');
 const dialogText = document.getElementById('dialogText');
@@ -130,7 +125,13 @@ document.getElementById('rankingButton').addEventListener('click', () => {
     renderPlayer(e.detail);
     clearTimeout(rankTimer); rankTimer = setTimeout(renderRanking, 800);
   });
-  if (window.HDLG) HDLG.ready.then(() => { if (HDLG.user) renderRanking(); });
+  if (window.HDLG && typeof HDLG.getState === 'function') renderPlayer(HDLG.getState());
+  if (window.HDLG && HDLG.ready) {
+    HDLG.ready.then(() => {
+      if (typeof HDLG.getState === 'function') renderPlayer(HDLG.getState());
+      if (HDLG.user) renderRanking();
+    });
+  }
 })();
 
 document.querySelectorAll('.hit[data-popup]').forEach(b => {
@@ -264,11 +265,10 @@ async function processIslandImage(src, selector, isGrayFallback = false) {
     }, 'image/webp', 0.9);
   } catch (e) {
     // Cơ chế dự phòng tự động: .webp -> .png -> island-subject.webp làm xám
-    // Dùng startsWith vì đường dẫn có thêm ?v=... ở cuối
-    if (src.startsWith('assets/island-locked.webp')) {
-      processIslandImage(`assets/island-locked.png?v=${ASSET_V}`, selector, false);
-    } else if (src.startsWith('assets/island-locked.png')) {
-      processIslandImage(`assets/island-subject.webp?v=${ASSET_V}`, selector, true);
+    if (src === 'assets/island-locked.webp') {
+      processIslandImage('assets/island-locked.png', selector, false);
+    } else if (src === 'assets/island-locked.png') {
+      processIslandImage('assets/island-subject.webp', selector, true);
     } else {
       console.error('Lỗi xử lý ảnh đảo:', src, e);
     }
@@ -364,10 +364,9 @@ async function processSpriteSheet(src, mappingList) {
 }
 
 // Khởi chạy tách nền bằng định dạng .webp (PIC) đồng bộ cho cả 3 loại đảo
-// ?v=ASSET_V giúp mọi trình duyệt tải ảnh mới thay vì dùng bản cũ trong cache
-processIslandImage(`assets/island-center.webp?v=${ASSET_V}`, '.island-center-art');
-processIslandImage(`assets/island-subject.webp?v=${ASSET_V}`, '.hit:not(.is-locked) .island-art');
-processIslandImage(`assets/island-locked.webp?v=${ASSET_V}`, '.hit.is-locked .island-art');
+processIslandImage('assets/island-center.webp', '.island-center-art');
+processIslandImage('assets/island-subject.webp', '.hit:not(.is-locked) .island-art');
+processIslandImage('assets/island-locked.webp', '.hit.is-locked .island-art');
 
 processSpriteSheet('assets/props-sheet-1.png', [
   { col: 0, row: 0, selector: '.flask-left' },

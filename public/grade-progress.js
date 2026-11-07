@@ -89,7 +89,7 @@
   var GAME_FILES = { function_challenge: "function-challenge" };   // game_type khác tên file
   function gameURL(l) { var t = l.game_type || "simulation"; return "games/" + encodeURIComponent(GAME_FILES[t] || t) + ".html?lesson_id=" + encodeURIComponent(l.id); }
   function challengeURL(subject, grade) {
-    return "/challenge.html?subject=" + subject + "&grade=" + encodeURIComponent(grade) + "&from=" + encodeURIComponent(location.pathname + location.search);
+    return "challenge.html?subject=" + subject + "&grade=" + encodeURIComponent(grade) + "&from=" + encodeURIComponent(location.pathname + location.search);
   }
   function nextStep(subject, grade, a) {
     var r, i;
@@ -285,7 +285,7 @@
   }
   function loadAll() {
     allLoading = true;
-    var key = "hdlg_v6_lessons_" + opts.subject + "_all";
+    var key = "hdlg_v7_lessons_" + opts.subject + "_all";
     try { var c = jparse(sessionStorage.getItem(key), null); if (Array.isArray(c) && c.length) { allLessons = c; allLoading = false; return; } } catch (e) {}
     fetch((opts.apiBase || "/api") + "/content/subjects/" + opts.subject + "/lessons")
       .then(function (r) { if (!r.ok) throw new Error("HTTP " + r.status); return r.json(); })

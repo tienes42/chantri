@@ -27,7 +27,7 @@ CH1_LESSONS = [
             "Trình bày được phương pháp điều chế ester và ứng dụng làm hương liệu, dung môi, chất dẻo (thủy tinh hữu cơ PMMA)",
         ],
         "Đun nóng hoàn toàn $8,8\\text{ g}$ ethyl acetate ($\\text{CH}_3\\text{COOC}_2\\text{H}_5$, $M = 88$) với dung dịch chứa $0,15\\text{ mol}$ $\\text{NaOH}$. Sau khi phản ứng kết thúc, cô cạn dung dịch thu được bao nhiêu gam chất rắn khan?",
-        "Số mol ester: $n_{\\text{ester}} = \\frac{8,8}{88} = 0,1\\text{ mol}$.\\nPTHH: $\\text{CH}_3\\text{COOC}_2\\text{H}_5 + \\text{NaOH} \\xrightarrow{t^\\circ} \\text{CH}_3\\text{COONa} + \\text{C}_2\\text{H}_5\\text{OH}$.\\nVì $n_{\\text{NaOH}} = 0,15 > 0,1$ nên chất rắn khan sau khi cô cạn gồm $0,1\\text{ mol}$ muối $\\text{CH}_3\\text{COONa}$ ($M = 82$) và $0,05\\text{ mol}$ $\\text{NaOH}$ dư ($M = 40$):\\n$m_{\\text{rắn}} = 0,1 \\cdot 82 + 0,05 \\cdot 40 = 8,2 + 2,0 = 10,2\\text{ g}$.",
+        "Số mol ester: $n_{\\text{ester}} = \\frac{8,8}{88} = 0,1\\text{ mol}$.\nPTHH: $\\text{CH}_3\\text{COOC}_2\\text{H}_5 + \\text{NaOH} \\xrightarrow{t^\\circ} \\text{CH}_3\\text{COONa} + \\text{C}_2\\text{H}_5\\text{OH}$.\nVì $n_{\\text{NaOH}} = 0,15 > 0,1$ nên chất rắn khan sau khi cô cạn gồm $0,1\\text{ mol}$ muối $\\text{CH}_3\\text{COONa}$ ($M = 82$) và $0,05\\text{ mol}$ $\\text{NaOH}$ dư ($M = 40$):\n$m_{\\text{rắn}} = 0,1 \\cdot 82 + 0,05 \\cdot 40 = 8,2 + 2,0 = 10,2\\text{ g}$.",
         "Isoamyl acetate ($\\text{CH}_3\\text{COOCH}_2\\text{CH}_2\\text{CH(CH}_3)_2$) có mùi chuối chín; benzyl acetate có mùi hoa nhài; ethyl butyrate có mùi dứa chín, được dùng làm hương liệu trong công nghiệp thực phẩm và mỹ phẩm.",
         CH1_ID, CH1_TITLE, CH1_DESC,
         extra_questions=[
@@ -49,7 +49,7 @@ CH1_LESSONS = [
             "Trình bày được vai trò sinh học của các acid béo thiết yếu nhóm omega-3 (DHA, EPA trong dầu cá) và omega-6 (trong dầu thực vật)",
         ],
         "Để hydrogen hóa hoàn toàn $0,1\\text{ mol}$ triolein ($(\\text{C}_{17}\\text{H}_{33}\\text{COO})_3\\text{C}_3\\text{H}_5$) thành tristearin cần dùng tối thiểu bao nhiêu lít khí $\\text{H}_2$ (ở đkc, xúc tác $\\text{Ni}, t^\\circ$)?",
-        "Mỗi gốc oleate ($\\text{C}_{17}\\text{H}_{33}\\text{COO}-$) có $1$ liên kết đôi $\\text{C}=\\text{C}$ ở gốc hydrocarbon nên $1$ phân tử triolein có $3$ liên kết đôi $\\text{C}=\\text{C}$.\\nPTHH: $(\\text{C}_{17}\\text{H}_{33}\\text{COO})_3\\text{C}_3\\text{H}_5 + 3\\text{H}_2 \\xrightarrow{\\text{Ni}, t^\\circ} (\\text{C}_{17}\\text{H}_{35}\\text{COO})_3\\text{C}_3\\text{H}_5$.\\nSố mol $\\text{H}_2$: $n_{\\text{H}_2} = 3n_{\\text{triolein}} = 0,3\\text{ mol} \\Rightarrow V_{\\text{H}_2} = 0,3 \\cdot 24,79 = 7,437\\text{ L}$.",
+        "Mỗi gốc oleate ($\\text{C}_{17}\\text{H}_{33}\\text{COO}-$) có $1$ liên kết đôi $\\text{C}=\\text{C}$ ở gốc hydrocarbon nên $1$ phân tử triolein có $3$ liên kết đôi $\\text{C}=\\text{C}$.\nPTHH: $(\\text{C}_{17}\\text{H}_{33}\\text{COO})_3\\text{C}_3\\text{H}_5 + 3\\text{H}_2 \\xrightarrow{\\text{Ni}, t^\\circ} (\\text{C}_{17}\\text{H}_{35}\\text{COO})_3\\text{C}_3\\text{H}_5$.\nSố mol $\\text{H}_2$: $n_{\\text{H}_2} = 3n_{\\text{triolein}} = 0,3\\text{ mol} \\Rightarrow V_{\\text{H}_2} = 0,3 \\cdot 24,79 = 7,437\\text{ L}$.",
         "Acid béo omega-3 (như DHA, EPA có nhiều trong cá hồi, cá thu) có liên kết đôi $\\text{C}=\\text{C}$ đầu tiên ở vị trí carbon số $3$ tính từ nhóm $-\\text{CH}_3$ cuối mạch, rất cần thiết cho sự phát triển trí não và bảo vệ tim mạch.",
         CH1_ID, CH1_TITLE, CH1_DESC,
         extra_questions=[
@@ -103,7 +103,7 @@ CH2_LESSONS = [
             "Giải thích được vì sao fructose cũng có phản ứng tráng bạc nhưng không làm mất màu dung dịch nước bromine",
         ],
         "Lên men dung dịch chứa $54\\text{ g}$ glucose ($\\text{C}_6\\text{H}_{12}\\text{O}_6$, $M = 180$) thu được ethylic alcohol ($\\text{C}_2\\text{H}_5\\text{OH}$, $M = 46$) và khí $\\text{CO}_2$ với hiệu suất quá trình lên men đạt $80\\%$. Tính khối lượng ethylic alcohol thu được.",
-        "Số mol glucose ban đầu: $n_{\\text{glucose}} = \\frac{54}{180} = 0,3\\text{ mol}$.\\nPTHH: $\\text{C}_6\\text{H}_{12}\\text{O}_6 \\xrightarrow{\\text{enzyme}} 2\\text{C}_2\\text{H}_5\\text{OH} + 2\\text{CO}_2\\uparrow$.\\nVới hiệu suất $H = 80\\%$: $n_{\\text{C}_2\\text{H}_5\\text{OH}} = 2 \\cdot 0,3 \\cdot 80\\% = 0,48\\text{ mol}$.\\nKhối lượng ethylic alcohol thu được: $m = 0,48 \\cdot 46 = 22,08\\text{ g}$.",
+        "Số mol glucose ban đầu: $n_{\\text{glucose}} = \\frac{54}{180} = 0,3\\text{ mol}$.\nPTHH: $\\text{C}_6\\text{H}_{12}\\text{O}_6 \\xrightarrow{\\text{enzyme}} 2\\text{C}_2\\text{H}_5\\text{OH} + 2\\text{CO}_2\\uparrow$.\nVới hiệu suất $H = 80\\%$: $n_{\\text{C}_2\\text{H}_5\\text{OH}} = 2 \\cdot 0,3 \\cdot 80\\% = 0,48\\text{ mol}$.\nKhối lượng ethylic alcohol thu được: $m = 0,48 \\cdot 46 = 22,08\\text{ g}$.",
         "Mật ong tự nhiên có vị ngọt sắc vì chứa hàm lượng cao đường fructose (khoảng $40\\%$) và đường glucose (khoảng $30\\%$).",
         CH2_ID, CH2_TITLE, CH2_DESC,
         extra_questions=[
@@ -125,7 +125,7 @@ CH2_LESSONS = [
             "Giải được bài toán thủy phân saccharose/maltose kết hợp phản ứng tráng bạc",
         ],
         "Thủy phân hoàn toàn $34,2\\text{ g}$ saccharose ($\\text{C}_{12}\\text{H}_{22}\\text{O}_{11}$, $M = 342$) trong môi trường acid, trung hòa acid rồi cho toàn bộ dung dịch thu được tác dụng với lượng dư thuốc thử Tollens đun nóng. Tính khối lượng bạc ($\\text{Ag} = 108$) kết tủa.",
-        "Số mol saccharose: $n_{\\text{saccharose}} = \\frac{34,2}{342} = 0,1\\text{ mol}$.\\nKhi thủy phân hoàn toàn: $0,1\\text{ mol}$ saccharose tạo ra $0,1\\text{ mol}$ glucose và $0,1\\text{ mol}$ fructose.\\nCả hai sản phẩm đều tham gia phản ứng tráng bạc: $n_{\\text{Ag}} = 2(0,1 + 0,1) = 0,4\\text{ mol}$.\\nKhối lượng bạc kết tủa: $m_{\\text{Ag}} = 0,4 \\cdot 108 = 43,2\\text{ g}$.",
+        "Số mol saccharose: $n_{\\text{saccharose}} = \\frac{34,2}{342} = 0,1\\text{ mol}$.\nKhi thủy phân hoàn toàn: $0,1\\text{ mol}$ saccharose tạo ra $0,1\\text{ mol}$ glucose và $0,1\\text{ mol}$ fructose.\nCả hai sản phẩm đều tham gia phản ứng tráng bạc: $n_{\\text{Ag}} = 2(0,1 + 0,1) = 0,4\\text{ mol}$.\nKhối lượng bạc kết tủa: $m_{\\text{Ag}} = 0,4 \\cdot 108 = 43,2\\text{ g}$.",
         "Đường mạch nha (chứa nhiều maltose) được chế biến bằng cách ủ mầm lúa nếp để enzyme amylase trong mầm lúa thủy phân tinh bột thành maltose có vị ngọt dịu.",
         CH2_ID, CH2_TITLE, CH2_DESC,
         extra_questions=[
@@ -147,7 +147,7 @@ CH2_LESSONS = [
             "Giải được bài toán lên men tinh bột sản xuất ethanol và bài toán điều chế thuốc súng không khói từ cellulose",
         ],
         "Từ $16,2\\text{ kg}$ cellulose nguyên chất, cho tác dụng với lượng dư hỗn hợp $\\text{HNO}_3$ đặc và $\\text{H}_2\\text{SO}_4$ đặc đun nóng. Tính khối lượng cellulose trinitrate thu được biết hiệu suất phản ứng đạt $90\\%$.",
-        "Tính theo $1$ mắt xích $\\text{C}_6\\text{H}_{10}\\text{O}_5$ ($M = 162$) tạo $1$ mắt xích $\\text{C}_6\\text{H}_7\\text{O}_2(\\text{ONO}_2)_3$ ($M = 297$):\\nSố mol mắt xích cellulose: $n = \\frac{16,2}{162} = 0,1\\text{ kmol}$.\\nVới hiệu suất $H = 90\\%$, khối lượng cellulose trinitrate thu được là:\\n$m = 0,1 \\cdot 297 \\cdot 90\\% = 26,73\\text{ kg}$.",
+        "Tính theo $1$ mắt xích $\\text{C}_6\\text{H}_{10}\\text{O}_5$ ($M = 162$) tạo $1$ mắt xích $\\text{C}_6\\text{H}_7\\text{O}_2(\\text{ONO}_2)_3$ ($M = 297$):\nSố mol mắt xích cellulose: $n = \\frac{16,2}{162} = 0,1\\text{ kmol}$.\nVới hiệu suất $H = 90\\%$, khối lượng cellulose trinitrate thu được là:\n$m = 0,1 \\cdot 297 \\cdot 90\\% = 26,73\\text{ kg}$.",
         "Con người chỉ tiêu hóa được tinh bột (nhờ có enzyme $\\alpha$-amylase cắt liên kết $\\alpha$-glycoside) mà không tiêu hóa được cellulose thành đường (do không có enzyme cellulase cắt liên kết $\\beta$-1,4-glycoside như động vật ăn cỏ), nhưng cellulose trong rau xanh lại đóng vai trò chất xơ thiết yếu giúp kích thích nhu động ruột.",
         CH2_ID, CH2_TITLE, CH2_DESC,
         extra_questions=[
@@ -180,7 +180,7 @@ CH3_LESSONS = [
             "Giải được bài toán amine tác dụng với dung dịch $\\text{HCl}$ bằng định luật bảo toàn khối lượng",
         ],
         "Cho $9,0\\text{ g}$ ethylamine ($\\text{C}_2\\text{H}_5\\text{NH}_2$, $M = 45$) tác dụng vừa đủ với dung dịch $\\text{HCl}$. Tính khối lượng muối khan thu được sau phản ứng.",
-        "Số mol $\\text{C}_2\\text{H}_5\\text{NH}_2$: $n = \\frac{9,0}{45} = 0,2\\text{ mol}$.\\nPTHH: $\\text{C}_2\\text{H}_5\\text{NH}_2 + \\text{HCl} \\rightarrow \\text{C}_2\\text{H}_5\\text{NH}_3\\text{Cl}$.\\nBảo toàn khối lượng: $m_{\\text{muối}} = m_{\\text{amine}} + 36,5 \\cdot n_{\\text{HCl}} = 9,0 + 36,5 \\cdot 0,2 = 9,0 + 7,3 = 16,3\\text{ g}$.",
+        "Số mol $\\text{C}_2\\text{H}_5\\text{NH}_2$: $n = \\frac{9,0}{45} = 0,2\\text{ mol}$.\nPTHH: $\\text{C}_2\\text{H}_5\\text{NH}_2 + \\text{HCl} \\rightarrow \\text{C}_2\\text{H}_5\\text{NH}_3\\text{Cl}$.\nBảo toàn khối lượng: $m_{\\text{muối}} = m_{\\text{amine}} + 36,5 \\cdot n_{\\text{HCl}} = 9,0 + 36,5 \\cdot 0,2 = 9,0 + 7,3 = 16,3\\text{ g}$.",
         "Mùi tanh của cá (đặc biệt là cá biển) chủ yếu do các amine dễ bay hơi như trimethylamine ($(\\text{CH}_3)_3\\text{N}$) gây ra; khi chế biến cá, người ta thường dùng giấm ăn, chanh hoặc khế chua (chứa các acid hữu cơ) để tác dụng với amine tạo muối không bay hơi, làm hết mùi tanh.",
         CH3_ID, CH3_TITLE, CH3_DESC,
         extra_questions=[
@@ -202,7 +202,7 @@ CH3_LESSONS = [
             "Viết được phương trình hóa học chứng minh tính lưỡng tính, phản ứng ester hóa và phản ứng trùng ngưng của $\\varepsilon$-, $\\omega$-amino acid",
         ],
         "Cho $14,7\\text{ g}$ glutamic acid ($\\text{HOOC}-\\text{CH}_2-\\text{CH}_2-\\text{CH(NH}_2)-\\text{COOH}$, $M = 147$) tác dụng hoàn toàn với dung dịch $\\text{NaOH}$ dư. Tính số mol $\\text{NaOH}$ đã phản ứng.",
-        "Số mol glutamic acid: $n_{\\text{Glu}} = \\frac{14,7}{147} = 0,1\\text{ mol}$.\\nVì mỗi phân tử glutamic acid có $2$ nhóm $-\\text{COOH}$ nên phản ứng với $\\text{NaOH}$ theo tỉ lệ $1 : 2$:\\n$\\text{HOOC}-\\text{C}_3\\text{H}_5(\\text{NH}_2)-\\text{COOH} + 2\\text{NaOH} \\rightarrow \\text{NaOOC}-\\text{C}_3\\text{H}_5(\\text{NH}_2)-\\text{COONa} + 2\\text{H}_2\\text{O}$.\\nVậy số mol $\\text{NaOH}$ đã phản ứng là $n_{\\text{NaOH}} = 2 \\cdot 0,1 = 0,2\\text{ mol}$.",
+        "Số mol glutamic acid: $n_{\\text{Glu}} = \\frac{14,7}{147} = 0,1\\text{ mol}$.\nVì mỗi phân tử glutamic acid có $2$ nhóm $-\\text{COOH}$ nên phản ứng với $\\text{NaOH}$ theo tỉ lệ $1 : 2$:\n$\\text{HOOC}-\\text{C}_3\\text{H}_5(\\text{NH}_2)-\\text{COOH} + 2\\text{NaOH} \\rightarrow \\text{NaOOC}-\\text{C}_3\\text{H}_5(\\text{NH}_2)-\\text{COONa} + 2\\text{H}_2\\text{O}$.\nVậy số mol $\\text{NaOH}$ đã phản ứng là $n_{\\text{NaOH}} = 2 \\cdot 0,1 = 0,2\\text{ mol}$.",
         "Muối monosodium glutamate (chỉ trung hòa $1$ nhóm $-\\text{COOH}$ của glutamic acid bằng $\\text{NaOH}$) chính là bột ngọt (mì chính) dùng làm gia vị tạo vị ngọt umami cho món ăn.",
         CH3_ID, CH3_TITLE, CH3_DESC,
         extra_questions=[
@@ -225,7 +225,7 @@ CH3_LESSONS = [
             "Trình bày được cấu trúc, tính chất của protein, bản chất và đặc điểm xúc tác chọn lọc cao của enzyme; giải được bài toán thủy phân peptide",
         ],
         "Thủy phân hoàn toàn $0,1\\text{ mol}$ dipeptide $\\text{Gly}-\\text{Ala}$ bằng một lượng vừa đủ dung dịch $\\text{NaOH}$ đun nóng. Tính khối lượng muối khan thu được sau phản ứng.",
-        "Phân tử khối của $\\text{Gly}-\\text{Ala}$: $M = 75 + 89 - 18 = 146\\text{ g/mol}$.\\nPhương trình thủy phân trong $\\text{NaOH}$:\\n$\\text{Gly}-\\text{Ala} + 2\\text{NaOH} \\xrightarrow{t^\\circ} \\text{GlyNa} + \\text{AlaNa} + \\text{H}_2\\text{O}$.\\nVới $0,1\\text{ mol}$ $\\text{Gly}-\\text{Ala}$, thu được $0,1\\text{ mol}$ muối $\\text{GlyNa}$ ($M = 75 + 22 = 97$) và $0,1\\text{ mol}$ muối $\\text{AlaNa}$ ($M = 89 + 22 = 111$).\\nTổng khối lượng muối: $m_{\\text{muối}} = 0,1 \\cdot 97 + 0,1 \\cdot 111 = 20,8\\text{ g}$.",
+        "Phân tử khối của $\\text{Gly}-\\text{Ala}$: $M = 75 + 89 - 18 = 146\\text{ g/mol}$.\nPhương trình thủy phân trong $\\text{NaOH}$:\n$\\text{Gly}-\\text{Ala} + 2\\text{NaOH} \\xrightarrow{t^\\circ} \\text{GlyNa} + \\text{AlaNa} + \\text{H}_2\\text{O}$.\nVới $0,1\\text{ mol}$ $\\text{Gly}-\\text{Ala}$, thu được $0,1\\text{ mol}$ muối $\\text{GlyNa}$ ($M = 75 + 22 = 97$) và $0,1\\text{ mol}$ muối $\\text{AlaNa}$ ($M = 89 + 22 = 111$).\nTổng khối lượng muối: $m_{\\text{muối}} = 0,1 \\cdot 97 + 0,1 \\cdot 111 = 20,8\\text{ g}$.",
         "Bột giặt sinh học hiện đại có bổ sung các enzyme protease và lipase giúp phân hủy nhanh các vết bẩn protein (máu, sữa, trứng) và vết dầu mỡ ở ngay nhiệt độ nước thường mà không làm hại da tay.",
         CH3_ID, CH3_TITLE, CH3_DESC,
         extra_questions=[
@@ -257,7 +257,7 @@ CH4_LESSONS = [
             "Viết được phương trình hóa học tổng hợp các polymer thông dụng từ monomer tương ứng",
         ],
         "Trùng hợp $5,6\\text{ kg}$ khí ethylene ($\\text{CH}_2=\\text{CH}_2$) để sản xuất nhựa polyethylene (PE) với hiệu suất quá trình trùng hợp đạt $85\\%$. Tính khối lượng nhựa PE thu được.",
-        "Trong phản ứng trùng hợp $n\\,\\text{CH}_2=\\text{CH}_2 \\xrightarrow{t^\\circ, p, xt} (-\\text{CH}_2-\\text{CH}_2-)_n$, không có phân tử nhỏ nào tách ra nên theo định luật bảo toàn khối lượng (với hiệu suất $H = 85\\%$):\\n$m_{\\text{PE}} = m_{\\text{ethylene}} \\cdot H = 5,6 \\cdot 85\\% = 4,76\\text{ kg}$.",
+        "Trong phản ứng trùng hợp $n\\,\\text{CH}_2=\\text{CH}_2 \\xrightarrow{t^\\circ, p, xt} (-\\text{CH}_2-\\text{CH}_2-)_n$, không có phân tử nhỏ nào tách ra nên theo định luật bảo toàn khối lượng (với hiệu suất $H = 85\\%$):\n$m_{\\text{PE}} = m_{\\text{ethylene}} \\cdot H = 5,6 \\cdot 85\\% = 4,76\\text{ kg}$.",
         "Polymer có cấu trúc mạch mạng không gian như cao su lưu hóa hoặc nhựa bakelite không nóng chảy khi đun nóng và không tan trong các dung môi thông thường, nên rất bền cơ học và bền nhiệt.",
         CH4_ID, CH4_TITLE, CH4_DESC,
         extra_questions=[
@@ -312,7 +312,7 @@ CH5_LESSONS = [
             "Mô tả được cấu tạo, nguyên tắc hoạt động của pin Galvani (xác định anode, cathode, chiều dòng electron, vai trò cầu muối) và tính được sức điện động chuẩn $E^\\circ_{\\text{pin}}$",
         ],
         "Cho một pin điện hóa Galvani $\\text{Zn}-\\text{Cu}$ hoạt động ở điều kiện chuẩn. Biết thế điện cực chuẩn $E^\\circ_{\\text{Zn}^{2+}/\\text{Zn}} = -0,762\\text{ V}$ và $E^\\circ_{\\text{Cu}^{2+}/\\text{Cu}} = +0,340\\text{ V}$. Xác định cực âm (anode), cực dương (cathode) và tính sức điện động chuẩn $E^\\circ_{\\text{pin}}$ của pin.",
-        "- Vì $E^\\circ_{\\text{Zn}^{2+}/\\text{Zn}} (-0,762\\text{ V}) < E^\\circ_{\\text{Cu}^{2+}/\\text{Cu}} (+0,340\\text{ V})$ nên thanh $\\text{Zn}$ đóng vai trò cực âm (anode, bị oxi hóa $\\text{Zn} \\rightarrow \\text{Zn}^{2+} + 2\\text{e}$), còn thanh $\\text{Cu}$ đóng vai trò cực dương (cathode, xảy ra quá trình khử $\\text{Cu}^{2+} + 2\\text{e} \\rightarrow \\text{Cu}$).\\n- Sức điện động chuẩn của pin:\\n$E^\\circ_{\\text{pin}} = E^\\circ_{(+)} - E^\\circ_{(-)} = 0,340 - (-0,762) = 1,102\\text{ V}$.",
+        "- Vì $E^\\circ_{\\text{Zn}^{2+}/\\text{Zn}} (-0,762\\text{ V}) < E^\\circ_{\\text{Cu}^{2+}/\\text{Cu}} (+0,340\\text{ V})$ nên thanh $\\text{Zn}$ đóng vai trò cực âm (anode, bị oxi hóa $\\text{Zn} \\rightarrow \\text{Zn}^{2+} + 2\\text{e}$), còn thanh $\\text{Cu}$ đóng vai trò cực dương (cathode, xảy ra quá trình khử $\\text{Cu}^{2+} + 2\\text{e} \\rightarrow \\text{Cu}$).\n- Sức điện động chuẩn của pin:\n$E^\\circ_{\\text{pin}} = E^\\circ_{(+)} - E^\\circ_{(-)} = 0,340 - (-0,762) = 1,102\\text{ V}$.",
         "Pin nhiên liệu hydrogen - oxygen ($\\text{H}_2-\\text{O}_2$) trên các xe ô tô điện hiện đại chuyển hóa trực tiếp hóa năng thành điện năng với hiệu suất rất cao và sản phẩm thải ra duy nhất chỉ là nước tinh khiết ($\\text{H}_2\\text{O}$).",
         CH5_ID, CH5_TITLE, CH5_DESC,
         extra_questions=[
@@ -334,7 +334,7 @@ CH5_LESSONS = [
             "Vận dụng công thức $n_{\\text{e}} = \\frac{I \\cdot t}{96500}$ và bảo toàn electron để giải bài toán điện phân và mạ điện",
         ],
         "Điện phân $200\\text{ mL}$ dung dịch $\\text{CuSO}_4$ dư với các điện cực trơ bằng dòng điện một chiều có cường độ $I = 5\\text{ A}$ trong thời gian $t = 1930\\text{ s}$. Tính khối lượng đồng ($\\text{Cu} = 64$) bám vào cathode và thể tích khí $\\text{O}_2$ (ở đkc) thoát ra ở anode.",
-        "- Số mol electron trao đổi ở mỗi điện cực: $n_{\\text{e}} = \\frac{I \\cdot t}{F} = \\frac{5 \\cdot 1930}{96500} = 0,1\\text{ mol}$.\\n- Tại cathode ($-$): $\\text{Cu}^{2+} + 2\\text{e} \\rightarrow \\text{Cu} \\Rightarrow n_{\\text{Cu}} = \\frac{1}{2}n_{\\text{e}} = 0,05\\text{ mol} \\Rightarrow m_{\\text{Cu}} = 0,05 \\cdot 64 = 3,2\\text{ g}$.\\n- Tại anode ($+$): $2\\text{H}_2\\text{O} \\rightarrow \\text{O}_2\\uparrow + 4\\text{H}^+ + 4\\text{e} \\Rightarrow n_{\\text{O}_2} = \\frac{1}{4}n_{\\text{e}} = 0,025\\text{ mol} \\Rightarrow V_{\\text{O}_2} = 0,025 \\cdot 24,79 = 0,61975\\text{ L}$.",
+        "- Số mol electron trao đổi ở mỗi điện cực: $n_{\\text{e}} = \\frac{I \\cdot t}{F} = \\frac{5 \\cdot 1930}{96500} = 0,1\\text{ mol}$.\n- Tại cathode ($-$): $\\text{Cu}^{2+} + 2\\text{e} \\rightarrow \\text{Cu} \\Rightarrow n_{\\text{Cu}} = \\frac{1}{2}n_{\\text{e}} = 0,05\\text{ mol} \\Rightarrow m_{\\text{Cu}} = 0,05 \\cdot 64 = 3,2\\text{ g}$.\n- Tại anode ($+$): $2\\text{H}_2\\text{O} \\rightarrow \\text{O}_2\\uparrow + 4\\text{H}^+ + 4\\text{e} \\Rightarrow n_{\\text{O}_2} = \\frac{1}{4}n_{\\text{e}} = 0,025\\text{ mol} \\Rightarrow V_{\\text{O}_2} = 0,025 \\cdot 24,79 = 0,61975\\text{ L}$.",
         "Khi mạ bạc (hoặc mạ vàng, mạ niken) cho một chiếc huy chương hay đồ trang sức: vật cần mạ được gắn vào cực âm (cathode), còn thanh kim loại dùng để mạ ($\\text{Ag}, \\text{Au}, \\text{Ni}$) được gắn vào cực dương (anode tan).",
         CH5_ID, CH5_TITLE, CH5_DESC,
         extra_questions=[
@@ -366,7 +366,7 @@ CH6_LESSONS = [
             "Giải được bài toán hỗn hợp kim loại tác dụng với acid hoặc dung dịch muối bằng bảo toàn electron",
         ],
         "Cho $8,4\\text{ g}$ bột sắt ($\\text{Fe} = 56$) vào $200\\text{ mL}$ dung dịch $\\text{AgNO}_3$ $1,5\\text{ M}$. Sau khi các phản ứng xảy ra hoàn toàn, thu được $m$ gam chất rắn. Tính giá trị của $m$.",
-        "Số mol $\\text{Fe}$: $n_{\\text{Fe}} = \\frac{8,4}{56} = 0,15\\text{ mol}$; số mol $\\text{AgNO}_3$: $n_{\\text{Ag}^+} = 0,2 \\cdot 1,5 = 0,3\\text{ mol}$.\\nTa thấy $2n_{\\text{Fe}} = 0,3\\text{ mol} = n_{\\text{Ag}^+}$, nên phản ứng vừa đủ tạo muối $\\text{Fe(NO}_3)_2$ và kết tủa $\\text{Ag}$:\\n$\\text{Fe} + 2\\text{Ag}^+ \\rightarrow \\text{Fe}^{2+} + 2\\text{Ag}\\downarrow$.\\nSố mol $\\text{Ag}$ thu được là $0,3\\text{ mol} \\Rightarrow m = 0,3 \\cdot 108 = 32,4\\text{ g}$.",
+        "Số mol $\\text{Fe}$: $n_{\\text{Fe}} = \\frac{8,4}{56} = 0,15\\text{ mol}$; số mol $\\text{AgNO}_3$: $n_{\\text{Ag}^+} = 0,2 \\cdot 1,5 = 0,3\\text{ mol}$.\nTa thấy $2n_{\\text{Fe}} = 0,3\\text{ mol} = n_{\\text{Ag}^+}$, nên phản ứng vừa đủ tạo muối $\\text{Fe(NO}_3)_2$ và kết tủa $\\text{Ag}$:\n$\\text{Fe} + 2\\text{Ag}^+ \\rightarrow \\text{Fe}^{2+} + 2\\text{Ag}\\downarrow$.\nSố mol $\\text{Ag}$ thu được là $0,3\\text{ mol} \\Rightarrow m = 0,3 \\cdot 108 = 32,4\\text{ g}$.",
         "Tungsten (wolfram, $\\text{W}$) có nhiệt độ nóng chảy cao nhất ($3410^\\circ\\text{C}$) nên được dùng làm dây tóc bóng đèn sợi đốt; chromium ($\\text{Cr}$) cứng nhất được mạ lên các chi tiết máy chịu ma sát cao.",
         CH6_ID, CH6_TITLE, CH6_DESC,
         extra_questions=[
@@ -388,7 +388,7 @@ CH6_LESSONS = [
             "Giải được bài toán khử hỗn hợp oxide kim loại bằng khí $\\text{CO}$ hoặc $\\text{H}_2$ (chú ý các oxide trước $\\text{Al}$ không bị khử)",
         ],
         "Dẫn luồng khí $\\text{CO}$ dư đi qua ống sứ nung nóng đựng $24\\text{ g}$ hỗn hợp gồm $\\text{Al}_2\\text{O}_3, \\text{MgO}, \\text{Fe}_2\\text{O}_3$ và $\\text{CuO}$. Sau khi phản ứng xảy ra hoàn toàn, thu được khí đi ra làm đục nước vôi trong dư tạo $20\\text{ g}$ kết tủa $\\text{CaCO}_3$ và trong ống sứ còn lại $m$ gam chất rắn. Tính giá trị của $m$.",
-        "Số mol $\\text{CO}_2$ sinh ra: $n_{\\text{CO}_2} = n_{\\text{CaCO}_3} = \\frac{20}{100} = 0,2\\text{ mol}$.\\nBản chất phản ứng: $\\text{CO} + \\text{O}_{(\\text{trong } \\text{Fe}_2\\text{O}_3, \\text{CuO})} \\xrightarrow{t^\\circ} \\text{CO}_2$.\\nSố mol nguyên tử $\\text{O}$ bị lấy đi khỏi hỗn hợp oxide: $n_{\\text{O}} = n_{\\text{CO}_2} = 0,2\\text{ mol}$.\\nKhối lượng chất rắn còn lại trong ống sứ:\\n$m = m_{\\text{oxide đầu}} - m_{\\text{O}} = 24 - 0,2 \\cdot 16 = 24 - 3,2 = 20,8\\text{ g}$.",
+        "Số mol $\\text{CO}_2$ sinh ra: $n_{\\text{CO}_2} = n_{\\text{CaCO}_3} = \\frac{20}{100} = 0,2\\text{ mol}$.\nBản chất phản ứng: $\\text{CO} + \\text{O}_{(\\text{trong } \\text{Fe}_2\\text{O}_3, \\text{CuO})} \\xrightarrow{t^\\circ} \\text{CO}_2$.\nSố mol nguyên tử $\\text{O}$ bị lấy đi khỏi hỗn hợp oxide: $n_{\\text{O}} = n_{\\text{CO}_2} = 0,2\\text{ mol}$.\nKhối lượng chất rắn còn lại trong ống sứ:\n$m = m_{\\text{oxide đầu}} - m_{\\text{O}} = 24 - 0,2 \\cdot 16 = 24 - 3,2 = 20,8\\text{ g}$.",
         "Tái chế $1$ tấn nhôm phế liệu (từ vỏ lon nước giải khát) tiết kiệm được khoảng $95\\%$ điện năng so với việc điện phân nóng chảy quặng bauxite để sản xuất $1$ tấn nhôm mới.",
         CH6_ID, CH6_TITLE, CH6_DESC,
         extra_questions=[
@@ -410,7 +410,7 @@ CH6_LESSONS = [
             "Trình bày được nguyên tắc của phương pháp bảo vệ bề mặt và phương pháp điện hóa (dùng điện cực hi sinh) trong thực tiễn",
         ],
         "Cho một đinh sắt ($\\text{Fe}$) nguyên chất vào cốc (1) đựng dung dịch $\\text{H}_2\\text{SO}_4$ loãng, và cho một đinh sắt nguyên chất khác vào cốc (2) đựng dung dịch $\\text{H}_2\\text{SO}_4$ loãng có nhỏ thêm vài giọt dung dịch $\\text{CuSO}_4$. Ở cốc nào bọt khí $\\text{H}_2$ thoát ra nhanh hơn và đinh sắt bị ăn mòn theo kiểu nào?",
-        "- Ở cốc (1): Chỉ có $\\text{Fe}$ tác dụng trực tiếp với $\\text{H}_2\\text{SO}_4$ loãng nên chỉ xảy ra ăn mòn hóa học, bọt khí $\\text{H}_2$ thoát ra chậm.\\n- Ở cốc (2): $\\text{Fe}$ đẩy $\\text{Cu}$ ra khỏi $\\text{CuSO}_4$ tạo lớp $\\text{Cu}$ bám ngay trên bề mặt đinh sắt, hình thành pin điện hóa $\\text{Fe}-\\text{Cu}$ nhúng trong dung dịch điện li $\\text{H}_2\\text{SO}_4$. Do xảy ra ăn mòn điện hóa, đinh sắt ($\\text{Fe}$ là cực âm) bị ăn mòn nhanh hơn rất nhiều và bọt khí $\\text{H}_2$ thoát ra rất nhanh trên bề mặt lớp $\\text{Cu}$.",
+        "- Ở cốc (1): Chỉ có $\\text{Fe}$ tác dụng trực tiếp với $\\text{H}_2\\text{SO}_4$ loãng nên chỉ xảy ra ăn mòn hóa học, bọt khí $\\text{H}_2$ thoát ra chậm.\n- Ở cốc (2): $\\text{Fe}$ đẩy $\\text{Cu}$ ra khỏi $\\text{CuSO}_4$ tạo lớp $\\text{Cu}$ bám ngay trên bề mặt đinh sắt, hình thành pin điện hóa $\\text{Fe}-\\text{Cu}$ nhúng trong dung dịch điện li $\\text{H}_2\\text{SO}_4$. Do xảy ra ăn mòn điện hóa, đinh sắt ($\\text{Fe}$ là cực âm) bị ăn mòn nhanh hơn rất nhiều và bọt khí $\\text{H}_2$ thoát ra rất nhanh trên bề mặt lớp $\\text{Cu}$.",
         "Để bảo vệ phần vỏ tàu biển bằng thép ($\\text{Fe}-\\text{C}$) ngâm trong nước biển khỏi bị ăn mòn điện hóa, người ta gắn các tấm kẽm ($\\text{Zn}$) vào vỏ tàu: do $\\text{Zn}$ có tính khử mạnh hơn $\\text{Fe}$ nên $\\text{Zn}$ bị ăn mòn thay cho vỏ thép (sau một thời gian chỉ cần thay các tấm $\\text{Zn}$ mới).",
         CH6_ID, CH6_TITLE, CH6_DESC,
         extra_questions=[
@@ -442,7 +442,7 @@ CH7_LESSONS = [
             "Giải được bài toán cho kim loại kiềm vào nước hoặc vào dung dịch acid, dung dịch muối",
         ],
         "Cho $4,6\\text{ g}$ kim loại sodium ($\\text{Na} = 23$) vào $200\\text{ mL}$ dung dịch $\\text{HCl}$ $0,5\\text{ M}$. Sau khi các phản ứng xảy ra hoàn toàn, tính thể tích khí $\\text{H}_2$ thoát ra ở đkc.",
-        "Số mol $\\text{Na}$: $n_{\\text{Na}} = \\frac{4,6}{23} = 0,2\\text{ mol}$; số mol $\\text{HCl}$: $n_{\\text{HCl}} = 0,2 \\cdot 0,5 = 0,1\\text{ mol}$.\\nKhi cho $\\text{Na}$ vào dung dịch acid, $\\text{Na}$ phản ứng hết (với $\\text{HCl}$ trước, nếu $\\text{Na}$ dư sẽ tác dụng tiếp với $\\text{H}_2\\text{O}$):\\n$2\\text{Na} + 2\\text{H}^+ \\rightarrow 2\\text{Na}^+ + \\text{H}_2\\uparrow$ và $2\\text{Na} + 2\\text{H}_2\\text{O} \\rightarrow 2\\text{NaOH} + \\text{H}_2\\uparrow$.\\nDo $\\text{Na}$ luôn tan hết và nhường $1\\text{e}$ nên bảo toàn electron: $n_{\\text{H}_2} = \\frac{1}{2}n_{\\text{Na}} = \\frac{0,2}{2} = 0,1\\text{ mol}$.\\nThể tích khí $\\text{H}_2$ (đkc): $V = 0,1 \\cdot 24,79 = 2,479\\text{ L}$.",
+        "Số mol $\\text{Na}$: $n_{\\text{Na}} = \\frac{4,6}{23} = 0,2\\text{ mol}$; số mol $\\text{HCl}$: $n_{\\text{HCl}} = 0,2 \\cdot 0,5 = 0,1\\text{ mol}$.\nKhi cho $\\text{Na}$ vào dung dịch acid, $\\text{Na}$ phản ứng hết (với $\\text{HCl}$ trước, nếu $\\text{Na}$ dư sẽ tác dụng tiếp với $\\text{H}_2\\text{O}$):\n$2\\text{Na} + 2\\text{H}^+ \\rightarrow 2\\text{Na}^+ + \\text{H}_2\\uparrow$ và $2\\text{Na} + 2\\text{H}_2\\text{O} \\rightarrow 2\\text{NaOH} + \\text{H}_2\\uparrow$.\nDo $\\text{Na}$ luôn tan hết và nhường $1\\text{e}$ nên bảo toàn electron: $n_{\\text{H}_2} = \\frac{1}{2}n_{\\text{Na}} = \\frac{0,2}{2} = 0,1\\text{ mol}$.\nThể tích khí $\\text{H}_2$ (đkc): $V = 0,1 \\cdot 24,79 = 2,479\\text{ L}$.",
         "Đèn đường cao áp chiếu sáng sương mù thường dùng hơi sodium ($\\text{Na}$) vì phát ra ánh sáng màu vàng tươi đặc trưng có khả năng xuyên qua sương mù rất tốt; caesium ($\\text{Cs}$) được dùng làm tế bào quang điện.",
         CH7_ID, CH7_TITLE, CH7_DESC,
         extra_questions=[
@@ -465,7 +465,7 @@ CH7_LESSONS = [
             "Giải được bài toán nhiệt phân hỗn hợp $\\text{NaHCO}_3$ và $\\text{Na}_2\\text{CO}_3$ hoặc bài toán $\\text{CO}_2$ tác dụng với dung dịch kiềm",
         ],
         "Nung nóng hỗn hợp rắn gồm $16,8\\text{ g}$ $\\text{NaHCO}_3$ ($M = 84$) và $10,6\\text{ g}$ $\\text{Na}_2\\text{CO}_3$ ($M = 106$) đến khối lượng không đổi. Tính thể tích khí $\\text{CO}_2$ thoát ra (ở đkc) và tổng khối lượng chất rắn thu được sau khi nung.",
-        "- Số mol $\\text{NaHCO}_3$: $n_{\\text{NaHCO}_3} = \\frac{16,8}{84} = 0,2\\text{ mol}$.\\n- Khi nung nóng, chỉ có $\\text{NaHCO}_3$ bị nhiệt phân ($\\text{Na}_2\\text{CO}_3$ bền với nhiệt):\\n$2\\text{NaHCO}_3 \\xrightarrow{t^\\circ} \\text{Na}_2\\text{CO}_3 + \\text{CO}_2\\uparrow + \\text{H}_2\\text{O}\\uparrow$.\\n- Số mol $\\text{CO}_2$: $n_{\\text{CO}_2} = \\frac{1}{2}n_{\\text{NaHCO}_3} = 0,1\\text{ mol} \\Rightarrow V_{\\text{CO}_2} = 0,1 \\cdot 24,79 = 2,479\\text{ L}$.\\n- Số mol $\\text{Na}_2\\text{CO}_3$ sinh thêm là $0,1\\text{ mol}$, vậy tổng khối lượng chất rắn $\\text{Na}_2\\text{CO}_3$ sau nung là $10,6 + 0,1 \\cdot 106 = 21,2\\text{ g}$.",
+        "- Số mol $\\text{NaHCO}_3$: $n_{\\text{NaHCO}_3} = \\frac{16,8}{84} = 0,2\\text{ mol}$.\n- Khi nung nóng, chỉ có $\\text{NaHCO}_3$ bị nhiệt phân ($\\text{Na}_2\\text{CO}_3$ bền với nhiệt):\n$2\\text{NaHCO}_3 \\xrightarrow{t^\\circ} \\text{Na}_2\\text{CO}_3 + \\text{CO}_2\\uparrow + \\text{H}_2\\text{O}\\uparrow$.\n- Số mol $\\text{CO}_2$: $n_{\\text{CO}_2} = \\frac{1}{2}n_{\\text{NaHCO}_3} = 0,1\\text{ mol} \\Rightarrow V_{\\text{CO}_2} = 0,1 \\cdot 24,79 = 2,479\\text{ L}$.\n- Số mol $\\text{Na}_2\\text{CO}_3$ sinh thêm là $0,1\\text{ mol}$, vậy tổng khối lượng chất rắn $\\text{Na}_2\\text{CO}_3$ sau nung là $10,6 + 0,1 \\cdot 106 = 21,2\\text{ g}$.",
         "$\\text{NaHCO}_3$ (thuốc muối) là thành phần chính trong thuốc điều trị chứng ợ chua, đau dạ dày do dư thừa acid $\\text{HCl}$, vì nó trung hòa êm dịu lượng $\\text{HCl}$ dư: $\\text{HCO}_3^- + \\text{H}^+ \\rightarrow \\text{CO}_2\\uparrow + \\text{H}_2\\text{O}$.",
         CH7_ID, CH7_TITLE, CH7_DESC,
         extra_questions=[
@@ -487,7 +487,7 @@ CH7_LESSONS = [
             "Trình bày được ứng dụng của các hợp chất calcium: đá vôi ($\\text{CaCO}_3$), vôi sống ($\\text{CaO}$), vôi tôi ($\\text{Ca(OH)}_2$), thạch cao ($\\text{CaSO}_4$) và khoáng vật apatite/hydroxyapatite trong xương và răng",
         ],
         "Sục từ từ $3,7185\\text{ L}$ khí $\\text{CO}_2$ (ở đkc) vào dung dịch chứa $0,1\\text{ mol}$ $\\text{Ca(OH)}_2$. Tính khối lượng kết tủa $\\text{CaCO}_3$ thu được sau khi phản ứng kết thúc.",
-        "Số mol $\\text{CO}_2$: $n_{\\text{CO}_2} = \\frac{3,7185}{24,79} = 0,15\\text{ mol}$; số mol $\\text{OH}^- = 2n_{\\text{Ca(OH)}_2} = 0,2\\text{ mol}$.\\nLập tỉ lệ $T = \\frac{n_{\\text{OH}^-}}{n_{\\text{CO}_2}} = \\frac{0,2}{0,15} = 1,33$ ($1 < T < 2$), nên tạo cả hai muối $\\text{CO}_3^{2-}$ và $\\text{HCO}_3^-$:\\nÁp dụng công thức nhanh: $n_{\\text{CO}_3^{2-}} = n_{\\text{OH}^-} - n_{\\text{CO}_2} = 0,2 - 0,15 = 0,05\\text{ mol}$.\\nVì $n_{\\text{Ca}^{2+}} = 0,1 > 0,05$ nên $n_{\\text{CaCO}_3\\downarrow} = 0,05\\text{ mol} \\Rightarrow m_{\\text{CaCO}_3} = 0,05 \\cdot 100 = 5,0\\text{ g}$.",
+        "Số mol $\\text{CO}_2$: $n_{\\text{CO}_2} = \\frac{3,7185}{24,79} = 0,15\\text{ mol}$; số mol $\\text{OH}^- = 2n_{\\text{Ca(OH)}_2} = 0,2\\text{ mol}$.\nLập tỉ lệ $T = \\frac{n_{\\text{OH}^-}}{n_{\\text{CO}_2}} = \\frac{0,2}{0,15} = 1,33$ ($1 < T < 2$), nên tạo cả hai muối $\\text{CO}_3^{2-}$ và $\\text{HCO}_3^-$:\nÁp dụng công thức nhanh: $n_{\\text{CO}_3^{2-}} = n_{\\text{OH}^-} - n_{\\text{CO}_2} = 0,2 - 0,15 = 0,05\\text{ mol}$.\nVì $n_{\\text{Ca}^{2+}} = 0,1 > 0,05$ nên $n_{\\text{CaCO}_3\\downarrow} = 0,05\\text{ mol} \\Rightarrow m_{\\text{CaCO}_3} = 0,05 \\cdot 100 = 5,0\\text{ g}$.",
         "Thạch cao nung ($\\text{CaSO}_4\\cdot\\text{H}_2\\text{O}$ hoặc $\\text{CaSO}_4\\cdot 0,5\\text{H}_2\\text{O}$) khi nhào với nước sẽ kết hợp nước và đông cứng nhanh thành thạch cao sống ($\\text{CaSO}_4\\cdot 2\\text{H}_2\\text{O}$), nên được dùng để đúc tượng, làm trần thạch cao và bó bột cố định xương gãy trong y học.",
         CH7_ID, CH7_TITLE, CH7_DESC,
         extra_questions=[
@@ -509,7 +509,7 @@ CH7_LESSONS = [
             "Lựa chọn được phương pháp và hóa chất thích hợp để làm mềm từng loại nước cứng",
         ],
         "Một mẫu nước cứng tạm thời chứa $0,01\\text{ mol}$ $\\text{Ca(HCO}_3)_2$ và $0,005\\text{ mol}$ $\\text{Mg(HCO}_3)_2$. Tính số mol $\\text{Ca(OH)}_2$ vừa đủ cần cho vào mẫu nước này để kết tủa hết các ion $\\text{Ca}^{2+}$ và $\\text{Mg}^{2+}$ dưới dạng muối carbonate.",
-        "Để kết tủa dưới dạng muối carbonate, toàn bộ ion $\\text{HCO}_3^-$ phải chuyển thành $\\text{CO}_3^{2-}$ theo phương trình:\\n$\\text{HCO}_3^- + \\text{OH}^- \\rightarrow \\text{CO}_3^{2-} + \\text{H}_2\\text{O}$.\\nTổng số mol $\\text{HCO}_3^-$ trong mẫu nước: $n_{\\text{HCO}_3^-} = 2(0,01 + 0,005) = 0,03\\text{ mol}$.\\nSố mol $\\text{OH}^-$ cần dùng vừa đủ là $0,03\\text{ mol} \\Rightarrow n_{\\text{Ca(OH)}_2} = \\frac{0,03}{2} = 0,015\\text{ mol}$.",
+        "Để kết tủa dưới dạng muối carbonate, toàn bộ ion $\\text{HCO}_3^-$ phải chuyển thành $\\text{CO}_3^{2-}$ theo phương trình:\n$\\text{HCO}_3^- + \\text{OH}^- \\rightarrow \\text{CO}_3^{2-} + \\text{H}_2\\text{O}$.\nTổng số mol $\\text{HCO}_3^-$ trong mẫu nước: $n_{\\text{HCO}_3^-} = 2(0,01 + 0,005) = 0,03\\text{ mol}$.\nSố mol $\\text{OH}^-$ cần dùng vừa đủ là $0,03\\text{ mol} \\Rightarrow n_{\\text{Ca(OH)}_2} = \\frac{0,03}{2} = 0,015\\text{ mol}$.",
         "Các máy lọc nước gia đình và máy rửa bát hiện đại đều có cột hạt nhựa trao đổi ion (cationit) giữ lại các ion $\\text{Ca}^{2+}, \\text{Mg}^{2+}$ trong nước máy và nhả ra các ion $\\text{Na}^+$, giúp bảo vệ thiết bị không bị đóng cặn trắng.",
         CH7_ID, CH7_TITLE, CH7_DESC,
         extra_questions=[
@@ -541,7 +541,7 @@ CH8_LESSONS = [
             "Vận dụng phương trình chuẩn độ oxi hóa - khử giữa $\\text{Fe}^{2+}$ và $\\text{KMnO}_4$ trong môi trường $\\text{H}_2\\text{SO}_4$ loãng để xác định hàm lượng muối sắt(II)",
         ],
         "Để chuẩn độ hoàn toàn $20\\text{ mL}$ dung dịch $\\text{FeSO}_4$ trong môi trường $\\text{H}_2\\text{SO}_4$ loãng dư, người ta cần dùng vừa đủ $16\\text{ mL}$ dung dịch $\\text{KMnO}_4$ $0,02\\text{ M}$. Tính nồng độ mol của dung dịch $\\text{FeSO}_4$.",
-        "Phương trình ion rút gọn của phép chuẩn độ:\\n$5\\text{Fe}^{2+} + \\text{MnO}_4^- + 8\\text{H}^+ \\rightarrow 5\\text{Fe}^{3+} + \\text{Mn}^{2+} + 4\\text{H}_2\\text{O}$.\\nSố mol $\\text{KMnO}_4$: $n_{\\text{MnO}_4^-} = 0,016 \\cdot 0,02 = 3,2 \\cdot 10^{-4}\\text{ mol}$.\\nTheo PTHH: $n_{\\text{Fe}^{2+}} = 5n_{\\text{MnO}_4^-} = 5 \\cdot 3,2 \\cdot 10^{-4} = 1,6 \\cdot 10^{-3}\\text{ mol}$.\\nNồng độ dung dịch $\\text{FeSO}_4$: $C_M = \\frac{1,6 \\cdot 10^{-3}}{0,020} = 0,08\\text{ M}$.",
+        "Phương trình ion rút gọn của phép chuẩn độ:\n$5\\text{Fe}^{2+} + \\text{MnO}_4^- + 8\\text{H}^+ \\rightarrow 5\\text{Fe}^{3+} + \\text{Mn}^{2+} + 4\\text{H}_2\\text{O}$.\nSố mol $\\text{KMnO}_4$: $n_{\\text{MnO}_4^-} = 0,016 \\cdot 0,02 = 3,2 \\cdot 10^{-4}\\text{ mol}$.\nTheo PTHH: $n_{\\text{Fe}^{2+}} = 5n_{\\text{MnO}_4^-} = 5 \\cdot 3,2 \\cdot 10^{-4} = 1,6 \\cdot 10^{-3}\\text{ mol}$.\nNồng độ dung dịch $\\text{FeSO}_4$: $C_M = \\frac{1,6 \\cdot 10^{-3}}{0,020} = 0,08\\text{ M}$.",
         "Titanium ($\\text{Ti}, Z = 22$) nhẹ, cực kì bền cơ học, không bị ăn mòn trong cơ thể và tương thích sinh học hoàn hảo nên được dùng chế tạo khớp nhân tạo, trụ cấy ghép răng (implant) và vỏ tàu vũ trụ.",
         CH8_ID, CH8_TITLE, CH8_DESC,
         extra_questions=[
@@ -563,7 +563,7 @@ CH8_LESSONS = [
             "Viết được phương trình phản ứng thế phối tử trong dung dịch và nêu được vai trò của phức chất trong tự nhiên (hemoglobin, chất diệp lục, vitamin B12) và y học (thuốc chống ung thư cisplatin)",
         ],
         "Cho phức chất $[\\text{Co(NH}_3)_6]\\text{Cl}_3$. Hãy chỉ rõ nguyên tử trung tâm, phối tử, cầu nội, cầu ngoại, số phối trí và dạng hình học của phức chất này.",
-        "- Cầu nội: $[\\text{Co(NH}_3)_6]^{3+}$; Cầu ngoại: $3$ ion $\\text{Cl}^-$.\\n- Nguyên tử trung tâm: cation $\\text{Co}^{3+}$.\\n- Phối tử: phân tử $\\text{NH}_3$ (có $6$ phối tử $\\text{NH}_3$).\\n- Số phối trí của $\\text{Co}^{3+}$ bằng $6 \\Rightarrow$ phức chất có dạng hình học BÁT DIỆN.",
+        "- Cầu nội: $[\\text{Co(NH}_3)_6]^{3+}$; Cầu ngoại: $3$ ion $\\text{Cl}^-$.\n- Nguyên tử trung tâm: cation $\\text{Co}^{3+}$.\n- Phối tử: phân tử $\\text{NH}_3$ (có $6$ phối tử $\\text{NH}_3$).\n- Số phối trí của $\\text{Co}^{3+}$ bằng $6 \\Rightarrow$ phức chất có dạng hình học BÁT DIỆN.",
         "Trong sinh học, nhân heme của hồng cầu máu là phức chất của ion $\\text{Fe}^{2+}$, chất diệp lục (chlorophyll) của cây xanh là phức chất của ion $\\text{Mg}^{2+}$, còn vitamin B12 là phức chất của ion $\\text{Co}^{3+}$; trong y học, phức chất vuông phẳng $\\text{cis}-[\\text{PtCl}_2(\\text{NH}_3)_2]$ (cisplatin) là thuốc hóa trị điều trị ung thư hiệu quả.",
         CH8_ID, CH8_TITLE, CH8_DESC,
         extra_questions=[
@@ -585,7 +585,7 @@ CH8_LESSONS = [
             "Vận dụng phản ứng tạo phức để phân biệt các ion kim loại trong dung dịch và giải bài toán kết tủa - tạo phức",
         ],
         "Nhỏ từ từ đến dư dung dịch $\\text{NH}_3$ vào ống nghiệm (1) đựng dung dịch $\\text{AlCl}_3$ và ống nghiệm (2) đựng dung dịch $\\text{CuSO}_4$. Nêu hiện tượng khác nhau giữa hai ống nghiệm và giải thích.",
-        "- Ống nghiệm (1) ($\\text{AlCl}_3$): Xuất hiện kết tủa keo trắng $\\text{Al(OH)}_3$, kết tủa này KHÔNG tan trong dung dịch $\\text{NH}_3$ dư (vì $\\text{Al(OH)}_3$ chỉ tan trong kiềm mạnh như $\\text{NaOH}$ và $\\text{Al}^{3+}$ không tạo phức với $\\text{NH}_3$).\\n- Ống nghiệm (2) ($\\text{CuSO}_4$): Ban đầu xuất hiện kết tủa màu xanh nhạt $\\text{Cu(OH)}_2$, sau đó khi $\\text{NH}_3$ dư thì kết tủa tan hoàn toàn tạo thành dung dịch màu xanh lam thẫm chứa phức chất $[\\text{Cu(NH}_3)_4]^{2+}$.",
+        "- Ống nghiệm (1) ($\\text{AlCl}_3$): Xuất hiện kết tủa keo trắng $\\text{Al(OH)}_3$, kết tủa này KHÔNG tan trong dung dịch $\\text{NH}_3$ dư (vì $\\text{Al(OH)}_3$ chỉ tan trong kiềm mạnh như $\\text{NaOH}$ và $\\text{Al}^{3+}$ không tạo phức với $\\text{NH}_3$).\n- Ống nghiệm (2) ($\\text{CuSO}_4$): Ban đầu xuất hiện kết tủa màu xanh nhạt $\\text{Cu(OH)}_2$, sau đó khi $\\text{NH}_3$ dư thì kết tủa tan hoàn toàn tạo thành dung dịch màu xanh lam thẫm chứa phức chất $[\\text{Cu(NH}_3)_4]^{2+}$.",
         "Bột $\\text{CuSO}_4$ khan có màu trắng, nhưng khi tiếp xúc với hơi ẩm hoặc nước sẽ lập tức tạo thành phức chất aqua $[\\text{Cu(H}_2\\text{O)}_4]\\text{SO}_4\\cdot\\text{H}_2\\text{O}$ ($\\text{CuSO}_4\\cdot 5\\text{H}_2\\text{O}$) có màu xanh lam, nên $\\text{CuSO}_4$ khan được dùng để phát hiện dấu vết của nước trong nhiên liệu hữu cơ.",
         CH8_ID, CH8_TITLE, CH8_DESC,
         extra_questions=[
@@ -607,7 +607,7 @@ CH8_LESSONS = [
             "Vận dụng thành thạo $4$ định luật bảo toàn (Bảo toàn khối lượng, Bảo toàn nguyên tố, Bảo toàn electron, Bảo toàn điện tích) để giải nhanh đề thi tốt nghiệp THPT",
         ],
         "Một dung dịch $X$ chứa $0,1\\text{ mol}$ $\\text{Fe}^{2+}$; $0,2\\text{ mol}$ $\\text{Al}^{3+}$; $0,3\\text{ mol}$ $\\text{Cl}^-$ và $x\\text{ mol}$ $\\text{SO}_4^{2-}$. Tính giá trị của $x$ và khối lượng muối khan thu được khi cô cạn dung dịch $X$ (trong điều kiện không có oxi).",
-        "- Áp dụng định luật bảo toàn điện tích cho dung dịch $X$:\\n$2n_{\\text{Fe}^{2+}} + 3n_{\\text{Al}^{3+}} = 1n_{\\text{Cl}^-} + 2n_{\\text{SO}_4^{2-}} \\iff 2(0,1) + 3(0,2) = 0,3 + 2x \\Rightarrow 0,8 = 0,3 + 2x \\Rightarrow x = 0,25\\text{ mol}$.\\n- Khối lượng muối khan bằng tổng khối lượng các ion:\\n$m_{\\text{muối}} = 0,1 \\cdot 56 + 0,2 \\cdot 27 + 0,3 \\cdot 35,5 + 0,25 \\cdot 96 = 5,6 + 5,4 + 10,65 + 24,0 = 45,65\\text{ g}$.",
+        "- Áp dụng định luật bảo toàn điện tích cho dung dịch $X$:\n$2n_{\\text{Fe}^{2+}} + 3n_{\\text{Al}^{3+}} = 1n_{\\text{Cl}^-} + 2n_{\\text{SO}_4^{2-}} \\iff 2(0,1) + 3(0,2) = 0,3 + 2x \\Rightarrow 0,8 = 0,3 + 2x \\Rightarrow x = 0,25\\text{ mol}$.\n- Khối lượng muối khan bằng tổng khối lượng các ion:\n$m_{\\text{muối}} = 0,1 \\cdot 56 + 0,2 \\cdot 27 + 0,3 \\cdot 35,5 + 0,25 \\cdot 96 = 5,6 + 5,4 + 10,65 + 24,0 = 45,65\\text{ g}$.",
         "Nắm vững hệ thống hóa học vô cơ và hữu cơ lớp 12 là nền tảng cốt lõi cho các ngành Y - Dược, Công nghệ thực phẩm, Kĩ thuật hóa dầu, Khoa học vật liệu bán dẫn và Môi trường.",
         CH8_ID, CH8_TITLE, CH8_DESC,
         extra_questions=[

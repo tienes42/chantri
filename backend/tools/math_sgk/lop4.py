@@ -5464,7 +5464,7 @@ LESSONS = [{'topic': 'l4-cd01-on-tap-va-bo-sung',
             'type': 'mcq',
             'q': 'Trong **Bài 50: Biểu đồ cột**, quy tắc hoặc công thức nào sau đây xác định đúng **Quan sát '
                  'trực quan**?',
-            'options': ['Cột cao nhất $\\geftrightarrow$ Giá trị lớn nhất · Cột thấp nhất $\\leftrightarrow$ '
+            'options': ['Cột cao nhất $\\leftrightarrow$ Giá trị lớn nhất · Cột thấp nhất $\\leftrightarrow$ '
                         'Giá trị bé nhất',
                         'Đảo ngược vế của quy tắc: Cột cao nhất $\\leftrightarrow$ Giá trị lớn nhất · Cột '
                         'thấp nhất $\\leftrightarrow$ Giá trị bé nhất',

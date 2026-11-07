@@ -12,7 +12,7 @@
 // Dọn bộ nhớ đệm sessionStorage cũ để tránh hiển thị bản ghi gộp chương từ phiên bản cũ
 try {
   Object.keys(sessionStorage).forEach((k) => {
-    if ((k.startsWith("hdlg_lesson") || k.startsWith("hdlg_lessons")) && !k.startsWith("hdlg_v6_")) {
+    if ((k.startsWith("hdlg_lesson") || k.startsWith("hdlg_lessons")) && !k.startsWith("hdlg_v7_")) {
       sessionStorage.removeItem(k);
     }
   });
@@ -249,35 +249,65 @@ function escapeHTML(value) {
     .replace(/'/g, "&#039;");
 }
 
+function sanitizeMathAndSymbols(rawStr) {
+  if (rawStr === null || rawStr === undefined) return "";
+  return String(rawStr)
+    .replace(/\x09ext\{/g, "\\text{")
+    .replace(/\x09imes\b/g, "\\times")
+    .replace(/\x09o\b/g, "\\to")
+    .replace(/\x09riangle\b/g, "\\triangle")
+    .replace(/\x0bdots\b/g, "\\vdots")
+    .replace(/\\x0bdots\b/g, "\\vdots")
+    .replace(/\x0crac\{/g, "\\frac{")
+    .replace(/\x08eta\b/g, "\\beta")
+    .replace(/\x08ar\{/g, "\\bar{")
+    .replace(/\x07lpha\b/g, "\\alpha")
+    .replace(/\x07pprox\b/g, "\\approx")
+    .replace(/\\geft\b/g, "\\left")
+    .replace(/\\geftrightarrow\b/g, "\\leftrightarrow")
+    .replace(/\\notinfty\b/g, "\\infty")
+    .replace(/\\notint\b/g, "\\int")
+    .replace(/\\lightning\b/g, "\\text{⚡}")
+    .replace(/phần tử thuộc \(\$\\notin\$\)/g, "phần tử thuộc ($\\in$)")
+    .replace(/\$x \\notin A\$ \(\$x\$ thuộc \$A\$\)/g, "$x \\in A$ ($x$ thuộc $A$)")
+    .replace(/\\n(?=[A-ZÀÁẢÃẠĂẮẰẲẴẶÂẤẦẨẪẬĐÈÉẺẼẸÊẾỀỂỄỆÌÍỈĨỊÒÓỎÕỌÔỐỒỔỖỘƠỚỜỞỠỢÙÚỦŨỤƯỨỪỬỮỰỲÝỶỸỴ0-9(\-*•])/g, "\n");
+}
+
 const LATEX_SYMBOLS = {
   "\\alpha": "α", "\\beta": "β", "\\gamma": "γ", "\\delta": "δ", "\\epsilon": "ε", "\\varepsilon": "ε",
   "\\zeta": "ζ", "\\eta": "η", "\\theta": "θ", "\\vartheta": "ϑ", "\\iota": "ι", "\\kappa": "κ",
   "\\lambda": "λ", "\\mu": "μ", "\\nu": "ν", "\\xi": "ξ", "\\pi": "π", "\\rho": "ρ",
   "\\sigma": "σ", "\\tau": "τ", "\\upsilon": "υ", "\\phi": "φ", "\\varphi": "φ", "\\chi": "χ",
-  "\\psi": "ψ", "\\omega": "ω",
+  "\\psi": "ψ", "\\omega": "ω", "\\ell": "ℓ",
   "\\Gamma": "Γ", "\\Delta": "Δ", "\\Theta": "Θ", "\\Lambda": "Λ", "\\Xi": "Ξ", "\\Pi": "Π",
   "\\Sigma": "Σ", "\\Phi": "Φ", "\\Psi": "Ψ", "\\Omega": "Ω",
-  "\\cdot": "·", "\\times": "×", "\\div": "÷", "\\pm": "±", "\\mp": "∓", "\\ast": "∗",
+  "\\cdot": "·", "\\times": "×", "\\div": "÷", "\\pm": "±", "\\mp": "∓", "\\ast": "∗", "\\bullet": "•", "\\oslash": "⊘",
   "\\le": "≤", "\\leq": "≤", "\\ge": "≥", "\\geq": "≥", "\\ne": "≠", "\\neq": "≠",
-  "\\approx": "≈", "\\equiv": "≡", "\\sim": "∼", "\\simeq": "≃", "\\cong": "≅", "\\propto": "∝",
+  "\\approx": "≈", "\\equiv": "≡", "\\sim": "∼", "\\simeq": "≃", "\\cong": "≅", "\\propto": "∝", "\\ll": "≪", "\\gg": "≫",
   "\\infty": "∞", "\\partial": "∂", "\\nabla": "∇", "\\forall": "∀", "\\exists": "∃", "\\nexists": "∄",
   "\\in": "∈", "\\notin": "∉", "\\ni": "∋", "\\subset": "⊂", "\\supset": "⊃",
   "\\subseteq": "⊆", "\\supseteq": "⊇", "\\cup": "∪", "\\cap": "∩", "\\setminus": "∖",
-  "\\emptyset": "∅", "\\varnothing": "∅",
+  "\\emptyset": "∅", "\\varnothing": "∅", "\\mid": "∣", "\\nmid": "∤",
   "\\to": "→", "\\rightarrow": "→", "\\leftarrow": "←", "\\leftrightarrow": "↔",
-  "\\Rightarrow": "⇒", "\\Leftarrow": "⇐", "\\Leftrightarrow": "⇔", "\\iff": "⇔", "\\implies": "⇒",
+  "\\longrightarrow": "⟶", "\\longleftarrow": "⟵", "\\longleftrightarrow": "⟷",
+  "\\Rightarrow": "⇒", "\\Leftarrow": "⇐", "\\Leftrightarrow": "⇔", "\\Longrightarrow": "⟹", "\\Longleftrightarrow": "⟺",
+  "\\iff": "⇔", "\\implies": "⇒",
   "\\mapsto": "↦", "\\uparrow": "↑", "\\downarrow": "↓", "\\upharpoonright": "↑",
-  "\\perp": "⊥", "\\parallel": "∥", "\\angle": "∠", "\\widehat": "", "\\triangle": "△",
-  "\\circ": "°", "\\degree": "°", "\\prime": "′", "\\dots": "…", "\\ldots": "…", "\\cdots": "⋯",
+  "\\rightleftharpoons": "⇌", "\\leftrightharpoons": "⇌", "\\rightleftarrows": "⇄",
+  "\\perp": "⊥", "\\parallel": "∥", "\\nparallel": "∦", "\\angle": "∠", "\\widehat": "", "\\triangle": "△", "\\frown": "⌒",
+  "\\circ": "°", "\\degree": "°", "\\deg": "°", "\\prime": "′",
+  "\\dots": "…", "\\ldots": "…", "\\cdots": "⋯", "\\vdots": "⋮", "\\ddots": "⋱",
   "\\quad": " ", "\\qquad": "  ", "\\,": " ", "\\;": " ", "\\:": " ", "\\!": "", "\\ ": " ",
-  "\\left": "", "\\right": "", "\\bigl": "", "\\bigr": "", "\\Bigl": "", "\\Bigr": "",
-  "\\displaystyle": "", "\\textstyle": "",
+  "\\left": "", "\\right": "", "\\middle": "", "\\big": "", "\\Big": "", "\\bigg": "", "\\Bigg": "",
+  "\\bigl": "", "\\bigr": "", "\\Bigl": "", "\\Bigr": "",
+  "\\displaystyle": "", "\\textstyle": "", "\\scriptstyle": "",
   "\\sin": "sin", "\\cos": "cos", "\\tan": "tan", "\\cot": "cot", "\\arcsin": "arcsin", "\\arccos": "arccos", "\\arctan": "arctan",
   "\\ln": "ln", "\\log": "log", "\\lg": "lg", "\\lim": "lim", "\\max": "max", "\\min": "min", "\\gcd": "ƯCLN", "\\lcm": "BCNN",
-  "\\int": "∫", "\\oint": "∮", "\\sum": "∑", "\\prod": "∏"
+  "\\int": "∫", "\\oint": "∮", "\\sum": "∑", "\\prod": "∏", "\\lightning": "⚡"
 };
 
 const MATHBB_MAP = { N: "ℕ", Z: "ℤ", Q: "ℚ", R: "ℝ", C: "ℂ", P: "ℙ" };
+const MATHCAL_MAP = { E: "ℰ", L: "ℒ", F: "ℱ", H: "ℋ", M: "ℳ", B: "ℬ", P: "𝒫", C: "𝒞" };
 
 function takeBraced(s, pos) {
   while (pos < s.length && s[pos] === " ") pos++;
@@ -300,19 +330,35 @@ function takeBraced(s, pos) {
   return [s.slice(pos + 1), s.length];
 }
 
+function takeBracketed(s, pos) {
+  while (pos < s.length && s[pos] === " ") pos++;
+  if (s[pos] !== "[") return ["", pos];
+  let depth = 0, i = pos;
+  for (; i < s.length; i++) {
+    if (s[i] === "\\" && i + 1 < s.length) { i++; continue; }
+    if (s[i] === "[") depth++;
+    else if (s[i] === "]") {
+      depth--;
+      if (depth === 0) return [s.slice(pos + 1, i), i + 1];
+    }
+  }
+  return [s.slice(pos + 1), s.length];
+}
+
 function normalizeKatexInput(tex) {
-  return String(tex || "")
+  return sanitizeMathAndSymbols(tex)
+    .replace(/\\degree\b/g, "^\\circ")
     .replace(/\\[,;:!]\s*\^/g, "^")
     .replace(/\\[,;:!]\s*_/g, "_")
     .replace(/(\s)\^/g, "$1{}^")
     .replace(/^(\s*)\^/, "$1{}^")
+    .replace(/^(\s*)_/g, "$1{}_")
     .replace(/([({\[=+\-*/<>|,;:])\s*\^/g, "$1{}^")
-    .replace(/([({\[=+\-*/<>|,;:])\s*_/g, "$1{}_")
-    .replace(/\\degree\b/g, "^\\circ");
+    .replace(/([({\[=+\-*/<>|,;:])\s*_/g, "$1{}_");
 }
 
 function renderLatexOffline(tex) {
-  let s = String(tex).trim();
+  let s = sanitizeMathAndSymbols(tex).trim();
   if (!s) return "";
 
   s = s.replace(/\\begin\{(cases|aligned|array|matrix|pmatrix|bmatrix|vmatrix)\}([\s\S]*?)\\end\{\1\}/g, function (_, env, body) {
@@ -332,7 +378,19 @@ function renderLatexOffline(tex) {
   while (i < s.length) {
     if (s[i] === "\\") {
       const rest = s.slice(i);
-      let m = rest.match(/^\\(d?frac|tfrac)\b/);
+      let m = rest.match(/^\\not\s*(\\[a-zA-Z]+|=|<|>)/);
+      if (m) {
+        const subTok = m[1];
+        if (subTok === "\\vdots") out += "∤";
+        else if (subTok === "\\in") out += "∉";
+        else if (subTok === "\\subset") out += "⊄";
+        else if (subTok === "\\equiv") out += "≢";
+        else if (subTok === "=") out += "≠";
+        else out += `<span style="text-decoration:line-through">${renderLatexOffline(subTok)}</span>`;
+        i += m[0].length;
+        continue;
+      }
+      m = rest.match(/^\\(d?frac|tfrac)\b/);
       if (m) {
         let [num, p1] = takeBraced(s, i + m[0].length);
         let [den, p2] = takeBraced(s, p1);
@@ -351,14 +409,23 @@ function renderLatexOffline(tex) {
         out += `<span class="m-sqrt">√<span class="m-rad">${renderLatexOffline(rad)}</span></span>`;
         i = p1; continue;
       }
-      m = rest.match(/^\\(overrightarrow|vec|overline|bar|widehat|hat|tilde)\b/);
+      m = rest.match(/^\\(xrightarrow|xleftarrow)\b/);
+      if (m) {
+        const isLeft = m[1] === "xleftarrow";
+        let [bot, p1] = takeBracketed(s, i + m[0].length);
+        let [top, p2] = takeBraced(s, p1);
+        const arrowChar = isLeft ? "⟵" : "⟶";
+        out += `<span class="m-over"><span class="m-top">${renderLatexOffline(top)}</span><span class="m-bot">${arrowChar}${bot ? ` <small>(${renderLatexOffline(bot)})</small>` : ""}</span></span>`;
+        i = p2; continue;
+      }
+      m = rest.match(/^\\(overrightarrow|vec|overline|bar|widehat|hat|tilde|underline)\b/);
       if (m) {
         let [arg, p1] = takeBraced(s, i + m[0].length);
         const cls = (m[1] === "overrightarrow" || m[1] === "vec") ? "m-vec" : (m[1] === "widehat" || m[1] === "hat") ? "m-hat" : "m-bar";
         out += `<span class="${cls}">${renderLatexOffline(arg)}</span>`;
         i = p1; continue;
       }
-      m = rest.match(/^\\(text|mathrm|textbf|mathbf|mathit|operatorname)\b/);
+      m = rest.match(/^\\(text|textrm|textit|mathrm|textbf|mathbf|mathit|operatorname)\b/);
       if (m) {
         let [arg, p1] = takeBraced(s, i + m[0].length);
         const tag = (m[1] === "textbf" || m[1] === "mathbf") ? "strong" : "span";
@@ -371,6 +438,12 @@ function renderLatexOffline(tex) {
         out += `<span class="m-bb">${MATHBB_MAP[arg.trim()] || escapeHTML(arg)}</span>`;
         i = p1; continue;
       }
+      m = rest.match(/^\\mathcal\b/);
+      if (m) {
+        let [arg, p1] = takeBraced(s, i + m[0].length);
+        out += `<span class="m-cal">${MATHCAL_MAP[arg.trim()] || escapeHTML(arg)}</span>`;
+        i = p1; continue;
+      }
       m = rest.match(/^\\(overset|stackrel)\b/);
       if (m) {
         let [top, p1] = takeBraced(s, i + m[0].length);
@@ -378,7 +451,20 @@ function renderLatexOffline(tex) {
         out += `<span class="m-over"><span class="m-top">${renderLatexOffline(top)}</span><span class="m-bot">${renderLatexOffline(bot)}</span></span>`;
         i = p2; continue;
       }
-      m = rest.match(/^\\(\|[a-zA-Z]+|[^a-zA-Z])/);
+      m = rest.match(/^\\underset\b/);
+      if (m) {
+        let [bot, p1] = takeBraced(s, i + m[0].length);
+        let [base, p2] = takeBraced(s, p1);
+        out += `<span class="m-over"><span class="m-bot">${renderLatexOffline(base)}</span><span class="m-top">${renderLatexOffline(bot)}</span></span>`;
+        i = p2; continue;
+      }
+      m = rest.match(/^\\(underbrace|overbrace)\b/);
+      if (m) {
+        let [base, p1] = takeBraced(s, i + m[0].length);
+        out += `<span class="m-brace">${renderLatexOffline(base)}</span>`;
+        i = p1; continue;
+      }
+      m = rest.match(/^\\([a-zA-Z]+|[^a-zA-Z])/);
       if (m) {
         const tok = m[0];
         if (tok === "\\{" || tok === "\\}") { out += tok.slice(1); i += 2; continue; }
@@ -444,13 +530,15 @@ function upgradeKatex(root) {
   });
 }
 window.addEventListener("load", () => upgradeKatex(document));
+setTimeout(() => upgradeKatex(document), 300);
+setTimeout(() => upgradeKatex(document), 1000);
 
 function formatInlineStyles(rawStr) {
   if (!rawStr) return "";
   const stash = [];
   const put = (html) => { const id = `\u0000M${stash.length}\u0000`; stash.push(html); return id; };
 
-  let s = String(rawStr)
+  let s = sanitizeMathAndSymbols(rawStr)
     .replace(/\$\$([\s\S]+?)\$\$/g, (_, m) => put(renderMathToken(m, true)))
     .replace(/\\\[([\s\S]+?)\\\]/g, (_, m) => put(renderMathToken(m, true)))
     .replace(/\\\(([\s\S]+?)\\\)/g, (_, m) => put(renderMathToken(m, false)))
@@ -458,8 +546,8 @@ function formatInlineStyles(rawStr) {
 
   s = s.replace(/`([^`]+)`/g, (_, c) => put(`<code>${escapeHTML(c)}</code>`));
 
-  if (/\\(d?frac|sqrt|overrightarrow|vec|widehat|triangle|angle|cdot|times|div|pm|le|leq|ge|geq|ne|neq|approx|equiv|infty|in|notin|subset|subseteq|cup|cap|emptyset|alpha|beta|gamma|delta|Delta|pi|omega|Omega|sigma|lambda|mu|theta|sin|cos|tan|cot|log|ln|lim|sum|int|mathbb|mathrm|text)\b/.test(s)) {
-    s = s.replace(/((?:\\[a-zA-Z]+(?:\{[^}]*\})*|\b[a-zA-Z0-9]+\s*[_^]\s*(?:\{[^}]+\}|[a-zA-Z0-9+-]+))(?:[\s+\-*/=<>≤≥≠≈·×÷,()0-9a-zA-Z\\_{}^]*))/g, (m) => {
+  if (/\\(d?frac|sqrt|overrightarrow|vec|widehat|triangle|angle|cdot|times|div|pm|le|leq|ge|geq|ne|neq|approx|equiv|infty|in|notin|subset|subseteq|cup|cap|emptyset|alpha|beta|gamma|delta|Delta|pi|omega|Omega|sigma|lambda|mu|theta|sin|cos|tan|cot|log|ln|lim|sum|int|mathbb|mathcal|mathrm|text|xrightarrow|xleftarrow|rightleftharpoons|rightleftarrows|vdots)\b/.test(s)) {
+    s = s.replace(/((?:\\[a-zA-Z]+(?:\[[^\]]*\])?(?:\{[^}]*\})*|\b[a-zA-Z0-9]+\s*[_^]\s*(?:\{[^}]+\}|[a-zA-Z0-9+-]+))(?:[\s+\-*/=<>≤≥≠≈·×÷,()0-9a-zA-Z\\_{}^]*))/g, (m) => {
       if (m.indexOf("\u0000") !== -1) return m;
       return put(renderMathToken(m, false));
     });
@@ -480,7 +568,7 @@ function formatInlineStyles(rawStr) {
 
 function renderMathText(str, displayMode) {
   if (str === null || str === undefined) return "";
-  const raw = String(str).trim();
+  const raw = sanitizeMathAndSymbols(str).trim();
   if (!raw) return "";
   if (raw.includes("$") || /\\\[|\\\(/.test(raw)) return formatInlineStyles(raw);
   if (/\\[a-zA-Z]+|[_^]\s*\{|[a-zA-Z0-9]\s*\^\s*[0-9a-zA-Z+-]/.test(raw)) {
@@ -491,8 +579,11 @@ function renderMathText(str, displayMode) {
 
 window.HDLGMath = {
   inline: formatInlineStyles,
+  formatInline: formatInlineStyles,
   formula: renderMathText,
-  upgrade: upgradeKatex
+  upgrade: upgradeKatex,
+  upgradeKatex: upgradeKatex,
+  sanitize: sanitizeMathAndSymbols
 };
 
 function formatRichText(rawValue) {
@@ -502,7 +593,7 @@ function formatRichText(rawValue) {
     return rawValue.map((item) => formatRichText(item)).join("");
   }
 
-  const lines = String(rawValue).replace(/\r\n/g, "\n").split("\n");
+  const lines = sanitizeMathAndSymbols(rawValue).replace(/\r\n/g, "\n").split("\n");
   let html = "";
   let inUl = false;
   let inOl = false;
@@ -754,6 +845,7 @@ function renderAnswers(answerList, correctIndex) {
 
     answers.appendChild(option);
   });
+  upgradeKatex(answers);
 }
 
 /* =========================================================
@@ -1388,6 +1480,7 @@ function renderQuizSet(lesson) {
   window.HDLGQuiz.render(quizSet, lesson.quiz, {
     format: formatRichText,
     inline: formatInlineStyles,
+    upgrade: upgradeKatex,
     onComplete: function (result) {
       handleQuizSetReward(result);
     }
@@ -1573,7 +1666,7 @@ async function loadChapterSiblingLessons(lesson) {
     siblings = lesson._virtualSiblings;
   } else {
     let allGradeLessons = null;
-    const cacheKey = `hdlg_v6_lessons_${subject}_${g}`;
+    const cacheKey = `hdlg_v7_lessons_${subject}_${g}`;
     try {
       const cached = sessionStorage.getItem(cacheKey);
       if (cached) allGradeLessons = JSON.parse(cached);
@@ -2044,7 +2137,7 @@ async function loadLesson() {
 
   try {
     let lesson = null;
-    const cached = sessionStorage.getItem(`hdlg_v6_lesson_${lessonId}`);
+    const cached = sessionStorage.getItem(`hdlg_v7_lesson_${lessonId}`);
     if (cached) {
       try { lesson = JSON.parse(cached); } catch (_) {}
     }
@@ -2054,7 +2147,7 @@ async function loadLesson() {
         throw new Error(`Không thể tải bài học. HTTP ${response.status}`);
       }
       lesson = await response.json();
-      try { sessionStorage.setItem(`hdlg_v6_lesson_${lessonId}`, JSON.stringify(lesson)); } catch (_) {}
+      try { sessionStorage.setItem(`hdlg_v7_lesson_${lessonId}`, JSON.stringify(lesson)); } catch (_) {}
     }
     if (!lesson || lesson.id === undefined || lesson.id === null) {
       throw new Error("API trả về bài học nhưng không có ID.");
@@ -2068,3 +2161,69 @@ async function loadLesson() {
 }
 
 loadLesson();
+
+// ===== Đồng bộ khung Tài khoản người chơi & Sự kiện Click =====
+(function accountHudGrade() {
+  const card = document.getElementById("playerCard") || document.querySelector(".player");
+  if (card) {
+    card.style.cursor = "pointer";
+    card.title = "Tài khoản của tôi";
+    card.addEventListener("click", () => {
+      if (window.HDLG && typeof HDLG.showAccount === "function") {
+        HDLG.showAccount();
+      }
+    });
+  }
+
+  function renderPlayer(d) {
+    if (!d) return;
+    const nameEl = document.getElementById("playerName") || document.querySelector(".player-info strong");
+    const lvlEl = document.getElementById("playerLevel") || document.querySelector(".player .level");
+    const barEl = document.getElementById("playerXpBar") || document.getElementById("xpProgress");
+    const txtEl = document.getElementById("playerXpText");
+    const av = document.getElementById("playerAvatar") || document.querySelector(".player-avatar");
+
+    const level = d.level || (Math.floor((d.xp || 0) / 100) + 1);
+    const inLevel = d.inLevel !== undefined ? d.inLevel : ((d.xp || 0) % 100);
+
+    if (nameEl) nameEl.textContent = d.name || "Tên người chơi";
+    if (lvlEl) lvlEl.textContent = "Lv." + level;
+    if (barEl) barEl.style.width = inLevel + "%";
+    if (txtEl) txtEl.textContent = inLevel + "/100";
+
+    if (av) {
+      if (d.photo) {
+        const cur = av.querySelector("img");
+        if (cur && cur.getAttribute("src") === d.photo) return;
+        av.innerHTML = "";
+        const img = document.createElement("img");
+        img.src = d.photo;
+        img.referrerPolicy = "no-referrer";
+        img.alt = "";
+        img.style.cssText = "width:100%;height:100%;border-radius:50%;object-fit:cover";
+        av.appendChild(img);
+      } else if (d.name) {
+        av.textContent = d.name.charAt(0).toUpperCase();
+      }
+    }
+  }
+
+  window.addEventListener("hdlg:update", e => renderPlayer(e.detail));
+  if (window.HDLG && typeof HDLG.getState === "function") renderPlayer(HDLG.getState());
+  if (window.HDLG && HDLG.ready) {
+    HDLG.ready.then(() => {
+      if (typeof HDLG.getState === "function") renderPlayer(HDLG.getState());
+      else if (HDLG.user) renderPlayer(HDLG.user);
+    });
+  }
+})();
+
+function refreshRealProgress() {
+  if (!lessons.length) return;
+  renderPage();
+}
+window.addEventListener("hdlg:update", refreshRealProgress);
+window.addEventListener("pageshow", refreshRealProgress);
+if (window.HDLG && HDLG.ready && typeof HDLG.ready.then === "function") {
+  HDLG.ready.then(refreshRealProgress);
+}

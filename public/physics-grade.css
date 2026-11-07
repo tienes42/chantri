@@ -1747,3 +1747,31 @@ body.popup-open {
     max-height: 48dvh;
   }
 }
+
+/* Giữ thẻ tên người chơi hiển thị rõ ràng trên mọi kích thước màn hình */
+@media (max-width: 720px) {
+  .player {
+    display: flex !important;
+    align-items: center;
+    gap: 8px;
+    padding: 5px 10px;
+  }
+  .player-info {
+    display: block !important;
+  }
+  .player-info strong {
+    font-size: 12px;
+    max-width: 95px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .player-info .xp-line {
+    display: none !important;
+  }
+  .player .level {
+    display: inline-block !important;
+    font-size: 11px;
+    padding: 3px 7px;
+  }
+}

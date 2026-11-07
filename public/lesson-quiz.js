@@ -1,14 +1,8 @@
 /* =========================================================
    LESSON-QUIZ.JS — BỘ 10 CÂU HỎI THEO 3 MỨC ĐỘ (BIẾT – HIỂU – VẬN DỤNG)
-   Dữ liệu: lesson.quiz = [ { level, type, q, options, answer, statements, unit, solution, alt, note } ]
-     level : "biet" | "hieu" | "vandung"
-     type  : "mcq"   – trắc nghiệm 4 đáp án, answer = chỉ số đáp án đúng (0..3)
-             "tf"    – Đúng/Sai 1 nhận định, answer = true | false
-             "tf4"   – Đúng/Sai 4 ý a, b, c, d, statements = [4 ý], answer = [true,false,...]
-             "short" – trả lời ngắn, answer = ["đáp án chấp nhận", ...], unit = đơn vị (tuỳ chọn)
-     solution : lời giải chi tiết (hiện ngay sau khi trả lời)
-     alt      : cách giải khác (tuỳ chọn)
-     note     : lưu ý / lỗi hay gặp (tuỳ chọn)
+   Hỗ trợ đầy đủ hiển thị ký hiệu Toán / Lý / Hóa (KaTeX + Offline Renderer)
+   trong câu hỏi, 4 đáp án trắc nghiệm (A, B, C, D), 4 mệnh đề Đúng/Sai (a, b, c, d),
+   đơn vị trả lời ngắn và lời giải chi tiết.
 ========================================================= */
 (function () {
   "use strict";
@@ -27,8 +21,17 @@
       .replace(/"/g, "&quot;").replace(/'/g, "&#039;");
   }
 
-  function normalizeAnswer(v) {
+  function stripLatexForCompare(v) {
     return String(v == null ? "" : v)
+      .replace(/\$/g, "")
+      .replace(/\{,\}/g, ".")
+      .replace(/\\(?:text|mathrm|textbf|mathbf)\{([^}]*)\}/g, "$1")
+      .replace(/\\(?:left|right|quad|qquad|,|;|:|!)/g, "")
+      .replace(/[{}]/g, "");
+  }
+
+  function normalizeAnswer(v) {
+    return stripLatexForCompare(v)
       .toLowerCase()
       .normalize("NFC")
       .replace(/[−–—]/g, "-")
@@ -52,7 +55,6 @@
     for (var i = 0; i < list.length; i++) {
       var b = normalizeAnswer(list[i]);
       if (a === b) return true;
-      // so sánh theo giá trị số khi cả hai đều là số (vd "2,5" = "2.5", "05" = "5")
       if (/^-?[\d.\/]+$/.test(a) && /^-?[\d.\/]+$/.test(b)) {
         var x = toNumber(a), y = toNumber(b);
         if (x !== null && y !== null && Math.abs(x - y) < 1e-9) return true;
@@ -63,7 +65,16 @@
 
   function render(container, quiz, opts) {
     opts = opts || {};
-    var fmt = typeof opts.format === "function" ? opts.format : function (t) { return "<p>" + esc(t) + "</p>"; };
+    var inline = typeof opts.inline === "function"
+      ? opts.inline
+      : (window.HDLGMath && typeof window.HDLGMath.inline === "function" ? window.HDLGMath.inline : esc);
+    var fmt = typeof opts.format === "function"
+      ? opts.format
+      : function (t) { return "<p>" + inline(t) + "</p>"; };
+    var upgrade = typeof opts.upgrade === "function"
+      ? opts.upgrade
+      : (window.HDLGMath && typeof window.HDLGMath.upgrade === "function" ? window.HDLGMath.upgrade : function () {});
+
     if (!container || !Array.isArray(quiz) || !quiz.length) return null;
 
     var passMark = opts.passMark || Math.ceil(quiz.length * 0.7);
@@ -140,7 +151,7 @@
         "<h3>" + (passed ? "🎉 Hoàn thành! " : "💪 Cố lên! ") + "Em làm đúng " + state.correct + "/" + quiz.length + " câu</h3>" +
         "<ul>" + rows + "</ul>" +
         "<p>" + (passed
-          ? "Em đã đạt yêu cầu của chủ đề. Hãy xem lại lời giải các câu sai (nếu có) và thử “cách khác” để hiểu sâu hơn nhé!"
+          ? "Em đã đạt yêu cầu của bài học. Hãy xem lại lời giải các câu sai (nếu có) và thử “cách khác” để hiểu sâu hơn nhé!"
           : "Cần đúng từ " + passMark + "/" + quiz.length + " câu để đạt. Em đọc kỹ lời giải các câu sai rồi bấm “Làm lại” nhé!") + "</p>" +
         '<button type="button" class="qz-btn qz-retry">🔄 Làm lại từ đầu</button>';
       summary.style.display = "";
@@ -182,7 +193,7 @@
       fb.className = "qz-feedback " + (ok ? "is-correct" : "is-wrong");
       fb.innerHTML = ok
         ? "✅ <b>Chính xác!</b> Em hãy so sánh cách làm của mình với lời giải bên dưới nhé."
-        : "❌ <b>Chưa đúng.</b> " + (correctText ? "Đáp án đúng: <b>" + esc(correctText) + "</b>. " : "") +
+        : "❌ <b>Chưa đúng.</b> " + (correctText ? "Đáp án đúng: <b class=\"qz-correct-ans\">" + inline(correctText) + "</b>. " : "") +
           "Đọc lời giải để biết mình sai ở đâu nhé.";
       if (extraHtml) fb.innerHTML += extraHtml;
 
@@ -193,6 +204,7 @@
       sol.innerHTML = html;
       sol.hidden = false;
       card.classList.add(ok ? "is-correct" : "is-wrong");
+      upgrade(card);
     }
 
     function buildMcq(body, item, idx, card) {
@@ -202,7 +214,7 @@
         var b = document.createElement("button");
         b.type = "button";
         b.className = "answer-option qz-option";
-        b.innerHTML = '<span class="option-letter">' + LETTERS[i] + "</span><span>" + esc(opt) + "</span>";
+        b.innerHTML = '<span class="option-letter">' + LETTERS[i] + '</span><span class="option-text rich-inline">' + inline(opt) + "</span>";
         b.addEventListener("click", function () {
           if (state.results[idx] !== undefined) return;
           var ok = i === Number(item.answer);
@@ -210,7 +222,7 @@
           all.forEach(function (x) { x.disabled = true; });
           b.classList.add(ok ? "correct" : "wrong");
           if (all[Number(item.answer)]) all[Number(item.answer)].classList.add("correct");
-          var correctText = LETTERS[Number(item.answer)] + ". " + (item.options || [])[Number(item.answer)];
+          var correctText = LETTERS[Number(item.answer)] + ". " + ((item.options || [])[Number(item.answer)] || "");
           showSolution(card, item, ok, ok ? "" : correctText);
           onAnswered(idx, ok);
         });
@@ -250,7 +262,7 @@
       statements.forEach(function (st, i) {
         var row = document.createElement("div");
         row.className = "qz-tf4-row";
-        row.innerHTML = '<div class="qz-tf4-text">' + esc(String.fromCharCode(97 + i)) + ") " + esc(st) + "</div>" +
+        row.innerHTML = '<div class="qz-tf4-text rich-inline"><b>' + esc(String.fromCharCode(97 + i)) + ")</b> " + inline(st) + "</div>" +
           '<div class="qz-tf4-ctrl"><button type="button" class="qz-tf-btn sm" data-v="1">Đ</button>' +
           '<button type="button" class="qz-tf-btn sm" data-v="0">S</button></div>';
         row.querySelectorAll("button").forEach(function (b) {
@@ -295,7 +307,7 @@
       var wrap = document.createElement("div");
       wrap.className = "qz-short";
       wrap.innerHTML = '<input type="text" class="qz-input" inputmode="text" autocomplete="off" placeholder="Nhập đáp án của em">' +
-        (item.unit ? '<span class="qz-unit">' + esc(item.unit) + "</span>" : "") +
+        (item.unit ? '<span class="qz-unit rich-inline">' + inline(item.unit) + "</span>" : "") +
         '<button type="button" class="qz-btn qz-check">Kiểm tra</button>';
       var input = wrap.querySelector("input");
       var btn = wrap.querySelector("button");
@@ -315,6 +327,7 @@
     }
 
     updateStatus();
+    upgrade(container);
     return { state: state };
   }
 

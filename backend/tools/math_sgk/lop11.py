@@ -76,7 +76,7 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'q': 'Trong **Bài 1: Giá trị lượng giác của góc lượng giác**, quy tắc hoặc công thức nào sau đây '
                  'xác định đúng **Đổi độ và radian**?',
             'options': ['$a^\\circ = \\dfrac{\\pi a}{180}\\text{ rad}, \\quad \\alpha\\text{ rad} = '
-                        '\\geft(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$',
+                        '\\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$',
                         '$a^\\circ = \\dfrac{180}{\\pi a}\\text{ rad}, \\quad \\alpha\\text{ rad} = '
                         '\\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$',
                         '$a^\\circ = \\dfrac{\\pi a}{180}\\text{ rad}, \\quad \\alpha\\text{ rad} = '
@@ -154,7 +154,7 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
                            '\\quad \\alpha\\text{ rad} = \\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$.',
                            'Nếu áp dụng sai dấu/phép tính thành $a^\\circ = \\dfrac{\\pi a}{180}\\text{ '
                            'rad}, \\quad \\alpha\\text{ rad} = '
-                           '\\geft(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$ thì kết quả của **Đổi độ và '
+                           '\\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$ thì kết quả của **Đổi độ và '
                            'radian** trong **Bài 1: Giá trị lượng giác của góc lượng giác** vẫn không thay '
                            'đổi.',
                            'Xét ví dụ của bài: “Cho $\\sin \\alpha = \\dfrac{3}{5}$ và $\\dfrac{\\pi}{2} < '
@@ -170,7 +170,7 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
                         '**Đổi độ và radian** phải là $a^\\circ = \\dfrac{\\pi a}{180}\\text{ rad}, \\quad '
                         '\\alpha\\text{ rad} = \\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$ chứ không '
                         'phải $a^\\circ = \\dfrac{\\pi a}{180}\\text{ rad}, \\quad \\alpha\\text{ rad} = '
-                        '\\geft(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$. d) **Đúng** theo lời giải ví dụ '
+                        '\\left(\\dfrac{180\\alpha}{\\pi}\\right)^\\circ$. d) **Đúng** theo lời giải ví dụ '
                         'minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
@@ -2588,7 +2588,7 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
                  '**Giới hạn cơ bản bằng 0**?',
             'options': ['$\\lim_{n \\to +\\infty} \\dfrac{1}{n^k} = 0 \\quad (k \\in \\mathbb{N}^*), \\quad '
                         '\\lim_{n \\to +\\infty} q^n = 0 \\quad (|q| < 1)$',
-                        '$\\lim_{n \\to +\\notinfty} \\dfrac{1}{n^k} = 0 \\quad (k \\in \\mathbb{N}^*), '
+                        '$\\lim_{n \\to +\\infty} \\dfrac{1}{n^k} = 0 \\quad (k \\in \\mathbb{N}^*), '
                         '\\quad \\lim_{n \\to +\\infty} q^n = 0 \\quad (|q| < 1)$',
                         '$\\lim_{n \\to +\\infty} \\dfrac{n^k}{1} = 0 \\quad (k \\in \\mathbb{N}^*), \\quad '
                         '\\lim_{n \\to +\\infty} q^n = 0 \\quad (|q| < 1)$',
@@ -2623,7 +2623,7 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'type': 'mcq',
             'q': 'Để nắm vững bản chất của **Bài 15: Giới hạn của dãy số**, nhận định nào sau đây là **chính '
                  'xác**?',
-            'options': ['Nhận biết được giới hạn bằng $0$ của các dãy số cơ bản $\\lim_{n \\to +\\notinfty} '
+            'options': ['Nhận biết được giới hạn bằng $0$ của các dãy số cơ bản $\\lim_{n \\to +\\infty} '
                         '\\dfrac{1}{n^k} = 0$ ($k \\in \\mathbb{N}^*$) và $\\lim_{n \\to +\\infty} q^n = 0$ '
                         '($|q| < 1$).',
                         'Nhận biết được giới hạn bằng $0$ của các dãy số cơ bản $\\lim_{n \\to +\\infty} '
@@ -2662,7 +2662,7 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
                            'Trong **Bài 15: Giới hạn của dãy số**, quy tắc/công thức **Giới hạn cơ bản bằng '
                            '0** được viết là: $\\lim_{n \\to +\\infty} \\dfrac{1}{n^k} = 0 \\quad (k \\in '
                            '\\mathbb{N}^*), \\quad \\lim_{n \\to +\\infty} q^n = 0 \\quad (|q| < 1)$.',
-                           'Nếu áp dụng sai dấu/phép tính thành $\\lim_{n \\to +\\notinfty} \\dfrac{1}{n^k} '
+                           'Nếu áp dụng sai dấu/phép tính thành $\\lim_{n \\to +\\infty} \\dfrac{1}{n^k} '
                            '= 0 \\quad (k \\in \\mathbb{N}^*), \\quad \\lim_{n \\to +\\infty} q^n = 0 \\quad '
                            '(|q| < 1)$ thì kết quả của **Giới hạn cơ bản bằng 0** trong **Bài 15: Giới hạn '
                            'của dãy số** vẫn không thay đổi.',
@@ -2677,7 +2677,7 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
                         '\\quad (k \\in \\mathbb{N}^*), \\quad \\lim_{n \\to +\\infty} q^n = 0 \\quad (|q| < '
                         '1)$). c) **Sai** vì công thức đúng của **Giới hạn cơ bản bằng 0** phải là $\\lim_{n '
                         '\\to +\\infty} \\dfrac{1}{n^k} = 0 \\quad (k \\in \\mathbb{N}^*), \\quad \\lim_{n '
-                        '\\to +\\infty} q^n = 0 \\quad (|q| < 1)$ chứ không phải $\\lim_{n \\to +\\notinfty} '
+                        '\\to +\\infty} q^n = 0 \\quad (|q| < 1)$ chứ không phải $\\lim_{n \\to +\\infty} '
                         '\\dfrac{1}{n^k} = 0 \\quad (k \\in \\mathbb{N}^*), \\quad \\lim_{n \\to +\\infty} '
                         'q^n = 0 \\quad (|q| < 1)$. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
@@ -2688,7 +2688,7 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
                  'là **đúng**?',
             'options': ['Chia cả tử và mẫu cho $n^2$: $\\lim_{n \\to +\\infty} \\dfrac{3 - \\dfrac{2}{n} + '
                         '\\dfrac{1}{n^2}}{1 + \\dfrac{4}{n^2}} = \\dfrac{3 - 0 + 0}{1 + 0} = 3$. Tổng...',
-                        'Chia cả tử và mẫu cho $n^2$: $\\lim_{n \\to +\\notinfty} \\dfrac{3 - \\dfrac{2}{n} '
+                        'Chia cả tử và mẫu cho $n^2$: $\\lim_{n \\to +\\infty} \\dfrac{3 - \\dfrac{2}{n} '
                         '+ \\dfrac{1}{n^2}}{1 + \\dfrac{4}{n^2}} = \\dfrac{3 - 0 + 0}{1 + 0} = 3$. Tổng...',
                         'Chia cả tử và mẫu cho $n^2$: $\\lim_{n \\to +\\infty} \\dfrac{3 - \\dfrac{n}{2} + '
                         '\\dfrac{1}{n^2}}{1 + \\dfrac{4}{n^2}} = \\dfrac{3 - 0 + 0}{1 + 0} = 3$. Tổng...',
@@ -3352,7 +3352,7 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'type': 'mcq',
             'q': 'Khi học **Bài 19: Lôgarit**, biểu thức hoặc quy tắc nào dưới đây biểu diễn đúng **Lôgarit '
                  'của tích, thương, lũy thừa**?',
-            'options': ['$\\log_a(MN) = \\log_a M + \\log_a N, \\quad \\log_a\\geft(\\dfrac{M}{N}\\right) = '
+            'options': ['$\\log_a(MN) = \\log_a M + \\log_a N, \\quad \\log_a\\left(\\dfrac{M}{N}\\right) = '
                         '\\log_a M - \\log_a N, \\quad \\log_a(M^\\alpha) = \\alpha\\log_a M$',
                         '$\\log_a(MN) = \\log_a M + \\log_a N, \\quad \\log_a\\left(\\dfrac{M}{N}\\right) = '
                         '\\log_a M - \\log_a N, \\quad \\log_a(M^\\alpha) = \\alpha\\log_a M$',
@@ -3512,7 +3512,7 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'type': 'mcq',
             'q': 'Trong **Bài 20: Hàm số mũ và hàm số lôgarit**, quy tắc hoặc công thức nào sau đây xác định '
                  'đúng **Hàm số mũ y = a^x**?',
-            'options': ['$D = \\mathbb{R}, \\quad T = (0; +\\notinfty), \\quad \\text{đi qua } (0; 1)$',
+            'options': ['$D = \\mathbb{R}, \\quad T = (0; +\\infty), \\quad \\text{đi qua } (0; 1)$',
                         '$D = \\mathbb{R}, \\quad T = (0; +\\infty), \\quad \\text{đi qua } (0; 1)$',
                         '$D = \\mathbb{R}, \\quad T = (0; +\\infty), \\quad \\text{đi qua } (0; 2)$',
                         '$D = \\mathbb{R}, \\quad T = (2; +\\infty), \\quad \\text{đi qua } (0; 1)$'],
@@ -3524,7 +3524,7 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'type': 'mcq',
             'q': 'Khi học **Bài 20: Hàm số mũ và hàm số lôgarit**, biểu thức hoặc quy tắc nào dưới đây biểu '
                  'diễn đúng **Hàm số lôgarit y = log_a x**?',
-            'options': ['$D = (0; +\\notinfty), \\quad T = \\mathbb{R}, \\quad \\text{đi qua } (1; 0)$',
+            'options': ['$D = (0; +\\infty), \\quad T = \\mathbb{R}, \\quad \\text{đi qua } (1; 0)$',
                         '$D = (0; +\\infty), \\quad T = \\mathbb{R}, \\quad \\text{đi qua } (1; 1)$',
                         '$D = (0; +\\infty), \\quad T = \\mathbb{R}, \\quad \\text{đi qua } (1; 0)$',
                         '$D = (2; +\\infty), \\quad T = \\mathbb{R}, \\quad \\text{đi qua } (1; 0)$'],
@@ -3585,7 +3585,7 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
                            'a^x** được viết là: $D = \\mathbb{R}, \\quad T = (0; +\\infty), \\quad \\text{đi '
                            'qua } (0; 1)$.',
                            'Nếu áp dụng sai dấu/phép tính thành $D = \\mathbb{R}, \\quad T = (0; '
-                           '+\\notinfty), \\quad \\text{đi qua } (0; 1)$ thì kết quả của **Hàm số mũ y = '
+                           '+\\infty), \\quad \\text{đi qua } (0; 1)$ thì kết quả của **Hàm số mũ y = '
                            'a^x** trong **Bài 20: Hàm số mũ và hàm số lôgarit** vẫn không thay đổi.',
                            'Xét ví dụ của bài: “Tìm tập xác định của hàm số $y = \\log_3 (2x - 4)$.”, kết '
                            'quả giải đúng là: Hàm số xác định khi và chỉ khi biểu thức trong lôgarit dương: '
@@ -3597,7 +3597,7 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
                         '+\\infty), \\quad \\text{đi qua } (0; 1)$). c) **Sai** vì công thức đúng của **Hàm '
                         'số mũ y = a^x** phải là $D = \\mathbb{R}, \\quad T = (0; +\\infty), \\quad '
                         '\\text{đi qua } (0; 1)$ chứ không phải $D = \\mathbb{R}, \\quad T = (0; '
-                        '+\\notinfty), \\quad \\text{đi qua } (0; 1)$. d) **Đúng** theo lời giải ví dụ minh '
+                        '+\\infty), \\quad \\text{đi qua } (0; 1)$. d) **Đúng** theo lời giải ví dụ minh '
                         'họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',
@@ -3605,7 +3605,7 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
                  'sau: Tìm tập xác định của hàm số $y = \\log_3 (2x - 4)$. Cách giải và kết quả nào dưới đây '
                  'là **đúng**?',
             'options': ['Hàm số xác định khi và chỉ khi biểu thức trong lôgarit dương: $2x - 4 > 0 '
-                        '\\Leftrightarrow x > 2$. Vậy tập xác định của hàm số là $D = (2; +\\notinfty)$.',
+                        '\\Leftrightarrow x > 2$. Vậy tập xác định của hàm số là $D = (2; +\\infty)$.',
                         'Hàm số xác định khi và chỉ khi biểu thức trong lôgarit dương: $2x - 4 > 0 '
                         '\\Leftrightarrow x > 2$. Vậy tập xác định của hàm số là $D = (2; +\\infty)$.',
                         'Hàm số xác định khi và chỉ khi biểu thức trong lôgarit dương: $2x - 4 > 0 '
@@ -5696,7 +5696,7 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
             'type': 'mcq',
             'q': 'Trong **Bài 32: Các quy tắc tính đạo hàm**, quy tắc hoặc công thức nào sau đây xác định '
                  'đúng **Quy tắc tích và thương**?',
-            'options': ["$(uv)' = u'v + uv', \\quad \\geft(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^2}$",
+            'options': ["$(uv)' = u'v + uv', \\quad \\left(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^2}$",
                         "$(uv)' = u'v + uv', \\quad \\left(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^2}$",
                         "$(uv)' = u'v + uv', \\quad \\left(\\dfrac{v}{u}\\right)' = \\dfrac{u'v - uv'}{v^2}$",
                         "$(uv)' = u'v + uv', \\quad \\left(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - "
@@ -5772,7 +5772,7 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
                            "thương** được viết là: $(uv)' = u'v + uv', \\quad \\left(\\dfrac{u}{v}\\right)' "
                            "= \\dfrac{u'v - uv'}{v^2}$.",
                            "Nếu áp dụng sai dấu/phép tính thành $(uv)' = u'v + uv', \\quad "
-                           "\\geft(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^2}$ thì kết quả của **Quy "
+                           "\\left(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^2}$ thì kết quả của **Quy "
                            'tắc tích và thương** trong **Bài 32: Các quy tắc tính đạo hàm** vẫn không thay '
                            'đổi.',
                            'Xét ví dụ của bài: “Tính đạo hàm của các hàm số: a) $y = x^3 - 4x^2 + 5x - 2$; '
@@ -5785,7 +5785,7 @@ LESSONS = [{'topic': 'l11-ch01-luong-giac',
                         "\\left(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^2}$). c) **Sai** vì công thức "
                         "đúng của **Quy tắc tích và thương** phải là $(uv)' = u'v + uv', \\quad "
                         "\\left(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^2}$ chứ không phải $(uv)' = "
-                        "u'v + uv', \\quad \\geft(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^2}$. d) "
+                        "u'v + uv', \\quad \\left(\\dfrac{u}{v}\\right)' = \\dfrac{u'v - uv'}{v^2}$. d) "
                         '**Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',

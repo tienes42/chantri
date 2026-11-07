@@ -341,7 +341,7 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
                  'toán sau: Tính một cách hợp lí: $A = \\dfrac{-3}{7} \\cdot \\dfrac{5}{9} + \\dfrac{-3}{7} '
                  '\\cdot \\dfrac{4}{9} + 1\\dfrac{3}{7}$. Cách giải và kết quả nào dưới đây là **đúng**?',
             'options': ['Áp dụng tính chất phân phối của phép nhân đối với phép cộng: $A = \\dfrac{-3}{7} '
-                        '\\cdot \\geft(\\dfrac{5}{9} + \\dfrac{4}{9}\\right) + \\dfrac{10}{7} = '
+                        '\\cdot \\left(\\dfrac{5}{9} + \\dfrac{4}{9}\\right) + \\dfrac{10}{7} = '
                         '\\dfrac{-3}{7} \\cdot 1 + \\dfrac{10}{7} = \\dfrac{7}{7} = 1$...',
                         'Áp dụng tính chất phân phối của phép nhân đối với phép cộng: $A = \\dfrac{7}{-3} '
                         '\\cdot \\left(\\dfrac{5}{9} + \\dfrac{4}{9}\\right) + \\dfrac{10}{7} = '
@@ -695,7 +695,7 @@ LESSONS = [{'topic': 'l7-ch01-so-huu-ti',
                  'vế** để giải bài toán sau: Tìm $x$, biết: $x - \\left(\\dfrac{5}{4} - '
                  '\\dfrac{7}{5}\\right) = \\dfrac{9}{20}$. Cách giải và kết quả nào dưới đây là **đúng**?',
             'options': ['Ta có: $\\dfrac{5}{4} - \\dfrac{7}{5} = \\dfrac{25 - 28}{20} = \\dfrac{-3}{20}$. '
-                        'Đẳng thức trở thành: $x - \\geft(\\dfrac{-3}{20}\\right) = \\dfrac{9}{20}$. Á...',
+                        'Đẳng thức trở thành: $x - \\left(\\dfrac{-3}{20}\\right) = \\dfrac{9}{20}$. Á...',
                         'Ta có: $\\dfrac{5}{4} - \\dfrac{7}{5} = \\dfrac{25 - 28}{20} = \\dfrac{-3}{20}$. '
                         'Đẳng thức trở thành: $x - \\left(\\dfrac{-3}{20}\\right) = \\dfrac{9}{20}$. Á...',
                         'Ta có: $\\dfrac{4}{5} - \\dfrac{7}{5} = \\dfrac{25 - 28}{20} = \\dfrac{-3}{20}$. '

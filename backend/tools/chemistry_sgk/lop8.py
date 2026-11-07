@@ -236,7 +236,7 @@ LESSONS = [
                 "Độ tan của hầu hết các chất rắn trong nước tăng khi nhiệt độ tăng, còn độ tan của chất khí tăng khi nhiệt độ giảm và áp suất tăng.",
                 "Khi hòa tan $10\\text{ g}$ đường vào $100\\text{ g}$ nước thì nồng độ phần trăm của dung dịch thu được là $10\\%$.",
                 "Muốn pha chế $500\\text{ g}$ dung dịch nước muối $\\text{NaCl } 0{,}9\\%$, ta cần cân $4{,}5\\text{ g}$ $\\text{NaCl}$ và $495{,}5\\text{ g}$ nước cất.",
-            ], [True, True, False, True], "Ý c) sai vì khối lượng dung dịch là $m_{\\text{dd}} = 10 + 100 = 110\\text{ g}$, nên $C\\% = \\dfrac{10}{110} \\cdot 100\\% \\approx 9{,}09\\% \\ne 10\\%$."),
+            ], [True, True, False, True], "Ý c) sai vì khối lượng dung dịch là $m_{\\text{dd}} = 10 + 100 = 110\\text{ g}$, nên $C\\% = \\dfrac{10}{110} \\cdot 100\\% \\approx 9{,}09\\% \ne 10\\%$."),
             short("vandung", "Hòa tan hoàn toàn $15\\text{ g}$ đường vào $85\\text{ g}$ nước. Nồng độ phần trăm ($C\\%$) của dung dịch nước đường thu được bằng bao nhiêu phần trăm ($\\%$)?", ["15"], "Khối lượng dung dịch là $m_{\\text{dd}} = 15 + 85 = 100\\text{ g}$. Nồng độ phần trăm là $C\\% = \\dfrac{15}{100} \\cdot 100\\% = 15\\%$.", unit="%"),
         ],
     ),

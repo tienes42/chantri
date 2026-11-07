@@ -307,7 +307,7 @@ LESSONS = [
             "- **Khí lí tưởng**: chất khí mà các phân tử được coi là các **chất điểm** (bỏ qua thể tích riêng của phân tử) và **chỉ tương tác với nhau khi va chạm** (bỏ qua lực tương tác phân tử khi không va chạm).\n"
             "- **Số mol ($n$)** và **Số phân tử ($N$)**:\n"
             "  $$n = \\dfrac{m}{M} = \\dfrac{N}{N_A} \\implies N = n \\cdot N_A = \\dfrac{m}{M} N_A$$\n"
-            "  với $M$ là khối lượng mol ($\text{g/mol}$ hoặc $\\text{kg/mol}$) và $N_A \\approx 6{,}02 \\cdot 10^{23}\\text{ mol}^{-1}$ là hằng số Avogadro."
+            "  với $M$ là khối lượng mol ($\\text{g/mol}$ hoặc $\\text{kg/mol}$) và $N_A \\approx 6{,}02 \\cdot 10^{23}\\text{ mol}^{-1}$ là hằng số Avogadro."
         ),
         formulas=[
             G(

@@ -5726,8 +5726,7 @@ LESSONS = [{'topic': 'l2-cd01-on-tap-va-bo-sung',
   'icon': '📏',
   'description': 'Nhận biết các đơn vị đo độ dài đề-xi-mét (dm), mét (m), ki-lô-mét (km) và mối quan hệ giữa '
                  'chúng.',
-  'requirements': ['Nhận biết tên gọi, ký hiệu các đơn vị đo độ dài: **đề-xi-mét ($\text{dm}$)**, **mét ($\t'
-                   'ext{m}$)**, **ki-lô-mét ($\text{km}$)**.',
+  'requirements': ['Nhận biết tên gọi, ký hiệu các đơn vị đo độ dài: **đề-xi-mét ($\\text{dm}$)**, **mét ($\\text{m}$)**, **ki-lô-mét ($\\text{km}$)**.',
                    'Thuộc và vận dụng mối quan hệ: $1\\text{ dm} = 10\\text{ cm}$; $1\\text{ m} = 10\\text{ '
                    'dm} = 100\\text{ cm}$; $1\\text{ km} = 1000\\text{ m}$.',
                    'Thực hiện được các phép tính cộng, trừ, nhân, chia với số đo độ dài.'],
@@ -5807,19 +5806,19 @@ LESSONS = [{'topic': 'l2-cd01-on-tap-va-bo-sung',
             'type': 'mcq',
             'q': 'Để nắm vững bản chất của **Bài 55: Đề-xi-mét. Mét. Ki-lô-mét**, nhận định nào sau đây là '
                  '**chính xác**?',
-            'options': ['Nhận biết tên gọi, ký hiệu các đơn vị đo độ dài: **đề-xi-mét ($\text{dm}$)**, **mét '
-                        '($\text{m}$)**, **ki-lô-mét ($\text{km}$)**. (với dấu ngược lại)',
+            'options': ['Nhận biết tên gọi, ký hiệu các đơn vị đo độ dài: **đề-xi-mét ($\\text{dm}$)**, **mét '
+                        '($\\text{m}$)**, **ki-lô-mét ($\\text{km}$)**. (với dấu ngược lại)',
                         'Đảo ngược vế của quy tắc: Nhận biết tên gọi, ký hiệu các đơn vị đo độ dài: '
-                        '**đề-xi-mét ($\text{dm}$)**, **mét ($\text{m}$)**, **ki-lô-mét ($\text{km}$)**.',
-                        'Nhận biết tên gọi, ký hiệu các đơn vị đo độ dài: **đề-xi-mét ($\text{dm}$)**, **mét '
-                        '($\text{m}$)**, **ki-lô-mét ($\text{km}$)**.',
+                        '**đề-xi-mét ($\\text{dm}$)**, **mét ($\\text{m}$)**, **ki-lô-mét ($\\text{km}$)**.',
+                        'Nhận biết tên gọi, ký hiệu các đơn vị đo độ dài: **đề-xi-mét ($\\text{dm}$)**, **mét '
+                        '($\\text{m}$)**, **ki-lô-mét ($\\text{km}$)**.',
                         'Trường hợp trái ngược: không thỏa mãn điều kiện của Nhận biết tên gọi, ký hiệu các '
-                        'đơn vị đo độ dài: **đề-xi-mét ($\text{dm}$)**, **mét ($\text{m}$)**, **ki-lô-mét '
-                        '($\text{km}$)**.'],
+                        'đơn vị đo độ dài: **đề-xi-mét ($\\text{dm}$)**, **mét ($\\text{m}$)**, **ki-lô-mét '
+                        '($\\text{km}$)**.'],
             'answer': 2,
             'solution': 'Theo nội dung cốt lõi của Bài 55: Đề-xi-mét. Mét. Ki-lô-mét: Nhận biết tên gọi, ký '
-                        'hiệu các đơn vị đo độ dài: **đề-xi-mét ($\text{dm}$)**, **mét ($\text{m}$)**, '
-                        '**ki-lô-mét ($\text{km}$)**.'},
+                        'hiệu các đơn vị đo độ dài: **đề-xi-mét ($\\text{dm}$)**, **mét ($\\text{m}$)**, '
+                        '**ki-lô-mét ($\\text{km}$)**.'},
            {'level': 'hieu',
             'type': 'tf',
             'q': 'Nhận định: “$2\\text{ m} = 20\\text{ dm}$.”',

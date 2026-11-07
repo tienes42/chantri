@@ -1696,8 +1696,7 @@ LESSONS = [{'topic': 'l5-cd01-on-tap-va-bo-sung',
                    'phân.',
                    'Vận dụng kiến thức của **Bài 16: Các đơn vị đo diện tích** để giải bài tập minh họa và '
                    'bài toán thực tiễn.'],
-  'definition': '- Trong bảng đơn vị đo diện tích ($\text{km}^2, \text{ha}, \text{m}^2, \text{dm}^2, \t'
-                'ext{cm}^2, \text{mm}^2$), mỗi đơn vị lớn gấp $100$ lần đơn vị bé hơn tiếp liền.\n'
+  'definition': '- Trong bảng đơn vị đo diện tích ($\\text{km}^2, \\text{ha}, \\text{m}^2, \\text{dm}^2, \\text{cm}^2, \\text{mm}^2$), mỗi đơn vị lớn gấp $100$ lần đơn vị bé hơn tiếp liền.\n'
                 '- Mỗi đơn vị bé bằng $\\dfrac{1}{100} = 0{,}01$ đơn vị lớn hơn tiếp liền.',
   'theory': '### 1. Quan hệ giữa các đơn vị diện tích thông dụng\n'
             '- $1\\text{ m}^2 = 100\\text{ dm}^2 = 10\\,000\\text{ cm}^2$; $1\\text{ dm}^2 = 100\\text{ '
@@ -3582,7 +3581,7 @@ LESSONS = [{'topic': 'l5-cd01-on-tap-va-bo-sung',
                    'Vận dụng kiến thức của **Bài 36: Tỉ số. Tỉ số phần trăm** để giải bài tập minh họa và '
                    'bài toán thực tiễn.'],
   'definition': "('- **Tỉ số** của hai số $a$ và $b$ ($b \\\\ne 0$) là thương trong phép chia số $a$ cho số "
-                '$b$, kí hiệu là $a : b$ hay $\\\\dfrac{a}{b}$.\\n- **Tỉ số phần trăm** là tỉ số được viết '
+                '$b$, kí hiệu là $a : b$ hay $\\\\dfrac{a}{b}$.\n- **Tỉ số phần trăm** là tỉ số được viết '
                 'dưới dạng phân số thập phân có mẫu số là $100$, thay mẫu số $100$ bằng kí hiệu $\\\\%$ (ví '
                 "dụ $\\\\dfrac{25}{100} = 25\\\\%$).',)",
   'theory': '### 1. Lưu ý khi lập tỉ số\n'

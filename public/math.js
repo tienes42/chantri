@@ -1,7 +1,7 @@
 // Dọn bộ nhớ đệm sessionStorage cũ & mở khóa cuộn trang trên điện thoại
 try {
   Object.keys(sessionStorage).forEach((k) => {
-    if ((k.startsWith("hdlg_lesson") || k.startsWith("hdlg_lessons")) && !k.startsWith("hdlg_v6_")) {
+    if ((k.startsWith("hdlg_lesson") || k.startsWith("hdlg_lessons")) && !k.startsWith("hdlg_v7_")) {
       sessionStorage.removeItem(k);
     }
   });
@@ -143,7 +143,7 @@ classCards.forEach(function (card) {
     try { localStorage.setItem("selectedMathGrade", String(selectedGrade)); } catch (_) {}
     // Prefetch dữ liệu bài học ngay khi bấm chọn lớp để trang sau mở tức thì (0ms)
     try {
-      const cacheKey = `hdlg_v6_lessons_math_${selectedGrade}`;
+      const cacheKey = `hdlg_v7_lessons_math_${selectedGrade}`;
       if (!sessionStorage.getItem(cacheKey)) {
         const apiBase = (["127.0.0.1", "localhost"].includes(location.hostname) && location.port !== "8000") ? "http://127.0.0.1:8000/api" : "/api";
         fetch(`${apiBase}/content/subjects/math/lessons?grade=${encodeURIComponent(selectedGrade)}`)
@@ -152,7 +152,7 @@ classCards.forEach(function (card) {
             if (Array.isArray(data) && data.length) {
               sessionStorage.setItem(cacheKey, JSON.stringify(data));
               data.forEach(l => {
-                if (l && l.id != null) sessionStorage.setItem(`hdlg_v6_lesson_${l.id}`, JSON.stringify(l));
+                if (l && l.id != null) sessionStorage.setItem(`hdlg_v7_lesson_${l.id}`, JSON.stringify(l));
               });
             }
           }).catch(() => {});

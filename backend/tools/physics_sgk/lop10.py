@@ -71,7 +71,7 @@ LESSONS = [
             "- **An toàn quang học và nhiệt**: tuyệt đối **không chiếu tia laser trực tiếp vào mắt**; dùng kẹp gỗ khi cầm ống nghiệm đang đun nóng.\n\n"
             "### 2. Hệ thống biển báo an toàn trong phòng thí nghiệm\n"
             "- **Biển báo cấm**: hình tròn, viền đỏ, nền trắng, có gạch chéo đỏ (ví dụ: cấm lửa, cấm uống nước).\n"
-            "- **Biển báo cảnh báo nguy hiểm**: hình tam giác đều, viền đen hoặc đỏ, nền vàng (ví dụ: cảnh báo điện áp cao $\\lightning$, cảnh báo tia laser, cảnh báo chất dễ cháy, cảnh báo bề mặt nóng).\n"
+            "- **Biển báo cảnh báo nguy hiểm**: hình tam giác đều, viền đen hoặc đỏ, nền vàng (ví dụ: cảnh báo điện áp cao $\\text{⚡}$, cảnh báo tia laser, cảnh báo chất dễ cháy, cảnh báo bề mặt nóng).\n"
             "- **Biển báo bắt buộc thực hiện**: hình tròn, nền xanh lam, hình vẽ trắng (ví dụ: bắt buộc đeo kính bảo hộ, đeo găng tay)."
         ),
         formulas=[

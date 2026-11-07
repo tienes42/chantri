@@ -6,7 +6,7 @@
 // Dọn bộ nhớ đệm sessionStorage cũ để tránh lưu bài gộp cả chương từ phiên bản trước
 try {
   Object.keys(sessionStorage).forEach((k) => {
-    if ((k.startsWith("hdlg_lesson") || k.startsWith("hdlg_lessons")) && !k.startsWith("hdlg_v6_")) {
+    if ((k.startsWith("hdlg_lesson") || k.startsWith("hdlg_lessons")) && !k.startsWith("hdlg_v7_")) {
       sessionStorage.removeItem(k);
     }
   });
@@ -608,7 +608,7 @@ async function loadLessons() {
   const url = `${API_BASE}/content/subjects/chemistry/lessons?grade=${encodeURIComponent(grade)}`;
 
   try {
-    const cacheKey = `hdlg_v6_lessons_chemistry_${grade}`;
+    const cacheKey = `hdlg_v7_lessons_chemistry_${grade}`;
     let data = null;
     const cached = sessionStorage.getItem(cacheKey);
     if (cached) {
@@ -628,7 +628,7 @@ async function loadLessons() {
     lessons = data;
     try {
       lessons.forEach(l => {
-        if (l && l.id != null) sessionStorage.setItem(`hdlg_v6_lesson_${l.id}`, JSON.stringify(l));
+        if (l && l.id != null) sessionStorage.setItem(`hdlg_v7_lesson_${l.id}`, JSON.stringify(l));
       });
     } catch (_) {}
 
@@ -690,7 +690,7 @@ function withGradeProgress(fn) {
   if (!s) {
     s = document.createElement("script");
     s.id = "gradeProgressScript";
-    s.src = "/grade-progress.js?v=1";
+    s.src = "grade-progress.js?v=1";
     document.head.appendChild(s);
   }
   s.addEventListener("load", () => fn(window.HDLGProgress));
@@ -700,7 +700,7 @@ function openGradeProgress() {
   withGradeProgress(P => P.open({ subject: "chemistry", grade, getLessons: () => lessons, apiBase: API_BASE }));
 }
 function gradeChallengeURL() {
-  return "/challenge.html?subject=chemistry&grade=" + encodeURIComponent(grade) +
+  return "challenge.html?subject=chemistry&grade=" + encodeURIComponent(grade) +
     "&from=" + encodeURIComponent(location.pathname + location.search);
 }
 

@@ -868,7 +868,7 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
                  'để giải bài toán sau: Cho biết $\\sin \\alpha = \\dfrac{3}{5}$ với $90^\\circ < \\alpha < '
                  '180^\\circ$. Tính $\\cos \\alpha$ và $\\tan \\alpha$. Cách giải và kết quả nào dưới đây là '
                  '**đúng**?',
-            'options': ['Ta có $\\cos^2 \\alpha = 1 - \\sin^2 \\alpha = 1 - \\geft(\\dfrac{3}{5}\\right)^2 = '
+            'options': ['Ta có $\\cos^2 \\alpha = 1 - \\sin^2 \\alpha = 1 - \\left(\\dfrac{3}{5}\\right)^2 = '
                         '\\dfrac{16}{25}$. Vì $90^\\circ < \\alpha < 180^\\circ$ nên $\\cos \\alpha < 0$...',
                         'Ta có $\\cos^2 \\alpha = 1 - \\sin^2 \\alpha = 1 - \\left(\\dfrac{5}{3}\\right)^2 = '
                         '\\dfrac{16}{25}$. Vì $90^\\circ < \\alpha < 180^\\circ$ nên $\\cos \\alpha < 0$...',
@@ -3416,7 +3416,7 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
                  'đúng **Liên hệ giữa VTCP và VTPT**?',
             'options': ['$\\overrightarrow{u} = (a; b) \\leftrightarrow \\overrightarrow{n} = (-b; a)$ hoặc '
                         '$(b; -a)$',
-                        '$\\overrightarrow{u} = (a; b) \\geftrightarrow \\overrightarrow{n} = (-b; a)$ hoặc '
+                        '$\\overrightarrow{u} = (a; b) \\leftrightarrow \\overrightarrow{n} = (-b; a)$ hoặc '
                         '$(b; -a)$',
                         'Đảo ngược vế của quy tắc: $\\overrightarrow{u} = (a; b) \\leftrightarrow '
                         '\\overrightarrow{n} = (-b; a)$ hoặc $(b; -a)$',
@@ -3493,7 +3493,7 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
                            'VTCP và VTPT** được viết là: $\\overrightarrow{u} = (a; b) \\leftrightarrow '
                            '\\overrightarrow{n} = (-b; a)$ hoặc $(b; -a)$.',
                            'Nếu áp dụng sai dấu/phép tính thành $\\overrightarrow{u} = (a; b) '
-                           '\\geftrightarrow \\overrightarrow{n} = (-b; a)$ hoặc $(b; -a)$ thì kết quả của '
+                           '\\leftrightarrow \\overrightarrow{n} = (-b; a)$ hoặc $(b; -a)$ thì kết quả của '
                            '**Liên hệ giữa VTCP và VTPT** trong **Bài 19: Phương trình đường thẳng** vẫn '
                            'không thay đổi.',
                            'Xét ví dụ của bài: “Lập phương trình tổng quát của đường thẳng $d$ đi qua điểm '
@@ -3506,7 +3506,7 @@ LESSONS = [{'topic': 'l10-ch01-menh-de-tap-hop',
                         '\\leftrightarrow \\overrightarrow{n} = (-b; a)$ hoặc $(b; -a)$). c) **Sai** vì công '
                         'thức đúng của **Liên hệ giữa VTCP và VTPT** phải là $\\overrightarrow{u} = (a; b) '
                         '\\leftrightarrow \\overrightarrow{n} = (-b; a)$ hoặc $(b; -a)$ chứ không phải '
-                        '$\\overrightarrow{u} = (a; b) \\geftrightarrow \\overrightarrow{n} = (-b; a)$ hoặc '
+                        '$\\overrightarrow{u} = (a; b) \\leftrightarrow \\overrightarrow{n} = (-b; a)$ hoặc '
                         '$(b; -a)$. d) **Đúng** theo lời giải ví dụ minh họa trong bài học.'},
            {'level': 'vandung',
             'type': 'mcq',

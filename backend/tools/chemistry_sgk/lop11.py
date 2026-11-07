@@ -27,7 +27,7 @@ CH1_LESSONS = [
             "Tính được hằng số cân bằng $K_C$ từ nồng độ cân bằng của các chất",
         ],
         "Cho phản ứng thuận nghịch: $\\text{H}_2(g) + \\text{I}_2(g) \\rightleftharpoons 2\\text{HI}(g)$. Ở $430^\\circ\\text{C}$, nồng độ các chất ở trạng thái cân bằng là $[\\text{H}_2] = [\\text{I}_2] = 0,10\\text{ M}$ và $[\\text{HI}] = 0,70\\text{ M}$. Tính hằng số cân bằng $K_C$ của phản ứng ở nhiệt độ này.",
-        "Biểu thức hằng số cân bằng của phản ứng:\\n$K_C = \\frac{[\\text{HI}]^2}{[\\text{H}_2] \\cdot [\\text{I}_2]} = \\frac{0,70^2}{0,10 \\cdot 0,10} = \\frac{0,49}{0,01} = 49$.",
+        "Biểu thức hằng số cân bằng của phản ứng:\n$K_C = \\frac{[\\text{HI}]^2}{[\\text{H}_2] \\cdot [\\text{I}_2]} = \\frac{0,70^2}{0,10 \\cdot 0,10} = \\frac{0,49}{0,01} = 49$.",
         "Sự tạo thành thạch nhũ và sự xâm thực đá vôi trong hang động là một hệ cân bằng thuận nghịch trong tự nhiên: $\\text{CaCO}_3(s) + \\text{CO}_2(aq) + \\text{H}_2\\text{O}(l) \\rightleftharpoons \\text{Ca(HCO}_3)_2(aq)$.",
         CH1_ID, CH1_TITLE, CH1_DESC,
         extra_questions=[
@@ -49,7 +49,7 @@ CH1_LESSONS = [
             "Giải thích được điều kiện tối ưu (nhiệt độ, áp suất, xúc tác) trong sản xuất công nghiệp (như tổng hợp $\\text{NH}_3$, sản xuất $\\text{SO}_3$)",
         ],
         "Cho cân bằng tổng hợp ammonia: $\\text{N}_2(g) + 3\\text{H}_2(g) \\rightleftharpoons 2\\text{NH}_3(g)$ có $\\Delta_r H^\\circ_{298} = -91,8\\text{ kJ}$. Để cân bằng chuyển dịch theo chiều thuận (tăng hiệu suất tạo $\\text{NH}_3$), cần tác động vào áp suất và nhiệt độ như thế nào?",
-        "- Về áp suất: Phản ứng thuận làm giảm số mol khí (từ $1 + 3 = 4\\text{ mol}$ khí xuống $2\\text{ mol}$ khí), nên cần TĂNG áp suất chung của hệ.\\n- Về nhiệt độ: Phản ứng thuận tỏa nhiệt ($\\Delta_r H^\\circ_{298} = -91,8\\text{ kJ} < 0$), nên cần GIẢM nhiệt độ vừa phải (trong công nghiệp duy trì khoảng $400 - 450^\\circ\\text{C}$ kết hợp xúc tác $\\text{Fe}$ để đảm bảo tốc độ phản ứng).",
+        "- Về áp suất: Phản ứng thuận làm giảm số mol khí (từ $1 + 3 = 4\\text{ mol}$ khí xuống $2\\text{ mol}$ khí), nên cần TĂNG áp suất chung của hệ.\n- Về nhiệt độ: Phản ứng thuận tỏa nhiệt ($\\Delta_r H^\\circ_{298} = -91,8\\text{ kJ} < 0$), nên cần GIẢM nhiệt độ vừa phải (trong công nghiệp duy trì khoảng $400 - 450^\\circ\\text{C}$ kết hợp xúc tác $\\text{Fe}$ để đảm bảo tốc độ phản ứng).",
         "Trong máu người có hệ cân bằng vận chuyển oxygen của hemoglobin ($\\text{Hb} + \\text{O}_2 \\rightleftharpoons \\text{HbO}_2$); khi lên núi cao áp suất riêng phần của $\\text{O}_2$ giảm làm cân bằng chuyển dịch theo chiều nghịch gây thiếu oxygen lên não.",
         CH1_ID, CH1_TITLE, CH1_DESC,
         extra_questions=[
@@ -72,7 +72,7 @@ CH1_LESSONS = [
             "Tính được $\\text{pH}$ của dung dịch acid mạnh, base mạnh và tính được nồng độ dung dịch từ kết quả chuẩn độ acid - base",
         ],
         "Tính $\\text{pH}$ của: (a) Dung dịch $\\text{HCl}$ $0,01\\text{ M}$; (b) Dung dịch $\\text{NaOH}$ $0,001\\text{ M}$ ở $25^\\circ\\text{C}$.",
-        "(a) $\\text{HCl}$ điện li hoàn toàn: $[\\text{H}^+] = C_{\\text{HCl}} = 0,01 = 10^{-2}\\text{ M} \\Rightarrow \\text{pH} = -\\lg(10^{-2}) = 2$.\\n(b) $\\text{NaOH}$ điện li hoàn toàn: $[\\text{OH}^-] = 0,001 = 10^{-3}\\text{ M} \\Rightarrow \\text{pOH} = 3 \\Rightarrow \\text{pH} = 14 - 3 = 11$.",
+        "(a) $\\text{HCl}$ điện li hoàn toàn: $[\\text{H}^+] = C_{\\text{HCl}} = 0,01 = 10^{-2}\\text{ M} \\Rightarrow \\text{pH} = -\\lg(10^{-2}) = 2$.\n(b) $\\text{NaOH}$ điện li hoàn toàn: $[\\text{OH}^-] = 0,001 = 10^{-3}\\text{ M} \\Rightarrow \\text{pOH} = 3 \\Rightarrow \\text{pH} = 14 - 3 = 11$.",
         "Máu người khỏe mạnh có $\\text{pH}$ ổn định trong khoảng $7,35 - 7,45$; dịch vị dạ dày có $\\text{pH}$ từ $1,5 - 3,5$; đất chua ($\\text{pH} < 5$) thường được bà con nông dân bón vôi bột ($\\text{CaO}, \\text{Ca(OH)}_2$) để khử chua.",
         CH1_ID, CH1_TITLE, CH1_DESC,
         extra_questions=[
@@ -104,7 +104,7 @@ CH2_LESSONS = [
             "Nêu được ứng dụng của khí $\\text{N}_2$ (tổng hợp $\\text{NH}_3$, tạo môi trường trơ bảo quản thực phẩm, nitrogen lỏng bảo quản mẫu sinh học)",
         ],
         "Trộn $4\\text{ mol}$ $\\text{N}_2$ với $14\\text{ mol}$ $\\text{H}_2$ trong bình kín có xúc tác thích hợp rồi đun nóng, thu được $1,6\\text{ mol}$ khí $\\text{NH}_3$. Tính hiệu suất của phản ứng tổng hợp $\\text{NH}_3$.",
-        "PTHH: $\\text{N}_2 + 3\\text{H}_2 \\rightleftharpoons 2\\text{NH}_3$.\\nTa có tỉ lệ: $\\frac{n_{\\text{N}_2}}{1} = 4 < \\frac{n_{\\text{H}_2}}{3} = \\frac{14}{3}$, nên hiệu suất tính theo $\\text{N}_2$.\\nSố mol $\\text{N}_2$ đã phản ứng: $n_{\\text{N}_2\\text{ pư}} = \\frac{1}{2}n_{\\text{NH}_3} = 0,8\\text{ mol}$.\\nHiệu suất phản ứng: $H = \\frac{0,8}{4} \\cdot 100\\% = 20\\%$.",
+        "PTHH: $\\text{N}_2 + 3\\text{H}_2 \\rightleftharpoons 2\\text{NH}_3$.\nTa có tỉ lệ: $\\frac{n_{\\text{N}_2}}{1} = 4 < \\frac{n_{\\text{H}_2}}{3} = \\frac{14}{3}$, nên hiệu suất tính theo $\\text{N}_2$.\nSố mol $\\text{N}_2$ đã phản ứng: $n_{\\text{N}_2\\text{ pư}} = \\frac{1}{2}n_{\\text{NH}_3} = 0,8\\text{ mol}$.\nHiệu suất phản ứng: $H = \\frac{0,8}{4} \\cdot 100\\% = 20\\%$.",
         "Câu ca dao 'Lúa chiêm lấp ló đầu bờ / Hễ nghe tiếng sấm phất cờ mà lên' phản ánh quá trình tia chớp biến $\\text{N}_2$ và $\\text{O}_2$ trong không khí thành $\\text{NO} \\rightarrow \\text{NO}_2 \\rightarrow \\text{HNO}_3$ theo nước mưa xuống đất cung cấp đạm tự nhiên ($\\text{NO}_3^-$) cho cây lúa.",
         CH2_ID, CH2_TITLE, CH2_DESC,
         extra_questions=[
@@ -127,7 +127,7 @@ CH2_LESSONS = [
             "Nhận biết được ion $\\text{NH}_4^+$ trong dung dịch và nêu được ứng dụng của $\\text{NH}_3$, muối ammonium (phân đạm, bột nở $\\text{NH}_4\\text{HCO}_3$)",
         ],
         "Cho $100\\text{ mL}$ dung dịch $(\\text{NH}_4)_2\\text{SO}_4$ $0,5\\text{ M}$ tác dụng với dung dịch $\\text{NaOH}$ dư, đun nóng. Tính thể tích khí $\\text{NH}_3$ thoát ra ở đkc.",
-        "Số mol $(\\text{NH}_4)_2\\text{SO}_4$: $n = 0,1 \\cdot 0,5 = 0,05\\text{ mol}$.\\nPhương trình ion rút gọn: $\\text{NH}_4^+ + \\text{OH}^- \\xrightarrow{t^\\circ} \\text{NH}_3\\uparrow + \\text{H}_2\\text{O}$.\\nTa có: $n_{\\text{NH}_3} = n_{\\text{NH}_4^+} = 2n_{(\\text{NH}_4)_2\\text{SO}_4} = 2 \\cdot 0,05 = 0,1\\text{ mol}$.\\nThể tích khí $\\text{NH}_3$ (đkc): $V = 0,1 \\cdot 24,79 = 2,479\\text{ L}$.",
+        "Số mol $(\\text{NH}_4)_2\\text{SO}_4$: $n = 0,1 \\cdot 0,5 = 0,05\\text{ mol}$.\nPhương trình ion rút gọn: $\\text{NH}_4^+ + \\text{OH}^- \\xrightarrow{t^\\circ} \\text{NH}_3\\uparrow + \\text{H}_2\\text{O}$.\nTa có: $n_{\\text{NH}_3} = n_{\\text{NH}_4^+} = 2n_{(\\text{NH}_4)_2\\text{SO}_4} = 2 \\cdot 0,05 = 0,1\\text{ mol}$.\nThể tích khí $\\text{NH}_3$ (đkc): $V = 0,1 \\cdot 24,79 = 2,479\\text{ L}$.",
         "Muối $\\text{NH}_4\\text{HCO}_3$ được dùng làm bột nở trong sản xuất bánh bao vì khi hấp nóng nó phân hủy hoàn toàn thành các chất khí và hơi ($\\text{NH}_3, \\text{CO}_2, \\text{H}_2\\text{O}$) tạo các lỗ xốp làm bánh phồng to.",
         CH2_ID, CH2_TITLE, CH2_DESC,
         extra_questions=[
@@ -149,7 +149,7 @@ CH2_LESSONS = [
             "Giải được bài toán kim loại tác dụng với dung dịch $\\text{HNO}_3$ bằng phương pháp bảo toàn electron",
         ],
         "Hòa tan hoàn toàn $5,6\\text{ g}$ sắt ($\\text{Fe} = 56$) bằng dung dịch $\\text{HNO}_3$ đặc, nóng dư, thu được khí $\\text{NO}_2$ màu nâu đỏ (sản phẩm khử duy nhất). Tính thể tích khí $\\text{NO}_2$ ở đkc.",
-        "Số mol $\\text{Fe}$: $n_{\\text{Fe}} = \\frac{5,6}{56} = 0,1\\text{ mol}$.\\nTrong $\\text{HNO}_3$ dư, $\\text{Fe}$ bị oxi hóa lên $\\text{Fe}^{+3}$ (nhường $3\\text{e}$), còn $\\text{N}^{+5}$ nhận $1\\text{e}$ tạo $\\text{NO}_2$.\\nBảo toàn electron: $3n_{\\text{Fe}} = 1 \\cdot n_{\\text{NO}_2} \\Rightarrow n_{\\text{NO}_2} = 0,3\\text{ mol}$.\\nThể tích khí $\\text{NO}_2$ (đkc): $V = 0,3 \\cdot 24,79 = 7,437\\text{ L}$.",
+        "Số mol $\\text{Fe}$: $n_{\\text{Fe}} = \\frac{5,6}{56} = 0,1\\text{ mol}$.\nTrong $\\text{HNO}_3$ dư, $\\text{Fe}$ bị oxi hóa lên $\\text{Fe}^{+3}$ (nhường $3\\text{e}$), còn $\\text{N}^{+5}$ nhận $1\\text{e}$ tạo $\\text{NO}_2$.\nBảo toàn electron: $3n_{\\text{Fe}} = 1 \\cdot n_{\\text{NO}_2} \\Rightarrow n_{\\text{NO}_2} = 0,3\\text{ mol}$.\nThể tích khí $\\text{NO}_2$ (đkc): $V = 0,3 \\cdot 24,79 = 7,437\\text{ L}$.",
         "Nhờ hiện tượng thụ động hóa, người ta có thể dùng các bồn chứa làm bằng nhôm ($\\text{Al}$) hoặc sắt/thép ($\\text{Fe}$) để chuyên chở dung dịch $\\text{HNO}_3$ đặc, nguội.",
         CH2_ID, CH2_TITLE, CH2_DESC,
         extra_questions=[
@@ -171,7 +171,7 @@ CH2_LESSONS = [
             "Nêu được nguồn phát thải $\\text{SO}_2$, cơ chế hình thành mưa acid và các biện pháp giảm thiểu phát thải $\\text{SO}_2$",
         ],
         "Dẫn từ từ khí $\\text{SO}_2$ vào $100\\text{ mL}$ dung dịch nước $\\text{Br}_2$ $0,1\\text{ M}$ cho đến khi dung dịch vừa mất màu hoàn toàn. Tính số mol $\\text{SO}_2$ đã phản ứng và số mol $\\text{H}_2\\text{SO}_4$ tạo thành.",
-        "Số mol $\\text{Br}_2$: $n_{\\text{Br}_2} = 0,1 \\cdot 0,1 = 0,01\\text{ mol}$.\\nPTHH: $\\text{SO}_2 + \\text{Br}_2 + 2\\text{H}_2\\text{O} \\rightarrow \\text{H}_2\\text{SO}_4 + 2\\text{HBr}$.\\nTheo PTHH: $n_{\\text{SO}_2} = n_{\\text{H}_2\\text{SO}_4} = n_{\\text{Br}_2} = 0,01\\text{ mol}$.",
+        "Số mol $\\text{Br}_2$: $n_{\\text{Br}_2} = 0,1 \\cdot 0,1 = 0,01\\text{ mol}$.\nPTHH: $\\text{SO}_2 + \\text{Br}_2 + 2\\text{H}_2\\text{O} \\rightarrow \\text{H}_2\\text{SO}_4 + 2\\text{HBr}$.\nTheo PTHH: $n_{\\text{SO}_2} = n_{\\text{H}_2\\text{SO}_4} = n_{\\text{Br}_2} = 0,01\\text{ mol}$.",
         "Khi nhiệt kế thủy ngân không may bị vỡ, người ta rắc ngay bột lưu huỳnh ($\\text{S}$) lên các giọt thủy ngân để tạo thành $\\text{HgS}$ rắn không bay hơi ngay ở nhiệt độ thường, tránh hít phải hơi thủy ngân cực độc.",
         CH2_ID, CH2_TITLE, CH2_DESC,
         extra_questions=[
@@ -194,7 +194,7 @@ CH2_LESSONS = [
             "Trình bày được $3$ giai đoạn sản xuất $\\text{H}_2\\text{SO}_4$ theo phương pháp tiếp xúc và cách nhận biết ion $\\text{SO}_4^{2-}$",
         ],
         "Hòa tan hoàn toàn $12,8\\text{ g}$ đồng ($\\text{Cu} = 64$) vào dung dịch $\\text{H}_2\\text{SO}_4$ đặc, nóng dư. Tính thể tích khí $\\text{SO}_2$ (sản phẩm khử duy nhất, ở đkc) thoát ra.",
-        "Số mol $\\text{Cu}$: $n_{\\text{Cu}} = \\frac{12,8}{64} = 0,2\\text{ mol}$.\\nPTHH: $\\text{Cu} + 2\\text{H}_2\\text{SO}_{4\\text{ đặc}} \\xrightarrow{t^\\circ} \\text{CuSO}_4 + \\text{SO}_2\\uparrow + 2\\text{H}_2\\text{O}$.\\nTheo PTHH: $n_{\\text{SO}_2} = n_{\\text{Cu}} = 0,2\\text{ mol} \\Rightarrow V_{\\text{SO}_2} = 0,2 \\cdot 24,79 = 4,958\\text{ L}$.",
+        "Số mol $\\text{Cu}$: $n_{\\text{Cu}} = \\frac{12,8}{64} = 0,2\\text{ mol}$.\nPTHH: $\\text{Cu} + 2\\text{H}_2\\text{SO}_{4\\text{ đặc}} \\xrightarrow{t^\\circ} \\text{CuSO}_4 + \\text{SO}_2\\uparrow + 2\\text{H}_2\\text{O}$.\nTheo PTHH: $n_{\\text{SO}_2} = n_{\\text{Cu}} = 0,2\\text{ mol} \\Rightarrow V_{\\text{SO}_2} = 0,2 \\cdot 24,79 = 4,958\\text{ L}$.",
         "Muối $\\text{BaSO}_4$ không tan trong nước và trong dịch vị dạ dày (chứa $\\text{HCl}$) đồng thời cản tia X rất tốt, nên được dùng làm 'thuốc cản quang' cho bệnh nhân uống trước khi chụp X-quang đường tiêu hóa.",
         CH2_ID, CH2_TITLE, CH2_DESC,
         extra_questions=[
@@ -226,7 +226,7 @@ CH3_LESSONS = [
             "Phân biệt được phổ IR của alcohol, aldehyde/ketone, carboxylic acid và ester",
         ],
         "Một hợp chất hữu cơ $X$ có công thức phân tử $\\text{C}_2\\text{H}_4\\text{O}_2$. Trên phổ hồng ngoại (IR) của $X$ có tín hiệu hấp thụ mạnh ở $1715\\text{ cm}^{-1}$ (liên kết $\\text{C}=\\text{O}$) và một dải hấp thụ rất rộng ở vùng $3000 - 2500\\text{ cm}^{-1}$ (liên kết $\\text{O}-\\text{H}$ của nhóm carboxyl). Xác định công thức cấu tạo của $X$.",
-        "Tín hiệu ở $1715\\text{ cm}^{-1}$ kết hợp với dải rộng $3000 - 2500\\text{ cm}^{-1}$ chứng tỏ $X$ có nhóm chức carboxylic acid ($-\\text{COOH}$).\\nVới công thức phân tử $\\text{C}_2\\text{H}_4\\text{O}_2$, công thức cấu tạo của $X$ là $\\text{CH}_3-\\text{COOH}$ (acetic acid).",
+        "Tín hiệu ở $1715\\text{ cm}^{-1}$ kết hợp với dải rộng $3000 - 2500\\text{ cm}^{-1}$ chứng tỏ $X$ có nhóm chức carboxylic acid ($-\\text{COOH}$).\nVới công thức phân tử $\\text{C}_2\\text{H}_4\\text{O}_2$, công thức cấu tạo của $X$ là $\\text{CH}_3-\\text{COOH}$ (acetic acid).",
         "Phổ hồng ngoại (IR) là công cụ không thể thiếu trong phòng thí nghiệm kiểm nghiệm dược phẩm, giúp xác định nhanh độ tinh khiết và cấu trúc nhóm chức của hoạt chất thuốc chỉ trong vài chục giây.",
         CH3_ID, CH3_TITLE, CH3_DESC,
         extra_questions=[
@@ -247,7 +247,7 @@ CH3_LESSONS = [
             "Vận dụng kiến thức để giải thích các quá trình thực tế như nấu rượu, tách tinh dầu sả/bưởi, ngâm rượu dược liệu, kết tinh đường",
         ],
         "Hỗn hợp gồm dầu ăn và nước không tan vào nhau và tách thành hai lớp trong phễu chiết. Hãy cho biết phương pháp dùng để tách riêng hai chất lỏng này và chất nào chảy ra khỏi khóa phễu chiết trước?",
-        "- Dùng phương pháp chiết lỏng - lỏng bằng phễu chiết.\\n- Vì dầu ăn nhẹ hơn nước ($D_{\\text{dầu}} \\approx 0,8 - 0,9\\text{ g/mL} < D_{\\text{nước}} = 1\\text{ g/mL}$) nên nước nằm ở lớp dưới và dầu ăn nổi ở lớp trên. Khi mở khóa phễu chiết, lớp nước ở dưới sẽ chảy ra trước.",
+        "- Dùng phương pháp chiết lỏng - lỏng bằng phễu chiết.\n- Vì dầu ăn nhẹ hơn nước ($D_{\\text{dầu}} \\approx 0,8 - 0,9\\text{ g/mL} < D_{\\text{nước}} = 1\\text{ g/mL}$) nên nước nằm ở lớp dưới và dầu ăn nổi ở lớp trên. Khi mở khóa phễu chiết, lớp nước ở dưới sẽ chảy ra trước.",
         "Nghề chưng cất tinh dầu tràm, tinh dầu sả ở Việt Nam sử dụng phương pháp chưng cất lôi cuốn hơi nước, sau đó dùng phương pháp chiết để tách lớp tinh dầu nhẹ nổi phía trên mặt nước.",
         CH3_ID, CH3_TITLE, CH3_DESC,
         extra_questions=[
@@ -269,7 +269,7 @@ CH3_LESSONS = [
             "Lập được công thức đơn giản nhất và công thức phân tử từ số liệu phân tích phần trăm khối lượng nguyên tố và phổ MS",
         ],
         "Hợp chất hữu cơ $X$ có thành phần phần trăm khối lượng gồm $54,55\\%$ $\\text{C}$; $9,09\\%$ $\\text{H}$; còn lại là $\\text{O}$. Trên phổ khối lượng (MS) của $X$, peak ion phân tử $[\\text{M}]^+$ có giá trị $m/z = 88$. Tìm công thức phân tử của $X$.",
-        "- Phần trăm khối lượng $\\text{O}$: $\\%m_{\\text{O}} = 100\\% - (54,55\\% + 9,09\\%) = 36,36\\%$.\\n- Từ phổ MS ta có phân tử khối $M_X = 88\\text{ g/mol}$.\\n- Gọi CTPT của $X$ là $\\text{C}_x\\text{H}_y\\text{O}_z$: $x = \\frac{88 \\cdot 54,55}{12 \\cdot 100} = 4$; $y = \\frac{88 \\cdot 9,09}{1 \\cdot 100} = 8$; $z = \\frac{88 \\cdot 36,36}{16 \\cdot 100} = 2$.\\nVậy công thức phân tử của $X$ là $\\text{C}_4\\text{H}_8\\text{O}_2$.",
+        "- Phần trăm khối lượng $\\text{O}$: $\\%m_{\\text{O}} = 100\\% - (54,55\\% + 9,09\\%) = 36,36\\%$.\n- Từ phổ MS ta có phân tử khối $M_X = 88\\text{ g/mol}$.\n- Gọi CTPT của $X$ là $\\text{C}_x\\text{H}_y\\text{O}_z$: $x = \\frac{88 \\cdot 54,55}{12 \\cdot 100} = 4$; $y = \\frac{88 \\cdot 9,09}{1 \\cdot 100} = 8$; $z = \\frac{88 \\cdot 36,36}{16 \\cdot 100} = 2$.\nVậy công thức phân tử của $X$ là $\\text{C}_4\\text{H}_8\\text{O}_2$.",
         "Kết hợp phổ khối lượng (MS) để tìm công thức phân tử và phổ hồng ngoại (IR) để xác định nhóm chức giúp các nhà hóa học giải mã cấu trúc các hợp chất tự nhiên mới chỉ từ vài miligam mẫu.",
         CH3_ID, CH3_TITLE, CH3_DESC,
         extra_questions=[
@@ -291,7 +291,7 @@ CH3_LESSONS = [
             "Vận dụng được công thức tính độ bất bão hòa $k$ để viết đủ số đồng phân ứng với một công thức phân tử cho trước",
         ],
         "Tính độ bất bão hòa $k$ và viết tất cả các đồng phân cấu tạo (gồm cả alcohol và ether) ứng với công thức phân tử $\\text{C}_3\\text{H}_8\\text{O}$.",
-        "- Độ bất bão hòa: $k = \\frac{2 \\cdot 3 + 2 - 8}{2} = 0$ (phân tử chỉ chứa liên kết đơn, mạch hở).\\n- Các đồng phân cấu tạo của $\\text{C}_3\\text{H}_8\\text{O}$ (có $3$ đồng phân):\\n  1. $\\text{CH}_3-\\text{CH}_2-\\text{CH}_2-\\text{OH}$ (propan-1-ol)\\n  2. $\\text{CH}_3-\\text{CH(OH)}-\\text{CH}_3$ (propan-2-ol)\\n  3. $\\text{CH}_3-\\text{O}-\\text{CH}_2-\\text{CH}_3$ (ethyl methyl ether).",
+        "- Độ bất bão hòa: $k = \\frac{2 \\cdot 3 + 2 - 8}{2} = 0$ (phân tử chỉ chứa liên kết đơn, mạch hở).\n- Các đồng phân cấu tạo của $\\text{C}_3\\text{H}_8\\text{O}$ (có $3$ đồng phân):\n  1. $\\text{CH}_3-\\text{CH}_2-\\text{CH}_2-\\text{OH}$ (propan-1-ol)\n  2. $\\text{CH}_3-\\text{CH(OH)}-\\text{CH}_3$ (propan-2-ol)\n  3. $\\text{CH}_3-\\text{O}-\\text{CH}_2-\\text{CH}_3$ (ethyl methyl ether).",
         "Hai chất $\\text{C}_2\\text{H}_5\\text{OH}$ (cồn y tế, thể lỏng) và $\\text{CH}_3\\text{OCH}_3$ (dimethyl ether, thể khí dùng làm chất đẩy bình xịt) có cùng công thức phân tử $\\text{C}_2\\text{H}_6\\text{O}$ nhưng thứ tự liên kết khác nhau nên tính chất hoàn toàn khác nhau.",
         CH3_ID, CH3_TITLE, CH3_DESC,
         extra_questions=[
@@ -323,7 +323,7 @@ CH4_LESSONS = [
             "Nêu được nguồn gốc và biện pháp giảm ô nhiễm không khí do khí thải động cơ đốt sử dụng nhiên liệu alkane",
         ],
         "Đốt cháy hoàn toàn một alkane $X$ thu được $0,3\\text{ mol}$ $\\text{CO}_2$ và $0,4\\text{ mol}$ $\\text{H}_2\\text{O}$. Xác định công thức phân tử và gọi tên $X$.",
-        "Vì $X$ là alkane nên số mol của $X$ là: $n_X = n_{\\text{H}_2\\text{O}} - n_{\\text{CO}_2} = 0,4 - 0,3 = 0,1\\text{ mol}$.\\nSố nguyên tử carbon trong $X$: $n = \\frac{n_{\\text{CO}_2}}{n_X} = \\frac{0,3}{0,1} = 3$.\\nVậy công thức phân tử của $X$ là $\\text{C}_3\\text{H}_8$ (tên gọi: propane).",
+        "Vì $X$ là alkane nên số mol của $X$ là: $n_X = n_{\\text{H}_2\\text{O}} - n_{\\text{CO}_2} = 0,4 - 0,3 = 0,1\\text{ mol}$.\nSố nguyên tử carbon trong $X$: $n = \\frac{n_{\\text{CO}_2}}{n_X} = \\frac{0,3}{0,1} = 3$.\nVậy công thức phân tử của $X$ là $\\text{C}_3\\text{H}_8$ (tên gọi: propane).",
         "Quá trình reforming trong nhà máy lọc dầu chuyển hóa các alkane mạch thẳng (chỉ số octane thấp, dễ gây kích nổ) thành các alkane mạch nhánh và arene có chỉ số octane cao (như xăng RON 95).",
         CH4_ID, CH4_TITLE, CH4_DESC,
         extra_questions=[
@@ -334,7 +334,7 @@ CH4_LESSONS = [
     ),
     bai(14, "Hydrocarbon không no (Alkene và Alkyne)",
         "Đồng phân hình học cis - trans, quy tắc cộng Markovnikov, phản ứng với KMnO4, trùng hợp và phản ứng thế của alk-1-yne với AgNO3/NH3",
-        "Alkene ($\\text{C}_n\\text{H}_{2n}, n \\ge 2$, có $1$ liên kết đôi $\\text{C}=\\text{C}$) và alkyne ($\\text{C}_n\\text{H}_{2n-2}, n \\ge 2$, có $1$ liên kết ba $\\text{C}\\equiv\\text{C}$) là các hydrocarbon không no. Alkene có đồng phân hình học cis - trans khi mỗi nguyên tử $\\text{C}$ mang nối đôi đính với $2$ nhóm nguyên tử khác nhau ($ab\\text{C}=\\text{C}cd$ với $a \\neq b$ và $c \\neq d$). Do có liên kết $\\pi$ kém bền, chúng dễ tham gia: (1) Phản ứng cộng $\\text{H}_2$ (xúc tác $\\text{Ni}$ tạo alkane; alkyne cộng $\\text{H}_2$ với xúc tác $\\text{Lindlar}$ dừng ở alkene), cộng $\\text{Br}_2$, và cộng $\\text{HX} / \\text{H}_2\\text{O}$ tuân theo quy tắc Markovnikov; (2) Phản ứng làm mất màu dung dịch $\\text{KMnO}_4$; (3) Phản ứng trùng hợp. Đặc biệt, các alk-1-yne ($\\text{R}-\\text{C}\\equiv\\text{CH}$) có nguyên tử $\\text{H}$ linh động tác dụng với dung dịch $\\text{AgNO}_3/\\text{NH}_3$ tạo kết tủa màu vàng nhạt.",
+        "Alkene ($\\text{C}_n\\text{H}_{2n}, n \\ge 2$, có $1$ liên kết đôi $\\text{C}=\\text{C}$) và alkyne ($\\text{C}_n\\text{H}_{2n-2}, n \\ge 2$, có $1$ liên kết ba $\\text{C}\\equiv\\text{C}$) là các hydrocarbon không no. Alkene có đồng phân hình học cis - trans khi mỗi nguyên tử $\\text{C}$ mang nối đôi đính với $2$ nhóm nguyên tử khác nhau ($ab\\text{C}=\\text{C}cd$ với $a \neq b$ và $c \neq d$). Do có liên kết $\\pi$ kém bền, chúng dễ tham gia: (1) Phản ứng cộng $\\text{H}_2$ (xúc tác $\\text{Ni}$ tạo alkane; alkyne cộng $\\text{H}_2$ với xúc tác $\\text{Lindlar}$ dừng ở alkene), cộng $\\text{Br}_2$, và cộng $\\text{HX} / \\text{H}_2\\text{O}$ tuân theo quy tắc Markovnikov; (2) Phản ứng làm mất màu dung dịch $\\text{KMnO}_4$; (3) Phản ứng trùng hợp. Đặc biệt, các alk-1-yne ($\\text{R}-\\text{C}\\equiv\\text{CH}$) có nguyên tử $\\text{H}$ linh động tác dụng với dung dịch $\\text{AgNO}_3/\\text{NH}_3$ tạo kết tủa màu vàng nhạt.",
         [
             F("Quy tắc cộng Markovnikov (cộng HX hoặc H-OH vào alkene bất đối xứng)", "\\text{CH}_2=\\text{CH}-\\text{CH}_3 + \\text{HBr} \\rightarrow \\begin{cases} \\text{CH}_3-\\text{CHBr}-\\text{CH}_3\\text{ (sản phẩm chính)} \\\\ \\text{CH}_2\\text{Br}-\\text{CH}_2-\\text{CH}_3\\text{ (sản phẩm phụ)} \\end{cases}", "Nguyên tử H ưu tiên cộng vào C mang nối đôi có nhiều H hơn (bậc thấp hơn), phần X cộng vào C bậc cao hơn"),
             F("Phản ứng oxi hóa Alkene bằng dung dịch KMnO4 loãng", "3\\text{CH}_2=\\text{CH}_2 + 2\\text{KMnO}_4 + 4\\text{H}_2\\text{O} \\rightarrow 3\\text{HO}-\\text{CH}_2-\\text{CH}_2-\\text{OH} + 2\\text{MnO}_2\\downarrow + 2\\text{KOH}", "Dung dịch KMnO4 mất màu tím và xuất hiện kết tủa nâu đen MnO2"),
@@ -346,7 +346,7 @@ CH4_LESSONS = [
             "Phân biệt được alkane, alkene và alk-1-yne bằng các thuốc thử đặc trưng (dung dịch $\\text{AgNO}_3/\\text{NH}_3$ và dung dịch $\\text{Br}_2$)",
         ],
         "Dẫn $0,1\\text{ mol}$ khí acetylene ($\\text{CH}\\equiv\\text{CH}$) vào lượng dư dung dịch $\\text{AgNO}_3$ trong $\\text{NH}_3$. Nêu hiện tượng và tính khối lượng kết tủa thu được.",
-        "- Hiện tượng: Xuất hiện kết tủa màu vàng nhạt của silver acetylide ($\\text{C}_2\\text{Ag}_2$).\\n- PTHH: $\\text{HC}\\equiv\\text{CH} + 2\\text{AgNO}_3 + 2\\text{NH}_3 \\rightarrow \\text{AgC}\\equiv\\text{CAg}\\downarrow + 2\\text{NH}_4\\text{NO}_3$.\\n- Số mol kết tủa $\\text{C}_2\\text{Ag}_2$ ($M = 24 + 2 \\cdot 108 = 240$): $n_{\\text{C}_2\\text{Ag}_2} = n_{\\text{C}_2\\text{H}_2} = 0,1\\text{ mol} \\Rightarrow m = 0,1 \\cdot 240 = 24,0\\text{ g}$.",
+        "- Hiện tượng: Xuất hiện kết tủa màu vàng nhạt của silver acetylide ($\\text{C}_2\\text{Ag}_2$).\n- PTHH: $\\text{HC}\\equiv\\text{CH} + 2\\text{AgNO}_3 + 2\\text{NH}_3 \\rightarrow \\text{AgC}\\equiv\\text{CAg}\\downarrow + 2\\text{NH}_4\\text{NO}_3$.\n- Số mol kết tủa $\\text{C}_2\\text{Ag}_2$ ($M = 24 + 2 \\cdot 108 = 240$): $n_{\\text{C}_2\\text{Ag}_2} = n_{\\text{C}_2\\text{H}_2} = 0,1\\text{ mol} \\Rightarrow m = 0,1 \\cdot 240 = 24,0\\text{ g}$.",
         "Đèn xì oxygen - acetylene đốt cháy khí $\\text{C}_2\\text{H}_2$ trong $\\text{O}_2$ tinh khiết tỏa nhiệt lượng rất lớn (ngọn lửa đạt tới $3000^\\circ\\text{C}$), dùng để hàn và cắt các tấm kim loại dày.",
         CH4_ID, CH4_TITLE, CH4_DESC,
         extra_questions=[
@@ -368,7 +368,7 @@ CH4_LESSONS = [
             "Trình bày được cách phân biệt $3$ chất lỏng không màu: benzene, toluene và styrene bằng dung dịch $\\text{KMnO}_4$",
         ],
         "Trình bày phương pháp hóa học để phân biệt $3$ chất lỏng không màu đựng trong $3$ lọ mất nhãn: benzene ($\\text{C}_6\\text{H}_6$), toluene ($\\text{C}_6\\text{H}_5\\text{CH}_3$) và styrene ($\\text{C}_6\\text{H}_5-\\text{CH}=\\text{CH}_2$).",
-        "Dùng thuốc thử duy nhất là dung dịch $\\text{KMnO}_4$:\\n- Ở nhiệt độ thường: Mẫu làm mất màu tím của dung dịch $\\text{KMnO}_4$ ngay lập tức là styrene (do có nối đôi $\\text{C}=\\text{C}$ ở nhánh).\\n- Đun nóng hai mẫu còn lại với dung dịch $\\text{KMnO}_4$: Mẫu làm mất màu tím và tạo kết tủa nâu đen $\\text{MnO}_2$ là toluene; mẫu không làm mất màu kể cả khi đun nóng là benzene.",
+        "Dùng thuốc thử duy nhất là dung dịch $\\text{KMnO}_4$:\n- Ở nhiệt độ thường: Mẫu làm mất màu tím của dung dịch $\\text{KMnO}_4$ ngay lập tức là styrene (do có nối đôi $\\text{C}=\\text{C}$ ở nhánh).\n- Đun nóng hai mẫu còn lại với dung dịch $\\text{KMnO}_4$: Mẫu làm mất màu tím và tạo kết tủa nâu đen $\\text{MnO}_2$ là toluene; mẫu không làm mất màu kể cả khi đun nóng là benzene.",
         "Trùng hợp styrene ($\\text{C}_6\\text{H}_5-\\text{CH}=\\text{CH}_2$) thu được nhựa polystyrene (PS) dùng sản xuất hộp xốp cách nhiệt; nitro hóa toluene thu được thuốc nổ TNT (2,4,6-trinitrotoluene).",
         CH4_ID, CH4_TITLE, CH4_DESC,
         extra_questions=[
@@ -400,7 +400,7 @@ CH5_LESSONS = [
             "Trình bày được ứng dụng của dẫn xuất halogen (nhựa PVC, chất chống dính Teflon, thuốc mê) và tác hại của hợp chất CFC đối với tầng ozone",
         ],
         "Đun nóng 2-bromobutane ($\\text{CH}_3-\\text{CHBr}-\\text{CH}_2-\\text{CH}_3$) với dung dịch $\\text{KOH}$ đặc trong $\\text{C}_2\\text{H}_5\\text{OH}$. Hãy xác định công thức cấu tạo và tên gọi của sản phẩm alkene chính thu được.",
-        "Theo quy tắc Zaitsev, nguyên tử $\\text{Br}$ ở $\\text{C}_2$ ưu tiên tách ra cùng nguyên tử $\\text{H}$ ở nguyên tử $\\text{C}_3$ (carbon bậc II, có ít $\\text{H}$ hơn so với $\\text{C}_1$ bậc I).\\nDo đó sản phẩm alkene chính là $\\text{CH}_3-\\text{CH}=\\text{CH}-\\text{CH}_3$ (but-2-ene).",
+        "Theo quy tắc Zaitsev, nguyên tử $\\text{Br}$ ở $\\text{C}_2$ ưu tiên tách ra cùng nguyên tử $\\text{H}$ ở nguyên tử $\\text{C}_3$ (carbon bậc II, có ít $\\text{H}$ hơn so với $\\text{C}_1$ bậc I).\nDo đó sản phẩm alkene chính là $\\text{CH}_3-\\text{CH}=\\text{CH}-\\text{CH}_3$ (but-2-ene).",
         "Các hợp chất CFC (chlorofluorocarbon như $\\text{CF}_2\\text{Cl}_2$) trước đây dùng trong tủ lạnh và điều hòa nhưng khi bay lên tầng bình lưu bị tia UV phân hủy tạo gốc tự do $\\text{Cl}^\\bullet$ phá hủy tầng ozone, nên đã bị cấm theo Nghị định thư Montreal.",
         CH5_ID, CH5_TITLE, CH5_DESC,
         extra_questions=[
@@ -423,7 +423,7 @@ CH5_LESSONS = [
             "Trình bày được phản ứng đặc trưng của polyalcohol (glycerol, ethylene glycol) hòa tan kết tủa $\\text{Cu(OH)}_2$ tạo phức chất màu xanh lam",
         ],
         "Cho $9,2\\text{ g}$ glycerol ($\\text{C}_3\\text{H}_5(\\text{OH})_3$, $M = 92$) tác dụng hoàn toàn với lượng dư kim loại $\\text{Na}$. Tính thể tích khí $\\text{H}_2$ thoát ra ở đkc.",
-        "Số mol glycerol: $n = \\frac{9,2}{92} = 0,1\\text{ mol}$.\\nVì glycerol có $3$ nhóm $-\\text{OH}$ nên PTHH là:\\n$\\text{C}_3\\text{H}_5(\\text{OH})_3 + 3\\text{Na} \\rightarrow \\text{C}_3\\text{H}_5(\\text{ONa})_3 + \\frac{3}{2}\\text{H}_2\\uparrow$.\\nSố mol $\\text{H}_2$: $n_{\\text{H}_2} = 1,5 \\cdot 0,1 = 0,15\\text{ mol} \\Rightarrow V_{\\text{H}_2} = 0,15 \\cdot 24,79 = 3,7185\\text{ L}$.",
+        "Số mol glycerol: $n = \\frac{9,2}{92} = 0,1\\text{ mol}$.\nVì glycerol có $3$ nhóm $-\\text{OH}$ nên PTHH là:\n$\\text{C}_3\\text{H}_5(\\text{OH})_3 + 3\\text{Na} \\rightarrow \\text{C}_3\\text{H}_5(\\text{ONa})_3 + \\frac{3}{2}\\text{H}_2\\uparrow$.\nSố mol $\\text{H}_2$: $n_{\\text{H}_2} = 1,5 \\cdot 0,1 = 0,15\\text{ mol} \\Rightarrow V_{\\text{H}_2} = 0,15 \\cdot 24,79 = 3,7185\\text{ L}$.",
         "Glycerol có tính giữ ẩm cao và không độc nên được dùng rộng rãi trong kem dưỡng da, son môi và thuốc nhỏ mắt; ngược lại, methanol ($\\text{CH}_3\\text{OH}$) rất độc, uống phải rượu pha cồn công nghiệp chứa methanol có thể gây mù lòa và tử vong.",
         CH5_ID, CH5_TITLE, CH5_DESC,
         extra_questions=[
@@ -445,7 +445,7 @@ CH5_LESSONS = [
             "Viết được phương trình phản ứng của phenol với $\\text{NaOH}$, nước $\\text{Br}_2$, $\\text{HNO}_3$ đặc và tính toán lượng kết tủa",
         ],
         "Nhỏ nước bromine ($\\text{Br}_2$) dư vào dung dịch chứa $4,7\\text{ g}$ phenol ($\\text{C}_6\\text{H}_5\\text{OH}$, $M = 94$). Nêu hiện tượng và tính khối lượng kết tủa thu được.",
-        "- Hiện tượng: Nước bromine mất màu và xuất hiện kết tủa màu trắng của 2,4,6-tribromophenol ($\\text{C}_6\\text{H}_2\\text{Br}_3\\text{OH}$, $M = 331$).\\n- Số mol phenol: $n_{\\text{C}_6\\text{H}_5\\text{OH}} = \\frac{4,7}{94} = 0,05\\text{ mol}$.\\n- PTHH: $\\text{C}_6\\text{H}_5\\text{OH} + 3\\text{Br}_2 \\rightarrow \\text{C}_6\\text{H}_2\\text{Br}_3\\text{OH}\\downarrow + 3\\text{HBr}$.\\n- Khối lượng kết tủa: $m = 0,05 \\cdot 331 = 16,55\\text{ g}$.",
+        "- Hiện tượng: Nước bromine mất màu và xuất hiện kết tủa màu trắng của 2,4,6-tribromophenol ($\\text{C}_6\\text{H}_2\\text{Br}_3\\text{OH}$, $M = 331$).\n- Số mol phenol: $n_{\\text{C}_6\\text{H}_5\\text{OH}} = \\frac{4,7}{94} = 0,05\\text{ mol}$.\n- PTHH: $\\text{C}_6\\text{H}_5\\text{OH} + 3\\text{Br}_2 \\rightarrow \\text{C}_6\\text{H}_2\\text{Br}_3\\text{OH}\\downarrow + 3\\text{HBr}$.\n- Khối lượng kết tủa: $m = 0,05 \\cdot 331 = 16,55\\text{ g}$.",
         "Phenol là nguyên liệu quan trọng để tổng hợp nhựa phenol-formaldehyde (nhựa bakelite cách điện làm tay cầm xoong nồi, ổ cắm điện), phẩm nhuộm và chất diệt cỏ 2,4-D.",
         CH5_ID, CH5_TITLE, CH5_DESC,
         extra_questions=[
@@ -478,7 +478,7 @@ CH6_LESSONS = [
             "Giải được bài toán phản ứng tráng bạc (chú ý trường hợp đặc biệt của $\\text{HCHO}$ tạo $4\\text{Ag}$)",
         ],
         "Cho $4,4\\text{ g}$ ethanal ($\\text{CH}_3\\text{CHO}$, $M = 44$) tác dụng hoàn toàn với lượng dư thuốc thử Tollens ($\\text{AgNO}_3/\\text{NH}_3$) đun nóng. Tính khối lượng bạc ($\\text{Ag} = 108$) kết tủa thu được.",
-        "Số mol $\\text{CH}_3\\text{CHO}$: $n = \\frac{4,4}{44} = 0,1\\text{ mol}$.\\nTheo PTHH tráng bạc của monoaldehyde (trừ $\\text{HCHO}$):\\n$n_{\\text{Ag}} = 2n_{\\text{CH}_3\\text{CHO}} = 2 \\cdot 0,1 = 0,2\\text{ mol}$.\\nKhối lượng bạc thu được: $m_{\\text{Ag}} = 0,2 \\cdot 108 = 21,6\\text{ g}$.",
+        "Số mol $\\text{CH}_3\\text{CHO}$: $n = \\frac{4,4}{44} = 0,1\\text{ mol}$.\nTheo PTHH tráng bạc của monoaldehyde (trừ $\\text{HCHO}$):\n$n_{\\text{Ag}} = 2n_{\\text{CH}_3\\text{CHO}} = 2 \\cdot 0,1 = 0,2\\text{ mol}$.\nKhối lượng bạc thu được: $m_{\\text{Ag}} = 0,2 \\cdot 108 = 21,6\\text{ g}$.",
         "Dung dịch formalin (chứa $37\\% - 40\\%$ khí $\\text{HCHO}$ trong nước) được dùng để ngâm xác động vật làm tiêu bản sinh học (tuyệt đối cấm dùng bảo quản thực phẩm vì rất độc); acetone ($\\text{CH}_3\\text{COCH}_3$) là dung môi hòa tan sơn móng tay rất tốt.",
         CH6_ID, CH6_TITLE, CH6_DESC,
         extra_questions=[
@@ -501,7 +501,7 @@ CH6_LESSONS = [
             "Viết được phương trình thể hiện tính acid và tính được hiệu suất phản ứng ester hóa",
         ],
         "Đun nóng $0,2\\text{ mol}$ $\\text{CH}_3\\text{COOH}$ với $0,3\\text{ mol}$ $\\text{C}_2\\text{H}_5\\text{OH}$ có mặt $\\text{H}_2\\text{SO}_4$ đặc làm xúc tác, sau phản ứng thu được $0,12\\text{ mol}$ ester $\\text{CH}_3\\text{COOC}_2\\text{H}_5$. Tính hiệu suất của phản ứng ester hóa.",
-        "PTHH: $\\text{CH}_3\\text{COOH} + \\text{C}_2\\text{H}_5\\text{OH} \\rightleftharpoons \\text{CH}_3\\text{COOC}_2\\text{H}_5 + \\text{H}_2\\text{O}$ (tỉ lệ $1 : 1$).\\nVì $n_{\\text{CH}_3\\text{COOH}} = 0,2\\text{ mol} < n_{\\text{C}_2\\text{H}_5\\text{OH}} = 0,3\\text{ mol}$ nên hiệu suất phản ứng được tính theo $\\text{CH}_3\\text{COOH}$.\\nHiệu suất phản ứng: $H = \\frac{n_{\\text{ester}}}{n_{\\text{CH}_3\\text{COOH ban đầu}}} \\cdot 100\\% = \\frac{0,12}{0,2} \\cdot 100\\% = 60\\%$.",
+        "PTHH: $\\text{CH}_3\\text{COOH} + \\text{C}_2\\text{H}_5\\text{OH} \\rightleftharpoons \\text{CH}_3\\text{COOC}_2\\text{H}_5 + \\text{H}_2\\text{O}$ (tỉ lệ $1 : 1$).\nVì $n_{\\text{CH}_3\\text{COOH}} = 0,2\\text{ mol} < n_{\\text{C}_2\\text{H}_5\\text{OH}} = 0,3\\text{ mol}$ nên hiệu suất phản ứng được tính theo $\\text{CH}_3\\text{COOH}$.\nHiệu suất phản ứng: $H = \\frac{n_{\\text{ester}}}{n_{\\text{CH}_3\\text{COOH ban đầu}}} \\cdot 100\\% = \\frac{0,12}{0,2} \\cdot 100\\% = 60\\%$.",
         "Trong nọc độc của kiến lửa và ong có chứa formic acid ($\\text{HCOOH}$) gây đau rát và sưng tấy; khi bị kiến đốt, bôi một chút vôi tôi ($\\text{Ca(OH)}_2$) hoặc kem đánh răng (có tính kiềm nhẹ) sẽ trung hòa bớt acid và giảm sưng đau.",
         CH6_ID, CH6_TITLE, CH6_DESC,
         extra_questions=[
@@ -523,7 +523,7 @@ CH6_LESSONS = [
             "Vận dụng định luật bảo toàn nguyên tố và bảo toàn khối lượng để giải bài toán đốt cháy hỗn hợp dẫn xuất hydrocarbon",
         ],
         "Đốt cháy hoàn toàn $m$ gam một hợp chất hữu cơ $X$ (chứa $\\text{C}, \\text{H}, \\text{O}$) cần dùng vừa đủ $0,25\\text{ mol}$ $\\text{O}_2$, thu được $0,2\\text{ mol}$ $\\text{CO}_2$ và $0,2\\text{ mol}$ $\\text{H}_2\\text{O}$. Tính giá trị của $m$ và số mol nguyên tử $\\text{O}$ có trong $m$ gam $X$.",
-        "- Áp dụng định luật bảo toàn khối lượng:\\n$m_X = m_{\\text{CO}_2} + m_{\\text{H}_2\\text{O}} - m_{\\text{O}_2} = 0,2 \\cdot 44 + 0,2 \\cdot 18 - 0,25 \\cdot 32 = 8,8 + 3,6 - 8,0 = 4,4\\text{ g}$.\\n- Bảo toàn nguyên tố $\\text{O}$: $n_{\\text{O (trong X)}} = 2n_{\\text{CO}_2} + n_{\\text{H}_2\\text{O}} - 2n_{\\text{O}_2} = 2 \\cdot 0,2 + 0,2 - 2 \\cdot 0,25 = 0,1\\text{ mol}$.",
+        "- Áp dụng định luật bảo toàn khối lượng:\n$m_X = m_{\\text{CO}_2} + m_{\\text{H}_2\\text{O}} - m_{\\text{O}_2} = 0,2 \\cdot 44 + 0,2 \\cdot 18 - 0,25 \\cdot 32 = 8,8 + 3,6 - 8,0 = 4,4\\text{ g}$.\n- Bảo toàn nguyên tố $\\text{O}$: $n_{\\text{O (trong X)}} = 2n_{\\text{CO}_2} + n_{\\text{H}_2\\text{O}} - 2n_{\\text{O}_2} = 2 \\cdot 0,2 + 0,2 - 2 \\cdot 0,25 = 0,1\\text{ mol}$.",
         "Từ nguồn nguyên liệu duy nhất là khí ethylene ($\\text{CH}_2=\\text{CH}_2$) tách từ khí mỏ dầu hoặc ethanol sinh học, ngành công nghiệp tổng hợp hữu cơ có thể sản xuất ra hàng loạt dung môi, giấm công nghiệp, hương liệu ester và vật liệu polymer.",
         CH6_ID, CH6_TITLE, CH6_DESC,
         extra_questions=[

@@ -977,3 +977,26 @@ body.math-page.popup-open {
     border-radius: 18px;
   }
 }
+
+/* Giữ thẻ tên người chơi hiển thị rõ trên cả điện thoại */
+@media (max-width: 600px) {
+  .math-player {
+    display: flex !important;
+    align-items: center;
+    gap: 7px;
+    padding: 5px 10px;
+  }
+  .math-player > div {
+    display: block !important;
+  }
+  .math-player strong {
+    font-size: 12px;
+    max-width: 90px;
+    overflow: hidden;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+  }
+  .math-xp {
+    display: none !important;
+  }
+}

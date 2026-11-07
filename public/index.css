@@ -790,7 +790,53 @@ body.safe-low-motion .cloud {
   animation-play-state: paused !important;
 }
 
-/* ================= 9. FIX CUỘN DỌC & RESPONSIVE TRÊN ĐIỆN THOẠI (DỌC & NGANG) ================= */
+/* ================= 8. HIỆU ỨNG ĐẢO PHONG ẤN (ISLAND-LOCKED.PNG) ================= */
+.hit.is-locked {
+  cursor: pointer;
+}
+
+/* Ghi đè các class .hue-lit, .hue-sport... để giữ nguyên màu đá xám & xích rỉ sét của ảnh */
+.hit.is-locked .island-art {
+  filter: drop-shadow(0 18px 22px rgba(2, 8, 24, 0.82)) !important;
+  transition: transform 0.25s ease, filter 0.25s ease;
+}
+
+/* Ẩn dụng cụ học tập trên sân đảo đang bị khóa để lộ rõ ổ khóa & dây xích */
+.hit.is-locked .stage {
+  display: none !important;
+}
+
+/* Nhãn tên môn học chuyển sang tông xám thép phong ấn */
+.hit.is-locked .island-label {
+  background: linear-gradient(135deg, #334155 0%, #0f172a 100%);
+  border-color: #94a3b8;
+  color: #cbd5e1;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.75);
+}
+
+/* Khi di chuột vào đảo bị khóa */
+.hit.is-locked:hover .island-art {
+  transform: scale(1.03);
+  filter: brightness(1.08) drop-shadow(0 0 20px rgba(56, 189, 248, 0.45)) !important;
+}
+.hit.is-locked:hover .island-label {
+  border-color: #fde047;
+  color: #ffffff;
+}
+
+/* Hiệu ứng rung lắc đảo khi người chơi bấm vào đảo đang khóa */
+.hit.is-locked.rattle-lock .island-art {
+  animation: lockedIslandRattle 0.42s ease-in-out;
+}
+@keyframes lockedIslandRattle {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  20%      { transform: translate(-5px, -2px) rotate(-2deg); }
+  40%      { transform: translate(5px, 1px) rotate(2deg); }
+  60%      { transform: translate(-3px, 2px) rotate(-1.2deg); }
+  80%      { transform: translate(3px, -1px) rotate(1.2deg); }
+}
+
+/* ================= 9. HỖ TRỢ CUỘN DỌC MƯỢT MÀ TRÊN ĐIỆN THOẠI ================= */
 @media (max-width: 860px), (max-height: 680px) {
   html {
     height: auto !important;
@@ -836,106 +882,4 @@ body.safe-low-motion .cloud {
     bottom: calc(8px + env(safe-area-inset-bottom)) !important;
     z-index: 35 !important;
   }
-}
-
-@media (max-width: 700px) {
-  .home {
-    min-height: 840px;
-  }
-  .hotspots {
-    height: 840px;
-  }
-  .player-card {
-    transform: none !important;
-    left: 8px;
-    top: calc(8px + env(safe-area-inset-top));
-    width: calc(100% - 132px);
-    min-width: 0;
-    height: 58px;
-    gap: 8px;
-    padding: 6px 9px;
-    border-radius: 15px;
-  }
-  .avatar { flex-basis: 42px; height: 42px; font-size: 22px; border-width: 2px; }
-  .player-info strong { font-size: 13px; margin-bottom: 5px; overflow: hidden; text-overflow: ellipsis; }
-  .top-actions { transform: none !important; top: calc(8px + env(safe-area-inset-top)); right: 8px; }
-  .ranking-button {
-    min-width: 0; width: 112px; min-height: 58px; padding: 6px 8px;
-    gap: 5px; border-radius: 15px; font-size: 12px; line-height: 1.15; text-align: left;
-  }
-  .ranking-button em { display: none; }
-  .top-button > span:first-child { font-size: 20px; }
-  .ranking-panel, .ai-hint { display: none; }
-
-  .math, .physics, .chemistry, .sport, .art, .geography,
-  .computer, .english, .history, .literature, .biology { width: 30%; height: 115px; right: auto; }
-  .math      { left: 2.5%;  top: 95px; }
-  .physics   { left: 35%;   top: 85px; }
-  .chemistry { left: 67.5%; top: 95px; }
-  .literature{ left: 1.5%;  top: 255px; width: 27%; }
-  .biology   { left: 71.5%; top: 255px; width: 27%; }
-  .center    { left: 26%;   top: 230px; width: 48%; height: 155px; }
-  .sport     { left: 2.5%;  top: 435px; }
-  .art       { left: 35%;   top: 445px; }
-  .geography { left: 67.5%; top: 435px; }
-  .computer  { left: 2.5%;  top: 595px; }
-  .english   { left: 35%;   top: 605px; }
-  .history   { left: 67.5%; top: 595px; }
-
-  .rune-btn {
-    width: 22.5%; height: 58px; min-width: 0; min-height: 0;
-    border-radius: 14px; animation: none;
-  }
-  .rune-icon { font-size: 20px; }
-  .rune-btn small { font-size: 11px; }
-  .settings { left: 2%; }
-  .rewards  { left: 26.5%; }
-  .missions { left: 51%; }
-  .exit     { left: 75.5%; }
-}
-
-/* ================= 8. HIỆU ỨNG ĐẢO PHONG ẤN (ISLAND-LOCKED.PNG) ================= */
-.hit.is-locked {
-  cursor: pointer;
-}
-
-/* Ghi đè các class .hue-lit, .hue-sport... để giữ nguyên màu đá xám & xích rỉ sét của ảnh */
-.hit.is-locked .island-art {
-  filter: drop-shadow(0 18px 22px rgba(2, 8, 24, 0.82)) !important;
-  transition: transform 0.25s ease, filter 0.25s ease;
-}
-
-/* Ẩn dụng cụ học tập trên sân đảo đang bị khóa để lộ rõ ổ khóa & dây xích */
-.hit.is-locked .stage {
-  display: none !important;
-}
-
-/* Nhãn tên môn học chuyển sang tông xám thép phong ấn */
-.hit.is-locked .island-label {
-  background: linear-gradient(135deg, #334155 0%, #0f172a 100%);
-  border-color: #94a3b8;
-  color: #cbd5e1;
-  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.75);
-}
-
-/* Khi di chuột vào đảo bị khóa */
-.hit.is-locked:hover .island-art {
-  transform: scale(1.03);
-  filter: brightness(1.08) drop-shadow(0 0 20px rgba(56, 189, 248, 0.45)) !important;
-}
-.hit.is-locked:hover .island-label {
-  border-color: #fde047;
-  color: #ffffff;
-}
-
-/* Hiệu ứng rung lắc đảo khi người chơi bấm vào đảo đang khóa */
-.hit.is-locked.rattle-lock .island-art {
-  animation: lockedIslandRattle 0.42s ease-in-out;
-}
-@keyframes lockedIslandRattle {
-  0%, 100% { transform: translate(0, 0) rotate(0deg); }
-  20%      { transform: translate(-5px, -2px) rotate(-2deg); }
-  40%      { transform: translate(5px, 1px) rotate(2deg); }
-  60%      { transform: translate(-3px, 2px) rotate(-1.2deg); }
-  80%      { transform: translate(3px, -1px) rotate(1.2deg); }
 }

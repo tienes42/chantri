@@ -5,11 +5,12 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Bài học - HỌC ĐỂ LÀM GÌ</title>
 
-  <link rel="stylesheet" href="lesson.css?v=20261108">
+  <link rel="stylesheet" href="lesson.css?v=20261109">
   <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.css" crossorigin="anonymous">
-  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous"></script>
-  <script src="/firebase-config.js"></script>
-  <script src="/auth.js"></script>
+  <script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.11/dist/katex.min.js" crossorigin="anonymous" onload="window.HDLGMath && window.HDLGMath.upgradeKatex && window.HDLGMath.upgradeKatex()"></script>
+  <script src="firebase-config.js"></script>
+  <script src="auth.js"></script>
+  <script src="quests.js"></script>
 </head>
 
 <body data-theme="light" data-subject="math">
@@ -55,6 +56,11 @@
 
       <!-- Bộ công cụ chỉnh cỡ chữ & 3 chế độ màu giấy đọc -->
       <div class="reader-controls" aria-label="Tùy chỉnh giao diện đọc">
+        <div class="lesson-player-card btn-25d" id="playerCard" title="Tài khoản của tôi" style="display:flex;align-items:center;gap:8px;padding:5px 11px;cursor:pointer;">
+          <span id="playerAvatar" style="width:28px;height:28px;border-radius:50%;display:grid;place-items:center;background:var(--subject-soft);font-size:15px;overflow:hidden;">👨‍🎓</span>
+          <strong id="playerName" style="font-size:12.5px;max-width:110px;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;">Người chơi</strong>
+          <span id="playerLevel" style="font-size:11px;font-weight:800;padding:2px 7px;border-radius:999px;background:var(--subject-primary);color:#fff;">Lv.1</span>
+        </div>
         <button type="button" class="reader-btn btn-25d" id="fontDecreaseBtn" title="Giảm cỡ chữ">A−</button>
         <button type="button" class="reader-btn btn-25d" id="fontIncreaseBtn" title="Tăng cỡ chữ">A+</button>
         <div class="theme-switcher" role="group" aria-label="Chế độ màu nền">
@@ -348,8 +354,8 @@
 
   </main>
 
-  <script src="lesson-quiz.js?v=20261108"></script>
-  <script src="lesson.js?v=20261108"></script>
-  <script src="/guide-bot.js" defer></script>
+  <script src="lesson-quiz.js?v=20261109"></script>
+  <script src="lesson.js?v=20261109"></script>
+  <script src="guide-bot.js" defer></script>
 </body>
 </html>
