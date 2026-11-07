@@ -1081,7 +1081,7 @@ button {
 ========================================================= */
 @media (max-width: 980px) {
   .lesson-layout {
-    grid-template-columns: 1fr;
+    grid-template-columns: minmax(0, 1fr) !important;
   }
   .lesson-sidebar {
     position: static;
@@ -2194,7 +2194,6 @@ body {
   min-height: 100dvh;
   height: auto !important;
   overflow-x: hidden;
-  overflow-x: clip;
   overflow-y: visible !important;
   touch-action: pan-y pinch-zoom;
   -webkit-overflow-scrolling: touch;
@@ -2329,5 +2328,162 @@ body {
   margin: 0.2em 0 !important;
   overflow-x: auto;
   overflow-y: hidden;
+}
+
+/* =========================================================
+   19. CHỐNG TRÀN NGANG & CO NHỎ TRANG TRÊN ĐIỆN THOẠI (MOBILE VIEWPORT FIX)
+========================================================= */
+html,
+body {
+  width: 100%;
+  max-width: 100%;
+  overflow-x: hidden !important;
+}
+
+.top-navbar,
+.header-inner,
+.lesson-workspace,
+.lesson-layout,
+.lesson-sidebar,
+.lesson-article,
+.lesson-header,
+.hero-text-col,
+.lesson-section,
+.section-content,
+.rich-content,
+.reward-card,
+.chapter-lessons-card,
+.toc-card,
+.definition-box,
+.context-box,
+.theory-box,
+.concept-box,
+.meaning-box,
+.example-box,
+.answer-box,
+.question-box,
+.application-box,
+.challenge-box,
+.challenge-answer-box,
+.mindmap-viewport,
+.mindmap-stage,
+.mindmap-nodes,
+.mm-center-node,
+.mm-branch-node,
+.mindmap-detail-panel,
+.quiz-set,
+.qz-status,
+.qz-card,
+.qz-body,
+.qz-options,
+.qz-tf4,
+.qz-tf4-row,
+.qz-solution,
+.chapter-nav-footer {
+  min-width: 0 !important;
+  max-width: 100% !important;
+  box-sizing: border-box;
+}
+
+.reward-list,
+.requirements-list,
+.qz-status,
+.qz-tf4,
+.mm-branch-list,
+.mm-detail-list,
+.formula-category-items {
+  grid-template-columns: minmax(0, 1fr) !important;
+  min-width: 0 !important;
+  max-width: 100% !important;
+}
+
+.mm-branch-list li,
+.mm-detail-list li,
+.requirements-list li,
+.rich-content p,
+.rich-content li,
+.qz-question,
+.qz-solution {
+  min-width: 0;
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+  -webkit-overflow-scrolling: touch;
+}
+
+.katex-display {
+  max-width: 100%;
+  overflow-x: auto;
+  overflow-y: hidden;
+}
+
+@media (max-width: 980px) {
+  .lesson-workspace {
+    width: 100% !important;
+    max-width: 100vw !important;
+    box-sizing: border-box !important;
+  }
+
+  .lesson-layout {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    gap: 18px !important;
+  }
+
+  .lesson-sidebar,
+  .lesson-article {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+  }
+}
+
+@media (max-width: 860px) {
+  .mindmap-svg {
+    display: none !important;
+  }
+
+  .mindmap-viewport {
+    width: 100% !important;
+    max-width: 100% !important;
+    min-height: 0 !important;
+    padding: 12px !important;
+    overflow-x: hidden !important;
+  }
+
+  .mindmap-stage,
+  .mindmap-stage.is-expanded-all {
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    transform: none !important;
+  }
+
+  .mindmap-nodes {
+    display: flex !important;
+    flex-direction: column !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    height: auto !important;
+    gap: 12px !important;
+  }
+
+  .mm-center-node,
+  .mm-branch-node,
+  .mm-branch-node:hover,
+  .mm-branch-node.is-active {
+    position: relative !important;
+    left: auto !important;
+    top: auto !important;
+    right: auto !important;
+    bottom: auto !important;
+    transform: none !important;
+    width: 100% !important;
+    max-width: 100% !important;
+    min-width: 0 !important;
+    margin: 0 !important;
+  }
 }
 
