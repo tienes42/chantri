@@ -893,3 +893,49 @@ body.safe-low-motion .cloud {
   .missions { left: 51%; }
   .exit     { left: 75.5%; }
 }
+
+/* ================= 8. HIỆU ỨNG ĐẢO PHONG ẤN (ISLAND-LOCKED.PNG) ================= */
+.hit.is-locked {
+  cursor: pointer;
+}
+
+/* Ghi đè các class .hue-lit, .hue-sport... để giữ nguyên màu đá xám & xích rỉ sét của ảnh */
+.hit.is-locked .island-art {
+  filter: drop-shadow(0 18px 22px rgba(2, 8, 24, 0.82)) !important;
+  transition: transform 0.25s ease, filter 0.25s ease;
+}
+
+/* Ẩn dụng cụ học tập trên sân đảo đang bị khóa để lộ rõ ổ khóa & dây xích */
+.hit.is-locked .stage {
+  display: none !important;
+}
+
+/* Nhãn tên môn học chuyển sang tông xám thép phong ấn */
+.hit.is-locked .island-label {
+  background: linear-gradient(135deg, #334155 0%, #0f172a 100%);
+  border-color: #94a3b8;
+  color: #cbd5e1;
+  box-shadow: 0 6px 14px rgba(0, 0, 0, 0.75);
+}
+
+/* Khi di chuột vào đảo bị khóa */
+.hit.is-locked:hover .island-art {
+  transform: scale(1.03);
+  filter: brightness(1.08) drop-shadow(0 0 20px rgba(56, 189, 248, 0.45)) !important;
+}
+.hit.is-locked:hover .island-label {
+  border-color: #fde047;
+  color: #ffffff;
+}
+
+/* Hiệu ứng rung lắc đảo khi người chơi bấm vào đảo đang khóa */
+.hit.is-locked.rattle-lock .island-art {
+  animation: lockedIslandRattle 0.42s ease-in-out;
+}
+@keyframes lockedIslandRattle {
+  0%, 100% { transform: translate(0, 0) rotate(0deg); }
+  20%      { transform: translate(-5px, -2px) rotate(-2deg); }
+  40%      { transform: translate(5px, 1px) rotate(2deg); }
+  60%      { transform: translate(-3px, 2px) rotate(-1.2deg); }
+  80%      { transform: translate(3px, -1px) rotate(1.2deg); }
+}
