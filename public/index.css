@@ -880,6 +880,17 @@ body.safe-low-motion .cloud {
   .hotspots .rune-btn {
     position: fixed !important;
     bottom: calc(8px + env(safe-area-inset-bottom)) !important;
+    width: 22.5% !important;
+    max-width: 135px;
+    height: 58px !important;
+    min-width: 0 !important;
+    min-height: 0 !important;
+    border-radius: 14px;
+    animation: none !important;
     z-index: 35 !important;
   }
+  .hotspots .rune-btn.settings { left: 2% !important; }
+  .hotspots .rune-btn.rewards  { left: 26.5% !important; }
+  .hotspots .rune-btn.missions { left: 51% !important; }
+  .hotspots .rune-btn.exit     { left: 75.5% !important; }
 }

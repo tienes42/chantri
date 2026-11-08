@@ -1598,7 +1598,6 @@ body {
   min-height: 100dvh;
   height: auto !important;
   overflow-x: hidden;
-  overflow-x: clip;
   overflow-y: visible !important;
   touch-action: pan-y pinch-zoom;
   -webkit-overflow-scrolling: touch;

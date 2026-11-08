@@ -33,7 +33,7 @@
   }
   function lessonState(l, done) {
     var st = window.HDLG && HDLG.lessonStatus ? HDLG.lessonStatus(l.id) : { read: false, quiz: false, stars: 0 };
-    var hasGame = !!(l.game_type || l.game_title);
+    var hasGame = true;
     var game = hasGame && !!done[String(l.id)];
     var parts = 2 + (hasGame ? 1 : 0), got = (st.read ? 1 : 0) + (st.quiz ? 1 : 0) + (game ? 1 : 0);
     return { l: l, read: !!st.read, quiz: !!st.quiz, stars: st.stars || 0, hasGame: hasGame, game: game, score: got / parts, got: got, parts: parts };

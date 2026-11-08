@@ -303,9 +303,10 @@ async function ev(action, data) { if (!sid) return; try { await api(`/games/sess
 function goBack() { if (history.length > 1) history.back(); else location.href = '../index.html'; }
 
 async function init() {
-  let topic = Q.get('topic');
+  const urlTopic = Q.get('topic');
+  let topic = urlTopic;
   if (LESSON_ID) {
-    try { lesson = await api('/content/lessons/' + LESSON_ID); topic = lesson.topic; } catch (e) { console.warn('Không tải được bài học (chạy offline):', e.message); }
+    try { lesson = await api('/content/lessons/' + LESSON_ID); if (!urlTopic || !SCENARIOS[ALIAS[urlTopic] || urlTopic]) topic = lesson.topic; } catch (e) { console.warn('Không tải được bài học (chạy offline):', e.message); }
   }
   topic = ALIAS[topic] || topic; sc = SCENARIOS[topic] || SCENARIOS['khoi-luong-rieng'];
   if (!sc) return noScenario();

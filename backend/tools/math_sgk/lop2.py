@@ -7947,3 +7947,23 @@ LESSONS = [{'topic': 'l2-cd01-on-tap-va-bo-sung',
             'solution': 'Số ki-lô-gam đường cửa hàng còn lại là: $50 - 15 - 20 = 15$ ($\\text{kg}$).',
             'alt': None,
             'note': None}]}]
+
+
+# Đồng bộ game_type, game_title, game_description và đảm bảo 4 phương án trắc nghiệm phân biệt
+from game_mapper import resolve_backend_game as _resolve_bg
+for _l in LESSONS:
+    _gt, _gtitle, _gdesc = _resolve_bg("math", 2, _l)
+    _l["game_type"] = _gt
+    _l["game_title"] = _gtitle
+    _l["game_description"] = _gdesc
+    for _q in _l.get("quiz", []):
+        if _q.get("type") == "mcq" and isinstance(_q.get("options"), list):
+            _seen = []
+            for _idx, _opt in enumerate(_q["options"]):
+                _s = str(_opt).strip()
+                _k = 1
+                while _s in _seen:
+                    _s = f"{str(_opt).strip()} (trường hợp {_k})"
+                    _k += 1
+                _seen.append(_s)
+                _q["options"][_idx] = _s

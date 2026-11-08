@@ -44,8 +44,16 @@
     return "/lesson.html?id=" + encodeURIComponent(l.id) + "&subject=" + encodeURIComponent(l.subject) + "&grade=" + encodeURIComponent(l.grade || "") + "&topic=" + encodeURIComponent(l.topic || "");
   }
   function gameUrl(l) {
-    if (!l.game_type) return lessonUrl(l);
-    return "/games/" + encodeURIComponent(GAME_FILES[l.game_type] || l.game_type) + ".html?lesson_id=" + encodeURIComponent(l.id);
+    var t = l.game_type || "";
+    if (!t && window.HDLGResolveGame) {
+      var info = window.HDLGResolveGame(l, l.subject, l.grade);
+      if (info && info.url) return "/" + info.url.replace(/^\/+/, "");
+    }
+    if (!t) return lessonUrl(l);
+    if (t.indexOf("chemlab:") === 0) return "/phong_labhoahoc.html?lesson=" + encodeURIComponent(t.slice(8)) + "&lesson_id=" + encodeURIComponent(l.id);
+    if (t.indexOf("simulation:") === 0) return "/games/simulation.html?topic=" + encodeURIComponent(t.slice(11)) + "&lesson_id=" + encodeURIComponent(l.id);
+    if (t.indexOf("simulation_classic:") === 0) return "/games/simulation_classic.html?topic=" + encodeURIComponent(t.slice(19)) + "&lesson_id=" + encodeURIComponent(l.id);
+    return "/games/" + encodeURIComponent(GAME_FILES[t] || t) + ".html?lesson_id=" + encodeURIComponent(l.id);
   }
 
   /* ---------- PHÂN TÍCH ---------- */

@@ -32,7 +32,15 @@ def mcq(level: str, q: str, options: list[str], answer: int | str, solution: str
     if str(level).strip() not in LEVEL_SET and str(answer).strip() in LEVEL_SET:
         # Hỗ trợ trường hợp gọi mcq(q, options, answer, level, solution)
         q, options, answer, level, solution = level, q, options, answer, solution  # type: ignore
-    opts = [re.sub(r"^[A-Da-d][\.\)\:]\s+", "", str(o).strip()) for o in (options or [])]
+    raw_opts = [re.sub(r"^[A-Da-d][\.\)\:]\s+", "", str(o).strip()) for o in (options or [])]
+    opts: list[str] = []
+    for idx_o, o_val in enumerate(raw_opts):
+        cand = o_val
+        suffix_idx = 1
+        while cand in opts:
+            cand = f"{o_val} (phương án nhiễu {suffix_idx})"
+            suffix_idx += 1
+        opts.append(cand)
     if isinstance(answer, str):
         s = answer.strip().upper()
         ans_idx = "ABCD".index(s) if s in ("A", "B", "C", "D") else (int(s) if s.isdigit() else 0)
@@ -135,6 +143,21 @@ def short(level: str, q: str, answer: list[str] | str | int | float, solution: s
     }
 
 
+
+def _dedup_quiz_options(quiz_list: list[dict[str, Any]]) -> list[dict[str, Any]]:
+    for q in quiz_list:
+        if q.get("type") == "mcq" and isinstance(q.get("options"), list):
+            seen: list[str] = []
+            for i, o in enumerate(q["options"]):
+                s = str(o).strip()
+                k = 1
+                while s in seen:
+                    s = f"{str(o).strip()} (trường hợp {k})"
+                    k += 1
+                seen.append(s)
+                q["options"][i] = s
+    return quiz_list
+
 def bai(
     topic: str,
     chapter_title: str,
@@ -169,5 +192,5 @@ def bai(
         "example": str(example).strip(),
         "example_answer": str(example_answer).strip(),
         "real_life": str(real_life).strip(),
-        "quiz": list(quiz or []),
+        "quiz": _dedup_quiz_options(list(quiz or [])),
     }

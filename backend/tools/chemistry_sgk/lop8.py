@@ -621,3 +621,11 @@ LESSONS = [
         ],
     ),
 ]
+
+
+from game_mapper import resolve_backend_game as _resolve_bg
+for _l in LESSONS:
+    _gt, _gtitle, _gdesc = _resolve_bg("chemistry", 8, _l)
+    _l["game_type"] = _gt
+    _l["game_title"] = _gtitle
+    _l["game_description"] = _gdesc

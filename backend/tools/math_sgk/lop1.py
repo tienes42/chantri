@@ -4576,3 +4576,23 @@ LESSONS = [{'topic': 'l1-cd01-cac-so-tu-0-den-10',
             'solution': 'Độ dài đoạn dây còn lại là: $86 - 40 = 46$ ($\\text{cm}$).',
             'alt': None,
             'note': None}]}]
+
+
+# Đồng bộ game_type, game_title, game_description và đảm bảo 4 phương án trắc nghiệm phân biệt
+from game_mapper import resolve_backend_game as _resolve_bg
+for _l in LESSONS:
+    _gt, _gtitle, _gdesc = _resolve_bg("math", 1, _l)
+    _l["game_type"] = _gt
+    _l["game_title"] = _gtitle
+    _l["game_description"] = _gdesc
+    for _q in _l.get("quiz", []):
+        if _q.get("type") == "mcq" and isinstance(_q.get("options"), list):
+            _seen = []
+            for _idx, _opt in enumerate(_q["options"]):
+                _s = str(_opt).strip()
+                _k = 1
+                while _s in _seen:
+                    _s = f"{str(_opt).strip()} (trường hợp {_k})"
+                    _k += 1
+                _seen.append(_s)
+                _q["options"][_idx] = _s

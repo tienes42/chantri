@@ -112,25 +112,38 @@ document.getElementById('rankingButton').addEventListener('click', () => {
   let rankTimer = null;
   function renderRanking() {
     const panel = $('rankingPanel');
-    if (!panel || !window.HDLG || !HDLG.configured || !HDLG.user) return;
+    if (!panel || !window.HDLG || !HDLG.configured || typeof HDLG.getLeaderboard !== 'function') return;
     HDLG.getLeaderboard(5).then(list => {
+      if (!Array.isArray(list) || !list.length) return;
       panel.querySelectorAll('.rank-row').forEach(r => r.remove());
       list.forEach((r, i) => {
         const row = document.createElement('div');
-        row.className = 'rank-row' + (r.uid === HDLG.user.uid ? ' current' : '');
+        row.className = 'rank-row' + (HDLG.user && r.uid === HDLG.user.uid ? ' current' : '');
         const a = document.createElement('span'); a.textContent = i === 0 ? '👑' : String(i + 1);
-        const b = document.createElement('b'); b.textContent = r.name;
-        const c = document.createElement('strong'); c.textContent = r.xp;
+        const b = document.createElement('b'); b.textContent = r.name || 'Người chơi';
+        const c = document.createElement('strong'); c.textContent = r.xp ?? 0;
         row.append(a, b, c); panel.appendChild(row);
       });
-    });
+    }).catch(() => {});
   }
 
   window.addEventListener('hdlg:update', e => {
     renderPlayer(e.detail);
-    clearTimeout(rankTimer); rankTimer = setTimeout(renderRanking, 800);
+    clearTimeout(rankTimer); rankTimer = setTimeout(renderRanking, 600);
   });
-  if (window.HDLG) HDLG.ready.then(() => { if (HDLG.user) renderRanking(); });
+  if (window.HDLG && typeof HDLG.getState === 'function') {
+    renderPlayer(HDLG.getState());
+  }
+  if (window.HDLG && HDLG.ready) {
+    HDLG.ready.then(() => {
+      if (typeof HDLG.getState === 'function') renderPlayer(HDLG.getState());
+      renderRanking();
+    });
+  }
+  window.addEventListener('pageshow', () => {
+    if (window.HDLG && typeof HDLG.getState === 'function') renderPlayer(HDLG.getState());
+    renderRanking();
+  });
 })();
 
 document.querySelectorAll('.hit[data-popup]').forEach(b => {
@@ -409,6 +422,7 @@ processSpriteSheet('assets/props-sheet-2.png', [
 
 /* ================= 2. HIỆU ỨNG CAMERA PARALLAX KHI DI CHUỘT ================= */
 homeScene.addEventListener('mousemove', e => {
+  if (window.innerWidth <= 860) return;
   const x = (e.clientX / window.innerWidth - 0.5);
   const y = (e.clientY / window.innerHeight - 0.5);
   islandsLayer.style.transform = `translate(${x * -20}px, ${y * -14}px)`;

@@ -25,6 +25,7 @@ from pathlib import Path
 BACKEND_DIR = Path(__file__).resolve().parent.parent
 sys.path.insert(0, str(BACKEND_DIR))
 sys.path.insert(0, str(BACKEND_DIR / "tools"))
+from game_mapper import resolve_backend_game
 
 LEVEL_PLANS = {
     10: {
@@ -178,9 +179,9 @@ def to_row(subject_id: int, grade: int, lesson: dict) -> dict:
         application=lesson.get("application") or lesson["real_life"],
         challenge=lesson.get("challenge"),
         challenge_answer=lesson.get("challenge_answer"),
-        game_title=lesson.get("game_title"),
-        game_description=lesson.get("game_description"),
-        game_type=lesson.get("game_type"),
+        game_title=resolve_backend_game("physics", grade, lesson)[1],
+        game_description=resolve_backend_game("physics", grade, lesson)[2],
+        game_type=resolve_backend_game("physics", grade, lesson)[0],
         requirements=lesson["requirements"],
         quiz=quiz,
     )
