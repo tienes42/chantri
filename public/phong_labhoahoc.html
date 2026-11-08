@@ -5,8 +5,8 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <meta name="theme-color" content="#0b1220">
 <title>Phòng Lab Hóa học 3D — HỌC ĐỂ LÀM GÌ?</title>
-<script src="firebase-config.js"></script>
-<script src="auth.js"></script>
+<script src="/firebase-config.js"></script>
+<script src="/auth.js"></script>
 <style>
 :root{
   --bg:#0b1220;--panel:#111a2e;--raise:#1a2540;--raise2:#22304f;--line:#26324d;--line2:#34446a;
@@ -381,15 +381,15 @@ const D = (() => {
     "s:CuOH2": "Cu(OH)₂↓ xanh lam", "s:FeOH3": "Fe(OH)₃↓ nâu đỏ", "s:FeOH2": "Fe(OH)₂↓ trắng xanh", "s:AlOH3": "Al(OH)₃↓ keo trắng", "s:ZnOH2": "Zn(OH)₂↓ trắng", "s:MgOH2": "Mg(OH)₂↓ trắng",
     "s:PbI2": "PbI₂↓ vàng óng", "s:PbS": "PbS↓ đen", "s:CuS": "CuS↓ đen", "s:Ag2O": "Ag₂O↓ nâu đen", "s:BaCrO4": "BaCrO₄↓ vàng", "s:Ag2CrO4": "Ag₂CrO₄↓ đỏ gạch", "s:Sc": "S↓ vàng (keo)",
     "s:TBP": "2,4,6-tribromphenol↓ trắng", "s:TBA": "2,4,6-tribromanilin↓ trắng", "s:Cu2O": "Cu₂O↓ đỏ gạch", "s:Fe3O4": "Fe₃O₄ (oxit sắt từ)", "s:MgO": "MgO (trắng)", "s:Prot": "Protein đông tụ", "s:ProtY": "Protein vàng (HNO₃)", "s:Char": "Than xốp (C)",
-    "s:AgM": "Ag (lớp gương)", "s:CaSoap": "Váng xà phòng canxi", "s:P2O5": "P₂O₅ (khói trắng)",
+    "s:AgM": "Ag (lớp gương)", "s:CaSoap": "Váng xà phòng canxi", "s:P2O5": "P₂O₅ (khói trắng)", "s:NH42Cr2O7": "(NH₄)₂Cr₂O₇ (rắn)", "s:Cr2O3": "Cr₂O₃ (lục thẫm)", "s:Al2O3": "Al₂O₃ (trắng)",
     "g:H2": "H₂", "g:O2": "O₂", "g:CO2": "CO₂", "g:Cl2": "Cl₂", "g:NH3": "NH₃", "g:SO2": "SO₂", "g:H2S": "H₂S", "g:NO2": "NO₂", "g:NO": "NO", "g:C2H2": "C₂H₂", "g:I2": "I₂ (hơi)", "g:N2": "N₂", "g:H2O": "Hơi nước", "g:P2O5": "P₂O₅ (khói trắng)"
   };
 
   /* ---------- màu (màu ánh sáng truyền qua, độ hấp thụ / M) ---------- */
   const COL = {
-    Cu: [0x2f8cff, 1.4], CuNH3: [0x1736d6, 9], Fe3: [0xe0a020, 1.6], Fe2: [0x9fe0a8, 0.6], MnO4: [0xa21caf, 140], Cr2O7: [0xf97316, 14], CrO4: [0xfacc15, 9], Cr3: [0x22a35a, 6],
-    I2: [0x9a4a12, 40], Br2: [0xe88a1a, 18], FeSCN: [0xb0101c, 60], Mn: [0xffd6e6, 0.4], CuGly: [0x1d3fe0, 12], CuGlu: [0x1d3fe0, 12], CuSac: [0x1d3fe0, 12], Biuret: [0x8b2fd6, 14],
-    Cl2: [0xc8e86a, 4], Co: [0xf06fa0, 3], ZnNH3: [0xffffff, 0], AgNH3: [0xffffff, 0], Prot: [0xf3f0e0, 0.3], Starch: [0xf2f2ee, 0.35], Oil: [0xf0c040, 0.4], Det: [0x8fe3ff, 0.3], Ester: [0xffffff, 0],
+    Cu: [0x0ea5e9, 4.8], CuNH3: [0x1d4ed8, 28], Fe3: [0xd97706, 5.5], Fe2: [0x4ade80, 2.8], MnO4: [0x9333ea, 260], Cr2O7: [0xea580c, 32], CrO4: [0xfacc15, 25], Cr3: [0x15803d, 18],
+    I2: [0x7c2d12, 110], Br2: [0xd9480f, 85], FeSCN: [0x991b1b, 160], Mn: [0xffd6e6, 0.5], CuGly: [0x1d4ed8, 28], CuGlu: [0x1d4ed8, 28], CuSac: [0x1d4ed8, 28], Biuret: [0x7e22ce, 32],
+    Cl2: [0xa3e635, 14], Co: [0xf43f5e, 7.5], ZnNH3: [0xffffff, 0], AgNH3: [0xffffff, 0], Prot: [0xf3f0e0, 0.45], Starch: [0xf2f2ee, 0.5], Oil: [0xf59e0b, 0.8], Det: [0x38bdf8, 0.6], Ester: [0xffffff, 0],
     GluA: [0xffffff, 0], Glu: [0xffffff, 0], X: [0xffffff, 0]
   };
   /* ---------- chất rắn: màu, khối lượng mol, dạng hiển thị ---------- */
@@ -403,7 +403,7 @@ const D = (() => {
     CuOH2: [0x3d8fe6, 98, "ppt"], FeOH3: [0xa0441a, 107, "ppt"], FeOH2: [0xa8d8b0, 90, "ppt"], AlOH3: [0xf4f6f8, 78, "ppt"], ZnOH2: [0xf6f6f6, 99, "ppt"], MgOH2: [0xf7f7f7, 58, "ppt"],
     PbI2: [0xffcc12, 461, "ppt"], PbS: [0x111111, 239, "ppt"], CuS: [0x161616, 96, "ppt"], Ag2O: [0x3a2a1c, 232, "ppt"], BaCrO4: [0xf5d000, 253, "ppt"], Ag2CrO4: [0xa8321e, 332, "ppt"], Sc: [0xf2e7a0, 32, "ppt"],
     TBP: [0xfbfbf7, 331, "ppt"], TBA: [0xf6f4f0, 330, "ppt"], Cu2O: [0xb33a1b, 143, "ppt"], Fe3O4: [0x232323, 232, "powder"], MgO: [0xffffff, 40, "powder"], Prot: [0xfafaf2, 100, "ppt"], ProtY: [0xf5c518, 100, "ppt"], Char: [0x101010, 12, "char"],
-    AgM: [0xe5e7eb, 108, "mirror"], CaSoap: [0xf3f1ea, 600, "ppt"], P2O5: [0xffffff, 142, "ppt"]
+    AgM: [0xe5e7eb, 108, "mirror"], CaSoap: [0xf3f1ea, 600, "ppt"], P2O5: [0xffffff, 142, "ppt"], NH42Cr2O7: [0xea580c, 252, "crystal"], Cr2O3: [0x14532d, 152, "powder"], Al2O3: [0xf8fafc, 102, "powder"]
   };
   // tốc độ lắng (1/s) của kết tủa; keo lắng rất chậm
   const SETTLE = { AgCl: 0.05, AgBr: 0.05, AgI: 0.05, BaSO4: 0.04, BaCO3: 0.06, CaCO3: 0.07, MgCO3: 0.06, CuOH2: 0.035, FeOH3: 0.03, FeOH2: 0.035, AlOH3: 0.02, ZnOH2: 0.03, MgOH2: 0.03, PbI2: 0.08, PbS: 0.07, CuS: 0.07, Ag2O: 0.06, BaCrO4: 0.06, Ag2CrO4: 0.06, Sc: 0.004, TBP: 0.03, TBA: 0.03, Cu2O: 0.08, Prot: 0.05, ProtY: 0.05, CaSoap: 0.02, MnO2: 0.08, CuO: 0.08, Fe2O3: 0.08, P2O5: 1 };
@@ -454,7 +454,7 @@ const D = (() => {
   L("liq_KSCN", "KSCN", "Kali thioxianat 0,5M", 0xf8fafc, { K: 0.5, SCN: 0.5 }, "Thuốc thử siêu nhạy nhận biết Fe³⁺; \"máu giả\" trong điện ảnh.");
   L("liq_K2Cr2O7", "K₂Cr₂O₇", "Kali đicromat 0,1M", 0xf97316, { K: 0.2, Cr2O7: 0.1 }, "Máy đo nồng độ cồn: da cam → xanh lục khi gặp hơi cồn.", { hz: "độc" });
   L("liq_K2CrO4", "K₂CrO₄", "Kali cromat 0,2M", 0xfacc15, { K: 0.4, CrO4: 0.2 }, "Chỉ thị chuẩn độ bạc; cân bằng cromat ⇄ đicromat.", { hz: "độc" });
-  L("liq_Br2", "Br₂ (dd)", "Nước brom", 0xe88a1a, { Br2: 0.05 }, "Nhận biết liên kết bội, phenol, anilin, SO₂.", { hz: "độc" });
+  L("liq_Br2", "Br₂ (dd)", "Nước brom (đỏ cam đậm)", 0xd9480f, { Br2: 0.08 }, "Dung dịch Br₂ màu đỏ cam đậm đặc trưng; mất màu ngay khi gặp C₂H₂, SO₂, phenol, anilin.", { hz: "độc", tag: "rõ nét" });
   L("liq_KMnO4", "KMnO₄ (dd)", "Dung dịch thuốc tím 0,02M", 0xa21caf, { K: 0.02, MnO4: 0.02 }, "Sát khuẩn rau quả; chuẩn độ Fe²⁺; nhận biết SO₂, C₂H₂.");
   L("liq_I2", "I₂ (dd)", "Dung dịch iot", 0x9a4a12, { I2: 0.02, K: 0.05, I: 0.05 }, "Thuốc sát trùng vết thương và nhận biết tinh bột.");
   L("liq_H2O2", "H₂O₂", "Nước oxi già 3%", 0xf8fafc, { H2O2: 0.9 }, "Sát trùng vết thương, tẩy trắng; điều chế nhanh O₂ với xúc tác MnO₂.");
@@ -467,8 +467,8 @@ const D = (() => {
   L("liq_Protein", "Protein", "Lòng trắng trứng", 0xf3f0e0, { Prot: 1 }, "Xét nghiệm định lượng đạm bằng phản ứng Biure.");
   L("liq_Ethanol", "C₂H₅OH", "Ancol etylic (cồn 96°)", 0xf8fafc, { EtOH: 16 }, "Cồn sát khuẩn 70°, xăng sinh học E5, dung môi.", { w: 0.04 });
   L("liq_Glycerol", "C₃H₅(OH)₃", "Glixerol", 0xf8fafc, { Gly: 5 }, "Chất giữ ẩm trong mỹ phẩm, thuốc ho; sản xuất nitroglixerin.", { w: 0.5 });
-  L("liq_Phenol_org", "C₆H₅OH", "Dung dịch phenol", 0xf8fafc, { PhOH: 0.1 }, "Sản xuất nhựa phenol-fomanđehit, chất diệt khuẩn, aspirin.", { hz: "độc" });
-  L("liq_Aniline", "C₆H₅NH₂", "Anilin", 0xf8fafc, { Anil: 0.1 }, "Nguyên liệu phẩm nhuộm và dược phẩm (paracetamol).", { hz: "độc" });
+  L("liq_Phenol_org", "C₆H₅OH", "Dung dịch phenol", 0xf8fafc, { PhOH: 0.25 }, "Sản xuất nhựa phenol-fomanđehit, chất diệt khuẩn, aspirin.", { hz: "độc" });
+  L("liq_Aniline", "C₆H₅NH₂", "Anilin", 0xf8fafc, { Anil: 0.25 }, "Nguyên liệu phẩm nhuộm và dược phẩm (paracetamol).", { hz: "độc" });
   L("liq_EthylAcetate", "CH₃COOC₂H₅", "Etyl axetat (este mùi thơm)", 0xf8fafc, { Ester: 10 }, "Dung môi sơn móng tay, chiết cafein, hương trái cây.", { w: 0 });
   L("liq_Oil", "Dầu ăn", "Dầu ăn (chất béo)", 0xf0c040, { Oil: 1 }, "Nấu xà phòng (xà phòng hóa chất béo); không tan trong nước, nổi lên trên.", { w: 0, tag: "mới" });
   L("liq_Soap", "Nước rửa chén", "Nước rửa chén (xà phòng)", 0x7dd3fc, { Det: 1 }, "Chất hoạt động bề mặt tạo bọt; làm thí nghiệm \"kem đánh răng voi\".", { tag: "mới" });
@@ -505,6 +505,7 @@ const D = (() => {
   S("solid_CaC2", "CaC₂", "Đất đèn", "CaC2", "Sinh khí axetilen cho đèn xì hàn cắt kim loại.");
   S("solid_Sugar", "C₁₂H₂₂O₁₁", "Đường kính (rắn)", "Sugar", "Thực phẩm; thí nghiệm \"con rắn than\" với H₂SO₄ đặc.", { M: 342, dis: { Sac: 1 }, tag: "mới" });
   S("solid_I2", "I₂", "Iot (tinh thể)", "I2", "Thăng hoa tạo hơi tím; cồn iot sát trùng.", { tag: "mới" });
+  S("solid_NH42Cr2O7", "(NH₄)₂Cr₂O₇", "Amoni đicromat (núi lửa)", "NH42Cr2O7", "Đun nóng tự phân hủy bốc lửa và phun trào tro xanh Cr₂O₃ như núi lửa.", { tag: "HOT", hz: "oxi hóa mạnh" });
 
   G("gas_O2", "O₂", "Khí oxi", 0xbfdbfe, "Duy trì sự sống, bình thở y tế, luyện thép.");
   G("gas_CO2", "CO₂", "Khí cacbonic", 0xe2e8f0, "Bình chữa cháy, nước ngọt có ga, đá khô.");
@@ -539,11 +540,11 @@ const D = (() => {
 
   /* ---------- chỉ thị pH: màu theo pH (điểm nút) ---------- */
   const IND = {
-    PP: { eps: 14, pts: [[0, 0xffffff], [8.0, 0xffffff], [9.0, 0xf472b6], [10, 0xdb2777], [14, 0xdb2777]] },
-    Lit: { eps: 10, pts: [[0, 0xdc2626], [4.5, 0xdc2626], [6.5, 0x8b5cf6], [8.3, 0x2563eb], [14, 0x1d4ed8]] },
-    MO: { eps: 10, pts: [[0, 0xdc2626], [3.1, 0xef4444], [3.8, 0xf97316], [4.4, 0xfacc15], [14, 0xfacc15]] },
-    UI: { eps: 10, pts: [[0, 0xb91c1c], [2, 0xef4444], [4, 0xf97316], [5.5, 0xfacc15], [7, 0x22c55e], [8.5, 0x14b8a6], [10, 0x2563eb], [12, 0x4f46e5], [14, 0x6d28d9]] },
-    Cab: { eps: 9, pts: [[0, 0xdc2626], [2.5, 0xe11d48], [4.5, 0xdb2777], [6.5, 0x7e22ce], [8, 0x4338ca], [9.5, 0x0d9488], [11, 0x16a34a], [13, 0xbef264], [14, 0xfacc15]] }
+    PP: { eps: 32, pts: [[0, 0xffffff], [8.0, 0xffffff], [9.0, 0xf472b6], [10, 0xe11d48], [14, 0xbe123c]] },
+    Lit: { eps: 26, pts: [[0, 0xdc2626], [4.5, 0xdc2626], [6.5, 0x7c3aed], [8.3, 0x2563eb], [14, 0x1d4ed8]] },
+    MO: { eps: 26, pts: [[0, 0xdc2626], [3.1, 0xef4444], [3.8, 0xf97316], [4.4, 0xfacc15], [14, 0xfacc15]] },
+    UI: { eps: 24, pts: [[0, 0xb91c1c], [2, 0xef4444], [4, 0xf97316], [5.5, 0xfacc15], [7, 0x22c55e], [8.5, 0x14b8a6], [10, 0x2563eb], [12, 0x4f46e5], [14, 0x6d28d9]] },
+    Cab: { eps: 24, pts: [[0, 0xdc2626], [2.5, 0xe11d48], [4.5, 0xdb2777], [6.5, 0x7e22ce], [8, 0x4338ca], [9.5, 0x0d9488], [11, 0x16a34a], [13, 0xbef264], [14, 0xfacc15]] }
   };
 
   /* ---------- hằng số axit (pKa) cho tính pH ---------- */
@@ -699,8 +700,9 @@ const RX = (() => {
   r("mno4_so2", "2MnO4 + 5SO2", "2Mn + 5SO4 + 4H", { eq: "2MnO₄⁻ + 5SO₂ + 2H₂O → 2Mn²⁺ + 5SO₄²⁻ + 4H⁺", mol: "2KMnO₄ + 5SO₂ + 2H₂O → K₂SO₄ + 2MnSO₄ + 2H₂SO₄", txt: "SO₂ làm mất màu thuốc tím.", app: "Nhận biết SO₂ trong khí thải." });
   r("mno4_h2o2", "2MnO4 + 5H2O2 + 6H", "2Mn + 5g:O2", { k: 2, fx: "fizz", eq: "2MnO₄⁻ + 5H₂O₂ + 6H⁺ → 2Mn²⁺ + 5O₂↑ + 8H₂O", mol: "2KMnO₄ + 5H₂O₂ + 3H₂SO₄ → K₂SO₄ + 2MnSO₄ + 5O₂↑ + 8H₂O", txt: "Thuốc tím mất màu, sủi bọt O₂." });
   r("mno4_c2h2", "2MnO4 + C2H2", "2s:MnO2", { k: 1.2, eq: "C₂H₂ + MnO₄⁻ → (COO⁻)₂ + MnO₂↓", mol: "3C₂H₂ + 8KMnO₄ → 3K₂C₂O₄ + 8MnO₂↓ + 2KOH + 2H₂O", txt: "Axetilen làm mất màu thuốc tím, có kết tủa nâu đen MnO₂." });
-  r("c2h2_br", "C2H2 + 2Br2", "C2H2Br4", { eq: "C₂H₂ + 2Br₂ → C₂H₂Br₄", mol: "HC≡CH + 2Br₂ → Br₂CH–CHBr₂", txt: "Axetilen làm mất màu nước brom (phản ứng cộng).", app: "Nhận biết hiđrocacbon không no." });
-  r("so2_br", "SO2 + Br2", "SO4 + 2Br + 4H", { eq: "SO₂ + Br₂ + 2H₂O → SO₄²⁻ + 2Br⁻ + 4H⁺", mol: "SO₂ + Br₂ + 2H₂O → H₂SO₄ + 2HBr", txt: "SO₂ làm mất màu nước brom." });
+  r("c2h2_br", "C2H2 + 2Br2", "C2H2Br4", { fx: "decolor", eq: "C₂H₂ + 2Br₂ → C₂H₂Br₄", mol: "HC≡CH + 2Br₂ → Br₂CH–CHBr₂", txt: "Nước brom đỏ cam đậm mất màu hoàn toàn thành dung dịch trong suốt (phản ứng cộng).", app: "Nhận biết hiđrocacbon không no (anken, ankin)." });
+  r("so2_br", "SO2 + Br2", "SO4 + 2Br + 4H", { fx: "decolor", eq: "SO₂ + Br₂ + 2H₂O → SO₄²⁻ + 2Br⁻ + 4H⁺", mol: "SO₂ + Br₂ + 2H₂O → H₂SO₄ + 2HBr", txt: "Khí SO₂ làm mất màu đỏ cam của nước brom ngay lập tức." });
+  r("so3_br", "SO3 + Br2", "SO4 + 2Br + 2H", { fx: "decolor", eq: "SO₃²⁻ + Br₂ + H₂O → SO₄²⁻ + 2Br⁻ + 2H⁺", mol: "Na₂SO₃ + Br₂ + H₂O → Na₂SO₄ + 2HBr", txt: "Muối sunfit làm mất màu đỏ cam của nước brom tức thì." });
   r("cr2o7_etoh", "Cr2O7 + 3EtOH + 8H", "2Cr3", { k: 0.25, cond: c => M(c, "H") > 0.3, eq: "Cr₂O₇²⁻ + 3C₂H₅OH + 8H⁺ → 2Cr³⁺ + 3CH₃CHO + 7H₂O", mol: "K₂Cr₂O₇ + 3C₂H₅OH + 4H₂SO₄ → Cr₂(SO₄)₃ + K₂SO₄ + 3CH₃CHO + 7H₂O", txt: "Màu da cam chuyển dần sang xanh lục (Cr³⁺).", app: "Nguyên lý máy đo nồng độ cồn hơi thở của CSGT." });
   r("cr2o7_fe", "Cr2O7 + 6Fe2 + 14H", "2Cr3 + 6Fe3", { eq: "Cr₂O₇²⁻ + 6Fe²⁺ + 14H⁺ → 2Cr³⁺ + 6Fe³⁺ + 7H₂O", mol: "K₂Cr₂O₇ + 6FeSO₄ + 7H₂SO₄ → Cr₂(SO₄)₃ + 3Fe₂(SO₄)₃ + K₂SO₄ + 7H₂O", txt: "Da cam → xanh lục.", app: "Chuẩn độ đicromat định lượng sắt." });
   r("cro4_h", "2CrO4 + 2H", "Cr2O7", { eq: "2CrO₄²⁻ + 2H⁺ ⇄ Cr₂O₇²⁻ + H₂O", mol: "2K₂CrO₄ + H₂SO₄ → K₂Cr₂O₇ + K₂SO₄ + H₂O", txt: "Thêm axit: màu vàng chuyển da cam — cân bằng chuyển dịch sang phải.", app: "Nguyên lý Lơ Sa-tơ-li-ê về chuyển dịch cân bằng." });
@@ -725,7 +727,10 @@ const RX = (() => {
   r("cl2_out", "Cl2", "g:Cl2", { k: 0.03, quiet: 1 });
   r("cuso4_wet", "s:CuSO4", "s:CuSO45", { k: 0.6, cond: c => c.w > 0.05, eq: "CuSO₄ (trắng) + 5H₂O → CuSO₄·5H₂O (xanh)", mol: "CuSO₄ + 5H₂O → CuSO₄·5H₂O", txt: "Bột CuSO₄ khan màu trắng hóa xanh lam khi gặp nước.", app: "Phát hiện nước lẫn trong xăng, dầu, cồn." });
   r("cuso4_dry", "s:CuSO4 + EtOH", "s:CuSO4 + EtOH", { note: 1, cond: c => c.w <= 0.05, eq: "CuSO₄ khan + C₂H₅OH khan → không đổi màu", mol: "Cồn tuyệt đối không làm CuSO₄ khan đổi màu", txt: "CuSO₄ khan vẫn TRẮNG — cồn không lẫn nước." });
-  r("sugar_char", "s:Sugar", "s:Char", { k: 0.04, dH: -300, cond: c => M(c, "H") > 15 && c.w / Math.max(c.V, .01) < 0.5, fx: "snake", eq: "C₁₂H₂₂O₁₁ —H₂SO₄ đặc→ 12C + 11H₂O", mol: "C₁₂H₂₂O₁₁ → 12C + 11H₂O; C + 2H₂SO₄ → CO₂↑ + 2SO₂↑ + 2H₂O", txt: "Đường hóa đen, phồng lên thành cột than xốp \"con rắn\", bốc hơi nóng.", app: "H₂SO₄ đặc háo nước gây bỏng rất nặng — luôn đeo găng & kính." });
+  r("sugar_char", "s:Sugar", "s:Char", { k: 0.04, dH: -300, cond: c => M(c, "H") > 15 && c.w / Math.max(c.V, .01) < 0.5 && !has(c, "s:KClO3"), fx: "snake", eq: "C₁₂H₂₂O₁₁ —H₂SO₄ đặc→ 12C + 11H₂O", mol: "C₁₂H₂₂O₁₁ → 12C + 11H₂O; C + 2H₂SO₄ → CO₂↑ + 2SO₂↑ + 2H₂O", txt: "Đường hóa đen, phồng lên thành cột than xốp \"con rắn\", bốc hơi nóng.", app: "H₂SO₄ đặc háo nước gây bỏng rất nặng — luôn đeo găng & kính." });
+  r("volcano", "s:NH42Cr2O7", "s:Cr2O3 + g:N2 + 4g:H2O", { k: 0.22, dH: -320, cond: c => c.T > 140 && c.w < 0.5, fx: "volcano", eq: "(NH₄)₂Cr₂O₇ —t°→ Cr₂O₃ + N₂↑ + 4H₂O↑", mol: "(NH₄)₂Cr₂O₇ → Cr₂O₃ + N₂↑ + 4H₂O↑", txt: "🌋 Núi lửa hóa học! Tinh thể da cam tự bốc lửa đỏ rực, bắn tàn lửa và phun trào núi tro Cr₂O₃ màu lục thẫm.", app: "Phản ứng nhiệt phân tự oxi hóa – khử kinh điển minh họa sự tạo thành oxit Cr₂O₃." });
+  r("thermite", "2s:Al + s:Fe2O3", "s:Al2O3 + 2s:Fe", { k: 0.35, dH: -850, cond: c => c.w < 0.5 && (c.T > 170 || (c.T > 110 && has(c, "s:Mg"))), fx: "thermite", eq: "2Al + Fe₂O₃ —t°→ Al₂O₃ + 2Fe", mol: "2Al + Fe₂O₃ → Al₂O₃ + 2Fe (nhiệt nhôm)", txt: "💥 Phản ứng Nhiệt nhôm! Hỗn hợp bùng sáng trắng–vàng chói lòa, bắn mưa tia lửa, tỏa nhiệt cực lớn tạo sắt nóng chảy.", app: "Hàn đường ray tàu hỏa tại chỗ và điều chế các kim loại nhiệt độ nóng chảy cao." });
+  r("kclo3_sugar", "8s:KClO3 + s:Sugar", "8s:KCl + 12g:CO2 + 11g:H2O", { k: 0.35, dH: -650, cond: c => (c.T > 150 && c.w < 0.5) || M(c, "H") > 10, fx: "purple_flare", eq: "8KClO₃ + C₁₂H₂₂O₁₁ —t°/H₂SO₄→ 8KCl + 12CO₂↑ + 11H₂O↑", mol: "8KClO₃ + C₁₂H₂₂O₁₁ → 8KCl + 12CO₂↑ + 11H₂O↑", txt: "🎆 Pháo sáng tím! Đường bị KClO₃ oxi hóa mãnh liệt, bùng ngọn lửa tím hồng rực rỡ (màu lửa của ion K⁺) và khói trắng dày đặc.", app: "Minh họa tính oxi hóa cực mạnh của muối clorat và màu ngọn lửa đặc trưng của kim loại kiềm Kali." });
 
   /* ---- hữu cơ ---- */
   r("tollens", "2AgNH3 + Glu", "2s:AgM + GluA", { k: 0.06, cond: c => c.T > 50, fx: "mirror", eq: "RCHO + 2[Ag(NH₃)₂]⁺ + 2OH⁻ → RCOONH₄ + 2Ag↓ + 3NH₃ + H₂O", mol: "C₅H₁₁O₅CHO + 2AgNO₃ + 3NH₃ + H₂O → C₅H₁₁O₅COONH₄ + 2Ag↓ + 2NH₄NO₃", txt: "Lớp bạc sáng bóng như gương bám đều lên thành ống nghiệm.", app: "Tráng gương soi, tráng ruột phích giữ nhiệt; nhận biết glucozơ." });
@@ -738,8 +743,8 @@ const RX = (() => {
   r("biuret", "Prot + s:CuOH2", "Biuret", { k: 1, cond: c => M(c, "OH") > 0.005, eq: "Protein (liên kết peptit) + Cu(OH)₂ → phức chất màu tím", mol: "Peptit + Cu(OH)₂ —OH⁻→ phức Cu–peptit (tím)", txt: "Dung dịch chuyển màu tím đặc trưng (phản ứng màu Biure).", app: "Xét nghiệm định lượng protein trong máu, sữa." });
   r("prot_hno3", "Prot", "s:ProtY", { k: 0.6, cond: c => M(c, "NO3") > 2 && M(c, "H") > 2, eq: "Protein + HNO₃ → sản phẩm nitro hóa (vàng)", mol: "Phản ứng xantoprotein", txt: "Kết tủa màu vàng — vì thế HNO₃ dây lên da làm da vàng.", app: "Nhận biết protein có vòng thơm." });
   r("prot_heat", "Prot", "s:Prot", { k: 0.25, cond: c => c.T > 65 || M(c, "H") > 1.5, eq: "Protein —t° / axit→ protein đông tụ", mol: "Biến tính protein", txt: "Lòng trắng trứng đông tụ thành khối trắng đục.", app: "Luộc trứng; nấu riêu cua (protein đông tụ nổi lên)." });
-  r("phenol_br", "PhOH + 3Br2", "s:TBP + 3Br + 3H", { eq: "C₆H₅OH + 3Br₂ → C₆H₂Br₃OH↓ + 3HBr", mol: "C₆H₅OH + 3Br₂ → C₆H₂Br₃OH↓ + 3HBr", txt: "Nước brom mất màu, kết tủa trắng 2,4,6-tribromphenol.", app: "Nhận biết phenol trong nước thải nhà máy." });
-  r("anil_br", "Anil + 3Br2", "s:TBA + 3Br + 3H", { eq: "C₆H₅NH₂ + 3Br₂ → C₆H₂Br₃NH₂↓ + 3HBr", mol: "C₆H₅NH₂ + 3Br₂ → C₆H₂Br₃NH₂↓ + 3HBr", txt: "Nước brom mất màu, kết tủa trắng 2,4,6-tribromanilin." });
+  r("phenol_br", "PhOH + 3Br2", "s:TBP + 3Br + 3H", { fx: "decolor", eq: "C₆H₅OH + 3Br₂ → C₆H₂Br₃OH↓ + 3HBr", mol: "C₆H₅OH + 3Br₂ → C₆H₂Br₃OH↓ + 3HBr", txt: "Nước brom đỏ cam mất màu ngay, đồng thời xuất hiện kết tủa trắng đục 2,4,6-tribromphenol.", app: "Nhận biết phenol trong nước thải nhà máy." });
+  r("anil_br", "Anil + 3Br2", "s:TBA + 3Br + 3H", { fx: "decolor", eq: "C₆H₅NH₂ + 3Br₂ → C₆H₂Br₃NH₂↓ + 3HBr", mol: "C₆H₅NH₂ + 3Br₂ → C₆H₂Br₃NH₂↓ + 3HBr", txt: "Nước brom đỏ cam mất màu ngay, tạo kết tủa trắng 2,4,6-tribromanilin." });
   r("ester_oh", "Ester + OH", "CH3COO + EtOH", { k: 0.04, kf: c => c.T > 50 ? 1 : 0.15, cond: c => c.V > 0.5, eq: "CH₃COOC₂H₅ + OH⁻ → CH₃COO⁻ + C₂H₅OH", mol: "CH₃COOC₂H₅ + NaOH —t°→ CH₃COONa + C₂H₅OH", txt: "Lớp este nổi phía trên tan dần, chất lỏng đồng nhất, mùi thơm mất.", app: "Phản ứng xà phòng hóa — nguyên lý sản xuất xà phòng." });
   r("ester_h", "Ester", "CH3COOH + EtOH", { k: 0.008, cond: c => M(c, "H") > 0.5 && c.T > 60, eq: "CH₃COOC₂H₅ + H₂O ⇄ CH₃COOH + C₂H₅OH", mol: "CH₃COOC₂H₅ + H₂O —H⁺, t°→ CH₃COOH + C₂H₅OH", txt: "Este thủy phân chậm trong axit (thuận nghịch) — vẫn còn phân lớp." });
   r("oil_oh", "Oil + 3OH", "3Soap + Gly", { k: 0.02, cond: c => c.T > 70, eq: "(RCOO)₃C₃H₅ + 3OH⁻ → 3RCOO⁻ + C₃H₅(OH)₃", mol: "(C₁₇H₃₅COO)₃C₃H₅ + 3NaOH → 3C₁₇H₃₅COONa + C₃H₅(OH)₃", txt: "Lớp dầu tan dần tạo xà phòng và glixerol, chất lỏng sủi bọt khi lắc.", app: "Nấu xà phòng thủ công từ dầu dừa và xút." });
@@ -893,13 +898,14 @@ const E = (() => {
     // tinh bột – iot
     if (c.aq.Starch && c.aq.I2 && c.T < 60) absorb(rgb(0x1e1b6e), 140 * Math.min(c.aq.I2, c.aq.Starch * 0.05) / V * path);
     const T = A.map(a => Math.exp(-a));
-    let col = T, op = 0.16 + (1 - (T[0] + T[1] + T[2]) / 3) * 0.7;
-    // độ đục do kết tủa lơ lửng
+    const maxAbs = 1 - Math.min(T[0], T[1], T[2]);
+    let col = T, op = 0.18 + maxAbs * 0.74;
+    // độ đục do kết tủa lơ lửng (tăng độ rõ để kết tủa hiện ngay lập tức)
     let tb = 0, tc = [0, 0, 0], tw = 0;
-    for (const sp in c.sol) { const o = c.sol[sp], d = D.SOL[sp]; if (!d || (d[2] !== "ppt" && d[2] !== "powder")) continue; const sus = o.n * o.s * (sp === "Sc" ? 3 : 1) * (d[2] === "powder" ? 0.4 : 1); if (sus <= 0) continue; tb += sus; const cc = rgb(d[0]); tc = tc.map((v, i) => v + cc[i] * sus); tw += sus; }
+    for (const sp in c.sol) { const o = c.sol[sp], d = D.SOL[sp]; if (!d || (d[2] !== "ppt" && d[2] !== "powder")) continue; const sus = o.n * o.s * (sp === "Sc" ? 4 : 1.5) * (d[2] === "powder" ? 0.5 : 1); if (sus <= 0) continue; tb += sus; const cc = rgb(d[0]); tc = tc.map((v, i) => v + cc[i] * sus); tw += sus; }
     let turb = 0;
-    if (tw > 0) { turb = Math.min(0.92, tb / V * 10); col = lerpC(col, tc.map(v => v / tw), turb); op = op + (0.95 - op) * turb; }
-    return { rgb: col, op: Math.min(0.94, op), turb };
+    if (tw > 0) { turb = Math.min(0.96, tb / V * 18); col = lerpC(col, tc.map(v => v / tw), turb); op = op + (0.97 - op) * turb; }
+    return { rgb: col, op: Math.min(0.96, op), turb };
   }
   const settledColor = c => { let w = 0, t = [0, 0, 0]; for (const sp in c.sol) { const d = D.SOL[sp]; if (!d || d[2] !== "ppt") continue; const n = c.sol[sp].n * (1 - c.sol[sp].s); const cc = rgb(d[0]); t = t.map((v, i) => v + cc[i] * n); w += n; } return w ? { rgb: t.map(v => v / w), n: w } : null; };
 
@@ -1067,6 +1073,22 @@ const LESSONS = (() => {
     [...burner, B("combustion_spoon"), { t: "beaker_100", fill: [["liq_H2O", 40]] }],
     [{ h: "Lấy <b>Magie</b> (Rắn) vào muôi đốt.", ev: "spoon_load" }, { h: "Đốt trên đèn cồn — Mg bùng sáng trắng chói.", ev: "mg_burn" }],
     { allow: ["solid_Mg", "liq_Phenol"], app: "Pháo sáng, pháo hoa, đèn flash cổ dùng bột Mg. Không nhìn thẳng vào ánh lửa Mg." });
+  x("h2_pop", "combustion", "HOT", "Điều chế khí H₂ & thử tiếng nổ 'bụp'", "Cho Kẽm tác dụng với HCl sinh khí H₂, sau đó đưa que đóm đang cháy vào miệng ống nghiệm để thử tiếng nổ.",
+    [TT([["liq_HCl", 6]]), B("test_rack"), ...burner, B("splint")],
+    [{ h: "Cho <b>Kẽm (Zn)</b> (Rắn) vào ống nghiệm chứa HCl → sủi bọt khí H₂ mạnh.", ev: "zn_h" }, { h: "Châm <b>đèn cồn</b>, rồi cầm <b>que đóm</b> chạm vào lửa đèn cồn cho cháy.", ev: "splint_lit" }, { h: "Đưa que đóm đang cháy vào miệng ống nghiệm → tiếng nổ <b>'bụp'</b> kèm chớp sáng xanh!", ev: "splint_h2" }],
+    { allow: ["solid_Zn", "solid_Mg", "liq_HCl", "liq_H2SO4"], app: "Hỗn hợp H₂ và O₂ nổ mạnh nhất theo tỉ lệ thể tích 2:1 (hỗn hợp nổ). Luôn thử độ tinh khiết của H₂ trước khi đốt." });
+  x("volcano_exp", "combustion", "HOT", "Núi lửa hóa học Amoni đicromat", "Đun nóng tinh thể (NH₄)₂Cr₂O₇ màu da cam: tự bốc lửa đỏ rực, bắn tàn lửa và phun trào núi tro xanh lục Cr₂O₃.",
+    [{ t: "beaker_100", fill: [["solid_NH42Cr2O7", 5]] }, ...burner],
+    [{ h: "Châm <b>đèn cồn</b> rồi bấm <b>🔥 Đun</b> cốc chứa (NH₄)₂Cr₂O₇ (hoặc kéo cốc lên đèn cồn).", ev: "volcano" }],
+    { allow: ["solid_NH42Cr2O7"], app: "Phản ứng nhiệt phân tự oxi hóa – khử tỏa nhiệt mạnh, tạo hiệu ứng núi lửa phun trào trong phòng thí nghiệm." });
+  x("thermite_exp", "combustion", "HOT", "Phản ứng Nhiệt nhôm (Hàn đường ray)", "Hỗn hợp bột Nhôm (Al) và Sắt(III) oxit (Fe₂O₃) khi đun nóng bùng sáng chói lòa, bắn mưa tia lửa tạo sắt nóng chảy.",
+    [{ t: "beaker_100", fill: [["solid_Fe2O3", 3]] }, ...burner],
+    [{ h: "Thêm <b>Nhôm (Al)</b> (Rắn, khoảng 1–2 g) vào cốc chứa Fe₂O₃.", ev: "add:solid_Al" }, { h: "Bấm <b>🔥 Đun</b> cốc trên đèn cồn đến nhiệt độ cao → phản ứng nhiệt nhôm bùng sáng rực rỡ!", ev: "thermite" }],
+    { allow: ["solid_Al", "solid_Fe2O3", "solid_Mg"], app: "Hỗn hợp Tecmit (Al + Fe₂O₃) tỏa nhiệt trên 2500°C, dùng hàn đường ray xe lửa ngay tại công trường." });
+  x("kclo3_sugar_exp", "combustion", "HOT", "Pháo sáng tím: KClO₃ + Đường kính", "Kali clorat (KClO₃) oxi hóa mãnh liệt đường kính khi có mặt H₂SO₄ đặc (hoặc đun nóng), bùng ngọn lửa tím hồng rực rỡ.",
+    [{ t: "beaker_100", fill: [["solid_KClO3", 3], ["solid_Sugar", 2]] }, ...burner],
+    [{ h: "Nhỏ <b>H₂SO₄ đặc</b> (1 mL) vào cốc chứa KClO₃ + Đường (hoặc bấm <b>🔥 Đun</b>) → bùng cháy pháo sáng tím!", ev: "kclo3_sugar" }],
+    { allow: ["solid_KClO3", "solid_Sugar", "liq_H2SO4c"], app: "Minh họa tính oxi hóa cực mạnh của KClO₃ (dùng trong diêm, pháo hoa) và màu ngọn lửa tím đặc trưng của ion K⁺." });
   x("nacl_balance", "solution", "", "Cân muối & pha nước muối sinh lý 0,9%", "Dùng cân điện tử: trừ bì cốc, cân 0,9 g NaCl rồi thêm nước đến 100 mL.",
     [B("balance_scale"), { t: "beaker_250" }],
     [{ h: "Kéo <b>cốc 250 mL</b> đặt lên đĩa cân.", ev: "on_balance" }, { h: "Bấm <b>Trừ bì</b> (khung Bình đang chọn → chọn cân) để cân về 0.", ev: "tare" }, { h: "Thêm <b>muối ăn NaCl</b> đến khi cân chỉ khoảng <b>0,9 g</b> (liều 0,1 g / 0,5 g).", ev: "mass_ok" }, { h: "Thêm <b>nước cất</b> đến khoảng 100 mL rồi <b>Lắc/khuấy</b> cho tan hết.", ev: "dis_NaCl" }],
@@ -1115,9 +1137,9 @@ const LESSONS = (() => {
     [TT([["liq_CuSO4", 1], ["liq_NaOH", 3]]), B("test_rack"), ...burner],
     [{ h: "Thêm <b>glucozơ</b> vào ống Cu(OH)₂ → dung dịch xanh lam thẫm.", ev: "glu_cuoh" }, { h: "Đun nóng ống nghiệm → kết tủa đỏ gạch Cu₂O.", ev: ["glu_hot", "glu_hot2"] }],
     { allow: ["liq_Glucose", "liq_NaOH", "liq_CuSO4"], app: "Thuốc thử Fehling/Benedict thử đường trong nước tiểu." });
-  x("phenol_aniline", "organic", "", "Nhận biết phenol & anilin bằng nước brom", "Cả hai làm mất màu nước brom và tạo kết tủa trắng.",
-    [TT([["liq_Phenol_org", 2]]), TT([["liq_Aniline", 2]]), B("test_rack")],
-    [{ h: "Nhỏ <b>nước brom</b> vào ống phenol.", ev: "phenol_br" }, { h: "Nhỏ nước brom vào ống anilin.", ev: "anil_br" }],
+  x("phenol_aniline", "organic", "RÕ NÉT", "Nhận biết phenol & anilin bằng nước brom", "Nước brom đỏ cam đậm mất màu ngay lập tức và tạo kết tủa trắng đục khi gặp phenol hoặc anilin.",
+    [TT([["liq_Br2", 2]]), TT([["liq_Br2", 2]]), B("test_rack")],
+    [{ h: "Nhỏ <b>dung dịch phenol</b> (2 mL) vào ống nước brom thứ nhất → mất màu đỏ cam & kết tủa trắng.", ev: "phenol_br" }, { h: "Nhỏ <b>anilin</b> (2 mL) vào ống nước brom thứ hai → mất màu đỏ cam & kết tủa trắng.", ev: "anil_br" }],
     { allow: ["liq_Br2", "liq_Phenol_org", "liq_Aniline"], app: "Kiểm tra phenol độc trong nước thải công nghiệp." });
   x("starch_iodine", "organic", "", "Hồ tinh bột + iot: đun nóng & để nguội", "Xanh tím → mất màu khi nóng → hiện lại khi nguội.",
     [TT([["liq_Starch", 4]]), B("test_rack"), ...burner],
@@ -1155,10 +1177,10 @@ const LESSONS = (() => {
     [TT([["liq_CuSO4", 2]]), B("test_rack")],
     [{ h: "Nhỏ ít <b>NH₃</b> (0,5 mL) → kết tủa xanh lam.", ev: "cu_nh3" }, { h: "Thêm NH₃ dư → tan thành xanh lam thẫm.", ev: "cuoh_nh3" }],
     { allow: ["liq_NH3", "liq_CuSO4", "liq_NaOH"], app: "Nước Svayde hòa tan xenlulozơ để sản xuất tơ nhân tạo." });
-  x("acetylene", "organic", "", "Điều chế axetilen & làm mất màu brom", "CaC₂ + nước → C₂H₂; dẫn khí vào nước brom làm mất màu.",
-    [{ t: "erlenmeyer", fill: [["liq_H2O", 30]] }, TT([["liq_Br2", 4]]), TT([["liq_KMnO4", 3]]), B("test_rack")],
-    [{ h: "Chọn bình tam giác → bấm <b>🔗 Dẫn khí</b> → chạm ống nước brom.", ev: "link" }, { h: "Cho <b>đất đèn CaC₂</b> vào bình tam giác.", ev: "cac2" }, { h: "Quan sát nước brom mất màu.", ev: "c2h2_br" }],
-    { allow: ["solid_CaC2", "liq_H2O", "liq_Br2", "liq_KMnO4"], app: "Đèn xì oxi–axetilen hàn cắt kim loại." });
+  x("acetylene", "organic", "RÕ NÉT", "Điều chế axetilen & làm mất màu nước brom", "CaC₂ + nước → C₂H₂; dẫn khí sục vào ống nước brom đỏ cam đậm làm dung dịch mất màu hoàn toàn.",
+    [{ t: "erlenmeyer", fill: [["liq_H2O", 35]] }, TT([["liq_Br2", 3]]), TT([["liq_KMnO4", 3]]), B("test_rack")],
+    [{ h: "Chọn bình tam giác → bấm <b>🔗 Dẫn khí</b> → chạm ống nước brom đỏ cam.", ev: "link" }, { h: "Cho <b>đất đèn CaC₂</b> (1–2 g) vào bình tam giác.", ev: "cac2" }, { h: "Quan sát nước brom từ <b>đỏ cam đậm</b> chuyển sang <b>trong suốt không màu</b>!", ev: "c2h2_br" }],
+    { allow: ["solid_CaC2", "liq_H2O", "liq_Br2", "liq_KMnO4"], app: "Đèn xì oxi–axetilen hàn cắt kim loại; nhận biết liên kết ba C≡C." });
   x("sulfides", "inorganic", "", "Kết tủa sunfua đen khử kim loại nặng", "Pb²⁺, Cu²⁺ + S²⁻ → PbS, CuS đen không tan trong axit loãng.",
     [TT([["liq_PbNO3", 2]]), TT([["liq_CuSO4", 2]]), B("test_rack")],
     [{ h: "Nhỏ <b>Na₂S</b> vào ống Pb(NO₃)₂.", ev: "pbs" }, { h: "Nhỏ Na₂S vào ống CuSO₄.", ev: "cus" }, { h: "Thêm <b>HCl</b> — kết tủa không tan.", ev: "add:liq_HCl" }],
@@ -1531,7 +1553,7 @@ const MD = (() => {
     // chất rắn
     const solids = new T.Group(); tilt.add(solids);
     // hạt lơ lửng
-    const susp = new T.InstancedMesh(new T.OctahedronGeometry(0.07, 0), G.own(new T.MeshStandardMaterial({ color: 0xffffff, roughness: 0.8 })), 60); susp.count = 0; susp.renderOrder = 3; susp.frustumCulled = false; tilt.add(susp);
+    const susp = new T.InstancedMesh(new T.OctahedronGeometry(0.11, 0), G.own(new T.MeshStandardMaterial({ color: 0xffffff, roughness: 0.75 })), 90); susp.count = 0; susp.renderOrder = 3; susp.frustumCulled = false; tilt.add(susp);
     const sel = selRing(p.foot); root.add(sel);
     return { root, tilt, p, pl, mF, mB, surf, sM, yF, yB, lF, lB, layF, layB, ppt, pM, gas, gM, mir, mirM, lid, solids, susp, sel, level: 0, slosh: { x: 0, z: 0, vx: 0, vz: 0 }, solidKey: "", suspSeed: [], mirTop: 0 };
   }
@@ -1603,7 +1625,7 @@ const MD = (() => {
       else v.mir.visible = false;
       // hạt lơ lửng
       let sus = 0, scol = null; for (const sp in c.sol) { const d = D.SOL[sp]; if (d && d[2] === "ppt" && c.sol[sp].s > 0.02) { const q = c.sol[sp].n * c.sol[sp].s; if (q > sus) { sus = q; scol = d[0]; } } }
-      o.susN = vis ? Math.min(60, Math.round(sus * 80)) : 0; if (scol != null) v.susp.material.color.set(scol);
+      o.susN = vis ? Math.min(90, Math.round(sus * 130)) : 0; if (scol != null) v.susp.material.color.set(scol);
       // vật rắn
       solidsVisual(o);
     }
@@ -2203,7 +2225,36 @@ const Lab = (() => {
     if (q.dryfizz) { const m = L.mouthW(o); if (add("df", q.dryfizz * 40)) { FX.smoke({ x: m.x, y: m.y - 1, z: m.z, vy: 2.5, r: 0.92, g: 0.92, b: 0.95, a: 0.2, s: 1.4, grow: 2, max: 1.6 }); if (Math.random() < 0.2) FX.snd("fizz"); } }
     if (q.spatter) { const m = L.mouthW(o); for (let i = 0; i < 10; i++) FX.spark({ x: m.x, y: m.y, z: m.z, vx: (Math.random() - .5) * 10, vy: 6 + Math.random() * 8, vz: (Math.random() - .5) * 10, r: 0.9, g: 0.95, b: 1, a: 0.9, s: 0.5, grav: 30, max: 0.9 }); FX.snd("sizzle"); }
     if (q.snake) o.st.snake = (o.st.snake || 0) + q.snake;
-    if (q.na) { if (add("nas", q.na * 30) && Math.random() < 0.5) FX.snd("fizz"); }
+    if (q.decolor) { const m = L.mouthW(o); L.flash(m.x, m.y - 2, m.z, 0xe0f2fe, 180, 0.25); o._ct = 0; }
+    if (q.volcano) {
+      const m = L.mouthW(o);
+      FX.sparkBurst(m.x, m.y - 1, m.z, 18, [1, 0.45, 0.08], 16, 1.1);
+      for (let i = 0; i < 6; i++) FX.smoke({ x: m.x + (Math.random() - .5) * 1.5, y: m.y, z: m.z + (Math.random() - .5) * 1.5, vx: (Math.random() - .5) * 3, vy: 5 + Math.random() * 4, vz: (Math.random() - .5) * 3, r: 0.15, g: 0.38, b: 0.2, a: 0.65, s: 2.2, grow: 2.6, max: 2.5 });
+      L.flash(m.x, m.y + 1, m.z, 0xff5500, 900, 0.25);
+      if (Math.random() < 0.45) FX.snd("sizzle");
+    }
+    if (q.thermite) {
+      const m = L.mouthW(o);
+      FX.sparkBurst(m.x, m.y, m.z, 28, [1, 0.9, 0.45], 22, 1.2);
+      for (let i = 0; i < 5; i++) FX.smoke({ x: m.x + (Math.random() - .5) * 1.2, y: m.y + 0.5, z: m.z + (Math.random() - .5) * 1.2, vx: (Math.random() - .5) * 2.5, vy: 6 + Math.random() * 3, vz: (Math.random() - .5) * 2.5, r: 0.95, g: 0.92, b: 0.85, a: 0.55, s: 2.4, grow: 2.8, max: 2.4 });
+      L.flash(m.x, m.y + 2, m.z, 0xfff7cc, 2200, 0.35);
+      if (Math.random() < 0.6) FX.snd("whoosh");
+    }
+    if (q.purple_flare) {
+      const m = L.mouthW(o);
+      FX.sparkBurst(m.x, m.y, m.z, 24, [0.92, 0.35, 1.0], 19, 1.1);
+      for (let i = 0; i < 6; i++) FX.smoke({ x: m.x + (Math.random() - .5) * 1.4, y: m.y + 0.4, z: m.z + (Math.random() - .5) * 1.4, vx: (Math.random() - .5) * 2.5, vy: 5 + Math.random() * 4, vz: (Math.random() - .5) * 2.5, r: 0.96, g: 0.94, b: 0.98, a: 0.6, s: 2.5, grow: 3.0, max: 2.6 });
+      L.flash(m.x, m.y + 2, m.z, 0xd946ef, 1800, 0.35);
+      if (Math.random() < 0.55) FX.snd("whoosh");
+    }
+    if (q.na) {
+      const m = L.mouthW(o);
+      if (add("nas", q.na * 45)) {
+        FX.sparkBurst(m.x, o.v.level + 0.3, m.z, 6, [1, 0.78, 0.15], 8, 0.5);
+        L.flash(m.x, o.v.level + 0.8, m.z, 0xffb703, 350, 0.15);
+        if (Math.random() < 0.6) FX.snd("fizz");
+      }
+    }
     if (q.fizz && Math.random() < q.fizz * 4) FX.snd("fizz");
     if (c.flags.no_brown > 0.02 && !c.flags.noB) { c.flags.noB = 1; L.onEvents(o, [{ id: "no_brown", txt: "Khí NO không màu gặp O₂ không khí hóa nâu đỏ (NO₂)." }]); }
     c.fxq = {};
@@ -2545,7 +2596,7 @@ const Lab = (() => {
   function splintTest(s, o) {
     const f = o.c.lid ? E.gasFrac(o.c) : E.mouth(o.c), m = mouthTest(o), mode = s.st.mode;
     const o2 = f.O2 || 0, h2 = f.H2 || 0, inert = (f.CO2 || 0) + (f.N2 || 0) + (f.Cl2 || 0) + (f.NH3 || 0) + (f.SO2 || 0);
-    if (h2 > 0.08 && mode === "flame") { FX.snd("pop"); L.flash(m.x, m.y + 1, m.z, 0xbfe3ff, 700, 0.35); FX.sparkBurst(m.x, m.y + 0.5, m.z, 26, [0.7, 0.85, 1], 9, 0.5); o.c.gas.H2 *= 0.15; L.event(o, "splint_h2"); L.toast("💥 Nổ lách tách — có khí <b>H₂</b>! (2H₂ + O₂ → 2H₂O)", "good"); return; }
+    if (h2 > 0.06 && mode === "flame") { FX.snd("pop"); L.flash(m.x, m.y + 1.2, m.z, 0x60a5fa, 1800, 0.45); FX.sparkBurst(m.x, m.y + 0.6, m.z, 55, [0.45, 0.8, 1], 15, 0.75); for (let i = 0; i < 12; i++) FX.smoke({ x: m.x + (Math.random() - .5), y: m.y + 0.5, z: m.z + (Math.random() - .5), vy: 3.5, r: 0.9, g: 0.96, b: 1, a: 0.5, s: 1.8, grow: 2.4, max: 1.8 }); o.c.gas.H2 *= 0.1; L.event(o, "splint_h2"); L.showObs({ id: "splint_h2", eq: "2H₂ + O₂ —t°→ 2H₂O", mol: "2H₂ + O₂ → 2H₂O (tỏa nhiệt mạnh)", txt: "💥 Tiếng nổ \"bụp\" rõ rệt kèm chớp lửa xanh nhạt ở miệng bình và hơi nước ngưng tụ.", app: "Cách thử độ tinh khiết của khí H₂ trước khi đốt hoặc dẫn vào thiết bị." }, o); L.toast("💥 Nổ \"bụp\" kèm chớp lửa xanh — có khí <b>H₂</b>! (2H₂ + O₂ → 2H₂O)", "good"); return; }
     if (o2 > 0.33) { s.st.mode = "flame"; s.st.ft = 0; s.st.big = 2; L.flash(m.x, m.y + 1, m.z, 0xffb347, 400, 0.6); FX.snd("whoosh"); L.event(o, "splint_o2"); L.toast(`🔥 Que đóm ${mode === "ember" ? "còn tàn đỏ" : ""} bùng cháy mãnh liệt — khí <b>O₂</b>!`, "good"); return; }
     if ((f.C2H2 || 0) > 0.1 && mode === "flame") { FX.snd("whoosh"); for (let i = 0; i < 20; i++) FX.smoke({ x: m.x, y: m.y + 1, z: m.z, vy: 3, r: 0.15, g: 0.15, b: 0.15, a: 0.5, s: 1.5, grow: 2, max: 2 }); L.event(o, "c2h2_burn"); L.toast("Khí C₂H₂ cháy với ngọn lửa vàng, nhiều muội than.", "good"); return; }
     if (o2 < 0.12 && inert > 0.5 && mode) { s.st.mode = null; for (let i = 0; i < 8; i++) FX.smoke({ x: m.x, y: m.y + 0.5, z: m.z, vy: 2.5, vx: (Math.random() - .5), r: 0.6, g: 0.6, b: 0.6, a: 0.4, s: 1.2, grow: 2, max: 1.6 }); L.event(o, "splint_co2"); L.toast("Que đóm <b>tắt</b> — khí trong bình không duy trì sự cháy (CO₂, N₂…).", "good"); return; }
@@ -3036,7 +3087,7 @@ function updateStars() {
   }
   function complete() {
     const ls = L.lesson; ls.done = true; L.track("lesson_done", ls.d.id + " " + Math.round((Date.now() - ls.wall) / 1000) + "s");
-    const first = Reward.give("chem_" + ls.d.id, 3, "Thí nghiệm: " + ls.d.t);
+    const first = Reward.give("chem_" + ls.d.id, 3, "Thí nghiệm: " + ls.d.t); try { const lid = new URLSearchParams(location.search).get("lesson_id"); if (lid && window.HDLG && typeof HDLG.markDone === "function") HDLG.markDone(Number(lid) || lid); } catch (_) {}
     if (!first) L.toast(`🎉 Hoàn thành bài <b>${esc(ls.d.t)}</b>!`, "good");
     renderLesson();
   }
