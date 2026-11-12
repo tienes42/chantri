@@ -20,8 +20,81 @@
     index: "index.html",
     physics: "physics.html",
     "physics-grade": "physics-grade.html?grade=9",
-    lesson: "lesson.html?id=62&subject=physics&grade=9&topic=doan-mach-noi-tiep"
+    lesson: "lesson.html?id=62&subject=physics&grade=9&topic=l9-ch03-dien-hoc-dinh-luat-ohm"
   };
+
+  /* ---------- TỰ ĐỘNG NHẬN DIỆN THẺ CHƯƠNG III & BÀI 9: ĐOẠN MẠCH NỐI TIẾP (CẤU TRÚC 3 CẤP) ---------- */
+  function normText(s) {
+    return String(s || "").toLowerCase().replace(/\s+/g, " ").trim();
+  }
+
+  function isTargetLessonTitle(text) {
+    var t = normText(text);
+    return t.indexOf("đoạn mạch nối tiếp") !== -1 || t.indexOf("doan mach noi tiep") !== -1 || /bài\s*9\b/.test(t);
+  }
+
+  function prepareTourTargets() {
+    if (PAGE !== "physics-grade") return;
+
+    // 1. Đánh dấu thẻ Chương III: Điện (hoặc thẻ bài Đoạn mạch nối tiếp nếu dữ liệu cũ) trên lưới #topicsGrid
+    var cards = document.querySelectorAll("#topicsGrid .topic-card, .topic-card");
+    if (cards && cards.length) {
+      var chosenCard =
+        document.querySelector('.topic-card[data-topic="l9-ch03-dien-hoc-dinh-luat-ohm"]') ||
+        document.querySelector('.topic-card[data-topic="doan-mach-noi-tiep"]');
+
+      if (!chosenCard) {
+        for (var i = 0; i < cards.length; i++) {
+          var cText = normText(cards[i].textContent);
+          if (
+            cText.indexOf("đoạn mạch nối tiếp") !== -1 ||
+            cText.indexOf("bài 9") !== -1 ||
+            cText.indexOf("chương iii") !== -1 ||
+            cText.indexOf("chương 3") !== -1 ||
+            normText(cards[i].getAttribute("data-topic")).indexOf("dien-hoc") !== -1
+          ) {
+            chosenCard = cards[i];
+            break;
+          }
+        }
+      }
+      if (!chosenCard && cards.length >= 3) chosenCard = cards[2];
+      if (!chosenCard) chosenCard = cards[0];
+
+      for (var j = 0; j < cards.length; j++) {
+        if (cards[j] === chosenCard) cards[j].setAttribute("data-tg-target", "topic");
+        else cards[j].removeAttribute("data-tg-target");
+      }
+    }
+
+    // 2. Khi Popup Chương (#topicPopup.show) mở: đánh dấu đúng dòng "Bài 9: Đoạn mạch nối tiếp" trong #popupLessonsList
+    var popup = document.getElementById("topicPopup");
+    if (popup && popup.classList.contains("show")) {
+      var rows = popup.querySelectorAll("#popupLessonsList .chapter-lesson-item, .chapter-lesson-item");
+      var chosenRow = null;
+      for (var k = 0; k < rows.length; k++) {
+        var titleEl = rows[k].querySelector(".cl-title") || rows[k];
+        if (isTargetLessonTitle(titleEl.textContent) || isTargetLessonTitle(rows[k].textContent)) {
+          chosenRow = rows[k];
+          break;
+        }
+      }
+      if (!chosenRow && rows.length >= 2) chosenRow = rows[1]; // Bài 9 là bài thứ 2 trong Chương III (sau Bài 8)
+      if (!chosenRow && rows.length === 1) chosenRow = rows[0];
+
+      for (var m = 0; m < rows.length; m++) {
+        if (rows[m] === chosenRow) rows[m].setAttribute("data-tg-target", "lesson-go");
+        else rows[m].removeAttribute("data-tg-target");
+      }
+
+      var popupStartBtn = document.getElementById("popupStart");
+      if (chosenRow) {
+        if (popupStartBtn) popupStartBtn.removeAttribute("data-tg-target");
+      } else if (popupStartBtn) {
+        popupStartBtn.setAttribute("data-tg-target", "lesson-go");
+      }
+    }
+  }
 
   /* ---------- KỊCH BẢN HƯỚNG DẪN ---------- */
   var STEPS = {
@@ -33,29 +106,35 @@
     grade: {
       page: "physics", n: 2, hole: '.class-card[data-grade="9"]', click: '.class-card[data-grade="9"]', next: "gradeGo",
       title: "Chọn lớp học 🎓",
-      text: "Bài học được chia theo <b>khối lớp 6 → 12</b>, bám sát chương trình trên lớp. Bấm vào <b>Lớp 9</b> để xem các chủ đề của lớp 9 nhé!"
+      text: "Bài học được chia theo <b>khối lớp 6 → 12</b>, bám sát chương trình trên lớp. Bấm vào <b>Lớp 9</b> để xem các chương học của lớp 9 nhé!"
     },
     gradeGo: {
       page: "physics", n: 2, hole: "#mathPopup .math-popup", click: "#mathPopupButton", next: "topic",
       need: "#mathPopup.show", back: "grade",
       title: "Mở lớp 9 🚪",
-      text: "Đây là thông tin của mô-đun lớp 9. Bấm <b>Bắt đầu Khám phá →</b> để mở danh sách bài học."
+      text: "Đây là thông tin của mô-đun lớp 9. Bấm <b>Bắt đầu Khám phá →</b> để mở danh sách chương và bài học."
     },
     topic: {
-      page: "physics-grade", n: 3, grade: "9", hole: '.topic-card[data-topic="doan-mach-noi-tiep"]', click: '.topic-card[data-topic="doan-mach-noi-tiep"]', next: "topicGo",
-      title: "Chọn bài học 📚",
-      text: "Mỗi thẻ là một <b>bài học</b>, thanh tiến độ cho biết bạn đã học được bao nhiêu. Thử mở bài <b>Đoạn mạch nối tiếp</b> — bài cực hay về dòng điện và hiệu điện thế trong mạch điện nhé!"
+      page: "physics-grade", n: 3, grade: "9",
+      hole: '.topic-card[data-tg-target="topic"], .topic-card[data-topic="l9-ch03-dien-hoc-dinh-luat-ohm"], .topic-card[data-topic="doan-mach-noi-tiep"]',
+      click: '.topic-card[data-tg-target="topic"], .topic-card[data-topic="l9-ch03-dien-hoc-dinh-luat-ohm"], .topic-card[data-topic="doan-mach-noi-tiep"]',
+      next: "topicGo",
+      title: "Chọn Chương III: Điện ⚡",
+      text: "Mỗi thẻ là một <b>chương học</b> theo SGK Kết nối tri thức. Hãy bấm vào <b>Chương III: Điện</b> để mở danh sách các bài học về mạch điện nhé!"
     },
     topicGo: {
-      page: "physics-grade", n: 3, grade: "9", hole: "#topicPopup .popup", click: "#popupStart", next: "reading",
+      page: "physics-grade", n: 3, grade: "9",
+      hole: '[data-tg-target="lesson-go"]',
+      click: '[data-tg-target="lesson-go"], #popupStart',
+      next: "reading",
       need: "#topicPopup.show", back: "topic",
-      title: "Vào bài học ▶",
-      text: "Mỗi bài học đọc xong sẽ nhận <b>sao ⭐</b> để lên cấp. Bấm <b>Bắt đầu học →</b> để vào bài."
+      title: "Chọn Bài 9: Đoạn mạch nối tiếp ▶",
+      text: "Trong danh sách bài của Chương III, hãy bấm vào <b>Bài 9: Đoạn mạch nối tiếp</b> để vào học và nhận <b>sao ⭐</b> lên cấp nhé!"
     },
     reading: {
       page: "lesson", n: 4, dim: false, pos: "pos-bottom", ready: "#lessonContent:not(.hidden)", until: "#gameSection", next: "game",
       title: "Phần đọc 📖",
-      text: "Đây là <b>phần đọc</b> của bài: định nghĩa, bối cảnh thực tế, kiến thức cốt lõi, công thức, ví dụ và <b>Kiểm tra nhanh</b>. Đọc hết bài được <b>+5 ⭐</b>, trả lời đúng ngay lần đầu thêm <b>+5 ⭐</b>.<br>Đọc xong thì <b>lướt xuống dưới cùng</b> nhé — có bất ngờ đang chờ! 👇",
+      text: "Đây là <b>phần đọc</b> của bài: sơ đồ tư duy, định nghĩa, kiến thức cốt lõi, công thức, ví dụ và <b>Luyện tập 3 mức độ</b>. Đọc hết bài được <b>+5 ⭐</b>, hoàn thành luyện tập thêm <b>+5 ⭐</b>.<br>Đọc xong thì <b>lướt xuống dưới cùng</b> nhé — có bất ngờ đang chờ! 👇",
       action: { label: "⬇ Lướt xuống giúp mình", fn: "scrollGame" }
     },
     game: {
@@ -66,7 +145,7 @@
     },
     bye: {
       page: "lesson", n: 5, hole: null, title: "Hoàn thành hướng dẫn 🎉",
-      text: "Tuyệt vời! Giờ bạn đã biết cách dùng Chân Tri:<br><b>Chọn đảo môn học → chọn lớp → mở bài → đọc → lướt xuống chơi Trải nghiệm thực tế</b>.<br>Bài nào cũng có phần trải nghiệm này nhé. Chúc bạn học thật vui và sớm lên top bảng xếp hạng! 🏆",
+      text: "Tuyệt vời! Giờ bạn đã biết cách dùng Chân Tri:<br><b>Chọn đảo môn học → chọn lớp → chọn chương & mở bài → đọc → lướt xuống chơi Trải nghiệm thực tế</b>.<br>Bài nào cũng có phần trải nghiệm này nhé. Chúc bạn học thật vui và sớm lên top bảng xếp hạng! 🏆",
       final: true
     }
   };
@@ -321,6 +400,7 @@
       else if (Date.now() - orphanSince > 5000) { orphanSince = 0; resync(); }
     } else orphanSince = 0;
     if (!cur || !holeEl) return;               // chưa có mục tiêu (đang chờ trang tải)
+    prepareTourTargets();
     // Trang có thể vẽ lại danh sách (VD: cập nhật tiến độ) → tìm lại phần tử mới
     if (!holeEl.isConnected) { var re = document.querySelector(cur.hole); if (re) holeEl = re; }
     if (cur.click && (!clickEl || !clickEl.isConnected)) clickEl = document.querySelector(cur.click);
@@ -390,6 +470,7 @@
     var t0 = Date.now();
     clearInterval(waitTimer);
     var tick = function () {
+      prepareTourTargets();
       var el = sel && document.querySelector(sel);
       if (el && visible(el)) { clearInterval(waitTimer); waitTimer = 0; cb(el); return true; }
       if (Date.now() - t0 > (timeout || 12000)) { clearInterval(waitTimer); waitTimer = 0; cb(null); return true; }
@@ -431,7 +512,7 @@
             buttons: [{ label: "↻ Thử lại", fn: function () { run(id); } }, { label: "Về trang chủ", ghost: true, fn: function () { saveStep("island"); location.href = URLS.index; } }] });
           return;
         }
-        holeEl = el; clickEl = s.click ? document.querySelector(s.click) : null;
+        holeEl = el; clickEl = s.click ? document.querySelector(s.click) : el;
         if (!inView(el)) el.scrollIntoView({ behavior: "smooth", block: "center" });
         bubble(base); lastPlace = 0;
       }, s.need ? 3000 : 12000);
@@ -468,18 +549,65 @@
     place(null);
   }
 
+  function findTargetLessonUrlFromList(list) {
+    if (!Array.isArray(list)) return null;
+    // 1. Ưu tiên bài học độc lập có tên "Bài 9: Đoạn mạch nối tiếp" hoặc topic "doan-mach-noi-tiep"
+    for (var i = 0; i < list.length; i++) {
+      var item = list[i];
+      if (!item || (item.subject && item.subject !== "physics")) continue;
+      if (item.grade != null && Number(item.grade) !== 9) continue;
+      if (item.topic === "doan-mach-noi-tiep" || isTargetLessonTitle(item.title)) {
+        var tp = item.topic || "l9-ch03-dien-hoc-dinh-luat-ohm";
+        return "lesson.html?id=" + encodeURIComponent(item.id) + "&subject=physics&grade=9&topic=" + encodeURIComponent(tp);
+      }
+    }
+    // 2. Dự phòng nếu DB đang lưu bản ghi gộp cả Chương III: Điện (tách bài con ảo ?sub=1)
+    for (var j = 0; j < list.length; j++) {
+      var chap = list[j];
+      if (!chap || (chap.subject && chap.subject !== "physics")) continue;
+      if (chap.grade != null && Number(chap.grade) !== 9) continue;
+      if (chap.topic === "l9-ch03-dien-hoc-dinh-luat-ohm" || normText(chap.title).indexOf("chương iii") !== -1) {
+        return "lesson.html?id=" + encodeURIComponent(chap.id) + "&subject=physics&grade=9&topic=" + encodeURIComponent(chap.topic || "l9-ch03-dien-hoc-dinh-luat-ohm") + "&sub=1";
+      }
+    }
+    return null;
+  }
+
   function resolveLessonUrl() {
     try {
-      var list = JSON.parse(sessionStorage.getItem("hdlg_lessons_physics_9") || sessionStorage.getItem("hdlg_catalog") || "null");
-      if (Array.isArray(list)) {
-        for (var i = 0; i < list.length; i++) {
-          if (list[i] && list[i].topic === "doan-mach-noi-tiep" && (!list[i].subject || list[i].subject === "physics")) {
-            return "lesson.html?id=" + encodeURIComponent(list[i].id) + "&subject=physics&grade=9&topic=doan-mach-noi-tiep";
-          }
-        }
+      var keys = ["hdlg_v8_lessons_physics_9", "hdlg_lessons_physics_9", "hdlg_catalog"];
+      for (var k = 0; k < keys.length; k++) {
+        var raw = sessionStorage.getItem(keys[k]);
+        if (!raw) continue;
+        var found = findTargetLessonUrlFromList(JSON.parse(raw));
+        if (found) return found;
       }
     } catch (e) {}
     return URLS.lesson;
+  }
+
+  function navigateToTargetLesson() {
+    var cachedUrl = resolveLessonUrl();
+    if (cachedUrl !== URLS.lesson) {
+      location.href = cachedUrl;
+      return;
+    }
+    var apiBase = (location.hostname === "127.0.0.1" || location.hostname === "localhost") && location.port !== "8000"
+      ? "http://127.0.0.1:8000/api"
+      : "/api";
+    fetch(apiBase + "/content/subjects/physics/lessons?grade=9")
+      .then(function (r) { return r.ok ? r.json() : null; })
+      .then(function (list) {
+        if (Array.isArray(list) && list.length) {
+          try { sessionStorage.setItem("hdlg_v8_lessons_physics_9", JSON.stringify(list)); } catch (e) {}
+          var u = findTargetLessonUrlFromList(list);
+          if (u) { location.href = u; return; }
+        }
+        location.href = URLS.lesson;
+      })
+      .catch(function () {
+        location.href = URLS.lesson;
+      });
   }
 
   function wrongPage(id) {
@@ -488,12 +616,17 @@
     setDim(false);
     document.body.classList.add("tg-on");
     box.classList.remove("idle"); box.classList.add("tour");
-    var url = s.page === "lesson" ? resolveLessonUrl() : URLS[s.page];
     bubble({
       n: s.n, title: "Tiếp tục hướng dẫn?",
       text: "Bạn đang ở trang khác so với hướng dẫn. Bấm <b>Tiếp tục</b> để mình đưa bạn tới đúng chỗ nhé!",
       buttons: [
-        { label: "Tiếp tục ▶", fn: function () { location.href = url; } },
+        {
+          label: "Tiếp tục ▶",
+          fn: function () {
+            if (s.page === "lesson") navigateToTargetLesson();
+            else location.href = URLS[s.page];
+          }
+        },
         { label: "Thoát hướng dẫn", ghost: true, fn: function () { finish(false); } }
       ]
     });
@@ -516,8 +649,23 @@
   /* ---------- SỰ KIỆN ---------- */
   function onCaptureClick(e) {
     if (passThrough || !cur || !cur.click) return;
+    prepareTourTargets();
     var t = e.target && e.target.closest ? e.target.closest(cur.click) : null;
     if (!t) return;
+
+    // Nếu đang ở bước chọn Bài 9 trong popup Chương III mà người dùng lỡ bấm nút #popupStart ở cuối popup
+    // (mặc định mở Bài 8), tự động chuyển hướng sang đúng Bài 9: Đoạn mạch nối tiếp
+    if (curId === "topicGo" && t.id === "popupStart") {
+      var lessonRow = document.querySelector('.chapter-lesson-item[data-tg-target="lesson-go"]');
+      if (lessonRow && lessonRow !== t) {
+        e.preventDefault(); e.stopImmediatePropagation();
+        saveStep(cur.next);
+        cur = null; clearSpot(); hideBubble();
+        passThrough = true; lessonRow.click(); passThrough = false;
+        return;
+      }
+    }
+
     if (cur.intercept) {
       e.preventDefault(); e.stopImmediatePropagation();
       go(cur.next);
