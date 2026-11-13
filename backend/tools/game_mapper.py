@@ -237,12 +237,9 @@ GAME_META = {'game_do_luong': {'file': 'games/game_do_luong.html',
 EXACT_GAME_RULES = [
     ('physics', 6, 'bài 1: đo chiều dài', 'game_dodai'),
     ('physics', 6, 'bài 2: đo khối lượng', 'game_khoiluong'),
-    ('physics', 6, 'bài 3: đo thời gian', 'game_do_luong'),
     ('physics', 6, 'bài 4: thang nhiệt độ celsius', 'game_nhietdo'),
     ('physics', 6, 'bài 7: biến dạng của lò xo', 'game_luc'),
-    ('physics', 6, 'bài 8: trọng lực và đơn vị lực', 'game_trong_luong_nang_luong'),
     ('physics', 6, 'bài 10: lực ma sát và lực cản', 'game_lucmasat'),
-    ('physics', 6, 'bài 13: chuyển động nhìn thấy của mặt trời', 'game_anhsang'),
     ('physics', 7, 'bài 1: tốc độ chuyển động', 'game_speed'),
     ('physics', 7, 'bài 5: mô tả sóng âm', 'game_amthanh'),
     ('physics', 7, 'bài 9: sự phản xạ ánh sáng', 'game_anhsang'),
@@ -256,7 +253,6 @@ EXACT_GAME_RULES = [
     ('physics', 8, 'bài 10: mạch điện đơn giản', 'game_dien'),
     ('physics', 8, 'bài 13: sự truyền nhiệt', 'game_nhietnang'),
     ('physics', 9, 'bài 1: công và công suất', 'game_congsuat'),
-    ('physics', 9, 'bài 3: khúc xạ ánh sáng', 'game_co_nang_khuc_xa'),
     ('physics', 9, 'bài 5: tán sắc ánh sáng', 'game_anhsangmau'),
     ('physics', 9, 'bài 6: thấu kính hội tụ', 'game_quanghoc'),
     ('physics', 9, 'bài 8: điện trở. định luật ohm', 'game_ohm'),
@@ -264,39 +260,23 @@ EXACT_GAME_RULES = [
     ('physics', 9, 'bài 10: đoạn mạch song song', 'game_doanmachsongsong'),
     ('physics', 9, 'bài 11: năng lượng điện và công suất điện', 'game_congsuatdien'),
     ('physics', 9, 'bài 12: cảm ứng điện từ', 'game_dientu'),
-    ('physics', 9, 'bài 16: năng lượng tái tạo', 'game_nang_luong'),
-    ('physics', 10, 'bài 3: thực hành tính sai số', 'game_dodai'),
     ('physics', 10, 'bài 4: độ dịch chuyển', 'game_robot'),
     ('physics', 10, 'bài 7: gia tốc', 'game_giatoc'),
     ('physics', 10, 'bài 11: tổng hợp và phân tích lực', 'force_real_life_game'),
     ('physics', 10, 'bài 12: định luật 1 và định luật 2 newton', 'game_newton'),
-    ('physics', 10, 'bài 16: lực cản và lực nâng', 'game_chat_luu'),
     ('physics', 10, 'bài 19: cơ năng và định luật bảo toàn cơ năng', 'game_nang_luong'),
     ('physics', 10, 'bài 20: động lượng', 'game_dong_luong'),
-    ('physics', 10, 'bài 26: định luật hooke', 'game_chuyen_dong_tron_lo_xo'),
     ('physics', 11, 'bài 1: dao động điều hòa', 'game_dao_dong'),
     ('physics', 11, 'bài 6: mô tả sóng', 'game_song_co'),
-    ('physics', 11, 'bài 9: giao thoa sóng cơ', 'game_song_dien_tu_giao_thoa_tu_dien'),
     ('physics', 11, 'bài 13: khái niệm điện trường', 'game_dien_truong'),
     ('physics', 11, 'bài 14: điện trường đều', 'game_dien_truong_deu'),
     ('physics', 11, 'bài 16: điện thế và hiệu điện thế', 'game_dien_the'),
     ('physics', 11, 'bài 21: định luật ohm cho toàn mạch', 'game_dong_dien'),
-    ('physics', 12, 'bài 10: phương trình trạng thái của khí lí tưởng', 'game_vat_ly_nhiet_khi_ly_tuong'),
     ('physics', 12, 'bài 13: cảm ứng từ và lực từ', 'game_tu_truong'),
     ('physics', 12, 'bài 14: từ thông. hiện tượng cảm ứng điện từ', 'game_cam_ung_dien_tu'),
     ('physics', 12, 'bài 15: đại cương về dòng điện xoay chiều', 'game_mach_xoay_chieu'),
-    ('physics', 12, 'bài 16: máy biến áp', 'game_mach_rlc'),
     ('physics', 12, 'bài 18: hệ thức einstein', 'game_thuyet_tuong_doi'),
     ('physics', 12, 'bài 19: phản ứng hạt nhân', 'game_hat_nhan'),
-    ('math', 1, 'đơn vị đo độ dài (xăng-ti-mét)', 'game_do_luong'),
-    ('math', 2, 'bài 15: ki-lô-gam', 'game_khoiluong'),
-    ('math', 5, 'bài 59: vận tốc', 'game_speed'),
-    ('math', 9, 'giải hệ hai phương trình bậc nhất', 'store_management'),
-    ('math', 11, 'định nghĩa và ý nghĩa của đạo hàm', 'function-challenge'),
-    ('math', 12, 'tính đơn điệu và cực trị', 'game_ung_dung_dao_ham'),
-    ('math', 12, 'nguyên hàm', 'game_nguyen_ham'),
-    ('math', 12, 'hệ trục tọa độ trong không gian', 'game_toa_do_oxyz'),
-    ('math', 12, 'xác suất có điều kiện', 'game_on_tap_thpt'),
 ]
 
 def choose_game_key(subject: str, grade: int, topic: str, title: str) -> str | None:
@@ -311,7 +291,10 @@ def choose_game_key(subject: str, grade: int, topic: str, title: str) -> str | N
 
 def resolve_backend_game(subject: str, grade: int, lesson: dict) -> tuple[str | None, str | None, str | None]:
     key = choose_game_key(subject, grade, lesson.get("topic", ""), lesson.get("title", ""))
-    if not key or key not in GAME_META:
+    if not key:
         return None, None, None
-    meta = GAME_META[key]
+    base_key = key.split(":set=")[0]
+    if base_key not in GAME_META:
+        return None, None, None
+    meta = GAME_META[base_key]
     return key, meta["title"], meta["desc"]

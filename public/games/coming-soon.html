@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="vi">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Trò chơi đang xây dựng — CHÂN TRI</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+    body {
+      min-height: 100vh;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      padding: 20px;
+      font-family: "Be Vietnam Pro", "Segoe UI", Roboto, sans-serif;
+      color: #f8fafc;
+      background: radial-gradient(circle at 20% 20%, #1e3a8a 0%, #0f172a 55%, #020617 100%);
+    }
+    .card {
+      max-width: 560px;
+      width: 100%;
+      background: rgba(15, 23, 42, 0.88);
+      border: 2px solid rgba(250, 204, 21, 0.45);
+      border-radius: 24px;
+      padding: 36px 28px;
+      text-align: center;
+      box-shadow: 0 24px 60px rgba(0, 0, 0, 0.55), 0 0 0 6px rgba(56, 189, 248, 0.08);
+      backdrop-filter: blur(12px);
+    }
+    .badge {
+      display: inline-block;
+      padding: 6px 14px;
+      border-radius: 999px;
+      font-size: 13px;
+      font-weight: 700;
+      letter-spacing: 0.03em;
+      background: rgba(56, 189, 248, 0.16);
+      border: 1px solid rgba(56, 189, 248, 0.45);
+      color: #7dd3fc;
+      margin-bottom: 16px;
+    }
+    .icon {
+      font-size: 64px;
+      line-height: 1;
+      margin-bottom: 14px;
+      filter: drop-shadow(0 8px 18px rgba(250, 204, 21, 0.35));
+    }
+    h1 {
+      font-size: 24px;
+      font-weight: 800;
+      color: #fde047;
+      margin-bottom: 10px;
+    }
+    .lesson-name {
+      font-size: 16px;
+      font-weight: 700;
+      color: #e2e8f0;
+      margin-bottom: 14px;
+      line-height: 1.45;
+    }
+    p {
+      font-size: 15px;
+      line-height: 1.65;
+      color: #cbd5e1;
+      margin-bottom: 26px;
+    }
+    .actions {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 12px;
+      justify-content: center;
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 8px;
+      padding: 12px 22px;
+      border-radius: 14px;
+      font-size: 15px;
+      font-weight: 700;
+      text-decoration: none;
+      cursor: pointer;
+      border: none;
+      transition: transform 0.14s ease, filter 0.14s ease;
+    }
+    .btn:hover { transform: translateY(-1px); filter: brightness(1.08); }
+    .btn:active { transform: translateY(1px); }
+    .btn-primary {
+      background: linear-gradient(180deg, #facc15 0%, #d97706 100%);
+      color: #0f172a;
+      box-shadow: 0 4px 0 #92400e;
+    }
+    .btn-secondary {
+      background: rgba(30, 41, 59, 0.9);
+      color: #e2e8f0;
+      border: 1.5px solid rgba(148, 163, 184, 0.45);
+    }
+  </style>
+</head>
+<body>
+  <main class="card">
+    <div class="badge" id="subjectBadge">CHÂN TRI · TRẢI NGHIỆM THỰC TẾ</div>
+    <div class="icon">🚧</div>
+    <h1>Trò chơi đang xây dựng</h1>
+    <div class="lesson-name" id="lessonTitle">Bài học đang được cập nhật mini-game</div>
+    <p>
+      Phần trải nghiệm mô phỏng 2.5D cho bài học này hiện đang được phát triển và sẽ sớm ra mắt ở bản cập nhật tới.
+      Trong lúc chờ đợi, bạn có thể quay lại ôn lý thuyết, ví dụ minh họa và luyện tập 3 mức độ nhé!
+    </p>
+    <div class="actions">
+      <button type="button" class="btn btn-primary" id="backBtn">← Quay lại bài học</button>
+      <a class="btn btn-secondary" href="../index.html">🏠 Về trang chủ</a>
+    </div>
+  </main>
+  <script>
+    (function () {
+      const q = new URLSearchParams(location.search);
+      const title = q.get("title");
+      const subj = (q.get("subject") || "").toLowerCase();
+      const grade = q.get("grade");
+      const subjMap = { math: "Toán học", physics: "Vật lý", chemistry: "Hóa học" };
+      if (title) document.getElementById("lessonTitle").textContent = title;
+      if (subjMap[subj]) {
+        document.getElementById("subjectBadge").textContent =
+          subjMap[subj].toUpperCase() + (grade ? " · LỚP " + grade : "");
+      }
+      document.getElementById("backBtn").addEventListener("click", function () {
+        if (history.length > 1) history.back();
+        else if (q.get("lesson_id")) {
+          location.href = "../lesson.html?id=" + encodeURIComponent(q.get("lesson_id")) +
+            "&subject=" + encodeURIComponent(subj || "math") +
+            "&grade=" + encodeURIComponent(grade || "");
+        } else {
+          location.href = "../index.html";
+        }
+      });
+    })();
+  </script>
+</body>
+</html>
