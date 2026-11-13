@@ -1,5 +1,9 @@
 # -*- coding: utf-8 -*-
-"""Bảng ánh xạ tự động 100% bài học Toán - Lý - Hóa sang các file Game trong public/games/."""
+"""Bảng ánh xạ bài học Toán - Lý - Hóa sang các file Game trong public/games/.
+
+Chỉ ánh xạ những bài học có game thực tế tương ứng. Bài học chưa có game trả về None
+để giao diện hiển thị trạng thái "Đang xây dựng".
+"""
 
 GAME_META = {'game_do_luong': {'file': 'games/game_do_luong.html',
                    'title': 'Bé Đo Giỏi – Đo độ dài và Thời gian',
@@ -229,169 +233,135 @@ GAME_META = {'game_do_luong': {'file': 'games/game_do_luong.html',
                      'desc': 'Khảo sát năng lượng photon ε = hc/λ, giới hạn quang điện λ₀ và sự chuyển mức năng lượng '
                              'electron trong nguyên tử.'}}
 
-def choose_game_key(subject: str, grade: int, topic: str, title: str) -> str:
-    tp = str(topic or "").strip()
+
+def choose_game_key(subject: str, grade: int, topic: str, title: str) -> str | None:
+    tp = str(topic or "").strip().lower()
     ti = str(title or "").strip().lower()
     g = int(grade or 0)
 
-    # 1. VẬT LÝ (LỚP 6 – 12: 130 BÀI HỌC -> 100% GAME TRONG public/games/)
+    # 1. VẬT LÝ (LỚP 6 – 12): Ánh xạ theo từng bài học cụ thể; bài chưa có game trả về None
     if subject == "physics":
         if g == 6:
-            if "bài 1:" in ti or "chiều dài" in ti: return "game_dodai"
-            if "bài 2:" in ti or "khối lượng" in ti: return "game_khoiluong"
-            if "bài 3:" in ti or "thời gian" in ti: return "game_do_luong"
-            if "bài 4:" in ti or "nhiệt độ" in ti: return "game_nhietdo"
-            if "bài 8:" in ti or "trọng lực" in ti: return "game_trong_luong_nang_luong"
-            if "bài 10:" in ti or "ma sát" in ti or "lực cản" in ti: return "game_lucmasat"
-            if "bài 13:" in ti or "mặt trời" in ti: return "game_anhsang"
-            if tp == "l6-ch02-luc-trong-doi-song": return "game_luc"
-            return "game_trong_luong_nang_luong"
+            if "chiều dài" in ti: return "game_dodai"
+            if "khối lượng" in ti: return "game_khoiluong"
+            if "thời gian" in ti: return "game_do_luong"
+            if "nhiệt độ" in ti: return "game_nhietdo"
+            if "trọng lực" in ti: return "game_trong_luong_nang_luong"
+            if "ma sát" in ti or "lực cản" in ti: return "game_lucmasat"
+            if "lực" in ti or "lò xo" in ti: return "game_luc"
+            if "năng lượng" in ti: return "game_trong_luong_nang_luong"
+            if "mặt trời" in ti: return "game_anhsang"
+            return None
         if g == 7:
-            if tp == "l7-ch01-toc-do": return "game_speed"
-            if tp == "l7-ch02-am-thanh": return "game_amthanh"
-            if "bài 10:" in ti or "gương phẳng" in ti: return "game_guongphang"
-            if tp == "l7-ch03-anh-sang": return "game_anhsang"
-            if "bài 13:" in ti or "bài 14:" in ti or "trái đất" in ti or "nam châm điện" in ti:
-                return "game_nam_cham_dien"
-            return "game_namcham"
+            if "tốc độ" in ti or "quãng đường" in ti: return "game_speed"
+            if "âm" in ti: return "game_amthanh"
+            if "gương phẳng" in ti: return "game_guongphang"
+            if "ánh sáng" in ti or "phản xạ" in ti: return "game_anhsang"
+            if "trái đất" in ti or "la bàn" in ti or "nam châm điện" in ti: return "game_nam_cham_dien"
+            if "nam châm" in ti or "từ trường" in ti: return "game_namcham"
+            return None
         if g == 8:
-            if "bài 1:" in ti or "bài 2:" in ti or "khối lượng riêng" in ti:
-                return "simulation_classic:khoi-luong-rieng"
-            if "bài 3:" in ti or "archimedes" in ti:
-                return "simulation:luc-day-archimedes"
-            if tp == "l8-ch01-khoi-luong-rieng-ap-suat":
-                return "game_chat_luu"
-            if tp == "l8-ch02-tac-dung-lam-quay":
-                return "game_moment_luc_don_bay"
-            if tp == "l8-ch03-dien-hoc":
-                return "game_dien"
-            return "game_nhietnang"
+            if "khối lượng riêng" in ti: return "simulation_classic:khoi-luong-rieng"
+            if "archimedes" in ti: return "simulation:luc-day-archimedes"
+            if "áp suất" in ti: return "game_chat_luu"
+            if "moment" in ti or "đòn bẩy" in ti: return "game_moment_luc_don_bay"
+            if "điện" in ti or "mạch" in ti: return "game_dien"
+            if "nhiệt" in ti: return "game_nhietnang"
+            return None
         if g == 9:
-            if "bài 1:" in ti or ("công" in ti and "công suất" in ti and "điện" not in ti):
-                return "game_congsuat"
-            if "bài 2:" in ti or "bài 3:" in ti or "bài 4:" in ti or "động năng" in ti or "khúc xạ" in ti or "phản xạ toàn phần" in ti:
+            if ("công" in ti and "công suất" in ti and "điện" not in ti): return "game_congsuat"
+            if "động năng" in ti or "thế năng" in ti or "cơ năng" in ti or "khúc xạ" in ti or "phản xạ toàn phần" in ti:
                 return "game_co_nang_khuc_xa"
-            if "bài 5:" in ti or "tán sắc" in ti or "màu sắc" in ti:
-                return "game_anhsangmau"
-            if tp == "l9-ch02-anh-sang-quang-hoc":
-                return "game_quanghoc"
-            if "bài 8:" in ti or "ohm" in ti:
-                return "game_ohm"
-            if "bài 9:" in ti or "nối tiếp" in ti:
-                return "game_doanmachnoitiep"
-            if "bài 10:" in ti or "song song" in ti:
-                return "game_doanmachsongsong"
-            if "bài 11:" in ti or "công suất điện" in ti:
-                return "game_congsuatdien"
-            if "bài 15:" in ti or "bài 16:" in ti or "năng lượng tái tạo" in ti or "hóa thạch" in ti:
-                return "game_nang_luong"
-            return "game_dientu"
+            if "tán sắc" in ti or "màu sắc" in ti: return "game_anhsangmau"
+            if "thấu kính" in ti or "kính lúp" in ti: return "game_quanghoc"
+            if "ohm" in ti or "điện trở" in ti: return "game_ohm"
+            if "nối tiếp" in ti: return "game_doanmachnoitiep"
+            if "song song" in ti: return "game_doanmachsongsong"
+            if "công suất điện" in ti or "năng lượng điện" in ti: return "game_congsuatdien"
+            if "cảm ứng điện từ" in ti or "xoay chiều" in ti or "máy biến áp" in ti: return "game_dientu"
+            if "năng lượng tái tạo" in ti or "hóa thạch" in ti: return "game_nang_luong"
+            return None
         if g == 10:
-            if tp == "l10-ch01-mo-dau": return "game_dodai"
-            if "bài 4:" in ti or "bài 5:" in ti or "bài 6:" in ti: return "game_robot"
-            if tp == "l10-ch02-dong-hoc": return "game_giatoc"
-            if "bài 11:" in ti or "bài 15:" in ti or "tổng hợp" in ti or "ma sát" in ti: return "force_real_life_game"
-            if "bài 16:" in ti or "lực cản" in ti: return "game_chat_luu"
-            if tp == "l10-ch03-dong-luc-hoc": return "game_newton"
-            if tp == "l10-ch04-nang-luong-cong-cong-suat": return "game_nang_luong"
-            if tp == "l10-ch05-dong-luong": return "game_dong_luong"
-            if "bài 27:" in ti or "áp suất chất lỏng" in ti: return "game_chat_luu"
-            return "game_chuyen_dong_tron_lo_xo"
+            if "sai số" in ti or "phép đo" in ti: return "game_dodai"
+            if "độ dịch chuyển" in ti or "tốc độ và vận tốc" in ti: return "game_robot"
+            if "gia tốc" in ti or "biến đổi đều" in ti or "rơi tự do" in ti or "chuyển động ném" in ti: return "game_giatoc"
+            if "tổng hợp" in ti or "ma sát" in ti: return "force_real_life_game"
+            if "lực cản" in ti or "áp suất chất lỏng" in ti: return "game_chat_luu"
+            if "newton" in ti or "trọng lực" in ti: return "game_newton"
+            if "công" in ti or "động năng" in ti or "cơ năng" in ti: return "game_nang_luong"
+            if "động lượng" in ti: return "game_dong_luong"
+            if "tròn đều" in ti or "hướng tâm" in ti or "moment" in ti or "lò xo" in ti or "hooke" in ti:
+                return "game_chuyen_dong_tron_lo_xo"
+            return None
         if g == 11:
-            if tp == "l11-ch01-dao-dong": return "game_dao_dong"
-            if "bài 6:" in ti or "bài 7:" in ti: return "game_song_co"
-            if tp == "l11-ch02-song": return "game_song_dien_tu_giao_thoa_tu_dien"
-            if "bài 12:" in ti or "bài 13:" in ti: return "game_dien_truong"
-            if "bài 14:" in ti or "điện trường đều" in ti: return "game_dien_truong_deu"
-            if tp == "l11-ch03-dien-truong": return "game_dien_the"
-            return "game_dong_dien"
+            if "dao động" in ti or "cộng hưởng" in ti: return "game_dao_dong"
+            if "mô tả sóng" in ti or "sóng ngang" in ti: return "game_song_co"
+            if "sóng điện từ" in ti or "giao thoa" in ti or "sóng dừng" in ti: return "game_song_dien_tu_giao_thoa_tu_dien"
+            if "coulomb" in ti or "cường độ điện trường" in ti: return "game_dien_truong"
+            if "điện trường đều" in ti: return "game_dien_truong_deu"
+            if "thế năng điện" in ti or "điện thế" in ti or "tụ điện" in ti: return "game_dien_the"
+            if "dòng điện" in ti or "điện trở" in ti or "nguồn điện" in ti or "suất điện động" in ti or "toàn mạch" in ti or "công suất điện" in ti:
+                return "game_dong_dien"
+            return None
         if g == 12:
             if tp in ("l12-ch01-vat-li-nhiet", "l12-ch02-khi-li-tuong"): return "game_vat_ly_nhiet_khi_ly_tuong"
-            if "bài 12:" in ti or "bài 13:" in ti: return "game_tu_truong"
-            if "bài 14:" in ti or "cảm ứng điện từ" in ti: return "game_cam_ung_dien_tu"
-            if "bài 15:" in ti or "xoay chiều" in ti: return "game_mach_xoay_chieu"
-            if "bài 16:" in ti or "máy biến áp" in ti: return "game_mach_rlc"
-            if "bài 18:" in ti or "einstein" in ti: return "game_thuyet_tuong_doi"
-            return "game_hat_nhan"
+            if "từ trường" in ti or "cảm ứng từ" in ti: return "game_tu_truong"
+            if "cảm ứng điện từ" in ti or "từ thông" in ti: return "game_cam_ung_dien_tu"
+            if "xoay chiều" in ti: return "game_mach_xoay_chieu"
+            if "máy biến áp" in ti or "rlc" in ti: return "game_mach_rlc"
+            if "einstein" in ti: return "game_thuyet_tuong_doi"
+            if "hạt nhân" in ti or "phóng xạ" in ti or "phân hạch" in ti or "nhiệt hạch" in ti: return "game_hat_nhan"
+            return None
+        return None
 
-    # 2. HÓA HỌC (LỚP 6 – 12 -> Chỉ dùng các file game trong public/games/*.html)
+    # 2. HÓA HỌC (LỚP 6 – 12): Hiện chưa có mini-game Hóa học riêng → "Đang xây dựng"
     if subject == "chemistry":
-        if g == 6:
-            if tp in ("l6-ch01-cac-the-cua-chat", "l6-ch02-oxygen-va-khong-khi"):
-                return "game_vat_ly_nhiet_khi_ly_tuong"
-            if "bài 5:" in ti or "bài 7:" in ti:
-                return "simulation_classic:khoi-luong-rieng"
-            if "bài 6:" in ti:
-                return "game_nhietnang"
-            return "store_management"
-        if g == 7:
-            if "bài 1:" in ti: return "game_hat_nhan"
-            if "bài 2:" in ti or "bài 3:" in ti or "bài 4:" in ti: return "game_quang_dien"
-            if tp == "l7-ch02-phan-tu-don-chat-hop-chat": return "game_khoiluong"
-            return "game_dien_truong"
-        if g == 8:
-            if "bài 3:" in ti: return "game_nhietnang"
-            if "bài 4:" in ti: return "game_vat_ly_nhiet_khi_ly_tuong"
-            if "bài 6:" in ti or "bài 7:" in ti: return "game_khoiluong"
-            if "bài 8:" in ti: return "game_nhietdo"
-            if "bài 9:" in ti or "bài 10:" in ti or "bài 12:" in ti: return "game_dien"
-            return "store_management"
-        if g == 9:
-            if tp == "hoa9_ch1": return "simulation_classic:khoi-luong-rieng"
-            if "bài 8:" in ti: return "game_nang_luong"
-            return "store_management"
-        if g == 10:
-            if "bài 1:" in ti or "bài 2:" in ti: return "game_hat_nhan"
-            if "bài 3:" in ti or tp == "hoa10_ch2": return "game_quang_dien"
-            if tp == "hoa10_ch3": return "game_dien_truong"
-            if tp == "hoa10_ch4": return "game_dong_dien"
-            if tp == "hoa10_ch5": return "game_nhietnang"
-            if tp == "hoa10_ch6": return "game_vat_ly_nhiet_khi_ly_tuong"
-            return "store_management"
-        if g == 11:
-            if "bài 1:" in ti or "bài 2:" in ti: return "game_vat_ly_nhiet_khi_ly_tuong"
-            if "bài 3:" in ti: return "game_dong_dien"
-            return "store_management"
-        if g == 12:
-            if tp == "hoa12_ch5": return "game_dong_dien"
-            if tp == "hoa12_ch6": return "simulation_classic:khoi-luong-rieng"
-            if tp == "hoa12_ch8": return "game_tu_truong"
-            return "store_management"
+        return None
 
-    # 3. TOÁN HỌC (LỚP 1 – 12 -> Chỉ dùng các file game trong public/games/*.html)
+    # 3. TOÁN HỌC (LỚP 1 – 12): Chỉ gắn cho bài học khớp nội dung game; bài chưa có game trả về None
     if g == 12:
-        if tp == "l12-ch01-ung-dung-dao-ham": return "game_ung_dung_dao_ham"
-        if tp in ("l12-ch02-vecto-khong-gian", "l12-ch05-phuong-phap-toa-do-khong-gian"): return "game_toa_do_oxyz"
-        if tp == "l12-ch04-nguyen-ham-tich-phan": return "game_nguyen_ham"
-        return "game_on_tap_thpt"
-    if g == 11:
-        if tp in ("l11-ch05-gioi-han-lien-tuc", "l11-ch09-dao-ham"): return "function-challenge"
-        if tp in ("l11-ch04-quan-he-song-song", "l11-ch07-quan-he-vuong-goc"): return "game_toa_do_oxyz"
-        if tp in ("l11-ch06-mu-logarit", "l11-ch08-quy-tac-xac-suat", "l11-ch03-thong-ke-ghep-nhom"): return "game_on_tap_thpt"
-        return "store_management"
-    if g == 10:
-        if tp in ("l10-ch03-he-thuc-luong-tam-giac", "l10-ch04-vecto", "l10-ch07-toa-do-mat-phang"):
+        if any(k in ti for k in ("đơn điệu", "cực trị", "giá trị lớn nhất", "tiệm cận", "khảo sát")):
+            return "game_ung_dung_dao_ham"
+        if any(k in ti for k in ("vectơ", "tọa độ", "đường thẳng", "mặt phẳng", "mặt cầu")):
             return "game_toa_do_oxyz"
-        if tp in ("l10-ch08-dai-so-to-hop", "l10-ch09-xac-suat"):
+        if any(k in ti for k in ("nguyên hàm", "tích phân")):
+            return "game_nguyen_ham"
+        if any(k in ti for k in ("khoảng biến thiên", "phương sai", "độ lệch chuẩn", "xác suất có điều kiện", "bayes")):
             return "game_on_tap_thpt"
-        return "store_management"
-    if g in (6, 7, 8, 9):
-        if any(k in tp for k in ("hinh", "goc", "tam-giac", "tu-giac", "thales", "duong-tron", "doi-xung")):
+        return None
+    if g == 11:
+        if any(k in ti for k in ("giới hạn", "liên tục", "đạo hàm", "tiếp tuyến")):
+            return "function-challenge"
+        if any(k in ti for k in ("mũ", "lôgarit", "xác suất", "mẫu số liệu ghép nhóm")):
+            return "game_on_tap_thpt"
+        return None
+    if g == 10:
+        if any(k in ti for k in ("vectơ", "tọa độ", "tích vô hướng")):
             return "game_toa_do_oxyz"
+        if any(k in ti for k in ("tổ hợp", "chỉnh hợp", "hoán vị", "xác suất")):
+            return "game_on_tap_thpt"
+        if any(k in ti for k in ("hàm số", "thống kê", "số gần đúng", "trung vị", "phương sai")):
+            return "store_management"
+        return None
+    if g in (6, 7, 8, 9):
+        if any(k in ti for k in ("tiền", "lãi", "phần trăm", "hệ phương trình", "hàm số bậc nhất", "hàm số y = ax", "thống kê", "biểu đồ", "tần số")):
+            return "store_management"
+        return None
+    if g == 5:
+        if any(k in ti for k in ("vận tốc", "quãng đường", "chuyển động đều")):
+            return "game_speed"
+    if any(k in ti for k in ("tiền việt nam", "tỉ số phần trăm")):
         return "store_management"
-    if tp == "l5-cd10-thoi-gian-van-toc-chuyen-dong-deu":
-        return "game_speed"
-    if any(k in tp for k in ("do-dai", "thoi-gian", "gio-lich", "ngay-gio", "dong-ho", "goc", "chu-vi", "dien-tich", "the-tich")):
-        return "game_do_luong"
-    if any(k in tp for k in ("khoi-luong", "dai-luong")):
+    if any(k in ti for k in ("khối lượng", "ki-lô-gam", "gam", "tấn, tạ, yến")):
         return "game_khoiluong"
-    return "store_management"
+    if any(k in ti for k in ("độ dài", "xăng-ti-mét", "mét", "đồng hồ", "xem giờ", "thời gian", "ngày, giờ", "chu vi", "diện tích", "thể tích", "đo góc")):
+        return "game_do_luong"
+    return None
 
-def resolve_backend_game(subject: str, grade: int, lesson: dict) -> tuple[str, str, str]:
-    key = lesson.get("game_type")
+
+def resolve_backend_game(subject: str, grade: int, lesson: dict) -> tuple[str | None, str | None, str | None]:
+    key = choose_game_key(subject, grade, lesson.get("topic", ""), lesson.get("title", ""))
     if not key or key not in GAME_META:
-        key = choose_game_key(subject, grade, lesson.get("topic", ""), lesson.get("title", ""))
-    meta = GAME_META.get(key) or GAME_META["store_management"]
-    g_title = meta["title"]
-    g_desc = meta["desc"]
-    return key, g_title, g_desc
+        return None, None, None
+    meta = GAME_META[key]
+    return key, meta["title"], meta["desc"]

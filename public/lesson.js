@@ -1837,167 +1837,129 @@ const HDLG_GAME_META = {
 function chooseLessonGameKey(subj, gradeVal, topicVal, titleVal) {
   const s = String(subj || "math").toLowerCase();
   const g = Number(gradeVal || 0);
-  const tp = String(topicVal || "").trim();
+  const tp = String(topicVal || "").trim().toLowerCase();
   const ti = String(titleVal || "").trim().toLowerCase();
+  const hasAny = (arr) => arr.some((k) => ti.includes(k));
 
   if (s === "physics") {
     if (g === 6) {
-      if (ti.includes("bài 1:") || ti.includes("chiều dài")) return "game_dodai";
-      if (ti.includes("bài 2:") || ti.includes("khối lượng")) return "game_khoiluong";
-      if (ti.includes("bài 3:") || ti.includes("thời gian")) return "game_do_luong";
-      if (ti.includes("bài 4:") || ti.includes("nhiệt độ")) return "game_nhietdo";
-      if (ti.includes("bài 8:") || ti.includes("trọng lực")) return "game_trong_luong_nang_luong";
-      if (ti.includes("bài 10:") || ti.includes("ma sát") || ti.includes("lực cản")) return "game_lucmasat";
-      if (ti.includes("bài 13:") || ti.includes("mặt trời")) return "game_anhsang";
-      if (tp === "l6-ch02-luc-trong-doi-song") return "game_luc";
-      return "game_trong_luong_nang_luong";
+      if (ti.includes("chiều dài")) return "game_dodai";
+      if (ti.includes("khối lượng")) return "game_khoiluong";
+      if (ti.includes("thời gian")) return "game_do_luong";
+      if (ti.includes("nhiệt độ")) return "game_nhietdo";
+      if (ti.includes("trọng lực")) return "game_trong_luong_nang_luong";
+      if (ti.includes("ma sát") || ti.includes("lực cản")) return "game_lucmasat";
+      if (ti.includes("lực") || ti.includes("lò xo")) return "game_luc";
+      if (ti.includes("năng lượng")) return "game_trong_luong_nang_luong";
+      if (ti.includes("mặt trời")) return "game_anhsang";
+      return null;
     }
     if (g === 7) {
-      if (tp === "l7-ch01-toc-do") return "game_speed";
-      if (tp === "l7-ch02-am-thanh") return "game_amthanh";
-      if (ti.includes("bài 10:") || ti.includes("gương phẳng")) return "game_guongphang";
-      if (tp === "l7-ch03-anh-sang") return "game_anhsang";
-      if (ti.includes("bài 13:") || ti.includes("bài 14:") || ti.includes("trái đất") || ti.includes("nam châm điện")) return "game_nam_cham_dien";
-      return "game_namcham";
+      if (ti.includes("tốc độ") || ti.includes("quãng đường")) return "game_speed";
+      if (ti.includes("âm")) return "game_amthanh";
+      if (ti.includes("gương phẳng")) return "game_guongphang";
+      if (ti.includes("ánh sáng") || ti.includes("phản xạ")) return "game_anhsang";
+      if (ti.includes("trái đất") || ti.includes("la bàn") || ti.includes("nam châm điện")) return "game_nam_cham_dien";
+      if (ti.includes("nam châm") || ti.includes("từ trường")) return "game_namcham";
+      return null;
     }
     if (g === 8) {
-      if (ti.includes("bài 1:") || ti.includes("bài 2:") || ti.includes("khối lượng riêng")) return "simulation_classic:khoi-luong-rieng";
-      if (ti.includes("bài 3:") || ti.includes("archimedes")) return "simulation:luc-day-archimedes";
-      if (tp === "l8-ch01-khoi-luong-rieng-ap-suat") return "game_chat_luu";
-      if (tp === "l8-ch02-tac-dung-lam-quay") return "game_moment_luc_don_bay";
-      if (tp === "l8-ch03-dien-hoc") return "game_dien";
-      return "game_nhietnang";
+      if (ti.includes("khối lượng riêng")) return "simulation_classic:khoi-luong-rieng";
+      if (ti.includes("archimedes")) return "simulation:luc-day-archimedes";
+      if (ti.includes("áp suất")) return "game_chat_luu";
+      if (ti.includes("moment") || ti.includes("đòn bẩy")) return "game_moment_luc_don_bay";
+      if (ti.includes("điện") || ti.includes("mạch")) return "game_dien";
+      if (ti.includes("nhiệt")) return "game_nhietnang";
+      return null;
     }
     if (g === 9) {
-      if (ti.includes("bài 1:") || (ti.includes("công") && ti.includes("công suất") && !ti.includes("điện"))) return "game_congsuat";
-      if (ti.includes("bài 2:") || ti.includes("bài 3:") || ti.includes("bài 4:") || ti.includes("động năng") || ti.includes("khúc xạ") || ti.includes("phản xạ toàn phần")) return "game_co_nang_khuc_xa";
-      if (ti.includes("bài 5:") || ti.includes("tán sắc") || ti.includes("màu sắc")) return "game_anhsangmau";
-      if (tp === "l9-ch02-anh-sang-quang-hoc") return "game_quanghoc";
-      if (ti.includes("bài 8:") || ti.includes("ohm")) return "game_ohm";
-      if (ti.includes("bài 9:") || ti.includes("nối tiếp")) return "game_doanmachnoitiep";
-      if (ti.includes("bài 10:") || ti.includes("song song")) return "game_doanmachsongsong";
-      if (ti.includes("bài 11:") || ti.includes("công suất điện")) return "game_congsuatdien";
-      if (ti.includes("bài 15:") || ti.includes("bài 16:") || ti.includes("năng lượng tái tạo") || ti.includes("hóa thạch")) return "game_nang_luong";
-      return "game_dientu";
+      if (ti.includes("công") && ti.includes("công suất") && !ti.includes("điện")) return "game_congsuat";
+      if (ti.includes("động năng") || ti.includes("thế năng") || ti.includes("cơ năng") || ti.includes("khúc xạ") || ti.includes("phản xạ toàn phần")) return "game_co_nang_khuc_xa";
+      if (ti.includes("tán sắc") || ti.includes("màu sắc")) return "game_anhsangmau";
+      if (ti.includes("thấu kính") || ti.includes("kính lúp")) return "game_quanghoc";
+      if (ti.includes("ohm") || ti.includes("điện trở")) return "game_ohm";
+      if (ti.includes("nối tiếp")) return "game_doanmachnoitiep";
+      if (ti.includes("song song")) return "game_doanmachsongsong";
+      if (ti.includes("công suất điện") || ti.includes("năng lượng điện")) return "game_congsuatdien";
+      if (ti.includes("cảm ứng điện từ") || ti.includes("xoay chiều") || ti.includes("máy biến áp")) return "game_dientu";
+      if (ti.includes("năng lượng tái tạo") || ti.includes("hóa thạch")) return "game_nang_luong";
+      return null;
     }
     if (g === 10) {
-      if (tp === "l10-ch01-mo-dau") return "game_dodai";
-      if (ti.includes("bài 4:") || ti.includes("bài 5:") || ti.includes("bài 6:")) return "game_robot";
-      if (tp === "l10-ch02-dong-hoc") return "game_giatoc";
-      if (ti.includes("bài 11:") || ti.includes("bài 15:") || ti.includes("tổng hợp") || ti.includes("ma sát")) return "force_real_life_game";
-      if (ti.includes("bài 16:") || ti.includes("lực cản")) return "game_chat_luu";
-      if (tp === "l10-ch03-dong-luc-hoc") return "game_newton";
-      if (tp === "l10-ch04-nang-luong-cong-cong-suat") return "game_nang_luong";
-      if (tp === "l10-ch05-dong-luong") return "game_dong_luong";
-      if (ti.includes("bài 27:") || ti.includes("áp suất chất lỏng")) return "game_chat_luu";
-      return "game_chuyen_dong_tron_lo_xo";
+      if (ti.includes("sai số") || ti.includes("phép đo")) return "game_dodai";
+      if (ti.includes("độ dịch chuyển") || ti.includes("tốc độ và vận tốc")) return "game_robot";
+      if (ti.includes("gia tốc") || ti.includes("biến đổi đều") || ti.includes("rơi tự do") || ti.includes("chuyển động ném")) return "game_giatoc";
+      if (ti.includes("tổng hợp") || ti.includes("ma sát")) return "force_real_life_game";
+      if (ti.includes("lực cản") || ti.includes("áp suất chất lỏng")) return "game_chat_luu";
+      if (ti.includes("newton") || ti.includes("trọng lực")) return "game_newton";
+      if (ti.includes("công") || ti.includes("động năng") || ti.includes("cơ năng")) return "game_nang_luong";
+      if (ti.includes("động lượng")) return "game_dong_luong";
+      if (ti.includes("tròn đều") || ti.includes("hướng tâm") || ti.includes("moment") || ti.includes("lò xo") || ti.includes("hooke")) return "game_chuyen_dong_tron_lo_xo";
+      return null;
     }
     if (g === 11) {
-      if (tp === "l11-ch01-dao-dong") return "game_dao_dong";
-      if (ti.includes("bài 6:") || ti.includes("bài 7:")) return "game_song_co";
-      if (tp === "l11-ch02-song") return "game_song_dien_tu_giao_thoa_tu_dien";
-      if (ti.includes("bài 12:") || ti.includes("bài 13:")) return "game_dien_truong";
-      if (ti.includes("bài 14:") || ti.includes("điện trường đều")) return "game_dien_truong_deu";
-      if (tp === "l11-ch03-dien-truong") return "game_dien_the";
-      return "game_dong_dien";
+      if (ti.includes("dao động") || ti.includes("cộng hưởng")) return "game_dao_dong";
+      if (ti.includes("mô tả sóng") || ti.includes("sóng ngang")) return "game_song_co";
+      if (ti.includes("sóng điện từ") || ti.includes("giao thoa") || ti.includes("sóng dừng")) return "game_song_dien_tu_giao_thoa_tu_dien";
+      if (ti.includes("coulomb") || ti.includes("cường độ điện trường")) return "game_dien_truong";
+      if (ti.includes("điện trường đều")) return "game_dien_truong_deu";
+      if (ti.includes("thế năng điện") || ti.includes("điện thế") || ti.includes("tụ điện")) return "game_dien_the";
+      if (ti.includes("dòng điện") || ti.includes("điện trở") || ti.includes("nguồn điện") || ti.includes("suất điện động") || ti.includes("toàn mạch") || ti.includes("công suất điện")) return "game_dong_dien";
+      return null;
     }
     if (g === 12) {
       if (tp === "l12-ch01-vat-li-nhiet" || tp === "l12-ch02-khi-li-tuong") return "game_vat_ly_nhiet_khi_ly_tuong";
-      if (ti.includes("bài 12:") || ti.includes("bài 13:")) return "game_tu_truong";
-      if (ti.includes("bài 14:") || ti.includes("cảm ứng điện từ")) return "game_cam_ung_dien_tu";
-      if (ti.includes("bài 15:") || ti.includes("xoay chiều")) return "game_mach_xoay_chieu";
-      if (ti.includes("bài 16:") || ti.includes("máy biến áp")) return "game_mach_rlc";
-      if (ti.includes("bài 18:") || ti.includes("einstein")) return "game_thuyet_tuong_doi";
-      return "game_hat_nhan";
+      if (ti.includes("từ trường") || ti.includes("cảm ứng từ")) return "game_tu_truong";
+      if (ti.includes("cảm ứng điện từ") || ti.includes("từ thông")) return "game_cam_ung_dien_tu";
+      if (ti.includes("xoay chiều")) return "game_mach_xoay_chieu";
+      if (ti.includes("máy biến áp") || ti.includes("rlc")) return "game_mach_rlc";
+      if (ti.includes("einstein")) return "game_thuyet_tuong_doi";
+      if (ti.includes("hạt nhân") || ti.includes("phóng xạ") || ti.includes("phân hạch") || ti.includes("nhiệt hạch")) return "game_hat_nhan";
+      return null;
     }
+    return null;
   }
 
   if (s === "chemistry") {
-    if (g === 6) {
-      if (tp === "l6-ch01-cac-the-cua-chat" || tp === "l6-ch02-oxygen-va-khong-khi") return "game_vat_ly_nhiet_khi_ly_tuong";
-      if (ti.includes("bài 5:") || ti.includes("bài 7:")) return "simulation_classic:khoi-luong-rieng";
-      if (ti.includes("bài 6:")) return "game_nhietnang";
-      return "store_management";
-    }
-    if (g === 7) {
-      if (ti.includes("bài 1:")) return "game_hat_nhan";
-      if (ti.includes("bài 2:") || ti.includes("bài 3:") || ti.includes("bài 4:")) return "game_quang_dien";
-      if (tp === "l7-ch02-phan-tu-don-chat-hop-chat") return "game_khoiluong";
-      return "game_dien_truong";
-    }
-    if (g === 8) {
-      if (ti.includes("bài 3:")) return "game_nhietnang";
-      if (ti.includes("bài 4:")) return "game_vat_ly_nhiet_khi_ly_tuong";
-      if (ti.includes("bài 6:") || ti.includes("bài 7:")) return "game_khoiluong";
-      if (ti.includes("bài 8:")) return "game_nhietdo";
-      if (ti.includes("bài 9:") || ti.includes("bài 10:") || ti.includes("bài 12:")) return "game_dien";
-      return "store_management";
-    }
-    if (g === 9) {
-      if (tp === "hoa9_ch1") return "simulation_classic:khoi-luong-rieng";
-      if (ti.includes("bài 8:")) return "game_nang_luong";
-      return "store_management";
-    }
-    if (g === 10) {
-      if (ti.includes("bài 1:") || ti.includes("bài 2:")) return "game_hat_nhan";
-      if (ti.includes("bài 3:") || tp === "hoa10_ch2") return "game_quang_dien";
-      if (tp === "hoa10_ch3") return "game_dien_truong";
-      if (tp === "hoa10_ch4") return "game_dong_dien";
-      if (tp === "hoa10_ch5") return "game_nhietnang";
-      if (tp === "hoa10_ch6") return "game_vat_ly_nhiet_khi_ly_tuong";
-      return "store_management";
-    }
-    if (g === 11) {
-      if (ti.includes("bài 1:") || ti.includes("bài 2:")) return "game_vat_ly_nhiet_khi_ly_tuong";
-      if (ti.includes("bài 3:")) return "game_dong_dien";
-      return "store_management";
-    }
-    if (g === 12) {
-      if (tp === "hoa12_ch5") return "game_dong_dien";
-      if (tp === "hoa12_ch6") return "simulation_classic:khoi-luong-rieng";
-      if (tp === "hoa12_ch8") return "game_tu_truong";
-      return "store_management";
-    }
+    return null;
   }
 
   if (g === 12) {
-    if (tp === "l12-ch01-ung-dung-dao-ham") return "game_ung_dung_dao_ham";
-    if (tp === "l12-ch02-vecto-khong-gian" || tp === "l12-ch05-phuong-phap-toa-do-khong-gian") return "game_toa_do_oxyz";
-    if (tp === "l12-ch04-nguyen-ham-tich-phan") return "game_nguyen_ham";
-    return "game_on_tap_thpt";
+    if (hasAny(["đơn điệu", "cực trị", "giá trị lớn nhất", "tiệm cận", "khảo sát"])) return "game_ung_dung_dao_ham";
+    if (hasAny(["vectơ", "tọa độ", "đường thẳng", "mặt phẳng", "mặt cầu"])) return "game_toa_do_oxyz";
+    if (hasAny(["nguyên hàm", "tích phân"])) return "game_nguyen_ham";
+    if (hasAny(["khoảng biến thiên", "phương sai", "độ lệch chuẩn", "xác suất có điều kiện", "bayes"])) return "game_on_tap_thpt";
+    return null;
   }
   if (g === 11) {
-    if (tp === "l11-ch05-gioi-han-lien-tuc" || tp === "l11-ch09-dao-ham") return "function-challenge";
-    if (tp === "l11-ch04-quan-he-song-song" || tp === "l11-ch07-quan-he-vuong-goc") return "game_toa_do_oxyz";
-    if (tp === "l11-ch06-mu-logarit" || tp === "l11-ch08-quy-tac-xac-suat" || tp === "l11-ch03-thong-ke-ghep-nhom") return "game_on_tap_thpt";
-    return "store_management";
+    if (hasAny(["giới hạn", "liên tục", "đạo hàm", "tiếp tuyến"])) return "function-challenge";
+    if (hasAny(["mũ", "lôgarit", "xác suất", "mẫu số liệu ghép nhóm"])) return "game_on_tap_thpt";
+    return null;
   }
   if (g === 10) {
-    if (tp === "l10-ch03-he-thuc-luong-tam-giac" || tp === "l10-ch04-vecto" || tp === "l10-ch07-toa-do-mat-phang") return "game_toa_do_oxyz";
-    if (tp === "l10-ch08-dai-so-to-hop" || tp === "l10-ch09-xac-suat") return "game_on_tap_thpt";
-    return "store_management";
+    if (hasAny(["vectơ", "tọa độ", "tích vô hướng"])) return "game_toa_do_oxyz";
+    if (hasAny(["tổ hợp", "chỉnh hợp", "hoán vị", "xác suất"])) return "game_on_tap_thpt";
+    if (hasAny(["hàm số", "thống kê", "số gần đúng", "trung vị", "phương sai"])) return "store_management";
+    return null;
   }
   if (g >= 6 && g <= 9) {
-    if (/(hinh|goc|tam-giac|tu-giac|thales|duong-tron|doi-xung)/.test(tp)) return "game_toa_do_oxyz";
-    return "store_management";
+    if (hasAny(["tiền", "lãi", "phần trăm", "hệ phương trình", "hàm số bậc nhất", "hàm số y = ax", "thống kê", "biểu đồ", "tần số"])) return "store_management";
+    return null;
   }
-  if (tp === "l5-cd10-thoi-gian-van-toc-chuyen-dong-deu") return "game_speed";
-  if (/(do-dai|thoi-gian|gio-lich|ngay-gio|dong-ho|goc|chu-vi|dien-tich|the-tich)/.test(tp)) return "game_do_luong";
-  if (/(khoi-luong|dai-luong)/.test(tp)) return "game_khoiluong";
-  return "store_management";
+  if (g === 5 && hasAny(["vận tốc", "quãng đường", "chuyển động đều"])) return "game_speed";
+  if (hasAny(["tiền việt nam", "tỉ số phần trăm"])) return "store_management";
+  if (hasAny(["khối lượng", "ki-lô-gam", "gam", "tấn, tạ, yến"])) return "game_khoiluong";
+  if (hasAny(["độ dài", "xăng-ti-mét", "mét", "đồng hồ", "xem giờ", "thời gian", "ngày, giờ", "chu vi", "diện tích", "thể tích", "đo góc"])) return "game_do_luong";
+  return null;
 }
 
 function resolveLessonGameInfo(lesson, subjFallback, gradeFallback) {
   if (!lesson) return null;
   const s = String(lesson.subject || subjFallback || "math").toLowerCase();
   const g = Number(lesson.grade || gradeFallback || 10);
-  const GAME_ALIAS = { "function_challenge": "function-challenge", "store-management": "store_management" };
-  const mappedKey = chooseLessonGameKey(s, g, lesson.topic, lesson.title);
-  let key = lesson.game_type ? (GAME_ALIAS[lesson.game_type] || lesson.game_type) : "";
-  if (!key || !HDLG_GAME_META[key] || (mappedKey && key !== mappedKey)) {
-    key = mappedKey;
-  }
-  const meta = HDLG_GAME_META[key] || HDLG_GAME_META["store_management"];
+  const key = chooseLessonGameKey(s, g, lesson.topic, lesson.title);
+  if (!key || !HDLG_GAME_META[key]) return null;
+  const meta = HDLG_GAME_META[key];
   const lid = encodeURIComponent(lesson.id || "");
   let url = meta.file;
   if (url.includes("?")) {
