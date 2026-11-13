@@ -575,7 +575,7 @@
 
   function resolveLessonUrl() {
     try {
-      var keys = ["hdlg_v8_lessons_physics_9", "hdlg_lessons_physics_9", "hdlg_catalog"];
+      var keys = ["hdlg_v9_lessons_physics_9", "hdlg_lessons_physics_9", "hdlg_catalog"];
       for (var k = 0; k < keys.length; k++) {
         var raw = sessionStorage.getItem(keys[k]);
         if (!raw) continue;
@@ -599,7 +599,7 @@
       .then(function (r) { return r.ok ? r.json() : null; })
       .then(function (list) {
         if (Array.isArray(list) && list.length) {
-          try { sessionStorage.setItem("hdlg_v8_lessons_physics_9", JSON.stringify(list)); } catch (e) {}
+          try { sessionStorage.setItem("hdlg_v9_lessons_physics_9", JSON.stringify(list)); } catch (e) {}
           var u = findTargetLessonUrlFromList(list);
           if (u) { location.href = u; return; }
         }

@@ -7,7 +7,7 @@
 // Dọn bộ nhớ đệm sessionStorage cũ để tránh lưu bài gộp cả chương từ phiên bản trước
 try {
   Object.keys(sessionStorage).forEach((k) => {
-    if ((k.startsWith("hdlg_lesson") || k.startsWith("hdlg_lessons")) && !k.startsWith("hdlg_v8_")) {
+    if ((k.startsWith("hdlg_lesson") || k.startsWith("hdlg_lessons")) && !k.startsWith("hdlg_v9_")) {
       sessionStorage.removeItem(k);
     }
   });
@@ -721,7 +721,7 @@ async function loadLessons() {
   const url = `${API_BASE}/content/subjects/math/lessons?grade=${encodeURIComponent(grade)}`;
 
   try {
-    const cacheKey = `hdlg_v8_lessons_math_${grade}`;
+    const cacheKey = `hdlg_v9_lessons_math_${grade}`;
     let data = null;
     const cached = sessionStorage.getItem(cacheKey);
     if (cached) {
@@ -741,7 +741,7 @@ async function loadLessons() {
     lessons = data;
     try {
       lessons.forEach(l => {
-        if (l && l.id != null) sessionStorage.setItem(`hdlg_v8_lesson_${l.id}`, JSON.stringify(l));
+        if (l && l.id != null) sessionStorage.setItem(`hdlg_v9_lesson_${l.id}`, JSON.stringify(l));
       });
     } catch (_) {}
 

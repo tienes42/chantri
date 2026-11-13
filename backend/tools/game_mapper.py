@@ -234,128 +234,78 @@ GAME_META = {'game_do_luong': {'file': 'games/game_do_luong.html',
                              'electron trong nguyên tử.'}}
 
 
+EXACT_GAME_RULES = [
+    ('physics', 6, 'bài 1: đo chiều dài', 'game_dodai'),
+    ('physics', 6, 'bài 2: đo khối lượng', 'game_khoiluong'),
+    ('physics', 6, 'bài 3: đo thời gian', 'game_do_luong'),
+    ('physics', 6, 'bài 4: thang nhiệt độ celsius', 'game_nhietdo'),
+    ('physics', 6, 'bài 7: biến dạng của lò xo', 'game_luc'),
+    ('physics', 6, 'bài 8: trọng lực và đơn vị lực', 'game_trong_luong_nang_luong'),
+    ('physics', 6, 'bài 10: lực ma sát và lực cản', 'game_lucmasat'),
+    ('physics', 6, 'bài 13: chuyển động nhìn thấy của mặt trời', 'game_anhsang'),
+    ('physics', 7, 'bài 1: tốc độ chuyển động', 'game_speed'),
+    ('physics', 7, 'bài 5: mô tả sóng âm', 'game_amthanh'),
+    ('physics', 7, 'bài 9: sự phản xạ ánh sáng', 'game_anhsang'),
+    ('physics', 7, 'bài 10: ảnh của vật qua gương phẳng', 'game_guongphang'),
+    ('physics', 7, 'bài 11: nam châm', 'game_namcham'),
+    ('physics', 7, 'bài 14: nam châm điện', 'game_nam_cham_dien'),
+    ('physics', 8, 'bài 1: khối lượng riêng', 'simulation_classic:khoi-luong-rieng'),
+    ('physics', 8, 'bài 3: tác dụng của chất lỏng lên vật đặt trong nó', 'simulation:luc-day-archimedes'),
+    ('physics', 8, 'bài 5: áp suất chất lỏng', 'game_chat_luu'),
+    ('physics', 8, 'bài 7: đòn bẩy và ứng dụng', 'game_moment_luc_don_bay'),
+    ('physics', 8, 'bài 10: mạch điện đơn giản', 'game_dien'),
+    ('physics', 8, 'bài 13: sự truyền nhiệt', 'game_nhietnang'),
+    ('physics', 9, 'bài 1: công và công suất', 'game_congsuat'),
+    ('physics', 9, 'bài 3: khúc xạ ánh sáng', 'game_co_nang_khuc_xa'),
+    ('physics', 9, 'bài 5: tán sắc ánh sáng', 'game_anhsangmau'),
+    ('physics', 9, 'bài 6: thấu kính hội tụ', 'game_quanghoc'),
+    ('physics', 9, 'bài 8: điện trở. định luật ohm', 'game_ohm'),
+    ('physics', 9, 'bài 9: đoạn mạch nối tiếp', 'game_doanmachnoitiep'),
+    ('physics', 9, 'bài 10: đoạn mạch song song', 'game_doanmachsongsong'),
+    ('physics', 9, 'bài 11: năng lượng điện và công suất điện', 'game_congsuatdien'),
+    ('physics', 9, 'bài 12: cảm ứng điện từ', 'game_dientu'),
+    ('physics', 9, 'bài 16: năng lượng tái tạo', 'game_nang_luong'),
+    ('physics', 10, 'bài 3: thực hành tính sai số', 'game_dodai'),
+    ('physics', 10, 'bài 4: độ dịch chuyển', 'game_robot'),
+    ('physics', 10, 'bài 7: gia tốc', 'game_giatoc'),
+    ('physics', 10, 'bài 11: tổng hợp và phân tích lực', 'force_real_life_game'),
+    ('physics', 10, 'bài 12: định luật 1 và định luật 2 newton', 'game_newton'),
+    ('physics', 10, 'bài 16: lực cản và lực nâng', 'game_chat_luu'),
+    ('physics', 10, 'bài 19: cơ năng và định luật bảo toàn cơ năng', 'game_nang_luong'),
+    ('physics', 10, 'bài 20: động lượng', 'game_dong_luong'),
+    ('physics', 10, 'bài 26: định luật hooke', 'game_chuyen_dong_tron_lo_xo'),
+    ('physics', 11, 'bài 1: dao động điều hòa', 'game_dao_dong'),
+    ('physics', 11, 'bài 6: mô tả sóng', 'game_song_co'),
+    ('physics', 11, 'bài 9: giao thoa sóng cơ', 'game_song_dien_tu_giao_thoa_tu_dien'),
+    ('physics', 11, 'bài 13: khái niệm điện trường', 'game_dien_truong'),
+    ('physics', 11, 'bài 14: điện trường đều', 'game_dien_truong_deu'),
+    ('physics', 11, 'bài 16: điện thế và hiệu điện thế', 'game_dien_the'),
+    ('physics', 11, 'bài 21: định luật ohm cho toàn mạch', 'game_dong_dien'),
+    ('physics', 12, 'bài 10: phương trình trạng thái của khí lí tưởng', 'game_vat_ly_nhiet_khi_ly_tuong'),
+    ('physics', 12, 'bài 13: cảm ứng từ và lực từ', 'game_tu_truong'),
+    ('physics', 12, 'bài 14: từ thông. hiện tượng cảm ứng điện từ', 'game_cam_ung_dien_tu'),
+    ('physics', 12, 'bài 15: đại cương về dòng điện xoay chiều', 'game_mach_xoay_chieu'),
+    ('physics', 12, 'bài 16: máy biến áp', 'game_mach_rlc'),
+    ('physics', 12, 'bài 18: hệ thức einstein', 'game_thuyet_tuong_doi'),
+    ('physics', 12, 'bài 19: phản ứng hạt nhân', 'game_hat_nhan'),
+    ('math', 1, 'đơn vị đo độ dài (xăng-ti-mét)', 'game_do_luong'),
+    ('math', 2, 'bài 15: ki-lô-gam', 'game_khoiluong'),
+    ('math', 5, 'bài 59: vận tốc', 'game_speed'),
+    ('math', 9, 'giải hệ hai phương trình bậc nhất', 'store_management'),
+    ('math', 11, 'định nghĩa và ý nghĩa của đạo hàm', 'function-challenge'),
+    ('math', 12, 'tính đơn điệu và cực trị', 'game_ung_dung_dao_ham'),
+    ('math', 12, 'nguyên hàm', 'game_nguyen_ham'),
+    ('math', 12, 'hệ trục tọa độ trong không gian', 'game_toa_do_oxyz'),
+    ('math', 12, 'xác suất có điều kiện', 'game_on_tap_thpt'),
+]
+
 def choose_game_key(subject: str, grade: int, topic: str, title: str) -> str | None:
-    tp = str(topic or "").strip().lower()
-    ti = str(title or "").strip().lower()
+    s = str(subject or "").strip().lower()
     g = int(grade or 0)
-
-    # 1. VẬT LÝ (LỚP 6 – 12): Ánh xạ theo từng bài học cụ thể; bài chưa có game trả về None
-    if subject == "physics":
-        if g == 6:
-            if "chiều dài" in ti: return "game_dodai"
-            if "khối lượng" in ti: return "game_khoiluong"
-            if "thời gian" in ti: return "game_do_luong"
-            if "nhiệt độ" in ti: return "game_nhietdo"
-            if "trọng lực" in ti: return "game_trong_luong_nang_luong"
-            if "ma sát" in ti or "lực cản" in ti: return "game_lucmasat"
-            if "lực" in ti or "lò xo" in ti: return "game_luc"
-            if "năng lượng" in ti: return "game_trong_luong_nang_luong"
-            if "mặt trời" in ti: return "game_anhsang"
-            return None
-        if g == 7:
-            if "tốc độ" in ti or "quãng đường" in ti: return "game_speed"
-            if "âm" in ti: return "game_amthanh"
-            if "gương phẳng" in ti: return "game_guongphang"
-            if "ánh sáng" in ti or "phản xạ" in ti: return "game_anhsang"
-            if "trái đất" in ti or "la bàn" in ti or "nam châm điện" in ti: return "game_nam_cham_dien"
-            if "nam châm" in ti or "từ trường" in ti: return "game_namcham"
-            return None
-        if g == 8:
-            if "khối lượng riêng" in ti: return "simulation_classic:khoi-luong-rieng"
-            if "archimedes" in ti: return "simulation:luc-day-archimedes"
-            if "áp suất" in ti: return "game_chat_luu"
-            if "moment" in ti or "đòn bẩy" in ti: return "game_moment_luc_don_bay"
-            if "điện" in ti or "mạch" in ti: return "game_dien"
-            if "nhiệt" in ti: return "game_nhietnang"
-            return None
-        if g == 9:
-            if ("công" in ti and "công suất" in ti and "điện" not in ti): return "game_congsuat"
-            if "động năng" in ti or "thế năng" in ti or "cơ năng" in ti or "khúc xạ" in ti or "phản xạ toàn phần" in ti:
-                return "game_co_nang_khuc_xa"
-            if "tán sắc" in ti or "màu sắc" in ti: return "game_anhsangmau"
-            if "thấu kính" in ti or "kính lúp" in ti: return "game_quanghoc"
-            if "ohm" in ti or "điện trở" in ti: return "game_ohm"
-            if "nối tiếp" in ti: return "game_doanmachnoitiep"
-            if "song song" in ti: return "game_doanmachsongsong"
-            if "công suất điện" in ti or "năng lượng điện" in ti: return "game_congsuatdien"
-            if "cảm ứng điện từ" in ti or "xoay chiều" in ti or "máy biến áp" in ti: return "game_dientu"
-            if "năng lượng tái tạo" in ti or "hóa thạch" in ti: return "game_nang_luong"
-            return None
-        if g == 10:
-            if "sai số" in ti or "phép đo" in ti: return "game_dodai"
-            if "độ dịch chuyển" in ti or "tốc độ và vận tốc" in ti: return "game_robot"
-            if "gia tốc" in ti or "biến đổi đều" in ti or "rơi tự do" in ti or "chuyển động ném" in ti: return "game_giatoc"
-            if "tổng hợp" in ti or "ma sát" in ti: return "force_real_life_game"
-            if "lực cản" in ti or "áp suất chất lỏng" in ti: return "game_chat_luu"
-            if "newton" in ti or "trọng lực" in ti: return "game_newton"
-            if "công" in ti or "động năng" in ti or "cơ năng" in ti: return "game_nang_luong"
-            if "động lượng" in ti: return "game_dong_luong"
-            if "tròn đều" in ti or "hướng tâm" in ti or "moment" in ti or "lò xo" in ti or "hooke" in ti:
-                return "game_chuyen_dong_tron_lo_xo"
-            return None
-        if g == 11:
-            if "dao động" in ti or "cộng hưởng" in ti: return "game_dao_dong"
-            if "mô tả sóng" in ti or "sóng ngang" in ti: return "game_song_co"
-            if "sóng điện từ" in ti or "giao thoa" in ti or "sóng dừng" in ti: return "game_song_dien_tu_giao_thoa_tu_dien"
-            if "coulomb" in ti or "cường độ điện trường" in ti: return "game_dien_truong"
-            if "điện trường đều" in ti: return "game_dien_truong_deu"
-            if "thế năng điện" in ti or "điện thế" in ti or "tụ điện" in ti: return "game_dien_the"
-            if "dòng điện" in ti or "điện trở" in ti or "nguồn điện" in ti or "suất điện động" in ti or "toàn mạch" in ti or "công suất điện" in ti:
-                return "game_dong_dien"
-            return None
-        if g == 12:
-            if tp in ("l12-ch01-vat-li-nhiet", "l12-ch02-khi-li-tuong"): return "game_vat_ly_nhiet_khi_ly_tuong"
-            if "từ trường" in ti or "cảm ứng từ" in ti: return "game_tu_truong"
-            if "cảm ứng điện từ" in ti or "từ thông" in ti: return "game_cam_ung_dien_tu"
-            if "xoay chiều" in ti: return "game_mach_xoay_chieu"
-            if "máy biến áp" in ti or "rlc" in ti: return "game_mach_rlc"
-            if "einstein" in ti: return "game_thuyet_tuong_doi"
-            if "hạt nhân" in ti or "phóng xạ" in ti or "phân hạch" in ti or "nhiệt hạch" in ti: return "game_hat_nhan"
-            return None
-        return None
-
-    # 2. HÓA HỌC (LỚP 6 – 12): Hiện chưa có mini-game Hóa học riêng → "Đang xây dựng"
-    if subject == "chemistry":
-        return None
-
-    # 3. TOÁN HỌC (LỚP 1 – 12): Chỉ gắn cho bài học khớp nội dung game; bài chưa có game trả về None
-    if g == 12:
-        if any(k in ti for k in ("đơn điệu", "cực trị", "giá trị lớn nhất", "tiệm cận", "khảo sát")):
-            return "game_ung_dung_dao_ham"
-        if any(k in ti for k in ("vectơ", "tọa độ", "đường thẳng", "mặt phẳng", "mặt cầu")):
-            return "game_toa_do_oxyz"
-        if any(k in ti for k in ("nguyên hàm", "tích phân")):
-            return "game_nguyen_ham"
-        if any(k in ti for k in ("khoảng biến thiên", "phương sai", "độ lệch chuẩn", "xác suất có điều kiện", "bayes")):
-            return "game_on_tap_thpt"
-        return None
-    if g == 11:
-        if any(k in ti for k in ("giới hạn", "liên tục", "đạo hàm", "tiếp tuyến")):
-            return "function-challenge"
-        if any(k in ti for k in ("mũ", "lôgarit", "xác suất", "mẫu số liệu ghép nhóm")):
-            return "game_on_tap_thpt"
-        return None
-    if g == 10:
-        if any(k in ti for k in ("vectơ", "tọa độ", "tích vô hướng")):
-            return "game_toa_do_oxyz"
-        if any(k in ti for k in ("tổ hợp", "chỉnh hợp", "hoán vị", "xác suất")):
-            return "game_on_tap_thpt"
-        if any(k in ti for k in ("hàm số", "thống kê", "số gần đúng", "trung vị", "phương sai")):
-            return "store_management"
-        return None
-    if g in (6, 7, 8, 9):
-        if any(k in ti for k in ("tiền", "lãi", "phần trăm", "hệ phương trình", "hàm số bậc nhất", "hàm số y = ax", "thống kê", "biểu đồ", "tần số")):
-            return "store_management"
-        return None
-    if g == 5:
-        if any(k in ti for k in ("vận tốc", "quãng đường", "chuyển động đều")):
-            return "game_speed"
-    if any(k in ti for k in ("tiền việt nam", "tỉ số phần trăm")):
-        return "store_management"
-    if any(k in ti for k in ("khối lượng", "ki-lô-gam", "gam", "tấn, tạ, yến")):
-        return "game_khoiluong"
-    if any(k in ti for k in ("độ dài", "xăng-ti-mét", "mét", "đồng hồ", "xem giờ", "thời gian", "ngày, giờ", "chu vi", "diện tích", "thể tích", "đo góc")):
-        return "game_do_luong"
+    ti = str(title or "").strip().lower()
+    for r_subj, r_grade, r_sub, r_game in EXACT_GAME_RULES:
+        if s == r_subj and g == r_grade and r_sub in ti:
+            return r_game
     return None
 
 
