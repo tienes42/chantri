@@ -279,8 +279,6 @@ async function processIslandImage(src, selector, isGrayFallback = false) {
     // Cơ chế dự phòng tự động: .webp -> .png -> island-subject.webp làm xám
     // Dùng startsWith vì đường dẫn có thêm ?v=... ở cuối
     if (src.startsWith('assets/island-locked.webp')) {
-      processIslandImage(`assets/island-locked.png?v=${ASSET_V}`, selector, false);
-    } else if (src.startsWith('assets/island-locked.png')) {
       processIslandImage(`assets/island-subject.webp?v=${ASSET_V}`, selector, true);
     } else {
       console.error('Lỗi xử lý ảnh đảo:', src, e);

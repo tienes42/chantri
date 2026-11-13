@@ -376,7 +376,7 @@ def choose_game_key(subject: str, grade: int, topic: str, title: str) -> str:
             return "game_on_tap_thpt"
         return "store_management"
     if g in (6, 7, 8, 9):
-        if any(k in tp for k in ("hinh", "goc", "tam-giac", "tu-giac", "thales", "duong-tron")):
+        if any(k in tp for k in ("hinh", "goc", "tam-giac", "tu-giac", "thales", "duong-tron", "doi-xung")):
             return "game_toa_do_oxyz"
         return "store_management"
     if tp == "l5-cd10-thoi-gian-van-toc-chuyen-dong-deu":

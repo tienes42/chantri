@@ -50,7 +50,8 @@ input[type=range]{width:100%;accent-color:#ffd166}
 const API = window.HOC_API_BASE || (["127.0.0.1","localhost"].includes(location.hostname)&&location.port!=="8000"?"http://127.0.0.1:8000/api":"/api");
 const Q = new URLSearchParams(location.search);
 const LESSON_ID = Q.get('lesson_id');
-const USER_ID = Number(localStorage.getItem('user_id')) || 1;
+const FB_UID = localStorage.getItem('user_id') || '';
+const USER_ID = FB_UID || 1;
 const $ = id => document.getElementById(id);
 const fmt = (n, d = 2) => Number(n).toLocaleString('vi-VN', { maximumFractionDigits: d });
 
@@ -310,7 +311,7 @@ async function init() {
   }
   topic = ALIAS[topic] || topic; sc = SCENARIOS[topic] || SCENARIOS['khoi-luong-rieng'];
   if (!sc) return noScenario();
-  try { const g = await api(`/content/lessons/${LESSON_ID}/games`); if (g[0]) { const s = await api('/games/sessions', { method: 'POST', body: JSON.stringify({ user_id: USER_ID, game_id: g[0].id }) }); sid = s.id; } } catch (e) { }
+  try { const g = await api(`/content/lessons/${LESSON_ID}/games`); if (g[0]) { const s = await api('/games/sessions', { method: 'POST', body: JSON.stringify({ user_id: USER_ID, firebase_uid: FB_UID || null, user_name: localStorage.getItem('hdlg_display_name') || null, game_id: g[0].id }) }); sid = s.id; } } catch (e) { }
   intro();
 }
 

@@ -18,7 +18,7 @@ except Exception as _e:  # không chặn khởi động API nếu CSDL tạm th�
     print("[schema_guard] Bỏ qua kiểm tra cột:", _e)
 
 # Lưu đệm (Edge Cache) trên Vercel CDN 24 giờ và trên trình duyệt 10 phút để không phải đánh thức Neon DB mỗi lần bấm
-EDGE_CACHE_HEADER = "public, max-age=600, s-maxage=86400, stale-while-revalidate=3600"
+EDGE_CACHE_HEADER = "public, max-age=60, s-maxage=300, stale-while-revalidate=600"
 
 @router.get("/subjects", response_model=list[SubjectOut])
 def list_subjects(response: Response, db: Session = Depends(get_db)):

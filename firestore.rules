@@ -1,0 +1,42 @@
+rules_version = '2';
+service cloud.firestore {
+  match /databases/{database}/documents {
+    match /leaderboard/{uid} {
+      // Mọi người có thể xem bảng xếp hạng
+      allow read: if true;
+
+      // Chỉ chủ tài khoản đã đăng nhập mới được ghi hồ sơ của chính mình
+      allow create, update: if request.auth != null
+        && request.auth.uid == uid
+        && request.resource.data.keys().hasOnly([
+          'name', 'avatar', 'xp', 'hints', 'completed', 'best', 'quests', 'updatedAt'
+        ])
+        && (!('name' in request.resource.data) || (request.resource.data.name is string && request.resource.data.name.size() <= 40))
+        && (!('avatar' in request.resource.data) || (request.resource.data.avatar is string && request.resource.data.avatar.size() <= 500))
+        && (!('xp' in request.resource.data) || (
+          request.resource.data.xp is int
+          && request.resource.data.xp >= 0
+          && request.resource.data.xp <= 100000
+          && (
+            !exists(/databases/$(database)/documents/leaderboard/$(uid))
+            || !(resource.data.xp is int)
+            || request.resource.data.xp - resource.data.xp <= 250
+          )
+        ))
+        && (!('hints' in request.resource.data) || (
+          request.resource.data.hints is int
+          && request.resource.data.hints >= 0
+          && request.resource.data.hints <= 500
+        ))
+        && (!('completed' in request.resource.data) || (request.resource.data.completed is list && request.resource.data.completed.size() <= 1000))
+        && (!('best' in request.resource.data) || request.resource.data.best is map)
+        && (!('quests' in request.resource.data) || (request.resource.data.quests is string && request.resource.data.quests.size() <= 20000));
+
+      allow delete: if false;
+    }
+
+    match /{document=**} {
+      allow read, write: if false;
+    }
+  }
+}

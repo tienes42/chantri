@@ -1978,7 +1978,7 @@ function chooseLessonGameKey(subj, gradeVal, topicVal, titleVal) {
     return "store_management";
   }
   if (g >= 6 && g <= 9) {
-    if (/(hinh|goc|tam-giac|tu-giac|thales|duong-tron)/.test(tp)) return "game_toa_do_oxyz";
+    if (/(hinh|goc|tam-giac|tu-giac|thales|duong-tron|doi-xung)/.test(tp)) return "game_toa_do_oxyz";
     return "store_management";
   }
   if (tp === "l5-cd10-thoi-gian-van-toc-chuyen-dong-deu") return "game_speed";
@@ -1992,9 +1992,10 @@ function resolveLessonGameInfo(lesson, subjFallback, gradeFallback) {
   const s = String(lesson.subject || subjFallback || "math").toLowerCase();
   const g = Number(lesson.grade || gradeFallback || 10);
   const GAME_ALIAS = { "function_challenge": "function-challenge", "store-management": "store_management" };
+  const mappedKey = chooseLessonGameKey(s, g, lesson.topic, lesson.title);
   let key = lesson.game_type ? (GAME_ALIAS[lesson.game_type] || lesson.game_type) : "";
-  if (!key || !HDLG_GAME_META[key]) {
-    key = chooseLessonGameKey(s, g, lesson.topic, lesson.title);
+  if (!key || !HDLG_GAME_META[key] || (mappedKey && key !== mappedKey)) {
+    key = mappedKey;
   }
   const meta = HDLG_GAME_META[key] || HDLG_GAME_META["store_management"];
   const lid = encodeURIComponent(lesson.id || "");

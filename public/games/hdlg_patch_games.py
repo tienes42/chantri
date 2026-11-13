@@ -14,8 +14,7 @@ Việc làm với mỗi file public/games/*.html:
 """
 import re, sys, pathlib
 
-ROOT = pathlib.Path(__file__).resolve().parent.parent
-GAMES = ROOT / "public" / "games"
+GAMES = pathlib.Path(__file__).resolve().parent
 SKIP = {"simulation.html", "force_real_life_game.html"}  # trang điều hướng / game có hệ tài khoản riêng
 TAGS_FULL = '<script src="/firebase-config.js"></script><script src="/auth.js"></script><script src="/games/hdlg-game.js"></script>'
 TAG_BRIDGE = '<script src="/games/hdlg-game.js"></script>'

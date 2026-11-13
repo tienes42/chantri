@@ -1,7 +1,8 @@
 const API_BASE = (["127.0.0.1","localhost"].includes(location.hostname)&&location.port!=="8000"?"http://127.0.0.1:8000/api":"/api");
 
 const GAME_ID = 1;
-const USER_ID = Number(localStorage.getItem("user_id")) || 1;
+const FB_UID = localStorage.getItem("user_id") || "";
+const USER_ID = FB_UID || 1;
 
 let sessionId = null;
 let score = 0;
@@ -89,7 +90,7 @@ async function createSession() {
         const response = await fetch(`${API_BASE}/games/sessions`, {
             method: "POST",
             headers: { "Content-Type": "application/json" },
-            body: JSON.stringify({ user_id: USER_ID, game_id: GAME_ID })
+            body: JSON.stringify({ user_id: USER_ID, firebase_uid: FB_UID || null, user_name: localStorage.getItem("hdlg_display_name") || null, game_id: GAME_ID })
         });
         if (response.ok) {
             const data = await response.json();

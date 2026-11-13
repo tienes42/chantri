@@ -36,7 +36,7 @@ button{font:inherit;cursor:pointer;border:0;color:inherit}
 <div id="pop"></div></div>
 <script>
 /* GAME: ĐIỆN TRỞ & ĐỊNH LUẬT OHM (phần dùng chung lấy từ simulation.html) */
-const API=window.HOC_API_BASE||(["127.0.0.1","localhost"].includes(location.hostname)&&location.port!=="8000"?"http://127.0.0.1:8000/api":"/api"),Q=new URLSearchParams(location.search),LESSON_ID=Q.get('lesson_id'),USER_ID=Number(localStorage.getItem('user_id'))||1;
+const API=window.HOC_API_BASE||(["127.0.0.1","localhost"].includes(location.hostname)&&location.port!=="8000"?"http://127.0.0.1:8000/api":"/api"),Q=new URLSearchParams(location.search),LESSON_ID=Q.get('lesson_id'),FB_UID=localStorage.getItem('user_id')||'',USER_ID=FB_UID||1;
 const $=i=>document.getElementById(i),fmt=(n,d=1)=>Number(n).toLocaleString('vi-VN',{maximumFractionDigits:d});
 
 const cv=$('cv'),c=cv.getContext('2d'),stage=$('stage');
@@ -151,6 +151,6 @@ function loop(t){T=t/1000;$('bGo').style.display=st.mode=='play'?'block':'none';
   if(st.burnt&&Math.random()<.4)P.push({x:790+Math.random()*10,y:260,vx:(Math.random()-.5),vy:-1.2,l:50,col:'rgba(120,120,120,.6)',r:6,g:-.01});
   if(el>(burn?2.4:2)){st.mode='res';after()}}else st.glow+=(0-st.glow)*.2;
  draw();requestAnimationFrame(loop)}
-(async()=>{if(LESSON_ID){try{const g=await api(`/content/lessons/${LESSON_ID}/games`);if(g[0])sid=(await api('/games/sessions',{method:'POST',body:JSON.stringify({user_id:USER_ID,game_id:g[0].id})})).id}catch(e){}}
+(async()=>{if(LESSON_ID){try{const g=await api(`/content/lessons/${LESSON_ID}/games`);if(g[0])sid=(await api('/games/sessions',{method:'POST',body:JSON.stringify({user_id:USER_ID,firebase_uid:FB_UID||null,user_name:localStorage.getItem('hdlg_display_name')||null,game_id:g[0].id})})).id}catch(e){}}
 st={i:-1,a:story.acts[0]};newAct(0);requestAnimationFrame(loop)})();
 </script></body></html>

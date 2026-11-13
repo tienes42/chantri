@@ -36,7 +36,7 @@ button{font:inherit;cursor:pointer;border:0;color:inherit}
 <div id="pop"></div></div>
 <script>
 /* GAME: ÁNH SÁNG (phần dùng chung lấy từ simulation.html) */
-const API=window.HOC_API_BASE||(["127.0.0.1","localhost"].includes(location.hostname)&&location.port!=="8000"?"http://127.0.0.1:8000/api":"/api"),Q=new URLSearchParams(location.search),LESSON_ID=Q.get('lesson_id'),USER_ID=Number(localStorage.getItem('user_id'))||1;
+const API=window.HOC_API_BASE||(["127.0.0.1","localhost"].includes(location.hostname)&&location.port!=="8000"?"http://127.0.0.1:8000/api":"/api"),Q=new URLSearchParams(location.search),LESSON_ID=Q.get('lesson_id'),FB_UID=localStorage.getItem('user_id')||'',USER_ID=FB_UID||1;
 const $=i=>document.getElementById(i),fmt=(n,d=1)=>Number(n).toLocaleString('vi-VN',{maximumFractionDigits:d});
 
 const cv=$('cv'),c=cv.getContext('2d'),stage=$('stage');
@@ -109,7 +109,7 @@ function pickDraw(){const a=st.a,k=a.tasks[Math.min(st.ti,a.tasks.length-1)];c.f
  st.tools.forEach(t=>{if(!(drag&&drag.t==t)){const q=TL(t.k,st.tools.length);t.x+=(q.x-t.x)*.3;t.y+=(q.y-t.y)*.3}});[...st.tools].sort((x,y)=>(drag&&drag.t==x)-(drag&&drag.t==y)).forEach(t=>{c.fillStyle='#fff7e0';rr(t.x,t.y,170,70,14);c.fill();c.strokeStyle='#c98a2b';c.lineWidth=4;c.stroke();c.fillStyle='#3a2a10';c.font='bold 15px Arial';c.fillText(t.e+' '+t.n,t.x+85,t.y+30);c.font='11.5px Arial';c.fillStyle='#6a4a1a';c.fillText(t.s,t.x+85,t.y+52)})}
 function loop(t){T=t/1000;const a=st.a;$('bGo').style.display=(st.mode=='play'&&a.type=='mirror')?'block':'none';if(typed<full.length){const b4=Math.floor(typed);typed+=.9;if(Math.floor(typed)!=b4&&b4%2==0&&full[b4]!=' ')SND.talk(st.who);show()}draw();requestAnimationFrame(loop)}
 function peopleAndParticles(){if(st.mode=='talk')PEO.forEach(q=>person(q.x,470,q,st.who==q.id&&typed<full.length,st.who==q.id));P=P.filter(p=>p.l-->0);P.forEach(p=>{p.x+=p.vx;p.y+=p.vy;p.vy+=p.g||.15;c.fillStyle=p.col;c.beginPath();c.arc(p.x,p.y,p.r,0,7);c.fill()})}
-const start=async()=>{if(LESSON_ID){try{const g=await api(`/content/lessons/${LESSON_ID}/games`);if(g[0])sid=(await api('/games/sessions',{method:'POST',body:JSON.stringify({user_id:USER_ID,game_id:g[0].id})})).id}catch(e){}}st={i:-1,a:story.acts[0]};newAct(0);requestAnimationFrame(loop)};
+const start=async()=>{if(LESSON_ID){try{const g=await api(`/content/lessons/${LESSON_ID}/games`);if(g[0])sid=(await api('/games/sessions',{method:'POST',body:JSON.stringify({user_id:USER_ID,firebase_uid:FB_UID||null,user_name:localStorage.getItem('hdlg_display_name')||null,game_id:g[0].id})})).id}catch(e){}}st={i:-1,a:story.acts[0]};newAct(0);requestAnimationFrame(loop)};
 
 const WHO={huy:'Anh Huy · trưởng ca vận hành',lam:'Chị Lam · kỹ sư trưởng',me:'Bạn · kỹ sư vận hành'};
 /* =========================================================

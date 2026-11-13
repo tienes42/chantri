@@ -86,8 +86,18 @@
   function lessonURL(subject, grade, l, hash) {
     return "lesson.html?id=" + encodeURIComponent(l.id) + "&subject=" + subject + "&grade=" + encodeURIComponent(l.grade || grade) + "&topic=" + encodeURIComponent(l.topic || "") + (hash || "");
   }
-  var GAME_FILES = { function_challenge: "function-challenge" };   // game_type khác tên file
-  function gameURL(l) { var t = l.game_type || "simulation"; return "games/" + encodeURIComponent(GAME_FILES[t] || t) + ".html?lesson_id=" + encodeURIComponent(l.id); }
+  var GAME_FILES = { function_challenge: "function-challenge", "store-management": "store_management" };
+  function gameURL(l) {
+    if (window.HDLGResolveGame) {
+      var info = window.HDLGResolveGame(l, l.subject, l.grade);
+      if (info && info.url) return info.url;
+    }
+    var t = l.game_type || "store_management";
+    if (t.indexOf("chemlab:") === 0) return "phong_labhoahoc.html?lesson=" + encodeURIComponent(t.slice(8)) + "&lesson_id=" + encodeURIComponent(l.id);
+    if (t.indexOf("simulation:") === 0) return "games/simulation.html?topic=" + encodeURIComponent(t.slice(11)) + "&lesson_id=" + encodeURIComponent(l.id);
+    if (t.indexOf("simulation_classic:") === 0) return "games/simulation_classic.html?topic=" + encodeURIComponent(t.slice(19)) + "&lesson_id=" + encodeURIComponent(l.id);
+    return "games/" + encodeURIComponent(GAME_FILES[t] || t) + ".html?lesson_id=" + encodeURIComponent(l.id);
+  }
   function challengeURL(subject, grade) {
     return "challenge.html?subject=" + subject + "&grade=" + encodeURIComponent(grade) + "&from=" + encodeURIComponent(location.pathname + location.search);
   }

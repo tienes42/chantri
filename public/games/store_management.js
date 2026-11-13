@@ -40,10 +40,8 @@ const LESSON_ID =
     params.get("lessonId") ||
     null;
 
-const USER_ID =
-    Number(
-        localStorage.getItem("user_id")
-    ) || 1;
+const FB_UID = localStorage.getItem("user_id") || "";
+const USER_ID = FB_UID || 1;
 
 
 /* =========================================================
@@ -1308,8 +1306,9 @@ async function createGameSession() {
                         game_id:
                             GAME_ID,
 
-                        user_id:
-                            USER_ID
+                        user_id: USER_ID,
+                        firebase_uid: FB_UID || null,
+                        user_name: localStorage.getItem("hdlg_display_name") || null
 
                     })
 

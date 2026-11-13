@@ -6,7 +6,7 @@
     <script src="mobile-fit.js" data-mode="virtual"></script>
 <script src="/firebase-config.js"></script><script src="/auth.js"></script><script src="/games/hdlg-game.js"></script>
     <title>Trạm Dò Sóng: Mạch RLC & Cộng hưởng điện — HỌC ĐỂ LÀM GÌ</title>
-    <script src="https://cdn.tailwindcss.com"></script>
+    <link rel="stylesheet" href="tailwind-games.css">
     <link href="https://fonts.googleapis.com/css2?family=Be+Vietnam+Pro:wght@500;700;900&display=swap" rel="stylesheet">
     <style>
         * { box-sizing: border-box; user-select: none; }
@@ -430,7 +430,7 @@ async function loadLessonFromAPI() {
 }
 async function startSession() {
   try {
-    const res = await apiFetch(`/api/games/sessions`, { method: "POST", body: JSON.stringify({ lesson_id: LESSON_ID, game_key: GAME_KEY, game_type: LESSON.game_type || "simulation" }) });
+    const res = await apiFetch(`/api/games/sessions`, { method: "POST", body: JSON.stringify({ lesson_id: LESSON_ID, game_key: GAME_KEY, game_type: LESSON.game_type || "simulation", firebase_uid: localStorage.getItem("user_id") || null, user_name: localStorage.getItem("hdlg_display_name") || null }) });
     const d = res && (res.data || res);
     sessionId = d ? (d.id || d.session_id || d.sessionId || null) : null;
   } catch (e) { sessionId = null; }
