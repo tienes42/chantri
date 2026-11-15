@@ -12,7 +12,7 @@
 // Dọn bộ nhớ đệm sessionStorage cũ để tránh hiển thị bản ghi gộp chương từ phiên bản cũ
 try {
   Object.keys(sessionStorage).forEach((k) => {
-    if ((k.startsWith("hdlg_lesson") || k.startsWith("hdlg_lessons")) && !k.startsWith("hdlg_v9_")) {
+    if ((k.startsWith("hdlg_lesson") || k.startsWith("hdlg_lessons")) && !k.startsWith("hdlg_v10_")) {
       sessionStorage.removeItem(k);
     }
   });
@@ -1845,15 +1845,38 @@ function chooseLessonGameKey(subj, gradeVal, topicVal, titleVal) {
   return null;
 }
 
+const LEGACY_UNMAPPED_GAMES = new Set([
+  "store_management", "store-management", "function-challenge", "function_challenge",
+  "game_ung_dung_dao_ham", "game_toa_do_oxyz", "game_nguyen_ham", "game_on_tap_thpt",
+  "game_do_luong", "game_trong_luong_nang_luong", "game_co_nang_khuc_xa",
+  "game_chuyen_dong_tron_lo_xo", "game_song_dien_tu_giao_thoa_tu_dien",
+  "game_vat_ly_nhiet_khi_ly_tuong", "game_mach_rlc", "game_quang_dien"
+]);
+
 function resolveLessonGameInfo(lesson, subjFallback, gradeFallback) {
   if (!lesson) return null;
   const s = String(lesson.subject || subjFallback || "math").toLowerCase();
   const g = Number(lesson.grade || gradeFallback || 10);
-  const rawKey = chooseLessonGameKey(s, g, lesson.topic, lesson.title);
+  const GAME_ALIAS = { "function_challenge": "function-challenge", "store-management": "store_management" };
+
+  // 1. Ưu tiên ánh xạ theo danh sách EXACT_GAME_RULES
+  let rawKey = chooseLessonGameKey(s, g, lesson.topic, lesson.title);
+
+  // 2. Nếu bạn mới thêm game mới và gắn vào lesson.game_type (hoặc đăng ký trong HDLG_GAME_META)
+  if (!rawKey && lesson.game_type) {
+    const candidate = String(GAME_ALIAS[lesson.game_type] || lesson.game_type).trim().replace(/\.html$/i, "");
+    if (candidate && !LEGACY_UNMAPPED_GAMES.has(candidate)) {
+      rawKey = candidate;
+    }
+  }
   if (!rawKey) return null;
+
   const [key, setParam] = String(rawKey).split(":set=");
-  if (!HDLG_GAME_META[key]) return null;
-  const meta = HDLG_GAME_META[key];
+  const meta = HDLG_GAME_META[key] || {
+    file: key.startsWith("games/") ? key : `games/${key}.html`,
+    title: lesson.game_title || `Trải nghiệm thực tế: ${lesson.title || key}`,
+    desc: lesson.game_description || "Vận dụng kiến thức bài học vào giải quyết tình huống thực tiễn."
+  };
   const lid = encodeURIComponent(lesson.id || "");
   let url = meta.file;
   url += (url.includes("?") ? "&" : "?") + `lesson_id=${lid}`;
@@ -1875,20 +1898,21 @@ function renderGame(lesson) {
 
   const gInfo = resolveLessonGameInfo(lesson, subject, lesson.grade || gradeFromUrl);
   if (!gInfo) {
-    const comingUrl =
-      `games/coming-soon.html?lesson_id=${encodeURIComponent(lesson.id || "")}` +
+    const simUrl =
+      `games/simulation.html?lesson_id=${encodeURIComponent(lesson.id || "")}` +
+      `&topic=${encodeURIComponent(lesson.topic || "")}` +
       `&title=${encodeURIComponent(lesson.title || "")}` +
       `&subject=${encodeURIComponent(subject)}` +
       `&grade=${encodeURIComponent(lesson.grade || gradeFromUrl || "")}`;
     gameDescription.innerHTML =
-      `<strong style="display:block;font-size:16.5px;color:#fde047;margin-bottom:6px;">🚧 Trải nghiệm thực tế đang xây dựng</strong>` +
-      `<span>Bài học này chưa có mini-game riêng. Bấm nút bên dưới để xem trạng thái cập nhật.</span>`;
+      `<strong style="display:block;font-size:16.5px;color:#fde047;margin-bottom:6px;">🎯 Trải nghiệm thực tế: ${escapeHTML(lesson.title || "Mô phỏng 2.5D")}</strong>` +
+      `<span>Vận dụng kiến thức vừa học vào tình huống thực tế qua trò chơi mô phỏng.</span>`;
     gameButton.style.display = "inline-flex";
     gameButton.style.alignItems = "center";
     gameButton.style.gap = "8px";
     gameButton.textContent = "🚀 Bắt đầu trải nghiệm";
     gameButton.onclick = function () {
-      window.location.href = comingUrl;
+      window.location.href = simUrl;
     };
     noGame.classList.add("hidden");
     return;
@@ -2133,7 +2157,7 @@ async function loadChapterSiblingLessons(lesson) {
     siblings = lesson._virtualSiblings;
   } else {
     let allGradeLessons = null;
-    const cacheKey = `hdlg_v9_lessons_${subject}_${g}`;
+    const cacheKey = `hdlg_v10_lessons_${subject}_${g}`;
     try {
       const cached = sessionStorage.getItem(cacheKey);
       if (cached) allGradeLessons = JSON.parse(cached);
@@ -2604,7 +2628,7 @@ async function loadLesson() {
 
   try {
     let lesson = null;
-    const cached = sessionStorage.getItem(`hdlg_v9_lesson_${lessonId}`);
+    const cached = sessionStorage.getItem(`hdlg_v10_lesson_${lessonId}`);
     if (cached) {
       try { lesson = JSON.parse(cached); } catch (_) {}
     }
@@ -2614,7 +2638,7 @@ async function loadLesson() {
         throw new Error(`Không thể tải bài học. HTTP ${response.status}`);
       }
       lesson = await response.json();
-      try { sessionStorage.setItem(`hdlg_v9_lesson_${lessonId}`, JSON.stringify(lesson)); } catch (_) {}
+      try { sessionStorage.setItem(`hdlg_v10_lesson_${lessonId}`, JSON.stringify(lesson)); } catch (_) {}
     }
     if (!lesson || lesson.id === undefined || lesson.id === null) {
       throw new Error("API trả về bài học nhưng không có ID.");

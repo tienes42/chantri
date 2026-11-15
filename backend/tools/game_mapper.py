@@ -289,12 +289,29 @@ def choose_game_key(subject: str, grade: int, topic: str, title: str) -> str | N
     return None
 
 
+LEGACY_UNMAPPED_GAMES = {
+    "store_management", "store-management", "function-challenge", "function_challenge",
+    "game_ung_dung_dao_ham", "game_toa_do_oxyz", "game_nguyen_ham", "game_on_tap_thpt",
+    "game_do_luong", "game_trong_luong_nang_luong", "game_co_nang_khuc_xa",
+    "game_chuyen_dong_tron_lo_xo", "game_song_dien_tu_giao_thoa_tu_dien",
+    "game_vat_ly_nhiet_khi_ly_tuong", "game_mach_rlc", "game_quang_dien",
+}
+
+
 def resolve_backend_game(subject: str, grade: int, lesson: dict) -> tuple[str | None, str | None, str | None]:
     key = choose_game_key(subject, grade, lesson.get("topic", ""), lesson.get("title", ""))
+    if not key and lesson.get("game_type"):
+        cand = str(lesson["game_type"]).strip().removesuffix(".html")
+        if cand and cand not in LEGACY_UNMAPPED_GAMES:
+            key = cand
     if not key:
         return None, None, None
     base_key = key.split(":set=")[0]
-    if base_key not in GAME_META:
-        return None, None, None
-    meta = GAME_META[base_key]
-    return key, meta["title"], meta["desc"]
+    meta = GAME_META.get(base_key)
+    if meta:
+        return key, meta["title"], meta["desc"]
+    return (
+        key,
+        lesson.get("game_title") or f"Trải nghiệm thực tế: {lesson.get('title', key)}",
+        lesson.get("game_description") or "Vận dụng kiến thức bài học vào giải quyết tình huống thực tiễn.",
+    )

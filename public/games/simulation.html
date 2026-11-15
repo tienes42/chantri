@@ -180,10 +180,66 @@ let last=0;function loop(t){T=t/1000;const a=st.a,p=phys();$('bGo').style.displa
  else if(st.mode=='back'){st.off+=3*st.dir;if(st.off>150)st.dir=-1;if(st.off<=0){st.off=0;st.mode='lose';after()}}
  draw();requestAnimationFrame(loop)}
 
-/* ====================== KHỞI ĐỘNG ====================== */
+/* ====================== KHỞI ĐỘNG & BẢNG GẮN GAME (CHỈ CẦN THÊM VÀO OT) ====================== */
 (async()=>{const urlTopic=Q.get('topic');topic=urlTopic;let lesson=null;
  if(LESSON_ID){try{lesson=await api('/content/lessons/'+LESSON_ID);if(!urlTopic||!STORIES[urlTopic])topic=lesson.topic}catch(e){}}
- if(topic&&!STORIES[topic]){const OT={'dien-tro':'game_ohm.html','dinh-luat-ohm':'game_ohm.html','dong-dien':'game_ohm.html','toc-do':'game_speed.html','toc-do-chuyen-dong':'game_speed.html','do-dai':'game_dodai.html','khoi-luong':'game_khoiluong.html','luc-ma-sat':'game_lucmasat.html','luc':'game_luc.html','nhiet-do':'game_nhietdo.html','anh-sang':'game_anhsang.html','am-thanh':'game_amthanh.html','guong-phang':'game_guongphang.html','anh-sang-mau':'game_anhsangmau.html','nam-cham':'game_namcham.html','cong-suat':'game_congsuat.html','nhiet-nang':'game_nhietnang.html','dien':'game_dien.html','doan-mach-noi-tiep':'game_doanmachnoitiep.html','doan-mach-song-song':'game_doanmachsongsong.html','cong-va-cong-suat-dien':'game_congsuatdien.html','dien-tu':'game_dientu.html','quang-hoc':'game_quanghoc.html','chuyen-dong-thang':'game_robot.html','gia-toc':'game_giatoc.html','dinh-luat-newton':'game_newton.html','dong-luong':'game_dong_luong.html','nang-luong':'game_nang_luong.html','dong-luc-hoc-chat-long':'game_chat_luu.html','dao-dong':'game_dao_dong.html','song-co':'game_song_co.html','dien-truong':'game_dien_truong.html','dong-dien':'game_dong_dien.html','tu-truong':'game_tu_truong.html','cam-ung-dien-tu':'game_cam_ung_dien_tu.html','dien-truong-cuong-do':'game_dien_truong_deu.html','song-dien-tu-giao-thoa-tu-dien':'game_song_dien_tu_giao_thoa_tu_dien.html','dien-the':'game_dien_the.html','mach-xoay-chieu':'game_mach_xoay_chieu.html','mach-rlc':'game_mach_rlc.html','hat-nhan':'game_hat_nhan.html', 'quang-dien':'game_quang_dien.html','thuyet-tuong-doi':'game_thuyet_tuong_doi.html','do-luong':'game_do_luong.html','chuyen-dong-tron-bien-dang-lo-xo':'game_chuyen_dong_tron_lo_xo.html','vat-ly-nhiet-khi-ly-tuong':'game_vat_ly_nhiet_khi_ly_tuong.html','moment-luc-don-bay':'game_moment_luc_don_bay.html','co-nang-khuc-xa-anh-sang':'game_co_nang_khuc_xa.html','ham-so':'game_ung_dung_dao_ham.html','hinh-hoc':'game_toa_do_oxyz.html','trong-luong-va-nang-luong':'game_trong_luong_nang_luong.html','nam-cham-dien-tu-truong-trai-dat':'game_nam_cham_dien.html','nguyen-ham':'game_nguyen_ham.html','on-tap-thpt':'game_on_tap_thpt.html','ap-suat':'game_chat_luu.html','vat-ly-nhiet':'game_vat_ly_nhiet_khi_ly_tuong.html','l1-cd07-do-dai':'game_do_luong.html','l1-cd09-thoi-gian-gio-lich':'game_do_luong.html','l10-ch06-ham-so-do-thi-va-ung-dung':'store_management.html','l11-ch09-dao-ham':'function-challenge.html','l12-ch01-ung-dung-dao-ham-khao-sat-va-ve-do-thi-ham-so':'game_ung_dung_dao_ham.html','l12-ch02-vecto-va-he-truc-toa-do-trong-khong-gian':'game_toa_do_oxyz.html','l12-ch04-nguyen-ham-va-tich-phan':'game_nguyen_ham.html','l12-ch05-phuong-phap-toa-do-trong-khong-gian':'game_toa_do_oxyz.html','l12-ch06-xac-suat-co-dieu-kien':'game_on_tap_thpt.html','l12-ch01-ung-dung-dao-ham':'game_gia_tri_lon_nhat_nho_nhat.html'};location.replace((OT[topic]||'simulation_classic.html')+location.search);return}
+ const lTitle=String((lesson&&lesson.title)||Q.get('title')||'').trim().toLowerCase();
+ const norm=s=>String(s||'').toLowerCase().normalize('NFD').replace(/[\u0300-\u036f]/g,'').replace(/đ/g,'d').replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'');
+ const tSlug=norm(lTitle);
+ if((topic&&!STORIES[topic])||lTitle){
+  /* Gắn game mới tại đây: điền 'tên-bài-hoặc-từ-khóa': 'ten_file_game.html' */
+  const OT={
+   'do-chieu-dai':'game_dodai.html',
+   'do-khoi-luong':'game_khoiluong.html',
+   'thang-nhiet-do-celsius':'game_nhietdo.html',
+   'bien-dang-cua-lo-xo':'game_luc.html',
+   'luc-ma-sat-va-luc-can':'game_lucmasat.html',
+   'toc-do-chuyen-dong':'game_speed.html',
+   'mo-ta-song-am':'game_amthanh.html',
+   'su-phan-xa-anh-sang':'game_anhsang.html',
+   'anh-cua-vat-qua-guong-phang':'game_guongphang.html',
+   'bai-11-nam-cham':'game_namcham.html',
+   'nam-cham-dien':'game_nam_cham_dien.html',
+   'bai-1-khoi-luong-rieng':'simulation_classic.html?topic=khoi-luong-rieng',
+   'ap-suat-chat-long':'game_chat_luu.html',
+   'don-bay-va-ung-dung':'game_moment_luc_don_bay.html',
+   'mach-dien-don-gian':'game_dien.html',
+   'su-truyen-nhiet':'game_nhietnang.html',
+   'bai-1-cong-va-cong-suat':'game_congsuat.html',
+   'tan-sac-anh-sang':'game_anhsangmau.html',
+   'thau-kinh-hoi-tu':'game_quanghoc.html',
+   'dien-tro-dinh-luat-ohm':'game_ohm.html',
+   'doan-mach-noi-tiep':'game_doanmachnoitiep.html',
+   'doan-mach-song-song':'game_doanmachsongsong.html',
+   'nang-luong-dien-va-cong-suat-dien':'game_congsuatdien.html',
+   'bai-12-cam-ung-dien-tu':'game_dientu.html',
+   'do-dich-chuyen':'game_robot.html',
+   'bai-7-gia-toc':'game_giatoc.html',
+   'tong-hop-va-phan-tich-luc':'force_real_life_game.html',
+   'dinh-luat-1-va-dinh-luat-2-newton':'game_newton.html',
+   'co-nang-va-dinh-luat-bao-toan-co-nang':'game_nang_luong.html',
+   'bai-20-dong-luong':'game_dong_luong.html',
+   'dao-dong-dieu-hoa':'game_dao_dong.html',
+   'bai-6-mo-ta-song':'game_song_co.html',
+   'khai-niem-dien-truong':'game_dien_truong.html',
+   'dien-truong-deu':'game_dien_truong_deu.html',
+   'dien-the-va-hieu-dien-the':'game_dien_the.html',
+   'dinh-luat-ohm-cho-toan-mach':'game_dong_dien.html',
+   'cam-ung-tu-va-luc-tu':'game_tu_truong.html',
+   'tu-thong-hien-tuong-cam-ung-dien-tu':'game_cam_ung_dien_tu.html',
+   'dai-cuong-ve-dong-dien-xoay-chieu':'game_mach_xoay_chieu.html',
+   'he-thuc-einstein':'game_thuyet_tuong_doi.html',
+   'phan-ung-hat-nhan':'game_hat_nhan.html'
+  };
+  if(topic==='luc-day-archimedes'||tSlug.includes('archimedes')){story=STORIES['luc-day-archimedes'];}
+  else{
+   let target=OT[topic]||OT[lTitle]||OT[tSlug];
+   if(!target){for(const [k,v] of Object.entries(OT)){const nk=norm(k);if((lTitle&&lTitle.includes(k.toLowerCase()))||(nk&&tSlug.includes(nk))){target=v;break;}}}
+   if(!target)target='coming-soon.html';
+   const sep=target.includes('?')?'&':'?';
+   location.replace(target+(location.search?sep+location.search.slice(1):''));return;
+  }
+ }
  story=STORIES[topic||'luc-day-archimedes'];
  if(LESSON_ID){try{const g=await api(`/content/lessons/${LESSON_ID}/games`);if(g[0])sid=(await api('/games/sessions',{method:'POST',body:JSON.stringify({user_id:USER_ID,firebase_uid:FB_UID||null,user_name:localStorage.getItem('hdlg_display_name')||null,game_id:g[0].id})})).id}catch(e){}}
  st={i:-1,a:story.acts[0]};newAct(0);requestAnimationFrame(loop)})();
