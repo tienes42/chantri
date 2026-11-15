@@ -1,6 +1,6 @@
 {
   "meta": {
-    "thoi_diem_chay": "2026-10-29T06:29:16.318Z",
+    "thoi_diem_chay": "2026-11-09T14:05:50.003Z",
     "node": "v26.13.0",
     "he_dieu_hanh": "Windows_NT 10.0.26200 (x64)",
     "cpu": "AMD Ryzen 5 2600X Six-Core Processor           ",
@@ -10,23 +10,23 @@
     "tep_nguon": {
       "game_moment_luc_don_bay.html": {
         "nguon": "public\\games\\game_moment_luc_don_bay.html",
-        "sha256": "2bb63ec8b923b9545571113130aed7516e9177cb7545b58a1be429bf7de9ad4c"
+        "sha256": "f3513f6641c1729b98973c353bb24a39165ca7f08fbce6c905583ad2eb160175"
       },
       "store_management.js": {
         "nguon": "public\\games\\store_management.js",
-        "sha256": "fbe8bb3095d84a9aecfa681f25c3b4ac2ad521bbe945a9f4c440a8e0fcd545c2"
+        "sha256": "08f29f9b7428bd4a216bec158042286ce540071c230cd65c7119535268a5ee68"
       },
       "phong_labhoahoc.html": {
         "nguon": "public\\phong_labhoahoc.html",
-        "sha256": "123b5cf4e3e569cc0d94ca7dedaa8e670885843517384cde18ee395ee41d6ba7"
+        "sha256": "e38260677b1bb90a1e2b6c069d1a089b4ae649d00cf7533d0e9035c2471b1e7d"
       },
       "simulation.html": {
         "nguon": "public\\games\\simulation.html",
-        "sha256": "2192aec71709212a035ea5c14ecb5e3eb2c01ef36093e591ea8c0a20a9ce7d87"
+        "sha256": "f1a283d08f2d5ab74f65199452259dfff143894459928bdd0f935b0ca9c05e33"
       },
       "game_ohm.html": {
         "nguon": "public\\games\\game_ohm.html",
-        "sha256": "2b98adf97a384c7f8240eff72480d444c414a998add79bd2efc2a65e816bfb53"
+        "sha256": "91a243a90b94cc0d0c9b8d2e043b3597a1dc04e8eaac361d49af6e23d1081668"
       }
     },
     "tong_so_ca": 30,
